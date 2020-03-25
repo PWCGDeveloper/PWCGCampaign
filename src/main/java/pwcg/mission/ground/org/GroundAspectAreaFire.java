@@ -15,7 +15,7 @@ import pwcg.mission.mcu.McuAttackArea;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuValidator;
 
-public class GroundElementAreaFire implements IGroundElement
+public class GroundAspectAreaFire implements IGroundAspect
 {
     private McuTimer attackAreaTimer = new McuTimer();
     private McuAttackArea attackArea;
@@ -24,7 +24,7 @@ public class GroundElementAreaFire implements IGroundElement
     private int attackAreaDistance = 1000;
     private Coordinate targetPosition;
 
-	public GroundElementAreaFire(GroundUnitInformation pwcgGroundUnitInformation, Coordinate targetPosition, IVehicle vehicle, AttackAreaType attackAreaType, int attackAreaDistance)
+	public GroundAspectAreaFire(GroundUnitInformation pwcgGroundUnitInformation, Coordinate targetPosition, IVehicle vehicle, AttackAreaType attackAreaType, int attackAreaDistance)
 	{
         this.pwcgGroundUnitInformation = pwcgGroundUnitInformation;
         this.vehicle = vehicle;
@@ -34,7 +34,7 @@ public class GroundElementAreaFire implements IGroundElement
 	}
 
 	@Override
-    public void createGroundUnitElement() throws PWCGException 
+    public void createGroundUnitAspect() throws PWCGException 
     {
         attackAreaTimer.setName(pwcgGroundUnitInformation.getName() + " AttackArea Timer");      
         attackAreaTimer.setDesc(pwcgGroundUnitInformation.getName() + " AttackArea Timer");       

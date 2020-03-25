@@ -96,7 +96,7 @@ public class AirfieldTargetGroup extends GroundUnit
     }
 
     @Override
-    protected void addElements()
+    protected void addAspects()
     {
         // No elements for parked trucks
     }

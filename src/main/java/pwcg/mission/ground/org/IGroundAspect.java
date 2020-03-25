@@ -6,9 +6,9 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.mission.mcu.BaseFlightMcu;
 
-public interface IGroundElement
+public interface IGroundAspect
 {
-    void createGroundUnitElement() throws PWCGException;
+    void createGroundUnitAspect() throws PWCGException;
 
     void linkToNextElement(int targetIndex);
 

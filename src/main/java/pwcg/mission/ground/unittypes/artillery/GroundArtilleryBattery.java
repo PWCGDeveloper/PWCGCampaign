@@ -8,11 +8,11 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
-import pwcg.mission.ground.org.GroundElementAreaFire;
-import pwcg.mission.ground.org.GroundElementFactory;
+import pwcg.mission.ground.org.GroundAspectAreaFire;
+import pwcg.mission.ground.org.GroundAspectFactory;
 import pwcg.mission.ground.org.GroundUnit;
 import pwcg.mission.ground.org.GroundUnitNumberCalculator;
-import pwcg.mission.ground.org.IGroundElement;
+import pwcg.mission.ground.org.IGroundAspect;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.mcu.AttackAreaType;
 
@@ -70,19 +70,19 @@ public class GroundArtilleryBattery extends GroundUnit
     }
 
     @Override
-    protected void addElements() throws PWCGException
+    protected void addAspects() throws PWCGException
     {
-        IGroundElement areaFire = GroundElementFactory.createGroundElementAreaFire(pwcgGroundUnitInformation, pwcgGroundUnitInformation.getDestination(), vehicle, AttackAreaType.INDIRECT, ARTY_ATTACK_AREA_RADIUS);
+        IGroundAspect areaFire = GroundAspectFactory.createGroundAspectAreaFire(pwcgGroundUnitInformation, pwcgGroundUnitInformation.getDestination(), vehicle, AttackAreaType.INDIRECT, ARTY_ATTACK_AREA_RADIUS);
         this.addGroundElement(areaFire);        
     }
 
     public void setTargetPosition(Coordinate targetPosition)
     {
-        for (IGroundElement groundElement : this.getGroundElements())
+        for (IGroundAspect groundElement : this.getGroundElements())
         {
-            if (groundElement instanceof GroundElementAreaFire)
+            if (groundElement instanceof GroundAspectAreaFire)
             {
-                GroundElementAreaFire areaFireElement = (GroundElementAreaFire)groundElement;
+                GroundAspectAreaFire areaFireElement = (GroundAspectAreaFire)groundElement;
                 areaFireElement.setTargetPosition(targetPosition);
             }
         }

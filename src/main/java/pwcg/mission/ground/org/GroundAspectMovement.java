@@ -12,7 +12,7 @@ import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuValidator;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class GroundElementMovement implements IGroundElement
+public class GroundAspectMovement implements IGroundAspect
 {
     private McuTimer waypointTimer = null;
     private McuWaypoint waypoint;
@@ -20,14 +20,14 @@ public class GroundElementMovement implements IGroundElement
     private GroundUnitInformation pwcgGroundUnitInformation;
     private IVehicle vehicle;
 
-    public GroundElementMovement(GroundUnitInformation pwcgGroundUnitInformation, IVehicle vehicle, int unitSpeed) 
+    public GroundAspectMovement(GroundUnitInformation pwcgGroundUnitInformation, IVehicle vehicle, int unitSpeed) 
     {
         this.pwcgGroundUnitInformation = pwcgGroundUnitInformation;
         this.vehicle = vehicle;
         this.unitSpeed = unitSpeed;
     }
 
-    public void createGroundUnitElement()  
+    public void createGroundUnitAspect()  
     {
         waypoint = WaypointFactory.createMoveToWaypointType();
         waypoint.setTriggerArea(0);

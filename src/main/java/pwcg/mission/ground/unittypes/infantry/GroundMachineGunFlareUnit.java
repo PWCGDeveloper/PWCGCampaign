@@ -7,9 +7,9 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
-import pwcg.mission.ground.org.GroundElementFactory;
+import pwcg.mission.ground.org.GroundAspectFactory;
 import pwcg.mission.ground.org.GroundUnitNumberCalculator;
-import pwcg.mission.ground.org.IGroundElement;
+import pwcg.mission.ground.org.IGroundAspect;
 import pwcg.mission.mcu.McuFlare;
 import pwcg.mission.mcu.group.FlareSequence;
 
@@ -56,9 +56,9 @@ public class GroundMachineGunFlareUnit extends GroundMachineGunUnit
     }
 
     @Override
-    protected void addElements() throws PWCGException
+    protected void addAspects() throws PWCGException
     {
-        IGroundElement areaFire = GroundElementFactory.createGroundElementDirectFire(pwcgGroundUnitInformation, vehicle);
+        IGroundAspect areaFire = GroundAspectFactory.createGroundAspectDirectFire(pwcgGroundUnitInformation, vehicle);
         this.addGroundElement(areaFire);           
     }
 

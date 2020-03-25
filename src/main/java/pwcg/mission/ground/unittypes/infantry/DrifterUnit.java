@@ -70,7 +70,7 @@ public class DrifterUnit extends GroundUnit
     }
 
     @Override
-    protected void addElements()
+    protected void addAspects()
     {
         // No drifter elements
     }

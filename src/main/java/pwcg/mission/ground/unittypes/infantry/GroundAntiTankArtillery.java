@@ -9,10 +9,10 @@ import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
-import pwcg.mission.ground.org.GroundElementFactory;
+import pwcg.mission.ground.org.GroundAspectFactory;
 import pwcg.mission.ground.org.GroundUnit;
 import pwcg.mission.ground.org.GroundUnitNumberCalculator;
-import pwcg.mission.ground.org.IGroundElement;
+import pwcg.mission.ground.org.IGroundAspect;
 import pwcg.mission.ground.vehicle.VehicleClass;
 
 public class GroundAntiTankArtillery extends GroundUnit
@@ -77,9 +77,9 @@ public class GroundAntiTankArtillery extends GroundUnit
     }
 
     @Override
-    protected void addElements() throws PWCGException
+    protected void addAspects() throws PWCGException
     {
-        IGroundElement areaFire = GroundElementFactory.createGroundElementDirectFire(pwcgGroundUnitInformation, vehicle);
+        IGroundAspect areaFire = GroundAspectFactory.createGroundAspectDirectFire(pwcgGroundUnitInformation, vehicle);
         this.addGroundElement(areaFire);         
     }
 }	

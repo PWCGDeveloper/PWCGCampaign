@@ -32,12 +32,12 @@ public abstract class GroundUnit implements IGroundUnit
 
     private VehicleClass vehicleClass;
 
-    private List<IGroundElement> groundElements = new ArrayList<>();
+    private List<IGroundAspect> groundElements = new ArrayList<>();
     private McuTimer spawnTimer = new McuTimer();
     private List <McuSpawn> spawners = new ArrayList<>();
     
     abstract protected List<Coordinate> createSpawnerLocations() throws PWCGException;
-    abstract protected void addElements() throws PWCGException;
+    abstract protected void addAspects() throws PWCGException;
 
     public GroundUnit(VehicleClass vehicleClass, GroundUnitInformation pwcgGroundUnitInformation) 
     {
@@ -50,14 +50,14 @@ public abstract class GroundUnit implements IGroundUnit
     {
         createSpawns();
         createTargetAssociations();
-        addElements();
+        addAspects();
         linkElements();
     }
 
     private void linkElements() throws PWCGException 
     {
-        IGroundElement previousElement = null;
-        for (IGroundElement element : groundElements)
+        IGroundAspect previousElement = null;
+        for (IGroundAspect element : groundElements)
         {
             if (previousElement == null)
             {
@@ -128,7 +128,7 @@ public abstract class GroundUnit implements IGroundUnit
         {
             spawn.write(writer);
         }
-        for (IGroundElement groundElement : groundElements)
+        for (IGroundAspect groundElement : groundElements)
         {
             groundElement.write(writer);
         }
@@ -195,12 +195,12 @@ public abstract class GroundUnit implements IGroundUnit
         return spawnTimer;
     }
 
-    protected List<IGroundElement> getGroundElements()
+    protected List<IGroundAspect> getGroundElements()
     {
         return groundElements;
     }
     
-    protected void addGroundElement(IGroundElement groundElement)
+    protected void addGroundElement(IGroundAspect groundElement)
     {
         groundElements.add(groundElement);
     }

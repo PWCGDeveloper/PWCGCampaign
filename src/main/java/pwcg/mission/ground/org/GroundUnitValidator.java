@@ -54,7 +54,7 @@ public class GroundUnitValidator
 
     private void validateElements() throws PWCGException
     {
-        for (IGroundElement element : groundUnit.getGroundElements())
+        for (IGroundAspect element : groundUnit.getGroundElements())
         {
             element.validate();
         }
@@ -62,8 +62,8 @@ public class GroundUnitValidator
 
     private void validateElementLinkage() throws PWCGException
     {
-        IGroundElement previousElement = null;
-        for (IGroundElement element : groundUnit.getGroundElements())
+        IGroundAspect previousElement = null;
+        for (IGroundAspect element : groundUnit.getGroundElements())
         {
             if (previousElement == null)
             {

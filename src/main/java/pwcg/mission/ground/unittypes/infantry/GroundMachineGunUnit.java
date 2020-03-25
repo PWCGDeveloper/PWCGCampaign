@@ -8,10 +8,10 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
-import pwcg.mission.ground.org.GroundElementFactory;
+import pwcg.mission.ground.org.GroundAspectFactory;
 import pwcg.mission.ground.org.GroundUnit;
 import pwcg.mission.ground.org.GroundUnitNumberCalculator;
-import pwcg.mission.ground.org.IGroundElement;
+import pwcg.mission.ground.org.IGroundAspect;
 import pwcg.mission.ground.vehicle.VehicleClass;
 
 public class GroundMachineGunUnit extends GroundUnit
@@ -69,9 +69,9 @@ public class GroundMachineGunUnit extends GroundUnit
     }
 
     @Override
-    protected void addElements() throws PWCGException
+    protected void addAspects() throws PWCGException
     {
-        IGroundElement directFire = GroundElementFactory.createGroundElementDirectFire(pwcgGroundUnitInformation, vehicle);
+        IGroundAspect directFire = GroundAspectFactory.createGroundAspectDirectFire(pwcgGroundUnitInformation, vehicle);
         this.addGroundElement(directFire);         
     }
 }	

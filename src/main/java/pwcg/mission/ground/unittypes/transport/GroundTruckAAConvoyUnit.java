@@ -8,10 +8,10 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
-import pwcg.mission.ground.org.GroundElementFactory;
+import pwcg.mission.ground.org.GroundAspectFactory;
 import pwcg.mission.ground.org.GroundUnit;
 import pwcg.mission.ground.org.GroundUnitNumberCalculator;
-import pwcg.mission.ground.org.IGroundElement;
+import pwcg.mission.ground.org.IGroundAspect;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.mcu.AttackAreaType;
 
@@ -72,13 +72,13 @@ public class GroundTruckAAConvoyUnit extends GroundUnit
     }
 
     @Override
-    protected void addElements() throws PWCGException
+    protected void addAspects() throws PWCGException
     {       
-        IGroundElement areaFire = GroundElementFactory.createGroundElementAreaFire(pwcgGroundUnitInformation, pwcgGroundUnitInformation.getPosition(), vehicle, AttackAreaType.AIR_TARGETS, TRUCK_AA_ATTACK_AREA);
+        IGroundAspect areaFire = GroundAspectFactory.createGroundAspectAreaFire(pwcgGroundUnitInformation, pwcgGroundUnitInformation.getPosition(), vehicle, AttackAreaType.AIR_TARGETS, TRUCK_AA_ATTACK_AREA);
         this.addGroundElement(areaFire);         
 
         int unitSpeed = 10;
-        IGroundElement movement = GroundElementFactory.createGroundElementMovement(pwcgGroundUnitInformation, vehicle, unitSpeed);
+        IGroundAspect movement = GroundAspectFactory.createGroundAspectMovement(pwcgGroundUnitInformation, vehicle, unitSpeed);
         this.addGroundElement(movement);         
     }
 }	

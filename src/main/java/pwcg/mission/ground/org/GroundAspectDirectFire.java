@@ -12,20 +12,20 @@ import pwcg.mission.mcu.McuAttack;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuValidator;
 
-public class GroundElementDirectFire implements IGroundElement
+public class GroundAspectDirectFire implements IGroundAspect
 {
     private McuTimer attackTimer = new McuTimer();
     private McuAttack attackEntity = new McuAttack();
     private GroundUnitInformation pwcgGroundUnitInformation;
     private IVehicle vehicle;
 
-    public GroundElementDirectFire(GroundUnitInformation pwcgGroundUnitInformation, IVehicle vehicle) 
+    public GroundAspectDirectFire(GroundUnitInformation pwcgGroundUnitInformation, IVehicle vehicle) 
     {
         this.pwcgGroundUnitInformation = pwcgGroundUnitInformation;
         this.vehicle = vehicle;
     }
 
-    public void createGroundUnitElement() 
+    public void createGroundUnitAspect() 
     {
         attackTimer.setName(pwcgGroundUnitInformation.getName() + " Attack Timer");      
         attackTimer.setDesc(pwcgGroundUnitInformation.getName() + " Attack Timer");       
