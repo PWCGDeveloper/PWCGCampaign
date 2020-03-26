@@ -19,5 +19,4 @@ public interface IGroundAspect
     void write(BufferedWriter writer) throws PWCGIOException;
     
     void validate() throws PWCGException;
-
 }

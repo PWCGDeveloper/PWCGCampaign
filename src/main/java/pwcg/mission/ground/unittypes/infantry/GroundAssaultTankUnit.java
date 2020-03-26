@@ -5,14 +5,11 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
-import pwcg.mission.ground.org.GroundAspectFactory;
 import pwcg.mission.ground.org.GroundUnit;
 import pwcg.mission.ground.org.GroundUnitNumberCalculator;
-import pwcg.mission.ground.org.IGroundAspect;
 import pwcg.mission.ground.vehicle.VehicleClass;
 
 public class GroundAssaultTankUnit extends GroundUnit
@@ -23,33 +20,18 @@ public class GroundAssaultTankUnit extends GroundUnit
     }   
 
     @Override
-    protected List<Coordinate> createSpawnerLocations() throws PWCGException 
+    public void createGroundUnit() throws PWCGException 
     {
-        List<Coordinate> spawnerLocations = new ArrayList<>();
-        int numTanks = calcNumUnits();
+        super.createSpawnTimer();
+        int numvehicles = calcNumUnits();
+        List<Coordinate> vehicleStartPositions = createVehicleStartPositions(numvehicles);
+        super.createVehicles(vehicleStartPositions);
+        List<Coordinate> destinations =  createVehicleDestinationPositions(numvehicles);
+        addAspects(destinations);
+        super.linkElements();
+    }
 
-        // Face towards enemy
-        double tankFacingAngle = MathUtils.calcAngle(pwcgGroundUnitInformation.getPosition(), pwcgGroundUnitInformation.getDestination());
-        Orientation tankOrient = new Orientation();
-        tankOrient.setyOri(tankFacingAngle);
-        
-        // Locate the tanks such that startCoords is the middle of the line
-        double startLocationOrientation = MathUtils.adjustAngle (tankFacingAngle, 270);             
-        double tankSpacing = 75.0;
-        Coordinate tankCoords = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getPosition(), startLocationOrientation, ((numTanks * tankSpacing) / 2));       
-        
-        // Direction in which subsequent units will be placed
-        double placementOrientation = MathUtils.adjustAngle (tankFacingAngle, 90.0);        
-        
-		for (int i = 0; i < numTanks; ++i)
-		{	
-            spawnerLocations.add(tankCoords);
-			tankCoords = MathUtils.calcNextCoord(tankCoords, placementOrientation, tankSpacing);
-		}
-        return spawnerLocations;		
-	}
-
-    protected int calcNumUnits() throws PWCGException
+    private int calcNumUnits() throws PWCGException
     {
         if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
         {
@@ -71,15 +53,38 @@ public class GroundAssaultTankUnit extends GroundUnit
         throw new PWCGException ("No unit size provided for ground unit");
     }
 
-    @Override
-    protected void addAspects() throws PWCGException
-    {       
-        IGroundAspect areaFire = GroundAspectFactory.createGroundAspectDirectFire(pwcgGroundUnitInformation, vehicle);
-        this.addGroundElement(areaFire);         
+    private List<Coordinate> createVehicleStartPositions(int numvehicles) throws PWCGException 
+    {
+        return createVehiclePositions(pwcgGroundUnitInformation.getPosition().copy(), numvehicles);        
+    }
 
-        int unitSpeed = 6;
-        IGroundAspect movement = GroundAspectFactory.createGroundAspectMovement(pwcgGroundUnitInformation, vehicle, unitSpeed);
-        this.addGroundElement(movement);         
+    private List<Coordinate> createVehicleDestinationPositions(int numvehicles) throws PWCGException 
+    {
+        return createVehiclePositions(pwcgGroundUnitInformation.getDestination(), numvehicles);
+    }
+
+    private List<Coordinate> createVehiclePositions(Coordinate firstVehicleCoordinate, int numvehicles) throws PWCGException 
+    {
+        double tankFacingAngle = MathUtils.calcAngle(pwcgGroundUnitInformation.getPosition(), pwcgGroundUnitInformation.getDestination());
+        double placementOrientation = MathUtils.adjustAngle (tankFacingAngle, 90.0);        
+        
+        double tankSpacing = 75.0;
+        Coordinate tankCoords = firstVehicleCoordinate.copy();
+        List<Coordinate> vehicleLocations = new ArrayList<>();
+		for (int i = 0; i < numvehicles; ++i)
+		{	
+            vehicleLocations.add(tankCoords);
+			tankCoords = MathUtils.calcNextCoord(tankCoords, placementOrientation, tankSpacing);
+		}
+        return vehicleLocations;		
+	}
+
+    private void addAspects(List<Coordinate> destinations) throws PWCGException
+    {       
+        super.addDirectFireAspect();
+        
+        int unitSpeed = 10;
+        super.addMovementAspect(unitSpeed, destinations);
     }
 }	
 

@@ -6,9 +6,7 @@ import java.util.List;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.ground.GroundUnitInformation;
-import pwcg.mission.ground.org.GroundAspectFactory;
 import pwcg.mission.ground.org.GroundUnit;
-import pwcg.mission.ground.org.IGroundAspect;
 import pwcg.mission.ground.vehicle.VehicleClass;
 
 public class GroundTrainUnit extends GroundUnit
@@ -19,19 +17,28 @@ public class GroundTrainUnit extends GroundUnit
     }   
 
     @Override
-    protected List<Coordinate> createSpawnerLocations() throws PWCGException 
+    public void createGroundUnit() throws PWCGException 
     {
-        List<Coordinate> spawnerLocations = new ArrayList<>();
-        spawnerLocations.add(pwcgGroundUnitInformation.getPosition().copy());
-        return spawnerLocations;        
+        super.createSpawnTimer();        
+        List<Coordinate> vehicleStartPositions = createVehicleStartPositions();
+        super.createVehicles(vehicleStartPositions);
+        addAspects();
+        super.linkElements();
     }
 
-    @Override
+    protected List<Coordinate> createVehicleStartPositions() throws PWCGException 
+    {
+        List<Coordinate> vehicleStartPositions = new ArrayList<>();
+        vehicleStartPositions.add(pwcgGroundUnitInformation.getPosition().copy());
+        return vehicleStartPositions;        
+    }
+
     protected void addAspects() throws PWCGException
-    {       
+    {        
         int unitSpeed = 12;
-        IGroundAspect movement = GroundAspectFactory.createGroundAspectMovement(pwcgGroundUnitInformation, vehicle, unitSpeed);
-        this.addGroundElement(movement);        
+        List<Coordinate> destinations = new ArrayList<>();
+        destinations.add(pwcgGroundUnitInformation.getDestination());
+        super.addMovementAspect(unitSpeed, destinations);
     }
 }	
 

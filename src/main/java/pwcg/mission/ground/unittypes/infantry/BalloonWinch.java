@@ -81,7 +81,7 @@ public class BalloonWinch
 		winchDownWP.setPriority(WaypointPriority.PRIORITY_HIGH);	
 		winchDownWP.setSpeed(10);		
 		winchDownWP.setPosition(winchDownPos);
-        winchDownWP.setObject(balloonUnit.getVehicle().getEntity().getIndex());
+        winchDownWP.setObject(balloonUnit.getVehicles().get(0).getEntity().getIndex());
 	}
 
 	private void createGroundTargetAssociations()

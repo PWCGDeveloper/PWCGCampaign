@@ -9,12 +9,9 @@ import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
-import pwcg.mission.ground.org.GroundAspectFactory;
 import pwcg.mission.ground.org.GroundUnit;
 import pwcg.mission.ground.org.GroundUnitNumberCalculator;
-import pwcg.mission.ground.org.IGroundAspect;
 import pwcg.mission.ground.vehicle.VehicleClass;
-import pwcg.mission.mcu.AttackAreaType;
 
 public class DrifterAAAUnit extends GroundUnit
 {
@@ -26,7 +23,16 @@ public class DrifterAAAUnit extends GroundUnit
     }   
 
     @Override
-    protected List<Coordinate> createSpawnerLocations() throws PWCGException 
+    public void createGroundUnit() throws PWCGException
+    {
+        super.createSpawnTimer();
+        List<Coordinate> vehicleStartPositions = createVehicleStartPositions();
+        super.createVehicles(vehicleStartPositions);
+        addAspects();
+        super.linkElements();
+    }
+
+    private List<Coordinate> createVehicleStartPositions() throws PWCGException 
     {
         List<Coordinate> spawnerLocations = new ArrayList<>();
 
@@ -53,7 +59,7 @@ public class DrifterAAAUnit extends GroundUnit
         return spawnerLocations;       
     }
 
-    protected int calcNumUnits() throws PWCGException
+    private int calcNumUnits() throws PWCGException
     {
         if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
         {
@@ -65,10 +71,8 @@ public class DrifterAAAUnit extends GroundUnit
         }
     }
 
-    @Override
-    protected void addAspects() throws PWCGException
+    private void addAspects() throws PWCGException
     {
-        IGroundAspect areaFire = GroundAspectFactory.createGroundAspectAreaFire(pwcgGroundUnitInformation, pwcgGroundUnitInformation.getPosition(), vehicle, AttackAreaType.AIR_TARGETS, DRIFTER_AA_ATTACK_AREA);
-        this.addGroundElement(areaFire);        
+        super.addAAAFireAspect(DRIFTER_AA_ATTACK_AREA);
     }
 }

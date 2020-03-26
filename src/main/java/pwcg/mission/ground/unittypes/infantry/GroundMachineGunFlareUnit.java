@@ -1,15 +1,15 @@
 package pwcg.mission.ground.unittypes.infantry;
 
 import java.io.BufferedWriter;
+import java.util.List;
 
 import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
-import pwcg.mission.ground.org.GroundAspectFactory;
 import pwcg.mission.ground.org.GroundUnitNumberCalculator;
-import pwcg.mission.ground.org.IGroundAspect;
 import pwcg.mission.mcu.McuFlare;
 import pwcg.mission.mcu.group.FlareSequence;
 
@@ -24,8 +24,16 @@ public class GroundMachineGunFlareUnit extends GroundMachineGunUnit
         this.triggeringFlight = triggeringFlight;
     }   
 
-
     @Override
+    public void createGroundUnit() throws PWCGException
+    {
+        super.createSpawnTimer();
+        List<Coordinate> vehicleStartPositions = createVehicleStartPositions();
+        super.createVehicles(vehicleStartPositions);
+        addAspects();
+        createFlares();
+    }
+
     protected int calcNumUnits() throws PWCGException
     {
         if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
@@ -48,18 +56,9 @@ public class GroundMachineGunFlareUnit extends GroundMachineGunUnit
         throw new PWCGException ("No unit size provided for ground unit");
     }
 
-    @Override
-    public void createGroundUnit() throws PWCGException
-    {
-        super.createGroundUnit();
-        createFlares();
-    }
-
-    @Override
     protected void addAspects() throws PWCGException
     {
-        IGroundAspect areaFire = GroundAspectFactory.createGroundAspectDirectFire(pwcgGroundUnitInformation, vehicle);
-        this.addGroundElement(areaFire);           
+        super.addDirectFireAspect();
     }
 
     public void createFlares() throws PWCGException 
@@ -71,7 +70,7 @@ public class GroundMachineGunFlareUnit extends GroundMachineGunUnit
         }
         
         flares = new FlareSequence();
-        flares.setFlare(triggeringFlight, pwcgGroundUnitInformation.getPosition().copy(), flareColor, vehicle.getEntity().getIndex());
+        flares.setFlare(triggeringFlight, pwcgGroundUnitInformation.getPosition().copy(), flareColor, super.getVehicles().get(0).getEntity().getIndex());
     }
 
     @Override

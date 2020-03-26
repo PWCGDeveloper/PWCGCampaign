@@ -21,7 +21,15 @@ public class DrifterUnit extends GroundUnit
     }   
 
     @Override
-    protected List<Coordinate> createSpawnerLocations() throws PWCGException 
+    public void createGroundUnit() throws PWCGException
+    {
+        super.createSpawnTimer();
+        List<Coordinate> vehicleStartPositions = createVehicleStartPositions();
+        super.createVehicles(vehicleStartPositions);
+        super.linkElements();
+    }
+
+    private List<Coordinate> createVehicleStartPositions() throws PWCGException 
     {
         List<Coordinate> spawnerLocations = new ArrayList<>();
 
@@ -47,7 +55,7 @@ public class DrifterUnit extends GroundUnit
         return spawnerLocations;       
     }
 
-    protected int calcNumUnits() throws PWCGException
+    private int calcNumUnits() throws PWCGException
     {
         if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
         {
@@ -67,11 +75,5 @@ public class DrifterUnit extends GroundUnit
         }
         
         throw new PWCGException ("No unit size provided for ground unit");
-    }
-
-    @Override
-    protected void addAspects()
-    {
-        // No drifter elements
     }
 }

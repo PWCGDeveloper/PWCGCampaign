@@ -17,9 +17,16 @@ public class SearchLightUnit extends GroundUnit
         super(VehicleClass.SearchLight, pwcgGroundUnitInformation);
     }   
 
-
     @Override
-    protected List<Coordinate> createSpawnerLocations() throws PWCGException 
+    public void createGroundUnit() throws PWCGException 
+    {
+        super.createSpawnTimer();
+        List<Coordinate> vehicleStartPositions = createVehicleStartPositions();
+        super.createVehicles(vehicleStartPositions);
+        super.linkElements();
+    }
+
+    protected List<Coordinate> createVehicleStartPositions() throws PWCGException 
     {
         List<Coordinate> spawnerLocations = new ArrayList<>();
         
@@ -58,11 +65,5 @@ public class SearchLightUnit extends GroundUnit
         {
             return 2;
         }
-    }
-
-    @Override
-    protected void addAspects()
-    {
-        // No elements for search light
     }
 }

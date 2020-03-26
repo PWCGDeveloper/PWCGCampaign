@@ -9,10 +9,8 @@ import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
-import pwcg.mission.ground.org.GroundAspectFactory;
 import pwcg.mission.ground.org.GroundUnit;
 import pwcg.mission.ground.org.GroundUnitNumberCalculator;
-import pwcg.mission.ground.org.IGroundAspect;
 import pwcg.mission.ground.vehicle.VehicleClass;
 
 public class GroundAntiTankArtillery extends GroundUnit
@@ -23,7 +21,16 @@ public class GroundAntiTankArtillery extends GroundUnit
     }   
 
     @Override
-    protected List<Coordinate> createSpawnerLocations() throws PWCGException 
+    public void createGroundUnit() throws PWCGException
+    {
+        super.createSpawnTimer();
+        List<Coordinate> vehicleStartPositions = createVehicleStartPositions();
+        super.createVehicles(vehicleStartPositions);
+        addAspects();
+        super.linkElements();
+    }
+
+    private List<Coordinate> createVehicleStartPositions() throws PWCGException 
 	{
         List<Coordinate> spawnerLocations = new ArrayList<>();
 
@@ -54,7 +61,7 @@ public class GroundAntiTankArtillery extends GroundUnit
         return spawnerLocations;       
 	}	
 
-    protected int calcNumUnits() throws PWCGException
+    private int calcNumUnits() throws PWCGException
     {
         if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
         {
@@ -76,10 +83,8 @@ public class GroundAntiTankArtillery extends GroundUnit
         throw new PWCGException ("No unit size provided for ground unit");
     }
 
-    @Override
-    protected void addAspects() throws PWCGException
+    private void addAspects() throws PWCGException
     {
-        IGroundAspect areaFire = GroundAspectFactory.createGroundAspectDirectFire(pwcgGroundUnitInformation, vehicle);
-        this.addGroundElement(areaFire);         
+        super.addDirectFireAspect();
     }
 }	

@@ -9,24 +9,30 @@ import pwcg.core.utils.MathUtils;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.org.GroundAspectAreaFire;
-import pwcg.mission.ground.org.GroundAspectFactory;
 import pwcg.mission.ground.org.GroundUnit;
+import pwcg.mission.ground.org.GroundUnitElement;
 import pwcg.mission.ground.org.GroundUnitNumberCalculator;
 import pwcg.mission.ground.org.IGroundAspect;
 import pwcg.mission.ground.vehicle.VehicleClass;
-import pwcg.mission.mcu.AttackAreaType;
 
 public class GroundArtilleryBattery extends GroundUnit
 {
-    static private int ARTY_ATTACK_AREA_RADIUS = 500;
-
     public GroundArtilleryBattery(GroundUnitInformation pwcgGroundUnitInformation)
     {
         super(VehicleClass.ArtilleryHowitzer, pwcgGroundUnitInformation);
     }   
 
     @Override
-    protected List<Coordinate> createSpawnerLocations() throws PWCGException 
+    public void createGroundUnit() throws PWCGException 
+    {
+        super.createSpawnTimer();
+        List<Coordinate> vehicleStartPositions = createVehicleStartPositions();
+        super.createVehicles(vehicleStartPositions);
+        addAspects();
+        super.linkElements();
+    }
+
+    private List<Coordinate> createVehicleStartPositions() throws PWCGException 
     {
         List<Coordinate> spawnerLocations = new ArrayList<>();
 
@@ -47,7 +53,7 @@ public class GroundArtilleryBattery extends GroundUnit
         return spawnerLocations;
     }
 
-    protected int calcNumUnits() throws PWCGException
+    private int calcNumUnits() throws PWCGException
     {
         if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
         {
@@ -69,24 +75,24 @@ public class GroundArtilleryBattery extends GroundUnit
         throw new PWCGException ("No unit size provided for ground unit");
     }
 
-    @Override
-    protected void addAspects() throws PWCGException
+    private void addAspects() throws PWCGException
     {
-        IGroundAspect areaFire = GroundAspectFactory.createGroundAspectAreaFire(pwcgGroundUnitInformation, pwcgGroundUnitInformation.getDestination(), vehicle, AttackAreaType.INDIRECT, ARTY_ATTACK_AREA_RADIUS);
-        this.addGroundElement(areaFire);        
-    }
+        super.addIndirectFireAspect();
+     }
 
     public void setTargetPosition(Coordinate targetPosition)
     {
-        for (IGroundAspect groundElement : this.getGroundElements())
+        for (GroundUnitElement groundElement : this.getGroundElements())
         {
-            if (groundElement instanceof GroundAspectAreaFire)
+            for (IGroundAspect aspect : groundElement.getAspectsOfGroundUnit())
             {
-                GroundAspectAreaFire areaFireElement = (GroundAspectAreaFire)groundElement;
-                areaFireElement.setTargetPosition(targetPosition);
+                if (aspect instanceof GroundAspectAreaFire)
+                {
+                    GroundAspectAreaFire areaFireElement = (GroundAspectAreaFire)aspect;
+                    areaFireElement.setTargetPosition(targetPosition);
+                }
             }
         }
-        
     }
 }	
 

@@ -12,6 +12,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.ground.org.IGroundUnit;
+import pwcg.mission.ground.vehicle.IVehicle;
 
 public class FlightPlanes implements IFlightPlanes
 {
@@ -141,7 +142,10 @@ public class FlightPlanes implements IFlightPlanes
         {
             if (isAggressivePlane(plane))
             {
-                plane.addPlaneTarget(targetGroundUnit.getVehicle().getEntity().getIndex());
+                for (IVehicle vehicle : targetGroundUnit.getVehicles())
+                {
+                    plane.addPlaneTarget(vehicle.getEntity().getIndex());
+                }
             }
         }
     }

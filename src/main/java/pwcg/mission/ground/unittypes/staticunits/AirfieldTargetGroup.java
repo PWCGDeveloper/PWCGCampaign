@@ -30,6 +30,15 @@ public class AirfieldTargetGroup extends GroundUnit
         this.targetAirfield = targetAirfield;
 	}
 
+    @Override
+    public void createGroundUnit() throws PWCGException
+    {
+        super.createSpawnTimer();
+        List<Coordinate> vehicleStartPositions = createVehicleStartPositions();
+        super.createVehicles(vehicleStartPositions);
+        super.linkElements();
+    }
+
     public IAirfield getAirfield()
     {
         return targetAirfield;
@@ -41,7 +50,7 @@ public class AirfieldTargetGroup extends GroundUnit
         this.targetAirfield = airfieldManager.getAirfieldFinder().findClosestAirfield(pwcgGroundUnitInformation.getPosition());
 	}
 
-    protected List<Coordinate> createSpawnerLocations() throws PWCGException 
+    private List<Coordinate> createVehicleStartPositions() throws PWCGException 
     {
         List<Coordinate> spawnerLocations = new ArrayList<>();
 
@@ -93,12 +102,6 @@ public class AirfieldTargetGroup extends GroundUnit
         Coordinate truckLocation = MathUtils.calcNextCoord(initialTruckLocation, pwcgGroundUnitInformation.getOrientation().getyOri(), (10 * truckNumber));
         
         return truckLocation;
-    }
-
-    @Override
-    protected void addAspects()
-    {
-        // No elements for parked trucks
     }
 }	
 

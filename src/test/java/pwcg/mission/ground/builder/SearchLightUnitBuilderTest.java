@@ -58,7 +58,7 @@ public class SearchLightUnitBuilderTest
             assert (groundUnit.getCountry().getCountry() == Country.RUSSIA);
             if (groundUnit.getVehicleClass() == VehicleClass.SearchLight)
             {
-                assert (groundUnit.getSpawners().size() == 2);
+                assert (groundUnit.getVehicles().size() == 2);
             }
             else
             {
@@ -81,7 +81,7 @@ public class SearchLightUnitBuilderTest
             assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
             if (groundUnit.getVehicleClass() == VehicleClass.SearchLight)
             {
-                assert (groundUnit.getSpawners().size() == 1);
+                assert (groundUnit.getVehicles().size() == 1);
             }
             else
             {

@@ -7,12 +7,9 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
-import pwcg.mission.ground.org.GroundAspectFactory;
 import pwcg.mission.ground.org.GroundUnit;
 import pwcg.mission.ground.org.GroundUnitNumberCalculator;
-import pwcg.mission.ground.org.IGroundAspect;
 import pwcg.mission.ground.vehicle.VehicleClass;
-import pwcg.mission.mcu.AttackAreaType;
 
 public class GroundAAMachineGunBattery extends GroundUnit
 {
@@ -24,7 +21,16 @@ public class GroundAAMachineGunBattery extends GroundUnit
     }
 
     @Override
-    protected List<Coordinate> createSpawnerLocations() throws PWCGException 
+    public void createGroundUnit() throws PWCGException 
+    {
+        super.createSpawnTimer();
+        List<Coordinate> vehicleStartPositions = createVehicleStartPositions();
+        super.createVehicles(vehicleStartPositions);
+        addAspects();
+        super.linkElements();
+    }
+
+    protected List<Coordinate> createVehicleStartPositions() throws PWCGException 
     {
         List<Coordinate> spawnerLocations = new ArrayList<>();
         
@@ -82,10 +88,8 @@ public class GroundAAMachineGunBattery extends GroundUnit
         throw new PWCGException ("No unit size provided for ground unit");
     }
 
-    @Override
     protected void addAspects() throws PWCGException
     {
-        IGroundAspect areaFire = GroundAspectFactory.createGroundAspectAreaFire(pwcgGroundUnitInformation, pwcgGroundUnitInformation.getPosition(), vehicle, AttackAreaType.AIR_TARGETS, AA_MG_ATTACK_AREA);
-        this.addGroundElement(areaFire);        
+        super.addAAAFireAspect( AA_MG_ATTACK_AREA);
     }
 }

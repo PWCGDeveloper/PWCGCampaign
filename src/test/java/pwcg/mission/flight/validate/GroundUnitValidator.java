@@ -60,7 +60,7 @@ public class GroundUnitValidator
         {
             for (IGroundUnit groundUnit : linkedUnit.getGroundUnits())
             {
-                assert(groundUnit.getSpawners().size() == 1);
+                assert(groundUnit.getVehicles().size() == 1);
             }
         }
     }

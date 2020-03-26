@@ -9,7 +9,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.ground.vehicle.VehicleClass;
-import pwcg.mission.mcu.McuSpawn;
 import pwcg.mission.target.TargetType;
 
 public interface IGroundUnit
@@ -22,8 +21,7 @@ public interface IGroundUnit
 
     ICountry getCountry() throws PWCGException;
     String getName() throws PWCGException;
-    List <McuSpawn> getSpawners();
-    IVehicle getVehicle();
+    List<IVehicle> getVehicles();
     VehicleClass getVehicleClass();
     int getEntryPoint();
     GroundUnitType getGroundUnitType();

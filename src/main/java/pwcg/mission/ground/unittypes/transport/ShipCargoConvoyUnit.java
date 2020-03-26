@@ -5,14 +5,11 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
-import pwcg.mission.ground.org.GroundAspectFactory;
 import pwcg.mission.ground.org.GroundUnit;
 import pwcg.mission.ground.org.GroundUnitNumberCalculator;
-import pwcg.mission.ground.org.IGroundAspect;
 import pwcg.mission.ground.vehicle.VehicleClass;
 
 public class ShipCargoConvoyUnit extends GroundUnit
@@ -23,36 +20,18 @@ public class ShipCargoConvoyUnit extends GroundUnit
     }   
 
     @Override
-    protected void addAspects() throws PWCGException
-    {       
-        int unitSpeed = 5;
-        IGroundAspect movement = GroundAspectFactory.createGroundAspectMovement(pwcgGroundUnitInformation, vehicle, unitSpeed);
-        this.addGroundElement(movement);        
-    }
-
-    @Override
-    protected List<Coordinate> createSpawnerLocations() throws PWCGException 
+    public void createGroundUnit() throws PWCGException 
     {
-        List<Coordinate> spawnerLocations = new ArrayList<>();
-
-        int numShips = calcNumUnits();
-        
-        double shipMovementOrient = MathUtils.calcAngle(pwcgGroundUnitInformation.getPosition(), pwcgGroundUnitInformation.getDestination());
-        Orientation shipOrient = new Orientation();
-        shipOrient.setyOri(shipMovementOrient);
-        
-        double placementOrientation = MathUtils.adjustAngle (shipMovementOrient, -70);      
-        Coordinate shipCoords = pwcgGroundUnitInformation.getPosition().copy();
-
-        for (int i = 0; i < numShips; ++i)
-        {   
-            spawnerLocations.add(shipCoords);
-            shipCoords = MathUtils.calcNextCoord(shipCoords, placementOrientation, 1000.0);
-        }       
-        return spawnerLocations;        
+        super.createSpawnTimer();
+        int numvehicles = calcNumUnits();
+        List<Coordinate> vehicleStartPositions = createVehicleStartPositions(numvehicles);
+        super.createVehicles(vehicleStartPositions);
+        List<Coordinate> destinations =  createVehicleDestinationPositions(numvehicles);
+        addAspects(destinations);
+        super.linkElements();
     }
 
-    protected int calcNumUnits() throws PWCGException
+    private int calcNumUnits() throws PWCGException
     {
         if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
         {
@@ -72,6 +51,36 @@ public class ShipCargoConvoyUnit extends GroundUnit
         }
         
         throw new PWCGException ("No unit size provided for ground unit");
+    }
+
+    private List<Coordinate> createVehicleStartPositions(int numvehicles) throws PWCGException 
+    {
+        return createVehiclePositions(pwcgGroundUnitInformation.getPosition().copy(), numvehicles);        
+    }
+
+    private List<Coordinate> createVehicleDestinationPositions(int numvehicles) throws PWCGException 
+    {
+        return createVehiclePositions(pwcgGroundUnitInformation.getDestination(), numvehicles);
+    }
+
+    private List<Coordinate> createVehiclePositions(Coordinate firstVehicleCoordinate, int numvehicles) throws PWCGException
+    {        
+        double shipMovementOrient = MathUtils.calcAngle(pwcgGroundUnitInformation.getPosition(), pwcgGroundUnitInformation.getDestination());        
+        double placementOrientation = MathUtils.adjustAngle (shipMovementOrient, -70);      
+        Coordinate shipCoords = firstVehicleCoordinate.copy();
+        List<Coordinate> vehicleLocations = new ArrayList<>();
+        for (int i = 0; i < numvehicles; ++i)
+        {   
+            vehicleLocations.add(shipCoords);
+            shipCoords = MathUtils.calcNextCoord(shipCoords, placementOrientation, 1000.0);
+        }       
+        return vehicleLocations;        
+    }
+
+    private void addAspects(List<Coordinate> destinations) throws PWCGException
+    {       
+        int unitSpeed = 5;
+        super.addMovementAspect(unitSpeed, destinations);
     }
 }	
 

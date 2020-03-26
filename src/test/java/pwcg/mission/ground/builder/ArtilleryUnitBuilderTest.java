@@ -58,8 +58,8 @@ public class ArtilleryUnitBuilderTest
             assert (groundUnit.getCountry().getCountry() == Country.RUSSIA);
             if (groundUnit.getVehicleClass() == VehicleClass.ArtilleryHowitzer)
             {
-                assert (groundUnit.getSpawners().size() >= 3);
-                assert (groundUnit.getSpawners().size() <= 6);
+                assert (groundUnit.getVehicles().size() >= 3);
+                assert (groundUnit.getVehicles().size() <= 6);
             }
             else
             {

@@ -52,8 +52,8 @@ public class AAAUnitBuilderTest
             assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
             if (groundUnit.getVehicleClass() == VehicleClass.AAAArtillery)
             {
-                assert (groundUnit.getSpawners().size() >= 1);
-                assert (groundUnit.getSpawners().size() <= 4);
+                assert (groundUnit.getVehicles().size() >= 1);
+                assert (groundUnit.getVehicles().size() <= 4);
             }
             else
             {
@@ -74,8 +74,8 @@ public class AAAUnitBuilderTest
             assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
             if (groundUnit.getVehicleClass() == VehicleClass.AAAMachineGun)
             {
-                assert (groundUnit.getSpawners().size() >= 2);
-                assert (groundUnit.getSpawners().size() <= 8);
+                assert (groundUnit.getVehicles().size() >= 2);
+                assert (groundUnit.getVehicles().size() <= 8);
             }
             else
             {
@@ -98,12 +98,12 @@ public class AAAUnitBuilderTest
             assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
             if (groundUnit.getVehicleClass() == VehicleClass.AAAArtillery)
             {
-                assert (groundUnit.getSpawners().size() >= 1);
-                assert (groundUnit.getSpawners().size() <= 4);
+                assert (groundUnit.getVehicles().size() >= 1);
+                assert (groundUnit.getVehicles().size() <= 4);
             }
             else if (groundUnit.getVehicleClass() == VehicleClass.SearchLight)
             {
-                assert (groundUnit.getSpawners().size() == 1);
+                assert (groundUnit.getVehicles().size() == 1);
             }
             else
             {

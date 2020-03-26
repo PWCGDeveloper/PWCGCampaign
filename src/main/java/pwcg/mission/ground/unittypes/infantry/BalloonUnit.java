@@ -22,7 +22,10 @@ public class BalloonUnit extends GroundUnit
     @Override
     public void createGroundUnit() throws PWCGException
     {
-        super.createGroundUnit();
+        super.createSpawnTimer();
+        List<Coordinate> vehicleStartPositions = createVehicleStartPositions();
+        super.createVehicles(vehicleStartPositions);
+        super.linkElements();
         createWinch();
     }
 
@@ -32,8 +35,7 @@ public class BalloonUnit extends GroundUnit
         winchUnit.createWinchUnit();
     }
 
-    @Override
-    protected List<Coordinate> createSpawnerLocations() throws PWCGException 
+    protected List<Coordinate> createVehicleStartPositions() throws PWCGException 
     {
         List<Coordinate> spawnerLocations = new ArrayList<>();        
         Coordinate balloonCoords = pwcgGroundUnitInformation.getPosition().copy();
@@ -46,11 +48,6 @@ public class BalloonUnit extends GroundUnit
     {       
         super.write(writer);
         winchUnit.write(writer);
-    }
-
-    protected void addAspects()
-    {       
-        // No balloon elements
     }
 }	
 

@@ -1,86 +1,99 @@
 package pwcg.mission.ground.org;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.mcu.McuSpawn;
 import pwcg.mission.mcu.McuValidator;
 
 public class GroundUnitValidator
-{    
+{
     private GroundUnit groundUnit;
-    
+
     public GroundUnitValidator(GroundUnit groundUnit)
     {
         this.groundUnit = groundUnit;
     }
-    
+
     public void validate() throws PWCGException
     {
         validateVehicle();
         validateSpawners();
-        validateElements();
+        validateAspects();
         validateElementLinkage();
     }
 
     private void validateVehicle() throws PWCGException
     {
-        if (groundUnit.getVehicle() == null)
+        if (groundUnit.getVehicles() == null)
         {
-            throw new PWCGException("GroundUnitSpawning: no vehicle created");
+            throw new PWCGException("GroundUnitValidator: no vehicle created");
         }
     }
 
     private void validateSpawners() throws PWCGException
     {
-        if (groundUnit.getSpawners().size() == 0)
+        for (GroundUnitElement groundUnitElement : groundUnit.getGroundElements())
         {
-            throw new PWCGException("GroundUnitSpawning: no spawners created");
-        }
-        
-        for (McuSpawn spawn : groundUnit.getSpawners())
-        {
-            if (!McuValidator.hasTarget(groundUnit.getSpawnTimer(), spawn.getIndex()))
+            if (groundUnitElement.getSpawn() == null)
             {
-                throw new PWCGException("GroundUnitSpawning: spawnTimer not linked to spawn");
+                throw new PWCGException("GroundUnitValidator: no spawners created");
             }
 
-            spawn.setObject(groundUnit.getVehicle().getEntity().getIndex());
-            if (!McuValidator.hasObject(spawn, groundUnit.getVehicle().getEntity().getIndex()))
+            if (!McuValidator.hasTarget(groundUnitElement.getSpawnTimer(), groundUnitElement.getSpawn().getIndex()))
             {
-                throw new PWCGException("GroundUnitSpawning: spawn not linked to vehicle");
+                throw new PWCGException("GroundUnitValidator: spawnTimer not linked to spawn");
+            }
+
+            if (!McuValidator.hasObject(groundUnitElement.getSpawn(), groundUnitElement.getVehicle().getEntity().getIndex()))
+            {
+                throw new PWCGException("GroundUnitValidator: spawn not linked to vehicle");
             }
         }
     }
-    
 
-    private void validateElements() throws PWCGException
+    private void validateAspects() throws PWCGException
     {
-        for (IGroundAspect element : groundUnit.getGroundElements())
+        for (GroundUnitElement groundUnitElement : groundUnit.getGroundElements())
         {
-            element.validate();
+            for (IGroundAspect aspect : groundUnitElement.getAspectsOfGroundUnit())
+            {
+                aspect.validate();
+            }
         }
     }
 
     private void validateElementLinkage() throws PWCGException
     {
-        IGroundAspect previousElement = null;
-        for (IGroundAspect element : groundUnit.getGroundElements())
+        for (GroundUnitElement groundUnitElement : groundUnit.getGroundElements())
         {
-            if (previousElement == null)
+            if (!McuValidator.hasTarget(groundUnit.getSpawnUnitTimer(), groundUnitElement.getEntryPoint()))
             {
-                if (!McuValidator.hasTarget(groundUnit.getSpawnTimer(), element.getEntryPoint()))
-                {
-                    throw new PWCGException("GroundUnit: spawn timer not linked to first element entry point");
-                }
+                throw new PWCGException("GroundUnit: spawn timer not linked to first element entry point");
             }
-            else
-            {
-                if (!McuValidator.hasTarget(previousElement.getEntryPointMcu(), element.getEntryPoint()))
-                {
-                    throw new PWCGException("GroundUnit: spawn timer not linked to first element entry point");
-                }
-            }
-            previousElement = element;
+            
+            validateElementAspects(groundUnitElement);
         }
     }
-}	
 
+    private void validateElementAspects(GroundUnitElement groundUnitElement) throws PWCGException
+    {
+      
+      IGroundAspect previousAspect = null;
+      for (IGroundAspect aspect : groundUnitElement.getAspectsOfGroundUnit())
+      {
+          if (previousAspect == null)
+          {
+              if (!McuValidator.hasTarget(groundUnitElement.getSpawnTimer(), aspect.getEntryPoint()))
+              {
+                  throw new PWCGException("GroundUnitElement: spawn timer not linked to first aspect");
+              }
+          }
+          else
+          {
+              if (!McuValidator.hasTarget(previousAspect.getEntryPointMcu(), aspect.getEntryPoint()))
+              {
+                  throw new PWCGException("GroundUnitElement: previous aspect not linked to next aspect");
+              }
+          }
+          previousAspect = aspect;
+      }
+  }        
+}

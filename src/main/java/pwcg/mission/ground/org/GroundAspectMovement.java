@@ -4,8 +4,8 @@ import java.io.BufferedWriter;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
+import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.waypoint.WaypointFactory;
-import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuTimer;
@@ -16,30 +16,30 @@ public class GroundAspectMovement implements IGroundAspect
 {
     private McuTimer waypointTimer = null;
     private McuWaypoint waypoint;
-    private int unitSpeed = 4;
-    private GroundUnitInformation pwcgGroundUnitInformation;
     private IVehicle vehicle;
+    private int unitSpeed = 4;
+    private Coordinate destination;
 
-    public GroundAspectMovement(GroundUnitInformation pwcgGroundUnitInformation, IVehicle vehicle, int unitSpeed) 
+    public GroundAspectMovement(IVehicle vehicle, int unitSpeed, Coordinate destination) 
     {
-        this.pwcgGroundUnitInformation = pwcgGroundUnitInformation;
         this.vehicle = vehicle;
         this.unitSpeed = unitSpeed;
+        this.destination = destination;
     }
 
     public void createGroundUnitAspect()  
     {
         waypoint = WaypointFactory.createMoveToWaypointType();
         waypoint.setTriggerArea(0);
-        waypoint.setDesc(pwcgGroundUnitInformation.getName() + " WP");
+        waypoint.setDesc("Vehicle Waypoint");
         waypoint.setSpeed(unitSpeed);
-        waypoint.setPosition(pwcgGroundUnitInformation.getDestination().copy());
+        waypoint.setPosition(destination);
         waypoint.setTargetWaypoint(true);
 
         waypointTimer = new McuTimer();
-        waypointTimer.setName("WP Timer for " + pwcgGroundUnitInformation.getName());
-        waypointTimer.setDesc("WP for " + pwcgGroundUnitInformation.getName());
-        waypointTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
+        waypointTimer.setName("Vehicle WP Timer");
+        waypointTimer.setDesc("Vehicle WP TImer");
+        waypointTimer.setPosition(vehicle.getPosition().copy());
         waypointTimer.setTarget(waypoint.getIndex());
 
         createTargetAssociations();

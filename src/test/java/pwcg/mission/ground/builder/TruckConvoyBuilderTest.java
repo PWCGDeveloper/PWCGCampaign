@@ -64,11 +64,11 @@ public class TruckConvoyBuilderTest
             assert (groundUnit.getCountry().getCountry() == Country.RUSSIA);
             if (groundUnit.getVehicleClass() == VehicleClass.Truck)
             {
-                assert (groundUnit.getSpawners().size() >= 3);
+                assert (groundUnit.getVehicles().size() >= 3);
             }
             else if (groundUnit.getVehicleClass() == VehicleClass.TruckAAA)
             {
-                assert (groundUnit.getSpawners().size() == 2);
+                assert (groundUnit.getVehicles().size() == 2);
             }
             else
             {

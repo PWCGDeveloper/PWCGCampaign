@@ -5,12 +5,8 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.location.Orientation;
-import pwcg.core.utils.MathUtils;
 import pwcg.mission.ground.GroundUnitInformation;
-import pwcg.mission.ground.org.GroundAspectFactory;
 import pwcg.mission.ground.org.GroundUnit;
-import pwcg.mission.ground.org.IGroundAspect;
 import pwcg.mission.ground.vehicle.VehicleClass;
 
 public class ShipSubmarineConvoyUnit extends GroundUnit
@@ -21,33 +17,38 @@ public class ShipSubmarineConvoyUnit extends GroundUnit
     }   
 
     @Override
-    protected void addAspects() throws PWCGException
-    {       
-        int unitSpeed = 5;
-        IGroundAspect movement = GroundAspectFactory.createGroundAspectMovement(pwcgGroundUnitInformation, vehicle, unitSpeed);
-        this.addGroundElement(movement);        
+    public void createGroundUnit() throws PWCGException 
+    {
+        super.createSpawnTimer();
+        List<Coordinate> vehicleStartPositions = createVehicleStartPosition();
+        super.createVehicles(vehicleStartPositions);
+        List<Coordinate> destinations =  createVehicleDestinationPosition();
+        addAspects(destinations);
+        super.linkElements();
     }
 
-    @Override
-    protected List<Coordinate> createSpawnerLocations() throws PWCGException 
+    private List<Coordinate> createVehicleStartPosition() throws PWCGException 
     {
+        return createVehiclePosition(pwcgGroundUnitInformation.getPosition().copy());        
+    }
+
+    private List<Coordinate> createVehicleDestinationPosition() throws PWCGException 
+    {
+        return createVehiclePosition(pwcgGroundUnitInformation.getDestination().copy());        
+    }
+
+    private List<Coordinate> createVehiclePosition(Coordinate vehiclePosition) throws PWCGException
+    {        
+        Coordinate shipCoords = vehiclePosition.copy();
         List<Coordinate> spawnerLocations = new ArrayList<>();
-
-        int numShips = 1;
-        
-        double shipMovementOrient = MathUtils.calcAngle(pwcgGroundUnitInformation.getPosition(), pwcgGroundUnitInformation.getDestination());
-        Orientation shipOrient = new Orientation();
-        shipOrient.setyOri(shipMovementOrient);
-        
-        double placementOrientation = MathUtils.adjustAngle (shipMovementOrient, -70);      
-        Coordinate shipCoords = pwcgGroundUnitInformation.getPosition().copy();
-
-        for (int i = 0; i < numShips; ++i)
-        {   
-            spawnerLocations.add(shipCoords);
-            shipCoords = MathUtils.calcNextCoord(shipCoords, placementOrientation, 1000.0);
-        }       
+        spawnerLocations.add(shipCoords);
         return spawnerLocations;        
     }
-}	
+
+    private void addAspects(List<Coordinate> destinations) throws PWCGException
+    {       
+        int unitSpeed = 5;
+        super.addMovementAspect(unitSpeed, destinations);
+    }
+ }	
 

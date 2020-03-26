@@ -61,23 +61,23 @@ public class AssaultBuilderTest
             {
                 if (groundUnit.getVehicleClass() == VehicleClass.Tank)
                 {
-                    assert (groundUnit.getSpawners().size() >= 2);
+                    assert (groundUnit.getVehicles().size() >= 2);
                 }
                 else if (groundUnit.getVehicleClass() == VehicleClass.ArtilleryHowitzer)
                 {
-                    assert (groundUnit.getSpawners().size() >= 2);
+                    assert (groundUnit.getVehicles().size() >= 2);
                 }
                 else if (groundUnit.getVehicleClass() == VehicleClass.MachineGun)
                 {
-                    assert (groundUnit.getSpawners().size() >= 2);
+                    assert (groundUnit.getVehicles().size() >= 2);
                 }
                 else if (groundUnit.getVehicleClass() == VehicleClass.AAAArtillery)
                 {
-                    assert (groundUnit.getSpawners().size() >= 2);
+                    assert (groundUnit.getVehicles().size() >= 2);
                 }
                 else if (groundUnit.getVehicleClass() == VehicleClass.AAAMachineGun)
                 {
-                    assert (groundUnit.getSpawners().size() >= 2);
+                    assert (groundUnit.getVehicles().size() >= 2);
                 }
                 else
                 {
@@ -88,23 +88,23 @@ public class AssaultBuilderTest
             {
                 if (groundUnit.getVehicleClass() == VehicleClass.ArtilleryAntiTank)
                 {
-                    assert (groundUnit.getSpawners().size() >= 2);
+                    assert (groundUnit.getVehicles().size() >= 2);
                 }
                 else if (groundUnit.getVehicleClass() == VehicleClass.ArtilleryHowitzer)
                 {
-                    assert (groundUnit.getSpawners().size() >= 2);
+                    assert (groundUnit.getVehicles().size() >= 2);
                 }
                 else if (groundUnit.getVehicleClass() == VehicleClass.MachineGun)
                 {
-                    assert (groundUnit.getSpawners().size() >= 2);
+                    assert (groundUnit.getVehicles().size() >= 2);
                 }
                 else if (groundUnit.getVehicleClass() == VehicleClass.AAAArtillery)
                 {
-                    assert (groundUnit.getSpawners().size() >= 2);
+                    assert (groundUnit.getVehicles().size() >= 2);
                 }
                 else if (groundUnit.getVehicleClass() == VehicleClass.AAAMachineGun)
                 {
-                    assert (groundUnit.getSpawners().size() >= 2);
+                    assert (groundUnit.getVehicles().size() >= 2);
                 }
                 else
                 {

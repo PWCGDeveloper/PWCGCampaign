@@ -58,12 +58,12 @@ public class DrifterUnitBuilderTest
             assert (groundUnit.getCountry().getCountry() == Country.RUSSIA);
             if (groundUnit.getVehicleClass() == VehicleClass.Drifter)
             {
-                assert (groundUnit.getSpawners().size() >= 2);
-                assert (groundUnit.getSpawners().size() <= 4);
+                assert (groundUnit.getVehicles().size() >= 2);
+                assert (groundUnit.getVehicles().size() <= 4);
             }
             else if (groundUnit.getVehicleClass() == VehicleClass.DrifterAAA)
             {
-                assert (groundUnit.getSpawners().size() == 2);
+                assert (groundUnit.getVehicles().size() == 2);
             }
             else
             {

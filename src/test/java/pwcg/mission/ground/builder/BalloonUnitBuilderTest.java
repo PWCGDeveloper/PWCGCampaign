@@ -86,15 +86,15 @@ public class BalloonUnitBuilderTest
         {
             if (groundUnit.getVehicleClass() == VehicleClass.Balloon)
             {
-                assert (groundUnit.getSpawners().size() == 1);
+                assert (groundUnit.getVehicles().size() == 1);
             }
             else if (groundUnit.getVehicleClass() == VehicleClass.AAAArtillery)
             {
-                assert (groundUnit.getSpawners().size() >= 2);
+                assert (groundUnit.getVehicles().size() >= 2);
             }
             else if (groundUnit.getVehicleClass() == VehicleClass.AAAMachineGun)
             {
-                assert (groundUnit.getSpawners().size() >= 2);
+                assert (groundUnit.getVehicles().size() >= 2);
             }
             else
             {

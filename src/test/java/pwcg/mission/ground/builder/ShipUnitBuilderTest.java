@@ -57,8 +57,8 @@ public class ShipUnitBuilderTest
             assert (groundUnit.getCountry().getCountry() == Country.RUSSIA);
             if (groundUnit.getVehicleClass() == VehicleClass.ShipCargo)
             {
-                assert (groundUnit.getSpawners().size() >= 3);
-                assert (groundUnit.getSpawners().size() <= 5);
+                assert (groundUnit.getVehicles().size() >= 3);
+                assert (groundUnit.getVehicles().size() <= 5);
             }
             else
             {
@@ -85,8 +85,8 @@ public class ShipUnitBuilderTest
             assert (groundUnit.getCountry().getCountry() == Country.RUSSIA);
             if (groundUnit.getVehicleClass() == VehicleClass.ShipWarship)
             {
-                assert (groundUnit.getSpawners().size() >= 2);
-                assert (groundUnit.getSpawners().size() <= 4);
+                assert (groundUnit.getVehicles().size() >= 2);
+                assert (groundUnit.getVehicles().size() <= 4);
             }
             else
             {
@@ -113,7 +113,7 @@ public class ShipUnitBuilderTest
             assert (groundUnit.getCountry().getCountry() == Country.RUSSIA);
             if (groundUnit.getVehicleClass() == VehicleClass.Submarine)
             {
-                assert (groundUnit.getSpawners().size() == 1);
+                assert (groundUnit.getVehicles().size() == 1);
             }
             else
             {

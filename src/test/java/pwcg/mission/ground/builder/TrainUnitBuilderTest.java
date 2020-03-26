@@ -64,7 +64,7 @@ public class TrainUnitBuilderTest
             assert (groundUnit.getCountry().getCountry() == Country.RUSSIA);
             if (groundUnit.getVehicleClass() == VehicleClass.TrainLocomotive)
             {
-                assert (groundUnit.getSpawners().size() == 1);
+                assert (groundUnit.getVehicles().size() == 1);
             }
             else
             {

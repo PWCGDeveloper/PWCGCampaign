@@ -7,7 +7,6 @@ import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.flight.waypoint.WaypointPriority;
-import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.mcu.AttackAreaType;
 import pwcg.mission.mcu.BaseFlightMcu;
@@ -19,14 +18,12 @@ public class GroundAspectAreaFire implements IGroundAspect
 {
     private McuTimer attackAreaTimer = new McuTimer();
     private McuAttackArea attackArea;
-    private GroundUnitInformation pwcgGroundUnitInformation;
     private IVehicle vehicle;
     private int attackAreaDistance = 1000;
     private Coordinate targetPosition;
 
-	public GroundAspectAreaFire(GroundUnitInformation pwcgGroundUnitInformation, Coordinate targetPosition, IVehicle vehicle, AttackAreaType attackAreaType, int attackAreaDistance)
+	public GroundAspectAreaFire(Coordinate targetPosition, IVehicle vehicle, AttackAreaType attackAreaType, int attackAreaDistance)
 	{
-        this.pwcgGroundUnitInformation = pwcgGroundUnitInformation;
         this.vehicle = vehicle;
         this.targetPosition = targetPosition;
         this.attackAreaDistance = attackAreaDistance;
@@ -36,12 +33,12 @@ public class GroundAspectAreaFire implements IGroundAspect
 	@Override
     public void createGroundUnitAspect() throws PWCGException 
     {
-        attackAreaTimer.setName(pwcgGroundUnitInformation.getName() + " AttackArea Timer");      
-        attackAreaTimer.setDesc(pwcgGroundUnitInformation.getName() + " AttackArea Timer");       
-        attackAreaTimer.setPosition(pwcgGroundUnitInformation.getPosition());
+        attackAreaTimer.setName("AttackArea Timer");      
+        attackAreaTimer.setDesc("AttackArea Timer");       
+        attackAreaTimer.setPosition(targetPosition);
 
-        attackArea.setName(pwcgGroundUnitInformation.getName() + " AttackArea");
-        attackArea.setDesc(pwcgGroundUnitInformation.getName() + " AttackArea");
+        attackArea.setName("AttackArea");
+        attackArea.setDesc("AttackArea");
         attackArea.setPriority(WaypointPriority.PRIORITY_HIGH);
         attackArea.setAttackRadius(attackAreaDistance);
         attackArea.setTime(3600);

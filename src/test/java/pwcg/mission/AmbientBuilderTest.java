@@ -73,7 +73,7 @@ public class AmbientBuilderTest
             for (IGroundUnit groundUnit : ambientTruckUnit.getGroundUnits())
             {
                 assert(groundUnit.getCountry().getSide() == Side.ALLIED);
-                assert(groundUnit.getSpawners().size() > 1);
+                assert(groundUnit.getVehicles().size() > 1);
             }
         }
     }
@@ -96,7 +96,7 @@ public class AmbientBuilderTest
             for (IGroundUnit groundUnit : ambientTrain.getGroundUnits())
             {
                 assert(groundUnit.getCountry().getSide() == Side.ALLIED);
-                assert(groundUnit.getSpawners().size() == 1);
+                assert(groundUnit.getVehicles().size() == 1);
             }
         }
     }
@@ -118,7 +118,7 @@ public class AmbientBuilderTest
         {
             for (IGroundUnit groundUnit : aaaUnit.getGroundUnits())
             {
-                assert(groundUnit.getSpawners().size() > 0);
+                assert(groundUnit.getVehicles().size() > 0);
             }
         }
     }

@@ -11,66 +11,35 @@ import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.unittypes.GroundUnitSpawningTrainBuilder;
 import pwcg.mission.ground.unittypes.GroundUnitSpawningVehicleBuilder;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.ground.vehicle.VehicleClass;
-import pwcg.mission.mcu.McuSpawn;
+import pwcg.mission.mcu.AttackAreaType;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.target.TargetType;
 
 
 public abstract class GroundUnit implements IGroundUnit
 {    
-    public static final int GROUND_UNIT_ACTIVATE_DISTANCE = 30000;
+    static private int ARTY_ATTACK_AREA_RADIUS = 500;
 
     protected int index = IndexGenerator.getInstance().getNextIndex();  
     protected GroundUnitInformation pwcgGroundUnitInformation;
-    protected IVehicle vehicle;
+    protected VehicleClass vehicleClass;
 
-    private VehicleClass vehicleClass;
-
-    private List<IGroundAspect> groundElements = new ArrayList<>();
-    private McuTimer spawnTimer = new McuTimer();
-    private List <McuSpawn> spawners = new ArrayList<>();
-    
-    abstract protected List<Coordinate> createSpawnerLocations() throws PWCGException;
-    abstract protected void addAspects() throws PWCGException;
+    protected McuTimer spawnUnitTimer = new McuTimer();
+    protected List<GroundUnitElement> groundElements = new ArrayList<>();
 
     public GroundUnit(VehicleClass vehicleClass, GroundUnitInformation pwcgGroundUnitInformation) 
     {
         this.vehicleClass = vehicleClass;
         this.pwcgGroundUnitInformation = pwcgGroundUnitInformation;
     }
-
-    @Override
-    public void createGroundUnit() throws PWCGException 
-    {
-        createSpawns();
-        createTargetAssociations();
-        addAspects();
-        linkElements();
-    }
-
-    private void linkElements() throws PWCGException 
-    {
-        IGroundAspect previousElement = null;
-        for (IGroundAspect element : groundElements)
-        {
-            if (previousElement == null)
-            {
-                spawnTimer.setTarget(element.getEntryPoint());
-            }
-            else
-            {
-                previousElement.linkToNextElement(element.getEntryPoint());
-            }
-            previousElement = element;
-        }
-    }
-
 
     @Override
     public TargetType getTargetType()
@@ -120,17 +89,21 @@ public abstract class GroundUnit implements IGroundUnit
         }
     }
 
-    private void writeMcus(BufferedWriter writer) throws PWCGException
+    protected void writeMcus(BufferedWriter writer) throws PWCGException
     {
-        vehicle.write(writer);
-        spawnTimer.write(writer);
-        for (McuSpawn spawn : spawners)
-        {
-            spawn.write(writer);
-        }
-        for (IGroundAspect groundElement : groundElements)
+        spawnUnitTimer.write(writer);
+        for (GroundUnitElement groundElement : groundElements)
         {
             groundElement.write(writer);
+        }
+    }
+
+    protected void linkElements() throws PWCGException 
+    {
+        for (GroundUnitElement element : groundElements)
+        {
+            spawnUnitTimer.setTarget(element.getEntryPoint());
+            element.linkAspects();
         }
     }
 
@@ -153,15 +126,14 @@ public abstract class GroundUnit implements IGroundUnit
     }
 
     @Override
-    public List<McuSpawn> getSpawners()
+    public List<IVehicle> getVehicles()
     {
-        return spawners;
-    }
-
-    @Override
-    public IVehicle getVehicle()
-    {
-        return vehicle;
+        List<IVehicle> vehicles = new ArrayList<>();
+        for (GroundUnitElement groundElement : groundElements)
+        {
+            vehicles.add(groundElement.getVehicle());
+        }
+        return vehicles;
     }
 
     @Override
@@ -173,98 +145,126 @@ public abstract class GroundUnit implements IGroundUnit
     @Override
     public void setAiLevel(AiSkillLevel aiLevel)
     {
-        vehicle.setAiLevel(aiLevel);
+        for (GroundUnitElement groundElement : groundElements)
+        {
+            groundElement.setAiLevel(aiLevel);
+        }
     }
 
     @Override
     public int getEntryPoint()
     {
-        return spawnTimer.getIndex();
+        return spawnUnitTimer.getIndex();
     }
     
     @Override
     public void validate() throws PWCGException
     {
+        if (spawnUnitTimer == null)
+        {
+            throw new PWCGException("GroundUnit: no spawn timer");
+        }
+        
         GroundUnitValidator validator = new GroundUnitValidator(this);
         validator.validate();
+    }
+
+    protected void addIndirectFireAspect() throws PWCGException
+    {
+        for (GroundUnitElement groundElement : groundElements)
+        {
+            int distanceOffset = RandomNumberGenerator.getRandom(500);
+            int directionOffset = RandomNumberGenerator.getRandom(360);
+            Coordinate fireCoordinates = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getDestination(), directionOffset, distanceOffset);
+            
+            IGroundAspect areaFire = GroundAspectFactory.createGroundAspectAreaFire(fireCoordinates, 
+                    groundElement.getVehicle(), AttackAreaType.INDIRECT, ARTY_ATTACK_AREA_RADIUS);
+            groundElement.addAspect(areaFire);
+        }
+    }
+    protected void addDirectFireAspect() throws PWCGException
+    {
+        for (GroundUnitElement groundElement : groundElements)
+        {
+            IGroundAspect directFire = GroundAspectFactory.createGroundAspectDirectFire(groundElement.getVehicle());
+            groundElement.addAspect(directFire);
+        }
+    }
+
+    protected void addAAAFireAspect(int attackAreaRadius) throws PWCGException
+    {
+        for (GroundUnitElement groundElement : groundElements)
+        {
+            Coordinate fireCoordinates = groundElement.getVehicle().getPosition();
+
+            IGroundAspect areaFire = GroundAspectFactory.createGroundAspectAreaFire(fireCoordinates, 
+                    groundElement.getVehicle(), AttackAreaType.AIR_TARGETS, attackAreaRadius);
+            groundElement.addAspect(areaFire);
+        }
+    }
+
+    protected void addMovementAspect(int unitSpeed, List<Coordinate> destinations) throws PWCGException
+    {
+        int numElements = groundElements.size();
+        if (destinations.size() < groundElements.size())
+        {
+            numElements = destinations.size();
+        }
         
+        for (int i = 0; i < numElements; ++i)
+        {
+            GroundUnitElement groundElement = groundElements.get(i);
+            Coordinate destination = destinations.get(i);
+            IGroundAspect movementAspect = GroundAspectFactory.createGroundAspectMovement(groundElement.getVehicle(), unitSpeed, destination);
+            groundElement.addAspect(movementAspect);
+        }
     }
     
-    McuTimer getSpawnTimer()
-    {
-        return spawnTimer;
-    }
-
-    protected List<IGroundAspect> getGroundElements()
-    {
-        return groundElements;
-    }
-    
-    protected void addGroundElement(IGroundAspect groundElement)
-    {
-        groundElements.add(groundElement);
-    }
-
-    private void createSpawns() throws PWCGException 
-    {
-        createVehicle();
-        createSpawnTimer();
-        createSpawners();
-        createTargetAssociations();
-        createObjectAssociations();
-    }
-
-    private void createSpawnTimer() 
-    {
-        spawnTimer.setName("Spawn Timer");
-        spawnTimer.setDesc("Spawn Timer");
-        spawnTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
-    }
-    
-    private void createVehicle() throws PWCGException 
+    protected void createVehicles(List<Coordinate> vehicleStartPositions) throws PWCGException 
     {       
         if (vehicleClass == VehicleClass.TrainLocomotive)
         {
             GroundUnitSpawningTrainBuilder trainBuilder = new GroundUnitSpawningTrainBuilder(pwcgGroundUnitInformation);
-            this.vehicle = trainBuilder.createTrainToSpawn();
+            IVehicle vehicle = trainBuilder.createTrainToSpawn();
+            GroundUnitElement groundElement = new GroundUnitElement(vehicle, pwcgGroundUnitInformation.getPosition());
+            groundElement.createGroundUnitElement();
+            groundElements.add(groundElement);
         }
         else
         {
-            this.vehicle = GroundUnitSpawningVehicleBuilder.createVehicleToSpawn(pwcgGroundUnitInformation, vehicleClass);
+            for (Coordinate vehiclePosition : vehicleStartPositions)
+            {
+                IVehicle vehicle = GroundUnitSpawningVehicleBuilder.createVehicleToSpawn(pwcgGroundUnitInformation, vehicleClass);
+                vehicle.setPosition(vehiclePosition);
+                GroundUnitElement groundElement = new GroundUnitElement(vehicle, vehiclePosition);
+                groundElement.createGroundUnitElement();
+                groundElements.add(groundElement);
+            }
         }
     }
 
-    private void createSpawners() throws PWCGException 
-    {        
-        for (Coordinate spawnLocation : createSpawnerLocations())
-        {            
-            McuSpawn spawn = new McuSpawn();
-            spawn.setName("Artillery Spawn");      
-            spawn.setDesc("Artillery Spawn");
-            spawn.setPosition(spawnLocation.copy());
-            spawners.add(spawn);
-        }
-    }
-
-    private void createTargetAssociations()
+    protected void createSpawnTimer() 
     {
-        for (McuSpawn spawn : spawners)
-        {            
-            spawnTimer.setTarget(spawn.getIndex());
-        }        
+        spawnUnitTimer.setName("Ground Unit Spawn Timer");
+        spawnUnitTimer.setDesc("Ground Unit Spawn Timer");
+        spawnUnitTimer.setPosition(pwcgGroundUnitInformation.getPosition());
     }
 
-    private void createObjectAssociations() 
-    {
-        for (McuSpawn spawn : spawners)
-        {
-            spawn.setObject(vehicle.getEntity().getIndex());
-        }
-    }
     
     public GroundUnitType getGroundUnitType()
     {
         return vehicleClass.getGroundUnitType();
     }
+    
+    public List<GroundUnitElement> getGroundElements()
+    {
+        return groundElements;
+    }
+
+    public McuTimer getSpawnUnitTimer()
+    {
+        return spawnUnitTimer;
+    }
 }	
+
 

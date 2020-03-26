@@ -8,10 +8,8 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
-import pwcg.mission.ground.org.GroundAspectFactory;
 import pwcg.mission.ground.org.GroundUnit;
 import pwcg.mission.ground.org.GroundUnitNumberCalculator;
-import pwcg.mission.ground.org.IGroundAspect;
 import pwcg.mission.ground.vehicle.VehicleClass;
 
 public class GroundTruckConvoyUnit extends GroundUnit
@@ -22,24 +20,18 @@ public class GroundTruckConvoyUnit extends GroundUnit
     }   
 
     @Override
-    protected List<Coordinate> createSpawnerLocations() throws PWCGException 
+    public void createGroundUnit() throws PWCGException 
     {
-        List<Coordinate> spawnerLocations = new ArrayList<>();
-        
+        super.createSpawnTimer();
         int numvehicles = calcNumUnits();
-
-        double placementOrientation = MathUtils.adjustAngle (pwcgGroundUnitInformation.getOrientation().getyOri(), 180);       
-        
-        Coordinate truckCoords = getFirstTruckPosition(placementOrientation);
-        for (int i = 0; i < numvehicles; ++i)
-        {   
-            spawnerLocations.add(truckCoords);
-            truckCoords = MathUtils.calcNextCoord(truckCoords.copy(), placementOrientation, 15.0);
-        }       
-        return spawnerLocations;        
+        List<Coordinate> vehicleStartPositions = createVehicleStartPositions(numvehicles);
+        super.createVehicles(vehicleStartPositions);
+        List<Coordinate> destinations =  createVehicleDestinationPositions(numvehicles);
+        addAspects(destinations);
+        super.linkElements();
     }
 
-    protected int calcNumUnits() throws PWCGException
+    private int calcNumUnits() throws PWCGException
     {
         if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
         {
@@ -61,18 +53,33 @@ public class GroundTruckConvoyUnit extends GroundUnit
         throw new PWCGException ("No unit size provided for ground unit");
     }
 
-    private Coordinate getFirstTruckPosition(double placementOrientation) throws PWCGException
+    private List<Coordinate> createVehicleStartPositions(int numvehicles) throws PWCGException 
     {
-        Coordinate firstTruckCoords = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getPosition().copy(), placementOrientation, 250.0);
-        return firstTruckCoords;
+        return createVehiclePositions(pwcgGroundUnitInformation.getPosition().copy(), numvehicles);        
     }
 
-    @Override
-    protected void addAspects() throws PWCGException
-    {       
+    private List<Coordinate> createVehicleDestinationPositions(int numvehicles) throws PWCGException 
+    {
+        return createVehiclePositions(pwcgGroundUnitInformation.getDestination(), numvehicles);
+    }
+
+    private List<Coordinate> createVehiclePositions(Coordinate firstVehicleCoordinate, int numvehicles) throws PWCGException
+    {
+        double placementOrientation = MathUtils.adjustAngle (pwcgGroundUnitInformation.getOrientation().getyOri(), 180);       
+        List<Coordinate> vehiclePositions = new ArrayList<>();
+        Coordinate vehicleCoordinate = MathUtils.calcNextCoord(firstVehicleCoordinate, placementOrientation, 50.0);
+        for (int i = 0; i < numvehicles; ++i)
+        {   
+            vehicleCoordinate = MathUtils.calcNextCoord(vehicleCoordinate.copy(), placementOrientation, 10.0);
+            vehiclePositions.add(vehicleCoordinate);
+        }       
+        return vehiclePositions;
+    }
+
+    private void addAspects(List<Coordinate> destinations) throws PWCGException
+    {
         int unitSpeed = 10;
-        IGroundAspect movement = GroundAspectFactory.createGroundAspectMovement(pwcgGroundUnitInformation, vehicle, unitSpeed);
-        this.addGroundElement(movement);        
+        super.addMovementAspect(unitSpeed, destinations);
     }
 }	
 
