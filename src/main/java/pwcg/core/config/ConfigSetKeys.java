@@ -4,7 +4,10 @@ public class ConfigSetKeys
 {
 	public static final String ConfigSetAircraftNumbers = "ConfigSetAircraftNumbers";
 	public static final String ConfigSetCampaign = "ConfigSetCampaign";
-	public static final String ConfigSetFighterMission = "ConfigSetFighterMission";
+    public static final String ConfigSetFighterMission = "ConfigSetFighterMission";
+    public static final String ConfigSetBomberMission = "ConfigSetBomberMission";
+    public static final String ConfigSetReconMission = "ConfigSetReconMission";
+    public static final String ConfigSetTransportMission = "ConfigSetTransportMission";
 	public static final String ConfigSetFlight = "ConfigSetFlight";
 	public static final String ConfigSetGroundObjects = "ConfigSetGroundObjects";
 	public static final String ConfigSetGUI = "ConfigSetGUI";

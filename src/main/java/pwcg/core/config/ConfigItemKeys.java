@@ -37,7 +37,15 @@ public class ConfigItemKeys
     public static final String AxisPatrolMissionKey = "AxisPatrolMission";
     public static final String AxisLowAltPatrolMissionKey = "AxisLowAltPatrolMission";
     public static final String AxisLowAltCapMissionKey = "AxisLowAltCapMission";
+    public static final String AxisBombingMissionKey = "AxisBombingMission";
+    public static final String AxisLowAltBombingMissionKey = "AxisLowAltBombingMission";
+    public static final String AxisContactPatrolKey = "AxisContactPatrol";
+    public static final String AxisReconKey = "AxisRecon";
+    public static final String AxisTransportKey = "AxisTransport";
+    public static final String AxisCargoDropKey = "AxisCargoDrop";
+    public static final String AxisParachuteDropKey = "AxisParachuteDrop";    
 
+    
 	public static final String AlliedOffensiveMissionKey = "AlliedOffensiveMission";
 	public static final String AlliedInterceptMissionKey = "AlliedInterceptMission";
 	public static final String AlliedEscortMissionKey = "AlliedEscortMission";
@@ -46,6 +54,13 @@ public class ConfigItemKeys
     public static final String AlliedPatrolMissionKey = "AlliedPatrolMission";
     public static final String AlliedLowAltPatrolMissionKey = "AlliedLowAltPatrolMission";
     public static final String AlliedLowAltCapMissionKey = "AlliedLowAltCapMission";
+    public static final String AlliedBombingMissionKey = "AlliedBombingMission";
+    public static final String AlliedLowAltBombingMissionKey = "AlliedLowAltBombingMission";
+    public static final String AlliedContactPatrolKey = "AlliedContactPatrol";
+    public static final String AlliedReconKey = "AlliedRecon";
+    public static final String AlliedTransportKey = "AlliedTransport";
+    public static final String AlliedCargoDropKey = "AlliedCargoDrop";
+    public static final String AlliedParachuteDropKey = "AlliedParachuteDrop";    
 
 	public static final String IsEscortedOddsKey = "IsEscortedOdds";
 

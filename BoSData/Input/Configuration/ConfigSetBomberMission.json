@@ -1,0 +1,26 @@
+{
+  "configSetName": "ConfigSetBomberMission",
+  "configMap": {
+    "AlliedBombingMission": {
+      "value": "80",
+      "label": "Allied Bombing Mission",
+      "help": "Weight given to of creating a bombing - (Bomber)"
+    },
+    "AlliedLowAltBombingMission": {
+      "value": "20",
+      "label": "Allied Low Alt Bombing Mission",
+      "help": "Weight given to of creating a low altitude bombing - (Bomber)"
+    },
+     "AxisBombingMission": {
+      "value": "75",
+      "label": "Axis Bombing Mission",
+      "help": "Weight given to of creating a bombing - (Bomber)"
+    },
+    "AxisLowAltBombingMission": {
+      "value": "25",
+      "label": "Axis Low Alt Bombing Mission",
+      "help": "Weight given to of creating a low altitude bombing - (Bomber)"
+    }
+  }
+}
+

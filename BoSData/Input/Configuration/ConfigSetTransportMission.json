@@ -1,0 +1,36 @@
+{
+  "configSetName": "ConfigSetTransportMission",
+  "configMap": {
+    "AlliedTransport": {
+      "value": "65",
+      "label": "Allied Transport Mission",
+      "help": "Weight given to of creating a transport - (Transport)"
+    },
+    "AlliedCargoDrop": {
+      "value": "20",
+      "label": "Allied Cargo Drop Mission",
+      "help": "Weight given to of creating a cargo drop - (Transport)"
+    },
+    "AlliedParachuteDrop": {
+      "value": "15",
+      "label": "Allied Parachute Drop Mission",
+      "help": "Weight given to of creating a parachute drop - (Transport)"
+    },
+    "AxisTransport": {
+      "value": "70",
+      "label": "Axis Transport Mission",
+      "help": "Weight given to of creating a transport - (Transport)"
+    },
+    "AxisCargoDrop": {
+      "value": "20",
+      "label": "Axis Cargo Drop Mission",
+      "help": "Weight given to of creating a cargo drop - (Transport)"
+    },
+    "AxisParachuteDrop": {
+      "value": "10",
+      "label": "Axis Parachute Drop Mission",
+      "help": "Weight given to of creating a parachute drop - (Transport)"
+    }
+  }
+}
+

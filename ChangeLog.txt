@@ -1,0 +1,496 @@
+​
+At the PWCG web site
+
+ 
+
+PWCG 8.0.0
+PWCG 8.0 contains dozens of small improvements.  Here are some of the more important ones:
+Added cold start for Bodenplatte
+Added new Bodenplatte airfields
+Added spotlights for night missions
+Improved layout of plane selection to allow for more payload options
+
+Updated WWI ground structures
+Fix for planes running away
+
+Improved AAR that carries all details forward to debrief.  
+Added recon missions
+
+ 
+
+PWCG 7.4.0
+Revised Coop User Admin
+- View all pilots in all of your coop campaigns
+- Add a user (not changed)
+- Remove a user
+Removes the user and all personas in all campaigns that are associated with that user
+New Coop Campaign Admin
+Admin functions for personas within the campaign
+- Add pilot (not changed)
+- Retire pilot: permanently retires a coop pilot
+- Transfer pilot: Allows the host to perform a transfer operation on a persona
+
+PWCG 7.3.0
+Night Missions for BoS
+- Fly at night.  Squadrons configured to add some percentage of night missions.
+- Night witches now always fly at night
+Fixed bad .list files.  Delete .list file when making binaries
+Fixed Aces cannot be added to a mission
+Fixed unable to add German pilot to coop campaign
+Improved binary file error handling
+
+PWCG 7.2.0
+Added WWI Vehicles to FC
+Added balloons, balloon bust and balloon defense missions to FC
+Added Seasons to the Rhein map
+Added Shermans for Americans, British , and Russians
+
+Note to FC users: you MUST Delete your current install!  You can save campaigns to a zip and then restore them, they will work.
+
+PWCG 7.1.0
+Changed AAR to accommodate changes in logging. Made better use of damage records for victory calculation.
+Changed AAR to eliminate records after mission finished, fixing issue of being shot down if finishing the mission in the air.
+Changed bombers to keep formation and release all bombs at once when level bombing.
+Updated Bodenplatte map images
+Significant update to mission routing to ensure missoin box size is respected.
+PWCG will now create msbin (binary mission) files, allowing for much faster load.
+- Be aware that these files take up to 3 minutes to create.
+- Occurs upon accepting a mission
+- Can be disabled through Main->Configuration->User Preferences and then set create binary file to 0 (zero)
+Bugs:
+Fixed Tiger vehicle file.  Added code to automatically remove bad file.
+Fixed excessing damage messages ind ebrief
+Fixed smoke and buildings floating in some missions
+Fixed reversal of American and British voices
+- Air traffic is still Russian.  Will look  into that.
+Fixed incorrect runway placement.  Planes were about 20 yards too far left.
+Fixed no role for 2 seater squadrons on FC coop campaigns
+Fixed cannot use pilot campaign after pilot death.  Verified that add pilot allows continuation.
+Fixed pilot picture changes do not take effect until campaign is reloaded
+Could not fix:
+Mission flight path does not appear on Arras map for FC.  Created mission on ME (no PWCG involved) and path did not show.  Exact same construct worked properly on BoS maps.
+
+PWCG 7.0.0
+Flying Circus 
+- One line but it's quite a bit of work  
+
+Bug fixes:
+Fixed error that could cause planes not to appear
+Voices are now correct language
+Me 262 payload description corrected
+KG 51 (Me262) moved to concrete airfields
+Removed restriction on leave time to allow for serious wounds to heal.
+Fixed P51 and Tempest "Planes Owned" icons
+
+PWCG 6.3.0
+Bodenplatte is on the Rhine map!
+Cities are in place
+Made map from Google earth pics
+- Will replace with game map when I get it
+Front lines move
+Added B25 for 139 Squadron
+Added Jv44 as an independent squadron in Feb 2004
+
+PWCG 6.2.0
+Significant improvements to flight pathing.  
+- Added range as a an element to aircraft.
+- Creates mission box based on range with a maximum.  This moves activity to more places on the front without sending the player off too far.
+- Creates minimum distance from base to mission box, to reduce instances of planes being on top of you at the start of the mission.
+ - Changed AI flight ingress to mission to create better chances of contact in all scenarios.
+ - Ai Squadrons participation in a mission is contingent on having the range to get there.  Should give a feel for who is stationed where.
+New Advanced configs:
+
+ 
+
+Added concept of special missions.  These are missions where the mission box will not be in the usual place.
+- Anti shipping: anti shipping missions will cause the mission box to be created over a sea lane (Kuban only).
+- Scramble: scramble missions will cause the mission box to be created near the player's airfield.
+- Anti shipping missions will not be generated if you are not in range of a sea lane
+- Added new advanced configs
+- scrambleOddsAllied: odds of creating an allied scramble mission
+- scrambleOddsAxis: odds of creating an axis scramble mission
+- antiShipOddsAllied odds of creating an allied anti shipping mission
+- antiShipOddsAxis odds of creating an axis anti shipping mission
+Added P-51
+Added P-38
+Added Tempest
+
+PWCG 6.1.5
+Fixed Data error caused AAR failure in late war campaigns
+
+PWCG 6.1.4
+Fixed AI adjustment
+Fixed friendly planes assigned as victories.
+ 
+PWCG 6.1.3
+Fixed no icons in coop.
+- Icons will appear for all coop modes
+- Icons associated with only one side
+- Waypoint icons and airfield icons
+- Restoration of WP icons causes path to appear on map
+
+PWCG 6.1.2
+Improvements to reduce lack of contact.
+- Reduce size of mission box
+- Mission box size is configurable (Advanced config -> mission limits)
+- Reduce length of patrols to avoid going beyond mission box
+- Improve patrol path to head into the mission box
+- Improve offensive patrols for airfield/transport to use waypoints closer to box
+- Improve offensive penetration patrols to take advantage of patrol algorithm just into enemy lines
+- Reduce distance from entering the box to start of patrols.  Helps prevent need cross map navigation.
+- Fixed looking at mission again after it had been created
+- Added "Back to Campaign" button on every mission page to return to campaign without altering the mission
+- Eliminated coop pilot selection for missions that have already been created.
+
+PWCG 6.1.1
+Mode not properly set in new coop campaigns.
+
+PWCG 6.1.0
+Three campaign modes.
+- Single Player
+- Cooperative Coop
+- Competitive Coop
+Smarter display of services and maps when creating a new campaign or pilot.
+Fixed: Cooperative coop AAR broken
+Fixed: Cannot find mission logs error
+
+PWCG 6.0.1
+Added a bit more AAA around airfields
+Fixed No escorts for player
+Fixed Return to pilot perspective broken
+Fixed Friendly planes lost are assigned as victories to squadron mates.
+Fixed Errors during leaves and transfers.
+Fixed Too many spots in coop mission - should only be players
+Fixed PO2 has wrong display name
+
+PWCG 6.0.0
+Full coop support
+- Fly with your friends
+- Any squadron!
+- Any Side!
+Cold Start (Thanks Murleen)
+- Start from your hangar area and taxi to start
+Me-262
+Improved mission pathing
+
+PWCG 5.1.3
+Added FW 190 D9 Dora.
+-  Start with JG 26 in October 1944 or JG 2 in November 1944.
+Fixed: Payloads modifications on several planes.  Me109 G14 and K4, FW190 A5 and A8, Macchi.  
+
+PWCG 5.1.2
+Packaged over 70 skins for squadrons - thanks to the skin creators for making these available.
+Configured squadron files to use the skins.
+Skins and updated PWCG are available for download at the PWCG site
+
+PWCG 5.1.1
+Modified PWCG to understand the difference between end of production and withdrawal from front line service.  Should help get newer types to the front faster.
+Fixed: modifications for P47
+Fixed: modifications for Spitfire IX
+Verified squadron assigned skins work
+Verified user assigned loose skins to squadron mates work
+
+PWCG 5.1.0
+The Western front in WWII comes to PWCG with Bodenplatte on the Stalingrad map. 
+All available Bodenplatte planes are included.
+Airfield names changed to match western names.
+Squadrons are correct.
+Squadron equipment mapped from actual to available (i.e. P51 squadrons are flying P47s)
+- Will be changed as new planes are introduced.
+Fixed: U2 payload.  Now has bombs and gun.
+
+PWCG 5.0.5
+Added U2 as daylight attack aircraft. 
+- To play U2 campaign choose Russian. August 1942. Stalingrad map, 588 Bomber Air Regiment.
+- I don't ownthis plane but the ME loads a mission with no errors.
+Added P47, Spitfire Mk IX, P47, Me109 G14, Me109 K4, FW190 A8
+- Not tested in game at all.
+- Not incorporated into the campaign
+- To make a dummy campaign, replace the assignment in a squadron and start a new campaign.
+- Or wait a week or two and I will have something that looks like Bodenplatte (on the Stalingrad map)
+
+PWCG 5.0.4
+Fixed: issue where adding Italian squadron earlier was causing problems in existing campaigns.
+Fixed: Escort missions.  Rendezvous fixes by me, separation fixes by Murleen.
+
+PWCG 5.0.3
+Equipment replacement enhancements:
+- Increased equipment replacement rate
+- Increased odds of players squadron getting replacements if severely depleted
+- Increased odds of any squadron getting replacements if severely depleted
+- Accounted for actual need in squadrons in generating replacement planes
+Made Italian campaign available for Moscow
+Fixed: Historical aces appear twice in top aces board
+ 
+PWCG 5.0.2
+Fixed: number in formation counter (Thanks Murleen)
+Fixed: Train target is on the wrong side
+Fixed: Floating smoke
+
+PWCG 5.0.1
+Fixed: Unidentified Object popup (Thanks Murleen)
+Fixed: Planes not properly oriented on runway (Thanks Murleen)
+Fixed: Concurrent map update exception
+Fixed: Planes span on top of each other in CAP
+Fixed: No planes sighted on intercvept or CAP
+Fixed: Error bundler is not bundling all directories.
+Fixed: Marder scrip path not properly set
+
+PWCG 5.0.0
+Support for multiple players and coop mode.
+How to create a coop campaign:
+- On the campaign creation screen choose coop campaign at the top/center
+- Complete campaign creation process
+Adding another human pilot
+- In the campaign, choose "Add Pilot"
+- Enter the rank and name of the new pilot
+- Select the AI pilot to be replaced.
+Added fog of war setting in advanced config.  Makes victories less descriptive.
+- Advanced Config -> User Preferences -> DetailedVictoryDescription
+- Set to 0 for less descriptive victories.  Default is 1.
+New visuals:
+There is a small icon on the right of the pilot name, giving pilot status.
+I don't have a mission button
+- All of your human pilots are dead or wounded.
+- You can create a new AI pilot
+- You can go on leave to heal your human pilots (info is on the leave page).
+
+Bugs
+Fixed: missing LuaScripts\WorldObjects\Ships\torpedoboat38.txt
+Fixed: Planes sometimes do not take off (Murleen).
+Fixed: Too many out of mission AAA losses.
+Fixed: Player not being made commander after promotion to major. 
+Fixed: Duplicate entries in squadron log
+Fixed flight not taking off at Dugino  airfield.
+Fixed planes not being replaced when squasron transitions to new arch type
+
+PWCG 4.2.1
+Incorporated improved graphics (Riksen).
+Disassociated pilot name from campaign name (prelude to multiple human pilots)
+Bugs:
+Incorporated fix for Kuban taxiways (Murleen).
+Increased PWCG memory.
+
+PWCG 4.2.0
+Changed ground unit generation to avoid excessive number of ground units generated by AI flights.
+Bugs:
+Fixed error where depleted squadrons could be further drained.
+
+PWCG 4.1.1
+Call signs added (Murleen).
+Added Stalingrad taxi mappings (Murleen)
+Added planes lost to debrief UI.
+Bugs:
+Fixed replacing pilots in briefing causes AAR errors after mission.
+Fixed failure to create create campaign later in war
+Fixed player transfer error (Murleen)
+Fixed inactive campaign members not saved (Murleen).
+Fixed failure to properly apply modifications (reported for E7 but could affect others).
+
+PWCG 4.1.0
+Every squadron in PWCG is equipped.
+Every plane in the mission maps to a plane in PWCG
+Out of mission events affect planes in PWCG.
+If a pilot gains a victory out of mission, the victim will also be a plane in PWCG.
+A replacements depo of planes exists.- During each time cycle, "needy squadrons" request replacements.  Replacements are distributed from the depo.
+The replacement depo is drained to compensate for squadron losses.
+There is a lag between the time a plane is lost and the time that the request for a replacement is acknowledged.
+The replacement pool is periodically replenished.
+Over time equipment will become more of an issue, but not to a severe degree.
+Slightly equipment depleted AI squadrons may not fly.
+Severely equipment depleted AI squadrons will not fly.
+The player's squadron will not fly if severely equipment depleted.
+Made tweaks tp odds of other squadrons flying.
+Landing improved: planes on the Moscow map will land and taxi to a revetment before disappearing.
+@Murleen
+A first for PWCG.  Murleen has contributed Java code.  This is the first time in nine years that an outside author has written Java code for PWCG!
+Also a first: PWCG is now available on GitHub.
+Murleen's contributions were a bug fix for spawn parsing and .. this was a lot of work on his part ... the landing correction noted above.  Many thanks.
+
+Bugs:
+Fixed spawn event parsing error
+Fixed failure to create ground attack missions
+Fixed failure to note missions flown.
+Fixed Italian campaign.
+ 
+PWCG 4.0.0
+Every squadron in PWCG is staffed.
+Every plane in the mission maps to a pilot in PWCG
+Out of mission events affect pilots in PWCG.
+If a pilot gains a victory out of mission, the victim will also be a pilot in PWCG.
+The fate of the plane and pilot are separated - a pilot can easily survive being shot down.
+A replacements pool of pilots exists.- During each time cycle, "needy squadrons" request replacements.  Replacements are distributed from the pool.
+The replacement pool is drained to compensate for squadron losses.
+There is a lag between the time a pilot is lost and the time that the request for a replacement is acknowledged.
+The replacement pool is periodically replenished.
+Over time manpower will become more of an issue, but not to a severe degree.
+Slightly depleted AI squadrons may not fly.
+Severely depleted AI squadrons will not fly.
+The player's squadron will not fly if severely depleted.
+ 
+PWCG 3.5.0
+Add several new mission variations
+- Low altitude bombing
+- Low altitude patrols
+- Low altitude battlefield CAP
+Improved climb WP generation to reduce climb WPs to only as many as necessary to achieve altitude.
+Bugs:
+Fixed starting behind enemy lines (PWCG was still using old as well as new front line transitions)
+
+PWCG 3.4.0
+Altered squadrons for smoother transition in "Battles" format.
+- Squadron transition within a single squadron file.  Causes natural movement through battles without actively transferring.
+- Movement through battles from 1 Oct 1941 to 1 Dec 1943
+- Includes early German advance through Kuban to Stalingrad and Russian advance after Stalingrad.
+- Fewer squadrons for less density.  Still pretty dense, especially Kuban. 
+New planes:
+- A20
+- P39
+- La5N
+- Me109G6
+ 
+PWCG 3.4.1
+
+Add Yak7B
+Restore squadrons fro Me-109 E-7, Me-110, Hs-129, Ju-52
+Enabled mixed flights
+Fixed missing aircraft profiles
+ 
+PWCG 3.3.3
+Bugs:
+Fixed PWCG does not work with latest BoX
+ 
+PWCG 3.3.2
+Bugs:
+Fixed error when modifying advanced configuration
+ 
+PWCG 3.3.1
+Extend Kuban action back to July 1942.  Add mountain flying.
+Added config to reduce smoke in a given area.  Smoke is now controlled by two parameters: max smoke in mission and max smoke within a radius.
+Campaign->Advanced Config -> Mission Limits
+-> Max Smoke In Mission
+-> Max Smoke In Area
+Cleaned up weather inputs in advanced config
+Bugs:
+Fixed will not respond to changes in "'Maximum amount of smoke" as intended
+Fixed Radio beacon doesn't work (I think)
+Fixed Attack marker showing up over friendly forces
+Fixed No landing if player chooses air start
+Fixed Freeze if number of aircraft config changes (max planes per flight will now be 😎
+Fixed failure to create campaign in some situations
+Fixed when flying the E7, selecting the 'remove headrest' option adds an armored windscreen instead (and vice versa I assume).
+
+PWCG 3.3.0
+Added Ju52
+Add transport missions.  
+- Transport cargo from field to field.  
+- Parachute drop, daytime and nighttime.  
+- Cargo drop near front.  
+- Spy extraction.
+Add anti shipping missions  in Kuban
+Set roles by squadron instead of plane for greater flexibility.  Allow roles for a squadron to change over time.
+Add target preferences based on history.  i..e. Drifters near Stalingrad in November, shipping at Kuban in Sept 1943, etc.
+Bug fixes:
+Reduced and normalized waypoint speeds to help formations
+Added missing Kuban bridges
+Improved climb wps.  Climb into mission if far from front.
+Fixed freeze error on some Russian ground attack missions
+Rewrote target finding algorithm for fewer failures.
+Fixed AAA not appearing along front and at installations
+Fixed campaign property bug that caused all defaults to be copied over.
+Fixed AI does not land when waypoint progression is broken
+Fixed (?) AI sometimes crashes on landing
+Improved egress waypoint placement
+Improved odds of contact during mission
+Fixed some instances of ground units in the water
+
+PWCG 3.2.1
+Correct error preventing mission load
+ 
+PWCG 3.2.0
+Add smoke near front line.  Sometimes (heavy) in proximity of activity.  Other times (light) ambient. (BoS)
+Add damage to structures close to the front
+Replace static artillery at airfield with static trucks(BoS)
+Add ambient skirmishes(BoS)
+Add ambient truck convoys(BoS)
+Improved takeoff alignment by introducing different spacing for small, medium and large planes
+Fixed Stukas do not dive bomb (BoS)
+Fixed Map scrolling through click and drag broken on briefing map
+Fixed takeoff positioning error for RoF
+Fixed Invalid payload for plane: 6 No 8 Naval Squadron circa November 1916 (RoF)
+Fixed incorrect ranks for French Navy (RoF)
+ 
+PWCG 3.1.2
+Improve enemy fighter limitations on ground attack.  No fighter escort on player ground attack missions.  Limit fighter missions based on player mission type and not squadron role.
+Implemented staggered formation on runway for BoS
+Fixed all mission times are 0830.
+Fixed no skins in skin management screen
+Fixed scrolling the AAR and typing journal entries is slow
+Fixed no LA5 modifications are available.
+SIxed Dallas and Kinkead on some dates are showing up as not being in the RNAS
+Moved wind sock away from runway for BoS
+Increased air start spacing for BoS
+ 
+PWCG 3.1.1
+Added support for aircraft modifications along with payloads.  Modifications appear as check boxes in a new column on the briefing pilot selection chalkboard.
+Added support for squadron override of aircraft roles.  This allows PWCG to offer dedicated ground support for some FW190 squarons as well as cannon armed Stuka in II./St.G.2.
+Added support for initial selection of a payload to fit the mission.
+Added support for AI flights to use a wider range of payloads.
+Fixed plane selection issue.
+ 
+
+PWCG 3.1.1
+Features:
+Added support for aircraft modifications along with payloads.  Modifications appear as check boxes in a new column on the briefing pilot selection chalkboard.
+Added support for squadron override of aircraft roles.  This allows PWCG to offer dedicated ground support for some FW190 squarons as well as cannon armed Stuka in II./St.G.2.
+Added support for initial selection of a payload to fit the mission.
+Added support for AI flights to use a wider range of payloads.
+Bugs:
+Fixed plane selection issue.
+ 
+PWCG 3.1.0
+Features:
+Allow players to select payload for their flight from Pilot Selection Screen
+- Use Synchronize Payloads to synchronize the flight's payloads on the leader.
+Added more items to BoS airfields.
+- Developed empty space finder algorithm to place more stuff
+ 
+Bugs:
+Fixed squadron skin configuration
+- Added back squadron skins that had been removed in 3.0
+Changed initial victories, odds of loss for Luftwaffe and VVS
+ 
+PWCG 3.0.2
+Features:
+Icons
+- Added front lines
+- Added airfield icons
+Music
+- Added Music control screen on front panel
+- Improved sound control
+ 
+Bugs:
+Fixed ground attack players overwhelmed by fighters
+- New Advanced COnfig: Mission Limits -> Max Enemy Fighters For Ground Attack (default 1)
+- New Advanced COnfig: Mission Limits -> Max Enemy Fighters For Fighters (default 3)
+Fixed reappearing AAA (sort of)
+-  Increased respawn to 10 minutes to keep them dead longer (was 3 minutes)
+Fixed empty airfieds
+- AAA and static planes now appear
+- Added trucks if airfield is target
+Fixed escort flight rendezvous
+Fixed Severskaya airfield takeoffs
+ 
+PWCG 3.0.1
+Fixed: Pilot always dead when plane crashes.
+Fixed: RoF willl not create a mission.
+Fixed: Invalid plane for loose skins for plane ju523mg4e.
+Fixed: Mission file cleanup not happening.
+Fixed: During campaign creation, transition from rank on previous step causes error.
+Fixed: Moving wayponts on briefing map sometimes caused incorrect results.
+Fixed: Raised attack MCU and lengthened run to prevent AI ground crashes.
+Fixed: Error when creating escort flight for player, causing missions not to be created.
+Fixed: Krasnodar map takeoff.
+ 
+Added: When creating a campaign filter by map.  Add map to squadron description text.  
+ ​

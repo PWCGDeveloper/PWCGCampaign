@@ -2,85 +2,85 @@
   "configSetName": "ConfigSetFighterMission",
   "configMap": {
     "AlliedBalloonBustMission": {
-      "value": "0",
+      "value": "10",
       "label": "Allied Balloon Bust Mission",
-      "help": "Odds of creating a Balloon Bust - Allied"
+      "help": "Weight given to of creating a Balloon Bust - (Fighter)"
     },
     "AlliedBalloonDefenseMission": {
-      "value": "0",
+      "value": "10",
       "label": "Allied Balloon Defense Mission",
-      "help": "Odds of creating a Balloon Defense - Allied"
+      "help": "Weight given to of creating a Balloon Defense - (Fighter)"
     },
     "AlliedEscortMission": {
       "value": "15",
       "label": "Allied Escort Mission",
-      "help": "Odds of creating an Escort Mission - Allied"
+      "help": "Weight given to of creating an Escort Mission - (Fighter)"
     },
     "AlliedInterceptMission": {
       "value": "30",
       "label": "Allied Intercept Mission",
-      "help": "Odds of creating a Intercept Mission - Allied"
+      "help": "Weight given to of creating a Intercept Mission - (Fighter)"
     },
     "AlliedOffensiveMission": {
       "value": "30",
       "label": "Allied Offensive Mission",
-      "help": "Odds of creating an Offensive Patrol Mission - Allied"
+      "help": "Weight given to of creating an Offensive Patrol Mission - (Fighter)"
     },
     "AlliedPatrolMission": {
       "value": "40",
       "label": "Allied Patrol Mission",
-      "help": "Odds of creating a Patrol - Allied"
+      "help": "Weight given to of creating a Patrol - (Fighter)"
     },
     "AlliedLowAltPatrolMission": {
       "value": "20",
       "label": "Allied Low Altitude Patrol Mission",
-      "help": "Odds of creating a Low Altitude Patrol - Allied"
+      "help": "Weight given to of creating a Low Altitude Patrol - (Fighter)"
     },
     "AlliedLowAltCapMission": {
       "value": "10",
       "label": "Allied Low Alt CAP Mission",
-      "help": "Odds of creating a low altitude CAP - Allied"
+      "help": "Weight given to of creating a low altitude CAP - (Fighter)"
     },
-    
+
     "AxisBalloonBustMission": {
-      "value": "0",
+      "value": "10",
       "label": "Axis Balloon Bust Mission",
-      "help": "Odds of creating a Balloon Bust - Axis"
+      "help": "Weight given to of creating a Balloon Bust - (Fighter)"
     },
     "AxisBalloonDefenseMission": {
-      "value": "0",
+      "value": "10",
       "label": "Axis Balloon Defense Mission",
-      "help": "Odds of creating a Balloon Defense - Axis"
+      "help": "Weight given to of creating a Balloon Defense - (Fighter)"
     },
     "AxisEscortMission": {
       "value": "15",
       "label": "Axis Escort Mission",
-      "help": "Odds of creating an Escort Mission - Axis"
+      "help": "Weight given to of creating an Escort Mission - (Fighter)"
     },
     "AxisInterceptMission": {
       "value": "35",
       "label": "Axis Intercept Mission",
-      "help": "Odds of creating a Intercept Mission - Axis"
+      "help": "Weight given to of creating a Intercept Mission - (Fighter)"
     },
     "AxisOffensiveMission": {
       "value": "25",
       "label": "Axis Offensive Mission",
-      "help": "Odds of creating an Offensive Patrol Mission - Axis"
+      "help": "Weight given to of creating an Offensive Patrol Mission - (Fighter)"
     },
     "AxisPatrolMission": {
       "value": "40",
       "label": "Axis Patrol Mission",
-      "help": "Odds of creating a Patrol - Axis"
+      "help": "Weight given to of creating a Patrol - (Fighter)"
     },
     "AxisLowAltPatrolMission": {
       "value": "10",
       "label": "Axis Low Altitude Patrol Mission",
-      "help": "Odds of creating a Low Altitude Patrol - Axis"
+      "help": "Weight given to of creating a Low Altitude Patrol - (Fighter)"
     },
     "AxisLowAltCapMission": {
       "value": "10",
       "label": "Axis Low Alt CAP Mission",
-      "help": "Odds of creating a low altitude CAP - Axis"
+      "help": "Weight given to of creating a low altitude CAP - (Fighter)"
     }
   }
 }

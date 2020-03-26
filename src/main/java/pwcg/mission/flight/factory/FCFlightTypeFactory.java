@@ -1,5 +1,10 @@
 package pwcg.mission.flight.factory;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.plane.Role;
@@ -7,13 +12,15 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
-import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.core.utils.WeightedOddsCalculator;
 import pwcg.mission.flight.FlightTypes;
 
 public class FCFlightTypeFactory implements IFlightTypeFactory
 {
-    protected Campaign campaign;
-    
+    private Campaign campaign;
+    private List<Integer> weightedOdds = new ArrayList<>();
+    private Map<Integer, FlightTypes> flightTypesByIndex = new HashMap<>();
+
     public FCFlightTypeFactory (Campaign campaign) 
     {
         this.campaign = campaign;
@@ -26,7 +33,7 @@ public class FCFlightTypeFactory implements IFlightTypeFactory
 
         if (missionRole == Role.ROLE_BOMB || missionRole == Role.ROLE_ARTILLERY_SPOT)
         {
-            return getBomberFlightType();
+            return getBomberFlightType(squadron);
         }
         else if (missionRole == Role.ROLE_FIGHTER)
         {
@@ -38,7 +45,7 @@ public class FCFlightTypeFactory implements IFlightTypeFactory
         }
         else if (missionRole == Role.ROLE_RECON)
         {
-            return getReconFlightType();
+            return getReconFlightType(squadron);
         }
         else
         {
@@ -46,135 +53,99 @@ public class FCFlightTypeFactory implements IFlightTypeFactory
         }
     }
 
+
     private FlightTypes getFighterFlightType(Squadron squadron, boolean isPlayerFlight) throws PWCGException
     {
-        FlightTypes flightType = FlightTypes.PATROL;
-
-        int offensiveMissionOdds = 0;
-        int interceptMissionOdds = 0;
-        int balloonBustMissionOdds = 0;
-        int balloonDefenseMissionOdds = 0;
-        int escortMissionOdds = 0;
-        int patrolMissionOdds = 0;
-        int lowAltPatrolMissionOdds = 0;
-        int lowAltCapMissionOdds = 0;
-
+        int currentIndex = 0;
         if (squadron.determineSquadronCountry(campaign.getDate()).getSideNoNeutral() == Side.ALLIED)
         {
-            offensiveMissionOdds = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedOffensiveMissionKey);
-            interceptMissionOdds = offensiveMissionOdds
-                            + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedInterceptMissionKey);
-            balloonBustMissionOdds = interceptMissionOdds
-                            + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedBalloonBustMissionKey);
-            balloonDefenseMissionOdds = balloonBustMissionOdds
-                            + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedBalloonDefenseMissionKey);
-            escortMissionOdds = balloonDefenseMissionOdds
-                            + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedEscortMissionKey);
-            patrolMissionOdds = escortMissionOdds
-                    + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedPatrolMissionKey);
-            lowAltPatrolMissionOdds = patrolMissionOdds
-                    + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedLowAltPatrolMissionKey);
-            lowAltCapMissionOdds = lowAltPatrolMissionOdds
-                    + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedLowAltCapMissionKey);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedBalloonBustMissionKey, FlightTypes.BALLOON_BUST, currentIndex);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedBalloonDefenseMissionKey, FlightTypes.BALLOON_DEFENSE, currentIndex);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedOffensiveMissionKey, FlightTypes.OFFENSIVE, currentIndex);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedInterceptMissionKey, FlightTypes.INTERCEPT, currentIndex);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedEscortMissionKey, FlightTypes.ESCORT, currentIndex);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedPatrolMissionKey, FlightTypes.PATROL, currentIndex);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedLowAltPatrolMissionKey, FlightTypes.LOW_ALT_PATROL, currentIndex);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedLowAltCapMissionKey, FlightTypes.LOW_ALT_CAP, currentIndex);
         }
         else
         {
-            offensiveMissionOdds = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisOffensiveMissionKey);
-            interceptMissionOdds = offensiveMissionOdds
-                            + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisInterceptMissionKey);
-            balloonBustMissionOdds = interceptMissionOdds
-                            + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisBalloonBustMissionKey);
-            balloonDefenseMissionOdds = balloonBustMissionOdds
-                            + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisBalloonDefenseMissionKey);
-            escortMissionOdds = balloonDefenseMissionOdds
-                            + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisEscortMissionKey);
-            patrolMissionOdds = escortMissionOdds
-                    + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisPatrolMissionKey);
-            lowAltPatrolMissionOdds = patrolMissionOdds
-                    + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisLowAltPatrolMissionKey);
-            lowAltCapMissionOdds = lowAltPatrolMissionOdds
-                    + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisLowAltCapMissionKey);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisBalloonBustMissionKey, FlightTypes.BALLOON_BUST, currentIndex);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisBalloonDefenseMissionKey, FlightTypes.BALLOON_DEFENSE, currentIndex);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisOffensiveMissionKey, FlightTypes.OFFENSIVE, currentIndex);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisInterceptMissionKey, FlightTypes.INTERCEPT, currentIndex);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisEscortMissionKey, FlightTypes.ESCORT, currentIndex);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisPatrolMissionKey, FlightTypes.PATROL, currentIndex);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisLowAltPatrolMissionKey, FlightTypes.LOW_ALT_PATROL, currentIndex);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisLowAltCapMissionKey, FlightTypes.LOW_ALT_CAP, currentIndex);
         }
+        
+        int selectedIndex = WeightedOddsCalculator.calculateWeightedodds(weightedOdds);
+        FlightTypes flightType = flightTypesByIndex.get(selectedIndex);
 
-        int missionOdds = RandomNumberGenerator.getRandom(lowAltCapMissionOdds);
-
-        if (missionOdds < offensiveMissionOdds)
+        if (flightType == FlightTypes.ESCORT)
         {
-            flightType = FlightTypes.OFFENSIVE;
-        }
-        else if (missionOdds < interceptMissionOdds)
-        {
-            flightType = FlightTypes.INTERCEPT;
-        }
-        else if (missionOdds < balloonBustMissionOdds)
-        {
-            flightType = FlightTypes.BALLOON_BUST;
-        }
-        else if (missionOdds < balloonDefenseMissionOdds)
-        {
-            flightType = FlightTypes.BALLOON_DEFENSE;
-        }
-        else if (missionOdds < escortMissionOdds)
-        {
-            if (isPlayerFlight)
-            {
-                flightType = FlightTypes.ESCORT;
-            }
-            else
+            if (!isPlayerFlight)
             {
                 flightType = FlightTypes.PATROL;
             }
         }
-        else if (missionOdds < patrolMissionOdds)
-        {
-            flightType = FlightTypes.PATROL;
-        }
-        else if (missionOdds < lowAltPatrolMissionOdds)
-        {
-            flightType = FlightTypes.LOW_ALT_PATROL;
-        }
-        else if (missionOdds < lowAltCapMissionOdds)
-        {
-            flightType = FlightTypes.LOW_ALT_CAP;
-        }
-        else
-        {
-            flightType = FlightTypes.PATROL;
-        }
 
         return flightType;
-    }
+    }    
 
     private FlightTypes getAttackFlightType() throws PWCGException 
     {
         FlightTypes flightType = FlightTypes.GROUND_ATTACK;
-
         return flightType;
     }
 
-    private FlightTypes getBomberFlightType() 
-                        throws PWCGException 
+    private FlightTypes getBomberFlightType(Squadron squadron) throws PWCGException 
     {
-        FlightTypes flightType = FlightTypes.BOMB;
-        int missionOdds = RandomNumberGenerator.getRandom(100);
-        if (missionOdds < 15)
+        int currentIndex = 0;
+        if (squadron.determineSquadronCountry(campaign.getDate()).getSideNoNeutral() == Side.ALLIED)
         {
-            flightType = FlightTypes.LOW_ALT_BOMB;
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedBombingMissionKey, FlightTypes.BOMB, currentIndex);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedLowAltBombingMissionKey, FlightTypes.LOW_ALT_BOMB, currentIndex);
         }
+        else
+        {
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisBombingMissionKey, FlightTypes.BOMB, currentIndex);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisLowAltBombingMissionKey, FlightTypes.LOW_ALT_BOMB, currentIndex);
+        }
+        
+        int selectedIndex = WeightedOddsCalculator.calculateWeightedodds(weightedOdds);
+        FlightTypes flightType = flightTypesByIndex.get(selectedIndex);
 
         return flightType;
     }
 
-    private FlightTypes getReconFlightType()
+    private FlightTypes getReconFlightType(Squadron squadron) throws PWCGException
     {
-        FlightTypes flightType = FlightTypes.RECON;
-        int missionOdds = RandomNumberGenerator.getRandom(100);
-        if (missionOdds < 20)
+        int currentIndex = 0;
+        if (squadron.determineSquadronCountry(campaign.getDate()).getSideNoNeutral() == Side.ALLIED)
         {
-            flightType = FlightTypes.CONTACT_PATROL;
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedReconKey, FlightTypes.RECON, currentIndex);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedContactPatrolKey, FlightTypes.CONTACT_PATROL, currentIndex);
         }
+        else
+        {
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisReconKey, FlightTypes.RECON, currentIndex);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisContactPatrolKey, FlightTypes.CONTACT_PATROL, currentIndex);
+        }
+        
+        int selectedIndex = WeightedOddsCalculator.calculateWeightedodds(weightedOdds);
+        FlightTypes flightType = flightTypesByIndex.get(selectedIndex);
 
         return flightType;
     }
+    
 
+    private int addItemToWeightedList(String configKey, FlightTypes flightType, int currentIndex) throws PWCGException
+    {
+        int oddsOfMission = campaign.getCampaignConfigManager().getIntConfigParam(configKey);
+        weightedOdds.add(oddsOfMission);
+        flightTypesByIndex.put(currentIndex, flightType);
+        return ++currentIndex;
+    }
 }
