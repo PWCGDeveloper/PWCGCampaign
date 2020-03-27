@@ -19,6 +19,7 @@ public interface IVehicle extends IPWCGObject
     public void setAiLevel(AiSkillLevel aiLevel);
     public void setCountry(ICountry country);
     public void setPosition(Coordinate position);
+    public void setSpotterRange(int spotterRange);
     public String getDescription();
     public String getScript();
     public ICountry getCountry();

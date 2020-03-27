@@ -4,6 +4,7 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.mission.flight.FlightSpotterBuilder;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
@@ -25,7 +26,8 @@ public class PlayerScramblePackage implements IFlightPackage
         changeTargetLocationForPlayerFlight(opposingFlights);
 		PlayerScrambleFlight playerFlight = createPlayerFlight();
 		linkScrambleOpposingFlights(playerFlight, opposingFlights);
-		
+        FlightSpotterBuilder.createSpotters(playerFlight, flightInformation);
+
 		return playerFlight;
 	}
 
@@ -61,5 +63,4 @@ public class PlayerScramblePackage implements IFlightPackage
             playerFlight.getLinkedFlights().addLinkedFlight(opposingFlight);
         }
     }
-
 }

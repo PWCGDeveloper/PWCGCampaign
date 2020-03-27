@@ -36,6 +36,7 @@ public class Vehicle implements Cloneable, IVehicle
     protected int damageReport = 50;
     protected int damageThreshold = 1;
     protected int deleteAfterDeath = 1;
+    protected int spotter = -1;
     protected ICountry country = CountryFactory.makeCountryByCountry(Country.NEUTRAL);
 
     protected McuTREntity entity = new McuTREntity();
@@ -162,6 +163,8 @@ public class Vehicle implements Cloneable, IVehicle
             writer.newLine();
             writer.write("  DeleteAfterDeath = " + deleteAfterDeath + ";");
             writer.newLine();
+            writer.write("  Spotter = " + spotter + ";");
+            writer.newLine();
         }
         catch (IOException e)
         {
@@ -257,5 +260,11 @@ public class Vehicle implements Cloneable, IVehicle
     public int getIndex()
     {
         return index;
+    }
+
+    @Override
+    public void setSpotterRange(int spotterRange)
+    {
+        this.spotter = spotterRange;        
     }
 }
