@@ -44,7 +44,6 @@ public class ConfigItemKeys
     public static final String AxisTransportKey = "AxisTransport";
     public static final String AxisCargoDropKey = "AxisCargoDrop";
     public static final String AxisParachuteDropKey = "AxisParachuteDrop";    
-
     
 	public static final String AlliedOffensiveMissionKey = "AlliedOffensiveMission";
 	public static final String AlliedInterceptMissionKey = "AlliedInterceptMission";
@@ -61,6 +60,22 @@ public class ConfigItemKeys
     public static final String AlliedTransportKey = "AlliedTransport";
     public static final String AlliedCargoDropKey = "AlliedCargoDrop";
     public static final String AlliedParachuteDropKey = "AlliedParachuteDrop";    
+
+    public static final String AlliedTargetTypeAssaultKey = "AlliedTargetTypeAssault";    
+    public static final String AlliedTargetTypeDefenseKey = "AlliedTargetTypeDefense";    
+    public static final String AlliedTargetTypeTransportKey = "AlliedTargetTypeTransport";    
+    public static final String AlliedTargetTypeTrainKey = "AlliedTargetTypeTrain";    
+    public static final String AlliedTargetTypeAirfieldKey = "AlliedTargetTypeAirfield";    
+    public static final String AlliedTargetTypeShippingKey = "AlliedTargetTypeShipping";    
+    public static final String AlliedTargetTypeDrifterKey = "AlliedTargetTypeDrifter";    
+
+    public static final String AxisTargetTypeAssaultKey = "AxisTargetTypeAssault";    
+    public static final String AxisTargetTypeDefenseKey = "AxisTargetTypeDefense";    
+    public static final String AxisTargetTypeTransportKey = "AxisTargetTypeTransport";    
+    public static final String AxisTargetTypeTrainKey = "AxisTargetTypeTrain";    
+    public static final String AxisTargetTypeAirfieldKey = "AxisTargetTypeAirfield";    
+    public static final String AxisTargetTypeShippingKey = "AxisTargetTypeShipping";    
+    public static final String AxisTargetTypeDrifterKey = "AxisTargetTypeDrifter";    
 
 	public static final String IsEscortedOddsKey = "IsEscortedOdds";
 

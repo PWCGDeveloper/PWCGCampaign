@@ -1,31 +1,39 @@
 package pwcg.campaign.target;
 
-import java.util.List;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Matchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.target.locator.targettype.TargetTypeAttackGenerator;
-import pwcg.campaign.target.locator.targettype.TargetTypeAvailabilityInputs;
+import pwcg.campaign.factory.CountryFactory;
+import pwcg.campaign.squadron.Squadron;
+import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.target.TargetType;
+import pwcg.mission.target.TargetTypeAvailabilityInputs;
+import pwcg.mission.target.TargetTypeGroundAttackGenerator;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TargetTypeAttackGeneratorTest
 {    
     @Mock private TargetTypeAvailabilityInputs targetTypeAvailabilityInputs;
     @Mock private Campaign campaign;
+    @Mock private Squadron squadron;
+    @Mock private ConfigManagerCampaign configManagerCampaign;
     
     @Before
     public void setup() throws PWCGException
@@ -35,7 +43,11 @@ public class TargetTypeAttackGeneratorTest
         Mockito.when(targetTypeAvailabilityInputs.getSide()).thenReturn(Side.AXIS);
         Mockito.when(targetTypeAvailabilityInputs.getTargetGeneralLocation()).thenReturn(new Coordinate(216336, 0, 184721));
         Mockito.when(targetTypeAvailabilityInputs.getPreferredDistance()).thenReturn(60000.0);
-        Mockito.when(targetTypeAvailabilityInputs.getMaxDistance()).thenReturn(100000.0);        
+        Mockito.when(targetTypeAvailabilityInputs.getMaxDistance()).thenReturn(100000.0);  
+        ICountry country = CountryFactory.makeCountryByCountry(Country.BRITAIN);
+        Mockito.when(squadron.determineSquadronCountry(Matchers.any())).thenReturn(country); 
+        Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManagerCampaign); 
+        Mockito.when(configManagerCampaign.getIntConfigParam(Matchers.any())).thenReturn(10);
     }
     
     @Test
@@ -76,10 +88,10 @@ public class TargetTypeAttackGeneratorTest
 
     private void testPlaceAndTarget(TargetType targetType, boolean assertion) throws PWCGException
     {
-        TargetTypeAttackGenerator targetTypeAttackGenerator = new TargetTypeAttackGenerator(targetTypeAvailabilityInputs);        
+        TargetTypeGroundAttackGenerator targetTypeAttackGenerator = new TargetTypeGroundAttackGenerator(campaign, squadron, targetTypeAvailabilityInputs);        
         targetTypeAttackGenerator.formTargetPriorities();
-        List <TargetType> preferredTargetTypes = targetTypeAttackGenerator.getPreferredTargetTypes();
-        assert(preferredTargetTypes.contains(targetType) == assertion);
+        Map<TargetType, Integer> preferredTargetTypes = targetTypeAttackGenerator.getPreferredTargetTypes();
+        assert(preferredTargetTypes.containsKey(targetType) == assertion);
     }
 
 }

@@ -3,7 +3,6 @@ package pwcg.mission.target;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IFixedPosition;
 import pwcg.campaign.squadron.Squadron;
-import pwcg.campaign.target.locator.targettype.StrategicTargetTypeGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;

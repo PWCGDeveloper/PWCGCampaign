@@ -1,4 +1,4 @@
-package pwcg.campaign.target.locator.targettype;
+package pwcg.campaign.target.preference;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -6,8 +6,6 @@ import java.util.List;
 
 import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.target.TargetType;
 
 public class TargetPreferenceSet
 {
@@ -23,11 +21,9 @@ public class TargetPreferenceSet
         this.targetPreferences = targetPreferences;
     }
 
-    public TargetType getTargetPreferenceToUse(Date date, Side side) throws PWCGException 
+    public TargetPreference getTargetPreferenceToUse(Date date, Side side) throws PWCGException 
     {
-        TargetPreference selectedTargetPreference = getTargetPreferenceForDate(date, side);
-        TargetType targetType = getPreferredTargetType(selectedTargetPreference);
-        return targetType;
+        return getTargetPreferenceForDate(date, side);
     }
 
     private TargetPreference getTargetPreferenceForDate(Date date, Side side)
@@ -41,19 +37,5 @@ public class TargetPreferenceSet
             }
         }
         return selectedTargetPreference;
-    }
-
-    private TargetType getPreferredTargetType(TargetPreference selectedTargetPreference)
-    {
-        TargetType targetType = TargetType.TARGET_NONE;        
-        if (selectedTargetPreference != null)
-        {
-            int roll = RandomNumberGenerator.getRandom(100);
-            if (selectedTargetPreference.getOddsOfUse() <= roll)
-            {
-                targetType = selectedTargetPreference.getTargetType();
-            }
-        }
-        return targetType;
     }
 }

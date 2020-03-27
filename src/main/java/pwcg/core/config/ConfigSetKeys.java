@@ -8,6 +8,7 @@ public class ConfigSetKeys
     public static final String ConfigSetBomberMission = "ConfigSetBomberMission";
     public static final String ConfigSetReconMission = "ConfigSetReconMission";
     public static final String ConfigSetTransportMission = "ConfigSetTransportMission";
+    public static final String ConfigSetTarget = "ConfigSetTarget";
 	public static final String ConfigSetFlight = "ConfigSetFlight";
 	public static final String ConfigSetGroundObjects = "ConfigSetGroundObjects";
 	public static final String ConfigSetGUI = "ConfigSetGUI";

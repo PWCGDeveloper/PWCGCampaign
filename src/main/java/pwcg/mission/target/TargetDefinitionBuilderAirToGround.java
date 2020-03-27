@@ -1,9 +1,6 @@
 package pwcg.mission.target;
 
 import pwcg.campaign.squadron.Squadron;
-import pwcg.campaign.target.locator.targettype.TargetTypeAttackGenerator;
-import pwcg.campaign.target.locator.targettype.TargetTypeAvailabilityInputGenerator;
-import pwcg.campaign.target.locator.targettype.TargetTypeAvailabilityInputs;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -127,7 +124,7 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
 
     private TargetType createTargetType(TargetTypeAvailabilityInputs targetTypeAvailabilityInputs) throws PWCGException
     {
-        TargetTypeAttackGenerator targetTypeGenerator = new TargetTypeAttackGenerator(targetTypeAvailabilityInputs);
+        TargetTypeGroundAttackGenerator targetTypeGenerator = new TargetTypeGroundAttackGenerator(flightInformation.getCampaign(), flightInformation.getSquadron(), targetTypeAvailabilityInputs);
         TargetType targetType = targetTypeGenerator.createTargetType();
         return targetType;
     }

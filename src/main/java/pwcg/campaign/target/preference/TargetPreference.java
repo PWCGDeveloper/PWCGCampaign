@@ -1,4 +1,4 @@
-package pwcg.campaign.target.locator.targettype;
+package pwcg.campaign.target.preference;
 
 import java.util.Date;
 

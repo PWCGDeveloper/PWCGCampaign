@@ -11,7 +11,7 @@ import java.util.TreeMap;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.shipping.ShippingLaneManager;
-import pwcg.campaign.target.locator.targettype.TargetPreferenceManager;
+import pwcg.campaign.target.preference.TargetPreferenceManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.options.MapWeather;
 import pwcg.mission.options.MissionOptions;

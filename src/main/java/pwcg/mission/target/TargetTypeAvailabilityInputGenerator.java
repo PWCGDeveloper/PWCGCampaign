@@ -1,4 +1,4 @@
-package pwcg.campaign.target.locator.targettype;
+package pwcg.mission.target;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.core.exception.PWCGException;

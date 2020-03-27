@@ -1,4 +1,4 @@
-package pwcg.campaign.target.locator.targettype;
+package pwcg.campaign.target.preference;
 
 import pwcg.campaign.io.json.TargetPreferenceIOJson;
 import pwcg.core.exception.PWCGException;

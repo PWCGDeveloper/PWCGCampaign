@@ -1,4 +1,4 @@
-package pwcg.campaign.target.locator.targettype;
+package pwcg.mission.target;
 
 import java.util.ArrayList;
 import java.util.Date;

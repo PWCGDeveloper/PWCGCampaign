@@ -1,0 +1,75 @@
+{
+  "configSetName": "ConfigSetTarget",
+  "configMap": {
+    "AlliedTargetTypeAssault": {
+      "value": "10",
+      "label": "Allied Target Enemy Assault",
+      "help": "Weight given to of targeting an enemy assault - (Allied)"
+    },
+    "AlliedTargetTypeDefense": {
+      "value": "30",
+      "label": "Allied Target Enemy Defense",
+      "help": "Weight given to of targeting an enemy defense - (Allied)"
+    },
+    "AlliedTargetTypeTransport": {
+      "value": "30",
+      "label": "Allied Target Enemy Transport",
+      "help": "Weight given to of targeting enemy tranport - (Allied)"
+    },
+    "AlliedTargetTypeTrain": {
+      "value": "30",
+      "label": "Allied Target Enemy Train",
+      "help": "Weight given to of targeting enemy train - (Allied)"
+    },
+    "AlliedTargetTypeAirfield": {
+      "value": "10",
+      "label": "Allied Target Enemy Airfield",
+      "help": "Weight given to of targeting enemy airfield - (Allied)"
+    },
+    "AlliedTargetTypeShipping": {
+      "value": "5",
+      "label": "Allied Target Enemy Shipping",
+      "help": "Weight given to of targeting enemy shipping - (Allied)"
+    },
+    "AlliedTargetTypeDrifter": {
+      "value": "5",
+      "label": "Allied Target Enemy Drifter",
+      "help": "Weight given to of targeting enemy drifter - (Allied)"
+    },
+    "AxisTargetTypeAssault": {
+      "value": "30",
+      "label": "Axis Target Enemy Assault",
+      "help": "Weight given to of targeting an enemy assault - (Axis)"
+    },
+    "AxisTargetTypeDefense": {
+      "value": "10",
+      "label": "Axis Target Enemy Defense",
+      "help": "Weight given to of targeting an enemy defense - (Axis)"
+    },
+    "AxisTargetTypeTransport": {
+      "value": "30",
+      "label": "Axis Target Enemy Transport",
+      "help": "Weight given to of targeting enemy tranport - (Axis)"
+    },
+    "AxisTargetTypeTrain": {
+      "value": "30",
+      "label": "Axis Target Enemy Train",
+      "help": "Weight given to of targeting enemy train - (Axis)"
+    },
+    "AxisTargetTypeAirfield": {
+      "value": "10",
+      "label": "Axis Target Enemy Airfield",
+      "help": "Weight given to of targeting enemy airfield - (Axis)"
+    },
+    "AxisTargetTypeShipping": {
+      "value": "5",
+      "label": "Axis Target Enemy Shipping",
+      "help": "Weight given to of targeting enemy shipping - (Axis)"
+    },
+    "AxisTargetTypeDrifter": {
+      "value": "5",
+      "label": "Axis Target Enemy Drifter",
+      "help": "Weight given to of targeting enemy drifter - (Axis)"
+    }
+  }
+}

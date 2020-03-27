@@ -12,7 +12,6 @@ public class ConfigManagerCampaign extends ConfigManager
 	public void initialize() throws PWCGException 
 	{
 	    initializeDefault();
-
         readConfig();
 	}
 
@@ -27,6 +26,8 @@ public class ConfigManagerCampaign extends ConfigManager
         defaultCampaignConfigSets.put(ConfigSetKeys.ConfigSetReconMission, ConfigSetReconMissionTypes.initialize());
         defaultCampaignConfigSets.put(ConfigSetKeys.ConfigSetTransportMission, ConfigSetTransportMissionTypes.initialize());
         defaultCampaignConfigSets.put(ConfigSetKeys.ConfigSetMissionSpacing, ConfigSetMissionSpacing.initialize());
+        defaultCampaignConfigSets.put(ConfigSetKeys.ConfigSetTarget, ConfigSetTargetTypes.initialize());
+
         defaultCampaignConfigSets.put(ConfigSetKeys.ConfigSetAircraftNumbers, ConfigSetAircraftNumbers.initialize());
         defaultCampaignConfigSets.put(ConfigSetKeys.ConfigSetUserPrefCampaign, ConfigSetUserPrefCampaign.initialize());
         defaultCampaignConfigSets.put(ConfigSetKeys.ConfigSetWeather, ConfigSetWeather.initialize());
