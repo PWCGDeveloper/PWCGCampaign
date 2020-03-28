@@ -81,7 +81,7 @@ public class SquadronPersonnel
     public SquadronMembers getActiveAiSquadronMembers() throws PWCGException
     {
         SquadronMembers campaignMembers = getSquadronMembersWithAces();
-        SquadronMembers activeSquadronMembers = SquadronMemberFilter.filterActiveAIAndAces(campaignMembers.getSquadronMemberCollection(), campaign.getDate());
+        SquadronMembers activeSquadronMembers = SquadronMemberFilter.filterActiveAIAndAcesNoWounded(campaignMembers.getSquadronMemberCollection(), campaign.getDate());
         return activeSquadronMembers;
     }
 

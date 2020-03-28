@@ -159,4 +159,18 @@ public class SquadronMemberFilterFactory
         return filterSpecification;
     }
 
+    public static SquadronMemberFilterSpecification buildActiveAIAndAcesNoWoundedFilter(Date date)
+    {
+        SquadronMemberFilterSpecification filterSpecification = new SquadronMemberFilterSpecification();
+        filterSpecification.setDate(date);
+        filterSpecification.setIncludePlayer(false);        
+        filterSpecification.setIncludeAces(true);
+        filterSpecification.setIncludeAI(true);
+        filterSpecification.setIncludeWounded(false);
+        filterSpecification.setIncludeActive(true);
+        filterSpecification.setIncludeInactive(false);
+        filterSpecification.setSpecifySquadron(SquadronMemberFilterSpecification.NO_SQUADRON_FILTER);
+        return filterSpecification;
+    }
+
 }
