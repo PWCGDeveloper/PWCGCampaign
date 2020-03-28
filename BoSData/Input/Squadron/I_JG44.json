@@ -40,6 +40,15 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "specializedRole": "SPECIALIZED_ROLE_INTERCEPTOR"
+      }
+    ]
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {

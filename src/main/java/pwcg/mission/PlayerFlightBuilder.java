@@ -48,7 +48,7 @@ public class PlayerFlightBuilder
         IFlightTypeFactory flightTypeFactory = PWCGFlightFactoryFactory.createFlightFactory(campaign);
         if (flightType == FlightTypes.ANY)
         {
-            flightType = getSpecialFlightType(mission.getParticipatingPlayers());
+            flightType = getCampaignContextFlightType(mission.getParticipatingPlayers());
             if (flightType == FlightTypes.ANY)
             {
                 boolean isPlayerFlight = true;
@@ -78,7 +78,7 @@ public class PlayerFlightBuilder
         }
     }
 
-    private FlightTypes getSpecialFlightType(MissionHumanParticipants participatingPlayers) throws PWCGException
+    private FlightTypes getCampaignContextFlightType(MissionHumanParticipants participatingPlayers) throws PWCGException
     {
         if (!(campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COMPETITIVE))
         {
@@ -86,7 +86,7 @@ public class PlayerFlightBuilder
             if (playerSquadronsInMission.size() == 1)
             {
                 Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(playerSquadronsInMission.get(0));
-                IFlightTypeFactory flightTypeFactory = PWCGFlightFactoryFactory.createSpecialFlightFactory(campaign);
+                IFlightTypeFactory flightTypeFactory = PWCGFlightFactoryFactory.createCampaignContextFlightFactory(campaign);
                 boolean isPlayerFlight = true;
                 FlightTypes playerFlightType = flightTypeFactory.getFlightType(squadron, isPlayerFlight);
                 return playerFlightType;

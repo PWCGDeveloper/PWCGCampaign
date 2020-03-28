@@ -5,7 +5,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.mission.flight.factory.BoSFlightTypeCoopFactory;
 import pwcg.mission.flight.factory.BoSFlightTypeFactory;
-import pwcg.mission.flight.factory.BoSFlightTypeSpecialFactory;
+import pwcg.mission.flight.factory.BoSFlightTypeCampaignContextFactory;
 import pwcg.mission.flight.factory.FCFlightTypeCoopFactory;
 import pwcg.mission.flight.factory.FCFlightTypeFactory;
 import pwcg.mission.flight.factory.FCFlightTypeSpecialFactory;
@@ -40,7 +40,7 @@ public class PWCGFlightFactoryFactory
         }
     }
 
-    public static IFlightTypeFactory createSpecialFlightFactory(Campaign campaign)
+    public static IFlightTypeFactory createCampaignContextFlightFactory(Campaign campaign)
     {
         if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
@@ -48,7 +48,7 @@ public class PWCGFlightFactoryFactory
         }
         else
         {
-            return new BoSFlightTypeSpecialFactory(campaign);
+            return new BoSFlightTypeCampaignContextFactory(campaign);
         }
     }
 

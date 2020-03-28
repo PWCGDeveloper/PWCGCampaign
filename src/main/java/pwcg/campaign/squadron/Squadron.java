@@ -31,6 +31,7 @@ import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.SpecializedRole;
 import pwcg.campaign.plane.SquadronPlaneAssignment;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.squadmember.Ace;
@@ -38,9 +39,9 @@ import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
+import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
-import pwcg.core.utils.MathUtils;
 
 public class Squadron 
 {
@@ -61,7 +62,8 @@ public class Squadron
 	private List<Skin> skins = new ArrayList<Skin>();
 	private SquadHistory squadHistory;
 	private int serviceId;
-	private SquadronRoleSet squadronRoles = new SquadronRoleSet();
+    private SquadronRoleSet squadronRoles = new SquadronRoleSet();
+    private SquadronSpecializedRoleSet squadronSpecializedRoles = new SquadronSpecializedRoleSet();
 	private NightMissionSet nightMissionOdds = new NightMissionSet();
 	private List<SquadronConversionPeriod> conversionPeriods = new ArrayList<>();
     private Map<Date, Callsign> callsigns = new TreeMap<>();
@@ -826,5 +828,10 @@ public class Squadron
     public void setPlaneAssignments(List<SquadronPlaneAssignment> planeAssignments)
     {
         this.planeAssignments = planeAssignments;
+    }
+    
+    public SpecializedRole getActiveSpecializedRole(Date date) throws PWCGException
+    {
+        return squadronSpecializedRoles.selectSpecializedRoleForMission(date);
     }
 }

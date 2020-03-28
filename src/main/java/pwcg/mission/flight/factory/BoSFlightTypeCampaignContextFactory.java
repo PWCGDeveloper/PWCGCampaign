@@ -18,12 +18,12 @@ import pwcg.mission.MissionAntiShippingSeaLaneFinder;
 import pwcg.mission.SquadronRange;
 import pwcg.mission.flight.FlightTypes;
 
-public class BoSFlightTypeSpecialFactory implements IFlightTypeFactory
+public class BoSFlightTypeCampaignContextFactory implements IFlightTypeFactory
 {
     private Campaign campaign;
     private ConfigManagerCampaign configManager;
     
-    public BoSFlightTypeSpecialFactory (Campaign campaign) 
+    public BoSFlightTypeCampaignContextFactory (Campaign campaign) 
     {
         this.campaign = campaign;
         this.configManager = campaign.getCampaignConfigManager();

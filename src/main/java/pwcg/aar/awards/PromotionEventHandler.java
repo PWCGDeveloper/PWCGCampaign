@@ -31,11 +31,16 @@ public class PromotionEventHandler
             PromotionEventHandlerFighter fighterPromotions = new PromotionEventHandlerFighter();
             promotion = fighterPromotions.determineScoutPromotion(campaign, squadronMember);
 		}
-		else if (primaryRole == Role.ROLE_STRAT_BOMB)
-		{
-		    PromotionEventHandlerStrategic strategicPromotions = new PromotionEventHandlerStrategic();
-		    promotion = strategicPromotions.determineStrategicPromotion(campaign, squadronMember);
-		}
+        else if (primaryRole == Role.ROLE_BOMB)
+        {
+            PromotionEventHandlerBomb tacticalBomberPromotions = new PromotionEventHandlerBomb();
+            promotion = tacticalBomberPromotions.determineStrategicPromotion(campaign, squadronMember);
+        }
+        else if (primaryRole == Role.ROLE_STRAT_BOMB)
+        {
+            PromotionEventHandlerStrategic strategicPromotions = new PromotionEventHandlerStrategic();
+            promotion = strategicPromotions.determineStrategicPromotion(campaign, squadronMember);
+        }
         else
         {
             PromotionEventHandlerRecon reconPromotions = new PromotionEventHandlerRecon();

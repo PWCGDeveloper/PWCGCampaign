@@ -51,13 +51,22 @@
           },
           {
             "role": "ROLE_ATTACK",
-            "weight": 65
+            "weight": 30
           },
           {
             "role": "ROLE_FIGHTER",
-            "weight": 35
+            "weight": 60
           }
         ]
+      }
+    ]
+  },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "specializedRole": "SPECIALIZED_ROLE_INTERCEPTOR"
       }
     ]
   },
