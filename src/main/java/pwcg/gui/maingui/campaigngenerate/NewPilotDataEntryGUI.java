@@ -23,6 +23,7 @@ import javax.swing.SwingConstants;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.Country;
@@ -614,14 +615,21 @@ public class NewPilotDataEntryGUI extends ImageResizingPanel implements ActionLi
 	}
 
     private void makeCoopUserChoices(List<CoopUser> coopUsers) 
-    {
+    {        
 		cbCoopUser.removeActionListener(this);
 		cbCoopUser.removeAllItems();
 
-		for (CoopUser coopUser : coopUsers)
-		{
-			cbCoopUser.addItem(coopUser.getUsername());
-		}
+        if (campaignGeneratorDO.getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
+        {
+            cbCoopUser.addItem("Single Player");
+        }
+        else
+        {
+            for (CoopUser coopUser : coopUsers)
+            {
+                cbCoopUser.addItem(coopUser.getUsername());
+            }            
+        }
 
 		cbCoopUser.setSelectedIndex(0);
         String coopUsername = (String)cbCoopUser.getSelectedItem();

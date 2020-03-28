@@ -175,6 +175,7 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
         campaignGeneratorDO.setService(service);
         campaignGeneratorDO.setCampaignName(campaign.getCampaignData().getName());
         campaignGeneratorDO.setStartDate(campaign.getDate());
+        campaignGeneratorDO.setCampaignMode(campaign.getCampaignData().getCampaignMode());
         
         dataEntry = new NewPilotDataEntryGUI(this);
         dataEntry.setCampaignGeneratorDO(campaign, campaignGeneratorDO);
