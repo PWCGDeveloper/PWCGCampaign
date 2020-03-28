@@ -1,0 +1,67 @@
+{
+  "country": "GERMANY",
+  "squadronId": 20131054,
+  "name": "I./KG54",
+  "fileName": "I_KG54.json",
+  "skill": 50,
+  "planeAssignments": [
+    {
+      "archType": "ju88",
+      "squadronIntroduction": "19410801",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "airfields": {
+    "19440901": "Schijndel",
+    "19441001": "Strassfeld",
+    "19441101": "Koln-Wahn",
+    "19441220": "Koln-Wahn",
+    "19441225": "Koln-Wahn",
+    "19441229": "Koln-Wahn",
+    "19450207": "Limburg-Linter",
+    "19450310": "Altenstadt",
+    "19450404": "Vorden"
+  },
+  "skins": [],
+  "squadHistory": {
+    "squadHistoryEntries": [
+    ]
+  },
+  "serviceId": 20101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_RECON",
+            "weight": 10
+          },
+          {
+            "role": "ROLE_BOMB",
+            "weight": 80
+          },
+          {
+            "role": "ROLE_DIVE_BOMB",
+            "weight": 10
+          }
+        ]
+      }
+    ]
+  },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "nightMissionOdds": 25
+      }
+    ]
+  },
+  "conversionPeriods": [
+  ],
+  "callsigns": {
+    "19410801": "GANNET"
+  }
+}

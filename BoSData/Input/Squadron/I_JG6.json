@@ -1,0 +1,64 @@
+{
+  "country": "GERMANY",
+  "squadronId": 20111006,
+  "name": "I./JG6",
+  "fileName": "I_JG6.json",
+  "skill": 70,
+  "planeAssignments": [
+    {
+      "archType": "fw190",
+      "squadronIntroduction": "19440901",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "airfields": {
+    "19440901": "Woensdrecht",
+    "19441001": "GraveKeent",
+    "19441101": "Koln-Butzweilerhof",
+    "19441220": "Koln-Ostheim",
+    "19441225": "Kirchhellen",
+    "19441229": "Kirchhellen",
+    "19450207": "Bonn-Hangelar_3960",
+    "19450310": "Limburg-Linter",
+    "19450404": "Kirtorf"
+  },
+  "skins": [
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": [
+    ]
+  },
+  "serviceId": 20101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 80
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 20
+          }
+        ]
+      }
+    ]
+  },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+       {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "nightMissionOdds": 5
+      }
+    ]
+  },
+  "conversionPeriods": [
+  ],
+  "callsigns": {
+    "19410801": "DUCK"
+  }
+}

@@ -4,6 +4,7 @@ import java.util.Date;
 
 import pwcg.aar.data.AARContext;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.personnel.InitialSquadronBuilder;
 import pwcg.campaign.resupply.depot.EquipmentArchTypeChangeHandler;
 import pwcg.campaign.resupply.depot.EquipmentDepotReplenisher;
@@ -49,6 +50,8 @@ public class CampaignUpdater
         finishCampaignUpdates(aarContext.getNewDate());
         
         aarContext.resetContextForNextTimeIncrement();
+        
+        PWCGContext.getInstance().setMapForCampaign(campaign);
     }
     
     private void finishCampaignUpdates(Date newDate) throws PWCGException

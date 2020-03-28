@@ -51,6 +51,7 @@ public class Campaign
         campaignData.setName(campaignName);
 
         initializeCampaignConfigs();
+        
         if (!readValidCampaign())
         {
             return false;

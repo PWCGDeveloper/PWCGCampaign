@@ -13,11 +13,6 @@
     {
       "archType": "fw190",
       "squadronIntroduction": "19430302",
-      "squadronWithdrawal": "19440831"
-    },
-    {
-      "archType": "bf109",
-      "squadronIntroduction": "19440901",
       "squadronWithdrawal": "19450601"
     }
   ],
@@ -46,15 +41,7 @@
     "19430927": "Taman",
     "19431004": "Taman",
     "19431008": "Kerch",
-    "19440901": "Helmond",
-    "19441001": "Krefeld-Linn",
-    "19441101": "Krefeld-Linn",
-    "19441220": "Koln-Butzweilerhof",
-    "19441225": "Koln-Butzweilerhof",
-    "19441229": "Koln-Butzweilerhof",
-    "19450207": "Essen-Mulheim",
-    "19450310": "Dortmund",
-    "19450404": "Paderborn"
+    "19440901": "Kumovka"
   },
   "skins": [
     {
@@ -70,12 +57,6 @@
   ],
   "squadHistory": {
     "squadHistoryEntries": [
-      {
-        "date": "19440901",
-        "squadName": "II./JG51",
-        "armedServiceName": "Luftwaffe",
-        "skill": 50
-      }
     ]
   },
   "serviceId": 20101,
@@ -94,20 +75,6 @@
             "weight": 100
           }
         ]
-      },
-      {
-        "startDate": "19440901",
-        "endDate": "19450601",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 80
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 20
-          }
-        ]
       }
     ]
   },
@@ -124,10 +91,6 @@
     {
       "conversionStartDate": "19430302",
       "conversionCompleteDate": "19430321"
-    },
-    {
-      "conversionStartDate": "19440101",
-      "conversionCompleteDate": "19440831"
     }
   ],
   "callsigns": {

@@ -254,7 +254,7 @@ public class DateUtils
 
     public static Date getEndOfWWIIRussia() throws PWCGException
     {
-        return getDateNoCheck("01/02/1944");
+        return getDateNoCheck("01/06/1945");
     }
 
     public static Date getStartofWWIIItaly() throws PWCGException

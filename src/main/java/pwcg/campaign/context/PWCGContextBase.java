@@ -80,12 +80,18 @@ public abstract class PWCGContextBase implements IPWCGContextManager
         this.campaign = campaign;
         if (campaign != null)
         {
-        	FrontMapIdentifier mapIdentifier = MapFinderForCampaign.findMapForCampaign(campaign);
-            if (mapIdentifier != null)
-            {
-                changeContext(mapIdentifier);
-                resetForMovingFront();
-            }
+        	setMapForCampaign(campaign);
+        }
+    }
+
+    @Override
+    public void setMapForCampaign(Campaign campaign) throws PWCGException
+    {
+        FrontMapIdentifier mapIdentifier = MapFinderForCampaign.findMapForCampaign(campaign);
+        if (mapIdentifier != null)
+        {
+            changeContext(mapIdentifier);
+            resetForMovingFront();
         }
     }
 

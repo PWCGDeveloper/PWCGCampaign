@@ -48,6 +48,7 @@ public class StalingradMap extends PWCGMap
     protected void configureTransitionDates() throws PWCGException
     {
         this.frontDatesForMap.addMapDateRange(DateUtils.getDateYYYYMMDD("19420301"), DateUtils.getDateYYYYMMDD("19430202"));
+        this.frontDatesForMap.addMapDateRange(DateUtils.getDateYYYYMMDD("19440101"), DateUtils.getDateYYYYMMDD("19450501"));
 
         this.frontDatesForMap.addFrontDate("19420301");
         this.frontDatesForMap.addFrontDate("19420801");
@@ -56,6 +57,7 @@ public class StalingradMap extends PWCGMap
         this.frontDatesForMap.addFrontDate("19421123");
         this.frontDatesForMap.addFrontDate("19421223");
         this.frontDatesForMap.addFrontDate("19430120");
+        this.frontDatesForMap.addFrontDate("19440101");
     }
 
 }

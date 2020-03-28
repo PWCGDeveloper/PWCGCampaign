@@ -1,0 +1,60 @@
+{
+  "country": "GERMANY",
+  "squadronId": 20131051,
+  "name": "I./KG51",
+  "fileName": "I_KG51.json",
+  "skill": 60,
+  "planeAssignments": [
+    {
+      "archType": "me262",
+      "squadronIntroduction": "19440901",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "airfields": {
+    "19440901": "Rips",
+    "19441001": "Twente",
+    "19441101": "Twente",
+    "19441220": "Kirchhellen",
+    "19441225": "Twente",
+    "19441229": "Twente",
+    "19450207": "Twente",
+    "19450310": "Twente",
+    "19450404": "Achmer"
+  },
+  "skins": [
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": [
+    ]
+  },
+  "serviceId": 20101,
+  "squadronRoles": {
+      "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "nightMissionOdds": 10
+      }
+    ]
+  },
+  "conversionPeriods": [
+  ],
+  "callsigns": {
+    "19410801": "SEAGULL"
+  }
+}

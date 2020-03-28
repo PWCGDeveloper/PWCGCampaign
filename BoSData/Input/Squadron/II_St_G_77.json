@@ -41,15 +41,7 @@
     "19430927": "Kerch",
     "19431004": "Kerch",
     "19431008": "Marfovka",
-    "19440901": "Asch",
-    "19441001": "Venlo",
-    "19441101": "Twente",
-    "19441220": "Krefeld",
-    "19441225": "Krefeld",
-    "19441229": "Krefeld",
-    "19450207": "Koln-Butzweilerhof",
-    "19450310": "Limburg-Linter",
-    "19450404": "Ettinghausen"
+    "19440101": "Kamchie"
   },
   "skins": [
     {
@@ -65,12 +57,6 @@
   ],
   "squadHistory": {
     "squadHistoryEntries": [
-      {
-        "date": "19440901",
-        "squadName": "II./SG4",
-        "armedServiceName": "Luftwaffe",
-        "skill": 45
-      }
     ]
   },
   "serviceId": 20101,
@@ -78,7 +64,7 @@
     "squadronRolePeriods": [
       {
         "startDate": "19400101",
-        "endDate": "19440831",
+        "endDate": "19431231",
         "weightedRoles": [
           {
             "role": "ROLE_DIVE_BOMB",
@@ -87,7 +73,7 @@
         ]
       },
       {
-        "startDate": "19440901",
+        "startDate": "19440101",
         "endDate": "19450601",
         "weightedRoles": [
           {
@@ -112,10 +98,6 @@
     ]
   },
   "conversionPeriods": [
-    {
-      "conversionStartDate": "19440101",
-      "conversionCompleteDate": "19440831"
-    }
   ],
   "callsigns": {
     "19410801": "CRANE"

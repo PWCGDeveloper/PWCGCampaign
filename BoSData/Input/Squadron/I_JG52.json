@@ -36,15 +36,7 @@
     "19430927": "Taman",
     "19431004": "Taman",
     "19431008": "Taman",
-    "19440901": "Eindhoven",
-    "19441001": "Kluis",
-    "19441101": "Essen-Mulheim",
-    "19441220": "Bonn-Hangelar_3960",
-    "19441225": "Strassfeld",
-    "19441229": "Bonn-Hangelar_3960",
-    "19450207": "Krefeld-Linn",
-    "19450310": "Breitscheid",
-    "19450404": "Stormede"
+    "19440901": "Evlampievsky"
   },
   "skins": [
     {
@@ -70,12 +62,6 @@
   ],
   "squadHistory": {
     "squadHistoryEntries": [
-      {
-        "date": "19440901",
-        "squadName": "I./JG27",
-        "armedServiceName": "Luftwaffe",
-        "skill": 70
-      }
     ]
   },
   "serviceId": 20101,
@@ -83,7 +69,7 @@
     "squadronRolePeriods": [
       {
         "startDate": "19400101",
-        "endDate": "19440831",
+        "endDate": "19450601",
         "weightedRoles": [
           {
             "role": "ROLE_FIGHTER",
@@ -92,24 +78,6 @@
           {
             "role": "ROLE_ATTACK",
             "weight": 10
-          }
-        ]
-      },
-      {
-        "startDate": "19440901",
-        "endDate": "19450601",
-        "weightedRoles": [
-          {
-            "role": "ROLE_RECON",
-            "weight": 3
-          },
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 80
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 20
           }
         ]
       }
@@ -125,10 +93,6 @@
     ]
   },
   "conversionPeriods": [
-    {
-      "conversionStartDate": "19440101",
-      "conversionCompleteDate": "19440831"
-    }
   ],
   "callsigns": {
     "19411001": "ROOK"

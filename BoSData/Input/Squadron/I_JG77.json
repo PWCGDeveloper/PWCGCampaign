@@ -1,0 +1,64 @@
+{
+  "country": "GERMANY",
+  "squadronId": 20111077,
+  "name": "I./JG77",
+  "fileName": "I_JG77.json",
+  "skill": 70,
+  "planeAssignments": [
+    {
+      "archType": "bf109",
+      "squadronIntroduction": "19411001",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "airfields": {
+    "19440901": "Ophoven",
+    "19441001": "Koln-Butzweilerhof",
+    "19441101": "Dusseldorf-Lohausen",
+    "19441220": "Krefeld-Linn",
+    "19441225": "Essen-Mulheim",
+    "19441229": "Soesterberg",
+    "19450207": "Koln-Ostheim",
+    "19450310": "Wiesbaden-Erbenheim",
+    "19450404": "Gross-Ostheim"
+  },
+  "skins": [
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": [
+    ]
+  },
+  "serviceId": 20101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 80
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 20
+          }
+        ]
+      }
+    ]
+  },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "nightMissionOdds": 3
+      }
+    ]
+  },
+  "conversionPeriods": [
+  ],
+  "callsigns": {
+    "19410801": "ORIOLE"
+  }
+}

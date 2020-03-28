@@ -1,29 +1,33 @@
 {
   "country": "GERMANY",
-  "squadronId": 20144002,
-  "name": "IV(Pz)./Sch.G.2",
-  "fileName": "IV_PzSch_G_2.json",
-  "skill": 70,
+  "squadronId": 20122004,
+  "name": "II./SG 4",
+  "fileName": "II_SG4.json",
+  "skill": 60,
   "planeAssignments": [
     {
-      "archType": "hs129",
-      "squadronIntroduction": "19420820",
+      "archType": "fw190",
+      "squadronIntroduction": "19440901",
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-  ],  
   "airfields": {
-    "19430301": "Holmskaya",
-    "19430330": "Kievskoe",
-    "19430418": "Gostagaevskaya",
-    "19430918": "Gostagaevskaya",
-    "19430927": "Zaporojskaya",
-    "19431004": "Zaporojskaya",
-    "19431008": "Zaporojskaya",
-    "19440101": "Kumovka"
+    "19440901": "Asch",
+    "19441001": "Venlo",
+    "19441101": "Twente",
+    "19441220": "Krefeld",
+    "19441225": "Krefeld",
+    "19441229": "Krefeld",
+    "19450207": "Koln-Butzweilerhof",
+    "19450310": "Limburg-Linter",
+    "19450404": "Ettinghausen"
   },
-  "skins": [],
+  "skins": [
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": [
+    ]
+  },
   "serviceId": 20101,
   "squadronRoles": {
     "squadronRolePeriods": [
@@ -31,10 +35,6 @@
         "startDate": "19400101",
         "endDate": "19450601",
         "weightedRoles": [
-          {
-            "role": "ROLE_RECON",
-            "weight": 10
-          },
           {
             "role": "ROLE_ATTACK",
             "weight": 100
@@ -52,7 +52,9 @@
       }
     ]
   },
+  "conversionPeriods": [
+  ],
   "callsigns": {
-    "19410801": "STORK"
+    "19410801": "CRANE"
   }
 }

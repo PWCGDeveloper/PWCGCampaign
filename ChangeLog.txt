@@ -1,7 +1,15 @@
 ​
 At the PWCG web site
 
- 
+PWCG 8.1.0
+Added enemy cover for balloon bust missions
+Added opposition for balloon defense missions
+Artillery now fires at a target
+Ground vehicles now have individual waypoints to avoid collisions
+Bombing mission selection is now configurable
+Recon mission selection is now configurable
+Transport mission selection is now configurable
+Ground target selection is now configurable
 
 PWCG 8.0.0
 PWCG 8.0 contains dozens of small improvements.  Here are some of the more important ones:

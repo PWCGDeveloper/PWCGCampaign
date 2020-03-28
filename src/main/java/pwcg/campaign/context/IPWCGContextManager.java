@@ -75,4 +75,6 @@ public interface IPWCGContextManager
     VehicleDefinitionManager getVehicleDefinitionManager();
 
     StaticObjectDefinitionManager getStaticObjectDefinitionManager();
+
+    void setMapForCampaign(Campaign campaign) throws PWCGException;
 }

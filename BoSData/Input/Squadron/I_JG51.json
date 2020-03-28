@@ -13,11 +13,6 @@
     {
       "archType": "fw190",
       "squadronIntroduction": "19420514",
-      "squadronWithdrawal": "19441101"
-    },
-    {
-      "archType": "fw190d",
-      "squadronIntroduction": "19441001",
       "squadronWithdrawal": "19450601"
     }
   ],
@@ -46,15 +41,7 @@
     "19430927": "Zaporojskaya",
     "19431004": "Zaporojskaya",
     "19431008": "Kerch",
-    "19440901": "Gilze-Rijen",
-    "19441001": "Bonninghardt-Sud",
-    "19441101": "Kirchhellen",
-    "19441220": "Strassfeld",
-    "19441225": "Dusseldorf-Lohausen",
-    "19441229": "Essen-Mulheim",
-    "19450207": "Krefeld",
-    "19450310": "Kirchhellen",
-    "19450404": "Gelnhausen"
+    "19440101": "Tuzov"
   },
   "skins": [
     {
@@ -110,12 +97,6 @@
   ],
   "squadHistory": {
     "squadHistoryEntries": [
-      {
-        "date": "19440901",
-        "squadName": "I./JG26",
-        "armedServiceName": "Luftwaffe",
-        "skill": 70
-      }
     ]
   },
   "serviceId": 20101,
@@ -141,7 +122,7 @@
       },
       {
         "startDate": "19420514",
-        "endDate": "19450201",
+        "endDate": "19450601",
         "weightedRoles": [
           {
             "role": "ROLE_FIGHTER",
@@ -150,20 +131,6 @@
           {
             "role": "ROLE_ATTACK",
             "weight": 20
-          }
-        ]
-      },
-      {
-        "startDate": "19450201",
-        "endDate": "19450601",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 90
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 10
           }
         ]
       }
@@ -182,10 +149,6 @@
     {
       "conversionStartDate": "19420514",
       "conversionCompleteDate": "19420529"
-    },
-    {
-      "conversionStartDate": "19440101",
-      "conversionCompleteDate": "19440831"
     }
   ],
   "callsigns": {

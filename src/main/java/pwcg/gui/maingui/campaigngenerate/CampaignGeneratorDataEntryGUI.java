@@ -868,7 +868,8 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
     		cbSquadron.removeAllItems();
             CampaignGeneratorSquadronFilter squadronFilter = new CampaignGeneratorSquadronFilter();
 	        String selectedRole = (String)cbRole.getSelectedItem();
-            List<String> squadronNames = squadronFilter.makeSquadronChoices(campaignDate, dateCorrectedService, campaignGeneratorDO.getFrontMap(), selectedRole, campaignGeneratorDO.isCommandRank());
+            List<String> squadronNames = squadronFilter.makeSquadronChoices(
+                    campaignDate, dateCorrectedService, campaignGeneratorDO.getFrontMap(), selectedRole, campaignGeneratorDO.isCommandRank());
             
             for (String squadronName : squadronNames)
             {
@@ -993,7 +994,6 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
     public void setCampaignGeneratorDO(CampaignGeneratorDO campaignGeneratorDO) throws PWCGException
     {
         this.campaignGeneratorDO = campaignGeneratorDO;
-        
         campaignGeneratorState = new CampaignGeneratorState(campaignGeneratorDO);
     }
 }

@@ -8,16 +8,6 @@
     {
       "archType": "bf109",
       "squadronIntroduction": "19411001",
-      "squadronWithdrawal": "19440831"
-    },
-    {
-      "archType": "fw190",
-      "squadronIntroduction": "19440901",
-      "squadronWithdrawal": "19441201"
-    },
-    {
-      "archType": "fw190d",
-      "squadronIntroduction": "19441101",
       "squadronWithdrawal": "19450601"
     }
   ],
@@ -46,15 +36,7 @@
     "19430927": "Taman",
     "19431004": "Taman",
     "19431008": "Zaporojskaya",
-    "19440901": "PetitBrogel",
-    "19441001": "Dusseldorf-Lohausen",
-    "19441101": "Koln-Butzweilerhof",
-    "19441220": "Dusseldorf-Lohausen",
-    "19441225": "Soesterberg",
-    "19441229": "Dusseldorf-Lohausen",
-    "19450207": "Dusseldorf-Lohausen",
-    "19450310": "Breitscheid",
-    "19450404": "Nidda"
+    "19440101": "Kumovka"
   },
   "skins": [
     {
@@ -90,12 +72,6 @@
   ],
   "squadHistory": {
     "squadHistoryEntries": [
-      {
-        "date": "19440901",
-        "squadName": "I./JG2",
-        "armedServiceName": "Luftwaffe",
-        "skill": 70
-      }
     ]
   },
   "serviceId": 20101,
@@ -103,7 +79,7 @@
     "squadronRolePeriods": [
       {
         "startDate": "19400101",
-        "endDate": "19440901",
+        "endDate": "19450601",
         "weightedRoles": [
           {
             "role": "ROLE_RECON",
@@ -116,20 +92,6 @@
           {
             "role": "ROLE_ATTACK",
             "weight": 10
-          }
-        ]
-      },
-      {
-        "startDate": "19440901",
-        "endDate": "19450601",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 80
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 20
           }
         ]
       }
@@ -145,10 +107,6 @@
     ]
   },
   "conversionPeriods": [
-    {
-      "conversionStartDate": "19440101",
-      "conversionCompleteDate": "19440831"
-    }
   ],
   "callsigns": {
     "19410801": "FINCH"

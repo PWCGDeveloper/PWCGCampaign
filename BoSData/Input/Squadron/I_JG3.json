@@ -30,6 +30,7 @@
     "19430927": "Taman",
     "19431004": "Taman",
     "19431008": "Bagerovo",
+    "19440101": "Zimovskoy",
     "19440901": "Aachen",
     "19441001": "Kelz",
     "19441101": "Koln-Ostheim",
@@ -129,10 +130,6 @@
     ]
   },
   "conversionPeriods": [
-    {
-      "conversionStartDate": "19440101",
-      "conversionCompleteDate": "19440831"
-    }
   ],
   "callsigns": {
     "19410801": "SWIFT"
