@@ -7,8 +7,6 @@ import java.util.Map;
 
 import pwcg.aar.ui.events.model.PromotionEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.ICountry;
-import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadmember.PilotNames;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
@@ -44,8 +42,8 @@ public class PromotionEventGenerator
         boolean isNewsworthy = true;
         String oldRank = pilot.getRank();
         Map<String, String> namesUsed = new HashMap<String, String>();
-        ICountry country = CountryFactory.makeCountryByCountry(pilot.getCountry());
-        String promotingGeneral = PilotNames.getInstance().getName(country, namesUsed);
+        
+        String promotingGeneral = PilotNames.getInstance().getName(pilot.determineService(campaign.getDate()), namesUsed);
         PromotionEvent promotionEvent = new PromotionEvent(campaign, oldRank, newRank, promotingGeneral, pilot.getSquadronId(), pilot.getSerialNumber(), campaign.getDate(), isNewsworthy);
         return promotionEvent;
     }

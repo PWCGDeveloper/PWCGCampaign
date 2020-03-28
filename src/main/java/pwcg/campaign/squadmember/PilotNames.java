@@ -8,6 +8,7 @@ import java.nio.charset.CharsetEncoder;
 import java.util.ArrayList;
 import java.util.Map;
 
+import pwcg.campaign.ArmedService;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
@@ -128,12 +129,14 @@ public class PilotNames
 	 * @param namesUsed
 	 * @return
 	 */
-	public String getName(ICountry country, Map<String, String> namesUsed)
+	public String getName(ArmedService armedService, Map<String, String> namesUsed)
 	{
 		String name = "";
 		ArrayList<String> firstNameList = null;
 		ArrayList<String> lastNameList = null;
-
+		
+		ICountry country = armedService.getNameCountry();
+		
         if (country.isCountry(Country.FRANCE))
 		{
 			firstNameList = firstNamesFrance;

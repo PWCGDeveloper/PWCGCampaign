@@ -125,7 +125,8 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
     private ArmedService createServiceGermanArmy(Date startDate, Date endDate, ArmedService gas) throws PWCGException
     {
         gas.setServiceId(DEUTSCHE_LUFTSTREITKRAFTE);
-        gas.setCountry(new FCCountry(FCCountry.GERMANY_CODE));
+        gas.setCountry(CountryFactory.makeCountryByCountry(Country.GERMANY));
+        gas.setNameCountry(CountryFactory.makeCountryByCountry(Country.GERMANY));
         gas.setName(DEUTSCHE_LUFTSTREITKRAFTE_NAME);
         gas.setServiceIcon(DEUTSCHE_LUFTSTREITKRAFTE_ICON);
         gas.setStartDate(startDate);
@@ -149,7 +150,8 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
     {
         ArmedService usas = new ArmedService();
         usas.setServiceId(USAS);
-        usas.setCountry(new FCCountry(FCCountry.USA_CODE));
+        usas.setCountry(CountryFactory.makeCountryByCountry(Country.USA));
+        usas.setNameCountry(CountryFactory.makeCountryByCountry(Country.USA));
         usas.setName(USAS_NAME);
         usas.setServiceIcon(USAS_ICON);
         usas.setStartDate(DateUtils.getDateWithValidityCheck("01/05/1918"));
@@ -172,7 +174,8 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
     {
         ArmedService raf = new ArmedService();
         raf.setServiceId(RAF);
-        raf.setCountry(new FCCountry(FCCountry.BRITAIN_CODE));
+        raf.setCountry(CountryFactory.makeCountryByCountry(Country.BRITAIN));
+        raf.setNameCountry(CountryFactory.makeCountryByCountry(Country.BRITAIN));
         raf.setName(RAF_NAME);
         raf.setServiceIcon(RAF_ICON);
         raf.setStartDate(rafStartDate);
@@ -196,7 +199,8 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
     {
         ArmedService rnas = new ArmedService();
         rnas.setServiceId(RNAS);
-        rnas.setCountry(new FCCountry(FCCountry.BRITAIN_CODE));
+        rnas.setCountry(CountryFactory.makeCountryByCountry(Country.BRITAIN));
+        rnas.setNameCountry(CountryFactory.makeCountryByCountry(Country.BRITAIN));
         rnas.setName(RNAS_NAME);
         rnas.setServiceIcon(RNAS_ICON);
         rnas.setStartDate(DateUtils.getDateWithValidityCheck("01/03/1916"));
@@ -220,7 +224,8 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
     {
         ArmedService rfc = new ArmedService();
         rfc.setServiceId(RFC);
-        rfc.setCountry(new FCCountry(FCCountry.BRITAIN_CODE));
+        rfc.setCountry(CountryFactory.makeCountryByCountry(Country.BRITAIN));
+        rfc.setNameCountry(CountryFactory.makeCountryByCountry(Country.BRITAIN));
         rfc.setName(RFC_NAME);
         rfc.setServiceIcon(RFC_ICON);
         rfc.setStartDate(startDate);
@@ -244,7 +249,8 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
     {
         ArmedService belgianAF = new ArmedService();
         belgianAF.setServiceId(AVIATION_MILITAIRE_BELGE);
-        belgianAF.setCountry(new FCCountry(FCCountry.BELGIUM_CODE));
+        belgianAF.setCountry(CountryFactory.makeCountryByCountry(Country.BELGIUM));
+        belgianAF.setNameCountry(CountryFactory.makeCountryByCountry(Country.BELGIUM));
         belgianAF.setName(AVIATION_MILITAIRE_BELGE_NAME);
         belgianAF.setServiceIcon(AVIATION_MILITAIRE_BELGE_ICON);
         belgianAF.setStartDate(startDate);
@@ -267,7 +273,8 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
     {
         ArmedService frenchArmy = new ArmedService();
         frenchArmy.setServiceId(LAVIATION_MILITAIRE);
-        frenchArmy.setCountry(new FCCountry(FCCountry.FRANCE_CODE));
+        frenchArmy.setCountry(CountryFactory.makeCountryByCountry(Country.FRANCE));
+        frenchArmy.setNameCountry(CountryFactory.makeCountryByCountry(Country.FRANCE));
         frenchArmy.setName(LAVIATION_MILITAIRE_NAME);
         frenchArmy.setServiceIcon(LAVIATION_MILITAIRE_ICON);
         frenchArmy.setStartDate(startDate);

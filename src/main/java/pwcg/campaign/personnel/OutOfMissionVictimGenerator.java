@@ -89,7 +89,7 @@ public class OutOfMissionVictimGenerator
             {
                 SquadronMember aiSquadronMember = new SquadronMember();
 
-                String squaddieName = PilotNames.getInstance().getName(squadron.determineSquadronCountry(campaignDate), aiCrewMembers);
+                String squaddieName = PilotNames.getInstance().getName(squadron.determineServiceForSquadron(campaignDate), aiCrewMembers);
                 aiSquadronMember.setName(squaddieName);
                 aiSquadronMember.setRank(rankLists.getRankByService(rankPos, squadron.determineServiceForSquadron(campaignDate)));
 

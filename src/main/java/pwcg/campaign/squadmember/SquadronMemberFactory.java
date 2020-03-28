@@ -7,7 +7,6 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IRankHelper;
-import pwcg.campaign.context.Country;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.CampaignValidatorMedals;
@@ -133,33 +132,7 @@ public class SquadronMemberFactory
 
     private String createPilotName(String rank, HashMap<String, String> namesUsed) throws PWCGException 
     {
-        ICountry country = determinePilotCountry(rank);
-        String squaddieName = PilotNames.getInstance().getName(country, namesUsed);
+        String squaddieName = PilotNames.getInstance().getName(squadron.determineServiceForSquadron(campaign.getDate()), namesUsed);
         return squaddieName;
-    }
-
-    private ICountry determinePilotCountry(String rank) throws PWCGException
-    {
-        ICountry country = squadron.getCountry();
-        if (squadron.determineDisplayName(campaign.getDate()).contains("Lafayette"))
-        {
-            if (rank.equals("Capitaine"))
-            {
-                country = CountryFactory.makeCountryByCountry(Country.FRANCE);
-            }
-            else
-            {
-                int odds = RandomNumberGenerator.getRandom(100);
-                if (odds < 70)
-                {
-                    country = CountryFactory.makeCountryByCountry(Country.USA);
-                }
-                else
-                {
-                    country = CountryFactory.makeCountryByCountry(Country.FRANCE);
-                }
-            }
-        }
-        return country;
     }
 }

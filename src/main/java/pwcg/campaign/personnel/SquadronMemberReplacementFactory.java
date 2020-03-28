@@ -35,7 +35,7 @@ public class SquadronMemberReplacementFactory
         
         AiSkillLevel aiSkillLevel = determineAiSkillLevelByRank(rank);
         
-        String squaddieName = PilotNames.getInstance().getName(service.getCountry(), namesUsed);
+        String squaddieName = PilotNames.getInstance().getName(service, namesUsed);
         replacementPilot.setName(squaddieName);
         replacementPilot.setRank(rank);
         replacementPilot.setCountry(service.getCountry().getCountry());

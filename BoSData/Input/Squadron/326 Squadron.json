@@ -1,0 +1,66 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 103084326,
+  "name": "326  Squadron",
+  "fileName": "326 Squadron.json",
+  "skill": 65,
+  "planeAssignments": [
+    {
+      "archType": "spitfire",
+      "squadronIntroduction": "19440901",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "airfields": {
+    "19440901": "Deurne",
+    "19441001": "Eindhoven",
+    "19441101": "Volkel",
+    "19441220": "GraveKeent",
+    "19441225": "Schijndel",
+    "19441229": "Volkel",
+    "19450207": "Heesch",
+    "19450310": "Volkel",
+    "19450404": "Kirchhellen",
+    "19440101": "Bol. Rossoshka"
+  },
+  "skins": [],
+  "squadHistory": {
+    "squadHistoryEntries": []
+  },
+  "serviceId": 10105,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_RECON",
+            "weight": 5
+          },
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 80
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 20
+          }
+        ]
+      }
+    ]
+  },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "nightMissionOdds": 5
+      }
+    ]
+  },
+  "conversionPeriods": [],
+  "callsigns": {
+    "19410801": "KITTIWAKE"
+  }
+}

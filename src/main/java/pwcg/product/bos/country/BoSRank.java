@@ -32,7 +32,7 @@ public class BoSRank implements IRankHelper
     	    for (Rank rank : ranks.getRanks())
     	    {
     	        RankStruct rankStruct = new RankStruct(rank.getRankName(), rank.getRankAbbrev());
-    	        if (rank.getRankService() == BoSServiceManager.VVS)
+    	        if (rank.getRankService() == BoSServiceManager.VVS || rank.getRankService() == BoSServiceManager.NORMANDIE)
     	        {
     	            ussr.put(rank.getRankId(), rankStruct);
     	        }
@@ -48,7 +48,7 @@ public class BoSRank implements IRankHelper
                 {
                     usaaf.put(rank.getRankId(), rankStruct);
                 }
-                else if (rank.getRankService() == BoSServiceManager.RAF)
+                else if (rank.getRankService() == BoSServiceManager.RAF || rank.getRankService() == BoSServiceManager.FREE_FRENCH)
                 {
                     raf.put(rank.getRankId(), rankStruct);
                 }
@@ -56,10 +56,12 @@ public class BoSRank implements IRankHelper
     
             // Form a map of rank maps
             ranksByService.put(BoSServiceManager.VVS, ussr);
+            ranksByService.put(BoSServiceManager.NORMANDIE, ussr);
             ranksByService.put(BoSServiceManager.LUFTWAFFE, luftwaffe);
             ranksByService.put(BoSServiceManager.REGIA_AERONAUTICA, iaf);
             ranksByService.put(BoSServiceManager.USAAF, usaaf);
             ranksByService.put(BoSServiceManager.RAF, raf);
+            ranksByService.put(BoSServiceManager.FREE_FRENCH, raf);
 	    }
 	    catch (Exception e)
 	    {

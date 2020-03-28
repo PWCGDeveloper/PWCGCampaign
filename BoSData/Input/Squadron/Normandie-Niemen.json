@@ -1,0 +1,69 @@
+{
+  "country": "RUSSIA",
+  "squadronId": 10111999,
+  "name": "Normandie-Niemen Air Regiment",
+  "fileName": "Normandie-Niemen.json",
+  "skill": 50,
+  "planeAssignments": [
+    {
+      "archType": "yak",
+      "squadronIntroduction": "19420801",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "conversionPeriods": [
+  ],  
+  "airfields": {
+    "19420801": "Illarionovskiy",
+    "19420906": "Davydovskiy",
+    "19421011": "Davydovskiy",
+    "19421123": "Davydovskiy",
+    "19421223": "Davydovskiy",
+    "19430120": "Davydovskiy",
+    "19430301": "Gelenjik-2",
+    "19430330": "Kalinino",
+    "19430418": "Severskaya",
+    "19430918": "Slavyanskaya",
+    "19430927": "Anapa",
+    "19431004": "Anapa",
+    "19431008": "Anapa",
+    "19440101": "Illarionovskiy"
+  },
+  "skins": [
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": [
+    ]
+  },
+  "serviceId": 10104,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 80
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 20
+          }
+        ]
+      }
+    ]
+  },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "nightMissionOdds": 3
+      }
+    ]
+  },
+  "callsigns": {
+    "19410801": "SWIFT"
+  }
+}

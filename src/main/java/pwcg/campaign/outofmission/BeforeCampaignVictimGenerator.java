@@ -83,7 +83,7 @@ public class BeforeCampaignVictimGenerator implements IVictimGenerator
             {
                 SquadronMember aiSquadronMember = new SquadronMember();
 
-                String squaddieName = PilotNames.getInstance().getName(squadron.determineSquadronCountry(campaignDate), new HashMap<String, String>());
+                String squaddieName = PilotNames.getInstance().getName(squadron.determineServiceForSquadron(campaignDate), new HashMap<>());
                 aiSquadronMember.setName(squaddieName);
                 aiSquadronMember.setRank(rankLists.getRankByService(rankPos, squadron.determineServiceForSquadron(campaignDate)));
 

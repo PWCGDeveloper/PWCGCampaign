@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.context.Country;
+import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.gui.colors.IServiceColorMap;
@@ -24,6 +26,7 @@ public class ArmedService
     private ArmedServiceQualitySet serviceQuality = new ArmedServiceQualitySet();
     private IServiceColorMap serviceColorMap;
     private List<String> picDirs = new ArrayList<String>();
+    private ICountry nameCountry = CountryFactory.makeCountryByCountry(Country.NEUTRAL);
 
     public ArmedService() throws PWCGException 
     {
@@ -149,5 +152,22 @@ public class ArmedService
     public void setDailyEquipmentReplacementRate(int dailyEquipmentReplacementRate)
     {
         this.dailyEquipmentReplacementRate = dailyEquipmentReplacementRate;
+    }
+
+    public ICountry getNameCountry()
+    {
+        if (nameCountry.getCountry() != Country.NEUTRAL)
+        {
+            return nameCountry;
+        }
+        else
+        {
+            return country;
+        }
+    }
+
+    public void setNameCountry(ICountry nameCountry)
+    {
+        this.nameCountry = nameCountry;
     }
 }
