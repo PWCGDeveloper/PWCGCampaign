@@ -1,9 +1,11 @@
 package pwcg.mission.ground.builder;
 
-import pwcg.campaign.Campaign;
+import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
+import pwcg.mission.Mission;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.ground.BattleSize;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitInformationFactory;
@@ -20,15 +22,15 @@ import pwcg.mission.target.TargetType;
 
 public class AssaultSegmentBuilder
 {
-    private Campaign campaign;
+    private Mission mission;
     private AssaultDefinition assaultDefinition;
     private AssaultGroundUnitFactory assaultFactory =  new AssaultGroundUnitFactory();
 
     private IGroundUnitCollection battleSegmentUnitCollection;
    
-    public AssaultSegmentBuilder(Campaign campaign, AssaultDefinition assaultDefinition)
+    public AssaultSegmentBuilder(Mission mission, AssaultDefinition assaultDefinition)
 	{
-        this.campaign = campaign;
+        this.mission = mission;
         this.assaultDefinition = assaultDefinition;
         
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
@@ -54,6 +56,7 @@ public class AssaultSegmentBuilder
     {
         assaultingTanks();
         assaultingMachineGun();
+        assaultingMachineGunFlares();
         if (assaultDefinition.getBattleSize() == BattleSize.BATTLE_SIZE_ASSAULT || assaultDefinition.getBattleSize() == BattleSize.BATTLE_SIZE_OFFENSIVE)
         {
             assaultingArtillery();
@@ -72,6 +75,22 @@ public class AssaultSegmentBuilder
         IGroundUnit assaultingMachineGunUnit = assaultFactory.createMachineGunUnit (groundUnitInformation);
         battleSegmentUnitCollection.addGroundUnit(assaultingMachineGunUnit);
     }
+
+    private void assaultingMachineGunFlares() throws PWCGException
+    { 
+        Coordinate machineGunStartPosition = MathUtils.calcNextCoord(
+                assaultDefinition.getDefensePosition(), 
+                assaultDefinition.getTowardsAttackerOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 50.0);  
+
+        GroundUnitInformation groundUnitInformation = buildAssaultGroundUnitInformation(machineGunStartPosition, "Machine Gun");
+        IFlight triggeringFlight = getTriggeringFlight(groundUnitInformation.getCountry().getSide());
+        if (triggeringFlight != null)
+        {
+            IGroundUnit assaultingMachineGunUnit = assaultFactory.createMachineGunFlareUnit(groundUnitInformation, triggeringFlight);
+            battleSegmentUnitCollection.addGroundUnit(assaultingMachineGunUnit);
+        }
+    }
+
 
     private void assaultingTanks() throws PWCGException
     {         
@@ -122,7 +141,7 @@ public class AssaultSegmentBuilder
     {
         String name = assaultDefinition.getTargetDefinition().getTargetCountry().getCountryName() + " " + unitName;
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
-                campaign, 
+                mission.getCampaign(), 
                 assaultDefinition.getTargetDefinition().getAttackingCountry(),
                 name, 
                 TargetType.TARGET_INFANTRY, 
@@ -141,6 +160,7 @@ public class AssaultSegmentBuilder
     private void createDefenders() throws PWCGException
     {
         defendingMachineGun();
+        defendingMachineGunFlares();
         defendingATGuns();
         if (assaultDefinition.getBattleSize() == BattleSize.BATTLE_SIZE_ASSAULT || assaultDefinition.getBattleSize() == BattleSize.BATTLE_SIZE_OFFENSIVE)
         {
@@ -156,6 +176,21 @@ public class AssaultSegmentBuilder
         AssaultGroundUnitFactory assaultFactory =  new AssaultGroundUnitFactory();
         IGroundUnit defenseMachineGunUnit = assaultFactory.createMachineGunUnit (groundUnitInformation);
         battleSegmentUnitCollection.addGroundUnit(defenseMachineGunUnit);
+    }
+
+    private void defendingMachineGunFlares() throws PWCGException
+    { 
+        Coordinate machineGunStartPosition = MathUtils.calcNextCoord(
+                assaultDefinition.getDefensePosition(), 
+                assaultDefinition.getTowardsDefenderOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 50.0);  
+
+        GroundUnitInformation groundUnitInformation = buildDefenseGroundUnitInformation(machineGunStartPosition, "Machine Gun");
+        IFlight triggeringFlight = getTriggeringFlight(groundUnitInformation.getCountry().getSide());
+        if (triggeringFlight != null)
+        {
+            IGroundUnit assaultingMachineGunUnit = assaultFactory.createMachineGunFlareUnit(groundUnitInformation, triggeringFlight);
+            battleSegmentUnitCollection.addGroundUnit(assaultingMachineGunUnit);
+        }
     }
 
     private void defendingATGuns() throws PWCGException
@@ -206,7 +241,7 @@ public class AssaultSegmentBuilder
     {
         String name = assaultDefinition.getTargetDefinition().getTargetCountry().getCountryName() + " " + unitName;
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
-                campaign, 
+                mission.getCampaign(), 
                 assaultDefinition.getTargetDefinition().getTargetCountry(),
                 name, 
                 TargetType.TARGET_INFANTRY, 
@@ -216,7 +251,19 @@ public class AssaultSegmentBuilder
                 assaultDefinition.determineIsBattleForPlayer());
         return groundUnitInformation;
     }
-    
+
+    private IFlight getTriggeringFlight(Side side)
+    {
+        for (IFlight playerFlight : mission.getMissionFlightBuilder().getPlayerFlights())
+        {
+            if (playerFlight.getSquadron().getCountry().getSide() == side)
+            {
+                return playerFlight;
+            }
+        }
+        return null;
+    }
+
     public IGroundUnit getPrimaryGroundUnit() throws PWCGException
     {
         for (IGroundUnit groundUnit : battleSegmentUnitCollection.getGroundUnits())

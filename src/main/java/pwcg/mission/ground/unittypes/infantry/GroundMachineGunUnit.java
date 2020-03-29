@@ -35,7 +35,6 @@ public class GroundMachineGunUnit extends GroundUnit
 
         int numMachineGun = calcNumUnits();
         
-        // MGs are behind the lines
         double initialPlacementAngle = MathUtils.adjustAngle (pwcgGroundUnitInformation.getOrientation().getyOri(), 180.0);      
         Coordinate machineGunCoords = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getPosition(), initialPlacementAngle, 25.0);
 

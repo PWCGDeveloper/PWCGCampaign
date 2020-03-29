@@ -36,7 +36,7 @@ public class AssaultBuilder
         
         for (AssaultDefinition assaultDefinition : assaultDefinitions)
         {
-            AssaultSegmentBuilder assaultSegmentBuilder = new AssaultSegmentBuilder(mission.getCampaign(), assaultDefinition);
+            AssaultSegmentBuilder assaultSegmentBuilder = new AssaultSegmentBuilder(mission, assaultDefinition);
             IGroundUnitCollection assaultSegmentUnits = assaultSegmentBuilder.generateAssaultSegment();
             primaryAssaultSegmentGroundUnits.add(assaultSegmentUnits.getPrimaryGroundUnit());
             battleUnitCollection.merge(assaultSegmentUnits);

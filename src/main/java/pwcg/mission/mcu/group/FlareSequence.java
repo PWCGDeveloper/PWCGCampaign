@@ -1,84 +1,94 @@
 package pwcg.mission.mcu.group;
 
 import java.io.BufferedWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
-import pwcg.mission.mcu.McuFlare;
 import pwcg.mission.mcu.McuTimer;
 
 public class FlareSequence
 {
-    public static final int FLARES_IN_SEQUENCE = 3;
-    public static final int FLARE_TRIGGER_DISTANCE = 200;
+    private static final int FLARES_IN_SEQUENCE = 5;
+    private static final int FLARE_TRIGGER_DISTANCE = 1500;
 
     private MissionBeginSelfDeactivatingCheckZone missionBeginUnit;
-    protected McuTimer[] flareTimers = new McuTimer[FLARES_IN_SEQUENCE];
-    protected McuFlare[] flares = new McuFlare[FLARES_IN_SEQUENCE];
+    private List<Flare> flares = new ArrayList<>();
+    private McuTimer flareMasterTimer = new McuTimer();
 
     public FlareSequence()
     {
     }
 
-    public void setFlare(IFlight triggeringFlight, Coordinate position, int color, int object) throws PWCGException 
+    public void createFlareSequence(IFlight triggeringFlight, Coordinate position, int color, int flareVehicleId) throws PWCGException 
     {        
-        buildFlareTimers(position, color, object);
+        buildMissionBeginUnit(position);
+        createflareMasterTimer(position);
+        buildFlareSequence(position, color, flareVehicleId);
+        createTargetAssociations();
+        createObjectAssociations(triggeringFlight);
 
-        missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone(position, FLARE_TRIGGER_DISTANCE);
-        missionBeginUnit.linkCheckZoneTarget(flareTimers[0].getIndex());
-
-        for (PlaneMcu triggeringPlane : triggeringFlight.getFlightPlanes().getPlanes())
-        {
-            missionBeginUnit.setCheckZoneTriggerObject(triggeringPlane.getEntity().getIndex());
-        }
-        
-        for (int i = 1; i < FLARES_IN_SEQUENCE; ++i)
-        {
-            flareTimers[i-1].setTarget(flareTimers[i].getIndex());
-        }
     }
 
-    private void buildFlareTimers(Coordinate position, int color, int object)
+    private void buildMissionBeginUnit(Coordinate position)
+    {
+        missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone(position, FLARE_TRIGGER_DISTANCE);
+    }
+
+    public void createflareMasterTimer(Coordinate position) throws PWCGException 
+    {        
+        flareMasterTimer.setName("flareMasterTimer");
+        flareMasterTimer.setTimer(1);
+        flareMasterTimer.setPosition(position.copy());
+    }
+
+    private void buildFlareSequence(Coordinate position, int color, int flareVehicleId) throws PWCGException
     {
         for (int i = 0; i < FLARES_IN_SEQUENCE; ++i)
         {
-            McuTimer flareTimer = new McuTimer();
-            flareTimer.setName("FlareTimer " + (i+1));
-            flareTimer.setTimer(3);
-            flareTimer.setPosition(position.copy());
-            flareTimers[i] = flareTimer;
-            
-            McuFlare flare = new McuFlare();
-            flare.setName("Flare " + (i+1));
-            flare.setColor(color);
-            flare.setPosition(position.copy());
-            flares[i] = flare;
-            
-            flareTimer.setTarget(flare.getIndex());
-            
-            flare.setObject(object);
+            Flare flare = new Flare();
+            flare.createFlare(position, color, flareVehicleId);
+            flares.add(flare);
+        }
+    }
+    
+    private void createTargetAssociations()
+    {
+        missionBeginUnit.linkCheckZoneTarget(flareMasterTimer.getIndex());
+        
+        Flare previousFlare = null;
+        for (Flare flare : flares)
+        {
+            if (previousFlare == null)
+            {
+                flareMasterTimer.setTarget(flare.getEntryPoint());
+            }
+            else
+            {
+                previousFlare.setNextTarget(flare.getEntryPoint());
+            }
+            previousFlare = flare;
+        }
+    }
+    
+    private void createObjectAssociations(IFlight triggeringFlight)
+    {
+        for (PlaneMcu triggeringPlane : triggeringFlight.getFlightPlanes().getPlanes())
+        {
+            missionBeginUnit.setCheckZoneTriggerObject(triggeringPlane.getEntity().getIndex());
         }
     }
 
     public void write(BufferedWriter writer) throws PWCGException 
     {
         missionBeginUnit.write(writer);
-        for (int i = 0; i < FLARES_IN_SEQUENCE; ++i)
+        flareMasterTimer.write(writer);
+        for (Flare flare : flares)
         {
-            flareTimers[i].write(writer);
-            flares[i].write(writer);
+            flare.write(writer);
         }
-    }
-
-    public McuTimer[] getFlareTimers()
-    {
-        return flareTimers;
-    }
-
-    public McuFlare[] getFlares()
-    {
-        return flares;
     }
 }
