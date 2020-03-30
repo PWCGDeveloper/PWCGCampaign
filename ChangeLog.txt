@@ -1,6 +1,22 @@
 ​
 At the PWCG web site
 
+PWCG 8.2.0
+Extended war in the east to the end of the war
+- Currently just a static front on Western Stalingrad map
+- Separated western front from eastern front units.
+- This will cause a small glitch for German Bodenplatte campaigns - you will find yourself on the eastern front.  Just  transfer back.
+Added Free French and Normandie Niemen
+- Free French is No 326 squadron flying Spitfires for the RAF
+- Normandie Niemen flys Yaks for the VVS. Starts at Stalingrad
+Introduced concept of squadron specialization
+- JV44 will specialize in intercept
+- Added II ZG 26 to Bodenplatte.  Does intercept, escort, and ground attack
+Added spotters for intercept and scramble missions
+Bugs:
+Fixed error where PWCG was failing to take wounded squadron members into account when staffing a flight
+Fixed error where adding a new pilot would fail for an SP campaign when there was no coop user.
+
 PWCG 8.1.0
 Added enemy cover for balloon bust missions
 Added opposition for balloon defense missions
