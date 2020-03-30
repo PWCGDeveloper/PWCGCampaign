@@ -69,7 +69,7 @@ public class ShippingUnitBuilder
                 TargetType.TARGET_SHIPPING,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
-        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
+        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection ("Shipping", groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(shipGroup);
         groundUnitCollection.setPrimaryGroundUnit(shipGroup);
         groundUnitCollection.finishGroundUnitCollection();

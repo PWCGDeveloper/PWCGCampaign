@@ -55,7 +55,7 @@ public final class VirtualWayPoint
                     Coalition coalition) throws PWCGException 
     {
         this.vwpPosition = vwpCoordinate; 
-        checkZone = new SelfDeactivatingCheckZone(vwpPosition.getPosition().copy(), VWP_TRIGGGER_DISTANCE);
+        checkZone = new SelfDeactivatingCheckZone("VWP Check Zone", vwpPosition.getPosition().copy(), VWP_TRIGGGER_DISTANCE);
 
         buildMcus(vwpCoordinate);
         makeSubtitles(flight);

@@ -48,11 +48,10 @@ public class BalloonWinch
 	    
         missionBeginUnit = new MissionBeginUnit(pwcgGroundUnitInformation.getPosition().copy());
         
-		winchCheckZone = new McuCheckZone();
+		winchCheckZone = new McuCheckZone("CheckZone Balloon Winch");
 		winchCheckZone.setZone(1000);
 		winchCheckZone.triggerCheckZoneByCoalition(enemyCoalition);
 
-		winchCheckZone.setName("Winch Check Zone");
 		winchCheckZone.setDesc("Winch Check Zone");
 		winchCheckZone.setPosition(pwcgGroundUnitInformation.getPosition().copy());
 		

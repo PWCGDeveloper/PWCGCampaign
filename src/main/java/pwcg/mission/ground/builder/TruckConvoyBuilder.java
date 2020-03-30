@@ -55,7 +55,7 @@ public class TruckConvoyBuilder
                 TargetType.TARGET_TRANSPORT,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
         
-        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection(groundUnitCollectionData);
+        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection("Truck Convoy", groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(truckConvoy);
         groundUnitCollection.addGroundUnit(aatruckConvoy);
         groundUnitCollection.setPrimaryGroundUnit(truckConvoy);

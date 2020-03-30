@@ -44,7 +44,7 @@ public class AirfieldUnitBuilder
                 TargetType.TARGET_AIRFIELD,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
-        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
+        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection ("Airfield Unit", groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(airfieldGroup);
         groundUnitCollection.setPrimaryGroundUnit(airfieldGroup);
         groundUnitCollection.finishGroundUnitCollection();

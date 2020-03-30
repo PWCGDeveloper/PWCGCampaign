@@ -15,15 +15,16 @@ import pwcg.mission.flight.plane.PlaneMcu;
 
 public class McuCheckZone extends BaseFlightMcu
 {
-	private int zone = 20000;
+    private int zone = 15000;
 	private int cylinder = 1;
 	private int closer = 1;
 	private List<Coalition> planeCoalitions = new ArrayList<Coalition>();
 	private List<Coalition> vehicleCoalitions = new ArrayList<Coalition>();
 	
-    public McuCheckZone ()
+    public McuCheckZone (String name)
     {
         super();
+        this.setName(name);
     }
 
     public void triggerCheckZoneByCoalitions (List<Coalition> coalitions)
@@ -84,8 +85,11 @@ public class McuCheckZone extends BaseFlightMcu
             writer.write("  Cylinder = " + cylinder + ";");
             writer.newLine();
             
-            CoalitionWriter.writePlaneCoalition(writer, planeCoalitions);
-            CoalitionWriter.writeVehicleCoalition(writer, vehicleCoalitions);
+            if (objects.size() == 0)
+            {
+                CoalitionWriter.writePlaneCoalition(writer, planeCoalitions);
+                CoalitionWriter.writeVehicleCoalition(writer, vehicleCoalitions);
+            }
             
             writer.write("}");
             writer.newLine();

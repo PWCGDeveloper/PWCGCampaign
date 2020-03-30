@@ -37,7 +37,7 @@ public class ArtilleryUnitBuilder
                 TargetType.TARGET_ARTILLERY,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
-        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
+        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection ("Artillery Battery", groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(artilleryUnit);
         groundUnitCollection.setPrimaryGroundUnit(artilleryUnit);
         groundUnitCollection.finishGroundUnitCollection();

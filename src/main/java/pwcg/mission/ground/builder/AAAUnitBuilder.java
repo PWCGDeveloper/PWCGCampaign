@@ -45,7 +45,7 @@ public class AAAUnitBuilder
                 TargetType.TARGET_INFANTRY,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
-        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
+        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection ("AAA MG Battery", groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(mgBattery);
         groundUnitCollection.setPrimaryGroundUnit(mgBattery);
         groundUnitCollection.finishGroundUnitCollection();
@@ -76,7 +76,7 @@ public class AAAUnitBuilder
                 TargetType.TARGET_INFANTRY,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
-        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
+        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection ("AAA Artillery Battery", groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(aaaBattery);
         groundUnitCollection.setPrimaryGroundUnit(aaaBattery);
         groundUnitCollection.finishGroundUnitCollection();
@@ -97,7 +97,7 @@ public class AAAUnitBuilder
                 TargetType.TARGET_INFANTRY,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
-        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
+        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection ("AAA Search Light Battery", groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(aaaBattery);
         groundUnitCollection.addGroundUnit(searchLightUnit);
         groundUnitCollection.setPrimaryGroundUnit(aaaBattery);

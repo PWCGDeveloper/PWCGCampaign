@@ -37,7 +37,7 @@ public class AirGroundAttackMcuSequence
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int attackMcuTriggerDistance = productSpecificConfiguration.getBombFinalApproachDistance();
 
-        missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone(flightInformation.getTargetPosition(), attackMcuTriggerDistance);
+        missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone("Air Ground Check Zone", flightInformation.getTargetPosition(), attackMcuTriggerDistance);
         attackArea = FlightAttackAreaFactory.createAttackArea(flightInformation.getFlightType(), flightInformation.getTargetPosition(), flightInformation.getAltitude(), attackTime);
         createSequence(attackTime) ;
         linkTargets() ;

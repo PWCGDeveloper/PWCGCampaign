@@ -44,7 +44,7 @@ public class BalloonUnitBuilder
                 TargetType.TARGET_BALLOON,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
-        groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
+        groundUnitCollection = new GroundUnitCollection ("Balloon Defense Battery", groundUnitCollectionData);
         
         buildBalloon();
         buildBalloonAAArtillery();

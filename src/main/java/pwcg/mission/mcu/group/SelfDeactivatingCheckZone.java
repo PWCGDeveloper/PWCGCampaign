@@ -9,6 +9,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.mission.Mission;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.mcu.McuCheckZone;
 import pwcg.mission.mcu.McuDeactivate;
@@ -24,14 +25,15 @@ public class SelfDeactivatingCheckZone
     private int index = IndexGenerator.getInstance().getNextIndex();;
 	
     private McuTimer activateCZTimer = new McuTimer();
-    private McuCheckZone checkZone = new McuCheckZone();
+    private McuCheckZone checkZone;
     
     private McuTimer deactivateCZTimer = new McuTimer();
     private McuDeactivate deactivateCZ = new McuDeactivate();
 	
 
-    public SelfDeactivatingCheckZone (Coordinate coordinate, int zone)
+    public SelfDeactivatingCheckZone (String name, Coordinate coordinate, int zone)
     {
+        checkZone = new McuCheckZone(name);
         initialize(coordinate, zone);
         linkTargets();
     }
@@ -47,7 +49,6 @@ public class SelfDeactivatingCheckZone
         deactivateCZ.setPosition(coordinate.copy());
         
         activateCZTimer.setName("CZ Activate Timer");
-        checkZone.setName("CZ");
         
         deactivateCZTimer.setName("CZ Deactivate Timer");
         deactivateCZ.setName("CZ Deactivate");
@@ -168,5 +169,10 @@ public class SelfDeactivatingCheckZone
         {
             throw new PWCGException("SelfDeactivatingCheckZone: deactivate timer not linked to activate timer");
         }
+    }
+
+    public void triggerOnPlayerProximity(Mission mission) throws PWCGException
+    {
+        checkZone.triggerCheckZoneByMultipleObjects(mission.getMissionFlightBuilder().getPlayersInMission());        
     }
 }

@@ -35,7 +35,7 @@ public class FlareSequence
 
     private void buildMissionBeginUnit(Coordinate position)
     {
-        missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone(position, FLARE_TRIGGER_DISTANCE);
+        missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone("Flare Sequence Check Zone", position, FLARE_TRIGGER_DISTANCE);
     }
 
     public void createflareMasterTimer(Coordinate position) throws PWCGException 

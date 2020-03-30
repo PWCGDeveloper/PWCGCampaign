@@ -41,7 +41,7 @@ public class DrifterUnitBuilder
                 TargetType.TARGET_DRIFTER,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
-        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
+        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection ("Drifter", groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(drifterUnit);
         groundUnitCollection.addGroundUnit(aaDrifterUnit);
         groundUnitCollection.setPrimaryGroundUnit(drifterUnit);

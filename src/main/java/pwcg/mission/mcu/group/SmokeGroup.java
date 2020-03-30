@@ -119,8 +119,6 @@ public class SmokeGroup
         smokeStopTimer.setName("smokeStopTimer");
         smokeLoopTimer.setName("smokeLoopTimer");
         deactivateCzTimer.setName("deactivateCzTimer");
-        activateCheckZone.setName("activateCheckZone");
-        deactivateCheckZone.setName("deactivateCheckZone");
         activateSmoke.setName("activateSmoke");
         deactivateSmoke.setName("deactivateSmoke");
         startSmokeEffectCommand.setName("startSmokeEffectCommand");
@@ -183,7 +181,7 @@ public class SmokeGroup
 
     private void buildDeactivate(List<Integer> playerPlaneIds) throws PWCGException
     {
-        deactivateCheckZone = new McuCheckZone();
+        deactivateCheckZone = new McuCheckZone("CheckZone Smoke Deactivate");
         deactivateCheckZone.setCloser(0);
         deactivateCheckZone.setZone(25000);
         deactivateCheckZone.triggerCheckZoneByMultipleObjects(playerPlaneIds);
@@ -191,7 +189,7 @@ public class SmokeGroup
 
     private void buildActivate(List<Integer> playerPlaneIds) throws PWCGException
     {
-        activateCheckZone = new McuCheckZone();
+        activateCheckZone = new McuCheckZone("CheckZone Smoke Activate");
         activateCheckZone.setCloser(1);
         activateCheckZone.setZone(20000);
         activateCheckZone.triggerCheckZoneByMultipleObjects(playerPlaneIds);

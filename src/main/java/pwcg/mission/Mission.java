@@ -177,6 +177,9 @@ public class Mission
             missionPlaneLimiter.createPlaneCountersToLimitPlanesSpawned(this);
             missionWaypointIconBuilder.createWaypointIcons(missionFlightBuilder.getPlayerFlights());
             missionAirfieldIconBuilder.createWaypointIcons(campaign, this);
+            
+            MissionCheckZoneTriggerBuilder missionCheckZoneTriggerBuilder = new MissionCheckZoneTriggerBuilder(this);
+            missionCheckZoneTriggerBuilder.triggerGroundUnitsOnPlayerProximity();
 
             assignIndirectFireTargets();
 

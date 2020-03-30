@@ -5,6 +5,7 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.mcu.McuValidator;
@@ -14,10 +15,10 @@ public class MissionBeginSelfDeactivatingCheckZone
     private MissionBeginUnit missionBeginUnit;
     private SelfDeactivatingCheckZone checkZone;
     
-    public MissionBeginSelfDeactivatingCheckZone(Coordinate position, int triggerZone)
+    public MissionBeginSelfDeactivatingCheckZone(String name, Coordinate position, int triggerZone)
     {
         missionBeginUnit = new MissionBeginUnit(position.copy());
-        checkZone = new SelfDeactivatingCheckZone(position, triggerZone);
+        checkZone = new SelfDeactivatingCheckZone(name, position, triggerZone);
         missionBeginUnit.linkToMissionBegin(checkZone.getActivateEntryPoint());
     }
     
@@ -59,5 +60,10 @@ public class MissionBeginSelfDeactivatingCheckZone
     public void setCheckZoneCoalition(Coalition triggerCoalition)
     {
         checkZone.setCheckZoneTriggerCoalition(triggerCoalition);        
+    }
+
+    public void triggerOnPlayerProximity(Mission mission) throws PWCGException
+    {
+        checkZone.triggerOnPlayerProximity(mission);        
     }
 }

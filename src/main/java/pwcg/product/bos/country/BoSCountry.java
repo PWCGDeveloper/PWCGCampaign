@@ -65,19 +65,27 @@ public class BoSCountry extends CountryBase implements Cloneable, ICountry
 		{
             country = new BoSCountry(Country.GERMANY);
 		}
+        else if (service.getServiceId() == BoSServiceManager.REGIA_AERONAUTICA)
+        {
+            country = new BoSCountry(Country.ITALY);
+        }       
         else if (service.getServiceId() == BoSServiceManager.VVS)
         {
             country = new BoSCountry(Country.RUSSIA);
         }
-        else if (service.getServiceId() == BoSServiceManager.REGIA_AERONAUTICA)
+        else if (service.getServiceId() == BoSServiceManager.NORMANDIE)
         {
-            country = new BoSCountry(Country.ITALY);
-        }		
+            country = new BoSCountry(Country.RUSSIA);
+        }       
         else if (service.getServiceId() == BoSServiceManager.USAAF)
         {
             country = new BoSCountry(Country.USA);
         }       
         else if (service.getServiceId() == BoSServiceManager.RAF)
+        {
+            country = new BoSCountry(Country.BRITAIN);
+        }       
+        else if (service.getServiceId() == BoSServiceManager.FREE_FRENCH)
         {
             country = new BoSCountry(Country.BRITAIN);
         }       

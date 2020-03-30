@@ -6,6 +6,7 @@ import java.util.List;
 import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.mission.Mission;
 import pwcg.mission.target.TargetType;
 
 public interface IGroundUnitCollection
@@ -24,4 +25,5 @@ public interface IGroundUnitCollection
     List<IGroundUnit> getGroundUnitsForSide(Side side) throws PWCGException;
     GroundUnitCollectionType getGroundUnitCollectionType();
     void validate() throws PWCGException;
+    void triggerOnPlayerProximity(Mission mission) throws PWCGException;
 }

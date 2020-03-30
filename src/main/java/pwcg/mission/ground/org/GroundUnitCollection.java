@@ -9,6 +9,7 @@ import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.mission.Mission;
 import pwcg.mission.mcu.group.MissionBeginSelfDeactivatingCheckZone;
 import pwcg.mission.target.TargetType;
 
@@ -21,9 +22,11 @@ public class GroundUnitCollection implements IGroundUnitCollection
     private MissionBeginSelfDeactivatingCheckZone missionBeginUnit;
     private IGroundUnit primaryGroundUnit;
     private List<IGroundUnit> groundUnits = new ArrayList<> ();
+    private String groundUnitName;
 
-    public GroundUnitCollection (GroundUnitCollectionData groundUnitCollectionData)
+    public GroundUnitCollection (String groundUnitName, GroundUnitCollectionData groundUnitCollectionData)
     {
+        this.groundUnitName = groundUnitName;
         this.groundUnitCollectionData = groundUnitCollectionData;
     }
 
@@ -62,7 +65,7 @@ public class GroundUnitCollection implements IGroundUnitCollection
 
     private void createCheckZone() throws PWCGException
     {
-        missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone(getPosition(), GROUND_UNIT_SPAWN_DISTANCE);
+        missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone("Check Zone " + groundUnitName, getPosition(), GROUND_UNIT_SPAWN_DISTANCE);
         missionBeginUnit.setCheckZoneCoalitions(groundUnitCollectionData.getTriggerCoalitions());
     }
 
@@ -178,5 +181,11 @@ public class GroundUnitCollection implements IGroundUnitCollection
     public void setPrimaryGroundUnit(IGroundUnit groundUnit)
     {
         primaryGroundUnit = groundUnit;
+    }
+
+    @Override
+    public void triggerOnPlayerProximity(Mission mission) throws PWCGException
+    {
+        missionBeginUnit.triggerOnPlayerProximity(mission);        
     }
 }

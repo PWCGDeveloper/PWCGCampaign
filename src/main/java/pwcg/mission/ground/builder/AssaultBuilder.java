@@ -30,7 +30,7 @@ public class AssaultBuilder
                 TargetType.TARGET_ASSAULT,
                 Coalition.getCoalitions());
 
-        IGroundUnitCollection battleUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
+        IGroundUnitCollection battleUnitCollection = new GroundUnitCollection ("Assault", groundUnitCollectionData);
 
         List<IGroundUnit> primaryAssaultSegmentGroundUnits = new ArrayList<>();
         
