@@ -151,8 +151,8 @@ public class BoSMissionAltitudeGenerator implements IMissionAltitudeGenerator
     
     private int determineStrategicAltitudeBombingAltitude()
     {
-        int altitude = 4000;
-        int randomAlt = RandomNumberGenerator.getRandom(3000);
+        int altitude = 6500;
+        int randomAlt = RandomNumberGenerator.getRandom(2000);
         altitude = altitude + randomAlt;            
         return altitude;
     }

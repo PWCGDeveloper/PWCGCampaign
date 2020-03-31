@@ -46,16 +46,20 @@
         "endDate": "19450601",
         "weightedRoles": [
           {
-            "role": "ROLE_RECON",
-            "weight": 10
+            "role": "ROLE_STRATEGIC_INTERCEPT",
+            "weight": 30
+          },
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 30
           },
           {
             "role": "ROLE_ATTACK",
             "weight": 30
           },
           {
-            "role": "ROLE_FIGHTER",
-            "weight": 60
+            "role": "ROLE_RECON",
+            "weight": 10
           }
         ]
       }

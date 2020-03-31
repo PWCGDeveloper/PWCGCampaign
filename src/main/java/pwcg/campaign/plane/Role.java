@@ -5,192 +5,101 @@ import java.util.List;
 
 public enum Role
 {
-    ROLE_NONE,
-    ROLE_FIGHTER,
-    ROLE_ATTACK,
-    ROLE_RECON,
-    ROLE_ARTILLERY_SPOT,
-    ROLE_BOMB,
-    ROLE_DIVE_BOMB,
-    ROLE_STRAT_BOMB,
-    ROLE_HOME_DEFENSE,
-    ROLE_SEA_PLANE,
-    ROLE_SEA_PLANE_SMALL,
-    ROLE_SEA_PLANE_LARGE,
-    ROLE_BALLOON,
-    ROLE_TRANSPORT,
-    ROLE_GROUND_UNIT,
-    ROLE_UNKNOWN;
+    ROLE_FIGHTER (RoleCategory.FIGHTER, "Fighter"),
+    ROLE_STRATEGIC_INTERCEPT (RoleCategory.FIGHTER, "Interceptor"),
+    ROLE_SEA_PLANE (RoleCategory.RECON, "Sea Plane"),
+    ROLE_SEA_PLANE_SMALL (RoleCategory.FIGHTER, "Sea Plane Interceptor"),
 
-    private static String ROLE_FIGHTER_DESC = "Fighter";
-    private static String ROLE_ATTACK_DESC = "Attack";
-    private static String ROLE_RECON_DESC = "Recon";
-    private static String ROLE_BOMB_DESC = "Bomb";
-    private static String ROLE_TRANSPORT_DESC = "Transport";
-    private static String ROLE_DIVE_BOMB_DESC = "Dive Bomb";
-    private static String ROLE_STRAT_BOMB_DESC = "Strategic Bomb";
-    private static String ROLE_SEA_PLANE_DESC = "Sea Plane";
-    private static String ROLE_SEA_PLANE_SMALL_DESC = "Small Sea Plane";
-    private static String ROLE_SEA_PLANE_LARGE_DESC = "Large Sea Plane";
+    ROLE_ATTACK (RoleCategory.ATTACK, "Attack"),
+    ROLE_DIVE_BOMB (RoleCategory.ATTACK, "Dive Bomb"),
+    
+    ROLE_RECON (RoleCategory.RECON, "Recon"),
+    ROLE_ARTILLERY_SPOT (RoleCategory.RECON, "Artillery Spot"),
+    ROLE_SEA_PLANE_LARGE (RoleCategory.FIGHTER, "Interceptor"),
+
+    ROLE_BOMB (RoleCategory.BOMBER, "Bomber"),
+    ROLE_STRAT_BOMB (RoleCategory.BOMBER, "Strategic Bomber"),
+
+    ROLE_TRANSPORT (RoleCategory.TRANSPORT, "Transport"),
+
+    ROLE_BALLOON (RoleCategory.OTHER, "Balloon"),
+    ROLE_GROUND_UNIT (RoleCategory.OTHER, "Ground Unit"),
+
+    ROLE_NONE (RoleCategory.OTHER, "None"),
+    ROLE_UNKNOWN (RoleCategory.OTHER, "Unknown");
+
+    private RoleCategory roleCategory;
+    private String roleDescription;
+    
+    Role (RoleCategory roleCategory, String roleDescription) 
+    {
+        this.roleCategory = roleCategory;
+        this.roleDescription = roleDescription;
+    }
     
     public static List<Role> getAllRoles ()
     {
         List<Role> allAircraftRoles = new ArrayList<>();
         allAircraftRoles.add(Role.ROLE_FIGHTER);
-        allAircraftRoles.add(Role.ROLE_ATTACK);
-        allAircraftRoles.add(Role.ROLE_RECON);
-        allAircraftRoles.add(Role.ROLE_BOMB);
-        allAircraftRoles.add(Role.ROLE_DIVE_BOMB);
-        allAircraftRoles.add(Role.ROLE_STRAT_BOMB);
+        allAircraftRoles.add(Role.ROLE_STRATEGIC_INTERCEPT);
         allAircraftRoles.add(Role.ROLE_SEA_PLANE);
         allAircraftRoles.add(Role.ROLE_SEA_PLANE_SMALL);
+
+        allAircraftRoles.add(Role.ROLE_ATTACK);
+        allAircraftRoles.add(Role.ROLE_DIVE_BOMB);
+
+        allAircraftRoles.add(Role.ROLE_RECON);
+        allAircraftRoles.add(Role.ROLE_ARTILLERY_SPOT);
         allAircraftRoles.add(Role.ROLE_SEA_PLANE_LARGE);
+
+        allAircraftRoles.add(Role.ROLE_BOMB);
+        allAircraftRoles.add(Role.ROLE_STRAT_BOMB);
+        
+        allAircraftRoles.add(Role.ROLE_TRANSPORT);
         return allAircraftRoles;
     }
-
-    public static Role descToRole (String desc)
+    
+    public static Role getRoleFromDescription(String description)
     {
-        Role role =  Role.ROLE_FIGHTER;
-        if (desc.equalsIgnoreCase(ROLE_ATTACK_DESC))
+        for (Role role : Role.getAllRoles())
         {
-            role =  Role.ROLE_ATTACK;
+            if (role.getRoleDescription().equals(description))
+            {
+                return role;
+            }
         }
-        else if (desc.equalsIgnoreCase(ROLE_RECON_DESC))
+        return Role.ROLE_UNKNOWN;
+    }
+    
+    public boolean isRoleCategory(RoleCategory askCategory)
+    {
+        if (roleCategory == askCategory)
         {
-            role =  Role.ROLE_RECON;
+            return true;
         }
-        else if (desc.equalsIgnoreCase(ROLE_BOMB_DESC))
-        {
-            role =  Role.ROLE_BOMB;
-        }
-        else if (desc.equalsIgnoreCase(ROLE_STRAT_BOMB_DESC))
-        {
-            role =  Role.ROLE_STRAT_BOMB;
-        }
-        else if (desc.equalsIgnoreCase(ROLE_DIVE_BOMB_DESC))
-        {
-            role =  Role.ROLE_DIVE_BOMB;
-        }
-        else if (desc.equalsIgnoreCase(ROLE_SEA_PLANE_DESC))
-        {
-            role =  Role.ROLE_SEA_PLANE;
-        }
-        else if (desc.equalsIgnoreCase(ROLE_SEA_PLANE_LARGE_DESC))
-        {
-            role =  Role.ROLE_SEA_PLANE_LARGE;
-        }
-        else if (desc.equalsIgnoreCase(ROLE_SEA_PLANE_SMALL_DESC))
-        {
-            role =  Role.ROLE_SEA_PLANE_SMALL;
-        }
-        else if (desc.equalsIgnoreCase(ROLE_TRANSPORT_DESC))
-        {
-            role =  Role.ROLE_TRANSPORT;
-        }
-        
-        return role;
+        return false;
+    }
+
+    public RoleCategory getRoleCategory()
+    {
+        return roleCategory;
+    }
+
+    public String getRoleDescription()
+    {
+        return roleDescription;
     }
 
     public static Role getApproximateRole(Role role)
     {
-        Role approximateRole = Role.ROLE_UNKNOWN;
-
-        if (role == Role.ROLE_FIGHTER)
+        if (role.getRoleCategory() == RoleCategory.BOMBER)
         {
-            approximateRole = Role.ROLE_FIGHTER;
+            return Role.ROLE_BOMB;
         }
-        else if (role == Role.ROLE_TRANSPORT)
+        else if (role.getRoleCategory() == RoleCategory.TRANSPORT)
         {
-            approximateRole = Role.ROLE_TRANSPORT;
+            return Role.ROLE_BOMB;
         }
-        else if (role == Role.ROLE_STRAT_BOMB)
-        {
-            approximateRole = Role.ROLE_STRAT_BOMB;
-        }
-        else if (role == Role.ROLE_ATTACK)
-        {
-            approximateRole = Role.ROLE_BOMB;
-        }
-        else if (role == Role.ROLE_RECON)
-        {
-            approximateRole = Role.ROLE_BOMB;
-        }
-        else if (role == Role.ROLE_BOMB)
-        {
-            approximateRole = Role.ROLE_BOMB;
-        }
-        else if (role == Role.ROLE_DIVE_BOMB)
-        {
-            approximateRole = Role.ROLE_BOMB;
-        }
-        else if (role == Role.ROLE_SEA_PLANE)
-        {
-            approximateRole = Role.ROLE_BOMB;
-        }
-        else if (role == Role.ROLE_SEA_PLANE_SMALL)
-        {
-            approximateRole = Role.ROLE_BOMB;
-        }
-        else if (role == Role.ROLE_SEA_PLANE_LARGE)
-        {
-            approximateRole = Role.ROLE_BOMB;
-        }
-        else if (role == Role.ROLE_BALLOON)
-        {
-            approximateRole = Role.ROLE_BALLOON;
-        }
-        else if (role == Role.ROLE_GROUND_UNIT)
-        {
-            approximateRole = Role.ROLE_GROUND_UNIT;
-        }
-        
-        return approximateRole;
-    }
-
-    public static String roleToSDesc (Role role)
-    {
-        String desc =  ROLE_FIGHTER_DESC;
-        if (role == Role.ROLE_ATTACK)
-        {
-            desc =  ROLE_ATTACK_DESC;
-        }
-        else if (role == Role.ROLE_RECON)
-        {
-            desc =  ROLE_RECON_DESC;
-        }
-        else if (role == Role.ROLE_BOMB)
-        {
-            desc =  ROLE_BOMB_DESC;
-        }
-        else if (role == Role.ROLE_TRANSPORT)
-        {
-            desc =  ROLE_TRANSPORT_DESC;
-        }
-        else if (role == Role.ROLE_STRAT_BOMB)
-        {
-            desc =  ROLE_STRAT_BOMB_DESC;
-        }
-        else if (role == Role.ROLE_DIVE_BOMB)
-        {
-            desc =  ROLE_DIVE_BOMB_DESC;
-        }
-        else if (role == Role.ROLE_SEA_PLANE)
-        {
-            desc =  ROLE_SEA_PLANE_DESC;
-        }
-        
-        return desc;
-    }
-
-    public static boolean isRoleSeaPlane(Role role)
-    {
-        if (role == Role.ROLE_SEA_PLANE || 
-            role == Role.ROLE_SEA_PLANE_LARGE || 
-            role == Role.ROLE_SEA_PLANE_SMALL)
-        {
-            return true;
-        }
-        
-        return false;
+        return Role.ROLE_FIGHTER;
     }
 }

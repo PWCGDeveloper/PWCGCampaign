@@ -154,6 +154,7 @@ public class PlaneType implements Cloneable
     {
         if (role == Role.ROLE_FIGHTER || 
             role == Role.ROLE_RECON || 
+            role == Role.ROLE_STRATEGIC_INTERCEPT || 
             role == Role.ROLE_ARTILLERY_SPOT || 
             role == Role.ROLE_ATTACK || 
             role == Role.ROLE_BOMB || 

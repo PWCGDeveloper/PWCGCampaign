@@ -54,6 +54,8 @@ public interface IFlightInformation
 
     int getAltitude();
 
+    void setAltitude(int altitude);
+
     void calculateAltitude() throws PWCGException;
 
     boolean isFighterMission();

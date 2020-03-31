@@ -18,7 +18,6 @@ import pwcg.mission.flight.bomb.StrategicBombingPackage;
 import pwcg.mission.flight.contactpatrol.ContactPatrolPackage;
 import pwcg.mission.flight.divebomb.DiveBombingPackage;
 import pwcg.mission.flight.escort.PlayerIsEscortPackage;
-import pwcg.mission.flight.intercept.HomeDefensePackage;
 import pwcg.mission.flight.intercept.InterceptPackage;
 import pwcg.mission.flight.lonewolf.LoneWolfPackage;
 import pwcg.mission.flight.offensive.OffensivePackage;
@@ -30,6 +29,7 @@ import pwcg.mission.flight.recon.ReconPackage;
 import pwcg.mission.flight.scramble.PlayerScramblePackage;
 import pwcg.mission.flight.seapatrolantishipping.SeaAntiShippingPackage;
 import pwcg.mission.flight.spy.SpyExtractPackage;
+import pwcg.mission.flight.strategicintercept.StrategicInterceptPackage;
 import pwcg.mission.flight.transport.TransportPackage;
 
 public class FlightFactory
@@ -138,9 +138,9 @@ public class FlightFactory
                 flightPackage = new PlayerScramblePackage(flightInformation);
             }
         }
-        else if (flightType == FlightTypes.HOME_DEFENSE)
+        else if (flightType == FlightTypes.STRATEGIC_INTERCEPT)
         {
-            flightPackage = new HomeDefensePackage(flightInformation);
+            flightPackage = new StrategicInterceptPackage(flightInformation);
         }
         else if (flightType == FlightTypes.ANTI_SHIPPING_BOMB || flightType == FlightTypes.ANTI_SHIPPING_ATTACK || flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
         {

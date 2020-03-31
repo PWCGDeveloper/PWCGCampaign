@@ -33,8 +33,16 @@ public class CreepingLinePattern
     private WaypointType waypointType;
     private WaypointAction waypointAction;
     private int legsInCreeping = MAX_CREEP_SEGMENTS;
-    
-    public CreepingLinePattern(Campaign campaign, IFlight flight, WaypointType waypointType, WaypointAction waypointAction, int wpTriggerArea, int legsInCreeping) throws PWCGException 
+    private double initialOrientation;
+
+    public CreepingLinePattern(
+            Campaign campaign, 
+            IFlight flight, 
+            WaypointType waypointType, 
+            WaypointAction waypointAction, 
+            int wpTriggerArea, 
+            int legsInCreeping,
+            double initialOrientation) throws PWCGException 
     {
         this.campaign = campaign;
         this.flight = flight;
@@ -42,33 +50,20 @@ public class CreepingLinePattern
         this.waypointType = waypointType;
         this.waypointAction = waypointAction;
         this.legsInCreeping = legsInCreeping;
+        this.initialOrientation = initialOrientation;
     }
 
-    /**
-     * Recursively generate creeping, altering altitude per the request
-     * 
-     * @param missionWPs
-     * @throws PWCGException 
-     */
     public List<McuWaypoint> generateCreepingWPSegments(McuWaypoint lastWP, double legDistance, double connectSegmentDistance) throws PWCGException
     {
         int legCount = 0;
                         
-        generateCreepingWPSegment(lastWP, lastWP.getOrientation().getyOri(), legDistance, connectSegmentDistance, legCount);
+        generateCreepingWPSegment(lastWP, legDistance, connectSegmentDistance, legCount);
         
         return creepingWPs;
     }
 
-    /**
-     * Recursively generate creeping segments.  
-     * A creeping pattern looks like a  bar graph
-     * 
-     * @param missionWPs
-     * @throws PWCGException 
-     */
-    private void generateCreepingWPSegment(McuWaypoint lastWP, double initialOrientation, double legDistance, double connectSegmentDistance, int legCount) throws PWCGException
+    private void generateCreepingWPSegment(McuWaypoint lastWP, double legDistance, double connectSegmentDistance, int legCount) throws PWCGException
     {
-        // A leg is four waypoints
         lastWP = generateCreepingWP(lastWP, connectSegmentDistance, initialOrientation);
         lastWP = generateCreepingWP(lastWP, legDistance, MathUtils.adjustAngle(initialOrientation, 90));
         lastWP = generateCreepingWP(lastWP, connectSegmentDistance, initialOrientation);
@@ -77,18 +72,10 @@ public class CreepingLinePattern
         ++legCount;
         if (legCount < legsInCreeping)
         {
-            generateCreepingWPSegment(lastWP, initialOrientation, legDistance, connectSegmentDistance, legCount);
+            generateCreepingWPSegment(lastWP, legDistance, connectSegmentDistance, legCount);
         }
     }
-    
-    
 
-    /**
-     * Generate a single waypoint in the creeping segment
-     * 
-     * @param missionWPs
-     * @throws PWCGException 
-     */
     private McuWaypoint generateCreepingWP(McuWaypoint lastWP, double legDistance, double orientation) throws PWCGException
     {
         McuWaypoint nextCreepingWP = WaypointFactory.createDefinedWaypointType(waypointType, waypointAction);

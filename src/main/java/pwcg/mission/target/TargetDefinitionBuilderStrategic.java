@@ -23,10 +23,10 @@ public class TargetDefinitionBuilderStrategic implements ITargetDefinitionBuilde
     @Override
     public TargetDefinition buildTargetDefinition () throws PWCGException
     {
-        Coordinate missionCenter = flightInformation.getMission().getMissionBorders().getCenter();
+        Coordinate proposedTargetPosition = flightInformation.getTargetSearchStartLocation();
 
         ICountry targetCountry = flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate());
-        StrategicTargetTypeGenerator strategicTargetTypeGenerator = new StrategicTargetTypeGenerator(targetCountry.getSide(), flightInformation.getCampaign().getDate(), missionCenter);
+        StrategicTargetTypeGenerator strategicTargetTypeGenerator = new StrategicTargetTypeGenerator(targetCountry.getSide(), flightInformation.getCampaign().getDate(), proposedTargetPosition);
         TargetType targetType = strategicTargetTypeGenerator.createTargetType(flightInformation.getMission().getMissionBorders().getAreaRadius());
 
         TargetRadius targetRadius = new TargetRadius();
@@ -38,7 +38,7 @@ public class TargetDefinitionBuilderStrategic implements ITargetDefinitionBuilde
                 Double.valueOf(targetRadius.getInitialTargetRadius()).intValue(), 
                 targetCountry.getSide(), 
                 flightInformation.getCampaign().getDate(), 
-                missionCenter);
+                proposedTargetPosition);
         IFixedPosition place = strategicTargetLocator.getStrategicTargetLocation(targetType);
 
         targetDefinition.setTargetType(targetType);

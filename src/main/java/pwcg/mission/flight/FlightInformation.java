@@ -233,6 +233,7 @@ public class FlightInformation implements IFlightInformation
         return altitude;
     }
     
+    @Override
     public void setAltitude(int altitude)
     {
         this.altitude = altitude;

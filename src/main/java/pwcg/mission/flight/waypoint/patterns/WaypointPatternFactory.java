@@ -39,9 +39,10 @@ public class WaypointPatternFactory
             int legsInCreeping,
             McuWaypoint lastWP, 
             double legDistance, 
-            double connectSegmentDistance) throws PWCGException
+            double connectSegmentDistance,
+            double initialOrientation) throws PWCGException
     {
-        CreepingLinePattern pattern = new CreepingLinePattern(campaign, flight, wpType, wpAction, wpTriggerArea, legsInCreeping);
+        CreepingLinePattern pattern = new CreepingLinePattern(campaign, flight, wpType, wpAction, wpTriggerArea, legsInCreeping, initialOrientation);
 
         List<McuWaypoint> waypoints = pattern.generateCreepingWPSegments(lastWP, legDistance, connectSegmentDistance);
 

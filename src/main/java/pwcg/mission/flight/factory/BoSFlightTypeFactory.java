@@ -45,6 +45,10 @@ public class BoSFlightTypeFactory implements IFlightTypeFactory
         {
             flightType = getFighterFlightType(squadron, isPlayerFlight);
         }
+        else if (missionRole == Role.ROLE_STRATEGIC_INTERCEPT)
+        {
+            flightType = getStrategicInterceptFlightType();
+        }
         else if (missionRole == Role.ROLE_ATTACK)
         {
             flightType = getAttackFlightType();
@@ -139,13 +143,18 @@ public class BoSFlightTypeFactory implements IFlightTypeFactory
         return flightType;
     }
 
-
     private FlightTypes getAttackFlightType() throws PWCGException 
     {
         FlightTypes flightType = FlightTypes.GROUND_ATTACK;
         return flightType;
     }
 
+    private FlightTypes getStrategicInterceptFlightType() throws PWCGException 
+    {
+        FlightTypes flightType = FlightTypes.STRATEGIC_INTERCEPT;
+        return flightType;
+    }
+    
     private FlightTypes getBomberFlightType(Squadron squadron) throws PWCGException 
     {
         int currentIndex = 0;

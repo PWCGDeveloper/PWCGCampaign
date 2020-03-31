@@ -12,6 +12,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.RoleCategory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.constants.AiSkillLevel;
@@ -130,8 +131,8 @@ public class FlightAiSettingsValidator
             {
                 SquadronMember squadronMember = mission.getCampaign().getPersonnelManager().getAnyCampaignMember(plane.getPilot().getSerialNumber());
                 Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());
-                Role primaryRole = squadron.determineSquadronPrimaryRole(mission.getCampaign().getDate());
-                if (primaryRole == Role.ROLE_FIGHTER)
+                Role squadronPrimaryRole = squadron.determineSquadronPrimaryRole(mission.getCampaign().getDate());
+                if (squadronPrimaryRole.isRoleCategory(RoleCategory.FIGHTER))
                 {
                     assert(plane.getAiLevel() == squadronMember.getAiSkillLevel());
                 }

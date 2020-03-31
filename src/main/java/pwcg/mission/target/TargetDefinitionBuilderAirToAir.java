@@ -9,6 +9,7 @@ import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.intercept.InterceptPlayerCoordinateGenerator;
+import pwcg.mission.flight.strategicintercept.StrategicInterceptPlayerCoordinateGenerator;
 import pwcg.mission.target.locator.TargetLocatorAir;
 
 public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
@@ -67,16 +68,26 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
         targetDefinition.setTargetOrientation(new Orientation());
         
         if (flightInformation.getFlightType() == FlightTypes.INTERCEPT || 
-            flightInformation.getFlightType() == FlightTypes.HOME_DEFENSE || 
             flightInformation.getFlightType() == FlightTypes.SCRAMBLE)
         {
-            buildLinkedFlightTagetDefinition();
+            buildOpposingFlightTagetDefinition();
+        }
+        if (flightInformation.getFlightType() == FlightTypes.STRATEGIC_INTERCEPT)
+        {
+            buildOpposingStrategicFlightTagetDefinition();
         }
     }
 
-    private void buildLinkedFlightTagetDefinition() throws PWCGException
+    private void buildOpposingFlightTagetDefinition() throws PWCGException
     {
         InterceptPlayerCoordinateGenerator coordinateGenerator = new InterceptPlayerCoordinateGenerator(flightInformation);
+        TargetDefinition linkedFlightTargetDefinition = coordinateGenerator.createTargetCoordinates();
+        targetDefinition.setLinkedFlightTargetDefinition(linkedFlightTargetDefinition);
+    }
+
+    private void buildOpposingStrategicFlightTagetDefinition() throws PWCGException
+    {
+        StrategicInterceptPlayerCoordinateGenerator coordinateGenerator = new StrategicInterceptPlayerCoordinateGenerator(flightInformation);
         TargetDefinition linkedFlightTargetDefinition = coordinateGenerator.createTargetCoordinates();
         targetDefinition.setLinkedFlightTargetDefinition(linkedFlightTargetDefinition);
     }
@@ -92,11 +103,14 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
         {
             return targetLocatorAir.getFrontCoordinate();
         }
-        else if (flightInformation.getFlightType() == FlightTypes.INTERCEPT || flightInformation.getFlightType() == FlightTypes.HOME_DEFENSE ||
-                 flightInformation.getFlightType() == FlightTypes.RECON)
-        {
-            return targetLocatorAir.getInterceptCoordinate();
-        }
+        else if (flightInformation.getFlightType() == FlightTypes.INTERCEPT || flightInformation.getFlightType() == FlightTypes.RECON)
+       {
+           return targetLocatorAir.getInterceptCoordinate();
+       }
+        else if (flightInformation.getFlightType() == FlightTypes.STRATEGIC_INTERCEPT)
+       {
+           return targetLocatorAir.getStrategicInterceptCoordinate();
+       }
         else if (flightInformation.getFlightType() == FlightTypes.OFFENSIVE || flightInformation.getFlightType() == FlightTypes.SPY_EXTRACT)
         {
             return targetLocatorAir.getEnemyTerritoryPatrolCoordinate();

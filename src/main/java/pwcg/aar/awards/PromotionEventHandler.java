@@ -2,6 +2,7 @@ package pwcg.aar.awards;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.RoleCategory;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
@@ -25,21 +26,16 @@ public class PromotionEventHandler
             return promotion;
         }
         
-        Role primaryRole = squadronMember.determineSquadron().determineSquadronPrimaryRole(campaign.getDate());
-		if (primaryRole == Role.ROLE_FIGHTER)
+        Role squadronPrimaryRole = squadronMember.determineSquadron().determineSquadronPrimaryRole(campaign.getDate());
+        if (squadronPrimaryRole.isRoleCategory(RoleCategory.FIGHTER))
 		{
             PromotionEventHandlerFighter fighterPromotions = new PromotionEventHandlerFighter();
             promotion = fighterPromotions.determineScoutPromotion(campaign, squadronMember);
 		}
-        else if (primaryRole == Role.ROLE_BOMB)
+        if (squadronPrimaryRole.isRoleCategory(RoleCategory.BOMBER) || squadronPrimaryRole.isRoleCategory(RoleCategory.TRANSPORT))
         {
             PromotionEventHandlerBomb tacticalBomberPromotions = new PromotionEventHandlerBomb();
             promotion = tacticalBomberPromotions.determineStrategicPromotion(campaign, squadronMember);
-        }
-        else if (primaryRole == Role.ROLE_STRAT_BOMB)
-        {
-            PromotionEventHandlerStrategic strategicPromotions = new PromotionEventHandlerStrategic();
-            promotion = strategicPromotions.determineStrategicPromotion(campaign, squadronMember);
         }
         else
         {

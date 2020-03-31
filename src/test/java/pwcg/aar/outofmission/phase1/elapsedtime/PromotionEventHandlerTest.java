@@ -14,7 +14,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.aar.awards.PromotionEventHandler;
 import pwcg.aar.awards.PromotionEventHandlerFighter;
 import pwcg.aar.awards.PromotionEventHandlerRecon;
-import pwcg.aar.awards.PromotionEventHandlerStrategic;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
@@ -59,21 +58,6 @@ public class PromotionEventHandlerTest
         Mockito.when(squadronMember.getRank()).thenReturn("Corporal");
         Mockito.when(squadronMember.determineSquadron()).thenReturn(squadron);
         Mockito.when(squadron.determineSquadronPrimaryRole(Matchers.<Date>any())).thenReturn(Role.ROLE_RECON);
-
-        PromotionEventHandler promotionEventHandler = new PromotionEventHandler(campaign);
-        String promotion = promotionEventHandler.promoteNonHistoricalPilots(squadronMember);
-
-        assert (promotion.equals("Sergent"));
-    }
-
-    @Test
-    public void promoteCorporalToSergentStrategic () throws PWCGException
-    {     
-        Mockito.when(squadronMember.determineService(Matchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
-        Mockito.when(squadronMember.getMissionFlown()).thenReturn(PromotionEventHandlerStrategic.PilotRankMedMinMissions);
-        Mockito.when(squadronMember.getRank()).thenReturn("Corporal");
-        Mockito.when(squadronMember.determineSquadron()).thenReturn(squadron);
-        Mockito.when(squadron.determineSquadronPrimaryRole(Matchers.<Date>any())).thenReturn(Role.ROLE_STRAT_BOMB);
 
         PromotionEventHandler promotionEventHandler = new PromotionEventHandler(campaign);
         String promotion = promotionEventHandler.promoteNonHistoricalPilots(squadronMember);

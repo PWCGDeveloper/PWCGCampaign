@@ -44,9 +44,9 @@ public class StrategicBombingPackage implements IFlightPackage
 
     private void createSearchlight(TargetDefinition targetDefinition, BombingFlight bombingFlight) throws PWCGException
     {
-        SearchLightBuilder groundUnitBuilder =  new SearchLightBuilder(flightInformation.getCampaign());
         if (flightInformation.getMission().isNightMission())
         {
+            SearchLightBuilder groundUnitBuilder =  new SearchLightBuilder(flightInformation.getCampaign());
             IGroundUnitCollection searchLightGroup = groundUnitBuilder.createSearchLightGroup(targetDefinition);
             bombingFlight.addLinkedGroundUnit(searchLightGroup);
         }

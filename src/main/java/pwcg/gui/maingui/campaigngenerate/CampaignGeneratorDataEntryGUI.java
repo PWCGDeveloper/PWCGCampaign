@@ -323,12 +323,12 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
         {
             for (Role role : availableRoles)
             {
-                cbRole.addItem(Role.roleToSDesc(role));
+                cbRole.addItem(role.getRoleDescription());
             }
         }
         else
         {
-            cbRole.addItem(Role.roleToSDesc(Role.ROLE_FIGHTER));
+            cbRole.addItem(Role.ROLE_FIGHTER.getRoleDescription());
         }
         
         cbRole.addActionListener(this);
@@ -346,7 +346,7 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
         {            
             Role primaryRole = squadron.determineSquadronPrimaryRole(date);
 
-            rolesSorted.put(Role.roleToSDesc(primaryRole), primaryRole);
+            rolesSorted.put(primaryRole.getRoleDescription(), primaryRole);
         }
         
         List<Role> roles = new ArrayList<Role>();
@@ -678,7 +678,7 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 	    {
 	        setRolesInUI();
 	        
-	        String selectedRole = Role.roleToSDesc(campaignGeneratorDO.getRole());
+	        String selectedRole = campaignGeneratorDO.getRole().getRoleDescription();
 	        
 	        cbRole.setSelectedItem(selectedRole);
             
@@ -901,7 +901,7 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
             else if (ae.getActionCommand().equalsIgnoreCase("RoleChanged"))
             {
                 String roleDesc = (String)cbRole.getSelectedItem();
-                Role role = Role.descToRole(roleDesc);
+                Role role = Role.getRoleFromDescription(roleDesc);
                 campaignGeneratorDO.setRole(role);
             }
             else if (ae.getActionCommand().equalsIgnoreCase("MapChanged"))

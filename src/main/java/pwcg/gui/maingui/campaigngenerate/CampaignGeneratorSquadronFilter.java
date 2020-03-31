@@ -81,8 +81,9 @@ public class CampaignGeneratorSquadronFilter
 	
 	private boolean rejectBecauseWrongRole(Squadron squad, Date campaignDate, String roleDesc) throws PWCGException
 	{
-        Role role = Role.descToRole(roleDesc);
-        if (squad.isSquadronThisPrimaryRole(campaignDate, role))
+        Role role = Role.getRoleFromDescription(roleDesc);
+        Role squadronRole = squad.determineSquadronPrimaryRole(campaignDate);
+        if (role == squadronRole)
         {
             return false;
         }

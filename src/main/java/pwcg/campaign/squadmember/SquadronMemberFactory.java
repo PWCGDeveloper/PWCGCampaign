@@ -15,6 +15,7 @@ import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronMemberInitialVictoryBuilder;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.RoleCategory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
@@ -80,7 +81,8 @@ public class SquadronMemberFactory
         int numMissions = createMissionsFlown(rankPos);
         newPilot.setMissionFlown(numMissions);
         
-        if (squadron.determineSquadronPrimaryRole(campaign.getDate()) == Role.ROLE_FIGHTER)
+        Role squadronPrimaryRole = squadron.determineSquadronPrimaryRole(campaign.getDate());
+        if (squadronPrimaryRole.isRoleCategory(RoleCategory.FIGHTER))
         {
             SquadronMemberInitialVictoryBuilder initialVictoryBuilder = new SquadronMemberInitialVictoryBuilder(campaign, squadron);
             initialVictoryBuilder.createPilotVictories(newPilot, rankPos);            

@@ -11,6 +11,16 @@
       "label": "Bombing Additional",
       "help": "Maximum additional aircraft"
     },
+    "StrategicBombingMinimum": {
+      "value": "6",
+      "label": "Strategic Bombing Minimum",
+      "help": "Minimum number of aircraft"
+    },
+    "StrategicBombingAdditional": {
+      "value": "6",
+      "label": "Strategic Bombing Additional",
+      "help": "Maximum additional aircraft"
+    },
     "GroundAttackMinimum": {
       "value": "2",
       "label": "Ground Attack Minimum",

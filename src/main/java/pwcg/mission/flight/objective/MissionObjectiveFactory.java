@@ -53,7 +53,7 @@ public class MissionObjectiveFactory
             return GroundAttackObjective.getMissionObjective(flight);
         }
         else if (flight.getFlightType() == FlightTypes.INTERCEPT ||
-                flight.getFlightType() == FlightTypes.HOME_DEFENSE)
+                flight.getFlightType() == FlightTypes.STRATEGIC_INTERCEPT)
         {
             return getInterceptMissionObjective(flight);
         }

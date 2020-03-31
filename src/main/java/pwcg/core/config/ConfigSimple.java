@@ -31,6 +31,8 @@ public class ConfigSimple
         setParamForSimpleConfigChange(ConfigItemKeys.PatrolAdditionalKey, "2");
         setParamForSimpleConfigChange(ConfigItemKeys.BombingMinimumKey, "2");
         setParamForSimpleConfigChange(ConfigItemKeys.BombingAdditionalKey, "2");
+        setParamForSimpleConfigChange(ConfigItemKeys.StrategicBombingMinimumKey, "6");
+        setParamForSimpleConfigChange(ConfigItemKeys.StrategicBombingAdditionalKey, "6");
         setParamForSimpleConfigChange(ConfigItemKeys.TransportMinimumKey, "1");
         setParamForSimpleConfigChange(ConfigItemKeys.TransportAdditionalKey, "2");
     }

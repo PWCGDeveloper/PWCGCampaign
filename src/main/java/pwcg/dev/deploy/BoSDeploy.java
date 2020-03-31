@@ -45,6 +45,7 @@ public class BoSDeploy extends DeployBase
         directoriesToCopy.put("19421123", null);
         directoriesToCopy.put("19421223", null);
         directoriesToCopy.put("19430120", null);
+        directoriesToCopy.put("19440101", null);
         
 		// Kuban dates
         directoriesToCopy.put("19420601", null);

@@ -3,6 +3,7 @@ package pwcg.gui.colors;
 import java.awt.Color;
 
 import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.RoleCategory;
 
 public class FrenchNavyColorMap extends ServiceColor implements IServiceColorMap
 {
@@ -15,7 +16,7 @@ public class FrenchNavyColorMap extends ServiceColor implements IServiceColorMap
     @Override
     public Color getColorForRole(Role role)
     {
-        if (role == Role.ROLE_FIGHTER)
+        if (role.isRoleCategory(RoleCategory.FIGHTER))
         {
             return FIGHTER_COLOR;            
         }

@@ -20,7 +20,7 @@ public class MissionAssociateFlightBuilder
         {
             if (flight.isPlayerFlight())
             {
-                if (flight.getFlightType() == FlightTypes.INTERCEPT || flight.getFlightType() == FlightTypes.HOME_DEFENSE)
+                if (flight.getFlightType() == FlightTypes.INTERCEPT)
                 {
                     makeLinkedInterceptFlights(flight);
                 }

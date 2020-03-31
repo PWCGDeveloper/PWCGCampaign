@@ -237,13 +237,14 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
         lRole.setOpaque(false);
         lRole.setFont(font);
         cbRole = new JComboBox<String>();
-        cbRole.addItem(Role.roleToSDesc(Role.ROLE_FIGHTER));
-        cbRole.addItem(Role.roleToSDesc(Role.ROLE_DIVE_BOMB));
-        cbRole.addItem(Role.roleToSDesc(Role.ROLE_ATTACK));
-        cbRole.addItem(Role.roleToSDesc(Role.ROLE_BOMB));
-        cbRole.addItem(Role.roleToSDesc(Role.ROLE_STRAT_BOMB));
-        cbRole.addItem(Role.roleToSDesc(Role.ROLE_RECON));
-        cbRole.addItem(Role.roleToSDesc(Role.ROLE_SEA_PLANE));
+        cbRole.addItem(Role.ROLE_FIGHTER.getRoleDescription());
+        cbRole.addItem(Role.ROLE_STRATEGIC_INTERCEPT.getRoleDescription());
+        cbRole.addItem(Role.ROLE_DIVE_BOMB.getRoleDescription());
+        cbRole.addItem(Role.ROLE_ATTACK.getRoleDescription());
+        cbRole.addItem(Role.ROLE_BOMB.getRoleDescription());
+        cbRole.addItem(Role.ROLE_STRAT_BOMB.getRoleDescription());
+        cbRole.addItem(Role.ROLE_RECON.getRoleDescription());
+        cbRole.addItem(Role.ROLE_SEA_PLANE.getRoleDescription());
         cbRole.setOpaque(false);
         cbRole.setBackground(buttonBG);
         cbRole.setSelectedIndex(0);
@@ -400,7 +401,7 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
 		List<Squadron> squadronList = squadManager.getFlyableSquadronsByService(service, campaign.getDate());
 		
         String roleDesc = (String)cbRole.getSelectedItem();
-        Role role = Role.descToRole(roleDesc);
+        Role role = Role.getRoleFromDescription(roleDesc);
         
 		for (int i = 0; i < squadronList.size(); ++i)
 		{

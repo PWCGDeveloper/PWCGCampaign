@@ -224,7 +224,8 @@ public class InterceptWaypointFactory
                 NUM_SEGMENTS_IN_INTERCEPT_CREEP,
                 lastWP,
                 creepLegDistance,
-                creepCrossDistance);
+                creepCrossDistance,
+                lastWP.getOrientation().getyOri());
                         
         return interceptWPs;
     }

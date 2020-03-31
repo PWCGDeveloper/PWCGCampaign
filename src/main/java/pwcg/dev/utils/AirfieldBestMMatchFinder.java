@@ -8,6 +8,7 @@ import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.RoleCategory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
@@ -32,7 +33,8 @@ public class AirfieldBestMMatchFinder
         }
         
         List<IAirfield> relativeFields = new ArrayList<IAirfield>(airfieldSet.getBomberFields().values());
-        if (squadron.determineSquadronPrimaryRole(date) == Role.ROLE_FIGHTER)
+        Role squadronRole = squadron.determineSquadronPrimaryRole(date);
+        if (squadronRole.isRoleCategory(RoleCategory.FIGHTER))
         {
             relativeFields = new ArrayList<IAirfield>(airfieldSet.getFighterFields().values());
         }

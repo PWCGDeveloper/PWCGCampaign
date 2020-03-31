@@ -133,7 +133,7 @@ public class CampaignEquipmentDepotPanel extends ImagePanel
     private String formAircraftInventory(List<EquippedPlane> aircraftForRole, Role role) throws PWCGException
     {
         StringBuffer depoStatusBuffer = new StringBuffer();
-        depoStatusBuffer.append("\n  " + Role.roleToSDesc(role) + "\n");        
+        depoStatusBuffer.append("\n  " + role.getRoleDescription() + "\n");        
         for (EquippedPlane plane : aircraftForRole)
         {
             depoStatusBuffer.append("    " + plane.getDisplayName() + " (" + plane.getSerialNumber() + ")");

@@ -46,16 +46,22 @@ public class FlightSizeCalculator
     		randomNumPlanes = configManager.getIntConfigParam(ConfigItemKeys.GroundAttackAdditionalKey);
     	}
     	else if (flightType == FlightTypes.BOMB || flightType == FlightTypes.DIVE_BOMB || 
-    			 flightType == FlightTypes.LOW_ALT_BOMB || flightType == FlightTypes.STRATEGIC_BOMB ||
-    			 flightType == FlightTypes.ANTI_SHIPPING_BOMB || flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
+    			 flightType == FlightTypes.LOW_ALT_BOMB || flightType == FlightTypes.ANTI_SHIPPING_BOMB || 
+    			 flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
     	{
     		minNumPlanes = configManager.getIntConfigParam(ConfigItemKeys.BombingMinimumKey);
     		randomNumPlanes = configManager.getIntConfigParam(ConfigItemKeys.BombingAdditionalKey);
     	}
+        else if (flightType == FlightTypes.STRATEGIC_BOMB)
+        {
+            minNumPlanes = configManager.getIntConfigParam(ConfigItemKeys.StrategicBombingMinimumKey);
+            randomNumPlanes = configManager.getIntConfigParam(ConfigItemKeys.StrategicBombingAdditionalKey);
+        }
     	else if (flightType == FlightTypes.TRANSPORT || flightType == FlightTypes.CARGO_DROP || 
    			 flightType == FlightTypes.LOW_ALT_BOMB || flightType == FlightTypes.STRATEGIC_BOMB)
 	   	{
 	   		minNumPlanes = configManager.getIntConfigParam(ConfigItemKeys.TransportMinimumKey);
+	   		minNumPlanes += 2;
 	   		randomNumPlanes = configManager.getIntConfigParam(ConfigItemKeys.TransportAdditionalKey);
 	   	}
     	else

@@ -4,6 +4,7 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.RoleCategory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronRoleSet;
@@ -35,35 +36,23 @@ public class OutOfMissionAAAOddsCalculator
         Role roleThisMission = squadronRoles.selectRoleForMission(campaign.getDate());
         
         int shotDownOdds = 5;
-        if (roleThisMission == Role.ROLE_ATTACK)
+        if (roleThisMission.isRoleCategory(RoleCategory.ATTACK))
         {
-            shotDownOdds += 12;
+            shotDownOdds += 10;
         }
-        else if (roleThisMission == Role.ROLE_DIVE_BOMB)
-        {
-            shotDownOdds += 7;
-        }
-        else if (roleThisMission == Role.ROLE_ARTILLERY_SPOT)
+        if (roleThisMission.isRoleCategory(RoleCategory.BOMBER))
         {
             shotDownOdds += 7;
         }
-        else if (roleThisMission == Role.ROLE_RECON)
+        if (roleThisMission.isRoleCategory(RoleCategory.RECON))
         {
             shotDownOdds += 7;
         }
-        else if (roleThisMission == Role.ROLE_BOMB)
-        {
-            shotDownOdds += 7;
-        }
-        else if (roleThisMission == Role.ROLE_STRAT_BOMB)
-        {
-            shotDownOdds += 7;
-        }
-        else if (roleThisMission == Role.ROLE_FIGHTER)
+        if (roleThisMission.isRoleCategory(RoleCategory.FIGHTER))
         {
             shotDownOdds -= 10;
         }
-        else if (roleThisMission == Role.ROLE_TRANSPORT)
+        if (roleThisMission.isRoleCategory(RoleCategory.TRANSPORT))
         {
             shotDownOdds -= 15;
         }

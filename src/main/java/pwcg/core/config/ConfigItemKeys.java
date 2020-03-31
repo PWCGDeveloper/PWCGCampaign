@@ -89,8 +89,10 @@ public class ConfigItemKeys
 
 	public static final String PatrolMinimumKey = "PatrolMinimum";
 	public static final String PatrolAdditionalKey = "PatrolAdditional";
-	public static final String BombingMinimumKey = "BombingMinimum";
-	public static final String BombingAdditionalKey = "BombingAdditional";
+    public static final String BombingMinimumKey = "BombingMinimum";
+    public static final String BombingAdditionalKey = "BombingAdditional";
+    public static final String StrategicBombingMinimumKey = "StrategicBombingMinimum";
+    public static final String StrategicBombingAdditionalKey = "StrategicBombingAdditional";
 	public static final String GroundAttackMinimumKey = "GroundAttackMinimum";
 	public static final String GroundAttackAdditionalKey = "GroundAttackAdditional";
 	public static final String TransportMinimumKey = "TransportMinimum";

@@ -117,7 +117,7 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
 
         JPanel squadronsByRolePanel = new JPanel(new BorderLayout());
         squadronsByRolePanel.setOpaque(false);
-        JLabel headerLabel = PWCGButtonFactory.makePaperLabelLarge(Role.roleToSDesc(role) + " Squadrons: \n");
+        JLabel headerLabel = PWCGButtonFactory.makePaperLabelLarge(role.getRoleDescription() + " Squadrons: \n");
         squadronsByRolePanel.add(headerLabel, BorderLayout.NORTH);
         squadronsByRolePanel.add(squadronsForRolePanel, BorderLayout.CENTER);
         

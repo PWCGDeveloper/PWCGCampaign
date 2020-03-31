@@ -40,7 +40,6 @@ public class EscortForPlayerFlightBuilder
         return escortForPlayerFlight;
     }
 
-
     private IFlight createEscortForAiFlight(Mission mission, IFlight escortedFlight) throws PWCGException 
     {
         VirtualEscortFlightBuilder virtualEscortFlightBuilder = new VirtualEscortFlightBuilder();

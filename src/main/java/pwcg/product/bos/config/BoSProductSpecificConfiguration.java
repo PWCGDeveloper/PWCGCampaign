@@ -18,7 +18,7 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     private static final int CREEPING_LINE_LENGTH = 15000;
     private static final int CREEPING_LINE_CROSS = 8000;
     private static final int INTERCEPT_RADIUS = 60000;
-    private static final int CLOSE_TO_FRONT_DISTANCE = 60000;
+    private static final int CLOSE_TO_FRONT_DISTANCE = 80000;
     private static final int MAX_DISTANCE_FROM_PLAYER_BOX = 60000;
     private static final int MISSION_RADIUS_LARGE = 100000;
     private static final int MISSION_RADIUS_MEDIUM = 50000;
