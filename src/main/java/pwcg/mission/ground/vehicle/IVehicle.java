@@ -20,9 +20,11 @@ public interface IVehicle extends IPWCGObject
     public void setCountry(ICountry country);
     public void setPosition(Coordinate position);
     public void setSpotterRange(int spotterRange);
+    public void setBeaconChannel(int beaconChannel);
     public String getDescription();
     public String getScript();
     public ICountry getCountry();
     public Coordinate getPosition();
+    public int getBeaconChannel();
     public int getIndex();
 }

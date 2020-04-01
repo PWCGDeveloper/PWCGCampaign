@@ -37,6 +37,7 @@ public class Vehicle implements Cloneable, IVehicle
     protected int damageThreshold = 1;
     protected int deleteAfterDeath = 1;
     protected int spotter = -1;
+    protected int beaconChannel = 0;
     protected ICountry country = CountryFactory.makeCountryByCountry(Country.NEUTRAL);
 
     protected McuTREntity entity = new McuTREntity();
@@ -72,6 +73,7 @@ public class Vehicle implements Cloneable, IVehicle
         clone.damageReport = this.damageReport;
         clone.damageThreshold = this.damageThreshold;
         clone.deleteAfterDeath = this.deleteAfterDeath;
+        clone.beaconChannel = this.beaconChannel;
         clone.country = this.country;
         return clone;
     }
@@ -164,6 +166,8 @@ public class Vehicle implements Cloneable, IVehicle
             writer.write("  DeleteAfterDeath = " + deleteAfterDeath + ";");
             writer.newLine();
             writer.write("  Spotter = " + spotter + ";");
+            writer.newLine();
+            writer.write("  BeaconChannel = " + beaconChannel + ";");
             writer.newLine();
         }
         catch (IOException e)
@@ -266,5 +270,15 @@ public class Vehicle implements Cloneable, IVehicle
     public void setSpotterRange(int spotterRange)
     {
         this.spotter = spotterRange;        
+    }
+
+    @Override
+    public int getBeaconChannel() {
+        return beaconChannel;
+    }
+
+    @Override
+    public void setBeaconChannel(int beaconChannel) {
+        this.beaconChannel = beaconChannel;
     }
 }
