@@ -19,7 +19,10 @@ public class ConfigSetAircraftNumbers
 		configSet.addConfigItem(ConfigItemKeys.GroundAttackAltitudeKey, new ConfigItem("150"));
 		configSet.addConfigItem(ConfigItemKeys.PatrolDistanceBaseKey, new ConfigItem("10"));
 		configSet.addConfigItem(ConfigItemKeys.PatrolDistanceRandomKey, new ConfigItem("10"));	
-		
+
+		configSet.addConfigItem(ConfigItemKeys.StrategicBombingMinimumKey, new ConfigItem("4"));  
+		configSet.addConfigItem(ConfigItemKeys.StrategicBombingAdditionalKey, new ConfigItem("8"));  
+
 		return configSet;
 	}
 }

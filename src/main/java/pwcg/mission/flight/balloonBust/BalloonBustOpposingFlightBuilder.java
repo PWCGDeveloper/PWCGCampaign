@@ -59,8 +59,9 @@ public class BalloonBustOpposingFlightBuilder
     private IFlight buildOpposingFlight(Squadron opposingSquadron) throws PWCGException 
     {
         boolean isPlayerFlight = false;
-        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(this.playerFlightInformation.getMission(), opposingSquadron, isPlayerFlight);
+        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(this.playerFlightInformation.getMission(), opposingSquadron, isPlayerFlight);        
         IFlightInformation opposingFlightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.BALLOON_DEFENSE);
+        opposingFlightInformation.getTargetDefinition().setTargetPosition(balloonUnit.getPosition());
         
         BalloonDefenseFlight opposingFlight = new BalloonDefenseFlight(opposingFlightInformation);
         opposingFlight.createFlight();

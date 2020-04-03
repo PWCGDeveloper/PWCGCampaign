@@ -1,8 +1,8 @@
 {
   "country": "GERMANY",
   "squadronId": 20142001,
-  "name": "II./TG2",
-  "fileName": "II_TG2.json",
+  "name": "II./TG1",
+  "fileName": "II_TG1.json",
   "skill": 50,
   "planeAssignments": [
     {
@@ -25,12 +25,6 @@
   "skins": [],
   "squadHistory": {
     "squadHistoryEntries": [
-      {
-        "date": "19440901",
-        "squadName": "II./TG1",
-        "armedServiceName": "Luftwaffe",
-        "skill": 45
-      }
     ]
   },
   "serviceId": 20101,

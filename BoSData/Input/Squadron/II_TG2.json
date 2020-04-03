@@ -41,12 +41,6 @@
   "skins": [],
   "squadHistory": {
     "squadHistoryEntries": [
-      {
-        "date": "19440901",
-        "squadName": "II./TG1",
-        "armedServiceName": "Luftwaffe",
-        "skill": 45
-      }
     ]
   },
   "serviceId": 20101,

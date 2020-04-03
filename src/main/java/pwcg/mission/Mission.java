@@ -74,12 +74,22 @@ public class Mission
         missionFrontLines = new MissionFrontLineIconBuilder(campaign, this);
     }
 
-    void generate(FlightTypes overrideFlightType) throws PWCGException 
+    public void generate(FlightTypes overrideFlightType) throws PWCGException 
+    {
+        generateProfile();
+        generateFlights(overrideFlightType);
+    }
+    
+    public void generateProfile() throws PWCGException 
     {
         validate();
         MissionProfileGenerator missionProfileGenerator = new MissionProfileGenerator(campaign, participatingPlayers);
         missionProfile = missionProfileGenerator.generateMissionProfile();
+    }
+    
 
+    private void generateFlights(FlightTypes overrideFlightType) throws PWCGException 
+    {
     	missionFlightBuilder.generateFlights(participatingPlayers, overrideFlightType);
     	missionAssociateFlightBuilder.buildAssociatedFlights(this);
         createFirePots();

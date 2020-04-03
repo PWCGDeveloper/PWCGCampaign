@@ -34,10 +34,10 @@ public class BalloonBustPackage implements IFlightPackage
         this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.BALLOON_BUST);
 
         buildBalloon();
-        BalloonBustFlight balloonBust = buildBalloonBustFllght();
-		buildOpposingFlights(balloonBust);
+        BalloonBustFlight balloonBustFlight = buildBalloonBustFllght();
+		buildOpposingFlights(balloonBustFlight);
 		
-		return balloonBust;
+		return balloonBustFlight;
 	}
 
     private void buildBalloon() throws PWCGException
@@ -86,15 +86,15 @@ public class BalloonBustPackage implements IFlightPackage
         return balloonCountry;
     }
 
-    private void buildOpposingFlights(IFlight flight) throws PWCGException
+    private void buildOpposingFlights(IFlight balloonBustFlight) throws PWCGException
     {
         if (this.flightInformation.isPlayerFlight())
         {
-            BalloonBustOpposingFlightBuilder opposingFlightBuilder = new BalloonBustOpposingFlightBuilder(flight.getFlightInformation(), balloonUnit);
+            BalloonBustOpposingFlightBuilder opposingFlightBuilder = new BalloonBustOpposingFlightBuilder(flightInformation, balloonUnit);
             List<IFlight> opposingFlights = opposingFlightBuilder.buildOpposingFlights();
             for (IFlight opposingFlight: opposingFlights)
             {
-                flight.getLinkedFlights().addLinkedFlight(opposingFlight);
+                balloonBustFlight.getLinkedFlights().addLinkedFlight(opposingFlight);
             }
         }
     }
