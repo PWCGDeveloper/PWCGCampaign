@@ -1,6 +1,8 @@
 package pwcg.campaign.target;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,6 +13,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
@@ -25,15 +28,20 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;
+import pwcg.mission.MissionFlightBuilder;
 import pwcg.mission.MissionGroundUnitResourceManager;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.IFlightPlanes;
+import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.ground.builder.BalloonUnitBuilder;
 import pwcg.mission.ground.factory.TargetFactory;
 import pwcg.mission.ground.org.GroundUnitType;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleClass;
+import pwcg.mission.mcu.McuTREntity;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
 
@@ -46,12 +54,21 @@ public class TargetBuilderTest
     @Mock private Squadron squadron;
     @Mock private Mission mission;
     @Mock private ConfigManagerCampaign configManager;
-    
+    @Mock private MissionFlightBuilder missionFlightBuilder;
+    @Mock private IFlight playerFlight;
+    @Mock private ICountry country;
+    @Mock private IFlightPlanes flightPlanes;
+    @Mock private PlaneMcu playerPlane;
+    @Mock private McuTREntity playerPlaneEntity;
+
     private MissionGroundUnitResourceManager groundUnitResourceManager = new MissionGroundUnitResourceManager();
 
     @Before
     public void setup() throws PWCGException
     {
+        List<IFlight> playerFlights = new ArrayList<>();
+        List<PlaneMcu> playerFlightPlanes = new ArrayList<>();
+        
         PWCGContext.setProduct(PWCGProduct.BOS);
         PWCGContext.getInstance().changeContext(FrontMapIdentifier.KUBAN_MAP);
         
@@ -81,6 +98,18 @@ public class TargetBuilderTest
         Mockito.when(flightInformation.getSquadron()).thenReturn(squadron);
         Mockito.when(flightInformation.getCampaign()).thenReturn(campaign);
         Mockito.when(flightInformation.getTargetDefinition()).thenReturn(targetDefinition);
+        
+        Mockito.when(flightInformation.isPlayerFlight()).thenReturn(true);
+        
+        Mockito.when(mission.getMissionFlightBuilder()).thenReturn(missionFlightBuilder);
+        Mockito.when(missionFlightBuilder.getPlayerFlights()).thenReturn(playerFlights);
+        Mockito.when(squadron.getCountry()).thenReturn(country);
+        Mockito.when(playerFlight.getSquadron()).thenReturn(squadron);
+        Mockito.when(country.getSide()).thenReturn(Side.AXIS);
+        Mockito.when(playerFlight.getFlightPlanes()).thenReturn(flightPlanes);
+        Mockito.when(flightPlanes.getPlanes()).thenReturn(playerFlightPlanes);
+        Mockito.when(playerPlane.getEntity()).thenReturn(playerPlaneEntity);
+        Mockito.when(playerPlaneEntity.getIndex()).thenReturn(100);
     }
     
     @Test

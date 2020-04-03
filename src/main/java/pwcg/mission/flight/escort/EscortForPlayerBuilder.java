@@ -7,7 +7,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
-import pwcg.mission.flight.plot.FlightInformationFactory;
 import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.McuWaypoint;
@@ -32,7 +31,7 @@ public class EscortForPlayerBuilder
             if (rendezvousWP != null)
             {
                 Coordinate rendezvous = rendezvousWP.getPosition().copy();
-                IFlightInformation escortFlightInformation = FlightInformationFactory.buildEscortForPlayerFlightInformation(playerFlight.getFlightInformation(), 
+                IFlightInformation escortFlightInformation = EscortForPlayerFlightInformationBuilder.buildEscortForPlayerFlightInformation(playerFlight.getFlightInformation(), 
                         friendlyFighterSquadron, rendezvous);
                 EscortForPlayerFlight escortForPlayerFlight = new EscortForPlayerFlight(escortFlightInformation, playerFlight);
                 escortForPlayerFlight.createFlight();   

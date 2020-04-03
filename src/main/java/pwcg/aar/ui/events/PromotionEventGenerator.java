@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.aar.ui.events.model.PromotionEvent;
+import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.PilotNames;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -43,7 +44,8 @@ public class PromotionEventGenerator
         String oldRank = pilot.getRank();
         Map<String, String> namesUsed = new HashMap<String, String>();
         
-        String promotingGeneral = PilotNames.getInstance().getName(pilot.determineService(campaign.getDate()), namesUsed);
+        ArmedService armedService = pilot.determineService(campaign.getDate());
+        String promotingGeneral = PilotNames.getInstance().getName(armedService, namesUsed);
         PromotionEvent promotionEvent = new PromotionEvent(campaign, oldRank, newRank, promotingGeneral, pilot.getSquadronId(), pilot.getSerialNumber(), campaign.getDate(), isNewsworthy);
         return promotionEvent;
     }

@@ -52,7 +52,7 @@ public class OutOfMissionAAALossCalculatorTest
         
         OutOfMissionAAAOddsCalculator aaaLossOddsCalculator = new OutOfMissionAAAOddsCalculator(campaign);
         int odds = aaaLossOddsCalculator.oddsShotDownByAAA(squadronMember);
-        assert(odds == 54);
+        assert(odds == 52);
     }
     
     @Test
@@ -65,7 +65,7 @@ public class OutOfMissionAAALossCalculatorTest
         
         OutOfMissionAAAOddsCalculator aaaLossOddsCalculator = new OutOfMissionAAAOddsCalculator(campaign);
         int odds = aaaLossOddsCalculator.oddsShotDownByAAA(squadronMember);
-        assert(odds == 34);
+        assert(odds == 32);
     }
     
     @Test
@@ -78,6 +78,6 @@ public class OutOfMissionAAALossCalculatorTest
         
         OutOfMissionAAAOddsCalculator aaaLossOddsCalculator = new OutOfMissionAAAOddsCalculator(campaign);
         int odds = aaaLossOddsCalculator.oddsShotDownByAAA(squadronMember);
-        assert(odds == 5);
+        assert(odds == 8);
     }
 }

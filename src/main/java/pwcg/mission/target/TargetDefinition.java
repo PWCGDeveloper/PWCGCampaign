@@ -20,7 +20,6 @@ public class TargetDefinition
     private String targetName = "";
     private int preferredRadius;
     private int maximumRadius;
-    private TargetDefinition linkedFlightTargetDefinition = null;
 
     public TargetDefinition()
     {
@@ -139,15 +138,5 @@ public class TargetDefinition
     public void setAttackingSquadron(Squadron attackingSquadron)
     {
         this.attackingSquadron = attackingSquadron;
-    }
-
-    public TargetDefinition getLinkedFlightTargetDefinition()
-    {
-        return linkedFlightTargetDefinition;
-    }
-
-    public void setLinkedFlightTargetDefinition(TargetDefinition linkedFlightTargetDefinition)
-    {
-        this.linkedFlightTargetDefinition = linkedFlightTargetDefinition;
     }
 }

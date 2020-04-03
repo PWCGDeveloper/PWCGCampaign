@@ -5,11 +5,8 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlightInformation;
-import pwcg.mission.flight.intercept.InterceptPlayerCoordinateGenerator;
-import pwcg.mission.flight.strategicintercept.StrategicInterceptPlayerCoordinateGenerator;
 import pwcg.mission.target.locator.TargetLocatorAir;
 
 public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
@@ -27,16 +24,6 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
         createBasicTargetDefinition();
         createTargetRadius();        
         createTargetLocation();
-        return targetDefinition;
-    }
-
-    @Override
-    public TargetDefinition buildScrambleOpposeTargetDefinition(FlightInformation scrambleOpposingFlightInformation, TargetType targetType) throws PWCGException
-    {
-        createBasicTargetDefinition();
-        Coordinate targetLocation = scrambleOpposingFlightInformation.getTargetSearchStartLocation();
-        targetDefinition.setTargetPosition(targetLocation);
-        targetDefinition.setTargetOrientation(new Orientation());
         return targetDefinition;
     }
 
@@ -66,30 +53,6 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
         Coordinate targetLocation = getTargetLocationForFlightType();
         targetDefinition.setTargetPosition(targetLocation);
         targetDefinition.setTargetOrientation(new Orientation());
-        
-        if (flightInformation.getFlightType() == FlightTypes.INTERCEPT || 
-            flightInformation.getFlightType() == FlightTypes.SCRAMBLE)
-        {
-            buildOpposingFlightTagetDefinition();
-        }
-        if (flightInformation.getFlightType() == FlightTypes.STRATEGIC_INTERCEPT)
-        {
-            buildOpposingStrategicFlightTagetDefinition();
-        }
-    }
-
-    private void buildOpposingFlightTagetDefinition() throws PWCGException
-    {
-        InterceptPlayerCoordinateGenerator coordinateGenerator = new InterceptPlayerCoordinateGenerator(flightInformation);
-        TargetDefinition linkedFlightTargetDefinition = coordinateGenerator.createTargetCoordinates();
-        targetDefinition.setLinkedFlightTargetDefinition(linkedFlightTargetDefinition);
-    }
-
-    private void buildOpposingStrategicFlightTagetDefinition() throws PWCGException
-    {
-        StrategicInterceptPlayerCoordinateGenerator coordinateGenerator = new StrategicInterceptPlayerCoordinateGenerator(flightInformation);
-        TargetDefinition linkedFlightTargetDefinition = coordinateGenerator.createTargetCoordinates();
-        targetDefinition.setLinkedFlightTargetDefinition(linkedFlightTargetDefinition);
     }
 
     private Coordinate getTargetLocationForFlightType() throws PWCGException

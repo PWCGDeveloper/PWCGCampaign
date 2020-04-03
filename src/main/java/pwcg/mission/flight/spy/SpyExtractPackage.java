@@ -1,6 +1,9 @@
 package pwcg.mission.flight.spy;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.flight.FlightBuildInformation;
+import pwcg.mission.flight.FlightInformationFactory;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
@@ -11,13 +14,15 @@ public class SpyExtractPackage implements IFlightPackage
 {
     protected IFlightInformation flightInformation;
 
-    public SpyExtractPackage(IFlightInformation flightInformation)
+    public SpyExtractPackage()
     {
-        this.flightInformation = flightInformation;
     }
 
-    public IFlight createPackage () throws PWCGException 
+    @Override
+    public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
+        this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.SPY_EXTRACT);
+
         SpyExtractFlight spyFlight = new SpyExtractFlight (flightInformation);
         spyFlight.createFlight();
 

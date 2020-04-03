@@ -3,6 +3,7 @@ package pwcg.campaign.resupply.depot;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
@@ -90,9 +91,10 @@ public class EquipmentDepot
         this.lastReplacementDate = lastReplacementDate;
     }
 
-    public EquipmentUpgradeRecord getUpgrade(EquippedPlane equippedPlane)
+    public EquipmentUpgradeRecord getUpgrade(EquippedPlane equippedPlane) throws PWCGException
     {
-        for (EquippedPlane depotPlane : equipment.getAvailableDepotPlanes().values())
+        List<EquippedPlane> sortedPlanes = getPlanesForFromDepotBestToWorst(equipment.getAvailableDepotPlanes());
+        for (EquippedPlane depotPlane : sortedPlanes)
         {
             if (depotPlane.getArchType().equals(equippedPlane.getArchType()))
             {
@@ -104,5 +106,11 @@ public class EquipmentDepot
             }
         }
         return null;
+    }
+    
+    private List<EquippedPlane> getPlanesForFromDepotBestToWorst(Map<Integer, EquippedPlane> planesForSquadron) throws PWCGException
+    {
+        List<EquippedPlane> sortedPlanes = PlaneSorter.sortEquippedPlanesByGoodness(new ArrayList<EquippedPlane>(planesForSquadron.values()));
+        return sortedPlanes;
     }
 }

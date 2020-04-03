@@ -17,8 +17,6 @@ import pwcg.mission.mcu.McuTREntity;
 
 public class Vehicle implements Cloneable, IVehicle
 {
-    public static int BALLOON_ALTITUDE = 1500;
-
     protected IVehicleDefinition vehicleDefinition;
     protected String vehicleType = "";
     protected int index;

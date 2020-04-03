@@ -42,7 +42,7 @@ public class InitialReplacementEquipperTest
         
         EquipmentDepotInitializer replacementEquipper = new EquipmentDepotInitializer(campaign, luftwaffe);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        assert(equipment.getAvailableDepotPlanes().size() == 45);
+        assert(equipment.getAvailableDepotPlanes().size() == 42);
         
         boolean me110e2Found = false;
         boolean he111h6Found = false;

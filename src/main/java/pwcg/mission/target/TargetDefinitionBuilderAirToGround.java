@@ -3,8 +3,6 @@ package pwcg.mission.target;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.location.Orientation;
-import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.target.locator.TargetLocatorAttack;
@@ -22,6 +20,14 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
     @Override
     public TargetDefinition buildTargetDefinition () throws PWCGException
     {        
+        TargetType targetType = determineTargetType();
+        buildTargetDefinitionForTacticalFlight(targetType);          
+        
+        return targetDefinition;
+    }
+
+    private TargetType determineTargetType() throws PWCGException
+    {
         TargetType targetType = determinePredefinedTacticalTarget(flightInformation.getFlightType());
         if (targetType == TargetType.TARGET_ANY)
         {
@@ -29,19 +35,7 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
             TargetTypeAvailabilityInputs targetTypeAvailabilityInputs = createTargetingInputs(targetSearchStartLocation);
             targetType = createTargetType(targetTypeAvailabilityInputs);
         }
-        buildTargetDefinitionForTacticalFlight(targetType);          
-        
-        return targetDefinition;
-    }
-
-    @Override
-    public TargetDefinition buildScrambleOpposeTargetDefinition(FlightInformation scrambleOpposingFlightInformation, TargetType targetType) throws PWCGException
-    {
-        buildTargetDefinitionForTacticalFlight(targetType);          
-        Coordinate targetLocation = scrambleOpposingFlightInformation.getTargetSearchStartLocation();
-        targetDefinition.setTargetPosition(targetLocation);
-        targetDefinition.setTargetOrientation(new Orientation());
-        return targetDefinition;
+        return targetType;
     }
 
     private TargetType determinePredefinedTacticalTarget(FlightTypes flightType) 

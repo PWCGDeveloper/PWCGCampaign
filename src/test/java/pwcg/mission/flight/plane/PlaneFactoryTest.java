@@ -19,10 +19,11 @@ import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
+import pwcg.mission.flight.FlightBuildInformation;
+import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
-import pwcg.mission.flight.plot.FlightInformationFactory;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestParticipatingHumanBuilder;
@@ -32,15 +33,17 @@ public class PlaneFactoryTest
 {
     Campaign campaign;
     Mission mission;
-    @Mock IFlight flight;
-    @Mock IFlightInformation flightInformation;
+    @Mock
+    IFlight flight;
+    @Mock
+    IFlightInformation flightInformation;
 
     @Before
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.KG53_PROFILE);
-        
+
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.BOMB);
         Mockito.when(flight.getFlightInformation()).thenReturn(flightInformation);
@@ -50,21 +53,25 @@ public class PlaneFactoryTest
     public void testPlayerPlaneGeneration() throws PWCGException
     {
         Mockito.when(flightInformation.isVirtual()).thenReturn(false);
-        
+
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.KG53_PROFILE.getSquadronId());
-        IFlightInformation flightInformation = FlightInformationFactory.buildPlayerFlightInformation(squadron, mission, FlightTypes.BOMB);
+
+        boolean isPlayerFlight = true;
+        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(mission, squadron, isPlayerFlight);
+
+        IFlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.BOMB);
 
         PlaneMCUFactory planeFactory = new PlaneMCUFactory(flightInformation);
         List<PlaneMcu> assignedPlanes = planeFactory.createPlanesForFlight(4);
-        
+
         boolean playerFound = false;
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(SquadronTestProfile.KG53_PROFILE.getSquadronId());        
+        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(SquadronTestProfile.KG53_PROFILE.getSquadronId());
         int callnum = 1;
         for (PlaneMcu plane : assignedPlanes)
         {
-            assert(squadronPersonnel.isActiveSquadronMember(plane.getPilot().getSerialNumber()));
-            assert(plane.getCallsign() == Callsign.SEAGULL);
-            assert(plane.getCallnum() == callnum++);
+            assert (squadronPersonnel.isActiveSquadronMember(plane.getPilot().getSerialNumber()));
+            assert (plane.getCallsign() == Callsign.SEAGULL);
+            assert (plane.getCallnum() == callnum++);
             List<SquadronMember> players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
             for (SquadronMember player : players)
             {
@@ -75,36 +82,40 @@ public class PlaneFactoryTest
             }
         }
 
-        assert(playerFound);
+        assert (playerFound);
     }
 
     @Test
     public void testAiPlaneGeneration() throws PWCGException
     {
         Mockito.when(flightInformation.isVirtual()).thenReturn(true);
-        
+
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(20111052);
-        IFlightInformation flightInformation = FlightInformationFactory.buildAiFlightInformation(squadron, mission, FlightTypes.BOMB);
+
+        boolean isPlayerFlight = false;
+        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(mission, squadron, isPlayerFlight);
+
+        IFlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.BOMB);
 
         PlaneMCUFactory planeFactory = new PlaneMCUFactory(flightInformation);
         List<PlaneMcu> assignedPlanes = planeFactory.createPlanesForFlight(4);
-        
+
         List<SquadronMember> players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
         boolean playerFound = false;
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId());        
+        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId());
         int callnum = 1;
         for (PlaneMcu plane : assignedPlanes)
         {
-            assert(squadronPersonnel.isActiveSquadronMember(plane.getPilot().getSerialNumber()));
-            assert(plane.getCallsign() == Callsign.ROOK);
-            assert(plane.getCallnum() == callnum++);
+            assert (squadronPersonnel.isActiveSquadronMember(plane.getPilot().getSerialNumber()));
+            assert (plane.getCallsign() == Callsign.ROOK);
+            assert (plane.getCallnum() == callnum++);
             if (plane.getPilot().getSerialNumber() == players.get(0).getSerialNumber())
             {
                 playerFound = true;
             }
         }
 
-        assert(!playerFound);
+        assert (!playerFound);
     }
 
 }

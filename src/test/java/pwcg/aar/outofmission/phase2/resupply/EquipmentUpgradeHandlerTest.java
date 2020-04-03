@@ -90,6 +90,12 @@ public class EquipmentUpgradeHandlerTest
             planesThatShouldNotBeReplaced.add(me109F4ForSquadron.getSerialNumber());
         }
 
+        // The better planes should be left in the squadron
+        for (int planeThatShouldNotBeReplaced : planesThatShouldNotBeReplaced)
+        {
+            assert(equipmentForSquadronBeforeTest.getEquippedPlane(planeThatShouldNotBeReplaced) != null);
+        }
+
         // Run the upgrade
         EquipmentUpgradeHandler equipmentUpgradeHandler = new EquipmentUpgradeHandler(campaign);
         equipmentUpgradeHandler.upgradeEquipment(armedService);

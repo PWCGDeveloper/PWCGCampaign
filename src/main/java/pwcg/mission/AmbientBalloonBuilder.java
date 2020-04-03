@@ -74,8 +74,12 @@ public class AmbientBalloonBuilder
             FlightTypes flightType = flight.getFlightType();
             if (flightType == FlightTypes.BALLOON_DEFENSE || flightType == FlightTypes.BALLOON_BUST)
             {
-                Coordinate balloonPosition = flight.getLinkedGroundUnits().getLinkedGroundUnitByType(GroundUnitCollectionType.BALLOON_GROUND_UNIT_COLLECTION).getPosition();
-                balloonPositions.add(balloonPosition);
+                IGroundUnitCollection linkedBalloonUnit = flight.getLinkedGroundUnits().getLinkedGroundUnitByType(GroundUnitCollectionType.BALLOON_GROUND_UNIT_COLLECTION);
+                if (linkedBalloonUnit != null)
+                {
+                    Coordinate balloonPosition = linkedBalloonUnit.getPosition();
+                    balloonPositions.add(balloonPosition);
+                }
             } 
         }
         return balloonPositions;

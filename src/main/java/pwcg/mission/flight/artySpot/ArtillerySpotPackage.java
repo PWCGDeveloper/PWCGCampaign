@@ -2,6 +2,9 @@ package pwcg.mission.flight.artySpot;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.mission.flight.FlightBuildInformation;
+import pwcg.mission.flight.FlightInformationFactory;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
@@ -12,13 +15,15 @@ public class ArtillerySpotPackage implements IFlightPackage
 {
     private IFlightInformation flightInformation;
 
-    public ArtillerySpotPackage(IFlightInformation flightInformation)
+    public ArtillerySpotPackage()
     {
-        this.flightInformation = flightInformation;
     }
 
-    public IFlight createPackage () throws PWCGException 
+    @Override
+    public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
+        this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.ARTILLERY_SPOT);
+
         IFlight artySpot = createFlight();
 		return artySpot;
 	}

@@ -32,7 +32,7 @@ public class PromotionEventHandler
             PromotionEventHandlerFighter fighterPromotions = new PromotionEventHandlerFighter();
             promotion = fighterPromotions.determineScoutPromotion(campaign, squadronMember);
 		}
-        if (squadronPrimaryRole.isRoleCategory(RoleCategory.BOMBER) || squadronPrimaryRole.isRoleCategory(RoleCategory.TRANSPORT))
+        else if (squadronPrimaryRole.isRoleCategory(RoleCategory.BOMBER) || squadronPrimaryRole.isRoleCategory(RoleCategory.TRANSPORT))
         {
             PromotionEventHandlerBomb tacticalBomberPromotions = new PromotionEventHandlerBomb();
             promotion = tacticalBomberPromotions.determineStrategicPromotion(campaign, squadronMember);

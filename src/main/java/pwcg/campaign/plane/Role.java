@@ -96,10 +96,14 @@ public enum Role
         {
             return Role.ROLE_BOMB;
         }
+        else if (role.getRoleCategory() == RoleCategory.FIGHTER)
+        {
+            return Role.ROLE_FIGHTER;
+        }
         else if (role.getRoleCategory() == RoleCategory.TRANSPORT)
         {
             return Role.ROLE_BOMB;
         }
-        return Role.ROLE_FIGHTER;
+        return Role.ROLE_UNKNOWN;
     }
 }

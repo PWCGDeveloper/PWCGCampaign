@@ -245,7 +245,6 @@ public class FlightInformation implements IFlightInformation
         IMissionAltitudeGenerator missionAltitudeGenerator = MissionAltitudeGeneratorFactory.createMissionAltitudeGenerator();
         this.altitude = missionAltitudeGenerator.determineFlightAltitude(campaign, flightType);
     }
-    
 
     @Override
     public boolean isFighterMission()

@@ -3,6 +3,7 @@ package pwcg.aar;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.mockito.Matchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
@@ -17,13 +18,16 @@ import pwcg.aar.outofmission.phase2.resupply.AARResupplyData;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.aar.prelim.PwcgMissionDataEvaluator;
+import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignData;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.plane.EquippedPlane;
+import pwcg.campaign.plane.Role;
 import pwcg.campaign.resupply.personnel.SquadronTransferData;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SerialNumber;
@@ -74,6 +78,8 @@ public abstract class AARTestSetup
     @Mock protected EquippedPlane plane1;
     @Mock protected EquippedPlane plane2;
     @Mock protected EquippedPlane plane3;
+    @Mock protected ArmedService frenchAirForce;
+    @Mock protected ArmedService germanAirForce;
     
     protected List<SquadronMember> players = new ArrayList<>();
 
@@ -106,6 +112,11 @@ public abstract class AARTestSetup
         Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+1)).thenReturn(pilot1);
         Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+2)).thenReturn(pilot2);
         Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+3)).thenReturn(pilot3);
+        
+        Mockito.when(frenchAirForce.getCountry()).thenReturn(CountryFactory.makeCountryByCountry(Country.FRANCE));
+        Mockito.when(germanAirForce.getCountry()).thenReturn(CountryFactory.makeCountryByCountry(Country.GERMANY));
+        Mockito.when(frenchAirForce.getNameCountry()).thenReturn(CountryFactory.makeCountryByCountry(Country.FRANCE));
+        Mockito.when(germanAirForce.getNameCountry()).thenReturn(CountryFactory.makeCountryByCountry(Country.GERMANY));
     }
 
     private void mockPreliminaryData()
@@ -151,6 +162,7 @@ public abstract class AARTestSetup
     {
         Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         Mockito.when(player.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(player.determineService(Matchers.any())).thenReturn(frenchAirForce);
         Mockito.when(player.getCountry()).thenReturn(Country.FRANCE);
         Mockito.when(player.determineSquadron()).thenReturn(squadronEsc103);
 
@@ -169,6 +181,12 @@ public abstract class AARTestSetup
         Mockito.when(pilot1.getCountry()).thenReturn(Country.FRANCE);
         Mockito.when(pilot2.getCountry()).thenReturn(Country.FRANCE);
         Mockito.when(pilot3.getCountry()).thenReturn(Country.FRANCE);
+        
+        Mockito.when(enemyPilot1.determineService(Matchers.any())).thenReturn(germanAirForce);
+        Mockito.when(pilot1.determineService(Matchers.any())).thenReturn(frenchAirForce);
+        Mockito.when(pilot2.determineService(Matchers.any())).thenReturn(frenchAirForce);
+        Mockito.when(pilot3.determineService(Matchers.any())).thenReturn(frenchAirForce);
+
         
         Mockito.when(enemyPilot1.determineSquadron()).thenReturn(jasta11);
         Mockito.when(pilot1.determineSquadron()).thenReturn(squadronEsc103);
@@ -204,6 +222,11 @@ public abstract class AARTestSetup
         Mockito.when(plane1.getSerialNumber()).thenReturn(SerialNumber.PLANE_STARTING_SERIAL_NUMBER);
         Mockito.when(plane2.getSerialNumber()).thenReturn(SerialNumber.PLANE_STARTING_SERIAL_NUMBER+1);
         Mockito.when(plane3.getSerialNumber()).thenReturn(SerialNumber.PLANE_STARTING_SERIAL_NUMBER+2);
+        
+        Mockito.when(enemyPlane1.determinePrimaryRole()).thenReturn(Role.ROLE_FIGHTER);
+        Mockito.when(plane1.determinePrimaryRole()).thenReturn(Role.ROLE_FIGHTER);
+        Mockito.when(plane2.determinePrimaryRole()).thenReturn(Role.ROLE_FIGHTER);
+        Mockito.when(plane3.determinePrimaryRole()).thenReturn(Role.ROLE_FIGHTER);
     }
 
 }

@@ -250,7 +250,7 @@ public class BoSMissionAltitudeGenerator implements IMissionAltitudeGenerator
 
     private int determineBalloonBustAltitude()
     {
-        return Balloon.BALLOON_ALTITUDE + 300;
+        return Balloon.BALLOON_ALTITUDE + 200;
     }
 
     private int determineBalloonDefenseAltitude()

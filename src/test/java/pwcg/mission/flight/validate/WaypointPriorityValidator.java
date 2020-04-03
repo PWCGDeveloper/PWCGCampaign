@@ -23,7 +23,7 @@ public class WaypointPriorityValidator
             expectedWaypointPriority = WaypointPriority.PRIORITY_MED;
             if (FlightTypes.isHighPriorityFlight(flight.getFlightType()))
             {
-                expectedWaypointPriority = WaypointPriority.PRIORITY_HIGH;
+                expectedWaypointPriority = WaypointPriority.PRIORITY_MED;
             }
         }
 

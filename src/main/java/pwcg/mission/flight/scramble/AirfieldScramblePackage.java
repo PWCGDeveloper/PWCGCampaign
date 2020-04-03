@@ -12,10 +12,11 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
+import pwcg.mission.flight.FlightBuildInformation;
+import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
-import pwcg.mission.flight.plot.FlightInformationFactory;
 
 public class AirfieldScramblePackage
 {
@@ -78,8 +79,10 @@ public class AirfieldScramblePackage
 
     private AirfieldScrambleFlight createScrambleForResidentSquadron(List<Squadron> fighterSquadrons) throws PWCGException
     {
-        Squadron scrambleSquad = fighterSquadrons.get(0);
-        IFlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(scrambleSquad, mission, FlightTypes.SCRAMBLE);
+        Squadron scrambleSquadron = fighterSquadrons.get(0);
+        boolean isPlayerFlight = false;
+        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(mission, scrambleSquadron, isPlayerFlight);
+        IFlightInformation opposingFlightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.SCRAMBLE);
         AirfieldScrambleFlight scramble =  new AirfieldScrambleFlight(opposingFlightInformation);
         scramble.createFlight();
         return scramble;

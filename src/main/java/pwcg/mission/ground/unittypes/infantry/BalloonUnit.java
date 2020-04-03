@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.plane.Balloon;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.ground.GroundUnitInformation;
@@ -39,6 +40,7 @@ public class BalloonUnit extends GroundUnit
     {
         List<Coordinate> spawnerLocations = new ArrayList<>();        
         Coordinate balloonCoords = pwcgGroundUnitInformation.getPosition().copy();
+        balloonCoords.setYPos(Balloon.BALLOON_ALTITUDE);
         spawnerLocations.add(balloonCoords);
         return spawnerLocations;        
     }

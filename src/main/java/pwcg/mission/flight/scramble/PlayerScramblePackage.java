@@ -4,7 +4,10 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.mission.flight.FlightBuildInformation;
+import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightSpotterBuilder;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
@@ -15,13 +18,15 @@ public class PlayerScramblePackage implements IFlightPackage
 {
     private IFlightInformation flightInformation;
 
-    public PlayerScramblePackage(IFlightInformation flightInformation)
+    public PlayerScramblePackage()
     {
-        this.flightInformation = flightInformation;
     }
 
-    public IFlight createPackage () throws PWCGException 
-	{        		
+    @Override
+    public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
+    {
+        this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.SCRAMBLE);
+
         List<IFlight> opposingFlights = makeLinkedScrambleFlights();
         changeTargetLocationForPlayerFlight(opposingFlights);
 		PlayerScrambleFlight playerFlight = createPlayerFlight();

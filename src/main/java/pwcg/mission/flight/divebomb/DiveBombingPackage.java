@@ -2,6 +2,9 @@ package pwcg.mission.flight.divebomb;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.mission.flight.FlightBuildInformation;
+import pwcg.mission.flight.FlightInformationFactory;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
@@ -12,14 +15,15 @@ public class DiveBombingPackage implements IFlightPackage
 {
     private IFlightInformation flightInformation;
 
-    public DiveBombingPackage(IFlightInformation flightInformation)
+    public DiveBombingPackage()
     {
-        this.flightInformation = flightInformation;
     }
 
     @Override
-    public IFlight createPackage () throws PWCGException 
+    public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
+        this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.DIVE_BOMB);
+
         IFlight bombingFlight = createPackageTacticalTarget ();
         return bombingFlight;
     }

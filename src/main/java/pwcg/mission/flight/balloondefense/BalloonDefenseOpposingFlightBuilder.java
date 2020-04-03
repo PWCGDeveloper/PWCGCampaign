@@ -5,19 +5,23 @@ import java.util.List;
 
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.flight.FlightBuildInformation;
+import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
-import pwcg.mission.flight.balloonBust.BalloonBustPackage;
-import pwcg.mission.flight.plot.FlightInformationFactory;
+import pwcg.mission.flight.balloonBust.BalloonBustFlight;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class BalloonDefenseOpposingFlightBuilder
 {
     private IFlightInformation playerFlightInformation;
+    private IGroundUnitCollection balloonUnit;
 
-    public BalloonDefenseOpposingFlightBuilder(IFlightInformation playerFlightInformation)
+    public BalloonDefenseOpposingFlightBuilder(IFlightInformation playerFlightInformation, IGroundUnitCollection balloonUnit)
     {
         this.playerFlightInformation = playerFlightInformation;
+        this.balloonUnit = balloonUnit;
     }
 
     public List<IFlight> buildOpposingFlights() throws PWCGException
@@ -43,30 +47,23 @@ public class BalloonDefenseOpposingFlightBuilder
 
     private IFlight createOpposingFlight(Squadron opposingSquadron) throws PWCGException
     {
-        IFlight interceptOpposingFlight = null;
+        IFlight opposingBalloonBustFlight = null;
         String opposingFieldName = opposingSquadron.determineCurrentAirfieldName(playerFlightInformation.getCampaign().getDate());
         if (opposingFieldName != null)
         {
-            interceptOpposingFlight = buildOpposingFlight(opposingSquadron);
+            opposingBalloonBustFlight = buildOpposingFlight(opposingSquadron);
         }
-        
-        return interceptOpposingFlight;
+        return opposingBalloonBustFlight;
     }
 
     private IFlight buildOpposingFlight(Squadron opposingSquadron) throws PWCGException 
     {
-        FlightTypes opposingFlightType = FlightTypes.BALLOON_BUST;
-        IFlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(
-                opposingSquadron, playerFlightInformation.getMission(), opposingFlightType);
-        
-        IFlight opposingFlight = buildOpposingFlight(opposingFlightInformation);
+        boolean isPlayerFlight = false;
+        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(this.playerFlightInformation.getMission(), opposingSquadron, isPlayerFlight);
+        IFlightInformation opposingFlightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.BALLOON_BUST);
+
+        BalloonBustFlight opposingFlight = new BalloonBustFlight(opposingFlightInformation);
         opposingFlight.createFlight();
         return opposingFlight;
-    }
-    
-    private IFlight buildOpposingFlight(IFlightInformation opposingFlightInformation) throws PWCGException
-    {
-        BalloonBustPackage balloonBustPackage = new BalloonBustPackage(opposingFlightInformation);
-        return balloonBustPackage.createPackage();
     }
 }

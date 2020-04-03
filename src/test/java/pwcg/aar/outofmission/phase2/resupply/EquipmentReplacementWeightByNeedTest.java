@@ -175,12 +175,10 @@ public class EquipmentReplacementWeightByNeedTest
         assert(aircraftUsageByArchType.containsKey("fw190d"));
         assert(aircraftUsageByArchType.containsKey("me262"));
         assert(aircraftUsageByArchType.containsKey("ju52"));
-
-        assert(!aircraftUsageByArchType.containsKey("bf110"));
-        assert(!aircraftUsageByArchType.containsKey("he111"));
-        assert(!aircraftUsageByArchType.containsKey("ju87"));
-        assert(!aircraftUsageByArchType.containsKey("hs129"));        
-        assert(!aircraftUsageByArchType.containsKey("he111"));
+        assert(aircraftUsageByArchType.containsKey("bf110"));        
+        assert(aircraftUsageByArchType.containsKey("he111"));
+        assert(aircraftUsageByArchType.containsKey("ju87"));
+        assert(aircraftUsageByArchType.containsKey("hs129"));        
         
         int me109Weight = aircraftUsageByArchType.get("bf109");
         int ju88Weight = aircraftUsageByArchType.get("ju88");

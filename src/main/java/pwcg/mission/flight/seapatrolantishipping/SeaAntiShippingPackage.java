@@ -6,6 +6,8 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.shipping.ShippingLane;
 import pwcg.campaign.shipping.ShippingLaneManager;
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.flight.FlightBuildInformation;
+import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
@@ -19,14 +21,18 @@ import pwcg.mission.ground.org.IGroundUnitCollection;
 public class SeaAntiShippingPackage implements IFlightPackage
 {
     private IFlightInformation flightInformation;
+    private FlightTypes flightType;
 
-    public SeaAntiShippingPackage(IFlightInformation flightInformation)
+    public SeaAntiShippingPackage(FlightTypes flightType)
     {
-        this.flightInformation = flightInformation;
+        this.flightType = flightType;
     }
-    
-	public IFlight createPackage () throws PWCGException 
-	{
+
+    @Override
+    public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
+    {
+        this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, flightType);
+
         ShippingLane selectedShippingLane = getEnemyShippingLane();
         IFlight seaPatrol = createSeaPatrol();
 		generateConvoysForPlayerFlight(selectedShippingLane, seaPatrol);

@@ -7,7 +7,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.IFlightInformation;
-import pwcg.mission.flight.plot.FlightInformationFactory;
 import pwcg.mission.ground.factory.TargetFactory;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 
@@ -45,7 +44,7 @@ public class EscortedByPlayerFlightBuilder
         Squadron friendlyBomberSquadron = determineSquadronToBeEscorted();
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit(friendlyBomberSquadron.determineCurrentPosition(escortFlightInformation.getCampaign().getDate()));     
         
-        this.escortedFlightInformation = FlightInformationFactory.buildEscortedByPlayerFlightInformation(
+        this.escortedFlightInformation = EscortedByPlayerFlightInformationBuilder.buildEscortedByPlayerFlightInformation(
                 escortFlightInformation, friendlyBomberSquadron);
         return missionBeginUnit;
     }

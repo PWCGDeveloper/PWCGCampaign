@@ -46,13 +46,21 @@ public class FlightSizeCalculatorTest
     @Test
     public void calcPlanesInFlightBombTest() throws PWCGException
     {
-        calcPlanesInFlightGroundAttack(FlightTypes.BOMB);
-        calcPlanesInFlightGroundAttack(FlightTypes.DIVE_BOMB);
-        calcPlanesInFlightGroundAttack(FlightTypes.LOW_ALT_BOMB);
-        calcPlanesInFlightGroundAttack(FlightTypes.STRATEGIC_BOMB);
+        int planesInFlight = calcPlanesInFlightGroundAttack(FlightTypes.BOMB);
+        assert(planesInFlight >= 2 && planesInFlight <= 4);
+
+        planesInFlight = calcPlanesInFlightGroundAttack(FlightTypes.DIVE_BOMB);
+        assert(planesInFlight >= 2 && planesInFlight <= 4);
+
+        planesInFlight = calcPlanesInFlightGroundAttack(FlightTypes.LOW_ALT_BOMB);
+        assert(planesInFlight >= 2 && planesInFlight <= 4);
+
+        planesInFlight = calcPlanesInFlightGroundAttack(FlightTypes.STRATEGIC_BOMB);
+        assert(planesInFlight >= 4 && planesInFlight <= 8);
+
     }
 
-	public void calcPlanesInFlightGroundAttack(FlightTypes flightType) throws PWCGException
+	public int calcPlanesInFlightGroundAttack(FlightTypes flightType) throws PWCGException
 	{
         country = CountryFactory.makeCountryByCountry(Country.RUSSIA);
         Mockito.when(squadron.getCountry()).thenReturn(country);
@@ -63,21 +71,39 @@ public class FlightSizeCalculatorTest
         
 		FlightSizeCalculator flightSizeCalculator = new FlightSizeCalculator(flightInformation);
 		int planesInFlight = flightSizeCalculator.calcPlanesInFlight();
-		assert(planesInFlight >= 2 && planesInFlight <= 4);
+        return planesInFlight;
 	}
 
 	@Test
 	public void calcPlanesInFlightFighterTest() throws PWCGException
 	{
-		calcPlanesInFlightGroundAttack(FlightTypes.BALLOON_BUST);
-		calcPlanesInFlightGroundAttack(FlightTypes.BALLOON_DEFENSE);
-		calcPlanesInFlightGroundAttack(FlightTypes.ESCORT);
-		calcPlanesInFlightGroundAttack(FlightTypes.INTERCEPT);
-		calcPlanesInFlightGroundAttack(FlightTypes.LOW_ALT_CAP);
-		calcPlanesInFlightGroundAttack(FlightTypes.LOW_ALT_PATROL);
-		calcPlanesInFlightGroundAttack(FlightTypes.PATROL);
-		calcPlanesInFlightGroundAttack(FlightTypes.SCRAMBLE);
-		calcPlanesInFlightGroundAttack(FlightTypes.SCRAMBLE_OPPOSE);
+		int planesInFlight = calcPlanesInFlightGroundAttack(FlightTypes.BALLOON_BUST);
+        assert(planesInFlight >= 2 && planesInFlight <= 4);
+
+		planesInFlight = calcPlanesInFlightGroundAttack(FlightTypes.BALLOON_DEFENSE);
+        assert(planesInFlight >= 2 && planesInFlight <= 4);
+
+		planesInFlight = calcPlanesInFlightGroundAttack(FlightTypes.ESCORT);
+        assert(planesInFlight >= 2 && planesInFlight <= 4);
+
+		planesInFlight = calcPlanesInFlightGroundAttack(FlightTypes.INTERCEPT);
+        assert(planesInFlight >= 2 && planesInFlight <= 4);
+
+		planesInFlight = calcPlanesInFlightGroundAttack(FlightTypes.LOW_ALT_CAP);
+        assert(planesInFlight >= 2 && planesInFlight <= 4);
+
+		planesInFlight = calcPlanesInFlightGroundAttack(FlightTypes.LOW_ALT_PATROL);
+        assert(planesInFlight >= 2 && planesInFlight <= 4);
+
+		planesInFlight = calcPlanesInFlightGroundAttack(FlightTypes.PATROL);
+        assert(planesInFlight >= 2 && planesInFlight <= 4);
+
+		planesInFlight = calcPlanesInFlightGroundAttack(FlightTypes.SCRAMBLE);
+        assert(planesInFlight >= 2 && planesInFlight <= 4);
+
+		planesInFlight = calcPlanesInFlightGroundAttack(FlightTypes.SCRAMBLE_OPPOSE);
+        assert(planesInFlight >= 2 && planesInFlight <= 4);
+
 	}
 
     public void calcPlanesInFlightBombAttack(FlightTypes flightType) throws PWCGException

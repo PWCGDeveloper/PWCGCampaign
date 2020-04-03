@@ -10,7 +10,6 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
-import pwcg.mission.flight.plot.FlightInformationFactory;
 
 public class ScrambleOpposingFlightBuilder
 {
@@ -58,7 +57,7 @@ public class ScrambleOpposingFlightBuilder
     {
         FlightTypes opposingFlightType = getFlightType(opposingSquadron);
         
-        IFlightInformation opposingFlightInformation = FlightInformationFactory.buildAiScrambleOpposingFlightInformation(
+        IFlightInformation opposingFlightInformation = ScrambleOpposingFlightInformationBuilder.buildAiScrambleOpposingFlightInformation(
                 opposingSquadron, playerFlightInformation, opposingFlightType);
         
         if (opposingFlightType == FlightTypes.PATROL)

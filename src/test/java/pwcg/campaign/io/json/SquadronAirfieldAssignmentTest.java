@@ -53,6 +53,7 @@ public class SquadronAirfieldAssignmentTest
         validMoveDates.add("19430927");
         validMoveDates.add("19431004");
         validMoveDates.add("19431008");
+        validMoveDates.add("19440101");
         
         validMoveDates.add("19440901");
         validMoveDates.add("19441001");
@@ -76,26 +77,6 @@ public class SquadronAirfieldAssignmentTest
         for (Squadron squadron : squadrons)
         {
             if (!verifyValidBoSAirfieldMoveDatesForSquadron(squadron))
-            {
-                success = false;
-            }
-        }
-        
-        assert(success);
-    }
-    
-    
-    @Test
-    public void verifyCompleteBoSAirfieldMoveDatesTest() throws PWCGException
-    {
-        PWCGContext.setProduct(PWCGProduct.BOS);
-        List<Squadron> squadrons = SquadronIOJson.readJson();
-        assert (squadrons.size() > 0);
-        
-        boolean success = true;
-        for (Squadron squadron : squadrons)
-        {
-            if (!verifyCompleteBoSAirfieldMoveDatesForSquadron(squadron))
             {
                 success = false;
             }
@@ -145,59 +126,5 @@ public class SquadronAirfieldAssignmentTest
         
         String errorMsg = "invalid airfield move date " + date + " for squadron " + squadron.getSquadronId(); 
         throw new PWCGException(errorMsg);
-    }
-    
-    private boolean verifyCompleteBoSAirfieldMoveDatesForSquadron(Squadron squadron) throws PWCGException
-    {
-        boolean success = true;
-        List<String> airfieldDatesForSquadron = new ArrayList<>();
-        for (Date airfieldDate : squadron.getAirfields().keySet())
-        {
-            airfieldDatesForSquadron.add(DateUtils.getDateStringYYYYMMDD(airfieldDate));
-        }
-        
-        List<String> frontDatesForSquadron = getExpectedMoveDates(airfieldDatesForSquadron.get(0));
-        for (int i = 0; i < airfieldDatesForSquadron.size(); ++i)
-        {
-            try
-            {
-                String forSquadron = airfieldDatesForSquadron.get(i);
-                String frontMoveDateString = frontDatesForSquadron.get(i);
-                
-                {
-                    if (!(frontMoveDateString.equals(forSquadron)))
-                    {
-                        String errorMsg = "unmatched airfield move date " + forSquadron + " for squadron " + squadron.getSquadronId(); 
-                        System.out.println(errorMsg);
-                        success = false;
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-                success = false;
-            }
-        }
-        
-        return success;
-    }
-
-    private List<String> getExpectedMoveDates(String startDate)
-    {
-        List<String>datesFromFirstAppearance = new ArrayList<>();
-        boolean startDateFound = false;
-        for (String frontDate : validMoveDates)
-        {
-            if (frontDate.equals(startDate))
-            {
-                startDateFound = true;
-            }
-            if (startDateFound)
-            {
-                datesFromFirstAppearance.add(frontDate);
-            }
-        }
-        return datesFromFirstAppearance;
     }
 }

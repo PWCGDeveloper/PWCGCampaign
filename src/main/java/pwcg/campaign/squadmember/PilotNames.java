@@ -94,12 +94,7 @@ public class PilotNames
 		
 		return instance;
 	}
-	
-	/**
-	 * @param filename
-	 * @param list
-	 * @throws PWCGIOException 
-	 */
+
 	private static void read(String filename, ArrayList<String>list) throws PWCGIOException 
 	{
 		try
@@ -123,12 +118,7 @@ public class PilotNames
             throw new PWCGIOException(e.getMessage());
         }
 	}
-	
-	/**
-	 * @param service
-	 * @param namesUsed
-	 * @return
-	 */
+
 	public String getName(ArmedService armedService, Map<String, String> namesUsed)
 	{
 		String name = "";

@@ -6,6 +6,7 @@ import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightInformation;
 
 public class FlightPlaneBuilder 
@@ -17,7 +18,18 @@ public class FlightPlaneBuilder
 		this.flightInformation = flightInformation;
 	}
 	
-    public List<PlaneMcu> createPlanesForFlight() throws PWCGException 
+    public static void buildPlanes(FlightInformation flightInformation) throws PWCGException
+    {
+        FlightPlaneBuilder flightPlaneBuilder = new FlightPlaneBuilder(flightInformation);
+        List<PlaneMcu> planes = flightPlaneBuilder.createPlanesForFlight();
+        if (planes.size() == 0)
+        {
+            throw new PWCGException("No planes for flight");
+        }
+        flightInformation.setPlanes(planes);
+    }
+	
+    private List<PlaneMcu> createPlanesForFlight() throws PWCGException 
     {
     	int numPlanesInMission = calcNumPlanesInFlight();
     	List<PlaneMcu> planes = createPlanes(numPlanesInMission);

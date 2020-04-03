@@ -1,14 +1,10 @@
-package pwcg.mission.flight.factory;
+package pwcg.mission.flight;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
-import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.flight.artySpot.ArtillerySpotPackage;
 import pwcg.mission.flight.attack.GroundAttackPackage;
 import pwcg.mission.flight.balloonBust.BalloonBustPackage;
@@ -21,10 +17,10 @@ import pwcg.mission.flight.escort.PlayerIsEscortPackage;
 import pwcg.mission.flight.intercept.InterceptPackage;
 import pwcg.mission.flight.lonewolf.LoneWolfPackage;
 import pwcg.mission.flight.offensive.OffensivePackage;
+import pwcg.mission.flight.paradrop.CargoDropPackage;
 import pwcg.mission.flight.paradrop.ParaDropPackage;
 import pwcg.mission.flight.patrol.LowAltPatrolPackage;
 import pwcg.mission.flight.patrol.PatrolPackage;
-import pwcg.mission.flight.plot.FlightInformationFactory;
 import pwcg.mission.flight.recon.ReconPackage;
 import pwcg.mission.flight.scramble.PlayerScramblePackage;
 import pwcg.mission.flight.seapatrolantishipping.SeaAntiShippingPackage;
@@ -48,103 +44,105 @@ public class FlightFactory
     		boolean isPlayerFlight) throws PWCGException 
     {
         IFlight flight = null;
-        
-        IFlightInformation flightInformation = createFlightInformation(mission, squadron, flightType, isPlayerFlight);
-
+                
         IFlightPackage flightPackage = null;
         if (flightType == FlightTypes.ARTILLERY_SPOT)
         {
-            flightPackage = new ArtillerySpotPackage(flightInformation);
+            flightPackage = new ArtillerySpotPackage();
         }
         else if (flightType == FlightTypes.BALLOON_BUST)
         {
-            flightPackage = new BalloonBustPackage(flightInformation);
+            flightPackage = new BalloonBustPackage();
         }
         else if (flightType == FlightTypes.BALLOON_DEFENSE)
         {
-            flightPackage = new BalloonDefensePackage(flightInformation);
+            flightPackage = new BalloonDefensePackage();
         }
         else if (flightType == FlightTypes.BOMB || flightType == FlightTypes.LOW_ALT_BOMB)
         {
-            flightPackage = new BombingPackage(flightInformation);
+            flightPackage = new BombingPackage(flightType);
         }
         else if (flightType == FlightTypes.DIVE_BOMB)
         {
-            flightPackage = new DiveBombingPackage(flightInformation);
+            flightPackage = new DiveBombingPackage();
         }
         else if (flightType == FlightTypes.STRATEGIC_BOMB)
         {
-            flightPackage = new StrategicBombingPackage(flightInformation);
+            flightPackage = new StrategicBombingPackage();
         }
         else if (flightType == FlightTypes.ESCORT)
         {
             if (isPlayerFlight)
             {
-                flightPackage = new PlayerIsEscortPackage(flightInformation);
+                flightPackage = new PlayerIsEscortPackage();
             }
         }
         else if (flightType == FlightTypes.GROUND_ATTACK)
         {
-            flightPackage = new GroundAttackPackage(flightInformation);
+            flightPackage = new GroundAttackPackage();
         }
         else if (flightType == FlightTypes.INTERCEPT)
         {
-            flightPackage = new InterceptPackage(flightInformation);
+            flightPackage = new InterceptPackage(flightType);
         }
         else if (flightType == FlightTypes.LONE_WOLF)
         {
-            flightPackage = new LoneWolfPackage(flightInformation);
+            flightPackage = new LoneWolfPackage();
         }
         else if (flightType == FlightTypes.OFFENSIVE)
         {
-            flightPackage = new OffensivePackage(flightInformation);
+            flightPackage = new OffensivePackage();
         }
         else if (flightType == FlightTypes.PATROL)
         {
-            flightPackage = new PatrolPackage(flightInformation);
+            flightPackage = new PatrolPackage();
         }
         else if (flightType == FlightTypes.LOW_ALT_PATROL)
         {
-            flightPackage = new LowAltPatrolPackage(flightInformation);
+            flightPackage = new LowAltPatrolPackage();
         }
         else if (flightType == FlightTypes.LOW_ALT_CAP)
         {
-            flightPackage = new InterceptPackage(flightInformation);
+            flightPackage = new InterceptPackage(flightType);
         }
         else if (flightType == FlightTypes.RECON)
         {
-            flightPackage = new ReconPackage(flightInformation);
+            flightPackage = new ReconPackage();
         }
         else if (flightType == FlightTypes.TRANSPORT)
         {
-            flightPackage = new TransportPackage(flightInformation);
+            flightPackage = new TransportPackage();
         }
-        else if (flightType == FlightTypes.PARATROOP_DROP || flightType == FlightTypes.CARGO_DROP)
+        else if (flightType == FlightTypes.PARATROOP_DROP)
         {
-            flightPackage = new ParaDropPackage(flightInformation);
+            flightPackage = new ParaDropPackage();
+        }
+        else if (flightType == FlightTypes.CARGO_DROP)
+        {
+            flightPackage = new CargoDropPackage();
         }
         else if (flightType == FlightTypes.SPY_EXTRACT)
         {
-            flightPackage = new SpyExtractPackage(flightInformation);
+            flightPackage = new SpyExtractPackage();
         }
         else if (flightType == FlightTypes.CONTACT_PATROL)
         {
-            flightPackage = new ContactPatrolPackage(flightInformation);
+            flightPackage = new ContactPatrolPackage();
         }
         else if (flightType == FlightTypes.SCRAMBLE)
         {
             if (isPlayerFlight)
             {
-                flightPackage = new PlayerScramblePackage(flightInformation);
+                flightPackage = new PlayerScramblePackage();
             }
         }
         else if (flightType == FlightTypes.STRATEGIC_INTERCEPT)
         {
-            flightPackage = new StrategicInterceptPackage(flightInformation);
+            flightPackage = new StrategicInterceptPackage();
         }
         else if (flightType == FlightTypes.ANTI_SHIPPING_BOMB || flightType == FlightTypes.ANTI_SHIPPING_ATTACK || flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
         {
-            flightPackage = new SeaAntiShippingPackage(flightInformation);
+            flightPackage = new SeaAntiShippingPackage(flightType);
         }
         else
         {
@@ -153,7 +151,8 @@ public class FlightFactory
 
         if (flightPackage != null)
         {
-            flight = flightPackage.createPackage();
+            FlightBuildInformation flightBuildInformation = new FlightBuildInformation(mission, squadron, isPlayerFlight);
+            flight = flightPackage.createPackage(flightBuildInformation);
         }
         else
         {
@@ -161,23 +160,5 @@ public class FlightFactory
         }
         
         return flight;
-    }
-
-    private IFlightInformation createFlightInformation(
-    		Mission mission,
-    		Squadron squadron,
-    		FlightTypes flightType,
-    		boolean isPlayerFlight) throws PWCGException
-    {
-        IFlightInformation flightInformation = null;
-        if (isPlayerFlight)
-        {
-            flightInformation = FlightInformationFactory.buildPlayerFlightInformation(squadron, mission, flightType);
-        }
-        else
-        {
-            flightInformation = FlightInformationFactory.buildAiFlightInformation(squadron, mission, flightType);
-        }
-        return flightInformation;
     }
 }

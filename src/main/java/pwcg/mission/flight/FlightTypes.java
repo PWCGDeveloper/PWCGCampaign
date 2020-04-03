@@ -37,6 +37,7 @@ public enum FlightTypes
     TRANSPORT(FlightTypeCategory.OTHER),
     RECON(FlightTypeCategory.OTHER),
     SPY_EXTRACT(FlightTypeCategory.OTHER),
+    FERRY(FlightTypeCategory.OTHER),
     
     GROUND_FORCES(FlightTypeCategory.INVALID),
     ANY(FlightTypeCategory.INVALID);

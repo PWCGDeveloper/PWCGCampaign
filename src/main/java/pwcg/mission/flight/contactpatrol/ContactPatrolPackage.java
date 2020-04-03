@@ -1,6 +1,9 @@
 package pwcg.mission.flight.contactpatrol;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.flight.FlightBuildInformation;
+import pwcg.mission.flight.FlightInformationFactory;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
@@ -11,13 +14,15 @@ public class ContactPatrolPackage implements IFlightPackage
 {
     private IFlightInformation flightInformation;
 
-    public ContactPatrolPackage(IFlightInformation flightInformation)
+    public ContactPatrolPackage()
     {
-        this.flightInformation = flightInformation;
     }
 
-    public IFlight createPackage () throws PWCGException 
-	{
+    @Override
+    public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
+    {
+        this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.CONTACT_PATROL);
+
         IGroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
         ContactPatrolFlight contactPatrol = createFlight(groundUnitCollection);
 		return contactPatrol;

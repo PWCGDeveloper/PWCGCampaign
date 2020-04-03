@@ -25,7 +25,11 @@ public class TargetFactory
 	public void buildTarget() throws PWCGException 
 	{
 	    FlightTypes flightType = flightInformation.getFlightType();
-        if (flightType == FlightTypes.CONTACT_PATROL)
+	    if (!flightInformation.isPlayerFlight())
+	    {
+	        createTinyAAAGroundUnits();
+	    }
+	    else if (flightType == FlightTypes.CONTACT_PATROL)
         {
             createAssaultGroundUnits();        
         }
@@ -69,7 +73,13 @@ public class TargetFactory
         AAAUnitBuilder aaaUnitBuilder = new AAAUnitBuilder(flightInformation.getCampaign(), targetDefinition.getTargetCountry(), targetDefinition.getTargetPosition());
         groundUnitCollection = aaaUnitBuilder.createAAAArtilleryBatteryFromMission(flightInformation.getMission(), GroundUnitSize.GROUND_UNIT_SIZE_HIGH);
     }
-    
+
+    private void createTinyAAAGroundUnits() throws PWCGException
+    {
+        AAAUnitBuilder aaaUnitBuilder = new AAAUnitBuilder(flightInformation.getCampaign(), targetDefinition.getTargetCountry(), targetDefinition.getTargetPosition());
+        groundUnitCollection = aaaUnitBuilder.createAAAArtilleryBatteryFromMission(flightInformation.getMission(), GroundUnitSize.GROUND_UNIT_SIZE_TINY);
+    }
+
     public IGroundUnitCollection getGroundUnits()
     {
         return groundUnitCollection;

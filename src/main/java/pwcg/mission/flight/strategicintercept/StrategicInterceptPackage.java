@@ -3,7 +3,10 @@ package pwcg.mission.flight.strategicintercept;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.flight.FlightBuildInformation;
+import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightSpotterBuilder;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
@@ -13,13 +16,15 @@ public class StrategicInterceptPackage implements IFlightPackage
 {
     private IFlightInformation flightInformation;
 
-    public StrategicInterceptPackage(IFlightInformation flightInformation)
+    public StrategicInterceptPackage()
     {
-        this.flightInformation = flightInformation;
     }
 
-    public IFlight createPackage () throws PWCGException 
+    @Override
+    public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
+        this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.STRATEGIC_INTERCEPT);
+
         List<IFlight> opposingFlights = makeLinkedStrategicInterceptFlights();
 
         if (opposingFlights.isEmpty())

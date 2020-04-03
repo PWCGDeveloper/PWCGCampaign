@@ -83,7 +83,7 @@ public class FCFlightTypeFactory implements IFlightTypeFactory
         int selectedIndex = WeightedOddsCalculator.calculateWeightedodds(weightedOdds);
         FlightTypes flightType = flightTypesByIndex.get(selectedIndex);
 
-        if (flightType == FlightTypes.ESCORT)
+        if (flightType == FlightTypes.ESCORT || flightType == FlightTypes.BALLOON_BUST || flightType == FlightTypes.BALLOON_DEFENSE)
         {
             if (!isPlayerFlight)
             {

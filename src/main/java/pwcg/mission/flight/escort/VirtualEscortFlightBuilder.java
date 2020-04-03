@@ -9,10 +9,11 @@ import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.flight.FlightBuildInformation;
+import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
-import pwcg.mission.flight.plot.FlightInformationFactory;
 
 public class VirtualEscortFlightBuilder
 {
@@ -44,8 +45,10 @@ public class VirtualEscortFlightBuilder
         int index = RandomNumberGenerator.getRandom(friendlyFighterSquadrons.size());
         Squadron escortFighterSquadron = friendlyFighterSquadrons.get(index);
         
-        IFlightInformation escortFlightInformation = FlightInformationFactory.buildAiFlightInformation(
-                escortFighterSquadron, escortedFlight.getMission(), FlightTypes.ESCORT);
+        boolean isPlayerFlight = false;
+        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(escortedFlight.getMission(), escortFighterSquadron, isPlayerFlight);
+        
+        IFlightInformation escortFlightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.ESCORT);
         return escortFlightInformation;
     }
 

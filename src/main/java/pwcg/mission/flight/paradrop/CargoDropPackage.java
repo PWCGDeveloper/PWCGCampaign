@@ -1,4 +1,4 @@
-package pwcg.mission.flight.bomb;
+package pwcg.mission.flight.paradrop;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -11,41 +11,39 @@ import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.ground.factory.TargetFactory;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 
-public class BombingPackage implements IFlightPackage
+public class CargoDropPackage implements IFlightPackage
 {
     private IFlightInformation flightInformation;
-    private FlightTypes flightType;
 
-    public BombingPackage(FlightTypes flightType)
+    public CargoDropPackage()
     {
-        this.flightType = flightType;
     }
 
     @Override
     public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
-        this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, flightType);
+        this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.CARGO_DROP);
 
-	    IFlight bombingFlight = createPackageTacticalTarget ();
-		return bombingFlight;
-	}
+        IFlight paraDropFlight = createPackageTacticalTarget ();
+        return paraDropFlight;
+    }
 
-	public IFlight createPackageTacticalTarget () throws PWCGException 
-	{
+    public IFlight createPackageTacticalTarget () throws PWCGException 
+    {
         IGroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
         Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(flightInformation.getSquadron().determineEnemySide());
 
-        IFlight bombingFlight = makeBombingFlight(targetCoordinates);
-        bombingFlight.addLinkedGroundUnit(groundUnitCollection);
+        IFlight paraDropFlight = makeParaDropFlight(targetCoordinates);
+        paraDropFlight.addLinkedGroundUnit(groundUnitCollection);
 
-        return bombingFlight;
-	}
+        return paraDropFlight;
+    }
 
-    private IFlight makeBombingFlight(Coordinate targetCoordinates) throws PWCGException
+    private IFlight makeParaDropFlight(Coordinate targetCoordinates) throws PWCGException
     {
-        BombingFlight bombingFlight = new BombingFlight (flightInformation);
-	    bombingFlight.createFlight();
-	    return bombingFlight;
+        ParaDropFlight paraDropFlight = new ParaDropFlight (flightInformation);
+        paraDropFlight.createFlight();
+        return paraDropFlight;
     }
 
     private IGroundUnitCollection createGroundUnitsForFlight() throws PWCGException

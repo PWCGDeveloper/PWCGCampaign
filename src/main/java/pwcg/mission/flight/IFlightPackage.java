@@ -4,5 +4,5 @@ import pwcg.core.exception.PWCGException;
 
 public interface IFlightPackage
 {
-    IFlight createPackage () throws PWCGException;
+    IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException;
 }

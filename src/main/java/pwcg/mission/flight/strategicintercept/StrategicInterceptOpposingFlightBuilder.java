@@ -9,12 +9,11 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.bomb.StrategicBombingPackage;
 import pwcg.mission.flight.escort.VirtualEscortFlightBuilder;
-import pwcg.mission.flight.plot.FlightInformationFactory;
 
 public class StrategicInterceptOpposingFlightBuilder
 {
@@ -89,11 +88,11 @@ public class StrategicInterceptOpposingFlightBuilder
 
     private IFlight buildOpposingFlight(Squadron opposingSquadron, Coordinate startingPosition) throws PWCGException 
     {
-        IFlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(
-                opposingSquadron, playerFlightInformation.getMission(), FlightTypes.STRATEGIC_BOMB);
-
-        StrategicBombingPackage bombingPackage = new StrategicBombingPackage(playerFlightInformation);
-        IFlight opposingFlight = bombingPackage.createPackage();
+        boolean isPlayerFlight = true;
+        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(playerFlightInformation.getMission(), opposingSquadron, isPlayerFlight);
+        
+        StrategicBombingPackage bombingPackage = new StrategicBombingPackage();
+        IFlight opposingFlight = bombingPackage.createPackage(flightBuildInformation);
         opposingFlight.createFlight();
         return opposingFlight;
     }

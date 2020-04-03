@@ -9,8 +9,8 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.FlightFactory;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.factory.FlightFactory;
 import pwcg.mission.flight.factory.IFlightTypeFactory;
 import pwcg.mission.flight.factory.NightFlightTypeConverter;
 
