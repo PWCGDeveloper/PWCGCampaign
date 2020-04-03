@@ -77,6 +77,20 @@ public class WaypointPackage implements IWaypointPackage
     }
 
     @Override
+    public List<McuWaypoint> getTargetWaypoints()
+    {
+        List<McuWaypoint> targetWaypoints = new ArrayList<>();
+        for (McuWaypoint waypoint : getAllWaypoints())
+        {
+            if (waypoint.isTargetWaypoint())
+            {
+                targetWaypoints.add(waypoint);
+            }
+        }
+        return targetWaypoints;
+    }
+
+    @Override
     public List<BaseFlightMcu> getAllFlightPoints()
     {
         List<BaseFlightMcu> allFlightPoints = new ArrayList<>();

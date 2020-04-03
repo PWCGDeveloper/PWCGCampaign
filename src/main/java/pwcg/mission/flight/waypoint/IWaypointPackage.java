@@ -17,6 +17,8 @@ public interface IWaypointPackage
     void addMissionPointSet(IMissionPointSet missionPointSet);
 
     List<McuWaypoint> getAllWaypoints();
+    
+    List<McuWaypoint> getTargetWaypoints();
 
     List<MissionPoint> getFlightMissionPoints() throws PWCGException;
     

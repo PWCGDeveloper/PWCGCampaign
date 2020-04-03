@@ -32,13 +32,13 @@ public class PlayerFlightTypeCoopFighterTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         Campaign germanEastCampaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
-        Campaign germanWestCampaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_WEST);
+        Campaign germanWestCampaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_26_PROFILE_WEST);
         Campaign americanCampaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
         Campaign britishCampaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
         Campaign russianCampaign = CampaignCache.makeCampaign(SquadronTestProfile.REGIMENT_11_PROFILE);
         
         campaigns.put(SquadronTestProfile.JG_51_PROFILE_MOSCOW, germanEastCampaign);
-        campaigns.put(SquadronTestProfile.JG_51_PROFILE_WEST, germanWestCampaign);
+        campaigns.put(SquadronTestProfile.JG_26_PROFILE_WEST, germanWestCampaign);
         campaigns.put(SquadronTestProfile.FG_362_PROFILE, americanCampaign);
         campaigns.put(SquadronTestProfile.RAF_184_PROFILE, britishCampaign);
         campaigns.put(SquadronTestProfile.REGIMENT_11_PROFILE, russianCampaign);

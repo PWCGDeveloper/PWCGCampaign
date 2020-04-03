@@ -159,7 +159,7 @@ public class EquipmentReplacementWeightByNeedTest
     @Test
     public void testGermanLateReplacementArchTypes() throws PWCGException
     {
-        Campaign lateCampaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.JG_51_PROFILE_WEST);        
+        Campaign lateCampaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.JG_26_PROFILE_WEST);        
         removePlanesFromCampaign(lateCampaign);
 
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(20101);
@@ -189,7 +189,7 @@ public class EquipmentReplacementWeightByNeedTest
     @Test
     public void testAmericanReplacementArchTypes() throws PWCGException
     {
-        Campaign lateCampaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.JG_51_PROFILE_WEST);        
+        Campaign lateCampaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.JG_26_PROFILE_WEST);        
         removePlanesFromCampaign(lateCampaign);
 
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(BoSServiceManager.USAAF);
@@ -205,7 +205,7 @@ public class EquipmentReplacementWeightByNeedTest
     @Test
     public void testBritishReplacementArchTypes() throws PWCGException
     {
-        Campaign lateCampaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.JG_51_PROFILE_WEST);        
+        Campaign lateCampaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.JG_26_PROFILE_WEST);        
         removePlanesFromCampaign(lateCampaign);
 
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(BoSServiceManager.RAF);

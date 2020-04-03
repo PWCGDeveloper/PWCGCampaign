@@ -45,6 +45,7 @@ public class InterceptWaypointFactory
         missionPointSet.addWaypoint(ingressWaypoint);
         
         List<McuWaypoint> interceptWaypoints = createInterceptWaypoints();
+        setWaypointsAsTarget(interceptWaypoints);
         missionPointSet.addWaypoints(interceptWaypoints);
 
         McuWaypoint egressWaypoint = EgressWaypointGenerator.createEgressWaypoint(flight, ingressWaypoint.getPosition());
@@ -245,5 +246,13 @@ public class InterceptWaypointFactory
                 crossDistance);
                         
         return interceptWPs;
+    }
+    
+    private void setWaypointsAsTarget(List<McuWaypoint> interceptWaypoints)
+    {
+        for (McuWaypoint interceptWaypoint : interceptWaypoints)
+        {
+            interceptWaypoint.setTargetWaypoint(true);
+        }
     }
 }

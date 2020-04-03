@@ -33,7 +33,7 @@ public class CampaignCacheBoS extends CampaignCacheBase implements ICampaignCach
         makeProfile(SquadronTestProfile.REGIMENT_503_PROFILE);
         makeProfile(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         makeProfile(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
-        makeProfile(SquadronTestProfile.JG_51_PROFILE_WEST);
+        makeProfile(SquadronTestProfile.JG_26_PROFILE_WEST);
         makeProfile(SquadronTestProfile.KG53_PROFILE);
         makeProfile(SquadronTestProfile.STG77_PROFILE);
         makeProfile(SquadronTestProfile.TG2_PROFILE);

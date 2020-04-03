@@ -56,7 +56,7 @@ public class CircleWaypointPattern
         nextCircleWP.setWpAction(wpAction);
 
         nextCircleWP.setSpeed(waypointSpeed - 20);
-        nextCircleWP.setPriority(WaypointPriority.PRIORITY_LOW);          
+        nextCircleWP.setPriority(WaypointPriority.PRIORITY_LOW);
 
         double circleWPOrientationAngle = getNextCircleWPAngle(lastWP);
         
