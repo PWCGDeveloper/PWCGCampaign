@@ -61,6 +61,7 @@ public class BalloonDefenseOpposingFlightBuilder
         boolean isPlayerFlight = false;
         FlightBuildInformation flightBuildInformation = new FlightBuildInformation(this.playerFlightInformation.getMission(), opposingSquadron, isPlayerFlight);
         IFlightInformation opposingFlightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.BALLOON_BUST);
+        opposingFlightInformation.getTargetDefinition().setTargetPosition(balloonUnit.getPosition());
 
         BalloonBustFlight opposingFlight = new BalloonBustFlight(opposingFlightInformation);
         opposingFlight.createFlight();
