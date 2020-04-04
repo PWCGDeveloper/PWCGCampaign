@@ -12,10 +12,8 @@ import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.io.json.SquadronIOJson;
-import pwcg.campaign.io.json.SquadronMovingFrontIOJson;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
-import pwcg.campaign.squadron.SquadronMovingFrontOverlay;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.exception.PWCGException;
@@ -42,8 +40,6 @@ public class SquadronManager
 		{
 			squadronMap.put(squadron.getSquadronId(), squadron);
 		}
-		
-        setAirfieldsForMovingFront();
 	}
 
 	public Map<Integer, Squadron> countryToMap (ICountry country, Date date) throws PWCGException
@@ -380,20 +376,7 @@ public class SquadronManager
 
         return selectedSquadron;
     }
-    
-    private void setAirfieldsForMovingFront() throws PWCGException, PWCGException
-    {
-        List<SquadronMovingFrontOverlay> overlays = SquadronMovingFrontIOJson.readJson();
-        for (SquadronMovingFrontOverlay overlay : overlays)
-        {
-            if (squadronMap.containsKey(overlay.getSquadronId()))
-            {
-                Squadron squadron = squadronMap.get(overlay.getSquadronId());
-                squadron.setAirfields(overlay.getAirfields());
-            }
-        }
-    }
-
+ 
     private ArrayList<Squadron> reduceToActiveSquadrons(Campaign campaign, List<Squadron> squadrons, Date  date) throws PWCGException 
     {
         ArrayList<Squadron> returnSquadList = new ArrayList<Squadron>();

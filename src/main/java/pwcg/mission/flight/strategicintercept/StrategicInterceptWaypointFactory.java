@@ -63,16 +63,16 @@ public class StrategicInterceptWaypointFactory
     {
         Coordinate coord = createInterceptFirstWPCoordinates();
 
-        McuWaypoint innerLoopFirstWP = WaypointFactory.createPatrolWaypointType();
-        innerLoopFirstWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-        innerLoopFirstWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
-        innerLoopFirstWP.setPosition(coord);    
-        innerLoopFirstWP.setTargetWaypoint(true);
+        McuWaypoint interceptWP = WaypointFactory.createPatrolWaypointType();
+        interceptWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
+        interceptWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
+        interceptWP.setPosition(coord);    
+        interceptWP.setTargetWaypoint(true);
         
         double initialAngle = MathUtils.calcAngle(flight.getFlightHomePosition(), flight.getFlightInformation().getTargetPosition());
-        innerLoopFirstWP.getOrientation().setyOri(initialAngle);
+        interceptWP.getOrientation().setyOri(initialAngle);
         
-        return innerLoopFirstWP;
+        return interceptWP;
     }
 
     private Coordinate createInterceptFirstWPCoordinates() throws PWCGException
