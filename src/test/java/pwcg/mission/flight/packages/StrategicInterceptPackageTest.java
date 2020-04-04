@@ -74,7 +74,7 @@ public class StrategicInterceptPackageTest
             for (McuWaypoint opposingWaypoint : opposingTargetWaypoints)
             {
                 double distanceFromPlayerFlight = MathUtils.calcDist(waypoint.getPosition(), opposingWaypoint.getPosition());
-                if (distanceFromPlayerFlight < 15000)
+                if (distanceFromPlayerFlight < 5000)
                 {
                     interceptIsCloseToTarget = true;
                 }

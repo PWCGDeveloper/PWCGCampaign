@@ -267,7 +267,7 @@ public class FlightInformation implements IFlightInformation
     @Override
     public Coordinate getFlightHomePosition() throws PWCGException
     {
-        return squadron.determineCurrentPosition(campaign.getDate());
+        return squadron.determineCurrentPosition(campaign.getDate()).copy();
     }
 
     @Override

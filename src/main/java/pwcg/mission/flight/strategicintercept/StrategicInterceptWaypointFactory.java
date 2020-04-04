@@ -78,33 +78,27 @@ public class StrategicInterceptWaypointFactory
     private Coordinate createInterceptFirstWPCoordinates() throws PWCGException
     {
         double angleToMovePattern = getPatternMoveAngleForPattern();
-        Coordinate coordinatesAfterFixedMove = getPatternMoveDistanceForPattern(angleToMovePattern);
+        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+
+        int distanceToMovePattern = productSpecific.getInterceptCreepLegDistance();
+        
+        distanceToMovePattern = productSpecific.getInterceptCreepCrossDistance() * 4;
+        Coordinate coordinatesAfterFixedMove = MathUtils.calcNextCoord(getEnemyFlightTargetPosition(), angleToMovePattern, distanceToMovePattern);
+        
+        double shiftAngle = MathUtils.adjustAngle(angleToMovePattern, 90);
+        double distanceToShiftPattern = productSpecific.getInterceptCreepLegDistance() * .5;
+        coordinatesAfterFixedMove = MathUtils.calcNextCoord(coordinatesAfterFixedMove, shiftAngle, distanceToShiftPattern);
+        
         coordinatesAfterFixedMove.setYPos(flight.getFlightInformation().getAltitude());
+
         return coordinatesAfterFixedMove;
     }
 
     private double getPatternMoveAngleForPattern() throws PWCGException
     {
         double angleToMovePattern = 0.0;
-        angleToMovePattern = MathUtils.calcAngle(flight.getFlightInformation().getTargetPosition(), flight.getFlightHomePosition());
+        angleToMovePattern = MathUtils.calcAngle(getEnemyFlightTargetPosition(), flight.getFlightHomePosition());
         return angleToMovePattern;
-    }
-
-    private Coordinate getPatternMoveDistanceForPattern (double angleToMovePattern) throws PWCGException
-    {
-        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-
-        Coordinate coordinatesAfterFixedMove = null;
-        double distanceToMovePattern = 1000.0;
-        
-        distanceToMovePattern = productSpecific.getInterceptCreepCrossDistance() * 4;
-        coordinatesAfterFixedMove = MathUtils.calcNextCoord(flight.getFlightInformation().getTargetPosition(), angleToMovePattern, distanceToMovePattern);
-        
-        double shiftAngle = MathUtils.adjustAngle(angleToMovePattern, 90);
-        double distanceToShiftPattern = productSpecific.getInterceptCreepLegDistance() * .5;
-        coordinatesAfterFixedMove = MathUtils.calcNextCoord(coordinatesAfterFixedMove, shiftAngle, distanceToShiftPattern);
-        
-        return coordinatesAfterFixedMove;
     }
 
     private List<McuWaypoint> createSearchPatternWaypoints (McuWaypoint lastWP, McuWaypoint playerIngressWaypoint) throws PWCGException
@@ -113,7 +107,7 @@ public class StrategicInterceptWaypointFactory
         int creepLegDistance = productSpecific.getInterceptCreepLegDistance();
         int creepCrossDistance = productSpecific.getInterceptCreepCrossDistance();
         
-        double angle = calculateCreepingSearchAngle(playerIngressWaypoint);
+        double angle = calculateCreepingSearchAngle();
                 
         List<McuWaypoint> interceptWPs = WaypointPatternFactory.generateCreepingPattern(
                 flight.getCampaign(), 
@@ -135,14 +129,20 @@ public class StrategicInterceptWaypointFactory
         return interceptWPs;
     }
     
-    private double calculateCreepingSearchAngle(McuWaypoint playerIngressWaypoint) throws PWCGException
+    private double calculateCreepingSearchAngle() throws PWCGException
     {
-        Coordinate playerFlightIngressPosition = playerIngressWaypoint.getPosition();
+        Coordinate playerFlightIngressPosition = flight.getFlightHomePosition();
         
-        MissionPoint enemyFlightTarget = targetFlight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_TARGET_FINAL);
-        Coordinate enemyFlightTargetPosition = enemyFlightTarget.getPosition();
+        Coordinate enemyFlightTargetPosition = getEnemyFlightTargetPosition();
         
         double angle = MathUtils.calcAngle(playerFlightIngressPosition, enemyFlightTargetPosition);
         return angle;
+    }
+
+    private Coordinate getEnemyFlightTargetPosition() throws PWCGException
+    {
+        MissionPoint enemyFlightTarget = targetFlight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_TARGET_FINAL);
+        Coordinate enemyFlightTargetPosition = enemyFlightTarget.getPosition();
+        return enemyFlightTargetPosition;
     }
 }
