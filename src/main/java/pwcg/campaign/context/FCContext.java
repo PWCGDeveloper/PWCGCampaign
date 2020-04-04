@@ -53,10 +53,4 @@ public class FCContext extends PWCGContextBase implements IPWCGContextManager
     {
         return new PWCGDirectoryManager(PWCGProduct.FC);
     }
-
-    @Override
-    public boolean determineUseMovingFront() throws PWCGException
-    {        
-        return true;
-    }
 }

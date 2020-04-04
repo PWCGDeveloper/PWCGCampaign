@@ -37,13 +37,9 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     protected StaticObjectDefinitionManager staticObjectDefinitionManager = new StaticObjectDefinitionManager();
     protected PlaneTypeFactory planeTypeFactory = new PlaneTypeFactory();
     protected boolean testMode = false;
-    
-    protected boolean testUseMovingFront = true;
-        
+            
     protected List<String> campaignStartDates = new ArrayList<String>();
     
-    public abstract boolean determineUseMovingFront() throws PWCGException;
-
     @Override
     public void resetForMovingFront() throws PWCGException
     {        
@@ -177,19 +173,6 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     public List<String> getCampaignStartDates()
     {
         return campaignStartDates;
-    }
-
-    @Override
-    public boolean isTestUseMovingFront()
-    {
-        return testUseMovingFront;
-    }
-
-    @Override
-    public void setTestUseMovingFront(boolean newTestUseMovingFront) throws PWCGException
-    {
-        testUseMovingFront = newTestUseMovingFront;
-        initialize();
     }
 
     @Override

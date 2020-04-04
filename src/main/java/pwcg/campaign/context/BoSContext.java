@@ -88,15 +88,4 @@ public class BoSContext extends PWCGContextBase implements IPWCGContextManager
     {
         return new PWCGDirectoryManager(PWCGProduct.BOS);
     }
-
-    @Override
-    public boolean determineUseMovingFront() throws PWCGException
-    {        
-        if (campaign != null)
-        {
-            return campaign.useMovingFrontInCampaign();
-        }
-        
-        return testUseMovingFront;
-    }
 }

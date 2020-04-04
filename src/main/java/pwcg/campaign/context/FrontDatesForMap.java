@@ -76,19 +76,14 @@ public class FrontDatesForMap
 
     public Date getFrontDateForDate(Date date) throws PWCGException
     {
-        boolean useMovingFront = PWCGContext.getInstance().determineUseMovingFront();
-
         Date closestFrontDate = null;
-        if (useMovingFront)
+        for (String frontDateString : frontDates.keySet())
         {
-            for (String frontDateString : frontDates.keySet())
+            Date frontDate = frontDates.get(frontDateString);
+            if (date.after(frontDate) || date.equals(frontDate))
             {
-                Date frontDate = frontDates.get(frontDateString);
-                if (date.after(frontDate) || date.equals(frontDate))
-                {
-                    closestFrontDate = frontDate;
-                }    
-            }
+                closestFrontDate = frontDate;
+            }    
         }
         
         if (closestFrontDate == null)

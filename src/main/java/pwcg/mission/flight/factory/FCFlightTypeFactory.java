@@ -31,28 +31,44 @@ public class FCFlightTypeFactory implements IFlightTypeFactory
     {
         Role missionRole = squadron.getSquadronRoles().selectRoleForMission(campaign.getDate());
 
+        FlightTypes flightType = FlightTypes.ANY;
         if (missionRole == Role.ROLE_BOMB || missionRole == Role.ROLE_ARTILLERY_SPOT)
         {
-            return getBomberFlightType(squadron);
+            flightType = getBomberFlightType(squadron);
         }
         else if (missionRole == Role.ROLE_FIGHTER)
         {
-            return getFighterFlightType(squadron, isPlayerFlight);
+            flightType = getFighterFlightType(squadron, isPlayerFlight);
         }
         else if (missionRole == Role.ROLE_ATTACK)
         {
-            return getAttackFlightType();
+            flightType = getAttackFlightType();
         }
         else if (missionRole == Role.ROLE_RECON)
         {
-            return getReconFlightType(squadron);
+            flightType = getReconFlightType(squadron);
         }
         else
         {
             throw new PWCGMissionGenerationException("No valid role for squadron: " + squadron.determineDisplayName(campaign.getDate()));
         }
+        
+        flightType = convertAiFlights(flightType, isPlayerFlight);
+        return flightType;
     }
 
+
+    private FlightTypes convertAiFlights(FlightTypes flightType, boolean isPlayerFlight)
+    {
+        if (!isPlayerFlight)
+        {
+            if (flightType == FlightTypes.BALLOON_DEFENSE || flightType == FlightTypes.BALLOON_BUST)
+            {
+                return FlightTypes.PATROL;
+            }
+        }
+        return flightType;
+    }
 
     private FlightTypes getFighterFlightType(Squadron squadron, boolean isPlayerFlight) throws PWCGException
     {

@@ -21,7 +21,6 @@ import pwcg.campaign.plane.RoleCategory;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
-import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
@@ -123,17 +122,6 @@ public class Campaign
     {
         ICampaignDescriptionBuilder campaignDescriptionBuilder = CampaignModeFactory.makeCampaignDescriptionBuilder(this);
         return campaignDescriptionBuilder.getCampaignDescription();
-    }
-
-    public boolean useMovingFrontInCampaign() throws PWCGException
-    {
-        boolean useMovingFront = true;
-        if (getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.MovingFrontKey) == 0)
-        {
-            useMovingFront = false;
-        }
-        
-        return useMovingFront;
     }
 
     public static List<String> getCampaignNames() throws PWCGUserException 

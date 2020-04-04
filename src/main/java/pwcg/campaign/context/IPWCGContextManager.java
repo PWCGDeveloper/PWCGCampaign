@@ -17,9 +17,6 @@ import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
 
 public interface IPWCGContextManager
 {
-
-    void resetForMovingFront() throws PWCGException;
-
     void changeContext(FrontMapIdentifier frontMapIdentifier) throws PWCGException;
 
     void setCampaign(Campaign campaign) throws PWCGException;
@@ -42,10 +39,6 @@ public interface IPWCGContextManager
 
     List<String> getCampaignStartDates();
 
-    boolean isTestUseMovingFront();
-
-    void setTestUseMovingFront(boolean newTestUseMovingFront) throws PWCGException;
-
     List<PWCGMap> getAllMaps();
 
     IAirfield getAirfieldAllMaps(String airfieldName);
@@ -54,8 +47,6 @@ public interface IPWCGContextManager
 
     void initializeMap() throws PWCGException;
     
-    boolean determineUseMovingFront()  throws PWCGException;
-
     SquadronManager getSquadronManager();
 
     BattleManager getBattleManager();
@@ -77,4 +68,6 @@ public interface IPWCGContextManager
     StaticObjectDefinitionManager getStaticObjectDefinitionManager();
 
     void setMapForCampaign(Campaign campaign) throws PWCGException;
+
+    void resetForMovingFront() throws PWCGException;
 }

@@ -12,7 +12,6 @@ public class ConfigItemKeys
 	public static final String MusicVolumeKey = "MusicVolume";
 	public static final String UseGenericUIKey = "UseGenericUI";
 
-	public static final String MovingFrontKey = "MovingFront";
     public static final String PilotInjuryKey = "PilotInjury";
     public static final String DetailedVictoryDescriptionKey = "DetailedVictoryDescription";
 	public static final String SimpleConfigAirKey = "SimpleConfigAir";

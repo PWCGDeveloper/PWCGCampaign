@@ -10,9 +10,11 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.FlightBuildInformation;
+import pwcg.mission.flight.FlightInformationFactory;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
-import pwcg.mission.flight.bomb.StrategicBombingPackage;
+import pwcg.mission.flight.bomb.BombingFlight;
 import pwcg.mission.flight.escort.VirtualEscortFlightBuilder;
 
 public class StrategicInterceptOpposingFlightBuilder
@@ -51,7 +53,7 @@ public class StrategicInterceptOpposingFlightBuilder
     private IFlight createOpposingBomberFlights(Squadron opposingBomberSquadron) throws PWCGException
     {
         Coordinate startingPosition = determineOpposingFlightStartPosition(opposingBomberSquadron);
-        IFlight opposingBomberFlight = buildOpposingFlight(opposingBomberSquadron, startingPosition);
+        IFlight opposingBomberFlight = buildOpposingFlight(opposingBomberSquadron);
         return opposingBomberFlight;
     }
 
@@ -86,13 +88,14 @@ public class StrategicInterceptOpposingFlightBuilder
         return startingPosition;
     }
 
-    private IFlight buildOpposingFlight(Squadron opposingSquadron, Coordinate startingPosition) throws PWCGException 
+    private IFlight buildOpposingFlight(Squadron opposingSquadron) throws PWCGException 
     {
-        boolean isPlayerFlight = true;
-        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(playerFlightInformation.getMission(), opposingSquadron, isPlayerFlight);
-        
-        StrategicBombingPackage bombingPackage = new StrategicBombingPackage();
-        IFlight opposingFlight = bombingPackage.createPackage(flightBuildInformation);
+        boolean isPlayerFlight = false;
+        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(this.playerFlightInformation.getMission(), opposingSquadron, isPlayerFlight);
+        IFlightInformation opposingFlightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.STRATEGIC_BOMB);
+        opposingFlightInformation.getTargetDefinition().setTargetPosition(this.playerFlightInformation.getTargetPosition());
+
+        IFlight opposingFlight = new BombingFlight(opposingFlightInformation);
         opposingFlight.createFlight();
         return opposingFlight;
     }

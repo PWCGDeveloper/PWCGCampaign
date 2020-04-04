@@ -23,14 +23,12 @@ public class RoFAirfieldInEnemyTerritory extends AirfieldInEnemyTerritory
 	public void setup() throws PWCGException
 	{
 		PWCGContext.setProduct(PWCGProduct.FC);
-        PWCGContext.getInstance().setTestUseMovingFront(false);
 	}
 	
 
 	@Test
 	public void airfieldCheckArrasTest() throws PWCGException 
 	{
-        PWCGContext.getInstance().setTestUseMovingFront(false);
         PWCGContext.getInstance().changeContext(FrontMapIdentifier.ARRAS_MAP);
 
         RoFAirfieldInEnemyTerritory airfieldFInder = new RoFAirfieldInEnemyTerritory();

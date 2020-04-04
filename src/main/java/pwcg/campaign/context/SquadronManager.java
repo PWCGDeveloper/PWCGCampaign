@@ -383,17 +383,13 @@ public class SquadronManager
     
     private void setAirfieldsForMovingFront() throws PWCGException, PWCGException
     {
-        boolean useMovingFront = PWCGContext.getInstance().determineUseMovingFront();
-        if (useMovingFront)
+        List<SquadronMovingFrontOverlay> overlays = SquadronMovingFrontIOJson.readJson();
+        for (SquadronMovingFrontOverlay overlay : overlays)
         {
-            List<SquadronMovingFrontOverlay> overlays = SquadronMovingFrontIOJson.readJson();
-            for (SquadronMovingFrontOverlay overlay : overlays)
+            if (squadronMap.containsKey(overlay.getSquadronId()))
             {
-                if (squadronMap.containsKey(overlay.getSquadronId()))
-                {
-                    Squadron squadron = squadronMap.get(overlay.getSquadronId());
-                    squadron.setAirfields(overlay.getAirfields());
-                }
+                Squadron squadron = squadronMap.get(overlay.getSquadronId());
+                squadron.setAirfields(overlay.getAirfields());
             }
         }
     }

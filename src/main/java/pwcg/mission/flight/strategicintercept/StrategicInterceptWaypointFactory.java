@@ -126,6 +126,11 @@ public class StrategicInterceptWaypointFactory
                 creepLegDistance,
                 creepCrossDistance,
                 angle);
+        
+        for (McuWaypoint interceptWP : interceptWPs)
+        {
+            interceptWP.setTargetWaypoint(true);
+        }
                         
         return interceptWPs;
     }

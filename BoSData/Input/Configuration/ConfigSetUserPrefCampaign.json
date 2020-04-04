@@ -6,11 +6,6 @@
       "label": "Number of Missions Credited",
       "help": "Number of missions credited for each actually flown"
     },
-    "MovingFront": {
-      "value": "1",
-      "label": "Use Moving Front",
-      "help": "1 \u003d Set to 1 to use moving front"
-    },
     "PilotInjury": {
       "value": "3",
       "label": "Select Max Pilot Injury",

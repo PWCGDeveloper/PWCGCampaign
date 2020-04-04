@@ -54,7 +54,6 @@ public class TargetTypeAttackGeneratorTest
     public void kubanTargetDrifterAvailabilityTest() throws PWCGException
     {
         Mockito.when(targetTypeAvailabilityInputs.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19430401"));
-        Mockito.when(campaign.useMovingFrontInCampaign()).thenReturn(true);
         PWCGContext.getInstance().changeContext(FrontMapIdentifier.KUBAN_MAP);
         testPlaceAndTarget(TargetType.TARGET_DRIFTER, true);
     }
@@ -63,7 +62,6 @@ public class TargetTypeAttackGeneratorTest
     public void kubanTargetShippingAvailabilityTest() throws PWCGException
     {
         Mockito.when(targetTypeAvailabilityInputs.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19430401"));
-        Mockito.when(campaign.useMovingFrontInCampaign()).thenReturn(true);
         PWCGContext.getInstance().changeContext(FrontMapIdentifier.KUBAN_MAP);
         testPlaceAndTarget(TargetType.TARGET_SHIPPING, true);
     }
@@ -72,7 +70,6 @@ public class TargetTypeAttackGeneratorTest
     public void moscowNoTargetDrifterAvailabilityTest() throws PWCGException
     {
         Mockito.when(targetTypeAvailabilityInputs.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19411001"));
-        Mockito.when(campaign.useMovingFrontInCampaign()).thenReturn(true);
         PWCGContext.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
         testPlaceAndTarget(TargetType.TARGET_DRIFTER, false);
     }
@@ -81,7 +78,6 @@ public class TargetTypeAttackGeneratorTest
     public void moscowNoTargetShippingAvailabilityTest() throws PWCGException
     {
         Mockito.when(targetTypeAvailabilityInputs.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19411001"));
-        Mockito.when(campaign.useMovingFrontInCampaign()).thenReturn(true);
         PWCGContext.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
         testPlaceAndTarget(TargetType.TARGET_SHIPPING, false);
     }

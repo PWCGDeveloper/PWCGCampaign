@@ -24,6 +24,11 @@ public class InterceptPackage implements IFlightPackage
     @Override
     public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
+        if (flightType != FlightTypes.INTERCEPT && flightType != FlightTypes.LOW_ALT_CAP)
+        {
+            throw new PWCGException("Invalid intercept flight type " + flightType);
+        }
+        
         this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, flightType);
 
         InterceptFlight interceptFlight = new InterceptFlight (flightInformation);
