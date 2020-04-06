@@ -12,6 +12,8 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.bomb.BombingFlight;
 import pwcg.mission.flight.escort.VirtualEscortFlightBuilder;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
+import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetDefinitionBuilderFactory;
@@ -39,6 +41,16 @@ public class StrategicInterceptOpposingFlightBuilder
             IFlight opposingBomberFlight = createOpposingBomberFlights(opposingBomberSquadron);
             if (opposingBomberFlight != null)
             {
+                for (MissionPoint missionPoint : opposingBomberFlight.getWaypointPackage().getFlightMissionPoints())
+                {
+                    System.out.println("Bomber mission point " + missionPoint.getAction().getAction() + "  " + missionPoint.getPosition().toString());
+                }
+                
+                for (McuWaypoint waypoint : opposingBomberFlight.getWaypointPackage().getAllWaypoints())
+                {
+                    System.out.println("Bomber way point " + waypoint.getDesc() + "  " + waypoint.getPosition().toString());
+                }
+                
                 opposingFlights.add(opposingBomberFlight);
                 
                 IFlight opposingEscortFlight =  createOpposingEscortFlights(opposingBomberFlight);
@@ -53,13 +65,7 @@ public class StrategicInterceptOpposingFlightBuilder
 
     private IFlight createOpposingBomberFlights(Squadron opposingBomberSquadron) throws PWCGException
     {
-        IFlight opposingBomberFlight = buildOpposingFlight(opposingBomberSquadron);
-        return opposingBomberFlight;
-    }
-
-    private IFlight buildOpposingFlight(Squadron opposingSquadron) throws PWCGException 
-    {
-        IFlightInformation opposingFlightInformation = buildOpposingFlightInformation(opposingSquadron);
+        IFlightInformation opposingFlightInformation = buildOpposingFlightInformation(opposingBomberSquadron);
         TargetDefinition opposingTargetDefinition = buildOpposingTargetDefintion(opposingFlightInformation);
 
         IFlight opposingFlight = new BombingFlight(opposingFlightInformation, opposingTargetDefinition);

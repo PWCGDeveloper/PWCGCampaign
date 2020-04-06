@@ -4,6 +4,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.WaypointType;
@@ -50,6 +51,22 @@ public class AirStartWaypointFactory
     private static McuWaypoint createAirStartFromAirfield(IFlight flight, McuWaypoint referenceWaypointForAirStart) throws PWCGException
     {
         Coordinate airfieldCoordinate = flight.getFlightHomePosition();
+        double distaneToTravel = calculateDistanceFromAirStartToIngress(flight, referenceWaypointForAirStart, airfieldCoordinate);
+        
+        double angleFromFirstWPToAirfield = MathUtils.calcAngle(referenceWaypointForAirStart.getPosition(), airfieldCoordinate);
+        Coordinate airStartPosition = MathUtils.calcNextCoord(referenceWaypointForAirStart.getPosition(), angleFromFirstWPToAirfield, distaneToTravel);
+        airStartPosition.setYPos(referenceWaypointForAirStart.getPosition().getYPos());
+        airStartPosition.setYPos(WaypointType.getAltitudeForWaypointType(WaypointType.AIR_START_WAYPOINT, flight.getFlightInformation().getAltitude()));
+        
+        McuWaypoint airStartWP = WaypointFactory.createAirStartWaypointType();
+        airStartWP.setPosition(airStartPosition);
+        airStartWP.setOrientation(new Orientation(MathUtils.adjustAngle(angleFromFirstWPToAirfield, 180)));
+        return airStartWP;
+    }
+
+    private static double calculateDistanceFromAirStartToIngress(IFlight flight, McuWaypoint referenceWaypointForAirStart, Coordinate airfieldCoordinate)
+            throws PWCGException
+    {
         double distanceFromFieldToRefrenceWP = MathUtils.calcDist(airfieldCoordinate, referenceWaypointForAirStart.getPosition());
         double distanceForIngressToTarget = MathUtils.calcDist(referenceWaypointForAirStart.getPosition(), flight.getTargetDefinition().getTargetPosition());
         double distanceToTarget = distanceFromFieldToRefrenceWP + distanceForIngressToTarget;
@@ -62,15 +79,24 @@ public class AirStartWaypointFactory
         {
             distaneToTravel = estimatedDistanceToTarget;
         }
-        distaneToTravel -= distanceForIngressToTarget;
-        
-        double angleFromFirstWPToAirfield = MathUtils.calcAngle(referenceWaypointForAirStart.getPosition(), airfieldCoordinate);
-        Coordinate airStartPosition = MathUtils.calcNextCoord(referenceWaypointForAirStart.getPosition(), angleFromFirstWPToAirfield, distaneToTravel);
-        airStartPosition.setYPos(WaypointType.getAltitudeForWaypointType(WaypointType.AIR_START_WAYPOINT, flight.getFlightInformation().getAltitude()));
-        
-        McuWaypoint airStartWP = WaypointFactory.createAirStartWaypointType();
-        airStartWP.setPosition(airStartPosition);
-        airStartWP.setOrientation(new Orientation(MathUtils.adjustAngle(angleFromFirstWPToAirfield, 180)));
-        return airStartWP;
+
+        if (FlightTypes.isBombingFlight(flight.getFlightInformation().getFlightType()))
+        {
+            distaneToTravel -= distanceForIngressToTarget;
+            int accountForRendezvous = 7000;
+            if (distaneToTravel < accountForRendezvous)
+            {
+                distaneToTravel = accountForRendezvous;
+            }
+        }
+        else
+        {
+            int accountForDistanceToIngress = 2000;
+            if (distaneToTravel < accountForDistanceToIngress)
+            {
+                distaneToTravel = accountForDistanceToIngress;
+            }
+        }
+        return distaneToTravel;
     }
 }

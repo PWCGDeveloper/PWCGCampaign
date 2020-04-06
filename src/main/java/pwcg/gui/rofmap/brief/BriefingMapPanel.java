@@ -159,7 +159,9 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
                 Point point = super.coordinateToPoint(mapPoint.coord);
                 Ellipse2D.Double circle = new Ellipse2D.Double(point.x - 4, point.y - 4, 8, 8);
                 g2.fill(circle);
-                
+
+                g2.drawString(mapPoint.desc, point.x + 4, point.y);
+
                 if (prevMapPoint != null && connect)
                 {
                     Point prevPoint = super.coordinateToPoint(prevMapPoint.coord);
