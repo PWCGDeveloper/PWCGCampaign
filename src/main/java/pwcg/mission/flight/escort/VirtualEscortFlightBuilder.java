@@ -14,6 +14,9 @@ import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.target.ITargetDefinitionBuilder;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetDefinitionBuilderFactory;
 
 public class VirtualEscortFlightBuilder
 {
@@ -31,8 +34,10 @@ public class VirtualEscortFlightBuilder
         
         if (friendlyFighterSquadrons != null && friendlyFighterSquadrons.size() > 0)
         {
-            IFlightInformation escortFlightInformation = createFlightInformation(escortedFlight, friendlyFighterSquadrons);            
-            VirtualEscortFlight virtualEscortFlight = new VirtualEscortFlight(escortFlightInformation, escortedFlight);
+            IFlightInformation escortFlightInformation = createFlightInformation(escortedFlight, friendlyFighterSquadrons);
+            TargetDefinition targetDefinition = buildTargetDefintion(escortFlightInformation);
+
+            VirtualEscortFlight virtualEscortFlight = new VirtualEscortFlight(escortFlightInformation, targetDefinition, escortedFlight);
             virtualEscortFlight.createFlight();
             return virtualEscortFlight;
         }
@@ -52,4 +57,10 @@ public class VirtualEscortFlightBuilder
         return escortFlightInformation;
     }
 
+    private TargetDefinition buildTargetDefintion(IFlightInformation escortFlightInformation) throws PWCGException
+    {
+        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(escortFlightInformation);
+        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
+        return targetDefinition;
+    }
 }

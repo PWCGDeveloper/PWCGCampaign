@@ -48,7 +48,7 @@ public class BriefParametersContextBuilder
 
 		     if (waypoint.getWpAction() == WaypointAction.WP_ACTION_TARGET_FINAL)
 		     {
-		    	 addAttackPoint(playerFlight.getFlightInformation().getTargetPosition());
+		    	 addAttackPoint(playerFlight.getTargetDefinition().getTargetPosition());
 		     }
 		     
 		     prevWaypoint = waypoint;

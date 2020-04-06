@@ -16,14 +16,15 @@ import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory.IngressWaypoint
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetFactory;
 import pwcg.mission.mcu.McuWaypoint;
+import pwcg.mission.target.TargetDefinition;
 
 public class TransportFlight extends Flight implements IFlight
 {
     private IAirfield arrivalAirfield = null;
 
-    public TransportFlight(IFlightInformation flightInformation)
+    public TransportFlight(IFlightInformation flightInformation, TargetDefinition targetDefinition)
     {
-        super (flightInformation);
+        super(flightInformation, targetDefinition);
     }
 
     public void createFlight() throws PWCGException
@@ -44,7 +45,7 @@ public class TransportFlight extends Flight implements IFlight
         IMissionPointSet flightActivate = MissionPointSetFactory.createFlightActivate(this);
         this.getWaypointPackage().addMissionPointSet(flightActivate);
 
-        IMissionPointSet flightBegin = MissionPointSetFactory.createFlightBegin(this, flightActivate, AirStartPattern.AIR_START_NEAR_AIRFIELD, ingressWaypoint);
+        IMissionPointSet flightBegin = MissionPointSetFactory.createFlightBegin(this, flightActivate, AirStartPattern.AIR_START_FROM_AIRFIELD, ingressWaypoint);
         this.getWaypointPackage().addMissionPointSet(flightBegin);
 
         IMissionPointSet flightRendezvous = MissionPointSetFactory.createFlightRendezvous(this, ingressWaypoint);
@@ -62,7 +63,7 @@ public class TransportFlight extends Flight implements IFlight
     {
 	    AirfieldManager airfieldManager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
 	    arrivalAirfield = airfieldManager.getAirfieldFinder().findClosestAirfieldForSide(
-	            this.getFlightInformation().getTargetPosition(), getCampaign().getDate(), this.getSquadron().getCountry().getSide());    
+	            this.getTargetDefinition().getTargetPosition(), getCampaign().getDate(), this.getSquadron().getCountry().getSide());    
     }
 
     public IAirfield getArrivalAirfield()

@@ -17,10 +17,14 @@ import pwcg.mission.flight.bomb.BombingFlight;
 import pwcg.mission.flight.divebomb.DiveBombingFlight;
 import pwcg.mission.ground.ShipConvoyGenerator;
 import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.target.ITargetDefinitionBuilder;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetDefinitionBuilderFactory;
 
 public class SeaAntiShippingPackage implements IFlightPackage
 {
     private IFlightInformation flightInformation;
+    private TargetDefinition targetDefinition;
     private FlightTypes flightType;
 
     public SeaAntiShippingPackage(FlightTypes flightType)
@@ -32,10 +36,10 @@ public class SeaAntiShippingPackage implements IFlightPackage
     public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
         this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, flightType);
+        this.targetDefinition = buildTargetDefintion();
 
-        ShippingLane selectedShippingLane = getEnemyShippingLane();
         IFlight seaPatrol = createSeaPatrol();
-		generateConvoysForPlayerFlight(selectedShippingLane, seaPatrol);
+		generateConvoysForPlayerFlight(seaPatrol);
 		return seaPatrol;
 	}
 	
@@ -61,32 +65,32 @@ public class SeaAntiShippingPackage implements IFlightPackage
 
     private IFlight createAntiShippingDiveBombFlight() throws PWCGException
     {
-        DiveBombingFlight diveBombingFlight = new DiveBombingFlight (flightInformation);
+        DiveBombingFlight diveBombingFlight = new DiveBombingFlight (flightInformation, targetDefinition);
         diveBombingFlight.createFlight();
         return diveBombingFlight;
     }
 
     private IFlight createAntiShippingBombFlight() throws PWCGException
     {
-        BombingFlight bombingFlight = new BombingFlight (flightInformation);
+        BombingFlight bombingFlight = new BombingFlight (flightInformation, targetDefinition);
         bombingFlight.createFlight();
         return bombingFlight;
     }
 
     private IFlight createAntiShippingAttackFlight() throws PWCGException
     {
-        GroundAttackFlight antiShippingAttackFlight = new GroundAttackFlight (flightInformation);
+        GroundAttackFlight antiShippingAttackFlight = new GroundAttackFlight (flightInformation, targetDefinition);
         antiShippingAttackFlight.createFlight();
         return antiShippingAttackFlight;
     }
 
 
-	private void generateConvoysForPlayerFlight(ShippingLane selectedShippingLane, IFlight seaPatrol) throws PWCGException
+	private void generateConvoysForPlayerFlight(IFlight seaPatrol) throws PWCGException
 	{
 		if (flightInformation.isPlayerFlight())
 		{
 		    ShipConvoyGenerator shipConvoyGenerator = new ShipConvoyGenerator();
-            List<IGroundUnitCollection> otherConvoys = shipConvoyGenerator.generateConvoys(flightInformation, selectedShippingLane);
+            List<IGroundUnitCollection> otherConvoys = shipConvoyGenerator.generateConvoys(flightInformation, targetDefinition);
             for (IGroundUnitCollection convoy : otherConvoys)
             {
                 seaPatrol.addLinkedGroundUnit(convoy);
@@ -94,10 +98,20 @@ public class SeaAntiShippingPackage implements IFlightPackage
 		}
 	}
 
-	private ShippingLane getEnemyShippingLane() throws PWCGException 
-	{
+    private TargetDefinition buildTargetDefintion() throws PWCGException
+    {
+        ShippingLane selectedShippingLane = getEnemyShippingLane();
+        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
+        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
+        targetDefinition.setTargetPosition(selectedShippingLane.getShippingLaneBox().chooseCoordinateWithinBox());
+        return targetDefinition;
+        
+    }
+
+    private ShippingLane getEnemyShippingLane() throws PWCGException 
+    {
         ShippingLaneManager shippingLaneManager = PWCGContext.getInstance().getCurrentMap().getShippingLaneManager();        
         ShippingLane selectedShippingLane = shippingLaneManager.getClosestShippingLane(flightInformation.getMission().getMissionBorders().getCenter());
-	    return selectedShippingLane;
-	}
+        return selectedShippingLane;
+    }
 }

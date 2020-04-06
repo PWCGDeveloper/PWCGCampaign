@@ -15,6 +15,7 @@ import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBorderBuilder;
 import pwcg.mission.MissionHumanParticipants;
+import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
@@ -51,9 +52,8 @@ public class InterceptPackageTest
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox(FlightTypes.INTERCEPT);
 
-        Mission mission = new Mission(campaign, participatingPlayers, missionBorders);
+        Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
         campaign.setCurrentMission(mission);
-        mission.generateProfile();
 
         InterceptPackage flightPackage = new InterceptPackage(FlightTypes.INTERCEPT);
         boolean isPlayerFlight = true;

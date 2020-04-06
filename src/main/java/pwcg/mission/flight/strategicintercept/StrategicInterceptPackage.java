@@ -11,10 +11,14 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.mcu.McuWaypoint;
+import pwcg.mission.target.ITargetDefinitionBuilder;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetDefinitionBuilderFactory;
 
 public class StrategicInterceptPackage implements IFlightPackage
 {
     private IFlightInformation flightInformation;
+    private TargetDefinition targetDefinition;
 
     public StrategicInterceptPackage()
     {
@@ -24,34 +28,34 @@ public class StrategicInterceptPackage implements IFlightPackage
     public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
         this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.STRATEGIC_INTERCEPT);
+        this.targetDefinition = buildTargetDefintion();
 
-        List<IFlight> opposingFlights = makeLinkedStrategicInterceptFlights();
+        List<IFlight> opposingFlights = makeOpposingFlights();
 
         if (opposingFlights.isEmpty())
         {
-            throw new PWCGException("COuld not find opposition for intercept");
+            throw new PWCGException("Could not find opposition for intercept");
         }
         
         resetFlightInformationAltitudeToMatchTargetFlightList(opposingFlights);
-        StrategicInterceptFlight interceptFlight = new StrategicInterceptFlight (flightInformation, opposingFlights.get(0));
+        StrategicInterceptFlight interceptFlight = new StrategicInterceptFlight (flightInformation, targetDefinition, opposingFlights.get(0));
         interceptFlight.createFlight();
         
         if (flightInformation.isPlayerFlight())
         {
             FlightSpotterBuilder.createSpotters(interceptFlight, flightInformation);
-        }
-        
-        for (IFlight opposingFlight: opposingFlights)
-        {
-            interceptFlight.getLinkedFlights().addLinkedFlight(opposingFlight);
+            for (IFlight opposingFlight: opposingFlights)
+            {
+                interceptFlight.getLinkedFlights().addLinkedFlight(opposingFlight);
+            }
         }
 
         return interceptFlight;
     }
 
-    private List<IFlight> makeLinkedStrategicInterceptFlights() throws PWCGException
+    private List<IFlight> makeOpposingFlights() throws PWCGException
     {
-        StrategicInterceptOpposingFlightBuilder opposingFlightBuilder = new StrategicInterceptOpposingFlightBuilder(flightInformation);
+        StrategicInterceptOpposingFlightBuilder opposingFlightBuilder = new StrategicInterceptOpposingFlightBuilder(flightInformation, targetDefinition);
         List<IFlight> opposingFlights = opposingFlightBuilder.buildOpposingFlights();
         return opposingFlights;
     }
@@ -71,4 +75,11 @@ public class StrategicInterceptPackage implements IFlightPackage
         int altitudeAboveBombers = Double.valueOf(maxAltitude).intValue() + 300;
         flightInformation.setAltitude(altitudeAboveBombers);
     }
+    
+    private TargetDefinition buildTargetDefintion() throws PWCGException
+    {
+        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
+        return  targetDefinitionBuilder.buildTargetDefinition();
+    }
+
 }

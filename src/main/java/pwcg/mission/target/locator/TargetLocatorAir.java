@@ -14,7 +14,6 @@ import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.intercept.InterceptAiCoordinateGenerator;
 import pwcg.mission.flight.intercept.InterceptPlayerCoordinateGenerator;
-import pwcg.mission.flight.strategicintercept.StrategicInterceptPlayerCoordinateGenerator;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.utils.BehindFriendlyLinesPositionCalculator;
 
@@ -60,13 +59,6 @@ public class TargetLocatorAir
             Coordinate targetCoordinates = coordinateGenerator.createTargetCoordinates();
             return targetCoordinates;
         }
-    }
-    
-    public Coordinate getStrategicInterceptCoordinate() throws PWCGException
-    {
-        StrategicInterceptPlayerCoordinateGenerator coordinateGenerator = new StrategicInterceptPlayerCoordinateGenerator(flightInformation);
-        TargetDefinition interceptedFlightTarget = coordinateGenerator.createTargetCoordinates();
-        return interceptedFlightTarget.getTargetPosition();
     }
     
     public Coordinate getTransportAirfieldCoordinate() throws PWCGException

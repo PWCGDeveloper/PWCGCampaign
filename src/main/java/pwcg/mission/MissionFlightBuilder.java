@@ -47,7 +47,7 @@ public class MissionFlightBuilder
         {
             Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
             PlayerFlightBuilder playerFlightBuilder = new PlayerFlightBuilder(campaign, mission);
-            IFlight playerFlight = playerFlightBuilder.createPlayerFlight(flightType, squadron);
+            IFlight playerFlight = playerFlightBuilder.createPlayerFlight(flightType, squadron, participatingPlayers, mission.isNightMission());
             playerFlights.add(playerFlight);
         }
     }

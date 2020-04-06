@@ -41,7 +41,7 @@ public class AmbientBuilderTest
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        Mission mission = new Mission(campaign, participatingPlayers, missionBorders);
+        Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
         mission.generate(FlightTypes.ANY);
         
         AmbientBattleBuilder ambientBattleBuilder = new AmbientBattleBuilder(campaign, mission);
@@ -61,7 +61,7 @@ public class AmbientBuilderTest
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        Mission mission = new Mission(campaign, participatingPlayers, missionBorders);
+        Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
         mission.generate(FlightTypes.ANY);
         
         AmbientTruckConvoyBuilder ambientTruckConvoyBuilder = new AmbientTruckConvoyBuilder(campaign, mission);
@@ -84,7 +84,7 @@ public class AmbientBuilderTest
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        Mission mission = new Mission(campaign, participatingPlayers, missionBorders);
+        Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
         mission.generate(FlightTypes.ANY);
         
         AmbientTrainBuilder ambientTrainBuilder = new AmbientTrainBuilder(campaign, mission);
@@ -107,7 +107,7 @@ public class AmbientBuilderTest
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        Mission mission = new Mission(campaign, participatingPlayers, missionBorders);
+        Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
         mission.generate(FlightTypes.ANY);
         
         AAAManager aaaManager = new AAAManager(campaign, mission);

@@ -33,7 +33,7 @@ public class FlightPositionAirStart
 
     public static void resetAirStartFormation(IFlight flight, Coordinate startCoordinate) throws PWCGException 
     {
-        double startOrientation = MathUtils.calcAngle(startCoordinate, flight.getFlightInformation().getTargetPosition());
+        double startOrientation = MathUtils.calcAngle(startCoordinate, flight.getTargetDefinition().getTargetPosition());
         int initialAltitude = WaypointType.getAltitudeForWaypointType(WaypointType.AIR_START_WAYPOINT, flight.getFlightInformation().getAltitude());
         
         int i = 0;

@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IFixedPosition;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
@@ -50,7 +49,7 @@ public class StrategicTargetLocator
             availableTargets.put(TargetType.TARGET_RAIL, railTargets);
         }
 
-        List<IFixedPosition> portTargets = getBlockTargets("port facility");
+        List<IFixedPosition> portTargets = getPortTargets();
         if (portTargets.size() > 0)
         {
             availableTargets.put(TargetType.TARGET_PORT, portTargets);
@@ -62,7 +61,7 @@ public class StrategicTargetLocator
             availableTargets.put(TargetType.TARGET_AIRFIELD, airfieldTargets);
         }
 
-        List<IFixedPosition> cityTargets = getBlockTargets("block");
+        List<IFixedPosition> cityTargets = getCityTargets();
         if (cityTargets.size() > 0)
         {
             availableTargets.put(TargetType.TARGET_CITY, cityTargets);
@@ -79,34 +78,25 @@ public class StrategicTargetLocator
         {
             possibleTargets = getFactoryTargets();
         }
+        else if (targetType == TargetType.TARGET_RAIL)
+        {
+            possibleTargets = getRailTargets();
+        }
         else if (targetType == TargetType.TARGET_CITY)
         {
-            possibleTargets = getBlockTargets("block");
+            possibleTargets = getCityTargets();
         }
         else if (targetType == TargetType.TARGET_AIRFIELD)
         {
             possibleTargets = getAirfieldTargets();
         }
-        else if (targetType == TargetType.TARGET_RAIL)
-        {
-            possibleTargets = getRailTargets();
-        }
         else if (targetType == TargetType.TARGET_PORT)
         {
-            possibleTargets = getBlockTargets("port facility");
+            possibleTargets = getPortTargets();
         }
 
         int index = RandomNumberGenerator.getRandom(possibleTargets.size());
         return possibleTargets.get(index);
-    }
-
-    private List<IFixedPosition> getRailTargets() throws PWCGException
-    {
-        List<IFixedPosition> possibleTargets;
-        possibleTargets = getBlockTargets("railway");
-        List<IFixedPosition> morePossibleTargets = getBlockTargets("railroad");
-        possibleTargets.addAll(morePossibleTargets);
-        return possibleTargets;
     }
 
     private List<IFixedPosition> getFactoryTargets() throws PWCGException
@@ -118,6 +108,40 @@ public class StrategicTargetLocator
         return possibleTargets;
     }
 
+    private List<IFixedPosition> getRailTargets() throws PWCGException
+    {
+        List<IFixedPosition> possibleTargets;
+        possibleTargets = getBlockTargets("railway");
+        List<IFixedPosition> morePossibleTargets = getBlockTargets("railroad");
+        possibleTargets.addAll(morePossibleTargets);
+        List<IFixedPosition> evenMorePossibleTargets = getBlockTargets("rwstation");
+        possibleTargets.addAll(evenMorePossibleTargets);
+        return possibleTargets;
+    }
+
+    private List<IFixedPosition> getCityTargets() throws PWCGException
+    {
+        List<IFixedPosition> possibleTargets;
+        possibleTargets = getBlockTargets("block");
+        List<IFixedPosition> morePossibleTargets = getBlockTargets("town");
+        possibleTargets.addAll(morePossibleTargets);
+        return possibleTargets;
+    }
+
+    private List<IFixedPosition> getAirfieldTargets() throws PWCGException
+    {
+        List<IFixedPosition> possibleTargets;
+        possibleTargets = getBlockTargets("hangar");
+        return possibleTargets;
+    }
+
+    private List<IFixedPosition> getPortTargets() throws PWCGException
+    {
+        List<IFixedPosition> possibleTargets;
+        possibleTargets = getBlockTargets("port_");
+        return possibleTargets;
+    }
+    
     private List<IFixedPosition> getBlockTargets(String blockType) throws PWCGException
     {
         List<IFixedPosition> targets = new ArrayList<IFixedPosition>();
@@ -149,26 +173,6 @@ public class StrategicTargetLocator
             preferredRadius += 20000;
         }
 
-        return targets;
-    }
-
-    private List<IFixedPosition> getAirfieldTargets() throws PWCGException 
-    {
-        List<IFixedPosition> targets = new ArrayList<IFixedPosition>();
-        List<IAirfield> targetFields = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirFieldsForSide(date, side);
-        while (targets.size() == 0 && preferredRadius < PositionFinder.ABSURDLY_LARGE_DISTANCE)
-        {
-            for (IAirfield targetField : targetFields)
-            {
-                double distanceToTarget = MathUtils.calcDist(targetLocation, targetField.getPosition());
-                if (distanceToTarget < preferredRadius)
-                {
-                    targets.add(targetField);
-                }
-            }
-            preferredRadius += 20000;
-        }
-                
         return targets;
     }
 }

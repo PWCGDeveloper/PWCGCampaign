@@ -343,36 +343,36 @@ public class CoordinateBox
     
     public Coordinate getSW()
     {
-        return sw;
+        return sw.copy();
     }
 
     public Coordinate getNE()
     {
-        return ne;
+        return ne.copy();
     }
 
     public Coordinate getCenter()
     {
-        return center;
+        return center.copy();
     }
 
     public Coordinate getNorth()
     {
-        return north;
+        return north.copy();
     }
 
     public Coordinate getSouth()
     {
-        return south;
+        return south.copy();
     }
 
     public Coordinate getEast()
     {
-        return east;
+        return east.copy();
     }
 
     public Coordinate getWest()
     {
-        return west;
+        return west.copy();
     }
 }

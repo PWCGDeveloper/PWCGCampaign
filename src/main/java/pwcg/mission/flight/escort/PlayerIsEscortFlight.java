@@ -12,14 +12,15 @@ import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory.IngressWaypoint
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetFactory;
 import pwcg.mission.mcu.McuWaypoint;
+import pwcg.mission.target.TargetDefinition;
 
 public class PlayerIsEscortFlight extends Flight implements IFlight
 {
     private EscortedByPlayerFlight escortedFlight;
     
-    public PlayerIsEscortFlight(IFlightInformation flightInformation, EscortedByPlayerFlight escortedFlight)
+    public PlayerIsEscortFlight(IFlightInformation flightInformation, TargetDefinition targetDefinition, EscortedByPlayerFlight escortedFlight)
     {
-        super(flightInformation);
+        super(flightInformation, targetDefinition);
         this.escortedFlight = escortedFlight;
     }
 
@@ -38,7 +39,7 @@ public class PlayerIsEscortFlight extends Flight implements IFlight
         IMissionPointSet flightActivate = MissionPointSetFactory.createFlightActivate(this);
         this.getWaypointPackage().addMissionPointSet(flightActivate);
 
-        IMissionPointSet flightBegin = MissionPointSetFactory.createFlightBegin(this, flightActivate, AirStartPattern.AIR_START_NEAR_AIRFIELD, ingressWaypoint);
+        IMissionPointSet flightBegin = MissionPointSetFactory.createFlightBegin(this, flightActivate, AirStartPattern.AIR_START_FROM_AIRFIELD, ingressWaypoint);
         this.getWaypointPackage().addMissionPointSet(flightBegin);
 
         PlayerIsEscortMissionPointFactory missionWaypointFactory = new PlayerIsEscortMissionPointFactory(this, escortedFlight);

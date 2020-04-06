@@ -56,8 +56,7 @@ public class GroundAttackWaypointFactory
     
     private AirGroundAttackMcuSequence createAttackArea() throws PWCGException 
     {
-        IFlightInformation flightInformation = flight.getFlightInformation();
-        AirGroundAttackMcuSequence attackMcuSequence = new AirGroundAttackMcuSequence(flightInformation);
+        AirGroundAttackMcuSequence attackMcuSequence = new AirGroundAttackMcuSequence(flight);
         attackMcuSequence.createAttackArea(GROUND_ATTACK_TIME, AttackAreaType.GROUND_TARGETS);        
         return attackMcuSequence;
     }

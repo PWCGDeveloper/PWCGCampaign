@@ -31,10 +31,13 @@ public class CountryDesignator
 
         if (distanceToAllied > neutralZone && distanceToAxis > neutralZone)
         {
-            country = CountryFactory.makeMapReferenceCountry(Side.ALLIED);
             if (distanceToAxis < distanceToAllied)
             {
                 country = CountryFactory.makeMapReferenceCountry(Side.AXIS);
+            }
+            else
+            {
+                country = CountryFactory.makeMapReferenceCountry(Side.ALLIED);
             }
         }
 

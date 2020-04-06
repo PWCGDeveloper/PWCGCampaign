@@ -17,6 +17,9 @@ import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.target.ITargetDefinitionBuilder;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetDefinitionBuilderFactory;
 
 public class AirfieldScramblePackage
 {
@@ -81,11 +84,23 @@ public class AirfieldScramblePackage
     {
         Squadron scrambleSquadron = fighterSquadrons.get(0);
         boolean isPlayerFlight = false;
-        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(mission, scrambleSquadron, isPlayerFlight);
-        IFlightInformation opposingFlightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.SCRAMBLE);
-        AirfieldScrambleFlight scramble =  new AirfieldScrambleFlight(opposingFlightInformation);
+        FlightBuildInformation airfieldScrambleFlightBuildInformation = new FlightBuildInformation(mission, scrambleSquadron, isPlayerFlight);
+        IFlightInformation airfieldScrambleFlightInformation = FlightInformationFactory.buildFlightInformation(airfieldScrambleFlightBuildInformation, FlightTypes.SCRAMBLE);
+        TargetDefinition targetDefinition = buildAirfieldScrambleTargetDefintion(airfieldScrambleFlightInformation, scrambleSquadron);
+
+        AirfieldScrambleFlight scramble =  new AirfieldScrambleFlight(airfieldScrambleFlightInformation, targetDefinition);
         scramble.createFlight();
         return scramble;
     }
 
+
+    private TargetDefinition buildAirfieldScrambleTargetDefintion(IFlightInformation airfieldScrambleFlightBuildInformation, Squadron squadron) throws PWCGException
+    {
+        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(airfieldScrambleFlightBuildInformation);
+        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
+        
+        targetDefinition.setTargetPosition(squadron.determineCurrentPosition(airfieldScrambleFlightBuildInformation.getCampaign().getDate()));
+        return targetDefinition;
+        
+    }
 }

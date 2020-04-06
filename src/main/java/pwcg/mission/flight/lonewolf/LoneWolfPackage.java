@@ -7,10 +7,14 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
+import pwcg.mission.target.ITargetDefinitionBuilder;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetDefinitionBuilderFactory;
 
 public class LoneWolfPackage implements IFlightPackage
 {
-    protected IFlightInformation flightInformation;
+    private IFlightInformation flightInformation;
+    private TargetDefinition targetDefinition;
 
     public LoneWolfPackage()
     {
@@ -20,9 +24,16 @@ public class LoneWolfPackage implements IFlightPackage
     public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
         this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.LONE_WOLF);
+        this.targetDefinition = buildTargetDefintion();
 
-        LoneWolfFlight patrolFlight = new LoneWolfFlight (flightInformation);
+        LoneWolfFlight patrolFlight = new LoneWolfFlight (flightInformation, targetDefinition);
         patrolFlight.createFlight();
         return patrolFlight;
+    }
+
+    private TargetDefinition buildTargetDefintion() throws PWCGException
+    {
+        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
+        return  targetDefinitionBuilder.buildTargetDefinition();
     }
 }

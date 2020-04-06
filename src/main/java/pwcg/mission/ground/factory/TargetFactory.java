@@ -16,10 +16,10 @@ public class TargetFactory
     private TargetDefinition targetDefinition;    
     private IGroundUnitCollection groundUnitCollection;
 
-    public TargetFactory(IFlightInformation flightInformation) throws PWCGException 
+    public TargetFactory(IFlightInformation flightInformation, TargetDefinition targetDefinition) throws PWCGException 
     { 
         this.flightInformation = flightInformation;
-        this.targetDefinition = flightInformation.getTargetDefinition();
+        this.targetDefinition = targetDefinition;
     }
 
 	public void buildTarget() throws PWCGException 

@@ -42,7 +42,7 @@ public class TargetDefinitionBuilderStrategic implements ITargetDefinitionBuilde
 
         targetDefinition.setTargetType(targetType);
         targetDefinition.setAttackingSquadron(flightInformation.getSquadron());
-        targetDefinition.setTargetName(TargetDefinitionBuilderUtils.buildTargetName(targetCountry, targetType));
+        targetDefinition.setTargetName(buildTargetName(targetCountry, targetType));
 
         targetDefinition.setAttackingCountry(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()));
         targetDefinition.setTargetCountry(targetCountry);
@@ -53,5 +53,12 @@ public class TargetDefinitionBuilderStrategic implements ITargetDefinitionBuilde
         targetDefinition.setTargetOrientation(new Orientation());
 
         return targetDefinition;
+    }
+    
+    private String buildTargetName(ICountry targetCountry, TargetType targetType)
+    {
+        String nationality = targetCountry.getNationality();
+        String name = nationality + " " + targetType.getTargetName();
+        return name;
     }
 }

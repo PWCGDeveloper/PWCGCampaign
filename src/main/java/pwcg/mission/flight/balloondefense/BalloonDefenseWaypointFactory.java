@@ -49,10 +49,10 @@ public class BalloonDefenseWaypointFactory
 
     private McuWaypoint createInterceptFirstWP(McuWaypoint ingressWaypoint) throws PWCGException
     {
-        double angleTargetToIngress = MathUtils.calcAngle(flight.getFlightInformation().getTargetPosition(), ingressWaypoint.getPosition());
+        double angleTargetToIngress = MathUtils.calcAngle(flight.getTargetDefinition().getTargetPosition(), ingressWaypoint.getPosition());
 
         double distanceFromTarget = getRadiusFromCircumferennceOfLoop();
-        Coordinate balloonDefensePosition = MathUtils.calcNextCoord(flight.getFlightInformation().getTargetPosition(), angleTargetToIngress, distanceFromTarget);
+        Coordinate balloonDefensePosition = MathUtils.calcNextCoord(flight.getTargetDefinition().getTargetPosition(), angleTargetToIngress, distanceFromTarget);
         balloonDefensePosition.setYPos(flight.getFlightInformation().getAltitude());
 
         McuWaypoint loopFirstWP = WaypointFactory.createPatrolWaypointType();
@@ -61,7 +61,7 @@ public class BalloonDefenseWaypointFactory
         loopFirstWP.setPosition(balloonDefensePosition);    
         loopFirstWP.setTargetWaypoint(true);
         
-        double initialAngle = MathUtils.calcAngle(flight.getFlightHomePosition(), flight.getFlightInformation().getTargetPosition());
+        double initialAngle = MathUtils.calcAngle(flight.getFlightHomePosition(), flight.getTargetDefinition().getTargetPosition());
         loopFirstWP.getOrientation().setyOri(initialAngle);
         
         return loopFirstWP;

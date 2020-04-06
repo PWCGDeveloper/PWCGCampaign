@@ -13,10 +13,14 @@ import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
+import pwcg.mission.target.ITargetDefinitionBuilder;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetDefinitionBuilderFactory;
 
 public class PlayerScramblePackage implements IFlightPackage
 {
     private IFlightInformation flightInformation;
+    private TargetDefinition targetDefinition;
 
     public PlayerScramblePackage()
     {
@@ -26,9 +30,10 @@ public class PlayerScramblePackage implements IFlightPackage
     public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
         this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.SCRAMBLE);
+        List<IFlight> opposingFlights = makeOpposingScrambleFlights();
 
-        List<IFlight> opposingFlights = makeLinkedScrambleFlights();
-        changeTargetLocationForPlayerFlight(opposingFlights);
+        this.targetDefinition = buildTargetDefintion(opposingFlights);
+        
 		PlayerScrambleFlight playerFlight = createPlayerFlight();
 		linkScrambleOpposingFlights(playerFlight, opposingFlights);
         FlightSpotterBuilder.createSpotters(playerFlight, flightInformation);
@@ -36,27 +41,31 @@ public class PlayerScramblePackage implements IFlightPackage
 		return playerFlight;
 	}
 
-    private List<IFlight> makeLinkedScrambleFlights() throws PWCGException
+    private List<IFlight> makeOpposingScrambleFlights() throws PWCGException
     {
         ScrambleOpposingFlightBuilder opposingFlightBuilder = new ScrambleOpposingFlightBuilder(flightInformation);
         List<IFlight> opposingFlights = opposingFlightBuilder.buildOpposingFlights();
         return opposingFlights;
     }
     
-    private void changeTargetLocationForPlayerFlight(List<IFlight> opposingFlights) throws PWCGException
+    private TargetDefinition buildTargetDefintion(List<IFlight> opposingFlights) throws PWCGException
     {
+        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
+        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
+
         if (opposingFlights.size() > 0)
         {
             IFlight enemyFlight = opposingFlights.get(0);
             MissionPoint enemyStartPoint = enemyFlight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_START);
             Coordinate targetLocationForPlayerFlight = enemyStartPoint.getPosition().copy();
-            flightInformation.getTargetDefinition().setTargetPosition(targetLocationForPlayerFlight);
+            targetDefinition.setTargetPosition(targetLocationForPlayerFlight);
         }
+        return targetDefinition;
     }
 
     private PlayerScrambleFlight createPlayerFlight() throws PWCGException
     {
-        PlayerScrambleFlight playerFlight = new PlayerScrambleFlight (flightInformation);
+        PlayerScrambleFlight playerFlight = new PlayerScrambleFlight (flightInformation, targetDefinition);
         playerFlight.createFlight();
         return playerFlight;
     }

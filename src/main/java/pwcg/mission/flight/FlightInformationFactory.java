@@ -4,7 +4,6 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.plane.FlightPlaneBuilder;
-import pwcg.mission.target.TargetDefinitionBuilderFactory;
 
 public class FlightInformationFactory
 {
@@ -31,7 +30,6 @@ public class FlightInformationFactory
         playerFlightInformation.setEscortForPlayerFlight(false);
         playerFlightInformation.setEscortedByPlayerFlight(false);
         playerFlightInformation.setTargetSearchStartLocation(mission.getMissionBorders().getCenter());
-        TargetDefinitionBuilderFactory.buildTargetDefinition (playerFlightInformation);
         FlightPlaneBuilder.buildPlanes (playerFlightInformation);
         playerFlightInformation.calculateAltitude();
         
@@ -49,7 +47,6 @@ public class FlightInformationFactory
         aiFlightInformation.setEscortForPlayerFlight(false);
         aiFlightInformation.setEscortedByPlayerFlight(false);
         aiFlightInformation.setTargetSearchStartLocation(mission.getMissionBorders().getCenter());
-        TargetDefinitionBuilderFactory.buildTargetDefinition (aiFlightInformation);
         FlightPlaneBuilder.buildPlanes (aiFlightInformation);
         aiFlightInformation.calculateAltitude();
 

@@ -17,7 +17,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.plane.PlaneMcu;
-import pwcg.mission.target.TargetDefinition;
 
 public class FlightInformation implements IFlightInformation
 {
@@ -28,7 +27,6 @@ public class FlightInformation implements IFlightInformation
     private Squadron squadron;
     private List<PlaneMcu> planes;
     private Coordinate targetSearchStartLocation;
-    private TargetDefinition targetDefinition = new TargetDefinition();
     private boolean isPlayerFlight = false;
     private boolean isEscortedByPlayerFlight = false;
     private boolean isEscortForPlayerFlight = false;
@@ -123,12 +121,6 @@ public class FlightInformation implements IFlightInformation
     }
     
     @Override
-    public Coordinate getTargetPosition()
-    {
-        return targetDefinition.getTargetPosition();
-    }
-    
-    @Override
     public List<SquadronMember> getFlightParticipatingPlayers() 
     {
 		return mission.getParticipatingPlayers().getParticipatingPlayersForSquadron(squadron.getSquadronId());
@@ -137,17 +129,6 @@ public class FlightInformation implements IFlightInformation
     public void setCampaign(Campaign campaign) 
 	{
 		this.campaign = campaign;
-	}
-	
-	@Override
-    public TargetDefinition getTargetDefinition() 
-	{
-		return targetDefinition;
-	}
-
-    public void setTargetDefinition(TargetDefinition targetDefinition) 
-	{
-		this.targetDefinition = targetDefinition;
 	}
 
 	@Override

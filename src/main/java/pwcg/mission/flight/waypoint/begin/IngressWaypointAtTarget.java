@@ -41,8 +41,8 @@ public class IngressWaypointAtTarget implements IIngressWaypoint
         int randomDistanceToTarget = RandomNumberGenerator.getRandom(maxDistanceToTarget - minDistanceToTarget);
         int distanceToTarget = minDistanceToTarget + randomDistanceToTarget;
         
-        double angleFromTarget = MathUtils.calcAngle(flight.getFlightInformation().getTargetPosition(), flight.getFlightHomePosition());
-        Coordinate ingressCoordinate = MathUtils.calcNextCoord(flight.getFlightInformation().getTargetPosition(), angleFromTarget, distanceToTarget);
+        double angleFromTarget = MathUtils.calcAngle(flight.getTargetDefinition().getTargetPosition(), flight.getFlightHomePosition());
+        Coordinate ingressCoordinate = MathUtils.calcNextCoord(flight.getTargetDefinition().getTargetPosition(), angleFromTarget, distanceToTarget);
         return ingressCoordinate;
     }
 }

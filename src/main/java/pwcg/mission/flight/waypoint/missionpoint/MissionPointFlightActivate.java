@@ -167,7 +167,7 @@ public class MissionPointFlightActivate implements IMissionPointSet
     }
 
     @Override
-    public IMissionPointSet duplicateWithOffset(IFlightInformation flightInformation, int positionInFormation) throws PWCGException
+    public IMissionPointSet duplicateWithOffset(IFlight flight, int positionInFormation) throws PWCGException
     {
         throw new PWCGException("Do not duplicate flight activate");                                
     }

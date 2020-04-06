@@ -12,12 +12,13 @@ import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory.IngressWaypoint
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetFactory;
 import pwcg.mission.mcu.McuWaypoint;
+import pwcg.mission.target.TargetDefinition;
 
 public class ContactPatrolFlight extends Flight implements IFlight
 {
-    public ContactPatrolFlight(IFlightInformation flightInformation)
+    public ContactPatrolFlight(IFlightInformation flightInformation, TargetDefinition targetDefinition)
     {
-        super(flightInformation);
+        super(flightInformation, targetDefinition);
     }
 
     public void createFlight() throws PWCGException
@@ -35,7 +36,7 @@ public class ContactPatrolFlight extends Flight implements IFlight
         IMissionPointSet flightActivate = MissionPointSetFactory.createFlightActivate(this);
         this.getWaypointPackage().addMissionPointSet(flightActivate);
 
-        IMissionPointSet flightBegin = MissionPointSetFactory.createFlightBegin(this, flightActivate, AirStartPattern.AIR_START_NEAR_AIRFIELD, ingressWaypoint);
+        IMissionPointSet flightBegin = MissionPointSetFactory.createFlightBegin(this, flightActivate, AirStartPattern.AIR_START_FROM_AIRFIELD, ingressWaypoint);
         this.getWaypointPackage().addMissionPointSet(flightBegin);
 
         IMissionPointSet flightRendezvous = MissionPointSetFactory.createFlightRendezvous(this, ingressWaypoint);

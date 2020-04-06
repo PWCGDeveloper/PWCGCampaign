@@ -13,6 +13,7 @@ import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionHumanParticipants;
+import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.ground.vehicle.VehicleSetBuilderComprehensive;
 import pwcg.testutils.CampaignCache;
@@ -46,7 +47,7 @@ public class VehicleSetBuilderComprehensiveTest
     {
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
     	MissionGenerator missionGenerator = new MissionGenerator(campaign);
-    	mission = missionGenerator.makeMissionFromFlightType(participatingPlayers, FlightTypes.PATROL);
+    	mission = missionGenerator.makeMissionFromFlightType(participatingPlayers, FlightTypes.PATROL, MissionProfile.DAY_TACTICAL_MISSION);
         mission.generateAllGroundUnitTypesForTest();
         mission.finalizeMission();
     }

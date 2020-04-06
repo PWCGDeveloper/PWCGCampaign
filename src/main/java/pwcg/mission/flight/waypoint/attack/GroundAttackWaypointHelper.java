@@ -56,9 +56,9 @@ public class GroundAttackWaypointHelper
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int bombApproachDistance = productSpecificConfiguration.getBombApproachDistance();
 
-        double ingressAngle = MathUtils.calcAngle(ingressPosition.copy(), flight.getFlightInformation().getTargetPosition().copy());
+        double ingressAngle = MathUtils.calcAngle(ingressPosition.copy(), flight.getTargetDefinition().getTargetPosition().copy());
         double angleBackFromTarget = MathUtils.adjustAngle(ingressAngle, 150);
-		Coordinate targetIngressCoords = MathUtils.calcNextCoord(flight.getFlightInformation().getTargetPosition(), angleBackFromTarget, bombApproachDistance);
+		Coordinate targetIngressCoords = MathUtils.calcNextCoord(flight.getTargetDefinition().getTargetPosition(), angleBackFromTarget, bombApproachDistance);
 		targetIngressCoords.setYPos(ingressPosition.getYPos());
 		return targetIngressCoords;
 	}
@@ -85,7 +85,7 @@ public class GroundAttackWaypointHelper
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int bombFinalApproachDistance = productSpecificConfiguration.getBombFinalApproachDistance();
 
-        double angleToTarget = MathUtils.calcAngle(approachWP.getPosition(), flight.getFlightInformation().getTargetPosition());
+        double angleToTarget = MathUtils.calcAngle(approachWP.getPosition(), flight.getTargetDefinition().getTargetPosition());
         Coordinate coord = MathUtils.calcNextCoord(approachWP.getPosition(), angleToTarget, bombFinalApproachDistance);
         coord.setYPos(attackAltitude);
 		return coord;
@@ -109,9 +109,9 @@ public class GroundAttackWaypointHelper
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int bombTargetEgressDistance = productSpecificConfiguration.getBombFinalApproachDistance() / 2;
 
-        double angleFromTarget = MathUtils.calcAngle(targetFinalWP.getPosition(), flight.getFlightInformation().getTargetPosition());
+        double angleFromTarget = MathUtils.calcAngle(targetFinalWP.getPosition(), flight.getTargetDefinition().getTargetPosition());
         double angleEgressFromTarget = MathUtils.adjustAngle(angleFromTarget, 240);
-        Coordinate coord = MathUtils.calcNextCoord(flight.getFlightInformation().getTargetPosition(), angleEgressFromTarget, bombTargetEgressDistance);
+        Coordinate coord = MathUtils.calcNextCoord(flight.getTargetDefinition().getTargetPosition(), angleEgressFromTarget, bombTargetEgressDistance);
         coord.setYPos(targetIngressWP.getPosition().getYPos());
 		return coord;
 	}

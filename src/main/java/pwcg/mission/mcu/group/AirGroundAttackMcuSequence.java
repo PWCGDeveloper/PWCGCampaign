@@ -7,6 +7,7 @@ import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.mcu.FlightAttackAreaFactory;
@@ -14,20 +15,23 @@ import pwcg.mission.mcu.AttackAreaType;
 import pwcg.mission.mcu.McuAttackArea;
 import pwcg.mission.mcu.McuDeactivate;
 import pwcg.mission.mcu.McuTimer;
+import pwcg.mission.target.TargetDefinition;
 
 public class AirGroundAttackMcuSequence
 {    
     private IFlightInformation flightInformation;
-    
+    private TargetDefinition targetDefinition;
+
     private MissionBeginSelfDeactivatingCheckZone missionBeginUnit;
     private McuTimer activateTimer = new McuTimer();
     private McuTimer deactivateTimer = new McuTimer();
     protected McuDeactivate deactivateEntity = new McuDeactivate();
     private  McuAttackArea attackArea;
 
-    public AirGroundAttackMcuSequence(IFlightInformation flightInformation)
+    public AirGroundAttackMcuSequence(IFlight flight)
     {
-        this.flightInformation = flightInformation;
+        this.flightInformation = flight.getFlightInformation();
+        this.targetDefinition = flight.getTargetDefinition();
     }
     
     public void createAttackArea(int attackTime, AttackAreaType attackAreaType) throws PWCGException 
@@ -37,8 +41,8 @@ public class AirGroundAttackMcuSequence
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int attackMcuTriggerDistance = productSpecificConfiguration.getBombFinalApproachDistance();
 
-        missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone("Air Ground Check Zone", flightInformation.getTargetPosition(), attackMcuTriggerDistance);
-        attackArea = FlightAttackAreaFactory.createAttackArea(flightInformation.getFlightType(), flightInformation.getTargetPosition(), flightInformation.getAltitude(), attackTime);
+        missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone("Air Ground Check Zone", targetDefinition.getTargetPosition(), attackMcuTriggerDistance);
+        attackArea = FlightAttackAreaFactory.createAttackArea(flightInformation.getFlightType(), targetDefinition.getTargetPosition(), flightInformation.getAltitude(), attackTime);
         createSequence(attackTime) ;
         linkTargets() ;
     }
@@ -58,18 +62,18 @@ public class AirGroundAttackMcuSequence
     {
         activateTimer.setName("Attack Area Timer");      
         activateTimer.setDesc("Attack Area Timer");
-        activateTimer.setPosition(flightInformation.getTargetPosition());
+        activateTimer.setPosition(targetDefinition.getTargetPosition());
         activateTimer.setTimer(1);              
 
         deactivateEntity.setName("Attack Area Deactivate");
         deactivateEntity.setDesc("Attack Area Deactivate");
         deactivateEntity.setOrientation(new Orientation());
-        deactivateEntity.setPosition(flightInformation.getTargetPosition());             
+        deactivateEntity.setPosition(targetDefinition.getTargetPosition());             
         
         deactivateTimer.setName("Attack Area Deactivate Timer");
         deactivateTimer.setDesc("Attack Area Deactivate Timer");
         deactivateTimer.setOrientation(new Orientation());
-        deactivateTimer.setPosition(flightInformation.getTargetPosition());              
+        deactivateTimer.setPosition(targetDefinition.getTargetPosition());              
         deactivateTimer.setTimer(attackTime);              
     }
 

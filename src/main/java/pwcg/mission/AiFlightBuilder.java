@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.factory.PWCGFlightFactoryFactory;
+import pwcg.campaign.factory.PWCGFlightTypeAbstractFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
@@ -39,7 +39,7 @@ public class AiFlightBuilder
         for (Squadron squadron : aiSquadronsForMission)
         {
             FlightTypes flightType = determineFlightType(squadron);
-            flightType = NightFlightTypeConverter.getFlightType(mission, flightType);
+            flightType = NightFlightTypeConverter.getFlightType(flightType, mission.isNightMission());
 
             IFlight flight = buildFlight(flightType, squadron);
             if (flight != null)
@@ -60,7 +60,7 @@ public class AiFlightBuilder
 
     private FlightTypes determineFlightType(Squadron squadron) throws PWCGException 
     {
-        IFlightTypeFactory flightTypeFactory = PWCGFlightFactoryFactory.createFlightFactory(campaign);
+        IFlightTypeFactory flightTypeFactory = PWCGFlightTypeAbstractFactory.createFlightFactory(campaign);
         boolean isPlayerFlight = false;
         FlightTypes flightType = flightTypeFactory.getFlightType(squadron, isPlayerFlight);
         return flightType;

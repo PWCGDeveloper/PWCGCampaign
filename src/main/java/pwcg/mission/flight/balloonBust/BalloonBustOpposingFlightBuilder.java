@@ -12,6 +12,9 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.balloondefense.BalloonDefenseFlight;
 import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.target.ITargetDefinitionBuilder;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetDefinitionBuilderFactory;
 
 public class BalloonBustOpposingFlightBuilder
 {
@@ -58,13 +61,27 @@ public class BalloonBustOpposingFlightBuilder
 
     private IFlight buildOpposingFlight(Squadron opposingSquadron) throws PWCGException 
     {
+        IFlightInformation opposingFlightInformation = buildOpposingFlightInformation(opposingSquadron);
+        TargetDefinition opposingTargetDefinition = buildOpposingTargetDefintion(opposingFlightInformation);
+                
+        BalloonDefenseFlight opposingFlight = new BalloonDefenseFlight(opposingFlightInformation, opposingTargetDefinition);
+        opposingFlight.createFlight();
+        return opposingFlight;
+    }
+
+    private IFlightInformation buildOpposingFlightInformation(Squadron opposingSquadron) throws PWCGException
+    {
         boolean isPlayerFlight = false;
         FlightBuildInformation flightBuildInformation = new FlightBuildInformation(this.playerFlightInformation.getMission(), opposingSquadron, isPlayerFlight);        
         IFlightInformation opposingFlightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.BALLOON_DEFENSE);
-        opposingFlightInformation.getTargetDefinition().setTargetPosition(balloonUnit.getPosition());
-        
-        BalloonDefenseFlight opposingFlight = new BalloonDefenseFlight(opposingFlightInformation);
-        opposingFlight.createFlight();
-        return opposingFlight;
+        return opposingFlightInformation;
+    }
+
+    private TargetDefinition buildOpposingTargetDefintion(IFlightInformation opposingFlightInformation) throws PWCGException
+    {
+        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(opposingFlightInformation);
+        TargetDefinition opposingTargetDefinition =  targetDefinitionBuilder.buildTargetDefinition();
+        opposingTargetDefinition.setTargetPosition(balloonUnit.getPosition());
+        return opposingTargetDefinition;
     }
 }

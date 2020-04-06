@@ -34,14 +34,14 @@ public class IngressWaypointHalfWayToTarget implements IIngressWaypoint
 
     private Coordinate getIngressWaypointNearTarget() throws PWCGException 
     {
-        double angleToTarget = MathUtils.calcAngle(flight.getFlightHomePosition(), flight.getFlightInformation().getTargetPosition());
-        double distanceToTarget = MathUtils.calcDist(flight.getFlightHomePosition(), flight.getFlightInformation().getTargetPosition());
+        double angleToTarget = MathUtils.calcAngle(flight.getFlightHomePosition(), flight.getTargetDefinition().getTargetPosition());
+        double distanceToTarget = MathUtils.calcDist(flight.getFlightHomePosition(), flight.getTargetDefinition().getTargetPosition());
         Coordinate ingressCoordinate = MathUtils.calcNextCoord(flight.getFlightHomePosition(), angleToTarget, distanceToTarget / 2);
         
-        double distance = MathUtils.calcDist(flight.getFlightInformation().getTargetPosition(), ingressCoordinate);
+        double distance = MathUtils.calcDist(flight.getTargetDefinition().getTargetPosition(), ingressCoordinate);
         if (isIngressTooCloseToTarget(distance))
         {
-            ingressCoordinate = moveIngressZoneAwayFromTarget(ingressCoordinate, flight.getFlightInformation().getTargetPosition());
+            ingressCoordinate = moveIngressZoneAwayFromTarget(ingressCoordinate, flight.getTargetDefinition().getTargetPosition());
         }
         
         return ingressCoordinate;

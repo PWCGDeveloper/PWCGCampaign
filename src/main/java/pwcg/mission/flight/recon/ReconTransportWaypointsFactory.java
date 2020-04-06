@@ -62,10 +62,10 @@ public class ReconTransportWaypointsFactory
         {
     	    GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
     	    List<Bridge> bridges = groupData.getBridgeFinder().findBridgesForSideWithinRadius(
-    	            enemycountry.getSide(), flight.getCampaign().getDate(), flight.getFlightInformation().getTargetPosition(), maxRadius);
+    	            enemycountry.getSide(), flight.getCampaign().getDate(), flight.getTargetDefinition().getTargetPosition(), maxRadius);
     	    
     	    List<Block> trainStations = groupData.getRailroadStationFinder().getTrainPositionWithinRadiusBySide(
-    	            enemycountry.getSide(), flight.getCampaign().getDate(), flight.getFlightInformation().getTargetPosition(), maxRadius);
+    	            enemycountry.getSide(), flight.getCampaign().getDate(), flight.getTargetDefinition().getTargetPosition(), maxRadius);
     	    
             allFixedPositionsInRadius.addAll(bridges);
             allFixedPositionsInRadius.addAll(trainStations);
@@ -84,7 +84,7 @@ public class ReconTransportWaypointsFactory
         Map<String, FixedPosition> locationsIncluded = new HashMap<String, FixedPosition>();
 
         List <FixedPosition> remainingFixedPositions = allFixedPositionsInRadius;
-        Coordinate lastCoord = flight.getFlightInformation().getTargetPosition().copy();
+        Coordinate lastCoord = flight.getTargetDefinition().getTargetPosition().copy();
         for (int i = 0; i < numWaypoints; ++i)
         {
             int index = getNextFixedPosition(remainingFixedPositions, lastCoord, locationsIncluded);

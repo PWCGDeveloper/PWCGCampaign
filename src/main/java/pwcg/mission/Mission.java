@@ -50,10 +50,11 @@ public class Mission
     private MissionProfile missionProfile = MissionProfile.DAY_TACTICAL_MISSION;
     private MissionOptions missionOptions;
 
-    public Mission(Campaign campaign, MissionHumanParticipants participatingPlayers, CoordinateBox missionBorders) throws PWCGException
+    public Mission(Campaign campaign, MissionProfile missionProfile, MissionHumanParticipants participatingPlayers, CoordinateBox missionBorders) throws PWCGException
     {
         this.campaign = campaign;
         this.participatingPlayers = participatingPlayers;
+        this.missionProfile = missionProfile;
         this.missionBorders = missionBorders;
     	
         initialize();
@@ -76,17 +77,9 @@ public class Mission
 
     public void generate(FlightTypes overrideFlightType) throws PWCGException 
     {
-        generateProfile();
+        validate();
         generateFlights(overrideFlightType);
     }
-    
-    public void generateProfile() throws PWCGException 
-    {
-        validate();
-        MissionProfileGenerator missionProfileGenerator = new MissionProfileGenerator(campaign, participatingPlayers);
-        missionProfile = missionProfileGenerator.generateMissionProfile();
-    }
-    
 
     private void generateFlights(FlightTypes overrideFlightType) throws PWCGException 
     {
@@ -121,6 +114,11 @@ public class Mission
         vehicleSetBuilder = new VehicleSetBuilderComprehensive();
         vehicleSetBuilder.makeOneOfEachType();
         vehicleSetBuilder.scatterAroundPosition(new Coordinate(100, 0, 100));
+    }
+    
+    public double getPlayerDistanceToTarget() throws PWCGException
+    {
+        return participatingPlayers.getPlayerDistanceToTarget(this);
     }
     
     private void createAmbientUnits() throws PWCGException, PWCGException
@@ -313,12 +311,7 @@ public class Mission
 
 	public boolean isNightMission() 
 	{
-	    if (missionProfile == MissionProfile.NIGHT_TACTICAL_MISSION || missionProfile == MissionProfile.NIGHT_STRATEGIC_MISSION)
-	    {
-	        return true;
-	    }
-	    
-		return false;
+		return missionProfile.isNightMission();
 	}
 
     public MissionProfile getMissionProfile()

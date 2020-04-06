@@ -1,8 +1,10 @@
 package pwcg.mission.target;
 
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.target.locator.TargetLocatorAttack;
@@ -28,12 +30,16 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
 
     private TargetType determineTargetType() throws PWCGException
     {
-        TargetType targetType = determinePredefinedTacticalTarget(flightInformation.getFlightType());
-        if (targetType == TargetType.TARGET_ANY)
+        TargetType targetType = TargetType.TARGET_AAA;
+        if (flightInformation.isPlayerFlight())
         {
-            Coordinate targetSearchStartLocation = flightInformation.getTargetSearchStartLocation();
-            TargetTypeAvailabilityInputs targetTypeAvailabilityInputs = createTargetingInputs(targetSearchStartLocation);
-            targetType = createTargetType(targetTypeAvailabilityInputs);
+            targetType = determinePredefinedTacticalTarget(flightInformation.getFlightType());
+            if (targetType == TargetType.TARGET_ANY)
+            {
+                Coordinate targetSearchStartLocation = flightInformation.getTargetSearchStartLocation();
+                TargetTypeAvailabilityInputs targetTypeAvailabilityInputs = createTargetingInputs(targetSearchStartLocation);
+                targetType = createTargetType(targetTypeAvailabilityInputs);
+            }
         }
         return targetType;
     }
@@ -97,7 +103,7 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
         }
         else if (targetType == TargetType.TARGET_ASSAULT)
         {
-            TargetDefinitionBuilderUtils.chooseSides(flightInformation);
+            chooseSides();
         }
         else
         {
@@ -105,8 +111,7 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
             targetDefinition.setTargetCountry(flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate()));
         }
         
-        targetDefinition.setTargetName(TargetDefinitionBuilderUtils.buildTargetName(
-                targetDefinition.getTargetCountry(), targetType));
+        targetDefinition.setTargetName(buildTargetName( targetDefinition.getTargetCountry(), targetType));
     }
 
     private TargetTypeAvailabilityInputs createTargetingInputs(Coordinate targetSearchStartLocation) throws PWCGException
@@ -122,4 +127,27 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
         TargetType targetType = targetTypeGenerator.createTargetType();
         return targetType;
     }
+    
+    private void chooseSides() throws PWCGException
+    {
+        int roll = RandomNumberGenerator.getRandom(100);
+        if (roll < 60)
+        {
+            targetDefinition.setAttackingCountry(flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate()));
+            targetDefinition.setTargetCountry(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()));
+        }
+        else
+        {
+            targetDefinition.setTargetCountry(flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate()));
+            targetDefinition.setAttackingCountry(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()));
+        }
+    }
+    
+    private String buildTargetName(ICountry targetCountry, TargetType targetType)
+    {
+        String nationality = targetCountry.getNationality();
+        String name = nationality + " " + targetType.getTargetName();
+        return name;
+    }
+
 }

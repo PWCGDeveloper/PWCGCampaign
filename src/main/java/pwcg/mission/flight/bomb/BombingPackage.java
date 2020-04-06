@@ -10,10 +10,14 @@ import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.ground.factory.TargetFactory;
 import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.target.ITargetDefinitionBuilder;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetDefinitionBuilderFactory;
 
 public class BombingPackage implements IFlightPackage
 {
     private IFlightInformation flightInformation;
+    private TargetDefinition targetDefinition;
     private FlightTypes flightType;
 
     public BombingPackage(FlightTypes flightType)
@@ -25,6 +29,7 @@ public class BombingPackage implements IFlightPackage
     public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
         this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, flightType);
+        this.targetDefinition = buildTargetDefintion();
 
 	    IFlight bombingFlight = createPackageTacticalTarget ();
 		return bombingFlight;
@@ -43,15 +48,22 @@ public class BombingPackage implements IFlightPackage
 
     private IFlight makeBombingFlight(Coordinate targetCoordinates) throws PWCGException
     {
-        BombingFlight bombingFlight = new BombingFlight (flightInformation);
+        BombingFlight bombingFlight = new BombingFlight (flightInformation, targetDefinition);
 	    bombingFlight.createFlight();
 	    return bombingFlight;
     }
 
     private IGroundUnitCollection createGroundUnitsForFlight() throws PWCGException
     {
-        TargetFactory targetBuilder = new TargetFactory(flightInformation);
+        TargetFactory targetBuilder = new TargetFactory(flightInformation, targetDefinition);
         targetBuilder.buildTarget();
-        return targetBuilder.getGroundUnits();
+        IGroundUnitCollection groundUnitCollection =  targetBuilder.getGroundUnits();
+        return groundUnitCollection;
+    }
+
+    private TargetDefinition buildTargetDefintion() throws PWCGException
+    {
+        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
+        return  targetDefinitionBuilder.buildTargetDefinition();
     }
 }

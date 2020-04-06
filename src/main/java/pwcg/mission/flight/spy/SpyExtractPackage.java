@@ -9,10 +9,14 @@ import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.ground.factory.TargetFactory;
 import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.target.ITargetDefinitionBuilder;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetDefinitionBuilderFactory;
 
 public class SpyExtractPackage implements IFlightPackage
 {
-    protected IFlightInformation flightInformation;
+    private IFlightInformation flightInformation;
+    private TargetDefinition targetDefinition;
 
     public SpyExtractPackage()
     {
@@ -22,8 +26,9 @@ public class SpyExtractPackage implements IFlightPackage
     public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
         this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.SPY_EXTRACT);
+        this.targetDefinition = buildTargetDefintion();
 
-        SpyExtractFlight spyFlight = new SpyExtractFlight (flightInformation);
+        SpyExtractFlight spyFlight = new SpyExtractFlight (flightInformation, targetDefinition);
         spyFlight.createFlight();
 
         IGroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
@@ -34,8 +39,14 @@ public class SpyExtractPackage implements IFlightPackage
 
     private IGroundUnitCollection createGroundUnitsForFlight() throws PWCGException
     {
-        TargetFactory targetBuilder = new TargetFactory(flightInformation);
+        TargetFactory targetBuilder = new TargetFactory(flightInformation, targetDefinition);
         targetBuilder.buildTarget();
         return targetBuilder.getGroundUnits();
+    }
+
+    private TargetDefinition buildTargetDefintion() throws PWCGException
+    {
+        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
+        return  targetDefinitionBuilder.buildTargetDefinition();
     }
 }

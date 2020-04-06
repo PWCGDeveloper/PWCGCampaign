@@ -12,12 +12,13 @@ import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory.IngressWaypoint
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetFactory;
 import pwcg.mission.mcu.McuWaypoint;
+import pwcg.mission.target.TargetDefinition;
 
 public class BalloonDefenseFlight extends Flight implements IFlight
 {
-    public BalloonDefenseFlight(IFlightInformation flightInformation)
+    public BalloonDefenseFlight(IFlightInformation flightInformation, TargetDefinition targetDefinition)
     {
-        super (flightInformation);
+        super(flightInformation, targetDefinition);
     }
 
     public void createFlight() throws PWCGException

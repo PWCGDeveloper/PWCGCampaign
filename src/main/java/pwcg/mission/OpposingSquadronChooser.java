@@ -60,7 +60,7 @@ public class OpposingSquadronChooser
     {        
         List<Squadron> possibleOpposingSquadsByRole = PWCGContext.getInstance().getSquadronManager().getNearestSquadronsByRole(
                 playerFlightInformation.getMission().getCampaign(), 
-                playerFlightInformation.getTargetPosition().copy(), 
+                playerFlightInformation.getTargetSearchStartLocation(), 
                 1, 
                 250000.0, 
                 opposingRoles, 

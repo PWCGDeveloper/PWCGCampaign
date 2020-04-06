@@ -11,7 +11,7 @@ import pwcg.mission.flight.factory.FCFlightTypeFactory;
 import pwcg.mission.flight.factory.FCFlightTypeSpecialFactory;
 import pwcg.mission.flight.factory.IFlightTypeFactory;
 
-public class PWCGFlightFactoryFactory
+public class PWCGFlightTypeAbstractFactory
 {
     
     public static IFlightTypeFactory createFlightFactory(Campaign campaign)

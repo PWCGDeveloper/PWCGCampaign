@@ -14,6 +14,7 @@ import pwcg.mission.flight.waypoint.IWaypointPackage;
 import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointPackage;
 import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.target.TargetDefinition;
 
 public abstract class Flight implements IFlight
 {
@@ -24,11 +25,13 @@ public abstract class Flight implements IFlight
     private IFlightPlayerContact flightPlayerContact = new FlightPlayerContact();
     private IWaypointPackage waypointPackage;
     private VirtualWaypointPackage virtualWaypointPackage;
+    private TargetDefinition targetDefinition = new TargetDefinition();
 
 
-    public Flight(IFlightInformation flightInformation)
+    public Flight(IFlightInformation flightInformation, TargetDefinition targetDefinition)
     {
         this.flightInformation = flightInformation;
+        this.targetDefinition = targetDefinition;
     }
     
     public void initialize(IFlight flight) throws PWCGException
@@ -187,5 +190,15 @@ public abstract class Flight implements IFlight
     public double getClosestContactWithPlayerDistance()
     {
         return flightPlayerContact.getClosestContactWithPlayerDistance();
+    }
+
+    public TargetDefinition getTargetDefinition()
+    {
+        return targetDefinition;
+    }
+
+    public void setTargetDefinition(TargetDefinition targetDefinition)
+    {
+        this.targetDefinition = targetDefinition;
     }
 }

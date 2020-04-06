@@ -97,10 +97,11 @@ public class TargetBuilderTest
         Mockito.when(flightInformation.getMission()).thenReturn(mission);
         Mockito.when(flightInformation.getSquadron()).thenReturn(squadron);
         Mockito.when(flightInformation.getCampaign()).thenReturn(campaign);
-        Mockito.when(flightInformation.getTargetDefinition()).thenReturn(targetDefinition);
         
         Mockito.when(flightInformation.isPlayerFlight()).thenReturn(true);
         
+        Mockito.when(playerFlight.getTargetDefinition()).thenReturn(targetDefinition);
+
         Mockito.when(mission.getMissionFlightBuilder()).thenReturn(missionFlightBuilder);
         Mockito.when(missionFlightBuilder.getPlayerFlights()).thenReturn(playerFlights);
         Mockito.when(squadron.getCountry()).thenReturn(country);
@@ -117,7 +118,7 @@ public class TargetBuilderTest
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TargetType.TARGET_SHIPPING);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.ANTI_SHIPPING_BOMB);
-        TargetFactory targetBuilder = new TargetFactory(flightInformation);
+        TargetFactory targetBuilder = new TargetFactory(flightInformation, targetDefinition);
         targetBuilder.buildTarget();
         IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getGroundUnits().size() == 1);
@@ -140,7 +141,7 @@ public class TargetBuilderTest
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TargetType.TARGET_ASSAULT);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
-        TargetFactory targetBuilder = new TargetFactory(flightInformation);
+        TargetFactory targetBuilder = new TargetFactory(flightInformation, targetDefinition);
         targetBuilder.buildTarget();
         IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getGroundUnits().size() > 0);
@@ -168,7 +169,7 @@ public class TargetBuilderTest
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TargetType.TARGET_AAA);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.LOW_ALT_BOMB);
-        TargetFactory targetBuilder = new TargetFactory(flightInformation);
+        TargetFactory targetBuilder = new TargetFactory(flightInformation, targetDefinition);
         targetBuilder.buildTarget();
         IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getGroundUnits().size() == 1);
@@ -184,7 +185,7 @@ public class TargetBuilderTest
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TargetType.TARGET_TRANSPORT);
         Mockito.when(targetDefinition.getAttackingSquadron()).thenReturn(squadron);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
-        TargetFactory targetBuilder = new TargetFactory(flightInformation);
+        TargetFactory targetBuilder = new TargetFactory(flightInformation, targetDefinition);
         targetBuilder.buildTarget();
         IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getGroundUnits().size() == 2);
@@ -213,7 +214,7 @@ public class TargetBuilderTest
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TargetType.TARGET_TRAIN);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
-        TargetFactory targetBuilder = new TargetFactory(flightInformation);
+        TargetFactory targetBuilder = new TargetFactory(flightInformation, targetDefinition);
         targetBuilder.buildTarget();
         IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getGroundUnits().size() == 1);
@@ -228,7 +229,7 @@ public class TargetBuilderTest
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TargetType.TARGET_ARTILLERY);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.GROUND_ATTACK);
-        TargetFactory targetBuilder = new TargetFactory(flightInformation);
+        TargetFactory targetBuilder = new TargetFactory(flightInformation, targetDefinition);
         targetBuilder.buildTarget();
         IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getGroundUnits().size() == 1);
@@ -243,7 +244,7 @@ public class TargetBuilderTest
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TargetType.TARGET_AIRFIELD);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
-        TargetFactory targetBuilder = new TargetFactory(flightInformation);
+        TargetFactory targetBuilder = new TargetFactory(flightInformation, targetDefinition);
         targetBuilder.buildTarget();
         IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getGroundUnits().size() == 1);
@@ -256,7 +257,7 @@ public class TargetBuilderTest
     @Test
     public void createBalloonDefenseTest()  throws PWCGException
     {
-        BalloonUnitBuilder groundUnitBuilderBalloonDefense = new BalloonUnitBuilder(mission, flightInformation.getTargetDefinition());
+        BalloonUnitBuilder groundUnitBuilderBalloonDefense = new BalloonUnitBuilder(mission, playerFlight.getTargetDefinition());
         IGroundUnitCollection balloonUnit = groundUnitBuilderBalloonDefense.createBalloonUnit(CountryFactory.makeCountryByCountry(Country.GERMANY));
         
         assert(balloonUnit.getGroundUnits().size() == 3);
@@ -290,7 +291,7 @@ public class TargetBuilderTest
     @Test
     public void createBalloonBustTest()  throws PWCGException
     {
-        BalloonUnitBuilder groundUnitBuilderBalloonDefense = new BalloonUnitBuilder(mission, flightInformation.getTargetDefinition());
+        BalloonUnitBuilder groundUnitBuilderBalloonDefense = new BalloonUnitBuilder(mission, playerFlight.getTargetDefinition());
         IGroundUnitCollection balloonUnit = groundUnitBuilderBalloonDefense.createBalloonUnit(CountryFactory.makeCountryByCountry(Country.RUSSIA));
 
         assert(balloonUnit.getGroundUnits().size() == 3);
@@ -326,7 +327,7 @@ public class TargetBuilderTest
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TargetType.TARGET_DRIFTER);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.DIVE_BOMB);
-        TargetFactory targetBuilder = new TargetFactory(flightInformation);
+        TargetFactory targetBuilder = new TargetFactory(flightInformation, targetDefinition);
         targetBuilder.buildTarget();
         IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getGroundUnits().size() == 2);
@@ -355,7 +356,7 @@ public class TargetBuilderTest
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TargetType.TARGET_PORT);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
-        TargetFactory targetBuilder = new TargetFactory(flightInformation);
+        TargetFactory targetBuilder = new TargetFactory(flightInformation, targetDefinition);
         targetBuilder.buildTarget();
         IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getGroundUnits().size() == 1);
@@ -371,7 +372,7 @@ public class TargetBuilderTest
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TargetType.TARGET_RAIL);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
-        TargetFactory targetBuilder = new TargetFactory(flightInformation);
+        TargetFactory targetBuilder = new TargetFactory(flightInformation, targetDefinition);
         targetBuilder.buildTarget();
         IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getGroundUnits().size() == 1);
@@ -386,7 +387,7 @@ public class TargetBuilderTest
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TargetType.TARGET_FACTORY);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
-        TargetFactory targetBuilder = new TargetFactory(flightInformation);
+        TargetFactory targetBuilder = new TargetFactory(flightInformation, targetDefinition);
         targetBuilder.buildTarget();
         IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getGroundUnits().size() == 1);
@@ -401,7 +402,7 @@ public class TargetBuilderTest
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TargetType.TARGET_CITY);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
-        TargetFactory targetBuilder = new TargetFactory(flightInformation);
+        TargetFactory targetBuilder = new TargetFactory(flightInformation, targetDefinition);
         targetBuilder.buildTarget();
         IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getGroundUnits().size() == 1);

@@ -16,6 +16,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
+import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.testutils.CampaignCache;
@@ -35,7 +36,7 @@ public class FlightCrewBuilderTest
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.KG53_PROFILE);
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.GROUND_ATTACK);
+        mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.GROUND_ATTACK, MissionProfile.DAY_TACTICAL_MISSION);
     }
 
     @Test

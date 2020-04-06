@@ -12,12 +12,13 @@ import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory.IngressWaypoint
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetFactory;
 import pwcg.mission.mcu.McuWaypoint;
+import pwcg.mission.target.TargetDefinition;
 
 public class ScrambleOpposingGroundAttackFlight extends Flight implements IFlight
 {	
-    public ScrambleOpposingGroundAttackFlight(IFlightInformation flightInformation)
+    public ScrambleOpposingGroundAttackFlight(IFlightInformation flightInformation, TargetDefinition targetDefinition)
     {
-        super(flightInformation);
+        super(flightInformation, targetDefinition);
     }
 
     public void createFlight() throws PWCGException

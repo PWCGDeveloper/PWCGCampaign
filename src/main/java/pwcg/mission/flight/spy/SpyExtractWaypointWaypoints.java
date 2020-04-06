@@ -41,7 +41,7 @@ public class SpyExtractWaypointWaypoints
 
     private Coordinate getSpyExtractLocation(Coordinate startPosition) throws PWCGException
     {
-		Coordinate pickupLocation = flight.getFlightInformation().getTargetPosition().copy();
+		Coordinate pickupLocation = flight.getTargetDefinition().getTargetPosition().copy();
         pickupLocation.setYPos(flight.getFlightInformation().getAltitude());
         return pickupLocation;
     }

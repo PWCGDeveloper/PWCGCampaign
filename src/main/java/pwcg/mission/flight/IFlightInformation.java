@@ -11,7 +11,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.plane.PlaneMcu;
-import pwcg.mission.target.TargetDefinition;
 
 public interface IFlightInformation
 {
@@ -32,11 +31,7 @@ public interface IFlightInformation
 
     boolean isPlayerRelatedFlight();
 
-    Coordinate getTargetPosition();
-
     List<SquadronMember> getFlightParticipatingPlayers();
-
-    TargetDefinition getTargetDefinition();
 
     boolean isVirtual();
 

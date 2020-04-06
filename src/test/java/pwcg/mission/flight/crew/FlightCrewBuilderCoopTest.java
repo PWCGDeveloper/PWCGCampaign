@@ -17,6 +17,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionHumanParticipants;
+import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.testutils.CampaignCache;
@@ -48,7 +49,7 @@ public class FlightCrewBuilderCoopTest
     	}
     	
         MissionGenerator missionGenerator = new MissionGenerator(coopCampaign);
-        Mission mission = missionGenerator.makeMissionFromFlightType(participatingPlayers, FlightTypes.GROUND_ATTACK);
+        Mission mission = missionGenerator.makeMissionFromFlightType(participatingPlayers, FlightTypes.GROUND_ATTACK, MissionProfile.DAY_TACTICAL_MISSION);
         
         FlightInformation flightInformation = new FlightInformation(mission);
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.COOP_COMPETITIVE_PROFILE.getSquadronId());
@@ -89,7 +90,7 @@ public class FlightCrewBuilderCoopTest
     	}
 
         MissionGenerator missionGenerator = new MissionGenerator(coopCampaign);
-        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(coopCampaign), FlightTypes.GROUND_ATTACK);
+        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(coopCampaign), FlightTypes.GROUND_ATTACK, MissionProfile.DAY_TACTICAL_MISSION);
 
         FlightInformation flightInformation = new FlightInformation(mission);
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.COOP_COMPETITIVE_PROFILE.getSquadronId());
@@ -131,7 +132,7 @@ public class FlightCrewBuilderCoopTest
     	}
 
         MissionGenerator missionGenerator = new MissionGenerator(coopCampaign);
-        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(coopCampaign), FlightTypes.GROUND_ATTACK);
+        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(coopCampaign), FlightTypes.GROUND_ATTACK, MissionProfile.DAY_TACTICAL_MISSION);
 
         FlightInformation flightInformation = new FlightInformation(mission);
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(10131132);

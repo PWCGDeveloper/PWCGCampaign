@@ -8,14 +8,15 @@ import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.initialposition.FlightPositionSetter;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetFactory;
+import pwcg.mission.target.TargetDefinition;
 
 public class EscortForPlayerFlight extends Flight implements IFlight
 {
     private IFlight playerFlightThatNeedsEscort;
 
-    public EscortForPlayerFlight(IFlightInformation flightInformation, IFlight playerFlightThatNeedsEscort)
+    public EscortForPlayerFlight(IFlightInformation flightInformation, TargetDefinition targetDefinition, IFlight playerFlightThatNeedsEscort)
     {
-        super(flightInformation);
+        super(flightInformation, targetDefinition);
         this.playerFlightThatNeedsEscort = playerFlightThatNeedsEscort;                
     }
 

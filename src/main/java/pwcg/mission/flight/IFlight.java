@@ -10,6 +10,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.flight.waypoint.IVirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.IWaypointPackage;
 import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.target.TargetDefinition;
 
 public interface IFlight
 {
@@ -57,4 +58,6 @@ public interface IFlight
 
     // From FlightClosestContact
     double getClosestContactWithPlayerDistance();
+    
+    TargetDefinition getTargetDefinition();
 }

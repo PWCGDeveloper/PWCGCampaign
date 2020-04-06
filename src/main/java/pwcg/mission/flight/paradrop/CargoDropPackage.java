@@ -10,10 +10,14 @@ import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.ground.factory.TargetFactory;
 import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.target.ITargetDefinitionBuilder;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetDefinitionBuilderFactory;
 
 public class CargoDropPackage implements IFlightPackage
 {
     private IFlightInformation flightInformation;
+    private TargetDefinition targetDefinition;
 
     public CargoDropPackage()
     {
@@ -23,6 +27,7 @@ public class CargoDropPackage implements IFlightPackage
     public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
         this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.CARGO_DROP);
+        this.targetDefinition = buildTargetDefintion();
 
         IFlight paraDropFlight = createPackageTacticalTarget ();
         return paraDropFlight;
@@ -41,15 +46,21 @@ public class CargoDropPackage implements IFlightPackage
 
     private IFlight makeParaDropFlight(Coordinate targetCoordinates) throws PWCGException
     {
-        ParaDropFlight paraDropFlight = new ParaDropFlight (flightInformation);
+        ParaDropFlight paraDropFlight = new ParaDropFlight (flightInformation, targetDefinition);
         paraDropFlight.createFlight();
         return paraDropFlight;
     }
 
     private IGroundUnitCollection createGroundUnitsForFlight() throws PWCGException
     {
-        TargetFactory targetBuilder = new TargetFactory(flightInformation);
+        TargetFactory targetBuilder = new TargetFactory(flightInformation, targetDefinition);
         targetBuilder.buildTarget();
         return targetBuilder.getGroundUnits();
+    }
+
+    private TargetDefinition buildTargetDefintion() throws PWCGException
+    {
+        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
+        return  targetDefinitionBuilder.buildTargetDefinition();
     }
 }

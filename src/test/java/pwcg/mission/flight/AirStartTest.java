@@ -11,6 +11,7 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
+import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.patrol.PatrolFlight;
 import pwcg.mission.flight.validate.AirStartFlightValidator;
 import pwcg.mission.flight.validate.EscortForPlayerValidator;
@@ -42,7 +43,7 @@ public class AirStartTest
 	public void patrolFlightTest() throws PWCGException
 	{
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.PATROL);
+        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.PATROL, MissionProfile.DAY_TACTICAL_MISSION);
         PatrolFlight flight = (PatrolFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);

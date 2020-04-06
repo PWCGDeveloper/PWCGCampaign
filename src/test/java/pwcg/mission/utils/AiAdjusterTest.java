@@ -12,6 +12,7 @@ import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
+import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
@@ -38,7 +39,7 @@ public class AiAdjusterTest
         campaign.getCampaignConfigManager().setParam(ConfigItemKeys.BomberAISkillAdjustmentKey, Integer.valueOf(0).toString());
         
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT);
+        mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT, MissionProfile.DAY_TACTICAL_MISSION);
         mission.finalizeMission();
 
         for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
@@ -64,7 +65,7 @@ public class AiAdjusterTest
         campaign.getCampaignConfigManager().setParam(ConfigItemKeys.BomberAISkillAdjustmentKey, Integer.valueOf(0).toString());
         
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT);
+        mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT, MissionProfile.DAY_TACTICAL_MISSION);
         mission.finalizeMission();
 
         for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
@@ -90,7 +91,7 @@ public class AiAdjusterTest
         campaign.getCampaignConfigManager().setParam(ConfigItemKeys.BomberAISkillAdjustmentKey, Integer.valueOf(4).toString());
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT);
+        mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT, MissionProfile.DAY_TACTICAL_MISSION);
         mission.finalizeMission();
 
         for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
@@ -125,7 +126,7 @@ public class AiAdjusterTest
         campaign.getCampaignConfigManager().setParam(ConfigItemKeys.BomberAISkillAdjustmentKey, Integer.valueOf(1).toString());
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT);
+        mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT, MissionProfile.DAY_TACTICAL_MISSION);
         mission.finalizeMission();
 
         for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())

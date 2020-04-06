@@ -11,11 +11,14 @@ import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.builder.AAAUnitBuilder;
 import pwcg.mission.ground.builder.SearchLightBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetDefinitionBuilderFactory;
 
 public class StrategicBombingPackage implements IFlightPackage
 {
     private IFlightInformation flightInformation;
+    private TargetDefinition targetDefinition;
 
     public StrategicBombingPackage()
     {
@@ -25,17 +28,18 @@ public class StrategicBombingPackage implements IFlightPackage
     public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
         this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.STRATEGIC_INTERCEPT);
+        this.targetDefinition = buildTargetDefintion();
 
         BombingFlight bombingFlight = createBombingFlight();
 
-        createAAA(flightInformation.getTargetDefinition(), bombingFlight);
-        createSearchlight(flightInformation.getTargetDefinition(), bombingFlight);
+        createAAA(targetDefinition, bombingFlight);
+        createSearchlight(targetDefinition, bombingFlight);
         return bombingFlight;
     }
 
     private BombingFlight createBombingFlight() throws PWCGException
     {
-        BombingFlight bombingFlight = new BombingFlight(flightInformation);
+        BombingFlight bombingFlight = new BombingFlight(flightInformation, targetDefinition);
         bombingFlight.createFlight();
         return bombingFlight;
     }
@@ -55,5 +59,11 @@ public class StrategicBombingPackage implements IFlightPackage
             IGroundUnitCollection searchLightGroup = groundUnitBuilder.createSearchLightGroup(targetDefinition);
             bombingFlight.addLinkedGroundUnit(searchLightGroup);
         }
+    }
+
+    private TargetDefinition buildTargetDefintion() throws PWCGException
+    {
+        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
+        return  targetDefinitionBuilder.buildTargetDefinition();
     }
 }

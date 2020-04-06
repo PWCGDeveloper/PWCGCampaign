@@ -18,10 +18,14 @@ import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.ground.builder.BalloonUnitBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.target.ITargetDefinitionBuilder;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetDefinitionBuilderFactory;
 
 public class BalloonBustPackage implements IFlightPackage
 {
     private IFlightInformation flightInformation;
+    private TargetDefinition targetDefinition;
     private IGroundUnitCollection balloonUnit;
 
     public BalloonBustPackage()
@@ -32,9 +36,10 @@ public class BalloonBustPackage implements IFlightPackage
     public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
         this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.BALLOON_BUST);
+        this.targetDefinition = buildTargetDefintion();
 
         buildBalloon();
-        BalloonBustFlight balloonBustFlight = buildBalloonBustFllght();
+        BalloonBustFlight balloonBustFlight = buildBalloonBustFlight();
 		buildOpposingFlights(balloonBustFlight);
 		
 		return balloonBustFlight;
@@ -49,12 +54,12 @@ public class BalloonBustPackage implements IFlightPackage
                         Role.ROLE_FIGHTER, 
                         flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()).getSide().getOppositeSide());
         ICountry balloonCountry = determineBalloonCountry(enemySide, enemyScoutSquadron);
-        balloonUnit = createBalloonUnit(flightInformation.getTargetPosition(), balloonCountry);
+        balloonUnit = createBalloonUnit(targetDefinition.getTargetPosition(), balloonCountry);
     }
 
-    private BalloonBustFlight buildBalloonBustFllght() throws PWCGException
+    private BalloonBustFlight buildBalloonBustFlight() throws PWCGException
     {
-        BalloonBustFlight balloonBust = new BalloonBustFlight (flightInformation);
+        BalloonBustFlight balloonBust = new BalloonBustFlight (flightInformation, targetDefinition);
         balloonBust.addLinkedGroundUnit(balloonUnit);
         balloonBust.createFlight();
         return balloonBust;
@@ -62,13 +67,19 @@ public class BalloonBustPackage implements IFlightPackage
 
     private IGroundUnitCollection createBalloonUnit(Coordinate balloonPosition, ICountry balloonCountry) throws PWCGException
     {
-        BalloonUnitBuilder groundUnitBuilderBalloonDefense = new BalloonUnitBuilder(flightInformation.getMission(), flightInformation.getTargetDefinition());
+        BalloonUnitBuilder groundUnitBuilderBalloonDefense = new BalloonUnitBuilder(flightInformation.getMission(), targetDefinition);
         IGroundUnitCollection balloonUnit = groundUnitBuilderBalloonDefense.createBalloonUnit(balloonCountry);
         if (balloonUnit == null)
         {
           System.out.println("oops");  
         }
         return balloonUnit;
+    }
+
+    private TargetDefinition buildTargetDefintion() throws PWCGException
+    {
+        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
+        return  targetDefinitionBuilder.buildTargetDefinition();
     }
 
     private ICountry determineBalloonCountry(Side enemySide, Squadron enemyScoutSquadron) throws PWCGException

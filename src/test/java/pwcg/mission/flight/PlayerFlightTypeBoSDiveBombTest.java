@@ -9,6 +9,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
+import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.divebomb.DiveBombingFlight;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.mission.flight.validate.GroundUnitValidator;
@@ -41,7 +42,7 @@ public class PlayerFlightTypeBoSDiveBombTest
     public void diveBombFlightTest() throws PWCGException
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.DIVE_BOMB);
+        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.DIVE_BOMB, MissionProfile.DAY_TACTICAL_MISSION);
         DiveBombingFlight flight = (DiveBombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
@@ -51,7 +52,7 @@ public class PlayerFlightTypeBoSDiveBombTest
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
-        validateTargetDefinition(flight.getFlightInformation().getTargetDefinition());
+        validateTargetDefinition(flight.getTargetDefinition());
         assert (flight.getFlightType() == FlightTypes.DIVE_BOMB);
         
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();

@@ -8,7 +8,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.FormationGenerator;
 import pwcg.mission.flight.waypoint.WaypointAction;
@@ -91,14 +91,14 @@ public class MissionPointAttackSet extends MissionPointSetMultipleWaypointSet im
     }
 
     @Override
-    public IMissionPointSet duplicateWithOffset(IFlightInformation flightInformation, int positionInFormation) throws PWCGException
+    public IMissionPointSet duplicateWithOffset(IFlight flight, int positionInFormation) throws PWCGException
     {
         MissionPointAttackSet duplicate = new MissionPointAttackSet();
         duplicate.waypointsBefore = super.duplicateBeginWaypoints(positionInFormation);
         duplicate.waypointsAfter = super.duplicateAfterWaypoints(positionInFormation);
 
-        duplicate.attackSequence = new AirGroundAttackMcuSequence(flightInformation);
-        duplicate.attackSequence.createAttackArea(180, FlightTypes.getAttackAreaTypeByFlightyType(flightInformation.getFlightType()));
+        duplicate.attackSequence = new AirGroundAttackMcuSequence(flight);
+        duplicate.attackSequence.createAttackArea(180, FlightTypes.getAttackAreaTypeByFlightyType(flight.getFlightInformation().getFlightType()));
         Coordinate newPosition = FormationGenerator.generatePositionForPlaneInFormation(new Orientation(), attackSequence.getPosition(), positionInFormation);
         duplicate.attackSequence.changeAttackAreaPosition (newPosition);
         

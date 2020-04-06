@@ -7,4 +7,15 @@ public enum MissionProfile
     DAY_STRATEGIC_MISSION,
     NIGHT_STRATEGIC_MISSION,
     SEA_PLANE_MISSION;
+    
+
+    public boolean isNightMission() 
+    {
+        if (this == MissionProfile.NIGHT_TACTICAL_MISSION || this == MissionProfile.NIGHT_STRATEGIC_MISSION)
+        {
+            return true;
+        }
+        
+        return false;
+    }
 }

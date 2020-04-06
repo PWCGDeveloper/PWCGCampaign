@@ -19,6 +19,7 @@ import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
+import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
@@ -45,7 +46,7 @@ public class PlaneFactoryTest
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.KG53_PROFILE);
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.BOMB);
+        mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.BOMB, MissionProfile.DAY_TACTICAL_MISSION);
         Mockito.when(flight.getFlightInformation()).thenReturn(flightInformation);
     }
 

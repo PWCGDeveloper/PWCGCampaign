@@ -6,8 +6,6 @@ import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.FlightPlaneBuilder;
-import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetType;
 
 public class ScrambleOpposingFlightInformationBuilder
 {
@@ -25,22 +23,7 @@ public class ScrambleOpposingFlightInformationBuilder
         scrambleOpposingFlightInformation.setTargetSearchStartLocation(playerFlightInformation.getFlightHomePosition());
         FlightPlaneBuilder.buildPlanes (scrambleOpposingFlightInformation);
         scrambleOpposingFlightInformation.calculateAltitude();
-        buildSpecificTargetDefinition (scrambleOpposingFlightInformation, opposingFlightType);
 
         return scrambleOpposingFlightInformation;
-    }
-
-    public static void buildSpecificTargetDefinition (FlightInformation scrambleOpposingFlightInformation, FlightTypes opposingFlightType) throws PWCGException
-    {
-        if (FlightTypes.isBombingFlight(opposingFlightType))
-        {
-            TargetDefinition targetDefinition = ScrambleOpposeTargetDefinitionBuilder.buildScrambleOpposeTargetDefinitionAirToGround(scrambleOpposingFlightInformation, TargetType.TARGET_AIRFIELD);
-            scrambleOpposingFlightInformation.setTargetDefinition(targetDefinition);
-        }
-        else
-        {
-            TargetDefinition targetDefinition = ScrambleOpposeTargetDefinitionBuilder.buildScrambleOpposeTargetDefinitionAirToAir(scrambleOpposingFlightInformation, TargetType.TARGET_AIRFIELD);
-            scrambleOpposingFlightInformation.setTargetDefinition(targetDefinition);
-         }
     }
 }

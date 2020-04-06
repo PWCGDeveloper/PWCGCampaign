@@ -13,6 +13,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
+import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.intercept.InterceptFlight;
 import pwcg.mission.flight.offensive.OffensiveFlight;
 import pwcg.mission.flight.patrol.PatrolFlight;
@@ -168,7 +169,7 @@ public class PlayerFlightTypeCoopFighterTest
     private void generateMission(Campaign campaign, FlightTypes flightType) throws PWCGException
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), flightType);
+        mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), flightType, MissionProfile.DAY_TACTICAL_MISSION);
         mission.finalizeMission();
     }
     

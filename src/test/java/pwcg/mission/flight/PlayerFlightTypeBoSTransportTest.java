@@ -9,6 +9,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
+import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.bomb.BombingFlight;
 import pwcg.mission.flight.paradrop.ParaDropFlight;
 import pwcg.mission.flight.transport.TransportFlight;
@@ -40,7 +41,7 @@ public class PlayerFlightTypeBoSTransportTest
     public void paraDropFlightTest() throws PWCGException
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.PARATROOP_DROP);
+        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.PARATROOP_DROP, MissionProfile.DAY_TACTICAL_MISSION);
         ParaDropFlight flight = (ParaDropFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
@@ -50,7 +51,7 @@ public class PlayerFlightTypeBoSTransportTest
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
-        validateTargetDefinition(flight.getFlightInformation().getTargetDefinition());
+        validateTargetDefinition(flight.getTargetDefinition());
         assert (flight.getFlightType() == FlightTypes.PARATROOP_DROP);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateEscortForPlayer();
@@ -63,7 +64,7 @@ public class PlayerFlightTypeBoSTransportTest
     public void cargoDropFlightTest() throws PWCGException
     {        
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.CARGO_DROP);
+        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.CARGO_DROP, MissionProfile.DAY_TACTICAL_MISSION);
         ParaDropFlight flight = (ParaDropFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
@@ -73,7 +74,7 @@ public class PlayerFlightTypeBoSTransportTest
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
-        validateTargetDefinition(flight.getFlightInformation().getTargetDefinition());
+        validateTargetDefinition(flight.getTargetDefinition());
         assert (flight.getFlightType() == FlightTypes.CARGO_DROP);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateEscortForPlayer();
@@ -86,7 +87,7 @@ public class PlayerFlightTypeBoSTransportTest
     public void transportFlightTest() throws PWCGException
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.TRANSPORT);
+        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.TRANSPORT, MissionProfile.DAY_TACTICAL_MISSION);
         TransportFlight flight = (TransportFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
@@ -107,7 +108,7 @@ public class PlayerFlightTypeBoSTransportTest
     public void bombFlightTest() throws PWCGException
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.BOMB);
+        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.BOMB, MissionProfile.DAY_TACTICAL_MISSION);
         BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
@@ -117,7 +118,7 @@ public class PlayerFlightTypeBoSTransportTest
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
-        validateTargetDefinition(flight.getFlightInformation().getTargetDefinition());
+        validateTargetDefinition(flight.getTargetDefinition());
         assert (flight.getFlightType() == FlightTypes.BOMB);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateEscortForPlayer();
@@ -130,7 +131,7 @@ public class PlayerFlightTypeBoSTransportTest
     public void lowAltBombFlightTest() throws PWCGException
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.LOW_ALT_BOMB);
+        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.LOW_ALT_BOMB, MissionProfile.DAY_TACTICAL_MISSION);
         BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
@@ -140,7 +141,7 @@ public class PlayerFlightTypeBoSTransportTest
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
-        validateTargetDefinition(flight.getFlightInformation().getTargetDefinition());
+        validateTargetDefinition(flight.getTargetDefinition());
         assert (flight.getFlightType() == FlightTypes.LOW_ALT_BOMB);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateEscortForPlayer();

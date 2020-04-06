@@ -15,6 +15,7 @@ import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBorderBuilder;
 import pwcg.mission.MissionHumanParticipants;
+import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
@@ -51,9 +52,8 @@ public class StrategicInterceptPackageTest
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox(FlightTypes.STRATEGIC_INTERCEPT);
 
-        Mission mission = new Mission(campaign, participatingPlayers, missionBorders);
+        Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
         campaign.setCurrentMission(mission);
-        mission.generateProfile();
 
         StrategicInterceptPackage flightPackage = new StrategicInterceptPackage();
         boolean isPlayerFlight = true;
@@ -74,7 +74,7 @@ public class StrategicInterceptPackageTest
             for (McuWaypoint opposingWaypoint : opposingTargetWaypoints)
             {
                 double distanceFromPlayerFlight = MathUtils.calcDist(waypoint.getPosition(), opposingWaypoint.getPosition());
-                if (distanceFromPlayerFlight < 5000)
+                if (distanceFromPlayerFlight < 10000)
                 {
                     interceptIsCloseToTarget = true;
                 }

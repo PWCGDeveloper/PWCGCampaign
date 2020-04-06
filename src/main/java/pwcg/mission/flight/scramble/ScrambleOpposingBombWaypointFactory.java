@@ -3,7 +3,6 @@ package pwcg.mission.flight.scramble;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.waypoint.attack.GroundAttackWaypointHelper;
 import pwcg.mission.flight.waypoint.end.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
@@ -55,8 +54,7 @@ public class ScrambleOpposingBombWaypointFactory
     
     private AirGroundAttackMcuSequence createAttackArea() throws PWCGException 
     {
-        IFlightInformation flightInformation = flight.getFlightInformation();
-        AirGroundAttackMcuSequence attackMcuSequence = new AirGroundAttackMcuSequence(flightInformation);
+        AirGroundAttackMcuSequence attackMcuSequence = new AirGroundAttackMcuSequence(flight);
         attackMcuSequence.createAttackArea(attackTime, AttackAreaType.INDIRECT);        
         return attackMcuSequence;
     }

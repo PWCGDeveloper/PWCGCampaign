@@ -49,11 +49,11 @@ public class ScrambleWaypointFactory
 
     private McuWaypoint createTargetScrambleWaypoint() throws PWCGException
     {
-        double angleToTarget = MathUtils.calcAngle(flight.getFlightHomePosition(), flight.getFlightInformation().getTargetPosition());
+        double angleToTarget = MathUtils.calcAngle(flight.getFlightHomePosition(), flight.getTargetDefinition().getTargetPosition());
         Orientation wpOrientation = new Orientation();
         wpOrientation.setyOri(angleToTarget);
         
-        Coordinate scrambleTargetCoords =  flight.getFlightInformation().getTargetPosition();
+        Coordinate scrambleTargetCoords =  flight.getTargetDefinition().getTargetPosition();
         scrambleTargetCoords.setYPos(flight.getFlightInformation().getAltitude());
          
         McuWaypoint scrambleTargetWP = WaypointFactory.createPatrolWaypointType();

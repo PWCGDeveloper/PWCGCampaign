@@ -9,6 +9,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
+import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.validate.GroundUnitValidator;
@@ -33,7 +34,7 @@ public class PlayerFlightTypeBoSEscortTest
     public void escortFlightTest() throws PWCGException
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT);
+        mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT, MissionProfile.DAY_TACTICAL_MISSION);
         mission.finalizeMission();
         
         PlayerIsEscortFlight flight = (PlayerIsEscortFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);

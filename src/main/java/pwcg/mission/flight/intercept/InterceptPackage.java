@@ -10,10 +10,14 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
+import pwcg.mission.target.ITargetDefinitionBuilder;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetDefinitionBuilderFactory;
 
 public class InterceptPackage implements IFlightPackage
 {	
     private IFlightInformation flightInformation;
+    private TargetDefinition targetDefinition;
     private FlightTypes flightType;
 
     public InterceptPackage(FlightTypes flightType)
@@ -30,27 +34,34 @@ public class InterceptPackage implements IFlightPackage
         }
         
         this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, flightType);
+        this.targetDefinition = buildTargetDefintion();
 
-        InterceptFlight interceptFlight = new InterceptFlight (flightInformation);
+        InterceptFlight interceptFlight = new InterceptFlight (flightInformation, targetDefinition);
         interceptFlight.createFlight();
         
         if (flightInformation.isPlayerFlight())
         {
             FlightSpotterBuilder.createSpotters(interceptFlight, flightInformation);
+            
+            buildOpposingInterceptFlights(interceptFlight);
         }
-        
-        buildOpposingInterceptFlights(interceptFlight);
         
         return interceptFlight;
     }
 
     private void buildOpposingInterceptFlights(IFlight flight) throws PWCGException
     {
-        InterceptOpposingFlightBuilder opposingFlightBuilder = new InterceptOpposingFlightBuilder(flight.getFlightInformation());
+        InterceptOpposingFlightBuilder opposingFlightBuilder = new InterceptOpposingFlightBuilder(flight);
         List<IFlight> opposingFlights = opposingFlightBuilder.buildOpposingFlights();
         for (IFlight opposingFlight: opposingFlights)
         {
             flight.getLinkedFlights().addLinkedFlight(opposingFlight);
         }
+    }
+
+    private TargetDefinition buildTargetDefintion() throws PWCGException
+    {
+        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
+        return  targetDefinitionBuilder.buildTargetDefinition();
     }
 }

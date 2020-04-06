@@ -72,7 +72,7 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
        }
         else if (flightInformation.getFlightType() == FlightTypes.STRATEGIC_INTERCEPT)
        {
-           return targetLocatorAir.getStrategicInterceptCoordinate();
+            return flightInformation.getMission().getMissionBorders().getCenter();
        }
         else if (flightInformation.getFlightType() == FlightTypes.OFFENSIVE || flightInformation.getFlightType() == FlightTypes.SPY_EXTRACT)
         {

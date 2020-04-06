@@ -40,4 +40,5 @@ public interface IWaypointPackage
     
     int secondsUntilWaypoint(WaypointAction action) throws PWCGException;
 
+    double getDistanceStartToTarget() throws PWCGException;
 }

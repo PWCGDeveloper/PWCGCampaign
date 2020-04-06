@@ -40,7 +40,7 @@ public class WW2PayloadTest
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManagerCampaign);
 		Mockito.when(flight.getSquadron()).thenReturn(squadron);
         Mockito.when(flight.getFlightInformation()).thenReturn(flightInformation);
-        Mockito.when(flightInformation.getTargetDefinition()).thenReturn(targetDefinition);
+        Mockito.when(flight.getTargetDefinition()).thenReturn(targetDefinition);
 	}
 
 	@Test

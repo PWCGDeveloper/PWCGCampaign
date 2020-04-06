@@ -8,10 +8,15 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
+import pwcg.mission.target.ITargetDefinitionBuilder;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetDefinitionBuilderFactory;
 
 public class PlayerIsEscortPackage implements IFlightPackage
 {
     private IFlightInformation playerFlightInformation;    
+    private TargetDefinition targetDefinition;
+
     public PlayerIsEscortPackage()
     {    }
 
@@ -25,10 +30,12 @@ public class PlayerIsEscortPackage implements IFlightPackage
 	        throw new PWCGMissionGenerationException ("Attempt to create non player escort package");
         }
 	    
-	    EscortedByPlayerFlightBuilder escortedFlightBuilder = new EscortedByPlayerFlightBuilder(playerFlightInformation);
+        this.targetDefinition = buildTargetDefintion();
+
+	    EscortedByPlayerFlightBuilder escortedFlightBuilder = new EscortedByPlayerFlightBuilder(playerFlightInformation, targetDefinition);
 	    EscortedByPlayerFlight escortedFlight = escortedFlightBuilder.createEscortedFlight();
 
-		PlayerIsEscortFlight playerEscort = new PlayerIsEscortFlight(playerFlightInformation, escortedFlight);
+		PlayerIsEscortFlight playerEscort = new PlayerIsEscortFlight(playerFlightInformation, targetDefinition, escortedFlight);
 		playerEscort.createFlight();
         
         PlayerIsEscortFlightConnector connector = new PlayerIsEscortFlightConnector(playerEscort, escortedFlight);
@@ -38,4 +45,11 @@ public class PlayerIsEscortPackage implements IFlightPackage
 		
 		return playerEscort;
 	}
+    
+    private TargetDefinition buildTargetDefintion() throws PWCGException
+    {
+        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(playerFlightInformation);
+        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
+        return targetDefinition;
+    }
 }

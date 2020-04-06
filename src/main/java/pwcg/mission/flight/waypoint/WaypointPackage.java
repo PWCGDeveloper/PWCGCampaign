@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.plot.FlightPathToWaypointPlotter;
@@ -133,7 +134,7 @@ public class WaypointPackage implements IWaypointPackage
         {
             if (!(missionPointSet instanceof MissionPointFlightActivate))
             {
-                IMissionPointSet duplicateMissionPointSet = missionPointSet.duplicateWithOffset(flight.getFlightInformation(), positionInFormation);
+                IMissionPointSet duplicateMissionPointSet = missionPointSet.duplicateWithOffset(flight, positionInFormation);
                 duplucateWaypointPackage.addMissionPointSet(duplicateMissionPointSet);
             }
         }
@@ -154,6 +155,28 @@ public class WaypointPackage implements IWaypointPackage
     {
         FlightPathToWaypointPlotter plotter = new FlightPathToWaypointPlotter(flight);
         return plotter.plotTimeToWaypointAction(action);
+    }
+
+    @Override
+    public double getDistanceStartToTarget() throws PWCGException
+    {
+        double distanceToTarget = 0.0;
+        McuWaypoint previousWaypoint = null;
+        for (McuWaypoint waypoint : getAllWaypoints())
+        {
+            double distanceBetweenWaypoints = MathUtils.calcAngle(previousWaypoint.getPosition(), waypoint.getPosition());
+            distanceToTarget += distanceBetweenWaypoints;
+            if (previousWaypoint != null)
+            {
+                if (waypoint.isTargetWaypoint())
+                {
+                    return distanceToTarget;
+                }
+            }
+            previousWaypoint = waypoint;
+        }
+        
+        throw new PWCGException("Malformed flight.  No target waypoint");
     }
 
     private void linkMissionPointSets() throws PWCGException

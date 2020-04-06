@@ -11,6 +11,7 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
+import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
@@ -35,6 +36,10 @@ public class MissionBorderBuilder
         else if (flightType == FlightTypes.SCRAMBLE)
         {
             return buildMissionBoxScramble();
+        }
+        else if (flightType == FlightTypes.STRATEGIC_INTERCEPT || flightType == FlightTypes.ANTI_SHIPPING_BOMB)
+        {
+            return buildMissionBoxStrategic();
         }
         else
         {
@@ -103,6 +108,30 @@ public class MissionBorderBuilder
             int randomDistance = RandomNumberGenerator.getRandom(20000);
             Coordinate playerAirfieldTargetLocation = MathUtils.calcNextCoord(squadron.determineCurrentPosition(campaign.getDate()), randomAngle, randomDistance);
             missionBox = CoordinateBox.coordinateBoxFromCenter(playerAirfieldTargetLocation, missionBoxRadius);            
+        }
+        else
+        {
+            missionBox = buildCoordinateBoxStandard();
+        }
+        return missionBox;
+    }
+
+    private CoordinateBox buildMissionBoxStrategic() throws PWCGException
+    {
+        List<Integer> playerSquadronsInMission = participatingPlayers.getParticipatingSquadronIds();
+        CoordinateBox missionBox = null;
+        if (playerSquadronsInMission.size() == 1)
+        {
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(playerSquadronsInMission.get(0));
+            int strategicTargetRadius = 60000;
+            List<PWCGLocation> possibleTargets = PWCGContext.getInstance().getCurrentMap().getGroupManager().getTownFinder().findTownsForSideWithinRadius(
+                    squadron.determineSide(), campaign.getDate(), squadron.determineCurrentPosition(campaign.getDate()), strategicTargetRadius);
+            
+            int index = RandomNumberGenerator.getRandom(possibleTargets.size());
+            PWCGLocation targetTownLocation = possibleTargets.get(index);
+            
+            int missionBoxRadius = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.MissionBoxSizeKey) * 1000;
+            missionBox = CoordinateBox.coordinateBoxFromCenter(targetTownLocation.getPosition(), missionBoxRadius);            
         }
         else
         {

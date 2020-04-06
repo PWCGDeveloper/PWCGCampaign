@@ -6,25 +6,24 @@ import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.FlightPlaneBuilder;
-import pwcg.mission.target.TargetDefinitionBuilderFactory;
+import pwcg.mission.target.TargetDefinition;
 
 public class EscortedByPlayerFlightInformationBuilder
 {
 
-    public static IFlightInformation buildEscortedByPlayerFlightInformation(IFlightInformation escortFlightInformation, Squadron friendlyBomberSquadron) throws PWCGException
+    public static IFlightInformation buildEscortedByPlayerFlightInformation(IFlightInformation playerEscortFlightInformation, TargetDefinition playerEscortTargetDefinition, Squadron friendlyBomberSquadron) throws PWCGException
     {
-        FlightInformation escortedFlightInformation = new FlightInformation(escortFlightInformation.getMission());
+        FlightInformation escortedFlightInformation = new FlightInformation(playerEscortFlightInformation.getMission());
         escortedFlightInformation.setFlightType(FlightTypes.BOMB);
-        escortedFlightInformation.setMission(escortFlightInformation.getMission());
-        escortedFlightInformation.setCampaign(escortFlightInformation.getCampaign());
+        escortedFlightInformation.setMission(playerEscortFlightInformation.getMission());
+        escortedFlightInformation.setCampaign(playerEscortFlightInformation.getCampaign());
         escortedFlightInformation.setSquadron(friendlyBomberSquadron);
         escortedFlightInformation.setPlayerFlight(false);
         escortedFlightInformation.setEscortForPlayerFlight(false);
         escortedFlightInformation.setEscortedByPlayerFlight(true);
-        escortedFlightInformation.setTargetSearchStartLocation(escortFlightInformation.getTargetPosition());
-        TargetDefinitionBuilderFactory.buildTargetDefinition (escortedFlightInformation);
+        escortedFlightInformation.setTargetSearchStartLocation(playerEscortTargetDefinition.getTargetPosition());
         FlightPlaneBuilder.buildPlanes (escortedFlightInformation);
-        escortedFlightInformation.setAltitude(escortFlightInformation.getAltitude() - 500);
+        escortedFlightInformation.setAltitude(playerEscortFlightInformation.getAltitude() - 500);
 
 
         return escortedFlightInformation;

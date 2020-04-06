@@ -103,7 +103,7 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
     }
     
     @Override
-    public IMissionPointSet duplicateWithOffset(IFlightInformation flightInformation, int positionInFormation) throws PWCGException
+    public IMissionPointSet duplicateWithOffset(IFlight flight, int positionInFormation) throws PWCGException
     {
         MissionPointRouteSet duplicate = new MissionPointRouteSet();
         duplicate.waypoints = super.duplicateWaypoints(positionInFormation);

@@ -10,6 +10,7 @@ import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.McuWaypoint;
+import pwcg.mission.target.TargetDefinition;
 
 public class EscortForPlayerBuilder
 {
@@ -33,7 +34,8 @@ public class EscortForPlayerBuilder
                 Coordinate rendezvous = rendezvousWP.getPosition().copy();
                 IFlightInformation escortFlightInformation = EscortForPlayerFlightInformationBuilder.buildEscortForPlayerFlightInformation(playerFlight.getFlightInformation(), 
                         friendlyFighterSquadron, rendezvous);
-                EscortForPlayerFlight escortForPlayerFlight = new EscortForPlayerFlight(escortFlightInformation, playerFlight);
+                TargetDefinition targetDefinition = EscortForPlayerTargetDefinitionBuilder.buildEscortForPlayerTargetDefinition(escortFlightInformation, rendezvous);
+                EscortForPlayerFlight escortForPlayerFlight = new EscortForPlayerFlight(escortFlightInformation, targetDefinition, playerFlight);
                 escortForPlayerFlight.createFlight();   
                                 
                 EscortForPlayerFlightConnector connector = new EscortForPlayerFlightConnector(escortForPlayerFlight, playerFlight);

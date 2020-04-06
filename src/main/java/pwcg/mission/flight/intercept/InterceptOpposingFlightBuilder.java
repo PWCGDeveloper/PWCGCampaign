@@ -18,14 +18,17 @@ import pwcg.mission.flight.attack.GroundAttackPackage;
 import pwcg.mission.flight.bomb.BombingPackage;
 import pwcg.mission.flight.divebomb.DiveBombingPackage;
 import pwcg.mission.flight.recon.ReconPackage;
+import pwcg.mission.target.TargetDefinition;
 
 public class InterceptOpposingFlightBuilder
 {
     private IFlightInformation playerFlightInformation;
+    private TargetDefinition playerTargetDefinition;
 
-    public InterceptOpposingFlightBuilder(IFlightInformation playerFlightInformation)
+    public InterceptOpposingFlightBuilder(IFlight playerFlight)
     {
-        this.playerFlightInformation = playerFlightInformation;
+        this.playerFlightInformation = playerFlight.getFlightInformation();
+        this.playerTargetDefinition = playerFlight.getTargetDefinition();
     }
 
     public List<IFlight> buildOpposingFlights() throws PWCGException
@@ -66,11 +69,11 @@ public class InterceptOpposingFlightBuilder
     private Coordinate determineOpposingFlightStartPosition(String opposingFieldName) throws PWCGException
     {
         IAirfield opposingField =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(opposingFieldName);
-        double angleFromFieldToTarget = MathUtils.calcAngle(playerFlightInformation.getTargetPosition(), opposingField.getPosition());
+        double angleFromFieldToTarget = MathUtils.calcAngle(playerTargetDefinition.getTargetPosition(), opposingField.getPosition());
             
         double distancePlayerFromTarget = MathUtils.calcDist(playerFlightInformation.getSquadron().determineCurrentPosition(
-                playerFlightInformation.getCampaign().getDate()), playerFlightInformation.getTargetPosition());
-        Coordinate startingPosition = MathUtils.calcNextCoord(playerFlightInformation.getTargetPosition(), angleFromFieldToTarget, distancePlayerFromTarget);
+                playerFlightInformation.getCampaign().getDate()), playerTargetDefinition.getTargetPosition());
+        Coordinate startingPosition = MathUtils.calcNextCoord(playerTargetDefinition.getTargetPosition(), angleFromFieldToTarget, distancePlayerFromTarget);
         return startingPosition;
     }
 
@@ -79,9 +82,9 @@ public class InterceptOpposingFlightBuilder
         FlightTypes opposingFlightType = getFlightType(opposingSquadron);
         
         boolean isPlayerFlight = false;
-        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(playerFlightInformation.getMission(), opposingSquadron, isPlayerFlight);
-        
+        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(playerFlightInformation.getMission(), opposingSquadron, isPlayerFlight);        
         IFlight opposingFlight = buildOpposingFlight(flightBuildInformation, opposingFlightType);
+        
         opposingFlight.createFlight();
         return opposingFlight;
     }

@@ -44,6 +44,11 @@ public class FlightFactory
     		boolean isPlayerFlight) throws PWCGException 
     {
         IFlight flight = null;
+        
+        if (flightType == FlightTypes.ANY)
+        {
+            throw new PWCGException("No flight type determined at build process");
+        }
                 
         IFlightPackage flightPackage = null;
         if (flightType == FlightTypes.ARTILLERY_SPOT)

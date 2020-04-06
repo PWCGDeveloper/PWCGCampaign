@@ -10,10 +10,14 @@ import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.ground.factory.TargetFactory;
 import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.target.ITargetDefinitionBuilder;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetDefinitionBuilderFactory;
 
 public class DiveBombingPackage implements IFlightPackage
 {
     private IFlightInformation flightInformation;
+    private TargetDefinition targetDefinition;
 
     public DiveBombingPackage()
     {
@@ -23,6 +27,7 @@ public class DiveBombingPackage implements IFlightPackage
     public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
         this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.DIVE_BOMB);
+        this.targetDefinition = buildTargetDefintion();
 
         IFlight bombingFlight = createPackageTacticalTarget ();
         return bombingFlight;
@@ -40,15 +45,21 @@ public class DiveBombingPackage implements IFlightPackage
 
     private IFlight makeDiveBombingFlight(Coordinate targetCoordinates) throws PWCGException
     {
-        DiveBombingFlight diveBombingFlight = new DiveBombingFlight (flightInformation);
+        DiveBombingFlight diveBombingFlight = new DiveBombingFlight (flightInformation, targetDefinition);
         diveBombingFlight.createFlight();
         return diveBombingFlight;
     }
 
     private IGroundUnitCollection createGroundUnitsForFlight() throws PWCGException
     {
-        TargetFactory targetBuilder = new TargetFactory(flightInformation);
+        TargetFactory targetBuilder = new TargetFactory(flightInformation, targetDefinition);
         targetBuilder.buildTarget();
         return targetBuilder.getGroundUnits();
+    }
+
+    private TargetDefinition buildTargetDefintion() throws PWCGException
+    {
+        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
+        return  targetDefinitionBuilder.buildTargetDefinition();
     }
 }

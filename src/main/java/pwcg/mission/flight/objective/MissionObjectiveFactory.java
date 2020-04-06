@@ -5,7 +5,6 @@ import java.util.Date;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.escort.EscortedByPlayerFlight;
 import pwcg.mission.flight.offensive.OffensiveFlight;
 import pwcg.mission.flight.recon.ReconFlight;
@@ -101,13 +100,13 @@ public class MissionObjectiveFactory
 
     private static String getBalloonBustMissionObjective(IFlight flight) throws PWCGException 
     {
-        String objective = "Destroy the enemy balloon" + MissionObjective.formMissionObjectiveLocation(flight.getFlightInformation().getTargetPosition().copy()) + ".";       
+        String objective = "Destroy the enemy balloon" + MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getTargetPosition().copy()) + ".";       
         return objective;
     }
 
     private static String getBalloonDefenseMissionObjective(IFlight flight) throws PWCGException 
     {
-        String objective = "Defend our balloon" + MissionObjective.formMissionObjectiveLocation(flight.getFlightInformation().getTargetPosition().copy()) + ".";      
+        String objective = "Defend our balloon" + MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getTargetPosition().copy()) + ".";      
 
         return objective;
     }
@@ -117,7 +116,7 @@ public class MissionObjectiveFactory
         String objective = "Perform reconnaissance at the specified front location.  " + 
                 "Make contact with friendly troop concentrations to establish front lines.";
         
-        objective = "Perform reconnaissance" + MissionObjective.formMissionObjectiveLocation(flight.getFlightInformation().getTargetPosition().copy()) + 
+        objective = "Perform reconnaissance" + MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getTargetPosition().copy()) + 
                         ".  Make contact with friendly troop concentrations to establish front lines.";
         
         return objective;
@@ -128,7 +127,7 @@ public class MissionObjectiveFactory
         EscortedByPlayerFlight escortedByPlayerFlight = flight.getLinkedFlights().getEscortedByPlayer();
         MissionPoint rendezvousPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_RENDEZVOUS);
         String rendezvousName =  MissionObjective.formMissionObjectiveLocation(rendezvousPoint.getPosition());
-        String objectiveName =  MissionObjective.formMissionObjectiveLocation(escortedByPlayerFlight.getFlightInformation().getTargetPosition().copy());
+        String objectiveName =  MissionObjective.formMissionObjectiveLocation(escortedByPlayerFlight.getTargetDefinition().getTargetPosition().copy());
 
         String objective = "Rendezvous with " + escortedByPlayerFlight.getFlightPlanes().getFlightLeader().getDisplayName() + "s of " + escortedByPlayerFlight.getSquadron().determineDisplayName(date);
         if (!rendezvousName.isEmpty())
@@ -149,8 +148,7 @@ public class MissionObjectiveFactory
 
     private static String getInterceptMissionObjective(IFlight flight) throws PWCGException 
     {
-        IFlightInformation flightInformation = flight.getFlightInformation();
-        String objective = "Intercept enemy aircraft" + MissionObjective.formMissionObjectiveLocation(flightInformation.getTargetPosition().copy()) + ".";      
+        String objective = "Intercept enemy aircraft" + MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getTargetPosition().copy()) + ".";      
         
         return objective;
     }
@@ -162,24 +160,21 @@ public class MissionObjectiveFactory
     
     private static String getCargoDropMissionObjective(IFlight flight) throws PWCGException
     {
-        IFlightInformation flightInformation = flight.getFlightInformation();
-        String objective = "Perform a cargo drop" + MissionObjective.formMissionObjectiveLocation(flightInformation.getTargetPosition().copy()) + ".";     
+        String objective = "Perform a cargo drop" + MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getTargetPosition().copy()) + ".";     
         return objective;
     }
     
     private static String getParatroopDropMissionObjective(IFlight flight) throws PWCGException
     {
-        IFlightInformation flightInformation = flight.getFlightInformation();
-        String objective = "Drop our paratroops" + MissionObjective.formMissionObjectiveLocation(flightInformation.getTargetPosition().copy()) + ".";       
+        String objective = "Drop our paratroops" + MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getTargetPosition().copy()) + ".";       
         return objective;
     }
 
     private static String getPatrolMissionObjective(IFlight flight) throws PWCGException
     {
-        IFlightInformation flightInformation = flight.getFlightInformation();
         String objective = "Patrol aircpace at the specified front location.  " + 
                 "Engage any enemy aircraft that you encounter.  ";
-        String objectiveName =  MissionObjective.formMissionObjectiveLocation(flightInformation.getTargetPosition().copy()) + "."; 
+        String objectiveName =  MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getTargetPosition().copy()) + "."; 
         if (!objectiveName.isEmpty())
         {
             objective = "Patrol airspace " + objectiveName + 
@@ -196,9 +191,8 @@ public class MissionObjectiveFactory
 
     private static String getSpyExtractMissionObjective(IFlight flight) throws PWCGException 
     {
-        IFlightInformation flightInformation = flight.getFlightInformation();
         String objective = "Extract our spy at the specified location" + 
-                MissionObjective.formMissionObjectiveLocation(flightInformation.getTargetPosition().copy()) + "."  + 
+                MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getTargetPosition().copy()) + "."  + 
                 ".  Don't get caught!";       
         
         return objective;

@@ -6,7 +6,6 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
@@ -83,7 +82,7 @@ public class MissionPointFlightBeginVirtual extends MissionPointSetSingleWaypoin
     }
 
     @Override
-    public IMissionPointSet duplicateWithOffset(IFlightInformation flightInformation, int positionInFormation) throws PWCGException
+    public IMissionPointSet duplicateWithOffset(IFlight flight, int positionInFormation) throws PWCGException
     {
         MissionPointRouteSet duplicate = new MissionPointRouteSet();
         duplicate.waypoints = super.duplicateWaypoints(positionInFormation);

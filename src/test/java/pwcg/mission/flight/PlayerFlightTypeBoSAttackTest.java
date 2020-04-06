@@ -10,6 +10,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
+import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.attack.GroundAttackFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.validate.EscortForPlayerValidator;
@@ -43,7 +44,7 @@ public class PlayerFlightTypeBoSAttackTest
     public void groundAttackFlightTest() throws PWCGException
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.GROUND_ATTACK);
+        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.GROUND_ATTACK, MissionProfile.DAY_TACTICAL_MISSION);
         GroundAttackFlight flight = (GroundAttackFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
@@ -52,7 +53,7 @@ public class PlayerFlightTypeBoSAttackTest
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
-        validateTargetDefinition(flight.getFlightInformation().getTargetDefinition());
+        validateTargetDefinition(flight.getTargetDefinition());
         assert(flight.getFlightType() == FlightTypes.GROUND_ATTACK);
 
         for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())

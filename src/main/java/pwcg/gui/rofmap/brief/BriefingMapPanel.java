@@ -190,7 +190,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
                 }
                 if (i == (flightMap.mapPoints.size()-1) )
                 {
-                    g.setColor(Color.BLUE);
+                    g.setColor(Color.RED);
                     Point point = super.coordinateToPoint(mapPoint.coord);
                     Ellipse2D.Double circle = new Ellipse2D.Double(point.x - 8, point.y - 8, 16, 16);
                     g2.fill(circle);

@@ -13,8 +13,8 @@ public class AirStartWaypointFactory
 {
     public enum AirStartPattern
     {
-        AIR_START_NEAR_AIRFIELD,
-        AIR_START_NEAR_WAYPOINT;
+        AIR_START_FROM_AIRFIELD,
+        AIR_START_NEAR_WAYPOINT
     }
 
     public static McuWaypoint createAirStart(IFlight flight, AirStartPattern pattern, McuWaypoint referenceWaypointForAirStart) throws PWCGException
@@ -29,7 +29,7 @@ public class AirStartWaypointFactory
         }
         else
         {
-            return createAirStartNearAirfield(flight);
+            return createAirStartFromAirfield(flight, referenceWaypointForAirStart);
         }
     }
 
@@ -47,17 +47,30 @@ public class AirStartWaypointFactory
         return airStartWP;
     }  
 
-    private static McuWaypoint createAirStartNearAirfield(IFlight flight) throws PWCGException
+    private static McuWaypoint createAirStartFromAirfield(IFlight flight, McuWaypoint referenceWaypointForAirStart) throws PWCGException
     {
         Coordinate airfieldCoordinate = flight.getFlightHomePosition();
+        double distanceFromFieldToRefrenceWP = MathUtils.calcDist(airfieldCoordinate, referenceWaypointForAirStart.getPosition());
+        double distanceForIngressToTarget = MathUtils.calcDist(referenceWaypointForAirStart.getPosition(), flight.getTargetDefinition().getTargetPosition());
+        double distanceToTarget = distanceFromFieldToRefrenceWP + distanceForIngressToTarget;
         
-        double angleFromAirfield = MathUtils.calcAngle(airfieldCoordinate, flight.getFlightInformation().getTargetPosition());
-        Coordinate airStartPosition = MathUtils.calcNextCoord(airfieldCoordinate, angleFromAirfield, 3000.0);
+        double straightLineistanceForPlayerToReachTargetArea = flight.getMission().getPlayerDistanceToTarget();
+        double estimatedDistanceToTarget = straightLineistanceForPlayerToReachTargetArea + 30000;
+        
+        double distaneToTravel = distanceToTarget;
+        if (distanceToTarget > estimatedDistanceToTarget)
+        {
+            distaneToTravel = estimatedDistanceToTarget;
+        }
+        distaneToTravel -= distanceForIngressToTarget;
+        
+        double angleFromFirstWPToAirfield = MathUtils.calcAngle(referenceWaypointForAirStart.getPosition(), airfieldCoordinate);
+        Coordinate airStartPosition = MathUtils.calcNextCoord(referenceWaypointForAirStart.getPosition(), angleFromFirstWPToAirfield, distaneToTravel);
         airStartPosition.setYPos(WaypointType.getAltitudeForWaypointType(WaypointType.AIR_START_WAYPOINT, flight.getFlightInformation().getAltitude()));
         
         McuWaypoint airStartWP = WaypointFactory.createAirStartWaypointType();
         airStartWP.setPosition(airStartPosition);
-        airStartWP.setOrientation(new Orientation(angleFromAirfield));
+        airStartWP.setOrientation(new Orientation(MathUtils.adjustAngle(angleFromFirstWPToAirfield, 180)));
         return airStartWP;
     }
 }

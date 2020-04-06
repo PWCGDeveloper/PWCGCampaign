@@ -33,8 +33,8 @@ public class IngressWaypointScrambleOpposition implements IIngressWaypoint
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int attackIngressDistance = productSpecificConfiguration.getGroundAttackIngressDistance();
         
-        double ingressAngle = MathUtils.calcAngle(nearbyFrontPosition, flight.getFlightInformation().getTargetPosition());
-        Coordinate ingressCoords = MathUtils.calcNextCoord(flight.getFlightInformation().getTargetPosition(), ingressAngle, attackIngressDistance);
+        double ingressAngle = MathUtils.calcAngle(nearbyFrontPosition, flight.getTargetDefinition().getTargetPosition());
+        Coordinate ingressCoords = MathUtils.calcNextCoord(flight.getTargetDefinition().getTargetPosition(), ingressAngle, attackIngressDistance);
         
         Coordinate coord = new Coordinate();
         coord.setXPos(ingressCoords.getXPos());
