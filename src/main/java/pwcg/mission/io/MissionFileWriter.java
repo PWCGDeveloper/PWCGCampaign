@@ -263,6 +263,7 @@ public class MissionFileWriter implements IMissionFile
 
                     radioBeacon.setPosition(beaconPos);
                     radioBeacon.setOrientation(flightAirfield.getOrientation().copy());
+                    radioBeacon.setBeaconChannel(1);
                     radioBeacon.getEntity().setEnabled(1);
                     radioBeacon.write(writer);
                 }
