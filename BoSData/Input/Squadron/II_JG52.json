@@ -1,114 +1,116 @@
 {
-  "country": "GERMANY",
-  "squadronId": 20112052,
-  "name": "II./JG52",
-  "fileName": "II_JG52.json",
-  "skill": 90,
-  "planeAssignments": [
-    {
-      "archType": "bf109",
-      "squadronIntroduction": "19411001",
-      "squadronWithdrawal": "19450601"
-    }
-  ],
-  "airfields": {
-    "19411001": "Temkino",
-    "19411020": "Zenino",
-    "19411110": "Ivanskoe",
-    "19411120": "Trekhsvyatskoye",
-    "19411215": "Gorstovo",
-    "19420110": "Dugino",
-    "19420301": "Kletskaya",
-    "19420601": "Krasnoarmeyskayas",
-    "19420624": "Staro-Nijne-Steblievskaya",
-    "19420709": "Abinskaya",
-    "19420721": "Abinskaya",
-    "19420801": "Kumovka",
-    "19420906": "Evlampievsky",
-    "19421011": "Basargino",
-    "19421123": "Tuzov",
-    "19421223": "Tuzov",
-    "19430120": "Tuzov",
-    "19430301": "Popovicheskaya",
-    "19430330": "Staro-Nijne-Steblievskaya",
-    "19430418": "Kievskoe-1",
-    "19430918": "Gostagaevskaya",
-    "19430927": "Taman",
-    "19431004": "Taman",
-    "19431008": "Zaporojskaya",
-    "19440101": "Kumovka"
-  },
-  "skins": [
-    {
-      "skinName": "II_JG52",
-      "planeType": "bf109f2",
-      "startDate": "19400801",
-      "endDate": "19450601",
-      "squadId": 20112052,
-      "country": "Germany",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "II_JG52",
-      "planeType": "bf109f4",
-      "startDate": "19400801",
-      "endDate": "19450601",
-      "squadId": 20112052,
-      "country": "Germany",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "II_JG52",
-      "planeType": "bf109g2",
-      "startDate": "19400801",
-      "endDate": "19450601",
-      "squadId": 20112052,
-      "country": "Germany",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-  ],
-  "squadHistory": {
-    "squadHistoryEntries": [
-    ]
-  },
-  "serviceId": 20101,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19400101",
-        "endDate": "19450601",
-        "weightedRoles": [
-          {
-            "role": "ROLE_RECON",
-            "weight": 3
-          },
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 90
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 10
-          }
-        ]
-      }
-    ]
-  },
-  "nightMissionOdds": {
-    "nightMissionPeriods": [
-      {
-        "startDate": "19400101",
-        "endDate": "19450601",
-        "nightMissionOdds": 5
-      }
-    ]
-  },
-  "conversionPeriods": [
-  ],
-  "callsigns": {
-    "19410801": "FINCH"
-  }
+	"country": "GERMANY",
+	"squadronId": 20112052,
+	"name": "II./JG52",
+	"fileName": "II_JG52.json",
+	"skill": 90,
+	"planeAssignments": [
+		{
+			"archType": "bf109",
+			"squadronIntroduction": "19411001",
+			"squadronWithdrawal": "19450601"
+		}
+	],
+	"airfields": {
+		"19411001": "Temkino",
+		"19411020": "Zenino",
+		"19411110": "Ivanskoe",
+		"19411120": "Trekhsvyatskoye",
+		"19411215": "Gorstovo",
+		"19420110": "Dugino",
+		"19420301": "Kletskaya",
+		"19420601": "Krasnoarmeyskayas",
+		"19420624": "Staro-Nijne-Steblievskaya",
+		"19420709": "Abinskaya",
+		"19420721": "Abinskaya",
+		"19420801": "Kumovka",
+		"19420906": "Evlampievsky",
+		"19421011": "Basargino",
+		"19421123": "Tuzov",
+		"19421223": "Tuzov",
+		"19430120": "Tuzov",
+		"19430301": "Popovicheskaya",
+		"19430330": "Staro-Nijne-Steblievskaya",
+		"19430418": "Kievskoe-1",
+		"19430918": "Gostagaevskaya",
+		"19430927": "Taman",
+		"19431004": "Taman",
+		"19431008": "Zaporojskaya",
+		"19440101": "Kumovka"
+	},
+	"skins": [
+		{
+			"skinName": "II_JG52",
+			"planeType": "bf109f2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20112052,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
+		},
+		{
+			"skinName": "II_JG52",
+			"planeType": "bf109f4",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20112052,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
+		},
+		{
+			"skinName": "II_JG52",
+			"planeType": "bf109g2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20112052,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
+		}
+	],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"serviceId": 20101,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19400101",
+				"endDate": "19450601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_STRATEGIC_INTERCEPT",
+						"weight": 5
+					},
+					{
+						"role": "ROLE_RECON",
+						"weight": 3
+					},
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 90
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 10
+					}
+				]
+			}
+		]
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+			{
+				"startDate": "19400101",
+				"endDate": "19450601",
+				"nightMissionOdds": 5
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"callsigns": {
+		"19410801": "FINCH"
+	}
 }

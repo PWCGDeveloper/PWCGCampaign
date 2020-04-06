@@ -1,94 +1,96 @@
 {
-  "country": "GERMANY",
-  "squadronId": 20101026,
-  "name": "I./ZG 26",
-  "fileName": "I_ZG26.json",
-  "skill": 70,
-  "planeAssignments": [
-    {
-      "archType": "bf110",
-      "squadronIntroduction": "19410101",
-      "squadronWithdrawal": "19450601"
-    }
-  ],
-  "airfields": {
-    "19411001": "Novoye Selo",
-    "19411020": "Gzhatsk",
-    "19411110": "Ryabinki",
-    "19411120": "Gorstovo",
-    "19411215": "Varvarovka",
-    "19420110": "Dugino",
-    "19420301": "Sekretov",
-    "19420601": "Dneprovskaya",
-    "19420624": "Staro-Nijne-Steblievskaya",
-    "19420709": "Severskaya",
-    "19420721": "Pashkovskaya",
-    "19420801": "Berezovsky",
-    "19420906": "Grachi",
-    "19421011": "Malogolubaya",
-    "19421123": "Kamchie",
-    "19421223": "Lipovsky",
-    "19430120": "Tuzov",
-    "19430301": "Kievskoe-1",
-    "19430330": "Krasnoarmeyskayas",
-    "19430418": "Anapa",
-    "19430918": "Zaporojskaya",
-    "19430927": "Zaporojskaya",
-    "19431004": "Zaporojskaya",
-    "19431008": "Kerch 2",
-    "19440101": "Berezovsky"
-  },
-  "skins": [
-    {
-      "skinName": "I_ZG_26",
-      "planeType": "bf110e2",
-      "startDate": "19410101",
-      "endDate": "19450601",
-      "squadId": 20101026,
-      "country": "Germany",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-  ],
-  "squadHistory": {
-    "squadHistoryEntries": [
-    ]
-  },
-  "serviceId": 20101,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19400101",
-        "endDate": "19450601",
-        "weightedRoles": [
-          {
-            "role": "ROLE_RECON",
-            "weight": 10
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 65
-          },
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 35
-          }
-        ]
-      }
-    ]
-  },
-  "nightMissionOdds": {
-    "nightMissionPeriods": [
-      {
-        "startDate": "19400101",
-        "endDate": "19450601",
-        "nightMissionOdds": 10
-      }
-    ]
-  },
-  "conversionPeriods": [
-  ],
-  "callsigns": {
-    "19410801": "DUCK"
-  }
+	"country": "GERMANY",
+	"squadronId": 20101026,
+	"name": "I./ZG 26",
+	"fileName": "I_ZG26.json",
+	"skill": 70,
+	"planeAssignments": [
+		{
+			"archType": "bf110",
+			"squadronIntroduction": "19410101",
+			"squadronWithdrawal": "19450601"
+		}
+	],
+	"airfields": {
+		"19411001": "Novoye Selo",
+		"19411020": "Gzhatsk",
+		"19411110": "Ryabinki",
+		"19411120": "Gorstovo",
+		"19411215": "Varvarovka",
+		"19420110": "Dugino",
+		"19420301": "Sekretov",
+		"19420601": "Dneprovskaya",
+		"19420624": "Staro-Nijne-Steblievskaya",
+		"19420709": "Severskaya",
+		"19420721": "Pashkovskaya",
+		"19420801": "Berezovsky",
+		"19420906": "Grachi",
+		"19421011": "Malogolubaya",
+		"19421123": "Kamchie",
+		"19421223": "Lipovsky",
+		"19430120": "Tuzov",
+		"19430301": "Kievskoe-1",
+		"19430330": "Krasnoarmeyskayas",
+		"19430418": "Anapa",
+		"19430918": "Zaporojskaya",
+		"19430927": "Zaporojskaya",
+		"19431004": "Zaporojskaya",
+		"19431008": "Kerch 2",
+		"19440101": "Berezovsky"
+	},
+	"skins": [
+		{
+			"skinName": "I_ZG_26",
+			"planeType": "bf110e2",
+			"startDate": "19410101",
+			"endDate": "19450601",
+			"squadId": 20101026,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
+		}
+	],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"serviceId": 20101,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19400101",
+				"endDate": "19450601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_STRATEGIC_INTERCEPT",
+						"weight": 20
+					},
+					{
+						"role": "ROLE_RECON",
+						"weight": 10
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 65
+					},
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 35
+					}
+				]
+			}
+		]
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+			{
+				"startDate": "19400101",
+				"endDate": "19450601",
+				"nightMissionOdds": 10
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"callsigns": {
+		"19410801": "DUCK"
+	}
 }

@@ -1,135 +1,139 @@
 {
-  "country": "RUSSIA",
-  "squadronId": 10111027,
-  "name": "27th Fighter Air Regiment",
-  "fileName": "27th Fighter Air Regiment.json",
-  "skill": 40,
-  "planeAssignments": [
-    {
-      "archType": "mig3",
-      "squadronIntroduction": "19410801",
-      "squadronWithdrawal": "19420819"
-    },
-    {
-      "archType": "lagg",
-      "squadronIntroduction": "19420820",
-      "squadronWithdrawal": "19450601"
-    }
-  ],
-  "conversionPeriods": [
-    {
-      "conversionStartDate": "19420803",
-      "conversionCompleteDate": "19420819"
-    }
-  ],  
-  "airfields": {
-    "19411001": "Sloboda",
-    "19411020": "Ruza",
-    "19411110": "Zaluje",
-    "19411120": "Nikolskoye",
-    "19411215": "Nikolskoye",
-    "19420110": "Gorstovo",
-    "19420301": "Evlampievsky",
-    "19420601": "Korenovskaya",
-    "19420624": "Elizavetinskaya",
-    "19420709": "Gelenjik-1",
-    "19420721": "Agoy",
-    "19420801": "Samovalovka",
-    "19420906": "Erzovka",
-    "19421011": "Srednyaya Ahtuba",
-    "19421123": "Pichuga",
-    "19421223": "Beketovka",
-    "19430120": "Beketovka",
-    "19430301": "Gelenjik-3",
-    "19430330": "Gelenjik-3",
-    "19430418": "Gelenjik-3",
-    "19430918": "Krymskaya",
-    "19430927": "Krymskaya",
-    "19431004": "Gostagaevskaya",
-    "19431008": "Gostagaevskaya",
-    "19440101": "Samovalovka"
-  },
-  "skins": [
-    {
-      "skinName": "27th Fighter Air Regiment",
-      "planeType": "mig3s24",
-      "startDate": "19410801",
-      "endDate": "19411101",
-      "squadId": 10111027,
-      "country": "Russia",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "27th Fighter Air Regiment W",
-      "planeType": "mig3s24",
-      "startDate": "19411101",
-      "endDate": "19420301",
-      "squadId": 10111027,
-      "country": "Russia",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "27th Fighter Air Regiment",
-      "planeType": "mig3s24",
-      "startDate": "19420301",
-      "endDate": "19450601",
-      "squadId": 10111027,
-      "country": "Russia",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "LA5S8_SKIN_01",
-      "planeType": "la5s8",
-      "startDate": "19421101",
-      "endDate": "19430331",
-      "squadId": 10111027,
-      "country": "Russia",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-  ],
-  "squadHistory": {
-    "squadHistoryEntries": [
-      {
-        "date": "19430918",
-        "squadName": "437th Fighter Air Regiment",
-        "armedServiceName": "Voyenno-Vozdushnye Sily",
-        "skill": 40
-      }
-    ]
-  },
-  "serviceId": 10101,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19400101",
-        "endDate": "19450601",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 70
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 30
-          }
-        ]
-      }
-    ]
-  },
-  "nightMissionOdds": {
-    "nightMissionPeriods": [
-      {
-        "startDate": "19440901",
-        "endDate": "19450601",
-        "nightMissionOdds": 3
-      }
-    ]
-  },
-  "callsigns": {
-    "19410801": "CANARY"
-  }
+	"country": "RUSSIA",
+	"squadronId": 10111027,
+	"name": "27th Fighter Air Regiment",
+	"fileName": "27th Fighter Air Regiment.json",
+	"skill": 40,
+	"planeAssignments": [
+		{
+			"archType": "mig3",
+			"squadronIntroduction": "19410801",
+			"squadronWithdrawal": "19420819"
+		},
+		{
+			"archType": "lagg",
+			"squadronIntroduction": "19420820",
+			"squadronWithdrawal": "19450601"
+		}
+	],
+	"conversionPeriods": [
+		{
+			"conversionStartDate": "19420803",
+			"conversionCompleteDate": "19420819"
+		}
+	],
+	"airfields": {
+		"19411001": "Sloboda",
+		"19411020": "Ruza",
+		"19411110": "Zaluje",
+		"19411120": "Nikolskoye",
+		"19411215": "Nikolskoye",
+		"19420110": "Gorstovo",
+		"19420301": "Evlampievsky",
+		"19420601": "Korenovskaya",
+		"19420624": "Elizavetinskaya",
+		"19420709": "Gelenjik-1",
+		"19420721": "Agoy",
+		"19420801": "Samovalovka",
+		"19420906": "Erzovka",
+		"19421011": "Srednyaya Ahtuba",
+		"19421123": "Pichuga",
+		"19421223": "Beketovka",
+		"19430120": "Beketovka",
+		"19430301": "Gelenjik-3",
+		"19430330": "Gelenjik-3",
+		"19430418": "Gelenjik-3",
+		"19430918": "Krymskaya",
+		"19430927": "Krymskaya",
+		"19431004": "Gostagaevskaya",
+		"19431008": "Gostagaevskaya",
+		"19440101": "Samovalovka"
+	},
+	"skins": [
+		{
+			"skinName": "27th Fighter Air Regiment",
+			"planeType": "mig3s24",
+			"startDate": "19410801",
+			"endDate": "19411101",
+			"squadId": 10111027,
+			"country": "Russia",
+			"category": "Squadron",
+			"definedInGame": false
+		},
+		{
+			"skinName": "27th Fighter Air Regiment W",
+			"planeType": "mig3s24",
+			"startDate": "19411101",
+			"endDate": "19420301",
+			"squadId": 10111027,
+			"country": "Russia",
+			"category": "Squadron",
+			"definedInGame": false
+		},
+		{
+			"skinName": "27th Fighter Air Regiment",
+			"planeType": "mig3s24",
+			"startDate": "19420301",
+			"endDate": "19450601",
+			"squadId": 10111027,
+			"country": "Russia",
+			"category": "Squadron",
+			"definedInGame": false
+		},
+		{
+			"skinName": "LA5S8_SKIN_01",
+			"planeType": "la5s8",
+			"startDate": "19421101",
+			"endDate": "19430331",
+			"squadId": 10111027,
+			"country": "Russia",
+			"category": "Squadron",
+			"definedInGame": false
+		}
+	],
+	"squadHistory": {
+		"squadHistoryEntries": [
+			{
+				"date": "19430918",
+				"squadName": "437th Fighter Air Regiment",
+				"armedServiceName": "Voyenno-Vozdushnye Sily",
+				"skill": 40
+			}
+		]
+	},
+	"serviceId": 10101,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19400101",
+				"endDate": "19450601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_STRATEGIC_INTERCEPT",
+						"weight": 15
+					},
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 70
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 30
+					}
+				]
+			}
+		]
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+			{
+				"startDate": "19440901",
+				"endDate": "19450601",
+				"nightMissionOdds": 3
+			}
+		]
+	},
+	"callsigns": {
+		"19410801": "CANARY"
+	}
 }

@@ -1,114 +1,118 @@
 {
-  "country": "RUSSIA",
-  "squadronId": 10111629,
-  "name": "629th Fighter Air Regiment",
-  "fileName": "629th Fighter Air Regiment.json",
-  "skill": 35,
-  "planeAssignments": [
-    {
-      "archType": "i16",
-      "squadronIntroduction": "19420101",
-      "squadronWithdrawal": "19430314"
-    },
-    {
-      "archType": "spitfire",
-      "squadronIntroduction": "19430315",
-      "squadronWithdrawal": "19450601"
-    }
-  ],
-  "conversionPeriods": [
-    {
-      "conversionStartDate": "19430315",
-      "conversionCompleteDate": "19430331"
-    }
-  ],  
-  "airfields": {
-    "19420801": "Bol. Rossoshka",
-    "19420906": "Svetly Yar",
-    "19421011": "Altuhov",
-    "19421123": "Zety",
-    "19421223": "Zety",
-    "19430120": "Bol. Rossoshka",
-    "19430301": "Belorechenskaya",
-    "19430330": "Elizavetinskaya",
-    "19430418": "Slavyanskaya",
-    "19430918": "Kievskoe",
-    "19430927": "Kievskoe",
-    "19431004": "Kievskoe",
-    "19431008": "Kievskoe",
-    "19440101": "Bol. Rossoshka"
-  },
-  "skins": [
-    {
-      "skinName": "629th Fighter Air Regiment",
-      "planeType": "i16t24",
-      "startDate": "19410801",
-      "endDate": "19411101",
-      "squadId": 10111629,
-      "country": "Russia",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "629th Fighter Air Regiment W",
-      "planeType": "i16t24",
-      "startDate": "19411101",
-      "endDate": "19420301",
-      "squadId": 10111629,
-      "country": "Russia",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "629th Fighter Air Regiment",
-      "planeType": "i16t24",
-      "startDate": "19420301",
-      "endDate": "19450601",
-      "squadId": 10111629,
-      "country": "Russia",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-  ],
-  "squadHistory": {
-    "squadHistoryEntries": [
-      {
-        "date": "19430301",
-        "squadName": "57th Guards Fighter Air Regiment",
-        "armedServiceName": "Voyenno-Vozdushnye Sily",
-        "skill": 60
-      }
-    ]
-  },
-  "serviceId": 10101,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19400101",
-        "endDate": "19450601",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 70
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 30
-          }
-        ]
-      }
-    ]
-  },
-  "nightMissionOdds": {
-    "nightMissionPeriods": [
-      {
-        "startDate": "19440901",
-        "endDate": "19450601",
-        "nightMissionOdds": 3
-      }
-    ]
-  },
-  "callsigns": {
-    "19410801": "DUCK"
-  }
+	"country": "RUSSIA",
+	"squadronId": 10111629,
+	"name": "629th Fighter Air Regiment",
+	"fileName": "629th Fighter Air Regiment.json",
+	"skill": 35,
+	"planeAssignments": [
+		{
+			"archType": "i16",
+			"squadronIntroduction": "19420101",
+			"squadronWithdrawal": "19430314"
+		},
+		{
+			"archType": "spitfire",
+			"squadronIntroduction": "19430315",
+			"squadronWithdrawal": "19450601"
+		}
+	],
+	"conversionPeriods": [
+		{
+			"conversionStartDate": "19430315",
+			"conversionCompleteDate": "19430331"
+		}
+	],
+	"airfields": {
+		"19420801": "Bol. Rossoshka",
+		"19420906": "Svetly Yar",
+		"19421011": "Altuhov",
+		"19421123": "Zety",
+		"19421223": "Zety",
+		"19430120": "Bol. Rossoshka",
+		"19430301": "Belorechenskaya",
+		"19430330": "Elizavetinskaya",
+		"19430418": "Slavyanskaya",
+		"19430918": "Kievskoe",
+		"19430927": "Kievskoe",
+		"19431004": "Kievskoe",
+		"19431008": "Kievskoe",
+		"19440101": "Bol. Rossoshka"
+	},
+	"skins": [
+		{
+			"skinName": "629th Fighter Air Regiment",
+			"planeType": "i16t24",
+			"startDate": "19410801",
+			"endDate": "19411101",
+			"squadId": 10111629,
+			"country": "Russia",
+			"category": "Squadron",
+			"definedInGame": false
+		},
+		{
+			"skinName": "629th Fighter Air Regiment W",
+			"planeType": "i16t24",
+			"startDate": "19411101",
+			"endDate": "19420301",
+			"squadId": 10111629,
+			"country": "Russia",
+			"category": "Squadron",
+			"definedInGame": false
+		},
+		{
+			"skinName": "629th Fighter Air Regiment",
+			"planeType": "i16t24",
+			"startDate": "19420301",
+			"endDate": "19450601",
+			"squadId": 10111629,
+			"country": "Russia",
+			"category": "Squadron",
+			"definedInGame": false
+		}
+	],
+	"squadHistory": {
+		"squadHistoryEntries": [
+			{
+				"date": "19430301",
+				"squadName": "57th Guards Fighter Air Regiment",
+				"armedServiceName": "Voyenno-Vozdushnye Sily",
+				"skill": 60
+			}
+		]
+	},
+	"serviceId": 10101,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19400101",
+				"endDate": "19450601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_STRATEGIC_INTERCEPT",
+						"weight": 10
+					},
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 70
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 30
+					}
+				]
+			}
+		]
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+			{
+				"startDate": "19440901",
+				"endDate": "19450601",
+				"nightMissionOdds": 3
+			}
+		]
+	},
+	"callsigns": {
+		"19410801": "DUCK"
+	}
 }

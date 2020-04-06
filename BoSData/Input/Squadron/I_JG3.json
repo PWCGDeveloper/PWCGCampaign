@@ -1,137 +1,135 @@
 {
-  "country": "GERMANY",
-  "squadronId": 20111003,
-  "name": "I./JG3",
-  "fileName": "I_JG3.json",
-  "skill": 85,
-  "planeAssignments": [
-    {
-      "archType": "bf109",
-      "squadronIntroduction": "19420801",
-      "squadronWithdrawal": "19440831"
-    },
-    {
-      "archType": "fw190",
-      "squadronIntroduction": "19440901",
-      "squadronWithdrawal": "19450601"
-    }
-  ],
-  "airfields": {
-    "19420801": "Zimovskoy",
-    "19420906": "Golubinskiy",
-    "19421011": "Zimovskoy",
-    "19421123": "Golubinskiy",
-    "19421223": "Ventsy",
-    "19430120": "Ventsy",
-    "19430301": "Severskaya",
-    "19430330": "Anastasievskaya",
-    "19430418": "Kievskoe",
-    "19430918": "Taman",
-    "19430927": "Taman",
-    "19431004": "Taman",
-    "19431008": "Bagerovo",
-    "19440101": "Zimovskoy",
-    "19440901": "Aachen",
-    "19441001": "Kelz",
-    "19441101": "Koln-Ostheim",
-    "19441220": "Soesterberg",
-    "19441225": "Twente",
-    "19441229": "Twente",
-    "19450207": "Soesterberg",
-    "19450310": "Coesfeld-Lette",
-    "19450404": "Plantlunne"
-  },
-  "skins": [
-    {
-      "skinName": "I_JG3",
-      "planeType": "bf109f2",
-      "startDate": "19400801",
-      "endDate": "19450601",
-      "squadId": 20111003,
-      "country": "Germany",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "I_JG3",
-      "planeType": "bf109f4",
-      "startDate": "19400801",
-      "endDate": "19450601",
-      "squadId": 20111003,
-      "country": "Germany",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "I_JG3",
-      "planeType": "bf109g2",
-      "startDate": "19400801",
-      "endDate": "19450601",
-      "squadId": 20111003,
-      "country": "Germany",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-  ],
-  "squadHistory": {
-    "squadHistoryEntries": [
-      {
-        "date": "19440901",
-        "squadName": "I./JG1",
-        "armedServiceName": "Luftwaffe",
-        "skill": 70
-      }
-    ]
-  },
-  "serviceId": 20101,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19420801",
-        "endDate": "19440831",
-        "weightedRoles": [
-          {
-            "role": "ROLE_RECON",
-            "weight": 3
-          },
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 90
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 10
-          }
-        ]
-      },
-      {
-        "startDate": "19440901",
-        "endDate": "19450601",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 70
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 30
-          }
-        ]
-      }
-    ]
-  },
-  "nightMissionOdds": {
-    "nightMissionPeriods": [
-      {
-        "startDate": "19440901",
-        "endDate": "19450601",
-        "nightMissionOdds": 3
-      }
-    ]
-  },
-  "conversionPeriods": [
-  ],
-  "callsigns": {
-    "19410801": "SWIFT"
-  }
+	"country": "GERMANY",
+	"squadronId": 20111003,
+	"name": "I./JG3",
+	"fileName": "I_JG3.json",
+	"skill": 85,
+	"planeAssignments": [
+		{
+			"archType": "fw190",
+			"squadronIntroduction": "19440901",
+			"squadronWithdrawal": "19450601"
+		}
+	],
+	"airfields": {
+		"19420801": "Zimovskoy",
+		"19420906": "Golubinskiy",
+		"19421011": "Zimovskoy",
+		"19421123": "Golubinskiy",
+		"19421223": "Ventsy",
+		"19430120": "Ventsy",
+		"19430301": "Severskaya",
+		"19430330": "Anastasievskaya",
+		"19430418": "Kievskoe",
+		"19430918": "Taman",
+		"19430927": "Taman",
+		"19431004": "Taman",
+		"19431008": "Bagerovo",
+		"19440101": "Zimovskoy",
+		"19440901": "Aachen",
+		"19441001": "Kelz",
+		"19441101": "Koln-Ostheim",
+		"19441220": "Soesterberg",
+		"19441225": "Twente",
+		"19441229": "Twente",
+		"19450207": "Soesterberg",
+		"19450310": "Coesfeld-Lette",
+		"19450404": "Plantlunne"
+	},
+	"skins": [
+		{
+			"skinName": "I_JG3",
+			"planeType": "bf109f2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20111003,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
+		},
+		{
+			"skinName": "I_JG3",
+			"planeType": "bf109f4",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20111003,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
+		},
+		{
+			"skinName": "I_JG3",
+			"planeType": "bf109g2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20111003,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
+		}
+	],
+	"squadHistory": {
+		"squadHistoryEntries": [
+			{
+				"date": "19440901",
+				"squadName": "I./JG1",
+				"armedServiceName": "Luftwaffe",
+				"skill": 70
+			}
+		]
+	},
+	"serviceId": 20101,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19420801",
+				"endDate": "19440831",
+				"weightedRoles": [
+					{
+						"role": "ROLE_STRATEGIC_INTERCEPT",
+						"weight": 20
+					},
+					{
+						"role": "ROLE_RECON",
+						"weight": 3
+					},
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 90
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 10
+					}
+				]
+			},
+			{
+				"startDate": "19440901",
+				"endDate": "19450601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 70
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 30
+					}
+				]
+			}
+		]
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+			{
+				"startDate": "19440901",
+				"endDate": "19450601",
+				"nightMissionOdds": 3
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"callsigns": {
+		"19410801": "SWIFT"
+	}
 }

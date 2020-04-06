@@ -1,73 +1,74 @@
 {
-  "country": "GERMANY",
-  "squadronId": 20111027,
-  "name": "I./JG27",
-  "fileName": "I_JG27.json",
-  "skill": 85,
-  "planeAssignments": [
-    {
-      "archType": "fw190",
-      "squadronIntroduction": "19440901",
-      "squadronWithdrawal": "19441001"
-    },
-    {
-      "archType": "fw190d",
-      "squadronIntroduction": "19441001",
-      "squadronWithdrawal": "19450601"
-    }
-  ],
-  "airfields": {
-    "19440901": "Eindhoven",
-    "19441001": "Kluis",
-    "19441101": "Essen-Mulheim",
-    "19441220": "Bonn-Hangelar_3960",
-    "19441225": "Strassfeld",
-    "19441229": "Bonn-Hangelar_3960",
-    "19450207": "Krefeld-Linn",
-    "19450310": "Breitscheid",
-    "19450404": "Stormede"
-  },
-  "skins": [
-  ],
-  "squadHistory": {
-    "squadHistoryEntries": [
-    ]
-  },
-  "serviceId": 20101,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19440901",
-        "endDate": "19450601",
-        "weightedRoles": [
-          {
-            "role": "ROLE_RECON",
-            "weight": 3
-          },
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 80
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 20
-          }
-        ]
-      }
-    ]
-  },
-  "nightMissionOdds": {
-    "nightMissionPeriods": [
-      {
-        "startDate": "19440901",
-        "endDate": "19450601",
-        "nightMissionOdds": 3
-      }
-    ]
-  },
-  "conversionPeriods": [
-  ],
-  "callsigns": {
-    "19411001": "ROOK"
-  }
+	"country": "GERMANY",
+	"squadronId": 20111027,
+	"name": "I./JG27",
+	"fileName": "I_JG27.json",
+	"skill": 85,
+	"planeAssignments": [
+		{
+			"archType": "fw190",
+			"squadronIntroduction": "19440901",
+			"squadronWithdrawal": "19441001"
+		},
+		{
+			"archType": "fw190d",
+			"squadronIntroduction": "19441001",
+			"squadronWithdrawal": "19450601"
+		}
+	],
+	"airfields": {
+		"19440901": "Eindhoven",
+		"19441001": "Kluis",
+		"19441101": "Essen-Mulheim",
+		"19441220": "Bonn-Hangelar_3960",
+		"19441225": "Strassfeld",
+		"19441229": "Bonn-Hangelar_3960",
+		"19450207": "Krefeld-Linn",
+		"19450310": "Breitscheid",
+		"19450404": "Stormede"
+	},
+	"skins": [],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"serviceId": 20101,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19440901",
+				"endDate": "19450601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_STRATEGIC_INTERCEPT",
+						"weight": 20
+					},
+					{
+						"role": "ROLE_RECON",
+						"weight": 3
+					},
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 80
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 20
+					}
+				]
+			}
+		]
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+			{
+				"startDate": "19440901",
+				"endDate": "19450601",
+				"nightMissionOdds": 3
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"callsigns": {
+		"19411001": "ROOK"
+	}
 }
