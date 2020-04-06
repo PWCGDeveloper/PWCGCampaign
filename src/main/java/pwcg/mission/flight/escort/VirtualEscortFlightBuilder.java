@@ -39,6 +39,7 @@ public class VirtualEscortFlightBuilder
 
             VirtualEscortFlight virtualEscortFlight = new VirtualEscortFlight(escortFlightInformation, targetDefinition, escortedFlight);
             virtualEscortFlight.createFlight();
+            virtualEscortFlight.overrideFlightCruisingSpeedForEscort(escortedFlight.getFlightCruisingSpeed());
             return virtualEscortFlight;
         }
         

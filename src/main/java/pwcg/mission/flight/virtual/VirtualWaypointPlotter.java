@@ -106,7 +106,7 @@ public class VirtualWaypointPlotter
     
     private int calculateWaitTimeInSecondsForLeg(double distanceBetweenVWP)
     {
-        double cruiseSpeedKPH = flight.getFlightPlanes().getFlightCruisingSpeed();
+        double cruiseSpeedKPH = flight.getFlightCruisingSpeed();
         double kphToMetersToSecond = 1000.0 / 3600.0;
         double cruiseSpeedMetersPerSecond = cruiseSpeedKPH * kphToMetersToSecond;
         Double waitTime = distanceBetweenVWP / cruiseSpeedMetersPerSecond;

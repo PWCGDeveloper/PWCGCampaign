@@ -30,7 +30,8 @@ public class FlightInformation implements IFlightInformation
     private boolean isPlayerFlight = false;
     private boolean isEscortedByPlayerFlight = false;
     private boolean isEscortForPlayerFlight = false;
-    private int altitude;
+    private int altitude = 0;
+    private int flightCruisingSpeed = 0;
 
     public FlightInformation(Mission mission)
     {
@@ -218,6 +219,17 @@ public class FlightInformation implements IFlightInformation
     public void setAltitude(int altitude)
     {
         this.altitude = altitude;
+    }
+
+    @Override
+    public int getFlightCruisingSpeed()
+    {
+        return flightCruisingSpeed;
+    }
+
+    public void setCruisingSpeed(int cruisingSpeed)
+    {
+        this.flightCruisingSpeed = cruisingSpeed;
     }
 
     @Override

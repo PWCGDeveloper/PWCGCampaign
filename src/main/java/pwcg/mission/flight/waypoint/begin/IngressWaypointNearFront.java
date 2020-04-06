@@ -36,7 +36,7 @@ public class IngressWaypointNearFront implements IIngressWaypoint
 
         McuWaypoint ingressWP = WaypointFactory.createIngressWaypointType();
         ingressWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-        ingressWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
+        ingressWP.setSpeed(flight.getFlightCruisingSpeed());
         ingressWP.setPosition(coord);   
         ingressWP.setTargetWaypoint(false);
         

@@ -65,7 +65,7 @@ public class StrategicInterceptWaypointFactory
 
         McuWaypoint interceptWP = WaypointFactory.createPatrolWaypointType();
         interceptWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-        interceptWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
+        interceptWP.setSpeed(flight.getFlightCruisingSpeed());
         interceptWP.setPosition(coord);    
         interceptWP.setTargetWaypoint(true);
         

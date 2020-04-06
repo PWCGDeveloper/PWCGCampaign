@@ -64,4 +64,8 @@ public interface IFlightInformation
     IAirfield getAirfield();
 
     int getFlightId();
+
+    int getFlightCruisingSpeed();
+
+    void setCruisingSpeed(int cruisingSpeed);
 }

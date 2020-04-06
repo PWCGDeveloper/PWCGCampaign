@@ -165,7 +165,6 @@ public class FlightPlanes implements IFlightPlanes
         return false;
     }
 
-    @Override
     public int getFlightCruisingSpeed()
     {
         int cruisingSpeed = planes.get(0).getCruisingSpeed();

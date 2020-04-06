@@ -60,4 +60,8 @@ public interface IFlight
     double getClosestContactWithPlayerDistance();
     
     TargetDefinition getTargetDefinition();
+
+    int getFlightCruisingSpeed();
+
+    void overrideFlightCruisingSpeedForEscort(int cruisingSpeed);
 }

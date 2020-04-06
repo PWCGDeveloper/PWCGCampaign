@@ -43,7 +43,7 @@ public class IngressWaypointScrambleOpposition implements IIngressWaypoint
 
         McuWaypoint ingressWP = WaypointFactory.createIngressWaypointType();
         ingressWP.setTriggerArea(McuWaypoint.COMBAT_AREA);
-        ingressWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
+        ingressWP.setSpeed(flight.getFlightCruisingSpeed());
         ingressWP.setPosition(coord);   
         ingressWP.setTargetWaypoint(true);
         

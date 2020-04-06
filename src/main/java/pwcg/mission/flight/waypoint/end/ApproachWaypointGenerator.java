@@ -27,7 +27,7 @@ public class ApproachWaypointGenerator
 
         McuWaypoint approachWP = WaypointFactory.createLandingApproachWaypointType();
         approachWP.setTriggerArea(McuWaypoint.LAND_AREA);
-        approachWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
+        approachWP.setSpeed(flight.getFlightCruisingSpeed());
         approachWP.setPosition(approachCoords);
         approachWP.setOrientation(orient);
         

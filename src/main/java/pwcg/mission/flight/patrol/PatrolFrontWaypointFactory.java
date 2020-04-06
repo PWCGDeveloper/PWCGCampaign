@@ -99,7 +99,7 @@ public class PatrolFrontWaypointFactory
 	{
 		McuWaypoint wp = WaypointFactory.createPatrolWaypointType();
 		wp.setTriggerArea(McuWaypoint.COMBAT_AREA);
-		wp.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());		
+		wp.setSpeed(flight.getFlightCruisingSpeed());		
 		wp.setPosition(coord);
 
 		return wp;

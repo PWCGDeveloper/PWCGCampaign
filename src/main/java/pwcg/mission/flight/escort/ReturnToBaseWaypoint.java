@@ -20,7 +20,7 @@ public class ReturnToBaseWaypoint
 
         McuWaypoint rtbWP = WaypointFactory.createEgressWaypointType();
         rtbWP.setTriggerArea(McuWaypoint.START_AREA);
-        rtbWP.setSpeed(escortFlight.getFlightPlanes().getFlightCruisingSpeed());
+        rtbWP.setSpeed(escortFlight.getFlightCruisingSpeed());
         rtbWP.setPosition(returnToBaseCoords);
         rtbWP.setOrientation(orient);
         return rtbWP;

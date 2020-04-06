@@ -138,7 +138,7 @@ public class ReconTransportWaypointsFactory
 
         McuWaypoint wp = WaypointFactory.createReconWaypointType();
         wp.setTriggerArea(McuWaypoint.TARGET_AREA);
-        wp.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
+        wp.setSpeed(flight.getFlightCruisingSpeed());
         wp.setPosition(coord);
 
         return wp;

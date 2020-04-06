@@ -41,7 +41,7 @@ public class BalloonBustWaypointFactory
 
 		McuWaypoint balloonBustWP = WaypointFactory.createBalloonBustWaypointType();
 		balloonBustWP.setTriggerArea(McuWaypoint.COMBAT_AREA);
-		balloonBustWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
+		balloonBustWP.setSpeed(flight.getFlightCruisingSpeed());
 		balloonBustWP.setPosition(balloonBustPosition);	
 		balloonBustWP.setTargetWaypoint(true);
         return balloonBustWP;

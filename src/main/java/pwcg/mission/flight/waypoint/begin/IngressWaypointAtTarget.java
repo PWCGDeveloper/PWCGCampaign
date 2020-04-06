@@ -26,7 +26,7 @@ public class IngressWaypointAtTarget implements IIngressWaypoint
 
         McuWaypoint ingressWP = WaypointFactory.createIngressWaypointType();
         ingressWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-        ingressWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
+        ingressWP.setSpeed(flight.getFlightCruisingSpeed());
         ingressWP.setPosition(ingressCoords);   
         ingressWP.setTargetWaypoint(false);
         

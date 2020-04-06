@@ -66,7 +66,7 @@ public class TransportWaypointFactory
 
         McuWaypoint midPointWP = WaypointFactory.createMoveToWaypointType();
         midPointWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-        midPointWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
+        midPointWP.setSpeed(flight.getFlightCruisingSpeed());
         midPointWP.setPosition(midPointCoords);
         midPointWP.setName("Mid Waypoint");
         return midPointWP;
@@ -81,7 +81,7 @@ public class TransportWaypointFactory
 
         McuWaypoint destinationWP = WaypointFactory.createMoveToWaypointType();
         destinationWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-        destinationWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
+        destinationWP.setSpeed(flight.getFlightCruisingSpeed());
         destinationWP.setPosition(destinationCoords);
         destinationWP.setName("Destination");
         return destinationWP;

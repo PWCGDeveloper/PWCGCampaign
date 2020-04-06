@@ -92,7 +92,7 @@ public class OffensiveWaypointsFrontFactory
         frontPosition.setYPos(flight.getFlightInformation().getAltitude());
         McuWaypoint wp = WaypointFactory.createPatrolWaypointType();
         wp.setTriggerArea(McuWaypoint.TARGET_AREA);
-        wp.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
+        wp.setSpeed(flight.getFlightCruisingSpeed());
         wp.setPosition(frontPosition);
         
         return wp;

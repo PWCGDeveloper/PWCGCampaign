@@ -61,7 +61,7 @@ public class ScrambleOpposingFighterWaypointFactory
 
         McuWaypoint scrambleTargetWP = WaypointFactory.createPatrolWaypointType();
         scrambleTargetWP.setTriggerArea(McuWaypoint.COMBAT_AREA);
-        scrambleTargetWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
+        scrambleTargetWP.setSpeed(flight.getFlightCruisingSpeed());
         scrambleTargetWP.setPosition(scrambleOpposeTargetPosition);    
         scrambleTargetWP.setOrientation(orientation);
         scrambleTargetWP.setTargetWaypoint(true);
@@ -77,7 +77,7 @@ public class ScrambleOpposingFighterWaypointFactory
 
         McuWaypoint scrambleFurtherWP = WaypointFactory.createPatrolWaypointType();
         scrambleFurtherWP.setTriggerArea(McuWaypoint.COMBAT_AREA);
-        scrambleFurtherWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
+        scrambleFurtherWP.setSpeed(flight.getFlightCruisingSpeed());
         scrambleFurtherWP.setPosition(secondCoord);    
         scrambleFurtherWP.setTargetWaypoint(false);
         scrambleFurtherWP.setOrientation(orientation);

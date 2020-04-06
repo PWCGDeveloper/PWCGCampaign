@@ -50,7 +50,7 @@ public class SpyExtractWaypointWaypoints
     {
         McuWaypoint approachWP = WaypointFactory.createSpyExtractWaypointType();
         approachWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-        approachWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
+        approachWP.setSpeed(flight.getFlightCruisingSpeed());
         approachWP.setPosition(pickupLocation);
         approachWP.setTargetWaypoint(true);
         return approachWP;

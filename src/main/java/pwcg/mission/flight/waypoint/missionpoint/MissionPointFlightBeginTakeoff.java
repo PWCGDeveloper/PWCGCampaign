@@ -168,7 +168,7 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
         McuWaypoint takeoffWP = WaypointFactory.createTakeOffWaypointType();
         takeoffWP.setTriggerArea(McuWaypoint.INITIAL_CLIMB_AREA);
         takeoffWP.setDesc(flight.getSquadron().determineDisplayName(flight.getCampaign().getDate()), WaypointType.TAKEOFF_WAYPOINT.getName());
-        takeoffWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
+        takeoffWP.setSpeed(flight.getFlightCruisingSpeed());
         takeoffWP.setPosition(initialClimbCoords);
         takeoffWP.setOrientation(flight.getFlightInformation().getAirfield().getTakeoffLocation().getOrientation().copy());
 

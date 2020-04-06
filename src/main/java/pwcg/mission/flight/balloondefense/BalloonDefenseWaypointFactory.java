@@ -57,7 +57,7 @@ public class BalloonDefenseWaypointFactory
 
         McuWaypoint loopFirstWP = WaypointFactory.createPatrolWaypointType();
         loopFirstWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-        loopFirstWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
+        loopFirstWP.setSpeed(flight.getFlightCruisingSpeed());
         loopFirstWP.setPosition(balloonDefensePosition);    
         loopFirstWP.setTargetWaypoint(true);
         

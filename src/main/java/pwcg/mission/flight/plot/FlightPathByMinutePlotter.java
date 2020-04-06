@@ -20,7 +20,7 @@ public class FlightPathByMinutePlotter
             return this.generatePathNoWaypoints(flight);
         }
         
-        double cruiseSpeedKPH = flight.getFlightPlanes().getFlightCruisingSpeed();
+        double cruiseSpeedKPH = flight.getFlightCruisingSpeed();
         double movementPerInterval = (cruiseSpeedKPH / 60) * 1000;
 
         List<Coordinate> flightPath = new ArrayList<Coordinate>();

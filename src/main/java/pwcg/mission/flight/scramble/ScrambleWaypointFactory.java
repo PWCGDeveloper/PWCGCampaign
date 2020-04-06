@@ -61,7 +61,7 @@ public class ScrambleWaypointFactory
 		scrambleTargetWP.setOrientation(wpOrientation.copy());
 		scrambleTargetWP.setTargetWaypoint(true);
 		scrambleTargetWP.setTriggerArea(McuWaypoint.COMBAT_AREA);
-		scrambleTargetWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
+		scrambleTargetWP.setSpeed(flight.getFlightCruisingSpeed());
         return scrambleTargetWP;
     }
 }

@@ -73,7 +73,7 @@ public class InterceptWaypointFactory
 
         McuWaypoint innerLoopFirstWP = WaypointFactory.createPatrolWaypointType();
         innerLoopFirstWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-        innerLoopFirstWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
+        innerLoopFirstWP.setSpeed(flight.getFlightCruisingSpeed());
         innerLoopFirstWP.setPosition(coord);    
         innerLoopFirstWP.setTargetWaypoint(true);
         

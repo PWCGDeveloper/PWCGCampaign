@@ -19,10 +19,10 @@ import pwcg.mission.target.TargetDefinition;
 public abstract class Flight implements IFlight
 {
     private IFlightInformation flightInformation;
-    private IFlightPlanes flightPlanes;
+    private FlightPlanes flightPlanes;
     private ILinkedGroundUnits linkedGroundUnits = new LinkedGroundUnits();
     private ILinkedFlights linkedFlights = new LinkedFlights();
-    private IFlightPlayerContact flightPlayerContact = new FlightPlayerContact();
+    private FlightPlayerContact flightPlayerContact = new FlightPlayerContact();
     private IWaypointPackage waypointPackage;
     private VirtualWaypointPackage virtualWaypointPackage;
     private TargetDefinition targetDefinition = new TargetDefinition();
@@ -149,6 +149,24 @@ public abstract class Flight implements IFlight
         return virtualWaypointPackage;
     }
     
+    @Override
+    public void overrideFlightCruisingSpeedForEscort(int cruisingSpeed)
+    {
+        flightInformation.setCruisingSpeed(cruisingSpeed);
+    }
+
+    @Override
+    public int getFlightCruisingSpeed()
+    {
+        if (flightInformation.getFlightCruisingSpeed() > 0)
+        {
+            return flightInformation.getFlightCruisingSpeed();
+        }
+        else
+        {
+            return flightPlanes.getFlightCruisingSpeed();
+        }
+    }
 
     @Override
     public Mission getMission()

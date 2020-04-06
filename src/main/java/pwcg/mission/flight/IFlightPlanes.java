@@ -32,7 +32,7 @@ public interface IFlightPlanes
 
     void addGroundUnitTarget(IGroundUnit targetGroundUnit);
 
-    int getFlightCruisingSpeed();
+    //int getFlightCruisingSpeed();
 
     boolean isFlightHasFighterPlanes();
 

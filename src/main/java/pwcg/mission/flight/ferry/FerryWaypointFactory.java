@@ -70,7 +70,7 @@ public class FerryWaypointFactory
 
         McuWaypoint hopWP = WaypointFactory.createMoveToWaypointType();
         hopWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-        hopWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
+        hopWP.setSpeed(flight.getFlightCruisingSpeed());
         hopWP.setPosition(hopCoords);
         return hopWP;
     }
@@ -87,7 +87,7 @@ public class FerryWaypointFactory
 
         McuWaypoint hopWP = WaypointFactory.createMoveToWaypointType();
         hopWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-        hopWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
+        hopWP.setSpeed(flight.getFlightCruisingSpeed());
         hopWP.setPosition(hopCoords);
         return hopWP;
     }

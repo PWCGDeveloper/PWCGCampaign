@@ -42,7 +42,7 @@ public class GroundAttackWaypointHelper
 
 		McuWaypoint targetApproachWP = WaypointFactory.createTargetApproachWaypointType();		
 		targetApproachWP.setTriggerArea(McuWaypoint.COMBAT_AREA);
-		targetApproachWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
+		targetApproachWP.setSpeed(flight.getFlightCruisingSpeed());
 		targetApproachWP.setPosition(coord);	
 		targetApproachWP.setTargetWaypoint(false);
 		waypointsBefore.add(targetApproachWP);	
@@ -70,7 +70,7 @@ public class GroundAttackWaypointHelper
         McuWaypoint targetFinalWP = WaypointFactory.createTargetFinalWaypointType();
         targetFinalWP.setTriggerArea(McuWaypoint.TARGET_AREA);
         targetFinalWP.setDesc(WaypointType.TARGET_FINAL_WAYPOINT.getName());
-        targetFinalWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
+        targetFinalWP.setSpeed(flight.getFlightCruisingSpeed());
         targetFinalWP.setPosition(coord);    
         targetFinalWP.setOrientation(approachWP.getOrientation().copy());
         targetFinalWP.setTargetWaypoint(true);
@@ -97,7 +97,7 @@ public class GroundAttackWaypointHelper
 
 		McuWaypoint targetEgressWP = WaypointFactory.createTargetEgressWaypointType();
 		targetEgressWP.setTriggerArea(McuWaypoint.COMBAT_AREA);
-		targetEgressWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
+		targetEgressWP.setSpeed(flight.getFlightCruisingSpeed());
 		targetEgressWP.setPosition(coord);	
 		targetEgressWP.setTargetWaypoint(false);
 

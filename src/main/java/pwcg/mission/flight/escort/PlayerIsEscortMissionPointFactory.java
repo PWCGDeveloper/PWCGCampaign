@@ -53,7 +53,7 @@ public class PlayerIsEscortMissionPointFactory
 		rendezvousWaypoint.setTriggerArea(McuWaypoint.COMBAT_AREA);		
 		rendezvousWaypoint.setPosition(coord);	
 		rendezvousWaypoint.setTargetWaypoint(true);
-		rendezvousWaypoint.setSpeed(escortFlight.getFlightPlanes().getFlightCruisingSpeed());
+		rendezvousWaypoint.setSpeed(escortFlight.getFlightCruisingSpeed());
 		return rendezvousWaypoint;
 	}
 }

@@ -41,6 +41,8 @@ public class EscortForPlayerBuilder
                 EscortForPlayerFlightConnector connector = new EscortForPlayerFlightConnector(escortForPlayerFlight, playerFlight);
                 connector.connectEscortAndEscortedFlight();
 
+                escortForPlayerFlight.overrideFlightCruisingSpeedForEscort(playerFlight.getFlightCruisingSpeed());
+                
                 return escortForPlayerFlight;
             }
         }
