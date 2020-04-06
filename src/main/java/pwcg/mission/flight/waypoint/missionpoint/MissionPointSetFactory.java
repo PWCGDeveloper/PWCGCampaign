@@ -74,4 +74,11 @@ public class MissionPointSetFactory
         IMissionPointSet rendezvousMissionPointSet = rendezvousMissionPointSetBuilder.createFlightRendezvous(ingressWaypoint);
         return rendezvousMissionPointSet;
     }
+
+    public static IMissionPointSet duplicateWaypointsWithOffset(IFlight escortedFlight, int altitudeOffset, int horizontalOffset) throws PWCGException
+    {
+        DuplicatedMissionPointSetBuilder duplicatedMissionPointSetBuilder = new DuplicatedMissionPointSetBuilder(escortedFlight, altitudeOffset, horizontalOffset); 
+        IMissionPointSet duplicatedMissionPointSet = duplicatedMissionPointSetBuilder.createDuplicateWaypointsWithOffset();
+        return duplicatedMissionPointSet;
+    }
 }

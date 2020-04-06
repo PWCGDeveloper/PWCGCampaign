@@ -37,6 +37,18 @@ public class Coordinate implements Cloneable
 		return coord;
 	}
 
+	public void adjustPosition(double altitudeOffset, double horizontalOffset) throws PWCGException
+	{
+        double newAltitude = getYPos() + altitudeOffset; 
+        setYPos(newAltitude);
+        
+        double newX = getXPos() + horizontalOffset;
+        setXPos(newX);
+
+        double newZ = getZPos() + horizontalOffset;
+        setZPos(newZ);
+	}
+	
 	public void setXPos(double xPos) throws PWCGException
 	{
 		if (Double.isNaN(xPos))

@@ -1,7 +1,5 @@
 package pwcg.mission.flight.escort;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.CampaignMode;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
@@ -15,18 +13,12 @@ public class EscortForPlayerFlightBuilder
             return;
         }
         
-        Campaign campaign = mission.getCampaign();
-        IFlight escortFlight = null;
-        if (escortedFlight.isPlayerFlight())
+        if (!escortedFlight.getFlightInformation().isPlayerFlight())
         {
-            escortFlight = createEscortForPlayerFlight(escortedFlight);
-        }
-        else if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE ||
-                 campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COOP)
-        {
-            escortFlight = createEscortForAiFlight(mission, escortedFlight);
+            return;
         }
         
+        IFlight escortFlight = createEscortForPlayerFlight(escortedFlight);
         if (escortFlight != null)
         {
             escortedFlight.getLinkedFlights().addLinkedFlight(escortFlight);
@@ -38,12 +30,5 @@ public class EscortForPlayerFlightBuilder
         EscortForPlayerBuilder playerEscortBuilder = new EscortForPlayerBuilder();
         IFlight escortForPlayerFlight = playerEscortBuilder.createEscortForPlayerFlight(escortedFlight);
         return escortForPlayerFlight;
-    }
-
-    private IFlight createEscortForAiFlight(Mission mission, IFlight escortedFlight) throws PWCGException 
-    {
-        VirtualEscortFlightBuilder virtualEscortFlightBuilder = new VirtualEscortFlightBuilder();
-        IFlight escortForAiFlight = virtualEscortFlightBuilder.createVirtualEscortFlight(escortedFlight);
-        return escortForAiFlight;
     }
 }
