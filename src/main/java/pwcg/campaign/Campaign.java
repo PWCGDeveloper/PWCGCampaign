@@ -36,13 +36,14 @@ public class Campaign
     private CampaignLogs campaignLogs = null;
 
     private Mission currentMission = null;    
-    private CampaignPersonnelManager personnelManager = null;
-    private CampaignEquipmentManager equipmentManager = new CampaignEquipmentManager();
-    private SquadronMoveEvent squadronMoveEvent = null;
+    private CampaignPersonnelManager personnelManager;
+    private CampaignEquipmentManager equipmentManager;
+    private SquadronMoveEvent squadronMoveEvent;
 
     public Campaign() 
     {
         personnelManager = new CampaignPersonnelManager(this);
+        equipmentManager = new CampaignEquipmentManager(this);
         campaignLogs = new CampaignLogs();
     }
 

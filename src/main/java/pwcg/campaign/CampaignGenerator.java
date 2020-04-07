@@ -25,7 +25,8 @@ public class CampaignGenerator
         generatorModel.validateCampaignInputs();
         createCampaignBasis();
         staffSquadrons();
-        staffReplacements();
+        createPersonnelReplacements();
+        createEquipmentReplacements();
         return campaign;
     }
 
@@ -55,13 +56,23 @@ public class CampaignGenerator
         }
     }
 
-    private void staffReplacements() throws PWCGException
+    private void createPersonnelReplacements() throws PWCGException
     {
         List<ArmedService> armedServices = ArmedServiceFactory.createServiceManager().getAllActiveArmedServices(campaign.getDate());
         for (ArmedService armedService : armedServices)
         {
-            CampaignEquipmentGenerator equipmentGenerator = new CampaignEquipmentGenerator(campaign, armedService);
-            equipmentGenerator.createReplacements();
+            CampaignPersonnelManager personnelManager = campaign.getPersonnelManager();
+            personnelManager.createPersonnelReplacements(armedService);
+        }
+    }
+
+    private void createEquipmentReplacements() throws PWCGException
+    {
+        List<ArmedService> armedServices = ArmedServiceFactory.createServiceManager().getAllActiveArmedServices(campaign.getDate());
+        for (ArmedService armedService : armedServices)
+        {
+            CampaignEquipmentManager equipmentGenerator = campaign.getEquipmentManager();
+            equipmentGenerator.createEquipmentDepot(armedService);
         }
     }
 

@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import pwcg.campaign.factory.ArmedServiceFactory;
+import pwcg.campaign.personnel.InitialReplacementStaffer;
 import pwcg.campaign.personnel.PersonnelReplacementsService;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.Ace;
@@ -170,8 +172,13 @@ public class CampaignPersonnelManager
         return new ArrayList<PersonnelReplacementsService>(personnelReplacementsServices.values());
     }
     
-    public PersonnelReplacementsService getPersonnelReplacementsService(Integer serviceId)
+    public PersonnelReplacementsService getPersonnelReplacementsService(Integer serviceId) throws PWCGException
     {
+        if (!personnelReplacementsServices.containsKey(serviceId))
+        {
+            ArmedService armedService = ArmedServiceFactory.createServiceManager().getArmedServiceById(serviceId, campaign.getDate());
+            createPersonnelReplacements(armedService);
+        }
         return personnelReplacementsServices.get(serviceId);
     }
 
@@ -194,5 +201,18 @@ public class CampaignPersonnelManager
     	}
     	
         return replacementCount;
+    }
+
+    public void createPersonnelReplacements(ArmedService armedService) throws PWCGException
+    {
+        InitialReplacementStaffer initialReplacementStaffer = new InitialReplacementStaffer(campaign, armedService);
+        SquadronMembers squadronMembers = initialReplacementStaffer.staffReplacementsForService();
+        
+        PersonnelReplacementsService replacementsForService = new PersonnelReplacementsService();
+        replacementsForService.setReplacements(squadronMembers);
+        replacementsForService.setServiceId(armedService.getServiceId());
+        replacementsForService.setDailyReplacementRate(armedService.getDailyPersonnelReplacementRate());
+        replacementsForService.setLastReplacementDate(campaign.getDate());
+        campaign.getPersonnelManager().addPersonnelReplacementsService(armedService.getServiceId(), replacementsForService);
     }
 }
