@@ -76,6 +76,7 @@ public enum FlightTypes
          }
         return flightTypesByCategory;
     }
+    
 //    
 //    public static boolean isHighPriorityFlight(FlightTypes flightType)
 //    {
@@ -92,7 +93,6 @@ public enum FlightTypes
 //         
 //        return false;
 //    }
-    
     
     public static boolean isHighPriorityFlight(FlightTypes flightType)
     {
