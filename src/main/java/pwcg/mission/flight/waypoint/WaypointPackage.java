@@ -117,6 +117,12 @@ public class WaypointPackage implements IWaypointPackage
     }
 
     @Override
+    public void clearMissionPointSet()
+    {
+        missionPointSets.clear();
+    }
+
+    @Override
     public void finalize(PlaneMcu plane) throws PWCGException
     {
         for (IMissionPointSet missionPointSet : missionPointSets)

@@ -13,12 +13,12 @@
       "help": "Maximum additional aircraft"
     },
     "StrategicBombingMinimum": {
-      "value": "4",
+      "value": "3",
       "label": "Strategic Bombing Minimum",
       "help": "Minimum number of aircraft"
     },
     "StrategicBombingAdditional": {
-      "value": "4",
+      "value": "2",
       "label": "Strategic Bombing Additional",
       "help": "Maximum additional aircraft"
     },
