@@ -107,10 +107,10 @@ public class VirtualWaypointPackageValidator
         {
             IWaypointPackage waypointPackage = flight.getVirtualWaypointPackage().getWaypointsForPlane(plane.getIndex());
             boolean isFirstLinkedToRealWaypoint = false;
-            for (BaseFlightMcu flightPoint : waypointPackage.getAllFlightPoints())
+            boolean virtualWaypointIsLinkedToRealWaypoint = false;
+            for (VirtualWayPoint virtualWayPoint : flight.getVirtualWaypointPackage().getVirtualWaypoints())
             {
-                boolean virtualWaypointIsLinkedToRealWaypoint = false;
-                for (VirtualWayPoint virtualWayPoint : flight.getVirtualWaypointPackage().getVirtualWaypoints())
+                for (BaseFlightMcu flightPoint : waypointPackage.getAllFlightPoints())
                 {
                     VwpSpawnContainer spawnContainer = virtualWayPoint.getVwpSpawnContainerForPlane(plane.getIndex());
                     virtualWaypointIsLinkedToRealWaypoint = IndexLinkValidator.isIndexInTargetList(flightPoint.getIndex(), spawnContainer.getWpActivateTimer().getTargets());

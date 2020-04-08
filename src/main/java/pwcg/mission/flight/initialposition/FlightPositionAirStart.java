@@ -1,5 +1,8 @@
 package pwcg.mission.flight.initialposition;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
@@ -31,28 +34,114 @@ public class FlightPositionAirStart
         resetAirStartFormation(flight, startCoordinate);
     }
 
-    public static void resetAirStartFormation(IFlight flight, Coordinate startCoordinate) throws PWCGException 
+    
+    private static void resetAirStartFormation(IFlight flight, Coordinate startCoordinate) throws PWCGException 
+    {
+        if (flight.getFlightPlanes().getPlanes().size() <= 4)
+        {
+            resetAirStartFormationForSmallFormation(flight, startCoordinate);
+        }
+        else
+        {
+            resetAirStartFormationForLargeFormation(flight, startCoordinate);
+        }
+    }
+    
+    private static void resetAirStartFormationForSmallFormation(IFlight flight, Coordinate startCoordinate) throws PWCGException 
+    {
+        int initialAltitude = WaypointType.getAltitudeForWaypointType(WaypointType.AIR_START_WAYPOINT, flight.getFlightInformation().getAltitude());
+        resetAirStartFormationForUnit(flight.getFlightPlanes().getPlanes(), flight, startCoordinate, initialAltitude);
+    }
+    
+    private static void resetAirStartFormationForLargeFormation(IFlight flight, Coordinate startCoordinate) throws PWCGException 
+    {
+        int numPlanesInFlight = determineNumberOfPlanesInFlight(flight);
+        int numFlights = determineNumberOfFlights(flight, numPlanesInFlight);
+
+        double startOrientation = MathUtils.calcAngle(startCoordinate, flight.getTargetDefinition().getTargetPosition());
+        double flightPlacementAngle = MathUtils.adjustAngle(startOrientation, 180);
+        int initialAltitude = WaypointType.getAltitudeForWaypointType(WaypointType.AIR_START_WAYPOINT, flight.getFlightInformation().getAltitude());
+        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        int aircraftSpacingHorizontal = productSpecificConfiguration.getAircraftSpacingHorizontal();
+        int aircraftSpacingVertical = productSpecificConfiguration.getAircraftSpacingVertical();
+
+        for (int i = 0; i < numFlights; ++i)
+        {
+            int startIndex = numPlanesInFlight * i;
+            int endIndex = startIndex + numPlanesInFlight;
+            if (endIndex > flight.getFlightPlanes().getPlanes().size())
+            {
+                endIndex = flight.getFlightPlanes().getPlanes().size();
+            }
+            
+            List<PlaneMcu> planesInFlight = new ArrayList<>();
+            for (int index = startIndex; index < endIndex; ++index)
+            {
+                planesInFlight.add(flight.getFlightPlanes().getPlanes().get(index));
+            }
+            
+            Coordinate unitStartCoordinate = MathUtils.calcNextCoord(startCoordinate, flightPlacementAngle, (i * aircraftSpacingHorizontal * 2));
+            int flightInitialAltitude = (initialAltitude + (aircraftSpacingVertical));
+            resetAirStartFormationForUnit(planesInFlight, flight, unitStartCoordinate, flightInitialAltitude);
+        }
+
+    }
+
+    private static int determineNumberOfPlanesInFlight(IFlight flight)
+    {
+        int remainingPlanesFlightOfFour = (flight.getFlightPlanes().getPlanes().size() % 4);
+        int remainingPlanesFlightOfThree = (flight.getFlightPlanes().getPlanes().size() % 3);
+        
+        int numPlanesInFlight = 4;
+        if (remainingPlanesFlightOfFour == 0)
+        {
+            numPlanesInFlight = 4;
+        }
+        else if (remainingPlanesFlightOfThree == 0)
+        {
+            numPlanesInFlight = 3;
+        }
+        else if (remainingPlanesFlightOfFour == 1)
+        {
+            numPlanesInFlight = 3;
+        }
+        else if (remainingPlanesFlightOfThree == 1)
+        {
+            numPlanesInFlight = 4;
+        }
+        return numPlanesInFlight;
+    }
+
+    private static int determineNumberOfFlights(IFlight flight, int numPlanesInFlight)
+    {
+        int numFlights = flight.getFlightPlanes().getPlanes().size() / numPlanesInFlight;
+        int remainingPlanes = flight.getFlightPlanes().getPlanes().size() % numPlanesInFlight;
+        if (remainingPlanes != 0)
+        {
+            ++numFlights;
+        }
+        return numFlights;
+    }
+    
+    
+    private static void resetAirStartFormationForUnit(List<PlaneMcu> planes, IFlight flight, Coordinate startCoordinate, int flightAltitude) throws PWCGException 
     {
         double startOrientation = MathUtils.calcAngle(startCoordinate, flight.getTargetDefinition().getTargetPosition());
-        int initialAltitude = WaypointType.getAltitudeForWaypointType(WaypointType.AIR_START_WAYPOINT, flight.getFlightInformation().getAltitude());
         
         int i = 0;
-        for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
-        {
-            Coordinate planeCoords = new Coordinate();
-            
+        for (PlaneMcu plane : planes)
+        {            
             IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-            int AircraftSpacingHorizontal = productSpecificConfiguration.getAircraftSpacingHorizontal();
-            planeCoords.setXPos(startCoordinate.getXPos() - (i * AircraftSpacingHorizontal));
-            planeCoords.setZPos(startCoordinate.getZPos() - (i * AircraftSpacingHorizontal));
+            int aircraftSpacingHorizontal = productSpecificConfiguration.getAircraftSpacingHorizontal();
+            int aircraftSpacingVertical = productSpecificConfiguration.getAircraftSpacingVertical();
 
-            int AircraftSpacingVertical = productSpecificConfiguration.getAircraftSpacingVertical();
-            planeCoords.setYPos(initialAltitude + (i * AircraftSpacingVertical));
+            double placementAngle = MathUtils.adjustAngle(startOrientation, 20);
+            Coordinate planeCoords = MathUtils.calcNextCoord(startCoordinate, placementAngle, (i * aircraftSpacingHorizontal));
+            planeCoords.setYPos(flightAltitude + (i * aircraftSpacingVertical));
             
             flight.getFlightPlanes().setPlanePosition(plane.getLinkTrId(), planeCoords, new Orientation(startOrientation), FlightStartPosition.START_IN_AIR);
 
             ++i;
         }
     }
-
  }
