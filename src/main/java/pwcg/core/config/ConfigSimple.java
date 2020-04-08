@@ -25,14 +25,14 @@ public class ConfigSimple
         setParamForSimpleConfigChange(ConfigItemKeys.AlliedFlightsToKeepKey, "3");
         setParamForSimpleConfigChange(ConfigItemKeys.AxisFlightsToKeepKey, "2");
 
-        setParamForSimpleConfigChange(ConfigItemKeys.GroundAttackMinimumKey, "2");
-        setParamForSimpleConfigChange(ConfigItemKeys.GroundAttackAdditionalKey, "1");
         setParamForSimpleConfigChange(ConfigItemKeys.PatrolMinimumKey, "2");
         setParamForSimpleConfigChange(ConfigItemKeys.PatrolAdditionalKey, "2");
         setParamForSimpleConfigChange(ConfigItemKeys.BombingMinimumKey, "2");
         setParamForSimpleConfigChange(ConfigItemKeys.BombingAdditionalKey, "2");
-        setParamForSimpleConfigChange(ConfigItemKeys.StrategicBombingMinimumKey, "6");
-        setParamForSimpleConfigChange(ConfigItemKeys.StrategicBombingAdditionalKey, "6");
+        setParamForSimpleConfigChange(ConfigItemKeys.StrategicBombingMinimumKey, "4");
+        setParamForSimpleConfigChange(ConfigItemKeys.StrategicBombingAdditionalKey, "2");
+        setParamForSimpleConfigChange(ConfigItemKeys.GroundAttackMinimumKey, "2");
+        setParamForSimpleConfigChange(ConfigItemKeys.GroundAttackAdditionalKey, "2");
         setParamForSimpleConfigChange(ConfigItemKeys.TransportMinimumKey, "1");
         setParamForSimpleConfigChange(ConfigItemKeys.TransportAdditionalKey, "2");
     }
@@ -54,14 +54,16 @@ public class ConfigSimple
         setParamForSimpleConfigChange(ConfigItemKeys.AlliedFlightsToKeepKey, "5");
         setParamForSimpleConfigChange(ConfigItemKeys.AxisFlightsToKeepKey, "3");
 
-        setParamForSimpleConfigChange(ConfigItemKeys.GroundAttackMinimumKey, "2");
-        setParamForSimpleConfigChange(ConfigItemKeys.GroundAttackAdditionalKey, "2");
         setParamForSimpleConfigChange(ConfigItemKeys.PatrolMinimumKey, "2");
         setParamForSimpleConfigChange(ConfigItemKeys.PatrolAdditionalKey, "2");
-        setParamForSimpleConfigChange(ConfigItemKeys.BombingMinimumKey, "2");
-        setParamForSimpleConfigChange(ConfigItemKeys.BombingAdditionalKey, "4");
-        setParamForSimpleConfigChange(ConfigItemKeys.TransportMinimumKey, "2");
-        setParamForSimpleConfigChange(ConfigItemKeys.TransportAdditionalKey, "2");
+        setParamForSimpleConfigChange(ConfigItemKeys.BombingMinimumKey, "4");
+        setParamForSimpleConfigChange(ConfigItemKeys.BombingAdditionalKey, "3");
+        setParamForSimpleConfigChange(ConfigItemKeys.StrategicBombingMinimumKey, "6");
+        setParamForSimpleConfigChange(ConfigItemKeys.StrategicBombingAdditionalKey, "4");
+        setParamForSimpleConfigChange(ConfigItemKeys.GroundAttackMinimumKey, "2");
+        setParamForSimpleConfigChange(ConfigItemKeys.GroundAttackAdditionalKey, "4");
+        setParamForSimpleConfigChange(ConfigItemKeys.TransportMinimumKey, "1");
+        setParamForSimpleConfigChange(ConfigItemKeys.TransportAdditionalKey, "4");
     }
 
     public void setGroundMed() throws PWCGException 
@@ -81,14 +83,16 @@ public class ConfigSimple
         setParamForSimpleConfigChange(ConfigItemKeys.AlliedFlightsToKeepKey, "7");
         setParamForSimpleConfigChange(ConfigItemKeys.AxisFlightsToKeepKey, "4");
 
-        setParamForSimpleConfigChange(ConfigItemKeys.GroundAttackMinimumKey, "2");
-        setParamForSimpleConfigChange(ConfigItemKeys.GroundAttackAdditionalKey, "4");
         setParamForSimpleConfigChange(ConfigItemKeys.PatrolMinimumKey, "2");
         setParamForSimpleConfigChange(ConfigItemKeys.PatrolAdditionalKey, "2");
-        setParamForSimpleConfigChange(ConfigItemKeys.BombingMinimumKey, "2");
+        setParamForSimpleConfigChange(ConfigItemKeys.BombingMinimumKey, "4");
         setParamForSimpleConfigChange(ConfigItemKeys.BombingAdditionalKey, "6");
-        setParamForSimpleConfigChange(ConfigItemKeys.TransportMinimumKey, "2");
-        setParamForSimpleConfigChange(ConfigItemKeys.TransportAdditionalKey, "4");
+        setParamForSimpleConfigChange(ConfigItemKeys.StrategicBombingMinimumKey, "8");
+        setParamForSimpleConfigChange(ConfigItemKeys.StrategicBombingAdditionalKey, "4");
+        setParamForSimpleConfigChange(ConfigItemKeys.GroundAttackMinimumKey, "2");
+        setParamForSimpleConfigChange(ConfigItemKeys.GroundAttackAdditionalKey, "6");
+        setParamForSimpleConfigChange(ConfigItemKeys.TransportMinimumKey, "1");
+        setParamForSimpleConfigChange(ConfigItemKeys.TransportAdditionalKey, "5");
     }
 
     public void setGroundHigh() throws PWCGException 
