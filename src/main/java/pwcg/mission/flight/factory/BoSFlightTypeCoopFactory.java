@@ -43,6 +43,10 @@ public class BoSFlightTypeCoopFactory implements IFlightTypeFactory
         {
             return getFighterFlightType(squadron, isPlayerFlight);
         }
+        else if (missionRole == Role.ROLE_STRATEGIC_INTERCEPT)
+        {
+            return getFighterFlightType(squadron, isPlayerFlight);
+        }
         else if (missionRole == Role.ROLE_ATTACK)
         {
             return getAttackFlightType();

@@ -40,6 +40,10 @@ public class FCFlightTypeFactory implements IFlightTypeFactory
         {
             flightType = getFighterFlightType(squadron, isPlayerFlight);
         }
+        else if (missionRole == Role.ROLE_STRATEGIC_INTERCEPT)
+        {
+            flightType = getFighterFlightType(squadron, isPlayerFlight);
+        }
         else if (missionRole == Role.ROLE_ATTACK)
         {
             flightType = getAttackFlightType();
