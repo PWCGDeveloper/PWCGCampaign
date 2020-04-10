@@ -86,7 +86,7 @@ public class CoopUserRemovePanel extends ImageResizingPanel implements ActionLis
 	public void loadPanels() throws PWCGException
     {
 	    userSelector.clear();
-        for (CoopUser coopUser : CoopUserManager.getIntance().getCoopUsersExceptHost())
+        for (CoopUser coopUser : CoopUserManager.getIntance().getAllCoopUsers())
         {
             MultiSelectData selectData = buildSelectData(coopUser);
             userSelector.addSelection(selectData);
@@ -99,8 +99,7 @@ public class CoopUserRemovePanel extends ImageResizingPanel implements ActionLis
         selectData.setName(coopUser.getUsername());
         selectData.setText("User: " + coopUser.getUsername() +".");
         selectData.setInfo(
-                "User: " + coopUser.getUsername() + 
-                ".  " + coopUser.getNote());
+                "User: " + coopUser.getUsername());
         return selectData;
     }
     

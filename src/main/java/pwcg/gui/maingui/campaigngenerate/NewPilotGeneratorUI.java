@@ -35,24 +35,29 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
 
     private Campaign campaign;
     private JButton newPilotCreateButton;
-    private NewPilotDataEntryGUI dataEntry;
+    private CampaignGeneratorDataEntryGUI dataEntry;
     private CampaignHomeGUI parent = null;
     private CampaignAdminCoopPilotPanelSet alternateParent = null;
     
+    private CampaignGeneratorDO campaignGeneratorDO = new CampaignGeneratorDO();
+    private CampaignGeneratorState campaignGeneratorState;
 
     public NewPilotGeneratorUI(Campaign campaign, CampaignHomeGUI parent, CampaignAdminCoopPilotPanelSet alternateParent)
     {
         this.campaign = campaign;
         this.parent = parent;
-        this.alternateParent = alternateParent;
+        this.alternateParent = alternateParent;        
     }
 
-    public void makePanels() 
+    public void makePanels() throws PWCGException 
     {
+        campaignGeneratorState = new CampaignGeneratorState(campaignGeneratorDO);
+        campaignGeneratorState.buildStateStack();
+
         try
         {
-            setCenterPanel(makeDataEntryPanel());
             setRightPanel (makeServicePanel());
+            setCenterPanel(new CampaignGeneratorDataEntryEmpty());
             setLeftPanel(makeButtonPanel());
         }
         catch (Throwable e)
@@ -61,14 +66,20 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
             ErrorDialog.internalError(e.getMessage());
         }
     }
-
     private JPanel makeServicePanel() throws PWCGException
     {
-        String imagePath = getSideImageMain("CampaignGenLeft.jpg");
+        String imagePath = getSideImageMain("CampaignGenNav.jpg");
         
+        ImageResizingPanel servicesPanel = new ImageResizingPanel(imagePath);
+        servicesPanel.setLayout(new BorderLayout());
+        servicesPanel.setOpaque(true);
+
         CampaignGeneratorChooseServiceGUI campaignChooseServiceGUI = new CampaignGeneratorChooseServiceGUI(this);
-        campaignChooseServiceGUI.makeServiceSelectionPanel(imagePath);
-        return campaignChooseServiceGUI;
+        campaignChooseServiceGUI.makeServiceSelectionPanel();
+
+        servicesPanel.add(campaignChooseServiceGUI, BorderLayout.NORTH);
+     
+        return servicesPanel;
     }
 
     private JPanel makeButtonPanel() throws PWCGException
@@ -98,14 +109,9 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
         return configPanel;
     }
 
-    public void enableCompleteAction(boolean enabled)
-    {
-        newPilotCreateButton.setEnabled(enabled);
-    }
-
     public JPanel makeDataEntryPanel() throws PWCGException 
     {
-        dataEntry = new NewPilotDataEntryGUI(this);
+        dataEntry = new CampaignGeneratorDataEntryGUI(this);
         dataEntry.makePanels();
         
         return dataEntry;
@@ -113,7 +119,7 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
 
     public List<ArmedService> getArmedServices() throws PWCGException
     {
-        ArmedServiceFinder armedServiceFinder = new ArmedServiceFinder(campaign);
+        ArmedServiceFinder armedServiceFinder = new ArmedServiceFinder();
         return armedServiceFinder.getArmedServices();
     }
 
@@ -152,7 +158,6 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
 
     private void createPilot() throws PWCGUserException, Exception
     {
-        CampaignGeneratorDO campaignGeneratorDO = dataEntry.getCampaignGeneratorDO();
         String playerName = campaignGeneratorDO.getPlayerPilotName();
         String squadronName = campaignGeneratorDO.getSquadName();
         String rank = campaignGeneratorDO.getRank();
@@ -160,28 +165,55 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
 
         ISquadronMemberReplacer squadronMemberReplacer = CampaignModeFactory.makeSquadronMemberReplacer(campaign);
         SquadronMember newSquadronMember = squadronMemberReplacer.createPersona(playerName, rank, squadronName, coopuser);
+        
         campaign.write();        
         campaign.open(campaign.getCampaignData().getName());
         PWCGContext.getInstance().setCampaign(campaign);
-        if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
+        if (campaign.getCampaignData().getCampaignMode() != CampaignMode.CAMPAIGN_MODE_SINGLE)
         {
-            PWCGContext.getInstance().setReferencePlayer(newSquadronMember);
+            campaignGeneratorDO.createCoopUserAndPersona(campaign, newSquadronMember);
         }
     }
 
     public void changeService(ArmedService service) throws PWCGException
     {
-        CampaignGeneratorDO campaignGeneratorDO = new CampaignGeneratorDO();
         campaignGeneratorDO.setService(service);
         campaignGeneratorDO.setCampaignName(campaign.getCampaignData().getName());
         campaignGeneratorDO.setStartDate(campaign.getDate());
         campaignGeneratorDO.setCampaignMode(campaign.getCampaignData().getCampaignMode());
+        campaignGeneratorDO.setService(service);
         
-        dataEntry = new NewPilotDataEntryGUI(this);
-        dataEntry.setCampaignGeneratorDO(campaign, campaignGeneratorDO);
+        dataEntry = new CampaignGeneratorDataEntryGUI(this);
         dataEntry.makePanels();
         dataEntry.evaluateUI();
         
         CampaignGuiContextManager.getInstance().changeCurrentContext(null, dataEntry, null);        
+    }
+
+    @Override
+    public void setCampaignProfileParameters(CampaignMode campaignMode, String campaignName)
+    {
+    }
+
+    @Override
+    public CampaignGeneratorDO getCampaignGeneratorDO()
+    {
+        return campaignGeneratorDO;
+    }
+
+    @Override
+    public CampaignGeneratorState getCampaignGeneratorState()
+    {
+        return campaignGeneratorState;
+    }
+
+    @Override
+    public void evaluateCompletionState()
+    {
+        newPilotCreateButton.setEnabled(false);
+        if (campaignGeneratorState.isComplete())
+        {
+            newPilotCreateButton.setEnabled(true);
+        }
     }
 }

@@ -2,12 +2,11 @@ package pwcg.gui.maingui.campaigngenerate;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -16,7 +15,6 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import pwcg.campaign.ArmedService;
-import pwcg.campaign.api.Side;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -24,26 +22,28 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.MonitorSupport;
 import pwcg.gui.utils.ContextSpecificImages;
+import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ToolTipManager;
 
-public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionListener
+public class PilotGenerationInfoGUI extends JPanel implements ActionListener
 {
 
 	private static final long serialVersionUID = 1L;
 	
 	private IPilotGeneratorUI parent = null;
 
-	public CampaignGeneratorChooseServiceGUI(IPilotGeneratorUI parent)
+	public PilotGenerationInfoGUI(IPilotGeneratorUI parent)
 	{
-        this.parent = parent;
+		super();
         this.setLayout(new BorderLayout());
-        this.setOpaque(false);
+
+		this.parent = parent;
 	}
 
-	public void makeServiceSelectionPanel() throws PWCGException
+	public void makeServiceSelectionPanel(String imagePath) throws PWCGException
 	{
-		JPanel serviceMainPanel = new JPanel(new BorderLayout());
+		ImageResizingPanel serviceMainPanel = new ImageResizingPanel(imagePath);
 		serviceMainPanel.setLayout(new BorderLayout());
 		serviceMainPanel.setOpaque(false);
 
@@ -51,79 +51,40 @@ public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionL
         serviceMainPanel.add(chooseServiceLabel, BorderLayout.NORTH);
         
 
-        JPanel internalServicePanel = new JPanel(new BorderLayout());
-        internalServicePanel.setLayout(new BorderLayout());
-        internalServicePanel.setOpaque(false);
+        JPanel intrenalServicePanel = new ImageResizingPanel(imagePath);
+        intrenalServicePanel.setLayout(new BorderLayout());
+        intrenalServicePanel.setOpaque(false);
+
+        int numRows = 0;
+		int numCols = 1;
+
+		Dimension screenSize = MonitorSupport.getPWCGFrameSize();
+		if (screenSize.height < 900)
+		{
+	        numRows = 6;
+	        numCols = 2;
+		}
+		
+		JPanel servicePanel = new JPanel(new GridLayout(numRows, numCols));
+		servicePanel.setOpaque(false);
 
 		// Make a button for each service
         ButtonGroup serviceButtonGroup = new ButtonGroup();
-        
-        JPanel servicePanel = new JPanel(new GridLayout(0, 2));
-        servicePanel.setOpaque(false);
-        
-        JPanel alliedServicePanel = new JPanel(new GridLayout(0, 1));
-        alliedServicePanel.setOpaque(false);
-        
-        JPanel axisServicePanel = new JPanel(new GridLayout(0, 1));
-        axisServicePanel.setOpaque(false);
-
-        servicePanel.add(alliedServicePanel);
-        servicePanel.add(axisServicePanel);
-
-        
-        List<ArmedService> alliedArmedServices = getArmedServicesForSide(Side.ALLIED);
-		for (ArmedService service : alliedArmedServices)
+		for (ArmedService service : parent.getArmedServices())
 		{
 	        String icon = service.getServiceIcon() + ".jpg";
 	        JRadioButton serviceButton = makeRadioButton(service, icon);
-	        alliedServicePanel.add(serviceButton);
+	        servicePanel.add(serviceButton);
 	        serviceButtonGroup.add(serviceButton);
 		}
-		alliedServicePanel.add(makeBlankLabel());
 
-        List<ArmedService> axisArmedServices = getArmedServicesForSide(Side.AXIS);
-        for (ArmedService service : axisArmedServices)
-        {
-            String icon = service.getServiceIcon() + ".jpg";
-            JRadioButton serviceButton = makeRadioButton(service, icon);
-            axisServicePanel.add(serviceButton);
-            serviceButtonGroup.add(serviceButton);
-        }
-
-        int numBlanksRequired = alliedArmedServices.size() - axisArmedServices.size();
-        for (int i = 0; i < numBlanksRequired; ++i)
-        {
-            axisServicePanel.add(makeBlankLabel());
-        }
-        axisServicePanel.add(makeBlankLabel());
-
-		internalServicePanel.add(servicePanel, BorderLayout.NORTH);
+		intrenalServicePanel.add(servicePanel, BorderLayout.NORTH);
         
-        serviceMainPanel.add(internalServicePanel, BorderLayout.CENTER);
+        serviceMainPanel.add(intrenalServicePanel, BorderLayout.CENTER);
 
 		add(serviceMainPanel, BorderLayout.CENTER);
 	}
 
-    private JLabel makeBlankLabel()
-    {
-        JLabel blankLabel = new JLabel("   ");
-        blankLabel.setOpaque(false);
-        return blankLabel;
-    }
-
-	List<ArmedService> getArmedServicesForSide(Side side) throws PWCGException   
-	{
-	    List<ArmedService> armedServicesForSide = new ArrayList<>();
-	    for (ArmedService armedService : parent.getArmedServices())
-	    {
-	        if (armedService.getCountry().getSide() == side)
-	        {
-	            armedServicesForSide.add(armedService);
-	        }
-	    }
-        return armedServicesForSide;
-	}
-	
 	private JRadioButton makeRadioButton(ArmedService service, String imageName) throws PWCGException
 	{
         Color buttonBG = ColorMap.WOOD_BACKGROUND;

@@ -1,23 +1,28 @@
 package pwcg.gui.maingui.campaigngenerate;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
-import pwcg.gui.utils.StringValidity;
+import pwcg.gui.utils.PWCGStringValidator;
 
 public class CampaignGeneratorState
 {
-    private CampaignGeneratorWorkflow currentStep = CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_TYPE;
-    private CampaignGeneratorDO campaignGeneratorDO = new CampaignGeneratorDO();
-
+    private CampaignGeneratorWorkflow currentStep = CampaignGeneratorWorkflow.CHOOSE_PLAYER_NAME;
+    private CampaignGeneratorDO campaignGeneratorDO;
+    private List<CampaignGeneratorWorkflow> stateStack = new ArrayList<>();
+    private int stateIndex = 0;
+    
     public enum CampaignGeneratorWorkflow
     {
-        CHOOSE_CAMPAIGN_TYPE,
-        CHOOSE_CAMPAIGN_NAME,
         CHOOSE_PLAYER_NAME,
         CHOOSE_REGION,
+        CHOOSE_COOP_USER,
         CHOOSE_MAP,
         CHOOSE_DATE,
         CHOOSE_ROLE,
@@ -31,148 +36,98 @@ public class CampaignGeneratorState
         this.campaignGeneratorDO = campaignGeneratorDO;
     }
 
-    public void goToNextStep() throws PWCGException
+    public void buildStateStack() throws PWCGException
     {
-        if (currentStep == CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_TYPE)
+        stateStack.add(CampaignGeneratorWorkflow.CHOOSE_PLAYER_NAME);
+        
+        if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
-            currentStep = CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_NAME;
+            ICountry country = campaignGeneratorDO.getService().getCountry();
+            if (country.getCountry() == Country.GERMANY)
+            {
+                stateStack.add(CampaignGeneratorWorkflow.CHOOSE_REGION);
+            }
         }
 
-        else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_NAME)
+        if (campaignGeneratorDO.getCampaignMode() != CampaignMode.CAMPAIGN_MODE_SINGLE)
         {
-            if (StringValidity.isAlpha(campaignGeneratorDO.getCampaignName()))
-            {
-                currentStep = CampaignGeneratorWorkflow.CHOOSE_PLAYER_NAME;
-            }
-            else
-            {
-                throw new PWCGException ("Name must be English characters");
-            }
+            stateStack.add(CampaignGeneratorWorkflow.CHOOSE_COOP_USER);
         }
         
-        else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_PLAYER_NAME)
-        {
-            if (StringValidity.isAlpha(campaignGeneratorDO.getPlayerPilotName()))
-            {
-                currentStep = CampaignGeneratorWorkflow.CHOOSE_MAP;
-                if (PWCGContext.getProduct() == PWCGProduct.FC)
-                {
-                    ICountry country = campaignGeneratorDO.getService().getCountry();
-                    if (country.getCountry() == Country.GERMANY)
-                    {
-                        currentStep = CampaignGeneratorWorkflow.CHOOSE_REGION;
-                    }
-                }
-            }
-            else
-            {
-                throw new PWCGException ("Name must be English characters");
-            }
-        }
-        
-        else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_REGION)
-        {
-            currentStep = CampaignGeneratorWorkflow.CHOOSE_MAP;
-        }
-        
-        else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_MAP)
-        {
-            currentStep = CampaignGeneratorWorkflow.CHOOSE_DATE;
-        }
-        
-        else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_DATE)
-        {
-            currentStep = CampaignGeneratorWorkflow.CHOOSE_ROLE;
-        }
-        
-        else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_ROLE)
-        {
-            currentStep = CampaignGeneratorWorkflow.CHOOSE_RANK;
-       }
-        else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_RANK)
-        {
-            currentStep = CampaignGeneratorWorkflow.CHOOSE_SQUADRON;
-        }
-        
-        else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_SQUADRON)
-        {
-            currentStep = CampaignGeneratorWorkflow.COMPLETE;
-        }
+        stateStack.add(CampaignGeneratorWorkflow.CHOOSE_MAP);
+        stateStack.add(CampaignGeneratorWorkflow.CHOOSE_DATE);
+        stateStack.add(CampaignGeneratorWorkflow.CHOOSE_ROLE);
+        stateStack.add(CampaignGeneratorWorkflow.CHOOSE_RANK);
+        stateStack.add(CampaignGeneratorWorkflow.CHOOSE_SQUADRON);
+        stateStack.add(CampaignGeneratorWorkflow.COMPLETE);
     }
 
+    public void goToNextStep() throws PWCGException
+    {
+        if (stateIndex < (stateStack.size()-1))
+        {
+            ++stateIndex;
+        }
+        currentStep = stateStack.get(stateIndex);
+    }
+    
     public void goToPreviousStep() throws PWCGException
     {   
-        if (currentStep == CampaignGeneratorWorkflow.COMPLETE)
+        if (stateIndex > 0)
         {
-            currentStep = CampaignGeneratorWorkflow.CHOOSE_SQUADRON;
+            --stateIndex;
         }
-        
-        else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_SQUADRON)
-        {
-            currentStep = CampaignGeneratorWorkflow.CHOOSE_RANK;
-        }
-        
-        else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_RANK)
-        {
-            currentStep = CampaignGeneratorWorkflow.CHOOSE_ROLE;
-        }
-
-        else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_ROLE)
-        {
-            currentStep = CampaignGeneratorWorkflow.CHOOSE_DATE;
-        }
-        
-        else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_DATE)
-        {
-            currentStep = CampaignGeneratorWorkflow.CHOOSE_MAP;
-        }
-        
-        else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_MAP)
-        {
-            currentStep = CampaignGeneratorWorkflow.CHOOSE_PLAYER_NAME;
-            if (PWCGContext.getProduct() == PWCGProduct.FC)
-            {
-                ICountry country = campaignGeneratorDO.getService().getCountry();
-                if (country.getCountry() == Country.GERMANY)
-                {
-                    currentStep = CampaignGeneratorWorkflow.CHOOSE_REGION;
-                }
-            }
-        }
-        
-        else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_PLAYER_NAME)
-        {
-            currentStep = CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_NAME;
-        }
-        
-        else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_REGION)
-        {
-            currentStep = CampaignGeneratorWorkflow.CHOOSE_PLAYER_NAME;
-        }        
-        
-        else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_PLAYER_NAME)
-        {
-            currentStep = CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_NAME;
-        }        
-        
-        else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_NAME)
-        {
-            currentStep = CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_TYPE;
-        }        
+        currentStep = stateStack.get(stateIndex);        
     }
 
     public boolean isComplete()
     {
-        if (currentStep == CampaignGeneratorWorkflow.COMPLETE)
+        if ((currentStep != CampaignGeneratorWorkflow.COMPLETE))
         {
-            return true;
+            return false;
         }
+        else if (!PWCGStringValidator.validateStringIsAlpha(campaignGeneratorDO.getCampaignName()))
+        {
+            return false;
+        }
+        else if (!PWCGStringValidator.validateStringIsAlpha(campaignGeneratorDO.getPlayerPilotName()))
+        {
+            return false;
+        }
+        else if (!(campaignGeneratorDO.getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE) &&
+                !(PWCGStringValidator.validateStringIsAlpha(campaignGeneratorDO.getCoopUser())))
+        {
+            return false;
+        }
+
         
-        return false;
+        return true;
     }
 
     public CampaignGeneratorWorkflow getCurrentStep()
     {
         return currentStep;
+    }
+
+    public boolean isProfileComplete()
+    {
+        if (campaignGeneratorDO.getCampaignMode() == CampaignMode.CAMPAIGN_MODE_NONE)
+        {
+            return false;
+        }
+        else if (campaignGeneratorDO.getCampaignName().isEmpty())
+        {
+            return false;
+        }
+        else if (campaignGeneratorDO.getService() == null)
+        {
+            return false;
+        }
+        else if (!PWCGStringValidator.validateStringIsAlpha(campaignGeneratorDO.getCampaignName()))
+        {
+            return false;
+        }
+
+        return true;
     }
 }

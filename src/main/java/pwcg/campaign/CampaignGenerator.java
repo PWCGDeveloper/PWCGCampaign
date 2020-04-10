@@ -7,6 +7,7 @@ import pwcg.campaign.context.MapForAirfieldFinder;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.factory.ArmedServiceFactory;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
@@ -54,6 +55,9 @@ public class CampaignGenerator
             CampaignSquadronGenerator squadronGenerator = new CampaignSquadronGenerator(campaign, squadron);
             squadronGenerator.createSquadron(generatorModel);
         }
+        
+        SquadronMember player = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
+        campaign.getCampaignData().setReferencePlayerSerialNumber(player.getSerialNumber());
     }
 
     private void createPersonnelReplacements() throws PWCGException

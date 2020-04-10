@@ -19,6 +19,8 @@ import pwcg.campaign.CampaignInitialWriter;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ArmedServiceFactory;
+import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
@@ -36,36 +38,35 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
     private static final long serialVersionUID = 1L;
 
     private CampaignMainGUI mainGUI = null;
+    private JButton profileFinishedButton = null;
     private JButton createCampaignButton = null;
-    private CampaignGeneratorDataEntryGUI dataEntry = null;
+    private CampaignGeneratorProfileGUI campaignProfileUI = null;
+    private CampaignGeneratorDataEntryGUI campaignGeneratorDataEntryGUI = null;
+    private CampaignGeneratorState campaignGeneratorState;
+
+    private CampaignGeneratorDO campaignGeneratorDO = new CampaignGeneratorDO();
 
     public CampaignGeneratorPanelSet(CampaignMainGUI mainGUI)
     {
         this.mainGUI = mainGUI;
+        campaignProfileUI = new CampaignGeneratorProfileGUI(this);
+        campaignGeneratorDataEntryGUI = new CampaignGeneratorDataEntryGUI(this);
+        campaignGeneratorState = new CampaignGeneratorState(campaignGeneratorDO);
     }
 
     public void makePanels() 
     {
         try
         {
-            setCenterPanel(makeDataEntryPanel());
-            setRightPanel (makeServicePanel());
+            setRightPanel (makeProceedButtonPanel());
             setLeftPanel(makeButtonPanel());
+            setCenterPanel(makeCampaignProfilePanel());
         }
         catch (Throwable e)
         {
             PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
-    }
-
-    private JPanel makeServicePanel() throws PWCGException
-    {
-        String imagePath = getSideImageMain("CampaignGenLeft.jpg");
-        
-        CampaignGeneratorChooseServiceGUI campaignChooseServiceGUI = new CampaignGeneratorChooseServiceGUI(this);
-        campaignChooseServiceGUI.makeServiceSelectionPanel(imagePath);
-        return campaignChooseServiceGUI;
     }
 
     private JPanel makeButtonPanel() throws PWCGException
@@ -78,7 +79,7 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
         
         JPanel buttonPanel = new JPanel(new GridLayout(6,1));
         buttonPanel.setOpaque(false);
-
+         
         createCampaignButton = PWCGButtonFactory.makeMenuButton("Create Campaign", "Create Campaign", this);
         buttonPanel.add(createCampaignButton);
         createCampaignButton.setEnabled(false);
@@ -95,17 +96,36 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
         return configPanel;
     }
 
-    public void enableCompleteAction(boolean enabled)
+    private JPanel makeProceedButtonPanel() throws PWCGException
     {
-        createCampaignButton.setEnabled(enabled);
+        String imagePath = getSideImageMain("CampaignGenNav.jpg");
+        
+        ImageResizingPanel configPanel = new ImageResizingPanel(imagePath);
+        configPanel.setLayout(new BorderLayout());
+        configPanel.setOpaque(true);
+        
+        JPanel buttonPanel = new JPanel(new GridLayout(6,1));
+        buttonPanel.setOpaque(false);
+        
+        profileFinishedButton = PWCGButtonFactory.makeMenuButton("Complete Campaign Data Entry", "Complete Campaign Data Entry", this);
+        buttonPanel.add(profileFinishedButton);
+        profileFinishedButton.setEnabled(false);
+
+        configPanel.add(buttonPanel, BorderLayout.NORTH);
+     
+        return configPanel;
     }
 
-    public JPanel makeDataEntryPanel() throws PWCGException 
+    public JPanel makeCampaignProfilePanel() throws PWCGException 
     {
-        dataEntry = new CampaignGeneratorDataEntryGUI(this);
-        dataEntry.makePanels();
-        
-        return dataEntry;
+        campaignProfileUI.makePanels();
+        return campaignProfileUI;
+    }
+
+    public JPanel makeCampaignDataEntryPanel() throws PWCGException 
+    {
+        campaignGeneratorDataEntryGUI.makePanels();
+        return campaignGeneratorDataEntryGUI;
     }
     
     public List<ArmedService> getArmedServices() throws PWCGException
@@ -125,17 +145,13 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
             {
                 CampaignGuiContextManager.getInstance().popFromContextStack();
             }
+            else if (action.equalsIgnoreCase("Complete Campaign Data Entry"))
+            {
+                proceedToCampaignPilotInput();
+            }
             else if (action.equalsIgnoreCase("Create Campaign"))
             {
-                Campaign campaign = makeCampaign();
-            
-                CampaignGeneratorDO campaignGeneratorDO = dataEntry.getCampaignGeneratorDO();
-                campaign.open(campaignGeneratorDO.getCampaignName());                    
-                PWCGContext.getInstance().setCampaign(campaign);
-                
-                CampaignHomeGUI campaignGUI = new CampaignHomeGUI (mainGUI, campaign);
-                PWCGFrame.getInstance().setPanel(campaignGUI);
-                
+                buildNewCampaign();
                 return;
             }
         }
@@ -146,23 +162,51 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
         }
     }
 
+    private void proceedToCampaignPilotInput() throws PWCGException
+    {
+        campaignGeneratorState.buildStateStack();
+        setCenterPanel(makeCampaignDataEntryPanel());
+
+        setRightPanel(makeProfileInfoPanel());
+
+        revalidate();
+        repaint();
+    }
+
+    private void buildNewCampaign() throws PWCGException, PWCGUserException, Exception
+    {        
+        Campaign campaign = makeCampaign();
+         
+        campaign.open(campaignGeneratorDO.getCampaignName());                    
+        PWCGContext.getInstance().setCampaign(campaign);
+        
+        CampaignHomeGUI campaignGUI = new CampaignHomeGUI (mainGUI, campaign);
+        PWCGFrame.getInstance().setPanel(campaignGUI);
+
+        SquadronMembers players = campaign.getPersonnelManager().getAllActivePlayers();
+        for (SquadronMember player : players.getSquadronMemberList())
+        {
+            campaignGeneratorDO.createCoopUserAndPersona(campaign, player);
+        }
+    }
+
+    private JPanel makeProfileInfoPanel() throws PWCGException
+    {
+        String imagePath = getSideImageMain("CampaignGenNav.jpg");
+        CampaignGeneratorProfileInfoGUI profileInfoPanel = new CampaignGeneratorProfileInfoGUI(this, imagePath);
+        profileInfoPanel.makePanels();
+        return profileInfoPanel;
+    }
+
     public void changeService(ArmedService service) throws PWCGException
     {
-        CampaignGeneratorDO campaignGeneratorDO = new CampaignGeneratorDO();
-        campaignGeneratorDO.setService(service);
-        
-        dataEntry = new CampaignGeneratorDataEntryGUI(this);
-        dataEntry.setCampaignGeneratorDO(campaignGeneratorDO);
-        dataEntry.makePanels();
-        dataEntry.evaluateUI();
-        
-        CampaignGuiContextManager.getInstance().changeCurrentContext(null, dataEntry, null);
+        campaignGeneratorDO.setService(service);        
+        CampaignGuiContextManager.getInstance().changeCurrentContext(null, campaignProfileUI, null);
+        evaluateCompletionState();
     }
 
     private Campaign makeCampaign() throws PWCGUserException, Exception
-    {
-        CampaignGeneratorDO campaignGeneratorDO = dataEntry.getCampaignGeneratorDO();
-        
+    {        
         ArmedService service = campaignGeneratorDO.getService();
         String campaignName = campaignGeneratorDO.getCampaignName();
         String playerName = campaignGeneratorDO.getPlayerPilotName();
@@ -188,5 +232,41 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
         CampaignInitialWriter.doInitialCampaignWrite(campaign);
         
         return campaign;
+    }
+
+    @Override
+    public void setCampaignProfileParameters(CampaignMode campaignMode, String campaignName)
+    {
+        campaignGeneratorDO.setCampaignMode(campaignMode);
+        campaignGeneratorDO.setCampaignName(campaignName);
+        evaluateCompletionState();
+    }
+    
+    @Override
+    public CampaignGeneratorDO getCampaignGeneratorDO()
+    {
+        return campaignGeneratorDO;
+    }
+    
+    @Override
+    public CampaignGeneratorState getCampaignGeneratorState()
+    {
+        return campaignGeneratorState;
+    }
+
+    @Override
+    public void evaluateCompletionState()
+    {
+        profileFinishedButton.setEnabled(false);
+        createCampaignButton.setEnabled(false);
+        
+        if (campaignGeneratorState.isComplete())
+        {
+            createCampaignButton.setEnabled(true);
+        }
+        else if (campaignGeneratorState.isProfileComplete())
+        {
+            profileFinishedButton.setEnabled(true);
+        }
     }
 }

@@ -48,7 +48,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
     private List<JButton> activeButtons = new ArrayList<JButton>();
     private boolean needContextRefresh = false;
 
-    public CampaignHomeGUI(CampaignMainGUI parent, Campaign campaign) 
+    public CampaignHomeGUI(CampaignMainGUI parent, Campaign campaign) throws PWCGException 
     {
         super();
         this.parent = parent;

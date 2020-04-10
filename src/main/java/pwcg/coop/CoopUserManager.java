@@ -6,16 +6,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.CoopUserIOJson;
+import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.coop.model.CoopPersona;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
 
 public class CoopUserManager
 {
-    public static final String HOST_USER_NAME = "Host";
-    public static final String DEFAULT_PWCG_HOST_PASSWORD = "PWCGHost";
-    
     private static CoopUserManager instance = null;
     private  Map<String, CoopUser> coopUsers = new TreeMap<>();
     
@@ -44,43 +44,31 @@ public class CoopUserManager
     {
         return new ArrayList<>(coopUsers.values());
     }
-    
 
-    public List<CoopUser> getCoopUsersExceptHost() throws PWCGException 
-    {
-        List<CoopUser> coopUsersExceptHost = new ArrayList<>(); 
-        for (CoopUser coopUser : coopUsers.values())
-        {
-            if (!(coopUser.getUsername().equals(HOST_USER_NAME)))
-            {
-                coopUsersExceptHost.add(coopUser);
-            }
-        }
-        return coopUsersExceptHost;
-    }
-
-
-    public void buildCoopUser(String username) throws PWCGException 
+    public CoopUser buildCoopUser(String username) throws PWCGException 
     {
         CoopUser addedCoopUser = new CoopUser();
         addedCoopUser.setUsername(username);
-        addedCoopUser.setPassword("PWCG");
-        addedCoopUser.setNote("Created by host");
-        addedCoopUser.setApproved(true);
         
         coopUsers.put(username, addedCoopUser);
         writeUser(addedCoopUser);
+        return addedCoopUser;
     }
 
-    public CoopUser getCoopHost() throws PWCGException 
+    public List<CoopPersona> getPersonasForCampaign(Campaign campaign) throws PWCGException
     {
-        CoopUser coopHost = getCoopUser(HOST_USER_NAME);
-        if (coopHost == null)
+        List<CoopPersona> personasForCampaign = new ArrayList<>();
+        for (CoopUser coopUser : coopUsers.values())
         {
-            coopHost = makeHostUser();
+            for (CoopPersona coopPersona : coopUser.getUserPersonas())
+            {
+                if (coopPersona.getCampaignName().equals(campaign.getCampaignData().getName()))
+                {
+                    personasForCampaign.add(coopPersona);
+                }
+            }
         }
-        
-        return coopHost;
+        return personasForCampaign;
     }
 
     public CoopUser getCoopUser(String username) throws PWCGException 
@@ -93,9 +81,36 @@ public class CoopUserManager
         CoopUser userToBeRemoved = getCoopUser(username);
         if (userToBeRemoved != null)
         {
-            CoopPersonaManager.getIntance().removeCoopPersonasForUser(userToBeRemoved);;
+            for (CoopPersona coopPersona : userToBeRemoved.getUserPersonas())
+            {
+                CoopPersonaRetirement.retirePersona(coopPersona);
+            }
+            
             removeUserFile(userToBeRemoved);
             coopUsers.remove(username);
+        }
+    }
+
+    public void createCoopPersona(Campaign campaign, SquadronMember newSquadronMewmber, String coopUsername) throws PWCGException
+    {
+        CoopUser coopUser = getCoopUser(coopUsername);
+        if (coopUser == null)
+        {
+            coopUser = buildCoopUser(coopUsername);
+        }
+
+        if (coopUser != null)
+        {
+            CoopPersona persona = new CoopPersona();
+            persona.setCoopUsername(coopUsername);
+            persona.setSerialNumber(newSquadronMewmber.getSerialNumber());
+            persona.setCampaignName(campaign.getCampaignData().getName());
+            coopUser.addPersona(persona);
+            writeUser(coopUser);
+        }
+        else
+        {
+            throw new PWCGException ("Could not find coop user for new persona: " + coopUsername);
         }
     }
 
@@ -113,61 +128,24 @@ public class CoopUserManager
     {
         return coopUsers.containsKey(username);
     }
-    
-    public void setHostPassword(String password) throws PWCGException
-    {
-        CoopUser hostUser = getCoopHost();
-        if ((password != null) && password.length() > 0)
-        {
-            hostUser.setPassword(password);
-            writeUser(hostUser);
-        }
-    }
-    
-    public void setUserAcceptedStatus(List<String> acceptedUsers, List<String> rejectedUsers) throws PWCGException
-    {
-        for (String acceptedUsername : acceptedUsers)
-        {
-            CoopUser acceptedUser =  getCoopUser(acceptedUsername);
-            if (acceptedUser != null)
-            {
-                acceptedUser.setApproved(true);
-            }
-        }
-        
-        for (String rejectedUsername : rejectedUsers)
-        {
-            CoopUser rejectedUser =  getCoopUser(rejectedUsername);
-            if (rejectedUser != null)
-            {
-                rejectedUser.setApproved(false);
-            }
-        }
-        
-        writeAllUser();
-    }
-
-    private CoopUser makeHostUser() throws PWCGException
-    {
-        CoopUser hostUser = new CoopUser();
-        hostUser.setUsername(HOST_USER_NAME);
-        hostUser.setPassword(DEFAULT_PWCG_HOST_PASSWORD);
-        hostUser.setApproved(true);
-        hostUser.setNote("Campaign Host");
-        
-        coopUsers.put(HOST_USER_NAME, hostUser);
-        writeUser(hostUser);
-
-        return hostUser;
-    }
 
     private void writeUser(CoopUser coopUser) throws PWCGException
     {
         CoopUserIOJson.writeJson(coopUser);
     }
 
-    private void writeAllUser() throws PWCGException
+    public CoopPersona getCoopPersona(int serialNumber)
     {
-        CoopUserIOJson.writeJson(getAllCoopUsers());
+        for (CoopUser coopUser : coopUsers.values())
+        {
+            for (CoopPersona coopPersona : coopUser.getUserPersonas())
+            {
+                if (coopPersona.getSerialNumber() == serialNumber)
+                {
+                    return coopPersona;
+                }
+            }
+        }
+        return null;
     }
 }

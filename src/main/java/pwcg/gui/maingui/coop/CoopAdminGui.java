@@ -98,8 +98,6 @@ public class CoopAdminGui extends PwcgGuiContext implements ActionListener
         buttonPanel.add(makeActionSelectRadioButton("Show Coop Participant Information"));
         buttonPanel.add(makeActionSelectRadioButton("Add Coop User"));
         buttonPanel.add(makeActionSelectRadioButton("Remove Coop User"));
-        //buttonPanel.add(makeActionSelectRadioButton("Administer Coop User Requests"));
-        //buttonPanel.add(makeActionSelectRadioButton("Administer Coop Persona Requests"));
         
         add (buttonPanel);
 
@@ -157,18 +155,6 @@ public class CoopAdminGui extends PwcgGuiContext implements ActionListener
                 coopUserRemove.makePanels();
                 coopUserRemove.loadPanels();
                 CampaignGuiContextManager.getInstance().changeCurrentContext(null, coopUserRemove, null);
-            }
-            else if (action.contains("Administer Coop User Requests"))
-            {
-                CoopUserAcceptRequestPanel coopUserAccept = new CoopUserAcceptRequestPanel();
-                coopUserAccept.makePanels();
-                CampaignGuiContextManager.getInstance().changeCurrentContext(null, coopUserAccept, null);
-            }
-            else if (action.contains("Administer Coop Persona Requests"))
-            {
-                CoopPersonaAcceptPanel coopPersonaAccept = new CoopPersonaAcceptPanel();
-                coopPersonaAccept.makePanels();
-                CampaignGuiContextManager.getInstance().changeCurrentContext(null, coopPersonaAccept, null);
             }
         }
         catch (Throwable e)

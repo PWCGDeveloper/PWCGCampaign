@@ -2,23 +2,18 @@ package pwcg.coop.model;
 
 public class CoopPersona
 {
-    private String username;
+    private String coopUser;
     private String campaignName;
-    private String pilotName;
-    private String pilotRank;
     private int serialNumber;
-    private int squadronId;
-    private boolean approved;
-    private String note;
 
-    public String getUsername()
+    public String getCoopUsername()
     {
-        return username;
+        return coopUser;
     }
 
-    public void setUsername(String username)
+    public void setCoopUsername(String coopUser)
     {
-        this.username = username;
+        this.coopUser = coopUser;
     }
 
     public String getCampaignName()
@@ -31,26 +26,6 @@ public class CoopPersona
         this.campaignName = campaignName;
     }
 
-    public String getPilotName()
-    {
-        return pilotName;
-    }
-
-    public void setPilotName(String pilotName)
-    {
-        this.pilotName = pilotName;
-    }
-    
-    public String getPilotRank()
-    {
-        return pilotRank;
-    }
-
-    public void setPilotRank(String pilotRank)
-    {
-        this.pilotRank = pilotRank;
-    }
-
     public int getSerialNumber()
     {
         return serialNumber;
@@ -59,35 +34,5 @@ public class CoopPersona
     public void setSerialNumber(int serialNumber)
     {
         this.serialNumber = serialNumber;
-    }
-
-    public int getSquadronId()
-    {
-        return squadronId;
-    }
-
-    public void setSquadronId(int squadronId)
-    {
-        this.squadronId = squadronId;
-    }
-
-    public boolean isApproved()
-    {
-        return approved;
-    }
-
-    public void setApproved(boolean approved)
-    {
-        this.approved = approved;
-    }
-
-    public String getNote()
-    {
-        return note;
-    }
-
-    public void setNote(String note)
-    {
-        this.note = note;
     }
 }

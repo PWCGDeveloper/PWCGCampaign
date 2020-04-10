@@ -4,11 +4,16 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.ArmedService;
+import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.plane.Role;
+import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.coop.CoopUserManager;
+import pwcg.coop.model.CoopUser;
+import pwcg.core.exception.PWCGException;
 
 public class CampaignGeneratorDO
 {
@@ -83,6 +88,20 @@ public class CampaignGeneratorDO
         }
         
         return false;
+    }
+    
+    public void createCoopUserAndPersona(Campaign campaign, SquadronMember player) throws PWCGException
+    {
+        if (getCampaignMode() != CampaignMode.CAMPAIGN_MODE_SINGLE)
+        {
+            CoopUser coopUser = CoopUserManager.getIntance().getCoopUser(getCoopUser());
+            if (coopUser == null)
+            {
+                coopUser = CoopUserManager.getIntance().buildCoopUser(getCoopUser());
+            }
+            
+            CoopUserManager.getIntance().createCoopPersona(campaign, player, getCoopUser());
+        }
     }
 
     public ArmedService getService()

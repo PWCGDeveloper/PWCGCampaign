@@ -16,7 +16,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.coop.CoopPersonaManager;
+import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopPersona;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -71,14 +71,14 @@ public class ReferencePilotSelector extends PwcgGuiContext implements ActionList
         coopSquadronMemberSelector.setBackground(ColorMap.PAPER_BACKGROUND);
         coopSquadronMemberSelector.setFont(font);
         
-        for (CoopPersona coopPersona : CoopPersonaManager.getIntance().getCoopPersonasForCampaign(campaign))
+        for (CoopPersona coopPersona : CoopUserManager.getIntance().getPersonasForCampaign(campaign))
         {
             SquadronMember coopSquadronMember = campaign.getPersonnelManager().getAnyCampaignMember(coopPersona.getSerialNumber());
             if (coopSquadronMember != null)
             {
                 if (coopSquadronMember.getPilotActiveStatus() >= SquadronMemberStatus.STATUS_CAPTURED)
                 {
-                    String selectiontext = coopPersona.getPilotName() + ":" + coopPersona.getUsername();
+                    String selectiontext = coopSquadronMember.getNameAndRank() + ":" + coopPersona.getCoopUsername();
                     coopSquadronMemberSelector.addItem(selectiontext);
                     coopSquadronMembersInCampaign.put(selectiontext, coopSquadronMember);
                 }

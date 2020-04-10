@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.coop.CoopPersonaManager;
+import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopPersona;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -62,20 +62,20 @@ public class CoopPersonaChooserPanel extends ImageResizingPanel implements ISele
         {
             CoopPersona coopPersona = findCoopPlayerForSquadronMember(player);
             MultiSelectData selectData = buildSelectData(coopPersona);
-            playerSquadronMembers.put(player.getName(), player);
-            campaignCoopPersonas.put(player.getName(), coopPersona);
+            playerSquadronMembers.put(player.getNameAndRank(), player);
+            campaignCoopPersonas.put(player.getNameAndRank(), coopPersona);
             selector.addNotAccepted(selectData);
         }
     }
     
     private CoopPersona findCoopPlayerForSquadronMember(SquadronMember player) throws PWCGException
     {
-        List<CoopPersona> coopPersonas = CoopPersonaManager.getIntance().getCoopPersonasForCampaign(campaign);
+        List<CoopPersona> coopPersonas = CoopUserManager.getIntance().getPersonasForCampaign(campaign);
         for (CoopPersona coopPersona : coopPersonas)
         {
             if (player.getPilotActiveStatus() == SquadronMemberStatus.STATUS_ACTIVE)
             {
-                if (player.getName().equals(coopPersona.getPilotName()))
+                if (player.getSerialNumber() == coopPersona.getSerialNumber())
                 {
                     return coopPersona;
                 }
@@ -88,26 +88,23 @@ public class CoopPersonaChooserPanel extends ImageResizingPanel implements ISele
     {
         CoopPersona noCoopPersona = new CoopPersona();
         noCoopPersona.setCampaignName(campaign.getCampaignData().getName());
-        noCoopPersona.setApproved(true);
-        noCoopPersona.setPilotName(player.getName());
-        noCoopPersona.setPilotRank(player.getRank());
         noCoopPersona.setSerialNumber(player.getSerialNumber());
-        noCoopPersona.setSquadronId(player.getSquadronId());
-        noCoopPersona.setUsername(NO_USER_FOR_PILOT);
         
         return noCoopPersona;
     }
 
-    private MultiSelectData buildSelectData(CoopPersona coopPersona)
+    private MultiSelectData buildSelectData(CoopPersona coopPersona) throws PWCGException
     {
         MultiSelectData selectData = new MultiSelectData();
-        selectData.setName(coopPersona.getPilotName());
-        selectData.setText("User: " + coopPersona.getUsername() +".  Pilot Name: "  + coopPersona.getPilotName());
+        
+        SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(coopPersona.getSerialNumber());
+        selectData.setName(pilot.getNameAndRank());
+        selectData.setText("User: " + coopPersona.getCoopUsername() +".  Pilot Name: "  + pilot.getNameAndRank());
         selectData.setInfo(
-                "User: " + coopPersona.getUsername() + 
+                "User: " + coopPersona.getCoopUsername() + 
                 ".  Campaign: "  + coopPersona.getCampaignName() + 
-                ".  Pilot Name: "  + coopPersona.getPilotName() + 
-                ".  Squadron: "  + coopPersona.getSquadronId());
+                ".  Pilot Name: "  + pilot.getNameAndRank() + 
+                ".  Squadron: "  + pilot.getSquadronId());
         return selectData;
     }
 

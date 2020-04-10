@@ -1,11 +1,15 @@
 package pwcg.coop.model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class CoopUser
 {
     private String username;
-    private String password;
-    private boolean approved;
-    private String note;
+    private Map<Integer, CoopPersona> userPersonas = new HashMap<>();
+    
 
     public String getUsername()
     {
@@ -16,34 +20,26 @@ public class CoopUser
     {
         this.username = username;
     }
-
-    public String getPassword()
+    
+    public void addPersona(CoopPersona persona)
     {
-        return password;
+        userPersonas.put(persona.getSerialNumber(), persona);
+    }
+    
+    public void removePersona(CoopPersona persona)
+    {
+        userPersonas.remove(persona.getSerialNumber());
+    }
+    
+    public void getPersona(int serialNumber)
+    {
+        userPersonas.get(serialNumber);
     }
 
-    public void setPassword(String password)
+    public List<CoopPersona> getUserPersonas()
     {
-        this.password = password;
+        return new ArrayList<CoopPersona>(userPersonas.values());
     }
-
-    public boolean isApproved()
-    {
-        return approved;
-    }
-
-    public void setApproved(boolean approved)
-    {
-        this.approved = approved;
-    }
-
-    public String getNote()
-    {
-        return note;
-    }
-
-    public void setNote(String note)
-    {
-        this.note = note;
-    }
+    
+    
 }

@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
-import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.context.SquadronManager;
@@ -68,7 +67,18 @@ public class Campaign
         InitialSquadronBuilder initialSquadronBuilder = new InitialSquadronBuilder();
         initialSquadronBuilder.buildNewSquadrons(this);
 
+        verifyRepresentativePlayer();
+        
         return true;
+    }
+
+    private void verifyRepresentativePlayer() throws PWCGException
+    {
+        if (campaignData.getReferencePlayerSerialNumber() == 0)
+        {
+            SquadronMember player = personnelManager.getAllActivePlayers().getSquadronMemberList().get(0);
+            campaignData.setReferencePlayerSerialNumber(player.getSerialNumber());
+        }
     }
 
     public void write() throws PWCGException
@@ -235,26 +245,6 @@ public class Campaign
     {
         SquadronMember referencePlayer = ReferencePlayerFinder.findReferencePlayer(this);
         return referencePlayer;
-    }
-
-    public Side determineCampaignSide() throws PWCGException
-    {
-        if (campaignData.getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COMPETITIVE)
-        {
-            return Side.NEUTRAL;
-        }
-        else
-        {
-            List<Squadron> squadrons = determinePlayerSquadrons();
-            if (squadrons.size() == 0)
-            {
-                return ReferencePlayerFinder.getRepresentativeSquadronForCampaign(this).determineSide();
-            }
-            else
-            {
-                return squadrons.get(0).determineSide();
-            }
-        }
     }
 
     public List<Squadron> determinePlayerSquadrons() throws PWCGException

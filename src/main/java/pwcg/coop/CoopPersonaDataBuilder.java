@@ -22,7 +22,7 @@ public class CoopPersonaDataBuilder
         {
             try
             {
-                List<SquadronMember> squadronMembersForUserInCampaign = getPlayerSquadronMembersFromCampaign(coopUser.getUsername(), campaign);
+                List<SquadronMember> squadronMembersForUserInCampaign = getPlayerSquadronMembersFromCampaign(coopUser, campaign);
                 List<CoopDisplayRecord> coopDisplayRecordsForCampaign = formCoopDisplayRecordsForUser(coopUser, campaign, squadronMembersForUserInCampaign);
                 coopDisplayRecords.addAll(coopDisplayRecordsForCampaign);
             }
@@ -34,24 +34,21 @@ public class CoopPersonaDataBuilder
         return coopDisplayRecords;
     }
     
-    private List<SquadronMember> getPlayerSquadronMembersFromCampaign(String username, Campaign campaign) throws PWCGException
+    private List<SquadronMember> getPlayerSquadronMembersFromCampaign(CoopUser coopUser, Campaign campaign) throws PWCGException
     {
         List<SquadronMember> squadronMembersForUserInCampaign = new ArrayList<>();
 
-        List<CoopPersona> coopPersonas = CoopPersonaManager.getIntance().getAllCoopPersonas();
+        List<CoopPersona> coopPersonas = coopUser.getUserPersonas();
         for (CoopPersona coopPersona : coopPersonas)
         {
-            if (coopPersona.getUsername().equalsIgnoreCase(username))
+            if (coopPersona.getCampaignName().equalsIgnoreCase(campaign.getCampaignData().getName()))
             {
-                if (coopPersona.getCampaignName().equalsIgnoreCase(campaign.getCampaignData().getName()))
+                SquadronMember playerSquadronMember = campaign.getPersonnelManager().getAnyCampaignMember(coopPersona.getSerialNumber());
+                if (playerSquadronMember != null)
                 {
-                    SquadronMember playerSquadronMember = campaign.getPersonnelManager().getAnyCampaignMember(coopPersona.getSerialNumber());
-                    if (playerSquadronMember != null)
-                    {
-                        squadronMembersForUserInCampaign.add(playerSquadronMember);
-                    }
+                    squadronMembersForUserInCampaign.add(playerSquadronMember);
                 }
-            }            
+            }
         }
         return squadronMembersForUserInCampaign;
     }

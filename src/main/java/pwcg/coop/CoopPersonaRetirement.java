@@ -10,7 +10,7 @@ import pwcg.core.exception.PWCGException;
 
 class CoopPersonaRetirement
 {
-    public void retirePersona(CoopPersona personaToRemove) throws PWCGException
+    public static void retirePersona(CoopPersona personaToRemove) throws PWCGException
     {
         Campaign campaign = new Campaign();
         if (campaign.open(personaToRemove.getCampaignName()))              
@@ -24,7 +24,7 @@ class CoopPersonaRetirement
         }
     }
 
-    private void removePersonasFromCampaign(CoopPersona personaToRetire, Campaign campaign) throws PWCGException
+    private static void removePersonasFromCampaign(CoopPersona personaToRetire, Campaign campaign) throws PWCGException
     {
         SquadronMember squadronMemberToRetire = campaign.getPersonnelManager().getAnyCampaignMember(personaToRetire.getSerialNumber());
         if (squadronMemberToRetire != null)

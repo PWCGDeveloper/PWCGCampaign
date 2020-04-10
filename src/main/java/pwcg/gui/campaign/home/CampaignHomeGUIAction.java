@@ -329,7 +329,7 @@ public class CampaignHomeGUIAction
         }
     }
     
-    private MissionHumanParticipants buildParticipatingPlayersSinglePlayer()
+    private MissionHumanParticipants buildParticipatingPlayersSinglePlayer() throws PWCGException
     {
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
 	    SquadronMember referencePlayer = ReferencePlayerFinder.findReferencePlayer(campaign);

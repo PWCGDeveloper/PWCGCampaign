@@ -12,6 +12,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberReplacer;
+import pwcg.coop.CoopUserManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.maingui.campaigngenerate.CampaignGeneratorDO;
 import pwcg.mission.Mission;
@@ -32,7 +33,31 @@ public class CoopPlayerInclusionTest
         PWCGContext.setProduct(PWCGProduct.BOS);
         coopCampaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.COOP_COMPETITIVE_PROFILE);
         PWCGContext.getInstance().setCampaign(coopCampaign);
+        generateCoopUsers();
         generateHumanPilots();
+        removeCoopUsers();
+    }
+
+    private void generateCoopUsers() throws PWCGException
+    {
+        CoopUserManager.getIntance().buildCoopUser("GermanFighterUser");
+        CoopUserManager.getIntance().buildCoopUser("GermanSecondFighterUser");
+        CoopUserManager.getIntance().buildCoopUser("GermanBomberUser");
+        CoopUserManager.getIntance().buildCoopUser("GermanStukaUser");
+        CoopUserManager.getIntance().buildCoopUser("RussianFighterUser");
+        CoopUserManager.getIntance().buildCoopUser("RussianBomberUser");
+        CoopUserManager.getIntance().buildCoopUser("RussianIlUser");
+    }
+
+    private void removeCoopUsers() throws PWCGException
+    {
+        CoopUserManager.getIntance().removeCoopUser("GermanFighterUser");
+        CoopUserManager.getIntance().removeCoopUser("GermanSecondFighterUser");
+        CoopUserManager.getIntance().removeCoopUser("GermanBomberUser");
+        CoopUserManager.getIntance().removeCoopUser("GermanStukaUser");
+        CoopUserManager.getIntance().removeCoopUser("RussianFighterUser");
+        CoopUserManager.getIntance().removeCoopUser("RussianBomberUser");
+        CoopUserManager.getIntance().removeCoopUser("RussianIlUser");
     }
 
     private void generateHumanPilots() throws Exception

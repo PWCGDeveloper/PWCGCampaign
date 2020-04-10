@@ -12,6 +12,7 @@ public class CampaignData
     private boolean isCoop = false;
     private CampaignMode campaignMode = CampaignMode.CAMPAIGN_MODE_NONE;
     private SerialNumber serialNumber = new SerialNumber();
+    private int referencePlayerSerialNumber = 0;
 
 	public Date getDate()
 	{
@@ -56,5 +57,15 @@ public class CampaignData
     public boolean isCoop()
     {
         return isCoop;
+    }
+
+    public int getReferencePlayerSerialNumber()
+    {
+        return referencePlayerSerialNumber;
+    }
+
+    public void setReferencePlayerSerialNumber(int referencePlayerSerialNumber)
+    {
+        this.referencePlayerSerialNumber = referencePlayerSerialNumber;
     }
 }

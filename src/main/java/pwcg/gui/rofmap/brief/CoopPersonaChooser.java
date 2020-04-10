@@ -112,16 +112,17 @@ public class CoopPersonaChooser extends PwcgGuiContext implements ActionListener
     	Map <String, CoopPersona> coopPersonasByCoopUser = new HashMap<>();
     	for (CoopPersona coopPersona : selectedCoopPersonas)
     	{
-    		if (coopPersonasByCoopUser.containsKey(coopPersona.getUsername()))
+    		if (coopPersonasByCoopUser.containsKey(coopPersona.getCoopUsername()))
     		{
-    		    if (!coopPersona.getUsername().equals(CoopPersonaChooserPanel.NO_USER_FOR_PILOT))
+    		    if (!coopPersona.getCoopUsername().equals(CoopPersonaChooserPanel.NO_USER_FOR_PILOT))
     		    {
-    		        errorMessages.add("More than one pilot in mission for player " + coopPersona.getUsername() + " Pilot Name: " + coopPersona.getPilotName());
+    		        SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(coopPersona.getSerialNumber());
+    		        errorMessages.add("More than one pilot in mission for player " + coopPersona.getCoopUsername() + " Pilot Name: " + pilot.getNameAndRank());
     		    }
     		}
     		else
     		{
-    			coopPersonasByCoopUser.put(coopPersona.getUsername(), coopPersona);
+    			coopPersonasByCoopUser.put(coopPersona.getCoopUsername(), coopPersona);
     		}
     	}
 	}

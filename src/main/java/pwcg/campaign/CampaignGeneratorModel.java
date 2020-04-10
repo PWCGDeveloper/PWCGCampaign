@@ -14,6 +14,7 @@ public class CampaignGeneratorModel
     private ArmedService service;
     private String campaignName;
     private String playerName;
+    private String userName;
     private String playerRank;
     private String squadronName;
     private Date campaignDate;
@@ -53,6 +54,16 @@ public class CampaignGeneratorModel
     public String getPlayerRank()
     {
         return playerRank;
+    }
+
+    public String getUserName()
+    {
+        return userName;
+    }
+
+    public void setUserName(String userName)
+    {
+        this.userName = userName;
     }
 
     public void setPlayerRank(String playerRank)

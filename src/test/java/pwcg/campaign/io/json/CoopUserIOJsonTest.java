@@ -27,11 +27,7 @@ public class CoopUserIOJsonTest
     private void writeCoopUser() throws PWCGException
     {
         CoopUser coopUser = new CoopUser();
-        coopUser.setUsername("Test User");
-        coopUser.setApproved(true);
-        coopUser.setNote("I want to play");
-        coopUser.setPassword("password");
-        
+        coopUser.setUsername("Test User");        
         CoopUserIOJson.writeJson(coopUser);
     }
 
@@ -43,9 +39,6 @@ public class CoopUserIOJsonTest
         {
             if (coopUser.getUsername().equals("Test User"))
             {
-                assert (coopUser.isApproved() == true);
-                assert (coopUser.getNote().equals("I want to play"));
-                assert (coopUser.getPassword().equals("password"));
                 pilotFound = true;
             }
         }

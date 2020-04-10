@@ -6,7 +6,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadron.Squadron;
-import pwcg.coop.CoopPersonaManager;
+import pwcg.coop.CoopUserManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 
@@ -29,7 +29,7 @@ public class SquadronMemberReplacer  implements ISquadronMemberReplacer
         
         if (campaign.isCoop())
         {
-            CoopPersonaManager.getIntance().createCoopPersona(campaign, newSquadronMewmber, coopUser);
+            CoopUserManager.getIntance().createCoopPersona(campaign, newSquadronMewmber, coopUser);
         }
         
         return newSquadronMewmber;
