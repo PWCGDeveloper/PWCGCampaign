@@ -134,13 +134,13 @@ public class Mission
     {
         IMissionFile missionFile = MissionFileFactory.createMissionFile(this);
                  
-        missionFile.writeMission();
-
         IMissionDescription missionDescription = MissionDescriptionFactory.buildMissionDescription(campaign, this);
         String missionDescriptionText = missionDescription.createDescription();
         
         MissionDescriptionFile missionDescriptionFile = new MissionDescriptionFile();
         missionDescriptionFile.writeMissionDescription(missionDescription, campaign);
+
+        missionFile.writeMission();
 
         writePwcgMissionData(missionDescriptionText);
     }

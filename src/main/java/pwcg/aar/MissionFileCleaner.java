@@ -101,6 +101,8 @@ public class MissionFileCleaner
             results.add(missionDir + "\\" + filename + ".fra");
             results.add(missionDir + "\\" + filename + ".rus");
             results.add(missionDir + "\\" + filename + ".ger");
+            results.add(missionDir + "\\" + filename + ".pol");
+            results.add(missionDir + "\\" + filename + ".chs");
         }
     }
 

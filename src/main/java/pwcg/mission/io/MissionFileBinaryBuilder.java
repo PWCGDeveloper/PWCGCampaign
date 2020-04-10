@@ -22,7 +22,6 @@ public class MissionFileBinaryBuilder implements buildCommandPath
         {
             fullCommand = createCommandPath(campaign, fileName);
             buildBinaryFile(fullCommand);
-            removeListFile(campaign, fileName);
         }
         catch (Exception e)
         {
@@ -34,10 +33,10 @@ public class MissionFileBinaryBuilder implements buildCommandPath
     {
         String resaverExe = formResaverExeCommand();
         String listFileArg = formListFileArg();
-        String missionDirArg = formMissionDirArg(campaign);
+        String dataDirArg = formDataDirArg(campaign);
         String missionFilePathArg = formMissionFilePathArg(campaign, fileName);
 
-        String fullCommand = resaverExe + " " + listFileArg + " " + missionDirArg + " " + missionFilePathArg;
+        String fullCommand = resaverExe + " " + listFileArg + " " + dataDirArg + " " + missionFilePathArg;
         PWCGLogger.log(LogLevel.INFO, fullCommand);
         return fullCommand;
     }
@@ -46,7 +45,8 @@ public class MissionFileBinaryBuilder implements buildCommandPath
     {
         try
         {
-            Process process = Runtime.getRuntime().exec(fullCommand);
+            File workingDir = new File(PWCGContext.getInstance().getDirectoryManager().getMissionRewritePath());
+            Process process = Runtime.getRuntime().exec(fullCommand, null, workingDir);
             int binaryBuildTimeout = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.BuildBinaryTimeoutKey);
             boolean status = process.waitFor(binaryBuildTimeout, TimeUnit.MINUTES);
             if (status == true)
@@ -69,14 +69,6 @@ public class MissionFileBinaryBuilder implements buildCommandPath
         }
     }
 
-    private static void removeListFile(Campaign campaign, String fileName) throws PWCGException
-    {
-        String filepath = PWCGContext.getInstance().getDirectoryManager().getMissionFilePath(campaign);
-        filepath = filepath + fileName + ".list";
-        File listFile = new File(filepath);
-        listFile.delete();
-    }
-
     private static String formListFileArg()
     {
         return " -t ";
@@ -89,16 +81,16 @@ public class MissionFileBinaryBuilder implements buildCommandPath
         return resaverExe;
     }
 
-    private static String formMissionDirArg(Campaign campaign) throws PWCGException
+    private static String formDataDirArg(Campaign campaign) throws PWCGException
     {
-        String missionDir = PWCGContext.getInstance().getDirectoryManager().getMissionFilePath(campaign);
-        if (missionDir.endsWith("\\"))
+        String dataDir = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir();
+        if (dataDir.endsWith("\\"))
         {
-            missionDir = missionDir.substring(0, missionDir.length() - 1);
+            dataDir = dataDir.substring(0, dataDir.length() - 1);
         }
 
-        String missionDirArg = " -d \"" + missionDir + "\"";
-        return missionDirArg;
+        String dataDirArg = " -d \"" + dataDir + "\"";
+        return dataDirArg;
     }
 
     private static String formMissionFilePathArg(Campaign campaign, String fileName) throws PWCGException
