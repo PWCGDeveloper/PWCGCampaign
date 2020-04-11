@@ -31,8 +31,8 @@ public class AType3 extends ATypeBase implements IAType3
     
     private void parse (String line) throws PWCGException 
     {
-        victor = getString(line, "AID:", " TID:"); // Victor
-        victim = getString(line, "TID:", " POS("); // Victim
+        victor = getId(line, "AID:", " TID:"); // Victor
+        victim = getId(line, "TID:", " POS("); // Victim
         location = findCoordinate(line, "POS(");
     }
 
@@ -42,7 +42,7 @@ public class AType3 extends ATypeBase implements IAType3
         {
             String format = "T:14605 AType:3 AID:%s TID:%s POS(%.1f,%.1f,%.1f)";
 
-            String atype = String.format(format, victor, victim, location.getXPos(), location.getYPos(), location.getZPos());
+            String atype = String.format(format, victor.split("@")[0], victim.split("@")[0], location.getXPos(), location.getYPos(), location.getZPos());
             writer.write(atype);
             writer.newLine();
         }

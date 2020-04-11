@@ -5,6 +5,7 @@ import java.util.Map;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.phase1.parse.AARLogEvaluationCoordinator;
 import pwcg.aar.inmission.phase1.parse.AARMissionLogRawData;
+import pwcg.aar.inmission.phase1.parse.event.ATypeBase;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.aar.prelim.AARPhase0Preliminary;
 import pwcg.aar.prelim.AARPreliminaryData;
@@ -114,6 +115,7 @@ public class AARCoordinator
         this.campaign = campaign;
         errorBundleFileName = "";
         aarContext = new AARContext(campaign);
+        ATypeBase.reset();
     }
 
     void performMissionAAR(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException

@@ -49,7 +49,7 @@ public class AType12 extends ATypeBase implements IAType12
 
     private void parse (String line) throws PWCGException 
     {
-        id = getString(line, "ATYPE:12 ID:", " TYPE:");
+        id = getNewId(line, "ATYPE:12 ID:", " TYPE:");
         type = getString(line, " TYPE:", " COUNTRY:");
 
         int countryCode = getInteger(line, "COUNTRY:", " NAME:");
@@ -60,9 +60,9 @@ public class AType12 extends ATypeBase implements IAType12
             name = name.substring(1);
         
         if (line.contains(" POS("))
-            pid = getString(line, "PID:", " POS(");
+            pid = getId(line, "PID:", " POS(");
         else
-            pid = getString(line, "PID:", null);
+            pid = getId(line, "PID:", null);
     }
 
     @Override

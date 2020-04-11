@@ -24,8 +24,8 @@ public class AType18 extends ATypeBase implements IAType18
 
     private void parse (String line) throws PWCGException
     {
-        botId = getString(line, "AType:18 BOTID:", " PARENTID:");
-        vehicleId = getString(line, "PARENTID:", " POS(");
+        botId = getId(line, "AType:18 BOTID:", " PARENTID:");
+        vehicleId = getId(line, "PARENTID:", " POS(");
         location = findCoordinate(line, "POS(");
     }
 
@@ -36,7 +36,7 @@ public class AType18 extends ATypeBase implements IAType18
         {
             String format = "T:14605 AType:18 BOTID:%s PARENTID:%s POS(%.1f,%.1f,%.1f)";
 
-            String atype = String.format(format, botId, vehicleId, location.getXPos(),location.getYPos(), location.getZPos());
+            String atype = String.format(format, botId.split("@")[0], vehicleId.split("@")[0], location.getXPos(),location.getYPos(), location.getZPos());
             writer.write(atype);
             writer.newLine();
         }
