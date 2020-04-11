@@ -194,7 +194,7 @@ public class McuIcon extends BaseFlightMcu
         setDesc("");
 
         position = frontLinePoint.getPosition().copy();
-        this.lineType = McuIconLineType.ICON_LINE_TYPE_POSITION0;
+        this.lineType = McuIconLineType.ICON_LINE_TYPE_SECTOR1;
 
         coalitions.add(CoalitionFactory.getCoalitionBySide(Side.ALLIED));
         coalitions.add(CoalitionFactory.getCoalitionBySide(Side.AXIS));
