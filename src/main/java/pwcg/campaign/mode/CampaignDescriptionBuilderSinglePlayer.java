@@ -20,7 +20,7 @@ public class CampaignDescriptionBuilderSinglePlayer implements ICampaignDescript
     {
         String campaignDescription = "";        
 
-        SquadronMember referencePlayer = campaign.getReferenceCampaignMember();
+        SquadronMember referencePlayer = campaign.findReferencePlayer();
 
         campaignDescription += referencePlayer.getNameAndRank();
         campaignDescription += "     " + DateUtils.getDateString(campaign.getDate());

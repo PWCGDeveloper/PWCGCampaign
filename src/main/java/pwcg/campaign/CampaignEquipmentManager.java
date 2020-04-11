@@ -30,8 +30,13 @@ public class CampaignEquipmentManager
         return equipmentAllSquadrons.get(squadronId);
     }
 
-    public EquipmentDepot getEquipmentDepotForService(Integer serviceId)
+    public EquipmentDepot getEquipmentDepotForService(Integer serviceId) throws PWCGException
     {
+        if (!equipmentDepotsForServices.containsKey(serviceId))
+        {
+            ArmedService armedService = ArmedServiceFactory.createServiceManager().getArmedServiceById(serviceId, campaign.getDate());
+            createEquipmentDepot(armedService);
+        }
         return equipmentDepotsForServices.get(serviceId);
     }
 
@@ -48,16 +53,6 @@ public class CampaignEquipmentManager
     public Map<Integer, Equipment> getEquipmentAllSquadrons()
     {
         return equipmentAllSquadrons;
-    }
-
-    public EquipmentDepot getEquipmentDepot(Integer serviceId) throws PWCGException
-    {
-        if (!equipmentDepotsForServices.containsKey(serviceId))
-        {
-            ArmedService armedService = ArmedServiceFactory.createServiceManager().getArmedServiceById(serviceId, campaign.getDate());
-            createEquipmentDepot(armedService);
-        }
-        return equipmentDepotsForServices.get(serviceId);
     }
     
     public List<Integer> getServiceIdsForDepots()

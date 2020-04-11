@@ -19,6 +19,7 @@ import javax.swing.JScrollPane;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -151,7 +152,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
 
 	private JPanel makeButtonPanel() throws PWCGException 
 	{
-        String imagePath = getSideImage("BriefingNav.jpg");
+        String imagePath = getSideImage(campaignHomeGui.getCampaign(), "BriefingNav.jpg");
 
 		ImageResizingPanel buttonPanel = new ImageResizingPanel(imagePath);
 		buttonPanel.setLayout(new BorderLayout());
@@ -535,7 +536,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
         briefingMissionHandler.getBriefParametersContext().synchronizeAltitudeEdits();
         briefingMissionHandler.updateMissionBriefingParameters();
         
-        BriefingPilotPanelSet pilotSelection = new BriefingPilotPanelSet(campaignHomeGui,  briefingMissionHandler);
+        BriefingPilotPanelSet pilotSelection = new BriefingPilotPanelSet(campaignHomeGui.getCampaign(), campaignHomeGui,  briefingMissionHandler);
         pilotSelection.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(pilotSelection);
     }
@@ -560,7 +561,8 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
         
         mapPanel.clearVirtualPoints();
         
-        IFlight myFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
+        SquadronMember referencePlayer = mission.getCampaign().findReferencePlayer();
+        IFlight myFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
         for (IFlight linkedFlight : myFlight.getLinkedFlights().getLinkedFlights())
         {
             mapPanel.makeMapPanelVirtualPoints (linkedFlight);

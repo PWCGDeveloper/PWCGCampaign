@@ -10,7 +10,6 @@ import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.display.model.AAREquipmentLossPanelData;
 import pwcg.aar.ui.events.model.PlaneStatusEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -24,14 +23,12 @@ public class AAREquipmentChangePanel extends AAREventPanel
 {
     private static final long serialVersionUID = 1L;
     private AARCoordinator aarCoordinator;
-    private SquadronMember referencePlayer;
     private Campaign campaign;
 
     public AAREquipmentChangePanel(Campaign campaign)
 	{
         super();
         this.aarCoordinator = AARCoordinator.getInstance();
-        this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
         this.campaign = campaign;
 	}
 
@@ -82,6 +79,7 @@ public class AAREquipmentChangePanel extends AAREventPanel
         HashMap<String, CampaignReportEquipmentStatusGUI> planesLostGuiList = new HashMap<>();
         for (PlaneStatusEvent planeStatusEvent : equipmentLossPanelData.getEquipmentLost().values())
 		{
+            SquadronMember referencePlayer = campaign.findReferencePlayer();
             if (planeStatusEvent.getSquadronId() == referencePlayer.getSquadronId())
             {
                 CampaignReportEquipmentStatusGUI equipmentChangeGui = new CampaignReportEquipmentStatusGUI(campaign, planeStatusEvent);

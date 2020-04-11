@@ -39,12 +39,11 @@ public class CampaignConfigurationAdvancedGUI extends PwcgGuiContext implements 
 	private static final long serialVersionUID = 1L;
 	private Map<String, ConfigurationParametersGUI> configurationGUIs = new HashMap<String, ConfigurationParametersGUI>();
 	private ButtonGroup buttonGroup = new ButtonGroup();
-	private ConfigManagerCampaign configManager;
+	private Campaign campaign;
 
 	public CampaignConfigurationAdvancedGUI(Campaign campaign)
 	{
 	    super();
-        configManager = campaign.getCampaignConfigManager();
 	}
 	
 	public void makePanels() 
@@ -64,7 +63,7 @@ public class CampaignConfigurationAdvancedGUI extends PwcgGuiContext implements 
 
     private JPanel makeNavigatePanel() throws PWCGException
     {
-        String imagePath = getSideImage("AdvancedConfigCampaignLeft.jpg");
+        String imagePath = getSideImage(campaign, "AdvancedConfigCampaignLeft.jpg");
 
         ImageResizingPanel simpleConfigAcceptPanel = new ImageResizingPanel(imagePath);
         simpleConfigAcceptPanel.setLayout(new BorderLayout());
@@ -107,11 +106,11 @@ public class CampaignConfigurationAdvancedGUI extends PwcgGuiContext implements 
         String imagePath = null;
         if (PWCGContext.getInstance().getCampaign() != null)
         {
-            imagePath = getSideImage("AdvancedConfigCampaignRight.jpg");
+            imagePath = getSideImage(campaign, "AdvancedConfigCampaignRight.jpg");
         }
         else
         {
-            imagePath = getSideImage("ConfigLeft.jpg");
+            imagePath = getSideImage(campaign, "ConfigLeft.jpg");
          }
         		
         ImageResizingPanel configPanel = new ImageResizingPanel(imagePath);
@@ -192,6 +191,8 @@ public class CampaignConfigurationAdvancedGUI extends PwcgGuiContext implements 
 
 	ConfigurationParametersGUI createConfigPanel(String action) throws PWCGException 
 	{
+	    ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+
 		ConfigSet configSet = null;
 
 		if (action.contains("Flight"))

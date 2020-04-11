@@ -99,7 +99,7 @@ public class CampaignConfigurationSimpleGUI extends PwcgGuiContext implements Ac
 	private JPanel makeCenterPanel() throws PWCGException  
 	{
         String leftImageName = "SimpleConfigCampaignCenter.jpg";
-        String menuPath = ContextSpecificImages.menuPathForNation();
+        String menuPath = ContextSpecificImages.menuPathForNation(campaign);
         String imagePath = menuPath + leftImageName;
 
         ImageResizingPanel centerPortraitPanel = new ImageResizingPanel(imagePath);
@@ -110,7 +110,7 @@ public class CampaignConfigurationSimpleGUI extends PwcgGuiContext implements Ac
 
 	private JPanel makeNavigatePanel() throws PWCGException
 	{
-        String imagePath = getSideImage("SimpleConfigCampaignLeft.jpg");
+        String imagePath = getSideImage(campaign, "SimpleConfigCampaignLeft.jpg");
 
         ImageResizingPanel simpleConfigAcceptPanel = new ImageResizingPanel(imagePath);
         simpleConfigAcceptPanel.setLayout(new BorderLayout());
@@ -144,7 +144,7 @@ public class CampaignConfigurationSimpleGUI extends PwcgGuiContext implements Ac
 	{
 		JPanel airButtonPanel = createAirConfigPanel();
         JPanel groundButtonPanel = createGroundConfigPanel();
-        String imagePath = getSideImage("SimpleConfigCampaignRight.jpg");
+        String imagePath = getSideImage(campaign, "SimpleConfigCampaignRight.jpg");
 
         ImageResizingPanel simpleConfigButtonPanel = new ImageResizingPanel(imagePath);
 		simpleConfigButtonPanel.setLayout(new GridLayout(0,1));

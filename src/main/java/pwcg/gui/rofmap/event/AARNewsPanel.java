@@ -28,7 +28,6 @@ public class AARNewsPanel extends AAREventPanel
     private static final long serialVersionUID = 1L;
     private AARCoordinator aarCoordinator;
     private Campaign campaign;
-    private SquadronMember referencePlayer;
 
     private HashMap<String, ImageResizingPanel> newsGuiList = new HashMap<String, ImageResizingPanel>();
 
@@ -37,7 +36,6 @@ public class AARNewsPanel extends AAREventPanel
         super();
         this.campaign = campaign;
         this.aarCoordinator = AARCoordinator.getInstance();
-        this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
 	}
 
 	public void makePanel() throws PWCGException  
@@ -118,6 +116,7 @@ public class AARNewsPanel extends AAREventPanel
         List<NewspaperEvent> newspaperEvents = aarCoordinator.getAarContext().getUiDebriefData().getNewsPanelData().getNewspaperEventsDuringElapsedTime();
         for (NewspaperEvent newspaperEvent : newspaperEvents)
 		{
+            SquadronMember referencePlayer = campaign.findReferencePlayer();
         	if (referencePlayer.determineCountry(campaign.getDate()).getSide() == newspaperEvent.getSide())
         	{
 	            CampaignReportNewspaperGUI newspaperGui = new CampaignReportNewspaperGUI(newspaperEvent);

@@ -48,7 +48,7 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
 	{
         super();
 		this.campaign = PWCGContext.getInstance().getCampaign();
-		this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
+		this.referencePlayer = campaign.findReferencePlayer();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 	}    

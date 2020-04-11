@@ -48,6 +48,7 @@ public class CampaignSkinManagerForPilotPanel extends ImageResizingPanel impleme
     
     private SkinSessionManager skinSessionManager = null;
         
+    private Campaign campaign;
     private String selectedPlane = "";
     
     private JPanel skinsPlanePanel = null;
@@ -66,10 +67,11 @@ public class CampaignSkinManagerForPilotPanel extends ImageResizingPanel impleme
     private ButtonGroup skinButtonGroup = new ButtonGroup();
     private List<ButtonModel> skinButtonModels = new ArrayList<ButtonModel>();
 
-	public CampaignSkinManagerForPilotPanel(SkinSessionManager skinSessionManager)
+	public CampaignSkinManagerForPilotPanel(Campaign campaign, SkinSessionManager skinSessionManager)
 	{
         super(ContextSpecificImages.imagesMisc() + "paperHalf.jpg");
         
+        this.campaign = campaign;
         this.skinSessionManager = skinSessionManager;
 
         setLayout(new BorderLayout());
@@ -245,7 +247,7 @@ public class CampaignSkinManagerForPilotPanel extends ImageResizingPanel impleme
         JLabel label = makeLabel ("Squadron Aircraft:");
         aircraftButtonGrid.add(label);
 
-        SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
+        SquadronMember referencePlayer = campaign.findReferencePlayer();
         Squadron squad = referencePlayer.determineSquadron();
 
         Campaign campaign = PWCGContext.getInstance().getCampaign();

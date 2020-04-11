@@ -15,10 +15,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.AirfieldManager;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -35,15 +35,15 @@ public class IntelMapPanel extends MapPanelBase
 	private Map <String, IntelSquadronMapPoint> squadronPoints = new HashMap<String, IntelSquadronMapPoint>();
 	private Map <String, IntelAirfieldMapPoint> airfieldPoints = new HashMap<String, IntelAirfieldMapPoint>();
 
-	private IntelMapGUI parent = null;
-    private SquadronMember referencePlayer = null;
+	private IntelMapGUI parent;
+	private Campaign campaign;
 
-	public IntelMapPanel(IntelMapGUI parent) throws PWCGException  
+	public IntelMapPanel(IntelMapGUI parent, Campaign campaign) throws PWCGException  
 	{
 		super(parent);
 
-		this.parent = parent;		
-		this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
+        this.parent = parent;       
+        this.campaign = campaign;       
 	}
 
 	public void setData() throws PWCGException 
@@ -258,7 +258,7 @@ public class IntelMapPanel extends MapPanelBase
             mapPoint.service = squadron.determineServiceForSquadron(parent.getMapDate());
             mapPoint.squadron = squadron;
             
-            if (squadron.getSquadronId() == referencePlayer.getSquadronId())
+            if (squadron.getSquadronId() == campaign.findReferencePlayer().getSquadronId())
             {
                 mapPoint.isPlayerSquadron = true;
             }

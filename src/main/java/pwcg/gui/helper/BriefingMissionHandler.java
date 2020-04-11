@@ -80,7 +80,7 @@ public class BriefingMissionHandler
 
     public void pushEditsToMission() throws PWCGException
     {
-        SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
+        SquadronMember referencePlayer = mission.getCampaign().findReferencePlayer();
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
         PlayerFlightEditor planeGeneratorPlayer = new PlayerFlightEditor(mission.getCampaign(), playerFlight);
         planeGeneratorPlayer.updatePlayerPlanes(getCrewsSorted());
@@ -103,7 +103,7 @@ public class BriefingMissionHandler
     {
         if (!mission.isFinalized())
         {
-            SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
+            SquadronMember referencePlayer = mission.getCampaign().findReferencePlayer();
             IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
 
             playerFlight.getWaypointPackage().updateWaypoints(briefParametersContext.getWaypointsInBriefing());

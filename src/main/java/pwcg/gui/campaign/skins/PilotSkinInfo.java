@@ -35,7 +35,7 @@ public class PilotSkinInfo
     public void initialize() throws PWCGException
     {
         Campaign campaign = PWCGContext.getInstance().getCampaign();
-        SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
+        SquadronMember referencePlayer = campaign.findReferencePlayer();
         Squadron squadron = referencePlayer.determineSquadron();
         
         // Make an entry for each plane initialized to "No Skin"

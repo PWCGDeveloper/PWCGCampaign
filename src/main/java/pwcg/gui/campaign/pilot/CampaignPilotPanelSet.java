@@ -48,21 +48,24 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
 {
     private static final long serialVersionUID = 1L;
 
-    private SquadronMember pilot = null;
-	private Squadron squad = null;
-	protected String changePilotPictureAction = "";
+    private SquadronMember pilot;
+	private Squadron squad;
+    private Campaign campaign;
+    private CampaignHomeGUI parent;
+
+    protected String changePilotPictureAction = "";
     protected String changeSkinAction = "";
 	protected String openMedalBoxAction = "";
     protected String openLogBookAction = "";
-    private CampaignHomeGUI parent = null;
 
-    public CampaignPilotPanelSet(Squadron squad, SquadronMember pilot, CampaignHomeGUI parent)
+    public CampaignPilotPanelSet(Campaign campaign, Squadron squad, SquadronMember pilot, CampaignHomeGUI parent)
     {
          super();
 
         this.pilot = pilot;
         this.squad = squad;
         this.parent = parent;
+        this.campaign = campaign;
 
         changePilotPictureAction = "Change Picture";
 		openMedalBoxAction = "Open Medal Box:";
@@ -94,7 +97,7 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private JPanel makenavigationPanel() throws PWCGException  
     {
-        String imagePath = getSideImage("PilotInfoNav.jpg");
+        String imagePath = getSideImage(campaign, "PilotInfoNav.jpg");
 
         ImageResizingPanel pilotPanel = new ImageResizingPanel(imagePath);
         pilotPanel.setLayout(new BorderLayout());
@@ -359,7 +362,7 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
         SquadronMember pilot = UIUtils.getPilotFromAction(campaign, action);
         if (pilot != null)
         {
-            CampaignPilotMedalPanel pilotMedalPanel = new CampaignPilotMedalPanel(pilot);
+            CampaignPilotMedalPanel pilotMedalPanel = new CampaignPilotMedalPanel(campaign, pilot);
             pilotMedalPanel.makePanels();
             
             CampaignGuiContextManager.getInstance().pushToContextStack(pilotMedalPanel);

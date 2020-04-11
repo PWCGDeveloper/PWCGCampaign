@@ -15,7 +15,6 @@ import pwcg.campaign.group.airfield.staticobject.StaticObjectDefinitionManager;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.skin.SkinManager;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
@@ -28,7 +27,6 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     protected Map<FrontMapIdentifier, PWCGMap> pwcgMaps = new HashMap<FrontMapIdentifier, PWCGMap>();
     protected FrontMapIdentifier currentMap = null;
     protected Campaign campaign = null;
-    protected SquadronMember referencePlayer = null;
     protected AceManager aceManager = new AceManager();
     protected SquadronManager squadronManager = new SquadronManager();
     protected BattleManager battleManager = new BattleManager();
@@ -119,18 +117,6 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     {
         return campaign;
     }
-    
-	@Override
-	public void setReferencePlayer(SquadronMember referencePlayer) 
-	{
-		this.referencePlayer = referencePlayer;
-	}
-
-	@Override
-	public SquadronMember getReferencePlayer() 
-	{
-        return referencePlayer;
-	}
 
     @Override
     public PWCGMap getCurrentMap()

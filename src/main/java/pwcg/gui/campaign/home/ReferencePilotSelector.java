@@ -13,7 +13,6 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.coop.CoopUserManager;
@@ -123,7 +122,7 @@ public class ReferencePilotSelector extends PwcgGuiContext implements ActionList
                 SquadronMember referencePlayer = coopSquadronMembersInCampaign.get(coopSquadronMemberSelector.getSelectedItem());
                 if (referencePlayer != null)
                 {
-                    PWCGContext.getInstance().setReferencePlayer(referencePlayer);
+                    campaign.getCampaignData().setReferencePlayerSerialNumber(referencePlayer.getSerialNumber());
                 }
                 
                 campaignHomeGui.clean();

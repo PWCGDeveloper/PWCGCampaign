@@ -37,7 +37,6 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
 
 	private CampaignHomeGUI parent = null;
     private Campaign campaign = null;
-    private SquadronMember referencePlayer = null;
 	private JTextField tLeaveTime;
 
 	public CampaignLeavePanelSet  (CampaignHomeGUI parent)
@@ -46,7 +45,6 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
 
 		this.parent = parent;
         this.campaign = PWCGContext.getInstance().getCampaign();
-        this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
 	}
 	
 	public void makeVisible(boolean visible) 
@@ -61,7 +59,7 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
 
 	private JPanel makeLeaveLeftPanel() throws PWCGException  
 	{
-        String imagePath = getSideImage("LeaveNav.jpg");
+        String imagePath = getSideImage(campaign, "LeaveNav.jpg");
 
 		ImageResizingPanel leaverPanel = new ImageResizingPanel(imagePath);
 		leaverPanel.setLayout(new BorderLayout());
@@ -208,6 +206,7 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
 
         int leaveTimeDays = getLeaveTime();
         boolean isNewsWorthy = false;
+        SquadronMember referencePlayer = campaign.findReferencePlayer();
         LeaveEvent leaveEvent = new LeaveEvent(campaign, leaveTimeDays, referencePlayer.getSquadronId(), referencePlayer.getSerialNumber(), campaign.getDate(), isNewsWorthy);
         parent.campaignTimePassedForLeave(leaveEvent.getLeaveTime());
     }

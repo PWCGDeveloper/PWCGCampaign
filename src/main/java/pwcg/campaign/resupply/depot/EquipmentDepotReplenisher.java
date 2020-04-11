@@ -79,11 +79,16 @@ public class EquipmentDepotReplenisher
         for (int i = 0; i < numPlanes; ++i)
         {
             PlaneArchType planeArchType = getArchTypeForReplacement(equipmentReplacementCalculator);
-            String planeTypeName = EquipmentReplacementUtils.getTypeForReplacement(campaign.getDate(), planeArchType);
-            EquippedPlane equippedPlane = equipmentFactory.makePlaneForDepot(planeTypeName);
-            equipmentDepot.addPlaneToDepot(equippedPlane);
-            equipmentDepot.setLastReplacementDate(campaign.getDate());
+            replacePlaneByArchType(equipmentFactory, equipmentDepot, planeArchType);
         }
+    }
+
+    private void replacePlaneByArchType(PlaneEquipmentFactory equipmentFactory, EquipmentDepot equipmentDepot, PlaneArchType planeArchType) throws PWCGException
+    {
+        String planeTypeName = EquipmentReplacementUtils.getTypeForReplacement(campaign.getDate(), planeArchType);
+        EquippedPlane equippedPlane = equipmentFactory.makePlaneForDepot(planeTypeName);
+        equipmentDepot.addPlaneToDepot(equippedPlane);
+        equipmentDepot.setLastReplacementDate(campaign.getDate());
     }
 
     private PlaneArchType getArchTypeForReplacement(EquipmentReplacementCalculator equipmentReplacementCalculator) throws PWCGException

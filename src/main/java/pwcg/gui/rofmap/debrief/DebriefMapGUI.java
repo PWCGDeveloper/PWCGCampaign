@@ -22,7 +22,6 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBase;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogDamage;
 import pwcg.aar.ui.display.model.AARCombatReportPanelData;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -51,7 +50,6 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 	private static final long serialVersionUID = 1L;
 
     private Campaign campaign;
-    private SquadronMember referencePlayer;
 	private CampaignHomeGUI home = null;
 	private Thread initiatorThread = null;
 	private JTextArea eventTextPane = new JTextArea();
@@ -69,7 +67,6 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
         this.campaign = campaign;
         this.home = home;
         this.aarCoordinator = AARCoordinator.getInstance();
-        this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
 	}
 
 	public void makePanels() 
@@ -95,6 +92,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 
     private void setSoundForScreen() throws PWCGException
     {
+        SquadronMember referencePlayer = campaign.findReferencePlayer();
         AARCombatReportPanelData combatPanelData = aarCoordinator.getAarContext().
                         findUiCombatReportDataForSquadron(referencePlayer.getSquadronId()).getCombatReportPanelData();
         CampaignMissionWin missionWin = new CampaignMissionWin(combatPanelData);
@@ -166,6 +164,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 
 	protected void makeMapEvents() throws PWCGException  
 	{
+        SquadronMember referencePlayer = campaign.findReferencePlayer();
         List<LogBase> logEvents = aarCoordinator.getAarContext().
                         findUiCombatReportDataForSquadron(referencePlayer.getSquadronId()).getCombatReportMapData().getChronologicalEvents();
 
@@ -194,7 +193,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 
 	protected JPanel makeNavigationPanel() throws PWCGException 
 	{
-        String imagePath = getSideImage("DebriefNav.jpg");
+        String imagePath = getSideImage(campaign, "DebriefNav.jpg");
         ImageResizingPanel debriefButtonPanel = new ImageResizingPanel(imagePath);
         debriefButtonPanel.setLayout(new BorderLayout());
         debriefButtonPanel.setOpaque(false);
@@ -267,6 +266,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 
     private void showMissionEvents() throws PWCGException 
     {        
+        SquadronMember referencePlayer = campaign.findReferencePlayer();
         List<LogBase> logEvents = aarCoordinator.getAarContext().
                         findUiCombatReportDataForSquadron(referencePlayer.getSquadronId()).getCombatReportMapData().getChronologicalEvents();
 

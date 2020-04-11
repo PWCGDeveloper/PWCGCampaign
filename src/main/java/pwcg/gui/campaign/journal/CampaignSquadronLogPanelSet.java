@@ -198,15 +198,10 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
 	    
 	    return  calculatedLines;
 	}
-	
-	/**
-	 * @return
-	 * @throws PWCGException 
-	 * @
-	 */
+
 	private JPanel makeLogLeftPanel() throws PWCGException  
 	{
-        String imagePath = getSideImage("CampaignLogNav.jpg");
+        String imagePath = getSideImage(campaign, "CampaignLogNav.jpg");
 
 		ImageResizingPanel squadronLogPanel = new ImageResizingPanel(imagePath);
 		squadronLogPanel.setLayout(new BorderLayout());
@@ -222,13 +217,7 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
 		
 		return squadronLogPanel;
 	}
-	
 
-	/**
-	 * @return
-	 * @throws PWCGException 
-	 * @
-	 */
 	private JPanel  makeLogCenterPanel() throws PWCGException  
 	{
         String imagePath = ContextSpecificImages.imagesMisc() + "CampaignLog.jpg";
@@ -246,11 +235,6 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
 
 	}
 
-	/**
-	 * @return
-	 * @throws PWCGException 
-	 * @
-	 */
 	private void makePages() throws PWCGException  
 	{
 	    logPagesGridPanel.removeAll();
@@ -297,13 +281,7 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
 		
 		addPageTurner();
 	}
-	
 
-
-    /**
-     *  Add the previous/next page turner at the bottom of the log
-     * @throws PWCGException 
-     */
     private void addPageTurner() throws PWCGException
     {
         if (pageTurnerPanel != null)
@@ -316,13 +294,6 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
         getCenterPanel().add(pageTurnerPanel, BorderLayout.SOUTH);
     }
 
-	
-	/**
-	 * @param pageEntries
-	 * @return
-	 * @throws PWCGException 
-	 * @
-	 */
 	private JPanel makePage(StringBuffer pageEntries, int pageNum) throws PWCGException 
 	{
 		JPanel campaignLogPanelBorder = new JPanel();
@@ -364,9 +335,6 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
 		return campaignLogPanelBorder;
 	}
 
-	/**
-	 * @param ae
-	 */
 	public void actionPerformed(ActionEvent ae)
 	{
 		try
@@ -393,9 +361,6 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
 		}
 	}
 
-    /**
-     * @throws PWCGException
-     */
     private void previousPage() throws PWCGException
     {
         SoundManager.getInstance().playSound("PageTurn.WAV");
@@ -405,9 +370,6 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
         getCenterPanel().setVisible(true);
     }
 
-    /**
-     * @throws PWCGException
-     */
     private void nextPage() throws PWCGException
     {
         SoundManager.getInstance().playSound("PageTurn.WAV");

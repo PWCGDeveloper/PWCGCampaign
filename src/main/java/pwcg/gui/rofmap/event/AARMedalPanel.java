@@ -10,7 +10,6 @@ import javax.swing.JTabbedPane;
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.events.model.MedalEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -26,14 +25,12 @@ public class AARMedalPanel extends AAREventPanel
 
     private Campaign campaign;
     private AARCoordinator aarCoordinator;
-    private SquadronMember referencePlayer;
 
     public AARMedalPanel(Campaign campaign)
 	{
         super();
         this.campaign = campaign;
         this.aarCoordinator = AARCoordinator.getInstance();
-        this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
 	}
 
 	public void makePanel() throws PWCGException  
@@ -84,6 +81,7 @@ public class AARMedalPanel extends AAREventPanel
         HashMap<String, CampaignReportMedalGUI> pilotMedalGuiList = new HashMap<String, CampaignReportMedalGUI>();
         for (MedalEvent medalEvent : medalsAwarded)
         {
+            SquadronMember referencePlayer = campaign.findReferencePlayer();
             if (medalEvent.getSquadronId() == referencePlayer.getSquadronId())
             {
                 if (medalEvent.isNewsWorthy())

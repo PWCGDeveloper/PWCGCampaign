@@ -74,7 +74,7 @@ public class AARMainPanel extends AARPanel implements ActionListener
 
 	private JPanel makeNavigationPanel() throws PWCGException  
 	{
-        String imagePath = getSideImage("MissionResultsNav.jpg");
+        String imagePath = getSideImage(campaign, "MissionResultsNav.jpg");
 
 		ImageResizingPanel resultPanel = new ImageResizingPanel(imagePath);
 		resultPanel.setLayout(new BorderLayout());
@@ -130,7 +130,7 @@ public class AARMainPanel extends AARPanel implements ActionListener
 
             createPanelSetBasedOnReasonForAdvancingTime(allEventPanels);
             
-            AARPilotLossPanel pilotsLostPanelSet = new AARPilotLossPanel();
+            AARPilotLossPanel pilotsLostPanelSet = new AARPilotLossPanel(campaign);
             allEventPanels.add(pilotsLostPanelSet);
             
             AAROutOfMissionVictoryPanel outOfMissionVictoryPanel = new AAROutOfMissionVictoryPanel(campaign);

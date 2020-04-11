@@ -30,11 +30,12 @@ public class CampaignSkinManagerPanel extends PwcgGuiContext implements ActionLi
     private static final long serialVersionUID = 1L;
     
     private SkinSessionManager skinSessionManager = new SkinSessionManager();
+    private Campaign campaign;
 
-
-    public CampaignSkinManagerPanel() 
+    public CampaignSkinManagerPanel(Campaign campaign) 
     {
         super();
+        this.campaign = campaign;
     }
 
     public void makePanels() 
@@ -43,7 +44,7 @@ public class CampaignSkinManagerPanel extends PwcgGuiContext implements ActionLi
         {
             setLeftPanel(makeLeftPanel());
             setRightPanel(createRightPanel());
-            SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
+            SquadronMember referencePlayer = campaign.findReferencePlayer();
             createCenterPanel(referencePlayer);                
         }
         catch (Exception e)
@@ -74,7 +75,7 @@ public class CampaignSkinManagerPanel extends PwcgGuiContext implements ActionLi
         }
 
         skinSessionManager.setPilot(pilot);
-        CampaignSkinManagerForPilotPanel campaignSquadronSkinPilotPanel = new CampaignSkinManagerForPilotPanel(skinSessionManager);
+        CampaignSkinManagerForPilotPanel campaignSquadronSkinPilotPanel = new CampaignSkinManagerForPilotPanel(null, skinSessionManager);
         campaignSquadronSkinPilotPanel.makePanels();
         
         setCenterPanel(campaignSquadronSkinPilotPanel);
@@ -87,7 +88,7 @@ public class CampaignSkinManagerPanel extends PwcgGuiContext implements ActionLi
 
     private JPanel makeLeftPanel() throws PWCGException 
     {
-        String imagePath = getSideImage("CampaignSkinLeft.jpg");
+        String imagePath = getSideImage(campaign, "CampaignSkinLeft.jpg");
 
         ImageResizingPanel campaignButtonPanel = new ImageResizingPanel(imagePath);
         campaignButtonPanel.setLayout(new BorderLayout());

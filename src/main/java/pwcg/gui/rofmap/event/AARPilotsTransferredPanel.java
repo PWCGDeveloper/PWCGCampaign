@@ -10,7 +10,6 @@ import javax.swing.JTabbedPane;
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -25,14 +24,12 @@ public class AARPilotsTransferredPanel extends AAREventPanel
     private static final long serialVersionUID = 1L;
     private Campaign campaign;
     private AARCoordinator aarCoordinator;
-    private SquadronMember referencePlayer;
 
     public AARPilotsTransferredPanel(Campaign campaign)
 	{
         super();
         this.campaign = campaign;
         this.aarCoordinator = AARCoordinator.getInstance();
-        this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
 	}
 
 	public void makePanel() throws PWCGException  
@@ -85,6 +82,7 @@ public class AARPilotsTransferredPanel extends AAREventPanel
 
         for (TransferEvent transferEvent : transferEventsForSquadron)
         {
+            SquadronMember referencePlayer = campaign.findReferencePlayer();
             if (transferEvent.getTransferTo() == referencePlayer.getSquadronId() || transferEvent.getTransferFrom() == referencePlayer.getSquadronId())
             {
                 AARTransferPanel transferGui = new AARTransferPanel(campaign, transferEvent);

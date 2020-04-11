@@ -10,8 +10,6 @@ import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.display.model.AARCombatReportPanelData;
 import pwcg.aar.ui.events.model.PlaneStatusEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
@@ -24,14 +22,12 @@ public class AAROutOfMissionVictoryPanel extends AAREventPanel
 {
     private static final long serialVersionUID = 1L;
     private AARCoordinator aarCoordinator;
-    private SquadronMember referencePlayer;
     private Campaign campaign;
 
     public AAROutOfMissionVictoryPanel(Campaign campaign)
 	{
         super();
         this.aarCoordinator = AARCoordinator.getInstance();
-        this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
         this.campaign = campaign;
 	}
 
@@ -79,13 +75,13 @@ public class AAROutOfMissionVictoryPanel extends AAREventPanel
 	private HashMap<String, CampaignReportEquipmentStatusGUI> createPilotLostSubTabs() throws PWCGException 
 	{
         AARCombatReportPanelData combatReportData = aarCoordinator.getAarContext()
-                        .findUiCombatReportDataForSquadron(referencePlayer.getSquadronId()).getCombatReportPanelData();
+                        .findUiCombatReportDataForSquadron(campaign.findReferencePlayer().getSquadronId()).getCombatReportPanelData();
 
         HashMap<String, CampaignReportEquipmentStatusGUI> pilotLostGuiList = new HashMap<>();
 
         for (PlaneStatusEvent planeStatusEvent : combatReportData.getSquadronPlanesLostInMission().values())
 		{
-            if (planeStatusEvent.getSquadronId() == referencePlayer.getSquadronId())
+            if (planeStatusEvent.getSquadronId() == campaign.findReferencePlayer().getSquadronId())
             {
                 CampaignReportEquipmentStatusGUI equipmentChangeGui = new CampaignReportEquipmentStatusGUI(campaign, planeStatusEvent);
                 String tabName = "Plane Lost: " + planeStatusEvent.getPlaneSerialNumber();

@@ -28,8 +28,8 @@ import pwcg.campaign.utils.AutoStart;
 import pwcg.campaign.utils.PlanesOwnedManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.MissionLogFileValidator;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
@@ -51,14 +51,16 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
     private static final Integer NUM_COLUMNS = 4;
     private static final long serialVersionUID = 1L;
     private CampaignHomeGUI campaignHomeGui = null;
+    private Campaign campaign = null;
     private ImageResizingPanel pilotPanel = null;
     private BriefingMissionHandler briefingMissionHandler = null;
     private Map<Integer, BriefingPlaneModificationsPicker> planeModifications = new HashMap<>();
 
-    public BriefingPilotPanelSet(CampaignHomeGUI campaignHomeGui, BriefingMissionHandler briefingMissionHandler)
+    public BriefingPilotPanelSet(Campaign campaign, CampaignHomeGUI campaignHomeGui, BriefingMissionHandler briefingMissionHandler)
     {
         super();
 
+        this.campaign = campaign;
         this.campaignHomeGui = campaignHomeGui;
         this.briefingMissionHandler = briefingMissionHandler;
     }
@@ -81,7 +83,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private JPanel makeButtonPanel() throws PWCGException
     {
-        String imagePath = getSideImage("BriefingNav.jpg");
+        String imagePath = getSideImage(campaignHomeGui.getCampaign(), "BriefingNav.jpg");
 
         ImageResizingPanel pilotAssignmentNavPanel = new ImageResizingPanel(imagePath);
         pilotAssignmentNavPanel.setLayout(new BorderLayout());
@@ -596,7 +598,8 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
     		return true;
     	}
     	
-        IFlight playerFlight = briefingMissionHandler.getMission().getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
+        SquadronMember referencePlayer = campaign.findReferencePlayer();
+        IFlight playerFlight = briefingMissionHandler.getMission().getMissionFlightBuilder().getPlayerFlight(referencePlayer);
         List<PlaneMcu> playerPlanes = playerFlight.getFlightPlanes().getPlayerPlanes();
         for (PlaneMcu playerPlane : playerPlanes)
         {
@@ -613,7 +616,8 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private boolean ensurePlayerOwnsPlane() throws PWCGException
     {
-        IFlight playerFlight = briefingMissionHandler.getMission().getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
+        SquadronMember referencePlayer = campaign.findReferencePlayer();
+        IFlight playerFlight = briefingMissionHandler.getMission().getMissionFlightBuilder().getPlayerFlight(referencePlayer);
         List<PlaneMcu> playerPlanes = playerFlight.getFlightPlanes().getPlayerPlanes();
         for (PlaneMcu playerPlane : playerPlanes)
         {

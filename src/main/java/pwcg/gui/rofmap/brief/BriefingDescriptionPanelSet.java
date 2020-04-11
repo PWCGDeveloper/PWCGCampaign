@@ -50,7 +50,8 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
         this.campaignHomeGui =  campaignHomeGui;
         this.mission =  mission;
 
-        IFlight myFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
+        SquadronMember referencePlayer = mission.getCampaign().findReferencePlayer();
+        IFlight myFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
 		briefingMissionHandler = new BriefingMissionHandler(mission);
 		briefingMissionHandler.initializeFromMission(myFlight.getSquadron());
 
@@ -75,7 +76,7 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
 
     private JPanel makeButtonPanel() throws PWCGException 
     {
-        String imagePath = getSideImage("BriefingNav.jpg");
+        String imagePath = getSideImage(mission.getCampaign(), "BriefingNav.jpg");
 
         ImageResizingPanel buttonPanel = new ImageResizingPanel(imagePath);
         buttonPanel.setLayout(new BorderLayout());

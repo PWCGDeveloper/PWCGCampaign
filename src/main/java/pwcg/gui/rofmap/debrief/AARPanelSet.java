@@ -39,7 +39,6 @@ public class AARPanelSet extends AARPanel implements ActionListener
 
     private Campaign campaign = null;
 	private CampaignHomeGUI home = null;
-    private SquadronMember referencePlayer = null;
     private AARClaimPanels aarClaimPanel = null;
 
 	public AARPanelSet(CampaignHomeGUI home)  
@@ -47,7 +46,6 @@ public class AARPanelSet extends AARPanel implements ActionListener
         super();
 
 		this.campaign = PWCGContext.getInstance().getCampaign();
-		this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
         this.home = home;
 	}
 
@@ -104,6 +102,7 @@ public class AARPanelSet extends AARPanel implements ActionListener
         List<SquadronMember> pilotsInMissionSorted = pilotsInMission.sortPilots(campaign.getDate());
 		for (SquadronMember pilot : pilotsInMissionSorted)
 		{
+	        SquadronMember referencePlayer = campaign.findReferencePlayer();
             if (pilot.getSquadronId() == referencePlayer.getSquadronId())
             {
                 String crewDesc = "             " + pilot.getNameAndRank();
@@ -139,7 +138,7 @@ public class AARPanelSet extends AARPanel implements ActionListener
 
 	private JPanel makeNavigationPanel() throws PWCGException  
 	{
-        String imagePath = getSideImage("CombatReportNav.jpg");
+        String imagePath = getSideImage(campaign, "CombatReportNav.jpg");
 
 		ImageResizingPanel aarButtonPanel = new ImageResizingPanel(imagePath);
 		aarButtonPanel.setLayout(new BorderLayout());

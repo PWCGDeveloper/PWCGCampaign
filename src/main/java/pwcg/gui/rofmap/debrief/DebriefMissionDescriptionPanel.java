@@ -17,7 +17,6 @@ import javax.swing.JTextArea;
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -34,7 +33,6 @@ import pwcg.gui.utils.ScrollBarWrapper;
 
 public class DebriefMissionDescriptionPanel extends AARPanel implements ActionListener
 {
-    private SquadronMember referencePlayer = null;
     private AARCoordinator aarCoordinator;
     private CampaignHomeGUI homeGui;
     private Campaign campaign;
@@ -46,7 +44,6 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
 	{
 	    super();
 	    
-    	this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
         this.homeGui = homeGui;        
         this.campaign = campaign;        
         this.aarCoordinator = AARCoordinator.getInstance();
@@ -71,7 +68,7 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
 
     private JPanel makeButtonPanel() throws PWCGException 
     {
-        String imagePath = getSideImage("CombatReportNav.jpg");
+        String imagePath = getSideImage(campaign, "CombatReportNav.jpg");
 
         ImageResizingPanel buttonPanel = new ImageResizingPanel(imagePath);
         buttonPanel.setLayout(new BorderLayout());
@@ -140,6 +137,7 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
         
         for (SquadronMember pilotInMission : aarCoordinator.getAarContext().getPreliminaryData().getCampaignMembersInMission().getSquadronMemberCollection().values())
         {            
+            SquadronMember referencePlayer = campaign.findReferencePlayer();
             if (pilotInMission.getSquadronId() == referencePlayer.getSquadronId())
             {
                 missionText += "             " + pilotInMission.getNameAndRank();

@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -74,14 +76,18 @@ public class EquipmentReplacementCalculator
         loadWeightedList(replacementsForLosses, squadronNeedsForLosses);
     }
 
-    private void loadWeightedList(Map<String, Integer> aircraftReplacementWeights, List<String> needs)
+    private void loadWeightedList(Map<String, Integer> aircraftReplacementWeights, List<String> needs) throws PWCGException
     {
         for (String planeArchTypeName : aircraftReplacementWeights.keySet())
         {
-            int numUses = aircraftReplacementWeights.get(planeArchTypeName);
-            for (int i = 0; i < numUses; ++i)
+            PlaneArchType planeArchType = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneArchType(planeArchTypeName);
+            if (planeArchType.getInProductionMemberPlaneTypes(campaign.getDate()).size() > 0)
             {
-                needs.add(planeArchTypeName);
+                int numUses = aircraftReplacementWeights.get(planeArchTypeName);
+                for (int i = 0; i < numUses; ++i)
+                {
+                    needs.add(planeArchTypeName);
+                }
             }
         }
         

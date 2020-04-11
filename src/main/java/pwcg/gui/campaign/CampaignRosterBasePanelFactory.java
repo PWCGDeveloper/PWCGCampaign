@@ -24,7 +24,7 @@ public abstract class CampaignRosterBasePanelFactory
 	{
 	    this.parent = parent;
 		this.campaign = PWCGContext.getInstance().getCampaign();
-		this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
+		this.referencePlayer = campaign.findReferencePlayer();
 	}
 	
 	abstract public void makePilotList() throws PWCGException ;

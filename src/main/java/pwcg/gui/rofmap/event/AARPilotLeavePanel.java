@@ -11,7 +11,6 @@ import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.events.model.AceLeaveEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
@@ -23,14 +22,12 @@ import pwcg.gui.utils.ImageResizingPanel;
 public class AARPilotLeavePanel extends AAREventPanel
 {
     private static final long serialVersionUID = 1L;
-    private SquadronMember referencePlayer;
     private AARCoordinator aarCoordinator;
 
     public AARPilotLeavePanel()
 	{
         super();
         this.aarCoordinator = AARCoordinator.getInstance();
-        this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
 	}
 
     public void makePanel() throws PWCGException  
@@ -82,7 +79,7 @@ public class AARPilotLeavePanel extends AAREventPanel
         List<AceLeaveEvent> aceLeaveEvents = aarCoordinator.getAarContext().getUiDebriefData().getAceLeavePanelData().getAcesOnLeaveDuringElapsedTime();
         for (AceLeaveEvent aceLeaveEvent : aceLeaveEvents)
 		{
-            if (aceLeaveEvent.getSquadronId() == referencePlayer.getSquadronId())
+            if (aceLeaveEvent.getSquadronId() == campaign.findReferencePlayer().getSquadronId())
             {
                 CampaignReportAceLeaveGUI leaveGui = new CampaignReportAceLeaveGUI(aceLeaveEvent, campaign);
                 String tabName = "Leave: " + aceLeaveEvent.getPilotName();

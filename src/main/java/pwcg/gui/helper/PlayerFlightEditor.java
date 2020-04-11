@@ -104,7 +104,7 @@ public class PlayerFlightEditor
 
     private void configurePlaneForCrew(PlaneMcu plane, CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
-        SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
+        SquadronMember referencePlayer = campaign.findReferencePlayer();
         AiSkillLevel aiLevel = crewPlane.getPilot().getAiSkillLevel();
         SquadronMember squadronMember = campaign.getPersonnelManager().getSquadronPersonnel(referencePlayer.getSquadronId()).getSquadronMember(crewPlane.getPilot().getSerialNumber());
         if (squadronMember == null)

@@ -19,13 +19,13 @@ import pwcg.campaign.plane.Role;
 import pwcg.campaign.plane.RoleCategory;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.gui.utils.ReferencePlayerFinder;
 import pwcg.mission.Mission;
 
 public class Campaign
@@ -76,8 +76,12 @@ public class Campaign
     {
         if (campaignData.getReferencePlayerSerialNumber() == 0)
         {
-            SquadronMember player = personnelManager.getAllActivePlayers().getSquadronMemberList().get(0);
-            campaignData.setReferencePlayerSerialNumber(player.getSerialNumber());
+            SquadronMembers activePlayers = personnelManager.getAllActivePlayers();
+            if (activePlayers.getSquadronMemberList().size() > 0)
+            {
+                SquadronMember player = personnelManager.getAllActivePlayers().getSquadronMemberList().get(0);
+                campaignData.setReferencePlayerSerialNumber(player.getSerialNumber());
+            }
         }
     }
 
@@ -241,12 +245,6 @@ public class Campaign
         return false;
     }
 
-    public SquadronMember getReferenceCampaignMember() throws PWCGException
-    {
-        SquadronMember referencePlayer = ReferencePlayerFinder.findReferencePlayer(this);
-        return referencePlayer;
-    }
-
     public List<Squadron> determinePlayerSquadrons() throws PWCGException
     {
         List<Squadron> playerSquadrons = new ArrayList<>();
@@ -269,6 +267,11 @@ public class Campaign
         return true;
     }
     
+    public SquadronMember findReferencePlayer() throws PWCGException
+    {
+        return personnelManager.getAnyCampaignMember(campaignData.getReferencePlayerSerialNumber());
+    }
+
     public SerialNumber getSerialNumber()
     {
         return campaignData.getSerialNumber();

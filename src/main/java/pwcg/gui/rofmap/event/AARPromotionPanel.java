@@ -10,8 +10,6 @@ import javax.swing.JTabbedPane;
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.events.model.PromotionEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
@@ -26,14 +24,12 @@ public class AARPromotionPanel extends AAREventPanel
 
     private Campaign campaign;
     private AARCoordinator aarCoordinator;
-    private SquadronMember referencePlayer;
 
     public AARPromotionPanel(Campaign campaign)
 	{
         super();
         this.campaign = campaign;
         this.aarCoordinator = AARCoordinator.getInstance();
-        this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
 	}
 
 	public void makePanel()  
@@ -83,7 +79,7 @@ public class AARPromotionPanel extends AAREventPanel
         List<PromotionEvent> promotionEvents = aarCoordinator.getAarContext().getUiDebriefData().getPromotionPanelData().getPromotionEventsDuringElapsedTime();
         for (PromotionEvent promotionEvent : promotionEvents)
 		{
-            if (promotionEvent.getSquadronId() == referencePlayer.getSquadronId())
+            if (promotionEvent.getSquadronId() == campaign.findReferencePlayer().getSquadronId())
             {
                 CampaignReportPromotionGUI promotionGui = new CampaignReportPromotionGUI(campaign, promotionEvent);
                 String tabName = "Promotion Awarded: " + promotionEvent.getNewRank() + " " + promotionEvent.getPilotName();

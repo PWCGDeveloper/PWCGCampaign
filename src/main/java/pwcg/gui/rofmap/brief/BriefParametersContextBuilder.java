@@ -2,7 +2,7 @@ package pwcg.gui.rofmap.brief;
 
 import java.util.List;
 
-import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
@@ -32,7 +32,8 @@ public class BriefParametersContextBuilder
 	
 	private void setWaypoints() throws PWCGException
 	{
-		IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
+        SquadronMember referencePlayer = mission.getCampaign().findReferencePlayer();
+		IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
 		McuWaypoint prevWaypoint = null;
 		for (McuWaypoint waypoint :  playerFlight.getWaypointPackage().getAllWaypoints())
 		{				
@@ -123,7 +124,8 @@ public class BriefParametersContextBuilder
 	
     private void updateEscortWaypointsOnMap() throws PWCGException
     {
-		IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
+        SquadronMember referencePlayer = mission.getCampaign().findReferencePlayer();
+		IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
     	List<McuWaypoint> escortedWaypoints = playerFlight.getLinkedFlights().getLinkedWaypoints().getAllWaypoints();
 	    if (escortedWaypoints != null)
 	    {

@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.PwcgGuiContext;
@@ -24,10 +25,12 @@ public class CampaignIntelligencePanelSet extends PwcgGuiContext implements Acti
     private static final long serialVersionUID = 1L;
 
 	private ImageJTabbedPane tabs = new ImageJTabbedPane();
+	private Campaign campaign;
 
-	public CampaignIntelligencePanelSet()
+	public CampaignIntelligencePanelSet(Campaign campaign)
 	{
         super();
+        this.campaign = campaign;
         this.setOpaque(false);
 	}
 
@@ -40,7 +43,7 @@ public class CampaignIntelligencePanelSet extends PwcgGuiContext implements Acti
 
 	private JPanel makeNavigatePanel() throws PWCGException  
 	{		
-        String imagePath = getSideImage("IntelNav.jpg");
+        String imagePath = getSideImage(campaign, "IntelNav.jpg");
 
 		ImageResizingPanel intelPanel = new ImageResizingPanel(imagePath);
 		intelPanel.setLayout(new BorderLayout());

@@ -74,7 +74,7 @@ public class InterceptPackageTest
             for (McuWaypoint opposingWaypoint : opposingTargetWaypoints)
             {
                 double distanceFromBalloon = MathUtils.calcDist(waypoint.getPosition(), opposingWaypoint.getPosition());
-                if (distanceFromBalloon < 15000)
+                if (distanceFromBalloon < 20000)
                 {
                     interceptIsCloseToTarget = true;
                 }

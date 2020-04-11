@@ -20,7 +20,6 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CombatReport;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.CombatReportIOJson;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
@@ -37,7 +36,7 @@ public class CampaignJournalPanelSet extends PwcgGuiContext implements ActionLis
 {
     private static final long serialVersionUID = 1L;
 
-    private SquadronMember referencePlayer;
+    private Campaign campaign = null;
     
     private JPanel journalPagesGridPanel = new JPanel();
     private JPanel pageTurnerPanel = null;
@@ -54,10 +53,10 @@ public class CampaignJournalPanelSet extends PwcgGuiContext implements ActionLis
 
     private List<CampaignJournalGUI> activeCampaignJournals  = new ArrayList<CampaignJournalGUI>();
 
-    public CampaignJournalPanelSet()
+    public CampaignJournalPanelSet(Campaign campaign) throws PWCGException
     {
         super();
-        this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
+        this.campaign = campaign;
     }
 
     public void makeVisible(boolean visible) 
@@ -97,7 +96,7 @@ public class CampaignJournalPanelSet extends PwcgGuiContext implements ActionLis
 	private void loadCombatReportsForCampagn() throws PWCGException
 	{
         Campaign campaign = PWCGContext.getInstance().getCampaign();
-        journalReports = CombatReportIOJson.readJson(campaign,referencePlayer.getSerialNumber());
+        journalReports = CombatReportIOJson.readJson(campaign, campaign.findReferencePlayer().getSerialNumber());
 	}
 
 	private void mapCombatReportsToPages()
@@ -112,7 +111,7 @@ public class CampaignJournalPanelSet extends PwcgGuiContext implements ActionLis
 
     private JPanel makeNavigationPanel() throws PWCGException  
     {
-        String imagePath = getSideImage("JournalNav.jpg");
+        String imagePath = getSideImage(campaign, "JournalNav.jpg");
 
         ImageResizingPanel journalPanel = new ImageResizingPanel(imagePath);
         journalPanel.setLayout(new BorderLayout());

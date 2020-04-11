@@ -20,7 +20,6 @@ public class AARCombatReportPanel extends AAREventPanel
     private static final long serialVersionUID = 1L;
 
     private Campaign campaign;
-    private SquadronMember referencePlayer = null;
     private AARCoordinator aarCoordinator;
 
     private CombatReportPanel campaignCombatReportGUI = null;
@@ -31,7 +30,6 @@ public class AARCombatReportPanel extends AAREventPanel
         this.shouldDisplay = true;
         this.aarCoordinator = AARCoordinator.getInstance();
 		this.campaign = PWCGContext.getInstance().getCampaign();
-		this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
 	}
 
 	public void makePanel()  
@@ -67,6 +65,7 @@ public class AARCombatReportPanel extends AAREventPanel
 
 	private CombatReport startAARProcess() throws PWCGException 
 	{                
+        SquadronMember referencePlayer = campaign.findReferencePlayer();
 	    CombatReportBuilder combatReportBuilder = new CombatReportBuilder(campaign, referencePlayer, aarCoordinator);
         CombatReport combatReport = combatReportBuilder.createCombatReport();
 		return combatReport;

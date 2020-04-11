@@ -15,7 +15,6 @@ import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.GreatAce;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
@@ -34,7 +33,6 @@ import pwcg.gui.rofmap.event.AARMainPanel.EventPanelReason;
 import pwcg.gui.sound.MusicManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
-import pwcg.gui.utils.ReferencePlayerFinder;
 import pwcg.gui.utils.ToolTipManager;
 
 public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
@@ -53,10 +51,6 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         super();
         this.parent = parent;
         this.campaign = campaign;
-        
-        SquadronMember referencePlayer = ReferencePlayerFinder.findReferencePlayer(campaign);
-        PWCGContext.getInstance().setReferencePlayer(referencePlayer);
-        
         this.makeGUI();
     }
 
@@ -85,7 +79,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
 
     private JPanel makeLeftPanel() throws PWCGException 
     {
-        String imagePath = getSideImage("CampaignLeft.jpg");
+        String imagePath = getSideImage(campaign, "CampaignLeft.jpg");
 
         ImageResizingPanel campaignButtonPanel = new ImageResizingPanel(imagePath);
         campaignButtonPanel.setLayout(new BorderLayout());
@@ -315,7 +309,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         }
         else
         {
-            SquadronMember referencePlayer = campaign.getReferenceCampaignMember();
+            SquadronMember referencePlayer = campaign.findReferencePlayer();
             return referencePlayer.determineCountry(campaign.getDate()).getSide();
         }
      }

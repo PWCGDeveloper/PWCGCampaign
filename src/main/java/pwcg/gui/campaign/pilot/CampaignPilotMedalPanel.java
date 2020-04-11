@@ -38,14 +38,16 @@ public class CampaignPilotMedalPanel extends PwcgGuiContext implements ActionLis
 
     private int medalsPerRow = 5;
 	private SquadronMember pilot = null;
+    private Campaign campaign;
 
-	public CampaignPilotMedalPanel(SquadronMember pilot)
+	public CampaignPilotMedalPanel(Campaign campaign, SquadronMember pilot)
 	{
         super();
 
         Dimension screenSize = MonitorSupport.getPWCGFrameSize();
-		medalsPerRow = screenSize.width / 250;
+        this.medalsPerRow = screenSize.width / 250;
 
+        this.campaign = campaign;
         this.pilot = pilot;
 	}
 
@@ -71,7 +73,7 @@ public class CampaignPilotMedalPanel extends PwcgGuiContext implements ActionLis
 
     private JPanel makeNavigationPanel() throws PWCGException  
     {
-        String imagePath = getSideImage("PilotInfoNav.jpg");
+        String imagePath = getSideImage(campaign, "PilotInfoNav.jpg");
 
         ImageResizingPanel medalPanel = new ImageResizingPanel(imagePath);
         medalPanel.setLayout(new BorderLayout());

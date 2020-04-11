@@ -25,7 +25,6 @@ import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.AirfieldManager;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -47,14 +46,12 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 
     private ButtonGroup mapButtonGroup = new ButtonGroup();
     private Campaign campaign = null;
-    private SquadronMember referencePlayer;
 
 	public IntelMapGUI(Date mapDate) throws PWCGException  
 	{
 		super(mapDate);
 		setLayout(new BorderLayout());
 		this.campaign = PWCGContext.getInstance().getCampaign();
-		this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
 	}
 
 	public void makePanels() 
@@ -67,7 +64,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 			setBackground(bg);
 
 			// Initialize to the players current map
-	        List<FrontMapIdentifier> airfieldMaps = AirfieldManager.getMapIdForAirfield(referencePlayer.determineSquadron().determineCurrentAirfieldName(campaign.getDate()));
+	        List<FrontMapIdentifier> airfieldMaps = AirfieldManager.getMapIdForAirfield(campaign.findReferencePlayer().determineSquadron().determineCurrentAirfieldName(campaign.getDate()));
             PWCGContext.getInstance().changeContext(airfieldMaps.get(0));
 								
 			setRightPanel(makeRightPanel(-1));
@@ -87,7 +84,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
     {
         JPanel intelMapCenterPanel = new JPanel(new BorderLayout());
 
-        IntelMapPanel mapPanel = new IntelMapPanel(this);
+        IntelMapPanel mapPanel = new IntelMapPanel(this, campaign);
         mapScroll = new MapScroll(mapPanel);  
         mapPanel.setData();
         mapPanel.setMapBackground(100);
@@ -103,7 +100,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 
     private JPanel makeNavigationPanel() throws PWCGException  
     {
-        String imagePath = getSideImage("IntelMapNav.jpg");
+        String imagePath = getSideImage(campaign, "IntelMapNav.jpg");
 
         ImageResizingPanel intelNavPanel = new ImageResizingPanel(imagePath);
         intelNavPanel.setLayout(new BorderLayout());

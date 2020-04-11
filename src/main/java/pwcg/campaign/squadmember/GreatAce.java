@@ -1,7 +1,6 @@
 package pwcg.campaign.squadmember;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
@@ -15,7 +14,7 @@ public class GreatAce
             return false;
         }
         
-    	SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
+    	SquadronMember referencePlayer = campaign.findReferencePlayer();
         if (referencePlayer != null)
         {
             int numVictories = referencePlayer.getSquadronMemberVictories().getAirToAirVictories();

@@ -11,7 +11,6 @@ import pwcg.campaign.group.airfield.staticobject.StaticObjectDefinitionManager;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.skin.SkinManager;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
 
@@ -56,10 +55,6 @@ public interface IPWCGContextManager
     PlaneTypeFactory getPlaneTypeFactory();
 
     PWCGDirectoryManager getDirectoryManager();
-
-	void setReferencePlayer(SquadronMember referencePlayer);
-
-	SquadronMember getReferencePlayer();
 
     List<PWCGMap> getMaps();
 

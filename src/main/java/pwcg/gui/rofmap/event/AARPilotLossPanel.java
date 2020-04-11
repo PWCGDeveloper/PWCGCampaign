@@ -10,7 +10,7 @@ import javax.swing.JTabbedPane;
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.display.model.AARCombatReportPanelData;
 import pwcg.aar.ui.events.model.PilotStatusEvent;
-import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -24,13 +24,13 @@ public class AARPilotLossPanel extends AAREventPanel
 {
     private static final long serialVersionUID = 1L;
     private AARCoordinator aarCoordinator;
-    private SquadronMember referencePlayer;
+    private Campaign campaign;
 
-    public AARPilotLossPanel()
+    public AARPilotLossPanel(Campaign campaign)
 	{
         super();
         this.aarCoordinator = AARCoordinator.getInstance();
-        this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
+        this.campaign = campaign;
 	}
 
 	public void makePanel() throws PWCGException  
@@ -76,6 +76,7 @@ public class AARPilotLossPanel extends AAREventPanel
 
 	private HashMap<String, CampaignReportPilotStatusGUI> createPilotLostSubTabs() throws PWCGException 
 	{
+	    SquadronMember referencePlayer = campaign.findReferencePlayer();
         AARCombatReportPanelData combatReportData = aarCoordinator.getAarContext()
                         .findUiCombatReportDataForSquadron(referencePlayer.getSquadronId()).getCombatReportPanelData();
 

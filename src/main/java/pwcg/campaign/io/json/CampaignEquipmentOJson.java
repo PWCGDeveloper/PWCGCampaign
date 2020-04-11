@@ -53,7 +53,7 @@ public class CampaignEquipmentOJson
         JsonWriter<EquipmentDepot> jsonWriterReplacements = new JsonWriter<>();
         for (Integer serviceId : campaign.getEquipmentManager().getServiceIdsForDepots())
         {
-            EquipmentDepot replacementEquipment = campaign.getEquipmentManager().getEquipmentDepot(serviceId);
+            EquipmentDepot replacementEquipment = campaign.getEquipmentManager().getEquipmentDepotForService(serviceId);
             jsonWriterReplacements.writeAsJson(replacementEquipment, campaignEquipmentReplacementDir, serviceId + ".json");
         }
     }

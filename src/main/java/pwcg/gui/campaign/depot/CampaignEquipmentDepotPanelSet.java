@@ -46,7 +46,7 @@ public class CampaignEquipmentDepotPanelSet extends PwcgGuiContext implements Ac
 
 	private JPanel makeNavigatePanel() throws PWCGException  
 	{		
-        String imagePath = getSideImage("IntelNav.jpg");
+        String imagePath = getSideImage(campaign, "IntelNav.jpg");
 
 		ImageResizingPanel intelPanel = new ImageResizingPanel(imagePath);
 		intelPanel.setLayout(new BorderLayout());

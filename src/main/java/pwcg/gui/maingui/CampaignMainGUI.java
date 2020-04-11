@@ -58,7 +58,7 @@ import pwcg.gui.utils.ToolTipManager;
 public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
-    private static final String VERSION = "   PWCG Version 8.3.0";
+    private static final String VERSION = "   PWCG Version 8.4.0";
 
 	private List<JButton> campaignButtonList = new ArrayList<JButton>();
 	
@@ -503,7 +503,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
         }
         else
         {
-            SquadronMember referencePlayer = campaign.getReferenceCampaignMember();
+            SquadronMember referencePlayer = campaign.findReferencePlayer();
             return CountryFactory.makeCountryByCountry(referencePlayer.getCountry());
         }
      }

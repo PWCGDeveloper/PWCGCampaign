@@ -89,7 +89,7 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
 
 	private JPanel makeTransferNavPanel() throws PWCGException  
 	{
-        String imagePath = getSideImage("TransferNav.jpg");
+        String imagePath = getSideImage(campaign, "TransferNav.jpg");
 
 		ImageResizingPanel transferrPanel = new ImageResizingPanel(imagePath);
 		transferrPanel.setLayout(new BorderLayout());

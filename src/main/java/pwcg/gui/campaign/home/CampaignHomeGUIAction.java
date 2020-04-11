@@ -4,14 +4,13 @@ import java.awt.event.ActionEvent;
 
 import pwcg.aar.AARCoordinator;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
-import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGErrorBundler;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.campaign.config.CampaignConfigurationAdvancedGUI;
 import pwcg.gui.campaign.config.CampaignConfigurationSimpleGUI;
@@ -33,7 +32,6 @@ import pwcg.gui.rofmap.debrief.DebriefMissionDescriptionPanel;
 import pwcg.gui.rofmap.intelmap.IntelMapGUI;
 import pwcg.gui.sound.MusicManager;
 import pwcg.gui.sound.SoundManager;
-import pwcg.gui.utils.ReferencePlayerFinder;
 import pwcg.gui.utils.UIUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionHumanParticipants;
@@ -200,7 +198,7 @@ public class CampaignHomeGUIAction
     private void showTransfer() throws PWCGException 
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
-        SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
+        SquadronMember referencePlayer = campaign.findReferencePlayer();
         CampaignTransferPanelSet transferDisplay = new CampaignTransferPanelSet(parent, null, referencePlayer);
         transferDisplay.makePanels();        
         CampaignGuiContextManager.getInstance().pushToContextStack(transferDisplay);
@@ -238,7 +236,7 @@ public class CampaignHomeGUIAction
     {
         SoundManager.getInstance().playSound("BookOpen.WAV");
 
-        CampaignJournalPanelSet journalDisplay = new CampaignJournalPanelSet();
+        CampaignJournalPanelSet journalDisplay = new CampaignJournalPanelSet(campaign);
         journalDisplay.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(journalDisplay);
@@ -258,7 +256,8 @@ public class CampaignHomeGUIAction
     {
         SoundManager.getInstance().playSound("BookOpen.WAV");
 
-        CampaignSquadronLogPanelSet logDisplay = new CampaignSquadronLogPanelSet(PWCGContext.getInstance().getReferencePlayer().getSquadronId());
+        SquadronMember referencePlayer = campaign.findReferencePlayer();
+        CampaignSquadronLogPanelSet logDisplay = new CampaignSquadronLogPanelSet(referencePlayer.getSquadronId());
         logDisplay.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(logDisplay);
@@ -268,7 +267,7 @@ public class CampaignHomeGUIAction
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
         
-        CampaignSkinManagerPanel skinDisplay = new CampaignSkinManagerPanel();
+        CampaignSkinManagerPanel skinDisplay = new CampaignSkinManagerPanel(campaign);
         skinDisplay.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(skinDisplay);
@@ -276,7 +275,7 @@ public class CampaignHomeGUIAction
 
     private void showIntelReport() throws PWCGException 
     {
-        CampaignIntelligencePanelSet intelligence = new CampaignIntelligencePanelSet();
+        CampaignIntelligencePanelSet intelligence = new CampaignIntelligencePanelSet(campaign);
         intelligence.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(intelligence);
@@ -322,7 +321,7 @@ public class CampaignHomeGUIAction
                 Ace ace = (Ace)pilot;
                 squad =  ace.determineSquadron();;
             }
-            CampaignPilotPanelSet pilotPanel = new CampaignPilotPanelSet(squad, pilot, parent);
+            CampaignPilotPanelSet pilotPanel = new CampaignPilotPanelSet(campaign, squad, pilot, parent);
             pilotPanel.makePanels();
             
             CampaignGuiContextManager.getInstance().pushToContextStack(pilotPanel);
@@ -332,7 +331,7 @@ public class CampaignHomeGUIAction
     private MissionHumanParticipants buildParticipatingPlayersSinglePlayer() throws PWCGException
     {
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-	    SquadronMember referencePlayer = ReferencePlayerFinder.findReferencePlayer(campaign);
+	    SquadronMember referencePlayer = campaign.findReferencePlayer();
         participatingPlayers.addSquadronMember(referencePlayer);        
         return participatingPlayers;
     }

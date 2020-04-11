@@ -106,7 +106,7 @@ public abstract class PwcgGuiContext extends ImagePanel
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }
 
-    protected String getSideImage(String leftImageName) throws PWCGException
+    protected String getSideImage(Campaign campaign, String leftImageName) throws PWCGException
     {
         String imagePath = "";
 
@@ -120,7 +120,7 @@ public abstract class PwcgGuiContext extends ImagePanel
         }
         else
         {
-            String menuPath = ContextSpecificImages.menuPathForNation();
+            String menuPath = ContextSpecificImages.menuPathForNation(campaign);
             imagePath = menuPath + leftImageName;
         }
         

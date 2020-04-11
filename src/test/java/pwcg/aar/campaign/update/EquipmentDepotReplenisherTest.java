@@ -101,7 +101,7 @@ public class EquipmentDepotReplenisherTest
         assert(replacementPlane == null);
     }
 
-    private Map<Integer, Integer> determineReplacementsAvailableByService()
+    private Map<Integer, Integer> determineReplacementsAvailableByService() throws PWCGException
     {
         Map<Integer, Integer> replacementsAvailable = new HashMap<>();
         for (Integer serviceId : campaign.getEquipmentManager().getServiceIdsForDepots())
