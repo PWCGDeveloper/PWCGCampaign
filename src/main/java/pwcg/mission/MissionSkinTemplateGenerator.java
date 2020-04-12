@@ -16,6 +16,7 @@ import pwcg.campaign.skin.SkinTemplate;
 import pwcg.campaign.skin.SkinsForPlane;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.skin.SkinTemplate.SkinTemplateInstance;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
@@ -46,7 +47,10 @@ public class MissionSkinTemplateGenerator
                         continue;
 
                     Map<String, Object> params = new HashMap<>();
+                    Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(plane.getSquadronId());
                     Date date = campaign.getDate();
+                    params.put("UNIT_ID_CODE", squadron.determineUnitIdCode(date));
+                    params.put("SUB_UNIT_ID_CODE", squadron.determineSubUnitIdCode(date));
                     params.put("AIRCRAFT_ID_CODE", plane.getAircraftIdCode());
                     PWCGMap currentMap = PWCGContext.getInstance().getCurrentMap();
                     params.put("WINTER", (currentMap.getMapWeather().getSeason(date) == Season.WINTER) ? 1 : 0);

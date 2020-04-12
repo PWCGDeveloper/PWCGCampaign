@@ -7,6 +7,8 @@ public class SquadHistoryEntry
     private String squadName = "";
 	private String armedServiceName = "";
 	private int skill = NO_SQUADRON_SKILL_CHANGE;
+	private String unitIdCode;
+	private String subUnitIdCode;
     
 	public String getDate()
     {
@@ -46,5 +48,21 @@ public class SquadHistoryEntry
     public void setSkill(int skill)
     {
         this.skill = skill;
+    }
+
+    public String getUnitIdCode() {
+        return unitIdCode;
+    }
+
+    public void setUnitIdCode(String unitIdCode) {
+        this.unitIdCode = unitIdCode;
+    }
+
+    public String getSubUnitIdCode() {
+        return subUnitIdCode;
+    }
+
+    public void setSubUnitIdCode(String subUnitIdCode) {
+        this.subUnitIdCode = subUnitIdCode;
     }
 }
