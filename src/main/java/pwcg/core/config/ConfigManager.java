@@ -46,10 +46,10 @@ public abstract class ConfigManager
 
     public void loadInitialConfigSets() throws PWCGException 
     {
-    	Map<String, ConfigSet> InitialConfigSets = readInitialConfigSets();
+    	Map<String, ConfigSet> initialConfigSets = readInitialConfigSets();
     	for (String configSetKey : defaultCampaignConfigSets.keySet())
     	{
-    		ConfigSet initialConfigSet = InitialConfigSets.get(configSetKey);
+    		ConfigSet initialConfigSet = initialConfigSets.get(configSetKey);
     		if (initialConfigSet == null)
     		{
                 throw new PWCGIOException("No configuration set for key: " + configSetKey);

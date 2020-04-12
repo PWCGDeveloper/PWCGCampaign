@@ -20,13 +20,15 @@ import pwcg.core.exception.PWCGException;
 public class FileUtils
 {
 
-	public static void createDirIfNeeded(String campaignConfigDir)
+	public static boolean createDirIfNeeded(String campaignConfigDir)
     {
+	    boolean exists = true;
         File dir = new File(campaignConfigDir);
         if (!dir.exists())
         {
-            dir.mkdir();
+            exists = dir.mkdirs();
         }
+        return exists;
     }
 
     public static void deleteRecursive(String deleteDir)

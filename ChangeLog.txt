@@ -1,6 +1,19 @@
 ​
 At the PWCG web site
 
+PWCG 8.3.0
+Added strategic bombing intercepts
+- High altitude intercepts of larger formations
+- All other flights disabled in these missions
+- Not coop yet as there are concerns about how this plays nicely with other human missions
+- Mostly German western front but also eastern front
+- Me262 careers are now more sensible
+Bugs:
+Fixed: Accidental removal of Me109 E7
+Fixed: AAR error caused by addition of French units
+- Several different AAR failures reported but so far they all map to this error.
+Investigated: AAR error for flight seemingly abruptly ended before anything spawns.  PWCG did what it could.
+
 PWCG 8.2.0
 Extended war in the east to the end of the war
 - Currently just a static front on Western Stalingrad map
