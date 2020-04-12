@@ -11,20 +11,17 @@ import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.location.CoordinateBox;
 import pwcg.mission.mcu.McuIcon;
 
 public class MissionFrontLineIconBuilder
 {
     private Campaign campaign;
-    private Mission mission;
     private List<McuIcon> alliedLineIcons = new ArrayList<>();
     private List<McuIcon> axisLineIcons = new ArrayList<>();
     
-	public MissionFrontLineIconBuilder(Campaign campaign, Mission mission)
+	public MissionFrontLineIconBuilder(Campaign campaign)
 	{
 		this.campaign = campaign;
-		this.mission = mission;
 	}
 
 	public void buildFrontLineIcons() throws PWCGException
@@ -86,18 +83,14 @@ public class MissionFrontLineIconBuilder
 
 	private List<McuIcon> createFrontPoints(List<FrontLinePoint> frontPointsForSide) throws PWCGException
 	{
-        CoordinateBox missionBorders = mission.getMissionBorders().expandBox(10000);
 		List<McuIcon> iconsForFront = new ArrayList<>();
         for (int i = 0; i < frontPointsForSide.size(); ++i)
         {
             FrontLinePoint frontLinePoint = frontPointsForSide.get(i);
-        	if (missionBorders.isInBox(frontLinePoint.getPosition()))
+        	if ((i % 2) == 0)
         	{
-	        	if ((i % 2) == 0)
-	        	{
-	        		McuIcon icon = new McuIcon(frontLinePoint);
-	        		iconsForFront.add(icon);
-	        	}
+        		McuIcon icon = new McuIcon(frontLinePoint);
+        		iconsForFront.add(icon);
         	}
         }
         

@@ -4,6 +4,7 @@ package pwcg.mission.mcu;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.api.IAirfield;
@@ -16,6 +17,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.MissionStringHandler;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.objective.MissionObjectiveFactory;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.ground.org.IGroundUnitCollection;
@@ -38,8 +41,8 @@ public class McuIcon extends BaseFlightMcu
     {
         super();
 
-        name = iconName;
-        desc = iconName;
+        setName(iconName);
+        setDesc(iconName);
 
         MissionStringHandler.getInstance().registerMissionText(lCName, iconText);
         coalitions.add(CoalitionFactory.getCoalitionBySide(side));
@@ -49,8 +52,8 @@ public class McuIcon extends BaseFlightMcu
     {
         super();
 
-        name = iconName;
-        desc = iconName;
+        setName(iconName);
+        setDesc(iconName);
 
         MissionStringHandler.getInstance().registerMissionText(lCName, iconText);
         coalitions.add(CoalitionFactory.getCoalitionBySide(Side.ALLIED));
@@ -64,7 +67,7 @@ public class McuIcon extends BaseFlightMcu
 
         iconId = McuIconIdType.ICON_ID_WAYPOINT;
 
-        name = waypoint.getName();
+        setName(waypoint.getName());
 
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         if (productSpecificConfiguration.usePosition1())
@@ -75,17 +78,13 @@ public class McuIcon extends BaseFlightMcu
 
             lineType = McuIconLineType.ICON_LINE_TYPE_POSITION1;
 
-            desc = waypoint.getName();
+            setDesc(waypoint.getName() + "<routespeed>" + waypoint.getSpeed() + "</routespeed>");
         }
         else
         {
-            desc = waypoint.getName();
+            setDesc(waypoint.getName());
         }
 
-        lCName = LCIndexGenerator.getInstance().getNextIndex();
-        lCDesc = LCIndexGenerator.getInstance().getNextIndex();
-        MissionStringHandler.getInstance().registerMissionText(lCName, name);
-        MissionStringHandler.getInstance().registerMissionText(lCDesc, desc);
         coalitions.add(CoalitionFactory.getCoalitionBySide(side));
     }
 
@@ -95,6 +94,10 @@ public class McuIcon extends BaseFlightMcu
         if (action == WaypointAction.WP_ACTION_TAKEOFF)
         {
             createIconTakeoff(missionPoint, side);
+        }
+        else if (action == WaypointAction.WP_ACTION_ATTACK)
+        {
+            createIconTarget(missionPoint, side);
         }
         else
         {
@@ -106,8 +109,8 @@ public class McuIcon extends BaseFlightMcu
     {
         position = takeoff.getPosition();
         iconId = McuIconIdType.ICON_ID_TAKEOFF;
-        name = "Take Off";
-        desc = "Take Off";
+        setName("Take Off");
+        setDesc("Take Off");
 
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         if (productSpecificConfiguration.usePosition1())
@@ -119,8 +122,25 @@ public class McuIcon extends BaseFlightMcu
             lineType = McuIconLineType.ICON_LINE_TYPE_POSITION1;
         }
 
-        lCName = LCIndexGenerator.getInstance().getNextIndex();
-        lCDesc = lCName;
+        coalitions.add(CoalitionFactory.getCoalitionBySide(side));
+    }
+
+    private void createIconTarget(MissionPoint target, Side side) {
+        position = target.getPosition();
+
+        iconId = McuIconIdType.ICON_ID_ACTION_POINT;
+
+        setName("Target");
+        setDesc("Target");
+
+        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        if (productSpecificConfiguration.usePosition1()) {
+            rColor = 0;
+            gColor = 0;
+            bColor = 0;
+
+            lineType = McuIconLineType.ICON_LINE_TYPE_POSITION1;
+        }
 
         MissionStringHandler.getInstance().registerMissionText(lCName, name);
         coalitions.add(CoalitionFactory.getCoalitionBySide(side));
@@ -130,8 +150,8 @@ public class McuIcon extends BaseFlightMcu
     {
         position = landing.getPosition();
         iconId = McuIconIdType.ICON_ID_LAND;
-        name = "Land";
-        desc = "Land";
+        setName("Land");
+        setDesc("Land");
 
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         if (productSpecificConfiguration.usePosition1())
@@ -143,10 +163,6 @@ public class McuIcon extends BaseFlightMcu
             lineType = McuIconLineType.ICON_LINE_TYPE_POSITION1;
         }
 
-        lCName = LCIndexGenerator.getInstance().getNextIndex();
-        lCDesc = lCName;
-
-        MissionStringHandler.getInstance().registerMissionText(lCName, name);
         coalitions.add(CoalitionFactory.getCoalitionBySide(side));
     }
 
@@ -155,14 +171,9 @@ public class McuIcon extends BaseFlightMcu
         super();
 
         this.iconId = McuIconIdType.ICON_ID_ENEMY_BALLOON;
-        name = FCPlaneAttributeMapping.BALLOON.getPlaneType();
-        desc = FCPlaneAttributeMapping.BALLOON.getPlaneType();
+        setName(FCPlaneAttributeMapping.BALLOON.getPlaneType());
+        setDesc(FCPlaneAttributeMapping.BALLOON.getPlaneType());
         position = balloon.getPosition().copy();
-
-        lCName = LCIndexGenerator.getInstance().getNextIndex();
-        lCDesc = lCName;
-
-        MissionStringHandler.getInstance().registerMissionText(lCName, name);
 
         coalitions.add(CoalitionFactory.getCoalitionBySide(Side.ALLIED));
         coalitions.add(CoalitionFactory.getCoalitionBySide(Side.AXIS));
@@ -173,31 +184,34 @@ public class McuIcon extends BaseFlightMcu
         super();
 
         this.iconId = McuIconIdType.ICON_ID_AIRFIELD;
-        name = airfield.getName();
-        desc = airfield.getName();
+        setName(airfield.getName());
+        setDesc(airfield.getName());
         position = airfield.getPosition().copy();
 
-        lCName = LCIndexGenerator.getInstance().getNextIndex();
-        lCDesc = lCName;
-
-        MissionStringHandler.getInstance().registerMissionText(lCName, name);
         coalitions.add(CoalitionFactory.getCoalitionBySide(side));
     }
 
     public McuIcon(FrontLinePoint frontLinePoint)
     {
-        name = "";
-        desc = "";
-
-        lCName = LCIndexGenerator.getInstance().getNextIndex();
-        lCDesc = lCName;
-        MissionStringHandler.getInstance().registerMissionText(lCName, name);
+        setName("");
+        setDesc("");
 
         position = frontLinePoint.getPosition().copy();
-        this.lineType = McuIconLineType.ICON_LINE_TYPE_POSITION0;
+        this.lineType = McuIconLineType.ICON_LINE_TYPE_SECTOR1;
 
         coalitions.add(CoalitionFactory.getCoalitionBySide(Side.ALLIED));
         coalitions.add(CoalitionFactory.getCoalitionBySide(Side.AXIS));
+    }
+
+    public McuIcon(IFlight flight, Date date) throws PWCGException {
+        super();
+        position = flight.getFlightHomePosition().copy();
+        position.setXPos(position.getXPos() + 5000);
+        iconId = McuIconIdType.ICON_ID_FREE_FLIGHT;
+        setName(flight.getSquadron().determineDisplayName(date));
+        setDesc(MissionObjectiveFactory.formMissionObjective(flight, date));
+
+        coalitions.add(CoalitionFactory.getCoalitionBySide(flight.getFlightInformation().getCountry().getSide()));
     }
 
     public void write(BufferedWriter writer) throws PWCGIOException
@@ -289,6 +303,26 @@ public class McuIcon extends BaseFlightMcu
     public void setlCDesc(int lCDesc)
     {
         this.lCDesc = lCDesc;
+    }
+
+    @Override
+    public void setName(String name) {
+        super.setName(name);
+
+        if (lCName == 0)
+            lCName = LCIndexGenerator.getInstance().getNextIndex();
+
+        MissionStringHandler.getInstance().registerMissionText(lCName, name);
+    }
+
+    @Override
+    public void setDesc(String desc) {
+        super.setDesc(desc);
+
+        if (lCDesc == 0)
+            lCDesc = LCIndexGenerator.getInstance().getNextIndex();
+
+        MissionStringHandler.getInstance().registerMissionText(lCDesc, desc);
     }
 
 }
