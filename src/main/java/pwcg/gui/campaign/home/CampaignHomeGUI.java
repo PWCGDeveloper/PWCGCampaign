@@ -17,6 +17,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.squadmember.GreatAce;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
@@ -217,6 +218,16 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
             return false;
         }
         
+        if (campaign.findReferencePlayer() == null)
+        {
+            return false;
+        }
+        
+        if (campaign.findReferencePlayer().getPilotActiveStatus() != SquadronMemberStatus.STATUS_ACTIVE)
+        {
+            return false;
+        }
+
         return true;
     }
 
