@@ -154,7 +154,6 @@ public class CampaignIOJsonTest
 
     private void deleteCampaign()
     {
-        CampaignRemover campaignRemover = new CampaignRemover();
-        campaignRemover.deleteCampaign(CampaignCacheBase.TEST_CAMPAIGN_NAME);
+        CampaignRemover.deleteCampaign(CampaignCacheBase.TEST_CAMPAIGN_NAME);
     }
 }

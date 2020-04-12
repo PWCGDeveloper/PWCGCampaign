@@ -22,18 +22,10 @@ public class CampaignEquipmentOJson
     private static void makeEquipmentDir(Campaign campaign)
     {
         String campaignEquipmentDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Equipment\\";
-        File equipmentDirFile = new File(campaignEquipmentDir);
-        if (!equipmentDirFile.exists())
-        {
-            equipmentDirFile.mkdir();
-        }
+        FileUtils.createDirIfNeeded(campaignEquipmentDir);
         
         String campaignReplacementsDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Equipment\\Replacements\\";
-        File replacementDirFile = new File(campaignReplacementsDir);
-        if (!replacementDirFile.exists())
-        {
-            replacementDirFile.mkdir();
-        }
+        FileUtils.createDirIfNeeded(campaignReplacementsDir);
     }
 
     private static void writeSquadrons(Campaign campaign) throws PWCGException
@@ -67,8 +59,7 @@ public class CampaignEquipmentOJson
     private static void readSquadrons(Campaign campaign) throws PWCGException
     {
         String campaignEquipmentDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Equipment\\";
-        FileUtils fileUtils = new FileUtils();
-        List<File> jsonFiles = fileUtils.getFilesWithFilter(campaignEquipmentDir, ".json");
+        List<File> jsonFiles = FileUtils.getFilesWithFilter(campaignEquipmentDir, ".json");
         for (File jsonFile : jsonFiles)
         {
             JsonObjectReader<Equipment> jsoReader = new JsonObjectReader<>(Equipment.class);
@@ -81,8 +72,7 @@ public class CampaignEquipmentOJson
     private static void readReplacements(Campaign campaign) throws PWCGException
     {
         String campaignEquipmentReplacementDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Equipment\\Replacements\\";
-        FileUtils fileUtils = new FileUtils();
-        List<File> jsonFiles = fileUtils.getFilesWithFilter(campaignEquipmentReplacementDir, ".json");
+        List<File> jsonFiles = FileUtils.getFilesWithFilter(campaignEquipmentReplacementDir, ".json");
         for (File jsonFile : jsonFiles)
         {
             JsonObjectReader<EquipmentDepot> jsoReader = new JsonObjectReader<>(EquipmentDepot.class);

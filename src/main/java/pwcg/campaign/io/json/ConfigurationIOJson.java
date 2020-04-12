@@ -23,8 +23,7 @@ public class ConfigurationIOJson
 	{
 	    Map<String, ConfigSet> configSets = new HashMap<String, ConfigSet>();
 	    
-		FileUtils fileUtils = new FileUtils();
-		List<File> jsonFiles = fileUtils.getFilesWithFilter(sourceDirectory, ".json");
+		List<File> jsonFiles = FileUtils.getFilesWithFilter(sourceDirectory, ".json");
 		File currentJsonFile = null;
 		try
 		{

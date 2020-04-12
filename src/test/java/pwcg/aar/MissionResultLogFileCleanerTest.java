@@ -48,7 +48,7 @@ public class MissionResultLogFileCleanerTest
     public void testCleanMissionLogs() throws PWCGException
     {
         long oneDayAgoPlus = System.currentTimeMillis() - 86500000;
-        Mockito.when(fileUtils.ageOfFilesInMillis(Matchers.<String>any())).thenReturn(Long.valueOf(oneDayAgoPlus));
+        Mockito.when(FileUtils.ageOfFilesInMillis(Matchers.<String>any())).thenReturn(Long.valueOf(oneDayAgoPlus));
         Mockito.when(directoryReader.getFiles()).thenReturn(filenames);
 
         ConfigManagerGlobal.getInstance().setParam(ConfigItemKeys.DeleteAllMissionLogsKey, "1");
@@ -66,7 +66,7 @@ public class MissionResultLogFileCleanerTest
     public void testCleanMissionLogsFilesAreNew() throws PWCGException
     {
         long oneDayAgoPlus = System.currentTimeMillis() - 86300000;
-        Mockito.when(fileUtils.ageOfFilesInMillis(Matchers.<String>any())).thenReturn(Long.valueOf(oneDayAgoPlus));
+        Mockito.when(FileUtils.ageOfFilesInMillis(Matchers.<String>any())).thenReturn(Long.valueOf(oneDayAgoPlus));
         Mockito.when(directoryReader.getFiles()).thenReturn(filenames);
     
         ConfigManagerGlobal.getInstance().setParam(ConfigItemKeys.DeleteAllMissionLogsKey, "1");
@@ -94,7 +94,7 @@ public class MissionResultLogFileCleanerTest
         filenames.add("missionReport(2016-09-11-22-51-08)[4].txt");
 
         long oneDayAgoPlus = System.currentTimeMillis() - 86500000;
-        Mockito.when(fileUtils.ageOfFilesInMillis(Matchers.<String>any())).thenReturn(Long.valueOf(oneDayAgoPlus));
+        Mockito.when(FileUtils.ageOfFilesInMillis(Matchers.<String>any())).thenReturn(Long.valueOf(oneDayAgoPlus));
         Mockito.when(directoryReader.getFiles()).thenReturn(filenames);
 
         ConfigManagerGlobal.getInstance().setParam(ConfigItemKeys.DeleteAllMissionLogsKey, "0");
@@ -114,7 +114,7 @@ public class MissionResultLogFileCleanerTest
         List<String> filenames = new ArrayList<String>();
 
         long oneDayAgoPlus = System.currentTimeMillis() - 86500000;
-        Mockito.when(fileUtils.ageOfFilesInMillis(Matchers.<String>any())).thenReturn(Long.valueOf(oneDayAgoPlus));
+        Mockito.when(FileUtils.ageOfFilesInMillis(Matchers.<String>any())).thenReturn(Long.valueOf(oneDayAgoPlus));
         Mockito.when(directoryReader.getFiles()).thenReturn(filenames);
 
         ConfigManagerGlobal.getInstance().setParam(ConfigItemKeys.DeleteAllMissionLogsKey, "1");

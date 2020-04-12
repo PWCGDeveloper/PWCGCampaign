@@ -17,9 +17,9 @@ public class CampaignGeneratorProfileInfoGUI extends ImageResizingPanel
 {
 	private static final long serialVersionUID = 1L;
 
-    private IPilotGeneratorUI parent;
+    private CampaignGeneratorPanelSet parent;
 
-	public CampaignGeneratorProfileInfoGUI(IPilotGeneratorUI parent, String imagePath) 
+	public CampaignGeneratorProfileInfoGUI(CampaignGeneratorPanelSet parent, String imagePath) 
 	{
         super(imagePath);
         this.parent = parent;       

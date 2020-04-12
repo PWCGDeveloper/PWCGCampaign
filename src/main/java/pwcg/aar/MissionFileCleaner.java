@@ -21,7 +21,7 @@ public class MissionFileCleaner
     public int cleanMissionFiles() throws PWCGException 
     {
         List<String> filesToDelete = getMissionFilesToDelete();
-        fileUtils.deleteFilesByFileName(filesToDelete);
+        FileUtils.deleteFilesByFileName(filesToDelete);
         
         return filesToDelete.size();
     }

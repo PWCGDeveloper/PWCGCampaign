@@ -16,8 +16,7 @@ public class AircraftIOJson
 	{
 	    Map<String, PlaneType> planeMap = new TreeMap<>();
 
-		FileUtils fileUtils = new FileUtils();
-		List<File> jsonFiles = fileUtils.getFilesWithFilter(PWCGContext.getInstance().getDirectoryManager().getPwcgAircraftInfoDir(), ".json");
+		List<File> jsonFiles = FileUtils.getFilesWithFilter(PWCGContext.getInstance().getDirectoryManager().getPwcgAircraftInfoDir(), ".json");
 
 		for (File jsonFile : jsonFiles)
 		{

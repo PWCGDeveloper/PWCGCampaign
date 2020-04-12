@@ -29,7 +29,7 @@ public class MissionResultLogFileCleaner
         {
         	List<String> allMissionFiles = getAllMissionResultsFiles();
         	filesToDelete = selectOlderMissionLogFiles(allMissionFiles);
-            fileUtils.deleteFilesByFileName (filesToDelete);
+            FileUtils.deleteFilesByFileName (filesToDelete);
         }
         
         return filesToDelete.size();
@@ -40,7 +40,7 @@ public class MissionResultLogFileCleaner
         List<String> filesToDelete = new ArrayList<String>();
         for (String pathname : allMissionFiles) 
         {
-            long ageOfFile = fileUtils.ageOfFilesInMillis(pathname);
+            long ageOfFile = FileUtils.ageOfFilesInMillis(pathname);
             long oneDayAgo = System.currentTimeMillis() - 86400000;
             if (ageOfFile < oneDayAgo)
             {

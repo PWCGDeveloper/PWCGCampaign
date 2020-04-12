@@ -35,8 +35,7 @@ public class SkinIOJson
 		Map<String, SkinSet>  skinSets = new HashMap<>();
 		
 		String skinDir = PWCGContext.getInstance().getDirectoryManager().getPwcgSkinsDir() + skinSetName + "\\";
-		FileUtils fileUtils = new FileUtils();
-		List<File> jsonFiles = fileUtils.getFilesWithFilter(skinDir, ".json");
+		List<File> jsonFiles = FileUtils.getFilesWithFilter(skinDir, ".json");
 		for (File jsonFile : jsonFiles)
 		{
 			JsonObjectReader<SkinSet> jsonReader = new JsonObjectReader<>(SkinSet.class);

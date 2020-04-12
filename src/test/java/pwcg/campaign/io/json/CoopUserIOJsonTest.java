@@ -48,8 +48,7 @@ public class CoopUserIOJsonTest
     
     private void deleteCoopUser()
     {
-        FileUtils fileUtils = new FileUtils();
         String coopUserPath = PWCGContext.getInstance().getDirectoryManager().getPwcgCoopDir() + "Users\\Test User.json";
-        fileUtils.deleteFile(coopUserPath);
+        FileUtils.deleteFile(coopUserPath);
     }
 }

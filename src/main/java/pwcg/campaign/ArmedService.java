@@ -170,4 +170,13 @@ public class ArmedService
     {
         this.nameCountry = nameCountry;
     }
+
+    public boolean isActive(Date date) throws PWCGException
+    {
+        if (DateUtils.isDateInRange(date, startDate, endDate))
+        {
+            return true;
+        }
+        return false;
+    }
 }

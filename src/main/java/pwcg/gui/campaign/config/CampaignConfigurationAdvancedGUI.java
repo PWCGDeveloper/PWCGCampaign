@@ -44,6 +44,7 @@ public class CampaignConfigurationAdvancedGUI extends PwcgGuiContext implements 
 	public CampaignConfigurationAdvancedGUI(Campaign campaign)
 	{
 	    super();
+	    this.campaign = campaign;
 	}
 	
 	public void makePanels() 

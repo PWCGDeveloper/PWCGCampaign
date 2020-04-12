@@ -25,8 +25,7 @@ public class CampaignCache
     
     public static Campaign makeCampaignForceCreation(SquadronTestProfile campaignProfile) throws PWCGException
     {
-        CampaignRemover campaignRemover = new CampaignRemover();
-        campaignRemover.deleteCampaign(CampaignCacheBase.TEST_CAMPAIGN_NAME);         
+        CampaignRemover.deleteCampaign(CampaignCacheBase.TEST_CAMPAIGN_NAME);         
 
         if (PWCGContext.getProduct() == PWCGProduct.FC)
         {

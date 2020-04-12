@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import pwcg.campaign.ArmedService;
+import pwcg.campaign.ArmedServiceFinder;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.core.exception.PWCGException;
@@ -32,9 +33,9 @@ public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionL
 
 	private static final long serialVersionUID = 1L;
 	
-	private IPilotGeneratorUI parent = null;
+	private CampaignGeneratorPanelSet parent = null;
 
-	public CampaignGeneratorChooseServiceGUI(IPilotGeneratorUI parent)
+	public CampaignGeneratorChooseServiceGUI(CampaignGeneratorPanelSet parent)
 	{
         this.parent = parent;
         this.setLayout(new BorderLayout());
@@ -69,7 +70,6 @@ public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionL
 
         servicePanel.add(alliedServicePanel);
         servicePanel.add(axisServicePanel);
-
         
         List<ArmedService> alliedArmedServices = getArmedServicesForSide(Side.ALLIED);
 		for (ArmedService service : alliedArmedServices)
@@ -114,7 +114,7 @@ public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionL
 	List<ArmedService> getArmedServicesForSide(Side side) throws PWCGException   
 	{
 	    List<ArmedService> armedServicesForSide = new ArrayList<>();
-	    for (ArmedService armedService : parent.getArmedServices())
+	    for (ArmedService armedService : ArmedServiceFinder.getArmedServicesAllSides())
 	    {
 	        if (armedService.getCountry().getSide() == side)
 	        {

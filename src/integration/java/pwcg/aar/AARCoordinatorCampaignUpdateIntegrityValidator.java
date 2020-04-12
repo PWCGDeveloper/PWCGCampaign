@@ -59,8 +59,7 @@ public class AARCoordinatorCampaignUpdateIntegrityValidator
                 validatePersonnelLossesInMemory();
                 validateEquipmentLossesInMemory();
                 
-                CampaignRemover campaignRemover = new CampaignRemover();
-                campaignRemover.deleteCampaign(campaign.getCampaignData().getName());
+                CampaignRemover.deleteCampaign(campaign.getCampaignData().getName());
                 
                 break;
             }

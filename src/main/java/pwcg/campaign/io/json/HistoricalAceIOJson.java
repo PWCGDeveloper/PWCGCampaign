@@ -21,8 +21,7 @@ public class HistoricalAceIOJson
 	{
 		List<HistoricalAce> historicalAces = new ArrayList<>();
 		
-		FileUtils fileUtils = new FileUtils();
-		List<File> jsonFiles = fileUtils.getFilesWithFilter(PWCGContext.getInstance().getDirectoryManager().getPwcgAcesDir(), ".json");
+		List<File> jsonFiles = FileUtils.getFilesWithFilter(PWCGContext.getInstance().getDirectoryManager().getPwcgAcesDir(), ".json");
 
 		for (File jsonFile : jsonFiles)
 		{

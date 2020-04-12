@@ -31,8 +31,7 @@ public class VehicleDefinitionIOJson
 		List<VehicleDefinition>  vehicleSets = new ArrayList<>();
 		
 		String vehicleDir = PWCGContext.getInstance().getDirectoryManager().getPwcgVehiclesDir();
-		FileUtils fileUtils = new FileUtils();
-		List<File> jsonFiles = fileUtils.getFilesWithFilter(vehicleDir, ".json");
+		List<File> jsonFiles = FileUtils.getFilesWithFilter(vehicleDir, ".json");
 		for (File jsonFile : jsonFiles)
 		{
 			JsonObjectReader<VehicleDefinition> jsonReader = new JsonObjectReader<>(VehicleDefinition.class);

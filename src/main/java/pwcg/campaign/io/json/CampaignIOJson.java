@@ -8,6 +8,7 @@ import pwcg.campaign.CampaignData;
 import pwcg.campaign.CampaignLogs;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.FileUtils;
 
 public class CampaignIOJson 
 {
@@ -15,11 +16,7 @@ public class CampaignIOJson
     public static  void writeJson(Campaign campaign) throws PWCGException
     {
         String campaignDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\";
-        File campaignDirFile = new File(campaignDir);
-        if (!campaignDirFile.exists())
-        {
-            campaignDirFile.mkdir();
-        }
+        FileUtils.createDirIfNeeded(campaignDir);
         
         JsonWriter<CampaignData> jsonCampaignDataWriter = new JsonWriter<>();
         jsonCampaignDataWriter.writeAsJson(campaign.getCampaignData(), campaignDir, "Campaign.json");

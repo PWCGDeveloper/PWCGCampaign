@@ -1,18 +1,25 @@
 package pwcg.gui.maingui.campaigngenerate;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
-import pwcg.gui.utils.StringValidity;
+import pwcg.gui.utils.PWCGStringValidator;
 
 public class NewPilotState
 {
     private PilotGeneratorWorkflow currentStep = PilotGeneratorWorkflow.CHOOSE_PLAYER_NAME;
-    private CampaignGeneratorDO campaignGeneratorDO = new CampaignGeneratorDO();
-
+    private Campaign campaign;
+    private NewPilotGeneratorDO newPilotGeneratorDO;
+    private List<PilotGeneratorWorkflow> stateStack = new ArrayList<>();
+    private int stateIndex = 0;
+    
     public enum PilotGeneratorWorkflow
     {
         CHOOSE_PLAYER_NAME,
@@ -24,141 +31,77 @@ public class NewPilotState
         COMPLETE
     }
     
-    private Campaign campaign;
-    
-    public NewPilotState(Campaign campaign, CampaignGeneratorDO campaignGeneratorDO)
+    public NewPilotState(Campaign campaign, NewPilotGeneratorDO campaignGeneratorDO)
     {
-        this.campaignGeneratorDO = campaignGeneratorDO;
         this.campaign = campaign;
+        this.newPilotGeneratorDO = campaignGeneratorDO;
+    }
+
+    public void buildStateStack() throws PWCGException
+    {
+        stateStack.add(PilotGeneratorWorkflow.CHOOSE_PLAYER_NAME);
+        
+        if (PWCGContext.getProduct() == PWCGProduct.FC)
+        {
+            ICountry country = newPilotGeneratorDO.getService().getCountry();
+            if (country.getCountry() == Country.GERMANY)
+            {
+                stateStack.add(PilotGeneratorWorkflow.CHOOSE_REGION);
+            }
+        }
+
+        if (campaign.getCampaignData().getCampaignMode() != CampaignMode.CAMPAIGN_MODE_SINGLE)
+        {
+            stateStack.add(PilotGeneratorWorkflow.CHOOSE_COOP_USER);
+        }
+        
+        stateStack.add(PilotGeneratorWorkflow.CHOOSE_ROLE);
+        stateStack.add(PilotGeneratorWorkflow.CHOOSE_RANK);
+        stateStack.add(PilotGeneratorWorkflow.CHOOSE_SQUADRON);
+        stateStack.add(PilotGeneratorWorkflow.COMPLETE);
     }
 
     public void goToNextStep() throws PWCGException
     {
-        if (currentStep == PilotGeneratorWorkflow.CHOOSE_PLAYER_NAME)
+        if (stateIndex < (stateStack.size()-1))
         {
-            if (StringValidity.isAlpha(campaignGeneratorDO.getPlayerPilotName()))
-            {
-                currentStep = PilotGeneratorWorkflow.CHOOSE_COOP_USER;
-                if (!campaign.isCoop())
-                {
-                    currentStep = PilotGeneratorWorkflow.CHOOSE_ROLE;
-                    if (useRegion())
-                    {
-                        currentStep = PilotGeneratorWorkflow.CHOOSE_REGION;
-                    }
-                }
-            }
-            else
-            {
-                throw new PWCGException ("Name must be English characters");
-            }
+            ++stateIndex;
         }
-        
-        else if (currentStep == PilotGeneratorWorkflow.CHOOSE_COOP_USER)
-        {
-            currentStep = PilotGeneratorWorkflow.CHOOSE_ROLE;
-            if (useRegion())
-            {
-                currentStep = PilotGeneratorWorkflow.CHOOSE_REGION;
-            }
-        }
-        
-        else if (currentStep == PilotGeneratorWorkflow.CHOOSE_REGION)
-        {
-            currentStep = PilotGeneratorWorkflow.CHOOSE_ROLE;
-        }
-        
-        else if (currentStep == PilotGeneratorWorkflow.CHOOSE_ROLE)
-        {
-            currentStep = PilotGeneratorWorkflow.CHOOSE_RANK;
-       }
-        else if (currentStep == PilotGeneratorWorkflow.CHOOSE_RANK)
-        {
-            currentStep = PilotGeneratorWorkflow.CHOOSE_SQUADRON;
-        }
-        
-        else if (currentStep == PilotGeneratorWorkflow.CHOOSE_SQUADRON)
-        {
-            currentStep = PilotGeneratorWorkflow.COMPLETE;
-        }
+        currentStep = stateStack.get(stateIndex);
     }
-
+    
     public void goToPreviousStep() throws PWCGException
     {   
-        if (currentStep == PilotGeneratorWorkflow.COMPLETE)
+        if (stateIndex > 0)
         {
-            currentStep = PilotGeneratorWorkflow.CHOOSE_SQUADRON;
+            --stateIndex;
         }
-        
-        else if (currentStep == PilotGeneratorWorkflow.CHOOSE_SQUADRON)
-        {
-            currentStep = PilotGeneratorWorkflow.CHOOSE_RANK;
-        }
-        
-        else if (currentStep == PilotGeneratorWorkflow.CHOOSE_RANK)
-        {
-            currentStep = PilotGeneratorWorkflow.CHOOSE_ROLE;
-        }
-
-        else if (currentStep == PilotGeneratorWorkflow.CHOOSE_ROLE)
-        {
-        	if (useRegion())
-        	{
-                currentStep = PilotGeneratorWorkflow.CHOOSE_REGION;
-        	}
-        	else if (campaign.isCoop())
-        	{
-                currentStep = PilotGeneratorWorkflow.CHOOSE_COOP_USER;
-        	}
-        	else
-        	{
-                currentStep = PilotGeneratorWorkflow.CHOOSE_PLAYER_NAME;
-        	}
-        }
-        
-        else if (currentStep == PilotGeneratorWorkflow.CHOOSE_REGION)
-        {
-        	if (campaign.isCoop())
-        	{
-                currentStep = PilotGeneratorWorkflow.CHOOSE_COOP_USER;
-        	}
-        	else
-        	{
-                currentStep = PilotGeneratorWorkflow.CHOOSE_PLAYER_NAME;
-        	}
-        }
-        
-        else if (currentStep == PilotGeneratorWorkflow.CHOOSE_COOP_USER)
-        {
-            currentStep = PilotGeneratorWorkflow.CHOOSE_PLAYER_NAME;
-        }        
-    }
-
-	private boolean useRegion() 
-	{
-		if (PWCGContext.getProduct() == PWCGProduct.FC)
-		{
-		    ICountry country = campaignGeneratorDO.getService().getCountry();
-		    if (country.getCountry() == Country.GERMANY)
-		    {
-		        return true;
-		    }
-		}
-		return false;
-	}
-
-    public boolean isComplete()
-    {
-        if (currentStep == PilotGeneratorWorkflow.COMPLETE)
-        {
-            return true;
-        }
-        
-        return false;
+        currentStep = stateStack.get(stateIndex);        
     }
 
     public PilotGeneratorWorkflow getCurrentStep()
     {
         return currentStep;
     }
+
+    public boolean isComplete()
+    {
+        if ((currentStep != PilotGeneratorWorkflow.COMPLETE))
+        {
+            return false;
+        }
+        else if (!PWCGStringValidator.validateStringIsAlpha(newPilotGeneratorDO.getPlayerPilotName()))
+        {
+            return false;
+        }
+        else if (!(campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE) &&
+                !(PWCGStringValidator.validateStringIsAlpha(newPilotGeneratorDO.getCoopUser())))
+        {
+            return false;
+        }
+
+        
+        return true;
+    }
 }
+

@@ -4,14 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.campaign.ArmedService;
-import pwcg.campaign.ArmedServiceFinder;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.context.PWCGContext;
@@ -29,18 +27,18 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListener, IPilotGeneratorUI
+public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListener
 {    
     private static final long serialVersionUID = 1L;
 
     private Campaign campaign;
     private JButton newPilotCreateButton;
-    private CampaignGeneratorDataEntryGUI dataEntry;
+    private NewPilotDataEntryGUI dataEntry;
     private CampaignHomeGUI parent = null;
     private CampaignAdminCoopPilotPanelSet alternateParent = null;
     
-    private CampaignGeneratorDO campaignGeneratorDO = new CampaignGeneratorDO();
-    private CampaignGeneratorState campaignGeneratorState;
+    private NewPilotGeneratorDO newPilotGeneratorDO = new NewPilotGeneratorDO();
+    private NewPilotState newPilotState;
 
     public NewPilotGeneratorUI(Campaign campaign, CampaignHomeGUI parent, CampaignAdminCoopPilotPanelSet alternateParent)
     {
@@ -51,8 +49,8 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
 
     public void makePanels() throws PWCGException 
     {
-        campaignGeneratorState = new CampaignGeneratorState(campaignGeneratorDO);
-        campaignGeneratorState.buildStateStack();
+        newPilotState = new NewPilotState(campaign, newPilotGeneratorDO);
+        newPilotState.buildStateStack();
 
         try
         {
@@ -74,7 +72,7 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
         servicesPanel.setLayout(new BorderLayout());
         servicesPanel.setOpaque(true);
 
-        CampaignGeneratorChooseServiceGUI campaignChooseServiceGUI = new CampaignGeneratorChooseServiceGUI(this);
+        PilotGenerationInfoGUI campaignChooseServiceGUI = new PilotGenerationInfoGUI(this, campaign);
         campaignChooseServiceGUI.makeServiceSelectionPanel();
 
         servicesPanel.add(campaignChooseServiceGUI, BorderLayout.NORTH);
@@ -111,16 +109,10 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
 
     public JPanel makeDataEntryPanel() throws PWCGException 
     {
-        dataEntry = new CampaignGeneratorDataEntryGUI(this);
+        dataEntry = new NewPilotDataEntryGUI(campaign, this);
         dataEntry.makePanels();
         
         return dataEntry;
-    }
-
-    public List<ArmedService> getArmedServices() throws PWCGException
-    {
-        ArmedServiceFinder armedServiceFinder = new ArmedServiceFinder();
-        return armedServiceFinder.getArmedServices();
     }
 
     @Override
@@ -158,10 +150,10 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
 
     private void createPilot() throws PWCGUserException, Exception
     {
-        String playerName = campaignGeneratorDO.getPlayerPilotName();
-        String squadronName = campaignGeneratorDO.getSquadName();
-        String rank = campaignGeneratorDO.getRank();
-        String coopuser = campaignGeneratorDO.getCoopUser();
+        String playerName = newPilotGeneratorDO.getPlayerPilotName();
+        String squadronName = newPilotGeneratorDO.getSquadName();
+        String rank = newPilotGeneratorDO.getRank();
+        String coopuser = newPilotGeneratorDO.getCoopUser();
 
         ISquadronMemberReplacer squadronMemberReplacer = CampaignModeFactory.makeSquadronMemberReplacer(campaign);
         SquadronMember newSquadronMember = squadronMemberReplacer.createPersona(playerName, rank, squadronName, coopuser);
@@ -171,47 +163,35 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
         PWCGContext.getInstance().setCampaign(campaign);
         if (campaign.getCampaignData().getCampaignMode() != CampaignMode.CAMPAIGN_MODE_SINGLE)
         {
-            campaignGeneratorDO.createCoopUserAndPersona(campaign, newSquadronMember);
+            newPilotGeneratorDO.createCoopUserAndPersona(campaign, newSquadronMember);
         }
     }
 
     public void changeService(ArmedService service) throws PWCGException
     {
-        campaignGeneratorDO.setService(service);
-        campaignGeneratorDO.setCampaignName(campaign.getCampaignData().getName());
-        campaignGeneratorDO.setStartDate(campaign.getDate());
-        campaignGeneratorDO.setCampaignMode(campaign.getCampaignData().getCampaignMode());
-        campaignGeneratorDO.setService(service);
+        newPilotGeneratorDO.setService(service);
         
-        dataEntry = new CampaignGeneratorDataEntryGUI(this);
+        dataEntry = new NewPilotDataEntryGUI(campaign, this);
         dataEntry.makePanels();
         dataEntry.evaluateUI();
         
         CampaignGuiContextManager.getInstance().changeCurrentContext(null, dataEntry, null);        
     }
 
-    @Override
-    public void setCampaignProfileParameters(CampaignMode campaignMode, String campaignName)
+    public NewPilotGeneratorDO getNewPilotGeneratorDO()
     {
+        return newPilotGeneratorDO;
     }
 
-    @Override
-    public CampaignGeneratorDO getCampaignGeneratorDO()
+    public NewPilotState getNewPilotState()
     {
-        return campaignGeneratorDO;
+        return newPilotState;
     }
 
-    @Override
-    public CampaignGeneratorState getCampaignGeneratorState()
-    {
-        return campaignGeneratorState;
-    }
-
-    @Override
     public void evaluateCompletionState()
     {
         newPilotCreateButton.setEnabled(false);
-        if (campaignGeneratorState.isComplete())
+        if (newPilotState.isComplete())
         {
             newPilotCreateButton.setEnabled(true);
         }

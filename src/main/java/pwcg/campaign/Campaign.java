@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
+import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.context.SquadronManager;
@@ -34,32 +35,32 @@ public class Campaign
     private ConfigManagerCampaign campaignConfigManager = null;
     private CampaignLogs campaignLogs = null;
 
-    private Mission currentMission = null;    
+    private Mission currentMission = null;
     private CampaignPersonnelManager personnelManager;
     private CampaignEquipmentManager equipmentManager;
     private SquadronMoveEvent squadronMoveEvent;
 
-    public Campaign() 
+    public Campaign()
     {
         personnelManager = new CampaignPersonnelManager(this);
         equipmentManager = new CampaignEquipmentManager(this);
         campaignLogs = new CampaignLogs();
     }
 
-    public boolean open(String campaignName) throws PWCGException 
+    public boolean open(String campaignName) throws PWCGException
     {
         campaignData.setName(campaignName);
 
         initializeCampaignConfigs();
-        
+
         if (!readValidCampaign())
         {
             return false;
         }
-        
+
         CampaignV5V6Converter converter = new CampaignV5V6Converter(this);
         converter.convert();
-        
+
         CampaignModeChooser campaignModeChooser = new CampaignModeChooser(this);
         CampaignMode campaignMode = campaignModeChooser.chooseCampaignMode();
         this.getCampaignData().setCampaignMode(campaignMode);
@@ -68,7 +69,7 @@ public class Campaign
         initialSquadronBuilder.buildNewSquadrons(this);
 
         verifyRepresentativePlayer();
-        
+
         return true;
     }
 
@@ -90,27 +91,27 @@ public class Campaign
         CampaignDirectoryBuilder.initializeCampaignDirectories(this);
         CampaignIOJson.writeJson(this);
     }
-    
-	private boolean readValidCampaign()
-	{
-		try
-		{
-			CampaignIOJson.readJson(this);
-	        if (!isValidCampaignForProduct())
-	        {
-	            return false;
-	        }
-		}
-		catch (PWCGException e)
-		{
+
+    private boolean readValidCampaign()
+    {
+        try
+        {
+            CampaignIOJson.readJson(this);
+            if (!isValidCampaignForProduct())
+            {
+                return false;
+            }
+        }
+        catch (PWCGException e)
+        {
             PWCGLogger.logException(e);
             return false;
-		}
+        }
 
-		return true;
-	}
+        return true;
+    }
 
-    public void  initializeCampaignConfigs() throws PWCGException 
+    public void initializeCampaignConfigs() throws PWCGException
     {
         String campaignConfigDir = getCampaignPath() + "config\\";
         campaignConfigManager = new ConfigManagerCampaign(campaignConfigDir);
@@ -119,8 +120,8 @@ public class Campaign
 
     public boolean isHumanSquadron(int squadronId)
     {
-    	SquadronPersonnel squadronPersonnel = personnelManager.getSquadronPersonnel(squadronId);
-    	return squadronPersonnel.isPlayerSquadron();
+        SquadronPersonnel squadronPersonnel = personnelManager.getSquadronPersonnel(squadronId);
+        return squadronPersonnel.isPlayerSquadron();
     }
 
     public Date getDate()
@@ -128,9 +129,9 @@ public class Campaign
         return campaignData.getDate();
     }
 
-    public void setDate(Date date) throws PWCGException 
+    public void setDate(Date date) throws PWCGException
     {
-    	campaignData.setDate(date);
+        campaignData.setDate(date);
     }
 
     public String getCampaignDescription() throws PWCGException
@@ -139,33 +140,33 @@ public class Campaign
         return campaignDescriptionBuilder.getCampaignDescription();
     }
 
-    public static List<String> getCampaignNames() throws PWCGUserException 
-    {       
+    public static List<String> getCampaignNames() throws PWCGUserException
+    {
         List<String> campaignList = new ArrayList<String>();
         String campaignRootDirName = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir();
         File campaignRootDir = new File(campaignRootDirName);
 
         if (!campaignRootDir.exists() || !campaignRootDir.isDirectory())
         {
-            throw new PWCGUserException ("Campaign directory does not exist: " + campaignRootDirName);
-        } 
-    
+            throw new PWCGUserException("Campaign directory does not exist: " + campaignRootDirName);
+        }
+
         String[] campaignNames = campaignRootDir.list();
-        if (campaignNames != null) 
+        if (campaignNames != null)
         {
-            for (String campaignName : campaignNames) 
+            for (String campaignName : campaignNames)
             {
                 String campaignDirPath = campaignRootDirName + "\\" + campaignName;
-                
+
                 File campaignDir = new File(campaignDirPath);
                 if (campaignDir.isDirectory())
                 {
                     String[] fileNames = campaignDir.list();
-                    if (fileNames != null) 
+                    if (fileNames != null)
                     {
-                        for (String fileName : fileNames) 
+                        for (String fileName : fileNames)
                         {
-                            if(fileName.equals("Campaign.json")) 
+                            if (fileName.equals("Campaign.json"))
                             {
                                 campaignList.add(campaignName);
                             }
@@ -173,62 +174,62 @@ public class Campaign
                     }
                 }
             }
-        } 
-                
+        }
+
         return campaignList;
     }
-	
-	public String getCampaignPath()
-	{
-		String dir = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir();
-		String campaignPath = dir + campaignData.getName() + "\\"; 
-		
-		File campaignDir = new File(campaignPath); 
-		if (!campaignDir.exists())
-		{
-			campaignDir.mkdir();
-		}
-		
-		return campaignPath; 
-	}
-	
-    public boolean isFighterCampaign() throws PWCGException 
+
+    public String getCampaignPath()
+    {
+        String dir = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir();
+        String campaignPath = dir + campaignData.getName() + "\\";
+
+        File campaignDir = new File(campaignPath);
+        if (!campaignDir.exists())
+        {
+            campaignDir.mkdir();
+        }
+
+        return campaignPath;
+    }
+
+    public boolean isFighterCampaign() throws PWCGException
     {
         for (SquadronMember player : this.personnelManager.getAllActivePlayers().getSquadronMemberList())
         {
-            Squadron squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
             Role squadronPrimaryRole = squadron.determineSquadronPrimaryRole(this.getDate());
             if (squadronPrimaryRole.isRoleCategory(RoleCategory.FIGHTER))
             {
                 return true;
             }
         }
-        
+
         return false;
     }
 
-	public boolean isValidCampaignForProduct() throws PWCGException 
-	{
-		Date campaignDate = campaignData.getDate();
-		if (PWCGContext.getProduct() == PWCGProduct.FC)
-		{
-	        if (campaignDate.after(DateUtils.getDateYYYYMMDD("19300101")))
-	        {
-	            return false;
-	        }
-		    
-		}        
+    public boolean isValidCampaignForProduct() throws PWCGException
+    {
+        Date campaignDate = campaignData.getDate();
+        if (PWCGContext.getProduct() == PWCGProduct.FC)
+        {
+            if (campaignDate.after(DateUtils.getDateYYYYMMDD("19300101")))
+            {
+                return false;
+            }
+
+        }
         if (PWCGContext.getProduct() == PWCGProduct.BOS)
         {
             if (campaignDate.before(DateUtils.getDateYYYYMMDD("19300101")))
             {
                 return false;
             }
-            
+
         }
-		
-		return true;
-	}
+
+        return true;
+    }
 
     public boolean isCampaignActive() throws PWCGException
     {
@@ -257,19 +258,38 @@ public class Campaign
         return playerSquadrons;
     }
 
+    public Side determineCampaignSide() throws PWCGException
+    {
+        if (campaignData.getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COMPETITIVE)
+        {
+            return Side.NEUTRAL;
+        }
+        else
+        {
+            return findReferenceSquadron().determineSide();
+        }
+    }
+
     public boolean isCoop()
     {
         if (campaignData.getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
         {
             return false;
         }
-        
+
         return true;
     }
-    
+
     public SquadronMember findReferencePlayer() throws PWCGException
     {
         return personnelManager.getAnyCampaignMember(campaignData.getReferencePlayerSerialNumber());
+    }
+
+    public Squadron findReferenceSquadron() throws PWCGException
+    {
+        SquadronMember referencePlayer = findReferencePlayer();
+        Squadron referencePlayerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(referencePlayer.getSquadronId());
+        return referencePlayerSquadron;
     }
 
     public SerialNumber getSerialNumber()
@@ -277,55 +297,55 @@ public class Campaign
         return campaignData.getSerialNumber();
     }
 
-	public CampaignData getCampaignData()
-	{
-		return campaignData;
-	}
+    public CampaignData getCampaignData()
+    {
+        return campaignData;
+    }
 
-	public void setCampaignData(CampaignData campaignData)
-	{
-		this.campaignData = campaignData;
-	}
+    public void setCampaignData(CampaignData campaignData)
+    {
+        this.campaignData = campaignData;
+    }
 
-	public ConfigManagerCampaign getCampaignConfigManager()
-	{
-		return campaignConfigManager;
-	}
+    public ConfigManagerCampaign getCampaignConfigManager()
+    {
+        return campaignConfigManager;
+    }
 
-	public void setCampaignConfigManager(ConfigManagerCampaign campaignConfigManager)
-	{
-		this.campaignConfigManager = campaignConfigManager;
-	}
+    public void setCampaignConfigManager(ConfigManagerCampaign campaignConfigManager)
+    {
+        this.campaignConfigManager = campaignConfigManager;
+    }
 
-	public CampaignLogs getCampaignLogs()
-	{
-		return campaignLogs;
-	}
+    public CampaignLogs getCampaignLogs()
+    {
+        return campaignLogs;
+    }
 
-	public void setCampaignLogs(CampaignLogs campaignLog)
-	{
-		this.campaignLogs = campaignLog;
-	}
+    public void setCampaignLogs(CampaignLogs campaignLog)
+    {
+        this.campaignLogs = campaignLog;
+    }
 
-	public Mission getCurrentMission()
-	{
-		return currentMission;
-	}
+    public Mission getCurrentMission()
+    {
+        return currentMission;
+    }
 
-	public void setCurrentMission(Mission currentMission)
-	{
-		this.currentMission = currentMission;
-	}
+    public void setCurrentMission(Mission currentMission)
+    {
+        this.currentMission = currentMission;
+    }
 
-	public CampaignPersonnelManager getPersonnelManager()
-	{
-		return personnelManager;
-	}
+    public CampaignPersonnelManager getPersonnelManager()
+    {
+        return personnelManager;
+    }
 
-	public SquadronMoveEvent getSquadronMoveEvent()
-	{
-		return squadronMoveEvent;
-	}
+    public SquadronMoveEvent getSquadronMoveEvent()
+    {
+        return squadronMoveEvent;
+    }
 
     public CampaignEquipmentManager getEquipmentManager()
     {

@@ -40,7 +40,8 @@ public class PWCGErrorBundler
 
 			// make sure the error dir is there
 			createTargetDirs();
-			copyMissionFiles();
+            copyMissionFiles();
+            copyCoopFiles();
 			copyCampaignFiles();
 			zipErrorFiles();
 			cleanStaging();
@@ -102,6 +103,15 @@ public class PWCGErrorBundler
 		copyDirectory(programDataDir, targetDataDir, "missionReport");
 	}
 
+	
+    public void copyCoopFiles() throws IOException, PWCGException
+    {
+        String coopDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCoopDir(); 
+        String targetDataDir = createTargetDirCoopPath(); 
+
+        copyDirectory(coopDir, targetDataDir, "*");
+    }
+
 	public void copyCampaignFiles() throws IOException, PWCGException
 	{
         copyDirectory(programDataDir, targetDataDir, "*");
@@ -110,7 +120,6 @@ public class PWCGErrorBundler
 	private String createErrorDirPath()
 	{
 		String errorDirPath = PWCGContext.getInstance().getDirectoryManager().getPwcgRootDir()  + ERROR_DIR_ROOT; 
-		
 		return errorDirPath;
 	}
 
@@ -126,6 +135,12 @@ public class PWCGErrorBundler
 		return campaignTargetDataDirPath;
 	}
 
+    private String createTargetDirCoopPath() 
+    {
+        String campaignTargetDataDirPath = PWCGContext.getInstance().getDirectoryManager().getPwcgRootDir() + ERROR_DIR_ROOT + "\\" + targetErrorFileName + "\\Coop"; 
+        return campaignTargetDataDirPath;
+    }
+
 	private String createTargetDirCampaignPath() 
 	{
 		Campaign campaign  = PWCGContext.getInstance().getCampaign();
@@ -135,7 +150,6 @@ public class PWCGErrorBundler
 
 	public String createSourceCampaignDirPath()
 	{
-		// Create the specific error dir for this occurrence
 		Campaign campaign  = PWCGContext.getInstance().getCampaign();
 		String campaignDirPath = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName(); 
 		

@@ -40,8 +40,7 @@ public abstract class ConfigManager
 
     public void reset() throws PWCGException 
     {
-        FileUtils fileUtils = new FileUtils();
-        fileUtils.deleteFilesInDirectory(userConfigSourceDirectory);
+        FileUtils.deleteFilesInDirectory(userConfigSourceDirectory);
         readConfig();
     }
 

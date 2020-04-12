@@ -22,9 +22,8 @@ public class CampaignMissionIOJson
 
 	public static PwcgMissionData readJson(Campaign campaign, String missionFileName) throws PWCGException
 	{
-		FileUtils fileUtils = new FileUtils();
         String missionDataPath = buildMissionDataPath(campaign);
-	    List<File> campaignMissionDataFiles = fileUtils.getFilesWithFilter(missionDataPath, MISSION_DATA_SUFFIX);		
+	    List<File> campaignMissionDataFiles = FileUtils.getFilesWithFilter(missionDataPath, MISSION_DATA_SUFFIX);		
 		for (File campaignMissionDataFile : campaignMissionDataFiles)
 		{
 			if (campaignMissionDataFile.getName().toLowerCase().startsWith(missionFileName.toLowerCase()))

@@ -76,8 +76,7 @@ public class ConfigManagerGlobalTest
     private void cleanUpUserDir() throws PWCGException
     {
         String userConfigDirName = PWCGContext.getInstance().getDirectoryManager().getPwcgUserDir();
-        FileUtils fileUtils = new FileUtils();
-        fileUtils.deleteFilesInDirectory(userConfigDirName);
+        FileUtils.deleteFilesInDirectory(userConfigDirName);
     }
 
 }

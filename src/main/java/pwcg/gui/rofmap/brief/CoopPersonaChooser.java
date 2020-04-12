@@ -125,34 +125,53 @@ public class CoopPersonaChooser extends PwcgGuiContext implements ActionListener
     			coopPersonasByCoopUser.put(coopPersona.getCoopUsername(), coopPersona);
     		}
     	}
+    	
+    	SquadronMember referencePlayer = campaign.findReferencePlayer();
+        boolean referencePlayerIncluded = false;
+        for (CoopPersona coopPersona : selectedCoopPersonas)
+        {
+            if (coopPersona.getSerialNumber() == referencePlayer.getSerialNumber())
+            {
+                referencePlayerIncluded = true;
+            }
+        }
+        
+        if (!referencePlayerIncluded)
+        {
+            errorMessages.add("Reference player " + referencePlayer.getNameAndRank() + " must be included in the mission");
+        }
 	}
 
 	private void addErrorMessages() throws PWCGException 
 	{
 	    Font font = MonitorSupport.getPrimaryFontLarge();
     	
+        JLabel spacer = new JLabel("   ");
+        spacer.setFont(font);
+        coopPersonaErrorPanel.add(spacer);
+
 		for (String errorMessage : errorMessages)
     	{
-    		JLabel spacer = new JLabel("   ");
-    		spacer.setFont(font);
-    		coopPersonaErrorPanel.add(spacer);
-
     		JLabel errorLabel = new JLabel(errorMessage);
     		errorLabel.setFont(font);
     		coopPersonaErrorPanel.add(errorLabel);
     	}
+
+        JLabel spacer2 = new JLabel("   ");
+        spacer2.setFont(font);
+        coopPersonaErrorPanel.add(spacer2);
 	}
 
 	private void addBlankErrorLine() throws PWCGException 
 	{
 	    Font font = MonitorSupport.getPrimaryFontLarge();
     	
-		JLabel spacer = new JLabel("   ");
-		spacer.setFont(font);
-		coopPersonaErrorPanel.add(spacer);
-		spacer = new JLabel("   ");
-		spacer.setFont(font);
-		coopPersonaErrorPanel.add(spacer);
+	    for (int i = 0; i < 3; ++i)
+	    {
+	        JLabel spacer = new JLabel("   ");
+	        spacer.setFont(font);
+	        coopPersonaErrorPanel.add(spacer);
+	    }
 	}
 
 	public JPanel makeNavigatePanel() throws PWCGException  

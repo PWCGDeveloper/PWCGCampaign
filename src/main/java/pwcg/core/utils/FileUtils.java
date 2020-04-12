@@ -20,7 +20,7 @@ import pwcg.core.exception.PWCGException;
 public class FileUtils
 {
 
-	public void createConfigDirIfNeeded(String campaignConfigDir)
+	public static void createDirIfNeeded(String campaignConfigDir)
     {
         File dir = new File(campaignConfigDir);
         if (!dir.exists())
@@ -29,7 +29,7 @@ public class FileUtils
         }
     }
 
-    public void deleteRecursive(String deleteDir)
+    public static void deleteRecursive(String deleteDir)
     {
         File deleteRoot = new File(deleteDir);
         if (deleteRoot.exists())
@@ -38,14 +38,14 @@ public class FileUtils
         }
     }
     
-    public void deleteFilesInDirectory(String directoryName) throws PWCGException
+    public static void deleteFilesInDirectory(String directoryName) throws PWCGException
     {
         deleteRecursive(directoryName);
         File directory = new File(directoryName);
         directory.mkdir();
     }
 
-    public boolean fileExists(String filePath)
+    public static boolean fileExists(String filePath)
     {
         File file = new File(filePath);
         if (file.exists())
@@ -56,7 +56,7 @@ public class FileUtils
         return false;
     }
     
-    public void deleteFile(String sFilePath)
+    public static void deleteFile(String sFilePath)
     {
         File oFile = new File(sFilePath);
         if(oFile.isDirectory())
@@ -71,7 +71,7 @@ public class FileUtils
 
     }
     
-    public void deleteFilesByFileName(List<String> filesToDelete)
+    public static void deleteFilesByFileName(List<String> filesToDelete)
     {
         for (String pathname : filesToDelete) 
         {
@@ -83,7 +83,7 @@ public class FileUtils
         }
     }
     
-    public List<File> getFilesInDirectory(String directory) throws PWCGException
+    public static List<File> getFilesInDirectory(String directory) throws PWCGException
     {
     	List<File> filesInDirectory = new ArrayList<>();
     	File directoryFile = new File(directory);
@@ -104,7 +104,7 @@ public class FileUtils
 		return filesInDirectory;
     }
 
-    public List<File> getFilesWithFilter(String directory, String filterString) throws PWCGException
+    public static List<File> getFilesWithFilter(String directory, String filterString) throws PWCGException
     {
     	List<File> matchingFiles = new ArrayList<>();
     	File directoryFile = new File(directory);
@@ -126,7 +126,7 @@ public class FileUtils
 		return matchingFiles;
     }
     
-    public List<File> getDirectories(String directory) throws PWCGException
+    public static List<File> getDirectories(String directory) throws PWCGException
     {
     	List<File> directoriesFound = new ArrayList<>();
     	File directoryFile = new File(directory);
@@ -147,7 +147,7 @@ public class FileUtils
 		return directoriesFound;
     }
 
-    public File retrieveFile(String directory, String filename)
+    public static File retrieveFile(String directory, String filename)
 	{
 		File file = new File(directory + filename);
 		return file;
@@ -166,7 +166,7 @@ public class FileUtils
     	}
 	}
     
-    public long ageOfFilesInMillis(String pathname) throws PWCGException
+    public static long ageOfFilesInMillis(String pathname) throws PWCGException
     {
         File file = new File(pathname);
         if (file.exists())
@@ -191,7 +191,7 @@ public class FileUtils
     }
 
 
-    public void copyFile(File source, File destination) throws IOException 
+    public static void copyFile(File source, File destination) throws IOException 
     {
         if (destination.isDirectory())
         {
@@ -203,7 +203,7 @@ public class FileUtils
     }
 
 
-    public void copyFile(InputStream input, File destination) throws IOException 
+    public static void copyFile(InputStream input, File destination) throws IOException 
     {
         OutputStream output = null;
 

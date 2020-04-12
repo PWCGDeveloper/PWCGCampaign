@@ -137,14 +137,12 @@ public class CampaignDeletePanelSet extends PwcgGuiContext implements ActionList
     }
 
     private void deleteSelectedCampaigns()
-    {
-        CampaignRemover campaignRemover = new CampaignRemover();
-        
+    {        
         for (JCheckBox campaignSelectedJCheckBox : campaignCheckBoxes)
         {
             if (campaignSelectedJCheckBox.isSelected())
             {
-                campaignRemover.deleteCampaign(campaignSelectedJCheckBox.getText());         
+                CampaignRemover.deleteCampaign(campaignSelectedJCheckBox.getText());         
             }
         }
     }

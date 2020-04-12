@@ -23,8 +23,7 @@ public class SquadronIOJson
 	{
 	    List<Squadron> squadrons = new ArrayList<>();
 	    
-		FileUtils fileUtils = new FileUtils();
-		List<File> jsonFiles = fileUtils.getFilesWithFilter(PWCGContext.getInstance().getDirectoryManager().getPwcgSquadronDir(), ".json");
+		List<File> jsonFiles = FileUtils.getFilesWithFilter(PWCGContext.getInstance().getDirectoryManager().getPwcgSquadronDir(), ".json");
 
 		for (File jsonFile : jsonFiles)
 		{

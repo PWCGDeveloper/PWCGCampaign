@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import pwcg.campaign.ArmedService;
+import pwcg.campaign.ArmedServiceFinder;
+import pwcg.campaign.Campaign;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -22,7 +24,6 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.MonitorSupport;
 import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ToolTipManager;
 
@@ -31,29 +32,30 @@ public class PilotGenerationInfoGUI extends JPanel implements ActionListener
 
 	private static final long serialVersionUID = 1L;
 	
-	private IPilotGeneratorUI parent = null;
+    private NewPilotGeneratorUI parent = null;
+    private Campaign campaign = null;
 
-	public PilotGenerationInfoGUI(IPilotGeneratorUI parent)
+	public PilotGenerationInfoGUI(NewPilotGeneratorUI parent, Campaign campaign)
 	{
 		super();
         this.setLayout(new BorderLayout());
+        this.setOpaque(false);
 
-		this.parent = parent;
+        this.parent = parent;
+        this.campaign = campaign;
 	}
 
-	public void makeServiceSelectionPanel(String imagePath) throws PWCGException
+	public void makeServiceSelectionPanel() throws PWCGException
 	{
-		ImageResizingPanel serviceMainPanel = new ImageResizingPanel(imagePath);
-		serviceMainPanel.setLayout(new BorderLayout());
+	    JPanel serviceMainPanel = new JPanel(new BorderLayout());
 		serviceMainPanel.setOpaque(false);
 
         JLabel chooseServiceLabel = PWCGButtonFactory.makeMenuLabelLarge("Choose a service:");
         serviceMainPanel.add(chooseServiceLabel, BorderLayout.NORTH);
-        
 
-        JPanel intrenalServicePanel = new ImageResizingPanel(imagePath);
-        intrenalServicePanel.setLayout(new BorderLayout());
-        intrenalServicePanel.setOpaque(false);
+        JPanel internalServicePanel = new JPanel();
+        internalServicePanel.setLayout(new BorderLayout());
+        internalServicePanel.setOpaque(false);
 
         int numRows = 0;
 		int numCols = 1;
@@ -70,7 +72,7 @@ public class PilotGenerationInfoGUI extends JPanel implements ActionListener
 
 		// Make a button for each service
         ButtonGroup serviceButtonGroup = new ButtonGroup();
-		for (ArmedService service : parent.getArmedServices())
+		for (ArmedService service : ArmedServiceFinder.getArmedServicesForCampaign(campaign))
 		{
 	        String icon = service.getServiceIcon() + ".jpg";
 	        JRadioButton serviceButton = makeRadioButton(service, icon);
@@ -78,9 +80,9 @@ public class PilotGenerationInfoGUI extends JPanel implements ActionListener
 	        serviceButtonGroup.add(serviceButton);
 		}
 
-		intrenalServicePanel.add(servicePanel, BorderLayout.NORTH);
+		internalServicePanel.add(servicePanel, BorderLayout.NORTH);
         
-        serviceMainPanel.add(intrenalServicePanel, BorderLayout.CENTER);
+        serviceMainPanel.add(internalServicePanel, BorderLayout.CENTER);
 
 		add(serviceMainPanel, BorderLayout.CENTER);
 	}

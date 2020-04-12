@@ -6,21 +6,19 @@ public class CampaignDirectoryBuilder
 {
     public static void initializeCampaignDirectories(Campaign campaign) 
     {
-        FileUtils fileUtils = new FileUtils();
-        
         String campaignCombatReportsDir = campaign.getCampaignPath() + "CombatReports\\";
-        fileUtils.createConfigDirIfNeeded(campaignCombatReportsDir);
+        FileUtils.createDirIfNeeded(campaignCombatReportsDir);
 
         String campaignConfigDir = campaign.getCampaignPath() + "config\\";
-        fileUtils.createConfigDirIfNeeded(campaignConfigDir);
+        FileUtils.createDirIfNeeded(campaignConfigDir);
         
         String campaignEquipmentDir = campaign.getCampaignPath() + "Equipment\\";
-        fileUtils.createConfigDirIfNeeded(campaignEquipmentDir);
+        FileUtils.createDirIfNeeded(campaignEquipmentDir);
         
         String campaignMissionDataDir = campaign.getCampaignPath() + "MissionData\\";
-        fileUtils.createConfigDirIfNeeded(campaignMissionDataDir);
+        FileUtils.createDirIfNeeded(campaignMissionDataDir);
         
         String campaignPersonnelDir = campaign.getCampaignPath() + "Personnel\\";
-        fileUtils.createConfigDirIfNeeded(campaignPersonnelDir);
+        FileUtils.createDirIfNeeded(campaignPersonnelDir);
     }
 }

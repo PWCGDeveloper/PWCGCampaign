@@ -46,12 +46,12 @@ public class CampaignGeneratorProfileGUI extends ImageResizingPanel implements A
     private JLabel lCampaignType;
     private JLabel lCampaignName;
 
-    private IPilotGeneratorUI parent;
+    private CampaignGeneratorPanelSet parent;
 
     private CampaignMode campaignMode = CampaignMode.CAMPAIGN_MODE_NONE;
     private String campaignName = "";
 
-	public CampaignGeneratorProfileGUI(IPilotGeneratorUI parent) 
+	public CampaignGeneratorProfileGUI(CampaignGeneratorPanelSet parent) 
 	{
         super(ContextSpecificImages.menuPathMain() + "CampaignGenCenter.jpg");
         this.parent = parent;       

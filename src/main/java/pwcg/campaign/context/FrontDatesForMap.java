@@ -47,8 +47,7 @@ public class FrontDatesForMap
                 {
                     if (!findDateInList(subDir.getName()))
                     {
-                        FileUtils fileUtils = new FileUtils();
-                        fileUtils.deleteRecursive(subDir.getAbsolutePath());
+                        FileUtils.deleteRecursive(subDir.getAbsolutePath());
                     }
                 }
             }

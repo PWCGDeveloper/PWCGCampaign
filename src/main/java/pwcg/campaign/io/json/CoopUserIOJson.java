@@ -21,6 +21,8 @@ public class CoopUserIOJson
 
     public static void writeJson(CoopUser coopUser) throws PWCGException
 	{
+        verifyCoopDirs();
+        
 		JsonWriter<CoopUser> jsonWriter = new JsonWriter<>();
         String coopUserDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCoopDir() + "Users\\";
 		jsonWriter.writeAsJson(coopUser, coopUserDir, coopUser.getUsername() + ".json");
@@ -28,11 +30,12 @@ public class CoopUserIOJson
 
 	public static List<CoopUser> readCoopUsers() throws PWCGException
 	{
+	    verifyCoopDirs();
+	    
 	    List<CoopUser> coopUsers = new ArrayList<>();
 		
 		String coopUserDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCoopDir() + "Users\\";
-		FileUtils fileUtils = new FileUtils();
-		List<File> jsonFiles = fileUtils.getFilesWithFilter(coopUserDir, ".json");
+		List<File> jsonFiles = FileUtils.getFilesWithFilter(coopUserDir, ".json");
 		for (File jsonFile : jsonFiles)
 		{
 			JsonObjectReader<CoopUser> jsonReader = new JsonObjectReader<>(CoopUser.class);
@@ -41,5 +44,14 @@ public class CoopUserIOJson
 		}
 		
 		return coopUsers;
+	}
+	
+	private static void verifyCoopDirs()
+	{
+        String coopDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCoopDir();
+        FileUtils.createDirIfNeeded(coopDir);
+
+        String coopUserDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCoopDir() + "Users\\";
+        FileUtils.createDirIfNeeded(coopUserDir);
 	}
 }

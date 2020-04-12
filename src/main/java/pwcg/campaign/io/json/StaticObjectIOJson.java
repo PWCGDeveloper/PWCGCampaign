@@ -31,8 +31,7 @@ public class StaticObjectIOJson
 		List<VehicleDefinition>  vehicleSets = new ArrayList<>();
 		
 		String staticObjectDir = PWCGContext.getInstance().getDirectoryManager().getPwcgStaticObjectDir();
-		FileUtils fileUtils = new FileUtils();
-		List<File> jsonFiles = fileUtils.getFilesWithFilter(staticObjectDir, ".json");
+		List<File> jsonFiles = FileUtils.getFilesWithFilter(staticObjectDir, ".json");
 		for (File jsonFile : jsonFiles)
 		{
 			JsonObjectReader<VehicleDefinition> jsonReader = new JsonObjectReader<>(VehicleDefinition.class);

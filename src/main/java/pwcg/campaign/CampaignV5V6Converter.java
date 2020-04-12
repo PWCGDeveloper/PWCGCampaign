@@ -54,14 +54,13 @@ public class CampaignV5V6Converter
         directoryReader.sortilesInDir(campaignPath);
         List<String> combatReportFiles = directoryReader.getSortedFilesWithFilter(CombatReportIOJson.COMBAT_REPORT_SUFFIX);
         
-        FileUtils fileUtils = new FileUtils();
         for (String combatReportFile : combatReportFiles)
         {
             File sourceFile = new File (campaignPath + "\\" + combatReportFile);
             File targetFile = new File (combatReportPath + "\\" + combatReportFile);
-            fileUtils.copyFile(sourceFile, targetFile);
+            FileUtils.copyFile(sourceFile, targetFile);
             
-            fileUtils.deleteFile(campaignPath + "\\" + combatReportFile);
+            FileUtils.deleteFile(campaignPath + "\\" + combatReportFile);
         }
 
     }
@@ -76,14 +75,13 @@ public class CampaignV5V6Converter
         directoryReader.sortilesInDir(campaignPath);
         List<String> missionDataFiles = directoryReader.getSortedFilesWithFilter(CampaignMissionIOJson.MISSION_DATA_SUFFIX);
                 
-        FileUtils fileUtils = new FileUtils();
         for (String missionDataFile : missionDataFiles)
         {
             File sourceFile = new File (campaignPath + "\\" + missionDataFile);
             File targetFile = new File (missionDataPath + "\\" + missionDataFile);
-            fileUtils.copyFile(sourceFile, targetFile);
+            FileUtils.copyFile(sourceFile, targetFile);
             
-            fileUtils.deleteFile(campaignPath + "\\" + missionDataFile);
+            FileUtils.deleteFile(campaignPath + "\\" + missionDataFile);
         }
     }
     

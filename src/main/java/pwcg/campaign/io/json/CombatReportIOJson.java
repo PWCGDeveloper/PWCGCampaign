@@ -19,11 +19,8 @@ public class CombatReportIOJson
 	public static void writeJson(Campaign campaign, CombatReport combatReport) throws PWCGException
 	{
         String combatReportPath = buildCombatReportPath(campaign, combatReport.getPilotSerialNumber());
-        File combatReportDir = new File(combatReportPath);
-        if (!combatReportDir.exists())
-        {
-            combatReportDir.mkdirs();
-        }
+        FileUtils.createDirIfNeeded(combatReportPath);
+        
         JsonWriter<CombatReport> jsonWriter = new JsonWriter<>();
         jsonWriter.writeAsJson(combatReport, combatReportPath, DateUtils.getDateStringYYYYMMDD(combatReport.getDate()) + COMBAT_REPORT_SUFFIX);
 	}
@@ -31,9 +28,8 @@ public class CombatReportIOJson
 	public static Map<String, CombatReport> readJson(Campaign campaign, Integer pilotSerialNumber) throws PWCGException
 	{
 	    Map<String, CombatReport> combatReportsForCampaign = new TreeMap<>();
-		FileUtils fileUtils = new FileUtils();
         String combatReportPath = buildCombatReportPath(campaign, pilotSerialNumber);
-	    List<File> combatReportFiles = fileUtils.getFilesWithFilter(combatReportPath, COMBAT_REPORT_SUFFIX);
+	    List<File> combatReportFiles = FileUtils.getFilesWithFilter(combatReportPath, COMBAT_REPORT_SUFFIX);
 		for (File combatReportFile : combatReportFiles)
 		{
 			JsonObjectReader<CombatReport> jsoReader = new JsonObjectReader<>(CombatReport.class);

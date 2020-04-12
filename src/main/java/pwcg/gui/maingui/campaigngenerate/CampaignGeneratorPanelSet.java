@@ -33,7 +33,7 @@ import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGFrame;
 
-public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionListener, IPilotGeneratorUI
+public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionListener
 {    
     private static final long serialVersionUID = 1L;
 
@@ -234,7 +234,6 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
         return campaign;
     }
 
-    @Override
     public void setCampaignProfileParameters(CampaignMode campaignMode, String campaignName)
     {
         campaignGeneratorDO.setCampaignMode(campaignMode);
@@ -242,19 +241,16 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
         evaluateCompletionState();
     }
     
-    @Override
     public CampaignGeneratorDO getCampaignGeneratorDO()
     {
         return campaignGeneratorDO;
     }
     
-    @Override
     public CampaignGeneratorState getCampaignGeneratorState()
     {
         return campaignGeneratorState;
     }
 
-    @Override
     public void evaluateCompletionState()
     {
         profileFinishedButton.setEnabled(false);
