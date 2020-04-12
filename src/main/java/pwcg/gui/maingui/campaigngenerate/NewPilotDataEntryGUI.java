@@ -620,7 +620,6 @@ public class NewPilotDataEntryGUI extends ImageResizingPanel implements ActionLi
         cbSquadron.setEnabled(false);
         
         lPlayerName.setForeground(labelColorNotSelected);
-        lCoopUser.setForeground(labelColorNotSelected);
 
         lRole.setForeground(labelColorNotSelected);
         lRank.setForeground(labelColorNotSelected);

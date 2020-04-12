@@ -103,12 +103,6 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
 
         activeButtons.clear();
         
-        if (campaign.isCoop())
-        {
-            changeReferencePilot = makeMenuButton("Change Reference Pilot", "CampChangeReferencePilot", "Change the reference pilot for the UI");
-            addButton(buttonPanel, changeReferencePilot);
-        }
-
         if (isDisplayMissionButton())
         {
             JButton createButton = makeMenuButton("Mission", "CampMission", "Generate a mission");
@@ -144,11 +138,14 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
             JButton addHumanPilotButton = makeMenuButton("Administer Coop Pilots", "AdminCoopPilots", "Administer coop pilots for this campaign");
             addButton(buttonPanel, addHumanPilotButton);
         }
-        else if (isAddHumanPilot())
+        else
         {
             JButton addHumanPilotButton = makeMenuButton("Add Pilot", "AddHumanPilot", "Add a human pilot");
             addButton(buttonPanel, addHumanPilotButton);
         }
+
+        changeReferencePilot = makeMenuButton("Change Reference Pilot", "CampChangeReferencePilot", "Change the reference pilot for the UI");
+        addButton(buttonPanel, changeReferencePilot);
 
         JLabel space2 = new JLabel("");
         buttonPanel.add(space2);
@@ -206,21 +203,6 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
 
         JButton errorButton = makeMenuButton("Report Error", "CampError", "Bundle up data files for error reporting");
         addButton(buttonPanel, errorButton);
-    }
-
-    private boolean isAddHumanPilot() throws PWCGException
-    {
-        if (!campaign.isCampaignActive())
-        {
-            return true;
-        }
-
-        if (campaign.isCoop())
-        {
-            return true;
-        }
-
-        return false;
     }
 
     private boolean isDisplayMissionButton() throws PWCGException
