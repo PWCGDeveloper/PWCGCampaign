@@ -22,10 +22,7 @@ public class ArmedServiceFinder
         List<ArmedService> allServices = ArmedServiceFactory.createServiceManager().getAllArmedServices();
         for (ArmedService armedService : allServices)
         {
-            if (map.isMapHasService(armedService.getServiceId()))
-            {
-                servicesForMap.add(armedService);
-            }
+            servicesForMap.add(armedService);
         }
         
         return servicesForMap;

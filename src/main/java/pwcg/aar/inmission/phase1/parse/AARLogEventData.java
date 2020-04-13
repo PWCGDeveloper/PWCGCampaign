@@ -24,36 +24,36 @@ public class AARLogEventData
     private Map<String, IAType12> bots = new HashMap<>();
     private Map<String, IAType12> vehicles = new HashMap<>();
     private Map<String, IAType12> turrets = new HashMap<>();
-    
+
     private void addChronologicalAType(IATypeBase chronologicalAType)
     {
         this.chronologicalATypes.add(chronologicalAType);
     }
-    
+
     public void addDamageEvent(IAType2 damageEvent)
     {
         this.damageEvents.add(damageEvent);
         addChronologicalAType(damageEvent);
     }
-    
+
     public void addDestroyedEvent(IAType3 destroyedEvent)
     {
         this.destroyedEvents.add(destroyedEvent);
         addChronologicalAType(destroyedEvent);
     }
-    
+
     public void addLandingEvent(IAType6 landingEvent)
     {
         this.landingEvents.add(landingEvent);
         addChronologicalAType(landingEvent);
     }
-    
+
     public void addWaypointEvent(IAType17 waypointEvent)
     {
         this.waypointEvents.add(waypointEvent);
         addChronologicalAType(waypointEvent);
     }
-    
+
     public void addBailoutEvent(IAType18 bailoutEvent)
     {
         this.bailoutEvents.add(bailoutEvent);
@@ -99,7 +99,7 @@ public class AARLogEventData
     {
         return waypointEvents;
     }
-    
+
     public List<IAType18> getBailoutEvents()
     {
         return bailoutEvents;
@@ -114,7 +114,7 @@ public class AARLogEventData
     {
         return new ArrayList<IAType12>(vehicles.values());
     }
-    
+
     public List<IAType12> getTurrets()
     {
         return new ArrayList<IAType12>(turrets.values());
@@ -141,13 +141,13 @@ public class AARLogEventData
         {
             return true;
         }
-        
+
         return false;
     }
 
     public List<IAType2> getDamageForBot(String id)
     {
-        List<IAType2> damageEventsForBot =  new ArrayList<IAType2>();
+        List<IAType2> damageEventsForBot = new ArrayList<IAType2>();
 
         for (IAType2 damageEvent : damageEvents)
         {
@@ -156,7 +156,7 @@ public class AARLogEventData
                 damageEventsForBot.add(damageEvent);
             }
         }
-        
+
         return damageEventsForBot;
     }
 
@@ -169,7 +169,7 @@ public class AARLogEventData
                 return destroyedEvent;
             }
         }
-        
+
         return null;
     }
 
@@ -184,27 +184,68 @@ public class AARLogEventData
                 return getDestroyedEvent(planeSpawn.getId());
             }
         }
-        
+
         return null;
     }
 
-    public String getPlaneIdByBot(IAType12 atype12Bot) {
-        String planeId = atype12Bot.getPid();
+    public String getPlaneIdByBot(IAType12 atype12Bot)
+    {
+        String planeId = AARLogParser.UNKNOWN_MISSION_LOG_ENTITY;
+        String ownerId = atype12Bot.getPid();
 
-        // Work around a case where BoX might not give the AType12 event for a bot until after it has bailed out,
-        // meaning the PID field is -1. Try to associate with a bailout event in this case
         if (planeId.equals(AARLogParser.UNKNOWN_MISSION_LOG_ENTITY))
         {
-            for (IAType18 bailoutEvent : bailoutEvents)
-            {
-                if (bailoutEvent.getBotId().equals(atype12Bot.getId()))
-                {
-                    planeId = bailoutEvent.getVehicleId();
-                    break;
-                }
-            }
+            planeId = mapObjectToVehicle(ownerId);
+        }
+        
+        IAType12 turret = mapObjectToTurret(ownerId);
+        if (turret != null)
+        {
+            planeId = mapObjectToVehicle(turret.getPid());
+        }
+        
+        if (planeId.equals(AARLogParser.UNKNOWN_MISSION_LOG_ENTITY))
+        {
+            planeId = mapBotToBailout(atype12Bot, ownerId);
         }
 
+        return planeId;
+    }
+
+    private IAType12 mapObjectToTurret(String ownerId)
+    {
+        for (IAType12 turret : turrets.values())
+        {
+            if (turret.getId().equals(ownerId))
+            {
+                return turret;
+            }
+        }
+        return null;
+    }
+
+    private String mapObjectToVehicle(String ownerId)
+    {
+        for (IAType12 vehicle : vehicles.values())
+        {
+            if (vehicle.getId().equals(ownerId))
+            {
+                return vehicle.getId();
+            }
+        }
+        return AARLogParser.UNKNOWN_MISSION_LOG_ENTITY;
+    }
+
+    private String mapBotToBailout(IAType12 atype12Bot, String planeId)
+    {
+        for (IAType18 bailoutEvent : bailoutEvents)
+        {
+            if (bailoutEvent.getBotId().equals(atype12Bot.getId()))
+            {
+                planeId = bailoutEvent.getVehicleId();
+                break;
+            }
+        }
         return planeId;
     }
 
