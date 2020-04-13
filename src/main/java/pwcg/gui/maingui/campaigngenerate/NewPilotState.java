@@ -95,7 +95,7 @@ public class NewPilotState
             return false;
         }
         else if (!(campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE) &&
-                !(PWCGStringValidator.validateStringIsAlpha(newPilotGeneratorDO.getCoopUser())))
+                !(PWCGStringValidator.validateStringIsAlphaNumeric(newPilotGeneratorDO.getCoopUser())))
         {
             return false;
         }

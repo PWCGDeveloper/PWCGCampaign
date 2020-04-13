@@ -86,7 +86,7 @@ public class NewPilotGeneratorState
         {
             return false;
         }
-        else if (!PWCGStringValidator.validateStringIsAlpha(campaignGeneratorDO.getCampaignName()))
+        else if (!PWCGStringValidator.validateStringIsAlphaNumeric(campaignGeneratorDO.getCampaignName()))
         {
             return false;
         }
@@ -95,7 +95,7 @@ public class NewPilotGeneratorState
             return false;
         }
         else if (!(campaignGeneratorDO.getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE) &&
-                !(PWCGStringValidator.validateStringIsAlpha(campaignGeneratorDO.getCoopUser())))
+                !(PWCGStringValidator.validateStringIsAlphaNumeric(campaignGeneratorDO.getCoopUser())))
         {
             return false;
         }
@@ -123,7 +123,7 @@ public class NewPilotGeneratorState
         {
             return false;
         }
-        else if (!PWCGStringValidator.validateStringIsAlpha(campaignGeneratorDO.getCampaignName()))
+        else if (!PWCGStringValidator.validateStringIsAlphaNumeric(campaignGeneratorDO.getCampaignName()))
         {
             return false;
         }
