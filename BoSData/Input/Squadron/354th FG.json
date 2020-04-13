@@ -1,26 +1,36 @@
 {
   "country": "USA",
-  "squadronId": 102363033,
-  "name": "363rd Fighter Group",
-  "fileName": "363rd FG.json",
-  "skill": 70,
+  "squadronId": 102362377,
+  "name": "354th Fighter Group",
+  "fileName": "354th FG.json",
+  "skill": 80,
   "planeAssignments": [
     {
-      "archType": "p38",
+      "archType": "p51",
       "squadronIntroduction": "19440901",
+      "squadronWithdrawal": "19441130"
+    },
+    {
+      "archType": "p47",
+      "squadronIntroduction": "19441113",
+      "squadronWithdrawal": "19450228"
+    },
+    {
+      "archType": "p51",
+      "squadronIntroduction": "19450214",
       "squadronWithdrawal": "19450601"
     }
   ],
   "airfields": {
-    "19440901": "LeCulot",
-    "19441001": "PetitBrogel",
-    "19441101": "PetitBrogel",
-    "19441220": "Asch",
-    "19441225": "Melsbroek",
-    "19441229": "St.Trond",
-    "19450207": "Aachen",
-    "19450310": "Kelz",
-    "19450404": "Mainz-Finthen"
+    "19440901": "Melsbroek",
+    "19441001": "Bierset",
+    "19441101": "Aachen",
+    "19441220": "Aachen",
+    "19441225": "Aachen",
+    "19441229": "Ophoven",
+    "19450207": "Ophoven",
+    "19450310": "PetitBrogel",
+    "19450404": "Eudenbach/Asbach"
   },
   "skins": [],
   "squadHistory": {
@@ -39,11 +49,11 @@
           },
           {
             "role": "ROLE_FIGHTER",
-            "weight": 70
+            "weight": 80
           },
           {
             "role": "ROLE_ATTACK",
-            "weight": 30
+            "weight": 20
           }
         ]
       }
@@ -54,12 +64,12 @@
       {
         "startDate": "19440901",
         "endDate": "19450601",
-        "nightMissionOdds": 5
+        "nightMissionOdds": 3
       }
     ]
   },
   "conversionPeriods": [],
   "callsigns": {
-    "19410801": "RIPPER"
+    "19410801": "WARCRAFT"
   }
 }

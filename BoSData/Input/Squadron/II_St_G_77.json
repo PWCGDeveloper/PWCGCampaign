@@ -8,11 +8,11 @@
     {
       "archType": "ju87",
       "squadronIntroduction": "19410801",
-      "squadronWithdrawal": "19440831"
+      "squadronWithdrawal": "19431018"
     },
     {
       "archType": "fw190",
-      "squadronIntroduction": "19440901",
+      "squadronIntroduction": "19431018",
       "squadronWithdrawal": "19450601"
     }
   ],
@@ -67,7 +67,14 @@
     }
   ],
   "squadHistory": {
-    "squadHistoryEntries": []
+    "squadHistoryEntries": [
+      {
+        "date": "19431018",
+        "squadName": "III./SG10",
+        "armedServiceName": "Luftwaffe",
+        "skill": 55
+      }
+    ]
   },
   "serviceId": 20101,
   "squadronRoles": {

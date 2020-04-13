@@ -67,7 +67,14 @@
     }
   ],
   "squadHistory": {
-    "squadHistoryEntries": []
+    "squadHistoryEntries": [
+      {
+        "date": "19431018",
+        "squadName": "I./SG4",
+        "armedServiceName": "Luftwaffe",
+        "skill": 55
+      }
+    ]
   },
   "serviceId": 20101,
   "squadronRoles": {

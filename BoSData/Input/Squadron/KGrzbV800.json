@@ -1,8 +1,8 @@
 {
   "country": "GERMANY",
   "squadronId": 20142002,
-  "name": "II./TG2",
-  "fileName": "II_TG2.json",
+  "name": "KGrzbV800",
+  "fileName": "KGrzbV800.json",
   "skill": 50,
   "planeAssignments": [
     {
@@ -51,7 +51,14 @@
   },
   "skins": [],
   "squadHistory": {
-    "squadHistoryEntries": []
+    "squadHistoryEntries": [
+      {
+        "date": "19430501",
+        "squadName": "II./TG2",
+        "armedServiceName": "Luftwaffe",
+        "skill": 50
+      }
+    ]
   },
   "serviceId": 20101,
   "squadronRoles": {

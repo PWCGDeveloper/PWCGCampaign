@@ -71,14 +71,6 @@
 		}
 	],
 	"squadHistory": {
-		"squadHistoryEntries": [
-			{
-				"date": "19440901",
-				"squadName": "I./JG1",
-				"armedServiceName": "Luftwaffe",
-				"skill": 70
-			}
-		]
 	},
 	"serviceId": 20101,
 	"squadronRoles": {
