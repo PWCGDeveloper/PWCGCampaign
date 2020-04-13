@@ -27,7 +27,7 @@ public class AType10 extends ATypeBase implements IAType10
     
     private void parse (String line) throws PWCGException 
 	{
-		id = getString(line, "AType:10 PLID:", " TYPE:");
+		id = getId(line, "AType:10 PLID:", " TYPE:");
 		type = getString(line, " TYPE:", " COUNTRY:");
 		location = findCoordinate(line, "RCT:");
 

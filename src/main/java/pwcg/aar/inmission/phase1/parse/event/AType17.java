@@ -30,7 +30,7 @@ public class AType17 extends ATypeBase implements IAType17
 
     private void parse (String line) throws PWCGException 
 	{
-		id = getString(line, "AType:17 ID:", " POS(");
+		id = getId(line, "AType:17 ID:", " POS(");
 		location = findCoordinate(line, "POS(");		
 	}
 	
@@ -41,7 +41,7 @@ public class AType17 extends ATypeBase implements IAType17
         {
             String format = "T:14605 AType:17 ID:%s POS(%.1f,%.1f,%.1f)";
             
-            String atype = String.format(format, id, location.getXPos(),location.getYPos(), location.getZPos());
+            String atype = String.format(format, id.split("@")[0], location.getXPos(),location.getYPos(), location.getZPos());
             writer.write(atype);
             writer.newLine();
         }

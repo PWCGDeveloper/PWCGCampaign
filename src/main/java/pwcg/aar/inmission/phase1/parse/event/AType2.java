@@ -26,8 +26,8 @@ public class AType2  extends ATypeBase implements IAType2
     private void parse (String line) throws PWCGException 
     {
 		damageLevel = getDouble(line, "DMG:", " AID:");
-		aid = getString(line, "AID:", " TID:");
-		tid = getString(line, "TID:", " POS(");
+		aid = getId(line, "AID:", " TID:");
+		tid = getId(line, "TID:", " POS(");
 		location = findCoordinate(line, "POS(");
 	}
 
@@ -38,7 +38,7 @@ public class AType2  extends ATypeBase implements IAType2
         {
             String format = "T:14605 AType:2 DMG:%.3f AID:%s TID:%s POS(%.1f,%.1f,%.1f)";
             
-            String atype = String.format(format, damageLevel, aid, tid, location.getXPos(),location.getYPos(), location.getZPos());
+            String atype = String.format(format, damageLevel, aid.split("@")[0], tid.split("@")[0], location.getXPos(),location.getYPos(), location.getZPos());
             writer.write(atype);
             writer.newLine();
         }
