@@ -39,7 +39,7 @@
       "squadId": 10131797,
       "country": "Russia",
       "category": "Squadron",
-      "definedInGame": false
+      "definedInGame": true
     },
     {
       "skinName": "PE2S87_SKIN_09",
@@ -49,7 +49,7 @@
       "squadId": 10131797,
       "country": "Russia",
       "category": "Squadron",
-      "definedInGame": false
+      "definedInGame": true
     },
     {
       "skinName": "PE2S87_SKIN_08",
@@ -59,7 +59,7 @@
       "squadId": 10131797,
       "country": "Russia",
       "category": "Squadron",
-      "definedInGame": false
+      "definedInGame": true
     },
     {
       "skinName": "PE2S87_SKIN_09",
@@ -69,7 +69,7 @@
       "squadId": 10131797,
       "country": "Russia",
       "category": "Squadron",
-      "definedInGame": false
+      "definedInGame": true
     }
   ],
   "serviceId": 10101,

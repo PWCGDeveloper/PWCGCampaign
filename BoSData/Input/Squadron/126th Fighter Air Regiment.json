@@ -53,7 +53,7 @@
 			"squadId": 10111126,
 			"country": "Russia",
 			"category": "Squadron",
-			"definedInGame": false
+			"definedInGame": true
 		}
 	],
 	"squadHistory": {

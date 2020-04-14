@@ -49,7 +49,7 @@
       "squadId": 20121002,
       "country": "Germany",
       "category": "Squadron",
-      "definedInGame": false
+      "definedInGame": true
     }
   ],
   "squadHistory": {

@@ -36,7 +36,7 @@
 			"squadId": 10111013,
 			"country": "Russia",
 			"category": "Squadron",
-			"definedInGame": false
+			"definedInGame": true
 		},
 		{
 			"skinName": "LA5S8_SKIN_02",
@@ -46,7 +46,7 @@
 			"squadId": 10111013,
 			"country": "Russia",
 			"category": "Squadron",
-			"definedInGame": false
+			"definedInGame": true
 		}
 	],
 	"serviceId": 10101,
