@@ -1,6 +1,22 @@
 ​
 At the PWCG web site
 
+PWCG 8.4.1
+Improved use of call signs (Murleen)
+Bugs:
+Fixed: Error presenting all services for campaign creation
+Fixed: AAR error in mapping bots, turrets, and planes
+Fixed: AAR error where a vehicle id can be reused causing misidentification (Murleen)
+
+PWCG 8.4.0
+Changed coop to eliminate host concept
+Added ability topay as multiple pilots in a single player campaign
+Several improvements from Murleen around displays in the in game map
+Bugs:
+Fixed: AAR error caused by addition of French units (second issue)
+Fixed: Issue involving attempt to restock planes no longer in production
+
+
 PWCG 8.3.0
 Added strategic bombing intercepts
 - High altitude intercepts of larger formations
