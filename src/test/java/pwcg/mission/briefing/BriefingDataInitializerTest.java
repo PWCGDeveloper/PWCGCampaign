@@ -35,7 +35,7 @@ import pwcg.mission.flight.IFlightPlanes;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class)
 public class BriefingDataInitializerTest
 {
     @Mock protected Campaign campaign;
@@ -108,6 +108,8 @@ public class BriefingDataInitializerTest
         Mockito.when(equippedPlane4.getSerialNumber()).thenReturn(SerialNumber.PLANE_STARTING_SERIAL_NUMBER+4);
         Mockito.when(equippedPlane1.getType()).thenReturn("bf109f4");
         Mockito.when(equippedPlane2.getType()).thenReturn("bf109f2");
+        Mockito.when(equippedPlane3.getType()).thenReturn("bf109f4");
+        Mockito.when(equippedPlane4.getType()).thenReturn("bf109f2");
         equippedPlanes.put(equippedPlane1.getSerialNumber(), equippedPlane1);
         equippedPlanes.put(equippedPlane2.getSerialNumber(), equippedPlane2);
         equippedPlanes.put(equippedPlane3.getSerialNumber(), equippedPlane3);

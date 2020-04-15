@@ -3,6 +3,7 @@ package pwcg.mission.briefing;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -14,7 +15,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.gui.helper.BriefingPayloadHelper;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class)
 public class BriefingPayloadHelperTest extends BriefingDataInitializerTest
 {
 
@@ -92,6 +93,9 @@ public class BriefingPayloadHelperTest extends BriefingDataInitializerTest
         Mockito.when(plane1.getType()).thenReturn("bf109f4");
         Mockito.when(plane2.getType()).thenReturn("bf109f4");
 
+        Mockito.when(pilot1.determineSortKey(ArgumentMatchers.any())).thenReturn("A");
+        Mockito.when(pilot2.determineSortKey(ArgumentMatchers.any())).thenReturn("B");
+
         BriefingPayloadHelper payloadHelper = new BriefingPayloadHelper(mission, briefingAssignmentData);
         payloadHelper.initializePayloadsFromMission();
         assert(briefingAssignmentData.getAssignedCrewPlanes().get(SerialNumber.AI_STARTING_SERIAL_NUMBER+2).getPayloadId() == 2);
@@ -113,7 +117,12 @@ public class BriefingPayloadHelperTest extends BriefingDataInitializerTest
         Mockito.when(equippedPlane1.getType()).thenReturn("bf109f4");
         Mockito.when(equippedPlane2.getType()).thenReturn("bf109f2");
         Mockito.when(plane1.getType()).thenReturn("bf109f4");
-        Mockito.when(plane1.getType()).thenReturn("bf109f2");
+        Mockito.when(plane2.getType()).thenReturn("bf109f2");
+
+        Mockito.when(pilot1.determineSortKey(ArgumentMatchers.any())).thenReturn("A");
+        Mockito.when(pilot2.determineSortKey(ArgumentMatchers.any())).thenReturn("B");
+        Mockito.when(pilot3.determineSortKey(ArgumentMatchers.any())).thenReturn("C");
+        Mockito.when(pilot4.determineSortKey(ArgumentMatchers.any())).thenReturn("D");
 
         BriefingPayloadHelper payloadHelper = new BriefingPayloadHelper(mission, briefingAssignmentData);
         payloadHelper.initializePayloadsFromMission();
