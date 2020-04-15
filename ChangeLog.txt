@@ -1,6 +1,19 @@
 ​
 At the PWCG web site
 
+PWCG 8.5.0
+Added East Front 1944 Map
+- Uses Stalingrad map
+- Movement follows Soviet gains as map allows
+- Lets Eastern Front continue through 1944
+Bugs:
+Correct situation where services can be cut off in campaign creation
+Fixed failure to open skin management screen
+Correct situation where PWCG may get stuck generating missions for a secondary pilot
+Loosened naming tolerances for campaigns to allow numbers - be careful, the game might not like it
+Do not log pilot badges to squadron logs
+
+
 PWCG 8.4.1
 Improved use of call signs (Murleen)
 Bugs:
