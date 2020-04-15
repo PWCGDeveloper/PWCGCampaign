@@ -45,12 +45,10 @@ public class MissionSquadronFinder
         }
         else if (mission.getMissionProfile() == MissionProfile.DAY_STRATEGIC_MISSION)
         {
-            // TODO make day strategic
             findSquadronsForStrategicMission();
         }
         else if (mission.getMissionProfile() == MissionProfile.NIGHT_STRATEGIC_MISSION)
         {
-            // TODO make night strategic
             findSquadronsForNightStrategicMission();
         }
         else if (mission.getMissionProfile() == MissionProfile.SEA_PLANE_MISSION)

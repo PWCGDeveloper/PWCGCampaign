@@ -5,10 +5,10 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase1.parse.event.IATypeBase;
@@ -37,7 +37,7 @@ public class AARRandomAssignmentTest
     @Test
     public void testMarkTrue () throws PWCGException
     {
-        Mockito.when(randomAssignmentCalculator.shouldBeMarkedForRandomAssignment(Matchers.<List<IATypeBase>>any(), Matchers.<String>any())).thenReturn(true);
+        Mockito.when(randomAssignmentCalculator.shouldBeMarkedForRandomAssignment(ArgumentMatchers.<List<IATypeBase>>any(), ArgumentMatchers.<String>any())).thenReturn(true);
 
         AARRandomAssignment randomAssignment = new AARRandomAssignment(logEventData, randomAssignmentCalculator);
         LogUnknown markedForAssignment = randomAssignment.markForRandomAssignment(victoryResult);
@@ -48,7 +48,7 @@ public class AARRandomAssignmentTest
     @Test
     public void testMarkFalse () throws PWCGException
     {
-        Mockito.when(randomAssignmentCalculator.shouldBeMarkedForRandomAssignment(Matchers.<List<IATypeBase>>any(), Matchers.<String>any())).thenReturn(false);
+        Mockito.when(randomAssignmentCalculator.shouldBeMarkedForRandomAssignment(ArgumentMatchers.<List<IATypeBase>>any(), ArgumentMatchers.<String>any())).thenReturn(false);
 
         AARRandomAssignment randomAssignment = new AARRandomAssignment(logEventData, randomAssignmentCalculator);
         LogUnknown markedForAssignment = randomAssignment.markForRandomAssignment(victoryResult);

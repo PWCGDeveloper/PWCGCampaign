@@ -25,7 +25,7 @@
     "19420721": "Belorechenskaya",
     "19420801": "Sekretov",
     "19420906": "Berezovsky",
-    "19421011": "Kumovka",
+    "19421011": "Grachi",
     "19421123": "Zryansky",
     "19421223": "Zryansky",
     "19430120": "Sekretov",
@@ -36,12 +36,22 @@
     "19430927": "Marfovka",
     "19431004": "Marfovka",
     "19431008": "Marfovka",
-    "19440101": "Sekretov"
+    "19440101": "Marinovka",
+    "19440201": "Kalach",
+    "19440301": "Kalach",
+    "19440401": "Malogolubaya",
+    "19440501": "Samovalovka",
+    "19440601": "Zryansky",
+    "19440701": "Zryansky",
+    "19440801": "Frolov",
+    "19440901": "Oblivskaya",
+    "19441001": "Oblivskaya",
+    "19441101": "Oblivskaya",
+    "19441201": "Oblivskaya"
   },
   "skins": [],
   "squadHistory": {
-    "squadHistoryEntries": [
-    ]
+    "squadHistoryEntries": []
   },
   "serviceId": 20101,
   "squadronRoles": {
@@ -57,6 +67,9 @@
         ]
       }
     ]
+  },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
   },
   "nightMissionOdds": {
     "nightMissionPeriods": [

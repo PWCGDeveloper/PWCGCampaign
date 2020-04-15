@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
@@ -23,7 +23,7 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.product.fc.country.FCServiceManager;
 import pwcg.product.fc.medals.GermanMedalManager;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class) 
 public class RoFGermanMedalManagerTest extends MedalManagerTestBase
 {
     @Before

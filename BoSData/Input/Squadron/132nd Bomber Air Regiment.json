@@ -11,8 +11,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-  ],  
   "airfields": {
     "19411001": "Ruza",
     "19411020": "Solodilovo",
@@ -20,14 +18,14 @@
     "19411120": "Torjok",
     "19411215": "Ilinskoe",
     "19420110": "Kolodezi",
-    "19420301": "Pitomnik",
+    "19420301": "Basargino",
     "19420601": "Gostagaevskaya",
     "19420624": "Gelenjik-3",
     "19420709": "Agoy",
     "19420721": "Agoy",
-    "19420801": "Verh. Ahtuba",
-    "19420906": "Smutnev",
-    "19421011": "Konstitutsiya",
+    "19420801": "Plesovskiy",
+    "19420906": "Verhne-Pogromnoye",
+    "19421011": "Kolh.im.Kaganovicha",
     "19421123": "Kolh.im.Kaganovicha",
     "19421223": "Leninsk",
     "19430120": "Rynok",
@@ -38,7 +36,18 @@
     "19430927": "Abinskaya",
     "19431004": "Gelenjik-2",
     "19431008": "Gelenjik-2",
-    "19440101": "Verh. Ahtuba"
+    "19440101": "Rastagaev",
+    "19440201": "Leninsk",
+    "19440301": "Trudolyublye",
+    "19440401": "Leninsk",
+    "19440501": "Leninsk",
+    "19440601": "Verh. Ahtuba",
+    "19440701": "Grishin",
+    "19440801": "Voroponovo",
+    "19440901": "Basargino",
+    "19441001": "Basargino",
+    "19441101": "Zety",
+    "19441201": "Marinovka"
   },
   "skins": [],
   "squadHistory": {
@@ -84,6 +93,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -93,6 +105,7 @@
       }
     ]
   },
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "KITTIWAKE"
   }

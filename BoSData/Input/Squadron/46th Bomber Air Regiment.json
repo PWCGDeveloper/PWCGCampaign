@@ -11,8 +11,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-  ],  
   "airfields": {
     "19411001": "Staritsa",
     "19411020": "Ilinskoe",
@@ -20,13 +18,13 @@
     "19411120": "Ilinskoe",
     "19411215": "Kryukovo",
     "19420110": "Ruza",
-    "19420301": "Bol. Ivanovka",
+    "19420301": "Bol. Rossoshka",
     "19420601": "Severskaya",
     "19420624": "Pashkovskaya",
     "19420709": "Maykop-3",
     "19420721": "Sochi",
-    "19420801": "Rahinsky",
-    "19420906": "Krasnaya Zarjya",
+    "19420801": "Davydovskiy",
+    "19420906": "Pichuga",
     "19421011": "Krasnaya Zarjya",
     "19421123": "Krasnaya Zarjya",
     "19421223": "Krasnaya Zarjya",
@@ -38,7 +36,18 @@
     "19430927": "Ivanovskaya",
     "19431004": "Krasnoarmeyskayas",
     "19431008": "Krasnoarmeyskayas",
-    "19440101": "Rahinsky"
+    "19440101": "Rahinsky",
+    "19440201": "Rahinsky",
+    "19440301": "Rahinsky",
+    "19440401": "Rahinsky",
+    "19440501": "Seleznev",
+    "19440601": "Tinguta",
+    "19440701": "Pichuga",
+    "19440801": "Altuhov",
+    "19440901": "Karpovka",
+    "19441001": "Karpovka",
+    "19441101": "Karpovka",
+    "19441201": "Karpovka"
   },
   "skins": [],
   "squadHistory": {
@@ -84,6 +93,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -93,6 +105,7 @@
       }
     ]
   },
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "PHEASANT"
   }

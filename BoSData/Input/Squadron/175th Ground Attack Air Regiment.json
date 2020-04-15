@@ -11,8 +11,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-  ],  
   "airfields": {
     "19411001": "Kholm",
     "19411020": "Pavlovskoe",
@@ -20,14 +18,14 @@
     "19411120": "Bykovo",
     "19411215": "Brykovo",
     "19420110": "Ryabinki",
-    "19420301": "Zety",
+    "19420301": "Zhutovo",
     "19420601": "Vyselki",
     "19420624": "Abinskaya",
     "19420709": "Gelenjik-3",
     "19420721": "Lazarevskoe",
-    "19420801": "Davydovskiy",
-    "19420906": "Verh. Ahtuba",
-    "19421011": "Leninsk",
+    "19420801": "Bol. Ivanovka",
+    "19420906": "Akatovka",
+    "19421011": "Srednyaya Ahtuba",
     "19421123": "Tinguta",
     "19421223": "Bol. Chapurniki",
     "19430120": "Voroponovo",
@@ -38,7 +36,17 @@
     "19430927": "Slavyanskaya",
     "19431004": "Anastasievskaya",
     "19431008": "Gostagaevskaya",
-    "19440101": "Davydovskiy"
+    "19440101": "Seleznev",
+    "19440301": "Seleznev",
+    "19440401": "Lugo-Vodyanoye",
+    "19440501": "Lugo-Vodyanoye",
+    "19440601": "Rahinsky",
+    "19440701": "Erzovka",
+    "19440801": "Kuzmichy",
+    "19440901": "Berezovsky",
+    "19441001": "Berezovsky",
+    "19441101": "Berezovsky",
+    "19441201": "Berezovsky"
   },
   "skins": [
     {
@@ -103,6 +111,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -112,6 +123,7 @@
       }
     ]
   },
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "EAGLE"
   }

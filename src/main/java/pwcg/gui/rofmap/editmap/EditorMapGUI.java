@@ -240,6 +240,7 @@ public class EditorMapGUI extends MapGUI implements ActionListener
             mapGrid.add(makeRadioButton(PWCGMap.MOSCOW_MAP_NAME, MAP_DELIMITER + PWCGMap.MOSCOW_MAP_NAME, mapButtonGroup));
             mapGrid.add(makeRadioButton(PWCGMap.STALINGRAD_MAP_NAME, MAP_DELIMITER + PWCGMap.STALINGRAD_MAP_NAME, mapButtonGroup));
             mapGrid.add(makeRadioButton(PWCGMap.KUBAN_MAP_NAME, MAP_DELIMITER + PWCGMap.KUBAN_MAP_NAME, mapButtonGroup));
+            mapGrid.add(makeRadioButton(PWCGMap.EAST1944_MAP_NAME, MAP_DELIMITER + PWCGMap.EAST1944_MAP_NAME, mapButtonGroup));
             mapGrid.add(makeRadioButton(PWCGMap.BODENPLATTE_MAP_NAME, MAP_DELIMITER + PWCGMap.BODENPLATTE_MAP_NAME, mapButtonGroup));
         }
         else if (PWCGContext.getProduct() == PWCGProduct.FC)
@@ -367,7 +368,7 @@ public class EditorMapGUI extends MapGUI implements ActionListener
             }   
             else if (action.contains("Mirror"))
             {               
-                editorMapPanel.mirrorAlliedFrontLinesForAxis();
+                editorMapPanel.mirrorFrontLines();
             }   
             else if (action.equalsIgnoreCase("ComboBoxChanged"))
             {

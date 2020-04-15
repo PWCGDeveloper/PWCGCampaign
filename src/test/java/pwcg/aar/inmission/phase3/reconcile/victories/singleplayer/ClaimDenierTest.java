@@ -6,10 +6,10 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.ui.events.model.ClaimDeniedEvent;
 import pwcg.campaign.Campaign;
@@ -48,14 +48,7 @@ public class ClaimDenierTest
         players.add(player);
 
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
-        Mockito.when(personnelManager.getAnyCampaignMember(Matchers.<Integer>any())).thenReturn(pilot);
-        Mockito.when(personnelManager.getAllActivePlayers()).thenReturn(playerMembers);   
-        Mockito.when(playerMembers.getSquadronMemberList()).thenReturn(players);   
-        Mockito.when(pilot.determineSquadron()).thenReturn(squadron);
-        Mockito.when(squadron.determineDisplayName(Mockito.any())).thenReturn("Esc 3");
-        
-        Mockito.when(pilot.determineSquadron()).thenReturn(squadron);
-        Mockito.when(player.determineSquadron()).thenReturn(squadron);
+        Mockito.when(personnelManager.getAnyCampaignMember(ArgumentMatchers.<Integer>any())).thenReturn(pilot);
     }
 
     @Test
@@ -74,7 +67,7 @@ public class ClaimDenierTest
 
         Mockito.when(declaration.isConfirmed()).thenReturn(false);
         Mockito.when(declaration.getAircraftType()).thenReturn("Albatros D.III");
-        Mockito.when(planeFactory.createPlaneTypeByAnyName(Matchers.<String>any())).thenReturn(planeType);
+        Mockito.when(planeFactory.createPlaneTypeByAnyName(ArgumentMatchers.<String>any())).thenReturn(planeType);
         Mockito.when(planeType.getDisplayName()).thenReturn("Albatros D.III");
         
         ClaimDenier claimDenier = new ClaimDenier(campaign, planeFactory);
@@ -88,8 +81,6 @@ public class ClaimDenierTest
 
         Mockito.when(declaration.isConfirmed()).thenReturn(false);
         Mockito.when(declaration.getAircraftType()).thenReturn(PlaneType.BALLOON);
-        Mockito.when(planeFactory.createPlaneTypeByAnyName(Matchers.<String>any())).thenReturn(planeType);
-        Mockito.when(planeType.getDisplayName()).thenReturn("Albatros D.III");
         
         ClaimDenier claimDenier = new ClaimDenier(campaign, planeFactory);
         ClaimDeniedEvent claimDeniedEvent = claimDenier.determineClaimDenied(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, declaration);

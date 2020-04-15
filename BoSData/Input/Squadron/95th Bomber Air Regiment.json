@@ -11,8 +11,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-  ],  
   "airfields": {
     "19411001": "Solodilovo",
     "19411020": "Klin",
@@ -25,9 +23,9 @@
     "19420624": "Severskaya",
     "19420709": "Lazarevskoe",
     "19420721": "Lazarevskoe",
-    "19420801": "Rahinka",
-    "19420906": "Kolh.im.Kaganovicha",
-    "19421011": "Konstitutsiya",
+    "19420801": "Erzovka",
+    "19420906": "Erzovka",
+    "19421011": "Solodovka",
     "19421123": "Smutnev",
     "19421223": "Leninsk",
     "19430120": "Svetly Yar",
@@ -38,7 +36,18 @@
     "19430927": "Andreevskaya",
     "19431004": "Holmskaya",
     "19431008": "Holmskaya",
-    "19440101": "Rahinka"
+    "19440101": "Rahinka",
+    "19440201": "Rahinka",
+    "19440301": "Rahinka",
+    "19440401": "Krasnaya Zarjya",
+    "19440501": "Zaplavnoye",
+    "19440601": "Rahinka",
+    "19440701": "Rahinka",
+    "19440801": "Mal. Orlovka",
+    "19440901": "Samovalovka",
+    "19441001": "Samovalovka",
+    "19441101": "Illarionovskiy",
+    "19441201": "Marinovka"
   },
   "skins": [],
   "squadHistory": {
@@ -78,6 +87,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -87,6 +99,7 @@
       }
     ]
   },
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "SWAN"
   }

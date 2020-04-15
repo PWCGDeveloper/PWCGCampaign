@@ -7,6 +7,8 @@ import java.util.Map;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
@@ -31,16 +33,12 @@ public class PwcgGeneratedMissionPlaneMapper
             }
             
         }
-        
-        // Always add balloons for RoF
-        // TODO FC when balloons arrive
-        /*
+
         if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
             alliedPlaneMap.put(PlaneType.BALLOON, PlaneType.BALLOON);
             axisPlaneMap.put(PlaneType.BALLOON, PlaneType.BALLOON);
         }
-        */
     }
 
     private Side determinePlaneSide(Campaign campaign, PwcgGeneratedMissionPlaneData missionPlane) throws PWCGException

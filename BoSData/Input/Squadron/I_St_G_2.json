@@ -11,8 +11,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-  ],  
   "airfields": {
     "19411001": "Znamenka",
     "19411020": "Dugino",
@@ -26,8 +24,8 @@
     "19420709": "Ivanovskaya",
     "19420721": "Severskaya",
     "19420801": "Skvorin",
-    "19420906": "Skvorin",
-    "19421011": "Marinovka",
+    "19420906": "Malogolubaya",
+    "19421011": "Basargino",
     "19421123": "Zryansky",
     "19421223": "Zryansky",
     "19430120": "Skvorin",
@@ -38,10 +36,21 @@
     "19430927": "Kerch-2",
     "19431004": "Kerch-2",
     "19431008": "Zamorsk",
-    "19440101": "Skvorin"
+    "19440101": "Basargino",
+    "19440201": "Basargino",
+    "19440301": "Bol. Rossoshka",
+    "19440401": "Karpovka",
+    "19440501": "Zhutovo",
+    "19440601": "Kalach",
+    "19440701": "Golubinskiy",
+    "19440801": "Kamchie",
+    "19440901": "Aksay",
+    "19441001": "Aksay",
+    "19441101": "Novo Sergievskiy",
+    "19441201": "Lipovsky"
   },
   "skins": [
-  {
+    {
       "skinName": "I_St_G_2",
       "planeType": "ju87d3",
       "startDate": "19400801",
@@ -82,15 +91,6 @@
       }
     ]
   },
-  "nightMissionOdds": {
-    "nightMissionPeriods": [
-      {
-        "startDate": "19440901",
-        "endDate": "19450601",
-        "nightMissionOdds": 10
-      }
-    ]
-  },
   "serviceId": 20101,
   "squadronRoles": {
     "squadronRolePeriods": [
@@ -106,6 +106,19 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "nightMissionOdds": 10
+      }
+    ]
+  },
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "EAGLE"
   }

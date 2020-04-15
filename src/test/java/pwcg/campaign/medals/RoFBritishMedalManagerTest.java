@@ -7,9 +7,9 @@ import javax.swing.ImageIcon;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
@@ -25,7 +25,7 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.product.fc.country.FCServiceManager;
 import pwcg.product.fc.medals.BritishMedalManager;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class) 
 public class RoFBritishMedalManagerTest extends MedalManagerTestBase
 {
     @Before
@@ -44,7 +44,7 @@ public class RoFBritishMedalManagerTest extends MedalManagerTestBase
     {            	
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19170201"));
 	    service = ArmedServiceFactory.createServiceManager().getArmedServiceById(FCServiceManager.RFC, campaign.getDate());
-        Mockito.when(player.determineService(Matchers.<Date>any())).thenReturn(service);
+        Mockito.when(player.determineService(ArgumentMatchers.<Date>any())).thenReturn(service);
 
         awardMedal(BritishMedalManager.PILOTS_BADGE, 0, 0);
 		awardMedal(BritishMedalManager.MC, 3, 1);
@@ -58,7 +58,7 @@ public class RoFBritishMedalManagerTest extends MedalManagerTestBase
     {            	
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19170201"));
 	    service = ArmedServiceFactory.createServiceManager().getArmedServiceById(FCServiceManager.RNAS, campaign.getDate());
-        Mockito.when(player.determineService(Matchers.<Date>any())).thenReturn(service);
+        Mockito.when(player.determineService(ArgumentMatchers.<Date>any())).thenReturn(service);
 
         awardMedal(BritishMedalManager.PILOTS_BADGE, 0, 0);
 		awardMedal(BritishMedalManager.DSC, 3, 1);
@@ -73,7 +73,7 @@ public class RoFBritishMedalManagerTest extends MedalManagerTestBase
     {            	
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getRAFDate());
 	    service = ArmedServiceFactory.createServiceManager().getArmedServiceById(FCServiceManager.RFC, campaign.getDate());
-        Mockito.when(player.determineService(Matchers.<Date>any())).thenReturn(service);
+        Mockito.when(player.determineService(ArgumentMatchers.<Date>any())).thenReturn(service);
 
         awardMedal(BritishMedalManager.PILOTS_BADGE, 0, 0);
 		awardMedal(BritishMedalManager.DFC, 8, 1);
@@ -89,7 +89,7 @@ public class RoFBritishMedalManagerTest extends MedalManagerTestBase
     {            
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19170201"));
 	    service = ArmedServiceFactory.createServiceManager().getArmedServiceById(FCServiceManager.RFC, campaign.getDate());
-        Mockito.when(player.determineService(Matchers.<Date>any())).thenReturn(service);
+        Mockito.when(player.determineService(ArgumentMatchers.<Date>any())).thenReturn(service);
 
         awardMedal(BritishMedalManager.PILOTS_BADGE, 0, 0);
 		awardMedal(BritishMedalManager.MC, 3, 1);

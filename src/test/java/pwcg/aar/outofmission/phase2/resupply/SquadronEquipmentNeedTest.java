@@ -6,10 +6,10 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.campaign.Campaign;
@@ -50,10 +50,10 @@ public class SquadronEquipmentNeedTest
         PWCGContext.setProduct(PWCGProduct.BOS);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420430"));
         Mockito.when(campaign.getEquipmentManager()).thenReturn(campaignEquipmentManager);
-        Mockito.when(campaignEquipmentManager.getEquipmentForSquadron(Matchers.any())).thenReturn(equipment);
+        Mockito.when(campaignEquipmentManager.getEquipmentForSquadron(ArgumentMatchers.any())).thenReturn(equipment);
 
         Mockito.when(equipment.getActiveEquippedPlanes()).thenReturn(activeEquippedPlaneCollection);
-        Mockito.when(equipment.getRecentlyInactiveEquippedPlanes(Matchers.any())).thenReturn(inactiveEquippedPlaneCollection);
+        Mockito.when(equipment.getRecentlyInactiveEquippedPlanes(ArgumentMatchers.any())).thenReturn(inactiveEquippedPlaneCollection);
      }
 
     @Test

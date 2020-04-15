@@ -11,8 +11,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-  ],  
   "airfields": {
     "19411001": "Ryabinki",
     "19411020": "Dyatlovo",
@@ -20,21 +18,17 @@
     "19411120": "Vlasyevo",
     "19411215": "Vlasyevo",
     "19420110": "Varvarovka",
-    
     "19420301": "Karpovka",
-    
     "19420601": "Kievskoe-1",
     "19420624": "Gelenjik-2",
     "19420709": "Agoy",
     "19420721": "Agoy",
-    
     "19420801": "Mal. Orlovka",
-    "19420906": "Srednyaya Ahtuba",
-    "19421011": "Krasnaya Zarjya",
+    "19420906": "Svetly Yar",
+    "19421011": "Zaplavnoye",
     "19421123": "Grishin",
     "19421223": "Bol. Chapurniki",
     "19430120": "Rynok",
-    
     "19430301": "Agoy",
     "19430330": "Gelenjik-3",
     "19430418": "Staro-Nijne-Steblievskaya",
@@ -42,7 +36,17 @@
     "19430927": "Gelenjik-1",
     "19431004": "Anastasievskaya",
     "19431008": "Anastasievskaya",
-    "19440101": "Mal. Orlovka"
+    "19440101": "Krasnaya Zarjya",
+    "19440301": "Abganerovo",
+    "19440401": "Grishin",
+    "19440501": "Grishin",
+    "19440601": "Beketovka",
+    "19440701": "Beketovka",
+    "19440801": "Basargino",
+    "19440901": "Tinguta",
+    "19441001": "Tinguta",
+    "19441101": "Grachi",
+    "19441201": "Zhutovo"
   },
   "skins": [
     {
@@ -101,6 +105,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -110,6 +117,7 @@
       }
     ]
   },
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "REDSHANK"
   }

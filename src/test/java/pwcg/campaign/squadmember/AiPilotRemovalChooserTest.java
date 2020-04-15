@@ -5,10 +5,10 @@ import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
@@ -43,7 +43,7 @@ public class AiPilotRemovalChooserTest
         Mockito.when(campaign.getDate()).thenReturn(campaignDate);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(campaignPersonnelManager);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(campaignPersonnelManager);
-        Mockito.when(campaignPersonnelManager.getSquadronPersonnel(Matchers.anyInt())).thenReturn(squadronPersonnel);
+        Mockito.when(campaignPersonnelManager.getSquadronPersonnel(ArgumentMatchers.anyInt())).thenReturn(squadronPersonnel);
 
         squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(10131132); 
         
@@ -109,8 +109,6 @@ public class AiPilotRemovalChooserTest
     @Test
     public void testRemoveAnyNonCommandRank() throws PWCGException
     {
-        Mockito.when(squadronMember6.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+6);
-        
         SquadronMembers squadronMembers = new SquadronMembers();
         Mockito.when(squadronPersonnel.getSquadronMembers()).thenReturn(squadronMembers);
         squadronMembers.addToSquadronMemberCollection(squadronMember1);
@@ -125,8 +123,6 @@ public class AiPilotRemovalChooserTest
     @Test
     public void testCommanderRemoved() throws PWCGException
     {
-        Mockito.when(squadronMember6.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+6);
-        
         SquadronMembers squadronMembers = new SquadronMembers();
         Mockito.when(squadronPersonnel.getSquadronMembers()).thenReturn(squadronMembers);
         squadronMembers.addToSquadronMemberCollection(squadronMember1);
@@ -139,8 +135,6 @@ public class AiPilotRemovalChooserTest
     @Test
     public void testNobodyRemoved() throws PWCGException
     {
-        Mockito.when(squadronMember6.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+6);
-        
         SquadronMembers squadronMembers = new SquadronMembers();
         Mockito.when(squadronPersonnel.getSquadronMembers()).thenReturn(squadronMembers);
         squadronMembers.addToSquadronMemberCollection(squadronMember1);

@@ -11,8 +11,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-  ],  
   "airfields": {
     "19411001": "Nazaryevo",
     "19411020": "Staritsa",
@@ -27,7 +25,7 @@
     "19420721": "Sochi",
     "19420801": "Beketovka",
     "19420906": "Raygorod",
-    "19421011": "Kolh.im.Kaganovicha",
+    "19421011": "Bol. Ivanovka",
     "19421123": "Erzovka",
     "19421223": "Verh. Ahtuba",
     "19430120": "Beketovka",
@@ -38,7 +36,18 @@
     "19430927": "Kievskoe-1",
     "19431004": "Kievskoe-1",
     "19431008": "Kievskoe-1",
-    "19440101": "Beketovka"
+    "19440101": "Zaplavnoye",
+    "19440201": "Zaplavnoye",
+    "19440301": "Zaplavnoye",
+    "19440401": "Zaplavnoye",
+    "19440501": "Plodovitoye",
+    "19440601": "Pichuga",
+    "19440701": "Mal. Chapurniki",
+    "19440801": "Karpovka",
+    "19440901": "Illarionovskiy",
+    "19441001": "Illarionovskiy",
+    "19441101": "Illarionovskiy",
+    "19441201": "Illarionovskiy"
   },
   "skins": [
     {
@@ -97,6 +106,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -106,6 +118,7 @@
       }
     ]
   },
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "VOLCANO"
   }

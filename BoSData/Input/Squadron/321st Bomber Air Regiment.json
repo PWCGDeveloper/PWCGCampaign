@@ -16,12 +16,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-    {
-      "conversionStartDate": "19420715",
-      "conversionCompleteDate": "19420731"
-    }
-  ],  
   "airfields": {
     "19411001": "Kolodezi",
     "19411020": "Simonkovo",
@@ -29,13 +23,13 @@
     "19411120": "Vlasyevo",
     "19411215": "Nesterovo",
     "19420110": "Ruza",
-    "19420301": "Kuzmichy",
+    "19420301": "Aksay",
     "19420601": "Pashkovskaya",
     "19420624": "Vyselki",
     "19420709": "Mirskaya",
     "19420721": "Adler",
-    "19420801": "Verhne-Pogromnoye",
-    "19420906": "Krasnaya Zarjya",
+    "19420801": "Gumrak",
+    "19420906": "Zaplavnoye",
     "19421011": "Krasnaya Zarjya",
     "19421123": "Trudolyublye",
     "19421223": "Trudolyublye",
@@ -47,10 +41,21 @@
     "19430927": "Staro-Nijne-Steblievskaya",
     "19431004": "Abinskaya",
     "19431008": "Abinskaya",
-    "19440101": "Verhne-Pogromnoye"
+    "19440101": "Verhne-Pogromnoye",
+    "19440201": "Verhne-Pogromnoye",
+    "19440301": "Krasnaya Zarjya",
+    "19440401": "Verhne-Pogromnoye",
+    "19440501": "Verhne-Pogromnoye",
+    "19440601": "Mal. Chapurniki",
+    "19440701": "Akatovka",
+    "19440801": "Mal. Chapurniki",
+    "19440901": "Marinovka",
+    "19441001": "Marinovka",
+    "19441101": "Marinovka",
+    "19441201": "Marinovka"
   },
   "skins": [
-      {
+    {
       "skinName": "321st Bomber Air Regiment",
       "planeType": "a20b",
       "startDate": "19420801",
@@ -114,6 +119,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -123,6 +131,12 @@
       }
     ]
   },
+  "conversionPeriods": [
+    {
+      "conversionStartDate": "19420715",
+      "conversionCompleteDate": "19420731"
+    }
+  ],
   "callsigns": {
     "19410801": "SEAGULL"
   }

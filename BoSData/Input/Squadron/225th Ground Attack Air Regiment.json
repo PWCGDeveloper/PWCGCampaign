@@ -11,8 +11,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-  ],  
   "airfields": {
     "19420801": "Voroponovo",
     "19420906": "Novonikolskoye",
@@ -20,7 +18,6 @@
     "19421123": "Verhne-Pogromnoye",
     "19421223": "Erzovka",
     "19430120": "Pichuga",
-    
     "19430301": "Korenovskaya",
     "19430330": "Korenovskaya",
     "19430418": "Andreevskaya",
@@ -28,7 +25,18 @@
     "19430927": "Anastasievskaya",
     "19431004": "Slavyanskaya",
     "19431008": "Kievskoe",
-    "19440101": "Voroponovo"
+    "19440101": "Leninsk",
+    "19440201": "Kolh.im.Kaganovicha",
+    "19440301": "Bol. Chapurniki",
+    "19440401": "Svetly Yar",
+    "19440501": "Mal. Chapurniki",
+    "19440601": "Rynok",
+    "19440701": "Tinguta",
+    "19440801": "Tinguta",
+    "19440901": "Kachalinskaya",
+    "19441001": "Kachalinskaya",
+    "19441101": "Kachalinskaya",
+    "19441201": "Kachalinskaya"
   },
   "skins": [
     {
@@ -87,6 +95,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -96,6 +107,7 @@
       }
     ]
   },
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "RAVEN"
   }

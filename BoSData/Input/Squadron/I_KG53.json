@@ -18,14 +18,14 @@
     "19411120": "Varvarovka",
     "19411215": "Gzhatsk",
     "19420110": "Bolshoe Vergovo",
-    "19420301": "Morozovskiy West",
+    "19420301": "Oblivskaya",
     "19420601": "Semisotka",
     "19420624": "Taman",
     "19420709": "Krasnoarmeyskayas",
     "19420721": "Taman",
     "19420801": "Novo Sergievskiy",
     "19420906": "Skvorin",
-    "19421011": "Berezovsky",
+    "19421011": "Kalach",
     "19421123": "Frolov",
     "19421223": "Frolov",
     "19430120": "Frolov",
@@ -36,7 +36,18 @@
     "19430927": "Bagerovo",
     "19431004": "Bagerovo",
     "19431008": "Zamorsk",
-    "19440901": "Novo Sergievskiy"
+    "19440101": "Bol. Rossoshka",
+    "19440201": "Samovalovka",
+    "19440301": "Samovalovka",
+    "19440401": "Evlampievsky",
+    "19440501": "Samovalovka",
+    "19440601": "Lipovsky",
+    "19440701": "Berezovsky",
+    "19440801": "Tormosin",
+    "19440901": "Chernishkovskiy",
+    "19441001": "Safronov",
+    "19441101": "Morozovskiy West",
+    "19441201": "Chernishkovskiy"
   },
   "skins": [
     {
@@ -101,6 +112,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -110,8 +124,7 @@
       }
     ]
   },
-  "conversionPeriods": [
-  ],
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "SEAGULL"
   }

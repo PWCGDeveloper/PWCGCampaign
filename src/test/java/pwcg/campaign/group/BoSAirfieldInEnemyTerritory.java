@@ -3,7 +3,7 @@ package pwcg.campaign.group;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
@@ -51,7 +51,16 @@ public class BoSAirfieldInEnemyTerritory extends AirfieldInEnemyTerritory
         BoSAirfieldInEnemyTerritory airfieldFinder = new BoSAirfieldInEnemyTerritory();
         airfieldFinder.findEnemy(FrontMapIdentifier.STALINGRAD_MAP, DateUtils.getDateYYYYMMDD("19420801"), DateUtils.getDateYYYYMMDD("19430301"));
 	}
-	
+
+    @Test
+    public void airfieldCheckEast1944Test() throws PWCGException 
+    {
+        PWCGContext.getInstance().changeContext(FrontMapIdentifier.EAST1944_MAP);
+
+        BoSAirfieldInEnemyTerritory airfieldFinder = new BoSAirfieldInEnemyTerritory();
+        airfieldFinder.findEnemy(FrontMapIdentifier.EAST1944_MAP, DateUtils.getDateYYYYMMDD("19440101"), DateUtils.getDateYYYYMMDD("19441101"));
+    }
+
 	@Test
 	public void airfieldCheckKubanEarlyTest() throws PWCGException 
 	{

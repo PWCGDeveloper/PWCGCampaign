@@ -257,6 +257,12 @@ public class IntelMapGUI extends MapGUI implements ActionListener
                 mapGrid.add(makeRadioButton(PWCGMap.KUBAN_MAP_NAME, MAP_DELIMITER + PWCGMap.KUBAN_MAP_NAME, mapButtonGroup));
             }
             
+            PWCGMap east1944Map = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.EAST1944_MAP);
+            if (east1944Map.getFrontDatesForMap().isMapActive(campaign.getDate()))
+            {
+                mapGrid.add(makeRadioButton(PWCGMap.EAST1944_MAP_NAME, MAP_DELIMITER + PWCGMap.EAST1944_MAP_NAME, mapButtonGroup));
+            }
+            
             PWCGMap bodenplatteMap = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.BODENPLATTE_MAP);
             if (bodenplatteMap.getFrontDatesForMap().isMapActive(campaign.getDate()))
             {

@@ -1,13 +1,10 @@
 package pwcg.aar.inmission.prelim;
 
-import java.util.Date;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
@@ -16,7 +13,6 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.DateUtils;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PwcgMissionDataEvaluatorTest
@@ -39,10 +35,6 @@ public class PwcgMissionDataEvaluatorTest
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        Date campaignDate = DateUtils.getDateYYYYMMDD("19420420");
-        Mockito.when(campaign.getDate()).thenReturn(campaignDate);
-        Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
-        Mockito.when(squadron.getSquadronId()).thenReturn(thisSquadronId);
     }
 
     @Test

@@ -56,8 +56,13 @@ public class CampaignGenerator
             squadronGenerator.createSquadron(generatorModel);
         }
         
-        SquadronMember player = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
-        campaign.getCampaignData().setReferencePlayerSerialNumber(player.getSerialNumber());
+        useCampaignPlayerToSetReferencePlayer();
+    }
+
+    private void useCampaignPlayerToSetReferencePlayer() throws PWCGException
+    {
+        SquadronMember referencePlayer = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
+        campaign.getCampaignData().setReferencePlayerSerialNumber(referencePlayer.getSerialNumber());
     }
 
     private void createPersonnelReplacements() throws PWCGException

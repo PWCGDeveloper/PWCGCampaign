@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
@@ -28,7 +28,6 @@ import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.DateUtils;
 import pwcg.product.fc.country.FCCountry;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -55,8 +54,6 @@ public class PlayerDeclarationResolutionFirmVictoryTest
     private LogPlane playerVictor = new LogPlane(1);
     private LogPlane aiVictor = new LogPlane(2);
     
-    private static String PLAYER_NAME = "Player Name";
-
     @Before
     public void setup() throws PWCGException
     {
@@ -65,8 +62,6 @@ public class PlayerDeclarationResolutionFirmVictoryTest
         firmVictories.clear();
         
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
-        Mockito.when(personnelManager.getAllActivePlayers()).thenReturn(playerMembers);   
-        Mockito.when(playerMembers.getSquadronMemberList()).thenReturn(players);   
 
         playerVictor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         playerVictor.setCountry(new FCCountry(Country.FRANCE));
@@ -85,22 +80,16 @@ public class PlayerDeclarationResolutionFirmVictoryTest
         Mockito.when(victorySorter.getFirmAirVictories()).thenReturn(firmVictories);
         Mockito.when(victorySorter.getFirmBalloonVictories()).thenReturn(emptyList);
         Mockito.when(victorySorter.getFuzzyAirVictories()).thenReturn(emptyList);
-        Mockito.when(victorySorter.getAllUnconfirmed()).thenReturn(emptyList);
-        Mockito.when(campaign.getCampaignData()).thenReturn(campaignData);
-        Mockito.when(campaign.getDate()).thenReturn(DateUtils.getBeginningOfWar());
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
-        Mockito.when(campaignData.getName()).thenReturn(PLAYER_NAME);
 
         Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER)).thenReturn(player);
         Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1)).thenReturn(ai);
 
         Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER)).thenReturn(playerVictor);
-        Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1)).thenReturn(aiVictor);
 
         Mockito.when(player.isPlayer()).thenReturn(true);
         Mockito.when(player.getCountry()).thenReturn(Country.FRANCE);
         Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        Mockito.when(ai.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
     }
     
     @Test

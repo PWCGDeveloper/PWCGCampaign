@@ -11,8 +11,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-  ],  
   "airfields": {
     "19411001": "Znamenka",
     "19411020": "Temkino",
@@ -27,7 +25,7 @@
     "19420721": "Anastasievskaya",
     "19420801": "Kletskaya",
     "19420906": "Ventsy",
-    "19421011": "Berezovsky",
+    "19421011": "Evlampievsky",
     "19421123": "Oblivskaya",
     "19421223": "Oblivskaya",
     "19430120": "Oblivskaya",
@@ -37,7 +35,19 @@
     "19430918": "Kerch-2",
     "19430927": "Bagerovo",
     "19431004": "Bagerovo",
-    "19431008": "Semisotka"
+    "19431008": "Semisotka",
+    "19440101": "Illarionovskiy",
+    "19440201": "Illarionovskiy",
+    "19440301": "Kachalinskaya",
+    "19440401": "Kalach",
+    "19440501": "Malogolubaya",
+    "19440601": "Zimovskoy",
+    "19440701": "Berezovsky",
+    "19440801": "Kletskaya",
+    "19440901": "Kletskaya",
+    "19441001": "Kletskaya",
+    "19441101": "Kletskaya",
+    "19441201": "Kletskaya"
   },
   "skins": [],
   "squadHistory": {
@@ -71,6 +81,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -80,6 +93,7 @@
       }
     ]
   },
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "SWAN"
   }

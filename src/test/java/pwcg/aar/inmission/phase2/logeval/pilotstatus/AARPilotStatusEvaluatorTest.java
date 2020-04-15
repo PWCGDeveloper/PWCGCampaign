@@ -7,10 +7,10 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase1.parse.event.AType3;
@@ -66,10 +66,10 @@ public class AARPilotStatusEvaluatorTest
         
         Mockito.when(aarPilotStatusDeadEvaluator.isCrewMemberDead()).thenReturn(false);
         Mockito.when(aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(
-        		Matchers.<FrontMapIdentifier>any(), 
-        		Matchers.<Coordinate>any(), 
-        		Matchers.<Side>any())).thenReturn(false);
-        Mockito.when(aarPilotStatusWoundedEvaluator.getCrewMemberWoundedLevel(Matchers.anyListOf(IAType2.class))).thenReturn(SquadronMemberStatus.STATUS_ACTIVE);
+        		ArgumentMatchers.<FrontMapIdentifier>any(), 
+        		ArgumentMatchers.<Coordinate>any(), 
+        		ArgumentMatchers.<Side>any())).thenReturn(false);
+        Mockito.when(aarPilotStatusWoundedEvaluator.getCrewMemberWoundedLevel(ArgumentMatchers.anyList())).thenReturn(SquadronMemberStatus.STATUS_ACTIVE);
 
         AARPilotStatusEvaluator aarPilotStatusEvaluator = makeEvaluator();
         
@@ -78,10 +78,7 @@ public class AARPilotStatusEvaluatorTest
         {
             LogPilot crewmanAfter = resultPlaneAfter.getLogPilot();
             assert (crewmanAfter.getStatus() == SquadronMemberStatus.STATUS_ACTIVE);
-        }
-        
-        Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
-        Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.PilotInjuryKey)).thenReturn(4);
+        }        
     }
 
     @Test
@@ -89,12 +86,12 @@ public class AARPilotStatusEvaluatorTest
     {
         testSetup();
         
-        Mockito.when(aarPilotStatusWoundedEvaluator.getCrewMemberWoundedLevel(Matchers.anyListOf(IAType2.class))).
+        Mockito.when(aarPilotStatusWoundedEvaluator.getCrewMemberWoundedLevel(ArgumentMatchers.anyList())).
             thenReturn(SquadronMemberStatus.STATUS_WOUNDED);
         Mockito.when(aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(
-        		Matchers.<FrontMapIdentifier>any(), 
-        		Matchers.<Coordinate>any(), 
-        		Matchers.<Side>any())).thenReturn(false);
+        		ArgumentMatchers.<FrontMapIdentifier>any(), 
+        		ArgumentMatchers.<Coordinate>any(), 
+        		ArgumentMatchers.<Side>any())).thenReturn(false);
         Mockito.when(aarPilotStatusDeadEvaluator.isCrewMemberDead()).thenReturn(false);
 
         AARPilotStatusEvaluator aarPilotStatusEvaluator = makeEvaluator();
@@ -110,12 +107,12 @@ public class AARPilotStatusEvaluatorTest
     {
         testSetup();
         
-        Mockito.when(aarPilotStatusWoundedEvaluator.getCrewMemberWoundedLevel(Matchers.anyListOf(IAType2.class))).
+        Mockito.when(aarPilotStatusWoundedEvaluator.getCrewMemberWoundedLevel(ArgumentMatchers.anyList())).
             thenReturn(SquadronMemberStatus.STATUS_WOUNDED);
         Mockito.when(aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(
-        		Matchers.<FrontMapIdentifier>any(), 
-        		Matchers.<Coordinate>any(), 
-        		Matchers.<Side>any())).thenReturn(true);
+        		ArgumentMatchers.<FrontMapIdentifier>any(), 
+        		ArgumentMatchers.<Coordinate>any(), 
+        		ArgumentMatchers.<Side>any())).thenReturn(true);
         Mockito.when(aarPilotStatusDeadEvaluator.isCrewMemberDead()).thenReturn(false);
 
         AARPilotStatusEvaluator aarPilotStatusEvaluator = makeEvaluator();
@@ -134,12 +131,12 @@ public class AARPilotStatusEvaluatorTest
     {
         testSetup();
         
-        Mockito.when(aarPilotStatusWoundedEvaluator.getCrewMemberWoundedLevel(Matchers.anyListOf(IAType2.class))).
+        Mockito.when(aarPilotStatusWoundedEvaluator.getCrewMemberWoundedLevel(ArgumentMatchers.anyList())).
             thenReturn(SquadronMemberStatus.STATUS_WOUNDED);
         Mockito.when(aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(
-        		Matchers.<FrontMapIdentifier>any(), 
-        		Matchers.<Coordinate>any(), 
-        		Matchers.<Side>any())).thenReturn(true);
+        		ArgumentMatchers.<FrontMapIdentifier>any(), 
+        		ArgumentMatchers.<Coordinate>any(), 
+        		ArgumentMatchers.<Side>any())).thenReturn(true);
         Mockito.when(aarPilotStatusDeadEvaluator.isCrewMemberDead()).thenReturn(true);
 
         AARPilotStatusEvaluator aarPilotStatusEvaluator = makeEvaluator();
@@ -152,8 +149,8 @@ public class AARPilotStatusEvaluatorTest
     private void testSetup() throws PWCGException
     {
         AType3 atype3 = new AType3("T:54877 AType:3 AID:-1 TID:35839 POS(112150.266,93.277,111696.758)");
-        Mockito.when(logEventData.getDestroyedEventForPlaneByBot(Matchers.<String>any())).thenReturn(atype3);
-        Mockito.when(logEventData.getDamageForBot(Matchers.<String>any())).thenReturn(new ArrayList<IAType2>());
+        Mockito.when(logEventData.getDestroyedEventForPlaneByBot(ArgumentMatchers.<String>any())).thenReturn(atype3);
+        Mockito.when(logEventData.getDamageForBot(ArgumentMatchers.<String>any())).thenReturn(new ArrayList<IAType2>());
 
         Map <String, LogPlane> planeAiEntities = makePlaneEntities();
 

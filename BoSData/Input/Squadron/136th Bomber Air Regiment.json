@@ -16,12 +16,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-    {
-      "conversionStartDate": "19420315",
-      "conversionCompleteDate": "19420331"
-    }
-  ],  
   "airfields": {
     "19411001": "Trekhsvyatskoye",
     "19411020": "Pavlovskoe",
@@ -34,9 +28,9 @@
     "19420624": "Buryakovskaya",
     "19420709": "Maykop-1",
     "19420721": "Adler",
-    "19420801": "Trudolyublye",
-    "19420906": "Leninsk",
-    "19421011": "Konstitutsiya",
+    "19420801": "Tinguta",
+    "19420906": "Verh. Ahtuba",
+    "19421011": "Rahinsky",
     "19421123": "Raygorod",
     "19421223": "Leninsk",
     "19430120": "Trudolyublye",
@@ -47,7 +41,18 @@
     "19430927": "Gelenjik-3",
     "19431004": "Abinskaya",
     "19431008": "Slavyanskaya",
-    "19440101": "Trudolyublye"
+    "19440101": "Kolh.im.Kaganovicha",
+    "19440201": "Kolh.im.Kaganovicha",
+    "19440301": "Kolh.im.Kaganovicha",
+    "19440401": "Kolh.im.Kaganovicha",
+    "19440501": "Kolh.im.Kaganovicha",
+    "19440601": "Seleznev",
+    "19440701": "Rynok",
+    "19440801": "Pitomnik",
+    "19440901": "Bol. Rossoshka",
+    "19441001": "Bol. Rossoshka",
+    "19441101": "Marinovka",
+    "19441201": "Kachalinskaya"
   },
   "skins": [],
   "squadHistory": {
@@ -103,6 +108,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -112,6 +120,12 @@
       }
     ]
   },
+  "conversionPeriods": [
+    {
+      "conversionStartDate": "19420315",
+      "conversionCompleteDate": "19420331"
+    }
+  ],
   "callsigns": {
     "19410801": "GANNET"
   }

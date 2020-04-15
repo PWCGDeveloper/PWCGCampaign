@@ -8,7 +8,7 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
@@ -53,8 +53,20 @@ public class SquadronAirfieldAssignmentTest
         validMoveDates.add("19430927");
         validMoveDates.add("19431004");
         validMoveDates.add("19431008");
-        validMoveDates.add("19440101");
         
+        validMoveDates.add("19440101");
+        validMoveDates.add("19440201");
+        validMoveDates.add("19440301");
+        validMoveDates.add("19440401");
+        validMoveDates.add("19440501");
+        validMoveDates.add("19440601");
+        validMoveDates.add("19440701");
+        validMoveDates.add("19440801");
+        validMoveDates.add("19440901");
+        validMoveDates.add("19441001");
+        validMoveDates.add("19441101");
+        validMoveDates.add("19441201");
+
         validMoveDates.add("19440901");
         validMoveDates.add("19441001");
         validMoveDates.add("19441101");

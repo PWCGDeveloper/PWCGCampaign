@@ -3,12 +3,12 @@ package pwcg.mission.briefing;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class) 
 public class BriefingAssignmentDataTest extends BriefingDataInitializerTest
 {
     @Before

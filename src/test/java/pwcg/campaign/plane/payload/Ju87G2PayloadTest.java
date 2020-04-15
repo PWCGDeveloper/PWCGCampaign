@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -17,7 +17,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
-import pwcg.mission.target.TargetCategory;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.product.bos.plane.BosPlaneAttributeMapping;
 
@@ -35,11 +34,6 @@ public class Ju87G2PayloadTest
 	public void setup() throws PWCGException
 	{
 		PWCGContext.setProduct(PWCGProduct.BOS);
-        
-        Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManagerCampaign);
-        Mockito.when(flight.getSquadron()).thenReturn(squadron);
-        Mockito.when(flight.getFlightInformation()).thenReturn(flightInformation);
-        Mockito.when(flight.getTargetDefinition()).thenReturn(targetDefinition);
 	}
 
 	@Test
@@ -65,27 +59,21 @@ public class Ju87G2PayloadTest
 	private void testPatrolPayload(IPlanePayload payloadGenerator) throws PWCGException
 	{
 		Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.PATROL);
-		Mockito.when(targetDefinition.getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_NONE);
 		runPayload(payloadGenerator);
 	}
 	
 	private void testInterceptPayload(IPlanePayload payloadGenerator) throws PWCGException
 	{
 		Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.INTERCEPT);
-		Mockito.when(targetDefinition.getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_NONE);
 		runPayload(payloadGenerator);
 	}
 	
 	private void testGroundAttackPayload(IPlanePayload payloadGenerator) throws PWCGException
 	{
 		Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.GROUND_ATTACK);
-		Mockito.when(targetDefinition.getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_SOFT);
 		runPayload(payloadGenerator);
-		Mockito.when(targetDefinition.getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_ARMORED);
 		runPayload(payloadGenerator);
-		Mockito.when(targetDefinition.getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_MEDIUM);
 		runPayload(payloadGenerator);
-		Mockito.when(targetDefinition.getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_HEAVY);
 		runPayload(payloadGenerator);
 	}
 

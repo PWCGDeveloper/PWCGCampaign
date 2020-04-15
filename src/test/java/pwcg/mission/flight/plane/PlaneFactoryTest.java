@@ -6,8 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -47,13 +46,11 @@ public class PlaneFactoryTest
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.BOMB, MissionProfile.DAY_TACTICAL_MISSION);
-        Mockito.when(flight.getFlightInformation()).thenReturn(flightInformation);
     }
 
     @Test
     public void testPlayerPlaneGeneration() throws PWCGException
     {
-        Mockito.when(flightInformation.isVirtual()).thenReturn(false);
 
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.KG53_PROFILE.getSquadronId());
 
@@ -89,7 +86,6 @@ public class PlaneFactoryTest
     @Test
     public void testAiPlaneGeneration() throws PWCGException
     {
-        Mockito.when(flightInformation.isVirtual()).thenReturn(true);
 
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(20111052);
 

@@ -354,10 +354,10 @@ public class EditorMapPanel extends MapPanelBase
         repaintMap();
     }
 
-    public void mirrorAlliedFrontLinesForAxis() throws PWCGException
+    public void mirrorFrontLines() throws PWCGException
     {
         FrontLineCreator frontLineCreator = new FrontLineCreator();
-        List<FrontLinePoint> oppositeFrontLines = frontLineCreator.createAxisLines(frontLineEditor.getUserCreatedFrontLines());
+        List<FrontLinePoint> oppositeFrontLines = frontLineCreator.createAlliedLinesEastFront(frontLineEditor.getUserCreatedFrontLines());
         frontLineEditor.addAdditionalFrontLinePoints(oppositeFrontLines);
         repaintMap();
     }

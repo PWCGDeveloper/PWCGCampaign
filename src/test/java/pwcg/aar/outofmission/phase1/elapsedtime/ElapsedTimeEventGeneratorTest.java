@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.CampaignUpdateData;
@@ -47,9 +47,6 @@ public class ElapsedTimeEventGeneratorTest
         campaignDate = DateUtils.getDateYYYYMMDD("19420901");
         Mockito.when(campaign.getDate()).thenReturn(campaignDate);
         Mockito.when(squad.determineCurrentAirfieldAnyMap(campaignDate)).thenReturn(currentAirfield);
-        Mockito.when(squad.determineCurrentAirfieldAnyMap(newDate)).thenReturn(newAirfield);
-
-        Mockito.when(aarContext.getCampaignUpdateData()).thenReturn(campaignUpdateData);
        
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
         Mockito.when(personnelManager.getAllActivePlayers()).thenReturn(playerMembers);
@@ -100,11 +97,6 @@ public class ElapsedTimeEventGeneratorTest
         newDate = DateUtils.getDateYYYYMMDD("19450508");
         Mockito.when(aarContext.getNewDate()).thenReturn(newDate);
 
-        Mockito.when(campaign.getDate()).thenReturn(campaignDate);
-        Mockito.when(squad.determineCurrentAirfieldName(campaignDate)).thenReturn("Tuzov");
-        Mockito.when(squad.determineCurrentAirfieldName(newDate)).thenReturn("Tuzov");
-        Mockito.when(squad.determineCurrentAirfieldAnyMap(campaignDate)).thenReturn(currentAirfield);
-        Mockito.when(squad.determineCurrentAirfieldAnyMap(newDate)).thenReturn(newAirfield);
 
         ElapsedTimeEventGenerator elapsedTimeEventGenerator = new ElapsedTimeEventGenerator(campaign, aarContext);
         ElapsedTimeEvents elapsedTimeEvents = elapsedTimeEventGenerator.createElapsedTimeEvents();

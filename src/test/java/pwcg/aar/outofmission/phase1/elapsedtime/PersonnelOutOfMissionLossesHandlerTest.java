@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.AARPersonnelLosses;
@@ -43,7 +43,6 @@ public class PersonnelOutOfMissionLossesHandlerTest
         PWCGContext.setProduct(PWCGProduct.FC);
         campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.ESC_103_PROFILE);
         
-        Mockito.when(aarContext.getCampaignUpdateData()).thenReturn(campaignUpdateData);
         Mockito.when(aarContext.getNewDate()).thenReturn(DateUtils.getDateYYYYMMDD("19171001"));
         
         SquadronMembers possibleDeadGuys = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());

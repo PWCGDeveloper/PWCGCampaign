@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase2.logeval.AARDamageStatusEvaluator;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogAIEntity;
@@ -53,7 +53,6 @@ public class AARFuzzyByPlayerDamagedTest
     public void testVictimNotFoundInVictory () throws PWCGException
     {
         Mockito.when(victoryResult.getVictim()).thenReturn(null);
-        Mockito.when(aarDamageStatusEvaluator.getVictorByDamage(Mockito.anyString())).thenReturn(playerPlane);
         AARFuzzyByAccumulatedDamaged fuzzyByPlayerDamaged = new AARFuzzyByAccumulatedDamaged(aarDamageStatusEvaluator);
         LogAIEntity victor = fuzzyByPlayerDamaged.getVictorBasedOnDamage(victoryResult);
         assert(victor == null);

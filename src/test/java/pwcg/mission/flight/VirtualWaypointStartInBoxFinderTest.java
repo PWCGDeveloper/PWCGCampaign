@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -71,14 +71,10 @@ public class VirtualWaypointStartInBoxFinderTest
     {
         Coordinate coordinate1 = new Coordinate(99, 0, 101);
         Coordinate coordinate2 = new Coordinate(101, 0, 99);
-        Coordinate coordinate3 = new Coordinate(199, 0, 201);
-        Coordinate coordinate4 = new Coordinate(201, 0, 199);
         Coordinate coordinate5 = new Coordinate(199, 0, 199);
         
         Mockito.when(vwpCoordinate1.getPosition()).thenReturn(coordinate1);        
         Mockito.when(vwpCoordinate2.getPosition()).thenReturn(coordinate2);        
-        Mockito.when(vwpCoordinate3.getPosition()).thenReturn(coordinate3);        
-        Mockito.when(vwpCoordinate4.getPosition()).thenReturn(coordinate4);        
         Mockito.when(vwpCoordinate5.getPosition()).thenReturn(coordinate5);  
         
         plotCoordinates.add(vwpCoordinate1);

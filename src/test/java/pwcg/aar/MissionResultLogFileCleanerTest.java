@@ -6,21 +6,20 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
 
 import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManager;
 import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DirectoryReader;
 import pwcg.core.utils.FileUtils;
 
-@RunWith(PowerMockRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 @PrepareForTest({ConfigManagerGlobal.class, FileUtils.class})
 public class MissionResultLogFileCleanerTest
 {
@@ -55,7 +54,7 @@ public class MissionResultLogFileCleanerTest
     public void testCleanMissionLogs() throws PWCGException
     {
         long oneDayAgoPlus = System.currentTimeMillis() - 86500000;
-        Mockito.when(FileUtils.ageOfFilesInMillis(Matchers.<String>any())).thenReturn(Long.valueOf(oneDayAgoPlus));
+        Mockito.when(FileUtils.ageOfFilesInMillis(ArgumentMatchers.<String>any())).thenReturn(Long.valueOf(oneDayAgoPlus));
         Mockito.when(directoryReader.getFiles()).thenReturn(filenames);
         Mockito.when(configManagerGlobal.getIntConfigParam(ConfigItemKeys.DeleteAllMissionLogsKey)).thenReturn(1);
 
@@ -72,7 +71,7 @@ public class MissionResultLogFileCleanerTest
     public void testCleanMissionLogsFilesAreNew() throws PWCGException
     {
         long oneDayAgoPlus = System.currentTimeMillis() - 86300000;
-        Mockito.when(FileUtils.ageOfFilesInMillis(Matchers.<String>any())).thenReturn(Long.valueOf(oneDayAgoPlus));
+        Mockito.when(FileUtils.ageOfFilesInMillis(ArgumentMatchers.<String>any())).thenReturn(Long.valueOf(oneDayAgoPlus));
         Mockito.when(directoryReader.getFiles()).thenReturn(filenames);
     
         Mockito.when(configManagerGlobal.getIntConfigParam(ConfigItemKeys.DeleteAllMissionLogsKey)).thenReturn(1);
@@ -99,9 +98,8 @@ public class MissionResultLogFileCleanerTest
         filenames.add("missionReport(2016-09-11-22-51-08)[3].txt");
         filenames.add("missionReport(2016-09-11-22-51-08)[4].txt");
 
-        FileUtils mock = PowerMockito.mock(FileUtils.class);
         long oneDayAgoPlus = System.currentTimeMillis() - 86500000;
-        Mockito.when(FileUtils.ageOfFilesInMillis(Matchers.<String>any())).thenReturn(Long.valueOf(oneDayAgoPlus));
+        Mockito.when(FileUtils.ageOfFilesInMillis(ArgumentMatchers.<String>any())).thenReturn(Long.valueOf(oneDayAgoPlus));
         Mockito.when(directoryReader.getFiles()).thenReturn(filenames);
 
         Mockito.when(configManagerGlobal.getIntConfigParam(ConfigItemKeys.DeleteAllMissionLogsKey)).thenReturn(0);
@@ -121,7 +119,7 @@ public class MissionResultLogFileCleanerTest
         List<String> filenames = new ArrayList<String>();
 
         long oneDayAgoPlus = System.currentTimeMillis() - 86500000;
-        Mockito.when(FileUtils.ageOfFilesInMillis(Matchers.<String>any())).thenReturn(Long.valueOf(oneDayAgoPlus));
+        Mockito.when(FileUtils.ageOfFilesInMillis(ArgumentMatchers.<String>any())).thenReturn(Long.valueOf(oneDayAgoPlus));
         Mockito.when(directoryReader.getFiles()).thenReturn(filenames);
 
         Mockito.when(configManagerGlobal.getIntConfigParam(ConfigItemKeys.DeleteAllMissionLogsKey)).thenReturn(1);

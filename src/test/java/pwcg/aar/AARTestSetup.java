@@ -3,7 +3,7 @@ package pwcg.aar;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
@@ -162,7 +162,7 @@ public abstract class AARTestSetup
     {
         Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         Mockito.when(player.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        Mockito.when(player.determineService(Matchers.any())).thenReturn(frenchAirForce);
+        Mockito.when(player.determineService(ArgumentMatchers.any())).thenReturn(frenchAirForce);
         Mockito.when(player.getCountry()).thenReturn(Country.FRANCE);
         Mockito.when(player.determineSquadron()).thenReturn(squadronEsc103);
 
@@ -182,10 +182,10 @@ public abstract class AARTestSetup
         Mockito.when(pilot2.getCountry()).thenReturn(Country.FRANCE);
         Mockito.when(pilot3.getCountry()).thenReturn(Country.FRANCE);
         
-        Mockito.when(enemyPilot1.determineService(Matchers.any())).thenReturn(germanAirForce);
-        Mockito.when(pilot1.determineService(Matchers.any())).thenReturn(frenchAirForce);
-        Mockito.when(pilot2.determineService(Matchers.any())).thenReturn(frenchAirForce);
-        Mockito.when(pilot3.determineService(Matchers.any())).thenReturn(frenchAirForce);
+        Mockito.when(enemyPilot1.determineService(ArgumentMatchers.any())).thenReturn(germanAirForce);
+        Mockito.when(pilot1.determineService(ArgumentMatchers.any())).thenReturn(frenchAirForce);
+        Mockito.when(pilot2.determineService(ArgumentMatchers.any())).thenReturn(frenchAirForce);
+        Mockito.when(pilot3.determineService(ArgumentMatchers.any())).thenReturn(frenchAirForce);
 
         
         Mockito.when(enemyPilot1.determineSquadron()).thenReturn(jasta11);

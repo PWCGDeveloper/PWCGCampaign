@@ -7,10 +7,10 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
@@ -37,8 +37,6 @@ import pwcg.testutils.SquadronTestProfile;
 @RunWith(MockitoJUnitRunner.class)
 public class AiDeclarationResolutionFuzzyTest
 {
-    private static String PLAYER_NAME = "Player Name";
-
     @Mock private AARMissionEvaluationData evaluationData;
     @Mock private Campaign campaign;
     @Mock private CampaignData campaignData;
@@ -94,24 +92,15 @@ public class AiDeclarationResolutionFuzzyTest
         players = new ArrayList<>();
         players.add(player);
 
-        Mockito.when(campaign.getCampaignData()).thenReturn(campaignData);
-        Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
-        Mockito.when(campaignData.getName()).thenReturn(PLAYER_NAME);
-
         Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        Mockito.when(player.determineCountry(Matchers.<Date>any())).thenReturn(CountryFactory.makeCountryByCountry(Country.GERMANY));
-        Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER)).thenReturn(playerVictor);
-        Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER)).thenReturn(player);
 
         Mockito.when(aiSquadMember1.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
-        Mockito.when(aiSquadMember1.determineCountry(Matchers.<Date>any())).thenReturn(CountryFactory.makeCountryByCountry(Country.GERMANY));
+        Mockito.when(aiSquadMember1.determineCountry(ArgumentMatchers.<Date>any())).thenReturn(CountryFactory.makeCountryByCountry(Country.GERMANY));
         Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1)).thenReturn(aiVictorOne);
-        Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1)).thenReturn(aiSquadMember1);
 
         Mockito.when(aiSquadMember2.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER + 2);
-        Mockito.when(aiSquadMember2.determineCountry(Matchers.<Date>any())).thenReturn(CountryFactory.makeCountryByCountry(Country.GERMANY));
+        Mockito.when(aiSquadMember2.determineCountry(ArgumentMatchers.<Date>any())).thenReturn(CountryFactory.makeCountryByCountry(Country.GERMANY));
         Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 2)).thenReturn(aiVictorTwo);
-        Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER + 2)).thenReturn(aiSquadMember2);
         
         List<Squadron> playerSquadronsInMission = new ArrayList<>();
         playerSquadronsInMission.add(squadron);
@@ -121,7 +110,6 @@ public class AiDeclarationResolutionFuzzyTest
         playerVictor.setSquadronId(squadronId);
         aiVictorOne.setSquadronId(squadronId);
         aiVictorTwo.setSquadronId(squadronId);
-        Mockito.when(player.getSquadronId()).thenReturn(squadronId);
         Mockito.when(aiSquadMember1.getSquadronId()).thenReturn(squadronId);
         Mockito.when(aiSquadMember2.getSquadronId()).thenReturn(squadronId);
         Mockito.when(squadron.getSquadronId()).thenReturn(squadronId);
@@ -203,8 +191,6 @@ public class AiDeclarationResolutionFuzzyTest
         Mockito.when(aiSquadMember1.getSquadronId()).thenReturn(501004);
         Mockito.when(aiSquadMember2.getSquadronId()).thenReturn(501004);
 
-        Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1)).thenReturn(null);
-
         AiDeclarationResolver declarationResolution = new AiDeclarationResolver(campaign, aarContext);
         ConfirmedVictories confirmedAiVictories = declarationResolution.determineAiAirResults(victorySorter);
         
@@ -218,14 +204,11 @@ public class AiDeclarationResolutionFuzzyTest
         campaignMembersInmission.addToSquadronMemberCollection(aiSquadMember1);
         campaignMembersInmission.addToSquadronMemberCollection(aiSquadMember2);
 
-        Mockito.when(player.determineCountry(Matchers.<Date>any())).thenReturn(CountryFactory.makeCountryByCountry(Country.RUSSIA));
-        Mockito.when(aiSquadMember1.determineCountry(Matchers.<Date>any())).thenReturn(CountryFactory.makeCountryByCountry(Country.RUSSIA));
-        Mockito.when(aiSquadMember2.determineCountry(Matchers.<Date>any())).thenReturn(CountryFactory.makeCountryByCountry(Country.RUSSIA));
+        Mockito.when(aiSquadMember1.determineCountry(ArgumentMatchers.<Date>any())).thenReturn(CountryFactory.makeCountryByCountry(Country.RUSSIA));
+        Mockito.when(aiSquadMember2.determineCountry(ArgumentMatchers.<Date>any())).thenReturn(CountryFactory.makeCountryByCountry(Country.RUSSIA));
 
         aiVictorOne.setCountry(CountryFactory.makeCountryByCountry(Country.RUSSIA));
         aiVictorTwo.setCountry(CountryFactory.makeCountryByCountry(Country.RUSSIA));
-
-        Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1)).thenReturn(null);
 
         AiDeclarationResolver declarationResolution = new AiDeclarationResolver(campaign, aarContext);
         ConfirmedVictories confirmedAiVictories = declarationResolution.determineAiAirResults(victorySorter);

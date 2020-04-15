@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.AARTestSetup;
 import pwcg.aar.tabulate.debrief.MedalPanelEventTabulator;
@@ -23,7 +23,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.product.fc.medals.FrenchMedalManager;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class) 
 public class MedalPanelEventTabulatorTest extends AARTestSetup
 {
     @Mock

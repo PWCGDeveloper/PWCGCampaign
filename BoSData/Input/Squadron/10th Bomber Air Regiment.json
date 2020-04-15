@@ -11,16 +11,13 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-  ],  
   "airfields": {
-    "19420801": "Raygorod",
-    "19420906": "Nizhniy Balykley",
+    "19420801": "Mal. Chapurniki",
+    "19420906": "Bol. Ivanovka",
     "19421011": "Nizhniy Balykley",
     "19421123": "Nizhniy Balykley",
     "19421223": "Bol. Ivanovka",
     "19430120": "Bol. Ivanovka",
-    
     "19430301": "Lazarevskoe",
     "19430330": "Agoy",
     "19430418": "Agoy",
@@ -28,7 +25,18 @@
     "19430927": "Holmskaya",
     "19431004": "Abinskaya",
     "19431008": "Krymskaya",
-    "19440101": "Raygorod"
+    "19440101": "Solodovka",
+    "19440201": "Leninsk",
+    "19440301": "Raygorod",
+    "19440401": "Raygorod",
+    "19440501": "Svetly Yar",
+    "19440601": "Bol. Chapurniki",
+    "19440701": "Trudolyublye",
+    "19440801": "Beketovka",
+    "19440901": "Zety",
+    "19441001": "Pitomnik",
+    "19441101": "Aksay",
+    "19441201": "Aksay"
   },
   "skins": [
     {
@@ -99,6 +107,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -108,6 +119,7 @@
       }
     ]
   },
+  "conversionPeriods": [],
   "callsigns": {
     "19420101": "STORK"
   }

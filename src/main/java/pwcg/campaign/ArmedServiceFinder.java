@@ -18,7 +18,6 @@ public class ArmedServiceFinder
     public static  List<ArmedService> getArmedServicesAllSides() throws PWCGException
     {
         List<ArmedService> servicesForMap = new ArrayList<>();
-        PWCGMap map = PWCGContext.getInstance().getCurrentMap();
         List<ArmedService> allServices = ArmedServiceFactory.createServiceManager().getAllArmedServices();
         for (ArmedService armedService : allServices)
         {

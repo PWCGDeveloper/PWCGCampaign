@@ -7,8 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.ExtendedTimeReason;
@@ -20,7 +19,6 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneStatus;
-import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.SquadronMembers;
@@ -136,9 +134,6 @@ public class AARExtendedTimeHandlerTest
     @Test
     public void testTimePassedForLeave () throws PWCGException
     {
-        Mockito.when(playerLogPilot.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        Mockito.when(playerLogPilot.getStatus()).thenReturn(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
-            
         Date startCampaignDate = campaign.getDate();
         AARExtendedTimeHandler extendedTimeHandler = new AARExtendedTimeHandler(campaign, aarContext);
         extendedTimeHandler.timePassedForLeave(21);
@@ -154,9 +149,6 @@ public class AARExtendedTimeHandlerTest
     @Test
     public void testTimePassedForTransfer () throws PWCGException
     {
-        Mockito.when(playerLogPilot.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        Mockito.when(playerLogPilot.getStatus()).thenReturn(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
-            
         Date startCampaignDate = campaign.getDate();
         AARExtendedTimeHandler extendedTimeHandler = new AARExtendedTimeHandler(campaign, aarContext);
         extendedTimeHandler.timePassedForTransfer(10);

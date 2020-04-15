@@ -3,7 +3,7 @@ package pwcg.mission;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -43,7 +43,7 @@ public class MissionBorderBuilderTest
     @Test
     public void singlePlayerMissionBoxTest() throws PWCGException
     {
-        SquadronMember player = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
+        SquadronMember player = campaign.findReferencePlayer();
         participatingPlayers.addSquadronMember(player);
         
         for (int i = 0; i < 10; ++i)
@@ -81,7 +81,7 @@ public class MissionBorderBuilderTest
     @Test
     public void scrambleMissionBoxTest() throws PWCGException
     {
-        SquadronMember player = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
+        SquadronMember player = campaign.findReferencePlayer();
         participatingPlayers.addSquadronMember(player);
         
         for (int i = 0; i < 10; ++i)
@@ -100,7 +100,7 @@ public class MissionBorderBuilderTest
     @Test
     public void antiShippingMissionBoxTest() throws PWCGException
     {
-        SquadronMember player = campaignAntiShipping.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
+        SquadronMember player = campaign.findReferencePlayer();
         participatingPlayers.addSquadronMember(player);
         
         for (int i = 0; i < 10; ++i)

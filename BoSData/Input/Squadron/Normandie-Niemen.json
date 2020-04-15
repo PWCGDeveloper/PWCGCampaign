@@ -11,8 +11,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-  ],  
   "airfields": {
     "19420801": "Illarionovskiy",
     "19420906": "Davydovskiy",
@@ -27,13 +25,22 @@
     "19430927": "Anapa",
     "19431004": "Anapa",
     "19431008": "Anapa",
-    "19440101": "Illarionovskiy"
+    "19440101": "Srednyaya Ahtuba",
+    "19440201": "Grishin",
+    "19440301": "Grishin",
+    "19440401": "Tinguta",
+    "19440501": "Tinguta",
+    "19440601": "Zety",
+    "19440701": "Zety",
+    "19440801": "Zety",
+    "19440901": "Grachi",
+    "19441001": "Golubinskiy",
+    "19441101": "Grachi",
+    "19441201": "Zimovskoy"
   },
-  "skins": [
-  ],
+  "skins": [],
   "squadHistory": {
-    "squadHistoryEntries": [
-    ]
+    "squadHistoryEntries": []
   },
   "serviceId": 10104,
   "squadronRoles": {
@@ -54,6 +61,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -63,6 +73,7 @@
       }
     ]
   },
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "SWIFT"
   }

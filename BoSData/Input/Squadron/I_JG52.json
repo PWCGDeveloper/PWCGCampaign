@@ -1,102 +1,116 @@
 {
-	"country": "GERMANY",
-	"squadronId": 20111052,
-	"name": "I./JG52",
-	"fileName": "I_JG52.json",
-	"skill": 85,
-	"planeAssignments": [
-		{
-			"archType": "bf109",
-			"squadronIntroduction": "19411001",
-			"squadronWithdrawal": "19450601"
-		}
-	],
-	"airfields": {
-		"19411001": "Dugino",
-		"19411020": "Sychevka",
-		"19411110": "Ryabinki",
-		"19411120": "Lotoshino",
-		"19411215": "Maloyaroslavetc",
-		"19420110": "Novoye Selo",
-		"19420301": "Tormosin",
-		"19420601": "Dneprovskaya",
-		"19420624": "Anapa",
-		"19420709": "Severskaya",
-		"19420721": "Krasnodar",
-		"19420801": "Evlampievsky",
-		"19420906": "Grachi",
-		"19421011": "Zety",
-		"19421123": "Lipovsky",
-		"19421223": "Lipovsky",
-		"19430120": "Kamchie",
-		"19430301": "Holmskaya",
-		"19430330": "Slavyanskaya",
-		"19430418": "Krymskaya",
-		"19430918": "Zaporojskaya",
-		"19430927": "Taman",
-		"19431004": "Taman",
-		"19431008": "Taman",
-		"19440901": "Evlampievsky"
-	},
-	"skins": [
-		{
-			"skinName": "I_JG52",
-			"planeType": "bf109f4",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 20111052,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		},
-		{
-			"skinName": "I_JG52",
-			"planeType": "bf109g2",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 20111052,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 20101,
-	"squadronRoles": {
-		"squadronRolePeriods": [
-			{
-				"startDate": "19400101",
-				"endDate": "19450601",
-				"weightedRoles": [
-					{
-						"role": "ROLE_STRATEGIC_INTERCEPT",
-						"weight": 5
-					},
-					{
-						"role": "ROLE_FIGHTER",
-						"weight": 90
-					},
-					{
-						"role": "ROLE_ATTACK",
-						"weight": 10
-					}
-				]
-			}
-		]
-	},
-	"nightMissionOdds": {
-		"nightMissionPeriods": [
-			{
-				"startDate": "19440901",
-				"endDate": "19450601",
-				"nightMissionOdds": 3
-			}
-		]
-	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19411001": "ROOK"
-	}
+  "country": "GERMANY",
+  "squadronId": 20111052,
+  "name": "I./JG52",
+  "fileName": "I_JG52.json",
+  "skill": 85,
+  "planeAssignments": [
+    {
+      "archType": "bf109",
+      "squadronIntroduction": "19411001",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "airfields": {
+    "19411001": "Dugino",
+    "19411020": "Sychevka",
+    "19411110": "Ryabinki",
+    "19411120": "Lotoshino",
+    "19411215": "Maloyaroslavetc",
+    "19420110": "Novoye Selo",
+    "19420301": "Tormosin",
+    "19420601": "Dneprovskaya",
+    "19420624": "Anapa",
+    "19420709": "Severskaya",
+    "19420721": "Krasnodar",
+    "19420801": "Evlampievsky",
+    "19420906": "Zimovskoy",
+    "19421011": "Tinguta",
+    "19421123": "Lipovsky",
+    "19421223": "Lipovsky",
+    "19430120": "Kamchie",
+    "19430301": "Holmskaya",
+    "19430330": "Slavyanskaya",
+    "19430418": "Krymskaya",
+    "19430918": "Zaporojskaya",
+    "19430927": "Taman",
+    "19431004": "Taman",
+    "19431008": "Taman",
+    "19440101": "Pitomnik",
+    "19440201": "Pitomnik",
+    "19440301": "Aksay",
+    "19440401": "Bol. Rossoshka",
+    "19440501": "Bol. Rossoshka",
+    "19440601": "Marinovka",
+    "19440701": "Kumovka",
+    "19440801": "Tuzov",
+    "19440901": "Surovikino",
+    "19441001": "Kamchie",
+    "19441101": "Surovikino",
+    "19441201": "Surovikino"
+  },
+  "skins": [
+    {
+      "skinName": "I_JG52",
+      "planeType": "bf109f4",
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 20111052,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "I_JG52",
+      "planeType": "bf109g2",
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 20111052,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": []
+  },
+  "serviceId": 20101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_STRATEGIC_INTERCEPT",
+            "weight": 5
+          },
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 90
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 10
+          }
+        ]
+      }
+    ]
+  },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "nightMissionOdds": 3
+      }
+    ]
+  },
+  "conversionPeriods": [],
+  "callsigns": {
+    "19411001": "ROOK"
+  }
 }

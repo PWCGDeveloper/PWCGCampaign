@@ -5,10 +5,10 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase1.parse.event.IAType12;
@@ -81,9 +81,9 @@ public class AARVehicleBuilderTest
                     int numFrenchTrucks, int numGermanTrucks) throws PWCGException
     {
         Mockito.when(campaign.getPersonnelManager()).thenReturn(campaignPersonnelManager);
-        Mockito.when(campaignPersonnelManager.getAnyCampaignMember(Matchers.<Integer>any())).thenReturn(squadronMember);        
-        Mockito.when(campaignPersonnelManager.getSquadronPersonnel(Matchers.<Integer>any())).thenReturn(squadronPersonnel);
-        Mockito.when(squadronPersonnel.getSquadronMember(Matchers.<Integer>any())).thenReturn(squadronMember);
+        Mockito.when(campaignPersonnelManager.getAnyCampaignMember(ArgumentMatchers.<Integer>any())).thenReturn(squadronMember);        
+        Mockito.when(campaignPersonnelManager.getSquadronPersonnel(ArgumentMatchers.<Integer>any())).thenReturn(squadronPersonnel);
+        Mockito.when(squadronPersonnel.getSquadronMember(ArgumentMatchers.<Integer>any())).thenReturn(squadronMember);
         
         Mockito.when(squadronMember.isPlayer()).thenReturn(false);
 

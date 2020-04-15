@@ -68,12 +68,7 @@ public abstract class ImagePanel extends JPanel
 		}
 		return dimensions;
 	}
-	
-	
-	/**
-	 * @param newPanel
-	 * @param panelSection
-	 */
+
 	public void repaintPanel(JPanel newPanel, String panelSection)
 	{
 	    this.add (newPanel, panelSection);	    

@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.AARTestSetup;
 import pwcg.aar.tabulate.debrief.NewsPanelEventTabulator;
@@ -19,7 +19,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.MissionEntityBuilder;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class) 
 public class AARNewsPanelEventTabulatorTest extends AARTestSetup
 {
     private Map<Integer, SquadronMember> squadronMembersKilled = new HashMap<>();

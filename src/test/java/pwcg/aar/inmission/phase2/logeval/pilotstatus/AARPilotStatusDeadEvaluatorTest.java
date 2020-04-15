@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase1.parse.AARLogParser;
 import pwcg.aar.inmission.phase1.parse.IAARLogParser;
@@ -60,13 +60,6 @@ public class AARPilotStatusDeadEvaluatorTest
         Coordinate downAt = new Coordinate();
         downAt.setXPos(100.0);
         downAt.setZPos(100.0);
-        
-        Mockito.when(destroyedEventForPlane.getVictor()).thenReturn("Joe Blow");
-
-        Coordinate fieldAt = new Coordinate();
-        downAt.setXPos(100.0);
-        downAt.setZPos(100.0);
-        Mockito.when(squadron.determineCurrentPosition(Mockito.any())).thenReturn(fieldAt);
 
         int oddsOfDeathDueToAiStupidity = 30;
         
@@ -88,14 +81,8 @@ public class AARPilotStatusDeadEvaluatorTest
         downAt.setXPos(100.0);
         downAt.setZPos(100.0);
         
-        Mockito.when(destroyedEventForPlane.getVictor()).thenReturn("Joe Blow");
         Mockito.when(resultCrewmember.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         deadCrewMembers.add(resultCrewmember);
-
-        Coordinate fieldAt = new Coordinate();
-        downAt.setXPos(100.0);
-        downAt.setZPos(100.0);
-        Mockito.when(squadron.determineCurrentPosition(Mockito.any())).thenReturn(fieldAt);
 
         int oddsOfDeathDueToAiStupidity = 30;
         
@@ -117,14 +104,8 @@ public class AARPilotStatusDeadEvaluatorTest
         downAt.setXPos(100.0);
         downAt.setZPos(100.0);
         
-        Mockito.when(destroyedEventForPlane.getVictor()).thenReturn(AARLogParser.UNKNOWN_MISSION_LOG_ENTITY);
         Mockito.when(resultCrewmember.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         deadCrewMembers.add(resultCrewmember);
-
-        Coordinate fieldAt = new Coordinate();
-        downAt.setXPos(100.0);
-        downAt.setZPos(100.0);
-        Mockito.when(squadron.determineCurrentPosition(Mockito.any())).thenReturn(fieldAt);
 
         int oddsOfDeathDueToAiStupidity = 30;
         
@@ -148,11 +129,6 @@ public class AARPilotStatusDeadEvaluatorTest
         
         Mockito.when(destroyedEventForPlane.getVictor()).thenReturn("Joe Blow");
         deadCrewMembers.add(resultCrewmember);
-
-        Coordinate fieldAt = new Coordinate();
-        downAt.setXPos(100.0);
-        downAt.setZPos(100.0);
-        Mockito.when(squadron.determineCurrentPosition(Mockito.any())).thenReturn(fieldAt);
 
         int oddsOfDeathDueToAiStupidity = 30;
         
@@ -202,12 +178,8 @@ public class AARPilotStatusDeadEvaluatorTest
         downAt.setXPos(100.0);
         downAt.setZPos(100.0);
         
-        Mockito.when(destroyedEventForPlane.getVictor()).thenReturn("Joe Blow");
-
-        Coordinate fieldAt = new Coordinate();
         downAt.setXPos(100.0);
         downAt.setZPos(100.0);
-        Mockito.when(squadron.determineCurrentPosition(Mockito.any())).thenReturn(fieldAt);
 
         int oddsOfDeathDueToAiStupidity = 30;
         
@@ -231,11 +203,6 @@ public class AARPilotStatusDeadEvaluatorTest
         
         Mockito.when(destroyedEventForPlane.getVictor()).thenReturn("Joe Blow");
         deadCrewMembers.add(resultCrewmember);
-
-        Coordinate fieldAt = new Coordinate();
-        downAt.setXPos(100.0);
-        downAt.setZPos(100.0);
-        Mockito.when(squadron.determineCurrentPosition(Mockito.any())).thenReturn(fieldAt);
 
         int oddsOfDeathDueToAiStupidity = 30;
         
