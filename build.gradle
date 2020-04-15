@@ -25,6 +25,7 @@ dependencies {
 	testCompile group: 'net.bytebuddy', name: 'byte-buddy-agent', version: '1.10.9'
 	testCompile group: 'org.objenesis', name: 'objenesis', version: '3.1'
 	testCompile group: 'org.mockito', name: 'mockito-core', version: '3.3.3'
+	testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: '2.0.7'
 	testCompile group: 'org.powermock', name: 'powermock-api-mockito2', version: '2.0.7'
 	testCompile group: 'org.powermock', name: 'powermock-api-support', version: '2.0.7'
 	testCompile group: 'org.powermock', name: 'powermock-reflect', version: '2.0.7'

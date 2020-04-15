@@ -56,7 +56,6 @@ public class AARDestroyedStatusEvaluatorTest
         logParserDestroyedEvents.add(logDestroyedEvent3);
         Mockito.when(logEventData.getDestroyedEvents()).thenReturn(logParserDestroyedEvents);
 
-        Mockito.when(aarVehicleBuilder.getVehicle("99")).thenReturn(DestroyedVictor1);
         Mockito.when(aarVehicleBuilder.getVehicle("100")).thenReturn(DestroyedVictim1);
         Mockito.when(aarVehicleBuilder.getVehicle("101")).thenReturn(DestroyedVictim1);
         Mockito.when(aarVehicleBuilder.getVehicle("102")).thenReturn(DestroyedVictim1);
@@ -91,7 +90,6 @@ public class AARDestroyedStatusEvaluatorTest
         logParserDestroyedEvents.add(logDestroyedEvent3);
         Mockito.when(logEventData.getDestroyedEvents()).thenReturn(logParserDestroyedEvents);
 
-        Mockito.when(aarVehicleBuilder.getVehicle("99")).thenReturn(DestroyedVictor1);
         Mockito.when(aarVehicleBuilder.getVehicle("100")).thenReturn(DestroyedVictim1);
         Mockito.when(aarVehicleBuilder.getVehicle("101")).thenReturn(DestroyedVictim1);
         Mockito.when(aarVehicleBuilder.getVehicle("102")).thenReturn(null);
@@ -128,7 +126,6 @@ public class AARDestroyedStatusEvaluatorTest
         logParserDestroyedEvents.add(logDestroyedEvent3);
         Mockito.when(logEventData.getDestroyedEvents()).thenReturn(logParserDestroyedEvents);
 
-        Mockito.when(aarVehicleBuilder.getVehicle("99")).thenReturn(DestroyedVictor1);
         Mockito.when(aarVehicleBuilder.getVehicle("100")).thenReturn(DestroyedVictim1);
         Mockito.when(aarVehicleBuilder.getVehicle("101")).thenReturn(DestroyedVictim1);
         Mockito.when(aarVehicleBuilder.getVehicle("102")).thenReturn(DestroyedVictim1);

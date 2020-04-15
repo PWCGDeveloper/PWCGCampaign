@@ -9,9 +9,9 @@ import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerGlobal;
@@ -19,7 +19,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DirectoryReader;
 import pwcg.core.utils.FileUtils;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(PowerMockRunner.class)
 @PrepareForTest({ConfigManagerGlobal.class, FileUtils.class})
 public class MissionResultLogFileCleanerTest
 {
