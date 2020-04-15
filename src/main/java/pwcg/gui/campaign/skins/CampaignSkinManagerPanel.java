@@ -75,7 +75,7 @@ public class CampaignSkinManagerPanel extends PwcgGuiContext implements ActionLi
         }
 
         skinSessionManager.setPilot(pilot);
-        CampaignSkinManagerForPilotPanel campaignSquadronSkinPilotPanel = new CampaignSkinManagerForPilotPanel(null, skinSessionManager);
+        CampaignSkinManagerForPilotPanel campaignSquadronSkinPilotPanel = new CampaignSkinManagerForPilotPanel(campaign, skinSessionManager);
         campaignSquadronSkinPilotPanel.makePanels();
         
         setCenterPanel(campaignSquadronSkinPilotPanel);
