@@ -66,7 +66,7 @@ public class CampaignGeneratorProfileGUI extends ImageResizingPanel implements A
 
 		try
 		{			
-			JPanel campaignGeneratePanel = new JPanel(new GridLayout(0, 1));
+			JPanel campaignGeneratePanel = new JPanel(new BorderLayout());
 			campaignGeneratePanel.setOpaque(false);
 	        
 			JPanel campaignNamePanel = createCampaignNameWidget();
@@ -89,12 +89,6 @@ public class CampaignGeneratorProfileGUI extends ImageResizingPanel implements A
 
     private JPanel createCampaignModeWidget() throws PWCGException
     {
-        JPanel coopButtonPanel = new JPanel(new BorderLayout());
-        coopButtonPanel.setOpaque(false);
-
-        JLabel spacerLabel = makeCoopLabel("          ");        
-        coopButtonPanel.add(spacerLabel, BorderLayout.WEST);
-
         JPanel shapePanel = new JPanel(new BorderLayout());
         shapePanel.setOpaque(false);
 
@@ -118,11 +112,24 @@ public class CampaignGeneratorProfileGUI extends ImageResizingPanel implements A
         coopButtonPanelGrid.add(coopCompetitiveButton);
         coopCompetitiveButtonModel = coopCompetitiveButton.getModel();
         coopGroup.add(coopCompetitiveButton);
-
-        coopButtonPanel.add(coopButtonPanelGrid, BorderLayout.SOUTH);
         
         shapePanel.add(coopButtonPanelGrid, BorderLayout.NORTH);
+        
+        JPanel topSpacingGrid = new JPanel(new GridLayout(0,1));
+        topSpacingGrid.setOpaque(false);
+        topSpacingGrid.add(PWCGButtonFactory.makeDummy());
+        topSpacingGrid.add(PWCGButtonFactory.makeDummy());
+        
+        JPanel bottomSpacingGrid = new JPanel(new GridLayout(0,1));
+        bottomSpacingGrid.setOpaque(false);
+        bottomSpacingGrid.add(PWCGButtonFactory.makeDummy());
+        bottomSpacingGrid.add(PWCGButtonFactory.makeDummy());
+
+        JPanel coopButtonPanel = new JPanel(new BorderLayout());
+        coopButtonPanel.setOpaque(false);
+        coopButtonPanel.add(topSpacingGrid, BorderLayout.NORTH);
         coopButtonPanel.add(shapePanel, BorderLayout.CENTER);
+        coopButtonPanel.add(bottomSpacingGrid, BorderLayout.SOUTH);
 
         return coopButtonPanel;
     }
@@ -161,17 +168,25 @@ public class CampaignGeneratorProfileGUI extends ImageResizingPanel implements A
         
         campaignNameTextBox.getDocument().addDocumentListener(campaignNameTextBoxListener);
 
+        JPanel campaignNameContainerGrid = new JPanel(new GridLayout(0,1));
+        campaignNameContainerGrid.setOpaque(false);
+        
         JPanel campaignNameContainerPanel = new JPanel();
         campaignNameContainerPanel.setLayout(new BoxLayout(campaignNameContainerPanel, BoxLayout.LINE_AXIS));
-
         campaignNameContainerPanel.setOpaque(false);
         campaignNameContainerPanel.add(lCampaignName, BorderLayout.WEST);
         campaignNameContainerPanel.add(campaignNameTextBox, BorderLayout.CENTER);
         
+        campaignNameContainerGrid.add(PWCGButtonFactory.makeDummy());
+        campaignNameContainerGrid.add(campaignNameContainerPanel);
+        campaignNameContainerGrid.add(PWCGButtonFactory.makeDummy());
+        campaignNameContainerGrid.add(PWCGButtonFactory.makeDummy());
+        campaignNameContainerGrid.add(PWCGButtonFactory.makeDummy());
+
         JPanel campaignNamePanel = new JPanel(new BorderLayout());
         campaignNamePanel.setOpaque(false);
-        campaignNamePanel.add(campaignNameContainerPanel, BorderLayout.CENTER);
-        
+        campaignNamePanel.add(campaignNameContainerGrid, BorderLayout.CENTER);
+
         return campaignNamePanel;
     }
     
