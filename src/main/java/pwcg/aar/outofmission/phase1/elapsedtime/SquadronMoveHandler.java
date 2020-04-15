@@ -34,7 +34,7 @@ public class SquadronMoveHandler
             String lastAirfield = squadron.determineCurrentAirfieldAnyMap(campaign.getDate()).getName();
             String newAirfield = squadron.determineCurrentAirfieldAnyMap(newDate).getName();
             boolean needsFerry = needsFerryMission(airfieldNameNow, airfieldNameNext);
-            boolean isNewsworthy = false;
+            boolean isNewsworthy = true;
             squadronMoveEvent = new SquadronMoveEvent(lastAirfield, newAirfield, squadron.getSquadronId(), needsFerry, newDate, isNewsworthy);
         }
         

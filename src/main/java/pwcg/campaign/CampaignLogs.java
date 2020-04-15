@@ -55,7 +55,10 @@ public class CampaignLogs
 			}
 			else if (event instanceof MedalEvent)
 			{
-				addMedalToCampaignLogs(event);
+			    if (event.isNewsWorthy())
+			    {
+			        addMedalToCampaignLogs(event);
+			    }
 			}
 			else if (event instanceof SquadronMoveEvent)
 			{
