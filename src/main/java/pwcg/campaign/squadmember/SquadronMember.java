@@ -26,7 +26,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.dialogs.ImageCache;
-import pwcg.gui.utils.StringValidity;
+import pwcg.gui.utils.PWCGStringValidator;
 
 public class SquadronMember implements Cloneable
 {
@@ -300,11 +300,10 @@ public class SquadronMember implements Cloneable
 
     public void setName(String name) throws PWCGException
     {
-        if (StringValidity.isAlpha(name))
+        if (PWCGStringValidator.isValidName(name))
         {
             this.name = name;
         }
-        // Non English characters cause RoF and BoS to CTD
         else
         {
             throw new PWCGException("Invalid name.  Name must be English alpha characters only: " + name);

@@ -90,12 +90,12 @@ public class NewPilotState
         {
             return false;
         }
-        else if (!PWCGStringValidator.validateStringIsAlpha(newPilotGeneratorDO.getPlayerPilotName()))
+        else if (!PWCGStringValidator.isValidName(newPilotGeneratorDO.getPlayerPilotName()))
         {
             return false;
         }
         else if (!(campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE) &&
-                !(PWCGStringValidator.validateStringIsAlphaNumeric(newPilotGeneratorDO.getCoopUser())))
+                !(PWCGStringValidator.isValidDescriptor(newPilotGeneratorDO.getCoopUser())))
         {
             return false;
         }

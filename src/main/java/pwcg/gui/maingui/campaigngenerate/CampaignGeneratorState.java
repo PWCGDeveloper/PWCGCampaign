@@ -86,16 +86,16 @@ public class CampaignGeneratorState
         {
             return false;
         }
-        else if (!PWCGStringValidator.validateStringIsAlphaNumeric(campaignGeneratorDO.getCampaignName()))
+        else if (!PWCGStringValidator.isValidDescriptor(campaignGeneratorDO.getCampaignName()))
         {
             return false;
         }
-        else if (!PWCGStringValidator.validateStringIsAlpha(campaignGeneratorDO.getPlayerPilotName()))
+        else if (!PWCGStringValidator.isValidName(campaignGeneratorDO.getPlayerPilotName()))
         {
             return false;
         }
         else if (!(campaignGeneratorDO.getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE) &&
-                !(PWCGStringValidator.validateStringIsAlphaNumeric(campaignGeneratorDO.getCoopUser())))
+                !(PWCGStringValidator.isValidDescriptor(campaignGeneratorDO.getCoopUser())))
         {
             return false;
         }
@@ -123,7 +123,7 @@ public class CampaignGeneratorState
         {
             return false;
         }
-        else if (!PWCGStringValidator.validateStringIsAlphaNumeric(campaignGeneratorDO.getCampaignName()))
+        else if (!PWCGStringValidator.isValidDescriptor(campaignGeneratorDO.getCampaignName()))
         {
             return false;
         }
