@@ -234,7 +234,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
             String skinName = "";
             if (skin != null)
             {
-                skinName = getType() + "\\" + skin.getSkinName();
+                skinName = getType() + "/" + skin.getSkinName();
                 skinName = skinName.toLowerCase();
                 if (!skinName.contains(".dds"))
                 {
