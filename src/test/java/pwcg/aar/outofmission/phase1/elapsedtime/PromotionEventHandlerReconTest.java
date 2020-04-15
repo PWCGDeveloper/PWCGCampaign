@@ -81,6 +81,7 @@ public class PromotionEventHandlerReconTest
         Mockito.when(squadronMember.getMissionFlown()).thenReturn(PromotionEventHandlerRecon.PilotRankCommandMinMissions);
         Mockito.when(squadronMember.getRank()).thenReturn("Lieutenant");
         Mockito.when(squadronMember.isPlayer()).thenReturn(true);
+        Mockito.when(squadronMember.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
 
         PromotionEventHandlerRecon promotionEventHandlerFighter = new PromotionEventHandlerRecon();
         String promotion = promotionEventHandlerFighter.determineReconPromotion(campaign, squadronMember);
@@ -95,6 +96,7 @@ public class PromotionEventHandlerReconTest
         Mockito.when(squadronMember.getMissionFlown()).thenReturn(PromotionEventHandlerRecon.PilotRankCommandMinMissions);
         Mockito.when(squadronMember.getRank()).thenReturn("Lieutenant");
         Mockito.when(squadronMember.isPlayer()).thenReturn(false);
+        Mockito.when(squadronMember.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
 
         PromotionEventHandlerRecon promotionEventHandlerFighter = new PromotionEventHandlerRecon();
         String promotion = promotionEventHandlerFighter.determineReconPromotion(campaign, squadronMember);
@@ -109,6 +111,7 @@ public class PromotionEventHandlerReconTest
         Mockito.when(squadronMember.getMissionFlown()).thenReturn(PromotionEventHandlerRecon.PilotRankCommandMinMissions-1);
         Mockito.when(squadronMember.getRank()).thenReturn("Lieutenant");
         Mockito.when(squadronMember.isPlayer()).thenReturn(true);
+        Mockito.when(squadronMember.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
 
         PromotionEventHandlerRecon promotionEventHandlerFighter = new PromotionEventHandlerRecon();
         String promotion = promotionEventHandlerFighter.determineReconPromotion(campaign, squadronMember);
