@@ -7,10 +7,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.prelim.AARHeaderParser;
 import pwcg.aar.prelim.PwcgMissionData;
@@ -44,8 +44,7 @@ public class AARMissionFileLogResultMatcherTest
     @Test
     public void testMissionResultFileMatch() throws PWCGException
     {        
-        Mockito.when(aarHeaderParser.parseHeaderOnly(Matchers.<String>any(), Matchers.<String>any())).thenReturn("Patrik Schorner 1941-10-02.mission");
-        Mockito.when(campaign.getCampaignPath()).thenReturn("");
+        Mockito.when(aarHeaderParser.parseHeaderOnly(ArgumentMatchers.<String>any(), ArgumentMatchers.<String>any())).thenReturn("Patrik Schorner 1941-10-02.mission");
         Mockito.when(pwcgMissionData.getMissionHeader()).thenReturn(missionHeader);
         Mockito.when(missionHeader.getMissionFileName()).thenReturn("Patrik Schorner 1941-10-02");
         
@@ -59,8 +58,7 @@ public class AARMissionFileLogResultMatcherTest
     @Test 
     public void testMissionResultFileMatchFail() throws PWCGException
     {
-        Mockito.when(aarHeaderParser.parseHeaderOnly(Matchers.<String>any(), Matchers.<String>any())).thenReturn("Patrik Schorner 1941-10-02.mission");
-        Mockito.when(campaign.getCampaignPath()).thenReturn("");
+        Mockito.when(aarHeaderParser.parseHeaderOnly(ArgumentMatchers.<String>any(), ArgumentMatchers.<String>any())).thenReturn("Patrik Schorner 1941-10-02.mission");
         Mockito.when(pwcgMissionData.getMissionHeader()).thenReturn(missionHeader);
         Mockito.when(missionHeader.getMissionFileName()).thenReturn("Wrong File");
         
@@ -75,10 +73,6 @@ public class AARMissionFileLogResultMatcherTest
 	@Test 
 	public void testMissionResultFileMatchFailEmptyList() throws PWCGException
 	{
-        Mockito.when(aarHeaderParser.parseHeaderOnly(Matchers.<String>any(), Matchers.<String>any())).thenReturn("Patrik Schorner 1941-10-02.mission");
-        Mockito.when(campaign.getCampaignPath()).thenReturn("");
-        Mockito.when(pwcgMissionData.getMissionHeader()).thenReturn(missionHeader);
-        Mockito.when(missionHeader.getMissionFileName()).thenReturn("Patrik Schorner 1941-10-02");
         
         List<String>logFileSets = new ArrayList<>();
         

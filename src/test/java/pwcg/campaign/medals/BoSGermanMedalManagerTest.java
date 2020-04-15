@@ -7,9 +7,9 @@ import javax.swing.ImageIcon;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
@@ -25,7 +25,7 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.product.bos.country.BoSServiceManager;
 import pwcg.product.bos.medals.GermanMedalManager;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class) 
 public class BoSGermanMedalManagerTest extends MedalManagerTestBase
 {
 	
@@ -45,7 +45,7 @@ public class BoSGermanMedalManagerTest extends MedalManagerTestBase
     {            	
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420801"));
 	    service = ArmedServiceFactory.createServiceManager().getArmedServiceById(BoSServiceManager.LUFTWAFFE, campaign.getDate());
-        Mockito.when(player.determineService(Matchers.<Date>any())).thenReturn(service);
+        Mockito.when(player.determineService(ArgumentMatchers.<Date>any())).thenReturn(service);
 
         awardMedal(GermanMedalManager.PILOTS_BADGE, 0, 0);
         awardMedal(GermanMedalManager.IRON_CROSS_2, 2, 1);
@@ -62,7 +62,7 @@ public class BoSGermanMedalManagerTest extends MedalManagerTestBase
     {            
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420801"));
 	    service = ArmedServiceFactory.createServiceManager().getArmedServiceById(BoSServiceManager.LUFTWAFFE, campaign.getDate());
-        Mockito.when(player.determineService(Matchers.<Date>any())).thenReturn(service);
+        Mockito.when(player.determineService(ArgumentMatchers.<Date>any())).thenReturn(service);
 
         awardMedal(GermanMedalManager.PILOTS_BADGE, 0, 0);
 		awardMedal(GermanMedalManager.IRON_CROSS_2, 2, 1);

@@ -6,10 +6,10 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.campaign.Campaign;
@@ -51,11 +51,10 @@ public class SquadronTransferNeedTest
         PWCGContext.setProduct(PWCGProduct.BOS);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19170430"));
         Mockito.when(campaign.getPersonnelManager()).thenReturn(campaignPersonnelManager);
-        Mockito.when(campaignPersonnelManager.getSquadronPersonnel(Matchers.<Integer>any())).thenReturn(squadronPersonnel);
+        Mockito.when(campaignPersonnelManager.getSquadronPersonnel(ArgumentMatchers.<Integer>any())).thenReturn(squadronPersonnel);
         Mockito.when(squadronPersonnel.getSquadronMembersWithAces()).thenReturn(activeSquadronMembers);
         Mockito.when(squadronPersonnel.getRecentlyInactiveSquadronMembers()).thenReturn(inactiveSquadronMembers);
         Mockito.when(activeSquadronMembers.getSquadronMemberCollection()).thenReturn(activeSquadronMemberCollection);
-        Mockito.when(inactiveSquadronMembers.getSquadronMemberCollection()).thenReturn(inactiveSquadronMemberCollection);
      }
 
     @Test
@@ -86,9 +85,7 @@ public class SquadronTransferNeedTest
             squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, null, null);
             activeSquadronMemberCollection.put(squadronMember.getSerialNumber(), squadronMember);
         }
-        
-        Mockito.when(activeSquadronMembers.getActiveCount(campaign.getDate())).thenReturn(9);
-        
+                
         SquadronPersonnelNeed squadronResupplyNeed = new SquadronPersonnelNeed(campaign, squadron);
         squadronResupplyNeed.determineResupplyNeeded();
         assert (squadronResupplyNeed.needsResupply() == true);
@@ -123,7 +120,6 @@ public class SquadronTransferNeedTest
             inactiveSquadronMemberCollection.put(squadronMember.getSerialNumber(), squadronMember);
         }
         
-        Mockito.when(activeSquadronMembers.getActiveCount(campaign.getDate())).thenReturn(7);
         Mockito.when(inactiveSquadronMembers.getActiveCount(campaign.getDate())).thenReturn(2);
 
         SquadronPersonnelNeed squadronResupplyNeed = new SquadronPersonnelNeed(campaign, squadron);
@@ -159,7 +155,6 @@ public class SquadronTransferNeedTest
             inactiveSquadronMemberCollection.put(squadronMember.getSerialNumber(), squadronMember);
         }
         
-        Mockito.when(activeSquadronMembers.getActiveCount(campaign.getDate())).thenReturn(10);
         Mockito.when(inactiveSquadronMembers.getActiveCount(campaign.getDate())).thenReturn(2);
 
         SquadronPersonnelNeed squadronResupplyNeed = new SquadronPersonnelNeed(campaign, squadron);

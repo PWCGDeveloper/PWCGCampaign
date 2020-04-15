@@ -1,143 +1,148 @@
 {
-	"country": "GERMANY",
-	"squadronId": 20112051,
-	"name": "II./JG51",
-	"fileName": "II_JG51.json",
-	"skill": 90,
-	"planeAssignments": [
-		{
-			"archType": "bf109",
-			"squadronIntroduction": "19411001",
-			"squadronWithdrawal": "19450601"
-		}
-	],
-	"airfields": {
-		"19411001": "Losinski",
-		"19411020": "Kolodezi",
-		"19411110": "Kolodezi",
-		"19411120": "Kolodezi",
-		"19411215": "Ryabinki",
-		"19420110": "Temkino",
-		"19420301": "Sekretov",
-		"19420601": "Staro-Nijne-Steblievskaya",
-		"19420624": "Popovicheskaya",
-		"19420709": "Novovelichkovskaya",
-		"19420721": "Kievskoe",
-		"19420801": "Golubinskiy",
-		"19420906": "Zety",
-		"19421011": "Evlampievsky",
-		"19421123": "Skvorin",
-		"19421223": "Zryansky",
-		"19430120": "Zryansky",
-		"19430301": "Andreevskaya",
-		"19430330": "Kievskoe",
-		"19430418": "Myshako",
-		"19430918": "Anapa",
-		"19430927": "Zaporojskaya",
-		"19431004": "Zaporojskaya",
-		"19431008": "Kerch-2",
-		"19440101": "Golubinskiy",
-		"19440901": "Helmond",
-		"19441001": "Krefeld-Linn",
-		"19441101": "Krefeld-Linn",
-		"19441220": "Koln-Butzweilerhof",
-		"19441225": "Koln-Butzweilerhof",
-		"19441229": "Koln-Butzweilerhof",
-		"19450207": "Essen-Mulheim",
-		"19450310": "Dortmund",
-		"19450404": "Paderborn"
-	},
-	"skins": [
-		{
-			"skinName": "II_JG51",
-			"planeType": "bf109f2",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 20112051,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		},
-		{
-			"skinName": "II_JG51",
-			"planeType": "bf109f4",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 20112051,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		},
-		{
-			"skinName": "II_JG51",
-			"planeType": "bf109g2",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 20112051,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 20101,
-	"squadronRoles": {
-		"squadronRolePeriods": [
-			{
-				"startDate": "19400101",
-				"endDate": "19440901",
-				"weightedRoles": [
-					{
-						"role": "ROLE_STRATEGIC_INTERCEPT",
-						"weight": 5
-					},
-					{
-						"role": "ROLE_RECON",
-						"weight": 3
-					},
-					{
-						"role": "ROLE_FIGHTER",
-						"weight": 90
-					},
-					{
-						"role": "ROLE_ATTACK",
-						"weight": 10
-					}
-				]
-			},
-			{
-				"startDate": "19440901",
-				"endDate": "19450601",
-				"weightedRoles": [
-					{
-						"role": "ROLE_STRATEGIC_INTERCEPT",
-						"weight": 15
-					},
-					{
-						"role": "ROLE_FIGHTER",
-						"weight": 80
-					},
-					{
-						"role": "ROLE_ATTACK",
-						"weight": 20
-					}
-				]
-			}
-		]
-	},
-	"nightMissionOdds": {
-		"nightMissionPeriods": [
-			{
-				"startDate": "19400101",
-				"endDate": "19450601",
-				"nightMissionOdds": 3
-			}
-		]
-	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19410801": "ORIOLE"
-	}
+  "country": "GERMANY",
+  "squadronId": 20112051,
+  "name": "II./JG51",
+  "fileName": "II_JG51.json",
+  "skill": 90,
+  "planeAssignments": [
+    {
+      "archType": "bf109",
+      "squadronIntroduction": "19411001",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "airfields": {
+    "19411001": "Losinski",
+    "19411020": "Kolodezi",
+    "19411110": "Kolodezi",
+    "19411120": "Kolodezi",
+    "19411215": "Ryabinki",
+    "19420110": "Temkino",
+    "19420301": "Kamchie",
+    "19420601": "Staro-Nijne-Steblievskaya",
+    "19420624": "Popovicheskaya",
+    "19420709": "Novovelichkovskaya",
+    "19420721": "Kievskoe",
+    "19420801": "Golubinskiy",
+    "19420906": "Zety",
+    "19421011": "Abganerovo",
+    "19421123": "Skvorin",
+    "19421223": "Zryansky",
+    "19430120": "Zryansky",
+    "19430301": "Andreevskaya",
+    "19430330": "Kievskoe",
+    "19430418": "Myshako",
+    "19430918": "Anapa",
+    "19430927": "Zaporojskaya",
+    "19431004": "Zaporojskaya",
+    "19431008": "Kerch-2",
+    "19440101": "Tinguta",
+    "19440201": "Tinguta",
+    "19440301": "Zety",
+    "19440401": "Gromoslavka",
+    "19440501": "Kalach",
+    "19440601": "Aksay",
+    "19440701": "Aksay",
+    "19440801": "Evlampievsky",
+    "19440901": "Kletskaya",
+    "19441001": "Zhutovo",
+    "19441101": "Kletskaya",
+    "19441201": "Kletskaya"
+  },
+  "skins": [
+    {
+      "skinName": "II_JG51",
+      "planeType": "bf109f2",
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 20112051,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "II_JG51",
+      "planeType": "bf109f4",
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 20112051,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "II_JG51",
+      "planeType": "bf109g2",
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 20112051,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": []
+  },
+  "serviceId": 20101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19440901",
+        "weightedRoles": [
+          {
+            "role": "ROLE_STRATEGIC_INTERCEPT",
+            "weight": 5
+          },
+          {
+            "role": "ROLE_RECON",
+            "weight": 3
+          },
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 90
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 10
+          }
+        ]
+      },
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_STRATEGIC_INTERCEPT",
+            "weight": 15
+          },
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 80
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 20
+          }
+        ]
+      }
+    ]
+  },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "nightMissionOdds": 3
+      }
+    ]
+  },
+  "conversionPeriods": [],
+  "callsigns": {
+    "19410801": "ORIOLE"
+  }
 }

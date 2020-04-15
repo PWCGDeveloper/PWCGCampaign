@@ -11,8 +11,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-  ],  
   "airfields": {
     "19411001": "Novoye Selo",
     "19411020": "Gzhatsk",
@@ -20,14 +18,14 @@
     "19411120": "Ivanskoe",
     "19411215": "Sloboda",
     "19420110": "Novoye Selo",
-    "19420301": "Oblivskaya",
+    "19420301": "Frolov",
     "19420601": "Dneprovskaya",
     "19420624": "Krasnoarmeyskayas",
     "19420709": "Popovicheskaya",
     "19420721": "Kalinino",
     "19420801": "Ventsy",
-    "19420906": "Ventsy",
-    "19421011": "Golubinskiy",
+    "19420906": "Golubinskiy",
+    "19421011": "Bol. Rossoshka",
     "19421123": "Kamchie",
     "19421223": "Tormosin",
     "19430120": "Tormosin",
@@ -38,10 +36,21 @@
     "19430927": "Kerch",
     "19431004": "Kerch",
     "19431008": "Hardji-Bie",
-    "19440101": "Ventsy"
+    "19440101": "Kachalinskaya",
+    "19440201": "Kachalinskaya",
+    "19440301": "Illarionovskiy",
+    "19440401": "Kachalinskaya",
+    "19440501": "Kachalinskaya",
+    "19440601": "Evlampievsky",
+    "19440701": "Evlampievsky",
+    "19440801": "Lipovsky",
+    "19440901": "Oblivskaya",
+    "19441001": "Oblivskaya",
+    "19441101": "Frolov",
+    "19441201": "Oblivskaya"
   },
   "skins": [
-  {
+    {
       "skinName": "I_St_G_77",
       "planeType": "ju87d3",
       "startDate": "19400801",
@@ -72,15 +81,6 @@
       "definedInGame": false
     }
   ],
-  "nightMissionOdds": {
-    "nightMissionPeriods": [
-      {
-        "startDate": "19440901",
-        "endDate": "19450601",
-        "nightMissionOdds": 10
-      }
-    ]
-  },
   "serviceId": 20101,
   "squadronRoles": {
     "squadronRolePeriods": [
@@ -96,6 +96,19 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "nightMissionOdds": 10
+      }
+    ]
+  },
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "HAWK"
   }

@@ -5,10 +5,10 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
@@ -45,9 +45,9 @@ public class TargetTypeAttackGeneratorTest
         Mockito.when(targetTypeAvailabilityInputs.getPreferredDistance()).thenReturn(60000.0);
         Mockito.when(targetTypeAvailabilityInputs.getMaxDistance()).thenReturn(100000.0);  
         ICountry country = CountryFactory.makeCountryByCountry(Country.BRITAIN);
-        Mockito.when(squadron.determineSquadronCountry(Matchers.any())).thenReturn(country); 
+        Mockito.when(squadron.determineSquadronCountry(ArgumentMatchers.any())).thenReturn(country); 
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManagerCampaign); 
-        Mockito.when(configManagerCampaign.getIntConfigParam(Matchers.any())).thenReturn(10);
+        Mockito.when(configManagerCampaign.getIntConfigParam(ArgumentMatchers.any())).thenReturn(10);
     }
     
     @Test

@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.AARTestSetup;
 import pwcg.aar.ui.events.AcesKilledEventGenerator;
@@ -22,7 +22,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.MissionEntityBuilder;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class) 
 public class InMissionSquadronPilotStatusEventGeneratorTest extends AARTestSetup
 {	
     private Map<Integer, SquadronMember> squadronMembersKilledInMission = new HashMap<>();

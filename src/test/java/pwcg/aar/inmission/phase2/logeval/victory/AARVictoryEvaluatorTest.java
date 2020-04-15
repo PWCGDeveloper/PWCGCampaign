@@ -2,7 +2,7 @@ package pwcg.aar.inmission.phase2.logeval.victory;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.core.exception.PWCGException;
 

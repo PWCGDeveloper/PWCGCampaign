@@ -11,16 +11,13 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-  ],  
   "airfields": {
     "19420801": "Voroponovo",
-    "19420906": "Novonikolskoye",
+    "19420906": "Bol. Chapurniki",
     "19421011": "Lugo-Vodyanoye",
     "19421123": "Davydovskiy",
     "19421223": "Davydovskiy",
     "19430120": "Davydovskiy",
-    
     "19430301": "Gelenjik-2",
     "19430330": "Gelenjik-2",
     "19430418": "Gelenjik-2",
@@ -28,7 +25,18 @@
     "19430927": "Myshako",
     "19431004": "Slavyanskaya",
     "19431008": "Slavyanskaya",
-    "19440101": "Voroponovo"
+    "19440101": "Smutnev",
+    "19440201": "Svetly Yar",
+    "19440301": "Smutnev",
+    "19440401": "Smutnev",
+    "19440501": "Smutnev",
+    "19440601": "Akatovka",
+    "19440701": "Plesovskiy",
+    "19440801": "Bol. Rossoshka",
+    "19440901": "Plodovitoye",
+    "19441001": "Plodovitoye",
+    "19441101": "Zhutovo",
+    "19441201": "Zhutovo"
   },
   "skins": [
     {
@@ -77,6 +85,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -86,6 +97,7 @@
       }
     ]
   },
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "CRANE"
   }

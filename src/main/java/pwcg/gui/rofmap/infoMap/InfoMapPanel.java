@@ -211,11 +211,11 @@ public class InfoMapPanel extends MapPanelBase
         }
         else if (country.getSide() == Side.AXIS)
         {
-            color = ColorMap.AXIS_BLACK;
+            color = ColorMap.GERMAN_AIRFIELD_PINK;
         }
         else if (country.getSide() == Side.ALLIED)
         {
-            color = ColorMap.BRITISH_RNAS_RED;
+            color = ColorMap.ALLIED_AIRFIELD_PINK;
         }
         else if (country.isNeutral())
         {
@@ -419,7 +419,6 @@ public class InfoMapPanel extends MapPanelBase
         for (Squadron squadron : allSquadrons)
         {
             Role squadronPrimaryRole = squadron.determineSquadronPrimaryRole(parent.getMapDate());
-            if (squadronPrimaryRole.isRoleCategory(RoleCategory.RECON))
 
             if ((whatToDisplay[DISPLAY_FIGHTER] == true && squadronPrimaryRole.isRoleCategory(RoleCategory.FIGHTER))    || 
                 (whatToDisplay[DISPLAY_BOMBER] == true && squadronPrimaryRole.isRoleCategory(RoleCategory.BOMBER))        || 

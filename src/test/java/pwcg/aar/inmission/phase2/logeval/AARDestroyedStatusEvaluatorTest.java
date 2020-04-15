@@ -6,10 +6,10 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase1.parse.event.AType3;
@@ -56,7 +56,6 @@ public class AARDestroyedStatusEvaluatorTest
         logParserDestroyedEvents.add(logDestroyedEvent3);
         Mockito.when(logEventData.getDestroyedEvents()).thenReturn(logParserDestroyedEvents);
 
-        Mockito.when(aarVehicleBuilder.getVehicle("99")).thenReturn(DestroyedVictor1);
         Mockito.when(aarVehicleBuilder.getVehicle("100")).thenReturn(DestroyedVictim1);
         Mockito.when(aarVehicleBuilder.getVehicle("101")).thenReturn(DestroyedVictim1);
         Mockito.when(aarVehicleBuilder.getVehicle("102")).thenReturn(DestroyedVictim1);
@@ -91,7 +90,6 @@ public class AARDestroyedStatusEvaluatorTest
         logParserDestroyedEvents.add(logDestroyedEvent3);
         Mockito.when(logEventData.getDestroyedEvents()).thenReturn(logParserDestroyedEvents);
 
-        Mockito.when(aarVehicleBuilder.getVehicle("99")).thenReturn(DestroyedVictor1);
         Mockito.when(aarVehicleBuilder.getVehicle("100")).thenReturn(DestroyedVictim1);
         Mockito.when(aarVehicleBuilder.getVehicle("101")).thenReturn(DestroyedVictim1);
         Mockito.when(aarVehicleBuilder.getVehicle("102")).thenReturn(null);
@@ -128,15 +126,14 @@ public class AARDestroyedStatusEvaluatorTest
         logParserDestroyedEvents.add(logDestroyedEvent3);
         Mockito.when(logEventData.getDestroyedEvents()).thenReturn(logParserDestroyedEvents);
 
-        Mockito.when(aarVehicleBuilder.getVehicle("99")).thenReturn(DestroyedVictor1);
         Mockito.when(aarVehicleBuilder.getVehicle("100")).thenReturn(DestroyedVictim1);
         Mockito.when(aarVehicleBuilder.getVehicle("101")).thenReturn(DestroyedVictim1);
         Mockito.when(aarVehicleBuilder.getVehicle("102")).thenReturn(DestroyedVictim1);
 
         Mockito.when(aarCrossedPathWithPlayerEvaluator.isCrossedPathWithPlayerFlight(
-                        Matchers.<LogVictory>any(),
-                        Matchers.<AARPlayerLocator>any(),
-                        Matchers.<List<IAType17>>any())).thenReturn(true);
+                        ArgumentMatchers.<LogVictory>any(),
+                        ArgumentMatchers.<AARPlayerLocator>any(),
+                        ArgumentMatchers.<List<IAType17>>any())).thenReturn(true);
         
         
         AARDestroyedStatusEvaluator aarDestroyedStatusEvaluator = new AARDestroyedStatusEvaluator(

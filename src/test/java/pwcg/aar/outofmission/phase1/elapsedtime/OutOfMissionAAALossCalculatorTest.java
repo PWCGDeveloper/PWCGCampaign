@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
@@ -38,8 +38,6 @@ public class OutOfMissionAAALossCalculatorTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420801"));
-        Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
-        Mockito.when(configManager.getIntConfigParam(Mockito.any())).thenReturn(5);
     }
     
     @Test

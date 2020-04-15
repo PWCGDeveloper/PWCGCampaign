@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase1.parse.AARLogParser;
@@ -58,8 +58,6 @@ public class AARDamageStatusEvaluatorTest
         Mockito.when(aarVehicleBuilder.getVehicle("98")).thenReturn(damagedVictor1);
         Mockito.when(aarVehicleBuilder.getVehicle("99")).thenReturn(damagedVictor2);
 
-        Mockito.when(damagedVictim1.getId()).thenReturn("100");
-        Mockito.when(damagedVictim2.getId()).thenReturn("101");
         Mockito.when(aarVehicleBuilder.getVehicle("100")).thenReturn(damagedVictim1);
         Mockito.when(aarVehicleBuilder.getVehicle("101")).thenReturn(damagedVictim2);
 
@@ -67,7 +65,6 @@ public class AARDamageStatusEvaluatorTest
         Mockito.when(logDamageEvent2.getDamageLevel()).thenReturn(7.0);
         Mockito.when(logDamageEvent3.getDamageLevel()).thenReturn(6.0);
 
-        Mockito.when(logEventData.isVehicle("99")).thenReturn(true);
         Mockito.when(logEventData.isVehicle("100")).thenReturn(true);
         Mockito.when(logEventData.isVehicle("101")).thenReturn(true);
     }

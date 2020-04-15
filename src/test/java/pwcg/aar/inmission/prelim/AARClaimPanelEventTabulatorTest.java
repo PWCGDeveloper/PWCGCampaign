@@ -11,7 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.aar.prelim.PwcgMissionData;
@@ -21,7 +21,6 @@ import pwcg.aar.prelim.claims.AARClaimPanelEventTabulator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadron.Squadron;
@@ -55,8 +54,6 @@ public class AARClaimPanelEventTabulatorTest
         Mockito.when(campaign.getDate()).thenReturn(campaignDate);
         List<Squadron> playerSquadrons = new ArrayList<>();
         playerSquadrons.add(squad);
-        Mockito.when(campaign.determinePlayerSquadrons()).thenReturn(playerSquadrons);
-        Mockito.when(pwcgMissionData.getMissionHeader()).thenReturn(missionHeader);
         
         Mockito.when(aarPreliminarytData.getPwcgMissionData()).thenReturn(pwcgMissionData);
 
@@ -92,8 +89,6 @@ public class AARClaimPanelEventTabulatorTest
     @Test
     public void germanMission () throws PWCGException
     {             
-        Mockito.when(missionHeader.getMapName()).thenReturn(PWCGMap.STALINGRAD_MAP_NAME);
-
         AARClaimPanelEventTabulator claimPanelEventTabulator = new AARClaimPanelEventTabulator(campaign, aarPreliminarytData, Side.AXIS);
         AARClaimPanelData claimPanelData = claimPanelEventTabulator.tabulateForAARClaimPanel();
         assert (claimPanelData.getEnemyPlaneTypesInMission().size() == 2);
@@ -103,9 +98,6 @@ public class AARClaimPanelEventTabulatorTest
     @Test
     public void russianMission () throws PWCGException
     {             
-        Mockito.when(pwcgMissionData.getMissionHeader()).thenReturn(missionHeader);
-        Mockito.when(missionHeader.getMapName()).thenReturn(PWCGMap.STALINGRAD_MAP_NAME);
-
         AARClaimPanelEventTabulator claimPanelEventTabulator = new AARClaimPanelEventTabulator(campaign, aarPreliminarytData, Side.ALLIED);
         AARClaimPanelData claimPanelData = claimPanelEventTabulator.tabulateForAARClaimPanel();
         assert (claimPanelData.getEnemyPlaneTypesInMission().size() == 1);

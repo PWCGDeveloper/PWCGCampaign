@@ -11,12 +11,10 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-  ],  
   "airfields": {
-    "19420801": "Oblivskaya",
+    "19420801": "Frolov",
     "19420906": "Zryansky",
-    "19421011": "Kumovka",
+    "19421011": "Malogolubaya",
     "19421123": "Ventsy",
     "19421223": "Chernishkovskiy",
     "19430120": "Chernishkovskiy",
@@ -27,7 +25,18 @@
     "19430927": "Marfovka",
     "19431004": "Marfovka",
     "19431008": "Hardji-Bie",
-    "19440101": "Oblivskaya"
+    "19440101": "Bol. Ivanovka",
+    "19440201": "Bol. Ivanovka",
+    "19440301": "Bol. Ivanovka",
+    "19440401": "Bol. Ivanovka",
+    "19440501": "Bol. Ivanovka",
+    "19440601": "Bol. Ivanovka",
+    "19440701": "Zimovskoy",
+    "19440801": "Novo Sergievskiy",
+    "19440901": "Safronov",
+    "19441001": "Oblivskaya",
+    "19441101": "Morozovskiy South",
+    "19441201": "Morozovskiy West"
   },
   "skins": [
     {
@@ -66,6 +75,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -75,6 +87,7 @@
       }
     ]
   },
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "KITTIWAKE"
   }

@@ -10,7 +10,9 @@ public class ColorMap
     public static final Color RUSSIAN_GOLD = new Color(255, 155, 35);
     public static final Color RUSSIAN_RED = new Color(185, 0, 0);
 	public static final Color BRITISH_RED = new Color(185, 0, 0);
-	public static final Color BRITISH_RNAS_RED = new Color(255, 40, 40);
+    public static final Color BRITISH_RNAS_RED = new Color(255, 40, 40);
+    public static final Color ALLIED_AIRFIELD_PINK = new Color(222, 144, 213);
+    public static final Color GERMAN_AIRFIELD_PINK = new Color(136, 143, 138);
 	public static final Color GERMAN_FIELD_GRAY = new Color(80, 80, 40);
     public static final Color GERMAN_NAVY_GRAY = new Color(130, 130, 65);
     public static final Color AUSTRIAN_GRAY = new Color(130, 130, 65);

@@ -63,16 +63,21 @@ public class CampaignPersonnelIOJson
         List<File> jsonFiles = FileUtils.getFilesWithFilter(campaignPersonnelDir, ".json");
         for (File jsonFile : jsonFiles)
         {
-            JsonObjectReader<SquadronMembers> jsoReader = new JsonObjectReader<>(SquadronMembers.class);
-            SquadronMembers squadronMembers = jsoReader.readJsonFile(campaignPersonnelDir, jsonFile.getName());
-            
-            int squadronId = Integer.valueOf(FileUtils.stripFileExtension(jsonFile.getName()));
-            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
-            SquadronPersonnel squadronPersonnel = new SquadronPersonnel(campaign, squadron);
-            squadronPersonnel.setSquadronMembers(squadronMembers);
-            
-            campaign.getPersonnelManager().addPersonnelForSquadron(squadronPersonnel);
+            readSquadron(campaign, campaignPersonnelDir, jsonFile);
         }
+    }
+
+    private static void readSquadron(Campaign campaign, String campaignPersonnelDir, File jsonFile) throws PWCGException
+    {
+        JsonObjectReader<SquadronMembers> jsoReader = new JsonObjectReader<>(SquadronMembers.class);
+        SquadronMembers squadronMembers = jsoReader.readJsonFile(campaignPersonnelDir, jsonFile.getName());
+        
+        int squadronId = Integer.valueOf(FileUtils.stripFileExtension(jsonFile.getName()));
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+        SquadronPersonnel squadronPersonnel = new SquadronPersonnel(campaign, squadron);
+        squadronPersonnel.setSquadronMembers(squadronMembers);
+        
+        campaign.getPersonnelManager().addPersonnelForSquadron(squadronPersonnel);
     }
 
     private static void readReplacements(Campaign campaign) throws PWCGException

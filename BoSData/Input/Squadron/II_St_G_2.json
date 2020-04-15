@@ -11,8 +11,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-  ],  
   "airfields": {
     "19411001": "Vjazma",
     "19411020": "Zenino",
@@ -20,7 +18,7 @@
     "19411120": "Kholm",
     "19411215": "Gzhatsk",
     "19420110": "Vjazma",
-    "19420301": "Frolov",
+    "19420301": "Kletskaya",
     "19420601": "Popovicheskaya",
     "19420624": "Gostagaevskaya",
     "19420709": "Kievskoe",
@@ -38,7 +36,18 @@
     "19430927": "Kerch-2",
     "19431004": "Kerch-2",
     "19431008": "Bagerovo",
-    "19440101": "Zryansky"
+    "19440101": "Karpovka",
+    "19440201": "Karpovka",
+    "19440301": "Karpovka",
+    "19440401": "Marinovka",
+    "19440501": "Karpovka",
+    "19440601": "Zhutovo",
+    "19440701": "Zhutovo",
+    "19440801": "Skvorin",
+    "19440901": "Novo Sergievskiy",
+    "19441001": "Sekretov",
+    "19441101": "Novo Sergievskiy",
+    "19441201": "Novo Sergievskiy"
   },
   "skins": [
     {
@@ -77,6 +86,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -86,6 +98,7 @@
       }
     ]
   },
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "RAVEN"
   }

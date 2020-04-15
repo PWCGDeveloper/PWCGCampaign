@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
@@ -43,7 +43,7 @@ public abstract class MedalManagerTestBase
         Mockito.when(player.getMedals()).thenReturn(medals);
         Mockito.when(player.getSquadronMemberVictories()).thenReturn(squadronMemberVictories);
         Mockito.when(squadron.getSquadronRoles()).thenReturn(squadronRoleSet);
-        Mockito.when(squadronRoleSet.isSquadronThisRole(Matchers.<Date>any(), Matchers.<Role>any())).thenReturn(true);
+        Mockito.when(squadronRoleSet.isSquadronThisRole(ArgumentMatchers.<Date>any(), ArgumentMatchers.<Role>any())).thenReturn(true);
     }
 
     protected void awardMedal(int medalId, int numVictoriesNeededForMedal, int victoriesThisMission) throws PWCGException

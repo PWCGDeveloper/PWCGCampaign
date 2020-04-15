@@ -28,9 +28,9 @@
     "19420624": "Anapa",
     "19420709": "Elizavetinskaya",
     "19420721": "Belorechenskaya",
-    "19420801": "Kamchie",
+    "19420801": "Lipovsky",
     "19420906": "Kumovka",
-    "19421011": "Evlampievsky",
+    "19421011": "Karpovka",
     "19421123": "Safronov",
     "19421223": "Safronov",
     "19430120": "Kamchie",
@@ -41,7 +41,18 @@
     "19430927": "Kerch",
     "19431004": "Kerch",
     "19431008": "Marfovka",
-    "19440101": "Kamchie"
+    "19440101": "Abganerovo",
+    "19440201": "Zety",
+    "19440301": "Gromoslavka",
+    "19440401": "Samovalovka",
+    "19440501": "Samovalovka",
+    "19440601": "Malogolubaya",
+    "19440701": "Lipovsky",
+    "19440801": "Ventsy",
+    "19440901": "Tormosin",
+    "19441001": "Tormosin",
+    "19441101": "Tormosin",
+    "19441201": "Tormosin"
   },
   "skins": [
     {
@@ -56,8 +67,7 @@
     }
   ],
   "squadHistory": {
-    "squadHistoryEntries": [
-    ]
+    "squadHistoryEntries": []
   },
   "serviceId": 20101,
   "squadronRoles": {
@@ -88,6 +98,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -97,8 +110,7 @@
       }
     ]
   },
-  "conversionPeriods": [
-  ],
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "CRANE"
   }

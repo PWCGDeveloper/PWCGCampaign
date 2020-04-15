@@ -28,8 +28,8 @@
     "19420624": "Ivanovskaya",
     "19420709": "Abinskaya",
     "19420721": "Maykop-3",
-    "19420801": "Kumovka",
-    "19420906": "Zety",
+    "19420801": "Tuzov",
+    "19420906": "Aksay",
     "19421011": "Zimovskoy",
     "19421123": "Ventsy",
     "19421223": "Ventsy",
@@ -41,7 +41,18 @@
     "19430927": "Taman",
     "19431004": "Taman",
     "19431008": "Kerch",
-    "19440101": "Kumovka"
+    "19440101": "Kuzmichy",
+    "19440201": "Kuzmichy",
+    "19440301": "Kuzmichy",
+    "19440401": "Kuzmichy",
+    "19440501": "Kuzmichy",
+    "19440601": "Kumovka",
+    "19440701": "Kachalinskaya",
+    "19440801": "Malogolubaya",
+    "19440901": "Lipovsky",
+    "19441001": "Sekretov",
+    "19441101": "Lipovsky",
+    "19441201": "Lipovsky"
   },
   "skins": [
     {
@@ -56,8 +67,7 @@
     }
   ],
   "squadHistory": {
-    "squadHistoryEntries": [
-    ]
+    "squadHistoryEntries": []
   },
   "serviceId": 20101,
   "squadronRoles": {
@@ -77,6 +87,9 @@
         ]
       }
     ]
+  },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
   },
   "nightMissionOdds": {
     "nightMissionPeriods": [

@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
@@ -82,15 +82,12 @@ public class AiDeclarationResolutionRandomTest
         Mockito.when(victorySorter.getFirmBalloonVictories()).thenReturn(emptyList);
         Mockito.when(victorySorter.getFuzzyAirVictories()).thenReturn(emptyList);
         Mockito.when(victorySorter.getAllUnconfirmed()).thenReturn(randomVictories);
-        Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420101"));
-        Mockito.when(squadron.getSquadronId()).thenReturn(Squadron.REPLACEMENT);
 
         Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         Mockito.when(aiSquadMember.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
 
         ICountry victorCountry = CountryFactory.makeCountryByCountry(Country.GERMANY);
-        Mockito.when(player.determineCountry(campaign.getDate())).thenReturn(victorCountry);
         Mockito.when(aiSquadMember.determineCountry(campaign.getDate())).thenReturn(victorCountry);
         
         Mockito.when(aarContext.getMissionEvaluationData()).thenReturn(evaluationData);
@@ -104,7 +101,6 @@ public class AiDeclarationResolutionRandomTest
         Mockito.when(playerSquadron.getSquadronId()).thenReturn(squadronId);
         playerVictor.setSquadronId(squadronId);
         aiVictor.setSquadronId(squadronId);
-        Mockito.when(player.getSquadronId()).thenReturn(squadronId);
         Mockito.when(aiSquadMember.getSquadronId()).thenReturn(squadronId);
     }
 
@@ -132,11 +128,8 @@ public class AiDeclarationResolutionRandomTest
         campaignMembersInmission.addToSquadronMemberCollection(player);
         campaignMembersInmission.addToSquadronMemberCollection(aiSquadMember);
 
-        Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER)).thenReturn(playerVictor);
-        Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER)).thenReturn(player);
 
         Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1)).thenReturn(aiVictor);
-        Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1)).thenReturn(aiSquadMember);
         
         AiDeclarationResolver declarationResolution = new AiDeclarationResolver(campaign, aarContext);
         ConfirmedVictories confirmedAiVictories = declarationResolution.determineAiAirResults(victorySorter);
@@ -150,12 +143,7 @@ public class AiDeclarationResolutionRandomTest
         campaignMembersInmission.addToSquadronMemberCollection(player);
 
         Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER)).thenReturn(playerVictor);
-        Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER)).thenReturn(player);
 
-        Mockito.when(aiSquadMember.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
-        Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1)).thenReturn(aiVictor);
-        Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1)).thenReturn(null);
         
         AiDeclarationResolver declarationResolution = new AiDeclarationResolver(campaign, aarContext);
         ConfirmedVictories confirmedAiVictories = declarationResolution.determineAiAirResults(victorySorter);

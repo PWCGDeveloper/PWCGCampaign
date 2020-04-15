@@ -3,10 +3,10 @@ package pwcg.aar.inmission.phase3.reconcile.victories.coop;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase3.reconcile.victories.IClaimResolver;
 import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledVictoryData;
@@ -38,8 +38,8 @@ public class ClaimResolverCoopTest
 
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getBeginningOfWar());
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
-        Mockito.when(personnelManager.getAnyCampaignMember(Matchers.<Integer>any())).thenReturn(pilot);
-        Mockito.when(personnelManager.getAnyCampaignMember(Matchers.<Integer>any())).thenReturn(pilot);
+        Mockito.when(personnelManager.getAnyCampaignMember(ArgumentMatchers.<Integer>any())).thenReturn(pilot);
+        Mockito.when(personnelManager.getAnyCampaignMember(ArgumentMatchers.<Integer>any())).thenReturn(pilot);
         Mockito.when(pilot.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         
         logVictoryHelper = new LogVictoryHelper();

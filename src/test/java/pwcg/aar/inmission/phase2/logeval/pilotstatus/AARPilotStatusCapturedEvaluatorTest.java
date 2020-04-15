@@ -3,10 +3,10 @@ package pwcg.aar.inmission.phase2.logeval.pilotstatus;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.BehindEnemyLines;
@@ -36,14 +36,14 @@ public class AARPilotStatusCapturedEvaluatorTest
     public void testCrewMemberAlwaysCaptured () throws PWCGException
     {
         Mockito.when(behindEnemyLines.isBehindEnemyLinesForCapture(
-        		Matchers.<FrontMapIdentifier>any(),
-        		Matchers.<Coordinate>any(),
-        		Matchers.<Side>any())).thenReturn(true);
+        		ArgumentMatchers.<FrontMapIdentifier>any(),
+        		ArgumentMatchers.<Coordinate>any(),
+        		ArgumentMatchers.<Side>any())).thenReturn(true);
 
         Mockito.when(behindEnemyLines.getDistanceBehindLines(
-        		Matchers.<FrontMapIdentifier>any(),
-        		Matchers.<Coordinate>any(),
-        		Matchers.<Side>any())).thenReturn(11.0);
+        		ArgumentMatchers.<FrontMapIdentifier>any(),
+        		ArgumentMatchers.<Coordinate>any(),
+        		ArgumentMatchers.<Side>any())).thenReturn(11.0);
 
         
         AARPilotStatusCapturedEvaluator aarPilotStatusCapturedEvaluator = new AARPilotStatusCapturedEvaluator(DateUtils.getDateYYYYMMDD("19170101"));
@@ -62,14 +62,14 @@ public class AARPilotStatusCapturedEvaluatorTest
     public void testCrewMemberNotCapturedBecauseEscaped () throws PWCGException
     {
         Mockito.when(behindEnemyLines.isBehindEnemyLinesForCapture(
-        		Matchers.<FrontMapIdentifier>any(),
-        		Matchers.<Coordinate>any(),
-        		Matchers.<Side>any())).thenReturn(true);
+        		ArgumentMatchers.<FrontMapIdentifier>any(),
+        		ArgumentMatchers.<Coordinate>any(),
+        		ArgumentMatchers.<Side>any())).thenReturn(true);
 
         Mockito.when(behindEnemyLines.getDistanceBehindLines(
-        		Matchers.<FrontMapIdentifier>any(),
-        		Matchers.<Coordinate>any(),
-        		Matchers.<Side>any())).thenReturn(5.0);
+        		ArgumentMatchers.<FrontMapIdentifier>any(),
+        		ArgumentMatchers.<Coordinate>any(),
+        		ArgumentMatchers.<Side>any())).thenReturn(5.0);
 
         
         AARPilotStatusCapturedEvaluator aarPilotStatusCapturedEvaluator = new AARPilotStatusCapturedEvaluator(DateUtils.getDateYYYYMMDD("19170101"));
@@ -101,15 +101,9 @@ public class AARPilotStatusCapturedEvaluatorTest
     public void testCrewMemberNotCapturedBecauseNotBehindLines () throws PWCGException
     {
         Mockito.when(behindEnemyLines.isBehindEnemyLinesForCapture(
-        		Matchers.<FrontMapIdentifier>any(),
-        		Matchers.<Coordinate>any(),
-        		Matchers.<Side>any())).thenReturn(false);
-
-        Mockito.when(behindEnemyLines.getDistanceBehindLines(
-        		Matchers.<FrontMapIdentifier>any(),
-        		Matchers.<Coordinate>any(),
-        		Matchers.<Side>any())).thenThrow(new PWCGException("Should not do this if behindfriendly lines"));
-
+        		ArgumentMatchers.<FrontMapIdentifier>any(),
+        		ArgumentMatchers.<Coordinate>any(),
+        		ArgumentMatchers.<Side>any())).thenReturn(false);
         
         AARPilotStatusCapturedEvaluator aarPilotStatusCapturedEvaluator = new AARPilotStatusCapturedEvaluator(DateUtils.getDateYYYYMMDD("19170101"));
         aarPilotStatusCapturedEvaluator.setBehindEnemyLines(behindEnemyLines);
@@ -126,17 +120,6 @@ public class AARPilotStatusCapturedEvaluatorTest
     @Test
     public void testCrewMemberNotCapturedBecauseStillInTheAir () throws PWCGException
     {
-        Mockito.when(behindEnemyLines.isBehindEnemyLinesForCapture(
-        		Matchers.<FrontMapIdentifier>any(),
-        		Matchers.<Coordinate>any(),
-        		Matchers.<Side>any())).thenThrow(new PWCGException("Should not do this if behindfriendly lines"));
-
-        Mockito.when(behindEnemyLines.getDistanceBehindLines(
-        		Matchers.<FrontMapIdentifier>any(),
-        		Matchers.<Coordinate>any(),
-        		Matchers.<Side>any())).thenThrow(new PWCGException("Should not do this if behindfriendly lines"));
-
-        
         AARPilotStatusCapturedEvaluator aarPilotStatusCapturedEvaluator = new AARPilotStatusCapturedEvaluator(DateUtils.getDateYYYYMMDD("19170101"));
         aarPilotStatusCapturedEvaluator.setBehindEnemyLines(behindEnemyLines);
         for(int i = 0; i < 100; ++i)

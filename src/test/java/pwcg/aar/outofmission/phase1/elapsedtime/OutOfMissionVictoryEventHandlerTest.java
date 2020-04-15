@@ -6,10 +6,10 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.prelim.AARPreliminaryData;
@@ -47,7 +47,7 @@ public class OutOfMissionVictoryEventHandlerTest
         PWCGContext.setProduct(PWCGProduct.FC);
         campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.ESC_103_PROFILE);
         
-        Mockito.when(squadronMember.determineService(Matchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
+        Mockito.when(squadronMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
         Mockito.when(squadronMember.determineSquadron()).thenReturn(campaign.determinePlayerSquadrons().get(0));
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
         
@@ -60,7 +60,6 @@ public class OutOfMissionVictoryEventHandlerTest
     @Test
     public void testOutOfMissionVictoriesAwardedForVictories () throws PWCGException
     {     
-        Mockito.when(squadronMember.getAiSkillLevel()).thenReturn(AiSkillLevel.ACE);
         OutOfMissionVictoryEventHandler victoryGenerator = new OutOfMissionVictoryEventHandler(campaign, aarContext);
         
         int outOfMissionVictoriesAwarded = 0;

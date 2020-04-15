@@ -6,7 +6,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.AARTestSetup;
 import pwcg.aar.ui.events.TransferEventGenerator;
@@ -15,7 +15,7 @@ import pwcg.campaign.resupply.personnel.TransferRecord;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class) 
 public class TransferEventGeneratorTest extends AARTestSetup
 {
 

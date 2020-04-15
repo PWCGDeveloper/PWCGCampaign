@@ -1,15 +1,12 @@
 package pwcg.campaign.medals;
 
-import java.util.Date;
-
 import javax.swing.ImageIcon;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
@@ -25,7 +22,7 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.product.bos.country.BoSServiceManager;
 import pwcg.product.bos.medals.AmericanMedalManager;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class) 
 public class BoSAmericanMedalManagerTest extends MedalManagerTestBase
 {
 	
@@ -44,7 +41,6 @@ public class BoSAmericanMedalManagerTest extends MedalManagerTestBase
     {               
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19441001"));
         service = ArmedServiceFactory.createServiceManager().getArmedServiceById(BoSServiceManager.USAAF, campaign.getDate());
-        Mockito.when(player.determineService(Matchers.<Date>any())).thenReturn(service);
 
         awardMedal(AmericanMedalManager.PILOTS_BADGE, 0, 0);
         awardMedal(AmericanMedalManager.BRONZE_STAR, 3, 1);
@@ -59,7 +55,6 @@ public class BoSAmericanMedalManagerTest extends MedalManagerTestBase
     {               
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19441001"));
         service = ArmedServiceFactory.createServiceManager().getArmedServiceById(BoSServiceManager.RAF, campaign.getDate());
-        Mockito.when(player.determineService(Matchers.<Date>any())).thenReturn(service);
 
         awardMedal(AmericanMedalManager.PILOTS_BADGE, 0, 0);
         awardMedal(AmericanMedalManager.BRONZE_STAR, 3, 1);
@@ -74,7 +69,6 @@ public class BoSAmericanMedalManagerTest extends MedalManagerTestBase
     {               
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19441001"));
         service = ArmedServiceFactory.createServiceManager().getArmedServiceById(BoSServiceManager.RAF, campaign.getDate());
-        Mockito.when(player.determineService(Matchers.<Date>any())).thenReturn(service);
 
         awardMedal(AmericanMedalManager.PILOTS_BADGE, 0, 0);
         awardMedal(AmericanMedalManager.BRONZE_STAR, 3, 1);
@@ -89,7 +83,6 @@ public class BoSAmericanMedalManagerTest extends MedalManagerTestBase
     {            
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19441001"));
         service = ArmedServiceFactory.createServiceManager().getArmedServiceById(BoSServiceManager.RAF, campaign.getDate());
-        Mockito.when(player.determineService(Matchers.<Date>any())).thenReturn(service);
 
         awardMedal(AmericanMedalManager.PILOTS_BADGE, 0, 0);
         awardMedal(AmericanMedalManager.BRONZE_STAR, 3, 1);

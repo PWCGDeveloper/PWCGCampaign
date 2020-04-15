@@ -5,7 +5,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
@@ -48,8 +48,8 @@ public class CampaignPersonnelManagerTest
     public void testPlayerRetrieval() throws PWCGException
     {
     	assert(campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().size() == 1);
-    	SquadronMember playerByPlayers = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
-        SquadronMember playerBySerialNumber = campaign.getPersonnelManager().getAnyCampaignMember(playerByPlayers.getSerialNumber());
+        SquadronMember player = campaign.findReferencePlayer();
+        SquadronMember playerBySerialNumber = campaign.getPersonnelManager().getAnyCampaignMember(player.getSerialNumber());
         assert(playerBySerialNumber.isPlayer());
     }
 

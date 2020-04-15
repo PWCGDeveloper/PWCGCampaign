@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -46,7 +46,6 @@ public class SquadronMembersTest
         Mockito.when(squadronMember4.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER + 4);
         
         Mockito.when(squadronMember1.getName()).thenReturn("John Bonham");
-        Mockito.when(squadronMember2.getName()).thenReturn("John Paul Jones");
         Mockito.when(squadronMember3.getName()).thenReturn("Jimmy Page");
         Mockito.when(squadronMember4.getName()).thenReturn("Robert Plant");
 

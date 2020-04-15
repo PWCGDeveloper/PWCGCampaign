@@ -1,0 +1,46 @@
+{
+  "targetPreferences": [
+    {
+      "startDate": "19420601",
+      "endDate": "19420830",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_DEFENSE",
+      "oddsOfUse": "40"
+    },
+    {
+      "startDate": "19420910",
+      "endDate": "19421030",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_DRIFTER",
+      "oddsOfUse": "40"
+    },
+    {
+      "startDate": "19421030",
+      "endDate": "19430301",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_ASSAULT",
+      "oddsOfUse": "40"
+    },
+    {
+      "startDate": "19420601",
+      "endDate": "19420830",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_ASSAULT",
+      "oddsOfUse": "30"
+    },
+    {
+      "startDate": "19420910",
+      "endDate": "19421030",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_TRANSPORT",
+      "oddsOfUse": "80"
+    },
+    {
+      "startDate": "19421030",
+      "endDate": "19430301",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_DEFENSE",
+      "oddsOfUse": "40"
+    }
+  ]
+}

@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
@@ -63,7 +63,7 @@ public class PersonnelResultsInMissionHandlerTest
 
     private void createSquadronMembersInMission() throws PWCGException
     {
-        SquadronMember playerInFlight = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
+        SquadronMember playerInFlight = campaign.findReferencePlayer();
         addSquadronPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_WOUNDED);
 
         SquadronMember sergentInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sergent");

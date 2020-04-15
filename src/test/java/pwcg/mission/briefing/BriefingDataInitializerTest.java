@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignEquipmentManager;
@@ -30,13 +30,12 @@ import pwcg.gui.helper.BriefingAssignmentData;
 import pwcg.gui.helper.BriefingDataInitializer;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionFlightBuilder;
-import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightPlanes;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class)
 public class BriefingDataInitializerTest
 {
     @Mock protected Campaign campaign;
@@ -77,11 +76,9 @@ public class BriefingDataInitializerTest
         Mockito.when(mission.getMissionFlightBuilder()).thenReturn(missionFlightBuilder);
 
         Mockito.when(missionFlightBuilder.getPlayerFlightForSquadron(Mockito.anyInt())).thenReturn(flight);
-        //Mockito.when(missionFlightBuilder.getPlayerFlightForSquadron(Mockito.any())).thenReturn(flight);
 
         Mockito.when(flight.getFlightPlanes()).thenReturn(flightPlanes);
         Mockito.when(flightPlanes.getPlanes()).thenReturn(planesInFlight);
-        Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.PATROL);
 
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420801"));
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
@@ -118,22 +115,10 @@ public class BriefingDataInitializerTest
         equippedPlanes.put(equippedPlane3.getSerialNumber(), equippedPlane3);
         equippedPlanes.put(equippedPlane4.getSerialNumber(), equippedPlane4);
 
-        Mockito.when(pilot1.determineSortKey(Mockito.any())).thenReturn("100");
-        Mockito.when(pilot2.determineSortKey(Mockito.any())).thenReturn("200");
-        Mockito.when(pilot3.determineSortKey(Mockito.any())).thenReturn("300");
-        Mockito.when(pilot4.determineSortKey(Mockito.any())).thenReturn("400");
         Mockito.when(plane1.getPilot()).thenReturn(pilot1);
         Mockito.when(plane2.getPilot()).thenReturn(pilot2);
-        Mockito.when(plane3.getPilot()).thenReturn(pilot3);
-        Mockito.when(plane4.getPilot()).thenReturn(pilot4);
-        Mockito.when(plane1.getType()).thenReturn("bf109f4");
-        Mockito.when(plane2.getType()).thenReturn("bf109f2");
-        Mockito.when(plane3.getType()).thenReturn("bf109f4");
-        Mockito.when(plane4.getType()).thenReturn("bf109f2");
         Mockito.when(plane1.getSerialNumber()).thenReturn(SerialNumber.PLANE_STARTING_SERIAL_NUMBER+1);
         Mockito.when(plane2.getSerialNumber()).thenReturn(SerialNumber.PLANE_STARTING_SERIAL_NUMBER+2);
-        Mockito.when(plane3.getSerialNumber()).thenReturn(SerialNumber.PLANE_STARTING_SERIAL_NUMBER+3);
-        Mockito.when(plane4.getSerialNumber()).thenReturn(SerialNumber.PLANE_STARTING_SERIAL_NUMBER+4);
 
         planesInFlight.add(plane1);
         planesInFlight.add(plane2);

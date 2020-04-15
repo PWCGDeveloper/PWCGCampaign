@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
@@ -20,9 +20,7 @@ import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadron.Squadron;
-import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
-import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -67,7 +65,6 @@ public class TargetBuilderTest
     public void setup() throws PWCGException
     {
         List<IFlight> playerFlights = new ArrayList<>();
-        List<PlaneMcu> playerFlightPlanes = new ArrayList<>();
         
         PWCGContext.setProduct(PWCGProduct.BOS);
         PWCGContext.getInstance().changeContext(FrontMapIdentifier.KUBAN_MAP);
@@ -88,14 +85,11 @@ public class TargetBuilderTest
         Mockito.when(targetDefinition.getTargetPosition()).thenReturn(new Coordinate(216336, 0, 184721));
         Mockito.when(targetDefinition.getTargetOrientation()).thenReturn(new Orientation(90));
         Mockito.when(targetDefinition.getTargetCountry()).thenReturn(enemyCountry);
-
-        Mockito.when(configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey)).thenReturn(ConfigSimple.CONFIG_LEVEL_MED);
         
         Mockito.when(mission.getMissionGroundUnitManager()).thenReturn(groundUnitResourceManager);
         Mockito.when(mission.getCampaign()).thenReturn(campaign);
         
         Mockito.when(flightInformation.getMission()).thenReturn(mission);
-        Mockito.when(flightInformation.getSquadron()).thenReturn(squadron);
         Mockito.when(flightInformation.getCampaign()).thenReturn(campaign);
         
         Mockito.when(flightInformation.isPlayerFlight()).thenReturn(true);
@@ -105,12 +99,7 @@ public class TargetBuilderTest
         Mockito.when(mission.getMissionFlightBuilder()).thenReturn(missionFlightBuilder);
         Mockito.when(missionFlightBuilder.getPlayerFlights()).thenReturn(playerFlights);
         Mockito.when(squadron.getCountry()).thenReturn(country);
-        Mockito.when(playerFlight.getSquadron()).thenReturn(squadron);
         Mockito.when(country.getSide()).thenReturn(Side.AXIS);
-        Mockito.when(playerFlight.getFlightPlanes()).thenReturn(flightPlanes);
-        Mockito.when(flightPlanes.getPlanes()).thenReturn(playerFlightPlanes);
-        Mockito.when(playerPlane.getEntity()).thenReturn(playerPlaneEntity);
-        Mockito.when(playerPlaneEntity.getIndex()).thenReturn(100);
     }
     
     @Test
@@ -183,7 +172,6 @@ public class TargetBuilderTest
     public void createTransportTest()  throws PWCGException
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TargetType.TARGET_TRANSPORT);
-        Mockito.when(targetDefinition.getAttackingSquadron()).thenReturn(squadron);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
         TargetFactory targetBuilder = new TargetFactory(flightInformation, targetDefinition);
         targetBuilder.buildTarget();

@@ -11,12 +11,10 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-  ],  
   "airfields": {
     "19420801": "Verkhne-Pogromnoye",
-    "19420906": "Solodovka",
-    "19421011": "Konstitutsiya",
+    "19420906": "Srednyaya Ahtuba",
+    "19421011": "Leninsk",
     "19421123": "Leninsk",
     "19421223": "Leninsk",
     "19430120": "Verh. Ahtuba",
@@ -27,7 +25,18 @@
     "19430927": "Krasnoarmeyskayas",
     "19431004": "Myshako",
     "19431008": "Myshako",
-    "19440101": "Verkhne-Pogromnoye"
+    "19440101": "Fedorovka",
+    "19440201": "Fedorovka",
+    "19440301": "Fedorovka",
+    "19440401": "Fedorovka",
+    "19440501": "Fedorovka",
+    "19440601": "Fedorovka",
+    "19440701": "Verkhne-Pogromnoye",
+    "19440801": "Gumrak",
+    "19440901": "Samovalovka",
+    "19441001": "Samovalovka",
+    "19441101": "Kachalinskaya",
+    "19441201": "Illarionovskiy"
   },
   "skins": [
     {
@@ -98,6 +107,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -107,6 +119,7 @@
       }
     ]
   },
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "PELICAN"
   }

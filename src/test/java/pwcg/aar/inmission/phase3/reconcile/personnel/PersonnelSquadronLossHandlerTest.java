@@ -6,7 +6,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
@@ -46,7 +46,7 @@ public class PersonnelSquadronLossHandlerTest
     @Test
     public void testEverybodyKilled() throws PWCGException
     {
-        SquadronMember playerInFlight = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
+        SquadronMember playerInFlight = campaign.findReferencePlayer();
         addPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_KIA);
 
         SquadronMember SergentInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sergent");
@@ -71,7 +71,7 @@ public class PersonnelSquadronLossHandlerTest
     @Test
     public void testMixedStatusWithMaimed() throws PWCGException
     {
-        SquadronMember playerInFlight = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
+        SquadronMember playerInFlight = campaign.findReferencePlayer();
         addPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_WOUNDED);
 
         SquadronMember sergentInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sergent");
@@ -97,7 +97,7 @@ public class PersonnelSquadronLossHandlerTest
     @Test
     public void testMixedStatusWithCaptured() throws PWCGException
     {
-        SquadronMember playerInFlight = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
+        SquadronMember playerInFlight = campaign.findReferencePlayer();
         addPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_CAPTURED);
 
         SquadronMember sergentInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sergent");

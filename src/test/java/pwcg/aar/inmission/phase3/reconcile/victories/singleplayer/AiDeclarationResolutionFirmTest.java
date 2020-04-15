@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
@@ -60,10 +60,7 @@ public class AiDeclarationResolutionFirmTest
         firmVictories.clear();
         
         Mockito.when(aarContext.getMissionEvaluationData()).thenReturn(evaluationData);
-        Mockito.when(evaluationData.getVictoryResults()).thenReturn(firmVictories);   
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);   
-        Mockito.when(personnelManager.getAllActivePlayers()).thenReturn(playerMembers);   
-        Mockito.when(playerMembers.getSquadronMemberList()).thenReturn(players);   
 
         playerVictor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         playerVictor.setPlaneSerialNumber(SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 1);
@@ -106,7 +103,6 @@ public class AiDeclarationResolutionFirmTest
     @Test
     public void testAiFirmVictoryAward () throws PWCGException
     {   
-        Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER)).thenReturn(playerVictor);
         Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER)).thenReturn(player);
         Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER)).thenReturn(player);
 
@@ -123,7 +119,6 @@ public class AiDeclarationResolutionFirmTest
     @Test
     public void testAiFirmBalloonAward () throws PWCGException
     {   
-        Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER)).thenReturn(playerVictor);
         Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER)).thenReturn(player);
         Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER)).thenReturn(player);
 
@@ -144,12 +139,9 @@ public class AiDeclarationResolutionFirmTest
     public void testAiFirmVictoryAwardFailedBecusePlaneNotFound () throws PWCGException
     {   
         Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER)).thenReturn(playerVictor);
         Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER)).thenReturn(player);
         Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER)).thenReturn(player);
 
-        Mockito.when(ai.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
-        Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1)).thenReturn(aiVictor);
         Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1)).thenReturn(null);
         Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1)).thenReturn(null);
         

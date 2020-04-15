@@ -6,7 +6,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.PWCGFlightTypeAbstractFactory;
-import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
@@ -26,8 +26,8 @@ public class PlayerFlightTypeBuilder
     {
         if (campaign.getCampaignData().getCampaignMode() != CampaignMode.CAMPAIGN_MODE_COMPETITIVE)
         {
-            SquadronMembers players = campaign.getPersonnelManager().getAllActivePlayers();
-            Squadron squadron = players.getSquadronMemberList().get(0).determineSquadron();
+            SquadronMember player = campaign.findReferencePlayer();
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
             return determinePlayerFlightType(flightType, squadron, participatingPlayers, isNightMission);
         }
     

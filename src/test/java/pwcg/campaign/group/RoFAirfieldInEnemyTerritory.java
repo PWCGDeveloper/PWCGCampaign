@@ -3,7 +3,7 @@ package pwcg.campaign.group;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;

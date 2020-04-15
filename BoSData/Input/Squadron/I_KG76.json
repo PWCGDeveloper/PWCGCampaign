@@ -25,7 +25,7 @@
     "19420721": "Ivanovskaya",
     "19420801": "Surovikino",
     "19420906": "Gromoslavka",
-    "19421011": "Golubinskiy",
+    "19421011": "Marinovka",
     "19421123": "Tormosin",
     "19421223": "Tormosin",
     "19430120": "Chernishkovskiy",
@@ -36,7 +36,18 @@
     "19430927": "Bagerovo",
     "19431004": "Bagerovo",
     "19431008": "Alibay",
-    "19440101": "Surovikino"
+    "19440101": "Zety",
+    "19440201": "Marinovka",
+    "19440301": "Marinovka",
+    "19440401": "Kumovka",
+    "19440501": "Golubinskiy",
+    "19440601": "Skvorin",
+    "19440701": "Kamchie",
+    "19440801": "Sekretov",
+    "19440901": "Chernishkovskiy",
+    "19441001": "Chernishkovskiy",
+    "19441101": "Chernishkovskiy",
+    "19441201": "Chernishkovskiy"
   },
   "skins": [],
   "squadHistory": {
@@ -72,6 +83,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -81,8 +95,7 @@
       }
     ]
   },
-  "conversionPeriods": [
-  ],
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "GANNET"
   }

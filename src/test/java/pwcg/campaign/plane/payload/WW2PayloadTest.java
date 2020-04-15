@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -37,9 +37,6 @@ public class WW2PayloadTest
 	{
 		PWCGContext.setProduct(PWCGProduct.BOS);
         
-        Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManagerCampaign);
-		Mockito.when(flight.getSquadron()).thenReturn(squadron);
-        Mockito.when(flight.getFlightInformation()).thenReturn(flightInformation);
         Mockito.when(flight.getTargetDefinition()).thenReturn(targetDefinition);
 	}
 

@@ -11,8 +11,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-  ],  
   "airfields": {
     "19411001": "Rjev",
     "19411020": "Lukovnikovo",
@@ -25,7 +23,7 @@
     "19420624": "Pashkovskaya",
     "19420709": "Buryakovskaya",
     "19420721": "Gelenjik-3",
-    "19420801": "Tinguta",
+    "19420801": "Plodovitoye",
     "19420906": "Trudolyublye",
     "19421011": "Novonikolskoye",
     "19421123": "Verh. Ahtuba",
@@ -38,7 +36,17 @@
     "19430927": "Krymskaya",
     "19431004": "Myshako",
     "19431008": "Myshako",
-    "19440101": "Tinguta"
+    "19440101": "Raygorod",
+    "19440301": "Svetly Yar",
+    "19440401": "Bol. Chapurniki",
+    "19440501": "Bol. Chapurniki",
+    "19440601": "Plodovitoye",
+    "19440701": "Bol. Chapurniki",
+    "19440801": "Plodovitoye",
+    "19440901": "Marinovka",
+    "19441001": "Marinovka",
+    "19441101": "Marinovka",
+    "19441201": "Grachi"
   },
   "skins": [
     {
@@ -97,6 +105,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -106,6 +117,7 @@
       }
     ]
   },
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "HAWK"
   }

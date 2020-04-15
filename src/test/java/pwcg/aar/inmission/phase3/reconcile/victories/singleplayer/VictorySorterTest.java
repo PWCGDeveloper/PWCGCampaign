@@ -8,14 +8,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.inmission.phase3.reconcile.victories.common.VictorySorter;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
-import pwcg.campaign.context.Country;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
@@ -39,10 +38,6 @@ public class VictorySorterTest
         players.add(player);
         
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);   
-        Mockito.when(personnelManager.getAllActivePlayers()).thenReturn(playerMembers);   
-        Mockito.when(playerMembers.getSquadronMemberList()).thenReturn(players);   
-
-        Mockito.when(player.getCountry()).thenReturn(Country.FRANCE);        
                 
         Mockito.when(personnelManager.getAnyCampaignMember(Mockito.any())).thenReturn(player);
         Mockito.when(player.isPlayer()).thenReturn(true);

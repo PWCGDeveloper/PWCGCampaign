@@ -9,7 +9,7 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.AARTestSetup;
 import pwcg.campaign.squadmember.Ace;
@@ -19,7 +19,7 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.VictoryMaker;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class) 
 public class CampaignAceUpdaterTest extends AARTestSetup
 {
     @Before

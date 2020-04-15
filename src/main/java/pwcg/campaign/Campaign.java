@@ -80,8 +80,8 @@ public class Campaign
             SquadronMembers activePlayers = personnelManager.getAllActivePlayers();
             if (activePlayers.getSquadronMemberList().size() > 0)
             {
-                SquadronMember player = personnelManager.getAllActivePlayers().getSquadronMemberList().get(0);
-                campaignData.setReferencePlayerSerialNumber(player.getSerialNumber());
+                SquadronMember referencePlayer = personnelManager.getAllActivePlayers().getSquadronMemberList().get(0);
+                campaignData.setReferencePlayerSerialNumber(referencePlayer.getSerialNumber());
             }
         }
     }

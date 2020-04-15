@@ -11,8 +11,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-  ],  
   "airfields": {
     "19411001": "Maloyaroslavetc",
     "19411020": "Vlasyevo",
@@ -25,9 +23,9 @@
     "19420624": "Korenovskaya",
     "19420709": "Maykop-2",
     "19420721": "Agoy",
-    "19420801": "Erzovka",
-    "19420906": "Verhne-Pogromnoye",
-    "19421011": "Solodovka",
+    "19420801": "Kuzmichy",
+    "19420906": "Rynok",
+    "19421011": "Trudolyublye",
     "19421123": "Bol. Chapurniki",
     "19421223": "Bol. Chapurniki",
     "19430120": "Tinguta",
@@ -38,7 +36,17 @@
     "19430927": "Abinskaya",
     "19431004": "Anastasievskaya",
     "19431008": "Anapa",
-    "19440101": "Erzovka"
+    "19440101": "Stolyarov",
+    "19440301": "Novonikolskoye",
+    "19440401": "Novonikolskoye",
+    "19440501": "Novonikolskoye",
+    "19440601": "Plesovskiy",
+    "19440701": "Mal. Orlovka",
+    "19440801": "Samovalovka",
+    "19440901": "Kalach",
+    "19441001": "Zety",
+    "19441101": "Kalach",
+    "19441201": "Kalach"
   },
   "skins": [
     {
@@ -103,6 +111,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -112,6 +123,7 @@
       }
     ]
   },
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "ROOK"
   }

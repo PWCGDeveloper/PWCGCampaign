@@ -8,8 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
@@ -21,7 +20,6 @@ import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
-import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AARCrewBuilderTest
@@ -53,20 +51,6 @@ public class AARCrewBuilderTest
     public void setup () throws PWCGException 
     {        
         PWCGContext.setProduct(PWCGProduct.FC);
-        
-        Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
-        
-        Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER)).thenReturn(player);
-        Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.ACE_STARTING_SERIAL_NUMBER+1)).thenReturn(aceInMission1);
-        Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.ACE_STARTING_SERIAL_NUMBER+2)).thenReturn(aceInMission2);
-        Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+1)).thenReturn(aiInSquadron);
-        Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+2)).thenReturn(aiNotInSquadron);
-
-        Mockito.when(player.getSquadronId()).thenReturn(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
-        Mockito.when(aceInMission1.getSquadronId()).thenReturn(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
-        Mockito.when(aceInMission2.getSquadronId()).thenReturn(SquadronTestProfile.JASTA_16_PROFILE.getSquadronId());
-        Mockito.when(aiInSquadron.getSquadronId()).thenReturn(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
-        Mockito.when(aiNotInSquadron.getSquadronId()).thenReturn(SquadronTestProfile.JASTA_16_PROFILE.getSquadronId());
 
         planeAiEntities = new HashMap <>();
         addPlane(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);

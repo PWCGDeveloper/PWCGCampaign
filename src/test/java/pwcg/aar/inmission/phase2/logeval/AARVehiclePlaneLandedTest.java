@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase1.parse.event.AType3;
@@ -57,7 +57,6 @@ public class AARVehiclePlaneLandedTest
         Mockito.when(logDestroyedEvent1.getVictim()).thenReturn("100");
         Mockito.when(logDestroyedEvent2.getVictim()).thenReturn("101");
         Mockito.when(logDestroyedEvent3.getVictim()).thenReturn("102");
-        Mockito.when(logDestroyedEvent1.getLocation()).thenReturn(new Coordinate(100.0, 0.0, 1000.0));
         Mockito.when(logDestroyedEvent2.getLocation()).thenReturn(new Coordinate(200.0, 0.0, 2000.0));
         Mockito.when(logDestroyedEvent3.getLocation()).thenReturn(new Coordinate(300.0, 0.0, 3000.0));
         List<IAType3> logParserDestroyedEvents = new ArrayList<>();
@@ -69,7 +68,6 @@ public class AARVehiclePlaneLandedTest
 
         Mockito.when(logLandedEvent1.getPid()).thenReturn("103");
         Mockito.when(logLandedEvent2.getPid()).thenReturn("104");
-        Mockito.when(logLandedEvent1.getLocation()).thenReturn(new Coordinate(400.0, 0.0, 4000.0));
         Mockito.when(logLandedEvent2.getLocation()).thenReturn(new Coordinate(500.0, 0.0, 5000.0));
         List<IAType6> logParserLandedEvents = new ArrayList<>();
         logParserLandedEvents.add(logLandedEvent1);

@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase1.parse.event.AType17;
 import pwcg.aar.inmission.phase1.parse.event.IAType17;
@@ -43,13 +43,7 @@ public class AARCrossedPathWithPlayerEvaluatorTest
     public void testCrossedPathPlayerDamagedVictim () throws PWCGException
     {        
         AARCrossedPathWithPlayerEvaluator aarCrossedPathWithPlayerEvaluator = new AARCrossedPathWithPlayerEvaluator();
-        Mockito.when(logVictory.getVictim()).thenReturn(logVictim);
-        Mockito.when(logDamage.getVictim()).thenReturn(logDamageVictim);
-        Mockito.when(logDamage.getVictor()).thenReturn(logDamageVictor);
         
-        Mockito.when(logVictim.getId()).thenReturn("100");
-        Mockito.when(logDamageVictim.getId()).thenReturn("100");
-        Mockito.when(logDamageVictor.getId()).thenReturn("99");
         
         boolean crossedPath = aarCrossedPathWithPlayerEvaluator.isCrossedPathWithPlayerFlight(logVictory, aarPlayerLocator, waypointEvents);
         

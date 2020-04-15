@@ -45,7 +45,6 @@ public class BoSDeploy extends DeployBase
         directoriesToCopy.put("19421123", null);
         directoriesToCopy.put("19421223", null);
         directoriesToCopy.put("19430120", null);
-        directoriesToCopy.put("19440101", null);
         
 		// Kuban dates
         directoriesToCopy.put("19420601", null);
@@ -59,6 +58,20 @@ public class BoSDeploy extends DeployBase
         directoriesToCopy.put("19430927", null);
         directoriesToCopy.put("19431004", null);
         directoriesToCopy.put("19431008", null);
+        
+        // East Front 1944 dates
+        directoriesToCopy.put("19440101", null);
+        directoriesToCopy.put("19440201", null);
+        directoriesToCopy.put("19440301", null);
+        directoriesToCopy.put("19440401", null);
+        directoriesToCopy.put("19440501", null);
+        directoriesToCopy.put("19440601", null);
+        directoriesToCopy.put("19440701", null);
+        directoriesToCopy.put("19440801", null);
+        directoriesToCopy.put("19440901", null);
+        directoriesToCopy.put("19441001", null);
+        directoriesToCopy.put("19441101", null);
+        directoriesToCopy.put("19441201", null);
 
         // Bodenplatte dates
         directoriesToCopy.put("19440901", null);

@@ -11,8 +11,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-  ],  
   "airfields": {
     "19430301": "Holmskaya",
     "19430330": "Kievskoe",
@@ -21,7 +19,18 @@
     "19430927": "Zaporojskaya",
     "19431004": "Zaporojskaya",
     "19431008": "Zaporojskaya",
-    "19440101": "Kumovka"
+    "19440101": "Samovalovka",
+    "19440201": "Samovalovka",
+    "19440301": "Samovalovka",
+    "19440401": "Pitomnik",
+    "19440501": "Samovalovka",
+    "19440601": "Golubinskiy",
+    "19440701": "Malogolubaya",
+    "19440801": "Zryansky",
+    "19440901": "Frolov",
+    "19441001": "Frolov",
+    "19441101": "Surovikino",
+    "19441201": "Frolov"
   },
   "skins": [],
   "serviceId": 20101,
@@ -43,6 +52,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -52,6 +64,7 @@
       }
     ]
   },
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "STORK"
   }

@@ -2,7 +2,7 @@ package pwcg.campaign.io.json;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
@@ -71,7 +71,7 @@ public class CampaignIOJsonTest
         
         assert (campaign.getDate().equals(DateUtils.getDateYYYYMMDD(SquadronTestProfile.JASTA_11_PROFILE.getDateString())));
         assert (campaign.getCampaignData().getName().equals(CampaignCacheBase.TEST_CAMPAIGN_NAME));
-    	SquadronMember player = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
+        SquadronMember player = campaign.findReferencePlayer();
         assert (player.getName().equals(CampaignCacheBase.TEST_PLAYER_NAME));
     }
 

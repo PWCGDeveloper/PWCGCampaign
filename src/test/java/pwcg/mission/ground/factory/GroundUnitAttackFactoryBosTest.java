@@ -5,7 +5,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
@@ -20,7 +20,7 @@ import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.testutils.KubanAttackMockCampaign;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class) 
 public class GroundUnitAttackFactoryBosTest extends KubanAttackMockCampaign
 {
     private TargetDefinition targetDefinition = new TargetDefinition();

@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.AARPersonnelAwards;
@@ -62,7 +62,6 @@ public class CampaignMemberAwardsGeneratorInMissionTest
     private PwcgMissionData pwcgMissionData;
      
     private Map<Integer, SquadronMember> squadronMembersInMission = new HashMap<>();
-    private Map<Integer, SquadronMember> squadronMembersOutOfMission = new HashMap<>();
     
     @Before
     public void setup() throws PWCGException
@@ -75,8 +74,6 @@ public class CampaignMemberAwardsGeneratorInMissionTest
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
         Mockito.when(preliminaryData.getCampaignMembersInMission()).thenReturn(campaignMembersInMission);
         Mockito.when(campaignMembersInMission.getSquadronMemberCollection()).thenReturn(squadronMembersInMission);
-        Mockito.when(preliminaryData.getCampaignMembersOutOfMission()).thenReturn(campaignMembersOutOfMission);
-        Mockito.when(campaignMembersOutOfMission.getSquadronMemberCollection()).thenReturn(squadronMembersOutOfMission);
         Mockito.when(aarContext.getReconciledInMissionData()).thenReturn(reconciledInMissionData);
         Mockito.when(reconciledInMissionData.getReconciledVictoryData()).thenReturn(reconciledVictoryData);
         Mockito.when(aarContext.getCampaignUpdateData()).thenReturn(campaignUpdateData);

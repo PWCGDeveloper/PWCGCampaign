@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignAces;
@@ -57,13 +57,11 @@ public class AceManagerTest
 
         Mockito.when(georgesGuynemer.getSquadronId()).thenReturn(301003);
         Mockito.when(georgesGuynemer.getSerialNumber()).thenReturn(101064);
-        Mockito.when(georgesGuynemer.getName()).thenReturn("Georges Guynemer");
         Mockito.when(georgesGuynemer.getPilotActiveStatus()).thenReturn(SquadronMemberStatus.STATUS_ACTIVE);
         Mockito.when(georgesGuynemer.copy()).thenReturn(georgesGuynemer);
 
         Mockito.when(renefonck.getSquadronId()).thenReturn(301103);
         Mockito.when(renefonck.getSerialNumber()).thenReturn(101154);
-        Mockito.when(renefonck.getName()).thenReturn("Rene Fonck");
         Mockito.when(renefonck.getPilotActiveStatus()).thenReturn(SquadronMemberStatus.STATUS_ACTIVE);
         Mockito.when(renefonck.copy()).thenReturn(renefonck);
 

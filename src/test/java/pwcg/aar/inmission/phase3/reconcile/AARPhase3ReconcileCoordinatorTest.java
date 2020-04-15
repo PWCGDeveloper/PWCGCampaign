@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.phase1.parse.AARMissionLogFileSet;
@@ -46,7 +46,6 @@ public class AARPhase3ReconcileCoordinatorTest
     private List<LogPilot> pilotStatusList;
     private List<LogPilot> aceStatusList;
     private List<LogVictory> firmVictories;        
-    private SquadronMember playerInFlight;
     private SquadronMember sergentInFlight;
     private SquadronMember corporalInFlight;
     private SquadronMember sltInFlight;
@@ -77,9 +76,6 @@ public class AARPhase3ReconcileCoordinatorTest
 
         playerPlaneVictor.setSquadronId(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         aiPlaneVictor.setSquadronId(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-
-        Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
-        Mockito.when(preliminaryData.getPwcgMissionData()).thenReturn(pwcgMissionData);
         
         Mockito.when(aarContext.getMissionEvaluationData()).thenReturn(evaluationData);
         Mockito.when(evaluationData.getPilotsInMission()).thenReturn(pilotStatusList);
@@ -127,7 +123,8 @@ public class AARPhase3ReconcileCoordinatorTest
             playerDeclarationSet.addDeclaration(declaration);
         }
         
-        playerDeclarations.put(campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0).getSerialNumber(), playerDeclarationSet);
+        SquadronMember playerInFlight = campaign.findReferencePlayer();
+        playerDeclarations.put(playerInFlight.getSerialNumber(), playerDeclarationSet);
     }
 
     private void createVictory(LogPlane victor, Integer pilotSerialNumber, Integer planeSerialNumber)
@@ -150,7 +147,7 @@ public class AARPhase3ReconcileCoordinatorTest
 
     private void createCampaignMembersInMission() throws PWCGException
     {        
-        playerInFlight = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
+        SquadronMember playerInFlight = campaign.findReferencePlayer();
         addSquadronPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_WOUNDED);
         playerPlaneVictor.setPilotSerialNumber(playerInFlight.getSerialNumber());
         playerPlaneVictor.setCountry(new FCCountry(Country.FRANCE));
