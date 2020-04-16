@@ -58,8 +58,7 @@ public class Campaign
             return false;
         }
 
-        CampaignCoopConverter converter = new CampaignCoopConverter(this);
-        converter.convert();
+        CampaignFixer.fixCampaign(this);
 
         CampaignModeChooser campaignModeChooser = new CampaignModeChooser(this);
         CampaignMode campaignMode = campaignModeChooser.chooseCampaignMode();

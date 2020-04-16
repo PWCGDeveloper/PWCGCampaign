@@ -165,6 +165,11 @@ public class CampaignPersonnelManager
         return new ArrayList<PersonnelReplacementsService>(personnelReplacementsServices.values());
     }
     
+    public boolean hasPersonnelReplacements (int serviceId)
+    {
+        return personnelReplacementsServices.containsKey(serviceId);
+    }
+    
     public PersonnelReplacementsService getPersonnelReplacementsService(Integer serviceId) throws PWCGException
     {
         if (!personnelReplacementsServices.containsKey(serviceId))

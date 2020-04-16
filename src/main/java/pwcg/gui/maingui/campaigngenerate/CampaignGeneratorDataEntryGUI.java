@@ -422,6 +422,7 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
             campaignGeneratePanel.add(lCoopUser, labelConstraints);
 
             cbCoopUser = new JComboBox<String>();
+            cbCoopUser.insertItemAt("", 0);
             for (CoopUser coopUsername : CoopUserManager.getIntance().getAllCoopUsers())
             {
                 cbCoopUser.addItem(coopUsername.getUsername());

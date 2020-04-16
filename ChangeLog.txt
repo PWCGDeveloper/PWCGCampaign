@@ -6,12 +6,17 @@ Added East Front 1944 Map
 - Uses Stalingrad map
 - Movement follows Soviet gains as map allows
 - Lets Eastern Front continue through 1944
+From Murleen:
+- Binary list file generated properly
+- US/British call signs added
+- Flight Officer and Warrant Officer ranks added for USAAF/RAF respectively
 Bugs:
 Correct situation where services can be cut off in campaign creation
 Fixed failure to open skin management screen
 Correct situation where PWCG may get stuck generating missions for a secondary pilot
 Loosened naming tolerances for campaigns to allow numbers - be careful, the game might not like it
 Do not log pilot badges to squadron logs
+Added blank line for default coop user to avoid confusion - user must select or type in coop user
 
 
 PWCG 8.4.1

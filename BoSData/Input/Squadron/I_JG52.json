@@ -103,9 +103,9 @@
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
-        "startDate": "19440901",
+        "startDate": "19411001",
         "endDate": "19450601",
-        "nightMissionOdds": 3
+        "nightMissionOdds": 2
       }
     ]
   },

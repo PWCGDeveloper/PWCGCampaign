@@ -1,20 +1,6 @@
 https://github.com/PWCGDeveloper/PWCG.git
 
 
-Key Tests for PWCG 8.0
-Player air start near ingress
-Escort linkage
-AI escort linkage
-Ai air start near 
-Balloon defense
-Addition of Ai balloon defense flight for player balloon bust
-Virtual waypoint linkage to correct WP
-
-Player escort ingress should be near rendezvous - rendezvous should be target position
-
-
-
-
 New Events
 - Add page and squadron log for aircraft introduced
 - Add page and squadron log for aircraft removed from service

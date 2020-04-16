@@ -23,7 +23,7 @@ public class CampaignCoopConverter
         this.campaign = campaign;
     }
     
-    public void convert()
+    public void convertToV8Coop()
     {
         try
         {            

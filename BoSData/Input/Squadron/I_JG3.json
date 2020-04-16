@@ -6,8 +6,8 @@
 	"skill": 85,
 	"planeAssignments": [
 		{
-			"archType": "fw190",
-			"squadronIntroduction": "19440901",
+			"archType": "bf109",
+			"squadronIntroduction": "19420801",
 			"squadronWithdrawal": "19450601"
 		}
 	],
@@ -25,16 +25,18 @@
 		"19430927": "Taman",
 		"19431004": "Taman",
 		"19431008": "Bagerovo",
-		"19440101": "Zimovskoy",
-		"19440901": "Aachen",
-		"19441001": "Kelz",
-		"19441101": "Koln-Ostheim",
-		"19441220": "Soesterberg",
-		"19441225": "Twente",
-		"19441229": "Twente",
-		"19450207": "Soesterberg",
-		"19450310": "Coesfeld-Lette",
-		"19450404": "Plantlunne"
+		"19440101": "Pitomnik",
+		"19440201": "Pitomnik",
+		"19440301": "Aksay",
+		"19440401": "Bol. Rossoshka",
+		"19440501": "Bol. Rossoshka",
+		"19440601": "Marinovka",
+		"19440701": "Kumovka",
+		"19440801": "Tuzov",
+		"19440901": "Surovikino",
+		"19441001": "Kamchie",
+		"19441101": "Surovikino",
+		"19441201": "Surovikino"
 	},
 	"skins": [
 		{
@@ -83,11 +85,11 @@
 		"squadronRolePeriods": [
 			{
 				"startDate": "19420801",
-				"endDate": "19440831",
+				"endDate": "19450601",
 				"weightedRoles": [
 					{
 						"role": "ROLE_STRATEGIC_INTERCEPT",
-						"weight": 20
+						"weight": 5
 					},
 					{
 						"role": "ROLE_RECON",
@@ -102,29 +104,15 @@
 						"weight": 10
 					}
 				]
-			},
-			{
-				"startDate": "19440901",
-				"endDate": "19450601",
-				"weightedRoles": [
-					{
-						"role": "ROLE_FIGHTER",
-						"weight": 70
-					},
-					{
-						"role": "ROLE_ATTACK",
-						"weight": 30
-					}
-				]
 			}
 		]
 	},
 	"nightMissionOdds": {
 		"nightMissionPeriods": [
 			{
-				"startDate": "19440901",
+				"startDate": "19411001",
 				"endDate": "19450601",
-				"nightMissionOdds": 3
+				"nightMissionOdds": 2
 			}
 		]
 	},

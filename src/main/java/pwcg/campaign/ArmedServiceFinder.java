@@ -27,7 +27,7 @@ public class ArmedServiceFinder
         return servicesForMap;
     }
 
-    public static List<ArmedService> getArmedServicesForCampaign(Campaign campaign) throws PWCGException
+    public static List<ArmedService> getArmedServicesForCampaignCreation(Campaign campaign) throws PWCGException
     {
         if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COOP)
         {
@@ -39,7 +39,22 @@ public class ArmedServiceFinder
         }
     }
     
-    public static List<ArmedService> getArmedServicesForMap(Campaign campaign) throws PWCGException
+    public static List<ArmedService> getArmedServicesForDate(Campaign campaign) throws PWCGException
+    {
+        List<ArmedService> servicesForDate = new ArrayList<>();
+        List<ArmedService> allServices = ArmedServiceFactory.createServiceManager().getAllArmedServices();
+        for (ArmedService armedService : allServices)
+        {
+            if (armedService.isActive(campaign.getDate()))
+            {
+                servicesForDate.add(armedService);
+            }
+        }
+
+        return servicesForDate;
+    }
+
+    private static List<ArmedService> getArmedServicesForMap(Campaign campaign) throws PWCGException
     {
         List<ArmedService> servicesForMap = new ArrayList<>();
         PWCGMap map = PWCGContext.getInstance().getCurrentMap();
@@ -58,7 +73,7 @@ public class ArmedServiceFinder
         return servicesForMap;
     }
     
-    public static List<ArmedService> getArmedServicesForSameSide(Campaign campaign) throws PWCGException
+    private static List<ArmedService> getArmedServicesForSameSide(Campaign campaign) throws PWCGException
     {
         List<ArmedService> servicesForMap = new ArrayList<>();
         PWCGMap map = PWCGContext.getInstance().getCurrentMap();

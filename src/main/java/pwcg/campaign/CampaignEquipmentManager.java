@@ -29,6 +29,11 @@ public class CampaignEquipmentManager
     {
         return equipmentAllSquadrons.get(squadronId);
     }
+    
+    public boolean hasEquipmentDepo (int serviceId)
+    {
+        return equipmentDepotsForServices.containsKey(serviceId);
+    }
 
     public EquipmentDepot getEquipmentDepotForService(Integer serviceId) throws PWCGException
     {
