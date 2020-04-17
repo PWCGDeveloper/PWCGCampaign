@@ -27,6 +27,7 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.MonitorSupport;
 import pwcg.gui.rofmap.MapPanelBase;
 import pwcg.gui.utils.MapPointInfoPopup;
+import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 
@@ -35,19 +36,21 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 	private static final long serialVersionUID = 1L;
 	public static int NO_MAP_POINT_SELECTED = -1;
 	
-	private BriefingFlightParameters briefParametersContext;
+	private BriefingFlightParameters briefingFlightParameters;
     private List <FlightMap> alliedVirtualPoints = new ArrayList<FlightMap>();
     private List <FlightMap> axisVirtualPoints = new ArrayList<FlightMap>();
     private CoordinateBox missionBorders = new CoordinateBox();
+    private Mission mission;
 
 	private BriefingMapGUI parent = null;
 
-	public BriefingMapPanel(BriefingMapGUI parent, BriefingFlightParameters briefParametersContext) throws PWCGException 
+	public BriefingMapPanel(BriefingMapGUI parent, BriefingFlightParameters briefingFlightParameters, Mission mission) throws PWCGException 
 	{
 		super(parent);
 		
 		this.parent = parent;
-		this.briefParametersContext = briefParametersContext;
+		this.briefingFlightParameters = briefingFlightParameters;
+        this.mission = mission;
 	}
 
 	public void paintComponent(Graphics g)
@@ -124,7 +127,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
     {
         List <BriefingMapPoint> drawPoints = new ArrayList <BriefingMapPoint>();
 
-        for (EditorWaypointGroup editorGroup : briefParametersContext.getWaypointEditorGroups())
+        for (EditorWaypointGroup editorGroup : briefingFlightParameters.getWaypointEditorGroups())
         {
             drawPoints.add(editorGroup.getBriefingMapPoint());
         }
@@ -265,7 +268,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 
 	public void mouseMovedCallback(MouseEvent e) 
 	{
-		if (parent.getBriefingMissionHandler().getMission().isFinalized())
+		if (mission.isFinalized())
 		{
 			return;			
 		}
@@ -288,9 +291,9 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 	{
 	    if (!movementEnabled)
 	    {
-	        if (!parent.getBriefingMissionHandler().getMission().isFinalized())
+	        if (!mission.isFinalized())
 	        {
-    	    	BriefingMapPoint selectedMapPoint = briefParametersContext.getSelectedMapPoint();
+    	    	BriefingMapPoint selectedMapPoint = briefingFlightParameters.getSelectedMapPoint();
     	    	if (selectedMapPoint != null)
     	    	{
     		        Point point = new Point();
@@ -319,14 +322,14 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 
 	public void leftClickCallback(MouseEvent mouseEvent)
 	{
-		if (parent.getBriefingMissionHandler().getMission().isFinalized())
+		if (mission.isFinalized())
 		{
             super.leftClickCallback(mouseEvent);
 		}
 		else
 		{
 			int selectedMapPointIndex = determineSelectedWaypointIndex(mouseEvent.getX(), mouseEvent.getY());
-			briefParametersContext.setSelectedMapPointIndex(selectedMapPointIndex);    			
+			briefingFlightParameters.setSelectedMapPointIndex(selectedMapPointIndex);    			
     		if (selectedMapPointIndex == NO_MAP_POINT_SELECTED)
     		{
     			super.leftClickCallback(mouseEvent);
@@ -336,10 +339,10 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 
 	public void rightClickCallback(MouseEvent e)
 	{
-		if (!parent.getBriefingMissionHandler().getMission().isFinalized())
+		if (!mission.isFinalized())
 		{
     		int selectedMapPointIndex = determineSelectedWaypointIndex(e.getX(), e.getY());
-			briefParametersContext.setActionMapPointIndex(selectedMapPointIndex);    			
+			briefingFlightParameters.setActionMapPointIndex(selectedMapPointIndex);    			
     		if (selectedMapPointIndex >= 0)
     		{
     			WaypointActionPopup menu = new WaypointActionPopup(this);
@@ -369,18 +372,18 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 	{		
 		super.leftClickReleasedCallback(mouseEvent);
 
-		if (parent.getBriefingMissionHandler().getMission().isFinalized())
+		if (mission.isFinalized())
 		{
 			return;			
 		}
 
-		if (briefParametersContext.getSelectedMapPointIndex() != NO_MAP_POINT_SELECTED)
+		if (briefingFlightParameters.getSelectedMapPointIndex() != NO_MAP_POINT_SELECTED)
 	    {
 	        Point point = new Point();
 	        point.x = mouseEvent.getX();
 	        point.y = mouseEvent.getY();
         	Coordinate newCoord = this.pointToCoordinate(point);
-        	briefParametersContext.updatePosition(newCoord);
+        	briefingFlightParameters.updatePosition(newCoord);
 
 			parent.waypointChangedNotification();
 
@@ -388,12 +391,12 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 	    }
 
 
-		briefParametersContext.setSelectedMapPointIndex(NO_MAP_POINT_SELECTED);
+		briefingFlightParameters.setSelectedMapPointIndex(NO_MAP_POINT_SELECTED);
 	}
 
 	public void rightClickReleasedCallback(MouseEvent e) 
 	{
-		if (parent.getBriefingMissionHandler().getMission().isFinalized())
+		if (mission.isFinalized())
 		{
 			return;			
 		}
@@ -404,7 +407,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 	{
 		int selectedMapPointIndex = NO_MAP_POINT_SELECTED;
 		int lastValidIndex = NO_MAP_POINT_SELECTED;
-		for (EditorWaypointGroup editorWaypointGroup :  briefParametersContext.getWaypointEditorGroups())
+		for (EditorWaypointGroup editorWaypointGroup :  briefingFlightParameters.getWaypointEditorGroups())
 		{
 			BriefingMapPoint mapPoint = editorWaypointGroup.getBriefingMapPoint();			
 			++lastValidIndex;
@@ -432,7 +435,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 		upperLeft.x = 10000000;
 		upperLeft.y = 10000000;
 		
-		for (EditorWaypointGroup editorWaypointGroup: briefParametersContext.getWaypointEditorGroups())
+		for (EditorWaypointGroup editorWaypointGroup: briefingFlightParameters.getWaypointEditorGroups())
 		{
 			BriefingMapPoint mapPoint= editorWaypointGroup.getBriefingMapPoint();
 			Point point = super.coordinateToPoint(mapPoint.coord);
@@ -458,7 +461,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 			String action = arg0.getActionCommand();
 			if (action.contains("Add"))
 			{
-				if (briefParametersContext.getActionMapPointIndex() >= 0)
+				if (briefingFlightParameters.getActionMapPointIndex() >= 0)
 				{
 					//briefParametersContext.addWayPoint(briefParametersContext.getActionMapPointIndex());
 					//parent.waypointChangedNotification();
@@ -466,9 +469,9 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 			}
 			else if (action.contains("Remove"))
 			{
-				if (briefParametersContext.getActionMapPointIndex() >= 0)
+				if (briefingFlightParameters.getActionMapPointIndex() >= 0)
 				{
-					briefParametersContext.removeWayPoint(briefParametersContext.getActionMapPointIndex());
+					briefingFlightParameters.removeWayPoint(briefingFlightParameters.getActionMapPointIndex());
 					parent.waypointChangedNotification();
 				}
 			}

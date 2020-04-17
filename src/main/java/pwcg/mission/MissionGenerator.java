@@ -17,8 +17,8 @@ public class MissionGenerator
     public Mission makeMission(MissionHumanParticipants participatingPlayers) throws PWCGException 
     {
         MissionProfile missionProfile = generateProfile(participatingPlayers);
-        FlightTypes flightType = finalizePlayerFlightType(participatingPlayers, missionProfile);
-        Mission mission = makeMissionFromFlightType(participatingPlayers, flightType, missionProfile);
+        FlightTypes overrideFlightType = finalizePlayerFlightType(participatingPlayers, missionProfile);
+        Mission mission = makeMissionFromFlightType(participatingPlayers, overrideFlightType, missionProfile);
         return mission;
     }
 

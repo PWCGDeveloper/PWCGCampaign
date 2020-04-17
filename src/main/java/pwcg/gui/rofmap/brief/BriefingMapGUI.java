@@ -19,18 +19,17 @@ import javax.swing.JScrollPane;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.MonitorSupport;
-import pwcg.gui.helper.BriefingMissionHandler;
+import pwcg.gui.helper.BriefingMissionFlight;
 import pwcg.gui.rofmap.MapGUI;
 import pwcg.gui.rofmap.MapScroll;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -38,8 +37,6 @@ import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.escort.VirtualEscortFlight;
 import pwcg.mission.utils.MissionTime;
 
 /**
@@ -61,24 +58,25 @@ import pwcg.mission.utils.MissionTime;
  * @author Admin
  *
  */
-public class BriefingMapGUI extends MapGUI implements ActionListener
+public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightChanged
 {
 	private static final long serialVersionUID = 1L;
-    private CampaignHomeGUI campaignHomeGui = null;
+    private CampaignHomeGUI campaignHomeGui;
 
-    private JComboBox<String> cbFuel = null;
-    private JComboBox<String> cbMissionTime = null;
-    private JPanel editorPanel = null;
+    private JComboBox<String> cbFuel;
+    private JComboBox<String> cbMissionTime;
+    private JPanel editorPanel;
+    private Mission mission;
+    private BriefingContext briefingContext;
+    private BriefingFlightChooser briefingFlightChooser;
 
-    private BriefingMissionHandler briefingMissionHandler = null;
-
-	public BriefingMapGUI(CampaignHomeGUI campaignHomeGui, BriefingMissionHandler briefingMissionHandler, Date mapDate) throws PWCGException  
+	public BriefingMapGUI(CampaignHomeGUI campaignHomeGui, Mission mission, BriefingContext briefingContext, Date mapDate) throws PWCGException  
 	{
 		super(mapDate);
 		
         this.campaignHomeGui =  campaignHomeGui;
-        this.briefingMissionHandler =  briefingMissionHandler;
-        briefingMissionHandler.loadMissionParams();
+        this.mission =  mission;
+        this.briefingContext =  briefingContext;
 
 		setLayout(new BorderLayout());		
 	}    
@@ -87,6 +85,9 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
 	{
 		try
 		{
+	        briefingFlightChooser = new BriefingFlightChooser(mission, this);
+	        briefingFlightChooser.makeComboBox();
+
 			Color bg = ColorMap.MAP_BACKGROUND;
 			setSize(200, 200);
 			setOpaque(false);
@@ -111,25 +112,38 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
     {
         JPanel briefingMapCenterPanel = new JPanel(new BorderLayout());
 
+        JPanel flightChooserPanel = createFlightChooserPanel();
+        briefingMapCenterPanel.add(flightChooserPanel, BorderLayout.NORTH);
+
         createMapPanel();
-        
-        briefingMapCenterPanel.add(mapScroll.getMapScrollPane());
+        briefingMapCenterPanel.add(mapScroll.getMapScrollPane(), BorderLayout.CENTER);
         
         return briefingMapCenterPanel;
+    }
+    
+
+    private JPanel createFlightChooserPanel() throws PWCGException
+    {
+        JPanel flightChooserPanel = new JPanel(new BorderLayout());
+        flightChooserPanel.setOpaque(false);
+        
+        flightChooserPanel.add(briefingFlightChooser.getCbFlightChooser(), BorderLayout.NORTH);
+        return flightChooserPanel;
     }
 
     private void createMapPanel() throws PWCGException
     {
-        BriefingMapPanel mapPanel = new BriefingMapPanel(this, briefingMissionHandler.getBriefParametersContext());
+        BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingHandler();
+        
+        BriefingMapPanel mapPanel = new BriefingMapPanel(this, activeMissionHandler.getBriefingFlightParameters(), mission);
         mapScroll = new MapScroll(mapPanel);  
         mapPanel.setMapBackground(100);
-
 
         add(mapScroll.getMapScrollPane(), BorderLayout.CENTER);
 
         // Center the map at the first WP. 
         Point initialPosition = null;
-        for  (EditorWaypointGroup editorWaypointGroup : briefingMissionHandler.getBriefParametersContext().getWaypointEditorGroups())
+        for  (EditorWaypointGroup editorWaypointGroup : activeMissionHandler.getBriefingFlightParameters().getWaypointEditorGroups())
         {
         	if (editorWaypointGroup.getWaypointInBriefing() != null)
         	{
@@ -138,13 +152,12 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
         	}
         }
         
-        // For debug: plot likely encounter points
         ConfigManagerCampaign configManager = PWCGContext.getInstance().getCampaign().getCampaignConfigManager();
         int showAllFlightsInBreifingKey = configManager.getIntConfigParam(ConfigItemKeys.ShowAllFlightsInBreifingKey);
         if (showAllFlightsInBreifingKey == 1)
         {
-            mapFlights();
-            mapFlightBox();
+            BriefingMapFlightMapper flightMapper = new BriefingMapFlightMapper(activeMissionHandler, mapPanel);
+            flightMapper.mapRequestedFlights();
         }
         
         centerMapAt(initialPosition);
@@ -162,7 +175,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
 		buttonGrid.setLayout(new GridLayout(0,1));
 		buttonGrid.setOpaque(false);
 	    
-        if (briefingMissionHandler.getMission().isFinalized())
+        if (mission.isFinalized())
         {
             buttonGrid.add(PWCGButtonFactory.makeDummy());
             makeButton(buttonGrid, "Back to Campaign");
@@ -251,14 +264,12 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
 
     private JPanel createDropDownPanel() throws PWCGException
     {
-        // JPanel panel = new JPanel(gridLayout);
         JPanel dropDownPanel = new JPanel(new GridLayout(0,1));
         dropDownPanel.setOpaque(false);
         
         createFuelDisplay();
         dropDownPanel.add(cbFuel);
 
-        // Time CB
         createTimeDisplay();
         dropDownPanel.add(cbMissionTime);
         
@@ -276,15 +287,15 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
 		constraints.ipady = 3;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		
-		// JPanel panel = new JPanel(gridLayout);
 		JPanel waypointPanel = new JPanel(gridBagLayout);
 		waypointPanel.setOpaque(false);
 
 		createMissionParametersHeader(constraints, waypointPanel);
 	    
-	    for (WaypointEditor wpEditor : briefingMissionHandler.getBriefParametersContext().getWaypointEditorsInBriefing())
+        BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingHandler();
+	    for (WaypointEditor wpEditor : activeMissionHandler.getBriefingFlightParameters().getWaypointEditorsInBriefing())
 	    {
-			if (briefingMissionHandler.getMission().isFinalized())
+			if (mission.isFinalized())
 			{
 			    wpEditor.setEnabled(false);
 			}
@@ -306,8 +317,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
 	    
         JScrollPane waypointScrollPane = ScrollBarWrapper.makeScrollPane(waypointPanel);
         
-        // Looks nicer NORTH but need CENTER for scroll bars
-        if (briefingMissionHandler.getBriefParametersContext().getNumWaypoints() > 15)
+        if (activeMissionHandler.getBriefingFlightParameters().getNumWaypoints() > 15)
         {
             waypointBorderPanel.add(waypointScrollPane, BorderLayout.CENTER);
         }
@@ -333,10 +343,11 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
         cbMissionTime.setOpaque(false);
         cbMissionTime.setSelectedIndex(missionTime.getIndexForTime());
         String selectedTime = (String)cbMissionTime.getSelectedItem();
-        briefingMissionHandler.getBriefParametersContext().setSelectedTime(selectedTime);
+
+        briefingContext.getBriefingMissionParameters().setSelectedTime(selectedTime);
         
         cbMissionTime.addActionListener(this);
-        if (briefingMissionHandler.getMission().isFinalized())
+        if (mission.isFinalized())
         {
             cbMissionTime.setEnabled(false);
         }
@@ -344,7 +355,6 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
 
     private void createFuelDisplay()
     {
-        // Fuel CB
 		cbFuel = new JComboBox<String>();
 		cbFuel.addItem("Fuel 100%");
 		cbFuel.addItem("Fuel 95%");
@@ -359,18 +369,12 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
 		cbFuel.setSelectedIndex(getIndexForFuel());
 		cbFuel.setActionCommand("ChangeFuel");
 		cbFuel.addActionListener(this);
-		if (briefingMissionHandler.getMission().isFinalized())
+		if (mission.isFinalized())
 		{
 			cbFuel.setEnabled(false);
 		}
     }
 
-
-    /**
-     * @param constraints
-     * @param panel
-     * @throws PWCGException 
-     */
     private void createMissionParametersHeader(GridBagConstraints constraints, JPanel panel) throws PWCGException
     {
         Font font = MonitorSupport.getPrimaryFontSmall();
@@ -411,15 +415,13 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
         constraints.gridy = 0;
         panel.add(headingLabel, constraints);
     }
-	
-	/**
-	 * @return
-	 */
+
 	private int getIndexForFuel()
 	{
 	    int index = 0;
 	    
-	    double selectedFuel = briefingMissionHandler.getBriefParametersContext().getSelectedFuel();
+        BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingHandler();
+	    double selectedFuel = activeMissionHandler.getBriefingFlightParameters().getSelectedFuel();
 	    
         if (selectedFuel > .95)
         {
@@ -491,7 +493,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
             else if (action.equalsIgnoreCase("ChangeTime"))
             {
                 String selectedTime = (String)cbMissionTime.getSelectedItem();
-                briefingMissionHandler.getBriefParametersContext().setSelectedTime(selectedTime);
+                briefingContext.getBriefingMissionParameters().setSelectedTime(selectedTime);
             }
 		}
 		catch (Exception e)
@@ -524,8 +526,9 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
 
     private void backToBriefingDescription() throws PWCGException
     {
-        briefingMissionHandler.getBriefParametersContext().synchronizeAltitudeEdits();
-        briefingMissionHandler.updateMissionBriefingParameters();
+        BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingHandler();
+        activeMissionHandler.getBriefingFlightParameters().synchronizeAltitudeEdits();
+        briefingContext.updateMissionBriefingParameters();
 
         CampaignGuiContextManager.getInstance().popFromContextStack();
         return;
@@ -533,10 +536,11 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
 
     private void forwardToPilotSelection() throws PWCGException
     {
-        briefingMissionHandler.getBriefParametersContext().synchronizeAltitudeEdits();
-        briefingMissionHandler.updateMissionBriefingParameters();
+        BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingHandler();
+        activeMissionHandler.getBriefingFlightParameters().synchronizeAltitudeEdits();
+        briefingContext.updateMissionBriefingParameters();
         
-        BriefingPilotPanelSet pilotSelection = new BriefingPilotPanelSet(campaignHomeGui.getCampaign(), campaignHomeGui,  briefingMissionHandler);
+        BriefingPilotPanelSet pilotSelection = new BriefingPilotPanelSet(campaignHomeGui.getCampaign(), campaignHomeGui,  briefingContext, mission);
         pilotSelection.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(pilotSelection);
     }
@@ -550,48 +554,18 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
         int valueAsInt = Integer.valueOf (valueString);
         Double selectedFuel = Double.valueOf (valueAsInt).doubleValue() / 100.0;
         
-        briefingMissionHandler.getBriefParametersContext().setSelectedFuel(selectedFuel);
+        BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingHandler();
+        activeMissionHandler.getBriefingFlightParameters().setSelectedFuel(selectedFuel);
     }
 
-    private void mapFlights() throws PWCGException  
-    {    
-        Mission mission = briefingMissionHandler.getMission();
-        
-        BriefingMapPanel mapPanel = (BriefingMapPanel)mapScroll.getMapPanel();
-        
-        mapPanel.clearVirtualPoints();
-        
-        SquadronMember referencePlayer = mission.getCampaign().findReferencePlayer();
-        IFlight myFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
-        for (IFlight linkedFlight : myFlight.getLinkedFlights().getLinkedFlights())
-        {
-            mapPanel.makeMapPanelVirtualPoints (linkedFlight);
-        }
-        
-        for (IFlight flight : mission.getMissionFlightBuilder().getAiFlights())
-        {
-            mapPanel.makeMapPanelVirtualPoints (flight);
-            
-            for (IFlight linkedFlight : flight.getLinkedFlights().getLinkedFlights())
-            {
-                if (!(linkedFlight instanceof VirtualEscortFlight))
-                {
-                    mapPanel.makeMapPanelVirtualPoints (linkedFlight);
-                }
-            }
-        }
-    }
-
-
-    private void mapFlightBox() throws PWCGException  
-    {    
-        CoordinateBox missionBorders = briefingMissionHandler.getMission().getMissionBorders().expandBox(5000);
-        BriefingMapPanel mapPanel = (BriefingMapPanel)mapScroll.getMapPanel();
-        mapPanel.setMissionBorders(missionBorders);
-    }
-
-    public BriefingMissionHandler getBriefingMissionHandler()
+    @Override
+    public void flightChanged(Squadron squadron) throws PWCGException
     {
-        return briefingMissionHandler;
+        briefingContext.changeSelectedFlight(squadron);
+        
+        createMissionEditPanel();
+        setRightPanel(editorPanel);
+
+        setCenterPanel(createCenterPanel());
     }
 }

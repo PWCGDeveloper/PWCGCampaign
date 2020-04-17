@@ -7,14 +7,14 @@ import javax.swing.JOptionPane;
 
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.core.exception.PWCGException;
-import pwcg.gui.helper.BriefingMissionHandler;
+import pwcg.gui.helper.BriefingMissionFlight;
 
 public class BriefingPlanePicker
 {
-    private BriefingMissionHandler missionEditHandler;
+    private BriefingMissionFlight missionEditHandler;
     private JComponent parent;
     
-    public BriefingPlanePicker(BriefingMissionHandler missionEditHandler, JComponent parent)
+    public BriefingPlanePicker(BriefingMissionFlight missionEditHandler, JComponent parent)
     {
         this.missionEditHandler = missionEditHandler;
         this.parent = parent;

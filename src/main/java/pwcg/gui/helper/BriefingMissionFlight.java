@@ -3,8 +3,6 @@ package pwcg.gui.helper;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneSorter;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -18,15 +16,17 @@ import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 
-public class BriefingMissionHandler
+public class BriefingMissionFlight
 {
-    private BriefingFlightParameters briefParametersContext = new BriefingFlightParameters();
+    private BriefingFlightParameters briefingFlightParameters = new BriefingFlightParameters();
     private BriefingAssignmentData briefingAssignmentData = new BriefingAssignmentData();
-    private Mission mission = null;
+    private Mission mission;
+    private IFlight flight;
 
-    public BriefingMissionHandler(Mission mission)
+    public BriefingMissionFlight(Mission mission, IFlight flight)
     {
         this.mission = mission;
+        this.flight = flight;
     }
     
     public void initializeFromMission(Squadron squadron) throws PWCGException
@@ -72,45 +72,10 @@ public class BriefingMissionHandler
         payloadHelper.modifyPayload(pilotSerialNumber, newPayload);
     }
 
-    public void loadMissionParams() throws PWCGException
+    public void loadMissionParams(IFlight playerFlight) throws PWCGException
     {     
-    	BriefParametersContextBuilder briefParametersContextBuilder = new BriefParametersContextBuilder(mission);
-        briefParametersContext = briefParametersContextBuilder.buildBriefParametersContext();
-    }
-
-    public void pushEditsToMission() throws PWCGException
-    {
-        SquadronMember referencePlayer = mission.getCampaign().findReferencePlayer();
-        IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
-        PlayerFlightEditor planeGeneratorPlayer = new PlayerFlightEditor(mission.getCampaign(), playerFlight);
-        planeGeneratorPlayer.updatePlayerPlanes(getCrewsSorted());
-    }
-
-    public void finalizeMission() throws PWCGException 
-    {
-        if (!mission.isFinalized())
-        {
-            updateMissionBriefingParameters();
-            mission.finalizeMission();
-            mission.write();
-
-            Campaign campaign  = PWCGContext.getInstance().getCampaign();
-            campaign.setCurrentMission(mission);
-        }
-    }
-
-    public void updateMissionBriefingParameters() throws PWCGException 
-    {
-        if (!mission.isFinalized())
-        {
-            SquadronMember referencePlayer = mission.getCampaign().findReferencePlayer();
-            IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
-
-            playerFlight.getWaypointPackage().updateWaypoints(briefParametersContext.getWaypointsInBriefing());
-            playerFlight.getFlightPlanes().setFuel(briefParametersContext.getSelectedFuel());
-            
-            PWCGContext.getInstance().getCurrentMap().getMissionOptions().getMissionTime().setMissionTime(briefParametersContext.getSelectedTime());
-        }
+    	BriefParametersContextBuilder briefParametersContextBuilder = new BriefParametersContextBuilder(mission, playerFlight);
+        briefingFlightParameters = briefParametersContextBuilder.buildBriefParametersContext();
     }
 
     public List<SquadronMember> getSortedAssigned() throws PWCGException 
@@ -154,13 +119,18 @@ public class BriefingMissionHandler
         this.mission = mission;
     }
 
-    public BriefingFlightParameters getBriefParametersContext()
+    public BriefingFlightParameters getBriefingFlightParameters()
     {
-        return briefParametersContext;
+        return briefingFlightParameters;
     }
 
     public BriefingAssignmentData getBriefingAssignmentData()
     {
         return briefingAssignmentData;
-    }    
+    }
+
+    public IFlight getFlight()
+    {
+        return flight;
+    }
 }

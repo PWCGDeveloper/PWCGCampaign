@@ -12,7 +12,6 @@ public class BriefingFlightParameters
 {
     private List<EditorWaypointGroup> briefingMapEditorGroups = new ArrayList<EditorWaypointGroup>();
     private double selectedFuel = 1.0;
-    private String selectedTime = "08:30";
 	private int selectedMapPointIndex = -1;
 	private int actionMapPointIndex = -1;
 	
@@ -139,16 +138,6 @@ public class BriefingFlightParameters
     public void setSelectedFuel(double selectedFuel)
     {
         this.selectedFuel = selectedFuel;
-    }
-
-    public String getSelectedTime()
-    {
-        return selectedTime;
-    }
-
-    public void setSelectedTime(String selectedTime)
-    {
-        this.selectedTime = selectedTime;
     }
 
 	public List<EditorWaypointGroup> getWaypointEditorGroups()

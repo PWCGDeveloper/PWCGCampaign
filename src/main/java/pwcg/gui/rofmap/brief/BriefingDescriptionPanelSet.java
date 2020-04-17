@@ -23,7 +23,7 @@ import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.MonitorSupport;
-import pwcg.gui.helper.BriefingMissionHandler;
+import pwcg.gui.helper.BriefingMissionFlight;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -32,16 +32,15 @@ import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.mission.IMissionDescription;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionDescriptionFactory;
-import pwcg.mission.flight.IFlight;
 
 public class BriefingDescriptionPanelSet extends PwcgGuiContext implements ActionListener
 {
     private CampaignHomeGUI campaignHomeGui = null;
 
 	private static final long serialVersionUID = 1L;
-    private BriefingMissionHandler briefingMissionHandler = null;
     private JTextArea missionText = new JTextArea();
     private Mission mission;
+    private BriefingContext briefingContext;
 
 	public BriefingDescriptionPanelSet(CampaignHomeGUI campaignHomeGui, Mission mission) throws PWCGException 
 	{
@@ -50,10 +49,8 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
         this.campaignHomeGui =  campaignHomeGui;
         this.mission =  mission;
 
-        SquadronMember referencePlayer = mission.getCampaign().findReferencePlayer();
-        IFlight myFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
-		briefingMissionHandler = new BriefingMissionHandler(mission);
-		briefingMissionHandler.initializeFromMission(myFlight.getSquadron());
+        briefingContext = new BriefingContext(mission);
+        briefingContext.buildBriefingMissions();
 
 		SoundManager.getInstance().playSound("BriefingStart.WAV");
 	}
@@ -86,7 +83,7 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
         buttonGrid.setLayout(new GridLayout(0,1));
         buttonGrid.setOpaque(false);
             
-        if (briefingMissionHandler.getMission().isFinalized())
+        if (mission.isFinalized())
         {
             buttonGrid.add(PWCGButtonFactory.makeDummy());
             makeButton(buttonGrid, "Back to Campaign");
@@ -141,13 +138,13 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
         return missionTextPanel;
     }
 
-    public void setMissionText() throws PWCGException 
+    private void setMissionText() throws PWCGException 
     {
         Campaign campaign = PWCGContext.getInstance().getCampaign();
 
         String missionPrefix = getMissionPrefix();
 
-        IMissionDescription missionDescription =MissionDescriptionFactory.buildMissionDescription(campaign, briefingMissionHandler.getMission());
+        IMissionDescription missionDescription =MissionDescriptionFactory.buildMissionDescription(campaign, mission);
         String missionDescriptionText = missionDescription.createDescription();
         
         StringBuffer missionDescriptionBuffer = new StringBuffer("");
@@ -170,10 +167,11 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
         return missionPrefix;
     }
 
-    public String makePilotList() throws PWCGException 
+    private String makePilotList() throws PWCGException 
     {
+        BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingHandler();
         StringBuffer assignedPilotsBuffer = new StringBuffer ("Assigned Pilots:\n");
-        for (SquadronMember squadronMember : briefingMissionHandler.getSortedAssigned())
+        for (SquadronMember squadronMember : activeMissionHandler.getSortedAssigned())
         {
             assignedPilotsBuffer.append("    " + squadronMember.getNameAndRank() + "\n");
         }
@@ -220,7 +218,7 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
 
-        BriefingMapGUI briefingMap = new BriefingMapGUI(campaignHomeGui, briefingMissionHandler, campaignHomeGui.getCampaign().getDate());
+        BriefingMapGUI briefingMap = new BriefingMapGUI(campaignHomeGui, mission, briefingContext, campaignHomeGui.getCampaign().getDate());
         briefingMap.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(briefingMap);
     }
@@ -241,8 +239,9 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
     {
         Campaign campaign  = PWCGContext.getInstance().getCampaign();
 
-        briefingMissionHandler.updateMissionBriefingParameters();
-        campaign.setCurrentMission(briefingMissionHandler.getMission());
+        briefingContext.updateMissionBriefingParameters();
+        
+        campaign.setCurrentMission(mission);
         
         campaignHomeGui.clean();
         campaignHomeGui.createPilotContext();

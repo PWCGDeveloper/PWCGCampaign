@@ -14,11 +14,13 @@ import pwcg.mission.mcu.McuWaypoint;
 public class BriefParametersContextBuilder
 {
 	private Mission mission;
+	private IFlight playerFlight;
 	private BriefingFlightParameters briefParametersContext = new BriefingFlightParameters();
 
-	public BriefParametersContextBuilder (Mission mission)
+	public BriefParametersContextBuilder (Mission mission, IFlight playerFlight)
 	{
-		this.mission = mission;
+        this.mission = mission;
+        this.playerFlight = playerFlight;
 	}
 	
 	public BriefingFlightParameters buildBriefParametersContext() throws PWCGException
@@ -32,8 +34,6 @@ public class BriefParametersContextBuilder
 	
 	private void setWaypoints() throws PWCGException
 	{
-        SquadronMember referencePlayer = mission.getCampaign().findReferencePlayer();
-		IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
 		McuWaypoint prevWaypoint = null;
 		for (McuWaypoint waypoint :  playerFlight.getWaypointPackage().getAllWaypoints())
 		{				
