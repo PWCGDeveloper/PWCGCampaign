@@ -1,5 +1,6 @@
 package pwcg.mission.flight.packages;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
@@ -50,7 +51,7 @@ public class StrategicInterceptPackageTest
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
-        CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox(FlightTypes.STRATEGIC_INTERCEPT);
+        CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox(Arrays.asList(FlightTypes.STRATEGIC_INTERCEPT));
 
         Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
         campaign.setCurrentMission(mission);

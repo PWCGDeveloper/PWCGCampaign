@@ -29,9 +29,9 @@ public class MissionFlightBuilder
         this.mission = mission;
     }
 
-    public void generateFlights(MissionHumanParticipants participatingPlayers, FlightTypes flightType) throws PWCGException
+    public void generateFlights(MissionHumanParticipants participatingPlayers, List<FlightTypes> playerFlightTypes) throws PWCGException
     {
-        createPlayerFlights(participatingPlayers, flightType);
+        createPlayerFlights(participatingPlayers, playerFlightTypes);
         createAiFlights();
     }
 
@@ -41,13 +41,17 @@ public class MissionFlightBuilder
         aiFlights = flightFinalizer.finalizeMissionFlights();
     }
 
-    private void createPlayerFlights(MissionHumanParticipants participatingPlayers, FlightTypes flightType) throws PWCGException
+    private void createPlayerFlights(MissionHumanParticipants participatingPlayers, List<FlightTypes> playerFlightTypes) throws PWCGException
     {
+        int index = 0;
         for (Integer squadronId : participatingPlayers.getParticipatingSquadronIds())
         {
+            FlightTypes playerFlightType = playerFlightTypes.get(index);
+            ++index;
+            
             Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
             PlayerFlightBuilder playerFlightBuilder = new PlayerFlightBuilder(campaign, mission);
-            IFlight playerFlight = playerFlightBuilder.createPlayerFlight(flightType, squadron, participatingPlayers, mission.isNightMission());
+            IFlight playerFlight = playerFlightBuilder.createPlayerFlight(playerFlightType, squadron, participatingPlayers, mission.isNightMission());
             playerFlights.add(playerFlight);
         }
     }

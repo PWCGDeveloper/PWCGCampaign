@@ -1,5 +1,7 @@
 package pwcg.mission;
 
+import java.util.Arrays;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -49,7 +51,8 @@ public class MissionBorderBuilderTest
         for (int i = 0; i < 10; ++i)
         {
             MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
-            CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox(FlightTypes.ANY);
+            
+            CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox(Arrays.asList(FlightTypes.PATROL));
             Coordinate missionBoxCenter = missionBorders.getCenter();
             
             Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
@@ -71,7 +74,7 @@ public class MissionBorderBuilderTest
         for (int i = 0; i < 10; ++i)
         {
             MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(coopCampaign, participatingPlayers);
-            CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox(FlightTypes.ANY);
+            CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox(Arrays.asList(FlightTypes.PATROL));
             Coordinate missionBoxCenter = missionBorders.getCenter();
             assert(missionBoxCenter.getXPos() > 0.0);
             assert(missionBoxCenter.getZPos() > 0.0);
@@ -87,7 +90,7 @@ public class MissionBorderBuilderTest
         for (int i = 0; i < 10; ++i)
         {
             MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
-            CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox(FlightTypes.SCRAMBLE);
+            CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox(Arrays.asList(FlightTypes.SCRAMBLE));
             Coordinate missionBoxCenter = missionBorders.getCenter();
 
             Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
@@ -106,7 +109,7 @@ public class MissionBorderBuilderTest
         for (int i = 0; i < 10; ++i)
         {
             MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaignAntiShipping, participatingPlayers);
-            CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox(FlightTypes.ANTI_SHIPPING_BOMB);
+            CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox(Arrays.asList(FlightTypes.ANTI_SHIPPING_BOMB));
             Coordinate missionBoxCenter = missionBorders.getCenter();
 
             PWCGMap map = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.KUBAN_MAP);

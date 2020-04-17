@@ -2,10 +2,8 @@ package pwcg.gui.rofmap.brief;
 
 import java.util.List;
 
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.Mission;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointAction;
@@ -13,13 +11,11 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public class BriefParametersContextBuilder
 {
-	private Mission mission;
 	private IFlight playerFlight;
 	private BriefingFlightParameters briefParametersContext = new BriefingFlightParameters();
 
-	public BriefParametersContextBuilder (Mission mission, IFlight playerFlight)
+	public BriefParametersContextBuilder (IFlight playerFlight)
 	{
-        this.mission = mission;
         this.playerFlight = playerFlight;
 	}
 	
@@ -83,7 +79,7 @@ public class BriefParametersContextBuilder
 
 	public void addTakeoff() throws PWCGException 
 	{
-        BriefingMapPoint briefingMapTakeoff = BriefingMapPointFactory.createTakeoff(mission.getMissionFlightBuilder().getReferencePlayerFlight());
+        BriefingMapPoint briefingMapTakeoff = BriefingMapPointFactory.createTakeoff(playerFlight);
         if (briefingMapTakeoff != null)
 		{
 
@@ -98,7 +94,7 @@ public class BriefParametersContextBuilder
 	
 	public void addLanding() throws PWCGException 
 	{
-        BriefingMapPoint briefingMapLanding = BriefingMapPointFactory.createLanding(mission.getMissionFlightBuilder().getReferencePlayerFlight());
+        BriefingMapPoint briefingMapLanding = BriefingMapPointFactory.createLanding(playerFlight);
 		if (briefingMapLanding != null)
 		{
 			EditorWaypointGroup editorWaypointGroup = new EditorWaypointGroup();
@@ -124,8 +120,6 @@ public class BriefParametersContextBuilder
 	
     private void updateEscortWaypointsOnMap() throws PWCGException
     {
-        SquadronMember referencePlayer = mission.getCampaign().findReferencePlayer();
-		IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
     	List<McuWaypoint> escortedWaypoints = playerFlight.getLinkedFlights().getLinkedWaypoints().getAllWaypoints();
 	    if (escortedWaypoints != null)
 	    {

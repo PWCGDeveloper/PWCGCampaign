@@ -1,6 +1,7 @@
 package pwcg.mission
 ;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
@@ -42,7 +43,7 @@ public class AmbientBuilderTest
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
         Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
-        mission.generate(FlightTypes.ANY);
+        mission.generate(Arrays.asList(FlightTypes.DIVE_BOMB));
         
         AmbientBattleBuilder ambientBattleBuilder = new AmbientBattleBuilder(campaign, mission);
         List<IGroundUnitCollection> battles = ambientBattleBuilder.generateAmbientBattles();
@@ -62,7 +63,7 @@ public class AmbientBuilderTest
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
         Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
-        mission.generate(FlightTypes.ANY);
+        mission.generate(Arrays.asList(FlightTypes.DIVE_BOMB));
         
         AmbientTruckConvoyBuilder ambientTruckConvoyBuilder = new AmbientTruckConvoyBuilder(campaign, mission);
         List<IGroundUnitCollection> ambientTrucks = ambientTruckConvoyBuilder.generateAmbientTrucks();
@@ -85,7 +86,7 @@ public class AmbientBuilderTest
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
         Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
-        mission.generate(FlightTypes.ANY);
+        mission.generate(Arrays.asList(FlightTypes.DIVE_BOMB));
         
         AmbientTrainBuilder ambientTrainBuilder = new AmbientTrainBuilder(campaign, mission);
         List<IGroundUnitCollection> ambientTrains = ambientTrainBuilder.generateAmbientTrains();
@@ -108,7 +109,7 @@ public class AmbientBuilderTest
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
         Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
-        mission.generate(FlightTypes.ANY);
+        mission.generate(Arrays.asList(FlightTypes.DIVE_BOMB));
         
         AAAManager aaaManager = new AAAManager(campaign, mission);
         List<IGroundUnitCollection> AAA = aaaManager.getAAAForMission();

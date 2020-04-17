@@ -77,15 +77,15 @@ public class Mission
         missionSquadronIconBuilder = new MissionSquadronIconBuilder(campaign);
     }
 
-    public void generate(FlightTypes overrideFlightType) throws PWCGException 
+    public void generate(List<FlightTypes> playerFlightTypes) throws PWCGException 
     {
         validate();
-        generateFlights(overrideFlightType);
+        generateFlights(playerFlightTypes);
     }
 
-    private void generateFlights(FlightTypes overrideFlightType) throws PWCGException 
+    private void generateFlights(List<FlightTypes> playerFlightTypes) throws PWCGException 
     {
-    	missionFlightBuilder.generateFlights(participatingPlayers, overrideFlightType);
+    	missionFlightBuilder.generateFlights(participatingPlayers, playerFlightTypes);
     	missionAssociateFlightBuilder.buildAssociatedFlights(this);
         createFirePots();
 

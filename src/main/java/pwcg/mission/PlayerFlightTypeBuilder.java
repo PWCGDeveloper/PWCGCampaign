@@ -6,7 +6,6 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.PWCGFlightTypeAbstractFactory;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
@@ -22,20 +21,9 @@ public class PlayerFlightTypeBuilder
         this.campaign = campaign;
     }
 
-    public FlightTypes preDeterminePlayerFlightType(FlightTypes flightType, MissionHumanParticipants participatingPlayers, boolean isNightMission) throws PWCGException
+    public FlightTypes determinePlayerFlightType(Squadron squadron, MissionHumanParticipants participatingPlayers, boolean isNightMission) throws PWCGException
     {
-        if (campaign.getCampaignData().getCampaignMode() != CampaignMode.CAMPAIGN_MODE_COMPETITIVE)
-        {
-            SquadronMember player = campaign.findReferencePlayer();
-            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
-            return determinePlayerFlightType(flightType, squadron, participatingPlayers, isNightMission);
-        }
-    
-        return FlightTypes.ANY;
-    }
-
-    public FlightTypes determinePlayerFlightType(FlightTypes flightType, Squadron squadron, MissionHumanParticipants participatingPlayers, boolean isNightMission) throws PWCGException
-    {
+        FlightTypes flightType = FlightTypes.ANY;
         IFlightTypeFactory flightTypeFactory = PWCGFlightTypeAbstractFactory.createFlightFactory(campaign);
         if (flightType == FlightTypes.ANY)
         {

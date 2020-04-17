@@ -27,17 +27,18 @@ public class MissionBorderBuilder
         this.campaign = campaign;
 	}
 
-    public CoordinateBox buildCoordinateBox(FlightTypes flightType) throws PWCGException
+    public CoordinateBox buildCoordinateBox(List<FlightTypes> playerFlightTypes) throws PWCGException
     {
-        if (flightType == FlightTypes.ANTI_SHIPPING_BOMB || flightType == FlightTypes.ANTI_SHIPPING_ATTACK || flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
+        FlightTypes primaryPlayerFlightType = playerFlightTypes.get(0);
+        if (primaryPlayerFlightType == FlightTypes.ANTI_SHIPPING_BOMB || primaryPlayerFlightType == FlightTypes.ANTI_SHIPPING_ATTACK || primaryPlayerFlightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
         {
             return buildMissionBoxAntiShipping();
         }
-        else if (flightType == FlightTypes.SCRAMBLE)
+        else if (primaryPlayerFlightType == FlightTypes.SCRAMBLE)
         {
             return buildMissionBoxScramble();
         }
-        else if (flightType == FlightTypes.STRATEGIC_INTERCEPT || flightType == FlightTypes.ANTI_SHIPPING_BOMB)
+        else if (primaryPlayerFlightType == FlightTypes.STRATEGIC_INTERCEPT || primaryPlayerFlightType == FlightTypes.ANTI_SHIPPING_BOMB)
         {
             return buildMissionBoxStrategic();
         }

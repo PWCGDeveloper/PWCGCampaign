@@ -5,6 +5,7 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
@@ -104,9 +105,9 @@ public class PlayerFlightEditor
 
     private void configurePlaneForCrew(PlaneMcu plane, CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
         AiSkillLevel aiLevel = crewPlane.getPilot().getAiSkillLevel();
-        SquadronMember squadronMember = campaign.getPersonnelManager().getSquadronPersonnel(referencePlayer.getSquadronId()).getSquadronMember(crewPlane.getPilot().getSerialNumber());
+        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(playerFlight.getSquadron().getSquadronId());
+        SquadronMember squadronMember = squadronPersonnel.getSquadronMember(crewPlane.getPilot().getSerialNumber());
         if (squadronMember == null)
         {
             squadronMember = campaign.getPersonnelManager().getCampaignAce(crewPlane.getPilot().getSerialNumber());

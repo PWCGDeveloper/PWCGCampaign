@@ -23,9 +23,6 @@ public class PlayerFlightBuilder
     
     public IFlight createPlayerFlight(FlightTypes requestedFlightType, Squadron squadron, MissionHumanParticipants participatingPlayers, boolean isNightMission) throws PWCGException 
     {
-        PlayerFlightTypeBuilder playerFlightTypeBuilder = new PlayerFlightTypeBuilder(campaign);
-        requestedFlightType = playerFlightTypeBuilder.determinePlayerFlightType(requestedFlightType, squadron, participatingPlayers, isNightMission);
-        
         buildFlight(requestedFlightType, squadron);
         return playerFlight;
     }

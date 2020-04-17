@@ -74,7 +74,7 @@ public class BriefingMissionFlight
 
     public void loadMissionParams(IFlight playerFlight) throws PWCGException
     {     
-    	BriefParametersContextBuilder briefParametersContextBuilder = new BriefParametersContextBuilder(mission, playerFlight);
+    	BriefParametersContextBuilder briefParametersContextBuilder = new BriefParametersContextBuilder(playerFlight);
         briefingFlightParameters = briefParametersContextBuilder.buildBriefParametersContext();
     }
 
