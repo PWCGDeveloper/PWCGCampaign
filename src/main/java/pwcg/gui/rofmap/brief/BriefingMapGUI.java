@@ -121,7 +121,6 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
         return briefingMapCenterPanel;
     }
     
-
     private JPanel createFlightChooserPanel() throws PWCGException
     {
         JPanel flightChooserPanel = new JPanel(new BorderLayout());

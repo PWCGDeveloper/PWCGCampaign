@@ -24,6 +24,7 @@ import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.AutoStart;
 import pwcg.campaign.utils.PlanesOwnedManager;
 import pwcg.core.exception.PWCGException;
@@ -48,7 +49,7 @@ import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.io.MissionFileWriter;
 
-public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListener
+public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListener, IFlightChanged
 {
     private static final Integer NUM_COLUMNS = 4;
     private static final long serialVersionUID = 1L;
@@ -58,6 +59,8 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
     private ImageResizingPanel pilotPanel;
     private BriefingContext briefingContext;
     private Map<Integer, BriefingPlaneModificationsPicker> planeModifications = new HashMap<>();
+    private BriefingFlightChooser briefingFlightChooser;
+    private JPanel briefingMapCenterPanel = new JPanel(new BorderLayout());
 
     public BriefingPilotPanelSet(Campaign campaign, CampaignHomeGUI campaignHomeGui, BriefingContext briefingContext, Mission mission)
     {
@@ -74,9 +77,12 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
         try
         {
             this.removeAll();
+            
+            briefingFlightChooser = new BriefingFlightChooser(mission, this);
+            briefingFlightChooser.makeComboBox();
 
             setLeftPanel(makeButtonPanel());
-            setCenterPanel(makePilotPanel());
+            setCenterPanel(createCenterPanel());
         }
         catch (Exception e)
         {
@@ -131,7 +137,21 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
         return pilotAssignmentNavPanel;
     }
 
-    public JPanel makePilotPanel() throws PWCGException
+    private JPanel createCenterPanel() throws PWCGException
+    {
+        briefingMapCenterPanel = new JPanel(new BorderLayout());
+
+        JPanel flightChooserPanel = createFlightChooserPanel();
+        briefingMapCenterPanel.add(flightChooserPanel, BorderLayout.NORTH);
+
+        makePilotPanel();
+        briefingMapCenterPanel.add(pilotPanel, BorderLayout.CENTER);
+        
+        return briefingMapCenterPanel;
+    }
+    
+
+    private JPanel makePilotPanel() throws PWCGException
     {
         if (pilotPanel != null)
         {
@@ -172,6 +192,15 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
         pilotPanel.add(BorderLayout.SOUTH, unassignedPilotPanel);
 
         return pilotPanel;
+    }
+    
+    private JPanel createFlightChooserPanel() throws PWCGException
+    {
+        JPanel flightChooserPanel = new JPanel(new BorderLayout());
+        flightChooserPanel.setOpaque(false);
+        
+        flightChooserPanel.add(briefingFlightChooser.getCbFlightChooser(), BorderLayout.NORTH);
+        return flightChooserPanel;
     }
 
     private JPanel createAssignedPilots() throws PWCGException
@@ -542,10 +571,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private void refreshPilotDisplay() throws PWCGException
     {
-        makePilotPanel();
-        add(pilotPanel, BorderLayout.CENTER);
-        pilotPanel.revalidate();
-        pilotPanel.repaint();
+        setCenterPanel(createCenterPanel());
     }
 
     private void scrubMission() throws PWCGException
@@ -608,8 +634,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
     		return true;
     	}
     	
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
-        IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
+    	IFlight playerFlight = briefingContext.getSelectedFlight();
         List<PlaneMcu> playerPlanes = playerFlight.getFlightPlanes().getPlayerPlanes();
         for (PlaneMcu playerPlane : playerPlanes)
         {
@@ -626,8 +651,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private boolean ensurePlayerOwnsPlane() throws PWCGException
     {
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
-        IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
+        IFlight playerFlight = briefingContext.getSelectedFlight();
         List<PlaneMcu> playerPlanes = playerFlight.getFlightPlanes().getPlayerPlanes();
         for (PlaneMcu playerPlane : playerPlanes)
         {
@@ -698,5 +722,13 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
         BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingHandler();
         PlayerFlightEditor planeGeneratorPlayer = new PlayerFlightEditor(mission.getCampaign(), briefingMissionHandler.getFlight());
         planeGeneratorPlayer.updatePlayerPlanes(briefingMissionHandler.getCrewsSorted());
+    }
+
+    @Override
+    public void flightChanged(Squadron squadron) throws PWCGException
+    {
+        pushEditsToMission();
+        briefingContext.changeSelectedFlight(squadron);
+        setCenterPanel(createCenterPanel());
     }
 }
