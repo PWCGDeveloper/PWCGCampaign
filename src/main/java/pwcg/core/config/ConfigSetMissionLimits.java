@@ -12,7 +12,7 @@ public class ConfigSetMissionLimits
         configSet.addConfigItem(ConfigItemKeys.UseAirfieldMGsKey, new ConfigItem("0"));
         configSet.addConfigItem(ConfigItemKeys.MissionBoxSizeKey, new ConfigItem("30000"));
         configSet.addConfigItem(ConfigItemKeys.MissionBoxMinDistanceFromBaseKey, new ConfigItem("40000"));
-        configSet.addConfigItem(ConfigItemKeys.MissionBoxMaxDistancePercentRangeKey, new ConfigItem("40"));
+        configSet.addConfigItem(ConfigItemKeys.MissionBoxMaxDistanceFromBaseKey, new ConfigItem("40"));
 		
         configSet.addConfigItem(ConfigItemKeys.AlliedPlanesToSpawnMaxKey, new ConfigItem("6"));
         configSet.addConfigItem(ConfigItemKeys.AxisPlanesToSpawnMaxKey, new ConfigItem("10"));

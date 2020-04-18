@@ -102,7 +102,7 @@ public class ConfigItemKeys
 
     public static final String MissionBoxSizeKey = "MissionBoxSize";
     public static final String MissionBoxMinDistanceFromBaseKey = "MissionBoxMinDistanceFromBase";
-    public static final String MissionBoxMaxDistancePercentRangeKey = "MissionBoxMaxDistancePercentRange";
+    public static final String MissionBoxMaxDistanceFromBaseKey = "MissionBoxMaxDistanceFromBase";
 
 	public static final String AlliedFlightsToKeepKey = "AlliedFlightsToKeep";
 	public static final String AxisFlightsToKeepKey = "AxisFlightsToKeep";

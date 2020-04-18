@@ -44,11 +44,11 @@ public class MissionBorderBuilder
         }
         else
         {
-            return buildCoordinateBoxStandard();
+            return buildCoordinateBoxNearFront();
         }
     }
 
-    private CoordinateBox buildCoordinateBoxStandard() throws PWCGException
+    private CoordinateBox buildCoordinateBoxNearFront() throws PWCGException
     {
         IMissionCenterBuilder missionCenterBuilder = null;
         if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COMPETITIVE)
@@ -57,7 +57,7 @@ public class MissionBorderBuilder
         }
         else
         {
-            missionCenterBuilder = new MissionCenterBuilderSingle(campaign, participatingPlayers);
+            missionCenterBuilder = new MissionCenterBuilderFrontLines(campaign, participatingPlayers);
         }
         
         Coordinate missionCenterCoordinate = missionCenterBuilder.findMissionCenter();
@@ -87,12 +87,12 @@ public class MissionBorderBuilder
             }
             else
             {
-                missionBox = buildCoordinateBoxStandard();
+                missionBox = buildCoordinateBoxNearFront();
             }
         }
         else
         {
-            missionBox = buildCoordinateBoxStandard();
+            missionBox = buildCoordinateBoxNearFront();
         }
         return missionBox;
     }
@@ -112,7 +112,7 @@ public class MissionBorderBuilder
         }
         else
         {
-            missionBox = buildCoordinateBoxStandard();
+            missionBox = buildCoordinateBoxNearFront();
         }
         return missionBox;
     }
@@ -136,7 +136,7 @@ public class MissionBorderBuilder
         }
         else
         {
-            missionBox = buildCoordinateBoxStandard();
+            missionBox = buildCoordinateBoxNearFront();
         }
         return missionBox;
     }

@@ -9,7 +9,7 @@ import pwcg.core.location.PWCGLocation;
 
 public class PositionFinder <T>
 {
-    public static final double ABSURDLY_LARGE_DISTANCE = 1000000.0;
+    public static final int ABSURDLY_LARGE_DISTANCE = 1000000;
     
     public T selectPositionWithinExpandingRadius(List<T> listOfPositions, Coordinate referenceLocation, double radius, double maxRadius) throws PWCGException
     {
