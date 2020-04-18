@@ -22,26 +22,21 @@ public class MissionFlightFinalizer
         this.mission = mission;
     }
     
-    public List<IFlight> finalizeMissionFlights() throws PWCGException 
+    public void finalizeMissionFlights() throws PWCGException 
     {
         convertForCoop();
         for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
-            flight.finalizeFlight();;
+            flight.finalizeFlight();
         }
         
         AiAdjuster aiAdjuster = new AiAdjuster(campaign);
         aiAdjuster.adjustAI(mission);
 
-        MissionFlightKeeper missionFlightKeeper = new MissionFlightKeeper(campaign, mission);
-        List<IFlight> finalizedMissionFlights = missionFlightKeeper.keepLimitedFlights();
-
         setFlightAttackMcuForPlanes();
         setFlightAttackMcuForBalloons();
         
         setCzTriggers();
-        
-        return finalizedMissionFlights;
     }
 
     private void convertForCoop() throws PWCGException, PWCGException

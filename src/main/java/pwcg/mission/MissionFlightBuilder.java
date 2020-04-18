@@ -33,12 +33,20 @@ public class MissionFlightBuilder
     {
         createPlayerFlights(participatingPlayers, playerFlightTypes);
         createAiFlights();
+        keepAiFlights();
+    }
+
+    private void keepAiFlights() throws PWCGException
+    {
+        MissionFlightKeeper missionFlightKeeper = new MissionFlightKeeper(campaign, mission);
+        List<IFlight> finalizedMissionFlights = missionFlightKeeper.keepLimitedFlights();
+        aiFlights = finalizedMissionFlights;
     }
 
     public void finalizeMissionFlights() throws PWCGException
     {
         MissionFlightFinalizer flightFinalizer = new MissionFlightFinalizer(campaign, mission);
-        aiFlights = flightFinalizer.finalizeMissionFlights();
+        flightFinalizer.finalizeMissionFlights();
     }
 
     private void createPlayerFlights(MissionHumanParticipants participatingPlayers, List<FlightTypes> playerFlightTypes) throws PWCGException

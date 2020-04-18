@@ -188,7 +188,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 
         buttonGrid.add(PWCGButtonFactory.makeDummy());
         makeButton(buttonGrid, "Pilot Selection");
-		
+        
 		buttonPanel.add(buttonGrid, BorderLayout.NORTH);
 		
 		buttonPanel.add(squadronSelectorPanel, BorderLayout.CENTER);
