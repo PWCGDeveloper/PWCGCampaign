@@ -250,7 +250,6 @@ public class CampaignSkinManagerForPilotPanel extends ImageResizingPanel impleme
         SquadronMember referencePlayer = campaign.findReferencePlayer();
         Squadron squad = referencePlayer.determineSquadron();
 
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
         List<PlaneType> squadronPlanes = squad.determineCurrentAircraftList(campaign.getDate());
 
         List<PlaneType> squadronPlanesByBest = PlaneSorter.sortPlanesByGoodness(squadronPlanes);

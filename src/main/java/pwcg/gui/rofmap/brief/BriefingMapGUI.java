@@ -10,6 +10,8 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -20,8 +22,6 @@ import javax.swing.JScrollPane;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadron.Squadron;
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
@@ -58,7 +58,7 @@ import pwcg.mission.utils.MissionTime;
  * @author Admin
  *
  */
-public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightChanged
+public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightChanged, IBriefingSquadronSelectedCallback
 {
 	private static final long serialVersionUID = 1L;
     private CampaignHomeGUI campaignHomeGui;
@@ -69,6 +69,8 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
     private Mission mission;
     private BriefingContext briefingContext;
     private BriefingFlightChooser briefingFlightChooser;
+    private JPanel squadronSelectorPanel;
+    private Map<Integer, String> selectedSquadrons = new HashMap<>();
 
 	public BriefingMapGUI(CampaignHomeGUI campaignHomeGui, Mission mission, BriefingContext briefingContext, Date mapDate) throws PWCGException  
 	{
@@ -87,6 +89,9 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 		{
 	        briefingFlightChooser = new BriefingFlightChooser(mission, this);
 	        briefingFlightChooser.makeComboBox();
+	        
+	        BriefingMapSquadronSelector squadronSelector = new BriefingMapSquadronSelector(mission, this);
+	        squadronSelectorPanel = squadronSelector.makeComboBox();
 
 			Color bg = ColorMap.MAP_BACKGROUND;
 			setSize(200, 200);
@@ -134,7 +139,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
     {
         BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingHandler();
         
-        BriefingMapPanel mapPanel = new BriefingMapPanel(this, activeMissionHandler.getBriefingFlightParameters(), mission);
+        BriefingMapPanel mapPanel = new BriefingMapPanel(this, activeMissionHandler.getBriefingFlightParameters(), mission, selectedSquadrons);
         mapScroll = new MapScroll(mapPanel);  
         mapPanel.setMapBackground(100);
 
@@ -150,14 +155,9 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
         		break;
         	}
         }
-        
-        ConfigManagerCampaign configManager = PWCGContext.getInstance().getCampaign().getCampaignConfigManager();
-        int showAllFlightsInBreifingKey = configManager.getIntConfigParam(ConfigItemKeys.ShowAllFlightsInBreifingKey);
-        if (showAllFlightsInBreifingKey == 1)
-        {
-            BriefingMapFlightMapper flightMapper = new BriefingMapFlightMapper(activeMissionHandler, mapPanel);
-            flightMapper.mapRequestedFlights();
-        }
+
+        BriefingMapFlightMapper flightMapper = new BriefingMapFlightMapper(activeMissionHandler, mapPanel);
+        flightMapper.mapRequestedFlights();
         
         centerMapAt(initialPosition);
     }
@@ -190,6 +190,8 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
         makeButton(buttonGrid, "Pilot Selection");
 		
 		buttonPanel.add(buttonGrid, BorderLayout.NORTH);
+		
+		buttonPanel.add(squadronSelectorPanel, BorderLayout.SOUTH);
 		
 		return buttonPanel;
 	}
@@ -565,6 +567,13 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
         createMissionEditPanel();
         setRightPanel(editorPanel);
 
+        setCenterPanel(createCenterPanel());
+    }
+
+    @Override
+    public void squadronsSelectedChanged(Map<Integer, String> selectedSquadrons) throws PWCGException
+    {
+        this.selectedSquadrons = selectedSquadrons;
         setCenterPanel(createCenterPanel());
     }
 }

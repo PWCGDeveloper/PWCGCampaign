@@ -211,6 +211,18 @@ public class MissionFlightBuilder
         return null;
     }
 
+    public IFlight getAiFlightForSquadron(int squadronId)
+    {
+        for (IFlight flight : aiFlights)
+        {
+            if (flight.getSquadron().getSquadronId() == squadronId)
+            {
+                return flight;
+            }
+        }
+        return null;
+    }
+
     public IFlight getPlayerFlight(SquadronMember player) throws PWCGException
     {
         for (IFlight flight : playerFlights)

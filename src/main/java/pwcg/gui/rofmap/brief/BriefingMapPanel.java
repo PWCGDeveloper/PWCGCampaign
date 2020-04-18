@@ -14,11 +14,9 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContext;
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
@@ -41,16 +39,18 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
     private List <FlightMap> axisVirtualPoints = new ArrayList<FlightMap>();
     private CoordinateBox missionBorders = new CoordinateBox();
     private Mission mission;
+    private Map<Integer, String> selectedSquadrons;
 
 	private BriefingMapGUI parent = null;
 
-	public BriefingMapPanel(BriefingMapGUI parent, BriefingFlightParameters briefingFlightParameters, Mission mission) throws PWCGException 
+	public BriefingMapPanel(BriefingMapGUI parent, BriefingFlightParameters briefingFlightParameters, Mission mission, Map<Integer, String> selectedSquadrons) throws PWCGException 
 	{
 		super(parent);
 		
 		this.parent = parent;
 		this.briefingFlightParameters = briefingFlightParameters;
         this.mission = mission;
+        this.selectedSquadrons = selectedSquadrons;
 	}
 
 	public void paintComponent(Graphics g)
@@ -137,14 +137,6 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 
     private void drawVirtualPoints(Graphics g, List<FlightMap> flightMaps, boolean connect) throws PWCGException 
     {
-        ConfigManagerCampaign configManager = PWCGContext.getInstance().getCampaign().getCampaignConfigManager();
-        int showAllFlightsInBreifingKey = configManager.getIntConfigParam(ConfigItemKeys.ShowAllFlightsInBreifingKey);
-        
-        if (showAllFlightsInBreifingKey != 1)
-        {
-            return;
-        }
-
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(3));
                 
@@ -152,65 +144,81 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
  
         for (FlightMap flightMap : flightMaps)
         {
-            BriefingMapPoint prevMapPoint = null;
-            
-           for (int i = 0; i < flightMap.mapPoints.size(); ++i)
-           {
-                BriefingMapPoint mapPoint = flightMap.mapPoints.get(i);
-                g.setColor(requestedColor);
-
-                Point point = super.coordinateToPoint(mapPoint.coord);
-                Ellipse2D.Double circle = new Ellipse2D.Double(point.x - 4, point.y - 4, 8, 8);
-                g2.fill(circle);
-
-                g2.drawString(mapPoint.desc, point.x + 4, point.y);
-
-                if (prevMapPoint != null && connect)
-                {
-                    Point prevPoint = super.coordinateToPoint(prevMapPoint.coord);
-                    
-                    g2.draw(new Line2D.Float(prevPoint.x, prevPoint.y, point.x, point.y));
-                }
-
-                prevMapPoint = mapPoint;
+            if (selectedSquadrons.containsKey(flightMap.squadronId))
+            {
+                paintWaypointLines(g, connect, g2, requestedColor, flightMap);
             }
         }
         
         for (FlightMap flightMap : flightMaps)
         {
-            for (int i = 0; i < flightMap.mapPoints.size(); ++i)
+            if (selectedSquadrons.containsKey(flightMap.squadronId))
             {
-                BriefingMapPoint mapPoint = flightMap.mapPoints.get(i);
-                if (i == 0)
-                {
-                    g.setColor(Color.GREEN);
-                    Point point = super.coordinateToPoint(mapPoint.coord);
-                    Ellipse2D.Double circle = new Ellipse2D.Double(point.x - 8, point.y - 8, 16, 16);
-                    g2.fill(circle);
-                    
-                    g.setColor(Color.BLACK);
-                    Font font = MonitorSupport.getPrimaryFont();
-                    g.setFont(font);
-                    g.drawString((flightMap.flightType + "/" + flightMap.planeType), point.x + 4, point.y);
-                }
-                if (i == (flightMap.mapPoints.size()-1) )
-                {
-                    g.setColor(Color.RED);
-                    Point point = super.coordinateToPoint(mapPoint.coord);
-                    Ellipse2D.Double circle = new Ellipse2D.Double(point.x - 8, point.y - 8, 16, 16);
-                    g2.fill(circle);
-                }
-                if (mapPoint.isTarget)
-                {
-                    g.setColor(Color.RED);
-                    Point point = super.coordinateToPoint(mapPoint.coord);
-                    Ellipse2D.Double circle = new Ellipse2D.Double(point.x - 8, point.y - 8, 16, 16);
-                    g2.fill(circle);
-                }
+                paintWaypoints(g, g2, flightMap);
             }
         }
         
         drawMissionBorders(g, g2);
+    }
+
+    private void paintWaypoints(Graphics g, Graphics2D g2, FlightMap flightMap) throws PWCGException
+    {
+        for (int i = 0; i < flightMap.mapPoints.size(); ++i)
+        {
+            BriefingMapPoint mapPoint = flightMap.mapPoints.get(i);
+            if (i == 0)
+            {
+                g.setColor(Color.GREEN);
+                Point point = super.coordinateToPoint(mapPoint.coord);
+                Ellipse2D.Double circle = new Ellipse2D.Double(point.x - 8, point.y - 8, 16, 16);
+                g2.fill(circle);
+                
+                g.setColor(Color.BLACK);
+                Font font = MonitorSupport.getPrimaryFont();
+                g.setFont(font);
+                g.drawString((flightMap.flightType + "/" + flightMap.planeType), point.x + 4, point.y);
+            }
+            if (i == (flightMap.mapPoints.size()-1) )
+            {
+                g.setColor(Color.RED);
+                Point point = super.coordinateToPoint(mapPoint.coord);
+                Ellipse2D.Double circle = new Ellipse2D.Double(point.x - 8, point.y - 8, 16, 16);
+                g2.fill(circle);
+            }
+            if (mapPoint.isTarget)
+            {
+                g.setColor(Color.RED);
+                Point point = super.coordinateToPoint(mapPoint.coord);
+                Ellipse2D.Double circle = new Ellipse2D.Double(point.x - 8, point.y - 8, 16, 16);
+                g2.fill(circle);
+            }
+        }
+    }
+
+    private void paintWaypointLines(Graphics g, boolean connect, Graphics2D g2, Color requestedColor, FlightMap flightMap)
+    {
+        BriefingMapPoint prevMapPoint = null;
+        
+         for (int i = 0; i < flightMap.mapPoints.size(); ++i)
+         {
+            BriefingMapPoint mapPoint = flightMap.mapPoints.get(i);
+            g.setColor(requestedColor);
+
+            Point point = super.coordinateToPoint(mapPoint.coord);
+            Ellipse2D.Double circle = new Ellipse2D.Double(point.x - 4, point.y - 4, 8, 8);
+            g2.fill(circle);
+
+            g2.drawString(mapPoint.desc, point.x + 4, point.y);
+
+            if (prevMapPoint != null && connect)
+            {
+                Point prevPoint = super.coordinateToPoint(prevMapPoint.coord);
+                
+                g2.draw(new Line2D.Float(prevPoint.x, prevPoint.y, point.x, point.y));
+            }
+
+            prevMapPoint = mapPoint;
+        }
     }
 
     private void drawMissionBorders(Graphics g, Graphics2D g2)
@@ -240,7 +248,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 
     public void makeMapPanelVirtualPoints(IFlight flight) throws PWCGException
     {       
-        FlightMap flightMap = getFlightMap(flight);
+        FlightMap flightMap = buildFlightMap(flight);
         if (flight.getFlightInformation().getCountry().getSideNoNeutral() == Side.ALLIED)
         {
             alliedVirtualPoints.add(flightMap);
@@ -251,11 +259,12 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
         }
     }
 
-    private FlightMap getFlightMap(IFlight flight) throws PWCGException
+    private FlightMap buildFlightMap(IFlight flight) throws PWCGException
     {
         FlightMap flightMap = new FlightMap();
         flightMap.flightType = flight.getFlightType().toString();
         flightMap.planeType = flight.getFlightPlanes().getFlightLeader().getDisplayName();
+        flightMap.squadronId = flight.getSquadron().getSquadronId();
         
         for (MissionPoint waypoint : flight.getWaypointPackage().getFlightMissionPoints())
         {
@@ -490,6 +499,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 	{
         String flightType;
         String planeType;
+        int squadronId;
         List<BriefingMapPoint> mapPoints = new ArrayList<BriefingMapPoint>();
 	}
 

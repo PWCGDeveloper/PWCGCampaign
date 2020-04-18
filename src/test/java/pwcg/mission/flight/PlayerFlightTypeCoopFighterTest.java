@@ -169,7 +169,7 @@ public class PlayerFlightTypeCoopFighterTest
     private void generateMission(Campaign campaign, FlightTypes flightType) throws PWCGException
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), flightType, MissionProfile.DAY_TACTICAL_MISSION);
+        mission = missionGenerator.makeTestSingleMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), flightType, MissionProfile.DAY_TACTICAL_MISSION);
         mission.finalizeMission();
     }
     

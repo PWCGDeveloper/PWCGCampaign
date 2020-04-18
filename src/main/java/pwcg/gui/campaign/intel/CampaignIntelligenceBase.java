@@ -135,7 +135,6 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
         List<Role> acceptableRoles = new ArrayList<Role>();
         acceptableRoles.add(role);
 
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
         String airfieldName = referencePlayer.determineSquadron().determineCurrentAirfieldName(campaign.getDate());
         IAirfield field =  PWCGContext.getInstance().getAirfieldAllMaps(airfieldName);
 

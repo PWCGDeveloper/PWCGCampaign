@@ -35,9 +35,15 @@ public class MissionGenerator
         return mission;
     }
 
-    public Mission makeMissionFromFlightType(MissionHumanParticipants participatingPlayers, FlightTypes playerFlightType, MissionProfile missionProfile) throws PWCGException 
+    public Mission makeTestSingleMissionFromFlightType(MissionHumanParticipants participatingPlayers, FlightTypes playerFlightType, MissionProfile missionProfile) throws PWCGException 
     {
         List<FlightTypes> playerFlightTypes = Arrays.asList(playerFlightType);
+        Mission mission = buildMission(participatingPlayers, playerFlightTypes, missionProfile);
+        return mission;
+    }
+
+    public Mission makeTestCoopMissionFromFlightType(MissionHumanParticipants participatingPlayers, List<FlightTypes> playerFlightTypes, MissionProfile missionProfile) throws PWCGException 
+    {
         Mission mission = buildMission(participatingPlayers, playerFlightTypes, missionProfile);
         return mission;
     }

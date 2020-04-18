@@ -47,7 +47,7 @@ public class VehicleSetBuilderComprehensiveTest
     {
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
     	MissionGenerator missionGenerator = new MissionGenerator(campaign);
-    	mission = missionGenerator.makeMissionFromFlightType(participatingPlayers, FlightTypes.PATROL, MissionProfile.DAY_TACTICAL_MISSION);
+    	mission = missionGenerator.makeTestSingleMissionFromFlightType(participatingPlayers, FlightTypes.PATROL, MissionProfile.DAY_TACTICAL_MISSION);
         mission.generateAllGroundUnitTypesForTest();
         mission.finalizeMission();
     }

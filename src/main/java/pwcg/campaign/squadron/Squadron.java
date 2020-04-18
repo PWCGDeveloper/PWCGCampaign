@@ -376,7 +376,6 @@ public class Squadron
 			squadronDescription += "    " + plane.getDisplayName() + "\n";
 		}
 
-		
 		Campaign campaign =     PWCGContext.getInstance().getCampaign();
 		List<Ace> aces =  PWCGContext.getInstance().getAceManager().
 		                getActiveAcesForSquadron(campaign.getPersonnelManager().getCampaignAces(), campaign.getDate(), getSquadronId());

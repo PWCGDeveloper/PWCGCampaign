@@ -18,7 +18,6 @@ import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CombatReport;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.CombatReportIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -95,7 +94,6 @@ public class CampaignJournalPanelSet extends PwcgGuiContext implements ActionLis
 
 	private void loadCombatReportsForCampagn() throws PWCGException
 	{
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
         journalReports = CombatReportIOJson.readJson(campaign, campaign.findReferencePlayer().getSerialNumber());
 	}
 
@@ -431,7 +429,6 @@ public class CampaignJournalPanelSet extends PwcgGuiContext implements ActionLis
     {
         for (CampaignJournalGUI activeCampaignJournal : activeCampaignJournals)
         {
-            Campaign campaign = PWCGContext.getInstance().getCampaign();
             activeCampaignJournal.writeCombatReport(campaign);
         }        
     }

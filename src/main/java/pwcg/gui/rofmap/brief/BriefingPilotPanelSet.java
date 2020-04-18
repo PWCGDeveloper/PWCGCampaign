@@ -93,7 +93,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private JPanel makeButtonPanel() throws PWCGException
     {
-        String imagePath = getSideImage(campaignHomeGui.getCampaign(), "BriefingNav.jpg");
+        String imagePath = getSideImage(campaign, "BriefingNav.jpg");
 
         ImageResizingPanel pilotAssignmentNavPanel = new ImageResizingPanel(imagePath);
         pilotAssignmentNavPanel.setLayout(new BorderLayout());
@@ -576,7 +576,6 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private void scrubMission() throws PWCGException
     {
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
         campaign.setCurrentMission(null);
 
         campaignHomeGui.clean();
@@ -606,7 +605,6 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
         briefingContext.finalizeMission();
         verifyLoggingEnabled();
 
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
         campaign.setCurrentMission(mission);
         
         campaignHomeGui.clean();

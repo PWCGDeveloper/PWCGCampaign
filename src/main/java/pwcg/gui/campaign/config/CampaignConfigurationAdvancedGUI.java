@@ -105,7 +105,7 @@ public class CampaignConfigurationAdvancedGUI extends PwcgGuiContext implements 
 	public JPanel makeCategoryPanel() throws PWCGException  
 	{
         String imagePath = null;
-        if (PWCGContext.getInstance().getCampaign() != null)
+        if (campaign != null)
         {
             imagePath = getSideImage(campaign, "AdvancedConfigCampaignRight.jpg");
         }
@@ -259,8 +259,6 @@ public class CampaignConfigurationAdvancedGUI extends PwcgGuiContext implements 
 	{
 		try
 		{
-	        Campaign campaign =     PWCGContext.getInstance().getCampaign();
-
 			String action = ae.getActionCommand();
 			if (action.equalsIgnoreCase("Accept"))
 			{

@@ -10,7 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
@@ -129,7 +128,6 @@ public class CampaignSkinManagerPanel extends PwcgGuiContext implements ActionLi
 
     private void showSkinsForPilot(String action) throws PWCGException 
     {
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
         SquadronMember pilot = UIUtils.getPilotFromAction(campaign, action);
         if (pilot != null)
         {

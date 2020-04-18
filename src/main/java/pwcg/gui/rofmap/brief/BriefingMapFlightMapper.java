@@ -1,8 +1,5 @@
 package pwcg.gui.rofmap.brief;
 
-import pwcg.campaign.context.PWCGContext;
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
 import pwcg.gui.helper.BriefingMissionFlight;
@@ -23,13 +20,8 @@ public class BriefingMapFlightMapper
 
     public void mapRequestedFlights() throws PWCGException
     {
-        ConfigManagerCampaign configManager = PWCGContext.getInstance().getCampaign().getCampaignConfigManager();
-        int showAllFlightsInBreifingKey = configManager.getIntConfigParam(ConfigItemKeys.ShowAllFlightsInBreifingKey);
-        if (showAllFlightsInBreifingKey == 1)
-        {
-            mapFlights();
-            mapFlightBox();
-        }
+        mapFlights();
+        mapFlightBox();
     }
 
     private void mapFlights() throws PWCGException
