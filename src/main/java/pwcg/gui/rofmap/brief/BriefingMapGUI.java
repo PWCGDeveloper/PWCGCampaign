@@ -191,7 +191,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 		
 		buttonPanel.add(buttonGrid, BorderLayout.NORTH);
 		
-		buttonPanel.add(squadronSelectorPanel, BorderLayout.SOUTH);
+		buttonPanel.add(squadronSelectorPanel, BorderLayout.CENTER);
 		
 		return buttonPanel;
 	}
@@ -215,7 +215,8 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 
     private void updateWaypointsOnMap() throws PWCGException
     {
-    	//briefingMissionHandler.loadMissionParams();
+        BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingHandler();
+    	briefingMissionHandler.loadMissionParams(briefingMissionHandler.getFlight());
     }
 
 
