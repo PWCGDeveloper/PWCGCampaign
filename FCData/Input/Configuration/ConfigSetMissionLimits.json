@@ -131,10 +131,10 @@
       "label": "Min dist in km mission center from base",
       "help": "Minimum distance of mission center from base (Not used in competitive mode)"
     },
-    "MissionBoxMaxDistancePercentRange": {
-      "value": "40",
-      "label": "Percent of aircraft range to mission center",
-      "help": "Maximum distance to mission center based on aircraft range"
+    "MissionBoxMaxDistanceFromBase": {
+      "value": "35",
+      "label": "Max dist in km mission center from base",
+      "help": "Maximum distance of mission center from base (Not used in competitive mode)"
     },
     "UseAirfieldMGs": {
       "value": "1",

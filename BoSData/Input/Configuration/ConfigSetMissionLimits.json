@@ -107,14 +107,14 @@
       "help": "Size of the box that PWCG direct flights into.  Smaller means more flights in a tight area"
     },
     "MissionBoxMinDistanceFromBase": {
-      "value": "40",
+      "value": "35",
       "label": "Min dist in km mission center from base",
       "help": "Minimum distance of mission center from base (Not used in competitive mode)"
     },
-    "MissionBoxMaxDistancePercentRange": {
-      "value": "25",
-      "label": "Percent of aircraft range to mission center",
-      "help": "Maximum distance to mission center based on aircraft range"
+    "MissionBoxMaxDistanceFromBase": {
+      "value": "80",
+      "label": "Max dist in km mission center from base",
+      "help": "Maximum distance of mission center from base (Not used in competitive mode)"
     },
     "UseAirfieldMGs": {
       "value": "1",
