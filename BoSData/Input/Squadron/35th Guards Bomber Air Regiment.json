@@ -36,7 +36,13 @@
     "19440901": "Samovalovka",
     "19441001": "Samovalovka",
     "19441101": "Kachalinskaya",
-    "19441201": "Illarionovskiy"
+    "19441201": "Illarionovskiy",
+    "19450101": "ef_Achmer",
+    "19450201": "ef_Hopsten",
+    "19450301": "ef_Frankfurt-Eschborn",
+    "19450401": "ef_Kluis",
+    "19450501": "ef_Stormede",
+    "19450503": "ef_Ophoven"
   },
   "skins": [
     {

@@ -20,7 +20,8 @@
     "19441229": "Rips",
     "19450207": "Gilze-Rijen",
     "19450310": "Schijndel",
-    "19450404": "Essen-Mulheim"
+    "19450404": "Essen-Mulheim",
+    "19450101": "Drope"
   },
   "skins": [],
   "squadHistory": {
@@ -44,6 +45,9 @@
         ]
       }
     ]
+  },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
   },
   "nightMissionOdds": {
     "nightMissionPeriods": [

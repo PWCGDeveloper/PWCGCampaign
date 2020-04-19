@@ -4,6 +4,7 @@ import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.bos.map.bodenplatte.BodenplatteMap;
 import pwcg.product.bos.map.east1944.East1944Map;
+import pwcg.product.bos.map.east1945.East1945Map;
 import pwcg.product.bos.map.kuban.KubanMap;
 import pwcg.product.bos.map.moscow.MoscowMap;
 import pwcg.product.bos.map.stalingrad.StalingradMap;
@@ -38,6 +39,11 @@ public class PWCGMapFactory
         if (frontMapIdentifier == FrontMapIdentifier.EAST1944_MAP)
         {
             map = new East1944Map();
+            map.configure();
+        }
+        if (frontMapIdentifier == FrontMapIdentifier.EAST1945_MAP)
+        {
+            map = new East1945Map();
             map.configure();
         }
         if (frontMapIdentifier == FrontMapIdentifier.ARRAS_MAP)

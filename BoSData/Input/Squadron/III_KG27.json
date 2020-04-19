@@ -36,7 +36,12 @@
     "19440901": "Safronov",
     "19441001": "Oblivskaya",
     "19441101": "Morozovskiy South",
-    "19441201": "Morozovskiy West"
+    "19441201": "Morozovskiy West",
+    "19450101": "ef_Kelz",
+    "19450201": "ef_Aachen",
+    "19450301": "ef_St.Trond",
+    "19450401": "ef_Woensdrecht",
+    "19450501": "ef_Chievres"
   },
   "skins": [
     {

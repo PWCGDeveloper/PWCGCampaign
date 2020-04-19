@@ -15,7 +15,10 @@ import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.factory.AirfieldConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
+import pwcg.core.location.Coordinate;
+import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PositionFinder;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class AirfieldManager
@@ -146,6 +149,21 @@ public class AirfieldManager
     public Map<String, IAirfield> getAllAirfields()
     {
         return airfields;
+    }
+
+    public IAirfield getClosestAirfield(Coordinate clickCoordinate)
+    {
+        IAirfield closestAirfield = null;
+        double closestDistance = PositionFinder.ABSURDLY_LARGE_DISTANCE;
+        for (IAirfield airfield : airfields.values())
+        {
+            double distanceFromClick = MathUtils.calcDist(airfield.getPosition(), clickCoordinate);
+            if (closestDistance < distanceFromClick)
+            {
+                closestAirfield = airfield;
+            }
+        }
+        return closestAirfield;
     }
 
 }

@@ -42,7 +42,6 @@ public class East1944Map extends PWCGMap
         armedServicesActiveForMap.add(BoSServiceManager.VVS);
         armedServicesActiveForMap.add(BoSServiceManager.NORMANDIE);
         armedServicesActiveForMap.add(BoSServiceManager.LUFTWAFFE);
-        armedServicesActiveForMap.add(BoSServiceManager.REGIA_AERONAUTICA);
     }
 
     @Override

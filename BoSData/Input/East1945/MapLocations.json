@@ -1,0 +1,2943 @@
+{
+  "locationSetName": "MapLocations",
+  "locations": [
+    {
+      "name": "Aachen",
+      "position": {
+        "xPos": 133153.0,
+        "yPos": 38.0,
+        "zPos": 206220.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 306.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Aarschot",
+      "position": {
+        "xPos": 160594.0,
+        "yPos": 38.0,
+        "zPos": 119505.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 324.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ac",
+      "position": {
+        "xPos": 160955.0,
+        "yPos": 38.0,
+        "zPos": 172570.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 228.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Achmer",
+      "position": {
+        "xPos": 312391.0,
+        "yPos": 38.0,
+        "zPos": 337745.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 324.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Alkmaar",
+      "position": {
+        "xPos": 344455.0,
+        "yPos": 38.0,
+        "zPos": 122530.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 117.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Almelo",
+      "position": {
+        "xPos": 307933.0,
+        "yPos": 38.0,
+        "zPos": 251600.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 356.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Altenstadt",
+      "position": {
+        "xPos": 79050.0,
+        "yPos": 38.0,
+        "zPos": 409942.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 160.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Amersfoort",
+      "position": {
+        "xPos": 289404.0,
+        "yPos": 38.0,
+        "zPos": 163330.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 79.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Amsterdam",
+      "position": {
+        "xPos": 319563.0,
+        "yPos": 38.0,
+        "zPos": 127963.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 283.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Antwerpen",
+      "position": {
+        "xPos": 190944.0,
+        "yPos": 38.0,
+        "zPos": 91081.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 20.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Apeldoorn",
+      "position": {
+        "xPos": 292723.0,
+        "yPos": 38.0,
+        "zPos": 203755.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 353.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Arnhem",
+      "position": {
+        "xPos": 268614.0,
+        "yPos": 38.0,
+        "zPos": 197980.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 41.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Asbach",
+      "position": {
+        "xPos": 120637.0,
+        "yPos": 38.0,
+        "zPos": 301242.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 262.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Attendorn",
+      "position": {
+        "xPos": 172417.0,
+        "yPos": 38.0,
+        "zPos": 335513.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 22.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Auwaille",
+      "position": {
+        "xPos": 101599.0,
+        "yPos": 38.0,
+        "zPos": 176750.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 358.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Babenhausen",
+      "position": {
+        "xPos": 41100.0,
+        "yPos": 38.0,
+        "zPos": 409956.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 135.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bad Honningen",
+      "position": {
+        "xPos": 103979.0,
+        "yPos": 38.0,
+        "zPos": 292977.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 56.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bad Laasphe",
+      "position": {
+        "xPos": 149657.0,
+        "yPos": 38.0,
+        "zPos": 370640.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 328.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Barvaux",
+      "position": {
+        "xPos": 88204.0,
+        "yPos": 38.0,
+        "zPos": 163491.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bastogne",
+      "position": {
+        "xPos": 48832.0,
+        "yPos": 38.0,
+        "zPos": 178242.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 329.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Beckum",
+      "position": {
+        "xPos": 241841.0,
+        "yPos": 38.0,
+        "zPos": 344675.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 353.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bergen op Zoom",
+      "position": {
+        "xPos": 217874.0,
+        "yPos": 38.0,
+        "zPos": 84589.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 28.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Berleburg",
+      "position": {
+        "xPos": 163467.0,
+        "yPos": 38.0,
+        "zPos": 369275.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 281.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bielefeld",
+      "position": {
+        "xPos": 270781.0,
+        "yPos": 38.0,
+        "zPos": 380109.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bigen",
+      "position": {
+        "xPos": 42990.0,
+        "yPos": 38.0,
+        "zPos": 335153.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Billerbeck",
+      "position": {
+        "xPos": 266191.0,
+        "yPos": 38.0,
+        "zPos": 293687.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 114.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bocholt",
+      "position": {
+        "xPos": 251196.0,
+        "yPos": 38.0,
+        "zPos": 246963.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bochum",
+      "position": {
+        "xPos": 211316.0,
+        "yPos": 38.0,
+        "zPos": 287475.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 79.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bonn",
+      "position": {
+        "xPos": 128200.0,
+        "yPos": 38.0,
+        "zPos": 278323.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 304.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bonninghardt",
+      "position": {
+        "xPos": 223335.0,
+        "yPos": 38.0,
+        "zPos": 239423.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 245.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Borculo",
+      "position": {
+        "xPos": 282558.0,
+        "yPos": 38.0,
+        "zPos": 240280.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 326.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Borken",
+      "position": {
+        "xPos": 252855.0,
+        "yPos": 38.0,
+        "zPos": 265611.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 348.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Breda",
+      "position": {
+        "xPos": 228318.0,
+        "yPos": 38.0,
+        "zPos": 118720.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 200.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bree",
+      "position": {
+        "xPos": 176044.0,
+        "yPos": 38.0,
+        "zPos": 174135.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 263.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bridge",
+      "position": {
+        "xPos": 189682.0,
+        "yPos": 38.0,
+        "zPos": 91606.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 1.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Brussel",
+      "position": {
+        "xPos": 146770.0,
+        "yPos": 38.0,
+        "zPos": 83268.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 317.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bullay",
+      "position": {
+        "xPos": 52839.0,
+        "yPos": 38.0,
+        "zPos": 280313.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 83.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Butzbach",
+      "position": {
+        "xPos": 94877.0,
+        "yPos": 38.0,
+        "zPos": 389644.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 36.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Charleroi",
+      "position": {
+        "xPos": 98527.0,
+        "yPos": 38.0,
+        "zPos": 86975.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 19.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Chatelet",
+      "position": {
+        "xPos": 97206.0,
+        "yPos": 38.0,
+        "zPos": 94519.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 239.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Chievres",
+      "position": {
+        "xPos": 120222.0,
+        "yPos": 38.0,
+        "zPos": 45709.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 141.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ciney",
+      "position": {
+        "xPos": 82898.0,
+        "yPos": 38.0,
+        "zPos": 135096.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 339.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Coesfeld",
+      "position": {
+        "xPos": 262024.0,
+        "yPos": 38.0,
+        "zPos": 286373.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 17.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Darmstadt",
+      "position": {
+        "xPos": 34050.0,
+        "yPos": 38.0,
+        "zPos": 387762.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Den Haag",
+      "position": {
+        "xPos": 283725.0,
+        "yPos": 38.0,
+        "zPos": 88603.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 327.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Deurne",
+      "position": {
+        "xPos": 212174.0,
+        "yPos": 38.0,
+        "zPos": 188237.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 127.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Dierdorf",
+      "position": {
+        "xPos": 107081.0,
+        "yPos": 38.0,
+        "zPos": 317897.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 167.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Diest",
+      "position": {
+        "xPos": 160971.0,
+        "yPos": 38.0,
+        "zPos": 135016.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 14.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Doetinchem",
+      "position": {
+        "xPos": 266047.0,
+        "yPos": 38.0,
+        "zPos": 225020.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 1.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Dorsten",
+      "position": {
+        "xPos": 230735.0,
+        "yPos": 38.0,
+        "zPos": 270652.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 3.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Dortmund",
+      "position": {
+        "xPos": 215352.0,
+        "yPos": 38.0,
+        "zPos": 304395.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 76.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Duisburg",
+      "position": {
+        "xPos": 205289.0,
+        "yPos": 38.0,
+        "zPos": 256066.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Dumpelfeld",
+      "position": {
+        "xPos": 95913.0,
+        "yPos": 38.0,
+        "zPos": 266206.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 290.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Duren",
+      "position": {
+        "xPos": 137442.0,
+        "yPos": 38.0,
+        "zPos": 235102.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 312.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Dusseldorf",
+      "position": {
+        "xPos": 184919.0,
+        "yPos": 38.0,
+        "zPos": 256295.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 75.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Eghezee",
+      "position": {
+        "xPos": 116582.0,
+        "yPos": 38.0,
+        "zPos": 123496.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 275.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Eindhoven",
+      "position": {
+        "xPos": 207338.0,
+        "yPos": 38.0,
+        "zPos": 167604.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 81.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Emmerich",
+      "position": {
+        "xPos": 251788.0,
+        "yPos": 38.0,
+        "zPos": 220716.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 285.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Engelskirchen",
+      "position": {
+        "xPos": 156354.0,
+        "yPos": 38.0,
+        "zPos": 300759.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 36.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Enschede",
+      "position": {
+        "xPos": 292911.0,
+        "yPos": 38.0,
+        "zPos": 267895.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 283.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Eschweiler",
+      "position": {
+        "xPos": 138605.0,
+        "yPos": 38.0,
+        "zPos": 219156.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 315.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Essen",
+      "position": {
+        "xPos": 208336.0,
+        "yPos": 38.0,
+        "zPos": 272495.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 351.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ettinghausen",
+      "position": {
+        "xPos": 108774.0,
+        "yPos": 38.0,
+        "zPos": 405750.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 33.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Eupen",
+      "position": {
+        "xPos": 118618.0,
+        "yPos": 38.0,
+        "zPos": 203291.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 327.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Euskichen",
+      "position": {
+        "xPos": 120329.0,
+        "yPos": 38.0,
+        "zPos": 257383.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 223.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Evere",
+      "position": {
+        "xPos": 150728.0,
+        "yPos": 38.0,
+        "zPos": 90215.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 140.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Fleurus",
+      "position": {
+        "xPos": 105540.0,
+        "yPos": 38.0,
+        "zPos": 97113.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 31.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Floidchapelle",
+      "position": {
+        "xPos": 69803.0,
+        "yPos": 38.0,
+        "zPos": 79718.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 165.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Florennes",
+      "position": {
+        "xPos": 79905.0,
+        "yPos": 38.0,
+        "zPos": 100034.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 289.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Frankfurt am Main",
+      "position": {
+        "xPos": 58936.0,
+        "yPos": 38.0,
+        "zPos": 391199.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 257.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Furstenau",
+      "position": {
+        "xPos": 325816.0,
+        "yPos": 38.0,
+        "zPos": 319860.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 344.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Geel",
+      "position": {
+        "xPos": 182275.0,
+        "yPos": 38.0,
+        "zPos": 132074.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 288.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Geldern",
+      "position": {
+        "xPos": 216210.0,
+        "yPos": 38.0,
+        "zPos": 225516.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 33.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Geleen",
+      "position": {
+        "xPos": 155823.0,
+        "yPos": 38.0,
+        "zPos": 190020.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 330.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gelnhausen",
+      "position": {
+        "xPos": 69477.0,
+        "yPos": 38.0,
+        "zPos": 426956.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 201.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gelsdorf",
+      "position": {
+        "xPos": 112194.0,
+        "yPos": 38.0,
+        "zPos": 274090.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 51.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gelsenkirchen",
+      "position": {
+        "xPos": 214663.0,
+        "yPos": 38.0,
+        "zPos": 279783.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 159.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gembloux",
+      "position": {
+        "xPos": 113826.0,
+        "yPos": 38.0,
+        "zPos": 107198.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 223.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Genk",
+      "position": {
+        "xPos": 156929.0,
+        "yPos": 38.0,
+        "zPos": 166441.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 7.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gennep",
+      "position": {
+        "xPos": 237637.0,
+        "yPos": 38.0,
+        "zPos": 201563.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gent",
+      "position": {
+        "xPos": 172743.0,
+        "yPos": 38.0,
+        "zPos": 43381.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 263.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gersten",
+      "position": {
+        "xPos": 332784.0,
+        "yPos": 38.0,
+        "zPos": 308875.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 257.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Giesen",
+      "position": {
+        "xPos": 112447.0,
+        "yPos": 38.0,
+        "zPos": 389924.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 304.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gilze",
+      "position": {
+        "xPos": 221732.0,
+        "yPos": 38.0,
+        "zPos": 130755.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 283.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Givet",
+      "position": {
+        "xPos": 66532.0,
+        "yPos": 38.0,
+        "zPos": 115995.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 35.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gladbach",
+      "position": {
+        "xPos": 156664.0,
+        "yPos": 38.0,
+        "zPos": 280763.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 356.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Glandorf",
+      "position": {
+        "xPos": 278145.0,
+        "yPos": 38.0,
+        "zPos": 342163.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 143.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gorinchem",
+      "position": {
+        "xPos": 255515.0,
+        "yPos": 38.0,
+        "zPos": 133009.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 288.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gouda",
+      "position": {
+        "xPos": 275004.0,
+        "yPos": 38.0,
+        "zPos": 115922.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 54.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Grevenbroich",
+      "position": {
+        "xPos": 168885.0,
+        "yPos": 38.0,
+        "zPos": 241613.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 191.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Grimbergen",
+      "position": {
+        "xPos": 156404.0,
+        "yPos": 38.0,
+        "zPos": 87009.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 336.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gross-Ostheim",
+      "position": {
+        "xPos": 38388.0,
+        "yPos": 38.0,
+        "zPos": 419043.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 219.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gutersloh",
+      "position": {
+        "xPos": 257879.0,
+        "yPos": 38.0,
+        "zPos": 369266.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 221.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gymnich",
+      "position": {
+        "xPos": 140234.0,
+        "yPos": 38.0,
+        "zPos": 253645.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 322.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Hachenburg",
+      "position": {
+        "xPos": 119965.0,
+        "yPos": 38.0,
+        "zPos": 328973.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 330.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Hagen",
+      "position": {
+        "xPos": 197525.0,
+        "yPos": 38.0,
+        "zPos": 305078.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 241.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Handorf",
+      "position": {
+        "xPos": 267881.0,
+        "yPos": 38.0,
+        "zPos": 322271.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 94.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Hannut",
+      "position": {
+        "xPos": 125121.0,
+        "yPos": 38.0,
+        "zPos": 135578.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 223.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Harderwijk",
+      "position": {
+        "xPos": 310395.0,
+        "yPos": 38.0,
+        "zPos": 179706.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 302.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Harmelen",
+      "position": {
+        "xPos": 283522.0,
+        "yPos": 38.0,
+        "zPos": 133770.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 265.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Heerlen",
+      "position": {
+        "xPos": 147700.0,
+        "yPos": 38.0,
+        "zPos": 199272.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 13.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Hehnet",
+      "position": {
+        "xPos": 149468.0,
+        "yPos": 38.0,
+        "zPos": 88107.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 325.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Hengelo",
+      "position": {
+        "xPos": 296925.0,
+        "yPos": 38.0,
+        "zPos": 259504.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 10.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Hesepe",
+      "position": {
+        "xPos": 318360.0,
+        "yPos": 38.0,
+        "zPos": 339584.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Holzhausen",
+      "position": {
+        "xPos": 70769.0,
+        "yPos": 38.0,
+        "zPos": 335506.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 163.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Hopsten",
+      "position": {
+        "xPos": 311155.0,
+        "yPos": 38.0,
+        "zPos": 315128.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 168.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Houffalize",
+      "position": {
+        "xPos": 63643.0,
+        "yPos": 38.0,
+        "zPos": 183974.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 325.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Huckeswagen",
+      "position": {
+        "xPos": 174592.0,
+        "yPos": 38.0,
+        "zPos": 295736.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 226.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Huy",
+      "position": {
+        "xPos": 108054.0,
+        "yPos": 38.0,
+        "zPos": 146694.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 20.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ibbenburen",
+      "position": {
+        "xPos": 299380.0,
+        "yPos": 38.0,
+        "zPos": 323861.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 37.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Jodoigne",
+      "position": {
+        "xPos": 131693.0,
+        "yPos": 38.0,
+        "zPos": 121015.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 212.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Julich",
+      "position": {
+        "xPos": 151576.0,
+        "yPos": 38.0,
+        "zPos": 226159.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 87.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Kampen",
+      "position": {
+        "xPos": 331949.0,
+        "yPos": 38.0,
+        "zPos": 201371.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 73.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Kirtorf",
+      "position": {
+        "xPos": 132519.0,
+        "yPos": 38.0,
+        "zPos": 420102.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 325.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Kleine-Brogel",
+      "position": {
+        "xPos": 179654.0,
+        "yPos": 38.0,
+        "zPos": 163892.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 161.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Kleve",
+      "position": {
+        "xPos": 246046.0,
+        "yPos": 38.0,
+        "zPos": 212814.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 330.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Koblenz",
+      "position": {
+        "xPos": 85221.0,
+        "yPos": 38.0,
+        "zPos": 312243.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 26.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Koln",
+      "position": {
+        "xPos": 152865.0,
+        "yPos": 38.0,
+        "zPos": 270537.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 310.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Korspel",
+      "position": {
+        "xPos": 171104.0,
+        "yPos": 38.0,
+        "zPos": 148953.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 13.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Krefeld",
+      "position": {
+        "xPos": 195661.0,
+        "yPos": 38.0,
+        "zPos": 241983.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 65.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ladbergen",
+      "position": {
+        "xPos": 284938.0,
+        "yPos": 38.0,
+        "zPos": 324142.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 20.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Lette",
+      "position": {
+        "xPos": 258249.0,
+        "yPos": 38.0,
+        "zPos": 286097.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 284.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Leuven",
+      "position": {
+        "xPos": 149078.0,
+        "yPos": 38.0,
+        "zPos": 110690.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 199.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Limburg",
+      "position": {
+        "xPos": 89551.0,
+        "yPos": 38.0,
+        "zPos": 346651.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 264.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Lingen",
+      "position": {
+        "xPos": 327320.0,
+        "yPos": 38.0,
+        "zPos": 295688.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 45.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Lippspringe",
+      "position": {
+        "xPos": 244835.0,
+        "yPos": 38.0,
+        "zPos": 398761.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 313.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Lippstadt",
+      "position": {
+        "xPos": 231671.0,
+        "yPos": 38.0,
+        "zPos": 365598.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 34.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Loenhout",
+      "position": {
+        "xPos": 207298.0,
+        "yPos": 38.0,
+        "zPos": 108256.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 25.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Lokeren",
+      "position": {
+        "xPos": 176502.0,
+        "yPos": 38.0,
+        "zPos": 61043.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 59.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Lommel",
+      "position": {
+        "xPos": 185653.0,
+        "yPos": 38.0,
+        "zPos": 154943.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 326.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ludenscheid",
+      "position": {
+        "xPos": 182010.0,
+        "yPos": 38.0,
+        "zPos": 315815.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 231.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ludinghausen",
+      "position": {
+        "xPos": 242792.0,
+        "yPos": 38.0,
+        "zPos": 303441.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 177.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Maaseik",
+      "position": {
+        "xPos": 170739.0,
+        "yPos": 38.0,
+        "zPos": 186982.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 66.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Maastricht",
+      "position": {
+        "xPos": 144282.0,
+        "yPos": 38.0,
+        "zPos": 180147.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 290.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Mainz",
+      "position": {
+        "xPos": 46616.0,
+        "yPos": 38.0,
+        "zPos": 360590.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 66.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Malmedy",
+      "position": {
+        "xPos": 95446.0,
+        "yPos": 38.0,
+        "zPos": 202009.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 128.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Manhay",
+      "position": {
+        "xPos": 81448.0,
+        "yPos": 38.0,
+        "zPos": 176513.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 147.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Marburg",
+      "position": {
+        "xPos": 135713.0,
+        "yPos": 38.0,
+        "zPos": 395779.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 138.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Mayen",
+      "position": {
+        "xPos": 82336.0,
+        "yPos": 38.0,
+        "zPos": 285945.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 277.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Medenbach",
+      "position": {
+        "xPos": 124113.0,
+        "yPos": 38.0,
+        "zPos": 359193.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 164.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Meijel",
+      "position": {
+        "xPos": 198237.0,
+        "yPos": 38.0,
+        "zPos": 195083.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 301.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Melle",
+      "position": {
+        "xPos": 291711.0,
+        "yPos": 38.0,
+        "zPos": 364811.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 3.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Melsbroek",
+      "position": {
+        "xPos": 153874.0,
+        "yPos": 38.0,
+        "zPos": 94586.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 172.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Merzhausen",
+      "position": {
+        "xPos": 81712.0,
+        "yPos": 38.0,
+        "zPos": 375050.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 292.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Meschede",
+      "position": {
+        "xPos": 196544.0,
+        "yPos": 38.0,
+        "zPos": 361317.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 23.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Monchengladbach",
+      "position": {
+        "xPos": 179874.0,
+        "yPos": 38.0,
+        "zPos": 233251.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 291.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Mons",
+      "position": {
+        "xPos": 104098.0,
+        "yPos": 38.0,
+        "zPos": 54475.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 125.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Monschau",
+      "position": {
+        "xPos": 109482.0,
+        "yPos": 38.0,
+        "zPos": 217395.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 34.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Munster",
+      "position": {
+        "xPos": 263924.0,
+        "yPos": 38.0,
+        "zPos": 316926.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 99.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Namur",
+      "position": {
+        "xPos": 103274.0,
+        "yPos": 38.0,
+        "zPos": 119490.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 8.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Neheim",
+      "position": {
+        "xPos": 208111.0,
+        "yPos": 38.0,
+        "zPos": 339948.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 38.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Nettersheim",
+      "position": {
+        "xPos": 102056.0,
+        "yPos": 38.0,
+        "zPos": 245146.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 89.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Nidda",
+      "position": {
+        "xPos": 92879.0,
+        "yPos": 38.0,
+        "zPos": 412951.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 135.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Nijmegen",
+      "position": {
+        "xPos": 253559.0,
+        "yPos": 38.0,
+        "zPos": 194129.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 106.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ninove",
+      "position": {
+        "xPos": 146793.0,
+        "yPos": 38.0,
+        "zPos": 61810.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 238.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Niverlles",
+      "position": {
+        "xPos": 119397.0,
+        "yPos": 38.0,
+        "zPos": 82750.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Nordhorn",
+      "position": {
+        "xPos": 317371.0,
+        "yPos": 38.0,
+        "zPos": 278576.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Offenbach",
+      "position": {
+        "xPos": 55781.0,
+        "yPos": 38.0,
+        "zPos": 396123.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 329.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Osnabruck",
+      "position": {
+        "xPos": 300123.0,
+        "yPos": 38.0,
+        "zPos": 347180.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 352.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Oss",
+      "position": {
+        "xPos": 245261.0,
+        "yPos": 38.0,
+        "zPos": 171527.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 65.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Padenborn",
+      "position": {
+        "xPos": 236472.0,
+        "yPos": 38.0,
+        "zPos": 392677.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 318.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Plantlunne",
+      "position": {
+        "xPos": 317103.0,
+        "yPos": 38.0,
+        "zPos": 302690.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 39.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Plettenberg",
+      "position": {
+        "xPos": 180653.0,
+        "yPos": 38.0,
+        "zPos": 333101.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 82.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Prum",
+      "position": {
+        "xPos": 70371.0,
+        "yPos": 38.0,
+        "zPos": 229503.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 354.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Quakenbruck",
+      "position": {
+        "xPos": 343447.0,
+        "yPos": 38.0,
+        "zPos": 337738.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 268.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Raalte",
+      "position": {
+        "xPos": 313610.0,
+        "yPos": 38.0,
+        "zPos": 225019.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 49.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Raesfeld",
+      "position": {
+        "xPos": 244066.0,
+        "yPos": 38.0,
+        "zPos": 261803.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 269.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Recklinghausen",
+      "position": {
+        "xPos": 225102.0,
+        "yPos": 38.0,
+        "zPos": 285675.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 246.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Rekken",
+      "position": {
+        "xPos": 250635.0,
+        "yPos": 38.0,
+        "zPos": 276097.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 102.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Remagen",
+      "position": {
+        "xPos": 110245.0,
+        "yPos": 38.0,
+        "zPos": 288077.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 227.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Remscheid",
+      "position": {
+        "xPos": 177953.0,
+        "yPos": 38.0,
+        "zPos": 285911.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 265.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Rheine",
+      "position": {
+        "xPos": 300162.0,
+        "yPos": 38.0,
+        "zPos": 302287.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 80.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Roosendaal",
+      "position": {
+        "xPos": 223441.0,
+        "yPos": 38.0,
+        "zPos": 96315.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 310.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Rotterdam",
+      "position": {
+        "xPos": 264549.0,
+        "yPos": 38.0,
+        "zPos": 101004.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 308.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Scheveningen",
+      "position": {
+        "xPos": 286128.0,
+        "yPos": 38.0,
+        "zPos": 86985.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 312.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Schiedam",
+      "position": {
+        "xPos": 263190.0,
+        "yPos": 38.0,
+        "zPos": 95247.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 333.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Schmallenberg",
+      "position": {
+        "xPos": 174605.0,
+        "yPos": 38.0,
+        "zPos": 361955.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 125.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Schoppingen",
+      "position": {
+        "xPos": 279481.0,
+        "yPos": 38.0,
+        "zPos": 289605.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 314.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Sendenhorst",
+      "position": {
+        "xPos": 251599.0,
+        "yPos": 38.0,
+        "zPos": 330154.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 32.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Seraing",
+      "position": {
+        "xPos": 117849.0,
+        "yPos": 38.0,
+        "zPos": 166393.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 274.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Siegburg",
+      "position": {
+        "xPos": 135580.0,
+        "yPos": 38.0,
+        "zPos": 284799.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 312.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Sint-Niklaas",
+      "position": {
+        "xPos": 184237.0,
+        "yPos": 38.0,
+        "zPos": 72925.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 65.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Sint-Truiden",
+      "position": {
+        "xPos": 139603.0,
+        "yPos": 38.0,
+        "zPos": 145158.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 283.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Snow-Eifel",
+      "position": {
+        "xPos": 71664.0,
+        "yPos": 38.0,
+        "zPos": 246198.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 354.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Spa",
+      "position": {
+        "xPos": 102977.0,
+        "yPos": 38.0,
+        "zPos": 189659.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 348.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Spakenburg",
+      "position": {
+        "xPos": 298655.0,
+        "yPos": 38.0,
+        "zPos": 163005.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 191.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "St Denijs Westrem",
+      "position": {
+        "xPos": 168855.0,
+        "yPos": 38.0,
+        "zPos": 38333.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 209.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Terneuzer",
+      "position": {
+        "xPos": 201153.0,
+        "yPos": 38.0,
+        "zPos": 51671.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 219.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Tienen",
+      "position": {
+        "xPos": 139350.0,
+        "yPos": 38.0,
+        "zPos": 124180.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 112.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Tilburg",
+      "position": {
+        "xPos": 225824.0,
+        "yPos": 38.0,
+        "zPos": 139524.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 345.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Tongeren",
+      "position": {
+        "xPos": 136023.0,
+        "yPos": 38.0,
+        "zPos": 162847.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 297.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Turnhout",
+      "position": {
+        "xPos": 197464.0,
+        "yPos": 38.0,
+        "zPos": 128866.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 290.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ulmen",
+      "position": {
+        "xPos": 70681.0,
+        "yPos": 38.0,
+        "zPos": 269026.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 331.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Unkel",
+      "position": {
+        "xPos": 112145.0,
+        "yPos": 38.0,
+        "zPos": 287709.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 38.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Utrecht",
+      "position": {
+        "xPos": 282689.0,
+        "yPos": 38.0,
+        "zPos": 144084.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 336.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Vechta",
+      "position": {
+        "xPos": 350079.0,
+        "yPos": 38.0,
+        "zPos": 361233.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 262.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Veghel",
+      "position": {
+        "xPos": 228123.0,
+        "yPos": 38.0,
+        "zPos": 171464.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 46.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Venlo",
+      "position": {
+        "xPos": 200902.0,
+        "yPos": 38.0,
+        "zPos": 213315.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 217.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Venray",
+      "position": {
+        "xPos": 217098.0,
+        "yPos": 38.0,
+        "zPos": 201176.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 246.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Versmold",
+      "position": {
+        "xPos": 273079.0,
+        "yPos": 38.0,
+        "zPos": 352468.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 326.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Verviers",
+      "position": {
+        "xPos": 114345.0,
+        "yPos": 38.0,
+        "zPos": 191320.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 150.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Vise",
+      "position": {
+        "xPos": 130758.0,
+        "yPos": 38.0,
+        "zPos": 179486.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 275.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Volkel",
+      "position": {
+        "xPos": 231961.0,
+        "yPos": 38.0,
+        "zPos": 179925.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 20.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Vorden",
+      "position": {
+        "xPos": 322166.0,
+        "yPos": 38.0,
+        "zPos": 348464.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 309.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Vreden",
+      "position": {
+        "xPos": 273395.0,
+        "yPos": 38.0,
+        "zPos": 261694.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 217.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Wagenfeld",
+      "position": {
+        "xPos": 330587.0,
+        "yPos": 38.0,
+        "zPos": 381206.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 215.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Wahn",
+      "position": {
+        "xPos": 142345.0,
+        "yPos": 38.0,
+        "zPos": 277935.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 344.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Waldbrol",
+      "position": {
+        "xPos": 144436.0,
+        "yPos": 38.0,
+        "zPos": 315731.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 243.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Wassenberg",
+      "position": {
+        "xPos": 170423.0,
+        "yPos": 38.0,
+        "zPos": 213268.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 86.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Wavre",
+      "position": {
+        "xPos": 131571.0,
+        "yPos": 38.0,
+        "zPos": 102498.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 310.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Weert",
+      "position": {
+        "xPos": 187595.0,
+        "yPos": 38.0,
+        "zPos": 182664.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Weeze",
+      "position": {
+        "xPos": 228470.0,
+        "yPos": 38.0,
+        "zPos": 217620.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 233.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Werl",
+      "position": {
+        "xPos": 220538.0,
+        "yPos": 38.0,
+        "zPos": 335305.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 111.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Wesel",
+      "position": {
+        "xPos": 231461.0,
+        "yPos": 38.0,
+        "zPos": 246119.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Westenholz",
+      "position": {
+        "xPos": 241170.0,
+        "yPos": 38.0,
+        "zPos": 374156.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 224.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Wiesbaden",
+      "position": {
+        "xPos": 55400.0,
+        "yPos": 38.0,
+        "zPos": 360886.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 303.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Wijk bij Duurstede",
+      "position": {
+        "xPos": 269050.0,
+        "yPos": 38.0,
+        "zPos": 159885.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Winterberg",
+      "position": {
+        "xPos": 179569.0,
+        "yPos": 38.0,
+        "zPos": 378993.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Wuppertal",
+      "position": {
+        "xPos": 188182.0,
+        "yPos": 38.0,
+        "zPos": 286324.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 160.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Zeist",
+      "position": {
+        "xPos": 282394.0,
+        "yPos": 38.0,
+        "zPos": 153533.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 50.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Zellhausen",
+      "position": {
+        "xPos": 48196.0,
+        "yPos": 38.0,
+        "zPos": 412874.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 275.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Zijberveld",
+      "position": {
+        "xPos": 266504.0,
+        "yPos": 38.0,
+        "zPos": 145474.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 317.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Zoersel",
+      "position": {
+        "xPos": 192310.0,
+        "yPos": 38.0,
+        "zPos": 112702.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 279.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Zulpich",
+      "position": {
+        "xPos": 124825.0,
+        "yPos": 38.0,
+        "zPos": 247970.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 42.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Zwolle",
+      "position": {
+        "xPos": 327652.0,
+        "yPos": 38.0,
+        "zPos": 212383.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 80.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "s-Hertogenbosch",
+      "position": {
+        "xPos": 238120.0,
+        "yPos": 38.0,
+        "zPos": 156737.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 344.0,
+        "zOri": 0.0
+      }
+    }
+  ]
+}
