@@ -13,15 +13,15 @@ import pwcg.core.utils.DateUtils;
 public class AceCsvReader
 {
     private List<String> aceVictoryEntries = new ArrayList<>();
-    private String aceName ="";
-    private int aceSerialNumber = 20112054;
+    private String aceName ="Gerhard Barkhorn";
+    private int aceSerialNumber = 201004;
 
     public static void main (String[] args)
     {
         try
         {
             AceCsvReader aceCsvReader = new AceCsvReader();
-            aceCsvReader.reaceAceFile("D:\\PWCG\\Aces\\Erich Hartmann Victories.csv");
+            aceCsvReader.reaceAceFile("D:\\PWCG\\Aces\\Gerd Barkhorn VIctories.csv");
         }
         catch (Exception e)
         {
