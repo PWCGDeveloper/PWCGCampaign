@@ -48,7 +48,7 @@ public enum WaypointType
             int waypointAltitude = Double.valueOf(flightAltitude * .8).intValue();
             if (waypointAltitude < 1000)
             {
-                waypointAltitude = 10000;
+                waypointAltitude = 1000;
             }
             return waypointAltitude;
         }

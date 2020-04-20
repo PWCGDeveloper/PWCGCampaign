@@ -11,7 +11,7 @@ import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class AirStartFlightValidator 
+public class FighterAirStartFlightValidator 
 {
     public void validatePatrolFlight(IFlight flight) throws PWCGException
     {

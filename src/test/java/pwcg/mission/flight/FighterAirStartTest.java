@@ -13,7 +13,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.patrol.PatrolFlight;
-import pwcg.mission.flight.validate.AirStartFlightValidator;
+import pwcg.mission.flight.validate.FighterAirStartFlightValidator;
 import pwcg.mission.flight.validate.EscortForPlayerValidator;
 import pwcg.mission.flight.validate.FlightActivateValidator;
 import pwcg.mission.flight.validate.PlaneRtbValidator;
@@ -25,7 +25,7 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestParticipatingHumanBuilder;
 
-public class AirStartTest 
+public class FighterAirStartTest 
 {    
     Campaign campaign;
     
@@ -50,7 +50,7 @@ public class AirStartTest
         assert (targetMissionPoint != null);
         PlaneRtbValidator.verifyPlaneRtbEnabled(mission);
 
-        AirStartFlightValidator airStartFlightValidator = new AirStartFlightValidator();
+        FighterAirStartFlightValidator airStartFlightValidator = new FighterAirStartFlightValidator();
         airStartFlightValidator.validatePatrolFlight(flight);
         assert(flight.getFlightType() == FlightTypes.PATROL);
         FlightActivateValidator.validate(flight);
@@ -62,4 +62,5 @@ public class AirStartTest
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
 	}
+	
 }

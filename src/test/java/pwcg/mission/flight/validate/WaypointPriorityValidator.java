@@ -1,6 +1,6 @@
 package pwcg.mission.flight.validate;
 
-import pwcg.campaign.plane.Role;
+import pwcg.mission.flight.FlightTypeCategory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointAction;
@@ -14,7 +14,7 @@ public class WaypointPriorityValidator
     {
 
         WaypointPriority expectedWaypointPriority = WaypointPriority.PRIORITY_MED;
-        if (flight.getFlightPlanes().getPlanes().get(0).isPrimaryRole(Role.ROLE_FIGHTER))
+        if (flight.getFlightType().isCategory(FlightTypeCategory.FIGHTER))
         {
             expectedWaypointPriority = WaypointPriority.PRIORITY_LOW;
         }
