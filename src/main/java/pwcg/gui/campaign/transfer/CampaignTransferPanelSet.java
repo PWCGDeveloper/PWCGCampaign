@@ -482,7 +482,6 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
             {
                 acceptTransfer();
                 SoundManager.getInstance().playSound("Stapling.WAV");
-                CampaignGuiContextManager.getInstance().popFromContextStack();
             }
             else if (action.equalsIgnoreCase("Reject Transfer"))
             {

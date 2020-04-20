@@ -196,6 +196,20 @@ public class DateUtils
         }
     }
 
+    public static Date getDateMMDDYY(String dateString) throws Exception
+    {
+        DateFormat df = new SimpleDateFormat("MM/dd/yy");
+        Date date = df.parse(dateString);
+        return date;
+    }
+
+    public static Date getDateDDMMYYYY(String dateString) throws Exception
+    {
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = df.parse(dateString);
+        return date;
+    }
+
     static public Date getDateYYYYMMDD(String dateString) throws PWCGException
     {
         try

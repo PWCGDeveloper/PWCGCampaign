@@ -803,7 +803,6 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
         return startDates;
     }
 
-
 	private void makeSquadronChoices(Date campaignDate, ArmedService dateCorrectedService) throws PWCGException 
 	{
 	    try
