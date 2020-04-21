@@ -40,6 +40,11 @@ public class NewPilotState
     public void buildStateStack() throws PWCGException
     {
         stateStack.add(PilotGeneratorWorkflow.CHOOSE_PLAYER_NAME);
+
+        if (campaign.getCampaignData().getCampaignMode() != CampaignMode.CAMPAIGN_MODE_SINGLE)
+        {
+            stateStack.add(PilotGeneratorWorkflow.CHOOSE_COOP_USER);
+        }
         
         if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
@@ -50,11 +55,6 @@ public class NewPilotState
             }
         }
 
-        if (campaign.getCampaignData().getCampaignMode() != CampaignMode.CAMPAIGN_MODE_SINGLE)
-        {
-            stateStack.add(PilotGeneratorWorkflow.CHOOSE_COOP_USER);
-        }
-        
         stateStack.add(PilotGeneratorWorkflow.CHOOSE_ROLE);
         stateStack.add(PilotGeneratorWorkflow.CHOOSE_RANK);
         stateStack.add(PilotGeneratorWorkflow.CHOOSE_SQUADRON);

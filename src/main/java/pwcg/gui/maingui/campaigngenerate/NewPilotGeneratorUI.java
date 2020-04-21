@@ -49,9 +49,6 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
 
     public void makePanels() throws PWCGException 
     {
-        newPilotState = new NewPilotState(campaign, newPilotGeneratorDO);
-        newPilotState.buildStateStack();
-
         try
         {
             setRightPanel (makeServicePanel());
@@ -64,6 +61,7 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
             ErrorDialog.internalError(e.getMessage());
         }
     }
+
     private JPanel makeServicePanel() throws PWCGException
     {
         String imagePath = getSideImageMain("CampaignGenNav.jpg");
@@ -188,12 +186,22 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
         return newPilotState;
     }
 
-    public void evaluateCompletionState()
+    public void evaluateCompletionState() throws PWCGException
     {
         newPilotCreateButton.setEnabled(false);
+        createNewPilotState();
         if (newPilotState.isComplete())
         {
             newPilotCreateButton.setEnabled(true);
+        }
+    }
+
+    private void createNewPilotState() throws PWCGException
+    {
+        if (newPilotState == null)
+        {
+            newPilotState = new NewPilotState(campaign, newPilotGeneratorDO);
+            newPilotState.buildStateStack();
         }
     }
 }

@@ -246,7 +246,7 @@ public class CampaignHomeGUIAction
     {
         SoundManager.getInstance().playSound("BookOpen.WAV");
 
-        CampaignAdminCoopPilotPanelSet adminCoopPilotDisplay = new CampaignAdminCoopPilotPanelSet(campaign);
+        CampaignAdminCoopPilotPanelSet adminCoopPilotDisplay = new CampaignAdminCoopPilotPanelSet(parent, campaign);
         adminCoopPilotDisplay.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(adminCoopPilotDisplay);

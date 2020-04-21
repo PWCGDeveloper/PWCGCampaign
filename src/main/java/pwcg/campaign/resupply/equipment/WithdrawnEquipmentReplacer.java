@@ -1,5 +1,6 @@
 package pwcg.campaign.resupply.equipment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
@@ -54,7 +55,10 @@ public class WithdrawnEquipmentReplacer
         for (int i = 0; i < numberOfPlanesToAdd; ++i)
         {
             String planeTypeName = determinePlaneType();
-            addPlaneToSquadron(planeTypeName);
+            if (!planeTypeName.isEmpty())
+            {
+                addPlaneToSquadron(planeTypeName);
+            }
         }
         
         return numberOfPlanesToAdd;
@@ -75,16 +79,49 @@ public class WithdrawnEquipmentReplacer
     private String determinePlaneType() throws PWCGException
     {
         String planeArchTypeName = chooseArchTypeForSquadron();
-        PlaneArchType planeArchType = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneArchType(planeArchTypeName);
-        String planeTypeName = EquipmentReplacementUtils.getTypeForReplacement(campaign.getDate(), planeArchType);
-        return planeTypeName;
+        if (!planeArchTypeName.isEmpty())
+        {
+            PlaneArchType planeArchType = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneArchType(planeArchTypeName);
+            String planeTypeName = EquipmentReplacementUtils.getTypeForReplacement(campaign.getDate(), planeArchType);
+            return planeTypeName;
+        }
+        else
+        {
+            return "";
+        }
+    }
+    
+    private String chooseArchTypeForSquadron() throws PWCGException
+    {
+        List<String> archTypes = determineAvailableArchTypes();
+        if (archTypes.size() > 0)
+        {
+            int index = RandomNumberGenerator.getRandom(archTypes.size());
+            return archTypes.get(index);
+        }
+        else
+        {
+            return "";
+        }
     }
 
-    private String chooseArchTypeForSquadron()
+    private List<String> determineAvailableArchTypes() throws PWCGException
     {
-        List<String> archTypes = equipment.getArchTypes();
-        int index = RandomNumberGenerator.getRandom(archTypes.size());
-        return archTypes.get(index);
+        List<String> availableArchTypes = new ArrayList<>();
+        for (String planeArchTypeName : equipment.getArchTypes())
+        {
+            PlaneArchType planeArchType = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneArchType(planeArchTypeName);
+            String planeTypeName = EquipmentReplacementUtils.getTypeForReplacement(campaign.getDate(), planeArchType);
+            if (planeTypeName != null && !planeTypeName.isEmpty())
+            {
+                availableArchTypes.add(planeArchTypeName);
+            }
+            else
+            {
+                System.out.println("");
+            }
+        }
+        return availableArchTypes;
     }
 
     private void addPlaneToSquadron(String planeTypeName) throws PWCGException

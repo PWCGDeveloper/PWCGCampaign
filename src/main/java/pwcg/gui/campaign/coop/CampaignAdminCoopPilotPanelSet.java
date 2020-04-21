@@ -18,6 +18,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.campaign.transfer.CampaignTransferPanelSet;
 import pwcg.gui.dialogs.ConfirmDialog;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -31,10 +32,12 @@ public class CampaignAdminCoopPilotPanelSet extends PwcgGuiContext implements Ac
     private static final long serialVersionUID = 1L;
     private Campaign campaign;
     private CampaignAdminCoopPilotPanel coopPersonaInfoPanel;
+    private CampaignHomeGUI parent;
 
-    public CampaignAdminCoopPilotPanelSet(Campaign campaign)
+    public CampaignAdminCoopPilotPanelSet(CampaignHomeGUI parent, Campaign campaign)
     {
         super();
+        this.parent = parent;
         this.campaign = campaign;
     }
     
@@ -123,7 +126,7 @@ public class CampaignAdminCoopPilotPanelSet extends PwcgGuiContext implements Ac
             if (action.equalsIgnoreCase("Add Pilot"))
             {
                 SoundManager.getInstance().playSound("Typewriter.WAV");
-                NewPilotGeneratorUI addPilotDisplay = new NewPilotGeneratorUI(campaign, null, this);
+                NewPilotGeneratorUI addPilotDisplay = new NewPilotGeneratorUI(campaign, parent, this);
                 addPilotDisplay.makePanels();        
                 CampaignGuiContextManager.getInstance().pushToContextStack(addPilotDisplay);
             }

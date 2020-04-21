@@ -597,7 +597,7 @@ public class NewPilotDataEntryGUI extends ImageResizingPanel implements ActionLi
 	    }
 	}
 
-    private void initializeWidgets()
+    private void initializeWidgets() throws PWCGException
     {
         parent.evaluateCompletionState();
 	    
