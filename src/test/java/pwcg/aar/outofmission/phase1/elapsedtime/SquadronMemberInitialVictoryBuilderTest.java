@@ -11,6 +11,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
@@ -45,19 +46,19 @@ public class SquadronMemberInitialVictoryBuilderTest
             int rankPos = rankHelper.getRankPosByService(squadronMember.getRank(), service);
             if (rankPos == 0)
             {
-                validateVictoryRange (squadronMember.getVictories().size(), 6, 30);
+                validateVictoryRange (squadronMember, 6, 30);
             }
             else  if (rankPos == 1)
             {
-                validateVictoryRange (squadronMember.getVictories().size(), 3, 20);
+                validateVictoryRange (squadronMember, 3, 20);
             }
             else  if (rankPos == 2)
             {
-                validateVictoryRange (squadronMember.getVictories().size(), 0, 8);
+                validateVictoryRange (squadronMember, 0, 8);
             }
             else
             {
-                validateVictoryRange (squadronMember.getVictories().size(), 0, 0);
+                validateVictoryRange (squadronMember, 0, 0);
             }
 
         }
@@ -79,19 +80,19 @@ public class SquadronMemberInitialVictoryBuilderTest
             int rankPos = rankHelper.getRankPosByService(squadronMember.getRank(), service);
             if (rankPos == 0)
             {
-                validateVictoryRange (squadronMember.getVictories().size(), 0, 6);
+                validateVictoryRange (squadronMember, 0, 6);
             }
             else  if (rankPos == 1)
             {
-                validateVictoryRange (squadronMember.getVictories().size(), 0, 1);
+                validateVictoryRange (squadronMember, 0, 1);
             }
             else  if (rankPos == 2)
             {
-                validateVictoryRange (squadronMember.getVictories().size(), 0, 0);
+                validateVictoryRange (squadronMember, 0, 0);
             }
             else
             {
-                validateVictoryRange (squadronMember.getVictories().size(), 0, 0);
+                validateVictoryRange (squadronMember, 0, 0);
             }
         }
     }
@@ -112,19 +113,19 @@ public class SquadronMemberInitialVictoryBuilderTest
             int rankPos = rankHelper.getRankPosByService(squadronMember.getRank(), service);
             if (rankPos == 0)
             {
-                validateVictoryRange (squadronMember.getVictories().size(), 6, 30);
+                validateVictoryRange (squadronMember, 6, 30);
             }
             else  if (rankPos == 1)
             {
-                validateVictoryRange (squadronMember.getVictories().size(), 1, 20);
+                validateVictoryRange (squadronMember, 1, 20);
             }
             else  if (rankPos == 2)
             {
-                validateVictoryRange (squadronMember.getVictories().size(), 0, 8);
+                validateVictoryRange (squadronMember, 0, 8);
             }
             else
             {
-                validateVictoryRange (squadronMember.getVictories().size(), 0, 0);
+                validateVictoryRange (squadronMember, 0, 0);
             }
 
         }
@@ -146,26 +147,32 @@ public class SquadronMemberInitialVictoryBuilderTest
             int rankPos = rankHelper.getRankPosByService(squadronMember.getRank(), service);
             if (rankPos == 0)
             {
-                validateVictoryRange (squadronMember.getVictories().size(), 5, 17);
+                validateVictoryRange (squadronMember, 5, 17);
             }
             else  if (rankPos == 1)
             {
-                validateVictoryRange (squadronMember.getVictories().size(), 0, 10);
+                validateVictoryRange (squadronMember, 0, 10);
             }
             else  if (rankPos == 2)
             {
-                validateVictoryRange (squadronMember.getVictories().size(), 0, 7);
+                validateVictoryRange (squadronMember, 0, 7);
             }
             else
             {
-                validateVictoryRange (squadronMember.getVictories().size(), 0, 0);
+                validateVictoryRange (squadronMember, 0, 0);
             }
 
         }
     }
 
-    private void validateVictoryRange(int numVictories, int min, int max)
+    private void validateVictoryRange(SquadronMember squadronMember, int min, int max)
     {
+        if (squadronMember instanceof Ace)
+        {
+            return;
+        }
+        
+        int numVictories = squadronMember.getVictories().size();
         if (numVictories < min || numVictories > max)
         {
             System.out.println("Victoris not in range : " + numVictories + "     Min: " + min + "     Max: " + max);

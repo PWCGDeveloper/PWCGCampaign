@@ -34,7 +34,7 @@ public class CampaignPersonnelManagerTest
     public void testAceRetrieval() throws PWCGException
     {
         SquadronMember ace = campaign.getPersonnelManager().getAnyCampaignMember(201001);
-        assert(ace.getName().equals("Hermann Graff"));
+        assert(ace.getName().equals("Hermann Graf"));
     }
 
     @Test

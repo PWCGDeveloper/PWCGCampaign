@@ -62,7 +62,7 @@ public class MissionCenterBuilderFrontLines implements IMissionCenterBuilder
         int numAttempts = 0;
         while (selectedFrontPoints.size() < 15 && numAttempts < 20)
         {
-            selectedFrontPoints = findFrontLinePointsForMissionCenterByRange(missionCenterMinDistanceFromBase, missionCenterMinDistanceFromBase, frontSide);
+            selectedFrontPoints = findFrontLinePointsForMissionCenterByRange(missionCenterMinDistanceFromBase, missionCenterMaxDistanceForMission, frontSide);
             missionCenterMaxDistanceForMission += 1000;
             ++numAttempts;
         }
@@ -90,7 +90,7 @@ public class MissionCenterBuilderFrontLines implements IMissionCenterBuilder
         List<FrontLinePoint> selectedFrontPoints = new ArrayList<>();
         for (FrontLinePoint frontLinePoint : frontPoints)
         {
-            boolean isInRange = true;
+            boolean isInRange = false;
             for (Coordinate squadronPosition : squadronPositions)
             {
                 double distanceFromSquadron = MathUtils.calcDist(squadronPosition, frontLinePoint.getPosition());
