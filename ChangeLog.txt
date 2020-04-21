@@ -1,6 +1,27 @@
 ​
 At the PWCG web site
 
+PWCG 8.7.0
+Eastern Front 1945
+- Uses Bodenplatte map
+- Movement follows Soviet gains as map allows
+- Lets Eastern Front continue through the end of the war
+Bugs:
+Fixed issue with air start too high
+Fixed issue with replacement of aircraft types still in service but no longer in production
+Fixed issue with adding pilot for FC
+
+
+PWCG 8.6.0
+Add ability to view and modify player flights on the same side
+- Change waypoints for all friendly player flights
+- Change fuel for all friendly player flights
+- Change pilots/equipment for all friendly player flights
+Add ability to view friendly Ai flights on briefing map
+Improved mission location to shorten flights
+Bugs:
+Fixed issue in coop flights where subsequent flights could be assigned an incorrect flight type
+
 PWCG 8.5.0
 Added East Front 1944 Map
 - Uses Stalingrad map
