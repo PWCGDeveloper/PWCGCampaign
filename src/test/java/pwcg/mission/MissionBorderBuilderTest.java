@@ -27,24 +27,19 @@ import pwcg.testutils.SquadronTestProfile;
 @RunWith(MockitoJUnitRunner.class)
 public class MissionBorderBuilderTest
 {
-    private Campaign campaign;
-    private Campaign campaignAntiShipping;
-    private Campaign coopCampaign;
-    private MissionHumanParticipants participatingPlayers;
-
     @Before
     public void fighterFlightTests() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
-        campaignAntiShipping = CampaignCache.makeCampaign(SquadronTestProfile.REGIMENT_321_PROFILE);
-        coopCampaign = CampaignCache.makeCampaign(SquadronTestProfile.COOP_COMPETITIVE_PROFILE);
-        participatingPlayers = new MissionHumanParticipants();
     }
 
     @Test
     public void singlePlayerMissionBoxTest() throws PWCGException
     {
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
+        PWCGContext.getInstance().setCampaign(campaign);
+        MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
+
         SquadronMember player = campaign.findReferencePlayer();
         participatingPlayers.addSquadronMember(player);
         
@@ -59,14 +54,18 @@ public class MissionBorderBuilderTest
             Coordinate playerSquadronLocation = playerSquadron.determineCurrentPosition(campaign.getDate());
             
             double distanceToMission = MathUtils.calcDist(missionBoxCenter, playerSquadronLocation);
-            assert(distanceToMission < 80000);
+            assert(distanceToMission < 85000);
         }
     }
 
     @Test
     public void multiPlayerMissionBoxTest() throws PWCGException
     {
-        for (SquadronMember player: campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
+        Campaign coopCampaign = CampaignCache.makeCampaign(SquadronTestProfile.COOP_COMPETITIVE_PROFILE);
+        PWCGContext.getInstance().setCampaign(coopCampaign);
+        
+        MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
+        for (SquadronMember player: coopCampaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
         {
             participatingPlayers.addSquadronMember(player);
         }
@@ -84,6 +83,10 @@ public class MissionBorderBuilderTest
     @Test
     public void scrambleMissionBoxTest() throws PWCGException
     {
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
+        PWCGContext.getInstance().setCampaign(campaign);
+
+        MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
         SquadronMember player = campaign.findReferencePlayer();
         participatingPlayers.addSquadronMember(player);
         
@@ -103,9 +106,13 @@ public class MissionBorderBuilderTest
     @Test
     public void antiShippingMissionBoxTest() throws PWCGException
     {
-        SquadronMember player = campaign.findReferencePlayer();
+        Campaign campaignAntiShipping = CampaignCache.makeCampaign(SquadronTestProfile.REGIMENT_321_PROFILE);
+        PWCGContext.getInstance().setCampaign(campaignAntiShipping);
+
+        MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
+        SquadronMember player = campaignAntiShipping.findReferencePlayer();
         participatingPlayers.addSquadronMember(player);
-        
+
         for (int i = 0; i < 10; ++i)
         {
             MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaignAntiShipping, participatingPlayers);

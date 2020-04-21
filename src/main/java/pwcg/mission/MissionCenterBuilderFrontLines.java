@@ -63,7 +63,7 @@ public class MissionCenterBuilderFrontLines implements IMissionCenterBuilder
         while (selectedFrontPoints.size() < 15 && numAttempts < 20)
         {
             selectedFrontPoints = findFrontLinePointsForMissionCenterByRange(missionCenterMinDistanceFromBase, missionCenterMaxDistanceForMission, frontSide);
-            missionCenterMaxDistanceForMission += 1000;
+            missionCenterMaxDistanceForMission += 5000;
             ++numAttempts;
         }
         return selectedFrontPoints;
