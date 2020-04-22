@@ -74,7 +74,15 @@ public class BoSDeploy extends DeployBase
         directoriesToCopy.put("19441001", null);
         directoriesToCopy.put("19441101", null);
         directoriesToCopy.put("19441201", null);
+        
+        // East Front 1945 dates
+        directoriesToCopy.put("19450101", null);
+        directoriesToCopy.put("19450201", null);
+        directoriesToCopy.put("19450301", null);
+        directoriesToCopy.put("19450401", null);
+        directoriesToCopy.put("19450501", null);
 
+        
         // Bodenplatte dates
         directoriesToCopy.put("19440901", null);
         directoriesToCopy.put("19441001", null);

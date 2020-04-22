@@ -1,4 +1,35 @@
 {
   "skinSetType": "SKIN_CONFIGURED",
-  "skins": {}
+  "skins": {
+    "30GIAP_red26_1": {
+      "skinName": "30GIAP_red26_1",
+      "planeType": "yak1s69",
+      "startDate": "19411101",
+      "endDate": "19420301",
+      "squadId": -1,
+      "country": "Russia",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "30GIAP_red26_2": {
+      "skinName": "30GIAP_red26_2",
+      "planeType": "yak1s69",
+      "startDate": "19412101",
+      "endDate": "19430301",
+      "squadId": -1,
+      "country": "Russia",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "Black85": {
+      "skinName": "Black85",
+      "planeType": "yak1s69",
+      "startDate": "19411101",
+      "endDate": "19420301",
+      "squadId": -1,
+      "country": "Russia",
+      "category": "Configured",
+      "definedInGame": false
+    }
+  }
 }

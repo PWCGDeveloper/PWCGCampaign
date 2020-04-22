@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.context.Country;
 import pwcg.campaign.io.json.HistoricalAceIOJson;
 import pwcg.campaign.squadmember.HistoricalAce;
 import pwcg.campaign.squadmember.Victory;
@@ -13,15 +14,18 @@ import pwcg.core.utils.DateUtils;
 public class AceCsvReader
 {
     private List<String> aceVictoryEntries = new ArrayList<>();
-    private String aceName ="Gerhard Barkhorn";
-    private int aceSerialNumber = 201004;
+    private String aceName ="Nikolai Gulayev ";
+    //private int aceSerialNumber = 201004;
+    private int aceSerialNumber = 101006;
+    private Country country = Country.RUSSIA;
+    
 
     public static void main (String[] args)
     {
         try
         {
             AceCsvReader aceCsvReader = new AceCsvReader();
-            aceCsvReader.reaceAceFile("D:\\PWCG\\Aces\\Gerd Barkhorn VIctories.csv");
+            aceCsvReader.reaceAceFile("D:\\PWCG\\Aces\\Nikolai Gulayev .txt");
         }
         catch (Exception e)
         {
@@ -34,6 +38,7 @@ public class AceCsvReader
         HistoricalAce historicalAce = new HistoricalAce();
         historicalAce.setName(aceName);
         historicalAce.setSerialNumber(aceSerialNumber);
+        historicalAce.setCountry(country);
         
         readLogFile(aceFileName);
         for (String aceVictoryEntry : aceVictoryEntries)
@@ -46,12 +51,14 @@ public class AceCsvReader
             Victory victory = new Victory();
             victory.getVictim().setType(entrySplit[2]);
             victory.getVictim().setAirOrGround(Victory.AIR_VICTORY);
-            victory.setDate(DateUtils.getDateMMDDYY(entrySplit[1]));
+            victory.setDate(DateUtils.getDateDDMMYYYY(entrySplit[1]));
             
             historicalAce.addVictory(victory);
         }
         
         HistoricalAceIOJson.writeJson(historicalAce);
+        
+        System.out.println(aceName + " completed");
     }
     
     private void readLogFile(String filename) throws Exception

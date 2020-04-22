@@ -13,7 +13,8 @@ public class RussianMedalManager extends BoSMedalManager
     public static int ORDER_PATRIOTIC_WAR_2 = 4;
     public static int ORDER_PATRIOTIC_WAR_1 = 5;
     public static int ORDER_RED_BANNER = 6;
-    public static int HERO_SOVIET_UNION = 7;
+    public static int ORDER_ALEXANDER_NEVSKY = 7;
+    public static int HERO_SOVIET_UNION = 8;
         
 	public static int WOUND_STRIPE = 99;
 
@@ -29,6 +30,7 @@ public class RussianMedalManager extends BoSMedalManager
 		medals.put(ORDER_PATRIOTIC_WAR_2, new Medal ("Order of the Patriotic War 2nd Class",  "rus_opw2.jpg"));
         medals.put(ORDER_PATRIOTIC_WAR_1, new Medal ("Order of the Patriotic War 1st Class",  "rus_opw1.jpg"));
         medals.put(ORDER_RED_BANNER, new Medal ("Order of the Red Banner",                    "rus_orb.jpg"));
+        medals.put(ORDER_ALEXANDER_NEVSKY, new Medal ("Order of Alexander Nevsky",            "rus_oan.jpg"));
         medals.put(HERO_SOVIET_UNION, new Medal ("Hero of the Soviet Union",                  "rus_hsu.jpg"));
 	} 
 
@@ -75,6 +77,11 @@ public class RussianMedalManager extends BoSMedalManager
             return medals.get(ORDER_RED_BANNER);
         }
         
+        if ((pilotTotalVictories >= 100) && !hasMedal(pilot, medals.get(ORDER_ALEXANDER_NEVSKY)))
+        {
+            return medals.get(ORDER_ALEXANDER_NEVSKY);
+        }
+
         if ((pilotTotalVictories >= 30) && numMissionVictories >= 2 && !hasMedal(pilot, medals.get(HERO_SOVIET_UNION)))
         {
             return medals.get(HERO_SOVIET_UNION);
@@ -121,11 +128,11 @@ public class RussianMedalManager extends BoSMedalManager
             }
         }
         
-        if (!hasMedal(pilot, medals.get(ORDER_RED_BANNER)))
+        if (!hasMedal(pilot, medals.get(ORDER_ALEXANDER_NEVSKY)))
         {
-            if ((pilot.getMissionFlown() >= 40) && pilot.getGroundVictories().size() > 80)
+            if (pilot.getMissionFlown() >= 150)
             {
-                return medals.get(ORDER_RED_BANNER);
+                return medals.get(ORDER_ALEXANDER_NEVSKY);
             }
         }
         

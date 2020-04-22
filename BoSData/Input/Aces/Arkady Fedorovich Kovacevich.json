@@ -594,30 +594,25 @@
   ],
   "groundVictories": [],
   "medals": [
+	{
+	  "medalDate": "19400101",
+	  "medalName": "Pilots Badge",
+	  "medalImage": "rus_pb.jpg"
+	},
     {
       "medalDate": "19430501",
       "medalName": "Hero of the Soviet Union",
-      "medalImage": ""
+      "medalImage": "rus_hsu.jpg"
     },
     {
       "medalDate": "19411028",
       "medalName": "Order of the Red Star",
-      "medalImage": ""
+      "medalImage": "rus_ors.jpg"
     },
     {
       "medalDate": "19420731",
       "medalName": "Order of the Red Banner",
-      "medalImage": ""
-    },
-    {
-      "medalDate": "19430826",
-      "medalName": "Order of the Red Banner",
-      "medalImage": ""
-    },
-    {
-      "medalDate": "19440502",
-      "medalName": "Order of the Red Banner",
-      "medalImage": ""
+      "medalImage": "rus_orb.jpg"
     }
   ],
   "playerRegion": "",
