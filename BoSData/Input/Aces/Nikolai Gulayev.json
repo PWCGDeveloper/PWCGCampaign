@@ -2,13 +2,21 @@
   "squadrons": [
     {
       "squadron": 10111027,
-      "date": "19430101"
+      "date": "19430501"
+    },
+    {
+      "squadron": 10111495,
+      "date": "19440601"
     }
   ],
   "ranks": [
     {
-      "rank": 1,
+      "rank": 2,
       "date": "19411001"
+    },
+    {
+      "rank": 1,
+      "date": "19440501"
     }
   ],
   "name": "Nikolai Gulayev",

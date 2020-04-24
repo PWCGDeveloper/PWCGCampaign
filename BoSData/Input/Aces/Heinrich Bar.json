@@ -1,0 +1,4616 @@
+{
+	"squadrons": [
+		{
+			"squadron": 20111051,
+			"date": "19410601"
+		},
+		{
+			"squadron": -1,
+			"date": "19410831"
+		},
+		{
+			"squadron": 20111051,
+			"date": "19411015"
+		},
+		{
+			"squadron": 20111077,
+			"date": "19420511"
+		},
+		{
+			"squadron": 20111001,
+			"date": "19440901"
+		},
+		{
+			"squadron": 20111044,
+			"date": "19440301"
+		}
+	],
+	"ranks": [
+		{
+			"rank": 3,
+			"date": "19400601"
+		},
+		{
+			"rank": 2,
+			"date": "19410801"
+		},
+		{
+			"rank": 1,
+			"date": "19410901"
+		}
+	],
+	"name": "Heinrich Bar",
+	"serialNumber": 201005,
+	"rank": "",
+	"picName": "",
+	"pilotActiveStatus": 0,
+	"country": "GERMANY",
+	"missionFlown": 0,
+	"aggressiveness": 0,
+	"aiSkillLevel": "ACE",
+	"skill": 1,
+	"commonSense": 0,
+	"skins": [],
+	"victories": [
+		{
+			"date": "00410109",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Hawk-75A",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00410905",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Hurricane",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00411105",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Hurricane",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00410608",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Hurricane",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00410808",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00411208",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Hurricane",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00420508",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00400209",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00400809",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00400909",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Hurricane",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00410309",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00400811",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Hurricane",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00400811",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Hurricane",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00420404",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Hurricane",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00420904",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Hurricane",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00410605",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00411105",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00421007",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "I-15",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00421007",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "I-15",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00421107",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Pe-2",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00421107",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Pe-2",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00421107",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "R-3",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00421207",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "I-18",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430207",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "R-3",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430411",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "SB-3",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00410212",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "I-61",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00410212",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "I-18",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00410212",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "I-18",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00410212",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Pe-2",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00410512",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "I-61",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00410712",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Pe-2",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00410712",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Pe-2",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430405",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "LaGG-3",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430405",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "LaGG-3",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430505",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "I-16",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430505",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "I-15",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430505",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Il-2",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430605",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "LaGG-3",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430605",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "LaGG-3",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430705",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "I-16",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430705",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "I-16",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430705",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "I-16",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430705",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "I-16",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430705",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "R-5",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00420506",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "DB-3",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00420506",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "DB-3A",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430106",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "I-16",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430206",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "I-16",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430206",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "I-16",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430506",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "MBR-2",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430706",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "I-16",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430906",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "I-16",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430906",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "I-16",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00440306",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "I-16",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00440306",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "I-16",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00421110",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430110",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430110",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430210",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430510",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430510",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00420211",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00420311",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00420311",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00420311",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00420311",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00420311",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00420311",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00420311",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00420511",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00420511",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00420911",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00421011",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00421011",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00421111",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00421111",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00420712",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00420712",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00420812",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00420812",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00421012",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00421012",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00421112",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00421112",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430212",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430212",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430212",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00440201",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-25",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00440201",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40E",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00440201",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-25",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00440201",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00440201",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00440901",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-38",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00440901",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-38",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00441101",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40E",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00450101",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40E",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00450101",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40E",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00450301",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40E",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00450301",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40E",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00450301",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40E",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430402",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-17",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430402",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-17",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00440302",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00440302",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00450202",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40E",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00450202",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40E",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00450202",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40E",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00450202",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40E",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00450202",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00450302",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Beaufighter",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00450302",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430103",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430103",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430303",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430303",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430503",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430503",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40E",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430503",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40E",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430603",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430603",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430703",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430703",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00431003",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00440103",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40E",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00441103",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00441103",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-39",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00441203",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40E",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00441203",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40E",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00450103",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "A-20",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00450203",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-40",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00440404",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00440704",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00450504",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Spitfire",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430212",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-38",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00430212",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-17",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00441002",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-17",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00441002",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-47",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00450902",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-17",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00450902",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-51",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00450902",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-17",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00451002",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-17",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00451002",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-17",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00451202",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-24",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00451202",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-24",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00460102",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-24",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00460102",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-17",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00460102",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-17",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00460102",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-17",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00440303",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-51",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00440603",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-17",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00440603",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-17",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00440603",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-17",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00460503",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-51",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00460503",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-51",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00440804",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-24",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00441104",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-17",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00451004",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-24",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00460504",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-47",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00460504",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-24",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00440708",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-47",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00450101",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Typhoon",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00450101",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Typhoon",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00460703",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-51",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00460903",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-24",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00461203",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-25",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00461203",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-51",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00470303",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-47",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00470303",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-47",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00470303",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-47",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00450404",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-51",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00450904",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-26",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00450904",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-26",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00460504",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "B-26",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00460604",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-47",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00460604",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-47",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00460704",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-51",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00460704",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-51",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00470304",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-47",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00470304",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-47",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00470404",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "P-47",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		},
+		{
+			"date": "00470504",
+			"location": "",
+			"crashedInSight": false,
+			"victim": {
+				"airOrGround": 1,
+				"name": "",
+				"type": "Mosquito",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			},
+			"victor": {
+				"airOrGround": 3,
+				"name": "",
+				"type": "",
+				"squadronName": "",
+				"pilotSerialNumber": 0,
+				"pilotName": "Unknown",
+				"pilotStatus": 0,
+				"isGunner": false
+			}
+		}
+	],
+	"groundVictories": [],
+	"medals": [
+		{
+			"medalDate": "19400601",
+			"medalName": "Pilots Badge",
+			"medalImage": "PB.jpg"
+		},
+		{
+			"medalDate": "19400701",
+			"medalName": "Iron Cross 2nd Class",
+			"medalImage": "IC2.jpg"
+		},
+		{
+			"medalDate": "19401001",
+			"medalName": "Iron Cross 1st Class",
+			"medalImage": "IC1.jpg"
+		},
+		{
+			"medalDate": "19410601",
+			"medalName": "Knights Cross",
+			"medalImage": "KC.jpg"
+		},
+		{
+			"medalDate": "19410801",
+			"medalName": "Knights Cross with Oak Leaves",
+			"medalImage": "KCOL.jpg"
+		},
+		{
+			"medalDate": "19420216",
+			"medalName": "Knights Cross with Swords",
+			"medalImage": "KCS.jpg"
+		}
+	],
+	"playerRegion": "",
+	"squadronId": 0
+}
