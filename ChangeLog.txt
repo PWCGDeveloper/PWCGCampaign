@@ -1,11 +1,32 @@
 ​
 At the PWCG web site
 
+PWCG 8.7.1
+Added aces
+Dieter Hrabak
+Erich Hartmann
+Gerhard Barkhorn
+Gunther Rall
+Heinrich Bar
+Heinz Sachsenberg
+Hermann Graf (fixed)
+
+Dmitry Glinka
+Grigory Rechkalov
+Ivan Kozhedub
+Kirill Yevstigneyev
+Nikolai Gulayev
+
+Francis Gabreski
+George Preddy
+Johnnie Johnson
+
 PWCG 8.7.0
 Eastern Front 1945
 - Uses Bodenplatte map
 - Movement follows Soviet gains as map allows
 - Lets Eastern Front continue through the end of the war
+Added aces Hartmann, Barkhorn, Hrabak
 Bugs:
 Fixed issue with air start too high
 Fixed issue with replacement of aircraft types still in service but no longer in production

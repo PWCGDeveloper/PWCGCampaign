@@ -14,9 +14,11 @@ import pwcg.core.utils.DateUtils;
 public class AceCsvReader
 {
     private List<String> aceVictoryEntries = new ArrayList<>();
-    private String aceName ="Gunther Rall";
-    private int aceSerialNumber = 201006;
-   // private int aceSerialNumber = 101006;
+    private String aceName ="Hermann Graf";
+    // private int aceSerialNumber = 101006;
+    //private int aceSerialNumber = 102003;
+    //private int aceSerialNumber = 103001;
+    private int aceSerialNumber = 201001;
     private Country country = Country.GERMANY;
     
 
@@ -25,7 +27,7 @@ public class AceCsvReader
         try
         {
             AceCsvReader aceCsvReader = new AceCsvReader();
-            aceCsvReader.reaceAceFile("D:\\PWCG\\Aces\\Gunther Rall.txt");
+            aceCsvReader.reaceAceFile("D:\\PWCG\\Aces\\Hermann Graf.txt");
         }
         catch (Exception e)
         {
