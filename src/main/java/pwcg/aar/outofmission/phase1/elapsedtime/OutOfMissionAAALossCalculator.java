@@ -5,10 +5,12 @@ import java.util.Map;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
+import pwcg.aar.prelim.CampaignMembersOutOfMissionFinder;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -30,7 +32,9 @@ public class OutOfMissionAAALossCalculator
     
     public void lostToAAA() throws PWCGException
     {
-        for (SquadronMember squadronMember : aarContext.getPreliminaryData().getCampaignMembersOutOfMission().getSquadronMemberCollection().values())
+        SquadronMembers campaignMembersNotInMission = CampaignMembersOutOfMissionFinder.getActiveCampaignMembersNotInMission(
+                campaign, aarContext.getPreliminaryData().getCampaignMembersInMission());
+        for (SquadronMember squadronMember : campaignMembersNotInMission.getSquadronMemberList())
         {
             Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());
             if (squadron.isSquadronViable(campaign))

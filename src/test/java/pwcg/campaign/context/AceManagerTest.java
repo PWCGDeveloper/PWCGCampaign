@@ -126,7 +126,7 @@ public class AceManagerTest
     @Test
     public void testAllAcesForSquadron () throws PWCGException
     {            	
-    	List<Ace> aces = aceManager.getAllAcesForSquadron(campaign.getPersonnelManager().getCampaignAces().getCampaignAces().values(), SquadronTestProfile.ESC_3_PROFILE.getSquadronId());
+    	List<Ace> aces = aceManager.getAllAcesForSquadron(campaign.getPersonnelManager().getCampaignAces().getAllCampaignAces().values(), SquadronTestProfile.ESC_3_PROFILE.getSquadronId());
     	assert (aces.size() == 1);
     }
 

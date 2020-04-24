@@ -1,14 +1,16 @@
 package pwcg.aar.awards;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.AARPersonnelAwards;
@@ -17,6 +19,7 @@ import pwcg.aar.data.CampaignUpdateData;
 import pwcg.aar.inmission.phase3.reconcile.ReconciledInMissionData;
 import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledVictoryData;
 import pwcg.aar.prelim.AARPreliminaryData;
+import pwcg.aar.prelim.CampaignMembersOutOfMissionFinder;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -28,7 +31,8 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignPersonnelTestHelper;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(PowerMockRunner.class)
+@PrepareForTest({CampaignMembersOutOfMissionFinder.class})
 public class CampaignMemberAwardsGeneratorOutOfMissionTest
 {
     private Campaign campaign;
@@ -60,19 +64,21 @@ public class CampaignMemberAwardsGeneratorOutOfMissionTest
     @Mock
     private PwcgMissionData pwcgMissionData;
      
-    private Map<Integer, SquadronMember> squadronMembersOutOfMission = new HashMap<>();
+    private List<SquadronMember> squadronMembersOutOfMission = new ArrayList<>();
 
     @Before
-    public void setupForTestEnvironment() throws PWCGException
+    public void setup() throws PWCGException
     {
+        PowerMockito.mockStatic(CampaignMembersOutOfMissionFinder.class);
+
         squadronMembersOutOfMission.clear();
 
         PWCGContext.setProduct(PWCGProduct.FC);
         campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.ESC_103_PROFILE);
         
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
-        Mockito.when(preliminaryData.getCampaignMembersOutOfMission()).thenReturn(campaignMembersOutOfMission);
-        Mockito.when(campaignMembersOutOfMission.getSquadronMemberCollection()).thenReturn(squadronMembersOutOfMission);
+        Mockito.when(CampaignMembersOutOfMissionFinder.getAllCampaignMembersNotInMission(Mockito.any(), Mockito.any())).thenReturn(campaignMembersOutOfMission);
+        Mockito.when(campaignMembersOutOfMission.getSquadronMemberList()).thenReturn(squadronMembersOutOfMission);
     }
 
     @Test
@@ -80,7 +86,7 @@ public class CampaignMemberAwardsGeneratorOutOfMissionTest
     {             
         SquadronMember aiSquadMember = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Corporal");
         CampaignPersonnelTestHelper.addVictories(aiSquadMember, campaign.getDate(), 20);
-        squadronMembersOutOfMission.put(aiSquadMember.getSerialNumber(), aiSquadMember);
+        squadronMembersOutOfMission.add(aiSquadMember);
 
         CampaignMemberAwardsGeneratorOutOfMission awardsGenerator = new CampaignMemberAwardsGeneratorOutOfMission(campaign, aarContext);
         AARPersonnelAwards campaignMemberAwards = awardsGenerator.createCampaignMemberAwards();
@@ -96,7 +102,7 @@ public class CampaignMemberAwardsGeneratorOutOfMissionTest
         SquadronMember aiSquadMember = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Corporal");
         aiSquadMember.setMissionFlown(100);
         CampaignPersonnelTestHelper.addVictories(aiSquadMember, campaign.getDate(), 20);
-        squadronMembersOutOfMission.put(aiSquadMember.getSerialNumber(), aiSquadMember);
+        squadronMembersOutOfMission.add(aiSquadMember);
 
         CampaignMemberAwardsGeneratorOutOfMission awardsGenerator = new CampaignMemberAwardsGeneratorOutOfMission(campaign, aarContext);
         AARPersonnelAwards campaignMemberAwards = awardsGenerator.createCampaignMemberAwards();
@@ -109,7 +115,7 @@ public class CampaignMemberAwardsGeneratorOutOfMissionTest
     public void testMissionsFlownIncreased () throws PWCGException
     {     
         SquadronMember aiSquadMember = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Corporal");
-        squadronMembersOutOfMission.put(aiSquadMember.getSerialNumber(), aiSquadMember);
+        squadronMembersOutOfMission.add(aiSquadMember);
 
         CampaignMemberAwardsGeneratorOutOfMission awardsGenerator = new CampaignMemberAwardsGeneratorOutOfMission(campaign, aarContext);
         AARPersonnelAwards campaignMemberAwards = awardsGenerator.createCampaignMemberAwards();

@@ -51,7 +51,7 @@ public class SquadronMemberStatusTest
         Mockito.when(campaign.getPersonnelManager()).thenReturn(campaignPersonnelManager);
         Mockito.when(campaignPersonnelManager.getCampaignAces()).thenReturn(campaignAces);
         List<Ace> aces = new ArrayList<>();
-        Mockito.when(campaignAces.getCampaignAcesBySquadron(Mockito.anyInt())).thenReturn(aces);
+        Mockito.when(campaignAces.getActiveCampaignAcesBySquadron(Mockito.anyInt())).thenReturn(aces);
 
         squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.ESC_103_PROFILE.getSquadronId()); 
         squadronPersonnel = new SquadronPersonnel(campaign, squadron);

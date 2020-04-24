@@ -9,10 +9,13 @@ import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.prelim.AARPreliminaryData;
+import pwcg.aar.prelim.CampaignMembersOutOfMissionFinder;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
@@ -25,7 +28,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(PowerMockRunner.class)
+@PrepareForTest({CampaignMembersOutOfMissionFinder.class})
 public class OutOfMissionVictoryEventHandlerTest
 {
     private Campaign campaign;
@@ -44,6 +48,8 @@ public class OutOfMissionVictoryEventHandlerTest
     @Before
     public void setupForTestEnvironment() throws PWCGException
     {
+        PowerMockito.mockStatic(CampaignMembersOutOfMissionFinder.class);
+
         PWCGContext.setProduct(PWCGProduct.FC);
         campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.ESC_103_PROFILE);
         
@@ -54,7 +60,8 @@ public class OutOfMissionVictoryEventHandlerTest
         outOfMissionSquadronMembers = new SquadronMembers();
         outOfMissionSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(campaign.getPersonnelManager().
                 getSquadronPersonnel(SquadronTestProfile.JASTA_16_PROFILE.getSquadronId()).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
-        Mockito.when(preliminaryData.getCampaignMembersOutOfMission()).thenReturn(outOfMissionSquadronMembers);
+        Mockito.when(CampaignMembersOutOfMissionFinder.getAllCampaignMembersNotInMission(Mockito.any(), Mockito.any())).thenReturn(outOfMissionSquadronMembers);
+        Mockito.when(CampaignMembersOutOfMissionFinder.getActiveCampaignMembersNotInMission(Mockito.any(), Mockito.any())).thenReturn(outOfMissionSquadronMembers);
     }
 
     @Test

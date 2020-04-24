@@ -20,7 +20,6 @@ public class AARPreliminaryData
     private AARClaimPanelData claimPanelData = new AARClaimPanelData();
     private PwcgMissionData pwcgMissionData = new PwcgMissionData();
     private SquadronMembers campaignMembersInMission = new SquadronMembers();
-    private SquadronMembers campaignMembersOutOfMission = new SquadronMembers();
 
     public AARMissionLogFileSet getMissionLogFileSet()
 	{
@@ -60,16 +59,6 @@ public class AARPreliminaryData
     public void setCampaignMembersInMission(SquadronMembers campaignMembersInMission)
     {
         this.campaignMembersInMission = campaignMembersInMission;
-    }
-
-    public SquadronMembers getCampaignMembersOutOfMission()
-    {
-        return campaignMembersOutOfMission;
-    }
-
-    public void setCampaignMembersOutOfMission(SquadronMembers campaignMembersOutOfMission)
-    {
-        this.campaignMembersOutOfMission = campaignMembersOutOfMission;
     }
     
     public  List<Squadron>getPlayerSquadronsInMission() throws PWCGException

@@ -21,7 +21,7 @@ public class AceIOJsonTest
     {
         PWCGContext.setProduct(PWCGProduct.FC);
         List<HistoricalAce> aces = HistoricalAceIOJson.readJson();
-        assert (aces.size() > 0);        
+        assert (aces.size() == 186);        
         verifyNoDuplicateSerialNumbers(aces);
     }
     
@@ -30,7 +30,7 @@ public class AceIOJsonTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         List<HistoricalAce> aces = HistoricalAceIOJson.readJson();
-        assert (aces.size() > 0);
+        assert (aces.size() == 12);        
         verifyNoDuplicateSerialNumbers(aces);
     }
 

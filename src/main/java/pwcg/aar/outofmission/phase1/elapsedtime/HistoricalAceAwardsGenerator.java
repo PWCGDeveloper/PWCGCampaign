@@ -34,7 +34,7 @@ public class HistoricalAceAwardsGenerator
     public HistoricalAceAwards aceEvents() throws PWCGException 
     {
 
-        for (Ace ace : campaign.getPersonnelManager().getCampaignAces().getCampaignAces().values())
+        for (Ace ace : campaign.getPersonnelManager().getCampaignAces().getAllCampaignAces().values())
         {
             if (!(ace.getPilotActiveStatus() <= SquadronMemberStatus.STATUS_CAPTURED))
             {

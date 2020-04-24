@@ -115,7 +115,7 @@ public class SquadronPersonnel
             activeSquadronMembersAndAces.addToSquadronMemberCollection(squadronMember);
         }
 
-        List<Ace> aces = campaign.getPersonnelManager().getCampaignAces().getCampaignAcesBySquadron(squadron.getSquadronId());
+        List<Ace> aces = campaign.getPersonnelManager().getCampaignAces().getActiveCampaignAcesBySquadron(squadron.getSquadronId());
         for (SquadronMember ace : aces)
         {
             activeSquadronMembersAndAces.addToSquadronMemberCollection(ace);

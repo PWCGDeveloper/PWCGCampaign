@@ -10,10 +10,8 @@ import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
 import pwcg.aar.inmission.phase3.reconcile.ReconciledInMissionData;
 import pwcg.aar.outofmission.phase1.elapsedtime.ReconciledOutOfMissionData;
 import pwcg.aar.prelim.AARPreliminaryData;
-import pwcg.aar.prelim.CampaignMembersOutOfMissionFinder;
 import pwcg.aar.tabulate.combatreport.UICombatReportData;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 
 public class AARContext
@@ -48,11 +46,6 @@ public class AARContext
     public void resetContextForNextTimeIncrement() throws PWCGException
     {
         preliminaryData = new AARPreliminaryData();
-        CampaignMembersOutOfMissionFinder campaignMembersOutOfMissionHandler = new CampaignMembersOutOfMissionFinder();
-        SquadronMembers campaignMembersOutOfMission = campaignMembersOutOfMissionHandler.getCampaignMembersNotInMission(campaign,
-                preliminaryData.getCampaignMembersInMission());
-        preliminaryData.setCampaignMembersOutOfMission(campaignMembersOutOfMission);
-
         missionLogRawData = new AARMissionLogRawData();
         missionEvaluationData = new AARMissionEvaluationData();
         reconciledInMissionData = new ReconciledInMissionData();

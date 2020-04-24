@@ -101,7 +101,7 @@ public class CampaignPilotAwardsUpdater
     
     private void adjustPilotSkill() throws PWCGException
     {
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAINoWounded(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAINoWounded(campaign.getPersonnelManager().getActiveCampaignMembers(), campaign.getDate());
         for (SquadronMember pilot : squadronMembers.getSquadronMemberCollection().values())
         {
             PilotSkill pilotSkill = new PilotSkill(campaign);

@@ -2,6 +2,7 @@ package pwcg.aar.outofmission.phase1.elapsedtime;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
+import pwcg.aar.prelim.CampaignMembersOutOfMissionFinder;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.outofmission.DuringCampaignVictimGenerator;
@@ -10,6 +11,7 @@ import pwcg.campaign.personnel.EnemySquadronFinder;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -34,7 +36,9 @@ public class OutOfMissionVictoryEventHandler
     
     public OutOfMissionVictoryData generateOutOfMissionVictories() throws PWCGException
     {
-        for (SquadronMember squadronMember : aarContext.getPreliminaryData().getCampaignMembersOutOfMission().getSquadronMemberCollection().values())
+        SquadronMembers campaignMembersNotInMission = CampaignMembersOutOfMissionFinder.getActiveCampaignMembersNotInMission(
+                campaign, aarContext.getPreliminaryData().getCampaignMembersInMission());
+        for (SquadronMember squadronMember : campaignMembersNotInMission.getSquadronMemberList())
         {
             if (OutOfMissionPilotSelector.shouldPilotBeEvaluated(campaign, squadronMember)) 
             {

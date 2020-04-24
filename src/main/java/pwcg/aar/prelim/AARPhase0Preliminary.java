@@ -25,7 +25,6 @@ public class AARPhase0Preliminary
         readPwcgMissionData();        
         tabulateClaimPanelData();   
         determineActiveCampaignMembersInMission();
-        determineActiveCampaignMembersNotInMission();
         return aarPreliminarytData;
     }
 
@@ -47,13 +46,6 @@ public class AARPhase0Preliminary
         CampaignMembersInMissionFinder campaignMembersInMissionHandler = new CampaignMembersInMissionFinder();
         SquadronMembers campaignMembersInMission = campaignMembersInMissionHandler.determineCampaignMembersInMission(campaign, aarPreliminarytData.getPwcgMissionData());
         aarPreliminarytData.setCampaignMembersInMission(campaignMembersInMission);
-    }
-    
-    private void determineActiveCampaignMembersNotInMission() throws PWCGException
-    {
-        CampaignMembersOutOfMissionFinder campaignMembersOutOfMissionHandler = new CampaignMembersOutOfMissionFinder();        
-        SquadronMembers campaignMembersOutOfMission = campaignMembersOutOfMissionHandler.getCampaignMembersNotInMission(campaign, aarPreliminarytData.getCampaignMembersInMission());
-        aarPreliminarytData.setCampaignMembersOutOfMission(campaignMembersOutOfMission);
     }
 
     private void tabulateClaimPanelData() throws PWCGException

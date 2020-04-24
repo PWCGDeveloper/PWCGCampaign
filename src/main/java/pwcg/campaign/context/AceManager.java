@@ -78,7 +78,7 @@ public class AceManager
     {
         List<Ace> retAces = new ArrayList<Ace>();
 
-        for (Ace ace : aces.getCampaignAces().values())
+        for (Ace ace : aces.getActiveCampaignAces().values())
         {
             HistoricalAce historicalAce = getHistoricalAceBySerialNumber(ace.getSerialNumber());
             if (historicalAce != null)
@@ -98,7 +98,7 @@ public class AceManager
     {
         List<Ace> retAces = new ArrayList<Ace>();
 
-        for (Ace ace : aces.getCampaignAces().values())
+        for (Ace ace : aces.getActiveCampaignAces().values())
         {
             HistoricalAce historicalAce = getHistoricalAceBySerialNumber(ace.getSerialNumber());
             if (historicalAce != null)

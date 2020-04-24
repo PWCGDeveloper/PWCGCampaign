@@ -32,7 +32,7 @@ public class CampaignAceUpdater
 
     private void updateAceMissionsFlown()
     {
-        for (Ace ace : campaign.getPersonnelManager().getCampaignAces().getCampaignAces().values())
+        for (Ace ace : campaign.getPersonnelManager().getCampaignAces().getActiveCampaignAces().values())
 		{
 			if (ace.getPilotActiveStatus() == SquadronMemberStatus.STATUS_ACTIVE)
 			{

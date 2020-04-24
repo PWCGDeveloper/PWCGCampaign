@@ -3,26 +3,39 @@ package pwcg.aar.prelim;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignMembersOutOfMissionFinder
 {
-    public SquadronMembers getCampaignMembersNotInMission(Campaign campaign, SquadronMembers campaignMembersInMission) throws PWCGException
+    public static SquadronMembers getAllCampaignMembersNotInMission(Campaign campaign, SquadronMembers campaignMembersInMission) throws PWCGException
     {
-    	Map<Integer, SquadronMember> allCampaignMembers = campaign.getPersonnelManager().getAllCampaignMembers();  
-    	SquadronMembers activeAiCampaignMembers = SquadronMemberFilter.filterActiveAINoWounded(allCampaignMembers, campaign.getDate());
+        Map<Integer, SquadronMember> allCampaignMembers = campaign.getPersonnelManager().getAllNonAceCampaignMembers();  
         SquadronMembers campaignMembersOutOfMission = new SquadronMembers();
-    	for (SquadronMember pilot : activeAiCampaignMembers.getSquadronMemberList())
-    	{
-    		if (!campaignMembersInMission.getSquadronMemberCollection().containsKey(pilot.getSerialNumber()))
-    		{
-    	        campaignMembersOutOfMission.addToSquadronMemberCollection(pilot);
-    		}
-    	}
-    	
+        for (SquadronMember pilot : allCampaignMembers.values())
+        {
+            if (!campaignMembersInMission.getSquadronMemberCollection().containsKey(pilot.getSerialNumber()))
+            {
+                campaignMembersOutOfMission.addToSquadronMemberCollection(pilot);
+            }
+        }
+        
         return campaignMembersOutOfMission;
+    }
+    
+    public static SquadronMembers getActiveCampaignMembersNotInMission(Campaign campaign, SquadronMembers campaignMembersInMission) throws PWCGException
+    {
+        Map<Integer, SquadronMember> allCampaignMembers = campaign.getPersonnelManager().getAllActiveNonAceCampaignMembers();  
+        SquadronMembers activeCampaignMembersOutOfMission = new SquadronMembers();
+        for (SquadronMember pilot : allCampaignMembers.values())
+        {
+            if (!campaignMembersInMission.getSquadronMemberCollection().containsKey(pilot.getSerialNumber()))
+            {
+                activeCampaignMembersOutOfMission.addToSquadronMemberCollection(pilot);
+            }
+        }
+        
+        return activeCampaignMembersOutOfMission;
     }
 }

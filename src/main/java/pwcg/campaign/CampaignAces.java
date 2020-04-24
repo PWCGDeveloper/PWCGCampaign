@@ -12,12 +12,23 @@ import pwcg.core.exception.PWCGException;
 
 public class CampaignAces
 {
-    private Map<Integer, Ace> campaignAces = new HashMap<>();
+    private Map<Integer, Ace> acesInCampaign = new HashMap<>();
 
-	public Map<Integer, Ace> getCampaignAces()
+	public Map<Integer, Ace> getAllCampaignAces()
 	{
 	    Map<Integer, Ace> activeCampaignAces = new HashMap<>();
-        for (Ace ace : campaignAces.values())
+        for (Ace ace : acesInCampaign.values())
+        {
+            activeCampaignAces.put(ace.getSerialNumber(), ace);
+        }
+        
+        return activeCampaignAces;
+	}
+	
+    public Map<Integer, Ace> getActiveCampaignAces()
+    {
+        Map<Integer, Ace> activeCampaignAces = new HashMap<>();
+        for (Ace ace : acesInCampaign.values())
         {
             if (ace.getPilotActiveStatus() != SquadronMemberStatus.STATUS_ACTIVE)
             {
@@ -28,12 +39,13 @@ public class CampaignAces
         }
         
         return activeCampaignAces;
-	}
+    }
 
-    public List<Ace> getCampaignAcesBySquadron(int squadronId) throws PWCGException
+
+    public List<Ace> getActiveCampaignAcesBySquadron(int squadronId) throws PWCGException
     {
         List<Ace> acesForSquadron = new ArrayList<>();
-        for (Ace ace : campaignAces.values())
+        for (Ace ace : acesInCampaign.values())
         {
             if (ace.getPilotActiveStatus() != SquadronMemberStatus.STATUS_ACTIVE)
             {
@@ -53,13 +65,25 @@ public class CampaignAces
         return acesForSquadron;
     }
 
-	public void setCampaignAces(Map<Integer, Ace> campaignAces)
+	public void setCampaignAces(Map<Integer, Ace> acesInCampaign)
 	{
-		this.campaignAces = campaignAces;
+		this.acesInCampaign = acesInCampaign;
 	}
 	
 	public Ace retrieveAceBySerialNumber(int serialNumber)
 	{
-		return campaignAces.get(serialNumber);
+		return acesInCampaign.get(serialNumber);
 	}
+
+    public void mergeAddedAces(CampaignAces acesAvailable)
+    {
+        for (Ace ace : acesAvailable.getAllCampaignAces().values())
+        {
+            if (!acesInCampaign.containsKey(ace.getSerialNumber()))
+            {
+                acesInCampaign.put(ace.getSerialNumber(), ace);
+            }
+        }
+        
+    }
 }
