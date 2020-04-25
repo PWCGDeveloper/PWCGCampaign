@@ -15,7 +15,8 @@ public class LogTurrets
         LogTurret logTurret = new LogTurret(atype12.getSequenceNum());
         logTurret.initializeEntityFromEvent(atype12);
         logTurret.setParent(parent);
-        return logTurrets.put(atype12.getId(), logTurret);
+        logTurrets.put(atype12.getId(), logTurret);
+        return logTurret;
     }
     
     public boolean hasTurret(String turretKey)

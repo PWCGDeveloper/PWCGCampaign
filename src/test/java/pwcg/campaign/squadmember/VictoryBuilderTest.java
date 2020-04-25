@@ -7,8 +7,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import pwcg.aar.inmission.phase1.parse.event.AType12;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogGroundUnit;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogTurret;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
@@ -172,5 +174,51 @@ public class VictoryBuilderTest
         String verificationSegment=  "A truck was destroyed by Ofw Hans Schmidt of I./JG52";
 
         assert(victoryDescriptionText.contains(verificationSegment));
+    }
+
+    @Test
+    public void buildVictoryGunnerPlane () throws PWCGException
+    {
+        Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.DetailedVictoryDescriptionKey)).thenReturn(0);
+
+        LogPlane logVictor = new LogPlane(1);
+        logVictor.setCrashedInSight(true);
+        logVictor.setName(victor.getNameAndRank());
+        logVictor.setPilotSerialNumber(victor.getSerialNumber());
+        logVictor.setVehicleType("Ju 88 A-4");
+        logVictor.setSquadronId(20111052);
+        logVictor.intializePilot(victor.getSerialNumber());
+        logVictor.getLogPilot().setStatus(SquadronMemberStatus.STATUS_ACTIVE);
+
+        AType12 atype12 = new AType12("200", "Turret_Ju88A4_1", "Turret_Ju88A4_1", logVictor.getCountry(), logVictor.getId());
+        LogTurret logVictorTurret = logVictor.createTurret(atype12);
+
+        LogPlane logVictim = new LogPlane(3);
+        logVictim.setCrashedInSight(true);
+        logVictim.setName(victim.getNameAndRank());
+        logVictim.setPilotSerialNumber(victim.getSerialNumber());
+        logVictim.setVehicleType("Il-2 mod.1941");
+        logVictim.setSquadronId(10121312);
+        logVictim.intializePilot(victim.getSerialNumber());
+        logVictim.getLogPilot().setStatus(SquadronMemberStatus.STATUS_CAPTURED);
+
+        LogVictory logVictory = new LogVictory(10);
+        logVictory.setLocation(new Coordinate (100000, 0, 100000));
+        logVictory.setVictim(logVictim);
+        logVictory.setVictor(logVictorTurret);
+
+        VictoryBuilder victoryBuilder = new VictoryBuilder(campaign);
+        Victory victory = victoryBuilder.buildVictory(DateUtils.getDateYYYYMMDD("19421103"), logVictory);
+
+        assert (victory.getVictor().getPilotName().equals(victor.getNameAndRank()));
+        assert (victory.getVictor().isGunner());
+        assert (victory.getVictim().getPilotName().equals(victim.getNameAndRank()));
+
+        VictoryDescription victoryDescription = new VictoryDescription(campaign, victory);
+        String victoryDescriptionText = victoryDescription.createVictoryDescription();
+
+        String verificationSegment =  "A Il-2 mod.1941 of 621st Ground Attack Air Regiment was brought down by a gunner flying with Ofw Hans Schmidt";
+
+        assert(!victoryDescriptionText.contains(verificationSegment));
     }
 }
