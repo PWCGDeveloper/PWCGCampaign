@@ -104,8 +104,7 @@ public class BriefingMapSquadronSelector implements ActionListener
     private JCheckBox makeCheckBox(String squadronName, String actionCommand) throws PWCGException
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
-        JCheckBox checkBox = PWCGButtonFactory.makeCheckBox(squadronName, actionCommand, fgColor);
-        checkBox.addActionListener(this);
+        JCheckBox checkBox = PWCGButtonFactory.makeCheckBox(squadronName, actionCommand, fgColor, this);
         return checkBox;
     }
 

@@ -1,11 +1,9 @@
 package pwcg.product.fc.map.arras;
 
-import java.awt.Point;
-
 import pwcg.campaign.context.PWCGMap;
-import pwcg.product.fc.country.FCServiceManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
+import pwcg.product.fc.country.FCServiceManager;
 
 public class ArrasMap extends PWCGMap
 {
@@ -19,7 +17,6 @@ public class ArrasMap extends PWCGMap
     {
         this.mapName = ARRAS_MAP_NAME;        
         this.mapIdentifier = FrontMapIdentifier.ARRAS_MAP;
-        this.mapCenter = new Point(700, 700);
         
         if (missionOptions == null)
         {

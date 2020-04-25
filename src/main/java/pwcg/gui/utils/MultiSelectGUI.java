@@ -121,11 +121,9 @@ public class MultiSelectGUI implements ActionListener
 
     private JCheckBox makeCheckBox(MultiSelectData selectionData) throws PWCGException 
     {
-        JCheckBox checkBox = PWCGButtonFactory.makeCheckBox(selectionData.getText(), selectionData.getName(), Color.black);
+        JCheckBox checkBox = PWCGButtonFactory.makeCheckBox(selectionData.getText(), selectionData.getName(), Color.black, this);
         checkBox.setName(selectionData.getName());
         ToolTipManager.setToolTip(checkBox, selectionData.getInfo());
-
-        checkBox.addActionListener(this);
         return checkBox;
     }
     

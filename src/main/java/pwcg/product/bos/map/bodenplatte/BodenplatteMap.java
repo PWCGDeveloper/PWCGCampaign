@@ -1,11 +1,9 @@
 package pwcg.product.bos.map.bodenplatte;
 
-import java.awt.Point;
-
 import pwcg.campaign.context.PWCGMap;
-import pwcg.product.bos.country.BoSServiceManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
+import pwcg.product.bos.country.BoSServiceManager;
 
 public class BodenplatteMap extends PWCGMap
 {
@@ -19,7 +17,6 @@ public class BodenplatteMap extends PWCGMap
     {
         this.mapName = BODENPLATTE_MAP_NAME;        
         this.mapIdentifier = FrontMapIdentifier.BODENPLATTE_MAP;
-        this.mapCenter = new Point(1000, 1000);
         
         this.missionOptions = new BodenplatteMissionOptions();
         this.mapWeather = new BodenplatteMapWeather();

@@ -1,7 +1,5 @@
 package pwcg.product.bos.map.east1944;
 
-import java.awt.Point;
-
 import pwcg.campaign.context.PWCGMap;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -19,7 +17,6 @@ public class East1944Map extends PWCGMap
     {
         this.mapName = EAST1944_MAP_NAME;        
         this.mapIdentifier = FrontMapIdentifier.EAST1944_MAP;
-        this.mapCenter = new Point(700, 700);
         
         if (missionOptions == null)
         {

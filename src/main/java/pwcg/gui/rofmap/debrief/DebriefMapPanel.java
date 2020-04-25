@@ -12,14 +12,15 @@ import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBase;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogDamage;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogTurret;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogWaypoint;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.campaign.squadmember.VictoryBuilder;
 import pwcg.campaign.squadmember.VictoryDescription;
@@ -40,11 +41,8 @@ public class DebriefMapPanel  extends MapPanelBase
 
 	enum DebriefStates
 	{
-		RUN,
-		STOP,
-		PAUSE,
-		NEXT,
-		PREV;
+	    PAUSE,
+        NEXT
 	}
 
 	public DebriefMapPanel(DebriefMapGUI parent) throws PWCGException 
@@ -56,16 +54,8 @@ public class DebriefMapPanel  extends MapPanelBase
 
 	private void draw() 
 	{
-        // User wants to back up one
-		if (debriefState == DebriefStates.PREV)
-		{
-			if (atEvent >= 0)
-			{
-				--atEvent;
-			}
-		}       
-		// User wants to back up one
-		else if (debriefState == DebriefStates.NEXT)
+
+		if (debriefState == DebriefStates.NEXT)
 		{
 			if (atEvent < (eventPoints.size() - 1))
 			{
@@ -76,12 +66,6 @@ public class DebriefMapPanel  extends MapPanelBase
 				atEvent = 0;
 			}
 		}       
-		else if (debriefState == DebriefStates.STOP)
-		{
-			debriefState = DebriefStates.PAUSE;
-			atEvent = -1;
-		}
-		// User wants to pause - keep event counter where it is
 		else if (debriefState == DebriefStates.PAUSE)
 		{
 			debriefState = DebriefStates.PAUSE;
@@ -187,14 +171,40 @@ public class DebriefMapPanel  extends MapPanelBase
 		return mapSize;
 	}
 
-	public void addEvent(LogBase event) throws PWCGException 
+
+	public void createMapEvents(List<LogBase> logEvents) throws PWCGException
+    {
+	    eventPoints.clear();
+	    atEvent = -1;
+	    
+        LogDamage lastDamageEvent = null;
+        for (LogBase event : logEvents)
+        {
+            if (event instanceof LogDamage)
+            {
+                LogDamage thisDamageEvent = (LogDamage)event;
+                
+                if (lastDamageEvent == null || 
+                    !(thisDamageEvent.getVictim().getId().equals(lastDamageEvent.getVictim().getId())))
+                {
+                    addEvent(event);
+                    lastDamageEvent = thisDamageEvent;
+                }
+            }
+            else
+            {
+                addEvent(event);
+            }
+        }
+    }
+
+	private void addEvent(LogBase event) throws PWCGException 
 	{
 		DebriefMapPoint mapPoint = new DebriefMapPoint();
-		boolean displayMaxInfo = false;
 		
 		if (event instanceof LogDamage)
 		{
-		    if (displayMaxInfo)
+		    if (parent.displayMaxInfo())
 		    {
 		        createDamagedDisplay(event, mapPoint);
 		    }
@@ -221,6 +231,16 @@ public class DebriefMapPanel  extends MapPanelBase
     private void createDestroyedDisplay(LogBase event, DebriefMapPoint mapPoint) throws PWCGException
     {
         LogVictory victoryEvent = (LogVictory)event;
+        if (!parent.displayMaxInfo())
+        {
+            PlaneType victimVehicle = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(victoryEvent.getVictim().getVehicleType());
+            PlaneType victorVehicle = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(victoryEvent.getVictor().getVehicleType());
+            if (victimVehicle == null && victorVehicle == null)
+            {
+                return;
+            }
+        }
+        
         mapPoint.eventType = EventTypes.CRASH;
         mapPoint.coord = victoryEvent.getLocation().copy();
         

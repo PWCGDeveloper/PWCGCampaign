@@ -1,5 +1,6 @@
 package pwcg.campaign.context;
 
+import pwcg.core.location.Coordinate;
 
 public abstract class FrontParameters
 {    
@@ -49,5 +50,12 @@ public abstract class FrontParameters
     public void setzMax(double zMax)
     {
         this.zMax = zMax;
+    }
+    
+    public Coordinate getCenter()
+    {
+        double xCenter = xMin + xMax / 2;
+        double zCenter = zMin + zMax / 2;
+        return new Coordinate(xCenter, 0.0, zCenter);
     }
 }

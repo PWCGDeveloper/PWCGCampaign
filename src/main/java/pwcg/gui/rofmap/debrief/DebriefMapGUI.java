@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -20,8 +21,10 @@ import pwcg.aar.MissionFileCleaner;
 import pwcg.aar.MissionResultLogFileCleaner;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBase;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogDamage;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.ui.display.model.AARCombatReportPanelData;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -35,7 +38,6 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.MonitorSupport;
 import pwcg.gui.rofmap.MapGUI;
 import pwcg.gui.rofmap.MapScroll;
-import pwcg.gui.rofmap.debrief.DebriefMapPanel.DebriefStates;
 import pwcg.gui.rofmap.event.AARMainPanel;
 import pwcg.gui.rofmap.event.AARMainPanel.EventPanelReason;
 import pwcg.gui.sound.MusicManager;
@@ -53,7 +55,8 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 	private CampaignHomeGUI home = null;
 	private Thread initiatorThread = null;
 	private JTextArea eventTextPane = new JTextArea();
-		
+	private JCheckBox maxInfoCheckBox;
+
     private AARCoordinator aarCoordinator;
 
 	private DebriefMapPanel mapPanel = null;
@@ -76,9 +79,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 		    setLeftPanel(makeNavigationPanel());
 			setRightPanel(makeEventTextPanel());
             setCenterPanel(createCenterPanel());
-            
-			makeMapEvents();
-			
+            			
 	        centerMap();
 
 			setSoundForScreen();
@@ -114,84 +115,49 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
     }    
     
 
-    public void centerMap() throws PWCGException 
+    private void centerMap() throws PWCGException 
     {
-        Coordinate lowerLeft = new Coordinate();
-        Coordinate upperRight = new Coordinate();
-        
-        double lowerLeftX = 10000000.0;
-        double lowerLeftZ = 10000000.0;
-
-        double upperRightX = 0.0;
-        double upperRightZ = 0.0;
-
-        for (DebriefMapPoint mapPoint : mapPanel.getEventPoints())
-        {
-            if (mapPoint.coord.getXPos() < lowerLeftX)
-            {
-                lowerLeftX =mapPoint.coord.getXPos();
-                lowerLeft.setXPos(lowerLeftX);
-            }
-            if (mapPoint.coord.getZPos() < lowerLeftZ)
-            {
-                lowerLeftZ =mapPoint.coord.getZPos();
-                lowerLeft.setZPos(lowerLeftZ);
-            }
-            if (mapPoint.coord.getXPos() > upperRightX)
-            {
-                upperRightX =mapPoint.coord.getXPos();
-                upperRight.setXPos(upperRightX);
-            }
-            if (mapPoint.coord.getZPos() > upperRightZ)
-            {
-                upperRightZ =mapPoint.coord.getZPos();
-                upperRight.setZPos(upperRightZ);
-            }
-        }
-        
-        Coordinate centerCoord = new Coordinate();
-        double centerX = lowerLeft.getXPos() + ((upperRight.getXPos() - lowerLeft.getXPos()) / 2);
-        centerCoord.setXPos(centerX);
-        
-        double centerZ = lowerLeft.getZPos() + ((upperRight.getZPos() - lowerLeft.getZPos()) / 2);
-        centerCoord.setZPos(centerZ);
-        
-        Point centerPoint = mapPanel.coordinateToPoint(centerCoord);
+        Coordinate firstActionCoordinate = findFirstEventCoordinate();
+        Point centerPoint = mapPanel.coordinateToPoint(firstActionCoordinate);
 
         centerMapAt(centerPoint);
     }
+    
+    private Coordinate findFirstEventCoordinate() throws PWCGException
+    {
+        SquadronMember referencePlayer = campaign.findReferencePlayer();
+        List<LogBase> logEvents = aarCoordinator.getAarContext().
+                findUiCombatReportDataForSquadron(referencePlayer.getSquadronId()).getCombatReportMapData().getChronologicalEvents();
+
+        for (LogBase event : logEvents)
+        {
+            if (event instanceof LogDamage)
+            {
+                LogDamage thisDamageEvent = (LogDamage)event;
+                return thisDamageEvent.getLocation();
+            }
+            else if (event instanceof LogVictory)
+            {
+                LogVictory thisDamageEvent = (LogVictory)event;
+                return thisDamageEvent.getLocation();
+            }
+        }
+
+        return PWCGContext.getInstance().getCurrentMap().getMapCenter();
+    }
 
 
-	protected void makeMapEvents() throws PWCGException  
+	private void makeMapEvents() throws PWCGException  
 	{
         SquadronMember referencePlayer = campaign.findReferencePlayer();
         List<LogBase> logEvents = aarCoordinator.getAarContext().
                         findUiCombatReportDataForSquadron(referencePlayer.getSquadronId()).getCombatReportMapData().getChronologicalEvents();
 
-        LogDamage lastDamageEvent = null;
-		for (LogBase event : logEvents)
-		{
-		    DebriefMapPanel mapPanel = (DebriefMapPanel)mapScroll.getMapPanel();
-		    
-			if (event instanceof LogDamage)
-			{
-				LogDamage thisDamageEvent = (LogDamage)event;
-				
-				if (lastDamageEvent == null || 
-					!(thisDamageEvent.getVictim().getId().equals(lastDamageEvent.getVictim().getId())))
-				{
-					mapPanel.addEvent(event);
-					lastDamageEvent = thisDamageEvent;
-				}
-			}
-			else
-			{
-	            mapPanel.addEvent(event);
-			}
-		}
+        DebriefMapPanel mapPanel = (DebriefMapPanel)mapScroll.getMapPanel();
+        mapPanel.createMapEvents(logEvents);
 	}
 
-	protected JPanel makeNavigationPanel() throws PWCGException 
+	private JPanel makeNavigationPanel() throws PWCGException 
 	{
         String imagePath = getSideImage(campaign, "DebriefNav.jpg");
         ImageResizingPanel debriefButtonPanel = new ImageResizingPanel(imagePath);
@@ -201,7 +167,9 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
         JPanel buttonGrid = new JPanel(new GridLayout(0,1));
         buttonGrid.setOpaque(false);
 
-		makeButton("Start Debrief",  "Start", buttonGrid);
+        maxInfoCheckBox = makeCheckBox("Maximum Information",  "MaxInfo", buttonGrid);
+
+        makeButton("Start Debrief",  "Start", buttonGrid);
 
 		makeButton("Cancel AAR",  "Cancel", buttonGrid);
 
@@ -215,12 +183,20 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 	private void makeButton(String buttonText, String command, JPanel buttonGrid) throws PWCGException 
 	{
 	    buttonGrid.add(PWCGButtonFactory.makeDummy());  
-
         JButton button = PWCGButtonFactory.makeMenuButton(buttonText, command, this);
         buttonGrid.add(button);  
 	}
 
-	protected JPanel makeEventTextPanel() throws PWCGException 
+    private JCheckBox makeCheckBox(String buttonText, String command, JPanel buttonGrid) throws PWCGException 
+    {
+        Color fgColor = ColorMap.CHALK_FOREGROUND;
+        buttonGrid.add(PWCGButtonFactory.makeDummy());  
+        JCheckBox button = PWCGButtonFactory.makeCheckBox(buttonText, command, fgColor, this);
+        buttonGrid.add(button);
+        return button;  
+    }
+    
+	private JPanel makeEventTextPanel() throws PWCGException 
 	{
 		Color buttonBG = ColorMap.MAP_BACKGROUND;
 
@@ -286,7 +262,12 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 	{
 		eventTextPane.setText(text);
 	}
-
+	
+    private void clearTextArea()
+    {
+        eventTextPane.selectAll();
+        eventTextPane.replaceSelection("");
+    }
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) 
@@ -308,9 +289,16 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 				{
 					initiatorThread.interrupt();
 				}
-
-				if (action.equals("Start"))
+				
+                if (action.equals("MaxInfo"))
                 {
+                }
+                else if (action.equals("Start"))
+                {
+                    clearTextArea();
+                    makeMapEvents();
+                    centerMap();
+                    
                     DebriefEventDisplayInitiator initiator = new DebriefEventDisplayInitiator(mapPanel);
                     initiatorThread = new Thread(initiator);
                     initiatorThread.start();                
@@ -323,22 +311,6 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
                     home.enableButtonsAsNeeded();
                     CampaignGuiContextManager.getInstance().popFromContextStack();
                 }
-				else if (action.equals("Pause"))
-				{
-					mapPanel.setDebriefState(DebriefStates.PAUSE);
-				}
-				else if (action.equals("Stop"))
-				{
-					mapPanel.setDebriefState(DebriefStates.STOP);
-				}
-				else if (action.equals("Next"))
-				{
-					mapPanel.setDebriefState(DebriefStates.NEXT);
-				}
-				else if (action.equals("Previous"))
-				{
-					mapPanel.setDebriefState(DebriefStates.PREV);
-				}
 			}
 			
 		}
@@ -346,5 +318,20 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 		{
 			PWCGLogger.logException(e);
 		}
+	}
+	
+	public boolean displayMaxInfo()
+	{
+	    if (maxInfoCheckBox == null)
+	    {
+	        return false;
+	    }
+	    
+	    if (maxInfoCheckBox.isSelected())
+	    {
+	        return true;
+	    }
+	    
+	    return false;
 	}
 }

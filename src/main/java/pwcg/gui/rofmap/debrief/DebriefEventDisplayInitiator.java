@@ -18,7 +18,7 @@ public class DebriefEventDisplayInitiator implements Runnable
 		try
 		{
 			Thread driverThreadprev = null;
-			for (int i = mapPanel.getAtEvent(); i < mapPanel.getEventPoints().size(); ++i)
+			for (int i = 0; i < mapPanel.getEventPoints().size(); ++i)
 			{
 				DebriefEventDisplayDriver driver = new DebriefEventDisplayDriver(mapPanel, driverThreadprev);
 				Thread driverThread = new Thread(driver);

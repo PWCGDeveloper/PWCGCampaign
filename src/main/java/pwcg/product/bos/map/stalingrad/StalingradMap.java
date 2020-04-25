@@ -1,11 +1,9 @@
 package pwcg.product.bos.map.stalingrad;
 
-import java.awt.Point;
-
 import pwcg.campaign.context.PWCGMap;
-import pwcg.product.bos.country.BoSServiceManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
+import pwcg.product.bos.country.BoSServiceManager;
 
 public class StalingradMap extends PWCGMap
 {
@@ -19,7 +17,6 @@ public class StalingradMap extends PWCGMap
     {
         this.mapName = STALINGRAD_MAP_NAME;        
         this.mapIdentifier = FrontMapIdentifier.STALINGRAD_MAP;
-        this.mapCenter = new Point(700, 700);
         
         if (missionOptions == null)
         {

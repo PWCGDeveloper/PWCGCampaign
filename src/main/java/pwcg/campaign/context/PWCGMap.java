@@ -1,6 +1,5 @@
 package pwcg.campaign.context;
 
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -13,6 +12,7 @@ import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.shipping.ShippingLaneManager;
 import pwcg.campaign.target.preference.TargetPreferenceManager;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.mission.options.MapWeather;
 import pwcg.mission.options.MissionOptions;
 
@@ -52,7 +52,6 @@ public abstract class PWCGMap
     protected MissionOptions missionOptions = null;
     protected MapWeather mapWeather = null;
     protected String mapName = "";
-    protected Point mapCenter = new Point(700, 700);
     protected List<Integer> armedServicesActiveForMap = new ArrayList<>();
 
     
@@ -190,9 +189,9 @@ public abstract class PWCGMap
         return mapWeather;
     }
 
-    public Point getMapCenter()
+    public Coordinate getMapCenter()
     {
-        return mapCenter;
+        return frontParameters.getCenter();
     }
 
     public TargetPreferenceManager getTargetPreferenceManager()

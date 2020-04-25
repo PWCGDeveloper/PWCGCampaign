@@ -1,11 +1,9 @@
 package pwcg.product.bos.map.kuban;
 
-import java.awt.Point;
-
 import pwcg.campaign.context.PWCGMap;
-import pwcg.product.bos.country.BoSServiceManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
+import pwcg.product.bos.country.BoSServiceManager;
 
 public class KubanMap extends PWCGMap
 {
@@ -19,8 +17,6 @@ public class KubanMap extends PWCGMap
     {
         this.mapName = KUBAN_MAP_NAME;        
         this.mapIdentifier = FrontMapIdentifier.KUBAN_MAP;
-
-        this.mapCenter = new Point(700, 700);
         
         if (missionOptions == null)
         {

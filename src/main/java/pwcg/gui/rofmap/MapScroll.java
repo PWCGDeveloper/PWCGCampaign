@@ -18,32 +18,21 @@ public class MapScroll
 
         mapScrollPane = ScrollBarWrapper.makeScrollPane(mapPanel);
 	}
-	
-	/**
-	 * 
-	 */
+
+    public void moveScrollBarPosition(int x, int y)
+    {
+        Point scrollPosition = new Point();
+        scrollPosition.x = mapScrollPane.getHorizontalScrollBar().getValue() - x;
+        scrollPosition.y = mapScrollPane.getVerticalScrollBar().getValue() - y;
+        setScrollBarPosition(scrollPosition);
+    }
+
 	public void setScrollBarPosition(Point position)
 	{
 		mapScrollPane.getHorizontalScrollBar().setValue(position.x);
 		mapScrollPane.getVerticalScrollBar().setValue(position.y);
 	}
 
-	
-	/**
-	 * 
-	 */
-	public void moveScrollBarPosition(int x, int y)
-	{
-		Point scrollPosition = new Point();
-		scrollPosition.x = mapScrollPane.getHorizontalScrollBar().getValue() - x;
-		scrollPosition.y = mapScrollPane.getVerticalScrollBar().getValue() - y;
-
-		setScrollBarPosition(scrollPosition);
-	}
-
-	/**
-	 * 
-	 */
 	public void setScrollRange()
 	{
 		Dimension mapSize = mapPanel.getMapSize();

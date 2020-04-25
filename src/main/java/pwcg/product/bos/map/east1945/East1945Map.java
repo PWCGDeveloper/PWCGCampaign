@@ -1,11 +1,9 @@
 package pwcg.product.bos.map.east1945;
 
-import java.awt.Point;
-
 import pwcg.campaign.context.PWCGMap;
-import pwcg.product.bos.country.BoSServiceManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
+import pwcg.product.bos.country.BoSServiceManager;
 
 public class East1945Map extends PWCGMap
 {
@@ -19,7 +17,6 @@ public class East1945Map extends PWCGMap
     {
         this.mapName = EAST1945_MAP_NAME;        
         this.mapIdentifier = FrontMapIdentifier.EAST1945_MAP;
-        this.mapCenter = new Point(1000, 1000);
         
         this.missionOptions = new East1945MissionOptions();
         this.mapWeather = new East1945MapWeather();

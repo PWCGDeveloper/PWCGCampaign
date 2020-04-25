@@ -5,6 +5,7 @@ import java.util.Date;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.gui.PwcgGuiContext;
 
 public abstract class MapGUI extends PwcgGuiContext
@@ -32,12 +33,13 @@ public abstract class MapGUI extends PwcgGuiContext
 	{
 		if (initialPosition == null)
 		{
-		    initialPosition = PWCGContext.getInstance().getCurrentMap().getMapCenter();
+            Coordinate centerMapCoordinate = PWCGContext.getInstance().getCurrentMap().getMapCenter();
+		    initialPosition = mapScroll.getMapPanel().coordinateToPoint(centerMapCoordinate);
 		}
 		else
 		{
-            initialPosition.x -= 300;
-            initialPosition.y -= 200;
+            initialPosition.x -= 700;
+            initialPosition.y -= 500;
 		}
 		
 		if (mapScroll != null)
