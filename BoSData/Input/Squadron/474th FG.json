@@ -1,26 +1,26 @@
 {
   "country": "USA",
-  "squadronId": 102362377,
-  "name": "362nd Fighter Group",
-  "fileName": "362nd FG.json",
-  "skill": 80,
+  "squadronId": 102363033,
+  "name": "474th Fighter Group",
+  "fileName": "474th FG.json",
+  "skill": 70,
   "planeAssignments": [
     {
-      "archType": "p51",
+      "archType": "p38",
       "squadronIntroduction": "19440901",
       "squadronWithdrawal": "19450601"
     }
   ],
   "airfields": {
-    "19440901": "Melsbroek",
-    "19441001": "Bierset",
-    "19441101": "Aachen",
-    "19441220": "Aachen",
-    "19441225": "Aachen",
-    "19441229": "Ophoven",
-    "19450207": "Ophoven",
-    "19450310": "PetitBrogel",
-    "19450404": "Eudenbach/Asbach"
+    "19440901": "LeCulot",
+    "19441001": "PetitBrogel",
+    "19441101": "PetitBrogel",
+    "19441220": "Asch",
+    "19441225": "Melsbroek",
+    "19441229": "St.Trond",
+    "19450207": "Aachen",
+    "19450310": "Kelz",
+    "19450404": "Mainz-Finthen"
   },
   "skins": [],
   "squadHistory": {
@@ -39,11 +39,11 @@
           },
           {
             "role": "ROLE_FIGHTER",
-            "weight": 80
+            "weight": 70
           },
           {
             "role": "ROLE_ATTACK",
-            "weight": 20
+            "weight": 30
           }
         ]
       }
@@ -54,12 +54,12 @@
       {
         "startDate": "19440901",
         "endDate": "19450601",
-        "nightMissionOdds": 3
+        "nightMissionOdds": 5
       }
     ]
   },
   "conversionPeriods": [],
   "callsigns": {
-    "19410801": "WARCRAFT"
+    "19410801": "RIPPER"
   }
 }

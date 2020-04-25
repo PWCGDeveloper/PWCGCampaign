@@ -69,10 +69,16 @@
   "squadHistory": {
     "squadHistoryEntries": [
       {
-        "date": "19430918",
-        "squadName": "II./St.G.3",
+        "date": "19440201",
+        "squadName": "10.(Pz)/SG3",
         "armedServiceName": "Luftwaffe",
         "skill": 55
+      },
+      {
+        "date": "19450107",
+        "squadName": "3.(Pz)/SG9",
+        "armedServiceName": "Luftwaffe",
+        "skill": 45
       }
     ]
   },

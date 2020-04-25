@@ -5,7 +5,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IMissionFile;
@@ -23,6 +22,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
+import pwcg.core.utils.AsyncJobRunner;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.MathUtils;
@@ -77,7 +77,7 @@ public class MissionFileWriter implements IMissionFile
             writer.flush();
             writer.close();
             
-            buildMissionBinaryFile();
+            runAsyncTasks();
             
         }
         catch (IOException e)
@@ -85,19 +85,23 @@ public class MissionFileWriter implements IMissionFile
             PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
-        catch (InterruptedException e)
-        {
-            PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
-        }
 	}
+
+    private void runAsyncTasks() throws PWCGException
+    {
+        AsyncJobRunner runner = new AsyncJobRunner("Generating mission");
+
+        buildMissionBinaryFile(runner);
+
+        runner.finish();
+    }
     
-    private void buildMissionBinaryFile() throws PWCGException, InterruptedException
+    private void buildMissionBinaryFile(AsyncJobRunner runner) throws PWCGException
     {
         int buildConfigFile = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.BuildBinaryMissionFileKey);
         if (buildConfigFile != 0)
         {
-            MissionFileBinaryBuilder.buildMissionBinaryFile(mission.getCampaign(), getMissionFileName(mission.getCampaign()));
+            runner.add("Generating binary mission file...", () -> MissionFileBinaryBuilder.buildMissionBinaryFile(mission.getCampaign(), getMissionFileName(mission.getCampaign())));
         }
     }
 

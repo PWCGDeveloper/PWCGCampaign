@@ -2,6 +2,14 @@
 At the PWCG web site
 
 PWCG 8.7.1
+Improved AAR
+- Added detailed/not detailed selection (Maximum Information check box on debrief map)
+- Detailed is everything that happened
+- Not detailed limits events to things destroyed by an airplane
+- Can press "Start Debrief" repeatedly if you want to
+- Improved map centering
+- Fixed a couple of minor display issues.
+
 Added aces
 Dieter Hrabak
 Erich Hartmann
