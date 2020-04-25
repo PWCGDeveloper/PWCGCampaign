@@ -11,6 +11,8 @@ import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IMissionFile;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.group.BlockDefinition;
+import pwcg.campaign.group.BlockDefinitionManager;
 import pwcg.campaign.group.FakeAirfield;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.campaign.utils.TestDriver;
@@ -27,6 +29,7 @@ import pwcg.core.utils.MathUtils;
 import pwcg.mission.AmbientBalloonBuilder;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBlockBuilder;
+import pwcg.mission.MissionBlockCountry;
 import pwcg.mission.MissionBlockDamage;
 import pwcg.mission.MissionBlockSmoke;
 import pwcg.mission.ambient.AmbientGroundUnitBuilder;
@@ -148,7 +151,9 @@ public class MissionFileWriter implements IMissionFile
         
         List<FixedPosition> damagedFixedPositions = adjustBlockDamage(missionBlockBuilder.getPositionsForMission());
         adjustBlockSmoke(damagedFixedPositions);
-        
+        setBlockCountries(missionBlockBuilder.getPositionsForMission());
+        adjustBlockDurability(missionBlockBuilder.getPositionsForMission());
+
         MissionBlockWriter missionBlockWriter = new MissionBlockWriter(missionBlockBuilder);
         missionBlockWriter.writeFixedPositions(writer, missionBlockBuilder.getPositionsForMission());
     }
@@ -216,6 +221,25 @@ public class MissionFileWriter implements IMissionFile
     {
         MissionBlockSmoke missionBlockSmoke = new MissionBlockSmoke(mission);      
         missionBlockSmoke.addSmokeToDamagedAreas(fixedPositions);
+    }
+
+    private void setBlockCountries(List<FixedPosition> fixedPositions) throws PWCGException
+    {
+        MissionBlockCountry missionBlockCountry = new MissionBlockCountry(mission);
+        missionBlockCountry.setCountriesForFixedPositions(fixedPositions);
+    }
+
+    private void adjustBlockDurability(List<FixedPosition> fixedPositions)
+    {
+        BlockDefinitionManager blockDefinitionManager = BlockDefinitionManager.getInstance();
+        for (FixedPosition fixedPosition : fixedPositions)
+        {
+            BlockDefinition blockDefinition = blockDefinitionManager.getBlockDefinition(fixedPosition);
+            if (blockDefinition != null)
+            {
+                fixedPosition.setDurability(blockDefinition.getDurability());
+            }
+        }
     }
 
     private void writeProductSpecific(BufferedWriter writer) throws PWCGException

@@ -130,6 +130,11 @@ public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosi
         return icountry;
     }
 
+    public void setCountry(Country country)
+    {
+        this.country = country;
+    }
+
     public int getIndex()
     {
         return index;

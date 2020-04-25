@@ -72,7 +72,7 @@ public class AARDestroyedStatusEvaluator
     
     private void determineVictorByDamage(LogAIEntity logVictim, LogVictory logVictory) throws PWCGException
     {
-        LogAIEntity logVictor = damageStatusEvaluator.getVictorByDamage(logVictim.getId());
+        LogAIEntity logVictor = damageStatusEvaluator.getVictorByDamage(logVictim);
         if (logVictor != null)
         {
             logVictory.setVictor(logVictor);

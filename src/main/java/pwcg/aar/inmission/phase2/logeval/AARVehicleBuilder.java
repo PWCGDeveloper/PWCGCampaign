@@ -9,6 +9,7 @@ import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase1.parse.event.IAType12;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogAIEntity;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBalloon;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBuilding;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogGroundUnit;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogTurret;
@@ -32,6 +33,9 @@ public class AARVehicleBuilder
     private Map <String, LogBalloon> logBalloons = new HashMap<>();
     private Map <String, LogGroundUnit> logGroundUnits = new HashMap<>();
     private Map <String, LogTurret> logTurrets = new HashMap<>();
+
+    private Map <String, LogBuilding> logBuildingsByName = new HashMap<>();
+    private Map <String, LogBuilding> logBuildingsById = new HashMap<>();
 
     public AARVehicleBuilder(
             AARBotVehicleMapper botPlaneMapper,
@@ -68,6 +72,10 @@ public class AARVehicleBuilder
         else if (logTurrets.containsKey(id))
         {
             return findEntityForTurret(id);
+        }
+        else if (logBuildingsById.containsKey(id))
+        {
+            return logBuildingsById.get(id);
         }
 
         return null;
@@ -110,6 +118,10 @@ public class AARVehicleBuilder
             else if (Balloon.isBalloonName(atype12.getName()))
             {
                 createLogBalloon(atype12);
+            }
+            else if (atype12.getName().contains("BlocksArray"))
+            {
+                handleBuildingSpawn(atype12);
             }
             else
             {
@@ -198,6 +210,23 @@ public class AARVehicleBuilder
         }
 
         return null;
+    }
+
+    private void handleBuildingSpawn(IAType12 atype12) throws PWCGException {
+        LogBuilding logBuilding;
+        if (logBuildingsByName.containsKey(atype12.getType()))
+        {
+            logBuilding = logBuildingsByName.get(atype12.getType());
+            logBuildingsById.put(atype12.getId(), logBuilding);
+        }
+        else if (!atype12.getType().equals("BlocksArray"))
+        {
+            logBuilding = new LogBuilding(atype12.getSequenceNum());
+            logBuilding.initializeEntityFromEvent(atype12);
+
+            logBuildingsByName.put(atype12.getType(), logBuilding);
+            logBuildingsById.put(atype12.getId(), logBuilding);
+        }
     }
 
     public Map<String, LogPlane> getLogPlanes()

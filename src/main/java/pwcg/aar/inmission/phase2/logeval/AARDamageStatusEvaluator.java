@@ -14,7 +14,7 @@ import pwcg.core.exception.PWCGException;
 
 public class AARDamageStatusEvaluator 
 {    
-    private Map <String, AARDamageStatus> vehiclesDamaged = new HashMap<>();
+    private Map <LogAIEntity, AARDamageStatus> vehiclesDamaged = new HashMap<>();
     private List <LogDamage> allDamageEventsInOrder = new ArrayList<>();
 
     private AARVehicleBuilder aarVehicleBuilder = null;
@@ -47,14 +47,16 @@ public class AARDamageStatusEvaluator
         {
             return;
         }
-        
-        if (!vehiclesDamaged.containsKey(victimId))
+
+        LogAIEntity logVictim = aarVehicleBuilder.getVehicle(victimId);
+
+        if (!vehiclesDamaged.containsKey(logVictim))
         {
             AARDamageStatus damageStatus = new AARDamageStatus();
-            vehiclesDamaged.put(victimId, damageStatus);
+            vehiclesDamaged.put(logVictim, damageStatus);
         }
         
-        AARDamageStatus damageStatus = vehiclesDamaged.get(victimId);
+        AARDamageStatus damageStatus = vehiclesDamaged.get(logVictim);
         logDamage = createDamageRecord(atype2);
         damageStatus.addDamage(victorId, logDamage);
         
@@ -102,10 +104,10 @@ public class AARDamageStatusEvaluator
         return allDamageEventsInOrder;
     }
 
-    public LogAIEntity getVictorByDamage(String victimId) throws PWCGException
+    public LogAIEntity getVictorByDamage(LogAIEntity logVictim) throws PWCGException
     {
         LogAIEntity logVictor = null;
-        AARDamageStatus damageStatus = vehiclesDamaged.get(victimId);
+        AARDamageStatus damageStatus = vehiclesDamaged.get(logVictim);
         if (damageStatus != null)
         {
             String victorId = damageStatus.getVictorBasedOnDamage();

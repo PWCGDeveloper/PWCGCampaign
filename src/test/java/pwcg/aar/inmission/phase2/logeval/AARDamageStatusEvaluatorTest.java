@@ -198,10 +198,10 @@ public class AARDamageStatusEvaluatorTest
 
         assert(vehiclesDamaged.size() == 4);
         
-        LogAIEntity victor100 = aarDamageStatusEvaluator.getVictorByDamage("100");
+        LogAIEntity victor100 = aarDamageStatusEvaluator.getVictorByDamage(damagedVictim1);
         assert(victor100.getId().equals("99"));
         
-        LogAIEntity victor101 = aarDamageStatusEvaluator.getVictorByDamage("101");
+        LogAIEntity victor101 = aarDamageStatusEvaluator.getVictorByDamage(damagedVictim2);
         assert(victor101.getId().equals("98"));
     }
 

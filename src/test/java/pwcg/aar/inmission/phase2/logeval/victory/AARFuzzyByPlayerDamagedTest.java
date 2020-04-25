@@ -33,7 +33,7 @@ public class AARFuzzyByPlayerDamagedTest
     public void testSetVehiclesCreditedByDamage () throws PWCGException
     {
         Mockito.when(victoryResult.getVictim()).thenReturn(shotDownPlane1);
-        Mockito.when(aarDamageStatusEvaluator.getVictorByDamage(Mockito.anyString())).thenReturn(playerPlane);
+        Mockito.when(aarDamageStatusEvaluator.getVictorByDamage(Mockito.any(LogAIEntity.class))).thenReturn(playerPlane);
         AARFuzzyByAccumulatedDamaged fuzzyByPlayerDamaged = new AARFuzzyByAccumulatedDamaged(aarDamageStatusEvaluator);
         LogAIEntity victor = fuzzyByPlayerDamaged.getVictorBasedOnDamage(victoryResult);
         assert(victor != null);
@@ -43,7 +43,7 @@ public class AARFuzzyByPlayerDamagedTest
     public void testVictimNotFoundInDamageList () throws PWCGException
     {
         Mockito.when(victoryResult.getVictim()).thenReturn(shotDownPlane1);
-        Mockito.when(aarDamageStatusEvaluator.getVictorByDamage(Mockito.anyString())).thenReturn(null);
+        Mockito.when(aarDamageStatusEvaluator.getVictorByDamage(Mockito.any(LogAIEntity.class))).thenReturn(null);
         AARFuzzyByAccumulatedDamaged fuzzyByPlayerDamaged = new AARFuzzyByAccumulatedDamaged(aarDamageStatusEvaluator);
         LogAIEntity victor = fuzzyByPlayerDamaged.getVictorBasedOnDamage(victoryResult);
         assert(victor == null);
