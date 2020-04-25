@@ -29,7 +29,7 @@ public class EscortForPlayerWaypointFactory
     {
         missionPointSet = new MissionPointEscortWaypointSet(EscortSequenceConnect.DO_NOT_CONNECT_ESCORT_SEQUENCE);
         
-        McuWaypoint rendezvousWaypoint = createRendezvousWaypoint();;
+        McuWaypoint rendezvousWaypoint = createRendezvousWaypoint();
         McuWaypoint airStartWaypoint = AirStartWaypointFactory.createAirStart(playerFlightThatNeedsEscort, AirStartPattern.AIR_START_NEAR_WAYPOINT, rendezvousWaypoint);
         missionPointSet.addWaypointBefore(airStartWaypoint);
         missionPointSet.addWaypointBefore(rendezvousWaypoint);
@@ -55,6 +55,7 @@ public class EscortForPlayerWaypointFactory
         escortRendezvousWaypoint.setTriggerArea(McuWaypoint.COMBAT_AREA);
         escortRendezvousWaypoint.setPosition(escortRendezvousCoordinate);
         escortRendezvousWaypoint.setTargetWaypoint(true);
+        escortRendezvousWaypoint.setSpeed(escortFlight.getFlightCruisingSpeed());
         return escortRendezvousWaypoint;
     }
 

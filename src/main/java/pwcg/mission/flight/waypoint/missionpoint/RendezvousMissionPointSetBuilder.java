@@ -38,6 +38,7 @@ public class RendezvousMissionPointSetBuilder
         rendezvousWaypoint.setTriggerArea(McuWaypoint.COMBAT_AREA);
         rendezvousWaypoint.setPosition(rendezvousWaypointPosition);
         rendezvousWaypoint.setTargetWaypoint(true);
+        rendezvousWaypoint.setSpeed(flightThatNeedsEscort.getFlightCruisingSpeed());
         return rendezvousWaypoint;
     }
     
