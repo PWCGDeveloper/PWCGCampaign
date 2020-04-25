@@ -4,7 +4,7 @@ import pwcg.campaign.plane.IPlaneAttributeMapping;
 
 public enum BosPlaneAttributeMapping implements IPlaneAttributeMapping
 {
-    BF109_E7("bf109e7", "static_bf109e7"),
+    BF109_E7("bf109e7", "static_bf109e7", "static_bf109e7_open", "static_bf109e7_net"),
     BF109_F2("bf109f2", "static_bf109","static_bf109_open", "static_bf109_net"),
     BF109_F4("bf109f4", "static_bf109","static_bf109_open", "static_bf109_net"),
     BF109_G2("bf109g2", "static_bf109","static_bf109_open", "static_bf109_net"),
@@ -17,7 +17,7 @@ public enum BosPlaneAttributeMapping implements IPlaneAttributeMapping
     FW190_A3("fw190a3", "static_fw190a8"),
     FW190_A5("fw190a5", "static_fw190a8"),
     FW190_A8("fw190a8", "static_fw190a8"),
-    FW190_D9("fw190d9", "static_bf109_net"),
+    FW190_D9("fw190d9", "static_fw190d9"),
     ME262_A("me262a", "static_me262a"),
         
     Ma202_SER8("mc202s8", "static_bf109_net"),
@@ -25,13 +25,13 @@ public enum BosPlaneAttributeMapping implements IPlaneAttributeMapping
     HE111_H6("he111h6", "static_he111", "static_he111_open"),
     HE111_H16("he111h16", "static_he111", "static_he111_open"),
     HS129_B2S("hs129b2", "static_hs129b2"),
-    JU88_A4("ju88a4", "static_ju88", "static_ju88_open", "static_ju87_net"),
+    JU88_A4("ju88a4", "static_ju88", "static_ju88_open", "static_ju88_net"),
     JU87_D3("ju87d3", "static_ju87", "static_ju87_net", "static_ju87_open"),
     JU52("ju523mg4e", "static_ju52"),
 
     I16_T24("i16t24", "static_i16", "static_i16_net"),
-    MIG3_S24("mig3s24", "static_mig3_net"),
-    LAGG3_S29("lagg3s29", "static_lagg3", "static_lagg3_net"),
+    MIG3_S24("mig3s24", "static_mig3", "static_mig3_net"),
+    LAGG3_S29("lagg3s29", "static_lagg3", "static_lagg3_net", "static_lagg3_w1", "static_lagg3_w2"),
     LA5_S8("la5s8", "static_lagg3", "static_lagg3_net"),
     LA5N_S2("la5fns2", "static_lagg3", "static_lagg3_net"),
     
@@ -54,7 +54,7 @@ public enum BosPlaneAttributeMapping implements IPlaneAttributeMapping
     PE2_S35("pe2s35", "static_pe2", "static_pe2_open"),
     PE2_S87("pe2s87", "static_pe2", "static_pe2_open"),
     A20B("a20b", "static_a20b"),
-    B25("b25draf", "static_a20b");
+    B25("b25draf", "static_b25d");
 
     
 	private String planeType;
