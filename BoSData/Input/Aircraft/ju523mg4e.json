@@ -5,7 +5,7 @@
   "primaryUsedBy": [
     "GERMANY"
   ],
-  "displayName": "Ju 52 3gm4e",
+  "displayName": "Ju 52 3mg4e",
   "script": "LuaScripts\\WorldObjects\\Planes\\ju523mg4e.txt",
   "model": "graphics\\planes\\ju523mg4e\\ju523mg4e.mgm",
   "desc": "",

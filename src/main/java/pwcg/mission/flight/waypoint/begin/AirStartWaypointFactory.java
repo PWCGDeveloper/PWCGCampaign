@@ -45,6 +45,7 @@ public class AirStartWaypointFactory
         McuWaypoint airStartWP = WaypointFactory.createAirStartWaypointType();
         airStartWP.setPosition(airStartPosition);
         airStartWP.setOrientation(waypolintOrientation.copy());
+        airStartWP.setSpeed(flight.getFlightCruisingSpeed());
         return airStartWP;
     }  
 
@@ -61,6 +62,7 @@ public class AirStartWaypointFactory
         McuWaypoint airStartWP = WaypointFactory.createAirStartWaypointType();
         airStartWP.setPosition(airStartPosition);
         airStartWP.setOrientation(new Orientation(MathUtils.adjustAngle(angleFromFirstWPToAirfield, 180)));
+        airStartWP.setSpeed(flight.getFlightCruisingSpeed());
         return airStartWP;
     }
 

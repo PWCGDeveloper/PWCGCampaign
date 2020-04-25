@@ -50,7 +50,7 @@ public class AARDamageStatusEvaluator
         
         if (!vehiclesDamaged.containsKey(victimId))
         {
-            AARDamageStatus damageStatus = new AARDamageStatus(victimId);
+            AARDamageStatus damageStatus = new AARDamageStatus();
             vehiclesDamaged.put(victimId, damageStatus);
         }
         

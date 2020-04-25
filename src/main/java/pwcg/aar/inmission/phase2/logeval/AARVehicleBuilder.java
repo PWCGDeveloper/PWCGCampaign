@@ -185,7 +185,7 @@ public class AARVehicleBuilder
         {
             if (logPlane.ownsTurret(turretId))
             {
-                return logPlane;
+                return logTurrets.get(turretId);
             }
         }
         

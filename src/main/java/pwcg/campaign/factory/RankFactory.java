@@ -8,15 +8,27 @@ import pwcg.product.fc.country.FCRank;
 
 public class RankFactory
 {
+    // One instance for each of BoS/FC, as tests can run both
+    private static IRankHelper bosHelper;
+    private static IRankHelper fcHelper;
+
     public static IRankHelper createRankHelper()
     {
         if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
-            return new FCRank();
+            if (fcHelper == null)
+            {
+                fcHelper = new FCRank();
+            }
+            return fcHelper;
         }
         else
         {
-            return new BoSRank();
+            if (bosHelper == null)
+            {
+                bosHelper = new BoSRank();
+            }
+            return bosHelper;
         }
     }
 }
