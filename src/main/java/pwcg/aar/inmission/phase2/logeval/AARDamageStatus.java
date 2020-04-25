@@ -1,6 +1,8 @@
 package pwcg.aar.inmission.phase2.logeval;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import pwcg.aar.inmission.phase1.parse.AARLogParser;
@@ -8,29 +10,21 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogDamage;
 
 public class AARDamageStatus
 {
-    private String victimId;
-    private Map<String, LogDamage> vehicleDamaged = new HashMap<>();
+    private Map<String, List<LogDamage>> vehicleDamaged = new HashMap<>();
     
-    public AARDamageStatus(String victimId)
+    public AARDamageStatus()
     {
-        this.victimId = victimId;
     }
     
     public void addDamage(String victorId, LogDamage damageRecord)
     {
-        vehicleDamaged.put(victorId, damageRecord);
+        if (!vehicleDamaged.containsKey(victorId))
+        {
+            vehicleDamaged.put(victorId, new ArrayList<>());
+        }
+        vehicleDamaged.get(victorId).add(damageRecord);
     }
 
-    public String getVictimId()
-    {
-        return victimId;
-    }
-
-    public Map<String, LogDamage> getVehicleDamaged()
-    {
-        return vehicleDamaged;
-    }
-    
     public String getVictorBasedOnDamage()
     {
         Map<String, Double> accumulatedDamageByVictor = accumulateDamageByVictor();
@@ -59,9 +53,12 @@ public class AARDamageStatus
                 accumulatedDamageByVictor.put(victorId, Double.valueOf(0.0));
             }
             
-            LogDamage logDamage = vehicleDamaged.get(victorId);
-            Double accumulatedDamage = accumulatedDamageByVictor.get(victorId);
-            accumulatedDamage += logDamage.getDamageLevel();
+            List<LogDamage> logDamageList = vehicleDamaged.get(victorId);
+            double accumulatedDamage = 0;
+            for (LogDamage logDamage : logDamageList)
+            {
+                accumulatedDamage += logDamage.getDamageLevel();
+            }
             accumulatedDamageByVictor.put(victorId, accumulatedDamage);
         }
         return accumulatedDamageByVictor;

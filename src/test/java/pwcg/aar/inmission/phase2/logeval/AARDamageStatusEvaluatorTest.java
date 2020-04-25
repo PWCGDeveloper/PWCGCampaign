@@ -38,6 +38,7 @@ public class AARDamageStatusEvaluatorTest
     @Mock private AType2 logDamageEvent1;
     @Mock private AType2 logDamageEvent2;
     @Mock private AType2 logDamageEvent3;
+    @Mock private AType2 logDamageEvent4;
     
     @Before
     public void setup () throws PWCGException
@@ -53,6 +54,9 @@ public class AARDamageStatusEvaluatorTest
         Mockito.when(logDamageEvent3.getVictim()).thenReturn("101");
         Mockito.when(logDamageEvent3.getVictor()).thenReturn("99");
 
+        Mockito.when(logDamageEvent4.getVictim()).thenReturn("101");
+        Mockito.when(logDamageEvent4.getVictor()).thenReturn("98");
+
         Mockito.when(damagedVictor1.getId()).thenReturn("98");
         Mockito.when(damagedVictor2.getId()).thenReturn("99");
         Mockito.when(aarVehicleBuilder.getVehicle("98")).thenReturn(damagedVictor1);
@@ -62,8 +66,9 @@ public class AARDamageStatusEvaluatorTest
         Mockito.when(aarVehicleBuilder.getVehicle("101")).thenReturn(damagedVictim2);
 
         Mockito.when(logDamageEvent1.getDamageLevel()).thenReturn(5.0);
-        Mockito.when(logDamageEvent2.getDamageLevel()).thenReturn(7.0);
+        Mockito.when(logDamageEvent2.getDamageLevel()).thenReturn(4.0);
         Mockito.when(logDamageEvent3.getDamageLevel()).thenReturn(6.0);
+        Mockito.when(logDamageEvent4.getDamageLevel()).thenReturn(3.0);
 
         Mockito.when(logEventData.isVehicle("100")).thenReturn(true);
         Mockito.when(logEventData.isVehicle("101")).thenReturn(true);
@@ -181,6 +186,7 @@ public class AARDamageStatusEvaluatorTest
         logParserDamagedEvents.add(logDamageEvent1);
         logParserDamagedEvents.add(logDamageEvent2);
         logParserDamagedEvents.add(logDamageEvent3);
+        logParserDamagedEvents.add(logDamageEvent4);
         Mockito.when(logEventData.getDamageEvents()).thenReturn(logParserDamagedEvents);
 
         AARDamageStatusEvaluator aarDamageStatusEvaluator = new AARDamageStatusEvaluator(
@@ -190,7 +196,7 @@ public class AARDamageStatusEvaluatorTest
         aarDamageStatusEvaluator.buildDamagedList();
         List<LogDamage> vehiclesDamaged = aarDamageStatusEvaluator.getAllDamageEvents();
 
-        assert(vehiclesDamaged.size() == 3);
+        assert(vehiclesDamaged.size() == 4);
         
         LogAIEntity victor100 = aarDamageStatusEvaluator.getVictorByDamage("100");
         assert(victor100.getId().equals("99"));
