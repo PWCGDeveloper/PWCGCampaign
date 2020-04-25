@@ -125,7 +125,6 @@ public class VictoryDescriptionBuilderAir extends VictoryDescriptionBuilderBase
             victoryDesc +=  "A " + victimPlaneType + " of " + victory.getVictim().getSquadronName() + " crashed.";
 
             // Line 3
-            victoryDesc +=  "\n";
             String pilotFate = getPilotFate();
             victoryDesc += pilotFate;
         }

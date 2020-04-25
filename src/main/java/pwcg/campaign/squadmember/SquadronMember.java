@@ -202,9 +202,15 @@ public class SquadronMember implements Cloneable
 
     public boolean isPilotName(String name)
     {
-        if (getName().equalsIgnoreCase(name) || 
-           (getRank() + " " + getName()).equalsIgnoreCase(name) || 
-           (determineRankAbbrev() + " " + getName()).equalsIgnoreCase(name))
+        if (name == null || name.isEmpty())
+        {
+            return false;
+        }
+        
+        if (getName().equalsIgnoreCase(name)                || 
+            this.getName().contains(name)                   ||
+            name.contains(this.getName())                   ||
+            this.getNameAndRank().equalsIgnoreCase(name))
         {
             return true;
         }

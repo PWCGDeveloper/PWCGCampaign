@@ -190,10 +190,14 @@ public class DebriefMapPanel  extends MapPanelBase
 	public void addEvent(LogBase event) throws PWCGException 
 	{
 		DebriefMapPoint mapPoint = new DebriefMapPoint();
+		boolean displayMaxInfo = false;
 		
 		if (event instanceof LogDamage)
 		{
-			createDamagedDisplay(event, mapPoint);
+		    if (displayMaxInfo)
+		    {
+		        createDamagedDisplay(event, mapPoint);
+		    }
 		}
 		else if (event instanceof LogVictory)
 		{

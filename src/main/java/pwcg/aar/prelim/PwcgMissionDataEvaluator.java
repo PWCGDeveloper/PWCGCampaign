@@ -57,7 +57,8 @@ public class PwcgMissionDataEvaluator
     
     public PwcgGeneratedMissionPlaneData getPlaneForPilotByName(String name) throws PWCGException
     {
-        for (PwcgGeneratedMissionPlaneData missionPlane : aarPreliminarytData.getPwcgMissionData().getMissionPlanes().values())
+        List<PwcgGeneratedMissionPlaneData> missionPlanes = new ArrayList<>(aarPreliminarytData.getPwcgMissionData().getMissionPlanes().values());
+        for (PwcgGeneratedMissionPlaneData missionPlane : missionPlanes)
         {
             SquadronMember squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(missionPlane.getPilotSerialNumber());
             if (squadronMember.isPilotName(name))
@@ -88,11 +89,21 @@ public class PwcgMissionDataEvaluator
         return false;
     }
 
-    public boolean wasPilotAssignedToMissionByName(String pilotName) throws PWCGException
+    public boolean wasPilotAssignedToMissionByName(String destroyedEntityName) throws PWCGException
     {
         for (SquadronMember pilotInMission : aarPreliminarytData.getCampaignMembersInMission().getSquadronMemberCollection().values())
         {
-            if (pilotInMission.isPilotName(pilotName))
+            if (destroyedEntityName == null)
+            {
+                return false;
+            }
+            
+            if (pilotInMission.getName() == null)
+            {
+                return false;
+            }
+            
+            if (pilotInMission.isPilotName(destroyedEntityName))
             {
                 return true;
             }

@@ -99,10 +99,13 @@ public abstract class VictoryDescriptionBuilderBase
             {
                 String pilotName = "The pilot";
                 if (victory.getVictim().getPilotName() != null && 
-                    victory.getVictim().getPilotName().equals("") &&
-                    victory.getVictim().getPilotName().equals(""))
+                    !(victory.getVictim().getPilotName().equals("")))
                 {
                     pilotName = victory.getVictim().getPilotName();
+                }
+                else
+                {
+                    pilotName = "The pilot";
                 }
                     
                 pilotFate =  "\n" + pilotName + " " + getStringForStatus(victory.getVictim().getPilotStatus());

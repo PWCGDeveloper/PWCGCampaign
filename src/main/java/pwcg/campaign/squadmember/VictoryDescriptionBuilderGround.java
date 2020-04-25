@@ -69,7 +69,6 @@ public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBa
             victoryDesc +=  "A " + victimPlaneType + " of " + victory.getVictim().getSquadronName() + " was brought down by a " + getGroundUnitName(victory.getVictor()) + ".";
 
             // Line 3
-            victoryDesc +=  "\n";
             String pilotFate = getPilotFate();
             victoryDesc += pilotFate;
         }
