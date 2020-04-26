@@ -4,6 +4,8 @@ import java.util.Date;
 
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IAirfieldObjectSelector;
+import pwcg.campaign.api.ICountry;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.airfield.hotspot.HotSpot;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Orientation;
@@ -23,12 +25,15 @@ public class AirfieldObjectSelector implements IAirfieldObjectSelector
     public IVehicle createAirfieldObject(HotSpot hotSpot, IAirfield airfield) throws PWCGException 
     {
         Orientation objectOrientation = Orientation.createRandomOrientation();
-        IVehicle airfieldObject = StaticObjectFactory.createStaticObject(airfield.getCountry(date), date, VehicleClass.StaticAirfield);        
+        
+        ICountry country = airfield.getCountry(date);
+        ICountry groundObjectCountry = PWCGContext.getInstance().getCurrentMap().getGroundCountryForMapBySide(country.getSide());
+                
+        IVehicle airfieldObject = StaticObjectFactory.createStaticObject(groundObjectCountry, date, VehicleClass.StaticAirfield);        
         airfieldObject.setPosition(hotSpot.getPosition().copy());
         airfieldObject.setOrientation(objectOrientation);
         airfieldObject.populateEntity();
 
         return airfieldObject;
     }
-
 }

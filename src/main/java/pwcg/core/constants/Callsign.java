@@ -9,7 +9,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public enum Callsign {
-	NONE(Country.GERMANY, 0, Country.RUSSIA, 0, Country.BRITAIN, 0, Country.USA, 0),
+	NONE(Country.GERMANY, 0, Country.RUSSIA, 0, Country.BRITAIN, 0, Country.USA, 0, Country.ITALY, 0),
 
 	STORK(Country.GERMANY, 1, Country.RUSSIA, 1),
 	GANNET(Country.GERMANY, 2, Country.RUSSIA, 2),
@@ -19,7 +19,7 @@ public enum Callsign {
 	CRANE(Country.GERMANY, 6, Country.RUSSIA, 6),
 	FINCH(Country.GERMANY, 7, Country.RUSSIA, 7),
 	ORIOLE(Country.GERMANY, 8, Country.RUSSIA, 8),
-	CANARY(Country.GERMANY, 9, Country.RUSSIA, 9),
+	CANARY(Country.GERMANY, 9, Country.RUSSIA, 9, Country.ITALY, 9),
 	SWAN(Country.GERMANY, 10, Country.RUSSIA, 10),
 	KITTIWAKE(Country.GERMANY, 11, Country.RUSSIA, 11),
 	EAGLE(Country.GERMANY, 12, Country.RUSSIA, 12),
@@ -172,7 +172,11 @@ public enum Callsign {
 
 	public Integer getNum(Country country)
 	{
-	    if (!mappings.containsKey(country))
+	    if (country == Country.NEUTRAL)
+	    {
+            return 0;
+	    }
+	    else if (!mappings.containsKey(country))
 	    {
 	        PWCGLogger.log(LogLevel.ERROR, "Callsign " + toString() + " is not valid for country " + country.toString());
 	        return 0;

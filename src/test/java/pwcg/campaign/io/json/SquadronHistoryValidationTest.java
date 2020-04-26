@@ -84,10 +84,6 @@ public class SquadronHistoryValidationTest
     {
         validateNoDuplicateEntries(squadronHistory);
         validateNoOutOfOrderEntries(squadronHistory);
-        for (SquadHistoryEntry  squadHistoryEntry : squadronHistory.getSquadHistoryEntries())
-        {
-            validateBoSSquadHistoryEntry(squadHistoryEntry);
-        }
     }
     
     private void validateNoDuplicateEntries(SquadHistory squadronHistory) throws PWCGException
@@ -127,39 +123,4 @@ public class SquadronHistoryValidationTest
             lastEntry = squadHistoryEntry;
         }
     }
-
-    private void validateBoSSquadHistoryEntry(SquadHistoryEntry  squadHistoryEntry) throws PWCGException
-    {
-        Date transitionDate = DateUtils.getDateYYYYMMDD(squadHistoryEntry.getDate());
-        if (transitionDate.equals(DateUtils.getDateYYYYMMDD("19420301")))
-        {
-        }
-        else if (transitionDate.equals(DateUtils.getDateYYYYMMDD("19420601")))
-        {
-        }
-        else if (transitionDate.equals(DateUtils.getDateYYYYMMDD("19420801")))
-        {
-        }
-        else if (transitionDate.equals(DateUtils.getDateYYYYMMDD("19430301")))
-        {
-        }
-        else if (transitionDate.equals(DateUtils.getDateYYYYMMDD("19430918")))
-        {
-        }
-        else if (transitionDate.equals(DateUtils.getDateYYYYMMDD("19440901")))
-        {
-        }
-        else if (transitionDate.equals(DateUtils.getDateYYYYMMDD("19450201")))
-        {
-        }
-        else if (transitionDate.equals(DateUtils.getDateYYYYMMDD("19450207")))
-        {
-        }
-        else
-        {
-            String errorMsg = squadHistoryEntry.getSquadName() + " invalid transition date " + squadHistoryEntry.getDate(); 
-            throw new PWCGException(errorMsg);
-        }
-    }
-
 }

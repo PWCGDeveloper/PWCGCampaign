@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import pwcg.campaign.api.ICountry;
+import pwcg.campaign.api.Side;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.shipping.ShippingLaneManager;
@@ -19,7 +21,8 @@ import pwcg.mission.options.MissionOptions;
 public abstract class PWCGMap
 {
     protected abstract void configureTransitionDates() throws PWCGException;
-    
+    public abstract ICountry getGroundCountryForMapBySide(Side side);
+
     public enum FrontMapIdentifier
     {
         MOSCOW_MAP,

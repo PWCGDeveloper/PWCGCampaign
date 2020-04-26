@@ -1,6 +1,10 @@
 package pwcg.product.bos.map.stalingrad;
 
+import pwcg.campaign.api.ICountry;
+import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGMap;
+import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.product.bos.country.BoSServiceManager;
@@ -56,4 +60,16 @@ public class StalingradMap extends PWCGMap
         this.frontDatesForMap.addFrontDate("19430120");
     }
 
+    @Override
+    public ICountry getGroundCountryForMapBySide(Side side)
+    {
+        if (side == Side.ALLIED)
+        {
+            return CountryFactory.makeCountryByCountry(Country.RUSSIA);
+        }
+        else
+        {
+            return CountryFactory.makeCountryByCountry(Country.GERMANY);
+        }
+    }
 }
