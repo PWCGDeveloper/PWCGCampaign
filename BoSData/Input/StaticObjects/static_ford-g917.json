@@ -1,7 +1,7 @@
 {
   "scriptDir": "Blocks\\",
   "modelDir": "blocks\\",
-  "vehicleType": "static_opel",
+  "vehicleType": "static_ford-g917",
   "displayName": "truck",
   "countries": [
     "GERMANY",
@@ -9,6 +9,6 @@
   ],
   "startDate": "19390901",
   "endDate": "19460724",
-  "rarityWeight": 50,
+  "rarityWeight": 30,
   "vehicleClass": "StaticAirfield"
 }
