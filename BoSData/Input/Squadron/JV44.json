@@ -1,8 +1,8 @@
 {
 	"country": "GERMANY",
 	"squadronId": 20111044,
-	"name": "I./JV44",
-	"fileName": "I_JV44.json",
+	"name": "JV44",
+	"fileName": "JV44.json",
 	"skill": 95,
 	"planeAssignments": [
 		{
