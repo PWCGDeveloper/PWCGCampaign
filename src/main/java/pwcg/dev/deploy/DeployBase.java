@@ -228,6 +228,8 @@ public abstract class DeployBase
         unwantedFiles.put("TODO.txt", null);
         unwantedFiles.put("PWCGErrorLog.txt", null);
         unwantedFiles.put("LICENSE", null);
+        unwantedFiles.put("ChangeLog.txt", null);
+        unwantedFiles.put("gradle.properties", null);
 
         return unwantedFiles;
     }
