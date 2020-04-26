@@ -208,6 +208,7 @@ public enum PayloadElement
     BREDA_GUNPOD(PayloadElementCategory.WEAPON, "Breda Gun Pod", 50),
     LEWIS_TOP(PayloadElementCategory.WEAPON, "Lewis Gun Top", 50),
     LEWIS_WING(PayloadElementCategory.WEAPON, "Lewis Gun Wing", 50),
+    TWIN_SPANDAU(PayloadElementCategory.WEAPON, "Twin Spandau", 50),
     TWIN_GUN_TURRET(PayloadElementCategory.WEAPON, "Twin Gun Turret", 50),
 
     
