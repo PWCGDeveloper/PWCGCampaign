@@ -4,9 +4,7 @@
   "vehicleType": "static_zis",
   "displayName": "truck",
   "countries": [
-    "RUSSIA",
-    "USA",
-    "BRITAIN"
+    "RUSSIA"
   ],
   "startDate": "19390901",
   "endDate": "19460724",

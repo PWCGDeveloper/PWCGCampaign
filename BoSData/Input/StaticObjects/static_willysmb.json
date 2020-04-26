@@ -1,14 +1,15 @@
 {
   "scriptDir": "Blocks\\",
   "modelDir": "blocks\\",
-  "vehicleType": "static_opel",
-  "displayName": "truck",
+  "vehicleType": "static_willysmb",
+  "displayName": "jeep",
   "countries": [
-    "GERMANY",
-    "ITALY"
+    "RUSSIA",
+    "USA",
+    "BRITAIN"
   ],
   "startDate": "19390901",
   "endDate": "19460724",
-  "rarityWeight": 50,
+  "rarityWeight": 30,
   "vehicleClass": "StaticAirfield"
 }
