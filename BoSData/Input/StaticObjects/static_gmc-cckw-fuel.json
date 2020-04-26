@@ -1,14 +1,13 @@
 {
   "scriptDir": "Blocks\\",
   "modelDir": "blocks\\",
-  "vehicleType": "static_opel",
+  "vehicleType": "static_gmc-cckw-fuel",
   "displayName": "truck",
   "countries": [
-    "GERMANY",
-    "ITALY"
+    "USA"
   ],
   "startDate": "19390901",
   "endDate": "19460724",
-  "rarityWeight": 50,
+  "rarityWeight": 30,
   "vehicleClass": "StaticAirfield"
 }
