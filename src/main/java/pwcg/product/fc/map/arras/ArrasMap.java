@@ -76,7 +76,7 @@ public class ArrasMap extends PWCGMap
     {
         if (side == Side.ALLIED)
         {
-            return CountryFactory.makeCountryByCountry(Country.RUSSIA);
+            return CountryFactory.makeCountryByCountry(Country.BRITAIN);
         }
         else
         {
