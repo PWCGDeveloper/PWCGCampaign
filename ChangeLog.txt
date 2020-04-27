@@ -8,7 +8,8 @@ Improved AAR
 - Not detailed limits events to things destroyed by an airplane
 - Can press "Start Debrief" repeatedly if you want to
 - Improved map centering
-- Fixed a couple of minor display issues.
+Ground structure victories addes (Murleen)
+Plane gunners are credited with kills in debrief (Murleen)
 
 Added aces
 Dieter Hrabak
@@ -28,6 +29,12 @@ Nikolai Gulayev
 Francis Gabreski
 George Preddy
 Johnnie Johnson
+
+
+Bugs:
+- Fixed a couple of minor display issues.
+- Changed/fixed some squaron entries (Murleen)
+- Fixed issue that would cause a Ju52 claim to be denied (Murleen)
 
 PWCG 8.7.0
 Eastern Front 1945
