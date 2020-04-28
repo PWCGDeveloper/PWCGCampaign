@@ -93,6 +93,11 @@ public class BoSDeploy extends DeployBase
         directoriesToCopy.put("19450207", null);
         directoriesToCopy.put("19450310", null);
         directoriesToCopy.put("19450404", null);
+        
+        // Service Themes
+        directoriesToCopy.put("Luftwaffe", null);
+        directoriesToCopy.put("Royal Air Force", null);
+        directoriesToCopy.put("Voyenno-Vozdushnye Sily", null);
 
 		return directoriesToCopy;
 	}

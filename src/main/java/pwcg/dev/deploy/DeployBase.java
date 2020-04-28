@@ -183,6 +183,7 @@ public abstract class DeployBase
         directoriesToCopy.put("PilotPictures", null);
         directoriesToCopy.put("Planes", null);
         directoriesToCopy.put("Profiles", null);
+        directoriesToCopy.put("themes", null);
 
         // From Images - subdirectories
         directoriesToCopy.put("German", null);
