@@ -121,7 +121,7 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
 		String logSpacer = "          ";
 
 		// The Log book
-        String imagePath = ContextSpecificImages.imagesMisc() + "PilotLogBook.gif";
+        String imagePath = ContextSpecificImages.imagesMisc() + "PilotLogBook.jpg";
         ImageScaledPanel pilotLogBorderPanel = new ImageScaledPanel(imagePath, 0.75);
 		pilotLogBorderPanel.setLayout(new BorderLayout());
 		pilotLogBorderPanel.setOpaque(false);

@@ -15,6 +15,11 @@ import java.util.HashMap;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
+import pwcg.campaign.ArmedService;
+import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
@@ -39,45 +44,117 @@ public class ImageCache
 		return instance;
 	}
 
-	public BufferedImage getBufferedImage(String imagePath) throws PWCGIOException 
+	public BufferedImage getBufferedImage(String imagePath) throws PWCGException 
 	{
-		try
-        {
-		    SoftReference<BufferedImage> ref = bufferedImageCache.get(imagePath);
-            BufferedImage image = ref != null ? ref.get() : null;
-            if (image == null)
+        imagePath = imagePath.toLowerCase();
+	    String themeImagePath = getThemePath(imagePath);
+	    if(themeImagePath != null)
+	    {
+    	    BufferedImage image = getBufferedImageForPath(themeImagePath);
+            if (image != null)
             {
-                synchronized (this) {
-                    // Try to fetch again to avoid a race condition where two threads try to load an image
-                    ref = bufferedImageCache.get(imagePath);
-                    image = ref != null ? ref.get() : null;
-
-                    if (image != null)
-                        return image;
-
-                    File file = new File(imagePath);
-                    if (file.exists())
-                    {
-                        image = ImageIO.read(new File(imagePath));
-                        bufferedImageCache.put(imagePath, new SoftReference<>(image));
-                    }
-                    else
-                    {
-                        PWCGLogger.log(LogLevel.ERROR, "Image not found: " + imagePath);
-                    }
-                }
+                return image;
             }
-            
+	    }
+        
+	    BufferedImage image = getBufferedImageForPath(imagePath);
+        if (image != null)
+        {
             return image;
         }
-        catch (IOException e)
-        {
-            PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
-        }
+        
+        PWCGLogger.log(LogLevel.ERROR, "Image not found: " + imagePath);
+        
+        return image;
 	}
 	
-	public BufferedImage getRotatedImage(String imagePath, int angle) throws PWCGIOException  
+	private BufferedImage getBufferedImageForPath(String imagePath) throws PWCGException 
+    {
+        SoftReference<BufferedImage> ref = bufferedImageCache.get(imagePath);
+        BufferedImage image = ref != null ? ref.get() : null;
+        if (image == null)
+        {
+            synchronized (this) 
+            {
+                image = getImageFromCache(imagePath);
+                if (image != null)
+                {
+                    return image;
+                }
+                
+                image = getImageFromFile(imagePath);
+                if (image != null)
+                {
+                    return image;
+                }
+                
+                PWCGLogger.log(LogLevel.ERROR, "Image not found: " + imagePath);
+            }
+        }
+        
+        return image;
+    }
+
+
+    private BufferedImage getImageFromCache(String imagePath)
+    {
+        SoftReference<BufferedImage> ref;
+        BufferedImage image;
+        ref = bufferedImageCache.get(imagePath);
+        image = ref != null ? ref.get() : null;
+        if (image != null)
+        {
+            return image;
+        }
+        return image;
+    }
+
+    private String getThemePath(String imagePath) throws PWCGException
+    {
+        if (!imagePath.contains("\\images\\")) 
+        {
+            return null;
+        }
+        
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
+        if (campaign == null)
+        {
+            return null;
+        }
+        
+        SquadronMember referencePlayer = campaign.getPersonnelManager().getAnyCampaignMember(campaign.getCampaignData().getReferencePlayerSerialNumber());
+        if (referencePlayer == null)
+        {
+            return null;
+        }
+        
+        ArmedService service = referencePlayer.determineService(campaign.getDate());
+        String substitute = "\\images\\themes\\" + service.getName() + "\\\\images\\"; 
+        String themeImagePath = imagePath.replace("\\images\\", substitute);
+        return themeImagePath;
+    }
+
+    private BufferedImage getImageFromFile(String imagePath) throws PWCGException
+    {
+        BufferedImage image = null;
+        try
+        {
+            File file = new File(imagePath);
+            if (file.exists())
+            {
+                image = ImageIO.read(new File(imagePath));
+                bufferedImageCache.put(imagePath, new SoftReference<>(image));
+            }
+        }
+        catch (IOException ioe)
+        {
+            PWCGLogger.logException(ioe);
+            throw new PWCGException("Failed to load image file " + imagePath);
+        }
+        return image;
+    }
+
+	public BufferedImage getRotatedImage(String imagePath, int angle) throws PWCGException  
 	{
 		BufferedImage origImage = getBufferedImage(imagePath);
 	    if (origImage == null) {
@@ -89,7 +166,6 @@ public class ImageCache
 
 	    BufferedImage expandedImage = expandAndCenter(origImage);
 	    
-        //Get current GraphicsConfiguration
         GraphicsConfiguration graphicsConfiguration 
                 = GraphicsEnvironment
                 .getLocalGraphicsEnvironment()
@@ -146,7 +222,7 @@ public class ImageCache
 	    return dest; 
 	}
 	
-	public ImageIcon getRotatedImageIcon(String imagePath, int angle) throws PWCGIOException 
+	public ImageIcon getRotatedImageIcon(String imagePath, int angle) throws PWCGException 
 	{
 		BufferedImage bufferedImage = getRotatedImage(imagePath, angle);
 		ImageIcon image = new ImageIcon(bufferedImage);  
