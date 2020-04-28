@@ -1,6 +1,19 @@
 ​
 At the PWCG web site
 
+PWCG 8.7.2
+Added capability for themed desktops
+- Russia Theme (Riksen)
+- RAF Theme (Riksen)
+- Luftwaffe theme (Me from Riksen)
+- PWCG will automatically use the correct theme by armed service
+- Capability for more.
+Bugs:
+Fixed error that prevented FC missions from generating properly
+- verified that bomb payload on Bristol works properly
+
+
+
 PWCG 8.7.1
 Improved AAR
 - Added detailed/not detailed selection (Maximum Information check box on debrief map)
