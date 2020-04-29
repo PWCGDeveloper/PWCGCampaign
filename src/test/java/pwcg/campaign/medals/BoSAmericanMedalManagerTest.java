@@ -17,7 +17,7 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.MedalManagerFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.gui.dialogs.ImageCache;
+import pwcg.gui.dialogs.ImageIconCache;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.product.bos.country.BoSServiceManager;
 import pwcg.product.bos.medals.AmericanMedalManager;
@@ -102,7 +102,7 @@ public class BoSAmericanMedalManagerTest extends MedalManagerTestBase
     	{
 	        String medalPath = ContextSpecificImages.imagesMedals() + "Allied\\" + medal.getMedalImage();
 	        System.out.println(medalPath);
-	        ImageIcon medalIcon = ImageCache.getInstance().getImageIcon(medalPath);
+	        ImageIcon medalIcon = ImageIconCache.getInstance().getImageIcon(medalPath);
 	        assert (medalIcon != null);
     	}
     }

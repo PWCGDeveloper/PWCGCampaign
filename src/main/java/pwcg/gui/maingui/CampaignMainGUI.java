@@ -41,7 +41,6 @@ import pwcg.gui.maingui.config.ConfigurationGlobalGUI;
 import pwcg.gui.maingui.config.ConfigurationPlanesOwnedPanelSet;
 import pwcg.gui.maingui.config.ConfigurationSkinAnalysisPanelSet;
 import pwcg.gui.maingui.coop.CoopAdminGui;
-import pwcg.gui.rofmap.MapPanelBase;
 import pwcg.gui.rofmap.brief.PwcgGuiModSupport;
 import pwcg.gui.rofmap.editmap.EditorMapGUI;
 import pwcg.gui.rofmap.infoMap.InfoMapGUI;
@@ -115,9 +114,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
             if (testDriver.isEnabled())
             {
                 ErrorDialog.userError("PWCG test driver is enabled - PWCG will not function normally");
-            }
-            
-            MapPanelBase.preloadMaps();
+            }            
         }
         catch (Exception e)
         {

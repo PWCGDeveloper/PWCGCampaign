@@ -24,7 +24,7 @@ import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.ImageCache;
+import pwcg.gui.dialogs.ImageIconCache;
 import pwcg.gui.dialogs.MonitorSupport;
 import pwcg.gui.utils.CampaignDocumentPage;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -187,7 +187,7 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
         ImageIcon medalIcon = null;  
         try 
         {
-            medalIcon = ImageCache.getInstance().getImageIcon(medalPath);
+            medalIcon = ImageIconCache.getInstance().getImageIcon(medalPath);
         }
         catch (Exception ex) 
         {

@@ -24,7 +24,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.ImageCache;
+import pwcg.gui.dialogs.ImageIconCache;
 import pwcg.gui.dialogs.MonitorSupport;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -128,7 +128,7 @@ public class CampaignPilotMedalPanel extends PwcgGuiContext implements ActionLis
 		ImageIcon medalIcon = null;  
 		try 
 		{
-			medalIcon = ImageCache.getInstance().getImageIcon(medalPath);
+			medalIcon = ImageIconCache.getInstance().getImageIcon(medalPath);
 		}
 		catch (Exception ex) 
 		{
@@ -181,7 +181,7 @@ public class CampaignPilotMedalPanel extends PwcgGuiContext implements ActionLis
 				ImageIcon medalIcon = null;  
 				try 
 				{
-					medalIcon = ImageCache.getInstance().getImageIcon(medalPath);
+					medalIcon = ImageIconCache.getInstance().getImageIcon(medalPath);
 				}
 				catch (Exception ex) 
 				{

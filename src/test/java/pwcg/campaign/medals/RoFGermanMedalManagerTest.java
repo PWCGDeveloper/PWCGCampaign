@@ -18,7 +18,7 @@ import pwcg.campaign.factory.MedalManagerFactory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.gui.dialogs.ImageCache;
+import pwcg.gui.dialogs.ImageIconCache;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.product.fc.country.FCServiceManager;
 import pwcg.product.fc.medals.GermanMedalManager;
@@ -137,7 +137,7 @@ public class RoFGermanMedalManagerTest extends MedalManagerTestBase
     	for (Medal medal : medalManager.getAllAwardsForService())
     	{
 	        String medalPath = ContextSpecificImages.imagesMedals() + "Axis\\" + medal.getMedalImage();
-	        ImageIcon medalIcon = ImageCache.getInstance().getImageIcon(medalPath);
+	        ImageIcon medalIcon = ImageIconCache.getInstance().getImageIcon(medalPath);
 	        assert (medalIcon != null);
     	}
     }

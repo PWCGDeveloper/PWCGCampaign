@@ -25,7 +25,7 @@ import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
-import pwcg.gui.dialogs.ImageCache;
+import pwcg.gui.dialogs.ImageIconCache;
 import pwcg.gui.utils.PWCGStringValidator;
 
 public class SquadronMember implements Cloneable
@@ -104,7 +104,7 @@ public class SquadronMember implements Cloneable
         {
             String picPath = PictureManager.getPicturePath(this);
 
-            imageIcon = ImageCache.getInstance().getImageIcon(picPath);
+            imageIcon = ImageIconCache.getInstance().getImageIcon(picPath);
             if (imageIcon == null)
             {
                 PWCGLogger.log(LogLevel.ERROR, "Got null image picture for " + getName() + " at " + picPath);

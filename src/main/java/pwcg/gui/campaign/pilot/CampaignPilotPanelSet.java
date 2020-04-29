@@ -31,6 +31,7 @@ import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.ImageCache;
+import pwcg.gui.dialogs.ImageIconCache;
 import pwcg.gui.dialogs.MonitorSupport;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -273,7 +274,7 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
             if (planePic != null)
             {
                 String picPath = PictureManager.getPlanePicturePath(planePic);          
-                imageIcon = ImageCache.getInstance().getImageIconResized(picPath);
+                imageIcon = ImageIconCache.getInstance().getImageIconResized(picPath);
             }
         }
         catch (Exception ex) 
@@ -311,7 +312,7 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
 		pilotPMedalBoxPanel.setOpaque(false);
 
         String imagePath = ContextSpecificImages.imagesMisc() + "PilotMedalBox.gif";
-		ImageIcon imageIcon = ImageCache.getInstance().getImageIcon(imagePath);
+		ImageIcon imageIcon = ImageIconCache.getInstance().getImageIcon(imagePath);
 		//ImageIcon imageIcon = ImageCache.getInstance().getRotatedImageIcon(imagePath, 350);
 		PWCGJButton medalBoxButton = new PWCGJButton(imageIcon);
 
