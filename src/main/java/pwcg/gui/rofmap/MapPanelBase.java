@@ -25,7 +25,6 @@ import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImagePanel;
 
 public abstract class MapPanelBase extends ImagePanel implements ActionListener
@@ -64,7 +63,7 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
     {
         try
         {
-            String mapPrefix = PWCGContext.getInstance().getCurrentMap().getMapName();
+            String mapPrefix = PWCGContext.getInstance().getCurrentMap().getMapName() + "Map";
 
             MapLoader mapLoader = new MapLoader(mapPrefix);
             mapLoader.loadPrimaryMap();
@@ -78,45 +77,19 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
         }
     }
 
-    private String getMapImage()
-    {
-        String mapImagePath = ContextSpecificImages.imagesMaps();
-
-        String prefix = PWCGContext.getInstance().getCurrentMap().getMapName();
-
-        String mapImage = prefix + "Map100.jpg";
-        if (scaleLevel == 50)
-        {
-            mapImage = prefix + "Map050.jpg";
-        }
-        else if (scaleLevel == 75)
-        {
-            mapImage = prefix + "Map075.jpg";
-        }
-        else if (scaleLevel == 100)
-        {
-            mapImage = prefix + "Map100.jpg";
-        }
-        else if (scaleLevel == 125)
-        {
-            mapImage = prefix + "Map125.jpg";
-        }
-        else if (scaleLevel == 150)
-        {
-            mapImage = prefix + "Map150.jpg";
-        }
-
-        mapImagePath += mapImage;
-
-        return mapImagePath;
-    }
-
     public void setMapBackground(int zoom)
     {
+        preloadMaps();
         scaleLevel = zoom;
 
-        String mapImagePath = getMapImage();
-        super.setImage(mapImagePath);
+        String mapImageName = PWCGContext.getInstance().getCurrentMap().getMapName() + "Map";
+        if (scaleLevel < 100)
+        {
+            mapImageName += "0";
+        }
+        mapImageName += scaleLevel;
+        super.setMapImage(mapImageName);
+        
         if (image == null)
         {
             ErrorDialog.internalError("Map failed to load - did you install the map pack?  If not, get the map pack from the PWCG web site.");

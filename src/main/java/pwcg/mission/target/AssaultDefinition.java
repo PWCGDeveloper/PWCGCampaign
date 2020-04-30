@@ -1,5 +1,6 @@
 package pwcg.mission.target;
 
+import pwcg.campaign.api.ICountry;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -12,28 +13,9 @@ public class AssaultDefinition
 
     private Coordinate assaultPosition = null;
     private Coordinate defensePosition = null;
+    private ICountry assaultingCountry = null;
+    private ICountry defendingCountry = null;
     private BattleSize battleSize;
-    private TargetDefinition targetDefinition;
-
-    public Coordinate getAssaultPosition()
-    {
-        return assaultPosition;
-    }
-
-    public void setAssaultPosition(Coordinate assaultPosition)
-    {
-        this.assaultPosition = assaultPosition;
-    }
-
-    public Coordinate getDefensePosition()
-    {
-        return defensePosition;
-    }
-
-    public void setDefensePosition(Coordinate defensePosition)
-    {
-        this.defensePosition = defensePosition;
-    }    
     
     public Orientation getTowardsDefenderOrientation() throws PWCGException
     {
@@ -55,16 +37,6 @@ public class AssaultDefinition
     public void setBattleSize(BattleSize battleSize)
     {
         this.battleSize = battleSize;
-    }
-
-    public TargetDefinition getTargetDefinition()
-    {
-        return targetDefinition;
-    }
-
-    public void setTargetDefinition(TargetDefinition targetDefinition)
-    {
-        this.targetDefinition = targetDefinition;
     }
 
     public boolean isNearBattle(Coordinate coordinate)
@@ -90,5 +62,50 @@ public class AssaultDefinition
         {
             return true;
         }
+    }
+
+    public static Integer getCloseToBattle()
+    {
+        return CLOSE_TO_BATTLE;
+    }
+
+    public Coordinate getAssaultPosition()
+    {
+        return assaultPosition;
+    }
+
+    public void setAssaultPosition(Coordinate assaultPosition)
+    {
+        this.assaultPosition = assaultPosition;
+    }
+
+    public Coordinate getDefensePosition()
+    {
+        return defensePosition;
+    }
+
+    public void setDefensePosition(Coordinate defensePosition)
+    {
+        this.defensePosition = defensePosition;
+    }    
+
+    public ICountry getAssaultingCountry()
+    {
+        return assaultingCountry;
+    }
+
+    public void setAssaultingCountry(ICountry assaultingCountry)
+    {
+        this.assaultingCountry = assaultingCountry;
+    }
+
+    public ICountry getDefendingCountry()
+    {
+        return defendingCountry;
+    }
+
+    public void setDefendingCountry(ICountry defendingCountry)
+    {
+        this.defendingCountry = defendingCountry;
     }
 }

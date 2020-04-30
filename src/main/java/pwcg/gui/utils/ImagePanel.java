@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 
 import pwcg.gui.dialogs.ImageCache;
+import pwcg.gui.dialogs.MapImageCache;
 
 public abstract class ImagePanel extends JPanel
 {
@@ -41,16 +42,27 @@ public abstract class ImagePanel extends JPanel
 		super(layout);
 	}
 
-	public void setImage(String imagePath)
-	{
-		try 
-		{
-			image = ImageCache.getInstance().getBufferedImage(imagePath);
-		}
-		catch (Exception ex) 
-		{
-		}
-	}
+    public void setImage(String imagePath)
+    {
+        try 
+        {
+            image = ImageCache.getInstance().getBufferedImage(imagePath);
+        }
+        catch (Exception ex) 
+        {
+        }
+    }
+
+    public void setMapImage(String mapImageName)
+    {
+        try 
+        {
+            image = MapImageCache.getInstance().getMapImage(mapImageName);
+        }
+        catch (Exception ex) 
+        {
+        }
+    }
 	
 	@Override
 	public void paintComponent(Graphics g) 

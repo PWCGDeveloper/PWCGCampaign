@@ -15,6 +15,24 @@
       "aggressorcountry": "GERMANY",
       "defendercountry": "RUSSIA",
       "startDate": "19411015",
+      "stopDate": "19411201",
+      "map": "MOSCOW_MAP"
+    },
+    {
+      "name": "Moscow Russian Counteroffensive",
+      "neCorner": {
+        "xPos": 300000.0,
+        "yPos": 0.0,
+        "zPos": 300000.0
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "RUSSIA",
+      "defendercountry": "GERMANY",
+      "startDate": "19411206",
       "stopDate": "19420315",
       "map": "MOSCOW_MAP"
     },
@@ -33,8 +51,44 @@
       "aggressorcountry": "GERMANY",
       "defendercountry": "RUSSIA",
       "startDate": "19420815",
+      "stopDate": "19421101",
+      "map": "STALINGRAD_MAP"
+    },
+    {
+      "name": "Stalingrad Operation Uranus",
+      "neCorner": {
+        "xPos": 300000.0,
+        "yPos": 0.0,
+        "zPos": 300000.0
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "RUSSIA",
+      "defendercountry": "GERMANY",
+      "startDate": "19421120",
       "stopDate": "19430215",
       "map": "STALINGRAD_MAP"
+    },
+    {
+      "name": "Kuban German Caucasus Offensive",
+      "neCorner": {
+        "xPos": 460800.0,
+        "yPos": 0.0,
+        "zPos": 358400.0
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "GERMANY",
+      "defendercountry": "RUSSIA",
+      "startDate": "19420715",
+      "stopDate": "19421118",
+      "map": "KUBAN_MAP"
     },
     {
       "name": "Kuban",
@@ -53,7 +107,114 @@
       "startDate": "19430415",
       "stopDate": "19431101",
       "map": "KUBAN_MAP"
+    },
+    {
+      "name": "Across the Dnieper",
+      "neCorner": {
+        "xPos": 300000.0,
+        "yPos": 0.0,
+        "zPos": 300000.0
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "RUSSIA",
+      "defendercountry": "GERMANY",
+      "startDate": "19440201",
+      "stopDate": "19440325",
+      "map": "EAST1944_MAP"
+    },
+    {
+      "name": "Bagration",
+      "neCorner": {
+        "xPos": 300000.0,
+        "yPos": 0.0,
+        "zPos": 300000.0
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "RUSSIA",
+      "defendercountry": "GERMANY",
+      "startDate": "19440622",
+      "stopDate": "19440822",
+      "map": "EAST1944_MAP"
+    },
+    {
+      "name": "Battle for Berlin",
+      "neCorner": {
+        "xPos": 384000,
+        "yPos": 0.0,
+        "zPos": 460800
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "RUSSIA",
+      "defendercountry": "GERMANY",
+      "startDate": "19450117",
+      "stopDate": "19450601",
+      "map": "EAST1945_MAP"
+    },
+    {
+      "name": "Liberation Of Holland",
+      "neCorner": {
+        "xPos": 384000,
+        "yPos": 0.0,
+        "zPos": 460800
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "USA",
+      "defendercountry": "GERMANY",
+      "startDate": "19440901",
+      "stopDate": "19441210",
+      "map": "BODENPLATTE_MAP"
+    },
+    {
+      "name": "Ardennes OOffensive",
+      "neCorner": {
+        "xPos": 384000,
+        "yPos": 0.0,
+        "zPos": 460800
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "GERMANY",
+      "defendercountry": "USA",
+      "startDate": "19441216",
+      "stopDate": "19441223",
+      "map": "BODENPLATTE_MAP"
+    },
+    {
+      "name": "Defeat of Germany",
+      "neCorner": {
+        "xPos": 384000,
+        "yPos": 0.0,
+        "zPos": 460800
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "USA",
+      "defendercountry": "GERMANY",
+      "startDate": "19441223",
+      "stopDate": "19450601",
+      "map": "BODENPLATTE_MAP"
     }
-
   ]
 }

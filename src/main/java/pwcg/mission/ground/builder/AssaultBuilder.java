@@ -22,7 +22,6 @@ public class AssaultBuilder
     {
         AssaultDefinitionGenerator assaultDefinitionGenerator = new AssaultDefinitionGenerator(mission.getCampaign());
         List<AssaultDefinition> assaultDefinitions = assaultDefinitionGenerator.generateAssaultDefinition(targetDefinition);
-
         
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, 

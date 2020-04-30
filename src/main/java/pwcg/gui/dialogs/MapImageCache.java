@@ -1,99 +1,62 @@
 package pwcg.gui.dialogs;
 
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.lang.ref.SoftReference;
 import java.util.HashMap;
 
-import javax.imageio.ImageIO;
-
-import pwcg.campaign.ArmedService;
-import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.utils.ContextSpecificImages;
 
-public class MapImageCache 
+public class MapImageCache
 {
-	private static MapImageCache instance = null;
-	private static HashMap<String, SoftReference<BufferedImage>> bufferedMapImageCache = new HashMap<>();
-	
-	private MapImageCache ()
-	{
-	}
-	
-	public static MapImageCache getInstance() 
-	{
-		if (instance == null)
-		{
-			instance = new MapImageCache();
-		}
-		
-		return instance;
-	}
+    private static MapImageCache instance = null;
+    private static HashMap<String, SoftReference<BufferedImage>> bufferedMapImageCache = new HashMap<>();
 
-	public BufferedImage getMapImage(String mapImageFileName) throws PWCGException 
-	{
-        String mapImageFullPath = ContextSpecificImages.imagesMaps() + mapImageFileName;
-
-        mapImageFullPath = mapImageFullPath.toLowerCase();
-	    if(mapImageFullPath != null)
-	    {
-    	    BufferedImage image = getBufferedImageForPath(mapImageFullPath);
-            if (image != null)
-            {
-                return image;
-            }
-	    }
-        
-	    BufferedImage image = getBufferedImageForPath(mapImageFullPath);
-        if (image != null)
-        {
-            return image;
-        }
-        
-        PWCGLogger.log(LogLevel.ERROR, "Image not found: " + mapImageFullPath);
-        
-        return image;
-	}
-
-    private BufferedImage getBufferedImageForPath(String imagePath) throws PWCGException 
+    private MapImageCache()
     {
-        SoftReference<BufferedImage> ref = bufferedMapImageCache.get(imagePath);
-        BufferedImage image = ref != null ? ref.get() : null;
-        if (image == null)
-        {
-            synchronized (this) 
-            {
-                image = getImageFromCache(imagePath);
-                if (image != null)
-                {
-                    return image;
-                }
-                
-                image = getImageFromFile(imagePath);
-                if (image != null)
-                {
-                    return image;
-                }
-                
-                PWCGLogger.log(LogLevel.ERROR, "Image not found: " + imagePath);
-            }
-        }
-        
-        return image;
     }
 
+    public static MapImageCache getInstance()
+    {
+        if (instance == null)
+        {
+            instance = new MapImageCache();
+        }
 
-    private BufferedImage getImageFromCache(String imagePath)
+        return instance;
+    }
+
+    public BufferedImage getMapImage(String mapImageFileName) throws PWCGException
+    {
+        synchronized (this)
+        {
+            BufferedImage mapImageForDisplay = getImageFromCache(mapImageFileName);
+            if (mapImageForDisplay != null)
+            {
+                return mapImageForDisplay;
+            }
+
+            mapImageForDisplay = buildMapWithOverlay(mapImageFileName);
+            if (mapImageForDisplay != null)
+            {
+                bufferedMapImageCache.put(mapImageFileName, new SoftReference<>(mapImageForDisplay));
+                return mapImageForDisplay;
+            }
+
+            PWCGLogger.log(LogLevel.ERROR, "Image not found: " + mapImageFileName);
+        }
+
+        return null;
+    }
+
+    private BufferedImage getImageFromCache(String mapImageFileName)
     {
         SoftReference<BufferedImage> ref;
         BufferedImage image;
-        ref = bufferedMapImageCache.get(imagePath);
+        ref = bufferedMapImageCache.get(mapImageFileName);
         image = ref != null ? ref.get() : null;
         if (image != null)
         {
@@ -102,49 +65,45 @@ public class MapImageCache
         return image;
     }
 
-    private String getOverlayPath(String imagePath) throws PWCGException
+    private BufferedImage buildMapWithOverlay(String mapImageFileName) throws PWCGException
     {
-        if (!imagePath.contains("\\images\\")) 
-        {
-            return null;
-        }
-        
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
-        if (campaign == null)
-        {
-            return null;
-        }
-        
-        SquadronMember referencePlayer = campaign.getPersonnelManager().getAnyCampaignMember(campaign.getCampaignData().getReferencePlayerSerialNumber());
-        if (referencePlayer == null)
-        {
-            return null;
-        }
-        
-        ArmedService service = referencePlayer.determineService(campaign.getDate());
-        String substitute = "\\images\\themes\\" + service.getName() + "\\\\images\\"; 
-        String themeImagePath = imagePath.replace("\\images\\", substitute);
-        return themeImagePath;
-    }
+        BufferedImage mapOverlay = MapImageOverlay.getMapImage(mapImageFileName);
+        BufferedImage mapImage = getMapImageNoOverlay(mapImageFileName);
 
-    private BufferedImage getImageFromFile(String imagePath) throws PWCGException
-    {
-        BufferedImage image = null;
-        try
+        BufferedImage mapImageForDisplay = null;
+        if (mapOverlay != null && mapImage != null)
         {
-            File file = new File(imagePath);
-            if (file.exists())
+            BufferedImage combinedMapImage = combineOverlayWithMap(mapImage, mapOverlay);
+            if (combinedMapImage != null)
             {
-                image = ImageIO.read(new File(imagePath));
-                bufferedMapImageCache.put(imagePath, new SoftReference<>(image));
+                mapImageForDisplay = combinedMapImage;
+            }
+            else
+            {
+                mapImageForDisplay = mapImage;
             }
         }
-        catch (IOException ioe)
+        else if (mapImage != null)
         {
-            PWCGLogger.logException(ioe);
-            throw new PWCGException("Failed to load image file " + imagePath);
+            mapImageForDisplay = mapImage;
         }
-        return image;
+
+        return mapImageForDisplay;
     }
 
+    private BufferedImage getMapImageNoOverlay(String mapImageFileName) throws PWCGException
+    {
+        String mapFullPath = ContextSpecificImages.imagesMaps() + mapImageFileName + ".jpg";
+        BufferedImage mapImage = ImageRetriever.getImageFromFile(mapFullPath);
+        return mapImage;
+    }
+
+    private BufferedImage combineOverlayWithMap(BufferedImage mapImage, BufferedImage mapOverlay)
+    {
+        BufferedImage result = new BufferedImage(mapImage.getWidth(), mapImage.getHeight(), BufferedImage.TYPE_INT_RGB);
+        Graphics g = result.getGraphics();
+        g.drawImage(mapImage, 0, 0, null);
+        g.drawImage(mapOverlay, 0, 0, null);
+        return result;
+    }
 }

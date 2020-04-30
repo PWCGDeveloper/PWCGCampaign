@@ -139,10 +139,10 @@ public class AssaultSegmentBuilder
 
     private GroundUnitInformation buildAssaultGroundUnitInformation(Coordinate unitPosition, String unitName) throws PWCGException
     {
-        String name = assaultDefinition.getTargetDefinition().getTargetCountry().getCountryName() + " " + unitName;
+        String name = assaultDefinition.getAssaultingCountry().getCountryName() + " " + unitName;
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 mission.getCampaign(), 
-                assaultDefinition.getTargetDefinition().getAttackingCountry(),
+                assaultDefinition.getAssaultingCountry(),
                 name, 
                 TargetType.TARGET_INFANTRY, 
                 unitPosition, 
@@ -239,10 +239,10 @@ public class AssaultSegmentBuilder
 
     private GroundUnitInformation buildDefenseGroundUnitInformation(Coordinate unitPosition, String unitName) throws PWCGException
     {
-        String name = assaultDefinition.getTargetDefinition().getTargetCountry().getCountryName() + " " + unitName;
+        String name = assaultDefinition.getDefendingCountry().getCountryName() + " " + unitName;
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 mission.getCampaign(), 
-                assaultDefinition.getTargetDefinition().getTargetCountry(),
+                assaultDefinition.getDefendingCountry(),
                 name, 
                 TargetType.TARGET_INFANTRY, 
                 unitPosition, 
