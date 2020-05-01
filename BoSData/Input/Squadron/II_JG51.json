@@ -4,6 +4,7 @@
   "name": "II./JG51",
   "fileName": "II_JG51.json",
   "skill": 90,
+  "subUnitIdCode": "-",
   "planeAssignments": [
     {
       "archType": "bf109",
@@ -84,6 +85,75 @@
       "country": "Germany",
       "category": "Squadron",
       "definedInGame": false
+    },
+    {
+      "skinName": "LW_FIGHTER_MID_II_JG51",
+      "archTypes": ["bf109", "fw190"],
+      "startDate": "19411001",
+      "endDate": "19440831",
+      "squadId": 20112051,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_FIGHTER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 3,
+        "INSIGNIA_NOSE": "Insignia\\JG51.png"
+      }
+    },
+    {
+      "skinName": "LW_FIGHTER_MID_II_JG51_WF",
+      "archTypes": ["bf109", "fw190"],
+      "startDate": "19440901",
+      "endDate": "19450601",
+      "squadId": 20112051,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_FIGHTER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 1,
+        "ID_BAND_FORE": "3f853f",
+        "ID_BAND_AFT": "3f853f",
+        "ID_BAND_MID": "faf7f1",
+        "INSIGNIA_NOSE": "Insignia\\JG51.png"
+      }
+    },
+    {
+      "skinName": "LW_FIGHTER_LATE_II_JG51",
+      "archTypes": ["bf109", "fw190"],
+      "startDate": "19440901",
+      "endDate": "19450601",
+      "squadId": 20112051,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_FIGHTER_LATE",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 1,
+        "ID_BAND_FORE": "3f853f",
+        "ID_BAND_AFT": "3f853f",
+        "ID_BAND_MID": "faf7f1",
+        "INSIGNIA_NOSE": "Insignia\\JG51.png"
+      }
+    },
+    {
+      "skinName": "LW_FIGHTER_LATER_II_JG51",
+      "archTypes": ["bf109", "fw190"],
+      "startDate": "19450102",
+      "endDate": "19450601",
+      "squadId": 20112051,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_FIGHTER_LATER",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 1,
+        "ID_BAND_FORE": "3f853f",
+        "ID_BAND_AFT": "3f853f",
+        "ID_BAND_MID": "faf7f1",
+        "INSIGNIA_NOSE": "Insignia\\JG51.png"
+      }
     }
   ],
   "squadHistory": {

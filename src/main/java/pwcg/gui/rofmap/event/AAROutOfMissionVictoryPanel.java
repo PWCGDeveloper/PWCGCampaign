@@ -84,7 +84,7 @@ public class AAROutOfMissionVictoryPanel extends AAREventPanel
             if (planeStatusEvent.getSquadronId() == campaign.findReferencePlayer().getSquadronId())
             {
                 CampaignReportEquipmentStatusGUI equipmentChangeGui = new CampaignReportEquipmentStatusGUI(campaign, planeStatusEvent);
-                String tabName = "Plane Lost: " + planeStatusEvent.getPlaneSerialNumber();
+                String tabName = "Plane Lost: " + planeStatusEvent.getDisplaySerial();
                 pilotLostGuiList.put(tabName, equipmentChangeGui);
             }
 		}

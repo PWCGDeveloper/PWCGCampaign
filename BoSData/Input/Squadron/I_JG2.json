@@ -1,77 +1,131 @@
 {
-	"country": "GERMANY",
-	"squadronId": 20112002,
-	"name": "I./JG2",
-	"fileName": "I_JG2.json",
-	"skill": 90,
-	"planeAssignments": [
-		{
-			"archType": "fw190",
-			"squadronIntroduction": "19440901",
-			"squadronWithdrawal": "19441201"
-		},
-		{
-			"archType": "fw190d",
-			"squadronIntroduction": "19441101",
-			"squadronWithdrawal": "19450601"
-		}
-	],
-	"airfields": {
-		"19440901": "PetitBrogel",
-		"19441001": "Dusseldorf-Lohausen",
-		"19441101": "Koln-Butzweilerhof",
-		"19441220": "Dusseldorf-Lohausen",
-		"19441225": "Soesterberg",
-		"19441229": "Dusseldorf-Lohausen",
-		"19450207": "Dusseldorf-Lohausen",
-		"19450310": "Breitscheid",
-		"19450404": "Nidda"
-	},
-	"skins": [],
-	"squadHistory": {
-		"squadHistoryEntries": [
-			{
-				"date": "19440901",
-				"squadName": "I./JG2",
-				"armedServiceName": "Luftwaffe",
-				"skill": 70
-			}
-		]
-	},
-	"serviceId": 20101,
-	"squadronRoles": {
-		"squadronRolePeriods": [
-			{
-				"startDate": "19440901",
-				"endDate": "19450601",
-				"weightedRoles": [
-					{
-						"role": "ROLE_STRATEGIC_INTERCEPT",
-						"weight": 20
-					},
-					{
-						"role": "ROLE_FIGHTER",
-						"weight": 80
-					},
-					{
-						"role": "ROLE_ATTACK",
-						"weight": 20
-					}
-				]
-			}
-		]
-	},
-	"nightMissionOdds": {
-		"nightMissionPeriods": [
-			{
-				"startDate": "19400101",
-				"endDate": "19450601",
-				"nightMissionOdds": 5
-			}
-		]
-	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19410801": "FINCH"
-	}
+  "country": "GERMANY",
+  "squadronId": 20112002,
+  "name": "I./JG2",
+  "fileName": "I_JG2.json",
+  "skill": 90,
+  "subUnitIdCode": "-",
+  "planeAssignments": [
+    {
+      "archType": "fw190",
+      "squadronIntroduction": "19440901",
+      "squadronWithdrawal": "19441201"
+    },
+    {
+      "archType": "fw190d",
+      "squadronIntroduction": "19441101",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "airfields": {
+    "19440901": "PetitBrogel",
+    "19441001": "Dusseldorf-Lohausen",
+    "19441101": "Koln-Butzweilerhof",
+    "19441220": "Dusseldorf-Lohausen",
+    "19441225": "Soesterberg",
+    "19441229": "Dusseldorf-Lohausen",
+    "19450207": "Dusseldorf-Lohausen",
+    "19450310": "Breitscheid",
+    "19450404": "Nidda"
+  },
+  "skins": [
+    {
+      "skinName": "LW_FIGHTER_MID_I_JG2",
+      "archTypes": ["bf109", "fw190", "fw190d"],
+      "startDate": "19410401",
+      "endDate": "19450601",
+      "squadId": 20112002,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_FIGHTER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 1,
+        "ID_BAND_FORE": "ffd443",
+        "ID_BAND_AFT": "ffd443",
+        "ID_BAND_MID": "ffffff"
+      }
+    },
+    {
+      "skinName": "LW_FIGHTER_LATE_I_JG2",
+      "archTypes": ["bf109", "fw190", "fw190d"],
+      "startDate": "19440901",
+      "endDate": "19450601",
+      "squadId": 20112002,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_FIGHTER_LATE",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 1,
+        "ID_BAND_FORE": "ffd443",
+        "ID_BAND_AFT": "ffd443",
+        "ID_BAND_MID": "ffffff"
+      }
+    },
+    {
+      "skinName": "LW_FIGHTER_LATER_I_JG2",
+      "archTypes": ["bf109", "fw190", "fw190d"],
+      "startDate": "19450102",
+      "endDate": "19450601",
+      "squadId": 20112002,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_FIGHTER_LATER",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 1,
+        "ID_BAND_FORE": "ffd443",
+        "ID_BAND_AFT": "ffd443",
+        "ID_BAND_MID": "ffffff"
+      }
+    }
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": [
+      {
+        "date": "19440901",
+        "squadName": "I./JG2",
+        "armedServiceName": "Luftwaffe",
+        "skill": 70,
+        "subUnitIdCode": ""
+      }
+    ]
+  },
+  "serviceId": 20101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_STRATEGIC_INTERCEPT",
+            "weight": 20
+          },
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 80
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 20
+          }
+        ]
+      }
+    ]
+  },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "nightMissionOdds": 5
+      }
+    ]
+  },
+  "conversionPeriods": [],
+  "callsigns": {
+    "19410801": "FINCH"
+  }
 }

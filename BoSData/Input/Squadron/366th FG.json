@@ -4,6 +4,7 @@
   "name": "366th Fighter Group",
   "fileName": "366th FG.json",
   "skill": 80,
+  "unitIdCode": "A6",
   "planeAssignments": [
     {
       "archType": "p47",
@@ -21,7 +22,19 @@
     "19450310": "Rips",
     "19450404": "Dortmund"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "USAAF_LATE_BARE_366",
+      "archTypes": ["p47"],
+      "startDate": "19440801",
+      "endDate": "19450601",
+      "squadId": 102366389,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "USAAF_LATE_BARE"
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

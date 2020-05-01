@@ -1,12 +1,12 @@
 package pwcg.campaign.skin;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class SkinSet
 {
     private SkinSetType skinSetType;
-    private Map<String, Skin> skins = new TreeMap<>();
+    private Map<String, Skin> skins = new LinkedHashMap<>();
 
     public SkinSet(SkinSetType skinSetType)
     {

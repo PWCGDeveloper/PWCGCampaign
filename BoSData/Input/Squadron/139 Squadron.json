@@ -4,6 +4,7 @@
   "name": "139 Squadron",
   "fileName": "139 Squadron.json",
   "skill": 70,
+  "unitIdCode": "XD",
   "planeAssignments": [
     {
       "archType": "b25",
@@ -22,7 +23,19 @@
     "19450310": "Woensdrecht",
     "19450404": "Venlo"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "RAF_LATE_OLIVE_139",
+      "archTypes": ["b25"],
+      "startDate": "19440801",
+      "endDate": "19450601",
+      "squadId": 103002139,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "RAF_LATE_OLIVE"
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

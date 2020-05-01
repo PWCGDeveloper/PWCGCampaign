@@ -1,69 +1,85 @@
 {
-	"country": "GERMANY",
-	"squadronId": 20111044,
-	"name": "JV44",
-	"fileName": "JV44.json",
-	"skill": 95,
-	"planeAssignments": [
-		{
-			"archType": "me262",
-			"squadronIntroduction": "19450201",
-			"squadronWithdrawal": "19450601"
-		}
-	],
-	"airfields": {
-		"19441229": "Eudenbach/Asbach",
-		"19450207": "Kirchhellen",
-		"19450310": "Frankfurt/Rhein-Main",
-		"19450404": "Hopsten"
-	},
-	"skins": [],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 20101,
-	"squadronRoles": {
-		"squadronRolePeriods": [
-			{
-				"startDate": "19450201",
-				"endDate": "19450601",
-				"weightedRoles": [
-					{
-						"role": "ROLE_STRATEGIC_INTERCEPT",
-						"weight": 60
-					},
-					{
-						"role": "ROLE_FIGHTER",
-						"weight": 30
-					},
-					{
-						"role": "ROLE_ATTACK",
-						"weight": 10
-					}
-				]
-			}
-		]
-	},
-	"squadronSpecializedRoles": {
-		"squadronSpecializedRolePeriods": [
-			{
-				"startDate": "19440901",
-				"endDate": "19450601",
-				"specializedRole": "SPECIALIZED_ROLE_INTERCEPTOR"
-			}
-		]
-	},
-	"nightMissionOdds": {
-		"nightMissionPeriods": [
-			{
-				"startDate": "19440901",
-				"endDate": "19450601",
-				"nightMissionOdds": 0
-			}
-		]
-	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19410801": "SWAN"
-	}
+  "country": "GERMANY",
+  "squadronId": 20111044,
+  "name": "JV44",
+  "fileName": "JV44.json",
+  "skill": 95,
+  "subUnitIdCode": "",
+  "planeAssignments": [
+    {
+      "archType": "me262",
+      "squadronIntroduction": "19450201",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "airfields": {
+    "19441229": "Eudenbach/Asbach",
+    "19450207": "Kirchhellen",
+    "19450310": "Frankfurt/Rhein-Main",
+    "19450404": "Hopsten"
+  },
+  "skins": [
+    {
+      "skinName": "LW_FIGHTER_LATER_JV44",
+      "archTypes": ["me262"],
+      "startDate": "19450101",
+      "endDate": "19450601",
+      "squadId": 20111044,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_FIGHTER_LATER",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 1
+      }
+    }
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": []
+  },
+  "serviceId": 20101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19450201",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_STRATEGIC_INTERCEPT",
+            "weight": 60
+          },
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 30
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 10
+          }
+        ]
+      }
+    ]
+  },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "specializedRole": "SPECIALIZED_ROLE_INTERCEPTOR"
+      }
+    ]
+  },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "nightMissionOdds": 0
+      }
+    ]
+  },
+  "conversionPeriods": [],
+  "callsigns": {
+    "19410801": "SWAN"
+  }
 }

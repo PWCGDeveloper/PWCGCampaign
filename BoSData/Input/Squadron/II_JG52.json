@@ -4,6 +4,7 @@
   "name": "II./JG52",
   "fileName": "II_JG52.json",
   "skill": 90,
+  "subUnitIdCode": "-",
   "planeAssignments": [
     {
       "archType": "bf109",
@@ -84,6 +85,21 @@
       "country": "Germany",
       "category": "Squadron",
       "definedInGame": false
+    },
+    {
+      "skinName": "LW_FIGHTER_MID_II_JG52",
+      "archTypes": ["bf109", "fw190"],
+      "startDate": "19411001",
+      "endDate": "19450503",
+      "squadId": 20112052,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_FIGHTER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 1,
+        "INSIGNIA_CP_FORE": "Insignia\\JG52.png"
+      }
     }
   ],
   "squadHistory": {

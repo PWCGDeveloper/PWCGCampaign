@@ -4,6 +4,7 @@
   "name": "66 Squadron",
   "fileName": "66 Squadron.json",
   "skill": 75,
+  "unitIdCode": "LZ",
   "planeAssignments": [
     {
       "archType": "spitfire",
@@ -23,7 +24,19 @@
     "19450310": "Volkel",
     "19450404": "Kirchhellen"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "RAF_LATE_66",
+      "archTypes": ["spitfire"],
+      "startDate": "19440901",
+      "endDate": "19450601",
+      "squadId": 103084066,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "RAF_LATE"
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

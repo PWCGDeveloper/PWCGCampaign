@@ -4,6 +4,7 @@
   "name": "358th Fighter Group",
   "fileName": "358th FG.json",
   "skill": 80,
+  "unitIdCode": "CH",
   "planeAssignments": [
     {
       "archType": "p47",
@@ -22,7 +23,22 @@
     "19450310": "Helmond",
     "19450404": "Dortmund"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "USAAF_LATE_BARE_358",
+      "archTypes": ["p47"],
+      "startDate": "19440801",
+      "endDate": "19450601",
+      "squadId": 102358365,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "USAAF_LATE_BARE",
+      "overrides": {
+        "SQUADRON_NUM": 365
+      }
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

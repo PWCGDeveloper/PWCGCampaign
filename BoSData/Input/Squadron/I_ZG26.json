@@ -4,6 +4,8 @@
   "name": "I./ZG 26",
   "fileName": "I_ZG26.json",
   "skill": 70,
+  "unitIdCode": "3U",
+  "subUnitIdCode": "L",
   "planeAssignments": [
     {
       "archType": "bf110",
@@ -64,6 +66,20 @@
       "country": "Germany",
       "category": "Squadron",
       "definedInGame": false
+    },
+    {
+      "skinName": "LW_BOMBER_MID_I_ZG26",
+      "archTypes": ["bf110"],
+      "startDate": "19410101",
+      "endDate": "19450503",
+      "squadId": 20101026,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_BOMBER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 3
+      }
     }
   ],
   "squadHistory": {

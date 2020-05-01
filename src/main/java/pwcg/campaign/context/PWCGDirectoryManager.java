@@ -153,6 +153,16 @@ public class PWCGDirectoryManager
         return getPwcgInputDir() + "Aces\\";
     }
 
+    public String getPwcgFontsDir()
+    {
+        return pwcgDataDir + "Fonts\\";
+    }
+
+    public String getPwcgSkinTemplatesDir()
+    {
+        return pwcgRootDir + "SkinTemplates\\";
+    }
+
     public String getSimulatorRootDir()
     {
         return simulatorRootDir;

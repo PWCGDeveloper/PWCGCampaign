@@ -4,6 +4,7 @@
 	"name": "I./JG1",
 	"fileName": "I_JG1.json",
 	"skill": 85,
+	"subUnitIdCode": "",
 	"planeAssignments": [
 		{
 			"archType": "fw190",
@@ -23,6 +24,54 @@
 		"19450404": "Plantlunne"
 	},
 	"skins": [
+    {
+      "skinName": "LW_FIGHTER_MID_I_JG1",
+      "archTypes": ["bf109", "fw190", "fw190d"],
+      "startDate": "19440901",
+      "endDate": "19450503",
+      "squadId": 20111001,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_FIGHTER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 3,
+        "ID_BAND_FORE": "a62121",
+        "ID_BAND_AFT": "a62121"
+      }
+    },
+    {
+      "skinName": "LW_FIGHTER_LATE_I_JG1",
+      "archTypes": ["bf109", "fw190", "fw190d"],
+      "startDate": "19440901",
+      "endDate": "19450503",
+      "squadId": 20111001,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_FIGHTER_LATE",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 3,
+        "ID_BAND_FORE": "a62121",
+        "ID_BAND_AFT": "a62121"
+      }
+    },
+    {
+      "skinName": "LW_FIGHTER_LATER_I_JG1",
+      "archTypes": ["bf109", "fw190", "fw190d"],
+      "startDate": "19450102",
+      "endDate": "19450503",
+      "squadId": 20111001,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_FIGHTER_LATER",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 3,
+        "ID_BAND_FORE": "a62121",
+        "ID_BAND_AFT": "a62121"
+      }
+    }
 	],
 	"squadHistory": {
 	},

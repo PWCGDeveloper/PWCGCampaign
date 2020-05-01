@@ -1,0 +1,155 @@
+{
+  "templates": {
+    "lw_fighter_mid": {
+      "templateName": "LW_FIGHTER_MID",
+      "planeType": "bf109f4",
+      "credit": "Based on BlackHellHound1's 4K template",
+      "parameters": {
+        "AIRCRAFT_ID_CODE": null,
+        "SUB_UNIT_ID_CODE": null,
+        "STAFFEL_COLOR_INDEX": null,
+        "INSIGNIA_NOSE": null,
+        "INSIGNIA_CP_FORE": null,
+        "INSIGNIA_CP_MID": null,
+        "INSIGNIA_TAIL": null,
+        "WINTER": null
+      },
+      "defs": [
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 350,
+          "x": 1500,
+          "y": 586,
+          "orientation": 0,
+          "fillColor": "{2,choice,1#faf7f1|2#262627|3#ffc63d}",
+          "strokeWidth": 8,
+          "strokeColor": "{2,choice,1#262627|2#'{7,choice,0#faf7f1|1#262627}'|3#262627}"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 350,
+          "x": 1520,
+          "y": 1802,
+          "orientation": 180,
+          "fillColor": "{2,choice,1#faf7f1|2#262627|3#ffc63d}",
+          "strokeWidth": 8,
+          "strokeColor": "{2,choice,1#262627|2#'{7,choice,0#faf7f1|1#262627}'|3#262627}"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 350,
+          "x": 1000,
+          "y": 586,
+          "orientation": 0,
+          "fillColor": "{2,choice,1#faf7f1|2#262627|3#ffc63d}",
+          "strokeWidth": 8,
+          "strokeColor": "{2,choice,1#262627|2#'{7,choice,0#faf7f1|1#262627}'|3#262627}"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "LEFT",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 350,
+          "x": 1000,
+          "y": 1802,
+          "orientation": 180,
+          "fillColor": "{2,choice,1#faf7f1|2#262627|3#ffc63d}",
+          "strokeWidth": 8,
+          "strokeColor": "{2,choice,1#262627|2#'{7,choice,0#faf7f1|1#262627}'|3#262627}"
+        },
+        {
+          "image": "{3}",
+          "horizAlign": "CENTER",
+          "vertAlign": "CENTER",
+          "x": 2961,
+          "y": 608,
+          "width": 422,
+          "height": 117,
+          "orientation": 0
+        },
+        {
+          "image": "{3}",
+          "horizAlign": "CENTER",
+          "vertAlign": "CENTER",
+          "x": 2961,
+          "y": 1779,
+          "width": 422,
+          "height": 117,
+          "orientation": 180
+        },
+        {
+          "image": "{4}",
+          "horizAlign": "CENTER",
+          "vertAlign": "TOP",
+          "x": 2369,
+          "y": 534,
+          "width": 152,
+          "height": 176,
+          "orientation": 0
+        },
+        {
+          "image": "{4}",
+          "horizAlign": "CENTER",
+          "vertAlign": "TOP",
+          "x": 2369,
+          "y": 1857,
+          "width": 152,
+          "height": 176,
+          "orientation": 180
+        },
+        {
+          "image": "{5}",
+          "horizAlign": "CENTER",
+          "vertAlign": "TOP",
+          "x": 2094,
+          "y": 541,
+          "width": 277,
+          "height": 108,
+          "orientation": 0
+        },
+        {
+          "image": "{5}",
+          "horizAlign": "CENTER",
+          "vertAlign": "TOP",
+          "x": 2094,
+          "y": 1847,
+          "width": 277,
+          "height": 108,
+          "orientation": 180
+        },
+        {
+          "image": "{6}",
+          "horizAlign": "CENTER",
+          "vertAlign": "CENTER",
+          "x": 979,
+          "y": 583,
+          "width": 144,
+          "height": 200,
+          "orientation": 0
+        },
+        {
+          "image": "{6}",
+          "horizAlign": "CENTER",
+          "vertAlign": "CENTER",
+          "x": 979,
+          "y": 1805,
+          "width": 144,
+          "height": 200,
+          "orientation": 180
+        }
+      ],
+      "baseImagePath": "bf109f4_lw{7,choice,0#|1#_winter}_base.png",
+      "weatherImagePath": "bf109f4_weather.png"
+    }
+  }
+}

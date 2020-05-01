@@ -4,6 +4,7 @@
   "name": "I./JG51",
   "fileName": "I_JG51.json",
   "skill": 90,
+  "subUnitIdCode": "",
   "planeAssignments": [
     {
       "archType": "bf109",
@@ -109,6 +110,21 @@
       "country": "Germany",
       "category": "Squadron",
       "definedInGame": false
+    },
+    {
+      "skinName": "LW_FIGHTER_MID_I_JG51",
+      "archTypes": ["bf109", "fw190"],
+      "startDate": "19410801",
+      "endDate": "19450503",
+      "squadId": 20111051,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_FIGHTER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 1,
+        "INSIGNIA_NOSE": "Insignia\\JG51.png"
+      }
     }
   ],
   "squadHistory": {

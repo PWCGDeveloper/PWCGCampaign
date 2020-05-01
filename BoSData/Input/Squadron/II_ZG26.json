@@ -1,89 +1,105 @@
 {
-	"country": "GERMANY",
-	"squadronId": 20102026,
-	"name": "II./ZG 26",
-	"fileName": "II_ZG26.json",
-	"skill": 70,
-	"planeAssignments": [
-		{
-			"archType": "bf110",
-			"squadronIntroduction": "19410101",
-			"squadronWithdrawal": "19450601"
-		}
-	],
-	"airfields": {
-		"19440901": "Woensdrecht",
-		"19441001": "Bonninghardt-Sud",
-		"19441101": "Koln-Butzweilerhof",
-		"19441220": "Koln-Ostheim",
-		"19441225": "Kirchhellen",
-		"19441229": "Essen-Mulheim",
-		"19450207": "Bonn-Hangelar_3960",
-		"19450310": "Limburg-Linter",
-		"19450404": "Gross-Ostheim"
-	},
-	"skins": [
-		{
-			"skinName": "I_ZG_26",
-			"planeType": "bf110e2",
-			"startDate": "19410101",
-			"endDate": "19450601",
-			"squadId": 20101026,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 20101,
-	"squadronRoles": {
-		"squadronRolePeriods": [
-			{
-				"startDate": "19400101",
-				"endDate": "19450601",
-				"weightedRoles": [
-					{
-						"role": "ROLE_STRATEGIC_INTERCEPT",
-						"weight": 30
-					},
-					{
-						"role": "ROLE_FIGHTER",
-						"weight": 30
-					},
-					{
-						"role": "ROLE_ATTACK",
-						"weight": 30
-					},
-					{
-						"role": "ROLE_RECON",
-						"weight": 10
-					}
-				]
-			}
-		]
-	},
-	"squadronSpecializedRoles": {
-		"squadronSpecializedRolePeriods": [
-			{
-				"startDate": "19440901",
-				"endDate": "19450601",
-				"specializedRole": "SPECIALIZED_ROLE_INTERCEPTOR"
-			}
-		]
-	},
-	"nightMissionOdds": {
-		"nightMissionPeriods": [
-			{
-				"startDate": "19400101",
-				"endDate": "19450601",
-				"nightMissionOdds": 10
-			}
-		]
-	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19410801": "DUCK"
-	}
+  "country": "GERMANY",
+  "squadronId": 20102026,
+  "name": "II./ZG 26",
+  "fileName": "II_ZG26.json",
+  "skill": 70,
+  "unitIdCode": "3U",
+  "subUnitIdCode": "S",
+  "planeAssignments": [
+    {
+      "archType": "bf110",
+      "squadronIntroduction": "19410101",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "airfields": {
+    "19440901": "Woensdrecht",
+    "19441001": "Bonninghardt-Sud",
+    "19441101": "Koln-Butzweilerhof",
+    "19441220": "Koln-Ostheim",
+    "19441225": "Kirchhellen",
+    "19441229": "Essen-Mulheim",
+    "19450207": "Bonn-Hangelar_3960",
+    "19450310": "Limburg-Linter",
+    "19450404": "Gross-Ostheim"
+  },
+  "skins": [
+    {
+      "skinName": "I_ZG_26",
+      "planeType": "bf110e2",
+      "startDate": "19410101",
+      "endDate": "19450601",
+      "squadId": 20101026,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "LW_BOMBER_MID_II_ZG26",
+      "archTypes": ["bf110"],
+      "startDate": "19400101",
+      "endDate": "19450601",
+      "squadId": 20102026,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_BOMBER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 4
+      }
+    }
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": []
+  },
+  "serviceId": 20101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_STRATEGIC_INTERCEPT",
+            "weight": 30
+          },
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 30
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 30
+          },
+          {
+            "role": "ROLE_RECON",
+            "weight": 10
+          }
+        ]
+      }
+    ]
+  },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "specializedRole": "SPECIALIZED_ROLE_INTERCEPTOR"
+      }
+    ]
+  },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "nightMissionOdds": 10
+      }
+    ]
+  },
+  "conversionPeriods": [],
+  "callsigns": {
+    "19410801": "DUCK"
+  }
 }

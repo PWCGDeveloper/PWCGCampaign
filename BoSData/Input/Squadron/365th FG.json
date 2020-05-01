@@ -4,6 +4,7 @@
   "name": "365th Fighter Group",
   "fileName": "365th FG.json",
   "skill": 70,
+  "unitIdCode": "D5",
   "planeAssignments": [
     {
       "archType": "p47",
@@ -22,7 +23,19 @@
     "19450310": "Kelz",
     "19450404": "Limburg-Linter"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "USAAF_LATE_BARE_365",
+      "archTypes": ["p47"],
+      "startDate": "19440801",
+      "endDate": "19450601",
+      "squadId": 102365386,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "USAAF_LATE_BARE"
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

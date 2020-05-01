@@ -1,0 +1,232 @@
+{
+  "templates": {
+    "usaaf_late_bare": {
+      "templateName": "USAAF_LATE_BARE",
+      "planeType": "p38j25",
+      "credit": "Based on official 4K template",
+      "parameters": {
+        "UNIT_ID_CODE": null,
+        "AIRCRAFT_ID_CODE": null,
+        "SQUADRON_NUM": 0,
+        "ID_ON_TAIL": 0,
+        "TAIL_CODE_START": null,
+        "TAIL_CODE_END": null,
+        "SERIAL": null,
+        "STRIPES": null,
+        "PILOT_NAME_RANK_INIT": null
+      },
+      "defs": [
+        {
+          "image": "{7,choice,0#|1#Insignia\\p38_stripes_usaaf_under_1.png}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "x": 674,
+          "y": 703,
+          "fillShine": "3f"
+        },
+        {
+          "image": "{7,choice,0#|1#Insignia\\p38_stripes_usaaf_under_2.png}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "x": 2724,
+          "y": 705,
+          "fillShine": "3f"
+        },
+        {
+          "image": "{7,choice,0#|1#Insignia\\p38_stripes_usaaf_under_3.png}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "x": 3232,
+          "y": 2010,
+          "fillShine": "3f"
+        },
+        {
+          "image": "{7,choice,0#|1#Insignia\\p38_stripes_usaaf_under_4.png}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "x": 1462,
+          "y": 1762,
+          "fillShine": "3f"
+        },
+        {
+          "image": "{7,choice,0#|1#Insignia\\p38_stripes_usaaf_under_5.png}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "x": 606,
+          "y": 2214,
+          "fillShine": "3f"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "CENTER",
+          "font": "Airborne.otf",
+          "size": 150,
+          "x": 1859,
+          "y": 3573,
+          "orientation": 0,
+          "fillColor": "191919",
+          "fillShine": "3f"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "LEFT",
+          "vertAlign": "CENTER",
+          "font": "Airborne.otf",
+          "size": 150,
+          "x": 1538,
+          "y": 3593,
+          "orientation": 0,
+          "fillColor": "191919",
+          "fillShine": "3f"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "CENTER",
+          "font": "Airborne.otf",
+          "size": 150,
+          "x": 1859,
+          "y": 2273,
+          "orientation": 180,
+          "fillColor": "191919",
+          "fillShine": "3f"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "CENTER",
+          "font": "Airborne.otf",
+          "size": 150,
+          "x": 1538,
+          "y": 2254,
+          "orientation": 180,
+          "fillColor": "191919",
+          "fillShine": "3f"
+        },
+        {
+          "text": "{3,choice,0#|1#{1}}",
+          "horizAlign": "CENTER",
+          "vertAlign": "TOP",
+          "font": "Airborne.otf",
+          "size": 280,
+          "x": 2974,
+          "y": 2462,
+          "orientation": 0,
+          "fillColor": "191919",
+          "fillShine": "3f"
+        },
+        {
+          "text": "{3,choice,0#|1#{1}}",
+          "horizAlign": "CENTER",
+          "vertAlign": "TOP",
+          "font": "Airborne.otf",
+          "size": 280,
+          "x": 2574,
+          "y": 1841,
+          "orientation": 0,
+          "fillColor": "191919",
+          "fillShine": "3f"
+        },
+        {
+          "text": "{4}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "TOP",
+          "font": "Airborne.otf",
+          "size": 80,
+          "x": 2574,
+          "y": 2555,
+          "orientation": 0,
+          "fillColor": "191919",
+          "fillShine": "3f"
+        },
+        {
+          "text": "{5}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "font": "Airborne.otf",
+          "size": 80,
+          "x": 2605,
+          "y": 2555,
+          "orientation": 0,
+          "fillColor": "191919",
+          "fillShine": "3f"
+        },
+        {
+          "text": "{5}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "font": "Airborne.otf",
+          "size": 80,
+          "x": 2983,
+          "y": 1934,
+          "orientation": 0,
+          "fillColor": "191919",
+          "fillShine": "3f"
+        },
+        {
+          "text": "{4}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "TOP",
+          "font": "Airborne.otf",
+          "size": 80,
+          "x": 2953,
+          "y": 1934,
+          "orientation": 0,
+          "fillColor": "191919",
+          "fillShine": "3f"
+        },
+        {
+          "text": "{5}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "font": "Airborne.otf",
+          "size": 80,
+          "x": 2386,
+          "y": 3764,
+          "orientation": 0,
+          "fillColor": "191919",
+          "fillShine": "3f"
+        },
+        {
+          "text": "{5}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "TOP",
+          "font": "Airborne.otf",
+          "size": 80,
+          "x": 2386,
+          "y": 3173,
+          "orientation": 180,
+          "fillColor": "191919",
+          "fillShine": "3f"
+        },
+        {
+          "text": "{6}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "Arimo-Bold.ttf",
+          "size": 11.5,
+          "x": 2932,
+          "y": 3857,
+          "orientation": 0,
+          "fillColor": "3c3c3c",
+          "fillShine": "3f"
+        },
+        {
+          "text": "pilot   {8}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "TOP",
+          "font": "AlegreyaSansSC-MediumItalic.ttf",
+          "size": 15,
+          "x": 3078,
+          "y": 3667,
+          "orientation": 0,
+          "fillColor": "191919",
+          "fillShine": "3f"
+        }
+      ],
+      "baseImagePath": "p38j25_usaaf_late_bare{2,choice,0#|0<_{2}}_base.png",
+      "weatherImagePath": "p38j25_weather.png"
+    }
+  }
+}

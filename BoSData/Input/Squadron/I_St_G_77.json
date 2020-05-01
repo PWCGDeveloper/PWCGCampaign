@@ -4,6 +4,8 @@
   "name": "I./St.G.77",
   "fileName": "I_St_G_77.json",
   "skill": 65,
+  "unitIdCode": "S2",
+  "subUnitIdCode": "H",
   "planeAssignments": [
     {
       "archType": "ju87",
@@ -84,6 +86,20 @@
       "country": "Germany",
       "category": "Squadron",
       "definedInGame": false
+    },
+    {
+      "skinName": "LW_BOMBER_MID_I_STG77",
+      "planeType": "ju87d3",
+      "startDate": "19410801",
+      "endDate": "19450503",
+      "squadId": 20121077,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_BOMBER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 1
+      }
     }
   ],
   "squadHistory": {
@@ -92,7 +108,9 @@
         "date": "19431018",
         "squadName": "I./SG77",
         "armedServiceName": "Luftwaffe",
-        "skill": 60
+        "skill": 60,
+        "unitIdCode": "S2",
+        "subUnitIdCode": "H"
       }
     ]
   },

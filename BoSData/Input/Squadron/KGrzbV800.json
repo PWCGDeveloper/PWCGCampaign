@@ -4,6 +4,8 @@
   "name": "KGrzbV800",
   "fileName": "KGrzbV800.json",
   "skill": 50,
+  "unitIdCode": "3T",
+  "subUnitIdCode": "M",
   "planeAssignments": [
     {
       "archType": "ju52",
@@ -54,14 +56,31 @@
     "19450401": "ef_Grimbergen",
     "19450501": "ef_Chievres"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "LW_BOMBER_MID_II_TG2",
+      "planeType": "ju523mg4e",
+      "startDate": "19400101",
+      "endDate": "19450601",
+      "squadId": 20142002,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_BOMBER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 4
+      }
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": [
       {
         "date": "19430501",
         "squadName": "II./TG2",
         "armedServiceName": "Luftwaffe",
-        "skill": 50
+        "skill": 50,
+        "unitIdCode": "8T",
+        "subUnitIdCode": "S"
       }
     ]
   },

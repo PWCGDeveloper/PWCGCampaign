@@ -54,7 +54,41 @@
     "19450401": "ef_Kelz",
     "19450501": "ef_PetitBrogel"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "VVS_GREEN_46TH",
+      "archTypes": ["pe2"],
+      "startDate": "19410801",
+      "endDate": "19420331",
+      "squadId": 10131046,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "VVS_GREEN"
+    },
+    {
+      "skinName": "VVS_GREEN_BLACK_46TH",
+      "archTypes": ["pe2"],
+      "startDate": "19420401",
+      "endDate": "19430331",
+      "squadId": 10131046,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "VVS_GREEN_BLACK"
+    },
+    {
+      "skinName": "VVS_TRICOLOR_46TH",
+      "archTypes": ["pe2"],
+      "startDate": "19430401",
+      "endDate": "19450503",
+      "squadId": 10131046,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "VVS_TRICOLOR"
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": [
       {

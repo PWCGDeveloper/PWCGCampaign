@@ -74,6 +74,7 @@ public class EquipmentArchTypeChangeHandler
             {
                 PlaneEquipmentFactory equipmentFactory = new PlaneEquipmentFactory(campaign);
                 EquippedPlane replacementPlane = equipmentFactory.makePlaneForSquadron(bestPlaneType.getType(), squadron.getSquadronId());
+                PWCGContext.getInstance().getPlaneMarkingManager().generatePlaneSerial(campaign.getDate(), replacementPlane, squadron.getService());
                 squadronEquipment.addEquippedPlane(replacementPlane);
             }
         }

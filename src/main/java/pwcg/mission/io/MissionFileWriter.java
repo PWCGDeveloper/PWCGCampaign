@@ -32,6 +32,7 @@ import pwcg.mission.MissionBlockBuilder;
 import pwcg.mission.MissionBlockCountry;
 import pwcg.mission.MissionBlockDamage;
 import pwcg.mission.MissionBlockSmoke;
+import pwcg.mission.MissionSkinTemplateGenerator;
 import pwcg.mission.ambient.AmbientGroundUnitBuilder;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.ground.vehicle.IVehicle;
@@ -92,6 +93,7 @@ public class MissionFileWriter implements IMissionFile
         AsyncJobRunner runner = new AsyncJobRunner("Generating mission");
 
         buildMissionBinaryFile(runner);
+        MissionSkinTemplateGenerator.generateSkins(mission.getSkinsToGenerate(), runner);
 
         runner.finish();
     }

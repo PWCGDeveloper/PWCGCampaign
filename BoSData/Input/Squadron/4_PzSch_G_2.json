@@ -4,6 +4,7 @@
   "name": "4.(Pz)/Sch.G.2",
   "fileName": "4_PzSch_G_2.json",
   "skill": 70,
+  "subUnitIdCode": "\u25b2",
   "planeAssignments": [
     {
       "archType": "hs129",
@@ -37,20 +38,37 @@
     "19450401": "ef_Diest",
     "19450501": "ef_Chievres"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "LW_ATTACK_SCHG1_4_SCHG2",
+      "archTypes": ["hs129"],
+      "startDate": "19420820",
+      "endDate": "19450503",
+      "squadId": 20144002,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_ATTACK_SCHG1",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 4
+      }
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": [
       {
         "date": "19431018",
         "squadName": "12.(Pz)/SG9",
         "armedServiceName": "Luftwaffe",
-        "skill": 70
+        "skill": 70,
+        "subUnitIdCode": ""
       },
       {
         "date": "19450107",
         "squadName": "1.(Pz)/SG9",
         "armedServiceName": "Luftwaffe",
-        "skill": 70
+        "skill": 70,
+        "subUnitIdCode": ""
       }
     ]
   },

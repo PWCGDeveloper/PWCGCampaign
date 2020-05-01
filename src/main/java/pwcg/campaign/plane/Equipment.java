@@ -73,11 +73,6 @@ public class Equipment
         }
     }
 
-    public void setEquippedPlanes(Map<Integer, EquippedPlane> equippedPlanes)
-    {
-        this.equippedPlanes = equippedPlanes;
-    }
-
     public void addEquippedPlane(EquippedPlane equippedPlane)
     {
         equippedPlanes.put(equippedPlane.getSerialNumber(), equippedPlane);

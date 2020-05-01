@@ -1,79 +1,129 @@
 {
-	"country": "GERMANY",
-	"squadronId": 20111026,
-	"name": "I./JG26",
-	"fileName": "I_JG26.json",
-	"skill": 90,
-	"planeAssignments": [
-		{
-			"archType": "fw190",
-			"squadronIntroduction": "19440901",
-			"squadronWithdrawal": "19441101"
-		},
-		{
-			"archType": "fw190d",
-			"squadronIntroduction": "19441101",
-			"squadronWithdrawal": "19450601"
-		}
-	],
-	"airfields": {
-		"19440901": "Gilze-Rijen",
-		"19441001": "Bonninghardt-Sud",
-		"19441101": "Kirchhellen",
-		"19441220": "Strassfeld",
-		"19441225": "Dusseldorf-Lohausen",
-		"19441229": "Essen-Mulheim",
-		"19450207": "Krefeld",
-		"19450310": "Kirchhellen",
-		"19450404": "Gelnhausen"
-	},
-	"skins": [],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 20101,
-	"squadronRoles": {
-		"squadronRolePeriods": [
-			{
-				"startDate": "19410801",
-				"endDate": "19450601",
-				"weightedRoles": [
-					{
-						"role": "ROLE_STRATEGIC_INTERCEPT",
-						"weight": 20
-					},
-					{
-						"role": "ROLE_FIGHTER",
-						"weight": 90
-					},
-					{
-						"role": "ROLE_ATTACK",
-						"weight": 10
-					}
-				]
-			}
-		]
-	},
-	"nightMissionOdds": {
-		"nightMissionPeriods": [
-			{
-				"startDate": "19440901",
-				"endDate": "19450601",
-				"nightMissionOdds": 5
-			}
-		]
-	},
-	"conversionPeriods": [
-		{
-			"conversionStartDate": "19420514",
-			"conversionCompleteDate": "19420529"
-		},
-		{
-			"conversionStartDate": "19440101",
-			"conversionCompleteDate": "19440831"
-		}
-	],
-	"callsigns": {
-		"19410801": "THRUSH"
-	}
+  "country": "GERMANY",
+  "squadronId": 20111026,
+  "name": "I./JG26",
+  "fileName": "I_JG26.json",
+  "skill": 90,
+  "subUnitIdCode": "",
+  "planeAssignments": [
+    {
+      "archType": "fw190",
+      "squadronIntroduction": "19440901",
+      "squadronWithdrawal": "19441101"
+    },
+    {
+      "archType": "fw190d",
+      "squadronIntroduction": "19441101",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "airfields": {
+    "19440901": "Gilze-Rijen",
+    "19441001": "Bonninghardt-Sud",
+    "19441101": "Kirchhellen",
+    "19441220": "Strassfeld",
+    "19441225": "Dusseldorf-Lohausen",
+    "19441229": "Essen-Mulheim",
+    "19450207": "Krefeld",
+    "19450310": "Kirchhellen",
+    "19450404": "Gelnhausen"
+  },
+  "skins": [
+    {
+      "skinName": "LW_FIGHTER_MID_I_JG26",
+      "archTypes": ["bf109", "fw190", "fw190d"],
+      "startDate": "19410401",
+      "endDate": "19450601",
+      "squadId": 20111026,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_FIGHTER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 1,
+        "ID_BAND_FORE": "262627",
+        "ID_BAND_AFT": "faf7f1"
+      }
+    },
+    {
+      "skinName": "LW_FIGHTER_LATE_I_JG26",
+      "archTypes": ["bf109", "fw190", "fw190d"],
+      "startDate": "19440901",
+      "endDate": "19450601",
+      "squadId": 20111026,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_FIGHTER_LATE",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 1,
+        "ID_BAND_FORE": "262627",
+        "ID_BAND_AFT": "faf7f1"
+      }
+    },
+    {
+      "skinName": "LW_FIGHTER_LATER_I_JG26",
+      "archTypes": ["bf109", "fw190", "fw190d"],
+      "startDate": "19450102",
+      "endDate": "19450601",
+      "squadId": 20112002,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_FIGHTER_LATER",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 1,
+        "ID_BAND_FORE": "262627",
+        "ID_BAND_AFT": "faf7f1"
+      }
+    }
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": []
+  },
+  "serviceId": 20101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19410801",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_STRATEGIC_INTERCEPT",
+            "weight": 20
+          },
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 90
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 10
+          }
+        ]
+      }
+    ]
+  },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "nightMissionOdds": 5
+      }
+    ]
+  },
+  "conversionPeriods": [
+    {
+      "conversionStartDate": "19420514",
+      "conversionCompleteDate": "19420529"
+    },
+    {
+      "conversionStartDate": "19440101",
+      "conversionCompleteDate": "19440831"
+    }
+  ],
+  "callsigns": {
+    "19410801": "THRUSH"
+  }
 }

@@ -7,6 +7,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
+import pwcg.campaign.plane.IPlaneMarkingManager;
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.plane.PlaneEquipmentFactory;
 import pwcg.campaign.resupply.depot.EquipmentReplacementUtils;
@@ -126,8 +127,11 @@ public class WithdrawnEquipmentReplacer
 
     private void addPlaneToSquadron(String planeTypeName) throws PWCGException
     {
+        IPlaneMarkingManager planeMarkingManager = PWCGContext.getInstance().getPlaneMarkingManager();
         PlaneEquipmentFactory equipmentFactory = new PlaneEquipmentFactory(campaign);
         EquippedPlane equippedPlane = equipmentFactory.makePlaneForSquadron(planeTypeName, squadron.getSquadronId());
+        planeMarkingManager.generatePlaneSerial(campaign.getDate(), equippedPlane, squadron.getService());
+        planeMarkingManager.allocatePlaneIdCode(campaign, squadron.getSquadronId(), equipment, equippedPlane);
         equipment.addEquippedPlane(equippedPlane);
     }
 }

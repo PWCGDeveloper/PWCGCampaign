@@ -4,6 +4,7 @@
   "name": "410th Bomber Group",
   "fileName": "410th BG.json",
   "skill": 70,
+  "unitIdCode": "8U",
   "planeAssignments": [
     {
       "archType": "a20",
@@ -32,6 +33,20 @@
       "country": "USA",
       "category": "Squadron",
       "definedInGame": false
+    },
+    {
+      "skinName": "USAAF_LATE_OLIVE_410",
+      "archTypes": ["a20"],
+      "startDate": "19440801",
+      "endDate": "19450601",
+      "squadId": 102321445,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "USAAF_LATE_OLIVE",
+      "overrides": {
+        "SQUADRON_NUM": 646
+      }
     }
   ],
   "squadHistory": {

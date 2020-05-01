@@ -1,0 +1,129 @@
+{
+  "templates": {
+    "raf_late": {
+      "templateName": "RAF_LATE",
+      "planeType": "tempestmkvs2",
+      "credit": "Based on official 4K template",
+      "parameters": {
+        "UNIT_ID_CODE": null,
+        "AIRCRAFT_ID_CODE": null,
+        "RANK_FLAG": null,
+        "STRIPES": null,
+        "SERIAL": null,
+        "FLAG_NUM": ""
+      },
+      "defs": [
+        {
+          "text": "{4}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "RAF_PW_ATH.otf",
+          "size": 80,
+          "x": 2978,
+          "y": 3297,
+          "orientation": 0,
+          "fillColor": "13120e"
+        },
+        {
+          "text": "{4}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "RAF_PW_ATH.otf",
+          "size": 80,
+          "x": 2978,
+          "y": 2392,
+          "orientation": 180,
+          "fillColor": "13120e"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "CENTER",
+          "font": "RAF_WW2_851ATH.otf",
+          "size": 280,
+          "x": 1914,
+          "y": 3217,
+          "orientation": 0,
+          "fillColor": "adb79d"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "CENTER",
+          "font": "RAF_WW2_851ATH.otf",
+          "size": 280,
+          "x": 1914,
+          "y": 2482,
+          "orientation": 180,
+          "fillColor": "adb79d"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "LEFT",
+          "vertAlign": "CENTER",
+          "font": "RAF_WW2_851ATH.otf",
+          "size": 280,
+          "x": 2314,
+          "y": 3217,
+          "orientation": 0,
+          "fillColor": "adb79d"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "CENTER",
+          "font": "RAF_WW2_851ATH.otf",
+          "size": 280,
+          "x": 2314,
+          "y": 2482,
+          "orientation": 180,
+          "fillColor": "adb79d"
+        },
+        {
+          "image": "{2}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "x": 1156,
+          "y": 3042,
+          "width": 120,
+          "height": 119,
+          "orientation": 0
+        },
+        {
+          "image": "{2}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "TOP",
+          "x": 1156,
+          "y": 2646,
+          "width": 120,
+          "height": 119,
+          "orientation": 180
+        },
+        {
+          "text": "{5}",
+          "horizAlign": "CENTER",
+          "vertAlign": "TOP",
+          "font": "RAF_PW_ATH.otf",
+          "size": 15,
+          "x": 1186,
+          "y": 3090,
+          "orientation": 0,
+          "fillColor": "00247d"
+        },
+        {
+          "text": "{5}",
+          "horizAlign": "CENTER",
+          "vertAlign": "TOP",
+          "font": "RAF_PW_ATH.otf",
+          "size": 15,
+          "x": 1246,
+          "y": 2598,
+          "orientation": 180,
+          "fillColor": "00247d"
+        }
+      ],
+      "baseImagePath": "tempestmkvs2_raf_late_{3,choice,0#|1#stripes_under_}base.png",
+      "weatherImagePath": "tempestmkvs2_weather.png"
+    }
+  }
+}

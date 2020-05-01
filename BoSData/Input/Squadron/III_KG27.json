@@ -4,6 +4,8 @@
   "name": "III./KG27",
   "fileName": "III_KG27.json",
   "skill": 60,
+  "unitIdCode": "1G",
+  "subUnitIdCode": "S",
   "planeAssignments": [
     {
       "archType": "he111",
@@ -53,6 +55,20 @@
       "country": "Germany",
       "category": "Squadron",
       "definedInGame": true
+    },
+    {
+      "skinName": "LW_BOMBER_MID_III_KG27",
+      "archTypes": ["he111"],
+      "startDate": "19410801",
+      "endDate": "19450503",
+      "squadId": 20133027,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_BOMBER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 2
+      }
     }
   ],
   "squadHistory": {
@@ -61,7 +77,9 @@
         "date": "19430918",
         "squadName": "III./KG55",
         "armedServiceName": "Luftwaffe",
-        "skill": 50
+        "skill": 50,
+        "unitIdCode": "G1",
+        "subUnitIdCode": "S"
       }
     ]
   },

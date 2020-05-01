@@ -1,0 +1,61 @@
+{
+  "templates": {
+    "ra_generic": {
+      "templateName": "RA_GENERIC",
+      "planeType": "mc202s8",
+      "credit": "Based on ICDP's 4K template",
+      "parameters": {
+        "AIRCRAFT_ID_CODE": null,
+        "UNIT_ID_CODE": null
+      },
+      "defs": [
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "CENTER",
+          "font": "RAF_WW2_851ATH.otf",
+          "size": 150,
+          "x": 1907,
+          "y": 2390,
+          "orientation": 0,
+          "fillColor": "e1e1e1"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "CENTER",
+          "font": "RAF_WW2_851ATH.otf",
+          "size": 150,
+          "x": 1907,
+          "y": 1690,
+          "orientation": 180,
+          "fillColor": "e1e1e1"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "LEFT",
+          "vertAlign": "CENTER",
+          "font": "RAF_WW2_851ATH.otf",
+          "size": 150,
+          "x": 1951,
+          "y": 2390,
+          "orientation": 0,
+          "fillColor": "191919"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "CENTER",
+          "font": "RAF_WW2_851ATH.otf",
+          "size": 150,
+          "x": 1951,
+          "y": 1690,
+          "orientation": 180,
+          "fillColor": "191919"
+        }
+      ],
+      "baseImagePath": "mc202s8_ra_base.png",
+      "weatherImagePath": "mc202s8_weather.png"
+    }
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "templates": {
+    "lw_bomber_mid": {
+      "templateName": "LW_BOMBER_MID",
+      "planeType": "ju87d3",
+      "credit": "Based on 6./ZG26_5tuka's 4K template",
+      "parameters": {
+        "AIRCRAFT_ID_CODE": null,
+        "UNIT_ID_CODE": null,
+        "SUB_UNIT_ID_CODE": null,
+        "STAFFEL_COLOR_INDEX": null,
+        "INSIGNIA_CP_FORE": null,
+        "WINTER": null
+      },
+      "defs": [
+        {
+          "text": "{1}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 210,
+          "x": 1986,
+          "y": 913,
+          "orientation": 0,
+          "fillColor": "1e1e1e"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "CENTER",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 210,
+          "x": 2309,
+          "y": 913,
+          "orientation": 0,
+          "fillColor": "{3,choice,0#009900|1#e1e1e1|2#a62121|3#ddb63a|4#3e48d5}",
+          "strokeWidth": 2,
+          "strokeColor": "1e1e1e"
+        },
+        {
+          "text": "{2}",
+          "horizAlign": "LEFT",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 210,
+          "x": 2390,
+          "y": 913,
+          "orientation": 0,
+          "fillColor": "1e1e1e"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 210,
+          "x": 2255,
+          "y": 1460,
+          "orientation": 180,
+          "fillColor": "1e1e1e"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "CENTER",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 210,
+          "x": 1923,
+          "y": 1460,
+          "orientation": 180,
+          "fillColor": "{3,choice,0#009900|1#e1e1e1|2#a62121|3#ddb63a|4#3e48d5}",
+          "strokeWidth": 2,
+          "strokeColor": "1e1e1e"
+        },
+        {
+          "text": "{2}",
+          "horizAlign": "LEFT",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 210,
+          "x": 1842,
+          "y": 1460,
+          "orientation": 180,
+          "fillColor": "1e1e1e"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "font": "Blockschrift.otf",
+          "size": 380,
+          "x": 851,
+          "y": 1818,
+          "orientation": 0,
+          "fillColor": "1e1e1e"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "TOP",
+          "font": "Blockschrift.otf",
+          "size": 380,
+          "x": 840,
+          "y": 3054,
+          "orientation": 0,
+          "fillColor": "1e1e1e"
+        },
+        {
+          "image": "{4}",
+          "horizAlign": "CENTER",
+          "vertAlign": "TOP",
+          "x": 860,
+          "y": 814,
+          "width": 105,
+          "height": 121,
+          "orientation": 0
+        },
+        {
+          "image": "{4}",
+          "horizAlign": "CENTER",
+          "vertAlign": "TOP",
+          "x": 860,
+          "y": 1564,
+          "width": 105,
+          "height": 121,
+          "orientation": 180
+        }
+      ],
+      "baseImagePath": "ju87d3_lw{5,choice,0#|1#_winter}_base.png",
+      "weatherImagePath": "ju87d3_weather.png"
+    }
+  }
+}

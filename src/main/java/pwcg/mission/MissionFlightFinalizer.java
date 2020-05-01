@@ -37,6 +37,8 @@ public class MissionFlightFinalizer
         setFlightAttackMcuForBalloons();
         
         setCzTriggers();
+        
+        mission.setSkinsToGenerate(MissionSkinTemplateGenerator.instantiateTemplates(campaign, mission.getMissionFlightBuilder().getAllAerialFlights()));
     }
 
     private void convertForCoop() throws PWCGException, PWCGException

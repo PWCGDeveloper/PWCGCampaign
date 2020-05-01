@@ -4,6 +4,7 @@
   "name": "352nd Fighter Group",
   "fileName": "352nd FG.json",
   "skill": 80,
+  "unitIdCode": "PZ",
   "planeAssignments": [
     {
       "archType": "p51",
@@ -22,7 +23,23 @@
     "19450310": "Asch",
     "19450404": "Breitscheid"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "USAAF_LATE_BARE_352",
+      "archTypes": ["p51"],
+      "startDate": "19440801",
+      "endDate": "19450601",
+      "squadId": 102352486,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "USAAF_LATE_BARE",
+      "overrides": {
+        "SQUADRON_NUM": 486,
+        "ID_ON_TAIL": 1
+      }
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

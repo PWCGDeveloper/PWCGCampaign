@@ -4,6 +4,8 @@
   "name": "II./KG53",
   "fileName": "II_KG53.json",
   "skill": 50,
+  "unitIdCode": "A1",
+  "subUnitIdCode": "M",
   "planeAssignments": [
     {
       "archType": "he111",
@@ -54,20 +56,39 @@
     "19450401": "ef_Florennes",
     "19450501": "ef_Chievres"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "LW_BOMBER_MID_II_KG53",
+      "archTypes": ["he111"],
+      "startDate": "19410801",
+      "endDate": "19450503",
+      "squadId": 20132053,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_BOMBER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 1
+      }
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": [
       {
         "date": "19420301",
         "squadName": "II./KG27",
         "armedServiceName": "Luftwaffe",
-        "skill": 50
+        "skill": 50,
+        "unitIdCode": "1G",
+        "subUnitIdCode": "M"
       },
       {
         "date": "19430918",
         "squadName": "II./KG4",
         "armedServiceName": "Luftwaffe",
-        "skill": 40
+        "skill": 40,
+        "unitIdCode": "5J",
+        "subUnitIdCode": "M"
       }
     ]
   },

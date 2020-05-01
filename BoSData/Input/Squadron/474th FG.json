@@ -4,6 +4,7 @@
   "name": "474th Fighter Group",
   "fileName": "474th FG.json",
   "skill": 70,
+  "unitIdCode": "7Y",
   "planeAssignments": [
     {
       "archType": "p38",
@@ -22,7 +23,19 @@
     "19450310": "Kelz",
     "19450404": "Mainz-Finthen"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "USAAF_LATE_BARE_474",
+      "archTypes": ["p38"],
+      "startDate": "19440801",
+      "endDate": "19450601",
+      "squadId": 102363033,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "USAAF_LATE_BARE"
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },
