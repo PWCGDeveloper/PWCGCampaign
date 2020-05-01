@@ -24,11 +24,11 @@ public class EmptySpaceFinderTest
         for (IAirfield airfield : airfieldManager.getAllAirfields().values())
         {
             EmptySpaceFinder emptySpaceFinder = new EmptySpaceFinder();
-            List<HotSpot> hotSpots = emptySpaceFinder.findEmptySpaces(airfield.getPosition(), 1000);
+            List<HotSpot> hotSpots = emptySpaceFinder.findEmptySpaces(airfield.getBoundary(), 50);
             
             assert (hotSpots.size() > 0);
 
-            CoordinateBox coordinateBox = CoordinateBox.coordinateBoxFromCenter(airfield.getPosition(), 1000);
+            CoordinateBox coordinateBox = CoordinateBox.coordinateBoxFromCoordinateList(airfield.getBoundary());
             for (HotSpot hotSpot : hotSpots)
             {
                 assert(coordinateBox.isInBox(hotSpot.getPosition()));

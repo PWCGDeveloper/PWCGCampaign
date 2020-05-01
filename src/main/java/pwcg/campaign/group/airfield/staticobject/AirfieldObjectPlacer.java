@@ -1,7 +1,5 @@
 package pwcg.campaign.group.airfield.staticobject;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
@@ -12,11 +10,9 @@ import pwcg.campaign.api.IHotSpotTranslator;
 import pwcg.campaign.api.IStaticPlane;
 import pwcg.campaign.factory.AirfieldObjectSelectorFactory;
 import pwcg.campaign.factory.HotSpotTranslatorFactory;
-import pwcg.campaign.group.EmptySpaceFinder;
 import pwcg.campaign.group.airfield.hotspot.HotSpot;
 import pwcg.campaign.group.airfield.hotspot.HotSpotType;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.builder.AAAUnitBuilder;
@@ -39,14 +35,13 @@ public class AirfieldObjectPlacer
     }
 
     public AirfieldObjects createAirfieldObjectsWithEmptySpace() throws PWCGException 
-    {        
-        createAirfieldObjectsDefinedHotSpots();        
-        createAirfieldObjectsInEmptySpace();        
+    {
+        createHotSpotObjects();
         return airfieldObjects;
     }
 
-    private void createAirfieldObjectsDefinedHotSpots() throws PWCGException 
-    {        
+    private void createHotSpotObjects() throws PWCGException
+    {
         IHotSpotTranslator hotSpotTranslator = HotSpotTranslatorFactory.createHotSpotTranslatorFactory(mission);
         
         List<HotSpot> hotSpots = hotSpotTranslator.getHotSpots(airfield, campaign.getDate());
@@ -70,55 +65,6 @@ public class AirfieldObjectPlacer
                 addAirfieldObject(hotSpot);
             }
         }
-    }
-
-    private void createAirfieldObjectsInEmptySpace() throws PWCGException 
-    {        
-        List<HotSpot> hotSpots = selectHotSpotsFromEmptySpace();
-        
-        for (HotSpot hotSpot : hotSpots)
-        {       
-            double hotSpotDiceRoll = RandomNumberGenerator.getRandom(100);
-
-            if (hotSpotDiceRoll < 30)
-            {
-                addStaticPlane(hotSpot);
-            }
-            else
-            {
-                addAirfieldObject(hotSpot);
-            }
-        }
-    }
-
-    private List<HotSpot> selectHotSpotsFromEmptySpace() throws PWCGException
-    {
-        HashSet<Integer> selectedHotSpotIndeces = new HashSet<>();
-
-        EmptySpaceFinder emptySpaceFinder = new EmptySpaceFinder();
-        List<HotSpot> hotSpots = emptySpaceFinder.findEmptySpaces(airfield.getPosition(), 500);
-        List<HotSpot> selectedHotSpots = new ArrayList<>();
-        
-        int failCount = 0;
-        for (int i = 0; i < 50; ++i)
-        {
-            while (failCount < 3)
-            {
-                Integer selectedHotSpotIndex = RandomNumberGenerator.getRandom(hotSpots.size());  
-                if (selectedHotSpotIndeces.contains(selectedHotSpotIndex))
-                {
-                    ++failCount;
-                }
-                else
-                {
-                    selectedHotSpotIndeces.add(selectedHotSpotIndex);
-                    selectedHotSpots.add(hotSpots.get(selectedHotSpotIndex));
-                    failCount = 0;
-                    break;
-                }
-            }
-        }
-        return selectedHotSpots;
     }
 
     private void addSearchlight(HotSpot hotSpot) throws PWCGException

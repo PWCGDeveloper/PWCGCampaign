@@ -10,7 +10,12 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IStaticPlane;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
+import pwcg.campaign.group.Block;
 import pwcg.campaign.group.FixedPosition;
+import pwcg.campaign.group.GroupManager;
+import pwcg.campaign.group.airfield.hotspot.AirfieldHotSpotDefinition;
+import pwcg.campaign.group.airfield.hotspot.HotSpot;
+import pwcg.campaign.group.airfield.hotspot.HotSpotManager;
 import pwcg.campaign.group.airfield.staticobject.AirfieldApproachAABuilder;
 import pwcg.campaign.group.airfield.staticobject.AirfieldObjectPlacer;
 import pwcg.campaign.group.airfield.staticobject.AirfieldObjects;
@@ -380,5 +385,57 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
         }
 
         return super.getCountry(date);
+    }
+
+    @Override
+    public List<HotSpot> getNearbyHotSpots() throws PWCGException
+    {
+        List<HotSpot> nearbyAirfieldHotSpots = new ArrayList<HotSpot>();
+
+        GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();
+
+        List<Block>nearbyBlocks = groupManager.getBlockFinder().getBlocksWithinRadius(getPosition().copy(), 3000.0);
+        for (Block block : nearbyBlocks)
+        {
+            List<AirfieldHotSpotDefinition> boSHotSpotDefinitions =  HotSpotManager.getInstance().getAirfieldHotSpots(block.getModel());
+            for (AirfieldHotSpotDefinition boSHotSpotDefinition : boSHotSpotDefinitions)
+            {
+                HotSpot hotSpot = boSHotSpotDefinition.convert(block.getPosition(), block.getOrientation());
+                nearbyAirfieldHotSpots.add(hotSpot);
+            }
+        }
+
+        return nearbyAirfieldHotSpots;
+    }
+
+    @Override
+    public List<Coordinate> getBoundary() throws PWCGException
+    {
+        List<Coordinate> points = new ArrayList<>();
+        for (Runway runway : runways)
+        {
+            points.add(runway.getParkingLocation().getPosition());
+            points.add(runway.getStartPos());
+            points.add(runway.getEndPos());
+            points.addAll(runway.getTaxiToStart());
+            points.addAll(runway.getTaxiFromEnd());
+        }
+
+        for (HotSpot hotspot : getNearbyHotSpots())
+        {
+            points.add(hotspot.getPosition());
+        }
+
+        GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();
+        List<Block>nearbyBlocks = groupManager.getBlockFinder().getBlocksWithinRadius(getPosition().copy(), 3000.0);
+        for (Block block : nearbyBlocks)
+        {
+            if (block.getModel().contains("arf_") || block.getModel().contains("af_"))
+            {
+                points.add(block.getPosition());
+            }
+        }
+
+        return MathUtils.convexHull(points);
     }
 }

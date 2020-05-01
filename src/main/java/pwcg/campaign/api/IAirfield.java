@@ -2,7 +2,9 @@ package pwcg.campaign.api;
 
 import java.io.BufferedWriter;
 import java.util.Date;
+import java.util.List;
 
+import pwcg.campaign.group.airfield.hotspot.HotSpot;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -72,4 +74,8 @@ public interface IAirfield extends IFixedPosition
     public boolean isNearRunwayOrTaxiway(Coordinate pos) throws PWCGException;
 
     public Date getStartDate();
+
+    public List<HotSpot> getNearbyHotSpots() throws PWCGException;
+
+    public List<Coordinate> getBoundary() throws PWCGException;
 }
