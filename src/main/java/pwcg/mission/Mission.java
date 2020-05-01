@@ -81,6 +81,7 @@ public class Mission
     {
         validate();
         generateFlights(playerFlightTypes);
+        createAmbientUnits();
     }
 
     private void generateFlights(List<FlightTypes> playerFlightTypes) throws PWCGException 
@@ -179,8 +180,6 @@ public class Mission
         {
             MissionOptions missionOptions = PWCGContext.getInstance().getCurrentMap().getMissionOptions();
             setMissionScript(missionOptions);
-
-            createAmbientUnits();
             
             missionFlightBuilder.finalizeMissionFlights();
         	missionFrontLines.buildFrontLineIcons();

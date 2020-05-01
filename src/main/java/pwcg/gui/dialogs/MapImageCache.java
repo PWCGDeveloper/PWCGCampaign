@@ -67,7 +67,8 @@ public class MapImageCache
 
     private BufferedImage buildMapWithOverlay(String mapImageFileName) throws PWCGException
     {
-        BufferedImage mapOverlay = MapImageOverlay.getMapImage(mapImageFileName);
+        BufferedImage mapOverlay = null;
+        //BufferedImage mapOverlay = MapImageOverlay.getMapImage(mapImageFileName);
         BufferedImage mapImage = getMapImageNoOverlay(mapImageFileName);
 
         BufferedImage mapImageForDisplay = null;

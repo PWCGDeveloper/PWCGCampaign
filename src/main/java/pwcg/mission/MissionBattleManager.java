@@ -9,16 +9,16 @@ import pwcg.mission.target.AssaultDefinition;
 
 public class MissionBattleManager
 {
-    private List<AssaultDefinition> missionBattles = new ArrayList<>();
+    private List<AssaultDefinition> missionAssaultDefinitions = new ArrayList<>();
 
     public void addMissionBattle(AssaultDefinition missionBattle)
     {
-        missionBattles.add(missionBattle);
+        missionAssaultDefinitions.add(missionBattle);
     }
     
     public boolean isNearAnyBattle(Coordinate coordinate) throws PWCGException
     {
-        for (AssaultDefinition missionBattle : missionBattles)
+        for (AssaultDefinition missionBattle : missionAssaultDefinitions)
         {
             if (missionBattle.isNearBattle(coordinate))
             {
@@ -27,5 +27,10 @@ public class MissionBattleManager
         }
         
         return false;
+    }
+
+    public List<AssaultDefinition> getMissionAssaultDefinitions()
+    {
+        return missionAssaultDefinitions;
     }
 }

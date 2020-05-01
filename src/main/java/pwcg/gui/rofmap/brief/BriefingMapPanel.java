@@ -12,22 +12,27 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
+import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
+import pwcg.gui.dialogs.ImageCache;
 import pwcg.gui.dialogs.MonitorSupport;
 import pwcg.gui.rofmap.MapPanelBase;
 import pwcg.gui.utils.MapPointInfoPopup;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
+import pwcg.mission.target.AssaultDefinition;
 
 public class BriefingMapPanel extends MapPanelBase implements ActionListener
 {
@@ -60,13 +65,15 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 			super.paintBaseMapWithMajorGroups(g);
             			                
             g.setColor(Color.black);
-            drawPoints(g);
+            drawFlightWaypoints(g);
             
             g.setColor(ColorMap.RUSSIAN_RED);
-            drawVirtualPoints(g, alliedVirtualPoints, true);            
+            drawAiFlightWaypoints(g, alliedVirtualPoints);            
             
             g.setColor(ColorMap.FRENCH_NAVY_BLUE);
-            drawVirtualPoints(g, axisVirtualPoints, true);            
+            drawAiFlightWaypoints(g, axisVirtualPoints);            
+            
+            drawAssaults(g);            
 		}
 		catch (Exception e)
 		{
@@ -74,7 +81,34 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 		}
 	}
 
-    private void drawPoints(Graphics g) throws PWCGException 
+    private void drawAssaults(Graphics g) throws PWCGException
+    {                
+        for (AssaultDefinition assaultDefinition : mission.getMissionBattleManager().getMissionAssaultDefinitions())
+        {
+            BufferedImage arrowImage = null;
+            String imagePath = PWCGContext.getInstance().getDirectoryManager().getPwcgImagesDir() + "Overlay\\";
+            if (assaultDefinition.getAssaultingCountry().getSide() == Side.ALLIED)
+            {
+                imagePath += "RedArrow.png";
+            }
+            else
+            {
+                imagePath += "BlueArrow.png";
+            }
+
+            double assaultToDefenseDirection = MathUtils.calcAngle(assaultDefinition.getAssaultPosition(), assaultDefinition.getDefensePosition());
+            arrowImage = ImageCache.getInstance().getRotatedImage(imagePath, Double.valueOf(assaultToDefenseDirection).intValue());
+
+            Point mapAssaultPointRectangleFrontPoint = coordinateToPoint(assaultDefinition.getDefensePosition());
+            mapAssaultPointRectangleFrontPoint.x -= (arrowImage.getHeight() / 2);
+            mapAssaultPointRectangleFrontPoint.y -= (arrowImage.getHeight() / 2);            
+            
+            g.drawImage(arrowImage, mapAssaultPointRectangleFrontPoint.x, mapAssaultPointRectangleFrontPoint.y, null);
+
+        }
+    }
+
+    private void drawFlightWaypoints(Graphics g) throws PWCGException 
     {
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(3));
@@ -135,7 +169,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
         return drawPoints;
     }
 
-    private void drawVirtualPoints(Graphics g, List<FlightMap> flightMaps, boolean connect) throws PWCGException 
+    private void drawAiFlightWaypoints(Graphics g, List<FlightMap> flightMaps) throws PWCGException 
     {
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(3));
@@ -146,7 +180,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
         {
             if (selectedSquadrons.containsKey(flightMap.squadronId))
             {
-                paintWaypointLines(g, connect, g2, requestedColor, flightMap);
+                paintWaypointLines(g, g2, requestedColor, flightMap);
             }
         }
         
@@ -195,7 +229,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
         }
     }
 
-    private void paintWaypointLines(Graphics g, boolean connect, Graphics2D g2, Color requestedColor, FlightMap flightMap)
+    private void paintWaypointLines(Graphics g, Graphics2D g2, Color requestedColor, FlightMap flightMap)
     {
         BriefingMapPoint prevMapPoint = null;
         
@@ -210,7 +244,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 
             g2.drawString(mapPoint.desc, point.x + 4, point.y);
 
-            if (prevMapPoint != null && connect)
+            if (prevMapPoint != null)
             {
                 Point prevPoint = super.coordinateToPoint(prevMapPoint.coord);
                 

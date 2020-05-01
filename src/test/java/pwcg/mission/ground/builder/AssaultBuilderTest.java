@@ -12,7 +12,6 @@ import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
-import pwcg.aar.prelim.CampaignMembersOutOfMissionFinder;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;

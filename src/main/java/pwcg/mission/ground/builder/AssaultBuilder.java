@@ -39,9 +39,9 @@ public class AssaultBuilder
             IGroundUnitCollection assaultSegmentUnits = assaultSegmentBuilder.generateAssaultSegment();
             primaryAssaultSegmentGroundUnits.add(assaultSegmentUnits.getPrimaryGroundUnit());
             battleUnitCollection.merge(assaultSegmentUnits);
+            mission.registerAssault(assaultDefinition);
         }
 
-        mission.registerAssault(assaultDefinitions.get(0));
         battleUnitCollection.setPrimaryGroundUnit(primaryAssaultSegmentGroundUnits.get(0));
         battleUnitCollection.finishGroundUnitCollection();
         return battleUnitCollection;
