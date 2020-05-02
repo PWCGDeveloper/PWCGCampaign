@@ -13,6 +13,7 @@ import pwcg.mission.flight.escort.EscortedByPlayerFlight;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.mcu.McuIcon;
+import pwcg.mission.mcu.McuIconFactory;
 import pwcg.mission.mcu.McuIconLineType;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -38,7 +39,7 @@ public class MissionWaypointIconBuilder
         MissionPoint takeoff = playerFlight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_TAKEOFF);
         if (takeoff != null)
         {
-            McuIcon icon = new McuIcon(WaypointAction.WP_ACTION_TAKEOFF, takeoff, playerFlight.getFlightInformation().getCountry().getSide());
+            McuIcon icon = McuIconFactory.buildWaypointActionIcon(WaypointAction.WP_ACTION_TAKEOFF, takeoff, playerFlight.getFlightInformation().getCountry().getSide());
             prevIcon = icon;
             firstIcon = icon;
             waypointIcons.add(icon);
@@ -47,7 +48,7 @@ public class MissionWaypointIconBuilder
         for (int i = 0; i < waypoints.size(); ++i)
         {
             McuWaypoint waypoint = waypoints.get(i);
-            McuIcon icon = new McuIcon(waypoint, playerFlight.getFlightInformation().getCountry().getSide());
+            McuIcon icon = McuIconFactory.buildWaypointIcon(waypoint, playerFlight.getFlightInformation().getCountry().getSide());
             if (firstIcon == null)
             {
                 firstIcon = icon;
@@ -94,7 +95,7 @@ public class MissionWaypointIconBuilder
                         if (escortWaypoint.getWpAction() == WaypointAction.WP_ACTION_TARGET_FINAL)
                         {
                             MissionPoint target = escortedFlight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_ATTACK);
-                            icon = new McuIcon(WaypointAction.WP_ACTION_ATTACK, target, escortedFlight.getFlightInformation().getCountry().getSide());
+                            icon = McuIconFactory.buildWaypointActionIcon(WaypointAction.WP_ACTION_ATTACK, target, escortedFlight.getFlightInformation().getCountry().getSide());
                             icon.setName("Escort " + icon.getName());
                             if (productSpecificConfiguration.usePosition1()) {
                                 prevIcon.setLineType(McuIconLineType.ICON_LINE_TYPE_POSITION2);
@@ -110,7 +111,7 @@ public class MissionWaypointIconBuilder
             if (waypoint.getWpAction() == WaypointAction.WP_ACTION_TARGET_FINAL)
             {
                 MissionPoint target = playerFlight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_ATTACK);
-                icon = new McuIcon(WaypointAction.WP_ACTION_ATTACK, target, playerFlight.getFlightInformation().getCountry().getSide());
+                icon = McuIconFactory.buildWaypointActionIcon(WaypointAction.WP_ACTION_ATTACK, target, playerFlight.getFlightInformation().getCountry().getSide());
                 prevIcon.setTarget(icon.getIndex());
                 prevIcon = icon;
                 waypointIcons.add(icon);
@@ -120,7 +121,7 @@ public class MissionWaypointIconBuilder
         MissionPoint landing = playerFlight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_LANDING);
         if (landing != null)
         {
-            McuIcon icon = new McuIcon(WaypointAction.WP_ACTION_LANDING, landing, playerFlight.getFlightInformation().getCountry().getSide());
+            McuIcon icon = McuIconFactory.buildWaypointActionIcon(WaypointAction.WP_ACTION_LANDING, landing, playerFlight.getFlightInformation().getCountry().getSide());
             if (prevIcon != null)
                 prevIcon.setTarget(icon.getIndex());
             icon.setTarget(firstIcon.getIndex());

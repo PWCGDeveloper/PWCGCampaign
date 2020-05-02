@@ -168,6 +168,7 @@ public class MissionFileWriter implements IMissionFile
         mission.getMissionFrontLineIconBuilder().write(writer);
         mission.getMissionAirfieldIconBuilder().write(writer);
         mission.getMissionSquadronIconBuilder().write(writer);
+        mission.getMissionAssaultIconBuilder().write(writer);
     }
 
     private void writeAmbientGroundUnits(BufferedWriter writer) throws PWCGException

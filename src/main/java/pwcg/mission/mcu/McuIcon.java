@@ -15,6 +15,8 @@ import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.utils.LCIndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
+import pwcg.core.location.Coordinate;
+import pwcg.core.location.Orientation;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.MissionStringHandler;
 import pwcg.mission.flight.IFlight;
@@ -104,26 +106,6 @@ public class McuIcon extends BaseFlightMcu
             createIconLanding(missionPoint, side);
         }
     }
-    
-    private void createIconTakeoff(MissionPoint takeoff, Side side)
-    {
-        position = takeoff.getPosition();
-        iconId = McuIconIdType.ICON_ID_TAKEOFF;
-        setName("Take Off");
-        setDesc("Take Off");
-
-        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        if (productSpecificConfiguration.usePosition1())
-        {
-            rColor = 0;
-            gColor = 0;
-            bColor = 0;
-
-            lineType = McuIconLineType.ICON_LINE_TYPE_POSITION1;
-        }
-
-        coalitions.add(CoalitionFactory.getCoalitionBySide(side));
-    }
 
     private void createIconTarget(MissionPoint target, Side side) {
         position = target.getPosition();
@@ -146,7 +128,7 @@ public class McuIcon extends BaseFlightMcu
         coalitions.add(CoalitionFactory.getCoalitionBySide(side));
     }
 
-    public void createIconLanding(MissionPoint landing, Side side)
+    private void createIconLanding(MissionPoint landing, Side side)
     {
         position = landing.getPosition();
         iconId = McuIconIdType.ICON_ID_LAND;
@@ -178,6 +160,34 @@ public class McuIcon extends BaseFlightMcu
         coalitions.add(CoalitionFactory.getCoalitionBySide(Side.ALLIED));
         coalitions.add(CoalitionFactory.getCoalitionBySide(Side.AXIS));
     }
+
+    public McuIcon(Coordinate arrowPosition, double angle, Side side)
+    {
+        super();
+
+        this.iconId = McuIconIdType.ICON_ID_NORMAL;
+        this.lineType = McuIconLineType.ICON_LINE_TYPE_ARROW;
+        setName("");
+        setDesc("Assault");
+        position = arrowPosition.copy();
+        orientation = new Orientation(angle);
+        if (side == Side.ALLIED)
+        {
+            rColor = 177;
+            gColor = 107;
+            bColor = 96;
+        }
+        else
+        {
+            rColor = 98;
+            gColor = 119;
+            bColor = 152;
+        }
+
+        coalitions.add(CoalitionFactory.getCoalitionBySide(Side.ALLIED));
+        coalitions.add(CoalitionFactory.getCoalitionBySide(Side.AXIS));
+    }
+
 
     public McuIcon(IAirfield airfield, Side side)
     {
@@ -212,6 +222,26 @@ public class McuIcon extends BaseFlightMcu
         setDesc(MissionObjectiveFactory.formMissionObjective(flight, date));
 
         coalitions.add(CoalitionFactory.getCoalitionBySide(flight.getFlightInformation().getCountry().getSide()));
+    }
+    
+    private void createIconTakeoff(MissionPoint takeoff, Side side)
+    {
+        position = takeoff.getPosition();
+        iconId = McuIconIdType.ICON_ID_TAKEOFF;
+        setName("Take Off");
+        setDesc("Take Off");
+
+        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        if (productSpecificConfiguration.usePosition1())
+        {
+            rColor = 0;
+            gColor = 0;
+            bColor = 0;
+
+            lineType = McuIconLineType.ICON_LINE_TYPE_POSITION1;
+        }
+
+        coalitions.add(CoalitionFactory.getCoalitionBySide(side));
     }
 
     public void write(BufferedWriter writer) throws PWCGIOException
