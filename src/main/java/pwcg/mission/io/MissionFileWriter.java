@@ -25,6 +25,7 @@ import pwcg.core.location.Orientation;
 import pwcg.core.utils.AsyncJobRunner;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.dialogs.HelpDialog;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.AmbientBalloonBuilder;
 import pwcg.mission.Mission;
@@ -89,11 +90,18 @@ public class MissionFileWriter implements IMissionFile
 
     private void runAsyncTasks() throws PWCGException
     {
-        AsyncJobRunner runner = new AsyncJobRunner("Generating mission");
+        try
+        {
+            MissionFileBinaryBuilder.getMissionResaver();
 
-        buildMissionBinaryFile(runner);
-
-        runner.finish();
+            AsyncJobRunner runner = new AsyncJobRunner("Generating mission");
+            buildMissionBinaryFile(runner);
+            runner.finish();
+        }
+        catch (PWCGException pwcge)
+        {
+            new  HelpDialog(pwcge.getMessage());
+        }
     }
     
     private void buildMissionBinaryFile(AsyncJobRunner runner) throws PWCGException

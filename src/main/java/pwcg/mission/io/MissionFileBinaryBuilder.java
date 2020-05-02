@@ -23,15 +23,31 @@ public class MissionFileBinaryBuilder implements buildCommandPath
             fullCommand = createCommandPath(campaign, fileName);
             buildBinaryFile(fullCommand);
         }
+        catch (PWCGException pwcge)
+        {
+            new  HelpDialog(pwcge.getMessage());
+        }
         catch (Exception e)
         {
             new  HelpDialog("Failed to create binary mission file for " + fullCommand);
         }
     }
 
-    private static String createCommandPath(Campaign campaign, String fileName) throws PWCGException
+    public static String getMissionResaver() throws PWCGException
     {
         String resaverExe = formResaverExeCommand();
+        File resaverFile = new File(resaverExe);
+        if (!resaverFile.exists())
+        {
+            throw new PWCGException("PWCG cannot find MissionResaver.exe on your system.  No binary file created.  The mission can still be flown using the text file");
+        }
+        return resaverExe;
+    }
+
+    private static String createCommandPath(Campaign campaign, String fileName) throws PWCGException
+    {
+        String resaverExe = getMissionResaver();
+        
         String listFileArg = formListFileArg();
         String dataDirArg = formDataDirArg(campaign);
         String missionFilePathArg = formMissionFilePathArg(campaign, fileName);
