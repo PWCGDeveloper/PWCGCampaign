@@ -45,6 +45,7 @@ public class TargetDefinitionBuilderGround
             ICountry targetCountry, 
             TargetType targetType, 
             Coordinate targetPosition,
+            Orientation orientation, 
             boolean isPlayerTarget) throws PWCGException
     {
         targetDefinition.setTargetType(targetType);
@@ -58,7 +59,7 @@ public class TargetDefinitionBuilderGround
         targetDefinition.setMaximumRadius(10000);
 
         targetDefinition.setTargetPosition(targetPosition);
-        targetDefinition.setTargetOrientation(new Orientation());
+        targetDefinition.setTargetOrientation(orientation.copy());
         targetDefinition.setPlayerTarget(isPlayerTarget);
 
         return targetDefinition;

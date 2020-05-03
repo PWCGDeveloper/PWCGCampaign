@@ -13,13 +13,14 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
+import pwcg.core.location.Orientation;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.builder.BalloonUnitBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
-import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetDefinitionBuilderGround;
+import pwcg.mission.target.TargetType;
 
 public class AmbientBalloonDefensePackage
 {
@@ -68,7 +69,10 @@ public class AmbientBalloonDefensePackage
         
         TargetDefinitionBuilderGround targetDefinitionBuilder = new TargetDefinitionBuilderGround(campaign);
         boolean isPlayerTarget = false;
-        TargetDefinition ambientBalloonTargetDefinition = targetDefinitionBuilder.buildTargetDefinitionAmbient(balloonCountry, TargetType.TARGET_BALLOON, balloonPosition, isPlayerTarget);
+        
+        Orientation balloonOrientation = new Orientation(RandomNumberGenerator.getRandom(360));
+        TargetDefinition ambientBalloonTargetDefinition = targetDefinitionBuilder.buildTargetDefinitionAmbient(
+                balloonCountry, TargetType.TARGET_BALLOON, balloonPosition, balloonOrientation, isPlayerTarget);
         
         BalloonUnitBuilder groundUnitBuilderBalloonDefense = new BalloonUnitBuilder(mission, ambientBalloonTargetDefinition);
         IGroundUnitCollection balloonUnit = groundUnitBuilderBalloonDefense.createBalloonUnit(balloonCountry);

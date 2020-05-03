@@ -167,7 +167,6 @@ public class SmokeGroup
         // Smoke stop and start effect commands
         smokeStopTimer.setTarget(stopSmokeEffectCommand.getIndex());
         smokeStartTimer.setTarget(startSmokeEffectCommand.getIndex());
-                
     }
 
     private void setObjectAssociations()

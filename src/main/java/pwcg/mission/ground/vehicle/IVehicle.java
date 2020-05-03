@@ -25,6 +25,7 @@ public interface IVehicle extends IPWCGObject
     public String getScript();
     public ICountry getCountry();
     public Coordinate getPosition();
+    public Orientation getOrientation();
     public int getBeaconChannel();
     public int getIndex();
 }

@@ -95,6 +95,7 @@ public class GroundUnitElement
         spawn.setName("Ground Element Spawn");
         spawn.setDesc("Ground Element Spawn");
         spawn.setPosition(vehicleStartLocation);
+        spawn.setOrientation(vehicle.getOrientation());
     }
 
     private void createTargetAssociations()
