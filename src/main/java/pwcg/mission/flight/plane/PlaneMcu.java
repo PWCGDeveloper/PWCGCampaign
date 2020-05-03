@@ -281,10 +281,10 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
                 writer.newLine();
                 writer.write("  Callnum = " + callnum + ";");
                 writer.newLine();
-                writer.write("  WMMask = " + payload.generateFullModificationMask() + ";");
-                writer.newLine();
             }
             
+            writer.write("  WMMask = " + payload.generateFullModificationMask() + ";");
+            writer.newLine();
 
             writer.write("}");
             writer.newLine();

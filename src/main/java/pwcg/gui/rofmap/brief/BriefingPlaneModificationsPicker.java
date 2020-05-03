@@ -41,7 +41,10 @@ public class BriefingPlaneModificationsPicker
         for (String selectedModification : crewPlane.getModifications())
         {
             JCheckBox planeModificationCheckBox = planeModifications.get(selectedModification);
-            planeModificationCheckBox.setSelected(true);
+            if (planeModificationCheckBox != null)
+            {
+                planeModificationCheckBox.setSelected(true);
+            }
         }
 
         for (JCheckBox planeModification : planeModifications.values())
@@ -75,7 +78,7 @@ public class BriefingPlaneModificationsPicker
         
         for (PayloadDesignation payloadDesignation : payload.getPayloadDesignations())
         {
-            if (payloadDesignation.getPayloadElements().get(0).getCategory() == PayloadElementCategory.PLANE_PART)
+            if (payloadDesignation.getPayloadElements().get(0).getCategory() == PayloadElementCategory.MODIFICATION)
             {
                 JCheckBox planeModificationsCheckBox= PWCGButtonFactory.makeCheckBox(
                         payloadDesignation.getPayloadDescription(), 

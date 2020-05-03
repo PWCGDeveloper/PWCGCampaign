@@ -49,7 +49,7 @@ public class BriefingPayloadPicker
         List<String> payloadDescriptions = new ArrayList<>();
         for (PayloadDesignation payloadDesignation : payload.getPayloadDesignations())
         {
-            if (!(payloadDesignation.getPayloadElements().get(0).getCategory() == PayloadElementCategory.PLANE_PART))
+            if (!(payloadDesignation.getPayloadElements().get(0).getCategory() == PayloadElementCategory.MODIFICATION))
             {
                 payloadDescriptions.add(payloadDesignation.getPayloadDescription());
             }

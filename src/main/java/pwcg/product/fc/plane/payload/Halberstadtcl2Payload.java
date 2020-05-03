@@ -16,25 +16,26 @@ public class Halberstadtcl2Payload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
     {
-        setAvailablePayload(-4, "1000000000", PayloadElement.RADIO);
-        setAvailablePayload(-3, "100000000", PayloadElement.CAMERA);
-        setAvailablePayload(-2, "100000", PayloadElement.ATTITUDE_GUAGE);
-        setAvailablePayload(-1, "100", PayloadElement.TWIN_GUN_TURRET);
-        setAvailablePayload(1, "10", PayloadElement.TWIN_SPANDAU);
-        setAvailablePayload(2, "10000000", PayloadElement.BOMBS);
+        setAvailablePayload(-3, "100000", PayloadElement.ATTITUDE_GUAGE);
+        setAvailablePayload(-2, "100", PayloadElement.TWIN_GUN_TURRET);
+        setAvailablePayload(-1, "10", PayloadElement.TWIN_SPANDAU);
+        setAvailablePayload(0, "1", PayloadElement.STANDARD);
+        setAvailablePayload(1, "10000001", PayloadElement.BOMBS);
+        setAvailablePayload(2, "100000001", PayloadElement.CAMERA);
+        setAvailablePayload(3, "1000000001", PayloadElement.RADIO);
     }
 
     @Override
     public IPlanePayload copy()
     {
-        Halberstadtcl2Payload clone = new Halberstadtcl2Payload(planeType);
+        Halberstadtcl2auPayload clone = new Halberstadtcl2auPayload(planeType);
         return super.copy(clone);
     }
 
     public int createWeaponsPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 1;
-        if (flight.getFlightType() == FlightTypes.GROUND_ATTACK || flight.getFlightType() == FlightTypes.BOMB)
+        selectedPrimaryPayloadId = 0;
+        if (FlightTypes.isBombingFlight(flight.getFlightType()))
         {
             selectBombingPayload(flight);
         }
@@ -51,16 +52,16 @@ public class Halberstadtcl2Payload extends PlanePayload implements IPlanePayload
 
     protected void selectBombingPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 2;
+        selectedPrimaryPayloadId = 1;
     }
 
     protected void selectReconPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
+        selectedPrimaryPayloadId = 2;
     }
 
     protected void selectArtillerySpotPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
+        selectedPrimaryPayloadId = 3;
     }    
 }

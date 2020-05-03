@@ -16,27 +16,27 @@ public class BristolF2B3Payload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
     {
-        setAvailablePayload(-5, "100000000", PayloadElement.RADIO);
-        setAvailablePayload(-4, "1000000", PayloadElement.CAMERA);
-        setAvailablePayload(-3, "10000", PayloadElement.FUEL_GUAGE);
-        setAvailablePayload(-2, "1000", PayloadElement.ALDIS_SIGHT);
-        setAvailablePayload(-1, "100", PayloadElement.TWIN_GUN_TURRET);
+        setAvailablePayload(-4, "10000", PayloadElement.FUEL_GUAGE);
+        setAvailablePayload(-3, "1000", PayloadElement.ALDIS_SIGHT);
+        setAvailablePayload(-2, "100", PayloadElement.TWIN_GUN_TURRET);
+        setAvailablePayload(-1, "10", PayloadElement.LEWIS_TOP);
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "10", PayloadElement.LEWIS_TOP);
-        setAvailablePayload(2, "1000000", PayloadElement.BOMBS);
+        setAvailablePayload(1, "1000001", PayloadElement.CAMERA);
+        setAvailablePayload(2, "10000001", PayloadElement.BOMBS);
+        setAvailablePayload(3, "100000001", PayloadElement.RADIO);
     }
 
     @Override
     public IPlanePayload copy()
     {
-        BristolF2B3Payload clone = new BristolF2B3Payload(planeType);
+        BristolF2B2Payload clone = new BristolF2B2Payload(planeType);
         return super.copy(clone);
     }
 
     public int createWeaponsPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 0;
-        if (flight.getFlightType() == FlightTypes.GROUND_ATTACK || flight.getFlightType() == FlightTypes.BOMB)
+        if (FlightTypes.isBombingFlight(flight.getFlightType()))
         {
             selectBombingPayload(flight);
         }
@@ -58,11 +58,11 @@ public class BristolF2B3Payload extends PlanePayload implements IPlanePayload
 
     protected void selectReconPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
+        selectedPrimaryPayloadId = 1;
     }
 
     protected void selectArtillerySpotPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
-    }    
+        selectedPrimaryPayloadId = 3;
+    }
 }

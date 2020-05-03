@@ -16,14 +16,14 @@ public class BristolF2B2Payload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
     {
-        setAvailablePayload(-5, "100000000", PayloadElement.RADIO);
-        setAvailablePayload(-4, "1000000", PayloadElement.CAMERA);
-        setAvailablePayload(-3, "10000", PayloadElement.FUEL_GUAGE);
-        setAvailablePayload(-2, "1000", PayloadElement.ALDIS_SIGHT);
-        setAvailablePayload(-1, "100", PayloadElement.TWIN_GUN_TURRET);
+        setAvailablePayload(-4, "10000", PayloadElement.FUEL_GUAGE);
+        setAvailablePayload(-3, "1000", PayloadElement.ALDIS_SIGHT);
+        setAvailablePayload(-2, "100", PayloadElement.TWIN_GUN_TURRET);
+        setAvailablePayload(-1, "10", PayloadElement.LEWIS_TOP);
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "10", PayloadElement.LEWIS_TOP);
-        setAvailablePayload(2, "1000000", PayloadElement.BOMBS);
+        setAvailablePayload(1, "1000001", PayloadElement.CAMERA);
+        setAvailablePayload(2, "10000001", PayloadElement.BOMBS);
+        setAvailablePayload(3, "100000001", PayloadElement.RADIO);
     }
 
     @Override
@@ -35,8 +35,8 @@ public class BristolF2B2Payload extends PlanePayload implements IPlanePayload
 
     public int createWeaponsPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 1;
-        if (flight.getFlightType() == FlightTypes.GROUND_ATTACK || flight.getFlightType() == FlightTypes.BOMB)
+        selectedPrimaryPayloadId = 0;
+        if (FlightTypes.isBombingFlight(flight.getFlightType()))
         {
             selectBombingPayload(flight);
         }
@@ -54,15 +54,18 @@ public class BristolF2B2Payload extends PlanePayload implements IPlanePayload
     protected void selectBombingPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 2;
+        this.addModification(PayloadElement.BOMBS);
     }
 
     protected void selectReconPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
+        selectedPrimaryPayloadId = 1;
+        this.addModification(PayloadElement.CAMERA);
     }
 
     protected void selectArtillerySpotPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
+        selectedPrimaryPayloadId = 3;
+        this.addModification(PayloadElement.RADIO);
     }
 }
