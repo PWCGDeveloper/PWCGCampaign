@@ -88,9 +88,8 @@ public abstract class PlanePayload implements IPlanePayload
 
     public String generateFullModificationMask()
     {
-        String fullModificationMask = "1";
         PayloadDesignation payloadDesignation = availablePayload.get(selectedPrimaryPayloadId);
-        fullModificationMask = payloadDesignation.getModMask();
+        String fullModificationMask = payloadDesignation.getModMask();
         
         for (PayloadElement modification : modifications.values())
         {

@@ -21,8 +21,8 @@ public class BristolF2B3Payload extends PlanePayload implements IPlanePayload
         setAvailablePayload(-2, "100", PayloadElement.TWIN_GUN_TURRET);
         setAvailablePayload(-1, "10", PayloadElement.LEWIS_TOP);
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "1000001", PayloadElement.CAMERA);
-        setAvailablePayload(2, "10000001", PayloadElement.BOMBS);
+        setAvailablePayload(2, "1000001", PayloadElement.BOMBS);
+        setAvailablePayload(1, "10000001", PayloadElement.CAMERA);
         setAvailablePayload(3, "100000001", PayloadElement.RADIO);
     }
 

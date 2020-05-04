@@ -21,8 +21,8 @@ public class BristolF2B2Payload extends PlanePayload implements IPlanePayload
         setAvailablePayload(-2, "100", PayloadElement.TWIN_GUN_TURRET);
         setAvailablePayload(-1, "10", PayloadElement.LEWIS_TOP);
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "1000001", PayloadElement.CAMERA);
-        setAvailablePayload(2, "10000001", PayloadElement.BOMBS);
+        setAvailablePayload(2, "1000001", PayloadElement.BOMBS);
+        setAvailablePayload(1, "10000001", PayloadElement.CAMERA);
         setAvailablePayload(3, "100000001", PayloadElement.RADIO);
     }
 
@@ -54,18 +54,15 @@ public class BristolF2B2Payload extends PlanePayload implements IPlanePayload
     protected void selectBombingPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 2;
-        this.addModification(PayloadElement.BOMBS);
     }
 
     protected void selectReconPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 1;
-        this.addModification(PayloadElement.CAMERA);
     }
 
     protected void selectArtillerySpotPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 3;
-        this.addModification(PayloadElement.RADIO);
     }
 }

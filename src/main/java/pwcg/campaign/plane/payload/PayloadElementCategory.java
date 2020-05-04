@@ -5,7 +5,6 @@ public enum PayloadElementCategory
     MODIFICATION,
 	ORDNANCE_BOMB,
     ORDNANCE_ROCKET,
-    ORDNANCE_MISSION,
     CARGO,
 	WEAPON;
 }
