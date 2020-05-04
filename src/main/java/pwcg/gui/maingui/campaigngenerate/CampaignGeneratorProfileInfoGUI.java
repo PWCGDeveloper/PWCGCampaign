@@ -62,20 +62,17 @@ public class CampaignGeneratorProfileInfoGUI extends ImageResizingPanel
 
     private JPanel createPorfileInfoPanel() throws PWCGException
     {
-        JPanel campaignProfileInfoGridPanel = new JPanel(new GridLayout(4, 2));
+        JPanel campaignProfileInfoGridPanel = new JPanel(new GridLayout(4, 1));
         campaignProfileInfoGridPanel.setOpaque(false);
 
         campaignProfileInfoGridPanel.add(makeLabel("     ")); 
-        campaignProfileInfoGridPanel.add(makeLabel("     ")); 
 
-        campaignProfileInfoGridPanel.add(makeLabel("Campaign Name: ")); 
-        campaignProfileInfoGridPanel.add(makeLabel(parent.getCampaignGeneratorDO().getCampaignName())); 
+        campaignProfileInfoGridPanel.add(makeLabel("Campaign Name: " + parent.getCampaignGeneratorDO().getCampaignName())); 
         
-        campaignProfileInfoGridPanel.add(makeLabel("Campaign Mode: ")); 
-        campaignProfileInfoGridPanel.add(makeLabel(parent.getCampaignGeneratorDO().getCampaignMode().getCampaignModeName())); 
+        campaignProfileInfoGridPanel.add(makeLabel("Campaign Mode: " + parent.getCampaignGeneratorDO().getCampaignMode().getCampaignModeName())); 
 
-        campaignProfileInfoGridPanel.add(makeLabel("Service: ")); 
-        campaignProfileInfoGridPanel.add(makeLabel(parent.getCampaignGeneratorDO().getService().getName()));
+        campaignProfileInfoGridPanel.add(makeLabel("Service: " + parent.getCampaignGeneratorDO().getService().getName())); 
+
         return campaignProfileInfoGridPanel;
     }
 

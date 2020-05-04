@@ -1,5 +1,16 @@
+
 ​
 At the PWCG web site
+
+PWCG 8.7.3
+Added overlay indicators for battles in a PWCG mission.
+Historical flow of battle decides who will attack and who will defend in PWCG battles 
+Improve map load strategy for performance
+Bugs:
+Fixed code to reduce occurrences of unknown object
+FIxed Bristol and Halberstadt bomb loads
+Fixed issue that could cause campaign data entry screen to cut off
+reviewed complaint about 94th Aero campaign.  Could not reproduce.
 
 PWCG 8.7.2
 Added capability for themed desktops

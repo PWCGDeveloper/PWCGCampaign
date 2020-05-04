@@ -227,7 +227,7 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
     private int createNextStepWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
                     JPanel campaignGeneratePanel, int rowCount) throws PWCGException
     {
-        JLabel lNextStep = createCampaignGenMenuLabel("Press for Next/Previous Step: ", labelConstraints, campaignGeneratePanel, rowCount);
+        JLabel lNextStep = createCampaignGenMenuLabel("Next/Previous Step: ", labelConstraints, campaignGeneratePanel, rowCount);
         campaignGeneratePanel.add(lNextStep, labelConstraints);
 
         Color fgColor = ColorMap.CHALK_FOREGROUND;
