@@ -70,12 +70,6 @@ public class PwcgMissionDataEvaluator
         throw new PWCGException("No missionPlane found for name " + name);
     }
 
-    public boolean wasPilotAssignedToMission(int squadronId, String name) throws PWCGException
-    {
-        SquadronMember squadronMember = campaign.getPersonnelManager().getSquadronPersonnel(squadronId).getSquadronMembersWithAces().getSquadronMemberByName(name);
-        return wasPilotAssignedToMission(squadronMember.getSerialNumber());
-    }
-
     public boolean wasPilotAssignedToMission(Integer serialNumber) throws PWCGException
     {
         for (SquadronMember pilotInMission : aarPreliminarytData.getCampaignMembersInMission().getSquadronMemberCollection().values())
