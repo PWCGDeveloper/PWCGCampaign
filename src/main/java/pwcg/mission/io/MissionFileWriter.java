@@ -90,17 +90,15 @@ public class MissionFileWriter implements IMissionFile
 
     private void runAsyncTasks() throws PWCGException
     {
-        try
+        if (MissionFileBinaryBuilder.canRunResaver())
         {
-            MissionFileBinaryBuilder.getMissionResaver();
-
             AsyncJobRunner runner = new AsyncJobRunner("Generating mission");
             buildMissionBinaryFile(runner);
             runner.finish();
         }
-        catch (PWCGException pwcge)
+        else
         {
-            new  HelpDialog(pwcge.getMessage());
+            new  HelpDialog("Resaver not installed.  Cannot create binary mission file. ");
         }
     }
     

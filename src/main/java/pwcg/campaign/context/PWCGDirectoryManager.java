@@ -52,6 +52,12 @@ public class PWCGDirectoryManager
         return filepath;
     }
 
+    public String getMissionBinPath() throws PWCGException 
+    {
+        String filepath = getSimulatorRootDir() + "bin\\";
+        return filepath;
+    }
+
     public String getMissionRewritePath() throws PWCGException 
     {
         String filepath = getSimulatorRootDir() + "bin\\resaver\\";

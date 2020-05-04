@@ -46,6 +46,22 @@ public class FileUtils
         File directory = new File(directoryName);
         directory.mkdir();
     }
+    
+    public static boolean findInDirectory(String directoryName, String lookForFileName) throws PWCGException
+    {
+        File directory = new File(directoryName);
+        lookForFileName = lookForFileName.toLowerCase();
+        for (String fileName : directory.list())
+        {
+            fileName = fileName.toLowerCase();
+            if (fileName.contains(lookForFileName))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     public static boolean fileExists(String filePath)
     {

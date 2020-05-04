@@ -108,7 +108,6 @@ public class CampaignPersonnelManager
         return allPlayers;
     }
     
-
     public boolean squadronHasActivePlayers(int squadronId) throws PWCGException
     {
         SquadronMembers allActivePlayers = getPlayersForStatus(SquadronMemberStatus.STATUS_ACTIVE);

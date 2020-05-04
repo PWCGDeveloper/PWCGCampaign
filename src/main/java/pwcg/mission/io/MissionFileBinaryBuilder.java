@@ -9,6 +9,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.FileUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.dialogs.HelpDialog;
@@ -20,8 +21,11 @@ public class MissionFileBinaryBuilder implements buildCommandPath
         String fullCommand = "";
         try
         {
-            fullCommand = createCommandPath(campaign, fileName);
-            buildBinaryFile(fullCommand);
+            if (canRunResaver())
+            {
+                fullCommand = createCommandPath(campaign, fileName);
+                buildBinaryFile(fullCommand);
+            }
         }
         catch (PWCGException pwcge)
         {
@@ -33,20 +37,9 @@ public class MissionFileBinaryBuilder implements buildCommandPath
         }
     }
 
-    public static String getMissionResaver() throws PWCGException
-    {
-        String resaverExe = formResaverExeCommand();
-        File resaverFile = new File(resaverExe);
-        if (!resaverFile.exists())
-        {
-            throw new PWCGException("PWCG cannot find MissionResaver.exe on your system.  No binary file created.  The mission can still be flown using the text file");
-        }
-        return resaverExe;
-    }
-
     private static String createCommandPath(Campaign campaign, String fileName) throws PWCGException
     {
-        String resaverExe = getMissionResaver();
+        String resaverExe = formResaverExeCommand();
         
         String listFileArg = formListFileArg();
         String dataDirArg = formDataDirArg(campaign);
@@ -81,13 +74,30 @@ public class MissionFileBinaryBuilder implements buildCommandPath
         }
         catch (InterruptedException ioe)
         {
-            new  HelpDialog("Timesd out trying to create binary mission file for " + fullCommand);
+            new  HelpDialog("Timed out trying to create binary mission file for " + fullCommand);
         }
     }
 
     private static String formListFileArg()
     {
         return " -t ";
+    }
+
+    public static boolean canRunResaver() throws PWCGException
+    {
+        String binPath = PWCGContext.getInstance().getDirectoryManager().getMissionBinPath();
+        if (!FileUtils.findInDirectory(binPath, "resaver"))
+        {
+            return false;
+        }
+        
+        String resaverPath = PWCGContext.getInstance().getDirectoryManager().getMissionRewritePath();
+        if (!FileUtils.findInDirectory(resaverPath, "MissionResaver.exe"))
+        {
+            return false;
+        }
+
+        return true;
     }
 
     private static String formResaverExeCommand() throws PWCGException
