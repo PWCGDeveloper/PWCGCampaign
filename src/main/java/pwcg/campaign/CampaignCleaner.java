@@ -1,10 +1,16 @@
 package pwcg.campaign;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
+import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.squadmember.Ace;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
@@ -21,6 +27,7 @@ public class CampaignCleaner
     {
         generateMissingDepos();
         removeUnwantedSquadronFiles();
+        //removeDuplicatePilots();
     }
     
     public void removeUnwantedSquadronFiles() throws PWCGException
@@ -79,5 +86,40 @@ public class CampaignCleaner
                 equipmentManager.createEquipmentDepot(armedService);
             }
         }
+    }
+    
+    private void removeDuplicatePilots()
+    {
+        System.out.println("Duplicate squadron members in campaign : " + campaign.getCampaignData().getName());
+
+        CampaignPersonnelManager personnelManager = campaign.getPersonnelManager();
+        Map<Integer, SquadronPersonnel> allPersonnel = personnelManager.getCampaignPersonnel();
+        
+        List<SquadronMember> allAiSquadronMembers = new ArrayList<>();
+        for (SquadronPersonnel personnel : allPersonnel.values())
+        {
+            for (SquadronMember squadronMember : personnel.getSquadronMembers().getSquadronMemberList())
+            {
+                if (!squadronMember.isPlayer() && !(squadronMember instanceof Ace))
+                {
+                    allAiSquadronMembers.add(squadronMember);
+                }
+            }
+        }
+        
+        HashSet<Integer> pilotSerialNumbers = new HashSet<>();
+        for (SquadronMember aiSquadronMember : allAiSquadronMembers)
+        {
+            if (pilotSerialNumbers.contains(aiSquadronMember.getSerialNumber()))
+            {
+                System.out.println("Duplicate squadron member : " + aiSquadronMember.getName() + " flying for " + aiSquadronMember.getSquadronId());
+                aiSquadronMember.setSerialNumber(campaign.getSerialNumber().getNextPilotSerialNumber());
+            }
+            else
+            {
+                pilotSerialNumbers.add(aiSquadronMember.getSerialNumber());
+            }
+        }
+        
     }
 }
