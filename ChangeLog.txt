@@ -10,7 +10,8 @@ Bugs:
 Fixed code to reduce occurrences of unknown object
 FIxed Bristol and Halberstadt bomb loads
 Fixed issue that could cause campaign data entry screen to cut off
-reviewed complaint about 94th Aero campaign.  Could not reproduce.
+Fixed confusing error if resaver is not available.
+Reviewed complaint about 94th Aero campaign.  Could not reproduce.
 
 PWCG 8.7.2
 Added capability for themed desktops
@@ -22,7 +23,6 @@ Added capability for themed desktops
 Bugs:
 Fixed error that prevented FC missions from generating properly
 - verified that bomb payload on Bristol works properly
-
 
 
 PWCG 8.7.1
