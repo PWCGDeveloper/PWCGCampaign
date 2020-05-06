@@ -2,7 +2,7 @@ package pwcg.campaign;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +10,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.Ace;
+import pwcg.campaign.squadmember.PilotNames;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -28,6 +29,7 @@ public class CampaignCleaner
         generateMissingDepos();
         removeUnwantedSquadronFiles();
         removeDuplicatePilots();
+        checkDuplicatePilots();
     }
     
     public void removeUnwantedSquadronFiles() throws PWCGException
@@ -88,38 +90,94 @@ public class CampaignCleaner
         }
     }
     
-    private void removeDuplicatePilots()
+    private void removeDuplicatePilots() throws PWCGException
     {
-        System.out.println("Duplicate squadron members in campaign : " + campaign.getCampaignData().getName());
-
         CampaignPersonnelManager personnelManager = campaign.getPersonnelManager();
         Map<Integer, SquadronPersonnel> allPersonnel = personnelManager.getCampaignPersonnel();
         
-        List<SquadronMember> allAiSquadronMembers = new ArrayList<>();
+        Map<Integer, List<Integer>> pilotSerialNumbers = new HashMap<>();
         for (SquadronPersonnel personnel : allPersonnel.values())
         {
             for (SquadronMember squadronMember : personnel.getSquadronMembers().getSquadronMemberList())
             {
                 if (!squadronMember.isPlayer() && !(squadronMember instanceof Ace))
                 {
-                    allAiSquadronMembers.add(squadronMember);
+                    if (!pilotSerialNumbers.containsKey(squadronMember.getSerialNumber()))
+                    {
+                        pilotSerialNumbers.put(squadronMember.getSerialNumber(), new ArrayList<Integer>());
+                    }
+                    List<Integer> squadronsForSerialNumber = pilotSerialNumbers.get(squadronMember.getSerialNumber());
+                    squadronsForSerialNumber.add(personnel.getSquadron().getSquadronId());
                 }
             }
         }
         
-        HashSet<Integer> pilotSerialNumbers = new HashSet<>();
-        for (SquadronMember aiSquadronMember : allAiSquadronMembers)
+        boolean changesMade = false;
+        for (Integer serialNumber : pilotSerialNumbers.keySet())
         {
-            if (pilotSerialNumbers.contains(aiSquadronMember.getSerialNumber()))
+            List<Integer> squadronsForSerialNumber = pilotSerialNumbers.get(serialNumber);
+            if (squadronsForSerialNumber.size() > 1)
             {
-                System.out.println("Duplicate squadron member : " + aiSquadronMember.getName() + " flying for " + aiSquadronMember.getSquadronId());
-                // aiSquadronMember.setSerialNumber(campaign.getSerialNumber().getNextPilotSerialNumber());
-            }
-            else
-            {
-                pilotSerialNumbers.add(aiSquadronMember.getSerialNumber());
+                boolean firstTime = true;
+                for (Integer squadronId : squadronsForSerialNumber)
+                {
+                    SquadronPersonnel campaignPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronId);
+                    SquadronMember  squadronMember = campaignPersonnel.getSquadronMember(serialNumber);
+                    System.out.println("Replace " + squadronMember.getName() + " squadron member : " + serialNumber + " flying for " + squadronId);
+                    
+                    if (!firstTime)
+                    {
+                        squadronMember.setSerialNumber(campaign.getCampaignData().getSerialNumber().getNextPilotSerialNumber());
+                        
+                        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());
+                        String squaddieName = PilotNames.getInstance().getName(squadron.determineServiceForSquadron(campaign.getDate()), new HashMap<>());
+                        squadronMember.setName(squaddieName);
+                    }
+                    
+                    firstTime = false;
+                    changesMade = true;
+                }
             }
         }
         
+        if (changesMade)
+        {
+            campaign.write();
+        }
+    }
+    
+    private void checkDuplicatePilots() throws PWCGException
+    {
+        CampaignPersonnelManager personnelManager = campaign.getPersonnelManager();
+        Map<Integer, SquadronPersonnel> allPersonnel = personnelManager.getCampaignPersonnel();
+        
+        Map<Integer, List<Integer>> pilotSerialNumbers = new HashMap<>();
+        for (SquadronPersonnel personnel : allPersonnel.values())
+        {
+            for (SquadronMember squadronMember : personnel.getSquadronMembers().getSquadronMemberList())
+            {
+                if (!squadronMember.isPlayer() && !(squadronMember instanceof Ace))
+                {
+                    if (!pilotSerialNumbers.containsKey(squadronMember.getSerialNumber()))
+                    {
+                        pilotSerialNumbers.put(squadronMember.getSerialNumber(), new ArrayList<Integer>());
+                    }
+                    List<Integer> squadronsForSerialNumber = pilotSerialNumbers.get(squadronMember.getSerialNumber());
+                    squadronsForSerialNumber.add(personnel.getSquadron().getSquadronId());
+                }
+            }
+        }
+        
+        for (Integer serialNumber : pilotSerialNumbers.keySet())
+        {
+            List<Integer> squadronsForSerialNumber = pilotSerialNumbers.get(serialNumber);
+            if (squadronsForSerialNumber.size() > 1)
+            {
+                for (Integer squadronId : squadronsForSerialNumber)
+                {
+                    System.out.println("Duplicate squadron member : " + serialNumber + " flying for " + squadronId);
+                }
+            }
+        }
     }
 }
