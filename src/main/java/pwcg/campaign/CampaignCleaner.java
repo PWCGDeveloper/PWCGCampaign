@@ -30,6 +30,7 @@ public class CampaignCleaner
         removeUnwantedSquadronFiles();
         removeDuplicatePilots();
         checkDuplicatePilots();
+        checkPilotKeys();
     }
     
     public void removeUnwantedSquadronFiles() throws PWCGException
@@ -180,4 +181,49 @@ public class CampaignCleaner
             }
         }
     }
+    
+    
+    private void checkPilotKeys() throws PWCGException
+    {
+        boolean changesMade = false;
+
+        CampaignPersonnelManager personnelManager = campaign.getPersonnelManager();
+        Map<Integer, SquadronPersonnel> allPersonnel = personnelManager.getCampaignPersonnel();
+        
+        for (SquadronPersonnel personnel : allPersonnel.values())
+        {
+            boolean fixesNeeded = true;
+            while (fixesNeeded)
+            {
+                fixesNeeded = fixOneSquadronMember(personnel);
+                if (fixesNeeded)
+                {
+                    changesMade = true;
+                }
+            }
+        }
+        
+        if (changesMade)
+        {
+            campaign.write();
+        }
+    }
+
+    private boolean fixOneSquadronMember(SquadronPersonnel personnel) throws PWCGException
+    {
+        boolean fixesNeeded = false;
+        for (Integer key : personnel.getSquadronMembers().getSquadronMemberCollection().keySet())
+        {
+            SquadronMember squadronMember = personnel.getSquadronMembers().getSquadronMemberCollection().get(key);
+            if (key != squadronMember.getSerialNumber())
+            {
+                personnel.getSquadronMembers().removeSquadronMember(key);
+                personnel.getSquadronMembers().addToSquadronMemberCollection(squadronMember);
+                fixesNeeded = true;
+                break;
+            }
+        }
+        return fixesNeeded;
+    }
+
 }
