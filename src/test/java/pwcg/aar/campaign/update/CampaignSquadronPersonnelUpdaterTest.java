@@ -16,11 +16,13 @@ import org.mockito.junit.MockitoJUnitRunner;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.aar.outofmission.phase1.elapsedtime.OutOfMissionCommandChangeHandler;
+import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.RankFactory;
+import pwcg.campaign.personnel.PersonnelReplacementsService;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.resupply.personnel.TransferRecord;
@@ -194,7 +196,10 @@ public class CampaignSquadronPersonnelUpdaterTest
     @Test
     public void testSquadronMemberTransferred() throws PWCGException
     {
-        SquadronMember transferredSquadronMember = SquadronMemberPicker.pickNonAceSquadronMember(campaign, SquadronTestProfile.ESC_103_PROFILE.getSquadronId()); 
+        ArmedService armedService = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.ESC_103_PROFILE.getSquadronId()).determineServiceForSquadron(campaign.getDate());
+        PersonnelReplacementsService serviceReplacements =  campaign.getPersonnelManager().getPersonnelReplacementsService(armedService.getServiceId());
+        SquadronMember transferredSquadronMember = serviceReplacements.findReplacement(); 
+        
         TransferRecord transferRecord = new TransferRecord(transferredSquadronMember, SquadronTestProfile.ESC_103_PROFILE.getSquadronId(), SquadronTestProfile.ESC_3_PROFILE.getSquadronId());
         
         aarContext.getCampaignUpdateData().getResupplyData().getSquadronTransferData().addTransferRecord(transferRecord);
