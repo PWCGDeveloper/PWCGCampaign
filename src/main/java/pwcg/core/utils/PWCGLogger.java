@@ -221,7 +221,8 @@ public class PWCGLogger
 			pw.println("");
 			pw.println("PWCG Error");
 			pw.println(errorDate);
-			exp.printStackTrace (pw);
+            exp.printStackTrace(pw);
+            exp.printStackTrace();
 		}
 		catch (Throwable t)
 		{
