@@ -122,7 +122,7 @@ public class PersonnelUpdater
             Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(transferRecord.getTransferTo());
             ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
             PersonnelReplacementsService replacementService = campaign.getPersonnelManager().getPersonnelReplacementsService(service.getServiceId());
-            replacementService.removeReplacement(transferRecord.getSquadronMember().getSerialNumber());
+            replacementService.transferFromFeservesToActive(transferRecord.getSquadronMember().getSerialNumber());
         }
     }
 

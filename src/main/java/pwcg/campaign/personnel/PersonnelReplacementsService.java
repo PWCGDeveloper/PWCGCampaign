@@ -12,6 +12,7 @@ public class PersonnelReplacementsService
 
     private Integer serviceId;
     private SquadronMembers replacements = new SquadronMembers();
+    private SquadronMembers replacementsDesignatedForAssignment = new SquadronMembers();
     private Date lastReplacementDate;
     private int dailyReplacementRate = NUM_POINTS_FOR_ONE_PILOT;
     private int replacementPoints = 0;
@@ -60,18 +61,28 @@ public class PersonnelReplacementsService
     public SquadronMember findReplacement() throws PWCGException
     {
         SquadronMember replacement = replacements.findSquadronMember();
+        if (replacement != null)
+        {
+            replacements.removeSquadronMember(replacement.getSerialNumber());
+            replacementsDesignatedForAssignment.addToSquadronMemberCollection(replacement);
+        }
         return replacement;
     }
 
-    public SquadronMember removeReplacement(int serialNumber) throws PWCGException
+    public SquadronMember transferFromFeservesToActive(int serialNumber) throws PWCGException
     {
-        SquadronMember replacement = replacements.removeSquadronMember(serialNumber);
+        SquadronMember replacement = replacementsDesignatedForAssignment.removeSquadronMember(serialNumber);
+        replacementsDesignatedForAssignment.removeSquadronMember(replacement.getSerialNumber());
         return replacement;
     }
 
-    public SquadronMember getAvailableReplacement(int serialNumber) throws PWCGException
+    public SquadronMember getReplacement(int serialNumber) throws PWCGException
     {
         SquadronMember replacement = replacements.getSquadronMember(serialNumber);
+        if (replacement == null)
+        {
+            replacement = replacementsDesignatedForAssignment.getSquadronMember(serialNumber);
+        }
         return replacement;
     }
 

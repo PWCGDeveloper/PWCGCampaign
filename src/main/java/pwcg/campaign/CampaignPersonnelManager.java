@@ -167,7 +167,7 @@ public class CampaignPersonnelManager
 
         for (PersonnelReplacementsService personnelReplacements : personnelReplacementsServices.values())
         {
-            squadronMember =  personnelReplacements.getAvailableReplacement(serialNumber);
+            squadronMember =  personnelReplacements.getReplacement(serialNumber);
             if (squadronMember != null)
             {
                 return squadronMember;

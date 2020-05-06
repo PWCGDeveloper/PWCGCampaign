@@ -27,7 +27,7 @@ public class CampaignCleaner
     {
         generateMissingDepos();
         removeUnwantedSquadronFiles();
-        //removeDuplicatePilots();
+        removeDuplicatePilots();
     }
     
     public void removeUnwantedSquadronFiles() throws PWCGException
@@ -113,7 +113,7 @@ public class CampaignCleaner
             if (pilotSerialNumbers.contains(aiSquadronMember.getSerialNumber()))
             {
                 System.out.println("Duplicate squadron member : " + aiSquadronMember.getName() + " flying for " + aiSquadronMember.getSquadronId());
-                aiSquadronMember.setSerialNumber(campaign.getSerialNumber().getNextPilotSerialNumber());
+                // aiSquadronMember.setSerialNumber(campaign.getSerialNumber().getNextPilotSerialNumber());
             }
             else
             {
