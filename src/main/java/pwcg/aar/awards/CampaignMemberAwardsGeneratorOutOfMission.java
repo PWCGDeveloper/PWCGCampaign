@@ -2,6 +2,7 @@ package pwcg.aar.awards;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.AARPersonnelAwards;
+import pwcg.aar.outofmission.phase1.elapsedtime.OutOfMissionPilotSelector;
 import pwcg.aar.prelim.CampaignMembersOutOfMissionFinder;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -21,11 +22,14 @@ public class CampaignMemberAwardsGeneratorOutOfMission extends CampaignMemberAwa
     {
         SquadronMembers campaignMembersNotInMission = CampaignMembersOutOfMissionFinder.getAllCampaignMembersNotInMission(
                 campaign, aarContext.getPreliminaryData().getCampaignMembersInMission());
-        for (SquadronMember campaignMember : campaignMembersNotInMission.getSquadronMemberList())
+        for (SquadronMember squadronMember : campaignMembersNotInMission.getSquadronMemberList())
         {
-            promotions(campaignMember);
-            medals(campaignMember, 1);
-            missionsFlown(campaignMember);
+            promotions(squadronMember);
+            medals(squadronMember, 1);
+            if (OutOfMissionPilotSelector.shouldPilotBeEvaluated(campaign, squadronMember)) 
+            {
+                missionsFlown(squadronMember);
+            }
         }
         
         return personnelAwards;
