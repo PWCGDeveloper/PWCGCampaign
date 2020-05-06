@@ -1,5 +1,8 @@
 package pwcg.product.bos.map.bodenplatte;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
@@ -11,6 +14,16 @@ import pwcg.product.bos.country.BoSServiceManager;
 
 public class BodenplatteMap extends PWCGMap
 {
+    private static final Map<String, Integer> missionSpacingMyDate;
+    static
+    { 
+        missionSpacingMyDate = new TreeMap<>(); 
+        missionSpacingMyDate.put("19440901", 3); 
+        missionSpacingMyDate.put("19441216", 1); 
+        missionSpacingMyDate.put("19450125", 2); 
+        missionSpacingMyDate.put("19450220", 3); 
+        missionSpacingMyDate.put("19450401", 5); 
+    } 
 
     public BodenplatteMap()
     {
@@ -66,5 +79,11 @@ public class BodenplatteMap extends PWCGMap
         {
             return CountryFactory.makeCountryByCountry(Country.GERMANY);
         }
+    }
+
+    @Override
+    protected Map<String, Integer> getMissionSpacingMyDate()
+    {
+        return missionSpacingMyDate;
     }
 }

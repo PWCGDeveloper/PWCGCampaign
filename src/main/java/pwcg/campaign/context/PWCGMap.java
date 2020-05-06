@@ -15,6 +15,7 @@ import pwcg.campaign.shipping.ShippingLaneManager;
 import pwcg.campaign.target.preference.TargetPreferenceManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.utils.DateUtils;
 import pwcg.mission.options.MapWeather;
 import pwcg.mission.options.MissionOptions;
 
@@ -22,6 +23,7 @@ public abstract class PWCGMap
 {
     protected abstract void configureTransitionDates() throws PWCGException;
     public abstract ICountry getGroundCountryForMapBySide(Side side);
+    protected abstract Map<String, Integer> getMissionSpacingMyDate();
 
     public enum FrontMapIdentifier
     {
@@ -109,6 +111,24 @@ public abstract class PWCGMap
         return frontNameIdentifierMap.get(name);
     }
     
+    public int getDaysBetweenMissionForDate(Date date) throws PWCGException
+    {
+        int numDaysSpacing = 2;
+        
+        Map<String, Integer> missionSpacingMyDate = getMissionSpacingMyDate();
+        for (String mapDate : missionSpacingMyDate.keySet())
+        {
+            Date spacingDate = DateUtils.getDateYYYYMMDD(mapDate);
+            if (spacingDate.after(date))
+            {
+                break;
+            }
+            
+            numDaysSpacing = missionSpacingMyDate.get(mapDate);
+        }
+        return numDaysSpacing;
+    }
+
     public boolean isMapHasService(int serviceId)
     {
         for (int mapServiceId : armedServicesActiveForMap)

@@ -136,7 +136,6 @@ public class CampaignConfigurationAdvancedGUI extends PwcgGuiContext implements 
             buttonPanel.add(makeButton("Target Types", "Set odds of attacking different target types"));
 			buttonPanel.add(makeButton("Aircraft Numbers", "How many planes are in the sky during a mission"));
 			buttonPanel.add(makeButton("Mission Limits", "Set items that may affect mission performance"));
-            buttonPanel.add(makeButton("Mission Spacing", "Set how often you fly"));
             buttonPanel.add(makeButton("Weather", "Set weather preferences"));
 			
 			add (buttonPanel);
@@ -235,10 +234,6 @@ public class CampaignConfigurationAdvancedGUI extends PwcgGuiContext implements 
 		else if (action.contains("Mission Limits"))
 		{
 			configSet = configManager.getMergedConfigSet(ConfigSetKeys.ConfigSetMissionLimits);				
-		}
-		else if (action.contains("Mission Spacing"))
-		{
-			configSet = configManager.getMergedConfigSet(ConfigSetKeys.ConfigSetMissionSpacing);				
 		}
         else if (action.contains("Campaign Preferences"))
         {

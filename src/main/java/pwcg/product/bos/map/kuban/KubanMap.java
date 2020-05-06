@@ -1,5 +1,8 @@
 package pwcg.product.bos.map.kuban;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
@@ -11,6 +14,19 @@ import pwcg.product.bos.country.BoSServiceManager;
 
 public class KubanMap extends PWCGMap
 {
+    private static final Map<String, Integer> missionSpacingMyDate;
+    static
+    { 
+        missionSpacingMyDate = new TreeMap<>(); 
+        missionSpacingMyDate.put("19420601", 2); 
+        missionSpacingMyDate.put("19420715", 1); 
+        missionSpacingMyDate.put("19420801", 4); 
+        missionSpacingMyDate.put("19430101", 1); 
+        missionSpacingMyDate.put("19430218", 4); 
+        missionSpacingMyDate.put("19430909", 1); 
+        missionSpacingMyDate.put("19431008", 2); 
+        missionSpacingMyDate.put("19431030", 4); 
+    } 
 
     public KubanMap()
     {
@@ -75,5 +91,11 @@ public class KubanMap extends PWCGMap
         {
             return CountryFactory.makeCountryByCountry(Country.GERMANY);
         }
+    }
+
+    @Override
+    protected Map<String, Integer> getMissionSpacingMyDate()
+    {
+        return missionSpacingMyDate;
     }
 }

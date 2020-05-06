@@ -16,6 +16,7 @@ import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.skin.SkinManager;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
@@ -84,6 +85,10 @@ public abstract class PWCGContextBase implements IPWCGContextManager
         FrontMapIdentifier mapIdentifier = MapFinderForCampaign.findMapForCampaign(campaign);
         if (mapIdentifier != null)
         {
+            if (mapIdentifier == FrontMapIdentifier.STALINGRAD_MAP && !campaign.getDate().before(DateUtils.getDateYYYYMMDD("19440101")))
+            {
+                mapIdentifier = FrontMapIdentifier.EAST1944_MAP;
+            }
             changeContext(mapIdentifier);
             resetForMovingFront();
         }

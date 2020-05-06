@@ -1,5 +1,8 @@
 package pwcg.product.bos.map.stalingrad;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
@@ -11,6 +14,22 @@ import pwcg.product.bos.country.BoSServiceManager;
 
 public class StalingradMap extends PWCGMap
 {
+    private static final Map<String, Integer> missionSpacingMyDate;
+    static
+    { 
+        missionSpacingMyDate = new TreeMap<>(); 
+        missionSpacingMyDate.put("19420101", 5); 
+        missionSpacingMyDate.put("19420801", 3); 
+        missionSpacingMyDate.put("19420823", 2); 
+        missionSpacingMyDate.put("19420823", 2); 
+        missionSpacingMyDate.put("19420905", 1); 
+        missionSpacingMyDate.put("19420927", 2); 
+        missionSpacingMyDate.put("19421014", 1); 
+        missionSpacingMyDate.put("19421119", 1); 
+        missionSpacingMyDate.put("19421225", 2); 
+        missionSpacingMyDate.put("19430120", 3); 
+        missionSpacingMyDate.put("19430202", 4); 
+    } 
 
     public StalingradMap()
     {
@@ -71,5 +90,11 @@ public class StalingradMap extends PWCGMap
         {
             return CountryFactory.makeCountryByCountry(Country.GERMANY);
         }
+    }
+
+    @Override
+    protected Map<String, Integer> getMissionSpacingMyDate()
+    {
+        return missionSpacingMyDate;
     }
 }

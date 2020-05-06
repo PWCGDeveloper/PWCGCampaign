@@ -1,5 +1,8 @@
 package pwcg.product.fc.map.arras;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
@@ -11,6 +14,26 @@ import pwcg.product.fc.country.FCServiceManager;
 
 public class ArrasMap extends PWCGMap
 {
+    private static final Map<String, Integer> missionSpacingMyDate;
+    static
+    { 
+        missionSpacingMyDate = new TreeMap<>(); 
+        missionSpacingMyDate.put("19170801", 2); 
+        missionSpacingMyDate.put("19171120", 1); 
+        missionSpacingMyDate.put("19171203", 4); 
+        missionSpacingMyDate.put("19180101", 6); 
+        missionSpacingMyDate.put("19180201", 4); 
+        missionSpacingMyDate.put("19180301", 3); 
+        missionSpacingMyDate.put("19180321", 1); 
+        missionSpacingMyDate.put("19180429", 2); 
+        missionSpacingMyDate.put("19180528", 1); 
+        missionSpacingMyDate.put("19180610", 2); 
+        missionSpacingMyDate.put("19180706", 3); 
+        missionSpacingMyDate.put("19180815", 1); 
+        missionSpacingMyDate.put("19180920", 2); 
+        missionSpacingMyDate.put("19181101", 3); 
+    } 
+
 
     public ArrasMap()
     {
@@ -82,6 +105,12 @@ public class ArrasMap extends PWCGMap
         {
             return CountryFactory.makeCountryByCountry(Country.GERMANY);
         }
+    }
+
+    @Override
+    protected Map<String, Integer> getMissionSpacingMyDate()
+    {
+        return missionSpacingMyDate;
     }
 
 }

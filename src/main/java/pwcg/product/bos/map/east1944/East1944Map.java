@@ -1,5 +1,8 @@
 package pwcg.product.bos.map.east1944;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
@@ -11,6 +14,16 @@ import pwcg.product.bos.country.BoSServiceManager;
 
 public class East1944Map extends PWCGMap
 {
+    private static final Map<String, Integer> missionSpacingMyDate;
+    static
+    { 
+        missionSpacingMyDate = new TreeMap<>(); 
+        missionSpacingMyDate.put("19440101", 3); 
+        missionSpacingMyDate.put("19440316", 2); 
+        missionSpacingMyDate.put("19440612", 1); 
+        missionSpacingMyDate.put("19440908", 2); 
+        missionSpacingMyDate.put("19441011", 3); 
+    } 
 
     public East1944Map()
     {
@@ -74,5 +87,11 @@ public class East1944Map extends PWCGMap
         {
             return CountryFactory.makeCountryByCountry(Country.GERMANY);
         }
+    }
+
+    @Override
+    protected Map<String, Integer> getMissionSpacingMyDate()
+    {
+        return missionSpacingMyDate;
     }
 }

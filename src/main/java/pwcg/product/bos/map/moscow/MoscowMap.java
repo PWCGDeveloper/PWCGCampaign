@@ -1,5 +1,8 @@
 package pwcg.product.bos.map.moscow;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
@@ -11,6 +14,17 @@ import pwcg.product.bos.country.BoSServiceManager;
 
 public class MoscowMap extends PWCGMap
 {
+    private static final Map<String, Integer> missionSpacingMyDate;
+    static
+    { 
+        missionSpacingMyDate = new TreeMap<>(); 
+        missionSpacingMyDate.put("19411001", 2); 
+        missionSpacingMyDate.put("19411010", 1); 
+        missionSpacingMyDate.put("19421205", 2); 
+        missionSpacingMyDate.put("19420101", 3); 
+        missionSpacingMyDate.put("19420110", 4); 
+        missionSpacingMyDate.put("19420201", 5); 
+    } 
 
     public MoscowMap()
     {
@@ -68,5 +82,11 @@ public class MoscowMap extends PWCGMap
         {
             return CountryFactory.makeCountryByCountry(Country.GERMANY);
         }
+    }
+
+    @Override
+    protected Map<String, Integer> getMissionSpacingMyDate()
+    {
+        return missionSpacingMyDate;
     }
 }

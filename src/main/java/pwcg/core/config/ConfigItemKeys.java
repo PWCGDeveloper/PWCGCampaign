@@ -185,29 +185,4 @@ public class ConfigItemKeys
 	public static final String TakeoffWaypointAltitudeKey = "TakeoffWaypointAltitude";
 
 	public static final String TakeoffTimeKey = "TakeoffTime";
-	
-	public static final String MissionSpacing01MinKey = "MissionSpacing01Min";	
-	public static final String MissionSpacing01MaxAdditionalKey = "MissionSpacing01MaxAdditional";
-	public static final String MissionSpacing02MinKey = "MissionSpacing02Min";
-	public static final String MissionSpacing02MaxAdditionalKey = "MissionSpacing02MaxAdditional";
-	public static final String MissionSpacing03MinKey = "MissionSpacing03Min";
-	public static final String MissionSpacing03MaxAdditionalKey = "MissionSpacing03MaxAdditional";
-	public static final String MissionSpacing04MinKey = "MissionSpacing04Min";
-	public static final String MissionSpacing04MaxAdditionalKey = "MissionSpacing04MaxAdditional";
-	public static final String MissionSpacing05MinKey = "MissionSpacing05Min";
-	public static final String MissionSpacing05MaxAdditionalKey = "MissionSpacing05MaxAdditional";
-	public static final String MissionSpacing06MinKey = "MissionSpacing06Min";
-	public static final String MissionSpacing06MaxAdditionalKey = "MissionSpacing06MaxAdditional";
-	public static final String MissionSpacing07MinKey = "MissionSpacing07Min";
-	public static final String MissionSpacing07MaxAdditionalKey = "MissionSpacing07MaxAdditional";
-	public static final String MissionSpacing08MinKey = "MissionSpacing08Min";
-	public static final String MissionSpacing08MaxAdditionalKey = "MissionSpacing08MaxAdditional";
-	public static final String MissionSpacing09MinKey = "MissionSpacing09Min";
-	public static final String MissionSpacing09MaxAdditionalKey = "MissionSpacing09MaxAdditional";
-	public static final String MissionSpacing10MinKey = "MissionSpacing10Min";
-	public static final String MissionSpacing10MaxAdditionalKey = "MissionSpacing10MaxAdditional";
-	public static final String MissionSpacing11MinKey = "MissionSpacing11Min";
-	public static final String MissionSpacing11MaxAdditionalKey = "MissionSpacing11MaxAdditional";
-	public static final String MissionSpacing12MinKey = "MissionSpacing12Min";
-	public static final String MissionSpacing12MaxAdditionalKey = "MissionSpacing12MaxAdditional";
 }
