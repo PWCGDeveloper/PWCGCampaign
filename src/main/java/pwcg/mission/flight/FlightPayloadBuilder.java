@@ -52,11 +52,13 @@ public class FlightPayloadBuilder
         {
             if (!flight.getFlightInformation().isAirStart())
             {
-                plane.setFuel(1.0);
+                double fuel = FuelGroundStartCalculator.calculateAirStartFuel(plane);
+                plane.setFuel(fuel);
             }
             else
             {
-                plane.setFuel(0.6);
+                double fuel = FuelAirStartCalculator.calculateAirStartFuel(plane);
+                plane.setFuel(fuel);
             }
         }
     }
