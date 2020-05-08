@@ -39,7 +39,6 @@ public class CampaignGeneratorProfileGUI extends ImageResizingPanel implements A
     private ButtonGroup coopGroup = new ButtonGroup();
     private ButtonModel singlePlayerButtonModel = null;
     private ButtonModel coopCooperativeButtonModel = null;
-    private ButtonModel coopCompetitiveButtonModel = null;
     
     private JTextField campaignNameTextBox;
      
@@ -107,11 +106,6 @@ public class CampaignGeneratorProfileGUI extends ImageResizingPanel implements A
         coopButtonPanelGrid.add(coopCooperativeButton);
         coopCooperativeButtonModel = coopCooperativeButton.getModel();
         coopGroup.add(coopCooperativeButton);
-
-        JRadioButton coopCompetitiveButton = PWCGButtonFactory.makeRadioButton("Coop Competitive Mode", "Mission Mode: Coop Competitive", "Select coop player mode for generated missions", false, this);              
-        coopButtonPanelGrid.add(coopCompetitiveButton);
-        coopCompetitiveButtonModel = coopCompetitiveButton.getModel();
-        coopGroup.add(coopCompetitiveButton);
         
         shapePanel.add(coopButtonPanelGrid, BorderLayout.NORTH);
         
@@ -235,12 +229,8 @@ public class CampaignGeneratorProfileGUI extends ImageResizingPanel implements A
 	            campaignMode = CampaignMode.CAMPAIGN_MODE_COOP;;
 	            coopGroup.setSelected(coopCooperativeButtonModel, true);
 	        }
-	        else if (ae.getActionCommand().contains("Coop Competitive"))
-	        {
-	            campaignMode = CampaignMode.CAMPAIGN_MODE_COMPETITIVE;;
-	            coopGroup.setSelected(coopCompetitiveButtonModel, true);
-	        }
-		    setCampaignProfileData();
+
+	        setCampaignProfileData();
             
             revalidate();
             repaint();

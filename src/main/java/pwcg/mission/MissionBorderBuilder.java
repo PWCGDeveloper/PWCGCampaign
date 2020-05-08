@@ -3,7 +3,7 @@ package pwcg.mission;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.CampaignMode;
+import pwcg.campaign.CampaignModeChooser;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.shipping.ShippingLane;
 import pwcg.campaign.squadron.Squadron;
@@ -51,7 +51,7 @@ public class MissionBorderBuilder
     private CoordinateBox buildCoordinateBoxNearFront() throws PWCGException
     {
         IMissionCenterBuilder missionCenterBuilder = null;
-        if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COMPETITIVE)
+        if (CampaignModeChooser.isCampaignModeCompetitive(campaign))
         {
             missionCenterBuilder = new MissionCenterBuilderMulti(campaign, participatingPlayers);
         }

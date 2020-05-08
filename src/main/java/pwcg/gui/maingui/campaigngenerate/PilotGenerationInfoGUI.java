@@ -72,7 +72,7 @@ public class PilotGenerationInfoGUI extends JPanel implements ActionListener
 
 		// Make a button for each service
         ButtonGroup serviceButtonGroup = new ButtonGroup();
-		for (ArmedService service : ArmedServiceFinder.getArmedServicesForCampaignCreation(campaign))
+		for (ArmedService service : ArmedServiceFinder.getArmedServicesForPilotCreation(campaign))
 		{
 	        String icon = service.getServiceIcon() + ".jpg";
 	        JRadioButton serviceButton = makeRadioButton(service, icon);

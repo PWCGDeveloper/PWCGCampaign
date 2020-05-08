@@ -17,8 +17,9 @@ import pwcg.mission.options.MissionOptions;
 
 public class MissionDescriptionSinglePlayer implements IMissionDescription 
 {
-    private Mission mission = null;
-    private Campaign campaign = null;
+    private Mission mission;
+    private Campaign campaign;
+    private IFlight playerFlight;
     
 	private String author = "Brought to you by PWCGCampaign";
 	private String title = "";
@@ -52,17 +53,16 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 	private ArrayList<String> enemyIntHtmlList = new ArrayList<String>();
 	private ArrayList<String> friendlyIntHtmlList = new ArrayList<String>();
 	
-    public MissionDescriptionSinglePlayer (Campaign campaign, Mission mission)
+    public MissionDescriptionSinglePlayer (Campaign campaign, Mission mission, IFlight playerFlight)
     {
         this.mission = mission;
         this.campaign = campaign;
+        this.playerFlight = playerFlight;
         campaignDateString = DateUtils.getDateStringDashDelimitedYYYYMMDD(campaign.getDate());
     }
 
 	public String createDescription() throws PWCGException 
     {
-		IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-
         MapWeather mapWeather = PWCGContext.getInstance().getCurrentMap().getMapWeather();
         setClouds(mapWeather.getWeatherDescription());
         setWind(mapWeather.getWindLayers().get(0));

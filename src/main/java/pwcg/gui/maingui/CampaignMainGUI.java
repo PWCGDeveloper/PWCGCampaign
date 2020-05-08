@@ -57,7 +57,7 @@ import pwcg.gui.utils.ToolTipManager;
 public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
-    private static final String VERSION = "   PWCG Version 8.7.4";
+    private static final String VERSION = "   PWCG Version 8.9.0";
 
 	private List<JButton> campaignButtonList = new ArrayList<JButton>();
 	
@@ -427,10 +427,6 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
                     else if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COOP)
                     {
                         icon = "CoopIcon.jpg";
-                    }
-                    else if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COMPETITIVE)
-                    {
-                        icon = "CoopCompIcon.jpg";
                     }
     				else
     				{

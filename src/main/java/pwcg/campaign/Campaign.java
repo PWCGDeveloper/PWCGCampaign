@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
-import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.context.SquadronManager;
@@ -59,10 +58,6 @@ public class Campaign
         }
 
         CampaignFixer.fixCampaign(this);
-
-        CampaignModeChooser campaignModeChooser = new CampaignModeChooser(this);
-        CampaignMode campaignMode = campaignModeChooser.chooseCampaignMode();
-        this.getCampaignData().setCampaignMode(campaignMode);
 
         InitialSquadronBuilder initialSquadronBuilder = new InitialSquadronBuilder();
         initialSquadronBuilder.buildNewSquadrons(this);
@@ -255,18 +250,6 @@ public class Campaign
             playerSquadrons.add(playerSquadron);
         }
         return playerSquadrons;
-    }
-
-    public Side determineCampaignSide() throws PWCGException
-    {
-        if (campaignData.getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COMPETITIVE)
-        {
-            return Side.NEUTRAL;
-        }
-        else
-        {
-            return findReferenceSquadron().determineSide();
-        }
     }
 
     public boolean isCoop()

@@ -13,7 +13,6 @@ import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
@@ -34,11 +33,13 @@ public class BriefingMapSquadronSelector implements ActionListener
     private IBriefingSquadronSelectedCallback squadronsSelectedCallback;
     private Map<Integer, JCheckBox> squadronCheckBoxes = new HashMap<>();
     private Map<Integer, String> selectedSquadrons = new HashMap<>();
+    private BriefingContext briefingContext;
 
-    public BriefingMapSquadronSelector(Mission mission, IBriefingSquadronSelectedCallback squadronsSelected)
+    public BriefingMapSquadronSelector(Mission mission, IBriefingSquadronSelectedCallback squadronsSelected,BriefingContext briefingContext)
     {
         this.mission = mission;
         this.squadronsSelectedCallback = squadronsSelected;
+        this.briefingContext = briefingContext;
     }
 
     public JPanel makeComboBox() throws PWCGException
@@ -57,12 +58,8 @@ public class BriefingMapSquadronSelector implements ActionListener
 
     private void addFlights(JPanel squadronSelectorGrid) throws PWCGException
     {
-        if (mission.getCampaign().getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COMPETITIVE)
-        {
-            return;
-        }
-
-        Side playerFlightSide = mission.getMissionFlightBuilder().getPlayerFlights().get(0).getSquadron().getCountry().getSide();
+        IFlight selectedFlight = briefingContext.getSelectedFlight();
+        Side selectedFlightSide = selectedFlight.getSquadron().determineSide();
 
         JButton checkBoxAll = PWCGButtonFactory.makeMenuButton("All Squadrons", "" + ALL_SQUADRONS, this);
         squadronSelectorGrid.add(checkBoxAll);
@@ -75,7 +72,7 @@ public class BriefingMapSquadronSelector implements ActionListener
             Squadron squadron = aiflight.getSquadron();
             Side squadronSide = squadron.getCountry().getSide();
 
-            if (includeSquadron(playerFlightSide, squadronSide))
+            if (includeSquadron(selectedFlightSide, squadronSide))
             {
                 JCheckBox checkBox = makeCheckBox(squadron.determineDisplayName(mission.getCampaign().getDate()), "" + squadron.getSquadronId());
                 squadronCheckBoxes.put(squadron.getSquadronId(), checkBox);

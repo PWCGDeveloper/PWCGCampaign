@@ -79,9 +79,9 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
             this.removeAll();
             
             briefingFlightChooser = new BriefingFlightChooser(mission, this);
-            briefingFlightChooser.makeComboBox();
+            briefingFlightChooser.createBriefingSquadronSelectPanel();
 
-            setLeftPanel(makeButtonPanel());
+            setLeftPanel(makeLeftPanel());
             setCenterPanel(createCenterPanel());
         }
         catch (Exception e)
@@ -91,12 +91,22 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
         }
     }
 
+    private JPanel makeLeftPanel() throws PWCGException 
+    {
+        String imagePath = getSideImage(campaignHomeGui.getCampaign(), "BriefingNav.jpg");
+        ImageResizingPanel leftPanel = new ImageResizingPanel(imagePath);
+        leftPanel.setLayout(new BorderLayout());
+        leftPanel.setOpaque(false);
+
+        JPanel buttonPanel = makeButtonPanel();
+        leftPanel.add(buttonPanel, BorderLayout.NORTH);
+        leftPanel.add(briefingFlightChooser.getFlightChooserPanel(), BorderLayout.CENTER);
+        return leftPanel;
+    }
+
     private JPanel makeButtonPanel() throws PWCGException
     {
-        String imagePath = getSideImage(campaign, "BriefingNav.jpg");
-
-        ImageResizingPanel pilotAssignmentNavPanel = new ImageResizingPanel(imagePath);
-        pilotAssignmentNavPanel.setLayout(new BorderLayout());
+        JPanel pilotAssignmentNavPanel = new JPanel(new BorderLayout());
         pilotAssignmentNavPanel.setOpaque(false);
 
         JPanel buttonGrid = new JPanel(new GridLayout(0, 1));
@@ -140,9 +150,6 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
     private JPanel createCenterPanel() throws PWCGException
     {
         briefingMapCenterPanel = new JPanel(new BorderLayout());
-
-        JPanel flightChooserPanel = createFlightChooserPanel();
-        briefingMapCenterPanel.add(flightChooserPanel, BorderLayout.NORTH);
 
         makePilotPanel();
         briefingMapCenterPanel.add(pilotPanel, BorderLayout.CENTER);
@@ -192,15 +199,6 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
         pilotPanel.add(BorderLayout.SOUTH, unassignedPilotPanel);
 
         return pilotPanel;
-    }
-    
-    private JPanel createFlightChooserPanel() throws PWCGException
-    {
-        JPanel flightChooserPanel = new JPanel(new BorderLayout());
-        flightChooserPanel.setOpaque(false);
-        
-        flightChooserPanel.add(briefingFlightChooser.getCbFlightChooser(), BorderLayout.NORTH);
-        return flightChooserPanel;
     }
 
     private JPanel createAssignedPilots() throws PWCGException
@@ -713,8 +711,6 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
         autoStartFile.write();
     }
 
-
-
     private void pushEditsToMission() throws PWCGException
     {
         BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingHandler();
@@ -727,6 +723,13 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
     {
         pushEditsToMission();
         briefingContext.changeSelectedFlight(squadron);
+        setCenterPanel(createCenterPanel());
+    }
+    
+    @Override
+    public void refreshScreen() throws PWCGException
+    {
+        briefingFlightChooser.setSelectedButton(briefingContext.getSelectedFlight().getSquadron().getSquadronId());
         setCenterPanel(createCenterPanel());
     }
 }

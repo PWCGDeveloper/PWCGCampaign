@@ -23,21 +23,31 @@ public enum SquadronTestProfile
     RFC_2_PROFILE("RFC2", 302002, "19180331", CampaignMode.CAMPAIGN_MODE_SINGLE),
     RFC_46_PROFILE("RFC46", 302046, "19170801", CampaignMode.CAMPAIGN_MODE_SINGLE),
 
-    COOP_COMPETITIVE_PROFILE("JG51_Late_Competitive",20111051, "19420501", CampaignMode.CAMPAIGN_MODE_COMPETITIVE),
-    COOP_COOPERATIVE_PROFILE("JG51_Late_Coop",20111051, "19420501", CampaignMode.CAMPAIGN_MODE_COOP);
+    COOP_COMPETITIVE_PROFILE("JG51_Late_Competitive",20111051, "19420501", CampaignMode.CAMPAIGN_MODE_COOP, true),
+    COOP_COOPERATIVE_PROFILE("JG51_Late_Coop",20111051, "19420501", CampaignMode.CAMPAIGN_MODE_COOP, false);
 
    private int squadronId;
    private String dateString;
    private String key;
    private CampaignMode campaignMode;
-    
-    private SquadronTestProfile(String key, int squadronId, String dateString, CampaignMode campaignMode)
-    {
-        this.key = key;
-        this.squadronId = squadronId;
-        this.dateString = dateString;
-        this.campaignMode = campaignMode;
-    }
+   private boolean competitive = false;
+   
+   private SquadronTestProfile(String key, int squadronId, String dateString, CampaignMode campaignMode)
+   {
+       this.key = key;
+       this.squadronId = squadronId;
+       this.dateString = dateString;
+       this.campaignMode = campaignMode;
+   }
+   
+   private SquadronTestProfile(String key, int squadronId, String dateString, CampaignMode campaignMode, boolean iscompetitive)
+   {
+       this.key = key;
+       this.squadronId = squadronId;
+       this.dateString = dateString;
+       this.campaignMode = campaignMode;
+       this.competitive = iscompetitive;
+   }
 
     public String getKey()
     {
@@ -58,4 +68,9 @@ public enum SquadronTestProfile
 	{
 		return campaignMode;
 	}
+
+    public boolean isCompetitive()
+    {
+        return competitive;
+    }
 }

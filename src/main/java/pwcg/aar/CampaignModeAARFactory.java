@@ -10,14 +10,16 @@ import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.ClaimResolverS
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.VerifiedVictoryGenerator;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.CampaignMode;
+import pwcg.campaign.CampaignModeChooser;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.core.exception.PWCGException;
 
 public class CampaignModeAARFactory
 {
-    public static IClaimResolver createClaimResolver(Campaign campaign, AARContext aarContext, Map<Integer, PlayerDeclarations> playerDeclarations)
+    public static IClaimResolver createClaimResolver(Campaign campaign, AARContext aarContext, Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
     {
-        if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COMPETITIVE)
+        // TODO COMP COOP this sucks but still no better solution
+        if (CampaignModeChooser.isCampaignModeCompetitive(campaign))
         {
             return new ClaimResolverCompetitiveCoop(campaign, aarContext.getMissionEvaluationData().getVictoryResults());
         }
@@ -28,5 +30,4 @@ public class CampaignModeAARFactory
             return new ClaimResolverSinglePlayer(campaign, verifiedVictoryGenerator, claimDenier, playerDeclarations);
         }
     }
-
 }

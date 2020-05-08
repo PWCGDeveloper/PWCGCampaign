@@ -69,7 +69,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
     }
     
     @Override
-    public void refreshCenterPanel() throws PWCGException
+    public void refreshScreen() throws PWCGException
     {
         if (needContextRefresh)
         {

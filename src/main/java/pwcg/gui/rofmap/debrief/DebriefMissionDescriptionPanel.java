@@ -77,10 +77,16 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
         JPanel buttonGrid = new JPanel();
         buttonGrid.setLayout(new GridLayout(0,1));
         buttonGrid.setOpaque(false);
-            
-        JButton submitButton = PWCGButtonFactory.makeMenuButton("Continue", "Continue", this);
-        buttonGrid.add(submitButton);
-
+        
+        JButton submitWithClaimsButton = PWCGButtonFactory.makeMenuButton("Continue With Claims", "submitWithClaims", this);
+        buttonGrid.add(submitWithClaimsButton);
+        
+        if (campaign.getCampaignData().isCoop())
+        {
+            JButton submitWithoutClaimsButton = PWCGButtonFactory.makeMenuButton("Continue Without Claims", "submitWithoutClaims", this);
+            buttonGrid.add(submitWithoutClaimsButton);
+        }
+        
         buttonGrid.add(PWCGButtonFactory.makeDummy());
 
         JButton cancelButton = PWCGButtonFactory.makeMenuButton("Cancel AAR", "Cancel", this);
@@ -163,16 +169,13 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
             {
                 backToCampaign();
             }
-            else if (action.equals("Continue"))
+            else if (action.equals("submitWithClaims"))
             {
-                if (aarCoordinator.getAarContext().getPreliminaryData().getPwcgMissionData().getMissionHeader().isSingleHumanSquadron())
-                {
-                    showClaims();
-                }
-                else
-                {
-                    submitReportDirectlyForCoop();
-                }
+                showClaims();
+            }
+            else
+            {
+                submitReportUsingOnlyLogs();
             }
         }
         catch (Exception e)
@@ -192,7 +195,7 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
     }
     
     
-    private void submitReportDirectlyForCoop() throws PWCGException
+    private void submitReportUsingOnlyLogs() throws PWCGException
     {
         SoundManager.getInstance().playSound("Stapling.WAV");   
         AARSubmitter submitter = new AARSubmitter();
@@ -215,7 +218,6 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
         debriefMap.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(debriefMap);
     
-        // Reset the mission after a combat report has been submitted
         campaign.setCurrentMission(null);
     }
 

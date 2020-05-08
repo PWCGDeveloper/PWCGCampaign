@@ -1,24 +1,35 @@
 package pwcg.gui.rofmap.brief;
 
-import java.awt.Color;
-import java.awt.Font;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 
-import javax.swing.JComboBox;
+import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.gui.colors.ColorMap;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.dialogs.ErrorDialog;
+import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 
 public class BriefingFlightChooser implements ActionListener
 {
     private Mission mission;
-    private JComboBox<String> cbFlightChooser;
     private IFlightChanged flightChanged;
+    private JPanel flightChooserPanel;
+
+    private ButtonGroup flightChooserButtonGroup = new ButtonGroup();
+    private Map<Integer, ButtonModel> flightChooserButtonModels = new HashMap<>();
 
     public BriefingFlightChooser(Mission mission, IFlightChanged flightChanged)
     {
@@ -26,24 +37,61 @@ public class BriefingFlightChooser implements ActionListener
         this.flightChanged = flightChanged;
     }
     
-    public void makeComboBox() throws PWCGException
-    {
-        Color jComboBoxBackgroundColor = ColorMap.PAPER_BACKGROUND;
-        Font font = MonitorSupport.getPrimaryFontLarge();
+    public void createBriefingSquadronSelectPanel() throws PWCGException
+    {        
+        JPanel flightChooserButtonPanelGrid = new JPanel(new GridLayout(0,1));
+        flightChooserButtonPanelGrid.setOpaque(false);
 
-        cbFlightChooser = new JComboBox<String>();
+        JLabel spacerLabel1 = PWCGButtonFactory.makeDummy();        
+        flightChooserButtonPanelGrid.add(spacerLabel1);
+
+        JLabel spacerLabel2 = PWCGButtonFactory.makeDummy();        
+        flightChooserButtonPanelGrid.add(spacerLabel2);
+
+        JLabel spacerLabel3 = PWCGButtonFactory.makeDummy();        
+        flightChooserButtonPanelGrid.add(spacerLabel3);
+
+        Map<Integer, Squadron> playerSquadronsInMission = new HashMap<>();
         for (IFlight playerFlight : mission.getMissionFlightBuilder().getPlayerFlights())
         {
             Squadron squadron = playerFlight.getSquadron();
-            cbFlightChooser.addItem(squadron.determineDisplayName(mission.getCampaign().getDate()));
+            playerSquadronsInMission.put(squadron.getSquadronId(), squadron);
         }
 
-        cbFlightChooser.setOpaque(false);
-        cbFlightChooser.setBackground(jComboBoxBackgroundColor);
-        cbFlightChooser.setSelectedIndex(0);
-        cbFlightChooser.setActionCommand("FlightChanged");
-        cbFlightChooser.addActionListener(this);
-        cbFlightChooser.setFont(font);
+        for (Squadron squadron : playerSquadronsInMission.values())
+        {
+            JRadioButton airLowDensity = PWCGButtonFactory.makeRadioButton(
+                    squadron.determineDisplayName(mission.getCampaign().getDate()), 
+                    "FlightChanged:" + squadron.getSquadronId(),
+                    "Select squadron to change context", 
+                    false, 
+                    this);       
+            flightChooserButtonPanelGrid.add(airLowDensity);
+            ButtonModel model = airLowDensity.getModel();
+            flightChooserButtonGroup.add(airLowDensity);
+            flightChooserButtonModels.put(squadron.getSquadronId(), model);
+        }
+
+        flightChooserPanel = new JPanel(new BorderLayout());
+        flightChooserPanel.setOpaque(false);
+        flightChooserPanel.add(flightChooserButtonPanelGrid, BorderLayout.SOUTH);
+
+        JPanel shapePanel = new JPanel(new BorderLayout());
+        shapePanel.setOpaque(false);
+
+        shapePanel.add(flightChooserButtonPanelGrid, BorderLayout.NORTH);
+        flightChooserPanel.add(shapePanel, BorderLayout.CENTER);
+    }
+
+    public void setSelectedButton(int squadronId)
+    {
+        ButtonModel model = flightChooserButtonModels.get(squadronId);
+        flightChooserButtonGroup.setSelected(model, true);
+    }
+
+    public JPanel getFlightChooserPanel()
+    {
+        return flightChooserPanel;
     }
 
     @Override
@@ -51,20 +99,21 @@ public class BriefingFlightChooser implements ActionListener
     {
         try
         {
-            if (ae.getActionCommand().equalsIgnoreCase("FlightChanged"))
-            {
-                int squadronIndex = cbFlightChooser.getSelectedIndex();
-                Squadron squadron = mission.getMissionFlightBuilder().getPlayerFlights().get(squadronIndex).getSquadron();
-                flightChanged.flightChanged(squadron);
-            }  
-        }
-        catch (PWCGException e)
-        {
-        }
-    }
+            String action = ae.getActionCommand();
+            int index = action.indexOf(":");
+            String selectedSquadronId = action.substring(index + 1);
+            int squadronId = Integer.valueOf(selectedSquadronId);
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+            
+            setSelectedButton(squadronId);
 
-    public JComboBox<String> getCbFlightChooser()
-    {
-        return cbFlightChooser;
+            flightChanged.flightChanged(squadron);
+        }
+        catch (Exception e)
+        {
+            PWCGLogger.logException(e);
+            ErrorDialog.internalError(e.getMessage());
+        }
+
     }
 }

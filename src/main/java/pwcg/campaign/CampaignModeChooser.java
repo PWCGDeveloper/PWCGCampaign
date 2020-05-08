@@ -6,38 +6,19 @@ import pwcg.core.exception.PWCGException;
 
 public class CampaignModeChooser
 {
-    private Campaign campaign;
-    
-    public CampaignModeChooser(Campaign campaign)
-    {
-        this.campaign = campaign;
-    }
-    
-    public CampaignMode chooseCampaignMode() throws PWCGException
-    {
-        if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_NONE)
-        {
-            return determineCampaignMode();
-        }
-        else
-        {
-            return campaign.getCampaignData().getCampaignMode();
-        }
-    }
-
-    private CampaignMode determineCampaignMode() throws PWCGException
+    public static boolean isCampaignModeCompetitive(Campaign campaign) throws PWCGException
     {
         if (campaign.getCampaignData().isCoop())
         {
-            return determineCoopCampaignMode();
+            return isCoopCampaignModeCompetitive(campaign);
         }
         else
         {
-            return CampaignMode.CAMPAIGN_MODE_SINGLE;
+            return false;
         }
     }
 
-    private CampaignMode determineCoopCampaignMode() throws PWCGException
+    private static boolean isCoopCampaignModeCompetitive(Campaign campaign) throws PWCGException
     {
         boolean isAxis = false;
         boolean isAllied = false;
@@ -56,11 +37,11 @@ public class CampaignModeChooser
         
         if (isAxis && isAllied)
         {
-            return CampaignMode.CAMPAIGN_MODE_COMPETITIVE;
+            return true;
         }
         else
         {
-            return CampaignMode.CAMPAIGN_MODE_COOP;
+            return false;
         }
     }
 }

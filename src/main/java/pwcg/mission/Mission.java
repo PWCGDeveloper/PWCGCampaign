@@ -137,7 +137,7 @@ public class Mission
     {
         IMissionFile missionFile = MissionFileFactory.createMissionFile(this);
 
-        IMissionDescription missionDescription = MissionDescriptionFactory.buildMissionDescription(campaign, this);
+        IMissionDescription missionDescription = MissionDescriptionFactory.buildMissionDescription(campaign, this, missionFlightBuilder.getReferencePlayerFlight());
         String missionDescriptionText = missionDescription.createDescription();
 
         MissionDescriptionFile missionDescriptionFile = new MissionDescriptionFile();

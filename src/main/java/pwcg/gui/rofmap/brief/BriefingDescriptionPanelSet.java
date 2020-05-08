@@ -15,6 +15,7 @@ import javax.swing.JTextArea;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
@@ -33,14 +34,15 @@ import pwcg.mission.IMissionDescription;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionDescriptionFactory;
 
-public class BriefingDescriptionPanelSet extends PwcgGuiContext implements ActionListener
+public class BriefingDescriptionPanelSet extends PwcgGuiContext implements ActionListener, IFlightChanged
 {
     private CampaignHomeGUI campaignHomeGui = null;
 
 	private static final long serialVersionUID = 1L;
-    private JTextArea missionText = new JTextArea();
+    private JTextArea missionTextArea = new JTextArea();
     private Mission mission;
     private BriefingContext briefingContext;
+    private BriefingFlightChooser briefingFlightChooser;
 
 	public BriefingDescriptionPanelSet(CampaignHomeGUI campaignHomeGui, Mission mission) throws PWCGException 
 	{
@@ -59,8 +61,11 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
 	{
 		try
 		{
+            briefingFlightChooser = new BriefingFlightChooser(mission, this);
+            briefingFlightChooser.createBriefingSquadronSelectPanel();
+
 			this.removeAll();
-			setLeftPanel(makeButtonPanel());
+			setLeftPanel(makeLeftPanel());
 			setCenterPanel(makeBriefingPanel());
 	        setMissionText();
 		}
@@ -71,12 +76,22 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
 		}
 	}
 
+    private JPanel makeLeftPanel() throws PWCGException 
+    {
+        String imagePath = getSideImage(campaignHomeGui.getCampaign(), "BriefingNav.jpg");
+        ImageResizingPanel leftPanel = new ImageResizingPanel(imagePath);
+        leftPanel.setLayout(new BorderLayout());
+        leftPanel.setOpaque(false);
+
+        JPanel buttonPanel = makeButtonPanel();
+        leftPanel.add(buttonPanel, BorderLayout.NORTH);
+        leftPanel.add(briefingFlightChooser.getFlightChooserPanel(), BorderLayout.CENTER);
+        return leftPanel;
+    }
+    
     private JPanel makeButtonPanel() throws PWCGException 
     {
-        String imagePath = getSideImage(mission.getCampaign(), "BriefingNav.jpg");
-
-        ImageResizingPanel buttonPanel = new ImageResizingPanel(imagePath);
-        buttonPanel.setLayout(new BorderLayout());
+        JPanel buttonPanel = new JPanel(new BorderLayout());
         buttonPanel.setOpaque(false);
 
         JPanel buttonGrid = new JPanel();
@@ -123,17 +138,17 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
         
         Font font = MonitorSupport.getBriefingChalkboardFont();
 
-        missionText.setFont(font);
-        missionText.setOpaque(false);
-        missionText.setLineWrap(true);
-        missionText.setWrapStyleWord(true);
-        missionText.setForeground(ColorMap.CHALK_FOREGROUND);
+        missionTextArea.setFont(font);
+        missionTextArea.setOpaque(false);
+        missionTextArea.setLineWrap(true);
+        missionTextArea.setWrapStyleWord(true);
+        missionTextArea.setForeground(ColorMap.CHALK_FOREGROUND);
         
         // Calculate the writable area of the text and generate margins scaled to screen size
         Insets margins = MonitorSupport.calculateInset(50, 35, 65, 35);
-        missionText.setMargin(margins);
+        missionTextArea.setMargin(margins);
         
-        missionTextPanel.add(missionText, BorderLayout.CENTER);
+        missionTextPanel.add(missionTextArea, BorderLayout.CENTER);
 
         return missionTextPanel;
     }
@@ -143,8 +158,10 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
         Campaign campaign = PWCGContext.getInstance().getCampaign();
 
         String missionPrefix = getMissionPrefix();
+        
+        
 
-        IMissionDescription missionDescription =MissionDescriptionFactory.buildMissionDescription(campaign, mission);
+        IMissionDescription missionDescription = MissionDescriptionFactory.buildMissionDescription(campaign, mission, briefingContext.getSelectedFlight());
         String missionDescriptionText = missionDescription.createDescription();
         
         StringBuffer missionDescriptionBuffer = new StringBuffer("");
@@ -154,7 +171,7 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
         String pilotList = makePilotList();
         missionDescriptionBuffer.append(pilotList.toString());
         
-        missionText.setText(missionDescriptionBuffer.toString());
+        missionTextArea.setText(missionDescriptionBuffer.toString());
     }
 
     private String getMissionPrefix()
@@ -214,6 +231,13 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
         }
     }
 
+    @Override
+    public void flightChanged(Squadron squadron) throws PWCGException
+    {
+        briefingContext.changeSelectedFlight(squadron);
+        setMissionText();
+    }
+
     private void forwardToBriefingMap() throws PWCGException 
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
@@ -247,5 +271,12 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
         campaignHomeGui.createPilotContext();
         campaignHomeGui.enableButtonsAsNeeded();
         CampaignGuiContextManager.getInstance().popFromContextStack();
+    }
+    
+    @Override
+    public void refreshScreen() throws PWCGException
+    {
+        setMissionText();
+        briefingFlightChooser.setSelectedButton(briefingContext.getSelectedFlight().getSquadron().getSquadronId());
     }
 }

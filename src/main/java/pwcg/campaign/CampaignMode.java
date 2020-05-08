@@ -4,8 +4,7 @@ public enum CampaignMode
 {
     CAMPAIGN_MODE_NONE("No Campaign Mode Selected"),
     CAMPAIGN_MODE_SINGLE("Single Player"),
-    CAMPAIGN_MODE_COOP("Cooperative"),
-    CAMPAIGN_MODE_COMPETITIVE("Competitive");
+    CAMPAIGN_MODE_COOP("Cooperative");
     
     String campaignModeName;
     

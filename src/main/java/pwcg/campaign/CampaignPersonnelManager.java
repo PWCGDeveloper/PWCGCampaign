@@ -21,7 +21,6 @@ public class CampaignPersonnelManager
     private Map<Integer, SquadronPersonnel> squadronPersonnelAllSquadrons = new HashMap<>();
     private Map<Integer, PersonnelReplacementsService> personnelReplacementsServices = new HashMap<>();
 	private CampaignAces campaignAces = new CampaignAces();
-	
 
 	public CampaignPersonnelManager(Campaign campaign) 
 	{

@@ -9,7 +9,6 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.CampaignHumanPilotHandler;
-import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
@@ -83,7 +82,7 @@ public abstract class CampaignCacheBase implements ICampaignCache
             Campaign campaign = makeCampaignFromModel(model);
             campaignCache.put(profile.getKey(), campaign);
             
-            if (model.getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COMPETITIVE)
+            if (profile.isCompetitive())
             {
 	            List<SquadronMember> players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
 	            assert(players.size() == 1);

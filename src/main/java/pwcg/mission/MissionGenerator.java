@@ -1,12 +1,9 @@
 package pwcg.mission;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
 import pwcg.mission.flight.FlightTypes;
@@ -23,7 +20,7 @@ public class MissionGenerator
     public Mission makeMission(MissionHumanParticipants participatingPlayers) throws PWCGException 
     {
         MissionProfile missionProfile = generateProfile(participatingPlayers);
-        List<FlightTypes> playerFlightTypes = finalizePlayerFlightType(participatingPlayers, missionProfile);
+        List<FlightTypes> playerFlightTypes = PlayerFlightTypeBuilder.finalizePlayerFlightType(campaign, participatingPlayers, missionProfile);
         Mission mission = buildMission(participatingPlayers, playerFlightTypes, missionProfile);
         return mission;
     }
@@ -48,19 +45,6 @@ public class MissionGenerator
         return mission;
     }
 
-    private List<FlightTypes> finalizePlayerFlightType(MissionHumanParticipants participatingPlayers, MissionProfile missionProfile) throws PWCGException
-    {
-        List<FlightTypes> playerFlightTypes = new ArrayList<>();
-        for (Integer squadronId : participatingPlayers.getParticipatingSquadronIds())
-        {
-            Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
-            PlayerFlightTypeBuilder playerFlightTypeBuilder = new PlayerFlightTypeBuilder(campaign);
-            FlightTypes requestedFlightType = playerFlightTypeBuilder.determinePlayerFlightType(playerSquadron, participatingPlayers, missionProfile.isNightMission());
-            playerFlightTypes.add(requestedFlightType);
-        }
-        return playerFlightTypes;
-    }
-    
     private MissionProfile generateProfile(MissionHumanParticipants participatingPlayers) throws PWCGException 
     {
         MissionProfileGenerator missionProfileGenerator = new MissionProfileGenerator(campaign, participatingPlayers);

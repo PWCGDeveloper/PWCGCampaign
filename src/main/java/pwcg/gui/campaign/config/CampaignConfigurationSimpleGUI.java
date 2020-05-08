@@ -185,7 +185,6 @@ public class CampaignConfigurationSimpleGUI extends PwcgGuiContext implements Ac
         airHighButtonModel = airHighDensity.getModel();
         airButtonGroup.add(airHighDensity);
         
-
         airButtonPanel.add(airButtonPanelGrid, BorderLayout.SOUTH);
         
         shapePanel.add(airButtonPanelGrid, BorderLayout.NORTH);
