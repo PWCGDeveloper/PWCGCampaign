@@ -82,15 +82,7 @@ public class Yak1S69Payload extends PlanePayload implements IPlanePayload
 
     protected void selectArmoredTargetPayload()
     {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 50)
-        {
-            selectedPrimaryPayloadId = 10;
-        }
-        else 
-        {
-            selectedPrimaryPayloadId = 5;
-        }
+        selectedPrimaryPayloadId = 5;
     }
 
     protected void selectMediumTargetPayload()
@@ -98,7 +90,7 @@ public class Yak1S69Payload extends PlanePayload implements IPlanePayload
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 80)
         {
-            selectedPrimaryPayloadId = 10;
+            selectedPrimaryPayloadId = 9;
         }
         else 
         {

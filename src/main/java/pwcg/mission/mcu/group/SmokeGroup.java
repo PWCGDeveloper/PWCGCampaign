@@ -239,4 +239,9 @@ public class SmokeGroup
     {
         return position;
     }
+
+    public List<Effect> getSmokeEffects()
+    {
+        return smokeEffects;
+    }
 }

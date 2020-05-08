@@ -69,44 +69,24 @@ public class Ju88A4Payload extends PlanePayload
     protected void selectSoftTargetPayload()
     {
         int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 60)
+        if (diceRoll < 80)
         {
             selectedPrimaryPayloadId = 2;
         }
-        else if (diceRoll < 80)
-        {
-            selectedPrimaryPayloadId = 0;
-        }
         else
         {
-            selectedPrimaryPayloadId = 1;
+            selectedPrimaryPayloadId = 0;
         }
     }    
 
     protected void selectArmoredTargetPayload()
     {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 85)
-        {
-            selectedPrimaryPayloadId = 6;
-        }
-        else
-        {
-            selectedPrimaryPayloadId = 9;
-        }
+        selectedPrimaryPayloadId = 6;
     }
 
     protected void selectMediumTargetPayload()
     {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 60)
-        {
-            selectedPrimaryPayloadId = 6;
-        }
-        else
-        {
-            selectedPrimaryPayloadId = 7;
-        }
+        selectedPrimaryPayloadId = 1;
     }
 
     protected void selectHeavyTargetPayload()

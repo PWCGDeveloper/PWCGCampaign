@@ -84,15 +84,7 @@ public class MiG3Ser24Payload extends PlanePayload implements IPlanePayload
 
     protected void selectArmoredTargetPayload()
     {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 50)
-        {
-            selectedPrimaryPayloadId = 6;
-        }
-        else 
-        {
-            selectedPrimaryPayloadId = 1;
-        }
+        selectedPrimaryPayloadId = 1;
     }
 
     protected void selectMediumTargetPayload()
@@ -100,7 +92,7 @@ public class MiG3Ser24Payload extends PlanePayload implements IPlanePayload
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 80)
         {
-            selectedPrimaryPayloadId = 6;
+            selectedPrimaryPayloadId = 5;
         }
         else 
         {

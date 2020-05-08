@@ -4,7 +4,6 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetCategory;
 
@@ -75,45 +74,21 @@ public class He111H16Payload extends PlanePayload
 
     protected void selectSoftTargetPayload()
     {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 80)
-        {
-            selectedPrimaryPayloadId = 1;
-        }
-        else
-        {
-            selectedPrimaryPayloadId = 4;
-        }
+        selectedPrimaryPayloadId = 0;
     }    
 
     protected void selectArmoredTargetPayload()
     {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 60)
-        {
-            selectedPrimaryPayloadId = 7;
-        }
-        else
-        {
-            selectedPrimaryPayloadId = 6;
-        }
+        selectedPrimaryPayloadId = 7;
     }
 
     protected void selectMediumTargetPayload()
     {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 90)
-        {
-            selectedPrimaryPayloadId = 3;
-        }
-        else
-        {
-            selectedPrimaryPayloadId = 6;
-        }
+        selectedPrimaryPayloadId = 2;
     }
 
     protected void selectHeavyTargetPayload()
     {
-        selectedPrimaryPayloadId = 10;
+        selectedPrimaryPayloadId = 7;
     }
 }

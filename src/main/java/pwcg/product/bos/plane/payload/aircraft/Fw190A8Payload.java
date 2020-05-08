@@ -79,7 +79,7 @@ public class Fw190A8Payload extends PlanePayload implements IPlanePayload
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectedPrimaryPayloadId = 3;
+            selectedPrimaryPayloadId = 2;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
@@ -87,7 +87,7 @@ public class Fw190A8Payload extends PlanePayload implements IPlanePayload
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectedPrimaryPayloadId = 3;
+            selectedPrimaryPayloadId = 2;
         }
     }
 

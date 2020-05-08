@@ -4,7 +4,6 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetCategory;
@@ -53,116 +52,28 @@ public class Pe2S35Payload extends PlanePayload implements IPlanePayload
         return selectedPrimaryPayloadId;
     }
 
-    protected void selectBombingPayload(IFlight flight)
+    private void selectBombingPayload(IFlight flight)
     {
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectBombingSoftTargetPayload();
+            selectedPrimaryPayloadId = 7;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectBombingArmoredTargetPayload();
+            selectedPrimaryPayloadId = 3;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectBombingMediumTargetPayload();
+            selectedPrimaryPayloadId = 3;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
-        {
-            selectBombingHeavyTargetPayload();
-        }
-    }
-
-    protected void selectGroundAttackPayload(IFlight flight)
-    {
-        selectedPrimaryPayloadId = 1;
-        if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
-        {
-            selectGroundAttackSoftTargetPayload();
-        }
-        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
-        {
-            selectGroundAttackArmoredTargetPayload();
-        }
-        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
-        {
-            selectGroundAttackMediumTargetPayload();
-        }
-        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
-        {
-            selectGroundAttackHeavyTargetPayload();
-        }
-    }
-
-    protected void selectBombingSoftTargetPayload()
-    {
-        selectedPrimaryPayloadId = 2;
-    }    
-
-    protected void selectBombingArmoredTargetPayload()
-    {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 80)
-        {
-            selectedPrimaryPayloadId = 5;
-        }
-        else
         {
             selectedPrimaryPayloadId = 6;
         }
     }
 
-    protected void selectBombingMediumTargetPayload()
+    private void selectGroundAttackPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 5;
-    }
-
-    protected void selectBombingHeavyTargetPayload()
-    {
-        selectedPrimaryPayloadId = 6;
-    }
-
-    protected void selectGroundAttackSoftTargetPayload()
-    {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 60)
-        {
-            selectedPrimaryPayloadId = 2;
-        }
-        else
-        {
-            selectedPrimaryPayloadId = 7;
-        }
-    }    
-
-    protected void selectGroundAttackArmoredTargetPayload()
-    {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 50)
-        {
-            selectedPrimaryPayloadId = 5;
-        }
-        else
-        {
-            selectedPrimaryPayloadId = 7;
-        }
-    }
-
-    protected void selectGroundAttackMediumTargetPayload()
-    {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 70)
-        {
-            selectedPrimaryPayloadId = 5;
-        }
-        else
-        {
-            selectedPrimaryPayloadId = 7;
-        }
-    }
-
-    protected void selectGroundAttackHeavyTargetPayload()
-    {
-        selectedPrimaryPayloadId = 6;
+        selectedPrimaryPayloadId = 7;
     }
 }

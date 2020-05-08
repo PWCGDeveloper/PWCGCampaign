@@ -88,7 +88,7 @@ public class P40E1Payload extends PlanePayload implements IPlanePayload
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 50)
         {
-            selectedPrimaryPayloadId = 8;
+            selectedPrimaryPayloadId = 4;
         }
         else 
         {
@@ -101,7 +101,7 @@ public class P40E1Payload extends PlanePayload implements IPlanePayload
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 80)
         {
-            selectedPrimaryPayloadId = 8;
+            selectedPrimaryPayloadId = 4;
         }
         else 
         {

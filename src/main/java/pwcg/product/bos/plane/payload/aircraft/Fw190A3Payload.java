@@ -4,7 +4,6 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetCategory;
@@ -71,45 +70,21 @@ public class Fw190A3Payload extends PlanePayload implements IPlanePayload
 
     protected void selectSoftTargetPayload()
     {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 80)
-        {
-            selectedPrimaryPayloadId = 1;
-        }
-        else
-        {
-            selectedPrimaryPayloadId = 2;
-        }
+        selectedPrimaryPayloadId = 1;
     }    
 
     protected void selectArmoredTargetPayload()
     {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 70)
-        {
-            selectedPrimaryPayloadId = 3;
-        }
-        else
-        {
-            selectedPrimaryPayloadId = 2;
-        }
+        selectedPrimaryPayloadId = 2;
     }
 
     protected void selectMediumTargetPayload()
     {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 90)
-        {
-            selectedPrimaryPayloadId = 2;
-        }
-        else
-        {
-            selectedPrimaryPayloadId = 3;
-        }
+        selectedPrimaryPayloadId = 2;
     }
 
     protected void selectHeavyTargetPayload()
     {
-        selectedPrimaryPayloadId = 3;
+        selectedPrimaryPayloadId = 2;
     }
 }

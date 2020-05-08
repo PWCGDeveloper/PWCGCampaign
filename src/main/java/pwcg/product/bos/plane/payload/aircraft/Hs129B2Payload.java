@@ -4,7 +4,6 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetCategory;
@@ -66,75 +65,19 @@ public class Hs129B2Payload extends PlanePayload
         selectedPrimaryPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectSoftTargetPayload();
+            selectedPrimaryPayloadId = 1;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectArmoredTargetPayload();
+            selectedPrimaryPayloadId = 3;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectMediumTargetPayload();
+            selectedPrimaryPayloadId = 3;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectHeavyTargetPayload();
-        }
-    }
-
-    protected void selectSoftTargetPayload()
-    {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 60)
-        {
-            selectedPrimaryPayloadId = 1;
-        }
-        else if (diceRoll < 80)
-        {
-            selectedPrimaryPayloadId = 8;
-        }
-        else 
-        {
-            selectedPrimaryPayloadId = 13;
-        }
-    }    
-
-    protected void selectArmoredTargetPayload()
-    {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 40)
-        {
             selectedPrimaryPayloadId = 3;
         }
-        else if (diceRoll < 70)
-        {
-            selectedPrimaryPayloadId = 7;
-        }
-        else 
-        {
-            selectedPrimaryPayloadId = 11;
-        }
-    }
-
-    protected void selectMediumTargetPayload()
-    {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 40)
-        {
-            selectedPrimaryPayloadId = 3;
-        }
-        else if (diceRoll < 70)
-        {
-            selectedPrimaryPayloadId = 8;
-        }
-        else 
-        {
-            selectedPrimaryPayloadId = 13;
-        }
-    }
-
-    protected void selectHeavyTargetPayload()
-    {
-        selectedPrimaryPayloadId = 3;
     }
 }

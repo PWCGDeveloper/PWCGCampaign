@@ -84,33 +84,17 @@ public class He111H6Payload extends PlanePayload
 
     protected void selectArmoredTargetPayload()
     {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 60)
-        {
-            selectedPrimaryPayloadId = 3;
-        }
-        else
-        {
-            selectedPrimaryPayloadId = 6;
-        }
+        selectedPrimaryPayloadId = 3;
     }
 
     protected void selectMediumTargetPayload()
     {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 60)
-        {
-            selectedPrimaryPayloadId = 1;
-        }
-        else
-        {
-            selectedPrimaryPayloadId = 3;
-        }
+        selectedPrimaryPayloadId = 1;
     }
 
     protected void selectHeavyTargetPayload()
     {
-        selectedPrimaryPayloadId = 4;
+        selectedPrimaryPayloadId = 2;
     }
 
 }

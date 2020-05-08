@@ -4,7 +4,6 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetCategory;
@@ -60,48 +59,20 @@ public class Ju87D3Payload extends PlanePayload
         selectedPrimaryPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectSoftTargetPayload();
+            selectedPrimaryPayloadId = 1;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectArmoredTargetPayload();
+            selectedPrimaryPayloadId = 2;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectMediumTargetPayload();
+            selectedPrimaryPayloadId = 2;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectHeavyTargetPayload();
-        }
-    }
-
-    private void selectSoftTargetPayload()
-    {
-        selectedPrimaryPayloadId = 1;
-    }    
-
-    private void selectArmoredTargetPayload()
-    {
-        selectedPrimaryPayloadId = 2;
-    }
-
-    private void selectMediumTargetPayload()
-    {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 80)
-        {
-            selectedPrimaryPayloadId = 1;
-        }
-        else
-        {
             selectedPrimaryPayloadId = 2;
         }
-    }
-
-    private void selectHeavyTargetPayload()
-    {
-        selectedPrimaryPayloadId = 6;
     }
 
     private void selectGroundAttackPayload()

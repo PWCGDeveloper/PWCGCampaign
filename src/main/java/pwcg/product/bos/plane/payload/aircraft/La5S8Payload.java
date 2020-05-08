@@ -46,44 +46,24 @@ public class La5S8Payload extends PlanePayload implements IPlanePayload
         return selectedPrimaryPayloadId;
     }    
 
-    protected void selectGroundAttackPayload(IFlight flight)
+    private void selectGroundAttackPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectSoftTargetPayload();
+            selectedPrimaryPayloadId = 1;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectArmoredTargetPayload();
+            selectedPrimaryPayloadId = 2;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectMediumTargetPayload();
+            selectedPrimaryPayloadId = 1;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectHeavyTargetPayload();
+            selectedPrimaryPayloadId = 2;
         }
-    }
-
-    protected void selectSoftTargetPayload()
-    {
-        selectedPrimaryPayloadId = 1;
-    }    
-
-    protected void selectArmoredTargetPayload()
-    {
-        selectedPrimaryPayloadId = 2;
-    }
-
-    protected void selectMediumTargetPayload()
-    {
-        selectedPrimaryPayloadId = 2;
-    }
-
-    protected void selectHeavyTargetPayload()
-    {
-        selectedPrimaryPayloadId = 2;
     }
 }

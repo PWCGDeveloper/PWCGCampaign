@@ -44,7 +44,7 @@ public class Lagg3S29Payload extends PlanePayload implements IPlanePayload
         return selectedPrimaryPayloadId;
     }    
 
-    protected void selectGroundAttackPayload(IFlight flight)
+    private void selectGroundAttackPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
@@ -65,7 +65,7 @@ public class Lagg3S29Payload extends PlanePayload implements IPlanePayload
         }
     }
 
-    protected void selectSoftTargetPayload()
+    private void selectSoftTargetPayload()
     {
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 60)
@@ -78,12 +78,12 @@ public class Lagg3S29Payload extends PlanePayload implements IPlanePayload
         }
     }    
 
-    protected void selectArmoredTargetPayload()
+    private void selectArmoredTargetPayload()
     {
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 50)
         {
-            selectedPrimaryPayloadId = 14;
+            selectedPrimaryPayloadId = 7;
         }
         else 
         {
@@ -91,12 +91,12 @@ public class Lagg3S29Payload extends PlanePayload implements IPlanePayload
         }
     }
 
-    protected void selectMediumTargetPayload()
+    private void selectMediumTargetPayload()
     {
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 80)
         {
-            selectedPrimaryPayloadId = 14;
+            selectedPrimaryPayloadId = 7;
         }
         else 
         {
@@ -104,7 +104,7 @@ public class Lagg3S29Payload extends PlanePayload implements IPlanePayload
         }
     }
 
-    protected void selectHeavyTargetPayload()
+    private void selectHeavyTargetPayload()
     {
         selectedPrimaryPayloadId = 14;
     }

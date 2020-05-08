@@ -4,7 +4,6 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetCategory;
@@ -49,7 +48,7 @@ public class Bf110E2Payload extends PlanePayload
         return selectedPrimaryPayloadId;
     }
 
-    protected void selectGroundAttackPayload(IFlight flight)
+    private void selectGroundAttackPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 3;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
@@ -75,50 +74,26 @@ public class Bf110E2Payload extends PlanePayload
         selectedPrimaryPayloadId = getPayloadIdByDescription(PayloadElement.STANDARD.getDescription());
     }
 
-    protected void selectSoftTargetPayload()
+    private void selectSoftTargetPayload()
     {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 60)
-        {
-            selectedPrimaryPayloadId = 3;
-        }
-        else
-        {
-            selectedPrimaryPayloadId = 1;
-        }
+        selectedPrimaryPayloadId = 1;
     }    
 
 
-    protected void selectArmoredTargetPayload()
+    private void selectArmoredTargetPayload()
     {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 70)
-        {
-            selectedPrimaryPayloadId = 4;
-        }
-        else
-        {
-            selectedPrimaryPayloadId = 1;
-        }
+        selectedPrimaryPayloadId = 4;
     }
 
 
-    protected void selectMediumTargetPayload()
+    private void selectMediumTargetPayload()
     {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 90)
-        {
-            selectedPrimaryPayloadId = 4;
-        }
-        else
-        {
-            selectedPrimaryPayloadId = 6;
-        }
+        selectedPrimaryPayloadId = 4;
     }
 
 
-    protected void selectHeavyTargetPayload()
+    private void selectHeavyTargetPayload()
     {
-        selectedPrimaryPayloadId = 6;
+        selectedPrimaryPayloadId = 4;
     }
 }
