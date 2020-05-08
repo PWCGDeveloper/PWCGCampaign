@@ -47,7 +47,8 @@ public class SquadronPersonnel
 
     public boolean isSquadronPersonnelViable() throws PWCGException
     {
-        if (squadronMembers.getActiveCount(campaign.getDate()) > (Squadron.SQUADRON_STAFF_SIZE / 2))
+        int vialbleSquadronMembers = squadronMembers.getActiveCount(campaign.getDate());
+        if (vialbleSquadronMembers > (Squadron.SQUADRON_STAFF_SIZE / 2))
         {
             return true;
         }

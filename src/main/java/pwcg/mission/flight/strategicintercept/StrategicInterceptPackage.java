@@ -34,7 +34,7 @@ public class StrategicInterceptPackage implements IFlightPackage
 
         if (opposingFlights.isEmpty())
         {
-            throw new PWCGException("Could not find opposition for intercept");
+            return null;
         }
         
         resetFlightInformationAltitudeToMatchTargetFlightList(opposingFlights);
