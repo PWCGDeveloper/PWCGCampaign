@@ -2,6 +2,26 @@
 ​
 At the PWCG web site
 
+PWCG 8.8.0
+Consolidated coop mode
+- No more split modes with different capabilities
+- Can now do anything in one mode
+- Improved briefing to allow complete switching between player flights
+- Updated AAR to allow either with or without claims for coop
+Added out of mission victory tab to AAR
+Now allowed to reduce fuel to 40%
+Set fuel in air starts by aircraft type
+Spread time between missions for historical activity/inactivity
+Reduced weight in bombers/ground attack to use lighter loads
+Bugs
+- Fixed pilots in mission missing from AAR
+- Fixed duplicate planes lost report in AAR
+- Fixed no artillery when simple ground config is high
+- Fixed missions flown doubling
+- Fixed issue that could cause flight not to generate if no opposition found for Ai slight
+- Changed P40 skin config to not use other than winter
+
+
 PWCG 8.7.3
 Added overlay indicators for battles in a PWCG mission.
 Historical flow of battle decides who will attack and who will defend in PWCG battles 
