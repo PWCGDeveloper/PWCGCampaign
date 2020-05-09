@@ -2,13 +2,14 @@ package pwcg.gui.rofmap.event;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.JTabbedPane;
 
 import pwcg.aar.AARCoordinator;
-import pwcg.aar.ui.display.model.AARCombatReportPanelData;
-import pwcg.aar.ui.events.model.PlaneStatusEvent;
+import pwcg.aar.ui.events.model.VictoryEvent;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -35,7 +36,7 @@ public class AAROutOfMissionVictoryPanel extends AAREventPanel
 	{
         try
         {
-            JTabbedPane eventTabPane = createPilotsLostTab();
+            JTabbedPane eventTabPane = createPilotVictoriesTab();
             createPostCombatReportTabs(eventTabPane);
         }
         catch (Exception e)
@@ -53,7 +54,7 @@ public class AAROutOfMissionVictoryPanel extends AAREventPanel
         this.add(postCombatPanel, BorderLayout.CENTER);
     }
 
-    private JTabbedPane createPilotsLostTab() throws PWCGException
+    private JTabbedPane createPilotVictoriesTab() throws PWCGException
     {
         Color bgColor = ColorMap.PAPER_BACKGROUND;
 
@@ -61,7 +62,7 @@ public class AAROutOfMissionVictoryPanel extends AAREventPanel
         eventTabPane.setBackground(bgColor);
         eventTabPane.setOpaque(false);
        
-        HashMap<String, CampaignReportEquipmentStatusGUI> equipmentGuiList = createPilotLostSubTabs() ;
+        HashMap<String, CampaignReportVictoryGUI> equipmentGuiList = createPilotLostSubTabs() ;
         for (String tabName : equipmentGuiList.keySet())
         {
             eventTabPane.addTab(tabName, equipmentGuiList.get(tabName));
@@ -72,27 +73,46 @@ public class AAROutOfMissionVictoryPanel extends AAREventPanel
         return eventTabPane;
     }
 
-	private HashMap<String, CampaignReportEquipmentStatusGUI> createPilotLostSubTabs() throws PWCGException 
+	private HashMap<String, CampaignReportVictoryGUI> createPilotLostSubTabs() throws PWCGException 
 	{
-        AARCombatReportPanelData combatReportData = aarCoordinator.getAarContext()
-                        .findUiCombatReportDataForSquadron(campaign.findReferencePlayer().getSquadronId()).getCombatReportPanelData();
-
-        HashMap<String, CampaignReportEquipmentStatusGUI> pilotLostGuiList = new HashMap<>();
-
-        for (PlaneStatusEvent planeStatusEvent : combatReportData.getSquadronPlanesLostInMission().values())
-		{
-            if (planeStatusEvent.getSquadronId() == campaign.findReferencePlayer().getSquadronId())
-            {
-                CampaignReportEquipmentStatusGUI equipmentChangeGui = new CampaignReportEquipmentStatusGUI(campaign, planeStatusEvent);
-                String tabName = "Plane Lost: " + planeStatusEvent.getPlaneSerialNumber();
-                pilotLostGuiList.put(tabName, equipmentChangeGui);
-            }
-		}
-        
-        return pilotLostGuiList;
+	    HashMap<String, List<VictoryEvent>> victoriesByPilotsInMySquadron = collateVictoriesByPilotInMySquadron();
+        HashMap<String, CampaignReportVictoryGUI> pilotVictoryPanelData = createVictoryTabs(victoriesByPilotsInMySquadron);
+        return pilotVictoryPanelData;
 	}
 
-	
+    private HashMap<String, List<VictoryEvent>> collateVictoriesByPilotInMySquadron() throws PWCGException
+    {
+        HashMap<String, List<VictoryEvent>> victoriesByPilotsInMySquadron = new HashMap<>();
+        List<VictoryEvent>  outOfMissionVictories = aarCoordinator.getAarContext().getUiDebriefData().getOutOfMissionVictoryPanelData().getOutOfMissionVictoryEvents();
+        for (VictoryEvent victoryEvent : outOfMissionVictories)
+		{
+            if (victoryEvent.getSquadronId() == campaign.findReferencePlayer().getSquadronId())
+            {
+                if (!victoriesByPilotsInMySquadron.containsKey(victoryEvent.getPilotName()))
+                {
+                    List<VictoryEvent> victoriesForPilot = new ArrayList<>();
+                    victoriesByPilotsInMySquadron.put(victoryEvent.getPilotName(), victoriesForPilot);
+                }
+                List<VictoryEvent> victoriesForPilot = victoriesByPilotsInMySquadron.get(victoryEvent.getPilotName());
+                victoriesForPilot.add(victoryEvent);
+            }
+		}
+        return victoriesByPilotsInMySquadron;
+    }
+
+    private HashMap<String, CampaignReportVictoryGUI> createVictoryTabs(HashMap<String, List<VictoryEvent>> victoriesByPilotsInMySquadron)
+    {
+        HashMap<String, CampaignReportVictoryGUI> pilotVictoryPanelData = new HashMap<>();
+        for (String pilotName : victoriesByPilotsInMySquadron.keySet())
+        {
+            List<VictoryEvent> victoriesForPilot = victoriesByPilotsInMySquadron.get(pilotName);
+            CampaignReportVictoryGUI victoryGUI = new CampaignReportVictoryGUI(campaign, victoriesForPilot);
+            String tabName = "Plane Lost: " + pilotName;
+            pilotVictoryPanelData.put(tabName, victoryGUI);
+        }
+        return pilotVictoryPanelData;
+    }
+
     @Override
     public void finished()
     {

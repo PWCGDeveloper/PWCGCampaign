@@ -62,7 +62,7 @@ public class AAREquipmentChangePanel extends AAREventPanel
         eventTabPane.setBackground(bgColor);
         eventTabPane.setOpaque(false);
        
-        HashMap<String, CampaignReportEquipmentStatusGUI> equipmentGuiList = createPilotLostSubTabs() ;
+        HashMap<String, CampaignReportEquipmentStatusGUI> equipmentGuiList = createEquipmentLostSubTabs() ;
         for (String tabName : equipmentGuiList.keySet())
         {
             eventTabPane.addTab(tabName, equipmentGuiList.get(tabName));
@@ -73,10 +73,10 @@ public class AAREquipmentChangePanel extends AAREventPanel
         return eventTabPane;
     }
 
-	private HashMap<String, CampaignReportEquipmentStatusGUI> createPilotLostSubTabs() throws PWCGException 
+	private HashMap<String, CampaignReportEquipmentStatusGUI> createEquipmentLostSubTabs() throws PWCGException 
 	{
 	    AAREquipmentLossPanelData equipmentLossPanelData = aarCoordinator.getAarContext().getUiDebriefData().getEquipmentLossPanelData();
-        HashMap<String, CampaignReportEquipmentStatusGUI> planesLostGuiList = new HashMap<>();
+        HashMap<String, CampaignReportEquipmentStatusGUI> equipmentLostGuiList = new HashMap<>();
         for (PlaneStatusEvent planeStatusEvent : equipmentLossPanelData.getEquipmentLost().values())
 		{
             SquadronMember referencePlayer = campaign.findReferencePlayer();
@@ -84,11 +84,11 @@ public class AAREquipmentChangePanel extends AAREventPanel
             {
                 CampaignReportEquipmentStatusGUI equipmentChangeGui = new CampaignReportEquipmentStatusGUI(campaign, planeStatusEvent);
                 String tabName = "Plane Lost: " + planeStatusEvent.getPlaneSerialNumber();
-                planesLostGuiList.put(tabName, equipmentChangeGui);
+                equipmentLostGuiList.put(tabName, equipmentChangeGui);
             }
 		}
         
-        return planesLostGuiList;
+        return equipmentLostGuiList;
 	}
 
 	
