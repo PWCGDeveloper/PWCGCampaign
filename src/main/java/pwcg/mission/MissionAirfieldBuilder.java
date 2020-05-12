@@ -25,24 +25,25 @@ public class MissionAirfieldBuilder
     
     public List<IAirfield> getFieldsForPatrol() throws PWCGException 
     {
-        TreeMap<String, IAirfield> selectedFields = selectAirfieldsWithinMissionBoundaries();
+        CoordinateBox missionBorders = createMissionBordersForAirfields();
+
+        TreeMap<String, IAirfield> selectedFields = selectAirfieldsWithinMissionBoundaries(missionBorders);
         List<IAirfield> fieldSet = new ArrayList<>(selectedFields.values());
 
         return fieldSet;
     }
 
-    private TreeMap<String, IAirfield> selectAirfieldsWithinMissionBoundaries() throws PWCGException
+    private TreeMap<String, IAirfield> selectAirfieldsWithinMissionBoundaries(CoordinateBox missionBorders) throws PWCGException
     {
-        CoordinateBox missionBorders = createMissionBordersForAirfields();
 
         TreeMap<String, IAirfield> selectedFields = new TreeMap<>();
 
-        for (IAirfield field :  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAllAirfields().values())
+        for (IAirfield airfield :  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAllAirfields().values())
         {
-        	if (missionBorders.isInBox(field.getPosition()))
+        	if (missionBorders.isInBox(airfield.getPosition()))
             {
-                field.addAirfieldObjects(mission);        	    
-                selectedFields.put(field.getName(), field);
+                airfield.addAirfieldObjects(mission);        	    
+                selectedFields.put(airfield.getName(), airfield);
             }
         }
         
