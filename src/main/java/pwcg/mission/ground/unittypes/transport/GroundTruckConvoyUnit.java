@@ -79,7 +79,7 @@ public class GroundTruckConvoyUnit extends GroundUnit
     private void addAspects(List<Coordinate> destinations) throws PWCGException
     {
         int unitSpeed = 10;
-        super.addMovementAspect(unitSpeed, destinations);
+        super.addMovementAspect(unitSpeed, destinations, GroundFormationType.FORMATION_TYPE_ON_ROAD);
     }
 }	
 

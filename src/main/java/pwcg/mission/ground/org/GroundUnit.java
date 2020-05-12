@@ -20,12 +20,20 @@ import pwcg.mission.ground.unittypes.GroundUnitSpawningVehicleBuilder;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.mcu.AttackAreaType;
+import pwcg.mission.mcu.McuFormation;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.target.TargetType;
 
 
 public abstract class GroundUnit implements IGroundUnit
 {    
+    public enum GroundFormationType
+    {
+        FORMATION_TYPE_ON_WAYPOINT,
+        FORMATION_TYPE_ON_ROAD,
+        FORMATION_TYPE_OFF_ROAD,
+    };
+    
     static private int ARTY_ATTACK_AREA_RADIUS = 500;
 
     protected int index = IndexGenerator.getInstance().getNextIndex();  
@@ -182,6 +190,7 @@ public abstract class GroundUnit implements IGroundUnit
             groundElement.addAspect(areaFire);
         }
     }
+    
     protected void addDirectFireAspect() throws PWCGException
     {
         for (GroundUnitElement groundElement : groundElements)
@@ -203,7 +212,7 @@ public abstract class GroundUnit implements IGroundUnit
         }
     }
 
-    protected void addMovementAspect(int unitSpeed, List<Coordinate> destinations) throws PWCGException
+    protected void addMovementAspect(int unitSpeed, List<Coordinate> destinations, GroundFormationType groundFormationType) throws PWCGException
     {
         int numElements = groundElements.size();
         if (destinations.size() < groundElements.size())
@@ -214,9 +223,24 @@ public abstract class GroundUnit implements IGroundUnit
         for (int i = 0; i < numElements; ++i)
         {
             GroundUnitElement groundElement = groundElements.get(i);
-            Coordinate destination = destinations.get(i);
-            IGroundAspect movementAspect = GroundAspectFactory.createGroundAspectMovement(groundElement.getVehicle(), unitSpeed, destination);
+            IGroundAspect movementAspect = makegroundAspect(groundElement, unitSpeed, destinations.get(i), groundFormationType);
             groundElement.addAspect(movementAspect);
+        }
+    }
+    
+    private IGroundAspect makegroundAspect(GroundUnitElement groundElement, int unitSpeed, Coordinate destination, GroundFormationType groundFormationType) throws PWCGException
+    {
+        if (groundFormationType == GroundFormationType.FORMATION_TYPE_ON_ROAD)
+        {
+            return GroundAspectFactory.createGroundAspectFormationMovement(groundElement.getVehicle(), unitSpeed, destination, McuFormation.FORMATION_ON_ROAD_COLUMN);
+        }
+        else if (groundFormationType == GroundFormationType.FORMATION_TYPE_OFF_ROAD)
+        {
+            return GroundAspectFactory.createGroundAspectFormationMovement(groundElement.getVehicle(), unitSpeed, destination, McuFormation.FORMATION_OFF_ROAD_USE_POSITION);
+        }
+        else
+        {
+            return GroundAspectFactory.createGroundAspectMovement(groundElement.getVehicle(), unitSpeed, destination);
         }
     }
     

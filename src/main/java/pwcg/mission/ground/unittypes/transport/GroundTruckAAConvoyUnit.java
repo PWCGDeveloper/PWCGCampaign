@@ -83,7 +83,7 @@ public class GroundTruckAAConvoyUnit extends GroundUnit
         super.addAAAFireAspect(TRUCK_AA_ATTACK_AREA);
 
         int unitSpeed = 10;
-        super.addMovementAspect(unitSpeed, destinations);
+        super.addMovementAspect(unitSpeed, destinations, GroundFormationType.FORMATION_TYPE_ON_ROAD);
     }
 }	
 

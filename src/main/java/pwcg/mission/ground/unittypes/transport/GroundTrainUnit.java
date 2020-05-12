@@ -38,7 +38,7 @@ public class GroundTrainUnit extends GroundUnit
         int unitSpeed = 12;
         List<Coordinate> destinations = new ArrayList<>();
         destinations.add(pwcgGroundUnitInformation.getDestination());
-        super.addMovementAspect(unitSpeed, destinations);
+        super.addMovementAspect(unitSpeed, destinations, GroundFormationType.FORMATION_TYPE_ON_WAYPOINT);
     }
 }	
 

@@ -86,7 +86,7 @@ public class ShipWarshipConvoyUnit extends GroundUnit
         super.addDirectFireAspect();
         
         int unitSpeed = 5;
-        super.addMovementAspect(unitSpeed, destinations);
+        super.addMovementAspect(unitSpeed, destinations, GroundFormationType.FORMATION_TYPE_ON_WAYPOINT);
     }
 }	
 

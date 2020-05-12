@@ -28,4 +28,10 @@ public class GroundAspectFactory
         return element;
     }
 
+    public static IGroundAspect createGroundAspectFormationMovement(IVehicle vehicle, int unitSpeed, Coordinate destination, int formationType) throws PWCGException
+    {
+        GroundAspectFormationMovement element = new GroundAspectFormationMovement(vehicle, unitSpeed, destination, formationType);
+        element.createGroundUnitAspect();
+        return element;
+    }    
 }

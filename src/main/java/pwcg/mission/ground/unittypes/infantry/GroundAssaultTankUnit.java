@@ -84,7 +84,7 @@ public class GroundAssaultTankUnit extends GroundUnit
         super.addDirectFireAspect();
         
         int unitSpeed = 10;
-        super.addMovementAspect(unitSpeed, destinations);
+        super.addMovementAspect(unitSpeed, destinations, GroundFormationType.FORMATION_TYPE_OFF_ROAD);
     }
 }	
 

@@ -3,6 +3,9 @@ package pwcg.campaign.group.airfield.staticobject;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.core.config.ConfigItemKeys;
+import pwcg.core.config.ConfigManagerCampaign;
+import pwcg.core.config.ConfigSimple;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -37,16 +40,17 @@ public class AirfieldApproachAABuilder
         double angleRight = MathUtils.adjustAngle(angleOut, 90);
         Coordinate firstAAPoint = MathUtils.calcNextCoord(landingPosition, angleOut, 500);
         
-        List<Coordinate> aaCoordinates = buildAirfieldAAPositions(angleOut, angleLeft, angleRight, firstAAPoint);
+        List<Coordinate> aaCoordinates = buildAirfieldAAPositions(flight, angleOut, angleLeft, angleRight, firstAAPoint);
         buildFlightPathAA(flight, aaCoordinates);
 
         return airfieldApproachAA;
     }
 
-    private List<Coordinate> buildAirfieldAAPositions(double angleOut, double angleLeft, double angleRight, Coordinate firstAAPoint) throws PWCGException
+    private List<Coordinate> buildAirfieldAAPositions(IFlight flight, double angleOut, double angleLeft, double angleRight, Coordinate firstAAPoint) throws PWCGException
     {
+        int numPairs = getNumAAGunPairs(flight);
         List<Coordinate> aaCoordinates = new ArrayList<>();
-        for (int i = 0; i < 5; ++i)
+        for (int i = 0; i < numPairs; ++i)
         {
             Coordinate aaCenterCoordinate = MathUtils.calcNextCoord(firstAAPoint, angleOut, (i * 1000));
             Coordinate leftAAPoint = MathUtils.calcNextCoord(aaCenterCoordinate, angleLeft, 500);
@@ -56,6 +60,26 @@ public class AirfieldApproachAABuilder
             aaCoordinates.add(rightAAPoint);
         }
         return aaCoordinates;
+    }
+
+    private int getNumAAGunPairs(IFlight flight) throws PWCGException
+    {
+        int numAAGunPairs = 2;
+        ConfigManagerCampaign configManager = flight.getCampaign().getCampaignConfigManager();
+        String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
+        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        {
+            numAAGunPairs = 2;
+        }
+        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+        {
+            numAAGunPairs = 3;
+        }
+        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+        {
+            numAAGunPairs = 4;
+        }
+        return numAAGunPairs;
     }
 
     private void buildFlightPathAA(IFlight flight, List<Coordinate> aaCoordinates) throws PWCGException
