@@ -20,6 +20,7 @@ public class VehicleDefinition implements IVehicleDefinition, IWeight
     private Date endDate;
     private int rarityWeight;
     private VehicleClass vehicleClass;
+    private String associatedBlock;
     
     public VehicleDefinition(String scriptDir, String modelDir, String vehicleType, String displayName, List<Country> countries, Date startDate, Date endDate, int rarityWeight, VehicleClass vehicleClass)
     {
@@ -68,6 +69,11 @@ public class VehicleDefinition implements IVehicleDefinition, IWeight
     public int getWeight()
     {
         return rarityWeight;
+    }
+
+    @Override
+    public String getAssociatedBlock() {
+        return associatedBlock;
     }
 
     @Override

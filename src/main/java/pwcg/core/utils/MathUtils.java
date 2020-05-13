@@ -1,5 +1,12 @@
 package pwcg.core.utils;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import pwcg.campaign.context.FrontParameters;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
@@ -21,22 +28,7 @@ public class MathUtils
 	{
 	    double angle = 0.0;
 	    
-	    // Avoid divide by zero
-	    if (Math.abs(coord1.getXPos() - coord2.getXPos()) < 1.0)
-	    {
-	    	coord2.setXPos(coord2.getXPos() + 1.0);
-	    }
-	    
-		angle = Math.toDegrees(Math.atan((coord2.getZPos() - coord1.getZPos())/ (coord2.getXPos() - coord1.getXPos())));
-		
-		if (coord1.getXPos() > coord2.getXPos())
-	    {
-	    	angle = 180 + angle;
-	    	if (angle > 360)
-	    	{
-	    		angle = angle - 360;
-	    	}
-	    }
+		angle = Math.toDegrees(Math.atan2(coord2.getZPos() - coord1.getZPos(), coord2.getXPos() - coord1.getXPos()));
 		
 		if (angle > 360.0)
 		{
@@ -236,5 +228,87 @@ public class MathUtils
         proj.setZPos(lineStart.getZPos() + t * zDist);
 
         return calcDist(proj, coord);
+    }
+
+    private static Integer angleCompare(final Coordinate prevPoint, final Coordinate base, final Coordinate a, final Coordinate b)
+    {
+        try {
+            double base_angle = 0;
+            if (prevPoint != null)
+            {
+                base_angle = calcAngle(prevPoint, base);
+            }
+            double a_angle = adjustAngle(calcAngle(base, a), -base_angle);
+            double b_angle = adjustAngle(calcAngle(base, b), -base_angle);
+            return Double.compare(a_angle, b_angle);
+        } catch (PWCGException e) {
+            return null;
+        }
+    }
+
+    public static List<Coordinate> convexHull(Collection<Coordinate> points)
+    {
+        Set<Coordinate> pointSet = new HashSet<>();
+        List<Coordinate> hull = new ArrayList<>();
+
+        for (Coordinate point : points)
+        {
+            Coordinate newPoint = point.copy();
+            newPoint.setYPos(0);
+            pointSet.add(newPoint);
+        }
+
+        Comparator<Coordinate> comparator = (a, b) -> (a.getZPos() == b.getZPos()) ? Double.compare(a.getXPos(), b.getXPos()) : Double.compare(a.getZPos(), b.getZPos());
+        Coordinate prevPoint = null;
+        Coordinate pointOnHull = pointSet.stream().min(comparator).get();
+
+        while (hull.indexOf(pointOnHull) == -1)
+        {
+            hull.add(pointOnHull);
+            Coordinate finalPoint = pointOnHull;
+            Coordinate finalPrev = prevPoint;
+            pointOnHull = pointSet.stream().filter(x -> comparator.compare(finalPoint, x) != 0).min((a, b) -> angleCompare(finalPrev, finalPoint, a, b)).get();
+            prevPoint = finalPoint;
+        }
+
+        assert(hull.indexOf(pointOnHull) == 0);
+
+        return hull;
+    }
+
+    public static boolean pointInsidePolygon(Coordinate point, List<Coordinate> polygon)
+    {
+        boolean inside = false;
+
+        Coordinate a = polygon.get(polygon.size() - 1);
+
+        for (Coordinate b : polygon)
+        {
+            if ((a.getXPos() > point.getXPos()) != (b.getXPos() > point.getXPos()))
+            {
+                double t = (point.getXPos() - a.getXPos()) / (b.getXPos() - a.getXPos());
+                double intersection_z = ((b.getZPos() - a.getZPos()) * t) + a.getZPos();
+                if (intersection_z > point.getZPos())
+                    inside = !inside;
+            }
+            a = b;
+        }
+
+        return inside;
+    }
+
+    public static double polygonArea(List<Coordinate> polygon)
+    {
+        double area = 0;
+
+        Coordinate a = polygon.get(polygon.size() - 1);
+
+        for (Coordinate b : polygon)
+        {
+            area += (b.getZPos() - a.getZPos()) * (a.getXPos() + b.getXPos()) / 2.0;
+            a = b;
+        }
+
+        return area;
     }
 }

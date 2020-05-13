@@ -1,0 +1,19 @@
+{
+  "scriptDir": "Blocks\\",
+  "modelDir": "blocks\\",
+  "vehicleType": "mg_position",
+  "displayName": "machine gun position",
+  "countries": [
+    "BELGIUM",
+    "BRITAIN",
+    "FRANCE",
+    "GERMANY",
+    "ITALY",
+    "RUSSIA",
+    "USA"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 30,
+  "vehicleClass": "StaticScenery"
+}

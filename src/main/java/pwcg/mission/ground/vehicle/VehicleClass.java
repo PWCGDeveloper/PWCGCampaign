@@ -30,6 +30,7 @@ public enum VehicleClass
     ShipWarship(false, "Warship", GroundUnitType.TRANSPORT_UNIT),
     Submarine(false, "Submarine", GroundUnitType.TRANSPORT_UNIT),
     StaticAirfield(true, "Equipment", GroundUnitType.STATIC_UNIT),
+    StaticScenery(true, "Scenery", GroundUnitType.STATIC_UNIT),
     TrainCar(false, "Train Car", GroundUnitType.TRANSPORT_UNIT),
     TrainCarAAA(false, "AA Platform", GroundUnitType.TRANSPORT_UNIT),
     TrainCoalCar(false, "Coal Car", GroundUnitType.TRANSPORT_UNIT),

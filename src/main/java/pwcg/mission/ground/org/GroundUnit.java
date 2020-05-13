@@ -41,6 +41,7 @@ public abstract class GroundUnit implements IGroundUnit
     protected VehicleClass vehicleClass;
 
     protected McuTimer spawnUnitTimer = new McuTimer();
+    protected McuTimer deleteUnitTimer = new McuTimer();
     protected List<GroundUnitElement> groundElements = new ArrayList<>();
 
     public GroundUnit(VehicleClass vehicleClass, GroundUnitInformation pwcgGroundUnitInformation) 
@@ -65,6 +66,22 @@ public abstract class GroundUnit implements IGroundUnit
             return true;
         }
 
+        return false;
+    }
+
+    @Override
+    public boolean isUnitMobile()
+    {
+        for (GroundUnitElement element : groundElements)
+        {
+            for (IGroundAspect aspect : element.getAspectsOfGroundUnit())
+            {
+                if (aspect instanceof GroundAspectMovement)
+                {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
@@ -100,6 +117,7 @@ public abstract class GroundUnit implements IGroundUnit
     protected void writeMcus(BufferedWriter writer) throws PWCGException
     {
         spawnUnitTimer.write(writer);
+        deleteUnitTimer.write(writer);
         for (GroundUnitElement groundElement : groundElements)
         {
             groundElement.write(writer);
@@ -111,6 +129,7 @@ public abstract class GroundUnit implements IGroundUnit
         for (GroundUnitElement element : groundElements)
         {
             spawnUnitTimer.setTarget(element.getEntryPoint());
+            deleteUnitTimer.setTarget(element.getDeleteEntryPoint());
             element.linkAspects();
         }
     }
@@ -166,11 +185,21 @@ public abstract class GroundUnit implements IGroundUnit
     }
     
     @Override
+    public int getDeleteEntryPoint()
+    {
+        return deleteUnitTimer.getIndex();
+    }
+
+    @Override
     public void validate() throws PWCGException
     {
         if (spawnUnitTimer == null)
         {
             throw new PWCGException("GroundUnit: no spawn timer");
+        }
+        if (deleteUnitTimer == null)
+        {
+            throw new PWCGException("GroundUnit: no delete timer");
         }
         
         GroundUnitValidator validator = new GroundUnitValidator(this);
@@ -272,6 +301,10 @@ public abstract class GroundUnit implements IGroundUnit
         spawnUnitTimer.setName("Ground Unit Spawn Timer");
         spawnUnitTimer.setDesc("Ground Unit Spawn Timer");
         spawnUnitTimer.setPosition(pwcgGroundUnitInformation.getPosition());
+
+        deleteUnitTimer.setName("Ground Unit Delete Timer");
+        deleteUnitTimer.setDesc("Ground Unit Delete Timer");
+        deleteUnitTimer.setPosition(pwcgGroundUnitInformation.getPosition());
     }
 
     

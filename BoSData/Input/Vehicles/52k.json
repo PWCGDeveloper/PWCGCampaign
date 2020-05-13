@@ -9,5 +9,6 @@
   "startDate": "19390901",
   "endDate": "19460724",
   "rarityWeight": 80,
-  "vehicleClass": "AAAArtillery"
+  "vehicleClass": "AAAArtillery",
+  "associatedBlock": "art_position_medium"
 }

@@ -26,4 +26,5 @@ public interface IGroundUnitCollection
     GroundUnitCollectionType getGroundUnitCollectionType();
     void validate() throws PWCGException;
     void triggerOnPlayerProximity(Mission mission) throws PWCGException;
+    void triggerOnPlayerOrCoalitionProximity(Mission mission) throws PWCGException;
 }

@@ -62,4 +62,13 @@ public class StaticObjectDefinitionManager
         return matchingDefinitions.get(index);
     }
 
+    public IVehicleDefinition getVehicleDefinitionByType(String name)
+    {
+        for (VehicleDefinition definition : allStaticObjectsDefinitions)
+        {
+            if (definition.getVehicleType().equals(name))
+                return definition;
+        }
+        return null;
+    }
 }

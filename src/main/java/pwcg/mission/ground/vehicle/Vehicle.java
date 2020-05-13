@@ -6,9 +6,12 @@ import java.io.IOException;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
+import pwcg.campaign.group.airfield.staticobject.StaticObject;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.constants.AiSkillLevel;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -37,6 +40,7 @@ public class Vehicle implements Cloneable, IVehicle
     protected int spotter = -1;
     protected int beaconChannel = 0;
     protected ICountry country = CountryFactory.makeCountryByCountry(Country.NEUTRAL);
+    protected IVehicle associatedBlock;
 
     protected McuTREntity entity = new McuTREntity();
 
@@ -73,6 +77,10 @@ public class Vehicle implements Cloneable, IVehicle
         clone.deleteAfterDeath = this.deleteAfterDeath;
         clone.beaconChannel = this.beaconChannel;
         clone.country = this.country;
+        if (associatedBlock != null)
+        {
+            clone.associatedBlock = this.associatedBlock.clone();
+        }
         return clone;
     }
     
@@ -85,6 +93,7 @@ public class Vehicle implements Cloneable, IVehicle
         setPosition(new Coordinate());
         setOrientation(new Orientation());
         populateEntity();
+        buildAssociatedBlock();
     }
 
     public void populateEntity()
@@ -99,7 +108,19 @@ public class Vehicle implements Cloneable, IVehicle
         entity.setMisObjID(index);
     }
 
-    public void write(BufferedWriter writer) throws PWCGIOException
+    private void buildAssociatedBlock()
+    {
+        IVehicleDefinition blockDefinition = PWCGContext.getInstance().getStaticObjectDefinitionManager().getVehicleDefinitionByType(vehicleDefinition.getAssociatedBlock());
+        if (blockDefinition != null)
+        {
+            associatedBlock = new StaticObject(blockDefinition);
+            associatedBlock.makeVehicleFromDefinition(country);
+            associatedBlock.setPosition(position);
+            associatedBlock.setOrientation(orientation);
+        }
+    }
+
+    public void write(BufferedWriter writer) throws PWCGException
     {
         try
         {
@@ -116,6 +137,11 @@ public class Vehicle implements Cloneable, IVehicle
             writer.newLine();
 
             entity.write(writer);
+
+            if (associatedBlock != null)
+            {
+                associatedBlock.write(writer);
+            }
         }
         catch (IOException e)
         {
@@ -200,6 +226,11 @@ public class Vehicle implements Cloneable, IVehicle
     public void setPosition(Coordinate position)
     {
         this.position = position;
+        entity.setPosition(position);
+        if (associatedBlock != null)
+        {
+            associatedBlock.setPosition(position);
+        }
     }
 
     public Orientation getOrientation()
@@ -279,4 +310,5 @@ public class Vehicle implements Cloneable, IVehicle
     public void setBeaconChannel(int beaconChannel) {
         this.beaconChannel = beaconChannel;
     }
+
 }

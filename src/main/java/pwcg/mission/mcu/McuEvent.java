@@ -8,7 +8,7 @@ public class McuEvent
     static public int ONPLANEBINGOFUEL = 7;        
     static public int ONPLANEBINGOAMMO = 8;        
     static public int ONPLANEDAMAGED = 12;    
-    
+    static public int ONKILLED = 13;
 
     private int type = 14;
     private int tarId = 0;

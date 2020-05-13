@@ -9,16 +9,18 @@ import pwcg.campaign.context.PWCGProduct;
 
 public enum Coalition
 {
-    COALITION_ALLIED(1),
-    COALITION_AXIS(2),
-    COALITION_ENTENTE(3),
-    COALITION_CENTRAL(4);
+    COALITION_ALLIED(1, Side.ALLIED),
+    COALITION_AXIS(2, Side.AXIS),
+    COALITION_ENTENTE(3, Side.ALLIED),
+    COALITION_CENTRAL(4, Side.AXIS);
 
     private int coalitionValue;
+    private Side side;
 
-    private Coalition(int coalitionValue)
+    private Coalition(int coalitionValue, Side side)
     {
         this.coalitionValue = coalitionValue;
+        this.side = side;
     }
 
     public int getCoalitionValue() 
@@ -26,6 +28,11 @@ public enum Coalition
         return coalitionValue;
     }
     
+    public Side getSide()
+    {
+        return side;
+    }
+
     public static List<Coalition> getCoalitions()
     {
         List<Coalition> coalitions = new ArrayList<>();

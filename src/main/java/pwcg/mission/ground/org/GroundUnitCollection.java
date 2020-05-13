@@ -11,15 +11,17 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
 import pwcg.mission.mcu.group.MissionBeginSelfDeactivatingCheckZone;
+import pwcg.mission.mcu.group.MissionBeginCheckZoneBase;
+import pwcg.mission.mcu.group.MissionBeginInOutCheckZone;
 import pwcg.mission.target.TargetType;
 
 public class GroundUnitCollection implements IGroundUnitCollection
 {
-    private final static int GROUND_UNIT_SPAWN_DISTANCE = 20000;
+    private final static int GROUND_UNIT_SPAWN_DISTANCE = 5000;
     
     private GroundUnitCollectionData groundUnitCollectionData;
     private int index = IndexGenerator.getInstance().getNextIndex();  
-    private MissionBeginSelfDeactivatingCheckZone missionBeginUnit;
+    private MissionBeginCheckZoneBase missionBeginUnit;
     private IGroundUnit primaryGroundUnit;
     private List<IGroundUnit> groundUnits = new ArrayList<> ();
     private String groundUnitName;
@@ -65,7 +67,14 @@ public class GroundUnitCollection implements IGroundUnitCollection
 
     private void createCheckZone() throws PWCGException
     {
-        missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone("Check Zone " + groundUnitName, getPosition(), GROUND_UNIT_SPAWN_DISTANCE);
+        if (groundUnits.stream().anyMatch(x -> x.isUnitMobile()))
+        {
+            missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone("Check Zone " + groundUnitName, getPosition(), GROUND_UNIT_SPAWN_DISTANCE);
+        }
+        else
+        {
+            missionBeginUnit = new MissionBeginInOutCheckZone("Check Zone " + groundUnitName, getPosition(), GROUND_UNIT_SPAWN_DISTANCE);
+        }
         missionBeginUnit.setCheckZoneCoalitions(groundUnitCollectionData.getTriggerCoalitions());
     }
 
@@ -74,6 +83,11 @@ public class GroundUnitCollection implements IGroundUnitCollection
         for (IGroundUnit groundUnit : groundUnits)
         {
             missionBeginUnit.linkCheckZoneTarget(groundUnit. getEntryPoint());
+            if (missionBeginUnit instanceof MissionBeginInOutCheckZone)
+            {
+                MissionBeginInOutCheckZone inOut = (MissionBeginInOutCheckZone)missionBeginUnit;
+                inOut.linkCheckZoneExitTarget(groundUnit.getDeleteEntryPoint());
+            }
         }
     }
 
@@ -187,5 +201,11 @@ public class GroundUnitCollection implements IGroundUnitCollection
     public void triggerOnPlayerProximity(Mission mission) throws PWCGException
     {
         missionBeginUnit.triggerOnPlayerProximity(mission);        
+    }
+
+    @Override
+    public void triggerOnPlayerOrCoalitionProximity(Mission mission) throws PWCGException
+    {
+        missionBeginUnit.triggerOnPlayerOrCoalitionProximity(mission);
     }
 }

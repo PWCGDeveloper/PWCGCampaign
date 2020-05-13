@@ -14,6 +14,8 @@ public interface IVehicleDefinition
 
     String getDisplayName();
 
+    String getAssociatedBlock();
+
     boolean shouldUse(VehicleRequestDefinition requestDefinition) throws PWCGException;
 
 }

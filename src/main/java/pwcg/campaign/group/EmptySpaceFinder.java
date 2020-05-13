@@ -13,7 +13,6 @@ import pwcg.core.utils.MathUtils;
 
 public class EmptySpaceFinder
 {
-    private static final double CHUNK_SIZE = 5.0;
     private static final double HOT_SPOT_CLEARANCE = 40.0;
     
     private List<HotSpot> hotSpots = new ArrayList<>();
@@ -21,10 +20,14 @@ public class EmptySpaceFinder
     private List<IAirfield> airfieldsInArea = new ArrayList<>();
     private Coordinate coordinateExaminedNow;
     private CoordinateBox coordinateBox;
+    private List<Coordinate> boundary;
+    private int targetNumber;
 
-    public List<HotSpot> findEmptySpaces (Coordinate center, int boxSize) throws PWCGException
+    public List<HotSpot> findEmptySpaces (List<Coordinate> boundary, int targetNumber) throws PWCGException
     {
-        coordinateBox = CoordinateBox.coordinateBoxFromCenter(center, boxSize);
+        coordinateBox = CoordinateBox.coordinateBoxFromCoordinateList(boundary);
+        this.boundary = boundary;
+        this.targetNumber = targetNumber;
         
         findBlocksInArea();
         findAirfieldsInArea();
@@ -35,32 +38,17 @@ public class EmptySpaceFinder
     
     private void findEmptySpacesInRequestedArea() throws PWCGException
     {
-        coordinateExaminedNow = coordinateBox.getSW().copy();
-        coordinateExaminedNow.setXPos(coordinateExaminedNow.getXPos() + CHUNK_SIZE);
-        coordinateExaminedNow.setZPos(coordinateExaminedNow.getZPos() + CHUNK_SIZE);
-        
-        while (coordinateExaminedNow.getXPos() < (coordinateBox.getNE().getXPos() - CHUNK_SIZE))
+        for (int i = 0; i < targetNumber * 3 && hotSpots.size() < targetNumber; i++)
         {
-            while (coordinateExaminedNow.getZPos() < (coordinateBox.getNE().getZPos()- CHUNK_SIZE))
-            {
-                if (isCoordinateEmpty())
-                {
-                    HotSpot hotSpot = new HotSpot();
-                    hotSpot.setPosition(coordinateExaminedNow.copy());
-                    hotSpots.add(hotSpot);
-                }
-                
-                coordinateExaminedNow.setZPos(coordinateExaminedNow.getZPos() + CHUNK_SIZE);
-            }
-            
-            nextRow();
-        }
-    }
+            coordinateExaminedNow = coordinateBox.chooseCoordinateWithinBox();
 
-    private void nextRow() throws PWCGException
-    {
-        coordinateExaminedNow.setZPos(coordinateBox.getSW().getZPos());
-        coordinateExaminedNow.setXPos(coordinateExaminedNow.getXPos() + CHUNK_SIZE);
+            if (MathUtils.pointInsidePolygon(coordinateExaminedNow, boundary) && isCoordinateEmpty())
+            {
+                HotSpot hotSpot = new HotSpot();
+                hotSpot.setPosition(coordinateExaminedNow.copy());
+                hotSpots.add(hotSpot);
+            }
+        }
     }
 
     private boolean isCoordinateEmpty() throws PWCGException

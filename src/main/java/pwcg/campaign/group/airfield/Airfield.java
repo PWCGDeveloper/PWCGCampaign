@@ -10,7 +10,12 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IStaticPlane;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
+import pwcg.campaign.group.Block;
 import pwcg.campaign.group.FixedPosition;
+import pwcg.campaign.group.GroupManager;
+import pwcg.campaign.group.airfield.hotspot.AirfieldHotSpotDefinition;
+import pwcg.campaign.group.airfield.hotspot.HotSpot;
+import pwcg.campaign.group.airfield.hotspot.HotSpotManager;
 import pwcg.campaign.group.airfield.staticobject.AirfieldApproachAABuilder;
 import pwcg.campaign.group.airfield.staticobject.AirfieldObjectPlacer;
 import pwcg.campaign.group.airfield.staticobject.AirfieldObjects;
@@ -31,7 +36,7 @@ import pwcg.mission.ground.vehicle.IVehicle;
 public class Airfield extends FixedPosition implements IAirfield, Cloneable
 {
     private List<Runway> runways = new ArrayList<>();
-    private AirfieldObjects airfieldObjects = new AirfieldObjects();
+    private AirfieldObjects airfieldObjects;
     private List<IGroundUnitCollection> airfieldApproachAA = new ArrayList<>();
 
     public Airfield()
@@ -44,8 +49,6 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
     {
         Airfield clone = new Airfield();
 
-        clone.airfieldObjects = new AirfieldObjects();
-
         for (Runway r : runways)
             clone.runways.add(r.copy());
 
@@ -57,19 +60,19 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
     @Override
     public void write(BufferedWriter writer) throws PWCGException
     {
-        for (IVehicle airfieldObject : airfieldObjects.getAirfieldObjects())
+        if (airfieldObjects != null)
         {
-            airfieldObject.write(writer);
-        }
+            airfieldObjects.getVehiclesForAirfield().write(writer);
 
-        for (IGroundUnitCollection airfieldAAA : airfieldObjects.getAaaForAirfield())
-        {
-            airfieldAAA.write(writer);
-        }
+            for (IVehicle airfieldObject : airfieldObjects.getAirfieldObjects())
+            {
+                airfieldObject.write(writer);
+            }
 
-        for (IStaticPlane staticPlane : airfieldObjects.getStaticPlanes())
-        {
-            staticPlane.write(writer);
+            for (IStaticPlane staticPlane : airfieldObjects.getStaticPlanes())
+            {
+                staticPlane.write(writer);
+            }
         }
 
         for (IGroundUnitCollection airfieldApproachAAGun : airfieldApproachAA)
@@ -138,6 +141,12 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
                 airfieldApproachAA = airfieldApproachAABuilder.addAirfieldApproachAA(airfieldFlight);
             }
         }
+    }
+
+    @Override
+    public AirfieldObjects getAirfieldObjects()
+    {
+        return airfieldObjects;
     }
 
     @Override
@@ -380,5 +389,57 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
         }
 
         return super.getCountry(date);
+    }
+
+    @Override
+    public List<HotSpot> getNearbyHotSpots() throws PWCGException
+    {
+        List<HotSpot> nearbyAirfieldHotSpots = new ArrayList<HotSpot>();
+
+        GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();
+
+        List<Block>nearbyBlocks = groupManager.getBlockFinder().getBlocksWithinRadius(getPosition().copy(), 3000.0);
+        for (Block block : nearbyBlocks)
+        {
+            List<AirfieldHotSpotDefinition> boSHotSpotDefinitions =  HotSpotManager.getInstance().getAirfieldHotSpots(block.getModel());
+            for (AirfieldHotSpotDefinition boSHotSpotDefinition : boSHotSpotDefinitions)
+            {
+                HotSpot hotSpot = boSHotSpotDefinition.convert(block.getPosition(), block.getOrientation());
+                nearbyAirfieldHotSpots.add(hotSpot);
+            }
+        }
+
+        return nearbyAirfieldHotSpots;
+    }
+
+    @Override
+    public List<Coordinate> getBoundary() throws PWCGException
+    {
+        List<Coordinate> points = new ArrayList<>();
+        for (Runway runway : runways)
+        {
+            points.add(runway.getParkingLocation().getPosition());
+            points.add(runway.getStartPos());
+            points.add(runway.getEndPos());
+            points.addAll(runway.getTaxiToStart());
+            points.addAll(runway.getTaxiFromEnd());
+        }
+
+        for (HotSpot hotspot : getNearbyHotSpots())
+        {
+            points.add(hotspot.getPosition());
+        }
+
+        GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();
+        List<Block>nearbyBlocks = groupManager.getBlockFinder().getBlocksWithinRadius(getPosition().copy(), 3000.0);
+        for (Block block : nearbyBlocks)
+        {
+            if (block.getModel().contains("arf_") || block.getModel().contains("af_"))
+            {
+                points.add(block.getPosition());
+            }
+        }
+
+        return MathUtils.convexHull(points);
     }
 }

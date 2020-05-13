@@ -1,7 +1,5 @@
 package pwcg.campaign.group.airfield.staticobject;
 
-import java.io.BufferedWriter;
-
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.group.Block;
@@ -17,12 +15,6 @@ import pwcg.mission.mcu.McuTREntity;
 
 public class StaticObject extends Block implements IVehicle
 {
-    @Override
-    public void write(BufferedWriter writer) throws PWCGException {
-        // TODO Auto-generated method stub
-        super.write(writer);
-    }
-
     protected IVehicleDefinition vehicleDefinition;
 
     private StaticObject() {
