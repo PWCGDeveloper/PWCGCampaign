@@ -45,7 +45,7 @@ public class AirfieldObjectPlacer
 
     private void createHotSpotObjects() throws PWCGException
     {
-        IHotSpotTranslator hotSpotTranslator = HotSpotTranslatorFactory.createHotSpotTranslatorFactory(mission);
+        IHotSpotTranslator hotSpotTranslator = HotSpotTranslatorFactory.createHotSpotTranslatorFactory(mission, airfield);
         
         List<HotSpot> hotSpots = hotSpotTranslator.getHotSpots(airfield, campaign.getDate());
         

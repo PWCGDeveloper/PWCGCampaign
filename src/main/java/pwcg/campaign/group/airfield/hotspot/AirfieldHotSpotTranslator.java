@@ -6,34 +6,40 @@ import java.util.List;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IHotSpotTranslator;
 import pwcg.campaign.group.EmptySpaceFinder;
+import pwcg.core.config.ConfigItemKeys;
+import pwcg.core.config.ConfigManagerCampaign;
+import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
+import pwcg.mission.flight.IFlight;
 
 public class AirfieldHotSpotTranslator implements IHotSpotTranslator
 {
     private static double SPOT_DENSITY = 20;
 
     private Mission mission;
-    
-    public AirfieldHotSpotTranslator(Mission mission)
+    private IAirfield airfield;
+
+    public AirfieldHotSpotTranslator(Mission mission, IAirfield airfield)
     {
         this.mission = mission;
+        this.airfield = airfield;
     }
-    
+
     public List<HotSpot> getHotSpots(IAirfield airfield, Date date) throws PWCGException
     {
         List<HotSpot> hotSpots = classifyAirfieldHotspots(airfield, date);
         hotSpots.addAll(classifyRandomHotspots(airfield));
-
         return hotSpots;
     }
 
-    private List<HotSpot> classifyAirfieldHotspots(IAirfield airfield, Date date) throws PWCGException {
+    private List<HotSpot> classifyAirfieldHotspots(IAirfield airfield, Date date) throws PWCGException
+    {
         List<HotSpot> hotSpots = airfield.getNearbyHotSpots();
-        
+
         for (HotSpot hotSpot : hotSpots)
         {
             int roll = RandomNumberGenerator.getRandom(100);
@@ -49,16 +55,16 @@ public class AirfieldHotSpotTranslator implements IHotSpotTranslator
         return hotSpots;
     }
 
-    private List<HotSpot> classifyRandomHotspots(IAirfield airfield) throws PWCGException {
+    private List<HotSpot> classifyRandomHotspots(IAirfield airfield) throws PWCGException
+    {
         List<HotSpot> hotSpots = selectHotSpotsFromEmptySpace(airfield);
 
-        
         int numAAAHotSpots = determineNumAAAHotSpots(hotSpots.size());
         for (int i = 0; i < numAAAHotSpots && i < hotSpots.size(); ++i)
         {
             hotSpots.get(i).setHotSpotType(HotSpotType.HOTSPOT_AAA);
         }
-   
+
         int numSearchLightHotSpots = determineNumSearchLightHotSpots(hotSpots.size(), numAAAHotSpots);
         for (int i = numAAAHotSpots; i < numSearchLightHotSpots + numAAAHotSpots && i < hotSpots.size(); ++i)
         {
@@ -67,7 +73,7 @@ public class AirfieldHotSpotTranslator implements IHotSpotTranslator
 
         for (int i = numAAAHotSpots + numSearchLightHotSpots; i < hotSpots.size(); ++i)
         {
-            int roll =  RandomNumberGenerator.getRandom(100);
+            int roll = RandomNumberGenerator.getRandom(100);
             if (roll < 50)
             {
                 hotSpots.get(i).setHotSpotType(HotSpotType.HOTSPOT_PLANE);
@@ -82,18 +88,45 @@ public class AirfieldHotSpotTranslator implements IHotSpotTranslator
 
     private int determineNumSearchLightHotSpots(int numHotSpots, int numAAAHotSpots)
     {
-        int numLights = numAAAHotSpots / 4;
+        int numLights = 0;
         if (mission.isNightMission())
+        {
             numLights = Math.max(numLights, 2);
+        }
         return numLights;
     }
 
-    private int determineNumAAAHotSpots(int numHotSpots)
+    private int determineNumAAAHotSpots(int numHotSpots) throws PWCGException
     {
-        int numAAA = numHotSpots / 3;
-        numAAA = Math.max(numAAA, 6);
-        numAAA = Math.min(numAAA, 24);
-        return numAAA;
+        IFlight flight = mission.getMissionFlightBuilder().getFlightForAirfield(airfield);
+        ConfigManagerCampaign configManager = flight.getCampaign().getCampaignConfigManager();
+        String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
+
+        int numAAHotSpots = 4;
+        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+        {
+            numAAHotSpots = 8;
+        }
+        
+        if (flight != null)
+        {
+            if (flight.isPlayerFlight())
+            {
+                 if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+                {
+                    numAAHotSpots = 4;
+                }
+                else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+                {
+                    numAAHotSpots = 6;
+                }
+                else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+                {
+                    numAAHotSpots = 10;
+                }
+            }
+        }
+        return numAAHotSpots;
     }
 
     private List<HotSpot> selectHotSpotsFromEmptySpace(IAirfield airfield) throws PWCGException

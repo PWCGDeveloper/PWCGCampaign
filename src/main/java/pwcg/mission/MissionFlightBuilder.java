@@ -8,7 +8,6 @@ import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -285,7 +284,7 @@ public class MissionFlightBuilder
         return aiFlights;
     }
 
-    public IFlight getFlightForAirfield(Airfield airfield)
+    public IFlight getFlightForAirfield(IAirfield airfield)
     {
         for (IFlight flight : this.getAllAerialFlights())
         {

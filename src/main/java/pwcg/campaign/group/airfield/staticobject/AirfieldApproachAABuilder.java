@@ -48,18 +48,38 @@ public class AirfieldApproachAABuilder
 
     private List<Coordinate> buildAirfieldAAPositions(IFlight flight, double angleOut, double angleLeft, double angleRight, Coordinate firstAAPoint) throws PWCGException
     {
-        int numPairs = getNumAAGunPairs(flight);
         List<Coordinate> aaCoordinates = new ArrayList<>();
-        for (int i = 0; i < numPairs; ++i)
+        if (shouldCreateApproachAA(flight))
         {
-            Coordinate aaCenterCoordinate = MathUtils.calcNextCoord(firstAAPoint, angleOut, (i * 1000));
-            Coordinate leftAAPoint = MathUtils.calcNextCoord(aaCenterCoordinate, angleLeft, 500);
-            Coordinate rightAAPoint = MathUtils.calcNextCoord(aaCenterCoordinate, angleRight, 500);
-            
-            aaCoordinates.add(leftAAPoint);
-            aaCoordinates.add(rightAAPoint);
+            int numPairs = getNumAAGunPairs(flight);
+            for (int i = 0; i < numPairs; ++i)
+            {
+                Coordinate aaCenterCoordinate = MathUtils.calcNextCoord(firstAAPoint, angleOut, (i * 1000));
+                Coordinate leftAAPoint = MathUtils.calcNextCoord(aaCenterCoordinate, angleLeft, 500);
+                Coordinate rightAAPoint = MathUtils.calcNextCoord(aaCenterCoordinate, angleRight, 500);
+                
+                aaCoordinates.add(leftAAPoint);
+                aaCoordinates.add(rightAAPoint);
+            }
         }
         return aaCoordinates;
+    }
+
+    private boolean shouldCreateApproachAA(IFlight flight) throws PWCGException
+    {
+        if (flight.isPlayerFlight())
+        {
+            return true;
+        }
+        
+        ConfigManagerCampaign configManager = flight.getCampaign().getCampaignConfigManager();
+        String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
+        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+        {
+            return true;
+        }
+        
+        return false;
     }
 
     private int getNumAAGunPairs(IFlight flight) throws PWCGException
@@ -77,7 +97,7 @@ public class AirfieldApproachAABuilder
         }
         else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
         {
-            numAAGunPairs = 4;
+            numAAGunPairs = 3;
         }
         return numAAGunPairs;
     }
