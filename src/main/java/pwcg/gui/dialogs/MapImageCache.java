@@ -46,7 +46,7 @@ public class MapImageCache
                 return mapImageForDisplay;
             }
 
-            PWCGLogger.log(LogLevel.ERROR, "Image not found: " + mapImageFileName);
+            PWCGLogger.log(LogLevel.DEBUG, "Image not found: " + mapImageFileName);
         }
 
         return null;

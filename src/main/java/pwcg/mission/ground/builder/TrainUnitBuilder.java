@@ -35,7 +35,6 @@ public class TrainUnitBuilder
     public IGroundUnitCollection createTrainUnit () throws PWCGException
     {
         IGroundUnitCollection groundUnitCollection = createTrain();
-        registerTrainStationInUse();
         return groundUnitCollection;
     }
     

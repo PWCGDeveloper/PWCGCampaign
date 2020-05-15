@@ -2,6 +2,8 @@ package pwcg.mission.ambient;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
@@ -11,18 +13,18 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.GroupManager;
 import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManager;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.CoordinateBox;
+import pwcg.core.location.Coordinate;
+import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.TargetSide;
 import pwcg.mission.ground.builder.TrainUnitBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
-import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetDefinitionBuilderGround;
+import pwcg.mission.target.TargetType;
 
 public class AmbientTrainBuilder extends AmbientUnitBuilder
 {
@@ -38,7 +40,9 @@ public class AmbientTrainBuilder extends AmbientUnitBuilder
         Side targetSide = TargetSide.ambientTargetSide(campaign);
         int maxTrains = getMaxAmbientTrains();
         
-        for (Block station : getRailroadsForAmbentTrains(targetSide))
+        ArrayList<Block> stationsForSide = getRailroadsForAmbentTrains(targetSide);
+        ArrayList<Block> sortedStationsByDistance = sortTrainStationsByDistanceFromMission(stationsForSide);
+        for (Block station : sortedStationsByDistance)
         {
             if (ambientTrains.size() >= maxTrains)
             {
@@ -53,32 +57,38 @@ public class AmbientTrainBuilder extends AmbientUnitBuilder
 
     private ArrayList<Block> getRailroadsForAmbentTrains(Side targetSide) throws PWCGException 
     {
-        ArrayList<Block> selectedStations = new ArrayList<Block>();
+        ArrayList<Block> stationsForSide = new ArrayList<Block>();
 
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
-        ConfigManager configManager = campaign.getCampaignConfigManager();
-
-        int keepGroupSpread = configManager.getIntConfigParam(ConfigItemKeys.KeepGroupSpreadKey);        
-        CoordinateBox missionBorders = mission.getMissionBorders().expandBox(keepGroupSpread);
-
+        Campaign campaign = mission.getCampaign();
+ 
         GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
         for (Block station : groupData.getRailroadList())
         {
             if (targetSide == station.createCountry(campaign.getDate()).getSide())
             {
-                if (missionBorders.isInBox(station.getPosition()))
-                {
-                    selectedStations.add(station);
-                }
+                stationsForSide.add(station);
             }
         }
         
-        return selectedStations;
+        return stationsForSide;
+    }
+    
+    private ArrayList<Block> sortTrainStationsByDistanceFromMission(ArrayList<Block> stationsForSide)
+    {
+        Map<Double, Block> sortedStationsByDistance = new TreeMap<>();
+        
+        Coordinate missionCenter = mission.getMissionBorders().getCenter();
+        for (Block station : stationsForSide)
+        {
+            Double distanceFromMission = MathUtils.calcDist(missionCenter, station.getPosition());
+            sortedStationsByDistance.put(distanceFromMission, station);
+        }
+        return new ArrayList<Block>(sortedStationsByDistance.values());
     }
 
     private void possibleAmbientTrain(Side targetSide, Block station) throws PWCGException
     {
-        boolean isPlayerTarget = true;
+        boolean isPlayerTarget = false;
         ICountry trainCountry = CountryFactory.makeMapReferenceCountry(targetSide);
         TargetDefinitionBuilderGround targetDefinitionBuilder = new TargetDefinitionBuilderGround(campaign);
         TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionAmbient(

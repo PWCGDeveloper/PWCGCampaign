@@ -2,6 +2,8 @@ package pwcg.mission.ambient;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
@@ -11,19 +13,19 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.GroupManager;
 import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManager;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.CoordinateBox;
+import pwcg.core.location.Coordinate;
+import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.TargetSide;
 import pwcg.mission.ground.builder.TruckConvoyBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
-import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetDefinitionBuilderGround;
+import pwcg.mission.target.TargetType;
 
 public class AmbientTruckConvoyBuilder extends AmbientUnitBuilder
 {
@@ -38,7 +40,10 @@ public class AmbientTruckConvoyBuilder extends AmbientUnitBuilder
     {
         Side targetSide = TargetSide.ambientTargetSide(campaign);
         int maxTrucks = getMaxTruckConvoys(campaign);
-        for (Bridge bridge : getBridgesAmbientConvoys(targetSide))
+        
+        ArrayList<Bridge> bridgesForSide = getBridgesAmbientConvoys(targetSide);
+        ArrayList<Bridge> sortedBridgesByDistance = sortBridgesDistanceFromMission(bridgesForSide);
+        for (Bridge bridge : sortedBridgesByDistance)
         {
             if (ambientTrucks.size() >= maxTrucks)
             {
@@ -53,27 +58,32 @@ public class AmbientTruckConvoyBuilder extends AmbientUnitBuilder
 
     private ArrayList<Bridge> getBridgesAmbientConvoys(Side targetSide) throws PWCGException 
     {
-        ArrayList<Bridge> selectedBridges = new ArrayList<Bridge>();
-
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
-        ConfigManager configManager = campaign.getCampaignConfigManager();
-
-        int keepGroupSpread = configManager.getIntConfigParam(ConfigItemKeys.KeepGroupSpreadKey);        
-        CoordinateBox missionBorders = mission.getMissionBorders().expandBox(keepGroupSpread);
+        ArrayList<Bridge> bridgesForSide = new ArrayList<Bridge>();
+        Campaign campaign = mission.getCampaign();
 
         GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
         for (Bridge bridge : groupData.getBridgeFinder().findAllBridges())
         {
             if (bridge.createCountry(campaign.getDate()).getSide() == targetSide)
             {
-            	if (missionBorders.isInBox(bridge.getPosition()))
-                {
-                    selectedBridges.add(bridge);
-                }
+                bridgesForSide.add(bridge);
             }
         }
         
-        return selectedBridges;
+        return bridgesForSide;
+    }
+    
+    private ArrayList<Bridge> sortBridgesDistanceFromMission(ArrayList<Bridge> bridgesForSide)
+    {
+        Map<Double, Bridge> sortedStationsByDistance = new TreeMap<>();
+        
+        Coordinate missionCenter = mission.getMissionBorders().getCenter();
+        for (Bridge bridge : bridgesForSide)
+        {
+            Double distanceFromMission = MathUtils.calcDist(missionCenter, bridge.getPosition());
+            sortedStationsByDistance.put(distanceFromMission, bridge);
+        }
+        return new ArrayList<Bridge>(sortedStationsByDistance.values());
     }
 
     private void possibleAmbientConvoy(Side targetSide, Bridge bridge) throws PWCGException

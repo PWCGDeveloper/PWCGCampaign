@@ -160,7 +160,7 @@ public class ImageCache
                     return image;
                 }
                 
-                PWCGLogger.log(LogLevel.ERROR, "Image not found: " + imagePath);
+                PWCGLogger.log(LogLevel.DEBUG, "Image not found: " + imagePath);
             }
         }
         
