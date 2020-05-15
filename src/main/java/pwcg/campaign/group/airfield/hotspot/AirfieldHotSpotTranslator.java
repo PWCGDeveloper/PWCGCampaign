@@ -98,31 +98,35 @@ public class AirfieldHotSpotTranslator implements IHotSpotTranslator
 
     private int determineNumAAAHotSpots(int numHotSpots) throws PWCGException
     {
-        IFlight flight = mission.getMissionFlightBuilder().getFlightForAirfield(airfield);
-        ConfigManagerCampaign configManager = flight.getCampaign().getCampaignConfigManager();
-        String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
-
         int numAAHotSpots = 4;
-        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
-        {
-            numAAHotSpots = 8;
-        }
-        
+
+        IFlight flight = mission.getMissionFlightBuilder().getFlightForAirfield(airfield);
         if (flight != null)
         {
-            if (flight.isPlayerFlight())
+            ConfigManagerCampaign configManager = flight.getCampaign().getCampaignConfigManager();
+            String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
+    
+            if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
             {
-                 if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+                numAAHotSpots = 8;
+            }
+            
+            if (flight != null)
+            {
+                if (flight.isPlayerFlight())
                 {
-                    numAAHotSpots = 4;
-                }
-                else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
-                {
-                    numAAHotSpots = 6;
-                }
-                else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
-                {
-                    numAAHotSpots = 10;
+                     if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+                    {
+                        numAAHotSpots = 4;
+                    }
+                    else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+                    {
+                        numAAHotSpots = 6;
+                    }
+                    else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+                    {
+                        numAAHotSpots = 10;
+                    }
                 }
             }
         }

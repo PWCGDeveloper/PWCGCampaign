@@ -43,6 +43,17 @@ public class AmbientBalloonBuilder
         makeDefinedNumberOfAmbientBalloons(mission, balloonPositions);
     }
 
+    public int getUnitCount() 
+    {
+        int ambientBalloonUnitCount = 0;
+        for (IGroundUnitCollection groundUnitCollection : ambientBalloons)
+        {
+            ambientBalloonUnitCount += groundUnitCollection.getUnitCount();
+            System.out.println("Ambient unit count balloon : " + groundUnitCollection.getUnitCount());
+        }
+        return ambientBalloonUnitCount;
+    }
+
     private boolean shouldMakeAmbientBalloons() throws PWCGException
     {
         if (PWCGContext.getProduct() == PWCGProduct.BOS)

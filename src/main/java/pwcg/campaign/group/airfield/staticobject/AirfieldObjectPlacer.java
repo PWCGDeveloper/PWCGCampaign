@@ -15,6 +15,7 @@ import pwcg.campaign.group.airfield.hotspot.HotSpotType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.builder.AAAUnitBuilder;
 import pwcg.mission.ground.builder.SearchLightBuilder;
@@ -38,6 +39,7 @@ public class AirfieldObjectPlacer
 
     public AirfieldObjects createAirfieldObjectsWithEmptySpace() throws PWCGException 
     {
+        createApproachAA();
         createHotSpotObjects();
         airfieldObjects.finish(mission);
         return airfieldObjects;
@@ -120,5 +122,17 @@ public class AirfieldObjectPlacer
         IAirfieldObjectSelector  airfieldObjectSelector = AirfieldObjectSelectorFactory.createAirfieldObjectSelector(campaign.getDate());
         IVehicle airfieldObject  = airfieldObjectSelector.createAirfieldObject(hotSpot, airfield);
         airfieldObjects.addAirfieldObject(airfieldObject);
+    }
+    
+
+    private void createApproachAA() throws PWCGException
+    {
+        IFlight airfieldFlight = mission.getMissionFlightBuilder().getFlightForAirfield(airfield);
+        if (airfieldFlight != null)
+        {
+            AirfieldApproachAABuilder airfieldApproachAABuilder = new AirfieldApproachAABuilder();
+            List<IGroundUnitCollection> airfieldApproachAA = airfieldApproachAABuilder.addAirfieldApproachAA(airfieldFlight);
+            airfieldObjects.setAirfieldApproachAA(airfieldApproachAA);;
+        }
     }
 }

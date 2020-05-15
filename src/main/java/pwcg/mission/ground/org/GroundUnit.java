@@ -322,6 +322,12 @@ public abstract class GroundUnit implements IGroundUnit
     {
         return spawnUnitTimer;
     }
+    
+    public int getUnitCount()
+    {
+        return groundElements.size();
+    }
+
 }	
 
 

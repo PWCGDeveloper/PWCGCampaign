@@ -27,4 +27,5 @@ public interface IGroundUnitCollection
     void validate() throws PWCGException;
     void triggerOnPlayerProximity(Mission mission) throws PWCGException;
     void triggerOnPlayerOrCoalitionProximity(Mission mission) throws PWCGException;
+    int getUnitCount();
 }

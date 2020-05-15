@@ -17,8 +17,10 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.ambient.AmbientGroundUnitBuilder;
 import pwcg.mission.data.PwcgGeneratedMission;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.ground.builder.IndirectFireAssignmentHandler;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleSetBuilderComprehensive;
 import pwcg.mission.io.MissionDescriptionFile;
 import pwcg.mission.io.MissionFileFactory;
@@ -61,6 +63,44 @@ public class Mission
         this.missionBorders = missionBorders;
 
         initialize();
+    }
+    
+    public int getGroundUnitCount() throws PWCGException
+    {
+        int unitCountAmbientGroundUnits = ambientGroundUnitBuilder.getUnitCount();
+        
+        int unitCountInBalloons = ambientBalloonBuilder.getUnitCount();
+        
+        int unitCountInFlights = 0;
+        for (IFlight flight : this.getMissionFlightBuilder().getAllAerialFlights())
+        {
+            for (IGroundUnitCollection groundUnitCollection : flight.getLinkedGroundUnits().getLinkedGroundUnits())
+            {
+                int unitCountInCollection = groundUnitCollection.getUnitCount();
+                unitCountInFlights += unitCountInCollection;
+            }
+        }
+        
+        int unitCountInAirfields = 0;
+        for (IAirfield field : getFieldsForPatrol())
+        {
+            unitCountInAirfields += field.getUnitCount();
+        }
+
+
+        int unitCountInMission = 0;
+        unitCountInMission += unitCountInFlights;
+        unitCountInMission += unitCountInBalloons;
+        unitCountInMission += unitCountAmbientGroundUnits;
+        unitCountInMission += unitCountInAirfields;
+
+        System.out.println("unit count balloons : " + unitCountInBalloons);
+        System.out.println("unit count flights : " + unitCountInFlights);
+        System.out.println("unit count ambient : " + unitCountAmbientGroundUnits);
+        System.out.println("unit count airfields : " + unitCountInAirfields);
+        System.out.println("unit count total : " + unitCountInMission);
+
+        return unitCountInMission;
     }
 
     private void initialize() throws PWCGException
@@ -214,6 +254,8 @@ public class Mission
             analyzer.analyze(this);
         }
 
+        getGroundUnitCount();
+        
         isFinalized = true;
     }
 

@@ -32,4 +32,5 @@ public interface IGroundUnit
     void setAiLevel(AiSkillLevel aiLevel);
     void validate() throws PWCGException;
     TargetType getTargetType();
+    int getUnitCount();
 }

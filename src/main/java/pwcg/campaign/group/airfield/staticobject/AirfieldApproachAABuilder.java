@@ -73,7 +73,7 @@ public class AirfieldApproachAABuilder
         }
         
         ConfigManagerCampaign configManager = flight.getCampaign().getCampaignConfigManager();
-        String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
+        String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigAAKey);
         if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
         {
             return true;
@@ -86,16 +86,16 @@ public class AirfieldApproachAABuilder
     {
         int numAAGunPairs = 2;
         ConfigManagerCampaign configManager = flight.getCampaign().getCampaignConfigManager();
-        String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
-        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        String currentAASetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigAAKey);
+        if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
             numAAGunPairs = 2;
         }
-        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+        else if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
         {
             numAAGunPairs = 3;
         }
-        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+        else if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
         {
             numAAGunPairs = 3;
         }

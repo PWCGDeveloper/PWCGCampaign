@@ -271,11 +271,11 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     {
         if (battleSize == BattleSize.BATTLE_SIZE_ASSAULT)
         {
-            return (1 + RandomNumberGenerator.getRandom(4));
+            return (1 + RandomNumberGenerator.getRandom(3));
         }
         else if (battleSize == BattleSize.BATTLE_SIZE_OFFENSIVE)
         {
-            return (1 + RandomNumberGenerator.getRandom(8));
+            return (1 + RandomNumberGenerator.getRandom(5));
         }
         else
         {

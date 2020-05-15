@@ -64,6 +64,15 @@ public class GroundUnitCollection implements IGroundUnitCollection
         return groundUnitsForSide;
     }
 
+    public int getUnitCount()
+    {
+        int unitCount = 0;
+        for (IGroundUnit groundUnit : groundUnits)
+        {
+            unitCount += groundUnit.getUnitCount();
+        }
+        return unitCount;
+    }
 
     private void createCheckZone() throws PWCGException
     {

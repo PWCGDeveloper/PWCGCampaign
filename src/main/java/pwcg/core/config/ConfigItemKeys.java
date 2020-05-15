@@ -15,8 +15,9 @@ public class ConfigItemKeys
     public static final String PilotInjuryKey = "PilotInjury";
     public static final String DetailedVictoryDescriptionKey = "DetailedVictoryDescription";
 	public static final String SimpleConfigAirKey = "SimpleConfigAir";
-	public static final String SimpleConfigGroundKey = "SimpleConfigGround";
-
+    public static final String SimpleConfigGroundKey = "SimpleConfigGround";
+    public static final String SimpleConfigAAKey = "SimpleConfigAA";
+	
 	public static final String WeatherClearCloudsKey = "Weather1ClearClouds";
 	public static final String WeatherLightCloudsKey = "Weather2LightClouds";
 	public static final String WeatherAverageCloudsKey = "Weather3AverageClouds";
@@ -112,9 +113,6 @@ public class ConfigItemKeys
 
 	public static final String RandomizePlanesPerSideKey = "RandomizePlanesPerSide";
 	public static final String MaxAmbientBalloonsKey = "MaxAmbientBalloons";
-	public static final String MGSpacingKey = "MGSpacing";
-	public static final String UseAmbientGroundUnitsKey = "UseAmbientGroundUnits";
-	public static final String UseAirfieldMGsKey = "UseAirfieldMGs";
 	public static final String InitialSquadronSearchRadiusKey = "InitialSquadronSearchRadius";
 	public static final String MaxSquadronSearchRadiusKey = "MaxSquadronSearchRadius";
 	public static final String OddsOfAceFlyingKey = "OddsOfAceFlying";
@@ -128,7 +126,6 @@ public class ConfigItemKeys
 	// Mission Ground objects
 	public static final String WindsockDistanceKey = "WindsockDistance";
 	public static final String KeepAirfieldSpreadKey = "KeepAirfieldSpread";
-	public static final String KeepAAASpreadKey = "KeepAAASpread";
 	public static final String KeepGroupSpreadKey = "KeepGroupSpread";
 	public static final String AirfieldInclusionRadiusKey = "AirfieldInclusionRadius";
 

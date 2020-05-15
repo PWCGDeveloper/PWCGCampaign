@@ -37,14 +37,6 @@ public class ConfigSimple
         setParamForSimpleConfigChange(ConfigItemKeys.TransportAdditionalKey, "2");
     }
 
-    public void setGroundLow() throws PWCGException 
-    {
-        setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigGroundKey, ConfigSimple.CONFIG_LEVEL_LOW);
-        setParamForSimpleConfigChange(ConfigItemKeys.UseAirfieldMGsKey, "0");
-        setParamForSimpleConfigChange(ConfigItemKeys.UseAmbientGroundUnitsKey, "0");
-        setParamForSimpleConfigChange(ConfigItemKeys.MGSpacingKey, "5000");
-    }
-
     public void setAirMed() throws PWCGException 
     {
         setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigAirKey, ConfigSimple.CONFIG_LEVEL_MED);
@@ -64,14 +56,6 @@ public class ConfigSimple
         setParamForSimpleConfigChange(ConfigItemKeys.GroundAttackAdditionalKey, "4");
         setParamForSimpleConfigChange(ConfigItemKeys.TransportMinimumKey, "1");
         setParamForSimpleConfigChange(ConfigItemKeys.TransportAdditionalKey, "4");
-    }
-
-    public void setGroundMed() throws PWCGException 
-    {
-        setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigGroundKey, ConfigSimple.CONFIG_LEVEL_MED);
-        setParamForSimpleConfigChange(ConfigItemKeys.UseAirfieldMGsKey, "1");
-        setParamForSimpleConfigChange(ConfigItemKeys.UseAmbientGroundUnitsKey, "1");
-        setParamForSimpleConfigChange(ConfigItemKeys.MGSpacingKey, "3000");
     }
 
     public void setAirHigh() throws PWCGException 
@@ -95,12 +79,34 @@ public class ConfigSimple
         setParamForSimpleConfigChange(ConfigItemKeys.TransportAdditionalKey, "5");
     }
 
+    public void setGroundLow() throws PWCGException 
+    {
+        setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigGroundKey, ConfigSimple.CONFIG_LEVEL_LOW);
+    }
+
+    public void setGroundMed() throws PWCGException 
+    {
+        setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigGroundKey, ConfigSimple.CONFIG_LEVEL_MED);
+    }
+
     public void setGroundHigh() throws PWCGException 
     {
         setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigGroundKey, ConfigSimple.CONFIG_LEVEL_HIGH);
-        setParamForSimpleConfigChange(ConfigItemKeys.UseAirfieldMGsKey, "1");
-        setParamForSimpleConfigChange(ConfigItemKeys.UseAmbientGroundUnitsKey, "1");
-        setParamForSimpleConfigChange(ConfigItemKeys.MGSpacingKey, "2000");
+    }
+    
+    public void setAALow() throws PWCGException 
+    {
+        setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigAAKey, ConfigSimple.CONFIG_LEVEL_LOW);
+    }
+    
+    public void setAAMed() throws PWCGException 
+    {
+        setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigAAKey, ConfigSimple.CONFIG_LEVEL_MED);
+    }
+    
+    public void setAAHigh() throws PWCGException 
+    {
+        setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigAAKey, ConfigSimple.CONFIG_LEVEL_HIGH);
     }
 
     public void setParamForSimpleConfigChange (String key, String value) throws PWCGException 

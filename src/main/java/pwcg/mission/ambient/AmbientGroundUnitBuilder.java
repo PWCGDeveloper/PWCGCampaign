@@ -7,7 +7,6 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.AAAManager;
@@ -31,16 +30,13 @@ public class AmbientGroundUnitBuilder
 
     public void generateAmbientGroundUnits() throws PWCGException 
     {
-        if (campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.UseAmbientGroundUnitsKey) == 1)
+        generateAmbientTrains();
+        generateAmbientTrucks();        
+        createFrontLineAAA();
+        
+        if (PWCGContext.getProduct() == PWCGProduct.BOS)
         {
-            generateAmbientTrains();
-            generateAmbientTrucks();        
-            createFrontLineAAA();
-            
-            if (PWCGContext.getProduct() == PWCGProduct.BOS)
-            {
-                generateAmbientBattles();
-            }
+            generateAmbientBattles();
         }
     }
 
@@ -100,5 +96,39 @@ public class AmbientGroundUnitBuilder
         allAmbientGroundUnits.addAll(ambientTrains);
         allAmbientGroundUnits.addAll(AAA);
         return allAmbientGroundUnits;
+    }
+
+    public int getUnitCount()
+    {
+        int ambientTrainCount = 0;
+        int ambientTruckCount = 0;
+        int ambientAACount = 0;
+        int ambientBattleCount = 0;
+        for (IGroundUnitCollection groundUnitCollection : ambientTrains)
+        {
+            ambientTrainCount += groundUnitCollection.getUnitCount();
+        }
+        for (IGroundUnitCollection groundUnitCollection : ambientTrucks)
+        {
+            ambientTruckCount += groundUnitCollection.getUnitCount();
+        }
+        for (IGroundUnitCollection groundUnitCollection : AAA)
+        {
+            ambientAACount += groundUnitCollection.getUnitCount();
+        }
+        for (IGroundUnitCollection groundUnitCollection : ambientBattles)
+        {
+            ambientBattleCount += groundUnitCollection.getUnitCount();
+        }
+
+        System.out.println("Ambient unit count train : " + ambientTrainCount);
+        System.out.println("Ambient unit count truck : " + ambientTruckCount);
+        System.out.println("Ambient unit count AA : " + ambientAACount);
+        System.out.println("Ambient unit count battle : " + ambientBattleCount);
+        
+        int ambientUnitCount = ambientTrainCount + ambientTruckCount + ambientAACount + ambientBattleCount;
+        System.out.println("Ambient unit count total : " + ambientUnitCount);
+        return ambientUnitCount;
+
     }
  }

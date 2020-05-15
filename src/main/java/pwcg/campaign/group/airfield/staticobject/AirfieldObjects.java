@@ -21,6 +21,7 @@ public class AirfieldObjects
 	private List<IVehicle> airfieldObjects = new ArrayList<IVehicle>();
 	private List<IStaticPlane> staticPlanes = new ArrayList<IStaticPlane>();
     private IGroundUnitCollection vehiclesForAirfield = new GroundUnitCollection(null, null);
+    private List<IGroundUnitCollection> airfieldApproachAA = new ArrayList<>();
 
     public AirfieldObjects(Side airfieldSide)
     {
@@ -70,5 +71,27 @@ public class AirfieldObjects
     {
         vehiclesForAirfield.finishGroundUnitCollection();
         vehiclesForAirfield.triggerOnPlayerOrCoalitionProximity(mission);
+    }
+
+    public int getUnitCount()
+    {
+        int airfieldUnitCount = vehiclesForAirfield.getUnitCount();
+        
+        for (IGroundUnitCollection airfieldApproachAAGun : airfieldApproachAA)
+        {
+            airfieldUnitCount += airfieldApproachAAGun.getUnitCount();
+        }
+        
+        return airfieldUnitCount;
+    }
+
+    public List<IGroundUnitCollection> getAirfieldApproachAA()
+    {
+        return airfieldApproachAA;
+    }
+
+    public void setAirfieldApproachAA(List<IGroundUnitCollection> airfieldApproachAA)
+    {
+        this.airfieldApproachAA = airfieldApproachAA;
     }
 }

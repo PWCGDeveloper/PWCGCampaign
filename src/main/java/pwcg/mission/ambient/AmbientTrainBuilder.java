@@ -97,15 +97,15 @@ public class AmbientTrainBuilder extends AmbientUnitBuilder
         String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
         if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
-            maxTrains = 1;
+            maxTrains = 2;
         }
         else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
         {
-            maxTrains = 2;
+            maxTrains = 4;
         }
         else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
         {
-            maxTrains = 3;
+            maxTrains = 6;
         }
 		return maxTrains;
 	}

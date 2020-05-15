@@ -7,9 +7,6 @@ public class ConfigSetMissionLimits
 		ConfigSet configSet = new ConfigSet();
 		configSet.setConfigSetName(ConfigSetKeys.ConfigSetMissionLimits);
 
-		configSet.addConfigItem(ConfigItemKeys.MGSpacingKey, new ConfigItem("2500"));
-		configSet.addConfigItem(ConfigItemKeys.UseAmbientGroundUnitsKey, new ConfigItem("0"));
-        configSet.addConfigItem(ConfigItemKeys.UseAirfieldMGsKey, new ConfigItem("0"));
         configSet.addConfigItem(ConfigItemKeys.MissionBoxSizeKey, new ConfigItem("30000"));
         configSet.addConfigItem(ConfigItemKeys.MissionBoxMinDistanceFromBaseKey, new ConfigItem("40000"));
         configSet.addConfigItem(ConfigItemKeys.MissionBoxMaxDistanceFromBaseKey, new ConfigItem("40"));

@@ -12,6 +12,8 @@ public class CampaignConfigurationSimpleGUIController
 {
     static public final String ACTION_SET_AIR_DENSITY = "Air Density";
     static public final String ACTION_SET_GROUND_DENSITY = "Ground Density";
+    static public final String ACTION_SET_AA_DENSITY = "AA Density";
+    
     static public final String CAMPAIGN_TYPE = "Campaign Type";
     
     private Campaign campaign;
@@ -33,6 +35,10 @@ public class CampaignConfigurationSimpleGUIController
             {
                 setGroundDensity(action);
             }
+            else if (action.contains(ACTION_SET_AA_DENSITY))
+            {
+                setAADensity(action);
+            }			
             else if (action.equalsIgnoreCase(CommonUIActions.ACTION_ACCEPT))
 			{
 				acceptSimpleConfigChanges(campaign);
@@ -84,6 +90,23 @@ public class CampaignConfigurationSimpleGUIController
         else if (action.contains(ConfigSimple.CONFIG_LEVEL_HIGH))
         {
             configSetSimpleConfig.setGroundHigh();
+        }
+    }
+
+    private void setAADensity(String action) throws PWCGException
+    {
+        ConfigSimple configSetSimpleConfig = new ConfigSimple(campaign);
+        if (action.contains(ConfigSimple.CONFIG_LEVEL_LOW))
+        {
+            configSetSimpleConfig.setAALow();
+        }
+        else if (action.contains(ConfigSimple.CONFIG_LEVEL_MED))
+        {
+            configSetSimpleConfig.setAAMed();
+        }
+        else if (action.contains(ConfigSimple.CONFIG_LEVEL_HIGH))
+        {
+            configSetSimpleConfig.setAAHigh();
         }
     }
 

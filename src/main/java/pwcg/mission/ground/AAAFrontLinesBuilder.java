@@ -11,6 +11,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
+import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -68,8 +69,7 @@ public class AAAFrontLinesBuilder
 	    }
         
         int distanceToLastAAA = Double.valueOf(MathUtils.calcDist(lastAAAPosition, currentFrontPointPosition)).intValue();
-        ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
-        int mgSpacing =  configManager.getIntConfigParam(ConfigItemKeys.MGSpacingKey);
+        int mgSpacing =  getMGSpacingAlongFront();
         
         if (distanceToLastAAA >= mgSpacing)
         {
@@ -78,6 +78,24 @@ public class AAAFrontLinesBuilder
         }
         
 	    return false;
+	}
+	
+	private int getMGSpacingAlongFront() throws PWCGException
+	{
+        ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+        String currentAASetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigAAKey);
+        if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        {
+            return 6000;
+        }
+        else if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+        {
+            return 4000;
+        }
+        else
+        {
+            return 2000;
+        }
 	}
     
     private void createAAAMg(Side side) throws PWCGException

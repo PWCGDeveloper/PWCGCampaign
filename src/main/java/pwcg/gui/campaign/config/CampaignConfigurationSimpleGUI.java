@@ -43,6 +43,11 @@ public class CampaignConfigurationSimpleGUI extends PwcgGuiContext implements Ac
     private ButtonModel groundMedButtonModel = null;
     private ButtonModel groundHighButtonModel = null;
 
+    private ButtonGroup aaButtonGroup = new ButtonGroup();
+    private ButtonModel aaLowButtonModel = null;
+    private ButtonModel aaMedButtonModel = null;
+    private ButtonModel aaHighButtonModel = null;
+
     private Campaign campaign;
 
     public CampaignConfigurationSimpleGUI(Campaign campaign)
@@ -91,9 +96,26 @@ public class CampaignConfigurationSimpleGUI extends PwcgGuiContext implements Ac
         {
             groundButtonGroup.setSelected(groundHighButtonModel, true);
         }
+        
+        String currentAASetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigAAKey);
+        if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        {
+            aaButtonGroup.setSelected(aaLowButtonModel, true);
+        }
+        else if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+        {
+            aaButtonGroup.setSelected(aaMedButtonModel, true);
+        }
+        else if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+        {
+            aaButtonGroup.setSelected(aaHighButtonModel, true);
+        }
 
 	}
 
+	
+	
+	
 	private JPanel makeCenterPanel() throws PWCGException  
 	{
         String leftImageName = "SimpleConfigCampaignCenter.jpg";
@@ -142,6 +164,7 @@ public class CampaignConfigurationSimpleGUI extends PwcgGuiContext implements Ac
 	{
 		JPanel airButtonPanel = createAirConfigPanel();
         JPanel groundButtonPanel = createGroundConfigPanel();
+        JPanel aaButtonPanel = createAAConfigPanel();
         String imagePath = getSideImage(campaign, "SimpleConfigCampaignRight.jpg");
 
         ImageResizingPanel simpleConfigButtonPanel = new ImageResizingPanel(imagePath);
@@ -149,6 +172,7 @@ public class CampaignConfigurationSimpleGUI extends PwcgGuiContext implements Ac
 
 		simpleConfigButtonPanel.add(airButtonPanel);
         simpleConfigButtonPanel.add(groundButtonPanel);
+        simpleConfigButtonPanel.add(aaButtonPanel);
 				
 		return simpleConfigButtonPanel;
 	}
@@ -231,6 +255,44 @@ public class CampaignConfigurationSimpleGUI extends PwcgGuiContext implements Ac
         return groundButtonPanel;
     }
 
+    private JPanel createAAConfigPanel() throws PWCGException
+    {
+        JPanel aaButtonPanel = new JPanel(new BorderLayout());
+        aaButtonPanel.setOpaque(false);
+
+        JLabel spacerLabel = makeLabel("          ");        
+        aaButtonPanel.add(spacerLabel, BorderLayout.WEST);
+
+        JPanel shapePanel = new JPanel(new BorderLayout());
+        shapePanel.setOpaque(false);
+
+        JPanel aaDensityGrid = new JPanel(new GridLayout(0,1));
+        aaDensityGrid.setOpaque(false);
+        
+        JLabel aaDensityLabel = PWCGButtonFactory.makeMenuLabelLarge(CampaignConfigurationSimpleGUIController.ACTION_SET_AA_DENSITY + ":");
+        aaDensityGrid.add(aaDensityLabel);
+
+        JRadioButton lowDensity = PWCGButtonFactory.makeRadioButton("Low", "Low AA Density", "Fewer AA units", false, this);     
+        aaDensityGrid.add(lowDensity);
+        aaLowButtonModel = lowDensity.getModel();
+        aaButtonGroup.add(lowDensity);
+
+        JRadioButton medDensity = PWCGButtonFactory.makeRadioButton("Med", "Med AA Density", "Medium numbers of AA units", false, this);     
+        aaDensityGrid.add(medDensity);
+        aaMedButtonModel = medDensity.getModel();
+        aaButtonGroup.add(medDensity);
+        
+        JRadioButton highDensity = PWCGButtonFactory.makeRadioButton("High", "High AA Density", "Large numbers of AA units", false, this);       
+        aaDensityGrid.add(highDensity);
+        aaHighButtonModel = highDensity.getModel();
+        aaButtonGroup.add(highDensity);
+
+        shapePanel.add(aaDensityGrid, BorderLayout.NORTH);
+        aaButtonPanel.add(shapePanel, BorderLayout.CENTER);
+        
+        return aaButtonPanel;
+    }
+
 	private JLabel makeLabel(String buttonName) throws PWCGException
 	{
 		Color bg = ColorMap.WOOD_BACKGROUND;
@@ -260,7 +322,6 @@ public class CampaignConfigurationSimpleGUI extends PwcgGuiContext implements Ac
 			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
-	}
-	
+	}	
 }
 

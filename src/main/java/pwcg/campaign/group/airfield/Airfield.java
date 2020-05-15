@@ -16,7 +16,6 @@ import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.group.airfield.hotspot.AirfieldHotSpotDefinition;
 import pwcg.campaign.group.airfield.hotspot.HotSpot;
 import pwcg.campaign.group.airfield.hotspot.HotSpotManager;
-import pwcg.campaign.group.airfield.staticobject.AirfieldApproachAABuilder;
 import pwcg.campaign.group.airfield.staticobject.AirfieldObjectPlacer;
 import pwcg.campaign.group.airfield.staticobject.AirfieldObjects;
 import pwcg.campaign.squadron.Squadron;
@@ -29,7 +28,6 @@ import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.IVehicle;
 
@@ -37,7 +35,6 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
 {
     private List<Runway> runways = new ArrayList<>();
     private AirfieldObjects airfieldObjects;
-    private List<IGroundUnitCollection> airfieldApproachAA = new ArrayList<>();
 
     public Airfield()
     {
@@ -73,11 +70,24 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
             {
                 staticPlane.write(writer);
             }
-        }
 
-        for (IGroundUnitCollection airfieldApproachAAGun : airfieldApproachAA)
+            for (IGroundUnitCollection airfieldApproachAAGun : airfieldObjects.getAirfieldApproachAA())
+            {
+                airfieldApproachAAGun.write(writer);
+            }
+        }
+    }
+    
+    @Override
+    public int getUnitCount()
+    {
+        if (airfieldObjects != null)
         {
-            airfieldApproachAAGun.write(writer);
+            return airfieldObjects.getUnitCount();
+        }
+        else
+        {
+            return 0;
         }
     }
 
@@ -134,19 +144,7 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
             AirfieldObjectPlacer airfieldObjectPlacer = new AirfieldObjectPlacer(mission, this);
             airfieldObjects = airfieldObjectPlacer.createAirfieldObjectsWithEmptySpace();
             
-            IFlight airfieldFlight = mission.getMissionFlightBuilder().getFlightForAirfield(this);
-            if (airfieldFlight != null)
-            {
-                AirfieldApproachAABuilder airfieldApproachAABuilder = new AirfieldApproachAABuilder();
-                airfieldApproachAA = airfieldApproachAABuilder.addAirfieldApproachAA(airfieldFlight);
-            }
         }
-    }
-
-    @Override
-    public AirfieldObjects getAirfieldObjects()
-    {
-        return airfieldObjects;
     }
 
     @Override

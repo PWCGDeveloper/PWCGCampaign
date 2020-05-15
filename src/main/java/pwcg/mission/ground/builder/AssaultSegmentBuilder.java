@@ -4,6 +4,7 @@ import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.ground.BattleSize;
@@ -91,7 +92,6 @@ public class AssaultSegmentBuilder
         }
     }
 
-
     private void assaultingTanks() throws PWCGException
     {         
         Coordinate tankAssaultStartPosition = MathUtils.calcNextCoord(
@@ -161,7 +161,7 @@ public class AssaultSegmentBuilder
     {
         defendingMachineGun();
         defendingMachineGunFlares();
-        defendingATGuns();
+        defendingATCapability();
         if (assaultDefinition.getBattleSize() == BattleSize.BATTLE_SIZE_ASSAULT || assaultDefinition.getBattleSize() == BattleSize.BATTLE_SIZE_OFFENSIVE)
         {
             defendingArtillery();
@@ -191,6 +191,30 @@ public class AssaultSegmentBuilder
             IGroundUnit assaultingMachineGunUnit = assaultFactory.createMachineGunFlareUnit(groundUnitInformation, triggeringFlight);
             battleSegmentUnitCollection.addGroundUnit(assaultingMachineGunUnit);
         }
+    }
+
+    private void defendingATCapability() throws PWCGException
+    {
+        int roll = RandomNumberGenerator.getRandom(100);
+        if (roll < 20)
+        {
+            defendingTanks();
+        }
+        else
+        {
+            defendingATGuns();
+        }
+    }
+
+    private void defendingTanks() throws PWCGException
+    {         
+        Coordinate tankDefenseStartPosition = MathUtils.calcNextCoord(
+                assaultDefinition.getAssaultPosition(), 
+                assaultDefinition.getTowardsDefenderOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 1000.0);  
+        
+        GroundUnitInformation groundUnitInformation = buildAssaultGroundUnitInformation(tankDefenseStartPosition, "Tank");
+        IGroundUnit assaultTankUnit = assaultFactory.createAssaultTankUnit (groundUnitInformation);
+        battleSegmentUnitCollection.addGroundUnit(assaultTankUnit);
     }
 
     private void defendingATGuns() throws PWCGException
