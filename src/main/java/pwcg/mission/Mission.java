@@ -1,5 +1,6 @@
 package pwcg.mission;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.aar.prelim.PwcgMissionData;
@@ -25,6 +26,7 @@ import pwcg.mission.ground.vehicle.VehicleSetBuilderComprehensive;
 import pwcg.mission.io.MissionDescriptionFile;
 import pwcg.mission.io.MissionFileFactory;
 import pwcg.mission.mcu.group.MissionObjectiveGroup;
+import pwcg.mission.mcu.group.StopAttackingNearAirfieldSequence;
 import pwcg.mission.options.MissionOptions;
 import pwcg.mission.target.AssaultDefinition;
 
@@ -53,6 +55,7 @@ public class Mission
     private boolean isFinalized = false;
     private MissionProfile missionProfile = MissionProfile.DAY_TACTICAL_MISSION;
     private MissionOptions missionOptions;
+    private List<StopAttackingNearAirfieldSequence> stopSequenceForMission = new ArrayList<>();
 
     public Mission(Campaign campaign, MissionProfile missionProfile, MissionHumanParticipants participatingPlayers, CoordinateBox missionBorders)
             throws PWCGException
@@ -244,6 +247,8 @@ public class Mission
             {
                 finalizeForSinglePlayer();
             }
+            
+            stopAttackingNearAirfield();
 
             if (PWCGContext.getProduct() == PWCGProduct.FC)
             {
@@ -257,6 +262,16 @@ public class Mission
         getGroundUnitCount();
         
         isFinalized = true;
+    }
+
+    private void stopAttackingNearAirfield() throws PWCGException
+    {
+        for (IFlight flight : this.getMissionFlightBuilder().getAllAerialFlights())
+        {
+            StopAttackingNearAirfield stopAttackingNearAirfield = new StopAttackingNearAirfield(flight, getFieldsForPatrol());
+            List<StopAttackingNearAirfieldSequence> stopSequenceForFlight = stopAttackingNearAirfield.stopAttackingAirfields();
+            stopSequenceForMission.addAll(stopSequenceForFlight);
+        }
     }
 
     private void assignIndirectFireTargets() throws PWCGException
@@ -403,5 +418,10 @@ public class Mission
     public AmbientBalloonBuilder getAmbientBalloonBuilder()
     {
         return ambientBalloonBuilder;
+    }
+
+    public List<StopAttackingNearAirfieldSequence> getStopSequenceForMission()
+    {
+        return stopSequenceForMission;
     }
 }

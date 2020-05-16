@@ -6,11 +6,6 @@
       "label": "Airfield Inclusion Radius",
       "help": "Radius to search for airfields to include in mission (in meters)"
     },
-    "KeepAAASpread": {
-      "value": "10000",
-      "label": "Keep AAA Spread",
-      "help": "Distance from waypoint box to keep AAA"
-    },
     "KeepAirfieldSpread": {
       "value": "10000",
       "label": "Keep Airfield Spread",

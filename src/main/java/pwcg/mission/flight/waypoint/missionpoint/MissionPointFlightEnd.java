@@ -85,7 +85,6 @@ public class MissionPointFlightEnd extends MissionPointSetSingleWaypointSet impl
         createobjectAssociations(plane);
     }
 
-
     private void createApproach() throws PWCGException
     {
         McuWaypoint approachWaypoint = ApproachWaypointGenerator.createApproachWaypoint(flight, landingAirfield);

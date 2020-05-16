@@ -121,7 +121,6 @@ public enum FlightTypes
         
         return false;
     }
-    
 
     public static boolean isBombingFlight(FlightTypes flightType)
     {

@@ -71,11 +71,6 @@
       "label": "Odds a mission is escorted",
       "help": "Odds of a 2 seater mission being escorted"
     },
-    "MGSpacing": {
-      "value": "3000",
-      "label": "MG Spacing",
-      "help": "Space in meters between MG emplacements"
-    },
     "MaxAmbientBalloons": {
       "value": "1",
       "label": "Max Ambient Balloons",
@@ -135,16 +130,6 @@
       "value": "35",
       "label": "Max dist in km mission center from base",
       "help": "Maximum distance of mission center from base (Not used in competitive mode)"
-    },
-    "UseAirfieldMGs": {
-      "value": "1",
-      "label": "use Airfield MGs",
-      "help": "Put MGs on Airfields"
-    },
-    "UseAmbientGroundUnits": {
-      "value": "1",
-      "label": "Create random ground units in mission",
-      "help": "Set to 1 create random battles, vehicle convoys, trains, and AAA"
     },
     "UsePlaneDelete": {
       "value": "1",

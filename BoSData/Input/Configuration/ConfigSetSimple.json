@@ -9,7 +9,12 @@
     "SimpleConfigGround": {
       "value": "Med",
       "label": "Ground Unit Density Level",
-      "help": "Simplified performance customization - low, medium, high, advanced config for custom"
+      "help": "Influences the number of ground troops in a mission - low, medium, high"
+    },
+    "SimpleConfigAA": {
+      "value": "Med",
+      "label": "AA Unit Density Level",
+      "help": "Influences the amount of anti aircraft guns in a mission - low, medium, high"
     }
   }
 }

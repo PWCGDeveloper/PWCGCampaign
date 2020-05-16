@@ -41,6 +41,7 @@ import pwcg.mission.ground.vehicle.VehicleFactory;
 import pwcg.mission.ground.vehicle.VehicleSetBuilderComprehensive;
 import pwcg.mission.mcu.effect.FirePotSeries;
 import pwcg.mission.mcu.group.SmokeGroup;
+import pwcg.mission.mcu.group.StopAttackingNearAirfieldSequence;
 import pwcg.mission.object.WindSock;
 
 public class MissionFileWriter implements IMissionFile 
@@ -70,6 +71,7 @@ public class MissionFileWriter implements IMissionFile
                 writeIcons(writer);
                 writeBlocks(writer);
                 writeAmbientGroundUnits(writer);
+                writeWindStopSequences(writer);
                 writeWindSock(writer);
                 writeProductSpecific(writer);
             }
@@ -87,6 +89,15 @@ public class MissionFileWriter implements IMissionFile
             throw new PWCGIOException(e.getMessage());
         }
 	}
+
+    private void writeWindStopSequences(BufferedWriter writer) throws PWCGException
+    {
+        for (StopAttackingNearAirfieldSequence stopAttackingNearAirfieldSequence : mission.getStopSequenceForMission())
+        {
+            stopAttackingNearAirfieldSequence.write(writer);
+        }
+        
+    }
 
     private void runAsyncTasks() throws PWCGException
     {
