@@ -23,8 +23,19 @@
 		"19450404": "Plantlunne"
 	},
 	"skins": [
+		{
+			"skinName": "FW190A3_SKIN_13",
+			"planeType": "p40e1",
+			"startDate": "19411101",
+			"endDate": "19450601",
+			"squadId": 20111001,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": true
+		}
 	],
 	"squadHistory": {
+		
 	},
 	"serviceId": 20101,
 	"squadronRoles": {

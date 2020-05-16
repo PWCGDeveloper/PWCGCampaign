@@ -27,7 +27,18 @@
 		"19450310": "Kirchhellen",
 		"19450404": "Gelnhausen"
 	},
-	"skins": [],
+	"skins": [
+		{
+			"skinName": "FW190A3_SKIN_14",
+			"planeType": "p40e1",
+			"startDate": "19411101",
+			"endDate": "19450601",
+			"squadId": 20111026,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": true
+		}
+	],
 	"squadHistory": {
 		"squadHistoryEntries": []
 	},

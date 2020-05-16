@@ -2,6 +2,18 @@
 ​
 At the PWCG web site
 
+8.8.1
+Changed to AA
+- Separate configuration for AA
+- AA guns guarding approach
+- More AA guns on the field (Murleen)
+- AA guns in emplacements (Murleen)
+- Enemy fighter aircraft will usually turn away from an enemy airbase
+- Made use of some stock P40, A30, and FW190 A3 skins
+Bugs
+Fixed bug that might stop a train from showing
+Fixed truck convoy pathing such that they stay on roads
+
 PWCG 8.8.0
 Consolidated coop mode
 - No more split modes with different capabilities
