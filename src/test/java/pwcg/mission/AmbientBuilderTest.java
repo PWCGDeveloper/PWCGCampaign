@@ -91,7 +91,7 @@ public class AmbientBuilderTest
         AmbientTrainBuilder ambientTrainBuilder = new AmbientTrainBuilder(campaign, mission);
         List<IGroundUnitCollection> ambientTrains = ambientTrainBuilder.generateAmbientTrains();
 
-        assert (ambientTrains.size() < 3);
+        assert (ambientTrains.size() <= 4);
         for (IGroundUnitCollection ambientTrain : ambientTrains)
         {
             for (IGroundUnit groundUnit : ambientTrain.getGroundUnits())
