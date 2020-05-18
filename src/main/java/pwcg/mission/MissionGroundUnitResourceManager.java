@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
+import pwcg.campaign.group.GroupManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -28,8 +30,10 @@ public class MissionGroundUnitResourceManager
         usedTruckBridges.put(bridge.getIndex(), bridge);
     }
 
-    public void registerTrainStation(Block trainStation)
+    public void registerTrainStation(Coordinate trainCoordinate) throws PWCGException
     {
+        GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();
+        Block trainStation = groupManager.getRailroadStationFinder().getClosestTrainPosition(trainCoordinate);
         usedTrainStations.put(trainStation.getIndex(), trainStation) ;
     }
 

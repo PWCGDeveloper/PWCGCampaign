@@ -35,6 +35,7 @@ public class TrainUnitBuilder
     public IGroundUnitCollection createTrainUnit () throws PWCGException
     {
         IGroundUnitCollection groundUnitCollection = createTrain();
+        registerTrainStationInUse();
         return groundUnitCollection;
     }
     
@@ -54,7 +55,7 @@ public class TrainUnitBuilder
         groundUnitCollection.addGroundUnit(train);
         groundUnitCollection.setPrimaryGroundUnit(train);
         groundUnitCollection.finishGroundUnitCollection();
-
+                
         return groundUnitCollection;
     }
 
@@ -82,9 +83,7 @@ public class TrainUnitBuilder
     
     private void registerTrainStationInUse() throws PWCGException
     {        
-        GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();
-        Block trainStation = groupManager.getRailroadStationFinder().getClosestTrainPosition(targetDefinition.getTargetPosition());
-        mission.getMissionGroundUnitManager().registerTrainStation(trainStation);
+        mission.getMissionGroundUnitManager().registerTrainStation(targetDefinition.getTargetPosition());
     }
 
 }

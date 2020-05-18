@@ -66,7 +66,10 @@ public class AmbientTrainBuilder extends AmbientUnitBuilder
         {
             if (targetSide == station.createCountry(campaign.getDate()).getSide())
             {
-                stationsForSide.add(station);
+                if (!mission.getMissionGroundUnitManager().isTrainStationInUse(station.getIndex()))
+                {
+                    stationsForSide.add(station);
+                }
             }
         }
         
@@ -120,12 +123,9 @@ public class AmbientTrainBuilder extends AmbientUnitBuilder
 		return maxTrains;
 	}
 
-    private void addAmbientTrain(IGroundUnitCollection trainUnit, Block station)
+    private void addAmbientTrain(IGroundUnitCollection trainUnit, Block station) throws PWCGException
     {
-        if (!mission.getMissionGroundUnitManager().isTrainStationInUse(station.getIndex()))
-        {
-            mission.getMissionGroundUnitManager().registerTrainStation(station);
-            ambientTrains.add(trainUnit);
-        }
+        mission.getMissionGroundUnitManager().registerTrainStation(station.getPosition());
+        ambientTrains.add(trainUnit);
     }
  }
