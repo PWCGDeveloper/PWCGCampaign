@@ -416,11 +416,23 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
         List<Coordinate> points = new ArrayList<>();
         for (Runway runway : runways)
         {
-            points.add(runway.getParkingLocation().getPosition());
+            if (runway.getParkingLocation() != null)
+            {
+                points.add(runway.getParkingLocation().getPosition());
+            }
+            
+            if (runway.getTaxiToStart() != null)
+            {
+                points.addAll(runway.getTaxiToStart());
+            }
+            
+            if (runway.getTaxiFromEnd() != null)
+            {
+                points.addAll(runway.getTaxiFromEnd());
+            }
+            
             points.add(runway.getStartPos());
             points.add(runway.getEndPos());
-            points.addAll(runway.getTaxiToStart());
-            points.addAll(runway.getTaxiFromEnd());
         }
 
         for (HotSpot hotspot : getNearbyHotSpots())
