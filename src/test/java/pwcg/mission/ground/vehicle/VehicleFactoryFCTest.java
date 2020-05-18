@@ -24,11 +24,26 @@ public class VehicleFactoryFCTest
     }
     
     @Test
-    public void staticCreateTest() throws PWCGException
+    public void staticFrenchCreateTest() throws PWCGException
     {
         createStatic(CountryFactory.makeCountryByCountry(Country.FRANCE), DateUtils.getDateYYYYMMDD("19170801"));
+    }
+    
+    @Test
+    public void staticGermanCreateTest() throws PWCGException
+    {
         createStatic(CountryFactory.makeCountryByCountry(Country.GERMANY), DateUtils.getDateYYYYMMDD("19170801"));
+    }
+    
+    @Test
+    public void staticBritishCreateTest() throws PWCGException
+    {
         createStatic(CountryFactory.makeCountryByCountry(Country.BRITAIN), DateUtils.getDateYYYYMMDD("19170801"));
+    }
+    
+    @Test
+    public void staticAmericanCreateTest() throws PWCGException
+    {
         createStatic(CountryFactory.makeCountryByCountry(Country.USA), DateUtils.getDateYYYYMMDD("19180501"));
     }
     

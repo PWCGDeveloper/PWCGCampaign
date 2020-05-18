@@ -18,40 +18,37 @@ import pwcg.mission.target.TargetType;
 
 public class AirfieldObjects
 {
-	private List<IVehicle> airfieldObjects = new ArrayList<IVehicle>();
-	private List<IStaticPlane> staticPlanes = new ArrayList<IStaticPlane>();
+    private List<IVehicle> airfieldObjects = new ArrayList<IVehicle>();
+    private List<IStaticPlane> staticPlanes = new ArrayList<IStaticPlane>();
     private IGroundUnitCollection vehiclesForAirfield = new GroundUnitCollection(null, null);
     private List<IGroundUnitCollection> airfieldApproachAA = new ArrayList<>();
 
     public AirfieldObjects(Side airfieldSide)
     {
-        GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
-                GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION,
-                "Airfield vehicles",
-                TargetType.TARGET_AAA,
-                Coalition.getCoalitionsForSide(airfieldSide.getOppositeSide()));
-        vehiclesForAirfield = new GroundUnitCollection ("Airfield vehicles", groundUnitCollectionData);
+        GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION,
+                "Airfield vehicles", TargetType.TARGET_AAA, Coalition.getCoalitionsForSide(airfieldSide.getOppositeSide()));
+        vehiclesForAirfield = new GroundUnitCollection("Airfield vehicles", groundUnitCollectionData);
     }
 
-	public List<IVehicle> getAirfieldObjects()
-	{
-		return airfieldObjects;
-	}
+    public List<IVehicle> getAirfieldObjects()
+    {
+        return airfieldObjects;
+    }
 
-	public void addAirfieldObject(IVehicle airfieldObject)
-	{
-		this.airfieldObjects.add(airfieldObject);
-	}
+    public void addAirfieldObject(IVehicle airfieldObject)
+    {
+        this.airfieldObjects.add(airfieldObject);
+    }
 
-	public List<IStaticPlane> getStaticPlanes()
-	{
-		return staticPlanes;
-	}
+    public List<IStaticPlane> getStaticPlanes()
+    {
+        return staticPlanes;
+    }
 
-	public void addStaticPlane(IStaticPlane staticPlane)
-	{
-		this.staticPlanes.add(staticPlane);
-	}
+    public void addStaticPlane(IStaticPlane staticPlane)
+    {
+        this.staticPlanes.add(staticPlane);
+    }
 
     public IGroundUnitCollection getVehiclesForAirfield()
     {
@@ -63,7 +60,8 @@ public class AirfieldObjects
         vehiclesForAirfield.merge(aaaMg);
     }
 
-    public void addVehiclesForAirfield(IGroundUnit airfieldGroup) {
+    public void addVehiclesForAirfield(IGroundUnit airfieldGroup)
+    {
         vehiclesForAirfield.addGroundUnit(airfieldGroup);
     }
 
@@ -79,12 +77,12 @@ public class AirfieldObjects
     public int getUnitCount()
     {
         int airfieldUnitCount = vehiclesForAirfield.getUnitCount();
-        
+
         for (IGroundUnitCollection airfieldApproachAAGun : airfieldApproachAA)
         {
             airfieldUnitCount += airfieldApproachAAGun.getUnitCount();
         }
-        
+
         return airfieldUnitCount;
     }
 

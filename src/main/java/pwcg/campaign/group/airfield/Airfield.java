@@ -59,7 +59,10 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
     {
         if (airfieldObjects != null)
         {
-            airfieldObjects.getVehiclesForAirfield().write(writer);
+            if (airfieldObjects.getVehiclesForAirfield().getGroundUnits().size() > 0)
+            {
+                airfieldObjects.getVehiclesForAirfield().write(writer);
+            }
 
             for (IVehicle airfieldObject : airfieldObjects.getAirfieldObjects())
             {
