@@ -17,7 +17,7 @@ public class ScrambleOpposeTargetDefinitionBuilder
         TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
         
         Coordinate targetLocation = scrambleOpposingFlightInformation.getTargetSearchStartLocation();
-        targetDefinition.setTargetPosition(targetLocation);
+        targetDefinition.setPosition(targetLocation);
         targetDefinition.setTargetOrientation(new Orientation());
         return targetDefinition;
     }
@@ -29,7 +29,7 @@ public class ScrambleOpposeTargetDefinitionBuilder
         TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
         
         Coordinate targetLocation = scrambleOpposingFlightInformation.getTargetSearchStartLocation();
-        targetDefinition.setTargetPosition(targetLocation);
+        targetDefinition.setPosition(targetLocation);
         targetDefinition.setTargetOrientation(new Orientation());
         return targetDefinition;
     }

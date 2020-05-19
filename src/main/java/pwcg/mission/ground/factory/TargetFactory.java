@@ -56,10 +56,10 @@ public class TargetFactory
         GroundUnitAttackFactory groundUnitBuilderAttack = new GroundUnitAttackFactory(flightInformation.getCampaign(), flightInformation.getMission(), targetDefinition);
         groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
         
-        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(targetDefinition.getTargetCountry().getSide());
+        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(targetDefinition.getCountry().getSide());
         if (targetCoordinates != null)
         {
-            targetDefinition.setTargetPosition(targetCoordinates);
+            targetDefinition.setPosition(targetCoordinates);
         }
     }
 
@@ -70,13 +70,13 @@ public class TargetFactory
 
     private void createAAAGroundUnits() throws PWCGException
     {
-        AAAUnitBuilder aaaUnitBuilder = new AAAUnitBuilder(flightInformation.getCampaign(), targetDefinition.getTargetCountry(), targetDefinition.getTargetPosition());
+        AAAUnitBuilder aaaUnitBuilder = new AAAUnitBuilder(flightInformation.getCampaign(), targetDefinition);
         groundUnitCollection = aaaUnitBuilder.createAAAArtilleryBatteryFromMission(flightInformation.getMission(), GroundUnitSize.GROUND_UNIT_SIZE_HIGH);
     }
 
     private void createTinyAAAGroundUnits() throws PWCGException
     {
-        AAAUnitBuilder aaaUnitBuilder = new AAAUnitBuilder(flightInformation.getCampaign(), targetDefinition.getTargetCountry(), targetDefinition.getTargetPosition());
+        AAAUnitBuilder aaaUnitBuilder = new AAAUnitBuilder(flightInformation.getCampaign(), targetDefinition);
         groundUnitCollection = aaaUnitBuilder.createAAAArtilleryBatteryFromMission(flightInformation.getMission(), GroundUnitSize.GROUND_UNIT_SIZE_TINY);
     }
 

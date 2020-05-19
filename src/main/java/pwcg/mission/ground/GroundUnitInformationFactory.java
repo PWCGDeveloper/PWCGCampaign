@@ -7,51 +7,29 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.target.TargetType;
-import pwcg.mission.target.TargetDefinition;
 
 public class GroundUnitInformationFactory
 {
     public static GroundUnitInformation buildGroundUnitInformation(
             Campaign campaign, 
             ICountry country, 
-            String name,
             TargetType targetType,
             Coordinate startCoords, 
             Coordinate targetCoords,
-            Orientation orientation,
-            boolean isPlayerTarget) throws PWCGException
+            Orientation orientation) throws PWCGException
     {
         GroundUnitInformation groundUnitInformation = new GroundUnitInformation();
         groundUnitInformation.setCountry(country);
-        groundUnitInformation.setName(name);
+        groundUnitInformation.setName(targetType.getTargetName());
         groundUnitInformation.setDate(campaign.getDate());
         groundUnitInformation.setTargetType(targetType);
         groundUnitInformation.setPosition(startCoords);
         groundUnitInformation.setDestination(targetCoords);
         
-        GroundUnitSize unitSize = GroundUnitSize.calcNumUnitsByConfig(campaign, isPlayerTarget);
+        GroundUnitSize unitSize = GroundUnitSize.calcNumUnitsByConfig(campaign);
         groundUnitInformation.setUnitSize(unitSize);
         
         orientation = determineOrientation(startCoords, targetCoords, orientation);
-        groundUnitInformation.setOrientation(orientation);
-
-        return groundUnitInformation;
-    }
-
-    public static GroundUnitInformation buildGroundUnitInformation(Campaign campaign, TargetDefinition targetDefinition) throws PWCGException
-    {
-        GroundUnitInformation groundUnitInformation = new GroundUnitInformation();
-        groundUnitInformation.setCountry(targetDefinition.getTargetCountry());
-        groundUnitInformation.setName(targetDefinition.getTargetName());
-        groundUnitInformation.setDate(campaign.getDate());
-        groundUnitInformation.setTargetType(targetDefinition.getTargetType());
-        groundUnitInformation.setPosition(targetDefinition.getTargetPosition());
-        groundUnitInformation.setDestination(targetDefinition.getTargetPosition());
-        
-        GroundUnitSize unitSize = GroundUnitSize.calcNumUnitsByConfig(campaign, targetDefinition.isPlayerTarget());
-        groundUnitInformation.setUnitSize(unitSize);
-        
-        Orientation orientation = determineOrientation(targetDefinition.getTargetPosition(), targetDefinition.getTargetPosition(), targetDefinition.getTargetOrientation());
         groundUnitInformation.setOrientation(orientation);
 
         return groundUnitInformation;

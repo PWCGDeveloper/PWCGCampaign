@@ -100,13 +100,13 @@ public class MissionObjectiveFactory
 
     private static String getBalloonBustMissionObjective(IFlight flight) throws PWCGException 
     {
-        String objective = "Destroy the enemy balloon" + MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getTargetPosition().copy()) + ".";       
+        String objective = "Destroy the enemy balloon" + MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getPosition().copy()) + ".";       
         return objective;
     }
 
     private static String getBalloonDefenseMissionObjective(IFlight flight) throws PWCGException 
     {
-        String objective = "Defend our balloon" + MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getTargetPosition().copy()) + ".";      
+        String objective = "Defend our balloon" + MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getPosition().copy()) + ".";      
 
         return objective;
     }
@@ -116,7 +116,7 @@ public class MissionObjectiveFactory
         String objective = "Perform reconnaissance at the specified front location.  " + 
                 "Make contact with friendly troop concentrations to establish front lines.";
         
-        objective = "Perform reconnaissance" + MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getTargetPosition().copy()) + 
+        objective = "Perform reconnaissance" + MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getPosition().copy()) + 
                         ".  Make contact with friendly troop concentrations to establish front lines.";
         
         return objective;
@@ -127,7 +127,7 @@ public class MissionObjectiveFactory
         EscortedByPlayerFlight escortedByPlayerFlight = flight.getLinkedFlights().getEscortedByPlayer();
         MissionPoint rendezvousPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_RENDEZVOUS);
         String rendezvousName =  MissionObjective.formMissionObjectiveLocation(rendezvousPoint.getPosition());
-        String objectiveName =  MissionObjective.formMissionObjectiveLocation(escortedByPlayerFlight.getTargetDefinition().getTargetPosition().copy());
+        String objectiveName =  MissionObjective.formMissionObjectiveLocation(escortedByPlayerFlight.getTargetDefinition().getPosition().copy());
 
         String objective = "Rendezvous with " + escortedByPlayerFlight.getFlightPlanes().getFlightLeader().getDisplayName() + "s of " + escortedByPlayerFlight.getSquadron().determineDisplayName(date);
         if (!rendezvousName.isEmpty())
@@ -148,7 +148,7 @@ public class MissionObjectiveFactory
 
     private static String getInterceptMissionObjective(IFlight flight) throws PWCGException 
     {
-        String objective = "Intercept enemy aircraft" + MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getTargetPosition().copy()) + ".";      
+        String objective = "Intercept enemy aircraft" + MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getPosition().copy()) + ".";      
         
         return objective;
     }
@@ -160,13 +160,13 @@ public class MissionObjectiveFactory
     
     private static String getCargoDropMissionObjective(IFlight flight) throws PWCGException
     {
-        String objective = "Perform a cargo drop" + MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getTargetPosition().copy()) + ".";     
+        String objective = "Perform a cargo drop" + MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getPosition().copy()) + ".";     
         return objective;
     }
     
     private static String getParatroopDropMissionObjective(IFlight flight) throws PWCGException
     {
-        String objective = "Drop our paratroops" + MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getTargetPosition().copy()) + ".";       
+        String objective = "Drop our paratroops" + MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getPosition().copy()) + ".";       
         return objective;
     }
 
@@ -174,7 +174,7 @@ public class MissionObjectiveFactory
     {
         String objective = "Patrol aircpace at the specified front location.  " + 
                 "Engage any enemy aircraft that you encounter.  ";
-        String objectiveName =  MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getTargetPosition().copy()) + "."; 
+        String objectiveName =  MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getPosition().copy()) + "."; 
         if (!objectiveName.isEmpty())
         {
             objective = "Patrol airspace " + objectiveName + 
@@ -192,7 +192,7 @@ public class MissionObjectiveFactory
     private static String getSpyExtractMissionObjective(IFlight flight) throws PWCGException 
     {
         String objective = "Extract our spy at the specified location" + 
-                MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getTargetPosition().copy()) + "."  + 
+                MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getPosition().copy()) + "."  + 
                 ".  Don't get caught!";       
         
         return objective;

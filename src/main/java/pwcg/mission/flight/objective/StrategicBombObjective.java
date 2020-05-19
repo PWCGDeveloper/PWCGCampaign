@@ -6,31 +6,31 @@ import pwcg.mission.target.TargetType;
 
 public class StrategicBombObjective
 {
-    static String getMissionObjective(IFlight flight) throws PWCGException 
+    static String getMissionObjective(IFlight flight, TargetType targetType) throws PWCGException 
     {
         String objective = "Bomb the specified objective.  ";
 
-        if (flight.getTargetDefinition().getTargetType() == TargetType.TARGET_FACTORY)
+        if (targetType == TargetType.TARGET_FACTORY)
         {
             objective = "Bomb the factories near " + flight.getTargetDefinition().getTargetName();
         }
-        else if (flight.getTargetDefinition().getTargetType() == TargetType.TARGET_CITY)
+        else if (targetType == TargetType.TARGET_CITY)
         {
             objective = "Bomb available targets at " + flight.getTargetDefinition().getTargetName();
         }
-        else if (flight.getTargetDefinition().getTargetType() == TargetType.TARGET_RAIL)
+        else if (targetType == TargetType.TARGET_RAIL)
         {
             objective = "Bomb the rail station at " + flight.getTargetDefinition().getTargetName();
         }
-        else if (flight.getTargetDefinition().getTargetType() == TargetType.TARGET_AIRFIELD)
+        else if (targetType == TargetType.TARGET_AIRFIELD)
         {
             objective = "Bomb the airfield at " + flight.getTargetDefinition().getTargetName();
         }
-        else if (flight.getTargetDefinition().getTargetType() == TargetType.TARGET_PORT)
+        else if (targetType == TargetType.TARGET_PORT)
         {
             objective = "Bomb the port facilities at " + flight.getTargetDefinition().getTargetName();
         }
-        else if (flight.getTargetDefinition().getTargetType() == TargetType.TARGET_SHIPPING)
+        else if (targetType == TargetType.TARGET_SHIPPING)
         {
             objective = "Bomb shipping that has been detected.  Expected shipping types include: " + flight.getTargetDefinition().getTargetName() + ".";
         }

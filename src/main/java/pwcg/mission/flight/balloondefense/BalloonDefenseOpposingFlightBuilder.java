@@ -81,7 +81,7 @@ public class BalloonDefenseOpposingFlightBuilder
     {
         ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(opposingFlightInformation);
         TargetDefinition opposingTargetDefinition =  targetDefinitionBuilder.buildTargetDefinition();
-        opposingTargetDefinition.setTargetPosition(balloonUnit.getPosition());
+        opposingTargetDefinition.setPosition(balloonUnit.getPosition());
         return opposingTargetDefinition;
     }
 }

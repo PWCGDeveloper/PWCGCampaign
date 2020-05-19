@@ -54,21 +54,21 @@ public class AssaultDefinitionGenerator
 
     private ICountry getAssaultingCountry(TargetDefinition targetDefinition, ICountry defendingCountry)
     {
-        if (defendingCountry.getSide() == targetDefinition.getTargetCountry().getSide())
+        if (defendingCountry.getSide() == targetDefinition.getCountry().getSide())
         {
             return targetDefinition.getAttackingCountry();
         }
         else
         {
-            return targetDefinition.getTargetCountry();
+            return targetDefinition.getCountry();
         }
     }
 
     private ICountry getDefendingCountry(TargetDefinition targetDefinition)
     {
-        ICountry defendingCountry = targetDefinition.getTargetCountry();
+        ICountry defendingCountry = targetDefinition.getCountry();
         BattleManager battleManager = PWCGContext.getInstance().getBattleManager();
-        Battle battle = battleManager.getBattleForCampaign(PWCGContext.getInstance().getCurrentMap().getMapIdentifier(), targetDefinition.getTargetPosition(),
+        Battle battle = battleManager.getBattleForCampaign(PWCGContext.getInstance().getCurrentMap().getMapIdentifier(), targetDefinition.getPosition(),
                 campaign.getDate());
         if (battle != null)
         {
@@ -133,8 +133,8 @@ public class AssaultDefinitionGenerator
     private int determineCenterOfBattle(TargetDefinition targetDefinition) throws PWCGException
     {
         FrontLinesForMap frontLineMarker = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
-        List<FrontLinePoint> frontLines = frontLineMarker.getFrontLines(targetDefinition.getTargetCountry().getSide());
-        int centerFrontIndex = frontLineMarker.findIndexForClosestPosition(targetDefinition.getTargetPosition(), targetDefinition.getTargetCountry().getSide());
+        List<FrontLinePoint> frontLines = frontLineMarker.getFrontLines(targetDefinition.getCountry().getSide());
+        int centerFrontIndex = frontLineMarker.findIndexForClosestPosition(targetDefinition.getPosition(), targetDefinition.getCountry().getSide());
         if (centerFrontIndex < 10)
         {
             centerFrontIndex = 10;

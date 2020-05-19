@@ -132,7 +132,7 @@ public class ScrambleOpposingFlightBuilder
         TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
         
         Squadron playerSquadron = playerFlightInformation.getSquadron();
-        targetDefinition.setTargetPosition(playerSquadron.determineCurrentPosition(playerFlightInformation.getCampaign().getDate()));
+        targetDefinition.setPosition(playerSquadron.determineCurrentPosition(playerFlightInformation.getCampaign().getDate()));
         return targetDefinition;
         
     }

@@ -51,7 +51,7 @@ public class TargetLocatorAir
         {
             InterceptPlayerCoordinateGenerator coordinateGenerator = new InterceptPlayerCoordinateGenerator(flightInformation);
             TargetDefinition interceptedFlightTarget = coordinateGenerator.createTargetCoordinates();
-            return interceptedFlightTarget.getTargetPosition();
+            return interceptedFlightTarget.getPosition();
         }
         else
         {

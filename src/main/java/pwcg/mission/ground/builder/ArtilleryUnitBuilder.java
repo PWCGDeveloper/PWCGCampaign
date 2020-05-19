@@ -27,10 +27,17 @@ public class ArtilleryUnitBuilder
 
     public IGroundUnitCollection createArtilleryBattery () throws PWCGException
     {
-        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(campaign, targetDefinition);
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                campaign, 
+                targetDefinition.getCountry(), 
+                TargetType.TARGET_ARTILLERY,
+                targetDefinition.getPosition(), 
+                targetDefinition.getPosition(),
+                targetDefinition.getOrientation());
+        
         IGroundUnit artilleryUnit = new GroundArtilleryBattery(groundUnitInformation);
         artilleryUnit.createGroundUnit();
-        
+
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, 
                 "Artillery Battery", 

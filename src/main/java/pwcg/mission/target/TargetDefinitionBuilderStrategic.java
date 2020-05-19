@@ -45,11 +45,11 @@ public class TargetDefinitionBuilderStrategic implements ITargetDefinitionBuilde
         targetDefinition.setTargetName(buildTargetName(targetCountry, targetType));
 
         targetDefinition.setAttackingCountry(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()));
-        targetDefinition.setTargetCountry(targetCountry);
+        targetDefinition.setCountry(targetCountry);
         targetDefinition.setDate(flightInformation.getCampaign().getDate());
         targetDefinition.setPlayerTarget((Squadron.isPlayerSquadron(flightInformation.getCampaign(), flightInformation.getSquadron().getSquadronId())));
 
-        targetDefinition.setTargetPosition(place.getPosition());
+        targetDefinition.setPosition(place.getPosition());
         targetDefinition.setTargetOrientation(new Orientation());
 
         return targetDefinition;

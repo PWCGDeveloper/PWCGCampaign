@@ -4,6 +4,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.location.Orientation;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.GroundUnitSize;
@@ -14,8 +15,8 @@ import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.unittypes.artillery.SearchLightUnit;
 import pwcg.mission.mcu.Coalition;
-import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetType;
 
 public class SearchLightBuilder
 {
@@ -28,7 +29,14 @@ public class SearchLightBuilder
 
     public IGroundUnitCollection createSearchLightGroup (TargetDefinition targetDefinition) throws PWCGException
     {
-        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(campaign, targetDefinition);
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                campaign, 
+                targetDefinition.getCountry(), 
+                TargetType.TARGET_AAA,
+                targetDefinition.getPosition(), 
+                targetDefinition.getPosition(),
+                targetDefinition.getOrientation());
+
         IGroundUnit searchLightUnit = new SearchLightUnit(groundUnitInformation);
         searchLightUnit.createGroundUnit();
         
@@ -64,12 +72,13 @@ public class SearchLightBuilder
 
     private GroundUnitInformation createGroundUnitInformation(ICountry country, Coordinate position) throws PWCGException
     {
-        String nationality = country.getNationality();
-        String name = nationality + " Search Light";
-
-        boolean isPlayerTarget = false;
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
-                campaign, country, name, TargetType.TARGET_AIRFIELD, position, position, null, isPlayerTarget);
+                campaign, 
+                country, 
+                TargetType.TARGET_AAA,
+                position, 
+                position,
+                Orientation.createRandomOrientation());
         
         groundUnitInformation.setUnitSize(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
         return groundUnitInformation;

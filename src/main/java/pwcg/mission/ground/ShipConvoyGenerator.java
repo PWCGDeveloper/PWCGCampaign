@@ -23,7 +23,7 @@ public class ShipConvoyGenerator
         int numConvoys = RandomNumberGenerator.getRandom(6);
         for (int i = 0; i < numConvoys; ++i)
         {
-            VehicleClass shipType = ShipTypeChooser.chooseShipType(targetDefinition.getTargetCountry().getSide());
+            VehicleClass shipType = ShipTypeChooser.chooseShipType(targetDefinition.getCountry().getSide());
             ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(flightInformation.getCampaign(), targetDefinition);
             IGroundUnitCollection convoy = shippingFactory.createShippingUnit(shipType);
             if (convoy.getGroundUnits().get(0).getCountry().getSide() == Side.ALLIED)

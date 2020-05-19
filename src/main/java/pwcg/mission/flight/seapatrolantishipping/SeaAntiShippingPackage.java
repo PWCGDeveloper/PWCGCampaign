@@ -103,7 +103,7 @@ public class SeaAntiShippingPackage implements IFlightPackage
         ShippingLane selectedShippingLane = getEnemyShippingLane();
         ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
         TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
-        targetDefinition.setTargetPosition(selectedShippingLane.getShippingLaneBox().chooseCoordinateWithinBox());
+        targetDefinition.setPosition(selectedShippingLane.getShippingLaneBox().chooseCoordinateWithinBox());
         return targetDefinition;
         
     }

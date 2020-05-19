@@ -99,7 +99,7 @@ public class AirfieldScramblePackage
         ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(airfieldScrambleFlightBuildInformation);
         TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
         
-        targetDefinition.setTargetPosition(squadron.determineCurrentPosition(airfieldScrambleFlightBuildInformation.getCampaign().getDate()));
+        targetDefinition.setPosition(squadron.determineCurrentPosition(airfieldScrambleFlightBuildInformation.getCampaign().getDate()));
         return targetDefinition;
         
     }

@@ -54,7 +54,7 @@ public class BalloonBustPackage implements IFlightPackage
                         Role.ROLE_FIGHTER, 
                         flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()).getSide().getOppositeSide());
         ICountry balloonCountry = determineBalloonCountry(enemySide, enemyScoutSquadron);
-        balloonUnit = createBalloonUnit(targetDefinition.getTargetPosition(), balloonCountry);
+        balloonUnit = createBalloonUnit(targetDefinition.getPosition(), balloonCountry);
     }
 
     private BalloonBustFlight buildBalloonBustFlight() throws PWCGException

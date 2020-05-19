@@ -78,9 +78,17 @@ public class ShippingUnitBuilder
 
     private GroundUnitInformation createGroundUnitInformationForUnit() throws PWCGException
     {
-        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(campaign, targetDefinition);
         int angle = RandomNumberGenerator.getRandom(360);
-        Coordinate destination = MathUtils.calcNextCoord(targetDefinition.getTargetPosition(), angle, 50000);
+        Coordinate destination = MathUtils.calcNextCoord(targetDefinition.getPosition(), angle, 50000);
+
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                campaign, 
+                targetDefinition.getCountry(), 
+                TargetType.TARGET_TRANSPORT,
+                targetDefinition.getPosition(), 
+                destination,
+                targetDefinition.getOrientation());
+
         groundUnitInformation.setDestination(destination);
         return groundUnitInformation;
     }

@@ -35,7 +35,7 @@ public class EscortedByPlayerRendezvousBuilder
     
     private McuWaypoint createRendezvousWaypoint() throws PWCGException
     {
-        Coordinate targetPosition = escortedFlight.getTargetDefinition().getTargetPosition();
+        Coordinate targetPosition = escortedFlight.getTargetDefinition().getPosition();
         double angleAwayFromTarget = MathUtils.calcAngle(targetPosition, ingressWaypoint.getPosition());
         Coordinate rendezvousCoordinate = MathUtils.calcNextCoord(ingressWaypoint.getPosition(), angleAwayFromTarget, 7000);
         rendezvousCoordinate.setYPos(escortedFlight.getFlightInformation().getAltitude());

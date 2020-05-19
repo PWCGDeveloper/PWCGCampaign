@@ -28,7 +28,14 @@ public class DrifterUnitBuilder
 
     public IGroundUnitCollection createDrifterUnit () throws PWCGException
     {
-        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(campaign, targetDefinition);
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                campaign, 
+                targetDefinition.getCountry(), 
+                TargetType.TARGET_DRIFTER,
+                targetDefinition.getPosition(), 
+                targetDefinition.getPosition(),
+                targetDefinition.getOrientation());
+
         IGroundUnit drifterUnit = new DrifterUnit(groundUnitInformation);
         drifterUnit.createGroundUnit();
 

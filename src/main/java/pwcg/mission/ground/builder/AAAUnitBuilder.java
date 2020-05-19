@@ -1,9 +1,7 @@
 package pwcg.mission.ground.builder;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.ICountry;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.GroundUnitInformation;
@@ -18,19 +16,18 @@ import pwcg.mission.ground.unittypes.artillery.GroundAAArtilleryBattery;
 import pwcg.mission.ground.unittypes.artillery.GroundAAMachineGunBattery;
 import pwcg.mission.ground.unittypes.artillery.SearchLightUnit;
 import pwcg.mission.mcu.Coalition;
+import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
 
 public class AAAUnitBuilder
 {    
     private Campaign campaign;
-    private ICountry country;
-    private Coordinate position;
+    private TargetDefinition targetDefinition;
     
-    public AAAUnitBuilder (Campaign campaign, ICountry country, Coordinate location)
+    public AAAUnitBuilder (Campaign campaign, TargetDefinition targetDefinition)
     {
         this.campaign  = campaign;
-        this.country  = country;
-        this.position  = location.copy();
+        this.targetDefinition  = targetDefinition;
     }
 
     public IGroundUnitCollection createAAAMGBattery (GroundUnitSize groundUnitSize) throws PWCGException
@@ -107,12 +104,13 @@ public class AAAUnitBuilder
 
     private GroundUnitInformation createAAGroundUnitInformation(GroundUnitSize groundUnitSize) throws PWCGException
     {
-        String nationality = country.getNationality();
-        String name = nationality + " AA";
-
-        boolean isPlayerTarget = false;
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
-                campaign, country, name, TargetType.TARGET_DEFENSE, position, position, Orientation.createRandomOrientation(), isPlayerTarget);
+                campaign, 
+                targetDefinition.getCountry(), 
+                TargetType.TARGET_DEFENSE, 
+                targetDefinition.getPosition(), 
+                targetDefinition.getPosition(), 
+                Orientation.createRandomOrientation());
         
         groundUnitInformation.setUnitSize(groundUnitSize);
         return groundUnitInformation;
@@ -129,12 +127,13 @@ public class AAAUnitBuilder
 
     private GroundUnitInformation createSearchlightGroundUnitInformation() throws PWCGException
     {
-        String nationality = country.getNationality();
-        String name = nationality + " Search Light";
-
-        boolean isPlayerTarget = false;
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
-                campaign, country, name, TargetType.TARGET_DEFENSE, position, position, Orientation.createRandomOrientation(), isPlayerTarget);
+                campaign, 
+                targetDefinition.getCountry(), 
+                TargetType.TARGET_DEFENSE, 
+                targetDefinition.getPosition(), 
+                targetDefinition.getPosition(), 
+                Orientation.createRandomOrientation());
         
         groundUnitInformation.setUnitSize(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
         return groundUnitInformation;

@@ -66,7 +66,7 @@ public class IngressWaypointNearFront implements IIngressWaypoint
     {
         FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         Coordinate closestFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(
-                flight.getTargetDefinition().getTargetPosition(), 
+                flight.getTargetDefinition().getPosition(), 
                 flight.getSquadron().determineSide());
         
         Coordinate flightHomeCoordinates = flight.getSquadron().determineCurrentPosition(campaign.getDate());
@@ -81,10 +81,10 @@ public class IngressWaypointNearFront implements IIngressWaypoint
     {
         FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         Coordinate closestEnemyFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(
-                flight.getTargetDefinition().getTargetPosition(), 
+                flight.getTargetDefinition().getPosition(), 
                 flight.getSquadron().determineSide().getOppositeSide());
         Coordinate closestFriendlyFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(
-                flight.getTargetDefinition().getTargetPosition(), 
+                flight.getTargetDefinition().getPosition(), 
                 flight.getSquadron().determineSide());
         int distanceBehindFrontForIngress = getDistanceFromFront();
 
@@ -100,7 +100,7 @@ public class IngressWaypointNearFront implements IIngressWaypoint
     {
         FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         Coordinate closestEnemyFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(
-                flight.getTargetDefinition().getTargetPosition(), 
+                flight.getTargetDefinition().getPosition(), 
                 flight.getSquadron().determineSide().getOppositeSide());
         int distanceBehindFrontForIngress = getDistanceFromFront();
 

@@ -58,7 +58,7 @@ public class PlayerScramblePackage implements IFlightPackage
             IFlight enemyFlight = opposingFlights.get(0);
             MissionPoint enemyStartPoint = enemyFlight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_START);
             Coordinate targetLocationForPlayerFlight = enemyStartPoint.getPosition().copy();
-            targetDefinition.setTargetPosition(targetLocationForPlayerFlight);
+            targetDefinition.setPosition(targetLocationForPlayerFlight);
         }
         return targetDefinition;
     }

@@ -20,7 +20,7 @@ public class MinimalAiTargetFactory
 
     public IGroundUnitCollection createTroopConcentration () throws PWCGException
     {
-        AAAUnitBuilder aaaUnitBuilder = new AAAUnitBuilder(campaign, targetDefinition.getTargetCountry(), targetDefinition.getTargetPosition()); 
+        AAAUnitBuilder aaaUnitBuilder = new AAAUnitBuilder(campaign, targetDefinition); 
         return aaaUnitBuilder.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
     }
 }

@@ -16,8 +16,8 @@ import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.unittypes.transport.GroundTrainUnit;
 import pwcg.mission.mcu.Coalition;
-import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetType;
 
 public class TrainUnitBuilder
 {
@@ -29,7 +29,7 @@ public class TrainUnitBuilder
     {
         this.mission = mission;
         this.campaign = mission.getCampaign();
-        this.targetDefinition  = targetDefinition;
+        this.targetDefinition = targetDefinition;
     }
 
     public IGroundUnitCollection createTrainUnit () throws PWCGException
@@ -41,7 +41,7 @@ public class TrainUnitBuilder
     
     private IGroundUnitCollection createTrain() throws PWCGException
     {
-        GroundUnitInformation groundUnitInformation = createGroundUnitInformationForUnit();
+        GroundUnitInformation groundUnitInformation = createGroundUnitInformation();
         IGroundUnit train = new GroundTrainUnit(groundUnitInformation);
         train.createGroundUnit();
 
@@ -59,10 +59,18 @@ public class TrainUnitBuilder
         return groundUnitCollection;
     }
 
-    private GroundUnitInformation createGroundUnitInformationForUnit() throws PWCGException
+    private GroundUnitInformation createGroundUnitInformation() throws PWCGException
     {
-        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(campaign, targetDefinition);
         Coordinate destination = getTrainDestination();
+
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                campaign, 
+                targetDefinition.getCountry(), 
+                TargetType.TARGET_TRAIN,
+                targetDefinition.getPosition(), 
+                destination,
+                targetDefinition.getOrientation());
+                
         groundUnitInformation.setDestination(destination);
         return groundUnitInformation;
     }
@@ -70,20 +78,20 @@ public class TrainUnitBuilder
     private Coordinate getTrainDestination() throws PWCGException
     {
         GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
-        Block destinationStation = groupData.getRailroadStationFinder().getDestinationTrainPosition(targetDefinition.getTargetPosition(), targetDefinition.getTargetCountry(), campaign.getDate());
+        Block destinationStation = groupData.getRailroadStationFinder().getDestinationTrainPosition(targetDefinition.getPosition(), targetDefinition.getCountry(), campaign.getDate());
         if (destinationStation != null)
         {
             return destinationStation.getPosition();
         }
         else
         {
-            return targetDefinition.getTargetPosition();
+            return targetDefinition.getPosition();
         }
     }
     
     private void registerTrainStationInUse() throws PWCGException
     {        
-        mission.getMissionGroundUnitManager().registerTrainStation(targetDefinition.getTargetPosition());
+        mission.getMissionGroundUnitManager().registerTrainStation(targetDefinition.getPosition());
     }
 
 }

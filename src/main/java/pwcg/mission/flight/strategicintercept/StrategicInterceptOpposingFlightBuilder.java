@@ -74,7 +74,7 @@ public class StrategicInterceptOpposingFlightBuilder
     {
         ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(opposingFlightInformation);
         TargetDefinition opposingTargetDefinition =  targetDefinitionBuilder.buildTargetDefinition();
-        opposingTargetDefinition.setTargetPosition(playerTargetDefinition.getTargetPosition());
+        opposingTargetDefinition.setPosition(playerTargetDefinition.getPosition());
         return opposingTargetDefinition;
     }
 

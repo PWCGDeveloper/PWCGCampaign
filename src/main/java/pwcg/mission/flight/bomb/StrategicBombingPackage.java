@@ -46,7 +46,7 @@ public class StrategicBombingPackage implements IFlightPackage
 
     private void createAAA(TargetDefinition targetDefinition, BombingFlight bombingFlight) throws PWCGException
     {
-        AAAUnitBuilder groundUnitBuilder = new AAAUnitBuilder(flightInformation.getCampaign(), targetDefinition.getTargetCountry(), targetDefinition.getTargetPosition());
+        AAAUnitBuilder groundUnitBuilder = new AAAUnitBuilder(flightInformation.getCampaign(), targetDefinition);
         IGroundUnitCollection aaaArty = groundUnitBuilder.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_HIGH);
         bombingFlight.addLinkedGroundUnit(aaaArty);
     }

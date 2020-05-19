@@ -87,19 +87,19 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
         
         TargetLocatorAttack targetLocator = new TargetLocatorAttack(targetDefinition,flightInformation.getMission().getMissionBorders().getCenter());
         targetLocator.locateTarget();
-        targetDefinition.setTargetPosition(targetLocator.getTargetLocation());
+        targetDefinition.setPosition(targetLocator.getTargetLocation());
         targetDefinition.setTargetOrientation(targetLocator.getTargetOrientation());
     }
 
     private void determineAttackingAndDefendingCountries(TargetType targetType) throws PWCGException
     {
         targetDefinition.setAttackingCountry(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()));
-        targetDefinition.setTargetCountry(flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate()));
+        targetDefinition.setCountry(flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate()));
 
         if (flightInformation.getFlightType() == FlightTypes.BALLOON_DEFENSE)
         {
             targetDefinition.setAttackingCountry(flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate()));
-            targetDefinition.setTargetCountry(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()));
+            targetDefinition.setCountry(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()));
         }
         else if (targetType == TargetType.TARGET_ASSAULT)
         {
@@ -108,10 +108,10 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
         else
         {
             targetDefinition.setAttackingCountry(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()));
-            targetDefinition.setTargetCountry(flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate()));
+            targetDefinition.setCountry(flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate()));
         }
         
-        targetDefinition.setTargetName(buildTargetName( targetDefinition.getTargetCountry(), targetType));
+        targetDefinition.setTargetName(buildTargetName( targetDefinition.getCountry(), targetType));
     }
 
     private TargetTypeAvailabilityInputs createTargetingInputs(Coordinate targetSearchStartLocation) throws PWCGException
@@ -134,11 +134,11 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
         if (roll < 60)
         {
             targetDefinition.setAttackingCountry(flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate()));
-            targetDefinition.setTargetCountry(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()));
+            targetDefinition.setCountry(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()));
         }
         else
         {
-            targetDefinition.setTargetCountry(flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate()));
+            targetDefinition.setCountry(flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate()));
             targetDefinition.setAttackingCountry(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()));
         }
     }

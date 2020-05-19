@@ -32,8 +32,8 @@ public class GroundUnitAttackFactoryFCTest extends FranceAttackMockCampaign
         mockCampaignSetup();
         
         targetDefinition.setAttackingCountry(country);
-        targetDefinition.setTargetCountry(CountryFactory.makeCountryByCountry(Country.FRANCE));
-        targetDefinition.setTargetPosition(new Coordinate(100000, 0, 150000));
+        targetDefinition.setCountry(CountryFactory.makeCountryByCountry(Country.FRANCE));
+        targetDefinition.setPosition(new Coordinate(100000, 0, 150000));
         targetDefinition.setTargetOrientation(new Orientation());
         targetDefinition.setDate(date);
         targetDefinition.setPreferredRadius(80000);

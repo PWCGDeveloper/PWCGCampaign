@@ -41,8 +41,8 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
         targetDefinition.setAttackingSquadron(flightInformation.getSquadron());
 
         targetDefinition.setAttackingCountry(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()));
-        targetDefinition.setTargetCountry(flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate()));
-        targetDefinition.setTargetName(buildTargetName(targetDefinition.getTargetCountry(), TargetType.TARGET_AIR));
+        targetDefinition.setCountry(flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate()));
+        targetDefinition.setTargetName(buildTargetName(targetDefinition.getCountry(), TargetType.TARGET_AIR));
 
         targetDefinition.setDate(flightInformation.getCampaign().getDate());
         targetDefinition.setPlayerTarget((Squadron.isPlayerSquadron(flightInformation.getCampaign(), flightInformation.getSquadron().getSquadronId())));
@@ -51,7 +51,7 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
     private void createTargetLocation() throws PWCGException
     {
         Coordinate targetLocation = getTargetLocationForFlightType();
-        targetDefinition.setTargetPosition(targetLocation);
+        targetDefinition.setPosition(targetLocation);
         targetDefinition.setTargetOrientation(new Orientation());
     }
 

@@ -28,13 +28,13 @@ public class TargetDefinitionBuilderGround
         targetDefinition.setTargetName(buildTargetName(targetCountry, targetType));
 
         targetDefinition.setAttackingCountry(attackingCountry);
-        targetDefinition.setTargetCountry(targetCountry);
+        targetDefinition.setCountry(targetCountry);
         targetDefinition.setDate(campaign.getDate());
         
         targetDefinition.setPreferredRadius(5000);
         targetDefinition.setMaximumRadius(10000);
 
-        targetDefinition.setTargetPosition(targetPosition);
+        targetDefinition.setPosition(targetPosition);
         targetDefinition.setTargetOrientation(new Orientation());
         targetDefinition.setPlayerTarget(isPlayerTarget);
 
@@ -52,13 +52,13 @@ public class TargetDefinitionBuilderGround
         targetDefinition.setTargetName(buildTargetName(targetCountry, targetType));
 
         targetDefinition.setAttackingCountry(targetCountry.getOppositeSideCountry());
-        targetDefinition.setTargetCountry(targetCountry);
+        targetDefinition.setCountry(targetCountry);
         targetDefinition.setDate(campaign.getDate());
         
         targetDefinition.setPreferredRadius(5000);
         targetDefinition.setMaximumRadius(10000);
 
-        targetDefinition.setTargetPosition(targetPosition);
+        targetDefinition.setPosition(targetPosition);
         targetDefinition.setTargetOrientation(orientation.copy());
         targetDefinition.setPlayerTarget(isPlayerTarget);
 

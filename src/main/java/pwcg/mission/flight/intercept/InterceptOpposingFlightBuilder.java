@@ -69,11 +69,11 @@ public class InterceptOpposingFlightBuilder
     private Coordinate determineOpposingFlightStartPosition(String opposingFieldName) throws PWCGException
     {
         IAirfield opposingField =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(opposingFieldName);
-        double angleFromFieldToTarget = MathUtils.calcAngle(playerTargetDefinition.getTargetPosition(), opposingField.getPosition());
+        double angleFromFieldToTarget = MathUtils.calcAngle(playerTargetDefinition.getPosition(), opposingField.getPosition());
             
         double distancePlayerFromTarget = MathUtils.calcDist(playerFlightInformation.getSquadron().determineCurrentPosition(
-                playerFlightInformation.getCampaign().getDate()), playerTargetDefinition.getTargetPosition());
-        Coordinate startingPosition = MathUtils.calcNextCoord(playerTargetDefinition.getTargetPosition(), angleFromFieldToTarget, distancePlayerFromTarget);
+                playerFlightInformation.getCampaign().getDate()), playerTargetDefinition.getPosition());
+        Coordinate startingPosition = MathUtils.calcNextCoord(playerTargetDefinition.getPosition(), angleFromFieldToTarget, distancePlayerFromTarget);
         return startingPosition;
     }
 

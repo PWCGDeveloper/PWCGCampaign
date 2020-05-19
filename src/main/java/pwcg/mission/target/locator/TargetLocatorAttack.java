@@ -113,7 +113,7 @@ public class TargetLocatorAttack
         FrontLinePoint frontLinePoint = frontLinesForMap.findCloseFrontPositionForSide(
                 missionCenter, 
                 currentSearchRadius, 
-                targetDefinition.getTargetCountry().getSide());
+                targetDefinition.getCountry().getSide());
 
         if (frontLinePoint != null)
         {
@@ -126,7 +126,7 @@ public class TargetLocatorAttack
     {
         GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
         Block station = groupData.getRailroadStationFinder().getNearbyTrainPosition(
-                targetDefinition.getTargetCountry().getSide(), 
+                targetDefinition.getCountry().getSide(), 
                 targetDefinition.getDate(), 
                 missionCenter,
                 currentSearchRadius);
@@ -142,7 +142,7 @@ public class TargetLocatorAttack
     {
         GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();    
         Bridge bridge = groupManager.getBridgeFinder().findBridgeForSideWithinRadius(
-                targetDefinition.getTargetCountry().getSide(), 
+                targetDefinition.getCountry().getSide(), 
                 targetDefinition.getDate(), 
                 missionCenter,
                 currentSearchRadius);
@@ -158,7 +158,7 @@ public class TargetLocatorAttack
     {
         DrifterManager drifterManager = PWCGContext.getInstance().getCurrentMap().getDrifterManager();
         PWCGLocation selectedBargePosition = drifterManager.getBargePositions().getSelectedLocationWithinRadiusBySide(
-                targetDefinition.getTargetCountry().getSide(), 
+                targetDefinition.getCountry().getSide(), 
                 targetDefinition.getDate(), 
                 missionCenter,
                 currentSearchRadius);
@@ -174,7 +174,7 @@ public class TargetLocatorAttack
     {
         AirfieldManager airfieldManager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
         PositionFinder<IAirfield> positionFinder = new PositionFinder<IAirfield>();
-        List<IAirfield> potentialTargetAirfields = airfieldManager.getAirFieldsForSide(targetDefinition.getDate(), targetDefinition.getTargetCountry().getSide());
+        List<IAirfield> potentialTargetAirfields = airfieldManager.getAirFieldsForSide(targetDefinition.getDate(), targetDefinition.getCountry().getSide());
         IAirfield airfield = positionFinder.selectPositionWithinExpandingRadius(
                 potentialTargetAirfields, 
                 missionCenter, 
@@ -216,7 +216,7 @@ public class TargetLocatorAttack
                 targetDefinition.getPreferredRadius(), 
                 minDistanceBehindLines, 
                 maxDistanceBehindLines, 
-                targetDefinition.getTargetCountry().getSide());
+                targetDefinition.getCountry().getSide());
 
         return behindLinesPosition;
     }

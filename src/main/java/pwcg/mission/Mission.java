@@ -125,8 +125,8 @@ public class Mission
     public void generate(List<FlightTypes> playerFlightTypes) throws PWCGException
     {
         validate();
-        generateFlights(playerFlightTypes);
         createAmbientUnits();
+        generateFlights(playerFlightTypes);
     }
 
     private void generateFlights(List<FlightTypes> playerFlightTypes) throws PWCGException
