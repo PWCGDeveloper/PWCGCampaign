@@ -15,6 +15,8 @@ public class CoordinateBox
 {
     protected Coordinate sw = new Coordinate();
     protected Coordinate ne = new Coordinate();
+    protected Coordinate se = new Coordinate();
+    protected Coordinate nw = new Coordinate();
     protected Coordinate center = new Coordinate();
     protected Coordinate north = new Coordinate();
     protected Coordinate south = new Coordinate();
@@ -158,6 +160,8 @@ public class CoordinateBox
 
     protected void calcBoxImportantLocations() throws PWCGException
     {
+        calcSouthEast();
+        calcNorthWest();
         calcCenterOfBox();
         calcNorthOfBox();
         calcSouthOfBox();
@@ -165,6 +169,22 @@ public class CoordinateBox
         calcWestOfBox();
     }
     
+    protected Coordinate calcSouthEast() throws PWCGException
+    {
+        se = new Coordinate();
+        se.setXPos(sw.getXPos());
+        se.setZPos(ne.getZPos());
+        return se;
+    }
+
+    protected Coordinate calcNorthWest() throws PWCGException
+    {
+        nw = new Coordinate();
+        nw.setXPos(ne.getXPos());
+        nw.setZPos(sw.getZPos());
+        return nw;
+    }
+
     protected Coordinate calcCenterOfBox() throws PWCGException
     {
         double xDistance = ne.getXPos() - sw.getXPos();
@@ -349,6 +369,16 @@ public class CoordinateBox
     public Coordinate getNE()
     {
         return ne.copy();
+    }
+
+    public Coordinate getSE()
+    {
+        return se.copy();
+    }
+
+    public Coordinate getNW()
+    {
+        return nw.copy();
     }
 
     public Coordinate getCenter()
