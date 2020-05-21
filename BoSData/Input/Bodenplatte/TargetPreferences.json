@@ -2,6 +2,20 @@
   "targetPreferences": [
     {
       "startDate": "19440901",
+      "endDate": "19441001",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_TRAIN",
+      "oddsOfUse": "40"
+    },
+    {
+      "startDate": "19441002",
+      "endDate": "19441101",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_TRANSPORT",
+      "oddsOfUse": "40"
+    },
+    {
+      "startDate": "19441116",
       "endDate": "19441101",
       "targetSide": "AXIS",
       "targetType": "TARGET_TRANSPORT",
@@ -11,7 +25,7 @@
       "startDate": "19441210",
       "endDate": "19450201",
       "targetSide": "AXIS",
-      "targetType": "TARGET_DEFENSE",
+      "targetType": "TARGET_INFANTRY",
       "oddsOfUse": "60"
     }
   ]

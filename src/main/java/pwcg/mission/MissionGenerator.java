@@ -20,7 +20,7 @@ public class MissionGenerator
     public Mission makeMission(MissionHumanParticipants participatingPlayers) throws PWCGException 
     {
         MissionProfile missionProfile = generateProfile(participatingPlayers);
-        List<FlightTypes> playerFlightTypes = PlayerFlightTypeBuilder.finalizePlayerFlightType(campaign, participatingPlayers, missionProfile);
+        List<FlightTypes> playerFlightTypes = PlayerFlightTypeBuilder.finalizePlayerFlightTypes(campaign, participatingPlayers, missionProfile);
         Mission mission = buildMission(participatingPlayers, playerFlightTypes, missionProfile);
         return mission;
     }
@@ -55,7 +55,7 @@ public class MissionGenerator
     private Mission buildMission(MissionHumanParticipants participatingPlayers, List<FlightTypes> playerFlightTypes, MissionProfile missionProfile) throws PWCGException 
     {
         campaign.setCurrentMission(null);        
-        CoordinateBox missionBorders = buildMissionBorders(playerFlightTypes, participatingPlayers);
+        CoordinateBox missionBorders = buildMissionBorders(missionProfile, participatingPlayers);
         Mission mission = new Mission(campaign, missionProfile, participatingPlayers, missionBorders);
         campaign.setCurrentMission(mission);
         mission.generate(playerFlightTypes);
@@ -63,10 +63,10 @@ public class MissionGenerator
         return mission;
     }
 
-    private CoordinateBox buildMissionBorders(List<FlightTypes> playerFlightTypes, MissionHumanParticipants participatingPlayers) throws PWCGException
+    private CoordinateBox buildMissionBorders(MissionProfile missionProfile, MissionHumanParticipants participatingPlayers) throws PWCGException
     {
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
-        CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox(playerFlightTypes);
+        CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox(missionProfile);
         return missionBorders;
     }
 }

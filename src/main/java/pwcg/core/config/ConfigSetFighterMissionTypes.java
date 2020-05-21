@@ -15,7 +15,7 @@ public class ConfigSetFighterMissionTypes
 		configSet.addConfigItem(ConfigItemKeys.AxisPatrolMissionKey, new ConfigItem("40"));
 		configSet.addConfigItem(ConfigItemKeys.AxisLowAltPatrolMissionKey, new ConfigItem("10"));
 		configSet.addConfigItem(ConfigItemKeys.AxisLowAltCapMissionKey, new ConfigItem("10"));
-
+        configSet.addConfigItem(ConfigItemKeys.AxisScrambleMissionKey, new ConfigItem("5"));
 	    
 		configSet.addConfigItem(ConfigItemKeys.AlliedOffensiveMissionKey, new ConfigItem("20"));
 		configSet.addConfigItem(ConfigItemKeys.AlliedInterceptMissionKey, new ConfigItem("10"));
@@ -25,7 +25,7 @@ public class ConfigSetFighterMissionTypes
 		configSet.addConfigItem(ConfigItemKeys.AlliedPatrolMissionKey, new ConfigItem("40"));
 		configSet.addConfigItem(ConfigItemKeys.AlliedLowAltPatrolMissionKey, new ConfigItem("10"));
 		configSet.addConfigItem(ConfigItemKeys.AlliedLowAltCapMissionKey, new ConfigItem("10"));
-
+        configSet.addConfigItem(ConfigItemKeys.AlliedScrambleMissionKey, new ConfigItem("5"));
 		
 		return configSet;
 	}

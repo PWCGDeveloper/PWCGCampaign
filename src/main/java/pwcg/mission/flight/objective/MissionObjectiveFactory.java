@@ -44,10 +44,7 @@ public class MissionObjectiveFactory
         if (flight.getFlightType() == FlightTypes.BOMB ||
             flight.getFlightType() == FlightTypes.GROUND_ATTACK ||
             flight.getFlightType() == FlightTypes.DIVE_BOMB ||
-            flight.getFlightType() == FlightTypes.LOW_ALT_BOMB ||
-            flight.getFlightType() == FlightTypes.ANTI_SHIPPING_ATTACK ||
-            flight.getFlightType() == FlightTypes.ANTI_SHIPPING_DIVE_BOMB ||
-            flight.getFlightType() == FlightTypes.ANTI_SHIPPING_BOMB)
+            flight.getFlightType() == FlightTypes.LOW_ALT_BOMB)
         {
             return GroundAttackObjective.getMissionObjective(flight);
         }

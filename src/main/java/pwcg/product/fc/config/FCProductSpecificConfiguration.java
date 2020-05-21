@@ -178,11 +178,6 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
         {
             initialDistance = 5000;
         }
-        else if (flightType == FlightTypes.ANTI_SHIPPING_BOMB || flightType == FlightTypes.ANTI_SHIPPING_ATTACK
-                || flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
-        {
-            initialDistance = 50000;
-        }
         else if (flightType == FlightTypes.STRATEGIC_BOMB)
         {
             initialDistance = 30000;
@@ -254,11 +249,6 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
         else if (flightType == FlightTypes.TRANSPORT)
         {
             initialDistance = 10000;
-        }
-        else if (flightType == FlightTypes.ANTI_SHIPPING_BOMB || flightType == FlightTypes.ANTI_SHIPPING_ATTACK
-                || flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
-        {
-            initialDistance = 100000;
         }
         else if (flightType == FlightTypes.STRATEGIC_BOMB)
         {

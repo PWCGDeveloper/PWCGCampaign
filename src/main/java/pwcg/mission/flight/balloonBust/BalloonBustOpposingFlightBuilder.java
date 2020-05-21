@@ -5,25 +5,25 @@ import java.util.List;
 
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.balloondefense.BalloonDefenseFlight;
-import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
 
 public class BalloonBustOpposingFlightBuilder
 {
     private IFlightInformation playerFlightInformation;
-    private IGroundUnitCollection balloonUnit;
+    private Coordinate balloonUnitPosition;
 
-    public BalloonBustOpposingFlightBuilder(IFlightInformation playerFlightInformation, IGroundUnitCollection balloonUnit)
+    public BalloonBustOpposingFlightBuilder(IFlightInformation playerFlightInformation, Coordinate balloonUnitPosition)
     {
         this.playerFlightInformation = playerFlightInformation;
-        this.balloonUnit = balloonUnit;
+        this.balloonUnitPosition = balloonUnitPosition;
     }
 
     public List<IFlight> buildOpposingFlights() throws PWCGException
@@ -78,7 +78,7 @@ public class BalloonBustOpposingFlightBuilder
 
     private TargetDefinition buildOpposingTargetDefintion(IFlightInformation opposingFlightInformation) throws PWCGException
     {
-        TargetDefinition opposingTargetDefinition =  new TargetDefinition(TargetType.TARGET_AIR, balloonUnit.getPosition(), opposingFlightInformation.getCountry());
+        TargetDefinition opposingTargetDefinition =  new TargetDefinition(TargetType.TARGET_AIR, balloonUnitPosition, opposingFlightInformation.getCountry());
         return opposingTargetDefinition;
     }
 }

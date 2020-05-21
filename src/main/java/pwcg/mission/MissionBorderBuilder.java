@@ -14,7 +14,6 @@ import pwcg.core.location.CoordinateBox;
 import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.flight.FlightTypes;
 
 public class MissionBorderBuilder 
 {
@@ -27,20 +26,19 @@ public class MissionBorderBuilder
         this.campaign = campaign;
 	}
 
-    public CoordinateBox buildCoordinateBox(List<FlightTypes> playerFlightTypes) throws PWCGException
+    public CoordinateBox buildCoordinateBox(MissionProfile missionProfile) throws PWCGException
     {
-        FlightTypes primaryPlayerFlightType = playerFlightTypes.get(0);
-        if (primaryPlayerFlightType == FlightTypes.ANTI_SHIPPING_BOMB || primaryPlayerFlightType == FlightTypes.ANTI_SHIPPING_ATTACK || primaryPlayerFlightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
+        if (missionProfile == MissionProfile.ANTI_SHIPPING_MISSION)
         {
             return buildMissionBoxAntiShipping();
         }
-        else if (primaryPlayerFlightType == FlightTypes.SCRAMBLE)
-        {
-            return buildMissionBoxScramble();
-        }
-        else if (primaryPlayerFlightType == FlightTypes.STRATEGIC_INTERCEPT || primaryPlayerFlightType == FlightTypes.ANTI_SHIPPING_BOMB)
+        else if (missionProfile == MissionProfile.DAY_STRATEGIC_MISSION || missionProfile == MissionProfile.NIGHT_STRATEGIC_MISSION)
         {
             return buildMissionBoxStrategic();
+        }
+        else if (missionProfile == MissionProfile.SCRAMBLE_MISSION)
+        {
+            return buildMissionBoxScramble();
         }
         else
         {

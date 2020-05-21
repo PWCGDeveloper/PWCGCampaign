@@ -1,5 +1,7 @@
 package pwcg.mission.target.locator;
 
+import java.util.List;
+
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
@@ -14,7 +16,9 @@ import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.intercept.InterceptAiCoordinateGenerator;
 import pwcg.mission.flight.intercept.InterceptPlayerCoordinateGenerator;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetType;
 import pwcg.mission.utils.BehindFriendlyLinesPositionCalculator;
 
 public class TargetLocatorAir
@@ -110,5 +114,19 @@ public class TargetLocatorAir
         Campaign campaign = flightInformation.getCampaign();
         Squadron squadron = flightInformation.getSquadron();
         return squadron.determineCurrentPosition(campaign.getDate());
+    }
+
+    public Coordinate getBalloonCoordinate(Side oppositeSide) throws PWCGException
+    {
+        List<IGroundUnitCollection> shuffledGroundUnits = flightInformation.getMission().getMissionGroundUnitBuilder().getAllMissionGroundUnits();
+        for (IGroundUnitCollection groundUnit : shuffledGroundUnits)
+        {
+            if (groundUnit.getTargetType() == TargetType.TARGET_BALLOON)
+            {
+                return groundUnit.getPosition();
+            }
+        }
+        
+        throw new PWCGException("No balloon found");
     }
 }

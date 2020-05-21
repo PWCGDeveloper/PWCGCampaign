@@ -52,6 +52,14 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
         {
             return targetLocatorAir.getTransportAirfieldCoordinate();
         }
+        else if (flightInformation.getFlightType() == FlightTypes.BALLOON_BUST)
+        {
+            return targetLocatorAir.getBalloonCoordinate(flightInformation.getSquadron().determineSide());
+        }
+        else if (flightInformation.getFlightType() == FlightTypes.BALLOON_DEFENSE)
+        {
+            return targetLocatorAir.getBalloonCoordinate(flightInformation.getSquadron().determineSide().getOppositeSide());
+        }
         else if (flightInformation.getFlightType() == FlightTypes.FERRY)
         {
             return targetLocatorAir.getTransportAirfieldCoordinate();

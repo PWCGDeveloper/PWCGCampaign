@@ -4,42 +4,42 @@
       "startDate": "19171001",
       "endDate": "19171101"
       "targetSide": "ALLIED",
-      "targetType": "TARGET_ASSAULT",
+      "targetType": "TARGET_INFANTRY",
       "oddsOfUse": "40",
     },
     {
       "startDate": "19180401",
       "endDate": "19180601"
       "targetSide": "ALLIED",
-      "targetType": "TARGET_DEFENSE",
+      "targetType": "TARGET_INFANTRY",
       "oddsOfUse": "50",
     },
     {
       "startDate": "19180601",
       "endDate": "19181201"
       "targetSide": "ALLIED",
-      "targetType": "TARGET_ASSAULT",
+      "targetType": "TARGET_INFANTRY",
       "oddsOfUse": "50",
     },
     {
       "startDate": "19171001",
       "endDate": "19171101"
       "targetSide": "AXIS",
-      "targetType": "TARGET_DEFENSE",
+      "targetType": "TARGET_INFANTRY",
       "oddsOfUse": "40",
     },
     {
       "startDate": "19180401",
       "endDate": "19180601"
       "targetSide": "AXIS",
-      "targetType": "TARGET_ASSAULT",
+      "targetType": "TARGET_INFANTRY",
       "oddsOfUse": "50",
     },
     {
       "startDate": "19180601",
       "endDate": "19181201"
       "targetSide": "AXIS",
-      "targetType": "TARGET_DEFENSE",
+      "targetType": "TARGET_INFANTRY",
       "oddsOfUse": "50",
     }
   ]

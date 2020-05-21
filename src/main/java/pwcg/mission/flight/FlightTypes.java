@@ -24,9 +24,6 @@ public enum FlightTypes
     BOMB(FlightTypeCategory.ATTACK),
     LOW_ALT_BOMB(FlightTypeCategory.ATTACK),
     DIVE_BOMB(FlightTypeCategory.ATTACK),
-    ANTI_SHIPPING_BOMB(FlightTypeCategory.ATTACK),
-    ANTI_SHIPPING_DIVE_BOMB(FlightTypeCategory.ATTACK),
-    ANTI_SHIPPING_ATTACK(FlightTypeCategory.ATTACK),
     CONTACT_PATROL(FlightTypeCategory.ATTACK),
     ARTILLERY_SPOT(FlightTypeCategory.ATTACK),
     CARGO_DROP(FlightTypeCategory.ATTACK),
@@ -105,9 +102,6 @@ public enum FlightTypes
             flightType == FlightTypes.LOW_ALT_BOMB ||
             flightType == FlightTypes.GROUND_ATTACK ||
             flightType == FlightTypes.DIVE_BOMB ||
-            flightType == FlightTypes.ANTI_SHIPPING_BOMB || 
-            flightType == FlightTypes.ANTI_SHIPPING_ATTACK || 
-            flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB ||
             flightType == FlightTypes.STRATEGIC_BOMB)
         {
             return true;
@@ -122,15 +116,12 @@ public enum FlightTypes
         if (flightType == FlightTypes.BOMB ||
             flightType == FlightTypes.LOW_ALT_BOMB ||
             flightType == FlightTypes.DIVE_BOMB ||
-            flightType == FlightTypes.ANTI_SHIPPING_BOMB || 
             flightType == FlightTypes.STRATEGIC_BOMB)
         {
             return AttackAreaType.INDIRECT;
         }
         else if (flightType == FlightTypes.GROUND_ATTACK ||
-                 flightType == FlightTypes.DIVE_BOMB ||
-                 flightType == FlightTypes.ANTI_SHIPPING_ATTACK || 
-                 flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
+                 flightType == FlightTypes.DIVE_BOMB)
         {
             
             return AttackAreaType.GROUND_TARGETS;

@@ -53,6 +53,7 @@ public class ConfigItemKeys
     public static final String AlliedPatrolMissionKey = "AlliedPatrolMission";
     public static final String AlliedLowAltPatrolMissionKey = "AlliedLowAltPatrolMission";
     public static final String AlliedLowAltCapMissionKey = "AlliedLowAltCapMission";
+    public static final String AlliedScrambleMissionKey = "AlliedScrambleMission";
     public static final String AlliedBombingMissionKey = "AlliedBombingMission";
     public static final String AlliedLowAltBombingMissionKey = "AlliedLowAltBombingMission";
     public static final String AlliedContactPatrolKey = "AlliedContactPatrol";
@@ -169,11 +170,6 @@ public class ConfigItemKeys
 	public static final String BaseAltPeriod4Key = "BaseAltPeriod4";
 	public static final String BaseAltPeriod5Key = "BaseAltPeriod5";
 	public static final String BaseAltPeriod6Key = "BaseAltPeriod6";
-
-	public static final String scrambleOddsAlliedKey = "scrambleOddsAllied";
-	public static final String scrambleOddsAxisKey = "scrambleOddsAxis";
-	public static final String antiShipOddsAlliedKey = "antiShipOddsAllied";
-	public static final String antiShipOddsAxisKey = "antiShipOddsAxis";
 
 	public static final String TakeoffWaypointDistanceKey = "TakeoffWaypointDistance";
 	public static final String TakeoffWaypointAltitudeKey = "TakeoffWaypointAltitude";

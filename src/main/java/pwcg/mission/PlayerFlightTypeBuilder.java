@@ -14,7 +14,7 @@ import pwcg.mission.flight.factory.NightFlightTypeConverter;
 
 public class PlayerFlightTypeBuilder
 {
-    public static List<FlightTypes> finalizePlayerFlightType(Campaign campaign, MissionHumanParticipants participatingPlayers, MissionProfile missionProfile) throws PWCGException
+    public static List<FlightTypes> finalizePlayerFlightTypes(Campaign campaign, MissionHumanParticipants participatingPlayers, MissionProfile missionProfile) throws PWCGException
     {
         List<FlightTypes> playerFlightTypes = new ArrayList<>();
         for (Integer squadronId : participatingPlayers.getParticipatingSquadronIds())
