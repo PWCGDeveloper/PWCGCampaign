@@ -5,7 +5,6 @@ import pwcg.campaign.api.ICountry;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.core.utils.MathUtils;
 import pwcg.mission.target.TargetType;
 
 public class GroundUnitInformationFactory
@@ -25,50 +24,11 @@ public class GroundUnitInformationFactory
         groundUnitInformation.setTargetType(targetType);
         groundUnitInformation.setPosition(startCoords);
         groundUnitInformation.setDestination(targetCoords);
+        groundUnitInformation.setOrientation(orientation);
         
         GroundUnitSize unitSize = GroundUnitSize.calcNumUnitsByConfig(campaign);
         groundUnitInformation.setUnitSize(unitSize);
-        
-        orientation = determineOrientation(startCoords, targetCoords, orientation);
-        groundUnitInformation.setOrientation(orientation);
 
         return groundUnitInformation;
-    }
-
-    private static Orientation determineOrientation(Coordinate position, Coordinate destination, Orientation orientation) throws PWCGException
-    {
-        if (orientation == null)
-        {
-            orientation = Orientation.createRandomOrientation();
-        }
-        else
-        {
-            if (position.equals(destination))
-            {
-                return orientation;
-            }
-            else
-            {
-                orientation = createOrientation(position, destination);
-            }
-        }
-        
-        return orientation;
-    }
-
-    private static Orientation createOrientation(Coordinate position, Coordinate destination) throws PWCGException
-    {
-        Orientation orientation = null;
-        if (!position.equals(destination))
-        {
-            double facing = MathUtils.calcAngle(position, destination);
-            orientation = new Orientation(facing);
-        }
-        else
-        {
-            orientation = Orientation.createRandomOrientation();
-        }
-
-        return orientation;
     }
 }

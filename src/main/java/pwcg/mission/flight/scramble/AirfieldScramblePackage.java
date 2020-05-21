@@ -17,9 +17,8 @@ import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
-import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderFactory;
+import pwcg.mission.target.TargetType;
 
 public class AirfieldScramblePackage
 {
@@ -93,14 +92,10 @@ public class AirfieldScramblePackage
         return scramble;
     }
 
-
     private TargetDefinition buildAirfieldScrambleTargetDefintion(IFlightInformation airfieldScrambleFlightBuildInformation, Squadron squadron) throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(airfieldScrambleFlightBuildInformation);
-        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
-        
-        targetDefinition.setPosition(squadron.determineCurrentPosition(airfieldScrambleFlightBuildInformation.getCampaign().getDate()));
+        Coordinate squadronLocation = squadron.determineCurrentPosition(airfieldScrambleFlightBuildInformation.getCampaign().getDate());        
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_AIR, squadronLocation, airfieldScrambleFlightBuildInformation.getCountry());
         return targetDefinition;
-        
     }
 }

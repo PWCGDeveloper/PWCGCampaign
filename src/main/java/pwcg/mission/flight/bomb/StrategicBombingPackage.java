@@ -13,45 +13,44 @@ import pwcg.mission.ground.builder.SearchLightBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderFactory;
+import pwcg.mission.target.TargetDefinitionBuilderStrategic;
 
 public class StrategicBombingPackage implements IFlightPackage
 {
-    private IFlightInformation flightInformation;
-    private TargetDefinition targetDefinition;
-
     public StrategicBombingPackage()
     {
     }
-
+    
+    
     @Override
     public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
-    {
-        this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.STRATEGIC_INTERCEPT);
-        this.targetDefinition = buildTargetDefintion();
-
-        BombingFlight bombingFlight = createBombingFlight();
-
-        createAAA(targetDefinition, bombingFlight);
-        createSearchlight(targetDefinition, bombingFlight);
-        return bombingFlight;
-    }
-
-    private BombingFlight createBombingFlight() throws PWCGException
-    {
-        BombingFlight bombingFlight = new BombingFlight(flightInformation, targetDefinition);
+    {        
+        IFlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.STRATEGIC_BOMB);
+        TargetDefinition targetDefinition = buildTargetDefinition(flightInformation);
+        
+        BombingFlight bombingFlight = new BombingFlight (flightInformation, targetDefinition);
         bombingFlight.createFlight();
+        
+        createAAA(flightInformation, targetDefinition, bombingFlight);
+        createSearchlight(flightInformation, targetDefinition, bombingFlight);
+
         return bombingFlight;
     }
+    
+    private TargetDefinition buildTargetDefinition(IFlightInformation flightInformation) throws PWCGException
+    {
+        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilderStrategic(flightInformation);
+        return targetDefinitionBuilder.buildTargetDefinition();
+    }
 
-    private void createAAA(TargetDefinition targetDefinition, BombingFlight bombingFlight) throws PWCGException
+    private void createAAA(IFlightInformation flightInformation, TargetDefinition targetDefinition, BombingFlight bombingFlight) throws PWCGException
     {
         AAAUnitBuilder groundUnitBuilder = new AAAUnitBuilder(flightInformation.getCampaign(), targetDefinition);
         IGroundUnitCollection aaaArty = groundUnitBuilder.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_HIGH);
         bombingFlight.addLinkedGroundUnit(aaaArty);
     }
 
-    private void createSearchlight(TargetDefinition targetDefinition, BombingFlight bombingFlight) throws PWCGException
+    private void createSearchlight(IFlightInformation flightInformation, TargetDefinition targetDefinition, BombingFlight bombingFlight) throws PWCGException
     {
         if (flightInformation.getMission().isNightMission())
         {
@@ -59,11 +58,5 @@ public class StrategicBombingPackage implements IFlightPackage
             IGroundUnitCollection searchLightGroup = groundUnitBuilder.createSearchLightGroup(targetDefinition);
             bombingFlight.addLinkedGroundUnit(searchLightGroup);
         }
-    }
-
-    private TargetDefinition buildTargetDefintion() throws PWCGException
-    {
-        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
-        return  targetDefinitionBuilder.buildTargetDefinition();
     }
 }

@@ -25,8 +25,7 @@ public abstract class Flight implements IFlight
     private FlightPlayerContact flightPlayerContact = new FlightPlayerContact();
     private IWaypointPackage waypointPackage;
     private VirtualWaypointPackage virtualWaypointPackage;
-    private TargetDefinition targetDefinition = new TargetDefinition();
-
+    private TargetDefinition targetDefinition;
 
     public Flight(IFlightInformation flightInformation, TargetDefinition targetDefinition)
     {
@@ -210,13 +209,9 @@ public abstract class Flight implements IFlight
         return flightPlayerContact.getClosestContactWithPlayerDistance();
     }
 
+    @Override
     public TargetDefinition getTargetDefinition()
     {
         return targetDefinition;
-    }
-
-    public void setTargetDefinition(TargetDefinition targetDefinition)
-    {
-        this.targetDefinition = targetDefinition;
-    }
+    }    
 }

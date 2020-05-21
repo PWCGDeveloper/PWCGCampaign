@@ -1,4 +1,4 @@
-package pwcg.mission.ambient;
+package pwcg.mission.ground;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,53 +18,52 @@ import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
-import pwcg.mission.TargetSide;
 import pwcg.mission.ground.builder.TrainUnitBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
-import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderGround;
-import pwcg.mission.target.TargetType;
 
-public class AmbientTrainBuilder extends AmbientUnitBuilder
+public class MissionTrainBuilder extends MissionUnitBuilder
 {
-    private List<IGroundUnitCollection> ambientTrains = new ArrayList<>();
+    private List<IGroundUnitCollection> missionTrains = new ArrayList<>();
 
-    public AmbientTrainBuilder (Campaign campaign, Mission mission)
+    public MissionTrainBuilder (Campaign campaign, Mission mission)
     {
         super(campaign, mission);
     }
     
-    public List<IGroundUnitCollection> generateAmbientTrains() throws PWCGException 
+    public List<IGroundUnitCollection> generateMissionTrains() throws PWCGException 
     {
-        Side targetSide = TargetSide.ambientTargetSide(campaign);
-        int maxTrains = getMaxAmbientTrains();
-        
-        ArrayList<Block> stationsForSide = getRailroadsForAmbentTrains(targetSide);
+        buildTrainsForSide(Side.ALLIED);
+        buildTrainsForSide(Side.AXIS);
+        return missionTrains;
+    }
+
+    private void buildTrainsForSide(Side trainSide) throws PWCGException
+    {
+        int maxTrains = getMaxTrains();
+        ArrayList<Block> stationsForSide = getRailroadsForTrains(trainSide);
         ArrayList<Block> sortedStationsByDistance = sortTrainStationsByDistanceFromMission(stationsForSide);
         for (Block station : sortedStationsByDistance)
         {
-            if (ambientTrains.size() >= maxTrains)
+            if (missionTrains.size() >= maxTrains)
             {
                 break;
             }
 
-            possibleAmbientTrain(targetSide, station);
+            possibleTrain(trainSide, station);
         }
-        
-        return ambientTrains;
     }
 
-    private ArrayList<Block> getRailroadsForAmbentTrains(Side targetSide) throws PWCGException 
+    private ArrayList<Block> getRailroadsForTrains(Side trainSide) throws PWCGException 
     {
         ArrayList<Block> stationsForSide = new ArrayList<Block>();
-
         Campaign campaign = mission.getCampaign();
  
         GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
         for (Block station : groupData.getRailroadList())
         {
-            if (targetSide == station.createCountry(campaign.getDate()).getSide())
+            if (trainSide == station.createCountry(campaign.getDate()).getSide())
             {
                 if (!mission.getMissionGroundUnitManager().isTrainStationInUse(station.getIndex()))
                 {
@@ -89,20 +88,19 @@ public class AmbientTrainBuilder extends AmbientUnitBuilder
         return new ArrayList<Block>(sortedStationsByDistance.values());
     }
 
-    private void possibleAmbientTrain(Side targetSide, Block station) throws PWCGException
+    private void possibleTrain(Side trainSide, Block station) throws PWCGException
     {
-        boolean isPlayerTarget = false;
-        ICountry trainCountry = CountryFactory.makeMapReferenceCountry(targetSide);
-        TargetDefinitionBuilderGround targetDefinitionBuilder = new TargetDefinitionBuilderGround(campaign);
-        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionAmbient(
-                trainCountry, TargetType.TARGET_TRAIN, station.getPosition(), station.getOrientation(), isPlayerTarget);
-
-        TrainUnitBuilder trainfactory =  new TrainUnitBuilder(mission, targetDefinition);
-        IGroundUnitCollection trainUnit = trainfactory.createTrainUnit();
-        addAmbientTrain(trainUnit, station);
+        int roll = RandomNumberGenerator.getRandom(100);
+        if (roll < 50)
+        {
+            ICountry trainCountry = CountryFactory.makeMapReferenceCountry(trainSide);
+            TrainUnitBuilder trainfactory =  new TrainUnitBuilder(mission, station, trainCountry);
+            IGroundUnitCollection trainUnit = trainfactory.createTrainUnit();
+            addTrain(trainUnit, station);
+        }
     }
 
-	private int getMaxAmbientTrains() throws PWCGException
+	private int getMaxTrains() throws PWCGException
 	{
 		int maxTrains = 3;
         
@@ -123,9 +121,9 @@ public class AmbientTrainBuilder extends AmbientUnitBuilder
 		return maxTrains;
 	}
 
-    private void addAmbientTrain(IGroundUnitCollection trainUnit, Block station) throws PWCGException
+    private void addTrain(IGroundUnitCollection trainUnit, Block station) throws PWCGException
     {
         mission.getMissionGroundUnitManager().registerTrainStation(station.getPosition());
-        ambientTrains.add(trainUnit);
+        missionTrains.add(trainUnit);
     }
  }

@@ -1,6 +1,7 @@
 package pwcg.mission.ground.builder;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.GroupManager;
@@ -17,20 +18,21 @@ import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.unittypes.transport.GroundTruckAAConvoyUnit;
 import pwcg.mission.ground.unittypes.transport.GroundTruckConvoyUnit;
 import pwcg.mission.mcu.Coalition;
-import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
 
 public class TruckConvoyBuilder
 {
     private Mission mission;
     private Campaign campaign;
-    private TargetDefinition targetDefinition;
+    private Bridge bridge;
+    private ICountry country;
     
-    public TruckConvoyBuilder (Mission mission, TargetDefinition targetDefinition)
+    public TruckConvoyBuilder (Mission mission, Bridge bridge, ICountry country)
     {
         this.mission = mission;
         this.campaign = mission.getCampaign();
-        this.targetDefinition  = targetDefinition;
+        this.bridge  = bridge;
+        this.country  = country;
     }
 
     public IGroundUnitCollection createTruckConvoy () throws PWCGException
@@ -70,11 +72,11 @@ public class TruckConvoyBuilder
 
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 campaign, 
-                targetDefinition.getCountry(), 
+                country, 
                 TargetType.TARGET_TRANSPORT,
-                targetDefinition.getPosition(), 
+                bridge.getPosition(), 
                 destination,
-                targetDefinition.getOrientation());
+                bridge.getOrientation());
 
         groundUnitInformation.setDestination(destination);
         return groundUnitInformation;
@@ -83,21 +85,19 @@ public class TruckConvoyBuilder
     private Coordinate getConvoyDestination() throws PWCGException
     {
         GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
-        Bridge destinationBridge = groupData.getBridgeFinder().findDestinationBridge(targetDefinition.getPosition(), targetDefinition.getCountry().getSide(), campaign.getDate());
+        Bridge destinationBridge = groupData.getBridgeFinder().findDestinationBridge(bridge.getPosition(), country.getSide(), campaign.getDate());
         if (destinationBridge != null)
         {
             return destinationBridge.getPosition();
         }
         else
         {
-            return targetDefinition.getPosition();
+            return bridge.getPosition();
         }
     }
     
     private void registerBridgeInUse() throws PWCGException
     {        
-        GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();
-        Bridge bridge = groupManager.getBridgeFinder().findClosestBridge(targetDefinition.getPosition());
         mission.getMissionGroundUnitManager().registerBridge(bridge);
     }
 }

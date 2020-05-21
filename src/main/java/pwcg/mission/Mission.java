@@ -15,11 +15,11 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.mission.ambient.AmbientGroundUnitBuilder;
 import pwcg.mission.data.PwcgGeneratedMission;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
+import pwcg.mission.ground.MissionGroundUnitBuilder;
 import pwcg.mission.ground.builder.IndirectFireAssignmentHandler;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleSetBuilderComprehensive;
@@ -42,8 +42,8 @@ public class Mission
     private MissionObjectiveGroup missionObjectiveFailure = new MissionObjectiveGroup();
     private MissionBattleManager missionBattleManager = new MissionBattleManager();
     private MissionGroundUnitResourceManager missionGroundUnitManager;
-    private AmbientBalloonBuilder ambientBalloonBuilder;
-    private AmbientGroundUnitBuilder ambientGroundUnitBuilder;
+    private MissionBalloonBuilder missionBalloonBuilder;
+    private MissionGroundUnitBuilder missionGroundUnitBuilder;
     private MissionWaypointIconBuilder missionWaypointIconBuilder = new MissionWaypointIconBuilder();
     private MissionAirfieldIconBuilder missionAirfieldIconBuilder = new MissionAirfieldIconBuilder();
     private MissionSquadronIconBuilder missionSquadronIconBuilder;
@@ -70,9 +70,8 @@ public class Mission
     
     public int getGroundUnitCount() throws PWCGException
     {
-        int unitCountAmbientGroundUnits = ambientGroundUnitBuilder.getUnitCount();
-        
-        int unitCountInBalloons = ambientBalloonBuilder.getUnitCount();
+        int unitCountMissionGroundUnits = missionGroundUnitBuilder.getUnitCount();
+        int unitCountInBalloons = missionBalloonBuilder.getUnitCount();
         
         int unitCountInFlights = 0;
         for (IFlight flight : this.getMissionFlightBuilder().getAllAerialFlights())
@@ -94,12 +93,12 @@ public class Mission
         int unitCountInMission = 0;
         unitCountInMission += unitCountInFlights;
         unitCountInMission += unitCountInBalloons;
-        unitCountInMission += unitCountAmbientGroundUnits;
+        unitCountInMission += unitCountMissionGroundUnits;
         unitCountInMission += unitCountInAirfields;
 
         System.out.println("unit count balloons : " + unitCountInBalloons);
         System.out.println("unit count flights : " + unitCountInFlights);
-        System.out.println("unit count ambient : " + unitCountAmbientGroundUnits);
+        System.out.println("unit count misson : " + unitCountMissionGroundUnits);
         System.out.println("unit count airfields : " + unitCountInAirfields);
         System.out.println("unit count total : " + unitCountInMission);
 
@@ -115,8 +114,8 @@ public class Mission
         PWCGContext.getInstance().getSkinManager().clearSkinsInUse();
 
         missionGroundUnitManager = new MissionGroundUnitResourceManager();
-        ambientBalloonBuilder = new AmbientBalloonBuilder(this);
-        ambientGroundUnitBuilder = new AmbientGroundUnitBuilder(campaign, this);
+        missionBalloonBuilder = new MissionBalloonBuilder(this);
+        missionGroundUnitBuilder = new MissionGroundUnitBuilder(campaign, this);
         missionFlightBuilder = new MissionFlightBuilder(campaign, this);
         missionFrontLines = new MissionFrontLineIconBuilder(campaign);
         missionSquadronIconBuilder = new MissionSquadronIconBuilder(campaign);
@@ -125,7 +124,7 @@ public class Mission
     public void generate(List<FlightTypes> playerFlightTypes) throws PWCGException
     {
         validate();
-        createAmbientUnits();
+        createGroundUnits();
         generateFlights(playerFlightTypes);
     }
 
@@ -169,11 +168,11 @@ public class Mission
         return participatingPlayers.getPlayerDistanceToTarget(this);
     }
 
-    private void createAmbientUnits() throws PWCGException, PWCGException
+    private void createGroundUnits() throws PWCGException, PWCGException
     {
-        ambientBalloonBuilder.createAmbientBalloons();
-        ambientGroundUnitBuilder = new AmbientGroundUnitBuilder(campaign, this);
-        ambientGroundUnitBuilder.generateAmbientGroundUnits();
+        missionBalloonBuilder.createMissionBalloons();
+        missionGroundUnitBuilder = new MissionGroundUnitBuilder(campaign, this);
+        missionGroundUnitBuilder.generateGroundUnitsForMission();
     }
 
     public void write() throws PWCGException
@@ -340,9 +339,9 @@ public class Mission
         return missionObjectiveFailure;
     }
 
-    public AmbientGroundUnitBuilder getAmbientGroundUnitBuilder()
+    public MissionGroundUnitBuilder getMissionGroundUnitBuilder()
     {
-        return ambientGroundUnitBuilder;
+        return missionGroundUnitBuilder;
     }
 
     public MissionFlightBuilder getMissionFlightBuilder()
@@ -415,9 +414,9 @@ public class Mission
         this.missionOptions = missionOptions;
     }
 
-    public AmbientBalloonBuilder getAmbientBalloonBuilder()
+    public MissionBalloonBuilder getMissionBalloonBuilder()
     {
-        return ambientBalloonBuilder;
+        return missionBalloonBuilder;
     }
 
     public List<StopAttackingNearAirfieldSequence> getStopSequenceForMission()

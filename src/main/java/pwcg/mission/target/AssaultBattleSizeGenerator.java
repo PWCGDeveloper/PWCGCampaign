@@ -10,7 +10,7 @@ import pwcg.mission.ground.BattleSize;
 
 public class AssaultBattleSizeGenerator
 {
-    public static BattleSize createAssaultBattleSize(Campaign campaign, TargetDefinition targetDefinition) throws PWCGException 
+    public static BattleSize createAssaultBattleSize(Campaign campaign) throws PWCGException 
     {
         BattleSize battleSize = BattleSize.BATTLE_SIZE_TINY;      
         ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();

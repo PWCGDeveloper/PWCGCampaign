@@ -32,58 +32,78 @@ public class AssaultDefinitionGenerator
         this.campaign = campaign;
     }
 
-    public List<AssaultDefinition> generateAssaultDefinition(TargetDefinition targetDefinition) throws PWCGException
+    public List<AssaultDefinition> generateAssaultDefinition(Coordinate battleLocation) throws PWCGException
     {
-        generateMiniAssaultOnEachIndex(targetDefinition);
+        generateMiniAssaultOnEachIndex(battleLocation);
         return assaultInformationElements;
     }
 
-    private void generateMiniAssaultOnEachIndex(TargetDefinition targetDefinition) throws PWCGException
+    private void generateMiniAssaultOnEachIndex(Coordinate battleLocation) throws PWCGException
     {
-        BattleSize battleSize = AssaultBattleSizeGenerator.createAssaultBattleSize(campaign, targetDefinition);
-        List<Integer> battleFrontIndeces = getFrontBattleIndeces(targetDefinition, battleSize);
+        BattleSize battleSize = AssaultBattleSizeGenerator.createAssaultBattleSize(campaign);
+        ICountry defendingCountry = getDefendingCountry(battleLocation);
+        ICountry assaultingCountry = getAssaultingCountry(defendingCountry);
 
+        List<Integer> battleFrontIndeces = getFrontBattleIndeces(defendingCountry, battleLocation, battleSize);
+        FrontLinesForMap frontLineMarker = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         for (int battleIndex : battleFrontIndeces)
         {
-            FrontLinesForMap frontLineMarker = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
-            ICountry defendingCountry = getDefendingCountry(targetDefinition);
-            ICountry assaultingCountry = getAssaultingCountry(targetDefinition, defendingCountry);
             completeBattleDefinition(defendingCountry, assaultingCountry, battleSize, battleIndex, frontLineMarker);
         }
     }
 
-    private ICountry getAssaultingCountry(TargetDefinition targetDefinition, ICountry defendingCountry)
+    private ICountry getDefendingCountry(Coordinate battleLocation)
     {
-        if (defendingCountry.getSide() == targetDefinition.getCountry().getSide())
-        {
-            return targetDefinition.getAttackingCountry();
-        }
-        else
-        {
-            return targetDefinition.getCountry();
-        }
-    }
-
-    private ICountry getDefendingCountry(TargetDefinition targetDefinition)
-    {
-        ICountry defendingCountry = targetDefinition.getCountry();
         BattleManager battleManager = PWCGContext.getInstance().getBattleManager();
-        Battle battle = battleManager.getBattleForCampaign(PWCGContext.getInstance().getCurrentMap().getMapIdentifier(), targetDefinition.getPosition(),
+        Battle battle = battleManager.getBattleForCampaign(PWCGContext.getInstance().getCurrentMap().getMapIdentifier(), battleLocation,
                 campaign.getDate());
         if (battle != null)
         {
             int roll = RandomNumberGenerator.getRandom(100);
             if (roll < 80)
             {
-                defendingCountry = CountryFactory.makeCountryByCountry(battle.getDefendercountry());
+                return CountryFactory.makeCountryByCountry(battle.getDefendercountry());
             }
             else
             {
-                defendingCountry = CountryFactory.makeCountryByCountry(battle.getAggressorcountry());
+                return CountryFactory.makeCountryByCountry(battle.getAggressorcountry());
             }
         }
-        return defendingCountry;
+        
+        return chooseSidesRandom();
     }
+
+    private ICountry chooseSidesRandom()
+    {
+        ICountry alliedCountry = CountryFactory.makeMapReferenceCountry(Side.ALLIED);
+        ICountry axisCountry = CountryFactory.makeMapReferenceCountry(Side.AXIS);
+
+        int roll = RandomNumberGenerator.getRandom(100);
+        if (roll < 50)
+        {
+            return alliedCountry;
+        }
+        else
+        {
+            return axisCountry;
+        }
+    }
+    
+
+    private ICountry getAssaultingCountry(ICountry defendingCountry)
+    {
+        if (defendingCountry.getSide() == Side.ALLIED)
+        {
+            ICountry axisCountry = CountryFactory.makeMapReferenceCountry(Side.AXIS);
+            return axisCountry;
+        }
+        else
+        {
+            ICountry alliedCountry = CountryFactory.makeMapReferenceCountry(Side.ALLIED);
+            return alliedCountry;
+        }
+    }
+
 
     private void completeBattleDefinition(ICountry defendingCountry, ICountry assaultingCountry, BattleSize battleSize, int battleIndex,
             FrontLinesForMap frontLineMarker) throws PWCGException
@@ -101,10 +121,10 @@ public class AssaultDefinitionGenerator
         assaultInformationElements.add(assaultDefinition);
     }
 
-    private List<Integer> getFrontBattleIndeces(TargetDefinition targetDefinition, BattleSize battleSize) throws PWCGException
+    private List<Integer> getFrontBattleIndeces(ICountry defendingCountry, Coordinate battleLocation, BattleSize battleSize) throws PWCGException
     {
         List<Integer> battleFrontIndeces = new ArrayList<>();
-        int centerFrontIndex = determineCenterOfBattle(targetDefinition);
+        int centerFrontIndex = determineCenterOfBattle(defendingCountry, battleLocation);
         int numAssaults = determineNumberOfAssaultSegments(battleSize);
 
         int startFrontIndex = centerFrontIndex;
@@ -130,11 +150,11 @@ public class AssaultDefinitionGenerator
         return numAssaults;
     }
 
-    private int determineCenterOfBattle(TargetDefinition targetDefinition) throws PWCGException
+    private int determineCenterOfBattle(ICountry defendingCountry, Coordinate battleLocation) throws PWCGException
     {
         FrontLinesForMap frontLineMarker = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
-        List<FrontLinePoint> frontLines = frontLineMarker.getFrontLines(targetDefinition.getCountry().getSide());
-        int centerFrontIndex = frontLineMarker.findIndexForClosestPosition(targetDefinition.getPosition(), targetDefinition.getCountry().getSide());
+        List<FrontLinePoint> frontLines = frontLineMarker.getFrontLines(defendingCountry.getSide());
+        int centerFrontIndex = frontLineMarker.findIndexForClosestPosition(battleLocation, defendingCountry.getSide());
         if (centerFrontIndex < 10)
         {
             centerFrontIndex = 10;

@@ -32,7 +32,6 @@ public class ConfigSetMissionLimits
         configSet.addConfigItem(ConfigItemKeys.PlaneDeletePlayerDistanceKey, new ConfigItem("12000"));
         configSet.addConfigItem(ConfigItemKeys.IsEscortedOddsKey, new ConfigItem("50"));
 		
-        configSet.addConfigItem(ConfigItemKeys.MaxAmbientBalloonsKey, new ConfigItem("1"));
         configSet.addConfigItem(ConfigItemKeys.TimeOnArtillerySpotKey, new ConfigItem("5"));
         configSet.addConfigItem(ConfigItemKeys.MaxSmokeInMissionKey, new ConfigItem("100"));
         configSet.addConfigItem(ConfigItemKeys.MaxSmokeInAreaKey, new ConfigItem("3"));

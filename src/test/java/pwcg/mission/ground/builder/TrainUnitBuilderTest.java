@@ -47,7 +47,7 @@ public class TrainUnitBuilderTest
     }
 
     @Test
-    public void createSearchLightBatteryTest () throws PWCGException 
+    public void createTrainTest () throws PWCGException 
     {
         TargetDefinitionBuilderGround targetDefinitionBuilder = new TargetDefinitionBuilderGround(campaign);
         TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionBattle(

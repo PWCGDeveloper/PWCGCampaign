@@ -10,7 +10,7 @@ import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderFactory;
+import pwcg.mission.target.TargetDefinitionBuilderAirToAir;
 
 public class PlayerIsEscortPackage implements IFlightPackage
 {
@@ -48,7 +48,7 @@ public class PlayerIsEscortPackage implements IFlightPackage
     
     private TargetDefinition buildTargetDefintion() throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(playerFlightInformation);
+        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilderAirToAir(playerFlightInformation);
         TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
         return targetDefinition;
     }

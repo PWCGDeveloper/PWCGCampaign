@@ -7,11 +7,9 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.IFlightInformation;
-import pwcg.mission.ground.factory.TargetFactory;
-import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderFactory;
+import pwcg.mission.target.TargetDefinitionBuilderAirToGround;
 
 
 public class EscortedByPlayerFlightBuilder
@@ -30,8 +28,6 @@ public class EscortedByPlayerFlightBuilder
     public EscortedByPlayerFlight createEscortedFlight() throws PWCGException
     {
         MissionBeginUnit missionBeginUnit = buildEscortedFlightInformation();
-        this.escortedTargetDefinition = buildTargetDefintion();
-
         EscortedByPlayerFlight PlayerEscortedFlightEscortedByPlayer = buildEscortedFlight(missionBeginUnit);        
         return PlayerEscortedFlightEscortedByPlayer;
 	}
@@ -40,9 +36,6 @@ public class EscortedByPlayerFlightBuilder
     {
         EscortedByPlayerFlight playerEscortedFlight = new EscortedByPlayerFlight (escortedFlightInformation, escortedTargetDefinition);
 		playerEscortedFlight.createFlight();
-		
-        IGroundUnitCollection targetUnit = createTargetForPlayerEscortedFlight();
-        playerEscortedFlight.addLinkedGroundUnit(targetUnit);
         
         return playerEscortedFlight;
     }
@@ -55,6 +48,8 @@ public class EscortedByPlayerFlightBuilder
         this.escortedFlightInformation = EscortedByPlayerFlightInformationBuilder.buildEscortedByPlayerFlightInformation(
                 playerEscortFlightInformation, playerEscortTargetDefinition, friendlyBomberSquadron);
         
+        this.escortedTargetDefinition = buildTargetDefintion(escortedFlightInformation);
+
         return missionBeginUnit;
     }
 
@@ -73,16 +68,9 @@ public class EscortedByPlayerFlightBuilder
         return friendlyBombSquadron;
     }
 
-    private IGroundUnitCollection createTargetForPlayerEscortedFlight() throws PWCGException
+    private TargetDefinition buildTargetDefintion(IFlightInformation escortedFlightInformation) throws PWCGException
     {
-        TargetFactory targetBuilder = new TargetFactory(escortedFlightInformation, escortedTargetDefinition);
-        targetBuilder.buildTarget();
-        return targetBuilder.getGroundUnits();
-    }
-
-    private TargetDefinition buildTargetDefintion() throws PWCGException
-    {
-        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(escortedFlightInformation);
-        return  targetDefinitionBuilder.buildTargetDefinition();
+        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilderAirToGround(escortedFlightInformation);
+        return targetDefinitionBuilder.buildTargetDefinition();
     }
 }

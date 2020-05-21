@@ -20,7 +20,7 @@ import pwcg.mission.ground.builder.BalloonUnitBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderFactory;
+import pwcg.mission.target.TargetDefinitionFactory;
 
 public class BalloonBustPackage implements IFlightPackage
 {
@@ -69,16 +69,12 @@ public class BalloonBustPackage implements IFlightPackage
     {
         BalloonUnitBuilder groundUnitBuilderBalloonDefense = new BalloonUnitBuilder(flightInformation.getMission(), targetDefinition);
         IGroundUnitCollection balloonUnit = groundUnitBuilderBalloonDefense.createBalloonUnit(balloonCountry);
-        if (balloonUnit == null)
-        {
-          System.out.println("oops");  
-        }
         return balloonUnit;
     }
 
     private TargetDefinition buildTargetDefintion() throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
+        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionFactory.createFlightTargetDefinitionBuilder(flightInformation);
         return  targetDefinitionBuilder.buildTargetDefinition();
     }
 

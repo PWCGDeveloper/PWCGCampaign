@@ -2,6 +2,7 @@ package pwcg.mission.ground.builder;
 
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Orientation;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.org.GroundUnitCollection;
@@ -34,7 +35,7 @@ public class DrifterUnitBuilder
                 TargetType.TARGET_DRIFTER,
                 targetDefinition.getPosition(), 
                 targetDefinition.getPosition(),
-                targetDefinition.getOrientation());
+                Orientation.createRandomOrientation());
 
         IGroundUnit drifterUnit = new DrifterUnit(groundUnitInformation);
         drifterUnit.createGroundUnit();

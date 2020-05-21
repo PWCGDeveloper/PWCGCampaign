@@ -27,14 +27,14 @@ import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.HelpDialog;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.AmbientBalloonBuilder;
+import pwcg.mission.MissionBalloonBuilder;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBlockBuilder;
 import pwcg.mission.MissionBlockCountry;
 import pwcg.mission.MissionBlockDamage;
 import pwcg.mission.MissionBlockSmoke;
-import pwcg.mission.ambient.AmbientGroundUnitBuilder;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.ground.MissionGroundUnitBuilder;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.ground.vehicle.VehicleFactory;
@@ -70,7 +70,7 @@ public class MissionFileWriter implements IMissionFile
                 writeMissionObjectives(writer);            
                 writeIcons(writer);
                 writeBlocks(writer);
-                writeAmbientGroundUnits(writer);
+                writeMissionGroundUnits(writer);
                 writeWindStopSequences(writer);
                 writeWindSock(writer);
                 writeProductSpecific(writer);
@@ -188,13 +188,13 @@ public class MissionFileWriter implements IMissionFile
         mission.getMissionAssaultIconBuilder().write(writer);
     }
 
-    private void writeAmbientGroundUnits(BufferedWriter writer) throws PWCGException
+    private void writeMissionGroundUnits(BufferedWriter writer) throws PWCGException
     {
-        AmbientGroundUnitBuilder ambientGroundUnitBuilder = mission.getAmbientGroundUnitBuilder();
-        ambientGroundUnitBuilder.write(writer);
+        MissionGroundUnitBuilder groundUnitBuilder = mission.getMissionGroundUnitBuilder();
+        groundUnitBuilder.write(writer);
 
-        AmbientBalloonBuilder ambientBalloonBuilder = mission.getAmbientBalloonBuilder();
-        ambientBalloonBuilder.write(writer);
+        MissionBalloonBuilder balloonBuilder = mission.getMissionBalloonBuilder();
+        balloonBuilder.write(writer);
     }
 
     private void writeVehiclesForTest(BufferedWriter writer) throws PWCGException

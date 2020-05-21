@@ -32,10 +32,10 @@ public class SearchLightBuilder
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 campaign, 
                 targetDefinition.getCountry(), 
-                TargetType.TARGET_AAA,
+                TargetType.TARGET_INFANTRY,
                 targetDefinition.getPosition(), 
                 targetDefinition.getPosition(),
-                targetDefinition.getOrientation());
+                Orientation.createRandomOrientation());
 
         IGroundUnit searchLightUnit = new SearchLightUnit(groundUnitInformation);
         searchLightUnit.createGroundUnit();
@@ -75,7 +75,7 @@ public class SearchLightBuilder
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 campaign, 
                 country, 
-                TargetType.TARGET_AAA,
+                TargetType.TARGET_INFANTRY,
                 position, 
                 position,
                 Orientation.createRandomOrientation());

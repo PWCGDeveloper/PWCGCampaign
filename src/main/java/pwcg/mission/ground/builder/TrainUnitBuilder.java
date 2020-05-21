@@ -1,6 +1,7 @@
 package pwcg.mission.ground.builder;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.GroupManager;
@@ -16,20 +17,21 @@ import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.unittypes.transport.GroundTrainUnit;
 import pwcg.mission.mcu.Coalition;
-import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
 
 public class TrainUnitBuilder
 {
     private Mission mission;
     private Campaign campaign;
-    private TargetDefinition targetDefinition;
+    private Block station;
+    private ICountry country;
     
-    public TrainUnitBuilder (Mission mission, TargetDefinition targetDefinition)
+    public TrainUnitBuilder (Mission mission, Block station, ICountry country)
     {
         this.mission = mission;
         this.campaign = mission.getCampaign();
-        this.targetDefinition = targetDefinition;
+        this.station = station;
+        this.country = country;
     }
 
     public IGroundUnitCollection createTrainUnit () throws PWCGException
@@ -65,11 +67,11 @@ public class TrainUnitBuilder
 
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 campaign, 
-                targetDefinition.getCountry(), 
+                country, 
                 TargetType.TARGET_TRAIN,
-                targetDefinition.getPosition(), 
+                station.getPosition(), 
                 destination,
-                targetDefinition.getOrientation());
+                station.getOrientation());
                 
         groundUnitInformation.setDestination(destination);
         return groundUnitInformation;
@@ -78,20 +80,20 @@ public class TrainUnitBuilder
     private Coordinate getTrainDestination() throws PWCGException
     {
         GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
-        Block destinationStation = groupData.getRailroadStationFinder().getDestinationTrainPosition(targetDefinition.getPosition(), targetDefinition.getCountry(), campaign.getDate());
+        Block destinationStation = groupData.getRailroadStationFinder().getDestinationTrainPosition(station.getPosition(), country, campaign.getDate());
         if (destinationStation != null)
         {
             return destinationStation.getPosition();
         }
         else
         {
-            return targetDefinition.getPosition();
+            return station.getPosition();
         }
     }
     
     private void registerTrainStationInUse() throws PWCGException
     {        
-        mission.getMissionGroundUnitManager().registerTrainStation(targetDefinition.getPosition());
+        mission.getMissionGroundUnitManager().registerTrainStation(station.getPosition());
     }
 
 }

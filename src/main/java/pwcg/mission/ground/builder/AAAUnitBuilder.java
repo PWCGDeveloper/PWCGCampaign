@@ -107,7 +107,7 @@ public class AAAUnitBuilder
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 campaign, 
                 targetDefinition.getCountry(), 
-                TargetType.TARGET_DEFENSE, 
+                TargetType.TARGET_INFANTRY, 
                 targetDefinition.getPosition(), 
                 targetDefinition.getPosition(), 
                 Orientation.createRandomOrientation());
@@ -130,7 +130,7 @@ public class AAAUnitBuilder
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 campaign, 
                 targetDefinition.getCountry(), 
-                TargetType.TARGET_DEFENSE, 
+                TargetType.TARGET_INFANTRY, 
                 targetDefinition.getPosition(), 
                 targetDefinition.getPosition(), 
                 Orientation.createRandomOrientation());

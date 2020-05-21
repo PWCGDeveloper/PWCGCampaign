@@ -12,9 +12,8 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.balloondefense.BalloonDefenseFlight;
 import pwcg.mission.ground.org.IGroundUnitCollection;
-import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderFactory;
+import pwcg.mission.target.TargetType;
 
 public class BalloonBustOpposingFlightBuilder
 {
@@ -79,9 +78,7 @@ public class BalloonBustOpposingFlightBuilder
 
     private TargetDefinition buildOpposingTargetDefintion(IFlightInformation opposingFlightInformation) throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(opposingFlightInformation);
-        TargetDefinition opposingTargetDefinition =  targetDefinitionBuilder.buildTargetDefinition();
-        opposingTargetDefinition.setPosition(balloonUnit.getPosition());
+        TargetDefinition opposingTargetDefinition =  new TargetDefinition(TargetType.TARGET_AIR, balloonUnit.getPosition(), opposingFlightInformation.getCountry());
         return opposingTargetDefinition;
     }
 }

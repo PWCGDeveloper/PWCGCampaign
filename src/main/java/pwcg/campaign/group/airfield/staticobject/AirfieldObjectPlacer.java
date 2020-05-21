@@ -21,6 +21,8 @@ import pwcg.mission.ground.builder.AAAUnitBuilder;
 import pwcg.mission.ground.builder.SearchLightBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.IVehicle;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetType;
 
 public class AirfieldObjectPlacer
 {
@@ -86,8 +88,10 @@ public class AirfieldObjectPlacer
     private void addAAA(HotSpot hotSpot) throws PWCGException
     {
         if (!airfield.createCountry(campaign.getDate()).isNeutral())
-        {
-            AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, airfield.getCountry(campaign.getDate()), hotSpot.getPosition());
+        {            
+            TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_INFANTRY, hotSpot.getPosition(), airfield.getCountry(campaign.getDate()));
+            AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
+
             IGroundUnitCollection aaaMg;
 
             int roll = RandomNumberGenerator.getRandom(100);

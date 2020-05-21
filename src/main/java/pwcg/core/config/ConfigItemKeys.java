@@ -61,16 +61,14 @@ public class ConfigItemKeys
     public static final String AlliedCargoDropKey = "AlliedCargoDrop";
     public static final String AlliedParachuteDropKey = "AlliedParachuteDrop";    
 
-    public static final String AlliedTargetTypeAssaultKey = "AlliedTargetTypeAssault";    
-    public static final String AlliedTargetTypeDefenseKey = "AlliedTargetTypeDefense";    
+    public static final String AlliedTargetTypeInfantryKey = "AlliedTargetTypeInfantry";    
     public static final String AlliedTargetTypeTransportKey = "AlliedTargetTypeTransport";    
     public static final String AlliedTargetTypeTrainKey = "AlliedTargetTypeTrain";    
     public static final String AlliedTargetTypeAirfieldKey = "AlliedTargetTypeAirfield";    
     public static final String AlliedTargetTypeShippingKey = "AlliedTargetTypeShipping";    
     public static final String AlliedTargetTypeDrifterKey = "AlliedTargetTypeDrifter";    
 
-    public static final String AxisTargetTypeAssaultKey = "AxisTargetTypeAssault";    
-    public static final String AxisTargetTypeDefenseKey = "AxisTargetTypeDefense";    
+    public static final String AxisTargetTypeInfantryKey = "AxisTargetTypeInfantry";    
     public static final String AxisTargetTypeTransportKey = "AxisTargetTypeTransport";    
     public static final String AxisTargetTypeTrainKey = "AxisTargetTypeTrain";    
     public static final String AxisTargetTypeAirfieldKey = "AxisTargetTypeAirfield";    
@@ -112,7 +110,6 @@ public class ConfigItemKeys
 	public static final String AiFighterFlightsForFighterCampaignMaxKey = "AiFighterFlightsForFighterCampaignMax";
 
 	public static final String RandomizePlanesPerSideKey = "RandomizePlanesPerSide";
-	public static final String MaxAmbientBalloonsKey = "MaxAmbientBalloons";
 	public static final String InitialSquadronSearchRadiusKey = "InitialSquadronSearchRadius";
 	public static final String MaxSquadronSearchRadiusKey = "MaxSquadronSearchRadius";
 	public static final String OddsOfAceFlyingKey = "OddsOfAceFlying";

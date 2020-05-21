@@ -13,7 +13,7 @@ import pwcg.mission.ground.builder.BalloonUnitBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderFactory;
+import pwcg.mission.target.TargetDefinitionFactory;
 
 public class BalloonDefensePackage implements IFlightPackage
 {
@@ -53,7 +53,7 @@ public class BalloonDefensePackage implements IFlightPackage
 
     private TargetDefinition buildTargetDefintion() throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
+        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionFactory.createFlightTargetDefinitionBuilder(flightInformation);
         return  targetDefinitionBuilder.buildTargetDefinition();
     }
 

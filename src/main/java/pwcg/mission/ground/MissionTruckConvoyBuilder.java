@@ -1,4 +1,4 @@
-package pwcg.mission.ambient;
+package pwcg.mission.ground;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,43 +20,46 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
-import pwcg.mission.TargetSide;
 import pwcg.mission.ground.builder.TruckConvoyBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
-import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderGround;
-import pwcg.mission.target.TargetType;
 
-public class AmbientTruckConvoyBuilder extends AmbientUnitBuilder
+public class MissionTruckConvoyBuilder extends MissionUnitBuilder
 {
-    private List<IGroundUnitCollection> ambientTrucks = new ArrayList<>();
+    private List<IGroundUnitCollection> missionTransportConvoys = new ArrayList<>();
 
-    public AmbientTruckConvoyBuilder (Campaign campaign, Mission mission)
+    public MissionTruckConvoyBuilder (Campaign campaign, Mission mission)
     {
         super(campaign, mission);
     }
 
-    public List<IGroundUnitCollection> generateAmbientTrucks() throws PWCGException 
+    
+    public List<IGroundUnitCollection> generateMissionTrucks() throws PWCGException 
     {
-        Side targetSide = TargetSide.ambientTargetSide(campaign);
+        buildTruckConvoysForSide(Side.ALLIED);
+        buildTruckConvoysForSide(Side.AXIS);
+        return missionTransportConvoys;
+    }
+
+    public List<IGroundUnitCollection> buildTruckConvoysForSide(Side truckSide) throws PWCGException 
+    {
         int maxTrucks = getMaxTruckConvoys(campaign);
         
-        ArrayList<Bridge> bridgesForSide = getBridgesAmbientConvoys(targetSide);
+        ArrayList<Bridge> bridgesForSide = getBridgesForConvoys(truckSide);
         ArrayList<Bridge> sortedBridgesByDistance = sortBridgesDistanceFromMission(bridgesForSide);
         for (Bridge bridge : sortedBridgesByDistance)
         {
-            if (ambientTrucks.size() >= maxTrucks)
+            if (missionTransportConvoys.size() >= maxTrucks)
             {
                 break;
             }
             
-            possibleAmbientConvoy(targetSide, bridge);
+            possibleTruckConvoy(truckSide, bridge);
         }
         
-        return ambientTrucks;
+        return missionTransportConvoys;
     }
 
-    private ArrayList<Bridge> getBridgesAmbientConvoys(Side targetSide) throws PWCGException 
+    private ArrayList<Bridge> getBridgesForConvoys(Side truckSide) throws PWCGException 
     {
         ArrayList<Bridge> bridgesForSide = new ArrayList<Bridge>();
         Campaign campaign = mission.getCampaign();
@@ -64,7 +67,7 @@ public class AmbientTruckConvoyBuilder extends AmbientUnitBuilder
         GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
         for (Bridge bridge : groupData.getBridgeFinder().findAllBridges())
         {
-            if (bridge.createCountry(campaign.getDate()).getSide() == targetSide)
+            if (bridge.createCountry(campaign.getDate()).getSide() == truckSide)
             {
                 bridgesForSide.add(bridge);
             }
@@ -86,21 +89,17 @@ public class AmbientTruckConvoyBuilder extends AmbientUnitBuilder
         return new ArrayList<Bridge>(sortedStationsByDistance.values());
     }
 
-    private void possibleAmbientConvoy(Side targetSide, Bridge bridge) throws PWCGException
+    private void possibleTruckConvoy(Side truckSide, Bridge bridge) throws PWCGException
     {
         int roll = RandomNumberGenerator.getRandom(100);
-        if (roll < 40)
+        if (roll < 50)
         {
-            boolean isPlayerTarget = true;
-            ICountry truckCountry = CountryFactory.makeMapReferenceCountry(targetSide);
-            TargetDefinitionBuilderGround targetDefinitionBuilder = new TargetDefinitionBuilderGround(campaign);
-            TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionAmbient(
-                    truckCountry, TargetType.TARGET_TRANSPORT, bridge.getPosition(), bridge.getOrientation(), isPlayerTarget);
-            TruckConvoyBuilder groundUnitFactory =  new TruckConvoyBuilder(mission, targetDefinition);
+            ICountry truckCountry = CountryFactory.makeMapReferenceCountry(truckSide);
+            TruckConvoyBuilder groundUnitFactory =  new TruckConvoyBuilder(mission, bridge, truckCountry);
             IGroundUnitCollection truckUnit = groundUnitFactory.createTruckConvoy();
             if (truckUnit != null)
             {
-                addAmbientTruckConvoy(truckUnit, bridge);
+                addTruckConvoy(truckUnit, bridge);
             }
         }
     }
@@ -126,12 +125,12 @@ public class AmbientTruckConvoyBuilder extends AmbientUnitBuilder
         return maxTrucks;
     }
 
-    private void addAmbientTruckConvoy(IGroundUnitCollection truckUnit, Bridge bridge)
+    private void addTruckConvoy(IGroundUnitCollection truckUnit, Bridge bridge)
     {
         if (!mission.getMissionGroundUnitManager().isBridgeInUse(bridge.getIndex()))
         {
             mission.getMissionGroundUnitManager().registerBridge(bridge);
-            ambientTrucks.add(truckUnit);
+            missionTransportConvoys.add(truckUnit);
         }
     }
  }

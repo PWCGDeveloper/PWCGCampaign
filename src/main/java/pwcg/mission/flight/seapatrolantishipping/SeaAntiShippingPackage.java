@@ -6,6 +6,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.shipping.ShippingLane;
 import pwcg.campaign.shipping.ShippingLaneManager;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
@@ -17,9 +18,8 @@ import pwcg.mission.flight.bomb.BombingFlight;
 import pwcg.mission.flight.divebomb.DiveBombingFlight;
 import pwcg.mission.ground.ShipConvoyGenerator;
 import pwcg.mission.ground.org.IGroundUnitCollection;
-import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderFactory;
+import pwcg.mission.target.TargetType;
 
 public class SeaAntiShippingPackage implements IFlightPackage
 {
@@ -101,9 +101,8 @@ public class SeaAntiShippingPackage implements IFlightPackage
     private TargetDefinition buildTargetDefintion() throws PWCGException
     {
         ShippingLane selectedShippingLane = getEnemyShippingLane();
-        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
-        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
-        targetDefinition.setPosition(selectedShippingLane.getShippingLaneBox().chooseCoordinateWithinBox());
+        Coordinate shippingPosition = selectedShippingLane.getShippingLaneBox().chooseCoordinateWithinBox();
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_AIR, shippingPosition, flightInformation.getCountry());
         return targetDefinition;
         
     }

@@ -5,7 +5,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderFactory;
+import pwcg.mission.target.TargetDefinitionBuilderAirToAir;
 
 public class EscortForPlayerTargetDefinitionBuilder
 {
@@ -14,7 +14,7 @@ public class EscortForPlayerTargetDefinitionBuilder
             IFlightInformation escortFlightInformation, 
             Coordinate playerRendezvous) throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(escortFlightInformation);
+        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilderAirToAir(escortFlightInformation);
         TargetDefinition targetDefinition  = targetDefinitionBuilder.buildTargetDefinition();
         Coordinate escortRendezvous = playerRendezvous.copy();
         escortRendezvous.setYPos(escortRendezvous.getYPos() + 500.0);

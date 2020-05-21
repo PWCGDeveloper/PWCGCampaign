@@ -16,7 +16,7 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderFactory;
+import pwcg.mission.target.TargetDefinitionBuilderAirToAir;
 
 public class VirtualEscortFlightBuilder
 {
@@ -60,7 +60,7 @@ public class VirtualEscortFlightBuilder
 
     private TargetDefinition buildTargetDefintion(IFlightInformation escortFlightInformation) throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(escortFlightInformation);
+        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilderAirToAir(escortFlightInformation);
         TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
         return targetDefinition;
     }

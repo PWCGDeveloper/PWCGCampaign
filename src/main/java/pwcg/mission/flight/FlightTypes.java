@@ -15,10 +15,10 @@ public enum FlightTypes
     LONE_WOLF(FlightTypeCategory.FIGHTER),
     ESCORT(FlightTypeCategory.FIGHTER),
     SCRAMBLE_OPPOSE(FlightTypeCategory.FIGHTER), 
-    LOW_ALT_CAP(FlightTypeCategory.FIGHTER, FlightTypeCategory.FIGHTER),
-    LOW_ALT_PATROL(FlightTypeCategory.FIGHTER, FlightTypeCategory.FIGHTER),
-    BALLOON_BUST(FlightTypeCategory.FIGHTER, FlightTypeCategory.ATTACK),
-    BALLOON_DEFENSE(FlightTypeCategory.FIGHTER, FlightTypeCategory.ATTACK),
+    LOW_ALT_CAP(FlightTypeCategory.FIGHTER),
+    LOW_ALT_PATROL(FlightTypeCategory.FIGHTER),
+    BALLOON_BUST(FlightTypeCategory.FIGHTER),
+    BALLOON_DEFENSE(FlightTypeCategory.FIGHTER),
     
     GROUND_ATTACK(FlightTypeCategory.ATTACK),
     BOMB(FlightTypeCategory.ATTACK),
@@ -42,58 +42,35 @@ public enum FlightTypes
     GROUND_FORCES(FlightTypeCategory.INVALID),
     ANY(FlightTypeCategory.INVALID);
 
-	List<FlightTypeCategory> categories = new ArrayList<>();
+    FlightTypeCategory category = FlightTypeCategory.INVALID;
 	
-	private FlightTypes(FlightTypeCategory ... categoryList)
+	private FlightTypes(FlightTypeCategory category)
 	{
-		for (FlightTypeCategory category : categoryList)
-		{
-			categories.add(category);
-		}
+	    this.category = category;
 	}
 
 	public boolean isCategory(FlightTypeCategory categoryToFind) 
 	{
-		for (FlightTypeCategory category : categories)
-		{
-			if (category == categoryToFind)
-			{
-				return true;
-			}
-		}
+        if (category == categoryToFind)
+        {
+            return true;
+        }
 		return false;
 	}
 
-    public static List<FlightTypes> getFlightTypesByCategory(FlightTypeCategory category)
+    public static List<FlightTypes> getFlightTypesByCategory(FlightTypeCategory categoryToFind)
     {
         List<FlightTypes> flightTypesByCategory = new ArrayList<>();
         for (FlightTypes flightType : FlightTypes.values()) 
         {
-            if (flightType.categories.contains(category))
+            if (flightType.category == categoryToFind)
             {
                 flightTypesByCategory.add(flightType);
             }
          }
         return flightTypesByCategory;
     }
-    
-//    
-//    public static boolean isHighPriorityFlight(FlightTypes flightType)
-//    {
-//        if (flightType == FlightTypes.BOMB ||
-//            flightType == FlightTypes.ANTI_SHIPPING_BOMB ||
-//            flightType == FlightTypes.STRATEGIC_BOMB ||
-//            flightType == FlightTypes.PARATROOP_DROP ||
-//            flightType == FlightTypes.CARGO_DROP ||
-//            flightType == FlightTypes.TRANSPORT ||
-//            flightType == FlightTypes.RECON)
-//        {
-//            return true;
-//        }
-//         
-//        return false;
-//    }
-    
+
     public static boolean isHighPriorityFlight(FlightTypes flightType)
     {
         if (flightType == FlightTypes.STRATEGIC_BOMB ||

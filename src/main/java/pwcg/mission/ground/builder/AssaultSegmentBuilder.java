@@ -37,7 +37,7 @@ public class AssaultSegmentBuilder
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, 
                 "Battle Segment", 
-                TargetType.TARGET_ASSAULT,
+                TargetType.TARGET_INFANTRY,
                 Coalition.getCoalitions());
 
         this.battleSegmentUnitCollection = new GroundUnitCollection ("Assault Segment", groundUnitCollectionData);

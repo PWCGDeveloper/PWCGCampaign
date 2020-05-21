@@ -2,32 +2,28 @@ package pwcg.mission.target;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.core.location.Coordinate;
-import pwcg.core.location.Orientation;
 
 public class TargetDefinition
 {
+    private TargetType targetType;
     private Coordinate position;
-    private Orientation orientation;
     private ICountry country;
     
+    public TargetDefinition (TargetType targetType, Coordinate position, ICountry country)
+    {
+        this.targetType = targetType;
+        this.position = position;
+        this.country = country;
+    }
+
+    public TargetType getTargetType()
+    {
+        return targetType;
+    }
+
     public Coordinate getPosition()
     {
         return position;
-    }
-
-    public void setPosition(Coordinate position)
-    {
-        this.position = position;
-    }
-
-    public Orientation getOrientation()
-    {
-        return orientation;
-    }
-
-    public void setOrientation(Orientation orientation)
-    {
-        this.orientation = orientation;
     }
 
     public ICountry getCountry()
@@ -35,9 +31,8 @@ public class TargetDefinition
         return country;
     }
 
-    public void setCountry(ICountry country)
+    public TargetCategory getTargetCategory()
     {
-        this.country = country;
+        return targetType.getTargetCategory();
     }
-
 }

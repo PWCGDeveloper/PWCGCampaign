@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.GroundUnitCollectionData;
@@ -14,19 +15,18 @@ import pwcg.mission.mcu.Coalition;
 import pwcg.mission.target.AssaultDefinition;
 import pwcg.mission.target.AssaultDefinitionGenerator;
 import pwcg.mission.target.TargetType;
-import pwcg.mission.target.TargetDefinition;
 
 public class AssaultBuilder
 {
-    public static IGroundUnitCollection generateAssault(Mission mission, TargetDefinition targetDefinition) throws PWCGException
+    public static IGroundUnitCollection generateAssault(Mission mission, Coordinate battleLocation) throws PWCGException
     {
         AssaultDefinitionGenerator assaultDefinitionGenerator = new AssaultDefinitionGenerator(mission.getCampaign());
-        List<AssaultDefinition> assaultDefinitions = assaultDefinitionGenerator.generateAssaultDefinition(targetDefinition);
+        List<AssaultDefinition> assaultDefinitions = assaultDefinitionGenerator.generateAssaultDefinition(battleLocation);
         
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, 
                 "Battle", 
-                TargetType.TARGET_ASSAULT,
+                TargetType.TARGET_INFANTRY,
                 Coalition.getCoalitions());
 
         IGroundUnitCollection battleUnitCollection = new GroundUnitCollection ("Assault", groundUnitCollectionData);

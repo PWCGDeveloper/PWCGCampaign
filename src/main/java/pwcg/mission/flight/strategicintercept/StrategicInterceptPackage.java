@@ -13,7 +13,7 @@ import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderFactory;
+import pwcg.mission.target.TargetDefinitionBuilderAirToAir;
 
 public class StrategicInterceptPackage implements IFlightPackage
 {
@@ -78,7 +78,7 @@ public class StrategicInterceptPackage implements IFlightPackage
     
     private TargetDefinition buildTargetDefintion() throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
+        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilderAirToAir(flightInformation);
         return  targetDefinitionBuilder.buildTargetDefinition();
     }
 

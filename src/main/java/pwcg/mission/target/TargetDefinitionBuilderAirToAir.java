@@ -1,10 +1,9 @@
 package pwcg.mission.target;
 
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.location.Orientation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.target.locator.TargetLocatorAir;
@@ -12,7 +11,6 @@ import pwcg.mission.target.locator.TargetLocatorAir;
 public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
 {
     private IFlightInformation flightInformation;
-    private TargetDefinition targetDefinition = new TargetDefinition();
 
     public TargetDefinitionBuilderAirToAir (IFlightInformation flightInformation)
     {
@@ -21,41 +19,13 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
 
     public TargetDefinition buildTargetDefinition () throws PWCGException
     {
-        createBasicTargetDefinition();
-        createTargetRadius();        
-        createTargetLocation();
+        Coordinate targetLocation = createTargetLocation();
+        ICountry targetCountry = PWCGContext.getInstance().getCurrentMap().getGroundCountryForMapBySide(flightInformation.getSquadron().determineEnemySide());
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_AIR, targetLocation, targetCountry);
         return targetDefinition;
     }
 
-    private void createTargetRadius() throws PWCGException
-    {
-        TargetRadius targetRadius = new TargetRadius();
-        targetRadius.calculateTargetRadius(flightInformation.getFlightType(), flightInformation.getMission().getMissionBorders().getAreaRadius());
-        targetDefinition.setPreferredRadius(Double.valueOf(targetRadius.getInitialTargetRadius()).intValue());
-        targetDefinition.setMaximumRadius(Double.valueOf(targetRadius.getMaxTargetRadius()).intValue());
-    }
-
-    private void createBasicTargetDefinition() throws PWCGException
-    {
-        targetDefinition.setTargetType(TargetType.TARGET_AIR);
-        targetDefinition.setAttackingSquadron(flightInformation.getSquadron());
-
-        targetDefinition.setAttackingCountry(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()));
-        targetDefinition.setCountry(flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate()));
-        targetDefinition.setTargetName(buildTargetName(targetDefinition.getCountry(), TargetType.TARGET_AIR));
-
-        targetDefinition.setDate(flightInformation.getCampaign().getDate());
-        targetDefinition.setPlayerTarget((Squadron.isPlayerSquadron(flightInformation.getCampaign(), flightInformation.getSquadron().getSquadronId())));
-    }
-
-    private void createTargetLocation() throws PWCGException
-    {
-        Coordinate targetLocation = getTargetLocationForFlightType();
-        targetDefinition.setPosition(targetLocation);
-        targetDefinition.setTargetOrientation(new Orientation());
-    }
-
-    private Coordinate getTargetLocationForFlightType() throws PWCGException
+    private Coordinate createTargetLocation() throws PWCGException
     {
         TargetLocatorAir targetLocatorAir = new TargetLocatorAir(flightInformation);
         
@@ -82,6 +52,10 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
         {
             return targetLocatorAir.getTransportAirfieldCoordinate();
         }
+        else if (flightInformation.getFlightType() == FlightTypes.FERRY)
+        {
+            return targetLocatorAir.getTransportAirfieldCoordinate();
+        }
         else if (flightInformation.getFlightType() == FlightTypes.SCRAMBLE)
         {
             return targetLocatorAir.getScrambleCoordinate();
@@ -100,12 +74,4 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
 
         throw new PWCGException("No target locations for flight type " + flightInformation.getFlightType());
     }
-
-    private String buildTargetName(ICountry targetCountry, TargetType targetType)
-    {
-        String nationality = targetCountry.getNationality();
-        String name = nationality + " " + targetType.getTargetName();
-        return name;
-    }
-
 }
