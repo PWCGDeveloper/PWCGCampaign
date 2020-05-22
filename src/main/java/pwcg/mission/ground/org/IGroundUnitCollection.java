@@ -23,6 +23,7 @@ public interface IGroundUnitCollection
     void finishGroundUnitCollection() throws PWCGException;
     void merge(IGroundUnitCollection relatedGroundCollection);
     List<IGroundUnit> getGroundUnitsForSide(Side side) throws PWCGException;
+    List<IGroundUnit> getInterestingGroundUnitsForSide(Side side) throws PWCGException;
     GroundUnitCollectionType getGroundUnitCollectionType();
     void validate() throws PWCGException;
     void triggerOnPlayerProximity(Mission mission) throws PWCGException;

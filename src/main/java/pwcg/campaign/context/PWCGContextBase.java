@@ -85,12 +85,20 @@ public abstract class PWCGContextBase implements IPWCGContextManager
         FrontMapIdentifier mapIdentifier = MapFinderForCampaign.findMapForCampaign(campaign);
         if (mapIdentifier != null)
         {
-            if (mapIdentifier == FrontMapIdentifier.STALINGRAD_MAP && !campaign.getDate().before(DateUtils.getDateYYYYMMDD("19440101")))
+            if (mapIdentifier == FrontMapIdentifier.STALINGRAD_MAP || mapIdentifier == FrontMapIdentifier.EAST1944_MAP)
             {
-                mapIdentifier = FrontMapIdentifier.EAST1944_MAP;
+                if (campaign.getDate().before(DateUtils.getDateYYYYMMDD("19440101")))
+                {
+                    mapIdentifier = FrontMapIdentifier.STALINGRAD_MAP;
+                }
+                else
+                {
+                    mapIdentifier = FrontMapIdentifier.EAST1944_MAP;
+                }
+
+                changeContext(mapIdentifier);
+                resetForMovingFront();
             }
-            changeContext(mapIdentifier);
-            resetForMovingFront();
         }
     }
 

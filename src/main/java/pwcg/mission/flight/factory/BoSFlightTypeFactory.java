@@ -102,9 +102,9 @@ public class BoSFlightTypeFactory implements IFlightTypeFactory
         int selectedIndex = WeightedOddsCalculator.calculateWeightedodds(weightedOdds);
         FlightTypes flightType = flightTypesByIndex.get(selectedIndex);
 
-        if (flightType == FlightTypes.ESCORT)
+        if (!isPlayerFlight)
         {
-            if (!isPlayerFlight)
+            if (flightType == FlightTypes.ESCORT || flightType == FlightTypes.SCRAMBLE)
             {
                 flightType = FlightTypes.PATROL;
             }

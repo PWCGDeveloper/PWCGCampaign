@@ -35,28 +35,34 @@ public class MissionTruckConvoyBuilder extends MissionUnitBuilder
     
     public List<IGroundUnitCollection> generateMissionTrucks() throws PWCGException 
     {
-        buildTruckConvoysForSide(Side.ALLIED);
-        buildTruckConvoysForSide(Side.AXIS);
+        missionTransportConvoys.addAll(buildTruckConvoysForSide(Side.ALLIED));
+        missionTransportConvoys.addAll(buildTruckConvoysForSide(Side.AXIS));
         return missionTransportConvoys;
     }
 
-    public List<IGroundUnitCollection> buildTruckConvoysForSide(Side truckSide) throws PWCGException 
+    private List<IGroundUnitCollection> buildTruckConvoysForSide(Side truckSide) throws PWCGException 
     {
+        List<IGroundUnitCollection> missionTransportConvoysForSide = new ArrayList<>();
         int maxTrucks = getMaxTruckConvoys(campaign);
         
         ArrayList<Bridge> bridgesForSide = getBridgesForConvoys(truckSide);
         ArrayList<Bridge> sortedBridgesByDistance = sortBridgesDistanceFromMission(bridgesForSide);
         for (Bridge bridge : sortedBridgesByDistance)
         {
-            if (missionTransportConvoys.size() >= maxTrucks)
+            if (missionTransportConvoysForSide.size() >= maxTrucks)
             {
                 break;
             }
             
-            possibleTruckConvoy(truckSide, bridge);
+            int roll = RandomNumberGenerator.getRandom(100);
+            if (roll < 50)
+            {
+                IGroundUnitCollection truckUnit = makeTruckConvoy(truckSide, bridge);
+                missionTransportConvoysForSide.add( truckUnit);
+            }
         }
         
-        return missionTransportConvoys;
+        return missionTransportConvoysForSide;
     }
 
     private ArrayList<Bridge> getBridgesForConvoys(Side truckSide) throws PWCGException 
@@ -89,19 +95,12 @@ public class MissionTruckConvoyBuilder extends MissionUnitBuilder
         return new ArrayList<Bridge>(sortedStationsByDistance.values());
     }
 
-    private void possibleTruckConvoy(Side truckSide, Bridge bridge) throws PWCGException
+    private IGroundUnitCollection makeTruckConvoy(Side truckSide, Bridge bridge) throws PWCGException
     {
-        int roll = RandomNumberGenerator.getRandom(100);
-        if (roll < 50)
-        {
-            ICountry truckCountry = CountryFactory.makeMapReferenceCountry(truckSide);
-            TruckConvoyBuilder groundUnitFactory =  new TruckConvoyBuilder(mission, bridge, truckCountry);
-            IGroundUnitCollection truckUnit = groundUnitFactory.createTruckConvoy();
-            if (truckUnit != null)
-            {
-                addTruckConvoy(truckUnit, bridge);
-            }
-        }
+        ICountry truckCountry = CountryFactory.makeMapReferenceCountry(truckSide);
+        TruckConvoyBuilder groundUnitFactory =  new TruckConvoyBuilder(campaign, bridge, truckCountry);
+        IGroundUnitCollection truckUnit = groundUnitFactory.createTruckConvoy();
+        return truckUnit;
     }
 
 
@@ -123,14 +122,5 @@ public class MissionTruckConvoyBuilder extends MissionUnitBuilder
             maxTrucks = 8;
         }
         return maxTrucks;
-    }
-
-    private void addTruckConvoy(IGroundUnitCollection truckUnit, Bridge bridge)
-    {
-        if (!mission.getMissionGroundUnitManager().isBridgeInUse(bridge.getIndex()))
-        {
-            mission.getMissionGroundUnitManager().registerBridge(bridge);
-            missionTransportConvoys.add(truckUnit);
-        }
     }
  }

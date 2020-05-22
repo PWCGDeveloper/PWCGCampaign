@@ -7,7 +7,6 @@ import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.GroupManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.Mission;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.org.GroundUnitCollection;
@@ -22,15 +21,13 @@ import pwcg.mission.target.TargetType;
 
 public class TruckConvoyBuilder
 {
-    private Mission mission;
     private Campaign campaign;
     private Bridge bridge;
     private ICountry country;
     
-    public TruckConvoyBuilder (Mission mission, Bridge bridge, ICountry country)
+    public TruckConvoyBuilder (Campaign campaign, Bridge bridge, ICountry country)
     {
-        this.mission = mission;
-        this.campaign = mission.getCampaign();
+        this.campaign = campaign;
         this.bridge  = bridge;
         this.country  = country;
     }
@@ -38,7 +35,6 @@ public class TruckConvoyBuilder
     public IGroundUnitCollection createTruckConvoy () throws PWCGException
     {
         IGroundUnitCollection groundUnitCollection = createTrucks();
-        registerBridgeInUse();
         return groundUnitCollection;
     }
 
@@ -94,10 +90,5 @@ public class TruckConvoyBuilder
         {
             return bridge.getPosition();
         }
-    }
-    
-    private void registerBridgeInUse() throws PWCGException
-    {        
-        mission.getMissionGroundUnitManager().registerBridge(bridge);
     }
 }

@@ -66,7 +66,7 @@ public class MissionGenerator
     private CoordinateBox buildMissionBorders(MissionProfile missionProfile, MissionHumanParticipants participatingPlayers) throws PWCGException
     {
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
-        CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox(missionProfile);
+        CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
         return missionBorders;
     }
 }

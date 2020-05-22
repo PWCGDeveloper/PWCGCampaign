@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.org.IGroundUnitCollection;
@@ -21,8 +20,9 @@ public class MissionGroundUnitBuilder
 
     private List<IGroundUnitCollection> missionTrains = new ArrayList<>();
     private List<IGroundUnitCollection> missionTrucks = new ArrayList<>();
-    private List<IGroundUnitCollection> AAA = new ArrayList<>();
+    private List<IGroundUnitCollection> AA = new ArrayList<>();
     private List<IGroundUnitCollection> missionBattles = new ArrayList<>();
+    private List<IGroundUnitCollection> missionDrifters = new ArrayList<>();
 
     public MissionGroundUnitBuilder (Campaign campaign, Mission mission)
     {
@@ -32,14 +32,17 @@ public class MissionGroundUnitBuilder
 
     public void generateGroundUnitsForMission() throws PWCGException 
     {
+        generateBattles();
         generateTrains();
-        generateTrucks();        
+        generateTrucks();
+        generateDrifters();
         createFrontLineAAA();
-        
-        if (PWCGContext.getProduct() == PWCGProduct.BOS)
-        {
-            generateBattles();
-        }
+    }
+
+    private void generateBattles() throws PWCGException 
+    {
+        MissionBattleBuilder battleBuilder = new MissionBattleBuilder(campaign, mission);
+        missionBattles = battleBuilder.generateBattles();
     }
 
     private void generateTrains() throws PWCGException 
@@ -54,39 +57,43 @@ public class MissionGroundUnitBuilder
         missionTrucks = truckConvoyBuilder.generateMissionTrucks();
     }
 
-    private void generateBattles() throws PWCGException 
+    private void generateDrifters() throws PWCGException
     {
-        MissionBattleBuilder battleBuilder = new MissionBattleBuilder(campaign, mission);
-        missionBattles = battleBuilder.generateBattles();
+        MissionDrifterBuilder drifterBuilder = new MissionDrifterBuilder(campaign, mission);
+        missionDrifters = drifterBuilder.generateMissionDrifters();
     }
-    
+
     private void createFrontLineAAA() throws PWCGException 
     {
         AAAManager aaaManager = new AAAManager(campaign, mission);
-        AAA = aaaManager.getAAAForMission();
+        AA = aaaManager.getAAAForMission();
     }
-
 
     public void write(BufferedWriter writer) throws PWCGException
     {
-        for (IGroundUnitCollection train : missionTrains)
-        {
-            train.write(writer);
-        }
-
-        for (IGroundUnitCollection truckCOnvoy : missionTrucks)
-        {
-            truckCOnvoy.write(writer);
-        }
-
         for (IGroundUnitCollection battle : missionBattles)
         {
             battle.write(writer);
         }
 
-        for (IGroundUnitCollection aaa : AAA)
+        for (IGroundUnitCollection train : missionTrains)
         {
-            aaa.write(writer);
+            train.write(writer);
+        }
+
+        for (IGroundUnitCollection truckConvoy : missionTrucks)
+        {
+            truckConvoy.write(writer);
+        }
+
+        for (IGroundUnitCollection drifter : missionDrifters)
+        {
+            drifter.write(writer);
+        }
+
+        for (IGroundUnitCollection aa : AA)
+        {
+            aa.write(writer);
         }
     }
     
@@ -96,7 +103,23 @@ public class MissionGroundUnitBuilder
         allMissionGroundUnits.addAll(missionBattles);
         allMissionGroundUnits.addAll(missionTrucks);
         allMissionGroundUnits.addAll(missionTrains);
-        allMissionGroundUnits.addAll(AAA);
+        allMissionGroundUnits.addAll(missionDrifters);
+        allMissionGroundUnits.addAll(AA);
+        return allMissionGroundUnits;
+    }
+    
+    public List<IGroundUnitCollection> getAllInterestingMissionGroundUnits()
+    {
+        List<IGroundUnitCollection> allMissionGroundUnits = new ArrayList<>();
+        allMissionGroundUnits.addAll(missionBattles);
+        allMissionGroundUnits.addAll(missionTrucks);
+        allMissionGroundUnits.addAll(missionTrains);
+        allMissionGroundUnits.addAll(missionDrifters);
+
+        if (allMissionGroundUnits.size() == 0)
+        {
+            allMissionGroundUnits.addAll(AA);
+        }
         return allMissionGroundUnits;
     }
     
@@ -111,6 +134,22 @@ public class MissionGroundUnitBuilder
             }
         }
         return new ArrayList<>(uniqueTargetTypes.values());
+    }    
+    
+    public List<TargetType> getAvailableGroundUnitTargetTypesForMissionForSide(Side side) throws PWCGException
+    {
+        Map <TargetType, TargetType> uniqueTargetTypesForSide = new HashMap<>();
+        for (IGroundUnitCollection groundUnitCollection : getAllMissionGroundUnits())
+        {
+            if (groundUnitCollection.getTargetType() != TargetType.TARGET_NONE)
+            {
+                if (groundUnitCollection.getGroundUnitsForSide(side).size() > 0)
+                {
+                    uniqueTargetTypesForSide.put(groundUnitCollection.getTargetType(), groundUnitCollection.getTargetType());
+                }
+            }
+        }
+        return new ArrayList<>(uniqueTargetTypesForSide.values());
     }    
 
     public int getUnitCount()
@@ -127,7 +166,7 @@ public class MissionGroundUnitBuilder
         {
             truckCount += groundUnitCollection.getUnitCount();
         }
-        for (IGroundUnitCollection groundUnitCollection : AAA)
+        for (IGroundUnitCollection groundUnitCollection : AA)
         {
             aaCount += groundUnitCollection.getUnitCount();
         }

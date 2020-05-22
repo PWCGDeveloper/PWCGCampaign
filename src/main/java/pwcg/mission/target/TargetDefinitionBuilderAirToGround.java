@@ -29,7 +29,7 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
     
     private TargetDefinition createTargetDefinitionFromGroundUnit (IFlightInformation flightInformation, IGroundUnitCollection groundUnitCollection) throws PWCGException
     {
-        List<IGroundUnit> enemyGroundUnits = groundUnitCollection.getGroundUnitsForSide(flightInformation.getSquadron().determineEnemySide().getOppositeSide());
+        List<IGroundUnit> enemyGroundUnits = groundUnitCollection.getInterestingGroundUnitsForSide(flightInformation.getSquadron().determineEnemySide());
         int index = RandomNumberGenerator.getRandom(enemyGroundUnits.size());
         IGroundUnit selectedGroundUnit = enemyGroundUnits.get(index);
         

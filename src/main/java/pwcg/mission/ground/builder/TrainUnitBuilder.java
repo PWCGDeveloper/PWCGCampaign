@@ -7,7 +7,6 @@ import pwcg.campaign.group.Block;
 import pwcg.campaign.group.GroupManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.Mission;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.org.GroundUnitCollection;
@@ -21,15 +20,13 @@ import pwcg.mission.target.TargetType;
 
 public class TrainUnitBuilder
 {
-    private Mission mission;
     private Campaign campaign;
     private Block station;
     private ICountry country;
     
-    public TrainUnitBuilder (Mission mission, Block station, ICountry country)
+    public TrainUnitBuilder (Campaign campaign, Block station, ICountry country)
     {
-        this.mission = mission;
-        this.campaign = mission.getCampaign();
+        this.campaign = campaign;
         this.station = station;
         this.country = country;
     }
@@ -37,7 +34,6 @@ public class TrainUnitBuilder
     public IGroundUnitCollection createTrainUnit () throws PWCGException
     {
         IGroundUnitCollection groundUnitCollection = createTrain();
-        registerTrainStationInUse();
         return groundUnitCollection;
     }
     
@@ -90,10 +86,4 @@ public class TrainUnitBuilder
             return station.getPosition();
         }
     }
-    
-    private void registerTrainStationInUse() throws PWCGException
-    {        
-        mission.getMissionGroundUnitManager().registerTrainStation(station.getPosition());
-    }
-
 }

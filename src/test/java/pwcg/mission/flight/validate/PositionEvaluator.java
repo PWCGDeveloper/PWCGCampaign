@@ -44,9 +44,7 @@ public class PositionEvaluator
 
     private static boolean shouldEvaluateDistanceToTarget(IFlight aiFlight)
     {
-        if (aiFlight.getFlightType() == FlightTypes.ANTI_SHIPPING_ATTACK || 
-            aiFlight.getFlightType() == FlightTypes.ANTI_SHIPPING_BOMB   || 
-            aiFlight.getFlightType() == FlightTypes.TRANSPORT)
+        if (aiFlight.getFlightType() == FlightTypes.TRANSPORT)
         {
             return false;
         }
