@@ -7,7 +7,6 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
-import pwcg.mission.flight.attack.GroundAttackFlight;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetDefinitionBuilderAirToGround;
@@ -24,7 +23,7 @@ public class DiveBombingPackage implements IFlightPackage
         IFlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.DIVE_BOMB);
         TargetDefinition targetDefinition = buildTargetDefinition(flightInformation);
         
-        GroundAttackFlight bombingFlight = new GroundAttackFlight (flightInformation, targetDefinition);
+        DiveBombingFlight bombingFlight = new DiveBombingFlight (flightInformation, targetDefinition);
         bombingFlight.createFlight();
         return bombingFlight;
     }

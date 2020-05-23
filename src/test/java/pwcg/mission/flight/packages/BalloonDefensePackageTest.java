@@ -1,6 +1,8 @@
 package pwcg.mission.flight.packages;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -8,26 +10,20 @@ import org.junit.Test;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.plane.Balloon;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBorderBuilder;
 import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.MissionProfile;
-import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.balloondefense.BalloonDefensePackage;
-import pwcg.mission.ground.org.GroundUnitElement;
+import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.unittypes.infantry.BalloonUnit;
 import pwcg.mission.mcu.McuWaypoint;
-import pwcg.mission.target.TargetType;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestParticipatingHumanBuilder;
@@ -45,13 +41,7 @@ public class BalloonDefensePackageTest
     public void balloonBustFlightTest() throws PWCGException
     {
         IFlight flight = buildFlight();
-        IGroundUnitCollection balloonUnitCollection = veryBalloonUInitCollection(flight);        
-        Coordinate balloonPosition = verifyBalloonPosition(balloonUnitCollection);
-        verifyBalloonDefenseIsCloseToBalloon(flight, balloonPosition);        
-        for (IFlight opposingFlight : flight.getLinkedFlights().getLinkedFlights())
-        {
-            verifyBalloonBustIsCloseToBalloon(opposingFlight, balloonPosition);
-        }
+        verifyBalloonPosition(flight);
    }
 
     private IFlight buildFlight() throws PWCGException
@@ -60,78 +50,57 @@ public class BalloonDefensePackageTest
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
-        CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox(Arrays.asList(FlightTypes.BALLOON_DEFENSE));
+        CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
 
         Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
+        mission.generate(Arrays.asList(FlightTypes.BALLOON_DEFENSE));
         campaign.setCurrentMission(mission);
 
-        BalloonDefensePackage flightPackage = new BalloonDefensePackage();
-        boolean isPlayerFlight = true;
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
-        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(mission, squadron, isPlayerFlight);
-        IFlight flight = flightPackage.createPackage(flightBuildInformation);
-        return flight;
+        return mission.getMissionFlightBuilder().getPlayerFlights().get(0);
     }
 
-    private IGroundUnitCollection veryBalloonUInitCollection(IFlight flight)
+    private void verifyBalloonPosition(IFlight flight) throws PWCGException
     {
-        assert(flight.getLinkedGroundUnits().getLinkedGroundUnits().size() == 1);
-        IGroundUnitCollection balloonUnitCollection = flight.getLinkedGroundUnits().getLinkedGroundUnits().get(0);
-        assert(balloonUnitCollection.getTargetType() == TargetType.TARGET_BALLOON);
-        return balloonUnitCollection;
-    }
+        List<BalloonUnit> balloons = getBalloonUnits(flight);
 
-    private Coordinate verifyBalloonPosition(IGroundUnitCollection balloonUnitCollection)
-    {
-        BalloonUnit balloonUnit = null;
-        for (IGroundUnit groundUnit : balloonUnitCollection.getGroundUnits())
+        boolean closeToBalloon = false;
+        for (BalloonUnit balloonUnit : balloons)
         {
-            if (groundUnit instanceof BalloonUnit)
+            for (McuWaypoint balloonDefenseWaypoint : flight.getWaypointPackage().getAllWaypoints())
             {
-                balloonUnit = (BalloonUnit) groundUnit;
+                if (balloonDefenseWaypoint.getWaypointType() == WaypointType.PATROL_WAYPOINT)
+                {
+                    double distanceFromBalloon = MathUtils.calcDist(balloonDefenseWaypoint.getPosition(), balloonUnit.getPosition());
+                    if (distanceFromBalloon < 8000)
+                    {
+                        closeToBalloon = true;
+                    }
+                }
             }
         }
-        assert(balloonUnit != null);
-        
-        GroundUnitElement balloonElement = null;
-        for(GroundUnitElement groundUnitElement : balloonUnit.getGroundElements())
-        {
-            if (Balloon.isBalloonName(groundUnitElement.getVehicle().getScript()))
-            {
-                balloonElement = groundUnitElement;
-            }
-        }
-        assert(balloonElement != null);
-
-        Coordinate balloonPosition = balloonElement.getSpawn().getPosition();
-        return balloonPosition;
+        assert(closeToBalloon);
     }
+    
 
-    private void verifyBalloonDefenseIsCloseToBalloon(IFlight flight, Coordinate balloonPosition)
+    private List<BalloonUnit> getBalloonUnits(IFlight flight) throws PWCGException
     {
-        boolean balloonBustIsCloseToBalloon = false;
-        for (McuWaypoint waypoint : flight.getWaypointPackage().getAllWaypoints())
+        List<BalloonUnit> balloons = new ArrayList<>();
+        for (IGroundUnitCollection groundUnitCollection : flight.getMission().getMissionGroundUnitBuilder().getBalloonUnits())
         {
-            double distanceFromBalloon = MathUtils.calcDist(waypoint.getPosition(), balloonPosition);
-            if (distanceFromBalloon < 7000)
+            for (IGroundUnit groundUnit : groundUnitCollection.getGroundUnits())
             {
-                balloonBustIsCloseToBalloon = true;
+                if (groundUnit instanceof BalloonUnit)
+                {
+                    if (flight.getSquadron().getCountry().getSide() == groundUnit.getCountry().getSide().getOppositeSide())
+                    {
+                        BalloonUnit balloonUnit = (BalloonUnit) groundUnit;
+                        balloons.add(balloonUnit);
+                    }
+                }
             }
         }
-        assert(balloonBustIsCloseToBalloon == true);
+        assert(balloons.size() > 0);
+        return balloons;
     }
 
-    private void verifyBalloonBustIsCloseToBalloon(IFlight opposingFlight, Coordinate balloonPosition)
-    {
-        boolean balloonDefenseIsCloseToBalloon = false;
-        for (McuWaypoint waypoint : opposingFlight.getWaypointPackage().getAllWaypoints())
-        {
-            double distanceFromBalloon = MathUtils.calcDist(waypoint.getPosition(), balloonPosition);
-            if (distanceFromBalloon < 3000)
-            {
-                balloonDefenseIsCloseToBalloon = true;
-            }
-        }
-        assert(balloonDefenseIsCloseToBalloon == true);
-    }
 }

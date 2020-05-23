@@ -17,18 +17,19 @@ import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.location.Orientation;
+import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.DateUtils;
+import pwcg.mission.Mission;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleClass;
-import pwcg.mission.target.TargetType;
-import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderGround;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DrifterUnitBuilderTest
 {
     @Mock private Campaign campaign;
+    @Mock private Mission mission;
     @Mock private ConfigManagerCampaign configManager;
     
     @Before
@@ -43,14 +44,12 @@ public class DrifterUnitBuilderTest
     @Test
     public void createDrifterUnitTest () throws PWCGException 
     {
-        TargetDefinitionBuilderGround targetDefinitionBuilder = new TargetDefinitionBuilderGround(campaign);
-        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionBattle(
-                CountryFactory.makeCountryByCountry(Country.GERMANY), 
-                CountryFactory.makeCountryByCountry(Country.RUSSIA), 
-                TargetType.TARGET_ARTILLERY, new Coordinate (102000, 0, 100000), true);
-
-
-        DrifterUnitBuilder groundUnitFactory = new DrifterUnitBuilder(campaign, targetDefinition);
+        PWCGLocation location = new PWCGLocation();
+        location.setName("Drifter loc");
+        location.setPosition(new Coordinate (100000, 0, 100000));
+        location.setOrientation(new Orientation (50));
+        
+        DrifterUnitBuilder groundUnitFactory = new DrifterUnitBuilder(campaign, location, CountryFactory.makeCountryByCountry(Country.RUSSIA));
         IGroundUnitCollection groundUnitGroup = groundUnitFactory.createDrifterUnit();
         assert (groundUnitGroup.getGroundUnits().size() >= 2);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())

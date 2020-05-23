@@ -32,12 +32,13 @@ public class MissionBalloonBuilder
         this.mission = mission;
     }
     
-    public void createMissionBalloons() throws PWCGException 
+    public List<IGroundUnitCollection> createMissionBalloons() throws PWCGException 
     {
         if (shouldMakeBalloons())
         {
             makeBalloons();
         }
+        return missionBalloons;
     }
 
     public int getUnitCount() 

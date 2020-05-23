@@ -23,9 +23,8 @@ import pwcg.mission.MissionGroundUnitResourceManager;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleClass;
-import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderGround;
+import pwcg.mission.target.TargetType;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BalloonUnitBuilderTest
@@ -50,15 +49,9 @@ public class BalloonUnitBuilderTest
     @Test
     public void createAAAArtilleryBatteryTest () throws PWCGException 
     {
-        TargetDefinitionBuilderGround targetDefinitionBuilder = new TargetDefinitionBuilderGround(campaign);
-        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionBattle(
-                CountryFactory.makeCountryByCountry(Country.GERMANY), 
-                CountryFactory.makeCountryByCountry(Country.RUSSIA), 
-                TargetType.TARGET_BALLOON, new Coordinate (102000, 0, 100000), true);
-
-
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_INFANTRY, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA));
         BalloonUnitBuilder groundUnitFactory = new BalloonUnitBuilder(mission, targetDefinition);
-        IGroundUnitCollection groundUnitGroup = groundUnitFactory.createBalloonUnit(CountryFactory.makeCountryByCountry(Country.RUSSIA));
+        IGroundUnitCollection groundUnitGroup = groundUnitFactory.createBalloonUnit();
         validateBalloonUnit(groundUnitGroup, Country.RUSSIA);
         groundUnitGroup.validate();
     }
@@ -66,15 +59,9 @@ public class BalloonUnitBuilderTest
     @Test
     public void createAAAArtilleryBatteryOppositeSideTest () throws PWCGException 
     {
-        TargetDefinitionBuilderGround targetDefinitionBuilder = new TargetDefinitionBuilderGround(campaign);
-        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionBattle(
-                CountryFactory.makeCountryByCountry(Country.GERMANY), 
-                CountryFactory.makeCountryByCountry(Country.RUSSIA), 
-                TargetType.TARGET_BALLOON, new Coordinate (102000, 0, 100000), true);
-
-
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_INFANTRY, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.GERMANY));
         BalloonUnitBuilder groundUnitFactory = new BalloonUnitBuilder(mission, targetDefinition);
-        IGroundUnitCollection groundUnitGroup = groundUnitFactory.createBalloonUnit(CountryFactory.makeCountryByCountry(Country.GERMANY));
+        IGroundUnitCollection groundUnitGroup = groundUnitFactory.createBalloonUnit();
         validateBalloonUnit(groundUnitGroup, Country.GERMANY);
         groundUnitGroup.validate();
     }

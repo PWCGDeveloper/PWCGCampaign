@@ -93,7 +93,7 @@ public class BoSFlightTypeCoopFactory implements IFlightTypeFactory
         int selectedIndex = WeightedOddsCalculator.calculateWeightedodds(weightedOdds);
         FlightTypes flightType = flightTypesByIndex.get(selectedIndex);
 
-        if (flightType == FlightTypes.ESCORT)
+        if (flightType == FlightTypes.ESCORT || flightType == FlightTypes.SCRAMBLE)
         {
             if (!isPlayerFlight)
             {

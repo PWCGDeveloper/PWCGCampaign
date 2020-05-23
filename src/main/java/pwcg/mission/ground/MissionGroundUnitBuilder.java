@@ -10,6 +10,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
+import pwcg.mission.MissionBalloonBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.target.TargetType;
 
@@ -18,11 +19,12 @@ public class MissionGroundUnitBuilder
     private Mission mission = null;
     private Campaign campaign = null;
 
+    private List<IGroundUnitCollection> missionBattles = new ArrayList<>();
     private List<IGroundUnitCollection> missionTrains = new ArrayList<>();
     private List<IGroundUnitCollection> missionTrucks = new ArrayList<>();
-    private List<IGroundUnitCollection> AA = new ArrayList<>();
-    private List<IGroundUnitCollection> missionBattles = new ArrayList<>();
     private List<IGroundUnitCollection> missionDrifters = new ArrayList<>();
+    private List<IGroundUnitCollection> missionBalloons = new ArrayList<>();
+    private List<IGroundUnitCollection> AA = new ArrayList<>();
 
     public MissionGroundUnitBuilder (Campaign campaign, Mission mission)
     {
@@ -36,6 +38,7 @@ public class MissionGroundUnitBuilder
         generateTrains();
         generateTrucks();
         generateDrifters();
+        generateBalloons();
         createFrontLineAAA();
     }
 
@@ -69,6 +72,12 @@ public class MissionGroundUnitBuilder
         AA = aaaManager.getAAAForMission();
     }
 
+    private void generateBalloons() throws PWCGException
+    {
+        MissionBalloonBuilder balloonBuilder = new MissionBalloonBuilder(mission);
+        missionBalloons = balloonBuilder.createMissionBalloons();
+    }
+
     public void write(BufferedWriter writer) throws PWCGException
     {
         for (IGroundUnitCollection battle : missionBattles)
@@ -91,6 +100,11 @@ public class MissionGroundUnitBuilder
             drifter.write(writer);
         }
 
+        for (IGroundUnitCollection balloons : missionBalloons)
+        {
+            balloons.write(writer);
+        }
+
         for (IGroundUnitCollection aa : AA)
         {
             aa.write(writer);
@@ -104,6 +118,7 @@ public class MissionGroundUnitBuilder
         allMissionGroundUnits.addAll(missionTrucks);
         allMissionGroundUnits.addAll(missionTrains);
         allMissionGroundUnits.addAll(missionDrifters);
+        allMissionGroundUnits.addAll(missionBalloons);
         allMissionGroundUnits.addAll(AA);
         return allMissionGroundUnits;
     }
@@ -115,6 +130,7 @@ public class MissionGroundUnitBuilder
         allMissionGroundUnits.addAll(missionTrucks);
         allMissionGroundUnits.addAll(missionTrains);
         allMissionGroundUnits.addAll(missionDrifters);
+        allMissionGroundUnits.addAll(missionBalloons);
 
         if (allMissionGroundUnits.size() == 0)
         {
@@ -184,5 +200,10 @@ public class MissionGroundUnitBuilder
         System.out.println("Mission unit count total : " + missionUnitCount);
         return missionUnitCount;
 
+    }
+
+    public List<IGroundUnitCollection> getBalloonUnits()
+    {
+        return missionBalloons;
     }
  }

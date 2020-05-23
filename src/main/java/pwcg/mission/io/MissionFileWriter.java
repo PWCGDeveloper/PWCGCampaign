@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IMissionFile;
@@ -24,10 +25,9 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.AsyncJobRunner;
 import pwcg.core.utils.DateUtils;
+import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.HelpDialog;
-import pwcg.core.utils.MathUtils;
-import pwcg.mission.MissionBalloonBuilder;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBlockBuilder;
 import pwcg.mission.MissionBlockCountry;
@@ -192,9 +192,6 @@ public class MissionFileWriter implements IMissionFile
     {
         MissionGroundUnitBuilder groundUnitBuilder = mission.getMissionGroundUnitBuilder();
         groundUnitBuilder.write(writer);
-
-        MissionBalloonBuilder balloonBuilder = mission.getMissionBalloonBuilder();
-        balloonBuilder.write(writer);
     }
 
     private void writeVehiclesForTest(BufferedWriter writer) throws PWCGException

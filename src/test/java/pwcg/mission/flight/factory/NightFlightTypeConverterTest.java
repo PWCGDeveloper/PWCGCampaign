@@ -34,10 +34,6 @@ public class NightFlightTypeConverterTest
         flightType = FlightTypes.BALLOON_BUST;
         convertedFlightType = NightFlightTypeConverter.getFlightType(flightType, isNightMission);
         assert(convertedFlightType == FlightTypes.GROUND_ATTACK);
-        
-        flightType = FlightTypes.ANTI_SHIPPING_DIVE_BOMB;
-        convertedFlightType = NightFlightTypeConverter.getFlightType(flightType, isNightMission);
-        assert(convertedFlightType == FlightTypes.ANTI_SHIPPING_ATTACK);
     }
 
     @Test
@@ -82,10 +78,6 @@ public class NightFlightTypeConverterTest
         flightType = FlightTypes.BALLOON_BUST;
         convertedFlightType = NightFlightTypeConverter.getFlightType(flightType, isNightMission);
         assert(convertedFlightType == FlightTypes.BALLOON_BUST);
-        
-        flightType = FlightTypes.ANTI_SHIPPING_DIVE_BOMB;
-        convertedFlightType = NightFlightTypeConverter.getFlightType(flightType, isNightMission);
-        assert(convertedFlightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB);
         
         flightType = FlightTypes.BOMB;
         convertedFlightType = NightFlightTypeConverter.getFlightType(flightType, isNightMission);

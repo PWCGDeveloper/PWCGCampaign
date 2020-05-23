@@ -42,7 +42,6 @@ public class Mission
     private MissionObjectiveGroup missionObjectiveFailure = new MissionObjectiveGroup();
     private MissionBattleManager missionBattleManager = new MissionBattleManager();
     private MissionGroundUnitResourceManager missionGroundUnitManager;
-    private MissionBalloonBuilder missionBalloonBuilder;
     private MissionGroundUnitBuilder missionGroundUnitBuilder;
     private MissionWaypointIconBuilder missionWaypointIconBuilder = new MissionWaypointIconBuilder();
     private MissionAirfieldIconBuilder missionAirfieldIconBuilder = new MissionAirfieldIconBuilder();
@@ -70,9 +69,7 @@ public class Mission
     
     public int getGroundUnitCount() throws PWCGException
     {
-        int unitCountMissionGroundUnits = missionGroundUnitBuilder.getUnitCount();
-        int unitCountInBalloons = missionBalloonBuilder.getUnitCount();
-        
+        int unitCountMissionGroundUnits = missionGroundUnitBuilder.getUnitCount();        
         int unitCountInFlights = 0;
         for (IFlight flight : this.getMissionFlightBuilder().getAllAerialFlights())
         {
@@ -92,11 +89,9 @@ public class Mission
 
         int unitCountInMission = 0;
         unitCountInMission += unitCountInFlights;
-        unitCountInMission += unitCountInBalloons;
         unitCountInMission += unitCountMissionGroundUnits;
         unitCountInMission += unitCountInAirfields;
 
-        System.out.println("unit count balloons : " + unitCountInBalloons);
         System.out.println("unit count flights : " + unitCountInFlights);
         System.out.println("unit count misson : " + unitCountMissionGroundUnits);
         System.out.println("unit count airfields : " + unitCountInAirfields);
@@ -114,7 +109,6 @@ public class Mission
         PWCGContext.getInstance().getSkinManager().clearSkinsInUse();
 
         missionGroundUnitManager = new MissionGroundUnitResourceManager();
-        missionBalloonBuilder = new MissionBalloonBuilder(this);
         missionGroundUnitBuilder = new MissionGroundUnitBuilder(campaign, this);
         missionFlightBuilder = new MissionFlightBuilder(campaign, this);
         missionFrontLines = new MissionFrontLineIconBuilder(campaign);
@@ -170,7 +164,6 @@ public class Mission
 
     private void createGroundUnits() throws PWCGException, PWCGException
     {
-        missionBalloonBuilder.createMissionBalloons();
         missionGroundUnitBuilder = new MissionGroundUnitBuilder(campaign, this);
         missionGroundUnitBuilder.generateGroundUnitsForMission();
     }
@@ -412,11 +405,6 @@ public class Mission
     public void setMissionOptions(MissionOptions missionOptions)
     {
         this.missionOptions = missionOptions;
-    }
-
-    public MissionBalloonBuilder getMissionBalloonBuilder()
-    {
-        return missionBalloonBuilder;
     }
 
     public List<StopAttackingNearAirfieldSequence> getStopSequenceForMission()
