@@ -10,6 +10,10 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
+/**
+ * @author Patrick
+ *
+ */
 public class Equipment
 {
     private Map<Integer, EquippedPlane> equippedPlanes = new HashMap<>();
@@ -78,10 +82,10 @@ public class Equipment
         this.equippedPlanes = equippedPlanes;
     }
 
-    public void addEquippedPlane(EquippedPlane equippedPlane)
-    {
-        equippedPlanes.put(equippedPlane.getSerialNumber(), equippedPlane);
-    }
+//    public void addEquippedPlane(EquippedPlane equippedPlane)
+//    {
+//        equippedPlanes.put(equippedPlane.getSerialNumber(), equippedPlane);
+//    }
 
     public EquippedPlane removeBestEquippedFromDepot(List<String> activeArchTypes)
     {

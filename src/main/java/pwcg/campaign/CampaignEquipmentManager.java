@@ -64,6 +64,21 @@ public class CampaignEquipmentManager
     {
         return new ArrayList<Integer>(equipmentDepotsForServices.keySet());
     }
+    
+    public EquippedPlane getAnyPlane(Integer serialNumber) throws PWCGException
+    {
+        EquippedPlane equippedPlane = getPlaneFromAnySquadron(serialNumber);
+        if (equippedPlane == null)
+        {
+            equippedPlane = getPlaneFromAnyDepo(serialNumber);
+        }
+        
+        if (equippedPlane == null)
+        {
+            throw new PWCGException ("Unable to locate equipped plane for serial number anywhere" + serialNumber);
+        }
+        return equippedPlane;
+    }
 
     public EquippedPlane getPlaneFromAnySquadron(Integer serialNumber) throws PWCGException
     {
@@ -75,7 +90,25 @@ public class CampaignEquipmentManager
                 return equippedPlane;
             }        
         }
-         throw new PWCGException ("Unable to locate equipped plane for serial number " + serialNumber);
+        
+        getAnyPlane(serialNumber);
+                
+        throw new PWCGException ("Unable to locate equipped plane for serial number " + serialNumber);
+    }
+
+    private EquippedPlane getPlaneFromAnyDepo(Integer serialNumber) throws PWCGException
+    {
+        for (EquipmentDepot equipmentDepot : equipmentDepotsForServices.values())
+        {
+            for (EquippedPlane equippedPlane : equipmentDepot.getAllPlanesInDepot())
+            {
+                if (equippedPlane.getSerialNumber() == serialNumber)
+                {
+                    return equippedPlane;
+                }
+            }
+        }
+        return null;
     }
 
     public EquippedPlane getAnyActivePlaneFromSquadron(Integer squadronId) throws PWCGException

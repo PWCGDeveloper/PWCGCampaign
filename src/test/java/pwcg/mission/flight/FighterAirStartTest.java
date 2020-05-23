@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
@@ -13,8 +12,8 @@ import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.patrol.PatrolFlight;
-import pwcg.mission.flight.validate.FighterAirStartFlightValidator;
 import pwcg.mission.flight.validate.EscortForPlayerValidator;
+import pwcg.mission.flight.validate.FighterAirStartFlightValidator;
 import pwcg.mission.flight.validate.FlightActivateValidator;
 import pwcg.mission.flight.validate.PlaneRtbValidator;
 import pwcg.mission.flight.validate.PositionEvaluator;
@@ -33,7 +32,6 @@ public class FighterAirStartTest
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         
         campaign.getCampaignConfigManager().setConfigParam(ConfigItemKeys.AllowAirStartsKey, "1");

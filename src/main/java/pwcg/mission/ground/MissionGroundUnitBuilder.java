@@ -11,6 +11,7 @@ import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBalloonBuilder;
+import pwcg.mission.MissionShipBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.target.TargetType;
 
@@ -24,6 +25,7 @@ public class MissionGroundUnitBuilder
     private List<IGroundUnitCollection> missionTrucks = new ArrayList<>();
     private List<IGroundUnitCollection> missionDrifters = new ArrayList<>();
     private List<IGroundUnitCollection> missionBalloons = new ArrayList<>();
+    private List<IGroundUnitCollection> missionShips = new ArrayList<>();
     private List<IGroundUnitCollection> AA = new ArrayList<>();
 
     public MissionGroundUnitBuilder (Campaign campaign, Mission mission)
@@ -39,6 +41,7 @@ public class MissionGroundUnitBuilder
         generateTrucks();
         generateDrifters();
         generateBalloons();
+        generateShips();
         createFrontLineAAA();
     }
 
@@ -76,6 +79,13 @@ public class MissionGroundUnitBuilder
     {
         MissionBalloonBuilder balloonBuilder = new MissionBalloonBuilder(mission);
         missionBalloons = balloonBuilder.createMissionBalloons();
+    }
+
+
+    private void generateShips() throws PWCGException
+    {
+        MissionShipBuilder shipBuilder = new MissionShipBuilder(mission);
+        missionShips = shipBuilder.createMissionShips();
     }
 
     public void write(BufferedWriter writer) throws PWCGException
@@ -119,6 +129,7 @@ public class MissionGroundUnitBuilder
         allMissionGroundUnits.addAll(missionTrains);
         allMissionGroundUnits.addAll(missionDrifters);
         allMissionGroundUnits.addAll(missionBalloons);
+        allMissionGroundUnits.addAll(missionShips);
         allMissionGroundUnits.addAll(AA);
         return allMissionGroundUnits;
     }
@@ -131,6 +142,7 @@ public class MissionGroundUnitBuilder
         allMissionGroundUnits.addAll(missionTrains);
         allMissionGroundUnits.addAll(missionDrifters);
         allMissionGroundUnits.addAll(missionBalloons);
+        allMissionGroundUnits.addAll(missionShips);
 
         if (allMissionGroundUnits.size() == 0)
         {

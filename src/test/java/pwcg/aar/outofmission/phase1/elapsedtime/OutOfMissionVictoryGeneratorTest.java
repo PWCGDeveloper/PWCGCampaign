@@ -7,7 +7,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.outofmission.DuringCampaignVictimGenerator;
 import pwcg.campaign.outofmission.OutOfMissionVictoryGenerator;
@@ -26,10 +25,9 @@ public class OutOfMissionVictoryGeneratorTest
     private Campaign campaign;
 
     @Before
-    public void setupForTestEnvironment() throws PWCGException
+    public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.ARRAS_MAP);
         campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.ESC_103_PROFILE);
     }
 

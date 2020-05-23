@@ -60,7 +60,8 @@ public class TargetSelectorGroundUnit
         {
             for (IGroundUnitCollection groundUnitCollection : shuffledGroundUnits)
             {
-                if (desiredTargetType == groundUnitCollection.getTargetType())
+                TargetType unitTargetType = groundUnitCollection.getTargetType();
+                if (desiredTargetType == unitTargetType)
                 {
                     int enemyGroundUnitCount = groundUnitCollection.getGroundUnitsForSide(flightInformation.getSquadron().determineEnemySide()).size();
                     if (enemyGroundUnitCount > 0)

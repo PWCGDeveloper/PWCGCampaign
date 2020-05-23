@@ -48,11 +48,11 @@ public class MissionGroundUnitKubanTest
         Side side = Side.ALLIED;
         List<TargetType> availableGroundUnitTypes = mission.getMissionGroundUnitBuilder().getAvailableGroundUnitTargetTypesForMissionForSide(side);
         
-        List<TargetType> expectedGroundUnitTypes = Arrays.asList(TargetType.TARGET_INFANTRY, TargetType.TARGET_TRANSPORT, TargetType.TARGET_TRAIN);
+        List<TargetType> expectedGroundUnitTypes = Arrays.asList(TargetType.TARGET_SHIPPING, TargetType.TARGET_INFANTRY, TargetType.TARGET_TRANSPORT, TargetType.TARGET_TRAIN);
         boolean allExist = validateExpectedGroundUnits(side , availableGroundUnitTypes, expectedGroundUnitTypes);
         assert(allExist);
         
-        List<TargetType> unexpectedGroundUnitTypes = Arrays.asList(TargetType.TARGET_SHIPPING, TargetType.TARGET_BALLOON, TargetType.TARGET_DRIFTER);
+        List<TargetType> unexpectedGroundUnitTypes = Arrays.asList(TargetType.TARGET_BALLOON, TargetType.TARGET_DRIFTER);
         boolean allDoNotExist = validateUnexpectedGroundUnits(side , availableGroundUnitTypes, unexpectedGroundUnitTypes);
         assert(allDoNotExist);
     }
@@ -62,11 +62,11 @@ public class MissionGroundUnitKubanTest
         Side side = Side.AXIS;
         List<TargetType> availableGroundUnitTypes = mission.getMissionGroundUnitBuilder().getAvailableGroundUnitTargetTypesForMissionForSide(side);
         
-        List<TargetType> expectedGroundUnitTypes = Arrays.asList(TargetType.TARGET_INFANTRY, TargetType.TARGET_TRANSPORT, TargetType.TARGET_TRAIN, TargetType.TARGET_DRIFTER);
+        List<TargetType> expectedGroundUnitTypes = Arrays.asList(TargetType.TARGET_SHIPPING, TargetType.TARGET_INFANTRY, TargetType.TARGET_TRANSPORT, TargetType.TARGET_TRAIN, TargetType.TARGET_DRIFTER);
         boolean allExist = validateExpectedGroundUnits(side , availableGroundUnitTypes, expectedGroundUnitTypes);
         assert(allExist);
         
-        List<TargetType> unexpectedGroundUnitTypes = Arrays.asList(TargetType.TARGET_SHIPPING, TargetType.TARGET_BALLOON);
+        List<TargetType> unexpectedGroundUnitTypes = Arrays.asList(TargetType.TARGET_BALLOON);
         boolean allDoNotExist = validateUnexpectedGroundUnits(side , availableGroundUnitTypes, unexpectedGroundUnitTypes);
         assert(allDoNotExist);
     }

@@ -85,7 +85,7 @@ public class ShippingUnitBuilder
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 campaign, 
                 targetDefinition.getCountry(), 
-                TargetType.TARGET_TRANSPORT,
+                TargetType.TARGET_SHIPPING,
                 targetDefinition.getPosition(), 
                 destination,
                 Orientation.createRandomOrientation());

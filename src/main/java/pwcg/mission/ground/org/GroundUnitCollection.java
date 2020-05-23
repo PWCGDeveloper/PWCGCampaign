@@ -10,9 +10,9 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
-import pwcg.mission.mcu.group.MissionBeginSelfDeactivatingCheckZone;
 import pwcg.mission.mcu.group.MissionBeginCheckZoneBase;
 import pwcg.mission.mcu.group.MissionBeginInOutCheckZone;
+import pwcg.mission.mcu.group.MissionBeginSelfDeactivatingCheckZone;
 import pwcg.mission.target.TargetType;
 
 public class GroundUnitCollection implements IGroundUnitCollection

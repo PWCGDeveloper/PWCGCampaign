@@ -1,5 +1,4 @@
-package pwcg.mission
-;
+package pwcg.mission;
 
 import java.util.Arrays;
 import java.util.List;
@@ -29,7 +28,7 @@ import pwcg.testutils.TestParticipatingHumanBuilder;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MissionGroundUnitBuilderTest
-{    
+{
     @Before
     public void setup() throws PWCGException
     {
@@ -37,80 +36,106 @@ public class MissionGroundUnitBuilderTest
     }
 
     @Test
-    public void createBattle () throws PWCGException
+    public void createBattle() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
         Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
         mission.generate(Arrays.asList(FlightTypes.DIVE_BOMB));
-        
+
         MissionBattleBuilder battleBuilder = new MissionBattleBuilder(campaign, mission);
         List<IGroundUnitCollection> battles = battleBuilder.generateBattles();
-        
+
         assert (battles.size() < 3);
         for (IGroundUnitCollection battle : battles)
         {
-            assert(battle.getGroundUnitsForSide(Side.ALLIED).size() > 0);
-            assert(battle.getGroundUnitsForSide(Side.AXIS).size() > 0);
+            assert (battle.getGroundUnitsForSide(Side.ALLIED).size() > 0);
+            assert (battle.getGroundUnitsForSide(Side.AXIS).size() > 0);
         }
     }
 
     @Test
-    public void createTrucks () throws PWCGException
+    public void createTrucks() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
         Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
         mission.generate(Arrays.asList(FlightTypes.DIVE_BOMB));
-        
+
         MissionTruckConvoyBuilder truckConvoyBuilder = new MissionTruckConvoyBuilder(campaign, mission);
         List<IGroundUnitCollection> trucks = truckConvoyBuilder.generateMissionTrucks();
 
-        assert (trucks.size() < 6);
+        assert (trucks.size() >= 2);
+        assert (trucks.size() <= 12);
+
+        boolean alliedTrainFound = false;
+        boolean axisTrainFound = false;
         for (IGroundUnitCollection truckUnit : trucks)
         {
             for (IGroundUnit groundUnit : truckUnit.getGroundUnits())
             {
-                assert(groundUnit.getCountry().getSide() == Side.ALLIED);
-                assert(groundUnit.getVehicles().size() > 1);
+                if (groundUnit.getCountry().getSide() == Side.ALLIED)
+                {
+                    alliedTrainFound = true;
+                }
+                else
+                {
+                    axisTrainFound = true;
+                }
+                assert (groundUnit.getVehicles().size() >= 1);
             }
         }
+        assert (alliedTrainFound);
+        assert (axisTrainFound);
     }
 
     @Test
-    public void createTrains () throws PWCGException
+    public void createTrains() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
         Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
         mission.generate(Arrays.asList(FlightTypes.DIVE_BOMB));
-        
+
         MissionTrainBuilder trainBuilder = new MissionTrainBuilder(campaign, mission);
         List<IGroundUnitCollection> trains = trainBuilder.generateMissionTrains();
 
-        assert (trains.size() <= 4);
+        assert (trains.size() >= 2);
+        assert (trains.size() <= 8);
+
+        boolean alliedTrainFound = false;
+        boolean axisTrainFound = false;
         for (IGroundUnitCollection train : trains)
         {
             for (IGroundUnit groundUnit : train.getGroundUnits())
             {
-                assert(groundUnit.getCountry().getSide() == Side.ALLIED);
-                assert(groundUnit.getVehicles().size() == 1);
+                if (groundUnit.getCountry().getSide() == Side.ALLIED)
+                {
+                    alliedTrainFound = true;
+                }
+                else
+                {
+                    axisTrainFound = true;
+                }
+                assert (groundUnit.getVehicles().size() == 1);
             }
         }
+        assert (alliedTrainFound);
+        assert (axisTrainFound);
     }
 
     @Test
-    public void createAAA () throws PWCGException
+    public void createAAA() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
         Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
         mission.generate(Arrays.asList(FlightTypes.DIVE_BOMB));
-        
+
         AAAManager aaaManager = new AAAManager(campaign, mission);
         List<IGroundUnitCollection> AAA = aaaManager.getAAAForMission();
 
@@ -119,7 +144,7 @@ public class MissionGroundUnitBuilderTest
         {
             for (IGroundUnit groundUnit : aaaUnit.getGroundUnits())
             {
-                assert(groundUnit.getVehicles().size() > 0);
+                assert (groundUnit.getVehicles().size() > 0);
             }
         }
     }
