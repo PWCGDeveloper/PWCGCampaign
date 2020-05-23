@@ -67,7 +67,7 @@ public class AirfieldObjects
 
     public void finish(Mission mission) throws PWCGException
     {
-        if (!vehiclesForAirfield.getGroundUnits().isEmpty())
+        if (true || !vehiclesForAirfield.getGroundUnits().isEmpty())
         {
             vehiclesForAirfield.finishGroundUnitCollection();
             vehiclesForAirfield.triggerOnPlayerOrCoalitionProximity(mission);
