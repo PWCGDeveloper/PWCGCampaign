@@ -14,6 +14,8 @@ import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.ground.builder.AAAUnitBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetType;
 
 public class AAABridgeBuilder 
 {
@@ -38,7 +40,8 @@ public class AAABridgeBuilder
 	            double distance = 100 + RandomNumberGenerator.getRandom(400);
 	            Coordinate aaaPosition = MathUtils.calcNextCoord(bridge.getPosition(), angle, distance);
 	            
-	            AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, bridge.getCountry(campaign.getDate()), aaaPosition);
+	            TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_INFANTRY, aaaPosition, bridge.getCountry(campaign.getDate()));
+	            AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
 	            IGroundUnitCollection aaaArty = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM);
 	            bridgeAAA.add(aaaArty);
 	        }

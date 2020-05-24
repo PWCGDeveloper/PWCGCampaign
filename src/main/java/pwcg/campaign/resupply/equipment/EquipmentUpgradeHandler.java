@@ -74,7 +74,7 @@ public class EquipmentUpgradeHandler
                 
                 EquippedPlane replacedPlane = equipmentForSquadron.removeEquippedPlane(equipmentUpgrade.getReplacedPlane().getSerialNumber());
                 equipmentDepot.addPlaneToDepot(replacedPlane);
-                
+
                 EquipmentResupplyRecord equipmentResupplyRecord = new EquipmentResupplyRecord(replacementPlane, squadron.getSquadronId());
                 equipmentResupplyData.addEquipmentResupplyRecord(equipmentResupplyRecord);
             }

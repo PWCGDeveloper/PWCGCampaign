@@ -26,7 +26,6 @@ import pwcg.aar.ui.events.model.ClaimDeniedEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -66,7 +65,6 @@ public class AARPhase3ReconcileCoordinatorTest
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.ARRAS_MAP);
         campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.ESC_103_PROFILE);
         
         aceStatusList = new ArrayList<>();

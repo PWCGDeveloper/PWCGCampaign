@@ -50,7 +50,7 @@ public class OffensiveWaypointsAirfieldFactory
 	    IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
 	    List <IFixedPosition> sortedPositions = sortedFixedPositions.getSortedPositionsWithMaxDistanceTTravelled(
 	            flight.getCampaign(), 
-	            flight.getTargetDefinition().getTargetPosition(), productSpecific.getSmallMissionRadius());
+	            flight.getTargetDefinition().getPosition(), productSpecific.getSmallMissionRadius());
 	    
 	    for (IFixedPosition transportBlock : sortedPositions)
 	    {

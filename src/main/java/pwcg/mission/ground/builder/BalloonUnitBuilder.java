@@ -1,7 +1,6 @@
 package pwcg.mission.ground.builder;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.ICountry;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Orientation;
 import pwcg.mission.Mission;
@@ -16,8 +15,8 @@ import pwcg.mission.ground.unittypes.artillery.GroundAAArtilleryBattery;
 import pwcg.mission.ground.unittypes.artillery.GroundAAMachineGunBattery;
 import pwcg.mission.ground.unittypes.infantry.BalloonUnit;
 import pwcg.mission.mcu.Coalition;
-import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetType;
 
 public class BalloonUnitBuilder
 {
@@ -34,9 +33,9 @@ public class BalloonUnitBuilder
         this.targetDefinition  = targetDefinition;
     }
 
-    public IGroundUnitCollection createBalloonUnit (ICountry country) throws PWCGException
+    public IGroundUnitCollection createBalloonUnit () throws PWCGException
     {
-        buildGroundUnitInformation(country);
+        buildGroundUnitInformation();
         
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.BALLOON_GROUND_UNIT_COLLECTION, 
@@ -53,17 +52,15 @@ public class BalloonUnitBuilder
         return groundUnitCollection;
     }
 
-    private void buildGroundUnitInformation(ICountry country) throws PWCGException
+    private void buildGroundUnitInformation() throws PWCGException
     {
         groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 campaign, 
-                country, 
-                TargetType.TARGET_BALLOON.getTargetName(), 
-                TargetType.TARGET_BALLOON, 
-                targetDefinition.getTargetPosition(), 
-                targetDefinition.getTargetPosition(), 
-                Orientation.createRandomOrientation(), 
-                targetDefinition.isPlayerTarget());
+                targetDefinition.getCountry(), 
+                TargetType.TARGET_BALLOON,
+                targetDefinition.getPosition(), 
+                targetDefinition.getPosition(),
+                Orientation.createRandomOrientation());
     }
 
 

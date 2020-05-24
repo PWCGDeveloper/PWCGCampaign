@@ -38,7 +38,7 @@ public class ArtillerySpotWaypointFactory
 		artillerySpotInitialWaypoint.setSpeed(flight.getFlightCruisingSpeed());
         artillerySpotInitialWaypoint.setTargetWaypoint(true);
 
-		Coordinate initialArtillerySpotCoord = flight.getTargetDefinition().getTargetPosition();
+		Coordinate initialArtillerySpotCoord = flight.getTargetDefinition().getPosition();
 		initialArtillerySpotCoord.setYPos(flight.getFlightInformation().getAltitude());
 		artillerySpotInitialWaypoint.setPosition(initialArtillerySpotCoord);	
 

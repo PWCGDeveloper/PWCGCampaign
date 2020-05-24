@@ -54,7 +54,7 @@ public class ReconAirfieldWaypointsFactory
         while (enemyAirfields.size() <= 2)
         {
             enemyAirfields =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().getAirfieldsWithinRadiusBySide(
-                    flight.getTargetDefinition().getTargetPosition(), flight.getCampaign().getDate(), maxRadius, enemySide);
+                    flight.getTargetDefinition().getPosition(), flight.getCampaign().getDate(), maxRadius, enemySide);
                         
             maxRadius += 10000.0;
         }
@@ -66,7 +66,7 @@ public class ReconAirfieldWaypointsFactory
         }
         
         List <IAirfield> remainingAirfields = enemyAirfields;
-        Coordinate lastCoord = flight.getTargetDefinition().getTargetPosition().copy();
+        Coordinate lastCoord = flight.getTargetDefinition().getPosition().copy();
         for (int i = 0; i < numWaypoints; ++i)
         {
             int index = getNextAirfield(remainingAirfields, lastCoord);

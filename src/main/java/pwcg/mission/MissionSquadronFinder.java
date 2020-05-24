@@ -1,7 +1,6 @@
 package pwcg.mission;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
@@ -51,10 +50,6 @@ public class MissionSquadronFinder
         {
             findSquadronsForNightStrategicMission();
         }
-        else if (mission.getMissionProfile() == MissionProfile.SEA_PLANE_MISSION)
-        {
-            findSquadronsForSeaPlaneMission(campaign.getDate());
-        }
         else
         {
             throw new PWCGException("No profile for mission");
@@ -78,61 +73,6 @@ public class MissionSquadronFinder
         Coordinate closestAxisFrontPosition = frontLinesForMap.findClosestFrontCoordinateForSide(missionBorders.getCenter(), Side.AXIS);
         axisSquads = PWCGContext.getInstance().getSquadronManager().getNearestSquadronsBySide(campaign, closestAxisFrontPosition, 5,
                         initialSquadronSearchRadiusKey, Side.AXIS, campaign.getDate());
-        determineSquadronAvailability();
-    }
-
-    private void findSquadronsForSeaPlaneMission(Date date) throws PWCGException
-    {
-        alliedSquads.clear();
-        axisSquads.clear();
-
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
-        ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
-
-        // Get the Allied lines and pick the northern most position
-        Coordinate seaFrontPosition = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate()).getCoordinates(0,
-                        Side.ALLIED);
-
-        // Add each sea plane squadron multiple times to increase the number of
-        // sea plane missions
-        List<Role> acceptableRoles = new ArrayList<Role>();
-        acceptableRoles.add(Role.ROLE_SEA_PLANE);
-
-        List<Squadron> alliedSeaPlaneSquads = PWCGContext.getInstance().getSquadronManager().getNearestSquadronsByRole(campaign,
-                        seaFrontPosition.copy(), 1, 400000.0, acceptableRoles, Side.ALLIED, date);
-        List<Squadron> axisSeaPlaneSquads = PWCGContext.getInstance().getSquadronManager().getNearestSquadronsByRole(campaign,
-                        seaFrontPosition.copy(), 1, 400000.0, acceptableRoles, Side.AXIS, date);
-
-        for (Squadron alliedSeaPlaneSquad : alliedSeaPlaneSquads)
-        {
-            for (int i = 0; i < 3; ++i)
-            {
-                alliedSquads.add(alliedSeaPlaneSquad);
-            }
-        }
-
-        for (Squadron axisSeaPlaneSquad : axisSeaPlaneSquads)
-        {
-            for (int i = 0; i < 3; ++i)
-            {
-                axisSquads.add(axisSeaPlaneSquad);
-            }
-        }
-
-        int initialSquadronSearchRadiusKey = configManager.getIntConfigParam(ConfigItemKeys.InitialSquadronSearchRadiusKey);
-
-        // All missions are available for sea planes although most will be
-        // rejected due to lack of proximity
-        acceptableRoles = Role.getAllRoles();
-
-        List<Squadron> otherAlliedSquads = PWCGContext.getInstance().getSquadronManager().getNearestSquadronsByRole(campaign, seaFrontPosition,
-                        3, initialSquadronSearchRadiusKey, acceptableRoles, Side.ALLIED, date);
-
-        List<Squadron> otherAxisSquads = PWCGContext.getInstance().getSquadronManager().getNearestSquadronsByRole(campaign, seaFrontPosition,
-                        3, initialSquadronSearchRadiusKey, acceptableRoles, Side.AXIS, date);
-
-        alliedSquads.addAll(otherAlliedSquads);
-        axisSquads.addAll(otherAxisSquads);
         determineSquadronAvailability();
     }
 

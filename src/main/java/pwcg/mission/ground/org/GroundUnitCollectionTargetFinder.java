@@ -26,7 +26,7 @@ public class GroundUnitCollectionTargetFinder
     
     public IGroundUnit findTargetUnit(Side side) throws PWCGException
     {
-        buildGroundUnitMapForSide(side);
+        buildGroundUnitsForSide(side);
         return findTargetPosition();
     }
 
@@ -58,20 +58,20 @@ public class GroundUnitCollectionTargetFinder
     {
         for (IGroundUnit groundUnit : groundUnitCollection.getGroundUnits())
         {
-            buildGroundUnitMapForUnitSet(groundUnit);
+            buildGroundUnitsForUnitSet(groundUnit);
         }
     }
 
-    private void buildGroundUnitMapForSide(Side side) throws PWCGException
+    private void buildGroundUnitsForSide(Side side) throws PWCGException
     {
         List<IGroundUnit> groundUnitsForSide = groundUnitCollection.getGroundUnitsForSide(side);
         for (IGroundUnit groundUnit : groundUnitsForSide)
         {
-            buildGroundUnitMapForUnitSet(groundUnit);
+            buildGroundUnitsForUnitSet(groundUnit);
         }
     }
 
-    private void buildGroundUnitMapForUnitSet(IGroundUnit groundUnit)
+    private void buildGroundUnitsForUnitSet(IGroundUnit groundUnit)
     {
         if (!groundUnitsForSideByUnitType.containsKey(groundUnit.getGroundUnitType()))
         {

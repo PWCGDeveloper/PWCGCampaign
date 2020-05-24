@@ -41,8 +41,8 @@ public class AirGroundAttackMcuSequence
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int attackMcuTriggerDistance = productSpecificConfiguration.getBombFinalApproachDistance();
 
-        missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone("Air Ground Check Zone", targetDefinition.getTargetPosition(), attackMcuTriggerDistance);
-        attackArea = FlightAttackAreaFactory.createAttackArea(flightInformation.getFlightType(), targetDefinition.getTargetPosition(), flightInformation.getAltitude(), attackTime);
+        missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone("Air Ground Check Zone", targetDefinition.getPosition(), attackMcuTriggerDistance);
+        attackArea = FlightAttackAreaFactory.createAttackArea(flightInformation.getFlightType(), targetDefinition.getPosition(), flightInformation.getAltitude(), attackTime);
         createSequence(attackTime) ;
         linkTargets() ;
     }
@@ -62,18 +62,18 @@ public class AirGroundAttackMcuSequence
     {
         activateTimer.setName("Attack Area Timer");      
         activateTimer.setDesc("Attack Area Timer");
-        activateTimer.setPosition(targetDefinition.getTargetPosition());
+        activateTimer.setPosition(targetDefinition.getPosition());
         activateTimer.setTimer(1);              
 
         deactivateEntity.setName("Attack Area Deactivate");
         deactivateEntity.setDesc("Attack Area Deactivate");
         deactivateEntity.setOrientation(new Orientation());
-        deactivateEntity.setPosition(targetDefinition.getTargetPosition());             
+        deactivateEntity.setPosition(targetDefinition.getPosition());             
         
         deactivateTimer.setName("Attack Area Deactivate Timer");
         deactivateTimer.setDesc("Attack Area Deactivate Timer");
         deactivateTimer.setOrientation(new Orientation());
-        deactivateTimer.setPosition(targetDefinition.getTargetPosition());              
+        deactivateTimer.setPosition(targetDefinition.getPosition());              
         deactivateTimer.setTimer(attackTime);              
     }
 

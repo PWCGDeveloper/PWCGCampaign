@@ -17,6 +17,8 @@ import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.builder.AAAUnitBuilder;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetType;
 
 public class AirfieldApproachAABuilder
 {
@@ -105,8 +107,10 @@ public class AirfieldApproachAABuilder
     private void buildFlightPathAA(IFlight flight, List<Coordinate> aaCoordinates) throws PWCGException
     {
         for (Coordinate aaPoint : aaCoordinates)
-        {
-            AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(flight.getCampaign(), flight.getSquadron().getCountry(), aaPoint);
+        {            
+            TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_INFANTRY, aaPoint, flight.getSquadron().getCountry());
+            AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(flight.getCampaign(), targetDefinition);
+
             IGroundUnitCollection aaa = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
             if (aaa != null)
             {

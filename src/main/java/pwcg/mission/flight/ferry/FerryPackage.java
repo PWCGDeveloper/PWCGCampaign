@@ -9,14 +9,11 @@ import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderFactory;
+import pwcg.mission.target.TargetDefinitionBuilderAirToAir;
 
 public class FerryPackage implements IFlightPackage
 
 {
-    private IFlightInformation flightInformation;
-    private TargetDefinition targetDefinition;
-
     public FerryPackage()
     {
     }
@@ -24,17 +21,18 @@ public class FerryPackage implements IFlightPackage
     @Override
     public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
-        this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.FERRY);
-        this.targetDefinition = buildTargetDefintion();
+        IFlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.FERRY);
+        TargetDefinition targetDefinition = buildTargetDefintion(flightInformation);
 
 		FerryFlight ferry = new FerryFlight (flightInformation, targetDefinition);
 		ferry.createFlight();
 		return ferry;
 	}
-
-    private TargetDefinition buildTargetDefintion() throws PWCGException
+    
+    private TargetDefinition buildTargetDefintion(IFlightInformation flightInformation) throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
-        return  targetDefinitionBuilder.buildTargetDefinition();
+        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilderAirToAir(flightInformation);
+        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
+        return targetDefinition;
     }
 }

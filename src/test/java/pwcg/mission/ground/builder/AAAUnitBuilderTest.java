@@ -13,7 +13,9 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
+import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
+import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
@@ -21,6 +23,8 @@ import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleClass;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetType;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AAAUnitBuilderTest
@@ -35,12 +39,15 @@ public class AAAUnitBuilderTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19430401"));
+        Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
+        Mockito.when(configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey)).thenReturn(ConfigSimple.CONFIG_LEVEL_HIGH);
     }
 
     @Test
     public void createAAAArtilleryBatteryTest () throws PWCGException 
     {
-        AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, country, new Coordinate (100000, 0, 100000));
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_INFANTRY, new Coordinate (100000, 0, 100000), country);
+        AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
         IGroundUnitCollection groundUnitGroup = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM);
         assert (groundUnitGroup.getGroundUnits().size() == 1);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
@@ -62,7 +69,8 @@ public class AAAUnitBuilderTest
     @Test
     public void createAAAMGBatteryTest () throws PWCGException 
     {
-        AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign,country, new Coordinate (100000, 0, 100000));
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_INFANTRY, new Coordinate (100000, 0, 100000), country);
+        AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
         IGroundUnitCollection groundUnitGroup = groundUnitFactory.createAAAMGBattery(GroundUnitSize.GROUND_UNIT_SIZE_HIGH);
         assert (groundUnitGroup.getGroundUnits().size() == 1);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
@@ -85,7 +93,8 @@ public class AAAUnitBuilderTest
     @Test
     public void createAAAArtilleryBatteryWithSearchLightTest () throws PWCGException 
     {
-        AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, country, new Coordinate (100000, 0, 100000));
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_INFANTRY, new Coordinate (100000, 0, 100000), country);
+        AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
         IGroundUnitCollection groundUnitGroup = groundUnitFactory.createAAAArtilleryBatteryWithSearchLight(GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM);
         assert(groundUnitGroup.getGroundUnits().size() == 2);
         assert (groundUnitGroup.getGroundUnits().size() == 2);

@@ -1,8 +1,10 @@
 package pwcg.testutils;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.MapFinderForCampaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.CampaignRemover;
 
@@ -13,27 +15,37 @@ public class CampaignCache
     
     public static Campaign makeCampaign(SquadronTestProfile campaignProfile) throws PWCGException
     {
+        Campaign campaign;
         if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
-            return fcCampaignCache.makeCampaign(campaignProfile);
+            campaign = fcCampaignCache.makeCampaign(campaignProfile);
         }
         else
         {
-            return bosCampaignCache.makeCampaign(campaignProfile);
+            campaign = bosCampaignCache.makeCampaign(campaignProfile);
         }
+        
+        FrontMapIdentifier mapIdentifier = MapFinderForCampaign.findMapForCampaign(campaign);
+        PWCGContext.getInstance().changeContext(mapIdentifier);
+        return campaign;
     }
     
     public static Campaign makeCampaignForceCreation(SquadronTestProfile campaignProfile) throws PWCGException
     {
         CampaignRemover.deleteCampaign(CampaignCacheBase.TEST_CAMPAIGN_NAME);         
 
+        Campaign campaign;
         if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
-            return fcCampaignCache.makeCampaignForceCreation(campaignProfile);
+            campaign = fcCampaignCache.makeCampaignForceCreation(campaignProfile);
         }
         else
         {
-            return bosCampaignCache.makeCampaignForceCreation(campaignProfile);
+            campaign = bosCampaignCache.makeCampaignForceCreation(campaignProfile);
         }
+        
+        FrontMapIdentifier mapIdentifier = MapFinderForCampaign.findMapForCampaign(campaign);
+        PWCGContext.getInstance().changeContext(mapIdentifier);
+        return campaign;
     }
 }

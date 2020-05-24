@@ -71,6 +71,11 @@ public class EquipmentDepot
         return allPlanesInDepot;
     }
 
+    public EquippedPlane getAnyPlaneInDepot(int planeSerialNumber) throws PWCGException
+    {
+        return equipment.getEquippedPlane(planeSerialNumber);
+    }
+
     public int getEquipmentPoints()
     {
         return equipmentPoints;

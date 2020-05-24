@@ -9,14 +9,11 @@ import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderFactory;
+import pwcg.mission.target.TargetDefinitionBuilderAirToAir;
 
 public class LowAltPatrolPackage implements IFlightPackage
 
 {
-    private IFlightInformation flightInformation;
-    private TargetDefinition targetDefinition;
-
     public LowAltPatrolPackage()
     {
     }
@@ -24,17 +21,17 @@ public class LowAltPatrolPackage implements IFlightPackage
     @Override
     public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
-        this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.LOW_ALT_PATROL);
-        this.targetDefinition = buildTargetDefintion();
+        IFlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.LOW_ALT_PATROL);
+        TargetDefinition targetDefinition = buildTargetDefintion(flightInformation);
 
         PatrolFlight patrolFlight = new PatrolFlight (flightInformation, targetDefinition);
         patrolFlight.createFlight();
         return patrolFlight;
     }
 
-    private TargetDefinition buildTargetDefintion() throws PWCGException
+    private TargetDefinition buildTargetDefintion(IFlightInformation flightInformation) throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
+        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilderAirToAir(flightInformation);
         return  targetDefinitionBuilder.buildTargetDefinition();
     }
 }

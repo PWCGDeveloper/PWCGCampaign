@@ -53,6 +53,7 @@ public class ConfigItemKeys
     public static final String AlliedPatrolMissionKey = "AlliedPatrolMission";
     public static final String AlliedLowAltPatrolMissionKey = "AlliedLowAltPatrolMission";
     public static final String AlliedLowAltCapMissionKey = "AlliedLowAltCapMission";
+    public static final String AlliedScrambleMissionKey = "AlliedScrambleMission";
     public static final String AlliedBombingMissionKey = "AlliedBombingMission";
     public static final String AlliedLowAltBombingMissionKey = "AlliedLowAltBombingMission";
     public static final String AlliedContactPatrolKey = "AlliedContactPatrol";
@@ -61,16 +62,14 @@ public class ConfigItemKeys
     public static final String AlliedCargoDropKey = "AlliedCargoDrop";
     public static final String AlliedParachuteDropKey = "AlliedParachuteDrop";    
 
-    public static final String AlliedTargetTypeAssaultKey = "AlliedTargetTypeAssault";    
-    public static final String AlliedTargetTypeDefenseKey = "AlliedTargetTypeDefense";    
+    public static final String AlliedTargetTypeInfantryKey = "AlliedTargetTypeInfantry";    
     public static final String AlliedTargetTypeTransportKey = "AlliedTargetTypeTransport";    
     public static final String AlliedTargetTypeTrainKey = "AlliedTargetTypeTrain";    
     public static final String AlliedTargetTypeAirfieldKey = "AlliedTargetTypeAirfield";    
     public static final String AlliedTargetTypeShippingKey = "AlliedTargetTypeShipping";    
     public static final String AlliedTargetTypeDrifterKey = "AlliedTargetTypeDrifter";    
 
-    public static final String AxisTargetTypeAssaultKey = "AxisTargetTypeAssault";    
-    public static final String AxisTargetTypeDefenseKey = "AxisTargetTypeDefense";    
+    public static final String AxisTargetTypeInfantryKey = "AxisTargetTypeInfantry";    
     public static final String AxisTargetTypeTransportKey = "AxisTargetTypeTransport";    
     public static final String AxisTargetTypeTrainKey = "AxisTargetTypeTrain";    
     public static final String AxisTargetTypeAirfieldKey = "AxisTargetTypeAirfield";    
@@ -112,7 +111,6 @@ public class ConfigItemKeys
 	public static final String AiFighterFlightsForFighterCampaignMaxKey = "AiFighterFlightsForFighterCampaignMax";
 
 	public static final String RandomizePlanesPerSideKey = "RandomizePlanesPerSide";
-	public static final String MaxAmbientBalloonsKey = "MaxAmbientBalloons";
 	public static final String InitialSquadronSearchRadiusKey = "InitialSquadronSearchRadius";
 	public static final String MaxSquadronSearchRadiusKey = "MaxSquadronSearchRadius";
 	public static final String OddsOfAceFlyingKey = "OddsOfAceFlying";
@@ -172,11 +170,6 @@ public class ConfigItemKeys
 	public static final String BaseAltPeriod4Key = "BaseAltPeriod4";
 	public static final String BaseAltPeriod5Key = "BaseAltPeriod5";
 	public static final String BaseAltPeriod6Key = "BaseAltPeriod6";
-
-	public static final String scrambleOddsAlliedKey = "scrambleOddsAllied";
-	public static final String scrambleOddsAxisKey = "scrambleOddsAxis";
-	public static final String antiShipOddsAlliedKey = "antiShipOddsAllied";
-	public static final String antiShipOddsAxisKey = "antiShipOddsAxis";
 
 	public static final String TakeoffWaypointDistanceKey = "TakeoffWaypointDistance";
 	public static final String TakeoffWaypointAltitudeKey = "TakeoffWaypointAltitude";

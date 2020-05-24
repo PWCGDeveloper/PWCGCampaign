@@ -1,15 +1,10 @@
 {
   "configSetName": "ConfigSetTarget",
   "configMap": {
-    "AlliedTargetTypeAssault": {
-      "value": "50",
-      "label": "Allied Target Enemy Assault",
-      "help": "Weight given to of targeting an enemy assault - (Allied)"
-    },
-    "AlliedTargetTypeDefense": {
-      "value": "50",
-      "label": "Allied Target Enemy Defense",
-      "help": "Weight given to of targeting an enemy defense - (Allied)"
+    "AlliedTargetTypeInfantry": {
+      "value": "60",
+      "label": "Allied Target Enemy Infantry",
+      "help": "Weight given to of targeting an enemy infantry - (Allied)"
     },
     "AlliedTargetTypeTransport": {
       "value": "30",
@@ -36,15 +31,10 @@
       "label": "Allied Target Enemy Drifter",
       "help": "Weight given to of targeting enemy drifter - (Allied)"
     },
-    "AxisTargetTypeAssault": {
-      "value": "50",
-      "label": "Axis Target Enemy Assault",
-      "help": "Weight given to of targeting an enemy assault - (Axis)"
-    },
-    "AxisTargetTypeDefense": {
-      "value": "50",
-      "label": "Axis Target Enemy Defense",
-      "help": "Weight given to of targeting an enemy defense - (Axis)"
+    "AxisTargetTypeInfantry": {
+      "value": "60",
+      "label": "Allied Target Enemy Infantry",
+      "help": "Weight given to of targeting an enemy infantry - (Allied)"
     },
     "AxisTargetTypeTransport": {
       "value": "30",

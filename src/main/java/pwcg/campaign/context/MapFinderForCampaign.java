@@ -23,7 +23,9 @@ public class MapFinderForCampaign
                 List<FrontMapIdentifier> mapIdentifiers = MapForAirfieldFinder.getMapForAirfield(squadron.determineCurrentAirfieldName(campaign.getDate()));
                 if (mapIdentifiers.size() > 0)
                 {
-                    return mapIdentifiers.get(0);
+                    FrontMapIdentifier mapIdentifier = mapIdentifiers.get(0);
+                    mapIdentifier = StalingradMapResolver.resolveStalingradMap(campaign, mapIdentifier);
+                    return mapIdentifier;
                 }
             }
         }

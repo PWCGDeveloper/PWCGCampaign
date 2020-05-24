@@ -59,9 +59,7 @@ public abstract class GroundUnit implements IGroundUnit
     @Override
     public boolean isUnitEngagedInCombat()
     {
-        if (pwcgGroundUnitInformation.getTargetType() == TargetType.TARGET_ASSAULT ||
-            pwcgGroundUnitInformation.getTargetType() == TargetType.TARGET_DEFENSE ||
-            pwcgGroundUnitInformation.getTargetType() == TargetType.TARGET_INFANTRY)
+        if (pwcgGroundUnitInformation.getTargetType() == TargetType.TARGET_INFANTRY)
         {
             return true;
         }

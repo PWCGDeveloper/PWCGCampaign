@@ -44,7 +44,6 @@ public interface IFlight
 
     IVirtualWaypointPackage getVirtualWaypointPackage();
 
-    // From FlightInformation
     int getFlightId();
         
     Squadron getSquadron();
@@ -53,15 +52,14 @@ public interface IFlight
 
     boolean isPlayerFlight();
 
-    // From FlightPlanes
     boolean isFlightHasFighterPlanes();
 
-    // From FlightClosestContact
     double getClosestContactWithPlayerDistance();
     
-    TargetDefinition getTargetDefinition();
-
     int getFlightCruisingSpeed();
 
     void overrideFlightCruisingSpeedForEscort(int cruisingSpeed);
+    
+    TargetDefinition getTargetDefinition();
+
 }

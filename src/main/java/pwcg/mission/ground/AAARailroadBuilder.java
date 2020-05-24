@@ -14,6 +14,8 @@ import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.ground.builder.AAAUnitBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetType;
 
 public class AAARailroadBuilder 
 {
@@ -48,7 +50,8 @@ public class AAARailroadBuilder
         double angle = RandomNumberGenerator.getRandom(360);
         double distance = 100 + RandomNumberGenerator.getRandom(200);
         Coordinate aaaPosition = MathUtils.calcNextCoord(railroadStation.getPosition(), angle, distance);               
-        AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, railroadStation.getCountry(campaign.getDate()), aaaPosition);
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_INFANTRY, aaaPosition, railroadStation.getCountry(campaign.getDate()));
+        AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
         IGroundUnitCollection aaaMg = groundUnitFactory.createAAAMGBattery(GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM);
         railroadAAA.add(aaaMg);
     }
@@ -58,7 +61,8 @@ public class AAARailroadBuilder
         double angle = RandomNumberGenerator.getRandom(360);
         double distance = 300 + RandomNumberGenerator.getRandom(200);
         Coordinate aaaPosition = MathUtils.calcNextCoord(railroadStation.getPosition(), angle, distance);               
-        AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, railroadStation.getCountry(campaign.getDate()), aaaPosition);
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_INFANTRY, aaaPosition, railroadStation.getCountry(campaign.getDate()));
+        AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
         IGroundUnitCollection aaaArty = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM);
         railroadAAA.add(aaaArty);
     }

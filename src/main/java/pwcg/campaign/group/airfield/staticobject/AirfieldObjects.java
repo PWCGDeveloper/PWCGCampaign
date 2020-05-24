@@ -26,7 +26,7 @@ public class AirfieldObjects
     public AirfieldObjects(Side airfieldSide)
     {
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION,
-                "Airfield vehicles", TargetType.TARGET_AAA, Coalition.getCoalitionsForSide(airfieldSide.getOppositeSide()));
+                "Airfield vehicles", TargetType.TARGET_INFANTRY, Coalition.getCoalitionsForSide(airfieldSide.getOppositeSide()));
         vehiclesForAirfield = new GroundUnitCollection("Airfield vehicles", groundUnitCollectionData);
     }
 

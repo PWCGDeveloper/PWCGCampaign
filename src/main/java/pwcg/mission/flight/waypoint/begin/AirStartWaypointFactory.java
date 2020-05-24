@@ -70,7 +70,7 @@ public class AirStartWaypointFactory
             throws PWCGException
     {
         double distanceFromFieldToRefrenceWP = MathUtils.calcDist(airfieldCoordinate, referenceWaypointForAirStart.getPosition());
-        double distanceForIngressToTarget = MathUtils.calcDist(referenceWaypointForAirStart.getPosition(), flight.getTargetDefinition().getTargetPosition());
+        double distanceForIngressToTarget = MathUtils.calcDist(referenceWaypointForAirStart.getPosition(), flight.getTargetDefinition().getPosition());
         double distanceToTarget = distanceFromFieldToRefrenceWP + distanceForIngressToTarget;
         
         double straightLineistanceForPlayerToReachTargetArea = flight.getMission().getPlayerDistanceToTarget();

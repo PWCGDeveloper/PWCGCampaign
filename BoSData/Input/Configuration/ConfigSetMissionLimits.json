@@ -51,11 +51,6 @@
       "label": "Odds a mission is escorted",
       "help": "Odds of a bombing mission being escorted"
     },
-    "MaxAmbientBalloons": {
-      "value": "1",
-      "label": "Max Ambient Balloons",
-      "help": "Max number of ambient balloons in a mission"
-    },
     "MaxSquadronSearchRadius": {
       "value": "200000",
       "label": "Max Squadron Search Radius",

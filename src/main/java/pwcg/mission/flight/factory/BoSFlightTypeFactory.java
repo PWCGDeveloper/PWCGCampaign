@@ -82,6 +82,7 @@ public class BoSFlightTypeFactory implements IFlightTypeFactory
         {
             currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedOffensiveMissionKey, FlightTypes.OFFENSIVE, currentIndex);
             currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedInterceptMissionKey, FlightTypes.INTERCEPT, currentIndex);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedScrambleMissionKey, FlightTypes.SCRAMBLE, currentIndex);
             currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedEscortMissionKey, FlightTypes.ESCORT, currentIndex);
             currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedPatrolMissionKey, FlightTypes.PATROL, currentIndex);
             currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedLowAltPatrolMissionKey, FlightTypes.LOW_ALT_PATROL, currentIndex);
@@ -91,6 +92,7 @@ public class BoSFlightTypeFactory implements IFlightTypeFactory
         {
             currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisOffensiveMissionKey, FlightTypes.OFFENSIVE, currentIndex);
             currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisInterceptMissionKey, FlightTypes.INTERCEPT, currentIndex);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisScrambleMissionKey, FlightTypes.SCRAMBLE, currentIndex);
             currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisEscortMissionKey, FlightTypes.ESCORT, currentIndex);
             currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisPatrolMissionKey, FlightTypes.PATROL, currentIndex);
             currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisLowAltPatrolMissionKey, FlightTypes.LOW_ALT_PATROL, currentIndex);
@@ -100,9 +102,9 @@ public class BoSFlightTypeFactory implements IFlightTypeFactory
         int selectedIndex = WeightedOddsCalculator.calculateWeightedodds(weightedOdds);
         FlightTypes flightType = flightTypesByIndex.get(selectedIndex);
 
-        if (flightType == FlightTypes.ESCORT)
+        if (!isPlayerFlight)
         {
-            if (!isPlayerFlight)
+            if (flightType == FlightTypes.ESCORT || flightType == FlightTypes.SCRAMBLE)
             {
                 flightType = FlightTypes.PATROL;
             }

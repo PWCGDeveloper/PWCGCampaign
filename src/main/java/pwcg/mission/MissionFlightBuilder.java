@@ -170,13 +170,13 @@ public class MissionFlightBuilder
 
     public List<IGroundUnitCollection> getAllFlightLinkedGroundUnits()
     {
-        List<IGroundUnitCollection> allAmbientGroundUnits = new ArrayList<>();
+        List<IGroundUnitCollection> allGroundUnits = new ArrayList<>();
         for (IFlight flight : getAllAerialFlights())
         {
-            allAmbientGroundUnits.addAll(flight.getLinkedGroundUnits().getLinkedGroundUnits());
+            allGroundUnits.addAll(flight.getLinkedGroundUnits().getLinkedGroundUnits());
         }
 
-        return allAmbientGroundUnits;
+        return allGroundUnits;
     }
 
     public boolean hasPlayerFlightWithFlightTypes(List<FlightTypes> flightTypes)

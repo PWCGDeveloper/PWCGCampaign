@@ -31,6 +31,11 @@
       "label": "Allied Patrol Mission",
       "help": "Weight given to of creating a Patrol - (Fighter)"
     },
+    "AlliedScrambleMission": {
+      "value": "3",
+      "label": "Allied Scramble Mission",
+      "help": "Weight given to of creating a Scramble - (Fighter)"
+    },
     "AlliedLowAltPatrolMission": {
       "value": "20",
       "label": "Allied Low Altitude Patrol Mission",
@@ -41,7 +46,6 @@
       "label": "Allied Low Alt CAP Mission",
       "help": "Weight given to of creating a low altitude CAP - (Fighter)"
     },
-
     "AxisBalloonBustMission": {
       "value": "10",
       "label": "Axis Balloon Bust Mission",
@@ -71,6 +75,11 @@
       "value": "40",
       "label": "Axis Patrol Mission",
       "help": "Weight given to of creating a Patrol - (Fighter)"
+    },
+    "AxisScrambleMission": {
+      "value": "3",
+      "label": "Axis Scramble Mission",
+      "help": "Weight given to of creating a Scramble - (Fighter)"
     },
     "AxisLowAltPatrolMission": {
       "value": "10",

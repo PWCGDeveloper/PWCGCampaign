@@ -13,9 +13,8 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.bomb.BombingFlight;
 import pwcg.mission.flight.escort.VirtualEscortFlightBuilder;
-import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderFactory;
+import pwcg.mission.target.TargetType;
 
 public class StrategicInterceptOpposingFlightBuilder
 {
@@ -72,9 +71,7 @@ public class StrategicInterceptOpposingFlightBuilder
 
     private TargetDefinition buildOpposingTargetDefintion(IFlightInformation opposingFlightInformation) throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(opposingFlightInformation);
-        TargetDefinition opposingTargetDefinition =  targetDefinitionBuilder.buildTargetDefinition();
-        opposingTargetDefinition.setTargetPosition(playerTargetDefinition.getTargetPosition());
+        TargetDefinition opposingTargetDefinition = new TargetDefinition(TargetType.TARGET_AIR, playerTargetDefinition.getPosition(), opposingFlightInformation.getCountry());
         return opposingTargetDefinition;
     }
 

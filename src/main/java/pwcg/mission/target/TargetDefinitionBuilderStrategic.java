@@ -1,18 +1,17 @@
 package pwcg.mission.target;
 
-import pwcg.campaign.api.ICountry;
-import pwcg.campaign.api.IFixedPosition;
-import pwcg.campaign.squadron.Squadron;
+import java.util.Collections;
+import java.util.List;
+
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.location.Orientation;
 import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.target.locator.StrategicTargetLocator;
 
 public class TargetDefinitionBuilderStrategic implements ITargetDefinitionBuilder
 {
     private IFlightInformation flightInformation;
-    private TargetDefinition targetDefinition = new TargetDefinition();
 
     public TargetDefinitionBuilderStrategic (IFlightInformation flightInformation)
     {
@@ -23,42 +22,46 @@ public class TargetDefinitionBuilderStrategic implements ITargetDefinitionBuilde
     public TargetDefinition buildTargetDefinition () throws PWCGException
     {
         Coordinate proposedTargetPosition = flightInformation.getTargetSearchStartLocation();
+        List<TargetDefinition> availableTargets = getAvailableStrategicTargets(proposedTargetPosition);
 
-        ICountry targetCountry = flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate());
-        StrategicTargetTypeGenerator strategicTargetTypeGenerator = new StrategicTargetTypeGenerator(targetCountry.getSide(), flightInformation.getCampaign().getDate(), proposedTargetPosition);
-        TargetType targetType = strategicTargetTypeGenerator.createTargetType(flightInformation.getMission().getMissionBorders().getAreaRadius());
-
-        TargetRadius targetRadius = new TargetRadius();
-        targetRadius.calculateTargetRadius(flightInformation.getFlightType(), flightInformation.getMission().getMissionBorders().getAreaRadius());
-        targetDefinition.setPreferredRadius(Double.valueOf(targetRadius.getInitialTargetRadius()).intValue());
-        targetDefinition.setMaximumRadius(Double.valueOf(targetRadius.getMaxTargetRadius()).intValue());
-
-        StrategicTargetLocator strategicTargetLocator = new StrategicTargetLocator(
-                Double.valueOf(targetRadius.getInitialTargetRadius()).intValue(), 
-                targetCountry.getSide(), 
-                flightInformation.getCampaign().getDate(), 
-                proposedTargetPosition);
-        IFixedPosition place = strategicTargetLocator.getStrategicTargetLocation(targetType);
-
-        targetDefinition.setTargetType(targetType);
-        targetDefinition.setAttackingSquadron(flightInformation.getSquadron());
-        targetDefinition.setTargetName(buildTargetName(targetCountry, targetType));
-
-        targetDefinition.setAttackingCountry(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()));
-        targetDefinition.setTargetCountry(targetCountry);
-        targetDefinition.setDate(flightInformation.getCampaign().getDate());
-        targetDefinition.setPlayerTarget((Squadron.isPlayerSquadron(flightInformation.getCampaign(), flightInformation.getSquadron().getSquadronId())));
-
-        targetDefinition.setTargetPosition(place.getPosition());
-        targetDefinition.setTargetOrientation(new Orientation());
+        List<TargetType> strategicTargetTypes = TargetPriorityGeneratorStrategic.getTargetTypePriorities(flightInformation.getCampaign(), flightInformation.getSquadron());
+        TargetDefinition targetDefinition = findStrategicTarget(strategicTargetTypes, availableTargets);
 
         return targetDefinition;
     }
-    
-    private String buildTargetName(ICountry targetCountry, TargetType targetType)
+
+    private List<TargetDefinition> getAvailableStrategicTargets(Coordinate proposedTargetPosition) throws PWCGException
     {
-        String nationality = targetCountry.getNationality();
-        String name = nationality + " " + targetType.getTargetName();
-        return name;
+        TargetRadius targetRadius = new TargetRadius();
+        targetRadius.calculateTargetRadius(flightInformation.getFlightType(), flightInformation.getMission().getMissionBorders().getAreaRadius());
+
+        StrategicTargetLocator strategicTargetLocator = new StrategicTargetLocator(
+                flightInformation,
+                Double.valueOf(targetRadius.getInitialTargetRadius()).intValue(),
+                proposedTargetPosition);
+        
+        List<TargetDefinition> availableTargets = strategicTargetLocator.getStrategicTargetAvailability();
+        return availableTargets;
     }
+    
+
+    private TargetDefinition findStrategicTarget(List<TargetType> strategicTargetTypes, List<TargetDefinition> availableTargets) throws PWCGException
+    {
+        List<TargetType> shuffledTargetTypes = TargetPriorityGeneratorGroundUnit.getTargetTypePriorities(flightInformation.getCampaign(), flightInformation.getSquadron());
+        List<IGroundUnitCollection> shuffledGroundUnits = flightInformation.getMission().getMissionGroundUnitBuilder().getAllMissionGroundUnits();
+        Collections.shuffle(shuffledGroundUnits);
+
+        for (TargetType desiredTargetType : shuffledTargetTypes)
+        {
+            for (TargetDefinition targetDefinition : availableTargets)
+            {
+                if (desiredTargetType == targetDefinition.getTargetType())
+                {
+                    return targetDefinition;
+                }
+            }
+        }
+        throw new PWCGException ("No strategic targets available in mission");
+    }
+
 }

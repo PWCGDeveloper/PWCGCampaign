@@ -6,13 +6,13 @@ import java.util.List;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
-import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderFactory;
+import pwcg.mission.target.TargetType;
 
 public class ScrambleOpposingFlightBuilder
 {
@@ -128,11 +128,9 @@ public class ScrambleOpposingFlightBuilder
 
     private TargetDefinition buildOpposingTargetDefintion(IFlightInformation opposingFlightInformation) throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(opposingFlightInformation);
-        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
-        
         Squadron playerSquadron = playerFlightInformation.getSquadron();
-        targetDefinition.setTargetPosition(playerSquadron.determineCurrentPosition(playerFlightInformation.getCampaign().getDate()));
+        Coordinate squadronLocation = playerSquadron.determineCurrentPosition(playerFlightInformation.getCampaign().getDate());
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_AIR, squadronLocation, playerFlightInformation.getCountry());
         return targetDefinition;
         
     }

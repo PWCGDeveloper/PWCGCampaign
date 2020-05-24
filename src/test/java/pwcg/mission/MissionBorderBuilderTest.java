@@ -1,7 +1,5 @@
 package pwcg.mission;
 
-import java.util.Arrays;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,10 +7,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGMap;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
-import pwcg.campaign.shipping.ShippingLane;
-import pwcg.campaign.shipping.ShippingLaneManager;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
@@ -20,7 +14,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.flight.FlightTypes;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
@@ -47,7 +40,7 @@ public class MissionBorderBuilderTest
         {
             MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
             
-            CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox(Arrays.asList(FlightTypes.PATROL));
+            CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
             Coordinate missionBoxCenter = missionBorders.getCenter();
             
             Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
@@ -73,58 +66,10 @@ public class MissionBorderBuilderTest
         for (int i = 0; i < 10; ++i)
         {
             MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(coopCampaign, participatingPlayers);
-            CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox(Arrays.asList(FlightTypes.PATROL));
+            CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
             Coordinate missionBoxCenter = missionBorders.getCenter();
             assert(missionBoxCenter.getXPos() > 0.0);
             assert(missionBoxCenter.getZPos() > 0.0);
-        }
-    }
-
-    @Test
-    public void scrambleMissionBoxTest() throws PWCGException
-    {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
-        PWCGContext.getInstance().setCampaign(campaign);
-
-        MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-        SquadronMember player = campaign.findReferencePlayer();
-        participatingPlayers.addSquadronMember(player);
-        
-        for (int i = 0; i < 10; ++i)
-        {
-            MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
-            CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox(Arrays.asList(FlightTypes.SCRAMBLE));
-            Coordinate missionBoxCenter = missionBorders.getCenter();
-
-            Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
-            double distanceFromAirfieldToMissionCenter = MathUtils.calcDist(playerSquadron.determineCurrentPosition(campaign.getDate()), missionBoxCenter);
-                        
-            assert(distanceFromAirfieldToMissionCenter < 20000);
-        }
-    }
-
-    @Test
-    public void antiShippingMissionBoxTest() throws PWCGException
-    {
-        Campaign campaignAntiShipping = CampaignCache.makeCampaign(SquadronTestProfile.REGIMENT_321_PROFILE);
-        PWCGContext.getInstance().setCampaign(campaignAntiShipping);
-
-        MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-        SquadronMember player = campaignAntiShipping.findReferencePlayer();
-        participatingPlayers.addSquadronMember(player);
-
-        for (int i = 0; i < 10; ++i)
-        {
-            MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaignAntiShipping, participatingPlayers);
-            CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox(Arrays.asList(FlightTypes.ANTI_SHIPPING_BOMB));
-            Coordinate missionBoxCenter = missionBorders.getCenter();
-
-            PWCGMap map = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.KUBAN_MAP);
-            ShippingLaneManager shippingLaneManager = map.getShippingLaneManager();
-            Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
-            ShippingLane shippingLane = shippingLaneManager.getClosestShippingLaneBySide(playerSquadron.determineCurrentPosition(campaignAntiShipping.getDate()), playerSquadron.determineEnemySide());
-            double distanceFromSeaLaneToMissionCenter = MathUtils.calcDist(shippingLane.getShippingLaneBox().getCenter(), missionBoxCenter);
-            assert(distanceFromSeaLaneToMissionCenter < 20000);
         }
     }
 }

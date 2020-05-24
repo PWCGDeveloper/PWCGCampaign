@@ -7,6 +7,7 @@ import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.group.AirfieldFinder;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Orientation;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.org.GroundUnitCollection;
@@ -32,7 +33,13 @@ public class AirfieldUnitBuilder
 
     public IGroundUnitCollection createAirfieldUnit () throws PWCGException
     {
-        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(campaign, targetDefinition);
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                campaign, 
+                targetDefinition.getCountry(), 
+                TargetType.TARGET_AIRFIELD, 
+                targetDefinition.getPosition(), 
+                targetDefinition.getPosition(), 
+                Orientation.createRandomOrientation());
         
         IAirfield targetAirfield = findTargetAirfield();
         IGroundUnit airfieldGroup = new AirfieldTargetGroup(campaign, targetAirfield, groundUnitInformation);
@@ -57,7 +64,7 @@ public class AirfieldUnitBuilder
         PWCGMap map = PWCGContext.getInstance().getCurrentMap();
         AirfieldManager airfieldManager = map.getAirfieldManager();
         AirfieldFinder airfieldFinder = airfieldManager.getAirfieldFinder();
-        IAirfield targetAirfield = airfieldFinder.findClosestAirfieldForSide(targetDefinition.getTargetPosition(), campaign.getDate(), targetDefinition.getAttackingSquadron().getCountry().getSide());
+        IAirfield targetAirfield = airfieldFinder.findClosestAirfieldForSide(targetDefinition.getPosition(), campaign.getDate(), targetDefinition.getCountry().getSide().getOppositeSide());
         return targetAirfield;
     }   
 }

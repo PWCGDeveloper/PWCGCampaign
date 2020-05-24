@@ -22,7 +22,7 @@ public class PositionEvaluator
 
             if (shouldEvaluateDistanceToTarget(aiFlight))
             {
-                double distanceMissioNCenterToTarget = MathUtils.calcDist(missionCenter, aiFlight.getTargetDefinition().getTargetPosition());
+                double distanceMissioNCenterToTarget = MathUtils.calcDist(missionCenter, aiFlight.getTargetDefinition().getPosition());
                 if (distanceMissioNCenterToTarget > 100000)
                 {
                     failed = true;
@@ -44,9 +44,7 @@ public class PositionEvaluator
 
     private static boolean shouldEvaluateDistanceToTarget(IFlight aiFlight)
     {
-        if (aiFlight.getFlightType() == FlightTypes.ANTI_SHIPPING_ATTACK || 
-            aiFlight.getFlightType() == FlightTypes.ANTI_SHIPPING_BOMB   || 
-            aiFlight.getFlightType() == FlightTypes.TRANSPORT)
+        if (aiFlight.getFlightType() == FlightTypes.TRANSPORT)
         {
             return false;
         }

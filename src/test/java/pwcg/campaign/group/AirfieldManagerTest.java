@@ -32,7 +32,6 @@ public class AirfieldManagerTest
 	@Test
 	public void airfieldValidityCheckFranceTest() throws PWCGException 
 	{
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.ARRAS_MAP);
         AirfieldManager airfieldManager = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.ARRAS_MAP).getAirfieldManager();
         for (IAirfield airfield : airfieldManager.getAllAirfields().values())
         {

@@ -15,7 +15,8 @@ import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderFactory;
+import pwcg.mission.target.TargetDefinitionBuilderAirToAir;
+import pwcg.mission.target.TargetType;
 
 public class PlayerScramblePackage implements IFlightPackage
 {
@@ -50,7 +51,7 @@ public class PlayerScramblePackage implements IFlightPackage
     
     private TargetDefinition buildTargetDefintion(List<IFlight> opposingFlights) throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
+        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilderAirToAir(flightInformation);
         TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
 
         if (opposingFlights.size() > 0)
@@ -58,8 +59,9 @@ public class PlayerScramblePackage implements IFlightPackage
             IFlight enemyFlight = opposingFlights.get(0);
             MissionPoint enemyStartPoint = enemyFlight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_START);
             Coordinate targetLocationForPlayerFlight = enemyStartPoint.getPosition().copy();
-            targetDefinition.setTargetPosition(targetLocationForPlayerFlight);
+            targetDefinition = new TargetDefinition(TargetType.TARGET_AIR, targetLocationForPlayerFlight, flightInformation.getCountry());
         }
+
         return targetDefinition;
     }
 

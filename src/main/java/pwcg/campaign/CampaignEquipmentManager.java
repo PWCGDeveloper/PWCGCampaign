@@ -64,8 +64,24 @@ public class CampaignEquipmentManager
     {
         return new ArrayList<Integer>(equipmentDepotsForServices.keySet());
     }
+    
+    public EquippedPlane getAnyPlane(Integer serialNumber) throws PWCGException
+    {
+        EquippedPlane equippedPlane = getPlaneFromAnySquadron(serialNumber);
+        if (equippedPlane == null)
+        {
+            equippedPlane = getPlaneFromAnyDepo(serialNumber);
+        }
+        
+        if (equippedPlane == null)
+        {
+            throw new PWCGException ("Unable to locate equipped plane for serial number anywhere" + serialNumber);
+        }
+        
+        return equippedPlane;
+    }
 
-    public EquippedPlane getPlaneFromAnySquadron(Integer serialNumber) throws PWCGException
+    private EquippedPlane getPlaneFromAnySquadron(Integer serialNumber) throws PWCGException
     {
         for (Equipment equipment : equipmentAllSquadrons.values())
         {
@@ -75,7 +91,21 @@ public class CampaignEquipmentManager
                 return equippedPlane;
             }        
         }
-         throw new PWCGException ("Unable to locate equipped plane for serial number " + serialNumber);
+        
+        return null;
+    }
+
+    private EquippedPlane getPlaneFromAnyDepo(Integer serialNumber) throws PWCGException
+    {
+        for (EquipmentDepot equipmentDepot : equipmentDepotsForServices.values())
+        {
+            EquippedPlane equippedPlane = equipmentDepot.getAnyPlaneInDepot(serialNumber);
+            if (equippedPlane != null)
+            {
+                return equippedPlane;
+            }
+        }
+        return null;
     }
 
     public EquippedPlane getAnyActivePlaneFromSquadron(Integer squadronId) throws PWCGException
@@ -99,7 +129,7 @@ public class CampaignEquipmentManager
 
     public EquippedPlane destroyPlane(int serialNumber, Date date) throws PWCGException
     {
-        EquippedPlane destroyedPlane = getPlaneFromAnySquadron(serialNumber);
+        EquippedPlane destroyedPlane = getAnyPlane(serialNumber);
         destroyedPlane.setPlaneStatus(PlaneStatus.STATUS_DESTROYED);
         destroyedPlane.setDateRemovedFromService(date);
         return destroyedPlane;

@@ -10,32 +10,29 @@ import pwcg.mission.ground.BattleSize;
 
 public class AssaultBattleSizeGenerator
 {
-    public static BattleSize createAssaultBattleSize(Campaign campaign, TargetDefinition targetDefinition) throws PWCGException 
+    public static BattleSize createAssaultBattleSize(Campaign campaign) throws PWCGException 
     {
         BattleSize battleSize = BattleSize.BATTLE_SIZE_TINY;      
-        if (targetDefinition.isPlayerTarget())
+        ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+        String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
+        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
-            ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
-            String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
-            if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
-            {
-                battleSize = BattleSize.BATTLE_SIZE_SKIRMISH;      
-            }
-            else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+            battleSize = BattleSize.BATTLE_SIZE_SKIRMISH;      
+        }
+        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+        {
+            battleSize = BattleSize.BATTLE_SIZE_ASSAULT;
+        }
+        else
+        {
+            int roll = RandomNumberGenerator.getRandom(100);
+            if (roll < 80)
             {
                 battleSize = BattleSize.BATTLE_SIZE_ASSAULT;
             }
             else
             {
-                int roll = RandomNumberGenerator.getRandom(100);
-                if (roll < 80)
-                {
-                    battleSize = BattleSize.BATTLE_SIZE_ASSAULT;
-                }
-                else
-                {
-                    battleSize = BattleSize.BATTLE_SIZE_OFFENSIVE;
-                }
+                battleSize = BattleSize.BATTLE_SIZE_OFFENSIVE;
             }
         }
 

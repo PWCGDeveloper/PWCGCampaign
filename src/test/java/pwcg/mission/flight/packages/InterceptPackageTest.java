@@ -51,9 +51,11 @@ public class InterceptPackageTest
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
-        CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox(Arrays.asList(FlightTypes.INTERCEPT));
+        CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
 
         Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
+        mission.generate(Arrays.asList(FlightTypes.INTERCEPT));
+
         campaign.setCurrentMission(mission);
 
         InterceptPackage flightPackage = new InterceptPackage(FlightTypes.INTERCEPT);

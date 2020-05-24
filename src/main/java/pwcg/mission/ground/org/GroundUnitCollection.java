@@ -10,23 +10,23 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
-import pwcg.mission.mcu.group.MissionBeginSelfDeactivatingCheckZone;
 import pwcg.mission.mcu.group.MissionBeginCheckZoneBase;
 import pwcg.mission.mcu.group.MissionBeginInOutCheckZone;
+import pwcg.mission.mcu.group.MissionBeginSelfDeactivatingCheckZone;
 import pwcg.mission.target.TargetType;
 
 public class GroundUnitCollection implements IGroundUnitCollection
 {
     private final static int GROUND_UNIT_SPAWN_DISTANCE = 5000;
-    
+
     private GroundUnitCollectionData groundUnitCollectionData;
-    private int index = IndexGenerator.getInstance().getNextIndex();  
+    private int index = IndexGenerator.getInstance().getNextIndex();
     private MissionBeginCheckZoneBase missionBeginUnit;
     private IGroundUnit primaryGroundUnit;
-    private List<IGroundUnit> groundUnits = new ArrayList<> ();
+    private List<IGroundUnit> groundUnits = new ArrayList<>();
     private String groundUnitName;
 
-    public GroundUnitCollection (String groundUnitName, GroundUnitCollectionData groundUnitCollectionData)
+    public GroundUnitCollection(String groundUnitName, GroundUnitCollectionData groundUnitCollectionData)
     {
         this.groundUnitName = groundUnitName;
         this.groundUnitCollectionData = groundUnitCollectionData;
@@ -39,12 +39,12 @@ public class GroundUnitCollection implements IGroundUnitCollection
         Coordinate targetCoordinates = targetUnit.getPosition();
         return targetCoordinates;
     }
-    
+
     public void merge(IGroundUnitCollection relatedGroundCollection)
     {
         groundUnits.addAll(relatedGroundCollection.getGroundUnits());
     }
-    
+
     public void finishGroundUnitCollection() throws PWCGException
     {
         createCheckZone();
@@ -60,7 +60,29 @@ public class GroundUnitCollection implements IGroundUnitCollection
             {
                 groundUnitsForSide.add(groundUnit);
             }
-         }
+        }
+        return groundUnitsForSide;
+    }
+
+    public List<IGroundUnit> getInterestingGroundUnitsForSide(Side side) throws PWCGException
+    {
+        List<IGroundUnit> groundUnitsForSide = new ArrayList<>();
+        for (IGroundUnit groundUnit : groundUnits)
+        {
+            if (groundUnit.getCountry().getSide() == side)
+            {
+                if (groundUnit.getGroundUnitType() != GroundUnitType.AAA_UNIT && groundUnit.getGroundUnitType() != GroundUnitType.STATIC_UNIT)
+                {
+                    groundUnitsForSide.add(groundUnit);
+                }
+            }
+        }
+        
+        if (groundUnitsForSide.size() == 0)
+        {
+            groundUnitsForSide = getGroundUnitsForSide(side);
+        }
+        
         return groundUnitsForSide;
     }
 
@@ -91,10 +113,10 @@ public class GroundUnitCollection implements IGroundUnitCollection
     {
         for (IGroundUnit groundUnit : groundUnits)
         {
-            missionBeginUnit.linkCheckZoneTarget(groundUnit. getEntryPoint());
+            missionBeginUnit.linkCheckZoneTarget(groundUnit.getEntryPoint());
             if (missionBeginUnit instanceof MissionBeginInOutCheckZone)
             {
-                MissionBeginInOutCheckZone inOut = (MissionBeginInOutCheckZone)missionBeginUnit;
+                MissionBeginInOutCheckZone inOut = (MissionBeginInOutCheckZone) missionBeginUnit;
                 inOut.linkCheckZoneExitTarget(groundUnit.getDeleteEntryPoint());
             }
         }
@@ -139,7 +161,7 @@ public class GroundUnitCollection implements IGroundUnitCollection
             writer.newLine();
             writer.write("{");
             writer.newLine();
-            
+
             writer.write("  Name = \"" + groundUnitCollectionData.getName() + "\";");
             writer.newLine();
             writer.write("  Index = " + index + ";");
@@ -152,7 +174,7 @@ public class GroundUnitCollection implements IGroundUnitCollection
             {
                 groundUnit.write(writer);
             }
-            
+
             writer.write("}");
             writer.newLine();
         }
@@ -209,7 +231,7 @@ public class GroundUnitCollection implements IGroundUnitCollection
     @Override
     public void triggerOnPlayerProximity(Mission mission) throws PWCGException
     {
-        missionBeginUnit.triggerOnPlayerProximity(mission);        
+        missionBeginUnit.triggerOnPlayerProximity(mission);
     }
 
     @Override

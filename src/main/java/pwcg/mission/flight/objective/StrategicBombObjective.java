@@ -1,5 +1,6 @@
 package pwcg.mission.flight.objective;
 
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetType;
@@ -10,29 +11,28 @@ public class StrategicBombObjective
     {
         String objective = "Bomb the specified objective.  ";
 
-        if (flight.getTargetDefinition().getTargetType() == TargetType.TARGET_FACTORY)
+        TargetType targetType = flight.getTargetDefinition().getTargetType();
+        String nearestTown = PWCGContext.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(flight.getTargetDefinition().getPosition()).getName();
+        
+        if (targetType == TargetType.TARGET_FACTORY)
         {
-            objective = "Bomb the factories near " + flight.getTargetDefinition().getTargetName();
+            objective = "Bomb the factories near " + nearestTown;
         }
-        else if (flight.getTargetDefinition().getTargetType() == TargetType.TARGET_CITY)
+        else if (targetType == TargetType.TARGET_CITY)
         {
-            objective = "Bomb available targets at " + flight.getTargetDefinition().getTargetName();
+            objective = "Bomb available targets at " + nearestTown;
         }
-        else if (flight.getTargetDefinition().getTargetType() == TargetType.TARGET_RAIL)
+        else if (targetType == TargetType.TARGET_RAIL)
         {
-            objective = "Bomb the rail station at " + flight.getTargetDefinition().getTargetName();
+            objective = "Bomb the rail station near " + nearestTown;
         }
-        else if (flight.getTargetDefinition().getTargetType() == TargetType.TARGET_AIRFIELD)
+        else if (targetType == TargetType.TARGET_AIRFIELD)
         {
-            objective = "Bomb the airfield at " + flight.getTargetDefinition().getTargetName();
+            objective = "Bomb the airfield near " + nearestTown;
         }
-        else if (flight.getTargetDefinition().getTargetType() == TargetType.TARGET_PORT)
+        else if (targetType == TargetType.TARGET_PORT)
         {
-            objective = "Bomb the port facilities at " + flight.getTargetDefinition().getTargetName();
-        }
-        else if (flight.getTargetDefinition().getTargetType() == TargetType.TARGET_SHIPPING)
-        {
-            objective = "Bomb shipping that has been detected.  Expected shipping types include: " + flight.getTargetDefinition().getTargetName() + ".";
+            objective = "Bomb the port facilities near " + nearestTown;
         }
 
         return objective;
