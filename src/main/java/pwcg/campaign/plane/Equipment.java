@@ -82,10 +82,10 @@ public class Equipment
         this.equippedPlanes = equippedPlanes;
     }
 
-//    public void addEquippedPlane(EquippedPlane equippedPlane)
-//    {
-//        equippedPlanes.put(equippedPlane.getSerialNumber(), equippedPlane);
-//    }
+    public void addEquippedPlane(EquippedPlane equippedPlane)
+    {
+        equippedPlanes.put(equippedPlane.getSerialNumber(), equippedPlane);
+    }
 
     public EquippedPlane removeBestEquippedFromDepot(List<String> activeArchTypes)
     {

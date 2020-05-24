@@ -29,7 +29,7 @@ public class EquipmentUpdater
     {
         for (Integer planeSerialNumber : aarContext.getCampaignUpdateData().getEquipmentLosses().getPlanesDestroyed().keySet())
         {
-            EquippedPlane equippedPlane = campaign.getEquipmentManager().getPlaneFromAnySquadron(planeSerialNumber);
+            EquippedPlane equippedPlane = campaign.getEquipmentManager().getAnyPlane(planeSerialNumber);
             equippedPlane.setPlaneStatus(PlaneStatus.STATUS_DESTROYED);
             equippedPlane.setDateRemovedFromService(campaign.getDate());
         }

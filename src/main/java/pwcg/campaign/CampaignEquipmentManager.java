@@ -77,10 +77,11 @@ public class CampaignEquipmentManager
         {
             throw new PWCGException ("Unable to locate equipped plane for serial number anywhere" + serialNumber);
         }
+        
         return equippedPlane;
     }
 
-    public EquippedPlane getPlaneFromAnySquadron(Integer serialNumber) throws PWCGException
+    private EquippedPlane getPlaneFromAnySquadron(Integer serialNumber) throws PWCGException
     {
         for (Equipment equipment : equipmentAllSquadrons.values())
         {
@@ -91,21 +92,17 @@ public class CampaignEquipmentManager
             }        
         }
         
-        getAnyPlane(serialNumber);
-                
-        throw new PWCGException ("Unable to locate equipped plane for serial number " + serialNumber);
+        return null;
     }
 
     private EquippedPlane getPlaneFromAnyDepo(Integer serialNumber) throws PWCGException
     {
         for (EquipmentDepot equipmentDepot : equipmentDepotsForServices.values())
         {
-            for (EquippedPlane equippedPlane : equipmentDepot.getAllPlanesInDepot())
+            EquippedPlane equippedPlane = equipmentDepot.getAnyPlaneInDepot(serialNumber);
+            if (equippedPlane != null)
             {
-                if (equippedPlane.getSerialNumber() == serialNumber)
-                {
-                    return equippedPlane;
-                }
+                return equippedPlane;
             }
         }
         return null;
@@ -132,7 +129,7 @@ public class CampaignEquipmentManager
 
     public EquippedPlane destroyPlane(int serialNumber, Date date) throws PWCGException
     {
-        EquippedPlane destroyedPlane = getPlaneFromAnySquadron(serialNumber);
+        EquippedPlane destroyedPlane = getAnyPlane(serialNumber);
         destroyedPlane.setPlaneStatus(PlaneStatus.STATUS_DESTROYED);
         destroyedPlane.setDateRemovedFromService(date);
         return destroyedPlane;

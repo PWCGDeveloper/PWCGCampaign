@@ -165,7 +165,7 @@ public class CombatReportBuilder
         String planesLostAppend = "";        
         for (PlaneStatusEvent planeLostEvent :squadronPlanesLostInMission.values())
         {
-            EquippedPlane lostPlane = campaign.getEquipmentManager().getPlaneFromAnySquadron(planeLostEvent.getPlaneSerialNumber());
+            EquippedPlane lostPlane = campaign.getEquipmentManager().getAnyPlane(planeLostEvent.getPlaneSerialNumber());
             planesLostAppend += "    " + lostPlane.getDisplayName() + ": " + lostPlane.getSerialNumber() + "\n";
         }
         
