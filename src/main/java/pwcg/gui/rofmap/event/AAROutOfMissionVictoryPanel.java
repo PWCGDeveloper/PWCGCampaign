@@ -107,7 +107,7 @@ public class AAROutOfMissionVictoryPanel extends AAREventPanel
         {
             List<VictoryEvent> victoriesForPilot = victoriesByPilotsInMySquadron.get(pilotName);
             CampaignReportVictoryGUI victoryGUI = new CampaignReportVictoryGUI(campaign, victoriesForPilot);
-            String tabName = "Plane Lost: " + pilotName;
+            String tabName = "Notification of Victory: " + pilotName;
             pilotVictoryPanelData.put(tabName, victoryGUI);
         }
         return pilotVictoryPanelData;
