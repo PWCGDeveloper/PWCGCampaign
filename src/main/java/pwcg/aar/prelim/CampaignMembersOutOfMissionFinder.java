@@ -3,8 +3,10 @@ package pwcg.aar.prelim;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignMembersOutOfMissionFinder
@@ -15,9 +17,13 @@ public class CampaignMembersOutOfMissionFinder
         SquadronMembers campaignMembersOutOfMission = new SquadronMembers();
         for (SquadronMember pilot : allCampaignMembers.values())
         {
-            if (!campaignMembersInMission.getSquadronMemberCollection().containsKey(pilot.getSerialNumber()))
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(pilot.getSquadronId());
+            if (squadron.isCanFly(campaign.getDate()))
             {
-                campaignMembersOutOfMission.addToSquadronMemberCollection(pilot);
+                if (!campaignMembersInMission.getSquadronMemberCollection().containsKey(pilot.getSerialNumber()))
+                {
+                    campaignMembersOutOfMission.addToSquadronMemberCollection(pilot);
+                }
             }
         }
         

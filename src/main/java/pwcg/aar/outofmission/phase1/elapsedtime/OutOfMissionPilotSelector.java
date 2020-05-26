@@ -39,12 +39,22 @@ public class OutOfMissionPilotSelector
     private static boolean isSquadronViable(Campaign campaign, SquadronMember squadronMember) throws PWCGException
     {
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());
-        if (squadron != null)
+        if (squadron == null)
         {
-            return squadron.isSquadronViable(campaign);
+            return false;
         }
         
-        return false;
+        if (!squadron.isSquadronViable(campaign))
+        {
+            return false;
+        }
+        
+        if (!squadron.isCanFly(campaign.getDate()))
+        {
+            return false;
+        }
+
+        return true;
     }
 
 }
