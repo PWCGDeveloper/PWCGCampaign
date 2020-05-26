@@ -2,6 +2,20 @@
 ​
 At the PWCG web site
 
+9.0.0
+PWCG is now ground activity centric.  
+- Ground activity created first.
+- Air activity closely associated with ground activity.
+- AI units have real targets
+- Better control of number of units
+- More realistic feel to missions
+Bugs
+Fixed AAR issue in July 1942
+Fixed AAR error where a plane would not be found
+Fixed East Front 1944/Stalingrad confusion
+Fixed tab label for "Notification of Victory"
+
+
 8.8.1
 Changed to AA
 - Separate configuration for AA
