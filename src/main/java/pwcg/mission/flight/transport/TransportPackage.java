@@ -9,13 +9,10 @@ import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderFactory;
+import pwcg.mission.target.TargetDefinitionBuilderAirToAir;
 
 public class TransportPackage implements IFlightPackage
 {
-    private IFlightInformation flightInformation;
-    private TargetDefinition targetDefinition;
-
     public TransportPackage()
     {
     }
@@ -23,23 +20,18 @@ public class TransportPackage implements IFlightPackage
     @Override
     public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
-        this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.TRANSPORT);
-        this.targetDefinition = buildTargetDefintion();
+        IFlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.TRANSPORT);
+        TargetDefinition targetDefinition = buildTargetDefintion(flightInformation);
 
-        TransportFlight transportFlight = makeTransportFlight();
-        return transportFlight;
-	}
-    
-    private TransportFlight makeTransportFlight() throws PWCGException
-    {
         TransportFlight transportFlight = new TransportFlight (flightInformation, targetDefinition);
         transportFlight.createFlight();
         return transportFlight;
     }
-
-    private TargetDefinition buildTargetDefintion() throws PWCGException
+    
+    private TargetDefinition buildTargetDefintion(IFlightInformation flightInformation) throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
-        return  targetDefinitionBuilder.buildTargetDefinition();
+        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilderAirToAir(flightInformation);
+        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
+        return targetDefinition;
     }
 }

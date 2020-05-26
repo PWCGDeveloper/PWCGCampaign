@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
@@ -41,7 +40,6 @@ public class PlayerFlightTypeBoSFighterTest
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
     }
 
@@ -197,8 +195,7 @@ public class PlayerFlightTypeBoSFighterTest
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)
 	{
-        assert (targetDefinition.getAttackingCountry() != null);
-        assert (targetDefinition.getTargetCountry() != null);
+        assert (targetDefinition.getCountry() != null);
         assert (targetDefinition.getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
         assert (targetDefinition.getTargetType() != TargetType.TARGET_NONE);
 	}

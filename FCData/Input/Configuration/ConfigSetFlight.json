@@ -65,26 +65,6 @@
       "value": "3000",
       "label": "Takeoff Waypoint Distance",
       "help": "Distance to Takeoff Waypoint in meters"
-    },
-    "scrambleOddsAllied": {
-      "value": "2",
-      "label": "Allied Scramble Odds",
-      "help": "Odds of Allied scramble mission"
-    },
-    "scrambleOddsAxis": {
-      "value": "4",
-      "label": "Axis Scramble Odds",
-      "help": "Odds of Axis scramble mission"
-    },
-    "antiShipOddsAllied": {
-      "value": "1",
-      "label": "Allied Anti Shipppping Odds",
-      "help": "Odds of Allied anti shipping mission"
-    },
-    "antiShipOddsAxis": {
-      "value": "1",
-      "label": "Axis Anti Shipppping Odds",
-      "help": "Odds of Axis anti shipping mission"
     }
   }
 }

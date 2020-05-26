@@ -21,9 +21,8 @@ import pwcg.core.utils.DateUtils;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleClass;
-import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderGround;
+import pwcg.mission.target.TargetType;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ShipUnitBuilderTest
@@ -43,12 +42,7 @@ public class ShipUnitBuilderTest
     @Test
     public void createCargoShipTest () throws PWCGException 
     {
-        TargetDefinitionBuilderGround targetDefinitionBuilder = new TargetDefinitionBuilderGround(campaign);
-        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionBattle(
-                CountryFactory.makeCountryByCountry(Country.GERMANY), 
-                CountryFactory.makeCountryByCountry(Country.RUSSIA), 
-                TargetType.TARGET_ARTILLERY, new Coordinate (102000, 0, 100000), true);
-
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_INFANTRY, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA));
         ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(campaign, targetDefinition);
         IGroundUnitCollection groundUnitGroup = shippingFactory.createShippingUnit(VehicleClass.ShipCargo);
         assert (groundUnitGroup.getGroundUnits().size() == 1);
@@ -71,12 +65,7 @@ public class ShipUnitBuilderTest
     @Test
     public void createWarshipTest () throws PWCGException 
     {
-        TargetDefinitionBuilderGround targetDefinitionBuilder = new TargetDefinitionBuilderGround(campaign);
-        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionBattle(
-                CountryFactory.makeCountryByCountry(Country.GERMANY), 
-                CountryFactory.makeCountryByCountry(Country.RUSSIA), 
-                TargetType.TARGET_ARTILLERY, new Coordinate (102000, 0, 100000), true);
-
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_INFANTRY, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA));
         ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(campaign, targetDefinition);
         IGroundUnitCollection groundUnitGroup = shippingFactory.createShippingUnit(VehicleClass.ShipWarship);
         assert (groundUnitGroup.getGroundUnits().size() == 1);
@@ -99,12 +88,7 @@ public class ShipUnitBuilderTest
     @Test
     public void createSubmarineTest () throws PWCGException 
     {
-        TargetDefinitionBuilderGround targetDefinitionBuilder = new TargetDefinitionBuilderGround(campaign);
-        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionBattle(
-                CountryFactory.makeCountryByCountry(Country.GERMANY), 
-                CountryFactory.makeCountryByCountry(Country.RUSSIA), 
-                TargetType.TARGET_ARTILLERY, new Coordinate (102000, 0, 100000), true);
-
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_INFANTRY, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA));
         ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(campaign, targetDefinition);
         IGroundUnitCollection groundUnitGroup = shippingFactory.createShippingUnit(VehicleClass.Submarine);
         assert (groundUnitGroup.getGroundUnits().size() == 1);

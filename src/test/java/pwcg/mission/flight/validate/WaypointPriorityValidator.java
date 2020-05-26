@@ -29,7 +29,11 @@ public class WaypointPriorityValidator
 
         for (McuWaypoint waypoint : flight.getWaypointPackage().getAllWaypoints())
         {
-            if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TAKEOFF))
+            if (FlightTypes.isHighPriorityFlight(flight.getFlightType())) 
+            {
+                assert (waypoint.getPriority() == WaypointPriority.PRIORITY_HIGH);    
+            }
+            else if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TAKEOFF))
             {
                 assert (waypoint.getPriority() != WaypointPriority.PRIORITY_LOW);
             }

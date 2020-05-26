@@ -13,7 +13,6 @@ public class FlightAttackAreaFactory
     {
         McuAttackArea attackArea = null;
         if (flightType == FlightTypes.BOMB || 
-            flightType == FlightTypes.ANTI_SHIPPING_BOMB || 
             flightType == FlightTypes.LOW_ALT_BOMB || 
             flightType == FlightTypes.TRANSPORT ||
             flightType == FlightTypes.CARGO_DROP)
@@ -21,9 +20,7 @@ public class FlightAttackAreaFactory
             attackArea = new McuAttackArea(AttackAreaType.INDIRECT);
             attackArea.setAttackRadius(ATTACK_AREA_BOMB_DROP_DISTANCE);
         }
-        else if (flightType == FlightTypes.ANTI_SHIPPING_ATTACK || 
-                flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB ||
-                flightType == FlightTypes.DIVE_BOMB || 
+        else if (flightType == FlightTypes.DIVE_BOMB || 
                 flightType == FlightTypes.GROUND_ATTACK)
         {
             attackArea = new McuAttackArea(AttackAreaType.GROUND_TARGETS);

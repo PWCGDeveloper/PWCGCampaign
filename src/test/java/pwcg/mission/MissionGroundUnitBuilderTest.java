@@ -1,5 +1,4 @@
-package pwcg.mission
-;
+package pwcg.mission;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,11 +15,11 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
-import pwcg.mission.ambient.AmbientBattleBuilder;
-import pwcg.mission.ambient.AmbientTrainBuilder;
-import pwcg.mission.ambient.AmbientTruckConvoyBuilder;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.ground.AAAManager;
+import pwcg.mission.ground.MissionBattleBuilder;
+import pwcg.mission.ground.MissionTrainBuilder;
+import pwcg.mission.ground.MissionTruckConvoyBuilder;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.testutils.CampaignCache;
@@ -28,8 +27,8 @@ import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestParticipatingHumanBuilder;
 
 @RunWith(MockitoJUnitRunner.class)
-public class AmbientBuilderTest
-{    
+public class MissionGroundUnitBuilderTest
+{
     @Before
     public void setup() throws PWCGException
     {
@@ -37,80 +36,106 @@ public class AmbientBuilderTest
     }
 
     @Test
-    public void createAmbientBattle () throws PWCGException
+    public void createBattle() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
         Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
         mission.generate(Arrays.asList(FlightTypes.DIVE_BOMB));
-        
-        AmbientBattleBuilder ambientBattleBuilder = new AmbientBattleBuilder(campaign, mission);
-        List<IGroundUnitCollection> battles = ambientBattleBuilder.generateAmbientBattles();
-        
+
+        MissionBattleBuilder battleBuilder = new MissionBattleBuilder(campaign, mission);
+        List<IGroundUnitCollection> battles = battleBuilder.generateBattles();
+
         assert (battles.size() < 3);
         for (IGroundUnitCollection battle : battles)
         {
-            assert(battle.getGroundUnitsForSide(Side.ALLIED).size() > 0);
-            assert(battle.getGroundUnitsForSide(Side.AXIS).size() > 0);
+            assert (battle.getGroundUnitsForSide(Side.ALLIED).size() > 0);
+            assert (battle.getGroundUnitsForSide(Side.AXIS).size() > 0);
         }
     }
 
     @Test
-    public void createAmbientTrucks () throws PWCGException
+    public void createTrucks() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
         Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
         mission.generate(Arrays.asList(FlightTypes.DIVE_BOMB));
-        
-        AmbientTruckConvoyBuilder ambientTruckConvoyBuilder = new AmbientTruckConvoyBuilder(campaign, mission);
-        List<IGroundUnitCollection> ambientTrucks = ambientTruckConvoyBuilder.generateAmbientTrucks();
 
-        assert (ambientTrucks.size() < 6);
-        for (IGroundUnitCollection ambientTruckUnit : ambientTrucks)
+        MissionTruckConvoyBuilder truckConvoyBuilder = new MissionTruckConvoyBuilder(campaign, mission);
+        List<IGroundUnitCollection> trucks = truckConvoyBuilder.generateMissionTrucks();
+
+        assert (trucks.size() >= 2);
+        assert (trucks.size() <= 12);
+
+        boolean alliedTrainFound = false;
+        boolean axisTrainFound = false;
+        for (IGroundUnitCollection truckUnit : trucks)
         {
-            for (IGroundUnit groundUnit : ambientTruckUnit.getGroundUnits())
+            for (IGroundUnit groundUnit : truckUnit.getGroundUnits())
             {
-                assert(groundUnit.getCountry().getSide() == Side.ALLIED);
-                assert(groundUnit.getVehicles().size() > 1);
+                if (groundUnit.getCountry().getSide() == Side.ALLIED)
+                {
+                    alliedTrainFound = true;
+                }
+                else
+                {
+                    axisTrainFound = true;
+                }
+                assert (groundUnit.getVehicles().size() >= 1);
             }
         }
+        assert (alliedTrainFound);
+        assert (axisTrainFound);
     }
 
     @Test
-    public void createAmbientTrains () throws PWCGException
+    public void createTrains() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
         Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
         mission.generate(Arrays.asList(FlightTypes.DIVE_BOMB));
-        
-        AmbientTrainBuilder ambientTrainBuilder = new AmbientTrainBuilder(campaign, mission);
-        List<IGroundUnitCollection> ambientTrains = ambientTrainBuilder.generateAmbientTrains();
 
-        assert (ambientTrains.size() <= 4);
-        for (IGroundUnitCollection ambientTrain : ambientTrains)
+        MissionTrainBuilder trainBuilder = new MissionTrainBuilder(campaign, mission);
+        List<IGroundUnitCollection> trains = trainBuilder.generateMissionTrains();
+
+        assert (trains.size() >= 2);
+        assert (trains.size() <= 8);
+
+        boolean alliedTrainFound = false;
+        boolean axisTrainFound = false;
+        for (IGroundUnitCollection train : trains)
         {
-            for (IGroundUnit groundUnit : ambientTrain.getGroundUnits())
+            for (IGroundUnit groundUnit : train.getGroundUnits())
             {
-                assert(groundUnit.getCountry().getSide() == Side.ALLIED);
-                assert(groundUnit.getVehicles().size() == 1);
+                if (groundUnit.getCountry().getSide() == Side.ALLIED)
+                {
+                    alliedTrainFound = true;
+                }
+                else
+                {
+                    axisTrainFound = true;
+                }
+                assert (groundUnit.getVehicles().size() == 1);
             }
         }
+        assert (alliedTrainFound);
+        assert (axisTrainFound);
     }
 
     @Test
-    public void createAmbientAAA () throws PWCGException
+    public void createAAA() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
         Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
         mission.generate(Arrays.asList(FlightTypes.DIVE_BOMB));
-        
+
         AAAManager aaaManager = new AAAManager(campaign, mission);
         List<IGroundUnitCollection> AAA = aaaManager.getAAAForMission();
 
@@ -119,7 +144,7 @@ public class AmbientBuilderTest
         {
             for (IGroundUnit groundUnit : aaaUnit.getGroundUnits())
             {
-                assert(groundUnit.getVehicles().size() > 0);
+                assert (groundUnit.getVehicles().size() > 0);
             }
         }
     }

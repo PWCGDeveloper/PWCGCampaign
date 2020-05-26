@@ -100,8 +100,7 @@ public class PlayerFlightTypeBoSBombTest
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)
     {
-        assert (targetDefinition.getAttackingCountry() != null);
-        assert (targetDefinition.getTargetCountry() != null);
+        assert (targetDefinition.getCountry() != null);
         assert (targetDefinition.getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
         assert (targetDefinition.getTargetType() != TargetType.TARGET_NONE);
     }

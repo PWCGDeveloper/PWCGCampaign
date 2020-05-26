@@ -18,11 +18,6 @@ public class NightFlightTypeConverter
             {
                 return FlightTypes.GROUND_ATTACK;
             }
-    
-            if (flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
-            {
-                return FlightTypes.ANTI_SHIPPING_ATTACK;
-            }
         }
 
         return flightType;

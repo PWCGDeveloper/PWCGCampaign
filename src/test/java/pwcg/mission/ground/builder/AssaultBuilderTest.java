@@ -18,7 +18,6 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -36,9 +35,6 @@ import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.mcu.McuTREntity;
-import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderGround;
-import pwcg.mission.target.TargetType;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({RandomNumberGenerator.class})
@@ -114,13 +110,7 @@ public class AssaultBuilderTest
     
     public IGroundUnitCollection createLargeAssaultTest () throws PWCGException 
     {
-        TargetDefinitionBuilderGround targetDefinitionBuilder = new TargetDefinitionBuilderGround(campaign);
-        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionBattle(
-                CountryFactory.makeCountryByCountry(Country.GERMANY), 
-                CountryFactory.makeCountryByCountry(Country.RUSSIA), 
-                TargetType.TARGET_ASSAULT, new Coordinate (102000, 0, 100000), true);
-
-        IGroundUnitCollection groundUnitGroup = AssaultBuilder.generateAssault(mission, targetDefinition);
+        IGroundUnitCollection groundUnitGroup = AssaultBuilder.generateAssault(mission, new Coordinate (102000, 0, 100000));
         
         assert (groundUnitGroup.getGroundUnits().size() >= 10);
         groundUnitGroup.validate();

@@ -19,14 +19,10 @@ public class TargetTypeNightGenerator
     {
         List <TargetType> targetTypes = new ArrayList<TargetType>();
 
-        targetTypes.add (TargetType.TARGET_ARTILLERY);
-        targetTypes.add (TargetType.TARGET_ARTILLERY);
+        targetTypes.add (TargetType.TARGET_INFANTRY);
+        targetTypes.add (TargetType.TARGET_INFANTRY);
         targetTypes.add (TargetType.TARGET_TRANSPORT);
         targetTypes.add (TargetType.TARGET_TRANSPORT);
-        targetTypes.add (TargetType.TARGET_TRANSPORT);
-        targetTypes.add (TargetType.TARGET_TRANSPORT);
-        targetTypes.add (TargetType.TARGET_TRANSPORT);
-        targetTypes.add (TargetType.TARGET_TRAIN);
         targetTypes.add (TargetType.TARGET_TRAIN);
         targetTypes.add (TargetType.TARGET_TRAIN);
         targetTypes.add (TargetType.TARGET_AIRFIELD);

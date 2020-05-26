@@ -5,26 +5,25 @@ import java.util.List;
 
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.balloonBust.BalloonBustFlight;
-import pwcg.mission.ground.org.IGroundUnitCollection;
-import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderFactory;
+import pwcg.mission.target.TargetType;
 
 public class BalloonDefenseOpposingFlightBuilder
 {
     private IFlightInformation playerFlightInformation;
-    private IGroundUnitCollection balloonUnit;
+    private Coordinate balloonUnitPosition;
 
-    public BalloonDefenseOpposingFlightBuilder(IFlightInformation playerFlightInformation, IGroundUnitCollection balloonUnit)
+    public BalloonDefenseOpposingFlightBuilder(IFlightInformation playerFlightInformation, Coordinate balloonUnitPosition)
     {
         this.playerFlightInformation = playerFlightInformation;
-        this.balloonUnit = balloonUnit;
+        this.balloonUnitPosition = balloonUnitPosition;
     }
 
     public List<IFlight> buildOpposingFlights() throws PWCGException
@@ -79,9 +78,7 @@ public class BalloonDefenseOpposingFlightBuilder
 
     private TargetDefinition buildOpposingTargetDefintion(IFlightInformation opposingFlightInformation) throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(opposingFlightInformation);
-        TargetDefinition opposingTargetDefinition =  targetDefinitionBuilder.buildTargetDefinition();
-        opposingTargetDefinition.setTargetPosition(balloonUnit.getPosition());
+        TargetDefinition opposingTargetDefinition =  new TargetDefinition(TargetType.TARGET_AIR, balloonUnitPosition, opposingFlightInformation.getCountry());
         return opposingTargetDefinition;
     }
 }

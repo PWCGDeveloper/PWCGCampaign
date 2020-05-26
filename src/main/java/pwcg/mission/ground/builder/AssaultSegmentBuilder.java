@@ -37,7 +37,7 @@ public class AssaultSegmentBuilder
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, 
                 "Battle Segment", 
-                TargetType.TARGET_ASSAULT,
+                TargetType.TARGET_INFANTRY,
                 Coalition.getCoalitions());
 
         this.battleSegmentUnitCollection = new GroundUnitCollection ("Assault Segment", groundUnitCollectionData);
@@ -139,16 +139,13 @@ public class AssaultSegmentBuilder
 
     private GroundUnitInformation buildAssaultGroundUnitInformation(Coordinate unitPosition, String unitName) throws PWCGException
     {
-        String name = assaultDefinition.getAssaultingCountry().getCountryName() + " " + unitName;
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 mission.getCampaign(), 
                 assaultDefinition.getAssaultingCountry(),
-                name, 
                 TargetType.TARGET_INFANTRY, 
                 unitPosition, 
                 assaultDefinition.getDefensePosition(), 
-                assaultDefinition.getTowardsDefenderOrientation(), 
-                assaultDefinition.determineIsBattleForPlayer());
+                assaultDefinition.getTowardsDefenderOrientation());
         
         return groundUnitInformation;
     }
@@ -263,16 +260,13 @@ public class AssaultSegmentBuilder
 
     private GroundUnitInformation buildDefenseGroundUnitInformation(Coordinate unitPosition, String unitName) throws PWCGException
     {
-        String name = assaultDefinition.getDefendingCountry().getCountryName() + " " + unitName;
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 mission.getCampaign(), 
                 assaultDefinition.getDefendingCountry(),
-                name, 
                 TargetType.TARGET_INFANTRY, 
                 unitPosition, 
                 assaultDefinition.getAssaultPosition(), 
-                assaultDefinition.getTowardsAttackerOrientation(), 
-                assaultDefinition.determineIsBattleForPlayer());
+                assaultDefinition.getTowardsAttackerOrientation());
         return groundUnitInformation;
     }
 

@@ -16,7 +16,7 @@ public class MissionCheckZoneTriggerBuilder
     public void triggerGroundUnitsOnPlayerProximity() throws PWCGException
     {
         triggerPlayerTargetsOnAnyPlayer();
-        triggerAmbientGroundUnitsOnAnyPlayer();
+        triggerGroundUnitsOnAnyPlayer();
     }
 
     private void triggerPlayerTargetsOnAnyPlayer() throws PWCGException
@@ -30,11 +30,11 @@ public class MissionCheckZoneTriggerBuilder
         }
     }
 
-    private void triggerAmbientGroundUnitsOnAnyPlayer() throws PWCGException
+    private void triggerGroundUnitsOnAnyPlayer() throws PWCGException
     {
-        for (IGroundUnitCollection ambientGroundUnit: mission.getAmbientGroundUnitBuilder().getAllAmbientGroundUnits())
+        for (IGroundUnitCollection groundUnit: mission.getMissionGroundUnitBuilder().getAllMissionGroundUnits())
         {
-            ambientGroundUnit.triggerOnPlayerProximity(mission);
+            groundUnit.triggerOnPlayerProximity(mission);
         }
     }
 }

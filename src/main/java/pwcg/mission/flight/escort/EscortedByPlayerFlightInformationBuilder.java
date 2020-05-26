@@ -21,7 +21,7 @@ public class EscortedByPlayerFlightInformationBuilder
         escortedFlightInformation.setPlayerFlight(false);
         escortedFlightInformation.setEscortForPlayerFlight(false);
         escortedFlightInformation.setEscortedByPlayerFlight(true);
-        escortedFlightInformation.setTargetSearchStartLocation(playerEscortTargetDefinition.getTargetPosition());
+        escortedFlightInformation.setTargetSearchStartLocation(playerEscortTargetDefinition.getPosition());
         FlightPlaneBuilder.buildPlanes (escortedFlightInformation);
         escortedFlightInformation.setAltitude(playerEscortFlightInformation.getAltitude() - 500);
 

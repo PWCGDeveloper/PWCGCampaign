@@ -23,7 +23,6 @@ import pwcg.mission.flight.patrol.LowAltPatrolPackage;
 import pwcg.mission.flight.patrol.PatrolPackage;
 import pwcg.mission.flight.recon.ReconPackage;
 import pwcg.mission.flight.scramble.PlayerScramblePackage;
-import pwcg.mission.flight.seapatrolantishipping.SeaAntiShippingPackage;
 import pwcg.mission.flight.spy.SpyExtractPackage;
 import pwcg.mission.flight.strategicintercept.StrategicInterceptPackage;
 import pwcg.mission.flight.transport.TransportPackage;
@@ -144,10 +143,6 @@ public class FlightFactory
         else if (flightType == FlightTypes.STRATEGIC_INTERCEPT)
         {
             flightPackage = new StrategicInterceptPackage();
-        }
-        else if (flightType == FlightTypes.ANTI_SHIPPING_BOMB || flightType == FlightTypes.ANTI_SHIPPING_ATTACK || flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
-        {
-            flightPackage = new SeaAntiShippingPackage(flightType);
         }
         else
         {

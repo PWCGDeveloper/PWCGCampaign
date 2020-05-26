@@ -69,7 +69,7 @@ public class StrategicInterceptWaypointFactory
         interceptWP.setPosition(coord);    
         interceptWP.setTargetWaypoint(true);
         
-        double initialAngle = MathUtils.calcAngle(flight.getFlightHomePosition(), flight.getTargetDefinition().getTargetPosition());
+        double initialAngle = MathUtils.calcAngle(flight.getFlightHomePosition(), flight.getTargetDefinition().getPosition());
         interceptWP.getOrientation().setyOri(initialAngle);
         
         return interceptWP;

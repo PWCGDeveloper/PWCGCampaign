@@ -40,13 +40,9 @@ public class GroundAttackObjective
         TargetType targetType = enemyGroundUnit.getTargetType();
         
         
-        if (targetType == TargetType.TARGET_ASSAULT)
+        if (targetType == TargetType.TARGET_INFANTRY)
         {
-            objective = "Attack assaulting enemy troops" + objectiveLocation; 
-        }
-        else if (targetType == TargetType.TARGET_DEFENSE)
-        {
-            objective = "Attack defending enemy troops" + objectiveLocation; 
+            objective = "Attack enemy troops" + objectiveLocation; 
         }
         else if (targetType == TargetType.TARGET_INFANTRY)
         {
@@ -61,10 +57,6 @@ public class GroundAttackObjective
         {
             objective = "Attack the trains and rail facilities" + objectiveLocation;
         }
-        else if (targetType == TargetType.TARGET_ARTILLERY)
-        {
-            objective = "Attack the artillery battery" + objectiveLocation; 
-        }
         else if (targetType == TargetType.TARGET_TRANSPORT)
         {
             objective = "Attack the transport and road facilities" + objectiveLocation; 
@@ -73,17 +65,9 @@ public class GroundAttackObjective
         {
             objective = "Attack the shipping" + objectiveLocation; 
         }
-        else if (targetType == TargetType.TARGET_BALLOON)
-        {
-            objective = "Attack the balloons" + objectiveLocation; 
-        }
         else if (targetType == TargetType.TARGET_DRIFTER)
         {
             objective = "Attack the light shipping" + objectiveLocation; 
-        }
-        else if (targetType == TargetType.TARGET_AAA)
-        {
-            objective = "Attack AAA" + objectiveLocation; 
         }
         else
         {

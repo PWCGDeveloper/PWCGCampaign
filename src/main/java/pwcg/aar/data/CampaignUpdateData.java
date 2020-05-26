@@ -2,6 +2,7 @@ package pwcg.aar.data;
 
 import pwcg.aar.outofmission.phase2.resupply.AARResupplyData;
 import pwcg.campaign.Campaign;
+import pwcg.core.exception.PWCGException;
 
 public class CampaignUpdateData
 {
@@ -16,7 +17,7 @@ public class CampaignUpdateData
         this.logEvents = new AARLogEvents(campaign);
     }
 
-    public void merge(CampaignUpdateData sourceCampaignUpdateData)
+    public void merge(CampaignUpdateData sourceCampaignUpdateData) throws PWCGException
 	{
         personnelLosses.merge(sourceCampaignUpdateData.getPersonnelLosses());
         equipmentLosses.merge(sourceCampaignUpdateData.getEquipmentLosses());

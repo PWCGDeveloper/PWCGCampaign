@@ -32,8 +32,8 @@ public class IngressWaypointNearField implements IIngressWaypoint
 
     private Coordinate getIngressWaypointNearField() throws PWCGException 
     {
-        double angleToTarget = MathUtils.calcAngle(flight.getFlightHomePosition(), flight.getTargetDefinition().getTargetPosition());
-        double distanceToTarget = MathUtils.calcDist(flight.getFlightHomePosition(), flight.getTargetDefinition().getTargetPosition());
+        double angleToTarget = MathUtils.calcAngle(flight.getFlightHomePosition(), flight.getTargetDefinition().getPosition());
+        double distanceToTarget = MathUtils.calcDist(flight.getFlightHomePosition(), flight.getTargetDefinition().getPosition());
         double distanceToIngress = distanceToTarget;
         if (distanceToTarget > 12000)
         {

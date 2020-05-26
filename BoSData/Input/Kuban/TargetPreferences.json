@@ -4,7 +4,7 @@
       "startDate": "19430410",
       "endDate": "19430417",
       "targetSide": "ALLIED",
-      "targetType": "TARGET_ASSAULT",
+      "targetType": "TARGET_INFANTRY",
       "oddsOfUse": "40"
     },
     {
@@ -32,14 +32,14 @@
       "startDate": "19430914",
       "endDate": "19430928",
       "targetSide": "ALLIED",
-      "targetType": "TARGET_DEFENSE",
+      "targetType": "TARGET_INFANTRY",
       "oddsOfUse": "30"
     },
     {
       "startDate": "19430410",
       "endDate": "19430417",
       "targetSide": "AXIS",
-      "targetType": "TARGET_DEFENSE",
+      "targetType": "TARGET_INFANTRY",
       "oddsOfUse": "40"
     },
     {
@@ -60,7 +60,7 @@
       "startDate": "19430914",
       "endDate": "19430928",
       "targetSide": "AXIS",
-      "targetType": "TARGET_ASSAULT",
+      "targetType": "TARGET_INFANTRY",
       "oddsOfUse": "30"
     },
     {

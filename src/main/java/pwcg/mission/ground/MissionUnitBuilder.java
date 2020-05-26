@@ -1,4 +1,4 @@
-package pwcg.mission.ambient;
+package pwcg.mission.ground;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
@@ -8,12 +8,12 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
 
-public abstract class AmbientUnitBuilder
+public abstract class MissionUnitBuilder
 {
     protected Mission mission = null;
     protected Campaign campaign = null;
 
-    public AmbientUnitBuilder (Campaign campaign, Mission mission)
+    public MissionUnitBuilder (Campaign campaign, Mission mission)
     {
         this.mission = mission;
         this.campaign = campaign;

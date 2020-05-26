@@ -23,6 +23,7 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.location.CoordinateBox;
 import pwcg.core.location.Orientation;
 import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.DateUtils;
@@ -417,6 +418,13 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
     public List<Coordinate> getBoundary() throws PWCGException
     {
         List<Coordinate> points = new ArrayList<>();
+
+        CoordinateBox box = CoordinateBox.coordinateBoxFromCenter(getPosition(), 500);
+        points.add(box.getNE());
+        points.add(box.getNW());
+        points.add(box.getSE());
+        points.add(box.getSW());
+
         for (Runway runway : runways)
         {
             if (runway.getParkingLocation() != null)

@@ -35,7 +35,7 @@ public class IndirectFireAssignmentHandler
     {
         List<IGroundUnitCollection> allGroundUnits = new ArrayList<>();
         allGroundUnits.addAll(mission.getMissionFlightBuilder().getAllFlightLinkedGroundUnits());
-        allGroundUnits.addAll(mission.getAmbientGroundUnitBuilder().getAllAmbientGroundUnits());
+        allGroundUnits.addAll(mission.getMissionGroundUnitBuilder().getAllMissionGroundUnits());
         
         for (IGroundUnitCollection groundUnitCollection : allGroundUnits)
         {

@@ -23,11 +23,6 @@ public class ConfigSetFlight
         configSet.addConfigItem(ConfigItemKeys.BaseAltPeriod5Key, new ConfigItem("5000"));
         configSet.addConfigItem(ConfigItemKeys.BaseAltPeriod6Key, new ConfigItem("5000"));
         
-        configSet.addConfigItem(ConfigItemKeys.scrambleOddsAlliedKey, new ConfigItem("3"));
-        configSet.addConfigItem(ConfigItemKeys.scrambleOddsAxisKey, new ConfigItem("5"));
-        configSet.addConfigItem(ConfigItemKeys.antiShipOddsAlliedKey, new ConfigItem("10"));
-        configSet.addConfigItem(ConfigItemKeys.antiShipOddsAxisKey, new ConfigItem("10"));
-
         return configSet;
 	}
 }

@@ -19,15 +19,15 @@ public class EquipmentResupplyData
 
     public List<EquipmentResupplyRecord> getEquipmentResuppliedToSquadron(int squadronId)
     {
-        List<EquipmentResupplyRecord> squadronMembersTransferredIn = new ArrayList<>();
-        for (EquipmentResupplyRecord squadronEquipmentResupplyRecord : planesResupplied)
+        List<EquipmentResupplyRecord> equipmentResupplyRecords = new ArrayList<>();
+        for (EquipmentResupplyRecord equipmentResupply : planesResupplied)
         {
-            if (squadronEquipmentResupplyRecord.getTransferTo() == squadronId)
+            if (equipmentResupply.getTransferTo() == squadronId)
             {
-                squadronMembersTransferredIn.add(squadronEquipmentResupplyRecord);
+                equipmentResupplyRecords.add(equipmentResupply);
             }
         }
-        return squadronMembersTransferredIn;
+        return equipmentResupplyRecords;
     }
     
     public int getTransferCount()

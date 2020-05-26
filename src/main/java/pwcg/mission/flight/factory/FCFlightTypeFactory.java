@@ -57,20 +57,6 @@ public class FCFlightTypeFactory implements IFlightTypeFactory
             throw new PWCGMissionGenerationException("No valid role for squadron: " + squadron.determineDisplayName(campaign.getDate()));
         }
         
-        flightType = convertAiFlights(flightType, isPlayerFlight);
-        return flightType;
-    }
-
-
-    private FlightTypes convertAiFlights(FlightTypes flightType, boolean isPlayerFlight)
-    {
-        if (!isPlayerFlight)
-        {
-            if (flightType == FlightTypes.BALLOON_DEFENSE || flightType == FlightTypes.BALLOON_BUST)
-            {
-                return FlightTypes.PATROL;
-            }
-        }
         return flightType;
     }
 
@@ -83,6 +69,7 @@ public class FCFlightTypeFactory implements IFlightTypeFactory
             currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedBalloonDefenseMissionKey, FlightTypes.BALLOON_DEFENSE, currentIndex);
             currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedOffensiveMissionKey, FlightTypes.OFFENSIVE, currentIndex);
             currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedInterceptMissionKey, FlightTypes.INTERCEPT, currentIndex);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedScrambleMissionKey, FlightTypes.SCRAMBLE, currentIndex);
             currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedEscortMissionKey, FlightTypes.ESCORT, currentIndex);
             currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedPatrolMissionKey, FlightTypes.PATROL, currentIndex);
             currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedLowAltPatrolMissionKey, FlightTypes.LOW_ALT_PATROL, currentIndex);
@@ -94,6 +81,7 @@ public class FCFlightTypeFactory implements IFlightTypeFactory
             currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisBalloonDefenseMissionKey, FlightTypes.BALLOON_DEFENSE, currentIndex);
             currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisOffensiveMissionKey, FlightTypes.OFFENSIVE, currentIndex);
             currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisInterceptMissionKey, FlightTypes.INTERCEPT, currentIndex);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisScrambleMissionKey, FlightTypes.SCRAMBLE, currentIndex);
             currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisEscortMissionKey, FlightTypes.ESCORT, currentIndex);
             currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisPatrolMissionKey, FlightTypes.PATROL, currentIndex);
             currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisLowAltPatrolMissionKey, FlightTypes.LOW_ALT_PATROL, currentIndex);
@@ -103,7 +91,7 @@ public class FCFlightTypeFactory implements IFlightTypeFactory
         int selectedIndex = WeightedOddsCalculator.calculateWeightedodds(weightedOdds);
         FlightTypes flightType = flightTypesByIndex.get(selectedIndex);
 
-        if (flightType == FlightTypes.ESCORT || flightType == FlightTypes.BALLOON_BUST || flightType == FlightTypes.BALLOON_DEFENSE)
+        if (flightType == FlightTypes.ESCORT || flightType == FlightTypes.SCRAMBLE || flightType == FlightTypes.BALLOON_BUST || flightType == FlightTypes.BALLOON_DEFENSE)
         {
             if (!isPlayerFlight)
             {

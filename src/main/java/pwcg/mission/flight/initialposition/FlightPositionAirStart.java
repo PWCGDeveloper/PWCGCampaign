@@ -58,7 +58,7 @@ public class FlightPositionAirStart
         int numPlanesInFlight = determineNumberOfPlanesInFlight(flight);
         int numFlights = determineNumberOfFlights(flight, numPlanesInFlight);
 
-        double startOrientation = MathUtils.calcAngle(startCoordinate, flight.getTargetDefinition().getTargetPosition());
+        double startOrientation = MathUtils.calcAngle(startCoordinate, flight.getTargetDefinition().getPosition());
         double flightPlacementAngle = MathUtils.adjustAngle(startOrientation, 180);
         int initialAltitude = WaypointType.getAltitudeForWaypointType(WaypointType.AIR_START_WAYPOINT, flight.getFlightInformation().getAltitude());
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
@@ -126,7 +126,7 @@ public class FlightPositionAirStart
     
     private static void resetAirStartFormationForUnit(List<PlaneMcu> planes, IFlight flight, Coordinate startCoordinate, int flightAltitude) throws PWCGException 
     {
-        double startOrientation = MathUtils.calcAngle(startCoordinate, flight.getTargetDefinition().getTargetPosition());
+        double startOrientation = MathUtils.calcAngle(startCoordinate, flight.getTargetDefinition().getPosition());
         
         int i = 0;
         for (PlaneMcu plane : planes)

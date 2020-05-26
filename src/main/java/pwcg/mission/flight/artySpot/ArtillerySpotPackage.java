@@ -8,11 +8,11 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
-import pwcg.mission.ground.factory.TargetFactory;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderFactory;
+import pwcg.mission.target.TargetDefinitionBuilderAirToGround;
+import pwcg.mission.target.TargetSelectorGroundUnit;
 
 public class ArtillerySpotPackage implements IFlightPackage
 {
@@ -53,9 +53,8 @@ public class ArtillerySpotPackage implements IFlightPackage
 
     private IGroundUnitCollection createGroundUnitsForFlight() throws PWCGException
     {
-        TargetFactory targetBuilder = new TargetFactory(flightInformation, targetDefinition);
-        targetBuilder.buildTarget();
-        return targetBuilder.getGroundUnits();
+        TargetSelectorGroundUnit targetBuilder = new TargetSelectorGroundUnit(flightInformation);
+        return targetBuilder.findTarget();
     }
 
     private IFlight createAiFlight(Coordinate targetCoordinates) throws PWCGException
@@ -69,7 +68,7 @@ public class ArtillerySpotPackage implements IFlightPackage
 
     private TargetDefinition buildTargetDefintion() throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
-        return  targetDefinitionBuilder.buildTargetDefinition();
+        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilderAirToGround(flightInformation);
+        return targetDefinitionBuilder.buildTargetDefinition();
     }
 }
