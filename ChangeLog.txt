@@ -12,6 +12,8 @@ PWCG is now ground activity centric.
 Improved Low Alt CAP
 - Actually CAP ground troops
 - Placement is over battle
+Changed "Go Away" to apply only to airfields away from front lines
+Reduced font size for modification selection to fit more in.
 Bugs
 Fixed AAR issue in July 1942
 Fixed AAR error where a plane would not be found

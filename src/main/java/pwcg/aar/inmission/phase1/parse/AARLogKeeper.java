@@ -13,7 +13,7 @@ public class AARLogKeeper
         List<String> keptLogLinesFromMission = new ArrayList<>();
         boolean endOfMissionFound = false;
 
-        int lastMissionEndLogIndex = 0;
+        int lastMissionEndLogIndex = logLines.size();
         for (int index = 0; index < logLines.size(); ++index)
         {
             String logLine = logLines.get(index);
