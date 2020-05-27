@@ -54,6 +54,8 @@ import pwcg.product.bos.plane.payload.aircraft.U2VSPayload;
 import pwcg.product.bos.plane.payload.aircraft.Yak1S127Payload;
 import pwcg.product.bos.plane.payload.aircraft.Yak1S69Payload;
 import pwcg.product.bos.plane.payload.aircraft.Yak7BS36Payload;
+import pwcg.product.bos.plane.payload.aircraft.Yak9S1Payload;
+import pwcg.product.bos.plane.payload.aircraft.Yak9TS1Payload;
 
 public class BoSPayloadFactory implements IPayloadFactory
 {
@@ -247,6 +249,14 @@ public class BoSPayloadFactory implements IPayloadFactory
         else if (attributeMapping == BosPlaneAttributeMapping.YAK7B_S36)
         {
             return new Yak7BS36Payload(planeType);
+        }
+        else if (attributeMapping == BosPlaneAttributeMapping.YAK9_S1)
+        {
+            return new Yak9S1Payload(planeType);
+        }
+        else if (attributeMapping == BosPlaneAttributeMapping.YAK9T_S1)
+        {
+            return new Yak9TS1Payload(planeType);
         }
 
         throw new PWCGException ("No payload for plane " + planeTypeName);

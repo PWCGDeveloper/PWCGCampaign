@@ -38,6 +38,8 @@ public enum BosPlaneAttributeMapping implements IPlaneAttributeMapping
     YAK1_S69("yak1s69", "static_yak1_open", "static_yak1", "static_yak1_net"),
     YAK1_S127("yak1s127", "static_yak1_open", "static_yak1", "static_yak1_net"),
     YAK7B_S36("yak7bs36", "static_yak1_open", "static_yak1", "static_yak1_net"),
+    YAK9_S1("yak9s1", "static_yak1_open", "static_yak1", "static_yak1_net"),
+    YAK9T_S1("yak9ts1", "static_yak1_open", "static_yak1", "static_yak1_net"),
     P38_J25("p38j25", "static_p38j25"),
     P39_L1("p39l1", "static_p39l1"),
     P40_E1("p40e1", "static_p40e1"),

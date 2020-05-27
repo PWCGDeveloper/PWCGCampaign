@@ -178,7 +178,7 @@ public class MissionObjectiveFactory
         if (!objectiveName.isEmpty())
         {
             objective = "Patrol airspace " + objectiveName + 
-                    ".  Engage any enemy aircraft that you encounter."; 
+                    "  Engage any enemy aircraft that you encounter."; 
         }
         
         return objective;
@@ -193,8 +193,8 @@ public class MissionObjectiveFactory
         if (!objectiveName.isEmpty())
         {
             objective = "Close Air Patrol over our troops " + objectiveName +
-                    "  Engage any enemy aircraft that you encounter as a first priority.  " +
-                    "Attack targets of opportuity on the ground.  ";
+                    "  Engage any enemy aircraft that you encounter as a first priority." +
+                    "  Attack targets of opportuity on the ground.  ";
         }
         
         return objective;
@@ -209,7 +209,7 @@ public class MissionObjectiveFactory
     {
         String objective = "Extract our spy at the specified location" + 
                 MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getPosition().copy()) + "."  + 
-                ".  Don't get caught!";       
+                "  Don't get caught!";       
         
         return objective;
     }

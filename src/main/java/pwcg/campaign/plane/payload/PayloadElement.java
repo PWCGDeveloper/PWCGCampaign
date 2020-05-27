@@ -90,6 +90,9 @@ public enum PayloadElement
     ETC501(PayloadElementCategory.MODIFICATION, "ETC 501 Bomb Rack", 100),
     OCTANE_150_FUEL(PayloadElementCategory.MODIFICATION, "150 Octane Fuel", 100),
     LB_11_BOOST(PayloadElementCategory.MODIFICATION, "11 lb. Boost", 100),
+    PBP_1A(PayloadElementCategory.MODIFICATION, "PBP 1A", 100),
+    
+    
 
     AMMO_COUNTER(PayloadElementCategory.MODIFICATION, "Ammo Counter", 0),
     ALTITUDE_GUAGE(PayloadElementCategory.MODIFICATION, "Altitude Guage", 0),
@@ -162,6 +165,9 @@ public enum PayloadElement
     MG50CAL_6x(PayloadElementCategory.WEAPON, "6x .50 Cal MG", 0),
     REM_M230(PayloadElementCategory.WEAPON, "REM M230", 50),
     P3937MM_AP(PayloadElementCategory.WEAPON, "37mm AP", 50),
+    YAK937MM_AP_HE(PayloadElementCategory.WEAPON, "37mm AP/HE", 0),
+    YAK937MM_AP(PayloadElementCategory.WEAPON, "37mm AP", 0),
+    YAK937MM_HE(PayloadElementCategory.WEAPON, "37mm HE", 0),
     
     
     M64_X1(PayloadElementCategory.ORDNANCE_BOMB, "Mk 64 500 lb Bomb x1", 250),
