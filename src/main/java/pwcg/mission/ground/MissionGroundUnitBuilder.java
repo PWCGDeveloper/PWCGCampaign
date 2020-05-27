@@ -151,6 +151,17 @@ public class MissionGroundUnitBuilder
         return allMissionGroundUnits;
     }
     
+    public List<IGroundUnitCollection> getBattleMissionGroundUnits()
+    {
+        List<IGroundUnitCollection> allMissionGroundUnits = new ArrayList<>();
+        allMissionGroundUnits.addAll(missionBattles);
+        if (allMissionGroundUnits.size() == 0)
+        {
+            allMissionGroundUnits.addAll(AA);
+        }
+        return allMissionGroundUnits;
+    }
+
     public List<TargetType> getAvailableGroundUnitTargetTypesForMission() throws PWCGException
     {
         Map <TargetType, TargetType> uniqueTargetTypes = new HashMap<>();

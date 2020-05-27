@@ -21,8 +21,8 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public class InterceptWaypointFactory
 {
-    private InterceptSearchPattern pattern = InterceptSearchPattern.INTERCEPT_CROSS;
-    private enum InterceptSearchPattern
+    private FlightSearchPattern pattern = FlightSearchPattern.INTERCEPT_CROSS;
+    public enum FlightSearchPattern
     {
         INTERCEPT_CIRCLE,
         INTERCEPT_CREEP,
@@ -105,11 +105,11 @@ public class InterceptWaypointFactory
     {
         double angleToMovePattern = 0.0;
         
-        if (pattern  == InterceptSearchPattern.INTERCEPT_CROSS)
+        if (pattern  == FlightSearchPattern.INTERCEPT_CROSS)
         {
             angleToMovePattern = MathUtils.calcAngle(flight.getTargetDefinition().getPosition(), flight.getFlightHomePosition());
         }
-        else if (pattern  == InterceptSearchPattern.INTERCEPT_CREEP)
+        else if (pattern  == FlightSearchPattern.INTERCEPT_CREEP)
         {
             angleToMovePattern = MathUtils.calcAngle(flight.getTargetDefinition().getPosition(), flight.getFlightHomePosition());
         }
@@ -128,12 +128,12 @@ public class InterceptWaypointFactory
         Coordinate coordinatesAfterFixedMove = null;
         double distanceToMovePattern = 1000.0;
         
-        if (pattern  == InterceptSearchPattern.INTERCEPT_CROSS)
+        if (pattern  == FlightSearchPattern.INTERCEPT_CROSS)
         {
             distanceToMovePattern = productSpecific.getInterceptCrossDiameterDistance() / 2;
             coordinatesAfterFixedMove = MathUtils.calcNextCoord(flight.getTargetDefinition().getPosition(), angleToMovePattern, distanceToMovePattern);
         }
-        else if (pattern  == InterceptSearchPattern.INTERCEPT_CREEP)
+        else if (pattern  == FlightSearchPattern.INTERCEPT_CREEP)
         {
             distanceToMovePattern = productSpecific.getInterceptCreepCrossDistance() * 4;
             coordinatesAfterFixedMove = MathUtils.calcNextCoord(flight.getTargetDefinition().getPosition(), angleToMovePattern, distanceToMovePattern);
@@ -158,30 +158,30 @@ public class InterceptWaypointFactory
         return coordinatesAfterFixedMove;
     }
 
-    private InterceptSearchPattern selectSearchPattern () 
+    private FlightSearchPattern selectSearchPattern () 
     {
         int searchPatternRoll = RandomNumberGenerator.getRandom(100);
         if (searchPatternRoll < 45)
         {
-            return  InterceptSearchPattern.INTERCEPT_CROSS;
+            return  FlightSearchPattern.INTERCEPT_CROSS;
         }
         else if (searchPatternRoll < 75)
         {
-            return  InterceptSearchPattern.INTERCEPT_CREEP;
+            return  FlightSearchPattern.INTERCEPT_CREEP;
         }
         else
         {          
-            return  InterceptSearchPattern.INTERCEPT_CIRCLE;
+            return  FlightSearchPattern.INTERCEPT_CIRCLE;
         }
     }
 
     private List<McuWaypoint> createSearchPatternWaypoints (McuWaypoint lastWP) throws PWCGException
     {
-        if (pattern  == InterceptSearchPattern.INTERCEPT_CROSS)
+        if (pattern  == FlightSearchPattern.INTERCEPT_CROSS)
         {
             return  createCrossPattern (lastWP);
         }
-        else if (pattern  == InterceptSearchPattern.INTERCEPT_CREEP)
+        else if (pattern  == FlightSearchPattern.INTERCEPT_CREEP)
         {
             return createCreepingPattern (lastWP);
         }

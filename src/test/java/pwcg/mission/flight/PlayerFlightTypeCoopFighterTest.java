@@ -14,6 +14,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionProfile;
+import pwcg.mission.flight.cap.CAPFlight;
 import pwcg.mission.flight.intercept.InterceptFlight;
 import pwcg.mission.flight.offensive.OffensiveFlight;
 import pwcg.mission.flight.patrol.PatrolFlight;
@@ -108,7 +109,7 @@ public class PlayerFlightTypeCoopFighterTest
     {
         generateMission(campaign, FlightTypes.LOW_ALT_CAP);
 
-        InterceptFlight flight = (InterceptFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
+        CAPFlight flight = (CAPFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
         assert (flight.getFlightType() == FlightTypes.LOW_ALT_CAP);

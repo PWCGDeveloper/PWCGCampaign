@@ -9,6 +9,9 @@ PWCG is now ground activity centric.
 - AI units have real targets
 - Better control of number of units
 - More realistic feel to missions
+Improved Low Alt CAP
+- Actually CAP ground troops
+- Placement is over battle
 Bugs
 Fixed AAR issue in July 1942
 Fixed AAR error where a plane would not be found

@@ -5,6 +5,7 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.shipping.ShippingLane;
@@ -128,5 +129,14 @@ public class TargetLocatorAir
         }
         
         throw new PWCGException("No balloon found");
+    }
+
+    public Coordinate getBattleCoordinate() throws PWCGException
+    {
+        List<IGroundUnitCollection> shuffledGroundUnits = flightInformation.getMission().getMissionGroundUnitBuilder().getBattleMissionGroundUnits();
+        Coordinate battleCoordinate = shuffledGroundUnits.get(0).getPosition().copy();
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(flightInformation.getCampaign().getDate());
+        Coordinate targetCoordinate = frontLinesForMap.findClosestFrontCoordinateForSide(battleCoordinate, flightInformation.getCountry().getSide());
+        return targetCoordinate;
     }
 }

@@ -11,6 +11,7 @@ import pwcg.mission.flight.balloonBust.BalloonBustPackage;
 import pwcg.mission.flight.balloondefense.BalloonDefensePackage;
 import pwcg.mission.flight.bomb.BombingPackage;
 import pwcg.mission.flight.bomb.StrategicBombingPackage;
+import pwcg.mission.flight.cap.CAPPackage;
 import pwcg.mission.flight.contactpatrol.ContactPatrolPackage;
 import pwcg.mission.flight.divebomb.DiveBombingPackage;
 import pwcg.mission.flight.escort.PlayerIsEscortPackage;
@@ -107,7 +108,7 @@ public class FlightFactory
         }
         else if (flightType == FlightTypes.LOW_ALT_CAP)
         {
-            flightPackage = new InterceptPackage(flightType);
+            flightPackage = new CAPPackage(flightType);
         }
         else if (flightType == FlightTypes.RECON)
         {

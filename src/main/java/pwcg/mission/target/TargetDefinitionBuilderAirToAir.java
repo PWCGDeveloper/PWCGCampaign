@@ -12,12 +12,12 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
 {
     private IFlightInformation flightInformation;
 
-    public TargetDefinitionBuilderAirToAir (IFlightInformation flightInformation)
+    public TargetDefinitionBuilderAirToAir(IFlightInformation flightInformation)
     {
-    	this.flightInformation = flightInformation;
+        this.flightInformation = flightInformation;
     }
 
-    public TargetDefinition buildTargetDefinition () throws PWCGException
+    public TargetDefinition buildTargetDefinition() throws PWCGException
     {
         Coordinate targetLocation = createTargetLocation();
         ICountry targetCountry = PWCGContext.getInstance().getCurrentMap().getGroundCountryForMapBySide(flightInformation.getSquadron().determineEnemySide());
@@ -28,22 +28,25 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
     private Coordinate createTargetLocation() throws PWCGException
     {
         TargetLocatorAir targetLocatorAir = new TargetLocatorAir(flightInformation);
-        
+
         if (flightInformation.getFlightType() == FlightTypes.PATROL || 
-            flightInformation.getFlightType() == FlightTypes.LOW_ALT_PATROL ||
-            flightInformation.getFlightType() == FlightTypes.LOW_ALT_CAP ||
+            flightInformation.getFlightType() == FlightTypes.LOW_ALT_PATROL || 
             flightInformation.getFlightType() == FlightTypes.LONE_WOLF)
         {
             return targetLocatorAir.getFrontCoordinate();
         }
+        else if (flightInformation.getFlightType() == FlightTypes.LOW_ALT_CAP)
+        {
+            return targetLocatorAir.getBattleCoordinate();
+        }
         else if (flightInformation.getFlightType() == FlightTypes.INTERCEPT || flightInformation.getFlightType() == FlightTypes.RECON)
-       {
-           return targetLocatorAir.getInterceptCoordinate();
-       }
+        {
+            return targetLocatorAir.getInterceptCoordinate();
+        }
         else if (flightInformation.getFlightType() == FlightTypes.STRATEGIC_INTERCEPT)
-       {
+        {
             return flightInformation.getMission().getMissionBorders().getCenter();
-       }
+        }
         else if (flightInformation.getFlightType() == FlightTypes.OFFENSIVE || flightInformation.getFlightType() == FlightTypes.SPY_EXTRACT)
         {
             return targetLocatorAir.getEnemyTerritoryPatrolCoordinate();

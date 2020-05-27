@@ -188,10 +188,6 @@ public abstract class MapWeather
         if (mission.getMissionFlightBuilder().hasPlayerFlightWithFlightTypes(Arrays.asList(
         		FlightTypes.RECON, 
         		FlightTypes.STRATEGIC_BOMB, 
-        		FlightTypes.GROUND_ATTACK, 
-                FlightTypes.LOW_ALT_PATROL, 
-                FlightTypes.LOW_ALT_CAP, 
-                FlightTypes.LOW_ALT_BOMB, 
         		FlightTypes.DIVE_BOMB)))
         {
             weatherSeverity = lightWeather();

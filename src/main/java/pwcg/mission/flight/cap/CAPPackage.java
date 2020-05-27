@@ -1,8 +1,7 @@
-package pwcg.mission.flight.intercept;
-
-import java.util.List;
+package pwcg.mission.flight.cap;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightSpotterBuilder;
@@ -14,13 +13,13 @@ import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetDefinitionBuilderAirToAir;
 
-public class InterceptPackage implements IFlightPackage
+public class CAPPackage implements IFlightPackage
 {	
     private IFlightInformation flightInformation;
     private TargetDefinition targetDefinition;
     private FlightTypes flightType;
 
-    public InterceptPackage(FlightTypes flightType)
+    public CAPPackage(FlightTypes flightType)
     {
         this.flightType = flightType;
     }
@@ -28,7 +27,7 @@ public class InterceptPackage implements IFlightPackage
     @Override
     public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
-        if (flightType != FlightTypes.INTERCEPT)
+        if (flightType != FlightTypes.INTERCEPT && flightType != FlightTypes.LOW_ALT_CAP)
         {
             throw new PWCGException("Invalid intercept flight type " + flightType);
         }
@@ -36,7 +35,7 @@ public class InterceptPackage implements IFlightPackage
         this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, flightType);
         this.targetDefinition = buildTargetDefintion();
 
-        InterceptFlight interceptFlight = new InterceptFlight (flightInformation, targetDefinition);
+        CAPFlight interceptFlight = new CAPFlight (flightInformation, targetDefinition);
         interceptFlight.createFlight();
         
         if (flightInformation.isPlayerFlight())
@@ -51,11 +50,16 @@ public class InterceptPackage implements IFlightPackage
 
     private void buildOpposingInterceptFlights(IFlight flight) throws PWCGException
     {
-        InterceptOpposingFlightBuilder opposingFlightBuilder = new InterceptOpposingFlightBuilder(flight);
-        List<IFlight> opposingFlights = opposingFlightBuilder.buildOpposingFlights();
-        for (IFlight opposingFlight: opposingFlights)
+        
+        int roll = RandomNumberGenerator.getRandom(100);
+        if (roll < 50)
         {
-            flight.getLinkedFlights().addLinkedFlight(opposingFlight);
+            CAPOpposingFlightBuilder opposingFlightBuilder = new CAPOpposingFlightBuilder(flight);
+            IFlight opposingFlight = opposingFlightBuilder.buildOpposingFlights();
+            if (opposingFlight != null)
+            {
+                flight.getLinkedFlights().addLinkedFlight(opposingFlight);
+            }
         }
     }
 

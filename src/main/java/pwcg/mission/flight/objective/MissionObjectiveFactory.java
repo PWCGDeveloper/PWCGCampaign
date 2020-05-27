@@ -66,10 +66,13 @@ public class MissionObjectiveFactory
             return getParatroopDropMissionObjective(flight);
         }
         else if (flight.getFlightType() == FlightTypes.PATROL ||
-                flight.getFlightType() == FlightTypes.LOW_ALT_CAP ||
                 flight.getFlightType() == FlightTypes.LOW_ALT_PATROL)
         {
             return getPatrolMissionObjective(flight);
+        }
+        else if (flight.getFlightType() == FlightTypes.LOW_ALT_CAP)
+        {
+            return getCAPMissionObjective(flight);
         }
         else if (flight.getFlightType() == FlightTypes.RECON)
         {
@@ -176,6 +179,22 @@ public class MissionObjectiveFactory
         {
             objective = "Patrol airspace " + objectiveName + 
                     ".  Engage any enemy aircraft that you encounter."; 
+        }
+        
+        return objective;
+    }
+
+    private static String getCAPMissionObjective(IFlight flight) throws PWCGException
+    {
+        String objective = "Close Air Patrol over our troops.  " + 
+                "Engage any enemy aircraft that you encounter as a first priority.  " +
+                "Attack targets of opportuity on the ground.  ";
+        String objectiveName =  MissionObjective.formMissionObjectiveLocation(flight.getTargetDefinition().getPosition().copy()) + "."; 
+        if (!objectiveName.isEmpty())
+        {
+            objective = "Close Air Patrol over our troops " + objectiveName +
+                    "  Engage any enemy aircraft that you encounter as a first priority.  " +
+                    "Attack targets of opportuity on the ground.  ";
         }
         
         return objective;
