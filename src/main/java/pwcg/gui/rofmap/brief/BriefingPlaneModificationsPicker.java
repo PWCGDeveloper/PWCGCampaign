@@ -80,7 +80,7 @@ public class BriefingPlaneModificationsPicker
         {
             if (payloadDesignation.getPayloadElements().get(0).getCategory() == PayloadElementCategory.MODIFICATION)
             {
-                JCheckBox planeModificationsCheckBox= PWCGButtonFactory.makeCheckBox(
+                JCheckBox planeModificationsCheckBox= PWCGButtonFactory.makeSmallCheckBox(
                         payloadDesignation.getPayloadDescription(), 
                         "SelectPlaneModification:" + crewPlane.getPilot().getSerialNumber(), 
                         ColorMap.CHALK_FOREGROUND,
