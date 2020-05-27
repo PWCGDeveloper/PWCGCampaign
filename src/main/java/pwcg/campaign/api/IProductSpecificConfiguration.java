@@ -49,4 +49,5 @@ public interface IProductSpecificConfiguration
     int getFormationHorizontalSpacing();
     int getFormationVerticalSpacing();
     int getBalloonDefenseLoopDistance();
+    int getAirfieldGoAwayDistance();
 }

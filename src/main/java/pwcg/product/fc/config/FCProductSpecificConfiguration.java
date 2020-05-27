@@ -39,6 +39,7 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     private static final int INGRESS_DISTANCE_FROM_FRONT = 6000;
     private static final int FORMATION_HORIZINTAL_SPACING = 100;
     private static final int FORMATION_VERTICAL_SPACING = 70;
+    private static final int AIRFIELD_GO_AWAY_DISTANCE = 25000;
 
     @Override
     public boolean useWaypointGoal()
@@ -448,4 +449,10 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     {
         return BALLOON_DEFENSE_LOOP_DISTANCE;
     }
+
+    @Override
+    public int getAirfieldGoAwayDistance()
+    {
+        return AIRFIELD_GO_AWAY_DISTANCE;
+    }    
 }

@@ -4,7 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.api.IAirfield;
+import pwcg.campaign.api.IProductSpecificConfiguration;
+import pwcg.campaign.context.FrontLinesForMap;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
+import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.FlightTypeCategory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
@@ -38,7 +44,7 @@ public class StopAttackingNearAirfield
     {
         for (IAirfield airfield : airfieldsInMission)
         {
-            if (airfield.getCountry(flight.getCampaign().getDate()).getSide() != flight.getSquadron().determineSide())
+            if (isAirfieldForStopAttack(airfield))
             {
                 makeStopAttackForEachPlane(airfield);
             }
@@ -72,6 +78,28 @@ public class StopAttackingNearAirfield
         }
         
         if (!flight.getFlightType().isCategory(FlightTypeCategory.FIGHTER))
+        {
+            return false;
+        }
+        
+        return true;
+    }
+    
+    private boolean isAirfieldForStopAttack(IAirfield airfield) throws PWCGException
+    {
+        if (airfield.getCountry(flight.getCampaign().getDate()).getSide() == flight.getSquadron().determineSide())
+        {
+            return false;
+        }
+        
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(flight.getCampaign().getDate());
+        Coordinate closestEnemyFrontLines = frontLinesForMap.findClosestFrontCoordinateForSide(airfield.getPosition(), flight.getSquadron().determineEnemySide());
+        double distanceFromAirfieldToFront = MathUtils.calcDist(airfield.getPosition(), closestEnemyFrontLines);
+        
+        
+        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        int airfieldGoAwayDistance = productSpecific.getAirfieldGoAwayDistance();
+        if (distanceFromAirfieldToFront < airfieldGoAwayDistance)
         {
             return false;
         }
