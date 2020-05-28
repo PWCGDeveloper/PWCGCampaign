@@ -10,8 +10,8 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.LocationIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.LocationSet;
-import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.MathUtils;
+import pwcg.core.utils.PWCGLogger;
 
 public class FrontLineWriter
 {

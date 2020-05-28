@@ -13,10 +13,10 @@ import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.campaign.squadron.Squadron;
-import pwcg.product.bos.country.BoSServiceManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.product.bos.country.BoSServiceManager;
 
 public class SquadronMemberInitialVictoryBuilder
 {

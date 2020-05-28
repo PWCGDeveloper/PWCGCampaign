@@ -26,7 +26,7 @@ import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.config.ConfigurationParametersGUI;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -122,7 +122,7 @@ public class ConfigurationGlobalGUI extends PwcgGuiContext implements ActionList
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
 
-        Font font = MonitorSupport.getPrimaryFont();
+        Font font = PWCGMonitorFonts.getPrimaryFont();
 
         JRadioButton button = new JRadioButton(buttonText);
         button.setActionCommand("Configuration Parameters: " + buttonText);

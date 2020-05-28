@@ -25,7 +25,7 @@ import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.campaign.home.GuiMissionInitiator;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.MusicManager;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -144,7 +144,7 @@ public class CoopPersonaChooser extends PwcgGuiContext implements ActionListener
 
 	private void addErrorMessages() throws PWCGException 
 	{
-	    Font font = MonitorSupport.getPrimaryFontLarge();
+	    Font font = PWCGMonitorFonts.getPrimaryFontLarge();
     	
         JLabel spacer = new JLabel("   ");
         spacer.setFont(font);
@@ -164,7 +164,7 @@ public class CoopPersonaChooser extends PwcgGuiContext implements ActionListener
 
 	private void addBlankErrorLine() throws PWCGException 
 	{
-	    Font font = MonitorSupport.getPrimaryFontLarge();
+	    Font font = PWCGMonitorFonts.getPrimaryFontLarge();
     	
 	    for (int i = 0; i < 3; ++i)
 	    {

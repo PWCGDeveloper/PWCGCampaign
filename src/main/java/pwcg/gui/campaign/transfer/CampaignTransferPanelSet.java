@@ -41,7 +41,7 @@ import pwcg.gui.campaign.coop.CampaignAdminCoopPilotPanelSet;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -122,7 +122,7 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
 			
 			Color buttonBG = ColorMap.PAPER_BACKGROUND;
 
-			Font font = MonitorSupport.getPrimaryFont();
+			Font font = PWCGMonitorFonts.getPrimaryFont();
 	
 			GridBagLayout transferLayout = new GridBagLayout();
 			
@@ -317,7 +317,7 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
 
     private JPanel createSquadronInfoPanel () throws PWCGException 
     {
-        Font font = MonitorSupport.getTypewriterFont();
+        Font font = PWCGMonitorFonts.getTypewriterFont();
         Color bgColor = ColorMap.PAPER_BACKGROUND;
         Color fgColor = ColorMap.PAPER_FOREGROUND;
         

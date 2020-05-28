@@ -21,7 +21,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.MusicManager;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -112,7 +112,7 @@ public class CampaignMusicPanelSet extends PwcgGuiContext implements ActionListe
 
 	private void makePlaySound() throws PWCGException
 	{
-        Font font = MonitorSupport.getPrimaryFontLarge();
+        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
         playSoundsCheckBox = new JCheckBox();
         playSoundsCheckBox.setText("Play Sounds");
@@ -124,7 +124,7 @@ public class CampaignMusicPanelSet extends PwcgGuiContext implements ActionListe
 
 	private void makePlayMusic() throws PWCGException
 	{
-        Font font = MonitorSupport.getPrimaryFontLarge();
+        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
         playMusicCheckBox = new JCheckBox();
         playMusicCheckBox.setText("Play Music");

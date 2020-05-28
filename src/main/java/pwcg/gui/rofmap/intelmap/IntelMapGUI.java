@@ -31,7 +31,8 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
+import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.rofmap.MapGUI;
 import pwcg.gui.rofmap.MapScroll;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -183,7 +184,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 
 	private JPanel makeSquadronDescriptionGrid() throws PWCGException
 	{
-		Font fontMain = MonitorSupport.getPrimaryFont();
+		Font fontMain = PWCGMonitorFonts.getPrimaryFont();
 
         JPanel descriptionGrid = new JPanel(new GridLayout(0,1));
         descriptionGrid.setOpaque(false);
@@ -202,7 +203,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 
 	private void makeSquadronText(int squadId, JPanel squadDescriptionPanel) throws PWCGException
 	{
-		Font font = MonitorSupport.getPrimaryFontSmall();
+		Font font = PWCGMonitorFonts.getPrimaryFontSmall();
 
 		String squadronText = "";
 		Squadron squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(squadId);
@@ -211,7 +212,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 			squadronText = squadron.determineSquadronDescription(mapDate);
 		}
 
-		Dimension screenSize = MonitorSupport.getPWCGFrameSize();
+		Dimension screenSize = PWCGMonitorSupport.getPWCGFrameSize();
 		int preferredPanelLength = screenSize.height - 100;
 
 		JTextPane squadDesc = new JTextPane();
@@ -296,7 +297,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
         Color fgColor = ColorMap.PAPER_FOREGROUND;
         Color bgColor = ColorMap.PAPER_BACKGROUND;
 
-        Font font = MonitorSupport.getPrimaryFont();
+        Font font = PWCGMonitorFonts.getPrimaryFont();
 
         JRadioButton button = new JRadioButton(buttonText);
         button.setHorizontalAlignment(SwingConstants.LEFT );

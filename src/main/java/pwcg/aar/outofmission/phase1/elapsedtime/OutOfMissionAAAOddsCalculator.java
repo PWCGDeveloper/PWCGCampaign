@@ -8,9 +8,9 @@ import pwcg.campaign.plane.RoleCategory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronRoleSet;
-import pwcg.product.bos.country.BoSServiceManager;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
+import pwcg.product.bos.country.BoSServiceManager;
 
 public class OutOfMissionAAAOddsCalculator
 {

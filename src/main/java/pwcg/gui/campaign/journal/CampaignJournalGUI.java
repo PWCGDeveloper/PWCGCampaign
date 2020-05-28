@@ -20,7 +20,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorBorders;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ScrollBarWrapper;
 
 public class CampaignJournalGUI extends JPanel
@@ -65,7 +66,7 @@ public class CampaignJournalGUI extends JPanel
 			combatReportPanel.setLayout(new BorderLayout());
 			combatReportPanel.setOpaque(false);
 			
-	        Insets margins = MonitorSupport.calculateInset(0,5,5,5);
+	        Insets margins = PWCGMonitorBorders.calculateBorderMargins(0,5,5,5);
 			combatReportPanel.setBorder(BorderFactory.createEmptyBorder(margins.top, margins.left, margins.bottom, margins.right)); 
 
 			// Header Panel
@@ -101,10 +102,10 @@ public class CampaignJournalGUI extends JPanel
 		JPanel headerPanel = new JPanel(new BorderLayout());
 		headerPanel.setOpaque(false);
 
-		Font font = MonitorSupport.getTypewriterFont();
+		Font font = PWCGMonitorFonts.getTypewriterFont();
 
 		// Center of header
-		Font medFont = MonitorSupport.getDecorativeFont();
+		Font medFont = PWCGMonitorFonts.getDecorativeFont();
 
 		JLabel lTitle = new JLabel("Combats in the Air", JLabel.LEFT);
 		lTitle.setOpaque(false);
@@ -216,7 +217,7 @@ public class CampaignJournalGUI extends JPanel
 	private Component makeMissionResults() throws PWCGException 
 	{
 		// Mission text and scroll pane
-		Font font = MonitorSupport.getTypewriterFont();
+		Font font = PWCGMonitorFonts.getTypewriterFont();
 		
 
 		JTextArea missionResultTextArea = new JTextArea();
@@ -238,14 +239,14 @@ public class CampaignJournalGUI extends JPanel
 		narrativePanel.setOpaque(false);
 		
 		// Label
-		Font medFont = MonitorSupport.getDecorativeFont();
+		Font medFont = PWCGMonitorFonts.getDecorativeFont();
 		JLabel lNarrative = new JLabel("Narrative", JLabel.LEFT);
 		lNarrative.setOpaque(false);
 		lNarrative.setFont(medFont);
 		narrativePanel.add(lNarrative, BorderLayout.NORTH);
 		
 		// Narrative text and scroll pane
-		Font font = MonitorSupport.getCursiveFont();
+		Font font = PWCGMonitorFonts.getCursiveFont();
 
 		narrativeText = new JTextArea();
 		narrativeText.setFont(font);

@@ -24,7 +24,8 @@ import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorBorders;
+import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -284,12 +285,12 @@ public class CampaignJournalPanelSet extends PwcgGuiContext implements ActionLis
             // Set the border for left and right pages
             if (pageNum%2 == 0)
             {
-                Insets margins = MonitorSupport.calculateInset(60,80,60,20);
+                Insets margins = PWCGMonitorBorders.calculateBorderMargins(60,80,60,20);
                 journalBorderPanel.setBorder(BorderFactory.createEmptyBorder(margins.top, margins.left, margins.bottom, margins.right)); 
             }
             else
             {
-                Insets margins = MonitorSupport.calculateInset(60,30,60,40);
+                Insets margins = PWCGMonitorBorders.calculateBorderMargins(60,30,60,40);
                 journalBorderPanel.setBorder(BorderFactory.createEmptyBorder(margins.top, margins.left, margins.bottom, margins.right)); 
             }
 
@@ -408,7 +409,7 @@ public class CampaignJournalPanelSet extends PwcgGuiContext implements ActionLis
 
     private void calculateLinesPerPage()
     {
-        Dimension screenSize = MonitorSupport.getPWCGFrameSize();
+        Dimension screenSize = PWCGMonitorSupport.getPWCGFrameSize();
 
         linesPerPage = 55;
         if (screenSize.getHeight() < 1200)

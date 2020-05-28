@@ -25,7 +25,7 @@ import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -118,7 +118,7 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
 
     private JPanel makePlayerWoundHealTimePanel() throws PWCGException
     {
-        Font font = MonitorSupport.getPrimaryFontLarge();
+        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
         JPanel leavePlayerWoundInfoPanel = new JPanel(new GridLayout(0, 1));
         leavePlayerWoundInfoPanel.setOpaque(false);
@@ -138,7 +138,7 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
 
     private JPanel makeLeaveRequestRow() throws PWCGException
     {
-        Font font = MonitorSupport.getPrimaryFontLarge();
+        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
         Color buttonBG = ColorMap.PAPER_BACKGROUND;
 
         JLabel lLeave = new JLabel("Request Leave Time (days): ", JLabel.LEFT);

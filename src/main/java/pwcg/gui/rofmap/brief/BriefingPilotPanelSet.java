@@ -36,7 +36,7 @@ import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorBorders;
 import pwcg.gui.helper.BriefingMissionFlight;
 import pwcg.gui.helper.PlayerFlightEditor;
 import pwcg.gui.sound.SoundManager;
@@ -169,7 +169,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
         pilotPanel = new ImageResizingPanel(imagePath);
         pilotPanel.setLayout(new BorderLayout());
 
-        Insets margins = MonitorSupport.calculateInset(60, 60, 60, 60);
+        Insets margins = PWCGMonitorBorders.calculateBorderMargins(60, 60, 60, 60);
         pilotPanel.setBorder(BorderFactory.createEmptyBorder(margins.top, margins.left, margins.bottom, margins.right));
 
         JPanel assignedPilotPanel = createAssignedPilots();

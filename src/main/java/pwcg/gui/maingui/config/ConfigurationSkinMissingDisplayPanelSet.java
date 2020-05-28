@@ -18,12 +18,12 @@ import javax.swing.SwingConstants;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.MissingSkin;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImagePanelLayout;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -130,7 +130,7 @@ public class ConfigurationSkinMissingDisplayPanelSet extends PwcgGuiContext impl
         JPanel reportPanel = new JPanel(new BorderLayout());
         reportPanel.setOpaque(false);
 
-        Font headerFont = MonitorSupport.getDecorativeFont();
+        Font headerFont = PWCGMonitorFonts.getDecorativeFont();
         JLabel reportHeaderLabel = new JLabel(header);
         reportHeaderLabel.setOpaque(false);
         reportHeaderLabel.setFont(headerFont);

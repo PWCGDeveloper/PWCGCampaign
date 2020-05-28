@@ -21,7 +21,8 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorBorders;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -140,7 +141,7 @@ public class CampaignPilotLogPanel extends PwcgGuiContext implements ActionListe
 		campaignLogPanel.setLayout(new GridLayout(0,1));
 		campaignLogPanel.setOpaque(false);
 
-		Font font = MonitorSupport.getCursiveFont();
+		Font font = PWCGMonitorFonts.getCursiveFont();
 
         final JTextArea logTextArea= new JTextArea();
         
@@ -171,10 +172,10 @@ public class CampaignPilotLogPanel extends PwcgGuiContext implements ActionListe
 
     private Insets calculatePageMargins(int pageNum)
     {
-        Insets margins = MonitorSupport.calculateInset(35, 35, 35, 10);
+        Insets margins = PWCGMonitorBorders.calculateBorderMargins(35, 35, 35, 10);
         if (pageNum%2 == 0)
         {
-            margins = MonitorSupport.calculateInset(25, 10, 35, 25);           
+            margins = PWCGMonitorBorders.calculateBorderMargins(25, 10, 35, 25);           
         }
         return margins;
     }
@@ -187,7 +188,7 @@ public class CampaignPilotLogPanel extends PwcgGuiContext implements ActionListe
 		Color bg = ColorMap.PAPER_BACKGROUND;
 		Color fg = ColorMap.PAPER_FOREGROUND;
 
-	      Font font = MonitorSupport.getPrimaryFont();
+	      Font font = PWCGMonitorFonts.getPrimaryFont();
 
 		makeLeftPage(pageNum, buttonPanel, bg, fg, font);
 		

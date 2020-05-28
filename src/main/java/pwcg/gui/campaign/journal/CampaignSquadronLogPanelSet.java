@@ -25,7 +25,9 @@ import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorBorders;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
+import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -56,7 +58,7 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
         
         this.logsForSquadronId = logsForSquadronId;
 
-		Dimension screenSize = MonitorSupport.getPWCGFrameSize();
+		Dimension screenSize = PWCGMonitorSupport.getPWCGFrameSize();
 
         calculateLinesPerPage(screenSize);
         calculateCharsPerLine(screenSize);
@@ -304,7 +306,7 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
 		campaignLogPanel.setLayout(new GridLayout(0,1));
 		campaignLogPanel.setOpaque(false);
 
-		Font font = MonitorSupport.getCursiveFont();
+		Font font = PWCGMonitorFonts.getCursiveFont();
 
         final JTextArea logTextArea= new JTextArea();
         
@@ -316,10 +318,10 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
         logTextArea.setSize(logTextArea.getPreferredSize().width, 1);
         
         // Calculate the writable area of the text and generate margins scaled to screen size
-        Insets margins = MonitorSupport.calculateInset(15, 50, 15, 20);
+        Insets margins = PWCGMonitorBorders.calculateBorderMargins(15, 50, 15, 20);
         if (pageNum%2 != 0)
         {
-            margins = MonitorSupport.calculateInset(15, 20, 15, 35);           
+            margins = PWCGMonitorBorders.calculateBorderMargins(15, 20, 15, 35);           
         }
         logTextArea.setMargin(margins);
 

@@ -28,7 +28,7 @@ import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.maingui.CampaignMainGUI;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageButton;
@@ -275,7 +275,7 @@ public class ConfigurationPlanesOwnedPanelSet extends PwcgGuiContext implements 
      */
     private JPanel createPlanePanel(TreeMap<String, PlaneType> planeMap) throws PWCGException
     {
-        Dimension frameSize = MonitorSupport.getPWCGFrameSize();
+        Dimension frameSize = PWCGMonitorSupport.getPWCGFrameSize();
         int columns = 3;
         if (frameSize.getWidth() < 1900)
         {

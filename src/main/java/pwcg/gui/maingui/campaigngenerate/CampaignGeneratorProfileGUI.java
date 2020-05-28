@@ -23,7 +23,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.campaign.config.CampaignConfigurationSimpleGUIController;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -61,7 +61,7 @@ public class CampaignGeneratorProfileGUI extends ImageResizingPanel implements A
 
 	public void makePanels() throws PWCGException 
 	{
-	    font = MonitorSupport.getPrimaryFontLarge();
+	    font = PWCGMonitorFonts.getPrimaryFontLarge();
 
 		try
 		{			
@@ -205,7 +205,7 @@ public class CampaignGeneratorProfileGUI extends ImageResizingPanel implements A
 
     private JLabel makeCoopLabel(String buttonName) throws PWCGException
     {
-        Font font = MonitorSupport.getPrimaryFontLarge();
+        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
         JLabel button= new JLabel(buttonName);
         button.setOpaque(false);

@@ -23,7 +23,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.CommonUIActions;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -298,7 +298,7 @@ public class CampaignConfigurationSimpleGUI extends PwcgGuiContext implements Ac
 		Color bg = ColorMap.WOOD_BACKGROUND;
 		Color fg = ColorMap.CHALK_FOREGROUND;
 
-		Font font = MonitorSupport.getPrimaryFontLarge();
+		Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
 		JLabel button= new JLabel(buttonName);
 		button.setOpaque(false);

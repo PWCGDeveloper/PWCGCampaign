@@ -2,7 +2,7 @@ package pwcg.gui.campaign.pilot;
 
 import java.awt.Dimension;
 
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorSupport;
 
 public class PageSizeCalculator
 {
@@ -11,7 +11,7 @@ public class PageSizeCalculator
     
     public void calculateTextSize()
     {
-        Dimension screenSize = MonitorSupport.getPWCGFrameSize();
+        Dimension screenSize = PWCGMonitorSupport.getPWCGFrameSize();
         calculateLinesPerPage(screenSize);
         calculateCharsPerLine(screenSize);
     }

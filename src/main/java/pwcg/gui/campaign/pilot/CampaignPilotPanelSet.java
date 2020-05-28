@@ -32,7 +32,8 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.ImageCache;
 import pwcg.gui.dialogs.ImageIconCache;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
+import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImagePreviewPanel;
@@ -127,7 +128,7 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
 		pilotLogBorderPanel.setLayout(new BorderLayout());
 		pilotLogBorderPanel.setOpaque(false);
 
-		Font font = MonitorSupport.getPilotLogBookFont();
+		Font font = PWCGMonitorFonts.getPilotLogBookFont();
 
 		Color bg = ColorMap.WOOD_BACKGROUND;
 		Color fg = ColorMap.MAP_LOG_FOREGROUND;
@@ -146,7 +147,7 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
 		}
 		
         String labelSpacing = "";
-        int numSpacesForLabelSpacing = Double.valueOf(MonitorSupport.getPWCGFrameSize().getWidth() / 100 * 1.7).intValue();
+        int numSpacesForLabelSpacing = Double.valueOf(PWCGMonitorSupport.getPWCGFrameSize().getWidth() / 100 * 1.7).intValue();
 		for (int i = 0; i < numSpacesForLabelSpacing; ++i)
 		{
 		    labelSpacing += " ";

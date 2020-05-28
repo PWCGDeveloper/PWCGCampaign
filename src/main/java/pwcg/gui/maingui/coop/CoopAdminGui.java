@@ -20,7 +20,7 @@ import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -110,7 +110,7 @@ public class CoopAdminGui extends PwcgGuiContext implements ActionListener
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
 
-        Font font = MonitorSupport.getPrimaryFont();
+        Font font = PWCGMonitorFonts.getPrimaryFont();
 
         JRadioButton button = new JRadioButton(buttonText);
         button.setActionCommand(buttonText);

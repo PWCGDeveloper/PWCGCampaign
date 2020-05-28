@@ -21,7 +21,7 @@ import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ScrollBarWrapper;
@@ -104,7 +104,7 @@ public class CoopPersonaInfoPanel extends ImageResizingPanel
     public JLabel makeVersionPanel(String labelText) throws PWCGException  
     {
 
-        Font font = MonitorSupport.getPrimaryFontLarge();
+        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
         Color bg = ColorMap.PAPER_BACKGROUND;
         Color fg = ColorMap.PAPER_FOREGROUND;

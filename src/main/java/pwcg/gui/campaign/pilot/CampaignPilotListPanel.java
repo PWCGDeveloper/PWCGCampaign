@@ -22,7 +22,8 @@ import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ImageCache;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
+import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageButton;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -89,7 +90,7 @@ public class CampaignPilotListPanel extends ImageResizingPanel
                         
         Color buttonBG = ColorMap.CHALK_BACKGROUND;
         Color buttonFG = ColorMap.PLAQUE_GOLD;
-        Font font = MonitorSupport.getPrimaryFont();
+        Font font = PWCGMonitorFonts.getPrimaryFont();
         
 
         JButton namePlateButton = new PWCGButtonNoBackground("          " + pilot.getNameAndRank());
@@ -117,7 +118,7 @@ public class CampaignPilotListPanel extends ImageResizingPanel
         Image pilotPic = ImageCache.getInstance().getBufferedImage(picPath);
         if (pilotPic != null)
         {
-        	int imageHeight = MonitorSupport.getPilotPlateHeight();
+        	int imageHeight = PWCGMonitorSupport.getPilotPlateHeight();
         	
         	Image scaledPic = pilotPic.getScaledInstance(imageHeight, -1, Image.SCALE_DEFAULT);
 
@@ -175,7 +176,7 @@ public class CampaignPilotListPanel extends ImageResizingPanel
         Image pilotStatusImage = ImageCache.getInstance().getBufferedImage(imagePath);
         if (pilotStatusImage != null)
         {
-            int imageHeight = MonitorSupport.getPilotPlateHeight();
+            int imageHeight = PWCGMonitorSupport.getPilotPlateHeight();
             
             Image scaledPic = pilotStatusImage.getScaledInstance(imageHeight, -1, Image.SCALE_DEFAULT);
 

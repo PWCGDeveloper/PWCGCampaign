@@ -26,7 +26,7 @@ import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ImageCache;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.rofmap.MapPanelBase;
 import pwcg.gui.utils.MapPointInfoPopup;
 import pwcg.mission.Mission;
@@ -132,7 +132,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
                 g2.draw(new Line2D.Float(prevPoint.x, prevPoint.y, point.x, point.y));
             }
 
-            Font font = MonitorSupport.getPrimaryFont();
+            Font font = PWCGMonitorFonts.getPrimaryFont();
             g.setFont(font);
             Point point = super.coordinateToPoint(mapPoint.coord);
 
@@ -208,7 +208,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
                 g2.fill(circle);
                 
                 g.setColor(Color.BLACK);
-                Font font = MonitorSupport.getPrimaryFont();
+                Font font = PWCGMonitorFonts.getPrimaryFont();
                 g.setFont(font);
                 g.drawString((flightMap.flightType + "/" + flightMap.planeType), point.x + 4, point.y);
             }

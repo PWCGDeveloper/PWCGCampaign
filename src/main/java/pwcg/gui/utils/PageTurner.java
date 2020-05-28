@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
 import pwcg.gui.colors.ColorMap;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorSupport;
 
 public class PageTurner
 {
@@ -92,7 +92,7 @@ public class PageTurner
      */
     private static void makeVerticalBuffer(JPanel buttonPanel)
     {
-        Dimension screenSize = MonitorSupport.getPWCGFrameSize();
+        Dimension screenSize = PWCGMonitorSupport.getPWCGFrameSize();
         
         int numSpacingLabels = 3;
         if (screenSize.getHeight() < 1000)
@@ -119,7 +119,7 @@ public class PageTurner
      */
     private static int calculateCharsPerLine()
     {
-        Dimension screenSize = MonitorSupport.getPWCGFrameSize();
+        Dimension screenSize = PWCGMonitorSupport.getPWCGFrameSize();
         
         int numSpacingLabels = 5;
         if (screenSize.getWidth() < 1200)

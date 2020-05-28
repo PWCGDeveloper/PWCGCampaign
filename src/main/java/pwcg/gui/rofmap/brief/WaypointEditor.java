@@ -6,7 +6,7 @@ import javax.swing.JTextField;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.mission.mcu.McuWaypoint;
 
 
@@ -24,7 +24,7 @@ public class WaypointEditor
 
     private JTextField makeField(String value) throws PWCGException
     {
-        Font font = MonitorSupport.getPrimaryFontSmall();
+        Font font = PWCGMonitorFonts.getPrimaryFontSmall();
 
         JTextField field = new JTextField (value);
         field.setOpaque(false);

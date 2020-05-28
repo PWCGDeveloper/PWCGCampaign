@@ -22,7 +22,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
+import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ToolTipManager;
@@ -60,7 +61,7 @@ public class PilotGenerationInfoGUI extends JPanel implements ActionListener
         int numRows = 0;
 		int numCols = 1;
 
-		Dimension screenSize = MonitorSupport.getPWCGFrameSize();
+		Dimension screenSize = PWCGMonitorSupport.getPWCGFrameSize();
 		if (screenSize.height < 900)
 		{
 	        numRows = 6;
@@ -92,7 +93,7 @@ public class PilotGenerationInfoGUI extends JPanel implements ActionListener
         Color buttonBG = ColorMap.WOOD_BACKGROUND;
         Color buttonFG = ColorMap.CHALK_FOREGROUND;
         
-        Font font = MonitorSupport.getPrimaryFont();
+        Font font = PWCGMonitorFonts.getPrimaryFont();
 
         String imagePath = ContextSpecificImages.imagesNational();
 		String selectedIconPath = imagePath + imageName;

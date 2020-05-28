@@ -35,7 +35,7 @@ import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.maingui.campaigngenerate.CampaignGeneratorPanelSet;
 import pwcg.gui.maingui.config.ConfigurationGlobalGUI;
 import pwcg.gui.maingui.config.ConfigurationPlanesOwnedPanelSet;
@@ -366,7 +366,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 	public JPanel makeVersionPanel() throws PWCGException  
 	{
 
-		Font font = MonitorSupport.getPrimaryFontLarge();
+		Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
 		Color lbg = ColorMap.WOOD_BACKGROUND;
 		Color fg = ColorMap.WOOD_FOREGROUND;
@@ -403,7 +403,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 		Color buttonBG = ColorMap.PAPER_BACKGROUND;
 		Color buttonFG = ColorMap.CHALK_FOREGROUND;
 
-		Font font = MonitorSupport.getPrimaryFontLarge();
+		Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 		
 		JPanel campaignListPanel = new JPanel (new GridLayout(0,1));
 		campaignListPanel.setOpaque(false);

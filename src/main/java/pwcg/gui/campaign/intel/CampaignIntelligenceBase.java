@@ -29,7 +29,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImagePanel;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -72,7 +72,7 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
 
     private void formSquadronIntelText() throws PWCGException
     {
-        Font font = MonitorSupport.getTypewriterFont();
+        Font font = PWCGMonitorFonts.getTypewriterFont();
         squadronInteltext = new JTextArea();
         squadronInteltext.setFont(font);
         squadronInteltext.setOpaque(false);

@@ -33,7 +33,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorBorders;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -75,7 +76,7 @@ public class CampaignSkinManagerForPilotPanel extends ImageResizingPanel impleme
         this.skinSessionManager = skinSessionManager;
 
         setLayout(new BorderLayout());
-        Insets margins = MonitorSupport.calculateInset(10,10,10,10);
+        Insets margins = PWCGMonitorBorders.calculateBorderMargins(10,10,10,10);
         setBorder(BorderFactory.createEmptyBorder(margins.top, margins.left, margins.bottom, margins.right)); 
 	}
 
@@ -466,7 +467,7 @@ public class CampaignSkinManagerForPilotPanel extends ImageResizingPanel impleme
 
      private JPanel createSkinEntry(String planeName, String skinName, String skinGroup) throws PWCGException
      {
-         Font font = MonitorSupport.getPrimaryFont();
+         Font font = PWCGMonitorFonts.getPrimaryFont();
 
          JPanel skinInfoGrid = new JPanel(new GridLayout(0, 1));
          skinInfoGrid.setOpaque(false);
@@ -499,7 +500,7 @@ public class CampaignSkinManagerForPilotPanel extends ImageResizingPanel impleme
 
      private JPanel createSpaceGridEntry(int numSpaces) throws PWCGException
      {
-         Font font = MonitorSupport.getPrimaryFont();
+         Font font = PWCGMonitorFonts.getPrimaryFont();
 
          JPanel spaceGrid = new JPanel(new GridLayout(0, 1));
          spaceGrid.setOpaque(false);
@@ -516,7 +517,7 @@ public class CampaignSkinManagerForPilotPanel extends ImageResizingPanel impleme
 
     private JLabel makeLabel(String labelText) throws PWCGException 
     {
-        Font font = MonitorSupport.getPrimaryFont();
+        Font font = PWCGMonitorFonts.getPrimaryFont();
         Color fgColor = ColorMap.PAPER_FOREGROUND;
 
         JLabel label = new JLabel(labelText);
@@ -536,7 +537,7 @@ public class CampaignSkinManagerForPilotPanel extends ImageResizingPanel impleme
      */
     private JRadioButton makeRadioButton(String buttonText, String actionCommand, Color fgColor) throws PWCGException 
     {
-        Font font = MonitorSupport.getPrimaryFont();
+        Font font = PWCGMonitorFonts.getPrimaryFont();
 
         JRadioButton button = new JRadioButton(buttonText);
         button.setActionCommand(actionCommand);

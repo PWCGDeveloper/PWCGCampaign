@@ -7,8 +7,8 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.MathUtils;
+import pwcg.core.utils.PWCGLogger;
 
 public class Coordinate implements Cloneable
 {

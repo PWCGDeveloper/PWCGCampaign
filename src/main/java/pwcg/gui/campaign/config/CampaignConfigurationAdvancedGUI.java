@@ -28,7 +28,7 @@ import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.config.ConfigurationParametersGUI;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -156,7 +156,7 @@ public class CampaignConfigurationAdvancedGUI extends PwcgGuiContext implements 
 	{
 		Color fgColor = ColorMap.CHALK_FOREGROUND;
 
-		Font font = MonitorSupport.getPrimaryFontLarge();
+		Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
 		JLabel label = new JLabel(labelText);
 		label.setHorizontalAlignment(SwingConstants.LEFT );
@@ -171,7 +171,7 @@ public class CampaignConfigurationAdvancedGUI extends PwcgGuiContext implements 
 	{
 		Color fgColor = ColorMap.CHALK_FOREGROUND;
 
-		Font font = MonitorSupport.getPrimaryFont();
+		Font font = PWCGMonitorFonts.getPrimaryFont();
 
 		JRadioButton button = new JRadioButton(buttonText);
 		button.setActionCommand("Configuration Parameters: " + buttonText);

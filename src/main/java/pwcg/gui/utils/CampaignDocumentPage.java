@@ -10,7 +10,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorBorders;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 
 /**
  * CampaignReportGUI acts as both a primary panel when the user want a  and as
@@ -64,8 +65,8 @@ public class CampaignDocumentPage extends JPanel
      */
     private JComponent formHeaderTextBox(String headerText) throws PWCGException
     {
-        Font font = MonitorSupport.getDecorativeFont();
-        Insets margins = MonitorSupport.calculateInset(10, 20, 10, 20);
+        Font font = PWCGMonitorFonts.getDecorativeFont();
+        Insets margins = PWCGMonitorBorders.calculateBorderMargins(10, 20, 10, 20);
 
         JTextArea tHeader = new JTextArea();
         tHeader.setOpaque(false);
@@ -84,8 +85,8 @@ public class CampaignDocumentPage extends JPanel
      */
     private JComponent formTextBox(String bodyText) throws PWCGException
     {
-        Font font = MonitorSupport.getTypewriterFont();
-        Insets margins = MonitorSupport.calculateInset(5, 20, 5, 20);
+        Font font = PWCGMonitorFonts.getTypewriterFont();
+        Insets margins = PWCGMonitorBorders.calculateBorderMargins(5, 20, 5, 20);
 
         JTextArea tText = new JTextArea();
         tText.setOpaque(false);

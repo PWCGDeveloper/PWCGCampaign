@@ -17,7 +17,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImagePanel;
 
@@ -119,7 +119,7 @@ public class CampaignEquipmentDepotPanel extends ImagePanel
     private JTextArea createDepotText() throws PWCGException
     {
         JTextArea serviceDepotText;
-        Font font = MonitorSupport.getTypewriterFont();
+        Font font = PWCGMonitorFonts.getTypewriterFont();
         serviceDepotText = new JTextArea();
         serviceDepotText.setFont(font);
         serviceDepotText.setOpaque(false);

@@ -18,8 +18,8 @@ import pwcg.mission.ground.unittypes.transport.ShipSubmarineConvoyUnit;
 import pwcg.mission.ground.unittypes.transport.ShipWarshipConvoyUnit;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.mcu.Coalition;
-import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetType;
 
 public class ShippingUnitBuilder
 {

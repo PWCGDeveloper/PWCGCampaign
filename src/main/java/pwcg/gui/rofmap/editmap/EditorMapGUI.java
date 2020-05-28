@@ -32,7 +32,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.rofmap.MapGUI;
 import pwcg.gui.rofmap.MapScroll;
 import pwcg.gui.utils.CampaignTransitionDates;
@@ -300,7 +300,7 @@ public class EditorMapGUI extends MapGUI implements ActionListener
         Color fgColor = ColorMap.CHALK_FOREGROUND;
         Color bgColor = ColorMap.CHALK_BACKGROUND;
 
-        Font font = MonitorSupport.getPrimaryFont();
+        Font font = PWCGMonitorFonts.getPrimaryFont();
 
         JRadioButton button = new JRadioButton(buttonText);
         button.setHorizontalAlignment(SwingConstants.LEFT );
@@ -322,7 +322,7 @@ public class EditorMapGUI extends MapGUI implements ActionListener
         Color fgColor = ColorMap.CHALK_FOREGROUND;
         Color bgColor = ColorMap.CHALK_BACKGROUND;
 
-        Font font = MonitorSupport.getPrimaryFont();
+        Font font = PWCGMonitorFonts.getPrimaryFont();
 
         JCheckBox button = new JCheckBox(buttonText);
         button.setHorizontalAlignment(SwingConstants.LEFT );

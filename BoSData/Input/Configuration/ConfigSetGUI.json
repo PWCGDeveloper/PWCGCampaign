@@ -17,7 +17,7 @@
       "help": "Font used on chalk board"
     },
     "ChalkboardFontSize": {
-      "value": "30",
+      "value": "25",
       "label": "Chalkboard Font Size",
       "help": "Font size of chalk board"
     },
@@ -62,7 +62,7 @@
       "help": "Font used on individual pilot page"
     },
     "PilotFontSize": {
-      "value": "22",
+      "value": "20",
       "label": "Pilot Font Size",
       "help": "Font size of pilot victories"
     },
@@ -72,12 +72,12 @@
       "help": "Font used on most of the UI"
     },
     "PrimaryFontLargeSize": {
-      "value": "25",
+      "value": "22",
       "label": "Primary Font Large Size",
       "help": "Font size for bigger stuff"
     },
     "PrimaryFontSize": {
-      "value": "20",
+      "value": "18",
       "label": "Primary Font Size",
       "help": "General use font size"
     },

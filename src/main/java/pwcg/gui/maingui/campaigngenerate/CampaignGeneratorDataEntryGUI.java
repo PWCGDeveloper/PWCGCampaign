@@ -46,7 +46,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.maingui.campaigngenerate.CampaignGeneratorState.CampaignGeneratorWorkflow;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -97,7 +97,7 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 
 	public void makePanels() throws PWCGException 
 	{
-	    font = MonitorSupport.getPrimaryFontLarge();
+	    font = PWCGMonitorFonts.getPrimaryFontLarge();
 		try
 		{			
 			GridBagConstraints labelConstraints = new GridBagConstraints();

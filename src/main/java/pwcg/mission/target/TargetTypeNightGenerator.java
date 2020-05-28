@@ -5,7 +5,6 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.target.TargetType;
 
 public class TargetTypeNightGenerator
 {

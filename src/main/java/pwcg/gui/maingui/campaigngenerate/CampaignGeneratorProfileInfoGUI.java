@@ -10,7 +10,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
 
 public class CampaignGeneratorProfileInfoGUI extends ImageResizingPanel
@@ -80,7 +80,7 @@ public class CampaignGeneratorProfileInfoGUI extends ImageResizingPanel
 	{
 	    JLabel label = new JLabel(labelText);
 	    label.setOpaque(false);
-	    label.setFont(MonitorSupport.getPrimaryFontLarge());
+	    label.setFont(PWCGMonitorFonts.getPrimaryFontLarge());
 	    label.setForeground(ColorMap.CHALK_FOREGROUND);
         return label;
 	}

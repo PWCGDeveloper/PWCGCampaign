@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.dialogs.ImageCache;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorSupport;
 
 /**
  * Resizes an image without altering its proportions
@@ -73,7 +73,7 @@ public class ImageScaledPanel extends JPanel
 	        Double imageRatio = imageWidth / imageHeight;
 	        
 	        
-            Double resizedHeight = MonitorSupport.getPWCGFrameSize().getHeight() * imageToScreenRatio;
+            Double resizedHeight = PWCGMonitorSupport.getPWCGFrameSize().getHeight() * imageToScreenRatio;
             Double resizedWidth = resizedHeight * imageRatio;
 	        
 			Image resizedImage = image.getScaledInstance(resizedWidth.intValue(), resizedHeight.intValue(), Image.SCALE_DEFAULT);

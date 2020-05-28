@@ -25,7 +25,7 @@ import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.ImageIconCache;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -43,7 +43,7 @@ public class CampaignPilotMedalPanel extends PwcgGuiContext implements ActionLis
 	{
         super();
 
-        Dimension screenSize = MonitorSupport.getPWCGFrameSize();
+        Dimension screenSize = PWCGMonitorSupport.getPWCGFrameSize();
         this.medalsPerRow = screenSize.width / 250;
 
         this.campaign = campaign;

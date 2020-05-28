@@ -35,7 +35,7 @@ import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.rofmap.MapGUI;
 import pwcg.gui.rofmap.MapScroll;
 import pwcg.gui.rofmap.event.AARMainPanel;
@@ -200,7 +200,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 	{
 		Color buttonBG = ColorMap.MAP_BACKGROUND;
 
-		Font font = MonitorSupport.getPrimaryFontSmall();
+		Font font = PWCGMonitorFonts.getPrimaryFontSmall();
 
         String imagePath = ContextSpecificImages.imagesMisc() + "PaperPart.jpg";
 		ImageResizingPanel debriefTextPanel = new ImageResizingPanel(imagePath);

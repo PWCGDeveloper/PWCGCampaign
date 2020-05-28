@@ -28,7 +28,7 @@ import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.helper.BriefingMissionFlight;
 import pwcg.gui.rofmap.MapGUI;
 import pwcg.gui.rofmap.MapScroll;
@@ -383,7 +383,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 
     private void createMissionParametersHeader(GridBagConstraints constraints, JPanel panel) throws PWCGException
     {
-        Font font = MonitorSupport.getPrimaryFontSmall();
+        Font font = PWCGMonitorFonts.getPrimaryFontSmall();
 
         JLabel wpName = new JLabel ("WP");		
         wpName.setFont(font);

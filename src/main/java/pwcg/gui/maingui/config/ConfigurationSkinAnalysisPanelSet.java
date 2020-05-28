@@ -25,15 +25,16 @@ import javax.swing.SwingConstants;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.MissingSkin;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.SkinAnalyzer;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.HelpDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
+import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.maingui.CampaignMainGUI;
 import pwcg.gui.maingui.SkinReportGenerator;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -202,7 +203,7 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
 
     private JPanel createPlanePanel(TreeMap<String, PlaneType> planeMap) throws PWCGException
     {
-        Dimension frameSize = MonitorSupport.getPWCGFrameSize();
+        Dimension frameSize = PWCGMonitorSupport.getPWCGFrameSize();
         int columns = 3;
         if (frameSize.getWidth() < 1900)
         {
@@ -233,7 +234,7 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
     {
         JCheckBox checkBox= new JCheckBox();
         
-        Font font = MonitorSupport.getPrimaryFont();
+        Font font = PWCGMonitorFonts.getPrimaryFont();
 
         checkBox.setFont(font);
         checkBox.setHorizontalAlignment(JLabel.LEFT);

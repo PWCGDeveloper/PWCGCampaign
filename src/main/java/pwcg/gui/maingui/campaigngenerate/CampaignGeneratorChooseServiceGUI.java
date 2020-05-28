@@ -23,7 +23,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ToolTipManager;
@@ -129,7 +129,7 @@ public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionL
         Color buttonBG = ColorMap.WOOD_BACKGROUND;
         Color buttonFG = ColorMap.CHALK_FOREGROUND;
         
-        Font font = MonitorSupport.getPrimaryFont();
+        Font font = PWCGMonitorFonts.getPrimaryFont();
 
         String imagePath = ContextSpecificImages.imagesNational();
 		String selectedIconPath = imagePath + imageName;

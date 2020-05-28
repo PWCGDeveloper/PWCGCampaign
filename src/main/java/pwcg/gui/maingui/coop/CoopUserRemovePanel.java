@@ -17,7 +17,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.MultiSelectData;
@@ -49,7 +49,7 @@ public class CoopUserRemovePanel extends ImageResizingPanel implements ActionLis
 
 	private JPanel makeAcceptancePanel() throws PWCGException 
 	{	
-        Font font = MonitorSupport.getPrimaryFontLarge();
+        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
         JPanel dataEntryPanel = new JPanel();
 	    dataEntryPanel.setLayout(new BorderLayout());

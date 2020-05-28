@@ -5,7 +5,6 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.ICountryFactory;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
-import pwcg.product.fc.country.FCCountry;
 
 public class FCCountryFactory implements ICountryFactory
 {

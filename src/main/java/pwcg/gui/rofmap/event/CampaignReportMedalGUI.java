@@ -25,7 +25,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.ImageIconCache;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.utils.CampaignDocumentPage;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -79,16 +79,16 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
         medalTextAndPilotPicPanel.setOpaque(false);
      
         int leftRightBorder = 40;
-        if (MonitorSupport.getPWCGFrameSize().getWidth() > 1200)
+        if (PWCGMonitorSupport.getPWCGFrameSize().getWidth() > 1200)
         {
-            leftRightBorder = 40 + ((Double.valueOf(MonitorSupport.getPWCGFrameSize().getWidth()).intValue() - 1200) / 4);
+            leftRightBorder = 40 + ((Double.valueOf(PWCGMonitorSupport.getPWCGFrameSize().getWidth()).intValue() - 1200) / 4);
         }
 
         
         int topBottomBorder = 20;
-        if (MonitorSupport.getPWCGFrameSize().getHeight() > 1200)
+        if (PWCGMonitorSupport.getPWCGFrameSize().getHeight() > 1200)
         {
-            int area = Double.valueOf(MonitorSupport.getPWCGFrameSize().getHeight()).intValue() / 3;
+            int area = Double.valueOf(PWCGMonitorSupport.getPWCGFrameSize().getHeight()).intValue() / 3;
             
             topBottomBorder = area / 6;
         }

@@ -20,7 +20,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -85,7 +85,7 @@ public class CampaignDeletePanelSet extends PwcgGuiContext implements ActionList
         campaignSelectPanel.setLayout(new BorderLayout());
         campaignSelectPanel.setOpaque(true);
         
-        Font font = MonitorSupport.getPrimaryFontLarge();
+        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
         JPanel campaignSelectGrid = new JPanel(new GridLayout(0,1));
         campaignSelectGrid.setOpaque(false);

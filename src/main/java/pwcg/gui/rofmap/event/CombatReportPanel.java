@@ -22,7 +22,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorBorders;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ScrollBarWrapper;
@@ -92,7 +93,7 @@ public class CombatReportPanel extends ImageResizingPanel implements ActionListe
         combatReportPanel.setLayout(new BorderLayout());
         combatReportPanel.setOpaque(false);
         
-        Insets margins = MonitorSupport.calculateInset(0,10,10,10);
+        Insets margins = PWCGMonitorBorders.calculateBorderMargins(0,10,10,10);
         combatReportPanel.setBorder(BorderFactory.createEmptyBorder(margins.top, margins.left, margins.bottom, margins.right)); 
 
         JPanel headerpanel = makeHeader();
@@ -116,8 +117,8 @@ public class CombatReportPanel extends ImageResizingPanel implements ActionListe
 	private JPanel makeHeader() throws PWCGException  
 	{
 
-        Font font = MonitorSupport.getTypewriterFont();
-        Font medFont = MonitorSupport.getDecorativeFont();
+        Font font = PWCGMonitorFonts.getTypewriterFont();
+        Font medFont = PWCGMonitorFonts.getDecorativeFont();
 
         JPanel headerPanel = makeHeaderPanel(medFont);
 
@@ -213,7 +214,7 @@ public class CombatReportPanel extends ImageResizingPanel implements ActionListe
         JPanel headerPanel = new JPanel(new BorderLayout());
 		headerPanel.setOpaque(false);
 
-        Insets margins = MonitorSupport.calculateInset(10,30,5,30);
+        Insets margins = PWCGMonitorBorders.calculateBorderMargins(10,30,5,30);
         headerPanel.setBorder(BorderFactory.createEmptyBorder(margins.top, margins.left, margins.bottom, margins.right)); 
 
 		JLabel lTitle = new JLabel("Combats in the Air", JLabel.LEFT);
@@ -226,7 +227,7 @@ public class CombatReportPanel extends ImageResizingPanel implements ActionListe
 	private Component makeMissionResults() throws PWCGException 
 	{
 		// Mission text and scroll pane
-		Font font = MonitorSupport.getTypewriterFont();
+		Font font = PWCGMonitorFonts.getTypewriterFont();
 		
         JTextArea haText = new JTextArea("");
         haText.setOpaque(false);
@@ -236,7 +237,7 @@ public class CombatReportPanel extends ImageResizingPanel implements ActionListe
 
 		haText.setText("Remarks on flight and hostile aircraft\n\n" + combatReport.getHaReport());
 
-        Insets margins = MonitorSupport.calculateInset(5,30,5,30);
+        Insets margins = PWCGMonitorBorders.calculateBorderMargins(5,30,5,30);
         haText.setMargin(margins); 
 
         JScrollPane haScrollPane = ScrollBarWrapper.makeScrollPane(haText);
@@ -249,16 +250,16 @@ public class CombatReportPanel extends ImageResizingPanel implements ActionListe
 		JPanel narrativePanel = new JPanel(new BorderLayout());
 		narrativePanel.setOpaque(false);
 		
-        Insets margins = MonitorSupport.calculateInset(5,30,5,30);
+        Insets margins = PWCGMonitorBorders.calculateBorderMargins(5,30,5,30);
         narrativePanel.setBorder(BorderFactory.createEmptyBorder(margins.top, margins.left, margins.bottom, margins.right)); 
 
-		Font medFont = MonitorSupport.getDecorativeFont();
+		Font medFont = PWCGMonitorFonts.getDecorativeFont();
 		JLabel lNarrative = new JLabel("Narrative", JLabel.LEFT);
 		lNarrative.setOpaque(false);
 		lNarrative.setFont(medFont);
 		narrativePanel.add(lNarrative, BorderLayout.NORTH);
 		
-		Font font = MonitorSupport.getCursiveFont();
+		Font font = PWCGMonitorFonts.getCursiveFont();
 
 		//narrativeText = new ImageTextArea(imagePath);
         narrativeText = new JTextArea("");

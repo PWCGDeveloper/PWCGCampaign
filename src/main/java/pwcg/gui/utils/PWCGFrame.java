@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorSupport;
 
 public class PWCGFrame extends JFrame
 {
@@ -31,7 +31,7 @@ public class PWCGFrame extends JFrame
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		Dimension screenSize = MonitorSupport.getPWCGMonitorSize();
+		Dimension screenSize = PWCGMonitorSupport.getPWCGMonitorSize();
 		this.setSize(screenSize);
 		this.setState(JFrame.MAXIMIZED_BOTH);
 		

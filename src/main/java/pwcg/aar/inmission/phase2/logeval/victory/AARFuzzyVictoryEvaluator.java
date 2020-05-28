@@ -1,8 +1,8 @@
 package pwcg.aar.inmission.phase2.logeval.victory;
 
 import pwcg.aar.inmission.phase2.logeval.AARVehicleBuilder;
-import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogAIEntity;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.core.exception.PWCGException;
 

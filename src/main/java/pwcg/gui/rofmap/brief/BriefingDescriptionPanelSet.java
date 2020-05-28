@@ -23,7 +23,8 @@ import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorBorders;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.helper.BriefingMissionFlight;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -136,7 +137,7 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
         JPanel missionTextPanel = new JPanel(new BorderLayout());
         missionTextPanel.setOpaque(false);
         
-        Font font = MonitorSupport.getBriefingChalkboardFont();
+        Font font = PWCGMonitorFonts.getBriefingChalkboardFont();
 
         missionTextArea.setFont(font);
         missionTextArea.setOpaque(false);
@@ -145,7 +146,7 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
         missionTextArea.setForeground(ColorMap.CHALK_FOREGROUND);
         
         // Calculate the writable area of the text and generate margins scaled to screen size
-        Insets margins = MonitorSupport.calculateInset(50, 35, 65, 35);
+        Insets margins = PWCGMonitorBorders.calculateBorderMargins(50, 35, 65, 35);
         missionTextArea.setMargin(margins);
         
         missionTextPanel.add(missionTextArea, BorderLayout.CENTER);

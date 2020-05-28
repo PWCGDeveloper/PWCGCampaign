@@ -4,11 +4,6 @@ import java.io.BufferedWriter;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.mcu.McuCounter;
-import pwcg.mission.mcu.McuEvent;
-import pwcg.mission.mcu.McuMedia;
-import pwcg.mission.mcu.McuTimer;
-import pwcg.mission.mcu.McuWaypoint;
 
 public class ReconPhotoMcuSet 
 {

@@ -17,8 +17,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.MathUtils;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.mcu.McuTREntity;
 

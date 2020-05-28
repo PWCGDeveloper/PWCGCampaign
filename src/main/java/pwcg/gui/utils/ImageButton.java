@@ -9,7 +9,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 
 public class ImageButton 
 {
@@ -29,7 +29,7 @@ public class ImageButton
 		button.setBorderPainted(false);
 		button.setIcon(icon);
 		
-		Font font = MonitorSupport.getPrimaryFontSmall();
+		Font font = PWCGMonitorFonts.getPrimaryFontSmall();
 
 		button.setFont(font);
 		button.setOpaque(false);
@@ -51,7 +51,7 @@ public class ImageButton
 		PWCGJButton button= new PWCGJButton(text);
 		button.setIcon(icon);
 		
-		Font font = MonitorSupport.getPrimaryFontSmall();
+		Font font = PWCGMonitorFonts.getPrimaryFontSmall();
 
 		button.setFont(font);
 		button.setOpaque(false);
@@ -91,7 +91,7 @@ public class ImageButton
 
 		JCheckBox checkBox= new JCheckBox(text);
 		
-		Font font = MonitorSupport.getPrimaryFontSmall();
+		Font font = PWCGMonitorFonts.getPrimaryFontSmall();
 
 		checkBox.setFont(font);
 		checkBox.setHorizontalAlignment(JLabel.LEFT);

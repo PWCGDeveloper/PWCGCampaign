@@ -24,7 +24,8 @@ import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorBorders;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -118,7 +119,7 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
         JPanel missionTextPanel = new JPanel(new BorderLayout());
         missionTextPanel.setOpaque(false);
         
-        Font font = MonitorSupport.getBriefingChalkboardFont();
+        Font font = PWCGMonitorFonts.getBriefingChalkboardFont();
 
         missionTextArea.setFont(font);
         missionTextArea.setOpaque(false);
@@ -126,7 +127,7 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
         missionTextArea.setWrapStyleWord(true);
         missionTextArea.setForeground(ColorMap.CHALK_FOREGROUND);
         
-        Insets margins = MonitorSupport.calculateInset(50, 35, 65, 35);
+        Insets margins = PWCGMonitorBorders.calculateBorderMargins(50, 35, 65, 35);
         missionTextArea.setMargin(margins);
         
         String missionText = makeMissionText();

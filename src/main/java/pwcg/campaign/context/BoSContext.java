@@ -2,8 +2,8 @@ package pwcg.campaign.context;
 
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.plane.payload.IPayloadFactory;
-import pwcg.product.bos.plane.payload.BoSPayloadFactory;
 import pwcg.core.exception.PWCGException;
+import pwcg.product.bos.plane.payload.BoSPayloadFactory;
 
 public class BoSContext extends PWCGContextBase implements IPWCGContextManager
 { 

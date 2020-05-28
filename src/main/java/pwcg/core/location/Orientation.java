@@ -5,8 +5,8 @@ import java.io.IOException;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.MathUtils;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.RandomNumberGenerator;
 
 public class Orientation implements Cloneable

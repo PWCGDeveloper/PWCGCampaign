@@ -8,8 +8,8 @@ import java.util.List;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.MathUtils;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PositionFinder;
 import pwcg.gui.rofmap.MapPanelBase;
 

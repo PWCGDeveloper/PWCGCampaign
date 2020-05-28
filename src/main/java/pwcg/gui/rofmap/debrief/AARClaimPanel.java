@@ -23,7 +23,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.colors.ColorMap;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -60,7 +60,7 @@ public class AARClaimPanel extends ImageResizingPanel implements ActionListener
 	private JPanel makeSelectPanel() throws PWCGException 
 	{
 		Color bgColor = ColorMap.PAPER_BACKGROUND;
-		Font font = MonitorSupport.getPrimaryFont();
+		Font font = PWCGMonitorFonts.getPrimaryFont();
 		
 		JPanel selectedPanel = new JPanel (new BorderLayout());
 		selectedPanel.setOpaque(false);
@@ -99,7 +99,7 @@ public class AARClaimPanel extends ImageResizingPanel implements ActionListener
 	private JPanel makeClaimsPanel() throws PWCGException 
 	{
 		Color bgColor = ColorMap.PAPER_BACKGROUND;
-		Font font = MonitorSupport.getPrimaryFont();
+		Font font = PWCGMonitorFonts.getPrimaryFont();
 
 		victoriesClaimedPanel = new JPanel (new BorderLayout());
 		victoriesClaimedPanel.setOpaque(false);

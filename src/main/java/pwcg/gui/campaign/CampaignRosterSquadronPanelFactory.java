@@ -21,7 +21,7 @@ import pwcg.core.utils.DateUtils;
 import pwcg.gui.campaign.home.CampaignPilotChalkBoard;
 import pwcg.gui.campaign.pilot.CampaignPilotListPanel;
 import pwcg.gui.colors.ColorMap;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 
@@ -81,7 +81,7 @@ public class CampaignRosterSquadronPanelFactory extends CampaignRosterBasePanelF
 		JPanel descGridPanel = new JPanel(new GridLayout(0, 1));
 		descGridPanel.setOpaque(false);
 		
-		Font font = MonitorSupport.getPrimaryFont();
+		Font font = PWCGMonitorFonts.getPrimaryFont();
 		
 		
 		Color fg = ColorMap.PLAQUE_GOLD;

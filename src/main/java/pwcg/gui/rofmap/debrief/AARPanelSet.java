@@ -27,7 +27,7 @@ import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -82,7 +82,7 @@ public class AARPanelSet extends AARPanel implements ActionListener
 
 		Color buttonBG = ColorMap.PAPER_BACKGROUND;
 		
-		Font font = MonitorSupport.getTypewriterFont();
+		Font font = PWCGMonitorFonts.getTypewriterFont();
 
 		JPanel infoPanelGrid = new JPanel (new GridLayout(0,1));
 		infoPanelGrid.setOpaque(false);

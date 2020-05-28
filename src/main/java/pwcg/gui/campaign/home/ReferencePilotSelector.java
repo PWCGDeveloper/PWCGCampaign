@@ -22,7 +22,7 @@ import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -63,7 +63,7 @@ public class ReferencePilotSelector extends PwcgGuiContext implements ActionList
         centerPanel = new ImageResizingPanel(imagePath);
         centerPanel.setLayout(new BorderLayout());
 
-        Font font = MonitorSupport.getPrimaryFontLarge();
+        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
         squadronMemberSelector = new JComboBox<String>();
         squadronMemberSelector.setOpaque(false);
         squadronMemberSelector.setBackground(ColorMap.PAPER_BACKGROUND);

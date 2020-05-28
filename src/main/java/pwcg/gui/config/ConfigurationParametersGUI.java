@@ -16,7 +16,7 @@ import pwcg.core.config.ConfigManager;
 import pwcg.core.config.ConfigSet;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.colors.ColorMap;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImagePanel;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -55,7 +55,7 @@ public class ConfigurationParametersGUI extends ImageResizingPanel
 		JPanel valuePanel = new JPanel (new GridLayout(0,1));
 		valuePanel.setOpaque(false);
 		
-		Font font = MonitorSupport.getPrimaryFontSmall();
+		Font font = PWCGMonitorFonts.getPrimaryFontSmall();
 		
 		for (String parameterKey : configSet.getConfigItemNames())
 		{

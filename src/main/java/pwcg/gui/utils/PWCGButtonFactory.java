@@ -16,7 +16,8 @@ import javax.swing.border.Border;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.colors.ColorMap;
-import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
+import pwcg.gui.dialogs.PWCGMonitorSupport;
 
 public class PWCGButtonFactory extends JButton
 {
@@ -27,7 +28,7 @@ public class PWCGButtonFactory extends JButton
         Color bgColor = ColorMap.CHALK_BACKGROUND;
         Color fgColor = ColorMap.CHALK_FOREGROUND;
         
-        Font font = MonitorSupport.getPrimaryFontLarge();
+        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
         
         buttonText = padStringToExtendImageSize(buttonText);
         PWCGJButton button = makeButton(buttonText, commandText, actionListener, bgColor, fgColor, font);
@@ -39,7 +40,7 @@ public class PWCGButtonFactory extends JButton
     {
         Color bgColor = ColorMap.PAPER_BACKGROUND;
         Color fgColor = ColorMap.PAPER_FOREGROUND;
-        Font font = MonitorSupport.getPrimaryFont();
+        Font font = PWCGMonitorFonts.getPrimaryFont();
         
         PWCGJButton button = makeButton(buttonText, commandText, actionListener, bgColor, fgColor, font);
 
@@ -50,7 +51,7 @@ public class PWCGButtonFactory extends JButton
     {
         Color bgColor = ColorMap.PAPER_OFFSET;
         Color fgColor = ColorMap.PAPER_FOREGROUND;
-        Font font = MonitorSupport.getPrimaryFont();
+        Font font = PWCGMonitorFonts.getPrimaryFont();
         
         PWCGJButton button = makeButtonWithBorder(buttonText, commandText, actionListener, bgColor, fgColor, font);
 
@@ -61,7 +62,7 @@ public class PWCGButtonFactory extends JButton
     {
         Color bgColor = ColorMap.CHALK_BACKGROUND;
         Color fgColor = ColorMap.CHALK_FOREGROUND;
-        Font font = MonitorSupport.getChalkboardFont();
+        Font font = PWCGMonitorFonts.getChalkboardFont();
         
         PWCGJButton button = makeButton(buttonText, commandText, actionListener, bgColor, fgColor, font);
 
@@ -72,7 +73,7 @@ public class PWCGButtonFactory extends JButton
     {
         Color bgColor = ColorMap.CHALK_BACKGROUND;
         Color fgColor = ColorMap.CHALK_FOREGROUND;
-        Font font = MonitorSupport.getBriefingChalkboardFont();
+        Font font = PWCGMonitorFonts.getBriefingChalkboardFont();
         
         PWCGJButton button = makeButton(buttonText, commandText, actionListener, bgColor, fgColor, font);
 
@@ -85,7 +86,7 @@ public class PWCGButtonFactory extends JButton
         Color bg = ColorMap.WOOD_BACKGROUND;
         Color fg = ColorMap.CHALK_FOREGROUND;
 
-        Font font = MonitorSupport.getPrimaryFont();
+        Font font = PWCGMonitorFonts.getPrimaryFont();
 
         JRadioButton button= new JRadioButton(buttonName);
         button.setOpaque(false);
@@ -160,7 +161,7 @@ public class PWCGButtonFactory extends JButton
     {
         Color bgColor = ColorMap.CHALK_BACKGROUND;
         Color fgColor = ColorMap.CHALK_FOREGROUND;
-        Font font = MonitorSupport.getPrimaryFontLarge();
+        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
         
         labelText = padStringToExtendImageSize(labelText);
         JLabel label = makeLabel(labelText, bgColor, fgColor, font);
@@ -172,7 +173,7 @@ public class PWCGButtonFactory extends JButton
     {
         Color bgColor = ColorMap.PAPER_BACKGROUND;
         Color fgColor = ColorMap.PAPER_FOREGROUND;
-        Font font = MonitorSupport.getPrimaryFontLarge();
+        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
         
         labelText = padStringToExtendImageSize(labelText);
         JLabel label = makeLabel(labelText, bgColor, fgColor, font);
@@ -184,7 +185,7 @@ public class PWCGButtonFactory extends JButton
     {
         Color bgColor = ColorMap.CHALK_BACKGROUND;
         Color fgColor = ColorMap.PLAQUE_GOLD;
-        Font font = MonitorSupport.getPrimaryFontLarge();
+        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
         
         labelText = padStringToExtendImageSize(labelText);
         JLabel label = makeLabel(labelText, bgColor, fgColor, font);
@@ -196,7 +197,7 @@ public class PWCGButtonFactory extends JButton
     {
         Color bgColor = ColorMap.PAPER_BACKGROUND;
         Color fgColor = ColorMap.PAPER_FOREGROUND;
-        Font font = MonitorSupport.getPrimaryFont();
+        Font font = PWCGMonitorFonts.getPrimaryFont();
         
         JLabel label = makeLabel(labelText, bgColor, fgColor, font);
         
@@ -207,7 +208,7 @@ public class PWCGButtonFactory extends JButton
     {
         Color bgColor = ColorMap.CHALK_BACKGROUND;
         Color fgColor = ColorMap.CHALK_FOREGROUND;
-        Font font = MonitorSupport.getChalkboardFont();
+        Font font = PWCGMonitorFonts.getChalkboardFont();
         
         JLabel label = makeLabel(labelText, bgColor, fgColor, font);
         
@@ -218,7 +219,7 @@ public class PWCGButtonFactory extends JButton
     {
         Color bgColor = ColorMap.CHALK_BACKGROUND;
         Color fgColor = ColorMap.CHALK_FOREGROUND;
-        Font font = MonitorSupport.getBriefingChalkboardFont();
+        Font font = PWCGMonitorFonts.getBriefingChalkboardFont();
         
         JLabel label = makeLabel(labelText, bgColor, fgColor, font);
         
@@ -240,7 +241,7 @@ public class PWCGButtonFactory extends JButton
     {
         String paddedString = originalString;
         
-        Dimension screenSize = MonitorSupport.getPWCGFrameSize();
+        Dimension screenSize = PWCGMonitorSupport.getPWCGFrameSize();
         Double pixelsToUseDouble = screenSize.width * .2;
         int pixelsToUse = pixelsToUseDouble.intValue();
         
@@ -259,7 +260,7 @@ public class PWCGButtonFactory extends JButton
 
     public static JCheckBox makeCheckBox(String buttonText, String actionCommand, Color fgColor, ActionListener actionListener) throws PWCGException 
     {
-        Font font = MonitorSupport.getPrimaryFont();
+        Font font = PWCGMonitorFonts.getPrimaryFont();
 
         JCheckBox button = new JCheckBox(buttonText);
         button.setHorizontalAlignment(SwingConstants.LEFT );
@@ -275,7 +276,7 @@ public class PWCGButtonFactory extends JButton
 
     public static JCheckBox makeSmallCheckBox(String buttonText, String actionCommand, Color fgColor, ActionListener actionListener) throws PWCGException 
     {
-        Font font = MonitorSupport.getPrimaryFontSmall();
+        Font font = PWCGMonitorFonts.getPrimaryFontSmall();
 
         JCheckBox button = new JCheckBox(buttonText);
         button.setHorizontalAlignment(SwingConstants.LEFT );

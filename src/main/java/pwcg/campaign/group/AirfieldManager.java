@@ -18,8 +18,8 @@ import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.core.utils.PositionFinder;
 import pwcg.core.utils.PWCGLogger.LogLevel;
+import pwcg.core.utils.PositionFinder;
 
 public class AirfieldManager
 {
