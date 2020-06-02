@@ -8,8 +8,8 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-import pwcg.gui.dialogs.ImageCache;
-import pwcg.gui.dialogs.MapImageCache;
+import pwcg.gui.image.ImageCache;
+import pwcg.gui.image.MapImageCache;
 
 public abstract class ImagePanel extends JPanel
 {

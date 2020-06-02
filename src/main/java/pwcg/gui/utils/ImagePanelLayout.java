@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-import pwcg.gui.dialogs.ImageCache;
+import pwcg.gui.image.ImageCache;
 
 public class ImagePanelLayout extends JPanel
 {

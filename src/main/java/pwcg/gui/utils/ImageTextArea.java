@@ -7,7 +7,7 @@ import javax.swing.JTextArea;
 
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
-import pwcg.gui.dialogs.ImageCache;
+import pwcg.gui.image.ImageCache;
 
 public class ImageTextArea extends JTextArea
 {

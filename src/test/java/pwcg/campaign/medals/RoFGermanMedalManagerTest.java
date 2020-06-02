@@ -18,7 +18,7 @@ import pwcg.campaign.factory.MedalManagerFactory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.gui.dialogs.ImageIconCache;
+import pwcg.gui.image.ImageIconCache;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.product.fc.country.FCServiceManager;
 import pwcg.product.fc.medals.GermanMedalManager;

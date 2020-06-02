@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
-import pwcg.gui.dialogs.ImageCache;
+import pwcg.gui.image.ImageCache;
 
 public class ImageResizingPanel extends JPanel
 {

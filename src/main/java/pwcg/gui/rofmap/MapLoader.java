@@ -3,7 +3,7 @@ package pwcg.gui.rofmap;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
-import pwcg.gui.dialogs.MapImageCache;
+import pwcg.gui.image.MapImageCache;
 
 public class MapLoader implements Runnable
 {

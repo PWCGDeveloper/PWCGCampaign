@@ -1,4 +1,4 @@
-package pwcg.gui.dialogs;
+package pwcg.gui.image;
 
 import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
@@ -7,7 +7,6 @@ import java.awt.Transparency;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import java.lang.ref.SoftReference;
 import java.util.HashMap;
 
@@ -206,7 +205,7 @@ public class ImageCache
         return themeImagePath;
     }
 
-    private BufferedImage getImageFromFile(String imagePath) throws PWCGException
+    public static BufferedImage getImageFromFile(String imagePath) throws PWCGException
     {
         BufferedImage image = null;
         try
@@ -218,7 +217,7 @@ public class ImageCache
                 bufferedImageCache.put(imagePath, new SoftReference<>(image));
             }
         }
-        catch (IOException ioe)
+        catch (Exception ioe)
         {
             PWCGLogger.logException(ioe);
             throw new PWCGException("Failed to load image file " + imagePath);

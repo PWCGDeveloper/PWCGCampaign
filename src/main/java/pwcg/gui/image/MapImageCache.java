@@ -1,4 +1,4 @@
-package pwcg.gui.dialogs;
+package pwcg.gui.image;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;

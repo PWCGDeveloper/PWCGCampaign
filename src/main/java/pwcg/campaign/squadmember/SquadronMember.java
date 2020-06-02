@@ -25,7 +25,7 @@ import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
-import pwcg.gui.dialogs.ImageIconCache;
+import pwcg.gui.image.ImageIconCache;
 import pwcg.gui.utils.PWCGStringValidator;
 
 public class SquadronMember implements Cloneable

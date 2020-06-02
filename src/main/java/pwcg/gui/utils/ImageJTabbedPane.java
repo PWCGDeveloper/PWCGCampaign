@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JTabbedPane;
 
-import pwcg.gui.dialogs.ImageCache;
+import pwcg.gui.image.ImageCache;
 
 public class ImageJTabbedPane extends JTabbedPane
 {

@@ -8,8 +8,8 @@ import javax.swing.JPanel;
 
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
-import pwcg.gui.dialogs.ImageCache;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
+import pwcg.gui.image.ImageCache;
 
 /**
  * Resizes an image without altering its proportions
