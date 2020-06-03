@@ -59,12 +59,11 @@ public class MissionCenterBuilderFrontLines implements IMissionCenterBuilder
         Side frontSide = determineFrontSide();
         
         List<FrontLinePoint> selectedFrontPoints = new ArrayList<>();
-        int numAttempts = 0;
-        while (selectedFrontPoints.size() < 15 && numAttempts < 20)
+        int missionCenterMaxDistanceForMissionStop = missionCenterMaxDistanceForMission + 50000;
+        while (selectedFrontPoints.size() < 15 && missionCenterMaxDistanceForMission <= missionCenterMaxDistanceForMissionStop)
         {
             selectedFrontPoints = findFrontLinePointsForMissionCenterByRange(missionCenterMinDistanceFromBase, missionCenterMaxDistanceForMission, frontSide);
             missionCenterMaxDistanceForMission += 5000;
-            ++numAttempts;
         }
         return selectedFrontPoints;
     }
@@ -88,15 +87,54 @@ public class MissionCenterBuilderFrontLines implements IMissionCenterBuilder
         FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         List<FrontLinePoint> frontPoints = frontLinesForMap.findAllFrontLinesForSide(frontSide);
         List<FrontLinePoint> selectedFrontPoints = new ArrayList<>();
+
+        if (!hasFrontLinesFarEnoughFromBase(missionCenterMaxDistanceForMission, squadronPositions, frontPoints))
+        {
+            selectedFrontPoints.addAll(frontPoints);
+        }
+        else
+        {
+            selectedFrontPoints = getFrontLinePositionsFromMinMaxDistance(missionCenterMinDistanceFromBase, missionCenterMaxDistanceForMission, squadronPositions, frontPoints);
+        }
+        
+        return selectedFrontPoints;
+    }
+
+    private boolean hasFrontLinesFarEnoughFromBase(int missionCenterMinDistanceFromBase, List<Coordinate> squadronPositions, List<FrontLinePoint> frontPoints) throws PWCGException
+    {
+        boolean hasFrontPointsFarEnough = false;
+        for (FrontLinePoint frontLinePoint : frontPoints)
+        {
+            for (Coordinate squadronPosition : squadronPositions)
+            {
+                double distanceFromSquadron = MathUtils.calcDist(squadronPosition, frontLinePoint.getPosition());
+                if (distanceFromSquadron > missionCenterMinDistanceFromBase)
+                {
+                    hasFrontPointsFarEnough = true;
+                    return hasFrontPointsFarEnough;
+                }
+            }
+        }
+        
+        return hasFrontPointsFarEnough;
+    }
+
+    private List<FrontLinePoint> getFrontLinePositionsFromMinMaxDistance(int missionCenterMinDistanceFromBase, int missionCenterMaxDistanceForMission,
+            List<Coordinate> squadronPositions, List<FrontLinePoint> frontPoints)
+    {
+        List<FrontLinePoint> selectedFrontPoints = new ArrayList<>();
         for (FrontLinePoint frontLinePoint : frontPoints)
         {
             boolean isInRange = false;
             for (Coordinate squadronPosition : squadronPositions)
             {
                 double distanceFromSquadron = MathUtils.calcDist(squadronPosition, frontLinePoint.getPosition());
-                if (distanceFromSquadron > missionCenterMinDistanceFromBase && distanceFromSquadron < missionCenterMaxDistanceForMission)
+                if (distanceFromSquadron > missionCenterMinDistanceFromBase)
                 {
-                    isInRange = true;
+                    if (distanceFromSquadron < missionCenterMaxDistanceForMission)
+                    {
+                        isInRange = true;
+                    }
                 }
             }
             if (isInRange)
@@ -106,6 +144,7 @@ public class MissionCenterBuilderFrontLines implements IMissionCenterBuilder
         }
         return selectedFrontPoints;
     }
+
 
     private int calculateMinimumDistance(int missionCenterMaxDistanceForMission) throws PWCGException
     {
