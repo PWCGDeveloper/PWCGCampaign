@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
@@ -23,15 +24,9 @@ public class VirtualEscortFlightBuilder
     public IFlight createVirtualEscortFlight(IFlight escortedFlight) throws PWCGException 
     {
         List<Role> fighterRole = new ArrayList<Role>(Arrays.asList(Role.ROLE_FIGHTER));
-        List<Squadron> friendlyFighterSquadrons = PWCGContext.getInstance().getSquadronManager().getNearestSquadronsByRole(
-                escortedFlight.getCampaign(),
-                escortedFlight.getFlightHomePosition(),
-                1,
-                50000.0,
-                fighterRole,
-                escortedFlight.getSquadron().determineSquadronCountry(escortedFlight.getCampaign().getDate()).getSide(), 
-                escortedFlight.getCampaign().getDate());
-        
+        Side friendlySide = escortedFlight.getSquadron().determineSquadronCountry(escortedFlight.getCampaign().getDate()).getSide();
+        List<Squadron> friendlyFighterSquadrons = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(escortedFlight.getCampaign(), fighterRole, friendlySide);
+
         if (friendlyFighterSquadrons != null && friendlyFighterSquadrons.size() > 0)
         {
             IFlightInformation escortFlightInformation = createFlightInformation(escortedFlight, friendlyFighterSquadrons);

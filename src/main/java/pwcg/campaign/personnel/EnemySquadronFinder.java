@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
@@ -23,61 +22,31 @@ public class EnemySquadronFinder
         this.campaign = campaign;
     }
 
-    public Squadron getRandomEnemyViableSquadronNotPlayerSquadron(Squadron squadron, Date date) throws PWCGException
+    public Squadron getEnemyForInitialSquadronBuild(Squadron squadron, Date date) throws PWCGException
     {
-        List<Squadron> nearbyViableEnemySquadrons = getBestViableSquadrons(squadron, date);
-        for (Squadron enemySquadron : nearbyViableEnemySquadrons)
+        boolean useViableSquadrons = false;
+        List<Squadron> enemySquadrons = getEnemySquadronsForVictory(squadron, date, useViableSquadrons);
+        Squadron enemySquadron = null;
+        if (enemySquadrons.size() > 0)
         {
-            SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId());
-            if (squadronPersonnel != null)
-            {
-                if (!squadronPersonnel.isPlayerSquadron())
-                {
-                    nearbyViableEnemySquadrons.add(enemySquadron);
-                }
-            }
+            enemySquadron = getEnemySquadron(enemySquadrons);
         }
         
-        Squadron enemySquadron = null;
-        if (nearbyViableEnemySquadrons.size() > 0)
-        {
-            enemySquadron = getEnemySquadron(nearbyViableEnemySquadrons);
-        }
         return enemySquadron;
     }
 
-    public Squadron getRandomEnemyViableSquadron(Squadron squadron, Date date) throws PWCGException
+    public Squadron getEnemyForOutOfMission(Squadron squadron, Date date) throws PWCGException
     {
-        List<Squadron> nearbyViableEnemySquadrons = getBestViableSquadrons(squadron, date);
+        boolean useViableSquadrons = true;
+        List<Squadron> enemySquadrons = getEnemySquadronsForVictory(squadron, date, useViableSquadrons);
         Squadron enemySquadron = null;
-        if (nearbyViableEnemySquadrons.size() > 0)
+        if (enemySquadrons.size() > 0)
         {
-            enemySquadron = getEnemySquadron(nearbyViableEnemySquadrons);
+            enemySquadron = getEnemySquadron(enemySquadrons);
         }
 
         return enemySquadron;
     }
-    
-
-    private List<Squadron> getBestViableSquadrons(Squadron squadron, Date date) throws PWCGException
-    {
-        List<Squadron> nearbyActiveEnemySquadrons = getNearbyEnemySquadronsForVictory(date, squadron);
-        List<Squadron> nearbyViableEnemySquadrons = getViableSquadrons(nearbyActiveEnemySquadrons);
-        List<Squadron> allEnemySquadrons = getAllActiveEnemySquadrons(squadron, date);
-        List<Squadron> allViableEnemySquadrons = getViableSquadrons(allEnemySquadrons);
-
-        if (nearbyViableEnemySquadrons.size() > 0)
-        {
-            return nearbyViableEnemySquadrons;
-        }
-        else if (allViableEnemySquadrons.size() > 0)
-        {
-            return allViableEnemySquadrons;
-        }
- 
-        return new ArrayList<Squadron>();
-    }
-
 
     private Squadron getEnemySquadron(List<Squadron> possibleSquadrons) throws PWCGException
     {
@@ -86,41 +55,23 @@ public class EnemySquadronFinder
         return enemySquadron;
     }
 
-    private List<Squadron> getNearbyEnemySquadronsForVictory(Date date, Squadron squadron) throws PWCGException
+    private List<Squadron> getEnemySquadronsForVictory(Squadron squadron, Date date, boolean useViableSquadrons) throws PWCGException
     {
-        List<Squadron> nearbyEnemySquadrons = new ArrayList<>();
+        List<Squadron> enemySquadrons = new ArrayList<>();
                 
         ICountry country = squadron.getCountry();
         Side enemySide = country.getSide().getOppositeSide();
         List<Role> acceptableRoles = createAcceptableRoledForVictory();
-        IAirfield airfield = squadron.determineCurrentAirfieldAnyMap(date);
-        if (airfield != null)
+        if (useViableSquadrons)
         {
-            nearbyEnemySquadrons = PWCGContext.getInstance().getSquadronManager().getNearestSquadronsByRole(campaign, airfield.getPosition(), 1, 200000.0, acceptableRoles, enemySide, date);
+            enemySquadrons = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, enemySide);
+        }
+        else
+        {
+            enemySquadrons = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForSide(date, enemySide);
         }
         
-        List<Squadron> nearbyActiveEnemySquadrons = PWCGContext.getInstance().getSquadronManager().reduceToFlyable(nearbyEnemySquadrons, date);
-        return nearbyActiveEnemySquadrons;
-    }
-
-    private List<Squadron> getAllActiveEnemySquadrons(Squadron squadron, Date date) throws PWCGException
-    {
-        ICountry country = squadron.getCountry();
-        Side enemySide = country.getSide().getOppositeSide();
-        return PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForSide(enemySide, date);
-    }
-
-    private List<Squadron> getViableSquadrons(List<Squadron> possibleSquadrons) throws PWCGException
-    {
-        List<Squadron> viableSquadrons = new ArrayList<>();
-        for (Squadron squadron : possibleSquadrons)
-        {
-            if (squadron.isSquadronViable(campaign))
-            {
-                viableSquadrons.add(squadron);
-            }
-        }
-        return viableSquadrons;
+        return enemySquadrons;
     }
 
     private static List<Role> createAcceptableRoledForVictory()

@@ -84,7 +84,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
 		armedServicesByCountry.put(BoSCountry.RUSSIA_CODE, russianServices);
    
         createVVS(russianServices);
-        createMormandie(russianServices);
+        createNormandie(russianServices);
 	}
 
     private void createVVS(List<ArmedService> russianServices) throws PWCGException
@@ -99,8 +99,8 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
 		vvs.setEndDate(DateUtils.getEndOfWar());
 		vvs.setServiceColorMap(new VVSColorMap());
 		vvs.setGeneralRankForService("General-lieutenant");
-        vvs.setDailyPersonnelReplacementRate(40);
-        vvs.setDailyEquipmentReplacementRate(70);
+        vvs.setDailyPersonnelReplacementRatePerSquadron(2.0);
+        vvs.setDailyEquipmentReplacementRatePerSquadron(3.0);
 
 		List<String> irasPics = new ArrayList<String>();
 		irasPics.add("Russian");
@@ -114,7 +114,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
 		russianServices.add(vvs);
     }
 
-    private void createMormandie(List<ArmedService> russianServices) throws PWCGException
+    private void createNormandie(List<ArmedService> russianServices) throws PWCGException
     {
         ArmedService normandie = new ArmedService();
         normandie.setServiceId(NORMANDIE);
@@ -126,8 +126,8 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         normandie.setEndDate(DateUtils.getEndOfWar());
         normandie.setServiceColorMap(new FrenchColorMap());
         normandie.setGeneralRankForService("General-lieutenant");
-        normandie.setDailyPersonnelReplacementRate(15);
-        normandie.setDailyEquipmentReplacementRate(30);
+        normandie.setDailyPersonnelReplacementRatePerSquadron(1.5);
+        normandie.setDailyEquipmentReplacementRatePerSquadron(2.5);
 
         List<String> irasPics = new ArrayList<String>();
         irasPics.add("Russian");
@@ -169,8 +169,8 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
 		luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19430101"), 100);
 		luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19440101"), 70);
 		luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19450101"), 50);
-		luftwaffe.setDailyPersonnelReplacementRate(15);
-		luftwaffe.setDailyEquipmentReplacementRate(30);
+		luftwaffe.setDailyPersonnelReplacementRatePerSquadron(1.0);
+		luftwaffe.setDailyEquipmentReplacementRatePerSquadron(1.8);
 
 		germanServices.add(luftwaffe);
 	}
@@ -189,9 +189,9 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
 		regiaAeronautica.setEndDate(DateUtils.getEndOfWar());
 		regiaAeronautica.setServiceColorMap(new ItalianColorMap());
 		regiaAeronautica.setGeneralRankForService("Generale di Divisione Aerea");
-		regiaAeronautica.setDailyPersonnelReplacementRate(1);
-		regiaAeronautica.setDailyEquipmentReplacementRate(3);
-		regiaAeronautica.setStartDate(DateUtils.getDateYYYYMMDD("19411001"));
+        regiaAeronautica.setStartDate(DateUtils.getDateYYYYMMDD("19411001"));
+        regiaAeronautica.setDailyPersonnelReplacementRatePerSquadron(1.0);
+        regiaAeronautica.setDailyEquipmentReplacementRatePerSquadron(1.5);
 
 		List<String> italianPics = new ArrayList<String>();
 		italianPics.add("Italian");
@@ -216,9 +216,9 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         usaaf.setEndDate(DateUtils.getEndOfWar());
         usaaf.setServiceColorMap(new AmericanColorMap());
         usaaf.setGeneralRankForService("General");
-        usaaf.setDailyPersonnelReplacementRate(15);
-        usaaf.setDailyEquipmentReplacementRate(30);
         usaaf.setStartDate(DateUtils.getDateYYYYMMDD("19440901"));
+        usaaf.setDailyPersonnelReplacementRatePerSquadron(2.0);
+        usaaf.setDailyEquipmentReplacementRatePerSquadron(4.0);
 
         List<String> usaafPics = new ArrayList<String>();
         usaafPics.add("American");
@@ -255,9 +255,9 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         raf.setEndDate(DateUtils.getEndOfWar());
         raf.setServiceColorMap(new RAFColorMap());
         raf.setGeneralRankForService("Air Vice-Marshal");
-        raf.setDailyPersonnelReplacementRate(15);
-        raf.setDailyEquipmentReplacementRate(30);
         raf.setStartDate(DateUtils.getDateYYYYMMDD("19440901"));
+        raf.setDailyPersonnelReplacementRatePerSquadron(1.5);
+        raf.setDailyEquipmentReplacementRatePerSquadron(3.0);
 
         List<String> rafPics = new ArrayList<String>();
         rafPics.add("British");
@@ -285,9 +285,9 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         freeFrench.setEndDate(DateUtils.getEndOfWar());
         freeFrench.setServiceColorMap(new FrenchColorMap());
         freeFrench.setGeneralRankForService("Air Vice-Marshal");
-        freeFrench.setDailyPersonnelReplacementRate(15);
-        freeFrench.setDailyEquipmentReplacementRate(30);
         freeFrench.setStartDate(DateUtils.getDateYYYYMMDD("19440901"));
+        freeFrench.setDailyPersonnelReplacementRatePerSquadron(1.4);
+        freeFrench.setDailyEquipmentReplacementRatePerSquadron(3.0);
 
         List<String> rafPics = new ArrayList<String>();
         rafPics.add("British");

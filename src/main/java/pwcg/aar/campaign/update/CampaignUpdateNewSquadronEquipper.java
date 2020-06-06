@@ -5,11 +5,11 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.resupply.InitialSquadronEquipper;
 import pwcg.campaign.resupply.depot.EquipmentWeightCalculator;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignUpdateNewSquadronEquipper

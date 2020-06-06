@@ -13,6 +13,7 @@ import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronViability;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
@@ -43,7 +44,7 @@ public class CampaignUpdateNewSquadronStafferTest
         for (int squadronId : squadronsAdded)
         {
             Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
-            assert(squadron.isCanFly(newDate));
+            assert(SquadronViability.isSquadronActive(squadron, campaign.getDate()));
             
             SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronId);
             assert(squadronPersonnel != null);

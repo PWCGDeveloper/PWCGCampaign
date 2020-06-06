@@ -94,7 +94,7 @@ public class OutOfMissionVictoryEventHandler
     {
         Squadron victorSquadron = victorPilot.determineSquadron();
         EnemySquadronFinder enemySquadronFinder = new EnemySquadronFinder(campaign);
-        Squadron victimSquadron = enemySquadronFinder.getRandomEnemyViableSquadron(victorSquadron, campaign.getDate());
+        Squadron victimSquadron = enemySquadronFinder.getEnemyForOutOfMission(victorSquadron, campaign.getDate());
         if (victimSquadron != null)
         {
             generateVictoryWithSquadron(victorPilot, victimSquadron);

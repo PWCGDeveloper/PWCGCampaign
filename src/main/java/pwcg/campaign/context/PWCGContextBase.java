@@ -15,6 +15,7 @@ import pwcg.campaign.group.airfield.staticobject.StaticObjectDefinitionManager;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.skin.SkinManager;
+import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;

@@ -7,6 +7,7 @@ import java.util.Map;
 
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronViability;
 import pwcg.core.exception.PWCGException;
 
 public class EquipmentReplacementWeightUsage
@@ -24,7 +25,7 @@ public class EquipmentReplacementWeightUsage
         
         for (Squadron squadron : squadronsForService)
         {
-            if (squadron.isCanFly(campaignDate))
+            if (SquadronViability.isSquadronActive(squadron, campaignDate))
             {
                 List<PlaneArchType> currentAircraftArchTypes = squadron.determineCurrentAircraftArchTypes(campaignDate);
                 for (PlaneArchType planeArchType : currentAircraftArchTypes)

@@ -39,7 +39,7 @@ public class AARExtendedTimeHandlerTest
     public void setupForTestEnvironment() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         campaign.getCampaignData().setCampaignMode(CampaignMode.CAMPAIGN_MODE_SINGLE);
         aarContext = new AARContext(campaign);
     }

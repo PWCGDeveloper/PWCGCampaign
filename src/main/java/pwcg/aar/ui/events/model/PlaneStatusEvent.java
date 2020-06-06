@@ -5,10 +5,10 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignEquipmentManager;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 

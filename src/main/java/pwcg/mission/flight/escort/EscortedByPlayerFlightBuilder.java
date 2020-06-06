@@ -1,5 +1,10 @@
 package pwcg.mission.flight.escort;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
@@ -55,12 +60,10 @@ public class EscortedByPlayerFlightBuilder
 
     private Squadron determineSquadronToBeEscorted() throws PWCGException
     {
-        Squadron friendlyBombSquadron = PWCGContext.getInstance().getSquadronManager().getSquadronByProximityAndRoleAndSide(
-                playerEscortFlightInformation.getCampaign(), 
-                playerEscortFlightInformation.getSquadron().determineCurrentPosition(playerEscortFlightInformation.getCampaign().getDate()), 
-                Role.ROLE_BOMB, 
-                playerEscortFlightInformation.getSquadron().determineSquadronCountry(playerEscortFlightInformation.getCampaign().getDate()).getSide());
-        
+        List<Role> bomberRole = new ArrayList<Role>(Arrays.asList(Role.ROLE_BOMB));
+        Side friendlySide = playerEscortFlightInformation.getSquadron().determineSquadronCountry(playerEscortFlightInformation.getCampaign().getDate()).getSide();
+        Squadron friendlyBombSquadron = PWCGContext.getInstance().getSquadronManager().getSingleViableAiSquadronByRoleAndSideAndCurrentMap(playerEscortFlightInformation.getCampaign(), bomberRole, friendlySide);
+
         if (friendlyBombSquadron == null)
         {
             throw new PWCGMissionGenerationException ("Escort mission with no viable squadrons to be escorted - please create another mission");

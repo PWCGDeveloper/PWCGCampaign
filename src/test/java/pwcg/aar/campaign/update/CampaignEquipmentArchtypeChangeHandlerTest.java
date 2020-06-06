@@ -25,7 +25,7 @@ public class CampaignEquipmentArchtypeChangeHandlerTest
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
     }
     
     @Test

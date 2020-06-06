@@ -203,21 +203,23 @@ public class SquadronMemberInitialVictoryBuilder
         for (int i = victories; i > 0; --i)
         {
             Date victoryDate = generateVictoryDate(i);
-            
             EnemySquadronFinder enemySquadronFinder = new EnemySquadronFinder(campaign);
-            Squadron victimSquadron = enemySquadronFinder.getRandomEnemyViableSquadronNotPlayerSquadron(victorSquadron, victoryDate);
             
-            Victory victory = generateVictoryFromActualSquadrons(victoryDate, victimSquadron, newPilot);
-            if (victory != null)
+            Squadron victimSquadron = enemySquadronFinder.getEnemyForInitialSquadronBuild(victorSquadron, victoryDate);
+            if (victimSquadron != null)
             {
-                newPilot.addVictory(victory);
-            }
-            else
-            {
-                victory = generateVictoryWithoutSquadron(victoryDate, newPilot);
+                Victory victory = generateVictoryFromActualSquadrons(victoryDate, victimSquadron, newPilot);
                 if (victory != null)
                 {
                     newPilot.addVictory(victory);
+                }
+                else
+                {
+                    victory = generateVictoryWithoutSquadron(victoryDate, newPilot);
+                    if (victory != null)
+                    {
+                        newPilot.addVictory(victory);
+                    }
                 }
             }
         }

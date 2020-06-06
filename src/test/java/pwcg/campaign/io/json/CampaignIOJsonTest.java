@@ -43,7 +43,7 @@ public class CampaignIOJsonTest
 
     private void writeCampaign() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.JASTA_11_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JASTA_11_PROFILE);
         CampaignIOJson.writeJson(campaign);
     }
 
@@ -81,7 +81,7 @@ public class CampaignIOJsonTest
     	ArmedService germanArmedService = armedServiceManager.getArmedServiceByName(FCServiceManager.DEUTSCHE_LUFTSTREITKRAFTE_NAME, campaign.getDate());
         PersonnelReplacementsService germanReplacements = campaign.getPersonnelManager().getPersonnelReplacementsService(germanArmedService.getServiceId());
         assert(germanReplacements.getReplacements().getActiveCount(campaign.getDate()) == 20);
-        assert(germanReplacements.getDailyReplacementRate() == 15);
+        assert(germanReplacements.getDailyReplacementRate() == 22);
         assert(germanReplacements.getLastReplacementDate().equals(campaign.getDate()));
 
         ArmedService belgianArmedService = armedServiceManager.getArmedServiceByName(FCServiceManager.AVIATION_MILITAIRE_BELGE_NAME, campaign.getDate());

@@ -10,8 +10,8 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
-import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 

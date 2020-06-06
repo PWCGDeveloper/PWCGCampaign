@@ -39,7 +39,7 @@ public class PromotionEventHandlerFighterTest
     public void setupForTestEnvironment() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
-        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.ESC_103_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
         Mockito.when(squadronMember.getSquadronMemberVictories()).thenReturn(squadronMemberVictories);
     }
 

@@ -34,7 +34,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
     }
 
     @Test
@@ -58,7 +58,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
 	    do 
 	    {
 	    	++cycleNum;
-	    	int activeSquadrons = PWCGContext.getInstance().getSquadronManager().getActiveSquadrons(campaign.getDate()).size();
+	    	int viableSquadrons = PWCGContext.getInstance().getSquadronManager().getViableSquadrons(campaign).size();
 	    	int victories = aarContext.getReconciledOutOfMissionData().getPersonnelAwards().getTotalAirToAirVictories();
 	    	int losses = aarContext.getReconciledOutOfMissionData().getPersonnelLossesOutOfMission().getSquadMembersLost().size();
 	    	int replacements = campaign.getPersonnelManager().getReplacementCount();
@@ -126,7 +126,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
             System.out.println("  Axis Equipment: " + axisEquipmentLosses);
             System.out.println("  Equipment Replacements Available: " + campaign.getEquipmentManager().getReplacementCount());
 	        System.out.println("Replacement: " + replacements);
-            System.out.println("Squadrons: " + activeSquadrons);
+            System.out.println("Squadrons: " + viableSquadrons);
             System.out.println("Medals: " + medalsAwarded);
             System.out.println("Promotions: " + promotionsAwarded);
             System.out.println("Transfers: " + transfers);

@@ -38,7 +38,7 @@ public class TransferHandlerTest
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
-        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.JASTA_11_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JASTA_11_PROFILE);
         Mockito.when(armedService.getServiceId()).thenReturn(FCServiceManager.DEUTSCHE_LUFTSTREITKRAFTE);
      }
 

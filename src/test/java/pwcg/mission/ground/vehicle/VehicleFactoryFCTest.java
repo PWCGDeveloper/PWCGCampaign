@@ -10,7 +10,6 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
-import pwcg.campaign.group.airfield.staticobject.StaticObjectFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -21,42 +20,6 @@ public class VehicleFactoryFCTest
     public void setup()
     {
         PWCGContext.setProduct(PWCGProduct.FC);
-    }
-    
-    @Test
-    public void staticFrenchCreateTest() throws PWCGException
-    {
-        createStatic(CountryFactory.makeCountryByCountry(Country.FRANCE), DateUtils.getDateYYYYMMDD("19170801"));
-    }
-    
-    @Test
-    public void staticGermanCreateTest() throws PWCGException
-    {
-        createStatic(CountryFactory.makeCountryByCountry(Country.GERMANY), DateUtils.getDateYYYYMMDD("19170801"));
-    }
-    
-    @Test
-    public void staticBritishCreateTest() throws PWCGException
-    {
-        createStatic(CountryFactory.makeCountryByCountry(Country.BRITAIN), DateUtils.getDateYYYYMMDD("19170801"));
-    }
-    
-    @Test
-    public void staticAmericanCreateTest() throws PWCGException
-    {
-        createStatic(CountryFactory.makeCountryByCountry(Country.USA), DateUtils.getDateYYYYMMDD("19180501"));
-    }
-    
-    public void createStatic(ICountry country, Date date) throws PWCGException
-    {
-        for (VehicleClass vehicleClass: VehicleClass.getAllVehicleClasses())
-        {
-            if (vehicleClass.isStatic())
-            {
-                IVehicle vehicle = StaticObjectFactory.createStaticObject(country, date, vehicleClass);
-                assert(vehicle != null);
-            }
-        }
     }
 
     @Test

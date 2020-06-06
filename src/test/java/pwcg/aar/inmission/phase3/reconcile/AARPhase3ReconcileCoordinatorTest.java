@@ -65,7 +65,7 @@ public class AARPhase3ReconcileCoordinatorTest
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
-        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.ESC_103_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
         
         aceStatusList = new ArrayList<>();
         pilotStatusList = new ArrayList<>();

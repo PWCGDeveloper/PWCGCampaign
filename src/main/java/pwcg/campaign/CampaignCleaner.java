@@ -7,12 +7,13 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.PilotNames;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronManager;
+import pwcg.campaign.squadron.SquadronViability;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignCleaner
@@ -33,13 +34,13 @@ public class CampaignCleaner
         checkPilotKeys();
     }
     
-    public void removeUnwantedSquadronFiles() throws PWCGException
+    private void removeUnwantedSquadronFiles() throws PWCGException
     {
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         List<Squadron> squadronsToStaff = squadronManager.getActiveSquadrons(campaign.getDate());
         for (Squadron squadron : squadronsToStaff)
         {
-            if (!squadron.isCanFly(campaign.getDate()))
+            if (!SquadronViability.isSquadronActive(squadron, campaign.getDate()))
             {
                 if (campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId()) == null)
                 {

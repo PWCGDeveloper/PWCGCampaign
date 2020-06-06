@@ -8,13 +8,13 @@ import java.util.Map;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneSorter;
 import pwcg.campaign.resupply.depot.EquipmentDepot;
 import pwcg.campaign.resupply.depot.EquipmentUpgradeRecord;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 
 public class EquipmentUpgradeHandler

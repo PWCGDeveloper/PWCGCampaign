@@ -153,7 +153,7 @@ public class CampaignEquipmentManager
         EquipmentDepotInitializer depotInitializer = new EquipmentDepotInitializer(campaign, armedService);
         Equipment equipment = depotInitializer.createReplacementPoolForService();
         EquipmentDepot depot = new EquipmentDepot();
-        depot.setEquipmentPoints(armedService.getDailyEquipmentReplacementRate() * 2);
+        depot.setEquipmentPoints(armedService.getDailyEquipmentReplacementRate(campaign.getDate()) * 2);
         depot.setLastReplacementDate(campaign.getDate());
         depot.setEquippment(equipment);
         campaign.getEquipmentManager().addEquipmentDepotForService(armedService.getServiceId(), depot);

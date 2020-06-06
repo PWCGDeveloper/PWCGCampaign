@@ -133,8 +133,8 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
         gas.setEndDate(endDate);
         gas.setServiceColorMap(new GermanColorMap());
         gas.setGeneralRankForService("Generalleutnant");
-        gas.setDailyPersonnelReplacementRate(15);
-        gas.setDailyEquipmentReplacementRate(30);
+        gas.setDailyPersonnelReplacementRatePerSquadron(1.4);
+        gas.setDailyEquipmentReplacementRatePerSquadron(2.5);
 
         List<String> gasPics = new ArrayList<String>();
         gasPics.add("German");
@@ -158,8 +158,8 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
         usas.setEndDate(endDate);
         usas.setServiceColorMap(new AmericanColorMap());
         usas.setGeneralRankForService("Major-General");
-        usas.setDailyPersonnelReplacementRate(10);
-        usas.setDailyEquipmentReplacementRate(20);
+        usas.setDailyPersonnelReplacementRatePerSquadron(2.0);
+        usas.setDailyEquipmentReplacementRatePerSquadron(3.0);
 
         List<String> usasPics = new ArrayList<String>();
         usasPics.add("American");
@@ -182,8 +182,8 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
         raf.setEndDate(endDate);
         raf.setServiceColorMap(new RAFColorMap());
         raf.setGeneralRankForService("Major General");
-        raf.setDailyPersonnelReplacementRate(15);
-        raf.setDailyEquipmentReplacementRate(30);
+        raf.setDailyPersonnelReplacementRatePerSquadron(1.8);
+        raf.setDailyEquipmentReplacementRatePerSquadron(2.8);
 
         List<String> rafPics = new ArrayList<String>();
         rafPics.add("British");
@@ -207,8 +207,8 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
         rnas.setEndDate(rafStartDate);  // RAF start date is the RNAS end date
         rnas.setServiceColorMap(new RNASColorMap());
         rnas.setGeneralRankForService("Rear Admiral");
-        rnas.setDailyPersonnelReplacementRate(8);
-        rnas.setDailyEquipmentReplacementRate(16);
+        rnas.setDailyPersonnelReplacementRatePerSquadron(1.8);
+        rnas.setDailyEquipmentReplacementRatePerSquadron(2.8);
 
         List<String> rnasPics = new ArrayList<String>();
         rnasPics.add("British");
@@ -232,8 +232,8 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
         rfc.setEndDate(rafStartDate); // RAF start date is the RFC end date
         rfc.setServiceColorMap(new RFCColorMap());
         rfc.setGeneralRankForService("Major General");
-        rfc.setDailyPersonnelReplacementRate(15);
-        rfc.setDailyEquipmentReplacementRate(30);
+        rfc.setDailyPersonnelReplacementRatePerSquadron(1.8);
+        rfc.setDailyEquipmentReplacementRatePerSquadron(2.8);
 
         List<String> rfcPics = new ArrayList<String>();
         rfcPics.add("British");
@@ -257,8 +257,8 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
         belgianAF.setEndDate(endDate);
         belgianAF.setServiceColorMap(new BelgianColorMap());
         belgianAF.setGeneralRankForService("General de Brigade");
-        belgianAF.setDailyPersonnelReplacementRate(1);
-        belgianAF.setDailyEquipmentReplacementRate(2);
+        belgianAF.setDailyPersonnelReplacementRatePerSquadron(1.5);
+        belgianAF.setDailyEquipmentReplacementRatePerSquadron(2.5);
 
         List<String> belgianPics = new ArrayList<String>();
         belgianPics.add("Belgian");
@@ -281,8 +281,8 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
         frenchArmy.setEndDate(endDate);
         frenchArmy.setServiceColorMap(new FrenchColorMap());
         frenchArmy.setGeneralRankForService("General de Brigade");
-        frenchArmy.setDailyPersonnelReplacementRate(15);
-        frenchArmy.setDailyEquipmentReplacementRate(30);
+        frenchArmy.setDailyPersonnelReplacementRatePerSquadron(1.6);
+        frenchArmy.setDailyEquipmentReplacementRatePerSquadron(2.7);
 
         List<String> frenchArmyPics = new ArrayList<String>();
         frenchArmyPics.add("French");

@@ -9,8 +9,11 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
@@ -24,12 +27,12 @@ public class SquadronManagerTest
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
     }
 
     @Test
     public void getSquadronTest() throws PWCGException
     {
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         Squadron squadron = squadronManager.getSquadron(20111052);
         assert(squadron.determineDisplayName(campaign.getDate()).equals("I./JG52"));
@@ -38,6 +41,7 @@ public class SquadronManagerTest
     @Test
     public void getActiveSquadronsTest() throws PWCGException
     {
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         List<Squadron> squadrons = squadronManager.getActiveSquadrons(campaign.getDate());
         
@@ -74,10 +78,9 @@ public class SquadronManagerTest
     @Test
     public void getActiveSquadronsForSideTest() throws PWCGException
     {
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        Squadron germanSquadron = squadronManager.getSquadron(20111052);
-        Side side = germanSquadron.determineSide();
-        List<Squadron> squadrons = squadronManager.getActiveSquadronsForSide(side, campaign.getDate());
+        List<Squadron> squadrons = squadronManager.getActiveSquadronsForSide(campaign.getDate(), Side.AXIS);
         
         boolean foundJG52 = false;
         boolean foundStg2 = false;
@@ -108,26 +111,53 @@ public class SquadronManagerTest
         assert(!found132Reg);
         assert(!foundHs129);
     }
-    
-    @Test
-    public void getSquadronByProximityAndRoleAndSideTest() throws PWCGException
-    {
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        List<Squadron> squadrons = squadronManager.getActiveSquadrons(campaign.getDate());
 
+    @Test
+    public void getViableSquadronsTest() throws PWCGException
+    {
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
+        int II_StG2_id = 20122002;
+        SquadronPersonnel personnel = campaign.getPersonnelManager().getSquadronPersonnel(II_StG2_id);
+        int numSaved = 0;
+        for (SquadronMember squadronMember : personnel.getSquadronMembers().getSquadronMemberList())
+        {
+            if (numSaved > 4)
+            {
+                squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
+            }
+            ++numSaved;
+        }
+        
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        List<Squadron> squadrons = squadronManager.getViableSquadrons(campaign);
+        
+        boolean foundJG52 = false;
+        boolean foundStg2 = false;
+        boolean found132Reg = false;
+        boolean foundHs129 = false;
         for (Squadron squadron : squadrons)
         {
-            Squadron nearbySquadron = squadronManager.getSquadronByProximityAndRoleAndSide(
-                    campaign, squadron.determineCurrentPosition(campaign.getDate()), Role.ROLE_BOMB, Side.ALLIED);
-            assert(nearbySquadron != null);
-            assert(nearbySquadron.determineSide() == Side.ALLIED);
-            assert(nearbySquadron.getSquadronRoles().isSquadronThisRole(campaign.getDate(), Role.ROLE_BOMB) == true);
-            
-            nearbySquadron = squadronManager.getSquadronByProximityAndRoleAndSide(
-                    campaign, squadron.determineCurrentPosition(campaign.getDate()), Role.ROLE_FIGHTER, Side.AXIS);
-            assert(nearbySquadron != null);
-            assert(nearbySquadron.determineSide() == Side.AXIS);
-            assert(nearbySquadron.getSquadronRoles().isSquadronThisRole(campaign.getDate(), Role.ROLE_FIGHTER) == true);
+            String squadronName = squadron.determineDisplayName(campaign.getDate());
+            if (squadronName.equals("I./JG52"))
+            {
+                foundJG52 = true;
+            }
+            else if (squadronName.equals("II./St.G.2"))
+            {
+                foundStg2 = true;
+            }
+            else if (squadronName.equals("132nd Bomber Air Regiment"))
+            {
+                found132Reg = true;
+            }
+            else if (squadronName.equals("IV(Pz)./Sch.G.2"))
+            {
+                foundHs129 = true;
+            }
         }
+        assert(foundJG52);
+        assert(!foundStg2);
+        assert(found132Reg);
+        assert(!foundHs129);
     }
 }

@@ -3,8 +3,8 @@ package pwcg.aar.ui.events.model;
 import java.util.Date;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 
 public class SquadronMoveEvent  extends AAREvent

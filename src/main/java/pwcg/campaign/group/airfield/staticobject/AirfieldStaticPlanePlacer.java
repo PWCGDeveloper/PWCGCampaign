@@ -10,10 +10,10 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IStaticPlane;
 import pwcg.campaign.api.IStaticPlaneSelector;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.StaticPlaneSelectorFactory;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -53,13 +53,7 @@ public class AirfieldStaticPlanePlacer
         Squadron squadronForField = squadronManager.getAnyActiveSquadronForAirfield(airfield, date);
         if (squadronForField == null)
         {
-        	List<Squadron> allSquadronsForSide = squadronManager.getActiveSquadronsForCountry(country, date);
-        	if (allSquadronsForSide.isEmpty())
-        	{
-                return null;
-        	}
-        	int index = RandomNumberGenerator.getRandom(allSquadronsForSide.size());
-        	squadronForField = allSquadronsForSide.get(index);
+            return null;
         }
             
         Campaign campaign = PWCGContext.getInstance().getCampaign();

@@ -12,12 +12,12 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.resupply.SquadronNeedFactory;
 import pwcg.campaign.resupply.SquadronNeedFactory.SquadronNeedType;
 import pwcg.campaign.resupply.depot.EquipmentNeedForSquadronsCalculator;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
@@ -31,7 +31,7 @@ public class EquipmentReplacementWeightNoNeedTest
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
     }
     
     

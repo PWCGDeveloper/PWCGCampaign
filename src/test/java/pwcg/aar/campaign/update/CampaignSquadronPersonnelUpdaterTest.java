@@ -53,7 +53,7 @@ public class CampaignSquadronPersonnelUpdaterTest
     {
         PWCGContext.setProduct(PWCGProduct.FC);
         
-        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.ESC_103_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
         aarContext = new AARContext(campaign);
         aarContext.setNewDate(DateUtils.advanceTimeDays(campaign.getDate(), 3));
 

@@ -33,7 +33,7 @@ public class SquadronMemberInitialVictoryBuilderTest
     @Test
     public void testInitialVictoriesGermanFighter () throws PWCGException
     {
-        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
 
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(20112052);
         ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
@@ -100,7 +100,7 @@ public class SquadronMemberInitialVictoryBuilderTest
     @Test
     public void testInitialVictoriesGermanFighterWest () throws PWCGException
     {
-        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.JG_26_PROFILE_WEST);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_26_PROFILE_WEST);
 
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(20112052);
         ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
@@ -147,11 +147,11 @@ public class SquadronMemberInitialVictoryBuilderTest
             int rankPos = rankHelper.getRankPosByService(squadronMember.getRank(), service);
             if (rankPos == 0)
             {
-                validateVictoryRange (squadronMember, 5, 17);
+                validateVictoryRange (squadronMember, 4, 17);
             }
             else  if (rankPos == 1)
             {
-                validateVictoryRange (squadronMember, 0, 10);
+                validateVictoryRange (squadronMember, 1, 10);
             }
             else  if (rankPos == 2)
             {

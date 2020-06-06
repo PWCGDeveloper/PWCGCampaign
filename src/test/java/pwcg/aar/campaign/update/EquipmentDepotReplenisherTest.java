@@ -13,7 +13,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.plane.SquadronPlaneAssignment;
@@ -22,6 +21,7 @@ import pwcg.campaign.resupply.depot.EquipmentDepotReplenisher;
 import pwcg.campaign.resupply.depot.EquipmentReplacementUtils;
 import pwcg.campaign.resupply.depot.EquipmentUpgradeRecord;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.bos.country.BoSServiceManager;
 import pwcg.testutils.CampaignCache;
@@ -39,7 +39,7 @@ public class EquipmentDepotReplenisherTest
     public void setup() throws PWCGException
     {
     	PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.KG53_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.KG53_PROFILE);
         
         Mockito.when(me109E7.getArchType()).thenReturn("bf109");
         Mockito.when(me109E7.getGoodness()).thenReturn(10);

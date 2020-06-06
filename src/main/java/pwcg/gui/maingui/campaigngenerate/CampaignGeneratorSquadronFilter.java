@@ -10,10 +10,10 @@ import pwcg.campaign.context.AceManager;
 import pwcg.campaign.context.MapForAirfieldFinder;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
-import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
@@ -26,37 +26,31 @@ public class CampaignGeneratorSquadronFilter
 	    try
 	    {
     		SquadronManager squadManager =  PWCGContext.getInstance().getSquadronManager();
-    		List<Squadron> squadronList = squadManager.getFlyableSquadronsByService(dateCorrectedService, campaignDate);
+    		List<Squadron> squadronList = squadManager.getPlayerFlyableSquadronsByService(dateCorrectedService, campaignDate);
             PWCGLogger.log(LogLevel.DEBUG, "makeSquadronChoices squadron list size: " + squadronList.size());
-    		for (Squadron squad : squadronList)
+    		for (Squadron squadron : squadronList)
     		{
-                PWCGLogger.log(LogLevel.DEBUG, squad.determineDisplayName(campaignDate) + " makeSquadronChoices evaluate squadron");
-    
-       			if (rejectBecauseSquadronCannotFly(squad, campaignDate))
+                PWCGLogger.log(LogLevel.DEBUG, squadron.determineDisplayName(campaignDate) + " makeSquadronChoices evaluate squadron");
+
+       			if (rejectBecauseWrongRole(squadron, campaignDate, selectedRole))
     			{
-    	            PWCGLogger.log(LogLevel.DEBUG, squad.determineDisplayName(campaignDate) + ": Cannot fly  - not aded to list");
-    				continue;
-    			}
-       			
-       			if (rejectBecauseWrongRole(squad, campaignDate, selectedRole))
-    			{
-	                PWCGLogger.log(LogLevel.DEBUG, squad.determineDisplayName(campaignDate) + ": Cannot fly  - incorrect role");
+	                PWCGLogger.log(LogLevel.DEBUG, squadron.determineDisplayName(campaignDate) + ": Cannot fly  - incorrect role");
     				continue;
     			}
     			
-       			if (rejectBecauseCommandConflict(squad, campaignDate, playerIsCommander))
+       			if (rejectBecauseCommandConflict(squadron, campaignDate, playerIsCommander))
     			{
-                    PWCGLogger.log(LogLevel.DEBUG, squad.determineDisplayName(campaignDate) + ": Cannot fly  - commaned by ace");
+                    PWCGLogger.log(LogLevel.DEBUG, squadron.determineDisplayName(campaignDate) + ": Cannot fly  - commaned by ace");
     				continue;
     			}
     			
-       			if (rejectBecauseWrongMap(squad, campaignDate, selectedCampaignMap))
+       			if (rejectBecauseWrongMap(squadron, campaignDate, selectedCampaignMap))
     			{
-                    PWCGLogger.log(LogLevel.DEBUG, squad.determineDisplayName(campaignDate) + ": Cannot fly  - commaned by ace");
+                    PWCGLogger.log(LogLevel.DEBUG, squadron.determineDisplayName(campaignDate) + ": Cannot fly  - commaned by ace");
     				continue;
     			}
     			
-				String squadronDisplayName = squad.determineDisplayName(campaignDate);
+				String squadronDisplayName = squadron.determineDisplayName(campaignDate);
 				validSquadrons.add(squadronDisplayName);
     		}
 	    }
@@ -67,16 +61,6 @@ public class CampaignGeneratorSquadronFilter
 	    }
 	    
 	    return validSquadrons;
-	}
-	
-	private boolean rejectBecauseSquadronCannotFly(Squadron squad, Date campaignDate) throws PWCGException
-	{
-		if (squad.isCanFly(campaignDate) && squad.hasFlyablePlane(campaignDate))
-		{
-			return false;
-		}
-		
-		return true;
 	}
 	
 	private boolean rejectBecauseWrongRole(Squadron squad, Date campaignDate, String roleDesc) throws PWCGException

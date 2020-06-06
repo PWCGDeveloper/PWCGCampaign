@@ -36,7 +36,7 @@ public class CampaignMembersInMissionTest
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.REGIMENT_503_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.REGIMENT_503_PROFILE);
     }
 
 

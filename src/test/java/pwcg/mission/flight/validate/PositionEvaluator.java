@@ -23,7 +23,7 @@ public class PositionEvaluator
             if (shouldEvaluateDistanceToTarget(aiFlight))
             {
                 double distanceMissioNCenterToTarget = MathUtils.calcDist(missionCenter, aiFlight.getTargetDefinition().getPosition());
-                if (distanceMissioNCenterToTarget > 100000)
+                if (distanceMissioNCenterToTarget > 150000)
                 {
                     failed = true;
                 }

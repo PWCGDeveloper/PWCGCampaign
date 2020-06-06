@@ -13,6 +13,8 @@ import pwcg.core.exception.PWCGException;
 
 public class EquipmentDepot
 {
+    public static final int NUM_POINTS_PER_PLANE = 10;
+    
     private Equipment equipment = new Equipment();
     private int equipmentPoints;
     private Date lastReplacementDate;

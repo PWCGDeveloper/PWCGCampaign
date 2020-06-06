@@ -6,6 +6,7 @@ import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronViability;
 import pwcg.core.exception.PWCGException;
 
 public class OutOfMissionPilotSelector
@@ -39,22 +40,7 @@ public class OutOfMissionPilotSelector
     private static boolean isSquadronViable(Campaign campaign, SquadronMember squadronMember) throws PWCGException
     {
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());
-        if (squadron == null)
-        {
-            return false;
-        }
-        
-        if (!squadron.isSquadronViable(campaign))
-        {
-            return false;
-        }
-        
-        if (!squadron.isCanFly(campaign.getDate()))
-        {
-            return false;
-        }
-
-        return true;
+        return SquadronViability.isSquadronViable(squadron, campaign);
     }
 
 }

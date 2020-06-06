@@ -47,6 +47,17 @@ public class PWCGButtonFactory extends JButton
         return button;
     }
 
+    public static JButton makeRedPaperButton(String buttonText, String commandText, ActionListener actionListener) throws PWCGException 
+    {
+        Color bgColor = ColorMap.PAPER_BACKGROUND;
+        Color fgColor = ColorMap.BRITISH_RED;
+        Font font = PWCGMonitorFonts.getPrimaryFont();
+        
+        PWCGJButton button = makeButton(buttonText, commandText, actionListener, bgColor, fgColor, font);
+
+        return button;
+    }
+
     public static JButton makePaperButtonWithBorder(String buttonText, String commandText, ActionListener actionListener) throws PWCGException 
     {
         Color bgColor = ColorMap.PAPER_OFFSET;

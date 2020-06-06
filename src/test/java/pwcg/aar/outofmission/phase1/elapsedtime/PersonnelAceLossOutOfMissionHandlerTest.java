@@ -31,7 +31,7 @@ public class PersonnelAceLossOutOfMissionHandlerTest
     public void setupForTestEnvironment() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
-        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.ESC_103_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
         
         Mockito.when(aarContext.getNewDate()).thenReturn(DateUtils.getDateYYYYMMDD("19171001"));
     }

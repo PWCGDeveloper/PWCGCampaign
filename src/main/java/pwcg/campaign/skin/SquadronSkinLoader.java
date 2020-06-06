@@ -3,10 +3,10 @@ package pwcg.campaign.skin;
 import java.util.Map;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;

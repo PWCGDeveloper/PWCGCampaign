@@ -15,7 +15,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.personnel.SquadronMemberFilter;
@@ -26,6 +25,7 @@ import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronViability;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -87,13 +87,18 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
     {
         squadronsByRoleContainer = new JPanel(new GridLayout(0,1));
         squadronsByRoleContainer.setOpaque(false);
-        this.add(squadronsByRoleContainer, BorderLayout.WEST);
+        
+        JPanel squeezerPanel = new JPanel(new BorderLayout());
+        squeezerPanel.setOpaque(false);
+        squeezerPanel.add(squadronsByRoleContainer, BorderLayout.NORTH);
+        this.add(squeezerPanel, BorderLayout.WEST);
 
         formSquadronDescForRole(Role.ROLE_FIGHTER, side);
         formSquadronDescForRole(Role.ROLE_ATTACK, side);
         formSquadronDescForRole(Role.ROLE_DIVE_BOMB, side);
         formSquadronDescForRole(Role.ROLE_RECON, side);
         formSquadronDescForRole(Role.ROLE_BOMB, side);
+        formSquadronDescForRole(Role.ROLE_STRATEGIC_INTERCEPT, side);
         formSquadronDescForRole(Role.ROLE_STRAT_BOMB, side);
         formSquadronDescForRole(Role.ROLE_SEA_PLANE, side);
         formSquadronDescForRole(Role.ROLE_TRANSPORT, side);
@@ -107,45 +112,39 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
             return;
         }
 
-        JPanel squadronsForRolePanel = new JPanel(new GridLayout(0,1));
-        squadronsForRolePanel.setOpaque(false);
+        JLabel headerLabel = PWCGButtonFactory.makePaperLabelLarge(role.getRoleDescription() + " Squadrons: \n");
+        squadronsByRoleContainer.add(headerLabel);
+
         for (Squadron squadron : squadrons)
         {
-            JButton squadronSelectButton = PWCGButtonFactory.makePaperButton(squadron.determineDisplayName(campaign.getDate()), "SquadronSelected:" + squadron.getSquadronId(), this);
-            squadronsForRolePanel.add(squadronSelectButton);
+            if (SquadronViability.isSquadronViable(squadron, campaign))
+            {
+                JButton squadronSelectButton = PWCGButtonFactory.makePaperButton(squadron.determineDisplayName(campaign.getDate()), "SquadronSelected:" + squadron.getSquadronId(), this);
+                squadronsByRoleContainer.add(squadronSelectButton);                
+            }
+            else
+            {
+                JButton squadronSelectButton = PWCGButtonFactory.makeRedPaperButton(squadron.determineDisplayName(campaign.getDate()), "SquadronSelected:" + squadron.getSquadronId(), this);
+                squadronsByRoleContainer.add(squadronSelectButton);
+            }
         }
-
-        JPanel squadronsByRolePanel = new JPanel(new BorderLayout());
-        squadronsByRolePanel.setOpaque(false);
-        JLabel headerLabel = PWCGButtonFactory.makePaperLabelLarge(role.getRoleDescription() + " Squadrons: \n");
-        squadronsByRolePanel.add(headerLabel, BorderLayout.NORTH);
-        squadronsByRolePanel.add(squadronsForRolePanel, BorderLayout.CENTER);
-        
-        JPanel squadronsByRolePanelSqueezer = new JPanel(new BorderLayout());
-        squadronsByRolePanelSqueezer.setOpaque(false);
-        squadronsByRolePanelSqueezer.add(squadronsByRolePanel, BorderLayout.NORTH);
-
-        squadronsByRoleContainer.add(squadronsByRolePanelSqueezer);
     }
 
     private List<Squadron> getSquadronsForIntel(Role role, Side side) throws PWCGException
     {
         List<Squadron> squadronsWithPrimaryRole = new ArrayList<Squadron>();
-        
         List<Role> acceptableRoles = new ArrayList<Role>();
         acceptableRoles.add(role);
 
-        String airfieldName = referencePlayer.determineSquadron().determineCurrentAirfieldName(campaign.getDate());
-        IAirfield field =  PWCGContext.getInstance().getAirfieldAllMaps(airfieldName);
-
-        List<Squadron> squadrons = PWCGContext.getInstance().getSquadronManager().getNearestSquadronsByRole(
-                campaign, field.getPosition(), 5, 55000, acceptableRoles, side, campaign.getDate());
-
-        for (Squadron squadron : squadrons)
+        List<Squadron> squadronsForMap = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForCurrentMap(campaign.getDate());
+        for (Squadron squadron : squadronsForMap)
         {
             if (squadron.determineSquadronPrimaryRole(campaign.getDate()) == role)
             {
-                squadronsWithPrimaryRole.add(squadron);
+                if (squadron.determineSide() == side)
+                {
+                    squadronsWithPrimaryRole.add(squadron);
+                }
             }
         }
         

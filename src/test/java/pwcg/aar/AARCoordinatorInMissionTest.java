@@ -38,7 +38,7 @@ public class AARCoordinatorInMissionTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         PWCGContext.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
-        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         expectedResults = new ExpectedResults(campaign);
         aarCoordinator = AARCoordinator.getInstance();
         aarCoordinator.reset(campaign);

@@ -5,12 +5,12 @@ import java.util.List;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.plane.PlaneEquipmentFactory;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 
 public class EquipmentDepotReplenisher
@@ -40,10 +40,6 @@ public class EquipmentDepotReplenisher
             EquipmentDepot depo = campaign.getEquipmentManager().getEquipmentDepotForService(service.getServiceId());
             addReplacementPlanesForService(service, squadronsForService, equipmentFactory, depo);
         }
-        else
-        {
-            // System.out.println("No squadrons for service " + service.getName());
-        }
     }
 
     private List<Squadron> getSquadronsForService(ArmedService service) throws PWCGException 
@@ -62,10 +58,10 @@ public class EquipmentDepotReplenisher
         updatePlaneReplacementPoints(service, depot);
     }
 
-    private void updatePlaneReplacementPoints(ArmedService service, EquipmentDepot depot)
+    private void updatePlaneReplacementPoints(ArmedService service, EquipmentDepot depot) throws PWCGException
     {
-        int newPoints = service.getDailyEquipmentReplacementRate();
-        int remainingPoints = depot.getEquipmentPoints() % 10;
+        int newPoints = service.getDailyEquipmentReplacementRate(campaign.getDate());
+        int remainingPoints = depot.getEquipmentPoints() % EquipmentDepot.NUM_POINTS_PER_PLANE;
         int updatedEquipmentPoints = newPoints + remainingPoints;
         depot.setEquipmentPoints(updatedEquipmentPoints);
     }
@@ -75,7 +71,7 @@ public class EquipmentDepotReplenisher
         EquipmentReplacementCalculator equipmentReplacementCalculator = new EquipmentReplacementCalculator(campaign);
         equipmentReplacementCalculator.createArchTypeForReplacementPlane(squadronsForService);
 
-        int numPlanes = equipmentDepot.getEquipmentPoints() / 10;
+        int numPlanes = equipmentDepot.getEquipmentPoints() / EquipmentDepot.NUM_POINTS_PER_PLANE;
         for (int i = 0; i < numPlanes; ++i)
         {
             PlaneArchType planeArchType = getArchTypeForReplacement(equipmentReplacementCalculator);

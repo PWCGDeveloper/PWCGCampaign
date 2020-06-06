@@ -2,6 +2,16 @@
 ​
 At the PWCG web site
 
+9.0.1
+Fixed depletion of German units in 1944/1945
+Fixed font size too large causing buttons no to display
+Fixed odd case where missions do not generate because a squadron is too close to the front
+Fixed bad pilot picture that caused issues with American campaigns
+Fixed incorrect place name
+Fixed issue that could start American and British AI pilots with no victories in Sept 1944.
+Fixed issue that would cause low altitude CAP missions to have a zero altitude waypoint.
+
+
 9.0.0
 PWCG is now ground activity centric.  
 - Ground activity created first.
@@ -9,6 +19,7 @@ PWCG is now ground activity centric.
 - AI units have real targets
 - Better control of number of units
 - More realistic feel to missions
+Added Yak 9 and Yak 9T
 Improved Low Alt CAP
 - Actually CAP ground troops
 - Placement is over battle
@@ -17,6 +28,7 @@ Reduced font size for modification selection to fit more in.
 Bugs
 Fixed AAR issue in July 1942
 Fixed AAR error where a plane would not be found
+Fixed AAR error where victories were not recorded if no plane exit record was found
 Fixed East Front 1944/Stalingrad confusion
 Fixed tab label for "Notification of Victory"
 

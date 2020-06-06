@@ -38,7 +38,6 @@ public class TestPreliminaryDataBuilder
     public AARPreliminaryData makePreliminaryForTestMission() throws PWCGException
     {
         makeCampaignMembersInMission();
-        makeCampaignMembersOutOfMission();        
         makeMissionLogFileSet();
         makeClaimData();
         makePWCGMMissionData();
@@ -65,24 +64,6 @@ public class TestPreliminaryDataBuilder
         }
                 
         preliminaryData.setCampaignMembersInMission(squadronMembersInMission);
-    }
-
-    private void makeCampaignMembersOutOfMission() throws PWCGException
-    {
-        SquadronMembers squadronMembersInMission = preliminaryData.getCampaignMembersInMission();
-        SquadronMembers squadronMembersNotInMission = new SquadronMembers();
-        
-        Map<Integer, SquadronMember> campaignMembersNotInMission = campaign.getPersonnelManager().getAllCampaignMembers();
-        SquadronMembers squadronMembersInMissionOtherThanPlayer = SquadronMemberFilter.filterActiveAI(campaignMembersNotInMission, campaign.getDate());
-        for (SquadronMember squadronMember : squadronMembersInMissionOtherThanPlayer.getSquadronMemberList())
-        {
-            if (!squadronMembersInMission.isSquadronMember(squadronMember.getSerialNumber()))
-            {
-                squadronMembersNotInMission.addToSquadronMemberCollection(squadronMember);
-            }
-        }
-
-        preliminaryData.setCampaignMembersOutOfMission(squadronMembersNotInMission);
     }
 
     private void makeMissionLogFileSet()

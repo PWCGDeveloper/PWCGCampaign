@@ -1,5 +1,10 @@
 package pwcg.mission.flight.escort;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
@@ -17,12 +22,9 @@ public class EscortForPlayerBuilder
     public IFlight createEscortForPlayerFlight(IFlight playerFlight) throws PWCGException 
     {
         IFlightInformation playerFlightInformation = playerFlight.getFlightInformation();
-        
-        Squadron friendlyFighterSquadron = PWCGContext.getInstance().getSquadronManager().getSquadronByProximityAndRoleAndSide(
-                        playerFlightInformation.getCampaign(), 
-                        playerFlightInformation.getSquadron().determineCurrentPosition(playerFlightInformation.getCampaign().getDate()), 
-                        Role.ROLE_FIGHTER, 
-                        playerFlightInformation.getSquadron().determineSquadronCountry(playerFlightInformation.getCampaign().getDate()).getSide());
+        List<Role> escortRole = new ArrayList<Role>(Arrays.asList(Role.ROLE_FIGHTER));
+        Side friendlySide = playerFlightInformation.getSquadron().determineSquadronCountry(playerFlightInformation.getCampaign().getDate()).getSide();
+        Squadron friendlyFighterSquadron = PWCGContext.getInstance().getSquadronManager().getSingleViableAiSquadronByRoleAndSideAndCurrentMap(playerFlightInformation.getCampaign(), escortRole, friendlySide);
 
         if (friendlyFighterSquadron != null)
         {          

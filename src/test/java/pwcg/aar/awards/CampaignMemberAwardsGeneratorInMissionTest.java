@@ -69,7 +69,7 @@ public class CampaignMemberAwardsGeneratorInMissionTest
         squadronMembersInMission.clear();
 
         PWCGContext.setProduct(PWCGProduct.FC);
-        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.ESC_103_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
         
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
         Mockito.when(preliminaryData.getCampaignMembersInMission()).thenReturn(campaignMembersInMission);

@@ -7,6 +7,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronViability;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignMembersOutOfMissionFinder
@@ -18,7 +19,7 @@ public class CampaignMembersOutOfMissionFinder
         for (SquadronMember pilot : allCampaignMembers.values())
         {
             Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(pilot.getSquadronId());
-            if (squadron.isCanFly(campaign.getDate()))
+            if (SquadronViability.isSquadronViable(squadron, campaign))
             {
                 if (!campaignMembersInMission.getSquadronMemberCollection().containsKey(pilot.getSerialNumber()))
                 {

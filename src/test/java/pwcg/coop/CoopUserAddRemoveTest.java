@@ -32,7 +32,7 @@ public class CoopUserAddRemoveTest
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        coopCampaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.COOP_COMPETITIVE_PROFILE);
+        coopCampaign = CampaignCache.makeCampaign(SquadronTestProfile.COOP_COMPETITIVE_PROFILE);
         CampaignInitialWriter.doInitialCampaignWrite(coopCampaign);
     }
 

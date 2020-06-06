@@ -13,7 +13,6 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
@@ -22,6 +21,7 @@ import pwcg.campaign.resupply.SquadronNeedFactory;
 import pwcg.campaign.resupply.SquadronNeedFactory.SquadronNeedType;
 import pwcg.campaign.resupply.depot.EquipmentNeedForSquadronsCalculator;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
@@ -40,7 +40,7 @@ public class EquipmentReplacementWeightNeedTest
         {
             runSetupOneTime = true;
             PWCGContext.setProduct(PWCGProduct.BOS);
-            campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.KG53_PROFILE);
+            campaign = CampaignCache.makeCampaign(SquadronTestProfile.KG53_PROFILE);
             deactivateAircraft();
         }
     }

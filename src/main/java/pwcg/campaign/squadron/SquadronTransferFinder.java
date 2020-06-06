@@ -7,7 +7,6 @@ import java.util.Set;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.AceManager;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;

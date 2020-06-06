@@ -225,7 +225,7 @@ public class CampaignPersonnelManager
         PersonnelReplacementsService replacementsForService = new PersonnelReplacementsService();
         replacementsForService.setReplacements(squadronMembers);
         replacementsForService.setServiceId(armedService.getServiceId());
-        replacementsForService.setDailyReplacementRate(armedService.getDailyPersonnelReplacementRate());
+        replacementsForService.setDailyReplacementRate(armedService.getDailyPersonnelReplacementRate(campaign.getDate()));
         replacementsForService.setLastReplacementDate(campaign.getDate());
         campaign.getPersonnelManager().addPersonnelReplacementsService(armedService.getServiceId(), replacementsForService);
     }

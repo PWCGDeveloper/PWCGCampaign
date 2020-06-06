@@ -31,7 +31,7 @@ public class CampaignAceUpdaterTest extends AARTestSetup
     @Test
     public void testInSquadronAceUpdate() throws PWCGException 
     {
-        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.ESC_103_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
 
         Map<Integer, List<Victory>> aceVictories = new HashMap<>();
         List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(1, campaign.getDate());
@@ -53,7 +53,7 @@ public class CampaignAceUpdaterTest extends AARTestSetup
     @Test
     public void testOutOfSquadronAceUpdate() throws PWCGException 
     {
-        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.ESC_103_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
 
         Map<Integer, List<Victory>> aceVictories = new HashMap<>();
         List<Victory> victories = VictoryMaker.makeMultipleCentralVictories(1, campaign.getDate());

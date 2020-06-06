@@ -51,7 +51,7 @@ public class OutOfMissionVictoryEventHandlerTest
         PowerMockito.mockStatic(CampaignMembersOutOfMissionFinder.class);
 
         PWCGContext.setProduct(PWCGProduct.FC);
-        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.ESC_103_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
         
         Mockito.when(squadronMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
         Mockito.when(squadronMember.determineSquadron()).thenReturn(campaign.determinePlayerSquadrons().get(0));

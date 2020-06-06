@@ -27,12 +27,12 @@ import pwcg.campaign.CampaignMode;
 import pwcg.campaign.TransferHandler;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
@@ -398,7 +398,7 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
 		cbSquadron.removeAllItems();
 		SquadronManager squadManager = PWCGContext.getInstance().getSquadronManager();
 				
-		List<Squadron> squadronList = squadManager.getFlyableSquadronsByService(service, campaign.getDate());
+		List<Squadron> squadronList = squadManager.getPlayerFlyableSquadronsByService(service, campaign.getDate());
 		
         String roleDesc = (String)cbRole.getSelectedItem();
         Role role = Role.getRoleFromDescription(roleDesc);

@@ -32,13 +32,13 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronManager;
 import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
@@ -381,7 +381,7 @@ public class NewPilotDataEntryGUI extends ImageResizingPanel implements ActionLi
         
         Date date = campaign.getDate();
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        List<Squadron> squadronsForService = squadronManager.getFlyableSquadronsByService(parent.getNewPilotGeneratorDO().getService(), date);
+        List<Squadron> squadronsForService = squadronManager.getPlayerFlyableSquadronsByService(parent.getNewPilotGeneratorDO().getService(), date);
         
         for (Squadron squadron : squadronsForService)
         {            

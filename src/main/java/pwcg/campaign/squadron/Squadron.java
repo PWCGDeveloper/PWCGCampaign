@@ -26,7 +26,6 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.SquadronPersonnel;
-import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.plane.PlaneType;
@@ -41,8 +40,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
-import pwcg.core.utils.PWCGLogger;
-import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class Squadron 
 {
@@ -209,40 +206,6 @@ public class Squadron
         }
         return null;
     }
-
-	public boolean isCanFly(Date date) throws PWCGException 
-	{		
-		String currentAirfield = determineCurrentAirfieldName(date);
-		if (currentAirfield == null)
-		{
-		    PWCGLogger.log(LogLevel.DEBUG, determineDisplayName(date) + ": Cannot fly airfield is null");
-		    return false;
-		}
-		
-		if (date.after(DateUtils.getEndOfWWIIRussia()))
-		{
-		    Date lastDate = null;
-		    for (Date airfieldStartDate : airfields.keySet())
-		    {
-		        lastDate = airfieldStartDate;
-		    }
-		    if (lastDate.before(DateUtils.getEndOfWWIIRussia()))
-		    {
-		        return false;
-		    }
-		}
-        
-        if (this.determineCurrentAircraftList(date).size() == 0)
-        {
-            PWCGLogger.log(LogLevel.DEBUG, determineDisplayName(date) + ": Cannot fly aircraft is null");
-            return false;
-        }
-        else
-        {
-            PWCGLogger.log(LogLevel.DEBUG, determineDisplayName(date) + ": Can fly fom airfield " + currentAirfield);
-            return true; 
-        }
-	}
 	
 	public boolean hasFlyablePlane(Date date) throws PWCGException
 	{
@@ -404,14 +367,14 @@ public class Squadron
 		return datesSquadronAtField;
 	}
 
-    public ICountry determineEnemyCountry(Campaign campaign, Date date) throws PWCGException
+    public ICountry determineEnemyCountry(Date date) throws PWCGException
     {
         List<Squadron> squads = null;
-        Coordinate squadronPosition = this.determineCurrentPosition(date);
         
         ICountry squadronCountry = CountryFactory.makeCountryByCountry(country);
         Side enemySide = squadronCountry.getSideNoNeutral().getOppositeSide();
-        squads =  PWCGContext.getInstance().getSquadronManager().getNearestSquadronsBySide(campaign, squadronPosition, 1, 10000.0, enemySide, date);
+        IAirfield field = determineCurrentAirfieldCurrentMap(date);
+        squads =  PWCGContext.getInstance().getSquadronManager().getActiveSquadronsBySideAndProximity(enemySide, date, field.getPosition(), 30000);
 
         // Use an enemy squadron as a reference country.
         // If no enemy squadron use the enemy map reference nation
@@ -471,39 +434,7 @@ public class Squadron
 		return isHomeDefense;
 	}
 
-	public boolean isSquadronViable(Campaign campaign) throws PWCGException
-	{
-	    SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronId);
-	    if (squadronPersonnel == null)
-	    {
-	        return false;
-	    }
-	    
-        if (!squadronPersonnel.isSquadronPersonnelViable())
-        {
-            return false;
-        }
-        
-        Equipment squadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadronId);
-        if (squadronEquipment == null)
-        {
-            return false;
-        }
-        
-        if (!squadronEquipment.isSquadronEquipmentViable())
-        {
-            return false;
-        }
-        
-        if (isInConversionPeriod(campaign.getDate()))
-        {
-            return false;
-        }
-        
-	    return true;
-	}
-	
-    private boolean isInConversionPeriod(Date date) throws PWCGException
+	public boolean isInConversionPeriod(Date date) throws PWCGException
     {
         for (SquadronConversionPeriod conversionPeriod: conversionPeriods)
         {
@@ -607,9 +538,9 @@ public class Squadron
         return squadronInfo.toString();
     }
 
-    public boolean isStartsCloseToFront(Campaign campaign, Date date) throws PWCGException
+    public boolean isStartsCloseToFront(Date date) throws PWCGException
     {
-        Side enemySide = determineEnemyCountry(campaign, date).getSide();
+        Side enemySide = determineEnemyCountry(date).getSide();
         Coordinate squadronPosition = determineCurrentPosition(date);
         FrontLinePoint closestFrontPosition = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(date).findClosestFrontPositionForSide(squadronPosition, enemySide);
         double distanceToFront = MathUtils.calcDist(squadronPosition, closestFrontPosition.getPosition());

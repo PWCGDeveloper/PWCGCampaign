@@ -28,7 +28,7 @@ public class OutOfMissionVictoryGeneratorTest
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
-        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.ESC_103_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
     }
 
     @Test
@@ -38,7 +38,7 @@ public class OutOfMissionVictoryGeneratorTest
         Squadron squadronMemberSquadron = aiSquadMember.determineSquadron();
 
         EnemySquadronFinder enemySquadronFinder = new EnemySquadronFinder(campaign);
-        Squadron victimSquadron = enemySquadronFinder.getRandomEnemyViableSquadron(squadronMemberSquadron, campaign.getDate());
+        Squadron victimSquadron = enemySquadronFinder.getEnemyForOutOfMission(squadronMemberSquadron, campaign.getDate());
         DuringCampaignVictimGenerator duringCampaignVictimGenerator = new DuringCampaignVictimGenerator(campaign, victimSquadron);
         
         OutOfMissionVictoryGenerator victoryGenerator = new OutOfMissionVictoryGenerator(campaign, victimSquadron, duringCampaignVictimGenerator, aiSquadMember);

@@ -12,6 +12,7 @@ import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronViability;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
@@ -37,7 +38,7 @@ public class OutOfMissionAAALossCalculator
         for (SquadronMember squadronMember : campaignMembersNotInMission.getSquadronMemberList())
         {
             Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());
-            if (squadron.isSquadronViable(campaign))
+            if (SquadronViability.isSquadronViable(squadron, campaign))
             {
                 calculatePilotShotDownByAAA(squadronMember);
             }

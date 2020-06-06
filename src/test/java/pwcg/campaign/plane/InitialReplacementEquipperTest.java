@@ -32,7 +32,7 @@ public class InitialReplacementEquipperTest
     }
 
     @Test
-    public void testEquipGermanReplacements() throws PWCGException
+    public void testEquipGermanReplacementsEarly() throws PWCGException
     {
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420501"));
         Mockito.when(campaign.getSerialNumber()).thenReturn(serialNumber);
@@ -42,7 +42,7 @@ public class InitialReplacementEquipperTest
         
         EquipmentDepotInitializer replacementEquipper = new EquipmentDepotInitializer(campaign, luftwaffe);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        assert(equipment.getAvailableDepotPlanes().size() == 45);
+        assert(equipment.getAvailableDepotPlanes().size() == 30);
         
         boolean me110e2Found = false;
         boolean he111h6Found = false;
@@ -56,19 +56,19 @@ public class InitialReplacementEquipperTest
             {
                 me110e2Found = true;
             }
-            if (replacementPlane.getType().equals("he111h6"))
+            else if (replacementPlane.getType().equals("he111h6"))
             {
                 he111h6Found = true;
             }
-            if (replacementPlane.getType().equals("bf109f4"))
+            else if (replacementPlane.getType().equals("bf109f4"))
             {
                 me109f4Found = true;
             }
-            if (replacementPlane.getType().equals("ju87d3"))
+            else if (replacementPlane.getType().equals("ju87d3"))
             {
                 ju87d3Found = true;
             }
-            if (replacementPlane.getType().equals("ju523mg4e"))
+            else if (replacementPlane.getType().equals("ju523mg4e"))
             {
                 ju52Found = true;
             }
@@ -81,8 +81,59 @@ public class InitialReplacementEquipperTest
         assert(ju52Found);
     }
 
+
     @Test
-    public void testEquipRussianReplacements() throws PWCGException
+    public void testEquipGermanReplacementsMid() throws PWCGException
+    {
+        Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19430201"));
+        Mockito.when(campaign.getSerialNumber()).thenReturn(serialNumber);
+        
+        IArmedServiceManager serviceManager = ArmedServiceFactory.createServiceManager();
+        ArmedService luftwaffe = serviceManager.getArmedService(20101);
+        
+        EquipmentDepotInitializer replacementEquipper = new EquipmentDepotInitializer(campaign, luftwaffe);
+        Equipment equipment = replacementEquipper.createReplacementPoolForService();
+        assert(equipment.getAvailableDepotPlanes().size() == 51);
+        
+        boolean me110g2Found = false;
+        boolean he111h6Found = false;
+        boolean me109G2Found = false;
+        boolean ju87d3Found = false;
+        boolean ju52Found = false;
+        
+        for (EquippedPlane replacementPlane : equipment.getAvailableDepotPlanes().values())
+        {
+            if (replacementPlane.getType().equals("bf110g2"))
+            {
+                me110g2Found = true;
+            }
+            else if (replacementPlane.getType().equals("he111h6"))
+            {
+                he111h6Found = true;
+            }
+            else if (replacementPlane.getType().equals("bf109g2"))
+            {
+                me109G2Found = true;
+            }
+            else if (replacementPlane.getType().equals("ju87d3"))
+            {
+                ju87d3Found = true;
+            }
+            else if (replacementPlane.getType().equals("ju523mg4e"))
+            {
+                ju52Found = true;
+            }
+        }
+        
+        assert(me110g2Found);
+        assert(he111h6Found);
+        assert(me109G2Found);
+        assert(ju87d3Found);
+        assert(ju52Found);
+    }
+
+    @Test
+    public void testEquipRussianReplacementsEarly() throws PWCGException
     {
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420101"));
         Mockito.when(campaign.getSerialNumber()).thenReturn(serialNumber);
@@ -92,7 +143,7 @@ public class InitialReplacementEquipperTest
         
         EquipmentDepotInitializer replacementEquipper = new EquipmentDepotInitializer(campaign, vvs);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        assert(equipment.getAvailableDepotPlanes().size() == 112);
+        assert(equipment.getAvailableDepotPlanes().size() == 64);
         
         boolean i16Found = false;
         boolean mig3 = false;
@@ -100,30 +151,30 @@ public class InitialReplacementEquipperTest
         boolean p40 = false;
         boolean pe2Found = false;
         boolean il2Found = false;
-        
+
         for (EquippedPlane replacementPlane : equipment.getAvailableDepotPlanes().values())
         {
             if (replacementPlane.getType().equals("i16t24"))
             {
                 i16Found = true;
             }
-            if (replacementPlane.getType().equals("mig3s24"))
+            else if (replacementPlane.getType().equals("mig3s24"))
             {
                 mig3 = true;
             }
-            if (replacementPlane.getType().equals("lagg3s29"))
+            else if (replacementPlane.getType().equals("lagg3s29"))
             {
                 lagg3 = true;
             }
-            if (replacementPlane.getType().equals("p40e1"))
+            else if (replacementPlane.getType().equals("p40e1"))
             {
                 p40 = true;
             }
-            if (replacementPlane.getType().equals("pe2s35"))
+            else if (replacementPlane.getType().equals("pe2s35"))
             {
                 pe2Found = true;
             }
-            if (replacementPlane.getType().equals("il2m41"))
+            else if (replacementPlane.getType().equals("il2m41"))
             {
                 il2Found = true;
             }
@@ -135,6 +186,68 @@ public class InitialReplacementEquipperTest
         assert(p40);
         assert(pe2Found);
         assert(il2Found);
+    }
+
+    @Test
+    public void testEquipRussianReplacementsMid() throws PWCGException
+    {
+        Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19430101"));
+        Mockito.when(campaign.getSerialNumber()).thenReturn(serialNumber);
+        
+        IArmedServiceManager serviceManager = ArmedServiceFactory.createServiceManager();
+        ArmedService vvs = serviceManager.getArmedService(10101);
+        
+        EquipmentDepotInitializer replacementEquipper = new EquipmentDepotInitializer(campaign, vvs);
+        Equipment equipment = replacementEquipper.createReplacementPoolForService();
+        assert(equipment.getAvailableDepotPlanes().size() == 138);
+        
+        boolean i16Found = false;
+        boolean mig3 = false;
+        boolean lagg3 = false;
+        boolean p40 = false;
+        boolean pe2Found = false;
+        boolean il2Found = false;
+        boolean yak1Found = false;
+        
+        for (EquippedPlane replacementPlane : equipment.getAvailableDepotPlanes().values())
+        {
+            if (replacementPlane.getType().equals("i16t24"))
+            {
+                i16Found = true;
+            }
+            else if (replacementPlane.getType().equals("mig3s24"))
+            {
+                mig3 = true;
+            }
+            else if (replacementPlane.getType().equals("lagg3s29"))
+            {
+                lagg3 = true;
+            }
+            else if (replacementPlane.getType().equals("p40e1"))
+            {
+                p40 = true;
+            }
+            else if (replacementPlane.getType().equals("pe2s87"))
+            {
+                pe2Found = true;
+            }
+            else if (replacementPlane.getType().equals("il2m42"))
+            {
+                il2Found = true;
+            }
+            else if (replacementPlane.getType().equals("yak1s127"))
+            {
+                yak1Found = true;
+            }
+        }
+        
+        assert(i16Found);
+        assert(mig3);
+        assert(lagg3);
+        assert(p40);
+        assert(pe2Found);
+        assert(il2Found);
+        assert(yak1Found);
     }
 
     @Test

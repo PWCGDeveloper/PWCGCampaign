@@ -8,13 +8,13 @@ import java.util.Set;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.plane.PlaneEquipmentFactory;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 
 public class EquipmentArchTypeChangeHandler 

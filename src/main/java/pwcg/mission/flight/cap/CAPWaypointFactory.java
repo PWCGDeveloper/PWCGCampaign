@@ -77,6 +77,7 @@ public class CAPWaypointFactory
 
         double movementAngle = MathUtils.calcAngle(flight.getTargetDefinition().getPosition(), flight.getFlightHomePosition());
         Coordinate patternStartPosition = MathUtils.calcNextCoord(flight.getTargetDefinition().getPosition(), movementAngle, (crossDistance / 2));
+        patternStartPosition.setYPos(flight.getFlightInformation().getAltitude());
         return patternStartPosition;
     }
 

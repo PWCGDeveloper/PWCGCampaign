@@ -5,10 +5,10 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.personnel.InitialSquadronStaffer;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignUpdateNewSquadronStaffer

@@ -6,7 +6,9 @@ import java.util.List;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.gui.colors.IServiceColorMap;
@@ -21,8 +23,8 @@ public class ArmedService
     private String name;
     private Date startDate;
     private Date endDate;
-    private int dailyPersonnelReplacementRate = 15;
-    private int dailyEquipmentReplacementRate = 30;
+    private double dailyPersonnelReplacementRatePerSquadron = 1.5;
+    private double dailyEquipmentReplacementRatePerSquadron = 3.0;
     private ArmedServiceQualitySet serviceQuality = new ArmedServiceQualitySet();
     private IServiceColorMap serviceColorMap;
     private List<String> picDirs = new ArrayList<String>();
@@ -131,27 +133,31 @@ public class ArmedService
 
 	public void addServiceQuality(Date qualityDate, int qualityValue)
 	{
-		serviceQuality.addQuality(this, qualityDate, qualityValue);;
+		serviceQuality.addQuality(this, qualityDate, qualityValue);
 	}
 
-    public int getDailyPersonnelReplacementRate()
+	public void setDailyEquipmentReplacementRatePerSquadron(double dailyEquipmentReplacementRatePerSquadron)
     {
-        return dailyPersonnelReplacementRate;
+        this.dailyEquipmentReplacementRatePerSquadron = dailyEquipmentReplacementRatePerSquadron;
     }
 
-    public void setDailyPersonnelReplacementRate(int dailyPersonnelReplacementRate)
+	public void setDailyPersonnelReplacementRatePerSquadron(double dailyPersonnelReplacementRatePerSquadron)
     {
-        this.dailyPersonnelReplacementRate = dailyPersonnelReplacementRate;
+        this.dailyPersonnelReplacementRatePerSquadron = dailyPersonnelReplacementRatePerSquadron;
     }
 
-    public int getDailyEquipmentReplacementRate()
+    public int getDailyEquipmentReplacementRate(Date date) throws PWCGException
     {
-        return dailyEquipmentReplacementRate;
+        List<Squadron> squadrons = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForService(date, this);
+        double dailyEquipmentReplacementRateForThisDate = dailyEquipmentReplacementRatePerSquadron * squadrons.size();
+        return Double.valueOf(dailyEquipmentReplacementRateForThisDate).intValue();
     }
 
-    public void setDailyEquipmentReplacementRate(int dailyEquipmentReplacementRate)
+    public int getDailyPersonnelReplacementRate(Date date) throws PWCGException
     {
-        this.dailyEquipmentReplacementRate = dailyEquipmentReplacementRate;
+        List<Squadron> squadrons = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForService(date, this);
+        double dailyEquipmentReplacementRateForThisDate = dailyPersonnelReplacementRatePerSquadron * squadrons.size();
+        return Double.valueOf(dailyEquipmentReplacementRateForThisDate).intValue();
     }
 
     public ICountry getNameCountry()

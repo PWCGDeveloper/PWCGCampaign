@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
+import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
@@ -58,23 +59,14 @@ public class ScrambleOpposingFlightSquadronChooser
     private List<Squadron> getViableOpposingSquadrons() throws PWCGException
     {
         List<Role> opposingFlightRoles = determineOpposingRoles();
-        
-        List<Squadron> possibleOpposingSquadsByRole = PWCGContext.getInstance().getSquadronManager().getNearestSquadronsByRole(
-                playerFlightInformation.getMission().getCampaign(), 
-                playerFlightInformation.getTargetSearchStartLocation().copy(), 
-                1, 
-                250000.0, 
-                opposingFlightRoles, 
-                playerFlightInformation.getSquadron().determineEnemySide(), 
-                playerFlightInformation.getCampaign().getDate());
+        Side enemySide = playerFlightInformation.getSquadron().determineEnemySide();
+        List<Squadron> possibleOpposingSquadsByRole = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(
+                playerFlightInformation.getMission().getCampaign(), opposingFlightRoles, enemySide);
 
         List<Squadron> viableOpposingSquads = new ArrayList<>();
         for (Squadron squadron : possibleOpposingSquadsByRole)
         {
-            if (squadron.isSquadronViable(playerFlightInformation.getCampaign()))
-            {
-                viableOpposingSquads.add(squadron);
-            }
+            viableOpposingSquads.add(squadron);
         }
         return viableOpposingSquads;
     }

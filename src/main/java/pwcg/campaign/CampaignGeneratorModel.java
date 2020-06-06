@@ -3,8 +3,8 @@ package pwcg.campaign;
 import java.util.Date;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.DateUtils;

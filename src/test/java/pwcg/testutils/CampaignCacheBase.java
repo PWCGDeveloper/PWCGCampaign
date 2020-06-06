@@ -11,11 +11,11 @@ import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.CampaignHumanPilotHandler;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.squadmember.AiPilotRemovalChooser;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -24,7 +24,6 @@ public abstract class CampaignCacheBase implements ICampaignCache
     public static final String TEST_CAMPAIGN_NAME = "Test Campaign";
     public static final String TEST_PLAYER_NAME = "Test Player";
 
-    protected Map<String, Campaign> campaignCache = new HashMap<>();
     protected Map<String, CampaignGeneratorModel> campaignProfiles = new HashMap<>();
     protected abstract void loadCampaignProfiles() throws PWCGException;
     protected abstract Campaign makeCampaignFromModel(CampaignGeneratorModel model) throws PWCGException;
@@ -38,41 +37,6 @@ public abstract class CampaignCacheBase implements ICampaignCache
     }
 
     @Override
-    public Campaign makeCampaign(SquadronTestProfile profile) throws PWCGException
-    {
-        initialize();
-        
-        Campaign campaign = null;
-        if (campaignCache.containsKey(profile.getKey()))
-        {
-            campaign = campaignCache.get(profile.getKey());
-        }
-        else
-        {          
-            campaign = makeCampaignForceCreation(profile);
-        }
-        
-        PWCGContext.getInstance().setCampaign(campaign);
-        validateCampaign(profile, campaign);
-        
-        return campaign;
-    }
-    
-    private void validateCampaign(SquadronTestProfile profile, Campaign campaign) throws PWCGException
-    {
-        List<SquadronMember> squadronMembers = campaign.getPersonnelManager().getSquadronPersonnel(profile.getSquadronId()).getSquadronMembers().getSquadronMemberList();
-        for (SquadronMember squadronMember : squadronMembers)
-        {
-            if (squadronMember.isPlayer())
-            {
-                return;
-            }
-        }
-        
-        throw new PWCGException("No players in player squadron " + profile.getSquadronId());
-    }
-
-    @Override
     public Campaign makeCampaignForceCreation(SquadronTestProfile profile) throws PWCGException
     {
         initialize();
@@ -80,7 +44,6 @@ public abstract class CampaignCacheBase implements ICampaignCache
         {
             CampaignGeneratorModel model = campaignProfiles.get(profile.getKey());
             Campaign campaign = makeCampaignFromModel(model);
-            campaignCache.put(profile.getKey(), campaign);
             
             if (profile.isCompetitive())
             {

@@ -39,11 +39,18 @@ public class MissionCenterBuilderFrontLines implements IMissionCenterBuilder
     }
 
     private Coordinate findAxisFrontCoordinateWithinSingleMissionParameters() throws PWCGException
-    {        
+    {
+        List<FrontLinePoint> selectedFrontPointsAxis = new ArrayList<>();
+
         MissionCenterDistanceCalculator distanceCalculator = new MissionCenterDistanceCalculator(campaign, participatingPlayers);
         int missionCenterMaxDistanceForMission = distanceCalculator.determineMaxDistanceForMissionCenter();
         int missionCenterMinDistanceFromBase = calculateMinimumDistance(missionCenterMaxDistanceForMission);        
-        List<FrontLinePoint> selectedFrontPointsAxis = findFrontLinePointsForMissionCenter(missionCenterMinDistanceFromBase, missionCenterMaxDistanceForMission);
+
+        while (selectedFrontPointsAxis.isEmpty())
+        {
+            selectedFrontPointsAxis = findFrontLinePointsForMissionCenter(missionCenterMinDistanceFromBase, missionCenterMaxDistanceForMission);
+            missionCenterMaxDistanceForMission += 10000;
+        }
         return selectMissionCenter(selectedFrontPointsAxis);
     }
 
@@ -125,7 +132,6 @@ public class MissionCenterBuilderFrontLines implements IMissionCenterBuilder
         List<FrontLinePoint> selectedFrontPoints = new ArrayList<>();
         for (FrontLinePoint frontLinePoint : frontPoints)
         {
-            boolean isInRange = false;
             for (Coordinate squadronPosition : squadronPositions)
             {
                 double distanceFromSquadron = MathUtils.calcDist(squadronPosition, frontLinePoint.getPosition());
@@ -133,13 +139,9 @@ public class MissionCenterBuilderFrontLines implements IMissionCenterBuilder
                 {
                     if (distanceFromSquadron < missionCenterMaxDistanceForMission)
                     {
-                        isInRange = true;
+                        selectedFrontPoints.add(frontLinePoint);
                     }
                 }
-            }
-            if (isInRange)
-            {
-                selectedFrontPoints.add(frontLinePoint);
             }
         }
         return selectedFrontPoints;

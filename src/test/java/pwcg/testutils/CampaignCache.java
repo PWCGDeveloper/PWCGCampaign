@@ -12,25 +12,8 @@ public class CampaignCache
 {
     private static ICampaignCache bosCampaignCache = new CampaignCacheBoS();
     private static ICampaignCache fcCampaignCache = new CampaignCacheFC();
-    
+
     public static Campaign makeCampaign(SquadronTestProfile campaignProfile) throws PWCGException
-    {
-        Campaign campaign;
-        if (PWCGContext.getProduct() == PWCGProduct.FC)
-        {
-            campaign = fcCampaignCache.makeCampaign(campaignProfile);
-        }
-        else
-        {
-            campaign = bosCampaignCache.makeCampaign(campaignProfile);
-        }
-        
-        FrontMapIdentifier mapIdentifier = MapFinderForCampaign.findMapForCampaign(campaign);
-        PWCGContext.getInstance().changeContext(mapIdentifier);
-        return campaign;
-    }
-    
-    public static Campaign makeCampaignForceCreation(SquadronTestProfile campaignProfile) throws PWCGException
     {
         CampaignRemover.deleteCampaign(CampaignCacheBase.TEST_CAMPAIGN_NAME);         
 
