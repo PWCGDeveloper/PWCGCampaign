@@ -57,7 +57,7 @@ import pwcg.gui.utils.ToolTipManager;
 public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
-    private static final String VERSION = "   PWCG Version 9.0.1";
+    private static final String VERSION = "   PWCG Version 9.1.0";
 
 	private List<JButton> campaignButtonList = new ArrayList<JButton>();
 	

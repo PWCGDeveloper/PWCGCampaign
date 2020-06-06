@@ -2,14 +2,18 @@
 ​
 At the PWCG web site
 
-9.0.1
-Fixed depletion of German units in 1944/1945
-Fixed font size too large causing buttons no to display
+9.1.0
+Significant improvements to resupply to produce long term results int he campaign
+- Fixes excessive depletion in campaigns
+Adjusted font sizes
+- Fixes font size too large causing buttons no to display
+Bugs
 Fixed odd case where missions do not generate because a squadron is too close to the front
 Fixed bad pilot picture that caused issues with American campaigns
 Fixed incorrect place name
 Fixed issue that could start American and British AI pilots with no victories in Sept 1944.
 Fixed issue that would cause low altitude CAP missions to have a zero altitude waypoint.
+Fixed issue where "Unknown was killed in action" was displayed for out of mission victories
 
 
 9.0.0
