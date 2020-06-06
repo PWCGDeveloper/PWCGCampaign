@@ -59,7 +59,7 @@ public abstract class VictoryDescriptionBuilderBase
         return planeName;
     }
 
-    protected String getStringForStatus(int crewmemberStatus)
+    private String getStringForStatus(int crewmemberStatus)
     {
         String statusDesc = "";
         if (crewmemberStatus == SquadronMemberStatus.STATUS_KIA)
@@ -99,7 +99,8 @@ public abstract class VictoryDescriptionBuilderBase
             {
                 String pilotName = "The pilot";
                 if (victory.getVictim().getPilotName() != null && 
-                    !(victory.getVictim().getPilotName().equals("")))
+                    !(victory.getVictim().getPilotName().equals("")) && 
+                    !(victory.getVictim().getPilotName().equals("Unknown")))
                 {
                     pilotName = victory.getVictim().getPilotName();
                 }
