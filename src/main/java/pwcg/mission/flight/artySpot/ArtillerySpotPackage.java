@@ -47,7 +47,7 @@ public class ArtillerySpotPackage implements IFlightPackage
             artySpot = createAiFlight(targetCoordinates);
 		}
 
-        artySpot.addLinkedGroundUnit(groundUnitCollection);
+        flightInformation.getMission().getMissionGroundUnitBuilder().addFlightSpecificGroundUnit(groundUnitCollection);
         return artySpot;
     }
 

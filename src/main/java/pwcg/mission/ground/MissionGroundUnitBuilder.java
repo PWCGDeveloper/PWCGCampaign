@@ -9,6 +9,9 @@ import java.util.Map;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
+import pwcg.core.utils.MathUtils;
+import pwcg.core.utils.PositionFinder;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBalloonBuilder;
 import pwcg.mission.MissionShipBuilder;
@@ -26,6 +29,7 @@ public class MissionGroundUnitBuilder
     private List<IGroundUnitCollection> missionDrifters = new ArrayList<>();
     private List<IGroundUnitCollection> missionBalloons = new ArrayList<>();
     private List<IGroundUnitCollection> missionShips = new ArrayList<>();
+    private List<IGroundUnitCollection> flightSpecificGroundUnits = new ArrayList<>();
     private List<IGroundUnitCollection> AA = new ArrayList<>();
 
     public MissionGroundUnitBuilder (Campaign campaign, Mission mission)
@@ -119,6 +123,11 @@ public class MissionGroundUnitBuilder
         {
             aa.write(writer);
         }
+
+        for (IGroundUnitCollection flightSpecificGroundUnit : flightSpecificGroundUnits)
+        {
+            flightSpecificGroundUnit.write(writer);
+        }
     }
     
     public List<IGroundUnitCollection> getAllMissionGroundUnits()
@@ -131,6 +140,7 @@ public class MissionGroundUnitBuilder
         allMissionGroundUnits.addAll(missionBalloons);
         allMissionGroundUnits.addAll(missionShips);
         allMissionGroundUnits.addAll(AA);
+        allMissionGroundUnits.addAll(flightSpecificGroundUnits);
         return allMissionGroundUnits;
     }
     
@@ -228,5 +238,31 @@ public class MissionGroundUnitBuilder
     public List<IGroundUnitCollection> getBalloonUnits()
     {
         return missionBalloons;
+    }
+
+    public void addFlightSpecificGroundUnit(IGroundUnitCollection flightSpecificGroundUnit)
+    {
+        flightSpecificGroundUnits.add(flightSpecificGroundUnit);        
+    }
+
+    public IGroundUnitCollection getClosestGroundUnitForSide(Coordinate position, Side side) throws PWCGException
+    {
+        IGroundUnitCollection closestGroundUnitForSide = null;
+        
+        double closestDistanceToPosition = PositionFinder.ABSURDLY_LARGE_DISTANCE;
+        for (IGroundUnitCollection groundUnitCollection : getAllInterestingMissionGroundUnits())
+        {
+            if (!groundUnitCollection.getGroundUnitsForSide(side).isEmpty())
+            {
+                double distanceToPosition = MathUtils.calcDist(position, groundUnitCollection.getPosition());
+                if (distanceToPosition < closestDistanceToPosition)
+                {
+                    closestDistanceToPosition = distanceToPosition;
+                    closestGroundUnitForSide = groundUnitCollection;
+                    
+                }
+            }
+        }
+        return closestGroundUnitForSide;
     }
  }

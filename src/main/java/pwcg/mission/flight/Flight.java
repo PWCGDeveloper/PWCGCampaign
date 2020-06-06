@@ -13,14 +13,12 @@ import pwcg.mission.flight.waypoint.IVirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.IWaypointPackage;
 import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointPackage;
-import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.target.TargetDefinition;
 
 public abstract class Flight implements IFlight
 {
     private IFlightInformation flightInformation;
     private FlightPlanes flightPlanes;
-    private ILinkedGroundUnits linkedGroundUnits = new LinkedGroundUnits();
     private ILinkedFlights linkedFlights = new LinkedFlights();
     private FlightPlayerContact flightPlayerContact = new FlightPlayerContact();
     private IWaypointPackage waypointPackage;
@@ -53,7 +51,6 @@ public abstract class Flight implements IFlight
         }
         
         writeLinkedFlights(writer);
-        writeLinkedGroundUnits(writer);
     }
 
     private void writeLinkedFlights(BufferedWriter writer) throws PWCGException
@@ -65,14 +62,6 @@ public abstract class Flight implements IFlight
             {
                 linkedFlight.write(writer);
             }
-        }
-    }
-
-    private void writeLinkedGroundUnits(BufferedWriter writer) throws PWCGException
-    {
-        for (IGroundUnitCollection linkedGroundUnit : linkedGroundUnits.getLinkedGroundUnits())
-        {
-            linkedGroundUnit.write(writer);
         }
     }
 
@@ -89,16 +78,6 @@ public abstract class Flight implements IFlight
     public IWaypointPackage getWaypointPackage()
     {
         return waypointPackage;
-    }
-
-    public ILinkedGroundUnits getLinkedGroundUnits()
-    {
-        return linkedGroundUnits;
-    }
-
-    public void addLinkedGroundUnit(IGroundUnitCollection groundUnit)
-    {
-        linkedGroundUnits.addLinkedGroundUnit(groundUnit);        
     }
 
     public ILinkedFlights getLinkedFlights()

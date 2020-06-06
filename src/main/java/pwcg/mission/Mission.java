@@ -21,7 +21,6 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.ground.MissionGroundUnitBuilder;
 import pwcg.mission.ground.builder.IndirectFireAssignmentHandler;
-import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleSetBuilderComprehensive;
 import pwcg.mission.io.MissionDescriptionFile;
 import pwcg.mission.io.MissionFileFactory;
@@ -71,14 +70,6 @@ public class Mission
     {
         int unitCountMissionGroundUnits = missionGroundUnitBuilder.getUnitCount();        
         int unitCountInFlights = 0;
-        for (IFlight flight : this.getMissionFlightBuilder().getAllAerialFlights())
-        {
-            for (IGroundUnitCollection groundUnitCollection : flight.getLinkedGroundUnits().getLinkedGroundUnits())
-            {
-                int unitCountInCollection = groundUnitCollection.getUnitCount();
-                unitCountInFlights += unitCountInCollection;
-            }
-        }
         
         int unitCountInAirfields = 0;
         for (IAirfield field : getFieldsForPatrol())

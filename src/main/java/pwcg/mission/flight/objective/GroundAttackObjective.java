@@ -1,11 +1,16 @@
 package pwcg.mission.flight.objective;
 
+import java.util.List;
+
+import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.unittypes.staticunits.AirfieldTargetGroup;
+import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.target.TargetType;
 
 public class GroundAttackObjective
@@ -15,9 +20,13 @@ public class GroundAttackObjective
         IFlightInformation flightInformation = flight.getFlightInformation();
         
         String objective = "Attack the specified objective using all available means.";
-        for (IGroundUnitCollection linkedUnit : flight.getLinkedGroundUnits().getLinkedGroundUnits())
+        
+        List<McuWaypoint> targetWaypoints = flight.getWaypointPackage().getTargetWaypoints();
+        if (!targetWaypoints.isEmpty())
         {
-            IGroundUnitCollection groundUnitCollection = (IGroundUnitCollection)linkedUnit;
+            Coordinate flightTargetPosition = targetWaypoints.get(0).getPosition();
+            Side enemySide = flight.getSquadron().determineEnemySide();
+            IGroundUnitCollection groundUnitCollection = flight.getMission().getMissionGroundUnitBuilder().getClosestGroundUnitForSide(flightTargetPosition, enemySide);
             for (IGroundUnit groundUnit : groundUnitCollection.getGroundUnits())
             {
                 if (!groundUnit.getCountry().isSameSide(flight.getFlightInformation().getCountry()))
@@ -27,7 +36,6 @@ public class GroundAttackObjective
                 }
             }
         }
-        
         return objective;
     }
 

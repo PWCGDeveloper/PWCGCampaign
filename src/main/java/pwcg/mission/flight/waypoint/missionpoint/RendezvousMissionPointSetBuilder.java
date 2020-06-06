@@ -17,7 +17,7 @@ public class RendezvousMissionPointSetBuilder
         this.flightThatNeedsEscort = escortedFlight;
     }
 
-    public IMissionPointSet createFlightRendezvous(McuWaypoint ingressWaypoint) throws PWCGException
+    public IMissionPointSet createFlightRendezvousToPickUpEscort(McuWaypoint ingressWaypoint) throws PWCGException
     {
         McuWaypoint rendezvousWaypoint = createRendezvousWaypoint(ingressWaypoint);
 
@@ -37,7 +37,7 @@ public class RendezvousMissionPointSetBuilder
         McuWaypoint rendezvousWaypoint = WaypointFactory.createRendezvousWaypointType();
         rendezvousWaypoint.setTriggerArea(McuWaypoint.COMBAT_AREA);
         rendezvousWaypoint.setPosition(rendezvousWaypointPosition);
-        rendezvousWaypoint.setTargetWaypoint(true);
+        rendezvousWaypoint.setTargetWaypoint(false);
         rendezvousWaypoint.setSpeed(flightThatNeedsEscort.getFlightCruisingSpeed());
         return rendezvousWaypoint;
     }

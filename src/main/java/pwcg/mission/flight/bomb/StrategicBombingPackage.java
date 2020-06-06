@@ -47,7 +47,7 @@ public class StrategicBombingPackage implements IFlightPackage
     {
         AAAUnitBuilder groundUnitBuilder = new AAAUnitBuilder(flightInformation.getCampaign(), targetDefinition);
         IGroundUnitCollection aaaArty = groundUnitBuilder.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_HIGH);
-        bombingFlight.addLinkedGroundUnit(aaaArty);
+        flightInformation.getMission().getMissionGroundUnitBuilder().addFlightSpecificGroundUnit(aaaArty);
     }
 
     private void createSearchlight(IFlightInformation flightInformation, TargetDefinition targetDefinition, BombingFlight bombingFlight) throws PWCGException
@@ -56,7 +56,7 @@ public class StrategicBombingPackage implements IFlightPackage
         {
             SearchLightBuilder groundUnitBuilder =  new SearchLightBuilder(flightInformation.getCampaign());
             IGroundUnitCollection searchLightGroup = groundUnitBuilder.createSearchLightGroup(targetDefinition);
-            bombingFlight.addLinkedGroundUnit(searchLightGroup);
+            flightInformation.getMission().getMissionGroundUnitBuilder().addFlightSpecificGroundUnit(searchLightGroup);
         }
     }
 }

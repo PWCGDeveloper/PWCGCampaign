@@ -71,7 +71,7 @@ public class MissionPointSetFactory
     public static IMissionPointSet createFlightRendezvous (IFlight flight, McuWaypoint ingressWaypoint) throws PWCGException
     {
         RendezvousMissionPointSetBuilder rendezvousMissionPointSetBuilder = new RendezvousMissionPointSetBuilder(flight); 
-        IMissionPointSet rendezvousMissionPointSet = rendezvousMissionPointSetBuilder.createFlightRendezvous(ingressWaypoint);
+        IMissionPointSet rendezvousMissionPointSet = rendezvousMissionPointSetBuilder.createFlightRendezvousToPickUpEscort(ingressWaypoint);
         return rendezvousMissionPointSet;
     }
 

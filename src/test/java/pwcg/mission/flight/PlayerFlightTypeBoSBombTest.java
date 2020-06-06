@@ -15,7 +15,6 @@ import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.validate.EscortForPlayerValidator;
 import pwcg.mission.flight.validate.FlightActivateValidator;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
-import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.mission.flight.validate.PlaneRtbValidator;
 import pwcg.mission.flight.validate.PositionEvaluator;
 import pwcg.mission.flight.validate.VirtualWaypointPackageValidator;
@@ -61,8 +60,6 @@ public class PlayerFlightTypeBoSBombTest
             assert(plane.getPlanePayload().getSelectedPayloadId() >= 0);
         }
         
-        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
-        groundUnitValidator.validateGroundUnitsForMission(mission);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
@@ -88,8 +85,6 @@ public class PlayerFlightTypeBoSBombTest
             assert(plane.getPlanePayload().getSelectedPayloadId() >= 0);
         }
         
-        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
-        groundUnitValidator.validateGroundUnitsForMission(mission);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);

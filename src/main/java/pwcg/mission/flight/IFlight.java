@@ -9,7 +9,6 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.waypoint.IVirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.IWaypointPackage;
-import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.target.TargetDefinition;
 
 public interface IFlight
@@ -29,10 +28,6 @@ public interface IFlight
     IFlightPlanes getFlightPlanes();
 
     IWaypointPackage getWaypointPackage();
-
-    ILinkedGroundUnits getLinkedGroundUnits();
-
-    void addLinkedGroundUnit(IGroundUnitCollection groundUnit);
 
     ILinkedFlights getLinkedFlights();
 

@@ -11,17 +11,16 @@ import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.divebomb.DiveBombingFlight;
-import pwcg.mission.flight.validate.GroundAttackFlightValidator;
-import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.mission.flight.validate.EscortForPlayerValidator;
 import pwcg.mission.flight.validate.FlightActivateValidator;
+import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.mission.flight.validate.PositionEvaluator;
 import pwcg.mission.flight.validate.VirtualWaypointPackageValidator;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
-import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetCategory;
 import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetType;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestParticipatingHumanBuilder;
@@ -55,8 +54,6 @@ public class PlayerFlightTypeBoSDiveBombTest
         validateTargetDefinition(flight.getTargetDefinition());
         assert (flight.getFlightType() == FlightTypes.DIVE_BOMB);
         
-        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
-        groundUnitValidator.validateGroundUnitsForMission(mission);
         PositionEvaluator.evaluateAiFlight(mission);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateEscortForPlayer();

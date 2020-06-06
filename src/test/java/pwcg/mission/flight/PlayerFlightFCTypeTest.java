@@ -25,7 +25,6 @@ import pwcg.mission.flight.offensive.OffensiveFlight;
 import pwcg.mission.flight.patrol.PatrolFlight;
 import pwcg.mission.flight.validate.EscortForPlayerValidator;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
-import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.mission.flight.validate.PatrolFlightValidator;
 import pwcg.mission.flight.validate.PlaneRtbValidator;
 import pwcg.mission.flight.validate.PlayerEscortFlightValidator;
@@ -73,8 +72,6 @@ public class PlayerFlightFCTypeTest
         validateTargetDefinition(flight.getTargetDefinition());
         assert(flight.getFlightType() == FlightTypes.GROUND_ATTACK);
         
-        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
-        groundUnitValidator.validateGroundUnitsForMission(mission);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
@@ -101,8 +98,6 @@ public class PlayerFlightFCTypeTest
         assert(flight.getFlightType() == FlightTypes.BOMB);
         PlaneRtbValidator.verifyPlaneRtbDisabled(mission);
 
-        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
-        groundUnitValidator.validateGroundUnitsForMission(mission);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
@@ -147,8 +142,6 @@ public class PlayerFlightFCTypeTest
 
         assert(flight.getFlightType() == FlightTypes.BALLOON_BUST);
         
-        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
-        groundUnitValidator.validateGroundUnitsForMission(mission);
         PositionEvaluator.evaluateAiFlight(mission);
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
@@ -169,8 +162,6 @@ public class PlayerFlightFCTypeTest
 
         assert(flight.getFlightType() == FlightTypes.BALLOON_DEFENSE);
         
-        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
-        groundUnitValidator.validateGroundUnitsForMission(mission);
         PositionEvaluator.evaluateAiFlight(mission);
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);

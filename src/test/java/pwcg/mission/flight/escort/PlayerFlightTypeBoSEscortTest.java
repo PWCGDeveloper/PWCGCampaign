@@ -12,7 +12,6 @@ import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.plane.PlaneMcu;
-import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.mission.flight.validate.PlayerEscortFlightValidator;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
@@ -47,8 +46,5 @@ public class PlayerFlightTypeBoSEscortTest
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() == 0);
         }
-        
-        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
-        groundUnitValidator.validateGroundUnitsForMission(mission);        
     }
 }

@@ -34,7 +34,6 @@ public class IndirectFireAssignmentHandler
     private void loadGroundUnitsBySide() throws PWCGException
     {
         List<IGroundUnitCollection> allGroundUnits = new ArrayList<>();
-        allGroundUnits.addAll(mission.getMissionFlightBuilder().getAllFlightLinkedGroundUnits());
         allGroundUnits.addAll(mission.getMissionGroundUnitBuilder().getAllMissionGroundUnits());
         
         for (IGroundUnitCollection groundUnitCollection : allGroundUnits)

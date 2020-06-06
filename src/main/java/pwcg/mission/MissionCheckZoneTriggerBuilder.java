@@ -1,7 +1,6 @@
 package pwcg.mission;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class MissionCheckZoneTriggerBuilder
@@ -21,12 +20,9 @@ public class MissionCheckZoneTriggerBuilder
 
     private void triggerPlayerTargetsOnAnyPlayer() throws PWCGException
     {
-        for (IFlight playerFlight : mission.getMissionFlightBuilder().getPlayerFlights())
+        for (IGroundUnitCollection playerTarget : mission.getMissionGroundUnitBuilder().getAllMissionGroundUnits())
         {
-            for (IGroundUnitCollection playerTarget : playerFlight.getLinkedGroundUnits().getLinkedGroundUnits())
-            {
-                playerTarget.triggerOnPlayerProximity(mission);
-            }
+            playerTarget.triggerOnPlayerProximity(mission);
         }
     }
 

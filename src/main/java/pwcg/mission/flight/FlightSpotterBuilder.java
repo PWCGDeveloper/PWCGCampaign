@@ -19,7 +19,7 @@ public class FlightSpotterBuilder
                 IGroundUnitCollection spotter = spotterBuilder.createAAASpotterBattery(missionPoint.getPosition());
                 if (spotter != null)
                 {
-                    playerFlight.addLinkedGroundUnit(spotter);
+                    playerFlight.getMission().getMissionGroundUnitBuilder().addFlightSpecificGroundUnit(spotter);
                 }
             }
         }

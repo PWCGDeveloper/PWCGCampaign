@@ -18,7 +18,6 @@ import pwcg.mission.flight.cap.CAPFlight;
 import pwcg.mission.flight.intercept.InterceptFlight;
 import pwcg.mission.flight.offensive.OffensiveFlight;
 import pwcg.mission.flight.patrol.PatrolFlight;
-import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.mission.flight.validate.PatrolFlightValidator;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
@@ -65,8 +64,6 @@ public class PlayerFlightTypeCoopFighterTest
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
         assert (flight.getFlightType() == FlightTypes.PATROL);
-        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
-        groundUnitValidator.validateGroundUnitsForMission(mission);
         verifyEnemyFlights(campaign);
     }
 
@@ -89,8 +86,6 @@ public class PlayerFlightTypeCoopFighterTest
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
         assert (flight.getFlightType() == FlightTypes.LOW_ALT_PATROL);        
-        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
-        groundUnitValidator.validateGroundUnitsForMission(mission);
         verifyEnemyFlights(campaign);
     }
 
@@ -113,8 +108,6 @@ public class PlayerFlightTypeCoopFighterTest
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
         assert (flight.getFlightType() == FlightTypes.LOW_ALT_CAP);
-        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
-        groundUnitValidator.validateGroundUnitsForMission(mission);
         verifyEnemyFlights(campaign);
     }
 
@@ -137,8 +130,6 @@ public class PlayerFlightTypeCoopFighterTest
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
         assert (flight.getFlightType() == FlightTypes.INTERCEPT);        
-        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
-        groundUnitValidator.validateGroundUnitsForMission(mission);
         verifyEnemyFlights(campaign);
     }
 
@@ -160,10 +151,7 @@ public class PlayerFlightTypeCoopFighterTest
         OffensiveFlight flight = (OffensiveFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
-        assert (flight.getFlightType() == FlightTypes.OFFENSIVE);
-        
-        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
-        groundUnitValidator.validateGroundUnitsForMission(mission);
+        assert (flight.getFlightType() == FlightTypes.OFFENSIVE);        
         verifyEnemyFlights(campaign);
     }
     
