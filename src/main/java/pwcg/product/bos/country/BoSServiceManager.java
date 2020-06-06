@@ -99,7 +99,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
 		vvs.setEndDate(DateUtils.getEndOfWar());
 		vvs.setServiceColorMap(new VVSColorMap());
 		vvs.setGeneralRankForService("General-lieutenant");
-        vvs.setDailyPersonnelReplacementRatePerSquadron(2.0);
+        vvs.setDailyPersonnelReplacementRatePerSquadron(2.2);
         vvs.setDailyEquipmentReplacementRatePerSquadron(3.0);
 
 		List<String> irasPics = new ArrayList<String>();
@@ -169,8 +169,8 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
 		luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19430101"), 100);
 		luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19440101"), 70);
 		luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19450101"), 50);
-		luftwaffe.setDailyPersonnelReplacementRatePerSquadron(1.0);
-		luftwaffe.setDailyEquipmentReplacementRatePerSquadron(1.8);
+		luftwaffe.setDailyPersonnelReplacementRatePerSquadron(0.6);
+		luftwaffe.setDailyEquipmentReplacementRatePerSquadron(1.0);
 
 		germanServices.add(luftwaffe);
 	}
@@ -217,7 +217,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         usaaf.setServiceColorMap(new AmericanColorMap());
         usaaf.setGeneralRankForService("General");
         usaaf.setStartDate(DateUtils.getDateYYYYMMDD("19440901"));
-        usaaf.setDailyPersonnelReplacementRatePerSquadron(2.0);
+        usaaf.setDailyPersonnelReplacementRatePerSquadron(2.5);
         usaaf.setDailyEquipmentReplacementRatePerSquadron(4.0);
 
         List<String> usaafPics = new ArrayList<String>();
