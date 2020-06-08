@@ -202,18 +202,25 @@ public class PWCGMonitorFonts
 
     private static int verifyFontSizeForScreenSize(int fontSize)
     {
-        if (PWCGMonitorSupport.isSmallScreen())
+        if (PWCGMonitorSupport.isVerySmallScreen())
         {
-            if (fontSize > 12)
+            if (fontSize > 14)
             {
-                fontSize = 12;
+                fontSize = 14;
+            }
+        }
+        else if (PWCGMonitorSupport.isSmallScreen())
+        {
+            if (fontSize > 16)
+            {
+                fontSize = 16;
             }
         }
         else if (PWCGMonitorSupport.isMediumScreen())
         {
-            if (fontSize > 20)
+            if (fontSize > 22)
             {
-                fontSize = 20;
+                fontSize = 22;
             }
         }
         return fontSize;

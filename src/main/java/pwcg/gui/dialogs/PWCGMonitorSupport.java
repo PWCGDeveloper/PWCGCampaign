@@ -59,9 +59,19 @@ public class PWCGMonitorSupport
         return 40;
     }
 
-	static boolean isSmallScreen()
+    static boolean isVerySmallScreen()
     {
-        if (getPWCGFrameSize().getHeight() <= 1000)
+        if (getPWCGFrameSize().getHeight() <= 900)
+        {
+            return true;
+        }
+        
+        return false;
+    }
+
+    static boolean isSmallScreen()
+    {
+        if (getPWCGFrameSize().getHeight() <= 1100)
         {
             return true;
         }
