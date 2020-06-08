@@ -30,7 +30,7 @@
 	"skins": [
 		{
 			"skinName": "FW190A3_SKIN_14",
-			"planeType": "p40e1",
+			"planeType": "fw190a3",
 			"startDate": "19411101",
 			"endDate": "19450601",
 			"squadId": 20111026,
