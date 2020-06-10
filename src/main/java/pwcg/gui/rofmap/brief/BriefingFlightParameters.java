@@ -6,17 +6,19 @@ import java.util.List;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.gui.utils.PWCGStringValidator;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class BriefingFlightParameters
 {
     private List<EditorWaypointGroup> briefingMapEditorGroups = new ArrayList<EditorWaypointGroup>();
-    private double selectedFuel = 1.0;
 	private int selectedMapPointIndex = -1;
-	private int actionMapPointIndex = -1;
+    private int actionMapPointIndex = -1;
+    private IFlight flight;
 	
-	public BriefingFlightParameters()
+	public BriefingFlightParameters(IFlight flight)
 	{
+	    this.flight = flight;
 	}
 
     public McuWaypoint getWayPoint(int index)
@@ -132,12 +134,12 @@ public class BriefingFlightParameters
 
     public double getSelectedFuel()
     {
-        return selectedFuel;
+        return flight.getFlightPlanes().getFlightLeader().getFuel();
     }
 
     public void setSelectedFuel(double selectedFuel)
     {
-        this.selectedFuel = selectedFuel;
+        flight.getFlightPlanes().getFlightLeader().setFuel(selectedFuel);
     }
 
 	public List<EditorWaypointGroup> getWaypointEditorGroups()

@@ -135,14 +135,15 @@ public class PlayerFlightEditor
     }
 
     private PlaneMcu updateLeader(CrewPlanePayloadPairing crewPlane) throws PWCGException
-    {
-        PlaneMcu flightLeader = PlaneMCUFactory.createPlaneMcuByPlaneType(campaign, crewPlane.getPlane(), 
+    {        
+        PlaneMcu updatedFlightLeader = PlaneMCUFactory.createPlaneMcuByPlaneType(campaign, crewPlane.getPlane(), 
                 playerFlight.getFlightInformation().getCountry(), crewPlane.getPilot());
         PlaneMcu flightLeaderPlaneMcu = playerFlight.getFlightPlanes().getFlightLeader();        
-        flightLeader.setIndex(flightLeaderPlaneMcu.getIndex());
-        flightLeader.setLinkTrId(flightLeaderPlaneMcu.getLinkTrId());
-        flightLeader.getEntity().setIndex(flightLeaderPlaneMcu.getEntity().getIndex());
+        updatedFlightLeader.setIndex(flightLeaderPlaneMcu.getIndex());
+        updatedFlightLeader.setLinkTrId(flightLeaderPlaneMcu.getLinkTrId());
+        updatedFlightLeader.getEntity().setIndex(flightLeaderPlaneMcu.getEntity().getIndex());
+        updatedFlightLeader.setFuel(flightLeaderPlaneMcu.getFuel());
 
-        return flightLeader;
+        return updatedFlightLeader;
     }
 }

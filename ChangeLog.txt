@@ -2,6 +2,12 @@
 ​
 At the PWCG web site
 
+9.1.1
+Adjusted fuel load by aircraft prior to briefing
+Adjust maximum font size based on monitor size
+Bugs
+Fixed incorrect plane type in skin assignments
+
 9.1.0
 Significant improvements to resupply to produce long term results int he campaign
 - Fixes excessive depletion in campaigns

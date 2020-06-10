@@ -12,11 +12,12 @@ import pwcg.mission.mcu.McuWaypoint;
 public class BriefParametersContextBuilder
 {
 	private IFlight playerFlight;
-	private BriefingFlightParameters briefParametersContext = new BriefingFlightParameters();
+	private BriefingFlightParameters briefingFlightParameters;
 
 	public BriefParametersContextBuilder (IFlight playerFlight)
 	{
         this.playerFlight = playerFlight;
+        briefingFlightParameters = new BriefingFlightParameters(playerFlight);
 	}
 	
 	public BriefingFlightParameters buildBriefParametersContext() throws PWCGException
@@ -25,7 +26,7 @@ public class BriefParametersContextBuilder
 		setWaypoints();
 		addLanding();
 		
-		return briefParametersContext;
+		return briefingFlightParameters;
 	}
 	
 	private void setWaypoints() throws PWCGException
@@ -60,7 +61,7 @@ public class BriefParametersContextBuilder
 	    editorWaypointGroup.setWaypointEditor(waypointEditor);
 	    editorWaypointGroup.setWaypointInBriefing(waypoint);
 	    editorWaypointGroup.setBriefingMapPoint(waypointMapPoint);
-	    briefParametersContext.appendEditorGroup(editorWaypointGroup);
+	    briefingFlightParameters.appendEditorGroup(editorWaypointGroup);
 	}
 
     private WaypointEditor createWaypointEditor(McuWaypoint previousWP, McuWaypoint thisWP) throws PWCGException
@@ -88,7 +89,7 @@ public class BriefParametersContextBuilder
 			editorWaypointGroup.setWaypointEditor(null);
 			editorWaypointGroup.setWaypointInBriefing(null);
 			
-			briefParametersContext.appendEditorGroup(editorWaypointGroup);
+			briefingFlightParameters.appendEditorGroup(editorWaypointGroup);
 		}
 	}
 	
@@ -102,7 +103,7 @@ public class BriefParametersContextBuilder
 			editorWaypointGroup.setWaypointEditor(null);
 			editorWaypointGroup.setWaypointInBriefing(null);
 
-			briefParametersContext.appendEditorGroup(editorWaypointGroup);
+			briefingFlightParameters.appendEditorGroup(editorWaypointGroup);
 		}
 	}
 	
@@ -115,7 +116,7 @@ public class BriefParametersContextBuilder
 		editorWaypointGroup.setWaypointEditor(null);
 		editorWaypointGroup.setWaypointInBriefing(null);
 		
-		briefParametersContext.appendEditorGroup(editorWaypointGroup);
+		briefingFlightParameters.appendEditorGroup(editorWaypointGroup);
 	}
 	
     private void updateEscortWaypointsOnMap() throws PWCGException
@@ -146,7 +147,7 @@ public class BriefParametersContextBuilder
 		editorWaypointGroup.setBriefingMapPoint(escort);
 		editorWaypointGroup.setWaypointEditor(null);
 		editorWaypointGroup.setWaypointInBriefing(null);
-		briefParametersContext.appendEditorGroup(editorWaypointGroup);
+		briefingFlightParameters.appendEditorGroup(editorWaypointGroup);
 	}
 
 }

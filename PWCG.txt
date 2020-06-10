@@ -1,0 +1,43 @@
+PWCG is a career mode.  It has been under development since 2009, starting with RoF and then moving to BoS and FC.  PWCG offers unrivaled variation in missions for Great Battles series of flight simulators.  When you create a PWCG campaign you create a small world where things happen with and without you.
+
+
+Enemy flights move without being on the map.  Years ago I developed the concept of virtual waypoints.  This allows AI flights to move along their mission path without spawning.  Enemy flights are not just sitting in a spot waiting for you to come to them.  You always have to go to the action - it never comes to you.  No surprises.  In PWCG they come to you, all without consuming significant resources until they spawn.  Friendly to save the day?  Enemy to finish you off?  A bomber flight that represents a new opportunity?  You don't know.  Even I don't know what my own missions will produce.
+
+
+With PWCG every mission is based on ground activity, so every mission is tied to the world.  You can feel that.  Planes don't just conveniently appear for you to shoot at.  They are doing something.  PWCG ground activity includes small battles, large battles with upwards of 50 tanks, trains, transport convoys, river and sea shipping, and more.  In the battles one side is really attacking the other.  They are not just targets.  They are trying to do something.
+
+
+PWCG supports night missions.  The night witches are a dedicated night squadron.  Other units may receive night missions at various times.
+
+
+PWCG tracks every pilot and every airplane.  A complex human and aircraft replacement algorithm transitions replacements into a depo and then to squadrons.  Delays in replacement are explicitly coded.  The result is that temporary shortages are felt.  
+
+
+AI pilots improve over time.  This applies to all AI pilots, not just your squadron mates.  Losing a good pilot causes him to be replaced with a raw replacement.
+
+
+There is a world outside of your missions.   This is one of the most complex aspects of PWCG.  When you submit a combat report the whole world turns.  AI pilots not involved in the mission go through simulated activity, so they might score a victory or be killed without being in your mission.   When you go on leave the same algorithm is is used to simulate activity while you are gone.  The rate of losses has a lot of detail behind it.  Some unit types incur greater losses than others.  Inexperienced pilots are more likely to be lost than experienced ones.  Lots of data goes into this.  I have written a simulator that tells me how any pilots are lost over the course of a campaign and compared that with historical results to ensure that it is realistic.
+
+
+PWCG has a claim system that allows you to have some control over the victories that you are awarded.  If you decide that you don't want a victory (it crashed well after contact) then just don't claim it.  You can also help out your AI mates by not claiming - PWCG will give the victory to them instead.
+
+
+PWCG allows you to have multiple pilots active in a campaign.  Need a break from being a fighter jock?  Create a dive bomber persona and do that for awhile.  This is really useful for somebody like me that wants to do these other activities periodically but really enjoys flying one thing (in my case fighters) most.  I can take a break from my usual and do some of the other things the sim offers without committing to a full career.
+
+
+PWCG support both cooperative and competitive multiplayer modes.  The missions are coop missions but the pilots need not be on the same side.  Therefore people can fly with or against each other in a campaign setting.
+
+
+Playing PWCG in a cooperative mode allows you to fly a full career with your friends.  Instead of just missions you are part of a world.  Fly in the same squadron or a different one.  You can fly fighters while your friend flies ground attack.  Any combination is possible.  You and your friends can have multiple personas so, within a career, you can fly as a fighter pilot one mission and an attack pilot the next.
+
+
+Playing PWCG in a competitive mode allows you to fly a full career while fighting with or against your friends.  You are still part of a world.  All of your friends will be in the mission with your own things to do.  You may meet or you may not.  Anything is possible.  This is great for squadron wars or just for groups of people that want human competition in the scope of a campaign.
+
+
+PWCG offers features such as journals where you can do write ups of your missions, squadron logs that are updated for every squadron in the PWCG world, intel reports and maps that show the current situation, and many other things. 
+
+
+PWCG handles medals, promotions, events, and replacements in a realistic manner. Not just for you but for every pilot in the PWCG world.
+
+
+In the end I am algorithms guy.  Most of PWCG's best parts are behind the scenes, not up front.  That level of detail should translate into an experience that just feels right.  You should not even know why exactly, but your experience should feel like you are an active participant in a book about a WWII pilot - with you as the pilot.  

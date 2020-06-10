@@ -371,6 +371,8 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
         cbFuel.addItem("Fuel 50%");
         cbFuel.addItem("Fuel 45%");
         cbFuel.addItem("Fuel 40%");
+        cbFuel.addItem("Fuel 35%");
+        cbFuel.addItem("Fuel 30%");
 		cbFuel.setOpaque(false);
 		cbFuel.setSelectedIndex(getIndexForFuel());
 		cbFuel.setActionCommand("ChangeFuel");
@@ -477,9 +479,17 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
         {
             index = 11;
         }
-        else
+        else if (selectedFuel > .35)
         {
             index = 12;
+        }
+        else if (selectedFuel > .30)
+        {
+            index = 13;
+        }
+        else
+        {
+            index = 14;
         }
 		
 		return index;

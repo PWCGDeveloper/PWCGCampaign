@@ -182,9 +182,9 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
 
     private void validateFuel()
     {
-        if (fuel < .4)
+        if (fuel < .3)
         {
-            fuel = .4;
+            fuel = .3;
         }
 
         if (fuel > 1.0)

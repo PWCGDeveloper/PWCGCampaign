@@ -18,8 +18,8 @@ import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 
 public class BriefingMissionFlight
 {
-    private BriefingFlightParameters briefingFlightParameters = new BriefingFlightParameters();
-    private BriefingAssignmentData briefingAssignmentData = new BriefingAssignmentData();
+    private BriefingFlightParameters briefingFlightParameters;
+    private BriefingAssignmentData briefingAssignmentData;
     private Mission mission;
     private IFlight flight;
 
@@ -27,6 +27,8 @@ public class BriefingMissionFlight
     {
         this.mission = mission;
         this.flight = flight;
+        briefingFlightParameters = new BriefingFlightParameters(flight);
+        briefingAssignmentData = new BriefingAssignmentData();
     }
     
     public void initializeFromMission(Squadron squadron) throws PWCGException

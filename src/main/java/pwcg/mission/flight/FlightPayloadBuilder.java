@@ -48,18 +48,10 @@ public class FlightPayloadBuilder
 
     private void initializeFuel() throws PWCGException
     {
+        double fuelLoad = Fuel.calculateFuelForFlight(flight);
         for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
-            if (!flight.getFlightInformation().isAirStart())
-            {
-                double fuel = FuelGroundStartCalculator.calculateAirStartFuel(plane);
-                plane.setFuel(fuel);
-            }
-            else
-            {
-                double fuel = FuelAirStartCalculator.calculateAirStartFuel(plane);
-                plane.setFuel(fuel);
-            }
+            plane.setFuel(fuelLoad);
         }
     }
 
