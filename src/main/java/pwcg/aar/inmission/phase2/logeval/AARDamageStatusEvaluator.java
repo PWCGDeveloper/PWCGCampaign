@@ -11,6 +11,9 @@ import pwcg.aar.inmission.phase1.parse.event.IAType2;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogAIEntity;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogDamage;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogCategory;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class AARDamageStatusEvaluator 
 {    
@@ -58,9 +61,11 @@ public class AARDamageStatusEvaluator
         
         AARDamageStatus damageStatus = vehiclesDamaged.get(logVictim);
         logDamage = createDamageRecord(atype2);
-        damageStatus.addDamage(victorId, logDamage);
-        
-        allDamageEventsInOrder.add(logDamage);
+        if (logDamage != null)
+        {
+            damageStatus.addDamage(victorId, logDamage);
+            allDamageEventsInOrder.add(logDamage);
+        }
     }
     
     private boolean uselessLog(IAType2 atype2)
@@ -86,17 +91,21 @@ public class AARDamageStatusEvaluator
         LogAIEntity logVictor = aarVehicleBuilder.getVehicle(atype2.getVictor());
         LogAIEntity logVictim = aarVehicleBuilder.getVehicle(atype2.getVictim());
         
-        if (logVictor == null)
+        if (logVictor != null && logVictim != null)
         {
-            throw new PWCGException("useless damage log leak");
+            LogDamage logDamage = new LogDamage(atype2.getSequenceNum());
+            logDamage.setVictor(logVictor);
+            logDamage.setVictim(logVictim);
+            logDamage.setLocation(atype2.getLocation());
+            logDamage.setDamageLevel(atype2.getDamageLevel());
+            return logDamage;
         }
-                        
-        LogDamage logDamage = new LogDamage(atype2.getSequenceNum());
-        logDamage.setVictor(logVictor);
-        logDamage.setVictim(logVictim);
-        logDamage.setLocation(atype2.getLocation());
-        logDamage.setDamageLevel(atype2.getDamageLevel());
-        return logDamage;
+        else
+        {
+            PWCGLogger.log(LogLevel.ERROR, "Damage record has no victor");
+        }
+        
+        return null;
     }
 
     public List<LogDamage> getAllDamageEvents()
