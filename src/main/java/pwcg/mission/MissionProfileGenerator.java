@@ -85,7 +85,7 @@ public class MissionProfileGenerator
 
     private int getNightMissionOdds() throws PWCGException
     {
-        int nightMissionOdds = 0;
+        int nightMissionOdds = 100;
         for (Integer squadronId : participatingPlayers.getParticipatingSquadronIds())
         {
             Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);

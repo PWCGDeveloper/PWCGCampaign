@@ -11,10 +11,10 @@ public class NightMissionSet
     public int determineNighMissionOdds(Date date)
     {
         NightMissionPeriod selectedNightMissionForPeriod = null;
-        for (NightMissionPeriod squadronRole : nightMissionPeriods)
+        for (NightMissionPeriod nightPeriod : nightMissionPeriods)
         {
-            Date startDate = squadronRole.getStartDate();
-            Date endDate = squadronRole.getEndDate();
+            Date startDate = nightPeriod.getStartDate();
+            Date endDate = nightPeriod.getEndDate();
 
             if (date.before(startDate))
             {
@@ -24,7 +24,7 @@ public class NightMissionSet
             }
             else
             {
-                selectedNightMissionForPeriod = squadronRole;
+                selectedNightMissionForPeriod = nightPeriod;
             }
         }
         
