@@ -12,7 +12,6 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogAIEntity;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogDamage;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.core.utils.PWCGLogger.LogCategory;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class AARDamageStatusEvaluator 
