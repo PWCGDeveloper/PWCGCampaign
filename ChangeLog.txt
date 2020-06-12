@@ -7,6 +7,7 @@ Adjusted fuel load by aircraft prior to briefing
 Adjust maximum font size based on monitor size
 Bugs
 Fixed incorrect plane type in skin assignments
+Fixed AAR issue that occurred when a log damage record was not attributed to a in game entity
 
 9.1.0
 Significant improvements to resupply to produce long term results int he campaign

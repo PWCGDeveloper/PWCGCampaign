@@ -69,10 +69,9 @@ public class PersonnelReplacementsService
         return replacement;
     }
 
-    public SquadronMember transferFromFeservesToActive(int serialNumber) throws PWCGException
+    public SquadronMember transferFromReservesToActive(int serialNumber) throws PWCGException
     {
         SquadronMember replacement = replacementsDesignatedForAssignment.removeSquadronMember(serialNumber);
-        replacementsDesignatedForAssignment.removeSquadronMember(replacement.getSerialNumber());
         return replacement;
     }
 

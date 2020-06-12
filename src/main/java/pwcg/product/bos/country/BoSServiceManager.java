@@ -166,9 +166,8 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
 		luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19400101"), 60);
 		luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19410101"), 70);
 		luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19420101"), 90);
-		luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19430101"), 100);
-		luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19440101"), 70);
-		luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19450101"), 50);
+        luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19440101"), 70);
+        luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19440601"), 50);
 		luftwaffe.setDailyPersonnelReplacementRatePerSquadron(0.6);
 		luftwaffe.setDailyEquipmentReplacementRatePerSquadron(1.0);
 

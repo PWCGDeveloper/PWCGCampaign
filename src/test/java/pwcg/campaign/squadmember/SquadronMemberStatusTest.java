@@ -62,7 +62,7 @@ public class SquadronMemberStatusTest
     @Test
     public void testUpdateStatusActive() throws PWCGException
     {
-        SquadronMember pilot = squadronMemberFactory.createAIPilot("Sergent");
+        SquadronMember pilot = squadronMemberFactory.createInitialAIPilot("Sergent");
         pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, campaign.getDate(), null);
         assert(pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_ACTIVE);
         assert(pilot.getRecoveryDate() == null);
@@ -72,7 +72,7 @@ public class SquadronMemberStatusTest
     @Test
     public void testUpdateStatusKilled() throws PWCGException
     {
-        SquadronMember pilot = squadronMemberFactory.createAIPilot("Sergent");
+        SquadronMember pilot = squadronMemberFactory.createInitialAIPilot("Sergent");
         pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
         assert(pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_KIA);
         assert(pilot.getRecoveryDate() == null);
@@ -83,7 +83,7 @@ public class SquadronMemberStatusTest
     public void testUpdateStatusWounded() throws PWCGException
     {
         Date returnDate = DateUtils.advanceTimeDays(campaign.getDate(), 21);
-        SquadronMember pilot = squadronMemberFactory.createAIPilot("Sergent");
+        SquadronMember pilot = squadronMemberFactory.createInitialAIPilot("Sergent");
         pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_WOUNDED, campaign.getDate(), returnDate);
         assert(pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_WOUNDED);
         assert(pilot.getRecoveryDate().after(campaign.getDate()));
@@ -94,7 +94,7 @@ public class SquadronMemberStatusTest
     public void testUpdateStatusAiSeriousWound() throws PWCGException
     {
         Date returnDate = DateUtils.advanceTimeDays(campaign.getDate(), 90);
-        SquadronMember pilot = squadronMemberFactory.createAIPilot("Sergent");
+        SquadronMember pilot = squadronMemberFactory.createInitialAIPilot("Sergent");
         pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate(), returnDate);
         assert(pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
         assert(pilot.getRecoveryDate() == null);

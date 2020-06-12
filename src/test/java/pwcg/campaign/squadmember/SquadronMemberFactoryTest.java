@@ -89,7 +89,7 @@ public class SquadronMemberFactoryTest
     public void testCreateAiPilot() throws PWCGException
     {
         SquadronMemberFactory squadronMemberFactory = new  SquadronMemberFactory (campaign, squadron, squadronPersonnel);
-        SquadronMember pilot = squadronMemberFactory.createAIPilot("Sergent");
+        SquadronMember pilot = squadronMemberFactory.createInitialAIPilot("Sergent");
         
         assert(pilot.isPlayer() == false);
         assert(pilot.getSerialNumber() > SerialNumber.AI_STARTING_SERIAL_NUMBER);

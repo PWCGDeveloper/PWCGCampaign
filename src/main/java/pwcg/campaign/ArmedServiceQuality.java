@@ -2,9 +2,12 @@ package pwcg.campaign;
 
 import java.util.Date;
 
+import pwcg.core.constants.AiSkillLevel;
+
 public class ArmedServiceQuality
 {
-	private int serviceQUalityValue;
+    private static final int qualityRequiredForCommonAi = 55;
+	private int serviceQualityValue;
 	private Date qualityDate;
 	
 	public ArmedServiceQuality ()
@@ -13,12 +16,12 @@ public class ArmedServiceQuality
 
 	public int getQualityValue()
 	{
-		return serviceQUalityValue;
+		return serviceQualityValue;
 	}
 
 	public void setQualityValue(int qualityValue)
 	{
-		this.serviceQUalityValue = qualityValue;
+		this.serviceQualityValue = qualityValue;
 	}
 
 	public Date getQualityDate()
@@ -29,5 +32,17 @@ public class ArmedServiceQuality
 	public void setQualityDate(Date qualityDate)
 	{
 		this.qualityDate = qualityDate;
+	}
+	
+	public AiSkillLevel getNewAiSkillLevelForQuality()
+	{
+	    if (serviceQualityValue > qualityRequiredForCommonAi)
+	    {
+	        return AiSkillLevel.COMMON;
+	    }
+	    else
+	    {
+	        return AiSkillLevel.NOVICE;
+	    }
 	}
 }

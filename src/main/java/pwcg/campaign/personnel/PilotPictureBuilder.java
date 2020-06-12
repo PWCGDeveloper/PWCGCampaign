@@ -25,8 +25,19 @@ public class PilotPictureBuilder
     
     public String assignPilotPicture() throws PWCGException 
     {
+        List<File> picFiles = getFiles();
+        return assignPilotPictureFromList(picFiles);
+    }
+    
+    public String assignFemalePilotPicture() throws PWCGException 
+    {
+        List<File> picFiles = getFemaleFiles();
+        return assignPilotPictureFromList(picFiles);
+    }
+    
+    private String assignPilotPictureFromList(List<File> picFiles) throws PWCGException 
+    {
         HashMap<String, String> picturesUsed = getPicturesInUse();
-        List<File> picFiles = getFiles(service);
 
         int index = RandomNumberGenerator.getRandom(picFiles.size());
         File pic = picFiles.get(index);
@@ -54,14 +65,33 @@ public class PilotPictureBuilder
         return picsInUse;
     }
 
-    private List<File> getFiles(ArmedService service) 
+    private List<File> getFiles() 
     {
-        String basePicPath = ContextSpecificImages.imagesPilotPictures();
-
-        List<File> picFiles = new ArrayList<File>();
-        List<String>picDirs =service.getPicDirs();
+        List<String>picDirs = service.getPicDirs();
+        List<File> picFiles = getPictureFilesFromDirectories(picDirs);
+        return picFiles;
+    }
+    
+    private List<File> getFemaleFiles() 
+    {
+        List<String> picDirs = service.getPicDirs();
+        List<String> femalePicDirs = new ArrayList<>();;
         for (String dirName : picDirs)
         {
+            String femaleDirName = dirName + "\\Female";
+            femalePicDirs.add(femaleDirName);
+        }
+        
+        List<File> picFiles = getPictureFilesFromDirectories(femalePicDirs);
+        return picFiles;
+    }
+
+    private List<File> getPictureFilesFromDirectories(List<String> picDirs)
+    {
+        List<File> picFiles = new ArrayList<File>();
+        for (String dirName : picDirs)
+        {
+            String basePicPath = ContextSpecificImages.imagesPilotPictures();
             String dirPath = basePicPath + dirName;
             File dir = new File(dirPath);
             
@@ -77,7 +107,6 @@ public class PilotPictureBuilder
                 }
             }
         }
-        
         return picFiles;
     }
 }

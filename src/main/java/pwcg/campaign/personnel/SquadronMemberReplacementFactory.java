@@ -33,7 +33,7 @@ public class SquadronMemberReplacementFactory
         NewPilotRankDetermination rankDetermination = new NewPilotRankDetermination();
         String rank = rankDetermination.getReplacementPilotRank(service);
         
-        AiSkillLevel aiSkillLevel = determineAiSkillLevelByRank(rank);
+        AiSkillLevel aiSkillLevel = determineAiSkillLevel(rank);
         
         String squaddieName = PilotNames.getInstance().getName(service, namesUsed);
         replacementPilot.setName(squaddieName);
@@ -45,16 +45,18 @@ public class SquadronMemberReplacementFactory
         replacementPilot.setAiSkillLevel(aiSkillLevel);
         makePilotPicture(replacementPilot);
         
+        replacementPilot = SquadronMemberFemaleConverter.possiblyConvertToFemale(service, replacementPilot, namesUsed);
+
         return replacementPilot;
     }
 
-    private AiSkillLevel determineAiSkillLevelByRank(String rank)
+    private AiSkillLevel determineAiSkillLevel(String rank)
     {
         IRankHelper rankHelper = RankFactory.createRankHelper();
         int rankPos = rankHelper.getRankPosByService(rank, service);
-        if (rankPos > 3) 
+        if (rankPos > 2) 
         {
-            return AiSkillLevel.NOVICE;
+            return service.getServiceQuality().getQuality(campaign.getDate()).getNewAiSkillLevelForQuality();
         }
         
         return AiSkillLevel.COMMON;

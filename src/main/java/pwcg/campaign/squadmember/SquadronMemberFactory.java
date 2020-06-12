@@ -11,6 +11,7 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.CampaignValidatorMedals;
 import pwcg.campaign.personnel.PilotPictureBuilder;
+import pwcg.campaign.personnel.SquadronMemberFemaleConverter;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronMemberInitialVictoryBuilder;
 import pwcg.campaign.personnel.SquadronPersonnel;
@@ -58,13 +59,14 @@ public class SquadronMemberFactory
         return player;
      }
 
-    public SquadronMember createAIPilot(String rank) throws PWCGException 
+    public SquadronMember createInitialAIPilot(String rank) throws PWCGException 
     {
         SquadronMember newPilot = new SquadronMember();
         
-        HashMap<String, String> namesUsed = getNamesInUse();
+        HashMap<String, String> namesUsed = squadron.getNamesInUse(campaign);
+        ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
         
-        String squaddieName = createPilotName(rank, namesUsed);
+        String squaddieName = PilotNames.getInstance().getName(squadron.determineServiceForSquadron(campaign.getDate()), namesUsed);
         
         newPilot.setName(squaddieName);
         newPilot.setRank(rank);
@@ -76,7 +78,7 @@ public class SquadronMemberFactory
         makePilotPicture(newPilot);
                 
         IRankHelper rankObj = RankFactory.createRankHelper();
-        int rankPos = rankObj.getRankPosByService(rank, squadron.determineServiceForSquadron(campaign.getDate()));
+        int rankPos = rankObj.getRankPosByService(rank, service);
         
         int numMissions = createMissionsFlown(rankPos);
         newPilot.setMissionFlown(numMissions);
@@ -94,6 +96,8 @@ public class SquadronMemberFactory
         CampaignValidatorMedals medalFixer = new CampaignValidatorMedals(campaign);
         medalFixer.assignMissingMedalsForSquadMember(newPilot);
         
+        newPilot = SquadronMemberFemaleConverter.possiblyConvertToFemale(service, newPilot, namesUsed);
+        
         return newPilot;
     }
 
@@ -104,19 +108,6 @@ public class SquadronMemberFactory
         PilotPictureBuilder pilotPictureBuilder = new PilotPictureBuilder(service, squadronMembers);
         String picPath = pilotPictureBuilder.assignPilotPicture();
         newPilot.setPicName(picPath);
-    }
-
-    private HashMap<String, String> getNamesInUse() throws PWCGException
-    {
-        HashMap<String, String> namesUsed = new HashMap <String, String>();
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
-        for (SquadronMember squadronMember : squadronMembers.getSquadronMemberList())
-        {
-            int index = squadronMember.getName().indexOf(" ");
-            String lastName = squadronMember.getName().substring(index + 1);
-            namesUsed.put(lastName, lastName);
-        }
-        return namesUsed;
     }
 
     private int createMissionsFlown(int rankPos)
@@ -130,11 +121,5 @@ public class SquadronMemberFactory
         
         int numMissions = (missionFactorForRank * 10) + RandomNumberGenerator.getRandom((missionFactorForRank + 1) * 10);
         return numMissions;
-    }
-
-    private String createPilotName(String rank, HashMap<String, String> namesUsed) throws PWCGException 
-    {
-        String squaddieName = PilotNames.getInstance().getName(squadron.determineServiceForSquadron(campaign.getDate()), namesUsed);
-        return squaddieName;
     }
 }

@@ -19,7 +19,6 @@ public class CampaignChoosePilotPicGUI extends  JFileChooser
 		Color bgColor = ColorMap.PAPER_BACKGROUND;
 		setBackground(bgColor);
 		this.setFileFilter(new PilotPicFilter());
-
 	}
 	
 	class PilotPicFilter extends FileFilter 
@@ -34,6 +33,11 @@ public class CampaignChoosePilotPicGUI extends  JFileChooser
 		    {
 		    	return true;
 		    }
+		    
+            if(file.isDirectory()) 
+            {
+                return true;
+            }
 
 			return false;
 		}
@@ -42,6 +46,5 @@ public class CampaignChoosePilotPicGUI extends  JFileChooser
 		{
 			return "*.*";
 		}
-		
 	}
 }

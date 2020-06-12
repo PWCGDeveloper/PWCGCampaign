@@ -26,6 +26,7 @@ public class PilotNames
 	private static ArrayList<String> lastNamesFlemish = new ArrayList<String>();
     private static ArrayList<String> firstNamesBritain = new ArrayList<String>();
     private static ArrayList<String> lastNamesBritain = new ArrayList<String>();
+    private static ArrayList<String> firstNamesRussiaFemale = new ArrayList<String>();
     private static ArrayList<String> firstNamesRussia = new ArrayList<String>();
     private static ArrayList<String> lastNamesRussia = new ArrayList<String>();
 	private static ArrayList<String> firstNamesUSA = new ArrayList<String>();
@@ -73,6 +74,8 @@ public class PilotNames
             read(namesFile, lastNamesRussia);
             namesFile = PWCGContext.getInstance().getDirectoryManager().getPwcgNamesDir() + "FirstNamesRussia.txt";
             read(namesFile, firstNamesRussia);
+            namesFile = PWCGContext.getInstance().getDirectoryManager().getPwcgNamesDir() + "FirstNamesRussiaFemale.txt";
+            read(namesFile, firstNamesRussiaFemale);
             
             namesFile = PWCGContext.getInstance().getDirectoryManager().getPwcgNamesDir() + "LastNamesGermany.txt";
             read(namesFile, lastNamesGermany);
@@ -190,7 +193,20 @@ public class PilotNames
             }
         }
 
-		int firstNameIndex = RandomNumberGenerator.getRandom(firstNameList.size());
+		name = makeName(namesUsed, firstNameList, lastNameList);
+		
+		return name;
+	}
+
+    public String getFemaleName(Map<String, String> namesUsed)
+    {
+        return makeName(namesUsed, firstNamesRussiaFemale, lastNamesRussia);
+    }
+
+    private String makeName(Map<String, String> namesUsed, ArrayList<String> firstNameList, ArrayList<String> lastNameList)
+    {
+        String name;
+        int firstNameIndex = RandomNumberGenerator.getRandom(firstNameList.size());
 		String firstName = firstNameList.get(firstNameIndex);
 		
 		int lastNameIndex = RandomNumberGenerator.getRandom(lastNameList.size());
@@ -203,15 +219,9 @@ public class PilotNames
 		}
 		
 		name = firstName + " " + lastName;
-		
-		return name;
-	}
-	
-    
-    /**
-     * @return
-     * @throws PWCGException 
-     */
+        return name;
+    }
+
     public void validateAscii() throws PWCGException
     {
         boolean[] tests = new boolean[16];

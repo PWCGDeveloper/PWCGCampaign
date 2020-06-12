@@ -2,6 +2,7 @@ package pwcg.campaign.squadron;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -25,6 +26,7 @@ import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.factory.RankFactory;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneArchType;
@@ -35,6 +37,8 @@ import pwcg.campaign.plane.SpecializedRole;
 import pwcg.campaign.plane.SquadronPlaneAssignment;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.squadmember.Ace;
+import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -680,6 +684,23 @@ public class Squadron
 
 		return currentCallsign;
 	}
+
+	public HashMap<String, String> getNamesInUse(Campaign campaign) throws PWCGException
+    {
+	    SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(this.getSquadronId());
+        HashMap<String, String> namesUsed = new HashMap <String, String>();
+	    if (squadronPersonnel != null)
+	    {
+            SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+            for (SquadronMember squadronMember : squadronMembers.getSquadronMemberList())
+            {
+                int index = squadronMember.getName().indexOf(" ");
+                String lastName = squadronMember.getName().substring(index + 1);
+                namesUsed.put(lastName, lastName);
+            }
+	    }
+        return namesUsed;
+    }
 
 	public List<SquadronPlaneAssignment> getPlaneAssignments() 
 	{

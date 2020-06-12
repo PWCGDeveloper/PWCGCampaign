@@ -2,6 +2,7 @@ package pwcg.campaign.personnel;
 
 import java.util.List;
 
+import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.api.IRankHelper;
@@ -41,11 +42,13 @@ public class InitialSquadronStaffer
         addSquadronMember(player);
     }
 
-    private void addSquadronMember(SquadronMember player) throws PWCGException
+    private void addSquadronMember(SquadronMember squadronMember) throws PWCGException
     {
         if ((squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberList().size()) < Squadron.SQUADRON_STAFF_SIZE)
         {
-            squadronPersonnel.addSquadronMember(player);
+            ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
+            SquadronMemberFemaleConverter.convertNightWitchesToFemale(campaign, service, squadronMember);
+            squadronPersonnel.addSquadronMember(squadronMember);
         }
     }
 
@@ -91,7 +94,7 @@ public class InitialSquadronStaffer
 
         for (int i = 0; i < refinedNumPilots; ++i)
         {
-            SquadronMember pilot =  squadronMemberFactory.createAIPilot (ranks.get(rankPos));
+            SquadronMember pilot =  squadronMemberFactory.createInitialAIPilot (ranks.get(rankPos));
             addSquadronMember(pilot);
         }
     }
