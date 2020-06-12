@@ -22,40 +22,60 @@ public class Fuel
 
     static private double calculateGroundStartFuel(PlaneMcu plane)
     {
-        double airStartFuel = 1.00;
-        if (plane.getArchType().equals("p51"))
+        double groundStartFuel = 1.00;
+        if (plane.getArchType().equals("p38"))
         {
-            airStartFuel = .50;
+            groundStartFuel = .50;
+        }
+        else if (plane.getArchType().equals("p39"))
+        {
+            groundStartFuel = .80;
+        }
+        else if (plane.getArchType().equals("p40"))
+        {
+            groundStartFuel = .80;
         }
         else if (plane.getArchType().equals("p47"))
         {
-            airStartFuel = .60;
+            groundStartFuel = .60;
         }
-        else if (plane.getArchType().equals("p38"))
+         else if (plane.getArchType().equals("p51"))
         {
-            airStartFuel = .50;
+            groundStartFuel = .50;
         }
         else if (plane.getArchType().equals("he111"))
         {
-            airStartFuel = .30;
+            groundStartFuel = .30;
+        }
+        else if (plane.getArchType().equals("me110"))
+        {
+            groundStartFuel = .70;
+        }
+        else if (plane.getArchType().contentEquals("ju52"))
+        {
+            groundStartFuel = .60;
+        }
+        else if (plane.getArchType().contentEquals("ju87"))
+        {
+            groundStartFuel = .70;
         }
         else if (plane.getArchType().equals("ju88"))
         {
-            airStartFuel = .50;
+            groundStartFuel = .50;
         }
         else if (plane.getArchType().equals("b25"))
         {
-            airStartFuel = .80;
+            groundStartFuel = .60;
         }
         else if (plane.getArchType().equals("a20"))
         {
-            airStartFuel = .70;
+            groundStartFuel = .70;
         }
         else if (plane.getArchType().contentEquals("pe2"))
         {
-            airStartFuel = .70;
+            groundStartFuel = .70;
         }
-        return airStartFuel;
+        return groundStartFuel;
     }
 
     static private double calculateAirStartFuel(PlaneMcu plane)
@@ -64,6 +84,14 @@ public class Fuel
         if (plane.getArchType().contentEquals("p51"))
         {
             airStartFuel = .40;
+        }
+        else if (plane.getArchType().equals("p39"))
+        {
+            airStartFuel = .50;
+        }
+        else if (plane.getArchType().equals("p40"))
+        {
+            airStartFuel = .50;
         }
         else if (plane.getArchType().contentEquals("p47"))
         {
@@ -76,6 +104,18 @@ public class Fuel
         else if (plane.getArchType().contentEquals("he111"))
         {
             airStartFuel = .30;
+        }
+        else if (plane.getArchType().equals("me110"))
+        {
+            airStartFuel = .50;
+        }
+        else if (plane.getArchType().contentEquals("ju52"))
+        {
+            airStartFuel = .40;
+        }
+        else if (plane.getArchType().contentEquals("ju87"))
+        {
+            airStartFuel = .50;
         }
         else if (plane.getArchType().contentEquals("ju88"))
         {
@@ -91,7 +131,7 @@ public class Fuel
         }
         else if (plane.getArchType().contentEquals("pe2"))
         {
-            airStartFuel = .60;
+            airStartFuel = .50;
         }
         return airStartFuel;
     }
