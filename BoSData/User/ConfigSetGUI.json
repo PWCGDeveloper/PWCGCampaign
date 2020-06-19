@@ -15,6 +15,16 @@
       "value": "0",
       "label": "Let PWCG auto size",
       "help": "Set to 1 to auto size PWCG window"
+    },
+    "ScreenSizeHeight": {
+      "value": "1110",
+      "label": "PWCG screen height",
+      "help": "PWCG screen height if ScreenSizeAuto \u003d 0"
+    },
+    "ScreenSizeWidth": {
+      "value": "1600",
+      "label": "PWCG screen width",
+      "help": "PWCG screen width if ScreenSizeAuto \u003d 0"
     }
   }
 }

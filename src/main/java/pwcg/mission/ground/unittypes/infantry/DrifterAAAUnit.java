@@ -53,7 +53,9 @@ public class DrifterAAAUnit extends GroundUnit
 
         for (int i = 0; i < numDrifter; ++i)
         {   
+            drifterCoords.setYPos(0.0);
             spawnerLocations.add(drifterCoords);
+
             drifterCoords = MathUtils.calcNextCoord(drifterCoords, placementOrientation, drifterSpacing);
         }
         return spawnerLocations;       
