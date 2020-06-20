@@ -25,6 +25,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -148,7 +149,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 
     private JPanel makeLeftPanel() throws PWCGException 
     {
-        String imagePath = getSideImage(campaignHomeGui.getCampaign(), "BriefingNav.jpg");
+        String imagePath = UiImageResolver.getSideImage(campaignHomeGui.getCampaign(), "BriefingNav.jpg");
         ImageResizingPanel leftPanel = new ImageResizingPanel(imagePath);
         leftPanel.setLayout(new BorderLayout());
         leftPanel.setOpaque(false);
@@ -540,19 +541,13 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
         Campaign campaign  = PWCGContext.getInstance().getCampaign();
         campaign.setCurrentMission(null);
         
-        campaignHomeGui.clean();
-        campaignHomeGui.createPilotContext();
-
-        campaignHomeGui.enableButtonsAsNeeded();
+        campaignHomeGui.createCampaignHomeContext();
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }
     
     private void backToCampaign() throws PWCGException
     {
-        campaignHomeGui.clean();
-        campaignHomeGui.createPilotContext();
-
-        campaignHomeGui.enableButtonsAsNeeded();
+        campaignHomeGui.createCampaignHomeContext();
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }
 
@@ -627,7 +622,6 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
         setCenterPanel(createCenterPanel());
     }
     
-    @Override
     public void refreshScreen() throws PWCGException
     {
         briefingFlightChooser.setSelectedButton(briefingContext.getSelectedFlight().getSquadron().getSquadronId());

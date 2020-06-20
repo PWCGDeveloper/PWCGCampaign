@@ -31,7 +31,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -54,7 +55,7 @@ import pwcg.gui.utils.PWCGFrame;
 import pwcg.gui.utils.PWCGJButton;
 import pwcg.gui.utils.ToolTipManager;
 
-public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
+public class CampaignMainGUI extends PwcgThreePanelUI implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
     private static final String VERSION = "   PWCG Version 9.2.0";
@@ -71,6 +72,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 
 	public CampaignMainGUI() 
 	{
+	    super(ImageResizingPanel.NO_IMAGE);
 		setLayout(new BorderLayout());
 		
 		try
@@ -97,11 +99,6 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
             {
                 initialize();
                 startAtDebrief();
-            }
-            else
-            {
-                PWCGFrame.getInstance().setPanel(this);
-                initialize();
             }
             
             boolean validInstall = validateInstallDirectory();
@@ -215,7 +212,9 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 			PWCGContext.getInstance().setCampaign(null);
 			
             JPanel campaignPanel = makeCampaignPanel();
-	        CampaignGuiContextManager.getInstance().changeCurrentContext(null, null, campaignPanel);
+            
+            this.setRightPanel(campaignPanel);
+            CampaignGuiContextManager.getInstance().refreshCurrentContext(this);
 		}
 		catch (Exception e)
 		{
@@ -228,8 +227,8 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 		try
 		{
 			setLeftPanel(makeLeftPanel());
+            setCenterPanel(makeCenterPanel());
 			setRightPanel(makeCampaignPanel());
-			setCenterPanel(makeCenterPanel());
 
 			setButtonsEnabled();
 
@@ -299,7 +298,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 
 	public JPanel makeLeftPanel() throws PWCGException  
 	{
-        String imagePath = getSideImageMain("MainLeft.jpg");
+        String imagePath = UiImageResolver.getSideImageMain("MainLeft.jpg");
         
 		ImageResizingPanel configPanel = new ImageResizingPanel(imagePath);
 		configPanel.setLayout(new BorderLayout());
@@ -394,7 +393,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 	{
 		MusicManager.playTitleTheme();
 
-        String imagePath = getSideImageMain("Enlist.jpg");
+        String imagePath = UiImageResolver.getSideImageMain("Enlist.jpg");
 
 		JPanel campaignPanel = new ImageResizingPanel(imagePath);
 		campaignPanel.setLayout( new BorderLayout());
@@ -514,7 +513,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 		PWCGContext.getInstance().setCampaign(campaign);
 
 		CampaignHomeGUI campaignGUI = new CampaignHomeGUI (this, campaign);
-		PWCGFrame.getInstance().setPanel(campaignGUI);
+        CampaignGuiContextManager.getInstance().pushToContextStack(campaignGUI);
 
 		return;
 	}

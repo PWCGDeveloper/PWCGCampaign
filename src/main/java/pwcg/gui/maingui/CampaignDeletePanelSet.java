@@ -18,14 +18,15 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.CampaignRemover;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignDeletePanelSet extends PwcgGuiContext implements ActionListener
+public class CampaignDeletePanelSet extends PwcgThreePanelUI implements ActionListener
 {    
     private static final long serialVersionUID = 1L;
     
@@ -34,6 +35,7 @@ public class CampaignDeletePanelSet extends PwcgGuiContext implements ActionList
 
     public CampaignDeletePanelSet(CampaignMainGUI parent)
     {
+        super(ImageResizingPanel.NO_IMAGE);
         this.parent = parent;
     }
 
@@ -53,7 +55,7 @@ public class CampaignDeletePanelSet extends PwcgGuiContext implements ActionList
 
     private JPanel makeButtonPanel() throws PWCGException
     {
-        String imagePath = getSideImageMain("CampaignDeleteNav.jpg");
+        String imagePath = UiImageResolver.getSideImageMain("CampaignDeleteNav.jpg");
         
         ImageResizingPanel configPanel = new ImageResizingPanel(imagePath);
         configPanel.setLayout(new BorderLayout());

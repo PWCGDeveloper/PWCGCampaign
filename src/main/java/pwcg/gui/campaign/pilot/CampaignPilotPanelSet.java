@@ -26,7 +26,8 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -45,7 +46,7 @@ import pwcg.gui.utils.PWCGJButton;
 import pwcg.gui.utils.ToolTipManager;
 import pwcg.gui.utils.UIUtils;
 
-public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListener
+public class CampaignPilotPanelSet extends PwcgThreePanelUI implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -61,7 +62,7 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     public CampaignPilotPanelSet(Campaign campaign, Squadron squad, SquadronMember pilot, CampaignHomeGUI parent)
     {
-         super();
+         super(ImageResizingPanel.NO_IMAGE);
 
         this.pilot = pilot;
         this.squad = squad;
@@ -98,7 +99,7 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private JPanel makenavigationPanel() throws PWCGException  
     {
-        String imagePath = getSideImage(campaign, "PilotInfoNav.jpg");
+        String imagePath = UiImageResolver.getSideImage(campaign, "PilotInfoNav.jpg");
 
         ImageResizingPanel pilotPanel = new ImageResizingPanel(imagePath);
         pilotPanel.setLayout(new BorderLayout());
@@ -399,7 +400,8 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
 			    
                 makePanels();
                 
-                CampaignGuiContextManager.getInstance().changeCurrentContext(null, getCenterPanel(), null);
+                this.setCenterPanel(getCenterPanel());
+                CampaignGuiContextManager.getInstance().refreshCurrentContext(this);
 			}
             else if (action.startsWith("Open Medal Box"))
             {
@@ -407,7 +409,7 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
             }
             else if (action.startsWith("PilotFinished"))
             {
-                parent.createPilotContext();
+                parent.createCampaignHomeContext();
                 CampaignGuiContextManager.getInstance().popFromContextStack();
             }
 			

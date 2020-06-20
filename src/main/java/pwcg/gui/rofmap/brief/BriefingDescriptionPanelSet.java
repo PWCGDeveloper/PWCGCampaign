@@ -19,7 +19,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -35,7 +35,7 @@ import pwcg.mission.IMissionDescription;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionDescriptionFactory;
 
-public class BriefingDescriptionPanelSet extends PwcgGuiContext implements ActionListener, IFlightChanged
+public class BriefingDescriptionPanelSet extends PwcgThreePanelUI implements ActionListener, IFlightChanged
 {
     private CampaignHomeGUI campaignHomeGui = null;
 
@@ -47,7 +47,7 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
 
 	public BriefingDescriptionPanelSet(CampaignHomeGUI campaignHomeGui, Mission mission) throws PWCGException 
 	{
-	    super();
+        super(ImageResizingPanel.NO_IMAGE);
 	    
         this.campaignHomeGui =  campaignHomeGui;
         this.mission =  mission;
@@ -79,7 +79,7 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
 
     private JPanel makeLeftPanel() throws PWCGException 
     {
-        String imagePath = getSideImage(campaignHomeGui.getCampaign(), "BriefingNav.jpg");
+        String imagePath = ContextSpecificImages.imagesMisc() + "BrickLeft.jpg";
         ImageResizingPanel leftPanel = new ImageResizingPanel(imagePath);
         leftPanel.setLayout(new BorderLayout());
         leftPanel.setOpaque(false);
@@ -118,7 +118,7 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
     
     public JPanel makeBriefingPanel() throws PWCGException  
     {
-        String imagePath = ContextSpecificImages.imagesMisc() + "PilotSelectChalkboard.jpg";
+        String imagePath = ContextSpecificImages.imagesMisc() + "BrickCenter.jpg";
         JPanel briefingPanel = new ImageResizingPanel(imagePath);
         briefingPanel.setLayout(new BorderLayout());
         briefingPanel.setOpaque(false);
@@ -159,8 +159,6 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
         Campaign campaign = PWCGContext.getInstance().getCampaign();
 
         String missionPrefix = getMissionPrefix();
-        
-        
 
         IMissionDescription missionDescription = MissionDescriptionFactory.buildMissionDescription(campaign, mission, briefingContext.getSelectedFlight());
         String missionDescriptionText = missionDescription.createDescription();
@@ -253,10 +251,8 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
         Campaign campaign  = PWCGContext.getInstance().getCampaign();
         campaign.setCurrentMission(null);
         
-        campaignHomeGui.clean();
-        campaignHomeGui.createPilotContext();
+        campaignHomeGui.createCampaignHomeContext();
 
-        campaignHomeGui.enableButtonsAsNeeded();
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }
 
@@ -268,13 +264,10 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
         
         campaign.setCurrentMission(mission);
         
-        campaignHomeGui.clean();
-        campaignHomeGui.createPilotContext();
-        campaignHomeGui.enableButtonsAsNeeded();
+        campaignHomeGui.createCampaignHomeContext();
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }
     
-    @Override
     public void refreshScreen() throws PWCGException
     {
         setMissionText();

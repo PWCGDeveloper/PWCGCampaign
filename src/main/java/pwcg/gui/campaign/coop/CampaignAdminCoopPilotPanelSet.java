@@ -17,7 +17,8 @@ import pwcg.coop.model.CoopDisplayRecord;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.campaign.transfer.CampaignTransferPanelSet;
 import pwcg.gui.dialogs.ConfirmDialog;
@@ -27,7 +28,7 @@ import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignAdminCoopPilotPanelSet extends PwcgGuiContext implements ActionListener
+public class CampaignAdminCoopPilotPanelSet extends PwcgThreePanelUI implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     private Campaign campaign;
@@ -36,7 +37,7 @@ public class CampaignAdminCoopPilotPanelSet extends PwcgGuiContext implements Ac
 
     public CampaignAdminCoopPilotPanelSet(CampaignHomeGUI parent, Campaign campaign)
     {
-        super();
+        super(ImageResizingPanel.NO_IMAGE);
         this.parent = parent;
         this.campaign = campaign;
     }
@@ -65,7 +66,7 @@ public class CampaignAdminCoopPilotPanelSet extends PwcgGuiContext implements Ac
 
     public JPanel makeNavigatePanel() throws PWCGException  
     {
-        String imagePath = getSideImageMain("Barracks.jpg");
+        String imagePath = UiImageResolver.getSideImageMain("Barracks.jpg");
 
         JPanel navPanel = new ImageResizingPanel(imagePath);
         navPanel.setLayout(new BorderLayout());
@@ -83,7 +84,7 @@ public class CampaignAdminCoopPilotPanelSet extends PwcgGuiContext implements Ac
 
     public JPanel makeCoopAdminActionSelectPanel() throws PWCGException  
     {
-        String imagePath = getSideImageMain("Barracks2.jpg");
+        String imagePath = UiImageResolver.getSideImageMain("Barracks2.jpg");
 
         JPanel configPanel = new ImageResizingPanel(imagePath);
         configPanel.setLayout(new BorderLayout());

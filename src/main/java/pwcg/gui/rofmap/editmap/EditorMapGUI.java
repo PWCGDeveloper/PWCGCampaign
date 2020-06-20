@@ -30,6 +30,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -104,7 +105,7 @@ public class EditorMapGUI extends MapGUI implements ActionListener
 
     private JPanel makeNavigationPanel() throws PWCGException  
     {
-        String imagePath = getSideImageMain("CampaignInfoRight.jpg");
+        String imagePath = UiImageResolver.getSideImageMain("CampaignInfoRight.jpg");
 
         ImageResizingPanel intelNavPanel = new ImageResizingPanel(imagePath);
         intelNavPanel.setLayout(new BorderLayout());
@@ -154,7 +155,7 @@ public class EditorMapGUI extends MapGUI implements ActionListener
 
     public JPanel makeSelectionPanel() throws PWCGException 
     {
-        String imagePath = getSideImageMain("CampaignInfoLeft.jpg");
+        String imagePath = UiImageResolver.getSideImageMain("CampaignInfoLeft.jpg");
 
         ImageResizingPanel selectionPanel = new ImageResizingPanel(imagePath);
         selectionPanel.setLayout(new GridLayout(0,1));

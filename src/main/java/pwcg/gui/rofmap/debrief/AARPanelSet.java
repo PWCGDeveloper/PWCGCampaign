@@ -24,6 +24,7 @@ import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -138,7 +139,7 @@ public class AARPanelSet extends AARPanel implements ActionListener
 
 	private JPanel makeNavigationPanel() throws PWCGException  
 	{
-        String imagePath = getSideImage(campaign, "CombatReportNav.jpg");
+        String imagePath = UiImageResolver.getSideImage(campaign, "CombatReportNav.jpg");
 
 		ImageResizingPanel aarButtonPanel = new ImageResizingPanel(imagePath);
 		aarButtonPanel.setLayout(new BorderLayout());
@@ -177,10 +178,7 @@ public class AARPanelSet extends AARPanel implements ActionListener
             }
             else if (action.equals("Cancel"))
             {
-                home.clean();
-                home.createPilotContext();
-
-                home.enableButtonsAsNeeded();
+                home.createCampaignHomeContext();
                 CampaignGuiContextManager.getInstance().popFromContextStack();
             }
         }

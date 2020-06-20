@@ -1,10 +1,11 @@
 package pwcg.gui.utils;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
+import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 
 public class PWCGFrame extends JFrame
@@ -12,8 +13,6 @@ public class PWCGFrame extends JFrame
 	private static final long serialVersionUID = 1L;
 	
 	private static PWCGFrame frame = null;
-
-	private JPanel panel = null;
 	
 	public static PWCGFrame getInstance()
 	{
@@ -33,26 +32,30 @@ public class PWCGFrame extends JFrame
 		
 		Dimension screenSize = PWCGMonitorSupport.getPWCGMonitorSize();
 		this.setSize(screenSize);
-		this.setState(JFrame.MAXIMIZED_BOTH);
-		
+		this.setState(JFrame.MAXIMIZED_BOTH);		
+
 		this.setVisible(true);
 	}
-		
-	/**
-	 * @param newPanel
-	 * @param panelSection
-	 */
-	public void setPanel(JPanel newPanel)
-	{
-	    if (panel != null)
-	    {
-	    	this.remove(panel);
-	    }
-	    
-	    panel = newPanel;
-	    add(panel);
-	    
-	    panel.revalidate();
-	    panel.repaint();
+
+	public void setPanel(PwcgThreePanelUI newPanel)
+	{        
+        frame.getContentPane().add(newPanel);
+        
+        if (newPanel.getLeftPanel() != null)
+            frame.add(newPanel.getLeftPanel(), BorderLayout.WEST);
+
+        if (newPanel.getCenterPanel() != null)
+            frame.add(newPanel.getCenterPanel(), BorderLayout.CENTER);
+        
+        if (newPanel.getRightPanel() != null)
+            frame.add(newPanel.getRightPanel(), BorderLayout.EAST);
+
+        frame.revalidate();
+        frame.repaint();        
 	}
+
+    public void clearPanel()
+    {
+        getContentPane().removeAll();
+    }
 }

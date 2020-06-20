@@ -35,25 +35,8 @@ public class CampaignRosterSquadronPanelFactory extends CampaignRosterBasePanelF
 	public void makeCampaignHomePanels() throws PWCGException  
 	{
 		createChalkBoard();
-		
 		createPilotListPanel();
 	}
-
-    private void createChalkBoard()
-    {
-		CampaignPilotChalkBoard chalkboard = new CampaignPilotChalkBoard();
-		chalkboard.makeSquadronPanel(sortedPilots);
-		chalkboardPanel = chalkboard;
-    }
-
-    private void createPilotListPanel() throws PWCGException
-    {
-        CampaignPilotListPanel pilotList = new CampaignPilotListPanel(parent);
-		pilotListPanel = pilotList.makeSquadronRightPanel(sortedPilots, "  Roster", "CampFlowPilot:");
-		
-		JPanel descPanel = makeDescPanel();
-		pilotListPanel.add(descPanel, BorderLayout.CENTER);
-    }
 
     public void makePilotList() throws PWCGException 
     {
@@ -70,6 +53,22 @@ public class CampaignRosterSquadronPanelFactory extends CampaignRosterBasePanelF
         }
         
         sortedPilots = pilots.sortPilots(campaign.getDate());
+    }
+
+    private void createChalkBoard()
+    {
+		CampaignPilotChalkBoard chalkboard = new CampaignPilotChalkBoard();
+		chalkboard.makeSquadronPanel(sortedPilots);
+		chalkboardPanel = chalkboard;
+    }
+
+    private void createPilotListPanel() throws PWCGException
+    {
+        CampaignPilotListPanel pilotList = new CampaignPilotListPanel(parent);
+		pilotListPanel = pilotList.makeSquadronRightPanel(sortedPilots, "  Roster", "CampFlowPilot:");
+		
+		JPanel descPanel = makeDescPanel();
+		pilotListPanel.add(descPanel, BorderLayout.CENTER);
     }
 
 	private JPanel makeDescPanel() throws PWCGException 

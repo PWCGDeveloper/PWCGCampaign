@@ -21,6 +21,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -69,7 +70,7 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
 
     private JPanel makeButtonPanel() throws PWCGException 
     {
-        String imagePath = getSideImage(campaign, "CombatReportNav.jpg");
+        String imagePath = UiImageResolver.getSideImage(campaign, "CombatReportNav.jpg");
 
         ImageResizingPanel buttonPanel = new ImageResizingPanel(imagePath);
         buttonPanel.setLayout(new BorderLayout());
@@ -100,7 +101,7 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
 
     public JPanel makeMissionDescriptionPanel() throws PWCGException  
     {
-        String imagePath = ContextSpecificImages.imagesMisc() + "PilotSelectChalkboard.jpg";
+        String imagePath = ContextSpecificImages.imagesMisc() + "PilotSelectBrickCenter.jpg";
         JPanel debriefPanel = new ImageResizingPanel(imagePath);
         debriefPanel.setLayout(new BorderLayout());
         debriefPanel.setOpaque(false);
@@ -224,9 +225,7 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
 
     private void backToCampaign() throws PWCGException
     {
-        homeGui.clean();
-        homeGui.createPilotContext();
-        homeGui.enableButtonsAsNeeded();
+        homeGui.createCampaignHomeContext();
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }
 }

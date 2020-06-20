@@ -22,7 +22,9 @@ import pwcg.campaign.io.json.CombatReportIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorBorders;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
@@ -32,7 +34,7 @@ import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PageTurner;
 
-public class CampaignJournalPanelSet extends PwcgGuiContext implements ActionListener
+public class CampaignJournalPanelSet extends PwcgThreePanelUI implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -55,7 +57,7 @@ public class CampaignJournalPanelSet extends PwcgGuiContext implements ActionLis
 
     public CampaignJournalPanelSet(Campaign campaign) throws PWCGException
     {
-        super();
+        super(ImageResizingPanel.NO_IMAGE);
         this.campaign = campaign;
     }
 
@@ -110,7 +112,7 @@ public class CampaignJournalPanelSet extends PwcgGuiContext implements ActionLis
 
     private JPanel makeNavigationPanel() throws PWCGException  
     {
-        String imagePath = getSideImage(campaign, "JournalNav.jpg");
+        String imagePath = UiImageResolver.getSideImage(campaign, "JournalNav.jpg");
 
         ImageResizingPanel journalPanel = new ImageResizingPanel(imagePath);
         journalPanel.setLayout(new BorderLayout());
@@ -323,7 +325,8 @@ public class CampaignJournalPanelSet extends PwcgGuiContext implements ActionLis
             if (action.equalsIgnoreCase("JournalFinished"))
             {
                 saveNarrativeChanges();
-                finishedWithCampaignScreen();
+                campaign.write();                
+                CampaignGuiContextManager.getInstance().popFromContextStack();
             }
             else if (action.equalsIgnoreCase("Next Page"))
             {

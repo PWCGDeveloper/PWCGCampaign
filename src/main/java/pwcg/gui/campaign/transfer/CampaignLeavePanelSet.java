@@ -21,7 +21,8 @@ import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -31,7 +32,7 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListener
+public class CampaignLeavePanelSet extends PwcgThreePanelUI implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -41,7 +42,7 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
 
 	public CampaignLeavePanelSet  (CampaignHomeGUI parent)
 	{
-        super();
+        super(ImageResizingPanel.NO_IMAGE);
 
 		this.parent = parent;
         this.campaign = PWCGContext.getInstance().getCampaign();
@@ -55,11 +56,12 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
 	{
 	    setCenterPanel(makeLeaveCenterPanel());
 	    setLeftPanel(makeLeaveLeftPanel());
+	    setRightPanel(null);
 	}
 
 	private JPanel makeLeaveLeftPanel() throws PWCGException  
 	{
-        String imagePath = getSideImage(campaign, "LeaveNav.jpg");
+        String imagePath = UiImageResolver.getSideImage(campaign, "LeaveNav.jpg");
 
 		ImageResizingPanel leaverPanel = new ImageResizingPanel(imagePath);
 		leaverPanel.setLayout(new BorderLayout());

@@ -36,7 +36,8 @@ import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.coop.CampaignAdminCoopPilotPanelSet;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
@@ -47,7 +48,7 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionListener
+public class CampaignTransferPanelSet extends PwcgThreePanelUI implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -64,7 +65,7 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
 
 	public CampaignTransferPanelSet  (CampaignHomeGUI parent, CampaignAdminCoopPilotPanelSet alternateParent, SquadronMember squadronMemberToTransfer)
 	{
-        super();
+        super(ImageResizingPanel.NO_IMAGE);
 
 		this.parent = parent;
         this.alternateParent = alternateParent;
@@ -89,7 +90,7 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
 
 	private JPanel makeTransferNavPanel() throws PWCGException  
 	{
-        String imagePath = getSideImage(campaign, "TransferNav.jpg");
+        String imagePath = UiImageResolver.getSideImage(campaign, "TransferNav.jpg");
 
 		ImageResizingPanel transferrPanel = new ImageResizingPanel(imagePath);
 		transferrPanel.setLayout(new BorderLayout());

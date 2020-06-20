@@ -31,7 +31,7 @@ public class CampaignEquipmentChalkBoard extends ImageResizingPanel
     
     public CampaignEquipmentChalkBoard()  
     {
-        super(ContextSpecificImages.imagesMisc() + "chalkboard.jpg");
+        super(ContextSpecificImages.imagesMisc() + "BrickCenter.jpg");
     }
     
 

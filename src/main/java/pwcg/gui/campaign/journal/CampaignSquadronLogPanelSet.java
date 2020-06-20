@@ -23,7 +23,9 @@ import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorBorders;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -34,7 +36,7 @@ import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PageTurner;
 
-public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements ActionListener
+public class CampaignSquadronLogPanelSet extends PwcgThreePanelUI implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -54,7 +56,7 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
 
 	public CampaignSquadronLogPanelSet (int logsForSquadronId)
 	{
-        super();
+        super(ImageResizingPanel.NO_IMAGE);
         
         this.logsForSquadronId = logsForSquadronId;
 
@@ -203,7 +205,7 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
 
 	private JPanel makeLogLeftPanel() throws PWCGException  
 	{
-        String imagePath = getSideImage(campaign, "CampaignLogNav.jpg");
+        String imagePath = UiImageResolver.getSideImage(campaign, "CampaignLogNav.jpg");
 
 		ImageResizingPanel squadronLogPanel = new ImageResizingPanel(imagePath);
 		squadronLogPanel.setLayout(new BorderLayout());
@@ -345,7 +347,8 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
             
             if (action.equalsIgnoreCase("SquadronLogFinished"))
             {
-                finishedWithCampaignScreen();
+                campaign.write();                
+                CampaignGuiContextManager.getInstance().popFromContextStack();
             }
             else if (action.equalsIgnoreCase("Next Page"))
 			{

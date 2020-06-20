@@ -25,7 +25,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.maingui.CampaignMainGUI;
@@ -33,7 +34,7 @@ import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGFrame;
 
-public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionListener
+public class CampaignGeneratorPanelSet extends PwcgThreePanelUI implements ActionListener
 {    
     private static final long serialVersionUID = 1L;
 
@@ -48,6 +49,7 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
 
     public CampaignGeneratorPanelSet(CampaignMainGUI mainGUI)
     {
+        super(ImageResizingPanel.NO_IMAGE);
         this.mainGUI = mainGUI;
         campaignProfileUI = new CampaignGeneratorProfileGUI(this);
         campaignGeneratorDataEntryGUI = new CampaignGeneratorDataEntryGUI(this);
@@ -71,7 +73,7 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
 
     private JPanel makeButtonPanel() throws PWCGException
     {
-        String imagePath = getSideImageMain("CampaignGenNav.jpg");
+        String imagePath = UiImageResolver.getSideImageMain("CampaignGenNav.jpg");
         
         ImageResizingPanel configPanel = new ImageResizingPanel(imagePath);
         configPanel.setLayout(new BorderLayout());
@@ -98,7 +100,7 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
 
     private JPanel makeProceedButtonPanel() throws PWCGException
     {
-        String imagePath = getSideImageMain("CampaignGenNav.jpg");
+        String imagePath = UiImageResolver.getSideImageMain("CampaignGenNav.jpg");
         
         ImageResizingPanel configPanel = new ImageResizingPanel(imagePath);
         configPanel.setLayout(new BorderLayout());
@@ -192,7 +194,7 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
 
     private JPanel makeProfileInfoPanel() throws PWCGException
     {
-        String imagePath = getSideImageMain("CampaignGenNav.jpg");
+        String imagePath = UiImageResolver.getSideImageMain("CampaignGenNav.jpg");
         CampaignGeneratorProfileInfoGUI profileInfoPanel = new CampaignGeneratorProfileInfoGUI(this, imagePath);
         profileInfoPanel.makePanels();
         return profileInfoPanel;
@@ -200,8 +202,9 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
 
     public void changeService(ArmedService service) throws PWCGException
     {
-        campaignGeneratorDO.setService(service);        
-        CampaignGuiContextManager.getInstance().changeCurrentContext(null, campaignProfileUI, null);
+        campaignGeneratorDO.setService(service);                
+        this.setCenterPanel(campaignProfileUI);
+        CampaignGuiContextManager.getInstance().refreshCurrentContext(this);
         evaluateCompletionState();
     }
 

@@ -12,20 +12,25 @@ import pwcg.gui.image.ImageCache;
 
 public class ImageResizingPanel extends JPanel
 {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
+    public static final String NO_IMAGE = "";
 	
-	protected Image image;
-	protected String imagePath = "";
+    private Image image;
+    protected String imagePath = "";
 
 	public ImageResizingPanel(String imagePath)
 	{
 		try 
 		{
-		    this.imagePath = imagePath;
-			setImage(imagePath);
+		    if (!imagePath.isEmpty())
+		    {
+    		    this.imagePath = imagePath;
+    			setImage(imagePath);
+		    }
 		}
 		catch (Exception ex) 
 		{
+            PWCGLogger.logException(ex);
 		}
 	}
 

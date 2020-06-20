@@ -23,10 +23,8 @@ import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgGuiContext;
-import pwcg.gui.campaign.CampaignRosterBasePanelFactory;
-import pwcg.gui.campaign.CampaignRosterSquadronPanelFactory;
-import pwcg.gui.campaign.CampaignRosterTopAcesPanelFactory;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.maingui.CampaignMainGUI;
 import pwcg.gui.rofmap.event.AARMainPanel;
@@ -36,30 +34,32 @@ import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ToolTipManager;
 
-public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
+public class CampaignHomeGUI extends PwcgThreePanelUI implements ActionListener
 {
     private static final long serialVersionUID = 1L;
-    
+
     private CampaignMainGUI parent = null;
     private Campaign campaign = null;
     private JButton changeReferencePilot = null;
     private JButton loneWolfMission = null;
     private List<JButton> activeButtons = new ArrayList<JButton>();
     private boolean needContextRefresh = false;
+    private ChalkboardSelector chalkboardSelector;
 
-    public CampaignHomeGUI(CampaignMainGUI parent, Campaign campaign) throws PWCGException 
+    public CampaignHomeGUI(CampaignMainGUI parent, Campaign campaign) throws PWCGException
     {
-        super();
+        super(ImageResizingPanel.NO_IMAGE);
         this.parent = parent;
         this.campaign = campaign;
+        this.chalkboardSelector = new ChalkboardSelector(this);
         this.makeGUI();
     }
 
-    public void makeGUI() 
+    public void makeGUI()
     {
         try
         {
-            createPilotContext();
+            createCampaignHomeContext();
         }
         catch (PWCGException e)
         {
@@ -67,31 +67,30 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
             ErrorDialog.internalError(e.getMessage());
         }
     }
-    
-    @Override
+
     public void refreshScreen() throws PWCGException
     {
         if (needContextRefresh)
         {
             needContextRefresh = false;
-            createPilotContext();
+            createCampaignHomeContext();
         }
     }
 
-    private JPanel makeLeftPanel() throws PWCGException 
+    private JPanel makeLeftPanel() throws PWCGException
     {
-        String imagePath = getSideImage(campaign, "CampaignLeft.jpg");
+        String imagePath = UiImageResolver.getSideImage(campaign, "BrickLeft.jpg");
 
         ImageResizingPanel campaignButtonPanel = new ImageResizingPanel(imagePath);
         campaignButtonPanel.setLayout(new BorderLayout());
         campaignButtonPanel.setOpaque(true);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        JPanel buttonPanel = new JPanel(new GridLayout(0, 1));
         buttonPanel.setOpaque(false);
 
         makePlainButtons(buttonPanel);
 
-        campaignButtonPanel.add (buttonPanel, BorderLayout.NORTH);
+        campaignButtonPanel.add(buttonPanel, BorderLayout.NORTH);
         enableButtonsAsNeeded();
 
         return campaignButtonPanel;
@@ -103,7 +102,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         buttonPanel.add(spacer);
 
         activeButtons.clear();
-        
+
         if (isDisplayMissionButton())
         {
             JButton createButton = makeMenuButton("Mission", "CampMission", "Generate a mission");
@@ -133,7 +132,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
 
         JButton equipmentButton = makeMenuButton("Equipment", "Equipment", "Show equipment chalk board");
         addButton(buttonPanel, equipmentButton);
-        
+
         if (campaign.isCoop())
         {
             JButton addHumanPilotButton = makeMenuButton("Administer Coop Pilots", "AdminCoopPilots", "Administer coop pilots for this campaign");
@@ -156,7 +155,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
             JButton leaveButton = makeMenuButton("Leave", "CampFlowLeave", "Request leave");
             addButton(buttonPanel, leaveButton);
         }
-        
+
         if (isDisplayTransferButton())
         {
             JButton transferButton = makeMenuButton("Transfer", "CampFlowTransfer", "Transfer to a new squadron");
@@ -173,26 +172,26 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         {
             JButton skinManagementButton = makeMenuButton("Skin Management", "CampSkinManager", "Manage skins for the squadron");
             addButton(buttonPanel, skinManagementButton);
-    
+
             JButton intellMapButton = makeMenuButton("Intel Map", "CampIntelMap", "View intelligence maps");
             addButton(buttonPanel, intellMapButton);
-    
+
             JButton intelligenceButton = makeMenuButton("Intelligence Report", "CampFlowIntelligence", "View intelligence reports");
             addButton(buttonPanel, intelligenceButton);
-    
+
             JButton equipmentDepotButton = makeMenuButton("Equipment Depot Report", "EquipmentDepotReport", "View equipment depot report");
             addButton(buttonPanel, equipmentDepotButton);
-    
+
             JLabel space3 = new JLabel("");
             buttonPanel.add(space3);
-    
+
             JButton simpleConfigButton = makeMenuButton("Simple Config", "CampSimpleConfig", "Set simple configuration for this campaign");
             addButton(buttonPanel, simpleConfigButton);
-    
+
             JButton advancedConfigButton = makeMenuButton("Advanced Config", "CampAdvancedConfig", "Set advanced configuration for this campaign");
             addButton(buttonPanel, advancedConfigButton);
         }
-        
+
         JLabel space4 = new JLabel("");
         buttonPanel.add(space4);
 
@@ -212,17 +211,17 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         {
             return false;
         }
-        
+
         if (!campaign.isCampaignCanFly())
         {
             return false;
         }
-        
+
         if (campaign.findReferencePlayer() == null)
         {
             return false;
         }
-        
+
         if (campaign.findReferencePlayer().getPilotActiveStatus() != SquadronMemberStatus.STATUS_ACTIVE)
         {
             return false;
@@ -237,7 +236,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         {
             return false;
         }
- 
+
         return true;
     }
 
@@ -247,21 +246,21 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         {
             return false;
         }
-        
+
         if (!campaign.isCampaignCanFly())
         {
             return false;
         }
-        
+
         if (campaign.isCoop())
         {
             return false;
         }
-        
+
         return true;
     }
-    
-    private void addButton(JPanel buttonPanel, JButton button) 
+
+    private void addButton(JPanel buttonPanel, JButton button)
     {
         buttonPanel.add(button);
         activeButtons.add(button);
@@ -270,21 +269,19 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
     private JButton makeMenuButton(String buttonText, String commandText, String toolTiptext) throws PWCGException
     {
         JButton button = PWCGButtonFactory.makeMenuButton(buttonText, commandText, this);
-         
+
         ToolTipManager.setToolTip(button, toolTiptext);
 
         return button;
     }
 
-    public void createPilotContext() throws PWCGException 
+    public void createCampaignHomeContext() throws PWCGException
     {
-		MusicManager.playCampaignTheme(determineCampaignSideForMusic());
+        MusicManager.playCampaignTheme(determineCampaignSideForMusic());
+        setLeftPanel(makeLeftPanel());
+        chalkboardSelector.createPlayerSquadronContext();
 
-        CampaignRosterBasePanelFactory pilotListDisplay = new CampaignRosterSquadronPanelFactory(this);
-        pilotListDisplay.makePilotList();
-        createSquadronMemberContext(pilotListDisplay);
     }
-
 
     private Side determineCampaignSideForMusic() throws PWCGException
     {
@@ -305,41 +302,6 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
             SquadronMember referencePlayer = campaign.findReferencePlayer();
             return referencePlayer.determineCountry(campaign.getDate()).getSide();
         }
-     }
-
-    private void createTopAceContext() throws PWCGException 
-    {
-		CampaignRosterBasePanelFactory topAceListDisplay = new CampaignRosterTopAcesPanelFactory(this);
-        topAceListDisplay.makePilotList();
-        createSquadronMemberContext(topAceListDisplay);
-    }
-
-    private void createEquipmentContext() throws PWCGException 
-    {
-        setLeftPanel(makeLeftPanel());
-        
-        CampaignEquipmentChalkBoard equipmentDisplay = new CampaignEquipmentChalkBoard();
-        equipmentDisplay.makeEquipmentPanel(campaign);
-        setCenterPanel(equipmentDisplay);
-
-        CampaignRosterBasePanelFactory pilotListDisplay = new CampaignRosterSquadronPanelFactory(this);
-        pilotListDisplay.makePilotList();
-        pilotListDisplay.makeCampaignHomePanels();
-        setRightPanel(pilotListDisplay.getPilotListPanel());
-
-        CampaignGuiContextManager.getInstance().clearContextStack();
-        CampaignGuiContextManager.getInstance().pushToContextStack(this);
-    }    
-
-    private void createSquadronMemberContext(CampaignRosterBasePanelFactory squadronMemberListDisplay) throws PWCGException 
-    {
-        squadronMemberListDisplay.makeCampaignHomePanels();
-        setLeftPanel(makeLeftPanel());
-        setCenterPanel(squadronMemberListDisplay.getChalkboardPanel());
-        setRightPanel(squadronMemberListDisplay.getPilotListPanel());
-
-        CampaignGuiContextManager.getInstance().clearContextStack();
-        CampaignGuiContextManager.getInstance().pushToContextStack(this);
     }
 
     public void actionPerformed(ActionEvent ae)
@@ -347,7 +309,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         try
         {
             String action = ae.getActionCommand();
-            
+
             if (action.equalsIgnoreCase("CampMainMenu"))
             {
                 campaign.write();
@@ -357,20 +319,20 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
             }
             else if (action.equalsIgnoreCase("CampPilots"))
             {
-                createPilotContext();
+                chalkboardSelector.actionPerformed(ae);
             }
             else if (action.equalsIgnoreCase("CampTopAces"))
             {
-                createTopAceContext();
+                chalkboardSelector.actionPerformed(ae);
             }
             else if (action.equalsIgnoreCase("Equipment"))
             {
-                createEquipmentContext();
+                chalkboardSelector.actionPerformed(ae);
             }
             else
             {
-            	CampaignHomeGUIAction homeGUIAction = new CampaignHomeGUIAction(this, campaign);
-            	homeGUIAction.actionPerformed(ae);
+                CampaignHomeGUIAction homeGUIAction = new CampaignHomeGUIAction(this, campaign);
+                homeGUIAction.actionPerformed(ae);
             }
         }
         catch (PWCGUserException ue)
@@ -393,47 +355,30 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         }
     }
 
-    public void campaignTimePassedForLeave(int timePassedDays) throws PWCGException 
+    public void campaignTimePassedForLeave(int timePassedDays) throws PWCGException
     {
         campaign.setCurrentMission(null);
-        AARCoordinator.getInstance().submitLeave(campaign, timePassedDays);            
+        AARCoordinator.getInstance().submitLeave(campaign, timePassedDays);
         AARMainPanel eventDisplay = new AARMainPanel(campaign, this, EventPanelReason.EVENT_PANEL_REASON_LEAVE);
-        eventDisplay.makePanels();		
+        eventDisplay.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(eventDisplay);
     }
 
-    public void campaignTimePassedForTransfer(int timePassedDays, TransferEvent pilotEvent) throws PWCGException 
+    public void campaignTimePassedForTransfer(int timePassedDays, TransferEvent pilotEvent) throws PWCGException
     {
         campaign.setCurrentMission(null);
         AARCoordinator.getInstance().submitTransfer(campaign, timePassedDays);
-        AARMainPanel eventDisplay = new AARMainPanel(campaign, this, EventPanelReason.EVENT_PANEL_REASON_TRANSFER, pilotEvent);
-        eventDisplay.makePanels();      
+        AARMainPanel eventDisplay = new AARMainPanel(campaign, null, EventPanelReason.EVENT_PANEL_REASON_TRANSFER, pilotEvent);
+        eventDisplay.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(eventDisplay);
     }
 
-    public void clean() throws PWCGException  
-    {       
-        PwcgGuiContext context = CampaignGuiContextManager.getInstance().getCurrentContext();
-        if (context.getCenterPanel() != null)
-        {
-            remove(context.getCenterPanel());        
-        }
-        if (context.getRightPanel() != null)
-        {
-            remove(context.getRightPanel());       
-        }
-        if (context.getLeftPanel() != null)
-        {
-            remove(context.getLeftPanel());       
-        }
-    }
-
-    public void enableButtonsAsNeeded() throws PWCGException  
+    public void enableButtonsAsNeeded() throws PWCGException
     {
         if (loneWolfMission != null)
         {
             if (campaign.isCampaignActive() && !campaign.isCoop())
-            {            
+            {
                 if (GreatAce.isGreatAce(campaign))
                 {
                     loneWolfMission.setEnabled(true);
@@ -450,5 +395,5 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
     {
         return campaign;
     }
-    
+
 }

@@ -80,11 +80,4 @@ public abstract class ImagePanel extends JPanel
 		}
 		return dimensions;
 	}
-
-	public void repaintPanel(JPanel newPanel, String panelSection)
-	{
-	    this.add (newPanel, panelSection);	    
-	    newPanel.revalidate();
-	    newPanel.repaint();
-	}
 }

@@ -21,7 +21,8 @@ import pwcg.coop.model.CoopPersona;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.campaign.home.GuiMissionInitiator;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -34,7 +35,7 @@ import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionHumanParticipants;
 
-public class CoopPersonaChooser extends PwcgGuiContext implements ActionListener
+public class CoopPersonaChooser extends PwcgThreePanelUI implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     private CoopPersonaChooserPanel coopPersonaAccept;
@@ -47,7 +48,7 @@ public class CoopPersonaChooser extends PwcgGuiContext implements ActionListener
 
     public CoopPersonaChooser(Campaign campaign,CampaignHomeGUI campaignHomeGui)
     {
-        super();
+        super(ImageResizingPanel.NO_IMAGE);
         this.campaign = campaign;
         this.campaignHomeGui = campaignHomeGui;
     }
@@ -176,7 +177,7 @@ public class CoopPersonaChooser extends PwcgGuiContext implements ActionListener
 
 	public JPanel makeNavigatePanel() throws PWCGException  
     {
-        String imagePath = getSideImageMain("ConfigLeft.jpg");
+        String imagePath = UiImageResolver.getSideImageMain("ConfigLeft.jpg");
 
         JPanel navPanel = new ImageResizingPanel(imagePath);
         navPanel.setLayout(new BorderLayout());
@@ -236,10 +237,8 @@ public class CoopPersonaChooser extends PwcgGuiContext implements ActionListener
         Campaign campaign  = PWCGContext.getInstance().getCampaign();
         campaign.setCurrentMission(null);
         
-        campaignHomeGui.clean();
-        campaignHomeGui.createPilotContext();
+        campaignHomeGui.createCampaignHomeContext();
 
-        campaignHomeGui.enableButtonsAsNeeded();
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }
 

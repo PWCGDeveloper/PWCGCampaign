@@ -19,7 +19,8 @@ import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -27,7 +28,7 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class ReferencePilotSelector extends PwcgGuiContext implements ActionListener
+public class ReferencePilotSelector extends PwcgThreePanelUI implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     private JComboBox<String> squadronMemberSelector;
@@ -37,7 +38,7 @@ public class ReferencePilotSelector extends PwcgGuiContext implements ActionList
 
     public ReferencePilotSelector(Campaign campaign,CampaignHomeGUI campaignHomeGui)
     {
-        super();
+        super(ImageResizingPanel.NO_IMAGE);
         this.campaign = campaign;
         this.campaignHomeGui = campaignHomeGui;
     }
@@ -92,7 +93,7 @@ public class ReferencePilotSelector extends PwcgGuiContext implements ActionList
 
 	public JPanel makeNavigatePanel() throws PWCGException  
     {
-        String imagePath = getSideImageMain("ConfigLeft.jpg");
+        String imagePath = UiImageResolver.getSideImageMain("ConfigLeft.jpg");
 
         JPanel navPanel = new ImageResizingPanel(imagePath);
         navPanel.setLayout(new BorderLayout());
@@ -124,10 +125,7 @@ public class ReferencePilotSelector extends PwcgGuiContext implements ActionList
                     campaign.getCampaignData().setReferencePlayerSerialNumber(referencePlayer.getSerialNumber());
                 }
                 
-                campaignHomeGui.clean();
-                campaignHomeGui.createPilotContext();
-
-                campaignHomeGui.enableButtonsAsNeeded();
+                campaignHomeGui.createCampaignHomeContext();
                 CampaignGuiContextManager.getInstance().popFromContextStack();
             }
             else if (action.equalsIgnoreCase("CancelReferencePilot"))

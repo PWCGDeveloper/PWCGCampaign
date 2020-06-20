@@ -23,7 +23,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -33,7 +34,7 @@ import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.gui.utils.ToolTipManager;
 
-public class ConfigurationSkinConfigDisplayPanelSet extends PwcgGuiContext implements ActionListener
+public class ConfigurationSkinConfigDisplayPanelSet extends PwcgThreePanelUI implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     
@@ -41,6 +42,7 @@ public class ConfigurationSkinConfigDisplayPanelSet extends PwcgGuiContext imple
 
 	public ConfigurationSkinConfigDisplayPanelSet(Map<String, PlaneType> planeTypesToDisplay) 
 	{
+        super(ImageResizingPanel.NO_IMAGE);
 	    this.planeTypesToDisplay = planeTypesToDisplay;
 	    
 		setLayout(new BorderLayout());
@@ -62,7 +64,7 @@ public class ConfigurationSkinConfigDisplayPanelSet extends PwcgGuiContext imple
 
 	public JPanel makeButtonPanel() throws PWCGException 
 	{
-        String imagePath = getSideImageMain("SkinAnalysisNav.jpg");
+        String imagePath = UiImageResolver.getSideImageMain("SkinAnalysisNav.jpg");
 
         ImageResizingPanel campaignButtonPanel = new ImageResizingPanel(imagePath);
         campaignButtonPanel.setLayout(new BorderLayout());

@@ -20,14 +20,15 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.coop.CampaignAdminCoopPilotPanelSet;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListener
+public class NewPilotGeneratorUI extends PwcgThreePanelUI implements ActionListener
 {    
     private static final long serialVersionUID = 1L;
 
@@ -42,6 +43,7 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
 
     public NewPilotGeneratorUI(Campaign campaign, CampaignHomeGUI parent, CampaignAdminCoopPilotPanelSet alternateParent)
     {
+        super(ImageResizingPanel.NO_IMAGE);
         this.campaign = campaign;
         this.parent = parent;
         this.alternateParent = alternateParent;        
@@ -64,7 +66,7 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
 
     private JPanel makeServicePanel() throws PWCGException
     {
-        String imagePath = getSideImageMain("CampaignGenNav.jpg");
+        String imagePath = UiImageResolver.getSideImageMain("CampaignGenNav.jpg");
         
         ImageResizingPanel servicesPanel = new ImageResizingPanel(imagePath);
         servicesPanel.setLayout(new BorderLayout());
@@ -80,7 +82,7 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
 
     private JPanel makeButtonPanel() throws PWCGException
     {
-        String imagePath = getSideImageMain("CampaignGenNav.jpg");
+        String imagePath = UiImageResolver.getSideImageMain("CampaignGenNav.jpg");
         
         ImageResizingPanel configPanel = new ImageResizingPanel(imagePath);
         configPanel.setLayout(new BorderLayout());
@@ -129,7 +131,7 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
                 createPilot();
                 if (parent != null)
                 {
-                    parent.createPilotContext();
+                    parent.createCampaignHomeContext();
                     CampaignGuiContextManager.getInstance().popFromContextStack();
                 }
                 else if (alternateParent != null)
@@ -173,7 +175,8 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
         dataEntry.makePanels();
         dataEntry.evaluateUI();
         
-        CampaignGuiContextManager.getInstance().changeCurrentContext(null, dataEntry, null);        
+        this.setCenterPanel(dataEntry);
+        CampaignGuiContextManager.getInstance().refreshCurrentContext(this);
     }
 
     public NewPilotGeneratorDO getNewPilotGeneratorDO()

@@ -19,7 +19,8 @@ import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.MusicManager;
@@ -28,7 +29,7 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignMusicPanelSet extends PwcgGuiContext implements ActionListener, ChangeListener
+public class CampaignMusicPanelSet extends PwcgThreePanelUI implements ActionListener, ChangeListener
 {    
     private static final long serialVersionUID = 1L;
     
@@ -40,6 +41,7 @@ public class CampaignMusicPanelSet extends PwcgGuiContext implements ActionListe
 
     public CampaignMusicPanelSet(CampaignMainGUI parent)
     {
+        super(ImageResizingPanel.NO_IMAGE);
         this.parent = parent;
     }
 
@@ -59,7 +61,7 @@ public class CampaignMusicPanelSet extends PwcgGuiContext implements ActionListe
 
     private JPanel makeButtonPanel() throws PWCGException
     {
-        String imagePath = getSideImageMain("MusicLeft.jpg");
+        String imagePath = UiImageResolver.getSideImageMain("MusicLeft.jpg");
         
         ImageResizingPanel configPanel = new ImageResizingPanel(imagePath);
         configPanel.setLayout(new BorderLayout());

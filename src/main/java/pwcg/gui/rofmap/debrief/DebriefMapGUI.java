@@ -32,6 +32,7 @@ import pwcg.core.utils.DirectoryReader;
 import pwcg.core.utils.FileUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -159,7 +160,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 
 	private JPanel makeNavigationPanel() throws PWCGException 
 	{
-        String imagePath = getSideImage(campaign, "DebriefNav.jpg");
+        String imagePath = UiImageResolver.getSideImage(campaign, "DebriefNav.jpg");
         ImageResizingPanel debriefButtonPanel = new ImageResizingPanel(imagePath);
         debriefButtonPanel.setLayout(new BorderLayout());
         debriefButtonPanel.setOpaque(false);
@@ -254,7 +255,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
         }
         else
         {
-            home.createPilotContext();
+            home.createCampaignHomeContext();
         }
     }
     
@@ -305,10 +306,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
                 }
                 else if (action.equals("Cancel"))
                 {
-                    home.clean();
-                    home.createPilotContext();
-
-                    home.enableButtonsAsNeeded();
+                    home.createCampaignHomeContext();
                     CampaignGuiContextManager.getInstance().popFromContextStack();
                 }
 			}

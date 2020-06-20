@@ -29,7 +29,8 @@ import pwcg.core.utils.MissingSkin;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.SkinAnalyzer;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.HelpDialog;
@@ -44,7 +45,7 @@ import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.gui.utils.ToolTipManager;
 
-public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements ActionListener
+public class ConfigurationSkinAnalysisPanelSet extends PwcgThreePanelUI implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -54,6 +55,7 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
 
 	public ConfigurationSkinAnalysisPanelSet(CampaignMainGUI parent) 
 	{
+        super(ImageResizingPanel.NO_IMAGE);
 		setLayout(new BorderLayout());
 
 		this.parent = parent;
@@ -77,7 +79,7 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
 
 	public JPanel makeButtonPanel() throws PWCGException 
 	{
-        String imagePath = getSideImageMain("SkinAnalysisNav.jpg");
+        String imagePath = UiImageResolver.getSideImageMain("SkinAnalysisNav.jpg");
 
         ImageResizingPanel campaignButtonPanel = new ImageResizingPanel(imagePath);
         campaignButtonPanel.setLayout(new BorderLayout());

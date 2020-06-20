@@ -20,7 +20,8 @@ import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -29,10 +30,9 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignConfigurationSimpleGUI extends PwcgGuiContext implements ActionListener
+public class CampaignConfigurationSimpleGUI extends PwcgThreePanelUI implements ActionListener
 {
-
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 	private ButtonGroup airButtonGroup = new ButtonGroup();
 	private ButtonModel airLowButtonModel = null;
 	private ButtonModel airMedButtonModel = null;
@@ -52,7 +52,7 @@ public class CampaignConfigurationSimpleGUI extends PwcgGuiContext implements Ac
 
     public CampaignConfigurationSimpleGUI(Campaign campaign)
     {
-        super();
+        super(ImageResizingPanel.NO_IMAGE);
         this.campaign = campaign;
     }
 
@@ -130,7 +130,7 @@ public class CampaignConfigurationSimpleGUI extends PwcgGuiContext implements Ac
 
 	private JPanel makeNavigatePanel() throws PWCGException
 	{
-        String imagePath = getSideImage(campaign, "SimpleConfigCampaignLeft.jpg");
+        String imagePath = UiImageResolver.getSideImage(campaign, "SimpleConfigCampaignLeft.jpg");
 
         ImageResizingPanel simpleConfigAcceptPanel = new ImageResizingPanel(imagePath);
         simpleConfigAcceptPanel.setLayout(new BorderLayout());
@@ -165,7 +165,7 @@ public class CampaignConfigurationSimpleGUI extends PwcgGuiContext implements Ac
 		JPanel airButtonPanel = createAirConfigPanel();
         JPanel groundButtonPanel = createGroundConfigPanel();
         JPanel aaButtonPanel = createAAConfigPanel();
-        String imagePath = getSideImage(campaign, "SimpleConfigCampaignRight.jpg");
+        String imagePath = UiImageResolver.getSideImage(campaign, "SimpleConfigCampaignRight.jpg");
 
         ImageResizingPanel simpleConfigButtonPanel = new ImageResizingPanel(imagePath);
 		simpleConfigButtonPanel.setLayout(new GridLayout(0,1));

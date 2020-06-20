@@ -18,7 +18,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.gui.utils.ImagePanel;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ToolTipManager;
 
@@ -29,7 +28,7 @@ public class ConfigurationParametersGUI extends ImageResizingPanel
     private ConfigManager configManager;
 	private Map<String, ConfigTextField> configTextFields = new HashMap<String, ConfigTextField>();
 	
-	public ConfigurationParametersGUI(ImagePanel parent, ConfigManager configManager, ConfigSet configSet) 
+	public ConfigurationParametersGUI(ImageResizingPanel parent, ConfigManager configManager, ConfigSet configSet) 
 	{		
         super(ContextSpecificImages.imagesMisc() + "Paper.jpg");
         setLayout(new BorderLayout());

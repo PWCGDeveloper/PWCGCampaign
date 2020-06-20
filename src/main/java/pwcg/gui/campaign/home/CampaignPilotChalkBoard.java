@@ -6,8 +6,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -19,6 +21,8 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ToolTipManager;
 
 public class CampaignPilotChalkBoard extends ImageResizingPanel
 {
@@ -26,7 +30,7 @@ public class CampaignPilotChalkBoard extends ImageResizingPanel
 	
 	public CampaignPilotChalkBoard()  
 	{
-	    super(ContextSpecificImages.imagesMisc() + "chalkboard.jpg");
+	    super(ContextSpecificImages.imagesMisc() + "BrickCenter.jpg");
 	}
 
     public void makeSquadronPanel(List<SquadronMember> sortedPilots)  
@@ -34,14 +38,50 @@ public class CampaignPilotChalkBoard extends ImageResizingPanel
         try
         {
             this.setLayout(new BorderLayout()); 
-            JPanel squadronPanel = createPilotListPanel(sortedPilots);
-            this.add(squadronPanel, BorderLayout.CENTER);
+            
+            JPanel selectorPanel = createSelectorPanel();
+            this.add(selectorPanel, BorderLayout.NORTH);
+ 
+            JPanel chalkBoardPanel = createPilotListPanel(sortedPilots);
+            this.add(chalkBoardPanel, BorderLayout.CENTER);
         }
         catch (Exception e)
         {
             PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
+    }
+
+    private JPanel createSelectorPanel() throws PWCGException
+    {
+        JPanel selectorPanel = new JPanel(new GridLayout(0, 1));
+        selectorPanel.setOpaque(false);
+
+        JLabel space1 = new JLabel("");
+        selectorPanel.add(space1);
+
+        JButton pilotsButton = makeMenuButton("Pilots", "CampPilots", "Show squadron pilot chalk board");
+        selectorPanel.add(pilotsButton);
+
+        JButton equipmentButton = makeMenuButton("Equipment", "Equipment", "Show equipment chalk board");
+        selectorPanel.add(equipmentButton);
+
+        JButton topAcesButton = makeMenuButton("Top Aces: All", "CampTopAces", "Show top aces chalk board");
+        selectorPanel.add(topAcesButton);
+
+        JButton topAcesForServiceButton = makeMenuButton("Top Aces: Service", "CampTopAcesService", "Show top aces chalk board for your service");
+        selectorPanel.add(topAcesForServiceButton);
+
+        JButton topAcesNoHistoricalButton = makeMenuButton("Top Aces: Exclude Historical", "CampTopAcesNoHistorical", "Show top aces chalk board with no historical aces");
+        selectorPanel.add(topAcesNoHistoricalButton);        
+        return selectorPanel;
+    }
+
+    private JButton makeMenuButton(String buttonText, String commandText, String toolTiptext) throws PWCGException
+    {
+        JButton button = PWCGButtonFactory.makeMenuButton(buttonText, commandText, null);
+        ToolTipManager.setToolTip(button, toolTiptext);
+        return button;
     }
 
     private JPanel createPilotListPanel(List<SquadronMember> sortedPilots) throws PWCGException
@@ -55,10 +95,14 @@ public class CampaignPilotChalkBoard extends ImageResizingPanel
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.ipadx = 3;
         constraints.ipady = 3;
-        GridBagLayout squadronLayout = new GridBagLayout();
+        constraints.anchor = GridBagConstraints.NORTH;
+        GridBagLayout squadronLayout = new GridBagLayout();        
         
-        JPanel squadronPanel = new JPanel(squadronLayout);
+        String imagePath = ContextSpecificImages.imagesMisc() + "chalkboard.png";
+        ImageResizingPanel squadronPanel = new ImageResizingPanel(imagePath);
         squadronPanel.setOpaque(false);
+        squadronPanel.setLayout(squadronLayout);
+        
         Dimension preferredSize = this.getImageSize();
         preferredSize.height -= 200;
         preferredSize.width -= 200;
@@ -159,6 +203,7 @@ public class CampaignPilotChalkBoard extends ImageResizingPanel
 
             ++i;
         }
+
         return squadronPanel;
     }
 }

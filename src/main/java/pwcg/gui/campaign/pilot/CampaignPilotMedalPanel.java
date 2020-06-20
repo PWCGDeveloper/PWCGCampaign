@@ -21,7 +21,9 @@ import pwcg.campaign.medals.MedalManager;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
@@ -31,7 +33,7 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignPilotMedalPanel extends PwcgGuiContext implements ActionListener
+public class CampaignPilotMedalPanel extends PwcgThreePanelUI implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -41,7 +43,7 @@ public class CampaignPilotMedalPanel extends PwcgGuiContext implements ActionLis
 
 	public CampaignPilotMedalPanel(Campaign campaign, SquadronMember pilot)
 	{
-        super();
+        super(ImageResizingPanel.NO_IMAGE);
 
         Dimension screenSize = PWCGMonitorSupport.getPWCGFrameSize();
         this.medalsPerRow = screenSize.width / 250;
@@ -72,7 +74,7 @@ public class CampaignPilotMedalPanel extends PwcgGuiContext implements ActionLis
 
     private JPanel makeNavigationPanel() throws PWCGException  
     {
-        String imagePath = getSideImage(campaign, "PilotInfoNav.jpg");
+        String imagePath = UiImageResolver.getSideImage(campaign, "PilotInfoNav.jpg");
 
         ImageResizingPanel medalPanel = new ImageResizingPanel(imagePath);
         medalPanel.setLayout(new BorderLayout());
@@ -225,7 +227,8 @@ public class CampaignPilotMedalPanel extends PwcgGuiContext implements ActionLis
 
             if (action.equalsIgnoreCase("PilotMedalFinished"))
             {
-                finishedWithCampaignScreen();
+                campaign.write();                
+                CampaignGuiContextManager.getInstance().popFromContextStack();
             }
 		}
 		catch (Exception e)

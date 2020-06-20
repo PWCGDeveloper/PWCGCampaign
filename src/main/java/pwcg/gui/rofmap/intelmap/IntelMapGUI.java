@@ -29,6 +29,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -101,7 +102,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 
     private JPanel makeNavigationPanel() throws PWCGException  
     {
-        String imagePath = getSideImage(campaign, "IntelMapNav.jpg");
+        String imagePath = UiImageResolver.getSideImage(campaign, "IntelMapNav.jpg");
 
         ImageResizingPanel intelNavPanel = new ImageResizingPanel(imagePath);
         intelNavPanel.setLayout(new BorderLayout());
@@ -153,8 +154,8 @@ public class IntelMapGUI extends MapGUI implements ActionListener
     public void updateInfoPanel(int squadId) throws PWCGException 
     {
         JPanel updatedSquadronInfoPanel = makeRightPanel(squadId);
-
-        CampaignGuiContextManager.getInstance().changeCurrentContext(null, null, updatedSquadronInfoPanel);
+        this.setRightPanel(updatedSquadronInfoPanel);
+        CampaignGuiContextManager.getInstance().refreshCurrentContext(this);
     }
 
     private JPanel makeRightPanel(int squadId) throws PWCGException 

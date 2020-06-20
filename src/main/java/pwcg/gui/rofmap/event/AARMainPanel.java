@@ -14,6 +14,7 @@ import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.rofmap.debrief.AAREventPanel;
@@ -74,7 +75,7 @@ public class AARMainPanel extends AARPanel implements ActionListener
 
 	private JPanel makeNavigationPanel() throws PWCGException  
 	{
-        String imagePath = getSideImage(campaign, "MissionResultsNav.jpg");
+        String imagePath = UiImageResolver.getSideImage(campaign, "MissionResultsNav.jpg");
 
 		ImageResizingPanel resultPanel = new ImageResizingPanel(imagePath);
 		resultPanel.setLayout(new BorderLayout());
@@ -247,7 +248,7 @@ public class AARMainPanel extends AARPanel implements ActionListener
                 AAREventPanel thisPanel = eventPanelsToDisplay.get(currentPanelIndex);
                 thisPanel.finished();
                 
-                home.createPilotContext();
+                home.createCampaignHomeContext();
             }
         }
         catch (Exception e)

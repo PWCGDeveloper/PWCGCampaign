@@ -15,7 +15,9 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.CampaignRosterBasePanelFactory;
 import pwcg.gui.campaign.CampaignRosterSquadronPanelFactory;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -24,7 +26,7 @@ import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ToolTipManager;
 import pwcg.gui.utils.UIUtils;
 
-public class CampaignSkinManagerPanel extends PwcgGuiContext implements ActionListener
+public class CampaignSkinManagerPanel extends PwcgThreePanelUI implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     
@@ -33,7 +35,7 @@ public class CampaignSkinManagerPanel extends PwcgGuiContext implements ActionLi
 
     public CampaignSkinManagerPanel(Campaign campaign) 
     {
-        super();
+        super(ImageResizingPanel.NO_IMAGE);
         this.campaign = campaign;
     }
 
@@ -87,7 +89,7 @@ public class CampaignSkinManagerPanel extends PwcgGuiContext implements ActionLi
 
     private JPanel makeLeftPanel() throws PWCGException 
     {
-        String imagePath = getSideImage(campaign, "CampaignSkinLeft.jpg");
+        String imagePath = UiImageResolver.getSideImage(campaign, "CampaignSkinLeft.jpg");
 
         ImageResizingPanel campaignButtonPanel = new ImageResizingPanel(imagePath);
         campaignButtonPanel.setLayout(new BorderLayout());
@@ -152,13 +154,14 @@ public class CampaignSkinManagerPanel extends PwcgGuiContext implements ActionLi
             }
             else if (action.equalsIgnoreCase("AcceptSkins"))
             {
-                skinSessionManager.finalizeSkinAssignments();
-                
-                finishedWithCampaignScreen();
+                skinSessionManager.finalizeSkinAssignments();                
+                campaign.write();                
+                CampaignGuiContextManager.getInstance().popFromContextStack();
             }
             else if (action.equalsIgnoreCase("CancelSkins"))
             {
-                finishedWithCampaignScreen();
+                campaign.write();                
+                CampaignGuiContextManager.getInstance().popFromContextStack();
             }
         }
         catch (PWCGUserException ue)

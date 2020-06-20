@@ -24,7 +24,8 @@ import pwcg.core.config.ConfigSetKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.config.ConfigurationParametersGUI;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -34,16 +35,16 @@ import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ToolTipManager;
 
-public class CampaignConfigurationAdvancedGUI extends PwcgGuiContext implements ActionListener
+public class CampaignConfigurationAdvancedGUI extends PwcgThreePanelUI implements ActionListener
 {
-	private static final long serialVersionUID = 1L;
-	private Map<String, ConfigurationParametersGUI> configurationGUIs = new HashMap<String, ConfigurationParametersGUI>();
+    private static final long serialVersionUID = 1L;
+    private Map<String, ConfigurationParametersGUI> configurationGUIs = new HashMap<String, ConfigurationParametersGUI>();
 	private ButtonGroup buttonGroup = new ButtonGroup();
 	private Campaign campaign;
 
 	public CampaignConfigurationAdvancedGUI(Campaign campaign)
 	{
-	    super();
+	    super("");
 	    this.campaign = campaign;
 	}
 	
@@ -64,7 +65,7 @@ public class CampaignConfigurationAdvancedGUI extends PwcgGuiContext implements 
 
     private JPanel makeNavigatePanel() throws PWCGException
     {
-        String imagePath = getSideImage(campaign, "AdvancedConfigCampaignLeft.jpg");
+        String imagePath = UiImageResolver.getSideImage(campaign, "AdvancedConfigCampaignLeft.jpg");
 
         ImageResizingPanel simpleConfigAcceptPanel = new ImageResizingPanel(imagePath);
         simpleConfigAcceptPanel.setLayout(new BorderLayout());
@@ -107,11 +108,11 @@ public class CampaignConfigurationAdvancedGUI extends PwcgGuiContext implements 
         String imagePath = null;
         if (campaign != null)
         {
-            imagePath = getSideImage(campaign, "AdvancedConfigCampaignRight.jpg");
+            imagePath = UiImageResolver.getSideImage(campaign, "AdvancedConfigCampaignRight.jpg");
         }
         else
         {
-            imagePath = getSideImage(campaign, "ConfigLeft.jpg");
+            imagePath = UiImageResolver.getSideImage(campaign, "ConfigLeft.jpg");
          }
         		
         ImageResizingPanel configPanel = new ImageResizingPanel(imagePath);
@@ -287,8 +288,9 @@ public class CampaignConfigurationAdvancedGUI extends PwcgGuiContext implements 
 					newConfig = createConfigPanel(action);
 					configurationGUIs.put(action, newConfig);
 				}
-				
-				CampaignGuiContextManager.getInstance().changeCurrentContext(null, newConfig, null);
+
+                this.setCenterPanel(newConfig);
+				CampaignGuiContextManager.getInstance().refreshCurrentContext(this);
 			}
 		}
 		catch (Throwable e)

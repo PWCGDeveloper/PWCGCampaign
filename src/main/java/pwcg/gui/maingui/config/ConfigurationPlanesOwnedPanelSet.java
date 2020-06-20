@@ -25,7 +25,8 @@ import pwcg.campaign.utils.PlanesOwnedManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
@@ -38,27 +39,20 @@ import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.gui.utils.ToolTipManager;
 
-public class ConfigurationPlanesOwnedPanelSet extends PwcgGuiContext implements ActionListener
+public class ConfigurationPlanesOwnedPanelSet extends PwcgThreePanelUI implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
     private CampaignMainGUI parent = null;
-	private Map<String, PlaneOwned> selectionBoxes = new HashMap<String, PlaneOwned>();
-
-	/**
-	 * 
-	 */
+    private Map<String, PlaneOwned> selectionBoxes = new HashMap<String, PlaneOwned>();
+    
 	public ConfigurationPlanesOwnedPanelSet(CampaignMainGUI parent) 
 	{
+        super(ImageResizingPanel.NO_IMAGE);
 		setLayout(new BorderLayout());
-
 		this.parent = parent;
 	}
-	
 
-    /**
-     * 
-     */
     public void makePanels()
     {
         try
@@ -75,10 +69,6 @@ public class ConfigurationPlanesOwnedPanelSet extends PwcgGuiContext implements 
         }
     }
 
-
-	/**
-	 * 
-	 */
 	public void setCheckBoxes()
 	{
 		try
@@ -105,14 +95,9 @@ public class ConfigurationPlanesOwnedPanelSet extends PwcgGuiContext implements 
 		}
 	}
 
-	
-	/**
-	 * @return
-	 * @throws PWCGException
-	 */
 	public JPanel makeButtonPanel() throws PWCGException 
 	{
-        String imagePath = getSideImageMain("PlanesOwnedLeft.jpg");
+        String imagePath = UiImageResolver.getSideImageMain("PlanesOwnedLeft.jpg");
 
         ImageResizingPanel campaignButtonPanel = new ImageResizingPanel(imagePath);
         campaignButtonPanel.setLayout(new BorderLayout());
@@ -305,10 +290,6 @@ public class ConfigurationPlanesOwnedPanelSet extends PwcgGuiContext implements 
         return planeListPanel;
     }
 
-
-	/* (non-Javadoc)
-	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
-	 */
 	public void actionPerformed(ActionEvent ae)
 	{
 		try

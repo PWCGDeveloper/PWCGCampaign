@@ -22,7 +22,8 @@ import pwcg.core.config.ConfigSetKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.config.ConfigurationParametersGUI;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -32,7 +33,7 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class ConfigurationGlobalGUI extends PwcgGuiContext implements ActionListener
+public class ConfigurationGlobalGUI extends PwcgThreePanelUI implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     private Map<String, ConfigurationParametersGUI> configurationGUIs = new HashMap<String, ConfigurationParametersGUI>();
@@ -41,7 +42,7 @@ public class ConfigurationGlobalGUI extends PwcgGuiContext implements ActionList
 
     public ConfigurationGlobalGUI()
     {
-        super();
+        super(ImageResizingPanel.NO_IMAGE);
     }
     
     public void makePanels() 
@@ -72,7 +73,7 @@ public class ConfigurationGlobalGUI extends PwcgGuiContext implements ActionList
 
     public JPanel makeNavigatePanel() throws PWCGException  
     {
-        String imagePath = getSideImageMain("ConfigLeft.jpg");
+        String imagePath = UiImageResolver.getSideImageMain("ConfigLeft.jpg");
 
         JPanel navPanel = new ImageResizingPanel(imagePath);
         navPanel.setLayout(new BorderLayout());
@@ -93,7 +94,7 @@ public class ConfigurationGlobalGUI extends PwcgGuiContext implements ActionList
 
     public JPanel makeCategoryPanel() throws PWCGException  
     {
-        String imagePath = getSideImageMain("ConfigRight.jpg");
+        String imagePath = UiImageResolver.getSideImageMain("ConfigRight.jpg");
 
         JPanel configPanel = new ImageResizingPanel(imagePath);
         configPanel.setLayout(new BorderLayout());
@@ -194,8 +195,9 @@ public class ConfigurationGlobalGUI extends PwcgGuiContext implements ActionList
                     newConfig = createConfigPanel(action);
                     configurationGUIs.put(action, newConfig);
                 }
-                
-                CampaignGuiContextManager.getInstance().changeCurrentContext(null, newConfig, null);
+
+                this.setCenterPanel(newConfig);
+                CampaignGuiContextManager.getInstance().refreshCurrentContext(this);                
             }
         }
         catch (Throwable e)

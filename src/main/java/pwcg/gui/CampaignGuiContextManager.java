@@ -3,18 +3,14 @@ package pwcg.gui;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JPanel;
-
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.PWCGLogger;
-import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.utils.PWCGFrame;
 
 public class CampaignGuiContextManager
 {
     private static CampaignGuiContextManager instance = new CampaignGuiContextManager();
     
-    private List<PwcgGuiContext> contextStack = new ArrayList<PwcgGuiContext>();
+    private List<PwcgThreePanelUI> contextStack = new ArrayList<>();
+    private PwcgGuiCurrentPanel currentPanel = new PwcgGuiCurrentPanel();
 
     private CampaignGuiContextManager()
     {
@@ -30,18 +26,13 @@ public class CampaignGuiContextManager
         contextStack.clear();
     }
 
-    public PwcgGuiContext getCurrentContext() throws PWCGException 
+    public void refreshCurrentContext(PwcgThreePanelUI context) throws PWCGException
     {
-        if (contextStack.size() == 0)
-        {
-            throw new PWCGException ("No cpntext available");
-        }
-        
-        int index = contextStack.size() - 1;
-        return contextStack.get(index);
+        popFromContextStack();
+        pushToContextStack(context);
     }
 
-    public void pushToContextStack(PwcgGuiContext context) throws PWCGException
+    public void pushToContextStack(PwcgThreePanelUI context) throws PWCGException
     {
         contextStack.add(context);
         displayCurrentContext();
@@ -62,62 +53,9 @@ public class CampaignGuiContextManager
         if (contextStack.size() > 0)
         {
             int index = contextStack.size() - 1;
-            PwcgGuiContext context = contextStack.get(index);
+            PwcgThreePanelUI context = contextStack.get(index);
             
-            displayContext(context);
-        }
-    }
-
-    private void displayContext(PwcgGuiContext context) 
-    {
-        try
-        {            
-            PWCGFrame.getInstance().setPanel(context);
-            
-            if (context.getLeftPanel() != null)
-            {
-                context.setLeftPanel(context.getLeftPanel());
-            }
-            if (context.getCenterPanel() != null)
-            {
-                context.setCenterPanel(context.getCenterPanel());
-            }
-            if (context.getRightPanel() != null)
-            {
-                context.setRightPanel(context.getRightPanel());
-            }
-        }
-        catch (Exception e)
-        {
-            PWCGLogger.logException(e);
-            ErrorDialog.internalError(e.getMessage());
-        }
-    }
-
-    /**
-     * This allows a context to change some panels without adding a new context to the stack.
-     * This is desirable when displaying things like page turning which would entail a newly rendered
-     * center panel within the same context (Pilot Log for example)
-     * 
-     * @throws PWCGException 
-     * 
-     */
-    public void changeCurrentContext(JPanel leftPanel, JPanel centerPanel, JPanel rightPanel) throws PWCGException  
-    {
-        PwcgGuiContext context = getCurrentContext();
-        if (leftPanel != null)
-        {
-            context.setLeftPanel(leftPanel);
-        }
-        
-        if (centerPanel != null)
-        {
-            context.setCenterPanel(centerPanel);
-        }
-        
-        if (rightPanel != null)
-        {
-            context.setRightPanel(rightPanel);
+            currentPanel.displayContext(context);
         }
     }
 }

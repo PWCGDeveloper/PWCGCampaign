@@ -17,7 +17,8 @@ import javax.swing.SwingConstants;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -25,14 +26,14 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CoopAdminGui extends PwcgGuiContext implements ActionListener
+public class CoopAdminGui extends PwcgThreePanelUI implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     private ButtonGroup buttonGroup = new ButtonGroup();
 
     public CoopAdminGui()
     {
-        super();
+        super(ImageResizingPanel.NO_IMAGE);
     }
     
     public void makePanels() 
@@ -62,7 +63,7 @@ public class CoopAdminGui extends PwcgGuiContext implements ActionListener
 
     public JPanel makeNavigatePanel() throws PWCGException  
     {
-        String imagePath = getSideImageMain("Barracks.jpg");
+        String imagePath = UiImageResolver.getSideImageMain("Barracks.jpg");
 
         JPanel navPanel = new ImageResizingPanel(imagePath);
         navPanel.setLayout(new BorderLayout());
@@ -80,7 +81,7 @@ public class CoopAdminGui extends PwcgGuiContext implements ActionListener
 
     public JPanel makeCoopAdminActionSelectPanel() throws PWCGException  
     {
-        String imagePath = getSideImageMain("Barracks2.jpg");
+        String imagePath = UiImageResolver.getSideImageMain("Barracks2.jpg");
 
         JPanel configPanel = new ImageResizingPanel(imagePath);
         configPanel.setLayout(new BorderLayout());
@@ -141,20 +142,23 @@ public class CoopAdminGui extends PwcgGuiContext implements ActionListener
             {
                 CoopPersonaInfoPanel coopPersonaInfoPanel = new CoopPersonaInfoPanel();
                 coopPersonaInfoPanel.makePanels();
-                CampaignGuiContextManager.getInstance().changeCurrentContext(null, coopPersonaInfoPanel, null);
+                this.setCenterPanel(coopPersonaInfoPanel);
+                CampaignGuiContextManager.getInstance().refreshCurrentContext(this);
             }
             else if (action.equalsIgnoreCase("Add Coop User"))
             {
                 CoopCreateUserPanel coopCreateUser = new CoopCreateUserPanel();
                 coopCreateUser.makePanels();
-                CampaignGuiContextManager.getInstance().changeCurrentContext(null, coopCreateUser, null);
+                this.setCenterPanel(coopCreateUser);
+                CampaignGuiContextManager.getInstance().refreshCurrentContext(this);
             }
             else if (action.contains("Remove Coop User"))
             {
                 CoopUserRemovePanel coopUserRemove = new CoopUserRemovePanel();
                 coopUserRemove.makePanels();
                 coopUserRemove.loadPanels();
-                CampaignGuiContextManager.getInstance().changeCurrentContext(null, coopUserRemove, null);
+                this.setCenterPanel(coopUserRemove);
+                CampaignGuiContextManager.getInstance().refreshCurrentContext(this);
             }
         }
         catch (Throwable e)

@@ -12,7 +12,9 @@ import javax.swing.JPanel;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -20,7 +22,7 @@ import pwcg.gui.utils.ImageJTabbedPane;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignIntelligencePanelSet extends PwcgGuiContext implements ActionListener
+public class CampaignIntelligencePanelSet extends PwcgThreePanelUI implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -29,7 +31,7 @@ public class CampaignIntelligencePanelSet extends PwcgGuiContext implements Acti
 
 	public CampaignIntelligencePanelSet(Campaign campaign)
 	{
-        super();
+        super(ImageResizingPanel.NO_IMAGE);
         this.campaign = campaign;
         this.setOpaque(false);
 	}
@@ -43,7 +45,7 @@ public class CampaignIntelligencePanelSet extends PwcgGuiContext implements Acti
 
 	private JPanel makeNavigatePanel() throws PWCGException  
 	{		
-        String imagePath = getSideImage(campaign, "IntelNav.jpg");
+        String imagePath = UiImageResolver.getSideImage(campaign, "IntelNav.jpg");
 
 		ImageResizingPanel intelPanel = new ImageResizingPanel(imagePath);
 		intelPanel.setLayout(new BorderLayout());
@@ -104,7 +106,8 @@ public class CampaignIntelligencePanelSet extends PwcgGuiContext implements Acti
 
             if (action.equalsIgnoreCase("IntelFinished"))
             {
-                finishedWithCampaignScreen();
+                campaign.write();                
+                CampaignGuiContextManager.getInstance().popFromContextStack();
             }
         }
         catch (Exception e)

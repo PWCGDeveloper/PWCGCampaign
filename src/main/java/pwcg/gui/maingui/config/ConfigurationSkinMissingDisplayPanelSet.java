@@ -21,7 +21,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MissingSkin;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.PwcgThreePanelUI;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -31,26 +32,20 @@ import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.gui.utils.ToolTipManager;
 
-public class ConfigurationSkinMissingDisplayPanelSet extends PwcgGuiContext implements ActionListener
+public class ConfigurationSkinMissingDisplayPanelSet extends PwcgThreePanelUI implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
     private Map<String, List<MissingSkin>> selectedMissingSkins = new HashMap<String, List<MissingSkin>>();
-	
-	/**
-	 * 
-	 */
+
 	public ConfigurationSkinMissingDisplayPanelSet(Map<String, List<MissingSkin>> selectedMissingSkins) 
 	{
+        super(ImageResizingPanel.NO_IMAGE);
 	    this.selectedMissingSkins = selectedMissingSkins;
 	    
 		setLayout(new BorderLayout());
 	}
-	
 
-    /**
-     * 
-     */
     public void makeGUI()
     {
         try
@@ -65,14 +60,9 @@ public class ConfigurationSkinMissingDisplayPanelSet extends PwcgGuiContext impl
         }
     }
 
-	
-	/**
-	 * @return
-	 * @throws PWCGException
-	 */
 	public JPanel makeButtonPanel() throws PWCGException 
 	{
-        String imagePath = getSideImageMain("SkinAnalysisNav.jpg");
+        String imagePath = UiImageResolver.getSideImageMain("SkinAnalysisNav.jpg");
 
         ImageResizingPanel campaignButtonPanel = new ImageResizingPanel(imagePath);
         campaignButtonPanel.setLayout(new BorderLayout());
@@ -98,13 +88,6 @@ public class ConfigurationSkinMissingDisplayPanelSet extends PwcgGuiContext impl
         return campaignButtonPanel;
  	}
 
-    
-    /**
-     * @param imageName
-     * @return
-     * @throws PWCGException 
-     * @
-     */
     private JButton makePlainButton(String buttonText, String commandText, String toolTiptext) throws PWCGException
     {
         JButton button = PWCGButtonFactory.makeMenuButton(buttonText, commandText, this);
@@ -113,18 +96,11 @@ public class ConfigurationSkinMissingDisplayPanelSet extends PwcgGuiContext impl
         return button;
     }
 
-
-
-    /**
-     * @return
-     * @throws PWCGException
-     */
     public JPanel makeCenterPanel() throws PWCGException 
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "paperFull.jpg";
         JPanel missingSkinDisplayPanel = new ImagePanelLayout(imagePath, new BorderLayout());
 
-        // The  award panel
         String header = generateReportHeader();
         
         JPanel reportPanel = new JPanel(new BorderLayout());
@@ -146,10 +122,6 @@ public class ConfigurationSkinMissingDisplayPanelSet extends PwcgGuiContext impl
         return missingSkinDisplayPanel;
     }
 
-
-    /**
-     * @return
-     */
     private String generateReportHeader()
     {
         int numMissingSkins = 0;
@@ -162,11 +134,6 @@ public class ConfigurationSkinMissingDisplayPanelSet extends PwcgGuiContext impl
         return "Missing Skin Report: " + numMissingSkins + " skins are missing";
     }
 
-
-    /**
-     * @return
-     * @throws PWCGException 
-     */
     private JPanel generateReportBody() throws PWCGException
     {
         JPanel reportBodyPanel = new JPanel(new GridLayout(0,2));
@@ -199,11 +166,6 @@ public class ConfigurationSkinMissingDisplayPanelSet extends PwcgGuiContext impl
         return reportBodyPanel;
     }
 
-
-
-	/* (non-Javadoc)
-	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
-	 */
 	public void actionPerformed(ActionEvent ae)
 	{
 		try
