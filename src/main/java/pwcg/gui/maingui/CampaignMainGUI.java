@@ -47,7 +47,6 @@ import pwcg.gui.rofmap.editmap.EditorMapGUI;
 import pwcg.gui.rofmap.infoMap.InfoMapGUI;
 import pwcg.gui.sound.MusicManager;
 import pwcg.gui.sound.SoundManager;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageButton;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -55,13 +54,13 @@ import pwcg.gui.utils.PWCGFrame;
 import pwcg.gui.utils.PWCGJButton;
 import pwcg.gui.utils.ToolTipManager;
 
-public class CampaignMainGUI extends PwcgThreePanelUI implements ActionListener
+public class CampaignMainGUI extends ImageResizingPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
     private static final String VERSION = "   PWCG Version 9.2.0";
 
+    private PwcgThreePanelUI pwcgThreePanel;
 	private List<JButton> campaignButtonList = new ArrayList<JButton>();
-	
 	private boolean displayFrontLineEditor = true;
 
 	public static void main(String[] args) 
@@ -72,9 +71,12 @@ public class CampaignMainGUI extends PwcgThreePanelUI implements ActionListener
 
 	public CampaignMainGUI() 
 	{
-	    super(ImageResizingPanel.NO_IMAGE);
+	    super("");
 		setLayout(new BorderLayout());
+		this.setBackground(Color.BLUE);
 		
+		pwcgThreePanel = new PwcgThreePanelUI(this);
+
 		try
 		{
 		    //SoundManager.getInstance().play("Song001.WAV");
@@ -92,32 +94,30 @@ public class CampaignMainGUI extends PwcgThreePanelUI implements ActionListener
         {
             cleanup();
             evaluateArgs(args);
-            
-            setupUI();
+            initializePWCGStaticData();
 
-            if (PwcgGuiModSupport.isRunningDebrief())
-            {
-                initialize();
-                startAtDebrief();
-            }
-            
-            boolean validInstall = validateInstallDirectory();
-            if (!validInstall)
-            {
-                ErrorDialog.userError("PWCGCampaign is installed to the wrong directory.  It should be installed to the game root directory");
-            }
-            
-            TestDriver testDriver = TestDriver.getInstance();
-            if (testDriver.isEnabled())
-            {
-                ErrorDialog.userError("PWCG test driver is enabled - PWCG will not function normally");
-            }            
+            setupUI();
+            makeGUI();
+            refresh();
+
+            startAtDebrief();
+            validateInstallDirectory();            
+            validatetestDriverNotEnabled();            
         }
         catch (Exception e)
         {
             PWCGLogger.logException(e);
         }
 	}
+
+    private void validatetestDriverNotEnabled()
+    {
+        TestDriver testDriver = TestDriver.getInstance();
+        if (testDriver.isEnabled())
+        {
+            ErrorDialog.userError("PWCG test driver is enabled - PWCG will not function normally");
+        }
+    }
 
     private void cleanup()
     {
@@ -167,8 +167,10 @@ public class CampaignMainGUI extends PwcgThreePanelUI implements ActionListener
                 }
             }
         }
+    }
 
-        // Kick off initialization
+    private void initializePWCGStaticData()
+    {
         PWCGContext.getInstance();
     }
 
@@ -176,18 +178,14 @@ public class CampaignMainGUI extends PwcgThreePanelUI implements ActionListener
     {
         Color tabSelectedColor = ColorMap.PAPER_BACKGROUND;
         UIManager.put("TabbedPane.selected", tabSelectedColor);
-
         PWCGFrame.getInstance();
-
         PWCGContext.getInstance().initializeMap();               
-        makeGUI();
     }
 
 	private void initialize() 
 	{
 		try
 		{
-			// On the main screen we will always baseline from the main map for the product
             PWCGContext.getInstance().initializeMap();    
 		}
 		catch (Exception e)
@@ -200,21 +198,16 @@ public class CampaignMainGUI extends PwcgThreePanelUI implements ActionListener
 	{
 		try
 		{
-		    CampaignGuiContextManager.getInstance().clearContextStack();
-		    CampaignGuiContextManager.getInstance().pushToContextStack(this);
-
-            // On the main screen we will always baseline from the main map for the product
 		    PWCGContext.getInstance().setCampaign(null);
             PWCGContext.getInstance().initializeMap();    
 
 			setButtonsEnabled();
 
 			PWCGContext.getInstance().setCampaign(null);
-			
-            JPanel campaignPanel = makeCampaignPanel();
+			pwcgThreePanel.setRightPanel(makeCampaignPanel());
             
-            this.setRightPanel(campaignPanel);
-            CampaignGuiContextManager.getInstance().refreshCurrentContext(this);
+            CampaignGuiContextManager.getInstance().clearContextStack();
+            CampaignGuiContextManager.getInstance().pushToContextStack(this);
 		}
 		catch (Exception e)
 		{
@@ -226,14 +219,15 @@ public class CampaignMainGUI extends PwcgThreePanelUI implements ActionListener
 	{
 		try
 		{
-			setLeftPanel(makeLeftPanel());
-            setCenterPanel(makeCenterPanel());
-			setRightPanel(makeCampaignPanel());
+	        String imagePath = UiImageResolver.getSideImageMain("MainFullScreen.jpg");
+	        this.setImage(imagePath);
+
+			this.add(makeLeftPanel(), BorderLayout.WEST);
+			this.add(makeCenterPanel(), BorderLayout.CENTER);
+			this.add(makeCampaignPanel(), BorderLayout.EAST);
+			pwcgThreePanel.setRightPanel(makeCampaignPanel());
 
 			setButtonsEnabled();
-
-			CampaignGuiContextManager.getInstance().clearContextStack();
-            CampaignGuiContextManager.getInstance().pushToContextStack(this);
 		}
 		catch (Exception e)
 		{
@@ -267,7 +261,7 @@ public class CampaignMainGUI extends PwcgThreePanelUI implements ActionListener
 		}
 	}
 
-	private boolean validateInstallDirectory()
+	private void validateInstallDirectory()
 	{
 		String missionFilepath = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir() + "Missions";
 		try
@@ -275,36 +269,32 @@ public class CampaignMainGUI extends PwcgThreePanelUI implements ActionListener
 			File file = new File(missionFilepath);
 			if (!file.exists())
 			{
-				return false;
+                ErrorDialog.userError("PWCGCampaign is installed to the wrong directory.  It should be installed to the game root directory");
 			}
 		}
 		catch (Exception e)
 		{
-			return false;
+            PWCGLogger.logException(e);
+            ErrorDialog.userError("Error during install validation");
 		}
-
-
-		return true;
 	}
 
 	public JPanel makeCenterPanel()  
 	{
-		String imagePath = ContextSpecificImages.menuPathMain() + "Main.jpg";
-
-		ImageResizingPanel mainCenterPanel = new ImageResizingPanel(imagePath);
-
+		JPanel mainCenterPanel = new JPanel();
+		mainCenterPanel.setLayout(new BorderLayout());
+		mainCenterPanel.setOpaque(false);
 		return mainCenterPanel;
 	}
 
 	public JPanel makeLeftPanel() throws PWCGException  
 	{
-        String imagePath = UiImageResolver.getSideImageMain("MainLeft.jpg");
-        
-		ImageResizingPanel configPanel = new ImageResizingPanel(imagePath);
-		configPanel.setLayout(new BorderLayout());
+	    JPanel mainLeftPanel = new JPanel();
+	    mainLeftPanel.setLayout(new BorderLayout());
+	    mainLeftPanel.setOpaque(false);
 
 		JPanel versionPanel = makeVersionPanel();
-		configPanel.add(versionPanel, BorderLayout.NORTH);
+		mainLeftPanel.add(versionPanel, BorderLayout.NORTH);
 
 		JPanel buttonPanel = new JPanel(new BorderLayout());
 		buttonPanel.setOpaque(false);
@@ -316,9 +306,9 @@ public class CampaignMainGUI extends PwcgThreePanelUI implements ActionListener
 		
 		buttonPanel.add(buttonPanelGrid, BorderLayout.NORTH);
 		
-		configPanel.add(buttonPanel, BorderLayout.CENTER);
+		mainLeftPanel.add(buttonPanel, BorderLayout.CENTER);
 
-		return configPanel;
+		return mainLeftPanel;
 	}
 
 	private void makeMenuButtons(JPanel buttonPanel) throws PWCGException 
@@ -393,10 +383,9 @@ public class CampaignMainGUI extends PwcgThreePanelUI implements ActionListener
 	{
 		MusicManager.playTitleTheme();
 
-        String imagePath = UiImageResolver.getSideImageMain("Enlist.jpg");
-
-		JPanel campaignPanel = new ImageResizingPanel(imagePath);
-		campaignPanel.setLayout( new BorderLayout());
+        JPanel campaignPanel = new JPanel();
+        campaignPanel.setLayout(new BorderLayout());
+        campaignPanel.setOpaque(false);
 
 		Color buttonBG = ColorMap.PAPER_BACKGROUND;
 		Color buttonFG = ColorMap.CHALK_FOREGROUND;
@@ -501,9 +490,13 @@ public class CampaignMainGUI extends PwcgThreePanelUI implements ActionListener
 
 	public void startAtDebrief() throws PWCGException 
 	{
-		AutoStart autoStartFile = new AutoStart();
-		autoStartFile.read();
-		loadCampaign(autoStartFile.getCampaignName());
+        if (PwcgGuiModSupport.isRunningDebrief())
+        {
+            initialize();
+            AutoStart autoStartFile = new AutoStart();
+            autoStartFile.read();
+            loadCampaign(autoStartFile.getCampaignName());
+        }
 	}
 
 	private void loadCampaign(String campaignName) throws PWCGException 

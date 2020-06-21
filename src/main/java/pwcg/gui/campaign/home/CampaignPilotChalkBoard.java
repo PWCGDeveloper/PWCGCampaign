@@ -21,6 +21,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ToolTipManager;
 
@@ -99,7 +100,7 @@ public class CampaignPilotChalkBoard extends ImageResizingPanel
         GridBagLayout squadronLayout = new GridBagLayout();        
         
         String imagePath = ContextSpecificImages.imagesMisc() + "chalkboard.png";
-        ImageResizingPanel squadronPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel squadronPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         squadronPanel.setOpaque(false);
         squadronPanel.setLayout(squadronLayout);
         

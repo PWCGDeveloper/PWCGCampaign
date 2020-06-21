@@ -19,7 +19,6 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -29,13 +28,14 @@ import pwcg.gui.helper.BriefingMissionFlight;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.mission.IMissionDescription;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionDescriptionFactory;
 
-public class BriefingDescriptionPanelSet extends PwcgThreePanelUI implements ActionListener, IFlightChanged
+public class BriefingDescriptionPanelSet extends JPanel implements ActionListener, IFlightChanged
 {
     private CampaignHomeGUI campaignHomeGui = null;
 
@@ -47,7 +47,7 @@ public class BriefingDescriptionPanelSet extends PwcgThreePanelUI implements Act
 
 	public BriefingDescriptionPanelSet(CampaignHomeGUI campaignHomeGui, Mission mission) throws PWCGException 
 	{
-        super(ImageResizingPanel.NO_IMAGE);
+        super();
 	    
         this.campaignHomeGui =  campaignHomeGui;
         this.mission =  mission;
@@ -66,8 +66,8 @@ public class BriefingDescriptionPanelSet extends PwcgThreePanelUI implements Act
             briefingFlightChooser.createBriefingSquadronSelectPanel();
 
 			this.removeAll();
-			setLeftPanel(makeLeftPanel());
-			setCenterPanel(makeBriefingPanel());
+			this.add(BorderLayout.WEST, makeLeftPanel());
+			this.add(BorderLayout.CENTER, makeBriefingPanel());
 	        setMissionText();
 		}
 		catch (Exception e)
@@ -80,7 +80,7 @@ public class BriefingDescriptionPanelSet extends PwcgThreePanelUI implements Act
     private JPanel makeLeftPanel() throws PWCGException 
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "BrickLeft.jpg";
-        ImageResizingPanel leftPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel leftPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         leftPanel.setLayout(new BorderLayout());
         leftPanel.setOpaque(false);
 
@@ -119,7 +119,7 @@ public class BriefingDescriptionPanelSet extends PwcgThreePanelUI implements Act
     public JPanel makeBriefingPanel() throws PWCGException  
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "BrickCenter.jpg";
-        JPanel briefingPanel = new ImageResizingPanel(imagePath);
+        JPanel briefingPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         briefingPanel.setLayout(new BorderLayout());
         briefingPanel.setOpaque(false);
 

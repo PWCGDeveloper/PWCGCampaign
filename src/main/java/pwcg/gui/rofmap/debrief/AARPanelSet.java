@@ -32,6 +32,7 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
 public class AARPanelSet extends AARPanel implements ActionListener
@@ -52,8 +53,8 @@ public class AARPanelSet extends AARPanel implements ActionListener
 
     public void makePanel() throws PWCGException
     {        
-        setCenterPanel(makeCenterPanel());
-        setLeftPanel(makeNavigationPanel());
+        this.add(BorderLayout.CENTER, makeCenterPanel());
+        this.add(BorderLayout.WEST, makeNavigationPanel());
 	}
     
 	private JPanel makeCenterPanel() throws PWCGException  
@@ -141,7 +142,7 @@ public class AARPanelSet extends AARPanel implements ActionListener
 	{
         String imagePath = UiImageResolver.getSideImage(campaign, "CombatReportNav.jpg");
 
-		ImageResizingPanel aarButtonPanel = new ImageResizingPanel(imagePath);
+		ImageResizingPanel aarButtonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
 		aarButtonPanel.setLayout(new BorderLayout());
 		aarButtonPanel.setOpaque(false);
 		

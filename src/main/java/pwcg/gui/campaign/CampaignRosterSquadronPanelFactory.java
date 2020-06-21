@@ -24,6 +24,7 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 
 public class CampaignRosterSquadronPanelFactory extends CampaignRosterBasePanelFactory
 {
@@ -74,7 +75,7 @@ public class CampaignRosterSquadronPanelFactory extends CampaignRosterBasePanelF
 	private JPanel makeDescPanel() throws PWCGException 
 	{
         String imagePath = ContextSpecificImages.imagesMisc() + "Plaque.jpg";
-        ImageResizingPanel descPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel descPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         descPanel.setLayout(new BorderLayout());
 
 		JPanel descGridPanel = new JPanel(new GridLayout(0, 1));

@@ -20,6 +20,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.rofmap.debrief.AAREventPanel;
 import pwcg.gui.rofmap.debrief.AARPanel;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
 public class AARMainPanel extends AARPanel implements ActionListener
@@ -34,6 +35,7 @@ public class AARMainPanel extends AARPanel implements ActionListener
     private JButton prevButton = null;
     private JButton nextButton = null;
     private JButton finishedButton = null;
+    private JPanel centerPanel;
 
     private int currentPanelIndex = 0;
     private EventPanelReason reasonToAdvanceTime = EventPanelReason.EVENT_PANEL_REASON_AAR;
@@ -68,7 +70,7 @@ public class AARMainPanel extends AARPanel implements ActionListener
 
 	public void makePanels() throws PWCGException  
 	{        
-        setLeftPanel(makeNavigationPanel());
+        this.add(BorderLayout.WEST, makeNavigationPanel());
 
         resetPanels();
 	}
@@ -77,7 +79,7 @@ public class AARMainPanel extends AARPanel implements ActionListener
 	{
         String imagePath = UiImageResolver.getSideImage(campaign, "MissionResultsNav.jpg");
 
-		ImageResizingPanel resultPanel = new ImageResizingPanel(imagePath);
+		ImageResizingPanel resultPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
 		resultPanel.setLayout(new BorderLayout());
 		resultPanel.setOpaque(false);
 
@@ -196,21 +198,21 @@ public class AARMainPanel extends AARPanel implements ActionListener
 	{
 		try
 		{
-            if (getCenterPanel() != null)
+            if (centerPanel != null)
             {
-                getCenterPanel().removeAll();
+                centerPanel.removeAll();
             }
 
-            makeCenterPanels();
+            centerPanel = makeCenterPanels();
             
 		    JPanel nextPanel = eventPanelsToDisplay.get(currentPanelIndex);
 
-		    setCenterPanel(nextPanel);
+		    this.add(BorderLayout.CENTER, nextPanel);
 		    
 		    enableButtonsAsNeeded();
 		    
-	        getCenterPanel().setVisible(false);
-	        getCenterPanel().setVisible(true);
+	        centerPanel.setVisible(false);
+	        centerPanel.setVisible(true);
 		}
 		catch (Exception e)
 		{

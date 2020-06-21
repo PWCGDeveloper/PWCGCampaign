@@ -31,14 +31,16 @@ import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.maingui.CampaignMainGUI;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGFrame;
 
-public class CampaignGeneratorPanelSet extends PwcgThreePanelUI implements ActionListener
+public class CampaignGeneratorPanelSet extends JPanel implements ActionListener
 {    
     private static final long serialVersionUID = 1L;
 
     private CampaignMainGUI mainGUI = null;
+    private PwcgThreePanelUI pwcgThreePanel;
     private JButton profileFinishedButton = null;
     private JButton createCampaignButton = null;
     private CampaignGeneratorProfileGUI campaignProfileUI = null;
@@ -49,8 +51,12 @@ public class CampaignGeneratorPanelSet extends PwcgThreePanelUI implements Actio
 
     public CampaignGeneratorPanelSet(CampaignMainGUI mainGUI)
     {
-        super(ImageResizingPanel.NO_IMAGE);
+        super();
+        this.setLayout(new BorderLayout());
         this.mainGUI = mainGUI;
+
+        pwcgThreePanel = new PwcgThreePanelUI(this);
+
         campaignProfileUI = new CampaignGeneratorProfileGUI(this);
         campaignGeneratorDataEntryGUI = new CampaignGeneratorDataEntryGUI(this);
         campaignGeneratorState = new CampaignGeneratorState(campaignGeneratorDO);
@@ -60,9 +66,10 @@ public class CampaignGeneratorPanelSet extends PwcgThreePanelUI implements Actio
     {
         try
         {
-            setRightPanel (makeProceedButtonPanel());
-            setLeftPanel(makeButtonPanel());
-            setCenterPanel(makeCampaignProfilePanel());
+            pwcgThreePanel.setCenterPanel(makeCampaignProfilePanel());
+            pwcgThreePanel.setRightPanel (makeProceedButtonPanel());
+
+            this.add(BorderLayout.WEST, makeButtonPanel());
         }
         catch (Throwable e)
         {
@@ -75,7 +82,7 @@ public class CampaignGeneratorPanelSet extends PwcgThreePanelUI implements Actio
     {
         String imagePath = UiImageResolver.getSideImageMain("CampaignGenNav.jpg");
         
-        ImageResizingPanel configPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel configPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         configPanel.setLayout(new BorderLayout());
         configPanel.setOpaque(true);
         
@@ -102,7 +109,7 @@ public class CampaignGeneratorPanelSet extends PwcgThreePanelUI implements Actio
     {
         String imagePath = UiImageResolver.getSideImageMain("CampaignGenNav.jpg");
         
-        ImageResizingPanel configPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel configPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         configPanel.setLayout(new BorderLayout());
         configPanel.setOpaque(true);
         
@@ -167,12 +174,11 @@ public class CampaignGeneratorPanelSet extends PwcgThreePanelUI implements Actio
     private void proceedToCampaignPilotInput() throws PWCGException
     {
         campaignGeneratorState.buildStateStack();
-        setCenterPanel(makeCampaignDataEntryPanel());
 
-        setRightPanel(makeProfileInfoPanel());
+        pwcgThreePanel.setCenterPanel(makeCampaignDataEntryPanel());
+        pwcgThreePanel.setRightPanel (makeProfileInfoPanel());
 
-        revalidate();
-        repaint();
+        CampaignGuiContextManager.getInstance().refreshCurrentContext(this);
     }
 
     private void buildNewCampaign() throws PWCGException, PWCGUserException, Exception
@@ -203,7 +209,7 @@ public class CampaignGeneratorPanelSet extends PwcgThreePanelUI implements Actio
     public void changeService(ArmedService service) throws PWCGException
     {
         campaignGeneratorDO.setService(service);                
-        this.setCenterPanel(campaignProfileUI);
+        this.add(BorderLayout.CENTER, campaignProfileUI);
         CampaignGuiContextManager.getInstance().refreshCurrentContext(this);
         evaluateCompletionState();
     }

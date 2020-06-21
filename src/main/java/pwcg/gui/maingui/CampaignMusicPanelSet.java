@@ -19,7 +19,6 @@ import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -27,9 +26,10 @@ import pwcg.gui.sound.MusicManager;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignMusicPanelSet extends PwcgThreePanelUI implements ActionListener, ChangeListener
+public class CampaignMusicPanelSet extends JPanel implements ActionListener, ChangeListener
 {    
     private static final long serialVersionUID = 1L;
     
@@ -41,7 +41,8 @@ public class CampaignMusicPanelSet extends PwcgThreePanelUI implements ActionLis
 
     public CampaignMusicPanelSet(CampaignMainGUI parent)
     {
-        super(ImageResizingPanel.NO_IMAGE);
+        super();
+        this.setLayout(new BorderLayout());
         this.parent = parent;
     }
 
@@ -49,8 +50,8 @@ public class CampaignMusicPanelSet extends PwcgThreePanelUI implements ActionLis
     {
         try
         {
-            setLeftPanel(makeButtonPanel());
-            setCenterPanel(makeCampaignSelectPanel());
+            this.add(BorderLayout.WEST, makeButtonPanel());
+            this.add(BorderLayout.CENTER, makeCampaignSelectPanel());
         }
         catch (Throwable e)
         {
@@ -63,7 +64,7 @@ public class CampaignMusicPanelSet extends PwcgThreePanelUI implements ActionLis
     {
         String imagePath = UiImageResolver.getSideImageMain("MusicLeft.jpg");
         
-        ImageResizingPanel configPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel configPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         configPanel.setLayout(new BorderLayout());
         configPanel.setOpaque(true);
         
@@ -89,7 +90,7 @@ public class CampaignMusicPanelSet extends PwcgThreePanelUI implements ActionLis
     {
         String imagePath = ContextSpecificImages.menuPathMain() + "MusicCenter.jpg";
 
-        ImageResizingPanel musicControlPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel musicControlPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         musicControlPanel.setLayout(new BorderLayout());
         musicControlPanel.setOpaque(true);
         

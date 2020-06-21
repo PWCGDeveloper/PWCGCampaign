@@ -36,6 +36,7 @@ import pwcg.gui.rofmap.MapGUI;
 import pwcg.gui.rofmap.MapScroll;
 import pwcg.gui.utils.CampaignTransitionDates;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
 public class InfoMapGUI extends MapGUI implements ActionListener
@@ -74,9 +75,9 @@ public class InfoMapGUI extends MapGUI implements ActionListener
             setOpaque(false);
             setBackground(bg);
             
-            setLeftPanel(makeNavigationPanel());            
-            setRightPanel(makeSelectionPanel());
-            setCenterPanel(createMapPanel());
+            this.add(BorderLayout.WEST, makeNavigationPanel());            
+            this.add(BorderLayout.EAST, makeSelectionPanel());
+            this.add(BorderLayout.CENTER, createMapPanel());
         }
         catch (Exception e)
         {
@@ -106,7 +107,7 @@ public class InfoMapGUI extends MapGUI implements ActionListener
     {
         String imagePath = UiImageResolver.getSideImageMain("CampaignInfoRight.jpg");
 
-        ImageResizingPanel intelNavPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel intelNavPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         intelNavPanel.setLayout(new BorderLayout());
         intelNavPanel.setOpaque(false);
 
@@ -139,7 +140,7 @@ public class InfoMapGUI extends MapGUI implements ActionListener
     {
         String imagePath = UiImageResolver.getSideImageMain("CampaignInfoLeft.jpg");
 
-        ImageResizingPanel selectionPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel selectionPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         selectionPanel.setLayout(new GridLayout(0,1));
         selectionPanel.setOpaque(false);
 

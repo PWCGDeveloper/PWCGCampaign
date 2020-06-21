@@ -35,6 +35,7 @@ import pwcg.gui.rofmap.MapGUI;
 import pwcg.gui.rofmap.MapScroll;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.mission.Mission;
@@ -95,10 +96,10 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 			setOpaque(false);
 			setBackground(bg);
 			
-            setCenterPanel(createCenterPanel());
+            this.add(BorderLayout.CENTER, createCenterPanel());
             createMissionEditPanel();
-            setRightPanel(editorPanel);
-            setLeftPanel(makeLeftPanel());           
+            this.add(BorderLayout.EAST, editorPanel);
+            this.add(BorderLayout.WEST, makeLeftPanel());           
             
             updateWaypointsOnMap();
 
@@ -150,7 +151,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
     private JPanel makeLeftPanel() throws PWCGException 
     {
         String imagePath = UiImageResolver.getSideImage(campaignHomeGui.getCampaign(), "BriefingNav.jpg");
-        ImageResizingPanel leftPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel leftPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         leftPanel.setLayout(new BorderLayout());
         leftPanel.setOpaque(false);
 
@@ -209,7 +210,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
     {       
         createMissionEditPanel();
         
-        setRightPanel(editorPanel);
+        this.add(BorderLayout.EAST, editorPanel);
         
         updateWaypointsOnMap();
     }
@@ -225,7 +226,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 	{
         String imagePath = ContextSpecificImages.imagesMisc() + "PaperPart.jpg";
 
-		editorPanel = new ImageResizingPanel(imagePath);
+		editorPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
 		editorPanel.setLayout(new BorderLayout());
 		editorPanel.setOpaque(false);
 
@@ -601,9 +602,9 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
     private void refreshAllPanels() throws PWCGException
     {
         createMissionEditPanel();
-        setRightPanel(editorPanel);
-        setCenterPanel(createCenterPanel());
-        setLeftPanel(makeLeftPanel());
+        this.add(BorderLayout.EAST, editorPanel);
+        this.add(BorderLayout.CENTER, createCenterPanel());
+        this.add(BorderLayout.WEST, makeLeftPanel());
     }
     
     private boolean isChangedSquadronSameSide(Squadron before, Squadron after) throws PWCGException
@@ -619,7 +620,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
     public void squadronsSelectedChanged(Map<Integer, String> selectedSquadrons) throws PWCGException
     {
         this.selectedSquadrons = selectedSquadrons;
-        setCenterPanel(createCenterPanel());
+        this.add(BorderLayout.CENTER, createCenterPanel());
     }
     
     public void refreshScreen() throws PWCGException

@@ -1,49 +1,57 @@
 package pwcg.gui;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JPanel;
 
-import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.core.exception.PWCGException;
 
-public abstract class PwcgThreePanelUI extends ImageResizingPanel
+public class PwcgThreePanelUI
 {
-    public PwcgThreePanelUI(String imagePath)
+    private JPanel parent;
+    private JPanel leftPanel;
+    private JPanel centerPanel;
+    private JPanel rightPanel;
+    
+    public PwcgThreePanelUI(JPanel parent)
     {
-        super(imagePath);
+        this.parent = parent;
     }
 
-    protected static final long serialVersionUID = 1L;
-
-    private JPanel leftPanel = null;
-    private JPanel rightPanel = null;
-    private JPanel centerPanel = null;
-
-    public JPanel getLeftPanel()
+    public void setLeftPanel(JPanel coopPersonaInfoPanel) throws PWCGException
     {
-        return leftPanel;
+        if (leftPanel != null)
+        {
+            parent.remove(leftPanel);
+        }
+        
+        leftPanel = coopPersonaInfoPanel;
+        parent.add(BorderLayout.WEST, leftPanel);
+        CampaignGuiContextManager.getInstance().refreshCurrentContext(parent);
     }
 
-    public void setLeftPanel(JPanel leftPanel)
+    public void setRightPanel(JPanel coopPersonaInfoPanel) throws PWCGException
     {
-        this.leftPanel = leftPanel;
+        if (rightPanel != null)
+        {
+            parent.remove(rightPanel);
+        }
+        
+        rightPanel = coopPersonaInfoPanel;
+        parent.add(BorderLayout.EAST, rightPanel);
+        CampaignGuiContextManager.getInstance().refreshCurrentContext(parent);
     }
 
-    public JPanel getRightPanel()
+    public void setCenterPanel(JPanel coopPersonaInfoPanel) throws PWCGException
     {
-        return rightPanel;
+        if (centerPanel != null)
+        {
+            parent.remove(centerPanel);
+        }
+        
+        centerPanel = coopPersonaInfoPanel;
+        parent.add(BorderLayout.CENTER, centerPanel);
+        CampaignGuiContextManager.getInstance().refreshCurrentContext(parent);
     }
 
-    public void setRightPanel(JPanel rightPanel)
-    {
-        this.rightPanel = rightPanel;
-    }
-
-    public JPanel getCenterPanel()
-    {
-        return centerPanel;
-    }
-
-    public void setCenterPanel(JPanel centerPanel)
-    {
-        this.centerPanel = centerPanel;
-    }
 }

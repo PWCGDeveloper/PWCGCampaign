@@ -16,6 +16,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageJTabbedPane;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 
 public class AARClaimPanels extends AARPanel
 {
@@ -36,7 +37,7 @@ public class AARClaimPanels extends AARPanel
         try
         {
             String imagePath = ContextSpecificImages.imagesMisc() + "Paper.jpg";
-            claimPanelSet = new ImageResizingPanel(imagePath);
+            claimPanelSet = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
             claimPanelSet.setLayout(new BorderLayout());
 
             Color tabBG = ColorMap.PAPER_BACKGROUND;

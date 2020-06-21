@@ -16,26 +16,27 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.CampaignRosterBasePanelFactory;
 import pwcg.gui.campaign.CampaignRosterSquadronPanelFactory;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ToolTipManager;
 import pwcg.gui.utils.UIUtils;
 
-public class CampaignSkinManagerPanel extends PwcgThreePanelUI implements ActionListener
+public class CampaignSkinManagerPanel extends JPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     
     private SkinSessionManager skinSessionManager = new SkinSessionManager();
     private Campaign campaign;
+    private JPanel centerPanel;
 
     public CampaignSkinManagerPanel(Campaign campaign) 
     {
-        super(ImageResizingPanel.NO_IMAGE);
+        super();
         this.campaign = campaign;
     }
 
@@ -43,8 +44,8 @@ public class CampaignSkinManagerPanel extends PwcgThreePanelUI implements Action
     {
         try
         {
-            setLeftPanel(makeLeftPanel());
-            setRightPanel(createRightPanel());
+            this.add(BorderLayout.WEST, makeLeftPanel());
+            this.add(BorderLayout.EAST, createRightPanel());
             SquadronMember referencePlayer = campaign.findReferencePlayer();
             createCenterPanel(referencePlayer);                
         }
@@ -70,28 +71,28 @@ public class CampaignSkinManagerPanel extends PwcgThreePanelUI implements Action
 
     private void createCenterPanel(SquadronMember pilot) throws PWCGException
     {
-        if (getCenterPanel() != null)
+        if (centerPanel != null)
         {
-            this.remove(getCenterPanel());
+            this.remove(centerPanel);
         }
 
         skinSessionManager.setPilot(pilot);
         CampaignSkinManagerForPilotPanel campaignSquadronSkinPilotPanel = new CampaignSkinManagerForPilotPanel(campaign, skinSessionManager);
         campaignSquadronSkinPilotPanel.makePanels();
         
-        setCenterPanel(campaignSquadronSkinPilotPanel);
+        this.add(BorderLayout.CENTER, campaignSquadronSkinPilotPanel);
         
-        add(getCenterPanel(), BorderLayout.CENTER);
+        add(centerPanel, BorderLayout.CENTER);
         
-        getCenterPanel().revalidate();
-        getCenterPanel().repaint();
+        centerPanel.revalidate();
+        centerPanel.repaint();
     }
 
     private JPanel makeLeftPanel() throws PWCGException 
     {
         String imagePath = UiImageResolver.getSideImage(campaign, "CampaignSkinLeft.jpg");
 
-        ImageResizingPanel campaignButtonPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel campaignButtonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         campaignButtonPanel.setLayout(new BorderLayout());
         campaignButtonPanel.setOpaque(true);
 

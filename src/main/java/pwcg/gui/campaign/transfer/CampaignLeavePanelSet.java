@@ -21,7 +21,6 @@ import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
@@ -30,9 +29,10 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignLeavePanelSet extends PwcgThreePanelUI implements ActionListener
+public class CampaignLeavePanelSet extends JPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -42,7 +42,7 @@ public class CampaignLeavePanelSet extends PwcgThreePanelUI implements ActionLis
 
 	public CampaignLeavePanelSet  (CampaignHomeGUI parent)
 	{
-        super(ImageResizingPanel.NO_IMAGE);
+        super();
 
 		this.parent = parent;
         this.campaign = PWCGContext.getInstance().getCampaign();
@@ -54,16 +54,16 @@ public class CampaignLeavePanelSet extends PwcgThreePanelUI implements ActionLis
 
 	public void makePanels() throws PWCGException  
 	{
-	    setCenterPanel(makeLeaveCenterPanel());
-	    setLeftPanel(makeLeaveLeftPanel());
-	    setRightPanel(null);
+	    this.add(BorderLayout.CENTER, makeLeaveCenterPanel());
+	    this.add(BorderLayout.WEST, makeLeaveLeftPanel());
+	    this.add(BorderLayout.EAST, null);
 	}
 
 	private JPanel makeLeaveLeftPanel() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getSideImage(campaign, "LeaveNav.jpg");
 
-		ImageResizingPanel leaverPanel = new ImageResizingPanel(imagePath);
+		ImageResizingPanel leaverPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
 		leaverPanel.setLayout(new BorderLayout());
 		leaverPanel.setOpaque(false);
 
@@ -87,7 +87,7 @@ public class CampaignLeavePanelSet extends PwcgThreePanelUI implements ActionLis
         try
         {
             String imagePath = ContextSpecificImages.imagesMisc() + "Paper.jpg";
-            leaveCenterPanel = new ImageResizingPanel(imagePath);            
+            leaveCenterPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);            
             leaveCenterPanel.setLayout(new BorderLayout());
     
             JPanel leavePanel = new JPanel (new GridLayout(0, 3));

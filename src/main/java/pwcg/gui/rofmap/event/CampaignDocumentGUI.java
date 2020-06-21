@@ -24,8 +24,9 @@ public abstract class CampaignDocumentGUI extends AAREventPanel
     {
         try
         {
-            String imagePath = ContextSpecificImages.imagesMisc() + "PaperFull.jpg";
-            setImage(imagePath);
+            // TODO UI RETHINK
+            //String imagePath = ContextSpecificImages.imagesMisc() + "PaperFull.jpg";
+            //setImage(imagePath);
             
             String headerText = getHeaderText();
             String bodyText = getBodyText();

@@ -19,7 +19,6 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -28,10 +27,11 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGJButton;
 
-public class CampaignPilotLogPanel extends PwcgThreePanelUI implements ActionListener
+public class CampaignPilotLogPanel extends JPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -42,10 +42,11 @@ public class CampaignPilotLogPanel extends PwcgThreePanelUI implements ActionLis
     private int pageNum = 1;
     private PilotLogPages pilotLogPages;
     private Campaign campaign;
+    private JPanel centerPanel = null;
 
     public CampaignPilotLogPanel(Campaign campaign, SquadronMember pilot)
     {
-        super(ImageResizingPanel.NO_IMAGE);
+        super();
 
         this.pilot = pilot;  
         this.campaign = campaign;  
@@ -61,8 +62,10 @@ public class CampaignPilotLogPanel extends PwcgThreePanelUI implements ActionLis
         pilotLogPages = new PilotLogPages(campaign, pilot);
         pilotLogPages.makePages();
         
-		setLeftPanel(makeNavigationPanel());
-		setCenterPanel(makeLogCenterPanel());
+		this.add(BorderLayout.WEST, makeNavigationPanel());
+		
+		centerPanel = makeLogCenterPanel();
+		this.add(BorderLayout.CENTER, centerPanel);
 		
         makePages();        
 	}
@@ -71,7 +74,7 @@ public class CampaignPilotLogPanel extends PwcgThreePanelUI implements ActionLis
     {
         String imagePath = UiImageResolver.getSideImage(campaign, "PilotInfoNav.jpg");
 
-        ImageResizingPanel journalPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel journalPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         journalPanel.setLayout(new BorderLayout());
         journalPanel.setOpaque(false);
 
@@ -89,7 +92,7 @@ public class CampaignPilotLogPanel extends PwcgThreePanelUI implements ActionLis
 	private JPanel  makeLogCenterPanel() throws PWCGException  
 	{
         String imagePath = ContextSpecificImages.imagesMisc() + "PilotLog.jpg";
-        ImageResizingPanel campaignPilotLogPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel campaignPilotLogPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         campaignPilotLogPanel.setLayout(new GridLayout(0,2));
         campaignPilotLogPanel.setOpaque(false);
 
@@ -98,7 +101,7 @@ public class CampaignPilotLogPanel extends PwcgThreePanelUI implements ActionLis
 
 	private void makePages() throws PWCGException  
 	{
-		getCenterPanel().removeAll();
+		centerPanel.removeAll();
 
 		if (leftpage != null)
 		{
@@ -129,8 +132,8 @@ public class CampaignPilotLogPanel extends PwcgThreePanelUI implements ActionLis
 		leftpage = makePage (leftPageEntries, leftPageNum);
 		rightpage = makePage (rightPageEntries, rightPageNum);
 
-		getCenterPanel().add(leftpage);
-		getCenterPanel().add(rightpage);
+		centerPanel.add(leftpage);
+		centerPanel.add(rightpage);
 	}
 
 	private JPanel makePage(StringBuffer pageEntries, int pageNum) throws PWCGException 
@@ -293,8 +296,8 @@ public class CampaignPilotLogPanel extends PwcgThreePanelUI implements ActionLis
         SoundManager.getInstance().playSound("PageTurn.WAV");
         this.pageNum -= 2;
         makePages();
-        getCenterPanel().setVisible(false);
-        getCenterPanel().setVisible(true);
+        centerPanel.setVisible(false);
+        centerPanel.setVisible(true);
     }
 
     private void nextPage() throws PWCGException
@@ -302,8 +305,8 @@ public class CampaignPilotLogPanel extends PwcgThreePanelUI implements ActionLis
         SoundManager.getInstance().playSound("PageTurn.WAV");
         this.pageNum += 2;
         makePages();
-        getCenterPanel().setVisible(false);
-        getCenterPanel().setVisible(true);
+        centerPanel.setVisible(false);
+        centerPanel.setVisible(true);
     }
 
 }

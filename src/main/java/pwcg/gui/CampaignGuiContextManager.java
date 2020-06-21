@@ -3,14 +3,16 @@ package pwcg.gui;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JPanel;
+
 import pwcg.core.exception.PWCGException;
+import pwcg.gui.utils.PWCGFrame;
 
 public class CampaignGuiContextManager
 {
     private static CampaignGuiContextManager instance = new CampaignGuiContextManager();
     
-    private List<PwcgThreePanelUI> contextStack = new ArrayList<>();
-    private PwcgGuiCurrentPanel currentPanel = new PwcgGuiCurrentPanel();
+    private List<JPanel> contextStack = new ArrayList<>();
 
     private CampaignGuiContextManager()
     {
@@ -26,13 +28,12 @@ public class CampaignGuiContextManager
         contextStack.clear();
     }
 
-    public void refreshCurrentContext(PwcgThreePanelUI context) throws PWCGException
+    public void refreshCurrentContext(JPanel context) throws PWCGException
     {
-        popFromContextStack();
-        pushToContextStack(context);
+        displayCurrentContext();
     }
 
-    public void pushToContextStack(PwcgThreePanelUI context) throws PWCGException
+    public void pushToContextStack(JPanel context) throws PWCGException
     {
         contextStack.add(context);
         displayCurrentContext();
@@ -53,9 +54,8 @@ public class CampaignGuiContextManager
         if (contextStack.size() > 0)
         {
             int index = contextStack.size() - 1;
-            PwcgThreePanelUI context = contextStack.get(index);
-            
-            currentPanel.displayContext(context);
+            JPanel context = contextStack.get(index);
+            PWCGFrame.getInstance().setPanel(context);
         }
     }
 }

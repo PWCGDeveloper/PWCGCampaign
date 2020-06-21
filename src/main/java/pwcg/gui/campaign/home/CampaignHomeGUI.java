@@ -23,7 +23,6 @@ import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.maingui.CampaignMainGUI;
@@ -31,10 +30,11 @@ import pwcg.gui.rofmap.event.AARMainPanel;
 import pwcg.gui.rofmap.event.AARMainPanel.EventPanelReason;
 import pwcg.gui.sound.MusicManager;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ToolTipManager;
 
-public class CampaignHomeGUI extends PwcgThreePanelUI implements ActionListener
+public class CampaignHomeGUI extends JPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -48,7 +48,7 @@ public class CampaignHomeGUI extends PwcgThreePanelUI implements ActionListener
 
     public CampaignHomeGUI(CampaignMainGUI parent, Campaign campaign) throws PWCGException
     {
-        super(ImageResizingPanel.NO_IMAGE);
+        super();
         this.parent = parent;
         this.campaign = campaign;
         this.chalkboardSelector = new ChalkboardSelector(this);
@@ -81,7 +81,7 @@ public class CampaignHomeGUI extends PwcgThreePanelUI implements ActionListener
     {
         String imagePath = UiImageResolver.getSideImage(campaign, "BrickLeft.jpg");
 
-        ImageResizingPanel campaignButtonPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel campaignButtonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         campaignButtonPanel.setLayout(new BorderLayout());
         campaignButtonPanel.setOpaque(true);
 
@@ -278,7 +278,7 @@ public class CampaignHomeGUI extends PwcgThreePanelUI implements ActionListener
     public void createCampaignHomeContext() throws PWCGException
     {
         MusicManager.playCampaignTheme(determineCampaignSideForMusic());
-        setLeftPanel(makeLeftPanel());
+        this.add(BorderLayout.WEST, makeLeftPanel());
         chalkboardSelector.createPlayerSquadronContext();
 
     }

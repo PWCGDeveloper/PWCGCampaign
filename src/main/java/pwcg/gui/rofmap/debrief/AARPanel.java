@@ -2,16 +2,15 @@ package pwcg.gui.rofmap.debrief;
 
 import java.awt.BorderLayout;
 
-import pwcg.gui.PwcgThreePanelUI;
-import pwcg.gui.utils.ImageResizingPanel;
+import javax.swing.JPanel;
 
-public abstract class AARPanel extends PwcgThreePanelUI
+public abstract class AARPanel extends JPanel
 {
     private static final long serialVersionUID = 1L;
 
     public AARPanel ()
     {
-        super(ImageResizingPanel.NO_IMAGE);
+        super();
         this.setLayout(new BorderLayout());
     }
 }

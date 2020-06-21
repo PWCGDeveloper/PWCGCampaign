@@ -18,15 +18,15 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.CampaignRemover;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignDeletePanelSet extends PwcgThreePanelUI implements ActionListener
+public class CampaignDeletePanelSet extends JPanel implements ActionListener
 {    
     private static final long serialVersionUID = 1L;
     
@@ -35,7 +35,8 @@ public class CampaignDeletePanelSet extends PwcgThreePanelUI implements ActionLi
 
     public CampaignDeletePanelSet(CampaignMainGUI parent)
     {
-        super(ImageResizingPanel.NO_IMAGE);
+        super();
+        this.setLayout(new BorderLayout());
         this.parent = parent;
     }
 
@@ -43,8 +44,8 @@ public class CampaignDeletePanelSet extends PwcgThreePanelUI implements ActionLi
     {
         try
         {
-            setLeftPanel(makeButtonPanel());
-            setCenterPanel(makeCampaignSelectPanel());
+            this.add(BorderLayout.WEST, makeButtonPanel());
+            this.add(BorderLayout.CENTER, makeCampaignSelectPanel());
         }
         catch (Throwable e)
         {
@@ -57,7 +58,7 @@ public class CampaignDeletePanelSet extends PwcgThreePanelUI implements ActionLi
     {
         String imagePath = UiImageResolver.getSideImageMain("CampaignDeleteNav.jpg");
         
-        ImageResizingPanel configPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel configPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         configPanel.setLayout(new BorderLayout());
         configPanel.setOpaque(true);
         
@@ -83,7 +84,7 @@ public class CampaignDeletePanelSet extends PwcgThreePanelUI implements ActionLi
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "paperHalf.jpg";
         
-        ImageResizingPanel campaignSelectPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel campaignSelectPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         campaignSelectPanel.setLayout(new BorderLayout());
         campaignSelectPanel.setOpaque(true);
         

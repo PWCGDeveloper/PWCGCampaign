@@ -1,15 +1,16 @@
 package pwcg.gui.rofmap;
 
+import java.awt.BorderLayout;
 import java.awt.Point;
 import java.util.Date;
+
+import javax.swing.JPanel;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.gui.PwcgThreePanelUI;
-import pwcg.gui.utils.ImageResizingPanel;
 
-public abstract class MapGUI extends PwcgThreePanelUI
+public abstract class MapGUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 
@@ -18,7 +19,8 @@ public abstract class MapGUI extends PwcgThreePanelUI
 
 	public MapGUI(Date mapDate) throws PWCGException
 	{
-        super(ImageResizingPanel.NO_IMAGE);
+        super();
+        this.setLayout(new BorderLayout());
 	    setMapDate(mapDate);
 	}
 	

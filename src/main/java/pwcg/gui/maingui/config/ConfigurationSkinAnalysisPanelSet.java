@@ -29,7 +29,6 @@ import pwcg.core.utils.MissingSkin;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.SkinAnalyzer;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -41,11 +40,12 @@ import pwcg.gui.maingui.SkinReportGenerator;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImagePanelLayout;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.gui.utils.ToolTipManager;
 
-public class ConfigurationSkinAnalysisPanelSet extends PwcgThreePanelUI implements ActionListener
+public class ConfigurationSkinAnalysisPanelSet extends JPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -55,7 +55,7 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgThreePanelUI implemen
 
 	public ConfigurationSkinAnalysisPanelSet(CampaignMainGUI parent) 
 	{
-        super(ImageResizingPanel.NO_IMAGE);
+        super();
 		setLayout(new BorderLayout());
 
 		this.parent = parent;
@@ -67,8 +67,8 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgThreePanelUI implemen
         {
             skinAnalyzer.analyze();
             
-            setLeftPanel(makeButtonPanel());
-            setCenterPanel(makeCenterPanel());
+            this.add(BorderLayout.WEST, makeButtonPanel());
+            this.add(BorderLayout.CENTER, makeCenterPanel());
         }
         catch (Exception e)
         {
@@ -81,7 +81,7 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgThreePanelUI implemen
 	{
         String imagePath = UiImageResolver.getSideImageMain("SkinAnalysisNav.jpg");
 
-        ImageResizingPanel campaignButtonPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel campaignButtonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         campaignButtonPanel.setLayout(new BorderLayout());
         campaignButtonPanel.setOpaque(true);
 

@@ -17,6 +17,7 @@ import pwcg.gui.campaign.home.CampaignPilotChalkBoard;
 import pwcg.gui.campaign.pilot.CampaignPilotListPanel;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 
 /**
  * Generates chalk board and pilot set for top aces
@@ -98,7 +99,7 @@ public class CampaignRosterTopAcesPanelFactory extends CampaignRosterBasePanelFa
     private JPanel makeDescPanel() throws PWCGException 
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "Plaque.jpg";
-        ImageResizingPanel descPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel descPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         descPanel.setLayout(new BorderLayout());
         
         return descPanel;

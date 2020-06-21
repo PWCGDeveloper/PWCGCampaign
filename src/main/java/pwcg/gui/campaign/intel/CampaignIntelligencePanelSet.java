@@ -13,16 +13,16 @@ import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageJTabbedPane;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignIntelligencePanelSet extends PwcgThreePanelUI implements ActionListener
+public class CampaignIntelligencePanelSet extends JPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -31,23 +31,23 @@ public class CampaignIntelligencePanelSet extends PwcgThreePanelUI implements Ac
 
 	public CampaignIntelligencePanelSet(Campaign campaign)
 	{
-        super(ImageResizingPanel.NO_IMAGE);
         this.campaign = campaign;
         this.setOpaque(false);
 	}
 
 	public void makePanels() throws PWCGException  
 	{
-        setRightPanel(null);
-        setCenterPanel( makeCenterPanel());
-        setLeftPanel(makeNavigatePanel());
+        this.add(BorderLayout.EAST, null);
+        this.add(BorderLayout.CENTER,  makeCenterPanel());
+        this.add(BorderLayout.WEST, makeNavigatePanel());
 	}
 
 	private JPanel makeNavigatePanel() throws PWCGException  
 	{		
         String imagePath = UiImageResolver.getSideImage(campaign, "IntelNav.jpg");
 
-		ImageResizingPanel intelPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel intelPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+
 		intelPanel.setLayout(new BorderLayout());
 		intelPanel.setOpaque(false);
 
@@ -69,7 +69,7 @@ public class CampaignIntelligencePanelSet extends PwcgThreePanelUI implements Ac
 		try
 		{
 	        String imagePath = ContextSpecificImages.imagesMisc() + "Paper.jpg";
-			intelPanel = new ImageResizingPanel(imagePath);
+	        intelPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
 			intelPanel.setLayout(new BorderLayout());
 			
 			Color tabBG = ColorMap.PAPER_BACKGROUND;

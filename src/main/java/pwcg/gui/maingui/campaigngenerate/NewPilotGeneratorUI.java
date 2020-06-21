@@ -20,15 +20,15 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.coop.CampaignAdminCoopPilotPanelSet;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class NewPilotGeneratorUI extends PwcgThreePanelUI implements ActionListener
+public class NewPilotGeneratorUI extends JPanel implements ActionListener
 {    
     private static final long serialVersionUID = 1L;
 
@@ -43,7 +43,7 @@ public class NewPilotGeneratorUI extends PwcgThreePanelUI implements ActionListe
 
     public NewPilotGeneratorUI(Campaign campaign, CampaignHomeGUI parent, CampaignAdminCoopPilotPanelSet alternateParent)
     {
-        super(ImageResizingPanel.NO_IMAGE);
+        super();
         this.campaign = campaign;
         this.parent = parent;
         this.alternateParent = alternateParent;        
@@ -53,9 +53,9 @@ public class NewPilotGeneratorUI extends PwcgThreePanelUI implements ActionListe
     {
         try
         {
-            setRightPanel (makeServicePanel());
-            setCenterPanel(new CampaignGeneratorDataEntryEmpty());
-            setLeftPanel(makeButtonPanel());
+            this.add(BorderLayout.WEST, makeButtonPanel());
+            this.add(BorderLayout.CENTER, new CampaignGeneratorDataEntryEmpty());
+            this.add(BorderLayout.EAST, makeServicePanel());
         }
         catch (Throwable e)
         {
@@ -68,7 +68,7 @@ public class NewPilotGeneratorUI extends PwcgThreePanelUI implements ActionListe
     {
         String imagePath = UiImageResolver.getSideImageMain("CampaignGenNav.jpg");
         
-        ImageResizingPanel servicesPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel servicesPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         servicesPanel.setLayout(new BorderLayout());
         servicesPanel.setOpaque(true);
 
@@ -84,7 +84,7 @@ public class NewPilotGeneratorUI extends PwcgThreePanelUI implements ActionListe
     {
         String imagePath = UiImageResolver.getSideImageMain("CampaignGenNav.jpg");
         
-        ImageResizingPanel configPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel configPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         configPanel.setLayout(new BorderLayout());
         configPanel.setOpaque(true);
         
@@ -175,7 +175,7 @@ public class NewPilotGeneratorUI extends PwcgThreePanelUI implements ActionListe
         dataEntry.makePanels();
         dataEntry.evaluateUI();
         
-        this.setCenterPanel(dataEntry);
+        this.add(BorderLayout.CENTER, dataEntry);
         CampaignGuiContextManager.getInstance().refreshCurrentContext(this);
     }
 

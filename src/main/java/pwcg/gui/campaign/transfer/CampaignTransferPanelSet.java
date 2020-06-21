@@ -36,7 +36,6 @@ import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.coop.CampaignAdminCoopPilotPanelSet;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
@@ -46,9 +45,10 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignTransferPanelSet extends PwcgThreePanelUI implements ActionListener
+public class CampaignTransferPanelSet extends JPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -65,7 +65,7 @@ public class CampaignTransferPanelSet extends PwcgThreePanelUI implements Action
 
 	public CampaignTransferPanelSet  (CampaignHomeGUI parent, CampaignAdminCoopPilotPanelSet alternateParent, SquadronMember squadronMemberToTransfer)
 	{
-        super(ImageResizingPanel.NO_IMAGE);
+        super();
 
 		this.parent = parent;
         this.alternateParent = alternateParent;
@@ -84,15 +84,15 @@ public class CampaignTransferPanelSet extends PwcgThreePanelUI implements Action
 
 		// Not so great dependency - have to make the right panel first so accept button is not null
 		// when evaluate is called
-        setLeftPanel(makeTransferNavPanel());
-		setCenterPanel(makeTransferCenterPanel());
+        this.add(BorderLayout.WEST, makeTransferNavPanel());
+		this.add(BorderLayout.CENTER, makeTransferCenterPanel());
 	}
 
 	private JPanel makeTransferNavPanel() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getSideImage(campaign, "TransferNav.jpg");
 
-		ImageResizingPanel transferrPanel = new ImageResizingPanel(imagePath);
+		ImageResizingPanel transferrPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
 		transferrPanel.setLayout(new BorderLayout());
 		transferrPanel.setOpaque(false);
 		
@@ -118,7 +118,7 @@ public class CampaignTransferPanelSet extends PwcgThreePanelUI implements Action
 		try
 		{
             String imagePath = ContextSpecificImages.imagesMisc() + "Paper.jpg";
-			transferCenterPanel = new ImageResizingPanel(imagePath);
+			transferCenterPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
 			transferCenterPanel.setLayout(new BorderLayout());
 			
 			Color buttonBG = ColorMap.PAPER_BACKGROUND;

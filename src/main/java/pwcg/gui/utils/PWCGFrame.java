@@ -1,61 +1,64 @@
 package pwcg.gui.utils;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Rectangle;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 
-public class PWCGFrame extends JFrame
-{
-	private static final long serialVersionUID = 1L;
-	
-	private static PWCGFrame frame = null;
+public class PWCGFrame
+{	
+    private static PWCGFrame pwcgFrame = null;
+    
+    private JFrame frame = new JFrame();
+    private JPanel base = new JPanel();
 	
 	public static PWCGFrame getInstance()
 	{
-		if (frame == null)
+		if (pwcgFrame == null)
 		{
-			frame = new PWCGFrame();
+		    pwcgFrame = new PWCGFrame();
 		}
 		
-		return frame;
+		return pwcgFrame;
 	}
 	
 	private PWCGFrame()
 	{
 		super();
 		
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		Dimension screenSize = PWCGMonitorSupport.getPWCGMonitorSize();
-		this.setSize(screenSize);
-		this.setState(JFrame.MAXIMIZED_BOTH);		
+		frame.setSize(screenSize);
+		frame.setState(JFrame.MAXIMIZED_BOTH);		
+		
+		base.setLayout(new BorderLayout());
+        base.setBackground(Color.DARK_GRAY);
+		
+        frame.setVisible(false);
+        frame.add(base);
+ 	}
 
-		this.setVisible(true);
+	public void setPanel(JPanel newPanel)
+	{
+        base.removeAll();
+	    base.add(newPanel, BorderLayout.CENTER);
+	    base.revalidate();
+	    base.repaint();
+	    
+	    if (!frame.isVisible())
+	    {
+	        frame.setVisible(true);
+	    }
 	}
 
-	public void setPanel(PwcgThreePanelUI newPanel)
-	{        
-        frame.getContentPane().add(newPanel);
-        
-        if (newPanel.getLeftPanel() != null)
-            frame.add(newPanel.getLeftPanel(), BorderLayout.WEST);
-
-        if (newPanel.getCenterPanel() != null)
-            frame.add(newPanel.getCenterPanel(), BorderLayout.CENTER);
-        
-        if (newPanel.getRightPanel() != null)
-            frame.add(newPanel.getRightPanel(), BorderLayout.EAST);
-
-        frame.revalidate();
-        frame.repaint();        
-	}
-
-    public void clearPanel()
+    public Rectangle getBounds()
     {
-        getContentPane().removeAll();
+        return frame.getBounds();
     }
 }

@@ -22,7 +22,6 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -31,9 +30,10 @@ import pwcg.gui.image.ImageIconCache;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignPilotMedalPanel extends PwcgThreePanelUI implements ActionListener
+public class CampaignPilotMedalPanel extends JPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -43,7 +43,7 @@ public class CampaignPilotMedalPanel extends PwcgThreePanelUI implements ActionL
 
 	public CampaignPilotMedalPanel(Campaign campaign, SquadronMember pilot)
 	{
-        super(ImageResizingPanel.NO_IMAGE);
+        super();
 
         Dimension screenSize = PWCGMonitorSupport.getPWCGFrameSize();
         this.medalsPerRow = screenSize.width / 250;
@@ -54,8 +54,8 @@ public class CampaignPilotMedalPanel extends PwcgThreePanelUI implements ActionL
 
 	public void makePanels() throws PWCGException  
 	{
-	    setCenterPanel(makeCenterPanel());
-	    setLeftPanel(makeNavigationPanel());
+	    this.add(BorderLayout.CENTER, makeCenterPanel());
+	    this.add(BorderLayout.WEST, makeNavigationPanel());
 	}
 
 	private JPanel makeCenterPanel() throws PWCGException 
@@ -63,7 +63,7 @@ public class CampaignPilotMedalPanel extends PwcgThreePanelUI implements ActionL
         SoundManager.getInstance().playSound("MedalCaseOpen.WAV");
 
         String imagePath = ContextSpecificImages.imagesMisc() + "PilotDeskTop.jpg";
-        ImageResizingPanel campaignPilotMedalPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel campaignPilotMedalPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         campaignPilotMedalPanel.setLayout(new BorderLayout());
 
 		JPanel pilotMedalPanel = makePilotMedalPanel();
@@ -75,8 +75,7 @@ public class CampaignPilotMedalPanel extends PwcgThreePanelUI implements ActionL
     private JPanel makeNavigationPanel() throws PWCGException  
     {
         String imagePath = UiImageResolver.getSideImage(campaign, "PilotInfoNav.jpg");
-
-        ImageResizingPanel medalPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel medalPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         medalPanel.setLayout(new BorderLayout());
         medalPanel.setOpaque(false);
 
@@ -120,9 +119,8 @@ public class CampaignPilotMedalPanel extends PwcgThreePanelUI implements ActionL
 
 	private JPanel getEmptyMedalPanelRow() 
 	{
-        String medalBoxImagePath = ContextSpecificImages.imagesMedals() + "MedalBox.jpg";
-        ImageResizingPanel medalPanel = new ImageResizingPanel(medalBoxImagePath);
-		medalPanel.setImage(medalBoxImagePath);
+        String imagePath = ContextSpecificImages.imagesMedals() + "MedalBox.jpg";
+        ImageResizingPanel medalPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
 		medalPanel.setLayout(new GridLayout(1, medalsPerRow));
 		medalPanel.setOpaque(false);
 		
@@ -157,9 +155,8 @@ public class CampaignPilotMedalPanel extends PwcgThreePanelUI implements ActionL
 
 	private JPanel getMedalPanelRow(int firstMedal, int lastMedal) throws PWCGException 
 	{
-        String medalBoxImagePath = ContextSpecificImages.imagesMedals() + "MedalBox.jpg";
-		ImageResizingPanel medalPanel = new ImageResizingPanel(medalBoxImagePath);
-		medalPanel.setImage(medalBoxImagePath);
+        String imagePath = ContextSpecificImages.imagesMedals() + "MedalBox.jpg";
+        ImageResizingPanel medalPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
 		medalPanel.setLayout(new GridLayout(1, medalsPerRow));
 		medalPanel.setOpaque(false);
 		

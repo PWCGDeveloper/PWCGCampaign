@@ -39,6 +39,7 @@ import pwcg.gui.rofmap.MapScroll;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImagePanelLayout;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
 public class IntelMapGUI extends MapGUI implements ActionListener
@@ -69,9 +70,9 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 	        List<FrontMapIdentifier> airfieldMaps = AirfieldManager.getMapIdForAirfield(campaign.findReferencePlayer().determineSquadron().determineCurrentAirfieldName(campaign.getDate()));
             PWCGContext.getInstance().changeContext(airfieldMaps.get(0));
 								
-			setRightPanel(makeRightPanel(-1));
-			setCenterPanel(createMapPanel());
-			setLeftPanel(makeNavigationPanel());		
+			this.add(BorderLayout.EAST, makeRightPanel(-1));
+			this.add(BorderLayout.CENTER, createMapPanel());
+			this.add(BorderLayout.WEST, makeNavigationPanel());		
 			
 	        centerMapAt(null);
 		}
@@ -104,7 +105,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
     {
         String imagePath = UiImageResolver.getSideImage(campaign, "IntelMapNav.jpg");
 
-        ImageResizingPanel intelNavPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel intelNavPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         intelNavPanel.setLayout(new BorderLayout());
         intelNavPanel.setOpaque(false);
 
@@ -154,7 +155,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
     public void updateInfoPanel(int squadId) throws PWCGException 
     {
         JPanel updatedSquadronInfoPanel = makeRightPanel(squadId);
-        this.setRightPanel(updatedSquadronInfoPanel);
+        this.add(BorderLayout.EAST, updatedSquadronInfoPanel);
         CampaignGuiContextManager.getInstance().refreshCurrentContext(this);
     }
 
@@ -332,7 +333,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
                 FrontMapIdentifier mapIdentifier = PWCGMap.getFrontMapIdentifierForName(mapName);
                 PWCGContext.getInstance().changeContext(mapIdentifier);
                 JPanel mapCenterPanel = createMapPanel();
-                this.setCenterPanel(mapCenterPanel); 
+                this.add(BorderLayout.CENTER, mapCenterPanel); 
 
                 centerMapAt(null);
             }

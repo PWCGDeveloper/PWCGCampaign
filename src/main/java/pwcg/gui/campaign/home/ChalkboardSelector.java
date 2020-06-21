@@ -1,5 +1,6 @@
 package pwcg.gui.campaign.home;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -68,12 +69,8 @@ public class ChalkboardSelector implements ActionListener
     {       
         CampaignEquipmentChalkBoard equipmentDisplay = new CampaignEquipmentChalkBoard();
         equipmentDisplay.makeEquipmentPanel(parent.getCampaign());
-        parent.setCenterPanel(equipmentDisplay);
-
-        CampaignRosterBasePanelFactory pilotListDisplay = new CampaignRosterSquadronPanelFactory(parent);
-        pilotListDisplay.makePilotList();
-        pilotListDisplay.makeCampaignHomePanels();
-        parent.setRightPanel(pilotListDisplay.getPilotListPanel());
+        // TODO UI RETHINK
+        //this.add(BorderLayout.CENTER, equipmentDisplay);
 
         CampaignGuiContextManager.getInstance().clearContextStack();
         CampaignGuiContextManager.getInstance().pushToContextStack(parent);
@@ -96,8 +93,9 @@ public class ChalkboardSelector implements ActionListener
     private void createSquadronMemberContext(CampaignRosterBasePanelFactory squadronMemberListDisplay) throws PWCGException 
     {
         squadronMemberListDisplay.makeCampaignHomePanels();
-        parent.setCenterPanel(squadronMemberListDisplay.getChalkboardPanel());
-        parent.setRightPanel(squadronMemberListDisplay.getPilotListPanel());
+        // TODO UI RETHINK
+        //parent.this.add(BorderLayout.CENTER, squadronMemberListDisplay.getChalkboardPanel());
+        //parent.this.add(BorderLayout.EAST, squadronMemberListDisplay.getPilotListPanel());
 
         CampaignGuiContextManager.getInstance().clearContextStack();
         CampaignGuiContextManager.getInstance().pushToContextStack(parent);

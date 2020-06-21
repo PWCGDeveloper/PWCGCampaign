@@ -23,7 +23,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorBorders;
@@ -31,10 +30,11 @@ import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PageTurner;
 
-public class CampaignJournalPanelSet extends PwcgThreePanelUI implements ActionListener
+public class CampaignJournalPanelSet extends JPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -57,7 +57,6 @@ public class CampaignJournalPanelSet extends PwcgThreePanelUI implements ActionL
 
     public CampaignJournalPanelSet(Campaign campaign) throws PWCGException
     {
-        super(ImageResizingPanel.NO_IMAGE);
         this.campaign = campaign;
     }
 
@@ -70,8 +69,8 @@ public class CampaignJournalPanelSet extends PwcgThreePanelUI implements ActionL
         calculateLinesPerPage();
         getJournalEntries();
         
-        setLeftPanel(makeNavigationPanel());
-        setCenterPanel(makeLogCenterPanel());
+        this.add(BorderLayout.WEST, makeNavigationPanel());
+        this.add(BorderLayout.CENTER, makeLogCenterPanel());
         
         makeIndexPages();
         
@@ -114,7 +113,7 @@ public class CampaignJournalPanelSet extends PwcgThreePanelUI implements ActionL
     {
         String imagePath = UiImageResolver.getSideImage(campaign, "JournalNav.jpg");
 
-        ImageResizingPanel journalPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel journalPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         journalPanel.setLayout(new BorderLayout());
         journalPanel.setOpaque(false);
 
@@ -132,7 +131,7 @@ public class CampaignJournalPanelSet extends PwcgThreePanelUI implements ActionL
     private JPanel  makeLogCenterPanel() throws PWCGException  
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "PilotLog.jpg";
-        ImageResizingPanel journalCenterPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel journalCenterPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         journalCenterPanel.setLayout(new BorderLayout());
         journalCenterPanel.setOpaque(false);
         
@@ -262,12 +261,12 @@ public class CampaignJournalPanelSet extends PwcgThreePanelUI implements ActionL
     {
         if (pageTurnerPanel != null)
         {
-            getCenterPanel().remove(pageTurnerPanel);
+            this.remove(pageTurnerPanel);
         }
         
         int numPages = indexPages.size() + journalReports.size();
         pageTurnerPanel = PageTurner.makeButtonPanel(pageNum+1, numPages, this);
-        getCenterPanel().add(pageTurnerPanel, BorderLayout.SOUTH);
+        this.add(pageTurnerPanel, BorderLayout.SOUTH);
     }
 
     private JPanel makePage(int pageNum) throws PWCGException 
@@ -406,8 +405,8 @@ public class CampaignJournalPanelSet extends PwcgThreePanelUI implements ActionL
 
     private void refreshPages() throws PWCGException
     {
-        getCenterPanel().setVisible(false);
-        getCenterPanel().setVisible(true);
+        this.revalidate();
+        this.repaint();
     }
 
     private void calculateLinesPerPage()

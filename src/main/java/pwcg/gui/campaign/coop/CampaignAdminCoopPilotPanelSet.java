@@ -17,7 +17,6 @@ import pwcg.coop.model.CoopDisplayRecord;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.campaign.transfer.CampaignTransferPanelSet;
@@ -26,9 +25,10 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.maingui.campaigngenerate.NewPilotGeneratorUI;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignAdminCoopPilotPanelSet extends PwcgThreePanelUI implements ActionListener
+public class CampaignAdminCoopPilotPanelSet extends JPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     private Campaign campaign;
@@ -37,7 +37,7 @@ public class CampaignAdminCoopPilotPanelSet extends PwcgThreePanelUI implements 
 
     public CampaignAdminCoopPilotPanelSet(CampaignHomeGUI parent, Campaign campaign)
     {
-        super(ImageResizingPanel.NO_IMAGE);
+        super();
         this.parent = parent;
         this.campaign = campaign;
     }
@@ -46,9 +46,9 @@ public class CampaignAdminCoopPilotPanelSet extends PwcgThreePanelUI implements 
     {
         try
         {        	
-            setRightPanel(makeCoopAdminActionSelectPanel());
-            setCenterPanel(makeCenterPanel());
-            setLeftPanel(makeNavigatePanel());
+            this.add(BorderLayout.EAST, makeCoopAdminActionSelectPanel());
+            this.add(BorderLayout.CENTER, makeCenterPanel());
+            this.add(BorderLayout.WEST, makeNavigatePanel());
         }
         catch (Throwable e)
         {
@@ -68,7 +68,7 @@ public class CampaignAdminCoopPilotPanelSet extends PwcgThreePanelUI implements 
     {
         String imagePath = UiImageResolver.getSideImageMain("Barracks.jpg");
 
-        JPanel navPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel navPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         navPanel.setLayout(new BorderLayout());
 
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
@@ -86,7 +86,7 @@ public class CampaignAdminCoopPilotPanelSet extends PwcgThreePanelUI implements 
     {
         String imagePath = UiImageResolver.getSideImageMain("Barracks2.jpg");
 
-        JPanel configPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel configPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         configPanel.setLayout(new BorderLayout());
 
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));

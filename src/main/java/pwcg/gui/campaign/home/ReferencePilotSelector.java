@@ -19,16 +19,16 @@ import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class ReferencePilotSelector extends PwcgThreePanelUI implements ActionListener
+public class ReferencePilotSelector extends JPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     private JComboBox<String> squadronMemberSelector;
@@ -38,7 +38,7 @@ public class ReferencePilotSelector extends PwcgThreePanelUI implements ActionLi
 
     public ReferencePilotSelector(Campaign campaign,CampaignHomeGUI campaignHomeGui)
     {
-        super(ImageResizingPanel.NO_IMAGE);
+        super();
         this.campaign = campaign;
         this.campaignHomeGui = campaignHomeGui;
     }
@@ -47,8 +47,8 @@ public class ReferencePilotSelector extends PwcgThreePanelUI implements ActionLi
     {
         try
         {
-            setCenterPanel(makeCoopPersonaSelectorPanel());
-            setLeftPanel(makeNavigatePanel());
+            this.add(BorderLayout.CENTER, makeCoopPersonaSelectorPanel());
+            this.add(BorderLayout.WEST, makeNavigatePanel());
         }
         catch (Throwable e)
         {
@@ -59,9 +59,8 @@ public class ReferencePilotSelector extends PwcgThreePanelUI implements ActionLi
 
     private JPanel makeCoopPersonaSelectorPanel() throws PWCGException
     {
-        ImageResizingPanel centerPanel = null;
         String imagePath = ContextSpecificImages.imagesMisc() + "Paper.jpg";
-        centerPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel centerPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         centerPanel.setLayout(new BorderLayout());
 
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
@@ -95,7 +94,7 @@ public class ReferencePilotSelector extends PwcgThreePanelUI implements ActionLi
     {
         String imagePath = UiImageResolver.getSideImageMain("ConfigLeft.jpg");
 
-        JPanel navPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel navPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         navPanel.setLayout(new BorderLayout());
 
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));

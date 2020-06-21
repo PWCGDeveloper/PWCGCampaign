@@ -24,7 +24,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorBorders;
@@ -33,10 +32,11 @@ import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PageTurner;
 
-public class CampaignSquadronLogPanelSet extends PwcgThreePanelUI implements ActionListener
+public class CampaignSquadronLogPanelSet extends JPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -55,9 +55,7 @@ public class CampaignSquadronLogPanelSet extends PwcgThreePanelUI implements Act
 	private Map<Integer, StringBuffer> pages = null;
 
 	public CampaignSquadronLogPanelSet (int logsForSquadronId)
-	{
-        super(ImageResizingPanel.NO_IMAGE);
-        
+	{        
         this.logsForSquadronId = logsForSquadronId;
 
 		Dimension screenSize = PWCGMonitorSupport.getPWCGFrameSize();
@@ -128,8 +126,8 @@ public class CampaignSquadronLogPanelSet extends PwcgThreePanelUI implements Act
 	public void makePanels() throws PWCGException  
 	{
 		pages = orderPageEntries();
-		setLeftPanel(makeLogLeftPanel());
-		setCenterPanel(makeLogCenterPanel());
+		this.add(BorderLayout.WEST, makeLogLeftPanel());
+		this.add(BorderLayout.CENTER, makeLogCenterPanel());
 		
         makePages();        
 	}
@@ -207,7 +205,7 @@ public class CampaignSquadronLogPanelSet extends PwcgThreePanelUI implements Act
 	{
         String imagePath = UiImageResolver.getSideImage(campaign, "CampaignLogNav.jpg");
 
-		ImageResizingPanel squadronLogPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel squadronLogPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
 		squadronLogPanel.setLayout(new BorderLayout());
 		squadronLogPanel.setOpaque(false);
 
@@ -225,7 +223,7 @@ public class CampaignSquadronLogPanelSet extends PwcgThreePanelUI implements Act
 	private JPanel  makeLogCenterPanel() throws PWCGException  
 	{
         String imagePath = ContextSpecificImages.imagesMisc() + "CampaignLog.jpg";
-        ImageResizingPanel logCenterPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel logCenterPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         logCenterPanel.setLayout(new BorderLayout());
         logCenterPanel.setOpaque(false);
         
@@ -290,12 +288,12 @@ public class CampaignSquadronLogPanelSet extends PwcgThreePanelUI implements Act
     {
         if (pageTurnerPanel != null)
         {
-            getCenterPanel().remove(pageTurnerPanel);
+            this.remove(pageTurnerPanel);
         }
         
         int numPages = pages.size();
         pageTurnerPanel = PageTurner.makeButtonPanel(pageNum+1, numPages, this);
-        getCenterPanel().add(pageTurnerPanel, BorderLayout.SOUTH);
+        this.add(pageTurnerPanel, BorderLayout.SOUTH);
     }
 
 	private JPanel makePage(StringBuffer pageEntries, int pageNum) throws PWCGException 
@@ -371,8 +369,8 @@ public class CampaignSquadronLogPanelSet extends PwcgThreePanelUI implements Act
         SoundManager.getInstance().playSound("PageTurn.WAV");
         this.pageNum -= 2;
         makePages();
-        getCenterPanel().setVisible(false);
-        getCenterPanel().setVisible(true);
+        this.revalidate();
+        this.repaint();
     }
 
     private void nextPage() throws PWCGException
@@ -380,8 +378,8 @@ public class CampaignSquadronLogPanelSet extends PwcgThreePanelUI implements Act
         SoundManager.getInstance().playSound("PageTurn.WAV");
         this.pageNum += 2;
         makePages();
-        getCenterPanel().setVisible(false);
-        getCenterPanel().setVisible(true);
+        this.revalidate();
+        this.repaint();
     }
 
 }

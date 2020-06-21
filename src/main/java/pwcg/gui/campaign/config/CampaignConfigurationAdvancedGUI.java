@@ -24,7 +24,6 @@ import pwcg.core.config.ConfigSetKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.config.ConfigurationParametersGUI;
@@ -32,10 +31,11 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ToolTipManager;
 
-public class CampaignConfigurationAdvancedGUI extends PwcgThreePanelUI implements ActionListener
+public class CampaignConfigurationAdvancedGUI extends JPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     private Map<String, ConfigurationParametersGUI> configurationGUIs = new HashMap<String, ConfigurationParametersGUI>();
@@ -44,7 +44,6 @@ public class CampaignConfigurationAdvancedGUI extends PwcgThreePanelUI implement
 
 	public CampaignConfigurationAdvancedGUI(Campaign campaign)
 	{
-	    super("");
 	    this.campaign = campaign;
 	}
 	
@@ -52,9 +51,9 @@ public class CampaignConfigurationAdvancedGUI extends PwcgThreePanelUI implement
 	{
 		try
 		{
-	        setRightPanel(makeCategoryPanel());
-	        setCenterPanel(makeCenterPanel());
-	        setLeftPanel(makeNavigatePanel());
+	        this.add(BorderLayout.EAST, makeCategoryPanel());
+	        this.add(BorderLayout.CENTER, makeCenterPanel());
+	        this.add(BorderLayout.WEST, makeNavigatePanel());
 		}
 		catch (Throwable e)
 		{
@@ -67,7 +66,7 @@ public class CampaignConfigurationAdvancedGUI extends PwcgThreePanelUI implement
     {
         String imagePath = UiImageResolver.getSideImage(campaign, "AdvancedConfigCampaignLeft.jpg");
 
-        ImageResizingPanel simpleConfigAcceptPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel simpleConfigAcceptPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         simpleConfigAcceptPanel.setLayout(new BorderLayout());
         simpleConfigAcceptPanel.setOpaque(false);
 
@@ -95,7 +94,7 @@ public class CampaignConfigurationAdvancedGUI extends PwcgThreePanelUI implement
 	public JPanel makeCenterPanel() 
 	{		
         String imagePath = ContextSpecificImages.imagesMisc() + "Paper.jpg";
-		ImageResizingPanel blankPanel = new ImageResizingPanel(imagePath);
+		ImageResizingPanel blankPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
 		blankPanel.setLayout(new BorderLayout());
 		
 		add(blankPanel, BorderLayout.CENTER);
@@ -115,7 +114,7 @@ public class CampaignConfigurationAdvancedGUI extends PwcgThreePanelUI implement
             imagePath = UiImageResolver.getSideImage(campaign, "ConfigLeft.jpg");
          }
         		
-        ImageResizingPanel configPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel configPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
 		configPanel.setLayout(new BorderLayout());
 
 		try
@@ -289,7 +288,7 @@ public class CampaignConfigurationAdvancedGUI extends PwcgThreePanelUI implement
 					configurationGUIs.put(action, newConfig);
 				}
 
-                this.setCenterPanel(newConfig);
+                this.add(BorderLayout.CENTER, newConfig);
 				CampaignGuiContextManager.getInstance().refreshCurrentContext(this);
 			}
 		}

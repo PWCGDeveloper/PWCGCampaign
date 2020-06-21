@@ -32,7 +32,6 @@ import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.MissionLogFileValidator;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
@@ -43,6 +42,7 @@ import pwcg.gui.helper.PlayerFlightEditor;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
@@ -50,7 +50,7 @@ import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.io.MissionFileWriter;
 
-public class BriefingPilotPanelSet extends PwcgThreePanelUI implements ActionListener, IFlightChanged
+public class BriefingPilotPanelSet extends JPanel implements ActionListener, IFlightChanged
 {
     private static final Integer NUM_COLUMNS = 4;
     private static final long serialVersionUID = 1L;
@@ -65,7 +65,7 @@ public class BriefingPilotPanelSet extends PwcgThreePanelUI implements ActionLis
 
     public BriefingPilotPanelSet(Campaign campaign, CampaignHomeGUI campaignHomeGui, BriefingContext briefingContext, Mission mission)
     {
-        super(ImageResizingPanel.NO_IMAGE);
+        super();
 
         this.campaign = campaign;
         this.campaignHomeGui = campaignHomeGui;
@@ -82,8 +82,8 @@ public class BriefingPilotPanelSet extends PwcgThreePanelUI implements ActionLis
             briefingFlightChooser = new BriefingFlightChooser(mission, this);
             briefingFlightChooser.createBriefingSquadronSelectPanel();
 
-            setLeftPanel(makeLeftPanel());
-            setCenterPanel(createCenterPanel());
+            this.add(BorderLayout.WEST, makeLeftPanel());
+            this.add(BorderLayout.CENTER, createCenterPanel());
         }
         catch (Exception e)
         {
@@ -95,7 +95,7 @@ public class BriefingPilotPanelSet extends PwcgThreePanelUI implements ActionLis
     private JPanel makeLeftPanel() throws PWCGException 
     {
         String imagePath = UiImageResolver.getSideImage(campaignHomeGui.getCampaign(), "BriefingNav.jpg");
-        ImageResizingPanel leftPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel leftPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         leftPanel.setLayout(new BorderLayout());
         leftPanel.setOpaque(false);
 
@@ -167,7 +167,7 @@ public class BriefingPilotPanelSet extends PwcgThreePanelUI implements ActionLis
         }
 
         String imagePath = ContextSpecificImages.imagesMisc() + "PilotSelectBrickCenter.jpg";
-        pilotPanel = new ImageResizingPanel(imagePath);
+        pilotPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         pilotPanel.setLayout(new BorderLayout());
 
         Insets margins = PWCGMonitorBorders.calculateBorderMargins(60, 60, 60, 60);
@@ -570,7 +570,7 @@ public class BriefingPilotPanelSet extends PwcgThreePanelUI implements ActionLis
 
     private void refreshPilotDisplay() throws PWCGException
     {
-        setCenterPanel(createCenterPanel());
+        this.add(BorderLayout.CENTER, createCenterPanel());
     }
 
     private void scrubMission() throws PWCGException
@@ -716,12 +716,12 @@ public class BriefingPilotPanelSet extends PwcgThreePanelUI implements ActionLis
     {
         pushEditsToMission();
         briefingContext.changeSelectedFlight(squadron);
-        setCenterPanel(createCenterPanel());
+        this.add(BorderLayout.CENTER, createCenterPanel());
     }
     
     public void refreshScreen() throws PWCGException
     {
         briefingFlightChooser.setSelectedButton(briefingContext.getSelectedFlight().getSquadron().getSquadronId());
-        setCenterPanel(createCenterPanel());
+        this.add(BorderLayout.CENTER, createCenterPanel());
     }
 }

@@ -27,6 +27,7 @@ import pwcg.gui.image.ImageCache;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageButton;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGButtonNoBackground;
 
@@ -43,7 +44,7 @@ public class CampaignPilotListPanel extends ImageResizingPanel
 
 	public JPanel makeSquadronRightPanel(List<SquadronMember>pilots, String description, String action) throws PWCGException  
 	{
-        ImageResizingPanel pilotsPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel pilotsPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         pilotsPanel.setLayout(new BorderLayout());
 		pilotsPanel.setOpaque(false);
 
@@ -85,7 +86,7 @@ public class CampaignPilotListPanel extends ImageResizingPanel
         pilotPanel.add(pilotStatusButton, BorderLayout.EAST);
         
         String imagePath = ContextSpecificImages.imagesMisc() + "NamePlate2.jpg";
-        ImageResizingPanel nameplatePanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel nameplatePanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         nameplatePanel.setLayout(new BorderLayout());
                         
         Color buttonBG = ColorMap.CHALK_BACKGROUND;
@@ -135,7 +136,7 @@ public class CampaignPilotListPanel extends ImageResizingPanel
     private JPanel makeNamePlaque(String description) throws PWCGException  
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "NamePlate2.jpg";
-        ImageResizingPanel headerPlaquePanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel headerPlaquePanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         headerPlaquePanel.setLayout(new BorderLayout());
 
         JLabel squadronPanelLabel = PWCGButtonFactory.makePlaqueLabelLarge("     " + description);

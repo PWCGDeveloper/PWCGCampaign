@@ -30,6 +30,7 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 
@@ -57,9 +58,9 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
 		{
 			this.removeAll();
 	
-			setLeftPanel(makeButtonPanel());
+			this.add(BorderLayout.WEST, makeButtonPanel());
 
-			setCenterPanel(makeMissionDescriptionPanel());
+			this.add(BorderLayout.CENTER, makeMissionDescriptionPanel());
 		}
 		catch (Exception e)
 		{
@@ -72,7 +73,7 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
     {
         String imagePath = UiImageResolver.getSideImage(campaign, "CombatReportNav.jpg");
 
-        ImageResizingPanel buttonPanel = new ImageResizingPanel(imagePath);
+        ImageResizingPanel buttonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         buttonPanel.setLayout(new BorderLayout());
         buttonPanel.setOpaque(false);
 
@@ -102,7 +103,7 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
     public JPanel makeMissionDescriptionPanel() throws PWCGException  
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "PilotSelectBrickCenter.jpg";
-        JPanel debriefPanel = new ImageResizingPanel(imagePath);
+        JPanel debriefPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         debriefPanel.setLayout(new BorderLayout());
         debriefPanel.setOpaque(false);
 

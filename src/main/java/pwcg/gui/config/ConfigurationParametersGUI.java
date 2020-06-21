@@ -28,7 +28,7 @@ public class ConfigurationParametersGUI extends ImageResizingPanel
     private ConfigManager configManager;
 	private Map<String, ConfigTextField> configTextFields = new HashMap<String, ConfigTextField>();
 	
-	public ConfigurationParametersGUI(ImageResizingPanel parent, ConfigManager configManager, ConfigSet configSet) 
+	public ConfigurationParametersGUI(JPanel configurationGlobalGUI, ConfigManager configManager, ConfigSet configSet) 
 	{		
         super(ContextSpecificImages.imagesMisc() + "Paper.jpg");
         setLayout(new BorderLayout());
