@@ -221,10 +221,9 @@ public class CampaignMainGUI extends ImageResizingPanel implements ActionListene
 		{
 	        String imagePath = UiImageResolver.getSideImageMain("MainFullScreen.jpg");
 	        this.setImage(imagePath);
-
-			this.add(makeLeftPanel(), BorderLayout.WEST);
-			this.add(makeCenterPanel(), BorderLayout.CENTER);
-			this.add(makeCampaignPanel(), BorderLayout.EAST);
+			
+            pwcgThreePanel.setLeftPanel(makeLeftPanel());
+            pwcgThreePanel.setCenterPanel(makeCenterPanel());
 			pwcgThreePanel.setRightPanel(makeCampaignPanel());
 
 			setButtonsEnabled();

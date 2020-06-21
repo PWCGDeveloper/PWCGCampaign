@@ -66,10 +66,9 @@ public class CampaignGeneratorPanelSet extends JPanel implements ActionListener
     {
         try
         {
+            pwcgThreePanel.setLeftPanel(makeButtonPanel());
             pwcgThreePanel.setCenterPanel(makeCampaignProfilePanel());
             pwcgThreePanel.setRightPanel (makeProceedButtonPanel());
-
-            this.add(BorderLayout.WEST, makeButtonPanel());
         }
         catch (Throwable e)
         {
