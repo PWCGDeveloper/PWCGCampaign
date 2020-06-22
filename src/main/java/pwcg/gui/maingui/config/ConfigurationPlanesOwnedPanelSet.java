@@ -96,7 +96,7 @@ public class ConfigurationPlanesOwnedPanelSet extends JPanel implements ActionLi
 
 	public JPanel makeButtonPanel() throws PWCGException 
 	{
-        String imagePath = UiImageResolver.getSideImageMain("PlanesOwnedLeft.jpg");
+        String imagePath = UiImageResolver.getImageMain("PlanesOwnedLeft.jpg");
 
         ImageResizingPanel campaignButtonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         campaignButtonPanel.setLayout(new BorderLayout());

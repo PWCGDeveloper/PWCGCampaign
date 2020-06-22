@@ -22,7 +22,7 @@ import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.UiImageResolver;
-import pwcg.gui.campaign.home.CampaignHomeGUI;
+import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -36,11 +36,11 @@ public class CampaignLeavePanelSet extends JPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
-	private CampaignHomeGUI parent = null;
+	private CampaignHome parent = null;
     private Campaign campaign = null;
 	private JTextField tLeaveTime;
 
-	public CampaignLeavePanelSet  (CampaignHomeGUI parent)
+	public CampaignLeavePanelSet  (CampaignHome parent)
 	{
         super();
 
@@ -61,7 +61,7 @@ public class CampaignLeavePanelSet extends JPanel implements ActionListener
 
 	private JPanel makeLeaveLeftPanel() throws PWCGException  
 	{
-        String imagePath = UiImageResolver.getSideImage(campaign, "LeaveNav.jpg");
+        String imagePath = UiImageResolver.getImage(campaign, "LeaveNav.jpg");
 
 		ImageResizingPanel leaverPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
 		leaverPanel.setLayout(new BorderLayout());

@@ -74,7 +74,7 @@ public class CampaignPilotMedalPanel extends JPanel implements ActionListener
 
     private JPanel makeNavigationPanel() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getSideImage(campaign, "PilotInfoNav.jpg");
+        String imagePath = UiImageResolver.getImage(campaign, "PilotInfoNav.jpg");
         ImageResizingPanel medalPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         medalPanel.setLayout(new BorderLayout());
         medalPanel.setOpaque(false);

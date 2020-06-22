@@ -1,4 +1,4 @@
-package pwcg.gui.campaign;
+package pwcg.gui.campaign.home;
 
 import java.awt.BorderLayout;
 import java.util.ArrayList;
@@ -12,9 +12,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
-import pwcg.gui.campaign.home.CampaignHomeGUI;
-import pwcg.gui.campaign.home.CampaignPilotChalkBoard;
-import pwcg.gui.campaign.pilot.CampaignPilotListPanel;
+import pwcg.gui.campaign.pilot.CampaignHomePilotPanel;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
@@ -29,18 +27,18 @@ public class CampaignRosterTopAcesPanelFactory extends CampaignRosterBasePanelFa
 {
     public static final Integer ACE_VICTORY_SORT_CONSTANT = 100000;
     
-	public CampaignRosterTopAcesPanelFactory(CampaignHomeGUI parent) throws PWCGException  
+	public CampaignRosterTopAcesPanelFactory(CampaignHome parent) throws PWCGException  
 	{
 		super(parent);
 	}
 
     public void makeCampaignHomePanels() throws PWCGException  
     {
-        CampaignPilotChalkBoard acesPanel = new CampaignPilotChalkBoard();
-        acesPanel.makeSquadronPanel(sortedPilots);
+        CampaignHomeCenterPanel acesPanel = new CampaignHomeCenterPanel();
+        acesPanel.makePanel(sortedPilots);
         chalkboardPanel = acesPanel;
         
-        CampaignPilotListPanel pilotList = new CampaignPilotListPanel(parent);
+        CampaignHomePilotPanel pilotList = new CampaignHomePilotPanel(parent);
         pilotListPanel = pilotList.makeSquadronRightPanel(sortedPilots, "  Top Aces", "CampFlowPilot:");
         
         JPanel descPanel = makeDescPanel();

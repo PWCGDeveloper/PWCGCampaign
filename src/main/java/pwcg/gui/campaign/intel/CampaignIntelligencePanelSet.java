@@ -37,14 +37,13 @@ public class CampaignIntelligencePanelSet extends JPanel implements ActionListen
 
 	public void makePanels() throws PWCGException  
 	{
-        this.add(BorderLayout.EAST, null);
         this.add(BorderLayout.CENTER,  makeCenterPanel());
         this.add(BorderLayout.WEST, makeNavigatePanel());
 	}
 
 	private JPanel makeNavigatePanel() throws PWCGException  
 	{		
-        String imagePath = UiImageResolver.getSideImage(campaign, "IntelNav.jpg");
+        String imagePath = UiImageResolver.getImage(campaign, "IntelNav.jpg");
 
         ImageResizingPanel intelPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
 

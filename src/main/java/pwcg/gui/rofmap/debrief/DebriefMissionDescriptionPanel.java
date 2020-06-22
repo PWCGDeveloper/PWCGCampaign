@@ -22,7 +22,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.UiImageResolver;
-import pwcg.gui.campaign.home.CampaignHomeGUI;
+import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorBorders;
@@ -37,13 +37,13 @@ import pwcg.gui.utils.ScrollBarWrapper;
 public class DebriefMissionDescriptionPanel extends AARPanel implements ActionListener
 {
     private AARCoordinator aarCoordinator;
-    private CampaignHomeGUI homeGui;
+    private CampaignHome homeGui;
     private Campaign campaign;
 
 	private static final long serialVersionUID = 1L;
     private JTextArea missionTextArea = new JTextArea();
 
-	public DebriefMissionDescriptionPanel(Campaign campaign, CampaignHomeGUI homeGui) 
+	public DebriefMissionDescriptionPanel(Campaign campaign, CampaignHome homeGui) 
 	{
 	    super();
 	    
@@ -71,7 +71,7 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
 
     private JPanel makeButtonPanel() throws PWCGException 
     {
-        String imagePath = UiImageResolver.getSideImage(campaign, "CombatReportNav.jpg");
+        String imagePath = UiImageResolver.getImage(campaign, "CombatReportNav.jpg");
 
         ImageResizingPanel buttonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         buttonPanel.setLayout(new BorderLayout());

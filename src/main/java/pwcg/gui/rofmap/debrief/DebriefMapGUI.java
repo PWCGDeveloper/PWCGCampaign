@@ -33,7 +33,7 @@ import pwcg.core.utils.FileUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.UiImageResolver;
-import pwcg.gui.campaign.home.CampaignHomeGUI;
+import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -54,7 +54,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 	private static final long serialVersionUID = 1L;
 
     private Campaign campaign;
-	private CampaignHomeGUI home = null;
+	private CampaignHome home = null;
 	private Thread initiatorThread = null;
 	private JTextArea eventTextPane = new JTextArea();
 	private JCheckBox maxInfoCheckBox;
@@ -63,7 +63,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 
 	private DebriefMapPanel mapPanel = null;
 
-	public DebriefMapGUI  (Campaign campaign, CampaignHomeGUI home) throws PWCGException
+	public DebriefMapGUI  (Campaign campaign, CampaignHome home) throws PWCGException
 	{
 	    super(campaign.getDate());
 
@@ -161,7 +161,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 
 	private JPanel makeNavigationPanel() throws PWCGException 
 	{
-        String imagePath = UiImageResolver.getSideImage(campaign, "DebriefNav.jpg");
+        String imagePath = UiImageResolver.getImage(campaign, "DebriefNav.jpg");
         ImageResizingPanel debriefButtonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         debriefButtonPanel.setLayout(new BorderLayout());
         debriefButtonPanel.setOpaque(false);

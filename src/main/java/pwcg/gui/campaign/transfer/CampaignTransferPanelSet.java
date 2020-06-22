@@ -38,7 +38,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.coop.CampaignAdminCoopPilotPanelSet;
-import pwcg.gui.campaign.home.CampaignHomeGUI;
+import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -52,7 +52,7 @@ public class CampaignTransferPanelSet extends JPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
-    private CampaignHomeGUI parent = null;
+    private CampaignHome parent = null;
     private CampaignAdminCoopPilotPanelSet alternateParent = null;
 	private Campaign campaign = null;	
 	private SquadronMember squadronMemberToTransfer = null;	
@@ -63,7 +63,7 @@ public class CampaignTransferPanelSet extends JPanel implements ActionListener
 	private JButton acceptButton = null;
     private ArmedService service = null;
 
-	public CampaignTransferPanelSet  (CampaignHomeGUI parent, CampaignAdminCoopPilotPanelSet alternateParent, SquadronMember squadronMemberToTransfer)
+	public CampaignTransferPanelSet  (CampaignHome parent, CampaignAdminCoopPilotPanelSet alternateParent, SquadronMember squadronMemberToTransfer)
 	{
         super();
 
@@ -90,7 +90,7 @@ public class CampaignTransferPanelSet extends JPanel implements ActionListener
 
 	private JPanel makeTransferNavPanel() throws PWCGException  
 	{
-        String imagePath = UiImageResolver.getSideImage(campaign, "TransferNav.jpg");
+        String imagePath = UiImageResolver.getImage(campaign, "TransferNav.jpg");
 
 		ImageResizingPanel transferrPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
 		transferrPanel.setLayout(new BorderLayout());

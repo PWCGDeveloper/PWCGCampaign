@@ -22,7 +22,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.UiImageResolver;
-import pwcg.gui.campaign.home.CampaignHomeGUI;
+import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.campaign.home.GuiMissionInitiator;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -40,12 +40,12 @@ public class CoopPersonaChooser extends JPanel implements ActionListener
     private CoopPersonaChooserPanel coopPersonaAccept;
     private JPanel coopPersonaErrorPanel;
     private List<String> errorMessages = new ArrayList<>();
-    private CampaignHomeGUI campaignHomeGui;
+    private CampaignHome campaignHomeGui;
     private Campaign campaign;
     private JButton missionButton;
     private MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
 
-    public CoopPersonaChooser(Campaign campaign,CampaignHomeGUI campaignHomeGui)
+    public CoopPersonaChooser(Campaign campaign,CampaignHome campaignHomeGui)
     {
         super();
         this.campaign = campaign;
@@ -176,7 +176,7 @@ public class CoopPersonaChooser extends JPanel implements ActionListener
 
 	public JPanel makeNavigatePanel() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getSideImageMain("ConfigLeft.jpg");
+        String imagePath = UiImageResolver.getImageMain("ConfigLeft.jpg");
 
         JPanel navPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         navPanel.setLayout(new BorderLayout());

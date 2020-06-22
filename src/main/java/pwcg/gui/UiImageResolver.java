@@ -11,7 +11,7 @@ import pwcg.gui.utils.ContextSpecificImages;
 public class UiImageResolver
 {
 
-    public static String getSideImageMain(String leftImageName) throws PWCGException
+    public static String getImageMain(String leftImageName) throws PWCGException
     {
         String imagePath = "";
 
@@ -32,7 +32,7 @@ public class UiImageResolver
     }
 
 
-    public static String getSideImage(Campaign campaign, String leftImageName) throws PWCGException
+    public static String getImage(Campaign campaign, String leftImageName) throws PWCGException
     {
         String imagePath = "";
 

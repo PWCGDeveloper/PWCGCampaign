@@ -18,7 +18,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.UiImageResolver;
-import pwcg.gui.campaign.home.CampaignHomeGUI;
+import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.campaign.transfer.CampaignTransferPanelSet;
 import pwcg.gui.dialogs.ConfirmDialog;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -33,9 +33,9 @@ public class CampaignAdminCoopPilotPanelSet extends JPanel implements ActionList
     private static final long serialVersionUID = 1L;
     private Campaign campaign;
     private CampaignAdminCoopPilotPanel coopPersonaInfoPanel;
-    private CampaignHomeGUI parent;
+    private CampaignHome parent;
 
-    public CampaignAdminCoopPilotPanelSet(CampaignHomeGUI parent, Campaign campaign)
+    public CampaignAdminCoopPilotPanelSet(CampaignHome parent, Campaign campaign)
     {
         super();
         this.parent = parent;
@@ -66,7 +66,7 @@ public class CampaignAdminCoopPilotPanelSet extends JPanel implements ActionList
 
     public JPanel makeNavigatePanel() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getSideImageMain("Barracks.jpg");
+        String imagePath = UiImageResolver.getImageMain("Barracks.jpg");
 
         ImageResizingPanel navPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         navPanel.setLayout(new BorderLayout());
@@ -84,7 +84,7 @@ public class CampaignAdminCoopPilotPanelSet extends JPanel implements ActionList
 
     public JPanel makeCoopAdminActionSelectPanel() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getSideImageMain("Barracks2.jpg");
+        String imagePath = UiImageResolver.getImageMain("Barracks2.jpg");
 
         ImageResizingPanel configPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         configPanel.setLayout(new BorderLayout());

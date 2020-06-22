@@ -72,7 +72,7 @@ public class ImageResizingPanel extends JPanel
 		}
 	}
 	
-	protected Dimension getImageSize()
+	public Dimension getImageSize()
 	{
 		Dimension dimensions = new Dimension(image.getWidth(null),image.getHeight(null));
 		

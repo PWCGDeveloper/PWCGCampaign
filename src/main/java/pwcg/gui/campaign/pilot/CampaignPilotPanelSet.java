@@ -27,7 +27,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.UiImageResolver;
-import pwcg.gui.campaign.home.CampaignHomeGUI;
+import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -53,7 +53,7 @@ public class CampaignPilotPanelSet extends JPanel implements ActionListener
     private SquadronMember pilot;
 	private Squadron squad;
     private Campaign campaign;
-    private CampaignHomeGUI parent;
+    private CampaignHome parent;
 
     protected String changePilotPictureAction = "";
     protected String changeSkinAction = "";
@@ -61,7 +61,7 @@ public class CampaignPilotPanelSet extends JPanel implements ActionListener
     protected String openLogBookAction = "";
     protected JPanel centerPanel;
 
-    public CampaignPilotPanelSet(Campaign campaign, Squadron squad, SquadronMember pilot, CampaignHomeGUI parent)
+    public CampaignPilotPanelSet(Campaign campaign, Squadron squad, SquadronMember pilot, CampaignHome parent)
     {
          super();
 
@@ -101,7 +101,7 @@ public class CampaignPilotPanelSet extends JPanel implements ActionListener
 
     private JPanel makenavigationPanel() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getSideImage(campaign, "PilotInfoNav.jpg");
+        String imagePath = UiImageResolver.getImage(campaign, "PilotInfoNav.jpg");
 
         ImageResizingPanel pilotPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         pilotPanel.setLayout(new BorderLayout());

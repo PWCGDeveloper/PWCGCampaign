@@ -26,7 +26,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.UiImageResolver;
-import pwcg.gui.campaign.home.CampaignHomeGUI;
+import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -63,7 +63,7 @@ import pwcg.mission.utils.MissionTime;
 public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightChanged, IBriefingSquadronSelectedCallback
 {
 	private static final long serialVersionUID = 1L;
-    private CampaignHomeGUI campaignHomeGui;
+    private CampaignHome campaignHomeGui;
 
     private JComboBox<String> cbFuel;
     private JComboBox<String> cbMissionTime;
@@ -73,7 +73,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
     private BriefingFlightChooser briefingFlightChooser;
     private Map<Integer, String> selectedSquadrons = new HashMap<>();
 
-	public BriefingMapGUI(CampaignHomeGUI campaignHomeGui, Mission mission, BriefingContext briefingContext, Date mapDate) throws PWCGException  
+	public BriefingMapGUI(CampaignHome campaignHomeGui, Mission mission, BriefingContext briefingContext, Date mapDate) throws PWCGException  
 	{
 		super(mapDate);
 		
@@ -150,7 +150,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 
     private JPanel makeLeftPanel() throws PWCGException 
     {
-        String imagePath = UiImageResolver.getSideImage(campaignHomeGui.getCampaign(), "BriefingNav.jpg");
+        String imagePath = UiImageResolver.getImage(campaignHomeGui.getCampaign(), "BriefingNav.jpg");
         ImageResizingPanel leftPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         leftPanel.setLayout(new BorderLayout());
         leftPanel.setOpaque(false);

@@ -19,7 +19,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.campaign.home.CampaignHomeGUI;
+import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorBorders;
@@ -37,7 +37,7 @@ import pwcg.mission.MissionDescriptionFactory;
 
 public class BriefingDescriptionPanelSet extends JPanel implements ActionListener, IFlightChanged
 {
-    private CampaignHomeGUI campaignHomeGui = null;
+    private CampaignHome campaignHomeGui = null;
 
 	private static final long serialVersionUID = 1L;
     private JTextArea missionTextArea = new JTextArea();
@@ -45,7 +45,7 @@ public class BriefingDescriptionPanelSet extends JPanel implements ActionListene
     private BriefingContext briefingContext;
     private BriefingFlightChooser briefingFlightChooser;
 
-	public BriefingDescriptionPanelSet(CampaignHomeGUI campaignHomeGui, Mission mission) throws PWCGException 
+	public BriefingDescriptionPanelSet(CampaignHome campaignHomeGui, Mission mission) throws PWCGException 
 	{
         super();
 	    

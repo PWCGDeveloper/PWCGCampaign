@@ -103,7 +103,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 
     private JPanel makeNavigationPanel() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getSideImage(campaign, "IntelMapNav.jpg");
+        String imagePath = UiImageResolver.getImage(campaign, "IntelMapNav.jpg");
 
         ImageResizingPanel intelNavPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         intelNavPanel.setLayout(new BorderLayout());

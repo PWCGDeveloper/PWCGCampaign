@@ -56,7 +56,7 @@ public class CampaignDeletePanelSet extends JPanel implements ActionListener
 
     private JPanel makeButtonPanel() throws PWCGException
     {
-        String imagePath = UiImageResolver.getSideImageMain("CampaignDeleteNav.jpg");
+        String imagePath = UiImageResolver.getImageMain("CampaignDeleteNav.jpg");
         
         ImageResizingPanel configPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         configPanel.setLayout(new BorderLayout());

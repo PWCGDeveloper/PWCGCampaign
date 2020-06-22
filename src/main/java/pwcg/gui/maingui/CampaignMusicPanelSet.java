@@ -62,7 +62,7 @@ public class CampaignMusicPanelSet extends JPanel implements ActionListener, Cha
 
     private JPanel makeButtonPanel() throws PWCGException
     {
-        String imagePath = UiImageResolver.getSideImageMain("MusicLeft.jpg");
+        String imagePath = UiImageResolver.getImageMain("MusicLeft.jpg");
         
         ImageResizingPanel configPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         configPanel.setLayout(new BorderLayout());

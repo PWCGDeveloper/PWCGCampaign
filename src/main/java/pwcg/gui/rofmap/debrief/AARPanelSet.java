@@ -25,7 +25,7 @@ import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.UiImageResolver;
-import pwcg.gui.campaign.home.CampaignHomeGUI;
+import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -40,10 +40,10 @@ public class AARPanelSet extends AARPanel implements ActionListener
     private static final long serialVersionUID = 1L;
 
     private Campaign campaign = null;
-	private CampaignHomeGUI home = null;
+	private CampaignHome home = null;
     private AARClaimPanels aarClaimPanel = null;
 
-	public AARPanelSet(CampaignHomeGUI home)  
+	public AARPanelSet(CampaignHome home)  
 	{
         super();
 
@@ -140,7 +140,7 @@ public class AARPanelSet extends AARPanel implements ActionListener
 
 	private JPanel makeNavigationPanel() throws PWCGException  
 	{
-        String imagePath = UiImageResolver.getSideImage(campaign, "CombatReportNav.jpg");
+        String imagePath = UiImageResolver.getImage(campaign, "CombatReportNav.jpg");
 
 		ImageResizingPanel aarButtonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
 		aarButtonPanel.setLayout(new BorderLayout());

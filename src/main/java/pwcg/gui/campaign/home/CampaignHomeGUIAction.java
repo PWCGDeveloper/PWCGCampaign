@@ -38,10 +38,10 @@ import pwcg.mission.MissionHumanParticipants;
 
 public class CampaignHomeGUIAction
 {
-    private CampaignHomeGUI parent = null;
+    private CampaignHome parent = null;
     private Campaign campaign = null;
 
-    public CampaignHomeGUIAction(CampaignHomeGUI parent, Campaign campaign) 
+    public CampaignHomeGUIAction(CampaignHome parent, Campaign campaign) 
     {
         super();
         this.parent = parent;

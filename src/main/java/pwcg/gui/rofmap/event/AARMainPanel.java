@@ -15,7 +15,7 @@ import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.UiImageResolver;
-import pwcg.gui.campaign.home.CampaignHomeGUI;
+import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.rofmap.debrief.AAREventPanel;
 import pwcg.gui.rofmap.debrief.AARPanel;
@@ -28,7 +28,7 @@ public class AARMainPanel extends AARPanel implements ActionListener
     private static final long serialVersionUID = 1L;
     
     private Campaign campaign;
-    private CampaignHomeGUI home = null;
+    private CampaignHome home = null;
 
     private List<AAREventPanel> eventPanelsToDisplay = new ArrayList<AAREventPanel>();
     
@@ -48,7 +48,7 @@ public class AARMainPanel extends AARPanel implements ActionListener
         EVENT_PANEL_REASON_TRANSFER
     }
     
-    public AARMainPanel(Campaign campaign, CampaignHomeGUI home, EventPanelReason reasonToAdvanceTime)
+    public AARMainPanel(Campaign campaign, CampaignHome home, EventPanelReason reasonToAdvanceTime)
     {
         super();
 
@@ -58,7 +58,7 @@ public class AARMainPanel extends AARPanel implements ActionListener
         this.transferEventForTimeDueToTransfer = null;
     }
     
-    public AARMainPanel(Campaign campaign, CampaignHomeGUI home, EventPanelReason reasonToAdvanceTime, TransferEvent transferEventForTimeDueToTransfer)
+    public AARMainPanel(Campaign campaign, CampaignHome home, EventPanelReason reasonToAdvanceTime, TransferEvent transferEventForTimeDueToTransfer)
     {
         super();
 
@@ -77,7 +77,7 @@ public class AARMainPanel extends AARPanel implements ActionListener
 
 	private JPanel makeNavigationPanel() throws PWCGException  
 	{
-        String imagePath = UiImageResolver.getSideImage(campaign, "MissionResultsNav.jpg");
+        String imagePath = UiImageResolver.getImage(campaign, "MissionResultsNav.jpg");
 
 		ImageResizingPanel resultPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
 		resultPanel.setLayout(new BorderLayout());

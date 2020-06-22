@@ -130,7 +130,7 @@ public class CampaignConfigurationSimpleGUI extends JPanel implements ActionList
 
 	private JPanel makeNavigatePanel() throws PWCGException
 	{
-        String imagePath = UiImageResolver.getSideImage(campaign, "SimpleConfigCampaignLeft.jpg");
+        String imagePath = UiImageResolver.getImage(campaign, "SimpleConfigCampaignLeft.jpg");
 
         ImageResizingPanel simpleConfigAcceptPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         simpleConfigAcceptPanel.setLayout(new BorderLayout());
@@ -165,7 +165,7 @@ public class CampaignConfigurationSimpleGUI extends JPanel implements ActionList
 		JPanel airButtonPanel = createAirConfigPanel();
         JPanel groundButtonPanel = createGroundConfigPanel();
         JPanel aaButtonPanel = createAAConfigPanel();
-        String imagePath = UiImageResolver.getSideImage(campaign, "SimpleConfigCampaignRight.jpg");
+        String imagePath = UiImageResolver.getImage(campaign, "SimpleConfigCampaignRight.jpg");
 
         ImageResizingPanel simpleConfigButtonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
 		simpleConfigButtonPanel.setLayout(new GridLayout(0,1));

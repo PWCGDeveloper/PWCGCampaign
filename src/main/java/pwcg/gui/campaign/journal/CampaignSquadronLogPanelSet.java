@@ -203,7 +203,7 @@ public class CampaignSquadronLogPanelSet extends JPanel implements ActionListene
 
 	private JPanel makeLogLeftPanel() throws PWCGException  
 	{
-        String imagePath = UiImageResolver.getSideImage(campaign, "CampaignLogNav.jpg");
+        String imagePath = UiImageResolver.getImage(campaign, "CampaignLogNav.jpg");
 
         ImageResizingPanel squadronLogPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
 		squadronLogPanel.setLayout(new BorderLayout());

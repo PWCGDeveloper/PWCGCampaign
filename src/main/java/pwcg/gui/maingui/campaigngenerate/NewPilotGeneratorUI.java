@@ -22,7 +22,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.coop.CampaignAdminCoopPilotPanelSet;
-import pwcg.gui.campaign.home.CampaignHomeGUI;
+import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
@@ -35,13 +35,13 @@ public class NewPilotGeneratorUI extends JPanel implements ActionListener
     private Campaign campaign;
     private JButton newPilotCreateButton;
     private NewPilotDataEntryGUI dataEntry;
-    private CampaignHomeGUI parent = null;
+    private CampaignHome parent = null;
     private CampaignAdminCoopPilotPanelSet alternateParent = null;
     
     private NewPilotGeneratorDO newPilotGeneratorDO = new NewPilotGeneratorDO();
     private NewPilotState newPilotState;
 
-    public NewPilotGeneratorUI(Campaign campaign, CampaignHomeGUI parent, CampaignAdminCoopPilotPanelSet alternateParent)
+    public NewPilotGeneratorUI(Campaign campaign, CampaignHome parent, CampaignAdminCoopPilotPanelSet alternateParent)
     {
         super();
         this.campaign = campaign;
@@ -66,7 +66,7 @@ public class NewPilotGeneratorUI extends JPanel implements ActionListener
 
     private JPanel makeServicePanel() throws PWCGException
     {
-        String imagePath = UiImageResolver.getSideImageMain("CampaignGenNav.jpg");
+        String imagePath = UiImageResolver.getImageMain("CampaignGenNav.jpg");
         
         ImageResizingPanel servicesPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         servicesPanel.setLayout(new BorderLayout());
@@ -82,7 +82,7 @@ public class NewPilotGeneratorUI extends JPanel implements ActionListener
 
     private JPanel makeButtonPanel() throws PWCGException
     {
-        String imagePath = UiImageResolver.getSideImageMain("CampaignGenNav.jpg");
+        String imagePath = UiImageResolver.getImageMain("CampaignGenNav.jpg");
         
         ImageResizingPanel configPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         configPanel.setLayout(new BorderLayout());

@@ -72,7 +72,7 @@ public class CampaignPilotLogPanel extends JPanel implements ActionListener
 
     private JPanel makeNavigationPanel() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getSideImage(campaign, "PilotInfoNav.jpg");
+        String imagePath = UiImageResolver.getImage(campaign, "PilotInfoNav.jpg");
 
         ImageResizingPanel journalPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         journalPanel.setLayout(new BorderLayout());

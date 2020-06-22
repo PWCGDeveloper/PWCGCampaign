@@ -33,7 +33,7 @@ import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.UiImageResolver;
-import pwcg.gui.campaign.home.CampaignHomeGUI;
+import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -73,9 +73,9 @@ public class CampaignMainGUI extends ImageResizingPanel implements ActionListene
 	{
 	    super("");
 		setLayout(new BorderLayout());
-		this.setBackground(Color.BLUE);
+		this.setBackground(Color.DARK_GRAY);
 		
-		pwcgThreePanel = new PwcgThreePanelUI(this);
+		this.pwcgThreePanel = new PwcgThreePanelUI(this);
 
 		try
 		{
@@ -219,12 +219,13 @@ public class CampaignMainGUI extends ImageResizingPanel implements ActionListene
 	{
 		try
 		{
-	        String imagePath = UiImageResolver.getSideImageMain("MainFullScreen.jpg");
+	        String imagePath = UiImageResolver.getImageMain("MainFullScreen.jpg");
 	        this.setImage(imagePath);
 			
             pwcgThreePanel.setLeftPanel(makeLeftPanel());
             pwcgThreePanel.setCenterPanel(makeCenterPanel());
 			pwcgThreePanel.setRightPanel(makeCampaignPanel());
+            CampaignGuiContextManager.getInstance().pushToContextStack(this);
 
 			setButtonsEnabled();
 		}
@@ -504,7 +505,7 @@ public class CampaignMainGUI extends ImageResizingPanel implements ActionListene
 		campaign.open(campaignName);	
 		PWCGContext.getInstance().setCampaign(campaign);
 
-		CampaignHomeGUI campaignGUI = new CampaignHomeGUI (this, campaign);
+		CampaignHome campaignGUI = new CampaignHome (this, campaign);
         CampaignGuiContextManager.getInstance().pushToContextStack(campaignGUI);
 
 		return;

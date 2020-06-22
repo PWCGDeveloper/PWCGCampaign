@@ -62,7 +62,7 @@ public class ConfigurationSkinMissingDisplayPanelSet extends JPanel implements A
 
 	public JPanel makeButtonPanel() throws PWCGException 
 	{
-        String imagePath = UiImageResolver.getSideImageMain("SkinAnalysisNav.jpg");
+        String imagePath = UiImageResolver.getImageMain("SkinAnalysisNav.jpg");
 
         ImageResizingPanel campaignButtonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         campaignButtonPanel.setLayout(new BorderLayout());

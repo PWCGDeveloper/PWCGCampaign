@@ -1,4 +1,4 @@
-package pwcg.gui.campaign;
+package pwcg.gui.campaign.home;
 
 import java.awt.event.ActionListener;
 import java.util.List;

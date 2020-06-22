@@ -31,23 +31,21 @@ import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGButtonNoBackground;
 
-public class CampaignPilotListPanel extends ImageResizingPanel
+public class CampaignHomePilotPanel extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 	private ActionListener parent = null;
 
-	public CampaignPilotListPanel(ActionListener parent)  
+	public CampaignHomePilotPanel(ActionListener parent)  
 	{
-        super(ContextSpecificImages.imagesMisc() + "paperPart.jpg");
+        super();
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
 	    this.parent = parent;
 	}
 
-	public JPanel makeSquadronRightPanel(List<SquadronMember>pilots, String description, String action) throws PWCGException  
+	public void makePanel(List<SquadronMember>pilots, String description, String action) throws PWCGException  
 	{
-        ImageResizingPanel pilotsPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        pilotsPanel.setLayout(new BorderLayout());
-		pilotsPanel.setOpaque(false);
-
 		JPanel pilotListGrid = new JPanel(new GridLayout(0, 1));
 		pilotListGrid.setOpaque(false);
 		
@@ -59,8 +57,6 @@ public class CampaignPilotListPanel extends ImageResizingPanel
 			try
 			{
 			    JPanel buttonPanel = createPilotButton(action, pilot);
-
-				// button.addActionListener(campaignListener);
 				pilotListGrid.add(buttonPanel);
 			}
 			catch (Exception e)
@@ -69,9 +65,7 @@ public class CampaignPilotListPanel extends ImageResizingPanel
 			}
 		}
 		
-		pilotsPanel.add(pilotListGrid, BorderLayout.NORTH);
-		
-		return pilotsPanel;
+		this.add(pilotListGrid, BorderLayout.NORTH);		
 	}
 
     private JPanel createPilotButton(String action, SquadronMember pilot)

@@ -33,7 +33,7 @@ import pwcg.core.utils.MissionLogFileValidator;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.UiImageResolver;
-import pwcg.gui.campaign.home.CampaignHomeGUI;
+import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorBorders;
@@ -54,7 +54,7 @@ public class BriefingPilotPanelSet extends JPanel implements ActionListener, IFl
 {
     private static final Integer NUM_COLUMNS = 4;
     private static final long serialVersionUID = 1L;
-    private CampaignHomeGUI campaignHomeGui;
+    private CampaignHome campaignHomeGui;
     private Campaign campaign;
     private Mission mission;
     private ImageResizingPanel pilotPanel;
@@ -63,7 +63,7 @@ public class BriefingPilotPanelSet extends JPanel implements ActionListener, IFl
     private BriefingFlightChooser briefingFlightChooser;
     private JPanel briefingMapCenterPanel = new JPanel(new BorderLayout());
 
-    public BriefingPilotPanelSet(Campaign campaign, CampaignHomeGUI campaignHomeGui, BriefingContext briefingContext, Mission mission)
+    public BriefingPilotPanelSet(Campaign campaign, CampaignHome campaignHomeGui, BriefingContext briefingContext, Mission mission)
     {
         super();
 
@@ -94,7 +94,7 @@ public class BriefingPilotPanelSet extends JPanel implements ActionListener, IFl
 
     private JPanel makeLeftPanel() throws PWCGException 
     {
-        String imagePath = UiImageResolver.getSideImage(campaignHomeGui.getCampaign(), "BriefingNav.jpg");
+        String imagePath = UiImageResolver.getImage(campaignHomeGui.getCampaign(), "BriefingNav.jpg");
         ImageResizingPanel leftPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         leftPanel.setLayout(new BorderLayout());
         leftPanel.setOpaque(false);

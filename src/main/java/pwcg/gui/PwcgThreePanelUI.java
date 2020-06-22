@@ -18,38 +18,38 @@ public class PwcgThreePanelUI
         this.parent = parent;
     }
 
-    public void setLeftPanel(JPanel coopPersonaInfoPanel) throws PWCGException
+    public void setLeftPanel(JPanel newLeftPanel) throws PWCGException
     {
         if (leftPanel != null)
         {
             parent.remove(leftPanel);
         }
         
-        leftPanel = coopPersonaInfoPanel;
+        leftPanel = newLeftPanel;
         parent.add(BorderLayout.WEST, leftPanel);
         CampaignGuiContextManager.getInstance().refreshCurrentContext(parent);
     }
 
-    public void setRightPanel(JPanel coopPersonaInfoPanel) throws PWCGException
+    public void setRightPanel(JPanel newRightPanel) throws PWCGException
     {
         if (rightPanel != null)
         {
             parent.remove(rightPanel);
         }
         
-        rightPanel = coopPersonaInfoPanel;
+        rightPanel = newRightPanel;
         parent.add(BorderLayout.EAST, rightPanel);
         CampaignGuiContextManager.getInstance().refreshCurrentContext(parent);
     }
 
-    public void setCenterPanel(JPanel coopPersonaInfoPanel) throws PWCGException
+    public void setCenterPanel(JPanel newCenterPanel) throws PWCGException
     {
         if (centerPanel != null)
         {
             parent.remove(centerPanel);
         }
         
-        centerPanel = coopPersonaInfoPanel;
+        centerPanel = newCenterPanel;
         parent.add(BorderLayout.CENTER, centerPanel);
         CampaignGuiContextManager.getInstance().refreshCurrentContext(parent);
     }

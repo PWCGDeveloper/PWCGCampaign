@@ -27,7 +27,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.UiImageResolver;
-import pwcg.gui.campaign.home.CampaignHomeGUI;
+import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.maingui.CampaignMainGUI;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -69,6 +69,7 @@ public class CampaignGeneratorPanelSet extends JPanel implements ActionListener
             pwcgThreePanel.setLeftPanel(makeButtonPanel());
             pwcgThreePanel.setCenterPanel(makeCampaignProfilePanel());
             pwcgThreePanel.setRightPanel (makeProceedButtonPanel());
+            CampaignGuiContextManager.getInstance().pushToContextStack(this);
         }
         catch (Throwable e)
         {
@@ -79,7 +80,7 @@ public class CampaignGeneratorPanelSet extends JPanel implements ActionListener
 
     private JPanel makeButtonPanel() throws PWCGException
     {
-        String imagePath = UiImageResolver.getSideImageMain("CampaignGenNav.jpg");
+        String imagePath = UiImageResolver.getImageMain("CampaignGenNav.jpg");
         
         ImageResizingPanel configPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         configPanel.setLayout(new BorderLayout());
@@ -106,7 +107,7 @@ public class CampaignGeneratorPanelSet extends JPanel implements ActionListener
 
     private JPanel makeProceedButtonPanel() throws PWCGException
     {
-        String imagePath = UiImageResolver.getSideImageMain("CampaignGenNav.jpg");
+        String imagePath = UiImageResolver.getImageMain("CampaignGenNav.jpg");
         
         ImageResizingPanel configPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         configPanel.setLayout(new BorderLayout());
@@ -187,7 +188,7 @@ public class CampaignGeneratorPanelSet extends JPanel implements ActionListener
         campaign.open(campaignGeneratorDO.getCampaignName());                    
         PWCGContext.getInstance().setCampaign(campaign);
         
-        CampaignHomeGUI campaignGUI = new CampaignHomeGUI (mainGUI, campaign);
+        CampaignHome campaignGUI = new CampaignHome (mainGUI, campaign);
         PWCGFrame.getInstance().setPanel(campaignGUI);
 
         SquadronMembers players = campaign.getPersonnelManager().getAllActivePlayers();
@@ -199,7 +200,7 @@ public class CampaignGeneratorPanelSet extends JPanel implements ActionListener
 
     private JPanel makeProfileInfoPanel() throws PWCGException
     {
-        String imagePath = UiImageResolver.getSideImageMain("CampaignGenNav.jpg");
+        String imagePath = UiImageResolver.getImageMain("CampaignGenNav.jpg");
         CampaignGeneratorProfileInfoGUI profileInfoPanel = new CampaignGeneratorProfileInfoGUI(this, imagePath);
         profileInfoPanel.makePanels();
         return profileInfoPanel;

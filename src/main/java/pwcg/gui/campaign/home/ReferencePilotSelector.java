@@ -32,11 +32,11 @@ public class ReferencePilotSelector extends JPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     private JComboBox<String> squadronMemberSelector;
-    private CampaignHomeGUI campaignHomeGui;
+    private CampaignHome campaignHomeGui;
     private Campaign campaign;
     private Map<String, SquadronMember> coopSquadronMembersInCampaign = new HashMap<>();
 
-    public ReferencePilotSelector(Campaign campaign,CampaignHomeGUI campaignHomeGui)
+    public ReferencePilotSelector(Campaign campaign,CampaignHome campaignHomeGui)
     {
         super();
         this.campaign = campaign;
@@ -92,7 +92,7 @@ public class ReferencePilotSelector extends JPanel implements ActionListener
 
 	public JPanel makeNavigatePanel() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getSideImageMain("ConfigLeft.jpg");
+        String imagePath = UiImageResolver.getImageMain("ConfigLeft.jpg");
 
         ImageResizingPanel navPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         navPanel.setLayout(new BorderLayout());

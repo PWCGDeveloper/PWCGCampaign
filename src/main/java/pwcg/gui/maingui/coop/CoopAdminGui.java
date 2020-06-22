@@ -17,6 +17,7 @@ import javax.swing.SwingConstants;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -29,25 +30,25 @@ import pwcg.gui.utils.PWCGButtonFactory;
 public class CoopAdminGui extends JPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
+
+    private PwcgThreePanelUI pwcgThreePanel;
     private ButtonGroup buttonGroup = new ButtonGroup();
-    private JPanel centerPanel;
 
     public CoopAdminGui()
     {
         super();
         this.setLayout(new BorderLayout());
+        this.pwcgThreePanel = new PwcgThreePanelUI(this);
     }
     
     public void makePanels() 
     {
         try
         {        	
-
-            this.add(BorderLayout.WEST, makeNavigatePanel());
-            this.add(BorderLayout.EAST, makeCoopAdminActionSelectPanel());
-            
-            JPanel blankDefaultPanel = makeBlankCenterPanel();
-            setCenterPanel(blankDefaultPanel);
+            pwcgThreePanel.setLeftPanel(makeNavigatePanel());
+            pwcgThreePanel.setRightPanel(makeCoopAdminActionSelectPanel());
+            pwcgThreePanel.setCenterPanel(makeBlankCenterPanel());
+            CampaignGuiContextManager.getInstance().pushToContextStack(this);
         }
         catch (Throwable e)
         {
@@ -67,7 +68,7 @@ public class CoopAdminGui extends JPanel implements ActionListener
 
     public JPanel makeNavigatePanel() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getSideImageMain("Barracks.jpg");
+        String imagePath = UiImageResolver.getImageMain("Barracks.jpg");
 
         JPanel navPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         navPanel.setLayout(new BorderLayout());
@@ -85,7 +86,7 @@ public class CoopAdminGui extends JPanel implements ActionListener
 
     public JPanel makeCoopAdminActionSelectPanel() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getSideImageMain("Barracks2.jpg");
+        String imagePath = UiImageResolver.getImageMain("Barracks2.jpg");
 
         JPanel configPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         configPanel.setLayout(new BorderLayout());
@@ -146,20 +147,20 @@ public class CoopAdminGui extends JPanel implements ActionListener
             {
                 CoopPersonaInfoPanel coopPersonaInfoPanel = new CoopPersonaInfoPanel();
                 coopPersonaInfoPanel.makePanels();                
-                setCenterPanel(coopPersonaInfoPanel);
+                pwcgThreePanel.setCenterPanel(coopPersonaInfoPanel);
             }
             else if (action.equalsIgnoreCase("Add Coop User"))
             {
                 CoopCreateUserPanel coopCreateUser = new CoopCreateUserPanel();
                 coopCreateUser.makePanels();
-                setCenterPanel(coopCreateUser);
+                pwcgThreePanel.setCenterPanel(coopCreateUser);
             }
             else if (action.contains("Remove Coop User"))
             {
                 CoopUserRemovePanel coopUserRemove = new CoopUserRemovePanel();
                 coopUserRemove.makePanels();
                 coopUserRemove.loadPanels();
-                setCenterPanel(coopUserRemove);
+                pwcgThreePanel.setCenterPanel(coopUserRemove);
             }
         }
         catch (Throwable e)
@@ -167,18 +168,6 @@ public class CoopAdminGui extends JPanel implements ActionListener
             PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
-    }
-
-    private void setCenterPanel(JPanel coopPersonaInfoPanel) throws PWCGException
-    {
-        if (centerPanel != null)
-        {
-            this.remove(centerPanel);
-        }
-        
-        this.centerPanel = coopPersonaInfoPanel;
-        this.add(BorderLayout.CENTER, centerPanel);
-        CampaignGuiContextManager.getInstance().refreshCurrentContext(this);
     }
 }
 

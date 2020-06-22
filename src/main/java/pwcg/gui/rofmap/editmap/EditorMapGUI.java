@@ -106,7 +106,7 @@ public class EditorMapGUI extends MapGUI implements ActionListener
 
     private JPanel makeNavigationPanel() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getSideImageMain("CampaignInfoRight.jpg");
+        String imagePath = UiImageResolver.getImageMain("CampaignInfoRight.jpg");
 
         ImageResizingPanel intelNavPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         intelNavPanel.setLayout(new BorderLayout());
@@ -156,7 +156,7 @@ public class EditorMapGUI extends MapGUI implements ActionListener
 
     public JPanel makeSelectionPanel() throws PWCGException 
     {
-        String imagePath = UiImageResolver.getSideImageMain("CampaignInfoLeft.jpg");
+        String imagePath = UiImageResolver.getImageMain("CampaignInfoLeft.jpg");
 
         ImageResizingPanel selectionPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         selectionPanel.setLayout(new GridLayout(0,1));

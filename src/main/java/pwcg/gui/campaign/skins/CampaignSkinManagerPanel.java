@@ -17,8 +17,8 @@ import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.UiImageResolver;
-import pwcg.gui.campaign.CampaignRosterBasePanelFactory;
-import pwcg.gui.campaign.CampaignRosterSquadronPanelFactory;
+import pwcg.gui.campaign.home.CampaignRosterBasePanelFactory;
+import pwcg.gui.campaign.home.SquadronPilotChalkboardBuilder;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
@@ -58,7 +58,7 @@ public class CampaignSkinManagerPanel extends JPanel implements ActionListener
 
     private JPanel createRightPanel() throws PWCGException, PWCGException
     {
-        CampaignRosterBasePanelFactory pilotListDisplay = new CampaignRosterSquadronPanelFactory(this);
+        CampaignRosterBasePanelFactory pilotListDisplay = new SquadronPilotChalkboardBuilder(this);
         
         pilotListDisplay.setExcludeAces(true);
         
@@ -90,7 +90,7 @@ public class CampaignSkinManagerPanel extends JPanel implements ActionListener
 
     private JPanel makeLeftPanel() throws PWCGException 
     {
-        String imagePath = UiImageResolver.getSideImage(campaign, "CampaignSkinLeft.jpg");
+        String imagePath = UiImageResolver.getImage(campaign, "CampaignSkinLeft.jpg");
 
         ImageResizingPanel campaignButtonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         campaignButtonPanel.setLayout(new BorderLayout());
