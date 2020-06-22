@@ -37,6 +37,7 @@ public class CampaignHome extends ImageResizingPanel implements ActionListener
     private PwcgThreePanelUI pwcgThreePanel;
     private Campaign campaign;
     private boolean needContextRefresh = false;
+    private ChalkboardSelector chalkboardSelector;
 
     public CampaignHome(CampaignMainGUI parent, Campaign campaign) throws PWCGException
     {
@@ -68,6 +69,8 @@ public class CampaignHome extends ImageResizingPanel implements ActionListener
     {
         MusicManager.playCampaignTheme(determineCampaignSideForMusic());
         this.add(BorderLayout.WEST, makeLeftPanel());
+        
+        createSelectorPanel();
         
         pwcgThreePanel.setLeftPanel(makeLeftPanel());
         pwcgThreePanel.setCenterPanel(makeDefaultCenterPanel());
@@ -101,7 +104,13 @@ public class CampaignHome extends ImageResizingPanel implements ActionListener
         SquadronMember referencePlayer = campaign.findReferencePlayer();
         return CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(this, squadronMembers, referencePlayer.getSquadronId());
     }
-    
+
+    private void createSelectorPanel() throws PWCGException
+    {
+        chalkboardSelector = new ChalkboardSelector(this);
+        chalkboardSelector.createSelectorPanel();
+    }
+
     private List<SquadronMember> makePilotList() throws PWCGException 
     {
         SquadronMember referencePlayer = campaign.findReferencePlayer();
@@ -201,4 +210,8 @@ public class CampaignHome extends ImageResizingPanel implements ActionListener
         CampaignGuiContextManager.getInstance().refreshCurrentContext(this);
     }
 
+    public ChalkboardSelector getChalkboardSelector()
+    {
+        return chalkboardSelector;
+    }
 }

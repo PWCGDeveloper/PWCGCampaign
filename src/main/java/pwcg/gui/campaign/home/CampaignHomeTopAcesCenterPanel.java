@@ -16,23 +16,22 @@ public class CampaignHomeTopAcesCenterPanel extends JPanel
 
     public static final Integer ACE_VICTORY_SORT_CONSTANT = 100000;
     
-    private CampaignHome parent;
+    private CampaignHome campaignHome;
 
-	public CampaignHomeTopAcesCenterPanel(CampaignHome parent) throws PWCGException  
+	public CampaignHomeTopAcesCenterPanel(CampaignHome campaignHome) throws PWCGException  
 	{
         super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
         
-        this.parent = parent;
+        this.campaignHome = campaignHome;
 	}
 
     public void makePanel(List<SquadronMember> acesToDisplay)  
     {
         try
         {
-            JPanel selectorPanel = createSelectorPanel();
-            this.add(selectorPanel, BorderLayout.NORTH);
+            this.add(campaignHome.getChalkboardSelector(), BorderLayout.NORTH);
  
             JPanel chalkBoardPanel = createPilotListPanel(acesToDisplay);
             this.add(chalkBoardPanel, BorderLayout.CENTER);
@@ -42,13 +41,6 @@ public class CampaignHomeTopAcesCenterPanel extends JPanel
             PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
-    }
-
-    private JPanel createSelectorPanel() throws PWCGException
-    {
-        ChalkboardSelector chalkboardSelector = new ChalkboardSelector(parent);
-        chalkboardSelector.createSelectorPanel();
-        return chalkboardSelector;
     }
 
     private JPanel createPilotListPanel(List<SquadronMember> sortedPilots) throws PWCGException

@@ -14,24 +14,21 @@ public class CampaignHomeCenterPanel extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 	
-	private CampaignHome parent;
-	
-	public CampaignHomeCenterPanel(CampaignHome parent)  
+	private ChalkboardSelector chalkboardSelector;
+
+	public CampaignHomeCenterPanel(ChalkboardSelector chalkboardSelector)  
 	{
 	    super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
-	    this.parent = parent;
+	    this.chalkboardSelector = chalkboardSelector;
 	}
 
     public void makePanel(List<SquadronMember> sortedPilots)  
     {
         try
-        {
-            this.setLayout(new BorderLayout()); 
-            
-            JPanel selectorPanel = createSelectorPanel();
-            this.add(selectorPanel, BorderLayout.NORTH);
+        {            
+            this.add(chalkboardSelector, BorderLayout.NORTH);
  
             JPanel chalkBoardPanel = createPilotListPanel(sortedPilots);
             this.add(chalkBoardPanel, BorderLayout.CENTER);
@@ -41,13 +38,6 @@ public class CampaignHomeCenterPanel extends JPanel
             PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
-    }
-
-    private JPanel createSelectorPanel() throws PWCGException
-    {
-        ChalkboardSelector chalkboardSelector = new ChalkboardSelector(parent);
-        chalkboardSelector.createSelectorPanel();
-        return chalkboardSelector;
     }
 
     private JPanel createPilotListPanel(List<SquadronMember> sortedPilots) throws PWCGException

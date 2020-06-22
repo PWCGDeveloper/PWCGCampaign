@@ -149,8 +149,14 @@ public class ChalkboardSelector extends JPanel implements ActionListener
 
     public void createEquipmentContext() throws PWCGException 
     {       
-        CampaignEquipmentChalkBoard equipmentDisplay = new CampaignEquipmentChalkBoard();
-        equipmentDisplay.makeEquipmentPanel(campaignHome.getCampaign());
+        CampaignEquipmentChalkBoard equipmentChalkboardDisplay = new CampaignEquipmentChalkBoard(campaignHome.getChalkboardSelector());
+        equipmentChalkboardDisplay.makeEquipmentPanel(campaignHome.getCampaign());
+        
+        List<SquadronMember> squadronMembers = makePilotList();
+        SquadronMember referencePlayer = campaign.findReferencePlayer();
+        JPanel squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(campaignHome, squadronMembers, referencePlayer.getSquadronId());
+
+        campaignHome.createNewContext(equipmentChalkboardDisplay, squadronPanel);
     }    
 
     public void createPlayerSquadronContext() throws PWCGException 
