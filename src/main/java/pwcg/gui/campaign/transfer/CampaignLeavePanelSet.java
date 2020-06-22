@@ -7,6 +7,8 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -27,12 +29,11 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignLeavePanelSet extends JPanel implements ActionListener
+public class CampaignLeavePanelSet extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -42,7 +43,9 @@ public class CampaignLeavePanelSet extends JPanel implements ActionListener
 
 	public CampaignLeavePanelSet  (CampaignHome parent)
 	{
-        super();
+        super("");
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
 
 		this.parent = parent;
         this.campaign = PWCGContext.getInstance().getCampaign();
@@ -54,17 +57,16 @@ public class CampaignLeavePanelSet extends JPanel implements ActionListener
 
 	public void makePanels() throws PWCGException  
 	{
+        String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+        this.setImage(imagePath);
+
 	    this.add(BorderLayout.CENTER, makeLeaveCenterPanel());
 	    this.add(BorderLayout.WEST, makeLeaveLeftPanel());
-	    this.add(BorderLayout.EAST, null);
 	}
 
 	private JPanel makeLeaveLeftPanel() throws PWCGException  
 	{
-        String imagePath = UiImageResolver.getImage(campaign, "LeaveNav.jpg");
-
-		ImageResizingPanel leaverPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-		leaverPanel.setLayout(new BorderLayout());
+		JPanel leaverPanel = new JPanel(new BorderLayout());
 		leaverPanel.setOpaque(false);
 
 		JPanel leaveButtonPanel = new JPanel(new GridLayout(0,1));
@@ -81,42 +83,44 @@ public class CampaignLeavePanelSet extends JPanel implements ActionListener
 		return leaverPanel;
 	}
 
-	private JPanel makeLeaveCenterPanel()  
+	private JPanel makeLeaveCenterPanel() throws PWCGException  
 	{
-        ImageResizingPanel leaveCenterPanel = null;
-        try
-        {
-            String imagePath = ContextSpecificImages.imagesMisc() + "Paper.jpg";
-            leaveCenterPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);            
-            leaveCenterPanel.setLayout(new BorderLayout());
-    
-            JPanel leavePanel = new JPanel (new GridLayout(0, 3));
-            leavePanel.setOpaque(false);
+        JPanel leaveCenterPanel = new JPanel();
+        leaveCenterPanel.setOpaque(false);
+        leaveCenterPanel.setLayout(new BoxLayout(leaveCenterPanel, BoxLayout.PAGE_AXIS));
+        leaveCenterPanel.setBorder(BorderFactory.createEmptyBorder(100,300,100,300));
 
-            makeBlankRows(leavePanel, 6);
+        JPanel leaveNotification = makeLeaveLetterPanel();
+        leaveCenterPanel.add(leaveNotification);
 
-            JPanel leavePlayerWoundInfoPanel = makePlayerWoundHealTimePanel();
-            leavePanel.add(new JLabel (" "));
-            leavePanel.add(leavePlayerWoundInfoPanel);
-            leavePanel.add(new JLabel (" "));
-
-            makeBlankRows(leavePanel, 2);
-            
-            JPanel leaveRequestPanel = makeLeaveRequestRow();
-            leavePanel.add(new JLabel (" "));
-            leavePanel.add(leaveRequestPanel);
-            leavePanel.add(new JLabel (" "));
-
-			leaveCenterPanel.add(leavePanel, BorderLayout.NORTH);
-		}
-		catch (Exception e)
-		{
-			PWCGLogger.logException(e);
-			ErrorDialog.internalError(e.getMessage());
-		}
-		
 		return leaveCenterPanel;
 	}
+
+    private JPanel makeLeaveLetterPanel() throws PWCGException  
+    {
+        ImageResizingPanel leaveLetterPanel = null;
+        String imagePath = UiImageResolver.getImageMain("document.png");
+        leaveLetterPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);            
+        leaveLetterPanel.setLayout(new BoxLayout(leaveLetterPanel, BoxLayout.PAGE_AXIS));
+        leaveLetterPanel.setBorder(BorderFactory.createEmptyBorder(30,30,30,30));
+
+        JPanel leavePanel = new JPanel (new GridLayout(0, 1));
+        leavePanel.setOpaque(false);
+
+        makeBlankRows(leavePanel, 2);
+
+        JPanel leavePlayerWoundInfoPanel = makePlayerWoundHealTimePanel();
+        leavePanel.add(leavePlayerWoundInfoPanel);
+        
+        JPanel leaveRequestPanel = makeLeaveRequestRow();
+        leavePanel.add(leaveRequestPanel);
+
+        makeBlankRows(leavePanel, 13);
+
+        leaveLetterPanel.add(leavePanel, BorderLayout.WEST);
+        
+        return leaveLetterPanel;
+    }
 
     private JPanel makePlayerWoundHealTimePanel() throws PWCGException
     {
@@ -165,14 +169,22 @@ public class CampaignLeavePanelSet extends JPanel implements ActionListener
         for (int i = 0; i < numDummyRows; ++i)
         {
             JLabel lDummy1 = new JLabel("     ");
-            JLabel lDummy2 = new JLabel("     ");
-            JLabel lDummy3 = new JLabel("     ");
             leavePanel.add(lDummy1);
-            leavePanel.add(lDummy2);
-            leavePanel.add(lDummy3);
          }
     }
-	
+
+    private void makeBlankHorizonalSpace(JPanel leavePanel, int numSpaces) throws PWCGException
+    {
+        String space = " ";
+        for (int i = 0; i < numSpaces; ++i)
+        {
+            space += " ";
+        }
+        
+        JLabel lDummy1 = new JLabel(space);
+        leavePanel.add(lDummy1);
+    }
+
 
 
 
