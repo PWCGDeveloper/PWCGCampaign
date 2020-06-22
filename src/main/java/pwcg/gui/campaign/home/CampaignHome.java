@@ -92,14 +92,14 @@ public class CampaignHome extends ImageResizingPanel implements ActionListener
     private JPanel makeDefaultCenterPanel() throws PWCGException
     {
         List<SquadronMember> squadronMembers = makePilotList();
-        return CampaignHomeCenterPanelFactory.makeCampaignHomePanels(this, squadronMembers);
+        return CampaignHomeCenterPanelFactory.makeCampaignHomeCenterPanel(this, squadronMembers);
     }
 
     private JPanel makeDefaultRightPanel() throws PWCGException
     {
         List<SquadronMember> squadronMembers = makePilotList();
         SquadronMember referencePlayer = campaign.findReferencePlayer();
-        return CampaignHomeRightPanelFactory.makeSquadronPanel(this, squadronMembers, referencePlayer.getSquadronId());
+        return CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(this, squadronMembers, referencePlayer.getSquadronId());
     }
     
     private List<SquadronMember> makePilotList() throws PWCGException 
@@ -192,6 +192,13 @@ public class CampaignHome extends ImageResizingPanel implements ActionListener
     public Campaign getCampaign()
     {
         return campaign;
+    }
+    
+    public void createNewContext(JPanel centerPanel, JPanel rightPanel) throws PWCGException
+    {
+        pwcgThreePanel.setCenterPanel(centerPanel);
+        pwcgThreePanel.setRightPanel(rightPanel);
+        CampaignGuiContextManager.getInstance().refreshCurrentContext(this);
     }
 
 }

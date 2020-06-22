@@ -18,7 +18,7 @@ import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.campaign.home.TopAcesListBuilder.TopAcesListType;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ToolTipManager;
@@ -67,7 +67,7 @@ public class ChalkboardSelector extends JPanel implements ActionListener
 
     private JButton makeMenuButton(String buttonText, String commandText, String toolTiptext) throws PWCGException
     {
-        JButton button = PWCGButtonFactory.makeMenuButton(buttonText, commandText, null);
+        JButton button = PWCGButtonFactory.makeMenuButton(buttonText, commandText, this);
         ToolTipManager.setToolTip(button, toolTiptext);
         return button;
     }
@@ -83,9 +83,17 @@ public class ChalkboardSelector extends JPanel implements ActionListener
             {
                 createPlayerSquadronContext();
             }
+            else if (action.equalsIgnoreCase("CampTopAcesService"))
+            {
+                createTopAceContext(TopAcesListType.TOP_ACES_SERVICE);
+            }
+            else if (action.equalsIgnoreCase("CampTopAcesNoHistorical"))
+            {
+                createTopAceContext(TopAcesListType.TOP_ACES_NO_HISTORICAL);
+            }
             else if (action.equalsIgnoreCase("CampTopAces"))
             {
-                createTopAceContext();
+                createTopAceContext(TopAcesListType.TOP_ACES_ALL);
             }
             else if (action.equalsIgnoreCase("Equipment"))
             {
@@ -121,8 +129,12 @@ public class ChalkboardSelector extends JPanel implements ActionListener
     public void createPlayerSquadronContext() throws PWCGException 
     {
         List<SquadronMember> squadronMembers = makePilotList();
+        JPanel chalkboardPanel =  CampaignHomeCenterPanelFactory.makeCampaignHomeCenterPanel(campaignHome, squadronMembers);
+        
         SquadronMember referencePlayer = campaign.findReferencePlayer();
-        JPanel squadronPanel = CampaignHomeRightPanelFactory.makeSquadronPanel(campaignHome, squadronMembers, referencePlayer.getSquadronId());
+        JPanel squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(campaignHome, squadronMembers, referencePlayer.getSquadronId());
+
+        campaignHome.createNewContext(chalkboardPanel, squadronPanel);
     }
 
     private List<SquadronMember> makePilotList() throws PWCGException 
@@ -133,21 +145,16 @@ public class ChalkboardSelector extends JPanel implements ActionListener
         return squadronMembers.sortPilots(campaign.getDate());
     }
 
-    private void createTopAceContext() throws PWCGException 
+    private void createTopAceContext(TopAcesListType topAcesListType) throws PWCGException 
     {
-        CampaignRosterBasePanelFactory topAceListDisplay = new CampaignRosterTopAcesPanelFactory(campaignHome);
-        topAceListDisplay.makePilotList();
-        createSquadronMemberContext(topAceListDisplay);
+        TopAcesListBuilder topAcesListBuilder = new TopAcesListBuilder(campaign);
+        List<SquadronMember> acesToDisplay = topAcesListBuilder.getTopTenAces(topAcesListType);
+        
+        CampaignHomeTopAcesCenterPanel topAceListChalkboard = new CampaignHomeTopAcesCenterPanel(campaignHome);
+        topAceListChalkboard.makePanel(acesToDisplay);
+        
+        JPanel topAcesListPanel = CampaignHomeRightPanelFactory.makeCampaignHomeAcesRightPanel(campaignHome, acesToDisplay);
+
+        campaignHome.createNewContext(topAceListChalkboard, topAcesListPanel);
     }
-
-    private void createSquadronMemberContext(CampaignRosterBasePanelFactory squadronMemberListDisplay) throws PWCGException 
-    {
-        squadronMemberListDisplay.makeCampaignHomePanels();
-        this.add(BorderLayout.CENTER, squadronMemberListDisplay.getChalkboardPanel());
-        this.add(BorderLayout.EAST, squadronMemberListDisplay.getPilotListPanel());
-
-        CampaignGuiContextManager.getInstance().clearContextStack();
-        CampaignGuiContextManager.getInstance().pushToContextStack(campaignHome);
-    }
-
 }
