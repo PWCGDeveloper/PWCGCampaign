@@ -1,14 +1,18 @@
 package pwcg.gui.campaign.home;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import javax.swing.JButton;
+import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.personnel.SquadronMemberFilter;
@@ -19,8 +23,9 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.campaign.home.TopAcesListBuilder.TopAcesListType;
+import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ToolTipManager;
 
 public class ChalkboardSelector extends JPanel implements ActionListener
@@ -29,7 +34,8 @@ public class ChalkboardSelector extends JPanel implements ActionListener
 
     private Campaign campaign;
     private CampaignHome campaignHome;
-    
+    private ButtonGroup buttonGroup = new ButtonGroup();
+
     public ChalkboardSelector(CampaignHome campaignHome)
     {
         this.campaignHome = campaignHome;
@@ -41,34 +47,55 @@ public class ChalkboardSelector extends JPanel implements ActionListener
 
     public void createSelectorPanel() throws PWCGException
     {
-        JPanel selectorPanel = new JPanel(new GridLayout(0, 1));
+        JPanel selectorPanel = new JPanel(new GridLayout(0, 2));
         selectorPanel.setOpaque(false);
 
         JLabel space1 = new JLabel("");
         selectorPanel.add(space1);
 
-        JButton pilotsButton = makeMenuButton("Pilots", "CampPilots", "Show squadron pilot chalk board");
+        JLabel space2 = new JLabel("");
+        selectorPanel.add(space2);
+
+        JRadioButton pilotsButton = makeRadioButton("Pilots", "CampPilots", "Show squadron pilot chalk board");
         selectorPanel.add(pilotsButton);
 
-        JButton equipmentButton = makeMenuButton("Equipment", "Equipment", "Show equipment chalk board");
-        selectorPanel.add(equipmentButton);
-
-        JButton topAcesButton = makeMenuButton("Top Aces: All", "CampTopAces", "Show top aces chalk board");
+        JRadioButton topAcesButton = makeRadioButton("Top Aces: All", "CampTopAces", "Show top aces chalk board");
         selectorPanel.add(topAcesButton);
 
-        JButton topAcesForServiceButton = makeMenuButton("Top Aces: Service", "CampTopAcesService", "Show top aces chalk board for your service");
+        JRadioButton equipmentButton = makeRadioButton("Equipment", "Equipment", "Show equipment chalk board");
+        selectorPanel.add(equipmentButton);
+
+        JRadioButton topAcesForServiceButton = makeRadioButton("Top Aces: Service", "CampTopAcesService", "Show top aces chalk board for your service");
         selectorPanel.add(topAcesForServiceButton);
 
-        JButton topAcesNoHistoricalButton = makeMenuButton("Top Aces: Exclude Historical", "CampTopAcesNoHistorical", "Show top aces chalk board with no historical aces");
+        JLabel space3 = new JLabel("");
+        selectorPanel.add(space3);
+
+        JRadioButton topAcesNoHistoricalButton = makeRadioButton("Top Aces: Exclude Historical", "CampTopAcesNoHistorical", "Show top aces chalk board with no historical aces");
         selectorPanel.add(topAcesNoHistoricalButton); 
         
         this.add(selectorPanel, BorderLayout.CENTER);
     }
 
-    private JButton makeMenuButton(String buttonText, String commandText, String toolTiptext) throws PWCGException
+    private JRadioButton makeRadioButton(String buttonText, String action, String toolTiptext) throws PWCGException 
     {
-        JButton button = PWCGButtonFactory.makeMenuButton(buttonText, commandText, this);
+        Color fgColor = ColorMap.CHALK_FOREGROUND;
+
+        Font font = PWCGMonitorFonts.getPrimaryFont();
+
+        JRadioButton button = new JRadioButton(buttonText);
+        button.setActionCommand(action);
+        button.setHorizontalAlignment(SwingConstants.LEFT );
+        button.setBorderPainted(false);
+        button.addActionListener(this);
+        button.setOpaque(false);
+        button.setForeground(fgColor);
+        button.setFont(font);
+        
         ToolTipManager.setToolTip(button, toolTiptext);
+
+        buttonGroup.add(button);
+
         return button;
     }
 
