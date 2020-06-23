@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -20,12 +21,10 @@ import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignEquipmentDepotPanelSet extends JPanel implements ActionListener
+public class CampaignEquipmentDepotPanelSet extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 	private JTabbedPane tabs = new JTabbedPane();
@@ -33,24 +32,28 @@ public class CampaignEquipmentDepotPanelSet extends JPanel implements ActionList
 
 	public CampaignEquipmentDepotPanelSet(Campaign campaign)
 	{
-        super();
-	    this.campaign = campaign;
+        super("");
+        this.setLayout(new BorderLayout());
         this.setOpaque(false);
+
+        this.campaign = campaign;
 	}
 
 	public void makePanels() throws PWCGException  
 	{
+        String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+        this.setImage(imagePath);
+
         this.add(BorderLayout.CENTER,  makeCenterPanel());
         this.add(BorderLayout.WEST, makeNavigatePanel());
 	}
 
 	private JPanel makeNavigatePanel() throws PWCGException  
 	{		
-        String imagePath = UiImageResolver.getImage(campaign, "IntelNav.jpg");
-
-		ImageResizingPanel intelPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-		intelPanel.setLayout(new BorderLayout());
-		intelPanel.setOpaque(false);
+        JPanel equipmentDepotPanel = new JPanel(new BorderLayout());
+        equipmentDepotPanel.setOpaque(false);
+		equipmentDepotPanel.setLayout(new BorderLayout());
+		equipmentDepotPanel.setOpaque(false);
 
 		JPanel buttonPanel = new JPanel(new GridLayout(0,1));
 		buttonPanel.setOpaque(false);
@@ -58,45 +61,39 @@ public class CampaignEquipmentDepotPanelSet extends JPanel implements ActionList
         JButton acceptButton = PWCGButtonFactory.makeMenuButton("Finished", "EquipmentDepoFinished", this);
 		buttonPanel.add(acceptButton);
 		
-		intelPanel.add(buttonPanel, BorderLayout.NORTH);
+		equipmentDepotPanel.add(buttonPanel, BorderLayout.NORTH);
 		
-		return intelPanel;
+		return equipmentDepotPanel;
 	}
 
-	private JPanel makeCenterPanel() 
+	private JPanel makeCenterPanel() throws PWCGException 
 	{
-		ImageResizingPanel intelPanel = null;
+        ImageResizingPanel intelPanel = new ImageResizingPanel("");
+        intelPanel.setOpaque(false);
+        intelPanel.setLayout(new BorderLayout());
+        String imagePath = UiImageResolver.getImageMain("document.png");
+        intelPanel.setImage(imagePath);
 
-		try
-		{
-	        String imagePath = ContextSpecificImages.imagesMisc() + "Paper.jpg";
-	        intelPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-			intelPanel.setLayout(new BorderLayout());
-			
-			Color tabBG = ColorMap.PAPER_BACKGROUND;
-			tabs.setBackground(tabBG);
-			tabs.setOpaque(false);
-			
-			IArmedServiceManager serviceManager = ArmedServiceFactory.createServiceManager();
-			for (ArmedService service : serviceManager.getAllActiveArmedServices(campaign.getDate()))
-			{
-			    CampaignEquipmentDepotPanel serviceEquipmentDepoTab = new CampaignEquipmentDepotPanel(campaign, service);
-			    serviceEquipmentDepoTab.makePanel();
-	            tabs.addTab(service.getName(), serviceEquipmentDepoTab);      
-			}
-						
-			for (int i = 0; i < tabs.getTabCount(); ++i)
-			{
-				tabs.setBackgroundAt(i, tabBG);
-			}
+        
+        Color tabBG = ColorMap.PAPER_BACKGROUND;
+        tabs.setBackground(tabBG);
+        tabs.setOpaque(false);
+        
+        IArmedServiceManager serviceManager = ArmedServiceFactory.createServiceManager();
+        List<ArmedService> allArmedServices = serviceManager.getAllActiveArmedServices(campaign.getDate());
+        for (ArmedService service : allArmedServices)
+        {
+            CampaignEquipmentDepotPanel serviceEquipmentDepoTab = new CampaignEquipmentDepotPanel(campaign, service);
+            serviceEquipmentDepoTab.makePanel();
+            tabs.addTab(service.getName(), serviceEquipmentDepoTab);      
+        }
+                    
+        for (int i = 0; i < tabs.getTabCount(); ++i)
+        {
+            tabs.setBackgroundAt(i, tabBG);
+        }
 
-			intelPanel.add(tabs, BorderLayout.CENTER);
-		}
-		catch (Exception e)
-		{
-			PWCGLogger.logException(e);
-			ErrorDialog.internalError(e.getMessage());
-		}
+        intelPanel.add(tabs, BorderLayout.CENTER);
 		
 		return intelPanel;
 	}
