@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -15,9 +16,9 @@ import pwcg.core.config.ConfigItem;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.config.ConfigSet;
 import pwcg.core.exception.PWCGException;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ToolTipManager;
 
@@ -30,7 +31,7 @@ public class ConfigurationParametersGUI extends ImageResizingPanel
 	
 	public ConfigurationParametersGUI(JPanel configurationGlobalGUI, ConfigManager configManager, ConfigSet configSet) 
 	{		
-        super(ContextSpecificImages.imagesMisc() + "Paper.jpg");
+        super("");
         setLayout(new BorderLayout());
         this.configSet = configSet;
         this.configManager = configManager;
@@ -38,6 +39,9 @@ public class ConfigurationParametersGUI extends ImageResizingPanel
 
 	public void makeGUI() throws PWCGException 
 	{
+        String imagePath = UiImageResolver.getImageMain("document.png");
+        this.setImage(imagePath);
+        
 		if (configSet == null)
 		{
 			return;
@@ -48,42 +52,40 @@ public class ConfigurationParametersGUI extends ImageResizingPanel
 		JPanel mainPanel = new JPanel (new BorderLayout());
 		mainPanel.setOpaque(false);
 
-		JPanel descPanel = new JPanel (new GridLayout(0,1));
+		JPanel descPanel = new JPanel (new GridLayout(0,3));
 		descPanel.setOpaque(false);
 		
-		JPanel valuePanel = new JPanel (new GridLayout(0,1));
-		valuePanel.setOpaque(false);
-		
-		Font font = PWCGMonitorFonts.getPrimaryFontSmall();
+		Font font = PWCGMonitorFonts.getTypewriterFont();
 		
 		for (String parameterKey : configSet.getConfigItemNames())
 		{
 			ConfigItem item = configSet.getConfigItem(parameterKey);
-			
+
 			String keyString = item.getLabelText() + " : ";
 			JLabel label = new JLabel(keyString, JLabel.LEFT);
 			label.setBackground(bgColor);
 			label.setOpaque(false);
 			label.setFont(font);
 			descPanel.add(label);
-			
+			descPanel.setBorder(BorderFactory.createEmptyBorder(30,30,30,30));
+
 	        ToolTipManager.setToolTip(label, item.getHelp());
 			
-			JTextField textField = new JTextField(50);
+			JTextField textField = new JTextField(20);
 			textField.setBackground(bgColor);
 			textField.setOpaque(false);
 			textField.setFont(font);
 			textField.setText(item.getValue());
+			descPanel.add(textField);
 			
-			valuePanel.add(textField);
-			
+            JLabel spacerRight = new JLabel("");
+            descPanel.add(spacerRight);
+
 			ConfigTextField configTextField = new ConfigTextField(parameterKey, textField, 50, item.getLabelText(), item.getHelp());
 			configTextFields.put(parameterKey, configTextField);
 		}
 		
 		mainPanel.add(descPanel, BorderLayout.WEST);
-		mainPanel.add(valuePanel, BorderLayout.CENTER);
-
 		add(mainPanel, BorderLayout.NORTH);
 	}
 	

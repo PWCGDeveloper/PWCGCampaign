@@ -32,7 +32,6 @@ import pwcg.core.utils.DirectoryReader;
 import pwcg.core.utils.FileUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -161,9 +160,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 
 	private JPanel makeNavigationPanel() throws PWCGException 
 	{
-        String imagePath = UiImageResolver.getImage(campaign, "DebriefNav.jpg");
-        ImageResizingPanel debriefButtonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        debriefButtonPanel.setLayout(new BorderLayout());
+        JPanel debriefButtonPanel = new JPanel(new BorderLayout());
         debriefButtonPanel.setOpaque(false);
         
         JPanel buttonGrid = new JPanel(new GridLayout(0,1));

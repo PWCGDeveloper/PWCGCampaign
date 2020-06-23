@@ -40,7 +40,6 @@ public class CampaignEquipmentDepotPanelSet extends JPanel implements ActionList
 
 	public void makePanels() throws PWCGException  
 	{
-        this.add(BorderLayout.EAST, null);
         this.add(BorderLayout.CENTER,  makeCenterPanel());
         this.add(BorderLayout.WEST, makeNavigatePanel());
 	}

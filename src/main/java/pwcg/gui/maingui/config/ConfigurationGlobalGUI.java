@@ -29,12 +29,10 @@ import pwcg.gui.config.ConfigurationParametersGUI;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class ConfigurationGlobalGUI extends JPanel implements ActionListener
+public class ConfigurationGlobalGUI extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     private Map<String, ConfigurationParametersGUI> configurationGUIs = new HashMap<String, ConfigurationParametersGUI>();
@@ -44,49 +42,47 @@ public class ConfigurationGlobalGUI extends JPanel implements ActionListener
 
     public ConfigurationGlobalGUI()
     {
-        super();
+        super("");
         this.setLayout(new BorderLayout());
+        this.setOpaque(false);
+
         this.pwcgThreePanel = new PwcgThreePanelUI(this);
     }
     
-    public void makePanels() 
+    public void makePanels() throws PWCGException 
     {
-        try
-        {
-            configManager = ConfigManagerGlobal.getInstance();
-            
-            pwcgThreePanel.setLeftPanel(makeNavigatePanel());
-            pwcgThreePanel.setRightPanel(makeCategoryPanel());
-            pwcgThreePanel.setCenterPanel(makeBlankCenterPanel());
-            CampaignGuiContextManager.getInstance().pushToContextStack(this);
-        }
-        catch (Throwable e)
-        {
-            PWCGLogger.logException(e);
-            ErrorDialog.internalError(e.getMessage());
-        }
+        String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+        this.setImage(imagePath);
+
+        configManager = ConfigManagerGlobal.getInstance();
+        
+        pwcgThreePanel.setLeftPanel(makeNavigatePanel());
+        pwcgThreePanel.setCenterPanel(makeBlankCenterPanel());
+        pwcgThreePanel.setRightPanel(makeCategoryPanel());
     }
 
     public JPanel makeBlankCenterPanel()  
     {       
-        String imagePath = ContextSpecificImages.imagesMisc() + "Paper.jpg";
-        ImageResizingPanel blankPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+        JPanel blankPanel = new JPanel(new BorderLayout());
+        blankPanel.setOpaque(false);
         blankPanel.setLayout(new BorderLayout());
         return blankPanel;
     }
 
     public JPanel makeNavigatePanel() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getImageMain("ConfigLeft.jpg");
-
-        JPanel navPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        navPanel.setLayout(new BorderLayout());
+        JPanel navPanel = new JPanel(new BorderLayout());
+        navPanel.setOpaque(false);
 
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
         JButton acceptButton = PWCGButtonFactory.makeMenuButton("Accept Config Changes", "Accept", this);
         buttonPanel.add(acceptButton);
+
+        JLabel spacer2 = new JLabel("   ");
+        spacer2.setOpaque(false);
+        buttonPanel.add(spacer2);
 
         JButton cancelButton = PWCGButtonFactory.makeMenuButton("Cancel Config Changes", "Cancel", this);
         buttonPanel.add(cancelButton);
@@ -98,10 +94,8 @@ public class ConfigurationGlobalGUI extends JPanel implements ActionListener
 
     public JPanel makeCategoryPanel() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getImageMain("ConfigRight.jpg");
-
-        JPanel configPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        configPanel.setLayout(new BorderLayout());
+        JPanel configPanel = new JPanel(new BorderLayout());
+        configPanel.setOpaque(false);
 
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);

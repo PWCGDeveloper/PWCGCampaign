@@ -28,15 +28,12 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.rofmap.MapGUI;
 import pwcg.gui.rofmap.MapScroll;
 import pwcg.gui.utils.CampaignTransitionDates;
-import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
 public class InfoMapGUI extends MapGUI implements ActionListener
@@ -105,11 +102,9 @@ public class InfoMapGUI extends MapGUI implements ActionListener
 
     private JPanel makeNavigationPanel() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getImageMain("CampaignInfoRight.jpg");
-
-        ImageResizingPanel intelNavPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        intelNavPanel.setLayout(new BorderLayout());
-        intelNavPanel.setOpaque(false);
+        JPanel infoMapNavPanel = new JPanel(new BorderLayout());
+        infoMapNavPanel.setLayout(new BorderLayout());
+        infoMapNavPanel.setOpaque(false);
 
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
@@ -126,29 +121,19 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         JLabel spacer2 = PWCGButtonFactory.makeMenuLabelLarge("");
         buttonPanel.add(spacer2);
 
-        intelNavPanel.add(buttonPanel, BorderLayout.NORTH);
+        infoMapNavPanel.add(buttonPanel, BorderLayout.NORTH);
         
-        return intelNavPanel;
+        return infoMapNavPanel;
     }
 
-
-    /**
-     * @return
-     * @throws PWCGException 
-     */
     public JPanel makeSelectionPanel() throws PWCGException 
     {
-        String imagePath = UiImageResolver.getImageMain("CampaignInfoLeft.jpg");
-
-        ImageResizingPanel selectionPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        selectionPanel.setLayout(new GridLayout(0,1));
+        JPanel selectionPanel = new JPanel(new GridLayout(0,1));
         selectionPanel.setOpaque(false);
 
-        // The date selection box
         JPanel datePanel = createDateSelection(selectionPanel);
         selectionPanel.add(datePanel);
 
-        // Map buttons
         JPanel buttonPanelGrid = makeMapCheckBoxes();
         selectionPanel.add(buttonPanelGrid);
 

@@ -30,15 +30,12 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.rofmap.MapGUI;
 import pwcg.gui.rofmap.MapScroll;
 import pwcg.gui.utils.CampaignTransitionDates;
-import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
 public class EditorMapGUI extends MapGUI implements ActionListener
@@ -106,37 +103,30 @@ public class EditorMapGUI extends MapGUI implements ActionListener
 
     private JPanel makeNavigationPanel() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getImageMain("CampaignInfoRight.jpg");
-
-        ImageResizingPanel intelNavPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        intelNavPanel.setLayout(new BorderLayout());
-        intelNavPanel.setOpaque(false);
+        JPanel editNavPanel = new JPanel(new BorderLayout());
+        editNavPanel.setLayout(new BorderLayout());
+        editNavPanel.setOpaque(false);
 
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
-        // Finished button
         JButton finished = PWCGButtonFactory.makeMenuButton("Finished", "Finished", this);
         buttonPanel.add(finished);
         
-        // Editor buttons for using the UI to create new front lines
         makeFrontEditActionButtons(buttonPanel);
 
-        // Spacer
         JLabel spacer1 = PWCGButtonFactory.makeMenuLabelLarge("");
         buttonPanel.add(spacer1);
 
-        // Map chooser
         JPanel radioButtonPanel = new JPanel( new GridLayout(0,1));
         radioButtonPanel.setOpaque(false);
         
-        // Spacer
         JLabel spacer2 = PWCGButtonFactory.makeMenuLabelLarge("");
         buttonPanel.add(spacer2);
 
-        intelNavPanel.add(buttonPanel, BorderLayout.NORTH);
+        editNavPanel.add(buttonPanel, BorderLayout.NORTH);
         
-        return intelNavPanel;
+        return editNavPanel;
     }
 
     private void makeFrontEditActionButtons(JPanel buttonPanel) throws PWCGException
@@ -156,10 +146,7 @@ public class EditorMapGUI extends MapGUI implements ActionListener
 
     public JPanel makeSelectionPanel() throws PWCGException 
     {
-        String imagePath = UiImageResolver.getImageMain("CampaignInfoLeft.jpg");
-
-        ImageResizingPanel selectionPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        selectionPanel.setLayout(new GridLayout(0,1));
+        JPanel selectionPanel = new JPanel(new GridLayout(0,1));
         selectionPanel.setOpaque(false);
 
         // The date selection box
@@ -178,11 +165,7 @@ public class EditorMapGUI extends MapGUI implements ActionListener
         return selectionPanel;
     }
 
-    /**
-     * @param selectionPanel
-     * @throws PWCGException
-     */
-    private void makeFrontEditSelectionButtons(ImageResizingPanel selectionPanel) throws PWCGException
+    private void makeFrontEditSelectionButtons(JPanel selectionPanel) throws PWCGException
     {
         JPanel editButtonPanel = new JPanel( new GridLayout(0,1));
         editButtonPanel.setOpaque(false);

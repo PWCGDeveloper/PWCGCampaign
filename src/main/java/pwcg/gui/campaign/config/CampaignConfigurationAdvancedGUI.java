@@ -30,13 +30,12 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.config.ConfigurationParametersGUI;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ToolTipManager;
 
-public class CampaignConfigurationAdvancedGUI extends JPanel implements ActionListener
+public class CampaignConfigurationAdvancedGUI extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     
@@ -47,33 +46,28 @@ public class CampaignConfigurationAdvancedGUI extends JPanel implements ActionLi
 
 	public CampaignConfigurationAdvancedGUI(Campaign campaign)
 	{
+        super("");
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
+
 	    this.campaign = campaign;
 	    this.pwcgThreePanel = new PwcgThreePanelUI(this);
 	}
 	
-	public void makePanels() 
+	public void makePanels() throws PWCGException 
 	{
-		try
-		{
-            pwcgThreePanel.setLeftPanel(makeNavigatePanel());
-            pwcgThreePanel.setCenterPanel(makeCenterPanel());
-            pwcgThreePanel.setRightPanel(makeCategoryPanel());
-            CampaignGuiContextManager.getInstance().pushToContextStack(this);
-		}
-		catch (Throwable e)
-		{
-			PWCGLogger.logException(e);
-			ErrorDialog.internalError(e.getMessage());
-		}
+        String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+        this.setImage(imagePath);
+
+        pwcgThreePanel.setLeftPanel(makeNavigatePanel());
+        pwcgThreePanel.setCenterPanel(makeBlankCenterPanel());
+        pwcgThreePanel.setRightPanel(makeCategoryPanel());
 	}
 
     private JPanel makeNavigatePanel() throws PWCGException
     {
-        String imagePath = UiImageResolver.getImage(campaign, "AdvancedConfigCampaignLeft.jpg");
-
-        ImageResizingPanel simpleConfigAcceptPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        simpleConfigAcceptPanel.setLayout(new BorderLayout());
-        simpleConfigAcceptPanel.setOpaque(false);
+        JPanel advancedConfigAcceptPanel = new JPanel(new BorderLayout());
+        advancedConfigAcceptPanel.setOpaque(false);
 
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
@@ -91,14 +85,14 @@ public class CampaignConfigurationAdvancedGUI extends JPanel implements ActionLi
         JButton cancelButton = PWCGButtonFactory.makeMenuButton("Cancel Config Changes", "Cancel", this);
         buttonPanel.add(cancelButton);
         
-        simpleConfigAcceptPanel.add(buttonPanel, BorderLayout.NORTH);
+        advancedConfigAcceptPanel.add(buttonPanel, BorderLayout.NORTH);
 
-        return simpleConfigAcceptPanel;
+        return advancedConfigAcceptPanel;
     }
 
-	public JPanel makeCenterPanel() 
+	public JPanel makeBlankCenterPanel() throws PWCGException 
 	{		
-        String imagePath = ContextSpecificImages.imagesMisc() + "Paper.jpg";
+        String imagePath = UiImageResolver.getImageMain("document.png");
 		ImageResizingPanel blankPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
 		blankPanel.setLayout(new BorderLayout());
 		return blankPanel;
@@ -106,18 +100,8 @@ public class CampaignConfigurationAdvancedGUI extends JPanel implements ActionLi
 
 	public JPanel makeCategoryPanel() throws PWCGException  
 	{
-        String imagePath = null;
-        if (campaign != null)
-        {
-            imagePath = UiImageResolver.getImage(campaign, "AdvancedConfigCampaignRight.jpg");
-        }
-        else
-        {
-            imagePath = UiImageResolver.getImage(campaign, "ConfigLeft.jpg");
-         }
-        		
-        ImageResizingPanel configPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-		configPanel.setLayout(new BorderLayout());
+        JPanel configPanel = new JPanel(new BorderLayout());
+		configPanel.setOpaque(false);
 
 		try
 		{
@@ -279,7 +263,6 @@ public class CampaignConfigurationAdvancedGUI extends JPanel implements ActionLi
 			else if (action.contains("Configuration Parameters"))
 			{
 				ConfigurationParametersGUI newConfig = null;
-				
 				if (configurationGUIs.containsKey(action))
 				{
 					newConfig = configurationGUIs.get(action);

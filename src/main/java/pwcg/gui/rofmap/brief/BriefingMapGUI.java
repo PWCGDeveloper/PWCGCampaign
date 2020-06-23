@@ -25,7 +25,6 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -34,7 +33,6 @@ import pwcg.gui.helper.BriefingMissionFlight;
 import pwcg.gui.rofmap.MapGUI;
 import pwcg.gui.rofmap.MapScroll;
 import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
@@ -150,9 +148,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 
     private JPanel makeLeftPanel() throws PWCGException 
     {
-        String imagePath = UiImageResolver.getImage(campaignHomeGui.getCampaign(), "BriefingNav.jpg");
-        ImageResizingPanel leftPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        leftPanel.setLayout(new BorderLayout());
+        JPanel leftPanel = new JPanel(new BorderLayout());
         leftPanel.setOpaque(false);
 
         JPanel buttonPanel = makeButtonPanel();
