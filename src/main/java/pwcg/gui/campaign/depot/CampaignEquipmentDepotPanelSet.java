@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -68,12 +69,12 @@ public class CampaignEquipmentDepotPanelSet extends ImageResizingPanel implement
 
 	private JPanel makeCenterPanel() throws PWCGException 
 	{
-        ImageResizingPanel intelPanel = new ImageResizingPanel("");
-        intelPanel.setOpaque(false);
-        intelPanel.setLayout(new BorderLayout());
+        ImageResizingPanel equipmentDepotPanel = new ImageResizingPanel("");
+        equipmentDepotPanel.setOpaque(false);
+        equipmentDepotPanel.setLayout(new BorderLayout());
         String imagePath = UiImageResolver.getImageMain("document.png");
-        intelPanel.setImage(imagePath);
-
+        equipmentDepotPanel.setImage(imagePath);
+        equipmentDepotPanel.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
         
         Color tabBG = ColorMap.PAPER_BACKGROUND;
         tabs.setBackground(tabBG);
@@ -93,9 +94,9 @@ public class CampaignEquipmentDepotPanelSet extends ImageResizingPanel implement
             tabs.setBackgroundAt(i, tabBG);
         }
 
-        intelPanel.add(tabs, BorderLayout.CENTER);
+        equipmentDepotPanel.add(tabs, BorderLayout.CENTER);
 		
-		return intelPanel;
+		return equipmentDepotPanel;
 	}
 
     public void actionPerformed(ActionEvent ae)

@@ -34,6 +34,7 @@ import pwcg.gui.utils.DocumentBorderCalculator;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.SpacerPanelFactory;
 
 public class CampaignLeavePanelSet extends ImageResizingPanel implements ActionListener
 {
@@ -62,8 +63,10 @@ public class CampaignLeavePanelSet extends ImageResizingPanel implements ActionL
         String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
         this.setImage(imagePath);
 
+        this.add(BorderLayout.WEST, makeLeaveLeftPanel());
 	    this.add(BorderLayout.CENTER, makeLeaveCenterPanel());
-	    this.add(BorderLayout.WEST, makeLeaveLeftPanel());
+        this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1400));
+
 	}
 
 	private JPanel makeLeaveLeftPanel() throws PWCGException  
@@ -93,7 +96,7 @@ public class CampaignLeavePanelSet extends ImageResizingPanel implements ActionL
         JPanel leaveCenterPanel = new JPanel();
         leaveCenterPanel.setOpaque(false);
         leaveCenterPanel.setLayout(new BorderLayout());
-        leaveCenterPanel.setBorder(BorderFactory.createEmptyBorder(100,300,100,300));
+        leaveCenterPanel.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
 
         JPanel leaveNotification = makeLeaveLetterPanel();
         leaveCenterPanel.add(leaveNotification, BorderLayout.CENTER);

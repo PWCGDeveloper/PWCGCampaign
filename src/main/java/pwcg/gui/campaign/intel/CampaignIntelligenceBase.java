@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -76,6 +77,7 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
         squeezerPanel.setLayout(new BorderLayout());
         String imagePath = UiImageResolver.getImageMain("document.png");
         squeezerPanel.setImage(imagePath);
+        squeezerPanel.setBorder(BorderFactory.createEmptyBorder(50,50,50,50));
 
         squadronsByRoleContainer = new ImageResizingPanel("");
         squadronsByRoleContainer.setOpaque(false);
@@ -103,6 +105,7 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
         intelTextPanel.setLayout(new BorderLayout());
         String imagePath = UiImageResolver.getImageMain("document.png");
         intelTextPanel.setImage(imagePath);
+        intelTextPanel.setBorder(BorderFactory.createEmptyBorder(50,50,50,50));
 
         Font font = PWCGMonitorFonts.getTypewriterFont();
         squadronIntelText = new JTextArea();

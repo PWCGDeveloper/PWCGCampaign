@@ -31,11 +31,11 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorBorders;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
@@ -68,9 +68,14 @@ public class CampaignSkinManagerForPilotPanel extends ImageResizingPanel impleme
     private ButtonGroup skinButtonGroup = new ButtonGroup();
     private List<ButtonModel> skinButtonModels = new ArrayList<ButtonModel>();
 
-	public CampaignSkinManagerForPilotPanel(Campaign campaign, SkinSessionManager skinSessionManager)
+	public CampaignSkinManagerForPilotPanel(Campaign campaign, SkinSessionManager skinSessionManager) throws PWCGException
 	{
-        super(ContextSpecificImages.imagesMisc() + "paperHalf.jpg");
+        super("");
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
+
+        String imagePath = UiImageResolver.getImageMain("document.png");
+        this.setImage(imagePath);
         
         this.campaign = campaign;
         this.skinSessionManager = skinSessionManager;

@@ -91,12 +91,8 @@ public class PWCGButtonFactory extends JButton
         return button;
     }
     
-
-    public static JRadioButton makeRadioButton(String buttonName, String action, String toolTipText, boolean selected, ActionListener actionListener) throws PWCGException
+    public static JRadioButton makeRadioButton(String buttonName, String action, String toolTipText, boolean selected, ActionListener actionListener, Color fg) throws PWCGException
     {
-        Color bg = ColorMap.WOOD_BACKGROUND;
-        Color fg = ColorMap.CHALK_FOREGROUND;
-
         Font font = PWCGMonitorFonts.getPrimaryFont();
 
         JRadioButton button= new JRadioButton(buttonName);
@@ -104,7 +100,6 @@ public class PWCGButtonFactory extends JButton
         button.setActionCommand(action);
         button.addActionListener(actionListener);
         button.setFont(font);
-        button.setBackground(bg);
         button.setForeground(fg);
 
         ToolTipManager.setToolTip(button, toolTipText);

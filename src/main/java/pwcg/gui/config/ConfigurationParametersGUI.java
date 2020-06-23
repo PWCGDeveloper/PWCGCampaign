@@ -41,7 +41,8 @@ public class ConfigurationParametersGUI extends ImageResizingPanel
 	{
         String imagePath = UiImageResolver.getImageMain("document.png");
         this.setImage(imagePath);
-        
+        this.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
+
 		if (configSet == null)
 		{
 			return;

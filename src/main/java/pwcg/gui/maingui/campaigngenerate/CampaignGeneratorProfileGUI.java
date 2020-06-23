@@ -97,12 +97,25 @@ public class CampaignGeneratorProfileGUI extends ImageResizingPanel implements A
         lCampaignType = makeCoopLabel(CampaignConfigurationSimpleGUIController.CAMPAIGN_TYPE + ":");      
         coopButtonPanelGrid.add(lCampaignType);
 
-        JRadioButton singlePlayerButton = PWCGButtonFactory.makeRadioButton("Single Player Mode", "Mission Mode: Single Player", "Select single player mode for generated missions", false, this);       
+        JRadioButton singlePlayerButton = PWCGButtonFactory.makeRadioButton(
+                "Single Player Mode", 
+                "Mission Mode: Single Player", 
+                "Select single player mode for generated missions", 
+                false, 
+                this,
+                ColorMap.CHALK_FOREGROUND);       
         coopButtonPanelGrid.add(singlePlayerButton);
         singlePlayerButtonModel = singlePlayerButton.getModel();
         coopGroup.add(singlePlayerButton);
 
-        JRadioButton coopCooperativeButton = PWCGButtonFactory.makeRadioButton("Coop Cooperative Mode", "Mission Mode: Coop Cooperative", "Select coop player mode for generated missions", false, this);              
+        JRadioButton coopCooperativeButton = PWCGButtonFactory.makeRadioButton(
+                "Coop Cooperative Mode", 
+                "Mission Mode: Coop Cooperative", 
+                "Select coop player mode for generated missions", 
+                false, 
+                this,
+                ColorMap.CHALK_FOREGROUND);       
+              
         coopButtonPanelGrid.add(coopCooperativeButton);
         coopCooperativeButtonModel = coopCooperativeButton.getModel();
         coopGroup.add(coopCooperativeButton);

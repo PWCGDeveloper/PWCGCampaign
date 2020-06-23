@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ButtonModel;
 import javax.swing.JButton;
@@ -25,12 +26,12 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.CommonUIActions;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.SpacerPanelFactory;
 
-public class CampaignConfigurationSimpleGUI extends JPanel implements ActionListener
+public class CampaignConfigurationSimpleGUI extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 	private ButtonGroup airButtonGroup = new ButtonGroup();
@@ -52,15 +53,21 @@ public class CampaignConfigurationSimpleGUI extends JPanel implements ActionList
 
     public CampaignConfigurationSimpleGUI(Campaign campaign)
     {
-        super();
+        super("");
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
+
         this.campaign = campaign;
     }
 
 	public void makePanels() throws PWCGException 
 	{
-	    this.add(BorderLayout.EAST, makeConfigControlPanel());
-        this.add(BorderLayout.CENTER, makeCenterPanel());
+        String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+        this.setImage(imagePath);
+
         this.add(BorderLayout.WEST, makeNavigatePanel());
+	    this.add(BorderLayout.CENTER, makeConfigControlPanel());
+        this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1400));
         
         initializeButtons();
 	}
@@ -113,27 +120,9 @@ public class CampaignConfigurationSimpleGUI extends JPanel implements ActionList
 
 	}
 
-	
-	
-	
-	private JPanel makeCenterPanel() throws PWCGException  
-	{
-        String leftImageName = "SimpleConfigCampaignCenter.jpg";
-        String menuPath = ContextSpecificImages.menuPathForNation(campaign);
-        String imagePath = menuPath + leftImageName;
-
-        ImageResizingPanel centerPortraitPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        centerPortraitPanel.setLayout(new BorderLayout());
-        
-		return centerPortraitPanel;
-    }
-
 	private JPanel makeNavigatePanel() throws PWCGException
 	{
-        String imagePath = UiImageResolver.getImage(campaign, "SimpleConfigCampaignLeft.jpg");
-
-        ImageResizingPanel simpleConfigAcceptPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        simpleConfigAcceptPanel.setLayout(new BorderLayout());
+        JPanel simpleConfigAcceptPanel = new JPanel(new BorderLayout());
         simpleConfigAcceptPanel.setOpaque(false);
 
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
@@ -145,11 +134,11 @@ public class CampaignConfigurationSimpleGUI extends JPanel implements ActionList
         JButton cancelButton = PWCGButtonFactory.makeMenuButton("Cancel Config Changes", CommonUIActions.ACTION_CANCEL, this);
         buttonPanel.add(cancelButton);
 
-        JLabel spacer1 = PWCGButtonFactory.makeMenuLabelLarge("   ");
+        JLabel spacer1 = PWCGButtonFactory.makePaperLabelLarge("   ");
         buttonPanel.add(spacer1);
 
         JLabel spacer2
-        = PWCGButtonFactory.makeMenuLabelLarge("   ");
+        = PWCGButtonFactory.makePaperLabelLarge("   ");
         buttonPanel.add(spacer2);
 
         JButton resetButton = PWCGButtonFactory.makeMenuButton("Reset to Default", CommonUIActions.ACTION_RESET, this);
@@ -165,10 +154,13 @@ public class CampaignConfigurationSimpleGUI extends JPanel implements ActionList
 		JPanel airButtonPanel = createAirConfigPanel();
         JPanel groundButtonPanel = createGroundConfigPanel();
         JPanel aaButtonPanel = createAAConfigPanel();
-        String imagePath = UiImageResolver.getImage(campaign, "SimpleConfigCampaignRight.jpg");
-
+        
+        
+        String imagePath = UiImageResolver.getImageMain("document.png");
         ImageResizingPanel simpleConfigButtonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-		simpleConfigButtonPanel.setLayout(new GridLayout(0,1));
+        simpleConfigButtonPanel.setImage(imagePath);
+        simpleConfigButtonPanel.setLayout(new GridLayout(0,1));
+        simpleConfigButtonPanel.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
 
 		simpleConfigButtonPanel.add(airButtonPanel);
         simpleConfigButtonPanel.add(groundButtonPanel);
@@ -185,34 +177,28 @@ public class CampaignConfigurationSimpleGUI extends JPanel implements ActionList
         JLabel spacerLabel = makeLabel("          ");        
         airButtonPanel.add(spacerLabel, BorderLayout.WEST);
 
-        JPanel shapePanel = new JPanel(new BorderLayout());
-        shapePanel.setOpaque(false);
-
         JPanel airButtonPanelGrid = new JPanel(new GridLayout(0,1));
         airButtonPanelGrid.setOpaque(false);
         
         JLabel airDensityLabel = makeLabel(CampaignConfigurationSimpleGUIController.ACTION_SET_AIR_DENSITY + ":");      
         airButtonPanelGrid.add(airDensityLabel);
 
-        JRadioButton airLowDensity = PWCGButtonFactory.makeRadioButton("Low", "Low Air Density", "Fewer aircraft for average machines", false, this);       
+        JRadioButton airLowDensity = PWCGButtonFactory.makeRadioButton("Low", "Low Air Density", "Fewer aircraft for average machines", false, this, ColorMap.PAPER_FOREGROUND);       
         airButtonPanelGrid.add(airLowDensity);
         airLowButtonModel = airLowDensity.getModel();
         airButtonGroup.add(airLowDensity);
 
-        JRadioButton airMedDensity = PWCGButtonFactory.makeRadioButton("Med", "Med Air Density", "Medium number of aircraft - requires a pretty good machine", false, this);        
+        JRadioButton airMedDensity = PWCGButtonFactory.makeRadioButton("Med", "Med Air Density", "Medium number of aircraft - requires a pretty good machine", false, this, ColorMap.PAPER_FOREGROUND);        
         airButtonPanelGrid.add(airMedDensity);
         airMedButtonModel = airMedDensity.getModel();
         airButtonGroup.add(airMedDensity);
         
-        JRadioButton airHighDensity = PWCGButtonFactory.makeRadioButton("High", "High Air Density", "High number of aircraft - high end machines only", false, this);       
+        JRadioButton airHighDensity = PWCGButtonFactory.makeRadioButton("High", "High Air Density", "High number of aircraft - high end machines only", false, this, ColorMap.PAPER_FOREGROUND);       
         airButtonPanelGrid.add(airHighDensity);
         airHighButtonModel = airHighDensity.getModel();
         airButtonGroup.add(airHighDensity);
-        
-        airButtonPanel.add(airButtonPanelGrid, BorderLayout.SOUTH);
-        
-        shapePanel.add(airButtonPanelGrid, BorderLayout.NORTH);
-        airButtonPanel.add(shapePanel, BorderLayout.CENTER);
+                
+        airButtonPanel.add(airButtonPanelGrid, BorderLayout.NORTH);
 
         return airButtonPanel;
     }
@@ -225,32 +211,28 @@ public class CampaignConfigurationSimpleGUI extends JPanel implements ActionList
         JLabel spacerLabel = makeLabel("          ");        
         groundButtonPanel.add(spacerLabel, BorderLayout.WEST);
 
-        JPanel shapePanel = new JPanel(new BorderLayout());
-        shapePanel.setOpaque(false);
-
 		JPanel groundDensityGrid = new JPanel(new GridLayout(0,1));
 		groundDensityGrid.setOpaque(false);
 		
-        JLabel groundDensityLabel = PWCGButtonFactory.makeMenuLabelLarge(CampaignConfigurationSimpleGUIController.ACTION_SET_GROUND_DENSITY + ":");
+        JLabel groundDensityLabel = PWCGButtonFactory.makePaperLabelLarge(CampaignConfigurationSimpleGUIController.ACTION_SET_GROUND_DENSITY + ":");
 		groundDensityGrid.add(groundDensityLabel);
 
-		JRadioButton lowDensity = PWCGButtonFactory.makeRadioButton("Low", "Low Ground Density", "Fewer AI ground units", false, this);		
+		JRadioButton lowDensity = PWCGButtonFactory.makeRadioButton("Low", "Low Ground Density", "Fewer AI ground units", false, this, ColorMap.PAPER_FOREGROUND);
 		groundDensityGrid.add(lowDensity);
 		groundLowButtonModel = lowDensity.getModel();
 		groundButtonGroup.add(lowDensity);
 
-		JRadioButton medDensity = PWCGButtonFactory.makeRadioButton("Med", "Med Ground Density", "Medium numbers of AI ground units", false, this);		
+		JRadioButton medDensity = PWCGButtonFactory.makeRadioButton("Med", "Med Ground Density", "Medium numbers of AI ground units", false, this, ColorMap.PAPER_FOREGROUND);		
 		groundDensityGrid.add(medDensity);
 		groundMedButtonModel = medDensity.getModel();
 		groundButtonGroup.add(medDensity);
 		
-		JRadioButton highDensity = PWCGButtonFactory.makeRadioButton("High", "High Ground Density", "Large numbers of AI ground units", false, this);		
+		JRadioButton highDensity = PWCGButtonFactory.makeRadioButton("High", "High Ground Density", "Large numbers of AI ground units", false, this, ColorMap.PAPER_FOREGROUND);		
 		groundDensityGrid.add(highDensity);
 		groundHighButtonModel = highDensity.getModel();
 		groundButtonGroup.add(highDensity);
 
-        shapePanel.add(groundDensityGrid, BorderLayout.NORTH);
-        groundButtonPanel.add(shapePanel, BorderLayout.CENTER);
+		groundButtonPanel.add(groundDensityGrid, BorderLayout.NORTH);
         
         return groundButtonPanel;
     }
@@ -263,47 +245,41 @@ public class CampaignConfigurationSimpleGUI extends JPanel implements ActionList
         JLabel spacerLabel = makeLabel("          ");        
         aaButtonPanel.add(spacerLabel, BorderLayout.WEST);
 
-        JPanel shapePanel = new JPanel(new BorderLayout());
-        shapePanel.setOpaque(false);
-
         JPanel aaDensityGrid = new JPanel(new GridLayout(0,1));
         aaDensityGrid.setOpaque(false);
         
-        JLabel aaDensityLabel = PWCGButtonFactory.makeMenuLabelLarge(CampaignConfigurationSimpleGUIController.ACTION_SET_AA_DENSITY + ":");
+        JLabel aaDensityLabel = PWCGButtonFactory.makePaperLabelLarge(CampaignConfigurationSimpleGUIController.ACTION_SET_AA_DENSITY + ":");
         aaDensityGrid.add(aaDensityLabel);
 
-        JRadioButton lowDensity = PWCGButtonFactory.makeRadioButton("Low", "Low AA Density", "Fewer AA units", false, this);     
+        JRadioButton lowDensity = PWCGButtonFactory.makeRadioButton("Low", "Low AA Density", "Fewer AA units", false, this, ColorMap.PAPER_FOREGROUND);     
         aaDensityGrid.add(lowDensity);
         aaLowButtonModel = lowDensity.getModel();
         aaButtonGroup.add(lowDensity);
 
-        JRadioButton medDensity = PWCGButtonFactory.makeRadioButton("Med", "Med AA Density", "Medium numbers of AA units", false, this);     
+        JRadioButton medDensity = PWCGButtonFactory.makeRadioButton("Med", "Med AA Density", "Medium numbers of AA units", false, this, ColorMap.PAPER_FOREGROUND);     
         aaDensityGrid.add(medDensity);
         aaMedButtonModel = medDensity.getModel();
         aaButtonGroup.add(medDensity);
         
-        JRadioButton highDensity = PWCGButtonFactory.makeRadioButton("High", "High AA Density", "Large numbers of AA units", false, this);       
+        JRadioButton highDensity = PWCGButtonFactory.makeRadioButton("High", "High AA Density", "Large numbers of AA units", false, this, ColorMap.PAPER_FOREGROUND);       
         aaDensityGrid.add(highDensity);
         aaHighButtonModel = highDensity.getModel();
         aaButtonGroup.add(highDensity);
 
-        shapePanel.add(aaDensityGrid, BorderLayout.NORTH);
-        aaButtonPanel.add(shapePanel, BorderLayout.CENTER);
+        aaButtonPanel.add(aaDensityGrid, BorderLayout.NORTH);
         
         return aaButtonPanel;
     }
 
 	private JLabel makeLabel(String buttonName) throws PWCGException
 	{
-		Color bg = ColorMap.WOOD_BACKGROUND;
-		Color fg = ColorMap.CHALK_FOREGROUND;
+		Color fg = ColorMap.PAPER_FOREGROUND;
 
 		Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
 		JLabel button= new JLabel(buttonName);
 		button.setOpaque(false);
 		button.setFont(font);
-		button.setBackground(bg);
 		button.setForeground(fg);
 
 		return button;

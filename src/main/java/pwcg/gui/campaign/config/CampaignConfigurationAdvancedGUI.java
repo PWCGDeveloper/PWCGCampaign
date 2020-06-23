@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -94,6 +95,7 @@ public class CampaignConfigurationAdvancedGUI extends ImageResizingPanel impleme
 	{		
         String imagePath = UiImageResolver.getImageMain("document.png");
 		ImageResizingPanel blankPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+		blankPanel.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
 		blankPanel.setLayout(new BorderLayout());
 		return blankPanel;
 	}
@@ -256,7 +258,6 @@ public class CampaignConfigurationAdvancedGUI extends ImageResizingPanel impleme
 			else if (action.equalsIgnoreCase("Cancel"))
 			{
 			    campaign.getCampaignConfigManager().readConfig();
-
 		        CampaignGuiContextManager.getInstance().popFromContextStack();
 				return;
 			}

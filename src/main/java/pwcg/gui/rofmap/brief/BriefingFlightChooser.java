@@ -17,6 +17,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.mission.Mission;
@@ -65,7 +66,8 @@ public class BriefingFlightChooser implements ActionListener
                     "FlightChanged:" + squadron.getSquadronId(),
                     "Select squadron to change context", 
                     false, 
-                    this);       
+                    this,
+                    ColorMap.CHALK_FOREGROUND);       
             flightChooserButtonPanelGrid.add(airLowDensity);
             ButtonModel model = airLowDensity.getModel();
             flightChooserButtonGroup.add(airLowDensity);
