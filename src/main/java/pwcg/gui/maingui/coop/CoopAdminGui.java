@@ -48,7 +48,6 @@ public class CoopAdminGui extends JPanel implements ActionListener
             pwcgThreePanel.setLeftPanel(makeNavigatePanel());
             pwcgThreePanel.setRightPanel(makeCoopAdminActionSelectPanel());
             pwcgThreePanel.setCenterPanel(makeBlankCenterPanel());
-            CampaignGuiContextManager.getInstance().pushToContextStack(this);
         }
         catch (Throwable e)
         {

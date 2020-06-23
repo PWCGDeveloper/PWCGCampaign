@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
@@ -20,7 +21,6 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.gui.utils.ImageJTabbedPane;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -28,7 +28,7 @@ import pwcg.gui.utils.PWCGButtonFactory;
 public class CampaignEquipmentDepotPanelSet extends JPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
-	private ImageJTabbedPane tabs = new ImageJTabbedPane();
+	private JTabbedPane tabs = new JTabbedPane();
 	private Campaign campaign;
 
 	public CampaignEquipmentDepotPanelSet(Campaign campaign)

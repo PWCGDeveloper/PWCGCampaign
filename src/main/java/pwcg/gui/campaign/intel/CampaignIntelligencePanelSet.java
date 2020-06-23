@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
@@ -16,38 +17,38 @@ import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.gui.utils.ImageJTabbedPane;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignIntelligencePanelSet extends JPanel implements ActionListener
+public class CampaignIntelligencePanelSet extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
-	private ImageJTabbedPane tabs = new ImageJTabbedPane();
+	private JTabbedPane tabs = new JTabbedPane();
 	private Campaign campaign;
 
 	public CampaignIntelligencePanelSet(Campaign campaign)
 	{
+        super("");
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
+
         this.campaign = campaign;
         this.setOpaque(false);
 	}
 
 	public void makePanels() throws PWCGException  
 	{
+        String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+        this.setImage(imagePath);
+
         this.add(BorderLayout.CENTER,  makeCenterPanel());
         this.add(BorderLayout.WEST, makeNavigatePanel());
 	}
 
 	private JPanel makeNavigatePanel() throws PWCGException  
 	{		
-        String imagePath = UiImageResolver.getImage(campaign, "IntelNav.jpg");
-
-        ImageResizingPanel intelPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-
-		intelPanel.setLayout(new BorderLayout());
+        JPanel intelPanel = new JPanel(new BorderLayout());
 		intelPanel.setOpaque(false);
 
 		JPanel buttonPanel = new JPanel(new GridLayout(0,1));
@@ -61,38 +62,27 @@ public class CampaignIntelligencePanelSet extends JPanel implements ActionListen
 		return intelPanel;
 	}
 
-	private JPanel makeCenterPanel() 
+	private JPanel makeCenterPanel() throws PWCGException 
 	{
-		ImageResizingPanel intelPanel = null;
+        JPanel intelPanel = new JPanel(new BorderLayout());
+        intelPanel.setOpaque(false);
 
-		try
-		{
-	        String imagePath = ContextSpecificImages.imagesMisc() + "Paper.jpg";
-	        intelPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-			intelPanel.setLayout(new BorderLayout());
-			
-			Color tabBG = ColorMap.PAPER_BACKGROUND;
-			tabs.setBackground(tabBG);
-			tabs.setOpaque(false);
-			
-			CampaignIntelligenceEnemySquadronsGUI enemySquadronsGUI = new CampaignIntelligenceEnemySquadronsGUI();
-			tabs.addTab("Enemy Squadrons", enemySquadronsGUI);		
-			
-			CampaignIntelligenceFriendlySquadronsGUI friendlySquadronsGUI = new CampaignIntelligenceFriendlySquadronsGUI();
-			tabs.addTab("Friendly Squadrons", friendlySquadronsGUI);		
-						
-			for (int i = 0; i < tabs.getTabCount(); ++i)
-			{
-				tabs.setBackgroundAt(i, tabBG);
-			}
+        Color tabBG = ColorMap.PAPER_BACKGROUND;
+        tabs.setBackground(tabBG);
+        tabs.setOpaque(false);
+        
+        CampaignIntelligenceEnemySquadronsGUI enemySquadronsGUI = new CampaignIntelligenceEnemySquadronsGUI();
+        tabs.addTab("Enemy Squadrons", enemySquadronsGUI);      
+        
+        CampaignIntelligenceFriendlySquadronsGUI friendlySquadronsGUI = new CampaignIntelligenceFriendlySquadronsGUI();
+        tabs.addTab("Friendly Squadrons", friendlySquadronsGUI);        
+                    
+        for (int i = 0; i < tabs.getTabCount(); ++i)
+        {
+            tabs.setBackgroundAt(i, tabBG);
+        }
 
-			intelPanel.add(tabs, BorderLayout.CENTER);
-		}
-		catch (Exception e)
-		{
-			PWCGLogger.logException(e);
-			ErrorDialog.internalError(e.getMessage());
-		}
+        intelPanel.add(tabs, BorderLayout.CENTER);
 		
 		return intelPanel;
 	}

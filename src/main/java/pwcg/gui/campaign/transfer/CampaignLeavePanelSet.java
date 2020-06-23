@@ -103,9 +103,8 @@ public class CampaignLeavePanelSet extends ImageResizingPanel implements ActionL
 	
     private JPanel makeLeaveLetterPanel() throws PWCGException  
     {
-        ImageResizingPanel leaveLetterPanel = null;
         String imagePath = UiImageResolver.getImageMain("document.png");
-        leaveLetterPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+        ImageResizingPanel leaveLetterPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         int topBorder = DocumentBorderCalculator.calculateTopBorder();
         leaveLetterPanel.setBorder(BorderFactory.createEmptyBorder(topBorder,30,30,30));
 

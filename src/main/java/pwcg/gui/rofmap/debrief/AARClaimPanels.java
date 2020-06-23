@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.JTabbedPane;
+
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -14,7 +16,6 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.gui.utils.ImageJTabbedPane;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 
@@ -22,7 +23,7 @@ public class AARClaimPanels extends AARPanel
 {
     private static final long serialVersionUID = 1L;
 
-    private ImageJTabbedPane tabs = new ImageJTabbedPane();
+    private JTabbedPane tabs = new JTabbedPane();
     private Map<Integer, AARClaimPanel> claimPanels = new HashMap<>();
 
     public AARClaimPanels() throws PWCGException

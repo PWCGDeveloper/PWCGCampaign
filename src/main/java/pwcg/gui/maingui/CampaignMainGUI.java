@@ -176,8 +176,10 @@ public class CampaignMainGUI extends ImageResizingPanel implements ActionListene
 
     private void setupUI() throws PWCGException
     {
-        Color tabSelectedColor = ColorMap.PAPER_BACKGROUND;
-        UIManager.put("TabbedPane.selected", tabSelectedColor);
+        //Color tabSelectedColor = ColorMap.PAPER_BACKGROUND;
+        //UIManager.put("TabbedPane.selected", tabSelectedColor);
+        UIManager.put("TabbedPane.contentOpaque", false);
+
         PWCGFrame.getInstance();
         PWCGContext.getInstance().initializeMap();               
     }

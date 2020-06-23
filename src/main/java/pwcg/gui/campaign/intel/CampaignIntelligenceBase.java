@@ -1,6 +1,7 @@
 package pwcg.gui.campaign.intel;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -28,13 +29,13 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronViability;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.gui.utils.ImagePanel;
+import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public abstract class CampaignIntelligenceBase extends ImagePanel implements ActionListener
+public abstract class CampaignIntelligenceBase extends ImageResizingPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -42,25 +43,28 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
     protected Campaign campaign;
 	protected SquadronMember referencePlayer;
     protected JPanel squadronsByRoleContainer;
-    protected JTextArea squadronInteltext;
+    protected JTextArea squadronIntelText;
     
 	public CampaignIntelligenceBase() throws PWCGException  
 	{
-        super();
-		this.campaign = PWCGContext.getInstance().getCampaign();
-		this.referencePlayer = campaign.findReferencePlayer();
+        super("");
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
+        this.setPreferredSize(new Dimension(500, 1000));
+
+        this.campaign = PWCGContext.getInstance().getCampaign();
+		this.referencePlayer = campaign.findReferencePlayer();
 	}    
 
     protected void makePanel(Side side) throws PWCGException
     {
         try
         {
-            String imagePath = ContextSpecificImages.imagesMisc() + "PaperFull.jpg";
+            String imagePath = UiImageResolver.getImageMain("document.png");
             setImage(imagePath);
             
-            formSquadronDesc(side);
+            formSquadronsByRole(side);
+            
             formSquadronIntelText();
         }
         catch (Exception e)
@@ -70,20 +74,7 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
         }       
     }
 
-    private void formSquadronIntelText() throws PWCGException
-    {
-        Font font = PWCGMonitorFonts.getTypewriterFont();
-        squadronInteltext = new JTextArea();
-        squadronInteltext.setFont(font);
-        squadronInteltext.setOpaque(false);
-        squadronInteltext.setLineWrap(true);
-        squadronInteltext.setWrapStyleWord(true);
-        squadronInteltext.setText("");
-
-        this.add(squadronInteltext, BorderLayout.CENTER);
-    }
-
-    protected void formSquadronDesc(Side side) throws PWCGException 
+    protected void formSquadronsByRole(Side side) throws PWCGException 
     {
         squadronsByRoleContainer = new JPanel(new GridLayout(0,1));
         squadronsByRoleContainer.setOpaque(false);
@@ -103,6 +94,22 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
         formSquadronDescForRole(Role.ROLE_SEA_PLANE, side);
         formSquadronDescForRole(Role.ROLE_TRANSPORT, side);
     }    
+
+    private void formSquadronIntelText() throws PWCGException
+    {
+        Font font = PWCGMonitorFonts.getTypewriterFont();
+        squadronIntelText = new JTextArea();
+        squadronIntelText.setFont(font);
+        squadronIntelText.setOpaque(false);
+        squadronIntelText.setLineWrap(false);
+        squadronIntelText.setWrapStyleWord(true);
+        squadronIntelText.setText("");
+
+        //JScrollPane scrollPane = new JScrollPane(squadronInteltext);
+        //scrollPane.setOpaque(false);
+        
+        this.add(squadronIntelText, BorderLayout.CENTER);
+    }
 
     private void formSquadronDescForRole(Role role, Side side) throws PWCGException
     {
@@ -165,9 +172,7 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
                 ++beginIndex;
                 String squadronIdString = action.substring(beginIndex).trim();
                 int squadronId = Integer.valueOf(squadronIdString).intValue();
-                Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
-                String squadronDesc = formSquadronDesc(squadron);
-                squadronInteltext.setText(squadronDesc);
+                setSquadronIntelText(squadronId);
             }
         }
         catch (Exception e)
@@ -175,6 +180,13 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
             PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
+    }
+
+    private void setSquadronIntelText(int squadronId) throws PWCGException
+    {
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+        String squadronDesc = formSquadronDesc(squadron);
+        squadronIntelText.setText(squadronDesc);
     }
         
     private String formSquadronDesc(Squadron squadron) throws PWCGException
