@@ -48,7 +48,7 @@ public class IntelMapPanel extends MapPanelBase
 
 	public void setData() throws PWCGException 
 	{
-	    Date date = PWCGContext.getInstance().getCampaign().getDate();
+	    Date date = campaign.getDate();
 
 		squadronPoints.clear();
 		List<Squadron> allSquadrons =  PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForCurrentMap(date);
