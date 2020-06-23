@@ -187,7 +187,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 		JPanel descriptionGrid = makeSquadronDescriptionGrid();
 		squadDescriptionPanel.add(descriptionGrid, BorderLayout.NORTH);
 		
-		JTextPane squadDesc = makeSquadronText(squadId);
+		JTextPane squadDesc = makeIntelSquadronDescription(squadId);
 		squadDescriptionPanel.add(squadDesc, BorderLayout.CENTER);
 		
 		return squadDescriptionPanel;
@@ -212,7 +212,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 		return descriptionGrid;
 	}
 
-	private JTextPane makeSquadronText(int squadId) throws PWCGException
+	private JTextPane makeIntelSquadronDescription(int squadId) throws PWCGException
 	{
 		Font font = PWCGMonitorFonts.getTypewriterFont();
 

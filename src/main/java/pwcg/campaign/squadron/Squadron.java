@@ -350,7 +350,7 @@ public class Squadron
 		squadronDescription += "\nAces on staff \n";
 		for (Ace ace : aces)
 		{
-			squadronDescription += "    " + ace.getRank() + " " + ace.getSerialNumber() + "\n";
+			squadronDescription += "    " + ace.getNameAndRank() + "\n";
 		}
 
 		return squadronDescription;
