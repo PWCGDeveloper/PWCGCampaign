@@ -35,7 +35,7 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public abstract class CampaignIntelligenceBase extends ImageResizingPanel implements ActionListener
+public abstract class CampaignIntelligenceBase extends JPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -47,10 +47,9 @@ public abstract class CampaignIntelligenceBase extends ImageResizingPanel implem
     
 	public CampaignIntelligenceBase() throws PWCGException  
 	{
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
-        this.setPreferredSize(new Dimension(500, 1000));
 
         this.campaign = PWCGContext.getInstance().getCampaign();
 		this.referencePlayer = campaign.findReferencePlayer();
@@ -60,9 +59,6 @@ public abstract class CampaignIntelligenceBase extends ImageResizingPanel implem
     {
         try
         {
-            String imagePath = UiImageResolver.getImageMain("document.png");
-            setImage(imagePath);
-            
             formSquadronsByRole(side);
             
             formSquadronIntelText();
@@ -76,10 +72,16 @@ public abstract class CampaignIntelligenceBase extends ImageResizingPanel implem
 
     protected void formSquadronsByRole(Side side) throws PWCGException 
     {
-        squadronsByRoleContainer = new JPanel(new GridLayout(0,1));
+        ImageResizingPanel squeezerPanel = new ImageResizingPanel("");
+        squeezerPanel.setOpaque(false);
+        squeezerPanel.setLayout(new BorderLayout());
+        String imagePath = UiImageResolver.getImageMain("document.png");
+        squeezerPanel.setImage(imagePath);
+
+        squadronsByRoleContainer = new ImageResizingPanel("");
         squadronsByRoleContainer.setOpaque(false);
+        squadronsByRoleContainer.setLayout(new GridLayout(0,1));        
         
-        JPanel squeezerPanel = new JPanel(new BorderLayout());
         squeezerPanel.setOpaque(false);
         squeezerPanel.add(squadronsByRoleContainer, BorderLayout.NORTH);
         this.add(squeezerPanel, BorderLayout.WEST);
@@ -97,6 +99,12 @@ public abstract class CampaignIntelligenceBase extends ImageResizingPanel implem
 
     private void formSquadronIntelText() throws PWCGException
     {
+        ImageResizingPanel intelTextPanel = new ImageResizingPanel("");
+        intelTextPanel.setOpaque(false);
+        intelTextPanel.setLayout(new BorderLayout());
+        String imagePath = UiImageResolver.getImageMain("document.png");
+        intelTextPanel.setImage(imagePath);
+
         Font font = PWCGMonitorFonts.getTypewriterFont();
         squadronIntelText = new JTextArea();
         squadronIntelText.setFont(font);
@@ -108,7 +116,9 @@ public abstract class CampaignIntelligenceBase extends ImageResizingPanel implem
         //JScrollPane scrollPane = new JScrollPane(squadronInteltext);
         //scrollPane.setOpaque(false);
         
-        this.add(squadronIntelText, BorderLayout.CENTER);
+        intelTextPanel.add(squadronIntelText);
+        
+        this.add(intelTextPanel, BorderLayout.CENTER);
     }
 
     private void formSquadronDescForRole(Role role, Side side) throws PWCGException

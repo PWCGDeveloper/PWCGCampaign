@@ -56,7 +56,7 @@ public class ImageResizingPanel extends JPanel
         children.put(panelId, panel);
     }
 
-    protected void setImage(String imagePath)
+    public void setImage(String imagePath)
 	{
 		try 
 		{
