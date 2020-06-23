@@ -29,7 +29,6 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -38,8 +37,6 @@ import pwcg.gui.rofmap.MapGUI;
 import pwcg.gui.rofmap.MapScroll;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImagePanelLayout;
-import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
 public class IntelMapGUI extends MapGUI implements ActionListener
@@ -49,6 +46,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 
     private ButtonGroup mapButtonGroup = new ButtonGroup();
     private Campaign campaign = null;
+    private JPanel rightPanel;
 
 	public IntelMapGUI(Date mapDate) throws PWCGException  
 	{
@@ -66,7 +64,6 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 			setOpaque(false);
 			setBackground(bg);
 
-			// Initialize to the players current map
 	        List<FrontMapIdentifier> airfieldMaps = AirfieldManager.getMapIdForAirfield(campaign.findReferencePlayer().determineSquadron().determineCurrentAirfieldName(campaign.getDate()));
             PWCGContext.getInstance().changeContext(airfieldMaps.get(0));
 								
@@ -103,9 +100,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 
     private JPanel makeNavigationPanel() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getImage(campaign, "IntelMapNav.jpg");
-
-        ImageResizingPanel intelNavPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+        JPanel intelNavPanel = new JPanel();
         intelNavPanel.setLayout(new BorderLayout());
         intelNavPanel.setOpaque(false);
 
@@ -154,33 +149,47 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 
     public void updateInfoPanel(int squadId) throws PWCGException 
     {
-        JPanel updatedSquadronInfoPanel = makeRightPanel(squadId);
-        this.add(BorderLayout.EAST, updatedSquadronInfoPanel);
+        if (rightPanel != null)
+        {
+            this.remove(rightPanel);
+        }
+
+        makeRightPanel(squadId);
+        this.add(BorderLayout.EAST, rightPanel);
         CampaignGuiContextManager.getInstance().refreshCurrentContext(this);
+        
+        this.revalidate();
+        this.repaint();
     }
 
     private JPanel makeRightPanel(int squadId) throws PWCGException 
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "PaperPart.jpg";
         Color bgColor = ColorMap.PAPER_BACKGROUND;
-        JPanel infoPanel = new ImagePanelLayout(imagePath, new BorderLayout());
-        infoPanel.setOpaque(false);
-        infoPanel.setBackground(bgColor);                
-        JPanel squadronInfoPanel = makeInfoPanel(squadId);
+        rightPanel = new ImagePanelLayout(imagePath, new BorderLayout());
+        rightPanel.setOpaque(false);
+        rightPanel.setBackground(bgColor); 
+
         JPanel mapCheckBoxesPanel = makeMapCheckBoxes();
-        infoPanel.add(mapCheckBoxesPanel, BorderLayout.NORTH);
-        infoPanel.add(squadronInfoPanel, BorderLayout.CENTER);
+        rightPanel.add(mapCheckBoxesPanel, BorderLayout.NORTH);
+
+        JPanel squadronInfoPanel = makeInfoPanel(squadId);
+        rightPanel.add(squadronInfoPanel, BorderLayout.CENTER);
         
-        return infoPanel;
+        return rightPanel;
     }
 
 	private JPanel makeInfoPanel(int squadId) throws PWCGException 
 	{
 		JPanel squadDescriptionPanel = new JPanel(new BorderLayout());
 		squadDescriptionPanel.setOpaque(false);
+		
 		JPanel descriptionGrid = makeSquadronDescriptionGrid();
 		squadDescriptionPanel.add(descriptionGrid, BorderLayout.NORTH);
-		makeSquadronText(squadId, squadDescriptionPanel);
+		
+		JTextPane squadDesc = makeSquadronText(squadId);
+		squadDescriptionPanel.add(squadDesc, BorderLayout.CENTER);
+		
 		return squadDescriptionPanel;
 	}
 
@@ -203,9 +212,9 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 		return descriptionGrid;
 	}
 
-	private void makeSquadronText(int squadId, JPanel squadDescriptionPanel) throws PWCGException
+	private JTextPane makeSquadronText(int squadId) throws PWCGException
 	{
-		Font font = PWCGMonitorFonts.getPrimaryFontSmall();
+		Font font = PWCGMonitorFonts.getTypewriterFont();
 
 		String squadronText = "";
 		Squadron squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(squadId);
@@ -222,8 +231,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 		squadDesc.setOpaque(false);
 		squadDesc.setText(squadronText);
 		squadDesc.setPreferredSize(new Dimension(300, preferredPanelLength));
-
-		squadDescriptionPanel.add(squadDesc, BorderLayout.CENTER);
+        return squadDesc;
 	}
 
     private JPanel makeMapCheckBoxes() throws PWCGException

@@ -4,13 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.Point;
 import java.util.Date;
 
-import javax.swing.JPanel;
-
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.gui.UiImageResolver;
+import pwcg.gui.utils.ImageResizingPanel;
 
-public abstract class MapGUI extends JPanel
+public abstract class MapGUI extends ImageResizingPanel
 {
 	private static final long serialVersionUID = 1L;
 
@@ -19,9 +19,12 @@ public abstract class MapGUI extends JPanel
 
 	public MapGUI(Date mapDate) throws PWCGException
 	{
-        super();
+        super("");
+        String imagePath = UiImageResolver.getImageMain("CampaignHome.jpg");
+        this.setImage(imagePath);
         this.setLayout(new BorderLayout());
-	    setMapDate(mapDate);
+
+        setMapDate(mapDate);
 	}
 	
 	public MapScroll getMapScroll() {
