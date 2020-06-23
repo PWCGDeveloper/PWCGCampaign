@@ -3,12 +3,13 @@ package pwcg.gui.campaign.transfer;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -29,6 +30,7 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
+import pwcg.gui.utils.DocumentBorderCalculator;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -71,9 +73,12 @@ public class CampaignLeavePanelSet extends ImageResizingPanel implements ActionL
 
 		JPanel leaveButtonPanel = new JPanel(new GridLayout(0,1));
 		leaveButtonPanel.setOpaque(false);
-		
+        
         JButton acceptButton = PWCGButtonFactory.makeMenuButton("Accept Leave", "Accept Leave", this);
         leaveButtonPanel.add(acceptButton);
+        
+        JLabel spacer = new JLabel("");
+        leaveButtonPanel.add(spacer);
 
         JButton rejectButton = PWCGButtonFactory.makeMenuButton("Reject Leave", "Reject Leave", this);
         leaveButtonPanel.add(rejectButton);
@@ -87,38 +92,37 @@ public class CampaignLeavePanelSet extends ImageResizingPanel implements ActionL
 	{
         JPanel leaveCenterPanel = new JPanel();
         leaveCenterPanel.setOpaque(false);
-        leaveCenterPanel.setLayout(new BoxLayout(leaveCenterPanel, BoxLayout.PAGE_AXIS));
+        leaveCenterPanel.setLayout(new BorderLayout());
         leaveCenterPanel.setBorder(BorderFactory.createEmptyBorder(100,300,100,300));
 
         JPanel leaveNotification = makeLeaveLetterPanel();
-        leaveCenterPanel.add(leaveNotification);
+        leaveCenterPanel.add(leaveNotification, BorderLayout.CENTER);
 
 		return leaveCenterPanel;
 	}
-
+	
     private JPanel makeLeaveLetterPanel() throws PWCGException  
     {
         ImageResizingPanel leaveLetterPanel = null;
         String imagePath = UiImageResolver.getImageMain("document.png");
-        leaveLetterPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);            
-        leaveLetterPanel.setLayout(new BoxLayout(leaveLetterPanel, BoxLayout.PAGE_AXIS));
-        leaveLetterPanel.setBorder(BorderFactory.createEmptyBorder(30,30,30,30));
+        leaveLetterPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+        int topBorder = DocumentBorderCalculator.calculateTopBorder();
+        leaveLetterPanel.setBorder(BorderFactory.createEmptyBorder(topBorder,30,30,30));
 
-        JPanel leavePanel = new JPanel (new GridLayout(0, 1));
-        leavePanel.setOpaque(false);
+        leaveLetterPanel.setLayout(new BorderLayout());
+        leaveLetterPanel.setOpaque(false);
 
-        makeBlankRows(leavePanel, 2);
+        JPanel leaveLetterGrid = new JPanel(new GridLayout(0, 1));
+        leaveLetterGrid.setOpaque(false);
 
         JPanel leavePlayerWoundInfoPanel = makePlayerWoundHealTimePanel();
-        leavePanel.add(leavePlayerWoundInfoPanel);
+        leaveLetterGrid.add(leavePlayerWoundInfoPanel);
         
         JPanel leaveRequestPanel = makeLeaveRequestRow();
-        leavePanel.add(leaveRequestPanel);
+        leaveLetterGrid.add(leaveRequestPanel);
 
-        makeBlankRows(leavePanel, 13);
+        leaveLetterPanel.add(leaveRequestPanel, BorderLayout.NORTH);
 
-        leaveLetterPanel.add(leavePanel, BorderLayout.WEST);
-        
         return leaveLetterPanel;
     }
 
@@ -156,41 +160,40 @@ public class CampaignLeavePanelSet extends ImageResizingPanel implements ActionL
         tLeaveTime.setOpaque(false);
         tLeaveTime.setFont(font);
         
-        JPanel leaveRequestPanel = new JPanel (new GridLayout(1, 0));
+        JPanel leaveRequestPanel = new JPanel ();
+        GridBagLayout documentLayout = new GridBagLayout();                
+        leaveRequestPanel.setLayout(documentLayout);
+
         leaveRequestPanel.setOpaque(false);
+
+        GridBagConstraints constraints = initializeGridbagConstraints();
+
+        constraints.weightx = 0.5;
+        constraints.weighty = 0.1;
+        constraints.gridx = 1;
+        constraints.gridy = 1;
+        constraints.gridheight = 1;
         leaveRequestPanel.add(lLeave);
+        
+        constraints.weightx = 0.1;
+        constraints.weighty = 0.1;
+        constraints.gridx = 2;
+        constraints.gridy = 1;
+        constraints.gridheight = 5;
         leaveRequestPanel.add(tLeaveTime);
         
         return leaveRequestPanel;
     }
 
-    private void makeBlankRows(JPanel leavePanel, int numDummyRows) throws PWCGException
+    private GridBagConstraints initializeGridbagConstraints()
     {
-        for (int i = 0; i < numDummyRows; ++i)
-        {
-            JLabel lDummy1 = new JLabel("     ");
-            leavePanel.add(lDummy1);
-         }
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.ipadx = 3;
+        constraints.ipady = 3;
+        constraints.anchor = GridBagConstraints.NORTHWEST;
+        return constraints;
     }
 
-    private void makeBlankHorizonalSpace(JPanel leavePanel, int numSpaces) throws PWCGException
-    {
-        String space = " ";
-        for (int i = 0; i < numSpaces; ++i)
-        {
-            space += " ";
-        }
-        
-        JLabel lDummy1 = new JLabel(space);
-        leavePanel.add(lDummy1);
-    }
-
-
-
-
-    /* (non-Javadoc)
-     * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
-     */
     public void actionPerformed(ActionEvent ae)
     {
         String action = ae.getActionCommand();
