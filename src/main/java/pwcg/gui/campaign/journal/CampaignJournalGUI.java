@@ -57,7 +57,6 @@ public class CampaignJournalGUI extends JPanel
 		{
 			return;
 		}
-
 		made = true;
 		
 		try
@@ -69,20 +68,15 @@ public class CampaignJournalGUI extends JPanel
 	        Insets margins = PWCGMonitorBorders.calculateBorderMargins(0,5,5,5);
 			combatReportPanel.setBorder(BorderFactory.createEmptyBorder(margins.top, margins.left, margins.bottom, margins.right)); 
 
-			// Header Panel
 			JPanel headerpanel = makeHeader();
 			combatReportPanel.add(headerpanel, BorderLayout.NORTH);
 
-
-			// Mission Results and Narrative grid
 			JPanel mainGrid = new JPanel(new GridLayout(0,1));
 			mainGrid.setOpaque(false);
 			
-			// Mission Results 
 			Component missionResults = makeMissionResults();
 			mainGrid.add(missionResults);
 
-			// Narrative 
 			JPanel narrativePanel = makeNarrative();
 			mainGrid.add(narrativePanel);
 			
@@ -103,8 +97,6 @@ public class CampaignJournalGUI extends JPanel
 		headerPanel.setOpaque(false);
 
 		Font font = PWCGMonitorFonts.getTypewriterFont();
-
-		// Center of header
 		Font medFont = PWCGMonitorFonts.getDecorativeFont();
 
 		JLabel lTitle = new JLabel("Combats in the Air", JLabel.LEFT);
@@ -112,7 +104,6 @@ public class CampaignJournalGUI extends JPanel
 		lTitle.setFont(medFont);
 		headerPanel.add(lTitle, BorderLayout.NORTH);
 
-		// Left side of header
 		JPanel headerLeftPanel = new JPanel(new GridLayout(0,1));
 		headerLeftPanel.setOpaque(false);
 
@@ -148,7 +139,6 @@ public class CampaignJournalGUI extends JPanel
 
 		headerPanel.add(headerLeftPanel, BorderLayout.WEST);
 
-		// Right side of header
 		JPanel headerRightPanel = new JPanel(new GridLayout(0,1));
 		headerRightPanel.setOpaque(false);
 
@@ -209,17 +199,10 @@ public class CampaignJournalGUI extends JPanel
         return lPilot;
     }
 
-	
-	/**
-	 * @return
-	 * @throws PWCGException 
-	 */
 	private Component makeMissionResults() throws PWCGException 
 	{
-		// Mission text and scroll pane
 		Font font = PWCGMonitorFonts.getTypewriterFont();
 		
-
 		JTextArea missionResultTextArea = new JTextArea();
 		missionResultTextArea.setFont(font);
 		missionResultTextArea.setOpaque(false);
@@ -227,7 +210,6 @@ public class CampaignJournalGUI extends JPanel
 		missionResultTextArea.setWrapStyleWord(true);
 		missionResultTextArea.setText("Remarks on flight and hostile aircraft\n\n" + combatReport.getHaReport());
 
-		//PWCGScrollPane haScrollPane = new PWCGScrollPane(haText);
         JScrollPane missionResultScrollPane = ScrollBarWrapper.makeScrollPane(missionResultTextArea);
 		
 		return missionResultScrollPane;
@@ -238,14 +220,12 @@ public class CampaignJournalGUI extends JPanel
 		JPanel narrativePanel = new JPanel(new BorderLayout());
 		narrativePanel.setOpaque(false);
 		
-		// Label
 		Font medFont = PWCGMonitorFonts.getDecorativeFont();
 		JLabel lNarrative = new JLabel("Narrative", JLabel.LEFT);
 		lNarrative.setOpaque(false);
 		lNarrative.setFont(medFont);
 		narrativePanel.add(lNarrative, BorderLayout.NORTH);
 		
-		// Narrative text and scroll pane
 		Font font = PWCGMonitorFonts.getCursiveFont();
 
 		narrativeText = new JTextArea();

@@ -4,29 +4,31 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.personnel.SquadronMemberFilter;
+import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.UiImageResolver;
-import pwcg.gui.campaign.home.CampaignRosterBasePanelFactory;
-import pwcg.gui.campaign.home.SquadronPilotChalkboardBuilder;
+import pwcg.gui.campaign.home.CampaignHomeRightPanelFactory;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ToolTipManager;
 import pwcg.gui.utils.UIUtils;
 
-public class CampaignSkinManagerPanel extends JPanel implements ActionListener
+public class CampaignSkinManagerPanel extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     
@@ -36,65 +38,28 @@ public class CampaignSkinManagerPanel extends JPanel implements ActionListener
 
     public CampaignSkinManagerPanel(Campaign campaign) 
     {
-        super();
+        super("");
+        this.setLayout(new BorderLayout());
+
         this.campaign = campaign;
     }
 
-    public void makePanels() 
+    public void makePanels() throws PWCGException 
     {
-        try
-        {
-            this.add(BorderLayout.WEST, makeLeftPanel());
-            this.add(BorderLayout.EAST, createRightPanel());
-            SquadronMember referencePlayer = campaign.findReferencePlayer();
-            createCenterPanel(referencePlayer);                
-        }
-        catch (Exception e)
-        {
-            PWCGLogger.logException(e);
-            ErrorDialog.internalError(e.getMessage());
-        }
-    }
+        String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+        this.setImage(imagePath);
 
-    private JPanel createRightPanel() throws PWCGException, PWCGException
-    {
-        CampaignRosterBasePanelFactory pilotListDisplay = new SquadronPilotChalkboardBuilder(this);
-        
-        pilotListDisplay.setExcludeAces(true);
-        
-        pilotListDisplay.makePilotList();
-        
-        pilotListDisplay.makeCampaignHomePanels();
-        
-        return pilotListDisplay.getPilotListPanel();
-    }
+        SquadronMember referencePlayer = campaign.findReferencePlayer();
 
-    private void createCenterPanel(SquadronMember pilot) throws PWCGException
-    {
-        if (centerPanel != null)
-        {
-            this.remove(centerPanel);
-        }
-
-        skinSessionManager.setPilot(pilot);
-        CampaignSkinManagerForPilotPanel campaignSquadronSkinPilotPanel = new CampaignSkinManagerForPilotPanel(campaign, skinSessionManager);
-        campaignSquadronSkinPilotPanel.makePanels();
-        
-        this.add(BorderLayout.CENTER, campaignSquadronSkinPilotPanel);
-        
-        add(centerPanel, BorderLayout.CENTER);
-        
-        centerPanel.revalidate();
-        centerPanel.repaint();
+        this.add(BorderLayout.WEST, makeLeftPanel());
+        this.add(BorderLayout.CENTER, createCenterPanel(referencePlayer));
+        this.add(BorderLayout.EAST, createRightPanel());
     }
 
     private JPanel makeLeftPanel() throws PWCGException 
     {
-        String imagePath = UiImageResolver.getImage(campaign, "CampaignSkinLeft.jpg");
-
-        ImageResizingPanel campaignButtonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        campaignButtonPanel.setLayout(new BorderLayout());
-        campaignButtonPanel.setOpaque(true);
+        JPanel campaignButtonPanel = new JPanel(new BorderLayout());
+        campaignButtonPanel.setOpaque(false);
 
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
@@ -106,6 +71,43 @@ public class CampaignSkinManagerPanel extends JPanel implements ActionListener
         add (campaignButtonPanel, BorderLayout.WEST);
 
         return campaignButtonPanel;
+    }
+
+    private JPanel createCenterPanel(SquadronMember pilot) throws PWCGException
+    {
+        if (centerPanel != null)
+        {
+            this.remove(centerPanel);
+        }
+
+        centerPanel = new JPanel(new BorderLayout());
+        centerPanel.setOpaque(false);
+        
+        skinSessionManager.setPilot(pilot);
+        CampaignSkinManagerForPilotPanel campaignSquadronSkinPilotPanel = new CampaignSkinManagerForPilotPanel(campaign, skinSessionManager);
+        campaignSquadronSkinPilotPanel.makePanels();
+        
+        centerPanel.add(BorderLayout.CENTER, campaignSquadronSkinPilotPanel);
+                
+        centerPanel.revalidate();
+        centerPanel.repaint();
+        return centerPanel;
+    }
+
+    private JPanel createRightPanel() throws PWCGException, PWCGException
+    {
+        List<SquadronMember> pilotsNoAces = makePilotList();
+        JPanel squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomePilotsRightPanel(this, pilotsNoAces);
+
+        return squadronPanel;
+    }
+
+    private List<SquadronMember> makePilotList() throws PWCGException 
+    {
+        SquadronMember referencePlayer = campaign.findReferencePlayer();
+        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(referencePlayer.getSquadronId());
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayer(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        return squadronMembers.sortPilots(campaign.getDate());
     }
 
     private void makePlainButtons(JPanel buttonPanel) throws PWCGException
@@ -139,7 +141,9 @@ public class CampaignSkinManagerPanel extends JPanel implements ActionListener
                 return;
             }
             
-            createCenterPanel(pilot);
+            this.add(BorderLayout.CENTER, createCenterPanel(pilot));
+            this.revalidate();
+            this.repaint();
         }
     }
 

@@ -36,7 +36,7 @@ import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PageTurner;
 
-public class CampaignSquadronLogPanelSet extends JPanel implements ActionListener
+public class CampaignSquadronLogPanelSet extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -56,6 +56,10 @@ public class CampaignSquadronLogPanelSet extends JPanel implements ActionListene
 
 	public CampaignSquadronLogPanelSet (int logsForSquadronId)
 	{        
+        super("");
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
+
         this.logsForSquadronId = logsForSquadronId;
 
 		Dimension screenSize = PWCGMonitorSupport.getPWCGFrameSize();
@@ -67,64 +71,15 @@ public class CampaignSquadronLogPanelSet extends JPanel implements ActionListene
 		this.campaign = PWCGContext.getInstance().getCampaign();
 	}
 
-    private void adjustTextForFontSize()
-    {
-        try
-        {
-            int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.CursiveFontSizeKey);
-            
-            if (fontSize > 20)
-            {
-                charsPerLine -= 10;
-                linesPerPage -= 10;
-            }
-        }
-        catch (PWCGException e)
-        {
-            e.printStackTrace();
-        }
-    }
-
-    private void calculateLinesPerPage(Dimension screenSize)
-    {
-        linesPerPage = 45;
-        if (screenSize.getHeight() < 1200)
-        {
-            linesPerPage = 40;
-        }
-        if (screenSize.getHeight() < 1000)
-        {
-            linesPerPage = 35;
-        }
-		if (screenSize.getHeight() < 800)
-		{
-			linesPerPage = 25;
-		}		
-    }
-
-    private void calculateCharsPerLine(Dimension screenSize)
-    {
-        charsPerLine = 70;
-        if (screenSize.getWidth() < 1200)
-        {
-            charsPerLine = 60;
-        }
-        if (screenSize.getWidth() < 1000)
-        {
-            charsPerLine = 45;
-        }
-        if (screenSize.getWidth() < 800)
-        {
-            charsPerLine = 35;
-        }
-    }
-
 	public void makeVisible(boolean visible) 
 	{
 	}
 	
 	public void makePanels() throws PWCGException  
 	{
+        String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+        this.setImage(imagePath);
+
 		pages = orderPageEntries();
 		this.add(BorderLayout.WEST, makeLogLeftPanel());
 		this.add(BorderLayout.CENTER, makeLogCenterPanel());
@@ -203,10 +158,8 @@ public class CampaignSquadronLogPanelSet extends JPanel implements ActionListene
 
 	private JPanel makeLogLeftPanel() throws PWCGException  
 	{
-        String imagePath = UiImageResolver.getImage(campaign, "CampaignLogNav.jpg");
 
-        ImageResizingPanel squadronLogPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-		squadronLogPanel.setLayout(new BorderLayout());
+        JPanel squadronLogPanel = new JPanel(new BorderLayout());
 		squadronLogPanel.setOpaque(false);
 
 		JPanel buttonPanel = new JPanel(new GridLayout(0,1));
@@ -382,4 +335,56 @@ public class CampaignSquadronLogPanelSet extends JPanel implements ActionListene
         this.repaint();
     }
 
+
+    private void adjustTextForFontSize()
+    {
+        try
+        {
+            int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.CursiveFontSizeKey);
+            
+            if (fontSize > 20)
+            {
+                charsPerLine -= 10;
+                linesPerPage -= 10;
+            }
+        }
+        catch (PWCGException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    private void calculateLinesPerPage(Dimension screenSize)
+    {
+        linesPerPage = 45;
+        if (screenSize.getHeight() < 1200)
+        {
+            linesPerPage = 40;
+        }
+        if (screenSize.getHeight() < 1000)
+        {
+            linesPerPage = 35;
+        }
+        if (screenSize.getHeight() < 800)
+        {
+            linesPerPage = 25;
+        }       
+    }
+
+    private void calculateCharsPerLine(Dimension screenSize)
+    {
+        charsPerLine = 70;
+        if (screenSize.getWidth() < 1200)
+        {
+            charsPerLine = 60;
+        }
+        if (screenSize.getWidth() < 1000)
+        {
+            charsPerLine = 45;
+        }
+        if (screenSize.getWidth() < 800)
+        {
+            charsPerLine = 35;
+        }
+    }
 }

@@ -154,7 +154,7 @@ public class ChalkboardSelector extends JPanel implements ActionListener
         
         List<SquadronMember> squadronMembers = makePilotList();
         SquadronMember referencePlayer = campaign.findReferencePlayer();
-        JPanel squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(campaignHome, squadronMembers, referencePlayer.getSquadronId());
+        JPanel squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(campaignHome.getCampaign(), campaignHome, squadronMembers, referencePlayer.getSquadronId());
 
         campaignHome.createNewContext(equipmentChalkboardDisplay, squadronPanel);
     }    
@@ -165,7 +165,7 @@ public class ChalkboardSelector extends JPanel implements ActionListener
         JPanel chalkboardPanel =  CampaignHomeCenterPanelFactory.makeCampaignHomeCenterPanel(campaignHome, squadronMembers);
         
         SquadronMember referencePlayer = campaign.findReferencePlayer();
-        JPanel squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(campaignHome, squadronMembers, referencePlayer.getSquadronId());
+        JPanel squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(campaignHome.getCampaign(), campaignHome, squadronMembers, referencePlayer.getSquadronId());
 
         campaignHome.createNewContext(chalkboardPanel, squadronPanel);
     }

@@ -34,14 +34,14 @@ import pwcg.gui.utils.PWCGButtonNoBackground;
 public class CampaignHomePilotPanel extends JPanel
 {
 	private static final long serialVersionUID = 1L;
-	private ActionListener parent = null;
+	private ActionListener actionListener = null;
 
-	public CampaignHomePilotPanel(ActionListener parent)  
+	public CampaignHomePilotPanel(ActionListener actionListener)  
 	{
         super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
-	    this.parent = parent;
+	    this.actionListener = actionListener;
 	}
 
 	public void makePanel(List<SquadronMember>pilots, String description, String action) throws PWCGException  
@@ -97,7 +97,7 @@ public class CampaignHomePilotPanel extends JPanel
         namePlateButton.setFont(font);
         String actionCommand = action + pilot.getSerialNumber();
         namePlateButton.setActionCommand(actionCommand);
-        namePlateButton.addActionListener(parent);
+        namePlateButton.addActionListener(actionListener);
         
         nameplatePanel.add(namePlateButton, BorderLayout.CENTER);
         

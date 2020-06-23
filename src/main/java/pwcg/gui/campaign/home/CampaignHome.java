@@ -102,7 +102,7 @@ public class CampaignHome extends ImageResizingPanel implements ActionListener
     {
         List<SquadronMember> squadronMembers = makePilotList();
         SquadronMember referencePlayer = campaign.findReferencePlayer();
-        return CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(this, squadronMembers, referencePlayer.getSquadronId());
+        return CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(campaign, this, squadronMembers, referencePlayer.getSquadronId());
     }
 
     private void createSelectorPanel() throws PWCGException

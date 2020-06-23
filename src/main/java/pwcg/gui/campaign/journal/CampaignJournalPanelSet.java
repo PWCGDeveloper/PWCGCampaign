@@ -34,7 +34,7 @@ import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PageTurner;
 
-public class CampaignJournalPanelSet extends JPanel implements ActionListener
+public class CampaignJournalPanelSet extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -57,6 +57,10 @@ public class CampaignJournalPanelSet extends JPanel implements ActionListener
 
     public CampaignJournalPanelSet(Campaign campaign) throws PWCGException
     {
+        super("");
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
+
         this.campaign = campaign;
     }
 
@@ -66,6 +70,9 @@ public class CampaignJournalPanelSet extends JPanel implements ActionListener
 
     public void makePanels() throws PWCGException  
     {
+        String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+        this.setImage(imagePath);
+
         calculateLinesPerPage();
         getJournalEntries();
         
@@ -111,16 +118,14 @@ public class CampaignJournalPanelSet extends JPanel implements ActionListener
 
     private JPanel makeNavigationPanel() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getImage(campaign, "JournalNav.jpg");
-
-        ImageResizingPanel journalPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+        JPanel journalPanel = new JPanel(new GridLayout(0,1));
         journalPanel.setLayout(new BorderLayout());
         journalPanel.setOpaque(false);
 
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
-        JButton finishedButton = PWCGButtonFactory.makeMenuButton("Finished Reading Journal", "JournalFinished", this);
+        JButton finishedButton = PWCGButtonFactory.makeMenuButton("Finished Reading", "JournalFinished", this);
         buttonPanel.add(finishedButton);
 
         journalPanel.add(buttonPanel, BorderLayout.NORTH);

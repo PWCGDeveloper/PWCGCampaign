@@ -7,7 +7,6 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.rofmap.debrief.AAREventPanel;
 import pwcg.gui.utils.CampaignDocumentPage;
-import pwcg.gui.utils.ContextSpecificImages;
 
 public abstract class CampaignDocumentGUI extends AAREventPanel
 {

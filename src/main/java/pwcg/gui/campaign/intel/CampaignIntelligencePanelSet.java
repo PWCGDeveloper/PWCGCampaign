@@ -53,7 +53,7 @@ public class CampaignIntelligencePanelSet extends JPanel implements ActionListen
 		JPanel buttonPanel = new JPanel(new GridLayout(0,1));
 		buttonPanel.setOpaque(false);
 		
-        JButton acceptButton = PWCGButtonFactory.makeMenuButton("Finished Reading Intel", "IntelFinished", this);
+        JButton acceptButton = PWCGButtonFactory.makeMenuButton("Finished Reading", "IntelFinished", this);
 		buttonPanel.add(acceptButton);
 		
 		intelPanel.add(buttonPanel, BorderLayout.NORTH);
