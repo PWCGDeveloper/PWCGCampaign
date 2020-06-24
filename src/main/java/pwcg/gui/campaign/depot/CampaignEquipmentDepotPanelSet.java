@@ -24,6 +24,7 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.SpacerPanelFactory;
 
 public class CampaignEquipmentDepotPanelSet extends ImageResizingPanel implements ActionListener
 {
@@ -45,8 +46,9 @@ public class CampaignEquipmentDepotPanelSet extends ImageResizingPanel implement
         String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
         this.setImage(imagePath);
 
-        this.add(BorderLayout.CENTER,  makeCenterPanel());
         this.add(BorderLayout.WEST, makeNavigatePanel());
+        this.add(BorderLayout.CENTER,  makeCenterPanel());
+        this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1400));
 	}
 
 	private JPanel makeNavigatePanel() throws PWCGException  

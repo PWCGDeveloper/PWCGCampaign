@@ -10,7 +10,6 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.JButton;
@@ -69,7 +68,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
     private Mission mission;
     private BriefingContext briefingContext;
     private BriefingFlightChooser briefingFlightChooser;
-    private Map<Integer, String> selectedSquadrons = new HashMap<>();
+    private BriefingMapPanel mapPanel;
 
 	public BriefingMapGUI(CampaignHome campaignHomeGui, Mission mission, BriefingContext briefingContext, Date mapDate) throws PWCGException  
 	{
@@ -99,8 +98,10 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
             this.add(BorderLayout.EAST, editorPanel);
             this.add(BorderLayout.WEST, makeLeftPanel());           
             
-            updateWaypointsOnMap();
+            updateWaypointsOnMap();            
 
+            Point initialPosition = findCenterPosition();
+            centerMapAt(initialPosition);
 		}
 		catch (Exception e)
 		{
@@ -112,10 +113,9 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
     private JPanel createCenterPanel() throws PWCGException
     {
         JPanel briefingMapCenterPanel = new JPanel(new BorderLayout());
-
         createMapPanel();
         briefingMapCenterPanel.add(mapScroll.getMapScrollPane(), BorderLayout.CENTER);
-        
+
         return briefingMapCenterPanel;
     }
 
@@ -123,27 +123,33 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
     {
         BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingHandler();
         
-        BriefingMapPanel mapPanel = new BriefingMapPanel(this, activeMissionHandler.getBriefingFlightParameters(), mission, selectedSquadrons);
+        if (mapPanel != null)
+        {
+            this.remove(mapPanel);
+        }
+        
+        mapPanel = new BriefingMapPanel(this, activeMissionHandler.getBriefingFlightParameters(), briefingContext);
         mapScroll = new MapScroll(mapPanel);  
         mapPanel.setMapBackground(100);
 
         add(mapScroll.getMapScrollPane(), BorderLayout.CENTER);
+        BriefingMapFlightMapper flightMapper = new BriefingMapFlightMapper(activeMissionHandler, mapPanel);
+        flightMapper.mapRequestedFlights();
+    }
 
-        // Center the map at the first WP. 
+    private Point findCenterPosition()
+    {
+        BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingHandler();
         Point initialPosition = null;
         for  (EditorWaypointGroup editorWaypointGroup : activeMissionHandler.getBriefingFlightParameters().getWaypointEditorGroups())
         {
-        	if (editorWaypointGroup.getWaypointInBriefing() != null)
-        	{
-        		initialPosition = mapPanel.coordinateToPoint(editorWaypointGroup.getWaypointInBriefing().getPosition());
-        		break;
-        	}
+            if (editorWaypointGroup.getWaypointInBriefing() != null)
+            {
+                initialPosition = mapPanel.coordinateToPoint(editorWaypointGroup.getWaypointInBriefing().getPosition());
+                break;
+            }
         }
-
-        BriefingMapFlightMapper flightMapper = new BriefingMapFlightMapper(activeMissionHandler, mapPanel);
-        flightMapper.mapRequestedFlights();
-        
-        centerMapAt(initialPosition);
+        return initialPosition;
     }
 
     private JPanel makeLeftPanel() throws PWCGException 
@@ -587,7 +593,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
     {
         if (!isChangedSquadronSameSide(briefingContext.getSelectedFlight().getSquadron(), squadron))
         {
-            selectedSquadrons.clear();
+            briefingContext.clearAiFlightsToDisplay();
         }
         
         briefingContext.changeSelectedFlight(squadron);
@@ -613,10 +619,13 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
     }
 
     @Override
-    public void squadronsSelectedChanged(Map<Integer, String> selectedSquadrons) throws PWCGException
+    public void squadronsSelectedChanged(Map<Integer, String> aiFlightsToDisplay) throws PWCGException
     {
-        this.selectedSquadrons = selectedSquadrons;
+        briefingContext.setAiFlightsToDisplay(aiFlightsToDisplay);
         this.add(BorderLayout.CENTER, createCenterPanel());
+        
+        this.revalidate();
+        this.repaint();
     }
     
     public void refreshScreen() throws PWCGException

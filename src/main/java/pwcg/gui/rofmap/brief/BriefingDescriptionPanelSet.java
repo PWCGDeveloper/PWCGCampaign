@@ -1,53 +1,43 @@
 package pwcg.gui.rofmap.brief;
 
 import java.awt.BorderLayout;
-import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHome;
-import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.PWCGMonitorBorders;
-import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.helper.BriefingMissionFlight;
 import pwcg.gui.sound.SoundManager;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
-import pwcg.mission.IMissionDescription;
 import pwcg.mission.Mission;
-import pwcg.mission.MissionDescriptionFactory;
 
-public class BriefingDescriptionPanelSet extends JPanel implements ActionListener, IFlightChanged
+public class BriefingDescriptionPanelSet extends ImageResizingPanel implements ActionListener, IFlightChanged
 {
     private CampaignHome campaignHomeGui = null;
 
 	private static final long serialVersionUID = 1L;
-    private JTextArea missionTextArea = new JTextArea();
     private Mission mission;
     private BriefingContext briefingContext;
     private BriefingFlightChooser briefingFlightChooser;
-
+    private BriefingChalkboard briefingChalkboard;
+    
 	public BriefingDescriptionPanelSet(CampaignHome campaignHomeGui, Mission mission) throws PWCGException 
 	{
-        super();
+        super("");
+        this.setLayout(new BorderLayout());
 	    
         this.campaignHomeGui =  campaignHomeGui;
         this.mission =  mission;
@@ -62,13 +52,15 @@ public class BriefingDescriptionPanelSet extends JPanel implements ActionListene
 	{
 		try
 		{
+            String imagePath = UiImageResolver.getImageMain("CampaignHome.jpg");
+            this.setImage(imagePath);
+
             briefingFlightChooser = new BriefingFlightChooser(mission, this);
             briefingFlightChooser.createBriefingSquadronSelectPanel();
 
 			this.removeAll();
 			this.add(BorderLayout.WEST, makeLeftPanel());
 			this.add(BorderLayout.CENTER, makeBriefingPanel());
-	        setMissionText();
 		}
 		catch (Exception e)
 		{
@@ -79,9 +71,7 @@ public class BriefingDescriptionPanelSet extends JPanel implements ActionListene
 
     private JPanel makeLeftPanel() throws PWCGException 
     {
-        String imagePath = ContextSpecificImages.imagesMisc() + "BrickLeft.jpg";
-        ImageResizingPanel leftPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        leftPanel.setLayout(new BorderLayout());
+        JPanel leftPanel = new JPanel(new BorderLayout());
         leftPanel.setOpaque(false);
 
         JPanel buttonPanel = makeButtonPanel();
@@ -118,81 +108,16 @@ public class BriefingDescriptionPanelSet extends JPanel implements ActionListene
     
     public JPanel makeBriefingPanel() throws PWCGException  
     {
-        String imagePath = ContextSpecificImages.imagesMisc() + "BrickCenter.jpg";
-        JPanel briefingPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        briefingPanel.setLayout(new BorderLayout());
+        JPanel briefingPanel = new JPanel(new BorderLayout());
         briefingPanel.setOpaque(false);
 
-        JPanel missionTextPanel = makeMissionText();
-        
-        JScrollPane missionScrollPane = ScrollBarWrapper.makeScrollPane(missionTextPanel);
+        briefingChalkboard = new BriefingChalkboard(mission, briefingContext);
+        briefingChalkboard.makePanel();
+        JScrollPane missionScrollPane = ScrollBarWrapper.makeScrollPane(briefingChalkboard);
 
         briefingPanel.add(missionScrollPane, BorderLayout.CENTER);
 
         return briefingPanel;
-    }
-
-    private JPanel makeMissionText() throws PWCGException 
-    {
-        JPanel missionTextPanel = new JPanel(new BorderLayout());
-        missionTextPanel.setOpaque(false);
-        
-        Font font = PWCGMonitorFonts.getBriefingChalkboardFont();
-
-        missionTextArea.setFont(font);
-        missionTextArea.setOpaque(false);
-        missionTextArea.setLineWrap(true);
-        missionTextArea.setWrapStyleWord(true);
-        missionTextArea.setForeground(ColorMap.CHALK_FOREGROUND);
-        
-        // Calculate the writable area of the text and generate margins scaled to screen size
-        Insets margins = PWCGMonitorBorders.calculateBorderMargins(50, 35, 65, 35);
-        missionTextArea.setMargin(margins);
-        
-        missionTextPanel.add(missionTextArea, BorderLayout.CENTER);
-
-        return missionTextPanel;
-    }
-
-    private void setMissionText() throws PWCGException 
-    {
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
-
-        String missionPrefix = getMissionPrefix();
-
-        IMissionDescription missionDescription = MissionDescriptionFactory.buildMissionDescription(campaign, mission, briefingContext.getSelectedFlight());
-        String missionDescriptionText = missionDescription.createDescription();
-        
-        StringBuffer missionDescriptionBuffer = new StringBuffer("");
-        missionDescriptionBuffer.append(missionPrefix);
-        missionDescriptionBuffer.append(missionDescriptionText);
-
-        String pilotList = makePilotList();
-        missionDescriptionBuffer.append(pilotList.toString());
-        
-        missionTextArea.setText(missionDescriptionBuffer.toString());
-    }
-
-    private String getMissionPrefix()
-    {
-        String missionPrefix = "Mission: \n";
-        if (mission.isNightMission())
-        {
-            missionPrefix = "Mission: Night Mission!\n";
-        }
-        return missionPrefix;
-    }
-
-    private String makePilotList() throws PWCGException 
-    {
-        BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingHandler();
-        StringBuffer assignedPilotsBuffer = new StringBuffer ("Assigned Pilots:\n");
-        for (SquadronMember squadronMember : activeMissionHandler.getSortedAssigned())
-        {
-            assignedPilotsBuffer.append("    " + squadronMember.getNameAndRank() + "\n");
-        }
-        
-        return assignedPilotsBuffer.toString();
     }
 
     private JButton makeButton(JPanel buttonPanel, String buttonText) throws PWCGException
@@ -234,7 +159,7 @@ public class BriefingDescriptionPanelSet extends JPanel implements ActionListene
     public void flightChanged(Squadron squadron) throws PWCGException
     {
         briefingContext.changeSelectedFlight(squadron);
-        setMissionText();
+        briefingChalkboard.setMissionText();
     }
 
     private void forwardToBriefingMap() throws PWCGException 
@@ -270,7 +195,7 @@ public class BriefingDescriptionPanelSet extends JPanel implements ActionListene
     
     public void refreshScreen() throws PWCGException
     {
-        setMissionText();
+        briefingChalkboard.setMissionText();
         briefingFlightChooser.setSelectedButton(briefingContext.getSelectedFlight().getSquadron().getSquadronId());
     }
 }

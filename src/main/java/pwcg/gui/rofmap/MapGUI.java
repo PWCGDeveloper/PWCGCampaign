@@ -23,6 +23,7 @@ public abstract class MapGUI extends ImageResizingPanel
         String imagePath = UiImageResolver.getImageMain("CampaignHome.jpg");
         this.setImage(imagePath);
         this.setLayout(new BorderLayout());
+        this.setOpaque(false);
 
         setMapDate(mapDate);
 	}

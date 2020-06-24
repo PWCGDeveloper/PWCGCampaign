@@ -15,7 +15,6 @@ import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
@@ -43,22 +42,21 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
     private List <FlightMap> alliedVirtualPoints = new ArrayList<FlightMap>();
     private List <FlightMap> axisVirtualPoints = new ArrayList<FlightMap>();
     private CoordinateBox missionBorders = new CoordinateBox();
+    private BriefingContext briefingContext;
     private Mission mission;
-    private Map<Integer, String> selectedSquadrons;
+    private BriefingMapGUI parent;
+    
+	public BriefingMapPanel(BriefingMapGUI parent, BriefingFlightParameters briefingFlightParameters, BriefingContext briefingContext) throws PWCGException
+    {
+        super(parent);
+        
+        this.parent = parent;
+        this.briefingFlightParameters = briefingFlightParameters;
+        this.briefingContext= briefingContext;
+        this.mission = briefingContext.getMission();
+    }
 
-	private BriefingMapGUI parent = null;
-
-	public BriefingMapPanel(BriefingMapGUI parent, BriefingFlightParameters briefingFlightParameters, Mission mission, Map<Integer, String> selectedSquadrons) throws PWCGException 
-	{
-		super(parent);
-		
-		this.parent = parent;
-		this.briefingFlightParameters = briefingFlightParameters;
-        this.mission = mission;
-        this.selectedSquadrons = selectedSquadrons;
-	}
-
-	public void paintComponent(Graphics g)
+    public void paintComponent(Graphics g)
 	{
 		try
 		{
@@ -136,13 +134,11 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
             g.setFont(font);
             Point point = super.coordinateToPoint(mapPoint.coord);
 
-            // Grey out uneditable mission WPs
             if (mapPoint.editable == false && g.getColor() == Color.BLACK)
             {
                 g.setColor(Color.GRAY);
             }
 
-            // Mark targets as red
             if (mapPoint.desc.equals("Target"))
             {
                 g.setColor(Color.RED);
@@ -178,7 +174,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
  
         for (FlightMap flightMap : flightMaps)
         {
-            if (selectedSquadrons.containsKey(flightMap.squadronId))
+            if (briefingContext.getAiFlightsToDisplay().containsKey(flightMap.squadronId))
             {
                 paintWaypointLines(g, g2, requestedColor, flightMap);
             }
@@ -186,7 +182,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
         
         for (FlightMap flightMap : flightMaps)
         {
-            if (selectedSquadrons.containsKey(flightMap.squadronId))
+            if (briefingContext.getAiFlightsToDisplay().containsKey(flightMap.squadronId))
             {
                 paintWaypoints(g, g2, flightMap);
             }

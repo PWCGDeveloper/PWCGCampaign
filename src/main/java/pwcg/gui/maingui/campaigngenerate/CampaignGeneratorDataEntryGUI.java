@@ -48,11 +48,9 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.maingui.campaigngenerate.CampaignGeneratorState.CampaignGeneratorWorkflow;
-import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGJButton;
 
-public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements ActionListener
+public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -89,9 +87,11 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 
 	public CampaignGeneratorDataEntryGUI(CampaignGeneratorPanelSet parent) 
 	{
-        super(ContextSpecificImages.menuPathMain() + "CampaignGenCenter.jpg");
-        this.parent = parent;	    
+        super();
+        this.setOpaque(false);
 		this.setLayout(new BorderLayout());
+
+		this.parent = parent;       
 	}
 	
 

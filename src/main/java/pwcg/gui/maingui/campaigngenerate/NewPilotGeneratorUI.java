@@ -20,15 +20,15 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.coop.CampaignAdminCoopPilotPanelSet;
 import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.dialogs.ErrorDialog;
+import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.SpacerPanelFactory;
 
-public class NewPilotGeneratorUI extends JPanel implements ActionListener
+public class NewPilotGeneratorUI extends ImageResizingPanel implements ActionListener
 {    
     private static final long serialVersionUID = 1L;
 
@@ -43,7 +43,9 @@ public class NewPilotGeneratorUI extends JPanel implements ActionListener
 
     public NewPilotGeneratorUI(Campaign campaign, CampaignHome parent, CampaignAdminCoopPilotPanelSet alternateParent)
     {
-        super();
+        super(ContextSpecificImages.menuPathMain() + "CampaignGenFullScreen.jpg");
+        this.setLayout(new BorderLayout());
+        
         this.campaign = campaign;
         this.parent = parent;
         this.alternateParent = alternateParent;        
@@ -54,7 +56,7 @@ public class NewPilotGeneratorUI extends JPanel implements ActionListener
         try
         {
             this.add(BorderLayout.WEST, makeButtonPanel());
-            this.add(BorderLayout.CENTER, new CampaignGeneratorDataEntryEmpty());
+            this.add(BorderLayout.CENTER, SpacerPanelFactory.makeSpacerPanel(20));
             this.add(BorderLayout.EAST, makeServicePanel());
         }
         catch (Throwable e)
@@ -65,12 +67,10 @@ public class NewPilotGeneratorUI extends JPanel implements ActionListener
     }
 
     private JPanel makeServicePanel() throws PWCGException
-    {
-        String imagePath = UiImageResolver.getImageMain("CampaignGenNav.jpg");
-        
-        ImageResizingPanel servicesPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+    {        
+        JPanel servicesPanel = new JPanel(new BorderLayout());
         servicesPanel.setLayout(new BorderLayout());
-        servicesPanel.setOpaque(true);
+        servicesPanel.setOpaque(false);
 
         PilotGenerationInfoGUI campaignChooseServiceGUI = new PilotGenerationInfoGUI(this, campaign);
         campaignChooseServiceGUI.makeServiceSelectionPanel();
@@ -82,11 +82,9 @@ public class NewPilotGeneratorUI extends JPanel implements ActionListener
 
     private JPanel makeButtonPanel() throws PWCGException
     {
-        String imagePath = UiImageResolver.getImageMain("CampaignGenNav.jpg");
-        
-        ImageResizingPanel configPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+        JPanel configPanel = new JPanel(new BorderLayout());
         configPanel.setLayout(new BorderLayout());
-        configPanel.setOpaque(true);
+        configPanel.setOpaque(false);
         
         JPanel buttonPanel = new JPanel(new GridLayout(6,1));
         buttonPanel.setOpaque(false);
@@ -105,14 +103,6 @@ public class NewPilotGeneratorUI extends JPanel implements ActionListener
         configPanel.add(buttonPanel, BorderLayout.NORTH);
      
         return configPanel;
-    }
-
-    public JPanel makeDataEntryPanel() throws PWCGException 
-    {
-        dataEntry = new NewPilotDataEntryGUI(campaign, this);
-        dataEntry.makePanels();
-        
-        return dataEntry;
     }
 
     @Override
@@ -171,11 +161,17 @@ public class NewPilotGeneratorUI extends JPanel implements ActionListener
     {
         newPilotGeneratorDO.setService(service);
         
+        if (dataEntry != null)
+        {
+            this.remove(dataEntry);
+        }
+        
         dataEntry = new NewPilotDataEntryGUI(campaign, this);
         dataEntry.makePanels();
         dataEntry.evaluateUI();
         
-        this.add(BorderLayout.CENTER, dataEntry);
+        this.add(dataEntry, BorderLayout.CENTER);
+        
         CampaignGuiContextManager.getInstance().refreshCurrentContext(this);
     }
 

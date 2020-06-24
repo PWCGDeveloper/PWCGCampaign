@@ -30,12 +30,13 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.maingui.CampaignMainGUI;
+import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGFrame;
 
-public class CampaignGeneratorPanelSet extends JPanel implements ActionListener
+public class CampaignGeneratorPanelSet extends ImageResizingPanel implements ActionListener
 {    
     private static final long serialVersionUID = 1L;
 
@@ -51,8 +52,9 @@ public class CampaignGeneratorPanelSet extends JPanel implements ActionListener
 
     public CampaignGeneratorPanelSet(CampaignMainGUI mainGUI)
     {
-        super();
+        super(ContextSpecificImages.menuPathMain() + "CampaignGenFullScreen.jpg");
         this.setLayout(new BorderLayout());
+        
         this.mainGUI = mainGUI;
 
         pwcgThreePanel = new PwcgThreePanelUI(this);

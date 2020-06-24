@@ -325,38 +325,21 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
         return bestPoint;
     }
 
-    /**
-     * 
-     */
     public void refresh()
     {
         this.setVisible(false);
         this.setVisible(true);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see rof.campaign.gui.utils.ImageResizingPanel#makeVisible(boolean)
-     */
     public void makeVisible(boolean isVisible)
     {
         this.setVisible(isVisible);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see rof.campaign.gui.utils.ImageResizingPanel#paintComponent(java.awt.
-     * Graphics)
-     */
     public abstract void paintComponent(Graphics g);
 
     public abstract void mouseMovedCallback(MouseEvent e);
 
-    /**
-     * @param mouseEvent
-     */
     public void mouseDraggedCallback(MouseEvent mouseEvent)
     {
         if (movementEnabled)

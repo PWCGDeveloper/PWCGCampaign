@@ -17,10 +17,8 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 
-public class PilotChalkboardBuilder extends JPanel
-{
-    private static final long serialVersionUID = 1L;
-    
+public class PilotChalkboardBuilder
+{    
     public PilotChalkboardBuilder()
     {
     }

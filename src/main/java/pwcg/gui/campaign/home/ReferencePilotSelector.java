@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -23,12 +24,12 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.SpacerPanelFactory;
 
-public class ReferencePilotSelector extends JPanel implements ActionListener
+public class ReferencePilotSelector extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     private JComboBox<String> squadronMemberSelector;
@@ -38,7 +39,10 @@ public class ReferencePilotSelector extends JPanel implements ActionListener
 
     public ReferencePilotSelector(Campaign campaign,CampaignHome campaignHomeGui)
     {
-        super();
+        super("");
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
+
         this.campaign = campaign;
         this.campaignHomeGui = campaignHomeGui;
     }
@@ -47,8 +51,12 @@ public class ReferencePilotSelector extends JPanel implements ActionListener
     {
         try
         {
-            this.add(BorderLayout.CENTER, makeCoopPersonaSelectorPanel());
+            String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+            this.setImage(imagePath);
+
             this.add(BorderLayout.WEST, makeNavigatePanel());
+            this.add(BorderLayout.CENTER, makeCoopPersonaSelectorPanel());
+            this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1400));
         }
         catch (Throwable e)
         {
@@ -59,10 +67,6 @@ public class ReferencePilotSelector extends JPanel implements ActionListener
 
     private JPanel makeCoopPersonaSelectorPanel() throws PWCGException
     {
-        String imagePath = ContextSpecificImages.imagesMisc() + "Paper.jpg";
-        ImageResizingPanel centerPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        centerPanel.setLayout(new BorderLayout());
-
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
         squadronMemberSelector = new JComboBox<String>();
         squadronMemberSelector.setOpaque(false);
@@ -85,17 +89,26 @@ public class ReferencePilotSelector extends JPanel implements ActionListener
             squadronMemberSelector.setSelectedIndex(0);
         }
         
-        centerPanel.add(squadronMemberSelector, BorderLayout.NORTH);
+        JPanel gridPanel = new JPanel(new GridLayout(0,3));
+        gridPanel.setOpaque(false);
         
+        gridPanel.add(PWCGButtonFactory.makeDummy());
+        gridPanel.add(squadronMemberSelector);
+        gridPanel.add(PWCGButtonFactory.makeDummy());
+
+        String imagePath = UiImageResolver.getImageMain("document.png");
+        ImageResizingPanel centerPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+        centerPanel.setLayout(new BorderLayout());
+        centerPanel.add(gridPanel, BorderLayout.NORTH);
+        centerPanel.setBorder(BorderFactory.createEmptyBorder(150,50,50,100));
+
         return centerPanel;
     }
 
 	public JPanel makeNavigatePanel() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getImageMain("ConfigLeft.jpg");
-
-        ImageResizingPanel navPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        navPanel.setLayout(new BorderLayout());
+        JPanel navPanel = new JPanel(new BorderLayout());
+        navPanel.setOpaque(false);
 
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
