@@ -32,7 +32,7 @@ public class BriefingDescriptionPanelSet extends ImageResizingPanel implements A
     private Mission mission;
     private BriefingContext briefingContext;
     private BriefingFlightChooser briefingFlightChooser;
-    private BriefingChalkboard briefingChalkboard;
+    private BriefingDescriptionChalkboard briefingChalkboard;
     
 	public BriefingDescriptionPanelSet(CampaignHome campaignHomeGui, Mission mission) throws PWCGException 
 	{
@@ -111,7 +111,7 @@ public class BriefingDescriptionPanelSet extends ImageResizingPanel implements A
         JPanel briefingPanel = new JPanel(new BorderLayout());
         briefingPanel.setOpaque(false);
 
-        briefingChalkboard = new BriefingChalkboard(mission, briefingContext);
+        briefingChalkboard = new BriefingDescriptionChalkboard(mission, briefingContext);
         briefingChalkboard.makePanel();
         JScrollPane missionScrollPane = ScrollBarWrapper.makeScrollPane(briefingChalkboard);
 
@@ -175,10 +175,8 @@ public class BriefingDescriptionPanelSet extends ImageResizingPanel implements A
     {
         Campaign campaign  = PWCGContext.getInstance().getCampaign();
         campaign.setCurrentMission(null);
-        
         campaignHomeGui.createCampaignHomeContext();
-
-        CampaignGuiContextManager.getInstance().popFromContextStack();
+        CampaignGuiContextManager.getInstance().backToCampaignHome();
     }
 
     private void backToCampaign() throws PWCGException

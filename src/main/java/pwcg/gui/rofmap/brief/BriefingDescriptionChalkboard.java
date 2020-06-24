@@ -24,7 +24,7 @@ import pwcg.mission.IMissionDescription;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionDescriptionFactory;
 
-public class BriefingChalkboard extends ImageResizingPanel
+public class BriefingDescriptionChalkboard extends ImageResizingPanel
 {
 
     private static final long serialVersionUID = 1L;
@@ -33,7 +33,7 @@ public class BriefingChalkboard extends ImageResizingPanel
     private Mission mission;
     private BriefingContext briefingContext;
 
-    public BriefingChalkboard(Mission mission, BriefingContext briefingContext)
+    public BriefingDescriptionChalkboard(Mission mission, BriefingContext briefingContext)
     {
         super("");
         this.setLayout(new BorderLayout());

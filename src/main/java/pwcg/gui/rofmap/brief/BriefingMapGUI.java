@@ -543,9 +543,8 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
     {
         Campaign campaign  = PWCGContext.getInstance().getCampaign();
         campaign.setCurrentMission(null);
-        
         campaignHomeGui.createCampaignHomeContext();
-        CampaignGuiContextManager.getInstance().popFromContextStack();
+        CampaignGuiContextManager.getInstance().backToCampaignHome();
     }
     
     private void backToCampaign() throws PWCGException
@@ -626,11 +625,5 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
         
         this.revalidate();
         this.repaint();
-    }
-    
-    public void refreshScreen() throws PWCGException
-    {
-        briefingFlightChooser.setSelectedButton(briefingContext.getSelectedFlight().getSquadron().getSquadronId());
-        refreshAllPanels();
     }
 }

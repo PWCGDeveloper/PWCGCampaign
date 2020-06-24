@@ -1,28 +1,20 @@
 package pwcg.gui.rofmap.brief;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.plane.payload.IPayloadFactory;
-import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.AutoStart;
@@ -34,15 +26,11 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHome;
-import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.PWCGMonitorBorders;
 import pwcg.gui.helper.BriefingMissionFlight;
 import pwcg.gui.helper.PlayerFlightEditor;
 import pwcg.gui.sound.SoundManager;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
@@ -50,22 +38,23 @@ import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.io.MissionFileWriter;
 
-public class BriefingPilotPanelSet extends JPanel implements ActionListener, IFlightChanged
+public class BriefingPilotPanelSet extends ImageResizingPanel implements ActionListener, IFlightChanged
 {
-    private static final Integer NUM_COLUMNS = 4;
     private static final long serialVersionUID = 1L;
     private CampaignHome campaignHomeGui;
     private Campaign campaign;
     private Mission mission;
-    private ImageResizingPanel pilotPanel;
+    private JPanel briefingMapCenterPanel;
+    private BriefingPilotChalkboard pilotPanel;
     private BriefingContext briefingContext;
     private Map<Integer, BriefingPlaneModificationsPicker> planeModifications = new HashMap<>();
     private BriefingFlightChooser briefingFlightChooser;
-    private JPanel briefingMapCenterPanel = new JPanel(new BorderLayout());
 
     public BriefingPilotPanelSet(Campaign campaign, CampaignHome campaignHomeGui, BriefingContext briefingContext, Mission mission)
     {
-        super();
+        super("");
+        this.setLayout(new BorderLayout());
+        
 
         this.campaign = campaign;
         this.campaignHomeGui = campaignHomeGui;
@@ -77,6 +66,9 @@ public class BriefingPilotPanelSet extends JPanel implements ActionListener, IFl
     {
         try
         {
+            String imagePath = UiImageResolver.getImageMain("CampaignHome.jpg");
+            this.setImage(imagePath);
+
             this.removeAll();
             
             briefingFlightChooser = new BriefingFlightChooser(mission, this);
@@ -94,8 +86,7 @@ public class BriefingPilotPanelSet extends JPanel implements ActionListener, IFl
 
     private JPanel makeLeftPanel() throws PWCGException 
     {
-        String imagePath = UiImageResolver.getImage(campaignHomeGui.getCampaign(), "BriefingNav.jpg");
-        ImageResizingPanel leftPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+        JPanel leftPanel = new JPanel(new BorderLayout());
         leftPanel.setLayout(new BorderLayout());
         leftPanel.setOpaque(false);
 
@@ -150,217 +141,19 @@ public class BriefingPilotPanelSet extends JPanel implements ActionListener, IFl
 
     private JPanel createCenterPanel() throws PWCGException
     {
+        if (briefingMapCenterPanel != null)
+        {
+            this.remove(briefingMapCenterPanel);
+        }
+        
         briefingMapCenterPanel = new JPanel(new BorderLayout());
+        briefingMapCenterPanel.setOpaque(false);
 
-        makePilotPanel();
+        pilotPanel = new BriefingPilotChalkboard(briefingContext, this);
+        pilotPanel.makePanel();
         briefingMapCenterPanel.add(pilotPanel, BorderLayout.CENTER);
         
         return briefingMapCenterPanel;
-    }
-    
-
-    private JPanel makePilotPanel() throws PWCGException
-    {
-        if (pilotPanel != null)
-        {
-            remove(pilotPanel);
-        }
-
-        String imagePath = ContextSpecificImages.imagesMisc() + "PilotSelectBrickCenter.jpg";
-        pilotPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        pilotPanel.setLayout(new BorderLayout());
-
-        Insets margins = PWCGMonitorBorders.calculateBorderMargins(60, 60, 60, 60);
-        pilotPanel.setBorder(BorderFactory.createEmptyBorder(margins.top, margins.left, margins.bottom, margins.right));
-
-        JPanel assignedPilotPanel = createAssignedPilots();
-        for (int i = 0; i < NUM_COLUMNS; ++i)
-        {
-            JLabel spacerLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
-            assignedPilotPanel.add(spacerLabel);
-        }
-
-        JPanel unassignedPilotPanel = createUnassignedPilots();
-        for (int i = 0; i < (NUM_COLUMNS); ++i)
-        {
-            JLabel spacerLabelBottom = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
-            unassignedPilotPanel.add(spacerLabelBottom);
-        }
-
-        JPanel dummy1 = makeDummyPanel();
-        pilotPanel.add(dummy1, BorderLayout.WEST);
-
-        JPanel dummy2 = makeDummyPanel();
-        pilotPanel.add(dummy2, BorderLayout.EAST);
-
-        JPanel dummy3 = makeDummyPanel();
-        pilotPanel.add(dummy3, BorderLayout.NORTH);
-
-        pilotPanel.add(BorderLayout.CENTER, assignedPilotPanel);
-        pilotPanel.add(BorderLayout.SOUTH, unassignedPilotPanel);
-
-        return pilotPanel;
-    }
-
-    private JPanel createAssignedPilots() throws PWCGException
-    {
-        JPanel assignedPilotPanel = new JPanel(new GridLayout(0, NUM_COLUMNS));
-        assignedPilotPanel.setOpaque(false);
-
-        makeLabelsForChalkboard(assignedPilotPanel);
-        addDataForChalkboard(assignedPilotPanel);
-        return assignedPilotPanel;
-    }
-
-    private void makeLabelsForChalkboard(JPanel assignedPilotPanel) throws PWCGException
-    {
-        JLabel assignedPilotLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Assigned Pilots:");
-        assignedPilotPanel.add(assignedPilotLabel);
-
-        JLabel assignedAircraftLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Aircraft:");
-        assignedPilotPanel.add(assignedAircraftLabel);
-
-        JLabel payloadLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Payload:");
-        assignedPilotPanel.add(payloadLabel);
-
-        JLabel modificationsLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Modifications:");
-        assignedPilotPanel.add(modificationsLabel);
-    }
-
-    private void addDataForChalkboard(JPanel assignedPilotPanel) throws PWCGException
-    {
-        BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingHandler();
-        for (CrewPlanePayloadPairing crewPlane : briefingMissionHandler.getCrewsSorted())
-        {
-            addPilotColumn(assignedPilotPanel, crewPlane);
-            addPlaneColumn(assignedPilotPanel, crewPlane);
-            addPayloadColumn(assignedPilotPanel, crewPlane);
-            addModificationsColumn(assignedPilotPanel, crewPlane);
-        }
-    }
-
-    private void addPilotColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane) throws PWCGException
-    {
-        JPanel containerForUppperLeftPlacement = new JPanel(new GridLayout(0, NUM_COLUMNS));
-        containerForUppperLeftPlacement.setOpaque(false);
-
-        String pilotNameText = crewPlane.getPilot().getNameAndRank();
-        JButton assignedPilotButton = PWCGButtonFactory.makeBriefingChalkBoardButton(pilotNameText,
-                "Unassign Pilot:" + crewPlane.getPilot().getSerialNumber(), this);
-        assignedPilotButton.setVerticalAlignment(SwingConstants.TOP);
-        assignedPilotButton.setHorizontalAlignment(SwingConstants.LEFT);
-
-        assignedPilotPanel.add(assignedPilotButton);
-    }
-
-    private void addPlaneColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane) throws PWCGException
-    {
-        String planeName = crewPlane.getPlane().getDisplayName() + " (" + crewPlane.getPlane().getSerialNumber() + ")";
-        JButton planeButton = PWCGButtonFactory.makeBriefingChalkBoardButton(planeName, "Change Plane:" + crewPlane.getPilot().getSerialNumber(), this);
-        planeButton.setVerticalAlignment(SwingConstants.TOP);
-        planeButton.setHorizontalAlignment(SwingConstants.LEFT);
-        assignedPilotPanel.add(planeButton);
-    }
-
-    private void addPayloadColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane) throws PWCGException
-    {
-        IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
-        PayloadDesignation payloadDesignation = payloadFactory.getPlanePayloadDesignation(crewPlane.getPlane().getType(), crewPlane.getPayloadId());
-        String planePayloadDescription = payloadDesignation.getPayloadDescription();
-        JButton payloadButton = PWCGButtonFactory.makeBriefingChalkBoardButton(planePayloadDescription,
-                "Change Payload:" + crewPlane.getPilot().getSerialNumber(), this);
-        payloadButton.setVerticalAlignment(SwingConstants.TOP);
-        payloadButton.setHorizontalAlignment(SwingConstants.LEFT);
-        assignedPilotPanel.add(payloadButton);
-    }
-
-    private void addModificationsColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane) throws PWCGException
-    {
-        BriefingPlaneModificationsPicker planeModification = new BriefingPlaneModificationsPicker(this, crewPlane);
-        planeModifications.put(crewPlane.getPilot().getSerialNumber(), planeModification);
-        JPanel extrasPanel = planeModification.makePlaneModifications();
-        assignedPilotPanel.add(extrasPanel);
-    }
-
-    private JPanel createUnassignedPilots() throws PWCGException
-    {
-        JPanel unassignedPilotPanel = new JPanel(new GridLayout(0, NUM_COLUMNS));
-        unassignedPilotPanel.setOpaque(false);
-
-        JLabel unassignedLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Unassigned Pilots:");
-        unassignedPilotPanel.add(unassignedLabel);
-
-        JLabel assignedAircraftLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
-        unassignedPilotPanel.add(assignedAircraftLabel);
-
-        JLabel payloadLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
-        unassignedPilotPanel.add(payloadLabel);
-
-        JLabel modificationsLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
-        unassignedPilotPanel.add(modificationsLabel);
-
-        BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingHandler();
-        List<SquadronMember> sortedUnassignedPilots = briefingMissionHandler.getSortedUnassignedPilots();
-        List<EquippedPlane> sortedUnassignedPlanes = briefingMissionHandler.getSortedUnassignedPlanes();
-
-        int numRows = sortedUnassignedPilots.size();
-        if (sortedUnassignedPlanes.size() > numRows)
-        {
-            numRows = sortedUnassignedPlanes.size();
-        }
-
-        for (int i = 0; i < numRows; ++i)
-        {
-            if (sortedUnassignedPilots.size() > i)
-            {
-                SquadronMember unassignedSquadronMember = sortedUnassignedPilots.get(i);
-                String pilotNameText = unassignedSquadronMember.getNameAndRank();
-                JButton unassignedPilotButton = PWCGButtonFactory.makeBriefingChalkBoardButton(pilotNameText,
-                        "Assign Pilot:" + unassignedSquadronMember.getSerialNumber(), this);
-                unassignedPilotPanel.add(unassignedPilotButton);
-            }
-            else
-            {
-                JLabel planeSpaceLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
-                unassignedPilotPanel.add(planeSpaceLabel);
-            }
-
-            if (sortedUnassignedPlanes.size() > i)
-            {
-                EquippedPlane unassignedPlane = sortedUnassignedPlanes.get(i);
-                String planeNameText = unassignedPlane.getDisplayName() + " (" + unassignedPlane.getSerialNumber() + ")";
-                JLabel planeLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel(planeNameText);
-                unassignedPilotPanel.add(planeLabel);
-            }
-            else
-            {
-                JLabel planeSpaceLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
-                unassignedPilotPanel.add(planeSpaceLabel);
-            }
-
-            JLabel payloadSpaceLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
-            unassignedPilotPanel.add(payloadSpaceLabel);
-
-            JLabel modificationsSpaceLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
-            unassignedPilotPanel.add(modificationsSpaceLabel);
-        }
-        return unassignedPilotPanel;
-    }
-
-    private JPanel makeDummyPanel() throws PWCGException
-    {
-        Color bg = ColorMap.MAP_BACKGROUND;
-
-        JPanel dummyPanel = new JPanel();
-        dummyPanel.setLayout(new GridLayout(0, 1));
-        dummyPanel.setOpaque(false);
-
-        JLabel backToMapLabel = new JLabel("          ");
-        backToMapLabel.setOpaque(false);
-        backToMapLabel.setBackground(bg);
-        dummyPanel.add(backToMapLabel);
-
-        return dummyPanel;
     }
 
     public void actionPerformed(ActionEvent ae)
@@ -503,6 +296,11 @@ public class BriefingPilotPanelSet extends JPanel implements ActionListener, IFl
             refreshPilotDisplay();
         }
     }
+    
+    public void addPlaneModification(int pilotSerialNumber, BriefingPlaneModificationsPicker planeModification)
+    {
+        planeModifications.put(pilotSerialNumber, planeModification);
+    }
 
     private void setModificationInCrewPlane(Integer pilotSerialNumber) throws PWCGException
     {
@@ -571,14 +369,15 @@ public class BriefingPilotPanelSet extends JPanel implements ActionListener, IFl
     private void refreshPilotDisplay() throws PWCGException
     {
         this.add(BorderLayout.CENTER, createCenterPanel());
+        this.revalidate();
+        this.repaint();
     }
 
     private void scrubMission() throws PWCGException
     {
         campaign.setCurrentMission(null);
-
         campaignHomeGui.createCampaignHomeContext();
-        CampaignGuiContextManager.getInstance().popFromContextStack();
+        CampaignGuiContextManager.getInstance().backToCampaignHome();
     }
 
     private void acceptMission() throws PWCGException, PWCGException
@@ -716,12 +515,6 @@ public class BriefingPilotPanelSet extends JPanel implements ActionListener, IFl
     {
         pushEditsToMission();
         briefingContext.changeSelectedFlight(squadron);
-        this.add(BorderLayout.CENTER, createCenterPanel());
-    }
-    
-    public void refreshScreen() throws PWCGException
-    {
-        briefingFlightChooser.setSelectedButton(briefingContext.getSelectedFlight().getSquadron().getSquadronId());
         this.add(BorderLayout.CENTER, createCenterPanel());
     }
 }

@@ -234,11 +234,9 @@ public class CoopPersonaChooser extends JPanel implements ActionListener
     private void scrubMission() throws PWCGException
     {
         Campaign campaign  = PWCGContext.getInstance().getCampaign();
-        campaign.setCurrentMission(null);
-        
+        campaign.setCurrentMission(null);        
         campaignHomeGui.createCampaignHomeContext();
-
-        CampaignGuiContextManager.getInstance().popFromContextStack();
+        CampaignGuiContextManager.getInstance().backToCampaignHome();
     }
 
 }
