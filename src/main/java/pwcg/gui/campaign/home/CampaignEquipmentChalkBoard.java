@@ -39,6 +39,7 @@ public class CampaignEquipmentChalkBoard extends JPanel
             JPanel equipmentPanel = equipmentChalkboardBuilder.createEquipmentListPanel(planesForSquadron);
                     
             this.add(equipmentPanel, BorderLayout.CENTER);
+            this.add(CampaignHomeBottomSpacerBuilder.createLowerSpacerPanel(), BorderLayout.SOUTH);
         }
         catch (Exception e)
         {

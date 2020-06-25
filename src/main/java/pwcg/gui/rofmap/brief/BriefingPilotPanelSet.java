@@ -406,7 +406,7 @@ public class BriefingPilotPanelSet extends ImageResizingPanel implements ActionL
         
         this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 
-        CampaignGuiContextManager.getInstance().popFromContextStack();
+        CampaignGuiContextManager.getInstance().backToCampaignHome();
     }
 
     private void backToCampaign() throws PWCGException, PWCGException

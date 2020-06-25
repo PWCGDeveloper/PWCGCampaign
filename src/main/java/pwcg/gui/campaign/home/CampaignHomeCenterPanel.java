@@ -32,6 +32,7 @@ public class CampaignHomeCenterPanel extends JPanel
  
             JPanel chalkBoardPanel = createPilotListPanel(sortedPilots);
             this.add(chalkBoardPanel, BorderLayout.CENTER);
+            this.add(CampaignHomeBottomSpacerBuilder.createLowerSpacerPanel(), BorderLayout.SOUTH);
         }
         catch (Exception e)
         {
@@ -45,4 +46,5 @@ public class CampaignHomeCenterPanel extends JPanel
         PilotChalkboardBuilder pilotChalkboardBuilder = new PilotChalkboardBuilder();
         return pilotChalkboardBuilder.createPilotListPanel(sortedPilots);
     }
+
 }
