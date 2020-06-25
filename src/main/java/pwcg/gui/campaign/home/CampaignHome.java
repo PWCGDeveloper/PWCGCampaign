@@ -156,7 +156,7 @@ public class CampaignHome extends ImageResizingPanel implements ActionListener
             }
             else
             {
-                CampaignHomeGUIAction homeGUIAction = new CampaignHomeGUIAction(this, campaign);
+                CampaignHomeAction homeGUIAction = new CampaignHomeAction(this, campaign);
                 homeGUIAction.actionPerformed(ae);
             }
         }
