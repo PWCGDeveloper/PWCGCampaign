@@ -20,16 +20,15 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.MusicManager;
 import pwcg.gui.sound.SoundManager;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignMusicPanelSet extends JPanel implements ActionListener, ChangeListener
+public class CampaignMusicPanelSet extends ImageResizingPanel implements ActionListener, ChangeListener
 {    
     private static final long serialVersionUID = 1L;
     
@@ -41,8 +40,9 @@ public class CampaignMusicPanelSet extends JPanel implements ActionListener, Cha
 
     public CampaignMusicPanelSet(CampaignMainGUI parent)
     {
-        super();
+        super("");
         this.setLayout(new BorderLayout());
+
         this.parent = parent;
     }
 
@@ -50,6 +50,9 @@ public class CampaignMusicPanelSet extends JPanel implements ActionListener, Cha
     {
         try
         {
+            String imagePath = UiImageResolver.getImageMain("CampaignHome.jpg");
+            this.setImage(imagePath);
+            
             this.add(BorderLayout.WEST, makeButtonPanel());
             this.add(BorderLayout.CENTER, makeCampaignSelectPanel());
         }
@@ -62,12 +65,10 @@ public class CampaignMusicPanelSet extends JPanel implements ActionListener, Cha
 
     private JPanel makeButtonPanel() throws PWCGException
     {
-        String imagePath = UiImageResolver.getImageMain("MusicLeft.jpg");
-        
-        ImageResizingPanel configPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        configPanel.setLayout(new BorderLayout());
-        configPanel.setOpaque(true);
-        
+        JPanel navPanel = new JPanel(new BorderLayout());
+        navPanel.setOpaque(false);
+
+
         JPanel buttonPanel = new JPanel(new GridLayout(6,1));
         buttonPanel.setOpaque(false);
 
@@ -81,19 +82,16 @@ public class CampaignMusicPanelSet extends JPanel implements ActionListener, Cha
         JButton cancelChanges = PWCGButtonFactory.makeMenuButton("Cancel", "Cancel", this);
         buttonPanel.add(cancelChanges);
 
-        configPanel.add(buttonPanel, BorderLayout.NORTH);
+        navPanel.add(buttonPanel, BorderLayout.NORTH);
      
-        return configPanel;
+        return navPanel;
     }
 
     private JPanel makeCampaignSelectPanel() throws PWCGException
     {
-        String imagePath = ContextSpecificImages.menuPathMain() + "MusicCenter.jpg";
+        JPanel musicControlPanel = new JPanel(new BorderLayout());
+        musicControlPanel.setOpaque(false);
 
-        ImageResizingPanel musicControlPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        musicControlPanel.setLayout(new BorderLayout());
-        musicControlPanel.setOpaque(true);
-        
         JPanel musicControlGrid = new JPanel(new GridLayout(0,1));
         musicControlGrid.setOpaque(false);        
         makePlayMusic();
@@ -123,6 +121,7 @@ public class CampaignMusicPanelSet extends JPanel implements ActionListener, Cha
         playSoundsCheckBox.setOpaque(false);
         playSoundsCheckBox.setFont(font);
         playSoundsCheckBox.addChangeListener(this);
+        playSoundsCheckBox.setForeground(ColorMap.CHALK_FOREGROUND);
 	}
 
 	private void makePlayMusic() throws PWCGException
@@ -135,6 +134,7 @@ public class CampaignMusicPanelSet extends JPanel implements ActionListener, Cha
         playMusicCheckBox.setOpaque(false);
         playMusicCheckBox.setFont(font);
         playMusicCheckBox.addChangeListener(this);
+        playMusicCheckBox.setForeground(ColorMap.CHALK_FOREGROUND);
 	}
 	
 	  public JSlider makeVolumeSlider() 

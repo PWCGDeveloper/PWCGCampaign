@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -19,10 +20,10 @@ import pwcg.coop.model.CoopDisplayRecord;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ScrollBarWrapper;
 
@@ -33,14 +34,20 @@ public class CoopPersonaInfoPanel extends ImageResizingPanel
 
 	public CoopPersonaInfoPanel()
 	{
-	    super(ContextSpecificImages.imagesMisc() + "Paper.jpg");
+        super("");
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
 	}
 	
 	public void makePanels() 
 	{
 		try
 		{
-	        JPanel centerPanel = makeDisplay();
+            String imagePath = UiImageResolver.getImageMain("document.png");
+            this.setImage(imagePath);
+            this.setBorder(BorderFactory.createEmptyBorder(150,40,40,150));
+
+            JPanel centerPanel = makeDisplay();
             this.add(centerPanel, BorderLayout.NORTH);
 		}
 		catch (Throwable e)

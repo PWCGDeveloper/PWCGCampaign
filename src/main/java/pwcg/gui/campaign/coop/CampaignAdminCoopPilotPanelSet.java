@@ -25,10 +25,9 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.maingui.campaigngenerate.NewPilotGeneratorUI;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignAdminCoopPilotPanelSet extends JPanel implements ActionListener
+public class CampaignAdminCoopPilotPanelSet extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     private Campaign campaign;
@@ -37,7 +36,10 @@ public class CampaignAdminCoopPilotPanelSet extends JPanel implements ActionList
 
     public CampaignAdminCoopPilotPanelSet(CampaignHome parent, Campaign campaign)
     {
-        super();
+        super("");
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
+
         this.parent = parent;
         this.campaign = campaign;
     }
@@ -46,6 +48,9 @@ public class CampaignAdminCoopPilotPanelSet extends JPanel implements ActionList
     {
         try
         {        	
+            String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+            this.setImage(imagePath);
+
             this.add(BorderLayout.EAST, makeCoopAdminActionSelectPanel());
             this.add(BorderLayout.CENTER, makeCenterPanel());
             this.add(BorderLayout.WEST, makeNavigatePanel());
@@ -66,10 +71,8 @@ public class CampaignAdminCoopPilotPanelSet extends JPanel implements ActionList
 
     public JPanel makeNavigatePanel() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getImageMain("Barracks.jpg");
-
-        ImageResizingPanel navPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        navPanel.setLayout(new BorderLayout());
+        JPanel navPanel = new JPanel(new BorderLayout());
+        navPanel.setOpaque(false);
 
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
@@ -84,10 +87,8 @@ public class CampaignAdminCoopPilotPanelSet extends JPanel implements ActionList
 
     public JPanel makeCoopAdminActionSelectPanel() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getImageMain("Barracks2.jpg");
-
-        ImageResizingPanel configPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        configPanel.setLayout(new BorderLayout());
+        JPanel configPanel = new JPanel(new BorderLayout());
+        configPanel.setOpaque(false);
 
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);

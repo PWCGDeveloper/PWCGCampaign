@@ -22,12 +22,11 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CoopAdminGui extends JPanel implements ActionListener
+public class CoopAdminGui extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -36,8 +35,10 @@ public class CoopAdminGui extends JPanel implements ActionListener
 
     public CoopAdminGui()
     {
-        super();
+        super("");
         this.setLayout(new BorderLayout());
+        this.setOpaque(false);
+
         this.pwcgThreePanel = new PwcgThreePanelUI(this);
     }
     
@@ -45,6 +46,9 @@ public class CoopAdminGui extends JPanel implements ActionListener
     {
         try
         {        	
+            String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+            this.setImage(imagePath);
+
             pwcgThreePanel.setLeftPanel(makeNavigatePanel());
             pwcgThreePanel.setRightPanel(makeCoopAdminActionSelectPanel());
             pwcgThreePanel.setCenterPanel(makeBlankCenterPanel());
@@ -56,9 +60,9 @@ public class CoopAdminGui extends JPanel implements ActionListener
         }
     }
 
-	public JPanel makeBlankCenterPanel()  
+	public JPanel makeBlankCenterPanel() throws PWCGException  
     {       
-        String imagePath = ContextSpecificImages.imagesMisc() + "Paper.jpg";
+        String imagePath = UiImageResolver.getImageMain("document.png");
         ImageResizingPanel blankPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         blankPanel.setLayout(new BorderLayout());
                 
@@ -67,10 +71,8 @@ public class CoopAdminGui extends JPanel implements ActionListener
 
     public JPanel makeNavigatePanel() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getImageMain("Barracks.jpg");
-
-        JPanel navPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        navPanel.setLayout(new BorderLayout());
+        JPanel navPanel = new JPanel(new BorderLayout());
+        navPanel.setOpaque(false);
 
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
@@ -85,10 +87,8 @@ public class CoopAdminGui extends JPanel implements ActionListener
 
     public JPanel makeCoopAdminActionSelectPanel() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getImageMain("Barracks2.jpg");
-
-        JPanel configPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        configPanel.setLayout(new BorderLayout());
+        JPanel configPanel = new JPanel(new BorderLayout());
+        configPanel.setOpaque(false);
 
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);

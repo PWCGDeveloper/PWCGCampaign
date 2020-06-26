@@ -34,12 +34,11 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageButton;
 import pwcg.gui.utils.ImagePanelLayout;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.gui.utils.ToolTipManager;
 
-public class ConfigurationPlanesOwnedPanelSet extends JPanel implements ActionListener
+public class ConfigurationPlanesOwnedPanelSet extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -48,7 +47,9 @@ public class ConfigurationPlanesOwnedPanelSet extends JPanel implements ActionLi
     
 	public ConfigurationPlanesOwnedPanelSet(CampaignMainGUI parent) 
 	{
-		setLayout(new BorderLayout());
+        super("");
+        this.setLayout(new BorderLayout());
+
 		this.parent = parent;
 	}
 
@@ -56,6 +57,9 @@ public class ConfigurationPlanesOwnedPanelSet extends JPanel implements ActionLi
     {
         try
         {
+            String imagePath = UiImageResolver.getImageMain("CampaignHome.jpg");
+            this.setImage(imagePath);
+            
             this.add(makeButtonPanel(), BorderLayout.WEST);
             this.add(makeCenterPanel(), BorderLayout.CENTER);
 
@@ -96,11 +100,8 @@ public class ConfigurationPlanesOwnedPanelSet extends JPanel implements ActionLi
 
 	public JPanel makeButtonPanel() throws PWCGException 
 	{
-        String imagePath = UiImageResolver.getImageMain("PlanesOwnedLeft.jpg");
-
-        ImageResizingPanel campaignButtonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        campaignButtonPanel.setLayout(new BorderLayout());
-        campaignButtonPanel.setOpaque(true);
+        JPanel navPanel = new JPanel(new BorderLayout());
+        navPanel.setOpaque(false);
 
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
@@ -136,18 +137,11 @@ public class ConfigurationPlanesOwnedPanelSet extends JPanel implements ActionLi
         JButton cancelButton = makePlainButton("      Cancel", "Cancel", "Cancel configuration changes");
         buttonPanel.add(cancelButton);
 
-        campaignButtonPanel.add (buttonPanel, BorderLayout.NORTH);
+        navPanel.add (buttonPanel, BorderLayout.NORTH);
         
-        return campaignButtonPanel;
+        return navPanel;
  	}
 
-    
-    /**
-     * @param imageName
-     * @return
-     * @throws PWCGException 
-     * @
-     */
     private JButton makePlainButton(String buttonText, String commandText, String toolTiptext) throws PWCGException
     {
         JButton button = PWCGButtonFactory.makeMenuButton(buttonText, commandText, this);
@@ -156,12 +150,6 @@ public class ConfigurationPlanesOwnedPanelSet extends JPanel implements ActionLi
         return button;
     }
 
-
-
-    /**
-     * @return
-     * @throws PWCGException
-     */
     public JPanel makeCenterPanel() throws PWCGException 
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "paperFull.jpg";
@@ -178,11 +166,6 @@ public class ConfigurationPlanesOwnedPanelSet extends JPanel implements ActionLi
         return planeSelectionPanel;
     }
 
-    
-    /**
-     * @throws PWCGException 
-     * @
-     */
     public JPanel makeBlankPanel() throws PWCGException 
     {        
         JPanel blankPanel = new JPanel(new GridLayout(0, 2));
@@ -193,29 +176,18 @@ public class ConfigurationPlanesOwnedPanelSet extends JPanel implements ActionLi
         return blankPanel;
     }
 
-
-    /**
-     * @throws PWCGException
-     */
     public JPanel makeAxisPanel() throws PWCGException 
     {
         List<PlaneType> axisPlanes = PWCGContext.getInstance().getPlaneTypeFactory().getAxisPlanes();
         return makePlanePanel(axisPlanes);
     }
 
-
-    /**
-     * @throws PWCGException
-     */
     public JPanel makeAlliedPanel() throws PWCGException 
     {
         List<PlaneType> alliedPlanes = PWCGContext.getInstance().getPlaneTypeFactory().getAlliedPlanes();
         return makePlanePanel(alliedPlanes);
     }
-    
-	/**
-	 * @throws PWCGException
-	 */
+
 	public JPanel makePlanePanel(List<PlaneType> planes) throws PWCGException 
 	{
         JPanel planeListOuterPanel = new JPanel(new BorderLayout());
@@ -232,11 +204,6 @@ public class ConfigurationPlanesOwnedPanelSet extends JPanel implements ActionLi
         return planeListOuterPanel;
 	}
 
-
-    /**
-     * @param planes
-     * @return
-     */
     private TreeMap<String, PlaneType> sortPlanesByType(List<PlaneType> planes)
     {
         TreeMap<String, PlaneType> planeMap = new TreeMap<String, PlaneType>();
@@ -251,12 +218,6 @@ public class ConfigurationPlanesOwnedPanelSet extends JPanel implements ActionLi
         return planeMap;
     }
 
-
-    /**
-     * @param buttonBG
-     * @param planeMap
-     * @throws PWCGException
-     */
     private JPanel createPlanePanel(TreeMap<String, PlaneType> planeMap) throws PWCGException
     {
         Dimension frameSize = PWCGMonitorSupport.getPWCGFrameSize();

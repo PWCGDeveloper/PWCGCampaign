@@ -28,13 +28,12 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.MusicManager;
 import pwcg.gui.sound.SoundManager;
-import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
+import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionHumanParticipants;
 
-public class CoopPersonaChooser extends JPanel implements ActionListener
+public class CoopPersonaChooser extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     private CoopPersonaChooserPanel coopPersonaAccept;
@@ -47,7 +46,10 @@ public class CoopPersonaChooser extends JPanel implements ActionListener
 
     public CoopPersonaChooser(Campaign campaign,CampaignHome campaignHomeGui)
     {
-        super();
+        super("");
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
+
         this.campaign = campaign;
         this.campaignHomeGui = campaignHomeGui;
     }
@@ -56,6 +58,9 @@ public class CoopPersonaChooser extends JPanel implements ActionListener
     {
         try
         {
+            String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+            this.setImage(imagePath);
+
         	coopPersonaAccept = new CoopPersonaChooserPanel(campaign, this);
             coopPersonaAccept.makePanels();
             this.add(BorderLayout.CENTER, coopPersonaAccept);
@@ -72,10 +77,9 @@ public class CoopPersonaChooser extends JPanel implements ActionListener
 
     private void buildErrorPanel() throws PWCGException 
     {
-        String imagePath = ContextSpecificImages.imagesMisc() + "Paper.jpg";
-        coopPersonaErrorPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        coopPersonaErrorPanel.setLayout(new GridLayout(0, 2));
-        this.add(BorderLayout.SOUTH, coopPersonaErrorPanel);
+        coopPersonaErrorPanel = new JPanel(new GridLayout(0, 2));
+        coopPersonaErrorPanel.setOpaque(false);
+        coopPersonaAccept.add(BorderLayout.SOUTH, coopPersonaErrorPanel);
 	}
     
     public void evaluateErrors() throws PWCGException
@@ -176,10 +180,8 @@ public class CoopPersonaChooser extends JPanel implements ActionListener
 
 	public JPanel makeNavigatePanel() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getImageMain("ConfigLeft.jpg");
-
-        JPanel navPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        navPanel.setLayout(new BorderLayout());
+        JPanel navPanel = new JPanel(new BorderLayout());
+        navPanel.setOpaque(false);
 
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);

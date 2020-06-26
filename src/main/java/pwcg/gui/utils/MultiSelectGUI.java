@@ -26,7 +26,7 @@ public class MultiSelectGUI implements ActionListener
     private Map<String, JCheckBox> checkBoxes = new TreeMap<>();
     private Map<String, MultiSelectData> selectDataSet = new TreeMap<>();
 
-    public JPanel build() throws PWCGException  
+    public JPanel build(int numColumns) throws PWCGException  
     {
         selectionLayout = new JPanel(new BorderLayout());
         selectionLayout.setOpaque(false);
@@ -34,7 +34,7 @@ public class MultiSelectGUI implements ActionListener
         JPanel buttonGroup = buildButtonPanel();
         selectionLayout.add(buttonGroup, BorderLayout.NORTH);
                 
-        selectionGrid = new JPanel(new GridLayout(0, 1));
+        selectionGrid = new JPanel(new GridLayout(0, numColumns));
         selectionGrid.setOpaque(false);
         
         JPanel selectionGridContainer = new JPanel(new BorderLayout());
@@ -108,14 +108,21 @@ public class MultiSelectGUI implements ActionListener
     
     private JPanel buildButtonPanel() throws PWCGException
     {
+        JLabel spacer1 = PWCGButtonFactory.makePaperLabelMedium("         ");
         JButton selectAllButton = PWCGButtonFactory.makePaperButtonWithBorder("Select All", "SelectAll", this);
-        JLabel spacer = PWCGButtonFactory.makePaperLabelMedium("         ");
+        selectAllButton.setOpaque(false);
+        JLabel spacer2 = PWCGButtonFactory.makePaperLabelMedium("         ");
         JButton deselectAllButton = PWCGButtonFactory.makePaperButtonWithBorder("Deselect All", "DeselectAll", this);
-        JPanel buttonGroup = new JPanel(new GridLayout(0, 3));
+        deselectAllButton.setOpaque(false);
+        JLabel spacer3 = PWCGButtonFactory.makePaperLabelMedium("         ");
+        
+        JPanel buttonGroup = new JPanel(new GridLayout(0, 5));
         buttonGroup.setOpaque(false);
+        buttonGroup.add(spacer1);
         buttonGroup.add(selectAllButton);
-        buttonGroup.add(spacer);
+        buttonGroup.add(spacer2);
         buttonGroup.add(deselectAllButton);
+        buttonGroup.add(spacer3);
         return buttonGroup;
     }
 

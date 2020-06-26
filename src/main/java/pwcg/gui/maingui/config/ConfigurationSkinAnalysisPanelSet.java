@@ -40,12 +40,11 @@ import pwcg.gui.maingui.SkinReportGenerator;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImagePanelLayout;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.gui.utils.ToolTipManager;
 
-public class ConfigurationSkinAnalysisPanelSet extends JPanel implements ActionListener
+public class ConfigurationSkinAnalysisPanelSet extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -55,8 +54,8 @@ public class ConfigurationSkinAnalysisPanelSet extends JPanel implements ActionL
 
 	public ConfigurationSkinAnalysisPanelSet(CampaignMainGUI parent) 
 	{
-        super();
-		setLayout(new BorderLayout());
+        super("");
+        this.setLayout(new BorderLayout());
 
 		this.parent = parent;
 	}
@@ -65,6 +64,9 @@ public class ConfigurationSkinAnalysisPanelSet extends JPanel implements ActionL
     {
         try
         {
+            String imagePath = UiImageResolver.getImageMain("CampaignHome.jpg");
+            this.setImage(imagePath);
+            
             skinAnalyzer.analyze();
             
             this.add(BorderLayout.WEST, makeButtonPanel());
@@ -79,11 +81,8 @@ public class ConfigurationSkinAnalysisPanelSet extends JPanel implements ActionL
 
 	public JPanel makeButtonPanel() throws PWCGException 
 	{
-        String imagePath = UiImageResolver.getImageMain("SkinAnalysisNav.jpg");
-
-        ImageResizingPanel campaignButtonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        campaignButtonPanel.setLayout(new BorderLayout());
-        campaignButtonPanel.setOpaque(true);
+        JPanel navButtonPanel = new JPanel(new BorderLayout());
+        navButtonPanel.setOpaque(false);
 
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
@@ -125,9 +124,9 @@ public class ConfigurationSkinAnalysisPanelSet extends JPanel implements ActionL
         JButton acceptButton = makePlainButton("      Return", "Return", "Return to main menu");
         buttonPanel.add(acceptButton);
 
-        campaignButtonPanel.add (buttonPanel, BorderLayout.NORTH);
+        navButtonPanel.add (buttonPanel, BorderLayout.NORTH);
         
-        return campaignButtonPanel;
+        return navButtonPanel;
  	}
 
     private JButton makePlainButton(String buttonText, String commandText, String toolTiptext) throws PWCGException

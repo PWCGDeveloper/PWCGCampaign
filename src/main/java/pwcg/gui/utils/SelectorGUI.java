@@ -41,14 +41,14 @@ public class SelectorGUI implements ActionListener
         selectPanel.setOpaque(false);
 
         notAccepted = new MultiSelectGUI();
-        JPanel notAcceptedPanel = notAccepted.build();
+        JPanel notAcceptedPanel = notAccepted.build(1);
         selectPanel.add(notAcceptedPanel, BorderLayout.WEST);
         
         JPanel buttonPanel = makeButtonPanel(allowReject);
         selectPanel.add(buttonPanel, BorderLayout.CENTER);
 
         accepted = new MultiSelectGUI();
-        JPanel acceptedPanel = accepted.build();
+        JPanel acceptedPanel = accepted.build(1);
         selectPanel.add(acceptedPanel, BorderLayout.EAST);
 		
 		return selectPanel;
@@ -70,6 +70,7 @@ public class SelectorGUI implements ActionListener
         buttonPanel.add(spacerLabel);
 
         JButton acceptButton = PWCGButtonFactory.makePaperButtonWithBorder("Accept ===>", "Accept", this);
+        acceptButton.setOpaque(false);
         acceptButton.setHorizontalAlignment(SwingConstants.CENTER);
         buttonPanel.add(acceptButton);
 
@@ -79,6 +80,7 @@ public class SelectorGUI implements ActionListener
         if (allowReject)
         {
             JButton rejectButton = PWCGButtonFactory.makePaperButtonWithBorder("<=== Reject", "Reject", this);
+            rejectButton.setOpaque(false);
             rejectButton.setHorizontalAlignment(SwingConstants.CENTER);
             buttonPanel.add(rejectButton);
         }
