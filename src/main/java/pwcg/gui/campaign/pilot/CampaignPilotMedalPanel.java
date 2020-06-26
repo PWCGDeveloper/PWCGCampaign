@@ -18,6 +18,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.image.ImageIconCache;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -61,15 +62,16 @@ public class CampaignPilotMedalPanel extends JPanel
     
     private int calcMedalsPerRow()
     {
-        if (PWCGMonitorSupport.getPWCGFrameSize().width < 800)
+        MonitorSize monitorSize = PWCGMonitorSupport.getFrameWidth();
+        if (monitorSize == MonitorSize.FRAME_VERY_SMALL)
         {
             return 1;
         }
-        else if (PWCGMonitorSupport.getPWCGFrameSize().width <= 1200)
+        else if (monitorSize == MonitorSize.FRAME_SMALL)
         {
             return 3;
         }
-        else if (PWCGMonitorSupport.getPWCGFrameSize().width <= 1600)
+        if (monitorSize == MonitorSize.FRAME_MEDIUM)
         {
             return 4;
         }

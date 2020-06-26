@@ -15,6 +15,7 @@ import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
@@ -68,54 +69,52 @@ public class CampaignMedalPanelSet extends ImageResizingPanel implements ActionL
 
         int numSpacers = calcNumSpacers();
         
-        openMedalBoxPanel.add(SpacerPanelFactory.createLowerSpacerPanel(numSpacers), BorderLayout.NORTH);
+        openMedalBoxPanel.add(SpacerPanelFactory.createVerticalSpacerPanel(numSpacers), BorderLayout.NORTH);
         openMedalBoxPanel.add(makeMedalBox(), BorderLayout.CENTER);
-        openMedalBoxPanel.add(SpacerPanelFactory.createLowerSpacerPanel(numSpacers), BorderLayout.SOUTH);
+        openMedalBoxPanel.add(SpacerPanelFactory.createVerticalSpacerPanel(numSpacers), BorderLayout.SOUTH);
 
         return openMedalBoxPanel;
     }   
     
     private int calcPercentForRightSpacer()
     {
-        if (PWCGMonitorSupport.getPWCGFrameSize().width < 800)
+        MonitorSize monitorSize = PWCGMonitorSupport.getFrameWidth();
+        if (monitorSize == MonitorSize.FRAME_VERY_SMALL)
         {
             return 1;
         }
-        else if (PWCGMonitorSupport.getPWCGFrameSize().width <= 1200)
+        else if (monitorSize == MonitorSize.FRAME_SMALL)
         {
             return 6;
         }
-        else if (PWCGMonitorSupport.getPWCGFrameSize().width <= 1600)
+        if (monitorSize == MonitorSize.FRAME_MEDIUM)
         {
             return 10;
         }
-        else if (PWCGMonitorSupport.getPWCGFrameSize().width <= 2400)
-        {
-            return 16;
-        }
         else
         {
-            return 20;
+            return 20;            
         }
     }
 
     private int calcNumSpacers()
     {
-        if (PWCGMonitorSupport.isVerySmallScreen())
+        MonitorSize monitorSize = PWCGMonitorSupport.getFrameHeight();
+        if (monitorSize == MonitorSize.FRAME_VERY_SMALL)
         {
             return 1;
         }
-        else if (PWCGMonitorSupport.isSmallScreen())
+        else if (monitorSize == MonitorSize.FRAME_SMALL)
         {
             return 2;
         }
-        else if (PWCGMonitorSupport.isMediumScreen())
+        if (monitorSize == MonitorSize.FRAME_MEDIUM)
         {
             return 3;
         }
         else
         {
-            return 6;
+            return 5;
         }
     }
 

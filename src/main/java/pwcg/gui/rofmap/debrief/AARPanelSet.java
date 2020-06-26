@@ -1,41 +1,31 @@
 package pwcg.gui.rofmap.debrief;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 import java.util.Map;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import pwcg.aar.AARCoordinator;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
-import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHome;
-import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.PWCGMonitorFonts;
+import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.sound.SoundManager;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.SpacerPanelFactory;
 
-public class AARPanelSet extends AARPanel implements ActionListener
+public class AARPanelSet extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -45,106 +35,63 @@ public class AARPanelSet extends AARPanel implements ActionListener
 
 	public AARPanelSet(CampaignHome home)  
 	{
-        super();
+        super("");
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
 
 		this.campaign = PWCGContext.getInstance().getCampaign();
         this.home = home;
 	}
 
     public void makePanel() throws PWCGException
-    {        
-        this.add(BorderLayout.CENTER, makeCenterPanel());
-        this.add(BorderLayout.WEST, makeNavigationPanel());
-	}
-    
-	private JPanel makeCenterPanel() throws PWCGException  
-	{
-		ImageResizingPanel aarMainPanel = new ImageResizingPanel(ContextSpecificImages.imagesMisc() + "paperRotated.jpg");
-		aarMainPanel.setLayout(new BorderLayout());
-
-		JPanel infoPanel = makeInfoPanel();
-		aarMainPanel.add(infoPanel, BorderLayout.NORTH);
-		
-        invokesClaimsForSinglePlayer(aarMainPanel);
-		
-		return aarMainPanel;
-	}
-
-    private AARClaimPanels makeAARPanel() throws PWCGException  
     {
-        AARClaimPanels aarClaimPanel = new AARClaimPanels();
+        String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+        this.setImage(imagePath);
+
+        this.add(makeNavigationPanel(), BorderLayout.WEST);
+        this.add(makeCenterPanel(), BorderLayout.CENTER);
+        this.add(SpacerPanelFactory.makeSpacerConsumeRemainingPanel(1500), BorderLayout.EAST);
+	}
+
+    private JPanel makeCenterPanel() throws PWCGException  
+    {
+        AARClaimPanels aarClaimPanel = new AARClaimPanels(campaign);
         aarClaimPanel.makePanels();
-        return aarClaimPanel;
+
+        int numSpacers = calcNumSpacers();
+        JPanel claimPanel = new JPanel(new BorderLayout());
+        claimPanel.setOpaque(false);
+        claimPanel.add(SpacerPanelFactory.createVerticalSpacerPanel(numSpacers), BorderLayout.NORTH);
+        claimPanel.add(aarClaimPanel, BorderLayout.CENTER);
+        claimPanel.add(SpacerPanelFactory.createVerticalSpacerPanel(numSpacers), BorderLayout.SOUTH);
+
+        return claimPanel;
     }
 
-	private JPanel makeInfoPanel() throws PWCGException 
-	{
-        JPanel infoPanel = new JPanel (new BorderLayout());
-        infoPanel.setOpaque(false);
-
-		Color buttonBG = ColorMap.PAPER_BACKGROUND;
-		
-		Font font = PWCGMonitorFonts.getTypewriterFont();
-
-		JPanel infoPanelGrid = new JPanel (new GridLayout(0,1));
-		infoPanelGrid.setOpaque(false);
-
-		for (int i = 0; i < 1; ++i)
-		{
-		    infoPanelGrid.add(PWCGButtonFactory.makeDummy());
-		}
-
-		JLabel lPilots = new JLabel("     Pilots assigned to this mission:", JLabel.LEFT);
-		lPilots.setBackground(buttonBG);
-		lPilots.setOpaque(false);
-		lPilots.setFont(font);
-		infoPanelGrid.add(lPilots);
-		
-        SquadronMembers pilotsInMission = AARCoordinator.getInstance().getAarContext().getPreliminaryData().getCampaignMembersInMission();
-        List<SquadronMember> pilotsInMissionSorted = pilotsInMission.sortPilots(campaign.getDate());
-		for (SquadronMember pilot : pilotsInMissionSorted)
-		{
-	        SquadronMember referencePlayer = campaign.findReferencePlayer();
-            if (pilot.getSquadronId() == referencePlayer.getSquadronId())
-            {
-                String crewDesc = "             " + pilot.getNameAndRank();
-               
-    			JLabel lPilot = new JLabel(crewDesc, JLabel.LEFT);
-    			lPilot.setSize(200, 40);
-    			lPilot.setBackground(buttonBG);
-    			lPilot.setOpaque(false);
-    			lPilot.setFont(font);
-    			infoPanelGrid.add(lPilot);		
-            }
-		}
-		
-        JLabel space1 = new JLabel("", JLabel.LEFT);
-        JLabel space2 = new JLabel("", JLabel.LEFT);
-        infoPanelGrid.add(space1);
-        infoPanelGrid.add(space2);
-
-        JLabel lDate = new JLabel("     Date: " + DateUtils.getDateString(campaign.getDate()), JLabel.LEFT);
-        lDate.setBackground(buttonBG);
-        lDate.setFont(font);
-        infoPanelGrid.add(lDate);
-
-		for (int i = 0; i < 1; ++i)
-		{
-			infoPanelGrid.add(PWCGButtonFactory.makeDummy());
-		}
-		
-		infoPanel.add(infoPanelGrid, BorderLayout.NORTH);
-
-		return infoPanel;
-	}
+    private int calcNumSpacers()
+    {
+        if (PWCGMonitorSupport.isVerySmallScreen())
+        {
+            return 1;
+        }
+        else if (PWCGMonitorSupport.isSmallScreen())
+        {
+            return 2;
+        }
+        else if (PWCGMonitorSupport.isMediumScreen())
+        {
+            return 3;
+        }
+        else
+        {
+            return 6;
+        }
+    }
 
 	private JPanel makeNavigationPanel() throws PWCGException  
 	{
-        String imagePath = UiImageResolver.getImage(campaign, "CombatReportNav.jpg");
-
-		ImageResizingPanel aarButtonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-		aarButtonPanel.setLayout(new BorderLayout());
-		aarButtonPanel.setOpaque(false);
+        JPanel aarButtonPanel = new JPanel(new BorderLayout());
+        aarButtonPanel.setOpaque(false);
 		
 		JPanel buttonGrid = new JPanel(new GridLayout(0,1));
 		buttonGrid.setOpaque(false);
@@ -197,12 +144,6 @@ public class AARPanelSet extends AARPanel implements ActionListener
         }
     }
 
-    private void invokesClaimsForSinglePlayer(ImageResizingPanel aarMainPanel) throws PWCGException
-    {
-        aarClaimPanel = makeAARPanel();
-        aarMainPanel.add(aarClaimPanel, BorderLayout.CENTER);
-    }
-    
     private void submitReport(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
     {
         SoundManager.getInstance().playSound("Stapling.WAV");   
@@ -224,7 +165,6 @@ public class AARPanelSet extends AARPanel implements ActionListener
         debriefMap.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(debriefMap);
 
-        // Reset the mission after a combat report has been submitted
         campaign.setCurrentMission(null);
     }
 }

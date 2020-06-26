@@ -1,7 +1,6 @@
 package pwcg.gui.campaign.journal;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -27,6 +26,7 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorBorders;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -416,18 +416,17 @@ public class CampaignJournalPanelSet extends ImageResizingPanel implements Actio
 
     private void calculateLinesPerPage()
     {
-        Dimension screenSize = PWCGMonitorSupport.getPWCGFrameSize();
-
+        MonitorSize monitorSize = PWCGMonitorSupport.getFrameHeight();
         linesPerPage = 55;
-        if (screenSize.getHeight() < 1200)
+        if (monitorSize == MonitorSize.FRAME_MEDIUM)
         {
             linesPerPage = 45;
         }
-        if (screenSize.getHeight() < 1000)
+        else if (monitorSize == MonitorSize.FRAME_SMALL)
         {
             linesPerPage = 35;
         }
-        if (screenSize.getHeight() < 800)
+        else if (monitorSize == MonitorSize.FRAME_VERY_SMALL)
         {
             linesPerPage = 25;
         }

@@ -25,6 +25,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.image.ImageIconCache;
 import pwcg.gui.utils.CampaignDocumentPage;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -78,20 +79,8 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
         JPanel medalTextAndPilotPicPanel = new JPanel(new BorderLayout());
         medalTextAndPilotPicPanel.setOpaque(false);
      
-        int leftRightBorder = 40;
-        if (PWCGMonitorSupport.getPWCGFrameSize().getWidth() > 1200)
-        {
-            leftRightBorder = 40 + ((Double.valueOf(PWCGMonitorSupport.getPWCGFrameSize().getWidth()).intValue() - 1200) / 4);
-        }
-
-        
-        int topBottomBorder = 20;
-        if (PWCGMonitorSupport.getPWCGFrameSize().getHeight() > 1200)
-        {
-            int area = Double.valueOf(PWCGMonitorSupport.getPWCGFrameSize().getHeight()).intValue() / 3;
-            
-            topBottomBorder = area / 6;
-        }
+        int leftRightBorder = getLeftRightBorder();        
+        int topBottomBorder = getTopBottomBorder();
 
         medalTextAndPilotPicPanel.setBorder(BorderFactory.createEmptyBorder(topBottomBorder, leftRightBorder, topBottomBorder,leftRightBorder)); 
 
@@ -111,6 +100,30 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
         medalTextAndPilotPicPanel.add(pilotLabel, BorderLayout.EAST);
 
         return medalTextAndPilotPicPanel;
+    }
+
+    private int getTopBottomBorder()
+    {
+        int topBottomBorder = 20;
+        MonitorSize monitorSize = PWCGMonitorSupport.getFrameHeight();
+        if (monitorSize == MonitorSize.FRAME_MEDIUM || monitorSize == MonitorSize.FRAME_LARGE)
+        {
+            int area = Double.valueOf(PWCGMonitorSupport.getPWCGFrameSize().getHeight()).intValue() / 3;
+            
+            topBottomBorder = area / 6;
+        }
+        return topBottomBorder;
+    }
+
+    private int getLeftRightBorder()
+    {
+        int leftRightBorder = 40;
+        MonitorSize monitorSize = PWCGMonitorSupport.getFrameWidth();
+        if (monitorSize == MonitorSize.FRAME_MEDIUM || monitorSize == MonitorSize.FRAME_LARGE)
+        {
+            leftRightBorder = 40 + ((Double.valueOf(PWCGMonitorSupport.getPWCGFrameSize().getWidth()).intValue() - 1200) / 4);
+        }
+        return leftRightBorder;
     }
 
     private JLabel formPilotPicture()

@@ -1,6 +1,7 @@
 package pwcg.gui.utils;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
@@ -24,7 +25,7 @@ public class SpacerPanelFactory
             Dimension frameSize = PWCGMonitorSupport.getPWCGFrameSize();
             double widthNeeded = Double.valueOf(frameSize.width) * (Double.valueOf(percent) / 100.0);
             int pixelsNeeded = Double.valueOf(widthNeeded).intValue();
-            spacerGrid.setBorder(BorderFactory.createEmptyBorder(0,pixelsNeeded, 0, 0));
+            spacerGrid.setBorder(BorderFactory.createEmptyBorder(0, pixelsNeeded, 0, 0));
 
             JLabel spacer1 = PWCGButtonFactory.makePaperLabelLarge(" ");
             spacerGrid.add(spacer1);
@@ -34,7 +35,27 @@ public class SpacerPanelFactory
             return spacerPanel;
     }
     
-    public static  JPanel createLowerSpacerPanel(int numRows) throws PWCGException
+    public static JPanel makeSpacerConsumeRemainingPanel(int spaceToLeave) throws PWCGException
+    {
+            Dimension frameSize = PWCGMonitorSupport.getPWCGFrameSize();
+            int widthNeeded = frameSize.width - spaceToLeave;
+            if (widthNeeded < 1)
+            {
+                widthNeeded = 1;
+            }
+
+            JPanel spacerGrid = new JPanel(new GridLayout(0,1));
+            spacerGrid.setOpaque(false);
+            spacerGrid.setPreferredSize(new Dimension(widthNeeded, 300));
+            
+            JLabel spacer1 = PWCGButtonFactory.makePaperLabelLarge("   ");
+            spacer1.setForeground(Color.BLACK);
+            spacerGrid.add(spacer1);
+
+            return spacerGrid;
+    }
+
+    public static  JPanel createVerticalSpacerPanel(int numRows) throws PWCGException
     {
         JPanel spacerPanel = new JPanel(new GridLayout(0, 1));
         spacerPanel.setOpaque(false);

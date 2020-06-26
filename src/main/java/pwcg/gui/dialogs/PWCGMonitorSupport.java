@@ -10,6 +10,54 @@ import pwcg.gui.utils.PWCGFrame;
 
 public class PWCGMonitorSupport 
 {
+    public enum MonitorSize
+    {
+        FRAME_VERY_SMALL,
+        FRAME_SMALL,
+        FRAME_MEDIUM,
+        FRAME_LARGE
+    }
+    
+    public static MonitorSize getFrameWidth()
+    {
+        if (PWCGMonitorSupport.getPWCGFrameSize().width < 1400)
+        {
+            return MonitorSize.FRAME_VERY_SMALL;
+        }
+        else if (PWCGMonitorSupport.getPWCGFrameSize().width <= 1600)
+        {
+            return MonitorSize.FRAME_SMALL;
+        }
+        else if (PWCGMonitorSupport.getPWCGFrameSize().width <= 2000)
+        {
+            return MonitorSize.FRAME_MEDIUM;
+        }
+        else
+        {
+            return MonitorSize.FRAME_LARGE;
+        }
+    }
+    
+    public static MonitorSize getFrameHeight()
+    {
+        if (PWCGMonitorSupport.getPWCGFrameSize().height < 800)
+        {
+            return MonitorSize.FRAME_VERY_SMALL;
+        }
+        else if (PWCGMonitorSupport.getPWCGFrameSize().height <= 900)
+        {
+            return MonitorSize.FRAME_SMALL;
+        }
+        else if (PWCGMonitorSupport.getPWCGFrameSize().height <= 1100)
+        {
+            return MonitorSize.FRAME_MEDIUM;
+        }
+        else
+        {
+            return MonitorSize.FRAME_LARGE;
+        }
+    }
+
 	public static Dimension getPWCGFrameSize()
 	{
         Dimension frameSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();

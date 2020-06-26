@@ -1,7 +1,6 @@
 package pwcg.gui.campaign.journal;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Insets;
@@ -29,6 +28,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorBorders;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -62,10 +62,8 @@ public class CampaignSquadronLogPanelSet extends ImageResizingPanel implements A
 
         this.logsForSquadronId = logsForSquadronId;
 
-		Dimension screenSize = PWCGMonitorSupport.getPWCGFrameSize();
-
-        calculateLinesPerPage(screenSize);
-        calculateCharsPerLine(screenSize);
+        calculateLinesPerPage();
+        calculateCharsPerLine();
         adjustTextForFontSize();
 
 		this.campaign = PWCGContext.getInstance().getCampaign();
@@ -354,35 +352,37 @@ public class CampaignSquadronLogPanelSet extends ImageResizingPanel implements A
         }
     }
 
-    private void calculateLinesPerPage(Dimension screenSize)
+    private void calculateLinesPerPage()
     {
+        MonitorSize monitorSize = PWCGMonitorSupport.getFrameHeight();
         linesPerPage = 45;
-        if (screenSize.getHeight() < 1200)
+        if (monitorSize == MonitorSize.FRAME_MEDIUM)
         {
             linesPerPage = 40;
         }
-        if (screenSize.getHeight() < 1000)
+        else if (monitorSize == MonitorSize.FRAME_SMALL)
         {
             linesPerPage = 35;
         }
-        if (screenSize.getHeight() < 800)
+        else if (monitorSize == MonitorSize.FRAME_VERY_SMALL)
         {
             linesPerPage = 25;
-        }       
+        }
     }
 
-    private void calculateCharsPerLine(Dimension screenSize)
+    private void calculateCharsPerLine()
     {
+        MonitorSize monitorSize = PWCGMonitorSupport.getFrameWidth();
         charsPerLine = 70;
-        if (screenSize.getWidth() < 1200)
+        if (monitorSize == MonitorSize.FRAME_MEDIUM)
         {
             charsPerLine = 60;
         }
-        if (screenSize.getWidth() < 1000)
+        else if (monitorSize == MonitorSize.FRAME_SMALL)
         {
             charsPerLine = 45;
         }
-        if (screenSize.getWidth() < 800)
+        else if (monitorSize == MonitorSize.FRAME_VERY_SMALL)
         {
             charsPerLine = 35;
         }

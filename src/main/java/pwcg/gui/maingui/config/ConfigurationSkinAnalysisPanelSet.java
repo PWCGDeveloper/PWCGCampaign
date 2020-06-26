@@ -2,7 +2,6 @@ package pwcg.gui.maingui.config;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -35,6 +34,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.HelpDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.maingui.CampaignMainGUI;
 import pwcg.gui.maingui.SkinReportGenerator;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -204,11 +204,11 @@ public class ConfigurationSkinAnalysisPanelSet extends ImageResizingPanel implem
 
     private JPanel createPlanePanel(TreeMap<String, PlaneType> planeMap) throws PWCGException
     {
-        Dimension frameSize = PWCGMonitorSupport.getPWCGFrameSize();
-        int columns = 3;
-        if (frameSize.getWidth() < 1900)
+        MonitorSize monitorSize = PWCGMonitorSupport.getFrameWidth();
+        int columns = 2;
+        if (monitorSize == MonitorSize.FRAME_LARGE)
         {
-            columns = 2;
+            columns = 3;
         }
         
         JPanel planeListPanel = new JPanel(new GridLayout(0, columns));

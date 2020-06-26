@@ -18,12 +18,11 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.rofmap.debrief.AAREventPanel;
-import pwcg.gui.rofmap.debrief.AARPanel;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class AARMainPanel extends AARPanel implements ActionListener
+public class AARMainPanel extends JPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     

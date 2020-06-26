@@ -36,7 +36,7 @@ public class CampaignHomeTopAcesCenterPanel extends JPanel
  
             JPanel chalkBoardPanel = createPilotListPanel(acesToDisplay);
             this.add(chalkBoardPanel, BorderLayout.CENTER);
-            this.add(SpacerPanelFactory.createLowerSpacerPanel(10), BorderLayout.SOUTH);
+            this.add(SpacerPanelFactory.createVerticalSpacerPanel(10), BorderLayout.SOUTH);
         }
         catch (Exception e)
         {

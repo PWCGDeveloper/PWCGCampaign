@@ -1,9 +1,7 @@
 package pwcg.gui.rofmap.debrief;
 
 import java.awt.BorderLayout;
-import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -12,40 +10,34 @@ import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHome;
-import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.PWCGMonitorBorders;
-import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 
-public class DebriefMissionDescriptionPanel extends AARPanel implements ActionListener
+public class DebriefMissionDescriptionPanel extends ImageResizingPanel implements ActionListener
 {
     private AARCoordinator aarCoordinator;
     private CampaignHome homeGui;
     private Campaign campaign;
 
 	private static final long serialVersionUID = 1L;
-    private JTextArea missionTextArea = new JTextArea();
 
 	public DebriefMissionDescriptionPanel(Campaign campaign, CampaignHome homeGui) 
 	{
-	    super();
+        super("");
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
 	    
         this.homeGui = homeGui;        
         this.campaign = campaign;        
@@ -56,10 +48,11 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
 	{
 		try
 		{
-			this.removeAll();
-	
-			this.add(BorderLayout.WEST, makeButtonPanel());
+	        String imagePath = UiImageResolver.getImageMain("CampaignHome.jpg");
+	        this.setImage(imagePath);
 
+			this.removeAll();	
+			this.add(BorderLayout.WEST, makeButtonPanel());
 			this.add(BorderLayout.CENTER, makeMissionDescriptionPanel());
 		}
 		catch (Exception e)
@@ -71,11 +64,8 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
 
     private JPanel makeButtonPanel() throws PWCGException 
     {
-        String imagePath = UiImageResolver.getImage(campaign, "CombatReportNav.jpg");
-
-        ImageResizingPanel buttonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        buttonPanel.setLayout(new BorderLayout());
-        buttonPanel.setOpaque(false);
+        JPanel navPanel = new JPanel(new BorderLayout());
+        navPanel.setOpaque(false);
 
         JPanel buttonGrid = new JPanel();
         buttonGrid.setLayout(new GridLayout(0,1));
@@ -95,16 +85,14 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
         JButton cancelButton = PWCGButtonFactory.makeMenuButton("Cancel AAR", "Cancel", this);
         buttonGrid.add(cancelButton);
 
-        buttonPanel.add(buttonGrid, BorderLayout.NORTH);
+        navPanel.add(buttonGrid, BorderLayout.NORTH);
         
-        return buttonPanel;
+        return navPanel;
     }
 
     public JPanel makeMissionDescriptionPanel() throws PWCGException  
     {
-        String imagePath = ContextSpecificImages.imagesMisc() + "PilotSelectBrickCenter.jpg";
-        JPanel debriefPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        debriefPanel.setLayout(new BorderLayout());
+        JPanel debriefPanel = new JPanel(new BorderLayout());
         debriefPanel.setOpaque(false);
 
         JPanel missionTextPanel = makeMissionTextArea();
@@ -116,49 +104,11 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
         return debriefPanel;
     }
 
-    private JPanel makeMissionTextArea() throws PWCGException 
+    private JPanel makeMissionTextArea() throws PWCGException
     {
-        JPanel missionTextPanel = new JPanel(new BorderLayout());
-        missionTextPanel.setOpaque(false);
-        
-        Font font = PWCGMonitorFonts.getBriefingChalkboardFont();
-
-        missionTextArea.setFont(font);
-        missionTextArea.setOpaque(false);
-        missionTextArea.setLineWrap(true);
-        missionTextArea.setWrapStyleWord(true);
-        missionTextArea.setForeground(ColorMap.CHALK_FOREGROUND);
-        
-        Insets margins = PWCGMonitorBorders.calculateBorderMargins(50, 35, 65, 35);
-        missionTextArea.setMargin(margins);
-        
-        String missionText = makeMissionText();
-        missionTextArea.setText(missionText);
-        
-        missionTextPanel.add(missionTextArea, BorderLayout.CENTER);
-
-        return missionTextPanel;
-    }
-
-    private String makeMissionText() throws PWCGException
-    {
-        String missionText = "Assigned Personnel:\n";
-        
-        for (SquadronMember pilotInMission : aarCoordinator.getAarContext().getPreliminaryData().getCampaignMembersInMission().getSquadronMemberCollection().values())
-        {            
-            SquadronMember referencePlayer = campaign.findReferencePlayer();
-            if (pilotInMission.getSquadronId() == referencePlayer.getSquadronId())
-            {
-                missionText += "             " + pilotInMission.getNameAndRank();
-                missionText += "\n";
-            }
-        }
-
-        missionText += "\n";
-        missionText += aarCoordinator.getAarContext().getPreliminaryData().getPwcgMissionData().getMissionDescription();
-        
-        return missionText;
-        
+        DebriefDescriptionChalkboard debriefDescriptionChalkboard = new DebriefDescriptionChalkboard(campaign, aarCoordinator);
+        debriefDescriptionChalkboard.makePanel();
+        return debriefDescriptionChalkboard;
     }
 
     @Override
