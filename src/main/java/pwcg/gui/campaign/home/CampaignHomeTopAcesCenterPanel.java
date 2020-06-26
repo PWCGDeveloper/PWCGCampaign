@@ -9,6 +9,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
+import pwcg.gui.utils.SpacerPanelFactory;
 
 public class CampaignHomeTopAcesCenterPanel extends JPanel
 {
@@ -35,7 +36,7 @@ public class CampaignHomeTopAcesCenterPanel extends JPanel
  
             JPanel chalkBoardPanel = createPilotListPanel(acesToDisplay);
             this.add(chalkBoardPanel, BorderLayout.CENTER);
-            this.add(CampaignHomeBottomSpacerBuilder.createLowerSpacerPanel(), BorderLayout.SOUTH);
+            this.add(SpacerPanelFactory.createLowerSpacerPanel(10), BorderLayout.SOUTH);
         }
         catch (Exception e)
         {

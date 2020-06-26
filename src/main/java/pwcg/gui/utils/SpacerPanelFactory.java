@@ -13,7 +13,7 @@ import pwcg.gui.dialogs.PWCGMonitorSupport;
 
 public class SpacerPanelFactory
 {
-    public static JPanel makeSpacerPanel(int percent) throws PWCGException
+    public static JPanel makeSpacerPercentPanel(int percent) throws PWCGException
     {
             JPanel spacerPanel = new JPanel(new BorderLayout());
             spacerPanel.setOpaque(false);
@@ -34,6 +34,20 @@ public class SpacerPanelFactory
             return spacerPanel;
     }
     
+    public static  JPanel createLowerSpacerPanel(int numRows) throws PWCGException
+    {
+        JPanel spacerPanel = new JPanel(new GridLayout(0, 1));
+        spacerPanel.setOpaque(false);
+
+        for (int i = 0; i < numRows; ++i)
+        {
+            JLabel space1 = new JLabel("     ");
+            spacerPanel.add(space1);
+        }
+
+        return spacerPanel;
+    }
+
     public static JPanel makeDocumentSpacerPanel(int pixelsForUI) throws PWCGException
     {
         JPanel spacerPanel = new JPanel(new BorderLayout());

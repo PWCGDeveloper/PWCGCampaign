@@ -78,9 +78,9 @@ public class CampaignPilotPanelSet extends ImageResizingPanel implements ActionL
         String imagePath = ContextSpecificImages.imagesMisc() + "PilotDeskTop.png";
         this.setImage(imagePath);
 
-	    centerPanel = makeCenterPanel();
+        this.add(BorderLayout.WEST, makenavigationPanel());
+        centerPanel = makeCenterPanel();
 	    this.add(BorderLayout.CENTER, centerPanel);
-	    this.add(BorderLayout.WEST, makenavigationPanel());
 	}
 
 	public JPanel makeCenterPanel() throws PWCGException 
@@ -233,7 +233,6 @@ public class CampaignPilotPanelSet extends ImageResizingPanel implements ActionL
 
         Color bg = ColorMap.WOOD_BACKGROUND;
         
-        // Picture
         ImageIcon imageIcon = null;  
         try 
         {
@@ -293,6 +292,38 @@ public class CampaignPilotPanelSet extends ImageResizingPanel implements ActionL
 		return pilotPMedalBoxPanel;
 	}
 
+    public void actionPerformed(ActionEvent ae)
+    {
+        try
+        {
+            String action = ae.getActionCommand();
+            
+            if (action.startsWith("View Pilot Log"))
+            {
+                viewPilotLog(action);
+            }
+            else if (action.equalsIgnoreCase("Change Picture"))
+            {
+                changePilotPicture();
+            }
+            else if (action.startsWith("Open Medal Box"))
+            {
+                openMedalBox(action);
+            }
+            else if (action.startsWith("PilotFinished"))
+            {
+                parent.createCampaignHomeContext();
+                CampaignGuiContextManager.getInstance().popFromContextStack();
+            }
+            
+        }
+        catch (Exception e)
+        {
+            PWCGLogger.logException(e);
+            ErrorDialog.internalError(e.getMessage());
+        }
+    }
+
     private void viewPilotLog(String action) throws PWCGException 
     {
         SoundManager.getInstance().playSound("BookOpen.WAV");
@@ -309,7 +340,7 @@ public class CampaignPilotPanelSet extends ImageResizingPanel implements ActionL
         
         if (pilot != null)
         {
-            CampaignPilotLogPanel pilotLogPanel = new CampaignPilotLogPanel(campaign, pilot);
+            CampaignPilotLogPanelSet pilotLogPanel = new CampaignPilotLogPanelSet(campaign, pilot);
             pilotLogPanel.makePanels();
             
             CampaignGuiContextManager.getInstance().pushToContextStack(pilotLogPanel);
@@ -321,64 +352,36 @@ public class CampaignPilotPanelSet extends ImageResizingPanel implements ActionL
         SquadronMember pilot = UIUtils.getPilotFromAction(campaign, action);
         if (pilot != null)
         {
-            CampaignPilotMedalPanel pilotMedalPanel = new CampaignPilotMedalPanel(campaign, pilot);
+            CampaignMedalPanelSet pilotMedalPanel = new CampaignMedalPanelSet(pilot);
             pilotMedalPanel.makePanels();
-            
             CampaignGuiContextManager.getInstance().pushToContextStack(pilotMedalPanel);
         }
     }
 
-	public void actionPerformed(ActionEvent ae)
-	{
-		try
-		{
-			String action = ae.getActionCommand();
-			
-			if (action.startsWith("View Pilot Log"))
-            {
-                viewPilotLog(action);
-            }
-			else if (action.equalsIgnoreCase("Change Picture"))
-			{
-		        ICountry country = CountryFactory.makeCountryByCountry(pilot.getCountry());
-				String countryName = country.getNationality();
-		        String picPath = ContextSpecificImages.imagesPilotPictures() + countryName;
-				File picDir = new File(picPath);
+    private void changePilotPicture() throws PWCGException
+    {
+        ICountry country = CountryFactory.makeCountryByCountry(pilot.getCountry());
+        String countryName = country.getNationality();
+        String picPath = ContextSpecificImages.imagesPilotPictures() + countryName;
+        File picDir = new File(picPath);
 
-				CampaignChoosePilotPicGUI picChooser = new CampaignChoosePilotPicGUI(picDir);
-				
-				ImagePreviewPanel preview = new ImagePreviewPanel();
-				picChooser.setAccessory(preview);
-				picChooser.addPropertyChangeListener(preview);
-				
-			    int returnVal = picChooser.showOpenDialog(null);
-				
-			    if (returnVal == JFileChooser.APPROVE_OPTION) 
-			    {
-					String name = picChooser.getSelectedFile().getName();
-					pilot.setPicName(name);
-			    }
-			    
-                makePanels();
-                
-                this.add(BorderLayout.CENTER, centerPanel);
-                CampaignGuiContextManager.getInstance().refreshCurrentContext(this);
-			}
-            else if (action.startsWith("Open Medal Box"))
-            {
-                openMedalBox(action);
-            }
-            else if (action.startsWith("PilotFinished"))
-            {
-                parent.createCampaignHomeContext();
-                CampaignGuiContextManager.getInstance().popFromContextStack();
-            }
-			
-		}
-		catch (Exception e)
-		{
-			PWCGLogger.logException(e);
-			ErrorDialog.internalError(e.getMessage());
-		}
-	}
+        CampaignChoosePilotPicGUI picChooser = new CampaignChoosePilotPicGUI(picDir);
+        
+        ImagePreviewPanel preview = new ImagePreviewPanel();
+        picChooser.setAccessory(preview);
+        picChooser.addPropertyChangeListener(preview);
+        
+        int returnVal = picChooser.showOpenDialog(null);
+        
+        if (returnVal == JFileChooser.APPROVE_OPTION) 
+        {
+        	String name = picChooser.getSelectedFile().getName();
+        	pilot.setPicName(name);
+        }
+        
+        makePanels();
+        
+        this.add(BorderLayout.CENTER, centerPanel);
+        CampaignGuiContextManager.getInstance().refreshCurrentContext(this);
+    }
 }

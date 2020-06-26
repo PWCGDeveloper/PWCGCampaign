@@ -74,7 +74,7 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
 
         pilotPanel.add(BorderLayout.NORTH, assignedPilotPanel);
         pilotPanel.add(BorderLayout.CENTER, unassignedPilotPanel);
-        pilotPanel.add(BorderLayout.SOUTH, SpacerPanelFactory.makeSpacerPanel(25));
+        pilotPanel.add(BorderLayout.SOUTH, SpacerPanelFactory.makeSpacerPercentPanel(25));
 
         return pilotPanel;
     }

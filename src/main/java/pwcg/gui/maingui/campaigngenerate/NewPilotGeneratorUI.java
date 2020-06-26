@@ -56,7 +56,7 @@ public class NewPilotGeneratorUI extends ImageResizingPanel implements ActionLis
         try
         {
             this.add(BorderLayout.WEST, makeButtonPanel());
-            this.add(BorderLayout.CENTER, SpacerPanelFactory.makeSpacerPanel(20));
+            this.add(BorderLayout.CENTER, SpacerPanelFactory.makeSpacerPercentPanel(20));
             this.add(BorderLayout.EAST, makeServicePanel());
         }
         catch (Throwable e)

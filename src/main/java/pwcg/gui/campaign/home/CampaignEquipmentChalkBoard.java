@@ -10,6 +10,7 @@ import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
+import pwcg.gui.utils.SpacerPanelFactory;
 
 public class CampaignEquipmentChalkBoard extends JPanel
 {
@@ -39,7 +40,7 @@ public class CampaignEquipmentChalkBoard extends JPanel
             JPanel equipmentPanel = equipmentChalkboardBuilder.createEquipmentListPanel(planesForSquadron);
                     
             this.add(equipmentPanel, BorderLayout.CENTER);
-            this.add(CampaignHomeBottomSpacerBuilder.createLowerSpacerPanel(), BorderLayout.SOUTH);
+            this.add(SpacerPanelFactory.createLowerSpacerPanel(10), BorderLayout.SOUTH);
         }
         catch (Exception e)
         {
