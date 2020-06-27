@@ -7,8 +7,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 import pwcg.aar.ui.events.model.MedalEvent;
 import pwcg.campaign.Campaign;
@@ -23,10 +25,11 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
+import pwcg.gui.dialogs.PWCGMonitorBorders;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.image.ImageIconCache;
-import pwcg.gui.utils.CampaignDocumentPage;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.PWCGButtonFactory;
 
@@ -39,7 +42,7 @@ public class CampaignReportMedalGUI extends JPanel implements ActionListener
 
 	public CampaignReportMedalGUI(Campaign campaign, MedalEvent medalEvent) throws PWCGException
 	{
-	    this.setLayout(new GridLayout(0,1));
+	    this.setLayout(new BorderLayout());
 	    this.setOpaque(false);
 
         this.medalEvent = medalEvent;
@@ -53,10 +56,7 @@ public class CampaignReportMedalGUI extends JPanel implements ActionListener
 		try
 		{
 			JPanel medalAwardPanel = formMedaUI();
-	        this.add(medalAwardPanel);
-
-            this.add(PWCGButtonFactory.makeDummy());
-            this.add(PWCGButtonFactory.makeDummy());
+	        this.add(medalAwardPanel, BorderLayout.CENTER);
 		}
 		catch (Exception e)
 		{
@@ -81,7 +81,7 @@ public class CampaignReportMedalGUI extends JPanel implements ActionListener
         if (medal != null)
         {
             JLabel lMedal = createMedalImage(medal);
-            medalTextAndPilotPicPanel.add(lMedal, BorderLayout.WEST);
+            medalTextAndPilotPicPanel.add(lMedal, BorderLayout.SOUTH);
         }
 
         JPanel tMedal = formMedalTextBox();
@@ -118,12 +118,46 @@ public class CampaignReportMedalGUI extends JPanel implements ActionListener
     {
         String headerText = getHeaderText();
         String bodyText = getBodyText();
-            
-        CampaignDocumentPage campaignDocumentPage = new CampaignDocumentPage();
-        campaignDocumentPage.formDocument(headerText, bodyText);
 
-        return campaignDocumentPage;
+        JPanel medalTextPanel = new JPanel(new BorderLayout());
+        medalTextPanel.setOpaque(false);
+            
+        JComponent textHeaderPanel = formHeaderTextBox(headerText);
+        medalTextPanel.add(textHeaderPanel, BorderLayout.NORTH);
+        
+        JComponent textPanel = formBodyTextBox(bodyText);
+        medalTextPanel.add(textPanel, BorderLayout.CENTER);
+
+        return medalTextPanel;
     }
+    
+    private JComponent formHeaderTextBox(String headerText) throws PWCGException
+    {
+        JTextArea tHeader = new JTextArea();
+        tHeader.setOpaque(false);
+        tHeader.setEditable(false);
+        tHeader.setText(headerText);
+        tHeader.setFont(PWCGMonitorFonts.getDecorativeFont());
+        tHeader.setMargin(PWCGMonitorBorders.calculateBorderMargins(10, 20, 10, 20));
+
+        return tHeader;
+    }
+
+
+    private JComponent formBodyTextBox(String bodyText) throws PWCGException
+    {
+        JTextArea tText = new JTextArea();
+        tText.setOpaque(false);
+        tText.setEditable(false);
+        tText.setLineWrap(true);
+        tText.setWrapStyleWord(true);
+        tText.setText(bodyText);
+        tText.setFont(PWCGMonitorFonts.getTypewriterFont());
+        tText.setMargin(PWCGMonitorBorders.calculateBorderMargins(5, 20, 5, 20));
+
+        return tText;
+    }
+
 
     private String getHeaderText()
     {

@@ -20,6 +20,7 @@ import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.SpacerPanelFactory;
 
 public class AARMainPanel extends ImageResizingPanel implements ActionListener
 {
@@ -76,7 +77,9 @@ public class AARMainPanel extends ImageResizingPanel implements ActionListener
         this.setImage(imagePath);
 
         this.add(BorderLayout.WEST, makeNavigationPanel());
-        resetPanels();
+        resetCenterPanels();
+        this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1500));
+
 	}
 
 	private JPanel makeNavigationPanel() throws PWCGException  
@@ -191,7 +194,7 @@ public class AARMainPanel extends ImageResizingPanel implements ActionListener
         }
     }
 
-	private void resetPanels() 
+	private void resetCenterPanels() 
 	{
 		try
 		{
@@ -229,7 +232,7 @@ public class AARMainPanel extends ImageResizingPanel implements ActionListener
                 
                 --currentPanelIndex;
                 
-                resetPanels();
+                resetCenterPanels();
             }
             if (action.equalsIgnoreCase("Next"))
             {
@@ -238,7 +241,7 @@ public class AARMainPanel extends ImageResizingPanel implements ActionListener
                 
                 ++currentPanelIndex;
                 
-                resetPanels() ;
+                resetCenterPanels() ;
             }
             else if (action.equalsIgnoreCase("Finished"))
             {

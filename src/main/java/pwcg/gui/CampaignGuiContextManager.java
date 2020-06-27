@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.campaign.home.CampaignHome;
+import pwcg.gui.maingui.CampaignMainGUI;
 import pwcg.gui.utils.PWCGFrame;
 
 public class CampaignGuiContextManager
@@ -64,12 +65,23 @@ public class CampaignGuiContextManager
     {
         int index = contextStack.size() - 1;
         JPanel context = contextStack.get(index);
-        while (!(context instanceof CampaignHome))
+        while (!(context instanceof CampaignHome) && index > 1)
         {
             popFromContextStack();
             index = contextStack.size() - 1;
             context = contextStack.get(index);
-        }
-        
+        }        
+    }
+
+    public void backToMain() throws PWCGException
+    {
+        int index = contextStack.size() - 1;
+        JPanel context = contextStack.get(index);
+        while (!(context instanceof CampaignMainGUI) && index > 0)
+        {
+            popFromContextStack();
+            index = contextStack.size() - 1;
+            context = contextStack.get(index);
+        }        
     }
 }

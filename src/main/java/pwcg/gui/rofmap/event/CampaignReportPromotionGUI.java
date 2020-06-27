@@ -28,7 +28,6 @@ public class CampaignReportPromotionGUI extends CampaignDocumentGUI
 
     protected String getHeaderText() throws PWCGException
     {
-        // Promotion text
         Campaign campaign = PWCGContext.getInstance().getCampaign();
         String promotionHeaderText = promotionRecipient.determineService(campaign.getDate()).getName() + "\n\n";
 

@@ -154,7 +154,7 @@ public class CampaignGeneratorPanelSet extends ImageResizingPanel implements Act
             
             if (action.equalsIgnoreCase("Cancel"))
             {
-                CampaignGuiContextManager.getInstance().popFromContextStack();
+                CampaignGuiContextManager.getInstance().backToMain();
             }
             else if (action.equalsIgnoreCase("Complete Campaign Data Entry"))
             {
@@ -189,15 +189,16 @@ public class CampaignGeneratorPanelSet extends ImageResizingPanel implements Act
          
         campaign.open(campaignGeneratorDO.getCampaignName());                    
         PWCGContext.getInstance().setCampaign(campaign);
-        
-        CampaignHome campaignGUI = new CampaignHome (mainGUI, campaign);
-        PWCGFrame.getInstance().setPanel(campaignGUI);
 
         SquadronMembers players = campaign.getPersonnelManager().getAllActivePlayers();
         for (SquadronMember player : players.getSquadronMemberList())
         {
             campaignGeneratorDO.createCoopUserAndPersona(campaign, player);
         }
+        
+        CampaignGuiContextManager.getInstance().backToMain();
+        CampaignHome campaignHome = new CampaignHome (mainGUI, campaign);
+        CampaignGuiContextManager.getInstance().pushToContextStack(campaignHome);
     }
 
     private JPanel makeProfileInfoPanel() throws PWCGException

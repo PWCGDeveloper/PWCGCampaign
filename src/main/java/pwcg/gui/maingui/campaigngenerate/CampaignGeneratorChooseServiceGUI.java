@@ -56,7 +56,6 @@ public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionL
         internalServicePanel.setLayout(new BorderLayout());
         internalServicePanel.setOpaque(false);
 
-		// Make a button for each service
         ButtonGroup serviceButtonGroup = new ButtonGroup();
         
         JPanel servicePanel = new JPanel(new GridLayout(0, 2));
