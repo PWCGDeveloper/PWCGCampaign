@@ -13,25 +13,19 @@ import pwcg.aar.ui.events.model.PromotionEvent;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.rofmap.debrief.IAAREventPanel;
-import pwcg.gui.utils.ImageResizingPanel;
 
-public class AARPromotionPanel extends ImageResizingPanel implements IAAREventPanel
+public class AARPromotionPanel extends AARDocumentPanel
 {
     private static final long serialVersionUID = 1L;
 
     private Campaign campaign;
     private AARCoordinator aarCoordinator;
-    private boolean shouldDisplay = false;
 
     public AARPromotionPanel(Campaign campaign)
 	{
-        super("");
-        this.setLayout(new BorderLayout());
-        this.setOpaque(false);
+        super();
 
         this.campaign = campaign;
         this.aarCoordinator = AARCoordinator.getInstance();
@@ -41,9 +35,6 @@ public class AARPromotionPanel extends ImageResizingPanel implements IAAREventPa
 	{
         try
         {
-            String imagePath = UiImageResolver.getImageMain("document.png");
-            this.setImage(imagePath);
-
             JTabbedPane eventTabPane = createPilotPromotionTab();
             createPostCombatReportTabs(eventTabPane);
             this.add(eventTabPane, BorderLayout.CENTER);
@@ -99,21 +90,4 @@ public class AARPromotionPanel extends ImageResizingPanel implements IAAREventPa
         
         return pilotPromotionGuiList;
 	}
-
-    @Override
-    public void finished()
-    {
-    }
-
-    @Override
-    public boolean isShouldDisplay()
-    {
-        return shouldDisplay;
-    }
-
-    @Override
-    public JPanel getPanel()
-    {
-        return this;
-    }
 }

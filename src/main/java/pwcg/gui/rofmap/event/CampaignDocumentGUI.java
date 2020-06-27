@@ -4,20 +4,16 @@ import java.awt.BorderLayout;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.rofmap.debrief.IAAREventPanel;
 import pwcg.gui.utils.CampaignDocumentPage;
-import pwcg.gui.utils.ImageResizingPanel;
 
-public abstract class CampaignDocumentGUI extends ImageResizingPanel implements IAAREventPanel
+public abstract class CampaignDocumentGUI extends AARDocumentPanel
 {
     private static final long serialVersionUID = 1L;
-    protected boolean shouldDisplay = false;
 
     public CampaignDocumentGUI()
     {
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
@@ -28,9 +24,6 @@ public abstract class CampaignDocumentGUI extends ImageResizingPanel implements 
     {
         try
         {
-            String imagePath = UiImageResolver.getImageMain("document.png");
-            this.setImage(imagePath);
-
             String headerText = getHeaderText();
             String bodyText = getBodyText();
 
@@ -49,10 +42,4 @@ public abstract class CampaignDocumentGUI extends ImageResizingPanel implements 
     protected abstract String getHeaderText() throws PWCGException;
 
     protected abstract String getBodyText() throws PWCGException;
-
-
-    @Override
-    public void finished()
-    {
-    }
 }

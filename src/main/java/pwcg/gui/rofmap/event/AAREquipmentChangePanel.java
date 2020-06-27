@@ -14,25 +14,18 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.rofmap.debrief.IAAREventPanel;
-import pwcg.gui.utils.ImageResizingPanel;
 
-public class AAREquipmentChangePanel extends ImageResizingPanel implements IAAREventPanel
+public class AAREquipmentChangePanel extends AARDocumentPanel
 {
     private static final long serialVersionUID = 1L;
     private AARCoordinator aarCoordinator;
     private Campaign campaign;
-    private boolean shouldDisplay = false;
 
     public AAREquipmentChangePanel(Campaign campaign)
 	{
-        super("");
-        this.setLayout(new BorderLayout());
-        this.setOpaque(false);
-
+        super();
         this.aarCoordinator = AARCoordinator.getInstance();
         this.campaign = campaign;
 	}
@@ -41,9 +34,6 @@ public class AAREquipmentChangePanel extends ImageResizingPanel implements IAARE
 	{
         try
         {
-            String imagePath = UiImageResolver.getImageMain("document.png");
-            this.setImage(imagePath);
-
             JTabbedPane eventTabPane = createEquipmentLostTab();
             createPostCombatReportTabs(eventTabPane);            
             this.add(eventTabPane, BorderLayout.CENTER);
@@ -100,21 +90,4 @@ public class AAREquipmentChangePanel extends ImageResizingPanel implements IAARE
         
         return equipmentLostGuiList;
 	}
-
-    @Override
-    public void finished()
-    {
-    }
-
-    @Override
-    public boolean isShouldDisplay()
-    {
-        return shouldDisplay;
-    }
-
-    @Override
-    public JPanel getPanel()
-    {
-        return this;
-    }
 }

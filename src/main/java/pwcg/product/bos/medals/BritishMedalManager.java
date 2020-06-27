@@ -23,15 +23,15 @@ public class BritishMedalManager extends BoSMedalManager
     {
         super(campaign);
 
-        medals.put(PILOTS_BADGE, new Medal("Pilots Badge", "gb_pb.jpg"));
-        medals.put(DFC, new Medal("Distinguished Flying Cross", "gb_dfc.jpg"));
-        medals.put(DFC_BAR_1, new Medal("Distinguished Flying Cross With Bar", "gb_dfc_bar.jpg"));
-        medals.put(DFC_BAR_2, new Medal("Distinguished Flying Cross With 2 Bars", "gb_dfc_bar2.jpg"));
-        medals.put(DSO, new Medal("Distinguished Service Order", "gb_dso.jpg"));
-        medals.put(DSO_BAR, new Medal("Distinguished Service Order With Bar", "gb_dso_bar.jpg"));
-        medals.put(VC, new Medal("Victoria Cross", "gb_vc.jpg"));
+        medals.put(PILOTS_BADGE, new Medal("Pilots Badge", "gb_pilots_badge.png"));
+        medals.put(DFC, new Medal("Distinguished Flying Cross", "gb_distinguished_flying_cross.png"));
+        medals.put(DFC_BAR_1, new Medal("Distinguished Flying Cross With Bar", "gb_distinguished_flying_cross_bar.png"));
+        medals.put(DFC_BAR_2, new Medal("Distinguished Flying Cross With 2 Bars", "gb_distinguished_flying_cross_2_bars.png"));
+        medals.put(DSO, new Medal("Distinguished Service Order", "gb_distinguished_service_order.png"));
+        medals.put(DSO_BAR, new Medal("Distinguished Service Order With Bar", "gb_distinguished_service_order_bar.png"));
+        medals.put(VC, new Medal("Victoria Cross", "gb_victoria_cross.png"));
 
-        medals.put(WOUND_STRIPE, new Medal("Wound Stripe", "gb_WoundChev.jpg"));
+        medals.put(WOUND_STRIPE, new Medal("Wound Stripe", "gb_wound_chevron.png"));
     }
 
     protected Medal awardWings(SquadronMember pilot)

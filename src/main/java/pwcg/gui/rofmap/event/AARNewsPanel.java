@@ -18,24 +18,21 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.rofmap.debrief.IAAREventPanel;
 import pwcg.gui.utils.ImageResizingPanel;
 
-public class AARNewsPanel extends ImageResizingPanel implements IAAREventPanel
+public class AARNewsPanel extends AARDocumentPanel
 {
     private static final long serialVersionUID = 1L;
     private AARCoordinator aarCoordinator;
     private Campaign campaign;
-    private boolean shouldDisplay = false;
 
     private HashMap<String, ImageResizingPanel> newsGuiList = new HashMap<String, ImageResizingPanel>();
 
     public AARNewsPanel(Campaign campaign)
 	{
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
@@ -47,9 +44,6 @@ public class AARNewsPanel extends ImageResizingPanel implements IAAREventPanel
 	{
         try
         {
-            String imagePath = UiImageResolver.getImageMain("document.png");
-            this.setImage(imagePath);
-
             JTabbedPane eventTabPane = createNewsEventTab();
             createPostCombatReportTabs(eventTabPane);
             this.add(eventTabPane, BorderLayout.CENTER);
@@ -134,22 +128,5 @@ public class AARNewsPanel extends ImageResizingPanel implements IAAREventPanel
 	            newsGuiList.put(tabName, newspaperGui);
         	}
 		}
-    }
-
-    @Override
-    public void finished()
-    {
-    }
-
-    @Override
-    public boolean isShouldDisplay()
-    {
-        return shouldDisplay;
-    }
-
-    @Override
-    public JPanel getPanel()
-    {
-        return this;
     }
 }

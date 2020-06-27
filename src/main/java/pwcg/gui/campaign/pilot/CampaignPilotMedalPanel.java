@@ -23,9 +23,8 @@ import pwcg.gui.image.ImageIconCache;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 
-public class CampaignPilotMedalPanel extends JPanel
+public class CampaignPilotMedalPanel extends ImageResizingPanel
 {
     private static final long serialVersionUID = 1L;
 
@@ -34,25 +33,29 @@ public class CampaignPilotMedalPanel extends JPanel
 
 	public CampaignPilotMedalPanel(SquadronMember pilot)
 	{
+        super("");
         this.setLayout(new BorderLayout());
+        this.setOpaque(false);
+
         this.medalsPerRow = calcMedalsPerRow();
         this.pilot = pilot;
 	}
 
 	public void makePanels() throws PWCGException  
 	{
+        SoundManager.getInstance().playSound("MedalCaseOpen.WAV");
+
+        String imagePath = ContextSpecificImages.imagesMedals() + "OpenMedalBox.png";
+        this.setImage(imagePath);
+        this.setBorder(BorderFactory.createEmptyBorder(75,75,75,75));
+
 	    this.add(BorderLayout.CENTER, makeCenterPanel());
 	}
 
 	private JPanel makeCenterPanel() throws PWCGException 
 	{
-        SoundManager.getInstance().playSound("MedalCaseOpen.WAV");
-
-        String imagePath = ContextSpecificImages.imagesMedals() + "MedalBox.jpg";
-        ImageResizingPanel campaignPilotMedalPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        campaignPilotMedalPanel.setLayout(new BorderLayout());
+        JPanel campaignPilotMedalPanel = new JPanel(new BorderLayout());
         campaignPilotMedalPanel.setOpaque(false);
-        campaignPilotMedalPanel.setBorder(BorderFactory.createEmptyBorder(75,75,75,75));
 
 		JPanel pilotMedalPanel = makePilotMedalPanel();
 		campaignPilotMedalPanel.add(pilotMedalPanel, BorderLayout.NORTH);

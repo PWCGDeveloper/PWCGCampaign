@@ -22,17 +22,15 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.image.ImageIconCache;
 import pwcg.gui.utils.CampaignDocumentPage;
 import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignReportMedalGUI extends ImageResizingPanel implements ActionListener
+public class CampaignReportMedalGUI extends JPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -41,19 +39,12 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
 
 	public CampaignReportMedalGUI(Campaign campaign, MedalEvent medalEvent) throws PWCGException
 	{
-		super(ContextSpecificImages.imagesMedals() + "medalAwardAllied.jpg");
+	    this.setLayout(new GridLayout(0,1));
+	    this.setOpaque(false);
 
         this.medalEvent = medalEvent;
 		this.medalRecipient = campaign.getPersonnelManager().getAnyCampaignMember(medalEvent.getPilotSerialNumber());
-		
-        ICountry country = CountryFactory.makeCountryByCountry(medalRecipient.getCountry());
-        if (country.getSide() == Side.AXIS)
-        {
-            imagePath = ContextSpecificImages.imagesMedals() + "medalAwardGerman.jpg";
-            setImage(imagePath);
-        }
-		setLayout(new GridLayout(0,1));
-	
+			
 		makeGUI();		
 	}
 	
@@ -96,9 +87,6 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
         JPanel tMedal = formMedalTextBox();
         medalTextAndPilotPicPanel.add(tMedal, BorderLayout.CENTER);
 
-        JLabel pilotLabel = formPilotPicture();
-        medalTextAndPilotPicPanel.add(pilotLabel, BorderLayout.EAST);
-
         return medalTextAndPilotPicPanel;
     }
 
@@ -124,33 +112,6 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
             leftRightBorder = 40 + ((Double.valueOf(PWCGMonitorSupport.getPWCGFrameSize().getWidth()).intValue() - 1200) / 4);
         }
         return leftRightBorder;
-    }
-
-    private JLabel formPilotPicture()
-    {
-        JLabel pilotLabel = new JLabel();
-        
-        SquadronMember pilot = medalRecipient;
-        if (pilot != null)
-        {
-            ImageIcon imageIcon = pilot.determinePilotPicture();  
-            if (imageIcon != null)
-            {
-                pilotLabel = new JLabel(imageIcon);
-                pilotLabel.setOpaque(false);
-                pilotLabel.setSize(imageIcon.getIconWidth(), imageIcon.getIconHeight());
-            }
-            else
-            {
-                PWCGLogger.log(LogLevel.ERROR, "Failed to get picture for " + pilot.getSerialNumber() + " at " + pilot.getPicName());
-            }
-        }
-        else
-        {
-            PWCGLogger.log(LogLevel.ERROR, "No pilot for medal event"); 
-        }
-
-        return pilotLabel;
     }
 
     private JPanel formMedalTextBox() throws PWCGException

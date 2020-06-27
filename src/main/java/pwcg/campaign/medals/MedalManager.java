@@ -47,7 +47,7 @@ public abstract class MedalManager implements IMedalManager
 			for (MedalManager manager : allManagers)
 			{
 				medal = manager.getMedalFromManager(type);
-				if (medal == null)
+				if (medal != null)
 				{
 					break;
 				}

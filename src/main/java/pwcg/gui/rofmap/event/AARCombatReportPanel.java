@@ -14,10 +14,8 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.display.model.CombatReportBuilder;
-import pwcg.gui.rofmap.debrief.IAAREventPanel;
-import pwcg.gui.utils.ImageResizingPanel;
 
-public class AARCombatReportPanel extends ImageResizingPanel implements IAAREventPanel
+public class AARCombatReportPanel extends AARDocumentPanel
 {
     private static final long serialVersionUID = 1L;
 
@@ -28,7 +26,7 @@ public class AARCombatReportPanel extends ImageResizingPanel implements IAAREven
 
 	public AARCombatReportPanel()
 	{
-        super("");
+        super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 

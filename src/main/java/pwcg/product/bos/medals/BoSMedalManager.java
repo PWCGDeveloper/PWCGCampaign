@@ -55,6 +55,8 @@ public abstract class BoSMedalManager extends MedalManager
         medalManagers.add(new GermanMedalManager(campaign));
         medalManagers.add(new RussianMedalManager(campaign));
         medalManagers.add(new ItalianMedalManager(campaign));
+        medalManagers.add(new AmericanMedalManager(campaign));
+        medalManagers.add(new BritishMedalManager(campaign));
         
         
         return medalManagers;

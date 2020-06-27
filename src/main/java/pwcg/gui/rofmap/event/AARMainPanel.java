@@ -14,10 +14,10 @@ import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.rofmap.debrief.IAAREventPanel;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
@@ -135,7 +135,7 @@ public class AARMainPanel extends ImageResizingPanel implements ActionListener
             AARPilotLossPanel pilotsLostPanelSet = new AARPilotLossPanel(campaign);
             allEventPanels.add(pilotsLostPanelSet);
             
-            AAROutOfMissionVictoryPanel outOfMissionVictoryPanel = new AAROutOfMissionVictoryPanel(campaign);
+            AARMissionVictoryPanel outOfMissionVictoryPanel = new AARMissionVictoryPanel(campaign);
             allEventPanels.add(outOfMissionVictoryPanel);
             
             AAREquipmentChangePanel equipmentChangePanelSet = new AAREquipmentChangePanel(campaign);
@@ -244,8 +244,9 @@ public class AARMainPanel extends ImageResizingPanel implements ActionListener
             {
                 IAAREventPanel thisPanel = eventPanelsToDisplay.get(currentPanelIndex);
                 thisPanel.finished();
-                
+                CampaignGuiContextManager.getInstance().backToCampaignHome();
                 home.createCampaignHomeContext();
+                CampaignGuiContextManager.getInstance().refreshCurrentContext(home);
             }
         }
         catch (Exception e)

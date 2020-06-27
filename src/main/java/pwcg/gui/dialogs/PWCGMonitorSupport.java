@@ -24,11 +24,11 @@ public class PWCGMonitorSupport
         {
             return MonitorSize.FRAME_VERY_SMALL;
         }
-        else if (PWCGMonitorSupport.getPWCGFrameSize().width <= 1600)
+        else if (PWCGMonitorSupport.getPWCGFrameSize().width < 1600)
         {
             return MonitorSize.FRAME_SMALL;
         }
-        else if (PWCGMonitorSupport.getPWCGFrameSize().width <= 2000)
+        else if (PWCGMonitorSupport.getPWCGFrameSize().width < 2000)
         {
             return MonitorSize.FRAME_MEDIUM;
         }
@@ -44,11 +44,11 @@ public class PWCGMonitorSupport
         {
             return MonitorSize.FRAME_VERY_SMALL;
         }
-        else if (PWCGMonitorSupport.getPWCGFrameSize().height <= 900)
+        else if (PWCGMonitorSupport.getPWCGFrameSize().height < 900)
         {
             return MonitorSize.FRAME_SMALL;
         }
-        else if (PWCGMonitorSupport.getPWCGFrameSize().height <= 1100)
+        else if (PWCGMonitorSupport.getPWCGFrameSize().height < 1100)
         {
             return MonitorSize.FRAME_MEDIUM;
         }

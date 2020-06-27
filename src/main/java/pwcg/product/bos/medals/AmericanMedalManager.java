@@ -21,14 +21,14 @@ public class AmericanMedalManager extends BoSMedalManager
     {
         super(campaign);
 	        
-        medals.put(PILOTS_BADGE, new Medal ("Pilots Badge",                                 "us_pb.jpg"));
-		medals.put(BRONZE_STAR, new Medal ("Bronze Star",	                                "us_bs.jpg"));
-		medals.put(DISTINGUISHED_FLYING_CROSS, new Medal ("Distinguished Flying Cross",	    "us_dfc.jpg"));
-        medals.put(SILVER_STAR, new Medal ("Silver Star",                                   "us_ss.jpg"));
-        medals.put(DISTINGUISHED_SERVICE_CROSS, new Medal ("Distinguished Service Cross",   "us_dsc.jpg"));
-		medals.put(MEDAL_OF_HONOR, new Medal ("Medal of Honor",							    "us_moh.jpg"));
+        medals.put(PILOTS_BADGE, new Medal ("Pilots Badge",                                 "us_pilots_badge.png"));
+		medals.put(BRONZE_STAR, new Medal ("Bronze Star",	                                "us_bronze_star.png"));
+		medals.put(DISTINGUISHED_FLYING_CROSS, new Medal ("Distinguished Flying Cross",	    "us_distinguished_flying_cross.png"));
+        medals.put(SILVER_STAR, new Medal ("Silver Star",                                   "us_silver_star.png"));
+        medals.put(DISTINGUISHED_SERVICE_CROSS, new Medal ("Distinguished Service Cross",   "us_distinguished_service_cross.png"));
+		medals.put(MEDAL_OF_HONOR, new Medal ("Medal of Honor",							    "us_medal_of_honor.png"));
 		
-		medals.put(PURPLE_HEART, new Medal ("Purple Heart", 							    "us_ph.jpg"));
+		medals.put(PURPLE_HEART, new Medal ("Purple Heart", 							    "us_purple_heart.png"));
 	} 
 
     protected Medal awardWings(SquadronMember pilot) 

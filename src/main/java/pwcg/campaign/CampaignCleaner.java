@@ -6,7 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.factory.CountryFactory;
+import pwcg.campaign.medals.Medal;
+import pwcg.campaign.medals.MedalManager;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.PilotNames;
@@ -32,8 +36,9 @@ public class CampaignCleaner
         removeDuplicatePilots();
         checkDuplicatePilots();
         checkPilotKeys();
+        cleanMedals();
     }
-    
+
     private void removeUnwantedSquadronFiles() throws PWCGException
     {
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
@@ -227,4 +232,42 @@ public class CampaignCleaner
         return fixesNeeded;
     }
 
+    
+    private void cleanMedals() throws PWCGException
+    {
+        CampaignPersonnelManager personnelManager = campaign.getPersonnelManager();
+        Map<Integer, SquadronPersonnel> allPersonnel = personnelManager.getCampaignPersonnel();
+        
+        for (SquadronPersonnel personnel : allPersonnel.values())
+        {
+            for (SquadronMember squadronMember : personnel.getSquadronMembers().getSquadronMemberList())
+            {
+                for (Medal medal : squadronMember.getMedals())
+                {
+                    convertMedal(squadronMember, squadronMember.determineCountry(medal.getMedalDate()), medal);
+                }
+            }
+        }
+        
+        for (Ace ace : campaign.getPersonnelManager().getCampaignAces().getAllCampaignAces().values())
+        {
+            for (Medal medal : ace.getMedals())
+            {
+                convertMedal(ace, CountryFactory.makeCountryByCountry(ace.getCountry()), medal);
+            }
+        }
+    }
+
+    private void convertMedal(SquadronMember squadronMember, ICountry country, Medal medal) throws PWCGException
+    {
+        Medal newMedal = MedalManager.getMedalFromAnyManager(country, campaign, medal.getMedalName());
+        if (newMedal != null)
+        {
+            medal.setMedalImage(newMedal.getMedalImage());
+        }
+        else
+        {
+            System.out.println("Could not find medal for " + medal.getMedalName());
+        }
+    }
 }
