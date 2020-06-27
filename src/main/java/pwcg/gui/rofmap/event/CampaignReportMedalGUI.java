@@ -1,7 +1,6 @@
 package pwcg.gui.rofmap.event;
 
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -31,7 +30,6 @@ import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.image.ImageIconCache;
 import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.gui.utils.PWCGButtonFactory;
 
 public class CampaignReportMedalGUI extends JPanel implements ActionListener
 {

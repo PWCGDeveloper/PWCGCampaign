@@ -34,7 +34,6 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
-import pwcg.gui.utils.PWCGFrame;
 
 public class CampaignGeneratorPanelSet extends ImageResizingPanel implements ActionListener
 {    
