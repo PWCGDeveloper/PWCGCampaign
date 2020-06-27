@@ -1,5 +1,7 @@
 package pwcg.gui.rofmap.event;
 
+import javax.swing.JPanel;
+
 import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -17,6 +19,7 @@ public class AARTransferPanel extends CampaignDocumentGUI
     public AARTransferPanel(Campaign campaign, TransferEvent transferEvent)
     {
         super();
+
         this.campaign = campaign;        
         this.transferEvent = transferEvent;        
         makePanel() ;
@@ -59,9 +62,20 @@ public class AARTransferPanel extends CampaignDocumentGUI
         return transferMessage;
     }
 
-
     @Override
     public void finished()
     {
+    }
+
+    @Override
+    public boolean isShouldDisplay()
+    {
+        return shouldDisplay;
+    }
+
+    @Override
+    public JPanel getPanel()
+    {
+        return this;
     }
 }

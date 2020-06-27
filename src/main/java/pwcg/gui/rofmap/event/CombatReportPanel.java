@@ -24,11 +24,9 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorBorders;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ScrollBarWrapper;
 
-public class CombatReportPanel extends ImageResizingPanel implements ActionListener
+public class CombatReportPanel extends JPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
 	private CombatReport combatReport;
@@ -38,14 +36,17 @@ public class CombatReportPanel extends ImageResizingPanel implements ActionListe
 
 	public CombatReportPanel(CombatReport combatReport)
 	{
-		super(ContextSpecificImages.imagesMisc() + "paperRotated.jpg");
-		setLayout(new BorderLayout());
+		super();
+		this.setLayout(new BorderLayout());
+		this.setOpaque(false);
 		this.combatReport = combatReport;
 	}
 	
 	public CombatReportPanel()
 	{
-		super(ContextSpecificImages.imagesMisc() + "paperRotated.jpg");
+        super();
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
 		setLayout(new BorderLayout());
 	}
 	

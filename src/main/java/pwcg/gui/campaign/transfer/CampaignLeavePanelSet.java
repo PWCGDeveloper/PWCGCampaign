@@ -71,8 +71,8 @@ public class CampaignLeavePanelSet extends ImageResizingPanel implements ActionL
 
 	private JPanel makeLeaveLeftPanel() throws PWCGException  
 	{
-		JPanel leaverPanel = new JPanel(new BorderLayout());
-		leaverPanel.setOpaque(false);
+		JPanel navPanel = new JPanel(new BorderLayout());
+		navPanel.setOpaque(false);
 
 		JPanel leaveButtonPanel = new JPanel(new GridLayout(0,1));
 		leaveButtonPanel.setOpaque(false);
@@ -86,9 +86,9 @@ public class CampaignLeavePanelSet extends ImageResizingPanel implements ActionL
         JButton rejectButton = PWCGButtonFactory.makeMenuButton("Reject Leave", "Reject Leave", this);
         leaveButtonPanel.add(rejectButton);
 		
-		leaverPanel.add(leaveButtonPanel, BorderLayout.NORTH);
+		navPanel.add(leaveButtonPanel, BorderLayout.NORTH);
 		
-		return leaverPanel;
+		return navPanel;
 	}
 
 	private JPanel makeLeaveCenterPanel() throws PWCGException  

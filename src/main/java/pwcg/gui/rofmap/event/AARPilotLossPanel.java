@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import pwcg.aar.AARCoordinator;
@@ -14,21 +15,25 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.rofmap.debrief.AAREventPanel;
-import pwcg.gui.utils.ContextSpecificImages;
+import pwcg.gui.rofmap.debrief.IAAREventPanel;
 import pwcg.gui.utils.ImageResizingPanel;
 
-public class AARPilotLossPanel extends AAREventPanel
+public class AARPilotLossPanel extends ImageResizingPanel implements IAAREventPanel
 {
     private static final long serialVersionUID = 1L;
     private AARCoordinator aarCoordinator;
     private Campaign campaign;
+    private boolean shouldDisplay = false;
 
     public AARPilotLossPanel(Campaign campaign)
 	{
-        super();
+        super("");
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
+
         this.aarCoordinator = AARCoordinator.getInstance();
         this.campaign = campaign;
 	}
@@ -37,8 +42,12 @@ public class AARPilotLossPanel extends AAREventPanel
 	{
         try
         {
+            String imagePath = UiImageResolver.getImageMain("document.png");
+            this.setImage(imagePath);
+
             JTabbedPane eventTabPane = createPilotsLostTab();
             createPostCombatReportTabs(eventTabPane);
+            this.add(eventTabPane, BorderLayout.CENTER);
         }
         catch (Exception e)
         {
@@ -49,8 +58,9 @@ public class AARPilotLossPanel extends AAREventPanel
     
     private void createPostCombatReportTabs(JTabbedPane eventTabPane)
     {
-        ImageResizingPanel postCombatPanel = new ImageResizingPanel(ContextSpecificImages.imagesMisc() + "PaperPart.jpg");
-        postCombatPanel.setLayout(new BorderLayout());
+        JPanel postCombatPanel = new JPanel(new BorderLayout());
+        postCombatPanel.setOpaque(false);
+
         postCombatPanel.add(eventTabPane, BorderLayout.CENTER);
         this.add(postCombatPanel, BorderLayout.CENTER);
     }
@@ -105,9 +115,20 @@ public class AARPilotLossPanel extends AAREventPanel
         return pilotLostGuiList;
 	}
 
-	
     @Override
     public void finished()
     {
+    }
+
+    @Override
+    public boolean isShouldDisplay()
+    {
+        return shouldDisplay;
+    }
+
+    @Override
+    public JPanel getPanel()
+    {
+        return this;
     }
 }

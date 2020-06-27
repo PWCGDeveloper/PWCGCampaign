@@ -1,5 +1,7 @@
 package pwcg.gui.rofmap.event;
 
+import javax.swing.JPanel;
+
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadron.Squadron;
@@ -35,5 +37,17 @@ public class CampaignReportLeaveGUI extends CampaignDocumentGUI
     @Override
     public void finished()
     {
+    }
+
+    @Override
+    public boolean isShouldDisplay()
+    {
+        return shouldDisplay;
+    }
+
+    @Override
+    public JPanel getPanel()
+    {
+        return this;
     }
 }

@@ -17,24 +17,23 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.rofmap.debrief.AAREventPanel;
+import pwcg.gui.rofmap.debrief.IAAREventPanel;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class AARMainPanel extends JPanel implements ActionListener
+public class AARMainPanel extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     
     private Campaign campaign;
     private CampaignHome home = null;
 
-    private List<AAREventPanel> eventPanelsToDisplay = new ArrayList<AAREventPanel>();
+    private List<IAAREventPanel> eventPanelsToDisplay = new ArrayList<>();
     
     private JButton prevButton = null;
     private JButton nextButton = null;
     private JButton finishedButton = null;
-    private JPanel centerPanel;
+    private IAAREventPanel centerPanel;
 
     private int currentPanelIndex = 0;
     private EventPanelReason reasonToAdvanceTime = EventPanelReason.EVENT_PANEL_REASON_AAR;
@@ -49,7 +48,9 @@ public class AARMainPanel extends JPanel implements ActionListener
     
     public AARMainPanel(Campaign campaign, CampaignHome home, EventPanelReason reasonToAdvanceTime)
     {
-        super();
+        super("");
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
 
         this.campaign = campaign;
         this.home = home;
@@ -59,7 +60,9 @@ public class AARMainPanel extends JPanel implements ActionListener
     
     public AARMainPanel(Campaign campaign, CampaignHome home, EventPanelReason reasonToAdvanceTime, TransferEvent transferEventForTimeDueToTransfer)
     {
-        super();
+        super("");
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
 
         this.campaign = campaign;
         this.home = home;
@@ -69,18 +72,17 @@ public class AARMainPanel extends JPanel implements ActionListener
 
 	public void makePanels() throws PWCGException  
 	{        
-        this.add(BorderLayout.WEST, makeNavigationPanel());
+        String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+        this.setImage(imagePath);
 
+        this.add(BorderLayout.WEST, makeNavigationPanel());
         resetPanels();
 	}
 
 	private JPanel makeNavigationPanel() throws PWCGException  
 	{
-        String imagePath = UiImageResolver.getImage(campaign, "MissionResultsNav.jpg");
-
-		ImageResizingPanel resultPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-		resultPanel.setLayout(new BorderLayout());
-		resultPanel.setOpaque(false);
+	    JPanel navPanel = new JPanel(new BorderLayout());
+	    navPanel.setOpaque(false);
 
 		JPanel buttonPanel = new JPanel(new GridLayout(0,1));
 		buttonPanel.setOpaque(false);
@@ -94,9 +96,9 @@ public class AARMainPanel extends JPanel implements ActionListener
         finishedButton = PWCGButtonFactory.makeMenuButton("Finished", "Finished", this);
         buttonPanel.add(finishedButton);
 		
-		resultPanel.add(buttonPanel, BorderLayout.NORTH);
+        navPanel.add(buttonPanel, BorderLayout.NORTH);
 		
-		return resultPanel;
+		return navPanel;
 	}
 
     private void enableButtonsAsNeeded() throws PWCGException  
@@ -120,15 +122,13 @@ public class AARMainPanel extends JPanel implements ActionListener
         }
     }
 
-    private JPanel makeCenterPanels() 
+    private void makeAarEventPanels() 
     {
-        ImageResizingPanel postCombatPanel = null;
-
         try
         {
             eventPanelsToDisplay.clear();
             
-            List<AAREventPanel> allEventPanels = new ArrayList<AAREventPanel>();
+            List<IAAREventPanel> allEventPanels = new ArrayList<>();
 
             createPanelSetBasedOnReasonForAdvancingTime(allEventPanels);
             
@@ -156,7 +156,7 @@ public class AARMainPanel extends JPanel implements ActionListener
             AARNewsPanel newsPanelSet = new AARNewsPanel(campaign);
             allEventPanels.add(newsPanelSet);
             
-            for (AAREventPanel eventPanel : allEventPanels)
+            for (IAAREventPanel eventPanel : allEventPanels)
             {
                 eventPanel.makePanel();
                 if (eventPanel.isShouldDisplay())
@@ -170,11 +170,9 @@ public class AARMainPanel extends JPanel implements ActionListener
             PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
-        
-        return postCombatPanel;
     }
 
-    private void createPanelSetBasedOnReasonForAdvancingTime(List<AAREventPanel> allEventPanels)
+    private void createPanelSetBasedOnReasonForAdvancingTime(List<IAAREventPanel> allEventPanels)
     {
         if (reasonToAdvanceTime == EventPanelReason.EVENT_PANEL_REASON_AAR)
         {
@@ -199,19 +197,17 @@ public class AARMainPanel extends JPanel implements ActionListener
 		{
             if (centerPanel != null)
             {
-                centerPanel.removeAll();
+                this.remove(centerPanel.getPanel());
             }
 
-            centerPanel = makeCenterPanels();
-            
-		    JPanel nextPanel = eventPanelsToDisplay.get(currentPanelIndex);
-
-		    this.add(BorderLayout.CENTER, nextPanel);
+            makeAarEventPanels();            
+		    centerPanel = eventPanelsToDisplay.get(currentPanelIndex);
+		    this.add(centerPanel.getPanel(), BorderLayout.CENTER);
 		    
 		    enableButtonsAsNeeded();
-		    
-	        centerPanel.setVisible(false);
-	        centerPanel.setVisible(true);
+
+	        this.revalidate();
+	        this.repaint();
 		}
 		catch (Exception e)
 		{
@@ -228,7 +224,7 @@ public class AARMainPanel extends JPanel implements ActionListener
 
             if (action.equalsIgnoreCase("Previous"))
             {
-                AAREventPanel thisPanel = eventPanelsToDisplay.get(currentPanelIndex);
+                IAAREventPanel thisPanel = eventPanelsToDisplay.get(currentPanelIndex);
                 thisPanel.finished();
                 
                 --currentPanelIndex;
@@ -237,7 +233,7 @@ public class AARMainPanel extends JPanel implements ActionListener
             }
             if (action.equalsIgnoreCase("Next"))
             {
-                AAREventPanel thisPanel = eventPanelsToDisplay.get(currentPanelIndex);
+                IAAREventPanel thisPanel = eventPanelsToDisplay.get(currentPanelIndex);
                 thisPanel.finished();
                 
                 ++currentPanelIndex;
@@ -246,7 +242,7 @@ public class AARMainPanel extends JPanel implements ActionListener
             }
             else if (action.equalsIgnoreCase("Finished"))
             {
-                AAREventPanel thisPanel = eventPanelsToDisplay.get(currentPanelIndex);
+                IAAREventPanel thisPanel = eventPanelsToDisplay.get(currentPanelIndex);
                 thisPanel.finished();
                 
                 home.createCampaignHomeContext();

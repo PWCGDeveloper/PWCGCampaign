@@ -55,7 +55,7 @@ public class AARPanelSet extends ImageResizingPanel implements ActionListener
 
     private JPanel makeCenterPanel() throws PWCGException  
     {
-        AARClaimPanels aarClaimPanel = new AARClaimPanels(campaign);
+        aarClaimPanel = new AARClaimPanels(campaign);
         aarClaimPanel.makePanels();
 
         int numSpacers = calcNumSpacers();

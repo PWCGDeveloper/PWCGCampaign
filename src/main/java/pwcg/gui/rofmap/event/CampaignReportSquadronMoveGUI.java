@@ -1,5 +1,7 @@
 package pwcg.gui.rofmap.event;
 
+import javax.swing.JPanel;
+
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -34,9 +36,20 @@ public class CampaignReportSquadronMoveGUI extends CampaignDocumentGUI
         return squadronMoveText;
 	}
 
-
     @Override
     public void finished()
     {
+    }
+
+    @Override
+    public boolean isShouldDisplay()
+    {
+        return shouldDisplay;
+    }
+
+    @Override
+    public JPanel getPanel()
+    {
+        return this;
     }
 }
