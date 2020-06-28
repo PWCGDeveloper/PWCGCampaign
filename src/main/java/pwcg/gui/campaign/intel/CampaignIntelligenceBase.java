@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -34,6 +33,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PwcgBorderFactory;
 
 public abstract class CampaignIntelligenceBase extends JPanel implements ActionListener
 {
@@ -77,7 +77,7 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
         squeezerPanel.setLayout(new BorderLayout());
         String imagePath = UiImageResolver.getImageMisc("document.png");
         squeezerPanel.setImage(imagePath);
-        squeezerPanel.setBorder(BorderFactory.createEmptyBorder(50,50,50,50));
+        this.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 
         squadronsByRoleContainer = new ImageResizingPanel("");
         squadronsByRoleContainer.setOpaque(false);
@@ -105,7 +105,7 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
         intelTextPanel.setLayout(new BorderLayout());
         String imagePath = UiImageResolver.getImageMisc("document.png");
         intelTextPanel.setImage(imagePath);
-        intelTextPanel.setBorder(BorderFactory.createEmptyBorder(50,50,50,50));
+        this.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 
         Font font = PWCGMonitorFonts.getTypewriterFont();
         squadronIntelText = new JTextArea();
@@ -114,9 +114,6 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
         squadronIntelText.setLineWrap(false);
         squadronIntelText.setWrapStyleWord(true);
         squadronIntelText.setText("");
-
-        //JScrollPane scrollPane = new JScrollPane(squadronInteltext);
-        //scrollPane.setOpaque(false);
         
         intelTextPanel.add(squadronIntelText);
         

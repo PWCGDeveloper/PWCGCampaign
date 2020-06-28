@@ -9,7 +9,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -30,10 +29,10 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
-import pwcg.gui.utils.DocumentBorderCalculator;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
 public class CampaignLeavePanelSet extends ImageResizingPanel implements ActionListener
@@ -96,7 +95,6 @@ public class CampaignLeavePanelSet extends ImageResizingPanel implements ActionL
         JPanel leaveCenterPanel = new JPanel();
         leaveCenterPanel.setOpaque(false);
         leaveCenterPanel.setLayout(new BorderLayout());
-        leaveCenterPanel.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
 
         JPanel leaveNotification = makeLeaveLetterPanel();
         leaveCenterPanel.add(leaveNotification, BorderLayout.CENTER);
@@ -108,8 +106,7 @@ public class CampaignLeavePanelSet extends ImageResizingPanel implements ActionL
     {
         String imagePath = UiImageResolver.getImageMisc("document.png");
         ImageResizingPanel leaveLetterPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        int topBorder = DocumentBorderCalculator.calculateTopBorder();
-        leaveLetterPanel.setBorder(BorderFactory.createEmptyBorder(topBorder,30,30,30));
+        leaveLetterPanel.setBorder(PwcgBorderFactory.createDocumentBorderWithExtraSpaceFromTop());
 
         leaveLetterPanel.setLayout(new BorderLayout());
         leaveLetterPanel.setOpaque(false);

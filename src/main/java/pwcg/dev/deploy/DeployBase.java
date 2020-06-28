@@ -150,7 +150,6 @@ public abstract class DeployBase
         HashMap<String, Object> unwantedFileTypes = new HashMap<String, Object>();
 
         unwantedFileTypes.put(".zip", null);
-        unwantedFileTypes.put(".xcf", null);
         unwantedFileTypes.put(".7z", null);
         unwantedFileTypes.put(".bat", null);
         unwantedFileTypes.put(".gradle", null);
@@ -198,7 +197,7 @@ public abstract class DeployBase
         directoriesToCopy.put("American", null);
 
         directoriesToCopy.put("Main", null);
-        directoriesToCopy.put("Generic", null);
+        directoriesToCopy.put("Resources", null);
 
         // Under Medals
         directoriesToCopy.put("Allied", null);

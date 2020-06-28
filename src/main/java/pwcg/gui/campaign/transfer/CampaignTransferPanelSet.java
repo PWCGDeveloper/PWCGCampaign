@@ -44,10 +44,10 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
-import pwcg.gui.utils.DocumentBorderCalculator;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
 public class CampaignTransferPanelSet extends ImageResizingPanel implements ActionListener
@@ -135,8 +135,7 @@ public class CampaignTransferPanelSet extends ImageResizingPanel implements Acti
         String imagePath = UiImageResolver.getImageMisc("document.png");
         transferCenterPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         transferCenterPanel.setLayout(new BorderLayout());
-        int topBorder = DocumentBorderCalculator.calculateTopBorder();
-        transferCenterPanel.setBorder(BorderFactory.createEmptyBorder(topBorder,30,30,30));
+        transferCenterPanel.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 
         Color buttonBG = ColorMap.PAPER_BACKGROUND;
 
@@ -150,15 +149,6 @@ public class CampaignTransferPanelSet extends ImageResizingPanel implements Acti
         List<Component> components = new ArrayList<Component>();
         int rowNum = 0;
 
-        int numDummyRows = 5;
-        for (int i = 0; i < numDummyRows; ++i)
-        {
-            components.clear();
-            components.add(PWCGButtonFactory.makeDummy());
-            rowNum = addRow(transferPanel, components, rowNum);
-        }
-
-        // Transfer label
         JLabel lName = new JLabel(squadronMemberToTransfer.getNameAndRank(), JLabel.LEFT);
         lName.setOpaque(false);
         lName.setFont(font);
@@ -166,32 +156,21 @@ public class CampaignTransferPanelSet extends ImageResizingPanel implements Acti
         components.add(lName);
         rowNum = addRow(transferPanel, components, rowNum);
 
-        // A dummy row
         components.clear();
         components.add(PWCGButtonFactory.makeDummy());
         rowNum = addRow(transferPanel, components, rowNum);
 
-        // Transfer Service
         rowNum = makeServiceChooser(buttonBG, font, transferPanel, components, rowNum);
         
-        // A dummy row
         components.clear();
         components.add(PWCGButtonFactory.makeDummy());
         rowNum = addRow(transferPanel, components, rowNum);
 
-
-        // Transfer role
         rowNum = makeRoleChooser(buttonBG, font, transferPanel, components, rowNum);
-        
-        // A dummy row
-        components.clear();
-        components.add(PWCGButtonFactory.makeDummy());
-        rowNum = addRow(transferPanel, components, rowNum);
         
         transferCenterPanel.add(transferPanel, BorderLayout.NORTH);
         
            
-        // Squadron info
         JPanel squadronPanel = createSquadronInfoPanel ();
         transferCenterPanel.add(squadronPanel, BorderLayout.SOUTH);
 

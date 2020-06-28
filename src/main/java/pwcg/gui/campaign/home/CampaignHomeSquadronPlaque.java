@@ -38,7 +38,7 @@ public class CampaignHomeSquadronPlaque extends JPanel
 
     public void makeDescPanel(int squadronId) throws PWCGException 
     {
-        String imagePath = UiImageResolver.getImageMisc("Campaign");
+        String imagePath = UiImageResolver.getImageMisc("Plaque.jpg");
         ImageResizingPanel plaquePanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         plaquePanel.setLayout(new BorderLayout());
 

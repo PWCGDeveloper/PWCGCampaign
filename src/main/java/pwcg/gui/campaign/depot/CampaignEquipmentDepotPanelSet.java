@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -24,6 +23,7 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
 public class CampaignEquipmentDepotPanelSet extends ImageResizingPanel implements ActionListener
@@ -76,7 +76,7 @@ public class CampaignEquipmentDepotPanelSet extends ImageResizingPanel implement
         equipmentDepotPanel.setLayout(new BorderLayout());
         String imagePath = UiImageResolver.getImageMisc("document.png");
         equipmentDepotPanel.setImage(imagePath);
-        equipmentDepotPanel.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
+        equipmentDepotPanel.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
         
         Color tabBG = ColorMap.PAPER_BACKGROUND;
         tabs.setBackground(tabBG);

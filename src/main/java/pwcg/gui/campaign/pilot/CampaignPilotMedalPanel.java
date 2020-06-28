@@ -23,6 +23,7 @@ import pwcg.gui.image.ImageIconCache;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.PwcgBorderFactory;
 
 public class CampaignPilotMedalPanel extends ImageResizingPanel
 {
@@ -47,7 +48,7 @@ public class CampaignPilotMedalPanel extends ImageResizingPanel
 
         String imagePath = ContextSpecificImages.imagesMedals() + "OpenMedalBox.png";
         this.setImage(imagePath);
-        this.setBorder(BorderFactory.createEmptyBorder(75,75,75,75));
+        this.setBorder(PwcgBorderFactory.createMedalBoxBorder());
 
 	    this.add(BorderLayout.CENTER, makeCenterPanel());
 	}

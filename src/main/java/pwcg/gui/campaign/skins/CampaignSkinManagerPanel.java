@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.Ace;
@@ -46,6 +47,7 @@ public class CampaignSkinManagerPanel extends ImageResizingPanel implements Acti
 
     public void makePanels() throws PWCGException 
     {
+        PWCGContext.getInstance().getSkinManager().initialize();
         String imagePath = UiImageResolver.getImageMain("TableTop.jpg");
         this.setImage(imagePath);
 

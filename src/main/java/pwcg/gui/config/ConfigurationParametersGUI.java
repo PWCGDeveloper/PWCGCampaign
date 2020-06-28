@@ -77,6 +77,7 @@ public class ConfigurationParametersGUI extends ImageResizingPanel
 			textField.setOpaque(false);
 			textField.setFont(font);
 			textField.setText(item.getValue());
+			textField.setSize(100, 30);
 			descPanel.add(textField);
 			
             JLabel spacerRight = new JLabel("");

@@ -1,0 +1,62 @@
+package pwcg.gui.utils;
+
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
+
+import pwcg.gui.dialogs.PWCGMonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
+
+public class PwcgBorderFactory
+{
+    public static Border createStandardDocumentBorder()
+    {
+        MonitorSize monitorSize = PWCGMonitorSupport.getFrameHeight();
+        if (monitorSize == MonitorSize.FRAME_LARGE)
+        {
+            return BorderFactory.createEmptyBorder(30,30,80,120);
+        }
+        else if (monitorSize == MonitorSize.FRAME_MEDIUM)
+        {
+            return BorderFactory.createEmptyBorder(20,20,50,70);
+        }
+        else 
+        {
+            return BorderFactory.createEmptyBorder(15,15,40,60);
+        }
+    }
+    
+    public static Border createDocumentBorderWithExtraSpaceFromTop()
+    {
+        MonitorSize monitorSize = PWCGMonitorSupport.getFrameHeight();
+        if (monitorSize == MonitorSize.FRAME_LARGE)
+        {
+            return BorderFactory.createEmptyBorder(300,30,80,120);
+        }
+        else if (monitorSize == MonitorSize.FRAME_MEDIUM)
+        {
+            return BorderFactory.createEmptyBorder(200,20,50,70);
+        }
+        else 
+        {
+            return BorderFactory.createEmptyBorder(100,15,40,60);
+        }
+    }
+    
+    public static Border createMedalBoxBorder()
+    {
+        MonitorSize monitorSize = PWCGMonitorSupport.getFrameHeight();
+        if (monitorSize == MonitorSize.FRAME_LARGE)
+        {
+            return BorderFactory.createEmptyBorder(75,75,100,100);
+        }
+        else if (monitorSize == MonitorSize.FRAME_MEDIUM)
+        {
+            return BorderFactory.createEmptyBorder(50,50,75,75);
+        }
+        else 
+        {
+            return BorderFactory.createEmptyBorder(30,30,50,50);
+        }
+    }
+    
+}

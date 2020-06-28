@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -34,7 +33,6 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.PWCGMonitorBorders;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -76,14 +74,13 @@ public class CampaignSkinManagerForPilotPanel extends ImageResizingPanel impleme
 
         String imagePath = UiImageResolver.getImageMisc("document.png");
         this.setImage(imagePath);
+        this.setBorder(BorderFactory.createEmptyBorder(30, 30, 50, 70));
         
         this.campaign = campaign;
         this.skinSessionManager = skinSessionManager;
 
         setLayout(new BorderLayout());
-        Insets margins = PWCGMonitorBorders.calculateBorderMargins(10,10,10,10);
-        setBorder(BorderFactory.createEmptyBorder(margins.top, margins.left, margins.bottom, margins.right)); 
-	}
+ 	}
 
     public void makePanels() throws PWCGException  
     {
@@ -447,7 +444,6 @@ public class CampaignSkinManagerForPilotPanel extends ImageResizingPanel impleme
          JPanel pilotSkinAssignmentGrid = new JPanel (new GridLayout(0,1));
          pilotSkinAssignmentGrid.setOpaque(false);
 
-         // Add a dummy row for space
          for (String planeName  : skinSessionManager.getPilotSkinSet().getAllSkins().keySet())
          {             
              Skin skin = skinSessionManager.getSkinForPilotAndPlane(planeName);
@@ -464,7 +460,6 @@ public class CampaignSkinManagerForPilotPanel extends ImageResizingPanel impleme
              pilotSkinAssignmentGrid.add(skinInfoGrid);
          }
          
-         // Wrap the grid in a scroll pane
          ScrollBarWrapper.createScrollPaneWithMax(pilotSkinAssignmentPanel, pilotSkinAssignmentGrid, skinSessionManager.getPilotSkinSet().getAllSkins().size(), 10);
 
          return pilotSkinAssignmentPanel;

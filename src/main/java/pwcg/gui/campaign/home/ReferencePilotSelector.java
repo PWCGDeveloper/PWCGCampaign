@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -27,6 +26,7 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
 public class ReferencePilotSelector extends ImageResizingPanel implements ActionListener
@@ -100,7 +100,7 @@ public class ReferencePilotSelector extends ImageResizingPanel implements Action
         ImageResizingPanel centerPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         centerPanel.setLayout(new BorderLayout());
         centerPanel.add(gridPanel, BorderLayout.NORTH);
-        centerPanel.setBorder(BorderFactory.createEmptyBorder(150,50,50,100));
+        this.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 
         return centerPanel;
     }

@@ -7,7 +7,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ButtonModel;
 import javax.swing.JButton;
@@ -29,6 +28,7 @@ import pwcg.gui.utils.CommonUIActions;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
 public class CampaignConfigurationSimpleGUI extends ImageResizingPanel implements ActionListener
@@ -160,7 +160,7 @@ public class CampaignConfigurationSimpleGUI extends ImageResizingPanel implement
         ImageResizingPanel simpleConfigButtonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         simpleConfigButtonPanel.setImage(imagePath);
         simpleConfigButtonPanel.setLayout(new GridLayout(0,1));
-        simpleConfigButtonPanel.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
+        simpleConfigButtonPanel.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 
 		simpleConfigButtonPanel.add(airButtonPanel);
         simpleConfigButtonPanel.add(groundButtonPanel);

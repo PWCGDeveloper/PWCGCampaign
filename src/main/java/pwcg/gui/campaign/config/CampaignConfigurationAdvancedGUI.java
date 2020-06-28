@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -34,6 +33,8 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PwcgBorderFactory;
+import pwcg.gui.utils.SpacerPanelFactory;
 import pwcg.gui.utils.ToolTipManager;
 
 public class CampaignConfigurationAdvancedGUI extends ImageResizingPanel implements ActionListener
@@ -95,49 +96,46 @@ public class CampaignConfigurationAdvancedGUI extends ImageResizingPanel impleme
 	{		
         String imagePath = UiImageResolver.getImageMisc("document.png");
 		ImageResizingPanel blankPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-		blankPanel.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
+		blankPanel.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 		blankPanel.setLayout(new BorderLayout());
 		return blankPanel;
 	}
 
 	public JPanel makeCategoryPanel() throws PWCGException  
 	{
+        JPanel configSelectionPanel = new JPanel(new BorderLayout());
+        configSelectionPanel.setOpaque(false);
+        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        buttonPanel.setOpaque(false);
+
+        JLabel label = PWCGButtonFactory.makeMenuLabelLarge("Advanced Configuration Categories:");
+        buttonPanel.add(label);
+        
+        buttonPanel.add(makeButton("Campaign Preferences", "Fine tune campaign event probabilities"));
+        buttonPanel.add(makeButton("Flight", "Set AI preferences"));
+        buttonPanel.add(makeButton("Mission AI", "Set AI preferences"));
+        buttonPanel.add(makeButton("Mission Ground Objects", "Set density of ground objects"));
+        buttonPanel.add(makeButton("Fighter Mission Types", "Set odds of flying different kinds of fighter missions"));
+        buttonPanel.add(makeButton("Bomber Mission Types", "Set odds of flying different kinds of bombing missions"));
+        buttonPanel.add(makeButton("Recon Mission Types", "Set odds of flying different kinds of recon missions"));
+        buttonPanel.add(makeButton("Transport Mission Types", "Set odds of flying different kinds of transport missions"));
+        buttonPanel.add(makeButton("Target Types", "Set odds of attacking different target types"));
+        buttonPanel.add(makeButton("Aircraft Numbers", "How many planes are in the sky during a mission"));
+        buttonPanel.add(makeButton("Mission Limits", "Set items that may affect mission performance"));
+        buttonPanel.add(makeButton("Weather", "Set weather preferences"));
+        
+        add (buttonPanel);
+
+        configSelectionPanel.add(buttonPanel, BorderLayout.NORTH);
+
+        JPanel spacePanel = SpacerPanelFactory.makeDocumentSpacerPanel(2000);
+        
         JPanel configPanel = new JPanel(new BorderLayout());
-		configPanel.setOpaque(false);
+        configPanel.setOpaque(false);
+        configPanel.add(configSelectionPanel, BorderLayout.CENTER);
+        configPanel.add(spacePanel, BorderLayout.WEST);
 
-		try
-		{
-			JPanel buttonPanel = new JPanel(new GridLayout(0,1));
-			buttonPanel.setOpaque(false);
-
-	        JLabel label = PWCGButtonFactory.makeMenuLabelLarge("Advanced Configuration Categories:");
-			buttonPanel.add(label);
-			
-			buttonPanel.add(makeButton("Campaign Preferences", "Fine tune campaign event probabilities"));
-			buttonPanel.add(makeButton("Flight", "Set AI preferences"));
-			buttonPanel.add(makeButton("Mission AI", "Set AI preferences"));
-			buttonPanel.add(makeButton("Mission Ground Objects", "Set density of ground objects"));
-            buttonPanel.add(makeButton("Fighter Mission Types", "Set odds of flying different kinds of fighter missions"));
-            buttonPanel.add(makeButton("Bomber Mission Types", "Set odds of flying different kinds of bombing missions"));
-            buttonPanel.add(makeButton("Recon Mission Types", "Set odds of flying different kinds of recon missions"));
-            buttonPanel.add(makeButton("Transport Mission Types", "Set odds of flying different kinds of transport missions"));
-            buttonPanel.add(makeButton("Target Types", "Set odds of attacking different target types"));
-			buttonPanel.add(makeButton("Aircraft Numbers", "How many planes are in the sky during a mission"));
-			buttonPanel.add(makeButton("Mission Limits", "Set items that may affect mission performance"));
-            buttonPanel.add(makeButton("Weather", "Set weather preferences"));
-			
-			add (buttonPanel);
-
-			configPanel.add(buttonPanel, BorderLayout.NORTH);
-			
-		} 
-		catch (Exception e)
-		{
-			PWCGLogger.logException(e);
-			ErrorDialog.internalError(e.getMessage());
-		}
-
-		return configPanel;
+        return configPanel;
 	}
 
 	private JLabel makeLabel(String labelText) throws PWCGException

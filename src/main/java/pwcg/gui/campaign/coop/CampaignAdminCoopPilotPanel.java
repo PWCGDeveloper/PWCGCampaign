@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -29,6 +28,7 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 
 public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements ActionListener
@@ -53,7 +53,7 @@ public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements A
         {
             String imagePath = UiImageResolver.getImageMisc("document.png");
             this.setImage(imagePath);
-            this.setBorder(BorderFactory.createEmptyBorder(150,40,40,150));
+            this.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 
             JPanel centerPanel = makeDisplay();
             this.add(centerPanel, BorderLayout.NORTH);
@@ -69,7 +69,7 @@ public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements A
     {
         loadCoopRecords();
 
-        JPanel recordListPanel = new JPanel(new GridLayout(0, 4, 10, 5));
+        JPanel recordListPanel = new JPanel(new GridLayout(0, 4));
         recordListPanel.setOpaque(false);
 
         JPanel recordListHolderPanel = new JPanel();

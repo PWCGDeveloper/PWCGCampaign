@@ -22,10 +22,13 @@ import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.campaign.transfer.CampaignTransferPanelSet;
 import pwcg.gui.dialogs.ConfirmDialog;
 import pwcg.gui.dialogs.ErrorDialog;
+import pwcg.gui.dialogs.PWCGMonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.maingui.campaigngenerate.NewPilotGeneratorUI;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.SpacerPanelFactory;
 
 public class CampaignAdminCoopPilotPanelSet extends ImageResizingPanel implements ActionListener
 {
@@ -87,8 +90,8 @@ public class CampaignAdminCoopPilotPanelSet extends ImageResizingPanel implement
 
     public JPanel makeCoopAdminActionSelectPanel() throws PWCGException  
     {
-        JPanel configPanel = new JPanel(new BorderLayout());
-        configPanel.setOpaque(false);
+        JPanel actionSelectionPanel = new JPanel(new BorderLayout());
+        actionSelectionPanel.setOpaque(false);
 
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
@@ -103,9 +106,24 @@ public class CampaignAdminCoopPilotPanelSet extends ImageResizingPanel implement
         
         add (buttonPanel);
 
-        configPanel.add(buttonPanel, BorderLayout.NORTH);
-        
-        return configPanel;
+        actionSelectionPanel.add(buttonPanel, BorderLayout.NORTH);
+
+        if (PWCGMonitorSupport.getFrameWidth() == MonitorSize.FRAME_LARGE)
+        {
+            JPanel spacePanel = SpacerPanelFactory.makeDocumentSpacerPanel(2000);
+            
+            JPanel actionPanel = new JPanel(new BorderLayout());
+            actionPanel.setOpaque(false);
+            actionPanel.add(actionSelectionPanel, BorderLayout.CENTER);
+            actionPanel.add(spacePanel, BorderLayout.WEST);
+            
+            return actionPanel;
+        }
+        else
+        {
+            return actionSelectionPanel;
+        }
+
     }
 
     private JButton makeActionButton(String buttonText) throws PWCGException 
