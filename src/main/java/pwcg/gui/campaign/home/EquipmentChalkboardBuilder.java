@@ -43,7 +43,7 @@ public class EquipmentChalkboardBuilder extends JPanel
         constraints.ipady = 3;
         GridBagLayout equipmentLayout = new GridBagLayout();
         
-        String imagePath = UiImageResolver.getImageMain("chalkboard.png");
+        String imagePath = UiImageResolver.getImageMisc("chalkboard.png");
         ImageResizingPanel equipmentChalkboardPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         equipmentChalkboardPanel.setOpaque(false);
         equipmentChalkboardPanel.setLayout(equipmentLayout);

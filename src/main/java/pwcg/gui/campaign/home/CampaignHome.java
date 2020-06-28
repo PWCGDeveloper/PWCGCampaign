@@ -204,7 +204,7 @@ public class CampaignHome extends ImageResizingPanel implements ActionListener
     }
     
     public void createNewContext(JPanel centerPanel, JPanel rightPanel) throws PWCGException
-    {
+    {        
         pwcgThreePanel.setCenterPanel(centerPanel);
         pwcgThreePanel.setRightPanel(rightPanel);
         CampaignGuiContextManager.getInstance().refreshCurrentContext(this);

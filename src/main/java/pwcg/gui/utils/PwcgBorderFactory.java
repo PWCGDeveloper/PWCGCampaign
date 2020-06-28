@@ -59,4 +59,21 @@ public class PwcgBorderFactory
         }
     }
     
+    public static Border createCampaignHomeChalkboardBoxBorder()
+    {
+        MonitorSize monitorSize = PWCGMonitorSupport.getFrameHeight();
+        if (monitorSize == MonitorSize.FRAME_LARGE)
+        {
+            return BorderFactory.createEmptyBorder(75,75,100,100);
+        }
+        else if (monitorSize == MonitorSize.FRAME_MEDIUM)
+        {
+            return BorderFactory.createEmptyBorder(30,30,50,50);
+        }
+        else 
+        {
+            return BorderFactory.createEmptyBorder(20,20,40,40);
+        }
+    }
+    
 }

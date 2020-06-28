@@ -9,6 +9,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
+import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
 public class CampaignHomeTopAcesCenterPanel extends JPanel
@@ -36,7 +37,9 @@ public class CampaignHomeTopAcesCenterPanel extends JPanel
  
             JPanel chalkBoardPanel = createPilotListPanel(acesToDisplay);
             this.add(chalkBoardPanel, BorderLayout.CENTER);
-            this.add(SpacerPanelFactory.createVerticalSpacerPanel(10), BorderLayout.SOUTH);
+            this.setBorder(PwcgBorderFactory.createCampaignHomeChalkboardBoxBorder());
+            
+            this.add(SpacerPanelFactory.createVerticalSpacerPanel(5), BorderLayout.SOUTH);
         }
         catch (Exception e)
         {
