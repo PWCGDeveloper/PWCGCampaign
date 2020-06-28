@@ -48,7 +48,7 @@ public class DebriefMissionDescriptionPanel extends ImageResizingPanel implement
 	{
 		try
 		{
-	        String imagePath = UiImageResolver.getImageMain("CampaignHome.jpg");
+	        String imagePath = UiImageResolver.getImageMain("BrickWall.jpg");
 	        this.setImage(imagePath);
 
 			this.removeAll();	

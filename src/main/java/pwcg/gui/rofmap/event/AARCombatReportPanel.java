@@ -39,7 +39,7 @@ public class AARCombatReportPanel extends AARDocumentPanel
 	{
         try
         {
-            String imagePath = UiImageResolver.getImageMain("document.png");
+            String imagePath = UiImageResolver.getImageMisc("document.png");
             this.setImage(imagePath);
 
             createCombatReportGUI();

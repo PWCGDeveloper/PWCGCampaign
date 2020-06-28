@@ -28,7 +28,6 @@ import pwcg.gui.dialogs.PWCGMonitorBorders;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.sound.SoundManager;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -70,7 +69,7 @@ public class CampaignJournalPanelSet extends ImageResizingPanel implements Actio
 
     public void makePanels() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+        String imagePath = UiImageResolver.getImageMain("TableTop.jpg");
         this.setImage(imagePath);
 
         calculateLinesPerPage();
@@ -135,7 +134,7 @@ public class CampaignJournalPanelSet extends ImageResizingPanel implements Actio
 
     private JPanel  makeLogCenterPanel() throws PWCGException  
     {
-        String imagePath = ContextSpecificImages.imagesMisc() + "PilotLog.jpg";
+        String imagePath = UiImageResolver.getImageMisc("OpenJournal.png");
         ImageResizingPanel journalCenterPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         journalCenterPanel.setLayout(new BorderLayout());
         journalCenterPanel.setOpaque(false);
@@ -148,13 +147,7 @@ public class CampaignJournalPanelSet extends ImageResizingPanel implements Actio
         
         return journalCenterPanel;
     }
- 
-    
-    /**
-     * @return
-     * @throws PWCGException 
-     * @
-     */
+
     private void makeIndexPages() throws PWCGException  
     {
         indexPages.clear();
@@ -166,34 +159,17 @@ public class CampaignJournalPanelSet extends ImageResizingPanel implements Actio
         JPanel indexPanel = new JPanel();
         indexPanel.setLayout(new GridLayout(0,4));
         indexPanel.setOpaque(false);
-
         indexBorderPanel.add(indexPanel, BorderLayout.NORTH);
 
-        for (int i = 0; i < 4; ++i)
-        {
-            indexPanel.add(PWCGButtonFactory.makeDummy());
-            indexPanel.add(PWCGButtonFactory.makeDummy());
-            indexPanel.add(PWCGButtonFactory.makeDummy());
-            indexPanel.add(PWCGButtonFactory.makeDummy());
-        }
+        addSpaceToTopOfIndexPage(indexPanel);
         
         
         int numEntries = 0;
         for (String journalKey :  journalReports.keySet())
         {
-            indexPanel.add(PWCGButtonFactory.makeDummy());
-            
-            Date date = DateUtils.getDateYYYYMMDD(journalKey);
-            String buttonText = DateUtils.getDateStringDashDelimitedYYYYMMDD(date);
-            JButton indexButton = PWCGButtonFactory.makePaperButton(buttonText, journalKey, this);
-            indexPanel.add(indexButton);
-
-            indexPanel.add(PWCGButtonFactory.makeDummy());
-            indexPanel.add(PWCGButtonFactory.makeDummy());
-            
+            makeJournalIndexEntry(indexPanel, journalKey);
             ++numEntries;
             
-            // Make a new page
             if (numEntries > linesPerPage)
             {
                 int pageNum = indexPages.size();
@@ -207,32 +183,49 @@ public class CampaignJournalPanelSet extends ImageResizingPanel implements Actio
                 indexPanel.setLayout(new GridLayout(0,4));
                 indexPanel.setOpaque(false);
                 
+                addSpaceToTopOfIndexPage(indexPanel);
+
                 indexBorderPanel.add(indexPanel, BorderLayout.NORTH);
 
                 numEntries = 0;
             }
         }
-        
 
         int pageNum = indexPages.size();
         indexPages.put(pageNum, indexBorderPanel);
     }
 
-    
-    /**
-     * @return
-     * @throws PWCGException 
-     * @
-     */
+    private void addSpaceToTopOfIndexPage(JPanel indexPanel)
+    {
+        for (int i = 0; i < 2; ++i)
+        {
+            indexPanel.add(PWCGButtonFactory.makeDummy());
+            indexPanel.add(PWCGButtonFactory.makeDummy());
+            indexPanel.add(PWCGButtonFactory.makeDummy());
+            indexPanel.add(PWCGButtonFactory.makeDummy());
+        }
+    }
+
+    private void makeJournalIndexEntry(JPanel indexPanel, String journalKey) throws PWCGException
+    {
+        indexPanel.add(PWCGButtonFactory.makeDummy());
+        
+        Date date = DateUtils.getDateYYYYMMDD(journalKey);
+        String buttonText = DateUtils.getDateStringDashDelimitedYYYYMMDD(date);
+        JButton indexButton = PWCGButtonFactory.makePaperButton(buttonText, journalKey, this);
+        indexPanel.add(indexButton);
+
+        indexPanel.add(PWCGButtonFactory.makeDummy());
+        indexPanel.add(PWCGButtonFactory.makeDummy());
+    }
+
     private void makePages() throws PWCGException  
     {
         journalPagesGridPanel.removeAll();
         
-        // Causes narrative to be saved and cleared
         saveNarrativeChanges();
         activeCampaignJournals.clear();
 
-        // Clear the left and right of the UI
         if (leftpage != null)
         {
             leftpage.removeAll();
@@ -245,7 +238,6 @@ public class CampaignJournalPanelSet extends ImageResizingPanel implements Actio
             rightpage = null;
         }
         
-        // Make the new pages
         leftpage = makePage (pageNum);
         rightpage = makePage (pageNum+1);
 
@@ -288,7 +280,6 @@ public class CampaignJournalPanelSet extends ImageResizingPanel implements Actio
             journalBorderPanel.setLayout(new BorderLayout());
             journalBorderPanel.setOpaque(false);
             
-            // Set the border for left and right pages
             if (pageNum%2 == 0)
             {
                 Insets margins = PWCGMonitorBorders.calculateBorderMargins(60,80,60,20);
@@ -317,9 +308,6 @@ public class CampaignJournalPanelSet extends ImageResizingPanel implements Actio
         return null;
     }
 
-    /**
-     * @param ae
-     */
     public void actionPerformed(ActionEvent ae)
     {
         try
@@ -352,9 +340,6 @@ public class CampaignJournalPanelSet extends ImageResizingPanel implements Actio
         }
     }
 
-    /**
-     * @throws PWCGException
-     */
     private void previousPage() throws PWCGException
     {
         SoundManager.getInstance().playSound("PageTurn.WAV");
@@ -363,9 +348,6 @@ public class CampaignJournalPanelSet extends ImageResizingPanel implements Actio
         refreshPages();
     }
 
-    /**
-     * @throws PWCGException
-     */
     private void nextPage() throws PWCGException
     {
         SoundManager.getInstance().playSound("PageTurn.WAV");
@@ -374,27 +356,16 @@ public class CampaignJournalPanelSet extends ImageResizingPanel implements Actio
         refreshPages();
     }
 
-
-
-    /**
-     * Go directly to the page of a report
-     * 
-     * @param action
-     * @throws PWCGException
-     */
     private void directToPage(String action) throws PWCGException
     {
-        // Request to go directly to the page
         if (journalReports.containsKey(action))
         {
-            // Work backwards from the journal key to the page
             for (int thisPageNum : journalReportKeysByPage.keySet())
             {
                 String journalKey = journalReportKeysByPage.get(thisPageNum);
                 if (journalKey.equals(action))
                 {
                     pageNum = thisPageNum;
-                    // Odd numbered page is always the first page;
                     if ((pageNum % 2 ) != 0)
                     {
                         pageNum -= 1;
@@ -417,18 +388,18 @@ public class CampaignJournalPanelSet extends ImageResizingPanel implements Actio
     private void calculateLinesPerPage()
     {
         MonitorSize monitorSize = PWCGMonitorSupport.getFrameHeight();
-        linesPerPage = 55;
+        linesPerPage = 28;
         if (monitorSize == MonitorSize.FRAME_MEDIUM)
         {
-            linesPerPage = 45;
+            linesPerPage = 23;
         }
         else if (monitorSize == MonitorSize.FRAME_SMALL)
         {
-            linesPerPage = 35;
+            linesPerPage = 18;
         }
         else if (monitorSize == MonitorSize.FRAME_VERY_SMALL)
         {
-            linesPerPage = 25;
+            linesPerPage = 12;
         }
     }
 

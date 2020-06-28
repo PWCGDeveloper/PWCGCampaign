@@ -58,7 +58,7 @@ public class CoopPersonaChooser extends ImageResizingPanel implements ActionList
     {
         try
         {
-            String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+            String imagePath = UiImageResolver.getImageMain("TableTop.jpg");
             this.setImage(imagePath);
 
         	coopPersonaAccept = new CoopPersonaChooserPanel(campaign, this);

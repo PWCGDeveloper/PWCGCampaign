@@ -46,7 +46,7 @@ public class CoopAdminGui extends ImageResizingPanel implements ActionListener
     {
         try
         {        	
-            String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+            String imagePath = UiImageResolver.getImageMain("TableTop.jpg");
             this.setImage(imagePath);
 
             pwcgThreePanel.setLeftPanel(makeNavigatePanel());
@@ -62,7 +62,7 @@ public class CoopAdminGui extends ImageResizingPanel implements ActionListener
 
 	public JPanel makeBlankCenterPanel() throws PWCGException  
     {       
-        String imagePath = UiImageResolver.getImageMain("document.png");
+        String imagePath = UiImageResolver.getImageMisc("document.png");
         ImageResizingPanel blankPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         blankPanel.setLayout(new BorderLayout());
                 

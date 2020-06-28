@@ -26,7 +26,7 @@ import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignDeletePanelSet extends JPanel implements ActionListener
+public class CampaignDeletePanelSet extends ImageResizingPanel implements ActionListener
 {    
     private static final long serialVersionUID = 1L;
     
@@ -35,8 +35,10 @@ public class CampaignDeletePanelSet extends JPanel implements ActionListener
 
     public CampaignDeletePanelSet(CampaignMainGUI parent)
     {
-        super();
+        super("");
         this.setLayout(new BorderLayout());
+        this.setOpaque(false);
+
         this.parent = parent;
     }
 
@@ -44,6 +46,9 @@ public class CampaignDeletePanelSet extends JPanel implements ActionListener
     {
         try
         {
+            String imagePath = UiImageResolver.getImageMain("CampaignGenFullScreen.jpg");
+            this.setImage(imagePath);
+
             this.add(BorderLayout.WEST, makeButtonPanel());
             this.add(BorderLayout.CENTER, makeCampaignSelectPanel());
         }
@@ -56,15 +61,12 @@ public class CampaignDeletePanelSet extends JPanel implements ActionListener
 
     private JPanel makeButtonPanel() throws PWCGException
     {
-        String imagePath = UiImageResolver.getImageMain("CampaignDeleteNav.jpg");
-        
-        ImageResizingPanel configPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        configPanel.setLayout(new BorderLayout());
-        configPanel.setOpaque(true);
-        
+        JPanel navPanel = new JPanel(new BorderLayout());
+        navPanel.setOpaque(false);
+
         JPanel buttonPanel = new JPanel(new GridLayout(6,1));
         buttonPanel.setOpaque(false);
-
+         
         JButton createCampaignButton = PWCGButtonFactory.makeMenuButton("Delete Selected Campaign", "Delete", this);
         buttonPanel.add(createCampaignButton);
         
@@ -75,14 +77,14 @@ public class CampaignDeletePanelSet extends JPanel implements ActionListener
         JButton cancelChanges = PWCGButtonFactory.makeMenuButton("Cancel", "Cancel", this);
         buttonPanel.add(cancelChanges);
 
-        configPanel.add(buttonPanel, BorderLayout.NORTH);
+        navPanel.add(buttonPanel, BorderLayout.NORTH);
      
-        return configPanel;
+        return navPanel;
     }
 
     private JPanel makeCampaignSelectPanel() throws PWCGException
     {
-        String imagePath = ContextSpecificImages.imagesMisc() + "paperHalf.jpg";
+        String imagePath = ContextSpecificImages.imagesMisc() + "paperFull.jpg";
         
         ImageResizingPanel campaignSelectPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         campaignSelectPanel.setLayout(new BorderLayout());

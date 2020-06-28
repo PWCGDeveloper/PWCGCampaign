@@ -57,7 +57,7 @@ public class ConfigurationPlanesOwnedPanelSet extends ImageResizingPanel impleme
     {
         try
         {
-            String imagePath = UiImageResolver.getImageMain("CampaignHome.jpg");
+            String imagePath = UiImageResolver.getImageMain("BrickWall.jpg");
             this.setImage(imagePath);
             
             this.add(makeButtonPanel(), BorderLayout.WEST);

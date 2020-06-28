@@ -29,12 +29,11 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImagePanelLayout;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.gui.utils.ToolTipManager;
 
-public class ConfigurationSkinConfigDisplayPanelSet extends JPanel implements ActionListener
+public class ConfigurationSkinConfigDisplayPanelSet extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     
@@ -42,8 +41,11 @@ public class ConfigurationSkinConfigDisplayPanelSet extends JPanel implements Ac
 
 	public ConfigurationSkinConfigDisplayPanelSet(Map<String, PlaneType> planeTypesToDisplay) 
 	{
-        super();
-	    this.planeTypesToDisplay = planeTypesToDisplay;
+        super("");
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
+
+        this.planeTypesToDisplay = planeTypesToDisplay;
 	    
 		setLayout(new BorderLayout());
 	}
@@ -52,6 +54,9 @@ public class ConfigurationSkinConfigDisplayPanelSet extends JPanel implements Ac
     {
         try
         {
+            String imagePath = UiImageResolver.getImageMain("TableTop.jpg");
+            this.setImage(imagePath);
+
             this.add(BorderLayout.WEST, makeButtonPanel());
             this.add(BorderLayout.CENTER, makeCenterPanel());
         }
@@ -64,11 +69,8 @@ public class ConfigurationSkinConfigDisplayPanelSet extends JPanel implements Ac
 
 	public JPanel makeButtonPanel() throws PWCGException 
 	{
-        String imagePath = UiImageResolver.getImageMain("SkinAnalysisNav.jpg");
-
-        ImageResizingPanel campaignButtonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        campaignButtonPanel.setLayout(new BorderLayout());
-        campaignButtonPanel.setOpaque(true);
+        JPanel campaignButtonPanel = new JPanel(new BorderLayout());
+        campaignButtonPanel.setOpaque(false);
 
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
@@ -90,13 +92,6 @@ public class ConfigurationSkinConfigDisplayPanelSet extends JPanel implements Ac
         return campaignButtonPanel;
  	}
 
-    
-    /**
-     * @param imageName
-     * @return
-     * @throws PWCGException 
-     * @
-     */
     private JButton makePlainButton(String buttonText, String commandText, String toolTiptext) throws PWCGException
     {
         JButton button = PWCGButtonFactory.makeMenuButton(buttonText, commandText, this);
@@ -105,18 +100,10 @@ public class ConfigurationSkinConfigDisplayPanelSet extends JPanel implements Ac
         return button;
     }
 
-
-
-    /**
-     * @return
-     * @throws PWCGException
-     */
     public JPanel makeCenterPanel() throws PWCGException 
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "paperFull.jpg";
         JPanel missingSkinDisplayPanel = new ImagePanelLayout(imagePath, new BorderLayout());
-
-        // The  award panel
         
         JPanel reportPanel = new JPanel(new BorderLayout());
         reportPanel.setOpaque(false);
@@ -138,10 +125,6 @@ public class ConfigurationSkinConfigDisplayPanelSet extends JPanel implements Ac
         return missingSkinDisplayPanel;
     }
 
-
-    /**
-     * @return
-     */
     String generateReportHeader()
     {
         Map<String, List<Skin>> allSkinsInPWCG = PWCGContext.getInstance().getSkinManager().getAllSkinsByPlane();
@@ -154,11 +137,6 @@ public class ConfigurationSkinConfigDisplayPanelSet extends JPanel implements Ac
         return "Skin Report: " + numSkinsInPWCG + " skin configurations exist in PWCG";
     }
 
-
-    /**
-     * @return
-     * @throws PWCGException 
-     */
     private JPanel generateReportBody() throws PWCGException
     {
         JPanel reportBodyPanel = new JPanel(new GridLayout(0,5));
@@ -179,7 +157,6 @@ public class ConfigurationSkinConfigDisplayPanelSet extends JPanel implements Ac
 
     private void addSkinsForPlane(JPanel reportBodyPanel, PlaneType plane, List<Skin> skinSet) throws PWCGException
     {
-        // The plane
         JLabel reportBodyPlaneLabel = PWCGButtonFactory.makePaperLabelMedium("Plane: " + plane.getDisplayName());
         reportBodyPanel.add(reportBodyPlaneLabel);
         
@@ -193,7 +170,6 @@ public class ConfigurationSkinConfigDisplayPanelSet extends JPanel implements Ac
         reportBodyPlaneDummy = PWCGButtonFactory.makePaperLabelMedium(" ");
         reportBodyPanel.add(reportBodyPlaneDummy);
 
-        // The missing skins
         TreeMap<String, Skin> sortedSkins = new TreeMap<String, Skin>();
         for (Skin skin : skinSet)
         {
@@ -201,7 +177,6 @@ public class ConfigurationSkinConfigDisplayPanelSet extends JPanel implements Ac
             sortedSkins.put(skinKey, skin);
         }
         
-        // The missing skins
         for (Skin skin : sortedSkins.values())
         {
             JLabel reportBodySkinLabel = PWCGButtonFactory.makePaperLabelMedium(skin.getSkinName());

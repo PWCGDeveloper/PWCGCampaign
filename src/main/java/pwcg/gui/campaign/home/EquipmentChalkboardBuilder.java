@@ -14,9 +14,9 @@ import javax.swing.JPanel;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneSorter;
 import pwcg.core.exception.PWCGException;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 
@@ -43,7 +43,7 @@ public class EquipmentChalkboardBuilder extends JPanel
         constraints.ipady = 3;
         GridBagLayout equipmentLayout = new GridBagLayout();
         
-        String imagePath = ContextSpecificImages.imagesMisc() + "chalkboard.png";
+        String imagePath = UiImageResolver.getImageMain("chalkboard.png");
         ImageResizingPanel equipmentChalkboardPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         equipmentChalkboardPanel.setOpaque(false);
         equipmentChalkboardPanel.setLayout(equipmentLayout);

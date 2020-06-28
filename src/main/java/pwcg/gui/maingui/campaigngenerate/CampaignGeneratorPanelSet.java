@@ -30,9 +30,7 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.maingui.CampaignMainGUI;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 
 public class CampaignGeneratorPanelSet extends ImageResizingPanel implements ActionListener
@@ -51,9 +49,10 @@ public class CampaignGeneratorPanelSet extends ImageResizingPanel implements Act
 
     public CampaignGeneratorPanelSet(CampaignMainGUI mainGUI)
     {
-        super(ContextSpecificImages.menuPathMain() + "CampaignGenFullScreen.jpg");
+        super("");
         this.setLayout(new BorderLayout());
-        
+        this.setOpaque(false);
+
         this.mainGUI = mainGUI;
 
         pwcgThreePanel = new PwcgThreePanelUI(this);
@@ -67,6 +66,9 @@ public class CampaignGeneratorPanelSet extends ImageResizingPanel implements Act
     {
         try
         {
+            String imagePath = UiImageResolver.getImageMain("CampaignGenFullScreen.jpg");
+            this.setImage(imagePath);
+
             pwcgThreePanel.setLeftPanel(makeButtonPanel());
             pwcgThreePanel.setCenterPanel(makeCampaignProfilePanel());
             pwcgThreePanel.setRightPanel (makeProceedButtonPanel());
@@ -81,12 +83,9 @@ public class CampaignGeneratorPanelSet extends ImageResizingPanel implements Act
 
     private JPanel makeButtonPanel() throws PWCGException
     {
-        String imagePath = UiImageResolver.getImageMain("CampaignGenNav.jpg");
-        
-        ImageResizingPanel configPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        configPanel.setLayout(new BorderLayout());
-        configPanel.setOpaque(true);
-        
+        JPanel navPanel = new JPanel(new BorderLayout());
+        navPanel.setOpaque(false);
+
         JPanel buttonPanel = new JPanel(new GridLayout(6,1));
         buttonPanel.setOpaque(false);
          
@@ -101,18 +100,15 @@ public class CampaignGeneratorPanelSet extends ImageResizingPanel implements Act
         JButton cancelChanges = PWCGButtonFactory.makeMenuButton("Cancel", "Cancel", this);
         buttonPanel.add(cancelChanges);
 
-        configPanel.add(buttonPanel, BorderLayout.NORTH);
+        navPanel.add(buttonPanel, BorderLayout.NORTH);
      
-        return configPanel;
+        return navPanel;
     }
 
     private JPanel makeProceedButtonPanel() throws PWCGException
     {
-        String imagePath = UiImageResolver.getImageMain("CampaignGenNav.jpg");
-        
-        ImageResizingPanel configPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        configPanel.setLayout(new BorderLayout());
-        configPanel.setOpaque(true);
+        JPanel configPanel = new JPanel(new BorderLayout());
+        configPanel.setOpaque(false);
         
         JPanel buttonPanel = new JPanel(new GridLayout(6,1));
         buttonPanel.setOpaque(false);
@@ -202,8 +198,8 @@ public class CampaignGeneratorPanelSet extends ImageResizingPanel implements Act
 
     private JPanel makeProfileInfoPanel() throws PWCGException
     {
-        String imagePath = UiImageResolver.getImageMain("CampaignGenNav.jpg");
         CampaignGeneratorProfileInfoGUI profileInfoPanel = new CampaignGeneratorProfileInfoGUI(this, imagePath);
+
         profileInfoPanel.makePanels();
         return profileInfoPanel;
     }

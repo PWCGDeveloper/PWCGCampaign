@@ -62,7 +62,7 @@ public class CampaignConfigurationSimpleGUI extends ImageResizingPanel implement
 
 	public void makePanels() throws PWCGException 
 	{
-        String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+        String imagePath = UiImageResolver.getImageMain("TableTop.jpg");
         this.setImage(imagePath);
 
         this.add(BorderLayout.WEST, makeNavigatePanel());
@@ -156,7 +156,7 @@ public class CampaignConfigurationSimpleGUI extends ImageResizingPanel implement
         JPanel aaButtonPanel = createAAConfigPanel();
         
         
-        String imagePath = UiImageResolver.getImageMain("document.png");
+        String imagePath = UiImageResolver.getImageMisc("document.png");
         ImageResizingPanel simpleConfigButtonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         simpleConfigButtonPanel.setImage(imagePath);
         simpleConfigButtonPanel.setLayout(new GridLayout(0,1));

@@ -48,7 +48,7 @@ public class CampaignAdminCoopPilotPanelSet extends ImageResizingPanel implement
     {
         try
         {        	
-            String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+            String imagePath = UiImageResolver.getImageMain("TableTop.jpg");
             this.setImage(imagePath);
 
             this.add(BorderLayout.EAST, makeCoopAdminActionSelectPanel());

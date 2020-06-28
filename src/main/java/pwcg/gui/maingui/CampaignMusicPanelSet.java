@@ -50,7 +50,7 @@ public class CampaignMusicPanelSet extends ImageResizingPanel implements ActionL
     {
         try
         {
-            String imagePath = UiImageResolver.getImageMain("CampaignHome.jpg");
+            String imagePath = UiImageResolver.getImageMain("BrickWall.jpg");
             this.setImage(imagePath);
             
             this.add(BorderLayout.WEST, makeButtonPanel());

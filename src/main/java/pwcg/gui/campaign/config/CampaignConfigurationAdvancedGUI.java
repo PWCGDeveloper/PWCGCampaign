@@ -57,7 +57,7 @@ public class CampaignConfigurationAdvancedGUI extends ImageResizingPanel impleme
 	
 	public void makePanels() throws PWCGException 
 	{
-        String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+        String imagePath = UiImageResolver.getImageMain("TableTop.jpg");
         this.setImage(imagePath);
 
         pwcgThreePanel.setLeftPanel(makeNavigatePanel());
@@ -93,7 +93,7 @@ public class CampaignConfigurationAdvancedGUI extends ImageResizingPanel impleme
 
 	public JPanel makeBlankCenterPanel() throws PWCGException 
 	{		
-        String imagePath = UiImageResolver.getImageMain("document.png");
+        String imagePath = UiImageResolver.getImageMisc("document.png");
 		ImageResizingPanel blankPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
 		blankPanel.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
 		blankPanel.setLayout(new BorderLayout());

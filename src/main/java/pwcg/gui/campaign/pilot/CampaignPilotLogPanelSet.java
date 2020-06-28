@@ -55,7 +55,7 @@ public class CampaignPilotLogPanelSet extends ImageResizingPanel implements Acti
 	
 	public void makePanels() throws PWCGException  
 	{
-        String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+        String imagePath = UiImageResolver.getImageMain("TableTop.jpg");
         this.setImage(imagePath);
 
         pilotLogPages = new PilotLogPages(campaign, pilot);
@@ -85,7 +85,7 @@ public class CampaignPilotLogPanelSet extends ImageResizingPanel implements Acti
 
 	private JPanel  makeLogCenterPanel() throws PWCGException  
 	{
-        String imagePath = ContextSpecificImages.imagesMisc() + "PilotLog.jpg";
+        String imagePath = ContextSpecificImages.imagesMisc() + "OpenPilotLog.jpg";
         ImageResizingPanel campaignPilotLogPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         campaignPilotLogPanel.setLayout(new GridLayout(0,2));
         campaignPilotLogPanel.setOpaque(false);

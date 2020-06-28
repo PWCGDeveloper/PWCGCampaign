@@ -20,7 +20,7 @@ public abstract class MapGUI extends ImageResizingPanel
 	public MapGUI(Date mapDate) throws PWCGException
 	{
         super("");
-        String imagePath = UiImageResolver.getImageMain("CampaignHome.jpg");
+        String imagePath = UiImageResolver.getImageMain("BrickWall.jpg");
         this.setImage(imagePath);
         this.setLayout(new BorderLayout());
         this.setOpaque(false);

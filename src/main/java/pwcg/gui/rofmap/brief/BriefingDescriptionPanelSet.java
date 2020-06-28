@@ -52,7 +52,7 @@ public class BriefingDescriptionPanelSet extends ImageResizingPanel implements A
 	{
 		try
 		{
-            String imagePath = UiImageResolver.getImageMain("CampaignHome.jpg");
+            String imagePath = UiImageResolver.getImageMain("BrickWall.jpg");
             this.setImage(imagePath);
 
             briefingFlightChooser = new BriefingFlightChooser(mission, this);

@@ -1,6 +1,5 @@
 package pwcg.gui.utils;
 
-import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
@@ -25,10 +24,6 @@ public class PageTurner
         JPanel rightButtonPanel = new JPanel(new GridLayout(1,0));
         rightButtonPanel.setOpaque(false);
         buttonPanel.add(rightButtonPanel);
-
-
-        Color bg = ColorMap.PAPER_BACKGROUND;
-        Color fg = ColorMap.PAPER_FOREGROUND;
         
         int spacingLabels = calculateCharsPerLine();
 
@@ -43,8 +38,7 @@ public class PageTurner
             prevButton.addActionListener(actionComponent);
             leftButtonPanel.add (prevButton);
             prevButton.setOpaque(false);
-            prevButton.setBackground(bg);
-            prevButton.setForeground(fg);   
+            prevButton.setForeground(ColorMap.CHALK_FOREGROUND);   
             prevButton.setBorderPainted(false);
             leftButtonPanel.add(prevButton);
             
@@ -66,8 +60,7 @@ public class PageTurner
             nextButton.addActionListener(actionComponent);
             rightButtonPanel.add (nextButton);
             nextButton.setOpaque(false);
-            nextButton.setBackground(bg);   
-            nextButton.setForeground(fg);   
+            nextButton.setForeground(ColorMap.CHALK_FOREGROUND);   
             nextButton.setBorderPainted(false);
             rightButtonPanel.add(nextButton);
 

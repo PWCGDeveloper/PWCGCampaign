@@ -75,7 +75,7 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
         ImageResizingPanel squeezerPanel = new ImageResizingPanel("");
         squeezerPanel.setOpaque(false);
         squeezerPanel.setLayout(new BorderLayout());
-        String imagePath = UiImageResolver.getImageMain("document.png");
+        String imagePath = UiImageResolver.getImageMisc("document.png");
         squeezerPanel.setImage(imagePath);
         squeezerPanel.setBorder(BorderFactory.createEmptyBorder(50,50,50,50));
 
@@ -103,7 +103,7 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
         ImageResizingPanel intelTextPanel = new ImageResizingPanel("");
         intelTextPanel.setOpaque(false);
         intelTextPanel.setLayout(new BorderLayout());
-        String imagePath = UiImageResolver.getImageMain("document.png");
+        String imagePath = UiImageResolver.getImageMisc("document.png");
         intelTextPanel.setImage(imagePath);
         intelTextPanel.setBorder(BorderFactory.createEmptyBorder(50,50,50,50));
 

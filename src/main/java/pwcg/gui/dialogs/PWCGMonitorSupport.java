@@ -48,7 +48,7 @@ public class PWCGMonitorSupport
         {
             return MonitorSize.FRAME_SMALL;
         }
-        else if (PWCGMonitorSupport.getPWCGFrameSize().height < 1100)
+        else if (PWCGMonitorSupport.getPWCGFrameSize().height < 1150)
         {
             return MonitorSize.FRAME_MEDIUM;
         }

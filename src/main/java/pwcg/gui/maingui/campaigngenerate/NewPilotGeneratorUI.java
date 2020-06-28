@@ -20,10 +20,10 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.coop.CampaignAdminCoopPilotPanelSet;
 import pwcg.gui.campaign.home.CampaignHome;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
@@ -43,8 +43,9 @@ public class NewPilotGeneratorUI extends ImageResizingPanel implements ActionLis
 
     public NewPilotGeneratorUI(Campaign campaign, CampaignHome parent, CampaignAdminCoopPilotPanelSet alternateParent)
     {
-        super(ContextSpecificImages.menuPathMain() + "CampaignGenFullScreen.jpg");
+        super("");
         this.setLayout(new BorderLayout());
+        this.setOpaque(false);
         
         this.campaign = campaign;
         this.parent = parent;
@@ -55,6 +56,9 @@ public class NewPilotGeneratorUI extends ImageResizingPanel implements ActionLis
     {
         try
         {
+            String imagePath = UiImageResolver.getImageMain("CampaignGenFullScreen.jpg");
+            this.setImage(imagePath);
+
             this.add(BorderLayout.WEST, makeButtonPanel());
             this.add(BorderLayout.CENTER, SpacerPanelFactory.makeSpacerPercentPanel(20));
             this.add(BorderLayout.EAST, makeServicePanel());

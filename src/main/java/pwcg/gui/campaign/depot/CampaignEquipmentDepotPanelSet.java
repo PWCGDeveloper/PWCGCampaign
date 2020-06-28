@@ -43,7 +43,7 @@ public class CampaignEquipmentDepotPanelSet extends ImageResizingPanel implement
 
 	public void makePanels() throws PWCGException  
 	{
-        String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+        String imagePath = UiImageResolver.getImageMain("TableTop.jpg");
         this.setImage(imagePath);
 
         this.add(BorderLayout.WEST, makeNavigatePanel());
@@ -74,7 +74,7 @@ public class CampaignEquipmentDepotPanelSet extends ImageResizingPanel implement
         ImageResizingPanel equipmentDepotPanel = new ImageResizingPanel("");
         equipmentDepotPanel.setOpaque(false);
         equipmentDepotPanel.setLayout(new BorderLayout());
-        String imagePath = UiImageResolver.getImageMain("document.png");
+        String imagePath = UiImageResolver.getImageMisc("document.png");
         equipmentDepotPanel.setImage(imagePath);
         equipmentDepotPanel.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
         

@@ -83,7 +83,7 @@ public class CampaignTransferPanelSet extends ImageResizingPanel implements Acti
 	
 	public void makePanels() throws PWCGException  
 	{
-        String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+        String imagePath = UiImageResolver.getImageMain("TableTop.jpg");
         this.setImage(imagePath);
 
         service = this.squadronMemberToTransfer.determineService(campaign.getDate());
@@ -132,7 +132,7 @@ public class CampaignTransferPanelSet extends ImageResizingPanel implements Acti
 	private JPanel makeTransferDocumentPanel() throws PWCGException  
 	{
 		ImageResizingPanel transferCenterPanel = null;
-        String imagePath = UiImageResolver.getImageMain("document.png");
+        String imagePath = UiImageResolver.getImageMisc("document.png");
         transferCenterPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         transferCenterPanel.setLayout(new BorderLayout());
         int topBorder = DocumentBorderCalculator.calculateTopBorder();

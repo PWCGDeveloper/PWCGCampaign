@@ -51,7 +51,7 @@ public class ReferencePilotSelector extends ImageResizingPanel implements Action
     {
         try
         {
-            String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+            String imagePath = UiImageResolver.getImageMain("TableTop.jpg");
             this.setImage(imagePath);
 
             this.add(BorderLayout.WEST, makeNavigatePanel());
@@ -96,7 +96,7 @@ public class ReferencePilotSelector extends ImageResizingPanel implements Action
         gridPanel.add(squadronMemberSelector);
         gridPanel.add(PWCGButtonFactory.makeDummy());
 
-        String imagePath = UiImageResolver.getImageMain("document.png");
+        String imagePath = UiImageResolver.getImageMisc("document.png");
         ImageResizingPanel centerPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         centerPanel.setLayout(new BorderLayout());
         centerPanel.add(gridPanel, BorderLayout.NORTH);

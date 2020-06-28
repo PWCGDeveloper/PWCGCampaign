@@ -43,7 +43,7 @@ public class CoopPersonaInfoPanel extends ImageResizingPanel
 	{
 		try
 		{
-            String imagePath = UiImageResolver.getImageMain("document.png");
+            String imagePath = UiImageResolver.getImageMisc("document.png");
             this.setImage(imagePath);
             this.setBorder(BorderFactory.createEmptyBorder(150,40,40,150));
 

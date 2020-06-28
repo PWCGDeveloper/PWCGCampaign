@@ -46,7 +46,7 @@ public class CampaignSkinManagerPanel extends ImageResizingPanel implements Acti
 
     public void makePanels() throws PWCGException 
     {
-        String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+        String imagePath = UiImageResolver.getImageMain("TableTop.jpg");
         this.setImage(imagePath);
 
         SquadronMember referencePlayer = campaign.findReferencePlayer();

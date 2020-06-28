@@ -54,7 +54,7 @@ public class CampaignHome extends ImageResizingPanel implements ActionListener
     {
         try
         {
-            String imagePath = UiImageResolver.getImageMain("CampaignHome.jpg");
+            String imagePath = UiImageResolver.getImageMain("BrickWall.jpg");
             this.setImage(imagePath);
             createCampaignHomeContext();
         }

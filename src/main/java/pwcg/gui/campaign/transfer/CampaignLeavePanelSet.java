@@ -60,7 +60,7 @@ public class CampaignLeavePanelSet extends ImageResizingPanel implements ActionL
 
 	public void makePanels() throws PWCGException  
 	{
-        String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+        String imagePath = UiImageResolver.getImageMain("TableTop.jpg");
         this.setImage(imagePath);
 
         this.add(BorderLayout.WEST, makeLeaveLeftPanel());
@@ -106,7 +106,7 @@ public class CampaignLeavePanelSet extends ImageResizingPanel implements ActionL
 	
     private JPanel makeLeaveLetterPanel() throws PWCGException  
     {
-        String imagePath = UiImageResolver.getImageMain("document.png");
+        String imagePath = UiImageResolver.getImageMisc("document.png");
         ImageResizingPanel leaveLetterPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         int topBorder = DocumentBorderCalculator.calculateTopBorder();
         leaveLetterPanel.setBorder(BorderFactory.createEmptyBorder(topBorder,30,30,30));

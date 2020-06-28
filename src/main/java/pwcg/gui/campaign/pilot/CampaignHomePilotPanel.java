@@ -79,7 +79,7 @@ public class CampaignHomePilotPanel extends JPanel
         JLabel pilotStatusButton = makePilotStatusButton(pilot);
         pilotPanel.add(pilotStatusButton, BorderLayout.EAST);
         
-        String imagePath = ContextSpecificImages.imagesMisc() + "NamePlate2.jpg";
+        String imagePath = ContextSpecificImages.imagesMisc() + "NamePlate.jpg";
         ImageResizingPanel nameplatePanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         nameplatePanel.setLayout(new BorderLayout());
                         
@@ -129,7 +129,7 @@ public class CampaignHomePilotPanel extends JPanel
 
     private JPanel makeNamePlaque(String description) throws PWCGException  
     {
-        String imagePath = ContextSpecificImages.imagesMisc() + "NamePlate2.jpg";
+        String imagePath = ContextSpecificImages.imagesMisc() + "NamePlate.jpg";
         ImageResizingPanel headerPlaquePanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         headerPlaquePanel.setLayout(new BorderLayout());
 

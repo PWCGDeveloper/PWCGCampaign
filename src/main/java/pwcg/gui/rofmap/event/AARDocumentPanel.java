@@ -22,7 +22,7 @@ public abstract class AARDocumentPanel extends ImageResizingPanel implements IAA
 
         try
         {
-            String imagePath = UiImageResolver.getImageMain("document.png");
+            String imagePath = UiImageResolver.getImageMisc("document.png");
             this.setImage(imagePath);
         }
         catch (Exception e)

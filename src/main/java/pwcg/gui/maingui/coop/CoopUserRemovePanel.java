@@ -39,7 +39,7 @@ public class CoopUserRemovePanel extends ImageResizingPanel implements ActionLis
     {
         try
         {
-            String imagePath = UiImageResolver.getImageMain("document.png");
+            String imagePath = UiImageResolver.getImageMisc("document.png");
             this.setImage(imagePath);
 
             JPanel centerPanel = makeAcceptancePanel();

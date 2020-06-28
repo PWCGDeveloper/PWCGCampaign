@@ -14,9 +14,9 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 
@@ -38,7 +38,7 @@ public class CampaignHomeSquadronPlaque extends JPanel
 
     public void makeDescPanel(int squadronId) throws PWCGException 
     {
-        String imagePath = ContextSpecificImages.imagesMisc() + "Plaque.jpg";
+        String imagePath = UiImageResolver.getImageMisc("Campaign");
         ImageResizingPanel plaquePanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         plaquePanel.setLayout(new BorderLayout());
 

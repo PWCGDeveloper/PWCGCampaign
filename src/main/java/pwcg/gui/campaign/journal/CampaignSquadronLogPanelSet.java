@@ -30,7 +30,6 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.sound.SoundManager;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -75,7 +74,7 @@ public class CampaignSquadronLogPanelSet extends ImageResizingPanel implements A
 	
 	public void makePanels() throws PWCGException  
 	{
-        String imagePath = UiImageResolver.getImageMain("CampaignTable.jpg");
+        String imagePath = UiImageResolver.getImageMain("TableTop.jpg");
         this.setImage(imagePath);
 
 		pages = orderPageEntries();
@@ -89,9 +88,9 @@ public class CampaignSquadronLogPanelSet extends ImageResizingPanel implements A
 	{
 		Map<Integer, StringBuffer> pages = new TreeMap<Integer, StringBuffer>();
 		
-		StringBuffer page = new StringBuffer("");
+		StringBuffer page = new StringBuffer("\n\n");
 		int pageCount = 0;
-		// For each date in the log entries
+
         for (CampaignLog campaignLog : campaign.getCampaignLogs().retrieveCampaignLogsInDateOrder())
 		{            
 			// Don't end the page with a date entry. leave room for at least one logs
@@ -99,7 +98,7 @@ public class CampaignSquadronLogPanelSet extends ImageResizingPanel implements A
 			{
 				pages.put(pageCount, page);
 				++pageCount;
-				page = new StringBuffer("");
+                page = new StringBuffer("\n\n");
 			}
 			
 			String dateAsString = DateUtils.getDateStringPretty(campaignLog.getDate());
@@ -107,7 +106,6 @@ public class CampaignSquadronLogPanelSet extends ImageResizingPanel implements A
 			page.append(dateAsString);
             page.append("\n");
 			
-			// Enter logs.  New page as necessary
         	for (CampaignLogEntry logEntry : campaignLog.getLogs())
 			{
         	    if (logEntry.getSquadronId() != logsForSquadronId)
@@ -121,14 +119,13 @@ public class CampaignSquadronLogPanelSet extends ImageResizingPanel implements A
 				{
 					pages.put(pageCount, page);
 					++pageCount;
-	                page = new StringBuffer("");
+	                page = new StringBuffer("\n\n");
 				}
 				
                 page.append(logEntry.getLog() + "\n");
 			}
 		}
 		
-		// The last page
 		pages.put(pageCount, page);
 		
 		return pages;
@@ -137,13 +134,9 @@ public class CampaignSquadronLogPanelSet extends ImageResizingPanel implements A
 	private int countLines(String logLine)
 	{
 	    String[] lines = logLine.split("\r\n|\r|\n");
-	    // Default is one line per CR
 	    int calculatedLines = lines.length;
-	    
-	    // Account for wrap by taking line length into account
 	    for (String line : lines)
 	    {
-	        // We are going to wrap so add a line
 	        if (line.length() > charsPerLine)
 	        {
 	            ++calculatedLines;
@@ -173,7 +166,7 @@ public class CampaignSquadronLogPanelSet extends ImageResizingPanel implements A
 
 	private JPanel  makeLogCenterPanel() throws PWCGException  
 	{
-        String imagePath = ContextSpecificImages.imagesMisc() + "CampaignLog.jpg";
+        String imagePath = UiImageResolver.getImageMisc("OpenJournal.png");
         ImageResizingPanel logCenterPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         logCenterPanel.setLayout(new BorderLayout());
         logCenterPanel.setOpaque(false);
@@ -268,7 +261,6 @@ public class CampaignSquadronLogPanelSet extends ImageResizingPanel implements A
         logTextArea.setFont(font);
         logTextArea.setSize(logTextArea.getPreferredSize().width, 1);
         
-        // Calculate the writable area of the text and generate margins scaled to screen size
         Insets margins = PWCGMonitorBorders.calculateBorderMargins(15, 50, 15, 20);
         if (pageNum%2 != 0)
         {
@@ -355,18 +347,18 @@ public class CampaignSquadronLogPanelSet extends ImageResizingPanel implements A
     private void calculateLinesPerPage()
     {
         MonitorSize monitorSize = PWCGMonitorSupport.getFrameHeight();
-        linesPerPage = 45;
+        linesPerPage = 40;
         if (monitorSize == MonitorSize.FRAME_MEDIUM)
         {
-            linesPerPage = 40;
+            linesPerPage = 30;
         }
         else if (monitorSize == MonitorSize.FRAME_SMALL)
         {
-            linesPerPage = 35;
+            linesPerPage = 25;
         }
         else if (monitorSize == MonitorSize.FRAME_VERY_SMALL)
         {
-            linesPerPage = 25;
+            linesPerPage = 20;
         }
     }
 

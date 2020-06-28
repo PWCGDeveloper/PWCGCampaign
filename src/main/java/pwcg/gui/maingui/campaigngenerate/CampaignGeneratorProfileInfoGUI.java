@@ -11,9 +11,8 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.utils.ImageResizingPanel;
 
-public class CampaignGeneratorProfileInfoGUI extends ImageResizingPanel
+public class CampaignGeneratorProfileInfoGUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 
@@ -21,10 +20,11 @@ public class CampaignGeneratorProfileInfoGUI extends ImageResizingPanel
 
 	public CampaignGeneratorProfileInfoGUI(CampaignGeneratorPanelSet parent, String imagePath) 
 	{
-        super(imagePath);
-        this.parent = parent;       
+        super();
         this.setOpaque(false);
         this.setLayout(new BorderLayout());
+        
+        this.parent = parent;       
 	}
 	
 
@@ -34,7 +34,6 @@ public class CampaignGeneratorProfileInfoGUI extends ImageResizingPanel
 		{			
 			JPanel campaignProfileInfoPanel = new JPanel(new BorderLayout());
 			campaignProfileInfoPanel.setOpaque(false);
-
 			
 			JPanel campaignProfileInfoGridPanel = createPorfileInfoPanel(); 
 			campaignProfileInfoPanel.add(campaignProfileInfoGridPanel, BorderLayout.NORTH);

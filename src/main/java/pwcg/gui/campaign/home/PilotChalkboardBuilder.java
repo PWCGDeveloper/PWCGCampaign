@@ -11,9 +11,9 @@ import javax.swing.JPanel;
 
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 
@@ -46,9 +46,9 @@ public class PilotChalkboardBuilder
         return constraints;
     }
 
-    private ImageResizingPanel createChalkboardHeader(GridBagConstraints constraints, Color buttonFG, Font font)
+    private ImageResizingPanel createChalkboardHeader(GridBagConstraints constraints, Color buttonFG, Font font) throws PWCGException
     {
-        String imagePath = ContextSpecificImages.imagesMisc() + "chalkboard.png";
+        String imagePath = UiImageResolver.getImageMisc("chalkboard.png");
         ImageResizingPanel squadronPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         squadronPanel.setOpaque(false);
         GridBagLayout squadronLayout = new GridBagLayout();                

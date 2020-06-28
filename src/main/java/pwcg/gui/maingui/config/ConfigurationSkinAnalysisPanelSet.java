@@ -64,7 +64,7 @@ public class ConfigurationSkinAnalysisPanelSet extends ImageResizingPanel implem
     {
         try
         {
-            String imagePath = UiImageResolver.getImageMain("CampaignHome.jpg");
+            String imagePath = UiImageResolver.getImageMain("BrickWall.jpg");
             this.setImage(imagePath);
             
             skinAnalyzer.analyze();
@@ -335,7 +335,6 @@ public class ConfigurationSkinAnalysisPanelSet extends ImageResizingPanel implem
             
             ConfigurationSkinConfigDisplayPanelSet configurationSkinConfigDisplayPanelSet = new ConfigurationSkinConfigDisplayPanelSet(planeTypesToDisplay);
             configurationSkinConfigDisplayPanelSet.makeGUI();
-    
             CampaignGuiContextManager.getInstance().pushToContextStack(configurationSkinConfigDisplayPanelSet);
         }
         catch (PWCGException e)
