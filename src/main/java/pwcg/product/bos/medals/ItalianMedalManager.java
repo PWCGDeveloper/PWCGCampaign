@@ -21,14 +21,14 @@ public class ItalianMedalManager extends BoSMedalManager
         super(campaign);
 
 		
-        medals.put(PILOTS_BADGE, new Medal ("Pilots Badge",                                "Ital_PB.jpg"));
-        medals.put(WOUND_STRIPE, new Medal ("Wound Stripe",                                "Ital_WB.jpg"));
+        medals.put(PILOTS_BADGE, new Medal ("Pilots Badge",                                "ita_pilots_badge.png.png"));
+        medals.put(WOUND_STRIPE, new Medal ("Wound Stripe",                                "ita_wound_stripe.png"));
         
-        medals.put(MEDAL_MILITARY_VALOR_BRONZE, new Medal ("Al Valore Militar Bronze",     "Ital_MMVB.jpg"));
-        medals.put(MEDAL_MILITARY_VALOR_SILVER, new Medal ("Al Valore Militar Silver",     "Ital_MMVS.jpg"));
-        medals.put(MEDAL_MILITARY_VALOR_GOLD, new Medal ("Al Valore Militar Gold",         "Ital_MMVG.jpg"));
-        medals.put(CROSS_WAR_MERIT, new Medal ("Cross of Merit of War",                    "Ital_CMW.jpg"));
-        medals.put(CROSS_MILITARY_VALOR, new Medal ("Cross of Military Valour",            "Ital_CMV.jpg"));
+        medals.put(MEDAL_MILITARY_VALOR_BRONZE, new Medal ("Al Valore Militar Bronze",     "Al Valore Militar Bronze.png"));
+        medals.put(MEDAL_MILITARY_VALOR_SILVER, new Medal ("Al Valore Militar Silver",     "Al Valore Militar Silver.png"));
+        medals.put(MEDAL_MILITARY_VALOR_GOLD, new Medal ("Al Valore Militar Gold",         "ita_al_valore _militar_gold.png"));
+        medals.put(CROSS_WAR_MERIT, new Medal ("Cross of Merit of War",                    "ita_cross_of_merit_war.png"));
+        medals.put(CROSS_MILITARY_VALOR, new Medal ("Cross of Military Valour",            "ita_cross_of_merit_valor.png"));
 	} 
 
 	public Medal getWoundedAward(SquadronMember pilot, ArmedService service) 
