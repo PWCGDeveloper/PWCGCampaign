@@ -43,6 +43,7 @@ public class CampaignHome extends ImageResizingPanel implements ActionListener
     {
         super("");
         this.setLayout(new BorderLayout());
+        this.setOpaque(false);
 
         this.pwcgThreePanel = new PwcgThreePanelUI(this);
         this.parent = parent;
@@ -56,6 +57,7 @@ public class CampaignHome extends ImageResizingPanel implements ActionListener
         {
             String imagePath = UiImageResolver.getImageMain("BrickWall.jpg");
             this.setImage(imagePath);
+            
             createCampaignHomeContext();
         }
         catch (PWCGException e)

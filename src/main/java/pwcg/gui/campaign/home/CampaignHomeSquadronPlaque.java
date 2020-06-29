@@ -19,6 +19,7 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
+import pwcg.gui.utils.PwcgBorderFactory;
 
 public class CampaignHomeSquadronPlaque extends JPanel
 {
@@ -38,9 +39,10 @@ public class CampaignHomeSquadronPlaque extends JPanel
 
     public void makeDescPanel(int squadronId) throws PWCGException 
     {
-        String imagePath = UiImageResolver.getImageMisc("Plaque.jpg");
+        String imagePath = UiImageResolver.getImageMisc("PlagueBronze.png");
         ImageResizingPanel plaquePanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         plaquePanel.setLayout(new BorderLayout());
+        plaquePanel.setBorder(PwcgBorderFactory.createPlaqueBackgroundBorder());
 
         JPanel descGridPanel = new JPanel(new GridLayout(0, 1));
         descGridPanel.setOpaque(false);

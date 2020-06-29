@@ -20,6 +20,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
@@ -30,23 +31,29 @@ import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGButtonNoBackground;
+import pwcg.gui.utils.PwcgBorderFactory;
 
-public class CampaignHomePilotPanel extends JPanel
+public class CampaignHomePilotPanel extends ImageResizingPanel
 {
 	private static final long serialVersionUID = 1L;
 	private ActionListener actionListener = null;
 
 	public CampaignHomePilotPanel(ActionListener actionListener)  
 	{
-        super();
+        super("");
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
-	    this.actionListener = actionListener;
+
+        this.actionListener = actionListener;
 	}
 
 	public void makePanel(List<SquadronMember>pilots, String description, String action) throws PWCGException  
 	{
-		JPanel pilotListGrid = new JPanel(new GridLayout(0, 1));
+        String imagePath = UiImageResolver.getImageMisc("PlagueBronzeBackground.png");
+        this.setImage(imagePath);
+        this.setBorder(PwcgBorderFactory.createPlaqueBackgroundBorder());
+
+        JPanel pilotListGrid = new JPanel(new GridLayout(0, 1));
 		pilotListGrid.setOpaque(false);
 		
 		JPanel headerPlaque = makeNamePlaque(description);
@@ -72,6 +79,7 @@ public class CampaignHomePilotPanel extends JPanel
                     throws PWCGException
     {
         JPanel pilotPanel = new JPanel(new BorderLayout());
+        pilotPanel.setOpaque(false);
         
         JLabel pilotPicButton = makePilotPicButton(pilot);
         pilotPanel.add(pilotPicButton, BorderLayout.WEST);

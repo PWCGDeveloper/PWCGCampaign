@@ -42,6 +42,23 @@ public class PwcgBorderFactory
         }
     }
     
+    public static Border createPlaqueBackgroundBorder()
+    {
+        MonitorSize monitorSize = PWCGMonitorSupport.getFrameHeight();
+        if (monitorSize == MonitorSize.FRAME_LARGE)
+        {
+            return BorderFactory.createEmptyBorder(50,50,70,70);
+        }
+        else if (monitorSize == MonitorSize.FRAME_MEDIUM)
+        {
+            return BorderFactory.createEmptyBorder(40,40,60,60);
+        }
+        else 
+        {
+            return BorderFactory.createEmptyBorder(20,20,30,30);
+        }
+    }
+
     public static Border createMedalBoxBorder()
     {
         MonitorSize monitorSize = PWCGMonitorSupport.getFrameHeight();
