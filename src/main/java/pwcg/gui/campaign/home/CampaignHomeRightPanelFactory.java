@@ -25,7 +25,7 @@ public class CampaignHomeRightPanelFactory
         return squadronPanel;
     }
     
-    public static JPanel makeCampaignHomeAcesRightPanel(CampaignHome campaignHome, List<SquadronMember> aces) throws PWCGException
+    public static JPanel makeCampaignHomeAcesRightPanel(CampaignHomeScreen campaignHome, List<SquadronMember> aces) throws PWCGException
     {
         CampaignHomeRightAcesPanel acesPanel = new CampaignHomeRightAcesPanel(campaignHome);
         acesPanel.makePanel(aces);

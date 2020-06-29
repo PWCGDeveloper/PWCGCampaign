@@ -16,6 +16,7 @@ import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopPersona;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ISelectorGUICallback;
@@ -27,7 +28,7 @@ public class CoopPersonaChooserPanel extends ImageResizingPanel implements ISele
 {
 	private static final long serialVersionUID = 1L;
     private SelectorGUI selector;
-    private CoopPersonaChooser parent;
+    private BriefingCoopPersonaChooser parent;
     private Campaign campaign;
 	
     private Map<String, SquadronMember> playerSquadronMembers = new TreeMap<>();
@@ -35,7 +36,7 @@ public class CoopPersonaChooserPanel extends ImageResizingPanel implements ISele
     
     public static final String NO_USER_FOR_PILOT = "No User For Pilot";
 
-	public CoopPersonaChooserPanel(Campaign campaign, CoopPersonaChooser parent)
+	public CoopPersonaChooserPanel(Campaign campaign, BriefingCoopPersonaChooser parent)
 	{
         super("");
         this.setLayout(new BorderLayout());
@@ -49,7 +50,7 @@ public class CoopPersonaChooserPanel extends ImageResizingPanel implements ISele
 	{
 		try
 		{
-	        String imagePath = UiImageResolver.getImageMisc("document.png");
+	        String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
 	        this.setImage(imagePath);
 	        this.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
 

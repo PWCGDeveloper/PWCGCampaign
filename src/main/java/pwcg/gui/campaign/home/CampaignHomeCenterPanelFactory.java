@@ -9,7 +9,7 @@ import pwcg.core.exception.PWCGException;
 
 public class CampaignHomeCenterPanelFactory
 {
-    public static JPanel makeCampaignHomeCenterPanel(CampaignHome campaignHome, List<SquadronMember> sortedPilots) throws PWCGException  
+    public static JPanel makeCampaignHomeCenterPanel(CampaignHomeScreen campaignHome, List<SquadronMember> sortedPilots) throws PWCGException  
     {
         CampaignHomeCenterPanel chalkboard = new CampaignHomeCenterPanel(campaignHome.getChalkboardSelector());
         chalkboard.makePanel(sortedPilots);

@@ -33,10 +33,10 @@ public class ChalkboardSelector extends JPanel implements ActionListener
     private static final long serialVersionUID = 1L;
 
     private Campaign campaign;
-    private CampaignHome campaignHome;
+    private CampaignHomeScreen campaignHome;
     private ButtonGroup buttonGroup = new ButtonGroup();
 
-    public ChalkboardSelector(CampaignHome campaignHome)
+    public ChalkboardSelector(CampaignHomeScreen campaignHome)
     {
         this.campaignHome = campaignHome;
         this.campaign = campaignHome.getCampaign();
@@ -149,7 +149,7 @@ public class ChalkboardSelector extends JPanel implements ActionListener
 
     public void createEquipmentContext() throws PWCGException 
     {       
-        CampaignEquipmentChalkBoard equipmentChalkboardDisplay = new CampaignEquipmentChalkBoard(campaignHome.getChalkboardSelector());
+        CampaignEquipmentChalkBoardPanelSet equipmentChalkboardDisplay = new CampaignEquipmentChalkBoardPanelSet(campaignHome.getChalkboardSelector());
         equipmentChalkboardDisplay.makeEquipmentPanel(campaignHome.getCampaign());
         
         List<SquadronMember> squadronMembers = makePilotList();

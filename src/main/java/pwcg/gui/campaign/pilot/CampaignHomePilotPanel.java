@@ -20,6 +20,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -49,7 +50,7 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
 
 	public void makePanel(List<SquadronMember>pilots, String description, String action) throws PWCGException  
 	{
-        String imagePath = UiImageResolver.getImageMisc("PlagueBronzeBackground.png");
+        String imagePath = UiImageResolver.getImage(ScreenIdentifier.PlagueBronzeBackground);
         this.setImage(imagePath);
         this.setBorder(PwcgBorderFactory.createPlaqueBackgroundBorder());
 

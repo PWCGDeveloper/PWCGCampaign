@@ -15,10 +15,10 @@ import pwcg.gui.utils.ToolTipManager;
 
 public class CampaignHomeGUILeftPanelBuilder
 {
-    private CampaignHome parent;
+    private CampaignHomeScreen parent;
     private Campaign campaign;
     
-    public CampaignHomeGUILeftPanelBuilder(Campaign campaign, CampaignHome parent)
+    public CampaignHomeGUILeftPanelBuilder(Campaign campaign, CampaignHomeScreen parent)
     {
         this.campaign = campaign;
         this.parent = parent;

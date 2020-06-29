@@ -32,14 +32,14 @@ import pwcg.core.utils.DirectoryReader;
 import pwcg.core.utils.FileUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.campaign.home.CampaignHome;
+import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.rofmap.MapGUI;
 import pwcg.gui.rofmap.MapScroll;
-import pwcg.gui.rofmap.event.AARMainPanel;
-import pwcg.gui.rofmap.event.AARMainPanel.EventPanelReason;
+import pwcg.gui.rofmap.event.AARReportMainPanel;
+import pwcg.gui.rofmap.event.AARReportMainPanel.EventPanelReason;
 import pwcg.gui.sound.MusicManager;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -53,7 +53,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 	private static final long serialVersionUID = 1L;
 
     private Campaign campaign;
-	private CampaignHome home = null;
+	private CampaignHomeScreen home = null;
 	private Thread initiatorThread = null;
 	private JTextArea eventTextPane = new JTextArea();
 	private JCheckBox maxInfoCheckBox;
@@ -62,7 +62,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 
 	private DebriefMapPanel mapPanel = null;
 
-	public DebriefMapGUI  (Campaign campaign, CampaignHome home) throws PWCGException
+	public DebriefMapGUI  (Campaign campaign, CampaignHomeScreen home) throws PWCGException
 	{
 	    super(campaign.getDate());
 
@@ -247,7 +247,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 
         if (!logEvents.isEmpty())
         {
-            AARMainPanel eventDisplay = new AARMainPanel(campaign, home, EventPanelReason.EVENT_PANEL_REASON_AAR);
+            AARReportMainPanel eventDisplay = new AARReportMainPanel(campaign, home, EventPanelReason.EVENT_PANEL_REASON_AAR);
             eventDisplay.makePanels();
             CampaignGuiContextManager.getInstance().pushToContextStack(eventDisplay);
         }

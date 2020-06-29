@@ -7,6 +7,7 @@ import java.util.Date;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.utils.ImageResizingPanel;
 
@@ -20,7 +21,7 @@ public abstract class MapGUI extends ImageResizingPanel
 	public MapGUI(Date mapDate) throws PWCGException
 	{
         super("");
-        String imagePath = UiImageResolver.getImageMain("BrickWall.jpg");
+        String imagePath = UiImageResolver.getImage(ScreenIdentifier.MapScreens);
         this.setImage(imagePath);
         this.setLayout(new BorderLayout());
         this.setOpaque(false);

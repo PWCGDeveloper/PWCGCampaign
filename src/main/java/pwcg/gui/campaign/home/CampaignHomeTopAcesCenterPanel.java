@@ -18,9 +18,9 @@ public class CampaignHomeTopAcesCenterPanel extends JPanel
 
     public static final Integer ACE_VICTORY_SORT_CONSTANT = 100000;
     
-    private CampaignHome campaignHome;
+    private CampaignHomeScreen campaignHome;
 
-	public CampaignHomeTopAcesCenterPanel(CampaignHome campaignHome) throws PWCGException  
+	public CampaignHomeTopAcesCenterPanel(CampaignHomeScreen campaignHome) throws PWCGException  
 	{
         super();
         this.setLayout(new BorderLayout());
@@ -50,7 +50,8 @@ public class CampaignHomeTopAcesCenterPanel extends JPanel
 
     private JPanel createPilotListPanel(List<SquadronMember> sortedPilots) throws PWCGException
     {
-        PilotChalkboardBuilder pilotChalkboardBuilder = new PilotChalkboardBuilder();
-        return pilotChalkboardBuilder.createPilotListPanel(sortedPilots);
+        CampaignPilotChalkboard pilotChalkboardBuilder = new CampaignPilotChalkboard();
+        pilotChalkboardBuilder.makePanels(sortedPilots);
+        return pilotChalkboardBuilder;
     }
 }

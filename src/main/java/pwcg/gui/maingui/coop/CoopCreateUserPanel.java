@@ -16,6 +16,7 @@ import javax.swing.border.Border;
 import pwcg.coop.CoopUserManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -38,7 +39,7 @@ public class CoopCreateUserPanel extends ImageResizingPanel implements ActionLis
     {
         try
         {
-            String imagePath = UiImageResolver.getImageMisc("document.png");
+            String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
             this.setImage(imagePath);
             this.setBorder(BorderFactory.createEmptyBorder(150,40,40,150));
 

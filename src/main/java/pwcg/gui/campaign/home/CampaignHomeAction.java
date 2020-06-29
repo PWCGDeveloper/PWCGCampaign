@@ -12,23 +12,23 @@ import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGErrorBundler;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.campaign.config.CampaignConfigurationAdvancedGUI;
-import pwcg.gui.campaign.config.CampaignConfigurationSimpleGUI;
-import pwcg.gui.campaign.coop.CampaignAdminCoopPilotPanelSet;
-import pwcg.gui.campaign.depot.CampaignEquipmentDepotPanelSet;
-import pwcg.gui.campaign.intel.CampaignIntelligencePanelSet;
-import pwcg.gui.campaign.journal.CampaignJournalPanelSet;
-import pwcg.gui.campaign.journal.CampaignSquadronLogPanelSet;
+import pwcg.gui.campaign.config.CampaignAdvancedConfigurationScreen;
+import pwcg.gui.campaign.config.CampaignSimpleConfigurationScreen;
+import pwcg.gui.campaign.coop.CampaignCoopAdminScreen;
+import pwcg.gui.campaign.depot.CampaignEquipmentDepotScreen;
+import pwcg.gui.campaign.intel.CampaignIntelligenceReportScreen;
+import pwcg.gui.campaign.journal.CampaignJournalScreen;
+import pwcg.gui.campaign.journal.CampaignSquadronLogScreen;
 import pwcg.gui.campaign.pilot.CampaignPilotPanelSet;
-import pwcg.gui.campaign.skins.CampaignSkinManagerPanel;
-import pwcg.gui.campaign.transfer.CampaignLeavePanelSet;
-import pwcg.gui.campaign.transfer.CampaignTransferPanelSet;
+import pwcg.gui.campaign.skins.CampaignSkinConfigurationScreen;
+import pwcg.gui.campaign.transfer.CampaignLeaveScreen;
+import pwcg.gui.campaign.transfer.CampaignTransferScreen;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.HelpDialog;
-import pwcg.gui.maingui.campaigngenerate.NewPilotGeneratorUI;
-import pwcg.gui.rofmap.brief.BriefingDescriptionPanelSet;
-import pwcg.gui.rofmap.brief.CoopPersonaChooser;
-import pwcg.gui.rofmap.debrief.DebriefMissionDescriptionPanel;
+import pwcg.gui.maingui.campaigngenerate.CampaignNewPilotScreen;
+import pwcg.gui.rofmap.brief.BriefingDescriptionScreen;
+import pwcg.gui.rofmap.brief.BriefingCoopPersonaChooser;
+import pwcg.gui.rofmap.debrief.DebriefMissionDescriptionScreen;
 import pwcg.gui.rofmap.intelmap.IntelMapGUI;
 import pwcg.gui.sound.MusicManager;
 import pwcg.gui.sound.SoundManager;
@@ -38,10 +38,10 @@ import pwcg.mission.MissionHumanParticipants;
 
 public class CampaignHomeAction
 {
-    private CampaignHome parent = null;
+    private CampaignHomeScreen parent = null;
     private Campaign campaign = null;
 
-    public CampaignHomeAction(CampaignHome parent, Campaign campaign) 
+    public CampaignHomeAction(CampaignHomeScreen parent, Campaign campaign) 
     {
         super();
         this.parent = parent;
@@ -166,7 +166,7 @@ public class CampaignHomeAction
     private void showAddHumanPilot() throws PWCGException
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
-        NewPilotGeneratorUI addPilotDisplay = new NewPilotGeneratorUI(campaign, parent, null);
+        CampaignNewPilotScreen addPilotDisplay = new CampaignNewPilotScreen(campaign, parent, null);
         addPilotDisplay.makePanels();        
         CampaignGuiContextManager.getInstance().pushToContextStack(addPilotDisplay);
     }
@@ -176,21 +176,21 @@ public class CampaignHomeAction
     	MusicManager.playMissionBriefingTheme();
     	SoundManager.getInstance().playSound("Typewriter.WAV");
 
-        BriefingDescriptionPanelSet briefingMap = new BriefingDescriptionPanelSet(parent, mission);
+        BriefingDescriptionScreen briefingMap = new BriefingDescriptionScreen(parent, mission);
         briefingMap.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(briefingMap);
     }
 
     private void showCoopPersonaChooser() throws PWCGException 
     {
-    	CoopPersonaChooser coopPersonaChooser = new CoopPersonaChooser(campaign, parent);
+    	BriefingCoopPersonaChooser coopPersonaChooser = new BriefingCoopPersonaChooser(campaign, parent);
     	coopPersonaChooser.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(coopPersonaChooser);
     }
 
     private void showChangeReferencePilot() throws PWCGException
     {
-        ReferencePilotSelector referencePilotSelector = new ReferencePilotSelector(campaign, parent);
+        CampaignReferencePilotSelectorScreen referencePilotSelector = new CampaignReferencePilotSelectorScreen(campaign, parent);
         referencePilotSelector.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(referencePilotSelector);
     }
@@ -199,7 +199,7 @@ public class CampaignHomeAction
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
         SquadronMember referencePlayer = campaign.findReferencePlayer();
-        CampaignTransferPanelSet transferDisplay = new CampaignTransferPanelSet(parent, null, referencePlayer);
+        CampaignTransferScreen transferDisplay = new CampaignTransferScreen(parent, null, referencePlayer);
         transferDisplay.makePanels();        
         CampaignGuiContextManager.getInstance().pushToContextStack(transferDisplay);
     }
@@ -208,7 +208,7 @@ public class CampaignHomeAction
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
 
-        CampaignLeavePanelSet leaveDisplay = new CampaignLeavePanelSet(parent);
+        CampaignLeaveScreen leaveDisplay = new CampaignLeaveScreen(parent);
         leaveDisplay.makePanels();
         
         CampaignGuiContextManager.getInstance().pushToContextStack(leaveDisplay);
@@ -222,7 +222,7 @@ public class CampaignHomeAction
         {
             AARCoordinator.getInstance().aarPreliminary(campaign);
             
-            DebriefMissionDescriptionPanel combatReportDisplay = new DebriefMissionDescriptionPanel(campaign, parent);
+            DebriefMissionDescriptionScreen combatReportDisplay = new DebriefMissionDescriptionScreen(campaign, parent);
             combatReportDisplay.makePanels();
             CampaignGuiContextManager.getInstance().pushToContextStack(combatReportDisplay);
         }
@@ -236,7 +236,7 @@ public class CampaignHomeAction
     {
         SoundManager.getInstance().playSound("BookOpen.WAV");
 
-        CampaignJournalPanelSet journalDisplay = new CampaignJournalPanelSet(campaign);
+        CampaignJournalScreen journalDisplay = new CampaignJournalScreen(campaign);
         journalDisplay.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(journalDisplay);
@@ -246,7 +246,7 @@ public class CampaignHomeAction
     {
         SoundManager.getInstance().playSound("BookOpen.WAV");
 
-        CampaignAdminCoopPilotPanelSet adminCoopPilotDisplay = new CampaignAdminCoopPilotPanelSet(parent, campaign);
+        CampaignCoopAdminScreen adminCoopPilotDisplay = new CampaignCoopAdminScreen(parent, campaign);
         adminCoopPilotDisplay.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(adminCoopPilotDisplay);
@@ -257,7 +257,7 @@ public class CampaignHomeAction
         SoundManager.getInstance().playSound("BookOpen.WAV");
 
         SquadronMember referencePlayer = campaign.findReferencePlayer();
-        CampaignSquadronLogPanelSet logDisplay = new CampaignSquadronLogPanelSet(referencePlayer.getSquadronId());
+        CampaignSquadronLogScreen logDisplay = new CampaignSquadronLogScreen(referencePlayer.getSquadronId());
         logDisplay.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(logDisplay);
@@ -267,7 +267,7 @@ public class CampaignHomeAction
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
         
-        CampaignSkinManagerPanel skinDisplay = new CampaignSkinManagerPanel(campaign);
+        CampaignSkinConfigurationScreen skinDisplay = new CampaignSkinConfigurationScreen(campaign);
         skinDisplay.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(skinDisplay);
@@ -275,7 +275,7 @@ public class CampaignHomeAction
 
     private void showIntelReport() throws PWCGException 
     {
-        CampaignIntelligencePanelSet intelligence = new CampaignIntelligencePanelSet(campaign);
+        CampaignIntelligenceReportScreen intelligence = new CampaignIntelligenceReportScreen(campaign);
         intelligence.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(intelligence);
@@ -283,7 +283,7 @@ public class CampaignHomeAction
 
     private void showEquipmentDepotReport() throws PWCGException 
     {
-        CampaignEquipmentDepotPanelSet depot = new CampaignEquipmentDepotPanelSet(campaign);
+        CampaignEquipmentDepotScreen depot = new CampaignEquipmentDepotScreen(campaign);
         depot.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(depot);
@@ -298,14 +298,14 @@ public class CampaignHomeAction
 
     private void showSimpleConfig() throws PWCGException 
     {
-        CampaignConfigurationSimpleGUI simpleConfigGUI = new CampaignConfigurationSimpleGUI(campaign);
+        CampaignSimpleConfigurationScreen simpleConfigGUI = new CampaignSimpleConfigurationScreen(campaign);
         simpleConfigGUI.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(simpleConfigGUI);
     }
 
     private void showAdvancedConfig() throws PWCGException 
     {
-        CampaignConfigurationAdvancedGUI simpleConfigGUI = new CampaignConfigurationAdvancedGUI(campaign);
+        CampaignAdvancedConfigurationScreen simpleConfigGUI = new CampaignAdvancedConfigurationScreen(campaign);
         simpleConfigGUI.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(simpleConfigGUI);
     }

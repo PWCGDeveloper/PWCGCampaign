@@ -15,6 +15,7 @@ import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -39,7 +40,7 @@ public class CoopUserRemovePanel extends ImageResizingPanel implements ActionLis
     {
         try
         {
-            String imagePath = UiImageResolver.getImageMisc("document.png");
+            String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
             this.setImage(imagePath);
 
             JPanel centerPanel = makeAcceptancePanel();

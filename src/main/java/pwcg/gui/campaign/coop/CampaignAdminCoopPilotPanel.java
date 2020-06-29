@@ -23,6 +23,7 @@ import pwcg.coop.model.CoopDisplayRecord;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -51,7 +52,7 @@ public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements A
     {
         try
         {
-            String imagePath = UiImageResolver.getImageMisc("document.png");
+            String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
             this.setImage(imagePath);
             this.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 

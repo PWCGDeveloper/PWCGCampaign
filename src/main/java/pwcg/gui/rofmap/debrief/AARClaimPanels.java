@@ -20,6 +20,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
+import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -45,7 +46,7 @@ public class AARClaimPanels extends ImageResizingPanel
 
     public void makePanels() throws PWCGException
     {
-        String imagePath = UiImageResolver.getImageMisc("document.png");
+        String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
         this.setImage(imagePath);
         this.setBorder(BorderFactory.createEmptyBorder(30,30,100,120));
 

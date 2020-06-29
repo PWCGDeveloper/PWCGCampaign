@@ -16,6 +16,7 @@ import pwcg.core.config.ConfigItem;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.config.ConfigSet;
 import pwcg.core.exception.PWCGException;
+import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -39,7 +40,7 @@ public class ConfigurationParametersGUI extends ImageResizingPanel
 
 	public void makeGUI() throws PWCGException 
 	{
-        String imagePath = UiImageResolver.getImageMisc("document.png");
+        String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
         this.setImage(imagePath);
         this.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
 

@@ -83,9 +83,9 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
 
     private JTextArea squadronTextBox;
 
-    private CampaignGeneratorPanelSet parent = null;
+    private CampaignGeneratorScreen parent = null;
 
-	public CampaignGeneratorDataEntryGUI(CampaignGeneratorPanelSet parent) 
+	public CampaignGeneratorDataEntryGUI(CampaignGeneratorScreen parent) 
 	{
         super();
         this.setOpaque(false);

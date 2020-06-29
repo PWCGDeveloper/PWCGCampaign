@@ -2,14 +2,56 @@ package pwcg.gui;
 
 import java.io.File;
 
-import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.utils.ContextSpecificImages;
 
 public class UiImageResolver
 {
 
-    public static String getImageMain(String leftImageName) throws PWCGException
+    public static String getImage(ScreenIdentifier screenIdentifier) throws PWCGException
+    {
+        String override = ScreenIdentifierOverrideManager.getInstance().getOverride(screenIdentifier);
+        String imageFilePath = findImageInDirectories(override);
+        if (!(imageExists(imageFilePath)))
+        {
+            imageFilePath = findImageInDirectories(screenIdentifier.getDefaultImageName());
+            if (!(imageExists(imageFilePath)))
+            {
+                throw new PWCGException("Failed to locate image " + screenIdentifier.getDefaultImageName());
+            }
+            else
+            {
+                return imageFilePath;
+            }
+        }
+        else
+        {
+            return imageFilePath;
+        }
+    }
+
+    private static String findImageInDirectories(String filename) throws PWCGException
+    {
+        String mainFilePath = getImageMain(filename);
+        if (!(imageExists(mainFilePath)))
+        {
+            String miscFilePath = getImageMisc(filename);
+            if (!(imageExists(miscFilePath)))
+            {
+                return "NOT_FOUND";
+            }
+            else
+            {
+                return miscFilePath;
+            }
+        }
+        else
+        {
+            return mainFilePath;
+        }
+    }
+
+    private static String getImageMain(String leftImageName) throws PWCGException
     {
         String imagePath = "";
         String menuPath = ContextSpecificImages.menuPathForMenus();
@@ -18,26 +60,13 @@ public class UiImageResolver
     }
 
 
-    public static String getImageMisc(String leftImageName) throws PWCGException
+    private static String getImageMisc(String leftImageName) throws PWCGException
     {
         String imagePath = "";
         String menuPath = ContextSpecificImages.imagesMisc();
         imagePath = menuPath + leftImageName;
         return imagePath;
     }
-
-
-    public static String getImage(Campaign campaign, String leftImageName) throws PWCGException
-    {
-        String menuPath = ContextSpecificImages.imagesMisc();
-        String imagePath = menuPath + leftImageName;
-        if (!imageExists(imagePath))
-        {
-            menuPath = ContextSpecificImages.menuPathForNation(campaign);
-            imagePath = menuPath + leftImageName;
-        }
-        return imagePath;
-    }    
     
     private static boolean imageExists(String imagePath)
     {

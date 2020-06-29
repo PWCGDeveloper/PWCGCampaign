@@ -31,9 +31,9 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
 
     private JPanel pilotPanel;
     private BriefingContext briefingContext;
-    private BriefingPilotPanelSet parent;
+    private BriefingPilotSelectionScreen parent;
 
-    public BriefingPilotChalkboard(BriefingContext briefingContext, BriefingPilotPanelSet parent)
+    public BriefingPilotChalkboard(BriefingContext briefingContext, BriefingPilotSelectionScreen parent)
     {
         super("");
         this.setLayout(new BorderLayout());

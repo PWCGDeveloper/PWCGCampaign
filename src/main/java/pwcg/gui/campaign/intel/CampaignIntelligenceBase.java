@@ -28,6 +28,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronViability;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -75,7 +76,7 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
         ImageResizingPanel squeezerPanel = new ImageResizingPanel("");
         squeezerPanel.setOpaque(false);
         squeezerPanel.setLayout(new BorderLayout());
-        String imagePath = UiImageResolver.getImageMisc("document.png");
+        String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
         squeezerPanel.setImage(imagePath);
         this.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 
@@ -103,7 +104,7 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
         ImageResizingPanel intelTextPanel = new ImageResizingPanel("");
         intelTextPanel.setOpaque(false);
         intelTextPanel.setLayout(new BorderLayout());
-        String imagePath = UiImageResolver.getImageMisc("document.png");
+        String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
         intelTextPanel.setImage(imagePath);
         this.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 

@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.utils.ImageResizingPanel;
 
@@ -22,7 +23,7 @@ public abstract class AARDocumentPanel extends ImageResizingPanel implements IAA
 
         try
         {
-            String imagePath = UiImageResolver.getImageMisc("document.png");
+            String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
             this.setImage(imagePath);
         }
         catch (Exception e)

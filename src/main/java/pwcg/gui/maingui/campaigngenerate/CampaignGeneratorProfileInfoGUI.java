@@ -16,9 +16,9 @@ public class CampaignGeneratorProfileInfoGUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 
-    private CampaignGeneratorPanelSet parent;
+    private CampaignGeneratorScreen parent;
 
-	public CampaignGeneratorProfileInfoGUI(CampaignGeneratorPanelSet parent, String imagePath) 
+	public CampaignGeneratorProfileInfoGUI(CampaignGeneratorScreen parent, String imagePath) 
 	{
         super();
         this.setOpaque(false);

@@ -26,7 +26,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.campaign.home.CampaignHome;
+import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -50,7 +50,7 @@ public class CampaignPilotPanelSet extends ImageResizingPanel implements ActionL
     private SquadronMember pilot;
 	private Squadron squad;
     private Campaign campaign;
-    private CampaignHome parent;
+    private CampaignHomeScreen parent;
 
     protected String changePilotPictureAction = "";
     protected String changeSkinAction = "";
@@ -58,7 +58,7 @@ public class CampaignPilotPanelSet extends ImageResizingPanel implements ActionL
     protected String openLogBookAction = "";
     protected JPanel centerPanel;
 
-    public CampaignPilotPanelSet(Campaign campaign, Squadron squad, SquadronMember pilot, CampaignHome parent)
+    public CampaignPilotPanelSet(Campaign campaign, Squadron squad, SquadronMember pilot, CampaignHomeScreen parent)
     {
         super("");
         this.setLayout(new BorderLayout());
@@ -340,7 +340,7 @@ public class CampaignPilotPanelSet extends ImageResizingPanel implements ActionL
         
         if (pilot != null)
         {
-            CampaignPilotLogPanelSet pilotLogPanel = new CampaignPilotLogPanelSet(campaign, pilot);
+            CampaignPilotLogScreen pilotLogPanel = new CampaignPilotLogScreen(campaign, pilot);
             pilotLogPanel.makePanels();
             
             CampaignGuiContextManager.getInstance().pushToContextStack(pilotLogPanel);
@@ -352,7 +352,7 @@ public class CampaignPilotPanelSet extends ImageResizingPanel implements ActionL
         SquadronMember pilot = UIUtils.getPilotFromAction(campaign, action);
         if (pilot != null)
         {
-            CampaignMedalPanelSet pilotMedalPanel = new CampaignMedalPanelSet(pilot);
+            CampaignMedalScreen pilotMedalPanel = new CampaignMedalScreen(pilot);
             pilotMedalPanel.makePanels();
             CampaignGuiContextManager.getInstance().pushToContextStack(pilotMedalPanel);
         }

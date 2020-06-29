@@ -13,9 +13,9 @@ public class CampaignHomeRightAcesPanel extends JPanel
 {
     private static final long serialVersionUID = 1L;
 
-    private CampaignHome campaignHome;
+    private CampaignHomeScreen campaignHome;
     
-    public CampaignHomeRightAcesPanel(CampaignHome campaignHome)  
+    public CampaignHomeRightAcesPanel(CampaignHomeScreen campaignHome)  
     {
         super();
         this.setLayout(new BorderLayout());

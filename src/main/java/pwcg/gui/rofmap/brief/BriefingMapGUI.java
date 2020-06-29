@@ -24,7 +24,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.campaign.home.CampaignHome;
+import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -60,7 +60,7 @@ import pwcg.mission.utils.MissionTime;
 public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightChanged, IBriefingSquadronSelectedCallback
 {
 	private static final long serialVersionUID = 1L;
-    private CampaignHome campaignHomeGui;
+    private CampaignHomeScreen campaignHomeGui;
 
     private JComboBox<String> cbFuel;
     private JComboBox<String> cbMissionTime;
@@ -70,7 +70,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
     private BriefingFlightChooser briefingFlightChooser;
     private BriefingMapPanel mapPanel;
 
-	public BriefingMapGUI(CampaignHome campaignHomeGui, Mission mission, BriefingContext briefingContext, Date mapDate) throws PWCGException  
+	public BriefingMapGUI(CampaignHomeScreen campaignHomeGui, Mission mission, BriefingContext briefingContext, Date mapDate) throws PWCGException  
 	{
 		super(mapDate);
 		
@@ -132,7 +132,6 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
         mapScroll = new MapScroll(mapPanel);  
         mapPanel.setMapBackground(100);
 
-        add(mapScroll.getMapScrollPane(), BorderLayout.CENTER);
         BriefingMapFlightMapper flightMapper = new BriefingMapFlightMapper(activeMissionHandler, mapPanel);
         flightMapper.mapRequestedFlights();
     }
@@ -569,7 +568,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
         activeMissionHandler.getBriefingFlightParameters().synchronizeAltitudeEdits();
         briefingContext.updateMissionBriefingParameters();
         
-        BriefingPilotPanelSet pilotSelection = new BriefingPilotPanelSet(campaignHomeGui.getCampaign(), campaignHomeGui,  briefingContext, mission);
+        BriefingPilotSelectionScreen pilotSelection = new BriefingPilotSelectionScreen(campaignHomeGui.getCampaign(), campaignHomeGui,  briefingContext, mission);
         pilotSelection.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(pilotSelection);
     }

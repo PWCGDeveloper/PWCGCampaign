@@ -43,12 +43,12 @@ public class CampaignGeneratorProfileGUI extends JPanel implements ActionListene
     private JLabel lCampaignType;
     private JLabel lCampaignName;
 
-    private CampaignGeneratorPanelSet parent;
+    private CampaignGeneratorScreen parent;
 
     private CampaignMode campaignMode = CampaignMode.CAMPAIGN_MODE_NONE;
     private String campaignName = "";
 
-	public CampaignGeneratorProfileGUI(CampaignGeneratorPanelSet parent) 
+	public CampaignGeneratorProfileGUI(CampaignGeneratorScreen parent) 
 	{
         super();
         this.setOpaque(false);
