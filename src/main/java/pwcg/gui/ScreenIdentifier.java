@@ -15,7 +15,9 @@ public enum ScreenIdentifier
     BriefingDescriptionScreen("BriefingDescriptionScreen", "Briefing Description Screen", "BrickWall.jpg"),
     MapScreens("MapScreens", "All Map Screens", "BrickWall.jpg"),
     DebriefMissionDescriptionScreen("DebriefMissionDescriptionScreen", "Debrief Mission Description Screen", "BrickWall.jpg"),
-    
+
+    CampaignPilotScreen("CampaignPilotScreen", "Campaign Pilot Screen", "PilotDeskTop.png"),
+
     PwcgCoopGlobalAdminScreen("PwcgCoopGlobalAdminScreen", "PWCG Global Coop Admin Screen", "TableTop.jpg"),
     PwcgSkinConfigurationAnalysisDisplayScreen("PwcgSkinConfigurationAnalysisDisplayScreen", "PWCG Skin Analysis Display Screen", "TableTop.jpg"),
     PwcgGlobalConfigurationScreen("PwcgGlobalConfigurationScreen", "PWCG Global Configuration Screen", "TableTop.jpg"),

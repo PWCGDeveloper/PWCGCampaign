@@ -19,7 +19,7 @@ import pwcg.gui.campaign.depot.CampaignEquipmentDepotScreen;
 import pwcg.gui.campaign.intel.CampaignIntelligenceReportScreen;
 import pwcg.gui.campaign.journal.CampaignJournalScreen;
 import pwcg.gui.campaign.journal.CampaignSquadronLogScreen;
-import pwcg.gui.campaign.pilot.CampaignPilotPanelSet;
+import pwcg.gui.campaign.pilot.CampaignPilotScreen;
 import pwcg.gui.campaign.skins.CampaignSkinConfigurationScreen;
 import pwcg.gui.campaign.transfer.CampaignLeaveScreen;
 import pwcg.gui.campaign.transfer.CampaignTransferScreen;
@@ -321,7 +321,7 @@ public class CampaignHomeAction
                 Ace ace = (Ace)pilot;
                 squad =  ace.determineSquadron();;
             }
-            CampaignPilotPanelSet pilotPanel = new CampaignPilotPanelSet(campaign, squad, pilot, parent);
+            CampaignPilotScreen pilotPanel = new CampaignPilotScreen(campaign, squad, pilot, parent);
             pilotPanel.makePanels();
             
             CampaignGuiContextManager.getInstance().pushToContextStack(pilotPanel);

@@ -5,7 +5,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
 
-public class CampaignAcePanel extends CampaignPilotPanelSet
+public class CampaignAcePanel extends CampaignPilotScreen
 {
     private static final long serialVersionUID = 1L;
 

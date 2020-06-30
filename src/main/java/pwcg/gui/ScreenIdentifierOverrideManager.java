@@ -54,6 +54,6 @@ public class ScreenIdentifierOverrideManager
     private void readScreenIdentifierOverrides() throws PWCGException
     {
         String pwcgInputConfigDir = PWCGContext.getInstance().getDirectoryManager().getPwcgConfigurationDir();
-        configuredOverrides = ScreenIdentifierOverrideIOJson.readJson(pwcgInputConfigDir, "ScreenImageOverrides.json");
+        configuredOverrides = ScreenIdentifierOverrideIOJson.readJson(pwcgInputConfigDir, "ScreenImageOverrides");
     }
 }
