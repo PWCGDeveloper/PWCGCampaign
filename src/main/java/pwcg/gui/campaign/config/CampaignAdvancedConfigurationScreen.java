@@ -164,6 +164,7 @@ public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel impl
 		button.setActionCommand("Configuration Parameters: " + buttonText);
 		button.setHorizontalAlignment(SwingConstants.LEFT );
 		button.setBorderPainted(false);
+		button.setFocusPainted(false);
 		button.addActionListener(this);
 		button.setOpaque(false);
 		button.setForeground(fgColor);

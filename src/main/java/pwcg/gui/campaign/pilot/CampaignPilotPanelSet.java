@@ -154,6 +154,7 @@ public class CampaignPilotPanelSet extends ImageResizingPanel implements ActionL
 		logButton.setBackground(bg);
 		logButton.setOpaque(false);
 		logButton.setBorderPainted(false);
+		logButton.setFocusPainted(false);
 		logButton.setFont(font);
 		logButton.setText("<html>               <br />               <br />               <br />               <br />               <br />               <br />               <br />               </html>");;
 		String actionCommand = openLogBookAction + pilot.getSerialNumber();
@@ -211,6 +212,7 @@ public class CampaignPilotPanelSet extends ImageResizingPanel implements ActionL
 		pilotPictureButton.setBackground(bg);
 		pilotPictureButton.setOpaque(false);
 		pilotPictureButton.setBorderPainted(false);
+		pilotPictureButton.setFocusPainted(false);
 		pilotPictureButton.setActionCommand(changePilotPictureAction);
         ToolTipManager.setToolTip(pilotPictureButton, "Change pilot picture");
 
@@ -260,6 +262,7 @@ public class CampaignPilotPanelSet extends ImageResizingPanel implements ActionL
         planeSkinsButton.setBackground(bg);
         planeSkinsButton.setOpaque(false);
         planeSkinsButton.setBorderPainted(false);
+        planeSkinsButton.setFocusPainted(false);
         String actionCommand =  changeSkinAction + pilot.getSerialNumber();
         planeSkinsButton.setActionCommand(actionCommand);
         ToolTipManager.setToolTip(planeSkinsButton, "Assign aircraft skins to this pilot");
@@ -282,6 +285,7 @@ public class CampaignPilotPanelSet extends ImageResizingPanel implements ActionL
 		medalBoxButton.setBackground(bg);
 		medalBoxButton.setOpaque(false);
 		medalBoxButton.setBorderPainted(false);
+		medalBoxButton.setFocusPainted(false);
 		String actionCommand =  openMedalBoxAction + pilot.getSerialNumber();
 		medalBoxButton.setActionCommand(actionCommand);
 		medalBoxButton.addActionListener(this);

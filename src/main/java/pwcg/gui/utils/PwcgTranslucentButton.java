@@ -28,6 +28,7 @@ public class PwcgTranslucentButton
         translucentButton.setActionCommand(action);
         translucentButton.addActionListener(actionListener);
         translucentButton.setBorderPainted(false);
+        translucentButton.setFocusPainted(false);
         translucentButton.setText(text);
 
         translucentButtonImagePanel.add(translucentButton, BorderLayout.CENTER);

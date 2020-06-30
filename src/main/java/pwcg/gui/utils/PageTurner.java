@@ -40,6 +40,7 @@ public class PageTurner
             prevButton.setOpaque(false);
             prevButton.setForeground(ColorMap.CHALK_FOREGROUND);   
             prevButton.setBorderPainted(false);
+            prevButton.setFocusPainted(false);
             leftButtonPanel.add(prevButton);
             
             for (int i = 0; i < spacingLabels; ++i)
@@ -62,6 +63,7 @@ public class PageTurner
             nextButton.setOpaque(false);
             nextButton.setForeground(ColorMap.CHALK_FOREGROUND);   
             nextButton.setBorderPainted(false);
+            nextButton.setFocusPainted(false);
             rightButtonPanel.add(nextButton);
 
             for (int i = 0; i < 1; ++i)

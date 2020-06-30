@@ -107,6 +107,7 @@ public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements A
         button.setActionCommand("" + coopDisplayRecord.getPilotSerialNumber());
         button.setHorizontalAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
+        button.setFocusPainted(false);
         button.addActionListener(this);
         button.setOpaque(false);
         button.setForeground(fg);

@@ -1,13 +1,18 @@
 package pwcg.gui.campaign.pilot;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
+import pwcg.campaign.medals.Medal;
+import pwcg.campaign.medals.MedalText;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -15,10 +20,13 @@ import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
 public class CampaignMedalScreen extends ImageResizingPanel implements ActionListener
@@ -26,6 +34,7 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
     private static final long serialVersionUID = 1L;
 
     private SquadronMember pilot;
+    private JTextArea medalTextArea;
 
     public CampaignMedalScreen(SquadronMember pilot)
     {
@@ -43,8 +52,7 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
         this.add(BorderLayout.WEST, makenavigationPanel());
 	    this.add(BorderLayout.CENTER, makeCenterPanel());
 	    
-        int percentForRightSpace = calcPercentForRightSpacer();
-        this.add(BorderLayout.EAST, SpacerPanelFactory.makeSpacerPercentPanel(percentForRightSpace));
+        this.add(BorderLayout.EAST, initializeTextPanelPanel());
 	}
 
     private JPanel makenavigationPanel() throws PWCGException  
@@ -121,7 +129,7 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
 
 	private JPanel makeMedalBox() throws PWCGException 
 	{
-		CampaignPilotMedalBox medalBoxPanel = new CampaignPilotMedalBox(pilot);
+		CampaignPilotMedalBox medalBoxPanel = new CampaignPilotMedalBox(this, pilot);
 		medalBoxPanel.makePanels();
 
         JPanel pilotMedalBoxPanel = new JPanel(new BorderLayout());
@@ -129,6 +137,69 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
         pilotMedalBoxPanel.add(medalBoxPanel, BorderLayout.CENTER);
 		return pilotMedalBoxPanel;
 	}
+    
+    private JPanel initializeTextPanelPanel() throws PWCGException
+    {
+        List<Medal> pilotMedals = pilot.getMedals();
+        if (!pilotMedals.isEmpty())
+        {
+            return makeTextPanelPanel(pilotMedals.get(0));
+        }
+        
+        int percentForRightSpace = calcPercentForRightSpacer();
+        return SpacerPanelFactory.makeSpacerPercentPanel(percentForRightSpace);
+    }
+
+	   
+    private JPanel makeTextPanelPanel(Medal medal) throws PWCGException  
+    {
+        JPanel medalTextPanel = new JPanel(new BorderLayout());
+        medalTextPanel.setOpaque(false);
+       
+        JPanel medalDescriptionPanel = formMedalTextPanel(medal);
+        
+        medalTextPanel.add(SpacerPanelFactory.createVerticalSpacerPanel(4), BorderLayout.NORTH);
+        medalTextPanel.add(medalDescriptionPanel, BorderLayout.CENTER);
+        medalTextPanel.add(SpacerPanelFactory.makeSpacerPercentPanel(20), BorderLayout.NORTH);
+
+        return medalTextPanel;
+    }
+
+
+    private JPanel formMedalTextPanel(Medal medal) throws PWCGException
+    {
+        String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
+        ImageResizingPanel medalTextPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+        medalTextPanel.setBorder(PwcgBorderFactory.createDocumentBorderWithExtraSpaceFromTop());
+
+        String medalText = MedalText.getTextForMedal(pilot, medal);
+
+        medalTextArea = createMedalTextArea();
+        medalTextArea.setText(medalText);
+        medalTextPanel.add(medalTextArea, BorderLayout.WEST);
+
+        return medalTextPanel;
+    }
+
+    private JTextArea createMedalTextArea() throws PWCGException
+    {
+        JTextArea medalTextArea;
+        Font font = PWCGMonitorFonts.getTypewriterFont();
+        medalTextArea = new JTextArea();
+        medalTextArea.setFont(font);
+        medalTextArea.setOpaque(false);
+        medalTextArea.setLineWrap(true);
+        medalTextArea.setWrapStyleWord(true);
+        medalTextArea.setText("");
+        medalTextArea.setPreferredSize(PwcgBorderFactory.createSideTextPreferredSize());
+
+        return medalTextArea;
+    }
+    
+    public void setMedalText(Medal medal)
+    {
+        medalTextArea.setText(MedalText.getTextForMedal(pilot, medal));
+    }
 
 	public void actionPerformed(ActionEvent ae)
 	{

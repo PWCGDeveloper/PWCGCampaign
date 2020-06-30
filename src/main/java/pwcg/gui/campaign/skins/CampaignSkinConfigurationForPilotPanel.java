@@ -544,6 +544,7 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
         button.setActionCommand(actionCommand);
         button.setHorizontalAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
+        button.setFocusPainted(false);
         button.addActionListener(this);
         button.setOpaque(false);
         button.setForeground(fgColor);

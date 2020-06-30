@@ -122,6 +122,7 @@ public class PwcgCoopGlobalAdminScreen extends ImageResizingPanel implements Act
         button.setActionCommand(buttonText);
         button.setHorizontalAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
+        button.setFocusPainted(false);
         button.addActionListener(this);
         button.setOpaque(false);
         button.setForeground(fgColor);

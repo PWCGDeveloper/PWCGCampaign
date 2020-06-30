@@ -128,6 +128,7 @@ public class PwcgGlobalConfigurationScreen extends ImageResizingPanel implements
         button.setActionCommand("Configuration Parameters: " + buttonText);
         button.setHorizontalAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
+        button.setFocusPainted(false);
         button.addActionListener(this);
         button.setOpaque(false);
         button.setForeground(fgColor);

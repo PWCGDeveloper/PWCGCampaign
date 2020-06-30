@@ -3,8 +3,13 @@ package pwcg.gui.campaign.pilot;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -18,6 +23,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
+import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.image.ImageIconCache;
@@ -26,21 +32,24 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PwcgBorderFactory;
 
-public class CampaignPilotMedalBox extends ImageResizingPanel
+public class CampaignPilotMedalBox extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
+    private CampaignMedalScreen campaignMedalScreen;
     private int medalsPerRow = 5;
 	private SquadronMember pilot = null;
+	private Map<String, Medal> medals = new HashMap<>();
 
-	public CampaignPilotMedalBox(SquadronMember pilot)
+	public CampaignPilotMedalBox(CampaignMedalScreen campaignMedalScreen, SquadronMember pilot)
 	{
         super("");
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
-        this.medalsPerRow = calcMedalsPerRow();
+        this.campaignMedalScreen = campaignMedalScreen;
         this.pilot = pilot;
+        this.medalsPerRow = calcMedalsPerRow();
 	}
 
 	public void makePanels() throws PWCGException  
@@ -115,11 +124,18 @@ public class CampaignPilotMedalBox extends ImageResizingPanel
 		            PWCGLogger.logException(ex);
 				}
 				
-				JLabel lMedal = new JLabel(medalIcon);
-				lMedal.setBackground(bg);
-				lMedal.setOpaque(false);
+				JButton medalButton = new JButton(medalIcon);
+                medalButton.setPressedIcon(medalIcon);
+				medalButton.setBackground(bg);
+				medalButton.setOpaque(false);
+				medalButton.setBorderPainted(false);
+                medalButton.setFocusPainted(false);
+				medalButton.setActionCommand(medal.getMedalName());
+				medalButton.addActionListener(this);
 
-				medalPanel.add(lMedal);
+				medals.put(medal.getMedalName(), medal);
+
+				medalPanel.add(medalButton);
 			}
 		}
 
@@ -138,4 +154,20 @@ public class CampaignPilotMedalBox extends ImageResizingPanel
 		
 		return medalPanel;
 	}
+	
+
+    public void actionPerformed(ActionEvent ae)
+    {
+        try
+        {
+            String medalName = ae.getActionCommand();
+            Medal medal = medals.get(medalName);
+            campaignMedalScreen.setMedalText(medal);
+        }
+        catch (Exception e)
+        {
+            PWCGLogger.logException(e);
+            ErrorDialog.internalError(e.getMessage());
+        }
+    }
 }

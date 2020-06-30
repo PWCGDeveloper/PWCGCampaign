@@ -131,6 +131,7 @@ public class PWCGButtonFactory extends JButton
         button.setOpaque(false);
         button.setFont(font);
         button.setBorderPainted(false);
+        button.setFocusPainted(false);
         button.setHorizontalAlignment(SwingConstants.LEFT);
         button.addActionListener(actionListener);
         return button;
@@ -271,6 +272,7 @@ public class PWCGButtonFactory extends JButton
         JCheckBox button = new JCheckBox(buttonText);
         button.setHorizontalAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
+        button.setFocusPainted(false);
         button.setOpaque(false);
         button.setForeground(fgColor);
         button.setFont(font);
@@ -287,6 +289,7 @@ public class PWCGButtonFactory extends JButton
         JCheckBox button = new JCheckBox(buttonText);
         button.setHorizontalAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
+        button.setFocusPainted(false);
         button.setOpaque(false);
         button.setForeground(fgColor);
         button.setFont(font);

@@ -295,6 +295,7 @@ public class NewPilotDataEntryGUI extends JPanel implements ActionListener
         nextStepButton.setHorizontalAlignment(SwingConstants.LEFT);
         nextStepButton.addActionListener(this);
         nextStepButton.setBorderPainted(false);
+        nextStepButton.setFocusPainted(false);
         nextStepButton.setForeground(fgColor);
         nextStepButton.setFont(font);
         dataConstraints.gridx = 2;
@@ -309,6 +310,7 @@ public class NewPilotDataEntryGUI extends JPanel implements ActionListener
         previousStepButton.setHorizontalAlignment(SwingConstants.LEFT);
         previousStepButton.addActionListener(this);
         previousStepButton.setBorderPainted(false);
+        previousStepButton.setFocusPainted(false);
         previousStepButton.setForeground(fgColor);
         previousStepButton.setFont(font);
         dataConstraints.gridx = 2;

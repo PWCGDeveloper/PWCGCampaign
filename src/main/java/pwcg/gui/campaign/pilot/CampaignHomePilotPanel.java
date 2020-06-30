@@ -102,6 +102,8 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
         namePlateButton.setForeground(buttonFG);
         namePlateButton.setOpaque(false);
         namePlateButton.setFont(font);
+        namePlateButton.setBorderPainted(false);
+        namePlateButton.setFocusPainted(false);
         namePlateButton.setHorizontalAlignment(SwingConstants.LEFT);
         namePlateButton.setFont(font);
         String actionCommand = action + pilot.getSerialNumber();

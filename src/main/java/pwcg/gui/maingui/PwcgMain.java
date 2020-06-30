@@ -1,6 +1,7 @@
 package pwcg.gui.maingui;
 
 import java.awt.Color;
+import java.awt.Insets;
 import java.io.File;
 
 import javax.swing.UIManager;
@@ -97,5 +98,9 @@ public class PwcgMain
         Color tabSelectedColor = ColorMap.PAPER_BACKGROUND;
         UIManager.put("TabbedPane.selected", tabSelectedColor);
         UIManager.put("TabbedPane.contentOpaque", false);
+        
+        Insets insets = UIManager.getInsets("TabbedPane.contentBorderInsets");
+        insets.top = -1;
+        UIManager.put("TabbedPane.contentBorderInsets", insets);
     }
 }

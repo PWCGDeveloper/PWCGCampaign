@@ -87,6 +87,7 @@ public class ChalkboardSelector extends JPanel implements ActionListener
         button.setActionCommand(action);
         button.setHorizontalAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
+        button.setFocusPainted(false);
         button.addActionListener(this);
         button.setOpaque(false);
         button.setForeground(fgColor);

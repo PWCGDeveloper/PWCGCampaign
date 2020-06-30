@@ -1,5 +1,7 @@
 package pwcg.gui.utils;
 
+import java.awt.Dimension;
+
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 
@@ -93,4 +95,21 @@ public class PwcgBorderFactory
         }
     }
     
+    public static Dimension createSideTextPreferredSize()
+    {
+        MonitorSize monitorSize = PWCGMonitorSupport.getFrameHeight();
+        if (monitorSize == MonitorSize.FRAME_LARGE)
+        {
+            return new Dimension(500, 900);
+        }
+        else if (monitorSize == MonitorSize.FRAME_MEDIUM)
+        {
+            return new Dimension(400, 800);
+        }
+        else 
+        {
+            return new Dimension(300, 700);
+        }
+    }
+  
 }

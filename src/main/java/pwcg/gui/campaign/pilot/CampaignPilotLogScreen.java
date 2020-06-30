@@ -212,6 +212,7 @@ public class CampaignPilotLogScreen extends ImageResizingPanel implements Action
 				prevButton.setBackground(bg);
 				prevButton.setForeground(fg);	
 				prevButton.setBorderPainted(false);
+				prevButton.setFocusPainted(false);
 				prevButton.setFont(font);
 				prevButton.setHorizontalAlignment(SwingConstants.CENTER);
 				
@@ -234,6 +235,7 @@ public class CampaignPilotLogScreen extends ImageResizingPanel implements Action
 				nextButton.setBackground(bg);	
 				nextButton.setForeground(fg);	
 				nextButton.setBorderPainted(false);
+				nextButton.setFocusPainted(false);
 				nextButton.setFont(font);
 				nextButton.setHorizontalAlignment(SwingConstants.CENTER);
 
