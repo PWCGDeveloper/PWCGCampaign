@@ -60,6 +60,11 @@ public class FlightCrewBuilder
         while (assignedCrewMap.size() < numCrewNeeded)
         {
             List<Integer> unassignedAiCrewSerialNumbers = buildUNassignedAiCrewMembers();
+            if (unassignedAiCrewSerialNumbers.size() == 0)
+            {
+                System.out.println("oops");
+            }
+            
             int crewIndex = RandomNumberGenerator.getRandom(unassignedAiCrewSerialNumbers.size());
             int selectedSerialNumber = unassignedAiCrewSerialNumbers.get(crewIndex);
             SquadronMember crewToAssign = unassignedCrewMap.get(selectedSerialNumber);
@@ -74,12 +79,28 @@ public class FlightCrewBuilder
         List<Integer> unassignedCrewSerialNumbers = new ArrayList<>(unassignedCrewMap.keySet());
         for (int unassignedCrewSerialNumber : unassignedCrewSerialNumbers)
         {
-        	if (SerialNumber.getSerialNumberClassification(unassignedCrewSerialNumber) == SerialNumberClassification.AI)
+        	if (shouldAssignAIPilot(unassignedCrewSerialNumber))
         	{
         		unassignedAiCrewSerialNumbers.add(unassignedCrewSerialNumber);
         	}
         }
         return unassignedAiCrewSerialNumbers;
+	}
+	
+	private boolean shouldAssignAIPilot(int unassignedCrewSerialNumber)
+	{
+        if (SerialNumber.getSerialNumberClassification(unassignedCrewSerialNumber) != SerialNumberClassification.AI)
+        {
+            return true;
+        }
+        else if (SerialNumber.getSerialNumberClassification(unassignedCrewSerialNumber) != SerialNumberClassification.ACE)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
 	}
 	
     private List<SquadronMember> sortCrewsByRank() throws PWCGException

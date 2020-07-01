@@ -48,11 +48,9 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.maingui.campaigngenerate.NewPilotState.PilotGeneratorWorkflow;
-import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGJButton;
 
-public class NewPilotDataEntryGUI extends ImageResizingPanel implements ActionListener
+public class NewPilotDataEntryGUI extends JPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -80,15 +78,16 @@ public class NewPilotDataEntryGUI extends ImageResizingPanel implements ActionLi
     private JLabel lPlayerName;
     private JLabel lRegion;
 
-    private NewPilotGeneratorUI parent;
+    private CampaignNewPilotScreen parent;
     private Campaign campaign;
 
-	public NewPilotDataEntryGUI(Campaign campaign, NewPilotGeneratorUI parent) 
+	public NewPilotDataEntryGUI(Campaign campaign, CampaignNewPilotScreen parent) 
 	{
-        super(ContextSpecificImages.menuPathMain() + "CampaignGenCenter.jpg");
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
+
         this.campaign = campaign;
         this.parent = parent;
-		this.setLayout(new BorderLayout());
 	}
 	
 
@@ -296,6 +295,7 @@ public class NewPilotDataEntryGUI extends ImageResizingPanel implements ActionLi
         nextStepButton.setHorizontalAlignment(SwingConstants.LEFT);
         nextStepButton.addActionListener(this);
         nextStepButton.setBorderPainted(false);
+        nextStepButton.setFocusPainted(false);
         nextStepButton.setForeground(fgColor);
         nextStepButton.setFont(font);
         dataConstraints.gridx = 2;
@@ -310,6 +310,7 @@ public class NewPilotDataEntryGUI extends ImageResizingPanel implements ActionLi
         previousStepButton.setHorizontalAlignment(SwingConstants.LEFT);
         previousStepButton.addActionListener(this);
         previousStepButton.setBorderPainted(false);
+        previousStepButton.setFocusPainted(false);
         previousStepButton.setForeground(fgColor);
         previousStepButton.setFont(font);
         dataConstraints.gridx = 2;

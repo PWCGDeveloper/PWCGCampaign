@@ -24,11 +24,9 @@ import pwcg.gui.campaign.config.CampaignConfigurationSimpleGUIController;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignGeneratorProfileGUI extends ImageResizingPanel implements ActionListener
+public class CampaignGeneratorProfileGUI extends JPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -45,17 +43,18 @@ public class CampaignGeneratorProfileGUI extends ImageResizingPanel implements A
     private JLabel lCampaignType;
     private JLabel lCampaignName;
 
-    private CampaignGeneratorPanelSet parent;
+    private CampaignGeneratorScreen parent;
 
     private CampaignMode campaignMode = CampaignMode.CAMPAIGN_MODE_NONE;
     private String campaignName = "";
 
-	public CampaignGeneratorProfileGUI(CampaignGeneratorPanelSet parent) 
+	public CampaignGeneratorProfileGUI(CampaignGeneratorScreen parent) 
 	{
-        super(ContextSpecificImages.menuPathMain() + "CampaignGenCenter.jpg");
-        this.parent = parent;       
+        super();
         this.setOpaque(false);
         this.setLayout(new BorderLayout());
+
+        this.parent = parent;       
 	}
 	
 
@@ -97,12 +96,25 @@ public class CampaignGeneratorProfileGUI extends ImageResizingPanel implements A
         lCampaignType = makeCoopLabel(CampaignConfigurationSimpleGUIController.CAMPAIGN_TYPE + ":");      
         coopButtonPanelGrid.add(lCampaignType);
 
-        JRadioButton singlePlayerButton = PWCGButtonFactory.makeRadioButton("Single Player Mode", "Mission Mode: Single Player", "Select single player mode for generated missions", false, this);       
+        JRadioButton singlePlayerButton = PWCGButtonFactory.makeRadioButton(
+                "Single Player Mode", 
+                "Mission Mode: Single Player", 
+                "Select single player mode for generated missions", 
+                false, 
+                this,
+                ColorMap.CHALK_FOREGROUND);       
         coopButtonPanelGrid.add(singlePlayerButton);
         singlePlayerButtonModel = singlePlayerButton.getModel();
         coopGroup.add(singlePlayerButton);
 
-        JRadioButton coopCooperativeButton = PWCGButtonFactory.makeRadioButton("Coop Cooperative Mode", "Mission Mode: Coop Cooperative", "Select coop player mode for generated missions", false, this);              
+        JRadioButton coopCooperativeButton = PWCGButtonFactory.makeRadioButton(
+                "Coop Cooperative Mode", 
+                "Mission Mode: Coop Cooperative", 
+                "Select coop player mode for generated missions", 
+                false, 
+                this,
+                ColorMap.CHALK_FOREGROUND);       
+              
         coopButtonPanelGrid.add(coopCooperativeButton);
         coopCooperativeButtonModel = coopCooperativeButton.getModel();
         coopGroup.add(coopCooperativeButton);

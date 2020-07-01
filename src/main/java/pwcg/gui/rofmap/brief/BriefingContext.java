@@ -16,6 +16,7 @@ public class BriefingContext
 {
     private BriefingMissionParameters briefingMissionParameters = new BriefingMissionParameters();
     private Map<Integer, BriefingMissionFlight> briefingMissionHandlers = new HashMap<>();
+    private Map<Integer, String> aiFlightsToDisplay = new HashMap<>();
     private int selectedSquadronId = 0;
     private Mission mission;
 
@@ -73,14 +74,34 @@ public class BriefingContext
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(selectedSquadronId);
         return playerFlight;
     }
+
+    public void setAiFlightsToDisplay(Map<Integer, String> aiFlightsToDisplay)
+    {
+        this.aiFlightsToDisplay = aiFlightsToDisplay;
+    }
+
+    public void clearAiFlightsToDisplay()
+    {
+        aiFlightsToDisplay.clear();
+    }
     
     public void changeSelectedFlight(Squadron squadron)
     {
         selectedSquadronId = squadron.getSquadronId();
     }
 
+    public Map<Integer, String> getAiFlightsToDisplay()
+    {
+        return aiFlightsToDisplay;
+    }
+
     public BriefingMissionParameters getBriefingMissionParameters()
     {
         return briefingMissionParameters;
+    }
+
+    public Mission getMission()
+    {
+        return mission;
     }
 }

@@ -6,15 +6,15 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.PWCGLogger;
-import pwcg.gui.dialogs.ErrorDialog;
+import pwcg.gui.campaign.home.CampaignHomeScreen;
+import pwcg.gui.maingui.PwcgMainScreen;
 import pwcg.gui.utils.PWCGFrame;
 
 public class CampaignGuiContextManager
 {
     private static CampaignGuiContextManager instance = new CampaignGuiContextManager();
     
-    private List<PwcgGuiContext> contextStack = new ArrayList<PwcgGuiContext>();
+    private List<JPanel> contextStack = new ArrayList<>();
 
     private CampaignGuiContextManager()
     {
@@ -30,18 +30,12 @@ public class CampaignGuiContextManager
         contextStack.clear();
     }
 
-    public PwcgGuiContext getCurrentContext() throws PWCGException 
+    public void refreshCurrentContext(JPanel context) throws PWCGException
     {
-        if (contextStack.size() == 0)
-        {
-            throw new PWCGException ("No cpntext available");
-        }
-        
-        int index = contextStack.size() - 1;
-        return contextStack.get(index);
+        displayCurrentContext();
     }
 
-    public void pushToContextStack(PwcgGuiContext context) throws PWCGException
+    public void pushToContextStack(JPanel context) throws PWCGException
     {
         contextStack.add(context);
         displayCurrentContext();
@@ -62,62 +56,32 @@ public class CampaignGuiContextManager
         if (contextStack.size() > 0)
         {
             int index = contextStack.size() - 1;
-            PwcgGuiContext context = contextStack.get(index);
-            
-            displayContext(context);
-        }
-    }
-
-    private void displayContext(PwcgGuiContext context) 
-    {
-        try
-        {            
+            JPanel context = contextStack.get(index);
             PWCGFrame.getInstance().setPanel(context);
-            
-            if (context.getLeftPanel() != null)
-            {
-                context.setLeftPanel(context.getLeftPanel());
-            }
-            if (context.getCenterPanel() != null)
-            {
-                context.setCenterPanel(context.getCenterPanel());
-            }
-            if (context.getRightPanel() != null)
-            {
-                context.setRightPanel(context.getRightPanel());
-            }
-        }
-        catch (Exception e)
-        {
-            PWCGLogger.logException(e);
-            ErrorDialog.internalError(e.getMessage());
         }
     }
 
-    /**
-     * This allows a context to change some panels without adding a new context to the stack.
-     * This is desirable when displaying things like page turning which would entail a newly rendered
-     * center panel within the same context (Pilot Log for example)
-     * 
-     * @throws PWCGException 
-     * 
-     */
-    public void changeCurrentContext(JPanel leftPanel, JPanel centerPanel, JPanel rightPanel) throws PWCGException  
+    public void backToCampaignHome() throws PWCGException
     {
-        PwcgGuiContext context = getCurrentContext();
-        if (leftPanel != null)
+        int index = contextStack.size() - 1;
+        JPanel context = contextStack.get(index);
+        while (!(context instanceof CampaignHomeScreen) && index > 1)
         {
-            context.setLeftPanel(leftPanel);
-        }
-        
-        if (centerPanel != null)
+            popFromContextStack();
+            index = contextStack.size() - 1;
+            context = contextStack.get(index);
+        }        
+    }
+
+    public void backToMain() throws PWCGException
+    {
+        int index = contextStack.size() - 1;
+        JPanel context = contextStack.get(index);
+        while (!(context instanceof PwcgMainScreen) && index > 0)
         {
-            context.setCenterPanel(centerPanel);
-        }
-        
-        if (rightPanel != null)
-        {
-            context.setRightPanel(rightPanel);
-        }
+            popFromContextStack();
+            index = contextStack.size() - 1;
+            context = contextStack.get(index);
+        }        
     }
 }

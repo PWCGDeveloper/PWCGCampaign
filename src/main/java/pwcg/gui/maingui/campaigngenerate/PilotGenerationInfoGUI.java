@@ -2,7 +2,6 @@ package pwcg.gui.maingui.campaigngenerate;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -24,6 +23,7 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ToolTipManager;
@@ -33,10 +33,10 @@ public class PilotGenerationInfoGUI extends JPanel implements ActionListener
 
 	private static final long serialVersionUID = 1L;
 	
-    private NewPilotGeneratorUI parent = null;
+    private CampaignNewPilotScreen parent = null;
     private Campaign campaign = null;
 
-	public PilotGenerationInfoGUI(NewPilotGeneratorUI parent, Campaign campaign)
+	public PilotGenerationInfoGUI(CampaignNewPilotScreen parent, Campaign campaign)
 	{
 		super();
         this.setLayout(new BorderLayout());
@@ -61,8 +61,8 @@ public class PilotGenerationInfoGUI extends JPanel implements ActionListener
         int numRows = 0;
 		int numCols = 1;
 
-		Dimension screenSize = PWCGMonitorSupport.getPWCGFrameSize();
-		if (screenSize.height < 900)
+        MonitorSize monitorSize = PWCGMonitorSupport.getFrameHeight();
+		if (monitorSize == MonitorSize.FRAME_VERY_SMALL || monitorSize == MonitorSize.FRAME_SMALL)
 		{
 	        numRows = 6;
 	        numCols = 2;

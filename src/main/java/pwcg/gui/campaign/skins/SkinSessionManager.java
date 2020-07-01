@@ -267,6 +267,5 @@ public class SkinSessionManager
     {
         this.looseSkinsSelected = looseSkinsSelected;
     }
-
     
 }

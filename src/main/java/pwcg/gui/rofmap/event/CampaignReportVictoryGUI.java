@@ -2,6 +2,8 @@ package pwcg.gui.rofmap.event;
 
 import java.util.List;
 
+import javax.swing.JPanel;
+
 import pwcg.aar.ui.events.model.VictoryEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.VictoryDescription;
@@ -43,5 +45,17 @@ public class CampaignReportVictoryGUI extends CampaignDocumentGUI
     @Override
     public void finished()
     {
+    }
+
+    @Override
+    public boolean isShouldDisplay()
+    {
+        return shouldDisplay;
+    }
+
+    @Override
+    public JPanel getPanel()
+    {
+        return this;
     }
 }

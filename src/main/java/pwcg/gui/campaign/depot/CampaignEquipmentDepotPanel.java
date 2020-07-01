@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -18,10 +20,8 @@ import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.gui.utils.ImagePanel;
 
-public class CampaignEquipmentDepotPanel extends ImagePanel
+public class CampaignEquipmentDepotPanel extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -41,9 +41,6 @@ public class CampaignEquipmentDepotPanel extends ImagePanel
     {
         try
         {
-            String imagePath = ContextSpecificImages.imagesMisc() + "PaperFull.jpg";
-            setImage(imagePath);
-            
             JPanel depoPanel = formDepotText();
             this.add(depoPanel, BorderLayout.NORTH);
         }
@@ -132,11 +129,25 @@ public class CampaignEquipmentDepotPanel extends ImagePanel
 
     private String formAircraftInventory(List<EquippedPlane> aircraftForRole, Role role) throws PWCGException
     {
-        StringBuffer depoStatusBuffer = new StringBuffer();
-        depoStatusBuffer.append("\n  " + role.getRoleDescription() + "\n");        
+        Map<String, Integer> planeCount = new TreeMap<>();
         for (EquippedPlane plane : aircraftForRole)
         {
-            depoStatusBuffer.append("    " + plane.getDisplayName() + " (" + plane.getSerialNumber() + ")");
+            if (!planeCount.containsKey(plane.getDisplayName()))
+            {
+                planeCount.put(plane.getDisplayName(), 0);
+            }
+            
+            int count = planeCount.get(plane.getDisplayName());
+            ++count;
+            planeCount.put(plane.getDisplayName(), count);
+        }
+        
+        StringBuffer depoStatusBuffer = new StringBuffer();
+        depoStatusBuffer.append("\n  " + role.getRoleDescription() + "\n");        
+        for (String planeDesc : planeCount.keySet())
+        {
+            int count = planeCount.get(planeDesc);
+            depoStatusBuffer.append("    " + planeDesc + ": " + count);
             depoStatusBuffer.append(".\n");          
         }
         

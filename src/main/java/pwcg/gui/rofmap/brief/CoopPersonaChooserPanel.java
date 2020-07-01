@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
@@ -15,8 +16,9 @@ import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopPersona;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.ScreenIdentifier;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ISelectorGUICallback;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.MultiSelectData;
@@ -26,7 +28,7 @@ public class CoopPersonaChooserPanel extends ImageResizingPanel implements ISele
 {
 	private static final long serialVersionUID = 1L;
     private SelectorGUI selector;
-    private CoopPersonaChooser parent;
+    private BriefingCoopPersonaChooser parent;
     private Campaign campaign;
 	
     private Map<String, SquadronMember> playerSquadronMembers = new TreeMap<>();
@@ -34,9 +36,12 @@ public class CoopPersonaChooserPanel extends ImageResizingPanel implements ISele
     
     public static final String NO_USER_FOR_PILOT = "No User For Pilot";
 
-	public CoopPersonaChooserPanel(Campaign campaign, CoopPersonaChooser parent)
+	public CoopPersonaChooserPanel(Campaign campaign, BriefingCoopPersonaChooser parent)
 	{
-	    super(ContextSpecificImages.imagesMisc() + "Paper.jpg");
+        super("");
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
+	    
 	    this.campaign = campaign;
 	    this.parent = parent;
 	}
@@ -45,6 +50,10 @@ public class CoopPersonaChooserPanel extends ImageResizingPanel implements ISele
 	{
 		try
 		{
+	        String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
+	        this.setImage(imagePath);
+	        this.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
+
 	        JPanel centerPanel = makeAcceptancePanel();
 	        this.add(centerPanel, BorderLayout.CENTER);
 	        loadPanels();

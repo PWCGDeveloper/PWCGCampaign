@@ -135,7 +135,6 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
         }
         else if (scaleLevel == 150)
         {
-            // Max already
         }
     }
 
@@ -143,7 +142,6 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
     {
         if (scaleLevel == 50)
         {
-            // Min already
         }
         else if (scaleLevel == 75)
         {
@@ -180,7 +178,6 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
         Coordinate coord = new Coordinate();
 
         double x = Double.valueOf(point.x) / ratioWidth;
-        // ROF N-S goes low to high
         int invertedY = mapSize.height - point.y;
         double y = Double.valueOf(invertedY) / ratioHeight;
 
@@ -194,9 +191,6 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
         return coord;
     }
 
-    /**
-     * @return
-     */
     public Dimension getMapSize()
     {
         return getImageSize();
@@ -251,16 +245,6 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
         }
     }
 
-    /**
-     * If a point is far away from the next, do not draw a line
-     * 
-     * @param x
-     * @param y
-     * @param x2
-     * @param y2
-     * @return
-     * @throws PWCGException
-     */
     private boolean shouldDraw(int x, int y, int x2, int y2) throws PWCGException
     {
         Point point1 = new Point();
@@ -283,11 +267,6 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
         return false;
     }
 
-    /**
-     * @param usedPoints
-     * @param point
-     * @return
-     */
     public Point getBestPoint(List<Point> usedPoints, Point point)
     {
         Point bestPoint = new Point();
@@ -314,7 +293,6 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
 
             ++numTries;
 
-            // Give up before we move things completely out of position
             if (numTries > 3)
             {
                 good = true;
@@ -325,38 +303,21 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
         return bestPoint;
     }
 
-    /**
-     * 
-     */
     public void refresh()
     {
-        this.setVisible(false);
-        this.setVisible(true);
+        this.revalidate();
+        this.repaint();
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see rof.campaign.gui.utils.ImageResizingPanel#makeVisible(boolean)
-     */
     public void makeVisible(boolean isVisible)
     {
         this.setVisible(isVisible);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see rof.campaign.gui.utils.ImageResizingPanel#paintComponent(java.awt.
-     * Graphics)
-     */
     public abstract void paintComponent(Graphics g);
 
     public abstract void mouseMovedCallback(MouseEvent e);
 
-    /**
-     * @param mouseEvent
-     */
     public void mouseDraggedCallback(MouseEvent mouseEvent)
     {
         if (movementEnabled)
@@ -370,20 +331,22 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
             parent.getMapScroll().moveScrollBarPosition(xMovement, yMovement);
 
             mapScrollPositionStart.x = mouseEvent.getX();
-            mapScrollPositionStart.y = mouseEvent.getY();
+            mapScrollPositionStart.y = mouseEvent.getY();            
         }
 
     }
 
-    /**
-     * @param mouseEvent
-     */
     public void leftClickCallback(MouseEvent mouseEvent)
 
     {
         movementEnabled = true;
         mapScrollPositionStart.x = mouseEvent.getX();
         mapScrollPositionStart.y = mouseEvent.getY();
+    }
+
+    public void leftClickReleasedCallback(MouseEvent mouseEvent) throws PWCGException
+    {
+        movementEnabled = false;
     }
 
     protected void drawArrow(Graphics g, int x1, int y1, int x2, int y2)
@@ -404,11 +367,6 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
         g2d.fillPolygon(new int[]
         { len, len - ARR_SIZE, len - ARR_SIZE, len }, new int[]
         { 0, -ARR_SIZE, ARR_SIZE, 0 }, 4);
-    }
-
-    public void leftClickReleasedCallback(MouseEvent mouseEvent) throws PWCGException
-    {
-        movementEnabled = false;
     }
 
     public abstract void rightClickCallback(MouseEvent e);

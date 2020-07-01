@@ -24,18 +24,18 @@ public class GermanMedalManager extends BoSMedalManager
     {
         super(campaign);
 		
-        medals.put(PILOTS_BADGE, new Medal ("Pilots Badge",                                "PB.jpg"));
-        medals.put(IRON_CROSS_2, new Medal ("Iron Cross 2nd Class",                        "IC2.jpg"));
-		medals.put(IRON_CROSS_1, new Medal ("Iron Cross 1st Class", 					   "IC1.jpg"));
-		medals.put(GERMAN_CROSS_GOLD, new Medal ("German Cross Gold", 	                   "GCG.jpg"));
-		medals.put(KNIGHTS_CROSS, new Medal ("Knights Cross", 	                           "KC.jpg"));
-		medals.put(KNIGHTS_CROSS_OAK_LEAVES, new Medal ("Knights Cross with Oak Leaves",   "KCOL.jpg"));
-        medals.put(KNIGHTS_CROSS_SWORDS, new Medal ("Knights Cross with Swords",         "KCS.jpg"));
-        medals.put(KNIGHTS_CROSS_DIAMONDS, new Medal ("Knights Cross with Diamonds",         "KCD.jpg"));
+        medals.put(PILOTS_BADGE, new Medal ("Pilots Badge",                                "ger_pilots_badge.png"));
+        medals.put(IRON_CROSS_2, new Medal ("Iron Cross 2nd Class",                        "ger_iron_cross_second_class.png"));
+		medals.put(IRON_CROSS_1, new Medal ("Iron Cross 1st Class", 					   "ger_iron_cross_first_class.png"));
+		medals.put(GERMAN_CROSS_GOLD, new Medal ("German Cross Gold", 	                   "ger_german_cross_gold.png"));
+		medals.put(KNIGHTS_CROSS, new Medal ("Knights Cross", 	                           "ger_knights_cross.png"));
+		medals.put(KNIGHTS_CROSS_OAK_LEAVES, new Medal ("Knights Cross with Oak Leaves",   "ger_knights_cross_oak_leaves.png"));
+        medals.put(KNIGHTS_CROSS_SWORDS, new Medal ("Knights Cross with Swords",         "ger_knights_cross_swords.png"));
+        medals.put(KNIGHTS_CROSS_DIAMONDS, new Medal ("Knights Cross with Diamonds",         "ger_knights_cross_diamonds.png"));
 		
-		medals.put(WOUND_BADGE_BLACK, new Medal ("Wound Badge(Black)", 		"BWB.jpg"));
-		medals.put(WOUND_BADGE_SILVER, new Medal ("Wound Badge(Silver)", 	"SWB.jpg"));
-		medals.put(WOUND_BADGE_GOLD, new Medal ("Wound Badge(Gold)", 		"GWB.jpg"));
+		medals.put(WOUND_BADGE_BLACK, new Medal ("Wound Badge(Black)", 		"ger_wound_badge_black.png"));
+		medals.put(WOUND_BADGE_SILVER, new Medal ("Wound Badge(Silver)", 	"ger_wound_badge_silver.png"));
+		medals.put(WOUND_BADGE_GOLD, new Medal ("Wound Badge(Gold)", 		"ger_wound_badge_gold.png"));
 	} 
 
 	public Medal getWoundedAward(SquadronMember pilot, ArmedService service) 

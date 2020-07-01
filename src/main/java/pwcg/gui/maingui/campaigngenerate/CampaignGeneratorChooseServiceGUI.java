@@ -33,9 +33,9 @@ public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionL
 
 	private static final long serialVersionUID = 1L;
 	
-	private CampaignGeneratorPanelSet parent = null;
+	private CampaignGeneratorScreen parent = null;
 
-	public CampaignGeneratorChooseServiceGUI(CampaignGeneratorPanelSet parent)
+	public CampaignGeneratorChooseServiceGUI(CampaignGeneratorScreen parent)
 	{
         this.parent = parent;
         this.setLayout(new BorderLayout());
@@ -56,7 +56,6 @@ public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionL
         internalServicePanel.setLayout(new BorderLayout());
         internalServicePanel.setOpaque(false);
 
-		// Make a button for each service
         ButtonGroup serviceButtonGroup = new ButtonGroup();
         
         JPanel servicePanel = new JPanel(new GridLayout(0, 2));

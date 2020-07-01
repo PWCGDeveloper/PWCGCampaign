@@ -1,14 +1,15 @@
 package pwcg.gui.rofmap.event;
 
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 import pwcg.aar.ui.events.model.MedalEvent;
 import pwcg.campaign.Campaign;
@@ -22,16 +23,15 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.dialogs.ErrorDialog;
+import pwcg.gui.dialogs.PWCGMonitorBorders;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.image.ImageIconCache;
-import pwcg.gui.utils.CampaignDocumentPage;
 import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignReportMedalGUI extends ImageResizingPanel implements ActionListener
+public class CampaignReportMedalGUI extends JPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -40,19 +40,12 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
 
 	public CampaignReportMedalGUI(Campaign campaign, MedalEvent medalEvent) throws PWCGException
 	{
-		super(ContextSpecificImages.imagesMedals() + "medalAwardAllied.jpg");
+	    this.setLayout(new BorderLayout());
+	    this.setOpaque(false);
 
         this.medalEvent = medalEvent;
 		this.medalRecipient = campaign.getPersonnelManager().getAnyCampaignMember(medalEvent.getPilotSerialNumber());
-		
-        ICountry country = CountryFactory.makeCountryByCountry(medalRecipient.getCountry());
-        if (country.getSide() == Side.AXIS)
-        {
-            imagePath = ContextSpecificImages.imagesMedals() + "medalAwardGerman.jpg";
-            setImage(imagePath);
-        }
-		setLayout(new GridLayout(0,1));
-	
+			
 		makeGUI();		
 	}
 	
@@ -61,10 +54,7 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
 		try
 		{
 			JPanel medalAwardPanel = formMedaUI();
-	        this.add(medalAwardPanel);
-
-            this.add(PWCGButtonFactory.makeDummy());
-            this.add(PWCGButtonFactory.makeDummy());
+	        this.add(medalAwardPanel, BorderLayout.CENTER);
 		}
 		catch (Exception e)
 		{
@@ -78,20 +68,8 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
         JPanel medalTextAndPilotPicPanel = new JPanel(new BorderLayout());
         medalTextAndPilotPicPanel.setOpaque(false);
      
-        int leftRightBorder = 40;
-        if (PWCGMonitorSupport.getPWCGFrameSize().getWidth() > 1200)
-        {
-            leftRightBorder = 40 + ((Double.valueOf(PWCGMonitorSupport.getPWCGFrameSize().getWidth()).intValue() - 1200) / 4);
-        }
-
-        
-        int topBottomBorder = 20;
-        if (PWCGMonitorSupport.getPWCGFrameSize().getHeight() > 1200)
-        {
-            int area = Double.valueOf(PWCGMonitorSupport.getPWCGFrameSize().getHeight()).intValue() / 3;
-            
-            topBottomBorder = area / 6;
-        }
+        int leftRightBorder = getLeftRightBorder();        
+        int topBottomBorder = getTopBottomBorder();
 
         medalTextAndPilotPicPanel.setBorder(BorderFactory.createEmptyBorder(topBottomBorder, leftRightBorder, topBottomBorder,leftRightBorder)); 
 
@@ -101,55 +79,83 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
         if (medal != null)
         {
             JLabel lMedal = createMedalImage(medal);
-            medalTextAndPilotPicPanel.add(lMedal, BorderLayout.WEST);
+            medalTextAndPilotPicPanel.add(lMedal, BorderLayout.SOUTH);
         }
 
         JPanel tMedal = formMedalTextBox();
         medalTextAndPilotPicPanel.add(tMedal, BorderLayout.CENTER);
 
-        JLabel pilotLabel = formPilotPicture();
-        medalTextAndPilotPicPanel.add(pilotLabel, BorderLayout.EAST);
-
         return medalTextAndPilotPicPanel;
     }
 
-    private JLabel formPilotPicture()
+    private int getTopBottomBorder()
     {
-        JLabel pilotLabel = new JLabel();
-        
-        SquadronMember pilot = medalRecipient;
-        if (pilot != null)
+        int topBottomBorder = 20;
+        MonitorSize monitorSize = PWCGMonitorSupport.getFrameHeight();
+        if (monitorSize == MonitorSize.FRAME_MEDIUM || monitorSize == MonitorSize.FRAME_LARGE)
         {
-            ImageIcon imageIcon = pilot.determinePilotPicture();  
-            if (imageIcon != null)
-            {
-                pilotLabel = new JLabel(imageIcon);
-                pilotLabel.setOpaque(false);
-                pilotLabel.setSize(imageIcon.getIconWidth(), imageIcon.getIconHeight());
-            }
-            else
-            {
-                PWCGLogger.log(LogLevel.ERROR, "Failed to get picture for " + pilot.getSerialNumber() + " at " + pilot.getPicName());
-            }
+            int area = Double.valueOf(PWCGMonitorSupport.getPWCGFrameSize().getHeight()).intValue() / 3;
+            
+            topBottomBorder = area / 6;
         }
-        else
-        {
-            PWCGLogger.log(LogLevel.ERROR, "No pilot for medal event"); 
-        }
+        return topBottomBorder;
+    }
 
-        return pilotLabel;
+    private int getLeftRightBorder()
+    {
+        int leftRightBorder = 40;
+        MonitorSize monitorSize = PWCGMonitorSupport.getFrameWidth();
+        if (monitorSize == MonitorSize.FRAME_MEDIUM || monitorSize == MonitorSize.FRAME_LARGE)
+        {
+            leftRightBorder = 40 + ((Double.valueOf(PWCGMonitorSupport.getPWCGFrameSize().getWidth()).intValue() - 1200) / 4);
+        }
+        return leftRightBorder;
     }
 
     private JPanel formMedalTextBox() throws PWCGException
     {
         String headerText = getHeaderText();
         String bodyText = getBodyText();
-            
-        CampaignDocumentPage campaignDocumentPage = new CampaignDocumentPage();
-        campaignDocumentPage.formDocument(headerText, bodyText);
 
-        return campaignDocumentPage;
+        JPanel medalTextPanel = new JPanel(new BorderLayout());
+        medalTextPanel.setOpaque(false);
+            
+        JComponent textHeaderPanel = formHeaderTextBox(headerText);
+        medalTextPanel.add(textHeaderPanel, BorderLayout.NORTH);
+        
+        JComponent textPanel = formBodyTextBox(bodyText);
+        medalTextPanel.add(textPanel, BorderLayout.CENTER);
+
+        return medalTextPanel;
     }
+    
+    private JComponent formHeaderTextBox(String headerText) throws PWCGException
+    {
+        JTextArea tHeader = new JTextArea();
+        tHeader.setOpaque(false);
+        tHeader.setEditable(false);
+        tHeader.setText(headerText);
+        tHeader.setFont(PWCGMonitorFonts.getDecorativeFont());
+        tHeader.setMargin(PWCGMonitorBorders.calculateBorderMargins(10, 20, 10, 20));
+
+        return tHeader;
+    }
+
+
+    private JComponent formBodyTextBox(String bodyText) throws PWCGException
+    {
+        JTextArea tText = new JTextArea();
+        tText.setOpaque(false);
+        tText.setEditable(false);
+        tText.setLineWrap(true);
+        tText.setWrapStyleWord(true);
+        tText.setText(bodyText);
+        tText.setFont(PWCGMonitorFonts.getTypewriterFont());
+        tText.setMargin(PWCGMonitorBorders.calculateBorderMargins(5, 20, 5, 20));
+
+        return tText;
+    }
+
 
     private String getHeaderText()
     {

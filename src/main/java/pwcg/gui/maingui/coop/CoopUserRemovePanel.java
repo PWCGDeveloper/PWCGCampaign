@@ -15,77 +15,83 @@ import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.ScreenIdentifier;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.MultiSelectData;
 import pwcg.gui.utils.MultiSelectGUI;
 
 public class CoopUserRemovePanel extends ImageResizingPanel implements ActionListener
 {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     private MultiSelectGUI userSelector;
-	
-	public CoopUserRemovePanel()
-	{
-	    super(ContextSpecificImages.imagesMisc() + "Paper.jpg");
-	}
-	
-	public void makePanels() 
-	{
-		try
-		{
-	        JPanel centerPanel = makeAcceptancePanel();
-	        this.add(centerPanel, BorderLayout.CENTER);
-		}
-		catch (Throwable e)
-		{
-			PWCGLogger.logException(e);
-			ErrorDialog.internalError(e.getMessage());
-		}
-	}
 
-	private JPanel makeAcceptancePanel() throws PWCGException 
-	{	
+    public CoopUserRemovePanel()
+    {
+        super("");
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
+    }
+
+    public void makePanels()
+    {
+        try
+        {
+            String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
+            this.setImage(imagePath);
+
+            JPanel centerPanel = makeAcceptancePanel();
+            this.add(centerPanel, BorderLayout.CENTER);
+        }
+        catch (Throwable e)
+        {
+            PWCGLogger.logException(e);
+            ErrorDialog.internalError(e.getMessage());
+        }
+    }
+
+    private JPanel makeAcceptancePanel() throws PWCGException
+    {
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
         JPanel dataEntryPanel = new JPanel();
-	    dataEntryPanel.setLayout(new BorderLayout());
-	    dataEntryPanel.setOpaque(false);
+        dataEntryPanel.setLayout(new BorderLayout());
+        dataEntryPanel.setOpaque(false);
 
-	    userSelector = new MultiSelectGUI();
-        JPanel removePanel = userSelector.build();
+        userSelector = new MultiSelectGUI();
+        JPanel removePanel = userSelector.build(3);
         JPanel buttonPanel = buildCoopUserButtons(font);
 
         dataEntryPanel.add(removePanel, BorderLayout.CENTER);
         dataEntryPanel.add(buttonPanel, BorderLayout.SOUTH);
 
-		return dataEntryPanel;
-	}
+        return dataEntryPanel;
+    }
 
-    private JPanel buildCoopUserButtons(Font font) 
+    private JPanel buildCoopUserButtons(Font font)
     {
-        JPanel controlPanel = new JPanel (new GridLayout(0,1));
-        controlPanel.setOpaque(false);
-
         JButton removeUsersButton = new JButton("Remove Coop Users");
         removeUsersButton.setActionCommand("Remove Coop Users");
         removeUsersButton.addActionListener(this);
         removeUsersButton.setFont(font);
-        removeUsersButton.setBackground(ColorMap.PAPER_OFFSET);
-        
+        removeUsersButton.setForeground(ColorMap.NEWSPAPER_FOREGROUND);
+        removeUsersButton.setBackground(ColorMap.NEWSPAPER_BACKGROUND);
+ 
         Border raisedBorder = BorderFactory.createRaisedBevelBorder();
         removeUsersButton.setBorder(raisedBorder);
 
+        JPanel controlPanel = new JPanel(new GridLayout(0, 1));
+        controlPanel.setOpaque(false);
         controlPanel.add(removeUsersButton);
         return controlPanel;
     }
 
-	public void loadPanels() throws PWCGException
+    public void loadPanels() throws PWCGException
     {
-	    userSelector.clear();
+        userSelector.clear();
         for (CoopUser coopUser : CoopUserManager.getIntance().getAllCoopUsers())
         {
             MultiSelectData selectData = buildSelectData(coopUser);
@@ -97,12 +103,11 @@ public class CoopUserRemovePanel extends ImageResizingPanel implements ActionLis
     {
         MultiSelectData selectData = new MultiSelectData();
         selectData.setName(coopUser.getUsername());
-        selectData.setText("User: " + coopUser.getUsername() +".");
-        selectData.setInfo(
-                "User: " + coopUser.getUsername());
+        selectData.setText(coopUser.getUsername());
+        selectData.setInfo("User: " + coopUser.getUsername());
         return selectData;
     }
-    
+
     public void actionPerformed(ActionEvent ae)
     {
         try
@@ -123,10 +128,10 @@ public class CoopUserRemovePanel extends ImageResizingPanel implements ActionLis
 
     private void removeUsers() throws PWCGException
     {
-        for (MultiSelectData selectData: userSelector.getSelected())
-        {            
+        for (MultiSelectData selectData : userSelector.getSelected())
+        {
             CoopUserManager.getIntance().removeCoopUser(selectData.getName());
-        }        
+        }
     }
 
 }

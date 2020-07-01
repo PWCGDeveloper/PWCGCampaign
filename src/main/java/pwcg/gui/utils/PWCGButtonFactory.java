@@ -91,12 +91,8 @@ public class PWCGButtonFactory extends JButton
         return button;
     }
     
-
-    public static JRadioButton makeRadioButton(String buttonName, String action, String toolTipText, boolean selected, ActionListener actionListener) throws PWCGException
+    public static JRadioButton makeRadioButton(String buttonName, String action, String toolTipText, boolean selected, ActionListener actionListener, Color fg) throws PWCGException
     {
-        Color bg = ColorMap.WOOD_BACKGROUND;
-        Color fg = ColorMap.CHALK_FOREGROUND;
-
         Font font = PWCGMonitorFonts.getPrimaryFont();
 
         JRadioButton button= new JRadioButton(buttonName);
@@ -104,7 +100,6 @@ public class PWCGButtonFactory extends JButton
         button.setActionCommand(action);
         button.addActionListener(actionListener);
         button.setFont(font);
-        button.setBackground(bg);
         button.setForeground(fg);
 
         ToolTipManager.setToolTip(button, toolTipText);
@@ -136,6 +131,7 @@ public class PWCGButtonFactory extends JButton
         button.setOpaque(false);
         button.setFont(font);
         button.setBorderPainted(false);
+        button.setFocusPainted(false);
         button.setHorizontalAlignment(SwingConstants.LEFT);
         button.addActionListener(actionListener);
         return button;
@@ -276,6 +272,7 @@ public class PWCGButtonFactory extends JButton
         JCheckBox button = new JCheckBox(buttonText);
         button.setHorizontalAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
+        button.setFocusPainted(false);
         button.setOpaque(false);
         button.setForeground(fgColor);
         button.setFont(font);
@@ -292,6 +289,7 @@ public class PWCGButtonFactory extends JButton
         JCheckBox button = new JCheckBox(buttonText);
         button.setHorizontalAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
+        button.setFocusPainted(false);
         button.setOpaque(false);
         button.setForeground(fgColor);
         button.setFont(font);

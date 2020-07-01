@@ -24,11 +24,9 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class AARClaimPanel extends ImageResizingPanel implements ActionListener
+public class AARClaimPanel extends JPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
 
@@ -40,7 +38,6 @@ public class AARClaimPanel extends ImageResizingPanel implements ActionListener
 
 	public AARClaimPanel() throws PWCGException 
 	{
-	    super(ContextSpecificImages.imagesMisc() + "Paper.jpg");
 		this.setOpaque(false);
         this.setLayout(new BorderLayout());
 	}
@@ -71,7 +68,7 @@ public class AARClaimPanel extends ImageResizingPanel implements ActionListener
 		cbVictoriesClaimedBoxes.addActionListener(this);
 		cbVictoriesClaimedBoxes.setFont(font);
 
-		for (int i = 0 ; i < 10; ++i)
+		for (int i = 0 ; i < 20; ++i)
 		{
 			cbVictoriesClaimedBoxes.addItem("Victories Claimed: " + i);
 		}

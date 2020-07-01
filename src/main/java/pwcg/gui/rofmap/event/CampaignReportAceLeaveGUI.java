@@ -1,5 +1,7 @@
 package pwcg.gui.rofmap.event;
 
+import javax.swing.JPanel;
+
 import pwcg.aar.ui.events.model.AceLeaveEvent;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
@@ -15,7 +17,6 @@ public class CampaignReportAceLeaveGUI extends CampaignDocumentGUI
         super();
 
         this.aceLeaveEvent = aceLeaveEvent;
-
         makePanel();        
 	}
 
@@ -39,5 +40,17 @@ public class CampaignReportAceLeaveGUI extends CampaignDocumentGUI
     @Override
     public void finished()
     {
+    }
+
+    @Override
+    public boolean isShouldDisplay()
+    {
+        return shouldDisplay;
+    }
+
+    @Override
+    public JPanel getPanel()
+    {
+        return this;
     }
 }

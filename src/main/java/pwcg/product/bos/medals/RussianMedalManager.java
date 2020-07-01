@@ -22,16 +22,16 @@ public class RussianMedalManager extends BoSMedalManager
     {
         super(campaign);
 
-        medals.put(PILOTS_BADGE, new Medal ("Pilots Badge",                                   "rus_pb.jpg"));
-		medals.put(WOUND_STRIPE, new Medal ("Wound Stripe", 		                           "WoundStripe.jpg"));
+        medals.put(PILOTS_BADGE, new Medal ("Pilots Badge",                                   "ussr_pilot_badge.png"));
+		medals.put(WOUND_STRIPE, new Medal ("Wound Stripe", 		                          "ussr_wound_stripe.png"));
 
-        medals.put(ORDER_RED_STAR, new Medal ("Order of the Red Star",                        "rus_ors.jpg"));
-        medals.put(ORDER_OF_GLORY, new Medal ("Order of Glory",                               "rus_og.jpg"));
-		medals.put(ORDER_PATRIOTIC_WAR_2, new Medal ("Order of the Patriotic War 2nd Class",  "rus_opw2.jpg"));
-        medals.put(ORDER_PATRIOTIC_WAR_1, new Medal ("Order of the Patriotic War 1st Class",  "rus_opw1.jpg"));
-        medals.put(ORDER_RED_BANNER, new Medal ("Order of the Red Banner",                    "rus_orb.jpg"));
-        medals.put(ORDER_ALEXANDER_NEVSKY, new Medal ("Order of Alexander Nevsky",            "rus_oan.jpg"));
-        medals.put(HERO_SOVIET_UNION, new Medal ("Hero of the Soviet Union",                  "rus_hsu.jpg"));
+        medals.put(ORDER_RED_STAR, new Medal ("Order of the Red Star",                        "ussr_order_red_star.png"));
+        medals.put(ORDER_OF_GLORY, new Medal ("Order of Glory",                               "ussr_order_of_glory.png"));
+		medals.put(ORDER_PATRIOTIC_WAR_2, new Medal ("Order of the Patriotic War 2nd Class",  "ussr_order_patriotic_war_2nd_class.png"));
+        medals.put(ORDER_PATRIOTIC_WAR_1, new Medal ("Order of the Patriotic War 1st Class",  "ussr_order_patriotic_war_1st_class.png"));
+        medals.put(ORDER_RED_BANNER, new Medal ("Order of the Red Banner",                    "ussr_order_red_banner.png"));
+        medals.put(ORDER_ALEXANDER_NEVSKY, new Medal ("Order of Alexander Nevsky",            "ussr_order_alexander_nevsky.png"));
+        medals.put(HERO_SOVIET_UNION, new Medal ("Hero of the Soviet Union",                  "ussr_hero_of_the_soviet_union.png"));
 	} 
 
 	public Medal getWoundedAward(SquadronMember pilot, ArmedService service) 

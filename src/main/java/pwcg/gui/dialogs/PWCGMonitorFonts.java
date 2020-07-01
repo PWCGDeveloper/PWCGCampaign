@@ -110,7 +110,7 @@ public class PWCGMonitorFonts
     {
         String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.BriefingFontKey);
         int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.BriefingFontSizeKey);
-        fontSize = verifyFontSizeForScreenSize(fontSize);
+        fontSize = verifyFontSizeForCrowdedScreenSize(fontSize);
         
         Font font = new Font(
                 fontName, 
@@ -221,6 +221,32 @@ public class PWCGMonitorFonts
             if (fontSize > 22)
             {
                 fontSize = 22;
+            }
+        }
+        return fontSize;
+    }
+
+    private static int verifyFontSizeForCrowdedScreenSize(int fontSize)
+    {
+        if (PWCGMonitorSupport.isVerySmallScreen())
+        {
+            if (fontSize > 12)
+            {
+                fontSize = 12;
+            }
+        }
+        else if (PWCGMonitorSupport.isSmallScreen())
+        {
+            if (fontSize > 14)
+            {
+                fontSize = 14;
+            }
+        }
+        else if (PWCGMonitorSupport.isMediumScreen())
+        {
+            if (fontSize > 20)
+            {
+                fontSize = 20;
             }
         }
         return fontSize;

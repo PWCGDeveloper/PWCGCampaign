@@ -1,5 +1,6 @@
 package pwcg.aar.inmission.phase1.parse;
 
+import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 
 public class AARLogParser implements IAARLogParser 
@@ -14,11 +15,11 @@ public class AARLogParser implements IAARLogParser
     }
 
     @Override
-    public AARLogEventData parseLogFilesForMission() throws PWCGException 
+    public AARLogEventData parseLogFilesForMission(Campaign campaign) throws PWCGException 
     {
         AARLogReader logReader = new AARLogReader(aarLogFileMissionFile);
         AARLogLineParser logLineParser = new AARLogLineParser();
-        return logLineParser.parseLogLinesForMission(logReader.readLogFilesForMission());
+        return logLineParser.parseLogLinesForMission(logReader.readLogFilesForMission(campaign));
     }
 }
 

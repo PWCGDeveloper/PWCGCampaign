@@ -66,6 +66,7 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     @Override
     public void changeContext(FrontMapIdentifier frontMapIdentifier) throws PWCGException  
     {
+        frontMapIdentifier = StalingradMapResolver.resolveStalingradMap(campaign, frontMapIdentifier);
         currentMap = frontMapIdentifier;
     }
 
@@ -85,7 +86,6 @@ public abstract class PWCGContextBase implements IPWCGContextManager
         FrontMapIdentifier mapIdentifier = MapFinderForCampaign.findMapForCampaign(campaign);
         if (mapIdentifier != null)
         {
-            mapIdentifier = StalingradMapResolver.resolveStalingradMap(campaign, mapIdentifier);
             changeContext(mapIdentifier);
             resetForMovingFront();
         }

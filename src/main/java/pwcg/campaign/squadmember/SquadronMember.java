@@ -11,10 +11,12 @@ import javax.swing.ImageIcon;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.PictureManager;
+import pwcg.campaign.api.IArmedServiceManager;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.skin.Skin;
@@ -237,12 +239,22 @@ public class SquadronMember implements Cloneable
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         Squadron squadron = squadronManager.getSquadron(squadronId);
 
-        // Use the pilots squadron
         if (squadron != null)
         {
             service = squadron.determineServiceForSquadron(date);
         }
         else
+        {
+            HistoricalAce historicalAce = PWCGContext.getInstance().getAceManager().getHistoricalAceBySerialNumber(serialNumber);
+            if (historicalAce != null)
+            {
+                Country aceCountry = historicalAce.getCountry();
+                IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
+                service = armedServiceManager.getPrimaryServiceForNation(aceCountry, date);
+            }            
+        }
+
+        if (service == null)
         {
             throw new PWCGException("No service found. Squadron is " + squadronId);
         }

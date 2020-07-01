@@ -2,6 +2,8 @@ package pwcg.gui.rofmap.event;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JPanel;
+
 import pwcg.aar.AARCoordinator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CombatReport;
@@ -9,24 +11,26 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.ScreenIdentifier;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.display.model.CombatReportBuilder;
-import pwcg.gui.rofmap.debrief.AAREventPanel;
-import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.gui.utils.ImageResizingPanel;
 
-public class AARCombatReportPanel extends AAREventPanel
+public class AARCombatReportPanel extends AARDocumentPanel
 {
     private static final long serialVersionUID = 1L;
 
     private Campaign campaign;
     private AARCoordinator aarCoordinator;
-
     private CombatReportPanel campaignCombatReportGUI = null;
+    private boolean shouldDisplay = false;
 
 	public AARCombatReportPanel()
 	{
         super();
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
+
         this.shouldDisplay = true;
         this.aarCoordinator = AARCoordinator.getInstance();
 		this.campaign = PWCGContext.getInstance().getCampaign();
@@ -36,9 +40,12 @@ public class AARCombatReportPanel extends AAREventPanel
 	{
         try
         {
-            createCombatReportGUI();
-            createPostCombatReportTabs();
+            String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
+            this.setImage(imagePath);
 
+            createCombatReportGUI();
+            JPanel eventTabPane =createPostCombatReportTabs();
+            this.add(eventTabPane, BorderLayout.CENTER);
         }
         catch (Exception e)
         {
@@ -47,12 +54,13 @@ public class AARCombatReportPanel extends AAREventPanel
         }
     }
 	
-    private void createPostCombatReportTabs()
+    private JPanel createPostCombatReportTabs()
     {
-        ImageResizingPanel postCombatPanel = new ImageResizingPanel(ContextSpecificImages.imagesMisc() + "PaperFull.jpg");
-        postCombatPanel.setLayout(new BorderLayout());
+        JPanel postCombatPanel = new JPanel(new BorderLayout());
+        postCombatPanel.setOpaque(false);
+
         postCombatPanel.add(campaignCombatReportGUI, BorderLayout.CENTER);
-        this.add(postCombatPanel, BorderLayout.CENTER);
+        return postCombatPanel;
     }
 
     private void createCombatReportGUI() throws PWCGException
@@ -84,4 +92,15 @@ public class AARCombatReportPanel extends AAREventPanel
 		}
 	}
 
+    @Override
+    public boolean isShouldDisplay()
+    {
+        return shouldDisplay;
+    }
+
+    @Override
+    public JPanel getPanel()
+    {
+        return this;
+    }
 }

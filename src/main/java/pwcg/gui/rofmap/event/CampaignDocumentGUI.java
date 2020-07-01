@@ -5,18 +5,18 @@ import java.awt.BorderLayout;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.rofmap.debrief.AAREventPanel;
 import pwcg.gui.utils.CampaignDocumentPage;
-import pwcg.gui.utils.ContextSpecificImages;
 
-public abstract class CampaignDocumentGUI extends AAREventPanel
+public abstract class CampaignDocumentGUI extends AARDocumentPanel
 {
     private static final long serialVersionUID = 1L;
 
     public CampaignDocumentGUI()
     {
         super();
-        setLayout(new BorderLayout());
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
+
         this.shouldDisplay = true;
     }
 
@@ -24,9 +24,6 @@ public abstract class CampaignDocumentGUI extends AAREventPanel
     {
         try
         {
-            String imagePath = ContextSpecificImages.imagesMisc() + "PaperFull.jpg";
-            setImage(imagePath);
-            
             String headerText = getHeaderText();
             String bodyText = getBodyText();
 
@@ -45,10 +42,4 @@ public abstract class CampaignDocumentGUI extends AAREventPanel
     protected abstract String getHeaderText() throws PWCGException;
 
     protected abstract String getBodyText() throws PWCGException;
-
-
-    @Override
-    public void finished()
-    {
-    }
 }

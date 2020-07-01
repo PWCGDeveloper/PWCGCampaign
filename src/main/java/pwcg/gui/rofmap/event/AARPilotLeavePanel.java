@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import pwcg.aar.AARCoordinator;
@@ -15,11 +16,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.rofmap.debrief.AAREventPanel;
-import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.gui.utils.ImageResizingPanel;
 
-public class AARPilotLeavePanel extends AAREventPanel
+public class AARPilotLeavePanel extends AARDocumentPanel
 {
     private static final long serialVersionUID = 1L;
     private AARCoordinator aarCoordinator;
@@ -27,6 +25,7 @@ public class AARPilotLeavePanel extends AAREventPanel
     public AARPilotLeavePanel()
 	{
         super();
+
         this.aarCoordinator = AARCoordinator.getInstance();
 	}
 
@@ -36,6 +35,7 @@ public class AARPilotLeavePanel extends AAREventPanel
         {
             JTabbedPane eventTabPane = createTab();
             createPostCombatReportTabs(eventTabPane);
+            this.add(eventTabPane, BorderLayout.CENTER);
         }
         catch (Exception e)
         {
@@ -46,8 +46,9 @@ public class AARPilotLeavePanel extends AAREventPanel
     
     private void createPostCombatReportTabs(JTabbedPane eventTabPane)
     {
-        ImageResizingPanel postCombatPanel = new ImageResizingPanel(ContextSpecificImages.imagesMisc() + "PaperPart.jpg");
-        postCombatPanel.setLayout(new BorderLayout());
+        JPanel postCombatPanel = new JPanel(new BorderLayout());
+        postCombatPanel.setOpaque(false);
+
         postCombatPanel.add(eventTabPane, BorderLayout.CENTER);
         this.add(postCombatPanel, BorderLayout.CENTER);
     }
@@ -89,10 +90,4 @@ public class AARPilotLeavePanel extends AAREventPanel
         
         return pilotLeaveGuiList;
 	}
-
-	
-    @Override
-    public void finished()
-    {
-    }
 }

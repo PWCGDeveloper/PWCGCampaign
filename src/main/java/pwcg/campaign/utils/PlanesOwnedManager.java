@@ -81,8 +81,6 @@ public class PlanesOwnedManager
 			
 			reader.close();
 		}
-		// Don't throw an exception here.  This just means that the file
-		// has not yet been created.
 		catch (Exception e)
 		{
 			PWCGLogger.logException(e);
@@ -104,10 +102,7 @@ public class PlanesOwnedManager
 		
 		return isPlaneOwned;
 	}
-	
-	/**
-	 * @return
-	 */
+
 	public boolean hasPlanesOwned()
 	{
 		if (planesOwnedList.size() > 0)
@@ -117,9 +112,7 @@ public class PlanesOwnedManager
 
 		return false;
 	}
-	
 
-	
 	public void clear()
 	{
 		planesOwnedList.clear();

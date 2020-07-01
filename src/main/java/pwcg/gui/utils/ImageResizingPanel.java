@@ -3,6 +3,8 @@ package pwcg.gui.utils;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JPanel;
 
@@ -12,30 +14,49 @@ import pwcg.gui.image.ImageCache;
 
 public class ImageResizingPanel extends JPanel
 {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
+    public static final String NO_IMAGE = "";
 	
-	protected Image image;
-	protected String imagePath = "";
+    private Image image;
+    protected String imagePath = "";
+    private Map<String, JPanel> children = new HashMap<>();
 
 	public ImageResizingPanel(String imagePath)
-	{
-		try 
-		{
-		    this.imagePath = imagePath;
-			setImage(imagePath);
-		}
-		catch (Exception ex) 
-		{
-		}
-	}
+    {
+	    this.imagePath = imagePath;
+	    if (!imagePath.isEmpty())
+	    {
+	        setImage(imagePath);
+	    }
+    }
 
-	
-	public void makeVisible(boolean visible)
-	{
-		this.setVisible(visible);
-	}
+    @Override
+    public void paintComponent(Graphics g) 
+    {
+        if (image != null)
+        {
+            Image resizedImage = image.getScaledInstance(Float.valueOf(this.getWidth()).intValue(), Float.valueOf(this.getHeight()).intValue(), Image.SCALE_DEFAULT);
+            g.drawImage(resizedImage, 0, 0, null);
+            resizedImage.flush();
+            
+            for (JPanel panel : children.values())
+            {
+                panel.revalidate();
+                panel.repaint();
+            }
+        }
+        else
+        {
+            PWCGLogger.log(LogLevel.ERROR, "Request to paint null image: " + imagePath);
+        }
+    }
 
-	public void setImage(String imagePath)
+    protected void addChild(String panelId, JPanel panel)
+    {
+        children.put(panelId, panel);
+    }
+
+    public void setImage(String imagePath)
 	{
 		try 
 		{
@@ -50,22 +71,6 @@ public class ImageResizingPanel extends JPanel
 			PWCGLogger.logException(ex);
 		}
 	}
-
-	@Override
-	public void paintComponent(Graphics g) 
-	{
-		if (image != null)
-		{
-			Image resizedImage = image.getScaledInstance(Float.valueOf(this.getWidth()).intValue(), Float.valueOf(this.getHeight()).intValue(), Image.SCALE_DEFAULT);
-			g.drawImage(resizedImage, 0, 0, null); // see javadoc for more info on the parameters
-			resizedImage.flush();
-		}
-		else
-		{
-		    PWCGLogger.log(LogLevel.ERROR, "Request to paint null image: " + imagePath);
-		}
-	}
-
 	
 	public Dimension getImageSize()
 	{

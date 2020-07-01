@@ -1,8 +1,7 @@
 package pwcg.gui.campaign.pilot;
 
-import java.awt.Dimension;
-
 import pwcg.gui.dialogs.PWCGMonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 
 public class PageSizeCalculator
 {
@@ -11,41 +10,42 @@ public class PageSizeCalculator
     
     public void calculateTextSize()
     {
-        Dimension screenSize = PWCGMonitorSupport.getPWCGFrameSize();
-        calculateLinesPerPage(screenSize);
-        calculateCharsPerLine(screenSize);
+        calculateLinesPerPage();
+        calculateCharsPerLine();
     }
 
 
-    private void calculateLinesPerPage(Dimension screenSize)
+    private void calculateLinesPerPage()
     {
+        MonitorSize monitorSize = PWCGMonitorSupport.getFrameHeight();
         linesPerPage = 35;
-        if (screenSize.getHeight() < 1200)
+        if (monitorSize == MonitorSize.FRAME_MEDIUM)
         {
             linesPerPage = 32;
         }
-        if (screenSize.getHeight() < 1050)
+        else if (monitorSize == MonitorSize.FRAME_SMALL)
         {
             linesPerPage = 27;
         }
-        if (screenSize.getHeight() < 800)
+        else if (monitorSize == MonitorSize.FRAME_VERY_SMALL)
         {
             linesPerPage = 22;
         }
     }
 
-    private void calculateCharsPerLine(Dimension screenSize)
+    private void calculateCharsPerLine()
     {
+        MonitorSize monitorSize = PWCGMonitorSupport.getFrameWidth();
         charsPerLine = 60;
-        if (screenSize.getWidth() < 1200)
+        if (monitorSize == MonitorSize.FRAME_MEDIUM)
         {
             charsPerLine = 50;
         }
-        if (screenSize.getWidth() < 1000)
+        else if (monitorSize == MonitorSize.FRAME_SMALL)
         {
             charsPerLine = 40;
         }
-        if (screenSize.getWidth() < 800)
+        else if (monitorSize == MonitorSize.FRAME_VERY_SMALL)
         {
             charsPerLine = 30;
         }

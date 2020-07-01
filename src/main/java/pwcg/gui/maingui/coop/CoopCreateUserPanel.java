@@ -16,10 +16,11 @@ import javax.swing.border.Border;
 import pwcg.coop.CoopUserManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.ScreenIdentifier;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 
 public class CoopCreateUserPanel extends ImageResizingPanel implements ActionListener
@@ -29,13 +30,19 @@ public class CoopCreateUserPanel extends ImageResizingPanel implements ActionLis
 
 	public CoopCreateUserPanel() 
 	{
-	    super(ContextSpecificImages.imagesMisc() + "Paper.jpg");
+        super("");
+        this.setLayout(new BorderLayout());
+        this.setOpaque(false);
 	}
 
     public void makePanels()
     {
         try
         {
+            String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
+            this.setImage(imagePath);
+            this.setBorder(BorderFactory.createEmptyBorder(150,40,40,150));
+
 	        JPanel centerPanel = makeCoopUserEntryPanel();
 	        this.add(centerPanel, BorderLayout.NORTH);
         }
@@ -76,8 +83,8 @@ public class CoopCreateUserPanel extends ImageResizingPanel implements ActionLis
 	{
 		JPanel textPanel = new JPanel (new GridLayout(0,1));
 		textPanel.setOpaque(false);
-
-        coopUserNameText = new JTextField(50);
+		
+        coopUserNameText = new JTextField(25);
         coopUserNameText.setFont(font);
         coopUserNameText.setBackground(ColorMap.PAPER_BACKGROUND);
         textPanel.add(coopUserNameText);
@@ -88,10 +95,10 @@ public class CoopCreateUserPanel extends ImageResizingPanel implements ActionLis
 	{
 		JPanel descPanel = new JPanel (new GridLayout(0,1));
 		descPanel.setOpaque(false);
-
+		
 	    JLabel passwordLabel = new JLabel("Enter Coop Username: ");
 	    passwordLabel.setFont(font);
-	    passwordLabel.setBackground(ColorMap.PAPER_BACKGROUND);
+	    passwordLabel.setBackground(ColorMap.NEWSPAPER_BACKGROUND);
 	    descPanel.add(passwordLabel);
 		return descPanel;
 	}
@@ -105,7 +112,7 @@ public class CoopCreateUserPanel extends ImageResizingPanel implements ActionLis
 	    createUserButton.setActionCommand("Create Coop User");
 	    createUserButton.addActionListener(this);
 	    createUserButton.setFont(font);
-	    createUserButton.setBackground(ColorMap.PAPER_OFFSET);
+	    createUserButton.setBackground(ColorMap.NEWSPAPER_BACKGROUND);
 	    
 	    Border raisedBorder = BorderFactory.createRaisedBevelBorder();
 	    createUserButton.setBorder(raisedBorder);

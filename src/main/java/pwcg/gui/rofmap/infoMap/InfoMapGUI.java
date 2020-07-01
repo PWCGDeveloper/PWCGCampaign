@@ -22,8 +22,8 @@ import javax.swing.SwingConstants;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
-import pwcg.campaign.squadron.SquadronManager;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
@@ -34,7 +34,6 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.rofmap.MapGUI;
 import pwcg.gui.rofmap.MapScroll;
 import pwcg.gui.utils.CampaignTransitionDates;
-import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
 public class InfoMapGUI extends MapGUI implements ActionListener
@@ -73,9 +72,9 @@ public class InfoMapGUI extends MapGUI implements ActionListener
             setOpaque(false);
             setBackground(bg);
             
-            setLeftPanel(makeNavigationPanel());            
-            setRightPanel(makeSelectionPanel());
-            setCenterPanel(createMapPanel());
+            this.add(BorderLayout.WEST, makeNavigationPanel());            
+            this.add(BorderLayout.EAST, makeSelectionPanel());
+            this.add(BorderLayout.CENTER, createMapPanel());
         }
         catch (Exception e)
         {
@@ -103,11 +102,9 @@ public class InfoMapGUI extends MapGUI implements ActionListener
 
     private JPanel makeNavigationPanel() throws PWCGException  
     {
-        String imagePath = getSideImageMain("CampaignInfoRight.jpg");
-
-        ImageResizingPanel intelNavPanel = new ImageResizingPanel(imagePath);
-        intelNavPanel.setLayout(new BorderLayout());
-        intelNavPanel.setOpaque(false);
+        JPanel infoMapNavPanel = new JPanel(new BorderLayout());
+        infoMapNavPanel.setLayout(new BorderLayout());
+        infoMapNavPanel.setOpaque(false);
 
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
@@ -124,29 +121,19 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         JLabel spacer2 = PWCGButtonFactory.makeMenuLabelLarge("");
         buttonPanel.add(spacer2);
 
-        intelNavPanel.add(buttonPanel, BorderLayout.NORTH);
+        infoMapNavPanel.add(buttonPanel, BorderLayout.NORTH);
         
-        return intelNavPanel;
+        return infoMapNavPanel;
     }
 
-
-    /**
-     * @return
-     * @throws PWCGException 
-     */
     public JPanel makeSelectionPanel() throws PWCGException 
     {
-        String imagePath = getSideImageMain("CampaignInfoLeft.jpg");
-
-        ImageResizingPanel selectionPanel = new ImageResizingPanel(imagePath);
-        selectionPanel.setLayout(new GridLayout(0,1));
+        JPanel selectionPanel = new JPanel(new GridLayout(0,1));
         selectionPanel.setOpaque(false);
 
-        // The date selection box
         JPanel datePanel = createDateSelection(selectionPanel);
         selectionPanel.add(datePanel);
 
-        // Map buttons
         JPanel buttonPanelGrid = makeMapCheckBoxes();
         selectionPanel.add(buttonPanelGrid);
 
@@ -318,6 +305,7 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         JRadioButton button = new JRadioButton(buttonText);
         button.setHorizontalAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
+        button.setFocusPainted(false);
         button.addActionListener(this);
         button.setOpaque(false);
         button.setForeground(fgColor);
@@ -340,6 +328,7 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         JCheckBox button = new JCheckBox(buttonText);
         button.setHorizontalAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
+        button.setFocusPainted(false);
         button.addActionListener(this);
         button.setOpaque(false);
         button.setForeground(fgColor);

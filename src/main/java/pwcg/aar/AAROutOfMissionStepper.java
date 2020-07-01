@@ -31,7 +31,22 @@ public class AAROutOfMissionStepper
             tabulateFlightDebriefUI();
 	        updateCampaign();	        
 	    }
-	    while(campaign.getDate().before(targetCampaignDate));
+	    while(keepStepping(targetCampaignDate));
+	}
+	
+	private boolean keepStepping(Date targetCampaignDate) throws PWCGException
+	{
+	    if (!campaign.getDate().before(DateUtils.getEndOfWar()))
+        {
+            return false;
+        }
+        
+	    if (campaign.getDate().before(targetCampaignDate))
+	    {
+	        return true;
+	    }
+
+	    return false;
 	}
 
 	public void oneStep() throws PWCGException

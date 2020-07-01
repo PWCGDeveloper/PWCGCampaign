@@ -1,5 +1,7 @@
 package pwcg.gui.rofmap.event;
 
+import javax.swing.JPanel;
+
 import pwcg.aar.ui.events.model.PromotionEvent;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
@@ -26,7 +28,6 @@ public class CampaignReportPromotionGUI extends CampaignDocumentGUI
 
     protected String getHeaderText() throws PWCGException
     {
-        // Promotion text
         Campaign campaign = PWCGContext.getInstance().getCampaign();
         String promotionHeaderText = promotionRecipient.determineService(campaign.getDate()).getName() + "\n\n";
 
@@ -67,5 +68,17 @@ public class CampaignReportPromotionGUI extends CampaignDocumentGUI
     @Override
     public void finished()
     {
+    }
+
+    @Override
+    public boolean isShouldDisplay()
+    {
+        return shouldDisplay;
+    }
+
+    @Override
+    public JPanel getPanel()
+    {
+        return this;
     }
 }

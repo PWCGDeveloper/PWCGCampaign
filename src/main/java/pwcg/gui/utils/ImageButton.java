@@ -27,6 +27,7 @@ public class ImageButton
 
 		PWCGJButton button= new PWCGJButton(text);
 		button.setBorderPainted(false);
+        button.setFocusPainted(false);
 		button.setIcon(icon);
 		
 		Font font = PWCGMonitorFonts.getPrimaryFontSmall();

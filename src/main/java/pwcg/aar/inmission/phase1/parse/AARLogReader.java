@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignMode;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 
@@ -21,7 +23,7 @@ public class AARLogReader
         this.aarLogFileMissionFile = aarLogFileMissionFile;
     }
 
-    public List<String> readLogFilesForMission() throws PWCGException 
+    public List<String> readLogFilesForMission(Campaign campaign) throws PWCGException 
     {
         try
         {
@@ -45,7 +47,14 @@ public class AARLogReader
             throw new PWCGException(e.getMessage());
         }
         
-        return AARLogKeeper.selectLogLinesToKeep(logLinesFromMission);        
+        if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COOP)
+        {
+            return logLinesFromMission;
+        }
+        else
+        {
+            return AARLogKeeper.selectLogLinesToKeep(logLinesFromMission);        
+        }
     }
 
     private void readLogFile(String filename) throws FileNotFoundException, IOException, PWCGException

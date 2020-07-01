@@ -1,5 +1,7 @@
 package pwcg.gui.rofmap.event;
 
+import javax.swing.JPanel;
+
 import pwcg.aar.ui.events.model.PlaneStatusEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.PlaneStatus;
@@ -58,13 +60,25 @@ public class CampaignReportEquipmentStatusGUI extends CampaignDocumentGUI
         return planeEventText;
     }
 
+    public Campaign getCampaign()
+    {
+        return campaign;
+    }
+
     @Override
     public void finished()
     {
     }
 
-    public Campaign getCampaign()
+    @Override
+    public boolean isShouldDisplay()
     {
-        return campaign;
+        return shouldDisplay;
+    }
+
+    @Override
+    public JPanel getPanel()
+    {
+        return this;
     }
 }

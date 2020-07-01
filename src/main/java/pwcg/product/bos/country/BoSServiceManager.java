@@ -7,6 +7,7 @@ import java.util.List;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.ArmedServiceManager;
 import pwcg.campaign.api.IArmedServiceManager;
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
@@ -362,5 +363,23 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         }
         
         throw new PWCGException("Unexpected country for getPrimaryServiceForNation " + country);
+    }
+
+    @Override
+    public ArmedService determineServiceByParsingSquadronId(int squadronId, Date date) throws PWCGException
+    {
+        String squadronIdString = "" + squadronId;
+        if (squadronIdString.length() >= 3)
+        {
+            String countryCodeString = squadronIdString.substring(0,3);
+            Integer countryCode = new Integer(countryCodeString);
+            ICountry country = CountryFactory.makeCountryByCode(countryCode);
+    
+            return getPrimaryServiceForNation(country.getCountry(), date);
+        }
+        else
+        {
+            throw new PWCGException("");
+        }
     }    
 }

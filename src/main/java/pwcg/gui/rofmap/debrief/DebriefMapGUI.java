@@ -32,18 +32,19 @@ import pwcg.core.utils.DirectoryReader;
 import pwcg.core.utils.FileUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.campaign.home.CampaignHomeGUI;
+import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.rofmap.MapGUI;
 import pwcg.gui.rofmap.MapScroll;
-import pwcg.gui.rofmap.event.AARMainPanel;
-import pwcg.gui.rofmap.event.AARMainPanel.EventPanelReason;
+import pwcg.gui.rofmap.event.AARReportMainPanel;
+import pwcg.gui.rofmap.event.AARReportMainPanel.EventPanelReason;
 import pwcg.gui.sound.MusicManager;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 
@@ -52,7 +53,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 	private static final long serialVersionUID = 1L;
 
     private Campaign campaign;
-	private CampaignHomeGUI home = null;
+	private CampaignHomeScreen home = null;
 	private Thread initiatorThread = null;
 	private JTextArea eventTextPane = new JTextArea();
 	private JCheckBox maxInfoCheckBox;
@@ -61,7 +62,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 
 	private DebriefMapPanel mapPanel = null;
 
-	public DebriefMapGUI  (Campaign campaign, CampaignHomeGUI home) throws PWCGException
+	public DebriefMapGUI  (Campaign campaign, CampaignHomeScreen home) throws PWCGException
 	{
 	    super(campaign.getDate());
 
@@ -76,9 +77,9 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 	{
 		try
 		{
-		    setLeftPanel(makeNavigationPanel());
-			setRightPanel(makeEventTextPanel());
-            setCenterPanel(createCenterPanel());
+		    this.add(BorderLayout.WEST, makeNavigationPanel());
+			this.add(BorderLayout.EAST, makeEventTextPanel());
+            this.add(BorderLayout.CENTER, createCenterPanel());
             			
 	        centerMap();
 
@@ -159,9 +160,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 
 	private JPanel makeNavigationPanel() throws PWCGException 
 	{
-        String imagePath = getSideImage(campaign, "DebriefNav.jpg");
-        ImageResizingPanel debriefButtonPanel = new ImageResizingPanel(imagePath);
-        debriefButtonPanel.setLayout(new BorderLayout());
+        JPanel debriefButtonPanel = new JPanel(new BorderLayout());
         debriefButtonPanel.setOpaque(false);
         
         JPanel buttonGrid = new JPanel(new GridLayout(0,1));
@@ -203,7 +202,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 		Font font = PWCGMonitorFonts.getPrimaryFontSmall();
 
         String imagePath = ContextSpecificImages.imagesMisc() + "PaperPart.jpg";
-		ImageResizingPanel debriefTextPanel = new ImageResizingPanel(imagePath);
+		ImageResizingPanel debriefTextPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
 		debriefTextPanel.setLayout(new BorderLayout());
 		debriefTextPanel.setOpaque(false);
 		debriefTextPanel.setBackground(buttonBG);
@@ -248,13 +247,13 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 
         if (!logEvents.isEmpty())
         {
-            AARMainPanel eventDisplay = new AARMainPanel(campaign, home, EventPanelReason.EVENT_PANEL_REASON_AAR);
+            AARReportMainPanel eventDisplay = new AARReportMainPanel(campaign, home, EventPanelReason.EVENT_PANEL_REASON_AAR);
             eventDisplay.makePanels();
             CampaignGuiContextManager.getInstance().pushToContextStack(eventDisplay);
         }
         else
         {
-            home.createPilotContext();
+            home.createCampaignHomeContext();
         }
     }
     
@@ -305,10 +304,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
                 }
                 else if (action.equals("Cancel"))
                 {
-                    home.clean();
-                    home.createPilotContext();
-
-                    home.enableButtonsAsNeeded();
+                    home.createCampaignHomeContext();
                     CampaignGuiContextManager.getInstance().popFromContextStack();
                 }
 			}

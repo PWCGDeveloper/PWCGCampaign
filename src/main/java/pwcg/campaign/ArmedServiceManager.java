@@ -56,7 +56,7 @@ public abstract class ArmedServiceManager
             {
                 if (!(date.before(service.getServiceStartDate())))
                 {
-                    allServices.addAll(armedServicesForCountry);
+                    allServices.add(service);
                 }
             }
         }

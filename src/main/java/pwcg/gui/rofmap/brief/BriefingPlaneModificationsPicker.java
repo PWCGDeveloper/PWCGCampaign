@@ -1,6 +1,7 @@
 package pwcg.gui.rofmap.brief;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,14 +22,14 @@ import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 
 public class BriefingPlaneModificationsPicker
 {
-    private BriefingPilotPanelSet parent;
+    private ActionListener actionListener;
     private CrewPlanePayloadPairing crewPlane;
     private JPanel planeModificationsPanel = new JPanel(new GridLayout(0,1));
     private Map<String, JCheckBox> planeModifications = new HashMap<>();
     
-    public BriefingPlaneModificationsPicker(BriefingPilotPanelSet parent, CrewPlanePayloadPairing crewPlane)
+    public BriefingPlaneModificationsPicker(ActionListener actionListener, CrewPlanePayloadPairing crewPlane)
     {
-        this.parent = parent;
+        this.actionListener = actionListener;
         this.crewPlane = crewPlane;
     }
 
@@ -84,7 +85,7 @@ public class BriefingPlaneModificationsPicker
                         payloadDesignation.getPayloadDescription(), 
                         "SelectPlaneModification:" + crewPlane.getPilot().getSerialNumber(), 
                         ColorMap.CHALK_FOREGROUND,
-                        parent);
+                        actionListener);
                 planeModifications.put(payloadDesignation.getPayloadDescription(), planeModificationsCheckBox);
             }
         }

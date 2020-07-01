@@ -23,11 +23,13 @@ import pwcg.coop.model.CoopDisplayRecord;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.ScreenIdentifier;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 
 public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements ActionListener
@@ -40,7 +42,9 @@ public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements A
 
     public CampaignAdminCoopPilotPanel(Campaign campaign)
     {
-        super(ContextSpecificImages.imagesMisc() + "Paper.jpg");
+        super("");
+        this.setLayout(new BorderLayout());
+
         this.campaign = campaign;
     }
     
@@ -48,6 +52,10 @@ public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements A
     {
         try
         {
+            String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
+            this.setImage(imagePath);
+            this.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
+
             JPanel centerPanel = makeDisplay();
             this.add(centerPanel, BorderLayout.NORTH);
         }
@@ -62,7 +70,7 @@ public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements A
     {
         loadCoopRecords();
 
-        JPanel recordListPanel = new JPanel(new GridLayout(0, 4, 10, 5));
+        JPanel recordListPanel = new JPanel(new GridLayout(0, 4));
         recordListPanel.setOpaque(false);
 
         JPanel recordListHolderPanel = new JPanel();
@@ -99,6 +107,7 @@ public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements A
         button.setActionCommand("" + coopDisplayRecord.getPilotSerialNumber());
         button.setHorizontalAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
+        button.setFocusPainted(false);
         button.addActionListener(this);
         button.setOpaque(false);
         button.setForeground(fg);

@@ -1,7 +1,5 @@
 package pwcg.gui.utils;
 
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
@@ -9,12 +7,11 @@ import javax.swing.JPanel;
 
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
+import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 
 public class PageTurner
 {
-    /**
-     * 
-     */
+
     public static JPanel makeButtonPanel(int pageNum, int pages, ActionListener actionComponent)
     {
         JPanel buttonPanel = new JPanel(new GridLayout(0,2));
@@ -27,10 +24,6 @@ public class PageTurner
         JPanel rightButtonPanel = new JPanel(new GridLayout(1,0));
         rightButtonPanel.setOpaque(false);
         buttonPanel.add(rightButtonPanel);
-
-
-        Color bg = ColorMap.PAPER_BACKGROUND;
-        Color fg = ColorMap.PAPER_FOREGROUND;
         
         int spacingLabels = calculateCharsPerLine();
 
@@ -45,9 +38,9 @@ public class PageTurner
             prevButton.addActionListener(actionComponent);
             leftButtonPanel.add (prevButton);
             prevButton.setOpaque(false);
-            prevButton.setBackground(bg);
-            prevButton.setForeground(fg);   
+            prevButton.setForeground(ColorMap.CHALK_FOREGROUND);   
             prevButton.setBorderPainted(false);
+            prevButton.setFocusPainted(false);
             leftButtonPanel.add(prevButton);
             
             for (int i = 0; i < spacingLabels; ++i)
@@ -68,9 +61,9 @@ public class PageTurner
             nextButton.addActionListener(actionComponent);
             rightButtonPanel.add (nextButton);
             nextButton.setOpaque(false);
-            nextButton.setBackground(bg);   
-            nextButton.setForeground(fg);   
+            nextButton.setForeground(ColorMap.CHALK_FOREGROUND);   
             nextButton.setBorderPainted(false);
+            nextButton.setFocusPainted(false);
             rightButtonPanel.add(nextButton);
 
             for (int i = 0; i < 1; ++i)
@@ -83,27 +76,25 @@ public class PageTurner
         
         return buttonPanel;
     }
-    
-   
-    
 
-    /**
-     * @param screenSize
-     */
     private static void makeVerticalBuffer(JPanel buttonPanel)
     {
-        Dimension screenSize = PWCGMonitorSupport.getPWCGFrameSize();
-        
         int numSpacingLabels = 3;
-        if (screenSize.getHeight() < 1000)
-        {
-            numSpacingLabels = 2;
-        }
-        if (screenSize.getHeight() < 800)
+
+        MonitorSize monitorSize = PWCGMonitorSupport.getFrameHeight();
+        if (monitorSize == MonitorSize.FRAME_VERY_SMALL)
         {
             numSpacingLabels = 1;
         }
-        
+        else if (monitorSize == MonitorSize.FRAME_SMALL)
+        {
+            numSpacingLabels = 2;
+        }
+        else
+        {
+            numSpacingLabels = 3;
+        }
+
         for (int i = 0; i < numSpacingLabels; ++i)
         {
             for (int j = 0; j < 2; ++j)
@@ -113,26 +104,26 @@ public class PageTurner
         }
     }
 
-
-    /**
-     * @param screenSize
-     */
     private static int calculateCharsPerLine()
     {
-        Dimension screenSize = PWCGMonitorSupport.getPWCGFrameSize();
-        
         int numSpacingLabels = 5;
-        if (screenSize.getWidth() < 1200)
+
+        MonitorSize monitorSize = PWCGMonitorSupport.getFrameWidth();
+        if (monitorSize == MonitorSize.FRAME_VERY_SMALL)
         {
-            numSpacingLabels = 3;
+            numSpacingLabels = 1;
         }
-        if (screenSize.getWidth() < 1000)
+        else if (monitorSize == MonitorSize.FRAME_SMALL)
         {
             numSpacingLabels = 2;
         }
-        if (screenSize.getWidth() < 800)
+        if (monitorSize == MonitorSize.FRAME_MEDIUM)
         {
-            numSpacingLabels = 1;
+            numSpacingLabels = 3;
+        }
+        else
+        {
+            numSpacingLabels = 5;
         }
         
         return numSpacingLabels;

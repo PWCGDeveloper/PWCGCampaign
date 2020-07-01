@@ -16,16 +16,9 @@ public class ContextSpecificImages
         return picPath;
     }
 
-    public static String menuPathForGeneric() 
+    public static String menuPathForMenus() 
     {
-        String picPath = PWCGContext.getInstance().getDirectoryManager().getPwcgImagesDir() + "Menus\\Generic\\";
-        
-        return picPath;
-    }
-
-    public static String menuPathMain() 
-    {
-        String picPath = PWCGContext.getInstance().getDirectoryManager().getPwcgImagesDir() + "Menus\\Main\\";
+        String picPath = PWCGContext.getInstance().getDirectoryManager().getPwcgImagesDir() + "Menus\\";
         
         return picPath;
     }
