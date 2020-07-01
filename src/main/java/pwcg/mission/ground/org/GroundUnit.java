@@ -57,33 +57,6 @@ public abstract class GroundUnit implements IGroundUnit
     }
 
     @Override
-    public boolean isUnitEngagedInCombat()
-    {
-        if (pwcgGroundUnitInformation.getTargetType() == TargetType.TARGET_INFANTRY)
-        {
-            return true;
-        }
-
-        return false;
-    }
-
-    @Override
-    public boolean isUnitMobile()
-    {
-        for (GroundUnitElement element : groundElements)
-        {
-            for (IGroundAspect aspect : element.getAspectsOfGroundUnit())
-            {
-                if (aspect instanceof GroundAspectMovement)
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    @Override
     public void write(BufferedWriter writer) throws PWCGException 
     {      
         try
