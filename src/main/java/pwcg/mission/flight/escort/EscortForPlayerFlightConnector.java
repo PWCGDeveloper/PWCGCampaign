@@ -22,11 +22,11 @@ public class EscortForPlayerFlightConnector
     
     public void connectEscortAndEscortedFlight() throws PWCGException
     {
-        connectEscortCoverToEscortedIngress();
+        connectEscortCoverToEscortedRendezvous();
         connectEscortedEgressToEscortForceComplete();
     }
 
-    private void connectEscortCoverToEscortedIngress() throws PWCGException
+    private void connectEscortCoverToEscortedRendezvous() throws PWCGException
     {
         IMissionPointSet escortMissionPointSetInterface = escortFlight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_ESCORT);
         MissionPointEscortWaypointSet escortMissionPointSet = (MissionPointEscortWaypointSet) escortMissionPointSetInterface;

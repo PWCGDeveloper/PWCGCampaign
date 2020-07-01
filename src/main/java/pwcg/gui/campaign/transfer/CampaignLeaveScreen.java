@@ -29,7 +29,6 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.PWCGMonitorBorders;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;

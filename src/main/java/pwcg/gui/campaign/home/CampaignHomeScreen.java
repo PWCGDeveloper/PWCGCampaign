@@ -196,7 +196,7 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
     {
         campaign.setCurrentMission(null);
         AARCoordinator.getInstance().submitTransfer(campaign, timePassedDays);
-        AARReportMainPanel eventDisplay = new AARReportMainPanel(campaign, null, EventPanelReason.EVENT_PANEL_REASON_TRANSFER, pilotEvent);
+        AARReportMainPanel eventDisplay = new AARReportMainPanel(campaign, this, EventPanelReason.EVENT_PANEL_REASON_TRANSFER, pilotEvent);
         eventDisplay.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(eventDisplay);
     }
