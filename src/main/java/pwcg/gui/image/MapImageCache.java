@@ -14,6 +14,7 @@ public class MapImageCache
 {
     private static MapImageCache instance = null;
     private static HashMap<String, SoftReference<BufferedImage>> bufferedMapImageCache = new HashMap<>();
+    private static boolean disableOverlays = true;
 
     private MapImageCache()
     {
@@ -67,12 +68,11 @@ public class MapImageCache
 
     private BufferedImage buildMapWithOverlay(String mapImageFileName) throws PWCGException
     {
-        BufferedImage mapOverlay = null;
-        //BufferedImage mapOverlay = MapImageOverlay.getMapImage(mapImageFileName);
+        BufferedImage mapOverlay = MapImageOverlay.getMapImage(mapImageFileName);
         BufferedImage mapImage = getMapImageNoOverlay(mapImageFileName);
 
         BufferedImage mapImageForDisplay = null;
-        if (mapOverlay != null && mapImage != null)
+        if (mapOverlay != null && mapImage != null && !disableOverlays)
         {
             BufferedImage combinedMapImage = combineOverlayWithMap(mapImage, mapOverlay);
             if (combinedMapImage != null)
