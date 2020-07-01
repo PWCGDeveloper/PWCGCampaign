@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -28,6 +29,7 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
+import pwcg.gui.dialogs.PWCGMonitorBorders;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -40,59 +42,59 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
 {
     private static final long serialVersionUID = 1L;
 
-	private CampaignHomeScreen parent = null;
+    private CampaignHomeScreen parent = null;
     private Campaign campaign = null;
-	private JTextField tLeaveTime;
+    private JTextField tLeaveTime;
 
-	public CampaignLeaveScreen  (CampaignHomeScreen parent)
-	{
+    public CampaignLeaveScreen(CampaignHomeScreen parent)
+    {
         super("");
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
-		this.parent = parent;
+        this.parent = parent;
         this.campaign = PWCGContext.getInstance().getCampaign();
-	}
-	
-	public void makeVisible(boolean visible) 
-	{
-	}
+    }
 
-	public void makePanels() throws PWCGException  
-	{
+    public void makeVisible(boolean visible)
+    {
+    }
+
+    public void makePanels() throws PWCGException
+    {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignLeaveScreen);
         this.setImage(imagePath);
 
         this.add(BorderLayout.WEST, makeLeaveLeftPanel());
-	    this.add(BorderLayout.CENTER, makeLeaveCenterPanel());
+        this.add(BorderLayout.CENTER, makeLeaveCenterPanel());
         this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1400));
 
-	}
+    }
 
-	private JPanel makeLeaveLeftPanel() throws PWCGException  
-	{
-		JPanel navPanel = new JPanel(new BorderLayout());
-		navPanel.setOpaque(false);
+    private JPanel makeLeaveLeftPanel() throws PWCGException
+    {
+        JPanel navPanel = new JPanel(new BorderLayout());
+        navPanel.setOpaque(false);
 
-		JPanel leaveButtonPanel = new JPanel(new GridLayout(0,1));
-		leaveButtonPanel.setOpaque(false);
-        
+        JPanel leaveButtonPanel = new JPanel(new GridLayout(0, 1));
+        leaveButtonPanel.setOpaque(false);
+
         JButton acceptButton = PWCGButtonFactory.makeMenuButton("Accept Leave", "Accept Leave", this);
         leaveButtonPanel.add(acceptButton);
-        
+
         JLabel spacer = new JLabel("");
         leaveButtonPanel.add(spacer);
 
         JButton rejectButton = PWCGButtonFactory.makeMenuButton("Reject Leave", "Reject Leave", this);
         leaveButtonPanel.add(rejectButton);
-		
-		navPanel.add(leaveButtonPanel, BorderLayout.NORTH);
-		
-		return navPanel;
-	}
 
-	private JPanel makeLeaveCenterPanel() throws PWCGException  
-	{
+        navPanel.add(leaveButtonPanel, BorderLayout.NORTH);
+
+        return navPanel;
+    }
+
+    private JPanel makeLeaveCenterPanel() throws PWCGException
+    {
         JPanel leaveCenterPanel = new JPanel();
         leaveCenterPanel.setOpaque(false);
         leaveCenterPanel.setLayout(new BorderLayout());
@@ -100,10 +102,10 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         JPanel leaveNotification = makeLeaveLetterPanel();
         leaveCenterPanel.add(leaveNotification, BorderLayout.CENTER);
 
-		return leaveCenterPanel;
-	}
-	
-    private JPanel makeLeaveLetterPanel() throws PWCGException  
+        return leaveCenterPanel;
+    }
+
+    private JPanel makeLeaveLetterPanel() throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
         ImageResizingPanel leaveLetterPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
@@ -117,11 +119,11 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
 
         JPanel leavePlayerWoundInfoPanel = makePlayerWoundHealTimePanel();
         leaveLetterGrid.add(leavePlayerWoundInfoPanel);
-        
+
         JPanel leaveRequestPanel = makeLeaveRequestRow();
         leaveLetterGrid.add(leaveRequestPanel);
 
-        leaveLetterPanel.add(leaveRequestPanel, BorderLayout.NORTH);
+        leaveLetterPanel.add(leaveLetterGrid, BorderLayout.NORTH);
 
         return leaveLetterPanel;
     }
@@ -130,20 +132,40 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
     {
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
-        JPanel leavePlayerWoundInfoPanel = new JPanel(new GridLayout(0, 1));
-        leavePlayerWoundInfoPanel.setOpaque(false);
+        JLabel lLeave = new JLabel("Request Leave Time (days): ", JLabel.LEFT);
+        lLeave.setOpaque(false);
+        lLeave.setFont(font);
+
+        tLeaveTime = new JTextField(5);
+        tLeaveTime.setOpaque(false);
+        tLeaveTime.setFont(font);
+
+        JPanel leaveTimeToHealPanel = new JPanel();
+        GridBagLayout documentLayout = new GridBagLayout();
+        leaveTimeToHealPanel.setLayout(documentLayout);
+
+        leaveTimeToHealPanel.setOpaque(false);
+
+        GridBagConstraints constraints = initializeGridbagConstraints();
+
+        constraints.weightx = 0.5;
+        constraints.weighty = 0.1;
+        constraints.gridx = 1;
+        constraints.gridy = 1;
+        constraints.gridheight = 1;
         for (SquadronMember player : campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
         {
             if (player.getRecoveryDate() != null)
             {
                 int daysToHeal = DateUtils.daysDifference(campaign.getDate(), player.getRecoveryDate()) + 1;
-                String playerWoundHealTimeDesc = player.getNameAndRank() + " requires " + daysToHeal + " to recover from his wounds";
-                JLabel playerWoundHealTimeLabel = new JLabel (playerWoundHealTimeDesc, JLabel.LEFT);
+                String playerWoundHealTimeDesc = player.getNameAndRank() + " requires " + daysToHeal + " days to recover from his wounds";
+                JLabel playerWoundHealTimeLabel = new JLabel(playerWoundHealTimeDesc, JLabel.LEFT);
                 playerWoundHealTimeLabel.setFont(font);
-                leavePlayerWoundInfoPanel.add(playerWoundHealTimeLabel);
+                leaveTimeToHealPanel.add(playerWoundHealTimeLabel, constraints);
             }
         }
-       return leavePlayerWoundInfoPanel;
+
+        return leaveTimeToHealPanel;
     }
 
     private JPanel makeLeaveRequestRow() throws PWCGException
@@ -159,29 +181,29 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         tLeaveTime.setBackground(buttonBG);
         tLeaveTime.setOpaque(false);
         tLeaveTime.setFont(font);
-        
-        JPanel leaveRequestPanel = new JPanel ();
-        GridBagLayout documentLayout = new GridBagLayout();                
+
+        JPanel leaveRequestPanel = new JPanel();
+        GridBagLayout documentLayout = new GridBagLayout();
         leaveRequestPanel.setLayout(documentLayout);
 
         leaveRequestPanel.setOpaque(false);
 
         GridBagConstraints constraints = initializeGridbagConstraints();
 
-        constraints.weightx = 0.5;
+        constraints.weightx = 0.01;
         constraints.weighty = 0.1;
         constraints.gridx = 1;
         constraints.gridy = 1;
         constraints.gridheight = 1;
-        leaveRequestPanel.add(lLeave);
-        
+        leaveRequestPanel.add(lLeave, constraints);
+
         constraints.weightx = 0.1;
         constraints.weighty = 0.1;
         constraints.gridx = 2;
         constraints.gridy = 1;
         constraints.gridheight = 5;
-        leaveRequestPanel.add(tLeaveTime);
-        
+        leaveRequestPanel.add(tLeaveTime, constraints);
+
         return leaveRequestPanel;
     }
 
@@ -191,6 +213,8 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         constraints.ipadx = 3;
         constraints.ipady = 3;
         constraints.anchor = GridBagConstraints.NORTHWEST;
+        Insets margins = new Insets(0, 50, 50, 0);
+        constraints.insets = margins;
         return constraints;
     }
 
@@ -224,19 +248,20 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         int leaveTimeDays = getLeaveTime();
         boolean isNewsWorthy = false;
         SquadronMember referencePlayer = campaign.findReferencePlayer();
-        LeaveEvent leaveEvent = new LeaveEvent(campaign, leaveTimeDays, referencePlayer.getSquadronId(), referencePlayer.getSerialNumber(), campaign.getDate(), isNewsWorthy);
+        LeaveEvent leaveEvent = new LeaveEvent(campaign, leaveTimeDays, referencePlayer.getSquadronId(), referencePlayer.getSerialNumber(), campaign.getDate(),
+                isNewsWorthy);
         parent.campaignTimePassedForLeave(leaveEvent.getLeaveTime());
     }
 
-	public int getLeaveTime()  throws PWCGUserException, Exception
-	{
-		if (tLeaveTime.getText() == null || tLeaveTime.getText().length() == 0)
-		{
-			throw new PWCGUserException ("Enter leave in weeks continuing");
-		}
-		
-		int leaveTime = Integer.valueOf(tLeaveTime.getText()).intValue();
-		
-		return leaveTime;
-	}
+    public int getLeaveTime() throws PWCGUserException, Exception
+    {
+        if (tLeaveTime.getText() == null || tLeaveTime.getText().length() == 0)
+        {
+            throw new PWCGUserException("Enter leave in weeks continuing");
+        }
+
+        int leaveTime = Integer.valueOf(tLeaveTime.getText()).intValue();
+
+        return leaveTime;
+    }
 }
