@@ -1,5 +1,6 @@
 package pwcg.aar.inmission.phase1.parse;
 
+import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 
 public class AARLogEvaluationCoordinator
@@ -11,10 +12,10 @@ public class AARLogEvaluationCoordinator
     }
     
     
-    public AARMissionLogRawData performAARPhase1Parse(AARMissionLogFileSet missionLogFileSet) throws PWCGException
+    public AARMissionLogRawData performAARPhase1Parse(Campaign campaign, AARMissionLogFileSet missionLogFileSet) throws PWCGException
     {
         IAARLogParser aarLogParser = new AARLogParser(missionLogFileSet);;
-        AARLogEventData logEventData = aarLogParser.parseLogFilesForMission();
+        AARLogEventData logEventData = aarLogParser.parseLogFilesForMission(campaign);
         missionLogRawData.setLogEventData(logEventData);
         return missionLogRawData;
     }

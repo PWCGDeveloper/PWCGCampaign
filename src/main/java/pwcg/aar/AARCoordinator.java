@@ -127,7 +127,7 @@ public class AARCoordinator
     void parseLogs() throws PWCGException
     {
         AARLogEvaluationCoordinator logEvaluationCoordinator = new AARLogEvaluationCoordinator();
-        AARMissionLogRawData missionLogRawData = logEvaluationCoordinator.performAARPhase1Parse(aarContext.getPreliminaryData().getMissionLogFileSet());
+        AARMissionLogRawData missionLogRawData = logEvaluationCoordinator.performAARPhase1Parse(campaign, aarContext.getPreliminaryData().getMissionLogFileSet());
         aarContext.setMissionLogRawData(missionLogRawData);
     }
 }

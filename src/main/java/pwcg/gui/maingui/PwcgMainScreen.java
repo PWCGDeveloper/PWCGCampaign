@@ -78,6 +78,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
             makeGUI();
             refresh();
 
+            setButtonsEnabled();
             validateInstallDirectory();            
         }
         catch (Exception e)
