@@ -11,7 +11,6 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
 import pwcg.mission.mcu.group.MissionBeginCheckZoneBase;
-import pwcg.mission.mcu.group.MissionBeginInOutCheckZone;
 import pwcg.mission.mcu.group.MissionBeginSelfDeactivatingCheckZone;
 import pwcg.mission.target.TargetType;
 
@@ -98,14 +97,7 @@ public class GroundUnitCollection implements IGroundUnitCollection
 
     private void createCheckZone() throws PWCGException
     {
-        if (groundUnits.stream().anyMatch(x -> x.isUnitMobile()))
-        {
-            missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone("Check Zone " + groundUnitName, getPosition(), GROUND_UNIT_SPAWN_DISTANCE);
-        }
-        else
-        {
-            missionBeginUnit = new MissionBeginInOutCheckZone("Check Zone " + groundUnitName, getPosition(), GROUND_UNIT_SPAWN_DISTANCE);
-        }
+        missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone("Check Zone " + groundUnitName, getPosition(), GROUND_UNIT_SPAWN_DISTANCE);
         missionBeginUnit.setCheckZoneCoalitions(groundUnitCollectionData.getTriggerCoalitions());
     }
 
@@ -114,11 +106,6 @@ public class GroundUnitCollection implements IGroundUnitCollection
         for (IGroundUnit groundUnit : groundUnits)
         {
             missionBeginUnit.linkCheckZoneTarget(groundUnit.getEntryPoint());
-            if (missionBeginUnit instanceof MissionBeginInOutCheckZone)
-            {
-                MissionBeginInOutCheckZone inOut = (MissionBeginInOutCheckZone) missionBeginUnit;
-                inOut.linkCheckZoneExitTarget(groundUnit.getDeleteEntryPoint());
-            }
         }
     }
 

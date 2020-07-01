@@ -17,9 +17,6 @@ public interface IGroundUnit
     void createGroundUnit() throws PWCGException;
     void write(BufferedWriter writer) throws PWCGException;
 
-    boolean isUnitEngagedInCombat();
-    boolean isUnitMobile();
-
     ICountry getCountry() throws PWCGException;
     String getName() throws PWCGException;
     List<IVehicle> getVehicles();
