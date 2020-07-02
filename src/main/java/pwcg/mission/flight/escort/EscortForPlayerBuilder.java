@@ -24,7 +24,7 @@ public class EscortForPlayerBuilder
         IFlightInformation playerFlightInformation = playerFlight.getFlightInformation();
         List<Role> escortRole = new ArrayList<Role>(Arrays.asList(Role.ROLE_FIGHTER));
         Side friendlySide = playerFlightInformation.getSquadron().determineSquadronCountry(playerFlightInformation.getCampaign().getDate()).getSide();
-        Squadron friendlyFighterSquadron = PWCGContext.getInstance().getSquadronManager().getSingleViableAiSquadronByRoleAndSideAndCurrentMap(playerFlightInformation.getCampaign(), escortRole, friendlySide);
+        Squadron friendlyFighterSquadron = getEscortSquadron(playerFlightInformation, escortRole, friendlySide);
 
         if (friendlyFighterSquadron != null)
         {          
@@ -50,5 +50,11 @@ public class EscortForPlayerBuilder
         }
         
         return null;
+    }
+
+    private Squadron getEscortSquadron(IFlightInformation playerFlightInformation, List<Role> escortRole, Side friendlySide) throws PWCGException
+    {
+        Squadron friendlyFighterSquadron = PWCGContext.getInstance().getSquadronManager().getSingleViableAiSquadronByRoleAndSideAndCurrentMap(playerFlightInformation.getCampaign(), escortRole, friendlySide);
+        return friendlyFighterSquadron;
     }
 }

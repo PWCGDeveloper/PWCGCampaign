@@ -5,6 +5,7 @@ At the PWCG web site
 10.0.1
 Fixed: Ground units deleted
 Fixed: Restored days needed to recover on leave screen
+Fixed: Error on transfer
 
 10.0,0
 UI Rewrite

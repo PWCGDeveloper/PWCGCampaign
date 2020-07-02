@@ -12,6 +12,7 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.SquadronIOJson;
 import pwcg.campaign.plane.Role;
+import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
@@ -212,7 +213,8 @@ public class SquadronManager
         List<Squadron> viableSquadronsForSide = SquadronReducer.reduceToSide(getViableSquadrons(campaign), side);
         List<Squadron> selectedSquadronsNoPlayer = SquadronReducer.reduceToAIOnly(viableSquadronsForSide, campaign);
         List<Squadron> selectedSquadronsForCurrentMap = SquadronReducer.reduceToCurrentMap(selectedSquadronsNoPlayer, campaign.getDate());
-        return selectedSquadronsForCurrentMap;
+        
+        return eliminateAnomalySquadrons(campaign, selectedSquadronsForCurrentMap);
     }
 
     public List<Squadron> getViableAiSquadronsForCurrentMapAndSideAndRole(Campaign campaign, List <Role> acceptableRoles, Side side) throws PWCGException 
@@ -221,7 +223,21 @@ public class SquadronManager
         List<Squadron> selectedSquadronsByRole = SquadronReducer.reduceToRole(viableSquadronsForSide, acceptableRoles, campaign.getDate());
         List<Squadron> selectedSquadronsNoPlayer = SquadronReducer.reduceToAIOnly(selectedSquadronsByRole, campaign);
         List<Squadron> selectedSquadronsForCurrentMap = SquadronReducer.reduceToCurrentMap(selectedSquadronsNoPlayer, campaign.getDate());
-        return selectedSquadronsForCurrentMap;
+        
+        return eliminateAnomalySquadrons(campaign, selectedSquadronsForCurrentMap);
+    }
+
+    private List<Squadron> eliminateAnomalySquadrons(Campaign campaign, List<Squadron> selectedSquadronsForCurrentMap) throws PWCGException
+    {
+        if (campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.RemoveNonHistoricalSquadronsKey) == 1)
+        {
+            List<Squadron> selectedSquadronsNoAnomalies = SquadronReducer.reduceToNoAnomalies(selectedSquadronsForCurrentMap, campaign.getDate());
+            return selectedSquadronsNoAnomalies;
+        }
+        else
+        {
+            return selectedSquadronsForCurrentMap;
+        }
     }
 
     public Squadron getSingleViableAiSquadronByRoleAndSideAndCurrentMap(Campaign campaign, List <Role> acceptableRoles, Side side) throws PWCGException 

@@ -134,7 +134,8 @@ public class ConfigItemKeys
 	// GUI
 	public static final String DebriefSpeedKey = "DebriefSpeed";
 	public static final String MissionsCreditedKey = "MissionsCredited";
-	public static final String ShowAllFlightsInBreifingKey = "ShowAllFLightsInBreifing";
+    public static final String ShowAllFlightsInBreifingKey = "ShowAllFLightsInBreifing";
+    public static final String RemoveNonHistoricalSquadronsKey = "RemoveNonHistoricalSquadrons";
 
 	public static final String PrimaryFontKey = "PrimaryFont";
 	public static final String PrimaryFontSizeKey = "PrimaryFontSize";

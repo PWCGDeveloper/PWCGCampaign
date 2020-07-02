@@ -20,6 +20,11 @@
       "value": "0",
       "label": "Show all flights in briefing",
       "help": "Intended for debugging.  Would be a cheat in the game"
-    }
+    },
+    "RemoveNonHistoricalSquadrons": {
+      "value": "0",
+      "label": "Remove non historical squadrons",
+      "help": "Remove non historical squadrons from missions"
+    }    
   }
 }

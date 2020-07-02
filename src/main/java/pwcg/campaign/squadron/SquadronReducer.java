@@ -14,6 +14,7 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.plane.Role;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
 
 public class SquadronReducer
@@ -122,5 +123,32 @@ public class SquadronReducer
         }
 
         return squadronsWithinRadius;
+    }
+    
+    public static List<Squadron> reduceToNoAnomalies(List<Squadron> squadrons, Date date) throws PWCGException
+    {       
+        List<Squadron> squadronsWithoutAnomalies = new ArrayList<Squadron>();
+        for (Squadron squadron : squadrons)
+        {
+            if (!squadronIsAnomaly(squadron, date))
+            {
+                squadronsWithoutAnomalies.add(squadron);
+            }
+        }
+        return squadronsWithoutAnomalies;
+    }
+    
+    private static boolean squadronIsAnomaly(Squadron squadron, Date date) throws PWCGException
+    {
+        if (squadron.getSquadronId() == 20115021)
+        {
+            return true;
+        }
+        else if (squadron.getSquadronId() == 20111051 && (date.before(DateUtils.getDateYYYYMMDD("19430301"))))
+        {
+            return true;
+        }
+        
+        return false;
     }
 }
