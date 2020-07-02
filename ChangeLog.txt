@@ -2,6 +2,16 @@
 ​
 At the PWCG web site
 
+10.0.1
+Fixed: Ground units deleted
+Fixed: Restored days needed to recover on leave screen
+
+10.0,0
+UI Rewrite
+Added ability to select top aces by service
+Added ability to select top aces excluding historical aces
+Added text to medal box
+
 9.1.1
 Added female pilots (USSR only)
 Adjusted fuel load by aircraft prior to briefing

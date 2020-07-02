@@ -305,7 +305,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
                 else if (action.equals("Cancel"))
                 {
                     home.createCampaignHomeContext();
-                    CampaignGuiContextManager.getInstance().popFromContextStack();
+                    CampaignGuiContextManager.getInstance().backToCampaignHome();
                 }
 			}
 			
