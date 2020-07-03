@@ -124,14 +124,7 @@ public class CampaignPilotMedalBox extends ImageResizingPanel implements ActionL
 		            PWCGLogger.logException(ex);
 				}
 				
-				JButton medalButton = new JButton(medalIcon);
-                medalButton.setPressedIcon(medalIcon);
-				medalButton.setBackground(bg);
-				medalButton.setOpaque(false);
-				medalButton.setBorderPainted(false);
-                medalButton.setFocusPainted(false);
-				medalButton.setActionCommand(medal.getMedalName());
-				medalButton.addActionListener(this);
+				JButton medalButton = makeMedalButton(bg, medal, medalIcon);
 
 				medals.put(medal.getMedalName(), medal);
 
@@ -154,8 +147,20 @@ public class CampaignPilotMedalBox extends ImageResizingPanel implements ActionL
 		
 		return medalPanel;
 	}
-	
 
+    private JButton makeMedalButton(Color bg, Medal medal, ImageIcon medalIcon)
+    {
+        JButton medalButton = new JButton(medalIcon);
+        medalButton.setPressedIcon(medalIcon);
+        medalButton.setBackground(bg);
+        medalButton.setOpaque(false);
+        medalButton.setBorderPainted(false);
+        medalButton.setFocusPainted(false);
+        medalButton.setActionCommand(medal.getMedalName());
+        medalButton.addActionListener(this);
+        return medalButton;
+    }
+	
     public void actionPerformed(ActionEvent ae)
     {
         try
