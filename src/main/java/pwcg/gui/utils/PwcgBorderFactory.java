@@ -111,5 +111,22 @@ public class PwcgBorderFactory
             return new Dimension(300, 700);
         }
     }
+    
+    public static Dimension createDocumentPreferredSize()
+    {
+        MonitorSize monitorSize = PWCGMonitorSupport.getFrameHeight();
+        if (monitorSize == MonitorSize.FRAME_LARGE)
+        {
+            return new Dimension(950, 1250);
+        }
+        else if (monitorSize == MonitorSize.FRAME_MEDIUM)
+        {
+            return new Dimension(750, 950);
+        }
+        else 
+        {
+            return new Dimension(650, 800);
+        }
+    }
   
 }

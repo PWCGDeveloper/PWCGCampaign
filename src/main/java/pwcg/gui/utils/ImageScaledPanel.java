@@ -30,7 +30,6 @@ public class ImageScaledPanel extends JPanel
 	{
 		try 
 		{
-		    //this.setOpaque(false);
 		    this.imageToScreenRatio = ratio;
 		    this.imagePath = imagePath;
 		    
@@ -51,11 +50,14 @@ public class ImageScaledPanel extends JPanel
 	{
 		try 
 		{
-			image = ImageCache.getInstance().getBufferedImage(imagePath);
-			if (image == null)
-			{
-			    PWCGLogger.log(LogLevel.ERROR, "Request to load null image: " + imagePath);
-			}
+            if (imagePath != "")
+            {
+    			image = ImageCache.getInstance().getBufferedImage(imagePath);
+    			if (image == null)
+    			{
+    			    PWCGLogger.log(LogLevel.ERROR, "Request to load null image: " + imagePath);
+    			}
+            }
 		}
 		catch (Exception ex) 
 		{
