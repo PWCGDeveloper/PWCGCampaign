@@ -15,7 +15,7 @@ import pwcg.mission.flight.IFlight;
 public class BriefingContext
 {
     private BriefingMissionParameters briefingMissionParameters = new BriefingMissionParameters();
-    private Map<Integer, BriefingMissionFlight> briefingMissionHandlers = new HashMap<>();
+    private Map<Integer, BriefingMissionFlight> briefingMissionFlights = new HashMap<>();
     private Map<Integer, String> aiFlightsToDisplay = new HashMap<>();
     private int selectedSquadronId = 0;
     private Mission mission;
@@ -28,14 +28,14 @@ public class BriefingContext
     public void buildBriefingMissions() throws PWCGException
     {
         BriefingMissionHandlerBuilder briefingMissionHandlerBuilder = new BriefingMissionHandlerBuilder(mission);
-        briefingMissionHandlers = briefingMissionHandlerBuilder.buildBriefingMissions();
+        briefingMissionFlights = briefingMissionHandlerBuilder.buildBriefingMissions();
         SquadronMember referencePlayer = mission.getCampaign().findReferencePlayer();
         selectedSquadronId = referencePlayer.getSquadronId();
     }
 
-    public BriefingMissionFlight getActiveBriefingHandler()
+    public BriefingMissionFlight getActiveBriefingFlight()
     {
-        return briefingMissionHandlers.get(selectedSquadronId);
+        return briefingMissionFlights.get(selectedSquadronId);
     }
 
     public void finalizeMission() throws PWCGException
@@ -55,11 +55,11 @@ public class BriefingContext
     {
         if (!mission.isFinalized())
         {
-            for (int squadronIdForFlight : briefingMissionHandlers.keySet())
+            for (int squadronIdForFlight : briefingMissionFlights.keySet())
             {
                 IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(squadronIdForFlight);
                         
-                BriefingMissionFlight briefingMissionHandler = briefingMissionHandlers.get(squadronIdForFlight);
+                BriefingMissionFlight briefingMissionHandler = briefingMissionFlights.get(squadronIdForFlight);
                         
                 playerFlight.getWaypointPackage().updateWaypoints(briefingMissionHandler.getBriefingFlightParameters().getWaypointsInBriefing());
                 playerFlight.getFlightPlanes().setFuel(briefingMissionHandler.getBriefingFlightParameters().getSelectedFuel());

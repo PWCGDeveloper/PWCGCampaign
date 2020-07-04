@@ -1,6 +1,8 @@
 package pwcg.gui.helper;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.plane.EquippedPlane;
@@ -11,7 +13,7 @@ import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 public class BriefingAssignmentData
 {
 	private Squadron squadron;
-    private Map<Integer, CrewPlanePayloadPairing> assignedCrewPlanes = new HashMap<>();
+    private List<CrewPlanePayloadPairing> assignedCrewPlanes = new ArrayList<>();
     private Map<Integer, SquadronMember> assignedPilots = new HashMap<>();
     private Map<Integer, SquadronMember> unAssignedPilots = new HashMap<>();
     private Map<Integer, EquippedPlane> assignedPlanes = new HashMap<>();
@@ -44,48 +46,44 @@ public class BriefingAssignmentData
         EquippedPlane equippedPlane = unAssignedPlanes.remove(planeSerialNumber);
         assignedPlanes.put(equippedPlane.getSerialNumber(), equippedPlane);
         
-        CrewPlanePayloadPairing crewPlanePayloadPairing = new CrewPlanePayloadPairing(assignedPilot, equippedPlane);
-        crewPlanePayloadPairing.setPayloadId(CrewPlanePayloadPairing.NO_PAYLOAD_ASSIGNED);
-        crewPlanePayloadPairing.clearModification();
+        CrewPlanePayloadPairing crewPlane = new CrewPlanePayloadPairing(assignedPilot, equippedPlane);
+        crewPlane.setPayloadId(CrewPlanePayloadPairing.NO_PAYLOAD_ASSIGNED);
+        crewPlane.clearModification();
 
-        assignedCrewPlanes.put(assignedPilot.getSerialNumber(), crewPlanePayloadPairing);
+        assignedCrewPlanes.add(crewPlane);
     }
 
     public void unassignPilot(int pilotSerialNumber)
     {
-        CrewPlanePayloadPairing crewPlanePayloadPairing = assignedCrewPlanes.remove(pilotSerialNumber);
+        CrewPlanePayloadPairing crewPlane = this.findAssignedCrewPairingByPilot(pilotSerialNumber);
+        assignedCrewPlanes.remove(crewPlane);
 
-        assignedPilots.remove(crewPlanePayloadPairing.getPilot().getSerialNumber());
-        unAssignedPilots.put(crewPlanePayloadPairing.getPilot().getSerialNumber(), crewPlanePayloadPairing.getPilot());
+        assignedPilots.remove(crewPlane.getPilot().getSerialNumber());
+        unAssignedPilots.put(crewPlane.getPilot().getSerialNumber(), crewPlane.getPilot());
 
-        assignedPlanes.remove(crewPlanePayloadPairing.getPlane().getSerialNumber());
-        unAssignedPlanes.put(crewPlanePayloadPairing.getPlane().getSerialNumber(), crewPlanePayloadPairing.getPlane());
+        assignedPlanes.remove(crewPlane.getPlane().getSerialNumber());
+        unAssignedPlanes.put(crewPlane.getPlane().getSerialNumber(), crewPlane.getPlane());
     }
     
     public void changePlane(int pilotSerialNumber, Integer planeSerialNumber)
     {
-        CrewPlanePayloadPairing crewPlanePayloadPairing = assignedCrewPlanes.get(pilotSerialNumber);
+        CrewPlanePayloadPairing crewPlane = this.findAssignedCrewPairingByPilot(pilotSerialNumber);
 
-        assignedPlanes.remove(crewPlanePayloadPairing.getPlane().getSerialNumber());
-        unAssignedPlanes.put(crewPlanePayloadPairing.getPlane().getSerialNumber(), crewPlanePayloadPairing.getPlane());
+        assignedPlanes.remove(crewPlane.getPlane().getSerialNumber());
+        unAssignedPlanes.put(crewPlane.getPlane().getSerialNumber(), crewPlane.getPlane());
         
         EquippedPlane equippedPlane = unAssignedPlanes.remove(planeSerialNumber);
         assignedPlanes.put(equippedPlane.getSerialNumber(), equippedPlane);
  
-        crewPlanePayloadPairing.setPlane(equippedPlane);
-        crewPlanePayloadPairing.setPayloadId(CrewPlanePayloadPairing.NO_PAYLOAD_ASSIGNED);
-        crewPlanePayloadPairing.clearModification();
+        crewPlane.setPlane(equippedPlane);
+        crewPlane.setPayloadId(CrewPlanePayloadPairing.NO_PAYLOAD_ASSIGNED);
+        crewPlane.clearModification();
     }
 
     public void modifyPayload(Integer pilotSerialNumber, int payloadId) 
     {
-        CrewPlanePayloadPairing crewPlane = assignedCrewPlanes.get(pilotSerialNumber);
+        CrewPlanePayloadPairing crewPlane = this.findAssignedCrewPairingByPilot(pilotSerialNumber);
         crewPlane.setPayloadId(payloadId);
-    }
-
-    public Map<Integer, CrewPlanePayloadPairing> getAssignedCrewPlanes()
-    {
-        return assignedCrewPlanes;
     }
 
     public Map<Integer, SquadronMember> getAssignedPilots()
@@ -117,6 +115,112 @@ public class BriefingAssignmentData
 	{
 		this.squadron = squadron;
 	}
-    
-    
+
+    public CrewPlanePayloadPairing findAssignedCrewPairingByPilot(int pilotSerialNumber)
+    {
+        for (CrewPlanePayloadPairing crewPlane : assignedCrewPlanes)
+        {
+            if (crewPlane.getPilot().getSerialNumber() == pilotSerialNumber)
+            {
+                return crewPlane;
+            }
+        }
+        return null;
+    }
+
+    public CrewPlanePayloadPairing findAssignedCrewPairingByPlane(int planeSerialNumber)
+    {
+        for (CrewPlanePayloadPairing crewPlane : assignedCrewPlanes)
+        {
+            if (crewPlane.getPlane().getSerialNumber() == planeSerialNumber)
+            {
+                return crewPlane;
+            }
+        }
+        return null;
+    }
+
+    public List<CrewPlanePayloadPairing> getCrews()
+    {
+        List<CrewPlanePayloadPairing> copyOfAssignedCrewPlanes = new ArrayList<>();
+        copyOfAssignedCrewPlanes.addAll(assignedCrewPlanes);
+        return copyOfAssignedCrewPlanes;
+    }
+
+    public void movePilotUp(int pilotSerialNumber)
+    {
+        for (int playerToBeMovedIndex = 0; playerToBeMovedIndex < assignedCrewPlanes.size(); ++playerToBeMovedIndex)
+        {
+            CrewPlanePayloadPairing assignedCrew = assignedCrewPlanes.get(playerToBeMovedIndex);
+            if (assignedCrew.getPilot().getSerialNumber() == pilotSerialNumber)
+            {
+                if (playerToBeMovedIndex != 0)
+                {
+                    assignedCrewPlanes = movePilotUpByIndex(playerToBeMovedIndex);
+                    return;
+                }
+            }
+        } 
+    }
+
+    private List<CrewPlanePayloadPairing> movePilotUpByIndex(int playerToBeMovedIndex)
+    {
+        List<CrewPlanePayloadPairing> copyOfAssignedCrewPlanes = new ArrayList<>();
+        for (int movingIndex = 0; movingIndex < assignedCrewPlanes.size(); ++movingIndex)
+        {
+            if (movingIndex == (playerToBeMovedIndex-1))
+            {
+                copyOfAssignedCrewPlanes.add(assignedCrewPlanes.get(playerToBeMovedIndex));
+            }
+            else if (movingIndex == (playerToBeMovedIndex))
+            {
+                copyOfAssignedCrewPlanes.add(assignedCrewPlanes.get(playerToBeMovedIndex-1));
+            }
+            else
+            {
+                copyOfAssignedCrewPlanes.add(assignedCrewPlanes.get(movingIndex));
+            }
+        }
+
+        return copyOfAssignedCrewPlanes;
+    }
+
+    public void movePilotDown(int pilotSerialNumber)
+    {
+        for (int playerToBeMovedIndex = 0; playerToBeMovedIndex < assignedCrewPlanes.size(); ++playerToBeMovedIndex)
+        {
+            CrewPlanePayloadPairing assignedCrew = assignedCrewPlanes.get(playerToBeMovedIndex);
+            if (assignedCrew.getPilot().getSerialNumber() == pilotSerialNumber)
+            {
+                if (playerToBeMovedIndex != (assignedCrewPlanes.size()-1))
+                {
+                    assignedCrewPlanes = movePilotDownFromIndex(playerToBeMovedIndex);
+                    return;
+                }
+            }
+        }
+ 
+    }
+
+    private List<CrewPlanePayloadPairing> movePilotDownFromIndex(int playerToBeMovedIndex)
+    {
+        List<CrewPlanePayloadPairing> copyOfAssignedCrewPlanes = new ArrayList<>();
+        for (int movingIndex = 0; movingIndex < assignedCrewPlanes.size(); ++movingIndex)
+        {
+            if (movingIndex == (playerToBeMovedIndex))
+            {
+                copyOfAssignedCrewPlanes.add(assignedCrewPlanes.get(playerToBeMovedIndex+1));
+            }
+            else if (movingIndex == (playerToBeMovedIndex+1))
+            {
+                copyOfAssignedCrewPlanes.add(assignedCrewPlanes.get(playerToBeMovedIndex));
+            }
+            else
+            {
+                copyOfAssignedCrewPlanes.add(assignedCrewPlanes.get(movingIndex));
+            }
+               
+        }
+        return copyOfAssignedCrewPlanes;
+    }    
 }

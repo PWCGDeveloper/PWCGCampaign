@@ -59,7 +59,7 @@ public class FlightCrewBuilder
     {
         while (assignedCrewMap.size() < numCrewNeeded)
         {
-            List<Integer> unassignedAiCrewSerialNumbers = buildUNassignedAiCrewMembers();
+            List<Integer> unassignedAiCrewSerialNumbers = buildUnassignedAiCrewMembers();
             if (unassignedAiCrewSerialNumbers.size() == 0)
             {
                 System.out.println("oops");
@@ -73,7 +73,7 @@ public class FlightCrewBuilder
         }
     }
     
-	private List<Integer> buildUNassignedAiCrewMembers()
+	private List<Integer> buildUnassignedAiCrewMembers()
 	{
         List<Integer> unassignedAiCrewSerialNumbers = new ArrayList<>();
         List<Integer> unassignedCrewSerialNumbers = new ArrayList<>(unassignedCrewMap.keySet());

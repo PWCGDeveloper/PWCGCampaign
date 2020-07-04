@@ -182,10 +182,8 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
         Image pilotStatusImage = ImageCache.getInstance().getBufferedImage(imagePath);
         if (pilotStatusImage != null)
         {
-            int imageHeight = PWCGMonitorSupport.getPilotPlateHeight();
-            
+            int imageHeight = PWCGMonitorSupport.getPilotPlateHeight();            
             Image scaledPic = pilotStatusImage.getScaledInstance(imageHeight, -1, Image.SCALE_DEFAULT);
-
             pilotStatusButton = ImageButton.makePilotPicButton(scaledPic);
         }
         else

@@ -1,15 +1,11 @@
 package pwcg.gui.helper;
 
-import java.util.List;
-
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.gui.rofmap.brief.BriefingCrewPlanePayloadSorter;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
@@ -36,7 +32,7 @@ public class BriefingPayloadHelper
     {
         try
         {
-            CrewPlanePayloadPairing crewPlane = briefingAssignmentData.getAssignedCrewPlanes().get(pilotSerialNumber);
+            CrewPlanePayloadPairing crewPlane = briefingAssignmentData.findAssignedCrewPairingByPilot(pilotSerialNumber);
             if (crewPlane != null)
             {
                 crewPlane.setPayloadId(payloadId);
@@ -50,13 +46,13 @@ public class BriefingPayloadHelper
 
     public void setPayloadForAddedPlane(Integer pilotSerialNumber) throws PWCGException
     {
-        CrewPlanePayloadPairing crewPlane = briefingAssignmentData.getAssignedCrewPlanes().get(pilotSerialNumber);
+        CrewPlanePayloadPairing crewPlane = briefingAssignmentData.findAssignedCrewPairingByPilot(pilotSerialNumber);
         executePayloadAssignmentSequence(crewPlane);
     }
 
     public void setPayloadForChangedPlane(Integer pilotSerialNumber) throws PWCGException
     {
-        CrewPlanePayloadPairing crewPlane = briefingAssignmentData.getAssignedCrewPlanes().get(pilotSerialNumber);
+        CrewPlanePayloadPairing crewPlane = briefingAssignmentData.findAssignedCrewPairingByPilot(pilotSerialNumber);
         executePayloadAssignmentSequence(crewPlane);
     }
 
@@ -77,8 +73,7 @@ public class BriefingPayloadHelper
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(briefingAssignmentData.getSquadron().getSquadronId());
         for (PlaneMcu plane : playerFlight.getFlightPlanes().getPlanes())
         {
-            SquadronMember pilotOfPlane = plane.getPilot();
-            CrewPlanePayloadPairing crewPlane = briefingAssignmentData.getAssignedCrewPlanes().get(pilotOfPlane.getSerialNumber());
+            CrewPlanePayloadPairing crewPlane = briefingAssignmentData.findAssignedCrewPairingByPlane(plane.getSerialNumber());
             if (crewPlane != null)
             {
                 crewPlane.setPayloadId(plane.getPlanePayload().getSelectedPayloadDesignation().getPayloadId());
@@ -91,8 +86,7 @@ public class BriefingPayloadHelper
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(briefingAssignmentData.getSquadron().getSquadronId());
         for (PlaneMcu plane : playerFlight.getFlightPlanes().getPlanes())
         {
-            SquadronMember pilotOfPlane = plane.getPilot();
-            CrewPlanePayloadPairing crewPlane = briefingAssignmentData.getAssignedCrewPlanes().get(pilotOfPlane.getSerialNumber());
+            CrewPlanePayloadPairing crewPlane = briefingAssignmentData.findAssignedCrewPairingByPlane(plane.getSerialNumber());
             if (crewPlane != null)
             {
             	for (PayloadElement modification : plane.getPlanePayload().getModifications())
@@ -106,7 +100,7 @@ public class BriefingPayloadHelper
     private boolean setPayloadToSimilarPlane(CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
         boolean setToSimilarPlane = false;
-        for (CrewPlanePayloadPairing sourceCrewPlane : getCrewsSorted())
+        for (CrewPlanePayloadPairing sourceCrewPlane : briefingAssignmentData.getCrews())
         {
             if (sourceCrewPlane.getPlane().getType().equals(crewPlane.getPlane().getType()))
             {
@@ -137,12 +131,5 @@ public class BriefingPayloadHelper
         IPlanePayload payload = payloadFactory.createPlanePayload(crewPlane.getPlane().getType());
         payload.createWeaponsPayload(playerFlight);
         crewPlane.setPayloadId(payload.getSelectedPayloadId());
-    }
-
-
-    private List<CrewPlanePayloadPairing> getCrewsSorted() throws PWCGException
-    {
-        BriefingCrewPlanePayloadSorter crewSorter = new BriefingCrewPlanePayloadSorter(mission, briefingAssignmentData.getAssignedCrewPlanes());
-        return crewSorter.getAssignedCrewsSorted();
     }
 }

@@ -21,11 +21,6 @@ public class BriefingFlightParameters
 	    this.flight = flight;
 	}
 
-    public McuWaypoint getWayPoint(int index)
-    {
-        return briefingMapEditorGroups.get(index).getWaypointInBriefing();
-    }
-
     public int getNumWaypoints()
     {
         return briefingMapEditorGroups.size();
@@ -46,37 +41,30 @@ public class BriefingFlightParameters
     {
 		if (selectedMapPointIndex != BriefingMapPanel.NO_MAP_POINT_SELECTED)
 		{
-	        EditorWaypointGroup editorWaypointGroup = briefingMapEditorGroups.get(selectedMapPointIndex);
-	        
-	        // First set the waypoint position
-	        McuWaypoint thisWaypoint = editorWaypointGroup.getWaypointInBriefing();
-	        position.setYPos(thisWaypoint.getPosition().getYPos());
-	        thisWaypoint.setPosition(position.copy());
-	        
-	        // Then reset the WP editor
-	        McuWaypoint previousWaypoint = null;
-	        if (selectedMapPointIndex > 0)
-	        {
-	            EditorWaypointGroup preveditorWaypointGroup = briefingMapEditorGroups.get(selectedMapPointIndex-1);
-	            previousWaypoint = preveditorWaypointGroup.getWaypointInBriefing();
-	        }
-	        
-	        editorWaypointGroup.getWaypointEditor().initializeWPEdit(previousWaypoint, thisWaypoint);
+	        EditorWaypointGroup editorWaypointGroup = briefingMapEditorGroups.get(selectedMapPointIndex);	        
+	        McuWaypoint thisWaypoint = setWaypointPosition(position, editorWaypointGroup);
+	        resetWaypointEditors(editorWaypointGroup, thisWaypoint);
 		}
     }
 
-    public void updateDistance() throws PWCGException
+    private McuWaypoint setWaypointPosition(Coordinate position, EditorWaypointGroup editorWaypointGroup)
     {
-        McuWaypoint previousWP = null;
-        for (EditorWaypointGroup editorWaypointGroup : briefingMapEditorGroups)
-        {
-            McuWaypoint thisWP = editorWaypointGroup.getWaypointInBriefing();
-            
-            editorWaypointGroup.getWaypointEditor().updateDistance(previousWP, thisWP);
-            
-            previousWP = thisWP; 
-        }
+        McuWaypoint thisWaypoint = editorWaypointGroup.getWaypointInBriefing();
+        position.setYPos(thisWaypoint.getPosition().getYPos());
+        thisWaypoint.setPosition(position.copy());
+        return thisWaypoint;
+    }
 
+    private void resetWaypointEditors(EditorWaypointGroup editorWaypointGroup, McuWaypoint thisWaypoint) throws PWCGException
+    {
+        McuWaypoint previousWaypoint = null;
+        if (selectedMapPointIndex > 0)
+        {
+            EditorWaypointGroup preveditorWaypointGroup = briefingMapEditorGroups.get(selectedMapPointIndex-1);
+            previousWaypoint = preveditorWaypointGroup.getWaypointInBriefing();
+        }
+        
+        editorWaypointGroup.getWaypointEditor().initializeWPEdit(previousWaypoint, thisWaypoint);
     }
 
     public List<WaypointEditor> getWaypointEditorsInBriefing()

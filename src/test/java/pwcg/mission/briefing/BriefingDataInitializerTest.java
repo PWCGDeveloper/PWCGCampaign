@@ -131,15 +131,15 @@ public class BriefingDataInitializerTest
         BriefingDataInitializer briefingDataInitializer = new BriefingDataInitializer(mission);
         briefingAssignmentData = briefingDataInitializer.initializeFromMission(squadron);
         
-        assert(briefingAssignmentData.getAssignedCrewPlanes().size() == 2);
+        assert(briefingAssignmentData.getCrews().size() == 2);
         assert(briefingAssignmentData.getAssignedPilots().size() == 2);
         assert(briefingAssignmentData.getUnassignedPilots().size() == 2);
         assert(briefingAssignmentData.getAssignedPlanes().size() == 2);
         assert(briefingAssignmentData.getUnassignedPlanes().size() == 2);
-        assert(briefingAssignmentData.getAssignedCrewPlanes().get(SerialNumber.AI_STARTING_SERIAL_NUMBER+1).getPlane().getType().equals("bf109f4"));
-        assert(briefingAssignmentData.getAssignedCrewPlanes().get(SerialNumber.AI_STARTING_SERIAL_NUMBER+2).getPlane().getType().equals("bf109f2"));
-        assert(briefingAssignmentData.getAssignedCrewPlanes().get(SerialNumber.AI_STARTING_SERIAL_NUMBER+1).getPilot().getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
-        assert(briefingAssignmentData.getAssignedCrewPlanes().get(SerialNumber.AI_STARTING_SERIAL_NUMBER+2).getPilot().getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER+2);
+        assert(briefingAssignmentData.findAssignedCrewPairingByPilot(SerialNumber.AI_STARTING_SERIAL_NUMBER+1).getPlane().getType().equals("bf109f4"));
+        assert(briefingAssignmentData.findAssignedCrewPairingByPilot(SerialNumber.AI_STARTING_SERIAL_NUMBER+2).getPlane().getType().equals("bf109f2"));
+        assert(briefingAssignmentData.findAssignedCrewPairingByPilot(SerialNumber.AI_STARTING_SERIAL_NUMBER+1).getPilot().getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
+        assert(briefingAssignmentData.findAssignedCrewPairingByPilot(SerialNumber.AI_STARTING_SERIAL_NUMBER+2).getPilot().getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER+2);
     }
 
     public BriefingAssignmentData getBriefingAssignmentData()

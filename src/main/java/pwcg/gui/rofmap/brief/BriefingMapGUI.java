@@ -121,7 +121,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 
     private void createMapPanel() throws PWCGException
     {
-        BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingHandler();
+        BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingFlight();
         
         if (mapPanel != null)
         {
@@ -138,7 +138,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 
     private Point findCenterPosition()
     {
-        BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingHandler();
+        BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingFlight();
         Point initialPosition = null;
         for  (EditorWaypointGroup editorWaypointGroup : activeMissionHandler.getBriefingFlightParameters().getWaypointEditorGroups())
         {
@@ -218,7 +218,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 
     private void updateWaypointsOnMap() throws PWCGException
     {
-        BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingHandler();
+        BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
     	briefingMissionHandler.loadMissionParams(briefingMissionHandler.getFlight());
     }
 
@@ -297,7 +297,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 
 		createMissionParametersHeader(constraints, waypointPanel);
 	    
-        BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingHandler();
+        BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingFlight();
 	    for (WaypointEditor wpEditor : activeMissionHandler.getBriefingFlightParameters().getWaypointEditorsInBriefing())
 	    {
 			if (mission.isFinalized())
@@ -431,7 +431,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 	{
 	    int index = 0;
 	    
-        BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingHandler();
+        BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingFlight();
 	    double selectedFuel = activeMissionHandler.getBriefingFlightParameters().getSelectedFuel();
 	    
         if (selectedFuel > .95)
@@ -554,7 +554,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 
     private void backToBriefingDescription() throws PWCGException
     {
-        BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingHandler();
+        BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingFlight();
         activeMissionHandler.getBriefingFlightParameters().synchronizeAltitudeEdits();
         briefingContext.updateMissionBriefingParameters();
 
@@ -564,7 +564,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 
     private void forwardToPilotSelection() throws PWCGException
     {
-        BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingHandler();
+        BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingFlight();
         activeMissionHandler.getBriefingFlightParameters().synchronizeAltitudeEdits();
         briefingContext.updateMissionBriefingParameters();
         
@@ -582,7 +582,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
         int valueAsInt = Integer.valueOf (valueString);
         Double selectedFuel = Double.valueOf (valueAsInt).doubleValue() / 100.0;
         
-        BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingHandler();
+        BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingFlight();
         activeMissionHandler.getBriefingFlightParameters().setSelectedFuel(selectedFuel);
     }
 

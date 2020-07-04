@@ -13,13 +13,7 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 
 public class ImageButton 
 {
-	/**
-	 * @param text
-	 * @param imageName
-	 * @return
-	 * @throws PWCGException 
-	 * @
-	 */
+
 	public static PWCGJButton makeButton(String text, String imageName) throws PWCGException 
 	{
         String imagePath = ContextSpecificImages.imagesNational() + imageName;
@@ -38,13 +32,6 @@ public class ImageButton
 		return button;
 	}
 
-	/**
-	 * @param text
-	 * @param image
-	 * @return
-	 * @throws PWCGException 
-	 * @
-	 */
 	public static PWCGJButton makeButton(String text, Image image) throws PWCGException 
 	{
 		ImageIcon icon = new ImageIcon(image);
@@ -59,15 +46,7 @@ public class ImageButton
 
 		return button;
 	}
-	
 
-    /**
-     * @param text
-     * @param image
-     * @return
-     * @throws PWCGException 
-     * @
-     */
     public static JLabel makePilotPicButton(Image image) throws PWCGException 
     {
         ImageIcon icon = new ImageIcon(image);
@@ -78,13 +57,6 @@ public class ImageButton
         return button;
     }
 
-	/**
-	 * @param text
-	 * @param imageName
-	 * @return
-	 * @throws PWCGException 
-	 * @
-	 */
 	public static JCheckBox makeCheckBox(String text, String imageName) throws PWCGException 
 	{
 		Icon notSelectedIcon = getOwnedIcon(imageName, false);
@@ -104,11 +76,6 @@ public class ImageButton
 		return checkBox;
 	}
 
-	/**
-	 * @param imageName
-	 * @param owned
-	 * @return
-	 */
 	private static Icon getOwnedIcon(String imageName, boolean owned) 
 	{
         String imagePath = ContextSpecificImages.imagesProfiles() + imageName;

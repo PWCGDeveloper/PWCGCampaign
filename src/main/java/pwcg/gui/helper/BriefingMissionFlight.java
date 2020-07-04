@@ -10,7 +10,6 @@ import pwcg.campaign.squadmember.SquadronMemberSorter;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.rofmap.brief.BriefParametersContextBuilder;
-import pwcg.gui.rofmap.brief.BriefingCrewPlanePayloadSorter;
 import pwcg.gui.rofmap.brief.BriefingFlightParameters;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
@@ -100,15 +99,9 @@ public class BriefingMissionFlight
         return PlaneSorter.sortEquippedPlanesByGoodness(new ArrayList<EquippedPlane>(briefingAssignmentData.getUnassignedPlanes().values()));
     }
 
-    public List<CrewPlanePayloadPairing> getCrewsSorted() throws PWCGException
-    {
-        BriefingCrewPlanePayloadSorter crewSorter = new BriefingCrewPlanePayloadSorter(mission, briefingAssignmentData.getAssignedCrewPlanes());
-        return crewSorter.getAssignedCrewsSorted();
-    }
-
     public CrewPlanePayloadPairing getPairingByPilot(Integer pilotSerialNumber) throws PWCGException 
     {       
-        return briefingAssignmentData.getAssignedCrewPlanes().get(pilotSerialNumber);
+        return briefingAssignmentData.findAssignedCrewPairingByPilot(pilotSerialNumber);
     }
 
     public Mission getMission()
@@ -134,5 +127,20 @@ public class BriefingMissionFlight
     public IFlight getFlight()
     {
         return flight;
+    }
+
+    public List<CrewPlanePayloadPairing> getCrews()
+    {
+        return briefingAssignmentData.getCrews();
+    }
+
+    public void movePilotUp(int pilotSerialNumber)
+    {
+        briefingAssignmentData.movePilotUp(pilotSerialNumber);        
+    }
+
+    public void movePilotDown(int pilotSerialNumber)
+    {
+        briefingAssignmentData.movePilotDown(pilotSerialNumber);        
     }
 }
