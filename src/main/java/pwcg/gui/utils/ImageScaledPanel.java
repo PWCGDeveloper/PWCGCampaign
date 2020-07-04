@@ -80,10 +80,6 @@ public class ImageScaledPanel extends JPanel
 			g.drawImage(resizedImage, 0, 0, null); // see javadoc for more info on the parameters
 			resizedImage.flush();
 		}
-		else
-		{
-		    PWCGLogger.log(LogLevel.ERROR, "Request to paint null image: " + imagePath);
-		}
 	}
 
 	

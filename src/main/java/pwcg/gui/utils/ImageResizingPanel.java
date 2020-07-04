@@ -45,10 +45,6 @@ public class ImageResizingPanel extends JPanel
                 panel.repaint();
             }
         }
-        else
-        {
-            PWCGLogger.log(LogLevel.ERROR, "Request to paint null image: " + imagePath);
-        }
     }
 
     protected void addChild(String panelId, JPanel panel)
@@ -60,11 +56,14 @@ public class ImageResizingPanel extends JPanel
 	{
 		try 
 		{
-			image = ImageCache.getInstance().getBufferedImage(imagePath);
-			if (image == null)
-			{
-			    PWCGLogger.log(LogLevel.ERROR, "Request to load null image: " + imagePath);
-			}
+            if (imagePath != "")
+            {
+    			image = ImageCache.getInstance().getBufferedImage(imagePath);
+    			if (image == null)
+    			{
+    	                PWCGLogger.log(LogLevel.ERROR, "Request to load null resizing image: " + imagePath);
+    			}
+            }
 		}
 		catch (Exception ex) 
 		{
