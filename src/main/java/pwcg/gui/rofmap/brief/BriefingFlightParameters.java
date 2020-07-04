@@ -5,7 +5,6 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.gui.utils.PWCGStringValidator;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -100,12 +99,8 @@ public class BriefingFlightParameters
         	WaypointEditor waypointEditor = editorWaypointGroup.getWaypointEditor();
         	if (waypointEditor != null)
         	{
-	            String altitudeText = waypointEditor.getAltitudeSetting().getText();
-	            if (PWCGStringValidator.isInteger(altitudeText))
-	            {
-	                int altitude = Integer.valueOf(altitudeText);
-	                editorWaypointGroup.updateAltitude(altitude);
-	            }
+	            int altitude = waypointEditor.getAltitudeValue();
+                editorWaypointGroup.updateAltitude(altitude);
         	}
         }
     }

@@ -22,6 +22,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
@@ -98,7 +99,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
             this.add(BorderLayout.EAST, editorPanel);
             this.add(BorderLayout.WEST, makeLeftPanel());           
             
-            updateWaypointsOnMap();            
+            //updateWaypointsOnMap();            
 
             Point initialPosition = findCenterPosition();
             centerMapAt(initialPosition);
@@ -139,16 +140,15 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
     private Point findCenterPosition()
     {
         BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingFlight();
-        Point initialPosition = null;
-        for  (EditorWaypointGroup editorWaypointGroup : activeMissionHandler.getBriefingFlightParameters().getWaypointEditorGroups())
+        Coordinate initialPosition = activeMissionHandler.findFlightCenterPosition();
+
+        Point initialMapPosition = null;
+        if (initialPosition != null)
         {
-            if (editorWaypointGroup.getWaypointInBriefing() != null)
-            {
-                initialPosition = mapPanel.coordinateToPoint(editorWaypointGroup.getWaypointInBriefing().getPosition());
-                break;
-            }
+            initialMapPosition = mapPanel.coordinateToPoint(initialPosition);
         }
-        return initialPosition;
+
+        return initialMapPosition;
     }
 
     private JPanel makeLeftPanel() throws PWCGException 
@@ -311,7 +311,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 			waypointPanel.add(wpEditor.getDesc(), constraints);
 			
 			constraints.gridx = 1;
-			waypointPanel.add(wpEditor.getAltitudeSetting(), constraints);
+			waypointPanel.add(wpEditor.getAltitude(), constraints);
             
             constraints.gridx = 2;
             waypointPanel.add(wpEditor.getDistance(), constraints);

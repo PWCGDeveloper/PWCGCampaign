@@ -149,6 +149,32 @@ public class CampaignGeneratorProfileGUI extends JPanel implements ActionListene
         campaignNameTextBox.setBackground(textBoxBackgroundColor);
         campaignNameTextBox.setMaximumSize( campaignNameTextBox.getPreferredSize() );
         
+        createTextDocumentListener();
+
+        JPanel campaignNameContainerGrid = new JPanel(new GridLayout(0,1));
+        campaignNameContainerGrid.setOpaque(false);
+        
+        JPanel campaignNameContainerPanel = new JPanel();
+        campaignNameContainerPanel.setLayout(new BoxLayout(campaignNameContainerPanel, BoxLayout.LINE_AXIS));
+        campaignNameContainerPanel.setOpaque(false);
+        campaignNameContainerPanel.add(lCampaignName, BorderLayout.WEST);
+        campaignNameContainerPanel.add(campaignNameTextBox, BorderLayout.CENTER);
+        
+        campaignNameContainerGrid.add(PWCGButtonFactory.makeDummy());
+        campaignNameContainerGrid.add(campaignNameContainerPanel);
+        campaignNameContainerGrid.add(PWCGButtonFactory.makeDummy());
+        campaignNameContainerGrid.add(PWCGButtonFactory.makeDummy());
+        campaignNameContainerGrid.add(PWCGButtonFactory.makeDummy());
+
+        JPanel campaignNamePanel = new JPanel(new BorderLayout());
+        campaignNamePanel.setOpaque(false);
+        campaignNamePanel.add(campaignNameContainerGrid, BorderLayout.CENTER);
+
+        return campaignNamePanel;
+    }
+
+    private void createTextDocumentListener()
+    {
         DocumentListener campaignNameTextBoxListener = new DocumentListener() {
 
             @Override
@@ -173,27 +199,6 @@ public class CampaignGeneratorProfileGUI extends JPanel implements ActionListene
         };
         
         campaignNameTextBox.getDocument().addDocumentListener(campaignNameTextBoxListener);
-
-        JPanel campaignNameContainerGrid = new JPanel(new GridLayout(0,1));
-        campaignNameContainerGrid.setOpaque(false);
-        
-        JPanel campaignNameContainerPanel = new JPanel();
-        campaignNameContainerPanel.setLayout(new BoxLayout(campaignNameContainerPanel, BoxLayout.LINE_AXIS));
-        campaignNameContainerPanel.setOpaque(false);
-        campaignNameContainerPanel.add(lCampaignName, BorderLayout.WEST);
-        campaignNameContainerPanel.add(campaignNameTextBox, BorderLayout.CENTER);
-        
-        campaignNameContainerGrid.add(PWCGButtonFactory.makeDummy());
-        campaignNameContainerGrid.add(campaignNameContainerPanel);
-        campaignNameContainerGrid.add(PWCGButtonFactory.makeDummy());
-        campaignNameContainerGrid.add(PWCGButtonFactory.makeDummy());
-        campaignNameContainerGrid.add(PWCGButtonFactory.makeDummy());
-
-        JPanel campaignNamePanel = new JPanel(new BorderLayout());
-        campaignNamePanel.setOpaque(false);
-        campaignNamePanel.add(campaignNameContainerGrid, BorderLayout.CENTER);
-
-        return campaignNamePanel;
     }
     
     private JPanel makeServicePanel() throws PWCGException

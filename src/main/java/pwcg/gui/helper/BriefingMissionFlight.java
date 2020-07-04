@@ -9,8 +9,10 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberSorter;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.gui.rofmap.brief.BriefParametersContextBuilder;
 import pwcg.gui.rofmap.brief.BriefingFlightParameters;
+import pwcg.gui.rofmap.brief.EditorWaypointGroup;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
@@ -103,6 +105,20 @@ public class BriefingMissionFlight
     {       
         return briefingAssignmentData.findAssignedCrewPairingByPilot(pilotSerialNumber);
     }
+    
+    public Coordinate findFlightCenterPosition()
+    {
+        Coordinate initialPosition = null;
+        for  (EditorWaypointGroup editorWaypointGroup : getBriefingFlightParameters().getWaypointEditorGroups())
+        {
+            if (editorWaypointGroup.getWaypointInBriefing() != null)
+            {
+                initialPosition = editorWaypointGroup.getWaypointInBriefing().getPosition();
+            }
+        }
+        return initialPosition;
+    }
+
 
     public Mission getMission()
     {

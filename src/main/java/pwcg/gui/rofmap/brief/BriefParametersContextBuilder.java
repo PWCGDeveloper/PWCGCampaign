@@ -78,7 +78,7 @@ public class BriefParametersContextBuilder
 		return mapPoint;
 	}
 
-	public void addTakeoff() throws PWCGException 
+	private void addTakeoff() throws PWCGException 
 	{
         BriefingMapPoint briefingMapTakeoff = BriefingMapPointFactory.createTakeoff(playerFlight);
         if (briefingMapTakeoff != null)
@@ -93,7 +93,7 @@ public class BriefParametersContextBuilder
 		}
 	}
 	
-	public void addLanding() throws PWCGException 
+	private void addLanding() throws PWCGException 
 	{
         BriefingMapPoint briefingMapLanding = BriefingMapPointFactory.createLanding(playerFlight);
 		if (briefingMapLanding != null)

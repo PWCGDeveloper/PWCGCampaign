@@ -21,28 +21,21 @@ public class WaypointEditor
 	public WaypointEditor() 
 	{	    
 	}
-
-    private JTextField makeField(String value) throws PWCGException
-    {
-        Font font = PWCGMonitorFonts.getPrimaryFontSmall();
-
-        JTextField field = new JTextField (value);
-        field.setOpaque(false);
-        field.setFont(font);
-        field.setHorizontalAlignment(JTextField.RIGHT);
-        
-        return field;
-    }
 	
 	public JTextField getDesc() 
 	{
 		return descTextField;
 	}
 	
-	public JTextField getAltitudeSetting() 
-	{
-		return altitudeTextField;
-	}
+    public JTextField getAltitude() 
+    {
+        return altitudeTextField;
+    }
+    
+    public int getAltitudeValue() 
+    {
+        return new Integer(altitudeTextField.getText());
+    }
     
     public JTextField getDistance() 
     {
@@ -60,22 +53,15 @@ public class WaypointEditor
 		altitudeTextField.setEditable(enabled);
 		distanceTextField.setEditable(false);
 	}
-    
-	/**
-	 * @param previousWP
-	 * @param thisWP
-	 * @throws PWCGException 
-	 */
+
 	public void initializeWPEdit(McuWaypoint previousWP, McuWaypoint thisWP) throws PWCGException
 	{
 	    String displayDescription = getWaypointDescription(thisWP);
-	    descTextField = makeField(displayDescription);
+	    descTextField = makeTextField(displayDescription);
 	    
-	    // identifies this editor on callbacks
         String yPos = getPosition(thisWP);
-        altitudeTextField = makeField(yPos);
+        altitudeTextField = makeTextField(yPos);
 
-        // Heading and distance
         int distanceAsInt = 0;
         int headingAsInt = 0;
         if (previousWP != null)
@@ -84,22 +70,27 @@ public class WaypointEditor
             headingAsInt = getHeading(previousWP, thisWP);
 	    }
 
-        distanceTextField = makeField(Integer.valueOf(distanceAsInt / 1000).toString());
-        headingTextField = makeField(Integer.valueOf(headingAsInt).toString());
-
-        // Only altitude is editable
+        distanceTextField = makeTextField(Integer.valueOf(distanceAsInt / 1000).toString());
+        headingTextField = makeTextField(Integer.valueOf(headingAsInt).toString());
+        
         descTextField.setEditable(false);
 	    altitudeTextField.setEditable(true);
 	    distanceTextField.setEditable(false);
 	    headingTextField.setEditable(false);
 	}
-	
-    
-    /**
-     * @param previousWP
-     * @param thisWP
-     * @throws PWCGException 
-     */
+
+    private JTextField makeTextField(String value) throws PWCGException
+    {
+        Font font = PWCGMonitorFonts.getPrimaryFontSmall();
+
+        JTextField field = new JTextField (value);
+        field.setOpaque(false);
+        field.setFont(font);
+        field.setHorizontalAlignment(JTextField.RIGHT);
+        
+        return field;
+    }
+
     public void updateDistance(McuWaypoint previousWP, McuWaypoint thisWP) throws PWCGException
     {
         if (previousWP != null)
@@ -113,11 +104,6 @@ public class WaypointEditor
         }
     }
 
-    /**
-     * @param previousWP
-     * @param thisWP
-     * @throws PWCGException
-     */
     private int getHeading(McuWaypoint previousWP, McuWaypoint thisWP) throws PWCGException
     {
         int headingAsInt = 0;
@@ -129,10 +115,6 @@ public class WaypointEditor
         return headingAsInt;
     }
 
-    /**
-     * @param previousWP
-     * @param thisWP
-     */
     private int getDistance(McuWaypoint previousWP, McuWaypoint thisWP)
     {
         int distanceAsInt = 0;
@@ -145,10 +127,6 @@ public class WaypointEditor
 	    return distanceAsInt;
     }
 
-    /**
-     * @param thisWP
-     * @return
-     */
     private String getPosition(McuWaypoint thisWP)
     {
         String yPos = "";
@@ -160,12 +138,6 @@ public class WaypointEditor
         return yPos;
     }
 
-    /**
-     * @param nextWP
-     * @param startIndex
-     * @param endIndex
-     * @return
-     */
     private String getWaypointDescription(McuWaypoint nextWP)
     {
         int startIndex = nextWP.getDesc().indexOf(':');

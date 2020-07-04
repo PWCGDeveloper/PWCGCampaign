@@ -445,30 +445,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
             coopUserNameTextBox.setFont(font);
             coopUserNameTextBox.setBackground(textBoxBackgroundColor);
             
-            
-            DocumentListener campaignNameTextBoxListener = new DocumentListener() {
-
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    updateFieldState();
-                }
-
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    updateFieldState();
-                }
-
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    updateFieldState();
-                }
-
-                protected void updateFieldState() {
-                    String coopUserNameFromTextBox = coopUserNameTextBox.getText();
-                    parent.getCampaignGeneratorDO().setCoopUser(coopUserNameFromTextBox);
-                }
-            };
-            coopUserNameTextBox.getDocument().addDocumentListener(campaignNameTextBoxListener);
+            makeCoopUserNameTextDocumentListener();
 
             dataConstraints.gridx = 3;
             dataConstraints.gridy = rowCount;
@@ -478,6 +455,34 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
         }
         
         return rowCount;
+    }
+
+
+    private void makeCoopUserNameTextDocumentListener()
+    {
+        DocumentListener campaignNameTextBoxListener = new DocumentListener() {
+
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                updateFieldState();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                updateFieldState();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                updateFieldState();
+            }
+
+            protected void updateFieldState() {
+                String coopUserNameFromTextBox = coopUserNameTextBox.getText();
+                parent.getCampaignGeneratorDO().setCoopUser(coopUserNameFromTextBox);
+            }
+        };
+        coopUserNameTextBox.getDocument().addDocumentListener(campaignNameTextBoxListener);
     }
 
     private int createCampaignMapWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
