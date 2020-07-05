@@ -50,6 +50,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     private BriefingContext briefingContext;
     private Map<Integer, BriefingPlaneModificationsPicker> planeModifications = new HashMap<>();
     private BriefingFlightChooser briefingFlightChooser;
+    private int selectedPilotSerialNumber = -1;
 
     public BriefingPilotSelectionScreen(Campaign campaign, CampaignHomeScreen campaignHomeGui, BriefingContext briefingContext, Mission mission)
     {
@@ -105,30 +106,38 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         JPanel buttonGrid = new JPanel(new GridLayout(0, 1));
         buttonGrid.setOpaque(false);
 
-        JButton payloadAsLeaderButton = PWCGButtonFactory.makeMenuButton("Synchronize Payload", "Synchronize Payload", this);
-        buttonGrid.add(payloadAsLeaderButton);
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
-
-        JButton scrubButton = PWCGButtonFactory.makeMenuButton("Scrub Mission", "Scrub Mission", this);
-        buttonGrid.add(scrubButton);
         buttonGrid.add(PWCGButtonFactory.makeDummy());
 
         JButton backToMapButton = PWCGButtonFactory.makeMenuButton("Back To Map", "Back To Map", this);
         buttonGrid.add(backToMapButton);
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
+
+        JButton scrubButton = PWCGButtonFactory.makeMenuButton("Scrub Mission", "Scrub Mission", this);
+        buttonGrid.add(scrubButton);
 
         if (!mission.isFinalized())
         {
             JButton acceptMissionButton = PWCGButtonFactory.makeMenuButton("Accept Mission", "Accept Mission", this);
             buttonGrid.add(acceptMissionButton);
-            buttonGrid.add(PWCGButtonFactory.makeDummy());
         }
         else
         {
             JButton backToCampaignButton = PWCGButtonFactory.makeMenuButton("Back To Campaign", "Back To Campaign", this);
             buttonGrid.add(backToCampaignButton);
-            buttonGrid.add(PWCGButtonFactory.makeDummy());
         }
+        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        
+        JButton payloadAsLeaderButton = PWCGButtonFactory.makeMenuButton("Synchronize Payload", "Synchronize Payload", this);
+        buttonGrid.add(payloadAsLeaderButton);
+        buttonGrid.add(PWCGButtonFactory.makeDummy());
+
+        JButton moveUpButton = PWCGButtonFactory.makeMenuButton("Move Pilot Up", "Move Pilot Up:", this);
+        buttonGrid.add(moveUpButton);
+
+        JButton moveDownButton = PWCGButtonFactory.makeMenuButton("MovePilot Down", "Move Pilot Down:", this);
+        buttonGrid.add(moveDownButton);
+
+        JButton removePilotButton = PWCGButtonFactory.makeMenuButton("Unassign Pilot", "Unassign Pilot:", this);
+        buttonGrid.add(removePilotButton);
 
         pilotAssignmentNavPanel.add(buttonGrid, BorderLayout.NORTH);
 
@@ -152,6 +161,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         return briefingMapCenterPanel;
     }
 
+    @Override
     public void actionPerformed(ActionEvent ae)
     {
         try
@@ -210,7 +220,11 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
             }
             else if (action.contains("Move Pilot Down:"))
             {
-                movePilotDiwn(action);
+                movePilotDown(action);
+            }
+            else if (action.contains("Select Pilot:"))
+            {
+                setSelectedPilotSerialNumber(getPilotSerialNumberFromAction(action));
             }
         }
         catch (Exception e)
@@ -263,38 +277,31 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         if (!mission.isFinalized())
         {
             BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
-            Integer pilotSerialNumber = getPilotSerialNumberFromAction(action);
-
-            CrewPlanePayloadPairing planeCrew = briefingMissionHandler.getPairingByPilot(pilotSerialNumber);
+            CrewPlanePayloadPairing planeCrew = briefingMissionHandler.getPairingByPilot(selectedPilotSerialNumber);
             SquadronMember squadronMember = planeCrew.getPilot();
             briefingMissionHandler.unassignPilotFromBriefing(squadronMember.getSerialNumber());
             refreshPilotDisplay();
         }
     }
 
-
     private void movePilotUp(String action) throws PWCGException
     {
         if (!mission.isFinalized())
         {
             BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
-            Integer pilotSerialNumber = getPilotSerialNumberFromAction(action);
-
-            CrewPlanePayloadPairing planeCrew = briefingMissionHandler.getPairingByPilot(pilotSerialNumber);
+            CrewPlanePayloadPairing planeCrew = briefingMissionHandler.getPairingByPilot(selectedPilotSerialNumber);
             SquadronMember squadronMember = planeCrew.getPilot();
             briefingMissionHandler.movePilotUp(squadronMember.getSerialNumber());
             refreshPilotDisplay();
         }
     }
 
-    private void movePilotDiwn(String action) throws PWCGException
+    private void movePilotDown(String action) throws PWCGException
     {
         if (!mission.isFinalized())
         {
             BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
-            Integer pilotSerialNumber = getPilotSerialNumberFromAction(action);
-
-            CrewPlanePayloadPairing planeCrew = briefingMissionHandler.getPairingByPilot(pilotSerialNumber);
+            CrewPlanePayloadPairing planeCrew = briefingMissionHandler.getPairingByPilot(selectedPilotSerialNumber);
             SquadronMember squadronMember = planeCrew.getPilot();
             briefingMissionHandler.movePilotDown(squadronMember.getSerialNumber());
             refreshPilotDisplay();
@@ -549,5 +556,15 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         pushEditsToMission();
         briefingContext.changeSelectedFlight(squadron);
         this.add(BorderLayout.CENTER, createCenterPanel());
+    }
+
+    public int getSelectedPilotSerialNumber()
+    {
+        return selectedPilotSerialNumber;
+    }
+
+    public void setSelectedPilotSerialNumber(int selectedPilotSerialNumber)
+    {
+        this.selectedPilotSerialNumber = selectedPilotSerialNumber;
     }
 }

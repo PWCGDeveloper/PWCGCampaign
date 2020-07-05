@@ -4,13 +4,16 @@ import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
 import pwcg.campaign.context.PWCGContext;
@@ -20,7 +23,6 @@ import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.helper.BriefingMissionFlight;
-import pwcg.gui.image.ImageIconCache;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -34,13 +36,13 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
     private JPanel pilotPanel;
     private BriefingContext briefingContext;
     private BriefingPilotSelectionScreen parent;
+    private ButtonGroup buttonGroup = new ButtonGroup();
+    private Map<Integer, JRadioButton> activePilotRadioButtons = new HashMap<>();
 
     private static final double pilotWeightx = 0.1;
     private static final double planeNameWeightx = 0.1;
     private static final double payloadWeightx = 0.1;
     private static final double modificationsWeightx = 0.1;
-    private static final double placeInFormationWeightx = 0.1;
-
     
     public BriefingPilotChalkboard(BriefingContext briefingContext, BriefingPilotSelectionScreen parent)
     {
@@ -116,14 +118,11 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
         GridBagConstraints modificationsConstraints = makeGridBagConstraints(1, 4, modificationsWeightx);
         JLabel modificationsLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Modifications:");
         assignedPilotPanel.add(modificationsLabel, modificationsConstraints);
-        
-        GridBagConstraints placeInFormationConstraints = makeGridBagConstraints(1, 5, placeInFormationWeightx);
-        JLabel placeInFormationLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Place:");
-        assignedPilotPanel.add(placeInFormationLabel, placeInFormationConstraints);
     }
 
     private void addDataForChalkboard(JPanel assignedPilotPanel) throws PWCGException
     {
+        activePilotRadioButtons.clear();
         BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
         int row = 2;
         for (CrewPlanePayloadPairing crewPlane : briefingMissionHandler.getCrews())
@@ -132,21 +131,47 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
             addPlaneColumn(assignedPilotPanel, crewPlane, row);
             addPayloadColumn(assignedPilotPanel, crewPlane, row);
             addModificationsColumn(assignedPilotPanel, crewPlane, row);
-            addPlaceInFormationColumn(assignedPilotPanel, crewPlane, row);
             ++row;
+        }
+        setCurrentlySelectedPilot();
+    }
+
+    private void setCurrentlySelectedPilot()
+    {
+        int selectedPilotSerialNumber = parent.getSelectedPilotSerialNumber();
+        if (activePilotRadioButtons.containsKey(selectedPilotSerialNumber))
+        {
+            JRadioButton radioButton = activePilotRadioButtons.get(selectedPilotSerialNumber);
+            radioButton.setSelected(true);
+        }
+        else
+        {
+            BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
+            if (briefingMissionHandler.getBriefingAssignmentData().getCrews().size() > 0)
+            {
+                CrewPlanePayloadPairing crewPlane = briefingMissionHandler.getBriefingAssignmentData().getCrews().get(0);
+                if (activePilotRadioButtons.containsKey(crewPlane.getPilot().getSerialNumber()))
+                {
+                    JRadioButton radioButton = activePilotRadioButtons.get(crewPlane.getPilot().getSerialNumber());
+                    radioButton.setSelected(true);
+                    parent.setSelectedPilotSerialNumber(crewPlane.getPilot().getSerialNumber());
+                }
+            }
         }
     }
 
     private void addPilotColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane, int row) throws PWCGException
     {
         String pilotNameText = crewPlane.getPilot().getNameAndRank();
-        JButton assignedPilotButton = PWCGButtonFactory.makeBriefingChalkBoardButton(pilotNameText,
-                "Unassign Pilot:" + crewPlane.getPilot().getSerialNumber(), parent);
+        JRadioButton assignedPilotButton = PWCGButtonFactory.makeBriefingChalkBoardRadioButton(pilotNameText, "Select Pilot:" + crewPlane.getPilot().getSerialNumber(), parent);
         assignedPilotButton.setVerticalAlignment(SwingConstants.TOP);
         assignedPilotButton.setHorizontalAlignment(SwingConstants.LEFT);
 
         GridBagConstraints constraints = makeGridBagConstraints(row, 1, pilotWeightx);
         assignedPilotPanel.add(assignedPilotButton, constraints);
+        
+        buttonGroup.add(assignedPilotButton);
+        activePilotRadioButtons.put( crewPlane.getPilot().getSerialNumber(), assignedPilotButton);
     }
 
     private void addPlaneColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane, int row) throws PWCGException
@@ -183,47 +208,6 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
 
         GridBagConstraints constraints = makeGridBagConstraints(row, 4, modificationsWeightx);
         assignedPilotPanel.add(extrasPanel, constraints);
-    }
-
-    private void addPlaceInFormationColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane, int row) throws PWCGException
-    {
-        JPanel placeInFormationPanel = makePlaceInFormation(crewPlane);
-        GridBagConstraints constraints = makeGridBagConstraints(row, 5, placeInFormationWeightx);
-        assignedPilotPanel.add(placeInFormationPanel, constraints);
-    }
-
-    private JPanel makePlaceInFormation(CrewPlanePayloadPairing crewPlane) throws PWCGException
-    {
-        JPanel placeInFormationPanel = new JPanel(new BorderLayout());
-        placeInFormationPanel.setOpaque(false);
-
-        JPanel placeInFormationGrid = new JPanel(new GridLayout(0, 1));
-        placeInFormationGrid.setOpaque(false);
-        
-        String imagePathUp = ContextSpecificImages.imagesMisc() + "ArrowUp.gif";   
-        ImageIcon upImageIcon = ImageIconCache.getInstance().getImageIcon(imagePathUp);
-        JButton upButton = makeUpDownButton(upImageIcon, crewPlane.getPilot());
-        upButton.setActionCommand("Move Pilot Up:" + crewPlane.getPilot().getSerialNumber());
-        placeInFormationGrid.add(upButton);
-        
-        String imagePathDown = ContextSpecificImages.imagesMisc() + "ArrowDown.gif";
-        ImageIcon downImageIcon = ImageIconCache.getInstance().getImageIcon(imagePathDown);
-        JButton downButton = makeUpDownButton(downImageIcon, crewPlane.getPilot());
-        downButton.setActionCommand("Move Pilot Down:" + crewPlane.getPilot().getSerialNumber());
-        placeInFormationGrid.add(downButton);
-        
-        placeInFormationPanel.add(placeInFormationGrid, BorderLayout.WEST);
-        
-        return placeInFormationPanel;
-    }
-    
-    private JButton makeUpDownButton(ImageIcon imageIcon, SquadronMember pilot) throws PWCGException
-    {
-        JButton upDownButton = PWCGButtonFactory.makeBriefingChalkBoardButton("", "", null);
-        upDownButton.setIcon(imageIcon);
-        upDownButton.setActionCommand("" + pilot.getSerialNumber());
-        upDownButton.addActionListener(parent);
-        return upDownButton;
     }
 
     private JPanel createUnassignedPilots() throws PWCGException

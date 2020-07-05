@@ -107,6 +107,20 @@ public class PWCGButtonFactory extends JButton
         return button;
     }
 
+    public static JRadioButton makeBriefingChalkBoardRadioButton(String buttonText, String action, ActionListener actionListener) throws PWCGException 
+    {
+        Font font = PWCGMonitorFonts.getBriefingChalkboardFont();
+        
+        JRadioButton button= new JRadioButton(buttonText);
+        button.setOpaque(false);
+        button.setActionCommand(action);
+        button.addActionListener(actionListener);
+        button.setFont(font);
+        button.setForeground(ColorMap.CHALK_FOREGROUND);
+
+        return button;
+    }
+
 
     public static JLabel makeDummy()
     {
