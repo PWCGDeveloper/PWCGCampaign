@@ -1,5 +1,6 @@
 package pwcg.campaign.personnel;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -65,7 +66,9 @@ public class SquadronPersonnel
 
     public boolean isActiveSquadronMember(Integer serialNumber) throws PWCGException
     {
-        for (SquadronMember squadronMember : squadronMembers.getSquadronMemberCollection().values())
+        List<SquadronMember> squadronMembersList = new ArrayList<>();
+        squadronMembersList.addAll(squadronMembers.getSquadronMemberCollection().values());
+        for (SquadronMember squadronMember : squadronMembersList)
         {
             if (squadronMember.getSerialNumber() == serialNumber)
             {
@@ -73,6 +76,15 @@ public class SquadronPersonnel
                 {
                 	return true;
                 }
+            }
+        }
+        
+        SquadronMember squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
+        if (squadronMember != null)
+        {
+            if (squadronMember.getSquadronId() == squadron.getSquadronId())
+            {
+                return true;
             }
         }
 

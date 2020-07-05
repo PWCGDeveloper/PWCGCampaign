@@ -18,6 +18,8 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.core.config.ConfigItemKeys;
+import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -31,6 +33,7 @@ public class EnemySquadronFinderTest
     @Mock private Equipment equipment;
     @Mock private SquadronPersonnel squadronPersonnel;
     @Mock private IAirfield squadronAirfield;
+    @Mock private ConfigManagerCampaign configManagerCampaign;
     
     @Before
     public void setupForTestEnvironment() throws PWCGException
@@ -41,6 +44,10 @@ public class EnemySquadronFinderTest
 
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420801"));
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
+        Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManagerCampaign);
+        
+        Mockito.when(configManagerCampaign.getIntConfigParam(ConfigItemKeys.RemoveNonHistoricalSquadronsKey)).thenReturn(0);
+
         Mockito.when(personnelManager.getSquadronPersonnel(Mockito.any())).thenReturn(squadronPersonnel);
         Mockito.when(squadronPersonnel.isSquadronPersonnelViable()).thenReturn(true);
 

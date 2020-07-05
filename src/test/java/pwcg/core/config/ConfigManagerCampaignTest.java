@@ -40,7 +40,7 @@ public class ConfigManagerCampaignTest
         Map<String, ConfigSet> initialConfigSetsFromFiles = campaignConfigManager.readInitialConfigSets();
 
         assertEquals(defaultConfigSets.size(), 13);
-        assertEquals(initialConfigSetsFromFiles.size(), 15);
+        assertEquals(initialConfigSetsFromFiles.size(), 16);
                 
         boolean allConfigsOk = verifyConfigSets(defaultConfigSets, initialConfigSetsFromFiles);
         
