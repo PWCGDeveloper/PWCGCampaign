@@ -7,8 +7,6 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -60,7 +58,7 @@ public class BriefingMapEditorPanel extends ImageResizingPanel implements Action
     private JPanel editorPanel;
     private Mission mission;
     private BriefingData briefingContext;
-    private List<WaypointEditor> waypointEditors = new ArrayList<>();
+    private WaypointEditorSet waypointEditors = new WaypointEditorSet();
 
 	public BriefingMapEditorPanel(Mission mission, BriefingData briefingContext) throws PWCGException  
 	{
@@ -155,12 +153,12 @@ public class BriefingMapEditorPanel extends ImageResizingPanel implements Action
         BriefingMapPoint previousMapPoint = null;
 	    for (BriefingMapPoint briefingMapPoint : activeBriefingFlight.getBriefingFlightParameters().getBriefingMapMapPoints())
 	    {
-	        WaypointEditor waypointEditor = new WaypointEditor();
+	        WaypointEditor waypointEditor = new WaypointEditor(briefingMapPoint.getWaypointID());
 	        waypointEditor.initializeWPEdit(previousMapPoint, briefingMapPoint);
 	        
 			if (mission.isFinalized())
 			{
-			    briefingMapPoint.setEditable(false);
+			    briefingMapPoint.setIsEditable(false);
 			}
 	    	
 	        constraints.gridy = constraints.gridy + 1;
@@ -177,7 +175,7 @@ public class BriefingMapEditorPanel extends ImageResizingPanel implements Action
             constraints.gridx = 3;
             waypointDetailsPanel.add(waypointEditor.getHeadingtextField(), constraints);
             
-            waypointEditors.add(waypointEditor);
+            waypointEditors.addWaypointEditor(waypointEditor);
             
             previousMapPoint = briefingMapPoint;
 	    }	    
@@ -384,5 +382,10 @@ public class BriefingMapEditorPanel extends ImageResizingPanel implements Action
         
         BriefingFlight activeBriefingFlight = briefingContext.getActiveBriefingFlight();
         activeBriefingFlight.setSelectedFuel(selectedFuel);
+    }
+
+    public WaypointEditorSet getWaypointEditors()
+    {
+        return waypointEditors;
     }
 }

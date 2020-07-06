@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.WaypointSet;
 import pwcg.mission.mcu.McuWaypoint;
@@ -52,15 +53,15 @@ public abstract class MissionPointSetMultipleWaypointSet implements IMissionPoin
     }
 
     @Override
-    public void replaceWaypoint(McuWaypoint waypoint) throws PWCGException
+    public void updateWaypointFromBriefing(BriefingMapPoint waypoint) throws PWCGException
     {
         if (waypointsBefore.containsWaypoint(waypoint.getWaypointID()))
         {
-            waypointsBefore.replaceWaypoint(waypoint);
+            waypointsBefore.updateWaypointFromBriefing(waypoint);
         }
         else if (waypointsAfter.containsWaypoint(waypoint.getWaypointID()))
         {
-            waypointsAfter.replaceWaypoint(waypoint);
+            waypointsAfter.updateWaypointFromBriefing(waypoint);
         }
         else
         {
@@ -96,8 +97,23 @@ public abstract class MissionPointSetMultipleWaypointSet implements IMissionPoin
         throw new PWCGException("Waypoint not found in waypoint set " + waypointIdBefore);        
     }
 
+
     @Override
-    public void removeUnwantedWaypoints(List<McuWaypoint> waypointsToKeep) throws PWCGException
+    public void addWaypointFromBriefing(BriefingMapPoint newWaypoint, long waypointIdBefore) throws PWCGException
+    {
+        if (waypointsBefore.containsWaypoint(waypointIdBefore))
+        {
+            waypointsBefore.addWaypointFromBriefing(newWaypoint, waypointIdBefore);
+        }
+        if (waypointsAfter.containsWaypoint(waypointIdBefore))
+        {
+            waypointsAfter.addWaypointFromBriefing(newWaypoint, waypointIdBefore);
+        }
+        throw new PWCGException("Waypoint not found in waypoint set " + waypointIdBefore); 
+    }
+
+    @Override
+    public void removeUnwantedWaypoints(List<BriefingMapPoint> waypointsToKeep) throws PWCGException
     {
         waypointsBefore.removeUnwantedWaypoints(waypointsToKeep);        
         waypointsAfter.removeUnwantedWaypoints(waypointsToKeep);        

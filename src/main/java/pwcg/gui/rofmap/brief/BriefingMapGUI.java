@@ -25,6 +25,7 @@ import pwcg.gui.rofmap.MapGUI;
 import pwcg.gui.rofmap.MapScroll;
 import pwcg.gui.rofmap.brief.model.BriefingData;
 import pwcg.gui.rofmap.brief.model.BriefingFlight;
+import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.mission.Mission;
 
@@ -238,12 +239,14 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 
     private void backToBriefingDescription() throws PWCGException
     {
+        pushEditsToModel();
         CampaignGuiContextManager.getInstance().popFromContextStack();
         return;
     }
 
     private void forwardToPilotSelection() throws PWCGException
     {
+        pushEditsToModel();
         BriefingPilotSelectionScreen pilotSelection = new BriefingPilotSelectionScreen(campaignHomeGui.getCampaign(), campaignHomeGui,  briefingData, mission);
         pilotSelection.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(pilotSelection);
@@ -252,6 +255,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
     @Override
     public void flightChanged(Squadron squadron) throws PWCGException
     {
+        pushEditsToModel();
         if (!isChangedSquadronSameSide(briefingData.getSelectedFlight().getSquadron(), squadron))
         {
             briefingData.clearAiFlightsToDisplay();
@@ -260,6 +264,19 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
         briefingData.changeSelectedFlight(squadron.getSquadronId());
         refreshAllPanels();           
 
+    }
+
+    private void pushEditsToModel()
+    {
+        for (BriefingMapPoint briefingMapPoint : briefingData.getActiveBriefingFlight().getBriefingFlightParameters().getBriefingMapMapPoints())
+        {
+            WaypointEditor editor = editorPanel.getWaypointEditors().getWaypointEditorByid(briefingMapPoint.getWaypointID());
+            if (editor != null)
+            {
+                int altitude = editor.getAltitudeValue();
+                briefingMapPoint.setAltitude(altitude);
+            }
+        }
     }
 
     private void refreshAllPanels() throws PWCGException

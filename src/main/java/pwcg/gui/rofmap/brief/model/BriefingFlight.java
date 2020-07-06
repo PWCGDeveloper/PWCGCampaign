@@ -16,14 +16,16 @@ import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 
 public class BriefingFlight
 {
+    private int squadronId;
     private BriefingFlightParameters briefingFlightParameters;
     private BriefingPilotAssignmentData briefingAssignmentData;
     private double selectedFuel;
     private Mission mission;
 
-    public BriefingFlight(Mission mission, BriefingFlightParameters briefingFlightParameters)
+    public BriefingFlight(Mission mission, BriefingFlightParameters briefingFlightParameters, int squadronId)
     {
         this.mission = mission;
+        this.squadronId = squadronId;
         this.briefingFlightParameters = briefingFlightParameters;
         briefingAssignmentData = new BriefingPilotAssignmentData();
     }
@@ -129,5 +131,10 @@ public class BriefingFlight
     public void setSelectedFuel(double selectedFuel)
     {
         this.selectedFuel = selectedFuel;
+    }
+
+    public int getSquadronId()
+    {
+        return squadronId;
     }
 }

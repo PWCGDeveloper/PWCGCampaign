@@ -20,7 +20,7 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.rofmap.brief.model.BriefingData;
-import pwcg.gui.rofmap.brief.updater.BriefingMissionUpdater;
+import pwcg.gui.rofmap.brief.update.BriefingMissionUpdater;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -187,7 +187,7 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
     {
         Campaign campaign  = PWCGContext.getInstance().getCampaign();
 
-        BriefingMissionUpdater.updateMissionBriefingParameters(briefingData);
+        BriefingMissionUpdater.pushEditsToMission(briefingData);
         
         campaign.setCurrentMission(mission);
         

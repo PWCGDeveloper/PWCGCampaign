@@ -13,14 +13,16 @@ import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 
 public class WaypointEditor
 {
+    private long associatedWaypointID;
     private JTextField descTextField;
     private JTextField altitudeTextField;
     private JTextField distanceTextField;
     private JTextField headingTextField;
     private String actionCommandKey = "";
 
-    public WaypointEditor()
+    public WaypointEditor(long associatedWaypointID)
     {
+        this.associatedWaypointID = associatedWaypointID;
     }
     
     public void initializeWPEdit(BriefingMapPoint previousMapPoint, BriefingMapPoint thisMapPoint) throws PWCGException
@@ -82,7 +84,7 @@ public class WaypointEditor
             headingAsInt = calculateHeading(previousMapPoint.getPosition(), thisMapPoint.getPosition());
         }
 
-        altitudeTextField.setText("" + Double.valueOf(thisMapPoint.getPosition().getYPos()).intValue());
+        altitudeTextField.setText("" + Double.valueOf(thisMapPoint.getAltitude()).intValue());
         distanceTextField.setText(Integer.valueOf(distanceAsInt / 1000).toString());
         headingTextField.setText(Integer.valueOf(headingAsInt).toString());
     }
@@ -146,5 +148,10 @@ public class WaypointEditor
     public String getActionCommandKey()
     {
         return actionCommandKey;
+    }
+
+    public long getAssociatedWaypointID()
+    {
+        return associatedWaypointID;
     }
 }

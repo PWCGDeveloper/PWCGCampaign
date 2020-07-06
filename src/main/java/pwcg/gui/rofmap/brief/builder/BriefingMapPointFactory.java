@@ -12,28 +12,30 @@ public class BriefingMapPointFactory
 {
     public static BriefingMapPoint waypointToMapPoint(McuWaypoint waypoint)
     {
-        BriefingMapPoint briefingMapPoint = new BriefingMapPoint();
+        BriefingMapPoint briefingMapPoint = new BriefingMapPoint(waypoint.getWaypointID());
 
         briefingMapPoint.setDesc(waypoint.getWpAction().getAction());
         briefingMapPoint.setPosition(waypoint.getPosition());
         briefingMapPoint.setAltitude(Double.valueOf(waypoint.getPosition().getYPos()).intValue());
         briefingMapPoint.setDistanceToNextPoint(0);
-        briefingMapPoint.setEditable(waypoint.getWpAction().isEditable());
-        briefingMapPoint.setTarget(waypoint.isTargetWaypoint());
+        briefingMapPoint.setIsEditable(waypoint.getWpAction().isEditable());
+        briefingMapPoint.setIsTarget(waypoint.isTargetWaypoint());
+        briefingMapPoint.setIsWaypoint(true);
 
         return briefingMapPoint;
     }
 
     public static BriefingMapPoint missionPointToMapPoint(MissionPoint missionPoint)
     {
-        BriefingMapPoint briefingMapPoint = new BriefingMapPoint();
+        BriefingMapPoint briefingMapPoint = new BriefingMapPoint(McuWaypoint.NO_WAYPOINT_ID);
 
         briefingMapPoint.setDesc(missionPoint.getAction().getAction());
         briefingMapPoint.setPosition(missionPoint.getPosition());
         briefingMapPoint.setAltitude(Double.valueOf(missionPoint.getPosition().getYPos()).intValue());
         briefingMapPoint.setDistanceToNextPoint(0);
-        briefingMapPoint.setEditable(missionPoint.getAction().isEditable());
-        briefingMapPoint.setTarget(false);
+        briefingMapPoint.setIsEditable(missionPoint.getAction().isEditable());
+        briefingMapPoint.setIsTarget(false);
+        briefingMapPoint.setIsWaypoint(false);
 
         return briefingMapPoint;
     }
@@ -43,13 +45,14 @@ public class BriefingMapPointFactory
         MissionPoint takeoffMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_TAKEOFF);
         if (takeoffMissionPoint != null)
         {
-            BriefingMapPoint briefingMapPoint = new BriefingMapPoint();
+            BriefingMapPoint briefingMapPoint = new BriefingMapPoint(McuWaypoint.NO_WAYPOINT_ID);
             briefingMapPoint.setDesc("Airfield");
             briefingMapPoint.setPosition(takeoffMissionPoint.getPosition());
             briefingMapPoint.setAltitude(0);
             briefingMapPoint.setDistanceToNextPoint(0);
-            briefingMapPoint.setEditable(false);
-            briefingMapPoint.setTarget(false);
+            briefingMapPoint.setIsEditable(false);
+            briefingMapPoint.setIsTarget(false);
+            briefingMapPoint.setIsWaypoint(false);
             return briefingMapPoint;
         }
 
@@ -61,13 +64,14 @@ public class BriefingMapPointFactory
         MissionPoint landingMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_LANDING);
         if (landingMissionPoint != null)
         {
-            BriefingMapPoint briefingMapPoint = new BriefingMapPoint();
+            BriefingMapPoint briefingMapPoint = new BriefingMapPoint(McuWaypoint.NO_WAYPOINT_ID);
             briefingMapPoint.setDesc("Land");
             briefingMapPoint.setPosition(landingMissionPoint.getPosition());
             briefingMapPoint.setAltitude(0);
             briefingMapPoint.setDistanceToNextPoint(0);
-            briefingMapPoint.setEditable(false);
-            briefingMapPoint.setTarget(false);
+            briefingMapPoint.setIsEditable(false);
+            briefingMapPoint.setIsTarget(false);
+            briefingMapPoint.setIsWaypoint(false);
             return briefingMapPoint;
         }
         return null;
@@ -75,25 +79,27 @@ public class BriefingMapPointFactory
 
     public static BriefingMapPoint createAttackPoint(Coordinate targetLocation)
     {
-        BriefingMapPoint briefingMapPoint = new BriefingMapPoint();
+        BriefingMapPoint briefingMapPoint = new BriefingMapPoint(McuWaypoint.NO_WAYPOINT_ID);
         briefingMapPoint.setDesc("Target");
         briefingMapPoint.setPosition(targetLocation.copy());
         briefingMapPoint.setAltitude(Double.valueOf(targetLocation.getYPos()).intValue());
         briefingMapPoint.setDistanceToNextPoint(0);
-        briefingMapPoint.setEditable(false);
-        briefingMapPoint.setTarget(true);
+        briefingMapPoint.setIsEditable(false);
+        briefingMapPoint.setIsTarget(true);
+        briefingMapPoint.setIsWaypoint(false);
         return briefingMapPoint;
     }
 
     public static BriefingMapPoint createEscortPoint(McuWaypoint escortWaypoint)
     {
-        BriefingMapPoint briefingMapPoint = new BriefingMapPoint();
+        BriefingMapPoint briefingMapPoint = new BriefingMapPoint(McuWaypoint.NO_WAYPOINT_ID);
         briefingMapPoint.setDesc("Escort");
         briefingMapPoint.setPosition(escortWaypoint.getPosition());
         briefingMapPoint.setAltitude(Double.valueOf(escortWaypoint.getPosition().getYPos()).intValue());
         briefingMapPoint.setDistanceToNextPoint(0);
-        briefingMapPoint.setEditable(false);
-        briefingMapPoint.setTarget(true);
+        briefingMapPoint.setIsEditable(false);
+        briefingMapPoint.setIsTarget(true);
+        briefingMapPoint.setIsWaypoint(false);
         return briefingMapPoint;
     }
 }

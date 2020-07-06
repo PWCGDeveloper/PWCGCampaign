@@ -1,6 +1,8 @@
 package pwcg.gui.rofmap.brief.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import pwcg.mission.Mission;
@@ -31,6 +33,11 @@ public class BriefingData
         return playerFlight;
     }
 
+    public List<BriefingFlight> getBriefingFlights()
+    {
+        return new ArrayList<>(briefingMissionFlights.values());
+    }
+    
     public void changeSelectedFlight(int squadronId)
     {
         selectedSquadronId = squadronId;
@@ -41,7 +48,6 @@ public class BriefingData
         return mission;
     }
     
-
     public String getSelectedTime()
     {
         return selectedTime;

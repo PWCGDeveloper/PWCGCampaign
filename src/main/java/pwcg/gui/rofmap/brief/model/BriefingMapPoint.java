@@ -4,12 +4,20 @@ import pwcg.core.location.Coordinate;
 
 public class BriefingMapPoint
 {
+    private long waypointID = 0;
     private Coordinate position;
     private int altitude;
     private int distanceToNextPoint;
     private boolean editable = true;
     private boolean isTarget = false;
+    private boolean isWaypoint = false;
     private String desc;
+    
+    public BriefingMapPoint(long waypointID)
+    {
+        this.waypointID = waypointID;
+    }
+
 
     public Coordinate getPosition()
     {
@@ -46,7 +54,7 @@ public class BriefingMapPoint
         return editable;
     }
 
-    public void setEditable(boolean editable)
+    public void setIsEditable(boolean editable)
     {
         this.editable = editable;
     }
@@ -56,7 +64,7 @@ public class BriefingMapPoint
         return isTarget;
     }
 
-    public void setTarget(boolean isTarget)
+    public void setIsTarget(boolean isTarget)
     {
         this.isTarget = isTarget;
     }
@@ -71,4 +79,20 @@ public class BriefingMapPoint
         this.desc = desc;
     }
 
+
+    public long getWaypointID()
+    {
+        return waypointID;
+    }
+
+
+    public boolean isWaypoint()
+    {
+        return isWaypoint;
+    }
+
+    public void setIsWaypoint(boolean isWaypoint)
+    {
+        this.isWaypoint = isWaypoint;
+    }
 }

@@ -112,7 +112,7 @@ public class FlightPlanes implements IFlightPlanes
     }
 
     @Override
-    public void setFuel(double myFuel) 
+    public void setFuelForFlight(double myFuel) 
     {
         for (PlaneMcu plane : getPlanes())
         {

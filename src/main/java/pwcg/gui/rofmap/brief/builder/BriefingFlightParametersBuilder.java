@@ -109,5 +109,4 @@ public class BriefingFlightParametersBuilder
         BriefingMapPoint briefingMapPoint = BriefingMapPointFactory.createEscortPoint(escortWaypoint);
         briefingFlightParameters.addBriefingMapMapPoints(briefingMapPoint);
 	}
-
 }

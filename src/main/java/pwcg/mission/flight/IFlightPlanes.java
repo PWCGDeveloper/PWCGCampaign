@@ -26,7 +26,7 @@ public interface IFlightPlanes
 
     List<PlaneMcu> getPlanes();
 
-    void setFuel(double myFuel);
+    void setFuelForFlight(double myFuel);
 
     void addFlightTarget(IFlight targetFlight);
 
