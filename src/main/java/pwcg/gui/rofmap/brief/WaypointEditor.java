@@ -1,162 +1,150 @@
 package pwcg.gui.rofmap.brief;
 
+import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JTextField;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.mission.mcu.McuWaypoint;
-
+import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 
 public class WaypointEditor
 {
-	private JTextField descTextField;
-	private JTextField altitudeTextField;
+    private JTextField descTextField;
+    private JTextField altitudeTextField;
     private JTextField distanceTextField;
     private JTextField headingTextField;
     private String actionCommandKey = "";
-	
-	public WaypointEditor() 
-	{	    
-	}
-	
-	public JTextField getDesc() 
-	{
-		return descTextField;
-	}
-	
-    public JTextField getAltitude() 
+
+    public WaypointEditor()
+    {
+    }
+    
+    public void initializeWPEdit(BriefingMapPoint previousMapPoint, BriefingMapPoint thisMapPoint) throws PWCGException
+    {
+        descTextField = makeTextField();
+        descTextField.setText(thisMapPoint.getDesc());
+
+        altitudeTextField = makeTextField();
+        distanceTextField = makeTextField();
+        headingTextField = makeTextField();
+
+        descTextField.setEditable(false);
+        altitudeTextField.setEditable(true);
+        distanceTextField.setEditable(false);
+        headingTextField.setEditable(false);
+        
+        calculateWPParameters(previousMapPoint, thisMapPoint);
+    }
+
+    public JTextField getDescriptionField()
+    {
+        return descTextField;
+    }
+
+    public JTextField getAltitudeTextField()
     {
         return altitudeTextField;
     }
-    
-    public int getAltitudeValue() 
+
+    public int getAltitudeValue()
     {
         return new Integer(altitudeTextField.getText());
     }
-    
-    public JTextField getDistance() 
+
+    public JTextField getDistanceTextField()
     {
         return distanceTextField;
     }
-    
-    public JTextField getHeading() 
+
+    public JTextField getHeadingtextField()
     {
         return headingTextField;
     }
-	
-	public void setEnabled(boolean enabled)
-	{
-		descTextField.setEditable(false);
-		altitudeTextField.setEditable(enabled);
-		distanceTextField.setEditable(false);
-	}
 
-	public void initializeWPEdit(McuWaypoint previousWP, McuWaypoint thisWP) throws PWCGException
-	{
-	    String displayDescription = getWaypointDescription(thisWP);
-	    descTextField = makeTextField(displayDescription);
-	    
-        String yPos = getPosition(thisWP);
-        altitudeTextField = makeTextField(yPos);
+    public void setEnabled(boolean enabled)
+    {
+        descTextField.setEditable(false);
+        altitudeTextField.setEditable(enabled);
+        distanceTextField.setEditable(false);
+    }
 
+    private void calculateWPParameters(BriefingMapPoint previousMapPoint, BriefingMapPoint thisMapPoint) throws PWCGException
+    {
         int distanceAsInt = 0;
         int headingAsInt = 0;
-        if (previousWP != null)
-	    {
-            distanceAsInt = getDistance(previousWP, thisWP);
-            headingAsInt = getHeading(previousWP, thisWP);
-	    }
+        if (previousMapPoint != null)
+        {
+            distanceAsInt = calculateDistanceAsInteger(previousMapPoint.getPosition(), thisMapPoint.getPosition());
+            headingAsInt = calculateHeading(previousMapPoint.getPosition(), thisMapPoint.getPosition());
+        }
 
-        distanceTextField = makeTextField(Integer.valueOf(distanceAsInt / 1000).toString());
-        headingTextField = makeTextField(Integer.valueOf(headingAsInt).toString());
-        
-        descTextField.setEditable(false);
-	    altitudeTextField.setEditable(true);
-	    distanceTextField.setEditable(false);
-	    headingTextField.setEditable(false);
-	}
+        altitudeTextField.setText("" + Double.valueOf(thisMapPoint.getPosition().getYPos()).intValue());
+        distanceTextField.setText(Integer.valueOf(distanceAsInt / 1000).toString());
+        headingTextField.setText(Integer.valueOf(headingAsInt).toString());
+    }
+    
+    public void refreshTextFields()
+    {
+        refreshTextField(altitudeTextField);
+        refreshTextField(distanceTextField);
+        refreshTextField(headingTextField);
+    }
+    
+    public void setAltitude(int altitude)
+    {
+        altitudeTextField.setText("" + altitude);
+    }
+    
+    private void refreshTextField(JTextField textField)
+    {
+        if (textField.getGraphics() != null)
+        {
+            textField.update(textField.getGraphics());
+        }
+    }
 
-    private JTextField makeTextField(String value) throws PWCGException
+    private JTextField makeTextField() throws PWCGException
     {
         Font font = PWCGMonitorFonts.getPrimaryFontSmall();
 
-        JTextField field = new JTextField (value);
+        JTextField field = new JTextField();
         field.setOpaque(false);
         field.setFont(font);
         field.setHorizontalAlignment(JTextField.RIGHT);
-        
+        field.setForeground(Color.BLACK);
+
         return field;
     }
 
-    public void updateDistance(McuWaypoint previousWP, McuWaypoint thisWP) throws PWCGException
-    {
-        if (previousWP != null)
-        {
-            int distanceAsInt = getDistance(previousWP, thisWP);
-            distanceTextField.setText(Integer.valueOf(distanceAsInt / 1000).toString());
-        }
-        else
-        {
-            distanceTextField.setText("0");
-        }
-    }
-
-    private int getHeading(McuWaypoint previousWP, McuWaypoint thisWP) throws PWCGException
+    private int calculateHeading(Coordinate previousPosition, Coordinate thisMapPoint) throws PWCGException
     {
         int headingAsInt = 0;
-        if (previousWP != null)
+        if (previousPosition != null)
         {
-            double angle = MathUtils.calcAngle(previousWP.getPosition(), thisWP.getPosition());
+            double angle = MathUtils.calcAngle(previousPosition, thisMapPoint);
             headingAsInt = Double.valueOf(angle).intValue();
         }
         return headingAsInt;
     }
 
-    private int getDistance(McuWaypoint previousWP, McuWaypoint thisWP)
+    private int calculateDistanceAsInteger(Coordinate previousPosition, Coordinate thisMapPoint)
     {
         int distanceAsInt = 0;
-	    if (previousWP != null)
-	    {
-	        double distanceExact = MathUtils.calcDist(previousWP.getPosition(), thisWP.getPosition());
-	        distanceAsInt = Double.valueOf(distanceExact).intValue();
-	    }
-	    
-	    return distanceAsInt;
-    }
+        if (previousPosition != null)
+        {
+            double distanceExact = MathUtils.calcDist(previousPosition, thisMapPoint);
+            distanceAsInt = Double.valueOf(distanceExact).intValue();
+        }
 
-    private String getPosition(McuWaypoint thisWP)
-    {
-        String yPos = "";
-	    if (thisWP.getPosition() != null)
-	    {
-	        int yPosAsInt = Double.valueOf(thisWP.getPosition().getYPos()).intValue();
-	        yPos += yPosAsInt;
-	    }
-        return yPos;
-    }
-
-    private String getWaypointDescription(McuWaypoint nextWP)
-    {
-        int startIndex = nextWP.getDesc().indexOf(':');
-        int endIndex = nextWP.getDesc().lastIndexOf("Waypoint");
-                
-        String displayDescription = "";
-	    if (endIndex > 0)
-	    {
-	        displayDescription = nextWP.getDesc().substring(startIndex + 1, endIndex);
-	    }
-	    else
-	    {
-	        displayDescription = nextWP.getDesc().substring(startIndex + 1);
-	    }
-        return displayDescription;
+        return distanceAsInt;
     }
 
     public String getActionCommandKey()
     {
         return actionCommandKey;
-    }       
+    }
 }

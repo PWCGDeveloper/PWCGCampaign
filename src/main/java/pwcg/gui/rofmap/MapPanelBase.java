@@ -337,7 +337,6 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
     }
 
     public void leftClickCallback(MouseEvent mouseEvent)
-
     {
         movementEnabled = true;
         mapScrollPositionStart.x = mouseEvent.getX();

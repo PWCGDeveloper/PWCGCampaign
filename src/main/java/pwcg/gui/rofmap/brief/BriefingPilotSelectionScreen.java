@@ -14,13 +14,10 @@ import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
-import pwcg.campaign.utils.AutoStart;
 import pwcg.campaign.utils.PlanesOwnedManager;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.MissionLogFileValidator;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
@@ -28,8 +25,9 @@ import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.helper.BriefingMissionFlight;
-import pwcg.gui.helper.PlayerFlightEditor;
+import pwcg.gui.rofmap.brief.model.BriefingData;
+import pwcg.gui.rofmap.brief.model.BriefingFlight;
+import pwcg.gui.rofmap.brief.updater.BriefingMissionUpdater;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -37,7 +35,6 @@ import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 import pwcg.mission.flight.plane.PlaneMcu;
-import pwcg.mission.io.MissionFileWriter;
 
 public class BriefingPilotSelectionScreen extends ImageResizingPanel implements ActionListener, IFlightChanged
 {
@@ -47,12 +44,12 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     private Mission mission;
     private JPanel briefingMapCenterPanel;
     private BriefingPilotChalkboard pilotPanel;
-    private BriefingContext briefingContext;
+    private BriefingData briefingContext;
     private Map<Integer, BriefingPlaneModificationsPicker> planeModifications = new HashMap<>();
     private BriefingFlightChooser briefingFlightChooser;
     private int selectedPilotSerialNumber = -1;
 
-    public BriefingPilotSelectionScreen(Campaign campaign, CampaignHomeScreen campaignHomeGui, BriefingContext briefingContext, Mission mission)
+    public BriefingPilotSelectionScreen(Campaign campaign, CampaignHomeScreen campaignHomeGui, BriefingData briefingContext, Mission mission)
     {
         super("");
         this.setLayout(new BorderLayout());
@@ -190,10 +187,6 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
             {
                 backToCampaign();
             }
-            else if (action.equals("Fly Mission"))
-            {
-                flyMission();
-            }
             else if (action.contains("Change Plane:"))
             {
                 changePlaneForPilot(action);
@@ -238,7 +231,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     {
         if (!mission.isFinalized())
         {
-            BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
+            BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
             Integer pilotSerialNumber = getPilotSerialNumberFromAction(action);
 
             BriefingPlanePicker briefingPlanePicker = new BriefingPlanePicker(briefingMissionHandler, this);
@@ -261,7 +254,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     {
         if (!mission.isFinalized())
         {
-            BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
+            BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
             if (briefingMissionHandler.getBriefingAssignmentData().getUnassignedPlanes().size() > 0)
             {
                 Integer pilotSerialNumber = getPilotSerialNumberFromAction(action);
@@ -276,7 +269,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     {
         if (!mission.isFinalized())
         {
-            BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
+            BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
             CrewPlanePayloadPairing planeCrew = briefingMissionHandler.getPairingByPilot(selectedPilotSerialNumber);
             SquadronMember squadronMember = planeCrew.getPilot();
             briefingMissionHandler.unassignPilotFromBriefing(squadronMember.getSerialNumber());
@@ -288,7 +281,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     {
         if (!mission.isFinalized())
         {
-            BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
+            BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
             CrewPlanePayloadPairing planeCrew = briefingMissionHandler.getPairingByPilot(selectedPilotSerialNumber);
             SquadronMember squadronMember = planeCrew.getPilot();
             briefingMissionHandler.movePilotUp(squadronMember.getSerialNumber());
@@ -300,7 +293,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     {
         if (!mission.isFinalized())
         {
-            BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
+            BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
             CrewPlanePayloadPairing planeCrew = briefingMissionHandler.getPairingByPilot(selectedPilotSerialNumber);
             SquadronMember squadronMember = planeCrew.getPilot();
             briefingMissionHandler.movePilotDown(squadronMember.getSerialNumber());
@@ -312,7 +305,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     {
         if (!mission.isFinalized())
         {
-            BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
+            BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
             Integer pilotSerialNumber = getPilotSerialNumberFromAction(action);
             CrewPlanePayloadPairing crewPlane = briefingMissionHandler.getPairingByPilot(pilotSerialNumber);
 
@@ -344,7 +337,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
 
     private void setModificationInCrewPlane(Integer pilotSerialNumber) throws PWCGException
     {
-        BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
+        BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
         CrewPlanePayloadPairing crewPlane = briefingMissionHandler.getPairingByPilot(pilotSerialNumber);
         crewPlane.clearModification();
         BriefingPlaneModificationsPicker modificationPicker = planeModifications.get(pilotSerialNumber);
@@ -373,7 +366,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
 
     private void synchronizePayload() throws PWCGException
     {
-        BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
+        BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
         List<CrewPlanePayloadPairing> assignedPairings = briefingMissionHandler.getCrews();
         CrewPlanePayloadPairing leadPlane = assignedPairings.get(0);
         for (int i = 1; i < assignedPairings.size(); ++i)
@@ -389,7 +382,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
 
     private void synchronizeModifications() throws PWCGException
     {
-        BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
+        BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
         List<CrewPlanePayloadPairing> assignedPairings = briefingMissionHandler.getCrews();
         CrewPlanePayloadPairing leadPlane = assignedPairings.get(0);
         for (int i = 1; i < assignedPairings.size(); ++i)
@@ -424,7 +417,6 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
-        pushEditsToMission();
         if (!ensurePlayerIsInMission())
         {
             return;
@@ -437,7 +429,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
 
         SoundManager.getInstance().playSound("BriefingEnd.WAV");
 
-        briefingContext.finalizeMission();
+        BriefingMissionUpdater.finalizeMission(briefingContext);
         verifyLoggingEnabled();
 
         campaign.setCurrentMission(mission);
@@ -504,57 +496,10 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         }
     }
 
-    private void flyMission() throws PWCGException, PWCGIOException
-    {
-        pushEditsToMission();
-
-        MissionLogFileValidator missionLogFileValidator = new MissionLogFileValidator();
-        boolean missionLogsEnabled = missionLogFileValidator.validateMissionLogsEnabled();
-        if (missionLogsEnabled)
-        {
-            SoundManager.getInstance().playSound("BriefingEnd.WAV");
-
-            briefingContext.finalizeMission();
-
-            makeDataFileForMission();
-
-            CampaignGuiContextManager.getInstance().popFromContextStack();
-
-            System.exit(0);
-        }
-        else
-        {
-            ErrorDialog
-                    .userError("Mission not started because logging is not enabled.  Open .<game install dir>\\Data\\Startup.cfg and set mission_text_log = 1");
-        }
-
-    }
-
-    private void makeDataFileForMission() throws PWCGException
-    {
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
-        String campaignName = campaign.getCampaignData().getName();
-
-        String missionFileName = MissionFileWriter.getMissionFileName(campaign) + ".mission";
-
-        AutoStart autoStartFile = new AutoStart();
-        autoStartFile.setCampaignName(campaignName);
-        autoStartFile.setMissionFileName(missionFileName);
-        autoStartFile.write();
-    }
-
-    private void pushEditsToMission() throws PWCGException
-    {
-        BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
-        PlayerFlightEditor planeGeneratorPlayer = new PlayerFlightEditor(mission.getCampaign(), briefingMissionHandler.getFlight());
-        planeGeneratorPlayer.updatePlayerPlanes(briefingMissionHandler.getCrews());
-    }
-
     @Override
     public void flightChanged(Squadron squadron) throws PWCGException
     {
-        pushEditsToMission();
-        briefingContext.changeSelectedFlight(squadron);
+        briefingContext.changeSelectedFlight(squadron.getSquadronId());
         this.add(BorderLayout.CENTER, createCenterPanel());
     }
 

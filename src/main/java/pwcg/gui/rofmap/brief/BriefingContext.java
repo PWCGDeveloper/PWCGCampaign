@@ -1,107 +1,28 @@
 package pwcg.gui.rofmap.brief;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.gui.helper.BriefingMissionFlight;
+import pwcg.gui.rofmap.brief.builder.BriefingDataBuilder;
+import pwcg.gui.rofmap.brief.model.BriefingData;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.IFlight;
 
 public class BriefingContext
 {
-    private BriefingMissionParameters briefingMissionParameters = new BriefingMissionParameters();
-    private Map<Integer, BriefingMissionFlight> briefingMissionFlights = new HashMap<>();
-    private Map<Integer, String> aiFlightsToDisplay = new HashMap<>();
-    private int selectedSquadronId = 0;
-    private Mission mission;
-
-    public BriefingContext(Mission mission)
+    private static BriefingContext instance = new BriefingContext();
+    private BriefingData briefingData;
+    
+    public static BriefingContext getInstance()
     {
-        this.mission = mission;
-    }
-
-    public void buildBriefingMissions() throws PWCGException
-    {
-        BriefingMissionHandlerBuilder briefingMissionHandlerBuilder = new BriefingMissionHandlerBuilder(mission);
-        briefingMissionFlights = briefingMissionHandlerBuilder.buildBriefingMissions();
-        SquadronMember referencePlayer = mission.getCampaign().findReferencePlayer();
-        selectedSquadronId = referencePlayer.getSquadronId();
-    }
-
-    public BriefingMissionFlight getActiveBriefingFlight()
-    {
-        return briefingMissionFlights.get(selectedSquadronId);
-    }
-
-    public void finalizeMission() throws PWCGException
-    {
-        if (!mission.isFinalized())
-        {
-            updateMissionBriefingParameters();
-            mission.finalizeMission();
-            mission.write();
-
-            Campaign campaign = PWCGContext.getInstance().getCampaign();
-            campaign.setCurrentMission(mission);
-        }
-    }
-
-    public void updateMissionBriefingParameters() throws PWCGException 
-    {
-        if (!mission.isFinalized())
-        {
-            for (int squadronIdForFlight : briefingMissionFlights.keySet())
-            {
-                IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(squadronIdForFlight);
-                        
-                BriefingMissionFlight briefingMissionHandler = briefingMissionFlights.get(squadronIdForFlight);
-                        
-                playerFlight.getWaypointPackage().updateWaypoints(briefingMissionHandler.getBriefingFlightParameters().getWaypointsInBriefing());
-                playerFlight.getFlightPlanes().setFuel(briefingMissionHandler.getBriefingFlightParameters().getSelectedFuel());
-            }
-            
-            PWCGContext.getInstance().getCurrentMap().getMissionOptions().getMissionTime().setMissionTime(briefingMissionParameters.getSelectedTime());
-        }
+        return instance;
     }
     
-    public IFlight getSelectedFlight()
+    public void buildBriefingData(Mission mission) throws PWCGException
     {
-        IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(selectedSquadronId);
-        return playerFlight;
+        BriefingDataBuilder briefingDataBuilder = new BriefingDataBuilder(mission);
+        briefingData = briefingDataBuilder.buildBriefingData();
     }
 
-    public void setAiFlightsToDisplay(Map<Integer, String> aiFlightsToDisplay)
+    public BriefingData getBriefingData()
     {
-        this.aiFlightsToDisplay = aiFlightsToDisplay;
-    }
-
-    public void clearAiFlightsToDisplay()
-    {
-        aiFlightsToDisplay.clear();
-    }
-    
-    public void changeSelectedFlight(Squadron squadron)
-    {
-        selectedSquadronId = squadron.getSquadronId();
-    }
-
-    public Map<Integer, String> getAiFlightsToDisplay()
-    {
-        return aiFlightsToDisplay;
-    }
-
-    public BriefingMissionParameters getBriefingMissionParameters()
-    {
-        return briefingMissionParameters;
-    }
-
-    public Mission getMission()
-    {
-        return mission;
+        return briefingData;
     }
 }

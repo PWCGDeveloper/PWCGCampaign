@@ -12,7 +12,7 @@ import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
-import pwcg.gui.helper.BriefingPayloadHelper;
+import pwcg.gui.rofmap.brief.BriefingPayloadHelper;
 
 @RunWith(MockitoJUnitRunner.Silent.class)
 public class BriefingPayloadHelperTest extends BriefingDataInitializerTest

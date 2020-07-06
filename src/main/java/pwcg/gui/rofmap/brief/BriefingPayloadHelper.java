@@ -1,4 +1,4 @@
-package pwcg.gui.helper;
+package pwcg.gui.rofmap.brief;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.payload.IPayloadFactory;
@@ -6,6 +6,7 @@ import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.rofmap.brief.model.BriefingPilotAssignmentData;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
@@ -14,9 +15,9 @@ import pwcg.mission.flight.plane.PlaneMcu;
 public class BriefingPayloadHelper
 {
     private Mission mission;
-    private BriefingAssignmentData briefingAssignmentData = new BriefingAssignmentData();
+    private BriefingPilotAssignmentData briefingAssignmentData = new BriefingPilotAssignmentData();
     
-	public BriefingPayloadHelper(Mission mission, BriefingAssignmentData briefingAssignmentData)
+	public BriefingPayloadHelper(Mission mission, BriefingPilotAssignmentData briefingAssignmentData)
 	{
         this.mission = mission;
         this.briefingAssignmentData = briefingAssignmentData;

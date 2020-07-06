@@ -19,6 +19,7 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.colors.ColorMap;
+import pwcg.gui.rofmap.brief.model.BriefingData;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.mission.Mission;
@@ -33,9 +34,9 @@ public class BriefingMapSquadronSelector implements ActionListener
     private IBriefingSquadronSelectedCallback squadronsSelectedCallback;
     private Map<Integer, JCheckBox> squadronCheckBoxes = new HashMap<>();
     private Map<Integer, String> selectedSquadrons = new HashMap<>();
-    private BriefingContext briefingContext;
+    private BriefingData briefingContext;
 
-    public BriefingMapSquadronSelector(Mission mission, IBriefingSquadronSelectedCallback squadronsSelected,BriefingContext briefingContext)
+    public BriefingMapSquadronSelector(Mission mission, IBriefingSquadronSelectedCallback squadronsSelected,BriefingData briefingContext)
     {
         this.mission = mission;
         this.squadronsSelectedCallback = squadronsSelected;

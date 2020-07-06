@@ -19,6 +19,8 @@ import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.dialogs.ErrorDialog;
+import pwcg.gui.rofmap.brief.model.BriefingData;
+import pwcg.gui.rofmap.brief.updater.BriefingMissionUpdater;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -31,7 +33,7 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
 
 	private static final long serialVersionUID = 1L;
     private Mission mission;
-    private BriefingContext briefingContext;
+    private BriefingData briefingData;
     private BriefingFlightChooser briefingFlightChooser;
     private BriefingDescriptionChalkboard briefingChalkboard;
     
@@ -43,8 +45,9 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
         this.campaignHomeGui =  campaignHomeGui;
         this.mission =  mission;
 
-        briefingContext = new BriefingContext(mission);
-        briefingContext.buildBriefingMissions();
+        BriefingContext briefingContext = BriefingContext.getInstance();
+        briefingContext.buildBriefingData(mission);
+        this.briefingData = briefingContext.getBriefingData();
 
 		SoundManager.getInstance().playSound("BriefingStart.WAV");
 	}
@@ -112,7 +115,7 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
         JPanel briefingPanel = new JPanel(new BorderLayout());
         briefingPanel.setOpaque(false);
 
-        briefingChalkboard = new BriefingDescriptionChalkboard(mission, briefingContext);
+        briefingChalkboard = new BriefingDescriptionChalkboard(mission, briefingData);
         briefingChalkboard.makePanel();
         JScrollPane missionScrollPane = ScrollBarWrapper.makeScrollPane(briefingChalkboard);
 
@@ -159,7 +162,7 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
     @Override
     public void flightChanged(Squadron squadron) throws PWCGException
     {
-        briefingContext.changeSelectedFlight(squadron);
+        briefingData.changeSelectedFlight(squadron.getSquadronId());
         briefingChalkboard.setMissionText();
     }
 
@@ -167,7 +170,7 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
 
-        BriefingMapGUI briefingMap = new BriefingMapGUI(campaignHomeGui, mission, briefingContext, campaignHomeGui.getCampaign().getDate());
+        BriefingMapGUI briefingMap = new BriefingMapGUI(campaignHomeGui.getCampaign(), campaignHomeGui);
         briefingMap.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(briefingMap);
     }
@@ -184,7 +187,7 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
     {
         Campaign campaign  = PWCGContext.getInstance().getCampaign();
 
-        briefingContext.updateMissionBriefingParameters();
+        BriefingMissionUpdater.updateMissionBriefingParameters(briefingData);
         
         campaign.setCurrentMission(mission);
         
@@ -195,6 +198,6 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
     public void refreshScreen() throws PWCGException
     {
         briefingChalkboard.setMissionText();
-        briefingFlightChooser.setSelectedButton(briefingContext.getSelectedFlight().getSquadron().getSquadronId());
+        briefingFlightChooser.setSelectedButton(briefingData.getSelectedFlight().getSquadron().getSquadronId());
     }
 }

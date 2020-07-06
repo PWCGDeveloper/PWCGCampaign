@@ -1,4 +1,4 @@
-package pwcg.gui.helper;
+package pwcg.gui.rofmap.brief;
 
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
@@ -8,6 +8,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.gui.rofmap.brief.model.BriefingPilotAssignmentData;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
@@ -21,9 +22,9 @@ public class BriefingDataInitializer
         this.mission = mission;
 	}
 	
-	public BriefingAssignmentData initializeFromMission(Squadron squadron) throws PWCGException
+	public BriefingPilotAssignmentData initializeFromMission(Squadron squadron) throws PWCGException
 	{	    
-	    BriefingAssignmentData briefingAssignmentData = new BriefingAssignmentData();
+	    BriefingPilotAssignmentData briefingAssignmentData = new BriefingPilotAssignmentData();
 	    briefingAssignmentData.setSquadron(squadron);
         
 	    SquadronPersonnel playerPersonnel = mission.getCampaign().getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId());

@@ -11,18 +11,19 @@ import javax.swing.JTextArea;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorBorders;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.helper.BriefingMissionFlight;
+import pwcg.gui.rofmap.brief.model.BriefingData;
+import pwcg.gui.rofmap.brief.model.BriefingFlight;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.mission.IMissionDescription;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionDescriptionFactory;
+import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 
 public class BriefingDescriptionChalkboard extends ImageResizingPanel
 {
@@ -31,9 +32,9 @@ public class BriefingDescriptionChalkboard extends ImageResizingPanel
 
     private JTextArea missionTextArea = new JTextArea();
     private Mission mission;
-    private BriefingContext briefingContext;
+    private BriefingData briefingContext;
 
-    public BriefingDescriptionChalkboard(Mission mission, BriefingContext briefingContext)
+    public BriefingDescriptionChalkboard(Mission mission, BriefingData briefingContext)
     {
         super("");
         this.setLayout(new BorderLayout());
@@ -117,11 +118,11 @@ public class BriefingDescriptionChalkboard extends ImageResizingPanel
 
     private String makePilotList() throws PWCGException 
     {
-        BriefingMissionFlight activeMissionHandler = briefingContext.getActiveBriefingFlight();
+        BriefingFlight activeMissionHandler = briefingContext.getActiveBriefingFlight();
         StringBuffer assignedPilotsBuffer = new StringBuffer ("Assigned Pilots:\n");
-        for (SquadronMember squadronMember : activeMissionHandler.getSortedAssigned())
+        for (CrewPlanePayloadPairing crewPlane : activeMissionHandler.getCrews())
         {
-            assignedPilotsBuffer.append("    " + squadronMember.getNameAndRank() + "\n");
+            assignedPilotsBuffer.append("    " + crewPlane.getPilot().getNameAndRank() + "\n");
         }
         
         return assignedPilotsBuffer.toString();

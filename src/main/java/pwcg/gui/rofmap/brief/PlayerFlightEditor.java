@@ -1,4 +1,4 @@
-package pwcg.gui.helper;
+package pwcg.gui.rofmap.brief;
 
 import java.util.ArrayList;
 import java.util.List;
