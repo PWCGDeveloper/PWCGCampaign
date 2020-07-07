@@ -28,14 +28,4 @@ public class WaypointEditorSet
     {
         waypointEditors.add(waypointEditor);
     }
-    
-    public void addWaypointEditorAfter(WaypointEditor waypointEditor, int index)
-    {
-        waypointEditors.add(index+1, waypointEditor);
-    }
-    
-    public void removeWaypointEditorAfter(int index)
-    {
-        waypointEditors.remove(index);
-    }
 }

@@ -99,15 +99,15 @@ public abstract class MissionPointSetMultipleWaypointSet implements IMissionPoin
 
 
     @Override
-    public void addWaypointFromBriefing(BriefingMapPoint newWaypoint, long waypointIdBefore) throws PWCGException
+    public long addWaypointFromBriefing(BriefingMapPoint newWaypoint, long waypointIdBefore) throws PWCGException
     {
         if (waypointsBefore.containsWaypoint(waypointIdBefore))
         {
-            waypointsBefore.addWaypointFromBriefing(newWaypoint, waypointIdBefore);
+            return waypointsBefore.addWaypointFromBriefing(newWaypoint, waypointIdBefore);
         }
         if (waypointsAfter.containsWaypoint(waypointIdBefore))
         {
-            waypointsAfter.addWaypointFromBriefing(newWaypoint, waypointIdBefore);
+            return waypointsAfter.addWaypointFromBriefing(newWaypoint, waypointIdBefore);
         }
         throw new PWCGException("Waypoint not found in waypoint set " + waypointIdBefore); 
     }

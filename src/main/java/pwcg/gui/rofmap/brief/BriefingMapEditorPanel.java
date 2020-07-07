@@ -56,6 +56,7 @@ public class BriefingMapEditorPanel extends ImageResizingPanel implements Action
     private JComboBox<String> cbMissionTime;
     private JPanel waypointPanel;
     private JPanel editorPanel;
+    private JPanel editablePanel;
     private Mission mission;
     private BriefingData briefingContext;
     private WaypointEditorSet waypointEditors = new WaypointEditorSet();
@@ -87,10 +88,23 @@ public class BriefingMapEditorPanel extends ImageResizingPanel implements Action
         JPanel editableLabelPanel = createEditableLabelPanel();
         editorPanel.add(editableLabelPanel, BorderLayout.NORTH);
 
-        JPanel editablePanel = createEditablePanel();
+        editablePanel = new JPanel(new BorderLayout());
+        editablePanel.setOpaque(false);
+        makeEditablePanel();
         editorPanel.add(editablePanel, BorderLayout.CENTER);
 
         this.add(editorPanel, BorderLayout.CENTER);
+	}
+	
+	public void rebuildWaypointPanel() throws PWCGException
+	{
+	    editablePanel.remove(waypointPanel);
+	    
+        waypointPanel = new JPanel(new BorderLayout());
+        waypointPanel.setOpaque(false);
+        
+        buildWaypointPanel();
+        editablePanel.add(waypointPanel, BorderLayout.CENTER);
 	}
 
     private JPanel createEditableLabelPanel() throws PWCGException
@@ -107,18 +121,16 @@ public class BriefingMapEditorPanel extends ImageResizingPanel implements Action
         return editableLabelPanel;
     }
 
-    private JPanel createEditablePanel() throws PWCGException
+    private void makeEditablePanel() throws PWCGException
     {
-        JPanel editablePanel = new JPanel(new BorderLayout());
+        editablePanel = new JPanel(new BorderLayout());
         editablePanel.setOpaque(false);
 
         JPanel dropDownPanel = createDropDownPanel();
         editablePanel.add(dropDownPanel, BorderLayout.NORTH);
 
         buildWaypointPanel();
-        editablePanel.add(waypointPanel, BorderLayout.CENTER);
-        
-        return editablePanel;
+        editablePanel.add(waypointPanel, BorderLayout.CENTER);        
     }
 
     private JPanel createDropDownPanel() throws PWCGException
@@ -137,6 +149,8 @@ public class BriefingMapEditorPanel extends ImageResizingPanel implements Action
 
     private void buildWaypointPanel() throws PWCGException
     {
+        waypointEditors = new WaypointEditorSet();
+        
         GridBagConstraints constraints = new GridBagConstraints();
 		constraints.fill = GridBagConstraints.HORIZONTAL;
 		constraints.ipadx = 3;

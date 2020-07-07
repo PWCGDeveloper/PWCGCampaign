@@ -3,6 +3,7 @@ package pwcg.gui.rofmap.brief.update;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
+import pwcg.gui.rofmap.brief.BriefingFlightCrewPlaneUpdater;
 import pwcg.gui.rofmap.brief.model.BriefingData;
 import pwcg.gui.rofmap.brief.model.BriefingFlight;
 import pwcg.mission.Mission;
@@ -27,25 +28,36 @@ public class BriefingMissionUpdater
 
     public static void pushEditsToMission(BriefingData briefingData) throws PWCGException 
     {
-        // for each player flight
-        // change planes
-        // change plane payloads
-        // change plane modifications
-        // change waypoints
-        // set altitudes
-        
         Mission mission = briefingData.getMission();
         if (!mission.isFinalized())
         {
-            mission.getMissionOptions().getMissionTime().setMissionTime(briefingData.getSelectedTime());
-
-            for (BriefingFlight briefingFlight : briefingData.getBriefingFlights())
-            {
-                IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(briefingFlight.getSquadronId());
-                playerFlight.getFlightPlanes().setFuelForFlight(briefingFlight.getSelectedFuel());
-                playerFlight.getWaypointPackage().updateWaypointsFromBriefing(briefingFlight.getBriefingFlightParameters().getBriefingMapMapPoints());
-            }
+            pushFlightParametersToMission(briefingData);
+            pushCrewAndPayloadToMission(briefingData);
             
+        }
+    }
+
+    private static void pushFlightParametersToMission(BriefingData briefingData) throws PWCGException
+    {
+        Mission mission = briefingData.getMission();
+        mission.getMissionOptions().getMissionTime().setMissionTime(briefingData.getSelectedTime());
+
+        for (BriefingFlight briefingFlight : briefingData.getBriefingFlights())
+        {
+            IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(briefingFlight.getSquadronId());
+            playerFlight.getFlightPlanes().setFuelForFlight(briefingFlight.getSelectedFuel());
+            playerFlight.getWaypointPackage().updateWaypointsFromBriefing(briefingFlight.getBriefingFlightParameters().getBriefingMapMapPoints());
+        }
+    }
+
+    private static void pushCrewAndPayloadToMission(BriefingData briefingData) throws PWCGException
+    {
+        Mission mission = briefingData.getMission();
+        for (BriefingFlight briefingFlight : briefingData.getBriefingFlights())
+        {
+            IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(briefingFlight.getSquadronId());
+            BriefingFlightCrewPlaneUpdater crewePlaneUpdater = new BriefingFlightCrewPlaneUpdater(mission.getCampaign(), playerFlight);
+            crewePlaneUpdater.updatePlayerPlanes(briefingFlight.getBriefingAssignmentData().getCrews());
         }
     }
 }

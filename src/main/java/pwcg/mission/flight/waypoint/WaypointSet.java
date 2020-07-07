@@ -60,15 +60,18 @@ public class WaypointSet
         waypoint.setPosition(waypointPosition);
     }
 
-    public void addWaypointFromBriefing(BriefingMapPoint waypointFromBriefing, long waypointIdBefore) throws PWCGException
+    public long addWaypointFromBriefing(BriefingMapPoint waypointFromBriefing, long waypointIdBefore) throws PWCGException
     {
         McuWaypoint waypoint = this.getWaypointById(waypointIdBefore);
         McuWaypoint newWaypoint = waypoint.copy();
-        newWaypoint.setPosition(waypointFromBriefing.getPosition());
-        newWaypoint.getPosition().setYPos(waypointFromBriefing.getAltitude());
         
+        Coordinate newPosition = waypointFromBriefing.getPosition();
+        newPosition.setYPos(waypointFromBriefing.getAltitude());
+        newWaypoint.setPosition(newPosition);
         int indexToInsertAfter = getWaypointIndex(waypointIdBefore);
         waypoints.add(indexToInsertAfter+1, newWaypoint);
+        
+        return waypoint.getWaypointID();
     }
 
     public void addWaypointAfterWaypoint(McuWaypoint newWaypoint, long waypointIdAfter) throws PWCGException

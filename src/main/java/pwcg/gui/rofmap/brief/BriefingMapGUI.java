@@ -25,9 +25,11 @@ import pwcg.gui.rofmap.MapGUI;
 import pwcg.gui.rofmap.MapScroll;
 import pwcg.gui.rofmap.brief.model.BriefingData;
 import pwcg.gui.rofmap.brief.model.BriefingFlight;
+import pwcg.gui.rofmap.brief.model.BriefingFlightParameters;
 import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.mission.Mission;
+import pwcg.mission.mcu.McuWaypoint;
 
 /**
  * 1. Start - initialize mission parameters and editors
@@ -301,12 +303,36 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
         briefingData.setAiFlightsToDisplay(aiFlightsToDisplay);
         this.add(BorderLayout.CENTER, createCenterPanel());
         
+        refreshMapScreen();
+    }
+
+    private void refreshMapScreen()
+    {
         this.revalidate();
         this.repaint();
     }
 
-    public void waypointChangedNotification()
+    public void waypointRemovedNotification(long waypointID) throws PWCGException
     {
-        // TODO trigger refresh here ... ?
+        if (waypointID != McuWaypoint.NO_WAYPOINT_ID)
+        {
+            BriefingFlightParameters briefingFlightParameters = BriefingContext.getInstance().getBriefingData().getActiveBriefingFlight().getBriefingFlightParameters();
+            briefingFlightParameters.removeBriefingMapMapPointsAtPosition();
+            editorPanel.rebuildWaypointPanel();
+            
+            refreshMapScreen();
+        }
+    }
+
+    public void waypointAddedNotification(long waypointID) throws PWCGException
+    {
+        if (waypointID != McuWaypoint.NO_WAYPOINT_ID)
+        {
+            BriefingFlightParameters briefingFlightParameters = BriefingContext.getInstance().getBriefingData().getActiveBriefingFlight().getBriefingFlightParameters();
+            briefingFlightParameters.addBriefingMapMapPointsAtPosition();
+            editorPanel.rebuildWaypointPanel();
+            
+            refreshMapScreen();
+        }
     }
 }

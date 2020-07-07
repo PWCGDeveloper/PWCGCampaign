@@ -163,7 +163,7 @@ public class MissionPointFlightActivate implements IMissionPointSet
     }
 
     @Override
-    public void addWaypointFromBriefing(BriefingMapPoint newWaypoint, long waypointIdAfter) throws PWCGException
+    public long addWaypointFromBriefing(BriefingMapPoint newWaypoint, long waypointIdAfter) throws PWCGException
     {
         throw new PWCGException("No waypoints in flight activate");                                
     }

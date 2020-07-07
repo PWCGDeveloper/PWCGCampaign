@@ -75,9 +75,9 @@ public abstract class MissionPointSetSingleWaypointSet implements IMissionPointS
     }
     
     @Override
-    public void addWaypointFromBriefing(BriefingMapPoint newWaypoint, long waypointIdBefore) throws PWCGException
+    public long addWaypointFromBriefing(BriefingMapPoint newWaypoint, long waypointIdBefore) throws PWCGException
     {
-        waypoints.addWaypointFromBriefing(newWaypoint, waypointIdBefore);                                
+        return waypoints.addWaypointFromBriefing(newWaypoint, waypointIdBefore);                                
     }
 
     protected McuWaypoint getLastWaypoint() throws PWCGException

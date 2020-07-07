@@ -490,16 +490,16 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 			{
 				if (briefingFlightParameters.getActionMapPointIndex() >= 0)
 				{
-                    briefingFlightParameters.addBriefingMapMapPointsAtPosition();
-				    parent.waypointChangedNotification();
+                    BriefingMapPoint selectedActionPoint = briefingFlightParameters.getSelectedActionMapPoint();
+                    parent.waypointAddedNotification(selectedActionPoint.getWaypointID());
 				}
 			}
 			else if (action.contains("Remove"))
 			{
 				if (briefingFlightParameters.getActionMapPointIndex() >= 0)
 				{
-					briefingFlightParameters.removeBriefingMapMapPointsAtPosition();
-					parent.waypointChangedNotification();
+				    BriefingMapPoint selectedActionPoint = briefingFlightParameters.getSelectedActionMapPoint();
+                    parent.waypointRemovedNotification(selectedActionPoint.getWaypointID());
 				}
 			}
 			else if (action.contains("Cancel"))

@@ -108,7 +108,7 @@ public class WaypointPackage implements IWaypointPackage
     {
         removeUnwantedWaypoints(briefingMapPoints);
         modifyWaypointsFromBriefing(briefingMapPoints);
-        addbriefingMapPoints(briefingMapPoints);
+        addBriefingMapPoints(briefingMapPoints);
     }
 
     @Override
@@ -222,7 +222,7 @@ public class WaypointPackage implements IWaypointPackage
         }
     }
 
-    private void addbriefingMapPoints(List<BriefingMapPoint> briefingMapPoints) throws PWCGException
+    private void addBriefingMapPoints(List<BriefingMapPoint> briefingMapPoints) throws PWCGException
     {
         BriefingMapPoint previousMapPointFromBriefing = null;
         for (BriefingMapPoint briefingMapPoint : briefingMapPoints)
@@ -233,12 +233,12 @@ public class WaypointPackage implements IWaypointPackage
                 if (targetMissionPointSet == null)
                 {
                     IMissionPointSet targetMissionPointSetToAdd = findWaypoint(previousMapPointFromBriefing.getWaypointID());
-                    targetMissionPointSetToAdd.addWaypointFromBriefing(briefingMapPoint, previousMapPointFromBriefing.getWaypointID());
+                    long waypointIdForAddedWP = targetMissionPointSetToAdd.addWaypointFromBriefing(briefingMapPoint, previousMapPointFromBriefing.getWaypointID());
+                    briefingMapPoint.setWaypointID(waypointIdForAddedWP);
                 }
             }
             previousMapPointFromBriefing = briefingMapPoint;
         }
-        
     }
     
     private IMissionPointSet findWaypoint(long waypointId)

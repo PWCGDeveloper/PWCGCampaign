@@ -18,7 +18,7 @@ public interface IMissionPointSetWaypoints
 
     void removeUnwantedWaypoints(List<BriefingMapPoint> waypointsInBriefing) throws PWCGException;
 
-    void addWaypointFromBriefing(BriefingMapPoint newWaypoint, long waypointIdAfter) throws PWCGException;
+    long addWaypointFromBriefing(BriefingMapPoint newWaypoint, long waypointIdAfter) throws PWCGException;
 
     void addWaypointAfterWaypoint(McuWaypoint newWaypoint, long waypointIdAfter) throws PWCGException;
 

@@ -433,11 +433,8 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         verifyLoggingEnabled();
 
         campaign.setCurrentMission(mission);
-        
-        campaignHomeGui.createCampaignHomeContext();
-        
+        campaignHomeGui.createCampaignHomeContext();        
         this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-
         CampaignGuiContextManager.getInstance().backToCampaignHome();
     }
 

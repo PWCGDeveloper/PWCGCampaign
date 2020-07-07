@@ -4,7 +4,10 @@ import pwcg.core.location.Coordinate;
 
 public class BriefingMapPoint
 {
+    private static long masterNewWaypointId = 1000000;
+    
     private long waypointID = 0;
+
     private Coordinate position;
     private int altitude;
     private int distanceToNextPoint;
@@ -16,8 +19,21 @@ public class BriefingMapPoint
     public BriefingMapPoint(long waypointID)
     {
         this.waypointID = waypointID;
+        ++masterNewWaypointId;
     }
-
+    
+    public BriefingMapPoint copy()
+    {
+        BriefingMapPoint copy = new BriefingMapPoint(masterNewWaypointId);
+        copy.position = this.position.copy();
+        copy.altitude = this.altitude;
+        copy.distanceToNextPoint = 0;
+        copy.editable = this.editable;
+        copy.isTarget = this.isTarget;
+        copy.isWaypoint = this.isWaypoint;
+        copy.desc = this.desc;
+        return copy;
+    }
 
     public Coordinate getPosition()
     {
@@ -79,12 +95,15 @@ public class BriefingMapPoint
         this.desc = desc;
     }
 
-
     public long getWaypointID()
     {
         return waypointID;
     }
 
+    public void setWaypointID(long waypointID)
+    {
+        this.waypointID = waypointID;
+    }
 
     public boolean isWaypoint()
     {

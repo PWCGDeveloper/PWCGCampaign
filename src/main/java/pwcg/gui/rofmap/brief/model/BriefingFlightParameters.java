@@ -3,7 +3,9 @@ package pwcg.gui.rofmap.brief.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.utils.MathUtils;
 
 public class BriefingFlightParameters
 {
@@ -31,17 +33,36 @@ public class BriefingFlightParameters
         this.selectedMapPointIndex = selectedMapPointIndex;
     }
 
-    public void addBriefingMapMapPointsAtPosition()
+    public void addBriefingMapMapPointsAtPosition() throws PWCGException
     {
-        // this.briefingMapPoints.add(index, briefingMapPoint);
+        if (actionMapPointIndex >= 0)
+        {
+            if (briefingMapPoints.size() > (actionMapPointIndex+1))
+            {
+                BriefingMapPoint previousBriefingMapPoint = briefingMapPoints.get(actionMapPointIndex);
+                if (previousBriefingMapPoint.isEditable())
+                {
+                    BriefingMapPoint nextBriefingMapPoint = briefingMapPoints.get(actionMapPointIndex+1);
+                
+                    BriefingMapPoint briefingMapPointToAdd = previousBriefingMapPoint.copy();
+                    double distance = MathUtils.calcDist(previousBriefingMapPoint.getPosition(), nextBriefingMapPoint.getPosition());
+                    double heading = MathUtils.calcAngle(previousBriefingMapPoint.getPosition(), nextBriefingMapPoint.getPosition());
+                    
+                    Coordinate newMapPointPosition = MathUtils.calcNextCoord(previousBriefingMapPoint.getPosition(), heading, (distance / 2));
+                    newMapPointPosition.setYPos(previousBriefingMapPoint.getAltitude());
+                    briefingMapPointToAdd.setPosition(newMapPointPosition);
+                    this.briefingMapPoints.add(actionMapPointIndex+1, briefingMapPointToAdd);
+                }
+            }
+        }
     }
 
     public void removeBriefingMapMapPointsAtPosition()
     {
         if (actionMapPointIndex >= 0)
         {
-            BriefingMapPoint briefingMapPointToEdit = briefingMapPoints.get(actionMapPointIndex);
-            if (briefingMapPointToEdit.isEditable())
+            BriefingMapPoint briefingMapPointToRemove = briefingMapPoints.get(actionMapPointIndex);
+            if (briefingMapPointToRemove.isEditable())
             {
                 this.briefingMapPoints.remove(actionMapPointIndex);
             }
@@ -62,6 +83,15 @@ public class BriefingFlightParameters
         if (selectedMapPointIndex >= 0)
         {
             return briefingMapPoints.get(selectedMapPointIndex);
+        }
+        return null;
+    }
+
+    public BriefingMapPoint getSelectedActionMapPoint()
+    {
+        if (actionMapPointIndex >= 0)
+        {
+            return briefingMapPoints.get(actionMapPointIndex);
         }
         return null;
     }
