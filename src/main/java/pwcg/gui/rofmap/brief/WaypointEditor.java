@@ -35,10 +35,18 @@ public class WaypointEditor
         headingTextField = makeTextField();
 
         descTextField.setEditable(false);
-        altitudeTextField.setEditable(true);
         distanceTextField.setEditable(false);
         headingTextField.setEditable(false);
         
+        if (thisMapPoint.isEditable())
+        {
+            altitudeTextField.setEditable(true);
+        }
+        else
+        {
+            altitudeTextField.setEditable(false);
+        }
+
         calculateWPParameters(previousMapPoint, thisMapPoint);
     }
 
@@ -111,7 +119,7 @@ public class WaypointEditor
 
     private JTextField makeTextField() throws PWCGException
     {
-        Font font = PWCGMonitorFonts.getPrimaryFontSmall();
+        Font font = PWCGMonitorFonts.getTypewriterFont();
 
         JTextField field = new JTextField();
         field.setOpaque(false);

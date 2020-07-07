@@ -27,7 +27,15 @@ public class BriefingDataBuilder
         int initialSquadronId = getInitialSelectedSquadron();
         briefingData.changeSelectedFlight(initialSquadronId);
         
+        String missionTIme = getTime();
+        briefingData.setMissionTime(missionTIme);
+        
         return briefingData;
+    }
+    
+    private String getTime() throws PWCGException
+    {
+        return mission.getMissionOptions().getMissionTime().getMissionTime();
     }
 
     private Map<Integer, BriefingFlight> buildBriefingMissions() throws PWCGException

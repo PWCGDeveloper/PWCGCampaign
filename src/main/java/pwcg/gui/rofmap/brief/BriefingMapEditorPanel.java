@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,7 +24,6 @@ import pwcg.gui.rofmap.brief.model.BriefingFlight;
 import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.mission.Mission;
@@ -39,29 +39,30 @@ public class BriefingMapEditorPanel extends ImageResizingPanel implements Action
     private JPanel editorPanel;
     private JPanel editablePanel;
     private Mission mission;
-    private BriefingData briefingContext;
+    private BriefingData briefingData;
     private WaypointEditorSet waypointEditors = new WaypointEditorSet();
 
-	public BriefingMapEditorPanel(Mission mission, BriefingData briefingContext) throws PWCGException  
+	public BriefingMapEditorPanel() throws PWCGException  
 	{
 		super("");
 		this.setLayout(new BorderLayout());
 		this.setOpaque(false);
 		
-        this.mission =  mission;
-        this.briefingContext =  briefingContext;
+        this.briefingData =  BriefingContext.getInstance().getBriefingData();
+        this.mission =  briefingData.getMission();
 
 		setLayout(new BorderLayout());		
 	}    
 
 	public void makePanels() throws PWCGException 
 	{
-        String imagePath = ContextSpecificImages.imagesMisc() + "PaperPart.jpg";
+        String imagePath = ContextSpecificImages.imagesMisc() + "Document.png";
         this.setImage(imagePath);
 
-		editorPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+		editorPanel = new JPanel();
 		editorPanel.setLayout(new BorderLayout());
 		editorPanel.setOpaque(false);
+		editorPanel.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
 
 		waypointPanel = new JPanel(new BorderLayout());
 		waypointPanel.setOpaque(false);
@@ -75,17 +76,6 @@ public class BriefingMapEditorPanel extends ImageResizingPanel implements Action
         editorPanel.add(editablePanel, BorderLayout.CENTER);
 
         this.add(editorPanel, BorderLayout.CENTER);
-	}
-	
-	public void rebuildWaypointPanel() throws PWCGException
-	{
-	    editablePanel.remove(waypointPanel);
-	    
-        waypointPanel = new JPanel(new BorderLayout());
-        waypointPanel.setOpaque(false);
-        
-        buildWaypointPanel();
-        editablePanel.add(waypointPanel, BorderLayout.CENTER);
 	}
 
     private JPanel createEditableLabelPanel() throws PWCGException
@@ -137,13 +127,12 @@ public class BriefingMapEditorPanel extends ImageResizingPanel implements Action
 		constraints.ipadx = 3;
 		constraints.ipady = 3;
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		
 		JPanel waypointDetailsPanel = new JPanel(gridBagLayout);
 		waypointDetailsPanel.setOpaque(false);
 
 		createMissionParametersHeader(constraints, waypointDetailsPanel);
 	    
-        BriefingFlight activeBriefingFlight = briefingContext.getActiveBriefingFlight();
+        BriefingFlight activeBriefingFlight = briefingData.getActiveBriefingFlight();
         
         BriefingMapPoint previousMapPoint = null;
 	    for (BriefingMapPoint briefingMapPoint : activeBriefingFlight.getBriefingFlightParameters().getBriefingMapMapPoints())
@@ -185,6 +174,7 @@ public class BriefingMapEditorPanel extends ImageResizingPanel implements Action
 		
         cbMissionTime = new JComboBox<String>();
         cbMissionTime.setActionCommand("ChangeTime");
+        cbMissionTime.setOpaque(false);
 
         for (String time : missionTime.getMissionTimes())
         {
@@ -192,9 +182,8 @@ public class BriefingMapEditorPanel extends ImageResizingPanel implements Action
         }
         cbMissionTime.setOpaque(false);
         cbMissionTime.setSelectedIndex(missionTime.getIndexForTime());
-        String selectedTime = (String)cbMissionTime.getSelectedItem();
-
-        briefingContext.setSelectedTime(selectedTime);
+       
+        cbMissionTime.setSelectedItem(briefingData.getMissionTime());
         
         cbMissionTime.addActionListener(this);
         if (mission.isFinalized())
@@ -233,7 +222,7 @@ public class BriefingMapEditorPanel extends ImageResizingPanel implements Action
 
     private void createMissionParametersHeader(GridBagConstraints constraints, JPanel panel) throws PWCGException
     {
-        Font font = PWCGMonitorFonts.getPrimaryFontSmall();
+        Font font = PWCGMonitorFonts.getTypewriterFont();
 
         JLabel wpName = new JLabel ("WP");		
         wpName.setFont(font);
@@ -276,7 +265,7 @@ public class BriefingMapEditorPanel extends ImageResizingPanel implements Action
 	{
 	    int index = 0;
 	    
-        BriefingFlight activeBriefingFlight = briefingContext.getActiveBriefingFlight();
+        BriefingFlight activeBriefingFlight = briefingData.getActiveBriefingFlight();
 	    double selectedFuel = activeBriefingFlight.getSelectedFuel();
 	    
         if (selectedFuel > .95)
@@ -356,7 +345,7 @@ public class BriefingMapEditorPanel extends ImageResizingPanel implements Action
             else if (action.equalsIgnoreCase("ChangeTime"))
             {
                 String selectedTime = (String)cbMissionTime.getSelectedItem();
-                briefingContext.setSelectedTime(selectedTime);
+                briefingData.setMissionTime(selectedTime);
             }
 		}
 		catch (Exception e)
@@ -375,7 +364,7 @@ public class BriefingMapEditorPanel extends ImageResizingPanel implements Action
         int valueAsInt = Integer.valueOf (valueString);
         Double selectedFuel = Double.valueOf (valueAsInt).doubleValue() / 100.0;
         
-        BriefingFlight activeBriefingFlight = briefingContext.getActiveBriefingFlight();
+        BriefingFlight activeBriefingFlight = briefingData.getActiveBriefingFlight();
         activeBriefingFlight.setSelectedFuel(selectedFuel);
     }
 

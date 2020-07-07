@@ -38,6 +38,7 @@ public enum ScreenIdentifier
     AARInitiationScreen("AARInitiationScreen", "AAR Initiation Screen", "TableTop.jpg"),    
     AARReportMainPanel("AARReportMainPanel", "AAR Report Tab Screen", "TableTop.jpg"),    
     MissingSkinScreen("MissingSkinScreen", "Missing Skin Screen", "TableTop.jpg"),    
+    BriefingEditorEditorScreen("BriefingEditorEditorScreen", "Briefing Waypoint Editor Screen", "TableTop.jpg"),
         
     CampaignPilotChalkboard("CampaignPilotChalkboard", "Campaign Pilot Chalkboard", "chalkboard.png"),
     CampaignEquipmentChalkboard("CampaignEquipmentChalkboard", "Campaign Equipment Chalkboard", "chalkboard.png"),

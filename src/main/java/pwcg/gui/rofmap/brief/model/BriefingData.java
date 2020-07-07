@@ -10,7 +10,7 @@ import pwcg.mission.flight.IFlight;
 
 public class BriefingData
 {
-    private String selectedTime = "08:30";
+    private String missionTime = "08:30";
     private Map<Integer, BriefingFlight> briefingMissionFlights = new HashMap<>();
     private int selectedSquadronId = 0;
     private Mission mission;
@@ -48,14 +48,14 @@ public class BriefingData
         return mission;
     }
     
-    public String getSelectedTime()
+    public String getMissionTime()
     {
-        return selectedTime;
+        return missionTime;
     }
 
-    public void setSelectedTime(String selectedTime)
+    public void setMissionTime(String selectedTime)
     {
-        this.selectedTime = selectedTime;
+        this.missionTime = selectedTime;
     }
     
     public void setAiFlightsToDisplay(Map<Integer, String> aiFlightsToDisplay)

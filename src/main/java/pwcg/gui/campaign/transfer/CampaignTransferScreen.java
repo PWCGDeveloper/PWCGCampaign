@@ -77,11 +77,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         this.squadronMemberToTransfer = squadronMemberToTransfer;
 		this.campaign = PWCGContext.getInstance().getCampaign();
 	}
-	
-	public void makeVisible(boolean visible) 
-	{
-	}
-	
+
 	public void makePanels() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignTransferScreen);

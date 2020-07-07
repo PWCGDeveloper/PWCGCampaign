@@ -2,6 +2,24 @@
 ​
 At the PWCG web site
 
+10.1.0
+Added ability to sort pilots in any order
+- Use radio button to select assigned pilots
+- Use move up/down unassign buttons on left to act on selected pilots
+- Add unassigned pilots by clicking on them (no change)
+- Newly assigned pilots will be placed at the bottom of the flight (changed)
+Added config to exclude historical anomalies from some aspects of campaign
+- Italian squadron
+- FW190 at Stalingrad
+- Excluded as AI flights
+- Excluded from providing escort
+- New feature is disabled by default
+- Advanced Configuration -> User Preferences -> set exclude anomalies to 1
+Fixed altitude changes not persisting to mission
+Fixed Medal Award Document
+Fixed add waypoint does not work
+Fixed delete waypoint does not work
+
 10.0.1
 Fixed: Ground units deleted
 Fixed: Restored days needed to recover on leave screen
@@ -11,7 +29,13 @@ Fixed: Error on transfer
 UI Rewrite
 Added ability to select top aces by service
 Added ability to select top aces excluding historical aces
+Added themed documents
+Added improved medal images (Thanks John Yossarian)
+Added several improved textures
 Added text to medal box
+Added capability to replace many screens by configuration
+Bugs
+Fixed: existing issue where missions might fail to generate
 
 9.1.1
 Added female pilots (USSR only)

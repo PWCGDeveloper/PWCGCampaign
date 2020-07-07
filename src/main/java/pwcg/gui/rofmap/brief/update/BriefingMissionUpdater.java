@@ -39,7 +39,7 @@ public class BriefingMissionUpdater
     private static void pushFlightParametersToMission(BriefingData briefingData) throws PWCGException
     {
         Mission mission = briefingData.getMission();
-        mission.getMissionOptions().getMissionTime().setMissionTime(briefingData.getSelectedTime());
+        mission.getMissionOptions().getMissionTime().setMissionTime(briefingData.getMissionTime());
 
         for (BriefingFlight briefingFlight : briefingData.getBriefingFlights())
         {

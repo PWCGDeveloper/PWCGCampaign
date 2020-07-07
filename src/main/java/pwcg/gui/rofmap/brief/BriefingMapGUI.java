@@ -26,7 +26,6 @@ import pwcg.gui.rofmap.MapScroll;
 import pwcg.gui.rofmap.brief.model.BriefingData;
 import pwcg.gui.rofmap.brief.model.BriefingFlight;
 import pwcg.gui.rofmap.brief.model.BriefingFlightParameters;
-import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.mission.Mission;
 import pwcg.mission.mcu.McuWaypoint;
@@ -38,7 +37,6 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 
     private Mission mission;
     private BriefingData briefingData;
-    private BriefingMapEditorPanel editorPanel;
     private BriefingFlightChooser briefingFlightChooser;
     private BriefingMapPanel mapPanel;
 
@@ -61,13 +59,12 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
             briefingFlightChooser.createBriefingSquadronSelectPanel();
 
 			Color bg = ColorMap.MAP_BACKGROUND;
-			setSize(200, 200);
 			setOpaque(false);
 			setBackground(bg);
 			
+            this.add(BorderLayout.WEST, makeNavPanel());           
             this.add(BorderLayout.CENTER, createCenterPanel());
-            this.add(BorderLayout.EAST, createMissionEditPanel());
-            this.add(BorderLayout.WEST, makeLeftPanel());           
+            //this.add(BorderLayout.EAST, createMissionEditPanel());
             
             Point initialPosition = findCenterPosition();
             centerMapAt(initialPosition);
@@ -112,7 +109,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
         return mapPoint;
     }
 
-    private JPanel makeLeftPanel() throws PWCGException 
+    private JPanel makeNavPanel() throws PWCGException 
     {
         JPanel leftPanel = new JPanel(new BorderLayout());
         leftPanel.setOpaque(false);
@@ -145,7 +142,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
         makeButton(buttonGrid, "Briefing Description");
 
         buttonGrid.add(PWCGButtonFactory.makeDummy());
-        makeButton(buttonGrid, "Pilot Selection");
+        makeButton(buttonGrid, "Waypoint Editor");
 
         buttonGrid.add(PWCGButtonFactory.makeDummy());
         buttonGrid.add(PWCGButtonFactory.makeDummy());
@@ -168,13 +165,6 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 		return button;
     }
 
-	private JPanel createMissionEditPanel() throws PWCGException 
-	{
-		editorPanel = new BriefingMapEditorPanel(mission, briefingData);
-		editorPanel.makePanels();
-        return editorPanel;
-	}
-
 	@Override
 	public void actionPerformed(ActionEvent arg0) 
 	{		
@@ -186,9 +176,9 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
             {
                 backToBriefingDescription();
             }
-            else if (action.equals("Pilot Selection"))
+            else if (action.equals("Waypoint Editor"))
             {
-                forwardToPilotSelection();
+                forwardToWaypointEditor();
             }
             else if (action.equals("Back to Campaign"))
             {
@@ -222,23 +212,20 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 
     private void backToBriefingDescription() throws PWCGException
     {
-        pushEditsToModel();
         CampaignGuiContextManager.getInstance().popFromContextStack();
         return;
     }
 
-    private void forwardToPilotSelection() throws PWCGException
+    private void forwardToWaypointEditor() throws PWCGException 
     {
-        pushEditsToModel();
-        BriefingPilotSelectionScreen pilotSelection = new BriefingPilotSelectionScreen(campaignHomeGui.getCampaign(), campaignHomeGui,  briefingData, mission);
-        pilotSelection.makePanels();
-        CampaignGuiContextManager.getInstance().pushToContextStack(pilotSelection);
+        BriefingEditorEditorScreen waypointEditorScreen = new BriefingEditorEditorScreen(campaignHomeGui);
+        waypointEditorScreen.makePanels();
+        CampaignGuiContextManager.getInstance().pushToContextStack(waypointEditorScreen);
     }
 
     @Override
     public void flightChanged(Squadron squadron) throws PWCGException
     {
-        pushEditsToModel();
         if (!isChangedSquadronSameSide(briefingData.getSelectedFlight().getSquadron(), squadron))
         {
             briefingData.clearAiFlightsToDisplay();
@@ -249,24 +236,10 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 
     }
 
-    private void pushEditsToModel()
-    {
-        for (BriefingMapPoint briefingMapPoint : briefingData.getActiveBriefingFlight().getBriefingFlightParameters().getBriefingMapMapPoints())
-        {
-            WaypointEditor editor = editorPanel.getWaypointEditors().getWaypointEditorByid(briefingMapPoint.getWaypointID());
-            if (editor != null)
-            {
-                int altitude = editor.getAltitudeValue();
-                briefingMapPoint.setAltitude(altitude);
-            }
-        }
-    }
-
     private void refreshAllPanels() throws PWCGException
     {
-        this.add(BorderLayout.EAST, createMissionEditPanel());
         this.add(BorderLayout.CENTER, createCenterPanel());
-        this.add(BorderLayout.WEST, makeLeftPanel());
+        this.add(BorderLayout.WEST, makeNavPanel());
     }
     
     private boolean isChangedSquadronSameSide(Squadron before, Squadron after) throws PWCGException
@@ -287,19 +260,12 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
         refreshMapScreen();
     }
 
-    private void refreshMapScreen()
-    {
-        this.revalidate();
-        this.repaint();
-    }
-
     public void waypointRemovedNotification(long waypointID) throws PWCGException
     {
         if (waypointID != McuWaypoint.NO_WAYPOINT_ID)
         {
             BriefingFlightParameters briefingFlightParameters = BriefingContext.getInstance().getBriefingData().getActiveBriefingFlight().getBriefingFlightParameters();
             briefingFlightParameters.removeBriefingMapMapPointsAtPosition();
-            editorPanel.rebuildWaypointPanel();
             
             refreshMapScreen();
         }
@@ -311,9 +277,14 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
         {
             BriefingFlightParameters briefingFlightParameters = BriefingContext.getInstance().getBriefingData().getActiveBriefingFlight().getBriefingFlightParameters();
             briefingFlightParameters.addBriefingMapMapPointsAtPosition();
-            editorPanel.rebuildWaypointPanel();
             
             refreshMapScreen();
         }
+    }
+
+    private void refreshMapScreen()
+    {
+        this.revalidate();
+        this.repaint();
     }
 }

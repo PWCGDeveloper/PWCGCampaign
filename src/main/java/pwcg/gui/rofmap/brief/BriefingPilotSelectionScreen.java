@@ -44,21 +44,21 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     private Mission mission;
     private JPanel briefingMapCenterPanel;
     private BriefingPilotChalkboard pilotPanel;
-    private BriefingData briefingContext;
+    private BriefingData briefingData;
     private Map<Integer, BriefingPlaneModificationsPicker> planeModifications = new HashMap<>();
     private BriefingFlightChooser briefingFlightChooser;
     private int selectedPilotSerialNumber = -1;
 
-    public BriefingPilotSelectionScreen(Campaign campaign, CampaignHomeScreen campaignHomeGui, BriefingData briefingContext, Mission mission)
+    public BriefingPilotSelectionScreen(CampaignHomeScreen campaignHomeGui)
     {
         super("");
         this.setLayout(new BorderLayout());
         
-
-        this.campaign = campaign;
         this.campaignHomeGui = campaignHomeGui;
-        this.briefingContext = briefingContext;
-        this.mission = mission;
+        
+        this.briefingData =  BriefingContext.getInstance().getBriefingData();
+        this.mission =  briefingData.getMission();
+        this.campaign = mission.getCampaign();
     }
 
     public void makePanels()
@@ -67,8 +67,6 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.BriefingPilotSelectionScreen);
             this.setImage(imagePath);
-
-            this.removeAll();
             
             briefingFlightChooser = new BriefingFlightChooser(mission, this);
             briefingFlightChooser.createBriefingSquadronSelectPanel();
@@ -105,11 +103,13 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
 
         buttonGrid.add(PWCGButtonFactory.makeDummy());
 
-        JButton backToMapButton = PWCGButtonFactory.makeMenuButton("Back To Map", "Back To Map", this);
-        buttonGrid.add(backToMapButton);
-
         JButton scrubButton = PWCGButtonFactory.makeMenuButton("Scrub Mission", "Scrub Mission", this);
         buttonGrid.add(scrubButton);
+
+        buttonGrid.add(PWCGButtonFactory.makeDummy());
+
+        JButton backToMapButton = PWCGButtonFactory.makeMenuButton("Back To Waypoint Editor", "Back To Waypoint Editor", this);
+        buttonGrid.add(backToMapButton);
 
         if (!mission.isFinalized())
         {
@@ -151,7 +151,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         briefingMapCenterPanel = new JPanel(new BorderLayout());
         briefingMapCenterPanel.setOpaque(false);
 
-        pilotPanel = new BriefingPilotChalkboard(briefingContext, this);
+        pilotPanel = new BriefingPilotChalkboard(briefingData, this);
         pilotPanel.makePanel();
         briefingMapCenterPanel.add(pilotPanel, BorderLayout.CENTER);
         
@@ -164,7 +164,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         try
         {
             String action = ae.getActionCommand();
-            if (action.equalsIgnoreCase("Back To Map"))
+            if (action.equalsIgnoreCase("Back To Waypoint Editor"))
             {
                 CampaignGuiContextManager.getInstance().popFromContextStack();
                 return;
@@ -231,7 +231,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     {
         if (!mission.isFinalized())
         {
-            BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
+            BriefingFlight briefingMissionHandler = briefingData.getActiveBriefingFlight();
             Integer pilotSerialNumber = getPilotSerialNumberFromAction(action);
 
             BriefingPlanePicker briefingPlanePicker = new BriefingPlanePicker(briefingMissionHandler, this);
@@ -254,7 +254,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     {
         if (!mission.isFinalized())
         {
-            BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
+            BriefingFlight briefingMissionHandler = briefingData.getActiveBriefingFlight();
             if (briefingMissionHandler.getBriefingAssignmentData().getUnassignedPlanes().size() > 0)
             {
                 Integer pilotSerialNumber = getPilotSerialNumberFromAction(action);
@@ -269,7 +269,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     {
         if (!mission.isFinalized())
         {
-            BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
+            BriefingFlight briefingMissionHandler = briefingData.getActiveBriefingFlight();
             CrewPlanePayloadPairing planeCrew = briefingMissionHandler.getPairingByPilot(selectedPilotSerialNumber);
             SquadronMember squadronMember = planeCrew.getPilot();
             briefingMissionHandler.unassignPilotFromBriefing(squadronMember.getSerialNumber());
@@ -281,7 +281,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     {
         if (!mission.isFinalized())
         {
-            BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
+            BriefingFlight briefingMissionHandler = briefingData.getActiveBriefingFlight();
             CrewPlanePayloadPairing planeCrew = briefingMissionHandler.getPairingByPilot(selectedPilotSerialNumber);
             SquadronMember squadronMember = planeCrew.getPilot();
             briefingMissionHandler.movePilotUp(squadronMember.getSerialNumber());
@@ -293,7 +293,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     {
         if (!mission.isFinalized())
         {
-            BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
+            BriefingFlight briefingMissionHandler = briefingData.getActiveBriefingFlight();
             CrewPlanePayloadPairing planeCrew = briefingMissionHandler.getPairingByPilot(selectedPilotSerialNumber);
             SquadronMember squadronMember = planeCrew.getPilot();
             briefingMissionHandler.movePilotDown(squadronMember.getSerialNumber());
@@ -305,7 +305,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     {
         if (!mission.isFinalized())
         {
-            BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
+            BriefingFlight briefingMissionHandler = briefingData.getActiveBriefingFlight();
             Integer pilotSerialNumber = getPilotSerialNumberFromAction(action);
             CrewPlanePayloadPairing crewPlane = briefingMissionHandler.getPairingByPilot(pilotSerialNumber);
 
@@ -337,7 +337,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
 
     private void setModificationInCrewPlane(Integer pilotSerialNumber) throws PWCGException
     {
-        BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
+        BriefingFlight briefingMissionHandler = briefingData.getActiveBriefingFlight();
         CrewPlanePayloadPairing crewPlane = briefingMissionHandler.getPairingByPilot(pilotSerialNumber);
         crewPlane.clearModification();
         BriefingPlaneModificationsPicker modificationPicker = planeModifications.get(pilotSerialNumber);
@@ -366,7 +366,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
 
     private void synchronizePayload() throws PWCGException
     {
-        BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
+        BriefingFlight briefingMissionHandler = briefingData.getActiveBriefingFlight();
         List<CrewPlanePayloadPairing> assignedPairings = briefingMissionHandler.getCrews();
         CrewPlanePayloadPairing leadPlane = assignedPairings.get(0);
         for (int i = 1; i < assignedPairings.size(); ++i)
@@ -382,7 +382,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
 
     private void synchronizeModifications() throws PWCGException
     {
-        BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
+        BriefingFlight briefingMissionHandler = briefingData.getActiveBriefingFlight();
         List<CrewPlanePayloadPairing> assignedPairings = briefingMissionHandler.getCrews();
         CrewPlanePayloadPairing leadPlane = assignedPairings.get(0);
         for (int i = 1; i < assignedPairings.size(); ++i)
@@ -429,7 +429,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
 
         SoundManager.getInstance().playSound("BriefingEnd.WAV");
 
-        BriefingMissionUpdater.finalizeMission(briefingContext);
+        BriefingMissionUpdater.finalizeMission(briefingData);
         verifyLoggingEnabled();
 
         campaign.setCurrentMission(mission);
@@ -451,7 +451,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     		return true;
     	}
     	
-    	IFlight playerFlight = briefingContext.getSelectedFlight();
+    	IFlight playerFlight = briefingData.getSelectedFlight();
         List<PlaneMcu> playerPlanes = playerFlight.getFlightPlanes().getPlayerPlanes();
         for (PlaneMcu playerPlane : playerPlanes)
         {
@@ -468,7 +468,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
 
     private boolean ensurePlayerOwnsPlane() throws PWCGException
     {
-        IFlight playerFlight = briefingContext.getSelectedFlight();
+        IFlight playerFlight = briefingData.getSelectedFlight();
         List<PlaneMcu> playerPlanes = playerFlight.getFlightPlanes().getPlayerPlanes();
         for (PlaneMcu playerPlane : playerPlanes)
         {
@@ -496,7 +496,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     @Override
     public void flightChanged(Squadron squadron) throws PWCGException
     {
-        briefingContext.changeSelectedFlight(squadron.getSquadronId());
+        briefingData.changeSelectedFlight(squadron.getSquadronId());
         this.add(BorderLayout.CENTER, createCenterPanel());
     }
 
