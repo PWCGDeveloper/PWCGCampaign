@@ -29,25 +29,6 @@ import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.mission.Mission;
 import pwcg.mission.utils.MissionTime;
 
-/**
- * 1. Start - initialize mission parameters and editors
- * 2. Move waypoint
- *      Update waypoint list
- *      Change distances in edit field0
- *      Update map
- * 3. Add waypoint
- *      Clone next WP
- *      Add new WaypointEditorCouplet
- *      Update map
- * 3. Remove waypoint
- *      Remove WaypointEditorCouplet
- *      Update map
- * 4. Edit altitude
- *      Update WaypointEditorCouplet
- * 
- * @author Admin
- *
- */
 public class BriefingMapEditorPanel extends ImageResizingPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1L;

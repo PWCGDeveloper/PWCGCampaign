@@ -12,6 +12,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.gui.rofmap.brief.BriefingDataInitializer;
 import pwcg.gui.rofmap.brief.BriefingPayloadHelper;
 import pwcg.mission.Mission;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 
 public class BriefingFlight
@@ -19,7 +20,7 @@ public class BriefingFlight
     private int squadronId;
     private BriefingFlightParameters briefingFlightParameters;
     private BriefingPilotAssignmentData briefingAssignmentData;
-    private double selectedFuel;
+    private double selectedFuel = 1.0;
     private Mission mission;
 
     public BriefingFlight(Mission mission, BriefingFlightParameters briefingFlightParameters, int squadronId)
@@ -37,6 +38,8 @@ public class BriefingFlight
 
         BriefingPayloadHelper payloadHelper = new BriefingPayloadHelper(mission, briefingAssignmentData);
         payloadHelper.initializePayloadsFromMission();
+        
+        initializeFuel();
     }
 
     public void changePlane(Integer pilotSerialNumber, Integer planeSerialNumber) throws PWCGException
@@ -136,5 +139,12 @@ public class BriefingFlight
     public int getSquadronId()
     {
         return squadronId;
+    }
+    
+
+    private void initializeFuel()
+    {
+        IFlight flight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(squadronId);
+        this.selectedFuel = flight.getFlightPlanes().getFlightLeader().getFuel();
     }
 }

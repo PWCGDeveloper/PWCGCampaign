@@ -3,7 +3,6 @@ package pwcg.gui.rofmap.brief.update;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
-import pwcg.gui.rofmap.brief.BriefingFlightCrewPlaneUpdater;
 import pwcg.gui.rofmap.brief.model.BriefingData;
 import pwcg.gui.rofmap.brief.model.BriefingFlight;
 import pwcg.mission.Mission;
