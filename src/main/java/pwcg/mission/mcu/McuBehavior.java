@@ -19,10 +19,6 @@ public class McuBehavior extends BaseFlightMcu
     private AiSkillLevel aILevel = AiSkillLevel.NOVICE;
     private int floatParam = 0;
 
-    
-    /**
-     * 
-     */
     public McuBehavior()
     {
         super();

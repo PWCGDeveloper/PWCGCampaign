@@ -51,6 +51,7 @@ public enum PayloadElement
     P51_ROCKETS(PayloadElementCategory.ORDNANCE_BOMB, "P51 rockets", 80),
     P38_BOMBS(PayloadElementCategory.ORDNANCE_BOMB, "P38 Bombs", 80),
     P38_ROCKETS(PayloadElementCategory.ORDNANCE_BOMB, "P38 rockets", 80),
+    P47_GROUND_ATTACK(PayloadElementCategory.ORDNANCE_BOMB, "P47 Ground Attack", 80),
     BOMBS(PayloadElementCategory.ORDNANCE_BOMB, "Bombs", 60),
 
     
@@ -91,7 +92,7 @@ public enum PayloadElement
     OCTANE_150_FUEL(PayloadElementCategory.MODIFICATION, "150 Octane Fuel", 100),
     LB_11_BOOST(PayloadElementCategory.MODIFICATION, "11 lb. Boost", 100),
     PBP_1A(PayloadElementCategory.MODIFICATION, "PBP 1A", 100),
-    
+
     
 
     AMMO_COUNTER(PayloadElementCategory.MODIFICATION, "Ammo Counter", 0),

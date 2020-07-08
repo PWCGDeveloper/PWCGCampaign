@@ -43,6 +43,7 @@ public enum BosPlaneAttributeMapping implements IPlaneAttributeMapping
     P38_J25("p38j25", "static_p38j25"),
     P39_L1("p39l1", "static_p39l1"),
     P40_E1("p40e1", "static_p40e1"),
+    P47_D22("p47d22", "static_p47d28"),
     P47_D28("p47d28", "static_p47d28"),
     P51_D15("p51d15", "static_p51d15"),
     SPITFIRE_MKVB("spitfiremkvb", "static_spitfiremkixe"),

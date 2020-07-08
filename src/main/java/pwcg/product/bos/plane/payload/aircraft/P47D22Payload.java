@@ -7,19 +7,17 @@ import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 
-public class P47D28Payload extends PlanePayload implements IPlanePayload
+public class P47D22Payload extends PlanePayload implements IPlanePayload
 {
-    public P47D28Payload(PlaneType planeType)
+    public P47D22Payload(PlaneType planeType)
     {
         super(planeType);
     }
 
     protected void initialize()
 	{
-        setAvailablePayload(-4, "100000000", PayloadElement.OCTANE_150_FUEL);
-        setAvailablePayload(-3, "10000000", PayloadElement.MIRROR);
         setAvailablePayload(-2, "1000000", PayloadElement.MN28);
-        setAvailablePayload(-1, "100000", PayloadElement.P47_GUNSIGHT);
+        setAvailablePayload(-1, "100000", PayloadElement.OCTANE_150_FUEL);
                 
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(1, "11", PayloadElement.MG50CAL_6x);
@@ -31,7 +29,7 @@ public class P47D28Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        P47D28Payload clone = new P47D28Payload(planeType);
+        P47D22Payload clone = new P47D22Payload(planeType);
         
         return super.copy(clone);
     }

@@ -2,7 +2,14 @@
 ​
 At the PWCG web site
 
-10.1.1
+10.2.0
+P47 D-22
+- Added P47 D-22
+- P47 D-22 is available alongside P47 D-28
+- Backwards compatibility code to put the P47 D-22 into campaigns and depots.
+Changed P47 D-28 payloads to match changes in game
+- 150 octane fuel for  P47 D-28
+- Now only has "P47 ground attack" payload
 Added cruise speed to as editable parameter
 Added altitude and cruise speed to waypoint information popup
 
