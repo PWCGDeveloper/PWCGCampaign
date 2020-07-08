@@ -21,6 +21,7 @@ public interface IVehicle extends IPWCGObject
     public void setPosition(Coordinate position);
     public void setSpotterRange(int spotterRange);
     public void setBeaconChannel(int beaconChannel);
+    public void setEngageable(int engageable);
     public String getDescription();
     public String getScript();
     public ICountry getCountry();

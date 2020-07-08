@@ -28,9 +28,6 @@ public class McuBehavior extends BaseFlightMcu
         
     }
 
-    /**
-     * @see rof.campaign.mcu.BaseFlightMcu#write(java.io.BufferedWriter)
-     */
     public void write(BufferedWriter writer) throws PWCGIOException
     {
         try

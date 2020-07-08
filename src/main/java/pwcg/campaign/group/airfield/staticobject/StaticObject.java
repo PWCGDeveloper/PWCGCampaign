@@ -95,4 +95,8 @@ public class StaticObject extends Block implements IVehicle
         return 0;
     }
 
+    @Override
+    public void setEngageable(int engageable)
+    {        
+    }
 }

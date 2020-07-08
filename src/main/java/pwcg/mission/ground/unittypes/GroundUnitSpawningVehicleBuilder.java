@@ -16,7 +16,17 @@ public class GroundUnitSpawningVehicleBuilder
         spawningVehicle.setOrientation(pwcgGroundUnitInformation.getOrientation().copy());
         spawningVehicle.setCountry(pwcgGroundUnitInformation.getCountry());
         spawningVehicle.populateEntity();
+        
+        determineEngageable(spawningVehicle, vehicleClass);
+        
         return spawningVehicle;
     }
-
+    
+    private static void determineEngageable(IVehicle spawningVehicle, VehicleClass vehicleClass)
+    {
+        if (vehicleClass == VehicleClass.AAAArtillery || vehicleClass == VehicleClass.AAAMachineGun)
+        {
+            spawningVehicle.setEngageable(0);
+        }
+    }
 }
