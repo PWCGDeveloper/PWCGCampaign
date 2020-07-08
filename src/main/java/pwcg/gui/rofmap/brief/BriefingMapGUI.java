@@ -64,7 +64,6 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 			
             this.add(BorderLayout.WEST, makeNavPanel());           
             this.add(BorderLayout.CENTER, createCenterPanel());
-            //this.add(BorderLayout.EAST, createMissionEditPanel());
             
             Point initialPosition = findCenterPosition();
             centerMapAt(initialPosition);
@@ -218,7 +217,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 
     private void forwardToWaypointEditor() throws PWCGException 
     {
-        BriefingEditorEditorScreen waypointEditorScreen = new BriefingEditorEditorScreen(campaignHomeGui);
+        BriefingEditorScreen waypointEditorScreen = new BriefingEditorScreen(campaignHomeGui);
         waypointEditorScreen.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(waypointEditorScreen);
     }

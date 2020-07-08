@@ -14,6 +14,7 @@ public class WaypointEditor
     private long associatedWaypointID;
     private JTextField descTextField;
     private JTextField altitudeTextField;
+    private JTextField cruisingSpeedTextField;
     private JTextField distanceTextField;
     private JTextField headingTextField;
     private String actionCommandKey = "";
@@ -29,6 +30,7 @@ public class WaypointEditor
         descTextField.setText(thisMapPoint.getDesc());
 
         altitudeTextField = makeTextField();
+        cruisingSpeedTextField = makeTextField();
         distanceTextField = makeTextField();
         headingTextField = makeTextField();
 
@@ -58,9 +60,9 @@ public class WaypointEditor
         return altitudeTextField;
     }
 
-    public int getAltitudeValue()
+    public JTextField getCruisingSpeedTextField()
     {
-        return new Integer(altitudeTextField.getText());
+        return cruisingSpeedTextField;
     }
 
     public JTextField getDistanceTextField()
@@ -71,6 +73,16 @@ public class WaypointEditor
     public JTextField getHeadingtextField()
     {
         return headingTextField;
+    }
+
+    public int getAltitudeValue()
+    {
+        return new Integer(altitudeTextField.getText());
+    }
+
+    public int getCruisingSpeedValue()
+    {
+        return new Integer(cruisingSpeedTextField.getText());
     }
 
     public void setEnabled(boolean enabled)
@@ -91,7 +103,8 @@ public class WaypointEditor
             heading = BriefingMapPointDistanceCalculator.calculateHeading(previousMapPoint.getPosition(), briefingMapPoint.getPosition());
         }
 
-        altitudeTextField.setText("" + Double.valueOf(briefingMapPoint.getAltitude()).intValue());
+        altitudeTextField.setText("" + briefingMapPoint.getAltitude());
+        cruisingSpeedTextField.setText("" + briefingMapPoint.getCruisingSpeed());
         distanceTextField.setText(Integer.valueOf(distance / 1000).toString());
         headingTextField.setText(Integer.valueOf(heading).toString());
     }
@@ -99,15 +112,11 @@ public class WaypointEditor
     public void refreshTextFields()
     {
         refreshTextField(altitudeTextField);
+        refreshTextField(cruisingSpeedTextField);
         refreshTextField(distanceTextField);
         refreshTextField(headingTextField);
     }
-    
-    public void setAltitude(int altitude)
-    {
-        altitudeTextField.setText("" + altitude);
-    }
-    
+
     private void refreshTextField(JTextField textField)
     {
         if (textField.getGraphics() != null)

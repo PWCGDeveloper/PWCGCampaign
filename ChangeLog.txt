@@ -2,6 +2,10 @@
 ​
 At the PWCG web site
 
+10.1.1
+Added cruise speed to as editable parameter
+Added altitude and cruise speed to waypoint information popup
+
 10.1.0
 Added ability to sort pilots in any order
 - Use radio button to select assigned pilots

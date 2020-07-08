@@ -57,6 +57,7 @@ public class WaypointSet
         McuWaypoint waypoint = this.getWaypointById(waypointFromBriefing.getWaypointID());
         Coordinate waypointPosition = waypointFromBriefing.getPosition();
         waypointPosition.setYPos(waypointFromBriefing.getAltitude());
+        waypoint.setSpeed(waypointFromBriefing.getCruisingSpeed());
         waypoint.setPosition(waypointPosition);
     }
 
@@ -67,6 +68,7 @@ public class WaypointSet
         
         Coordinate newPosition = waypointFromBriefing.getPosition();
         newPosition.setYPos(waypointFromBriefing.getAltitude());
+        newWaypoint.setSpeed(waypointFromBriefing.getCruisingSpeed());
         newWaypoint.setPosition(newPosition);
         int indexToInsertAfter = getWaypointIndex(waypointIdBefore);
         waypoints.add(indexToInsertAfter+1, newWaypoint);

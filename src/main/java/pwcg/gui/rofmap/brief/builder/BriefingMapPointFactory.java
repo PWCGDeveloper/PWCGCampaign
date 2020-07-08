@@ -17,6 +17,7 @@ public class BriefingMapPointFactory
         briefingMapPoint.setDesc(waypoint.getWpAction().getAction());
         briefingMapPoint.setPosition(waypoint.getPosition());
         briefingMapPoint.setAltitude(Double.valueOf(waypoint.getPosition().getYPos()).intValue());
+        briefingMapPoint.setCruisingSpeed(waypoint.getSpeed());
         briefingMapPoint.setDistanceToNextPoint(0);
         briefingMapPoint.setIsEditable(waypoint.getWpAction().isEditable());
         briefingMapPoint.setIsTarget(waypoint.isTargetWaypoint());
@@ -32,6 +33,7 @@ public class BriefingMapPointFactory
         briefingMapPoint.setDesc(missionPoint.getAction().getAction());
         briefingMapPoint.setPosition(missionPoint.getPosition());
         briefingMapPoint.setAltitude(Double.valueOf(missionPoint.getPosition().getYPos()).intValue());
+        briefingMapPoint.setCruisingSpeed(Double.valueOf(missionPoint.getPosition().getYPos()).intValue());
         briefingMapPoint.setDistanceToNextPoint(0);
         briefingMapPoint.setIsEditable(missionPoint.getAction().isEditable());
         briefingMapPoint.setIsTarget(false);
@@ -49,6 +51,7 @@ public class BriefingMapPointFactory
             briefingMapPoint.setDesc("Airfield");
             briefingMapPoint.setPosition(takeoffMissionPoint.getPosition());
             briefingMapPoint.setAltitude(0);
+            briefingMapPoint.setCruisingSpeed(0);
             briefingMapPoint.setDistanceToNextPoint(0);
             briefingMapPoint.setIsEditable(false);
             briefingMapPoint.setIsTarget(false);
@@ -68,6 +71,7 @@ public class BriefingMapPointFactory
             briefingMapPoint.setDesc("Land");
             briefingMapPoint.setPosition(landingMissionPoint.getPosition());
             briefingMapPoint.setAltitude(0);
+            briefingMapPoint.setCruisingSpeed(0);
             briefingMapPoint.setDistanceToNextPoint(0);
             briefingMapPoint.setIsEditable(false);
             briefingMapPoint.setIsTarget(false);
@@ -82,7 +86,8 @@ public class BriefingMapPointFactory
         BriefingMapPoint briefingMapPoint = new BriefingMapPoint(McuWaypoint.NO_WAYPOINT_ID);
         briefingMapPoint.setDesc("Target");
         briefingMapPoint.setPosition(targetLocation.copy());
-        briefingMapPoint.setAltitude(Double.valueOf(targetLocation.getYPos()).intValue());
+        briefingMapPoint.setAltitude(0);
+        briefingMapPoint.setCruisingSpeed(0);
         briefingMapPoint.setDistanceToNextPoint(0);
         briefingMapPoint.setIsEditable(false);
         briefingMapPoint.setIsTarget(true);
@@ -95,7 +100,8 @@ public class BriefingMapPointFactory
         BriefingMapPoint briefingMapPoint = new BriefingMapPoint(McuWaypoint.NO_WAYPOINT_ID);
         briefingMapPoint.setDesc("Escort");
         briefingMapPoint.setPosition(escortWaypoint.getPosition());
-        briefingMapPoint.setAltitude(Double.valueOf(escortWaypoint.getPosition().getYPos()).intValue());
+        briefingMapPoint.setAltitude(0);
+        briefingMapPoint.setCruisingSpeed(0);
         briefingMapPoint.setDistanceToNextPoint(0);
         briefingMapPoint.setIsEditable(false);
         briefingMapPoint.setIsTarget(true);

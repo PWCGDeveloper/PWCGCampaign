@@ -29,7 +29,7 @@ import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.mission.Mission;
 import pwcg.mission.utils.MissionTime;
 
-public class BriefingMapEditorPanel extends ImageResizingPanel implements ActionListener
+public class BriefingEditorPanel extends ImageResizingPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
 
@@ -42,7 +42,7 @@ public class BriefingMapEditorPanel extends ImageResizingPanel implements Action
     private BriefingData briefingData;
     private WaypointEditorSet waypointEditors = new WaypointEditorSet();
 
-	public BriefingMapEditorPanel() throws PWCGException  
+	public BriefingEditorPanel() throws PWCGException  
 	{
 		super("");
 		this.setLayout(new BorderLayout());
@@ -149,14 +149,17 @@ public class BriefingMapEditorPanel extends ImageResizingPanel implements Action
 
 			constraints.gridx = 0;
 			waypointDetailsPanel.add(waypointEditor.getDescriptionField(), constraints);
-			
-			constraints.gridx = 1;
-			waypointDetailsPanel.add(waypointEditor.getAltitudeTextField(), constraints);
+            
+            constraints.gridx = 1;
+            waypointDetailsPanel.add(waypointEditor.getAltitudeTextField(), constraints);
             
             constraints.gridx = 2;
+            waypointDetailsPanel.add(waypointEditor.getCruisingSpeedTextField(), constraints);
+            
+            constraints.gridx = 3;
             waypointDetailsPanel.add(waypointEditor.getDistanceTextField(), constraints);
         
-            constraints.gridx = 3;
+            constraints.gridx = 4;
             waypointDetailsPanel.add(waypointEditor.getHeadingtextField(), constraints);
             
             waypointEditors.addWaypointEditor(waypointEditor);
@@ -241,13 +244,22 @@ public class BriefingMapEditorPanel extends ImageResizingPanel implements Action
 		constraints.gridx = 1;
 		constraints.gridy = 0;
 		panel.add(altLabel, constraints);
-        
+
+        JLabel cruiseSpeedLabel = new JLabel ("Cruise Speed");
+        cruiseSpeedLabel.setFont(font);
+
+        cruiseSpeedLabel.setHorizontalAlignment(JLabel.CENTER);
+        constraints.weightx = 0.2;
+        constraints.gridx = 2;
+        constraints.gridy = 0;
+        panel.add(cruiseSpeedLabel, constraints);
+
         JLabel distLabel = new JLabel ("Dist (Km)");
         distLabel.setFont(font);
 
         distLabel.setHorizontalAlignment(JLabel.CENTER);
         constraints.weightx = 0.2;
-        constraints.gridx = 2;
+        constraints.gridx = 3;
         constraints.gridy = 0;
         panel.add(distLabel, constraints);
         
@@ -256,7 +268,7 @@ public class BriefingMapEditorPanel extends ImageResizingPanel implements Action
         
         headingLabel.setHorizontalAlignment(JLabel.CENTER);
         constraints.weightx = 0.2;
-        constraints.gridx = 3;
+        constraints.gridx = 4;
         constraints.gridy = 0;
         panel.add(headingLabel, constraints);
     }

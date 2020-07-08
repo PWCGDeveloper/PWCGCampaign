@@ -22,16 +22,16 @@ import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 import pwcg.mission.Mission;
 
-public class BriefingEditorEditorScreen extends ImageResizingPanel implements ActionListener
+public class BriefingEditorScreen extends ImageResizingPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
 
 	private CampaignHomeScreen campaignHomeGui;
     private Mission mission;
     private BriefingData briefingData;
-    private BriefingMapEditorPanel editorPanel;
+    private BriefingEditorPanel editorPanel;
 
-	public BriefingEditorEditorScreen(CampaignHomeScreen campaignHomeGui) throws PWCGException  
+	public BriefingEditorScreen(CampaignHomeScreen campaignHomeGui) throws PWCGException  
 	{
 		super("");
 		this.setLayout(new BorderLayout());
@@ -49,7 +49,7 @@ public class BriefingEditorEditorScreen extends ImageResizingPanel implements Ac
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.BriefingEditorEditorScreen);
         this.setImage(imagePath);
 
-		editorPanel = new BriefingMapEditorPanel();
+		editorPanel = new BriefingEditorPanel();
 		editorPanel.makePanels();
 		
         this.add(BorderLayout.WEST, makeNavPanel());
@@ -174,6 +174,9 @@ public class BriefingEditorEditorScreen extends ImageResizingPanel implements Ac
             {
                 int altitude = editor.getAltitudeValue();
                 briefingMapPoint.setAltitude(altitude);
+                
+                int cruisingSpeed = editor.getCruisingSpeedValue();
+                briefingMapPoint.setCruisingSpeed(cruisingSpeed);
             }
         }
     }
