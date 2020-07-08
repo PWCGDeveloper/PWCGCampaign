@@ -334,4 +334,9 @@ public class IntelMapPanel extends MapPanelBase
 	public void rightClickReleasedCallback(MouseEvent e)  
 	{		
 	}
+
+    @Override
+    public void centerClickCallback(MouseEvent e) 
+    {
+    }
 }

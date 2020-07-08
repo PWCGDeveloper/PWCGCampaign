@@ -363,7 +363,24 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 		}
 	}
 
-	public void rightClickCallback(MouseEvent e)
+    public void rightClickCallback(MouseEvent e)
+    {
+        try
+        {
+            int selectedMapPointIndex = determineSelectedWaypointIndex(e.getX(), e.getY());
+            if (selectedMapPointIndex != NO_MAP_POINT_SELECTED)
+            {
+                WaypointInformationPopup menu = new WaypointInformationPopup(selectedMapPointIndex);
+                menu.show(e.getComponent(), e.getX(), e.getY());
+            }
+        }
+        catch (Exception exp)
+        {
+            PWCGLogger.logException(exp);
+        }
+    }
+
+	public void centerClickCallback(MouseEvent e)
 	{
 		if (!mission.isFinalized())
 		{

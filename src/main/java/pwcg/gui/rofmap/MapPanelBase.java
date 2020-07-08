@@ -372,5 +372,8 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
 
     public abstract void rightClickReleasedCallback(MouseEvent e);
 
+    public abstract void centerClickCallback(MouseEvent e);
+
     public abstract Point upperLeft();
+
 }

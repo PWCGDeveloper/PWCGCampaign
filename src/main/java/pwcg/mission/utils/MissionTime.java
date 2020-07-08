@@ -58,7 +58,6 @@ public class MissionTime
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         
-        // Month starts with 0
         int month = calendar.get(Calendar.MONTH) + 1;
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         SunriseSunset sunriseSunsetToReturn = sunriseSunsets.get(0);
@@ -80,7 +79,6 @@ public class MissionTime
             sunriseSunsetToReturn = sunriseSunset;
         }
         
-        // Bail out
         return sunriseSunsetToReturn;
     }
 

@@ -528,6 +528,11 @@ public class InfoMapPanel extends MapPanelBase
     }
 
     @Override
+    public void centerClickCallback(MouseEvent e) 
+    {
+    }
+
+    @Override
     public Point upperLeft()
     {
         return null;

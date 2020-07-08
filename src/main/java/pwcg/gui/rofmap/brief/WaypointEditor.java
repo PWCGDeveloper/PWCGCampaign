@@ -6,8 +6,6 @@ import java.awt.Font;
 import javax.swing.JTextField;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.core.utils.MathUtils;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 
@@ -82,19 +80,20 @@ public class WaypointEditor
         distanceTextField.setEditable(false);
     }
 
-    private void calculateWPParameters(BriefingMapPoint previousMapPoint, BriefingMapPoint thisMapPoint) throws PWCGException
+    private void calculateWPParameters(BriefingMapPoint previousMapPoint, BriefingMapPoint briefingMapPoint) throws PWCGException
     {
-        int distanceAsInt = 0;
-        int headingAsInt = 0;
+        int distance = 0;
+        int heading = 0;
+
         if (previousMapPoint != null)
         {
-            distanceAsInt = calculateDistanceAsInteger(previousMapPoint.getPosition(), thisMapPoint.getPosition());
-            headingAsInt = calculateHeading(previousMapPoint.getPosition(), thisMapPoint.getPosition());
+            distance = BriefingMapPointDistanceCalculator.calculateDistanceAsInteger(previousMapPoint.getPosition(), briefingMapPoint.getPosition());
+            heading = BriefingMapPointDistanceCalculator.calculateHeading(previousMapPoint.getPosition(), briefingMapPoint.getPosition());
         }
 
-        altitudeTextField.setText("" + Double.valueOf(thisMapPoint.getAltitude()).intValue());
-        distanceTextField.setText(Integer.valueOf(distanceAsInt / 1000).toString());
-        headingTextField.setText(Integer.valueOf(headingAsInt).toString());
+        altitudeTextField.setText("" + Double.valueOf(briefingMapPoint.getAltitude()).intValue());
+        distanceTextField.setText(Integer.valueOf(distance / 1000).toString());
+        headingTextField.setText(Integer.valueOf(heading).toString());
     }
     
     public void refreshTextFields()
@@ -128,29 +127,6 @@ public class WaypointEditor
         field.setForeground(Color.BLACK);
 
         return field;
-    }
-
-    private int calculateHeading(Coordinate previousPosition, Coordinate thisMapPoint) throws PWCGException
-    {
-        int headingAsInt = 0;
-        if (previousPosition != null)
-        {
-            double angle = MathUtils.calcAngle(previousPosition, thisMapPoint);
-            headingAsInt = Double.valueOf(angle).intValue();
-        }
-        return headingAsInt;
-    }
-
-    private int calculateDistanceAsInteger(Coordinate previousPosition, Coordinate thisMapPoint)
-    {
-        int distanceAsInt = 0;
-        if (previousPosition != null)
-        {
-            double distanceExact = MathUtils.calcDist(previousPosition, thisMapPoint);
-            distanceAsInt = Double.valueOf(distanceExact).intValue();
-        }
-
-        return distanceAsInt;
     }
 
     public String getActionCommandKey()
