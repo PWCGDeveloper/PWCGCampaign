@@ -26,8 +26,8 @@ import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.gui.helper.BriefingAssignmentData;
-import pwcg.gui.helper.BriefingDataInitializer;
+import pwcg.gui.rofmap.brief.BriefingDataInitializer;
+import pwcg.gui.rofmap.brief.model.BriefingPilotAssignmentData;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionFlightBuilder;
 import pwcg.mission.flight.IFlight;
@@ -66,7 +66,7 @@ public class BriefingDataInitializerTest
     protected Map<Integer, SquadronMember> squadronPersonnelMap = new HashMap<>();
     protected List<PlaneMcu> planesInFlight = new ArrayList<>();
     protected Map<Integer, EquippedPlane> equippedPlanes = new HashMap<>();
-    protected BriefingAssignmentData briefingAssignmentData = new BriefingAssignmentData();
+    protected BriefingPilotAssignmentData briefingAssignmentData = new BriefingPilotAssignmentData();
 
     @Before
     public void setup() throws PWCGException
@@ -132,9 +132,7 @@ public class BriefingDataInitializerTest
         briefingAssignmentData = briefingDataInitializer.initializeFromMission(squadron);
         
         assert(briefingAssignmentData.getCrews().size() == 2);
-        assert(briefingAssignmentData.getAssignedPilots().size() == 2);
         assert(briefingAssignmentData.getUnassignedPilots().size() == 2);
-        assert(briefingAssignmentData.getAssignedPlanes().size() == 2);
         assert(briefingAssignmentData.getUnassignedPlanes().size() == 2);
         assert(briefingAssignmentData.findAssignedCrewPairingByPilot(SerialNumber.AI_STARTING_SERIAL_NUMBER+1).getPlane().getType().equals("bf109f4"));
         assert(briefingAssignmentData.findAssignedCrewPairingByPilot(SerialNumber.AI_STARTING_SERIAL_NUMBER+2).getPlane().getType().equals("bf109f2"));
@@ -142,7 +140,7 @@ public class BriefingDataInitializerTest
         assert(briefingAssignmentData.findAssignedCrewPairingByPilot(SerialNumber.AI_STARTING_SERIAL_NUMBER+2).getPilot().getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER+2);
     }
 
-    public BriefingAssignmentData getBriefingAssignmentData()
+    public BriefingPilotAssignmentData getBriefingAssignmentData()
     {
         return briefingAssignmentData;
     }

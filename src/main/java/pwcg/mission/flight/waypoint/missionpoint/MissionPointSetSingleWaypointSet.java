@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.WaypointSet;
 import pwcg.mission.mcu.McuWaypoint;
@@ -41,9 +42,9 @@ public abstract class MissionPointSetSingleWaypointSet implements IMissionPointS
     }
 
     @Override
-    public void replaceWaypoint(McuWaypoint waypoint) throws PWCGException
+    public void updateWaypointFromBriefing(BriefingMapPoint waypoint) throws PWCGException
     {
-        waypoints.replaceWaypoint(waypoint);
+        waypoints.updateWaypointFromBriefing(waypoint);
     }
 
     @Override
@@ -53,7 +54,7 @@ public abstract class MissionPointSetSingleWaypointSet implements IMissionPointS
     }
 
     @Override
-    public void removeUnwantedWaypoints(List<McuWaypoint> waypointsToKeep) throws PWCGException
+    public void removeUnwantedWaypoints(List<BriefingMapPoint> waypointsToKeep) throws PWCGException
     {
         waypoints.removeUnwantedWaypoints(waypointsToKeep);        
     }
@@ -71,6 +72,12 @@ public abstract class MissionPointSetSingleWaypointSet implements IMissionPointS
     protected void addWaypoint(McuWaypoint waypoint)
     {
         waypoints.addWaypoint(waypoint);
+    }
+    
+    @Override
+    public long addWaypointFromBriefing(BriefingMapPoint newWaypoint, long waypointIdBefore) throws PWCGException
+    {
+        return waypoints.addWaypointFromBriefing(newWaypoint, waypointIdBefore);                                
     }
 
     protected McuWaypoint getLastWaypoint() throws PWCGException

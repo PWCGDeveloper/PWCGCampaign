@@ -12,6 +12,7 @@ import pwcg.mission.flight.waypoint.WaypointType;
 
 public class McuWaypoint extends BaseFlightMcu implements Cloneable
 {
+    public static long NO_WAYPOINT_ID = -1;
     private static long masterWaypointId = 1;
     
     public WaypointType waypointType;

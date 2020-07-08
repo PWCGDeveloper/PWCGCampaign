@@ -1,4 +1,4 @@
-package pwcg.gui.helper;
+package pwcg.gui.rofmap.brief.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,27 +9,26 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberSorter;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.gui.rofmap.brief.BriefParametersContextBuilder;
-import pwcg.gui.rofmap.brief.BriefingFlightParameters;
-import pwcg.gui.rofmap.brief.EditorWaypointGroup;
+import pwcg.gui.rofmap.brief.BriefingDataInitializer;
+import pwcg.gui.rofmap.brief.BriefingPayloadHelper;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 
-public class BriefingMissionFlight
+public class BriefingFlight
 {
+    private int squadronId;
     private BriefingFlightParameters briefingFlightParameters;
-    private BriefingAssignmentData briefingAssignmentData;
+    private BriefingPilotAssignmentData briefingAssignmentData;
+    private double selectedFuel = 1.0;
     private Mission mission;
-    private IFlight flight;
 
-    public BriefingMissionFlight(Mission mission, IFlight flight)
+    public BriefingFlight(Mission mission, BriefingFlightParameters briefingFlightParameters, int squadronId)
     {
         this.mission = mission;
-        this.flight = flight;
-        briefingFlightParameters = new BriefingFlightParameters(flight);
-        briefingAssignmentData = new BriefingAssignmentData();
+        this.squadronId = squadronId;
+        this.briefingFlightParameters = briefingFlightParameters;
+        briefingAssignmentData = new BriefingPilotAssignmentData();
     }
     
     public void initializeFromMission(Squadron squadron) throws PWCGException
@@ -39,6 +38,8 @@ public class BriefingMissionFlight
 
         BriefingPayloadHelper payloadHelper = new BriefingPayloadHelper(mission, briefingAssignmentData);
         payloadHelper.initializePayloadsFromMission();
+        
+        initializeFuel();
     }
 
     public void changePlane(Integer pilotSerialNumber, Integer planeSerialNumber) throws PWCGException
@@ -75,25 +76,9 @@ public class BriefingMissionFlight
         payloadHelper.modifyPayload(pilotSerialNumber, newPayload);
     }
 
-    public void loadMissionParams(IFlight playerFlight) throws PWCGException
-    {     
-    	BriefParametersContextBuilder briefParametersContextBuilder = new BriefParametersContextBuilder(playerFlight);
-        briefingFlightParameters = briefParametersContextBuilder.buildBriefParametersContext();
-    }
-
-    public List<SquadronMember> getSortedAssigned() throws PWCGException 
-    {       
-        return SquadronMemberSorter.sortSquadronMembers(mission.getCampaign(), briefingAssignmentData.getAssignedPilots());
-    }
-
     public List<SquadronMember> getSortedUnassignedPilots() throws PWCGException 
     {       
         return SquadronMemberSorter.sortSquadronMembers(mission.getCampaign(), briefingAssignmentData.getUnassignedPilots());
-    }
-
-    public List<EquippedPlane> getSortedAssignedPlanes() throws PWCGException 
-    {       
-        return PlaneSorter.sortEquippedPlanesByGoodness(new ArrayList<EquippedPlane>(briefingAssignmentData.getAssignedPlanes().values()));
     }
 
     public List<EquippedPlane> getSortedUnassignedPlanes() throws PWCGException 
@@ -105,20 +90,6 @@ public class BriefingMissionFlight
     {       
         return briefingAssignmentData.findAssignedCrewPairingByPilot(pilotSerialNumber);
     }
-    
-    public Coordinate findFlightCenterPosition()
-    {
-        Coordinate initialPosition = null;
-        for  (EditorWaypointGroup editorWaypointGroup : getBriefingFlightParameters().getWaypointEditorGroups())
-        {
-            if (editorWaypointGroup.getWaypointInBriefing() != null)
-            {
-                initialPosition = editorWaypointGroup.getWaypointInBriefing().getPosition();
-            }
-        }
-        return initialPosition;
-    }
-
 
     public Mission getMission()
     {
@@ -135,14 +106,9 @@ public class BriefingMissionFlight
         return briefingFlightParameters;
     }
 
-    public BriefingAssignmentData getBriefingAssignmentData()
+    public BriefingPilotAssignmentData getBriefingAssignmentData()
     {
         return briefingAssignmentData;
-    }
-
-    public IFlight getFlight()
-    {
-        return flight;
     }
 
     public List<CrewPlanePayloadPairing> getCrews()
@@ -158,5 +124,27 @@ public class BriefingMissionFlight
     public void movePilotDown(int pilotSerialNumber)
     {
         briefingAssignmentData.movePilotDown(pilotSerialNumber);        
+    }
+
+    public double getSelectedFuel()
+    {
+        return selectedFuel;
+    }
+
+    public void setSelectedFuel(double selectedFuel)
+    {
+        this.selectedFuel = selectedFuel;
+    }
+
+    public int getSquadronId()
+    {
+        return squadronId;
+    }
+    
+
+    private void initializeFuel()
+    {
+        IFlight flight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(squadronId);
+        this.selectedFuel = flight.getFlightPlanes().getFlightLeader().getFuel();
     }
 }

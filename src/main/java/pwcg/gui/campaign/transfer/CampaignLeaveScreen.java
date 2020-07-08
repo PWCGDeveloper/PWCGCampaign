@@ -64,13 +64,13 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignLeaveScreen);
         this.setImage(imagePath);
 
-        this.add(BorderLayout.WEST, makeLeaveLeftPanel());
+        this.add(BorderLayout.WEST, makeNavPanel());
         this.add(BorderLayout.CENTER, makeLeaveCenterPanel());
         this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1400));
 
     }
 
-    private JPanel makeLeaveLeftPanel() throws PWCGException
+    private JPanel makeNavPanel() throws PWCGException
     {
         JPanel navPanel = new JPanel(new BorderLayout());
         navPanel.setOpaque(false);

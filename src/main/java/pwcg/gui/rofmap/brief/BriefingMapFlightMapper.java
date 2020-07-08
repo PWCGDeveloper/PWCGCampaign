@@ -2,17 +2,17 @@ package pwcg.gui.rofmap.brief;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
-import pwcg.gui.helper.BriefingMissionFlight;
+import pwcg.gui.rofmap.brief.model.BriefingFlight;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.escort.VirtualEscortFlight;
 
 public class BriefingMapFlightMapper
 {
-    private BriefingMissionFlight briefingMissionHandler;
+    private BriefingFlight briefingMissionHandler;
     private BriefingMapPanel mapPanel;
 
-    public BriefingMapFlightMapper(BriefingMissionFlight briefingMissionHandler, BriefingMapPanel mapPanel) throws PWCGException
+    public BriefingMapFlightMapper(BriefingFlight briefingMissionHandler, BriefingMapPanel mapPanel) throws PWCGException
     {
         this.briefingMissionHandler = briefingMissionHandler;
         this.mapPanel = mapPanel;

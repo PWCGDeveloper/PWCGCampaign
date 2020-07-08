@@ -19,14 +19,16 @@ public class PWCGMouseClickListener extends MouseAdapter
 	{	
 		if (e.getButton() == MouseEvent.BUTTON1) 
 		{
-			// Selected for drag
 			parent.leftClickCallback(e);
 		}
-		if (e.getButton() == MouseEvent.BUTTON2 || e.getButton() == MouseEvent.BUTTON3) 
-		{
-			// selected for operation			
-			parent.rightClickCallback(e);			
-		}
+        if (e.getButton() == MouseEvent.BUTTON2) 
+        {
+            parent.centerClickCallback(e);           
+        }
+        if (e.getButton() == MouseEvent.BUTTON3) 
+        {
+            parent.rightClickCallback(e);           
+        }
 	}
 
 	@Override
@@ -36,7 +38,6 @@ public class PWCGMouseClickListener extends MouseAdapter
 		{
 			if (mouseEvent.getButton() == MouseEvent.BUTTON1) 
 			{
-				// Selected for drag
 				parent.leftClickReleasedCallback(mouseEvent);
 			}
 		}

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
@@ -144,7 +145,7 @@ public class MissionPointFlightActivate implements IMissionPointSet
     }
 
     @Override
-    public void replaceWaypoint(McuWaypoint waypoint) throws PWCGException
+    public void updateWaypointFromBriefing(BriefingMapPoint waypoint) throws PWCGException
     {
         throw new PWCGException("No waypoints in flight activate");                
     }
@@ -162,7 +163,13 @@ public class MissionPointFlightActivate implements IMissionPointSet
     }
 
     @Override
-    public void removeUnwantedWaypoints(List<McuWaypoint> waypointsInBriefing) throws PWCGException
+    public long addWaypointFromBriefing(BriefingMapPoint newWaypoint, long waypointIdAfter) throws PWCGException
+    {
+        throw new PWCGException("No waypoints in flight activate");                                
+    }
+
+    @Override
+    public void removeUnwantedWaypoints(List<BriefingMapPoint> waypointsInBriefing) throws PWCGException
     {
     }
 
@@ -188,7 +195,5 @@ public class MissionPointFlightActivate implements IMissionPointSet
     public McuTimer getActivationTimer()
     {
         return activationTimer;
-    }
-    
-    
+    }    
 }

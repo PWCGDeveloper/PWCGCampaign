@@ -22,7 +22,8 @@ import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
-import pwcg.gui.helper.BriefingMissionFlight;
+import pwcg.gui.rofmap.brief.model.BriefingData;
+import pwcg.gui.rofmap.brief.model.BriefingFlight;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -34,7 +35,7 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
     private static final long serialVersionUID = 1L;
 
     private JPanel pilotPanel;
-    private BriefingContext briefingContext;
+    private BriefingData briefingContext;
     private BriefingPilotSelectionScreen parent;
     private ButtonGroup buttonGroup = new ButtonGroup();
     private Map<Integer, JRadioButton> activePilotRadioButtons = new HashMap<>();
@@ -44,7 +45,7 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
     private static final double payloadWeightx = 0.1;
     private static final double modificationsWeightx = 0.1;
     
-    public BriefingPilotChalkboard(BriefingContext briefingContext, BriefingPilotSelectionScreen parent)
+    public BriefingPilotChalkboard(BriefingData briefingContext, BriefingPilotSelectionScreen parent)
     {
         super("");
         this.setLayout(new BorderLayout());
@@ -123,7 +124,7 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
     private void addDataForChalkboard(JPanel assignedPilotPanel) throws PWCGException
     {
         activePilotRadioButtons.clear();
-        BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
+        BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
         int row = 2;
         for (CrewPlanePayloadPairing crewPlane : briefingMissionHandler.getCrews())
         {
@@ -146,7 +147,7 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
         }
         else
         {
-            BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
+            BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
             if (briefingMissionHandler.getBriefingAssignmentData().getCrews().size() > 0)
             {
                 CrewPlanePayloadPairing crewPlane = briefingMissionHandler.getBriefingAssignmentData().getCrews().get(0);
@@ -236,7 +237,7 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
         JLabel modificationsLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
         unassignedPilotGrid.add(modificationsLabel);
 
-        BriefingMissionFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
+        BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
         List<SquadronMember> sortedUnassignedPilots = briefingMissionHandler.getSortedUnassignedPilots();
         List<EquippedPlane> sortedUnassignedPlanes = briefingMissionHandler.getSortedUnassignedPlanes();
 

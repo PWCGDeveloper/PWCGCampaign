@@ -1,4 +1,4 @@
-package pwcg.gui.helper;
+package pwcg.gui.rofmap.brief.update;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,13 +20,13 @@ import pwcg.mission.flight.initialposition.FlightPositionSetter;
 import pwcg.mission.flight.plane.PlaneMCUFactory;
 import pwcg.mission.flight.plane.PlaneMcu;
 
-public class PlayerFlightEditor
+public class BriefingFlightCrewPlaneUpdater
 {
     private Campaign campaign;
     private IFlight playerFlight;
     private List<PlaneMcu> updatedPlaneSet = new ArrayList<PlaneMcu>();
     
-    public PlayerFlightEditor(Campaign campaign, IFlight playerFlight)
+    public BriefingFlightCrewPlaneUpdater(Campaign campaign, IFlight playerFlight)
     {
         this.campaign = campaign;
         this.playerFlight = playerFlight;

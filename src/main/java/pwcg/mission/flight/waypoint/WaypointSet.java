@@ -6,6 +6,7 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -51,10 +52,28 @@ public class WaypointSet
         throw new PWCGException("Waypoint not found in waypoint set " + waypointId);
     }
 
-    public void replaceWaypoint(McuWaypoint waypoint) throws PWCGException
+    public void updateWaypointFromBriefing(BriefingMapPoint waypointFromBriefing) throws PWCGException
     {
-        int replaceIndex = this.getWaypointIndex(waypoint.getWaypointID());
-        waypoints.set(replaceIndex, waypoint);
+        McuWaypoint waypoint = this.getWaypointById(waypointFromBriefing.getWaypointID());
+        Coordinate waypointPosition = waypointFromBriefing.getPosition();
+        waypointPosition.setYPos(waypointFromBriefing.getAltitude());
+        waypoint.setSpeed(waypointFromBriefing.getCruisingSpeed());
+        waypoint.setPosition(waypointPosition);
+    }
+
+    public long addWaypointFromBriefing(BriefingMapPoint waypointFromBriefing, long waypointIdBefore) throws PWCGException
+    {
+        McuWaypoint waypoint = this.getWaypointById(waypointIdBefore);
+        McuWaypoint newWaypoint = waypoint.copy();
+        
+        Coordinate newPosition = waypointFromBriefing.getPosition();
+        newPosition.setYPos(waypointFromBriefing.getAltitude());
+        newWaypoint.setSpeed(waypointFromBriefing.getCruisingSpeed());
+        newWaypoint.setPosition(newPosition);
+        int indexToInsertAfter = getWaypointIndex(waypointIdBefore);
+        waypoints.add(indexToInsertAfter+1, newWaypoint);
+        
+        return waypoint.getWaypointID();
     }
 
     public void addWaypointAfterWaypoint(McuWaypoint newWaypoint, long waypointIdAfter) throws PWCGException
@@ -115,7 +134,7 @@ public class WaypointSet
         }
     }
 
-    public void removeUnwantedWaypoints(List<McuWaypoint> waypointsToKeep) throws PWCGException
+    public void removeUnwantedWaypoints(List<BriefingMapPoint> waypointsToKeep) throws PWCGException
     {
         for (McuWaypoint unwantedWaypoint : getUnwantedWaypoints(waypointsToKeep))
         {
@@ -124,13 +143,13 @@ public class WaypointSet
         }
     }
 
-    public List<McuWaypoint> getUnwantedWaypoints(List<McuWaypoint> waypointsToKeep) throws PWCGException
+    public List<McuWaypoint> getUnwantedWaypoints(List<BriefingMapPoint> waypointsToKeep) throws PWCGException
     {
         List<McuWaypoint> unwantedWaypoints = new ArrayList<>();
         for (McuWaypoint waypoint : waypoints)
         {
             boolean keepWaypoint = false;
-            for (McuWaypoint waypointToKeep : waypointsToKeep)
+            for (BriefingMapPoint waypointToKeep : waypointsToKeep)
             {
                 if (waypoint.getWaypointID() == waypointToKeep.getWaypointID())
                 {

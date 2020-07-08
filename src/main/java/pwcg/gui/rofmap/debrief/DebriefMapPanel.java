@@ -347,10 +347,15 @@ public class DebriefMapPanel  extends MapPanelBase
 	{		
 	}
 
-	@Override
-	public void rightClickCallback(MouseEvent e) 
-	{
-	}
+    @Override
+    public void rightClickCallback(MouseEvent e) 
+    {
+    }
+
+    @Override
+    public void centerClickCallback(MouseEvent e) 
+    {
+    }
 
 	@Override
 	public void rightClickReleasedCallback(MouseEvent e)  
