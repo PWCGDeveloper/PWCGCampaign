@@ -12,6 +12,7 @@ Changed P47 D-28 payloads to match changes in game
 - Now only has "P47 ground attack" payload
 Added cruise speed to as editable parameter
 Added altitude and cruise speed to waypoint information popup
+Set AA units (not truck/train/ship mounted) enabled = 0 to prevent flight from attacking
 
 10.1.0
 Added ability to sort pilots in any order
