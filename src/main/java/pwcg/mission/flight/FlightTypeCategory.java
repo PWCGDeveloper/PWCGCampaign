@@ -4,9 +4,10 @@ public enum FlightTypeCategory
 {
     FIGHTER,
     ATTACK,
+    BOMB,
     STRATEGIC,
-    OTHER, 
-    DEPENDENT,
+    TRANSPORT, 
+    SINGLE, 
     GROUND, 
     INVALID;
 }

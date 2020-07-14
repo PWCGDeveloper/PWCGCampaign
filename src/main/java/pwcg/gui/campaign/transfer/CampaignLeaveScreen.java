@@ -44,6 +44,7 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
     private CampaignHomeScreen parent = null;
     private Campaign campaign = null;
     private JTextField tLeaveTime;
+    private int gridRow = 1;
 
     public CampaignLeaveScreen(CampaignHomeScreen parent)
     {
@@ -150,12 +151,15 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         constraints.weightx = 0.5;
         constraints.weighty = 0.1;
         constraints.gridx = 1;
-        constraints.gridy = 1;
         constraints.gridheight = 1;
+
         for (SquadronMember player : campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
         {
             if (player.getRecoveryDate() != null)
             {
+                constraints.gridy = gridRow;
+                ++gridRow;
+
                 int daysToHeal = DateUtils.daysDifference(campaign.getDate(), player.getRecoveryDate()) + 1;
                 String playerWoundHealTimeDesc = player.getNameAndRank() + " requires " + daysToHeal + " days to recover from his wounds";
                 JLabel playerWoundHealTimeLabel = new JLabel(playerWoundHealTimeDesc, JLabel.LEFT);
@@ -189,17 +193,18 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
 
         GridBagConstraints constraints = initializeGridbagConstraints();
 
+        constraints.gridy = gridRow;
+        ++gridRow;
+
         constraints.weightx = 0.01;
         constraints.weighty = 0.1;
         constraints.gridx = 1;
-        constraints.gridy = 1;
         constraints.gridheight = 1;
         leaveRequestPanel.add(lLeave, constraints);
 
         constraints.weightx = 0.1;
         constraints.weighty = 0.1;
         constraints.gridx = 2;
-        constraints.gridy = 1;
         constraints.gridheight = 5;
         leaveRequestPanel.add(tLeaveTime, constraints);
 

@@ -103,21 +103,45 @@ public abstract class Flight implements IFlight
     @Override
     public void finalizeFlight() throws PWCGException
     {
+        finalizeCoreFlight();        
+        // finalizeWingmenForFlight();
+        finalizeLinkedFlights();
+        finalizeVirtualFlights();        
+        finalizeSkinsForFlight();
+    }
+
+    private void finalizeCoreFlight() throws PWCGException
+    {
         flightPlanes.finalize();
         PlaneMcu flightLeader = flightPlanes.getFlightLeader();
         waypointPackage.finalize(flightLeader);
-        
-        for (IFlight linkedFlight : linkedFlights.getLinkedFlights())
-        {
-            linkedFlight.finalizeFlight();
-        }
+    }
 
+    private void finalizeWingmenForFlight() throws PWCGException
+    {
+        WingmanBuilder wingmanBuilder = new WingmanBuilder(this);
+        wingmanBuilder.buildWingmenForFlight();
+    }
+
+    private void finalizeVirtualFlights() throws PWCGException
+    {
         if (flightInformation.isVirtual())
         {
             virtualWaypointPackage.buildVirtualWaypoints();
             virtualWaypointPackage.addDelayForPlayerDelay(flightInformation.getMission());
-        }        
+        }
+    }
 
+    private void finalizeLinkedFlights() throws PWCGException
+    {
+        for (IFlight linkedFlight : linkedFlights.getLinkedFlights())
+        {
+            linkedFlight.finalizeFlight();
+        }
+    }
+
+    private void finalizeSkinsForFlight() throws PWCGException
+    {
         MissionSkinGenerator skinGenerator = new MissionSkinGenerator();
         skinGenerator.assignSkinsForFlight(this);
     }
@@ -126,7 +150,7 @@ public abstract class Flight implements IFlight
     {
         return virtualWaypointPackage;
     }
-    
+
     @Override
     public void overrideFlightCruisingSpeedForEscort(int cruisingSpeed)
     {

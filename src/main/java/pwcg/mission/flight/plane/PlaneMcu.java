@@ -32,6 +32,7 @@ import pwcg.mission.mcu.McuAttack;
 import pwcg.mission.mcu.McuTREntity;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.group.IPlaneRemover;
+import pwcg.mission.mcu.group.WingmanMcuGroup;
 
 /**
  * Plane is an instance of a plane.  It derives from plane type and adds a crew, payload, fuel state, and
@@ -64,6 +65,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
     protected int damageThreshold = 1;
     protected int aiRTBDecision = 1;
     protected int deleteAfterDeath = 1;
+    protected WingmanMcuGroup wingmanCommands;
 
     protected IPlanePayload payload = null;
 
@@ -295,6 +297,11 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
 
             attackTimer.write(writer);
             attackEntity.write(writer);
+            
+            if (wingmanCommands != null)
+            {
+                wingmanCommands.write(writer);
+            }
         }
         catch (IOException e)
         {
@@ -312,6 +319,11 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         }
         
         return false;
+    }
+
+    public void setWingman(WingmanMcuGroup wingmanCommands)
+    {
+        this.wingmanCommands = wingmanCommands;
     }
 
     public void addPlaneTarget(int targetPlaneIndex)

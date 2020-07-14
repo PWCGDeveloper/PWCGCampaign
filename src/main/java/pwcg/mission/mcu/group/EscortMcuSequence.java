@@ -136,11 +136,6 @@ public class EscortMcuSequence
         return cover;
     }
 
-    public void setCover(McuCover cover)
-    {
-        this.cover = cover;
-    }
-
     public McuTimer getCoverTimer()
     {
         return coverTimer;

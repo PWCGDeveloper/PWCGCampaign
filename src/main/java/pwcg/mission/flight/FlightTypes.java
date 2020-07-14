@@ -21,20 +21,22 @@ public enum FlightTypes
     BALLOON_DEFENSE(FlightTypeCategory.FIGHTER),
     
     GROUND_ATTACK(FlightTypeCategory.ATTACK),
-    BOMB(FlightTypeCategory.ATTACK),
-    LOW_ALT_BOMB(FlightTypeCategory.ATTACK),
-    DIVE_BOMB(FlightTypeCategory.ATTACK),
-    CONTACT_PATROL(FlightTypeCategory.ATTACK),
-    ARTILLERY_SPOT(FlightTypeCategory.ATTACK),
-    CARGO_DROP(FlightTypeCategory.ATTACK),
-    PARATROOP_DROP(FlightTypeCategory.ATTACK),
+    
+    BOMB(FlightTypeCategory.BOMB),
+    LOW_ALT_BOMB(FlightTypeCategory.BOMB),
+    DIVE_BOMB(FlightTypeCategory.BOMB),
+    
+    CONTACT_PATROL(FlightTypeCategory.SINGLE),
+    ARTILLERY_SPOT(FlightTypeCategory.SINGLE),
+    RECON(FlightTypeCategory.SINGLE),
+    SPY_EXTRACT(FlightTypeCategory.SINGLE),
+
+    CARGO_DROP(FlightTypeCategory.TRANSPORT),
+    PARATROOP_DROP(FlightTypeCategory.TRANSPORT),
+    TRANSPORT(FlightTypeCategory.TRANSPORT),
+    FERRY(FlightTypeCategory.TRANSPORT),
 
     STRATEGIC_BOMB(FlightTypeCategory.STRATEGIC),
-
-    TRANSPORT(FlightTypeCategory.OTHER),
-    RECON(FlightTypeCategory.OTHER),
-    SPY_EXTRACT(FlightTypeCategory.OTHER),
-    FERRY(FlightTypeCategory.OTHER),
     
     GROUND_FORCES(FlightTypeCategory.INVALID),
     ANY(FlightTypeCategory.INVALID);
