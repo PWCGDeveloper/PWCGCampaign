@@ -38,13 +38,13 @@ import pwcg.mission.MissionHumanParticipants;
 
 public class CampaignHomeAction
 {
-    private CampaignHomeScreen parent = null;
+    private CampaignHomeScreen campaignHome = null;
     private Campaign campaign = null;
 
     public CampaignHomeAction(CampaignHomeScreen parent, Campaign campaign) 
     {
         super();
-        this.parent = parent;
+        this.campaignHome = parent;
         this.campaign = campaign;
     }
     
@@ -166,7 +166,7 @@ public class CampaignHomeAction
     private void showAddHumanPilot() throws PWCGException
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
-        CampaignNewPilotScreen addPilotDisplay = new CampaignNewPilotScreen(campaign, parent, null);
+        CampaignNewPilotScreen addPilotDisplay = new CampaignNewPilotScreen(campaign, campaignHome, null);
         addPilotDisplay.makePanels();        
         CampaignGuiContextManager.getInstance().pushToContextStack(addPilotDisplay);
     }
@@ -176,21 +176,21 @@ public class CampaignHomeAction
     	MusicManager.playMissionBriefingTheme();
     	SoundManager.getInstance().playSound("Typewriter.WAV");
 
-        BriefingDescriptionScreen briefingMap = new BriefingDescriptionScreen(parent, mission);
+        BriefingDescriptionScreen briefingMap = new BriefingDescriptionScreen(campaignHome, mission);
         briefingMap.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(briefingMap);
     }
 
     private void showCoopPersonaChooser() throws PWCGException 
     {
-    	BriefingCoopPersonaChooser coopPersonaChooser = new BriefingCoopPersonaChooser(campaign, parent);
+    	BriefingCoopPersonaChooser coopPersonaChooser = new BriefingCoopPersonaChooser(campaign, campaignHome);
     	coopPersonaChooser.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(coopPersonaChooser);
     }
 
     private void showChangeReferencePilot() throws PWCGException
     {
-        CampaignReferencePilotSelectorScreen referencePilotSelector = new CampaignReferencePilotSelectorScreen(campaign, parent);
+        CampaignReferencePilotSelectorScreen referencePilotSelector = new CampaignReferencePilotSelectorScreen(campaign, campaignHome);
         referencePilotSelector.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(referencePilotSelector);
     }
@@ -199,7 +199,7 @@ public class CampaignHomeAction
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
         SquadronMember referencePlayer = campaign.findReferencePlayer();
-        CampaignTransferScreen transferDisplay = new CampaignTransferScreen(parent, null, referencePlayer);
+        CampaignTransferScreen transferDisplay = new CampaignTransferScreen(campaignHome, referencePlayer);
         transferDisplay.makePanels();        
         CampaignGuiContextManager.getInstance().pushToContextStack(transferDisplay);
     }
@@ -208,7 +208,7 @@ public class CampaignHomeAction
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
 
-        CampaignLeaveScreen leaveDisplay = new CampaignLeaveScreen(parent);
+        CampaignLeaveScreen leaveDisplay = new CampaignLeaveScreen(campaignHome);
         leaveDisplay.makePanels();
         
         CampaignGuiContextManager.getInstance().pushToContextStack(leaveDisplay);
@@ -222,7 +222,7 @@ public class CampaignHomeAction
         {
             AARCoordinator.getInstance().aarPreliminary(campaign);
             
-            DebriefMissionDescriptionScreen combatReportDisplay = new DebriefMissionDescriptionScreen(campaign, parent);
+            DebriefMissionDescriptionScreen combatReportDisplay = new DebriefMissionDescriptionScreen(campaign, campaignHome);
             combatReportDisplay.makePanels();
             CampaignGuiContextManager.getInstance().pushToContextStack(combatReportDisplay);
         }
@@ -246,7 +246,7 @@ public class CampaignHomeAction
     {
         SoundManager.getInstance().playSound("BookOpen.WAV");
 
-        CampaignCoopAdminScreen adminCoopPilotDisplay = new CampaignCoopAdminScreen(parent, campaign);
+        CampaignCoopAdminScreen adminCoopPilotDisplay = new CampaignCoopAdminScreen(campaignHome, campaign);
         adminCoopPilotDisplay.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(adminCoopPilotDisplay);
@@ -321,7 +321,7 @@ public class CampaignHomeAction
                 Ace ace = (Ace)pilot;
                 squad =  ace.determineSquadron();;
             }
-            CampaignPilotScreen pilotPanel = new CampaignPilotScreen(campaign, squad, pilot, parent);
+            CampaignPilotScreen pilotPanel = new CampaignPilotScreen(campaign, squad, pilot, campaignHome);
             pilotPanel.makePanels();
             
             CampaignGuiContextManager.getInstance().pushToContextStack(pilotPanel);

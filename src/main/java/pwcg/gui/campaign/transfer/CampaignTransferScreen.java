@@ -55,8 +55,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 {
     private static final long serialVersionUID = 1L;
 
-    private CampaignHomeScreen parent = null;
-    private CampaignCoopAdminScreen alternateParent = null;
+    private CampaignHomeScreen campaignHome = null;
 	private Campaign campaign = null;	
 	private SquadronMember squadronMemberToTransfer = null;	
     private JComboBox<String> cbService;
@@ -66,14 +65,13 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 	private JButton acceptButton = null;
     private ArmedService service = null;
 
-	public CampaignTransferScreen  (CampaignHomeScreen parent, CampaignCoopAdminScreen alternateParent, SquadronMember squadronMemberToTransfer)
+	public CampaignTransferScreen  (CampaignHomeScreen parent, SquadronMember squadronMemberToTransfer)
 	{
         super("");
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
-		this.parent = parent;
-        this.alternateParent = alternateParent;
+		this.campaignHome = parent;
         this.squadronMemberToTransfer = squadronMemberToTransfer;
 		this.campaign = PWCGContext.getInstance().getCampaign();
 	}
@@ -466,8 +464,15 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
             }
             else if (action.equalsIgnoreCase("Accept Transfer"))
             {
-                acceptTransfer();
                 SoundManager.getInstance().playSound("Stapling.WAV");
+                if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
+                {
+                    acceptSinglePlayerTransfer();
+                }
+                else
+                {
+                    acceptCoopPlayerTransfer();
+                }
             }
             else if (action.equalsIgnoreCase("Reject Transfer"))
             {
@@ -482,16 +487,18 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 		}
 	}
 
-    public ArmedService getService()
-    {
-        return this.service;
-    }
-
-    private void acceptTransfer() throws PWCGException 
+    private void acceptSinglePlayerTransfer() throws PWCGException 
     {        
         SoundManager.getInstance().playSound("Stapling.WAV");
         TransferEvent transferEvent = transferPlayer();        
-        passTimeForSInglePlayerTransfer(transferEvent);
+        campaignHome.campaignTimePassedForTransfer(transferEvent.getLeaveTime(), transferEvent);
+    }
+    
+    private void acceptCoopPlayerTransfer() throws PWCGException
+    {
+        transferPlayer();
+        campaign.write();
+        CampaignCoopAdminScreen.redisplayUpdatedCoopAdminScreen(campaignHome);
     }
 
     private TransferEvent transferPlayer() throws PWCGException
@@ -501,21 +508,5 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         Squadron newSquadron = PWCGContext.getInstance().getSquadronManager().getSquadronByName(newSquadName, campaign.getDate());
         TransferEvent transferEvent = transferHandler.transferPlayer(squadronMemberToTransfer.determineSquadron(), newSquadron);
         return transferEvent;
-    }
-
-    private void passTimeForSInglePlayerTransfer(TransferEvent transferEvent) throws PWCGException
-    {
-        if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
-        {
-            parent.campaignTimePassedForTransfer(transferEvent.getLeaveTime(), transferEvent);
-        }
-        else
-        {
-            campaign.write();
-            if (alternateParent != null)
-            {
-                alternateParent.makePanels();
-            }
-        }
     }
 }

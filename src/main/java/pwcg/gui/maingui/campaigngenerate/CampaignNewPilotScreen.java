@@ -36,7 +36,7 @@ public class CampaignNewPilotScreen extends ImageResizingPanel implements Action
     private Campaign campaign;
     private JButton newPilotCreateButton;
     private NewPilotDataEntryGUI dataEntry;
-    private CampaignHomeScreen parent = null;
+    private CampaignHomeScreen campaignHome = null;
     private CampaignCoopAdminScreen alternateParent = null;
     
     private NewPilotGeneratorDO newPilotGeneratorDO = new NewPilotGeneratorDO();
@@ -49,7 +49,7 @@ public class CampaignNewPilotScreen extends ImageResizingPanel implements Action
         this.setOpaque(false);
         
         this.campaign = campaign;
-        this.parent = parent;
+        this.campaignHome = parent;
         this.alternateParent = alternateParent;        
     }
 
@@ -124,14 +124,13 @@ public class CampaignNewPilotScreen extends ImageResizingPanel implements Action
             else if (action.equalsIgnoreCase("Create Pilot"))
             {
                 createPilot();
-                if (parent != null)
+                if (alternateParent != null)
                 {
-                    parent.createCampaignHomeContext();
-                    CampaignGuiContextManager.getInstance().popFromContextStack();
+                    CampaignCoopAdminScreen.redisplayUpdatedCoopAdminScreen(campaignHome);
                 }
-                else if (alternateParent != null)
+                else if (campaignHome != null)
                 {
-                    alternateParent.makePanels();
+                    campaignHome.createCampaignHomeContext();
                     CampaignGuiContextManager.getInstance().popFromContextStack();
                 }
             }

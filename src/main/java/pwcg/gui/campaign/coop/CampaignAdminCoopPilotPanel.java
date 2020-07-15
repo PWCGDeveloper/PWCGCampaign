@@ -73,12 +73,6 @@ public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements A
         JPanel recordListPanel = new JPanel(new GridLayout(0, 4));
         recordListPanel.setOpaque(false);
 
-        JPanel recordListHolderPanel = new JPanel();
-        recordListHolderPanel.setOpaque(false);
-        recordListHolderPanel.add(recordListPanel, BorderLayout.NORTH);
-
-        JScrollPane planeListScroll = ScrollBarWrapper.makeScrollPane(recordListHolderPanel);
-
         for (CoopDisplayRecord coopDisplayRecord : coopDisplayRecords)
         {
             JRadioButton pilotSelector = makeRadioButton(coopDisplayRecord);
@@ -91,10 +85,14 @@ public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements A
             recordListPanel.add(squadronNameLabel);
         }
 
-        JPanel centerPanel = new JPanel();
-        centerPanel.setOpaque(false);
-        centerPanel.add(planeListScroll, BorderLayout.CENTER);
-        return centerPanel;
+
+        JScrollPane planeListScroll = ScrollBarWrapper.makeScrollPane(recordListPanel);
+        
+        JPanel recordListHolderPanel = new JPanel();
+        recordListHolderPanel.setOpaque(false);
+        recordListHolderPanel.add(planeListScroll, BorderLayout.NORTH);
+
+        return recordListHolderPanel;
     }
 
     private JRadioButton makeRadioButton(CoopDisplayRecord coopDisplayRecord) throws PWCGException

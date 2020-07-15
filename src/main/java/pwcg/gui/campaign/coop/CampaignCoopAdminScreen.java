@@ -29,22 +29,21 @@ import pwcg.gui.maingui.campaigngenerate.CampaignNewPilotScreen;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
-import pwcg.gui.utils.SpacerPanelFactory;
 
 public class CampaignCoopAdminScreen extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     private Campaign campaign;
     private CampaignAdminCoopPilotPanel coopPersonaInfoPanel;
-    private CampaignHomeScreen parent;
+    private CampaignHomeScreen campaignHome;
 
-    public CampaignCoopAdminScreen(CampaignHomeScreen parent, Campaign campaign)
+    public CampaignCoopAdminScreen(CampaignHomeScreen campaignHome, Campaign campaign)
     {
         super("");
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
-        this.parent = parent;
+        this.campaignHome = campaignHome;
         this.campaign = campaign;
     }
     
@@ -57,7 +56,6 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
 
             this.add(BorderLayout.WEST, makeNavigatePanel());
             this.add(BorderLayout.CENTER, makeCenterPanel());
-            this.add(BorderLayout.EAST, makeCoopAdminActionSelectPanel());
         }
         catch (Throwable e)
         {
@@ -75,29 +73,34 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
 
     public JPanel makeNavigatePanel() throws PWCGException  
     {
-        JPanel navPanel = new JPanel(new BorderLayout());
-        navPanel.setOpaque(false);
-
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
         JButton acceptButton = PWCGButtonFactory.makeMenuButton("Finished", "Finished", this);
         buttonPanel.add(acceptButton);
 
-        navPanel.add(buttonPanel, BorderLayout.NORTH);
+        for (int i = 0; i < 3; ++i)
+        {
+            JLabel space1 = PWCGButtonFactory.makeDummy();
+            buttonPanel.add(space1);
+        }
         
+        JPanel actionPanel = makeCoopAdminActionSelectPanel();
+
+        JPanel navPanel = new JPanel(new BorderLayout());
+        navPanel.setOpaque(false);
+        navPanel.add(buttonPanel, BorderLayout.NORTH);
+        navPanel.add(actionPanel, BorderLayout.CENTER);
+
         return navPanel;
     }
 
     public JPanel makeCoopAdminActionSelectPanel() throws PWCGException  
     {
-        JPanel actionSelectionPanel = new JPanel(new BorderLayout());
-        actionSelectionPanel.setOpaque(false);
 
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
-
         JLabel label = PWCGButtonFactory.makeMenuLabelLarge("Select Admin Action:");
         buttonPanel.add(label);
 
@@ -107,16 +110,15 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
         
         add (buttonPanel);
 
+        JPanel actionSelectionPanel = new JPanel(new BorderLayout());
+        actionSelectionPanel.setOpaque(false);
         actionSelectionPanel.add(buttonPanel, BorderLayout.NORTH);
 
         if (PWCGMonitorSupport.getFrameWidth() == MonitorSize.FRAME_LARGE)
         {
-            JPanel spacePanel = SpacerPanelFactory.makeDocumentSpacerPanel(2000);
-            
             JPanel actionPanel = new JPanel(new BorderLayout());
             actionPanel.setOpaque(false);
             actionPanel.add(actionSelectionPanel, BorderLayout.CENTER);
-            actionPanel.add(spacePanel, BorderLayout.WEST);
             
             return actionPanel;
         }
@@ -147,7 +149,7 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
             if (action.equalsIgnoreCase("Add Pilot"))
             {
                 SoundManager.getInstance().playSound("Typewriter.WAV");
-                CampaignNewPilotScreen addPilotDisplay = new CampaignNewPilotScreen(campaign, parent, this);
+                CampaignNewPilotScreen addPilotDisplay = new CampaignNewPilotScreen(campaign, campaignHome, this);
                 addPilotDisplay.makePanels();        
                 CampaignGuiContextManager.getInstance().pushToContextStack(addPilotDisplay);
             }
@@ -157,7 +159,7 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
                 if (pilot != null)
                 {
                     SoundManager.getInstance().playSound("Typewriter.WAV");
-                    CampaignTransferScreen transferDisplay = new CampaignTransferScreen(null, this, pilot);
+                    CampaignTransferScreen transferDisplay = new CampaignTransferScreen(campaignHome, pilot);
                     transferDisplay.makePanels();        
                     CampaignGuiContextManager.getInstance().pushToContextStack(transferDisplay);
                 }
@@ -173,7 +175,8 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
                         SoundManager.getInstance().playSound("Typewriter.WAV");
                         pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_RETIRED, campaign.getDate(), null);
                         campaign.write();
-                        this.makePanels();
+                        
+                        redisplayUpdatedCoopAdminScreen(campaignHome);
                     }
                 }
             }
@@ -183,6 +186,14 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
             PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
+    }
+
+    public static  void redisplayUpdatedCoopAdminScreen(CampaignHomeScreen campaignHome) throws PWCGException
+    {
+        CampaignGuiContextManager.getInstance().backToCampaignHome();
+        CampaignCoopAdminScreen adminCoopPilotDisplay = new CampaignCoopAdminScreen(campaignHome, campaignHome.getCampaign());
+        adminCoopPilotDisplay.makePanels();
+        CampaignGuiContextManager.getInstance().pushToContextStack(adminCoopPilotDisplay);
     }
     
     private SquadronMember getSquadronMemberForSelectedPilot() throws PWCGException
@@ -195,6 +206,12 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
         }
         
         return null;
+    }
+    
+    public void refresh()
+    {
+        this.revalidate();
+        this.repaint();
     }
 }
 
