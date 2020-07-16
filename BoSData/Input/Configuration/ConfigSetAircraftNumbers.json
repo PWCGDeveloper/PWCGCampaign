@@ -37,7 +37,7 @@
       "help": "Minimum number of aircraft"
     },
     "PatrolAdditional": {
-      "value": "2",
+      "value": "4",
       "label": "Patrol Additional",
       "help": "Maximum additional aircraft"
     },
