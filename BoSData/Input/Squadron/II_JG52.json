@@ -84,6 +84,16 @@
       "country": "Germany",
       "category": "Squadron",
       "definedInGame": false
+    },
+    {
+      "skinName": "bf109k4_skin_04",
+      "planeType": "bf109k4",
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 20112052,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": true
     }
   ],
   "squadHistory": {

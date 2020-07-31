@@ -17,7 +17,18 @@
 		"19450310": "Frankfurt/Rhein-Main",
 		"19450404": "Hopsten"
 	},
-	"skins": [],
+	"skins": [
+		{
+			"skinName": "me262a_skin_06",
+			"planeType": "me262a",
+			"startDate": "19410101",
+			"endDate": "19450601",
+			"squadId": 20131051,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": true
+		}
+	],
 	"squadHistory": {
 		"squadHistoryEntries": []
 	},

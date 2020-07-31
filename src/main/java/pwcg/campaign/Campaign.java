@@ -27,6 +27,7 @@ import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
+import pwcg.mission.options.MapSeasonalParameters.Season;
 
 public class Campaign
 {
@@ -260,6 +261,11 @@ public class Campaign
         }
 
         return true;
+    }
+
+    public Season getSeason()
+    {
+        return PWCGContext.getInstance().getCurrentMap().getMapWeather().getSeason(getDate());
     }
 
     public SquadronMember findReferencePlayer() throws PWCGException

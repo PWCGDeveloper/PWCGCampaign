@@ -24,9 +24,19 @@
 	},
 	"skins": [
 		{
-			"skinName": "FW190A3_SKIN_13",
+			"skinName": "fw190a3_skin_05",
 			"planeType": "fw190a3",
 			"startDate": "19411101",
+			"endDate": "19450601",
+			"squadId": 20111001,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": true
+		},
+		{
+			"skinName": "fw190a5_skin_10",
+			"planeType": "fw190a5",
+			"startDate": "19400801",
 			"endDate": "19450601",
 			"squadId": 20111001,
 			"country": "Germany",

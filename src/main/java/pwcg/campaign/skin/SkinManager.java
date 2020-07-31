@@ -12,7 +12,6 @@ import pwcg.core.utils.PWCGLogger.LogLevel;
 public class SkinManager 
 {
     private Map<String, SkinsForPlane> skinsForPlanes = new HashMap<>();
-    private SkinsInUse skinsInUse = new SkinsInUse();
 		
     public SkinManager ()
 	{
@@ -22,7 +21,6 @@ public class SkinManager
     {
         SkinLoader skinLoader = new SkinLoader();
         skinsForPlanes = skinLoader.loadPwcgSkins();
-        skinsInUse = new SkinsInUse();
     }
 
     public List<Skin> getSquadronSkinsByPlaneSquadronDate(String planeName, int squadronId, Date date)
@@ -71,7 +69,6 @@ public class SkinManager
             skinsForSquadronPlaneDate = new ArrayList<>(configuredSkins.getSkins().values());
             skinsForSquadronPlaneDate = SkinFilter.skinFilterSquadron(skinsForSquadronPlaneDate, squadronId);
             skinsForSquadronPlaneDate = SkinFilter.skinFilterDate(skinsForSquadronPlaneDate, date);
-            skinsForSquadronPlaneDate = SkinFilter.skinFilterInUse(skinsForSquadronPlaneDate, skinsForPlanes.get(planeName), skinsInUse);
         }
         else
         {
@@ -91,7 +88,6 @@ public class SkinManager
         	skinsForCountryPlaneDate = new ArrayList<>(configuredSkins.getSkins().values());
         	skinsForCountryPlaneDate = SkinFilter.skinFilterSquadron(skinsForCountryPlaneDate, Skin.PERSONAL_SKIN);
         	skinsForCountryPlaneDate = SkinFilter.skinFilterDate(skinsForCountryPlaneDate, date);
-        	skinsForCountryPlaneDate = SkinFilter.skinFilterInUse(skinsForCountryPlaneDate, skinsForPlanes.get(planeName), skinsInUse);
         	skinsForCountryPlaneDate = SkinFilter.skinFilterCountry(skinsForCountryPlaneDate, countryName);
         }
         else
@@ -197,16 +193,6 @@ public class SkinManager
         
         return looseSkinsForPlane;
     }
-
-	public void addSkinInUse(Skin skin) 
-	{
-        skinsInUse.addSkinInUse(skin);
-	}
-	
-    public void clearSkinsInUse() 
-    {
-        skinsInUse.clearSkinsInUse();
-    }
     
     public Map<String, List<Skin>> getAllSkinsByPlane()
     {
@@ -243,10 +229,4 @@ public class SkinManager
 	{
 		return skinsForPlanes;
 	}
-
-    public SkinsInUse getSkinsInUse()
-    {
-        return skinsInUse;
-    }
-	
 }

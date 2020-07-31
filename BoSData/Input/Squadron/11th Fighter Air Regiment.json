@@ -61,6 +61,16 @@
   },
   "skins": [
     {
+      "skinName": "lagg3s29_skin_04",
+      "planeType": "lagg3s29",
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 10111011,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": true
+    },
+    {
       "skinName": "11th Fighter Air Regiment",
       "planeType": "yak1s69",
       "startDate": "19430302",
@@ -68,7 +78,7 @@
       "squadId": 10111011,
       "country": "Russia",
       "category": "Squadron",
-      "definedInGame": true
+      "definedInGame": false
     },
     {
       "skinName": "11th Fighter Air Regiment",
@@ -78,7 +88,7 @@
       "squadId": 10111011,
       "country": "Russia",
       "category": "Squadron",
-      "definedInGame": true
+      "definedInGame": false
     }
   ],
   "squadHistory": {

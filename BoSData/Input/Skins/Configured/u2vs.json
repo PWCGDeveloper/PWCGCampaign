@@ -1,0 +1,49 @@
+{
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"u2vs_skin_00": {
+			"skinName": "u2vs_skin_00",
+			"planeType": "u2vs",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"u2vs_skin_01": {
+			"skinName": "u2vs_skin_01",
+			"planeType": "u2vs",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		},
+		"u2vs_skin_02": {
+			"skinName": "u2vs_skin_02",
+			"planeType": "u2vs",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"u2vs_skin_03": {
+			"skinName": "u2vs_skin_03",
+			"planeType": "u2vs",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		}
+	}
+}

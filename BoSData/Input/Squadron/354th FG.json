@@ -8,16 +8,6 @@
     {
       "archType": "p51",
       "squadronIntroduction": "19440901",
-      "squadronWithdrawal": "19441130"
-    },
-    {
-      "archType": "p47",
-      "squadronIntroduction": "19441113",
-      "squadronWithdrawal": "19450228"
-    },
-    {
-      "archType": "p51",
-      "squadronIntroduction": "19450214",
       "squadronWithdrawal": "19450601"
     }
   ],
@@ -32,7 +22,18 @@
     "19450310": "PetitBrogel",
     "19450404": "Eudenbach/Asbach"
   },
-  "skins": [],
+  "skins": [
+		{
+			"skinName": "p51d15_skin_12",
+			"planeType": "p51d15",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102362377,
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": true
+		}
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

@@ -7,12 +7,12 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
-import pwcg.mission.MissionSkinGenerator;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.IVirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.IWaypointPackage;
 import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointPackage;
+import pwcg.mission.skin.MissionSkinGenerator;
 import pwcg.mission.target.TargetDefinition;
 
 public abstract class Flight implements IFlight
@@ -104,7 +104,7 @@ public abstract class Flight implements IFlight
     public void finalizeFlight() throws PWCGException
     {
         finalizeCoreFlight();        
-        // finalizeWingmenForFlight();
+        finalizeWingmenForFlight();
         finalizeLinkedFlights();
         finalizeVirtualFlights();        
         finalizeSkinsForFlight();
@@ -119,8 +119,8 @@ public abstract class Flight implements IFlight
 
     private void finalizeWingmenForFlight() throws PWCGException
     {
-        WingmanBuilder wingmanBuilder = new WingmanBuilder(this);
-        wingmanBuilder.buildWingmenForFlight();
+        //WingmanBuilder wingmanBuilder = new WingmanBuilder(this);
+        //wingmanBuilder.buildWingmenForFlight();
     }
 
     private void finalizeVirtualFlights() throws PWCGException
@@ -142,8 +142,7 @@ public abstract class Flight implements IFlight
 
     private void finalizeSkinsForFlight() throws PWCGException
     {
-        MissionSkinGenerator skinGenerator = new MissionSkinGenerator();
-        skinGenerator.assignSkinsForFlight(this);
+        MissionSkinGenerator.assignSkinsForFlight(this);
     }
 
     public IVirtualWaypointPackage getVirtualWaypointPackage()

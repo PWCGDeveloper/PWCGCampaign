@@ -54,7 +54,28 @@
     "19450401": "ef_Aachen",
     "19450501": "ef_Stormede"
   },
-  "skins": [],
+  "skins": [
+		{
+			"skinName": "pe2s35_skin_10",
+			"planeType": "pe2s35",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 10131095,
+			"country": "Russia",
+			"category": "Squadron",
+			"definedInGame": true
+		},
+		{
+			"skinName": "pe2s87_skin_10",
+			"planeType": "pe2s87",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": 10131010,
+			"country": "Russia",
+			"category": "Squadron",
+			"definedInGame": true
+		}
+  ],
   "squadHistory": {
     "squadHistoryEntries": [
       {

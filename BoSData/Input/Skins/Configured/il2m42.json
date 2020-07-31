@@ -1,4 +1,126 @@
 {
-  "skinSetType": "SKIN_CONFIGURED",
-  "skins": {}
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"il2m42_skin_00": {
+			"skinName": "il2m42_skin_00",
+			"planeType": "il2m42",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"il2m42_skin_01": {
+			"skinName": "il2m42_skin_01",
+			"planeType": "il2m42",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		},
+		"il2m42_skin_02": {
+			"skinName": "il2m42_skin_02",
+			"planeType": "il2m42",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"il2m42_skin_03": {
+			"skinName": "il2m42_skin_03",
+			"planeType": "il2m42",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		},
+		"il2m42_skin_04": {
+			"skinName": "il2m42_skin_04",
+			"planeType": "il2m42",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"il2m42_skin_05": {
+			"skinName": "il2m42_skin_05",
+			"planeType": "il2m42",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		},
+		"il2m42_skin_06": {
+			"skinName": "il2m42_skin_06",
+			"planeType": "il2m42",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 10121062,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"il2m42_skin_07": {
+			"skinName": "il2m42_skin_07",
+			"planeType": "il2m42",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		},
+		"il2m42_skin_08": {
+			"skinName": "il2m42_skin_08",
+			"planeType": "il2m42",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		},
+		"il2m42_skin_09": {
+			"skinName": "il2m42_skin_09",
+			"planeType": "il2m42",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		},
+		"il2m42_skin_10": {
+			"skinName": "il2m42_skin_10",
+			"planeType": "il2m42",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		}
+	}
 }

@@ -21,7 +21,18 @@
     "19450310": "Heesch",
     "19450404": "Coesfeld-Lette"
   },
-  "skins": [],
+  "skins": [
+		{
+			"skinName": "tempestmkvs2_skin_05",
+			"planeType": "tempestmkvs2",
+			"startDate": "19440601",
+			"endDate": "19450601",
+			"squadId": 103083182,
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": true
+		}
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

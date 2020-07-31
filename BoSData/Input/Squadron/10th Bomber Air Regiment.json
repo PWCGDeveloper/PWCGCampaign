@@ -45,41 +45,21 @@
   },
   "skins": [
     {
-      "skinName": "PE2S87_SKIN_08",
-      "planeType": "pe2s87",
-      "startDate": "19420101",
-      "endDate": "19420331",
-      "squadId": 10131797,
+      "skinName": "pe2s35_skin_03",
+      "planeType": "pe2s35",
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 10131010,
       "country": "Russia",
       "category": "Squadron",
       "definedInGame": true
     },
     {
-      "skinName": "PE2S87_SKIN_09",
+      "skinName": "pe2s87_skin_04",
       "planeType": "pe2s87",
-      "startDate": "19420101",
-      "endDate": "19421101",
-      "squadId": 10131797,
-      "country": "Russia",
-      "category": "Squadron",
-      "definedInGame": true
-    },
-    {
-      "skinName": "PE2S87_SKIN_08",
-      "planeType": "pe2s87",
-      "startDate": "19421101",
-      "endDate": "19430331",
-      "squadId": 10131797,
-      "country": "Russia",
-      "category": "Squadron",
-      "definedInGame": true
-    },
-    {
-      "skinName": "PE2S87_SKIN_09",
-      "planeType": "pe2s87",
-      "startDate": "19430331",
-      "endDate": "19431101",
-      "squadId": 10131797,
+      "startDate": "19440101",
+      "endDate": "19450601",
+      "squadId": 10131010,
       "country": "Russia",
       "category": "Squadron",
       "definedInGame": true

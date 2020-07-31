@@ -1,4 +1,71 @@
 {
   "skinSetType": "SKIN_CONFIGURED",
-  "skins": {}
+  "skins": {
+      "fw190a5_skin_00": {
+            "skinName": "fw190a5_skin_00",
+            "planeType": "fw190a5",
+			"startDate": "19400801",
+			"endDate": "19450601",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false
+     },
+      "fw190a5_skin_01": {
+            "skinName": "fw190a5_skin_01",
+            "planeType": "fw190a5",
+			"startDate": "19400801",
+			"endDate": "19450601",
+            "squadId": -2,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": true
+     },
+     "fw190a5_skin_05": {
+            "skinName": "fw190a5_skin_05",
+            "planeType": "fw190a5",
+			"startDate": "19400801",
+			"endDate": "19450601",
+            "squadId": -1,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false
+     },
+     "fw190a5_skin_07": {
+            "skinName": "fw190a5_skin_07",
+            "planeType": "fw190a5",
+			"startDate": "19400801",
+			"endDate": "19450601",
+            "squadId": -1,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false
+     },
+     "fw190a5_skin_08": {
+            "skinName": "fw190a5_skin_08",
+            "planeType": "fw190a5",
+			"startDate": "19400801",
+			"endDate": "19450601",
+            "squadId": -1,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false
+     },
+     "fw190a5_skin_09": {
+            "skinName": "fw190a5_skin_09",
+            "planeType": "fw190a5",
+			"startDate": "19400801",
+			"endDate": "19450601",
+            "squadId": -1,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true,
+            "winter": false
+     }
+  }
 }

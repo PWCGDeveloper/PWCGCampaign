@@ -38,7 +38,18 @@
   "aiSkillLevel": "ACE",
   "skill": 1,
   "commonSense": 0,
-  "skins": [],
+  "skins": [
+		{
+			"skinName": "spitfiremkixe_skin_14",
+			"planeType": "spitfiremkixe",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "",
+			"category": "",
+			"definedInGame": true
+		}
+  ],
   "victories": [
     {
       "date": "19410626",

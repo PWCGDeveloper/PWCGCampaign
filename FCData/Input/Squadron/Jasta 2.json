@@ -24,7 +24,18 @@
   "airfields": {
     "19170801": "Douai North"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "albatrosd5_skin_05",
+      "planeType": "albatrosd5",
+      "startDate": "19140801",
+      "endDate": "19180319",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": true
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

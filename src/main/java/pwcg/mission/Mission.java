@@ -11,6 +11,8 @@ import pwcg.campaign.api.IMissionFile;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.io.json.CampaignMissionIOJson;
+import pwcg.campaign.skin.Skin;
+import pwcg.campaign.skin.SkinsInUse;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
@@ -49,6 +51,7 @@ public class Mission
     private MissionAssociateFlightBuilder missionAssociateFlightBuilder = new MissionAssociateFlightBuilder();
     private MissionFrontLineIconBuilder missionFrontLines;
     private MissionEffects missionEffects = new MissionEffects();
+    private SkinsInUse skinsInUse = new SkinsInUse();
     private VehicleSetBuilderComprehensive vehicleSetBuilder = new VehicleSetBuilderComprehensive();
     private boolean isFinalized = false;
     private MissionProfile missionProfile = MissionProfile.DAY_TACTICAL_MISSION;
@@ -96,8 +99,6 @@ public class Mission
         PWCGLogger.eraseLog();
         MissionStringHandler subtitleHandler = MissionStringHandler.getInstance();
         subtitleHandler.clear();
-
-        PWCGContext.getInstance().getSkinManager().clearSkinsInUse();
 
         missionGroundUnitManager = new MissionGroundUnitResourceManager();
         missionGroundUnitBuilder = new MissionGroundUnitBuilder(campaign, this);
@@ -401,5 +402,15 @@ public class Mission
     public List<StopAttackingNearAirfieldSequence> getStopSequenceForMission()
     {
         return stopSequenceForMission;
+    }
+
+    public void addSkinInUse(Skin skin)
+    {
+        skinsInUse.addSkinInUse(skin);        
+    }
+
+    public SkinsInUse getSkinsInUse()
+    {
+        return skinsInUse;
     }
 }

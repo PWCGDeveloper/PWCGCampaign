@@ -1,4 +1,49 @@
 {
-  "skinSetType": "SKIN_CONFIGURED",
-  "skins": {}
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"pe2s35_skin_00": {
+			"skinName": "pe2s35_skin_00",
+			"planeType": "pe2s35",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"pe2s35_skin_01": {
+			"skinName": "pe2s35_skin_01",
+			"planeType": "pe2s35",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		},
+		"pe2s35_skin_02": {
+			"skinName": "pe2s35_skin_02",
+			"planeType": "pe2s35",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"pe2s35_skin_05": {
+			"skinName": "pe2s35_skin_05",
+			"planeType": "pe2s35",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		}
+	}
 }

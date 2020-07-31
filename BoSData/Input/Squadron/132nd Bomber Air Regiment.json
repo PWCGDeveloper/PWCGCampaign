@@ -54,7 +54,29 @@
     "19450401": "ef_Arnhem Deelen",
     "19450501": "ef_Schijndel"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "pe2s35_skin_06",
+      "planeType": "pe2s35",
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 10131132,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": true
+    },
+    {
+      "skinName": "pe2s87_skin_08",
+      "planeType": "pe2s87",
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 10131010,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": true
+    }
+    
+  ],
   "squadHistory": {
     "squadHistoryEntries": [
       {

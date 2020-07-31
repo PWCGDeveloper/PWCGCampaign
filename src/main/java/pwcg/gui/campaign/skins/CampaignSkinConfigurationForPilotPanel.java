@@ -530,12 +530,6 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
         return label;
     }
 
-    
-    /**
-     * @param buttonText
-     * @return
-     * @throws PWCGException 
-     */
     private JRadioButton makeRadioButton(String buttonText, String actionCommand, Color fgColor) throws PWCGException 
     {
         Font font = PWCGMonitorFonts.getPrimaryFont();

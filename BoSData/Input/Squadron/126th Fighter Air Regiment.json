@@ -61,7 +61,7 @@
   },
   "skins": [
     {
-      "skinName": "P40E1_SKIN_01",
+      "skinName": "p40e1_skin_01",
       "planeType": "p40e1",
       "startDate": "19411101",
       "endDate": "19420315",
@@ -71,7 +71,7 @@
       "definedInGame": true
     },
     {
-      "skinName": "P40E1_SKIN_02",
+      "skinName": "p40e1_skin_02",
       "planeType": "p40e1",
       "startDate": "19420315",
       "endDate": "19421101",
@@ -81,7 +81,7 @@
       "definedInGame": true
     },
     {
-      "skinName": "P40E1_SKIN_05",
+      "skinName": "p40e1_skin_05",
       "planeType": "p40e1",
       "startDate": "19421101",
       "endDate": "19430315",
@@ -91,7 +91,7 @@
       "definedInGame": true
     },
     {
-      "skinName": "P40E1_SKIN_04",
+      "skinName": "p40e1_skin_04",
       "planeType": "p40e1",
       "startDate": "19430315",
       "endDate": "19450601",

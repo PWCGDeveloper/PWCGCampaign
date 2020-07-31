@@ -372,7 +372,6 @@ public class PwcgSkinConfigurationAnalysisScreen extends ImageResizingPanel impl
 
         for (String planeType: selectionBoxes.keySet())
         {
-            // The map eliminates duplicates
             Map<String, MissingSkin> selectedMissingSkinsForPlane = new TreeMap<String, MissingSkin>();
             
             JCheckBox selectionBox = selectionBoxes.get(planeType);

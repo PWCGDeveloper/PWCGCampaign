@@ -1,64 +1,85 @@
 {
-  "country": "USA",
-  "squadronId": 102373410,
-  "name": "373rd Fighter Group",
-  "fileName": "373rd FG.json",
-  "skill": 65,
-  "planeAssignments": [
-    {
-      "archType": "p47",
-      "squadronIntroduction": "19440901",
-      "squadronWithdrawal": "19450601"
-    }
-  ],
-  "airfields": {
-    "19441001": "Bierset",
-    "19441101": "Bierset",
-    "19441220": "Bierset",
-    "19441225": "St.Trond",
-    "19441229": "St.Trond",
-    "19450207": "Ophoven",
-    "19450310": "Venlo",
-    "19450404": "Bonn-Hangelar_3960"
-  },
-  "skins": [],
-  "squadHistory": {
-    "squadHistoryEntries": []
-  },
-  "serviceId": 10102,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19420801",
-        "endDate": "19450601",
-        "weightedRoles": [
-          {
-            "role": "ROLE_RECON",
-            "weight": 5
-          },
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 50
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 50
-          }
-        ]
-      }
-    ]
-  },
-  "nightMissionOdds": {
-    "nightMissionPeriods": [
-      {
-        "startDate": "19440901",
-        "endDate": "19450601",
-        "nightMissionOdds": 5
-      }
-    ]
-  },
-  "conversionPeriods": [],
-  "callsigns": {
-    "19410801": "GRANITE"
-  }
+	"country": "USA",
+	"squadronId": 102373410,
+	"name": "373rd Fighter Group",
+	"fileName": "373rd FG.json",
+	"skill": 65,
+	"planeAssignments": [
+		{
+			"archType": "p47",
+			"squadronIntroduction": "19440901",
+			"squadronWithdrawal": "19450601"
+		}
+	],
+	"airfields": {
+		"19441001": "Bierset",
+		"19441101": "Bierset",
+		"19441220": "Bierset",
+		"19441225": "St.Trond",
+		"19441229": "St.Trond",
+		"19450207": "Ophoven",
+		"19450310": "Venlo",
+		"19450404": "Bonn-Hangelar_3960"
+	},
+	"skins": [
+		{
+			"skinName": "p47d22_skin_06",
+			"planeType": "p47d22",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102373410,
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": true
+		},
+		{
+			"skinName": "p47d28_skin_01",
+			"planeType": "p47d28",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102373410,
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": true
+		}
+	],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"serviceId": 10102,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19420801",
+				"endDate": "19450601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_RECON",
+						"weight": 5
+					},
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 50
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 50
+					}
+				]
+			}
+		]
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+			{
+				"startDate": "19440901",
+				"endDate": "19450601",
+				"nightMissionOdds": 5
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"callsigns": {
+		"19410801": "GRANITE"
+	}
 }

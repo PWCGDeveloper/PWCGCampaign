@@ -21,7 +21,28 @@
     "19450310": "Rips",
     "19450404": "Dortmund"
   },
-  "skins": [],
+  "skins": [
+		{
+			"skinName": "p47d22_skin_13",
+			"planeType": "p47d22",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102366389,
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": true
+		},
+		{
+			"skinName": "p47d27_skin_07",
+			"planeType": "p47d27",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102366389,
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": true
+		}		
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

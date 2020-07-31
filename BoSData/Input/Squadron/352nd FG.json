@@ -22,7 +22,18 @@
     "19450310": "Asch",
     "19450404": "Breitscheid"
   },
-  "skins": [],
+  "skins": [
+		{
+			"skinName": "p51d15_skin_11",
+			"planeType": "p51d15",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102352486,
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": true
+		}
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

@@ -415,7 +415,7 @@
       "commonSense": 0,
       "skins": [
         {
-          "skinName": "MIG3S24_SKIN_01",
+          "skinName": "mig3s24_skin_01",
           "planeType": "mig3s24",
           "startDate": "19411015",
           "endDate": "19420819",
@@ -425,7 +425,7 @@
           "definedInGame": false
         },
         {
-          "skinName": "LA5S8_SKIN_01",
+          "skinName": "la5s8_skin_01",
           "planeType": "la5s8",
           "startDate": "19420820",
           "endDate": "19421210",
@@ -435,7 +435,7 @@
           "definedInGame": false
         },
         {
-          "skinName": "YAK1S69_SKIN_08",
+          "skinName": "yak1s69_skin_08",
           "planeType": "yak1s69",
           "startDate": "19421211",
           "endDate": "19440930",

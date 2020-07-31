@@ -1,4 +1,115 @@
 {
-  "skinSetType": "SKIN_CONFIGURED",
-  "skins": {}
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"hs129b2_skin_00": {
+			"skinName": "hs129b2_skin_00",
+			"planeType": "hs129b2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"hs129b2_skin_01": {
+			"skinName": "hs129b2_skin_01",
+			"planeType": "hs129b2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		},
+		"hs129b2_skin_02": {
+			"skinName": "hs129b2_skin_02",
+			"planeType": "hs129b2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"hs129b2_skin_03": {
+			"skinName": "hs129b2_skin_03",
+			"planeType": "hs129b2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		},
+		"hs129b2_skin_04": {
+			"skinName": "hs129b2_skin_04",
+			"planeType": "hs129b2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"hs129b2_skin_05": {
+			"skinName": "hs129b2_skin_05",
+			"planeType": "hs129b2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"hs129b2_skin_06": {
+			"skinName": "hs129b2_skin_06",
+			"planeType": "hs129b2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"hs129b2_skin_09": {
+			"skinName": "hs129b2_skin_09",
+			"planeType": "hs129b2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		},
+		"hs129b2_skin_10": {
+			"skinName": "hs129b2_skin_10",
+			"planeType": "hs129b2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"hs129b2_skin_11": {
+			"skinName": "hs129b2_skin_11",
+			"planeType": "hs129b2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		}
+	}
 }

@@ -1,4 +1,115 @@
 {
-  "skinSetType": "SKIN_CONFIGURED",
-  "skins": {}
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"la5s8_skin_00": {
+			"skinName": "la5s8_skin_00",
+			"planeType": "la5s8",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"la5s8_skin_01": {
+			"skinName": "la5s8_skin_01",
+			"planeType": "la5s8",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		},
+		"la5s8_skin_04": {
+			"skinName": "la5s8_skin_04",
+			"planeType": "la5s8",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"la5s8_skin_03": {
+			"skinName": "la5s8_skin_03",
+			"planeType": "la5s8",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"la5s8_skin_05": {
+			"skinName": "la5s8_skin_05",
+			"planeType": "la5s8",
+			"startDate": "19400801",
+			"endDate": "19440601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"la5s8_skin_06": {
+			"skinName": "la5s8_skin_06",
+			"planeType": "la5s8",
+			"startDate": "19400801",
+			"endDate": "19440601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"la5s8_skin_08": {
+			"skinName": "la5s8_skin_08",
+			"planeType": "la5s8",
+			"startDate": "19400801",
+			"endDate": "19440601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"la5s8_skin_09": {
+			"skinName": "la5s8_skin_09",
+			"planeType": "la5s8",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"la5s8_skin_10": {
+			"skinName": "la5s8_skin_10",
+			"planeType": "la5s8",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		},
+		"la5s8_skin_11": {
+			"skinName": "la5s8_skin_11",
+			"planeType": "la5s8",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		}
+	}
 }

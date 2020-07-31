@@ -23,6 +23,16 @@
     "19450404": "Achmer"
   },
   "skins": [
+		{
+			"skinName": "me262a_skin_02",
+			"planeType": "me262a",
+			"startDate": "19410101",
+			"endDate": "19450601",
+			"squadId": 20131051,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": true
+		}
   ],
   "squadHistory": {
     "squadHistoryEntries": [

@@ -1,4 +1,82 @@
 {
   "skinSetType": "SKIN_CONFIGURED",
-  "skins": {}
+  "skins": {
+		"spitfiremkvb_skin_00": {
+			"skinName": "spitfiremkvb_skin_00",
+			"planeType": "spitfiremkvb",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"spitfiremkvb_skin_01": {
+			"skinName": "spitfiremkvb_skin_01",
+			"planeType": "spitfiremkvb",
+			"startDate": "19400801",
+			"endDate": "19440301",
+			"squadId": -2,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"spitfiremkvb_skin_04": {
+			"skinName": "spitfiremkvb_skin_04",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"spitfiremkvb_skin_09": {
+			"skinName": "spitfiremkvb_skin_09",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440601",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"spitfiremkvb_skin_05": {
+			"skinName": "spitfiremkvb_skin_05",
+			"planeType": "spitfiremkvb",
+			"startDate": "19400801",
+			"endDate": "19440301",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"spitfiremkvb_skin_08": {
+			"skinName": "spitfiremkvb_skin_08",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"spitfiremkvb_skin_03": {
+			"skinName": "spitfiremkvb_skin_03",
+			"planeType": "spitfiremkvb",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		}
+  }
 }

@@ -1,4 +1,93 @@
 {
-  "skinSetType": "SKIN_CONFIGURED",
-  "skins": {}
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"mc202s8_skin_00": {
+			"skinName": "mc202s8_skin_00",
+			"planeType": "mc202s8",
+			"startDate": "19400801",
+			"endDate": "19440301",
+			"squadId": -2,
+			"country": "Italy",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"mc202s8_skin_01": {
+			"skinName": "mc202s8_skin_01",
+			"planeType": "mc202s8",
+			"startDate": "19400801",
+			"endDate": "19440301",
+			"squadId": -2,
+			"country": "Italy",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		},
+		"mc202s8_skin_03": {
+			"skinName": "mc202s8_skin_03",
+			"planeType": "mc202s8",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Italy",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"mc202s8_skin_05": {
+			"skinName": "mc202s8_skin_05",
+			"planeType": "mc202s8",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Italy",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"mc202s8_skin_06": {
+			"skinName": "mc202s8_skin_06",
+			"planeType": "mc202s8",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Italy",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"mc202s8_skin_07": {
+			"skinName": "mc202s8_skin_07",
+			"planeType": "mc202s8",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Italy",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"mc202s8_skin_08": {
+			"skinName": "mc202s8_skin_08",
+			"planeType": "mc202s8",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Italy",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"mc202s8_skin_10": {
+			"skinName": "mc202s8_skin_10",
+			"planeType": "mc202s8",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Italy",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		}
+	}
 }

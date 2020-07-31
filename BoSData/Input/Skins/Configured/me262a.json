@@ -1,0 +1,104 @@
+{
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"me262a_skin_00": {
+			"skinName": "me262a_skin_00",
+			"planeType": "me262a",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"me262a_skin_01": {
+			"skinName": "me262a_skin_01",
+			"planeType": "me262a",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"me262a_skin_03": {
+			"skinName": "me262a_skin_03",
+			"planeType": "me262a",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"me262a_skin_04": {
+			"skinName": "me262a_skin_04",
+			"planeType": "me262a",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"me262a_skin_05": {
+			"skinName": "me262a_skin_05",
+			"planeType": "me262a",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"me262a_skin_07": {
+			"skinName": "me262a_skin_07",
+			"planeType": "me262a",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20111044,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"me262a_skin_08": {
+			"skinName": "me262a_skin_08",
+			"planeType": "me262a",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"me262a_skin_09": {
+			"skinName": "me262a_skin_09",
+			"planeType": "me262a",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"me262a_skin_10": {
+			"skinName": "me262a_skin_10",
+			"planeType": "me262a",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		}
+	}
+}

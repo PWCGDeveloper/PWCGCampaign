@@ -22,7 +22,28 @@
     "19450310": "Venlo",
     "19450404": "Merzhausen"
   },
-  "skins": [],
+  "skins": [
+		{
+			"skinName": "p47d28_skin_12",
+			"planeType": "p47d28",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102050010,
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": true
+		},
+		{
+			"skinName": "p47d28_skin_08",
+			"planeType": "p47d28",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102050010,
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": true
+		}
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

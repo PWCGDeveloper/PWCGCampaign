@@ -19,7 +19,6 @@ public class SkinAnalyzer
 	{
 	    initMissingSkinMap();
 	    
-		// Do the analysis
 		findMissingConfiguredSkins();
 		findMissingSquadronSkins();
 		findMissingAceSkins();
@@ -33,7 +32,7 @@ public class SkinAnalyzer
         
         for (PlaneType plane : allPlanes)
         {
-            List<MissingSkin> missingSkinList = new ArrayList<MissingSkin>();
+            List<MissingSkin> missingSkinList = new ArrayList<>();
             missingSkinListMap.put(plane.getType(), missingSkinList);
         }
 	}
@@ -46,10 +45,10 @@ public class SkinAnalyzer
 		
 			for (Skin skin : skinsForPlane.getConfiguredSkins().getSkins().values())
 			{
-				if (!skin.skinExists(Skin.PRODUCT_SKIN_DIR))
-				{		
-				    addMissingSkin(plane, skin.getSkinName(), "Configured");
-				}
+		        if (isSkinMissing(skin))
+		        {
+	                addMissingSkin(plane, skin.getSkinName(), "Configured");
+		        }
 			}
 		}
 	}
@@ -62,7 +61,7 @@ public class SkinAnalyzer
 		
 			for (Skin skin : skinsForPlane.getSquadronSkins().getSkins().values())
 			{
-				if (!skin.skinExists(Skin.PRODUCT_SKIN_DIR))
+                if (isSkinMissing(skin))
 				{		
                     addMissingSkin(plane, skin.getSkinName(), "Squadron");
 				}
@@ -77,13 +76,27 @@ public class SkinAnalyzer
 		
 			for (Skin skin : skinsForPlane.getAceSkins().getSkins().values())
 			{
-				if (!skin.skinExists(Skin.PRODUCT_SKIN_DIR))
+                if (isSkinMissing(skin))
 				{		
                     addMissingSkin(plane, skin.getSkinName(), "Ace");
 				}
 			}
 		}
 	}
+
+    private boolean isSkinMissing(Skin skin)
+    {
+        if (!skin.isDefinedInGame())
+        {
+            if (!skin.skinExists(Skin.PRODUCT_SKIN_DIR))
+            {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
     private void addMissingSkin(PlaneType plane, String skinName, String category)
     {
         MissingSkin missingSkin = new MissingSkin();

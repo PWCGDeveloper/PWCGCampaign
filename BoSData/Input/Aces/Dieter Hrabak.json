@@ -30,7 +30,18 @@
   "aiSkillLevel": "ACE",
   "skill": 1,
   "commonSense": 0,
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "bf109f2_skin_04",
+      "planeType": "bf109f2",
+      "startDate": "19411001",
+      "endDate": "19421001",
+      "squadId": -1,
+      "country": "",
+      "category": "",
+      "definedInGame": true
+    }
+  ],
   "victories": [
     {
       "date": "19400525",

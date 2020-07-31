@@ -22,7 +22,28 @@
 		"19450310": "Wiesbaden-Erbenheim",
 		"19450404": "Gross-Ostheim"
 	},
-	"skins": [],
+	"skins": [
+		{
+			"skinName": "bf109g6_skin_06",
+			"planeType": "bf109g14",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20111077,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": true
+		},
+		{
+			"skinName": "bf109k4_skin_07",
+			"planeType": "bf109k4",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20111077,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": true
+		}
+	],
 	"squadHistory": {
 		"squadHistoryEntries": []
 	},

@@ -29,7 +29,7 @@
 	},
 	"skins": [
 		{
-			"skinName": "FW190A3_SKIN_14",
+			"skinName": "fw190a3_skin_14",
 			"planeType": "fw190a3",
 			"startDate": "19411101",
 			"endDate": "19450601",

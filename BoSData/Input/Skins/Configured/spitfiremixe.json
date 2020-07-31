@@ -1,0 +1,60 @@
+{
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"spitfiremkixe_skin_00": {
+			"skinName": "spitfiremkixe_skin_00",
+			"planeType": "spitfiremkixe",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"spitfiremkixe_skin_01": {
+			"skinName": "spitfiremkixe_skin_01",
+			"planeType": "spitfiremkixe",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"spitfiremkixe_skin_03": {
+			"skinName": "spitfiremkixe_skin_03",
+			"planeType": "spitfiremkixe",
+			"startDate": "19440601",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"spitfiremkixe_skin_04": {
+			"skinName": "spitfiremkixe_skin_04",
+			"planeType": "spitfiremkixe",
+			"startDate": "19440601",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"spitfiremkixe_skin_10": {
+			"skinName": "spitfiremkixe_skin_10",
+			"planeType": "spitfiremkixe",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		}
+	}
+}

@@ -22,7 +22,28 @@
     "19450310": "Helmond",
     "19450404": "Dortmund"
   },
-  "skins": [],
+  "skins": [
+		{
+			"skinName": "p47d22_skin_09",
+			"planeType": "p47d22",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102358365,
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": true
+		},
+		{
+			"skinName": "p47d27_skin_06",
+			"planeType": "p47d27",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102358365,
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": true
+		}		
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

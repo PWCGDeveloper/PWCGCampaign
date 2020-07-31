@@ -1,0 +1,49 @@
+{
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"p47d28_skin_00": {
+			"skinName": "p47d28_skin_00",
+			"planeType": "p47d28",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"p47d28_skin_03": {
+			"skinName": "p47d28_skin_03",
+			"planeType": "p47d28",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"p47d28_skin_04": {
+			"skinName": "p47d28_skin_04",
+			"planeType": "p47d28",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102358365,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"p47d28_skin_12": {
+			"skinName": "p47d28_skin_07",
+			"planeType": "p47d28",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		}
+	}
+}

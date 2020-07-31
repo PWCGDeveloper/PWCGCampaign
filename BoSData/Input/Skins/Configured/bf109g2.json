@@ -1,4 +1,71 @@
 {
-  "skinSetType": "SKIN_CONFIGURED",
-  "skins": {}
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"bf109g2_skin_00": {
+			"skinName": "bf109g2_skin_00",
+			"planeType": "bf109g2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"bf109g2_skin_01": {
+			"skinName": "bf109g2_skin_01",
+			"planeType": "bf109g2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		},
+		"bf109g2_skin_02": {
+			"skinName": "bf109g2_skin_02",
+			"planeType": "bf109g2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"bf109g2_skin_03": {
+			"skinName": "bf109g2_skin_03",
+			"planeType": "bf109g2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20112052,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"bf109g2_skin_09": {
+			"skinName": "bf109g2_skin_09",
+			"planeType": "bf109g2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		},
+		"bf109g2_skin_11": {
+			"skinName": "bf109g2_skin_11",
+			"planeType": "bf109g2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20112052,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		}
+	}
 }

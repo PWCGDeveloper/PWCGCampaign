@@ -1,66 +1,87 @@
 {
-  "country": "BRITAIN",
-  "squadronId": 103084326,
-  "name": "326 Squadron",
-  "fileName": "326 Squadron.json",
-  "skill": 65,
-  "planeAssignments": [
-    {
-      "archType": "spitfire",
-      "squadronIntroduction": "19440901",
-      "squadronWithdrawal": "19450601"
-    }
-  ],
-  "airfields": {
-    "19440901": "Deurne",
-    "19440101": "Deurne",
-    "19441001": "Eindhoven",
-    "19441101": "Volkel",
-    "19441220": "GraveKeent",
-    "19441225": "Schijndel",
-    "19441229": "Volkel",
-    "19450207": "Heesch",
-    "19450310": "Volkel",
-    "19450404": "Kirchhellen"
-  },
-  "skins": [],
-  "squadHistory": {
-    "squadHistoryEntries": []
-  },
-  "serviceId": 10105,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19440901",
-        "endDate": "19450601",
-        "weightedRoles": [
-          {
-            "role": "ROLE_RECON",
-            "weight": 5
-          },
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 80
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 20
-          }
-        ]
-      }
-    ]
-  },
-  "nightMissionOdds": {
-    "nightMissionPeriods": [
-      {
-        "startDate": "19440901",
-        "endDate": "19450601",
-        "nightMissionOdds": 5
-      }
-    ]
-  },
-  "conversionPeriods": [],
-  "callsigns": {
-    "19410801": "RABBIT"
-  }
+	"country": "BRITAIN",
+	"squadronId": 103084326,
+	"name": "326 Squadron",
+	"fileName": "326 Squadron.json",
+	"skill": 65,
+	"planeAssignments": [
+		{
+			"archType": "spitfire",
+			"squadronIntroduction": "19440901",
+			"squadronWithdrawal": "19450601"
+		}
+	],
+	"airfields": {
+		"19440901": "Deurne",
+		"19440101": "Deurne",
+		"19441001": "Eindhoven",
+		"19441101": "Volkel",
+		"19441220": "GraveKeent",
+		"19441225": "Schijndel",
+		"19441229": "Volkel",
+		"19450207": "Heesch",
+		"19450310": "Volkel",
+		"19450404": "Kirchhellen"
+	},
+	"skins": [
+		{
+			"skinName": "spitfiremkvb_skin_07",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": 103084326,
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": true
+		},
+		{
+			"skinName": "spitfiremkixe_skin_15",
+			"planeType": "spitfiremkixe",
+			"startDate": "19440601",
+			"endDate": "19450601",
+			"squadId": 103084326,
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": true
+		}
+	],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"serviceId": 10105,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19440901",
+				"endDate": "19450601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_RECON",
+						"weight": 5
+					},
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 80
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 20
+					}
+				]
+			}
+		]
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+			{
+				"startDate": "19440901",
+				"endDate": "19450601",
+				"nightMissionOdds": 5
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"callsigns": {
+		"19410801": "RABBIT"
+	}
 }

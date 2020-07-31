@@ -8,11 +8,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 
-/**
- * Defines a skin for use on a plane
- * 
- * @author Patrick Wilson
- */
 public class Skin implements Cloneable
 {
     public static final String PRODUCT_SKIN_DIR = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir() + "graphics\\skins\\";
@@ -26,6 +21,7 @@ public class Skin implements Cloneable
     private String country = "";
     private String category = "";
     private boolean definedInGame = false;
+    private boolean winter = false;
 	
     public static int FACTORY_GENERIC = -2;
     public static int PERSONAL_SKIN = -1;
@@ -50,7 +46,8 @@ public class Skin implements Cloneable
 			skin.squadId = this.squadId;
 			skin.country = this.country;
 			skin.category = this.category;
-			skin.definedInGame = this.definedInGame;
+            skin.definedInGame = this.definedInGame;
+            skin.winter = this.winter;
 		}
 		catch (Exception e)
 		{
@@ -59,11 +56,7 @@ public class Skin implements Cloneable
 		
 		return skin;
 	}
-	
-    /**
-     * @param skinName
-     * @return
-     */
+
     public boolean skinExists(String directory)
     {
         boolean exists = false;
@@ -149,17 +142,11 @@ public class Skin implements Cloneable
         this.country = country;
     }
 
-    /**
-     * @return the definedInGame
-     */
     public boolean isDefinedInGame()
     {
         return definedInGame;
     }
 
-    /**
-     * @param definedInGame the definedInGame to set
-     */
     public void setDefinedInGame(boolean definedInGame)
     {
         this.definedInGame = definedInGame;
@@ -173,5 +160,15 @@ public class Skin implements Cloneable
     public void setCategory(String category)
     {
         this.category = category;
+    }
+
+    public boolean isWinter()
+    {
+        return winter;
+    }
+
+    public void setWinter(boolean winter)
+    {
+        this.winter = winter;
     }
 }

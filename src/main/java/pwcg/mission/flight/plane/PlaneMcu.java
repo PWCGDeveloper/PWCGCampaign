@@ -580,4 +580,9 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
     {
         this.aiRTBDecision = aiRTBDecision;
     }
+
+    public Skin getSkin()
+    {
+        return skin;
+    }
 }

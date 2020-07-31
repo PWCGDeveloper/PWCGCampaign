@@ -22,7 +22,18 @@
     "19450310": "Odendorf",
     "19450404": "Breitscheid"
   },
-  "skins": [],
+  "skins": [
+		{
+			"skinName": "p47d22_skin_08",
+			"planeType": "p47d22",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102036022,
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": true
+		}
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

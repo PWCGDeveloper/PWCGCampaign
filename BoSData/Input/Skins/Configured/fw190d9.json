@@ -1,0 +1,104 @@
+{
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"fw190d9_skin_00": {
+			"skinName": "fw190d9_skin_00",
+			"planeType": "fw190d9",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"fw190d9_skin_03": {
+			"skinName": "fw190d9_skin_03",
+			"planeType": "fw190d9",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"fw190d9_skin_04": {
+			"skinName": "fw190d9_skin_04",
+			"planeType": "fw190d9",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"fw190d9_skin_05": {
+			"skinName": "fw190d9_skin_05",
+			"planeType": "fw190d9",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"fw190d9_skin_06": {
+			"skinName": "fw190d9_skin_06",
+			"planeType": "fw190d9",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"fw190d9_skin_07": {
+			"skinName": "fw190d9_skin_07",
+			"planeType": "fw190d9",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"fw190d9_skin_08": {
+			"skinName": "fw190d9_skin_08",
+			"planeType": "fw190d9",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"fw190d9_skin_09": {
+			"skinName": "fw190d9_skin_09",
+			"planeType": "fw190d9",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"fw190d9_skin_10": {
+			"skinName": "fw190d9_skin_10",
+			"planeType": "fw190d9",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		}
+	}
+}

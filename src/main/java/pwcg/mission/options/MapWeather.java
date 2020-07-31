@@ -16,11 +16,11 @@ import pwcg.mission.options.MapSeasonalParameters.Season;
 
 public abstract class MapWeather 
 {    
-    protected String weatherDescription = "";   // Altitude
+    protected String weatherDescription = "";
     protected String cloudConfig = "Oops";
     
-	protected int cloudLevel = 2100;	// Altitude
-	protected int cloudDensity = 600;	// Thickness
+	protected int cloudLevel = 2100;
+	protected int cloudDensity = 600;
 	protected int precLevel = 0;
 	protected int precType = 0;
 	protected int turbulence = 1;
@@ -492,5 +492,15 @@ public abstract class MapWeather
         public int layer;
         public int direction;
         public int speed;
+    }
+    
+    public static boolean isWinter(Date date)
+    {
+        Season season = PWCGContext.getInstance().getCurrentMap().getMapWeather().getSeason(date);
+        if (season == Season.WINTER)
+        {
+            return true;
+        }
+        return false;
     }
 }

@@ -1,0 +1,104 @@
+{
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"bf109k4_skin_00": {
+			"skinName": "bf109k4_skin_00",
+			"planeType": "bf109k4",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"bf109k4_skin_01": {
+			"skinName": "bf109k4_skin_01",
+			"planeType": "bf109k4",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"bf109k4_skin_02": {
+			"skinName": "bf109k4_skin_02",
+			"planeType": "bf109k4",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"bf109k4_skin_03": {
+			"skinName": "bf109k4_skin_03",
+			"planeType": "bf109k4",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"bf109k4_skin_05": {
+			"skinName": "bf109k4_skin_05",
+			"planeType": "bf109k4",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"bf109k4_skin_06": {
+			"skinName": "bf109k4_skin_06",
+			"planeType": "bf109k4",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"bf109k4_skin_08": {
+			"skinName": "bf109k4_skin_08",
+			"planeType": "bf109k4",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"bf109k4_skin_09": {
+			"skinName": "bf109k4_skin_09",
+			"planeType": "bf109k4",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"bf109k4_skin_10": {
+			"skinName": "bf109k4_skin_10",
+			"planeType": "bf109k4",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		}
+	}
+}

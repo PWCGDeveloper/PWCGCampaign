@@ -1,0 +1,104 @@
+{
+    "skinSetType": "SKIN_CONFIGURED",
+    "skins": {
+        "AD5_J5_Dilcher_E": {
+            "skinName": "AD5_J5_Dilcher_E",
+            "planeType": "albatrosd5",
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "squadId": 401005,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false
+        },
+        "AD5_J5_Flashar_E": {
+            "skinName": "AD5_J5_Flashar_E",
+            "planeType": "albatrosd5",
+            "startDate": "19170101",
+            "endDate": "19180415",
+            "squadId": 401005,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false
+        },
+        "AD5_J5_Flashar_L": {
+            "skinName": "AD5_J5_Flashar_L",
+            "planeType": "albatrosd5",
+            "startDate": "19180416",
+            "endDate": "19181201",
+            "squadId": 401005,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false
+        },
+        "AD5_J5_Gurke_M": {
+            "skinName": "AD5_J5_Gurke_M",
+            "planeType": "albatrosd5",
+            "startDate": "19170801",
+            "endDate": "19181201",
+            "squadId": 401005,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false
+        },
+        "albatrosd5_skin_04": {
+            "skinName": "albatrosd5_skin_04",
+            "planeType": "albatrosd5",
+            "startDate": "19170801",
+            "endDate": "19181201",
+            "squadId": 401005,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true
+        },
+        "AD5_J11_Meyer": {
+            "skinName": "AD5_J11_Meyer",
+            "planeType": "albatrosd5",
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "squadId": 401011,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false
+        },
+        "AD5_J11_Muller": {
+            "skinName": "AD5_J11_Muller",
+            "planeType": "albatrosd5",
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "squadId": 401011,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false
+        },
+        "AD5_J11_Unassigned": {
+            "skinName": "AD5_J11_Unassigned",
+            "planeType": "albatrosd5",
+            "startDate": "19170101",
+            "endDate": "19181201",
+            "squadId": 401011,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false
+        },
+        "AD5_J11_Schoenebeck": {
+            "skinName": "AD5_J11_Schoenebeck",
+            "planeType": "albatrosd5",
+            "startDate": "19170801",
+            "endDate": "19181201",
+            "squadId": 401011,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": false
+        },
+        "albatrosd5_skin_02": {
+            "skinName": "albatrosd5_skin_02",
+            "planeType": "albatrosd5",
+            "startDate": "19170801",
+            "endDate": "19181201",
+            "squadId": -1,
+            "country": "Germany",
+            "category": "Configured",
+            "definedInGame": true
+        }    }
+}

@@ -1,4 +1,93 @@
 {
-  "skinSetType": "SKIN_CONFIGURED",
-  "skins": {}
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"i16t24_skin_00": {
+			"skinName": "i16t24_skin_00",
+			"planeType": "i16t24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"i16t24_skin_01": {
+			"skinName": "i16t24_skin_01",
+			"planeType": "i16t24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		},
+		"i16t24_skin_02": {
+			"skinName": "i16t24_skin_02",
+			"planeType": "i16t24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"i16t24_skin_03": {
+			"skinName": "i16t24_skin_03",
+			"planeType": "i16t24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		},
+		"i16t24_skin_04": {
+			"skinName": "i16t24_skin_04",
+			"planeType": "i16t24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"i16t24_skin_05": {
+			"skinName": "i16t24_skin_05",
+			"planeType": "i16t24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		},
+		"i16t24_skin_06": {
+			"skinName": "i16t24_skin_06",
+			"planeType": "i16t24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"i16t24_skin_07": {
+			"skinName": "i16t24_skin_07",
+			"planeType": "i16t24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		}
+	}
 }

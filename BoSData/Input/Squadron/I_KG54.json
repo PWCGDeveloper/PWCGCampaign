@@ -22,7 +22,18 @@
     "19450310": "Altenstadt",
     "19450404": "Vorden"
   },
-  "skins": [],
+  "skins": [
+		{
+			"skinName": "ju88a4_skin_06",
+			"planeType": "ju88a4",
+			"startDate": "19410101",
+			"endDate": "19450601",
+			"squadId": 20131054,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": true
+		}
+  ],
   "squadHistory": {
     "squadHistoryEntries": [
     ]

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import pwcg.mission.options.MapSeasonalParameters.Season;
+
 /**
  * Filters that can be applied to skin sets
  * 
@@ -59,7 +61,7 @@ public class SkinFilter
         return filteredSkins;
     }
 
-    static public List<Skin> skinFilterInUse (List<Skin> skins, SkinsForPlane skinsForPlane, SkinsInUse skinsInUse)
+    static public List<Skin> skinFilterInUse (List<Skin> skins, SkinsInUse skinsInUse)
     {
         List<Skin> filteredSkins = new ArrayList<Skin>();
         
@@ -89,4 +91,22 @@ public class SkinFilter
         return filteredSkins;
     }
 
+    public static List<Skin> skinFilterSeason(List<Skin> skins, Season season)
+    {
+        List<Skin> filteredSkins = new ArrayList<Skin>();
+        
+        for (Skin skin : skins)
+        {
+            if (skin.isWinter() && season == Season.WINTER)
+            {
+                filteredSkins.add(skin);
+            }
+            else if (!skin.isWinter() && season != Season.WINTER)
+            {
+                filteredSkins.add(skin);
+            }
+        }
+        
+        return filteredSkins;
+    }
 }

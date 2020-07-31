@@ -1,0 +1,126 @@
+{
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"p51d15_skin_00": {
+			"skinName": "p51d15_skin_00",
+			"planeType": "p51d15",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"p51d15_skin_01": {
+			"skinName": "p51d15_skin_01",
+			"planeType": "p51d15",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"p51d15_skin_02": {
+			"skinName": "p51d15_skin_02",
+			"planeType": "p51d15",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"p51d15_skin_03": {
+			"skinName": "p51d15_skin_03",
+			"planeType": "p51d15",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"p51d15_skin_04": {
+			"skinName": "p51d15_skin_04",
+			"planeType": "p51d15",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"p51d15_skin_05": {
+			"skinName": "p51d15_skin_05",
+			"planeType": "p51d15",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"p51d15_skin_06": {
+			"skinName": "p51d15_skin_06",
+			"planeType": "p51d15",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102362377,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"p51d15_skin_08": {
+			"skinName": "p51d15_skin_08",
+			"planeType": "p51d15",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102362377,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"p51d15_skin_09": {
+			"skinName": "p51d15_skin_09",
+			"planeType": "p51d15",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102362377,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"p51d15_skin_10": {
+			"skinName": "p51d15_skin_10",
+			"planeType": "p51d15",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102362377,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"p51d15_skin_13": {
+			"skinName": "p51d15_skin_13",
+			"planeType": "p51d15",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102362377,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		}
+	}
+}

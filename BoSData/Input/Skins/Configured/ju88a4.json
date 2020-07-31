@@ -1,4 +1,60 @@
 {
-  "skinSetType": "SKIN_CONFIGURED",
-  "skins": {}
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"ju88a4_skin_00": {
+			"skinName": "ju88a4_skin_00",
+			"planeType": "ju88a4",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"ju88a4_skin_01": {
+			"skinName": "ju88a4_skin_01",
+			"planeType": "ju88a4",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		},
+		"ju88a4_skin_03": {
+			"skinName": "ju88a4_skin_03",
+			"planeType": "ju88a4",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"ju88a4_skin_04": {
+			"skinName": "ju88a4_skin_04",
+			"planeType": "ju88a4",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		},
+		"ju88a4_skin_08": {
+			"skinName": "ju88a4_skin_08",
+			"planeType": "ju88a4",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		}
+	}
 }

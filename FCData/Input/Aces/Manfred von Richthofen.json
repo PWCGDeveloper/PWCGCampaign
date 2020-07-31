@@ -72,160 +72,20 @@
   "commonSense": 0,
   "skins": [
     {
-      "skinName": "AD2_J2_MVR_481-16",
-      "planeType": "albatrosd2",
+      "skinName": "albatrosd5_skin_01",
+      "planeType": "albatrosd5",
       "startDate": "19140801",
-      "endDate": "19181201",
+      "endDate": "19180319",
       "squadId": -1,
       "country": "",
       "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "AD3_J11MVR1",
-      "planeType": "albatrosd3",
-      "startDate": "19140801",
-      "endDate": "19170616",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "AD3_J11MVR2",
-      "planeType": "albatrosd3",
-      "startDate": "19170617",
-      "endDate": "19181201",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "AD5_MVR1177",
-      "planeType": "albatrosd5",
-      "startDate": "19170620",
-      "endDate": "19170701",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "AD5_MVRJULY1917",
-      "planeType": "albatrosd5",
-      "startDate": "19170702",
-      "endDate": "19170706",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "AD5_MVR2059",
-      "planeType": "albatrosd5",
-      "startDate": "19170725",
-      "endDate": "19171029",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "AD5_MVR4693V1",
-      "planeType": "albatrosd5",
-      "startDate": "19171030",
-      "endDate": "19171123",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "AD5_MVR4693V2",
-      "planeType": "albatrosd5",
-      "startDate": "19171124",
-      "endDate": "19171229",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "AD5_MVR4693V3",
-      "planeType": "albatrosd5",
-      "startDate": "19171130",
-      "endDate": "19181201",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
+      "definedInGame": true
     },
     {
       "skinName": "FDR1_MVRW102",
       "planeType": "fokkerdr1",
       "startDate": "19170828",
       "endDate": "19170905",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "FDR1_MVR127V1",
-      "planeType": "fokkerdr1",
-      "startDate": "19180202",
-      "endDate": "19180225",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "FDR1_MVR152",
-      "planeType": "fokkerdr1",
-      "startDate": "19180226",
-      "endDate": "19180323",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "FDR1_MVR477",
-      "planeType": "fokkerdr1",
-      "startDate": "19180324",
-      "endDate": "19180405",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "FDR1_MVR127V2",
-      "planeType": "fokkerdr1",
-      "startDate": "19180406",
-      "endDate": "19180411",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "FDR1_MVR425V1",
-      "planeType": "fokkerdr1",
-      "startDate": "19180412",
-      "endDate": "19180417",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "FDR1_MVR425V2",
-      "planeType": "fokkerdr1",
-      "startDate": "19180418",
-      "endDate": "19181201",
       "squadId": -1,
       "country": "",
       "category": "Ace",

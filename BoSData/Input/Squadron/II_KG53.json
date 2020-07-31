@@ -54,7 +54,18 @@
     "19450401": "ef_Florennes",
     "19450501": "ef_Chievres"
   },
-  "skins": [],
+  "skins": [
+		{
+			"skinName": "he111h16_skin_03",
+			"planeType": "he111h16",
+			"startDate": "19410101",
+			"endDate": "19450601",
+			"squadId": 20101026,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": true
+		}
+  ],
   "squadHistory": {
     "squadHistoryEntries": [
       {
