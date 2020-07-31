@@ -64,7 +64,7 @@ public class SquadronMembers
 
     public int getActiveCount(Date date) throws PWCGException
     {
-        SquadronMembers activeSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronMemberCollection, date);
+        SquadronMembers activeSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAcesNoWounded(squadronMemberCollection, date);
         return activeSquadronMembers.getSquadronMemberList().size();
     }
     
