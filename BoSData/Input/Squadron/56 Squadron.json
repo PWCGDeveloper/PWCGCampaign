@@ -1,30 +1,28 @@
 {
-  "country": "BRITAIN",
-  "squadronId": 103083056,
-  "name": "56 Squadron",
-  "fileName": "56 Squadron.json",
-  "skill": 65,
-  "planeAssignments": [
-    {
-      "archType": "tempest",
-      "squadronIntroduction": "19420801",
-      "squadronWithdrawal": "19450601"
-    }
-  ],
-  "airfields": {
-    "19440901": "Grimbergen",
-    "19441001": "Eindhoven",
-    "19441101": "Heesch",
-    "19441220": "Rips",
-    "19441225": "Rips",
-    "19441229": "Heesch",
-    "19450207": "Volkel",
-    "19450310": "Mill",
-    "19450404": "Kirchhellen"
-  },
-  "skins": [],
-  "squadHistory": {
-    "squadHistoryEntries": [
+	"country": "BRITAIN",
+	"squadronId": 103083056,
+	"name": "56 Squadron",
+	"fileName": "56 Squadron.json",
+	"skill": 65,
+	"planeAssignments": [
+		{
+			"archType": "tempest",
+			"squadronIntroduction": "19420801",
+			"squadronWithdrawal": "19450601"
+		}
+	],
+	"airfields": {
+		"19440901": "Grimbergen",
+		"19441001": "Eindhoven",
+		"19441101": "Heesch",
+		"19441220": "Rips",
+		"19441225": "Rips",
+		"19441229": "Heesch",
+		"19450207": "Volkel",
+		"19450310": "Mill",
+		"19450404": "Kirchhellen"
+	},
+	"skins": [
 		{
 			"skinName": "tempestmkvs2_skin_08",
 			"planeType": "tempestmkvs2",
@@ -35,42 +33,44 @@
 			"category": "Squadron",
 			"definedInGame": true
 		}
-    ]
-  },
-  "serviceId": 10103,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19440901",
-        "endDate": "19450601",
-        "weightedRoles": [
-          {
-            "role": "ROLE_RECON",
-            "weight": 5
-          },
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 60
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 40
-          }
-        ]
-      }
-    ]
-  },
-  "nightMissionOdds": {
-    "nightMissionPeriods": [
-      {
-        "startDate": "19440901",
-        "endDate": "19450601",
-        "nightMissionOdds": 7
-      }
-    ]
-  },
-  "conversionPeriods": [],
-  "callsigns": {
-    "19410801": "TURKEY"
-  }
+	],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"serviceId": 10103,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19440901",
+				"endDate": "19450601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_RECON",
+						"weight": 5
+					},
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 60
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 40
+					}
+				]
+			}
+		]
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+			{
+				"startDate": "19440901",
+				"endDate": "19450601",
+				"nightMissionOdds": 7
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"callsigns": {
+		"19410801": "TURKEY"
+	}
 }

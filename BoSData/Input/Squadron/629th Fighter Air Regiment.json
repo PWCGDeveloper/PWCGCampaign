@@ -69,6 +69,27 @@
 			"category": "Squadron",
 			"definedInGame": false,
 			"winter": true
+		},
+		{
+			"skinName": "spitfiremkvb_skin_03",
+			"planeType": "spitfiremkvb",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 10111629,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		{
+			"skinName": "spitfiremkixe_skin_10",
+			"planeType": "spitfiremkixe",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 10111629,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true
 		}
 	],
 	"squadHistory": {

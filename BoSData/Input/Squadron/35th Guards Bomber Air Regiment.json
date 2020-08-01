@@ -55,6 +55,17 @@
 			"definedInGame": true
 		},
 		{
+			"skinName": "pe2s35_skin_05",
+			"planeType": "pe2s35",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 10131132,
+			"country": "Russia",
+			"category": "Squadron",
+			"definedInGame": true,
+			"winter": true
+		},
+		{
 			"skinName": "pe2s87_skin_03",
 			"planeType": "pe2s87",
 			"startDate": "19420101",

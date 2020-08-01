@@ -44,17 +44,6 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": false
-		},
-		"spitfiremkixe_skin_10": {
-			"skinName": "spitfiremkixe_skin_10",
-			"planeType": "spitfiremkixe",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -1,
-			"country": "Russia",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": false
 		}
 	}
 }

@@ -66,17 +66,6 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": false
-		},
-		"spitfiremkvb_skin_03": {
-			"skinName": "spitfiremkvb_skin_03",
-			"planeType": "spitfiremkvb",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -1,
-			"country": "Russia",
-			"category": "Configured",
-			"definedInGame": true,
-			"winter": false
 		}
   }
 }
