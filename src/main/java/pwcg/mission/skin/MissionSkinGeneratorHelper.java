@@ -5,7 +5,6 @@ import java.util.List;
 
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.squadron.Squadron;
-import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -91,23 +90,16 @@ public class MissionSkinGeneratorHelper
     {
         Skin skin = null;
         
-        if (!(plane.getAiLevel().lessThan(AiSkillLevel.VETERAN)))
+        skin = pickSkin(plane.getType(), personalSkins);
+        if (skin != null)
         {
-            skin = pickSkin(plane.getType(), personalSkins);
-            if (skin != null)
-            {
-                plane.setPlaneSkin(skin);
-                flight.getMission().addSkinInUse(skin);
-                PWCGLogger.log(LogLevel.DEBUG, "SKIN: Assign non squadron personal: " + skin.getSkinName());
-            }
-            else
-            {
-                PWCGLogger.log(LogLevel.DEBUG, "SKIN: no non squadron personal skin available");
-            }
+            plane.setPlaneSkin(skin);
+            flight.getMission().addSkinInUse(skin);
+            PWCGLogger.log(LogLevel.DEBUG, "SKIN: Assign non squadron personal: " + skin.getSkinName());
         }
         else
         {
-            PWCGLogger.log(LogLevel.DEBUG, "SKIN: non squadron personal skin - must be veteran or higher");
+            PWCGLogger.log(LogLevel.DEBUG, "SKIN: no non squadron personal skin available");
         }
 
         return skin;
