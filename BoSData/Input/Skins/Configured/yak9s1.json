@@ -121,6 +121,72 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": false
+		},
+		"Yak9s1_ARKHIREYEV": {
+			"skinName": "Yak9s1_ARKHIREYEV",
+			"planeType": "yak9s1",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Yak9s1_MOLCHANOV": {
+			"skinName": "Yak9s1_MOLCHANOV",
+			"planeType": "yak9s1",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Yak9s1_VOLKOV": {
+			"skinName": "Yak9s1_VOLKOV",
+			"planeType": "yak9s1",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Yak9s1_VORONOV": {
+			"skinName": "Yak9s1_VORONOV",
+			"planeType": "yak9s1",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Yak9Ts1_GOLOVACHEV": {
+			"skinName": "Yak9Ts1_GOLOVACHEV",
+			"planeType": "yak9s1",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Yak9s1_WINTER": {
+			"skinName": "Yak9s1_WINTER",
+			"planeType": "yak9s1",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
 		}
 	}
 }

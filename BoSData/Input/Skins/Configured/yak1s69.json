@@ -99,6 +99,50 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": true
+		},
+		"Yak1s69_IVANOVICH49": {
+			"skinName": "Yak1s69_IVANOVICH49",
+			"planeType": "yak1s69",
+			"startDate": "19400801",
+			"endDate": "19440501",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Yak1s69_white31": {
+			"skinName": "Yak1s69_white31",
+			"planeType": "yak1s69",
+			"startDate": "19400801",
+			"endDate": "19440501",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Yak1s69_NORMANDY4": {
+			"skinName": "Yak1s69_NORMANDY4",
+			"planeType": "yak1s69",
+			"startDate": "19400801",
+			"endDate": "19440501",
+			"squadId": 10111999,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Yak1s69_NORMANDY27": {
+			"skinName": "Yak1s69_NORMANDY27",
+			"planeType": "yak1s69",
+			"startDate": "19400801",
+			"endDate": "19440501",
+			"squadId": 10111999,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
 		}
 	}
 }

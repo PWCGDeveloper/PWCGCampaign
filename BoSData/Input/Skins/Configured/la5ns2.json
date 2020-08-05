@@ -176,6 +176,72 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": false
+		},
+		"La5FN-02": {
+			"skinName": "La5FN-02",
+			"planeType": "la5ns2",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"La5FN-KOZHEDUB": {
+			"skinName": "La5FN-KOZHEDUB",
+			"planeType": "la5ns2",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"La5FN-MONGOLSKIY": {
+			"skinName": "La5FN-MONGOLSKIY",
+			"planeType": "la5ns2",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"La5FN-WHITE68": {
+			"skinName": "La5FN-WHITE68",
+			"planeType": "la5ns2",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"RIS": {
+			"skinName": "RIS",
+			"planeType": "la5ns2",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"zsf-La5FN-36": {
+			"skinName": "zsf-La5FN-36",
+			"planeType": "la5ns2",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
 		}
 	}
 }

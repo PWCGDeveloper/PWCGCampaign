@@ -66,6 +66,39 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": false
+		},
+		"P40E1_RU53": {
+			"skinName": "P40E1_RU53",
+			"planeType": "p40e1",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P40E1 Soviet no 26 winter": {
+			"skinName": "P40E1 Soviet no 26 winter",
+			"planeType": "p40e1",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
+		},
+		"P40E1_russian 70": {
+			"skinName": "P40E1_russian 70",
+			"planeType": "p40e1",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
 		}
 	}
 }

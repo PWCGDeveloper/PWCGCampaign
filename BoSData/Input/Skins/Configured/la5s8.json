@@ -110,6 +110,39 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": false
+		},
+		"La5_8_7winter": {
+			"skinName": "La5_8_7winter",
+			"planeType": "la5s8",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
+		},
+		"La5_8_no 53 winter": {
+			"skinName": "La5_8_no 53 winter",
+			"planeType": "la5s8",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
+		},
+		"La5_8_no 53": {
+			"skinName": "La5_8_no 53",
+			"planeType": "la5s8",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
 		}
 	}
 }

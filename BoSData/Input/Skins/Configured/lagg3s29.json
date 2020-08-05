@@ -121,6 +121,215 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": false
+		},
+		"OF_IAP11_2": {
+			"skinName": "OF_IAP11_2",
+			"planeType": "lagg3s29",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 10111011,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"OF_IAP11_5": {
+			"skinName": "OF_IAP11_5",
+			"planeType": "lagg3s29",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 10111011,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"OF_IAP11_9": {
+			"skinName": "OF_IAP11_9",
+			"planeType": "lagg3s29",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 10111011,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"OF_IAP11_13": {
+			"skinName": "OF_IAP11_13",
+			"planeType": "lagg3s29",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 10111011,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"OF_IAP11_15": {
+			"skinName": "OF_IAP11_15",
+			"planeType": "lagg3s29",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 10111011,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"LaGG3s29_BLACK SEA 20": {
+			"skinName": "LaGG3s29_BLACK SEA 20",
+			"planeType": "lagg3s29",
+			"startDate": "19430501",
+			"endDate": "19450601",
+			"squadId": 10111011,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"LaGG3s29_BLACK SEA 31": {
+			"skinName": "LaGG3s29_BLACK SEA 31",
+			"planeType": "lagg3s29",
+			"startDate": "19430501",
+			"endDate": "19450601",
+			"squadId": 10111011,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"LaGG3s29_BLACK SEA 32": {
+			"skinName": "LaGG3s29_BLACK SEA 32",
+			"planeType": "lagg3s29",
+			"startDate": "19430501",
+			"endDate": "19450601",
+			"squadId": 10111011,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"LaGG3s29_GALCHENKO winter": {
+			"skinName": "LaGG3s29_GALCHENKO winter",
+			"planeType": "lagg3s29",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 10111011,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
+		},
+		"LaGG3s29_GALCHENKO": {
+			"skinName": "LaGG3s29_GALCHENKO",
+			"planeType": "lagg3s29",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 10111011,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"LaGG3s29_N38": {
+			"skinName": "LaGG3s29_N38",
+			"planeType": "lagg3s29",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 10111011,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"LaGG3s29_no 54": {
+			"skinName": "LaGG3s29_no 54",
+			"planeType": "lagg3s29",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 10111011,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"LaGG3s29_NO 69": {
+			"skinName": "LaGG3s29_NO 69",
+			"planeType": "lagg3s29",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 10111011,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"LaGG3s29_POSTNOV41": {
+			"skinName": "LaGG3s29_POSTNOV41",
+			"planeType": "lagg3s29",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 10111011,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"LaGG3s29_RED59_Winter": {
+			"skinName": "LaGG3s29_RED59_Winter",
+			"planeType": "lagg3s29",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 10111011,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
+		},
+		"LaGG3s29_SHITOV 43": {
+			"skinName": "LaGG3s29_SHITOV 43",
+			"planeType": "lagg3s29",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 10111011,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"LaGG3s29_WHITE24": {
+			"skinName": "LaGG3s29_WHITE24",
+			"planeType": "lagg3s29",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 10111011,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"LaGG3s29_winter64l": {
+			"skinName": "LaGG3s29_winter64l",
+			"planeType": "lagg3s29",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 10111011,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
+		},
+		"Mig3s24_yelow1": {
+			"skinName": "Mig3s24_yelow1",
+			"planeType": "lagg3s29",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 10111011,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
 		}
 	}
 }

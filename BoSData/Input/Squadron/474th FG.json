@@ -24,14 +24,14 @@
 	},
 	"skins": [
 		{
-			"skinName": "p38j25_skin_03",
+			"skinName": "474FG",
 			"planeType": "p38j25",
 			"startDate": "19400801",
 			"endDate": "19450601",
 			"squadId":102363033,
 			"country": "USA",
 			"category": "Squadron",
-			"definedInGame": true
+			"definedInGame": false
 		}
 	],
 	"squadHistory": {

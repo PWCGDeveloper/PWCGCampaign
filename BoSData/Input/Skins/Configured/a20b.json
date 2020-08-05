@@ -132,6 +132,28 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": false
+		},
+		"A20B_RUS MITH 2": {
+			"skinName": "A20B_RUS MITH 2",
+			"planeType": "a20b",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"A20B_RUS MITH 7": {
+			"skinName": "A20B_RUS MITH 7",
+			"planeType": "a20b",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
 		}
 	}
 }

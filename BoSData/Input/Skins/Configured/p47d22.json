@@ -55,6 +55,127 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": false
+		},
+		"P-47D-22_EAGLE": {
+			"skinName": "P-47D-22_EAGLE",
+			"planeType": "p47d22",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102050010,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P-47D-22_QUACK": {
+			"skinName": "P-47D-22_QUACK",
+			"planeType": "p47d22",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102050010,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P-47D22_QueenCityMama_50": {
+			"skinName": "P-47D22_QueenCityMama_50",
+			"planeType": "p47d22",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102050010,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P-47D-22_THE_DEACON": {
+			"skinName": "P-47D-22_THE_DEACON",
+			"planeType": "p47d22",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102050010,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P-47D-22_TRISS": {
+			"skinName": "P-47D-22_TRISS",
+			"planeType": "p47d22",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102050010,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P-47D22_Cecil_O_Dean_325thFG": {
+			"skinName": "P-47D22_Cecil_O_Dean_325thFG",
+			"planeType": "p47d22",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102365386,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P-47D22_HerschelGreen_325thFG": {
+			"skinName": "P-47D22_HerschelGreen_325thFG",
+			"planeType": "p47d22",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102365386,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P-47D22_LittleChief": {
+			"skinName": "P-47D22_LittleChief",
+			"planeType": "p47d22",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102365386,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P-47D22_topper_325thFG": {
+			"skinName": "P-47D22_topper_325thFG",
+			"planeType": "p47d22",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102365386,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P-47D22_Okie_366": {
+			"skinName": "P-47D22_Okie_366",
+			"planeType": "p47d22",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102366389,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P-47D22_Snafu_366": {
+			"skinName": "P-47D22_Snafu_366",
+			"planeType": "p47d22",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102366389,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
 		}
 	}
 }

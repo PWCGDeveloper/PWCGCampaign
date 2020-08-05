@@ -121,6 +121,193 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": true
+		},
+		"Mig3s24_3A": {
+			"skinName": "Mig3s24_3A",
+			"planeType": "mig3s24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Mig3s24_black4": {
+			"skinName": "Mig3s24_black4",
+			"planeType": "mig3s24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Mig3s24_green14": {
+			"skinName": "Mig3s24_green14",
+			"planeType": "mig3s24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Mig3s24_KUBAN": {
+			"skinName": "Mig3s24_KUBAN",
+			"planeType": "mig3s24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Mig3s24_NO 57": {
+			"skinName": "Mig3s24_NO 57",
+			"planeType": "mig3s24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Mig3s24_NO 95": {
+			"skinName": "Mig3s24_NO 95",
+			"planeType": "mig3s24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Mig3s24_NO 562": {
+			"skinName": "Mig3s24_NO 562",
+			"planeType": "mig3s24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Mig3s24_NO17": {
+			"skinName": "Mig3s24_NO17",
+			"planeType": "mig3s24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Mig3s24_white 12": {
+			"skinName": "Mig3s24_white 12",
+			"planeType": "mig3s24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Mig3s24_WHITE-tail": {
+			"skinName": "Mig3s24_WHITE-tail",
+			"planeType": "mig3s24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Mig3s24_winter ivan": {
+			"skinName": "Mig3s24_winter ivan",
+			"planeType": "mig3s24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
+		},
+		"Mig3s24_winter no2": {
+			"skinName": "Mig3s24_winter no2",
+			"planeType": "mig3s24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
+		},
+		"Mig3s24_winter02": {
+			"skinName": "Mig3s24_winter02",
+			"planeType": "mig3s24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
+		},
+		"Mig3s24_winter3": {
+			"skinName": "Mig3s24_winter3",
+			"planeType": "mig3s24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
+		},
+		"Mig3s24_winter85": {
+			"skinName": "Mig3s24_winter85",
+			"planeType": "mig3s24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
+		},
+		"Mig3s24_winter90": {
+			"skinName": "Mig3s24_winter90",
+			"planeType": "mig3s24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
+		},
+		"Mig3s24_winterStalin": {
+			"skinName": "Mig3s24_winterStalin",
+			"planeType": "mig3s24",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
 		}
 	}
 }

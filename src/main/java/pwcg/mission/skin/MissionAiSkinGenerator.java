@@ -3,11 +3,14 @@ package pwcg.mission.skin;
 import java.util.Date;
 import java.util.List;
 
+import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.skin.SkinFilter;
 import pwcg.campaign.squadron.Squadron;
-import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 
@@ -33,19 +36,52 @@ public class MissionAiSkinGenerator
     private void setAISkin(Squadron squad, PlaneMcu plane, Date date) throws PWCGException
     {
         MissionSkinInitializer.intitializeSkin(missionSkinSet, squad, plane, date);
-
-        if (plane.getAiLevel() != AiSkillLevel.NOVICE)
+        if (isLowRank(plane))
         {
-            List<Skin> squadronPersonalSkins = missionSkinSet.getSquadronPersonalSkins(plane.getType());
-            squadronPersonalSkins = SkinFilter.skinFilterInUse(squadronPersonalSkins, flight.getMission().getSkinsInUse());
-            Skin skin = MissionSkinGeneratorHelper.chooseSquadronPersonalSkin(flight, plane, squadronPersonalSkins);
-
-            if (skin == null && (plane.getAiLevel() != AiSkillLevel.COMMON))
-            {
-                List<Skin> nonSquadronPersonalSkin = missionSkinSet.getNonSquadronPersonalSkin(plane.getType());
-                nonSquadronPersonalSkin = SkinFilter.skinFilterInUse(nonSquadronPersonalSkin, flight.getMission().getSkinsInUse());
-                skin = MissionSkinGeneratorHelper.chooseNonSquadronPersonalSkin(flight, plane, nonSquadronPersonalSkin);
-            }
+            chooseFactorySkinForLowRank(plane);
         }
+        else
+        {
+            chooseNonSquadronPersonalSkin(plane);
+            chooseSquadronPersonalSkin(plane);
+        }
+    }
+
+    private void chooseSquadronPersonalSkin(PlaneMcu plane)
+    {
+        List<Skin> squadronPersonalSkins = missionSkinSet.getSquadronPersonalSkins(plane.getType());
+        squadronPersonalSkins = SkinFilter.skinFilterInUse(squadronPersonalSkins, flight.getMission().getSkinsInUse());
+        MissionSkinGeneratorHelper.chooseSquadronPersonalSkin(flight, plane, squadronPersonalSkins);
+    }
+
+    private void chooseNonSquadronPersonalSkin(PlaneMcu plane)
+    {
+        List<Skin> nonSquadronPersonalSkin = missionSkinSet.getNonSquadronPersonalSkin(plane.getType());
+        nonSquadronPersonalSkin = SkinFilter.skinFilterInUse(nonSquadronPersonalSkin, flight.getMission().getSkinsInUse());
+        MissionSkinGeneratorHelper.chooseNonSquadronPersonalSkin(flight, plane, nonSquadronPersonalSkin);
+    }
+
+    private void chooseFactorySkinForLowRank(PlaneMcu plane) throws PWCGException
+    {
+        int roll = RandomNumberGenerator.getRandom(100);
+        if (roll < 50)
+        {
+            List<Skin>factorySkins = missionSkinSet.getFactorySkins(plane.getType());
+            factorySkins = SkinFilter.skinFilterInUse(factorySkins, flight.getMission().getSkinsInUse());
+            MissionSkinGeneratorHelper.chooseFactorySkin(plane, factorySkins);
+        }
+    }
+    
+    private boolean isLowRank(PlaneMcu plane) throws PWCGException
+    {
+        plane.getPilot().getRank();
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(plane.getSquadronId());
+        IRankHelper rankHelper = RankFactory.createRankHelper();
+        int rankPos = rankHelper.getRankPosByService(plane.getPilot().getRank(), squadron.determineServiceForSquadron(flight.getCampaign().getDate()));
+        if (rankPos >= 3)
+        {
+            return true;
+        }
+        return false;
     }
 }

@@ -24,14 +24,14 @@
   },
   "skins": [
 		{
-			"skinName": "p47d28_skin_12",
+			"skinName": "FG50",
 			"planeType": "p47d28",
 			"startDate": "19400801",
 			"endDate": "19450601",
 			"squadId": 102050010,
 			"country": "USA",
 			"category": "Squadron",
-			"definedInGame": true
+			"definedInGame": false
 		},
 		{
 			"skinName": "p47d28_skin_08",

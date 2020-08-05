@@ -66,6 +66,61 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": false
+		},
+		"SpitfireMkVb_soviet arrows": {
+			"skinName": "SpitfireMkVb_soviet arrows",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"SpitfireMkVb_soviet20": {
+			"skinName": "SpitfireMkVb_soviet20",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"SpitfireMkVb_soviet green": {
+			"skinName": "SpitfireMkVb_soviet green",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"SpitfireMkVb_SOVIET78": {
+			"skinName": "SpitfireMkVb_SOVIET78",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"SpitfireMkVb_soviet65": {
+			"skinName": "SpitfireMkVb_soviet65",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
 		}
   }
 }

@@ -77,6 +77,94 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": false
+		},
+		"p39l1  NO42": {
+			"skinName": "p39l1  NO42",
+			"planeType": "p39l1",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"p39l1 EAGLE": {
+			"skinName": "p39l1 EAGLE",
+			"planeType": "p39l1",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P39L1_NO 31": {
+			"skinName": "P39L1_NO 31",
+			"planeType": "p39l1",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P39L-1-95": {
+			"skinName": "P39L-1-95",
+			"planeType": "p39l1",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P39L-1-103": {
+			"skinName": "P39L-1-103",
+			"planeType": "p39l1",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P39L-1-BX-228": {
+			"skinName": "P39L-1-BX-228",
+			"planeType": "p39l1",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P39L-1-RECHKALOV 1944": {
+			"skinName": "P39L-1-RECHKALOV 1944",
+			"planeType": "p39l1",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P39L-1-SHUKOV": {
+			"skinName": "P39L-1-SHUKOV",
+			"planeType": "p39l1",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
 		}
 	}
 }

@@ -30,28 +30,28 @@ public class PromotionEventHandlerFighter
         ArmedService service = pilot.determineService(campaign.getDate());
         int numPilotVictories = pilot.getSquadronMemberVictories().getAirToAirVictories();
         int numMissions = pilot.getMissionFlown();        
-        IRankHelper rankObj = RankFactory.createRankHelper();
-        int rankPosBeforePromotion = rankObj.getRankPosByService(pilot.getRank(), service);
+        IRankHelper rankHelper = RankFactory.createRankHelper();
+        int rankPosBeforePromotion = rankHelper.getRankPosByService(pilot.getRank(), service);
 
         if (rankPosBeforePromotion > 3)
         {
             if (numPilotVictories >= PilotRankMedVictories && numMissions >= PilotRankMedMinMissions)
             {
-                promotion = rankObj.getRankByService(3, service);
+                promotion = rankHelper.getRankByService(3, service);
             }
         }
         else if (rankPosBeforePromotion == 3)
         {
             if (numPilotVictories >= PilotRankHighMinVictories && numMissions >= PilotRankHighMinMissions)
             {
-                promotion = rankObj.getRankByService(2, service);
+                promotion = rankHelper.getRankByService(2, service);
             }
         }
         else if (rankPosBeforePromotion == 2)
         {
             if (numPilotVictories >= PilotRankExecVictories && numMissions >= PilotRankExecMinMissions)
             {
-                promotion = rankObj.getRankByService(1, service);
+                promotion = rankHelper.getRankByService(1, service);
             }
         }
         else if (rankPosBeforePromotion == 1)
@@ -71,7 +71,7 @@ public class PromotionEventHandlerFighter
             {
                 if (numPilotVictories >= PilotRankCommandVictories && numMissions >= PilotRankCommandMinMissions)
                 {
-                    promotion = rankObj.getRankByService(0, service);
+                    promotion = rankHelper.getRankByService(0, service);
                 }
             }
         }

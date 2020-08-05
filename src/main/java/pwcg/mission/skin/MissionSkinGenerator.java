@@ -26,7 +26,7 @@ public class MissionSkinGenerator
         }
     }
     
-    private static MissionSkinSet buildMissionSkinSet(IFlight flight) throws PWCGException
+    static MissionSkinSet buildMissionSkinSet(IFlight flight) throws PWCGException
     {
         if (flight.getCampaign().getSeason() == Season.WINTER)
         {
@@ -41,7 +41,7 @@ public class MissionSkinGenerator
         return missionSkinSet;
     }
 
-    private static boolean isWinterSkinSetValid(IFlight flight, MissionSkinSet winterMissionSkinSet)
+    static boolean isWinterSkinSetValid(IFlight flight, MissionSkinSet winterMissionSkinSet)
     {
         for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {

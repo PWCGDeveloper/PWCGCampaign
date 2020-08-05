@@ -44,6 +44,116 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": true
+		},
+		"BoM_pe2s35_1_132_foxbatRU_W": {
+			"skinName": "BoM_pe2s35_1_132_foxbatRU_W",
+			"planeType": "pe2s35",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
+		},
+		"BoM_pe2s35_2_132_foxbatRU_W": {
+			"skinName": "BoM_pe2s35_2_132_foxbatRU_W",
+			"planeType": "pe2s35",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
+		},
+		"BoM_pe2s35_3_128_foxbatRU": {
+			"skinName": "BoM_pe2s35_3_128_foxbatRU",
+			"planeType": "pe2s35",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"BoM_pe2s35_4_128_foxbatRU": {
+			"skinName": "BoM_pe2s35_4_128_foxbatRU",
+			"planeType": "pe2s35",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"BoM_pe2s35_5_128_foxbatRU": {
+			"skinName": "BoM_pe2s35_5_128_foxbatRU",
+			"planeType": "pe2s35",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"BoM_pe2s35_6_128_foxbatRU": {
+			"skinName": "BoM_pe2s35_6_128_foxbatRU",
+			"planeType": "pe2s35",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"BoM_pe2s35_7_128_foxbatRU": {
+			"skinName": "BoM_pe2s35_7_128_foxbatRU",
+			"planeType": "pe2s35",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"BoM_pe2s35_8_128_foxbatRU": {
+			"skinName": "BoM_pe2s35_8_128_foxbatRU",
+			"planeType": "pe2s35",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"BoM_pe2s35_9_128_foxbatRU": {
+			"skinName": "BoM_pe2s35_9_128_foxbatRU",
+			"planeType": "pe2s35",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Pe2s35_4096_FoxbatRu": {
+			"skinName": "Pe2s35_4096_FoxbatRu",
+			"planeType": "pe2s35",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
 		}
 	}
 }

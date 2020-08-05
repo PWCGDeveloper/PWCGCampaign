@@ -132,6 +132,61 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": false
+		},
+		"p38j25_skin_03": {
+			"skinName": "p38j25_skin_03",
+			"planeType": "p38j25",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"P38J25_EARTHQUAKE_McGOON": {
+			"skinName": "P38J25_EARTHQUAKE_McGOON",
+			"planeType": "p38j25",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P38J25_California_Cutie": {
+			"skinName": "P38J25_California_Cutie",
+			"planeType": "p38j25",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P38J25_GLAMOUR_PUSS_II": {
+			"skinName": "P38J25_GLAMOUR_PUSS_II",
+			"planeType": "p38j25",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P38J25_SKYLARK_IV": {
+			"skinName": "P38J25_SKYLARK_IV",
+			"planeType": "p38j25",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
 		}
 	}
 }

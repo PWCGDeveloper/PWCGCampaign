@@ -99,6 +99,61 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": false
+		},
+		"Me262A_4k_3_JG7_5Y v5 cs": {
+			"skinName": "Me262A_4k_3_JG7_5Y v5 cs",
+			"planeType": "me262a",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20111044,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Me262A_4k_mid green cover v4": {
+			"skinName": "Me262A_4k_mid green cover v4",
+			"planeType": "me262a",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20111044,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Me262A_4k_mistel v9": {
+			"skinName": "Me262A_4k_mistel v9",
+			"planeType": "me262a",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20131051,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Me262A_4k_mistel v16": {
+			"skinName": "Me262A_4k_mistel v16",
+			"planeType": "me262a",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20131051,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Me262A_4k_mistel v23": {
+			"skinName": "Me262A_4k_mistel v23",
+			"planeType": "me262a",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20131051,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
 		}
 	}
 }

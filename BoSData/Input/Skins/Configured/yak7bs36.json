@@ -143,6 +143,72 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": false
+		},
+		"yak7bs36 SK": {
+			"skinName": "yak7bs36 SK",
+			"planeType": "yak7bs36",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Yak7Bs36_3": {
+			"skinName": "Yak7Bs36_3",
+			"planeType": "yak7bs36",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Yak7Bs36_KNM": {
+			"skinName": "Yak7Bs36_KNM",
+			"planeType": "yak7bs36",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Yak7Bs36_7": {
+			"skinName": "Yak7Bs36_7",
+			"planeType": "yak7bs36",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Yak7Bs36_29": {
+			"skinName": "Yak7Bs36_29",
+			"planeType": "yak7bs36",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Yak7Bs36_THP": {
+			"skinName": "Yak7Bs36_THP",
+			"planeType": "yak7bs36",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
 		}
 	}
 }

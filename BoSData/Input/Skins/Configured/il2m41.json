@@ -77,6 +77,171 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": false
+		},
+		"IL2M41_1 ka": {
+			"skinName": "IL2M41_1 ka",
+			"planeType": "il2m41",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"IL2M41_4k_8RED_174shap": {
+			"skinName": "IL2M41_4k_8RED_174shap",
+			"planeType": "il2m41",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"IL2M41_08 41": {
+			"skinName": "IL2M41_08 41",
+			"planeType": "il2m41",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"IL2M41_09_1941g": {
+			"skinName": "IL2M41_09_1941g",
+			"planeType": "il2m41",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"IL2M41_243_SHAP_white_2_4k": {
+			"skinName": "IL2M41_243_SHAP_white_2_4k",
+			"planeType": "il2m41",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"IL2M41_BEL27": {
+			"skinName": "IL2M41_BEL27",
+			"planeType": "il2m41",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"xxx": {
+			"skinName": "xxx",
+			"planeType": "il2m41",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"IL2M41_DAVYDENKO_4k": {
+			"skinName": "IL2M41_DAVYDENKO_4k",
+			"planeType": "il2m41",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"IL2M41_Desna_3_4k": {
+			"skinName": "IL2M41_Desna_3_4k",
+			"planeType": "il2m41",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"IL2M41_red_2_4k": {
+			"skinName": "IL2M41_red_2_4k",
+			"planeType": "il2m41",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"IL2M41_SMERT_OKKUP_4k": {
+			"skinName": "IL2M41_SMERT_OKKUP_4k",
+			"planeType": "il2m41",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"IL2M41_SMIRNOV_4k": {
+			"skinName": "IL2M41_SMIRNOV_4k",
+			"planeType": "il2m41",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"IL2M41_white_10_4k": {
+			"skinName": "IL2M41_white_10_4k",
+			"planeType": "il2m41",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"IL2m41_yellow_2_4k": {
+			"skinName": "IL2m41_yellow_2_4k",
+			"planeType": "il2m41",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"IL2M41_ZA_RODINU_4k": {
+			"skinName": "IL2M41_ZA_RODINU_4k",
+			"planeType": "il2m41",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
 		}
 	}
 }

@@ -66,6 +66,127 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": true
+		},
+		"Pe2 Grey": {
+			"skinName": "Pe2 Grey",
+			"planeType": "pe2s87",
+			"startDate": "19430501",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Pe2s87_4k_Grey": {
+			"skinName": "Pe2s87_4k_Grey",
+			"planeType": "pe2s87",
+			"startDate": "19430501",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Pe2s87_40": {
+			"skinName": "Pe2s87_40",
+			"planeType": "pe2s87",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Pe2s87_Pike B_N": {
+			"skinName": "Pe2s87_Pike B_N",
+			"planeType": "pe2s87",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Pe2s87_Pike Winter B_N": {
+			"skinName": "Pe2s87_Pike Winter B_N",
+			"planeType": "pe2s87",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
+		},
+		"xxx": {
+			"skinName": "xxx",
+			"planeType": "pe2s87",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Pe2s87_Pike Winter": {
+			"skinName": "Pe2s87_Pike Winter",
+			"planeType": "pe2s87",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
+		},
+		"Pe2s87_Pike": {
+			"skinName": "Pe2s87_Pike",
+			"planeType": "pe2s87",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Pe2s87_White51": {
+			"skinName": "Pe2s87_White51",
+			"planeType": "pe2s87",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Pe2s87_winter 16": {
+			"skinName": "Pe2s87_winter 16",
+			"planeType": "pe2s87",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
+		},
+		"Pe2s87_winter 26": {
+			"skinName": "Pe2s87_winter 26",
+			"planeType": "pe2s87",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
 		}
 	}
 }

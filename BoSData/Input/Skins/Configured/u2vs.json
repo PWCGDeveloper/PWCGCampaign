@@ -44,6 +44,50 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": false
+		},
+		"U2VS_ 2": {
+			"skinName": "U2VS_ 2",
+			"planeType": "u2vs",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"U2VS_ Vasilievna": {
+			"skinName": "U2VS_ Vasilievna",
+			"planeType": "u2vs",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"U2VS_CCCP": {
+			"skinName": "U2VS_CCCP",
+			"planeType": "u2vs",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"U2VS_PARTISAN": {
+			"skinName": "U2VS_PARTISAN",
+			"planeType": "u2vs",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
 		}
 	}
 }
