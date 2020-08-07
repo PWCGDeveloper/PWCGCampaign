@@ -32,6 +32,16 @@
 			"country": "USA",
 			"category": "Squadron",
 			"definedInGame": false
+		},
+		{
+			"skinName": "FG365",
+			"planeType": "p47d28",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102036022,
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": false
 		}
   ],
   "squadHistory": {

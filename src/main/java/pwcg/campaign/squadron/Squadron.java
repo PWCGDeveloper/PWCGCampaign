@@ -87,7 +87,7 @@ public class Squadron
 
 	public List<PlaneType> determineCurrentAircraftList(Date now) throws PWCGException
 	{
-		TreeMap<Integer, PlaneType> currentAircraftByGoodness = new TreeMap<Integer, PlaneType>();
+		TreeMap<String, PlaneType> currentAircraftByGoodness = new TreeMap<>();
 		
 		for (SquadronPlaneAssignment planeAssignment : planeAssignments)
 		{
@@ -102,7 +102,7 @@ public class Squadron
 				    for (PlaneType planeType : planeTypesForArchType)
 				    {
 				        PlaneType plane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeType.getType());
-				        currentAircraftByGoodness.put(plane.getGoodness(), plane);
+				        currentAircraftByGoodness.put("" + plane.getGoodness() + planeType.getType(), plane);
 				    }
 				}
 			}			

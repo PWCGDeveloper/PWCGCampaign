@@ -2,6 +2,15 @@
 ​
 At the PWCG web site
 
+10.3.2
+Russian skins.  New skins cover most, if not all, Russian planes
+- Special shout out to szelljr this release because I covered all 32 pages for his skins and pulled dozens.
+- Added more skins by SARFlytitus, Almenas, 352nd_Siqhter, and SR603-Flowbee, E69_Julian57, flyingfisch, CCG_Pips
+- Added skins by several contributors from the Russian forum
+- New skins are in skin packs 3, 4, 5, 6, and 7 ... yes, there are that many
+- Some P-38 skins made it in too
+Changed skin algorithm to allow many more personal skins to be used
+
 10.3.1
 User made skins skins by SARFlytitus, Almenas, 352nd_Siqhter, and SR603-Flowbee
 Skins are p47 d-22 (Quite a few), I16, LaGG 3, and Me-262.

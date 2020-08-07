@@ -23,7 +23,7 @@
 	},
 	"skins": [
 		{
-			"skinName": "p47d22_skin_06",
+			"skinName": "FG373",
 			"planeType": "p47d22",
 			"startDate": "19400801",
 			"endDate": "19450601",
@@ -33,7 +33,7 @@
 			"definedInGame": true
 		},
 		{
-			"skinName": "p47d28_skin_01",
+			"skinName": "FG373",
 			"planeType": "p47d28",
 			"startDate": "19400801",
 			"endDate": "19450601",

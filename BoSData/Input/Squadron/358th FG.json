@@ -24,7 +24,7 @@
   },
   "skins": [
 		{
-			"skinName": "p47d22_skin_09",
+			"skinName": "FG358",
 			"planeType": "p47d22",
 			"startDate": "19400801",
 			"endDate": "19450601",
@@ -34,8 +34,8 @@
 			"definedInGame": true
 		},
 		{
-			"skinName": "p47d27_skin_06",
-			"planeType": "p47d27",
+			"skinName": "FG358",
+			"planeType": "p47d28",
 			"startDate": "19400801",
 			"endDate": "19450601",
 			"squadId": 102358365,

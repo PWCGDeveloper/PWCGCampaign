@@ -187,6 +187,105 @@
 			"category": "Configured",
 			"definedInGame": false,
 			"winter": false
+		},
+		"P38J25_ LITTLE BUTCH": {
+			"skinName": "P38J25_ LITTLE BUTCH",
+			"planeType": "p38j25",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P38J25_GENTLE ANNIE": {
+			"skinName": "P38J25_GENTLE ANNIE",
+			"planeType": "p38j25",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P38J25_IN MEMORY OF_": {
+			"skinName": "P38J25_IN MEMORY OF_",
+			"planeType": "p38j25",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"xxx": {
+			"skinName": "xxx",
+			"planeType": "p38j25",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P38J25_JOURNEYS END": {
+			"skinName": "P38J25_JOURNEYS END",
+			"planeType": "p38j25",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P38J25_LUCKY LADY": {
+			"skinName": "P38J25_LUCKY LADY",
+			"planeType": "p38j25",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P38J25_MAMAS BOY": {
+			"skinName": "P38J25_MAMAS BOY",
+			"planeType": "p38j25",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P38J25_MISS MASS": {
+			"skinName": "P38J25_MISS MASS",
+			"planeType": "p38j25",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"P38J25_MY LITTLE PIG": {
+			"skinName": "P38J25_MY LITTLE PIG",
+			"planeType": "p38j25",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
 		}
 	}
 }
