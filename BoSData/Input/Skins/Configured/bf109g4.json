@@ -88,6 +88,28 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": false
+		},
+		"Dackel_Waldmann_G4_swastika": {
+			"skinName": "Dackel_Waldmann_G4_swastika",
+			"planeType": "bf109g4",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Bf109G-4_ 8 WR 4K ": {
+			"skinName": "Bf109G-4_ 8 WR 4K ",
+			"planeType": "bf109g4",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20111077,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
 		}
 	}
 }

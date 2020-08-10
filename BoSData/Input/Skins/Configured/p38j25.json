@@ -221,17 +221,6 @@
 			"definedInGame": false,
 			"winter": false
 		},
-		"xxx": {
-			"skinName": "xxx",
-			"planeType": "p38j25",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -1,
-			"country": "USA",
-			"category": "Configured",
-			"definedInGame": false,
-			"winter": false
-		},
 		"P38J25_JOURNEYS END": {
 			"skinName": "P38J25_JOURNEYS END",
 			"planeType": "p38j25",

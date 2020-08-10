@@ -122,17 +122,6 @@
 			"definedInGame": false,
 			"winter": true
 		},
-		"xxx": {
-			"skinName": "xxx",
-			"planeType": "pe2s87",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -1,
-			"country": "Russia",
-			"category": "Configured",
-			"definedInGame": false,
-			"winter": false
-		},
 		"Pe2s87_Pike Winter": {
 			"skinName": "Pe2s87_Pike Winter",
 			"planeType": "pe2s87",

@@ -144,17 +144,6 @@
 			"definedInGame": false,
 			"winter": false
 		},
-		"xxx": {
-			"skinName": "xxx",
-			"planeType": "il2m41",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -1,
-			"country": "Russia",
-			"category": "Configured",
-			"definedInGame": false,
-			"winter": false
-		},
 		"IL2M41_DAVYDENKO_4k": {
 			"skinName": "IL2M41_DAVYDENKO_4k",
 			"planeType": "il2m41",

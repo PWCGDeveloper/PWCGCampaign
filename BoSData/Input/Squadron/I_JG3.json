@@ -73,7 +73,28 @@
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false
+		},
+		{
+			"skinName": "I_JG3",
+			"planeType": "bf109g6",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20111003,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
+		},
+		{
+			"skinName": "I_JG3",
+			"planeType": "bf109g14",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20111003,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
 		}
+		
 	],
 	"squadHistory": {
 		"squadHistoryEntries": []

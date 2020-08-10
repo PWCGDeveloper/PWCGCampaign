@@ -441,17 +441,6 @@
 			"definedInGame": false,
 			"winter": false
 		},
-		"xxx": {
-			"skinName": "xxx",
-			"planeType": "p47d28",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 102373410,
-			"country": "USA",
-			"category": "Configured",
-			"definedInGame": false,
-			"winter": false
-		},
 		"P-47D-28_4k_BigChief": {
 			"skinName": "P-47D-28_4k_BigChief",
 			"planeType": "p47d28",

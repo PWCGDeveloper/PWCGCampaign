@@ -25,14 +25,24 @@
   },
   "skins": [
 		{
-			"skinName": "spitfiremkixe_skin_13",
+			"skinName": "No66",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": 103084066,
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false
+		},
+		{
+			"skinName": "No66",
 			"planeType": "spitfiremkixe",
 			"startDate": "19440601",
 			"endDate": "19450601",
 			"squadId": 103084066,
 			"country": "Britain",
 			"category": "Squadron",
-			"definedInGame": true
+			"definedInGame": false
 		}
   ],
   "squadHistory": {

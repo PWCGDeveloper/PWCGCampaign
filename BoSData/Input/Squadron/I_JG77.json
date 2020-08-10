@@ -24,6 +24,26 @@
 	},
 	"skins": [
 		{
+			"skinName": "I_JG77",
+			"planeType": "bf109f4",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20111077,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": true
+		},
+		{
+			"skinName": "I_JG77",
+			"planeType": "bf109f6",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20111077,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": true
+		},
+		{
 			"skinName": "bf109g6_skin_06",
 			"planeType": "bf109g14",
 			"startDate": "19400801",
@@ -34,14 +54,24 @@
 			"definedInGame": true
 		},
 		{
-			"skinName": "bf109k4_skin_07",
+			"skinName": "I_JG77",
+			"planeType": "bf109g14",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20111077,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
+		},
+		{
+			"skinName": "I_JG77",
 			"planeType": "bf109k4",
 			"startDate": "19400801",
 			"endDate": "19450601",
 			"squadId": 20111077,
 			"country": "Germany",
 			"category": "Squadron",
-			"definedInGame": true
+			"definedInGame": false
 		}
 	],
 	"squadHistory": {

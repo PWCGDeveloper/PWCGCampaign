@@ -1,6 +1,6 @@
 {
-  "skinSetType": "SKIN_CONFIGURED",
-  "skins": {
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
 		"spitfiremkvb_skin_00": {
 			"skinName": "spitfiremkvb_skin_00",
 			"planeType": "spitfiremkvb",
@@ -56,6 +56,17 @@
 			"definedInGame": true,
 			"winter": false
 		},
+		"spitfiremkvb_skin_07": {
+			"skinName": "spitfiremkvb_skin_08",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": 103084326,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
 		"spitfiremkvb_skin_08": {
 			"skinName": "spitfiremkvb_skin_08",
 			"planeType": "spitfiremkvb",
@@ -73,7 +84,7 @@
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
-			"country": "Britain",
+			"country": "Russia",
 			"category": "Configured",
 			"definedInGame": false,
 			"winter": false
@@ -84,7 +95,7 @@
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
-			"country": "Britain",
+			"country": "Russia",
 			"category": "Configured",
 			"definedInGame": false,
 			"winter": false
@@ -95,7 +106,7 @@
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
-			"country": "Britain",
+			"country": "Russia",
 			"category": "Configured",
 			"definedInGame": false,
 			"winter": false
@@ -106,7 +117,7 @@
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
-			"country": "Britain",
+			"country": "Russia",
 			"category": "Configured",
 			"definedInGame": false,
 			"winter": false
@@ -117,10 +128,197 @@
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Spitfire_EN522_John Ratten ": {
+			"skinName": "Spitfire_EN522_John Ratten ",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"SpitfireMkVb_5-AL": {
+			"skinName": "SpitfireMkVb_5-AL",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"SpitfireMkVb_126KILL": {
+			"skinName": "SpitfireMkVb_126KILL",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"SpitfireMkVb_BA-U": {
+			"skinName": "SpitfireMkVb_BA-U",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"SpitfireMkVb_BETTE": {
+			"skinName": "SpitfireMkVb_BETTE",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"SpitfireMkVb_DUTY DICK GERMAN": {
+			"skinName": "SpitfireMkVb_DUTY DICK GERMAN",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"SpitfireMkVb_DUTY DICK": {
+			"skinName": "SpitfireMkVb_DUTY DICK",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"SpitfireMkVb_FU C_Colin Rusty Leith": {
+			"skinName": "SpitfireMkVb_FU C_Colin Rusty Leith",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"SpitfireMkVb_GOBELS": {
+			"skinName": "SpitfireMkVb_GOBELS",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"SpitfireMkVb_GW B 966": {
+			"skinName": "SpitfireMkVb_GW B 966",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"SpitfireMkVb_J-MC": {
+			"skinName": "SpitfireMkVb_J-MC",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"SpitfireMkVb_KIWI": {
+			"skinName": "SpitfireMkVb_KIWI",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"SpitfireMkVb_MN-P": {
+			"skinName": "SpitfireMkVb_MN-P",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"SpitfireMkVb_PB": {
+			"skinName": "SpitfireMkVb_PB",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"SpitfireMkVb_PINOCHIO": {
+			"skinName": "SpitfireMkVb_PINOCHIO",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"SpitfireMkVb_Wojtek": {
+			"skinName": "SpitfireMkVb_Wojtek",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"SpitfireMkVb-AVR-J": {
+			"skinName": "SpitfireMkVb-AVR-J",
+			"planeType": "spitfiremkvb",
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": -1,
 			"country": "Britain",
 			"category": "Configured",
 			"definedInGame": false,
 			"winter": false
 		}
-  }
+	}
 }

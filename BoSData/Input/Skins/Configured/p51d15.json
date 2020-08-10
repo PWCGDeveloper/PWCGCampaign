@@ -210,17 +210,6 @@
 			"definedInGame": false,
 			"winter": false
 		},
-		"xxx": {
-			"skinName": "xxx",
-			"planeType": "p51d15",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 102352486,
-			"country": "USA",
-			"category": "Configured",
-			"definedInGame": false,
-			"winter": false
-		},
 		"352nd_StrawBoss2_v1": {
 			"skinName": "352nd_StrawBoss2_v1",
 			"planeType": "p51d15",

@@ -99,6 +99,105 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": false
+		},
+		"JN751": {
+			"skinName": "JN751",
+			"planeType": "tempestmkvs2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"JN754_SWEETMAN": {
+			"skinName": "JN754_SWEETMAN",
+			"planeType": "tempestmkvs2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"JN763_IREMONGER": {
+			"skinName": "JN763_IREMONGER",
+			"planeType": "tempestmkvs2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"JN765": {
+			"skinName": "JN765",
+			"planeType": "tempestmkvs2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"JN812": {
+			"skinName": "JN812",
+			"planeType": "tempestmkvs2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"LE GRAND CHARLES": {
+			"skinName": "LE GRAND CHARLES",
+			"planeType": "tempestmkvs2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"MPG_4K_TempestMkVs2_274Sqn_JJ-M_March1945": {
+			"skinName": "MPG_4K_TempestMkVs2_274Sqn_JJ-M_March1945",
+			"planeType": "tempestmkvs2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"JN769": {
+			"skinName": "JN769",
+			"planeType": "tempestmkvs2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"REMY VAN LIERDE": {
+			"skinName": "REMY VAN LIERDE",
+			"planeType": "tempestmkvs2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
 		}
 	}
 }
