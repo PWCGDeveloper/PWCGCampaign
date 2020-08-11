@@ -69,6 +69,26 @@
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": true
+		},
+		{
+			"skinName": "II_Stg77",
+			"planeType": "fw190a5",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20122077,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
+		},
+		{
+			"skinName": "II_SG4",
+			"planeType": "fw190a8",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20122077,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
 		}
 	],
 	"squadHistory": {

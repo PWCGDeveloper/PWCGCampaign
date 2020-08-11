@@ -9,6 +9,11 @@
 			"archType": "fw190",
 			"squadronIntroduction": "19440901",
 			"squadronWithdrawal": "19450601"
+		},
+		{
+			"archType": "fw190d",
+			"squadronIntroduction": "19450301",
+			"squadronWithdrawal": "19450601"
 		}
 	],
 	"airfields": {
@@ -22,7 +27,48 @@
 		"19450310": "Limburg-Linter",
 		"19450404": "Kirtorf"
 	},
-	"skins": [],
+	"skins": [
+		{
+			"skinName": "I_JG6",
+			"planeType": "fw190a3",
+			"startDate": "19411101",
+			"endDate": "19450601",
+			"squadId": 20111006,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
+		},
+		{
+			"skinName": "I_JG6",
+			"planeType": "fw190a5",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20111006,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
+		},
+		{
+			"skinName": "I_JG6",
+			"planeType": "fw190a8",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20111006,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
+		},
+		{
+			"skinName": "I_JG6",
+			"planeType": "fw190d9",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20111006,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
+		}
+	],
 	"squadHistory": {
 		"squadHistoryEntries": []
 	},

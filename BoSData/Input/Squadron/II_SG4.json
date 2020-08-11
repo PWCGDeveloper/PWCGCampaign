@@ -23,6 +23,36 @@
     "19450404": "Ettinghausen"
   },
   "skins": [
+		{
+			"skinName": "II_SG4",
+			"planeType": "fw190a3",
+			"startDate": "19411101",
+			"endDate": "19450601",
+			"squadId": 20122004,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
+		},
+		{
+			"skinName": "II_SG4",
+			"planeType": "fw190a5",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20122004,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
+		},
+		{
+			"skinName": "II_SG4",
+			"planeType": "fw190a8",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20122004,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
+		}
   ],
   "squadHistory": {
     "squadHistoryEntries": [

@@ -27,7 +27,48 @@
 		"19450310": "Breitscheid",
 		"19450404": "Stormede"
 	},
-	"skins": [],
+	"skins": [
+		{
+			"skinName": "I_JG27",
+			"planeType": "fw190a3",
+			"startDate": "19411101",
+			"endDate": "19450601",
+			"squadId": 20111027,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
+		},
+		{
+			"skinName": "I_JG27",
+			"planeType": "fw190a5",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20111027,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
+		},
+		{
+			"skinName": "I_JG27",
+			"planeType": "fw190a8",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20111027,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
+		},
+		{
+			"skinName": "I_JG27",
+			"planeType": "fw190d9",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20111027,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
+		}
+	],
 	"squadHistory": {
 		"squadHistoryEntries": []
 	},

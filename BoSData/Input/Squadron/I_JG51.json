@@ -103,14 +103,24 @@
 			"winter": true
 		},
 		{
-			"skinName": "fw190a5_skin_04",
+			"skinName": "I_JG51",
 			"planeType": "fw190a5",
 			"startDate": "19400801",
 			"endDate": "19450601",
 			"squadId": 20111051,
 			"country": "Germany",
 			"category": "Squadron",
-			"definedInGame": true
+			"definedInGame": false
+		},
+		{
+			"skinName": "I_JG51",
+			"planeType": "fw190a8",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20111051,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
 		}
 	],
 	"squadHistory": {
