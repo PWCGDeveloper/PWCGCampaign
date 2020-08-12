@@ -353,17 +353,6 @@
 			"definedInGame": false,
 			"winter": false
 		},
-		"D9_II_JG26_6_7": {
-			"skinName": "D9_II_JG26_6_7",
-			"planeType": "fw190d9",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 20111006,
-			"country": "Germany",
-			"category": "Configured",
-			"definedInGame": false,
-			"winter": false
-		},
 		"Fw190D9_8_JG6_9Blue": {
 			"skinName": "Fw190D9_8_JG6_9Blue",
 			"planeType": "fw190d9",
