@@ -130,6 +130,7 @@ public class BriefingFlightCrewPlaneUpdater
                 playerFlight.getFlightInformation().getCountry(), crewPlane.getPilot());
         updatedPlaneMcu.setIndex(IndexGenerator.getInstance().getNextIndex());
         updatedPlaneMcu.getEntity().setTarget(flightmember.getLinkTrId());
+        updatedPlaneMcu.setFuel(flightmember.getFuel());
 
         return updatedPlaneMcu;
     }

@@ -32,6 +32,7 @@ public class BriefingMissionUpdater
         {
             pushFlightParametersToMission(briefingData);
             pushCrewAndPayloadToMission(briefingData);
+            pushFuelToMission(briefingData);
             
         }
     }
@@ -44,7 +45,6 @@ public class BriefingMissionUpdater
         for (BriefingFlight briefingFlight : briefingData.getBriefingFlights())
         {
             IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(briefingFlight.getSquadronId());
-            playerFlight.getFlightPlanes().setFuelForFlight(briefingFlight.getSelectedFuel());
             playerFlight.getWaypointPackage().updateWaypointsFromBriefing(briefingFlight.getBriefingFlightParameters().getBriefingMapMapPoints());
         }
     }
@@ -59,4 +59,18 @@ public class BriefingMissionUpdater
             crewePlaneUpdater.updatePlayerPlanes(briefingFlight.getBriefingAssignmentData().getCrews());
         }
     }
+    
+
+    private static void pushFuelToMission(BriefingData briefingData) throws PWCGException
+    {
+        Mission mission = briefingData.getMission();
+        mission.getMissionOptions().getMissionTime().setMissionTime(briefingData.getMissionTime());
+
+        for (BriefingFlight briefingFlight : briefingData.getBriefingFlights())
+        {
+            IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(briefingFlight.getSquadronId());
+            playerFlight.getFlightPlanes().setFuelForFlight(briefingFlight.getSelectedFuel());
+        }
+    }
+
 }
