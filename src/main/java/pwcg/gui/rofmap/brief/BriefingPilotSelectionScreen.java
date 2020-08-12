@@ -14,6 +14,8 @@ import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignMode;
+import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.PlanesOwnedManager;
@@ -419,11 +421,13 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
 
         if (!ensurePlayerIsInMission())
         {
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             return;
         }
 
         if (!ensurePlayerOwnsPlane())
         {
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             return;
         }
 
@@ -468,17 +472,27 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
 
     private boolean ensurePlayerOwnsPlane() throws PWCGException
     {
-        IFlight playerFlight = briefingData.getSelectedFlight();
-        List<PlaneMcu> playerPlanes = playerFlight.getFlightPlanes().getPlayerPlanes();
-        for (PlaneMcu playerPlane : playerPlanes)
+        if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
         {
-            if (!PlanesOwnedManager.getInstance().isPlaneOwned(playerPlane.getType()))
+            List<BriefingFlight> briefingFlights = briefingData.getBriefingFlights();
+            for (BriefingFlight briefingFlight : briefingFlights)
             {
-                ErrorDialog.userError("Player does not own his assigned plane: " + playerPlane.getDisplayName() + ".  Mission will not be written.");
-                return false;
+                for (CrewPlanePayloadPairing crewPlanePair : briefingFlight.getCrews())
+                {
+                    SquadronMember  pilot = crewPlanePair.getPilot();
+                    if (pilot.isPlayer())
+                    {
+                        EquippedPlane playerPlane = crewPlanePair.getPlane();
+                        if (!PlanesOwnedManager.getInstance().isPlaneOwned(playerPlane.getType()))
+                        {
+                            ErrorDialog.userError("Player does not own his assigned plane: " + playerPlane.getDisplayName() + ".  Mission will not be written.");
+                            return false;
+                        }
+                    }
+                }
             }
         }
-        
+
         return true;
     }
 
