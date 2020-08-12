@@ -110,6 +110,105 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": false
+		},
+		"GD-CJ_Winter": {
+			"skinName": "GD-CJ_Winter",
+			"planeType": "hs129b2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
+		},
+		"HS129B2_K1 Winter": {
+			"skinName": "HS129B2_K1 Winter",
+			"planeType": "hs129b2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
+		},
+		"_NN+KF": {
+			"skinName": "_NN+KF",
+			"planeType": "hs129b2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"HS129B2 10 blanco": {
+			"skinName": "HS129B2 10 blanco",
+			"planeType": "hs129b2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"HS129B2_6SchG1 K sw": {
+			"skinName": "HS129B2_6SchG1 K sw",
+			"planeType": "hs129b2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"xxxxx": {
+			"skinName": "xxxxx",
+			"planeType": "hs129b2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"HS129B2_X": {
+			"skinName": "HS129B2_X",
+			"planeType": "hs129b2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"HS129B2_red L": {
+			"skinName": "HS129B2_red L",
+			"planeType": "hs129b2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Rudolf Ruffer": {
+			"skinName": "Rudolf Ruffer",
+			"planeType": "hs129b2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
 		}
 	}
 }

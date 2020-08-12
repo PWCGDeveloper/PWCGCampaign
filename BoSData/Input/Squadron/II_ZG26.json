@@ -24,7 +24,7 @@
 	},
 	"skins": [
 		{
-			"skinName": "I_ZG_26",
+			"skinName": "II_ZG_26",
 			"planeType": "bf110e2",
 			"startDate": "19410101",
 			"endDate": "19450601",
@@ -34,14 +34,14 @@
 			"definedInGame": false
 		},
 		{
-			"skinName": "bf110g2_skin_14",
+			"skinName": "II_ZG_26",
 			"planeType": "bf110g2",
 			"startDate": "19410101",
 			"endDate": "19450601",
 			"squadId": 20102026,
 			"country": "Germany",
 			"category": "Squadron",
-			"definedInGame": true
+			"definedInGame": false
 		}
 	],
 	"squadHistory": {

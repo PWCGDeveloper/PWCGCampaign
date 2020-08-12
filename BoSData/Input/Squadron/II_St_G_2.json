@@ -56,14 +56,14 @@
   },
   "skins": [
     {
-      "skinName": "ju87d3_skin_05",
+      "skinName": "II_StG2",
       "planeType": "ju87d3",
       "startDate": "19400801",
       "endDate": "19450601",
       "squadId": 20122002,
       "country": "Germany",
       "category": "Squadron",
-      "definedInGame": true
+      "definedInGame": false
     }
   ],
   "squadHistory": {

@@ -77,6 +77,193 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": true
+		},
+		"Ju87D_ST NM": {
+			"skinName": "Ju87D_ST NM",
+			"planeType": "ju87d3",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Ju87D_5B-LK": {
+			"skinName": "Ju87D_5B-LK",
+			"planeType": "ju87d3",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Ju-87D-3_6G-FR": {
+			"skinName": "Ju-87D-3_6G-FR",
+			"planeType": "ju87d3",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Ju-87D-3_RUDEL": {
+			"skinName": "Ju-87D-3_RUDEL",
+			"planeType": "ju87d3",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Ju-87D-3_S2-OL": {
+			"skinName": "Ju-87D-3_S2-OL",
+			"planeType": "ju87d3",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Ju-87D-3_t6-AD": {
+			"skinName": "Ju-87D-3_t6-AD",
+			"planeType": "ju87d3",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Ju-87D-3_T6-AN": {
+			"skinName": "Ju-87D-3_T6-AN",
+			"planeType": "ju87d3",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Ju-87D-8 NJGS italy Swastika": {
+			"skinName": "Ju-87D-8 NJGS italy Swastika",
+			"planeType": "ju87d3",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Ju-87D-8_1.NSGr1_Germany_1944": {
+			"skinName": "Ju-87D-8_1.NSGr1_Germany_1944",
+			"planeType": "ju87d3",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"S7-AH": {
+			"skinName": "S7-AH",
+			"planeType": "ju87d3",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Ju-87_D-3_Default_4k": {
+			"skinName": "Ju-87_D-3_Default_4k",
+			"planeType": "ju87d3",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"4k_Ju87D_Stab II.StG2_T6-DC_summer_FoxbatRU": {
+			"skinName": "4k_Ju87D_Stab II.StG2_T6-DC_summer_FoxbatRU",
+			"planeType": "ju87d3",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20121002,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Ju-87D1 StabIII_SG2 T6+AD Gustav Prefler Winter": {
+			"skinName": "Ju-87D1 StabIII_SG2 T6+AD Gustav Prefler Winter",
+			"planeType": "ju87d3",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20121002,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
+		},
+		"Ju87D_9_Stg2 Wnr 2799": {
+			"skinName": "Ju87D_9_Stg2 Wnr 2799",
+			"planeType": "ju87d3",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20122002,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Ju87D_StabII_StG2_T6+BC": {
+			"skinName": "Ju87D_StabII_StG2_T6+BC",
+			"planeType": "ju87d3",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20122002,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"G Winter": {
+			"skinName": "G Winter",
+			"planeType": "ju87d3",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
+		},
+		"Ju-87D  J9-LL Winter": {
+			"skinName": "Ju-87D  J9-LL Winter",
+			"planeType": "ju87d3",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": true
 		}
 	}
 }

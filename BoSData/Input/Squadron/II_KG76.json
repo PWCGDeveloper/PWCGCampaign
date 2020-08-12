@@ -51,7 +51,29 @@
 		"19450401": "ef_Chievres",
 		"19450501": "ef_Chievres"
 	},
-	"skins": [],
+	"skins": [
+		{
+			"skinName": "II_KG76",
+			"planeType": "ju88a4",
+			"startDate": "19410101",
+			"endDate": "19450601",
+			"squadId": 20131076,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
+		},
+		{
+			"skinName": "II_KG76_W",
+			"planeType": "ju88a4",
+			"startDate": "19410101",
+			"endDate": "19430601",
+			"squadId": 20131076,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": true
+		}
+	],
 	"squadHistory": {
 		"squadHistoryEntries": [
 			{

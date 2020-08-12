@@ -56,7 +56,7 @@
 	},
 	"skins": [
 		{
-			"skinName": "bf110e2_skin_03",
+			"skinName": "I_ZG_26",
 			"planeType": "bf110e2",
 			"startDate": "19410101",
 			"endDate": "19450601",
@@ -66,7 +66,7 @@
 			"definedInGame": true
 		},
 		{
-			"skinName": "bf110g2_skin_14",
+			"skinName": "I_ZG_26",
 			"planeType": "bf110g2",
 			"startDate": "19410101",
 			"endDate": "19450601",

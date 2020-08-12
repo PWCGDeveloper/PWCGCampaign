@@ -99,6 +99,94 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": false
+		},
+		"Bf110E_Zerstorer 6_ZG_26 Russia 1942": {
+			"skinName": "Bf110E_Zerstorer 6_ZG_26 Russia 1942",
+			"planeType": "bf110e2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20102026,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Bf110D-1 Stab II ZG26 3UBC": {
+			"skinName": "Bf110D-1 Stab II ZG26 3UBC",
+			"planeType": "bf110e2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20102026,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Bf110E2_1(Z)JG77_Lt_Felix_Brandis(LN+LR)": {
+			"skinName": "Bf110E2_1(Z)JG77_Lt_Felix_Brandis(LN+LR)",
+			"planeType": "bf110e2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20102026,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Bf110E2_1Erg_Zerst_Gr_Poland1942": {
+			"skinName": "Bf110E2_1Erg_Zerst_Gr_Poland1942",
+			"planeType": "bf110e2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20102026,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Bf110E2_6_ZG76_Jabs": {
+			"skinName": "Bf110E2_6_ZG76_Jabs",
+			"planeType": "bf110e2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20102026,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Bf110E2_Public_4k 3U AK v13": {
+			"skinName": "Bf110E2_Public_4k 3U AK v13",
+			"planeType": "bf110e2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20102026,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Bf110E2_Public_4k 3U HK wespe v1": {
+			"skinName": "Bf110E2_Public_4k 3U HK wespe v1",
+			"planeType": "bf110e2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20102026,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Bf110E2_S9+FP": {
+			"skinName": "Bf110E2_S9+FP",
+			"planeType": "bf110e2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20102026,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
 		}
 	}
 }

@@ -143,6 +143,83 @@
 			"category": "Configured",
 			"definedInGame": true,
 			"winter": false
+		},
+		"Bf110G2_4k_13ZJG5": {
+			"skinName": "Bf110G2_4k_13ZJG5",
+			"planeType": "bf110g2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Bf110E2_Hans Joachim Jabs_Uncensored": {
+			"skinName": "Bf110E2_Hans Joachim Jabs_Uncensored",
+			"planeType": "bf110g2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20101026,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Bf110G2_4k_5NJG200": {
+			"skinName": "Bf110G2_4k_5NJG200",
+			"planeType": "bf110g2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20101026,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Bf110G2_12.SG77 Ostfront 1943": {
+			"skinName": "Bf110G2_12.SG77 Ostfront 1943",
+			"planeType": "bf110g2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20101026,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Bf110G2_Public_4k 2n am v8": {
+			"skinName": "Bf110G2_Public_4k 2n am v8",
+			"planeType": "bf110g2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20101026,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Bf110G2_Public_4k Wilhelm Johnen nightfighter v3": {
+			"skinName": "Bf110G2_Public_4k Wilhelm Johnen nightfighter v3",
+			"planeType": "bf110g2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20102026,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"Bf110G2_Treppe Vowinkel Hybrid": {
+			"skinName": "Bf110G2_Treppe Vowinkel Hybrid",
+			"planeType": "bf110g2",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20102026,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
 		}
 	}
 }
