@@ -20,7 +20,7 @@ public class SkinIOJsonTest
     {
         PWCGContext.setProduct(PWCGProduct.FC);
         Map<String, SkinSet> skins = SkinIOJson.readSkinSet(SkinSetType.SKIN_CONFIGURED.getSkinSetName());
-        assert (skins.size() == 0);
+        assert (skins.size() > 0);
     }
     
     @Test

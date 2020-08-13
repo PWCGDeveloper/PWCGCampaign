@@ -84,7 +84,7 @@ public class MissionSkinSetBuilderTest
         MissionSkinSet missionSkinSet = MissionSkinSetBuilder.buildWinterMissionSkinSet(flight);
         assert(missionSkinSet.getFactorySkins("lagg3s29").size() > 0);
         assert(missionSkinSet.getSquadronSkins("lagg3s29").size() == 0);
-        assert(missionSkinSet.getSquadronPersonalSkins("lagg3s29").size() == 0);
+        assert(missionSkinSet.getSquadronPersonalSkins("lagg3s29").size() > 0);
         assert(missionSkinSet.getNonSquadronPersonalSkin("lagg3s29").size() > 0);
     }
     

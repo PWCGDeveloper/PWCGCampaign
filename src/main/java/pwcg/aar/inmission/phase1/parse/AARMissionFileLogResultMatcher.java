@@ -6,7 +6,6 @@ import pwcg.aar.prelim.AARHeaderParser;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.FileUtils;
 
 public class AARMissionFileLogResultMatcher
 {
@@ -24,12 +23,14 @@ public class AARMissionFileLogResultMatcher
     	for (String logFileName : sortedLogSets)
     	{
             String missionFileNameFromLogs = aarHeaderParser.parseHeaderOnly(campaign.getCampaignData().getName(), logFileName);
-            missionFileNameFromLogs = FileUtils.stripFileExtension(missionFileNameFromLogs);
             String missionFileNameFromPwcg = pwcgMissionData.getMissionHeader().getMissionFileName();
             if (missionFileNameFromPwcg.toLowerCase().equalsIgnoreCase(missionFileNameFromLogs.toLowerCase()))
             {
                 AARMissionLogFileSet logFileMissionFileSet = makeMissionLogFileSet(logFileName, pwcgMissionData);
-                return logFileMissionFileSet;
+                if (AARLogSetValidator.isLogSetValid(campaign, logFileMissionFileSet))
+                {
+                    return logFileMissionFileSet;
+                }
             }
     	}
         

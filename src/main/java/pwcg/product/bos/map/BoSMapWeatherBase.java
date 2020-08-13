@@ -1,12 +1,10 @@
 package pwcg.product.bos.map;
 
-import java.util.Calendar;
 import java.util.Date;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.options.MapSeasonalParameters;
 import pwcg.mission.options.MapSeasonalParameters.Season;
 import pwcg.mission.options.MapWeather;
@@ -71,70 +69,5 @@ public abstract class BoSMapWeatherBase extends MapWeather
         return weather;
     }
 
-    /**
-     * @param month
-     * @param frontMap
-     * @return
-     */
-    protected void setTemperature(Date date, FrontMapIdentifier frontMap)
-    {
-        temperature = 25;
-        
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        int month = calendar.get(Calendar.MONTH) + 1;
-
-        if (month == 1)
-        {
-            temperature = -10 +  RandomNumberGenerator.getRandom(15);
-        }
-        else if (month == 2)
-        {
-            temperature = -5 +  RandomNumberGenerator.getRandom(10);
-        }
-        else if (month == 3)
-        {
-            temperature = 5 +  RandomNumberGenerator.getRandom(15);
-        }
-        else if (month == 4)
-        {
-            temperature = 10 +  RandomNumberGenerator.getRandom(10);
-        }
-        else if (month == 5)
-        {
-            temperature = 15 +  RandomNumberGenerator.getRandom(10);
-        }
-        else if (month == 6 || month == 7)
-        {
-            temperature = 20 +  RandomNumberGenerator.getRandom(10);
-        }
-        else if (month == 8)
-        {
-            temperature = 20 +  RandomNumberGenerator.getRandom(15);
-        }
-        else if (month == 9)
-        {
-            temperature = 20 +  RandomNumberGenerator.getRandom(10);
-        }
-        else if (month == 10)
-        {
-            temperature = 10 +  RandomNumberGenerator.getRandom(10);
-        }       
-        else if (month == 11)
-        {
-            temperature = 5 +  RandomNumberGenerator.getRandom(15);
-        }       
-        else if (month == 12)
-        {
-            temperature = 5 +  RandomNumberGenerator.getRandom(10);
-        }
-        
-        if (frontMap == FrontMapIdentifier.MOSCOW_MAP)
-        {
-            if (temperature > 28)
-            {
-                temperature = 28;
-            }
-        }
-    }
+    abstract protected void setTemperature(Date date, FrontMapIdentifier frontMap);
 }

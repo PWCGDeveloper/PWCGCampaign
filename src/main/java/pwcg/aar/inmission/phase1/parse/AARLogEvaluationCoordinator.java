@@ -6,12 +6,7 @@ import pwcg.core.exception.PWCGException;
 public class AARLogEvaluationCoordinator
 {
     private AARMissionLogRawData missionLogRawData = new AARMissionLogRawData(); 
- 
-    public AARLogEvaluationCoordinator()
-    {
-    }
-    
-    
+
     public AARMissionLogRawData performAARPhase1Parse(Campaign campaign, AARMissionLogFileSet missionLogFileSet) throws PWCGException
     {
         IAARLogParser aarLogParser = new AARLogParser(missionLogFileSet);;
