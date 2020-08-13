@@ -320,17 +320,6 @@
 			"definedInGame": false,
 			"winter": false
 		},
-		"Bf109F2_red 5 IV JG51": {
-			"skinName": "Bf109F2_red 5 IV JG51",
-			"planeType": "bf109f2",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 20112051,
-			"country": "Germany",
-			"category": "Configured",
-			"definedInGame": false,
-			"winter": false
-		},
 		"Bf109F2_Black 1 II JG52": {
 			"skinName": "Bf109F2_Black 1 II JG52",
 			"planeType": "bf109f2",
@@ -340,7 +329,7 @@
 			"country": "Germany",
 			"category": "Configured",
 			"definedInGame": false,
-			"winter": false
+			"winter": true
 		},
 		"Bf109F2_Black 7 II JG52": {
 			"skinName": "Bf109F2_Black 7 II JG52",
@@ -351,7 +340,7 @@
 			"country": "Germany",
 			"category": "Configured",
 			"definedInGame": false,
-			"winter": false
+			"winter": true
 		},
 		"Bf109F2_Black 11 II JG52": {
 			"skinName": "Bf109F2_Black 11 II JG52",
@@ -362,7 +351,7 @@
 			"country": "Germany",
 			"category": "Configured",
 			"definedInGame": false,
-			"winter": false
+			"winter": true
 		},
 		"4K Bf-109F-2_1w_seiler_1jg54": {
 			"skinName": "4K Bf-109F-2_1w_seiler_1jg54",

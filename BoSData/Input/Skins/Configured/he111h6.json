@@ -166,17 +166,6 @@
 			"definedInGame": false,
 			"winter": false
 		},
-		"xxxxx": {
-			"skinName": "xxxxx",
-			"planeType": "he111h6",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -1,
-			"country": "Germany",
-			"category": "Configured",
-			"definedInGame": false,
-			"winter": false
-		},
 		"He111H6_KG100_6N+SK": {
 			"skinName": "He111H6_KG100_6N+SK",
 			"planeType": "he111h6",

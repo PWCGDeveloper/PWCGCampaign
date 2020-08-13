@@ -188,17 +188,6 @@
 			"definedInGame": false,
 			"winter": false
 		},
-		"xxxxx": {
-			"skinName": "xxxxx",
-			"planeType": "ju88a4",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 20131054,
-			"country": "Germany",
-			"category": "Configured",
-			"definedInGame": false,
-			"winter": false
-		},
 		"Ju88A4_Stab_I_KG51_9K+AB": {
 			"skinName": "Ju88A4_Stab_I_KG51_9K+FB",
 			"planeType": "ju88a4",

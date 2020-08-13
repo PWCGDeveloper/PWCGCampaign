@@ -97,7 +97,7 @@
 			"squadId": -1,
 			"country": "Germany",
 			"category": "Configured",
-			"false": true,
+			"definedInGame": true,
 			"winter": true
 		},
 		"Bf109G6_2JG52_Trenkel_4k_V002": {
@@ -108,7 +108,7 @@
 			"squadId": -1,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf109G6_JG27_Franz_Stigler_4k": {
@@ -119,7 +119,7 @@
 			"squadId": -1,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf109G6 163306 RQDR Red 3 GS": {
@@ -130,7 +130,7 @@
 			"squadId": -1,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf109G6_5_JG2_12black": {
@@ -141,7 +141,7 @@
 			"squadId": -1,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf109G6_10_JG11_Rudschinat": {
@@ -152,7 +152,7 @@
 			"squadId": -1,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf109G6_stabII.JG52_Heinz_Ewald_4K": {
@@ -163,7 +163,7 @@
 			"squadId": -1,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf109G6_5.JG52_B15_Quex_4K": {
@@ -174,7 +174,7 @@
 			"squadId": -1,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf109G6_A.Grislawski": {
@@ -185,7 +185,7 @@
 			"squadId": -1,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf109G6_SLOVAKIA_7W_4k-V003a-UL": {
@@ -196,7 +196,7 @@
 			"squadId": -1,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf109G6_JG300_12Y_4k-V003a-UL": {
@@ -207,7 +207,7 @@
 			"squadId": -1,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf109G6_4_JG52_W10": {
@@ -218,7 +218,7 @@
 			"squadId": -1,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf109_G6_Factory_Gray": {
@@ -229,7 +229,7 @@
 			"squadId": -2,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf109_G6_Factory_Green": {
@@ -240,7 +240,7 @@
 			"squadId": -2,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf109G6_ Black 13 JG3": {
@@ -251,7 +251,7 @@
 			"squadId": 20111003,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf109G6_ Stab III JG3 ": {
@@ -262,7 +262,7 @@
 			"squadId": 20111003,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf109G6_ white 3  I JG3": {
@@ -273,7 +273,7 @@
 			"squadId": 20111003,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf109G6_white 6 IV JG3": {
@@ -284,7 +284,7 @@
 			"squadId": 20111003,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf-109-G6-7-JG3-White1": {
@@ -295,7 +295,7 @@
 			"squadId": 20111003,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf109G6_ red 2  IV JG51 Shitomir": {
@@ -306,7 +306,7 @@
 			"squadId": 20112051,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf109G6_4_JG52_W03": {
@@ -317,7 +317,7 @@
 			"squadId": 20111052,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf109G6  yellow 1   II JG52 Lipfert": {
@@ -328,7 +328,7 @@
 			"squadId": 20112052,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf109G6  yellow 5  II  JG52": {
@@ -339,7 +339,7 @@
 			"squadId": 20112052,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf109G6_6.JG52_Y11_Heinz_Ewald": {
@@ -350,7 +350,7 @@
 			"squadId": 20112052,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf109G6_Black 1 III JG52": {
@@ -361,7 +361,7 @@
 			"squadId": 20112052,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf109G6_Black 4 III JG52": {
@@ -372,7 +372,7 @@
 			"squadId": 20112052,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		},
 		"Bf109G6_4k_7JG300_3BLACK": {
@@ -383,7 +383,7 @@
 			"squadId": 20111077,
 			"country": "Germany",
 			"category": "Configured",
-			"false": false,
+			"definedInGame": false,
 			"winter": false
 		}
 	}

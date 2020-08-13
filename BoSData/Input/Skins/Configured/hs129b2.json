@@ -166,17 +166,6 @@
 			"definedInGame": false,
 			"winter": false
 		},
-		"xxxxx": {
-			"skinName": "xxxxx",
-			"planeType": "hs129b2",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -1,
-			"country": "Germany",
-			"category": "Configured",
-			"definedInGame": false,
-			"winter": false
-		},
 		"HS129B2_X": {
 			"skinName": "HS129B2_X",
 			"planeType": "hs129b2",

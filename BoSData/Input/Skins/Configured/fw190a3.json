@@ -309,6 +309,17 @@
 			"definedInGame": false,
 			"winter": false
 		},
+		"PatrikSchorner": {
+			"skinName": "PatrikSchorner",
+			"planeType": "fw190a3",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20111051,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
 		"FW190a3_4096_Stab I.JG51 v21": {
 			"skinName": "FW190a3_4096_Stab I.JG51 v21",
 			"planeType": "fw190a3",
@@ -354,7 +365,7 @@
 			"winter": false
 		},
 		"FW190a3_5_Schl.G1_WF2": {
-			"skinName": "FW190a3_5_Schl.G1_WF2 - Copy",
+			"skinName": "FW190a3_5_Schl.G1_WF2",
 			"planeType": "fw190a3",
 			"startDate": "19400801",
 			"endDate": "19450601",

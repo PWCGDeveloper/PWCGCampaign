@@ -199,17 +199,6 @@
 			"definedInGame": false,
 			"winter": false
 		},
-		"xxx": {
-			"skinName": "xxx",
-			"planeType": "fw190a8",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": -1,
-			"country": "Germany",
-			"category": "Configured",
-			"definedInGame": false,
-			"winter": false
-		},
 		"FW190a8_4k_3JG_10_11Black_v4": {
 			"skinName": "FW190a8_4k_3JG_10_11Black_v4",
 			"planeType": "fw190a8",

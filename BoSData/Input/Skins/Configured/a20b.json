@@ -201,7 +201,7 @@
 		},
 		"A20B_47th_bombardment_24_sylvia": {
 			"skinName": "A20B_47th_bombardment_24_sylvia",
-			"planeType": "A20B_47th_bombardment_24_sylvia",
+			"planeType": "a20b",
 			"startDate": "19400801",
 			"endDate": "19450601",
 			"squadId": -1,

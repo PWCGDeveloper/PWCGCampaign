@@ -462,17 +462,6 @@
 			"category": "Configured",
 			"definedInGame": false,
 			"winter": false
-		},
-		"FW190a5_jg26_geswadkom_priller_2_v3": {
-			"skinName": "FW190a5_jg26_geswadkom_priller_2_v3",
-			"planeType": "fw190a5",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 20112002,
-			"country": "Germany",
-			"category": "Configured",
-			"definedInGame": false,
-			"winter": false
 		}
 	}
 }

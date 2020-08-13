@@ -385,6 +385,28 @@
 			"category": "Configured",
 			"definedInGame": false,
 			"winter": false
+		},
+		"355th FS 354th FG": {
+			"skinName": "355th FS 354th FG",
+			"planeType": "p51d15",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
+		},
+		"356th FS 354th FG": {
+			"skinName": "356th FS 354th FG",
+			"planeType": "p51d15",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "USA",
+			"category": "Configured",
+			"definedInGame": false,
+			"winter": false
 		}
 	}
 }
