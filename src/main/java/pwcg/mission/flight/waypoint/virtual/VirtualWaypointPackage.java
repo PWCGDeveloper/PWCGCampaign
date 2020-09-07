@@ -1,4 +1,4 @@
-package pwcg.mission.flight.waypoint;
+package pwcg.mission.flight.waypoint.virtual;
 
 import java.io.BufferedWriter;
 import java.util.ArrayList;
@@ -9,7 +9,10 @@ import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.virtual.VirtualWaypointGenerator;
+import pwcg.mission.flight.waypoint.DuplicatedWaypointSet;
+import pwcg.mission.flight.waypoint.IWaypointPackage;
 import pwcg.mission.mcu.BaseFlightMcu;
+import pwcg.mission.mcu.group.IVirtualWaypoint;
 import pwcg.mission.mcu.group.VirtualWayPoint;
 
 public class VirtualWaypointPackage implements IVirtualWaypointPackage
@@ -49,7 +52,7 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
     {
         duplicatedWaypointSet.write(writer);
         
-        for (VirtualWayPoint virtualWaypoint : virtualWaypoints)
+        for (IVirtualWaypoint virtualWaypoint : virtualWaypoints)
         {
             virtualWaypoint.write(writer);
         }
@@ -101,7 +104,7 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
 
     private void linkVirtualWaypointToMissionBegin() throws PWCGException
     {
-        VirtualWayPoint firstVirtualWayPoint = virtualWaypoints.get(0);
+        IVirtualWaypoint firstVirtualWayPoint = virtualWaypoints.get(0);
         if (firstVirtualWayPoint != null)
         {
             duplicatedWaypointSet.getActivateMissionPointSet().setLinkToNextTarget(firstVirtualWayPoint.getEntryPoint().getIndex());

@@ -16,7 +16,7 @@ import pwcg.mission.MissionStringHandler;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.FormationGenerator;
-import pwcg.mission.flight.waypoint.VirtualWayPointCoordinate;
+import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.mcu.McuCounter;
@@ -24,7 +24,7 @@ import pwcg.mission.mcu.McuDeactivate;
 import pwcg.mission.mcu.McuSubtitle;
 import pwcg.mission.mcu.McuTimer;
 
-public final class VirtualWayPoint 
+public final class VirtualWayPoint implements IVirtualWaypoint 
 {       
     private Map<Integer, VwpSpawnContainer> vwpSpawnContainers = new TreeMap<>();
     private int index = IndexGenerator.getInstance().getNextIndex();;
@@ -49,6 +49,7 @@ public final class VirtualWayPoint
         index = IndexGenerator.getInstance().getNextIndex();
     }
 
+    @Override
     public void initialize(
                     IFlight flight,
                     VirtualWayPointCoordinate vwpCoordinate,
@@ -203,6 +204,7 @@ public final class VirtualWayPoint
         }        
     }
 
+    @Override
     public void write(BufferedWriter writer) throws PWCGIOException 
     {
         try
@@ -252,6 +254,7 @@ public final class VirtualWayPoint
     }
     
 
+    @Override
     public void addAdditionalTime(int additionalTime)
     {
         int vwpTimerTime = vwpTimer.getTimer();
@@ -260,21 +263,25 @@ public final class VirtualWayPoint
     }
 
 
+    @Override
     public McuTimer getEntryPoint()
     {
         return vwpTimer;
     }
 
-    public void linkToNextVirtualWaypoint(VirtualWayPoint nextVWP)
+    @Override
+    public void linkToNextVirtualWaypoint(IVirtualWaypoint nextVWP)
     {
         initiateNextVirtualWaypointTimer.setTarget(nextVWP.getEntryPoint().getIndex());
     }
 
+    @Override
     public McuTimer getKillVwpTimer()
     {
         return killVwpTimer;
     }
     
+    @Override
     public void registerPlaneCounter(McuCounter counter)
     {
         for (VwpSpawnContainer vwpSpawnContainer : vwpSpawnContainers.values())
@@ -283,56 +290,67 @@ public final class VirtualWayPoint
         }
     }
     
+    @Override
     public void setVirtualWaypointTriggerObject(int triggerObject)
     {
         checkZone.setCheckZoneTriggerObject(triggerObject);
     }
 
+    @Override
     public VwpSpawnContainer getVwpSpawnContainerForPlane(int planeIndex)
     {
         return vwpSpawnContainers.get(planeIndex);
     }
 
+    @Override
     public List<McuSubtitle> getSubTitleList()
     {
         return subTitleList;
     }
 
+    @Override
     public boolean isUseSubtitles()
     {
         return useSubtitles;
     }
 
+    @Override
     public SelfDeactivatingCheckZone getCheckZone()
     {
         return checkZone;
     }
 
+    @Override
     public McuTimer getVwpTimedOutTimer()
     {
         return vwpTimedOutTimer;
     }
 
+    @Override
     public McuTimer getVwpTimer()
     {
         return vwpTimer;
     }
 
+    @Override
     public McuTimer getMasterSpawnTimer()
     {
         return masterSpawnTimer;
     }
 
+    @Override
     public McuTimer getInitiateNextVirtualWaypointTimer()
     {
         return initiateNextVirtualWaypointTimer;
     }
 
+    @Override
     public McuTimer getVwpTriggeredTimer()
     {
         return vwpTriggeredTimer;
     }
 
+    @Override
     public McuDeactivate getStopNextVwp()
     {
         return stopNextVwp;

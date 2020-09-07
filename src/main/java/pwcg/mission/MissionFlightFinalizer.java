@@ -6,8 +6,9 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.waypoint.IVirtualWaypointPackage;
+import pwcg.mission.flight.waypoint.virtual.IVirtualWaypointPackage;
 import pwcg.mission.ground.org.IGroundUnit;
+import pwcg.mission.mcu.group.IVirtualWaypoint;
 import pwcg.mission.mcu.group.VirtualWayPoint;
 import pwcg.mission.utils.AiAdjuster;
 
@@ -112,11 +113,11 @@ public class MissionFlightFinalizer
         if (flight.getFlightInformation().isVirtual())
         {
             IVirtualWaypointPackage virtualWaypointPackage = flight.getVirtualWaypointPackage();
-            for (VirtualWayPoint vwp : virtualWaypointPackage.getVirtualWaypoints())
+            for (IVirtualWaypoint vwp : virtualWaypointPackage.getVirtualWaypoints())
             {
                 if (vwp != null && vwp instanceof VirtualWayPoint)
                 {
-                    VirtualWayPoint vwpCZ = (VirtualWayPoint)vwp;
+                    IVirtualWaypoint vwpCZ = (IVirtualWaypoint)vwp;
                     for (int planeIndex : flight.getMission().getMissionFlightBuilder().determinePlayerPlaneIds())
                     {
                         vwpCZ.setVirtualWaypointTriggerObject(planeIndex);

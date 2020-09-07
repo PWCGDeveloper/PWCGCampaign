@@ -1,4 +1,4 @@
-package pwcg.mission.flight.waypoint;
+package pwcg.mission.flight.waypoint.virtual;
 
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;

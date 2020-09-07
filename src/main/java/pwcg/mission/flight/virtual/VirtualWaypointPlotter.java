@@ -9,8 +9,8 @@ import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
-import pwcg.mission.flight.waypoint.VirtualWayPointCoordinate;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
+import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 
 public class VirtualWaypointPlotter
 {

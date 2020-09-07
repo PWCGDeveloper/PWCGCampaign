@@ -5,9 +5,10 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.waypoint.VirtualWayPointCoordinate;
+import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.mcu.CoalitionFactory;
+import pwcg.mission.mcu.group.IVirtualWaypoint;
 import pwcg.mission.mcu.group.VirtualWayPoint;
 
 public class VirtualWaypointGenerator
@@ -29,7 +30,7 @@ public class VirtualWaypointGenerator
 
     private List<VirtualWayPoint> buildVirtualWaypointsFromCoordinates(List<VirtualWayPointCoordinate> plotCoordinates) throws PWCGException
     {
-        VirtualWayPoint prevVirtualWaypoint = null;        
+        IVirtualWaypoint prevVirtualWaypoint = null;        
 
         List<VirtualWayPoint> virtualWaypoints = new ArrayList<VirtualWayPoint>();
         for (VirtualWayPointCoordinate plotCoordinate : plotCoordinates)
@@ -49,7 +50,7 @@ public class VirtualWaypointGenerator
         return virtualWaypoint;
     }
 
-    private VirtualWayPoint linkVirtualWaypoint(VirtualWayPoint prevVirtualWaypoint, VirtualWayPoint virtualWaypoint)
+    private IVirtualWaypoint linkVirtualWaypoint(IVirtualWaypoint prevVirtualWaypoint, IVirtualWaypoint virtualWaypoint)
     {
         if (prevVirtualWaypoint != null)
         {

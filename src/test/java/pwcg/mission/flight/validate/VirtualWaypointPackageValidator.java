@@ -5,11 +5,11 @@ import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.IWaypointPackage;
-import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointFlightActivate;
+import pwcg.mission.flight.waypoint.virtual.VirtualWaypointPackage;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuTimer;
-import pwcg.mission.mcu.group.VirtualWayPoint;
+import pwcg.mission.mcu.group.IVirtualWaypoint;
 import pwcg.mission.mcu.group.VwpSpawnContainer;
 
 public class VirtualWaypointPackageValidator
@@ -43,8 +43,8 @@ public class VirtualWaypointPackageValidator
 
     private void validateVirtualWaypointPackage(IFlight flight) throws PWCGException
     {        
-        VirtualWayPoint previousVirtualWayPoint = null;
-        for (VirtualWayPoint virtualWayPoint : virtualWaypointPackage.getVirtualWaypoints())
+        IVirtualWaypoint previousVirtualWayPoint = null;
+        for (IVirtualWaypoint virtualWayPoint : virtualWaypointPackage.getVirtualWaypoints())
         {
             
             verifyTargetAssociationsTriggered(virtualWayPoint);
@@ -55,7 +55,7 @@ public class VirtualWaypointPackageValidator
         }
     }
     
-    private void verifyTargetAssociationsTimedOut(VirtualWayPoint virtualWayPoint, VirtualWayPoint previousVirtualWayPoint)
+    private void verifyTargetAssociationsTimedOut(IVirtualWaypoint virtualWayPoint, IVirtualWaypoint previousVirtualWayPoint)
     {
         assert(IndexLinkValidator.isIndexInTargetList(virtualWayPoint.getVwpTimedOutTimer().getIndex(), virtualWayPoint.getVwpTimer().getTargets()));
         assert(IndexLinkValidator.isIndexInTargetList(virtualWayPoint.getInitiateNextVirtualWaypointTimer().getIndex(), virtualWayPoint.getVwpTimedOutTimer().getTargets()));
@@ -66,7 +66,7 @@ public class VirtualWaypointPackageValidator
         }
     }
 
-    private void verifyTargetAssociationsTriggered(VirtualWayPoint virtualWayPoint)
+    private void verifyTargetAssociationsTriggered(IVirtualWaypoint virtualWayPoint)
     {
         assert(IndexLinkValidator.isIndexInTargetList(virtualWayPoint.getCheckZone().getActivateEntryPoint(), virtualWayPoint.getVwpTimer().getTargets()));
         assert(IndexLinkValidator.isIndexInTargetList(virtualWayPoint.getVwpTriggeredTimer().getIndex(), virtualWayPoint.getCheckZone().getCheckZone().getTargets()));
@@ -74,13 +74,13 @@ public class VirtualWaypointPackageValidator
         assert(IndexLinkValidator.isIndexInTargetList(virtualWayPoint.getMasterSpawnTimer().getIndex(), virtualWayPoint.getVwpTriggeredTimer().getTargets()));
     }
     
-    private void verifyTargetAssociationsForPlaneLimitReached(VirtualWayPoint virtualWayPoint)
+    private void verifyTargetAssociationsForPlaneLimitReached(IVirtualWaypoint virtualWayPoint)
     {
         assert(IndexLinkValidator.isIndexInTargetList(virtualWayPoint.getStopNextVwp().getIndex(), virtualWayPoint.getKillVwpTimer().getTargets()));
         assert(IndexLinkValidator.isIndexInTargetList(virtualWayPoint.getCheckZone().getDeactivateEntryPoint(), virtualWayPoint.getKillVwpTimer().getTargets()));
     }
     
-    private void verifySpawnContainers (IFlight flight, VirtualWayPoint virtualWayPoint)
+    private void verifySpawnContainers (IFlight flight, IVirtualWaypoint virtualWayPoint)
     {
         VwpSpawnContainer previousSpawnContainer = null;
         for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
@@ -108,7 +108,7 @@ public class VirtualWaypointPackageValidator
             IWaypointPackage waypointPackage = flight.getVirtualWaypointPackage().getWaypointsForPlane(plane.getIndex());
             boolean isFirstLinkedToRealWaypoint = false;
             boolean virtualWaypointIsLinkedToRealWaypoint = false;
-            for (VirtualWayPoint virtualWayPoint : flight.getVirtualWaypointPackage().getVirtualWaypoints())
+            for (IVirtualWaypoint virtualWayPoint : flight.getVirtualWaypointPackage().getVirtualWaypoints())
             {
                 for (BaseFlightMcu flightPoint : waypointPackage.getAllFlightPoints())
                 {
@@ -136,7 +136,7 @@ public class VirtualWaypointPackageValidator
         McuTimer activateTimer = virtualFlightActivate.getActivationTimer();
         
         this.virtualWaypointPackage = (VirtualWaypointPackage) flight.getVirtualWaypointPackage();
-        VirtualWayPoint firstVirtualWaypoint = virtualWaypointPackage.getVirtualWaypoints().get(0);
+        IVirtualWaypoint firstVirtualWaypoint = virtualWaypointPackage.getVirtualWaypoints().get(0);
 
         assert(IndexLinkValidator.isIndexInTargetList(firstVirtualWaypoint.getVwpTimer().getIndex(), activateTimer.getTargets()));
     }

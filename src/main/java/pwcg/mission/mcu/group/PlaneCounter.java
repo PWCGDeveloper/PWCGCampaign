@@ -11,7 +11,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.MissionStringHandler;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.waypoint.IVirtualWaypointPackage;
+import pwcg.mission.flight.waypoint.virtual.IVirtualWaypointPackage;
 import pwcg.mission.mcu.McuCounter;
 import pwcg.mission.mcu.McuSubtitle;
 import pwcg.mission.mcu.McuTimer;
@@ -92,7 +92,7 @@ public class PlaneCounter
          if (flight.getFlightInformation().isVirtual())
          {
              IVirtualWaypointPackage virtualWaypointPackage = flight.getVirtualWaypointPackage();
-             for (VirtualWayPoint vwp : virtualWaypointPackage.getVirtualWaypoints())
+             for (IVirtualWaypoint vwp : virtualWaypointPackage.getVirtualWaypoints())
              {
                  // Link this VWP spawners to the plane counter
                  vwp.registerPlaneCounter(this.planeCounter);
@@ -100,7 +100,7 @@ public class PlaneCounter
                  // If it is a CZ VWP, set disable when plane count reaches maximum
                  if (vwp instanceof VirtualWayPoint)
                  {
-                     VirtualWayPoint vwpCZ = (VirtualWayPoint)vwp;
+                     IVirtualWaypoint vwpCZ = (IVirtualWaypoint)vwp;
                      disableMorePlanesTimer.setTarget(vwpCZ.getKillVwpTimer().getIndex());
                   }
              }

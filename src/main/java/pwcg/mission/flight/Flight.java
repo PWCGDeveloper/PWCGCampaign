@@ -8,10 +8,10 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.plane.PlaneMcu;
-import pwcg.mission.flight.waypoint.IVirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.IWaypointPackage;
-import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointPackage;
+import pwcg.mission.flight.waypoint.virtual.IVirtualWaypointPackage;
+import pwcg.mission.flight.waypoint.virtual.VirtualWaypointPackage;
 import pwcg.mission.skin.MissionSkinGenerator;
 import pwcg.mission.target.TargetDefinition;
 

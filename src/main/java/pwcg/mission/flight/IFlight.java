@@ -7,8 +7,8 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.waypoint.IVirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.IWaypointPackage;
+import pwcg.mission.flight.waypoint.virtual.IVirtualWaypointPackage;
 import pwcg.mission.target.TargetDefinition;
 
 public interface IFlight
