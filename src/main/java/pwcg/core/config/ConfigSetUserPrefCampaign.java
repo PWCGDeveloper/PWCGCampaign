@@ -12,6 +12,7 @@ public class ConfigSetUserPrefCampaign
         configSet.addConfigItem(ConfigItemKeys.MissionsCreditedKey, new ConfigItem("1"));    
         configSet.addConfigItem(ConfigItemKeys.ShowAllFlightsInBreifingKey, new ConfigItem("0"));
         configSet.addConfigItem(ConfigItemKeys.RemoveNonHistoricalSquadronsKey, new ConfigItem("0"));
+        configSet.addConfigItem(ConfigItemKeys.SaveStupidAiKey, new ConfigItem("0"));
 		return configSet;    
 	}
 }
