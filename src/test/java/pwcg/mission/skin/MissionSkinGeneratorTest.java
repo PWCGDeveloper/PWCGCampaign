@@ -58,7 +58,7 @@ public class MissionSkinGeneratorTest
         assert (missionSkinSet.getFactorySkins("ju87d3").size() > 0);
         assert (missionSkinSet.getSquadronSkins("ju87d3").size() > 0);
         assert (missionSkinSet.getSquadronPersonalSkins("ju87d3").size() > 0);
-        assert (missionSkinSet.getNonSquadronPersonalSkin("ju87d3").size() == 0);
+        assert (missionSkinSet.getNonSquadronPersonalSkin("ju87d3").size() > 0);
     }
 
     @Test

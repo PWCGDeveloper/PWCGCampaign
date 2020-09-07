@@ -33,19 +33,19 @@ public class SkinManagerTest
         assert (testSkins.size() > 0);
         
         testSkins = skinManager.getPersonalSkinsByPlaneCountryDateInUse(planeType, iCountry.getCountryName(), DateUtils.getDateYYYYMMDD("19420401"));
-        assert (testSkins.size() == 0);
-        
-        testSkins = skinManager.getPersonalSkinsByPlaneCountryDateInUse("bf109f4", iCountry.getCountryName(), DateUtils.getDateYYYYMMDD("19420401"));
-        assert (testSkins.size() == 0);
+        assert (testSkins.size() > 0);
         
         testSkins = skinManager.getSkinsByPlaneSquadron(planeType, 20111051);
         assert (testSkins.size() == 0);
         
-        testSkins = skinManager.getSkinsByPlaneCountry(planeType, iCountry.getCountryName());
-        assert (testSkins.size() == 0);
+        testSkins = skinManager.getSkinsByPlaneSquadron(planeType, 20111052);
+        assert (testSkins.size() > 0);
         
-        testSkins = skinManager.getSkinsByPlaneSquadronDateInUse(planeType, 501011, DateUtils.getDateYYYYMMDD("19420401"));
-        assert (testSkins.size() == 0);
+        testSkins = skinManager.getSkinsByPlaneCountry(planeType, iCountry.getCountryName());
+        assert (testSkins.size() > 0);
+        
+        testSkins = skinManager.getSkinsByPlaneSquadronDateInUse(planeType, 20111052, DateUtils.getDateYYYYMMDD("19420401"));
+        assert (testSkins.size() > 0);
     }
 
 }
