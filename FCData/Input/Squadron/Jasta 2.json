@@ -26,16 +26,86 @@
   },
   "skins": [
     {
-      "skinName": "albatrosd5_skin_05",
+      "skinName": "AD5_J2_Default_MAY17",
       "planeType": "albatrosd5",
-      "startDate": "19140801",
-      "endDate": "19180319",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": true
+      "startDate": "19170101",
+      "endDate": "19171001",
+      "squadId": 401002,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_J2_Default_OCT17",
+      "planeType": "albatrosd5",
+      "startDate": "19171002",
+      "endDate": "19171201",
+      "squadId": 401002,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_J2_Default_DEC17",
+      "planeType": "albatrosd5",
+      "startDate": "19171202",
+      "endDate": "19180415",
+      "squadId": 401002,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_J2_Default_APR18",
+      "planeType": "albatrosd5",
+      "startDate": "19180416",
+      "endDate": "19181201",
+      "squadId": 401002,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FDR1_J2_Default_A_Early",
+      "planeType": "fokkerdr1",
+      "startDate": "19171101",
+      "endDate": "19180415",
+      "squadId": 401002,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FDR1_J2_Default_A_Late",
+      "planeType": "fokkerdr1",
+      "startDate": "19180416",
+      "endDate": "19181201",
+      "squadId": 401002,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FD7_J2_default_4K_Adams_Lozenge",
+      "planeType": "fokkerd7",
+      "startDate": "19180416",
+      "endDate": "19181201",
+      "squadId": 401002,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FD7F_J2_default_4K_Adams_lozenge",
+      "planeType": "fokkerd7f",
+      "startDate": "19180416",
+      "endDate": "19181201",
+      "squadId": 401002,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
     }
-  ],
+],
   "squadHistory": {
     "squadHistoryEntries": []
   },

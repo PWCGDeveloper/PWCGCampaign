@@ -14,7 +14,18 @@
   "airfields": {
     "19170801": "Talmas"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "SE5a_RFC84_Default",
+      "planeType": "se5a",
+      "startDate": "19170801",
+      "endDate": "19181201",
+      "squadId": 302084,
+      "country": "BRITAIN",
+      "category": "Squadron",
+      "definedInGame": false
+    }  
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

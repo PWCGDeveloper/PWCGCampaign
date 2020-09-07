@@ -46,7 +46,18 @@
   "aiSkillLevel": "ACE",
   "skill": 4,
   "commonSense": 0,
-  "skins": [],
+  "skins": [
+     {
+      "skinName": "SE5a_RFC24_McElroy",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Ace",
+      "definedInGame": false
+    } 
+  ],
   "victories": [
     {
       "date": "19171228",

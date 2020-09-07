@@ -86,27 +86,7 @@
       "definedInGame": false
     },
     {
-      "skinName": "501002_A01",
-      "planeType": "fokkerd7",
-      "startDate": "19140801",
-      "endDate": "19181201",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "501002_A01",
-      "planeType": "fokkerdr1",
-      "startDate": "19140801",
-      "endDate": "19181201",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "PD3A_J10VOSSEARLY",
+      "skinName": "PD3a_J10_Werner_Voss",
       "planeType": "pfalzd3a",
       "startDate": "19140801",
       "endDate": "19181201",
@@ -116,7 +96,7 @@
       "definedInGame": false
     },
     {
-      "skinName": "FDR1_J10_VOSS",
+      "skinName": "FDr1_J10_WernerVoss_V1green",
       "planeType": "fokkerdr1",
       "startDate": "19140801",
       "endDate": "19181201",

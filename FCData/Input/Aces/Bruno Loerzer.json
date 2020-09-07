@@ -54,7 +54,7 @@
       "definedInGame": false
     },
     {
-      "skinName": "AD5_J26B.LOERZER",
+      "skinName": "AD5_J26_BRUNO LOERZER",
       "planeType": "albatrosd5",
       "startDate": "19140801",
       "endDate": "19181201",
@@ -64,9 +64,9 @@
       "definedInGame": false
     },
     {
-      "skinName": "FDR1_J26B_LOERZER",
+      "skinName": "FDR1_J26_LOERZER",
       "planeType": "fokkerdr1",
-      "startDate": "19140801",
+      "startDate": "19180415",
       "endDate": "19181201",
       "squadId": -1,
       "country": "",

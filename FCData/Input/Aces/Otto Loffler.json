@@ -32,7 +32,7 @@
   "commonSense": 0,
   "skins": [
     {
-      "skinName": "FDR1_J2LOFFLER",
+      "skinName": "FDR1_J2_LOFFLER",
       "planeType": "fokkerdr1",
       "startDate": "19140801",
       "endDate": "19181201",
@@ -42,7 +42,7 @@
       "definedInGame": false
     },
     {
-      "skinName": "501002_A03",
+      "skinName": "FD7_J2_Loffler_historical",
       "planeType": "fokkerd7",
       "startDate": "19140801",
       "endDate": "19181201",
@@ -52,7 +52,7 @@
       "definedInGame": false
     },
     {
-      "skinName": "FD7F_J2_LOFFLER",
+      "skinName": "FD7F_J2_OTTO LOFFLER",
       "planeType": "fokkerd7f",
       "startDate": "19140801",
       "endDate": "19181201",

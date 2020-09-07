@@ -36,19 +36,9 @@
   "commonSense": 0,
   "skins": [
     {
-      "skinName": "FD7_J13_BUCH",
+      "skinName": "FD7_J13_FRANZ BUCHNER",
       "planeType": "fokkerd7",
       "startDate": "19140801",
-      "endDate": "19180630",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "FD7_J13_BUECHNER",
-      "planeType": "fokkerd7",
-      "startDate": "19180701",
       "endDate": "19181201",
       "squadId": -1,
       "country": "",

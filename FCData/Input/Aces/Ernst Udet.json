@@ -82,9 +82,19 @@
       "definedInGame": false
     },
     {
-      "skinName": "AD5_J37UDET2",
+      "skinName": "AD5_J37_Udet_D4476",
       "planeType": "albatrosd5",
       "startDate": "19170805",
+      "endDate": "19171001",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_J37_Udet_Silver",
+      "planeType": "albatrosd5",
+      "startDate": "19171002",
       "endDate": "19171031",
       "squadId": -1,
       "country": "",
@@ -92,7 +102,7 @@
       "definedInGame": false
     },
     {
-      "skinName": "AD5_J37-LO-W17",
+      "skinName": "AD5_J37_Udet_Black",
       "planeType": "albatrosd5",
       "startDate": "19171101",
       "endDate": "19181201",
@@ -102,29 +112,9 @@
       "definedInGame": false
     },
     {
-      "skinName": "501004_A01",
-      "planeType": "fokkerd7",
-      "startDate": "19140801",
-      "endDate": "19181201",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "501004_A01",
-      "planeType": "fokkerd7f",
-      "startDate": "19140801",
-      "endDate": "19181201",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "501004_A01",
+      "skinName": "fokkerdr1_skin_04",
       "planeType": "fokkerdr1",
-      "startDate": "19140801",
+      "startDate": "19180414",
       "endDate": "19181201",
       "squadId": -1,
       "country": "",
@@ -152,28 +142,8 @@
       "definedInGame": false
     },
     {
-      "skinName": "501004_A01",
-      "planeType": "fokkerd7",
-      "startDate": "19140801",
-      "endDate": "19181201",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "501004_A01",
+      "skinName": "fokkerd7f_skin_01",
       "planeType": "fokkerd7f",
-      "startDate": "19140801",
-      "endDate": "19181201",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "501004_A01",
-      "planeType": "fokkerdr1",
       "startDate": "19140801",
       "endDate": "19181201",
       "squadId": -1,

@@ -52,7 +52,7 @@
   "commonSense": 0,
   "skins": [
     {
-      "skinName": "AD5_J5_BAUMER_V2",
+      "skinName": "AD5_J5_Baumer_E",
       "planeType": "albatrosd5",
       "startDate": "19140801",
       "endDate": "19170816",
@@ -62,9 +62,9 @@
       "definedInGame": false
     },
     {
-      "skinName": "AD5_J2BAUMER2",
+      "skinName": "AD5_J2_Baumer_early_historical",
       "planeType": "albatrosd5",
-      "startDate": "19170816",
+      "startDate": "19170817",
       "endDate": "19170916",
       "squadId": -1,
       "country": "",
@@ -72,9 +72,9 @@
       "definedInGame": false
     },
     {
-      "skinName": "AD5_J2BAUMER",
+      "skinName": "AD5_J2_Baumer_late_historical",
       "planeType": "albatrosd5",
-      "startDate": "19170916",
+      "startDate": "19170917",
       "endDate": "19181201",
       "squadId": -1,
       "country": "",
@@ -82,19 +82,19 @@
       "definedInGame": false
     },
     {
-      "skinName": "FDR1_J2BAUMER",
+      "skinName": "FDR1_J2_BAUMER_EARLY",
       "planeType": "fokkerdr1",
       "startDate": "19140801",
-      "endDate": "19180319",
+      "endDate": "19180414",
       "squadId": -1,
       "country": "",
       "category": "Ace",
       "definedInGame": false
     },
-    {
-      "skinName": "501002_A01",
-      "planeType": "albatrosd3",
-      "startDate": "19180320",
+	{
+      "skinName": "FDR1_J2_PAUL BAUMER_LATE",
+      "planeType": "fokkerdr1",
+      "startDate": "19180415",
       "endDate": "19181201",
       "squadId": -1,
       "country": "",
@@ -104,16 +104,6 @@
     {
       "skinName": "501002_A01",
       "planeType": "fokkerd7",
-      "startDate": "19180320",
-      "endDate": "19181201",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "501002_A01",
-      "planeType": "fokkerdr1",
       "startDate": "19180320",
       "endDate": "19181201",
       "squadId": -1,

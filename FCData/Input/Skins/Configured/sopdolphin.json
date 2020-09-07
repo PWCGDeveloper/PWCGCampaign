@@ -1,0 +1,74 @@
+{
+    "skinSetType": "SKIN_CONFIGURED",
+    "skins": {
+        "sopdolphin_skin_01": {
+            "skinName": "sopdolphin_skin_01",
+            "planeType": "sopdolphin",
+            "startDate": "19170801",
+            "endDate": "19181201",
+            "squadId": 302019,
+            "country": "BRITAIN",
+            "category": "Configured",
+            "definedInGame": false
+        },			
+        "Dolphin_RAF79_BANNERMAN_C3879": {
+            "skinName": "Dolphin_RAF79_BANNERMAN_C3879",
+            "planeType": "sopdolphin",
+            "startDate": "19170801",
+            "endDate": "19181201",
+            "squadId": -1,
+            "country": "BRITAIN",
+            "category": "Configured",
+            "definedInGame": true
+        },			
+        "Dolphin_RAF87_CALLAGHAN_C4168": {
+            "skinName": "Dolphin_RAF87_CALLAGHAN_C4168",
+            "planeType": "sopdolphin",
+            "startDate": "19170801",
+            "endDate": "19181201",
+            "squadId": -1,
+            "country": "BRITAIN",
+            "category": "Configured",
+            "definedInGame": true
+        },			
+        "sopdolphin_skin_02": {
+            "skinName": "sopdolphin_skin_02",
+            "planeType": "sopdolphin",
+            "startDate": "19170801",
+            "endDate": "19181201",
+            "squadId": -1,
+            "country": "BRITAIN",
+            "category": "Configured",
+            "definedInGame": true
+        },			
+        "sopdolphin_skin_03": {
+            "skinName": "sopdolphin_skin_03",
+            "planeType": "sopdolphin",
+            "startDate": "19170801",
+            "endDate": "19181201",
+            "squadId": -1,
+            "country": "BRITAIN",
+            "category": "Configured",
+            "definedInGame": true
+        },			
+        "sopdolphin_skin_04": {
+            "skinName": "sopdolphin_skin_04",
+            "planeType": "sopdolphin",
+            "startDate": "19170801",
+            "endDate": "19181201",
+            "squadId": -1,
+            "country": "BRITAIN",
+            "category": "Configured",
+            "definedInGame": true
+        },			
+        "sopdolphin_skin_05": {
+            "skinName": "sopdolphin_skin_05",
+            "planeType": "sopdolphin",
+            "startDate": "19170801",
+            "endDate": "19181201",
+            "squadId": -1,
+            "country": "BRITAIN",
+            "category": "Configured",
+            "definedInGame": true			
+        }    }
+}

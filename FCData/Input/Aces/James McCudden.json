@@ -74,9 +74,9 @@
       "definedInGame": false
     },
     {
-      "skinName": "SE5A_MCCUDDEN",
+      "skinName": "SE5a_RFC56_JAMES McCUDDEN",
       "planeType": "se5a",
-      "startDate": "19140801",
+      "startDate": "19170801",
       "endDate": "19181201",
       "squadId": -1,
       "country": "",
@@ -84,20 +84,10 @@
       "definedInGame": false
     },
     {
-      "skinName": "SE5A_S56MCCUDDEN",
+      "skinName": "SE5a_RFC56_McCudden_B4891",
       "planeType": "se5a",
-      "startDate": "19180110",
-      "endDate": "19181111",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "SE5A_MCCUDDEN1918",
-      "planeType": "se5a",
-      "startDate": "19180111",
-      "endDate": "19181111",
+      "startDate": "19171202",
+      "endDate": "19181201",
       "squadId": -1,
       "country": "",
       "category": "Ace",

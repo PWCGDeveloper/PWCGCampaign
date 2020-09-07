@@ -14,7 +14,18 @@
   "airfields": {
     "19170801": "Auchel"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "SC_RFC70_Default",
+      "planeType": "sopcamel",
+      "startDate": "19170801",
+      "endDate": "19181201",
+      "squadId": 302070,
+      "country": "BRITAIN",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

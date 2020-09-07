@@ -60,7 +60,7 @@
       "definedInGame": false
     },
     {
-      "skinName": "AD5_J5_MAI_1_V2",
+      "skinName": "AD5_J5_Mai_M1",
       "planeType": "albatrosd5",
       "startDate": "19140801",
       "endDate": "19171130",
@@ -70,7 +70,7 @@
       "definedInGame": false
     },
     {
-      "skinName": "AD5_J5_MAI_2_V2",
+      "skinName": "AD5_J5_Mai_M2",
       "planeType": "albatrosd5",
       "startDate": "19171201",
       "endDate": "19180401",
@@ -80,7 +80,7 @@
       "definedInGame": false
     },
     {
-      "skinName": "AD5_J5_MAI_3_V2",
+      "skinName": "AD5_J5_Mai_L",
       "planeType": "albatrosd5",
       "startDate": "19180402",
       "endDate": "19181201",
@@ -90,9 +90,9 @@
       "definedInGame": false
     },
     {
-      "skinName": "FDR1_J5_MAI",
+      "skinName": "FDr1_J5_Mai_L",
       "planeType": "fokkerdr1",
-      "startDate": "19140801",
+      "startDate": "19180415",
       "endDate": "19181201",
       "squadId": -1,
       "country": "",
@@ -100,7 +100,7 @@
       "definedInGame": false
     },
     {
-      "skinName": "FD7_J5_MAI",
+      "skinName": "FD7_J5_Mai",
       "planeType": "fokkerd7",
       "startDate": "19140801",
       "endDate": "19181201",

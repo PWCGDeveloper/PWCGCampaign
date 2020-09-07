@@ -14,7 +14,18 @@
   "airfields": {
     "19170801": "Sercus"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "SC_BMA11_B5747_Sc11",
+      "planeType": "sopcamel",
+      "startDate": "19170801",
+      "endDate": "19181201",
+      "squadId": 304011,
+      "country": "BELGIUM",
+      "category": "Squadron",
+      "definedInGame": false
+    }	
+],
   "squadHistory": {
     "squadHistoryEntries": []
   },

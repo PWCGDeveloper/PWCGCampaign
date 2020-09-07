@@ -40,8 +40,8 @@
   "commonSense": 0,
   "skins": [
     {
-      "skinName": "PD3A_J16ROTH",
-      "planeType": "pfalzd3a",
+      "skinName": "AD5_J23_FRIEDRICH RITTER VON ROTH",
+      "planeType": "albatrosd5",
       "startDate": "19140801",
       "endDate": "19181201",
       "squadId": -1,
@@ -50,9 +50,9 @@
       "definedInGame": false
     },
     {
-      "skinName": "AD5_J23B_ROTH",
-      "planeType": "albatrosd5",
-      "startDate": "19140801",
+      "skinName": "PD3a_J16_Oblt_Friedrich_Ritter_von_Roth",
+      "planeType": "pfalzd3a",
+      "startDate": "19180415",
       "endDate": "19181201",
       "squadId": -1,
       "country": "",

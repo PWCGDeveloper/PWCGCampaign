@@ -40,9 +40,9 @@
   "commonSense": 0,
   "skins": [
     {
-      "skinName": "FDR1_J19PIPPART",
+      "skinName": "FDR1_J19_HANS PIPPART",
       "planeType": "fokkerdr1",
-      "startDate": "19140801",
+      "startDate": "19180415",
       "endDate": "19181201",
       "squadId": -1,
       "country": "",

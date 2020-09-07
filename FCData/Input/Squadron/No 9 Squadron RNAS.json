@@ -14,7 +14,18 @@
   "airfields": {
     "19170801": "Aire"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "SC_RAF209_Default",
+      "planeType": "sopcamel",
+      "startDate": "19180401",
+      "endDate": "19181201",
+      "squadId": 302209,
+      "country": "BRITAIN",
+      "category": "Squadron",
+      "definedInGame": false
+    }  
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

@@ -40,7 +40,7 @@
   "commonSense": 0,
   "skins": [
     {
-      "skinName": "AD5_J12_NECKEL",
+      "skinName": "AD5_J12_Neckel",
       "planeType": "albatrosd5",
       "startDate": "19140801",
       "endDate": "19180812",
@@ -50,9 +50,9 @@
       "definedInGame": false
     },
     {
-      "skinName": "FDR1_J12_ULRICH NECKEL",
+      "skinName": "FDR1_J12_NECKEL",
       "planeType": "fokkerdr1",
-      "startDate": "19140801",
+      "startDate": "19180415",
       "endDate": "19180812",
       "squadId": -1,
       "country": "",

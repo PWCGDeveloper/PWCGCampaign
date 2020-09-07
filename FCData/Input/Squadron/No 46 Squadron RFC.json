@@ -14,7 +14,18 @@
   "airfields": {
     "19170801": "Arras North 2"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "SC_RFC46_Default",
+      "planeType": "sopcamel",
+      "startDate": "19170801",
+      "endDate": "19181201",
+      "squadId": 302046,
+      "country": "BRITAIN",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

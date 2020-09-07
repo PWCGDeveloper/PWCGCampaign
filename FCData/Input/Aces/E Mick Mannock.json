@@ -72,11 +72,11 @@
       "definedInGame": false
     },
     {
-      "skinName": "SE5A_S74MANNOCK",
+      "skinName": "SE5a_RFC74_MANNOCK",
       "planeType": "se5a",
       "startDate": "19140801",
       "endDate": "19180707",
-      "squadId": 102074,
+      "squadId": -1,
       "country": "Britain",
       "category": "Ace",
       "definedInGame": false
@@ -86,7 +86,7 @@
       "planeType": "se5a",
       "startDate": "19180708",
       "endDate": "19181201",
-      "squadId": 102085,
+      "squadId": -1,
       "country": "Britain",
       "category": "Ace",
       "definedInGame": false

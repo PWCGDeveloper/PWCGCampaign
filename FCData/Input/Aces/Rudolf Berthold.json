@@ -84,19 +84,19 @@
       "definedInGame": false
     },
     {
-      "skinName": "PD3A_J18_BER",
+      "skinName": "PD3a_J18_Berthold",
       "planeType": "pfalzd3a",
       "startDate": "19140801",
-      "endDate": "19180318",
+      "endDate": "19180414",
       "squadId": -1,
       "country": "",
       "category": "Ace",
       "definedInGame": false
     },
     {
-      "skinName": "PD3A_J15_BER",
+      "skinName": "pfalzd3a_skin_03",
       "planeType": "pfalzd3a",
-      "startDate": "19180319",
+      "startDate": "19180415",
       "endDate": "19181201",
       "squadId": -1,
       "country": "",
@@ -104,18 +104,18 @@
       "definedInGame": false
     },
     {
-      "skinName": "501015_A02",
+      "skinName": "PD3a_J15_Berthold_HW",
+      "planeType": "pfalzd3a",
+      "startDate": "19180415",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    },	
+    {
+      "skinName": "fokkerd7_skin_04",
       "planeType": "fokkerd7",
-      "startDate": "19140801",
-      "endDate": "19181201",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "501015_A02",
-      "planeType": "pfalzd3a",
       "startDate": "19140801",
       "endDate": "19181201",
       "squadId": -1,

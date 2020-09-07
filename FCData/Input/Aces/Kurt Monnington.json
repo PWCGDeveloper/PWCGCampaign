@@ -40,19 +40,19 @@
   "commonSense": 0,
   "skins": [
     {
-      "skinName": "AD5_J15_MONNINGTO",
+      "skinName": "AD5_J15_KURT MONNINGTON",
       "planeType": "albatrosd5",
       "startDate": "19171006",
-      "endDate": "19180319",
+      "endDate": "19180414",
       "squadId": -1,
       "country": "",
       "category": "Ace",
       "definedInGame": false
     },
     {
-      "skinName": "AD5_J18MONNINGTON",
+      "skinName": "AD5_J18_Monnington",
       "planeType": "albatrosd5",
-      "startDate": "19180320",
+      "startDate": "19180415",
       "endDate": "19181201",
       "squadId": -1,
       "country": "",
@@ -60,7 +60,7 @@
       "definedInGame": false
     },
     {
-      "skinName": "FD7_J18_MONNINGTON",
+      "skinName": "FD7_J18_Monnington",
       "planeType": "fokkerd7",
       "startDate": "19150601",
       "endDate": "19181201",

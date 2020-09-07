@@ -36,6 +36,16 @@
   "commonSense": 0,
   "skins": [
     {
+      "skinName": "FDR1_J6_HEMER",
+      "planeType": "fokkerdr1",
+      "startDate": "19180415",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    },
+    {
       "skinName": "501006_A01",
       "planeType": "fokkerd7",
       "startDate": "19140801",
@@ -48,16 +58,6 @@
     {
       "skinName": "501006_A01",
       "planeType": "fokkerd8",
-      "startDate": "19140801",
-      "endDate": "19181201",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "501006_A01",
-      "planeType": "fokkerdr1",
       "startDate": "19140801",
       "endDate": "19181201",
       "squadId": -1,

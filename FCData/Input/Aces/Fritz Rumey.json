@@ -64,7 +64,7 @@
   "commonSense": 0,
   "skins": [
     {
-      "skinName": "AD5_J5_RUMEY_1_V2",
+      "skinName": "AD5_J5_Rumey_E1",
       "planeType": "albatrosd5",
       "startDate": "19140801",
       "endDate": "19171007",
@@ -74,7 +74,7 @@
       "definedInGame": false
     },
     {
-      "skinName": "AD5_J5_RUMEY_2_V2",
+      "skinName": "AD5_J5_Rumey_E2",
       "planeType": "albatrosd5",
       "startDate": "19171008",
       "endDate": "19180301",
@@ -84,7 +84,7 @@
       "definedInGame": false
     },
     {
-      "skinName": "AD5_J5RUMEY_3",
+      "skinName": "AD5_J5_Rumey_E3",
       "planeType": "albatrosd5",
       "startDate": "19180301",
       "endDate": "19181201",
@@ -94,9 +94,9 @@
       "definedInGame": false
     },
     {
-      "skinName": "FDR1_J5_RUMEY",
+      "skinName": "FDr1_J5_Rumey_L",
       "planeType": "fokkerdr1",
-      "startDate": "19140801",
+      "startDate": "19180415",
       "endDate": "19181201",
       "squadId": -1,
       "country": "",

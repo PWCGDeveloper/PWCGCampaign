@@ -64,7 +64,7 @@
       "definedInGame": false
     },
     {
-      "skinName": "AD5_J7_JACOBS_WHT",
+      "skinName": "AD5_J7_Jacobs_OCT17",
       "planeType": "albatrosd5",
       "startDate": "19140803",
       "endDate": "19181201",
@@ -74,29 +74,9 @@
       "definedInGame": false
     },
     {
-      "skinName": "PD3A_J_7_NOV17",
-      "planeType": "pfalzd3a",
-      "startDate": "19140801",
-      "endDate": "19180414",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "FDR1_JACOBS",
+      "skinName": "FDR1_J7_JACOBS",
       "planeType": "fokkerdr1",
       "startDate": "19140801",
-      "endDate": "19181019",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "FDR1_J7_JACOBS_WC",
-      "planeType": "fokkerdr1",
-      "startDate": "19181020",
       "endDate": "19181201",
       "squadId": -1,
       "country": "",
@@ -104,7 +84,7 @@
       "definedInGame": false
     },
     {
-      "skinName": "FD7_JACOBS",
+      "skinName": "FD7_J7_JOSEF JACOBS",
       "planeType": "fokkerd7",
       "startDate": "19140801",
       "endDate": "19181201",

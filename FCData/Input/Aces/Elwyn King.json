@@ -34,7 +34,18 @@
   "aiSkillLevel": "ACE",
   "skill": 4,
   "commonSense": 0,
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "SC_AFC4_A_unknown pilot_PreMay1918",
+      "planeType": "sopcamel",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    }  
+  ],
   "victories": [
     {
       "date": "19180520",

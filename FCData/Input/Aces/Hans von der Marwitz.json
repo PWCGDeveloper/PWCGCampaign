@@ -36,15 +36,25 @@
   "commonSense": 0,
   "skins": [
     {
-      "skinName": "PD3A_J30MARW",
+      "skinName": "PD3a_J30_von_Marwitz",
       "planeType": "pfalzd3a",
+      "startDate": "19180401",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FD7_J30_Ltn. Hans-Georg von der Marwitz",
+      "planeType": "fokkerd7",
       "startDate": "19140801",
       "endDate": "19181201",
       "squadId": -1,
       "country": "",
       "category": "Ace",
       "definedInGame": false
-    }
+    }	
   ],
   "victories": [
     {

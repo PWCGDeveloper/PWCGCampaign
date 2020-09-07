@@ -14,7 +14,18 @@
   "airfields": {
     "19170801": "Mondicourt"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "SC_RFC65_Default",
+      "planeType": "sopcamel",
+      "startDate": "19170801",
+      "endDate": "19181201",
+      "squadId": 302065,
+      "country": "BRITAIN",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

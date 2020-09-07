@@ -14,7 +14,38 @@
   "airfields": {
     "19170801": "Izel Le Hameau"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "SE5a_RFC56_Default_26AUG17",
+      "planeType": "se5a",
+      "startDate": "19170801",
+      "endDate": "19170924",
+      "squadId": 302056,
+      "country": "BRITAIN",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SE5a_RFC56_Default_25SEP17",
+      "planeType": "se5a",
+      "startDate": "19170925",
+      "endDate": "19180321",
+      "squadId": 302056,
+      "country": "BRITAIN",
+      "category": "Squadron",
+      "definedInGame": false
+    },	
+    {
+      "skinName": "SE5a_RFC56_Default_22MAR18",
+      "planeType": "se5a",
+      "startDate": "19180322",
+      "endDate": "19181201",
+      "squadId": 302056,
+      "country": "BRITAIN",
+      "category": "Squadron",
+      "definedInGame": false
+    }	
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

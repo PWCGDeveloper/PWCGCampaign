@@ -6,7 +6,7 @@
     },
     {
       "squadron": 302084,
-      "date": "19180605"
+      "date": "19180505"
     },
     {
       "squadron": 303017,
@@ -36,15 +36,25 @@
   "commonSense": 0,
   "skins": [
     {
-      "skinName": "SC_VAUGHN",
-      "planeType": "sopcamel",
+      "skinName": "SE5a_RFC84_Vaughn",
+      "planeType": "se5a",
       "startDate": "19140801",
-      "endDate": "19181111",
+      "endDate": "19180921",
       "squadId": -1,
       "country": "",
       "category": "Ace",
       "definedInGame": false
-    }
+    },
+    {
+      "skinName": "SC_US17_Vaughn",
+      "planeType": "sopcamel",
+      "startDate": "19180922",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    }	
   ],
   "victories": [
     {

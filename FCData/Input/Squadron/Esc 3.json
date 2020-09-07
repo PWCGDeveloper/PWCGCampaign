@@ -14,7 +14,18 @@
   "airfields": {
     "19170801": "Warley Bailion"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "PC_Spad13_SPA3_Generic1",
+      "planeType": "spad13",
+      "startDate": "19170801",
+      "endDate": "19181201",
+      "squadId": 301003,
+      "country": "FRANCE",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

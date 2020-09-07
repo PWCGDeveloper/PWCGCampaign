@@ -44,19 +44,19 @@
   "commonSense": 0,
   "skins": [
     {
-      "skinName": "AD5_J18_VELTJENS",
+      "skinName": "AD5_J18_Veltjens",
       "planeType": "albatrosd5",
       "startDate": "19170815",
-      "endDate": "19180319",
+      "endDate": "19180414",
       "squadId": -1,
       "country": "",
       "category": "Ace",
       "definedInGame": false
     },
     {
-      "skinName": "AD5_J15_VELT",
+      "skinName": "AD5_J15_Veltjens",
       "planeType": "albatrosd5",
-      "startDate": "19180320",
+      "startDate": "19180415",
       "endDate": "19181201",
       "squadId": -1,
       "country": "",

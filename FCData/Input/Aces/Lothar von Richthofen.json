@@ -67,16 +67,6 @@
     },
     {
       "skinName": "501011_A02",
-      "planeType": "fokkerdr1",
-      "startDate": "19140801",
-      "endDate": "19181201",
-      "squadId": -1,
-      "country": "",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "501011_A02",
       "planeType": "albatrosd3",
       "startDate": "19140801",
       "endDate": "19181201",
@@ -86,7 +76,17 @@
       "definedInGame": false
     },
     {
-      "skinName": "501011_A02",
+      "skinName": "AD5_J11_Lothar_von_Richthofen",
+      "planeType": "albatrosd5",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    },	
+    {
+      "skinName": "fokkerdr1_skin_02",
       "planeType": "fokkerdr1",
       "startDate": "19140801",
       "endDate": "19181201",
@@ -96,7 +96,17 @@
       "definedInGame": false
     },
     {
-      "skinName": "FD7F_J11_RICHTHOFEN",
+      "skinName": "FD7_J11_Lothar Richthofen",
+      "planeType": "fokkerd7",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    },	
+    {
+      "skinName": "FD7F_J11_Richthofen",
       "planeType": "fokkerd7f",
       "startDate": "19140801",
       "endDate": "19181201",

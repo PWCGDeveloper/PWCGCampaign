@@ -40,8 +40,8 @@
   "commonSense": 0,
   "skins": [
     {
-      "skinName": "501034_A01",
-      "planeType": "fokkerdr1",
+      "skinName": "AD5_J34_Greim",
+      "planeType": "albatrosd5",
       "startDate": "19140801",
       "endDate": "19181201",
       "squadId": -1,
@@ -49,9 +49,9 @@
       "category": "Ace",
       "definedInGame": false
     },
-    {
-      "skinName": "AD5_J34B_GREIM",
-      "planeType": "albatrosd5",
+	{
+      "skinName": "FDR1_J34_Greim",
+      "planeType": "fokkerdr1",
       "startDate": "19140801",
       "endDate": "19181201",
       "squadId": -1,

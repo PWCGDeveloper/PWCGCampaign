@@ -24,7 +24,78 @@
   "airfields": {
     "19170801": "Cambrai North"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "AD5_J6_Default_MAY17",
+      "planeType": "albatrosd5",
+      "startDate": "19170101",
+      "endDate": "19171001",
+      "squadId": 401006,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_J6_Default_OCT17",
+      "planeType": "albatrosd5",
+      "startDate": "19171002",
+      "endDate": "19180415",
+      "squadId": 401006,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_J6_Default_APR18",
+      "planeType": "albatrosd5",
+      "startDate": "19180416",
+      "endDate": "19181201",
+      "squadId": 401006,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FDR1_J6_Default_Early",
+      "planeType": "fokkerdr1",
+      "startDate": "19171101",
+      "endDate": "19180415",
+      "squadId": 401006,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FDR1_J6_Default_Late",
+      "planeType": "fokkerdr1",
+      "startDate": "19180416",
+      "endDate": "19181201",
+      "squadId": 401006,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FD7_J6_April_2018",
+      "planeType": "fokkerd7",
+      "startDate": "19180416",
+      "endDate": "19181201",
+      "squadId": 401006,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FD7F_J6_April_2018",
+      "planeType": "fokkerd7f",
+      "startDate": "19180416",
+      "endDate": "19181201",
+      "squadId": 401006,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }	
+],
   "squadHistory": {
     "squadHistoryEntries": []
   },

@@ -42,7 +42,7 @@
       "definedInGame": false
     },
     {
-      "skinName": "501002_A02",
+      "skinName": "FD7_J2_Lindenberger_historical",
       "planeType": "fokkerd7",
       "startDate": "19140801",
       "endDate": "19181201",
@@ -50,6 +50,16 @@
       "country": "",
       "category": "Ace",
       "definedInGame": false
+    },
+    {
+      "skinName": "FD7F_J2_Ltn. Alfred Lindenberger",
+      "planeType": "fokkerd7F",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false	  
     }
   ],
   "victories": [

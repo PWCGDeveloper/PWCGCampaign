@@ -32,19 +32,9 @@
   "commonSense": 0,
   "skins": [
     {
-      "skinName": "AD5_J62_NATHER",
+      "skinName": "AD5_J62_MAX NATHER",
       "planeType": "albatrosd5",
-      "startDate": "19140801",
-      "endDate": "19181111",
-      "squadId": -1,
-      "country": "Germany",
-      "category": "Ace",
-      "definedInGame": false
-    },
-    {
-      "skinName": "AD5_J62_NATHER",
-      "planeType": "albatrosd5",
-      "startDate": "19140801",
+      "startDate": "19180415",
       "endDate": "19181201",
       "squadId": -1,
       "country": "",

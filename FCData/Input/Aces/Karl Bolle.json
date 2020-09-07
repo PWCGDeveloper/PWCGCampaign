@@ -44,9 +44,9 @@
   "commonSense": 0,
   "skins": [
     {
-      "skinName": "FDR1_J2_BOLLE",
+      "skinName": "FDR1_J2_KARL BOLLE",
       "planeType": "fokkerdr1",
-      "startDate": "19140801",
+      "startDate": "19180415",
       "endDate": "19181201",
       "squadId": -1,
       "country": "",
@@ -54,7 +54,7 @@
       "definedInGame": false
     },
     {
-      "skinName": "501002_A03",
+      "skinName": "FD7_J2_Bolle_historical",
       "planeType": "fokkerd7",
       "startDate": "19140801",
       "endDate": "19181201",
@@ -64,7 +64,7 @@
       "definedInGame": false
     },
     {
-      "skinName": "FD7F_J2_BOLLE",
+      "skinName": "FD7F_J2_Karl Bolle",
       "planeType": "fokkerd7f",
       "startDate": "19140801",
       "endDate": "19181201",

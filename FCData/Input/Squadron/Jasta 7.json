@@ -24,7 +24,119 @@
   "airfields": {
     "19170801": "Lille North"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "AD5_J7_Default_MAY17",
+      "planeType": "albatrosd5",
+      "startDate": "19170101",
+      "endDate": "19171001",
+      "squadId": 401007,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_J7_Default_OCT17",
+      "planeType": "albatrosd5",
+      "startDate": "19171002",
+      "endDate": "19180415",
+      "squadId": 401007,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_J7_Default_APR18",
+      "planeType": "albatrosd5",
+      "startDate": "19180416",
+      "endDate": "19181201",
+      "squadId": 401007,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+
+    {
+      "skinName": "PD3a_J7_JUL17",
+      "planeType": "pfalzd3a",
+      "startDate": "19170801",
+      "endDate": "19180415",
+      "squadId": 401007,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "PD3a_J7_APR18",
+      "planeType": "pfalzd3a",
+      "startDate": "19180416",
+      "endDate": "19181201",
+      "squadId": 401007,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FDR1_J7_Default_Early",
+      "planeType": "fokkerdr1",
+      "startDate": "19170801",
+      "endDate": "19180215",
+      "squadId": 401007,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FDR1_J7_Default_FEB18",
+      "planeType": "fokkerdr1",
+      "startDate": "19180216",
+      "endDate": "19180415",
+      "squadId": 401007,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FDR1_J7_Default_APR18",
+      "planeType": "fokkerdr1",
+      "startDate": "19180416",
+      "endDate": "19181201",
+      "squadId": 401007,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+		{
+      "skinName": "FD7_J7_Default",
+      "planeType": "fokkerd7",
+      "startDate": "19180416",
+      "endDate": "19181201",
+      "squadId": 401007,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FD7F_J7_Default_Open",
+      "planeType": "fokkerd7f",
+      "startDate": "19180416",
+      "endDate": "19180901",
+      "squadId": 401007,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FD7F_J7_Default",
+      "planeType": "fokkerd7f",
+      "startDate": "19180902",
+      "endDate": "19181201",
+      "squadId": 401007,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+],
   "squadHistory": {
     "squadHistoryEntries": []
   },

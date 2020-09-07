@@ -14,7 +14,28 @@
   "airfields": {
     "19170801": "Mont St Eloi"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "SE5a_RFC24_Default_E",
+      "planeType": "se5a",
+      "startDate": "19170801",
+      "endDate": "19180321",
+      "squadId": 302024,
+      "country": "BRITAIN",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SE5a_RFC24_Default_L",
+      "planeType": "se5a",
+      "startDate": "19180322",
+      "endDate": "19181201",
+      "squadId": 302024,
+      "country": "BRITAIN",
+      "category": "Squadron",
+      "definedInGame": false
+    }	
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

@@ -52,7 +52,7 @@
   "commonSense": 0,
   "skins": [
     {
-      "skinName": "SC_D_MACLAREN",
+      "skinName": "SC_RFC46_MACLAREN",
       "planeType": "sopcamel",
       "startDate": "19140801",
       "endDate": "19181201",
