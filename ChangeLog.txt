@@ -2,6 +2,24 @@
 ​
 At the PWCG web site
 
+10.4.0
+Huge number of skins for FC
+- All thanks to TheDude and skin artists
+- AussieBoomer, I.JG1_Baron, Taurus, Tomi_099, szeljr, =GEMINI=Hawkmoon98, A1_Phoenix, 
+- CCG_Pips, E69_julian57, SYN_Skydance, HotWaffle, YoYo, Flik66_J, US93_Larner, PatCartier, J2 & J5 Squadrons
+Fixed up some skin records for BoS
+
+10.3.4
+Lots of German skins from E69_Julian57, MarcoPegase44, SR603-Flowbee, Ouky1991, Raptorattacker, szelljr, SARFlytitus
+- New skins are in skin packs 11, 12, 13, 14, 15
+- Every German plane except the He111 H16 (no skins), Me 109 E7, and Ju52
+
+Made temperature specific to each map (and fixed overly warm Moscow)
+Fixed fuel allocation issue
+Fixed coop AAR error that could occur due to bad log set
+Fixed Italian names
+Fixed erroneous plane not owned message
+
 10.3.3
 American and British skins
 Tons of P47s and P51s by 361st_Bugsy.  More by Tom Weiss, E69_julian57 and others.
