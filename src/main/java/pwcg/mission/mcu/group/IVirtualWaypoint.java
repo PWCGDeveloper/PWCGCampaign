@@ -1,16 +1,13 @@
 package pwcg.mission.mcu.group;
 
 import java.io.BufferedWriter;
-import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.mcu.McuCounter;
 import pwcg.mission.mcu.McuDeactivate;
-import pwcg.mission.mcu.McuSubtitle;
 import pwcg.mission.mcu.McuTimer;
 
 public interface IVirtualWaypoint
@@ -18,7 +15,7 @@ public interface IVirtualWaypoint
 
     void initialize(IFlight flight, VirtualWayPointCoordinate vwpCoordinate, Coalition coalition) throws PWCGException;
 
-    void write(BufferedWriter writer) throws PWCGIOException;
+    void write(BufferedWriter writer) throws PWCGException;
 
     void addAdditionalTime(int additionalTime);
 
@@ -30,13 +27,7 @@ public interface IVirtualWaypoint
 
     void registerPlaneCounter(McuCounter counter);
 
-    void setVirtualWaypointTriggerObject(int triggerObject);
-
-    VwpSpawnContainer getVwpSpawnContainerForPlane(int planeIndex);
-
-    List<McuSubtitle> getSubTitleList();
-
-    boolean isUseSubtitles();
+    void setVwpTriggerObject(int triggerObject);
 
     SelfDeactivatingCheckZone getCheckZone();
 
@@ -44,12 +35,14 @@ public interface IVirtualWaypoint
 
     McuTimer getVwpTimer();
 
-    McuTimer getMasterSpawnTimer();
+    McuTimer getMasterVwpTimer();
 
-    McuTimer getInitiateNextVirtualWaypointTimer();
+    McuTimer getInitiateNextVwpTimer();
 
     McuTimer getVwpTriggeredTimer();
 
     McuDeactivate getStopNextVwp();
+
+    ActivateContainer getActivateContainer();
 
 }

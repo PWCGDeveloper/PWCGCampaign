@@ -19,7 +19,7 @@ public class VirtualWayPointCoordinate
     
     public Coordinate getPosition()
     {
-        return coordinate;
+        return coordinate.copy();
     }
     
     public void setCoordinate(Coordinate coordinate)

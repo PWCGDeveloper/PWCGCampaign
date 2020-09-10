@@ -43,42 +43,84 @@ import pwcg.mission.mcu.group.WingmanMcuGroup;
  */
 public class PlaneMcu extends EquippedPlane implements Cloneable
 {        
-    protected String name = "";
-    protected int index;
-    protected int linkTrId;
-    protected Coordinate position;
-    protected Orientation orientation;
-    protected Skin skin = null;
-    protected AiSkillLevel aiSkillLevel = AiSkillLevel.NOVICE;
-    protected int coopStart = 0;
-    protected int numberInFormation = 1;
-    protected int vulnerable = 1;
-    protected int engageable = 1;
-    protected int limitAmmo = 1;
-    protected Callsign callsign = Callsign.NONE;
-    protected int callnum = 0;
-    protected int startInAir;
-    protected int time = 60;
-    protected double fuel = .6;
-    protected int damageReport = 50;
-    protected ICountry country = CountryFactory.makeNeutralCountry();
-    protected int damageThreshold = 1;
-    protected int aiRTBDecision = 1;
-    protected int deleteAfterDeath = 1;
-    protected WingmanMcuGroup wingmanCommands;
+    private String name = "";
+    private int index;
+    private int linkTrId;
+    private Coordinate position;
+    private Orientation orientation;
+    private Skin skin = null;
+    private AiSkillLevel aiSkillLevel = AiSkillLevel.NOVICE;
+    private int coopStart = 0;
+    private int numberInFormation = 1;
+    private int vulnerable = 1;
+    private int engageable = 1;
+    private int limitAmmo = 1;
+    private Callsign callsign = Callsign.NONE;
+    private int callnum = 0;
+    private int startInAir;
+    private int time = 60;
+    private double fuel = .6;
+    private int damageReport = 50;
+    private ICountry country = CountryFactory.makeNeutralCountry();
+    private int damageThreshold = 1;
+    private int aiRTBDecision = 1;
+    private int deleteAfterDeath = 1;
+    private WingmanMcuGroup wingmanCommands;
 
-    protected IPlanePayload payload = null;
+    private IPlanePayload payload = null;
 
-    protected McuTREntity entity = new McuTREntity();
+    private McuTREntity entity = new McuTREntity();
 
-    protected McuTimer attackTimer = new McuTimer();
-    protected McuAttack attackEntity = new McuAttack();
+    private McuTimer attackTimer = new McuTimer();
+    private McuAttack attackEntity = new McuAttack();
     
     private Campaign campaign;
     private SquadronMember pilot;
     
     public PlaneMcu()
     {
+    }
+    
+    public PlaneMcu copy()
+    {
+        PlaneMcu plane = new PlaneMcu();
+        copyTemplate(plane);
+        return plane;
+    }
+
+    public void copyTemplate(PlaneMcu plane)
+    {
+        super.copyTemplate(plane);
+        
+        plane.name = this.name;
+        plane.index = this.index;
+        plane.linkTrId = this.linkTrId;
+        plane.position = this.position;
+        plane.orientation = this.orientation;
+        plane.skin = this.skin;
+        plane.aiSkillLevel = this.aiSkillLevel;
+        plane.coopStart = this.coopStart;
+        plane.numberInFormation = this.numberInFormation;
+        plane.vulnerable = this.vulnerable;
+        plane.engageable = this.engageable;
+        plane.limitAmmo = this.limitAmmo;
+        plane.callsign = this.callsign;
+        plane.callnum = this.callnum;
+        plane.startInAir = this.startInAir;
+        plane.time = this.time;
+        plane.fuel = this.fuel;
+        plane.damageReport = this.damageReport;
+        plane.country = CountryFactory.makeCountryByCountry(this.country.getCountry());
+        plane.damageThreshold = this.damageThreshold;
+        plane.aiRTBDecision = this.aiRTBDecision;
+        plane.deleteAfterDeath = this.deleteAfterDeath;
+        plane.wingmanCommands = this.wingmanCommands;
+        plane.payload = this.payload;
+        plane.entity = this.entity;
+        plane.attackTimer = this.attackTimer;
+        plane.attackEntity = this.attackEntity;
+        plane.campaign = this.campaign;
+        plane.pilot = this.pilot;
     }
     
     public PlaneMcu(Campaign campaign, EquippedPlane equippedPlane, ICountry country, SquadronMember pilot)

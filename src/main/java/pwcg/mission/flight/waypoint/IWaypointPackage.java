@@ -44,4 +44,6 @@ public interface IWaypointPackage
     double getDistanceStartToTarget() throws PWCGException;
 
     void clearMissionPointSet();
+
+    void addWaypointObjectFromIndex(PlaneMcu planeMcu);
 }

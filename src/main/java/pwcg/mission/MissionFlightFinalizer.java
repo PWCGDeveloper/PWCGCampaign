@@ -120,7 +120,7 @@ public class MissionFlightFinalizer
                     IVirtualWaypoint vwpCZ = (IVirtualWaypoint)vwp;
                     for (int planeIndex : flight.getMission().getMissionFlightBuilder().determinePlayerPlaneIds())
                     {
-                        vwpCZ.setVirtualWaypointTriggerObject(planeIndex);
+                        vwpCZ.setVwpTriggerObject(planeIndex);
                     }
                 }
             }

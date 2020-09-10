@@ -265,4 +265,16 @@ public class WaypointPackage implements IWaypointPackage
         }
         throw new PWCGException("No mission point set found for requested type " + missionPointSetType);
     }
+
+    @Override
+    public void addWaypointObjectFromIndex(PlaneMcu leadPlane)
+    {
+        for (IMissionPointSet missionPointSet : missionPointSets) 
+        {
+            for (BaseFlightMcu mcu : missionPointSet.getAllFlightPoints()) 
+            {
+                mcu.setObject(leadPlane.getEntity().getIndex());
+            }
+        }
+    }
 }
