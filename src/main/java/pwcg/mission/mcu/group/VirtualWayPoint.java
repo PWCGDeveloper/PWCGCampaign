@@ -24,7 +24,7 @@ public final class VirtualWayPoint implements IVirtualWaypoint
     private McuTimer activateTriggeredTimer = new McuTimer();
     private McuTimer masterActivateTimer = new McuTimer();
     private McuDeactivate stopNextActivate = new McuDeactivate();    private McuTimer activateTimer = new McuTimer();
-    private McuTimer activateTimedOutTimer = new McuTimer();
+    private McuTimer vwpTimedOutTimer = new McuTimer();
     private McuTimer initiateNextActivateWaypointTimer = new McuTimer();
     private McuTimer killVwpTimer = new McuTimer();
 
@@ -38,18 +38,18 @@ public final class VirtualWayPoint implements IVirtualWaypoint
     @Override
     public void initialize(
                     IFlight flight,
-                    VirtualWayPointCoordinate activateCoordinate,
+                    VirtualWayPointCoordinate vwpCoordinate,
                     Coalition coalition) throws PWCGException 
     {
-        this.vwpCoordinate = activateCoordinate; 
+        this.vwpCoordinate = vwpCoordinate; 
         this.checkZone = new SelfDeactivatingCheckZone("Activate Check Zone", vwpCoordinate.getPosition().copy(), VWP_TRIGGGER_DISTANCE);
         
-        buildMcus(activateCoordinate);
-        setTargetAssociations(activateCoordinate);
+        buildMcus(vwpCoordinate);
+        setTargetAssociations(vwpCoordinate);
         generateActivateContainer(flight);
     }
 
-    private void setTargetAssociations(VirtualWayPointCoordinate activateCoordinate)
+    private void setTargetAssociations(VirtualWayPointCoordinate vwpCoordinate)
     {
         setTargetAssociationsActivateActivateActivate();
         setTargetAssociationsTriggered();
@@ -68,11 +68,11 @@ public final class VirtualWayPoint implements IVirtualWaypoint
         // virtualWPTimer activates the self deleting CZ
         // deactivateActivateTimer deactivates the self deleting CZ
         checkZone.setCheckZoneTarget(activateTriggeredTimer.getIndex());
-        activateTimedOutTimer.setTarget(checkZone.getDeactivateEntryPoint());
+        vwpTimedOutTimer.setTarget(checkZone.getDeactivateEntryPoint());
         
         // Stop the next Activate from triggering
         activateTriggeredTimer.setTarget(stopNextActivate.getIndex());
-        stopNextActivate.setTarget(activateTimedOutTimer.getIndex());
+        stopNextActivate.setTarget(vwpTimedOutTimer.getIndex());
         
         // Trigger the Spawn
         activateTriggeredTimer.setTarget(masterActivateTimer.getIndex());
@@ -80,8 +80,8 @@ public final class VirtualWayPoint implements IVirtualWaypoint
 
     private void setTargetAssociationsTimedOut()
     {
-        activateTimer.setTarget(activateTimedOutTimer.getIndex());
-        activateTimedOutTimer.setTarget(initiateNextActivateWaypointTimer.getIndex());
+        activateTimer.setTarget(vwpTimedOutTimer.getIndex());
+        vwpTimedOutTimer.setTarget(initiateNextActivateWaypointTimer.getIndex());
     }
 
     private void setTargetAssociationsForPlaneLimitReached()
@@ -90,37 +90,37 @@ public final class VirtualWayPoint implements IVirtualWaypoint
         killVwpTimer.setTarget(checkZone.getDeactivateEntryPoint());
     }
 
-    private void buildMcus(VirtualWayPointCoordinate activateCoordinate)
+    private void buildMcus(VirtualWayPointCoordinate vwpCoordinate)
     {
-        activateTimer.setPosition(activateCoordinate.getPosition().copy());
+        activateTimer.setPosition(vwpCoordinate.getPosition().copy());
         activateTimer.setName("Activate Timer");
         activateTimer.setDesc("Activate Timer");
-        activateTimer.setTimer(activateCoordinate.getWaypointWaitTimeSeconds());
+        activateTimer.setTimer(vwpCoordinate.getWaypointWaitTimeSeconds());
 
-        masterActivateTimer.setPosition(activateCoordinate.getPosition().copy());
+        masterActivateTimer.setPosition(vwpCoordinate.getPosition().copy());
         masterActivateTimer.setName("Activate Spawn Timer");
         masterActivateTimer.setDesc("Activate Master Spawn Timer");
         masterActivateTimer.setTimer(1);
 
-        activateTimedOutTimer.setPosition(activateCoordinate.getPosition().copy());
-        activateTimedOutTimer.setName("Activate CZ Deactivate Timer");
-        activateTimedOutTimer.setDesc("Activate CZ Deactivate Timer");
-        activateTimedOutTimer.setTimer(activateCoordinate.getWaypointWaitTimeSeconds());
+        vwpTimedOutTimer.setPosition(vwpCoordinate.getPosition().copy());
+        vwpTimedOutTimer.setName("Activate CZ Deactivate Timer");
+        vwpTimedOutTimer.setDesc("Activate CZ Deactivate Timer");
+        vwpTimedOutTimer.setTimer(vwpCoordinate.getWaypointWaitTimeSeconds());
 
-        activateTriggeredTimer.setPosition(activateCoordinate.getPosition().copy());
+        activateTriggeredTimer.setPosition(vwpCoordinate.getPosition().copy());
         activateTriggeredTimer.setName("Activate Trigger Timer");
         activateTriggeredTimer.setDesc("Activate Stop Deactivate Timer");
         activateTriggeredTimer.setTimer(0);
 
-        initiateNextActivateWaypointTimer.setPosition(activateCoordinate.getPosition().copy());
+        initiateNextActivateWaypointTimer.setPosition(vwpCoordinate.getPosition().copy());
         initiateNextActivateWaypointTimer.setName("Next Activate Timer");
         initiateNextActivateWaypointTimer.setDesc("Next Activate Timer");
 
-        killVwpTimer.setPosition(activateCoordinate.getPosition().copy());
+        killVwpTimer.setPosition(vwpCoordinate.getPosition().copy());
         killVwpTimer.setName("Kill Activate Timer");
         killVwpTimer.setDesc("Kill Activate Timer");
 
-        stopNextActivate.setPosition(activateCoordinate.getPosition().copy());
+        stopNextActivate.setPosition(vwpCoordinate.getPosition().copy());
         stopNextActivate.setName("Activate Stop Next");
         stopNextActivate.setDesc("Activate Stop Deactivate");
     }
@@ -153,7 +153,7 @@ public final class VirtualWayPoint implements IVirtualWaypoint
             masterActivateTimer.write(writer);
             
             checkZone.write(writer);
-            activateTimedOutTimer.write(writer);
+            vwpTimedOutTimer.write(writer);
             initiateNextActivateWaypointTimer.write(writer);
             activateTriggeredTimer.write(writer);
             stopNextActivate.write(writer);
@@ -220,7 +220,7 @@ public final class VirtualWayPoint implements IVirtualWaypoint
     @Override
     public McuTimer getVwpTimedOutTimer()
     {
-        return activateTimedOutTimer;
+        return vwpTimedOutTimer;
     }
 
     @Override

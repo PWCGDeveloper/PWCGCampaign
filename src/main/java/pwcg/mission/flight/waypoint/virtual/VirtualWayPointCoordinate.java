@@ -37,7 +37,7 @@ public class VirtualWayPointCoordinate
         this.orientation = orientation;
     }
 
-    public int getWaypointindex()
+    public int getWaypointArrayIndex()
     {
         return waypointindex;
     }

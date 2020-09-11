@@ -55,18 +55,18 @@ public class VirtualWaypointPackageValidator
     
     private void verifyTargetAssociationsTimedOut(IVirtualWaypoint virtualWayPoint, IVirtualWaypoint previousVirtualWayPoint)
     {
-        assert(IndexLinkValidator.isIndexInTargetList(virtualWayPoint.getVwpTimedOutTimer().getIndex(), virtualWayPoint.getKillVwpTimer().getTargets()));
+        assert(IndexLinkValidator.isIndexInTargetList(virtualWayPoint.getVwpTimedOutTimer().getIndex(), virtualWayPoint.getVwpTimer().getTargets()));
         assert(IndexLinkValidator.isIndexInTargetList(virtualWayPoint.getInitiateNextVwpTimer().getIndex(), virtualWayPoint.getVwpTimedOutTimer().getTargets()));
         
         if (previousVirtualWayPoint != null)
         {
-            assert(IndexLinkValidator.isIndexInTargetList(virtualWayPoint.getKillVwpTimer().getIndex(), previousVirtualWayPoint.getInitiateNextVwpTimer().getTargets()));
+            assert(IndexLinkValidator.isIndexInTargetList(virtualWayPoint.getVwpTimer().getIndex(), previousVirtualWayPoint.getInitiateNextVwpTimer().getTargets()));
         }
     }
 
     private void verifyTargetAssociationsTriggered(IVirtualWaypoint virtualWayPoint)
     {
-        assert(IndexLinkValidator.isIndexInTargetList(virtualWayPoint.getCheckZone().getActivateEntryPoint(), virtualWayPoint.getKillVwpTimer().getTargets()));
+        assert(IndexLinkValidator.isIndexInTargetList(virtualWayPoint.getCheckZone().getActivateEntryPoint(), virtualWayPoint.getVwpTimer().getTargets()));
         assert(IndexLinkValidator.isIndexInTargetList(virtualWayPoint.getVwpTriggeredTimer().getIndex(), virtualWayPoint.getCheckZone().getCheckZone().getTargets()));
         assert(IndexLinkValidator.isIndexInTargetList(virtualWayPoint.getStopNextVwp().getIndex(), virtualWayPoint.getVwpTriggeredTimer().getTargets()));
         assert(IndexLinkValidator.isIndexInTargetList(virtualWayPoint.getMasterVwpTimer().getIndex(), virtualWayPoint.getVwpTriggeredTimer().getTargets()));
@@ -100,9 +100,9 @@ public class VirtualWaypointPackageValidator
         boolean virtualWaypointIsLinkedToRealWaypoint = false;
         for (IVirtualWaypoint virtualWayPoint : flight.getVirtualWaypointPackage().getVirtualWaypoints())
         {
+            ActivateContainer activateContainer = virtualWayPoint.getActivateContainer();
             for (BaseFlightMcu flightPoint : waypointPackage.getAllFlightPoints())
             {
-                ActivateContainer activateContainer = virtualWayPoint.getActivateContainer();
                 virtualWaypointIsLinkedToRealWaypoint = IndexLinkValidator.isIndexInTargetList(flightPoint.getIndex(), activateContainer.getWpActivateTimer().getTargets());
                 if (virtualWaypointIsLinkedToRealWaypoint)
                 {
