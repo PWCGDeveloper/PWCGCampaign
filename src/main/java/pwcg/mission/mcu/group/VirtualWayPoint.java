@@ -26,7 +26,7 @@ public final class VirtualWayPoint implements IVirtualWaypoint
     private McuDeactivate stopNextActivate = new McuDeactivate();    private McuTimer activateTimer = new McuTimer();
     private McuTimer activateTimedOutTimer = new McuTimer();
     private McuTimer initiateNextActivateWaypointTimer = new McuTimer();
-    private McuTimer killActivateTimer = new McuTimer();
+    private McuTimer killVwpTimer = new McuTimer();
 
     public static int VWP_TRIGGGER_DISTANCE = 20000;
     
@@ -86,8 +86,8 @@ public final class VirtualWayPoint implements IVirtualWaypoint
 
     private void setTargetAssociationsForPlaneLimitReached()
     {
-        killActivateTimer.setTarget(stopNextActivate.getIndex());
-        killActivateTimer.setTarget(checkZone.getDeactivateEntryPoint());
+        killVwpTimer.setTarget(stopNextActivate.getIndex());
+        killVwpTimer.setTarget(checkZone.getDeactivateEntryPoint());
     }
 
     private void buildMcus(VirtualWayPointCoordinate activateCoordinate)
@@ -116,9 +116,9 @@ public final class VirtualWayPoint implements IVirtualWaypoint
         initiateNextActivateWaypointTimer.setName("Next Activate Timer");
         initiateNextActivateWaypointTimer.setDesc("Next Activate Timer");
 
-        killActivateTimer.setPosition(activateCoordinate.getPosition().copy());
-        killActivateTimer.setName("Kill Activate Timer");
-        killActivateTimer.setDesc("Kill Activate Timer");
+        killVwpTimer.setPosition(activateCoordinate.getPosition().copy());
+        killVwpTimer.setName("Kill Activate Timer");
+        killVwpTimer.setDesc("Kill Activate Timer");
 
         stopNextActivate.setPosition(activateCoordinate.getPosition().copy());
         stopNextActivate.setName("Activate Stop Next");
@@ -157,7 +157,7 @@ public final class VirtualWayPoint implements IVirtualWaypoint
             initiateNextActivateWaypointTimer.write(writer);
             activateTriggeredTimer.write(writer);
             stopNextActivate.write(writer);
-            killActivateTimer.write(writer);
+            killVwpTimer.write(writer);
             
             activateContainer.write(writer);
 
@@ -196,7 +196,7 @@ public final class VirtualWayPoint implements IVirtualWaypoint
     @Override
     public McuTimer getKillVwpTimer()
     {
-        return killActivateTimer;
+        return killVwpTimer;
     }
     
     @Override
