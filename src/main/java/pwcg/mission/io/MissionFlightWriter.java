@@ -5,10 +5,8 @@ import java.util.List;
 
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.mcu.group.PlaneCounter;
 
 public class MissionFlightWriter 
 {
@@ -25,7 +23,6 @@ public class MissionFlightWriter
         if (!TestDriver.getInstance().isCreatePlayerOnly())
         {
             writeFlights(mission.getMissionFlightBuilder().getAiFlights(), writer);
-            writePlaneCounters(writer);
         }
 	}
 
@@ -39,14 +36,5 @@ public class MissionFlightWriter
                 linkedFlight.write(writer);
             }
         }
-    }
-
-    private void writePlaneCounters(BufferedWriter writer) throws PWCGIOException
-    {
-        PlaneCounter alliedPlaneCounter = mission.getMissionPlaneCalculator().getAlliedPlaneCounter();
-        alliedPlaneCounter.write(writer);
-
-        PlaneCounter axisPlaneCounter = mission.getMissionPlaneCalculator().getAxisPlaneCounter();
-        axisPlaneCounter.write(writer);
     }
 }

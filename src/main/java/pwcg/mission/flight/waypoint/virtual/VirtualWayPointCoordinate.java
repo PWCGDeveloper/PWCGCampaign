@@ -2,6 +2,7 @@ package pwcg.mission.flight.waypoint.virtual;
 
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
+import pwcg.mission.flight.IFlight;
 
 /**
  * A VWP Coordinate contains the position of a VWP and the associated action point (WP, ATtackArea, etc) 
@@ -56,4 +57,17 @@ public class VirtualWayPointCoordinate
     {
         this.waypointWaitTimeSeconds = waypointWaitTimeSeconds;
     }
+    
+    public int getWaypointIdentifier(IFlight flight)
+    {
+        if (flight.getWaypointPackage().getAllFlightPoints().size() > waypointindex)
+        {
+            return flight.getWaypointPackage().getAllFlightPoints().get(waypointindex).getIndex();
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
 }

@@ -38,7 +38,6 @@ public class Mission
     private CoordinateBox missionBorders;
 
     private MissionFlightBuilder missionFlightBuilder;
-    private SinglePlayerMissionPlaneLimiter missionPlaneLimiter = new SinglePlayerMissionPlaneLimiter();
     private MissionObjectiveGroup missionObjectiveSuccess = new MissionObjectiveGroup();
     private MissionObjectiveGroup missionObjectiveFailure = new MissionObjectiveGroup();
     private MissionBattleManager missionBattleManager = new MissionBattleManager();
@@ -212,7 +211,6 @@ public class Mission
 
             missionFlightBuilder.finalizeMissionFlights();
             missionFrontLines.buildFrontLineIcons();
-            missionPlaneLimiter.createPlaneCountersToLimitPlanesSpawned(this);
             missionWaypointIconBuilder.createWaypointIcons(missionFlightBuilder.getPlayerFlights());
             missionAirfieldIconBuilder.createWaypointIcons(campaign, this);
             missionAssaultIconBuilder.createAssaultIcons(missionBattleManager.getMissionAssaultDefinitions());
@@ -307,11 +305,6 @@ public class Mission
     public MissionGroundUnitResourceManager getMissionGroundUnitManager()
     {
         return missionGroundUnitManager;
-    }
-
-    public SinglePlayerMissionPlaneLimiter getMissionPlaneCalculator()
-    {
-        return missionPlaneLimiter;
     }
 
     public MissionObjectiveGroup getMissionObjectiveSuccess()

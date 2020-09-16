@@ -14,8 +14,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.virtual.VirtualWaypointStartFinder;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
+import pwcg.mission.flight.waypoint.virtual.VirtualWaypointStartFinder;
 
 @RunWith(MockitoJUnitRunner.class)
 public class VirtualWaypointStartInBoxFinderTest

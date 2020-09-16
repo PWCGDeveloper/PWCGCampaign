@@ -1,4 +1,4 @@
-package pwcg.mission.flight.virtual;
+package pwcg.mission.flight.waypoint.virtual;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,6 @@ import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
-import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 
 public class VirtualWaypointPlotter
 {

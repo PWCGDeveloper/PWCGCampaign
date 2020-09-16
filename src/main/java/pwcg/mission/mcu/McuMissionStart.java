@@ -21,9 +21,6 @@ public class McuMissionStart extends BaseFlightMcu
 		this.enabled = enabled;
 	}
 
-	/**
-	 * @see rof.campaign.mcu.BaseFlightMcu#write(java.io.BufferedWriter)
-	 */
 	public void write(BufferedWriter writer) throws PWCGIOException
 	{
 		try

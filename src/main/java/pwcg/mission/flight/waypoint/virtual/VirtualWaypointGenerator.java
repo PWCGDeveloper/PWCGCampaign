@@ -1,15 +1,12 @@
-package pwcg.mission.flight.virtual;
+package pwcg.mission.flight.waypoint.virtual;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
-import pwcg.mission.mcu.Coalition;
-import pwcg.mission.mcu.CoalitionFactory;
-import pwcg.mission.mcu.group.IVirtualWaypoint;
-import pwcg.mission.mcu.group.VirtualWayPoint;
+import pwcg.mission.mcu.group.virtual.IVirtualWaypoint;
+import pwcg.mission.mcu.group.virtual.VirtualWaypoint;
 
 public class VirtualWaypointGenerator
 {
@@ -20,33 +17,32 @@ public class VirtualWaypointGenerator
         this.flight = flight;
     }
     
-    public List<VirtualWayPoint> createVirtualWaypoints() throws PWCGException 
+    public List<VirtualWaypoint> createVirtualWaypoints() throws PWCGException 
     {
         VirtualWaypointPlotter virtualWaypointPlotter = new VirtualWaypointPlotter(flight);
         List<VirtualWayPointCoordinate> plotCoordinates = virtualWaypointPlotter.plotCoordinates();
-        List<VirtualWayPoint> virtualWaypoints = buildVirtualWaypointsFromCoordinates(plotCoordinates);        
+        List<VirtualWaypoint> virtualWaypoints = buildVirtualWaypointsFromCoordinates(plotCoordinates);        
         return virtualWaypoints;
     }
 
-    private List<VirtualWayPoint> buildVirtualWaypointsFromCoordinates(List<VirtualWayPointCoordinate> plotCoordinates) throws PWCGException
+    private List<VirtualWaypoint> buildVirtualWaypointsFromCoordinates(List<VirtualWayPointCoordinate> plotCoordinates) throws PWCGException
     {
         IVirtualWaypoint prevVirtualWaypoint = null;        
 
-        List<VirtualWayPoint> virtualWaypoints = new ArrayList<VirtualWayPoint>();
+        List<VirtualWaypoint> virtualWaypoints = new ArrayList<VirtualWaypoint>();
         for (VirtualWayPointCoordinate plotCoordinate : plotCoordinates)
         {
-            VirtualWayPoint virtualWaypoint = createVirtualWaypointFromPlot(plotCoordinate);
+            VirtualWaypoint virtualWaypoint = createVirtualWaypointFromPlot(plotCoordinate);
             prevVirtualWaypoint = linkVirtualWaypoint(prevVirtualWaypoint, virtualWaypoint);
             virtualWaypoints.add(virtualWaypoint);
         }
         return virtualWaypoints;
     }
 
-    private VirtualWayPoint createVirtualWaypointFromPlot(VirtualWayPointCoordinate plotCoordinate) throws PWCGException
+    private VirtualWaypoint createVirtualWaypointFromPlot(VirtualWayPointCoordinate plotCoordinate) throws PWCGException
     {
-        Coalition enemyCoalition = CoalitionFactory.getEnemyCoalition(flight.getFlightInformation().getCountry());
-        VirtualWayPoint virtualWaypoint = new VirtualWayPoint();
-        virtualWaypoint.initialize(flight, plotCoordinate, enemyCoalition);
+        VirtualWaypoint virtualWaypoint = new VirtualWaypoint(flight, plotCoordinate);
+        virtualWaypoint.build();
         return virtualWaypoint;
     }
 

@@ -1,4 +1,4 @@
-package pwcg.mission.mcu.group;
+package pwcg.mission.mcu.group.virtual;
 
 import java.io.BufferedWriter;
 import java.util.ArrayList;
@@ -14,36 +14,40 @@ import pwcg.mission.mcu.McuActivate;
 import pwcg.mission.mcu.McuFormation;
 import pwcg.mission.mcu.McuTimer;
 
-public class ActivateContainer
+public class VirtualWaypointActivate
 {
-    private List<PlaneMcu> planesAtActivate = new ArrayList<>();
-    private McuTimer activateTimer = new McuTimer();
-    private McuActivate activate = new McuActivate();
-    private McuTimer wpActivateTimer = new McuTimer();
-    private McuTimer planeAttackTimer = new McuTimer();
+    private IFlight flight;
     private VirtualWayPointCoordinate vwpCoordinate;
-    private McuTimer formationTimer = new McuTimer();
-    private McuFormation formation = new McuFormation();
 
-    public ActivateContainer(VirtualWayPointCoordinate vwpCoordinate)
+    private List<PlaneMcu> planesAtActivate = new ArrayList<>();
+    private McuFormation formation = new McuFormation();
+    private McuActivate activate = new McuActivate();
+
+    private McuTimer activateTimer = new McuTimer();
+    private McuTimer formationTimer = new McuTimer();
+    private McuTimer planeAttackTimer = new McuTimer();
+    private McuTimer waypointTimer = new McuTimer();
+
+    public VirtualWaypointActivate(IFlight flight, VirtualWayPointCoordinate vwpCoordinate)
     {
+        this.flight = flight;
         this.vwpCoordinate = vwpCoordinate;
     }
 
-    public void create(IFlight flight, Coordinate flightCoordinate) throws PWCGException
+    public void build() throws PWCGException
     {
-        buildPlanesAtActivate(flight, flightCoordinate);
-        buildMcus(flightCoordinate);
-        createTargetAssociations(flight);
+        buildPlanesAtActivate();
+        buildMcus();
+        createTargetAssociations();
         createObjectAssociations();
     }
 
-    private void buildPlanesAtActivate(IFlight flight, Coordinate flightCoordinate) throws PWCGException
+    private void buildPlanesAtActivate() throws PWCGException
     {
         for (int i = 0; i < flight.getFlightPlanes().getFlightSize(); ++i)
         {
             PlaneMcu plane = flight.getFlightPlanes().getPlanes().get(i).copy();
-            double planeAltitude = flightCoordinate.getYPos() + (30 * i);
+            double planeAltitude = vwpCoordinate.getPosition().getYPos() + (30 * i);
             if (planeAltitude < 800.0)
             {
                 planeAltitude = 800.0;
@@ -59,43 +63,43 @@ public class ActivateContainer
         flight.getWaypointPackage().addWaypointObjectFromIndex(planesAtActivate.get(0));
     }
 
-    private void buildMcus(Coordinate flightCoordinate)
+    private void buildMcus()
     {
-        activate.setPosition(flightCoordinate.copy());
+        activate.setPosition(vwpCoordinate.getPosition().copy());
         activate.setOrientation(vwpCoordinate.getOrientation().copy());
         activate.setName("Activate");
         activate.setDesc("Activate");
         
         activateTimer.setTimer(1);
-        activateTimer.setPosition(flightCoordinate.copy());
+        activateTimer.setPosition(vwpCoordinate.getPosition().copy());
         activateTimer.setOrientation(vwpCoordinate.getOrientation().copy());
         activateTimer.setName("Activate Timer");
         activateTimer.setDesc("Activate Timer");
 
-        wpActivateTimer.setTimer(1);
-        wpActivateTimer.setPosition(flightCoordinate.copy());
-        wpActivateTimer.setOrientation(vwpCoordinate.getOrientation().copy());
-        wpActivateTimer.setName("Activate WP Timer");
-        wpActivateTimer.setDesc("Activate WP Timer");
+        waypointTimer.setTimer(1);
+        waypointTimer.setPosition(vwpCoordinate.getPosition().copy());
+        waypointTimer.setOrientation(vwpCoordinate.getOrientation().copy());
+        waypointTimer.setName("Activate WP Timer");
+        waypointTimer.setDesc("Activate WP Timer");
         
-        formationTimer.setPosition(flightCoordinate.copy());
+        formationTimer.setPosition(vwpCoordinate.getPosition().copy());
         formationTimer.setName("Formation Timer");
         formationTimer.setDesc("Formation Timer");
         
-        planeAttackTimer.setPosition(flightCoordinate.copy());
+        planeAttackTimer.setPosition(vwpCoordinate.getPosition().copy());
         planeAttackTimer.setName("Plane Attack Timer");
         planeAttackTimer.setDesc("Plane Attack Timer");
 
-        formation.setPosition(flightCoordinate.copy());
+        formation.setPosition(vwpCoordinate.getPosition().copy());
     }
 
-    private void createTargetAssociations(IFlight flight)
+    private void createTargetAssociations()
     {
         activateTimer.setTarget(activate.getIndex());
         formationTimer.setTarget(formation.getIndex());
         
-        int wpIndex = getWaypointIdentifier(flight, vwpCoordinate.getWaypointArrayIndex());
-        wpActivateTimer.setTarget(wpIndex);
+        int wpIndex = vwpCoordinate.getWaypointIdentifier(flight);
+        waypointTimer.setTarget(wpIndex);
 
         for (PlaneMcu plane : planesAtActivate)
         {
@@ -103,20 +107,8 @@ public class ActivateContainer
         }
 
         activateTimer.setTarget(formationTimer.getIndex());
-        formationTimer.setTarget(wpActivateTimer.getIndex());
-        wpActivateTimer.setTarget(planeAttackTimer.getIndex());
-    }
-
-    private int getWaypointIdentifier(IFlight flight, int waypointArrayIndex)
-    {
-        if (flight.getWaypointPackage().getAllFlightPoints().size() > waypointArrayIndex)
-        {
-            return flight.getWaypointPackage().getAllFlightPoints().get(waypointArrayIndex).getIndex();
-        }
-        else
-        {
-            return 0;
-        }
+        formationTimer.setTarget(waypointTimer.getIndex());
+        waypointTimer.setTarget(planeAttackTimer.getIndex());
     }
 
     private void createObjectAssociations()
@@ -132,7 +124,7 @@ public class ActivateContainer
     public void write(BufferedWriter writer) throws PWCGException
     {
         activateTimer.write(writer);
-        wpActivateTimer.write(writer);
+        waypointTimer.write(writer);
         formationTimer.write(writer);
         planeAttackTimer.write(writer);
         
@@ -150,19 +142,24 @@ public class ActivateContainer
         return planesAtActivate.get(0);
     }
     
+    public List<PlaneMcu> getAllPlanes()
+    {
+        return planesAtActivate;
+    }
+    
     public int getEntryPoint()
     {
         return activateTimer.getIndex();
     }
-    
-    public void linkToNextActivateContainer(int nextAActivateContainerIndex)
+
+    public McuFormation getFormation()
     {
-        activateTimer.setTarget(nextAActivateContainerIndex);
+        return formation;
     }
-    
-    public void registerPlaneCounter(int counterIndex)
+
+    public McuActivate getActivate()
     {
-        activateTimer.setTarget(counterIndex);
+        return activate;
     }
 
     public McuTimer getActivateTimer()
@@ -170,11 +167,6 @@ public class ActivateContainer
         return activateTimer;
     }
 
-    public McuTimer getWpActivateTimer()
-    {
-        return wpActivateTimer;
-    }
-    
     public McuTimer getFormationTimer()
     {
         return formationTimer;
@@ -185,18 +177,8 @@ public class ActivateContainer
         return planeAttackTimer;
     }
 
-    public McuActivate getActivate()
+    public McuTimer getWaypointTimer()
     {
-        return activate;
-    }
-
-    public McuFormation getFormation()
-    {
-        return formation;
-    }
-
-    public VirtualWayPointCoordinate getVwpPosition()
-    {
-        return vwpCoordinate;
+        return waypointTimer;
     }
 }

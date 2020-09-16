@@ -6,7 +6,7 @@ import java.util.List;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.mission.Mission;
-import pwcg.mission.mcu.group.VirtualWayPoint;
+import pwcg.mission.mcu.group.virtual.VirtualWaypoint;
 
 public interface IVirtualWaypointPackage
 {
@@ -14,7 +14,7 @@ public interface IVirtualWaypointPackage
 
     void write(BufferedWriter writer) throws PWCGIOException, PWCGException;
 
-    List<VirtualWayPoint> getVirtualWaypoints();
+    List<VirtualWaypoint> getVirtualWaypoints();
 
     void addDelayForPlayerDelay(Mission mission) throws PWCGException;
 }

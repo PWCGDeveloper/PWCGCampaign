@@ -7,26 +7,27 @@ import java.util.List;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.virtual.VirtualWaypointGenerator;
-import pwcg.mission.mcu.group.IVirtualWaypoint;
-import pwcg.mission.mcu.group.VirtualWayPoint;
+import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
+import pwcg.mission.mcu.group.virtual.IVirtualWaypoint;
+import pwcg.mission.mcu.group.virtual.VirtualWaypoint;
 
 public class VirtualWaypointPackage implements IVirtualWaypointPackage
 {
     private IFlight flight;
-    private List<VirtualWayPoint> virtualWaypoints = new ArrayList<>();
+    private List<VirtualWaypoint> virtualWaypoints = new ArrayList<>();
 
     public VirtualWaypointPackage(IFlight flight)
     {
         this.flight = flight;
     }
 
-    @Override
-    public void buildVirtualWaypoints() throws PWCGException
-    {
-        VirtualWaypointGenerator virtualWaypointGenerator = new VirtualWaypointGenerator(flight);
-        virtualWaypoints = virtualWaypointGenerator.createVirtualWaypoints();
-    }
+    @Override   
+    public void buildVirtualWaypoints() throws PWCGException    
+    {   
+        generateVirtualWaypoints(); 
+        linkVirtualWaypointToMissionBegin();    
+    }   
 
     @Override
     public void addDelayForPlayerDelay(Mission mission) throws PWCGException
@@ -49,8 +50,21 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
     }
 
     @Override
-    public List<VirtualWayPoint> getVirtualWaypoints()
+    public List<VirtualWaypoint> getVirtualWaypoints()
     {
         return this.virtualWaypoints;
+    }    
+
+    private void generateVirtualWaypoints() throws PWCGException
+    {
+        VirtualWaypointGenerator virtualWaypointGenerator = new VirtualWaypointGenerator(flight);
+        virtualWaypoints = virtualWaypointGenerator.createVirtualWaypoints();
+    }
+
+    private void linkVirtualWaypointToMissionBegin() throws PWCGException   
+    {   
+        VirtualWaypoint firstVirtualWayPoint = virtualWaypoints.get(0);        
+        IMissionPointSet activateMissionPointSet = flight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_ACTIVATE);
+        activateMissionPointSet.setLinkToNextTarget(firstVirtualWayPoint.getEntryPoint());
     }
 }

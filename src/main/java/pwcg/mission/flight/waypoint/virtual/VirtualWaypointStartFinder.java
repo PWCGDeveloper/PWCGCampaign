@@ -1,4 +1,4 @@
-package pwcg.mission.flight.virtual;
+package pwcg.mission.flight.waypoint.virtual;
 
 import java.util.List;
 
@@ -6,7 +6,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 
 public class VirtualWaypointStartFinder
 {
