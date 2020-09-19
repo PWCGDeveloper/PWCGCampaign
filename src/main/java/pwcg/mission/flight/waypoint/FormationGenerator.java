@@ -38,8 +38,8 @@ public class FormationGenerator
         int horizontalSpacing = productSpecific.getFormationHorizontalSpacing();
         int verticalSpacing = productSpecific.getFormationVerticalSpacing();
         
-        double echelonLeftAngle = MathUtils.adjustAngle(orientation.getyOri(), 330);
-        Coordinate nextPlaneCoords = MathUtils.calcNextCoord(leadPlaneCoords, echelonLeftAngle, horizontalSpacing * placeInFormation);
+        double echelonRightAngle = MathUtils.adjustAngle(orientation.getyOri(), 110);
+        Coordinate nextPlaneCoords = MathUtils.calcNextCoord(leadPlaneCoords, echelonRightAngle, horizontalSpacing * placeInFormation);
         nextPlaneCoords.setYPos(leadPlaneCoords.getYPos() + (verticalSpacing * placeInFormation));
         return nextPlaneCoords;
     }

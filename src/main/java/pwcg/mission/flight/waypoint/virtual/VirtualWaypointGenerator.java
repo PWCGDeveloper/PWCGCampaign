@@ -21,7 +21,7 @@ public class VirtualWaypointGenerator
     {
         VirtualWaypointPlotter virtualWaypointPlotter = new VirtualWaypointPlotter(flight);
         List<VirtualWayPointCoordinate> plotCoordinates = virtualWaypointPlotter.plotCoordinates();
-        List<VirtualWaypoint> virtualWaypoints = buildVirtualWaypointsFromCoordinates(plotCoordinates);        
+        List<VirtualWaypoint> virtualWaypoints = buildVirtualWaypointsFromCoordinates(plotCoordinates);           
         return virtualWaypoints;
     }
 

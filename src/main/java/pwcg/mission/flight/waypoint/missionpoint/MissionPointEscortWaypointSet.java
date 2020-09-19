@@ -72,9 +72,9 @@ public class MissionPointEscortWaypointSet extends MissionPointSetMultipleWaypoi
     }
     
     @Override
-    public void finalize(PlaneMcu plane) throws PWCGException
+    public void finalizeMissionPointSet(PlaneMcu plane) throws PWCGException
     {
-        super.finalize(plane);
+        super.finalizeMissionPointSet(plane);
         linkEscortSequenceToWaypoints();
         escortSequence.finalize();
     }

@@ -68,10 +68,10 @@ public class MissionPointFlightActivate implements IMissionPointSet
     }
 
     @Override
-    public void finalize(PlaneMcu plane) throws PWCGException
+    public void finalizeMissionPointSet(PlaneMcu flightLeader) throws PWCGException
     {
         createTargetAssociations();
-        createObjectAssociations(plane);
+        createObjectAssociations(flightLeader);
     }
 
     @Override
@@ -114,15 +114,21 @@ public class MissionPointFlightActivate implements IMissionPointSet
 
     private void linkToPlaneAttack()
     {
-        for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
+        if (!flight.getFlightInformation().isVirtual()) 
         {
-            activationTimer.setTarget(plane.getAttackTimer().getIndex());
-        }        
+            for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
+            {
+                activationTimer.setTarget(plane.getAttackTimer().getIndex());
+            }
+        }
     }
 
     private void createObjectAssociations(PlaneMcu plane)
     {
-        activationEntity.setObject(plane.getLinkTrId());
+        if (!flight.getFlightInformation().isVirtual())
+        {
+            activationEntity.setObject(plane.getLinkTrId());
+        }
     }
     
     @Override

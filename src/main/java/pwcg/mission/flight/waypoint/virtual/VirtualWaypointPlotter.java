@@ -1,8 +1,11 @@
 package pwcg.mission.flight.waypoint.virtual;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+import pwcg.campaign.api.IProductSpecificConfiguration;
+import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -13,6 +16,8 @@ import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 
 public class VirtualWaypointPlotter
 {
+    private final int END_OF_LEG_BACK_OFF_METERS = 1000;
+    
     private IFlight flight;
     
     public VirtualWaypointPlotter(IFlight flight)
@@ -23,14 +28,11 @@ public class VirtualWaypointPlotter
     public List<VirtualWayPointCoordinate> plotCoordinates() throws PWCGException
     {
         List<VirtualWayPointCoordinate> plotCoordinates = plotAllCoordinates();
-        int startVWP = VirtualWaypointStartFinder.determineStartVWP(flight, plotCoordinates);
-
-        List<VirtualWayPointCoordinate> keptPlotCoordinates = new ArrayList<>();
-        for (int i = startVWP; i < plotCoordinates.size(); ++i)
-        {
-            keptPlotCoordinates.add(plotCoordinates.get(i));
-        }
-        return keptPlotCoordinates;
+        
+        VirtualWaypointConsolidator virtualWaypointConsolidator = new VirtualWaypointConsolidator(flight, plotCoordinates);
+        List<VirtualWayPointCoordinate> afterConsolidation = virtualWaypointConsolidator.consolidatedVirtualWaypoints();
+        
+        return afterConsolidation;
     }
 
     private List<VirtualWayPointCoordinate> plotAllCoordinates() throws PWCGException 
@@ -62,48 +64,82 @@ public class VirtualWaypointPlotter
     }
 
     private List<VirtualWayPointCoordinate> generateVwpSetForLeg(
-                    int waypointIndex,
+                    int targetWaypointIndex,
                     Coordinate legStartPosition,
                     Coordinate legEndPosition) throws PWCGException
     {
         List<VirtualWayPointCoordinate> flightPathForLeg = new ArrayList<VirtualWayPointCoordinate>();
 
-        int numVirtualWpForLeg = calculateNumberOfVirtualWaypointsForLeg(legStartPosition, legEndPosition);
-        double distanceBetweenVWP = calculateDistanceBetweenEachVirtualWaypoint(legStartPosition, legEndPosition, numVirtualWpForLeg);
-        int waitInSecondsForVWP = calculateWaitTimeInSecondsForLeg(distanceBetweenVWP);
-        double angle = MathUtils.calcAngle(legStartPosition, legEndPosition);
-                
-        for (int vwpIndex = 0; vwpIndex < numVirtualWpForLeg; ++vwpIndex)
+        List<Coordinate> vwpCoordinatesForLeg = calculateVwpCoordinatesForLeg(legStartPosition, legEndPosition);
+        double altitudeDeltaPerSegment = (legStartPosition.getYPos() - legEndPosition.getYPos()) / vwpCoordinatesForLeg.size();
+        double legOrientationAngle = MathUtils.calcAngle(legStartPosition, legEndPosition);
+
+        int vwpCounter = 1;
+        Coordinate previousVwpPosition = null;
+        for (Coordinate vwpPosition : vwpCoordinatesForLeg)
         {
-            double distanceToWP = distanceBetweenVWP * (vwpIndex+1);
-            Coordinate nextCoordinate = MathUtils.calcNextCoord(legStartPosition, angle, distanceToWP);
-
-            double altitudeDelta = (legStartPosition.getYPos() - legEndPosition.getYPos()) / numVirtualWpForLeg;
-            double altitude = legStartPosition.getYPos() + (altitudeDelta * vwpIndex);
-            nextCoordinate.setYPos(altitude);
-
-            VirtualWayPointCoordinate virtualWayPointCoordinate = createVwpCoordinate(waypointIndex, legStartPosition, angle, waitInSecondsForVWP);
+            if (previousVwpPosition == null)
+            {
+                previousVwpPosition = legStartPosition;
+            }
+            
+            int waitInSecondsForVWP = calculateWaitTimeForVwp(previousVwpPosition, vwpPosition);
+            setVwpAltitude(legStartPosition, altitudeDeltaPerSegment, vwpCounter, vwpPosition);
+            VirtualWayPointCoordinate virtualWayPointCoordinate = createVwpCoordinate(targetWaypointIndex, vwpPosition, legOrientationAngle, waitInSecondsForVWP);
             flightPathForLeg.add(virtualWayPointCoordinate);
+            
+            previousVwpPosition = vwpPosition;
+            ++vwpCounter;
         }
         
         return flightPathForLeg;
     }
-    
-    private int calculateNumberOfVirtualWaypointsForLeg(Coordinate legStartPosition, Coordinate legEndPosition)
+
+    private void setVwpAltitude(Coordinate legStartPosition, double altitudeDeltaPerSegment, int vwpCounter, Coordinate vwpPosition)
     {
-        double distanceToWP = MathUtils.calcDist(legStartPosition, legEndPosition);
-        Double numberOfLegs = Double.valueOf(distanceToWP / 3000.0);
-        numberOfLegs += 1.0;
-        return numberOfLegs.intValue();
+        double altitude = legStartPosition.getYPos() + (altitudeDeltaPerSegment * vwpCounter);
+        vwpPosition.setYPos(altitude);
     }
 
-    private double calculateDistanceBetweenEachVirtualWaypoint(Coordinate legStartPosition, Coordinate legEndPosition, int numberOfLegs)
+    private int calculateWaitTimeForVwp(Coordinate previousVwpPosition, Coordinate vwpPosition)
     {
-        double distanceToWP = MathUtils.calcDist(legStartPosition, legEndPosition);
-        return distanceToWP / numberOfLegs;
+        double distanceBetweenVWP = MathUtils.calcDist(previousVwpPosition, vwpPosition);
+        int waitInSecondsForVWP = calculateWaitTimeInSecondsForVwp(distanceBetweenVWP);
+        return waitInSecondsForVWP;
     }
     
-    private int calculateWaitTimeInSecondsForLeg(double distanceBetweenVWP)
+    private List<Coordinate> calculateVwpCoordinatesForLeg(Coordinate legStartPosition, Coordinate legEndPosition) throws PWCGException 
+    {
+        List<Coordinate> vwpCoordinatesForLeg = new ArrayList<>();
+        
+        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        int vwpSeparationDistance = productSpecific.getVwpSeparationDistance();
+        
+        double backoffAngle = MathUtils.calcAngle(legEndPosition, legStartPosition);
+        Coordinate lastVwpOfLegPosition = MathUtils.calcNextCoord(legEndPosition, backoffAngle, END_OF_LEG_BACK_OFF_METERS);
+        vwpCoordinatesForLeg.add(lastVwpOfLegPosition);
+        
+        int numberOfVwpsInLeg = calculateNumberOfVirtualWaypointsForLeg(legStartPosition, legEndPosition, vwpSeparationDistance);
+        for (int i = 1; i < numberOfVwpsInLeg; ++i)
+        {
+            Coordinate nextVwpOfLegDescending = MathUtils.calcNextCoord(lastVwpOfLegPosition, backoffAngle, (vwpSeparationDistance * i));
+            vwpCoordinatesForLeg.add(nextVwpOfLegDescending);
+        }
+        
+        Collections.reverse(vwpCoordinatesForLeg);
+        return vwpCoordinatesForLeg;
+        
+    }
+    
+    private int calculateNumberOfVirtualWaypointsForLeg(Coordinate legStartPosition, Coordinate legEndPosition, int vwpSeparationDistance)
+    {
+        double distanceToWP = MathUtils.calcDist(legStartPosition, legEndPosition);
+        distanceToWP -= END_OF_LEG_BACK_OFF_METERS;
+        Double numberOfLegs = Double.valueOf(distanceToWP / vwpSeparationDistance);
+        return numberOfLegs.intValue();
+    }
+    
+    private int calculateWaitTimeInSecondsForVwp(double distanceBetweenVWP)
     {
         double cruiseSpeedKPH = flight.getFlightCruisingSpeed();
         double kphToMetersToSecond = 1000.0 / 3600.0;
@@ -127,13 +163,13 @@ public class VirtualWaypointPlotter
         return circlingFlightPath;
     }
 
-    private VirtualWayPointCoordinate createVwpCoordinate(int wpIndex, Coordinate coordinate, double angle, int waitInSecondsForVWP)
+    private VirtualWayPointCoordinate createVwpCoordinate(int targetWaypointIndex, Coordinate vwpPosition, double orientationAngle, int waitInSecondsForVWP)
     {
         VirtualWayPointCoordinate virtualWayPointCoordinate = new VirtualWayPointCoordinate();
         
-        virtualWayPointCoordinate.setCoordinate(coordinate.copy());
-        virtualWayPointCoordinate.setOrientation(new Orientation(angle));
-        virtualWayPointCoordinate.setWaypointindex(wpIndex);
+        virtualWayPointCoordinate.setCoordinate(vwpPosition.copy());
+        virtualWayPointCoordinate.setOrientation(new Orientation(orientationAngle));
+        virtualWayPointCoordinate.setWaypointindex(targetWaypointIndex);
         virtualWayPointCoordinate.setWaypointWaitTimeSeconds(waitInSecondsForVWP);
         
         return virtualWayPointCoordinate;

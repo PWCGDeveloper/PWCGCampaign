@@ -57,9 +57,9 @@ public class MissionPointAttackSet extends MissionPointSetMultipleWaypointSet im
     }
 
     @Override
-    public void finalize(PlaneMcu plane) throws PWCGException
+    public void finalizeMissionPointSet(PlaneMcu plane) throws PWCGException
     {
-        super.finalize(plane);
+        super.finalizeMissionPointSet(plane);
         attackSequence.finalize(plane);
         
         McuWaypoint firstWaypointAfter = super.getFirstWaypointAfter();

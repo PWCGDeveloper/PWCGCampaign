@@ -124,11 +124,11 @@ public class WaypointPackage implements IWaypointPackage
     }
 
     @Override
-    public void finalize(PlaneMcu plane) throws PWCGException
+    public void finalize(PlaneMcu flightLeader) throws PWCGException
     {
         for (IMissionPointSet missionPointSet : missionPointSets)
         {
-            missionPointSet.finalize(plane);
+            missionPointSet.finalizeMissionPointSet(flightLeader);
         }
         linkMissionPointSets();
     }
