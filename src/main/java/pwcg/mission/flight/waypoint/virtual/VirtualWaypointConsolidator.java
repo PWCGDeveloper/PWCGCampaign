@@ -37,7 +37,7 @@ public class VirtualWaypointConsolidator
     private List<VirtualWayPointCoordinate> consolidateVirtualWaypoints(int firstVwpToKeep, int lastVwpToKeep, int timeUntilFirst)
     {
         List<VirtualWayPointCoordinate> afterConsolidation = new ArrayList<>();
-        for (int i = firstVwpToKeep; i < lastVwpToKeep; ++i)
+        for (int i = firstVwpToKeep; i <= lastVwpToKeep; ++i)
         {
             afterConsolidation.add(beforeConsolidation.get(i));
         }
@@ -80,7 +80,9 @@ public class VirtualWaypointConsolidator
         int lastVwpToKeep = beforeConsolidation.size();
         if (lastVwpNearBox == VirtualWaypointStartFinder.IS_NOT_NEAR_AREA && lastVwpNearFront == VirtualWaypointStartFinder.IS_NOT_NEAR_AREA)
         {
-            lastVwpToKeep = beforeConsolidation.size();
+            // If last VWP to keep is not in the box or the front then this flight isn't close to anything.
+            // Just establish one VWP to minimize resource usage.  Future: eliminate this flight.
+            lastVwpToKeep = 0;
         }
         else if (lastVwpNearBox == VirtualWaypointStartFinder.IS_NOT_NEAR_AREA)
         {

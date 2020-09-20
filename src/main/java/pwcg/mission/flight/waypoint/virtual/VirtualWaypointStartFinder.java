@@ -72,13 +72,29 @@ public class VirtualWaypointStartFinder
         for (int vwpIndex = 0; vwpIndex < plotCoordinates.size(); ++vwpIndex)
         {
             VirtualWayPointCoordinate vwpCoordinate = plotCoordinates.get(vwpIndex);
-            double vwpDistanceToFront = getVwpDistanceFromFront(flight, vwpCoordinate);            
-            if (vwpDistanceToFront < vwpDistanceToFront)
+            double vwpDistanceToFront = getVwpDistanceFromFront(flight, vwpCoordinate);
+            IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+            int vwpProximityToFrontDistance = productSpecific.getVwpProximityToFrontDistance();
+            if (vwpDistanceToFront < vwpProximityToFrontDistance)
             {
                 lastVwpNearFront =  vwpIndex;
             }
         }
         
+        lastVwpNearFront = addOneOutOfRangeToEndOfFlight(plotCoordinates, lastVwpNearFront);
+        
+        return lastVwpNearFront;
+    }
+
+    private static int addOneOutOfRangeToEndOfFlight(List<VirtualWayPointCoordinate> plotCoordinates, int lastVwpNearFront)
+    {
+        if (lastVwpNearFront != IS_NOT_NEAR_AREA)
+        {
+            if (plotCoordinates.size() > (lastVwpNearFront+1))
+            {
+                ++lastVwpNearFront;
+            }
+        }
         return lastVwpNearFront;
     }
 
