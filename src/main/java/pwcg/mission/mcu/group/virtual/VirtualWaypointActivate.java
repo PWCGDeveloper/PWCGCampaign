@@ -101,11 +101,6 @@ public class VirtualWaypointActivate
         int wpIndex = vwpCoordinate.getWaypointIdentifier(flight);
         waypointTimer.setTarget(wpIndex);
 
-        for (PlaneMcu plane : planesAtActivate)
-        {
-            planeAttackTimer.setTarget(plane.getAttackTimer().getIndex());
-        }
-
         activateTimer.setTarget(formationTimer.getIndex());
         formationTimer.setTarget(waypointTimer.getIndex());
         waypointTimer.setTarget(planeAttackTimer.getIndex());

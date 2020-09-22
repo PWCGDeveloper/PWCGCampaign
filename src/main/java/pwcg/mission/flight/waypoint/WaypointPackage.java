@@ -12,7 +12,6 @@ import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.plot.FlightPathToWaypointPlotter;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
-import pwcg.mission.flight.waypoint.missionpoint.MissionPointFlightActivate;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuWaypoint;
@@ -131,21 +130,6 @@ public class WaypointPackage implements IWaypointPackage
             missionPointSet.finalizeMissionPointSet(flightLeader);
         }
         linkMissionPointSets();
-    }
-
-    @Override
-    public IWaypointPackage duplicate(int positionInFormation) throws PWCGException
-    {
-        WaypointPackage duplucateWaypointPackage = new WaypointPackage(flight);
-        for (IMissionPointSet missionPointSet : missionPointSets)
-        {
-            if (!(missionPointSet instanceof MissionPointFlightActivate))
-            {
-                IMissionPointSet duplicateMissionPointSet = missionPointSet.duplicateWithOffset(flight, positionInFormation);
-                duplucateWaypointPackage.addMissionPointSet(duplicateMissionPointSet);
-            }
-        }
-        return duplucateWaypointPackage;
     }
     
     @Override

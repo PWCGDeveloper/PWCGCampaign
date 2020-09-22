@@ -64,7 +64,7 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
     private void linkVirtualWaypointToMissionBegin() throws PWCGException   
     {   
         VirtualWaypoint firstVirtualWayPoint = virtualWaypoints.get(0);        
-        IMissionPointSet activateMissionPointSet = flight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_ACTIVATE);
+        IMissionPointSet activateMissionPointSet = flight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_BEGIN_VIRTUAL);
         activateMissionPointSet.setLinkToNextTarget(firstVirtualWayPoint.getEntryPoint());
     }
 }

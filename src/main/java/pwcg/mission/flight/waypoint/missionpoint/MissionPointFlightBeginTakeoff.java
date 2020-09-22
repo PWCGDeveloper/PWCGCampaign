@@ -101,14 +101,6 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
     {
         return formationTimer.getIndex();
     }
-    
-    @Override
-    public IMissionPointSet duplicateWithOffset(IFlight flight, int positionInFormation) throws PWCGException
-    {
-        MissionPointRouteSet duplicate = new MissionPointRouteSet();
-        duplicate.waypoints = super.duplicateWaypoints(positionInFormation);
-        return duplicate;
-    }
 
     @Override
     public List<BaseFlightMcu> getAllFlightPoints()

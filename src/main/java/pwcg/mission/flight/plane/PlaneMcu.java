@@ -27,10 +27,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogCategory;
 import pwcg.mission.flight.FlightStartPosition;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.waypoint.WaypointPriority;
-import pwcg.mission.mcu.McuAttack;
 import pwcg.mission.mcu.McuTREntity;
-import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.group.IPlaneRemover;
 import pwcg.mission.mcu.group.WingmanMcuGroup;
 
@@ -70,9 +67,6 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
     private IPlanePayload payload = null;
 
     private McuTREntity entity = new McuTREntity();
-
-    private McuTimer attackTimer = new McuTimer();
-    private McuAttack attackEntity = new McuAttack();
     
     private Campaign campaign;
     private SquadronMember pilot;
@@ -117,8 +111,6 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         plane.wingmanCommands = this.wingmanCommands;
         plane.payload = this.payload;
         plane.entity = this.entity;
-        plane.attackTimer = this.attackTimer;
-        plane.attackEntity = this.attackEntity;
         plane.campaign = this.campaign;
         plane.pilot = this.pilot;
     }
@@ -134,8 +126,6 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         this.setDesc(pilot.getNameAndRank());
         
         startInAir = FlightStartPosition.START_IN_AIR;
-        
-        initializeAttackEntity();
     }
     
     public void populateEntity(IFlight flight, PlaneMcu flightLeader)
@@ -237,21 +227,6 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         }
     }
 
-    private void initializeAttackEntity()
-    {
-        attackTimer.setName(pilot.getSerialNumber() + ": Attack Timer");       
-        attackTimer.setDesc("Attack Timer for " + pilot.getSerialNumber());
-        attackTimer.setTarget(attackEntity.getIndex());
-        attackTimer.setTimer(10);
-
-        attackEntity.setName(pilot.getSerialNumber() + ": Attack Entity");       
-        attackEntity.setDesc("Attack Entity for " + pilot.getSerialNumber());
-        attackEntity.setPriority(WaypointPriority.PRIORITY_HIGH);
-
-        attackTimer.setTarget(attackEntity.getIndex());
-        attackEntity.setObject(getEntity().getIndex());
-    }
-
     public void write(BufferedWriter writer) throws PWCGException 
     {
         try
@@ -337,9 +312,6 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
 
             entity.write(writer);
 
-            attackTimer.write(writer);
-            attackEntity.write(writer);
-            
             if (wingmanCommands != null)
             {
                 wingmanCommands.write(writer);
@@ -366,11 +338,6 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
     public void setWingman(WingmanMcuGroup wingmanCommands)
     {
         this.wingmanCommands = wingmanCommands;
-    }
-
-    public void addPlaneTarget(int targetPlaneIndex)
-    {
-        attackEntity.setTarget(targetPlaneIndex);
     }
 
     public String getName()
@@ -411,9 +378,6 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         {
             entity.setPosition(position);
         }
-        
-        attackTimer.setPosition(position);  
-        attackEntity.setPosition(position);
     }
 
     public Orientation getOrientation()
@@ -570,11 +534,6 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         this.fuel = fuel;
 
         validateFuel();
-    }
-
-    public McuTimer getAttackTimer()
-    {
-        return attackTimer;
     }
 
     public SquadronMember getPilot()

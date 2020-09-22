@@ -114,16 +114,6 @@ public class MissionPointFlightEnd extends MissionPointSetSingleWaypointSet impl
     }
 
     @Override
-    public IMissionPointSet duplicateWithOffset(IFlight flight, int positionInFormation) throws PWCGException
-    {
-        MissionPointFlightEnd duplicate = new MissionPointFlightEnd(flight, landingAirfield);
-        duplicate.waypoints = super.duplicateWaypoints(positionInFormation);
-
-        duplicate.landingMcu = landingMcu.clone();
-        return duplicate;
-    }
-
-    @Override
     public List<BaseFlightMcu> getAllFlightPoints()
     {
         List<BaseFlightMcu> allFlightPoints = new ArrayList<>();

@@ -127,12 +127,6 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
     }
 
     @Override
-    public IMissionPointSet duplicateWithOffset(IFlight flight, int positionInFormation) throws PWCGException
-    {
-        throw new PWCGException("Attempt to duplicate air start waypoint set.  Should ever be virtual");
-    }
-
-    @Override
     public List<BaseFlightMcu> getAllFlightPoints()
     {
         List<BaseFlightMcu> allFlightPoints = new ArrayList<>();

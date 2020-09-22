@@ -15,7 +15,7 @@ import pwcg.mission.mcu.McuActivate;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class MissionPointFlightActivate implements IMissionPointSet
+public class MissionPointFlightActivateReal implements IMissionPointSet
 {
     private IFlight flight;
 
@@ -25,7 +25,7 @@ public class MissionPointFlightActivate implements IMissionPointSet
     private boolean linkToNextTarget = true;
     private MissionPointSetType missionPointSetType;
 
-    public MissionPointFlightActivate(IFlight flight)
+    public MissionPointFlightActivateReal(IFlight flight)
     {
         this.flight = flight;
         this.missionPointSetType = MissionPointSetType.MISSION_POINT_SET_ACTIVATE;
@@ -108,19 +108,6 @@ public class MissionPointFlightActivate implements IMissionPointSet
     {
         missionBeginUnit.linkToMissionBegin(activationTimer.getIndex());
         activationTimer.setTarget(activationEntity.getIndex());
-        
-        linkToPlaneAttack();
-    }
-
-    private void linkToPlaneAttack()
-    {
-        if (!flight.getFlightInformation().isVirtual()) 
-        {
-            for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
-            {
-                activationTimer.setTarget(plane.getAttackTimer().getIndex());
-            }
-        }
     }
 
     private void createObjectAssociations(PlaneMcu plane)
@@ -177,12 +164,6 @@ public class MissionPointFlightActivate implements IMissionPointSet
     @Override
     public void removeUnwantedWaypoints(List<BriefingMapPoint> waypointsInBriefing) throws PWCGException
     {
-    }
-
-    @Override
-    public IMissionPointSet duplicateWithOffset(IFlight flight, int positionInFormation) throws PWCGException
-    {
-        throw new PWCGException("Do not duplicate flight activate");                                
     }
 
     @Override

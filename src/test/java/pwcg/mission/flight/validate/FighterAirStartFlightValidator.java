@@ -5,7 +5,7 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointType;
-import pwcg.mission.flight.waypoint.missionpoint.MissionPointFlightActivate;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPointFlightActivateVirtual;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointFlightBeginAirStart;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
 import pwcg.mission.mcu.McuTimer;
@@ -68,8 +68,8 @@ public class FighterAirStartFlightValidator
     
     public void verifyActivateLinkedToFormation(IFlight flight) throws PWCGException
     {
-        MissionPointFlightActivate activateMissionPointSet = (MissionPointFlightActivate)flight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_ACTIVATE);
-        McuTimer activationTimer = activateMissionPointSet.getActivationTimer();
+        MissionPointFlightActivateVirtual activateMissionPointSet = (MissionPointFlightActivateVirtual)flight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_ACTIVATE);
+        McuTimer activationTimer = activateMissionPointSet.getMissionBeginVwpTimer();
 
         MissionPointFlightBeginAirStart airStartMissionPointSet = (MissionPointFlightBeginAirStart)flight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_BEGIN_AIR);
         int airStartEntryIndex = airStartMissionPointSet.getEntryPoint();
