@@ -36,13 +36,26 @@ public class VirtualWaypointPlanes
         {
             PlaneMcu plane = flight.getFlightPlanes().getPlanes().get(i).copy();
             setPlaneIndex(plane);
+            setPlaneNumberInFormation(i, plane);
             setPlanePosition(i, plane);
             setPlaneDisabled(plane);
+            
+            if (i > 0)
+            {
+                linkToFlightLeader(plane, planesAtActivate.get(0).getLinkTrId());
+            }
             
             planesAtActivate.add(plane);
         }
         
         flight.getWaypointPackage().addObjectToAllMissionPoints(planesAtActivate.get(0));
+    }
+
+    private void linkToFlightLeader(PlaneMcu plane, int linkTrId)
+    {
+        plane.getEntity().clearTargets();
+        plane.getEntity().setTarget(linkTrId);
+        
     }
 
     private void setPlaneIndex(PlaneMcu plane)
@@ -72,6 +85,11 @@ public class VirtualWaypointPlanes
     private void setPlaneDisabled(PlaneMcu plane)
     {
         plane.getEntity().setEnabled(0);
+    }
+
+    private void setPlaneNumberInFormation(int i, PlaneMcu plane)
+    {
+        plane.setNumberInFormation(i+1);        
     }
 
     public void write(BufferedWriter writer) throws PWCGException
