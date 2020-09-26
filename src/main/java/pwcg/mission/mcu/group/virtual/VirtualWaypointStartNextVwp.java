@@ -6,7 +6,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.McuTimer;
 
-public final class VirtualWaypointStartNextVwp 
+public class VirtualWaypointStartNextVwp 
 {       
     private VirtualWayPointCoordinate vwpCoordinate;
     private VirtualWaypointDeletePlanes vwpDelete;
@@ -65,4 +65,9 @@ public final class VirtualWaypointStartNextVwp
     {
         return startnextWaypointTriggeredTimer;
     }
+
+    public McuTimer getStartNextWaypointTimer()
+    {
+        return startNextWaypointTimer;
+    }    
 }

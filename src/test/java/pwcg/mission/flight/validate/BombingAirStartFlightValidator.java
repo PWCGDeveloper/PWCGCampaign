@@ -86,7 +86,7 @@ public class BombingAirStartFlightValidator
     public void verifyActivateLinkedToFormation(IFlight flight) throws PWCGException
     {
         MissionPointFlightActivateVirtual activateMissionPointSet = (MissionPointFlightActivateVirtual)flight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_ACTIVATE);
-        McuTimer activationTimer = activateMissionPointSet.getMissionBeginVwpTimer();
+        McuTimer activationTimer = activateMissionPointSet.getMissionBeginTimer();
 
         MissionPointFlightBeginAirStart airStartMissionPointSet = (MissionPointFlightBeginAirStart)flight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_BEGIN_AIR);
         int airStartEntryIndex = airStartMissionPointSet.getEntryPoint();

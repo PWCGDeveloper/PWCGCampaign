@@ -30,14 +30,11 @@ public class VirtualWaypointActivateTest
     private PlaneMcu plane2;
     @Mock private IWaypointPackage waypointPackage = new WaypointPackage(flight);
     @Mock VirtualWayPointCoordinate vwpCoordinate;
+    @Mock VirtualWaypointPlanes vwpPlanes;
     
     @Before
     public void setup()
-    {
-        Mockito.when(flight.getFlightPlanes()).thenReturn(flightPlanes);
-        Mockito.when(flight.getWaypointPackage()).thenReturn(waypointPackage);
-        Mockito.when(flightPlanes.getFlightSize()).thenReturn(2);
-        
+    {        
         plane1 = new PlaneMcu();
         plane1.setName("Plane 1");
         plane2 = new PlaneMcu();
@@ -46,28 +43,28 @@ public class VirtualWaypointActivateTest
         List<PlaneMcu> planes = new ArrayList<>();
         planes.add(plane1);
         planes.add(plane2);
-        Mockito.when(flightPlanes.getPlanes()).thenReturn(planes);
 
         Coordinate vwpPosition = new Coordinate(100.0, 10000.0, 100.0);
         Mockito.when(vwpCoordinate.getPosition()).thenReturn(vwpPosition);
 
         Orientation vwpOrientation = new Orientation(270.0);
         Mockito.when(vwpCoordinate.getOrientation()).thenReturn(vwpOrientation);        
+
+        Mockito.when(vwpPlanes.getLeadActivatePlane()).thenReturn(plane1);        
+        Mockito.when(vwpPlanes.getAllPlanes()).thenReturn(planes);        
     }
     
     @Test
     public void validateVwpBuildProcess() throws PWCGException
     {
-        VirtualWaypointActivate activate = new VirtualWaypointActivate(flight, vwpCoordinate);
+        VirtualWaypointActivate activate = new VirtualWaypointActivate(flight, vwpCoordinate, vwpPlanes);
         activate.build();
         
         assert(IndexLinkValidator.isIndexInTargetList(activate.getFormationTimer().getIndex(), activate.getActivateTimer().getTargets()));
         assert(IndexLinkValidator.isIndexInTargetList(activate.getWaypointTimer().getIndex(), activate.getFormationTimer().getTargets()));        
-        assert(IndexLinkValidator.isIndexInTargetList(activate.getPlaneAttackTimer().getIndex(), activate.getWaypointTimer().getTargets()));
 
         assert(IndexLinkValidator.isIndexInTargetList(activate.getActivate().getIndex(), activate.getActivateTimer().getTargets()));
         assert(IndexLinkValidator.isIndexInTargetList(activate.getFormation().getIndex(), activate.getFormationTimer().getTargets()));
-        assert(activate.getPlaneAttackTimer().getTargets().size() == 2);
         assert(activate.getWaypointTimer().getTargets().size() == 2);
         assert(IndexLinkValidator.isIndexInTargetList(activate.getFormation().getIndex(), activate.getFormationTimer().getTargets()));
         assert(activate.getFormation().getObjects().size() == 1);

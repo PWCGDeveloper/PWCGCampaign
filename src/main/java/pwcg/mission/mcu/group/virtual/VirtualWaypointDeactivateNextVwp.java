@@ -7,7 +7,7 @@ import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.McuDeactivate;
 import pwcg.mission.mcu.McuTimer;
 
-public final class VirtualWaypointDeactivateNextVwp 
+public class VirtualWaypointDeactivateNextVwp 
 {       
     private VirtualWayPointCoordinate vwpCoordinate;
 

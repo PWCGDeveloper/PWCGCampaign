@@ -16,6 +16,9 @@ import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 public class VirtualWaypointCheckZoneTest
 {
     @Mock VirtualWayPointCoordinate vwpCoordinate;
+    @Mock VirtualWaypointStartNextVwp vwpNextVwpStart;
+    @Mock VirtualWaypointDeactivateNextVwp vwpDeactivateNextVwp;
+    @Mock VirtualWaypointActivate vwpActivate;
     
     @Before
     public void setup()
@@ -32,15 +35,17 @@ public class VirtualWaypointCheckZoneTest
         
         assert(IndexLinkValidator.isIndexInTargetList(vwpCheckZone.getCheckZone().getActivateEntryPoint(), vwpCheckZone.getVwpStartTimer().getTargets()));
         assert(IndexLinkValidator.isIndexInTargetList(vwpCheckZone.getTriggeredDisableNextVwpTimer().getIndex(), vwpCheckZone.getCheckZone().getCheckZone().getTargets()));
-        assert(IndexLinkValidator.isIndexInTargetList(vwpCheckZone.getTriggeredActivateContainerTimer().getIndex(), vwpCheckZone.getTriggeredDisableNextVwpTimer().getTargets()));
+        assert(IndexLinkValidator.isIndexInTargetList(vwpCheckZone.getTriggeredActivateContainerTimer().getIndex(), vwpCheckZone.getCheckZone().getCheckZone().getTargets()));
 
-        int deactivateNextVwp = 999;
-        int activatenextContainer = 9999;
+        Mockito.when(vwpNextVwpStart.getEntryPoint()).thenReturn(97);
+        Mockito.when(vwpDeactivateNextVwp.getEntryPoint()).thenReturn(98);
+        Mockito.when(vwpActivate.getEntryPoint()).thenReturn(99);
+      
+        vwpCheckZone.link(vwpNextVwpStart, vwpDeactivateNextVwp, vwpActivate);
         
-        vwpCheckZone.link(deactivateNextVwp, activatenextContainer);
-        
-        assert(IndexLinkValidator.isIndexInTargetList(deactivateNextVwp, vwpCheckZone.getTriggeredDisableNextVwpTimer().getTargets()));
-        assert(IndexLinkValidator.isIndexInTargetList(activatenextContainer, vwpCheckZone.getTriggeredActivateContainerTimer().getTargets()));
+        assert(IndexLinkValidator.isIndexInTargetList(97, vwpCheckZone.getVwpStartTimer().getTargets()));
+        assert(IndexLinkValidator.isIndexInTargetList(98, vwpCheckZone.getTriggeredDisableNextVwpTimer().getTargets()));
+        assert(IndexLinkValidator.isIndexInTargetList(99, vwpCheckZone.getTriggeredActivateContainerTimer().getTargets()));
 
     }
 }

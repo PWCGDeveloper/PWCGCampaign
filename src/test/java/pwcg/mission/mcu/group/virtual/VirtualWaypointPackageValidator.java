@@ -63,7 +63,7 @@ public class VirtualWaypointPackageValidator
         boolean virtualWaypointIsLinkedToRealWaypoint = false;
         for (IVirtualWaypoint virtualWayPoint : flight.getVirtualWaypointPackage().getVirtualWaypoints())
         {
-            PlaneMcu virtualFlightLeader = virtualWayPoint.getVwpActivate().getLeadActivatePlane();
+            PlaneMcu virtualFlightLeader = virtualWayPoint.getVwpFlightLeader();
             for (BaseFlightMcu flightPoint : waypointPackage.getAllFlightPoints())
             {
                 virtualWaypointIsLinkedToRealWaypoint = IndexLinkValidator.isIndexInTargetList(virtualFlightLeader.getLinkTrId(), flightPoint.getObjects());
@@ -77,7 +77,7 @@ public class VirtualWaypointPackageValidator
         for (IVirtualWaypoint virtualWayPoint : flight.getVirtualWaypointPackage().getVirtualWaypoints())
         {
             VirtualWaypointActivate activateContainer = virtualWayPoint.getVwpActivate();
-            PlaneMcu virtualFlightLeader = virtualWayPoint.getVwpActivate().getLeadActivatePlane();
+            PlaneMcu virtualFlightLeader = virtualWayPoint.getVwpFlightLeader();
             boolean virtualWaypointIsLinkedToFormation = IndexLinkValidator.isIndexInTargetList(virtualFlightLeader.getLinkTrId(),
                     activateContainer.getFormation().getObjects());
             assert (virtualWaypointIsLinkedToFormation);
@@ -89,7 +89,7 @@ public class VirtualWaypointPackageValidator
         for (IVirtualWaypoint virtualWayPoint : flight.getVirtualWaypointPackage().getVirtualWaypoints())
         {
             VirtualWaypointActivate activateContainer = virtualWayPoint.getVwpActivate();
-            for (PlaneMcu virtualPlane : activateContainer.getAllPlanes())
+            for (PlaneMcu virtualPlane : virtualWayPoint.getVwpPlanes().getAllPlanes())
             {
                 boolean virtualPlaneIsActivated = IndexLinkValidator.isIndexInTargetList(virtualPlane.getLinkTrId(),
                         activateContainer.getActivate().getObjects());

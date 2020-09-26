@@ -16,6 +16,7 @@ import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 public class VirtualWaypointDeactivateNextVwpTest
 {
     @Mock VirtualWayPointCoordinate vwpCoordinate;
+    @Mock VirtualWaypointStartNextVwp vwpNextVwpStart;
     
     @Before
     public void setup()
@@ -32,10 +33,9 @@ public class VirtualWaypointDeactivateNextVwpTest
         
         assert(IndexLinkValidator.isIndexInTargetList(vwpDeactivate.getStartNextVwpTimerDeactivate().getIndex(), vwpDeactivate.getDeactivateNextVwpTimer().getTargets()));
 
-        int checkZoneIndex = 99;
+        Mockito.when(vwpNextVwpStart.getEntryPoint()).thenReturn(99);
+        vwpDeactivate.link(vwpNextVwpStart);
         
-        vwpDeactivate.link(checkZoneIndex);
-        
-        assert(IndexLinkValidator.isIndexInTargetList(checkZoneIndex, vwpDeactivate.getStartNextVwpTimerDeactivate().getTargets()));
+        assert(IndexLinkValidator.isIndexInTargetList(99, vwpDeactivate.getStartNextVwpTimerDeactivate().getTargets()));
     }
 }

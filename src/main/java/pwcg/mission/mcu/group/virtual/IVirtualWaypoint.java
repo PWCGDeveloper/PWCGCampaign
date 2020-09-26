@@ -40,4 +40,6 @@ public interface IVirtualWaypoint
     void linkActivateToNextKill(IVirtualWaypoint virtualWaypoint);
 
     PlaneMcu getVwpFlightLeader();
+
+    VirtualWaypointPlanes getVwpPlanes();
 }

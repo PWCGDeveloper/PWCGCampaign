@@ -16,21 +16,24 @@ import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 public class VirtualWaypointStartNextVwpTest
 {
     @Mock VirtualWayPointCoordinate vwpCoordinate;
+    @Mock VirtualWaypointDeletePlanes vwpDelete;
     
     @Before
     public void setup()
     {
         Coordinate vwpPosition = new Coordinate(100.0, 10000.0, 100.0);
         Mockito.when(vwpCoordinate.getPosition()).thenReturn(vwpPosition);
+        Mockito.when(vwpDelete.getEntryPoint()).thenReturn(99);
     }
 
     @Test
     public void validateVwpBuildProcess() throws PWCGException
     {
-        VirtualWaypointStartNextVwp vwpStartNext = new VirtualWaypointStartNextVwp(vwpCoordinate);
+        VirtualWaypointStartNextVwp vwpStartNext = new VirtualWaypointStartNextVwp(vwpCoordinate, vwpDelete);
         vwpStartNext.build();
         
         assert(IndexLinkValidator.isIndexInTargetList(vwpStartNext.getStartNextWaypointTriggeredTimer().getIndex(), vwpStartNext.getStartNextWaypointTimer().getTargets()));
+        assert(IndexLinkValidator.isIndexInTargetList(99, vwpStartNext.getStartNextWaypointTimer().getTargets()));
 
         int nextVwpIndex = 999;
         vwpStartNext.linkToNextVwp(nextVwpIndex);

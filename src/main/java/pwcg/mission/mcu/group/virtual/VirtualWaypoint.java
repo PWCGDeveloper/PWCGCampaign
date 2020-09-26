@@ -190,5 +190,11 @@ public final class VirtualWaypoint implements IVirtualWaypoint
     public VirtualWaypointKillFuture getVwpKillFuture()
     {
         return vwpKillFuture;
-    }    
+    }
+
+    @Override
+    public VirtualWaypointPlanes getVwpPlanes()
+    {
+        return vwpPlanes;
+    }
 }
