@@ -33,10 +33,17 @@ public class VirtualWaypointGenerator
         for (VirtualWayPointCoordinate plotCoordinate : plotCoordinates)
         {
             VirtualWaypoint virtualWaypoint = createVirtualWaypointFromPlot(plotCoordinate);
-            prevVirtualWaypoint = linkVirtualWaypoint(prevVirtualWaypoint, virtualWaypoint);
+            linkVirtualWaypoint(prevVirtualWaypoint, virtualWaypoint);
             virtualWaypoints.add(virtualWaypoint);
+            prevVirtualWaypoint = virtualWaypoint;
+            addVwpFlightLeadToWaypoints(virtualWaypoint);
         }
         return virtualWaypoints;
+    }
+
+    private void addVwpFlightLeadToWaypoints(VirtualWaypoint virtualWaypoint)
+    {
+        flight.getWaypointPackage().addObjectToAllMissionPoints(virtualWaypoint.getVwpFlightLeader());
     }
 
     private VirtualWaypoint createVirtualWaypointFromPlot(VirtualWayPointCoordinate plotCoordinate) throws PWCGException
@@ -46,14 +53,13 @@ public class VirtualWaypointGenerator
         return virtualWaypoint;
     }
 
-    private IVirtualWaypoint linkVirtualWaypoint(IVirtualWaypoint prevVirtualWaypoint, IVirtualWaypoint virtualWaypoint)
+    private void linkVirtualWaypoint(IVirtualWaypoint prevVirtualWaypoint, IVirtualWaypoint virtualWaypoint)
     {
         if (prevVirtualWaypoint != null)
         {
             prevVirtualWaypoint.linkToNextVirtualWaypoint(virtualWaypoint);
+            prevVirtualWaypoint.linkKillToNextKill(virtualWaypoint);
+            prevVirtualWaypoint.linkActivateToNextKill(virtualWaypoint);
         }
-        prevVirtualWaypoint = virtualWaypoint;
-        return prevVirtualWaypoint;
     }
-
 }

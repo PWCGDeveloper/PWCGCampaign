@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 
 public interface IVirtualWaypoint
@@ -31,4 +32,12 @@ public interface IVirtualWaypoint
     VirtualWaypointDeactivateNextVwp getVwpNextVwpDeactivate();
 
     void setVwpTriggerObject(int planeIndex);
+
+    void linkKillToNextKill(IVirtualWaypoint virtualWaypoint);
+
+    VirtualWaypointKillFuture getVwpKillFuture();
+
+    void linkActivateToNextKill(IVirtualWaypoint virtualWaypoint);
+
+    PlaneMcu getVwpFlightLeader();
 }

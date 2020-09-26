@@ -110,7 +110,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         plane.deleteAfterDeath = this.deleteAfterDeath;
         plane.wingmanCommands = this.wingmanCommands;
         plane.payload = this.payload;
-        plane.entity = this.entity;
+        plane.entity = this.entity.copy();
         plane.campaign = this.campaign;
         plane.pilot = this.pilot;
     }

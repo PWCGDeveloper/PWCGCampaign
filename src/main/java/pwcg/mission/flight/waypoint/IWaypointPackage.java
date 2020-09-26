@@ -43,5 +43,5 @@ public interface IWaypointPackage
 
     void clearMissionPointSet();
 
-    void addWaypointObjectFromIndex(PlaneMcu planeMcu);
+    void addObjectToAllMissionPoints(PlaneMcu planeMcu);
 }

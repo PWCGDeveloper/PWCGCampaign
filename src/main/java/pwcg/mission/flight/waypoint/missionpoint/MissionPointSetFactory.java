@@ -39,7 +39,6 @@ public class MissionPointSetFactory
             AirStartPattern airStartPattern = determineAirStartPattern(flightInformation, suggestedAirStartPattern);
             MissionPointFlightBeginVirtual flightBegin = new MissionPointFlightBeginVirtual(flight, airStartPattern, waypointToLinkAirSTart);
             flightBegin.createFlightBegin();
-            flightBegin.disableLinkToNextTarget();
             return flightBegin;
         }        
         else if (flightInformation.isAirStart())

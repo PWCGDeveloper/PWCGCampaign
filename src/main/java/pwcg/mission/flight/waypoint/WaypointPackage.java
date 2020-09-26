@@ -251,7 +251,7 @@ public class WaypointPackage implements IWaypointPackage
     }
 
     @Override
-    public void addWaypointObjectFromIndex(PlaneMcu leadPlane)
+    public void addObjectToAllMissionPoints(PlaneMcu leadPlane)
     {
         for (IMissionPointSet missionPointSet : missionPointSets) 
         {

@@ -1,12 +1,10 @@
 package pwcg.mission.mcu.group.virtual;
 
 import java.io.BufferedWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.MissionStringHandler;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.McuSubtitle;
@@ -19,7 +17,8 @@ public final class VirtualWaypointCheckZone
     
     private McuTimer vwpStartTimer = new McuTimer();
     private McuTimer triggeredDisableNextVwpTimer = new McuTimer();
-    private McuTimer triggeredActivateContainerTimer = new McuTimer();
+    private McuTimer triggeredActivateTimer = new McuTimer();
+
     private List<McuSubtitle> subTitleList = new ArrayList<McuSubtitle>();
 
     private SelfDeactivatingCheckZone checkZone;
@@ -32,14 +31,15 @@ public final class VirtualWaypointCheckZone
     public void build() throws PWCGException 
     {
         buildMcus();
+        makeSubtitles();
         setTargetAssociations();
     }
 
-    public void link(int vwpStartNextWPIndex,int disableNextVwpIndex, int activateContainerIndex)
+    public void link(VirtualWaypointStartNextVwp vwpNextVwpStart, VirtualWaypointDeactivateNextVwp vwpNextVwpDeactivate, VirtualWaypointActivate vwpActivate)
     {
-        vwpStartTimer.setTarget(vwpStartNextWPIndex);
-        triggeredDisableNextVwpTimer.setTarget(disableNextVwpIndex);
-        triggeredActivateContainerTimer.setTarget(activateContainerIndex);
+        vwpStartTimer.setTarget(vwpNextVwpStart.getEntryPoint());
+        triggeredDisableNextVwpTimer.setTarget(vwpNextVwpDeactivate.getEntryPoint());
+        triggeredActivateTimer.setTarget(vwpActivate.getEntryPoint());
     }
 
     private void buildMcus()
@@ -52,58 +52,46 @@ public final class VirtualWaypointCheckZone
         vwpStartTimer.setTimer(vwpCoordinate.getWaypointWaitTimeSeconds());
 
         triggeredDisableNextVwpTimer.setPosition(vwpCoordinate.getPosition().copy());
-        triggeredDisableNextVwpTimer.setName("Triggered Activate Container Timer");
-        triggeredDisableNextVwpTimer.setDesc("Triggered Activate Container Timer");
+        triggeredDisableNextVwpTimer.setName("Disable Next VWP Timer");
+        triggeredDisableNextVwpTimer.setDesc("Disable Next VWP Timer");
         triggeredDisableNextVwpTimer.setTimer(1);
 
-        triggeredActivateContainerTimer.setPosition(vwpCoordinate.getPosition().copy());
-        triggeredActivateContainerTimer.setName("Triggered Activate Container Timer");
-        triggeredActivateContainerTimer.setDesc("Triggered Activate Container Timer");
-        triggeredActivateContainerTimer.setTimer(1);
+        triggeredActivateTimer.setPosition(vwpCoordinate.getPosition().copy());
+        triggeredActivateTimer.setName("Triggered Activate Timer");
+        triggeredActivateTimer.setDesc("Triggered Activate Timer");
+        triggeredActivateTimer.setTimer(1);
+    }
+
+    private void makeSubtitles() throws PWCGException
+    {
+        McuSubtitle czTriggeredSubtitle = new McuSubtitle();
+        czTriggeredSubtitle.setName("CheckZone Subtitle");
+        czTriggeredSubtitle.setText("VWP CheckZone Triggered: " +   checkZone.getCheckZone().getIndex());
+        czTriggeredSubtitle.setPosition(vwpCoordinate.getPosition().copy());
+        czTriggeredSubtitle.setDuration(3);
+        subTitleList.add(czTriggeredSubtitle);
+        
+        MissionStringHandler subtitleHandler = MissionStringHandler.getInstance();
+        subtitleHandler.registerMissionText(czTriggeredSubtitle.getLcText(), czTriggeredSubtitle.getText());
+        
+        triggeredDisableNextVwpTimer.setTarget(czTriggeredSubtitle.getIndex());
     }
 
     private void setTargetAssociations() throws PWCGException
     {
         vwpStartTimer.setTarget(checkZone.getActivateEntryPoint());
         checkZone.setCheckZoneTarget(triggeredDisableNextVwpTimer.getIndex());
-        triggeredDisableNextVwpTimer.setTarget(triggeredActivateContainerTimer.getIndex());
-        
-        makeSubtitles();
-    }
-
-    protected void makeSubtitles() throws PWCGException
-    {
-        McuSubtitle vwpCzStartedSubtitle = new McuSubtitle();
-        vwpCzStartedSubtitle.setName("VWP Subtitle");
-        vwpCzStartedSubtitle.setText("VWP CZ Started For " +  vwpStartTimer.getIndex());
-        vwpCzStartedSubtitle.setPosition(vwpCoordinate.getPosition().copy());
-        vwpStartTimer.setTarget(vwpCzStartedSubtitle.getIndex());
-        
-        MissionStringHandler subtitleHandler = MissionStringHandler.getInstance();
-        subtitleHandler.registerMissionText(vwpCzStartedSubtitle.getLcText(), vwpCzStartedSubtitle.getText());
-        subTitleList.add(vwpCzStartedSubtitle);
+        checkZone.setCheckZoneTarget(triggeredActivateTimer.getIndex());
     }
 
     public void write(BufferedWriter writer) throws PWCGException
     {
-        try
-        {
-            vwpStartTimer.write(writer);
-            checkZone.write(writer);
-            triggeredDisableNextVwpTimer.write(writer);
-            triggeredActivateContainerTimer.write(writer);
-            
-            for (McuSubtitle subtitle : subTitleList)
-            {
-                subtitle.write(writer);
-                writer.newLine();
-            }
-        }
-        catch (IOException e)
-        {
-            PWCGLogger.logException(e);
-            throw new PWCGException(e.getMessage());
-        }
+        vwpStartTimer.write(writer);
+        checkZone.write(writer);
+        triggeredDisableNextVwpTimer.write(writer);
+        triggeredActivateTimer.write(writer);
+        
+        McuSubtitle.writeSubtitles(subTitleList, writer);
     }
 
     public void addAdditionalTime(int additionalTime)
@@ -125,7 +113,7 @@ public final class VirtualWaypointCheckZone
 
     public McuTimer getTriggeredActivateContainerTimer()
     {
-        return triggeredActivateContainerTimer;
+        return triggeredActivateTimer;
     }
 
     public SelfDeactivatingCheckZone getCheckZone()

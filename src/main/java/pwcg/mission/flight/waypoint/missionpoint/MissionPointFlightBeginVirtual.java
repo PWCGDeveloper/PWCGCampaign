@@ -16,8 +16,6 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public class MissionPointFlightBeginVirtual extends MissionPointSetSingleWaypointSet implements IMissionPointSet
 {
-    private static final int VWP_DELAY = 120;
-
     private IFlight flight;
     private AirStartPattern airStartNearAirfield;
     private McuTimer activationVwpTimer = null;
@@ -48,7 +46,7 @@ public class MissionPointFlightBeginVirtual extends MissionPointSetSingleWaypoin
         activationVwpTimer.setName("Activation VWP Timer");
         activationVwpTimer.setDesc("Activation VWP Timer");
         activationVwpTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());        
-        activationVwpTimer.setTimer(VWP_DELAY);
+        activationVwpTimer.setTimer(5);
     }
 
     @Override

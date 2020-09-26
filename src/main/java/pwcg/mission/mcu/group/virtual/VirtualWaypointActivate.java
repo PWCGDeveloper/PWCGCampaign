@@ -5,62 +5,44 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
+import pwcg.mission.MissionStringHandler;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
-import pwcg.mission.flight.waypoint.FormationGenerator;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.McuActivate;
 import pwcg.mission.mcu.McuFormation;
+import pwcg.mission.mcu.McuSubtitle;
 import pwcg.mission.mcu.McuTimer;
 
 public class VirtualWaypointActivate
 {
     private IFlight flight;
     private VirtualWayPointCoordinate vwpCoordinate;
+    private VirtualWaypointPlanes vwpPlanes;
 
-    private List<PlaneMcu> planesAtActivate = new ArrayList<>();
     private McuFormation formation = new McuFormation();
     private McuActivate activate = new McuActivate();
 
     private McuTimer activateTimer = new McuTimer();
     private McuTimer formationTimer = new McuTimer();
-    private McuTimer planeAttackTimer = new McuTimer();
     private McuTimer waypointTimer = new McuTimer();
+    private McuTimer deleteUpstreamPlanesTimer = new McuTimer();
 
-    public VirtualWaypointActivate(IFlight flight, VirtualWayPointCoordinate vwpCoordinate)
+    private List<McuSubtitle> subTitleList = new ArrayList<McuSubtitle>();
+
+    public VirtualWaypointActivate(IFlight flight, VirtualWayPointCoordinate vwpCoordinate, VirtualWaypointPlanes vwpPlanes)
     {
         this.flight = flight;
         this.vwpCoordinate = vwpCoordinate;
+        this.vwpPlanes = vwpPlanes;
     }
 
     public void build() throws PWCGException
     {
-        buildPlanesAtActivate();
         buildMcus();
+        makeSubtitles();
         createTargetAssociations();
         createObjectAssociations();
-    }
-
-    private void buildPlanesAtActivate() throws PWCGException
-    {
-        for (int i = 0; i < flight.getFlightPlanes().getFlightSize(); ++i)
-        {
-            PlaneMcu plane = flight.getFlightPlanes().getPlanes().get(i).copy();
-            double planeAltitude = vwpCoordinate.getPosition().getYPos() + (30 * i);
-            if (planeAltitude < 800.0)
-            {
-                planeAltitude = 800.0;
-            }
-
-            Coordinate planeCoordinate = FormationGenerator.generatePositionForPlaneInFormation(vwpCoordinate.getOrientation(), vwpCoordinate.getPosition(), i);
-            planeCoordinate.setYPos(planeAltitude);
-            plane.setPosition(planeCoordinate);
-            plane.getEntity().setEnabled(0);
-            planesAtActivate.add(plane);
-        }
-        
-        flight.getWaypointPackage().addWaypointObjectFromIndex(planesAtActivate.get(0));
     }
 
     private void buildMcus()
@@ -86,11 +68,26 @@ public class VirtualWaypointActivate
         formationTimer.setName("Formation Timer");
         formationTimer.setDesc("Formation Timer");
         
-        planeAttackTimer.setPosition(vwpCoordinate.getPosition().copy());
-        planeAttackTimer.setName("Plane Attack Timer");
-        planeAttackTimer.setDesc("Plane Attack Timer");
+        deleteUpstreamPlanesTimer.setPosition(vwpCoordinate.getPosition().copy());
+        deleteUpstreamPlanesTimer.setName("Delete Upstream Planes Timer");
+        deleteUpstreamPlanesTimer.setDesc("Delete Upstream Planes Timer");
 
         formation.setPosition(vwpCoordinate.getPosition().copy());
+    }
+
+    private void makeSubtitles() throws PWCGException
+    {
+        McuSubtitle czTriggeredSubtitle = new McuSubtitle();
+        czTriggeredSubtitle.setName("CheckZone Subtitle");
+        czTriggeredSubtitle.setText("VWP Activate: " +   vwpPlanes.getLeadActivatePlane().getLinkTrId());
+        czTriggeredSubtitle.setPosition(vwpCoordinate.getPosition().copy());
+        czTriggeredSubtitle.setDuration(10);
+        subTitleList.add(czTriggeredSubtitle);
+        
+        MissionStringHandler subtitleHandler = MissionStringHandler.getInstance();
+        subtitleHandler.registerMissionText(czTriggeredSubtitle.getLcText(), czTriggeredSubtitle.getText());
+        
+        activateTimer.setTarget(czTriggeredSubtitle.getIndex());
     }
 
     private void createTargetAssociations()
@@ -103,45 +100,38 @@ public class VirtualWaypointActivate
 
         activateTimer.setTarget(formationTimer.getIndex());
         formationTimer.setTarget(waypointTimer.getIndex());
-        waypointTimer.setTarget(planeAttackTimer.getIndex());
+        waypointTimer.setTarget(deleteUpstreamPlanesTimer.getIndex());
     }
 
     private void createObjectAssociations()
     {
-        for (PlaneMcu plane : planesAtActivate)
+        for (PlaneMcu plane : vwpPlanes.getAllPlanes())
         {
             activate.setObject(plane.getEntity().getIndex());
         }
         
-        formation.setObject(planesAtActivate.get(0).getEntity().getIndex());
+        formation.setObject(vwpPlanes.getLeadActivatePlane().getEntity().getIndex());
     }
 
     public void write(BufferedWriter writer) throws PWCGException
     {
         activateTimer.write(writer);
-        waypointTimer.write(writer);
-        formationTimer.write(writer);
-        planeAttackTimer.write(writer);
-        
         activate.write(writer);
+
+        formationTimer.write(writer);
         formation.write(writer);
 
-        for (PlaneMcu plane : planesAtActivate)
-        {
-            plane.write(writer);
-        }
+        waypointTimer.write(writer);
+        deleteUpstreamPlanesTimer.write(writer);
+        
+        McuSubtitle.writeSubtitles(subTitleList, writer);
     }
     
-    public PlaneMcu getLeadActivatePlane()
+    public void linkToNextDeletePlanesTimer(int upstreamVwpTarget)
     {
-        return planesAtActivate.get(0);
+        deleteUpstreamPlanesTimer.setTarget(upstreamVwpTarget);
     }
-    
-    public List<PlaneMcu> getAllPlanes()
-    {
-        return planesAtActivate;
-    }
-    
+
     public int getEntryPoint()
     {
         return activateTimer.getIndex();
@@ -167,9 +157,9 @@ public class VirtualWaypointActivate
         return formationTimer;
     }
 
-    public McuTimer getPlaneAttackTimer()
+    public McuTimer getDeleteUpstreamPlanesTimer()
     {
-        return planeAttackTimer;
+        return deleteUpstreamPlanesTimer;
     }
 
     public McuTimer getWaypointTimer()

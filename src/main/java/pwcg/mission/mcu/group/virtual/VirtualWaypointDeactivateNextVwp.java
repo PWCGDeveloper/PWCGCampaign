@@ -25,9 +25,9 @@ public final class VirtualWaypointDeactivateNextVwp
         setTargetAssociations();
     }
     
-    public void link(int vwpTimeoutTimerIndex)
+    public void link(VirtualWaypointStartNextVwp vwpNextVwpStart)
     {
-        startNextVwpTimerDeactivate.setTarget(vwpTimeoutTimerIndex);
+        startNextVwpTimerDeactivate.setTarget(vwpNextVwpStart.getEntryPoint());
     }
 
     private void buildMcus()

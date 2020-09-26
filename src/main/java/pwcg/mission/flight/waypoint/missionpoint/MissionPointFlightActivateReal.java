@@ -34,7 +34,8 @@ public class MissionPointFlightActivateReal implements IMissionPointSet
     public void createFlightActivate() throws PWCGException, PWCGException 
     {
         createFlightMissionBegin();
-        createActivation();  
+        createActivation();
+        createTargetAssociations();
     }
 
     @Override
@@ -70,7 +71,6 @@ public class MissionPointFlightActivateReal implements IMissionPointSet
     @Override
     public void finalizeMissionPointSet(PlaneMcu flightLeader) throws PWCGException
     {
-        createTargetAssociations();
         createObjectAssociations(flightLeader);
     }
 
@@ -112,10 +112,7 @@ public class MissionPointFlightActivateReal implements IMissionPointSet
 
     private void createObjectAssociations(PlaneMcu plane)
     {
-        if (!flight.getFlightInformation().isVirtual())
-        {
-            activationEntity.setObject(plane.getLinkTrId());
-        }
+        activationEntity.setObject(plane.getLinkTrId());
     }
     
     @Override

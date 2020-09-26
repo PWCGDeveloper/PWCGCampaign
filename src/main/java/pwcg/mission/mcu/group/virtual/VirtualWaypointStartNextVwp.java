@@ -9,13 +9,15 @@ import pwcg.mission.mcu.McuTimer;
 public final class VirtualWaypointStartNextVwp 
 {       
     private VirtualWayPointCoordinate vwpCoordinate;
+    private VirtualWaypointDeletePlanes vwpDelete;
 
     private McuTimer startNextWaypointTimer = new McuTimer();
     private McuTimer startnextWaypointTriggeredTimer = new McuTimer();
     
-    public VirtualWaypointStartNextVwp(VirtualWayPointCoordinate vwpCoordinate)
+    public VirtualWaypointStartNextVwp(VirtualWayPointCoordinate vwpCoordinate, VirtualWaypointDeletePlanes vwpDelete)
     {
         this.vwpCoordinate = vwpCoordinate; 
+        this.vwpDelete = vwpDelete; 
     }
 
     public void build() throws PWCGException 
@@ -45,6 +47,7 @@ public final class VirtualWaypointStartNextVwp
     private void setTargetAssociations() throws PWCGException
     {
         startNextWaypointTimer.setTarget(startnextWaypointTriggeredTimer.getIndex());
+        startNextWaypointTimer.setTarget(vwpDelete.getEntryPoint());
     }
 
     public void write(BufferedWriter writer) throws PWCGException
@@ -53,14 +56,9 @@ public final class VirtualWaypointStartNextVwp
         startnextWaypointTriggeredTimer.write(writer);
     }
 
-    public int getDisbablePoint()
+    public int getEntryPoint()
     {
         return startNextWaypointTimer.getIndex();
-    }
-
-    public McuTimer getStartNextWaypointTimer()
-    {
-        return startNextWaypointTimer;
     }
 
     public McuTimer getStartNextWaypointTriggeredTimer()

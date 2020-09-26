@@ -20,7 +20,7 @@ public interface IMissionPointSet extends IMissionPointSetWaypoints
     List<BaseFlightMcu> getAllFlightPoints();
 
     void finalizeMissionPointSet(PlaneMcu plane) throws PWCGException;
-    
+        
     void disableLinkToNextTarget();
 
     boolean isLinkToNextTarget();
