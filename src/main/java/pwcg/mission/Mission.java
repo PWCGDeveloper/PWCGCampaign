@@ -48,6 +48,7 @@ public class Mission
     private MissionSquadronIconBuilder missionSquadronIconBuilder;
     private MissionAssaultIconBuilder missionAssaultIconBuilder = new MissionAssaultIconBuilder();
     private MissionAssociateFlightBuilder missionAssociateFlightBuilder = new MissionAssociateFlightBuilder();
+    private MissionSquadronChooser missionSquadronChooser = new MissionSquadronChooser();
     private MissionFrontLineIconBuilder missionFrontLines;
     private MissionEffects missionEffects = new MissionEffects();
     private SkinsInUse skinsInUse = new SkinsInUse();
@@ -355,6 +356,11 @@ public class Mission
     public MissionBattleManager getMissionBattleManager()
     {
         return missionBattleManager;
+    }
+
+    public MissionSquadronChooser getMissionSquadronChooser()
+    {
+        return missionSquadronChooser;
     }
 
     public VehicleSetBuilderComprehensive getVehicleSetBuilder()

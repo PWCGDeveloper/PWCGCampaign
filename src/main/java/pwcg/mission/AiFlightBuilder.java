@@ -35,7 +35,7 @@ public class AiFlightBuilder
             return missionFlights;
         }
         
-        List<Squadron> aiSquadronsForMission = determineParticipatingSquadrons();
+        List<Squadron> aiSquadronsForMission = mission.getMissionSquadronChooser().determineParticipatingSquadrons(mission);
         for (Squadron squadron : aiSquadronsForMission)
         {
             FlightTypes flightType = determineFlightType(squadron);
@@ -49,14 +49,6 @@ public class AiFlightBuilder
         }
         return missionFlights;
     }
-    
-    private List<Squadron> determineParticipatingSquadrons() throws PWCGException
-    {
-        AiSquadronIncluder aiSquadronIncluder = new AiSquadronIncluder(mission);
-        List<Squadron> aiSquadronsForMission = aiSquadronIncluder.decideSquadronsForMission();
-        
-        return aiSquadronsForMission;
-    }    
 
     private FlightTypes determineFlightType(Squadron squadron) throws PWCGException 
     {
