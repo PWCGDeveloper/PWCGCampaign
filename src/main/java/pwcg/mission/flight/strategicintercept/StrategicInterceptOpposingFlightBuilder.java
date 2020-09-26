@@ -12,7 +12,6 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.bomb.BombingFlight;
-import pwcg.mission.flight.escort.VirtualEscortFlightBuilder;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
 
@@ -34,19 +33,14 @@ public class StrategicInterceptOpposingFlightBuilder
         List<IFlight> opposingFlights = new ArrayList<>();
         
         List<Squadron> opposingBomberSquadrons = opposingFlightSquadronChooser.getOpposingBomberSquadron();
-        Collections.shuffle(opposingBomberSquadrons); 
         if (opposingBomberSquadrons.size() > 0)
         {
+            Collections.shuffle(opposingBomberSquadrons); 
+
             IFlight opposingBomberFlight = createBomberFlight(opposingBomberSquadrons.get(0));
             if (opposingBomberFlight != null)
             {
                 opposingFlights.add(opposingBomberFlight);
-
-                IFlight escortForAiFlight = createOpposingEscortFlights(opposingBomberFlight);
-                if (escortForAiFlight != null)
-                {
-                    opposingFlights.add(escortForAiFlight);
-                }
             }
         }
         return opposingFlights;
@@ -73,12 +67,5 @@ public class StrategicInterceptOpposingFlightBuilder
     {
         TargetDefinition opposingTargetDefinition = new TargetDefinition(TargetType.TARGET_AIR, playerTargetDefinition.getPosition(), opposingFlightInformation.getCountry());
         return opposingTargetDefinition;
-    }
-
-    private IFlight createOpposingEscortFlights(IFlight escortedFlight) throws PWCGException
-    {
-        VirtualEscortFlightBuilder virtualEscortFlightBuilder = new VirtualEscortFlightBuilder();
-        IFlight escortForAiFlight = virtualEscortFlightBuilder.createVirtualEscortFlight(escortedFlight);
-        return escortForAiFlight;
     }
 }
