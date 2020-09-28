@@ -258,12 +258,13 @@ public class SquadronManager
                 if (excludedSquadron.getSquadronId() == selectedSquadron.getSquadronId())
                 {
                     exclude = true;
+                    break;
                 }
-                
-                if (!exclude)
-                {
-                    availableSquadrons.add(selectedSquadron);
-                }
+            }
+
+            if (!exclude)
+            { 
+                availableSquadrons.add(selectedSquadron);
             }
         }
         return availableSquadrons;
