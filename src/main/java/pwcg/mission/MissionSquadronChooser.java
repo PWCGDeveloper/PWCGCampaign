@@ -13,7 +13,6 @@ import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
-import pwcg.mission.flight.IFlightInformation;
 
 public class MissionSquadronChooser
 {
@@ -22,6 +21,11 @@ public class MissionSquadronChooser
     public void registerSquadronInUse(Squadron squadron)
     {
         squadronsInUse.put(squadron.getSquadronId(), squadron);
+    }
+    
+    public void deregisterSquadronInUse(Squadron squadron)
+    {
+        squadronsInUse.remove(squadron.getSquadronId());
     }
     
     public boolean isSquadronInUse(int squadronId)
@@ -45,9 +49,11 @@ public class MissionSquadronChooser
     }
 
 
-    public Squadron getEscortSquadron(Campaign campaign, IFlightInformation playerFlightInformation, List<Role> escortRole, Side friendlySide) throws PWCGException
+    public Squadron getEscortSquadron(Campaign campaign, Side friendlySide) throws PWCGException
     {
         List<Squadron> squadronsToExclude = new ArrayList<>(squadronsInUse.values());
+        List<Role> escortRole = new ArrayList<>();
+        escortRole.add(Role.ROLE_FIGHTER);
         Squadron friendlyFighterSquadron = PWCGContext.getInstance().getSquadronManager().getSingleViableAiSquadronByRoleAndSideAndCurrentMap(campaign, escortRole, friendlySide, squadronsToExclude);
         return friendlyFighterSquadron;
     }

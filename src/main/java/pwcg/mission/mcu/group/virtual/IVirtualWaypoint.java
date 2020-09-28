@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 
@@ -42,4 +43,6 @@ public interface IVirtualWaypoint
     PlaneMcu getVwpFlightLeader();
 
     VirtualWaypointPlanes getVwpPlanes();
+
+    void addEscort(IFlightInformation vwpEscortFlightInformation) throws PWCGException;
 }

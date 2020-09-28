@@ -4,9 +4,12 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.escort.VirtualEscortFlightInformationBuilder;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
 import pwcg.mission.mcu.group.virtual.IVirtualWaypoint;
@@ -37,6 +40,22 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
         if (additionalTime > 30)
         {
             virtualWaypoints.get(0).addAdditionalTime(additionalTime);
+        }
+    }
+
+    @Override
+    public void addEscort() throws PWCGException
+    {
+        Squadron squadronToEscort = flight.getSquadron();
+        Squadron friendlyFighterSquadron = flight.getMission().getMissionSquadronChooser().getEscortSquadron(flight.getCampaign(), squadronToEscort.determineSide());
+        if (friendlyFighterSquadron != null)
+        {
+            flight.getMission().getMissionSquadronChooser().registerSquadronInUse(friendlyFighterSquadron);
+            IFlightInformation vwpEscortFlightInformation = VirtualEscortFlightInformationBuilder.buildVirtualEscortFlightInformation(flight.getMission(), friendlyFighterSquadron);
+            for (VirtualWaypoint virtualWaypoint : virtualWaypoints)
+            {
+                virtualWaypoint.addEscort(vwpEscortFlightInformation);
+            }
         }
     }
 

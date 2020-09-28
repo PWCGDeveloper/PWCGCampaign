@@ -14,6 +14,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypeCategory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.escort.EscortForPlayerFlightBuilder;
+import pwcg.mission.flight.escort.NeedsEscortDecider;
 import pwcg.mission.flight.plane.PlaneMcu;
 
 public class MissionFlightBuilder
@@ -52,15 +54,23 @@ public class MissionFlightBuilder
     private void createPlayerFlights(MissionHumanParticipants participatingPlayers, List<FlightTypes> playerFlightTypes) throws PWCGException
     {
         int index = 0;
-        for (Integer squadronId : participatingPlayers.getParticipatingSquadronIds())
+        for (Integer playerSquadronId : participatingPlayers.getParticipatingSquadronIds())
         {
             FlightTypes playerFlightType = playerFlightTypes.get(index);
             ++index;
             
-            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+            Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(playerSquadronId);
             PlayerFlightBuilder playerFlightBuilder = new PlayerFlightBuilder(campaign, mission);
-            IFlight playerFlight = playerFlightBuilder.createPlayerFlight(playerFlightType, squadron, participatingPlayers, mission.isNightMission());
+            IFlight playerFlight = playerFlightBuilder.createPlayerFlight(playerFlightType, playerSquadron, participatingPlayers, mission.isNightMission());
             playerFlights.add(playerFlight);
+            
+            if (NeedsEscortDecider.playerNeedsEscort(playerFlight))
+            {
+                EscortForPlayerFlightBuilder escortFlightBuilder = new EscortForPlayerFlightBuilder();
+                escortFlightBuilder.addEscort(mission, playerFlight);
+            }
+            
+            mission.getMissionSquadronChooser().registerSquadronInUse(playerSquadron);
         }
     }
 
@@ -183,6 +193,18 @@ public class MissionFlightBuilder
         for (IFlight playerFlight : playerFlights)
         {
             if (playerFlight.getFlightType() == flightType)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean hasPlayerFlightForSide(Side side) throws PWCGException
+    {
+        for (IFlight playerFlight : playerFlights)
+        {
+            if (playerFlight.getSquadron().determineSide() == side)
             {
                 return true;
             }

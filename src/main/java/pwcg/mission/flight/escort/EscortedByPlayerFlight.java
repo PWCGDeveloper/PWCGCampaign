@@ -50,13 +50,6 @@ public class EscortedByPlayerFlight extends Flight implements IFlight
         this.getWaypointPackage().addMissionPointSet(flightEnd);
     }
 
-
-    @Override
-    public void finalizeFlight() throws PWCGException
-    {
-        super.finalizeFlight();
-    }
-
     private void setFlightPayload() throws PWCGException
     {
         FlightPayloadBuilder flightPayloadHelper = new FlightPayloadBuilder(this);

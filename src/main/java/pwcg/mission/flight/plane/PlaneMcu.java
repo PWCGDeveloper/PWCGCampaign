@@ -32,14 +32,14 @@ import pwcg.mission.mcu.group.IPlaneRemover;
 import pwcg.mission.mcu.group.WingmanMcuGroup;
 
 /**
- * Plane is an instance of a plane.  It derives from plane type and adds a crew, payload, fuel state, and
- * other elements specific to an instance of a plane
+ * Plane is an instance of a plane. It derives from plane type and adds a crew,
+ * payload, fuel state, and other elements specific to an instance of a plane
  * 
  * @author Patrick Wilson
  *
  */
 public class PlaneMcu extends EquippedPlane implements Cloneable
-{        
+{
     private String name = "";
     private int index;
     private int linkTrId;
@@ -67,14 +67,14 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
     private IPlanePayload payload = null;
 
     private McuTREntity entity = new McuTREntity();
-    
+
     private Campaign campaign;
     private SquadronMember pilot;
-    
+
     public PlaneMcu()
     {
     }
-    
+
     public PlaneMcu copy()
     {
         PlaneMcu plane = new PlaneMcu();
@@ -82,10 +82,10 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         return plane;
     }
 
-    public void copyTemplate(PlaneMcu plane)
+    private void copyTemplate(PlaneMcu plane)
     {
         super.copyTemplate(plane);
-        
+
         plane.name = this.name;
         plane.index = this.index;
         plane.linkTrId = this.linkTrId;
@@ -114,20 +114,20 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         plane.campaign = this.campaign;
         plane.pilot = this.pilot;
     }
-    
+
     public PlaneMcu(Campaign campaign, EquippedPlane equippedPlane, ICountry country, SquadronMember pilot)
     {
         this.campaign = campaign;
         this.pilot = pilot;
-        
+
         equippedPlane.copyTemplate(this);
         this.setCountry(country);
         this.setName(pilot.getNameAndRank());
         this.setDesc(pilot.getNameAndRank());
-        
+
         startInAir = FlightStartPosition.START_IN_AIR;
     }
-    
+
     public void populateEntity(IFlight flight, PlaneMcu flightLeader)
     {
         this.linkTrId = entity.getIndex();
@@ -148,7 +148,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         {
             isPlayerPlane = true;
         }
-        
+
         SquadronMembers squadronMembers = campaign.getPersonnelManager().getAllActivePlayers();
         if (squadronMembers.isSquadronMember(serialNumber))
         {
@@ -163,9 +163,16 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
         payload = payloadFactory.createPlanePayload(this.getType());
         payload.createWeaponsPayload(flight);
-                
         return payload.copy();
-     }
+    }
+
+    public IPlanePayload buildStandardPlanePayload() throws PWCGException
+    {
+        IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
+        payload = payloadFactory.createPlanePayload(this.getType());
+        payload.createStandardWeaponsPayload();
+        return payload.copy();
+    }
 
     public void setPlanePayload(IPlanePayload payload) throws PWCGException
     {
@@ -181,13 +188,13 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         {
             return this.payload.copy();
         }
-        
+
         return null;
     }
 
     public void setPlaneSkinWithCheck(Skin newSkin)
     {
-        Campaign campaign =     PWCGContext.getInstance().getCampaign();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
         Date campaignDate = campaign.getDate();
 
         if (!(campaignDate.before(newSkin.getStartDate())))
@@ -205,12 +212,14 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
             }
             else
             {
-                PWCGLogger.logByCategory(LogCategory.SKIN, "setPlaneSkin: skin rejected by end date: " + DateUtils.getDateStringDashDelimitedYYYYMMDD(newSkin.getEndDate()));
+                PWCGLogger.logByCategory(LogCategory.SKIN,
+                        "setPlaneSkin: skin rejected by end date: " + DateUtils.getDateStringDashDelimitedYYYYMMDD(newSkin.getEndDate()));
             }
         }
         else
         {
-            PWCGLogger.logByCategory(LogCategory.SKIN, "setPlaneSkin: skin rejected by start date: " + DateUtils.getDateStringDashDelimitedYYYYMMDD(newSkin.getStartDate()));
+            PWCGLogger.logByCategory(LogCategory.SKIN,
+                    "setPlaneSkin: skin rejected by start date: " + DateUtils.getDateStringDashDelimitedYYYYMMDD(newSkin.getStartDate()));
         }
     }
 
@@ -227,7 +236,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         }
     }
 
-    public void write(BufferedWriter writer) throws PWCGException 
+    public void write(BufferedWriter writer) throws PWCGException
     {
         try
         {
@@ -235,7 +244,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
             writer.newLine();
             writer.write("{");
             writer.newLine();
-            
+
             super.write(writer);
 
             writer.write("  Name = \"\u0001" + name + "\";");
@@ -260,7 +269,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
                     skinName += ".dds";
                 }
             }
-            
+
             writer.write("  Skin = \"" + skinName + "\";");
             writer.newLine();
             writer.write("  AILevel = " + aiSkillLevel.getAiSkillLevel() + ";");
@@ -291,7 +300,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
             writer.newLine();
             writer.write("  Fuel = " + fuel + ";");
             writer.newLine();
-            
+
             // BoS specific parameters
             IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
             if (productSpecificConfiguration.useCallSign())
@@ -301,7 +310,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
                 writer.write("  Callnum = " + callnum + ";");
                 writer.newLine();
             }
-            
+
             writer.write("  WMMask = " + payload.generateFullModificationMask() + ";");
             writer.newLine();
 
@@ -331,7 +340,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         {
             return true;
         }
-        
+
         return false;
     }
 
@@ -373,7 +382,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
     public void setPosition(Coordinate position)
     {
         this.position = position;
-        
+
         if (entity != null)
         {
             entity.setPosition(position);
@@ -388,7 +397,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
     public void setOrientation(Orientation orientation)
     {
         this.orientation = orientation;
-        
+
         if (entity != null)
         {
             entity.setOrientation(orientation);
@@ -520,7 +529,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
 
     public void setCountry(ICountry country)
     {
-        this.country = country;        
+        this.country = country;
         this.setSide(country.getSide());
     }
 
@@ -540,27 +549,32 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
     {
         return pilot;
     }
-    
+
     public void replacePilot(SquadronMember newPilot)
     {
         this.pilot = newPilot;
     }
 
-	public Callsign getCallsign() {
-		return callsign;
-	}
+    public Callsign getCallsign()
+    {
+        return callsign;
+    }
 
-	public void setCallsign(Callsign callsign) {
-		this.callsign = callsign;
-	}
+    public void setCallsign(Callsign callsign)
+    {
+        this.callsign = callsign;
+    }
 
-	public int getCallnum() {
-		return callnum;
-	}
+    public int getCallnum()
+    {
+        return callnum;
+    }
 
-	public void setCallnum(int callnum) {
-		this.callnum = callnum;
-	}
+    public void setCallnum(int callnum)
+    {
+        this.callnum = callnum;
+    }
+
     public void setLinkTrId(int linkTrId)
     {
         this.linkTrId = linkTrId;

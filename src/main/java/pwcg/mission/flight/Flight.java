@@ -135,8 +135,14 @@ public abstract class Flight implements IFlight
         finalizeCoreFlight();        
         finalizeWingmenForFlight();
         finalizeLinkedFlights();
-        finalizeVirtualFlights();        
+        finalizeVirtualFlight();        
         finalizeSkinsForFlight();
+    }
+
+    @Override
+    public void addVirtualEscort() throws PWCGException
+    {
+        virtualWaypointPackage.addEscort();
     }
 
     private void finalizeCoreFlight() throws PWCGException
@@ -152,13 +158,13 @@ public abstract class Flight implements IFlight
         //wingmanBuilder.buildWingmenForFlight();
     }
 
-    private void finalizeVirtualFlights() throws PWCGException
+    private void finalizeVirtualFlight() throws PWCGException
     {
         if (flightInformation.isVirtual())
         {
             virtualWaypointPackage.buildVirtualWaypoints();
             virtualWaypointPackage.addDelayForPlayerDelay(flightInformation.getMission());
-        }
+         }
     }
 
     private void finalizeLinkedFlights() throws PWCGException

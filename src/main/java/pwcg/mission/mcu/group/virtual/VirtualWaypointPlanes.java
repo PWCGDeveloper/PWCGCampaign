@@ -4,12 +4,9 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
-import pwcg.mission.flight.waypoint.FormationGenerator;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 
 public class VirtualWaypointPlanes
@@ -32,64 +29,10 @@ public class VirtualWaypointPlanes
 
     private void buildPlanesAtActivate() throws PWCGException
     {
-        for (int i = 0; i < flight.getFlightPlanes().getFlightSize(); ++i)
-        {
-            PlaneMcu plane = flight.getFlightPlanes().getPlanes().get(i).copy();
-            setPlaneIndex(plane);
-            setPlaneNumberInFormation(i, plane);
-            setPlanePosition(i, plane);
-            setPlaneDisabled(plane);
-            
-            if (i > 0)
-            {
-                linkToFlightLeader(plane, planesAtActivate.get(0).getLinkTrId());
-            }
-            
-            planesAtActivate.add(plane);
-        }
-        
+        int altitudeOffset = 0;
+        VirtualWaypointPlaneBuilder vwpPlaneBuilder = new VirtualWaypointPlaneBuilder(vwpCoordinate, altitudeOffset);
+        planesAtActivate = vwpPlaneBuilder.buildVwpPlanes(flight.getFlightPlanes().getPlanes());
         flight.getWaypointPackage().addObjectToAllMissionPoints(planesAtActivate.get(0));
-    }
-
-    private void linkToFlightLeader(PlaneMcu plane, int linkTrId)
-    {
-        plane.getEntity().clearTargets();
-        plane.getEntity().setTarget(linkTrId);
-        
-    }
-
-    private void setPlaneIndex(PlaneMcu plane)
-    {
-        int planeIndex = IndexGenerator.getInstance().getNextIndex();
-        int planeLinkIndex = IndexGenerator.getInstance().getNextIndex();
-        
-        plane.setIndex(planeIndex);
-        plane.setLinkTrId(planeLinkIndex);
-        
-        plane.getEntity().setIndex(planeLinkIndex);
-        plane.getEntity().setMisObjID(planeIndex);
-    }
-
-    private void setPlanePosition(int i, PlaneMcu plane) throws PWCGException
-    {
-        Coordinate planeCoordinate = FormationGenerator.generatePositionForPlaneInFormation(vwpCoordinate.getOrientation(), vwpCoordinate.getPosition(), i);
-        double planeAltitude = vwpCoordinate.getPosition().getYPos() + (70 * i);
-        if (planeAltitude < 800.0)
-        {
-            planeAltitude = 800.0 + (70 * i);
-        }
-        planeCoordinate.setYPos(planeAltitude);
-        plane.setPosition(planeCoordinate);
-    }
-
-    private void setPlaneDisabled(PlaneMcu plane)
-    {
-        plane.getEntity().setEnabled(0);
-    }
-
-    private void setPlaneNumberInFormation(int i, PlaneMcu plane)
-    {
-        plane.setNumberInFormation(i+1);        
     }
 
     public void write(BufferedWriter writer) throws PWCGException
@@ -99,7 +42,6 @@ public class VirtualWaypointPlanes
             plane.write(writer);
         }
     }
-    
     
     public PlaneMcu getLeadActivatePlane()
     {

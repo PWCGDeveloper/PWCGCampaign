@@ -9,6 +9,7 @@ import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 
@@ -19,9 +20,10 @@ public final class VirtualWaypoint implements IVirtualWaypoint
     private int index = IndexGenerator.getInstance().getNextIndex();
     
     private VirtualWaypointPlanes vwpPlanes;
+    private VirtualWaypointEscort vwpEscort;
     private VirtualWaypointCheckZone vwpCheckZone;
-    private VirtualWaypointStartNextVwp vwpStartNextVwp;
     private VirtualWaypointActivate vwpActivate;
+    private VirtualWaypointStartNextVwp vwpStartNextVwp;
     private VirtualWaypointDeletePlanes vwpDeletePlanes;
     private VirtualWaypointDeactivateNextVwp vwpDeactivateNextVwp;
     private VirtualWaypointKillFuture vwpKillFuture;
@@ -41,6 +43,51 @@ public final class VirtualWaypoint implements IVirtualWaypoint
     {
         buildElements();
         linkElements();
+    }
+
+    @Override
+    public void addEscort(IFlightInformation vwpEscortFlightInformation) throws PWCGException 
+    {
+        vwpEscort = VirtualWaypointEscortBuilder.buildVirtualEscort(vwpEscortFlightInformation, vwpCoordinate, vwpPlanes, vwpActivate);
+    }
+    
+    @Override
+    public void write(BufferedWriter writer) throws PWCGException 
+    {
+        try
+        {
+            writer.write("Group");
+            writer.newLine();
+            writer.write("{");
+            writer.newLine();
+
+            writer.write("  Name = \"Virtual WP\";");
+            writer.newLine();
+            writer.write("  Index = " + index + ";");
+            writer.newLine();
+            writer.write("  Desc = \"Virtual WP\";");
+            writer.newLine();
+
+            vwpPlanes.write(writer);
+            vwpCheckZone.write(writer);
+            vwpActivate.write(writer);
+            vwpStartNextVwp.write(writer);
+            vwpDeletePlanes.write(writer);
+            vwpDeactivateNextVwp.write(writer);
+            vwpKillFuture.write(writer);
+            if (vwpEscort != null)
+            {
+                vwpEscort.write(writer);
+            }
+
+            writer.write("}");
+            writer.newLine();
+        }
+        catch (IOException e)
+        {
+            PWCGLogger.logException(e);
+            throw new PWCGIOException(e.getMessage());
+        }
     }
 
     private void buildElements() throws PWCGException
@@ -72,42 +119,7 @@ public final class VirtualWaypoint implements IVirtualWaypoint
         vwpCheckZone.link(vwpStartNextVwp, vwpDeactivateNextVwp, vwpActivate);
         vwpDeactivateNextVwp.link(vwpStartNextVwp);
     }
-    
-    @Override
-    public void write(BufferedWriter writer) throws PWCGException 
-    {
-        try
-        {
-            writer.write("Group");
-            writer.newLine();
-            writer.write("{");
-            writer.newLine();
 
-            writer.write("  Name = \"Virtual WP\";");
-            writer.newLine();
-            writer.write("  Index = " + index + ";");
-            writer.newLine();
-            writer.write("  Desc = \"Virtual WP\";");
-            writer.newLine();
-
-            vwpPlanes.write(writer);
-            vwpCheckZone.write(writer);
-            vwpActivate.write(writer);
-            vwpStartNextVwp.write(writer);
-            vwpDeletePlanes.write(writer);
-            vwpDeactivateNextVwp.write(writer);
-            vwpKillFuture.write(writer);
-
-            writer.write("}");
-            writer.newLine();
-        }
-        catch (IOException e)
-        {
-            PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
-        }
-    }
-    
     @Override
     public void linkToNextVirtualWaypoint(IVirtualWaypoint nextVwp)
     {

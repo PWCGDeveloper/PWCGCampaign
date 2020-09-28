@@ -76,7 +76,11 @@ public class ConfigItemKeys
     public static final String AxisTargetTypeShippingKey = "AxisTargetTypeShipping";    
     public static final String AxisTargetTypeDrifterKey = "AxisTargetTypeDrifter";    
 
-	public static final String IsEscortedOddsKey = "IsEscortedOdds";
+    public static final String MaxVirtualEscortedFlightKey = "MaxVirtualEscortedFlight";
+    public static final String IsVirtualBombingEscortedOddsKey = "IsVirtualBombingEscortedOdds";
+    public static final String IsVirtualGroundAttackEscortedOddsKey = "IsVirtualGroundAttackEscortedOdds";
+    public static final String IsVirtualDiveBombEscortedOddsKey = "IsVirtualDiveBombEscortedOdds";
+    public static final String IsVirtualTransportEscortedOddsKey = "IsVirtualTransportEscortedOdds";
 
 	public static final String TimeOnArtillerySpotKey = "TimeOnArtillerySpot";
     public static final String MaxSmokeInMissionKey = "MaxSmokeInMission";
@@ -96,9 +100,6 @@ public class ConfigItemKeys
 	public static final String GroundAttackAdditionalKey = "GroundAttackAdditional";
 	public static final String TransportMinimumKey = "TransportMinimum";
 	public static final String TransportAdditionalKey = "TransportAdditional";
-
-	public static final String AlliedPlanesToSpawnMaxKey = "AlliedPlanesToSpawnMax";
-	public static final String AxisPlanesToSpawnMaxKey = "AxisPlanesToSpawnMax";
 
     public static final String MissionBoxSizeKey = "MissionBoxSize";
     public static final String MissionBoxMinDistanceFromBaseKey = "MissionBoxMinDistanceFromBase";

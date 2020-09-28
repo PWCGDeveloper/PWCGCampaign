@@ -1,13 +1,9 @@
 package pwcg.mission.mcu.group.virtual;
 
 import java.io.BufferedWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.MissionStringHandler;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
-import pwcg.mission.mcu.McuSubtitle;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.group.SelfDeactivatingCheckZone;
 
@@ -19,8 +15,6 @@ public final class VirtualWaypointCheckZone
     private McuTimer triggeredDisableNextVwpTimer = new McuTimer();
     private McuTimer triggeredActivateTimer = new McuTimer();
 
-    private List<McuSubtitle> subTitleList = new ArrayList<McuSubtitle>();
-
     private SelfDeactivatingCheckZone checkZone;
     
     public VirtualWaypointCheckZone(VirtualWayPointCoordinate vwpCoordinate)
@@ -31,7 +25,6 @@ public final class VirtualWaypointCheckZone
     public void build() throws PWCGException 
     {
         buildMcus();
-        makeSubtitles();
         setTargetAssociations();
     }
 
@@ -62,21 +55,6 @@ public final class VirtualWaypointCheckZone
         triggeredActivateTimer.setTimer(1);
     }
 
-    private void makeSubtitles() throws PWCGException
-    {
-        McuSubtitle czTriggeredSubtitle = new McuSubtitle();
-        czTriggeredSubtitle.setName("CheckZone Subtitle");
-        czTriggeredSubtitle.setText("VWP CheckZone Triggered: " +   checkZone.getCheckZone().getIndex());
-        czTriggeredSubtitle.setPosition(vwpCoordinate.getPosition().copy());
-        czTriggeredSubtitle.setDuration(3);
-        subTitleList.add(czTriggeredSubtitle);
-        
-        MissionStringHandler subtitleHandler = MissionStringHandler.getInstance();
-        subtitleHandler.registerMissionText(czTriggeredSubtitle.getLcText(), czTriggeredSubtitle.getText());
-        
-        triggeredDisableNextVwpTimer.setTarget(czTriggeredSubtitle.getIndex());
-    }
-
     private void setTargetAssociations() throws PWCGException
     {
         vwpStartTimer.setTarget(checkZone.getActivateEntryPoint());
@@ -89,9 +67,7 @@ public final class VirtualWaypointCheckZone
         vwpStartTimer.write(writer);
         checkZone.write(writer);
         triggeredDisableNextVwpTimer.write(writer);
-        triggeredActivateTimer.write(writer);
-        
-        McuSubtitle.writeSubtitles(subTitleList, writer);
+        triggeredActivateTimer.write(writer);        
     }
 
     public void addAdditionalTime(int additionalTime)

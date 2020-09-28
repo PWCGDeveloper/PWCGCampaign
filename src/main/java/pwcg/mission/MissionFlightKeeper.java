@@ -35,6 +35,11 @@ public class MissionFlightKeeper
         aiFlightsKept.addAll(alliedAiFlights);
         aiFlightsKept.addAll(axisAiFlights);
         
+        for (IFlight keptFlight : aiFlightsKept)
+        {
+            mission.getMissionSquadronChooser().registerSquadronInUse(keptFlight.getSquadron());
+        }
+        
         return aiFlightsKept;
     }
 

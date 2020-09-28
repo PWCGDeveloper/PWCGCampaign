@@ -19,9 +19,9 @@ public interface IFlight
 
     void write(BufferedWriter writer) throws PWCGException;
 
-    void finalizeFlight() throws PWCGException;
-
     void createFlight() throws PWCGException;
+
+    void finalizeFlight() throws PWCGException;
     
     IFlightInformation getFlightInformation();
 
@@ -57,4 +57,5 @@ public interface IFlight
     
     TargetDefinition getTargetDefinition();
 
+    void addVirtualEscort() throws PWCGException;
 }

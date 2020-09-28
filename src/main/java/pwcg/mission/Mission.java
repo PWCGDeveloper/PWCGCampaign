@@ -47,8 +47,8 @@ public class Mission
     private MissionAirfieldIconBuilder missionAirfieldIconBuilder = new MissionAirfieldIconBuilder();
     private MissionSquadronIconBuilder missionSquadronIconBuilder;
     private MissionAssaultIconBuilder missionAssaultIconBuilder = new MissionAssaultIconBuilder();
-    private MissionAssociateFlightBuilder missionAssociateFlightBuilder = new MissionAssociateFlightBuilder();
     private MissionSquadronChooser missionSquadronChooser = new MissionSquadronChooser();
+    private MissionVirtualEscortHandler missionVirtualEscortHandler = new MissionVirtualEscortHandler();
     private MissionFrontLineIconBuilder missionFrontLines;
     private MissionEffects missionEffects = new MissionEffects();
     private SkinsInUse skinsInUse = new SkinsInUse();
@@ -117,7 +117,6 @@ public class Mission
     private void generateFlights(List<FlightTypes> playerFlightTypes) throws PWCGException
     {
         missionFlightBuilder.generateFlights(participatingPlayers, playerFlightTypes);
-        missionAssociateFlightBuilder.buildAssociatedFlights(this);
         createFirePots();
 
         missionOptions = PWCGContext.getInstance().getCurrentMap().getMissionOptions();
@@ -361,6 +360,11 @@ public class Mission
     public MissionSquadronChooser getMissionSquadronChooser()
     {
         return missionSquadronChooser;
+    }
+
+    public MissionVirtualEscortHandler getMissionVirtualEscortHandler()
+    {
+        return missionVirtualEscortHandler;
     }
 
     public VehicleSetBuilderComprehensive getVehicleSetBuilder()

@@ -17,4 +17,6 @@ public interface IVirtualWaypointPackage
     List<VirtualWaypoint> getVirtualWaypoints();
 
     void addDelayForPlayerDelay(Mission mission) throws PWCGException;
+
+    void addEscort() throws PWCGException;
 }

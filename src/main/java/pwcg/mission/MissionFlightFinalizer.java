@@ -1,6 +1,11 @@
 package pwcg.mission;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.virtual.IVirtualWaypointPackage;
@@ -21,14 +26,9 @@ public class MissionFlightFinalizer
     public void finalizeMissionFlights() throws PWCGException 
     {
         convertForCoop();
-        for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
-        {
-            flight.finalizeFlight();
-        }
-        
-        AiAdjuster aiAdjuster = new AiAdjuster(campaign);
-        aiAdjuster.adjustAI(mission);
-        
+        finalizeFlights();        
+        addVirtualEscorts();        
+        adjustAI();        
         setCzTriggers();
     }
 
@@ -39,6 +39,45 @@ public class MissionFlightFinalizer
             MissionCoopConverter coopConverter = new MissionCoopConverter();
             coopConverter.convertToCoop(mission.getMissionFlightBuilder());
         }
+    }
+
+    private void finalizeFlights() throws PWCGException
+    {
+        for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
+        {
+            flight.finalizeFlight();
+        }
+    }
+
+    private void addVirtualEscorts() throws PWCGException
+    {
+        List<IFlight> shuffledFlights = new ArrayList<>();
+
+        if (mission.getMissionFlightBuilder().hasPlayerFlightForSide(Side.AXIS))
+        {
+            shuffledFlights.addAll(mission.getMissionFlightBuilder().getAiFlightsForSide(Side.AXIS));
+        }
+        
+        if (mission.getMissionFlightBuilder().hasPlayerFlightForSide(Side.ALLIED))
+        {
+            shuffledFlights.addAll(mission.getMissionFlightBuilder().getAiFlightsForSide(Side.ALLIED));
+        }
+        
+        Collections.shuffle(shuffledFlights);
+        for (IFlight flight : shuffledFlights)
+        {
+            boolean needsVirtualEscort = flight.getMission().getMissionVirtualEscortHandler().needsEscort(flight);
+            if (needsVirtualEscort)
+            {
+                flight.addVirtualEscort();
+            }
+        }        
+    }
+
+    private void adjustAI() throws PWCGException
+    {
+        AiAdjuster aiAdjuster = new AiAdjuster(campaign);
+        aiAdjuster.adjustAI(mission);
     }
 
     private void setCzTriggers() throws PWCGException  

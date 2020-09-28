@@ -26,6 +26,7 @@ public class VirtualWaypointActivate
     private McuTimer activateTimer = new McuTimer();
     private McuTimer formationTimer = new McuTimer();
     private McuTimer waypointTimer = new McuTimer();
+    private McuTimer escortTimer = new McuTimer();
     private McuTimer deleteUpstreamPlanesTimer = new McuTimer();
 
     private List<McuSubtitle> subTitleList = new ArrayList<McuSubtitle>();
@@ -63,7 +64,13 @@ public class VirtualWaypointActivate
         waypointTimer.setOrientation(vwpCoordinate.getOrientation().copy());
         waypointTimer.setName("Activate WP Timer");
         waypointTimer.setDesc("Activate WP Timer");
-        
+
+        escortTimer.setTimer(1);
+        escortTimer.setPosition(vwpCoordinate.getPosition().copy());
+        escortTimer.setOrientation(vwpCoordinate.getOrientation().copy());
+        escortTimer.setName("Escort Timer");
+        escortTimer.setDesc("Escort Timer");
+
         formationTimer.setPosition(vwpCoordinate.getPosition().copy());
         formationTimer.setName("Formation Timer");
         formationTimer.setDesc("Formation Timer");
@@ -79,9 +86,9 @@ public class VirtualWaypointActivate
     {
         McuSubtitle czTriggeredSubtitle = new McuSubtitle();
         czTriggeredSubtitle.setName("CheckZone Subtitle");
-        czTriggeredSubtitle.setText("VWP Activate: " +   vwpPlanes.getLeadActivatePlane().getLinkTrId());
+        czTriggeredSubtitle.setText("VWP Activate: " +   vwpPlanes.getLeadActivatePlane().getLinkTrId() + " " + vwpPlanes.getLeadActivatePlane().getName());
         czTriggeredSubtitle.setPosition(vwpCoordinate.getPosition().copy());
-        czTriggeredSubtitle.setDuration(10);
+        czTriggeredSubtitle.setDuration(5);
         subTitleList.add(czTriggeredSubtitle);
         
         MissionStringHandler subtitleHandler = MissionStringHandler.getInstance();
@@ -100,7 +107,8 @@ public class VirtualWaypointActivate
 
         activateTimer.setTarget(formationTimer.getIndex());
         formationTimer.setTarget(waypointTimer.getIndex());
-        waypointTimer.setTarget(deleteUpstreamPlanesTimer.getIndex());
+        waypointTimer.setTarget(escortTimer.getIndex());
+        escortTimer.setTarget(deleteUpstreamPlanesTimer.getIndex());
     }
 
     private void createObjectAssociations()
@@ -115,13 +123,13 @@ public class VirtualWaypointActivate
 
     public void write(BufferedWriter writer) throws PWCGException
     {
-        activateTimer.write(writer);
         activate.write(writer);
-
-        formationTimer.write(writer);
         formation.write(writer);
 
+        activateTimer.write(writer);
+        formationTimer.write(writer);
         waypointTimer.write(writer);
+        escortTimer.write(writer);
         deleteUpstreamPlanesTimer.write(writer);
         
         McuSubtitle.writeSubtitles(subTitleList, writer);
@@ -130,6 +138,11 @@ public class VirtualWaypointActivate
     public void linkToNextDeletePlanesTimer(int upstreamVwpTarget)
     {
         deleteUpstreamPlanesTimer.setTarget(upstreamVwpTarget);
+    }
+    
+    public void linkToEscort(int escortAcvtivateTarget)
+    {
+        escortTimer.setTarget(escortAcvtivateTarget);
     }
 
     public int getEntryPoint()

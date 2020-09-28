@@ -41,6 +41,7 @@ public class EscortedByPlayerFlightBuilder
     {
         Squadron friendlyBomberSquadron = playerEscortFlightInformation.getMission().getMissionSquadronChooser().determineSquadronToBeEscorted(
                 playerEscortFlightInformation.getCampaign(), playerEscortFlightInformation.getSquadron());
+        playerEscortFlightInformation.getMission().getMissionSquadronChooser().registerSquadronInUse(friendlyBomberSquadron);
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit(friendlyBomberSquadron.determineCurrentPosition(playerEscortFlightInformation.getCampaign().getDate()));     
         
         this.escortedFlightInformation = EscortedByPlayerFlightInformationBuilder.buildEscortedByPlayerFlightInformation(

@@ -19,11 +19,10 @@ public class ConfigSimple
     public void setAirLow() throws PWCGException 
     {
         setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigAirKey, ConfigSimple.CONFIG_LEVEL_LOW);
-        setParamForSimpleConfigChange(ConfigItemKeys.AlliedPlanesToSpawnMaxKey, "6");
-        setParamForSimpleConfigChange(ConfigItemKeys.AxisPlanesToSpawnMaxKey, "8");
 
         setParamForSimpleConfigChange(ConfigItemKeys.AlliedFlightsToKeepKey, "3");
         setParamForSimpleConfigChange(ConfigItemKeys.AxisFlightsToKeepKey, "2");
+        setParamForSimpleConfigChange(ConfigItemKeys.MaxVirtualEscortedFlightKey, "2");
 
         setParamForSimpleConfigChange(ConfigItemKeys.PatrolMinimumKey, "2");
         setParamForSimpleConfigChange(ConfigItemKeys.PatrolAdditionalKey, "2");
@@ -40,11 +39,10 @@ public class ConfigSimple
     public void setAirMed() throws PWCGException 
     {
         setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigAirKey, ConfigSimple.CONFIG_LEVEL_MED);
-        setParamForSimpleConfigChange(ConfigItemKeys.AlliedPlanesToSpawnMaxKey, "8");
-        setParamForSimpleConfigChange(ConfigItemKeys.AxisPlanesToSpawnMaxKey, "12");
 
-        setParamForSimpleConfigChange(ConfigItemKeys.AlliedFlightsToKeepKey, "5");
+        setParamForSimpleConfigChange(ConfigItemKeys.AlliedFlightsToKeepKey, "4");
         setParamForSimpleConfigChange(ConfigItemKeys.AxisFlightsToKeepKey, "3");
+        setParamForSimpleConfigChange(ConfigItemKeys.MaxVirtualEscortedFlightKey, "2");
 
         setParamForSimpleConfigChange(ConfigItemKeys.PatrolMinimumKey, "2");
         setParamForSimpleConfigChange(ConfigItemKeys.PatrolAdditionalKey, "2");
@@ -61,11 +59,10 @@ public class ConfigSimple
     public void setAirHigh() throws PWCGException 
     {
         setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigAirKey, ConfigSimple.CONFIG_LEVEL_HIGH);
-        setParamForSimpleConfigChange(ConfigItemKeys.AlliedPlanesToSpawnMaxKey, "16");
-        setParamForSimpleConfigChange(ConfigItemKeys.AxisPlanesToSpawnMaxKey, "20");
         
-        setParamForSimpleConfigChange(ConfigItemKeys.AlliedFlightsToKeepKey, "7");
+        setParamForSimpleConfigChange(ConfigItemKeys.AlliedFlightsToKeepKey, "6");
         setParamForSimpleConfigChange(ConfigItemKeys.AxisFlightsToKeepKey, "4");
+        setParamForSimpleConfigChange(ConfigItemKeys.MaxVirtualEscortedFlightKey, "2");
 
         setParamForSimpleConfigChange(ConfigItemKeys.PatrolMinimumKey, "2");
         setParamForSimpleConfigChange(ConfigItemKeys.PatrolAdditionalKey, "2");
