@@ -52,15 +52,14 @@ public class MissionFlightFinalizer
     private void addVirtualEscorts() throws PWCGException
     {
         List<IFlight> shuffledFlights = new ArrayList<>();
-
         if (mission.getMissionFlightBuilder().hasPlayerFlightForSide(Side.AXIS))
         {
-            shuffledFlights.addAll(mission.getMissionFlightBuilder().getAiFlightsForSide(Side.AXIS));
+            shuffledFlights.addAll(mission.getMissionFlightBuilder().getAiFlightsForSide(Side.ALLIED));
         }
         
         if (mission.getMissionFlightBuilder().hasPlayerFlightForSide(Side.ALLIED))
         {
-            shuffledFlights.addAll(mission.getMissionFlightBuilder().getAiFlightsForSide(Side.ALLIED));
+            shuffledFlights.addAll(mission.getMissionFlightBuilder().getAiFlightsForSide(Side.AXIS));
         }
         
         Collections.shuffle(shuffledFlights);
