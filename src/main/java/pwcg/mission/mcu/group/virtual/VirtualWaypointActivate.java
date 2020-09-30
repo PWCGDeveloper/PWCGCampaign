@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.MissionStringHandler;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
@@ -83,19 +84,18 @@ public class VirtualWaypointActivate
 
     private void makeSubtitles() throws PWCGException
     {
-        // Comment out subtitles but leave the code here as an an example
-
-//        McuSubtitle czTriggeredSubtitle = new McuSubtitle();
-//        czTriggeredSubtitle.setName("CheckZone Subtitle");
-//        czTriggeredSubtitle.setText("VWP Activate: " +   vwpPlanes.getLeadActivatePlane().getLinkTrId() + " " + vwpPlanes.getLeadActivatePlane().getName());
-//        czTriggeredSubtitle.setPosition(vwpCoordinate.getPosition().copy());
-//        czTriggeredSubtitle.setDuration(5);
-//        subTitleList.add(czTriggeredSubtitle);
-//        
-//        MissionStringHandler subtitleHandler = MissionStringHandler.getInstance();
-//        subtitleHandler.registerMissionText(czTriggeredSubtitle.getLcText(), czTriggeredSubtitle.getText());
-//        
-//        activateTimer.setTarget(czTriggeredSubtitle.getIndex());
+        McuSubtitle czTriggeredSubtitle = new McuSubtitle();
+        czTriggeredSubtitle.setName("CheckZone Subtitle");
+        czTriggeredSubtitle.setText("VWP Activate: " +   vwpPlanes.getLeadActivatePlane().getLinkTrId() + " " + vwpPlanes.getLeadActivatePlane().getName());
+        czTriggeredSubtitle.setPosition(vwpCoordinate.getPosition().copy());
+        czTriggeredSubtitle.setDuration(5);
+        subTitleList.add(czTriggeredSubtitle);
+        
+        MissionStringHandler subtitleHandler = MissionStringHandler.getInstance();
+        subtitleHandler.registerMissionText(czTriggeredSubtitle.getLcText(), czTriggeredSubtitle.getText());
+        
+        // Comment out subtitles trigger but leave the code here as an an example
+        // activateTimer.setTarget(czTriggeredSubtitle.getIndex());
     }
 
     private void createTargetAssociations()
