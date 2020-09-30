@@ -90,7 +90,7 @@ public class MissionPointAttackSet extends MissionPointSetMultipleWaypointSet im
     {
         List<BaseFlightMcu> allFlightPoints = new ArrayList<>();
         allFlightPoints.addAll(waypointsBefore.getWaypoints());
-        allFlightPoints.add(attackSequence.getActivateTimer());
+        allFlightPoints.add(attackSequence.getAttackAreaMcu());
         allFlightPoints.addAll(waypointsAfter.getWaypoints());
         return allFlightPoints;
     }
