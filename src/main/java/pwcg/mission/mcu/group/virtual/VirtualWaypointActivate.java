@@ -41,7 +41,8 @@ public class VirtualWaypointActivate
     public void build() throws PWCGException
     {
         buildMcus();
-        makeSubtitles();
+        // Comment out subtitles but leave the code here as an an example
+        //makeSubtitles();
         createTargetAssociations();
         createObjectAssociations();
     }

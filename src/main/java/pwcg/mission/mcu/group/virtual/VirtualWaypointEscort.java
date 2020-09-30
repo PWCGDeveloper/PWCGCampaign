@@ -5,13 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.MissionStringHandler;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.McuActivate;
 import pwcg.mission.mcu.McuCover;
-import pwcg.mission.mcu.McuSubtitle;
 import pwcg.mission.mcu.McuTimer;
 
 public class VirtualWaypointEscort
@@ -26,8 +24,6 @@ public class VirtualWaypointEscort
     private McuCover cover = null;
     private List<PlaneMcu> escortAtActivate = new ArrayList<>();
 
-    private List<McuSubtitle> subTitleList = new ArrayList<McuSubtitle>();
-
     public VirtualWaypointEscort(VirtualWayPointCoordinate vwpCoordinate, VirtualWaypointPlanes vwpPlanes, VirtualWaypointActivate vwpActivate)
     {
         this.vwpCoordinate = vwpCoordinate;
@@ -40,7 +36,6 @@ public class VirtualWaypointEscort
         buildEscortPlanes(vwpEscortFlightInformation);
         buildPayloadForEscorts();
         buildMcus();
-        makeSubtitles();
         createTargetAssociations();
         createObjectAssociations();
         linkEscortToActivateFlight();
@@ -57,8 +52,6 @@ public class VirtualWaypointEscort
         activateEscort.write(writer);
         coverTimer.write(writer);
         cover.write(writer);
-
-        McuSubtitle.writeSubtitles(subTitleList, writer);
     }
 
     private void buildEscortPlanes(IFlightInformation vwpEscortFlightInformation) throws PWCGException
@@ -98,21 +91,6 @@ public class VirtualWaypointEscort
         coverTimer.setName("Virtual Escort Cover Timer");
         coverTimer.setDesc("Virtual Escort Cover Timer");
         coverTimer.setPosition(vwpCoordinate.getPosition());
-    }
-
-    private void makeSubtitles() throws PWCGException
-    {
-        McuSubtitle escortActivatedSubtitle = new McuSubtitle();
-        escortActivatedSubtitle.setName("CheckZone Subtitle");
-        escortActivatedSubtitle.setText("VWP Activate Escort: " +   vwpPlanes.getLeadActivatePlane().getLinkTrId() + " " + vwpPlanes.getLeadActivatePlane().getName());
-        escortActivatedSubtitle.setPosition(vwpCoordinate.getPosition().copy());
-        escortActivatedSubtitle.setDuration(5);
-        subTitleList.add(escortActivatedSubtitle);
-        
-        MissionStringHandler subtitleHandler = MissionStringHandler.getInstance();
-        subtitleHandler.registerMissionText(escortActivatedSubtitle.getLcText(), escortActivatedSubtitle.getText());
-        
-        activateEscortTimer.setTarget(escortActivatedSubtitle.getIndex());
     }
 
     private void createTargetAssociations()
