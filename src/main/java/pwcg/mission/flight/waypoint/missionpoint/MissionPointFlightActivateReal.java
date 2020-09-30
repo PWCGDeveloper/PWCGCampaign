@@ -20,7 +20,7 @@ public class MissionPointFlightActivateReal implements IMissionPointSet
     private IFlight flight;
 
     private MissionBeginUnit missionBeginUnit;
-    private McuTimer activationTimer = null;
+    private McuTimer missionBeginTimer = null;
     private McuActivate activationEntity = null;
     private boolean linkToNextTarget = true;
     private MissionPointSetType missionPointSetType;
@@ -41,13 +41,13 @@ public class MissionPointFlightActivateReal implements IMissionPointSet
     @Override
     public void setLinkToNextTarget(int nextTargetIndex) throws PWCGException
     {
-        activationTimer.setTarget(nextTargetIndex);
+        missionBeginTimer.setTarget(nextTargetIndex);
     }
 
     @Override
     public int getEntryPoint() throws PWCGException
     {
-        return activationTimer.getIndex();
+        return missionBeginTimer.getIndex();
     }
 
     @Override
@@ -78,7 +78,7 @@ public class MissionPointFlightActivateReal implements IMissionPointSet
     public void write(BufferedWriter writer) throws PWCGException 
     {
         missionBeginUnit.write(writer);
-        activationTimer.write(writer);
+        missionBeginTimer.write(writer);
         activationEntity.write(writer);
     }
     
@@ -97,17 +97,17 @@ public class MissionPointFlightActivateReal implements IMissionPointSet
         activationEntity.setDesc("Activate entity");
         activationEntity.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());
 
-        activationTimer = new McuTimer();
-        activationTimer.setName("Activation Timer");
-        activationTimer.setDesc("Activation Timer");
-        activationTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());        
-        activationTimer.setTimer(1);
+        missionBeginTimer = new McuTimer();
+        missionBeginTimer.setName("Activation Timer");
+        missionBeginTimer.setDesc("Activation Timer");
+        missionBeginTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());        
+        missionBeginTimer.setTimer(1);
     }
 
     private void createTargetAssociations()
     {
-        missionBeginUnit.linkToMissionBegin(activationTimer.getIndex());
-        activationTimer.setTarget(activationEntity.getIndex());
+        missionBeginUnit.linkToMissionBegin(missionBeginTimer.getIndex());
+        missionBeginTimer.setTarget(activationEntity.getIndex());
     }
 
     private void createObjectAssociations(PlaneMcu plane)
@@ -176,8 +176,8 @@ public class MissionPointFlightActivateReal implements IMissionPointSet
         return missionPointSetType;
     }
 
-    public McuTimer getActivationTimer()
+    public McuTimer getMissionBeginTimer()
     {
-        return activationTimer;
+        return missionBeginTimer;
     }    
 }
