@@ -4,15 +4,12 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.Role;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.flight.plane.PlaneMcu;
-import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.vehicle.IVehicle;
 
 public class FlightPlanes implements IFlightPlanes
 {
@@ -118,51 +115,6 @@ public class FlightPlanes implements IFlightPlanes
         {
             plane.setFuel(myFuel);
         }
-    }
-
-    @Override
-    public void addFlightTarget(IFlight targetFlight)
-    {
-        for (PlaneMcu plane : planes)
-        {
-            if (isAggressivePlane(plane))
-            {
-                for (PlaneMcu targetPlane : targetFlight.getFlightPlanes().getPlanes())
-                {
-                    plane.addPlaneTarget(targetPlane.getEntity().getIndex());
-                }
-            }
-        }
-    }
-
-    @Override
-    public void addGroundUnitTarget(IGroundUnit targetGroundUnit)
-    {
-        for (PlaneMcu plane : planes)
-        {
-            if (isAggressivePlane(plane))
-            {
-                for (IVehicle vehicle : targetGroundUnit.getVehicles())
-                {
-                    plane.addPlaneTarget(vehicle.getEntity().getIndex());
-                }
-            }
-        }
-    }
-
-    private boolean isAggressivePlane(PlaneType plane)
-    {
-        if (plane.isPrimaryRole(Role.ROLE_FIGHTER))
-        {
-            return true;
-        }
-
-        if (flight.getFlightType().isCategory(FlightTypeCategory.FIGHTER))
-        {
-            return true;
-        }
-
-        return false;
     }
 
     public int getFlightCruisingSpeed()

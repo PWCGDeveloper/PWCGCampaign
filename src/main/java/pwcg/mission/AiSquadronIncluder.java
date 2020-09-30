@@ -26,8 +26,7 @@ public class AiSquadronIncluder
         decideSquadronsFromSquadronSet(missionSquadronFinder.getAxisSquads());
         decideSquadronsFromSquadronSet(missionSquadronFinder.getAlliedSquads());
         return squadronsForMission;
-    }    
-
+    }
     
     private void decideSquadronsFromSquadronSet(List<Squadron> squads) throws PWCGException 
     {
@@ -35,11 +34,13 @@ public class AiSquadronIncluder
         {
             if (squadronWillGenerateAFlight(squadron))
             {
-                squadronsForMission.add(squadron);
+                if (!mission.getMissionSquadronChooser().isSquadronInUse(squadron.getSquadronId()))
+                {
+                    squadronsForMission.add(squadron);
+                }
             }
         }
     }
-    
 
     private boolean squadronWillGenerateAFlight(Squadron squadron) throws PWCGException
     {

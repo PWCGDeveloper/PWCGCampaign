@@ -71,9 +71,9 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
     }
 
     @Override
-    public void finalize(PlaneMcu plane) throws PWCGException
+    public void finalizeMissionPointSet(PlaneMcu plane) throws PWCGException
     {
-        super.finalize(plane);
+        super.finalizeMissionPointSet(plane);
         createTargetAssociations();
         createObjectAssociations(plane);
     }
@@ -124,12 +124,6 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
         List<McuWaypoint> allWaypoints = new ArrayList<>();
         allWaypoints.addAll(waypoints.getWaypoints());
         return allWaypoints;
-    }
-
-    @Override
-    public IMissionPointSet duplicateWithOffset(IFlight flight, int positionInFormation) throws PWCGException
-    {
-        throw new PWCGException("Attempt to duplicate air start waypoint set.  Should ever be virtual");
     }
 
     @Override

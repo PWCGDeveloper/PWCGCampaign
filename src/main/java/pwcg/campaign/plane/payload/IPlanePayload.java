@@ -12,6 +12,7 @@ public interface IPlanePayload
     public int getPayloadIdByDescription(String payloadDescription);
     public String getPayloadMaskByDescription(String payloadDescription);
     public int createWeaponsPayload(IFlight flight) throws PWCGException;
+    public int createStandardWeaponsPayload();
     public int getSelectedPayloadId();
     public void setSelectedPayloadId(int selectedPrimaryPayloadId);
     public void addModification(PayloadElement payloadElement);

@@ -31,19 +31,23 @@ public abstract class ATypeBase
 	{
 		try
         {
+		    int startPosition = line.indexOf(startTag);
+		    int endPosition = line.substring(startPosition).indexOf(")");
+		    String positionString = line.substring(startPosition, startPosition+endPosition+1);
+
             // Get the location
-            int startLocXPos = line.indexOf(startTag) + startTag.length();
+            int startLocXPos = positionString.indexOf(startTag) + startTag.length();
             String endLocXTag = ",";
-            int endLocXPos = line.indexOf(endLocXTag);
-            String locXStr = line.substring(startLocXPos, endLocXPos);
+            int endLocXPos = positionString.indexOf(endLocXTag);
+            String locXStr = positionString.substring(startLocXPos, endLocXPos);
             
             int startLocYPos = endLocXPos + 1;
-            int endLocYPos = line.indexOf(",", startLocYPos);
-            String locYStr = line.substring(startLocYPos, endLocYPos);
+            int endLocYPos = positionString.indexOf(",", startLocYPos);
+            String locYStr = positionString.substring(startLocYPos, endLocYPos);
             
             int startLocZPos = endLocYPos + 1;
-            int endLocZPos = line.indexOf(")", startLocZPos);
-            String locZStr = line.substring(startLocZPos, endLocZPos);
+            int endLocZPos = positionString.indexOf(")", startLocZPos);
+            String locZStr = positionString.substring(startLocZPos, endLocZPos);
             
             Coordinate coords = new Coordinate();
             coords.setXPos(Double.valueOf(locXStr));

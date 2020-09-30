@@ -12,8 +12,8 @@ public class McuTREntity extends BaseFlightMcu
 {
     private int enabled = 0;
     private int misObjID = 0;
-    private ArrayList<McuMessage> onMessages = new ArrayList<McuMessage>();
-    private List<McuEvent> eventList = new ArrayList<McuEvent>();
+    private ArrayList<McuMessage> onMessages = new ArrayList<>();
+    private List<McuEvent> eventList = new ArrayList<>();
 
     public McuTREntity()
     {
@@ -43,6 +43,17 @@ public class McuTREntity extends BaseFlightMcu
         message.setTarId(targId);
 
         onMessages.add(message);
+    }
+
+    public McuTREntity copy()
+    {
+        McuTREntity newEntity = new McuTREntity();
+        newEntity.enabled = this.enabled;
+        newEntity.misObjID = this.misObjID;
+        newEntity.onMessages = new ArrayList<McuMessage>();
+        newEntity.eventList = new ArrayList<McuEvent>();
+        super.clone(newEntity);
+        return newEntity;
     }
 
     public int getEnabled()

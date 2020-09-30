@@ -2,25 +2,18 @@ package pwcg.mission.mcu.group;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
-import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.mission.MissionStringHandler;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.mcu.CoalitionFactory;
 import pwcg.mission.mcu.McuDelete;
 import pwcg.mission.mcu.McuProximity;
-import pwcg.mission.mcu.McuSubtitle;
 import pwcg.mission.mcu.McuTimer;
 
 public class PlaneRemoverCoop implements IPlaneRemover
@@ -30,13 +23,9 @@ public class PlaneRemoverCoop implements IPlaneRemover
     
     protected McuTimer deletePlaneTimer = new McuTimer();
     protected McuDelete deletePlane = new McuDelete();
-    
-    protected List<McuSubtitle> subTitleList = new ArrayList<McuSubtitle>();
-    
+        
     protected int index = IndexGenerator.getInstance().getNextIndex();;
     
-    protected boolean useSubtitles = false;
-
     public PlaneRemoverCoop()
     {
         index = IndexGenerator.getInstance().getNextIndex();
@@ -82,11 +71,6 @@ public class PlaneRemoverCoop implements IPlaneRemover
         int enemyDistance = configManager.getIntConfigParam(ConfigItemKeys.PlaneDeleteEnemyDistanceKey);
         outOfEnemyRangeProximity.setCloser(0);
         outOfEnemyRangeProximity.setDistance(enemyDistance);
-
-        if (useSubtitles)
-        {
-            makeSubtitles(flight, planeToRemove);
-        }
         
         // Link up targets
         outOfEnemyRangeProximityTimer.setTarget(outOfEnemyRangeProximity.getIndex());
@@ -96,40 +80,6 @@ public class PlaneRemoverCoop implements IPlaneRemover
 
         // Link only the target plane for coop
         outOfEnemyRangeProximity.setObject(planeToRemove.getEntity().getIndex());
-    }
-
-    protected void makeSubtitles(IFlight flight, PlaneMcu plane) throws PWCGException
-    {
-        Coordinate coordinate = plane.getPosition().copy();
-        
-        Squadron squadron = flight.getSquadron();
-        
-        Date campaignDate = flight.getCampaign().getDate();
-        
-        McuSubtitle planeRemoverStartedSubtitle = new McuSubtitle();
-        planeRemoverStartedSubtitle.setName("planeRemoverStartedSubtitle Subtitle");
-        planeRemoverStartedSubtitle.setText("Plane Remover Started " +  squadron.determineDisplayName(campaignDate) +  " for " + plane.getName());
-        planeRemoverStartedSubtitle.setPosition(coordinate.copy());
-        outOfEnemyRangeProximityTimer.setTarget(planeRemoverStartedSubtitle.getIndex());
-        
-        McuSubtitle noNearbyPlaneSubtitle = new McuSubtitle();
-        noNearbyPlaneSubtitle.setName("noPlanesSubtitle Subtitle");
-        noNearbyPlaneSubtitle.setText("No planes " +  squadron.determineDisplayName(campaignDate) +  " Triggered for " + plane.getName());
-        noNearbyPlaneSubtitle.setPosition(coordinate.copy());
-        outOfEnemyRangeProximity.setTarget(noNearbyPlaneSubtitle.getIndex());
-        subTitleList.add(noNearbyPlaneSubtitle);
-
-        McuSubtitle deletePlaneSubtitle = new McuSubtitle();
-        deletePlaneSubtitle.setName("deletePlane Subtitle");
-        deletePlaneSubtitle.setText("DEL " +  squadron.determineDisplayName(campaignDate) +  " Delete Triggered for " + plane.getName());
-        deletePlaneSubtitle.setPosition(coordinate.copy());
-        deletePlaneTimer.setTarget(deletePlaneSubtitle.getIndex());
-        subTitleList.add(deletePlaneSubtitle);
-        
-        MissionStringHandler subtitleHandler = MissionStringHandler.getInstance();
-        subtitleHandler.registerMissionText(planeRemoverStartedSubtitle.getLcText(), planeRemoverStartedSubtitle.getText());
-        subtitleHandler.registerMissionText(noNearbyPlaneSubtitle.getLcText(), noNearbyPlaneSubtitle.getText());
-        subtitleHandler.registerMissionText(deletePlaneSubtitle.getLcText(), deletePlaneSubtitle.getText());
     }
 
     public void write(BufferedWriter writer) throws PWCGIOException 
@@ -160,13 +110,6 @@ public class PlaneRemoverCoop implements IPlaneRemover
             deletePlaneTimer.write(writer);
             deletePlane.write(writer);
             
-            for (int i = 0; i < subTitleList.size(); ++i)
-            {
-                McuSubtitle subtitle = subTitleList.get(i);
-                subtitle.write(writer);
-                writer.newLine();
-            }
-
             writer.write("}");
             writer.newLine();
         }

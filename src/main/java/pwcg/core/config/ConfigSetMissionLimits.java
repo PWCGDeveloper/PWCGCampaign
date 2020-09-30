@@ -11,8 +11,6 @@ public class ConfigSetMissionLimits
         configSet.addConfigItem(ConfigItemKeys.MissionBoxMinDistanceFromBaseKey, new ConfigItem("40000"));
         configSet.addConfigItem(ConfigItemKeys.MissionBoxMaxDistanceFromBaseKey, new ConfigItem("40"));
 		
-        configSet.addConfigItem(ConfigItemKeys.AlliedPlanesToSpawnMaxKey, new ConfigItem("6"));
-        configSet.addConfigItem(ConfigItemKeys.AxisPlanesToSpawnMaxKey, new ConfigItem("10"));
         configSet.addConfigItem(ConfigItemKeys.RandomizePlanesPerSideKey, new ConfigItem("1"));		
 		
         configSet.addConfigItem(ConfigItemKeys.AlliedFlightsToKeepKey, new ConfigItem("4"));
@@ -30,7 +28,12 @@ public class ConfigSetMissionLimits
         configSet.addConfigItem(ConfigItemKeys.UsePlaneDeleteKey, new ConfigItem("1"));
         configSet.addConfigItem(ConfigItemKeys.PlaneDeleteEnemyDistanceKey, new ConfigItem("10000"));
         configSet.addConfigItem(ConfigItemKeys.PlaneDeletePlayerDistanceKey, new ConfigItem("12000"));
-        configSet.addConfigItem(ConfigItemKeys.IsEscortedOddsKey, new ConfigItem("50"));
+
+        configSet.addConfigItem(ConfigItemKeys.MaxVirtualEscortedFlightKey, new ConfigItem("2"));
+        configSet.addConfigItem(ConfigItemKeys.IsVirtualBombingEscortedOddsKey, new ConfigItem("40"));
+        configSet.addConfigItem(ConfigItemKeys.IsVirtualGroundAttackEscortedOddsKey, new ConfigItem("10"));
+        configSet.addConfigItem(ConfigItemKeys.IsVirtualDiveBombEscortedOddsKey, new ConfigItem("30"));
+        configSet.addConfigItem(ConfigItemKeys.IsVirtualTransportEscortedOddsKey, new ConfigItem("20"));
 		
         configSet.addConfigItem(ConfigItemKeys.TimeOnArtillerySpotKey, new ConfigItem("5"));
         configSet.addConfigItem(ConfigItemKeys.MaxSmokeInMissionKey, new ConfigItem("100"));

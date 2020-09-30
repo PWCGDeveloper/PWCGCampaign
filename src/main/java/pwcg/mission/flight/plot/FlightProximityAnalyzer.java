@@ -8,7 +8,7 @@ import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PositionFinder;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.mcu.group.VirtualWayPoint;
+import pwcg.mission.mcu.group.virtual.VirtualWaypoint;
 
 public class FlightProximityAnalyzer
 {
@@ -26,7 +26,7 @@ public class FlightProximityAnalyzer
 
     private void plotPlayerFlightEncounters() throws PWCGException 
     {
-        int playerEncounerDistance = VirtualWayPoint.VWP_TRIGGGER_DISTANCE;
+        int playerEncounerDistance = VirtualWaypoint.VWP_TRIGGGER_DISTANCE;
         for (IFlight aiFlight : mission.getMissionFlightBuilder().getAiFlights())
         {
             if (!aiFlight.isPlayerFlight())

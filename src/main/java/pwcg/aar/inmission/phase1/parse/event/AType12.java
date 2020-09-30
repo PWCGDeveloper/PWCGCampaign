@@ -8,6 +8,7 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
+import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 
 // T:15 AType:12 ID:302079 TYPE:He 111 H-6 COUNTRY:201 NAME:Obltn Heinkel Mann PID:-1 POS(64429.594,174.325,41093.000)
@@ -18,6 +19,7 @@ public class AType12 extends ATypeBase implements IAType12
     private String name;
     private ICountry country = CountryFactory.makeNeutralCountry();
     private String pid = "";
+    private Coordinate position;
 
     public AType12(String line) throws PWCGException
     {    
@@ -57,12 +59,20 @@ public class AType12 extends ATypeBase implements IAType12
 
         name = getString(line, "NAME:", " PID:");
         if (name.startsWith("\u0001"))
+        {
             name = name.substring(1);
+        }
         
         if (line.contains(" POS("))
+        {
             pid = getId(line, "PID:", " POS(");
+        }
         else
+        {
             pid = getId(line, "PID:", null);
+        }
+        
+        position = findCoordinate(line, "POS(");
     }
 
     @Override
@@ -93,6 +103,12 @@ public class AType12 extends ATypeBase implements IAType12
     public String getPid()
     {
         return pid;
+    }
+
+    @Override
+    public Coordinate getPosition()
+    {
+        return position;
     }
 
     @Override

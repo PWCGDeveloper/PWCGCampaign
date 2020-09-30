@@ -15,17 +15,17 @@ import pwcg.mission.mcu.McuActivate;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class MissionPointFlightActivate implements IMissionPointSet
+public class MissionPointFlightActivateReal implements IMissionPointSet
 {
     private IFlight flight;
 
     private MissionBeginUnit missionBeginUnit;
-    private McuTimer activationTimer = null;
+    private McuTimer missionBeginTimer = null;
     private McuActivate activationEntity = null;
     private boolean linkToNextTarget = true;
     private MissionPointSetType missionPointSetType;
 
-    public MissionPointFlightActivate(IFlight flight)
+    public MissionPointFlightActivateReal(IFlight flight)
     {
         this.flight = flight;
         this.missionPointSetType = MissionPointSetType.MISSION_POINT_SET_ACTIVATE;
@@ -34,19 +34,20 @@ public class MissionPointFlightActivate implements IMissionPointSet
     public void createFlightActivate() throws PWCGException, PWCGException 
     {
         createFlightMissionBegin();
-        createActivation();  
+        createActivation();
+        createTargetAssociations();
     }
 
     @Override
     public void setLinkToNextTarget(int nextTargetIndex) throws PWCGException
     {
-        activationTimer.setTarget(nextTargetIndex);
+        missionBeginTimer.setTarget(nextTargetIndex);
     }
 
     @Override
     public int getEntryPoint() throws PWCGException
     {
-        return activationTimer.getIndex();
+        return missionBeginTimer.getIndex();
     }
 
     @Override
@@ -68,17 +69,16 @@ public class MissionPointFlightActivate implements IMissionPointSet
     }
 
     @Override
-    public void finalize(PlaneMcu plane) throws PWCGException
+    public void finalizeMissionPointSet(PlaneMcu flightLeader) throws PWCGException
     {
-        createTargetAssociations();
-        createObjectAssociations(plane);
+        createObjectAssociations(flightLeader);
     }
 
     @Override
     public void write(BufferedWriter writer) throws PWCGException 
     {
         missionBeginUnit.write(writer);
-        activationTimer.write(writer);
+        missionBeginTimer.write(writer);
         activationEntity.write(writer);
     }
     
@@ -97,27 +97,17 @@ public class MissionPointFlightActivate implements IMissionPointSet
         activationEntity.setDesc("Activate entity");
         activationEntity.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());
 
-        activationTimer = new McuTimer();
-        activationTimer.setName("Activation Timer");
-        activationTimer.setDesc("Activation Timer");
-        activationTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());        
-        activationTimer.setTimer(1);
+        missionBeginTimer = new McuTimer();
+        missionBeginTimer.setName("Activation Timer");
+        missionBeginTimer.setDesc("Activation Timer");
+        missionBeginTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());        
+        missionBeginTimer.setTimer(1);
     }
 
     private void createTargetAssociations()
     {
-        missionBeginUnit.linkToMissionBegin(activationTimer.getIndex());
-        activationTimer.setTarget(activationEntity.getIndex());
-        
-        linkToPlaneAttack();
-    }
-
-    private void linkToPlaneAttack()
-    {
-        for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
-        {
-            activationTimer.setTarget(plane.getAttackTimer().getIndex());
-        }        
+        missionBeginUnit.linkToMissionBegin(missionBeginTimer.getIndex());
+        missionBeginTimer.setTarget(activationEntity.getIndex());
     }
 
     private void createObjectAssociations(PlaneMcu plane)
@@ -174,12 +164,6 @@ public class MissionPointFlightActivate implements IMissionPointSet
     }
 
     @Override
-    public IMissionPointSet duplicateWithOffset(IFlight flight, int positionInFormation) throws PWCGException
-    {
-        throw new PWCGException("Do not duplicate flight activate");                                
-    }
-
-    @Override
     public List<BaseFlightMcu> getAllFlightPoints()
     {
         List<BaseFlightMcu> allFlightPoints = new ArrayList<>();
@@ -192,8 +176,8 @@ public class MissionPointFlightActivate implements IMissionPointSet
         return missionPointSetType;
     }
 
-    public McuTimer getActivationTimer()
+    public McuTimer getMissionBeginTimer()
     {
-        return activationTimer;
+        return missionBeginTimer;
     }    
 }

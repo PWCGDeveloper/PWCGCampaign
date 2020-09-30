@@ -77,9 +77,9 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
     }
 
     @Override
-    public void finalize(PlaneMcu plane) throws PWCGException
+    public void finalizeMissionPointSet(PlaneMcu plane) throws PWCGException
     {
-        super.finalize(plane);
+        super.finalizeMissionPointSet(plane);
         createTargetAssociations();
         createObjectAssociations(plane);        
     }
@@ -100,14 +100,6 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
     public int getEntryPoint() throws PWCGException
     {
         return formationTimer.getIndex();
-    }
-    
-    @Override
-    public IMissionPointSet duplicateWithOffset(IFlight flight, int positionInFormation) throws PWCGException
-    {
-        MissionPointRouteSet duplicate = new MissionPointRouteSet();
-        duplicate.waypoints = super.duplicateWaypoints(positionInFormation);
-        return duplicate;
     }
 
     @Override

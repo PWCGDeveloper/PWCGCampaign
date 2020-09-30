@@ -50,4 +50,7 @@ public interface IProductSpecificConfiguration
     int getFormationVerticalSpacing();
     int getBalloonDefenseLoopDistance();
     int getAirfieldGoAwayDistance();
+    int getVwpSeparationDistance();
+    int getVwpProximityToBoxDistance();
+    int getVwpProximityToFrontDistance();
 }

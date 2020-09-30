@@ -240,10 +240,34 @@ public class SquadronManager
         }
     }
 
-    public Squadron getSingleViableAiSquadronByRoleAndSideAndCurrentMap(Campaign campaign, List <Role> acceptableRoles, Side side) throws PWCGException 
+    public Squadron getSingleViableAiSquadronByRoleAndSideAndCurrentMap(Campaign campaign, List <Role> acceptableRoles, Side side, List<Squadron> squadronsToExclude) throws PWCGException 
     {
         List<Squadron> selectedSquadronsNoPlayer = getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, side);
-        return chooseSquadron(selectedSquadronsNoPlayer);
+        List<Squadron> availableSquadrons = removeExcludedSquadrons(selectedSquadronsNoPlayer, squadronsToExclude);
+        return chooseSquadron(availableSquadrons);
+    }
+    
+    private List<Squadron> removeExcludedSquadrons(List<Squadron> selectedSquadronsNoPlayer, List<Squadron> squadronsToExclude)
+    {
+        List<Squadron> availableSquadrons = new ArrayList<>();
+        for (Squadron selectedSquadron : selectedSquadronsNoPlayer)
+        {
+            boolean exclude = false;
+            for (Squadron excludedSquadron : squadronsToExclude)
+            {
+                if (excludedSquadron.getSquadronId() == selectedSquadron.getSquadronId())
+                {
+                    exclude = true;
+                    break;
+                }
+            }
+
+            if (!exclude)
+            { 
+                availableSquadrons.add(selectedSquadron);
+            }
+        }
+        return availableSquadrons;
     }
 
     private Squadron chooseSquadron(List<Squadron> squadrons)

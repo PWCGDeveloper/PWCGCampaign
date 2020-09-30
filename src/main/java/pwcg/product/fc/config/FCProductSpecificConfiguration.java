@@ -27,8 +27,8 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     private static final int AIR_START_MAX_DISTANCE_FROM_INGRESS = 20000;
     private static final int INITIAL_WAYPOINT_ALTITUDE = 800;
     private static final int GROUND_ATTACK_INGRESS_DISTANCE = 5000;
-    private static final int AIRCRAFT_SPACING_HORIZONTAL = 150;
-    private static final int AIRCRAFT_SPACING_VERTICAL = 100;
+    private static final int AIRCRAFT_SPACING_HORIZONTAL = 100;
+    private static final int AIRCRAFT_SPACING_VERTICAL = 70;
     private static final int TAKEOFF_SPACING = 30;
     private static final int ADDITIONAL_ALTITUDE_FOR_ESCORT = 300;
     private static final int INGRESS_AT_TARGET_MIN_DISTANCE = 2000;
@@ -40,6 +40,9 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     private static final int FORMATION_HORIZINTAL_SPACING = 100;
     private static final int FORMATION_VERTICAL_SPACING = 70;
     private static final int AIRFIELD_GO_AWAY_DISTANCE = 25000;
+    private static final int VWP_SEPARATION_DISTANCE = 8000;
+    private static final int VWP_PROXIMITY_TO_BOX_DISTANCE = 3000;
+    private static final int VWP_PROXIMITY_TO_FRONT_DISTANCE = 8000;
 
     @Override
     public boolean useWaypointGoal()
@@ -454,5 +457,23 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     public int getAirfieldGoAwayDistance()
     {
         return AIRFIELD_GO_AWAY_DISTANCE;
+    }    
+
+    @Override
+    public int getVwpSeparationDistance()
+    {
+        return VWP_SEPARATION_DISTANCE;
+    }    
+
+    @Override
+    public int getVwpProximityToBoxDistance()
+    {
+        return VWP_PROXIMITY_TO_BOX_DISTANCE;
+    }
+
+    @Override
+    public int getVwpProximityToFrontDistance()
+    {
+        return VWP_PROXIMITY_TO_FRONT_DISTANCE;
     }    
 }

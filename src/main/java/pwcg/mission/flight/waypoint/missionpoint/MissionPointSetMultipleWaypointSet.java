@@ -119,7 +119,7 @@ public abstract class MissionPointSetMultipleWaypointSet implements IMissionPoin
         waypointsAfter.removeUnwantedWaypoints(waypointsToKeep);        
     }
 
-    protected void finalize(PlaneMcu plane) throws PWCGException
+    protected void finalizeMissionPointSet(PlaneMcu plane) throws PWCGException
     {
         waypointsBefore.finalize(plane);
         waypointsAfter.finalize(plane);

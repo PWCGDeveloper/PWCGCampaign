@@ -16,16 +16,6 @@
       "label": "Max Axis Flights",
       "help": "Upper bound of Axis flights to keep"
     },
-    "AlliedPlanesToSpawnMax": {
-      "value": "16",
-      "label": "Max Allied Planes to Spawn",
-      "help": "Upper bound of Allied planes to spawn"
-    },
-    "AxisPlanesToSpawnMax": {
-      "value": "12",
-      "label": "Max Axis Planes to Spawn",
-      "help": "Upper bound of Axis planes to spawn"
-    },
     "AiFighterFlightsForGroundCampaignMax": {
       "value": "1",
       "label": "Max Enemy Fighter Flights for Ground Campaigns",
@@ -66,10 +56,30 @@
       "label": "Initial Squadron Search Radius",
       "help": "Initial radius to search for squadrons to include in mission (in meters)"
     },
-    "IsEscortedOdds": {
+    "MaxVirtualEscortedFlight": {
+      "value": "2",
+      "label": "Max Virtual Escorts",
+      "help": "Maximum number of virtual escort flights"
+    },
+    "IsVirtualBombingEscortedOdds": {
+      "value": "40",
+      "label": "Odds bombing mission is escorted",
+      "help": "Odds of a virtual bombing mission being escorted"
+    },
+    "IsVirtualGroundAttackEscortedOdds": {
       "value": "10",
-      "label": "Odds a mission is escorted",
-      "help": "Odds of a 2 seater mission being escorted"
+      "label": "Odds ground attack mission is escorted",
+      "help": "Odds of a virtual ground attack mission being escorted"
+    },
+    "IsVirtualDiveBombEscortedOdds": {
+      "value": "0",
+      "label": "Odds dive bombing mission is escorted",
+      "help": "Odds of a virtual dive bombing mission being escorted - It's WWI.  DOn't worry about this one"
+    },
+    "IsVirtualTransportEscortedOdds": {
+      "value": "0",
+      "label": "Odds dive transport mission is escorted",
+      "help": "Odds of a virtual transport mission being escorted - It's WWI.  DOn't worry about this one"
     },
     "MaxSquadronSearchRadius": {
       "value": "120000",

@@ -5,12 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.core.location.Orientation;
-import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
-import pwcg.mission.flight.waypoint.FormationGenerator;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuWaypoint;
@@ -57,9 +52,9 @@ public class MissionPointAttackSet extends MissionPointSetMultipleWaypointSet im
     }
 
     @Override
-    public void finalize(PlaneMcu plane) throws PWCGException
+    public void finalizeMissionPointSet(PlaneMcu plane) throws PWCGException
     {
-        super.finalize(plane);
+        super.finalizeMissionPointSet(plane);
         attackSequence.finalize(plane);
         
         McuWaypoint firstWaypointAfter = super.getFirstWaypointAfter();
@@ -91,26 +86,11 @@ public class MissionPointAttackSet extends MissionPointSetMultipleWaypointSet im
     }
 
     @Override
-    public IMissionPointSet duplicateWithOffset(IFlight flight, int positionInFormation) throws PWCGException
-    {
-        MissionPointAttackSet duplicate = new MissionPointAttackSet();
-        duplicate.waypointsBefore = super.duplicateBeginWaypoints(positionInFormation);
-        duplicate.waypointsAfter = super.duplicateAfterWaypoints(positionInFormation);
-
-        duplicate.attackSequence = new AirGroundAttackMcuSequence(flight);
-        duplicate.attackSequence.createAttackArea(180, FlightTypes.getAttackAreaTypeByFlightyType(flight.getFlightInformation().getFlightType()));
-        Coordinate newPosition = FormationGenerator.generatePositionForPlaneInFormation(new Orientation(), attackSequence.getPosition(), positionInFormation);
-        duplicate.attackSequence.changeAttackAreaPosition (newPosition);
-        
-        return duplicate;
-    }
-
-    @Override
     public List<BaseFlightMcu> getAllFlightPoints()
     {
         List<BaseFlightMcu> allFlightPoints = new ArrayList<>();
         allFlightPoints.addAll(waypointsBefore.getWaypoints());
-        allFlightPoints.add(attackSequence.getActivateTimer());
+        allFlightPoints.add(attackSequence.getAttackAreaMcu());
         allFlightPoints.addAll(waypointsAfter.getWaypoints());
         return allFlightPoints;
     }

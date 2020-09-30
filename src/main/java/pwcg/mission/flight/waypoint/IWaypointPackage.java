@@ -31,8 +31,6 @@ public interface IWaypointPackage
     
     void write(BufferedWriter writer) throws PWCGIOException, PWCGException;
 
-    IWaypointPackage duplicate(int positionInFormation) throws PWCGException;
-
     void finalize(PlaneMcu plane) throws PWCGException;
     
     IMissionPointSet getMissionPointSet(MissionPointSetType missionPointSetType) throws PWCGException;
@@ -44,4 +42,6 @@ public interface IWaypointPackage
     double getDistanceStartToTarget() throws PWCGException;
 
     void clearMissionPointSet();
+
+    void addObjectToAllMissionPoints(PlaneMcu planeMcu);
 }

@@ -5,7 +5,6 @@ import pwcg.core.location.CoordinateBox;
 import pwcg.gui.rofmap.brief.model.BriefingFlight;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.escort.VirtualEscortFlight;
 
 public class BriefingMapFlightMapper
 {
@@ -43,14 +42,6 @@ public class BriefingMapFlightMapper
     private void mapFlightAndLinkedFlights(IFlight flight) throws PWCGException
     {
         mapPanel.makeMapPanelVirtualPoints(flight);
-
-        for (IFlight linkedFlight : flight.getLinkedFlights().getLinkedFlights())
-        {
-            if (!(linkedFlight instanceof VirtualEscortFlight))
-            {
-                mapFlightAndLinkedFlights(linkedFlight);
-            }
-        }
     }
 
     private void mapFlightBox() throws PWCGException

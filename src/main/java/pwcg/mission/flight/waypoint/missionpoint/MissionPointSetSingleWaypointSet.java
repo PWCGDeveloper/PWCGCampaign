@@ -59,7 +59,7 @@ public abstract class MissionPointSetSingleWaypointSet implements IMissionPointS
         waypoints.removeUnwantedWaypoints(waypointsToKeep);        
     }
 
-    protected void finalize(PlaneMcu plane) throws PWCGException
+    protected void finalizeMissionPointSet(PlaneMcu plane) throws PWCGException
     {
         waypoints.finalize(plane);
     }

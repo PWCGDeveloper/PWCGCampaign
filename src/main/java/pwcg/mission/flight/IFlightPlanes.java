@@ -7,7 +7,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.flight.plane.PlaneMcu;
-import pwcg.mission.ground.org.IGroundUnit;
 
 public interface IFlightPlanes
 {
@@ -27,12 +26,6 @@ public interface IFlightPlanes
     List<PlaneMcu> getPlanes();
 
     void setFuelForFlight(double myFuel);
-
-    void addFlightTarget(IFlight targetFlight);
-
-    void addGroundUnitTarget(IGroundUnit targetGroundUnit);
-
-    //int getFlightCruisingSpeed();
 
     boolean isFlightHasFighterPlanes();
 

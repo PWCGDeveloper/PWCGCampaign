@@ -2,6 +2,7 @@ package pwcg.mission.mcu;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.List;
 
 import pwcg.campaign.utils.LCIndexGenerator;
 import pwcg.core.exception.PWCGIOException;
@@ -106,4 +107,23 @@ public class McuSubtitle extends BaseFlightMcu
             throw new PWCGIOException(e.getMessage());
         }
 	}	
+    
+
+    public static void writeSubtitles(List<McuSubtitle> subTitleList, BufferedWriter writer) throws PWCGIOException
+    {
+        for (int i = 0; i < subTitleList.size(); ++i)
+        {
+            try
+            {
+                McuSubtitle subtitle = subTitleList.get(i);
+                subtitle.write(writer);
+                writer.newLine();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }

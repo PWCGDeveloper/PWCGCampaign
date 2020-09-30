@@ -11,9 +11,18 @@ public class MissionPointSetFactory
 {
     public static IMissionPointSet createFlightActivate(IFlight flight) throws PWCGException, PWCGException 
     {
-        MissionPointFlightActivate flightActivate = new MissionPointFlightActivate(flight);
-        flightActivate.createFlightActivate();
-        return flightActivate;
+        if (flight.getFlightInformation().isVirtual())
+        {
+            MissionPointFlightActivateVirtual flightActivate = new MissionPointFlightActivateVirtual(flight);
+            flightActivate.createFlightActivate();
+            return flightActivate;
+        }
+        else
+        {
+            MissionPointFlightActivateReal flightActivate = new MissionPointFlightActivateReal(flight);
+            flightActivate.createFlightActivate();
+            return flightActivate;
+        }
     }
 
     public static IMissionPointSet createFlightBegin(IFlight flight, IMissionPointSet flightActivate, AirStartPattern suggestedAirStartPattern, McuWaypoint waypointToLinkAirSTart) throws PWCGException, PWCGException 

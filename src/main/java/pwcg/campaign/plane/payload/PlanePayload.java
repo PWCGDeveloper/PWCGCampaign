@@ -134,6 +134,12 @@ public abstract class PlanePayload implements IPlanePayload
         return "";
     }
     
+    public int createStandardWeaponsPayload()
+    {
+        selectedPrimaryPayloadId = 0;
+        return selectedPrimaryPayloadId;
+    }
+
     abstract public int createWeaponsPayload(IFlight flight) throws PWCGException;
     abstract protected void initialize();
 }

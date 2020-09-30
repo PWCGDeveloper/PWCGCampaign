@@ -94,6 +94,11 @@ public class AARLogLineParser
 
     private void mapSpawnToMissionArtifactType(IAType12 atype12)
     {
+        if (!isValidSpawnPoint(atype12))
+        {
+            return;
+        }
+
         if(atype12.getType().contains("Bot"))
         {
             logEventData.addBot(atype12.getId(), atype12);
@@ -106,6 +111,15 @@ public class AARLogLineParser
         {
             logEventData.addTurret(atype12.getId(), atype12);
         }
+    }
+
+    private boolean isValidSpawnPoint(IAType12 atype12)
+    {
+        if (atype12.getPosition().getXPos() < 1.0 && atype12.getPosition().getZPos() < 1.0)
+        {
+            return false;
+        }
+        return true;
     }
 
     private void parseWaypointEvent(String line) throws PWCGException

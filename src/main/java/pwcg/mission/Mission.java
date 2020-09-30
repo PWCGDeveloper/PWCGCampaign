@@ -38,7 +38,6 @@ public class Mission
     private CoordinateBox missionBorders;
 
     private MissionFlightBuilder missionFlightBuilder;
-    private SinglePlayerMissionPlaneLimiter missionPlaneLimiter = new SinglePlayerMissionPlaneLimiter();
     private MissionObjectiveGroup missionObjectiveSuccess = new MissionObjectiveGroup();
     private MissionObjectiveGroup missionObjectiveFailure = new MissionObjectiveGroup();
     private MissionBattleManager missionBattleManager = new MissionBattleManager();
@@ -48,7 +47,8 @@ public class Mission
     private MissionAirfieldIconBuilder missionAirfieldIconBuilder = new MissionAirfieldIconBuilder();
     private MissionSquadronIconBuilder missionSquadronIconBuilder;
     private MissionAssaultIconBuilder missionAssaultIconBuilder = new MissionAssaultIconBuilder();
-    private MissionAssociateFlightBuilder missionAssociateFlightBuilder = new MissionAssociateFlightBuilder();
+    private MissionSquadronChooser missionSquadronChooser = new MissionSquadronChooser();
+    private MissionVirtualEscortHandler missionVirtualEscortHandler = new MissionVirtualEscortHandler();
     private MissionFrontLineIconBuilder missionFrontLines;
     private MissionEffects missionEffects = new MissionEffects();
     private SkinsInUse skinsInUse = new SkinsInUse();
@@ -117,7 +117,6 @@ public class Mission
     private void generateFlights(List<FlightTypes> playerFlightTypes) throws PWCGException
     {
         missionFlightBuilder.generateFlights(participatingPlayers, playerFlightTypes);
-        missionAssociateFlightBuilder.buildAssociatedFlights(this);
         createFirePots();
 
         missionOptions = PWCGContext.getInstance().getCurrentMap().getMissionOptions();
@@ -212,7 +211,6 @@ public class Mission
 
             missionFlightBuilder.finalizeMissionFlights();
             missionFrontLines.buildFrontLineIcons();
-            missionPlaneLimiter.createPlaneCountersToLimitPlanesSpawned(this);
             missionWaypointIconBuilder.createWaypointIcons(missionFlightBuilder.getPlayerFlights());
             missionAirfieldIconBuilder.createWaypointIcons(campaign, this);
             missionAssaultIconBuilder.createAssaultIcons(missionBattleManager.getMissionAssaultDefinitions());
@@ -309,11 +307,6 @@ public class Mission
         return missionGroundUnitManager;
     }
 
-    public SinglePlayerMissionPlaneLimiter getMissionPlaneCalculator()
-    {
-        return missionPlaneLimiter;
-    }
-
     public MissionObjectiveGroup getMissionObjectiveSuccess()
     {
         return missionObjectiveSuccess;
@@ -362,6 +355,16 @@ public class Mission
     public MissionBattleManager getMissionBattleManager()
     {
         return missionBattleManager;
+    }
+
+    public MissionSquadronChooser getMissionSquadronChooser()
+    {
+        return missionSquadronChooser;
+    }
+
+    public MissionVirtualEscortHandler getMissionVirtualEscortHandler()
+    {
+        return missionVirtualEscortHandler;
     }
 
     public VehicleSetBuilderComprehensive getVehicleSetBuilder()

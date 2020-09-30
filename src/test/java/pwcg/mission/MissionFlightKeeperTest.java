@@ -19,8 +19,8 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlight;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
@@ -30,6 +30,7 @@ public class MissionFlightKeeperTest
     @Mock private  Mission mission;
     @Mock private  MissionFlightBuilder missionFlightBuilder;
     @Mock private ConfigManagerCampaign configManagerCampaign;
+    @Mock private  MissionSquadronChooser missionSquadronChooser;
     @Mock private  IFlight alliedAiFlight1;
     @Mock private  IFlight alliedAiFlight2;
     @Mock private  IFlight alliedAiFlight3;
@@ -72,6 +73,7 @@ public class MissionFlightKeeperTest
 
         PWCGContext.setProduct(PWCGProduct.BOS);
         Mockito.when(mission.getMissionFlightBuilder()).thenReturn(missionFlightBuilder);
+        Mockito.when(mission.getMissionSquadronChooser()).thenReturn(missionSquadronChooser);
         Mockito.when(missionFlightBuilder.getPlayerFlightsForSide(Side.ALLIED)).thenReturn(alliedPlayerFlights);
         Mockito.when(missionFlightBuilder.getPlayerFlightsForSide(Side.AXIS)).thenReturn(axisPlayerFlights);
         
@@ -147,12 +149,6 @@ public class MissionFlightKeeperTest
         Mockito.when(axisAiFlight5.getSquadron()).thenReturn(axisSquadron);
         Mockito.when(axisAiFlight5.getClosestContactWithPlayerDistance()).thenReturn(4000.0);
 
-
-        
-        
-
-        
-                
         Mockito.when(missionFlightBuilder.getAiFlights()).thenReturn(alliedAiFlights);
     }
     

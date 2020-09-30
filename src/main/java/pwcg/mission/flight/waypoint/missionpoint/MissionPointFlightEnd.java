@@ -78,9 +78,9 @@ public class MissionPointFlightEnd extends MissionPointSetSingleWaypointSet impl
     }
 
     @Override
-    public void finalize(PlaneMcu plane) throws PWCGException
+    public void finalizeMissionPointSet(PlaneMcu plane) throws PWCGException
     {
-        super.finalize(plane);
+        super.finalizeMissionPointSet(plane);
         createTargetAssociations();
         createobjectAssociations(plane);
     }
@@ -111,16 +111,6 @@ public class MissionPointFlightEnd extends MissionPointSetSingleWaypointSet impl
     {
         landingMcu.clearObjects();
         landingMcu.setObject(plane.getEntity().getIndex());
-    }
-
-    @Override
-    public IMissionPointSet duplicateWithOffset(IFlight flight, int positionInFormation) throws PWCGException
-    {
-        MissionPointFlightEnd duplicate = new MissionPointFlightEnd(flight, landingAirfield);
-        duplicate.waypoints = super.duplicateWaypoints(positionInFormation);
-
-        duplicate.landingMcu = landingMcu.clone();
-        return duplicate;
     }
 
     @Override

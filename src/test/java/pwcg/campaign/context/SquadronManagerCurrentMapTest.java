@@ -36,13 +36,13 @@ public class SquadronManagerCurrentMapTest
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
 
         List<Role> roles = new ArrayList<Role>(Arrays.asList(Role.ROLE_BOMB));
-        Squadron nearbySquadron = squadronManager.getSingleViableAiSquadronByRoleAndSideAndCurrentMap(campaign, roles, Side.ALLIED);
+        Squadron nearbySquadron = squadronManager.getSingleViableAiSquadronByRoleAndSideAndCurrentMap(campaign, roles, Side.ALLIED, new ArrayList<>());
         assert(nearbySquadron != null);
         assert(nearbySquadron.determineSide() == Side.ALLIED);
         assert(nearbySquadron.getSquadronRoles().isSquadronThisRole(campaign.getDate(), Role.ROLE_BOMB) == true);
         
         roles = new ArrayList<Role>(Arrays.asList(Role.ROLE_FIGHTER));
-        nearbySquadron = squadronManager.getSingleViableAiSquadronByRoleAndSideAndCurrentMap(campaign, roles, Side.AXIS);
+        nearbySquadron = squadronManager.getSingleViableAiSquadronByRoleAndSideAndCurrentMap(campaign, roles, Side.AXIS, new ArrayList<>());
         assert(nearbySquadron != null);
         assert(nearbySquadron.determineSide() == Side.AXIS);
         assert(nearbySquadron.getSquadronRoles().isSquadronThisRole(campaign.getDate(), Role.ROLE_FIGHTER) == true);

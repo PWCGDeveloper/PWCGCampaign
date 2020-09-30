@@ -1,14 +1,15 @@
 package pwcg.mission;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.waypoint.IVirtualWaypointPackage;
-import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.mcu.group.VirtualWayPoint;
+import pwcg.mission.flight.waypoint.virtual.IVirtualWaypointPackage;
+import pwcg.mission.mcu.group.virtual.IVirtualWaypoint;
 import pwcg.mission.utils.AiAdjuster;
 
 public class MissionFlightFinalizer
@@ -25,17 +26,9 @@ public class MissionFlightFinalizer
     public void finalizeMissionFlights() throws PWCGException 
     {
         convertForCoop();
-        for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
-        {
-            flight.finalizeFlight();
-        }
-        
-        AiAdjuster aiAdjuster = new AiAdjuster(campaign);
-        aiAdjuster.adjustAI(mission);
-
-        setFlightAttackMcuForPlanes();
-        setFlightAttackMcuForBalloons();
-        
+        finalizeFlights();        
+        addVirtualEscorts();        
+        adjustAI();        
         setCzTriggers();
     }
 
@@ -48,51 +41,42 @@ public class MissionFlightFinalizer
         }
     }
 
-    private void setFlightAttackMcuForPlanes() throws PWCGException  
+    private void finalizeFlights() throws PWCGException
     {
-        List<IFlight> axisFlights = mission.getMissionFlightBuilder().getAllFlightsForSide(Side.AXIS);
-        List<IFlight> alliedFlights = mission.getMissionFlightBuilder().getAllFlightsForSide(Side.ALLIED);
-        
-        for (IFlight axisFlight : axisFlights)
+        for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
-            for (IFlight alliedFlight : alliedFlights)
-            {
-                axisFlight.getFlightPlanes().addFlightTarget(alliedFlight);
-            }
-        }
-        
-        for (IFlight alliedFlight : alliedFlights)
-        {
-            for (IFlight axisFlight : axisFlights)
-            {
-                alliedFlight.getFlightPlanes().addFlightTarget(axisFlight);
-            }
+            flight.finalizeFlight();
         }
     }
 
-    private void setFlightAttackMcuForBalloons() throws PWCGException  
+    private void addVirtualEscorts() throws PWCGException
     {
-        List<IFlight> axisFlights = mission.getMissionFlightBuilder().getAllFlightsForSide(Side.AXIS);
-        List<IFlight> alliedFlights = mission.getMissionFlightBuilder().getAllFlightsForSide(Side.ALLIED);
+        List<IFlight> shuffledFlights = new ArrayList<>();
+        if (mission.getMissionFlightBuilder().hasPlayerFlightForSide(Side.AXIS))
+        {
+            shuffledFlights.addAll(mission.getMissionFlightBuilder().getAiFlightsForSide(Side.ALLIED));
+        }
+        
+        if (mission.getMissionFlightBuilder().hasPlayerFlightForSide(Side.ALLIED))
+        {
+            shuffledFlights.addAll(mission.getMissionFlightBuilder().getAiFlightsForSide(Side.AXIS));
+        }
+        
+        Collections.shuffle(shuffledFlights);
+        for (IFlight flight : shuffledFlights)
+        {
+            boolean needsVirtualEscort = flight.getMission().getMissionVirtualEscortHandler().needsEscort(flight);
+            if (needsVirtualEscort)
+            {
+                flight.addVirtualEscort();
+            }
+        }        
+    }
 
-        List<IGroundUnit> axisBalloons = mission.getMissionGroundUnitManager().getBalloonsForSide(Side.AXIS);
-        List<IGroundUnit> alliedBalloons = mission.getMissionGroundUnitManager().getBalloonsForSide(Side.ALLIED);
-        
-        for (IGroundUnit axisBalloon : axisBalloons)
-        {
-            for (IFlight alliedFlight : alliedFlights)
-            {
-                alliedFlight.getFlightPlanes().addGroundUnitTarget(axisBalloon);
-            }
-        }
-        
-        for (IGroundUnit alliedBalloon : alliedBalloons)
-        {
-            for (IFlight axisFlight : axisFlights)
-            {
-                axisFlight.getFlightPlanes().addGroundUnitTarget(alliedBalloon);
-            }
-        }
+    private void adjustAI() throws PWCGException
+    {
+        AiAdjuster aiAdjuster = new AiAdjuster(campaign);
+        aiAdjuster.adjustAI(mission);
     }
 
     private void setCzTriggers() throws PWCGException  
@@ -112,14 +96,13 @@ public class MissionFlightFinalizer
         if (flight.getFlightInformation().isVirtual())
         {
             IVirtualWaypointPackage virtualWaypointPackage = flight.getVirtualWaypointPackage();
-            for (VirtualWayPoint vwp : virtualWaypointPackage.getVirtualWaypoints())
+            for (IVirtualWaypoint vwp : virtualWaypointPackage.getVirtualWaypoints())
             {
-                if (vwp != null && vwp instanceof VirtualWayPoint)
+                if (vwp != null)
                 {
-                    VirtualWayPoint vwpCZ = (VirtualWayPoint)vwp;
                     for (int planeIndex : flight.getMission().getMissionFlightBuilder().determinePlayerPlaneIds())
                     {
-                        vwpCZ.setVirtualWaypointTriggerObject(planeIndex);
+                        vwp.setVwpTriggerObject(planeIndex);
                     }
                 }
             }

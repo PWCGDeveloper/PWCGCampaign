@@ -1,9 +1,10 @@
-package pwcg.mission.flight.waypoint;
+package pwcg.mission.flight.waypoint.virtual;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.waypoint.WaypointAction;
 
 public class VirtualAdditionalTimeCalculator
 {

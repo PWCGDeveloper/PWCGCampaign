@@ -7,7 +7,7 @@
       "help": "0 \u003d Start on runway, 1 \u003d Start in air (gives shorter missions), 2 \u003d Start parked (gives longer missions)"
     },
     "AlliedFlightsToKeep": {
-      "value": "5",
+      "value": "4",
       "label": "Max Allied Flights",
       "help": "Upper bound of Allied flights to keep"
     },
@@ -15,16 +15,6 @@
       "value": "3",
       "label": "Max Axis Flights",
       "help": "Upper bound of Axis flights to keep"
-    },
-    "AlliedPlanesToSpawnMax": {
-      "value": "16",
-      "label": "Max Allied Planes to Spawn",
-      "help": "Upper bound of Allied planes to spawn"
-    },
-    "AxisPlanesToSpawnMax": {
-      "value": "12",
-      "label": "Max Axis Planes to Spawn",
-      "help": "Upper bound of Axis planes to spawn"
     },
     "AiFighterFlightsForGroundCampaignMax": {
       "value": "1",
@@ -46,10 +36,30 @@
       "label": "Initial Squadron Search Radius",
       "help": "Initial radius to search for squadrons to include in mission (in meters)"
     },
-    "IsEscortedOdds": {
-      "value": "20",
-      "label": "Odds a mission is escorted",
-      "help": "Odds of a bombing mission being escorted"
+    "MaxVirtualEscortedFlight": {
+      "value": "2",
+      "label": "Max Virtual Escorts",
+      "help": "Maximum number of virtual escort flights"
+    },
+    "IsVirtualBombingEscortedOdds": {
+      "value": "40",
+      "label": "Odds bombing mission is escorted",
+      "help": "Odds of a virtual bombing mission being escorted"
+    },
+    "IsVirtualGroundAttackEscortedOdds": {
+      "value": "10",
+      "label": "Odds ground attack mission is escorted",
+      "help": "Odds of a virtual ground attack mission being escorted"
+    },
+    "IsVirtualDiveBombEscortedOdds": {
+      "value": "30",
+      "label": "Odds dive bombing mission is escorted",
+      "help": "Odds of a virtual dive bombing mission being escorted"
+    },
+    "IsVirtualTransportEscortedOdds": {
+      "value": "30",
+      "label": "Odds dive transport mission is escorted",
+      "help": "Odds of a virtual transport mission being escorted"
     },
     "MaxSquadronSearchRadius": {
       "value": "200000",
