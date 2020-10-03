@@ -97,19 +97,18 @@ public class AARInitiationScreen extends ImageResizingPanel implements ActionLis
 		JPanel buttonGrid = new JPanel(new GridLayout(0,1));
 		buttonGrid.setOpaque(false);
         
-        makeButton ("Submit Report", "Submit Report", buttonGrid);
-        makeButton("Cancel AAR",  "Cancel", buttonGrid);
+        makeButton ("Submit Report", "Submit Report", "Begin AAR process", buttonGrid);
+        makeButton("Cancel AAR",  "Cancel", "Cancel AAR Process", buttonGrid);
 
 		aarButtonPanel.add(buttonGrid, BorderLayout.NORTH);
 		
 		return aarButtonPanel;
 	}
 
-    private void makeButton(String buttonText, String command, JPanel buttonGrid) throws PWCGException 
+    private void makeButton(String buttonText, String command, String toolTipText, JPanel buttonGrid) throws PWCGException 
     {
         buttonGrid.add(PWCGButtonFactory.makeDummy());  
-
-        JButton button = PWCGButtonFactory.makeMenuButton(buttonText, command, this);
+        JButton button = PWCGButtonFactory.makeTranslucentMenuButton(buttonText, command, toolTipText, this);
         buttonGrid.add(button);  
     }
 

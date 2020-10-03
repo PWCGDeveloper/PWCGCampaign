@@ -109,8 +109,8 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
-        JButton finished = PWCGButtonFactory.makeMenuButton("Finished", "Finished", this);
-        buttonPanel.add(finished);
+        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished with PWCG information map", this);
+        buttonPanel.add(finishedButton);
         
         JLabel spacer1 = PWCGButtonFactory.makeMenuLabelLarge("");
         buttonPanel.add(spacer1);

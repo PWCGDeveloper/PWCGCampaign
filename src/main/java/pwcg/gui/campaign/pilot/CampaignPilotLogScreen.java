@@ -12,7 +12,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -29,7 +28,6 @@ import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
-import pwcg.gui.utils.PWCGJButton;
 
 public class CampaignPilotLogScreen extends ImageResizingPanel implements ActionListener
 {
@@ -74,7 +72,7 @@ public class CampaignPilotLogScreen extends ImageResizingPanel implements Action
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
-        JButton finishedButton = PWCGButtonFactory.makeMenuButton("Finished Reading", "PilotLogFinished", this);
+        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished Reading", "PilotLogFinished", "Leave Pilot Log", this);
         buttonPanel.add(finishedButton);
 
         JPanel logBookPanel = new JPanel(new BorderLayout());
@@ -184,14 +182,13 @@ public class CampaignPilotLogScreen extends ImageResizingPanel implements Action
 		JPanel buttonPanel = new JPanel(new GridLayout(0,2));
 		buttonPanel.setOpaque(false);
 
-		Color bg = ColorMap.PAPER_BACKGROUND;
 		Color fg = ColorMap.PAPER_FOREGROUND;
 
-	      Font font = PWCGMonitorFonts.getPrimaryFont();
+		Font font = PWCGMonitorFonts.getPrimaryFont();
 
-		makeLeftPage(pageNum, buttonPanel, bg, fg, font);
+		makeLeftPage(pageNum, buttonPanel, fg, font);
 		
-		makeRightPage(pageNum, buttonPanel, bg, fg, font);
+		makeRightPage(pageNum, buttonPanel, fg, font);
 		
 		addWhiteSpace(buttonPanel);
 		
@@ -199,46 +196,30 @@ public class CampaignPilotLogScreen extends ImageResizingPanel implements Action
 	}
 
 
-    private void makeLeftPage(int pageNum, JPanel buttonPanel, Color bg, Color fg, Font font)
+    private void makeLeftPage(int pageNum, JPanel buttonPanel, Color fg, Font font) throws PWCGException
     {
         if ((pageNum % 2) == 1)
 		{
 			if (pageNum > 1)
 			{
-				PWCGJButton prevButton = new PWCGJButton("Previous Page");
-				prevButton.addActionListener(this);
-				buttonPanel.add (prevButton);
-				prevButton.setOpaque(false);
-				prevButton.setBackground(bg);
-				prevButton.setForeground(fg);	
-				prevButton.setBorderPainted(false);
-				prevButton.setFocusPainted(false);
-				prevButton.setFont(font);
-				prevButton.setHorizontalAlignment(SwingConstants.CENTER);
-				
-				buttonPanel.add(prevButton);
+                JButton prevButton = PWCGButtonFactory.makeTranslucentMenuButton("Previous Page", "Previous Page", "Go to the previous page", this);
+                prevButton.setForeground(fg);   
+                prevButton.setFont(font);
+                buttonPanel.add(prevButton);
 			}
 		}
     }
 
 
-    private void makeRightPage(int pageNum, JPanel buttonPanel, Color bg, Color fg, Font font)
+    private void makeRightPage(int pageNum, JPanel buttonPanel, Color fg, Font font) throws PWCGException
     {
         if ((pageNum % 2) == 0)
 		{
 			if (pageNum  < pilotLogPages.getPageCount())
 			{
-				PWCGJButton nextButton = new PWCGJButton("Next Page");
-				nextButton.addActionListener(this);
-				buttonPanel.add (nextButton);
-				nextButton.setOpaque(false);
-				nextButton.setBackground(bg);	
+		        JButton nextButton = PWCGButtonFactory.makeTranslucentMenuButton("Next Page", "Next Page", "Go to the next page", this);
 				nextButton.setForeground(fg);	
-				nextButton.setBorderPainted(false);
-				nextButton.setFocusPainted(false);
 				nextButton.setFont(font);
-				nextButton.setHorizontalAlignment(SwingConstants.CENTER);
-
 				buttonPanel.add(nextButton);
 			}
 		}

@@ -78,14 +78,14 @@ public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel impl
         JLabel spacerLabel = makeLabel("");        
         buttonPanel.add(spacerLabel);
 
-        JButton acceptButton = PWCGButtonFactory.makeMenuButton("Accept Config Changes", "Accept", this);
+        JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept Config Changes", "Accept", "Save and Leave", this);
         buttonPanel.add(acceptButton);
 
         JLabel spacer2 = new JLabel("   ");
         spacer2.setOpaque(false);
         buttonPanel.add(spacer2);
 
-        JButton cancelButton = PWCGButtonFactory.makeMenuButton("Cancel Config Changes", "Cancel", this);
+        JButton cancelButton = PWCGButtonFactory.makeTranslucentMenuButton("Cancel Config Changes", "Cancel", "Leave without saving", this);
         buttonPanel.add(cancelButton);
         
         advancedConfigAcceptPanel.add(buttonPanel, BorderLayout.NORTH);

@@ -72,18 +72,18 @@ public class DebriefMissionDescriptionScreen extends ImageResizingPanel implemen
         buttonGrid.setLayout(new GridLayout(0,1));
         buttonGrid.setOpaque(false);
         
-        JButton submitWithClaimsButton = PWCGButtonFactory.makeMenuButton("Continue With Claims", "submitWithClaims", this);
+        JButton submitWithClaimsButton = PWCGButtonFactory.makeTranslucentMenuButton("Continue With Claims", "submitWithClaims", "Continue with AAR process - make claims", this);
         buttonGrid.add(submitWithClaimsButton);
         
         if (campaign.getCampaignData().isCoop())
         {
-            JButton submitWithoutClaimsButton = PWCGButtonFactory.makeMenuButton("Continue Without Claims", "submitWithoutClaims", this);
+            JButton submitWithoutClaimsButton = PWCGButtonFactory.makeTranslucentMenuButton("Continue Without Claims", "submitWithoutClaims", "Continue with AAR process - make no claims", this);
             buttonGrid.add(submitWithoutClaimsButton);
         }
         
         buttonGrid.add(PWCGButtonFactory.makeDummy());
 
-        JButton cancelButton = PWCGButtonFactory.makeMenuButton("Cancel AAR", "Cancel", this);
+        JButton cancelButton = PWCGButtonFactory.makeTranslucentMenuButton("Cancel AAR", "Cancel", "Cancel the AAR process", this);
         buttonGrid.add(cancelButton);
 
         navPanel.add(buttonGrid, BorderLayout.NORTH);

@@ -110,8 +110,8 @@ public class EditorMapGUI extends MapGUI implements ActionListener
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
-        JButton finished = PWCGButtonFactory.makeMenuButton("Finished", "Finished", this);
-        buttonPanel.add(finished);
+        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished with editor map", this);
+        buttonPanel.add(finishedButton);
         
         makeFrontEditActionButtons(buttonPanel);
 
@@ -131,16 +131,16 @@ public class EditorMapGUI extends MapGUI implements ActionListener
 
     private void makeFrontEditActionButtons(JPanel buttonPanel) throws PWCGException
     {
-        JButton cancel = PWCGButtonFactory.makeMenuButton("Cancel", "Cancel", this);
+        JButton cancel = PWCGButtonFactory.makeTranslucentMenuButton("Cancel", "Cancel", "Cancel edits", this);
         buttonPanel.add(cancel);
         
-        JButton write = PWCGButtonFactory.makeMenuButton("Write", "Write", this);
+        JButton write = PWCGButtonFactory.makeTranslucentMenuButton("Save Edits", "Write", "Save edits", this);
         buttonPanel.add(write);
         
-        JButton refresh = PWCGButtonFactory.makeMenuButton("Refresh", "Refresh", this);
+        JButton refresh = PWCGButtonFactory.makeTranslucentMenuButton("Refresh", "Refresh", "Refresh map", this);
         buttonPanel.add(refresh);
         
-        JButton mirror = PWCGButtonFactory.makeMenuButton("Mirror", "Mirror", this);
+        JButton mirror = PWCGButtonFactory.makeTranslucentMenuButton("Mirror", "Mirror", "Mirror front lines", this);
         buttonPanel.add(mirror);
     }
 
@@ -178,11 +178,6 @@ public class EditorMapGUI extends MapGUI implements ActionListener
         selectionPanel.add(editButtonPanel);
     }
 
-    /**
-     * @param selectionPanel
-     * @throws PWCGException
-     * @throws PWCGException
-     */
     private JPanel createDateSelection(JPanel selectionPanel) throws PWCGException, PWCGException
     {
         JPanel datePanel = new JPanel(new BorderLayout());

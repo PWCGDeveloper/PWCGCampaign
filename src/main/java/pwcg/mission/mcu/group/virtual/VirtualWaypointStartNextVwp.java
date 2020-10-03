@@ -44,6 +44,13 @@ public class VirtualWaypointStartNextVwp
         startnextWaypointTriggeredTimer.setTimer(vwpCoordinate.getWaypointWaitTimeSeconds());
     }
 
+    public void addAdditionalTime(int additionalTime)
+    {
+        int nextVwpTimerTime = startNextWaypointTimer.getTimer();
+        nextVwpTimerTime += additionalTime;
+        startNextWaypointTimer.setTimer(nextVwpTimerTime);
+    }
+
     private void setTargetAssociations() throws PWCGException
     {
         startNextWaypointTimer.setTarget(startnextWaypointTriggeredTimer.getIndex());

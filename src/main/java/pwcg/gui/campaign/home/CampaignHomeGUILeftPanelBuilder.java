@@ -11,7 +11,6 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.utils.PWCGButtonFactory;
-import pwcg.gui.utils.ToolTipManager;
 
 public class CampaignHomeGUILeftPanelBuilder
 {
@@ -194,12 +193,9 @@ public class CampaignHomeGUILeftPanelBuilder
         buttonPanel.add(button);
     }
 
-    private JButton makeMenuButton(String buttonText, String commandText, String toolTiptext) throws PWCGException
+    private JButton makeMenuButton(String buttonText, String commandText, String toolTipText) throws PWCGException
     {
-        JButton button = PWCGButtonFactory.makeMenuButton(buttonText, commandText, parent);
-
-        ToolTipManager.setToolTip(button, toolTiptext);
-
+        JButton button = PWCGButtonFactory.makeTranslucentMenuButton(buttonText, commandText, toolTipText, parent);
         return button;
     }
 }

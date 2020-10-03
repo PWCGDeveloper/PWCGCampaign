@@ -114,10 +114,10 @@ public class CampaignReferencePilotSelectorScreen extends ImageResizingPanel imp
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JButton acceptButton = PWCGButtonFactory.makeMenuButton("Accept Reference Pilot", "AcceptReferencePilot", this);
+        JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept Reference Pilot", "AcceptReferencePilot", "Make this pilot the reference pilot", this);
         buttonPanel.add(acceptButton);
 
-        JButton cancelButton = PWCGButtonFactory.makeMenuButton("Cancel", "CancelReferencePilot", this);
+        JButton cancelButton = PWCGButtonFactory.makeTranslucentMenuButton("Cancel", "CancelReferencePilot", "Do not change the reference pilot", this);
         buttonPanel.add(cancelButton);
 
         navPanel.add(buttonPanel, BorderLayout.NORTH);

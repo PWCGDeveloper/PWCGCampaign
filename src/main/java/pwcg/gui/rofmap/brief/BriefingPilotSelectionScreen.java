@@ -105,37 +105,37 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
 
         buttonGrid.add(PWCGButtonFactory.makeDummy());
 
-        JButton scrubButton = PWCGButtonFactory.makeMenuButton("Scrub Mission", "Scrub Mission", this);
+        JButton scrubButton = PWCGButtonFactory.makeTranslucentMenuButton("Scrub Mission", "Scrub Mission", "Scrub this mission and return to campaign home screen", this);
         buttonGrid.add(scrubButton);
 
         buttonGrid.add(PWCGButtonFactory.makeDummy());
 
-        JButton backToMapButton = PWCGButtonFactory.makeMenuButton("Back To Waypoint Editor", "Back To Waypoint Editor", this);
+        JButton backToMapButton = PWCGButtonFactory.makeTranslucentMenuButton("Back To Waypoint Editor", "Back To Waypoint Editor", "Go back to waypoint editor screen", this);
         buttonGrid.add(backToMapButton);
 
         if (!mission.isFinalized())
         {
-            JButton acceptMissionButton = PWCGButtonFactory.makeMenuButton("Accept Mission", "Accept Mission", this);
+            JButton acceptMissionButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept Mission", "Accept Mission", "The mission will be written fow use in game", this);
             buttonGrid.add(acceptMissionButton);
         }
         else
         {
-            JButton backToCampaignButton = PWCGButtonFactory.makeMenuButton("Back To Campaign", "Back To Campaign", this);
+            JButton backToCampaignButton = PWCGButtonFactory.makeTranslucentMenuButton("Back To Campaign", "Back To Campaign", "Return to campaign home screen", this);
             buttonGrid.add(backToCampaignButton);
         }
         buttonGrid.add(PWCGButtonFactory.makeDummy());
         
-        JButton payloadAsLeaderButton = PWCGButtonFactory.makeMenuButton("Synchronize Payload", "Synchronize Payload", this);
+        JButton payloadAsLeaderButton = PWCGButtonFactory.makeTranslucentMenuButton("Synchronize Payload", "Synchronize Payload", "Make flight payload the same as the leaders", this);
         buttonGrid.add(payloadAsLeaderButton);
         buttonGrid.add(PWCGButtonFactory.makeDummy());
 
-        JButton moveUpButton = PWCGButtonFactory.makeMenuButton("Move Pilot Up", "Move Pilot Up:", this);
+        JButton moveUpButton = PWCGButtonFactory.makeTranslucentMenuButton("Move Pilot Up", "Move Pilot Up:", "Move pilot up in formation", this);
         buttonGrid.add(moveUpButton);
 
-        JButton moveDownButton = PWCGButtonFactory.makeMenuButton("MovePilot Down", "Move Pilot Down:", this);
+        JButton moveDownButton = PWCGButtonFactory.makeTranslucentMenuButton("MovePilot Down", "Move Pilot Down:", "Move pilot down in formation", this);
         buttonGrid.add(moveDownButton);
 
-        JButton removePilotButton = PWCGButtonFactory.makeMenuButton("Unassign Pilot", "Unassign Pilot:", this);
+        JButton removePilotButton = PWCGButtonFactory.makeTranslucentMenuButton("Unassign Pilot", "Unassign Pilot:", "Remove pilot from formation", this);
         buttonGrid.add(removePilotButton);
 
         pilotAssignmentNavPanel.add(buttonGrid, BorderLayout.NORTH);

@@ -76,8 +76,8 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JButton acceptButton = PWCGButtonFactory.makeMenuButton("Finished", "Finished", this);
-        buttonPanel.add(acceptButton);
+        JButton finished = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished with coop administration", this);
+        buttonPanel.add(finished);
 
         for (int i = 0; i < 3; ++i)
         {
@@ -104,9 +104,9 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
         JLabel label = PWCGButtonFactory.makeMenuLabelLarge("Select Admin Action:");
         buttonPanel.add(label);
 
-        buttonPanel.add(makeActionButton("Add Pilot"));
-        buttonPanel.add(makeActionButton("Transfer Pilot"));
-        buttonPanel.add(makeActionButton("Retire Pilot"));
+        buttonPanel.add(makeActionButton("Add Pilot", "Add a coop persona to the campaign"));
+        buttonPanel.add(makeActionButton("Transfer Pilot", "Transfer a coop persona to a new squadron"));
+        buttonPanel.add(makeActionButton("Retire Pilot", "Retire a coop persona. Cannot be undone"));
         
         add (buttonPanel);
 
@@ -129,9 +129,9 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
 
     }
 
-    private JButton makeActionButton(String buttonText) throws PWCGException 
+    private JButton makeActionButton(String buttonText, String tooltip) throws PWCGException 
     {
-        JButton button = PWCGButtonFactory.makeMenuButton(buttonText, buttonText, this);
+        JButton button = PWCGButtonFactory.makeTranslucentMenuButton(buttonText, buttonText, tooltip, this);
         return button;
     }
 

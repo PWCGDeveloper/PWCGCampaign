@@ -1,18 +1,22 @@
 package pwcg.gui.utils;
 
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import pwcg.core.exception.PWCGException;
 import pwcg.gui.colors.ColorMap;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 
 public class PageTurner
 {
 
-    public static JPanel makeButtonPanel(int pageNum, int pages, ActionListener actionComponent)
+    public static JPanel makeButtonPanel(int pageNum, int pages, ActionListener actionComponent) throws PWCGException
     {
         JPanel buttonPanel = new JPanel(new GridLayout(0,2));
         buttonPanel.setOpaque(false);
@@ -34,15 +38,11 @@ public class PageTurner
                 leftButtonPanel.add(PWCGButtonFactory.makeDummy());
             }
 
-            PWCGJButton prevButton = new PWCGJButton("Previous Page");
-            prevButton.addActionListener(actionComponent);
-            leftButtonPanel.add (prevButton);
-            prevButton.setOpaque(false);
+            Font font = PWCGMonitorFonts.getPrimaryFont();
+            JButton prevButton = PWCGButtonFactory.makeTranslucentMenuButton("Previous Page", "Previous Page", "Go to the previous page", actionComponent);
             prevButton.setForeground(ColorMap.CHALK_FOREGROUND);   
-            prevButton.setBorderPainted(false);
-            prevButton.setFocusPainted(false);
+            prevButton.setFont(font);
             leftButtonPanel.add(prevButton);
-            
             for (int i = 0; i < spacingLabels; ++i)
             {
                 leftButtonPanel.add(PWCGButtonFactory.makeDummy());
@@ -57,13 +57,10 @@ public class PageTurner
                 rightButtonPanel.add(PWCGButtonFactory.makeDummy());
             }
 
-            PWCGJButton nextButton = new PWCGJButton("Next Page");
-            nextButton.addActionListener(actionComponent);
-            rightButtonPanel.add (nextButton);
-            nextButton.setOpaque(false);
+            Font font = PWCGMonitorFonts.getPrimaryFont();
+            JButton nextButton = PWCGButtonFactory.makeTranslucentMenuButton("Next Page", "Next Page", "Go to the next page", actionComponent);
             nextButton.setForeground(ColorMap.CHALK_FOREGROUND);   
-            nextButton.setBorderPainted(false);
-            nextButton.setFocusPainted(false);
+            nextButton.setFont(font);
             rightButtonPanel.add(nextButton);
 
             for (int i = 0; i < 1; ++i)

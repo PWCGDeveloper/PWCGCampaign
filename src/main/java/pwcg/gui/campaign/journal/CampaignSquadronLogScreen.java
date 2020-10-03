@@ -157,7 +157,7 @@ public class CampaignSquadronLogScreen extends ImageResizingPanel implements Act
 		JPanel buttonPanel = new JPanel(new GridLayout(0,1));
 		buttonPanel.setOpaque(false);
         
-        JButton finishedButton = PWCGButtonFactory.makeMenuButton("Finished Reading", "SquadronLogFinished", this);
+        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished Reading", "SquadronLogFinished", "Leave Squadron Log", this);
         buttonPanel.add(finishedButton);
 
 		squadronLogPanel.add(buttonPanel, BorderLayout.NORTH);

@@ -129,10 +129,10 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JButton acceptButton = PWCGButtonFactory.makeMenuButton("Accept Config Changes", CommonUIActions.ACTION_ACCEPT, this);
+        JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept", CommonUIActions.ACTION_ACCEPT, "Accept configuration changes", this);
         buttonPanel.add(acceptButton);
         
-        JButton cancelButton = PWCGButtonFactory.makeMenuButton("Cancel Config Changes", CommonUIActions.ACTION_CANCEL, this);
+        JButton cancelButton = PWCGButtonFactory.makeTranslucentMenuButton("Cancel", CommonUIActions.ACTION_CANCEL, "Cancel configuration changes", this);
         buttonPanel.add(cancelButton);
 
         JLabel spacer1 = PWCGButtonFactory.makePaperLabelLarge("   ");
@@ -142,7 +142,7 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
         = PWCGButtonFactory.makePaperLabelLarge("   ");
         buttonPanel.add(spacer2);
 
-        JButton resetButton = PWCGButtonFactory.makeMenuButton("Reset to Default", CommonUIActions.ACTION_RESET, this);
+        JButton resetButton = PWCGButtonFactory.makeTranslucentMenuButton("Reset", CommonUIActions.ACTION_RESET, "Reset all configurations to default", this);
         buttonPanel.add(resetButton);
 		
 		simpleConfigAcceptPanel.add(buttonPanel, BorderLayout.NORTH);

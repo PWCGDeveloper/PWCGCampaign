@@ -109,7 +109,7 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
-        JButton finishedButton = PWCGButtonFactory.makeMenuButton("Finished", "PilotFinished", this);
+        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "PilotFinished", "Finished viewing pilot", this);
         buttonPanel.add(finishedButton);
 
         pilotDesktopNavPanel.add(buttonPanel, BorderLayout.NORTH);

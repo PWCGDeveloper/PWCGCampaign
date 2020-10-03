@@ -73,15 +73,15 @@ public class PwcgMusicConfigScreen extends ImageResizingPanel implements ActionL
         JPanel buttonPanel = new JPanel(new GridLayout(6,1));
         buttonPanel.setOpaque(false);
 
-        JButton createCampaignButton = PWCGButtonFactory.makeMenuButton("Accept Changes", "AcceptChanges", this);
-        buttonPanel.add(createCampaignButton);
+        JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept", "AcceptChanges", "Accept music configuration", this);
+        buttonPanel.add(acceptButton);
         
         JLabel dummyLabel3 = new JLabel("     ");       
         dummyLabel3.setOpaque(false);
         buttonPanel.add(dummyLabel3);
         
-        JButton cancelChanges = PWCGButtonFactory.makeMenuButton("Cancel", "Cancel", this);
-        buttonPanel.add(cancelChanges);
+        JButton cancelButton = PWCGButtonFactory.makeTranslucentMenuButton("Cancel", "Cancel", "Cancel music configuration changes", this);
+        buttonPanel.add(cancelButton);
 
         navPanel.add(buttonPanel, BorderLayout.NORTH);
      

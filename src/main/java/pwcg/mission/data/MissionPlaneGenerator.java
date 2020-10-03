@@ -10,7 +10,7 @@ import pwcg.mission.flight.plane.PlaneMcu;
 
 public class MissionPlaneGenerator
 {
-    public List<PwcgGeneratedMissionPlaneData> generateMissionPlaneData(Mission mission) throws PWCGException
+    public static List<PwcgGeneratedMissionPlaneData> generateMissionPlaneData(Mission mission) throws PWCGException
     {
         List<PwcgGeneratedMissionPlaneData> missionPlanes  = new ArrayList<>();
 
@@ -18,17 +18,27 @@ public class MissionPlaneGenerator
         {
             for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
             {
-                PwcgGeneratedMissionPlaneData missionPlaneData = new PwcgGeneratedMissionPlaneData();
-                missionPlaneData.setPilotName(plane.getPilot().getName());
-                missionPlaneData.setPilotSerialNumber(plane.getPilot().getSerialNumber());
-                missionPlaneData.setPlaneSerialNumber(plane.getSerialNumber());
-                missionPlaneData.setSquadronId(flight.getSquadron().getSquadronId());
-                missionPlaneData.setAircraftType(plane.getType());
-                
-                missionPlanes.add(missionPlaneData);
+                makeMissionPlaneEntry(missionPlanes, flight, plane);
+            }
+            
+            for (PlaneMcu plane : flight.getFlightPlanes().getEascortsPlanes())
+            {
+                makeMissionPlaneEntry(missionPlanes, flight, plane);
             }
         }
         
         return missionPlanes;
+    }
+
+    private static void makeMissionPlaneEntry(List<PwcgGeneratedMissionPlaneData> missionPlanes, IFlight flight, PlaneMcu plane)
+    {
+        PwcgGeneratedMissionPlaneData missionPlaneData = new PwcgGeneratedMissionPlaneData();
+        missionPlaneData.setPilotName(plane.getPilot().getName());
+        missionPlaneData.setPilotSerialNumber(plane.getPilot().getSerialNumber());
+        missionPlaneData.setPlaneSerialNumber(plane.getSerialNumber());
+        missionPlaneData.setSquadronId(flight.getSquadron().getSquadronId());
+        missionPlaneData.setAircraftType(plane.getType());
+        
+        missionPlanes.add(missionPlaneData);
     }
 }

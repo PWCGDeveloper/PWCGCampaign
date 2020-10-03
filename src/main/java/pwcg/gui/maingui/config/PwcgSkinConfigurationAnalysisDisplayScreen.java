@@ -32,7 +32,6 @@ import pwcg.gui.utils.ImagePanelLayout;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
-import pwcg.gui.utils.ToolTipManager;
 
 public class PwcgSkinConfigurationAnalysisDisplayScreen extends ImageResizingPanel implements ActionListener
 {
@@ -85,21 +84,13 @@ public class PwcgSkinConfigurationAnalysisDisplayScreen extends ImageResizingPan
             buttonPanel.add(spacerLabel);
         }
         
-        JButton reportButton = makePlainButton("      Return", "Return", "Return to skin analysis page");
+        JButton reportButton = PWCGButtonFactory.makeTranslucentMenuButton("Return", "Return", "Return to skin analysis page", this);
         buttonPanel.add(reportButton);
 
         campaignButtonPanel.add (buttonPanel, BorderLayout.NORTH);
         
         return campaignButtonPanel;
  	}
-
-    private JButton makePlainButton(String buttonText, String commandText, String toolTiptext) throws PWCGException
-    {
-        JButton button = PWCGButtonFactory.makeMenuButton(buttonText, commandText, this);
-        ToolTipManager.setToolTip(button, toolTiptext);
-
-        return button;
-    }
 
     public JPanel makeCenterPanel() throws PWCGException 
     {

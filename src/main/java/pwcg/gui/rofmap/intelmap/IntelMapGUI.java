@@ -107,7 +107,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
-        JButton finished = PWCGButtonFactory.makeMenuButton("Finished", "Finished", this);
+        JButton finished = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished reading intel map", this);
         buttonPanel.add(finished);
         
         JLabel spacer1 = PWCGButtonFactory.makeMenuLabelLarge("");

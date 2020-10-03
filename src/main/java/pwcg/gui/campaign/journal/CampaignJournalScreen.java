@@ -125,7 +125,7 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
-        JButton finishedButton = PWCGButtonFactory.makeMenuButton("Finished Reading", "JournalFinished", this);
+        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished Reading", "JournalFinished", "Leave Journal", this);
         buttonPanel.add(finishedButton);
 
         journalPanel.add(buttonPanel, BorderLayout.NORTH);

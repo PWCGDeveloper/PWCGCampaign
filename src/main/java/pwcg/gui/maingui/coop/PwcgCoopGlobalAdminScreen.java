@@ -78,8 +78,8 @@ public class PwcgCoopGlobalAdminScreen extends ImageResizingPanel implements Act
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JButton acceptButton = PWCGButtonFactory.makeMenuButton("Finished", "Finished", this);
-        buttonPanel.add(acceptButton);
+        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished with coop player administration", this);
+        buttonPanel.add(finishedButton);
 
         navPanel.add(buttonPanel, BorderLayout.NORTH);
         

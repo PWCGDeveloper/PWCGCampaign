@@ -79,13 +79,13 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         JPanel leaveButtonPanel = new JPanel(new GridLayout(0, 1));
         leaveButtonPanel.setOpaque(false);
 
-        JButton acceptButton = PWCGButtonFactory.makeMenuButton("Accept Leave", "Accept Leave", this);
+        JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept Leave", "Accept Leave", "Take leave for entered number of days", this);
         leaveButtonPanel.add(acceptButton);
 
         JLabel spacer = new JLabel("");
         leaveButtonPanel.add(spacer);
 
-        JButton rejectButton = PWCGButtonFactory.makeMenuButton("Reject Leave", "Reject Leave", this);
+        JButton rejectButton = PWCGButtonFactory.makeTranslucentMenuButton("Reject Leave", "Reject Leave", "Do not ake leave", this);
         leaveButtonPanel.add(rejectButton);
 
         navPanel.add(leaveButtonPanel, BorderLayout.NORTH);

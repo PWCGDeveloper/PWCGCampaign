@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
+import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -22,19 +23,6 @@ import pwcg.gui.dialogs.PWCGMonitorSupport;
 public class PWCGButtonFactory extends JButton
 {
     private static final long serialVersionUID = 1L;
-
-    public static JButton makeMenuButton(String buttonText, String commandText, ActionListener actionListener) throws PWCGException 
-    {
-        Color bgColor = ColorMap.CHALK_BACKGROUND;
-        Color fgColor = ColorMap.CHALK_FOREGROUND;
-        
-        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
-        
-        buttonText = padStringToExtendImageSize(buttonText);
-        PWCGJButton button = makeButton(buttonText, commandText, actionListener, bgColor, fgColor, font);
-
-        return button;
-    }
 
     public static JButton makePaperButton(String buttonText, String commandText, ActionListener actionListener) throws PWCGException 
     {
@@ -90,7 +78,43 @@ public class PWCGButtonFactory extends JButton
 
         return button;
     }
-    
+
+    public static  JButton makeTranslucentMenuButton(String buttonText, String commandText, String toolTipText, ActionListener listener) throws PWCGException
+    {
+        PWCGJButton button = ImageButton.makeTranslucentButton("TranslucentButton.png");
+        Color fgColor = ColorMap.CHALK_FOREGROUND;
+        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
+        
+        button.setText(buttonText);
+        button.setVerticalTextPosition(AbstractButton.CENTER);
+        button.setHorizontalTextPosition(AbstractButton.CENTER);
+        button.setForeground(fgColor);
+        button.setFont(font);
+        button.setActionCommand(commandText);
+        button.addActionListener(listener);
+
+        ToolTipManager.setToolTip(button, toolTipText);
+        return button;
+    }
+
+    public static  JButton makeTranslucentMenuButtonGrayMenu(String buttonText, String commandText, String toolTipText, ActionListener listener) throws PWCGException
+    {
+        PWCGJButton button = ImageButton.makeTranslucentButton("TranslucentButtonGrayMenu.png");
+        Color fgColor = ColorMap.CHALK_FOREGROUND;
+        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
+        
+        button.setText(buttonText);
+        button.setVerticalTextPosition(AbstractButton.CENTER);
+        button.setHorizontalTextPosition(AbstractButton.CENTER);
+        button.setForeground(fgColor);
+        button.setFont(font);
+        button.setActionCommand(commandText);
+        button.addActionListener(listener);
+
+        ToolTipManager.setToolTip(button, toolTipText);
+        return button;
+    }
+
     public static JRadioButton makeRadioButton(String buttonName, String action, String toolTipText, boolean selected, ActionListener actionListener, Color fg) throws PWCGException
     {
         Font font = PWCGMonitorFonts.getPrimaryFont();

@@ -63,7 +63,7 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
-        JButton finishedButton = PWCGButtonFactory.makeMenuButton("Finished", "Finished", this);
+        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished admiring your medals", this);
         buttonPanel.add(finishedButton);
 
         pilotDesktopNavPanel.add(buttonPanel, BorderLayout.NORTH);

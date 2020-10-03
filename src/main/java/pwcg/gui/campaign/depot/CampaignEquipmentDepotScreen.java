@@ -62,8 +62,8 @@ public class CampaignEquipmentDepotScreen extends ImageResizingPanel implements 
 		JPanel buttonPanel = new JPanel(new GridLayout(0,1));
 		buttonPanel.setOpaque(false);
 		
-        JButton acceptButton = PWCGButtonFactory.makeMenuButton("Finished", "EquipmentDepoFinished", this);
-		buttonPanel.add(acceptButton);
+        JButton finished = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "EquipmentDepoFinished", "Finished reading depo report", this);
+		buttonPanel.add(finished);
 		
 		equipmentDepotPanel.add(buttonPanel, BorderLayout.NORTH);
 		

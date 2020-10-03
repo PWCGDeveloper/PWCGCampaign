@@ -80,19 +80,22 @@ public class BriefingEditorScreen extends ImageResizingPanel implements ActionLi
         if (mission.isFinalized())
         {
             buttonGrid.add(PWCGButtonFactory.makeDummy());
-            makeButton(buttonGrid, "Back to Campaign");
+            JButton backToCampaignButton = makeButton("Back to Campaign", "Back to Campaign", "Return to campaign home screen");
+            buttonGrid.add(backToCampaignButton);
         }
 
         buttonGrid.add(PWCGButtonFactory.makeDummy());
-        makeButton(buttonGrid, "Scrub Mission");
+        JButton scrubMissionButton = makeButton("Scrub Mission", "Scrub Mission", "Scrub this mission and return to campaign home screen");
+        buttonGrid.add(scrubMissionButton);
 
         buttonGrid.add(PWCGButtonFactory.makeDummy());
-        makeButton(buttonGrid, "Back To Map");
+        JButton goBackToBriefingMapButton = makeButton("Back To Map", "Back To Map", "Go back to briefing map screen");
+        buttonGrid.add(goBackToBriefingMapButton);
 
         buttonGrid.add(PWCGButtonFactory.makeDummy());
-        makeButton(buttonGrid, "Pilot Selection");
+        JButton goToPilotSelectionButton = makeButton("Pilot Selection", "Pilot Selection", "Progress to pilot selection screen");
+        buttonGrid.add(goToPilotSelectionButton);
 
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
         buttonGrid.add(PWCGButtonFactory.makeDummy());
         buttonGrid.add(PWCGButtonFactory.makeDummy());
 
@@ -101,11 +104,9 @@ public class BriefingEditorScreen extends ImageResizingPanel implements ActionLi
         return buttonPanel;
     }
 
-    private JButton makeButton(JPanel buttonPanel, String buttonText) throws PWCGException
+    private JButton makeButton(String buttonText, String command, String toolTipText) throws PWCGException
     {
-        JButton button = PWCGButtonFactory.makeMenuButton(buttonText, buttonText, this);
-        buttonPanel.add(button);
-        return button;
+        return PWCGButtonFactory.makeTranslucentMenuButton(buttonText, command, toolTipText, this);
     }
 
     @Override

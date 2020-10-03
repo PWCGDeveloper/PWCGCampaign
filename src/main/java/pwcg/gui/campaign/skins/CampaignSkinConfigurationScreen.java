@@ -27,7 +27,6 @@ import pwcg.gui.campaign.home.CampaignHomeRightPanelFactory;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
-import pwcg.gui.utils.ToolTipManager;
 import pwcg.gui.utils.UIUtils;
 
 public class CampaignSkinConfigurationScreen extends ImageResizingPanel implements ActionListener
@@ -118,21 +117,12 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
         JLabel spacer = new JLabel("");
         buttonPanel.add(spacer);
 
-        JButton acceptButton = makePlainButton("Accept Skin Assignments", "AcceptSkins", "Accept changes to skin assignments");
+        JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept", "AcceptSkins", "Accept skin assignments", this);
         buttonPanel.add(acceptButton);
         
-        JButton cancelButton = makePlainButton("Cancel Skin Assignments", "CancelSkins", "Cancel changes to skin assignments");
+        JButton cancelButton = PWCGButtonFactory.makeTranslucentMenuButton("Cancel", "CancelSkins", "Do not accept skin assignments", this);
         buttonPanel.add(cancelButton);
      }
-
-    private JButton makePlainButton(String buttonText, String command, String toolTiptext) throws PWCGException
-    {
-        JButton button = PWCGButtonFactory.makeMenuButton(buttonText, command, this);
-        
-        ToolTipManager.setToolTip(button, toolTiptext);
-
-        return button;
-    }
 
     private void showSkinsForPilot(String action) throws PWCGException 
     {

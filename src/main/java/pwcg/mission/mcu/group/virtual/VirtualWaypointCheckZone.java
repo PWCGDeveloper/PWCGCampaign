@@ -42,12 +42,12 @@ public final class VirtualWaypointCheckZone
         vwpStartTimer.setPosition(vwpCoordinate.getPosition().copy());
         vwpStartTimer.setName("VWP Start Timer");
         vwpStartTimer.setDesc("VWP Start Timer");
-        vwpStartTimer.setTimer(vwpCoordinate.getWaypointWaitTimeSeconds());
+        vwpStartTimer.setTimer(1);
 
         triggeredDisableNextVwpTimer.setPosition(vwpCoordinate.getPosition().copy());
         triggeredDisableNextVwpTimer.setName("Disable Next VWP Timer");
         triggeredDisableNextVwpTimer.setDesc("Disable Next VWP Timer");
-        triggeredDisableNextVwpTimer.setTimer(1);
+        triggeredDisableNextVwpTimer.setTimer(0);
 
         triggeredActivateTimer.setPosition(vwpCoordinate.getPosition().copy());
         triggeredActivateTimer.setName("Triggered Activate Timer");
@@ -59,7 +59,7 @@ public final class VirtualWaypointCheckZone
     {
         vwpStartTimer.setTarget(checkZone.getActivateEntryPoint());
         checkZone.setCheckZoneTarget(triggeredDisableNextVwpTimer.getIndex());
-        checkZone.setCheckZoneTarget(triggeredActivateTimer.getIndex());
+        triggeredDisableNextVwpTimer.setTarget(triggeredActivateTimer.getIndex());
     }
 
     public void write(BufferedWriter writer) throws PWCGException
@@ -68,13 +68,6 @@ public final class VirtualWaypointCheckZone
         checkZone.write(writer);
         triggeredDisableNextVwpTimer.write(writer);
         triggeredActivateTimer.write(writer);        
-    }
-
-    public void addAdditionalTime(int additionalTime)
-    {
-        int activateTimerTime = vwpStartTimer.getTimer();
-        activateTimerTime += additionalTime;
-        vwpStartTimer.setTimer(activateTimerTime);
     }
 
     public McuTimer getVwpStartTimer()

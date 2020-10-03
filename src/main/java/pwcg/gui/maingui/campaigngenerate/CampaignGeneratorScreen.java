@@ -90,7 +90,7 @@ public class CampaignGeneratorScreen extends ImageResizingPanel implements Actio
         JPanel buttonPanel = new JPanel(new GridLayout(6,1));
         buttonPanel.setOpaque(false);
          
-        createCampaignButton = PWCGButtonFactory.makeMenuButton("Create Campaign", "Create Campaign", this);
+        createCampaignButton = PWCGButtonFactory.makeTranslucentMenuButtonGrayMenu("Create Campaign", "Create Campaign", "Create the campaign", this);
         buttonPanel.add(createCampaignButton);
         createCampaignButton.setEnabled(false);
         
@@ -98,7 +98,7 @@ public class CampaignGeneratorScreen extends ImageResizingPanel implements Actio
         dummyLabel3.setOpaque(false);
         buttonPanel.add(dummyLabel3);
         
-        JButton cancelChanges = PWCGButtonFactory.makeMenuButton("Cancel", "Cancel", this);
+        JButton cancelChanges = PWCGButtonFactory.makeTranslucentMenuButtonGrayMenu("Cancel", "Cancel", "Cancel campaign creation", this);
         buttonPanel.add(cancelChanges);
 
         navPanel.add(buttonPanel, BorderLayout.NORTH);
@@ -114,7 +114,7 @@ public class CampaignGeneratorScreen extends ImageResizingPanel implements Actio
         JPanel buttonPanel = new JPanel(new GridLayout(6,1));
         buttonPanel.setOpaque(false);
         
-        profileFinishedButton = PWCGButtonFactory.makeMenuButton("Complete Campaign Data Entry", "Complete Campaign Data Entry", this);
+        profileFinishedButton = PWCGButtonFactory.makeTranslucentMenuButtonGrayMenu("Complete Data Entry", "Complete", "Proceed to campaign data entry completion", this);
         buttonPanel.add(profileFinishedButton);
         profileFinishedButton.setEnabled(false);
 
@@ -152,7 +152,7 @@ public class CampaignGeneratorScreen extends ImageResizingPanel implements Actio
             {
                 CampaignGuiContextManager.getInstance().backToMain();
             }
-            else if (action.equalsIgnoreCase("Complete Campaign Data Entry"))
+            else if (action.equalsIgnoreCase("Complete"))
             {
                 proceedToCampaignPilotInput();
             }

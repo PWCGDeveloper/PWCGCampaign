@@ -168,22 +168,26 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 
         maxInfoCheckBox = makeCheckBox("Maximum Information",  "MaxInfo", buttonGrid);
 
-        makeButton("Start Debrief",  "Start", buttonGrid);
+        JButton startDebriefButton = makeButton("Start Debrief",  "Start", "Start debrief");
+        buttonGrid.add(PWCGButtonFactory.makeDummy());  
+        buttonGrid.add(startDebriefButton);  
 
-		makeButton("Cancel AAR",  "Cancel", buttonGrid);
+        JButton cancelDebriefButton = makeButton("Cancel Debrief",  "Cancel", "Cancel the debrief");
+        buttonGrid.add(PWCGButtonFactory.makeDummy());  
+        buttonGrid.add(cancelDebriefButton);  
 
-		makeButton("Debrief Completed",  "Completed",  buttonGrid);
+        JButton debriefCompleteButton = makeButton("Debrief Completed",  "Completed", "Finish the debrief");
+        buttonGrid.add(PWCGButtonFactory.makeDummy());  
+        buttonGrid.add(debriefCompleteButton);  
 
 		debriefButtonPanel.add(buttonGrid, BorderLayout.NORTH);
 
 		return debriefButtonPanel;
 	}
 
-	private void makeButton(String buttonText, String command, JPanel buttonGrid) throws PWCGException 
+	private JButton makeButton(String buttonText, String command, String toolTipText) throws PWCGException 
 	{
-	    buttonGrid.add(PWCGButtonFactory.makeDummy());  
-        JButton button = PWCGButtonFactory.makeMenuButton(buttonText, command, this);
-        buttonGrid.add(button);  
+	    return PWCGButtonFactory.makeTranslucentMenuButton(buttonText, command, toolTipText, this);	    
 	}
 
     private JCheckBox makeCheckBox(String buttonText, String command, JPanel buttonGrid) throws PWCGException 
@@ -277,7 +281,6 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 			if (action.equals("Completed"))
 			{
 		        SoundManager.getInstance().playSound("BriefingEnd.WAV");
-		        
 				finishDebrief();
 			}
 			else

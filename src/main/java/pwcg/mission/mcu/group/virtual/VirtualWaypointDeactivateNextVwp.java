@@ -40,7 +40,7 @@ public class VirtualWaypointDeactivateNextVwp
         deactivateNextVwpTimer.setPosition(vwpCoordinate.getPosition().copy());
         deactivateNextVwpTimer.setName("VWP Deactivate Next VWP Timer");
         deactivateNextVwpTimer.setDesc("VWP Deactivate Next VWP Timer");
-        deactivateNextVwpTimer.setTimer(vwpCoordinate.getWaypointWaitTimeSeconds());
+        deactivateNextVwpTimer.setTimer(0);
     }
 
     private void setTargetAssociations() throws PWCGException

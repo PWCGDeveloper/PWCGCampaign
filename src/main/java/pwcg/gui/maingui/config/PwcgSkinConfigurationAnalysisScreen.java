@@ -43,7 +43,6 @@ import pwcg.gui.utils.ImagePanelLayout;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
-import pwcg.gui.utils.ToolTipManager;
 
 public class PwcgSkinConfigurationAnalysisScreen extends ImageResizingPanel implements ActionListener
 {
@@ -98,19 +97,19 @@ public class PwcgSkinConfigurationAnalysisScreen extends ImageResizingPanel impl
             buttonPanel.add(spacerLabel);
         }
         
-        JButton selectAllButton = makePlainButton("      Select All", "SelectAll", "Select all planes");
+        JButton selectAllButton = PWCGButtonFactory.makeTranslucentMenuButton("Select All", "SelectAll", "Select all planes for analysis", this);
         buttonPanel.add(selectAllButton);
 
-        JButton deselectAllButton = makePlainButton("      Deselect All", "DeselectAll", "Deselect all planes");
+        JButton deselectAllButton = PWCGButtonFactory.makeTranslucentMenuButton("Deselect All", "DeselectAll", "Deselect all planes for analysis", this);
         buttonPanel.add(deselectAllButton);
         
-        JButton displayMissingButton = makePlainButton("      Display Missing", "DisplayMissing", "Display missing skins for selected planes");
+        JButton displayMissingButton = PWCGButtonFactory.makeTranslucentMenuButton("Display Missing", "DisplayMissing", "Display missing skins for selected planes", this);
         buttonPanel.add(displayMissingButton);
         
-        JButton displayConfigButton = makePlainButton("      Display Configuration", "DisplayConfig", "Display configured skins for selected planes");
+        JButton displayConfigButton = PWCGButtonFactory.makeTranslucentMenuButton("Display Configuration", "DisplayConfig", "Display configured skins for selected planes", this);
         buttonPanel.add(displayConfigButton);
         
-        JButton reportButton = makePlainButton("      Report", "Report", "Generate report on missing skins for selected planes");
+        JButton reportButton = PWCGButtonFactory.makeTranslucentMenuButton("Report", "Report", "Generate report on missing skins for selected planes", this);
         buttonPanel.add(reportButton);
         
 
@@ -123,21 +122,13 @@ public class PwcgSkinConfigurationAnalysisScreen extends ImageResizingPanel impl
             buttonPanel.add(spacerLabel);
         }
 
-        JButton acceptButton = makePlainButton("      Return", "Return", "Return to main menu");
-        buttonPanel.add(acceptButton);
+        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "Return", "Return to main menu", this);
+        buttonPanel.add(finishedButton);
 
         navButtonPanel.add (buttonPanel, BorderLayout.NORTH);
         
         return navButtonPanel;
  	}
-
-    private JButton makePlainButton(String buttonText, String commandText, String toolTiptext) throws PWCGException
-    {
-        JButton button = PWCGButtonFactory.makeMenuButton(buttonText, commandText, this);
-        ToolTipManager.setToolTip(button, toolTiptext);
-
-        return button;
-    }
 
     public JPanel makeCenterPanel() throws PWCGException 
     {

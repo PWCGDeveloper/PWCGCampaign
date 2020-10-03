@@ -93,7 +93,7 @@ public class MissingSkinScreen extends ImageResizingPanel implements ActionListe
 
     private JButton makePlainButton(String buttonText, String commandText, String toolTiptext) throws PWCGException
     {
-        JButton button = PWCGButtonFactory.makeMenuButton(buttonText, commandText, this);
+        JButton button = PWCGButtonFactory.makeTranslucentMenuButton(buttonText, commandText, toolTiptext, this);
         ToolTipManager.setToolTip(button, toolTiptext);
 
         return button;

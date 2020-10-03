@@ -245,8 +245,8 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 
     private JButton makeMenuButton(String buttonText, String commandText, JPanel buttonPanel) throws PWCGException 
     {
-        JButton button = PWCGButtonFactory.makeMenuButton(buttonText, commandText, this);
-        
+        JButton button = PWCGButtonFactory.makeTranslucentMenuButtonGrayMenu(buttonText, commandText, "", this);
+
         buttonPanel.add(button);
         campaignButtonList.add(button);
 

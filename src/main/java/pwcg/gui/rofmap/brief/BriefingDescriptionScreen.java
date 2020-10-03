@@ -96,14 +96,17 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
         if (mission.isFinalized())
         {
             buttonGrid.add(PWCGButtonFactory.makeDummy());
-            makeButton(buttonGrid, "Back to Campaign");
+            JButton backToCampaignButton = makeButton("Back to Campaign", "Back to Campaign", "Return to campaign home screen");
+            buttonGrid.add(backToCampaignButton);
         }
         
         buttonGrid.add(PWCGButtonFactory.makeDummy());
-        makeButton(buttonGrid, "Scrub Mission");
+        JButton scrubMissionButton = makeButton("Scrub Mission", "Scrub Mission", "Scrub this mission and return to campaign home screen");
+        buttonGrid.add(scrubMissionButton);
 
         buttonGrid.add(PWCGButtonFactory.makeDummy());
-        makeButton(buttonGrid, "Briefing Map");
+        JButton goToBriefingMapButton = makeButton("Briefing Map", "Briefing Map", "Progress to briefing map screen");
+        buttonGrid.add(goToBriefingMapButton);
 
         buttonPanel.add(buttonGrid, BorderLayout.NORTH);
         
@@ -124,12 +127,9 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
         return briefingPanel;
     }
 
-    private JButton makeButton(JPanel buttonPanel, String buttonText) throws PWCGException
+    private JButton makeButton(String buttonText, String command, String toolTipText) throws PWCGException
     {
-        JButton button = PWCGButtonFactory.makeMenuButton(buttonText, buttonText, this);
-        buttonPanel.add(button);
-        
-        return button;
+        return PWCGButtonFactory.makeTranslucentMenuButton(buttonText, command, toolTipText, this);
     }
 
     @Override

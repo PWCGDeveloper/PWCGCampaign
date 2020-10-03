@@ -91,19 +91,24 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
 		JPanel buttonPanel = new JPanel(new GridLayout(0,1));
 		buttonPanel.setOpaque(false);
 		
-        prevButton = PWCGButtonFactory.makeMenuButton("Previous Page", "Previous", this);
+        prevButton = makeMenuButton("Previous Page", "Previous", "Return to previous page");
         buttonPanel.add(prevButton);
 
-        nextButton = PWCGButtonFactory.makeMenuButton("Next Page", "Next", this);
+        nextButton = makeMenuButton("Next Page", "Next", "Go tothe next page");
         buttonPanel.add(nextButton);
 
-        finishedButton = PWCGButtonFactory.makeMenuButton("Finished", "Finished", this);
+        finishedButton = makeMenuButton("Finished", "Finished", "Finished reading");
         buttonPanel.add(finishedButton);
 		
         navPanel.add(buttonPanel, BorderLayout.NORTH);
 		
 		return navPanel;
 	}
+
+    private JButton makeMenuButton(String buttonText, String command, String toolTipText) throws PWCGException
+    {
+        return PWCGButtonFactory.makeTranslucentMenuButton(buttonText, command, toolTipText, this);
+    }
 
     private void enableButtonsAsNeeded() throws PWCGException  
     {

@@ -78,14 +78,14 @@ public class PwcgGlobalConfigurationScreen extends ImageResizingPanel implements
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JButton acceptButton = PWCGButtonFactory.makeMenuButton("Accept Config Changes", "Accept", this);
+        JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept", "Accept", "Accept configuration changes", this);
         buttonPanel.add(acceptButton);
 
         JLabel spacer2 = new JLabel("   ");
         spacer2.setOpaque(false);
         buttonPanel.add(spacer2);
 
-        JButton cancelButton = PWCGButtonFactory.makeMenuButton("Cancel Config Changes", "Cancel", this);
+        JButton cancelButton = PWCGButtonFactory.makeTranslucentMenuButton("Cancel", "Cancel", "Cancel configuration changes", this);
         buttonPanel.add(cancelButton);
 
         navPanel.add(buttonPanel, BorderLayout.NORTH);

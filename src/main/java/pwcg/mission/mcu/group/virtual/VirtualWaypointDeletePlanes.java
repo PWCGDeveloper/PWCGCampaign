@@ -35,7 +35,7 @@ public class VirtualWaypointDeletePlanes
         deletePlanes.setName("Delete Planes");
         deletePlanes.setDesc("Delete Planes");
         
-        deletePlanesTimer.setTimer(5);
+        deletePlanesTimer.setTimer(1);
         deletePlanesTimer.setPosition(vwpCoordinate.getPosition().copy());
         deletePlanesTimer.setOrientation(vwpCoordinate.getOrientation().copy());
         deletePlanesTimer.setName("Delete Planes Timer");

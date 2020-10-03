@@ -97,13 +97,13 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 		transferButtonPanel.setOpaque(false);
 		
 		
-        acceptButton = PWCGButtonFactory.makeMenuButton("Accept Transfer", "Accept Transfer", this);
+        acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept Transfer", "Accept Transfer", "Transfer to a new unit", this);
         transferButtonPanel.add(acceptButton);
         
         JLabel spacer = new JLabel("");
         transferButtonPanel.add(spacer);
 
-        JButton rejectButton = PWCGButtonFactory.makeMenuButton("Reject Transfer", "Reject Transfer", this);
+        JButton rejectButton = PWCGButtonFactory.makeTranslucentMenuButton("Reject Transfer", "Reject Transfer", "Do not transfer", this);
         transferButtonPanel.add(rejectButton);
 
 		transferrPanel.add(transferButtonPanel, BorderLayout.NORTH);

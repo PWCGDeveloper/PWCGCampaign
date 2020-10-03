@@ -57,7 +57,7 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
 		JPanel buttonPanel = new JPanel(new GridLayout(0,1));
 		buttonPanel.setOpaque(false);
 		
-        JButton acceptButton = PWCGButtonFactory.makeMenuButton("Finished Reading", "IntelFinished", this);
+        JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished Reading", "IntelFinished", "Leave Intel", this);
 		buttonPanel.add(acceptButton);
 		
 		intelPanel.add(buttonPanel, BorderLayout.NORTH);

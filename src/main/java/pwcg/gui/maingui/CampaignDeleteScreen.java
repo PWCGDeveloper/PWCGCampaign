@@ -68,15 +68,15 @@ public class CampaignDeleteScreen extends ImageResizingPanel implements ActionLi
         JPanel buttonPanel = new JPanel(new GridLayout(6,1));
         buttonPanel.setOpaque(false);
          
-        JButton createCampaignButton = PWCGButtonFactory.makeMenuButton("Delete Selected Campaign", "Delete", this);
-        buttonPanel.add(createCampaignButton);
+        JButton deleteCampaignButton = PWCGButtonFactory.makeTranslucentMenuButtonGrayMenu("Delete Campaign", "Delete", "Delete the selected campaign", this);
+        buttonPanel.add(deleteCampaignButton);
         
         JLabel dummyLabel3 = new JLabel("     ");       
         dummyLabel3.setOpaque(false);
         buttonPanel.add(dummyLabel3);
         
-        JButton cancelChanges = PWCGButtonFactory.makeMenuButton("Cancel", "Cancel", this);
-        buttonPanel.add(cancelChanges);
+        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButtonGrayMenu("Finished", "Cancel", "Finished with campaign deletion", this);
+        buttonPanel.add(finishedButton);
 
         navPanel.add(buttonPanel, BorderLayout.NORTH);
      

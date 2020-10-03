@@ -37,7 +37,6 @@ import pwcg.gui.utils.ImagePanelLayout;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
-import pwcg.gui.utils.ToolTipManager;
 
 public class PwcgPlanesOwnedConfigurationScreen extends ImageResizingPanel implements ActionListener
 {
@@ -116,10 +115,10 @@ public class PwcgPlanesOwnedConfigurationScreen extends ImageResizingPanel imple
             buttonPanel.add(spacerLabel);
         }
         
-        JButton selectAllButton = makePlainButton("      Select All", "Select All", "Accept configuration changes");
+        JButton selectAllButton = PWCGButtonFactory.makeTranslucentMenuButton("Select All", "Select All", "Select all planes as owned", this);
         buttonPanel.add(selectAllButton);
 
-        JButton deselectAllButton = makePlainButton("      Deselect All", "Deselect All", "Accept configuration changes");
+        JButton deselectAllButton = PWCGButtonFactory.makeTranslucentMenuButton("Deselect All", "Deselect All", "Select all planes as not owned", this);
         buttonPanel.add(deselectAllButton);
         
 
@@ -132,24 +131,16 @@ public class PwcgPlanesOwnedConfigurationScreen extends ImageResizingPanel imple
             buttonPanel.add(spacerLabel);
         }
 
-        JButton acceptButton = makePlainButton("      Accept", "Accept", "Accept configuration changes");
+        JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept", "Accept", "Accept planes owned", this);
         buttonPanel.add(acceptButton);
 
-        JButton cancelButton = makePlainButton("      Cancel", "Cancel", "Cancel configuration changes");
+        JButton cancelButton = PWCGButtonFactory.makeTranslucentMenuButton("Cancel", "Cancel", "Cancel planes owned edits", this);
         buttonPanel.add(cancelButton);
 
         navPanel.add (buttonPanel, BorderLayout.NORTH);
         
         return navPanel;
  	}
-
-    private JButton makePlainButton(String buttonText, String commandText, String toolTiptext) throws PWCGException
-    {
-        JButton button = PWCGButtonFactory.makeMenuButton(buttonText, commandText, this);
-        ToolTipManager.setToolTip(button, toolTiptext);
-
-        return button;
-    }
 
     public JPanel makeCenterPanel() throws PWCGException 
     {

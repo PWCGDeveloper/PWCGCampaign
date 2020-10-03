@@ -94,7 +94,7 @@ public class CampaignNewPilotScreen extends ImageResizingPanel implements Action
         JPanel buttonPanel = new JPanel(new GridLayout(6,1));
         buttonPanel.setOpaque(false);
 
-        newPilotCreateButton = PWCGButtonFactory.makeMenuButton("Create Pilot", "Create Pilot", this);
+        newPilotCreateButton = PWCGButtonFactory.makeTranslucentMenuButton("Create Pilot", "Create Pilot", "Add this pilot to the campaign", this);
         buttonPanel.add(newPilotCreateButton);
         newPilotCreateButton.setEnabled(false);
         
@@ -102,7 +102,7 @@ public class CampaignNewPilotScreen extends ImageResizingPanel implements Action
         dummyLabel3.setOpaque(false);
         buttonPanel.add(dummyLabel3);
         
-        JButton cancelChanges = PWCGButtonFactory.makeMenuButton("Cancel", "Cancel", this);
+        JButton cancelChanges = PWCGButtonFactory.makeTranslucentMenuButton("Cancel", "Cancel", "Cancel the addition of a new pilot to this campaign", this);
         buttonPanel.add(cancelChanges);
 
         configPanel.add(buttonPanel, BorderLayout.NORTH);

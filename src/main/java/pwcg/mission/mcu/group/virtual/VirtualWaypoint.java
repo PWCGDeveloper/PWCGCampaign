@@ -153,7 +153,7 @@ public final class VirtualWaypoint implements IVirtualWaypoint
     @Override
     public void addAdditionalTime(int additionalTime)
     {
-        vwpCheckZone.addAdditionalTime(additionalTime);
+        vwpStartNextVwp.addAdditionalTime(additionalTime);
     }
 
     @Override

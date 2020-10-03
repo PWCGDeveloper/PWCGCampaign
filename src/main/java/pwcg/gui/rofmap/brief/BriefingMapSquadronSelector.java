@@ -62,10 +62,10 @@ public class BriefingMapSquadronSelector implements ActionListener
         IFlight selectedFlight = briefingContext.getSelectedFlight();
         Side selectedFlightSide = selectedFlight.getSquadron().determineSide();
 
-        JButton checkBoxAll = PWCGButtonFactory.makeMenuButton("All Squadrons", "" + ALL_SQUADRONS, this);
+        JButton checkBoxAll = PWCGButtonFactory.makeTranslucentMenuButton("All Squadrons", "" + ALL_SQUADRONS, "Show flight path for all squadrons", this);
         squadronSelectorGrid.add(checkBoxAll);
 
-        JButton checkBoxNone = PWCGButtonFactory.makeMenuButton("No Squadrons", "" + NO_SQUADRONS, this);
+        JButton checkBoxNone = PWCGButtonFactory.makeTranslucentMenuButton("No Squadrons", "" + NO_SQUADRONS, "Show flight path for only your squadron", this);
         squadronSelectorGrid.add(checkBoxNone);
 
         for (IFlight aiflight : mission.getMissionFlightBuilder().getAiFlights())
