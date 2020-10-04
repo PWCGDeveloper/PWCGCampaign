@@ -86,7 +86,7 @@ public abstract class MapWeather
         return weatherSeverity;
     }
 
-	protected int createDayCloud() throws PWCGException 
+	private int createDayCloud() throws PWCGException 
 	{
         int weatherSeverity = 1;
 

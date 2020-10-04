@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
@@ -17,16 +18,18 @@ public class VirtualWaypointEscort
     private VirtualWaypointPlanes vwpPlanes;
     private VirtualWayPointCoordinate vwpCoordinate;
     private VirtualWaypointActivate vwpActivate;
+    private Squadron escortSquadron;
 
     private McuTimer activateEscortTimer = new McuTimer();
     private McuActivate activateEscort = new McuActivate();
     private McuTimer coverTimer = null;
     private McuCover cover = null;
-    private List<PlaneMcu> escortAtActivate = new ArrayList<>();
+    private List<PlaneMcu> escortPlanes = new ArrayList<>();
 
-    public VirtualWaypointEscort(VirtualWayPointCoordinate vwpCoordinate, VirtualWaypointPlanes vwpPlanes, VirtualWaypointActivate vwpActivate)
+    public VirtualWaypointEscort(VirtualWayPointCoordinate vwpCoordinate, Squadron escortSquadron, VirtualWaypointPlanes vwpPlanes, VirtualWaypointActivate vwpActivate)
     {
         this.vwpCoordinate = vwpCoordinate;
+        this.escortSquadron = escortSquadron;
         this.vwpPlanes = vwpPlanes;
         this.vwpActivate = vwpActivate;
     }
@@ -43,7 +46,7 @@ public class VirtualWaypointEscort
 
     public void write(BufferedWriter writer) throws PWCGException
     {
-        for (PlaneMcu plane : escortAtActivate)
+        for (PlaneMcu plane : escortPlanes)
         {
             plane.write(writer);
         }
@@ -58,12 +61,12 @@ public class VirtualWaypointEscort
     {
         int altitudeOffset = 500;
         VirtualWaypointPlaneBuilder vwpPlaneBuilder = new VirtualWaypointPlaneBuilder(vwpCoordinate, altitudeOffset);
-        escortAtActivate = vwpPlaneBuilder.buildVwpPlanes(vwpEscortFlightInformation.getPlanes());
+        escortPlanes = vwpPlaneBuilder.buildVwpPlanes(vwpEscortFlightInformation.getPlanes());
     }
 
     private void buildPayloadForEscorts() throws PWCGException
     {
-        for (PlaneMcu escortPlane : escortAtActivate)
+        for (PlaneMcu escortPlane : escortPlanes)
         {
             escortPlane.buildStandardPlanePayload();
         }
@@ -103,16 +106,26 @@ public class VirtualWaypointEscort
 
     private void createObjectAssociations()
     {
-        for (PlaneMcu escortPlane : escortAtActivate)
+        for (PlaneMcu escortPlane : escortPlanes)
         {
             activateEscort.setObject(escortPlane.getEntity().getIndex());
         }
         
-        cover.setObject(escortAtActivate.get(0).getLinkTrId());
+        cover.setObject(escortPlanes.get(0).getLinkTrId());
     }
 
     private void linkEscortToActivateFlight()
     {
         vwpActivate.linkToEscort(activateEscortTimer.getIndex());
+    }
+
+    public Squadron getEscortSquadron()
+    {
+        return escortSquadron;
+    }
+
+    public List<PlaneMcu> getEscortPlanes()
+    {
+        return escortPlanes;
     }
 }

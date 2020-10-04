@@ -109,6 +109,9 @@ public class Mission
 
     public void generate(List<FlightTypes> playerFlightTypes) throws PWCGException
     {
+        missionOptions = PWCGContext.getInstance().getCurrentMap().getMissionOptions();
+        missionOptions.createFlightSpecificMissionOptions(this);
+
         validate();
         createGroundUnits();
         generateFlights(playerFlightTypes);
@@ -118,9 +121,6 @@ public class Mission
     {
         missionFlightBuilder.generateFlights(participatingPlayers, playerFlightTypes);
         createFirePots();
-
-        missionOptions = PWCGContext.getInstance().getCurrentMap().getMissionOptions();
-        missionOptions.createFlightSpecificMissionOptions(this);
     }
 
     private void validate() throws PWCGException

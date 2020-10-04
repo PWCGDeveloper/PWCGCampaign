@@ -14,6 +14,7 @@ import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
 import pwcg.mission.mcu.group.virtual.IVirtualWaypoint;
 import pwcg.mission.mcu.group.virtual.VirtualWaypoint;
+import pwcg.mission.mcu.group.virtual.VirtualWaypointEscort;
 
 public class VirtualWaypointPackage implements IVirtualWaypointPackage
 {
@@ -56,6 +57,19 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
             {
                 virtualWaypoint.addEscort(vwpEscortFlightInformation);
             }
+        }
+    }
+
+    @Override
+    public VirtualWaypointEscort getEscort() throws PWCGException
+    {
+        if (!virtualWaypoints.isEmpty())
+        {
+            return virtualWaypoints.get(0).getVwpEscort();
+        }
+        else
+        {
+            return null;
         }
     }
 

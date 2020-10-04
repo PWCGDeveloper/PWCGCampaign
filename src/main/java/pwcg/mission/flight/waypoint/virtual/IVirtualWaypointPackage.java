@@ -7,6 +7,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.mission.Mission;
 import pwcg.mission.mcu.group.virtual.VirtualWaypoint;
+import pwcg.mission.mcu.group.virtual.VirtualWaypointEscort;
 
 public interface IVirtualWaypointPackage
 {
@@ -19,4 +20,6 @@ public interface IVirtualWaypointPackage
     void addDelayForPlayerDelay(Mission mission) throws PWCGException;
 
     void addEscort() throws PWCGException;
+
+    VirtualWaypointEscort getEscort() throws PWCGException;
 }

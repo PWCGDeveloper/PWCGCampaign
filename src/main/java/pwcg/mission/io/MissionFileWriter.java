@@ -27,7 +27,6 @@ import pwcg.core.utils.AsyncJobRunner;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.gui.dialogs.HelpDialog;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBlockBuilder;
 import pwcg.mission.MissionBlockCountry;
@@ -106,10 +105,6 @@ public class MissionFileWriter implements IMissionFile
             AsyncJobRunner runner = new AsyncJobRunner("Generating mission");
             buildMissionBinaryFile(runner);
             runner.finish();
-        }
-        else
-        {
-            new  HelpDialog("Resaver not installed.  Cannot create binary mission file. ");
         }
     }
     

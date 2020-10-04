@@ -38,8 +38,8 @@ public abstract class MissionOptions
     public void createFlightSpecificMissionOptions(Mission mission) throws PWCGException 
     {
     	this.mission = mission;
-        PWCGContext.getInstance().getCurrentMap().getMapWeather().createMissionWeather(mission);
         createMissionTime();
+        PWCGContext.getInstance().getCurrentMap().getMapWeather().createMissionWeather(mission);
     }
     
     public MapSeasonalParameters getSeasonBasedParameters(Date date) throws PWCGException

@@ -209,4 +209,9 @@ public final class VirtualWaypoint implements IVirtualWaypoint
     {
         return vwpPlanes;
     }
+
+    public VirtualWaypointEscort getVwpEscort()
+    {
+        return vwpEscort;
+    }
 }
