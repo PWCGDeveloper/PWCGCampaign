@@ -17,8 +17,8 @@ public class ApproachWaypointGenerator
     public static McuWaypoint createApproachWaypoint(IFlight flight, IAirfield landingAirfield) throws PWCGException  
     {        
         PWCGLocation landingLocation = landingAirfield.getLandingLocation();
-        int initialWaypointDistance = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointDistanceKey);
-        Coordinate approachCoords = MathUtils.calcNextCoord(landingLocation.getPosition(), landingLocation.getOrientation().getyOri() - 180, initialWaypointDistance);
+        int LandingApproachWaypointDistance = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.LandingApproachWaypointDistanceKey);
+        Coordinate approachCoords = MathUtils.calcNextCoord(landingLocation.getPosition(), landingLocation.getOrientation().getyOri() - 180, LandingApproachWaypointDistance);
         
         int ApproachWaypointAltitude = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.ApproachWaypointAltitudeKey);
         approachCoords.setYPos(landingAirfield.getPosition().getYPos() + ApproachWaypointAltitude);

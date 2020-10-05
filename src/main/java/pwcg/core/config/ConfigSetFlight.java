@@ -8,7 +8,7 @@ public class ConfigSetFlight
 		configSet.setConfigSetName(ConfigSetKeys.ConfigSetFlight);
 
         configSet.addConfigItem(ConfigItemKeys.TakeoffTimeKey, new ConfigItem("30"));
-		configSet.addConfigItem(ConfigItemKeys.InitialWaypointDistanceKey, new ConfigItem("1000"));
+		configSet.addConfigItem(ConfigItemKeys.LandingApproachWaypointDistanceKey, new ConfigItem("1000"));
 		configSet.addConfigItem(ConfigItemKeys.ApproachWaypointAltitudeKey, new ConfigItem("125"));
 		configSet.addConfigItem(ConfigItemKeys.RandomAdditionalAltitudeKey, new ConfigItem("1500"));
 		configSet.addConfigItem(ConfigItemKeys.LandingDistanceKey, new ConfigItem("400"));

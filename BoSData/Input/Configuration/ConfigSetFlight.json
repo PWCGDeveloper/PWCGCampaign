@@ -36,10 +36,10 @@
       "label": "Base Alt Period 6",
       "help": "Base altitude late war"
     },
-    "InitialWaypointDistance": {
+    "LandingApproachWaypointDistance": {
       "value": "12000",
-      "label": "Initial Waypoint Distance",
-      "help": "Distance from airfield of initial waypoint"
+      "label": "Landing Approach Waypoint Distance",
+      "help": "Distance from approach to field"
     },
     "LandingDistance": {
       "value": "1000",
