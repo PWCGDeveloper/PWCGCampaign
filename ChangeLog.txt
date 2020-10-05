@@ -2,6 +2,32 @@
 ​
 At the PWCG web site
 
+11.1.1
+Moved rendezvous back towards base
+- Improves ability to shape waypoints near front
+Bugs:
+Fixed incorrect text for RemoveNonHistoricalSquadrons config
+
+11.1.0
+Added translucent buttons to show what can be pressed.
+Almost all buttons now have a hover tool tip (tells you what the button does if you hover your mouse over it)
+Changed the pilot selection screen:
+- Removing a pilot reverts to selecting the assigned pilot name button, like it used to be
+- Adding a pilot is still  selecting the unassigned  pilot name button, like it used to be
+- Moving a pilot up or down in formation uses the mouse wheel
+ - select the check box next to the pilot
+ - scroll the mouse wheel to move up or down in the formation
+Bugs
+Fixed planes disappearing after spawn (hopefully)
+Fixed escort planes cannot be claimed (also hopefully)
+
+11.0.0
+AI flies formation
+- Hopefully no more bombers flying like fighters
+AI escorts are back
+- And they really escort
+- Numbers limited for resource usage
+
 10.4.0
 Huge number of skins for FC
 - All thanks to TheDude and skin artists
