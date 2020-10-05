@@ -37,13 +37,17 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
     private JPanel pilotPanel;
     private BriefingData briefingContext;
     private BriefingPilotSelectionScreen parent;
-    private ButtonGroup buttonGroup = new ButtonGroup();
+    private ButtonGroup assignedPilotButtonGroup = new ButtonGroup();
     private Map<Integer, JRadioButton> activePilotRadioButtons = new HashMap<>();
 
     private static final double pilotWeightx = 0.1;
     private static final double planeNameWeightx = 0.1;
     private static final double payloadWeightx = 0.1;
     private static final double modificationsWeightx = 0.1;
+    private static final double pilotWeighty = 0.1;
+    private static final double planeNameWeighty = 0.1;
+    private static final double payloadWeighty = 0.1;
+    private static final double modificationsWeighty = 0.1;
     
     public BriefingPilotChalkboard(BriefingData briefingContext, BriefingPilotSelectionScreen parent)
     {
@@ -104,19 +108,19 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
 
     private void makeLabelsForChalkboard(JPanel assignedPilotPanel) throws PWCGException
     {
-        GridBagConstraints pilotConstraints = makeGridBagConstraints(1, 1, pilotWeightx);
+        GridBagConstraints pilotConstraints = makeGridBagConstraints(1, 1, pilotWeightx, pilotWeighty);
         JLabel assignedPilotLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Assigned Pilots:");
         assignedPilotPanel.add(assignedPilotLabel, pilotConstraints);
 
-        GridBagConstraints planeConstraints = makeGridBagConstraints(1, 2, planeNameWeightx);
+        GridBagConstraints planeConstraints = makeGridBagConstraints(1, 2, planeNameWeightx, planeNameWeighty);
         JLabel assignedAircraftLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Aircraft:");
         assignedPilotPanel.add(assignedAircraftLabel, planeConstraints);
 
-        GridBagConstraints payloadConstraints = makeGridBagConstraints(1, 3, payloadWeightx);
+        GridBagConstraints payloadConstraints = makeGridBagConstraints(1, 3, payloadWeightx, payloadWeighty);
         JLabel payloadLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Payload:");
         assignedPilotPanel.add(payloadLabel, payloadConstraints);
 
-        GridBagConstraints modificationsConstraints = makeGridBagConstraints(1, 4, modificationsWeightx);
+        GridBagConstraints modificationsConstraints = makeGridBagConstraints(1, 4, modificationsWeightx, modificationsWeighty);
         JLabel modificationsLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Modifications:");
         assignedPilotPanel.add(modificationsLabel, modificationsConstraints);
     }
@@ -163,28 +167,41 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
 
     private void addPilotColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane, int row) throws PWCGException
     {
-        String pilotNameText = crewPlane.getPilot().getNameAndRank();
-        JRadioButton assignedPilotButton = PWCGButtonFactory.makeBriefingChalkBoardRadioButton(pilotNameText, "Select Pilot:" + crewPlane.getPilot().getSerialNumber(), parent);
-        assignedPilotButton.setVerticalAlignment(SwingConstants.TOP);
-        assignedPilotButton.setHorizontalAlignment(SwingConstants.LEFT);
 
-        GridBagConstraints constraints = makeGridBagConstraints(row, 1, pilotWeightx);
-        assignedPilotPanel.add(assignedPilotButton, constraints);
+        String pilotNameText = crewPlane.getPilot().getNameAndRank();
+        JButton assignedPilotButton = PWCGButtonFactory.makeBriefingChalkBoardButton(pilotNameText,
+                "Unassign Pilot:" + crewPlane.getPilot().getSerialNumber(), "Remove " + pilotNameText + " from flight", parent);
+
+        JRadioButton assignedPilotRadioButton = PWCGButtonFactory.makeBriefingChalkBoardRadioButton("Select Pilot:" + crewPlane.getPilot().getSerialNumber(), parent);
+        assignedPilotRadioButton.setVerticalAlignment(SwingConstants.TOP);
+        assignedPilotRadioButton.setHorizontalAlignment(SwingConstants.LEFT);
         
-        buttonGroup.add(assignedPilotButton);
-        activePilotRadioButtons.put( crewPlane.getPilot().getSerialNumber(), assignedPilotButton);
+        JPanel assignedPilotGroupingPanel = new JPanel(new BorderLayout());
+        assignedPilotGroupingPanel.setOpaque(false);
+        assignedPilotGroupingPanel.add(assignedPilotRadioButton, BorderLayout.WEST);
+        assignedPilotGroupingPanel.add(assignedPilotButton, BorderLayout.CENTER);
+
+        GridBagConstraints constraints = makeGridBagConstraints(row, 1, pilotWeightx,pilotWeighty);
+        assignedPilotPanel.add(assignedPilotGroupingPanel, constraints);
+        
+        assignedPilotButtonGroup.add(assignedPilotRadioButton);
+        activePilotRadioButtons.put( crewPlane.getPilot().getSerialNumber(), assignedPilotRadioButton);
     }
 
     private void addPlaneColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane, int row) throws PWCGException
     {
         String planeName = crewPlane.getPlane().getDisplayName() + " (" + crewPlane.getPlane().getSerialNumber() + ")";
         JButton planeButton = PWCGButtonFactory.makeBriefingChalkBoardButton(planeName, 
-                "Change Plane:" + crewPlane.getPilot().getSerialNumber(), parent);
+                "Change Plane:" + crewPlane.getPilot().getSerialNumber(), "Change aircraft for  " + crewPlane.getPilot().getNameAndRank(), parent);
         planeButton.setVerticalAlignment(SwingConstants.TOP);
-        planeButton.setHorizontalAlignment(SwingConstants.LEFT);
+        planeButton.setHorizontalAlignment(SwingConstants.LEFT);        
         
-        GridBagConstraints constraints = makeGridBagConstraints(row, 2, planeNameWeightx);
-        assignedPilotPanel.add(planeButton, constraints);
+        JPanel assignedPlaneGroupingPanel = new JPanel(new BorderLayout());
+        assignedPlaneGroupingPanel.setOpaque(false);
+        assignedPlaneGroupingPanel.add(planeButton, BorderLayout.NORTH);
+
+        GridBagConstraints constraints = makeGridBagConstraints(row, 2, planeNameWeightx, planeNameWeighty);
+        assignedPilotPanel.add(assignedPlaneGroupingPanel, constraints);
     }
 
     private void addPayloadColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane, int row) throws PWCGException
@@ -193,12 +210,16 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
         PayloadDesignation payloadDesignation = payloadFactory.getPlanePayloadDesignation(crewPlane.getPlane().getType(), crewPlane.getPayloadId());
         String planePayloadDescription = payloadDesignation.getPayloadDescription();
         JButton payloadButton = PWCGButtonFactory.makeBriefingChalkBoardButton(planePayloadDescription,
-                "Change Payload:" + crewPlane.getPilot().getSerialNumber(), parent);
+                "Change Payload:" + crewPlane.getPilot().getSerialNumber(), "Change payload for  " + crewPlane.getPilot().getNameAndRank(), parent);
         payloadButton.setVerticalAlignment(SwingConstants.TOP);
         payloadButton.setHorizontalAlignment(SwingConstants.LEFT);
         
-        GridBagConstraints constraints = makeGridBagConstraints(row, 3, payloadWeightx);
-        assignedPilotPanel.add(payloadButton, constraints);
+        JPanel assignedPayloadGroupingPanel = new JPanel(new BorderLayout());
+        assignedPayloadGroupingPanel.setOpaque(false);
+        assignedPayloadGroupingPanel.add(payloadButton, BorderLayout.NORTH);
+
+        GridBagConstraints constraints = makeGridBagConstraints(row, 3, payloadWeightx, payloadWeighty);
+        assignedPilotPanel.add(assignedPayloadGroupingPanel, constraints);
     }
 
     private void addModificationsColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane, int row) throws PWCGException
@@ -206,9 +227,13 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
         BriefingPlaneModificationsPicker planeModification = new BriefingPlaneModificationsPicker(parent, crewPlane);
         parent.addPlaneModification(crewPlane.getPilot().getSerialNumber(), planeModification);
         JPanel extrasPanel = planeModification.makePlaneModifications();
+        
+        JPanel assignedMofidicationsGroupingPanel = new JPanel(new BorderLayout());
+        assignedMofidicationsGroupingPanel.setOpaque(false);
+        assignedMofidicationsGroupingPanel.add(extrasPanel, BorderLayout.NORTH);
 
-        GridBagConstraints constraints = makeGridBagConstraints(row, 4, modificationsWeightx);
-        assignedPilotPanel.add(extrasPanel, constraints);
+        GridBagConstraints constraints = makeGridBagConstraints(row, 4, modificationsWeightx, modificationsWeighty);
+        assignedPilotPanel.add(assignedMofidicationsGroupingPanel, constraints);
     }
 
     private JPanel createUnassignedPilots() throws PWCGException
@@ -254,7 +279,7 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
                 SquadronMember unassignedSquadronMember = sortedUnassignedPilots.get(i);
                 String pilotNameText = unassignedSquadronMember.getNameAndRank();
                 JButton unassignedPilotButton = PWCGButtonFactory.makeBriefingChalkBoardButton(pilotNameText,
-                        "Assign Pilot:" + unassignedSquadronMember.getSerialNumber(), parent);
+                        "Assign Pilot:" + unassignedSquadronMember.getSerialNumber(), "Add " + pilotNameText + " to flight", parent);
                 unassignedPilotGrid.add(unassignedPilotButton);
             }
             else
@@ -290,13 +315,14 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
         return unassignedPilotPanel;
     }
         
-    private GridBagConstraints makeGridBagConstraints(int row, int column, double weightx)
+    private GridBagConstraints makeGridBagConstraints(int row, int column, double weightx, double weighty)
     {
         GridBagConstraints pilotRowConstraints = new GridBagConstraints();
         pilotRowConstraints.fill = GridBagConstraints.HORIZONTAL;
         pilotRowConstraints.weightx = weightx;
+        pilotRowConstraints.weighty = weighty;
         pilotRowConstraints.ipadx = 1;
-        pilotRowConstraints.ipady = 0;
+        pilotRowConstraints.ipady = 1;
         pilotRowConstraints.gridx = column;
         pilotRowConstraints.gridy = row;
 

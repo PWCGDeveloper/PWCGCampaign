@@ -5,6 +5,8 @@ import java.awt.Cursor;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,7 +40,7 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 import pwcg.mission.flight.plane.PlaneMcu;
 
-public class BriefingPilotSelectionScreen extends ImageResizingPanel implements ActionListener, IFlightChanged
+public class BriefingPilotSelectionScreen extends ImageResizingPanel implements ActionListener, MouseWheelListener, IFlightChanged
 {
     private static final long serialVersionUID = 1L;
     private CampaignHomeScreen campaignHomeGui;
@@ -75,6 +77,8 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
 
             this.add(BorderLayout.WEST, makeLeftPanel());
             this.add(BorderLayout.CENTER, createCenterPanel());
+            
+            this.addMouseWheelListener(this);
         }
         catch (Exception e)
         {
@@ -128,15 +132,6 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         JButton payloadAsLeaderButton = PWCGButtonFactory.makeTranslucentMenuButton("Synchronize Payload", "Synchronize Payload", "Make flight payload the same as the leaders", this);
         buttonGrid.add(payloadAsLeaderButton);
         buttonGrid.add(PWCGButtonFactory.makeDummy());
-
-        JButton moveUpButton = PWCGButtonFactory.makeTranslucentMenuButton("Move Pilot Up", "Move Pilot Up:", "Move pilot up in formation", this);
-        buttonGrid.add(moveUpButton);
-
-        JButton moveDownButton = PWCGButtonFactory.makeTranslucentMenuButton("MovePilot Down", "Move Pilot Down:", "Move pilot down in formation", this);
-        buttonGrid.add(moveDownButton);
-
-        JButton removePilotButton = PWCGButtonFactory.makeTranslucentMenuButton("Unassign Pilot", "Unassign Pilot:", "Remove pilot from formation", this);
-        buttonGrid.add(removePilotButton);
 
         pilotAssignmentNavPanel.add(buttonGrid, BorderLayout.NORTH);
 
@@ -211,11 +206,11 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
             }
             else if (action.contains("Move Pilot Up:"))
             {
-                movePilotUp(action);
+                movePilotUp();
             }
             else if (action.contains("Move Pilot Down:"))
             {
-                movePilotDown(action);
+                movePilotDown();
             }
             else if (action.contains("Select Pilot:"))
             {
@@ -279,7 +274,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         }
     }
 
-    private void movePilotUp(String action) throws PWCGException
+    private void movePilotUp() throws PWCGException
     {
         if (!mission.isFinalized())
         {
@@ -291,7 +286,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         }
     }
 
-    private void movePilotDown(String action) throws PWCGException
+    private void movePilotDown() throws PWCGException
     {
         if (!mission.isFinalized())
         {
@@ -522,5 +517,27 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     public void setSelectedPilotSerialNumber(int selectedPilotSerialNumber)
     {
         this.selectedPilotSerialNumber = selectedPilotSerialNumber;
+    }
+
+    @Override
+    public void mouseWheelMoved(MouseWheelEvent event)
+    {
+        try
+        {
+            int notches = event.getWheelRotation();
+            if (notches < 0) 
+            {
+                movePilotUp();
+            } 
+            else 
+            {
+                movePilotDown();
+            }
+        }
+        catch (Exception e)
+        {
+            PWCGLogger.logException(e);
+            ErrorDialog.internalError(e.getMessage());
+        }
     }
 }

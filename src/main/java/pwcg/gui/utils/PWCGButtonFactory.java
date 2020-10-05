@@ -68,13 +68,14 @@ public class PWCGButtonFactory extends JButton
         return button;
     }
 
-    public static JButton makeBriefingChalkBoardButton(String buttonText, String commandText, ActionListener actionListener) throws PWCGException 
+    public static JButton makeBriefingChalkBoardButton(String buttonText, String commandText, String toolTipText, ActionListener actionListener) throws PWCGException 
     {
-        Color bgColor = ColorMap.CHALK_BACKGROUND;
         Color fgColor = ColorMap.CHALK_FOREGROUND;
         Font font = PWCGMonitorFonts.getBriefingChalkboardFont();
         
-        PWCGJButton button = makeButton(buttonText, commandText, actionListener, bgColor, fgColor, font);
+        JButton button = makeTranslucentMenuButtonGrayMenu(buttonText, commandText, toolTipText, actionListener);
+        button.setFont(font);
+        button.setForeground(fgColor);
 
         return button;
     }
@@ -131,11 +132,11 @@ public class PWCGButtonFactory extends JButton
         return button;
     }
 
-    public static JRadioButton makeBriefingChalkBoardRadioButton(String buttonText, String action, ActionListener actionListener) throws PWCGException 
+    public static JRadioButton makeBriefingChalkBoardRadioButton(String action, ActionListener actionListener) throws PWCGException 
     {
         Font font = PWCGMonitorFonts.getBriefingChalkboardFont();
         
-        JRadioButton button= new JRadioButton(buttonText);
+        JRadioButton button= new JRadioButton();
         button.setOpaque(false);
         button.setActionCommand(action);
         button.addActionListener(actionListener);
