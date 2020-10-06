@@ -114,14 +114,6 @@ public class IngressWaypointNearFront implements IIngressWaypoint
 
     private int getDistanceFromFront()
     {
-        if (flight.getFlightType() == FlightTypes.ESCORT || 
-            flight.getFlightInformation().isEscortedByPlayerFlight())
-        {
-            IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-            int rendezvousDistanceFromFront = productSpecific.getRendezvousDistanceFromFront();
-            return rendezvousDistanceFromFront;
-        }
-
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int ingressDistanceFromFront = productSpecificConfiguration.getDefaultIngressDistanceFromFront();
         return ingressDistanceFromFront;
