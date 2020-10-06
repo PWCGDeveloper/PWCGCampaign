@@ -6,6 +6,7 @@ At the PWCG web site
 Moved rendezvous back towards base
 - Improves ability to shape waypoints near front
 Bugs:
+Fixed ground attack payloads for P47 and P38 (thanks sketch)
 Fixed incorrect text for RemoveNonHistoricalSquadrons config
 Fixed incorrectly names InitialWaypointDistance.  Now correctly named LandingApproachWaypointDistance.
 
