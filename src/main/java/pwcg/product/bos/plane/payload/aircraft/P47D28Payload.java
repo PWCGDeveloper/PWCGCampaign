@@ -4,8 +4,10 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.target.TargetCategory;
 
 public class P47D28Payload extends PlanePayload implements IPlanePayload
 {
@@ -20,12 +22,17 @@ public class P47D28Payload extends PlanePayload implements IPlanePayload
         setAvailablePayload(-3, "10000000", PayloadElement.MIRROR);
         setAvailablePayload(-2, "1000000", PayloadElement.MN28);
         setAvailablePayload(-1, "100000", PayloadElement.P47_GUNSIGHT);
-                
+        
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(1, "11", PayloadElement.MG50CAL_6x);
         setAvailablePayload(2, "101", PayloadElement.MG50CAL_4x);
         setAvailablePayload(3, "1001", PayloadElement.ADDITIONAL_AMMO);
-        setAvailablePayload(6, "10001", PayloadElement.P47_GROUND_ATTACK);
+        setAvailablePayload(6, "10001", PayloadElement.LB500x1);
+        setAvailablePayload(12, "10001", PayloadElement.LB500x2);
+        setAvailablePayload(18, "10001", PayloadElement.LB500x3);
+        setAvailablePayload(24, "10001", PayloadElement.LB1000x2);
+        setAvailablePayload(36, "10001", PayloadElement.M8X6);
+        setAvailablePayload(48, "10001", PayloadElement.P47_BOMBS_AND_ROCKETS);
 	}
  
     @Override
@@ -50,6 +57,63 @@ public class P47D28Payload extends PlanePayload implements IPlanePayload
 
     protected void selectGroundAttackPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 6;
+        selectedPrimaryPayloadId = 4;
+        if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
+        {
+            selectSoftTargetPayload();
+        }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
+        {
+            selectArmoredTargetPayload();
+        }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
+        {
+            selectMediumTargetPayload();
+        }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
+        {
+            selectHeavyTargetPayload();
+        }
+    }
+    
+
+    protected void selectSoftTargetPayload()
+    {
+        selectedPrimaryPayloadId = 12;
+    }    
+
+    protected void selectArmoredTargetPayload()
+    {
+        int diceRoll = RandomNumberGenerator.getRandom(100);
+        if (diceRoll < 70)
+        {
+            selectedPrimaryPayloadId = 36;
+        }
+        else
+        {
+            selectedPrimaryPayloadId = 24;
+        }
+    }
+
+    protected void selectMediumTargetPayload()
+    {
+        int diceRoll = RandomNumberGenerator.getRandom(100);
+        if (diceRoll < 70)
+        {
+            selectedPrimaryPayloadId = 12;
+        }
+        else if (diceRoll < 90)
+        {
+            selectedPrimaryPayloadId = 18;
+        }
+        else
+        {
+            selectedPrimaryPayloadId = 48;
+        }
+    }
+
+    protected void selectHeavyTargetPayload()
+    {
+        selectedPrimaryPayloadId = 24;
     }
 }
