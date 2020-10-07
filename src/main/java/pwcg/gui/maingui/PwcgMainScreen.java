@@ -24,6 +24,7 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.utils.PlanesOwnedManager;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.MissionLogFileValidator;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgThreePanelUI;
@@ -52,7 +53,7 @@ import pwcg.gui.utils.ToolTipManager;
 public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
-    private static final String VERSION = "   PWCG Version 11.1.1";
+    private static final String VERSION = "   PWCG Version 11.1.2";
 
     private PwcgThreePanelUI pwcgThreePanel;
 	private List<JButton> campaignButtonList = new ArrayList<JButton>();
@@ -66,7 +67,6 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 		
 		this.pwcgThreePanel = new PwcgThreePanelUI(this);
 	}
-	
 
 	public void makePanels()
 	{
@@ -79,13 +79,16 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
             refresh();
 
             setButtonsEnabled();
-            validateInstallDirectory();            
+            validateInstallDirectory();
+            verifyLoggingEnabled();
+            verifyPwcgMissionDirectory();
         }
         catch (Exception e)
         {
             PWCGLogger.logException(e);
         }
 	}
+
 
     private void startMusic()
     {
@@ -538,5 +541,24 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
         editMapGUI.makeGUI();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(editMapGUI);
+    }
+    
+
+    private void verifyLoggingEnabled()
+    {
+        MissionLogFileValidator missionLogFileValidator = new MissionLogFileValidator();
+        boolean missionLogsEnabled = missionLogFileValidator.validateMissionLogsEnabled();
+        if (!missionLogsEnabled)
+        {
+            ErrorDialog.userError(
+                    "Mission logging is not enabled.  Before flying the mission open <game install dir>\\Data\\Startup.cfg and set mission_text_log = 1");
+        }
+    }
+    
+
+    private void verifyPwcgMissionDirectory()
+    {
+        // TODO Auto-generated method stub
+        
     }
 }

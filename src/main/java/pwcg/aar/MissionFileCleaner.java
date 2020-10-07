@@ -30,7 +30,17 @@ public class MissionFileCleaner
     {
         List<String> results = new ArrayList<String>();
 
-        String missionDir = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir() + "Missions\\";
+        String singlePlayerMissionDir = PWCGContext.getInstance().getDirectoryManager().getSinglePlayerMissionFilePath();
+        deleteOldMissionFiles(results, singlePlayerMissionDir);
+
+        String coopMissionDir = PWCGContext.getInstance().getDirectoryManager().getCoopMissionFilePath();
+        deleteOldMissionFiles(results, coopMissionDir);
+        
+        return results;
+    }
+
+    private void deleteOldMissionFiles(List<String> results, String missionDir) throws PWCGException
+    {
         directoryReader.sortilesInDir(missionDir);
         if (!directoryReader.getFiles().isEmpty())
         {
@@ -38,8 +48,6 @@ public class MissionFileCleaner
             selectFilesToDelete(fileNames);
             addExtensions(results, missionDir, fileNames);
         }
-        
-        return results;
     }
 
     private List<String> getMissionFilesForCampaign(List<String> filesInDirectory)

@@ -67,16 +67,8 @@ public class MissionDescriptionFile
         }
 	}
 	
-
     protected String getMissionFilePath(Campaign campaign, String fileName) throws PWCGException 
     {
-        String filepath = "..\\Data\\Missions\\" + fileName;
-        if (campaign.isCoop())
-        {
-            filepath = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir() + "Multiplayer\\Cooperative\\" + fileName;
-
-        }
-        
-        return filepath;
+        return PWCGContext.getInstance().getDirectoryManager().getMissionFilePath(campaign) + fileName;
     }
 }

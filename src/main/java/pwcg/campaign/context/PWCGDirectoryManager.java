@@ -26,7 +26,6 @@ public class PWCGDirectoryManager
 
         File simulatorDir = new File(userDir).getParentFile();
         simulatorRootDir = simulatorDir.getAbsolutePath() + "\\";
-
     }
     
     private void createPwcgDataDir(PWCGProduct product)
@@ -43,13 +42,36 @@ public class PWCGDirectoryManager
 
     public String getMissionFilePath(Campaign campaign) throws PWCGException 
     {
-        String filepath = getSimulatorDataDir() + "Missions\\";
+        String filepath = getSinglePlayerMissionFilePath();
         if (campaign.isCoop())
         {
-            filepath = getSimulatorDataDir() + "Multiplayer\\Cooperative\\";
+            filepath = getCoopMissionFilePath();
         }
         
         return filepath;
+    }
+
+    public String getSinglePlayerMissionFilePath() throws PWCGException 
+    {
+        String filepath = getSimulatorDataDir() + "Missions\\PWCG\\";
+        makeDirectoryIfNotExisting(filepath);
+        return filepath;
+    }
+
+    public String getCoopMissionFilePath() throws PWCGException 
+    {
+        String filepath = getSimulatorDataDir() + "Multiplayer\\Cooperative\\";
+        makeDirectoryIfNotExisting(filepath);        
+        return filepath;
+    }
+
+    public void makeDirectoryIfNotExisting(String path) throws PWCGException 
+    {
+        File file = new File(path);
+        if (!file.exists() && !file.isDirectory())
+        {
+            file.mkdirs();
+        }
     }
 
     public String getMissionBinPath() throws PWCGException 

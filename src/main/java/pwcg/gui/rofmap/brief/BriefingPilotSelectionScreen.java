@@ -22,7 +22,6 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.PlanesOwnedManager;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.MissionLogFileValidator;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
@@ -429,7 +428,6 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         SoundManager.getInstance().playSound("BriefingEnd.WAV");
 
         BriefingMissionUpdater.finalizeMission(briefingData);
-        verifyLoggingEnabled();
 
         campaign.setCurrentMission(mission);
         campaignHomeGui.createCampaignHomeContext();        
@@ -489,17 +487,6 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         }
 
         return true;
-    }
-
-    private void verifyLoggingEnabled()
-    {
-        MissionLogFileValidator missionLogFileValidator = new MissionLogFileValidator();
-        boolean missionLogsEnabled = missionLogFileValidator.validateMissionLogsEnabled();
-        if (!missionLogsEnabled)
-        {
-            ErrorDialog.userError(
-                    "Mission logging is not enabled.  Before flying the mission open <game install dir>\\Data\\Startup.cfg and set mission_text_log = 1");
-        }
     }
 
     @Override
