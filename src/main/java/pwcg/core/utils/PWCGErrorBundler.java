@@ -40,8 +40,10 @@ public class PWCGErrorBundler
 
 			// make sure the error dir is there
 			createTargetDirs();
-            copyMissionFiles();
-            copyCoopFiles();
+            copyMissionLogFiles();
+            copySinglePlayerMissionFiles();
+            copyCoopMissionFiles();
+            copyCoopDataFiles();
 			copyCampaignFiles();
 			zipErrorFiles();
 			cleanStaging();
@@ -73,7 +75,6 @@ public class PWCGErrorBundler
 
 	private void createTargetDirRoot()
 	{
-		// Create the specific error dir for this occurrence
 		String campaignErrorDirPath = createTargetDirPath(); 
 		File errorDir = new File(campaignErrorDirPath);
 		if (!errorDir.exists())
@@ -83,9 +84,7 @@ public class PWCGErrorBundler
 	}
 
 	private void createTargetDataDir()
-	{
-		
-		// Create the specific error dir for this occurrence
+	{		
 		String campaignTargetDataDirPath = createTargetDirDataPath() ;
 		File campaignTargetDataDir = new File(campaignTargetDataDirPath);
 		
@@ -95,16 +94,27 @@ public class PWCGErrorBundler
 		}
 	}
 
-	public void copyMissionFiles() throws IOException, PWCGException
+	private void copyMissionLogFiles() throws IOException, PWCGException
 	{
 		String programDataDir = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir(); 
 		String targetDataDir = createTargetDirDataPath(); 
-
 		copyDirectory(programDataDir, targetDataDir, "missionReport");
 	}
 
+	private void copySinglePlayerMissionFiles() throws IOException, PWCGException
+    {
+        String missionFileDir = PWCGContext.getInstance().getDirectoryManager().getSinglePlayerMissionFilePath(); 
+        String targetDataDir = createTargetDirSinglePlayerMissionPath(); 
+        copyDirectory(missionFileDir, targetDataDir, "*");
+    }
+
+	private void copyCoopMissionFiles() throws IOException, PWCGException
+    {
+        String coopMissionFileDir = PWCGContext.getInstance().getDirectoryManager().getCoopMissionFilePath(); 
+        copyDirectory(coopMissionFileDir, targetDataDir, "*");
+    }
 	
-    public void copyCoopFiles() throws IOException, PWCGException
+	private void copyCoopDataFiles() throws IOException, PWCGException
     {
         String coopDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCoopDir(); 
         String targetDataDir = createTargetDirCoopPath(); 
@@ -112,7 +122,7 @@ public class PWCGErrorBundler
         copyDirectory(coopDir, targetDataDir, "*");
     }
 
-	public void copyCampaignFiles() throws IOException, PWCGException
+	private void copyCampaignFiles() throws IOException, PWCGException
 	{
         copyDirectory(programDataDir, targetDataDir, "*");
 	}
@@ -129,11 +139,23 @@ public class PWCGErrorBundler
 		return campaignErrorDirPath;
 	}
 
-	private String createTargetDirDataPath() 
-	{
-		String campaignTargetDataDirPath = PWCGContext.getInstance().getDirectoryManager().getPwcgRootDir() + ERROR_DIR_ROOT + "\\" + targetErrorFileName + "\\Data"; 
-		return campaignTargetDataDirPath;
-	}
+    private String createTargetDirDataPath() 
+    {
+        String campaignTargetDataDirPath = PWCGContext.getInstance().getDirectoryManager().getPwcgRootDir() + ERROR_DIR_ROOT + "\\" + targetErrorFileName + "\\Data"; 
+        return campaignTargetDataDirPath;
+    }
+
+    private String createTargetDirSinglePlayerMissionPath() 
+    {
+        String campaignTargetDataDirPath = PWCGContext.getInstance().getDirectoryManager().getPwcgRootDir() + ERROR_DIR_ROOT + "\\" + targetErrorFileName + "\\Data\\Mission\\PWCG"; 
+        return campaignTargetDataDirPath;
+    }
+
+    private String createTargetDirCoopMissionPath() 
+    {
+        String campaignTargetDataDirPath = PWCGContext.getInstance().getDirectoryManager().getPwcgRootDir() + ERROR_DIR_ROOT + "\\" + targetErrorFileName + "\\Data\\Mission\\Cooperative"; 
+        return campaignTargetDataDirPath;
+    }
 
     private String createTargetDirCoopPath() 
     {
@@ -148,7 +170,7 @@ public class PWCGErrorBundler
 		return errorDateDir;
 	}
 
-	public String createSourceCampaignDirPath()
+	private String createSourceCampaignDirPath()
 	{
 		Campaign campaign  = PWCGContext.getInstance().getCampaign();
 		String campaignDirPath = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName(); 
@@ -171,7 +193,7 @@ public class PWCGErrorBundler
         
         if (!destinationDir.exists())
         {
-            destinationDir.mkdir();
+            destinationDir.mkdirs();
         }
 	                	    
 		PWCGLogger.log(LogLevel.INFO, "Directory being copied is " + source);
