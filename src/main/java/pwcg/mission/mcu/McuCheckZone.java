@@ -18,7 +18,7 @@ public class McuCheckZone extends BaseFlightMcu
     private int zone = 15000;
 	private int cylinder = 1;
 	private int closer = 1;
-	private List<Coalition> planeCoalitions = new ArrayList<Coalition>();
+	private List<Coalition> triggerCoalitions = new ArrayList<Coalition>();
 	private List<Coalition> vehicleCoalitions = new ArrayList<Coalition>();
 	
     public McuCheckZone (String name)
@@ -29,7 +29,7 @@ public class McuCheckZone extends BaseFlightMcu
 
     public void triggerCheckZoneByCoalitions (List<Coalition> coalitions)
     {
-        planeCoalitions.clear();
+        triggerCoalitions.clear();
         for (Coalition coalition: coalitions)
         {
             addPlaneCoalition(coalition);
@@ -38,13 +38,13 @@ public class McuCheckZone extends BaseFlightMcu
     
     public void triggerCheckZoneByCoalition (Coalition coalition)
     {
-        planeCoalitions.clear();
+        triggerCoalitions.clear();
         addPlaneCoalition(coalition);
     }
 
     public void triggerCheckZoneByFlight (IFlight flight)
     {
-        planeCoalitions.clear();
+        triggerCoalitions.clear();
         for (PlaneMcu plane: flight.getFlightPlanes().getPlanes())
         {
             this.setObject(plane.getLinkTrId());
@@ -53,13 +53,13 @@ public class McuCheckZone extends BaseFlightMcu
 
     public void triggerCheckZoneBySingleObject (int objectId)
     {
-        planeCoalitions.clear();
+        triggerCoalitions.clear();
         this.setObject(objectId);
     }
 
 	public void triggerCheckZoneByMultipleObjects(Iterable<Integer> playerPlaneIds) throws PWCGException
     {       
-		planeCoalitions.clear();
+		triggerCoalitions.clear();
 		for (int playerPlaneId : playerPlaneIds)
 		{
 			setObject(playerPlaneId);
@@ -87,7 +87,7 @@ public class McuCheckZone extends BaseFlightMcu
             
             if (objects.size() == 0)
             {
-                CoalitionWriter.writePlaneCoalition(writer, planeCoalitions);
+                CoalitionWriter.writePlaneCoalition(writer, triggerCoalitions);
                 CoalitionWriter.writeVehicleCoalition(writer, vehicleCoalitions);
             }
             
@@ -129,11 +129,11 @@ public class McuCheckZone extends BaseFlightMcu
 
 	private void addPlaneCoalition(Coalition coalition) 
 	{
-        planeCoalitions.add(coalition);
+        triggerCoalitions.add(coalition);
 	}
 
-    public List<Coalition> getPlaneCoalitions()
+    public List<Coalition> getTriggerCoalitions()
     {
-        return planeCoalitions;
+        return triggerCoalitions;
     }
 }

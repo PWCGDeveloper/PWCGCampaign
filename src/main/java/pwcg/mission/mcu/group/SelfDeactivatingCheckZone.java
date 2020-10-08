@@ -201,7 +201,7 @@ public class SelfDeactivatingCheckZone implements ICheckZone
     @Override
     public void triggerOnPlayerOrCoalitionProximity(Mission mission) throws PWCGException
     {
-        List<Coalition> coalitions = checkZone.getPlaneCoalitions();
+        List<Coalition> coalitions = checkZone.getTriggerCoalitions();
         Set<Integer> triggerPlanes = new HashSet<>();
         for (Coalition coalition : coalitions)
         {
