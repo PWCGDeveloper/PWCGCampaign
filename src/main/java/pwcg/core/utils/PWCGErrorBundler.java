@@ -111,6 +111,7 @@ public class PWCGErrorBundler
 	private void copyCoopMissionFiles() throws IOException, PWCGException
     {
         String coopMissionFileDir = PWCGContext.getInstance().getDirectoryManager().getCoopMissionFilePath(); 
+        String targetDataDir = createTargetDirCoopMissionPath(); 
         copyDirectory(coopMissionFileDir, targetDataDir, "*");
     }
 	
