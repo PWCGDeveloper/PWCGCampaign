@@ -25,8 +25,8 @@ public interface ICheckZone {
     void setCheckZoneTriggerCoalitions(List<Coalition> coalitions);
 
     void validate() throws PWCGException;
+
     void validateTarget(int entryPoint) throws PWCGException;
 
-    void triggerOnPlayerProximity(Mission mission) throws PWCGException;
-    void triggerOnPlayerOrCoalitionProximity(Mission mission) throws PWCGException;
+    void triggerCheckZone(Mission mission) throws PWCGException;
 }

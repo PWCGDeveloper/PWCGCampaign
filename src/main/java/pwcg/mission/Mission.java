@@ -216,7 +216,7 @@ public class Mission
             missionAssaultIconBuilder.createAssaultIcons(missionBattleManager.getMissionAssaultDefinitions());
 
             MissionCheckZoneTriggerBuilder missionCheckZoneTriggerBuilder = new MissionCheckZoneTriggerBuilder(this);
-            missionCheckZoneTriggerBuilder.triggerGroundUnitsOnPlayerProximity();
+            missionCheckZoneTriggerBuilder.triggerGroundUnits();
 
             assignIndirectFireTargets();
 

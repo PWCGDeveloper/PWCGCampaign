@@ -216,14 +216,8 @@ public class GroundUnitCollection implements IGroundUnitCollection
     }
 
     @Override
-    public void triggerOnPlayerProximity(Mission mission) throws PWCGException
+    public void triggerGroundUnitCollection(Mission mission) throws PWCGException
     {
-        missionBeginUnit.triggerOnPlayerProximity(mission);
-    }
-
-    @Override
-    public void triggerOnPlayerOrCoalitionProximity(Mission mission) throws PWCGException
-    {
-        missionBeginUnit.triggerOnPlayerOrCoalitionProximity(mission);
+        missionBeginUnit.triggerMissionBeginCheckZone(mission);
     }
 }

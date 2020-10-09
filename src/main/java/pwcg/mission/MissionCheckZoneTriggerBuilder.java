@@ -12,25 +12,11 @@ public class MissionCheckZoneTriggerBuilder
         this.mission = mission;
     }
     
-    public void triggerGroundUnitsOnPlayerProximity() throws PWCGException
-    {
-        triggerPlayerTargetsOnAnyPlayer();
-        triggerGroundUnitsOnAnyPlayer();
-    }
-
-    private void triggerPlayerTargetsOnAnyPlayer() throws PWCGException
-    {
-        for (IGroundUnitCollection playerTarget : mission.getMissionGroundUnitBuilder().getAllMissionGroundUnits())
-        {
-            playerTarget.triggerOnPlayerProximity(mission);
-        }
-    }
-
-    private void triggerGroundUnitsOnAnyPlayer() throws PWCGException
+    public void triggerGroundUnits() throws PWCGException
     {
         for (IGroundUnitCollection groundUnit: mission.getMissionGroundUnitBuilder().getAllMissionGroundUnits())
         {
-            groundUnit.triggerOnPlayerProximity(mission);
+            groundUnit.triggerGroundUnitCollection(mission);
         }
     }
 }

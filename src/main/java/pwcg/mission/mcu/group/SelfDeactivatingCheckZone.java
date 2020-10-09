@@ -2,9 +2,8 @@ package pwcg.mission.mcu.group;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
@@ -19,6 +18,7 @@ import pwcg.mission.mcu.McuCheckZone;
 import pwcg.mission.mcu.McuDeactivate;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuValidator;
+import pwcg.mission.mcu.group.virtual.VirtualWaypoint;
 
 
 
@@ -44,27 +44,23 @@ public class SelfDeactivatingCheckZone implements ICheckZone
 
     private void initialize(Coordinate coordinate, int zone) 
     {
-        checkZone.setZone(zone);
-                        
-        activateCZTimer.setPosition(coordinate.copy());
-        checkZone.setPosition(coordinate.copy());
-
-        deactivateCZTimer.setPosition(coordinate.copy());
-        deactivateCZ.setPosition(coordinate.copy());
-        
-        activateCZTimer.setName("CZ Activate Timer");
-        
-        deactivateCZTimer.setName("CZ Deactivate Timer");
-        deactivateCZ.setName("CZ Deactivate");
-
-        activateCZTimer.setDesc("CZ Activate Timer");
         checkZone.setDesc("CZ");
-
-        deactivateCZTimer.setDesc("VWP CZ Deactivate Timer");
-        deactivateCZ.setDesc("CZ Deactivate");
-        
-        activateCZTimer.setTimer(0);
+        checkZone.setPosition(coordinate.copy());
+        checkZone.setZone(zone);
+          
+        deactivateCZTimer.setPosition(coordinate.copy());
+        deactivateCZTimer.setName("CZ Deactivate Timer");
+        deactivateCZTimer.setDesc("CZ Deactivate Timer");
         deactivateCZTimer.setTimer(0);
+
+        deactivateCZ.setPosition(coordinate.copy());
+        deactivateCZ.setName("CZ Deactivate");
+        deactivateCZ.setDesc("CZ Deactivate");
+
+        activateCZTimer.setPosition(coordinate.copy());
+        activateCZTimer.setName("CZ Activate Timer");
+        activateCZTimer.setDesc("CZ Activate Timer");
+        activateCZTimer.setTimer(0);
     }
 
     private void linkTargets()
@@ -193,28 +189,50 @@ public class SelfDeactivatingCheckZone implements ICheckZone
     }
 
     @Override
-    public void triggerOnPlayerProximity(Mission mission) throws PWCGException
+    public void triggerCheckZone(Mission mission) throws PWCGException
     {
-        checkZone.triggerCheckZoneByMultipleObjects(mission.getMissionFlightBuilder().getPlayersInMission());        
+        triggerCheckZoneByPlayer(mission);
+        triggerCheckZoneByActualFlights(mission);
+        triggerCheckZoneByVirtualFlights(mission);
     }
 
-    @Override
-    public void triggerOnPlayerOrCoalitionProximity(Mission mission) throws PWCGException
+    public void triggerCheckZoneByPlayer(Mission mission) throws PWCGException
     {
-        List<Coalition> coalitions = checkZone.getTriggerCoalitions();
-        Set<Integer> triggerPlanes = new HashSet<>();
-        for (Coalition coalition : coalitions)
+        List<Integer> triggerPlanes = mission.getMissionFlightBuilder().getPlayersInMission();
+        checkZone.triggerCheckZoneByMultipleObjects(triggerPlanes);        
+    }
+    
+    private void triggerCheckZoneByActualFlights(Mission mission) throws PWCGException
+    {
+        List<Integer> triggerPlanes = new ArrayList<>();
+        List<IFlight> flights = mission.getMissionFlightBuilder().getAllAerialFlights();
+        for (IFlight flight : flights)
         {
-            List<IFlight> flights = mission.getMissionFlightBuilder().getAllFlightsForSide(coalition.getSide());
-            for (IFlight flight : flights)
+            for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
             {
-                for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
+                triggerPlanes.add(plane.getEntity().getIndex());
+            }
+        }
+        checkZone.triggerCheckZoneByMultipleObjects(triggerPlanes);        
+    }
+
+    private void triggerCheckZoneByVirtualFlights(Mission mission) throws PWCGException
+    {
+        List<Integer> triggerPlanes = new ArrayList<>();
+        List<IFlight> flights = mission.getMissionFlightBuilder().getAllAerialFlights();
+        for (IFlight flight : flights)
+        {
+            if (flight.getFlightInformation().isVirtual())
+            {
+                for (VirtualWaypoint virtualWaypoint : flight.getVirtualWaypointPackage().getVirtualWaypoints())
                 {
-                    triggerPlanes.add(plane.getEntity().getIndex());
+                    for (PlaneMcu plane : virtualWaypoint.getVwpPlanes().getAllPlanes())
+                    {
+                        triggerPlanes.add(plane.getEntity().getIndex());
+                    }
                 }
             }
         }
-        triggerPlanes.addAll(mission.getMissionFlightBuilder().getPlayersInMission());
-        checkZone.triggerCheckZoneByMultipleObjects(triggerPlanes);
+        checkZone.triggerCheckZoneByMultipleObjects(triggerPlanes);        
     }
 }

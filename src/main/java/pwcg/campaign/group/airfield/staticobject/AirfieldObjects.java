@@ -68,7 +68,7 @@ public class AirfieldObjects
     public void finish(Mission mission) throws PWCGException
     {
         vehiclesForAirfield.finishGroundUnitCollection();
-        vehiclesForAirfield.triggerOnPlayerOrCoalitionProximity(mission);
+        vehiclesForAirfield.triggerGroundUnitCollection(mission);
     }
 
     public int getUnitCount()
