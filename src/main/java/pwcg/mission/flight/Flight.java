@@ -135,8 +135,8 @@ public abstract class Flight implements IFlight
         finalizeCoreFlight();        
         finalizeWingmenForFlight();
         finalizeLinkedFlights();
-        finalizeVirtualFlight();        
         finalizeSkinsForFlight();
+        finalizeVirtualFlight();        
     }
 
     @Override
