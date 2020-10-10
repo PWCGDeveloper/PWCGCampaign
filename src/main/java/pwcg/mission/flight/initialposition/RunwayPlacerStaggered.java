@@ -66,9 +66,20 @@ public class RunwayPlacerStaggered implements IRunwayPlacer
 
         Coordinate fieldPlanePosition = airfield.getTakeoffLocation().getPosition().copy();
         Coordinate initialCoord = MathUtils.calcNextCoord(fieldPlanePosition, initialPlacementAngleAngle, (offsetLeftDistance));
+        
+        if (flight.getFlightPlanes().getFlightSize() < 4)
+        {
+            initialCoord = moveFlightForwardToEnsureTakeoff(initialCoord, takeoffAngle);
+        }
+        
         return initialCoord;
     }
     
+    private Coordinate moveFlightForwardToEnsureTakeoff(Coordinate initialCoord, double takeoffAngle) throws PWCGException
+    {
+        return MathUtils.calcNextCoord(initialCoord, takeoffAngle, 50.0);
+    }
+
     private Coordinate calculateNextRight(Coordinate lastPosition) throws PWCGException
     {
         double takeoffAngle = airfield.getTakeoffLocation().getOrientation().getyOri();
