@@ -12,7 +12,6 @@ import pwcg.mission.target.TargetType;
 public interface IGroundUnitCollection
 {
     Coordinate getPosition() throws PWCGException;
-    Coordinate getPosition(Side side) throws PWCGException;
     TargetType getTargetType();
     void write(BufferedWriter writer) throws PWCGException;
     Coordinate getTargetCoordinatesFromGroundUnits(Side determineEnemySide) throws PWCGException;
