@@ -30,8 +30,8 @@ public class VirtualWaypointKillFuture
         upstreamKillTimer.setTimer(1);
         upstreamKillTimer.setPosition(vwpCoordinate.getPosition().copy());
         upstreamKillTimer.setOrientation(vwpCoordinate.getOrientation().copy());
-        upstreamKillTimer.setName("Delete Planes Timer");
-        upstreamKillTimer.setDesc("Delete Planes Timer");
+        upstreamKillTimer.setName("Upstream Kill Timer");
+        upstreamKillTimer.setDesc("Upstream Kill Timer");
     }
 
     private void createTargetAssociations()

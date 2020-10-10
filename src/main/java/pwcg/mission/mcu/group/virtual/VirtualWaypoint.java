@@ -26,6 +26,7 @@ public final class VirtualWaypoint implements IVirtualWaypoint
     private VirtualWaypointStartNextVwp vwpStartNextVwp;
     private VirtualWaypointDeletePlanes vwpDeletePlanes;
     private VirtualWaypointDeactivateNextVwp vwpDeactivateNextVwp;
+    private VirtualWaypointDeactivateThisVwp vwpDeactivateThisVwp;
     private VirtualWaypointKillFuture vwpKillFuture;
 
     public static int VWP_TRIGGGER_DISTANCE = 20000;
@@ -74,6 +75,7 @@ public final class VirtualWaypoint implements IVirtualWaypoint
             vwpStartNextVwp.write(writer);
             vwpDeletePlanes.write(writer);
             vwpDeactivateNextVwp.write(writer);
+            vwpDeactivateThisVwp.write(writer);
             vwpKillFuture.write(writer);
             if (vwpEscort != null)
             {
@@ -112,12 +114,15 @@ public final class VirtualWaypoint implements IVirtualWaypoint
 
         vwpDeactivateNextVwp = new VirtualWaypointDeactivateNextVwp(vwpCoordinate);
         vwpDeactivateNextVwp.build();
+        
+        vwpDeactivateThisVwp = new VirtualWaypointDeactivateThisVwp(vwpCoordinate);
+        vwpDeactivateThisVwp.build();
     }
 
     private void linkElements() throws PWCGException
     {
         vwpCheckZone.link(vwpStartNextVwp, vwpDeactivateNextVwp, vwpActivate);
-        vwpDeactivateNextVwp.link(vwpStartNextVwp);
+        vwpDeactivateNextVwp.link(vwpStartNextVwp, vwpDeactivateThisVwp);
     }
 
     @Override

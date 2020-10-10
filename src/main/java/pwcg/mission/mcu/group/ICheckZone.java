@@ -29,4 +29,6 @@ public interface ICheckZone {
     void validateTarget(int entryPoint) throws PWCGException;
 
     void triggerCheckZone(Mission mission) throws PWCGException;
+
+    int getCheckZoneIndex();
 }

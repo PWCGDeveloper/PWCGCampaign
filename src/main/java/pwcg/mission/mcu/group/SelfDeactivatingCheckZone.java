@@ -128,6 +128,12 @@ public class SelfDeactivatingCheckZone implements ICheckZone
     }
 
     @Override
+    public int getCheckZoneIndex()
+    {
+        return checkZone.getIndex();
+    }
+
+    @Override
     public void setCheckZoneTriggerObject(int objectMcuIndex)
     {
         checkZone.setObject(objectMcuIndex);
