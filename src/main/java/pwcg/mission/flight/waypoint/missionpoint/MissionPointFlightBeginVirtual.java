@@ -52,7 +52,7 @@ public class MissionPointFlightBeginVirtual extends MissionPointSetSingleWaypoin
     @Override
     public void setLinkToNextTarget(int nextTargetIndex) throws PWCGException
     {
-        this.activationVwpTimer.setTarget(nextTargetIndex);
+        super.getLastWaypoint().setTarget(nextTargetIndex);
     }
 
     @Override
