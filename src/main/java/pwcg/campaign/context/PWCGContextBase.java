@@ -36,7 +36,8 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     protected StaticObjectDefinitionManager staticObjectDefinitionManager = new StaticObjectDefinitionManager();
     protected PlaneTypeFactory planeTypeFactory = new PlaneTypeFactory();
     protected boolean testMode = false;
-            
+    protected String missionLogPath = "";
+
     protected List<String> campaignStartDates = new ArrayList<String>();
     
     @Override
@@ -237,6 +238,18 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     public StaticObjectDefinitionManager getStaticObjectDefinitionManager()
     {
         return staticObjectDefinitionManager;
+    }
+
+    @Override
+    public void setMissionLogDirectory(String missionLogPath)
+    {
+        this.missionLogPath = missionLogPath + "\\";        
+    }
+
+    @Override
+    public String getMissionLogDirectory()
+    {
+        return missionLogPath;        
     }
 
     @Override

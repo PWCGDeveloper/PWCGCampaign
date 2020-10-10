@@ -109,7 +109,7 @@ public class MissionFileBinaryBuilder implements buildCommandPath
 
     private static String formDataDirArg(Campaign campaign) throws PWCGException
     {
-        String dataDir = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir();
+        String dataDir = PWCGContext.getInstance().getDirectoryManager().getMissionBinPath();
         if (dataDir.endsWith("\\"))
         {
             dataDir = dataDir.substring(0, dataDir.length() - 1);

@@ -27,7 +27,7 @@ public class PWCGDirectoryManager
         File simulatorDir = new File(userDir).getParentFile();
         simulatorRootDir = simulatorDir.getAbsolutePath() + "\\";
     }
-    
+
     private void createPwcgDataDir(PWCGProduct product)
     {
         if (product == PWCGProduct.FC)
@@ -40,32 +40,32 @@ public class PWCGDirectoryManager
         }
     }
 
-    public String getMissionFilePath(Campaign campaign) throws PWCGException 
+    public String getMissionFilePath(Campaign campaign) throws PWCGException
     {
         String filepath = getSinglePlayerMissionFilePath();
         if (campaign.isCoop())
         {
             filepath = getCoopMissionFilePath();
         }
-        
+
         return filepath;
     }
 
-    public String getSinglePlayerMissionFilePath() throws PWCGException 
+    public String getSinglePlayerMissionFilePath() throws PWCGException
     {
         String filepath = getSimulatorDataDir() + "Missions\\PWCG\\";
         makeDirectoryIfNotExisting(filepath);
         return filepath;
     }
 
-    public String getCoopMissionFilePath() throws PWCGException 
+    public String getCoopMissionFilePath() throws PWCGException
     {
         String filepath = getSimulatorDataDir() + "Multiplayer\\Cooperative\\";
-        makeDirectoryIfNotExisting(filepath);        
+        makeDirectoryIfNotExisting(filepath);
         return filepath;
     }
 
-    public void makeDirectoryIfNotExisting(String path) throws PWCGException 
+    public void makeDirectoryIfNotExisting(String path) throws PWCGException
     {
         File file = new File(path);
         if (!file.exists() && !file.isDirectory())
@@ -74,13 +74,13 @@ public class PWCGDirectoryManager
         }
     }
 
-    public String getMissionBinPath() throws PWCGException 
+    public String getMissionBinPath() throws PWCGException
     {
         String filepath = getSimulatorRootDir() + "bin\\";
         return filepath;
     }
 
-    public String getMissionRewritePath() throws PWCGException 
+    public String getMissionRewritePath() throws PWCGException
     {
         String filepath = getSimulatorRootDir() + "bin\\resaver\\";
         return filepath;
@@ -91,71 +91,66 @@ public class PWCGDirectoryManager
         pwcgCampaignDir = pwcgRootDir + "Campaigns\\";
     }
 
-    public String getSimulatorDataDir()
-    {
-        return simulatorRootDir + "data\\";
-    }
-
     public String getPwcgCampaignsDir()
     {
         return pwcgCampaignDir;
     }
-    
+
     public String getPwcgAudioDir()
     {
         return pwcgRootDir + "Audio\\";
     }
-    
+
     public String getPwcgCoopDir()
     {
         return pwcgRootDir + "Coop\\";
     }
-    
+
     public String getPwcgInputDir()
     {
         return pwcgDataDir + "Input\\";
     }
-    
+
     public String getPwcgReportDir()
     {
         return pwcgRootDir + "Report\\";
     }
-    
+
     public String getPwcgAircraftInfoDir()
     {
         return getPwcgInputDir() + "Aircraft\\";
     }
-    
+
     public String getPwcgAirfieldHotSpotsDir()
     {
         return getPwcgInputDir() + "AirfieldHotSpots\\";
     }
-    
+
     public String getPwcgConfigurationDir()
     {
         return getPwcgInputDir() + "Configuration\\";
     }
-    
+
     public String getPwcgSquadronDir()
     {
         return getPwcgInputDir() + "Squadron\\";
     }
-    
+
     public String getPwcgSquadronMovingFrontDir()
     {
         return getPwcgInputDir() + "SquadronMovingFront\\";
     }
-    
+
     public String getPwcgImagesDir()
     {
         return pwcgDataDir + "Images\\";
     }
-    
+
     public String getPwcgNamesDir()
     {
         return pwcgDataDir + "Names\\";
     }
-    
+
     public String getPwcgUserDir()
     {
         return pwcgDataDir + "User\\";
@@ -186,25 +181,19 @@ public class PWCGDirectoryManager
         return simulatorRootDir;
     }
 
-    public void setSimulatorRootDir(String simulatorRootDir)
-    {
-        this.simulatorRootDir = simulatorRootDir;
-    }
-
     public String getPwcgRootDir()
     {
         return pwcgRootDir;
     }
 
-    public void setPwcgRootDir(String pwcgRootDir)
+    public String getSimulatorDataDir()
     {
-        this.pwcgRootDir = pwcgRootDir;
+        return simulatorRootDir + "data\\";
     }
 
-    public void setPwcgCampaignsDir(String pwcgCampaignDir)
+    public String getSkinsDir()
     {
-        this.pwcgCampaignDir = pwcgCampaignDir;
+        return getSimulatorDataDir() + "graphics\\skins\\";
     }
 
 }
-

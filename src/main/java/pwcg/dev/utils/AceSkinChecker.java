@@ -37,7 +37,7 @@ public class AceSkinChecker
             skinName = skinName + ".dds";
         }
 
-        String filename = System.getProperty("user.dir") + PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir() + "\\graphics\\skins\\" + aircraftName + "\\" + skinName;
+        String filename = System.getProperty("user.dir") + PWCGContext.getInstance().getDirectoryManager().getSkinsDir() + aircraftName + "\\" + skinName;
         File file = new File(filename);
         if (file.exists())
         {

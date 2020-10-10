@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import pwcg.campaign.context.PWCGContext;
+import pwcg.aar.AARLogFileLocationFinder;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DirectoryReader;
 
@@ -18,18 +18,17 @@ public class AARLogFileSetFactory
     {    
     }
 
-    public void determineMissionResultsFileForRequestedFileSet(String logFileName) throws PWCGException 
+    public void determineMissionResultsFileForRequestedFileSet(String rootLogFileName) throws PWCGException 
     {
         logFileSetsAvailable.clear();
-        getMissionResultsFileSetForDirectory(logFileName);
+        getMissionResultsFileSetForDirectory(rootLogFileName);
     }
 
-    private void getMissionResultsFileSetForDirectory(String logFileNameForMission) throws PWCGException
+    private void getMissionResultsFileSetForDirectory(String rootLogFileName) throws PWCGException
     {
-        String fileSetIdentifier = extractMissionDateFromMissionLogFileName(logFileNameForMission);
-        
-        String simulatorDataDir = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir();
-        directoryReader.sortilesInDir(simulatorDataDir);
+        String fileSetIdentifier = extractMissionDateFromMissionLogFileName(rootLogFileName);
+        String logFileDir = AARLogFileLocationFinder.determineLogFileLocation(rootLogFileName);
+        directoryReader.sortilesInDir(logFileDir);
         for (String logFileName : directoryReader.getFiles()) 
         {
             if (logFileName.contains(fileSetIdentifier))
@@ -39,29 +38,29 @@ public class AARLogFileSetFactory
         }
     }
 
-    private void addLogFileToResultSet(String logFileName)
+    private void addLogFileToResultSet(String rootLogFileName) throws PWCGException
     {
-        int fileIndex = extractMissionSequenceFromMissionLogFileName(logFileName);
-        String simulatorDataDir = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir();
-        String filepath = simulatorDataDir + logFileName;
+        String logFileDir = AARLogFileLocationFinder.determineLogFileLocation(rootLogFileName);
+        int fileIndex = extractMissionSequenceFromMissionLogFileName(rootLogFileName);
+        String filepath = logFileDir + rootLogFileName;
         logFileSetsAvailable.put(fileIndex, filepath);
     }
 
-    private int extractMissionSequenceFromMissionLogFileName(String logFileName)
+    private int extractMissionSequenceFromMissionLogFileName(String rootLogFileName)
     {
-        int indexStart = logFileName.indexOf("[");
-        int indexEnd = logFileName.indexOf("]");
-        String fileindexStr = logFileName.substring(indexStart + 1, indexEnd);
+        int indexStart = rootLogFileName.indexOf("[");
+        int indexEnd = rootLogFileName.indexOf("]");
+        String fileindexStr = rootLogFileName.substring(indexStart + 1, indexEnd);
         int fileIndex = Integer.valueOf(fileindexStr);
         return fileIndex;
     }
 
-    private String extractMissionDateFromMissionLogFileName(String logFileName)
+    private String extractMissionDateFromMissionLogFileName(String rootLogFileName)
     {
-        int startIndex = logFileName.indexOf("(") + 1;
-        int endIndex = logFileName.indexOf(")");
+        int startIndex = rootLogFileName.indexOf("(") + 1;
+        int endIndex = rootLogFileName.indexOf(")");
         
-        String fileSetIdentifier = logFileName.substring(startIndex, endIndex);
+        String fileSetIdentifier = rootLogFileName.substring(startIndex, endIndex);
         
         return fileSetIdentifier;
     }

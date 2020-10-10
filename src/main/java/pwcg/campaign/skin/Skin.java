@@ -10,7 +10,7 @@ import pwcg.core.utils.PWCGLogger;
 
 public class Skin implements Cloneable
 {
-    public static final String PRODUCT_SKIN_DIR = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir() + "graphics\\skins\\";
+    public static final String PRODUCT_SKIN_DIR = PWCGContext.getInstance().getDirectoryManager().getSkinsDir();
     
 	private String skinName = "";
 	private String planeType = "";

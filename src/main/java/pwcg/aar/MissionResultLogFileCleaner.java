@@ -27,12 +27,26 @@ public class MissionResultLogFileCleaner
         int deleteAll = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.DeleteAllMissionLogsKey);
         if (deleteAll == 1)
         {
-        	List<String> allMissionFiles = getAllMissionResultsFiles();
-        	filesToDelete = selectOlderMissionLogFiles(allMissionFiles);
-            FileUtils.deleteFilesByFileName (filesToDelete);
+            String simulatorDataDir = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir();
+            filesToDelete.addAll(cleanOldMissionLogs(simulatorDataDir));
+
+            String userLogDir = PWCGContext.getInstance().getMissionLogDirectory();
+            if (!userLogDir.isEmpty())
+            {
+                filesToDelete.addAll(cleanOldMissionLogs(userLogDir));
+            }
         }
         
         return filesToDelete.size();
+    }
+
+    private List<String> cleanOldMissionLogs(String simulatorDataDir) throws PWCGException
+    {
+        List<String> filesToDelete;
+        List<String> allMissionFiles = getAllMissionResultsFiles(simulatorDataDir);
+        filesToDelete = selectOlderMissionLogFiles(allMissionFiles);
+        FileUtils.deleteFilesByFileName (filesToDelete);
+        return filesToDelete;
     }
 
     public  List<String> selectOlderMissionLogFiles(List<String> allMissionFiles) throws PWCGException 
@@ -51,17 +65,16 @@ public class MissionResultLogFileCleaner
         return filesToDelete;
     }
 
-    private List<String> getAllMissionResultsFiles() throws PWCGException 
+    private List<String> getAllMissionResultsFiles(String directory) throws PWCGException 
     {
         List<String> results = new ArrayList<String>();
-        String simulatorDataDir = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir();
 
-        directoryReader.sortilesInDir(simulatorDataDir);
+        directoryReader.sortilesInDir(directory);
         for (String filename : directoryReader.getFiles()) 
         {
             if (filename.contains("missionReport") && filename.contains(".txt"))
             {
-                String filepath = simulatorDataDir + filename;
+                String filepath = directory + filename;
                 results.add(filepath);
             }
         }

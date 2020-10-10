@@ -5,11 +5,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+import pwcg.aar.AARLogFileLocationFinder;
 import pwcg.aar.inmission.phase1.parse.AARMissionLogFileSet;
 import pwcg.aar.inmission.phase1.parse.event.AType;
 import pwcg.aar.inmission.phase1.parse.event.IAType0;
 import pwcg.aar.inmission.phase1.parse.event.LogEventFactory;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
@@ -25,8 +25,8 @@ public class AARHeaderParser
         String missionFileName = AARMissionLogFileSet.NOT_AVAILABLE;
         try
         {
-            String simulatorDataDir = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir();
-            File logFileWithHeader = new File(simulatorDataDir + logFileName);
+            String logFileDirDir = AARLogFileLocationFinder.determineLogFileLocation(logFileName);
+            File logFileWithHeader = new File(logFileDirDir + logFileName);
             BufferedReader reader = new BufferedReader(new FileReader(logFileWithHeader));
             String line;
 

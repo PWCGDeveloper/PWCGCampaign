@@ -81,7 +81,6 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
             setButtonsEnabled();
             validateInstallDirectory();
             verifyLoggingEnabled();
-            verifyPwcgMissionDirectory();
         }
         catch (Exception e)
         {
@@ -547,18 +546,17 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
     private void verifyLoggingEnabled()
     {
         MissionLogFileValidator missionLogFileValidator = new MissionLogFileValidator();
-        boolean missionLogsEnabled = missionLogFileValidator.validateMissionLogsEnabled();
-        if (!missionLogsEnabled)
+        missionLogFileValidator.analyzeStartupCfg();
+        
+        if (!missionLogFileValidator.isMissionLoggingEnabled())
         {
             ErrorDialog.userError(
                     "Mission logging is not enabled.  Before flying the mission open <game install dir>\\Data\\Startup.cfg and set mission_text_log = 1");
         }
-    }
-    
-
-    private void verifyPwcgMissionDirectory()
-    {
-        // TODO Auto-generated method stub
         
+        if (!missionLogFileValidator.getMissionLogPath().isEmpty())
+        {
+            PWCGContext.getInstance().setMissionLogDirectory(missionLogFileValidator.getMissionLogPath());
+        }
     }
 }

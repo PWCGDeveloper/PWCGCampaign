@@ -96,9 +96,15 @@ public class PWCGErrorBundler
 
 	private void copyMissionLogFiles() throws IOException, PWCGException
 	{
-		String programDataDir = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir(); 
+		String simulatorDataDir = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir(); 
 		String targetDataDir = createTargetDirDataPath(); 
-		copyDirectory(programDataDir, targetDataDir, "missionReport");
+		copyDirectory(simulatorDataDir, targetDataDir, "missionReport");
+		
+        String userLogDir = PWCGContext.getInstance().getMissionLogDirectory();
+        if (!userLogDir.isEmpty())
+        {
+            copyDirectory(userLogDir, targetDataDir, "missionReport");
+        }
 	}
 
 	private void copySinglePlayerMissionFiles() throws IOException, PWCGException
