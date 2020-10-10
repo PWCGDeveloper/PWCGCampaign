@@ -59,7 +59,20 @@ public class RendezvousMissionPointSetBuilder
     }
 
     private Coordinate calculateRendezvousPosition(Coordinate outpoundPosition, Coordinate ingressPosition) throws PWCGException
-    {                
+    { 
+        if (flightThatNeedsEscort.isPlayerFlight())
+        {
+            if (!flightThatNeedsEscort.getFlightInformation().isAirStart())
+            {
+                return calculatePlayerRendezvousPosition(outpoundPosition, ingressPosition);
+            }
+        }
+    
+        return calcualteAirStartRendezvousPosition(outpoundPosition, ingressPosition);
+    }
+
+    private Coordinate calculatePlayerRendezvousPosition(Coordinate outpoundPosition, Coordinate ingressPosition) throws PWCGException
+    {
         double distanceOutboundToIngress = MathUtils.calcDist(outpoundPosition, ingressPosition);
         double angleFromOutboundToIngress = MathUtils.calcAngle(outpoundPosition, ingressPosition);
         Coordinate rendezvousPosition = MathUtils.calcNextCoord(outpoundPosition, angleFromOutboundToIngress, (distanceOutboundToIngress / 2));
@@ -69,12 +82,22 @@ public class RendezvousMissionPointSetBuilder
             rendezvousPosition = MathUtils.calcNextCoord(outpoundPosition, angleFromOutboundToIngress, 7000);
         }
         
-        double rendezvousAltitude = calculateRendezvousAltitude(outpoundPosition, ingressPosition, rendezvousPosition);
+        double rendezvousAltitude = calculatePlayerRendezvousAltitude(outpoundPosition, ingressPosition, rendezvousPosition);
         rendezvousPosition.setYPos(rendezvousAltitude);
         return rendezvousPosition;
     }
 
-    private double calculateRendezvousAltitude(Coordinate outpoundPosition, Coordinate ingressPosition, Coordinate rendezvousPosition)
+    private Coordinate calcualteAirStartRendezvousPosition(Coordinate outpoundPosition, Coordinate ingressPosition) throws PWCGException
+    {
+        double angleFromIngressToOutbound = MathUtils.calcAngle(outpoundPosition, ingressPosition);
+        Coordinate rendezvousPosition = MathUtils.calcNextCoord(ingressPosition, angleFromIngressToOutbound, 5000);
+
+        double rendezvousAltitude = ingressPosition.getYPos();
+        rendezvousPosition.setYPos(rendezvousAltitude);
+        return rendezvousPosition;
+    }
+
+    private double calculatePlayerRendezvousAltitude(Coordinate outpoundPosition, Coordinate ingressPosition, Coordinate rendezvousPosition) throws PWCGException
     {
         double altitudeDifference = Math.abs(ingressPosition.getYPos() - outpoundPosition.getYPos());
         double distanceOutboundToRendezvous = MathUtils.calcDist(outpoundPosition, rendezvousPosition);
