@@ -125,15 +125,6 @@ public class GroundUnitCollection implements IGroundUnitCollection
     }
 
     @Override
-    public Coordinate getPosition(Side side) throws PWCGException
-    {
-        GroundUnitCollectionTargetFinder groundUnitCollectionTargetFinder = new GroundUnitCollectionTargetFinder(this);
-        IGroundUnit targetUnit = groundUnitCollectionTargetFinder.findTargetUnit(side);
-        Coordinate targetCoordinates = targetUnit.getPosition();
-        return targetCoordinates;
-    }
-
-    @Override
     public TargetType getTargetType()
     {
         return groundUnitCollectionData.getTargetType();

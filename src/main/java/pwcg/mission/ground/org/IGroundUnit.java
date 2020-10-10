@@ -15,19 +15,30 @@ public interface IGroundUnit
 {
 
     void createGroundUnit() throws PWCGException;
+
     void write(BufferedWriter writer) throws PWCGException;
 
     ICountry getCountry() throws PWCGException;
+
     String getName() throws PWCGException;
+
     List<IVehicle> getVehicles();
+
     VehicleClass getVehicleClass();
+
     int getEntryPoint();
+
     int getDeleteEntryPoint();
+
     GroundUnitType getGroundUnitType();
 
     Coordinate getPosition() throws PWCGException;
+
     void setAiLevel(AiSkillLevel aiLevel);
+
     void validate() throws PWCGException;
+
     TargetType getTargetType();
+
     int getUnitCount();
 }
