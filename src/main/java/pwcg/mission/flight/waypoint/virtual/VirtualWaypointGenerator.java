@@ -30,13 +30,15 @@ public class VirtualWaypointGenerator
         IVirtualWaypoint prevVirtualWaypoint = null;        
 
         List<VirtualWaypoint> virtualWaypoints = new ArrayList<VirtualWaypoint>();
+        int vwpId = 1;
         for (VirtualWayPointCoordinate plotCoordinate : plotCoordinates)
         {
-            VirtualWaypoint virtualWaypoint = createVirtualWaypointFromPlot(plotCoordinate);
+            VirtualWaypoint virtualWaypoint = createVirtualWaypointFromPlot(plotCoordinate, vwpId);
             linkVirtualWaypoint(prevVirtualWaypoint, virtualWaypoint);
             virtualWaypoints.add(virtualWaypoint);
             prevVirtualWaypoint = virtualWaypoint;
             addVwpFlightLeadToWaypoints(virtualWaypoint);
+            ++vwpId;
         }
         return virtualWaypoints;
     }
@@ -46,9 +48,9 @@ public class VirtualWaypointGenerator
         flight.getWaypointPackage().addObjectToAllMissionPoints(virtualWaypoint.getVwpFlightLeader());
     }
 
-    private VirtualWaypoint createVirtualWaypointFromPlot(VirtualWayPointCoordinate plotCoordinate) throws PWCGException
+    private VirtualWaypoint createVirtualWaypointFromPlot(VirtualWayPointCoordinate plotCoordinate, int vwpId) throws PWCGException
     {
-        VirtualWaypoint virtualWaypoint = new VirtualWaypoint(flight, plotCoordinate);
+        VirtualWaypoint virtualWaypoint = new VirtualWaypoint(flight, plotCoordinate, vwpId);
         virtualWaypoint.build();
         return virtualWaypoint;
     }

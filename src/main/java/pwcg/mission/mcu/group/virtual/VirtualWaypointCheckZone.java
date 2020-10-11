@@ -1,9 +1,13 @@
 package pwcg.mission.mcu.group.virtual;
 
 import java.io.BufferedWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
+import pwcg.mission.mcu.McuSubtitle;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.group.SelfDeactivatingCheckZone;
 
@@ -12,20 +16,26 @@ public final class VirtualWaypointCheckZone
     private VirtualWayPointCoordinate vwpCoordinate;
     
     private McuTimer vwpStartTimer = new McuTimer();
+    private VirtualWaypointPlanes vwpPlanes;
     private McuTimer triggeredDisableNextVwpTimer = new McuTimer();
     private McuTimer triggeredActivateTimer = new McuTimer();
+    private List<McuSubtitle> subTitleList = new ArrayList<McuSubtitle>();
+    private int vwpIdentifier = 1;
 
     private SelfDeactivatingCheckZone checkZone;
     
-    public VirtualWaypointCheckZone(VirtualWayPointCoordinate vwpCoordinate)
+    public VirtualWaypointCheckZone(VirtualWayPointCoordinate vwpCoordinate, VirtualWaypointPlanes vwpPlanes, int vwpIdentifier)
     {
         this.vwpCoordinate = vwpCoordinate; 
+        this.vwpPlanes = vwpPlanes; 
+        this.vwpIdentifier = vwpIdentifier;
     }
 
     public void build() throws PWCGException 
     {
         buildMcus();
         setTargetAssociations();
+        makeSubtitles();
     }
 
     public void link(VirtualWaypointStartNextVwp vwpNextVwpStart, VirtualWaypointDeactivateNextVwp vwpNextVwpDeactivate, VirtualWaypointActivate vwpActivate)
@@ -55,6 +65,18 @@ public final class VirtualWaypointCheckZone
         triggeredActivateTimer.setTimer(1);
     }
 
+    private void makeSubtitles() throws PWCGException
+    {
+        Coordinate subtitlePosition = vwpCoordinate.getPosition().copy();
+        McuSubtitle activatedSubtitle = McuSubtitle.makeActivatedSubtitle("VWP Started: " + vwpIdentifier + " " + vwpPlanes.getLeadActivatePlane().getName(), subtitlePosition);
+        vwpStartTimer.setTarget(activatedSubtitle.getIndex());
+        subTitleList.add(activatedSubtitle);
+
+        McuSubtitle triggeredSubtitle = McuSubtitle.makeActivatedSubtitle("VWP Trigegred: " + vwpIdentifier + " " + vwpPlanes.getLeadActivatePlane().getName(), subtitlePosition);
+        triggeredDisableNextVwpTimer.setTarget(triggeredSubtitle.getIndex());
+        subTitleList.add(triggeredSubtitle);
+    }
+
     private void setTargetAssociations() throws PWCGException
     {
         vwpStartTimer.setTarget(checkZone.getActivateEntryPoint());
@@ -68,6 +90,8 @@ public final class VirtualWaypointCheckZone
         checkZone.write(writer);
         triggeredDisableNextVwpTimer.write(writer);
         triggeredActivateTimer.write(writer);        
+        
+        McuSubtitle.writeSubtitles(subTitleList, writer);
     }
 
     public McuTimer getVwpStartTimer()

@@ -25,7 +25,7 @@ public class MissionPointSetFactory
         }
     }
 
-    public static IMissionPointSet createFlightBegin(IFlight flight, IMissionPointSet flightActivate, AirStartPattern suggestedAirStartPattern, McuWaypoint waypointToLinkAirSTart) throws PWCGException, PWCGException 
+    public static IMissionPointSet createFlightBegin(IFlight flight, IMissionPointSet flightActivate, AirStartPattern airStartPattern, McuWaypoint waypointToLinkAirSTart) throws PWCGException, PWCGException 
     {
         IFlightInformation flightInformation = flight.getFlightInformation();
         if (!flightInformation.isAirStart())
@@ -36,14 +36,12 @@ public class MissionPointSetFactory
         }
         else if (flightInformation.isVirtual())
         {
-            AirStartPattern airStartPattern = determineAirStartPattern(flightInformation, suggestedAirStartPattern);
             MissionPointFlightBeginVirtual flightBegin = new MissionPointFlightBeginVirtual(flight, airStartPattern, waypointToLinkAirSTart);
             flightBegin.createFlightBegin();
             return flightBegin;
         }        
         else if (flightInformation.isAirStart())
         {
-            AirStartPattern airStartPattern = determineAirStartPattern(flightInformation, suggestedAirStartPattern);
             MissionPointFlightBeginAirStart flightBegin = new MissionPointFlightBeginAirStart(flight, airStartPattern, waypointToLinkAirSTart);
             flightBegin.createFlightBegin();
             return flightBegin;
@@ -52,16 +50,6 @@ public class MissionPointSetFactory
         {
             throw new PWCGException("Flight does not match any expected criteria for start");
         }
-    }
-    
-    private static AirStartPattern determineAirStartPattern(IFlightInformation flightInformation, AirStartPattern suggestedAirStartPattern)
-    {
-        if (flightInformation.isPlayerFlight())
-        {
-            return AirStartPattern.AIR_START_NEAR_WAYPOINT;
-        }
-
-        return suggestedAirStartPattern;
     }
 
     public static IMissionPointSet createFlightEndAtHomeField(IFlight flight) throws PWCGException, PWCGException 

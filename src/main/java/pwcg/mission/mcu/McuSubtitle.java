@@ -6,13 +6,16 @@ import java.util.List;
 
 import pwcg.campaign.utils.LCIndexGenerator;
 import pwcg.core.exception.PWCGIOException;
+import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.mission.MissionStringHandler;
 
 public class McuSubtitle extends BaseFlightMcu
 {
 	private int lcText = LCIndexGenerator.getInstance().getNextIndex();
     private String text;
     private int duration = 3;
+    private boolean useSubtitles = true;
 
 	public McuSubtitle ()
 	{
@@ -46,6 +49,11 @@ public class McuSubtitle extends BaseFlightMcu
 
     public void write(BufferedWriter writer) throws PWCGIOException
 	{
+        if (!useSubtitles)
+        {
+            return;
+        }
+        
 		try
         {
             writer.write("MCU_TR_Subtitle");
@@ -108,6 +116,20 @@ public class McuSubtitle extends BaseFlightMcu
         }
 	}	
     
+
+    public static McuSubtitle makeActivatedSubtitle(String subtitleText, Coordinate position)
+    {
+        McuSubtitle subtitle = new McuSubtitle();
+        subtitle.setName("Subtitle");
+        subtitle.setText(subtitleText);
+        subtitle.setPosition(position);
+        subtitle.setDuration(5);
+        
+        MissionStringHandler subtitleHandler = MissionStringHandler.getInstance();
+        subtitleHandler.registerMissionText(subtitle.getLcText(), subtitle.getText());
+        return subtitle;
+    }
+
 
     public static void writeSubtitles(List<McuSubtitle> subTitleList, BufferedWriter writer) throws PWCGIOException
     {

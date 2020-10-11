@@ -1,11 +1,15 @@
 package pwcg.mission.mcu.group.virtual;
 
 import java.io.BufferedWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.McuDelete;
+import pwcg.mission.mcu.McuSubtitle;
 import pwcg.mission.mcu.McuTimer;
 
 public class VirtualWaypointDeletePlanes
@@ -14,11 +18,14 @@ public class VirtualWaypointDeletePlanes
     private VirtualWaypointPlanes vwpPlanes;
     private McuTimer deletePlanesTimer = new McuTimer();
     private McuDelete deletePlanes = new McuDelete();
+    private List<McuSubtitle> subTitleList = new ArrayList<McuSubtitle>();
+    private int vwpIdentifier = 1;
 
-    public VirtualWaypointDeletePlanes(VirtualWayPointCoordinate vwpCoordinate, VirtualWaypointPlanes vwpPlanes)
+    public VirtualWaypointDeletePlanes(VirtualWayPointCoordinate vwpCoordinate, VirtualWaypointPlanes vwpPlanes, int vwpIdentifier)
     {
         this.vwpCoordinate = vwpCoordinate;
         this.vwpPlanes = vwpPlanes;
+        this.vwpIdentifier = vwpIdentifier;
     }
 
     public void build() throws PWCGException
@@ -26,6 +33,7 @@ public class VirtualWaypointDeletePlanes
         buildMcus();
         createTargetAssociations();
         createObjectAssociations();
+        makeSubtitles();
     }
 
     private void buildMcus()
@@ -41,6 +49,14 @@ public class VirtualWaypointDeletePlanes
         deletePlanesTimer.setName("Delete Planes Timer");
         deletePlanesTimer.setDesc("Delete Planes Timer");
 
+    }
+
+    private void makeSubtitles() throws PWCGException
+    {
+        Coordinate subtitlePosition = vwpCoordinate.getPosition().copy();
+        McuSubtitle activatedSubtitle = McuSubtitle.makeActivatedSubtitle("VWP Deleted: " + vwpIdentifier + " " + vwpPlanes.getLeadActivatePlane().getName(), subtitlePosition);
+        deletePlanesTimer.setTarget(activatedSubtitle.getIndex());
+        subTitleList.add(activatedSubtitle);
     }
 
     private void createTargetAssociations()
@@ -60,6 +76,8 @@ public class VirtualWaypointDeletePlanes
     {
         deletePlanesTimer.write(writer);
         deletePlanes.write(writer);        
+        
+        McuSubtitle.writeSubtitles(subTitleList, writer);
     }
     
     public int getEntryPoint()

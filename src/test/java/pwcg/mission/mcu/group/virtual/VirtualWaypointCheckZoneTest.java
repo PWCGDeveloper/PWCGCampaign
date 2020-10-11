@@ -9,6 +9,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.validate.IndexLinkValidator;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 
@@ -19,7 +20,9 @@ public class VirtualWaypointCheckZoneTest
     @Mock VirtualWaypointStartNextVwp vwpNextVwpStart;
     @Mock VirtualWaypointDeactivateNextVwp vwpDeactivateNextVwp;
     @Mock VirtualWaypointActivate vwpActivate;
-    
+    @Mock VirtualWaypointPlanes vwpPlanes;
+    private PlaneMcu plane1;
+
     @Before
     public void setup()
     {
@@ -30,7 +33,11 @@ public class VirtualWaypointCheckZoneTest
     @Test
     public void validateVwpBuildProcess() throws PWCGException
     {
-        VirtualWaypointCheckZone vwpCheckZone = new VirtualWaypointCheckZone(vwpCoordinate);
+        plane1 = new PlaneMcu();
+        plane1.setName("Plane 1");
+        Mockito.when(vwpPlanes.getLeadActivatePlane()).thenReturn(plane1);        
+
+        VirtualWaypointCheckZone vwpCheckZone = new VirtualWaypointCheckZone(vwpCoordinate, vwpPlanes, 1);
         vwpCheckZone.build();
         
         assert(IndexLinkValidator.isIndexInTargetList(vwpCheckZone.getCheckZone().getActivateEntryPoint(), vwpCheckZone.getVwpStartTimer().getTargets()));
@@ -40,7 +47,7 @@ public class VirtualWaypointCheckZoneTest
         Mockito.when(vwpNextVwpStart.getEntryPoint()).thenReturn(97);
         Mockito.when(vwpDeactivateNextVwp.getEntryPoint()).thenReturn(98);
         Mockito.when(vwpActivate.getEntryPoint()).thenReturn(99);
-      
+
         vwpCheckZone.link(vwpNextVwpStart, vwpDeactivateNextVwp, vwpActivate);
         
         assert(IndexLinkValidator.isIndexInTargetList(97, vwpCheckZone.getVwpStartTimer().getTargets()));

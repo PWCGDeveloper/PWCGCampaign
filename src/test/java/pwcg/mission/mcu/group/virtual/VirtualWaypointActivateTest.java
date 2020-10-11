@@ -57,7 +57,7 @@ public class VirtualWaypointActivateTest
     @Test
     public void validateVwpBuildProcess() throws PWCGException
     {
-        VirtualWaypointActivate activate = new VirtualWaypointActivate(flight, vwpCoordinate, vwpPlanes);
+        VirtualWaypointActivate activate = new VirtualWaypointActivate(flight, vwpCoordinate, vwpPlanes, 1);
         activate.build();
         
         assert(IndexLinkValidator.isIndexInTargetList(activate.getFormationTimer().getIndex(), activate.getActivateTimer().getTargets()));

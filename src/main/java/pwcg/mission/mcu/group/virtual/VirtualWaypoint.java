@@ -18,7 +18,8 @@ public final class VirtualWaypoint implements IVirtualWaypoint
     private IFlight flight;
     private VirtualWayPointCoordinate vwpCoordinate;
     private int index = IndexGenerator.getInstance().getNextIndex();
-    
+    private int vwpIdentifier = 1;
+
     private VirtualWaypointPlanes vwpPlanes;
     private VirtualWaypointEscort vwpEscort;
     private VirtualWaypointCheckZone vwpCheckZone;
@@ -31,12 +32,13 @@ public final class VirtualWaypoint implements IVirtualWaypoint
 
     public static int VWP_TRIGGGER_DISTANCE = 20000;
     
-    public VirtualWaypoint(IFlight flight, VirtualWayPointCoordinate vwpCoordinate)
+    public VirtualWaypoint(IFlight flight, VirtualWayPointCoordinate vwpCoordinate, int vwpIdentifier)
     {
         index = IndexGenerator.getInstance().getNextIndex();
 
         this.flight = flight; 
         this.vwpCoordinate = vwpCoordinate; 
+        this.vwpIdentifier = vwpIdentifier; 
     }
 
     @Override
@@ -97,13 +99,13 @@ public final class VirtualWaypoint implements IVirtualWaypoint
         vwpPlanes = new VirtualWaypointPlanes(flight, vwpCoordinate);
         vwpPlanes.build();
 
-        vwpActivate = new VirtualWaypointActivate(flight, vwpCoordinate, vwpPlanes);
+        vwpActivate = new VirtualWaypointActivate(flight, vwpCoordinate, vwpPlanes, vwpIdentifier);
         vwpActivate.build();
 
-        vwpCheckZone = new VirtualWaypointCheckZone(vwpCoordinate);
+        vwpCheckZone = new VirtualWaypointCheckZone(vwpCoordinate, vwpPlanes, vwpIdentifier);
         vwpCheckZone.build();
 
-        vwpDeletePlanes = new VirtualWaypointDeletePlanes(vwpCoordinate, vwpPlanes);
+        vwpDeletePlanes = new VirtualWaypointDeletePlanes(vwpCoordinate, vwpPlanes, vwpIdentifier);
         vwpDeletePlanes.build();
 
         vwpKillFuture = new VirtualWaypointKillFuture(vwpCoordinate, vwpDeletePlanes);

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.MissionStringHandler;
+import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
@@ -14,7 +14,7 @@ import pwcg.mission.mcu.McuFormation;
 import pwcg.mission.mcu.McuSubtitle;
 import pwcg.mission.mcu.McuTimer;
 
-public class VirtualWaypointActivate
+public class VirtualWaypointActivate implements makeActivatedSubtitle
 {
     private IFlight flight;
     private VirtualWayPointCoordinate vwpCoordinate;
@@ -28,14 +28,16 @@ public class VirtualWaypointActivate
     private McuTimer waypointTimer = new McuTimer();
     private McuTimer escortTimer = new McuTimer();
     private McuTimer deleteUpstreamPlanesTimer = new McuTimer();
+    private int vwpIdentifier = 1;
 
     private List<McuSubtitle> subTitleList = new ArrayList<McuSubtitle>();
 
-    public VirtualWaypointActivate(IFlight flight, VirtualWayPointCoordinate vwpCoordinate, VirtualWaypointPlanes vwpPlanes)
+    public VirtualWaypointActivate(IFlight flight, VirtualWayPointCoordinate vwpCoordinate, VirtualWaypointPlanes vwpPlanes, int vwpIdentifier)
     {
         this.flight = flight;
         this.vwpCoordinate = vwpCoordinate;
         this.vwpPlanes = vwpPlanes;
+        this.vwpIdentifier = vwpIdentifier;
     }
 
     public void build() throws PWCGException
@@ -84,18 +86,10 @@ public class VirtualWaypointActivate
 
     private void makeSubtitles() throws PWCGException
     {
-        McuSubtitle czTriggeredSubtitle = new McuSubtitle();
-        czTriggeredSubtitle.setName("CheckZone Subtitle");
-        czTriggeredSubtitle.setText("VWP Activate: " +   vwpPlanes.getLeadActivatePlane().getLinkTrId() + " " + vwpPlanes.getLeadActivatePlane().getName());
-        czTriggeredSubtitle.setPosition(vwpCoordinate.getPosition().copy());
-        czTriggeredSubtitle.setDuration(5);
-        subTitleList.add(czTriggeredSubtitle);
-        
-        MissionStringHandler subtitleHandler = MissionStringHandler.getInstance();
-        subtitleHandler.registerMissionText(czTriggeredSubtitle.getLcText(), czTriggeredSubtitle.getText());
-        
-        // Comment out subtitles trigger but leave the code here as an an example
-        // activateTimer.setTarget(czTriggeredSubtitle.getIndex());
+        Coordinate subtitlePosition = vwpCoordinate.getPosition().copy();
+        McuSubtitle activatedSubtitle = McuSubtitle.makeActivatedSubtitle("VWP Activate: " + vwpIdentifier + " " + vwpPlanes.getLeadActivatePlane().getName(), subtitlePosition);
+        activateTimer.setTarget(activatedSubtitle.getIndex());
+        subTitleList.add(activatedSubtitle);
     }
 
     private void createTargetAssociations()
