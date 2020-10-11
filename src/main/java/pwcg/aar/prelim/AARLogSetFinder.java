@@ -26,7 +26,7 @@ public class AARLogSetFinder
         sortedLogSets.addAll(sortedLogSetsFromData);
         sortedLogSets.addAll(sortedLogSetsFromUserDefined);
         Collections.sort(sortedLogSets);
-
+        Collections.reverse(sortedLogSets);
         return sortedLogSets;
     }
 

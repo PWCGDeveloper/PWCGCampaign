@@ -17,6 +17,7 @@ public class VirtualWaypointDeactivateNextVwpTest
 {
     @Mock VirtualWayPointCoordinate vwpCoordinate;
     @Mock VirtualWaypointStartNextVwp vwpNextVwpStart;
+    @Mock VirtualWaypointDeactivateThisVwp vwpDeactivateThisVwp;
     
     @Before
     public void setup()
@@ -34,8 +35,10 @@ public class VirtualWaypointDeactivateNextVwpTest
         assert(IndexLinkValidator.isIndexInTargetList(vwpDeactivate.getStartNextVwpTimerDeactivate().getIndex(), vwpDeactivate.getDeactivateNextVwpTimer().getTargets()));
 
         Mockito.when(vwpNextVwpStart.getEntryPoint()).thenReturn(99);
-        vwpDeactivate.link(vwpNextVwpStart);
+        Mockito.when(vwpDeactivateThisVwp.getEntryPoint()).thenReturn(98);
+        vwpDeactivate.link(vwpNextVwpStart, vwpDeactivateThisVwp);
         
         assert(IndexLinkValidator.isIndexInTargetList(99, vwpDeactivate.getStartNextVwpTimerDeactivate().getTargets()));
+        assert(IndexLinkValidator.isIndexInTargetList(98, vwpDeactivate.getStartNextVwpTimerDeactivate().getTargets()));
     }
 }

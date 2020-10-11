@@ -35,7 +35,7 @@ public class VirtualWaypointCheckZoneTest
         
         assert(IndexLinkValidator.isIndexInTargetList(vwpCheckZone.getCheckZone().getActivateEntryPoint(), vwpCheckZone.getVwpStartTimer().getTargets()));
         assert(IndexLinkValidator.isIndexInTargetList(vwpCheckZone.getTriggeredDisableNextVwpTimer().getIndex(), vwpCheckZone.getCheckZone().getCheckZone().getTargets()));
-        assert(IndexLinkValidator.isIndexInTargetList(vwpCheckZone.getTriggeredActivateContainerTimer().getIndex(), vwpCheckZone.getCheckZone().getCheckZone().getTargets()));
+        assert(IndexLinkValidator.isIndexInTargetList(vwpCheckZone.getTriggeredActivateTimer().getIndex(), vwpCheckZone.getTriggeredDisableNextVwpTimer().getTargets()));
 
         Mockito.when(vwpNextVwpStart.getEntryPoint()).thenReturn(97);
         Mockito.when(vwpDeactivateNextVwp.getEntryPoint()).thenReturn(98);
@@ -45,7 +45,7 @@ public class VirtualWaypointCheckZoneTest
         
         assert(IndexLinkValidator.isIndexInTargetList(97, vwpCheckZone.getVwpStartTimer().getTargets()));
         assert(IndexLinkValidator.isIndexInTargetList(98, vwpCheckZone.getTriggeredDisableNextVwpTimer().getTargets()));
-        assert(IndexLinkValidator.isIndexInTargetList(99, vwpCheckZone.getTriggeredActivateContainerTimer().getTargets()));
+        assert(IndexLinkValidator.isIndexInTargetList(99, vwpCheckZone.getTriggeredActivateTimer().getTargets()));
 
     }
 }

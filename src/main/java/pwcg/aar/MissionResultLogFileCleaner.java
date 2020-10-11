@@ -1,5 +1,6 @@
 package pwcg.aar;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,11 +55,15 @@ public class MissionResultLogFileCleaner
         List<String> filesToDelete = new ArrayList<String>();
         for (String pathname : allMissionFiles) 
         {
-            long ageOfFile = FileUtils.ageOfFilesInMillis(pathname);
-            long oneDayAgo = System.currentTimeMillis() - 86400000;
-            if (ageOfFile < oneDayAgo)
+            File missionLogFile = new File(pathname);
+            if (missionLogFile.exists())
             {
-                filesToDelete.add(pathname);
+                long ageOfFile = FileUtils.ageOfFilesInMillis(pathname);
+                long oneDayAgo = System.currentTimeMillis() - 86400000;
+                if (ageOfFile < oneDayAgo)
+                {
+                    filesToDelete.add(pathname);
+                }
             }
         }
         

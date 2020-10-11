@@ -80,7 +80,7 @@ public final class VirtualWaypointCheckZone
         return triggeredDisableNextVwpTimer;
     }
 
-    public McuTimer getTriggeredActivateContainerTimer()
+    public McuTimer getTriggeredActivateTimer()
     {
         return triggeredActivateTimer;
     }

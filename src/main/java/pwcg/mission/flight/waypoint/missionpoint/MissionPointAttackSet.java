@@ -100,4 +100,9 @@ public class MissionPointAttackSet extends MissionPointSetMultipleWaypointSet im
     {
         return missionPointSetType;
     }
+
+    public AirGroundAttackMcuSequence getAttackSequence()
+    {
+        return attackSequence;
+    }
 }

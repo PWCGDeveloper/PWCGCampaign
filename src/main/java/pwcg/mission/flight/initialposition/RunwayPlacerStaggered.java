@@ -77,7 +77,7 @@ public class RunwayPlacerStaggered implements IRunwayPlacer
     
     private Coordinate moveFlightForwardToEnsureTakeoff(Coordinate initialCoord, double takeoffAngle) throws PWCGException
     {
-        return MathUtils.calcNextCoord(initialCoord, takeoffAngle, 50.0);
+        return MathUtils.calcNextCoord(initialCoord, takeoffAngle, 75.0);
     }
 
     private Coordinate calculateNextRight(Coordinate lastPosition) throws PWCGException
