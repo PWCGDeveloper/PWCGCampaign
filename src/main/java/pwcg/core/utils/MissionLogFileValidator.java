@@ -51,7 +51,7 @@ public class MissionLogFileValidator
                     determineLoggingEnabled(line);
                 }
                 
-                if (line.contains("bin_log_folder"))
+                if (line.contains("text_log_folder"))
                 {
                     parseMissionLogPath(line);
                 }

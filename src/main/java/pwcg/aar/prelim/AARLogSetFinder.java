@@ -40,8 +40,9 @@ public class AARLogSetFinder
 
     private List<String> getLogFilesFromUserDefined() throws PWCGException
     {
-        String userLogDir = PWCGContext.getInstance().getMissionLogDirectory();
         List<String> sortedLogSetsFromUserDefined = new ArrayList<>();
+
+        String userLogDir = PWCGContext.getInstance().getMissionLogDirectory();
         if (!userLogDir.isEmpty())
         {
             directoryReader.sortilesInDir(userLogDir);

@@ -195,7 +195,7 @@ public class PWCGErrorBundler
 
        if (!sourceDir.exists())
         {
-            throw new PWCGException ("Could not find 777/1C program data directory: " + sourceDir.getAbsolutePath());
+           sourceDir.mkdirs();
         }
         
         if (!destinationDir.exists())
