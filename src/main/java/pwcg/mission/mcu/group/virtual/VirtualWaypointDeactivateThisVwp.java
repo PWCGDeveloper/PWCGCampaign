@@ -33,14 +33,14 @@ public class VirtualWaypointDeactivateThisVwp
     private void buildMcus()
     {
         deactivateThisCheckZoneTimer.setPosition(vwpCoordinate.getPosition().copy());
-        deactivateThisCheckZoneTimer.setName("VWP Deactivate Next VWP Timer");
-        deactivateThisCheckZoneTimer.setDesc("VWP Deactivate Next VWP Timer");
+        deactivateThisCheckZoneTimer.setName("VWP Deactivate This VWP Timer");
+        deactivateThisCheckZoneTimer.setDesc("VWP Deactivate This VWP Timer");
         deactivateThisCheckZoneTimer.setTimer(0);
 
         thisCheckZoneDeactivate = new McuDeactivate();
         thisCheckZoneDeactivate.setPosition(vwpCoordinate.getPosition().copy());
-        thisCheckZoneDeactivate.setName("Start Next VWP Timer Deactivate");
-        thisCheckZoneDeactivate.setDesc("Start Next VWP Timer Deactivate");
+        thisCheckZoneDeactivate.setName("VWP Deactivate This VWP");
+        thisCheckZoneDeactivate.setDesc("VWP Deactivate This VWP");
     }
 
     private void setTargetAssociations() throws PWCGException

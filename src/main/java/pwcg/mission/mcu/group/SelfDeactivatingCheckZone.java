@@ -51,7 +51,7 @@ public class SelfDeactivatingCheckZone implements ICheckZone
         deactivateCZTimer.setPosition(coordinate.copy());
         deactivateCZTimer.setName("CZ Deactivate Timer");
         deactivateCZTimer.setDesc("CZ Deactivate Timer");
-        deactivateCZTimer.setTimer(0);
+        deactivateCZTimer.setTimer(1);
 
         deactivateCZ.setPosition(coordinate.copy());
         deactivateCZ.setName("CZ Deactivate");

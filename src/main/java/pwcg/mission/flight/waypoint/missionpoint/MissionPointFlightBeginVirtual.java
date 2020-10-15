@@ -6,19 +6,16 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
 import pwcg.mission.mcu.BaseFlightMcu;
-import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class MissionPointFlightBeginVirtual extends MissionPointSetSingleWaypointSet implements IMissionPointSet
 {
     private IFlight flight;
-    private AirStartPattern airStartNearAirfield;
-    private McuTimer activationVwpTimer = null;
+    private AirStartPattern airStartPattern;
     private McuWaypoint ingressWaypoint;
     private boolean linkToNextTarget = true;
     private MissionPointSetType missionPointSetType;
@@ -26,28 +23,16 @@ public class MissionPointFlightBeginVirtual extends MissionPointSetSingleWaypoin
     public MissionPointFlightBeginVirtual(IFlight flight, AirStartPattern airStartNearAirfield, McuWaypoint ingressWaypoint)
     {
         this.flight = flight;
-        this.airStartNearAirfield = airStartNearAirfield;
+        this.airStartPattern = airStartNearAirfield;
         this.ingressWaypoint = ingressWaypoint;
         this.missionPointSetType = MissionPointSetType.MISSION_POINT_SET_BEGIN_VIRTUAL;
     }
     
     public void createFlightBegin() throws PWCGException, PWCGException 
     {
-        createVwpActivationTimer();
         createAirStartWaypoint();  
     }
 
-
-    private void createVwpActivationTimer() throws PWCGException
-    {
-        IFlightInformation flightInformation = flight.getFlightInformation();
-   
-        activationVwpTimer = new McuTimer();
-        activationVwpTimer.setName("Activation VWP Timer");
-        activationVwpTimer.setDesc("Activation VWP Timer");
-        activationVwpTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());        
-        activationVwpTimer.setTimer(5);
-    }
 
     @Override
     public void setLinkToNextTarget(int nextTargetIndex) throws PWCGException
@@ -58,7 +43,7 @@ public class MissionPointFlightBeginVirtual extends MissionPointSetSingleWaypoin
     @Override
     public int getEntryPoint() throws PWCGException
     {
-        return this.activationVwpTimer.getIndex();
+        throw new PWCGException("Attempt to link virtual waypoint begin");
     }
 
     @Override
@@ -88,13 +73,12 @@ public class MissionPointFlightBeginVirtual extends MissionPointSetSingleWaypoin
     @Override
     public void write(BufferedWriter writer) throws PWCGException 
     {
-        activationVwpTimer.write(writer);
         super.write(writer);
     }
 
     private void createAirStartWaypoint() throws PWCGException
     {
-        McuWaypoint airStartWaypoint = AirStartWaypointFactory.createAirStart(flight, airStartNearAirfield, ingressWaypoint);
+        McuWaypoint airStartWaypoint = AirStartWaypointFactory.createAirStart(flight, airStartPattern, ingressWaypoint);
         super.addWaypoint(airStartWaypoint);
     }
 

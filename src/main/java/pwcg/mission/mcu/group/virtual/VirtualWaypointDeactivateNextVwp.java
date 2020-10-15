@@ -25,18 +25,17 @@ public class VirtualWaypointDeactivateNextVwp
         setTargetAssociations();
     }
     
-    public void link(VirtualWaypointStartNextVwp vwpNextVwpStart, VirtualWaypointDeactivateThisVwp vwpDeactivateThisVwp)
+    public void link(VirtualWaypointStartNextVwp vwpNextVwpStart)
     {
         startNextVwpTimerDeactivate.setTarget(vwpNextVwpStart.getEntryPoint());
-        startNextVwpTimerDeactivate.setTarget(vwpDeactivateThisVwp.getEntryPoint());
     }
 
     private void buildMcus()
     {
         startNextVwpTimerDeactivate = new McuDeactivate();
         startNextVwpTimerDeactivate.setPosition(vwpCoordinate.getPosition().copy());
-        startNextVwpTimerDeactivate.setName("Start Next VWP Timer Deactivate");
-        startNextVwpTimerDeactivate.setDesc("Start Next VWP Timer Deactivate");
+        startNextVwpTimerDeactivate.setName("VWP Deactivate Next VWP");
+        startNextVwpTimerDeactivate.setDesc("VWP Deactivate Next VWP");
 
         deactivateNextVwpTimer.setPosition(vwpCoordinate.getPosition().copy());
         deactivateNextVwpTimer.setName("VWP Deactivate Next VWP Timer");

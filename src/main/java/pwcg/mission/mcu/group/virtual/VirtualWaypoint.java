@@ -124,7 +124,8 @@ public final class VirtualWaypoint implements IVirtualWaypoint
     private void linkElements() throws PWCGException
     {
         vwpCheckZone.link(vwpStartNextVwp, vwpDeactivateNextVwp, vwpActivate);
-        vwpDeactivateNextVwp.link(vwpStartNextVwp, vwpDeactivateThisVwp);
+        vwpDeactivateNextVwp.link(vwpStartNextVwp);
+        vwpStartNextVwp.link(vwpDeactivateThisVwp);
     }
 
     @Override

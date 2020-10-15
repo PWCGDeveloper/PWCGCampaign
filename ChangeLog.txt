@@ -1,6 +1,20 @@
 
-​
-At the PWCG web site
+​At the PWCG web site
+
+11.2.0
+PWCG missions are now in PWCG folder in the game
+Added the mission folder and mission files to the PWCG error report zip
+Support for redirecting your logs to a different directory
+- Open startup.cfg in the game's data directory
+- Find text_log_folder
+- Set the value to the directory where you want logs to go (make sure that the directory actually exists)
+Bugs
+Fixed no spawning ground units: Added more trigger objects to ensure that ground units spawn
+Fixed disappearing AI flights
+Fixed rendezvous too far to the rear for air starts
+Fixed bomber flights fly at low altitude - Rendezvous altitude is too low for air starts
+Fixed skins not properly assigned for virtual AI flights
+Fixed virtual flights will sometimes circle.
 
 11.1.1
 Moved rendezvous back towards base

@@ -10,7 +10,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.escort.VirtualEscortFlightInformationBuilder;
-import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
+import pwcg.mission.flight.waypoint.missionpoint.IVirtualActivate;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
 import pwcg.mission.mcu.group.virtual.IVirtualWaypoint;
 import pwcg.mission.mcu.group.virtual.VirtualWaypoint;
@@ -97,7 +97,7 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
     private void linkVirtualWaypointToMissionBegin() throws PWCGException   
     {   
         VirtualWaypoint firstVirtualWayPoint = virtualWaypoints.get(0);        
-        IMissionPointSet activateMissionPointSet = flight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_BEGIN_VIRTUAL);
-        activateMissionPointSet.setLinkToNextTarget(firstVirtualWayPoint.getEntryPoint());
+        IVirtualActivate activateMissionPointSet = (IVirtualActivate)flight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_ACTIVATE);
+        activateMissionPointSet.linkMissionBeginToFirstVirtualWaypoint(firstVirtualWayPoint.getEntryPoint());
     }
 }

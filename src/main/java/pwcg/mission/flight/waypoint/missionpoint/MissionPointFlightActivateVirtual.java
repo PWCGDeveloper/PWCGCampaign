@@ -14,13 +14,13 @@ import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class MissionPointFlightActivateVirtual implements IMissionPointSet
+public class MissionPointFlightActivateVirtual implements IMissionPointSet, IVirtualActivate
 {    
     private IFlight flight;
 
     private MissionBeginUnit missionBeginUnit;
     private McuTimer missionBeginTimer = null;
-    private boolean linkToNextTarget = true;
+    private boolean linkToNextTarget = false;
     private MissionPointSetType missionPointSetType;
 
     public MissionPointFlightActivateVirtual(IFlight flight)
@@ -38,7 +38,12 @@ public class MissionPointFlightActivateVirtual implements IMissionPointSet
     @Override
     public void setLinkToNextTarget(int nextTargetIndex) throws PWCGException
     {
-        missionBeginTimer.setTarget(nextTargetIndex);
+    }
+
+    @Override
+    public void linkMissionBeginToFirstVirtualWaypoint(int firstVirtualWaypointIndex) throws PWCGException
+    {
+        missionBeginTimer.setTarget(firstVirtualWaypointIndex);
     }
 
     @Override
