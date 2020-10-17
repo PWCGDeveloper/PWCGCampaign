@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -13,6 +15,7 @@ import javax.swing.JPanel;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.coop.CoopUserCampaignMassUpdate;
 import pwcg.coop.model.CoopDisplayRecord;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -46,11 +49,11 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
         this.campaignHome = campaignHome;
         this.campaign = campaign;
     }
-    
-    public void makePanels() 
+
+    public void makePanels()
     {
         try
-        {        	
+        {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignCoopAdminScreen);
             this.setImage(imagePath);
 
@@ -64,27 +67,30 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
         }
     }
 
-	public JPanel makeCenterPanel()  
-    {       
+    public JPanel makeCenterPanel()
+    {
         coopPersonaInfoPanel = new CampaignAdminCoopPilotPanel(campaign);
-        coopPersonaInfoPanel.makePanels();                
+        coopPersonaInfoPanel.makePanels();
         return coopPersonaInfoPanel;
     }
 
-    public JPanel makeNavigatePanel() throws PWCGException  
+    public JPanel makeNavigatePanel() throws PWCGException
     {
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        JPanel buttonPanel = new JPanel(new GridLayout(0, 1));
         buttonPanel.setOpaque(false);
 
-        JButton finished = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished with coop administration", this);
-        buttonPanel.add(finished);
+        JButton finishedAndSave = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished save results of coop administration", this);
+        buttonPanel.add(finishedAndSave);
+
+        JButton finishedAndCancel = PWCGButtonFactory.makeTranslucentMenuButton("Cancel", "Cancel", "Finished do not save results of coop administration", this);
+        buttonPanel.add(finishedAndCancel);
 
         for (int i = 0; i < 3; ++i)
         {
             JLabel space1 = PWCGButtonFactory.makeDummy();
             buttonPanel.add(space1);
         }
-        
+
         JPanel actionPanel = makeCoopAdminActionSelectPanel();
 
         JPanel navPanel = new JPanel(new BorderLayout());
@@ -95,20 +101,20 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
         return navPanel;
     }
 
-    public JPanel makeCoopAdminActionSelectPanel() throws PWCGException  
+    public JPanel makeCoopAdminActionSelectPanel() throws PWCGException
     {
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        JPanel buttonPanel = new JPanel(new GridLayout(0, 1));
         buttonPanel.setOpaque(false);
-        
+
         JLabel label = PWCGButtonFactory.makeMenuLabelLarge("Select Admin Action:");
         buttonPanel.add(label);
 
         buttonPanel.add(makeActionButton("Add Pilot", "Add a coop persona to the campaign"));
         buttonPanel.add(makeActionButton("Transfer Pilot", "Transfer a coop persona to a new squadron"));
         buttonPanel.add(makeActionButton("Retire Pilot", "Retire a coop persona. Cannot be undone"));
-        
-        add (buttonPanel);
+
+        add(buttonPanel);
 
         JPanel actionSelectionPanel = new JPanel(new BorderLayout());
         actionSelectionPanel.setOpaque(false);
@@ -119,7 +125,7 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
             JPanel actionPanel = new JPanel(new BorderLayout());
             actionPanel.setOpaque(false);
             actionPanel.add(actionSelectionPanel, BorderLayout.CENTER);
-            
+
             return actionPanel;
         }
         else
@@ -129,7 +135,7 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
 
     }
 
-    private JButton makeActionButton(String buttonText, String tooltip) throws PWCGException 
+    private JButton makeActionButton(String buttonText, String tooltip) throws PWCGException
     {
         JButton button = PWCGButtonFactory.makeTranslucentMenuButton(buttonText, buttonText, tooltip, this);
         return button;
@@ -142,6 +148,13 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
             String action = ae.getActionCommand();
             if (action.equalsIgnoreCase("Finished"))
             {
+                updateCoopUserRecordsForUserSelection();
+                CampaignGuiContextManager.getInstance().popFromContextStack();
+                return;
+            }
+
+            if (action.equalsIgnoreCase("Cancel"))
+            {
                 CampaignGuiContextManager.getInstance().popFromContextStack();
                 return;
             }
@@ -150,7 +163,7 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
             {
                 SoundManager.getInstance().playSound("Typewriter.WAV");
                 CampaignNewPilotScreen addPilotDisplay = new CampaignNewPilotScreen(campaign, campaignHome, this);
-                addPilotDisplay.makePanels();        
+                addPilotDisplay.makePanels();
                 CampaignGuiContextManager.getInstance().pushToContextStack(addPilotDisplay);
             }
             else if (action.equalsIgnoreCase("Transfer Pilot"))
@@ -160,7 +173,7 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
                 {
                     SoundManager.getInstance().playSound("Typewriter.WAV");
                     CampaignTransferScreen transferDisplay = new CampaignTransferScreen(campaignHome, pilot);
-                    transferDisplay.makePanels();        
+                    transferDisplay.makePanels();
                     CampaignGuiContextManager.getInstance().pushToContextStack(transferDisplay);
                 }
             }
@@ -175,7 +188,7 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
                         SoundManager.getInstance().playSound("Typewriter.WAV");
                         pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_RETIRED, campaign.getDate(), null);
                         campaign.write();
-                        
+
                         redisplayUpdatedCoopAdminScreen(campaignHome);
                     }
                 }
@@ -188,14 +201,20 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
         }
     }
 
-    public static  void redisplayUpdatedCoopAdminScreen(CampaignHomeScreen campaignHome) throws PWCGException
+    private void updateCoopUserRecordsForUserSelection() throws PWCGException
+    {
+        Map<String, List<Integer>> personaByUser = coopPersonaInfoPanel.getUsersForPersonas();
+        CoopUserCampaignMassUpdate.updateCoopUserRecordsForUserSelectionMakeANewClassAndTestIt(campaign, personaByUser);
+    }
+    
+    public static void redisplayUpdatedCoopAdminScreen(CampaignHomeScreen campaignHome) throws PWCGException
     {
         CampaignGuiContextManager.getInstance().backToCampaignHome();
         CampaignCoopAdminScreen adminCoopPilotDisplay = new CampaignCoopAdminScreen(campaignHome, campaignHome.getCampaign());
         adminCoopPilotDisplay.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(adminCoopPilotDisplay);
     }
-    
+
     private SquadronMember getSquadronMemberForSelectedPilot() throws PWCGException
     {
         CoopDisplayRecord coopDisplayRecord = coopPersonaInfoPanel.getSelectedPilot();
@@ -204,15 +223,13 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
             SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(coopDisplayRecord.getPilotSerialNumber());
             return pilot;
         }
-        
+
         return null;
     }
-    
+
     public void refresh()
     {
         this.revalidate();
         this.repaint();
     }
 }
-
-

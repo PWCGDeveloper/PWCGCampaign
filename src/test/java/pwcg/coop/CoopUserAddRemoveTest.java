@@ -14,7 +14,6 @@ import pwcg.campaign.io.json.CoopUserIOJson;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberReplacer;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.coop.model.CoopPersona;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
@@ -80,9 +79,9 @@ public class CoopUserAddRemoveTest
             if (coopUser.getUsername().contentEquals(coopuser))
             {
                 coopUserFileExists = true;
-                for (CoopPersona persona : coopUser.getUserPersonas())
+                for (int persona : coopUser.getUserPersonas(coopCampaign.getName()))
                 {
-                    if (persona.getSerialNumber() == newSquadronMember.getSerialNumber())
+                    if (persona == newSquadronMember.getSerialNumber())
                     {
                         coopPersonaExists = true;
                     }

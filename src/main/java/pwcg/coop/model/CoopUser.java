@@ -8,7 +8,7 @@ import java.util.Map;
 public class CoopUser
 {
     private String username;
-    private Map<Integer, CoopPersona> userPersonas = new HashMap<>();
+    private Map<String, CoopCampaignPersonas> campaignPersonas = new HashMap<>();
     
 
     public String getUsername()
@@ -21,25 +21,61 @@ public class CoopUser
         this.username = username;
     }
     
-    public void addPersona(CoopPersona persona)
+    public void addPersona(String campaignName, int serialNumber, String pilotName)
     {
-        userPersonas.put(persona.getSerialNumber(), persona);
+        if (!campaignPersonas.containsKey(campaignName))
+        {
+            CoopCampaignPersonas coopCampaignPersona = new CoopCampaignPersonas(campaignName);
+            campaignPersonas.put(campaignName, coopCampaignPersona);
+        }
+
+        CoopCampaignPersonas coopCampaignPersona = campaignPersonas.get(campaignName);
+        coopCampaignPersona.addPersona(serialNumber, pilotName);
     }
     
-    public void removePersona(CoopPersona persona)
+    public void removePersona(String campaignName, int serialNumber)
     {
-        userPersonas.remove(persona.getSerialNumber());
+        if (campaignPersonas.containsKey(campaignName))
+        {
+            campaignPersonas.get(campaignName).remove(serialNumber);
+        }
     }
     
-    public void getPersona(int serialNumber)
+    public boolean hasPersona(String campaignName, int serialNumber)
     {
-        userPersonas.get(serialNumber);
+        if (campaignPersonas.containsKey(campaignName))
+        {
+            if (campaignPersonas.get(campaignName).hasPersona(serialNumber))
+            {
+                return true;
+            }
+        }
+        
+        return false;
     }
 
-    public List<CoopPersona> getUserPersonas()
+    public List<CoopCampaignPersonas> getCoopCampaignPersonas()
     {
-        return new ArrayList<CoopPersona>(userPersonas.values());
+        return new ArrayList<CoopCampaignPersonas>(campaignPersonas.values());
     }
-    
-    
+
+    public CoopCampaignPersonas getCoopCampaignPersona(String campaignName)
+    {
+        return campaignPersonas.get(campaignName);
+    }
+
+    public List<Integer> getUserPersonas(String campaignName)
+    {
+        if (campaignPersonas.containsKey(campaignName))
+        {
+            return new ArrayList<Integer>(campaignPersonas.get(campaignName).getSerialNumbers());
+        }
+        return new ArrayList<>();
+    }
+
+    public void addCoopCampaignPersonas(String campaignName, CoopCampaignPersonas coopCampaignPersona)
+    {
+        campaignPersonas.put(campaignName, coopCampaignPersona);
+        
+    }
 }

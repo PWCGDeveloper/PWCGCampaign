@@ -1,6 +1,6 @@
 package pwcg.coop.model;
 
-public class CoopPersona
+public class CoopPersonaOlde
 {
     private String coopUser;
     private String campaignName;

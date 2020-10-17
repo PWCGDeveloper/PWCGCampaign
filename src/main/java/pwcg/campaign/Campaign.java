@@ -119,16 +119,6 @@ public class Campaign
         return squadronPersonnel.isPlayerSquadron();
     }
 
-    public Date getDate()
-    {
-        return campaignData.getDate();
-    }
-
-    public void setDate(Date date) throws PWCGException
-    {
-        campaignData.setDate(date);
-    }
-
     public String getCampaignDescription() throws PWCGException
     {
         ICampaignDescriptionBuilder campaignDescriptionBuilder = CampaignModeFactory.makeCampaignDescriptionBuilder(this);
@@ -278,6 +268,21 @@ public class Campaign
         SquadronMember referencePlayer = findReferencePlayer();
         Squadron referencePlayerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(referencePlayer.getSquadronId());
         return referencePlayerSquadron;
+    }
+
+    public String getName()
+    {
+        return campaignData.getName();
+    }
+
+    public Date getDate()
+    {
+        return campaignData.getDate();
+    }
+
+    public void setDate(Date date) throws PWCGException
+    {
+        campaignData.setDate(date);
     }
 
     public SerialNumber getSerialNumber()

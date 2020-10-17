@@ -100,7 +100,7 @@ public class CampaignGeneratorDO
                 coopUser = CoopUserManager.getIntance().buildCoopUser(getCoopUser());
             }
             
-            CoopUserManager.getIntance().createCoopPersona(campaign, player, getCoopUser());
+            CoopUserManager.getIntance().createCoopPersona(campaign.getName(), player, getCoopUser());
         }
     }
 

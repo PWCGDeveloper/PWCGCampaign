@@ -16,7 +16,7 @@ public class SquadronMemberReplacerCoop extends SquadronMemberReplacer  implemen
         SquadronMember newSquadronMewmber = super.createPersona(playerPilotName, rank, squadronName, coopUsername);
         if (campaign.isCoop())
         {
-            CoopUserManager.getIntance().createCoopPersona(campaign, newSquadronMewmber, coopUsername);
+            CoopUserManager.getIntance().createCoopPersona(campaign.getName(), newSquadronMewmber, coopUsername);
         }
         return newSquadronMewmber;
     }

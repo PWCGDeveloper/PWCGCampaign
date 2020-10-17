@@ -17,7 +17,8 @@ import javax.swing.JPanel;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.coop.model.CoopPersona;
+import pwcg.coop.CoopUserManager;
+import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
@@ -108,34 +109,32 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
 
 	private void formErrorMessages() throws PWCGException 
 	{
-		List<CoopPersona> selectedCoopPersonas = coopPersonaAccept.getAcceptedCoopPersonas();
+		List<Integer> selectedCoopPersonas = coopPersonaAccept.getAcceptedCoopPersonas();
     	if (selectedCoopPersonas.isEmpty())
     	{
             errorMessages.add("No pilots selected for mission");
     	}
     	
-    	Map <String, CoopPersona> coopPersonasByCoopUser = new HashMap<>();
-    	for (CoopPersona coopPersona : selectedCoopPersonas)
+    	CoopUserManager coopUserManager = CoopUserManager.getIntance();
+    	Map <String, Integer> coopPersonasByCoopUser = new HashMap<>();
+    	for (Integer coopPersona : selectedCoopPersonas)
     	{
-    		if (coopPersonasByCoopUser.containsKey(coopPersona.getCoopUsername()))
-    		{
-    		    if (!coopPersona.getCoopUsername().equals(CoopPersonaChooserPanel.NO_USER_FOR_PILOT))
-    		    {
-    		        SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(coopPersona.getSerialNumber());
-    		        errorMessages.add("More than one pilot in mission for player " + coopPersona.getCoopUsername() + " Pilot Name: " + pilot.getNameAndRank());
-    		    }
-    		}
+    	    CoopUser coopUser = coopUserManager.getCoopUserForSquadronMember(campaign.getName(), coopPersona);
+            if (coopPersonasByCoopUser.containsKey(coopUser.getUsername()))
+            {
+                errorMessages.add("More than one pilot in mission for player " + coopUser.getUsername());
+            }
     		else
     		{
-    			coopPersonasByCoopUser.put(coopPersona.getCoopUsername(), coopPersona);
+    			coopPersonasByCoopUser.put(coopUser.getUsername(), coopPersona);
     		}
     	}
     	
     	SquadronMember referencePlayer = campaign.findReferencePlayer();
         boolean referencePlayerIncluded = false;
-        for (CoopPersona coopPersona : selectedCoopPersonas)
+        for (int coopPersona : selectedCoopPersonas)
         {
-            if (coopPersona.getSerialNumber() == referencePlayer.getSerialNumber())
+            if (coopPersona == referencePlayer.getSerialNumber())
             {
                 referencePlayerIncluded = true;
             }

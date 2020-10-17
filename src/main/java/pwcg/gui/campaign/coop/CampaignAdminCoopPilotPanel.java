@@ -7,9 +7,12 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -19,7 +22,9 @@ import javax.swing.SwingConstants;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.coop.CoopPersonaDataBuilder;
+import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopDisplayRecord;
+import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
@@ -36,6 +41,7 @@ public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements A
 {
     private static final long serialVersionUID = 1L;
     private List<CoopDisplayRecord> coopDisplayRecords = new ArrayList<>();
+    private Map<Integer, JComboBox<String>> userSelectors = new HashMap<>();
     private ButtonGroup buttonGroup = new ButtonGroup();
     private int selectedPilotSerialNumber;
     private Campaign campaign;
@@ -76,13 +82,15 @@ public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements A
         for (CoopDisplayRecord coopDisplayRecord : coopDisplayRecords)
         {
             JRadioButton pilotSelector = makeRadioButton(coopDisplayRecord);
-            JLabel usernameLabel = makeDataLabel(coopDisplayRecord.getUsername());
+            JComboBox<String> userSelector = makeUserSelector(coopDisplayRecord.getUsername());
             JLabel campaignNameLabel = makeDataLabel(coopDisplayRecord.getCampaignName());
-            JLabel squadronNameLabel = makeDataLabel(coopDisplayRecord.getSquadronName());
+            JLabel squadronNameLabel = makeDataLabel("     " + coopDisplayRecord.getSquadronName());
             recordListPanel.add(pilotSelector);
             recordListPanel.add(campaignNameLabel);
-            recordListPanel.add(usernameLabel);
+            recordListPanel.add(userSelector);
             recordListPanel.add(squadronNameLabel);
+            
+            userSelectors.put(coopDisplayRecord.getPilotSerialNumber(), userSelector);
         }
 
 
@@ -93,6 +101,23 @@ public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements A
         recordListHolderPanel.add(planeListScroll, BorderLayout.NORTH);
 
         return recordListHolderPanel;
+    }
+
+    
+    private JComboBox<String> makeUserSelector(String username) throws PWCGException
+    {
+        JComboBox<String> userSelector = new JComboBox<>();
+        userSelector.setOpaque(false);
+        userSelector.setBackground(ColorMap.PAPER_BACKGROUND);
+        userSelector.setFont(PWCGMonitorFonts.getPrimaryFontLarge());
+
+        userSelector.addItem("Unassigned");
+        for (CoopUser coopUser : CoopUserManager.getIntance().getAllCoopUsers())
+        {
+            userSelector.addItem(coopUser.getUsername());
+            userSelector.setSelectedItem(username);
+        }
+        return userSelector;
     }
 
     private JRadioButton makeRadioButton(CoopDisplayRecord coopDisplayRecord) throws PWCGException
@@ -169,5 +194,23 @@ public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements A
             }
         }
         return null;
+    }
+    
+    public Map<String, List<Integer>> getUsersForPersonas()
+    {
+        Map<String, List<Integer>> personaByUser = new HashMap<>();
+        for (int serialNumber : userSelectors.keySet())
+        {
+            JComboBox<String> userSelector = userSelectors.get(serialNumber);
+            String userName = (String)userSelector.getSelectedItem();
+            if (!personaByUser.containsKey(userName))
+            {
+                List<Integer> personasForUser = new ArrayList<>();
+                personaByUser.put(userName, personasForUser);
+            }
+            List<Integer> personasForUser = personaByUser.get(userName);
+            personasForUser.add(serialNumber);
+        }
+        return personaByUser;            
     }
 }

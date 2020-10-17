@@ -6,11 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.CoopUserIOJson;
 import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.coop.model.CoopPersona;
+import pwcg.coop.model.CoopCampaignPersonas;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
 
@@ -55,20 +54,47 @@ public class CoopUserManager
         return addedCoopUser;
     }
 
-    public List<CoopPersona> getPersonasForCampaign(Campaign campaign) throws PWCGException
+    public List<Integer> getPersonasForCampaign(String campaignName) throws PWCGException
     {
-        List<CoopPersona> personasForCampaign = new ArrayList<>();
+        List<Integer> personasForCampaign = new ArrayList<>();
         for (CoopUser coopUser : coopUsers.values())
         {
-            for (CoopPersona coopPersona : coopUser.getUserPersonas())
+            for (Integer campaignPersona : coopUser.getUserPersonas(campaignName))
             {
-                if (coopPersona.getCampaignName().equals(campaign.getCampaignData().getName()))
-                {
-                    personasForCampaign.add(coopPersona);
-                }
+                personasForCampaign.add(campaignPersona);
             }
         }
         return personasForCampaign;
+    }
+
+    public boolean isSquadronMemberCoopPersona(String campaignName, SquadronMember squadronMember) throws PWCGException
+    {
+        for (CoopUser coopUser : coopUsers.values())
+        {
+            for (Integer campaignPersona : coopUser.getUserPersonas(campaignName))
+            {
+                if (campaignPersona == squadronMember.getSerialNumber())
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public CoopUser getCoopUserForSquadronMember(String campaignName, int serialNumber) throws PWCGException
+    {
+        for (CoopUser coopUser : coopUsers.values())
+        {
+            if (coopUser.getCoopCampaignPersona(campaignName) != null)
+            {
+                if (coopUser.hasPersona(campaignName, serialNumber))
+                {
+                    return coopUser;
+                }
+            }
+        }
+        return null;
     }
 
     public CoopUser getCoopUser(String username) throws PWCGException 
@@ -81,9 +107,12 @@ public class CoopUserManager
         CoopUser userToBeRemoved = getCoopUser(username);
         if (userToBeRemoved != null)
         {
-            for (CoopPersona coopPersona : userToBeRemoved.getUserPersonas())
+            for (CoopCampaignPersonas campaignPersona : userToBeRemoved.getCoopCampaignPersonas())
             {
-                CoopPersonaRetirement.retirePersona(coopPersona);
+                for (int serialNumber : campaignPersona.getSerialNumbers())
+                {
+                    CoopPersonaRetirement.retirePersona(campaignPersona.getCampaignName(), serialNumber);
+                }
             }
             
             removeUserFile(userToBeRemoved);
@@ -91,7 +120,7 @@ public class CoopUserManager
         }
     }
 
-    public void createCoopPersona(Campaign campaign, SquadronMember newSquadronMewmber, String coopUsername) throws PWCGException
+    public void createCoopPersona(String campaignName, SquadronMember newSquadronMember, String coopUsername) throws PWCGException
     {
         CoopUser coopUser = getCoopUser(coopUsername);
         if (coopUser == null)
@@ -101,11 +130,14 @@ public class CoopUserManager
 
         if (coopUser != null)
         {
-            CoopPersona persona = new CoopPersona();
-            persona.setCoopUsername(coopUsername);
-            persona.setSerialNumber(newSquadronMewmber.getSerialNumber());
-            persona.setCampaignName(campaign.getCampaignData().getName());
-            coopUser.addPersona(persona);
+            CoopCampaignPersonas coopCampaignPersona = coopUser.getCoopCampaignPersona(campaignName);
+            if (coopCampaignPersona == null)
+            {
+                coopCampaignPersona = new CoopCampaignPersonas(campaignName);
+            }
+            
+            coopCampaignPersona.addPersona(newSquadronMember.getSerialNumber(), newSquadronMember.getName());
+            coopUser.addCoopCampaignPersonas(campaignName, coopCampaignPersona);
             writeUser(coopUser);
         }
         else
@@ -132,20 +164,5 @@ public class CoopUserManager
     private void writeUser(CoopUser coopUser) throws PWCGException
     {
         CoopUserIOJson.writeJson(coopUser);
-    }
-
-    public CoopPersona getCoopPersona(int serialNumber)
-    {
-        for (CoopUser coopUser : coopUsers.values())
-        {
-            for (CoopPersona coopPersona : coopUser.getUserPersonas())
-            {
-                if (coopPersona.getSerialNumber() == serialNumber)
-                {
-                    return coopPersona;
-                }
-            }
-        }
-        return null;
     }
 }

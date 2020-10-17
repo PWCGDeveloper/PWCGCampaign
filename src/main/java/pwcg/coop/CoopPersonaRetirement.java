@@ -5,15 +5,14 @@ import pwcg.campaign.CampaignMode;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.coop.model.CoopPersona;
 import pwcg.core.exception.PWCGException;
 
 class CoopPersonaRetirement
 {
-    public static void retirePersona(CoopPersona personaToRemove) throws PWCGException
+    public static void retirePersona(String campaignName, int personaToRemove) throws PWCGException
     {
         Campaign campaign = new Campaign();
-        if (campaign.open(personaToRemove.getCampaignName()))              
+        if (campaign.open(campaignName))              
         {
             PWCGContext.getInstance().setCampaign(campaign);
             if (campaign.getCampaignData().getCampaignMode() != CampaignMode.CAMPAIGN_MODE_SINGLE)
@@ -24,9 +23,9 @@ class CoopPersonaRetirement
         }
     }
 
-    private static void removePersonasFromCampaign(CoopPersona personaToRetire, Campaign campaign) throws PWCGException
+    private static void removePersonasFromCampaign(int personaToRetire, Campaign campaign) throws PWCGException
     {
-        SquadronMember squadronMemberToRetire = campaign.getPersonnelManager().getAnyCampaignMember(personaToRetire.getSerialNumber());
+        SquadronMember squadronMemberToRetire = campaign.getPersonnelManager().getAnyCampaignMember(personaToRetire);
         if (squadronMemberToRetire != null)
         {
             squadronMemberToRetire.setPilotActiveStatus(SquadronMemberStatus.STATUS_RETIRED, campaign.getDate(), null);

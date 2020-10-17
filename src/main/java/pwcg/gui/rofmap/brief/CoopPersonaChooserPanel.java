@@ -13,7 +13,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.coop.CoopUserManager;
-import pwcg.coop.model.CoopPersona;
+import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.ScreenIdentifier;
@@ -32,10 +32,8 @@ public class CoopPersonaChooserPanel extends ImageResizingPanel implements ISele
     private Campaign campaign;
 	
     private Map<String, SquadronMember> playerSquadronMembers = new TreeMap<>();
-    private Map<String, CoopPersona> campaignCoopPersonas = new TreeMap<>();
+    private Map<String, Integer> campaignCoopPersonas = new TreeMap<>();
     
-    public static final String NO_USER_FOR_PILOT = "No User For Pilot";
-
 	public CoopPersonaChooserPanel(Campaign campaign, BriefingCoopPersonaChooser parent)
 	{
         super("");
@@ -69,7 +67,7 @@ public class CoopPersonaChooserPanel extends ImageResizingPanel implements ISele
     {
         for (SquadronMember player : campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
         {
-            CoopPersona coopPersona = findCoopPlayerForSquadronMember(player);
+            int coopPersona = findCoopPlayerForSquadronMember(player);
             MultiSelectData selectData = buildSelectData(coopPersona);
             playerSquadronMembers.put(player.getNameAndRank(), player);
             campaignCoopPersonas.put(player.getNameAndRank(), coopPersona);
@@ -77,41 +75,33 @@ public class CoopPersonaChooserPanel extends ImageResizingPanel implements ISele
         }
     }
     
-    private CoopPersona findCoopPlayerForSquadronMember(SquadronMember player) throws PWCGException
+    private int findCoopPlayerForSquadronMember(SquadronMember player) throws PWCGException
     {
-        List<CoopPersona> coopPersonas = CoopUserManager.getIntance().getPersonasForCampaign(campaign);
-        for (CoopPersona coopPersona : coopPersonas)
+        CoopUser coopUserForPlayer = CoopUserManager.getIntance().getCoopUserForSquadronMember(campaign.getName(), player.getSerialNumber());
+        for (Integer coopPersona : coopUserForPlayer.getUserPersonas(campaign.getName()))
         {
             if (player.getPilotActiveStatus() == SquadronMemberStatus.STATUS_ACTIVE)
             {
-                if (player.getSerialNumber() == coopPersona.getSerialNumber())
+                if (player.getSerialNumber() == coopPersona)
                 {
                     return coopPersona;
                 }
             }
         }
-        return makeNoCoopPersona(player);
+        return -1;
     }
 
-    private CoopPersona makeNoCoopPersona(SquadronMember player)
+    private MultiSelectData buildSelectData(Integer coopPersona) throws PWCGException
     {
-        CoopPersona noCoopPersona = new CoopPersona();
-        noCoopPersona.setCampaignName(campaign.getCampaignData().getName());
-        noCoopPersona.setSerialNumber(player.getSerialNumber());
-        
-        return noCoopPersona;
-    }
-
-    private MultiSelectData buildSelectData(CoopPersona coopPersona) throws PWCGException
-    {
+        CoopUser coopUser = CoopUserManager.getIntance().getCoopUserForSquadronMember(campaign.getName(), coopPersona);
         MultiSelectData selectData = new MultiSelectData();
         
-        SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(coopPersona.getSerialNumber());
+        SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(coopPersona);
         selectData.setName(pilot.getNameAndRank());
-        selectData.setText("User: " + coopPersona.getCoopUsername() +".  Pilot Name: "  + pilot.getNameAndRank());
+        selectData.setText("User: " + coopUser.getUsername() +".  Pilot Name: "  + pilot.getNameAndRank());
         selectData.setInfo(
-                "User: " + coopPersona.getCoopUsername() + 
-                ".  Campaign: "  + coopPersona.getCampaignName() + 
+                "User: " + coopUser.getUsername() + 
+                ".  Campaign: "  + campaign.getCampaignData().getName() + 
                 ".  Pilot Name: "  + pilot.getNameAndRank() + 
                 ".  Squadron: "  + pilot.getSquadronId());
         return selectData;
@@ -138,13 +128,13 @@ public class CoopPersonaChooserPanel extends ImageResizingPanel implements ISele
 		return selectedPlayers;
 	}
 	
-	public List<CoopPersona> getAcceptedCoopPersonas() throws PWCGException
+	public List<Integer> getAcceptedCoopPersonas() throws PWCGException
 	{
-        List<CoopPersona> selectedCoopPersonas = new ArrayList<>();
+        List<Integer> selectedCoopPersonas = new ArrayList<>();
         List<MultiSelectData> selectedRecords = selector.getAccepted();
 		for (MultiSelectData selectedRecord : selectedRecords)
 		{
-			CoopPersona selectedCoopPersona = campaignCoopPersonas.get(selectedRecord.getName());
+		    Integer selectedCoopPersona = campaignCoopPersonas.get(selectedRecord.getName());
 			selectedCoopPersonas.add(selectedCoopPersona);
 		}
 		return selectedCoopPersonas;

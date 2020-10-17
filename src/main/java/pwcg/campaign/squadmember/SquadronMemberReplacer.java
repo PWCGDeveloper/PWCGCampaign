@@ -29,7 +29,7 @@ public class SquadronMemberReplacer  implements ISquadronMemberReplacer
         
         if (campaign.isCoop())
         {
-            CoopUserManager.getIntance().createCoopPersona(campaign, newSquadronMewmber, coopUser);
+            CoopUserManager.getIntance().createCoopPersona(campaign.getName(), newSquadronMewmber, coopUser);
         }
         
         return newSquadronMewmber;
