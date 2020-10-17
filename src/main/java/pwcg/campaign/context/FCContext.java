@@ -49,8 +49,8 @@ public class FCContext extends PWCGContextBase implements IPWCGContextManager
     }
 
     @Override
-    public PWCGDirectoryManager getDirectoryManager()
+    public PWCGDirectoryProductManager getDirectoryManager()
     {
-        return new PWCGDirectoryManager(PWCGProduct.FC);
+        return new PWCGDirectoryProductManager(PWCGProduct.FC);
     }
 }

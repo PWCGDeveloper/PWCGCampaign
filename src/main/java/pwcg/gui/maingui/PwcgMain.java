@@ -2,10 +2,10 @@ package pwcg.gui.maingui;
 
 import java.awt.Color;
 import java.awt.Insets;
-import java.io.File;
 
 import javax.swing.UIManager;
 
+import pwcg.campaign.CoopToV2;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.utils.TestDriver;
@@ -32,8 +32,10 @@ public class PwcgMain
 	{
         try
         {
+            PwcgDirectoryRestructure.restructureDirectories(PWCGProduct.BOS);
+            CoopToV2.moveToCoopV2();
+
             validatetestDriverNotEnabled();            
-            cleanup();
             setProduct(args);
             initializePWCGStaticData();
             setupUIManager();
@@ -54,16 +56,6 @@ public class PwcgMain
         {
             ErrorDialog.userError("PWCG test driver is enabled - PWCG will not function normally");
         }
-    }
-
-    private void cleanup()
-    {
-        File badFile = new File("BoSData\\Input\\Vehicles\\pziv-h1.json");
-        if (badFile.exists())
-        {
-            badFile.delete();
-        }
-        
     }
 
     private void setProduct(String[] args) throws PWCGException

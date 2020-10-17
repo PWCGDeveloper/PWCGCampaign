@@ -5,6 +5,7 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGDirectorySimulatorManager;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
@@ -30,10 +31,10 @@ public class MissionFileCleaner
     {
         List<String> results = new ArrayList<String>();
 
-        String singlePlayerMissionDir = PWCGContext.getInstance().getDirectoryManager().getSinglePlayerMissionFilePath();
+        String singlePlayerMissionDir = PWCGDirectorySimulatorManager.getInstance().getSinglePlayerMissionFilePath();
         deleteOldMissionFiles(results, singlePlayerMissionDir);
 
-        String coopMissionDir = PWCGContext.getInstance().getDirectoryManager().getCoopMissionFilePath();
+        String coopMissionDir = PWCGDirectorySimulatorManager.getInstance().getCoopMissionFilePath();
         deleteOldMissionFiles(results, coopMissionDir);
         
         return results;

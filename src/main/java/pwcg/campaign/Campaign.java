@@ -7,6 +7,7 @@ import java.util.List;
 
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CampaignModeFactory;
 import pwcg.campaign.io.json.CampaignIOJson;
@@ -128,7 +129,7 @@ public class Campaign
     public static List<String> getCampaignNames() throws PWCGUserException
     {
         List<String> campaignList = new ArrayList<String>();
-        String campaignRootDirName = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir();
+        String campaignRootDirName = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir();
         File campaignRootDir = new File(campaignRootDirName);
 
         if (!campaignRootDir.exists() || !campaignRootDir.isDirectory())
@@ -166,7 +167,7 @@ public class Campaign
 
     public String getCampaignPath()
     {
-        String dir = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir();
+        String dir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir();
         String campaignPath = dir + campaignData.getName() + "\\";
 
         File campaignDir = new File(campaignPath);

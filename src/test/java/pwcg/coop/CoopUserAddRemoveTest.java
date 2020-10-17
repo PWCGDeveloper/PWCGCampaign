@@ -9,6 +9,7 @@ import org.junit.Test;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignInitialWriter;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.io.json.CoopUserIOJson;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -46,7 +47,7 @@ public class CoopUserAddRemoveTest
     private void createCoopUser() throws PWCGException
     {
         CoopUserManager.getIntance().buildCoopUser(coopuser);
-        String coopUserDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCoopDir() + "Users\\";                    
+        String coopUserDir = PWCGDirectoryUserManager.getInstance().getPwcgCoopDir();                    
         File coopUserFile = new File(coopUserDir + coopuser + ".json");
         assert(coopUserFile.exists());
     }
@@ -100,13 +101,9 @@ public class CoopUserAddRemoveTest
         coopCampaign = new Campaign();
         coopCampaign.open(CampaignCacheBase.TEST_CAMPAIGN_NAME);
 
-        String coopUserDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCoopDir() + "Users\\";                    
+        String coopUserDir = PWCGDirectoryUserManager.getInstance().getPwcgCoopDir();                    
         File coopUserFile = new File(coopUserDir + coopuser + ".json");
         assert(!coopUserFile.exists());
-
-        String coopPersonaDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCoopDir() + "Pilots\\";                    
-        File coopPersonaFile = new File(coopPersonaDir + personaName + ".json");
-        assert(!coopPersonaFile.exists());
 
         assert(CoopUserManager.getIntance().getCoopUser(coopuser) == null);
 

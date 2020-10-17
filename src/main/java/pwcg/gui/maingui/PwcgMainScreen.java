@@ -20,6 +20,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGDirectorySimulatorManager;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.utils.PlanesOwnedManager;
@@ -53,7 +54,7 @@ import pwcg.gui.utils.ToolTipManager;
 public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
-    private static final String VERSION = "   PWCG Version 11.2.0";
+    private static final String VERSION = "   PWCG Version 11.3.0";
 
     private PwcgThreePanelUI pwcgThreePanel;
 	private List<JButton> campaignButtonList = new ArrayList<JButton>();
@@ -175,7 +176,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 
 	private void validateInstallDirectory()
 	{
-		String missionFilepath = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir() + "Missions";
+		String missionFilepath = PWCGDirectorySimulatorManager.getInstance().getSimulatorRootDir() + "Data\\Missions";
 		try
 		{
 			File file = new File(missionFilepath);

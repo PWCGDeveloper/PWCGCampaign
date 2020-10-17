@@ -9,7 +9,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGDirectorySimulatorManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
@@ -69,6 +69,6 @@ public class MissionDescriptionFile
 	
     protected String getMissionFilePath(Campaign campaign, String fileName) throws PWCGException 
     {
-        return PWCGContext.getInstance().getDirectoryManager().getMissionFilePath(campaign) + fileName;
+        return PWCGDirectorySimulatorManager.getInstance().getMissionFilePath(campaign) + fileName;
     }
 }

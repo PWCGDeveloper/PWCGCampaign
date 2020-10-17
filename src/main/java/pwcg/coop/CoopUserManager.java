@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.campaign.io.json.CoopUserIOJson;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.coop.model.CoopCampaignPersonas;
@@ -46,8 +46,7 @@ public class CoopUserManager
 
     public CoopUser buildCoopUser(String username) throws PWCGException 
     {
-        CoopUser addedCoopUser = new CoopUser();
-        addedCoopUser.setUsername(username);
+        CoopUser addedCoopUser = new CoopUser(username, CoopUser.COOP_FORMAT_VERSION);
         
         coopUsers.put(username, addedCoopUser);
         writeUser(addedCoopUser);
@@ -148,7 +147,7 @@ public class CoopUserManager
 
     private void removeUserFile(CoopUser userToBeRemoved) throws PWCGException
     {
-        String coopUserDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCoopDir() + "Users\\";                    
+        String coopUserDir = PWCGDirectoryUserManager.getInstance().getPwcgCoopDir();
         File coopUserFile = new File(coopUserDir + userToBeRemoved.getUsername() + ".json");
         if (coopUserFile.exists())
         {

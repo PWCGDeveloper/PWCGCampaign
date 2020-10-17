@@ -12,6 +12,8 @@ import java.util.zip.ZipOutputStream;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGDirectorySimulatorManager;
+import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 
@@ -96,7 +98,7 @@ public class PWCGErrorBundler
 
 	private void copyMissionLogFiles() throws IOException, PWCGException
 	{
-		String simulatorDataDir = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir(); 
+		String simulatorDataDir = PWCGDirectorySimulatorManager.getInstance().getSimulatorDataDir(); 
 		String targetDataDir = createTargetDirDataPath(); 
 		copyDirectory(simulatorDataDir, targetDataDir, "missionReport");
 		
@@ -109,24 +111,24 @@ public class PWCGErrorBundler
 
 	private void copySinglePlayerMissionFiles() throws IOException, PWCGException
     {
-        String missionFileDir = PWCGContext.getInstance().getDirectoryManager().getSinglePlayerMissionFilePath(); 
+        String missionFileDir = PWCGDirectorySimulatorManager.getInstance().getSinglePlayerMissionFilePath(); 
         String targetDataDir = createTargetDirSinglePlayerMissionPath(); 
         copyDirectory(missionFileDir, targetDataDir, "*");
     }
 
 	private void copyCoopMissionFiles() throws IOException, PWCGException
     {
-        String coopMissionFileDir = PWCGContext.getInstance().getDirectoryManager().getCoopMissionFilePath(); 
+        String coopMissionFileDir = PWCGDirectorySimulatorManager.getInstance().getCoopMissionFilePath(); 
         String targetDataDir = createTargetDirCoopMissionPath(); 
         copyDirectory(coopMissionFileDir, targetDataDir, "*");
     }
 	
 	private void copyCoopDataFiles() throws IOException, PWCGException
     {
-        String coopDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCoopDir(); 
+        String coopUserDir = PWCGDirectoryUserManager.getInstance().getPwcgCoopDir();
         String targetDataDir = createTargetDirCoopPath(); 
 
-        copyDirectory(coopDir, targetDataDir, "*");
+        copyDirectory(coopUserDir, targetDataDir, "*");
     }
 
 	private void copyCampaignFiles() throws IOException, PWCGException
@@ -180,7 +182,7 @@ public class PWCGErrorBundler
 	private String createSourceCampaignDirPath()
 	{
 		Campaign campaign  = PWCGContext.getInstance().getCampaign();
-		String campaignDirPath = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName(); 
+		String campaignDirPath = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName(); 
 		
 		return campaignDirPath;
 	}

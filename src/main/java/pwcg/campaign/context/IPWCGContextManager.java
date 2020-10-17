@@ -55,7 +55,7 @@ public interface IPWCGContextManager
 
     PlaneTypeFactory getPlaneTypeFactory();
 
-    PWCGDirectoryManager getDirectoryManager();
+    PWCGDirectoryProductManager getDirectoryManager();
 
     List<PWCGMap> getMaps();
 

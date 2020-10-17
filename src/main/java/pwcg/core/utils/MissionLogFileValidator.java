@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 
-import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGDirectorySimulatorManager;
 
 public class MissionLogFileValidator 
 {
@@ -21,7 +21,7 @@ public class MissionLogFileValidator
 	{
 		try
 		{
-		    String simulatorDataDir = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir();
+		    String simulatorDataDir = PWCGDirectorySimulatorManager.getInstance().getSimulatorDataDir();
             directoryReader.sortilesInDir(simulatorDataDir);
             for (String filename : directoryReader.getFiles()) 
             {

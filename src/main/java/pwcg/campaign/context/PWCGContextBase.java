@@ -252,7 +252,7 @@ public abstract class PWCGContextBase implements IPWCGContextManager
         String missionLogFullPath = "";
         if (!missionLogPath.isEmpty())
         {
-            missionLogFullPath = this.getDirectoryManager().getSimulatorRootDir() + missionLogPath;
+            missionLogFullPath = PWCGDirectorySimulatorManager.getInstance().getSimulatorRootDir() + missionLogPath;
         }
         return missionLogFullPath;        
     }

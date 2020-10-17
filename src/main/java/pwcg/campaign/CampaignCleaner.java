@@ -8,6 +8,7 @@ import java.util.Map;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.medals.MedalManager;
@@ -49,14 +50,14 @@ public class CampaignCleaner
             {
                 if (campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId()) == null)
                 {
-                    String campaignPersonnelDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Personnel\\";
+                    String campaignPersonnelDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Personnel\\";
                     File squadronPersonnelFile = new File(campaignPersonnelDir + squadron.getSquadronId() + ".json");
                     if (squadronPersonnelFile.exists())
                     {
                         squadronPersonnelFile.delete();
                     }
                     
-                    String campaignEquipmentDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Equipment\\";
+                    String campaignEquipmentDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Equipment\\";
                     File campaignEquipmentFile = new File(campaignEquipmentDir + squadron.getSquadronId() + ".json");
                     if (campaignEquipmentFile.exists())
                     {

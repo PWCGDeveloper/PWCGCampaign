@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
@@ -24,7 +24,7 @@ public class CoopUserIOJson
         verifyCoopDirs();
         
 		JsonWriter<CoopUser> jsonWriter = new JsonWriter<>();
-        String coopUserDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCoopDir() + "Users\\";
+        String coopUserDir = PWCGDirectoryUserManager.getInstance().getPwcgCoopDir();                    
 		jsonWriter.writeAsJson(coopUser, coopUserDir, coopUser.getUsername() + ".json");
 	}
 
@@ -34,13 +34,21 @@ public class CoopUserIOJson
 	    
 	    List<CoopUser> coopUsers = new ArrayList<>();
 		
-		String coopUserDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCoopDir() + "Users\\";
+        String coopUserDir = PWCGDirectoryUserManager.getInstance().getPwcgCoopDir();                    
 		List<File> jsonFiles = FileUtils.getFilesWithFilter(coopUserDir, ".json");
 		for (File jsonFile : jsonFiles)
 		{
 			JsonObjectReader<CoopUser> jsonReader = new JsonObjectReader<>(CoopUser.class);
-			CoopUser coopUser = jsonReader.readJsonFile(coopUserDir, jsonFile.getName()); 			
-			coopUsers.add(coopUser);
+			CoopUser coopUser = jsonReader.readJsonFile(coopUserDir, jsonFile.getName()); 
+			try 
+			{
+			    coopUser.getCoopCampaignPersonas();
+	            coopUsers.add(coopUser);
+			}
+			catch (Exception e)
+			{
+			    System.out.println("Fubar " + jsonFile.getName());
+			}
 		}
 		
 		return coopUsers;
@@ -48,10 +56,7 @@ public class CoopUserIOJson
 	
 	private static void verifyCoopDirs()
 	{
-        String coopDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCoopDir();
-        FileUtils.createDirIfNeeded(coopDir);
-
-        String coopUserDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCoopDir() + "Users\\";
+        String coopUserDir = PWCGDirectoryUserManager.getInstance().getPwcgCoopDir();                    
         FileUtils.createDirIfNeeded(coopUserDir);
 	}
 }

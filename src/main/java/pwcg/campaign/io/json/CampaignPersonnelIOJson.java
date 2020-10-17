@@ -5,6 +5,7 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.campaign.personnel.PersonnelReplacementsService;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.SquadronMembers;
@@ -23,16 +24,16 @@ public class CampaignPersonnelIOJson
     
     private static void makePersonnelDir(Campaign campaign)
     {
-        String campaignPersonnelDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Personnel\\";
+        String campaignPersonnelDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Personnel\\";
         FileUtils.createDirIfNeeded(campaignPersonnelDir);
         
-        String campaignReplacementsDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Personnel\\Replacements\\";
+        String campaignReplacementsDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Personnel\\Replacements\\";
         FileUtils.createDirIfNeeded(campaignReplacementsDir);
     }
 
     private static void writeSquadrons(Campaign campaign) throws PWCGException
     {
-        String campaignPersonnelDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Personnel\\";
+        String campaignPersonnelDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Personnel\\";
         JsonWriter<SquadronMembers> jsonWriterSquadrons = new JsonWriter<>();
         for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
         {
@@ -43,7 +44,7 @@ public class CampaignPersonnelIOJson
 
     private static void writeReplacements(Campaign campaign) throws PWCGException
     {
-        String campaignReplacementDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Personnel\\Replacements\\";
+        String campaignReplacementDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Personnel\\Replacements\\";
         JsonWriter<PersonnelReplacementsService> jsonWriterReplacements = new JsonWriter<>();
         for (PersonnelReplacementsService replacements : campaign.getPersonnelManager().getAllPersonnelReplacements())
         {
@@ -59,7 +60,7 @@ public class CampaignPersonnelIOJson
 
     private static void readSquadrons(Campaign campaign) throws PWCGException
     {
-        String campaignPersonnelDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Personnel\\";
+        String campaignPersonnelDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Personnel\\";
         List<File> jsonFiles = FileUtils.getFilesWithFilter(campaignPersonnelDir, ".json");
         for (File jsonFile : jsonFiles)
         {
@@ -82,7 +83,7 @@ public class CampaignPersonnelIOJson
 
     private static void readReplacements(Campaign campaign) throws PWCGException
     {
-        String campaignReplacementDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Personnel\\Replacements\\";
+        String campaignReplacementDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Personnel\\Replacements\\";
         List<File> jsonFiles = FileUtils.getFilesWithFilter(campaignReplacementDir, ".json");
         for (File jsonFile : jsonFiles)
         {

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGDirectorySimulatorManager;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
@@ -28,7 +29,7 @@ public class MissionResultLogFileCleaner
         int deleteAll = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.DeleteAllMissionLogsKey);
         if (deleteAll == 1)
         {
-            String simulatorDataDir = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir();
+            String simulatorDataDir = PWCGDirectorySimulatorManager.getInstance().getSimulatorDataDir();
             filesToDelete.addAll(cleanOldMissionLogs(simulatorDataDir));
 
             String userLogDir = PWCGContext.getInstance().getMissionLogDirectory();

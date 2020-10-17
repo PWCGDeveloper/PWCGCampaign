@@ -79,7 +79,12 @@ public class VirtualWaypointConsolidator
         int lastVwpNearFront = VirtualWaypointStartFinder.findEndVwpProximityToFront(flight, beforeConsolidation);
         
         int firstVwpToKeep = findFirstVwpToKeep(firstVwpNearBox, firstVwpNearFront);
-        int lastVwpToKeep = findLastVwpToKeep(lastVwpNearBox, lastVwpNearFront);
+        int lastVwpToKeep = findLastVwpToKeep(lastVwpNearBox, lastVwpNearFront, firstVwpToKeep);
+        
+        if (lastVwpToKeep < firstVwpToKeep)
+        {
+            lastVwpToKeep = firstVwpToKeep+1;
+        }
         
         int timeUntilFirst = rollUpimeAtFront(firstVwpToKeep);
         
@@ -128,7 +133,7 @@ public class VirtualWaypointConsolidator
     }
     
 
-    private int findLastVwpToKeep(int lastVwpNearBox, int lastVwpNearFront)
+    private int findLastVwpToKeep(int lastVwpNearBox, int lastVwpNearFront, int firstVwpToKeep)
     {
         int lastVwpToKeep = beforeConsolidation.size();
         if (lastVwpNearBox == VirtualWaypointStartFinder.IS_NOT_NEAR_AREA && lastVwpNearFront == VirtualWaypointStartFinder.IS_NOT_NEAR_AREA)
@@ -156,6 +161,23 @@ public class VirtualWaypointConsolidator
                 lastVwpToKeep = lastVwpNearBox;
             }
         }
+        
+        if (lastVwpToKeep < firstVwpToKeep)
+        {
+            if (lastVwpNearBox > firstVwpToKeep)
+            {
+                lastVwpToKeep = lastVwpNearBox;
+            }
+            else if (lastVwpNearFront > firstVwpToKeep)
+            {
+                lastVwpToKeep = lastVwpNearFront;
+            }
+            else
+            {
+                lastVwpToKeep = firstVwpToKeep+1;
+            }
+        }
+        
         return lastVwpToKeep;
     }
     

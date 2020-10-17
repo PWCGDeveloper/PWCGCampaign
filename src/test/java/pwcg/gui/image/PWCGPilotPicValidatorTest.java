@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import pwcg.campaign.context.PWCGDirectoryManager;
+import pwcg.campaign.context.PWCGDirectoryProductManager;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
@@ -21,7 +21,7 @@ public class PWCGPilotPicValidatorTest
     @Before
     public void setup ()
     {
-        PWCGDirectoryManager directoryManager = new PWCGDirectoryManager(PWCGProduct.BOS);
+        PWCGDirectoryProductManager directoryManager = new PWCGDirectoryProductManager(PWCGProduct.BOS);
         String imageDir  = directoryManager.getPwcgImagesDir();
         pilotPicDir = imageDir + "PilotPictures\\";
     }

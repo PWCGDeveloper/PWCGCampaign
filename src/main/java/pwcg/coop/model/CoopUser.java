@@ -7,20 +7,23 @@ import java.util.Map;
 
 public class CoopUser
 {
+    public static final String COOP_FORMAT_VERSION = "V2";
+    
+    private String formatVersion;
     private String username;
     private Map<String, CoopCampaignPersonas> campaignPersonas = new HashMap<>();
     
+    public CoopUser(String username, String formatVersion)
+    {
+        this.username = username;
+        this.formatVersion = formatVersion;
+    }
 
     public String getUsername()
     {
         return username;
     }
 
-    public void setUsername(String username)
-    {
-        this.username = username;
-    }
-    
     public void addPersona(String campaignName, int serialNumber, String pilotName)
     {
         if (!campaignPersonas.containsKey(campaignName))
@@ -76,6 +79,10 @@ public class CoopUser
     public void addCoopCampaignPersonas(String campaignName, CoopCampaignPersonas coopCampaignPersona)
     {
         campaignPersonas.put(campaignName, coopCampaignPersona);
-        
     }
+
+    public String getFormatVersion()
+    {
+        return formatVersion;
+    }    
 }

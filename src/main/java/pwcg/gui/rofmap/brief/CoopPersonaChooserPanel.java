@@ -68,23 +68,29 @@ public class CoopPersonaChooserPanel extends ImageResizingPanel implements ISele
         for (SquadronMember player : campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
         {
             int coopPersona = findCoopPlayerForSquadronMember(player);
-            MultiSelectData selectData = buildSelectData(coopPersona);
-            playerSquadronMembers.put(player.getNameAndRank(), player);
-            campaignCoopPersonas.put(player.getNameAndRank(), coopPersona);
-            selector.addNotAccepted(selectData);
+            if (coopPersona > 0)
+            {
+                MultiSelectData selectData = buildSelectData(coopPersona);
+                playerSquadronMembers.put(player.getNameAndRank(), player);
+                campaignCoopPersonas.put(player.getNameAndRank(), coopPersona);
+                selector.addNotAccepted(selectData);
+            }
         }
     }
     
     private int findCoopPlayerForSquadronMember(SquadronMember player) throws PWCGException
     {
         CoopUser coopUserForPlayer = CoopUserManager.getIntance().getCoopUserForSquadronMember(campaign.getName(), player.getSerialNumber());
-        for (Integer coopPersona : coopUserForPlayer.getUserPersonas(campaign.getName()))
+        if (coopUserForPlayer != null)
         {
-            if (player.getPilotActiveStatus() == SquadronMemberStatus.STATUS_ACTIVE)
+            for (Integer coopPersona : coopUserForPlayer.getUserPersonas(campaign.getName()))
             {
-                if (player.getSerialNumber() == coopPersona)
+                if (player.getPilotActiveStatus() == SquadronMemberStatus.STATUS_ACTIVE)
                 {
-                    return coopPersona;
+                    if (player.getSerialNumber() == coopPersona)
+                    {
+                        return coopPersona;
+                    }
                 }
             }
         }

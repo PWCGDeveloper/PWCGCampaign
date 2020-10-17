@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
 
@@ -38,7 +38,7 @@ public class PlanesOwnedManager
 	{
 		try
         {
-            String userfilename = PWCGContext.getInstance().getDirectoryManager().getPwcgUserDir() + "PlanesOwned.config"; 
+            String userfilename = PWCGDirectoryUserManager.getInstance().getPwcgUserConfigDir() + "PlanesOwned.config"; 
             File userFile = new File(userfilename);		
             BufferedWriter writer = new BufferedWriter(new FileWriter(userFile));
             
@@ -63,7 +63,7 @@ public class PlanesOwnedManager
 	{
 		try
 		{
-			String planesOwnedFilename = PWCGContext.getInstance().getDirectoryManager().getPwcgUserDir() + "PlanesOwned.config"; 
+			String planesOwnedFilename = PWCGDirectoryUserManager.getInstance().getPwcgUserConfigDir() + "PlanesOwned.config"; 
 			File planesOwnedFile = new File(planesOwnedFilename);
 			
 			BufferedReader reader = new BufferedReader(new FileReader(planesOwnedFile));

@@ -1,12 +1,12 @@
 package pwcg.core.utils;
 
-import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGDirectoryUserManager;
 
 public class CampaignRemover
 {
     public static void deleteCampaign(String campaignName)
     {
-        String campaignDirPath = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir() + "\\" + campaignName;
+        String campaignDirPath = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + "\\" + campaignName;
         FileUtils.deleteRecursive(campaignDirPath);
     }
 

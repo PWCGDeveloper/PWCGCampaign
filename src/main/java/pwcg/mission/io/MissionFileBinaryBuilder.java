@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGDirectorySimulatorManager;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
@@ -54,7 +54,7 @@ public class MissionFileBinaryBuilder implements buildCommandPath
     {
         try
         {
-            File workingDir = new File(PWCGContext.getInstance().getDirectoryManager().getMissionRewritePath());
+            File workingDir = new File(PWCGDirectorySimulatorManager.getInstance().getMissionRewritePath());
             Process process = Runtime.getRuntime().exec(fullCommand, null, workingDir);
             int binaryBuildTimeout = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.BuildBinaryTimeoutKey);
             boolean status = process.waitFor(binaryBuildTimeout, TimeUnit.MINUTES);
@@ -85,13 +85,13 @@ public class MissionFileBinaryBuilder implements buildCommandPath
 
     public static boolean canRunResaver() throws PWCGException
     {
-        String binPath = PWCGContext.getInstance().getDirectoryManager().getMissionBinPath();
+        String binPath = PWCGDirectorySimulatorManager.getInstance().getMissionBinPath();
         if (!FileUtils.findInDirectory(binPath, "resaver"))
         {
             return false;
         }
         
-        String resaverPath = PWCGContext.getInstance().getDirectoryManager().getMissionRewritePath();
+        String resaverPath = PWCGDirectorySimulatorManager.getInstance().getMissionRewritePath();
         if (!FileUtils.findInDirectory(resaverPath, "MissionResaver.exe"))
         {
             return false;
@@ -102,14 +102,14 @@ public class MissionFileBinaryBuilder implements buildCommandPath
 
     private static String formResaverExeCommand() throws PWCGException
     {
-        String resaverExe = PWCGContext.getInstance().getDirectoryManager().getMissionRewritePath() + "MissionResaver.exe";
+        String resaverExe = PWCGDirectorySimulatorManager.getInstance().getMissionRewritePath() + "MissionResaver.exe";
         resaverExe = "\"" + resaverExe + "\"";
         return resaverExe;
     }
 
     private static String formDataDirArg(Campaign campaign) throws PWCGException
     {
-        String dataDir = PWCGContext.getInstance().getDirectoryManager().getMissionBinPath();
+        String dataDir = PWCGDirectorySimulatorManager.getInstance().getMissionBinPath();
         if (dataDir.endsWith("\\"))
         {
             dataDir = dataDir.substring(0, dataDir.length() - 1);
@@ -121,7 +121,7 @@ public class MissionFileBinaryBuilder implements buildCommandPath
 
     private static String formMissionFilePathArg(Campaign campaign, String fileName) throws PWCGException
     {
-        String filepath = PWCGContext.getInstance().getDirectoryManager().getMissionFilePath(campaign);
+        String filepath = PWCGDirectorySimulatorManager.getInstance().getMissionFilePath(campaign);
         filepath = filepath + fileName + ".mission";
         String missionFilePathArg = " -f \"" + filepath + "\"";
         return missionFilePathArg;

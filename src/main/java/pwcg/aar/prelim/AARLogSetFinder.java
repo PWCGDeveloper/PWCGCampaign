@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGDirectorySimulatorManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DirectoryReader;
 
@@ -32,7 +33,7 @@ public class AARLogSetFinder
 
     private List<String> getLogFilesFromData() throws PWCGException
     {
-        String simulatorDataDir = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir();
+        String simulatorDataDir = PWCGDirectorySimulatorManager.getInstance().getSimulatorDataDir();
         directoryReader.sortilesInDir(simulatorDataDir);
         List<String> sortedLogSetsFromData = directoryReader.getSortedFilesWithFilter("[0].txt");
         return sortedLogSetsFromData;

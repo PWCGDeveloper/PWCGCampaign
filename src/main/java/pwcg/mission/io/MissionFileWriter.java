@@ -10,6 +10,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IMissionFile;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGDirectorySimulatorManager;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.BlockDefinition;
 import pwcg.campaign.group.BlockDefinitionManager;
@@ -212,7 +213,7 @@ public class MissionFileWriter implements IMissionFile
 
     private String getMissionFullFilePath(String fileName) throws PWCGException 
 	{
-        String filepath = PWCGContext.getInstance().getDirectoryManager().getMissionFilePath(mission.getCampaign());        
+        String filepath = PWCGDirectorySimulatorManager.getInstance().getMissionFilePath(mission.getCampaign());        
 		return filepath + fileName +  ".mission";
 	}
 

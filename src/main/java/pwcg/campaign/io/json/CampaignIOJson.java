@@ -6,7 +6,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignAces;
 import pwcg.campaign.CampaignData;
 import pwcg.campaign.CampaignLogs;
-import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
 
@@ -15,7 +15,7 @@ public class CampaignIOJson
 
     public static  void writeJson(Campaign campaign) throws PWCGException
     {
-        String campaignDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\";
+        String campaignDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\";
         FileUtils.createDirIfNeeded(campaignDir);
         
         JsonWriter<CampaignData> jsonCampaignDataWriter = new JsonWriter<>();
@@ -33,7 +33,7 @@ public class CampaignIOJson
 
     public static void readJson(Campaign campaign) throws PWCGException
     {
-        String campaignDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\";
+        String campaignDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\";
 
         JsonObjectReader<CampaignData> jsoReader1 = new JsonObjectReader<>(CampaignData.class);
         CampaignData campaignData = jsoReader1.readJsonFile(campaignDir, "Campaign.json"); 

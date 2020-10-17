@@ -5,6 +5,7 @@ import java.util.List;
 import org.junit.Test;
 
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
@@ -26,8 +27,7 @@ public class CoopUserIOJsonTest
 
     private void writeCoopUser() throws PWCGException
     {
-        CoopUser coopUser = new CoopUser();
-        coopUser.setUsername("Test User");        
+        CoopUser coopUser = new CoopUser("Test User", CoopUser.COOP_FORMAT_VERSION);
         CoopUserIOJson.writeJson(coopUser);
     }
 
@@ -48,7 +48,7 @@ public class CoopUserIOJsonTest
     
     private void deleteCoopUser()
     {
-        String coopUserPath = PWCGContext.getInstance().getDirectoryManager().getPwcgCoopDir() + "Users\\Test User.json";
+        String coopUserPath = PWCGDirectoryUserManager.getInstance().getPwcgCoopDir() + "Test User.json";
         FileUtils.deleteFile(coopUserPath);
     }
 }

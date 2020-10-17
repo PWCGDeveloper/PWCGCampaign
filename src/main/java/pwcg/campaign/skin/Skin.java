@@ -3,14 +3,14 @@ package pwcg.campaign.skin;
 import java.io.File;
 import java.util.Date;
 
-import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGDirectorySimulatorManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 
 public class Skin implements Cloneable
 {
-    public static final String PRODUCT_SKIN_DIR = PWCGContext.getInstance().getDirectoryManager().getSkinsDir();
+    public static final String PRODUCT_SKIN_DIR = PWCGDirectorySimulatorManager.getInstance().getSkinsDir();
     
 	private String skinName = "";
 	private String planeType = "";

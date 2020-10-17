@@ -5,7 +5,7 @@ import java.util.List;
 
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
 
@@ -40,7 +40,7 @@ public class CampaignMissionIOJson
 
 	public static String buildMissionDataPath(Campaign campaign)
     {
-        String combatReportPath = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\MissionData\\";
+        String combatReportPath = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\MissionData\\";
         return combatReportPath;
     }
 
