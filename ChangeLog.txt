@@ -1,6 +1,20 @@
 
 ​At the PWCG web site
 
+11.3.0
+Restructured PWCG directories such that all user generated files are under "User" subdirectory
+- Includes campaign files, coop user records, audio, and user configuration choices
+- Keep this directory when installing PWCG
+- PWCG will automatically move existing files to the new position on startup.  You won't lose anything.
+Restructured coop records
+- Fixes possible issue that could occur if one user has a pilot in two campaigns.
+On Campaign coop admin, added ability to assign or change the user associated with a pilot.
+- Allows correction should user and pilot become not associated.
+Bugs:
+Fixed error that could cause PWCG mission creation to fail.
+Fixed error in skin name that could cause mission not to load
+Fixed error where resaver would write to wrong directory
+
 11.2.0
 PWCG missions are now in PWCG folder in the game
 Added the mission folder and mission files to the PWCG error report zip

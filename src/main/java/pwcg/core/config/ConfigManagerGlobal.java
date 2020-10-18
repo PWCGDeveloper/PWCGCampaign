@@ -8,7 +8,7 @@ public class ConfigManagerGlobal extends ConfigManager
     static protected ConfigManagerGlobal instance = null;
 	public ConfigManagerGlobal ()
 	{
-        super(PWCGDirectoryUserManager.getInstance().getPwcgCoopDir());
+        super(PWCGDirectoryUserManager.getInstance().getPwcgUserConfigDir());
 	}
 
 	public static ConfigManagerGlobal getInstance() throws PWCGException 
