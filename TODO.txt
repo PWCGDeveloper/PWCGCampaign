@@ -1,6 +1,33 @@
 https://github.com/PWCGDeveloper/PWCG.git
 
 
+
+
+Coop Test Cases ***
+- Auto move of campaign directory to user ***
+- Auto move of user config directory to user ***
+- Auto move of coop directory to user ***
+- Auto repair of coop records ***
+- Removal of copied directory ***
+- Use of report Dir ***
+- Use of error report Dir ***
+
+Done
+- manual fix of unassigned personas ***
+- Coop mission pilot assignmentr ***
+	- Verify pilot selectionr ***
+	- Verify error on multiple selected for one userr ***
+Global coop admin verify retire user
+Campaign coop admin ***
+	- Verify retire pilot ***
+	- Verify add pilot and existing user ***
+	- Verify add pilot and new user ***
+	- verify pilots for one user across multiple campaigns ***
+Verify coop mission generation ***
+
+Done:
+
+
 New Events
 - Add page and squadron log for aircraft introduced
 - Add page and squadron log for aircraft removed from service

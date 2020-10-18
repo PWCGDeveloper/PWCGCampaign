@@ -14,6 +14,7 @@ Bugs:
 Fixed error that could cause PWCG mission creation to fail.
 Fixed error in skin name that could cause mission not to load
 Fixed error where resaver would write to wrong directory
+Fixed an error where PWCG would not porperly read a user designated log directory
 
 11.2.0
 PWCG missions are now in PWCG folder in the game

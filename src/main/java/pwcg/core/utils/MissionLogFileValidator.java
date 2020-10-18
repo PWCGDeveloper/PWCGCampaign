@@ -81,7 +81,8 @@ public class MissionLogFileValidator
             int endPos = line.substring(startPos).indexOf(delimiter) + startPos;
             if (endPos > startPos)
             {
-                missionLogPath = line.substring(startPos, endPos);
+                String simulatorDataDir = PWCGDirectorySimulatorManager.getInstance().getSimulatorDataDir();
+                missionLogPath = simulatorDataDir + line.substring(startPos, endPos);
                 makeMissionLogPathIfNeeded(missionLogPath);
             }
         }
