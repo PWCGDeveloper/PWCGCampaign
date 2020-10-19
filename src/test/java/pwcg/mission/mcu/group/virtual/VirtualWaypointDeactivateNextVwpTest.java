@@ -35,10 +35,8 @@ public class VirtualWaypointDeactivateNextVwpTest
         assert(IndexLinkValidator.isIndexInTargetList(vwpDeactivate.getStartNextVwpTimerDeactivate().getIndex(), vwpDeactivate.getDeactivateNextVwpTimer().getTargets()));
 
         Mockito.when(vwpNextVwpStart.getEntryPoint()).thenReturn(99);
-        Mockito.when(vwpDeactivateThisVwp.getEntryPoint()).thenReturn(98);
         vwpDeactivate.link(vwpNextVwpStart);
         
         assert(IndexLinkValidator.isIndexInTargetList(99, vwpDeactivate.getStartNextVwpTimerDeactivate().getTargets()));
-        assert(IndexLinkValidator.isIndexInTargetList(98, vwpDeactivate.getStartNextVwpTimerDeactivate().getTargets()));
     }
 }
