@@ -1,23 +1,26 @@
 package pwcg.mission.mcu.group.virtual;
 
 import java.io.BufferedWriter;
+import java.io.IOException;
 
+import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.exception.PWCGIOException;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.McuTimer;
 
 public class VirtualWaypointStartNextVwp 
 {       
     private VirtualWayPointCoordinate vwpCoordinate;
-    private VirtualWaypointDeletePlanes vwpDelete;
 
     private McuTimer startNextWaypointTimer = new McuTimer();
     private McuTimer startnextWaypointTriggeredTimer = new McuTimer();
-    
-    public VirtualWaypointStartNextVwp(VirtualWayPointCoordinate vwpCoordinate, VirtualWaypointDeletePlanes vwpDelete)
+    private int index = IndexGenerator.getInstance().getNextIndex();
+
+    public VirtualWaypointStartNextVwp(VirtualWayPointCoordinate vwpCoordinate)
     {
         this.vwpCoordinate = vwpCoordinate; 
-        this.vwpDelete = vwpDelete; 
     }
 
     public void build() throws PWCGException 
@@ -59,13 +62,35 @@ public class VirtualWaypointStartNextVwp
     private void setTargetAssociations() throws PWCGException
     {
         startNextWaypointTimer.setTarget(startnextWaypointTriggeredTimer.getIndex());
-        startNextWaypointTimer.setTarget(vwpDelete.getEntryPoint());
     }
 
     public void write(BufferedWriter writer) throws PWCGException
     {
-        startNextWaypointTimer.write(writer);
-        startnextWaypointTriggeredTimer.write(writer);
+        try
+        {
+            writer.write("Group");
+            writer.newLine();
+            writer.write("{");
+            writer.newLine();
+    
+            writer.write("  Name = \"VWP Group Start Next VWP\";");
+            writer.newLine();
+            writer.write("  Index = " + index + ";");
+            writer.newLine();
+            writer.write("  Desc = \"VWP Group Start Next VWP\";");
+            writer.newLine();
+
+            startNextWaypointTimer.write(writer);
+            startnextWaypointTriggeredTimer.write(writer);
+    
+            writer.write("}");
+            writer.newLine();
+        }
+        catch (IOException e)
+        {
+            PWCGLogger.logException(e);
+            throw new PWCGIOException(e.getMessage());
+        }
     }
 
     public int getEntryPoint()

@@ -29,7 +29,7 @@ public class VirtualWaypointStartNextVwpTest
     @Test
     public void validateVwpBuildProcess() throws PWCGException
     {
-        VirtualWaypointStartNextVwp vwpStartNext = new VirtualWaypointStartNextVwp(vwpCoordinate, vwpDelete);
+        VirtualWaypointStartNextVwp vwpStartNext = new VirtualWaypointStartNextVwp(vwpCoordinate);
         vwpStartNext.build();
         
         assert(IndexLinkValidator.isIndexInTargetList(vwpStartNext.getStartNextWaypointTriggeredTimer().getIndex(), vwpStartNext.getStartNextWaypointTimer().getTargets()));

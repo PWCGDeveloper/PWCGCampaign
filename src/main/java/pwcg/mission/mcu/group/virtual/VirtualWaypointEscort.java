@@ -1,11 +1,15 @@
 package pwcg.mission.mcu.group.virtual;
 
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.exception.PWCGIOException;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
@@ -17,7 +21,7 @@ public class VirtualWaypointEscort
 {
     private VirtualWaypointPlanes vwpPlanes;
     private VirtualWayPointCoordinate vwpCoordinate;
-    private VirtualWaypointActivate vwpActivate;
+    private VirtualWaypointTriggered vwpActivate;
     private Squadron escortSquadron;
 
     private McuTimer activateEscortTimer = new McuTimer();
@@ -25,8 +29,9 @@ public class VirtualWaypointEscort
     private McuTimer coverTimer = null;
     private McuCover cover = null;
     private List<PlaneMcu> escortPlanes = new ArrayList<>();
+    private int index = IndexGenerator.getInstance().getNextIndex();
 
-    public VirtualWaypointEscort(VirtualWayPointCoordinate vwpCoordinate, Squadron escortSquadron, VirtualWaypointPlanes vwpPlanes, VirtualWaypointActivate vwpActivate)
+    public VirtualWaypointEscort(VirtualWayPointCoordinate vwpCoordinate, Squadron escortSquadron, VirtualWaypointPlanes vwpPlanes, VirtualWaypointTriggered vwpActivate)
     {
         this.vwpCoordinate = vwpCoordinate;
         this.escortSquadron = escortSquadron;
@@ -46,15 +51,38 @@ public class VirtualWaypointEscort
 
     public void write(BufferedWriter writer) throws PWCGException
     {
-        for (PlaneMcu plane : escortPlanes)
+        try
         {
-            plane.write(writer);
-        }
+            writer.write("Group");
+            writer.newLine();
+            writer.write("{");
+            writer.newLine();
+    
+            writer.write("  Name = \"VWP Group Escort\";");
+            writer.newLine();
+            writer.write("  Index = " + index + ";");
+            writer.newLine();
+            writer.write("  Desc = \"VWP Group Escort\";");
+            writer.newLine();
 
-        activateEscortTimer.write(writer);
-        activateEscort.write(writer);
-        coverTimer.write(writer);
-        cover.write(writer);
+            for (PlaneMcu plane : escortPlanes)
+            {
+                plane.write(writer);
+            }
+
+            activateEscortTimer.write(writer);
+            activateEscort.write(writer);
+            coverTimer.write(writer);
+            cover.write(writer);
+    
+            writer.write("}");
+            writer.newLine();
+        }
+        catch (IOException e)
+        {
+            PWCGLogger.logException(e);
+            throw new PWCGIOException(e.getMessage());
+        }
     }
 
     private void buildEscortPlanes(IFlightInformation vwpEscortFlightInformation) throws PWCGException

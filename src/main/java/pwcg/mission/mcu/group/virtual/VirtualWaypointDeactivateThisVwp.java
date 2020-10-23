@@ -1,8 +1,12 @@
 package pwcg.mission.mcu.group.virtual;
 
 import java.io.BufferedWriter;
+import java.io.IOException;
 
+import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.exception.PWCGIOException;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.McuDeactivate;
 import pwcg.mission.mcu.McuTimer;
@@ -13,6 +17,7 @@ public class VirtualWaypointDeactivateThisVwp
 
     private McuTimer deactivateThisCheckZoneTimer = new McuTimer();
     private McuDeactivate thisCheckZoneDeactivate;    
+    private int index = IndexGenerator.getInstance().getNextIndex();
 
     public VirtualWaypointDeactivateThisVwp(VirtualWayPointCoordinate vwpCoordinate)
     {
@@ -25,9 +30,10 @@ public class VirtualWaypointDeactivateThisVwp
         setTargetAssociations();
     }
     
-    public void link(VirtualWaypointCheckZone vwpCheckZone)
+    public void link(VirtualWaypointCheckZone vwpCheckZone, VirtualWaypointDeletePlanes vwpDeletePlanes)
     {
         thisCheckZoneDeactivate.setTarget(vwpCheckZone.getCheckZone().getDeactivateEntryPoint());
+        thisCheckZoneDeactivate.setTarget(vwpDeletePlanes.getEntryPoint());
     }
 
     private void buildMcus()
@@ -50,8 +56,31 @@ public class VirtualWaypointDeactivateThisVwp
 
     public void write(BufferedWriter writer) throws PWCGException
     {
-        deactivateThisCheckZoneTimer.write(writer);
-        thisCheckZoneDeactivate.write(writer);
+        try
+        {
+            writer.write("Group");
+            writer.newLine();
+            writer.write("{");
+            writer.newLine();
+    
+            writer.write("  Name = \"VWP Group Deactivate This VWP\";");
+            writer.newLine();
+            writer.write("  Index = " + index + ";");
+            writer.newLine();
+            writer.write("  Desc = \"VWP Group Deactivate This VWP\";");
+            writer.newLine();
+    
+            deactivateThisCheckZoneTimer.write(writer);
+            thisCheckZoneDeactivate.write(writer);
+    
+            writer.write("}");
+            writer.newLine();
+        }
+        catch (IOException e)
+        {
+            PWCGLogger.logException(e);
+            throw new PWCGIOException(e.getMessage());
+        }
     }
 
     public int getEntryPoint()

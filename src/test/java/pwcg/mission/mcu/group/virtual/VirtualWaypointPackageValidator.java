@@ -43,7 +43,7 @@ public class VirtualWaypointPackageValidator
         boolean virtualWaypointIsLinkedToRealWaypoint = false;
         for (IVirtualWaypoint virtualWayPoint : flight.getVirtualWaypointPackage().getVirtualWaypoints())
         {
-            VirtualWaypointActivate activateContainer = virtualWayPoint.getVwpActivate();
+            VirtualWaypointTriggered activateContainer = virtualWayPoint.getVwpTriggered();
             for (BaseFlightMcu flightPoint : waypointPackage.getAllFlightPoints())
             {
                 virtualWaypointIsLinkedToRealWaypoint = IndexLinkValidator.isIndexInTargetList(flightPoint.getIndex(),
@@ -76,7 +76,7 @@ public class VirtualWaypointPackageValidator
     {
         for (IVirtualWaypoint virtualWayPoint : flight.getVirtualWaypointPackage().getVirtualWaypoints())
         {
-            VirtualWaypointActivate activateContainer = virtualWayPoint.getVwpActivate();
+            VirtualWaypointTriggered activateContainer = virtualWayPoint.getVwpTriggered();
             PlaneMcu virtualFlightLeader = virtualWayPoint.getVwpFlightLeader();
             boolean virtualWaypointIsLinkedToFormation = IndexLinkValidator.isIndexInTargetList(virtualFlightLeader.getLinkTrId(),
                     activateContainer.getFormation().getObjects());
@@ -88,7 +88,7 @@ public class VirtualWaypointPackageValidator
     {
         for (IVirtualWaypoint virtualWayPoint : flight.getVirtualWaypointPackage().getVirtualWaypoints())
         {
-            VirtualWaypointActivate activateContainer = virtualWayPoint.getVwpActivate();
+            VirtualWaypointTriggered activateContainer = virtualWayPoint.getVwpTriggered();
             for (PlaneMcu virtualPlane : virtualWayPoint.getVwpPlanes().getAllPlanes())
             {
                 boolean virtualPlaneIsActivated = IndexLinkValidator.isIndexInTargetList(virtualPlane.getLinkTrId(),
@@ -107,6 +107,12 @@ public class VirtualWaypointPackageValidator
             {
                 IndexLinkValidator.isIndexInTargetList(virtualWayPoint.getVwpCheckZone().getVwpStartTimer().getIndex(),
                         previousVwp.getVwpNextVwpStart().getStartNextWaypointTriggeredTimer().getTargets());
+                
+                IndexLinkValidator.isIndexInTargetList(virtualWayPoint.getVwpUpstreamKill().getUpstreamKillTimer().getIndex(),
+                        previousVwp.getVwpUpstreamKill().getUpstreamKillTimer().getTargets());
+                
+                IndexLinkValidator.isIndexInTargetList(virtualWayPoint.getVwpUpstreamKill().getUpstreamKillTimer().getIndex(),
+                        previousVwp.getVwpTriggered().getDeleteUpstreamPlanesTimer().getTargets());
             }
             previousVwp = virtualWayPoint;
         }

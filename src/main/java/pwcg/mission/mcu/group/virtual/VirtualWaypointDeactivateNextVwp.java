@@ -1,8 +1,12 @@
 package pwcg.mission.mcu.group.virtual;
 
 import java.io.BufferedWriter;
+import java.io.IOException;
 
+import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.exception.PWCGIOException;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.McuDeactivate;
 import pwcg.mission.mcu.McuTimer;
@@ -13,6 +17,7 @@ public class VirtualWaypointDeactivateNextVwp
 
     private McuTimer deactivateNextVwpTimer = new McuTimer();
     private McuDeactivate startNextVwpTimerDeactivate;    
+    private int index = IndexGenerator.getInstance().getNextIndex();
 
     public VirtualWaypointDeactivateNextVwp(VirtualWayPointCoordinate vwpCoordinate)
     {
@@ -25,9 +30,10 @@ public class VirtualWaypointDeactivateNextVwp
         setTargetAssociations();
     }
     
-    public void link(VirtualWaypointStartNextVwp vwpNextVwpStart)
+    public void link(VirtualWaypointStartNextVwp vwpNextVwpStart, VirtualWaypointUpstreamKill vwpUpstreamKill)
     {
         startNextVwpTimerDeactivate.setTarget(vwpNextVwpStart.getEntryPoint());
+        deactivateNextVwpTimer.setTarget(vwpUpstreamKill.getEntryPoint());
     }
 
     private void buildMcus()
@@ -50,8 +56,32 @@ public class VirtualWaypointDeactivateNextVwp
 
     public void write(BufferedWriter writer) throws PWCGException
     {
-        deactivateNextVwpTimer.write(writer);
-        startNextVwpTimerDeactivate.write(writer);
+        try
+        {
+            writer.write("Group");
+            writer.newLine();
+            writer.write("{");
+            writer.newLine();
+    
+            writer.write("  Name = \"VWP Group Deactivate Next VWP\";");
+            writer.newLine();
+            writer.write("  Index = " + index + ";");
+            writer.newLine();
+            writer.write("  Desc = \"VWP Group Deactivate Next VWP\";");
+            writer.newLine();
+    
+            deactivateNextVwpTimer.write(writer);
+            startNextVwpTimerDeactivate.write(writer);
+    
+            writer.write("}");
+            writer.newLine();
+        }
+        catch (IOException e)
+        {
+            PWCGLogger.logException(e);
+            throw new PWCGIOException(e.getMessage());
+        }
+
     }
 
     public int getEntryPoint()

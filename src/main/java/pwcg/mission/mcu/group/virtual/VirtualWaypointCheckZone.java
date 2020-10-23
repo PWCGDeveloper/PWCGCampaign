@@ -1,11 +1,15 @@
 package pwcg.mission.mcu.group.virtual;
 
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.McuSubtitle;
 import pwcg.mission.mcu.McuTimer;
@@ -21,6 +25,7 @@ public final class VirtualWaypointCheckZone
     private McuTimer triggeredActivateTimer = new McuTimer();
     private List<McuSubtitle> subTitleList = new ArrayList<McuSubtitle>();
     private int vwpIdentifier = 1;
+    private int index = IndexGenerator.getInstance().getNextIndex();
 
     private SelfDeactivatingCheckZone checkZone;
     
@@ -38,10 +43,9 @@ public final class VirtualWaypointCheckZone
         makeSubtitles();
     }
 
-    public void link(VirtualWaypointStartNextVwp vwpNextVwpStart, VirtualWaypointDeactivateNextVwp vwpNextVwpDeactivate, VirtualWaypointActivate vwpActivate)
+    public void link(VirtualWaypointStartNextVwp vwpNextVwpStart, VirtualWaypointTriggered vwpActivate)
     {
         vwpStartTimer.setTarget(vwpNextVwpStart.getEntryPoint());
-        triggeredDisableNextVwpTimer.setTarget(vwpNextVwpDeactivate.getEntryPoint());
         triggeredActivateTimer.setTarget(vwpActivate.getEntryPoint());
     }
 
@@ -86,12 +90,35 @@ public final class VirtualWaypointCheckZone
 
     public void write(BufferedWriter writer) throws PWCGException
     {
-        vwpStartTimer.write(writer);
-        checkZone.write(writer);
-        triggeredDisableNextVwpTimer.write(writer);
-        triggeredActivateTimer.write(writer);        
-        
-        McuSubtitle.writeSubtitles(subTitleList, writer);
+        try
+        {
+            writer.write("Group");
+            writer.newLine();
+            writer.write("{");
+            writer.newLine();
+    
+            writer.write("  Name = \"VWP Group Virtual WP Check Zone\";");
+            writer.newLine();
+            writer.write("  Index = " + index + ";");
+            writer.newLine();
+            writer.write("  Desc = \"VWP Group Virtual WP Check Zone\";");
+            writer.newLine();
+    
+            vwpStartTimer.write(writer);
+            checkZone.write(writer);
+            triggeredDisableNextVwpTimer.write(writer);
+            triggeredActivateTimer.write(writer);        
+            
+            McuSubtitle.writeSubtitles(subTitleList, writer);
+    
+            writer.write("}");
+            writer.newLine();
+        }
+        catch (IOException e)
+        {
+            PWCGLogger.logException(e);
+            throw new PWCGIOException(e.getMessage());
+        }
     }
 
     public McuTimer getVwpStartTimer()

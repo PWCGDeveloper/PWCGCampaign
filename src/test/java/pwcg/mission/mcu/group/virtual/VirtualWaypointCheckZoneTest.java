@@ -19,7 +19,7 @@ public class VirtualWaypointCheckZoneTest
     @Mock VirtualWayPointCoordinate vwpCoordinate;
     @Mock VirtualWaypointStartNextVwp vwpNextVwpStart;
     @Mock VirtualWaypointDeactivateNextVwp vwpDeactivateNextVwp;
-    @Mock VirtualWaypointActivate vwpActivate;
+    @Mock VirtualWaypointTriggered vwpActivate;
     @Mock VirtualWaypointPlanes vwpPlanes;
     private PlaneMcu plane1;
 
@@ -45,13 +45,11 @@ public class VirtualWaypointCheckZoneTest
         assert(IndexLinkValidator.isIndexInTargetList(vwpCheckZone.getTriggeredActivateTimer().getIndex(), vwpCheckZone.getTriggeredDisableNextVwpTimer().getTargets()));
 
         Mockito.when(vwpNextVwpStart.getEntryPoint()).thenReturn(97);
-        Mockito.when(vwpDeactivateNextVwp.getEntryPoint()).thenReturn(98);
         Mockito.when(vwpActivate.getEntryPoint()).thenReturn(99);
 
-        vwpCheckZone.link(vwpNextVwpStart, vwpDeactivateNextVwp, vwpActivate);
+        vwpCheckZone.link(vwpNextVwpStart, vwpActivate);
         
         assert(IndexLinkValidator.isIndexInTargetList(97, vwpCheckZone.getVwpStartTimer().getTargets()));
-        assert(IndexLinkValidator.isIndexInTargetList(98, vwpCheckZone.getTriggeredDisableNextVwpTimer().getTargets()));
         assert(IndexLinkValidator.isIndexInTargetList(99, vwpCheckZone.getTriggeredActivateTimer().getTargets()));
 
     }

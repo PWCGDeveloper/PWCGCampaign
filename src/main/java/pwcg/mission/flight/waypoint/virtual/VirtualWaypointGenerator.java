@@ -60,8 +60,6 @@ public class VirtualWaypointGenerator
         if (prevVirtualWaypoint != null)
         {
             prevVirtualWaypoint.linkToNextVirtualWaypoint(virtualWaypoint);
-            prevVirtualWaypoint.linkKillToNextKill(virtualWaypoint);
-            prevVirtualWaypoint.linkActivateToNextKill(virtualWaypoint);
         }
     }
 }

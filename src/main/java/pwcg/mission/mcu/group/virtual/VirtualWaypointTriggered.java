@@ -1,11 +1,15 @@
 package pwcg.mission.mcu.group.virtual;
 
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
@@ -14,7 +18,7 @@ import pwcg.mission.mcu.McuFormation;
 import pwcg.mission.mcu.McuSubtitle;
 import pwcg.mission.mcu.McuTimer;
 
-public class VirtualWaypointActivate implements makeActivatedSubtitle
+public class VirtualWaypointTriggered implements makeActivatedSubtitle
 {
     private IFlight flight;
     private VirtualWayPointCoordinate vwpCoordinate;
@@ -29,10 +33,11 @@ public class VirtualWaypointActivate implements makeActivatedSubtitle
     private McuTimer escortTimer = new McuTimer();
     private McuTimer deleteUpstreamPlanesTimer = new McuTimer();
     private int vwpIdentifier = 1;
+    private int index = IndexGenerator.getInstance().getNextIndex();
 
     private List<McuSubtitle> subTitleList = new ArrayList<McuSubtitle>();
 
-    public VirtualWaypointActivate(IFlight flight, VirtualWayPointCoordinate vwpCoordinate, VirtualWaypointPlanes vwpPlanes, int vwpIdentifier)
+    public VirtualWaypointTriggered(IFlight flight, VirtualWayPointCoordinate vwpCoordinate, VirtualWaypointPlanes vwpPlanes, int vwpIdentifier)
     {
         this.flight = flight;
         this.vwpCoordinate = vwpCoordinate;
@@ -77,11 +82,17 @@ public class VirtualWaypointActivate implements makeActivatedSubtitle
         formationTimer.setName("Formation Timer");
         formationTimer.setDesc("Formation Timer");
         
+        deleteUpstreamPlanesTimer.setTimer(3);
         deleteUpstreamPlanesTimer.setPosition(vwpCoordinate.getPosition().copy());
         deleteUpstreamPlanesTimer.setName("Delete Upstream Planes Timer");
         deleteUpstreamPlanesTimer.setDesc("Delete Upstream Planes Timer");
 
         formation.setPosition(vwpCoordinate.getPosition().copy());
+    }
+
+    public void link(VirtualWaypointDeactivateNextVwp vwpDeactivateNextVwp)
+    {
+        escortTimer.setTarget(vwpDeactivateNextVwp.getEntryPoint());
     }
 
     private void makeSubtitles() throws PWCGException
@@ -118,21 +129,39 @@ public class VirtualWaypointActivate implements makeActivatedSubtitle
 
     public void write(BufferedWriter writer) throws PWCGException
     {
-        activate.write(writer);
-        formation.write(writer);
-
-        activateTimer.write(writer);
-        formationTimer.write(writer);
-        waypointTimer.write(writer);
-        escortTimer.write(writer);
-        deleteUpstreamPlanesTimer.write(writer);
-        
-        McuSubtitle.writeSubtitles(subTitleList, writer);
-    }
+        try
+        {
+            writer.write("Group");
+            writer.newLine();
+            writer.write("{");
+            writer.newLine();
     
-    public void linkToNextDeletePlanesTimer(int upstreamVwpTarget)
-    {
-        deleteUpstreamPlanesTimer.setTarget(upstreamVwpTarget);
+            writer.write("  Name = \"VWP Group Virtual WP Triggered\";");
+            writer.newLine();
+            writer.write("  Index = " + index + ";");
+            writer.newLine();
+            writer.write("  Desc = \"VWP Group Virtual WP Triggered\";");
+            writer.newLine();
+    
+            activate.write(writer);
+            formation.write(writer);
+    
+            activateTimer.write(writer);
+            formationTimer.write(writer);
+            waypointTimer.write(writer);
+            escortTimer.write(writer);
+            deleteUpstreamPlanesTimer.write(writer);
+            
+            McuSubtitle.writeSubtitles(subTitleList, writer);
+    
+            writer.write("}");
+            writer.newLine();
+        }
+        catch (IOException e)
+        {
+            PWCGLogger.logException(e);
+            throw new PWCGIOException(e.getMessage());
+        }
     }
     
     public void linkToEscort(int escortAcvtivateTarget)

@@ -174,7 +174,7 @@ public class VirtualWaypointConsolidator
             }
             else
             {
-                lastVwpToKeep = firstVwpToKeep+1;
+                lastVwpToKeep = firstVwpToKeep;
             }
         }
         

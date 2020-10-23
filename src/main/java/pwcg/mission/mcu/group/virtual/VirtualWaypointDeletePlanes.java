@@ -1,11 +1,15 @@
 package pwcg.mission.mcu.group.virtual;
 
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.McuDelete;
@@ -20,6 +24,7 @@ public class VirtualWaypointDeletePlanes
     private McuDelete deletePlanes = new McuDelete();
     private List<McuSubtitle> subTitleList = new ArrayList<McuSubtitle>();
     private int vwpIdentifier = 1;
+    private int index = IndexGenerator.getInstance().getNextIndex();
 
     public VirtualWaypointDeletePlanes(VirtualWayPointCoordinate vwpCoordinate, VirtualWaypointPlanes vwpPlanes, int vwpIdentifier)
     {
@@ -74,10 +79,33 @@ public class VirtualWaypointDeletePlanes
 
     public void write(BufferedWriter writer) throws PWCGException
     {
-        deletePlanesTimer.write(writer);
-        deletePlanes.write(writer);        
-        
-        McuSubtitle.writeSubtitles(subTitleList, writer);
+        try
+        {
+            writer.write("Group");
+            writer.newLine();
+            writer.write("{");
+            writer.newLine();
+    
+            writer.write("  Name = \"VWP Group Delete Planes\";");
+            writer.newLine();
+            writer.write("  Index = " + index + ";");
+            writer.newLine();
+            writer.write("  Desc = \"VWP Group Delete Planes\";");
+            writer.newLine();
+
+            deletePlanesTimer.write(writer);
+            deletePlanes.write(writer);        
+            
+            McuSubtitle.writeSubtitles(subTitleList, writer);
+    
+            writer.write("}");
+            writer.newLine();
+        }
+        catch (IOException e)
+        {
+            PWCGLogger.logException(e);
+            throw new PWCGIOException(e.getMessage());
+        }
     }
     
     public int getEntryPoint()

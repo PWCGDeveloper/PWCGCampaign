@@ -24,7 +24,7 @@ public interface IVirtualWaypoint
 
     VirtualWayPointCoordinate getVwpCoordinate();
 
-    VirtualWaypointActivate getVwpActivate();
+    VirtualWaypointTriggered getVwpTriggered();
 
     VirtualWaypointCheckZone getVwpCheckZone();
 
@@ -34,15 +34,13 @@ public interface IVirtualWaypoint
 
     void setVwpTriggerObject(int planeIndex);
 
-    void linkKillToNextKill(IVirtualWaypoint virtualWaypoint);
-
-    VirtualWaypointKillFuture getVwpKillFuture();
-
-    void linkActivateToNextKill(IVirtualWaypoint virtualWaypoint);
-
     PlaneMcu getVwpFlightLeader();
 
     VirtualWaypointPlanes getVwpPlanes();
 
     void addEscort(IFlightInformation vwpEscortFlightInformation) throws PWCGException;
+
+    VirtualWaypointUpstreamKill getVwpUpstreamKill();
+
+    VirtualWaypointDeletePlanes getVwpDeletePlanes();
 }
