@@ -22,7 +22,7 @@ import pwcg.mission.mcu.group.virtual.VirtualWaypoint;
 
 
 
-public class SelfDeactivatingCheckZone implements ICheckZone
+public class SelfDeactivatingCheckZone
 {
 	private String name = "Self Deactivating CZ";
 	private String desc = "Self Deactivating CZ";
@@ -51,7 +51,7 @@ public class SelfDeactivatingCheckZone implements ICheckZone
         deactivateCZTimer.setPosition(coordinate.copy());
         deactivateCZTimer.setName("CZ Deactivate Timer");
         deactivateCZTimer.setDesc("CZ Deactivate Timer");
-        deactivateCZTimer.setTimer(1);
+        deactivateCZTimer.setTime(1);
 
         deactivateCZ.setPosition(coordinate.copy());
         deactivateCZ.setName("CZ Deactivate");
@@ -60,7 +60,7 @@ public class SelfDeactivatingCheckZone implements ICheckZone
         activateCZTimer.setPosition(coordinate.copy());
         activateCZTimer.setName("CZ Activate Timer");
         activateCZTimer.setDesc("CZ Activate Timer");
-        activateCZTimer.setTimer(0);
+        activateCZTimer.setTime(1);
     }
 
     private void linkTargets()
@@ -76,7 +76,6 @@ public class SelfDeactivatingCheckZone implements ICheckZone
         deactivateCZ.setTarget(activateCZTimer.getIndex());    
     }
     
-    @Override
     public void write(BufferedWriter writer) throws PWCGIOException
     {
         try
@@ -109,43 +108,36 @@ public class SelfDeactivatingCheckZone implements ICheckZone
         }
     }
     
-    @Override
     public int getActivateEntryPoint()
     {
         return activateCZTimer.getIndex();
     }
 
-    @Override
     public int getDeactivateEntryPoint()
     {
         return deactivateCZTimer.getIndex();
     }
 
-    @Override
     public void setCheckZoneTarget(int targetMcuIndex)
     {
         checkZone.setTarget(targetMcuIndex);
     }
 
-    @Override
     public int getCheckZoneIndex()
     {
         return checkZone.getIndex();
     }
 
-    @Override
     public void setCheckZoneTriggerObject(int objectMcuIndex)
     {
         checkZone.setObject(objectMcuIndex);
     }
 
-    @Override
     public void setCheckZoneTriggerCoalition(Coalition coalition)
     {
         checkZone.triggerCheckZoneByCoalition(coalition);
     }
 
-    @Override
     public void setCheckZoneTriggerCoalitions(List<Coalition> coalitions)
     {
         checkZone.triggerCheckZoneByCoalitions(coalitions);
@@ -156,7 +148,6 @@ public class SelfDeactivatingCheckZone implements ICheckZone
         return checkZone;
     }
 
-    @Override
     public void validate() throws PWCGException
     {
         if (!McuValidator.hasTarget(activateCZTimer, checkZone.getIndex()))
@@ -185,7 +176,6 @@ public class SelfDeactivatingCheckZone implements ICheckZone
         }
     }
 
-    @Override
     public void validateTarget(int entryPoint) throws PWCGException
     {
         if (!McuValidator.hasTarget(checkZone, entryPoint))
@@ -194,7 +184,6 @@ public class SelfDeactivatingCheckZone implements ICheckZone
         }
     }
 
-    @Override
     public void triggerCheckZone(Mission mission) throws PWCGException
     {
         triggerCheckZoneByPlayer(mission);

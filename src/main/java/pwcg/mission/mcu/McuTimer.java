@@ -8,33 +8,26 @@ import pwcg.core.utils.PWCGLogger;
 
 public class McuTimer extends BaseFlightMcu
 {
-	private int timer = 2;
+	private double time = 0.1;
 	private int random = 100;
 
 	public McuTimer ()
 	{
 		super();
 	}
-    
-    
-    /* (non-Javadoc)
-     * @see java.lang.Object#clone()
-     */
+
     public McuTimer copy ()
     {
         McuTimer clone = new McuTimer();
         
         super.clone(clone);
         
-        clone.timer = this.timer;
+        clone.time = this.time;
         clone.random = this.random;
             
         return clone;
     }
 
-	/* (non-Javadoc)
-	 * @see rof.campaign.mcu.BaseFlightMcu#write(java.io.BufferedWriter)
-	 */
 	public void write(BufferedWriter writer) throws PWCGIOException
 	{
         try
@@ -46,7 +39,7 @@ public class McuTimer extends BaseFlightMcu
     		
     		super.write(writer);
     		
-    		writer.write("  Time  = " + timer + ";");
+    		writer.write("  Time  = " + time + ";");
     		writer.newLine();
     		writer.write("  Random  = " + random + ";");
     		writer.newLine();
@@ -63,12 +56,12 @@ public class McuTimer extends BaseFlightMcu
         }
 	}
 	
-	public int getTimer() {
-		return timer;
+	public double getTime() {
+		return time;
 	}
 
-	public void setTimer(int timer) {		
-		this.timer = timer;
+	public void setTime(double timer) {		
+		this.time = timer;
 	}
 
 	public int getRandom() {

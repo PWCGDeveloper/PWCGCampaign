@@ -79,19 +79,19 @@ public class PlayerEscortFlightValidator
         {
             if (prevWaypoint != null)
             {
-                boolean isNextWaypointLinked = IndexLinkValidator.isIndexInTargetList(waypoint.getIndex(), prevWaypoint.getTargets());
+                boolean isNextWaypointLinked = IndexLinkValidator.isIndexInTargetList(prevWaypoint.getTargets(), waypoint.getIndex());
                 if (prevWaypoint.getWpAction().equals(WaypointAction.WP_ACTION_RENDEZVOUS))
                 {
                     assert (!isNextWaypointLinked);
-                    assert (IndexLinkValidator.isIndexInTargetList(coverTimer.getIndex(), rendezvousWaypoint.getTargets()));
-                    assert (IndexLinkValidator.isIndexInTargetList(cover.getIndex(), coverTimer.getTargets()));
+                    assert (IndexLinkValidator.isIndexInTargetList(rendezvousWaypoint.getTargets(), coverTimer.getIndex()));
+                    assert (IndexLinkValidator.isIndexInTargetList(coverTimer.getTargets(), cover.getIndex()));
                 }
                 else if (prevWaypoint.getWpAction().equals(WaypointAction.WP_ACTION_EGRESS))
                 {
                     assert (isNextWaypointLinked);
-                    assert (IndexLinkValidator.isIndexInTargetList(forceComplete.getIndex(), forceCompleteTimer.getTargets()));
-                    assert (IndexLinkValidator.isIndexInTargetList(escortCompleteTimer.getIndex(), forceCompleteTimer.getTargets()));
-                    assert (IndexLinkValidator.isIndexInTargetList(egressWaypoint.getIndex(), escortCompleteTimer.getTargets()));
+                    assert (IndexLinkValidator.isIndexInTargetList(forceCompleteTimer.getTargets(), forceComplete.getIndex()));
+                    assert (IndexLinkValidator.isIndexInTargetList(forceCompleteTimer.getTargets(), escortCompleteTimer.getIndex()));
+                    assert (IndexLinkValidator.isIndexInTargetList(escortCompleteTimer.getTargets(), egressWaypoint.getIndex()));
                 }
                 else
                 {
@@ -131,12 +131,12 @@ public class PlayerEscortFlightValidator
         {
             if (prevWaypoint != null)
             {
-                boolean isNextWaypointLinked = IndexLinkValidator.isIndexInTargetList(waypoint.getIndex(), prevWaypoint.getTargets());
+                boolean isNextWaypointLinked = IndexLinkValidator.isIndexInTargetList(prevWaypoint.getTargets(), waypoint.getIndex());
                 if (prevWaypoint.getWpAction().equals(WaypointAction.WP_ACTION_RENDEZVOUS))
                 {
-                    assert (IndexLinkValidator.isIndexInTargetList(escortedRendezvousWaypoint.getIndex(), escortedAirStartWP.getTargets()));
-                    assert (IndexLinkValidator.isIndexInTargetList(escortedTargetWP.getIndex(), escortedIngressWP.getTargets()));
-                    assert (IndexLinkValidator.isIndexInTargetList(escortedTargetFinalWP.getIndex(), escortedTargetWP.getTargets()));
+                    assert (IndexLinkValidator.isIndexInTargetList(escortedAirStartWP.getTargets(), escortedRendezvousWaypoint.getIndex()));
+                    assert (IndexLinkValidator.isIndexInTargetList(escortedIngressWP.getTargets(), escortedTargetWP.getIndex()));
+                    assert (IndexLinkValidator.isIndexInTargetList(escortedTargetWP.getTargets(), escortedTargetFinalWP.getIndex()));
                     assert (!isNextWaypointLinked);                    
                 }
                 else if (prevWaypoint.getWpAction().equals(WaypointAction.WP_ACTION_TARGET_FINAL))
@@ -169,11 +169,11 @@ public class PlayerEscortFlightValidator
         McuWaypoint escortedEgressWP = getEscortedFlightWaypoint(WaypointAction.WP_ACTION_EGRESS);
 
         PlaneMcu leadBomber = escortedFlight.getFlightPlanes().getFlightLeader();
-        assert (IndexLinkValidator.isIndexInTargetList(leadBomber.getEntity().getIndex(), cover.getTargets()));
+        assert (IndexLinkValidator.isIndexInTargetList(cover.getTargets(), leadBomber.getEntity().getIndex()));
 
-        assert (IndexLinkValidator.isIndexInTargetList(escortedIngressWP.getIndex(), coverTimer.getTargets()));
-        assert (IndexLinkValidator.isIndexInTargetList(egressWaypoint.getIndex(), escortCompleteTimer.getTargets()));
-        assert (IndexLinkValidator.isIndexInTargetList(forceCompleteTimer.getIndex(), escortedEgressWP.getTargets()));
+        assert (IndexLinkValidator.isIndexInTargetList(coverTimer.getTargets(), escortedIngressWP.getIndex()));
+        assert (IndexLinkValidator.isIndexInTargetList(escortCompleteTimer.getTargets(), egressWaypoint.getIndex()));
+        assert (IndexLinkValidator.isIndexInTargetList(escortedEgressWP.getTargets(), forceCompleteTimer.getIndex()));
 
     }
     

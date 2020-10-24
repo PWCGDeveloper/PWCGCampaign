@@ -107,7 +107,7 @@ public class VirtualWaypointEscort
         activateEscort.setName("Activate Escort");
         activateEscort.setDesc("Activate Escort");
 
-        activateEscortTimer.setTimer(1);
+        activateEscortTimer.setTime(1);
         activateEscortTimer.setPosition(vwpCoordinate.getPosition().copy());
         activateEscortTimer.setOrientation(vwpCoordinate.getOrientation().copy());
         activateEscortTimer.setName("Activate Escort Timer");

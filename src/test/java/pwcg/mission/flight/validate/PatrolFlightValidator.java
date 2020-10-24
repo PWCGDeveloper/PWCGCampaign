@@ -21,7 +21,7 @@ public class PatrolFlightValidator
         {
             if (prevWaypoint != null)
             {
-                boolean isNextWaypointLinked = IndexLinkValidator.isIndexInTargetList(waypoint.getIndex(), prevWaypoint.getTargets());
+                boolean isNextWaypointLinked = IndexLinkValidator.isIndexInTargetList(prevWaypoint.getTargets(), waypoint.getIndex());
                 assert(isNextWaypointLinked);
             }
             

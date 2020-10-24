@@ -97,7 +97,7 @@ public class MissionPointFlightActivateVirtual implements IMissionPointSet, IVir
         missionBeginTimer.setName("Mission Begin VWP Timer");
         missionBeginTimer.setDesc("Mission Begin VWP Timer");
         missionBeginTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());        
-        missionBeginTimer.setTimer(1);
+        missionBeginTimer.setTime(1);
     }
 
     private void createTargetAssociations()

@@ -143,7 +143,7 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
         formationTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());
         
         int takeoffDelay = getStartDelay();
-        formationTimer.setTimer(takeoffDelay);
+        formationTimer.setTime(takeoffDelay);
     }
 
     private void createTakeOffWaypoints() throws PWCGException

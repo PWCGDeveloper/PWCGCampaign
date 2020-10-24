@@ -134,14 +134,14 @@ public class EscortForPlayerValidator
         McuCover cover = escortMissionPointSet.getEscortSequence().getCover();
         McuForceComplete forceComplete = escortMissionPointSet.getEscortSequence().getForceComplete();
 
-        assert(IndexLinkValidator.isIndexInTargetList(escortRendezvousWP.getIndex(), escortAirStartWP.getTargets()));
-        assert(IndexLinkValidator.isIndexInTargetList(coverTimer.getIndex(), playerRendezvousWP.getTargets()));
-        assert(IndexLinkValidator.isIndexInTargetList(cover.getIndex(), coverTimer.getTargets()));
-        assert(IndexLinkValidator.isIndexInTargetList(playerFlight.getFlightPlanes().getFlightLeader().getEntity().getIndex(), cover.getTargets()));
+        assert(IndexLinkValidator.isIndexInTargetList(escortAirStartWP.getTargets(), escortRendezvousWP.getIndex()));
+        assert(IndexLinkValidator.isIndexInTargetList(playerRendezvousWP.getTargets(), coverTimer.getIndex()));
+        assert(IndexLinkValidator.isIndexInTargetList(coverTimer.getTargets(), cover.getIndex()));
+        assert(IndexLinkValidator.isIndexInTargetList(cover.getTargets(), playerFlight.getFlightPlanes().getFlightLeader().getEntity().getIndex()));
 		
-        assert(IndexLinkValidator.isIndexInTargetList(forceCompleteTimer.getIndex(), playerEgressWP.getTargets()));
-        assert(IndexLinkValidator.isIndexInTargetList(escortCompleteTimer.getIndex(), forceCompleteTimer.getTargets()));
-        assert(IndexLinkValidator.isIndexInTargetList(forceComplete.getIndex(), forceCompleteTimer.getTargets()));
-        assert(IndexLinkValidator.isIndexInTargetList(escortReturnToBaseWP.getIndex(), escortCompleteTimer.getTargets()));
+        assert(IndexLinkValidator.isIndexInTargetList(playerEgressWP.getTargets(), forceCompleteTimer.getIndex()));
+        assert(IndexLinkValidator.isIndexInTargetList(forceCompleteTimer.getTargets(), escortCompleteTimer.getIndex()));
+        assert(IndexLinkValidator.isIndexInTargetList(forceCompleteTimer.getTargets(), forceComplete.getIndex()));
+        assert(IndexLinkValidator.isIndexInTargetList(escortCompleteTimer.getTargets(), escortReturnToBaseWP.getIndex()));
 	}
 }

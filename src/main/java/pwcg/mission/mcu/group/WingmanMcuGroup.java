@@ -56,7 +56,7 @@ public class WingmanMcuGroup
         coverTimer.setName("Cover Timer");
         coverTimer.setDesc("Cover");
         coverTimer.setPosition(coverStartWaypoint.getPosition());
-        coverTimer.setTimer(1);
+        coverTimer.setTime(1);
         
         coverStartWaypoint.setTarget(coverTimer.getIndex());
         coverTimer.setTarget(cover.getIndex());
@@ -82,7 +82,7 @@ public class WingmanMcuGroup
         finishCoverTimer.setDesc("Escort Cover Force Complete Timer");
         finishCoverTimer.setOrientation(new Orientation());
         finishCoverTimer.setPosition(coverFinishWaypoint.getPosition());
-        finishCoverTimer.setTimer(1);
+        finishCoverTimer.setTime(1);
 
         forceCompleteFinishCover = new McuForceComplete();
         forceCompleteFinishCover.setName("Escort Cover Force Complete");

@@ -19,7 +19,7 @@ public class FirePot
 	
 	public void createFirePot(Coordinate firePotPosition, double orientation, int time) throws PWCGException 
 	{
-		firePotTimer.setTimer(time);
+		firePotTimer.setTime(time);
 		firePotTimer.setPosition(firePotPosition);
 
 		firePotCommand.setPosition(firePotPosition);

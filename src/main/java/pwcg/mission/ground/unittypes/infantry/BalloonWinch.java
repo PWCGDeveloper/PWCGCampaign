@@ -67,7 +67,7 @@ public class BalloonWinch
 		winchDownTimer.setName("Winch down timer");
 		winchDownTimer.setDesc("Winch down timer");
 		winchDownTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
-		winchDownTimer.setTimer(60);
+		winchDownTimer.setTime(60);
 		
 		// Make the winch down WP
 		Coordinate winchDownPos = pwcgGroundUnitInformation.getPosition().copy();

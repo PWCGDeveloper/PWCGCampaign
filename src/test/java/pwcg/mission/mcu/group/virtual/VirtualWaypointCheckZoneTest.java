@@ -9,7 +9,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.validate.IndexLinkValidator;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 
@@ -17,11 +16,8 @@ import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 public class VirtualWaypointCheckZoneTest
 {
     @Mock VirtualWayPointCoordinate vwpCoordinate;
-    @Mock VirtualWaypointStartNextVwp vwpNextVwpStart;
-    @Mock VirtualWaypointDeactivateNextVwp vwpDeactivateNextVwp;
-    @Mock VirtualWaypointTriggered vwpActivate;
-    @Mock VirtualWaypointPlanes vwpPlanes;
-    private PlaneMcu plane1;
+    @Mock VirtualWaypointTriggered vwpTriggered;
+    @Mock IVirtualWaypoint vwpNextVWP;
 
     @Before
     public void setup()
@@ -33,24 +29,17 @@ public class VirtualWaypointCheckZoneTest
     @Test
     public void validateVwpBuildProcess() throws PWCGException
     {
-        plane1 = new PlaneMcu();
-        plane1.setName("Plane 1");
-        Mockito.when(vwpPlanes.getLeadActivatePlane()).thenReturn(plane1);        
-
-        VirtualWaypointCheckZone vwpCheckZone = new VirtualWaypointCheckZone(vwpCoordinate, vwpPlanes, 1);
+        VirtualWaypointCheckZone vwpCheckZone = new VirtualWaypointCheckZone(vwpCoordinate, 1);
         vwpCheckZone.build();
         
-        assert(IndexLinkValidator.isIndexInTargetList(vwpCheckZone.getCheckZone().getActivateEntryPoint(), vwpCheckZone.getVwpStartTimer().getTargets()));
-        assert(IndexLinkValidator.isIndexInTargetList(vwpCheckZone.getTriggeredDisableNextVwpTimer().getIndex(), vwpCheckZone.getCheckZone().getCheckZone().getTargets()));
-        assert(IndexLinkValidator.isIndexInTargetList(vwpCheckZone.getTriggeredActivateTimer().getIndex(), vwpCheckZone.getTriggeredDisableNextVwpTimer().getTargets()));
-
-        Mockito.when(vwpNextVwpStart.getEntryPoint()).thenReturn(97);
-        Mockito.when(vwpActivate.getEntryPoint()).thenReturn(99);
-
-        vwpCheckZone.link(vwpNextVwpStart, vwpActivate);
+        Mockito.when(vwpTriggered.getEntryPoint()).thenReturn(99);
+        vwpCheckZone.linkToTriggered(vwpTriggered);
         
-        assert(IndexLinkValidator.isIndexInTargetList(97, vwpCheckZone.getVwpStartTimer().getTargets()));
-        assert(IndexLinkValidator.isIndexInTargetList(99, vwpCheckZone.getTriggeredActivateTimer().getTargets()));
+        Mockito.when(vwpNextVWP.getEntryPoint()).thenReturn(1000);
+        vwpCheckZone.linkToTimedOut(vwpNextVWP);
+        
+        assert(IndexLinkValidator.isIndexInTargetList(vwpCheckZone.getTimedCheckZone().getTriggeredExternal().getTargets(), 99));
+        assert(IndexLinkValidator.isIndexInTargetList(vwpCheckZone.getTimedCheckZone().getTimedOutExternal().getTargets(), 1000));
 
     }
 }

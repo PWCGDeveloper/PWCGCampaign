@@ -4,7 +4,7 @@ import java.util.List;
 
 public class IndexLinkValidator
 {
-    public static boolean isIndexInTargetList(int targetIndexToFind, List<String>targetsFromMCU) 
+    public static boolean isIndexInTargetList(List<String>targetsFromMCU, int targetIndexToFind) 
     {
         boolean isIndexInTargetList = false;
         for (String targetIndex : targetsFromMCU)

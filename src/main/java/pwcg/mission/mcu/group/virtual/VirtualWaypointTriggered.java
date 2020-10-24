@@ -31,7 +31,6 @@ public class VirtualWaypointTriggered implements makeActivatedSubtitle
     private McuTimer formationTimer = new McuTimer();
     private McuTimer waypointTimer = new McuTimer();
     private McuTimer escortTimer = new McuTimer();
-    private McuTimer deleteUpstreamPlanesTimer = new McuTimer();
     private int vwpIdentifier = 1;
     private int index = IndexGenerator.getInstance().getNextIndex();
 
@@ -60,19 +59,19 @@ public class VirtualWaypointTriggered implements makeActivatedSubtitle
         activate.setName("Activate");
         activate.setDesc("Activate");
         
-        activateTimer.setTimer(1);
+        activateTimer.setTime(1);
         activateTimer.setPosition(vwpCoordinate.getPosition().copy());
         activateTimer.setOrientation(vwpCoordinate.getOrientation().copy());
         activateTimer.setName("Activate Timer");
         activateTimer.setDesc("Activate Timer");
 
-        waypointTimer.setTimer(1);
+        waypointTimer.setTime(1);
         waypointTimer.setPosition(vwpCoordinate.getPosition().copy());
         waypointTimer.setOrientation(vwpCoordinate.getOrientation().copy());
         waypointTimer.setName("Activate WP Timer");
         waypointTimer.setDesc("Activate WP Timer");
 
-        escortTimer.setTimer(1);
+        escortTimer.setTime(1);
         escortTimer.setPosition(vwpCoordinate.getPosition().copy());
         escortTimer.setOrientation(vwpCoordinate.getOrientation().copy());
         escortTimer.setName("Escort Timer");
@@ -81,18 +80,8 @@ public class VirtualWaypointTriggered implements makeActivatedSubtitle
         formationTimer.setPosition(vwpCoordinate.getPosition().copy());
         formationTimer.setName("Formation Timer");
         formationTimer.setDesc("Formation Timer");
-        
-        deleteUpstreamPlanesTimer.setTimer(3);
-        deleteUpstreamPlanesTimer.setPosition(vwpCoordinate.getPosition().copy());
-        deleteUpstreamPlanesTimer.setName("Delete Upstream Planes Timer");
-        deleteUpstreamPlanesTimer.setDesc("Delete Upstream Planes Timer");
 
         formation.setPosition(vwpCoordinate.getPosition().copy());
-    }
-
-    public void link(VirtualWaypointDeactivateNextVwp vwpDeactivateNextVwp)
-    {
-        escortTimer.setTarget(vwpDeactivateNextVwp.getEntryPoint());
     }
 
     private void makeSubtitles() throws PWCGException
@@ -114,7 +103,6 @@ public class VirtualWaypointTriggered implements makeActivatedSubtitle
         activateTimer.setTarget(formationTimer.getIndex());
         formationTimer.setTarget(waypointTimer.getIndex());
         waypointTimer.setTarget(escortTimer.getIndex());
-        escortTimer.setTarget(deleteUpstreamPlanesTimer.getIndex());
     }
 
     private void createObjectAssociations()
@@ -150,7 +138,6 @@ public class VirtualWaypointTriggered implements makeActivatedSubtitle
             formationTimer.write(writer);
             waypointTimer.write(writer);
             escortTimer.write(writer);
-            deleteUpstreamPlanesTimer.write(writer);
             
             McuSubtitle.writeSubtitles(subTitleList, writer);
     
@@ -194,13 +181,14 @@ public class VirtualWaypointTriggered implements makeActivatedSubtitle
         return formationTimer;
     }
 
-    public McuTimer getDeleteUpstreamPlanesTimer()
-    {
-        return deleteUpstreamPlanesTimer;
-    }
-
     public McuTimer getWaypointTimer()
     {
         return waypointTimer;
     }
+
+    public McuTimer getEscortTimer()
+    {
+        return escortTimer;
+    }    
+    
 }

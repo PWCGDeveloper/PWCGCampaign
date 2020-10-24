@@ -97,7 +97,7 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
         formationTimer.setName(flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()) + ": Formation Timer");
         formationTimer.setDesc("Formation timer entity for " + flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()));
         formationTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());
-        formationTimer.setTimer(2);
+        formationTimer.setTime(2);
     }
 
     private void createAirStartWaypoint() throws PWCGException

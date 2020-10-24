@@ -63,7 +63,7 @@ public class AirGroundAttackMcuSequence
         activateTimer.setName("Attack Area Timer");      
         activateTimer.setDesc("Attack Area Timer");
         activateTimer.setPosition(targetDefinition.getPosition());
-        activateTimer.setTimer(1);              
+        activateTimer.setTime(1);              
 
         deactivateEntity.setName("Attack Area Deactivate");
         deactivateEntity.setDesc("Attack Area Deactivate");
@@ -74,7 +74,7 @@ public class AirGroundAttackMcuSequence
         deactivateTimer.setDesc("Attack Area Deactivate Timer");
         deactivateTimer.setOrientation(new Orientation());
         deactivateTimer.setPosition(targetDefinition.getPosition());              
-        deactivateTimer.setTimer(attackTime);              
+        deactivateTimer.setTime(attackTime);              
     }
 
     private void linkTargets() 

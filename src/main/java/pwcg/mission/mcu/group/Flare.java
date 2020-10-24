@@ -30,7 +30,7 @@ public class Flare
     public void createFlareTimer(Coordinate position) throws PWCGException 
     {        
         flareTimer.setName("FlareTimer");
-        flareTimer.setTimer(FLARES_INTERVAL_SECONDS);
+        flareTimer.setTime(FLARES_INTERVAL_SECONDS);
         flareTimer.setPosition(position.copy());
     }
 
