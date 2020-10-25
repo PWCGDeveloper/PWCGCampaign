@@ -8,10 +8,16 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
+import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
+import pwcg.mission.mcu.BaseFlightMcu;
+import pwcg.mission.mcu.McuAttack;
+import pwcg.mission.mcu.McuAttackArea;
+import pwcg.mission.mcu.McuWaypoint;
 
 public final class VirtualWaypoint implements IVirtualWaypoint 
 {       
@@ -19,6 +25,7 @@ public final class VirtualWaypoint implements IVirtualWaypoint
     private VirtualWayPointCoordinate vwpCoordinate;
     private int index = IndexGenerator.getInstance().getNextIndex();
     private int vwpIdentifier = 1;
+    private boolean shouldLinkToAttack = false;
 
     private VirtualWaypointPlanes vwpPlanes;
     private VirtualWaypointEscort vwpEscort;
@@ -40,8 +47,36 @@ public final class VirtualWaypoint implements IVirtualWaypoint
     @Override
     public void build() throws PWCGException 
     {
+        determineShouldCarryOrdnance();
         buildElements();
         linkTriggeredElements();
+    }
+
+    private void determineShouldCarryOrdnance()
+    {
+        if (FlightTypes.isFlightWithTargetArea(flight.getFlightType()))
+        {
+            for (BaseFlightMcu flightPoint : flight.getWaypointPackage().getAllFlightPoints())
+            {
+                if (flightPoint.getIndex() == vwpCoordinate.getWaypointIdentifier(flight))
+                {
+                    if (flightPoint instanceof McuWaypoint)
+                    {
+                        McuWaypoint waypoint = (McuWaypoint)flightPoint;
+                        WaypointAction action = waypoint.getWpAction();
+                        if (action.isBeforeTarget())
+                        {
+                            shouldLinkToAttack = true;
+                        }
+                    }
+                    
+                    if (flightPoint instanceof McuAttack || flightPoint instanceof McuAttackArea)
+                    {
+                        shouldLinkToAttack = true;
+                    }
+                }
+            }
+        }
     }
 
     @Override
@@ -166,5 +201,11 @@ public final class VirtualWaypoint implements IVirtualWaypoint
     public VirtualWaypointEscort getVwpEscort()
     {
         return vwpEscort;
+    }
+
+    @Override
+    public boolean isShouldLinkToAttack()
+    {
+        return shouldLinkToAttack;
     }
 }

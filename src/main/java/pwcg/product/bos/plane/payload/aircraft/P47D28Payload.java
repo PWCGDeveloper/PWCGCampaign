@@ -14,6 +14,7 @@ public class P47D28Payload extends PlanePayload implements IPlanePayload
     public P47D28Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()

@@ -14,6 +14,7 @@ public class Lagg3S29Payload extends PlanePayload implements IPlanePayload
     public Lagg3S29Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()

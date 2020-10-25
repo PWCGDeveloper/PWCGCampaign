@@ -18,7 +18,7 @@ import pwcg.mission.mcu.McuFormation;
 import pwcg.mission.mcu.McuSubtitle;
 import pwcg.mission.mcu.McuTimer;
 
-public class VirtualWaypointTriggered implements makeActivatedSubtitle
+public class VirtualWaypointTriggered
 {
     private IFlight flight;
     private VirtualWayPointCoordinate vwpCoordinate;

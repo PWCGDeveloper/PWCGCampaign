@@ -11,6 +11,7 @@ public class FokkerD7FPayload extends PlanePayload implements IPlanePayload
     public FokkerD7FPayload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()

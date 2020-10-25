@@ -12,6 +12,7 @@ public class U2VSPayload extends PlanePayload implements IPlanePayload
     public U2VSPayload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()

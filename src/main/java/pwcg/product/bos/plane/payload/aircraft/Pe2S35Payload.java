@@ -13,6 +13,7 @@ public class Pe2S35Payload extends PlanePayload implements IPlanePayload
     public Pe2S35Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 11;
     }
 
     protected void initialize()
@@ -28,6 +29,7 @@ public class Pe2S35Payload extends PlanePayload implements IPlanePayload
         setAvailablePayload(8, "10001", PayloadElement.FAB100M_X4, PayloadElement.ROS132_X10);
 		setAvailablePayload(9, "10001", PayloadElement.FAB100M_X6, PayloadElement.ROS132_X10);
 		setAvailablePayload(10, "10001", PayloadElement.FAB250SV_X2, PayloadElement.ROS132_X10);
+        setAvailablePayload(11, "1", PayloadElement.EMPTY);
 	}
 
     @Override

@@ -13,6 +13,7 @@ public class Bf110E2Payload extends PlanePayload
     public Bf110E2Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()

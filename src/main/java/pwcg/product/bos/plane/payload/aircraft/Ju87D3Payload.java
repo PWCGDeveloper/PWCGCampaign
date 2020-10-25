@@ -13,6 +13,7 @@ public class Ju87D3Payload extends PlanePayload
     public Ju87D3Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()
@@ -29,6 +30,7 @@ public class Ju87D3Payload extends PlanePayload
 		setAvailablePayload(7, "101", PayloadElement.SC1800_X1);
 		setAvailablePayload(9, "100001", PayloadElement.BK37_AP_GUNPOD);
 		setAvailablePayload(10, "100001", PayloadElement.BK37_HE_GUNPOD);
+        setAvailablePayload(11, "1", PayloadElement.EMPTY);
 	}
 
     @Override

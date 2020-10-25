@@ -13,6 +13,7 @@ public class DolphinPayload extends PlanePayload implements IPlanePayload
     public DolphinPayload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()

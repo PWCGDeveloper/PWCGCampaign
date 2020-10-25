@@ -14,6 +14,7 @@ public class I16Type24Payload extends PlanePayload implements IPlanePayload
     public I16Type24Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()

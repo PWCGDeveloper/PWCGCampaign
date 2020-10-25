@@ -12,6 +12,7 @@ public class Me262APayload extends PlanePayload implements IPlanePayload
     public Me262APayload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()

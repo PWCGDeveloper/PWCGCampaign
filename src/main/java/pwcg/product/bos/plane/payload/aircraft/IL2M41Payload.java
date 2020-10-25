@@ -14,6 +14,7 @@ public class IL2M41Payload extends PlanePayload implements IPlanePayload
     public IL2M41Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 72;
     }
 
     protected void initialize()
@@ -49,6 +50,7 @@ public class IL2M41Payload extends PlanePayload implements IPlanePayload
         setAvailablePayload(57, "100011", PayloadElement.VYA23_APHE_GUNPOD, PayloadElement.ROFS132_X8);
         setAvailablePayload(58, "100011", PayloadElement.VYA23_AP_GUNPOD, PayloadElement.ROFS132_X8);
         setAvailablePayload(59, "100011", PayloadElement.VYA23_HE_GUNPOD, PayloadElement.ROFS132_X8);
+        setAvailablePayload(72, "1", PayloadElement.EMPTY);
 	}
 
     @Override

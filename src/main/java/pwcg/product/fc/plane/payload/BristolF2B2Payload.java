@@ -12,6 +12,7 @@ public class BristolF2B2Payload extends PlanePayload implements IPlanePayload
     public BristolF2B2Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()

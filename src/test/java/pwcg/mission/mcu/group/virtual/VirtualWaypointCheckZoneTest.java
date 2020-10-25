@@ -40,6 +40,5 @@ public class VirtualWaypointCheckZoneTest
         
         assert(IndexLinkValidator.isIndexInTargetList(vwpCheckZone.getTimedCheckZone().getTriggeredExternal().getTargets(), 99));
         assert(IndexLinkValidator.isIndexInTargetList(vwpCheckZone.getTimedCheckZone().getTimedOutExternal().getTargets(), 1000));
-
     }
 }

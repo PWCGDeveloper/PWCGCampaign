@@ -13,6 +13,7 @@ public class Ju88A4Payload extends PlanePayload
     public Ju88A4Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 12;
     }
 
     protected void initialize()
@@ -29,6 +30,7 @@ public class Ju88A4Payload extends PlanePayload
 		setAvailablePayload(9, "1001", PayloadElement.SC1000_X2);		
 		setAvailablePayload(10, "10001", PayloadElement.SC1800_X1);
 		setAvailablePayload(11, "11001", PayloadElement.SC1800_X1, PayloadElement.SC1000_X1);
+        setAvailablePayload(12, "1", PayloadElement.EMPTY);
 	}
 
     @Override

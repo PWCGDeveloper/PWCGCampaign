@@ -11,6 +11,7 @@ public class PfalzD3Payload extends PlanePayload implements IPlanePayload
     public PfalzD3Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
     
     protected void initialize()

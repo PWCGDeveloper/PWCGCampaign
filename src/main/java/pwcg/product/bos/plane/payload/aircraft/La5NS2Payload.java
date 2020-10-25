@@ -13,6 +13,7 @@ public class La5NS2Payload extends PlanePayload implements IPlanePayload
     public La5NS2Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()

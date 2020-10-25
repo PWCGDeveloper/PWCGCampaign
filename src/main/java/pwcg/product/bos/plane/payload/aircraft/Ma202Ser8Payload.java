@@ -14,6 +14,7 @@ public class Ma202Ser8Payload extends PlanePayload implements IPlanePayload
     public Ma202Ser8Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()

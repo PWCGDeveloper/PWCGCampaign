@@ -11,11 +11,13 @@ public class B25DRAFPayload extends PlanePayload implements IPlanePayload
     public B25DRAFPayload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 5;
     }
 
     protected void initialize()
 	{
         setAvailablePayload(1, "1", PayloadElement.LB250x4);
+        setAvailablePayload(5, "1", PayloadElement.EMPTY);
 	}
 
     @Override

@@ -14,6 +14,8 @@ import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
 import pwcg.mission.mcu.BaseFlightMcu;
+import pwcg.mission.mcu.McuAttack;
+import pwcg.mission.mcu.McuAttackArea;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class WaypointPackage implements IWaypointPackage
@@ -101,6 +103,21 @@ public class WaypointPackage implements IWaypointPackage
         }
         return allFlightPoints;
     }
+    
+
+    @Override
+    public BaseFlightMcu getAttackFlightPoint()
+    {
+        for (BaseFlightMcu mcu : getAllFlightPoints())
+        {
+            if (mcu instanceof McuAttack || mcu instanceof McuAttackArea)
+            {
+                return mcu;
+            }
+        }
+        return null;
+    }
+
 
     @Override
     public void updateWaypointsFromBriefing(List<BriefingMapPoint> briefingMapPoints) throws PWCGException

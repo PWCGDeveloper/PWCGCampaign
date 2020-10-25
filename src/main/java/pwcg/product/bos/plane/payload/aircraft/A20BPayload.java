@@ -13,6 +13,7 @@ public class A20BPayload extends PlanePayload implements IPlanePayload
     public A20BPayload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 6;
     }
 
     protected void initialize()
@@ -22,13 +23,13 @@ public class A20BPayload extends PlanePayload implements IPlanePayload
         setAvailablePayload(2, "1", PayloadElement.FAB100M_X16);
         setAvailablePayload(3, "11", PayloadElement.FAB100M_X20);
         setAvailablePayload(4, "101", PayloadElement.FAB250SV_X4);
+        setAvailablePayload(6, "1", PayloadElement.EMPTY);
 	}
 
     @Override
     public IPlanePayload copy()
     {
         A20BPayload clone = new A20BPayload(planeType);
-        
         return super.copy(clone);
     }
     

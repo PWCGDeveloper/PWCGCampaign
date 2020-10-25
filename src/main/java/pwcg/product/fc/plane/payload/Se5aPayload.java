@@ -12,6 +12,7 @@ public class Se5aPayload extends PlanePayload implements IPlanePayload
     public Se5aPayload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()

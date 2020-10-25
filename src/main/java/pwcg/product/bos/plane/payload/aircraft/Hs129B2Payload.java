@@ -13,6 +13,7 @@ public class Hs129B2Payload extends PlanePayload
     public Hs129B2Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 34;
     }
 
     protected void initialize()
@@ -38,6 +39,7 @@ public class Hs129B2Payload extends PlanePayload
         setAvailablePayload(19, "11", PayloadElement.MG151_20_UPGRADE, PayloadElement.SC50_X6);
         setAvailablePayload(20, "11", PayloadElement.MG151_20_UPGRADE, PayloadElement.SC250_X1);
         setAvailablePayload(21, "11", PayloadElement.MG151_20_UPGRADE, PayloadElement.SC250_X1, PayloadElement.SC50_X2);
+        setAvailablePayload(34, "1", PayloadElement.EMPTY);
 	}
 
     @Override

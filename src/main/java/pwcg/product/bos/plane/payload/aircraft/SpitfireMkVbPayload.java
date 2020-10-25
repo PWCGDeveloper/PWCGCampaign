@@ -11,6 +11,7 @@ public class SpitfireMkVbPayload extends PlanePayload implements IPlanePayload
     public SpitfireMkVbPayload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()

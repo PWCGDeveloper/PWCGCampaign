@@ -12,6 +12,7 @@ public class Bf109G4Payload extends Bf109Payload implements IPlanePayload
     public Bf109G4Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()

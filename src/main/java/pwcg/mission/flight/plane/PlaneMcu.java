@@ -109,7 +109,14 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         plane.aiRTBDecision = this.aiRTBDecision;
         plane.deleteAfterDeath = this.deleteAfterDeath;
         plane.wingmanCommands = this.wingmanCommands;
-        plane.payload = this.payload;
+        if (payload != null)
+        {
+            plane.payload = this.payload.copy();
+        }
+        else
+        {
+            plane.payload = null;
+        }
         plane.entity = this.entity.copy();
         plane.campaign = this.campaign;
         plane.pilot = this.pilot;
@@ -190,6 +197,14 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         }
 
         return null;
+    }
+
+    public void noOrdnance()
+    {
+        if (payload != null)
+        {
+            this.payload.noOrdnance();
+        }
     }
 
     public void setPlaneSkinWithCheck(Skin newSkin)
