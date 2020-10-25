@@ -8,6 +8,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
+import pwcg.mission.mcu.group.virtual.VirtualWaypoint;
 
 public class AiAdjuster
 {
@@ -20,11 +21,34 @@ public class AiAdjuster
     
     public void adjustAI(Mission mission) throws PWCGException
     {
+        adjustAIForRealFlights(mission);
+        adjustAIForVirtualMissions(mission);
+    }
+
+    private void adjustAIForRealFlights(Mission mission) throws PWCGException
+    {
         for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
             for (PlaneMcu plane: flight.getFlightPlanes().getAiPlanes())
             {
                 adjustAi(plane);
+            }
+        }
+    }
+    
+    private void adjustAIForVirtualMissions(Mission mission) throws PWCGException
+    {
+        for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
+        {
+            if (flight.getFlightInformation().isVirtual())
+            {
+                for (VirtualWaypoint virtualWaypoint : flight.getVirtualWaypointPackage().getVirtualWaypoints())
+                {
+                    for (PlaneMcu plane: virtualWaypoint.getVwpPlanes().getAllPlanes())
+                    {
+                        adjustAi(plane);
+                    }
+                }
             }
         }
     }
