@@ -8,6 +8,11 @@
 		{
 			"archType": "ju87",
 			"squadronIntroduction": "19410801",
+			"squadronWithdrawal": "19440201"
+		},
+		{
+			"archType": "fw190",
+			"squadronIntroduction": "19440202",
 			"squadronWithdrawal": "19450601"
 		}
 	],
@@ -92,10 +97,24 @@
 		"squadronRolePeriods": [
 			{
 				"startDate": "19400101",
-				"endDate": "19450601",
+				"endDate": "19440201",
 				"weightedRoles": [
 					{
 						"role": "ROLE_DIVE_BOMB",
+						"weight": 100
+					}
+				]
+			},
+			{
+				"startDate": "19440202",
+				"endDate": "19450601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_RECON",
+						"weight": 10
+					},
+					{
+						"role": "ROLE_ATTACK",
 						"weight": 100
 					}
 				]
