@@ -14,6 +14,7 @@ public class MiG3Ser24Payload extends PlanePayload implements IPlanePayload
     public MiG3Ser24Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()

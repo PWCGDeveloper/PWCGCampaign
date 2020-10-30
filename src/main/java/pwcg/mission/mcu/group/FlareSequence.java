@@ -41,7 +41,7 @@ public class FlareSequence
     public void createflareMasterTimer(Coordinate position) throws PWCGException 
     {        
         flareMasterTimer.setName("flareMasterTimer");
-        flareMasterTimer.setTimer(1);
+        flareMasterTimer.setTime(1);
         flareMasterTimer.setPosition(position.copy());
     }
 

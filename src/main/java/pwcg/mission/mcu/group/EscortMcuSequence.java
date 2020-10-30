@@ -78,7 +78,7 @@ public class EscortMcuSequence
         forceCompleteTimer.setDesc("Escort Cover Force Complete Timer");
         forceCompleteTimer.setOrientation(new Orientation());
         forceCompleteTimer.setPosition(rendevousPosition);
-        forceCompleteTimer.setTimer(1);
+        forceCompleteTimer.setTime(1);
 
         forceComplete = new McuForceComplete();
         forceComplete.setName("Escort Cover Force Complete");
@@ -92,7 +92,7 @@ public class EscortMcuSequence
         escortCompleteTimer.setDesc("Escort Complete Timer");
         escortCompleteTimer.setOrientation(new Orientation());
         escortCompleteTimer.setPosition(rendevousPosition);
-        escortCompleteTimer.setTimer(1);
+        escortCompleteTimer.setTime(1);
     }
     
     private void createTargetAssociations()

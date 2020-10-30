@@ -12,6 +12,7 @@ public class Halberstadtcl2Payload extends PlanePayload implements IPlanePayload
     public Halberstadtcl2Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()

@@ -12,6 +12,7 @@ import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.plot.FlightPathToWaypointPlotter;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPointAttackSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuWaypoint;
@@ -101,6 +102,18 @@ public class WaypointPackage implements IWaypointPackage
         }
         return allFlightPoints;
     }
+    
+
+    @Override
+    public void setAttackToTriggerOnPlane(int planeIndex) throws PWCGException
+    {
+        MissionPointAttackSet attackMissionPoint = (MissionPointAttackSet)getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_ATTACK);
+        if (attackMissionPoint != null)
+        {
+            attackMissionPoint.getAttackSequence().setAttackToTriggerOnPlane(planeIndex);
+        }
+    }
+
 
     @Override
     public void updateWaypointsFromBriefing(List<BriefingMapPoint> briefingMapPoints) throws PWCGException

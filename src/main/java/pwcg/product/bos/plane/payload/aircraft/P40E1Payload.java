@@ -14,6 +14,7 @@ public class P40E1Payload extends PlanePayload implements IPlanePayload
     public P40E1Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()

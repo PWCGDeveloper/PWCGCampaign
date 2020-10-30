@@ -16,6 +16,7 @@ public abstract class PlanePayload implements IPlanePayload
 	protected Map<String, PayloadElement>modifications = new TreeMap<>();
     protected Map<Integer, PayloadDesignation> availablePayload = new TreeMap<>();
     protected PlaneType planeType;
+    protected int noOrdnancePayloadElement = 0;
 
 	public PlanePayload(PlaneType planeType)
 	{
@@ -139,6 +140,14 @@ public abstract class PlanePayload implements IPlanePayload
         selectedPrimaryPayloadId = 0;
         return selectedPrimaryPayloadId;
     }
+    
+    
+    @Override
+    public void noOrdnance()
+    {
+        selectedPrimaryPayloadId = noOrdnancePayloadElement ;
+    }
+
 
     abstract public int createWeaponsPayload(IFlight flight) throws PWCGException;
     abstract protected void initialize();

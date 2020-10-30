@@ -42,11 +42,11 @@ public class StopAttackingNearAirfieldSequence
 
     private void buildTimers(Coordinate position)
     {
-        checkZoneTimer.setTimer(1);
+        checkZoneTimer.setTime(1);
         checkZoneTimer.setName("Go Away CZ Timer");
         checkZoneTimer.setPosition(position.copy());
 
-        goAwayTimer.setTimer(90);
+        goAwayTimer.setTime(90);
         goAwayTimer.setName("Go Away Triggered Timer");
         goAwayTimer.setPosition(position.copy());
     }

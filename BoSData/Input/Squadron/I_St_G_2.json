@@ -92,11 +92,25 @@
 		"squadronRolePeriods": [
 			{
 				"startDate": "19400101",
-				"endDate": "19450601",
+				"endDate": "19430601",
 				"weightedRoles": [
 					{
 						"role": "ROLE_DIVE_BOMB",
 						"weight": 100
+					}
+				]
+			},
+			{
+				"startDate": "19430601",
+				"endDate": "19450601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_DIVE_BOMB",
+						"weight": 50
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 50
 					}
 				]
 			}

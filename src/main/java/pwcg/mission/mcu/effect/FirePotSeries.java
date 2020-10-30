@@ -29,7 +29,7 @@ public class FirePotSeries extends Effect
         missionBegin.setPosition(startPosition.copy());
         missionBegin.setTarget(fireTriggerTimer.getIndex());
         
-        fireTriggerTimer.setTimer(1);
+        fireTriggerTimer.setTime(1);
         fireTriggerTimer.setPosition(startPosition.copy());
 
         makeFirePotPairs(startPosition, orientationDownRunway, distanceBetween);

@@ -47,7 +47,7 @@ public class GroundAspectFormationMovement implements IGroundAspect
         formationTimer.setName("Vehicle WP Timer");
         formationTimer.setDesc("Vehicle WP TImer");
         formationTimer.setPosition(vehicle.getPosition().copy());
-        formationTimer.setTimer(1);
+        formationTimer.setTime(1);
 
         formation = new McuFormation();
         formation.setPosition(vehicle.getPosition().copy());
@@ -61,7 +61,7 @@ public class GroundAspectFormationMovement implements IGroundAspect
         waypointTimer.setName("Vehicle WP Timer");
         waypointTimer.setDesc("Vehicle WP TImer");
         waypointTimer.setPosition(vehicle.getPosition().copy());
-        waypointTimer.setTimer(1);
+        waypointTimer.setTime(1);
 
         waypoint = WaypointFactory.createMoveToWaypointType();
         waypoint.setTriggerArea(0);

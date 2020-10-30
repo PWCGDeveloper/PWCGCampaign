@@ -21,7 +21,7 @@ public class GroundAttackFlightValidator
 		{
 			if (prevWaypoint != null)
 			{
-				boolean isNextWaypointLinked = IndexLinkValidator.isIndexInTargetList(waypoint.getIndex(), prevWaypoint.getTargets());
+				boolean isNextWaypointLinked = IndexLinkValidator.isIndexInTargetList(prevWaypoint.getTargets(), waypoint.getIndex());
 				if (!waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TARGET_EGRESS))
 				{
 					assert(isNextWaypointLinked);

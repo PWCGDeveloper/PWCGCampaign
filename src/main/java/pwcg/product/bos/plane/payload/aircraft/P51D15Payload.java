@@ -13,6 +13,7 @@ public class P51D15Payload extends PlanePayload implements IPlanePayload
     public P51D15Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()

@@ -12,6 +12,7 @@ public class He111H16Payload extends PlanePayload
     public He111H16Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 6;
     }
 
     protected void initialize()
@@ -22,14 +23,13 @@ public class He111H16Payload extends PlanePayload
         setAvailablePayload(3, "1", PayloadElement.SC250_X8);
         setAvailablePayload(4, "1",PayloadElement.SC250_X4, PayloadElement.SC50_X16);
         setAvailablePayload(5, "1", PayloadElement.SC500_X1, PayloadElement.SC50_X16);
-        setAvailablePayload(6, "1", PayloadElement.SC500_X1, PayloadElement.SC250_X4);
+        setAvailablePayload(6, "1", PayloadElement.EMPTY);
         setAvailablePayload(7, "1", PayloadElement.SC500_X2);
         setAvailablePayload(8, "11", PayloadElement.SC1000_X1, PayloadElement.SC50_X16);
         setAvailablePayload(9, "11", PayloadElement.SC1000_X1, PayloadElement.SC250_X4);
         setAvailablePayload(10, "11", PayloadElement.SC1000_X2);
         setAvailablePayload(11, "101", PayloadElement.SC1800_X1, PayloadElement.SC50_X16);
         setAvailablePayload(12, "101", PayloadElement.SC1800_X1, PayloadElement.SC250_X4);
-        setAvailablePayload(13, "101", PayloadElement.SC1800_X2);
         setAvailablePayload(14, "111", PayloadElement.SC1800_X1, PayloadElement.SC1000_X1);
         setAvailablePayload(15, "1001", PayloadElement.SC2500_X1);
         setAvailablePayload(16, "1001", PayloadElement.SC2500_X1, PayloadElement.SC50_X16);

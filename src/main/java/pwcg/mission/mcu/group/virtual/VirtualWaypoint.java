@@ -8,10 +8,16 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
+import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
+import pwcg.mission.mcu.BaseFlightMcu;
+import pwcg.mission.mcu.McuAttack;
+import pwcg.mission.mcu.McuAttackArea;
+import pwcg.mission.mcu.McuWaypoint;
 
 public final class VirtualWaypoint implements IVirtualWaypoint 
 {       
@@ -19,16 +25,13 @@ public final class VirtualWaypoint implements IVirtualWaypoint
     private VirtualWayPointCoordinate vwpCoordinate;
     private int index = IndexGenerator.getInstance().getNextIndex();
     private int vwpIdentifier = 1;
+    private boolean shouldLinkToAttack = false;
 
     private VirtualWaypointPlanes vwpPlanes;
     private VirtualWaypointEscort vwpEscort;
+    
     private VirtualWaypointCheckZone vwpCheckZone;
     private VirtualWaypointTriggered vwpTriggered;
-    private VirtualWaypointStartNextVwp vwpStartNextVwp;
-    private VirtualWaypointDeactivateNextVwp vwpDeactivateNextVwp;
-    private VirtualWaypointDeactivateThisVwp vwpDeactivateThisVwp;
-    private VirtualWaypointUpstreamKill vwpUpstreamKill;
-    private VirtualWaypointDeletePlanes vwpDeletePlanes;
 
     public static int VWP_TRIGGGER_DISTANCE = 20000;
     
@@ -44,8 +47,36 @@ public final class VirtualWaypoint implements IVirtualWaypoint
     @Override
     public void build() throws PWCGException 
     {
+        determineShouldCarryOrdnance();
         buildElements();
-        linkElements();
+        linkTriggeredElements();
+    }
+
+    private void determineShouldCarryOrdnance()
+    {
+        if (FlightTypes.isFlightWithTargetArea(flight.getFlightType()))
+        {
+            for (BaseFlightMcu flightPoint : flight.getWaypointPackage().getAllFlightPoints())
+            {
+                if (flightPoint.getIndex() == vwpCoordinate.getWaypointIdentifier(flight))
+                {
+                    if (flightPoint instanceof McuWaypoint)
+                    {
+                        McuWaypoint waypoint = (McuWaypoint)flightPoint;
+                        WaypointAction action = waypoint.getWpAction();
+                        if (action.isBeforeTarget())
+                        {
+                            shouldLinkToAttack = true;
+                        }
+                    }
+                    
+                    if (flightPoint instanceof McuAttack || flightPoint instanceof McuAttackArea)
+                    {
+                        shouldLinkToAttack = true;
+                    }
+                }
+            }
+        }
     }
 
     @Override
@@ -74,11 +105,7 @@ public final class VirtualWaypoint implements IVirtualWaypoint
             vwpPlanes.write(writer);
             vwpCheckZone.write(writer);
             vwpTriggered.write(writer);
-            vwpDeactivateNextVwp.write(writer);
-            vwpUpstreamKill.write(writer);
-            vwpStartNextVwp.write(writer);
-            vwpDeactivateThisVwp.write(writer);
-            vwpDeletePlanes.write(writer);
+
             if (vwpEscort != null)
             {
                 vwpEscort.write(writer);
@@ -99,44 +126,22 @@ public final class VirtualWaypoint implements IVirtualWaypoint
         vwpPlanes = new VirtualWaypointPlanes(flight, vwpCoordinate);
         vwpPlanes.build();
 
-        vwpCheckZone = new VirtualWaypointCheckZone(vwpCoordinate, vwpPlanes, vwpIdentifier);
+        vwpCheckZone = new VirtualWaypointCheckZone(vwpCoordinate, vwpIdentifier);
         vwpCheckZone.build();
 
         vwpTriggered = new VirtualWaypointTriggered(flight, vwpCoordinate, vwpPlanes, vwpIdentifier);
         vwpTriggered.build();
-
-        vwpDeactivateNextVwp = new VirtualWaypointDeactivateNextVwp(vwpCoordinate);
-        vwpDeactivateNextVwp.build();
-
-        vwpUpstreamKill = new VirtualWaypointUpstreamKill(vwpCoordinate);
-        vwpUpstreamKill.build();
-
-        vwpStartNextVwp = new VirtualWaypointStartNextVwp(vwpCoordinate);
-        vwpStartNextVwp.build();
-        
-        vwpDeactivateThisVwp = new VirtualWaypointDeactivateThisVwp(vwpCoordinate);
-        vwpDeactivateThisVwp.build();
-
-        vwpDeletePlanes = new VirtualWaypointDeletePlanes(vwpCoordinate, vwpPlanes, vwpIdentifier);
-        vwpDeletePlanes.build();
     }
 
-    private void linkElements() throws PWCGException
+    private void linkTriggeredElements() throws PWCGException
     {
-        vwpCheckZone.link(vwpStartNextVwp, vwpTriggered);
-        vwpTriggered.link(vwpDeactivateNextVwp);
-        vwpDeactivateNextVwp.link(vwpStartNextVwp, vwpUpstreamKill);
-        vwpStartNextVwp.link(vwpDeactivateThisVwp);
-        vwpDeactivateThisVwp.link(vwpCheckZone, vwpDeletePlanes);
-        vwpUpstreamKill.link(vwpDeletePlanes);
-
+        vwpCheckZone.linkToTriggered(vwpTriggered);
     }
 
     @Override
     public void linkToNextVirtualWaypoint(IVirtualWaypoint nextVwp)
     {
-        vwpStartNextVwp.linkToNextVwp(nextVwp.getEntryPoint());
-        vwpUpstreamKill.linkToNextVwpKill(nextVwp.getVwpUpstreamKill(), nextVwp.getVwpDeletePlanes());
+        vwpCheckZone.linkToTimedOut(nextVwp);
     }
     
     @Override
@@ -154,13 +159,13 @@ public final class VirtualWaypoint implements IVirtualWaypoint
     @Override
     public void addAdditionalTime(int additionalTime)
     {
-        vwpStartNextVwp.addAdditionalTime(additionalTime);
+        vwpCheckZone.addAdditionalTime(additionalTime);
     }
 
     @Override
     public int getEntryPoint()
     {
-        return vwpCheckZone.getVwpStartTimer().getIndex();
+        return vwpCheckZone.getEntryPoint();
     }
 
     @Override
@@ -188,37 +193,19 @@ public final class VirtualWaypoint implements IVirtualWaypoint
     }
 
     @Override
-    public VirtualWaypointStartNextVwp getVwpNextVwpStart()
-    {
-        return vwpStartNextVwp;
-    }
-
-    @Override
-    public VirtualWaypointDeactivateNextVwp getVwpNextVwpDeactivate()
-    {
-        return vwpDeactivateNextVwp;
-    }
-
-    @Override
-    public VirtualWaypointUpstreamKill getVwpUpstreamKill()
-    {
-        return vwpUpstreamKill;
-    }
-
-    @Override
     public VirtualWaypointPlanes getVwpPlanes()
     {
         return vwpPlanes;
     }
 
-    @Override
-    public VirtualWaypointDeletePlanes getVwpDeletePlanes()
-    {
-        return vwpDeletePlanes;
-    }
-
     public VirtualWaypointEscort getVwpEscort()
     {
         return vwpEscort;
+    }
+
+    @Override
+    public boolean isShouldLinkToAttack()
+    {
+        return shouldLinkToAttack;
     }
 }

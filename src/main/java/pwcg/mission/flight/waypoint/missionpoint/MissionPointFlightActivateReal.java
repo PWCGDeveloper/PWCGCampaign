@@ -101,7 +101,7 @@ public class MissionPointFlightActivateReal implements IMissionPointSet
         missionBeginTimer.setName("Activation Timer");
         missionBeginTimer.setDesc("Activation Timer");
         missionBeginTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());        
-        missionBeginTimer.setTimer(1);
+        missionBeginTimer.setTime(1);
     }
 
     private void createTargetAssociations()

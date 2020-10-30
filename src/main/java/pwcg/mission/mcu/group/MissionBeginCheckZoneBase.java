@@ -12,9 +12,9 @@ import pwcg.mission.mcu.Coalition;
 public class MissionBeginCheckZoneBase
 {
     protected MissionBeginUnit missionBeginUnit;
-    protected ICheckZone checkZone;
+    protected SelfDeactivatingCheckZone checkZone;
 
-    public MissionBeginCheckZoneBase(Coordinate position, ICheckZone checkZone)
+    public MissionBeginCheckZoneBase(Coordinate position, SelfDeactivatingCheckZone checkZone)
     {
         this.checkZone = checkZone;
         missionBeginUnit = new MissionBeginUnit(position.copy());

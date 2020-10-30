@@ -22,7 +22,7 @@ import pwcg.mission.flight.waypoint.WaypointPackage;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 
 @RunWith(MockitoJUnitRunner.class)
-public class VirtualWaypointActivateTest
+public class VirtualWaypointTriggeredTest
 {
     @Mock private IFlight flight;
     @Mock private IFlightPlanes flightPlanes;
@@ -50,24 +50,30 @@ public class VirtualWaypointActivateTest
         Orientation vwpOrientation = new Orientation(270.0);
         Mockito.when(vwpCoordinate.getOrientation()).thenReturn(vwpOrientation);        
 
+        Mockito.when(vwpCoordinate.getWaypointIdentifier(Mockito.any())).thenReturn(99999);        
+
         Mockito.when(vwpPlanes.getLeadActivatePlane()).thenReturn(plane1);        
         Mockito.when(vwpPlanes.getAllPlanes()).thenReturn(planes);        
     }
     
     @Test
-    public void validateVwpBuildProcess() throws PWCGException
+    public void validateVwpBuildProcessNoEscort() throws PWCGException
     {
         VirtualWaypointTriggered activate = new VirtualWaypointTriggered(flight, vwpCoordinate, vwpPlanes, 1);
         activate.build();
         
-        assert(IndexLinkValidator.isIndexInTargetList(activate.getFormationTimer().getIndex(), activate.getActivateTimer().getTargets()));
-        assert(IndexLinkValidator.isIndexInTargetList(activate.getWaypointTimer().getIndex(), activate.getFormationTimer().getTargets()));        
+        assert(IndexLinkValidator.isIndexInTargetList(activate.getActivateTimer().getTargets(), activate.getFormationTimer().getIndex()));
+        assert(IndexLinkValidator.isIndexInTargetList(activate.getActivateTimer().getTargets(), activate.getActivate().getIndex()));
 
-        assert(IndexLinkValidator.isIndexInTargetList(activate.getActivate().getIndex(), activate.getActivateTimer().getTargets()));
-        assert(IndexLinkValidator.isIndexInTargetList(activate.getFormation().getIndex(), activate.getFormationTimer().getTargets()));
-        assert(activate.getWaypointTimer().getTargets().size() == 2);
-        assert(IndexLinkValidator.isIndexInTargetList(activate.getFormation().getIndex(), activate.getFormationTimer().getTargets()));
+        assert(IndexLinkValidator.isIndexInTargetList(activate.getFormationTimer().getTargets(), activate.getWaypointTimer().getIndex()));   
+        assert(IndexLinkValidator.isIndexInTargetList(activate.getFormationTimer().getTargets(), activate.getFormation().getIndex()));
         assert(activate.getFormation().getObjects().size() == 1);
+
+        assert(IndexLinkValidator.isIndexInTargetList(activate.getWaypointTimer().getTargets(), activate.getEscortTimer().getIndex()));   
+        assert(IndexLinkValidator.isIndexInTargetList(activate.getWaypointTimer().getTargets(), 99999));   
+
+        assert(activate.getWaypointTimer().getTargets().size() == 2);
+        assert(activate.getEscortTimer().getTargets().size() == 0);
     }
 
 }

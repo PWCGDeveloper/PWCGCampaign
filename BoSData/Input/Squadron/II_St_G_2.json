@@ -1,116 +1,124 @@
 {
-  "country": "GERMANY",
-  "squadronId": 20122002,
-  "name": "II./St.G.2",
-  "fileName": "II_St_G_2.json",
-  "skill": 60,
-  "planeAssignments": [
-    {
-      "archType": "ju87",
-      "squadronIntroduction": "19410801",
-      "squadronWithdrawal": "19450601"
-    }
-  ],
-  "airfields": {
-    "19411001": "Vjazma",
-    "19411020": "Zenino",
-    "19411110": "Zenino",
-    "19411120": "Kholm",
-    "19411215": "Gzhatsk",
-    "19420110": "Vjazma",
-    "19420301": "Kletskaya",
-    "19420601": "Popovicheskaya",
-    "19420624": "Gostagaevskaya",
-    "19420709": "Kievskoe",
-    "19420721": "Kievskoe",
-    "19420801": "Zryansky",
-    "19420906": "Kalach",
-    "19421011": "Zety",
-    "19421123": "Skvorin",
-    "19421223": "Skvorin",
-    "19430120": "Zryansky",
-    "19430301": "Gostagaevskaya",
-    "19430330": "Gostagaevskaya",
-    "19430418": "Gostagaevskaya",
-    "19430918": "Taman",
-    "19430927": "Kerch-2",
-    "19431004": "Kerch-2",
-    "19431008": "Bagerovo",
-    "19440101": "Karpovka",
-    "19440201": "Karpovka",
-    "19440301": "Karpovka",
-    "19440401": "Marinovka",
-    "19440501": "Karpovka",
-    "19440601": "Zhutovo",
-    "19440701": "Zhutovo",
-    "19440801": "Skvorin",
-    "19440901": "Novo Sergievskiy",
-    "19441001": "Sekretov",
-    "19441101": "Novo Sergievskiy",
-    "19441201": "Novo Sergievskiy",
-    "19450101": "ef_Koln-Butzweilerhof",
-    "19450201": "ef_Dusseldorf-Lohausen",
-    "19450301": "ef_Heesch",
-    "19450401": "ef_LeCulot",
-    "19450501": "ef_Chievres"
-  },
-  "skins": [
-    {
-      "skinName": "II_StG2",
-      "planeType": "ju87d3",
-      "startDate": "19400801",
-      "endDate": "19450601",
-      "squadId": 20122002,
-      "country": "Germany",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-  ],
-  "squadHistory": {
-    "squadHistoryEntries": [
-      {
-        "date": "19440201",
-        "squadName": "10.(Pz)/SG3",
-        "armedServiceName": "Luftwaffe",
-        "skill": 55
-      },
-      {
-        "date": "19450107",
-        "squadName": "3.(Pz)/SG9",
-        "armedServiceName": "Luftwaffe",
-        "skill": 45
-      }
-    ]
-  },
-  "serviceId": 20101,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19400101",
-        "endDate": "19450601",
-        "weightedRoles": [
-          {
-            "role": "ROLE_DIVE_BOMB",
-            "weight": 100
-          }
-        ]
-      }
-    ]
-  },
-  "squadronSpecializedRoles": {
-    "squadronSpecializedRolePeriods": []
-  },
-  "nightMissionOdds": {
-    "nightMissionPeriods": [
-      {
-        "startDate": "19400101",
-        "endDate": "19450601",
-        "nightMissionOdds": 10
-      }
-    ]
-  },
-  "conversionPeriods": [],
-  "callsigns": {
-    "19410801": "RAVEN"
-  }
+	"country": "GERMANY",
+	"squadronId": 20122002,
+	"name": "II./St.G.2",
+	"fileName": "II_St_G_2.json",
+	"skill": 60,
+	"planeAssignments": [
+		{
+			"archType": "ju87",
+			"squadronIntroduction": "19410801",
+			"squadronWithdrawal": "19450601"
+		}
+	],
+	"airfields": {
+		"19411001": "Vjazma",
+		"19411020": "Zenino",
+		"19411110": "Zenino",
+		"19411120": "Kholm",
+		"19411215": "Gzhatsk",
+		"19420110": "Vjazma",
+		"19420301": "Kletskaya",
+		"19420601": "Popovicheskaya",
+		"19420624": "Gostagaevskaya",
+		"19420709": "Kievskoe",
+		"19420721": "Kievskoe",
+		"19420801": "Zryansky",
+		"19420906": "Kalach",
+		"19421011": "Zety",
+		"19421123": "Skvorin",
+		"19421223": "Skvorin",
+		"19430120": "Zryansky",
+		"19430301": "Gostagaevskaya",
+		"19430330": "Gostagaevskaya",
+		"19430418": "Gostagaevskaya",
+		"19430918": "Taman",
+		"19430927": "Kerch-2",
+		"19431004": "Kerch-2",
+		"19431008": "Bagerovo",
+		"19440101": "Karpovka",
+		"19440201": "Karpovka",
+		"19440301": "Karpovka",
+		"19440401": "Marinovka",
+		"19440501": "Karpovka",
+		"19440601": "Zhutovo",
+		"19440701": "Zhutovo",
+		"19440801": "Skvorin",
+		"19440901": "Novo Sergievskiy",
+		"19441001": "Sekretov",
+		"19441101": "Novo Sergievskiy",
+		"19441201": "Novo Sergievskiy",
+		"19450101": "ef_Koln-Butzweilerhof",
+		"19450201": "ef_Dusseldorf-Lohausen",
+		"19450301": "ef_Heesch",
+		"19450401": "ef_LeCulot",
+		"19450501": "ef_Chievres"
+	},
+	"skins": [
+		{
+			"skinName": "II_StG2",
+			"planeType": "ju87d3",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20122002,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false
+		}
+	],
+	"squadHistory": {
+		"squadHistoryEntries": [
+			{
+				"date": "19431018",
+				"squadName": "I./SG2",
+				"armedServiceName": "Luftwaffe",
+				"skill": 45
+			}
+		]
+	},
+	"serviceId": 20101,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19400101",
+				"endDate": "19431001",
+				"weightedRoles": [
+					{
+						"role": "ROLE_DIVE_BOMB",
+						"weight": 100
+					}
+				]
+			},
+			{
+				"startDate": "19431001",
+				"endDate": "19450601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_DIVE_BOMB",
+						"weight": 65
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 35
+					}
+				]
+			}
+		]
+	},
+	"squadronSpecializedRoles": {
+		"squadronSpecializedRolePeriods": []
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+			{
+				"startDate": "19400101",
+				"endDate": "19450601",
+				"nightMissionOdds": 10
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"callsigns": {
+		"19410801": "RAVEN"
+	}
 }

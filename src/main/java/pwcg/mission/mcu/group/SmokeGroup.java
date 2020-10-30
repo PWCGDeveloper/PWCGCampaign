@@ -132,12 +132,12 @@ public class SmokeGroup
 
     private void setTimers()
     {
-        smokeActivateTriggeredTimer.setTimer(1);
-        smokeInitiateTimer.setTimer(1);
-        smokeDectivateTriggeredTimer.setTimer(1);
-        smokeLoopTimer.setTimer(14);
-        smokeStartTimer.setTimer(1);
-        smokeStopTimer.setTimer(1);        
+        smokeActivateTriggeredTimer.setTime(1);
+        smokeInitiateTimer.setTime(1);
+        smokeDectivateTriggeredTimer.setTime(1);
+        smokeLoopTimer.setTime(14);
+        smokeStartTimer.setTime(1);
+        smokeStopTimer.setTime(1);        
     }
 
     private void setTargetAssociations()

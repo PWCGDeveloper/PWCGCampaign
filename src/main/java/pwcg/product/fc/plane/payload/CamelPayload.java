@@ -12,6 +12,7 @@ public class CamelPayload extends PlanePayload implements IPlanePayload
     public CamelPayload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()

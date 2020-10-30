@@ -13,6 +13,7 @@ public class P39L1Payload extends PlanePayload implements IPlanePayload
     public P39L1Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()

@@ -28,10 +28,6 @@ public interface IVirtualWaypoint
 
     VirtualWaypointCheckZone getVwpCheckZone();
 
-    VirtualWaypointStartNextVwp getVwpNextVwpStart();
-
-    VirtualWaypointDeactivateNextVwp getVwpNextVwpDeactivate();
-
     void setVwpTriggerObject(int planeIndex);
 
     PlaneMcu getVwpFlightLeader();
@@ -40,7 +36,5 @@ public interface IVirtualWaypoint
 
     void addEscort(IFlightInformation vwpEscortFlightInformation) throws PWCGException;
 
-    VirtualWaypointUpstreamKill getVwpUpstreamKill();
-
-    VirtualWaypointDeletePlanes getVwpDeletePlanes();
+    boolean isShouldLinkToAttack();
 }

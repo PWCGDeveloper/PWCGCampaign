@@ -12,6 +12,7 @@ public class Ju52Payload extends PlanePayload
     public Ju52Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 3;
     }
 
     protected void initialize()

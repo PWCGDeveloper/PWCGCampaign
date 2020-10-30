@@ -13,6 +13,7 @@ public class He111H6Payload extends PlanePayload
     public He111H6Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 13;
     }
 
     protected void initialize()
@@ -32,6 +33,7 @@ public class He111H6Payload extends PlanePayload
         setAvailablePayload(10, "11001", PayloadElement.SC1800_X1, PayloadElement.SC1000_X1);
 		setAvailablePayload(11, "100001", PayloadElement.SC2500_X1);
 		setAvailablePayload(12, "101001", PayloadElement.SC2500_X1, PayloadElement.SC1000_X1);
+        setAvailablePayload(13, "1", PayloadElement.EMPTY);
 	}
 
     @Override

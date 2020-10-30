@@ -14,6 +14,7 @@ public class Yak1S69Payload extends PlanePayload implements IPlanePayload
     public Yak1S69Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()

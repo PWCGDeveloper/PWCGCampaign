@@ -7,6 +7,7 @@ import java.util.List;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.escort.VirtualEscortFlightInformationBuilder;
@@ -30,7 +31,11 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
     public void buildVirtualWaypoints() throws PWCGException    
     {   
         generateVirtualWaypoints(); 
-        linkVirtualWaypointToMissionBegin();    
+        linkVirtualWaypointToMissionBegin();
+        if (FlightTypes.isFlightWithTargetArea(flight.getFlightType()))
+        {
+            VirtualWaypointAttackFlightResolver.resolveForAttackFlight(flight, this);
+        }
     }   
 
     @Override

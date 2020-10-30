@@ -11,6 +11,7 @@ public class AlbatrosD5Payload extends PlanePayload implements IPlanePayload
     public AlbatrosD5Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()

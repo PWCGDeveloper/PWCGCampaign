@@ -14,6 +14,7 @@ public class Fw190D9Payload extends PlanePayload implements IPlanePayload
     public Fw190D9Payload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()

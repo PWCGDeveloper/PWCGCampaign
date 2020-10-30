@@ -111,7 +111,22 @@ public enum FlightTypes
         
         return false;
     }
-    
+
+    public static boolean isFlightWithTargetArea(FlightTypes flightType)
+    {
+        if (isBombingFlight(flightType))
+        {
+            return true;
+        }
+        
+        if (flightType == FlightTypes.PARATROOP_DROP ||
+            flightType == FlightTypes.CARGO_DROP)            
+        {
+            return true;
+        }
+        
+        return false;
+    }
 
     public static AttackAreaType getAttackAreaTypeByFlightyType(FlightTypes flightType)
     {

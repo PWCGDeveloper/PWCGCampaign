@@ -9,11 +9,11 @@ import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuWaypoint;
-import pwcg.mission.mcu.group.AirGroundAttackMcuSequence;
+import pwcg.mission.mcu.group.IAirGroundAttackMcuSequence;
 
 public class MissionPointAttackSet extends MissionPointSetMultipleWaypointSet implements IMissionPointSet
 {
-    private AirGroundAttackMcuSequence attackSequence;
+    private IAirGroundAttackMcuSequence attackSequence;
     private boolean linkToNextTarget = true;
     private MissionPointSetType missionPointSetType;
     
@@ -55,7 +55,10 @@ public class MissionPointAttackSet extends MissionPointSetMultipleWaypointSet im
     public void finalizeMissionPointSet(PlaneMcu plane) throws PWCGException
     {
         super.finalizeMissionPointSet(plane);
-        attackSequence.finalize(plane);
+        attackSequence.setAttackToTriggerOnPlane(plane.getLinkTrId());
+        
+        McuWaypoint linkToAttack = super.getLastWaypointBefore();
+        attackSequence.setLinkToAttack(linkToAttack);        
         
         McuWaypoint firstWaypointAfter = super.getFirstWaypointAfter();
         attackSequence.setLinkToNextTarget(firstWaypointAfter.getIndex());        
@@ -80,7 +83,7 @@ public class MissionPointAttackSet extends MissionPointSetMultipleWaypointSet im
         return linkToNextTarget;
     }
 
-    public void setAttackSequence(AirGroundAttackMcuSequence attackSequence)
+    public void setAttackSequence(IAirGroundAttackMcuSequence attackSequence)
     {
         this.attackSequence = attackSequence;
     }
@@ -101,7 +104,7 @@ public class MissionPointAttackSet extends MissionPointSetMultipleWaypointSet im
         return missionPointSetType;
     }
 
-    public AirGroundAttackMcuSequence getAttackSequence()
+    public IAirGroundAttackMcuSequence getAttackSequence()
     {
         return attackSequence;
     }

@@ -68,7 +68,7 @@ public class MissionBeginUnit
 
     public void setStartTime(int time)
     {
-        missionBeginTimer.setTimer(time);
+        missionBeginTimer.setTime(time);
     }
 
     public int getStartTimeindex()

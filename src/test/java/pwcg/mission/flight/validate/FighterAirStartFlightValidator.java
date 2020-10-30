@@ -36,7 +36,7 @@ public class FighterAirStartFlightValidator
         {
             if (prevWaypoint != null)
             {
-                boolean isNextWaypointLinked = IndexLinkValidator.isIndexInTargetList(waypoint.getIndex(), prevWaypoint.getTargets());
+                boolean isNextWaypointLinked = IndexLinkValidator.isIndexInTargetList(prevWaypoint.getTargets(), waypoint.getIndex());
                 assert(isNextWaypointLinked);
             }
             
@@ -74,7 +74,7 @@ public class FighterAirStartFlightValidator
         MissionPointFlightBeginAirStart airStartMissionPointSet = (MissionPointFlightBeginAirStart)flight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_BEGIN_AIR);
         int airStartEntryIndex = airStartMissionPointSet.getEntryPoint();
 
-        boolean isActivateLinked = IndexLinkValidator.isIndexInTargetList(airStartEntryIndex, activationTimer.getTargets());
+        boolean isActivateLinked = IndexLinkValidator.isIndexInTargetList(activationTimer.getTargets(), airStartEntryIndex);
         assert(isActivateLinked);
     }
 }

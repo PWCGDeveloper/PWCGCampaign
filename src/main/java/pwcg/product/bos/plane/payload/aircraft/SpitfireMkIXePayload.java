@@ -13,6 +13,7 @@ public class SpitfireMkIXePayload extends PlanePayload implements IPlanePayload
     public SpitfireMkIXePayload(PlaneType planeType)
     {
         super(planeType);
+        noOrdnancePayloadElement = 0;
     }
 
     protected void initialize()

@@ -41,7 +41,7 @@ public class BombingAirStartFlightValidator
             {
                 if (prevWaypoint.getWaypointType() != WaypointType.TARGET_FINAL_WAYPOINT)
                 {
-                    boolean isNextWaypointLinked = IndexLinkValidator.isIndexInTargetList(waypoint.getIndex(), prevWaypoint.getTargets());
+                    boolean isNextWaypointLinked = IndexLinkValidator.isIndexInTargetList(prevWaypoint.getTargets(), waypoint.getIndex());
                     assert(isNextWaypointLinked);
                 }
             }
@@ -104,7 +104,7 @@ public class BombingAirStartFlightValidator
         MissionPointFlightBeginAirStart airStartMissionPointSet = (MissionPointFlightBeginAirStart)flight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_BEGIN_AIR);
         int airStartEntryIndex = airStartMissionPointSet.getEntryPoint();
 
-        boolean isActivateLinked = IndexLinkValidator.isIndexInTargetList(airStartEntryIndex, missionBeginTimer.getTargets());
+        boolean isActivateLinked = IndexLinkValidator.isIndexInTargetList(missionBeginTimer.getTargets(), airStartEntryIndex);
         assert(isActivateLinked);
     }
 }
