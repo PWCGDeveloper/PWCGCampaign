@@ -25,7 +25,7 @@ public interface IWaypointPackage
     
     List<BaseFlightMcu> getAllFlightPoints();
     
-    BaseFlightMcu getAttackFlightPoint();
+    void setAttackToTriggerOnPlane(int index) throws PWCGException;
 
     MissionPoint getMissionPointByAction(WaypointAction action) throws PWCGException;
 
