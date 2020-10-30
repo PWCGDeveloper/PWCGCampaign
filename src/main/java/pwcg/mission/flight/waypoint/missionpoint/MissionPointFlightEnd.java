@@ -15,7 +15,7 @@ import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuLanding;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class MissionPointFlightEnd extends MissionPointSetSingleWaypointSet implements IMissionPointSet
+public class MissionPointFlightEnd extends MissionPointSetSingleWaypointSet implements IMissionPointSet, IMissionPointSetLanding
 {
     private IFlight flight;
 
@@ -83,6 +83,12 @@ public class MissionPointFlightEnd extends MissionPointSetSingleWaypointSet impl
         super.finalizeMissionPointSet(plane);
         createTargetAssociations();
         createobjectAssociations(plane);
+    }
+    
+    @Override
+    public void setLandOnPlane(int planeIndex)
+    {
+        landingMcu.setObject(planeIndex);
     }
 
     private void createApproach() throws PWCGException

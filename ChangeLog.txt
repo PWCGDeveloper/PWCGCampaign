@@ -1,6 +1,16 @@
 
 ​At the PWCG web site
 
+11.4.1
+AI bombers bomb
+AI flights land
+Fixed AI adjustment
+Added new skin assignments for FC (thanks TheDude and imanuthep)
+
+11.4.0
+No more disappearing planes
+- Simplicity refactor
+
 11.3.0
 Restructured PWCG directories such that all user generated files are under "User" subdirectory
 - Includes campaign files, coop user records, audio, and user configuration choices

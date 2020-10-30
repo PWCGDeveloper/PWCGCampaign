@@ -34,8 +34,9 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
         linkVirtualWaypointToMissionBegin();
         if (FlightTypes.isFlightWithTargetArea(flight.getFlightType()))
         {
-            VirtualWaypointAttackFlightResolver.resolveForAttackFlight(flight, this);
+            VirtualWaypointFlightResolver.resolveForAttackFlight(flight, this);
         }
+        VirtualWaypointFlightResolver.resolveLanding(flight, this);
     }   
 
     @Override

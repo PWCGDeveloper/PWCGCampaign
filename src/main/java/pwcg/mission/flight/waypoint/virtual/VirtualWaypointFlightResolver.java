@@ -5,7 +5,7 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.mcu.group.virtual.IVirtualWaypoint;
 
-public class VirtualWaypointAttackFlightResolver
+public class VirtualWaypointFlightResolver
 {
 
     public static void resolveForAttackFlight(IFlight flight, VirtualWaypointPackage vwpPackage) throws PWCGException
@@ -35,5 +35,13 @@ public class VirtualWaypointAttackFlightResolver
         {
             plane.noOrdnance();
         }
+    }
+
+    public static void resolveLanding(IFlight flight, VirtualWaypointPackage vwpPackage) throws PWCGException
+    {
+        for (IVirtualWaypoint virtualWaypoint : vwpPackage.getVirtualWaypoints())
+        {
+            flight.getWaypointPackage().setLandingToTriggerOnPlane(virtualWaypoint.getVwpPlanes().getLeadActivatePlane().getLinkTrId());
+        }        
     }
 }

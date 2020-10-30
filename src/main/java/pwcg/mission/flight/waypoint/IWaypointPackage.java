@@ -46,4 +46,6 @@ public interface IWaypointPackage
     void clearMissionPointSet();
 
     void addObjectToAllMissionPoints(PlaneMcu planeMcu);
+
+    void setLandingToTriggerOnPlane(int planeIndex) throws PWCGException;
 }

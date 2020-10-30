@@ -10,7 +10,87 @@
             "country": "BRITAIN",
             "category": "Configured",
             "definedInGame": false
-        },			
+        },
+        "Dolphin_RFC19_R_Lt. L. H. 'Hec' Ray": {
+            "skinName": "Dolphin_RFC19_R_Lt. L. H. 'Hec' Ray",
+            "planeType": "sopdolphin",
+            "startDate": "19170801",
+            "endDate": "19181201",
+            "squadId": 302019,
+            "country": "BRITAIN",
+            "category": "Configured",
+            "definedInGame": false
+        },
+        "Dolphin_RFC19_A_Capt. R. A. Del'Haye": {
+            "skinName": "Dolphin_RFC19_A_Capt. R. A. Del'Haye",
+            "planeType": "sopdolphin",
+            "startDate": "19170801",
+            "endDate": "19181201",
+            "squadId": 302019,
+            "country": "BRITAIN",
+            "category": "Configured",
+            "definedInGame": false
+        },
+        "Dolphin_RFC19_B_Capt. J. D. DePencier": {
+            "skinName": "Dolphin_RFC19_B_Capt. J. D. DePencier",
+            "planeType": "sopdolphin",
+            "startDate": "19170801",
+            "endDate": "19181201",
+            "squadId": 302019,
+            "country": "BRITAIN",
+            "category": "Configured",
+            "definedInGame": false
+        },
+        "Dolphin_RFC19_D_Lt. N. W. Hustings": {
+            "skinName": "Dolphin_RFC19_D_Lt. N. W. Hustings",
+            "planeType": "sopdolphin",
+            "startDate": "19170801",
+            "endDate": "19181201",
+            "squadId": 302019,
+            "country": "BRITAIN",
+            "category": "Configured",
+            "definedInGame": false
+        },
+        "Dolphin_RFC19_E_Lt. C. M. Moore": {
+            "skinName": "Dolphin_RFC19_E_Lt. C. M. Moore",
+            "planeType": "sopdolphin",
+            "startDate": "19170801",
+            "endDate": "19181201",
+            "squadId": 302019,
+            "country": "BRITAIN",
+            "category": "Configured",
+            "definedInGame": false
+        },
+        "Dolphin_RFC19_J_Lt. J. A. Aldridge": {
+            "skinName": "Dolphin_RFC19_J_Lt. J. A. Aldridge",
+            "planeType": "sopdolphin",
+            "startDate": "19170801",
+            "endDate": "19181201",
+            "squadId": 302019,
+            "country": "BRITAIN",
+            "category": "Configured",
+            "definedInGame": false
+        },
+        "Dolphin_RFC19_N_Capt. P. Huskinson": {
+            "skinName": "Dolphin_RFC19_N_Capt. P. Huskinson",
+            "planeType": "sopdolphin",
+            "startDate": "19170801",
+            "endDate": "19181201",
+            "squadId": 302019,
+            "country": "BRITAIN",
+            "category": "Configured",
+            "definedInGame": false
+        },
+        "Dolphin_RFC19_S_Lt. A. B. Fairclough-A. W. Blake": {
+            "skinName": "Dolphin_RFC19_S_Lt. A. B. Fairclough-A. W. Blake",
+            "planeType": "sopdolphin",
+            "startDate": "19170801",
+            "endDate": "19181201",
+            "squadId": 302019,
+            "country": "BRITAIN",
+            "category": "Configured",
+            "definedInGame": false
+        },		
         "Dolphin_RAF79_BANNERMAN_C3879": {
             "skinName": "Dolphin_RAF79_BANNERMAN_C3879",
             "planeType": "sopdolphin",
