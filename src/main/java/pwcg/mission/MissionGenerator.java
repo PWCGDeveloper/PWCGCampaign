@@ -20,9 +20,7 @@ public class MissionGenerator
     public Mission makeMission(MissionHumanParticipants participatingPlayers) throws PWCGException 
     {
         MissionProfile missionProfile = generateProfile(participatingPlayers);
-        
-        List<FlightTypes> playerFlightTypes = Arrays.asList(FlightTypes.OFFENSIVE);
-        //List<FlightTypes> playerFlightTypes = PlayerFlightTypeBuilder.finalizePlayerFlightTypes(campaign, participatingPlayers, missionProfile);
+        List<FlightTypes> playerFlightTypes = PlayerFlightTypeBuilder.finalizePlayerFlightTypes(campaign, participatingPlayers, missionProfile);
         Mission mission = buildMission(participatingPlayers, playerFlightTypes, missionProfile);
         return mission;
     }
