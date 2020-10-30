@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.IProductSpecificConfiguration;
+import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -67,21 +69,21 @@ public class PatrolFrontWaypointFactory
         int patrolDistanceBase = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.PatrolDistanceBaseKey) * 1000;
         patrolDistanceBase = patrolDistanceBase * 2;
         int patrolDistanceRandom = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.PatrolDistanceRandomKey) * 1000;
+        int patrolDistance = patrolDistanceBase + RandomNumberGenerator.getRandom(patrolDistanceRandom);
 
-        int depthOfPenetrationMax = 3000;
+        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        int depthOfPenetrationMax = productSpecific.getMaxDepthOfPenetrationPatrol();
         int depthOfPenetration = RandomNumberGenerator.getRandom(depthOfPenetrationMax);
-        depthOfPenetration += 500;
-        depthOfPenetration *= -1;
+        depthOfPenetration -= 1000;
                 
         PathAlongFrontData pathAlongFrontData = new PathAlongFrontData();
         pathAlongFrontData.setMission(flight.getMission());
         pathAlongFrontData.setDate(campaign.getDate());
         pathAlongFrontData.setOffsetTowardsEnemy(depthOfPenetration);
-        pathAlongFrontData.setPathDistance(patrolDistanceBase / 2);
-        pathAlongFrontData.setRandomDistanceMax(patrolDistanceRandom / 2);
+        pathAlongFrontData.setPathDistance(patrolDistance / 2);
         pathAlongFrontData.setTargetGeneralLocation(ingressPosition);
         pathAlongFrontData.setReturnAlongRoute(true);
-        pathAlongFrontData.setSide(flight.getSquadron().determineSquadronCountry(campaign.getDate()).getSide().getOppositeSide());
+        pathAlongFrontData.setSide(flight.getSquadron().determineSide());
         
         return pathAlongFrontData;
     }

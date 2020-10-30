@@ -5,5 +5,5 @@ import pwcg.core.location.Coordinate;
 
 public interface IMissionCenterBuilder
 {
-    Coordinate findMissionCenter() throws PWCGException;
+    Coordinate findMissionCenter(int missionBoxRadius) throws PWCGException;
 }

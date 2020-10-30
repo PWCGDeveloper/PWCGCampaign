@@ -1,42 +1,38 @@
 package pwcg.mission.flight.waypoint.patterns;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.ListIterator;
 
+import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
+import pwcg.campaign.context.MapArea;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.MathUtils;
-import pwcg.core.utils.RandomNumberGenerator;
 
 public class PathAlongFront
 {
-    private List<Coordinate> coordinatesForPath = new ArrayList<>();
     private FrontLinesForMap frontLinesForMap;
     private PathAlongFrontData pathAlongFrontData;
-    private int currentPointIndex;
-    private boolean goNorth;
-    private double angleTowardsOtherSidesLines;
-    private double distanceOtherSidesLines;
+    private boolean incrementFrontIndex;
+    private List<Coordinate> coordinatesForPath = new ArrayList<>();
+    private Side frontLineSide;
     
     public List<Coordinate> createPathAlongFront(PathAlongFrontData pathAlongFrontData) throws PWCGException  
     {
         this.pathAlongFrontData = pathAlongFrontData;
         
-        int randomDistance = RandomNumberGenerator.getRandom(pathAlongFrontData.getRandomDistanceMax());
-        int pathDistance = pathAlongFrontData.getPathDistance() + randomDistance;
+        int pathDistance = pathAlongFrontData.getPathDistance();
         
         FrontLinePoint startPoint = initializePathing(pathAlongFrontData);
-        determineAngleTowardsOtherSidesLines(startPoint);
-        determineDistanceToOtherSidesLines(startPoint);
-        determineGoNorth();
-        createOutboundPathAlongFront(pathDistance, startPoint);
-        offsetOutboundPathAlongFront();
+        determineFrontPointMovementDirection();
+        createPathAlongFront(pathDistance, startPoint);
+        offsetPathAlongFront();
         createReturnPathAlongFront();
         
         return coordinatesForPath;
@@ -44,77 +40,77 @@ public class PathAlongFront
 
     private FrontLinePoint initializePathing(PathAlongFrontData pathAlongFrontData) throws PWCGException
     {
+        frontLineSide = pathAlongFrontData.getSide().getOppositeSide();
         frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(pathAlongFrontData.getDate());
-        currentPointIndex = frontLinesForMap.findIndexForClosestPosition(pathAlongFrontData.getTargetGeneralLocation(), pathAlongFrontData.getSide());
-        FrontLinePoint startPoint = frontLinesForMap.findAllFrontLinesForSide(pathAlongFrontData.getSide()).get(currentPointIndex);
+        FrontLinePoint startPoint = frontLinesForMap.findClosestFrontPositionForSide(pathAlongFrontData.getTargetGeneralLocation(), frontLineSide);
         coordinatesForPath.add(startPoint.getPosition());
         return startPoint;
     }
     
-    private void determineAngleTowardsOtherSidesLines(FrontLinePoint startPoint) throws PWCGException
+    private void offsetPathAlongFront() throws PWCGException
     {
-        Side oppositeSide = pathAlongFrontData.getSide().getOppositeSide();
-        int closestToStartPointIndex = frontLinesForMap.findIndexForClosestPosition(startPoint.getPosition(), oppositeSide);
-        FrontLinePoint closestToStartPoint = frontLinesForMap.findAllFrontLinesForSide(oppositeSide).get(closestToStartPointIndex);
-
-        angleTowardsOtherSidesLines = MathUtils.calcAngle(startPoint.getPosition(), closestToStartPoint.getPosition());
-    }
-    
-    private void determineDistanceToOtherSidesLines(FrontLinePoint startPoint) throws PWCGException
-    {
-        Side oppositeSide = pathAlongFrontData.getSide().getOppositeSide();
-        int closestToStartPointIndex = frontLinesForMap.findIndexForClosestPosition(startPoint.getPosition(), oppositeSide);
-        FrontLinePoint closestToStartPoint = frontLinesForMap.findAllFrontLinesForSide(oppositeSide).get(closestToStartPointIndex);
-
-        distanceOtherSidesLines = MathUtils.calcDist(startPoint.getPosition(), closestToStartPoint.getPosition());
-    }
-
-    private void createOutboundPathAlongFront(int pathDistance, FrontLinePoint startPoint) throws PWCGException
-    {
-        determineNextFrontPosition(startPoint, pathDistance);
-    }
-    
-    
-    private void offsetOutboundPathAlongFront() throws PWCGException
-    {
+        double offsetAngle = determineAngleTowardsOtherSidesLines();
         List<Coordinate> offsetCoordinatesForPath = new ArrayList<>();
         for (Coordinate pathPosition : coordinatesForPath)
         {
-            Coordinate offsetPathPosition = MathUtils.calcNextCoord(pathPosition, angleTowardsOtherSidesLines, pathAlongFrontData.getOffsetTowardsEnemy());
+            Coordinate offsetPathPosition = MathUtils.calcNextCoord(pathPosition, offsetAngle, pathAlongFrontData.getOffsetTowardsEnemy());
             offsetCoordinatesForPath.add(offsetPathPosition);
         }
         
         coordinatesForPath = offsetCoordinatesForPath;
     }
+
+    private double determineAngleTowardsOtherSidesLines() throws PWCGException
+    {
+        double cumulativeAngle = 0.0;
+        for (Coordinate pathCoordinate : coordinatesForPath)
+        {
+            Side friendlySide = frontLineSide.getOppositeSide();
+            FrontLinePoint closestFriendlyPoint = frontLinesForMap.findClosestFrontPositionForSide(pathCoordinate, friendlySide);
+
+            double angleTowardsOtherSidesLines = MathUtils.calcAngle(closestFriendlyPoint.getPosition(), pathCoordinate);
+            cumulativeAngle += angleTowardsOtherSidesLines;
+        }
+        
+        double offsetAngle = cumulativeAngle / coordinatesForPath.size();
+        return offsetAngle;
+    }
     
     private void createReturnPathAlongFront() throws PWCGException
     {
-        List<Coordinate> returnPathPositions = new ArrayList<>();
         if (pathAlongFrontData.isReturnAlongRoute())
         {
-            double distanceToReturn = distanceOtherSidesLines + (pathAlongFrontData.getOffsetTowardsEnemy() * -1);
-            ListIterator<Coordinate> iter = coordinatesForPath.listIterator(coordinatesForPath.size());
-            while (iter.hasPrevious()) 
+            Side friendlySide = frontLineSide.getOppositeSide();
+
+            List<Coordinate> coordinatesForPathReversed = new ArrayList<>(coordinatesForPath);
+            Collections.reverse(coordinatesForPathReversed);
+
+            for (Coordinate coordinateToReverse : coordinatesForPathReversed) 
             {
-                Coordinate pathPosition = iter.previous();
-                Coordinate returnPathPosition = MathUtils.calcNextCoord(pathPosition, angleTowardsOtherSidesLines, distanceToReturn);
-                returnPathPositions.add(returnPathPosition);
+                FrontLinePoint closestFriendlyPoint = frontLinesForMap.findClosestFrontPositionForSide(coordinateToReverse, friendlySide);
+                coordinatesForPath.add(closestFriendlyPoint.getPosition());
             }
         }
-        
-        coordinatesForPath.addAll(returnPathPositions);
     }
 
-    private void determineNextFrontPosition(FrontLinePoint startPoint,  double remainingPathDistance) throws PWCGException  
+    private void createPathAlongFront(int pathDistance, FrontLinePoint startPoint) throws PWCGException
     {
-        if (isEdgeOffMap(currentPointIndex))
+        int currentPointIndex = frontLinesForMap.findIndexForClosestPosition(pathAlongFrontData.getTargetGeneralLocation(), frontLineSide);
+        determineNextFrontPosition(currentPointIndex, pathDistance);
+    }
+
+    private void determineNextFrontPosition(int currentPointIndex,  double remainingPathDistance) throws PWCGException  
+    {
+        List<FrontLinePoint> frontLines = frontLinesForMap.getFrontLines(frontLineSide);
+        FrontLinePoint frontPoint = frontLines.get(currentPointIndex);
+        
+        if (isEdgeOffMap(frontPoint.getPosition()))
         {
             return;
         }
         
-        List<FrontLinePoint> frontLines = frontLinesForMap.getFrontLines(pathAlongFrontData.getSide());  
-        
-        double minDistanceToNextWP = 5000;
+        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        double minDistanceToNextWP = productSpecific.getMinimumDistanceBetweenPatrolPoints();
         double actualDistanceToNextWP = 0.0;
         
         int nextFrontIndex = currentPointIndex;
@@ -123,25 +119,25 @@ public class PathAlongFront
         {
             nextFrontIndex = getNextFrontIndex(nextFrontIndex);
             nextFrontLinePoint = frontLines.get(nextFrontIndex);
-            actualDistanceToNextWP = MathUtils.calcDist(nextFrontLinePoint.getPosition(), startPoint.getPosition());
+            actualDistanceToNextWP = MathUtils.calcDist(nextFrontLinePoint.getPosition(), frontPoint.getPosition());
             
-            if (isEdgeOffMap(nextFrontIndex))
+            if (isEdgeOffMap(nextFrontLinePoint.getPosition()))
             {
                 break;
             }
         }
 
-        currentPointIndex = nextFrontIndex;
+        nextFrontLinePoint = frontLines.get(nextFrontIndex);
         coordinatesForPath.add(nextFrontLinePoint.getPosition());
 
-        double distanceForThisLeg = MathUtils.calcDist(nextFrontLinePoint.getPosition(), startPoint.getPosition());
+        double distanceForThisLeg = MathUtils.calcDist(nextFrontLinePoint.getPosition(), frontPoint.getPosition());
         remainingPathDistance -= distanceForThisLeg;
         
         if (remainingPathDistance > 0)
         {
-            if (!isEdgeOffMap(currentPointIndex))
+            if (!isEdgeOffMap(nextFrontLinePoint.getPosition()))
             {
-                determineNextFrontPosition(nextFrontLinePoint, remainingPathDistance);
+                determineNextFrontPosition(nextFrontIndex, remainingPathDistance);
             }
         }
         else
@@ -150,56 +146,44 @@ public class PathAlongFront
         }
     }
 
-    protected boolean determineGoNorth() throws PWCGException 
+    private void determineFrontPointMovementDirection() throws PWCGException 
     {
-        final int closestToEdge = 10;
-        goNorth = true;
-        
-        if (currentPointIndex < closestToEdge)
+        int closeToTargetIndex = frontLinesForMap.findIndexForClosestPosition(pathAlongFrontData.getTargetGeneralLocation(), frontLineSide);
+        int closeToMissionCenterIndex = frontLinesForMap.findIndexForClosestPosition(pathAlongFrontData.getMission().getMissionBorders().getCenter(), frontLineSide);
+        if (closeToTargetIndex > closeToMissionCenterIndex)
         {
-            goNorth = false;
+            incrementFrontIndex = false;
         }
         else
         {
-            CoordinateBox missionBox = pathAlongFrontData.getMission().getMissionBorders();
-            double distanceToNorth = MathUtils.calcDist(pathAlongFrontData.getTargetGeneralLocation(), missionBox.getNorth());
-            double distanceToSouth = MathUtils.calcDist(pathAlongFrontData.getTargetGeneralLocation(), missionBox.getSouth());
-            if (distanceToNorth < distanceToSouth)
-            {
-                goNorth = false;
-            }
+            incrementFrontIndex = true;
         }
-        
-        return goNorth;
     }
 
-    protected boolean isEdgeOffMap(int frontIndex) throws PWCGException
+    private boolean isEdgeOffMap(Coordinate frontPosition) throws PWCGException
     {
-        if (goNorth && frontIndex < 4)
+        MapArea usableMapArea = PWCGContext.getInstance().getCurrentMap().getUsableMapArea();
+        if (!usableMapArea.isInMapArea(frontPosition))
         {
             return true;
         }
-        
-        List<FrontLinePoint> frontLines = frontLinesForMap.getFrontLines(pathAlongFrontData.getSide());
-        if ((!goNorth) && (frontIndex > (frontLines.size() - 4)))
+        else
         {
-            return true;
+            return false;
         }
-        
-        return false;
     }
     
 
-    protected int getNextFrontIndex(int nextFrontIndex) throws PWCGException
+    private int getNextFrontIndex(int nextFrontIndex) throws PWCGException
     {
         int frontIndex = nextFrontIndex;
-        if (goNorth)
+        if (incrementFrontIndex)
         {
-            --frontIndex;
+            ++frontIndex;
         }
         else
         {
-            ++frontIndex;
+            --frontIndex;
         }
         return frontIndex;
     }

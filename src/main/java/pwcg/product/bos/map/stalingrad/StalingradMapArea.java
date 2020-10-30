@@ -1,8 +1,8 @@
 package pwcg.product.bos.map.stalingrad;
 
-import pwcg.campaign.context.FrontParameters;
+import pwcg.campaign.context.MapArea;
 
-public class StalingradFrontParameters extends FrontParameters
+public class StalingradMapArea extends MapArea
 {
     static private double STALINGRAD_XMIN = 0;
     static private double STALINGRAD_XMAX = 230400;
@@ -10,7 +10,7 @@ public class StalingradFrontParameters extends FrontParameters
     static private double STALINGRAD_ZMIN = 0;
     static private double STALINGRAD_ZMAX = 358400;
     
-    public StalingradFrontParameters ()
+    public StalingradMapArea ()
     {
         xMin = STALINGRAD_XMIN;
         xMax = STALINGRAD_XMAX;

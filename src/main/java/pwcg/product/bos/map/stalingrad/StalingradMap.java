@@ -51,7 +51,9 @@ public class StalingradMap extends PWCGMap
             this.mapWeather = new StalingradMapWeather();
         }
         
-        frontParameters = new StalingradFrontParameters();
+        mapArea = new StalingradMapArea();
+        usableMapArea = new StalingradMapUsableArea();
+
         buildArmedServicesActiveForMap();
         
         super.configure();

@@ -48,7 +48,8 @@ public class KubanMap extends PWCGMap
             this.mapWeather = new KubanMapWeather();
         }
 
-        frontParameters = new KubanFrontParameters();
+        mapArea = new KubanMapArea();
+        usableMapArea = new KubanMapUsableArea();
 
         buildArmedServicesActiveForMap();
         

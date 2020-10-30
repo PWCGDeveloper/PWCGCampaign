@@ -53,7 +53,8 @@ public abstract class PWCGMap
     protected GroupManager groupManager = null; 
     protected ShippingLaneManager shippingLaneManager = null;
     protected TargetPreferenceManager targetPreferenceManager = null;
-    protected FrontParameters frontParameters = null;
+    protected MapArea mapArea = null;
+    protected MapArea usableMapArea = null;
     protected MissionOptions missionOptions = null;
     protected MapWeather mapWeather = null;
     protected String mapName = "";
@@ -187,9 +188,14 @@ public abstract class PWCGMap
         this.groupManager = groupManager;
     }
 
-    public FrontParameters getFrontParameters()
+    public MapArea getMapArea()
     {
-        return frontParameters;
+        return mapArea;
+    }
+        
+    public MapArea getUsableMapArea()
+    {
+        return usableMapArea;
     }
         
     public FrontDatesForMap getFrontDatesForMap()
@@ -214,7 +220,7 @@ public abstract class PWCGMap
 
     public Coordinate getMapCenter()
     {
-        return frontParameters.getCenter();
+        return mapArea.getCenter();
     }
 
     public TargetPreferenceManager getTargetPreferenceManager()

@@ -46,7 +46,8 @@ public class MoscowMap extends PWCGMap
             mapWeather = new MoscowMapWeather();
         }
 
-        frontParameters = new MoscowFrontParameters();
+        mapArea = new MoscowMapArea();
+        usableMapArea = new MoscowMapUsableArea();
         buildArmedServicesActiveForMap();
         super.configure();
     }

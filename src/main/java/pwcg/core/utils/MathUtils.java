@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import pwcg.campaign.context.FrontParameters;
+import pwcg.campaign.context.MapArea;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -75,6 +75,19 @@ public class MathUtils
         return degrees;
     }
 
+    public static Coordinate calcNextCoordWithMapAdjustments(final Coordinate coord1, double angle, double distance) throws PWCGException 
+    {
+        Coordinate unadjustedCartesianCoord = calcNextCoord(coord1, angle, distance);
+        MapArea usableMapArea = PWCGContext.getInstance().getCurrentMap().getUsableMapArea();
+        double cartesianX = adjustXForMap(unadjustedCartesianCoord.getXPos(), usableMapArea);
+        double cartesianZ = adjustZForMap(unadjustedCartesianCoord.getZPos(), usableMapArea);
+
+        Coordinate cartesianCoord = new Coordinate();
+        cartesianCoord.setXPos(cartesianX); // X moves from 0 to max (south to north)
+        cartesianCoord.setZPos(cartesianZ); // Z moves from 0 to max (west to east)
+        return cartesianCoord;
+    }
+
 	public static Coordinate calcNextCoord(final Coordinate coord1, double angle, double distance) throws PWCGException 
 	{
 		if (distance == 0.0)
@@ -85,48 +98,16 @@ public class MathUtils
 		
 		if (distance < 0.0)
 		{
-			distance = distance * -1.0;
-			angle += 180.0;
-			if (angle > 360.0)
-			{
-				angle -= 360.0;
-			}
+			distance = Math.abs(distance);
+			angle += adjustAngle(angle, 180);
 		}
 		
 		// All of this work is to convert from cartesian angle to polar angle
-		double polarX = 0.0;
-		double polarZ = 0.0;
-		
 		double xPolarDiff = distance * StrictMath.cos(Math.toRadians(angle));
-		double zPolarDiff = distance * StrictMath.sin(Math.toRadians(angle));
+		double zPolarDiff = distance * StrictMath.sin(Math.toRadians(angle));		
 		
-		polarX = coord1.getXPos() + xPolarDiff;
-		polarZ = coord1.getZPos() + zPolarDiff;
-		
-		// limit checks
-		FrontParameters frontParameters = PWCGContext.getInstance().getCurrentMap().getFrontParameters();
-
-		if (polarX < 0.0)
-		{
-			polarX = 1000.0;
-		}
-		if (polarX > frontParameters.getxMax())
-		{
-			polarX = frontParameters.getxMax() - FrontParameters.MIN_DISTANCE_FROM_BORDER;
-		}
-        else if (polarX < frontParameters.getxMin())
-        {
-            polarX = frontParameters.getxMin() + FrontParameters.MIN_DISTANCE_FROM_BORDER;
-        }
-
-		if (polarZ < 0.0)
-		{
-			polarZ = 1000.0;
-		}
-		if (polarZ > frontParameters.getzMax())
-		{
-			polarZ = frontParameters.getzMax() - FrontParameters.MIN_DISTANCE_FROM_BORDER;
-		}
+        double polarX = coord1.getXPos() + xPolarDiff;
+		double polarZ = coord1.getZPos() + zPolarDiff;
 		
 		// Get the angle
 		Coordinate polarCoord = new Coordinate();
@@ -135,58 +116,47 @@ public class MathUtils
 		double polarAngle = calcAngle(coord1, polarCoord);
 		
 		// Now calculate the new coordinates in cartesian terms
-		
 		double zDiff = distance * StrictMath.sin(Math.toRadians(polarAngle));  // This is reversed because x is n/s
 		double xDiff = distance * StrictMath.cos(Math.toRadians(polarAngle));  // This is reversed because z is e/w
 		
-		// more limit checks
-		double cartesianX = coord1.getXPos() + xDiff;
-		double cartesianZ = coord1.getZPos() + zDiff;
-		if (cartesianX < 0.0)
-		{
-			cartesianX = FrontParameters.MIN_DISTANCE_FROM_BORDER;
-		}
-		if (cartesianX > frontParameters.getxMax())
-		{
-			cartesianX = frontParameters.getxMax() - FrontParameters.MIN_DISTANCE_FROM_BORDER;
-		}
-		
-		if (cartesianZ < 0.0)
-		{
-			cartesianZ = FrontParameters.MIN_DISTANCE_FROM_BORDER;
-		}
-		if (cartesianZ > frontParameters.getzMax())
-		{
-			cartesianZ = frontParameters.getzMax() - FrontParameters.MIN_DISTANCE_FROM_BORDER;
-		}
-		
+        MapArea mapArea = PWCGContext.getInstance().getCurrentMap().getMapArea();
+
+		double cartesianX = coord1.getXPos() + xDiff;		
+        cartesianX = adjustXForMap(cartesianX, mapArea);
+
+        double cartesianZ = coord1.getZPos() + zDiff;
+        cartesianZ = adjustZForMap(cartesianZ, mapArea);
 
 		Coordinate cartesianCoord = new Coordinate();
 		cartesianCoord.setXPos(cartesianX); // X moves from 0 to max (south to north)
-		cartesianCoord.setZPos(cartesianZ); // Y moves from 0 to max (west to east)
-
-		//double cartesianAngle = calcAngle(coord1, cartesianCoord);
-		
-		//double newDist = calcDist (coord1, cartesianCoord);
-	    
+		cartesianCoord.setZPos(cartesianZ); // Z moves from 0 to max (west to east)
 		return cartesianCoord;
 	}
 
-    public static Coordinate calcNextCoordDogleg(final Coordinate coord1, double angle, double distanceZ, double distanceX) throws PWCGException 
+    private static double adjustXForMap(double xValueInMeters, MapArea mapArea)
     {
-        Coordinate newCoordinate = coord1.copy();
-        if (distanceZ != 0.0)
+        if (xValueInMeters > mapArea.getxMax())
         {
-            double angleZ = MathUtils.adjustAngle(angle, 90.0);
-            newCoordinate = calcNextCoord(newCoordinate, angleZ, distanceZ);
+            xValueInMeters = mapArea.getxMax() - 100;
         }
-        
-        if (distanceX != 0.0)
+        else if (xValueInMeters < mapArea.getxMin())
         {
-            newCoordinate = calcNextCoord(newCoordinate, angle, distanceX);
+            xValueInMeters = mapArea.getxMin() + 100;
         }
+        return xValueInMeters;
+    }
 
-        return newCoordinate;
+    private static double adjustZForMap(double zValueInMeters, MapArea mapArea)
+    {
+        if (zValueInMeters > mapArea.getzMax())
+        {
+            zValueInMeters = mapArea.getzMax() - 100;
+        }
+        else if (zValueInMeters < mapArea.getzMin())
+        {
+            zValueInMeters = mapArea.getzMin() + 100;
+        }
+        return zValueInMeters;
     }
 	
 	public static String numberToBinaryForm(int number)

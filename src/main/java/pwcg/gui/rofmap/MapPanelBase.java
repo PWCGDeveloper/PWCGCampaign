@@ -17,7 +17,7 @@ import java.util.List;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
-import pwcg.campaign.context.FrontParameters;
+import pwcg.campaign.context.MapArea;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -103,10 +103,10 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
             setSize(mapSize);
             setLayout(null);
 
-            FrontParameters frontParameters = PWCGContext.getInstance().getCurrentMap().getFrontParameters();
+            MapArea mapArea = PWCGContext.getInstance().getCurrentMap().getMapArea();
 
-            ratioWidth = mapSize.width / frontParameters.getzMax();
-            ratioHeight = mapSize.height / frontParameters.getxMax();
+            ratioWidth = mapSize.width / mapArea.getzMax();
+            ratioHeight = mapSize.height / mapArea.getxMax();
 
             MapScroll mapScroll = parent.getMapScroll();
             mapScroll.setScrollRange();

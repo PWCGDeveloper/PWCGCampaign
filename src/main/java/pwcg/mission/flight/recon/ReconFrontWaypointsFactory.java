@@ -63,6 +63,7 @@ public class ReconFrontWaypointsFactory
         int patrolDistanceBase = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.PatrolDistanceBaseKey) * 1000;
         patrolDistanceBase = patrolDistanceBase * 2;
         int patrolDistanceRandom = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.PatrolDistanceRandomKey) * 1000;
+        int patrolDistance = patrolDistanceBase + RandomNumberGenerator.getRandom(patrolDistanceRandom);
 
         int depthOfPenetrationMax = 3000;
         int depthOfPenetration = RandomNumberGenerator.getRandom(depthOfPenetrationMax);
@@ -73,8 +74,7 @@ public class ReconFrontWaypointsFactory
         pathAlongFrontData.setMission(flight.getMission());
         pathAlongFrontData.setDate(flight.getCampaign().getDate());
         pathAlongFrontData.setOffsetTowardsEnemy(depthOfPenetration);
-        pathAlongFrontData.setPathDistance(patrolDistanceBase);
-        pathAlongFrontData.setRandomDistanceMax(patrolDistanceRandom);
+        pathAlongFrontData.setPathDistance(patrolDistance);
         pathAlongFrontData.setTargetGeneralLocation(startPosition);
         pathAlongFrontData.setReturnAlongRoute(false);
         pathAlongFrontData.setSide(flight.getSquadron().determineSquadronCountry(flight.getCampaign().getDate()).getSide().getOppositeSide());

@@ -2,11 +2,8 @@ package pwcg.campaign.context;
 
 import pwcg.core.location.Coordinate;
 
-public abstract class FrontParameters
+public abstract class MapArea
 {    
-    static public double MIN_DISTANCE_FROM_BORDER = 5000.0;
-    
-
     protected double xMin = 0.0;
     protected double xMax = 0.0;
     protected double zMin = 0.0;
@@ -57,5 +54,27 @@ public abstract class FrontParameters
         double xCenter = xMin + xMax / 2;
         double zCenter = zMin + zMax / 2;
         return new Coordinate(xCenter, 0.0, zCenter);
+    }
+    
+    public boolean isInMapArea(Coordinate position)
+    {
+        if (position.getXPos() < xMin)
+        {
+            return false;
+        }
+        if (position.getXPos() > xMax)
+        {
+            return false;
+        }
+        if (position.getZPos() < zMin)
+        {
+            return false;
+        }
+        if (position.getZPos() > zMax)
+        {
+            return false;
+        }
+        
+        return true;
     }
 }

@@ -64,6 +64,7 @@ public class ContactPatrolWaypointFactory
         
         int patrolDistanceBase = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.PatrolDistanceBaseKey) * 1000;
         int patrolDistanceRandom = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.PatrolDistanceRandomKey) * 1000;
+        int patrolDistance = patrolDistanceBase + RandomNumberGenerator.getRandom(patrolDistanceRandom);
 
         int depthOfPenetrationMax = 6000;
         int depthOfPenetration = RandomNumberGenerator.getRandom(depthOfPenetrationMax);
@@ -73,8 +74,7 @@ public class ContactPatrolWaypointFactory
         pathAlongFrontData.setMission(flight.getMission());
         pathAlongFrontData.setDate(campaign.getDate());
         pathAlongFrontData.setOffsetTowardsEnemy(depthOfPenetration);
-        pathAlongFrontData.setPathDistance(patrolDistanceBase);
-        pathAlongFrontData.setRandomDistanceMax(patrolDistanceRandom);
+        pathAlongFrontData.setPathDistance(patrolDistance);
         pathAlongFrontData.setTargetGeneralLocation(ingressWaypoint.getPosition());
         pathAlongFrontData.setReturnAlongRoute(false);
         pathAlongFrontData.setSide(flight.getSquadron().determineSquadronCountry(campaign.getDate()).getSide());

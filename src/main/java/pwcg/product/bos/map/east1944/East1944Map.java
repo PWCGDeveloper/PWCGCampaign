@@ -45,7 +45,9 @@ public class East1944Map extends PWCGMap
             this.mapWeather = new East1944MapWeather();
         }
         
-        frontParameters = new East1944FrontParameters();
+        mapArea = new East1944MapArea();
+        usableMapArea = new East1944MapUsableArea();
+        
         buildArmedServicesActiveForMap();
         
         super.configure();

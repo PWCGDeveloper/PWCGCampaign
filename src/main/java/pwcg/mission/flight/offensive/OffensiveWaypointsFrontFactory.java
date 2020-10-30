@@ -68,21 +68,21 @@ public class OffensiveWaypointsFrontFactory
         int patrolDistanceBase = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.PatrolDistanceBaseKey) * 1000;
         patrolDistanceBase = patrolDistanceBase * 2;
         int patrolDistanceRandom = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.PatrolDistanceRandomKey) * 1000;
+        int patrolDistance = patrolDistanceBase + RandomNumberGenerator.getRandom(patrolDistanceRandom);
 
         IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        int depthOfPenetration = productSpecific.getVerySmallMissionRadius();
-        depthOfPenetration += RandomNumberGenerator.getRandom(productSpecific.getVerySmallMissionRadius());
-        depthOfPenetration *= -1;
+        int depthOfPenetrationMin = productSpecific.getMinDepthOfPenetrationOffensive();
+        int depthOfPenetrationMax = productSpecific.getMaxDepthOfPenetrationOffensive();
+        int depthOfPenetration = depthOfPenetrationMin + RandomNumberGenerator.getRandom(depthOfPenetrationMax - depthOfPenetrationMin);
 
         PathAlongFrontData pathAlongFrontData = new PathAlongFrontData();
         pathAlongFrontData.setMission(flight.getMission());
         pathAlongFrontData.setDate(campaign.getDate());
         pathAlongFrontData.setOffsetTowardsEnemy(depthOfPenetration);
-        pathAlongFrontData.setPathDistance(patrolDistanceBase / 2);
-        pathAlongFrontData.setRandomDistanceMax(patrolDistanceRandom / 2);
+        pathAlongFrontData.setPathDistance(patrolDistance / 2);
         pathAlongFrontData.setTargetGeneralLocation(startPosition);
-        pathAlongFrontData.setReturnAlongRoute(true);
-        pathAlongFrontData.setSide(flight.getSquadron().determineSquadronCountry(campaign.getDate()).getSide().getOppositeSide());
+        pathAlongFrontData.setReturnAlongRoute(false);
+        pathAlongFrontData.setSide(flight.getSquadron().determineSide());
 
         return pathAlongFrontData;
     }

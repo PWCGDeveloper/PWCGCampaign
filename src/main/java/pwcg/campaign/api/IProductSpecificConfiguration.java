@@ -53,4 +53,8 @@ public interface IProductSpecificConfiguration
     int getVwpSeparationDistance();
     int getVwpProximityToBoxDistance();
     int getVwpProximityToFrontDistance();
+    int getMaxDepthOfPenetrationPatrol();
+    int getMaxDepthOfPenetrationOffensive();
+    int getMinDepthOfPenetrationOffensive();
+    double getMinimumDistanceBetweenPatrolPoints();
 }

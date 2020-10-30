@@ -13,7 +13,6 @@ public class PathAlongFrontData
     private Date date;
     private Side side = Side.ALLIED;
     private int pathDistance = 15000;
-    private int randomDistanceMax = 15000;
     private int offsetTowardsEnemy = 0;
     private boolean returnAlongRoute = false;
     
@@ -65,16 +64,6 @@ public class PathAlongFrontData
     public void setPathDistance(int pathDistance)
     {
         this.pathDistance = pathDistance;
-    }
-
-    public int getRandomDistanceMax()
-    {
-        return randomDistanceMax;
-    }
-
-    public void setRandomDistanceMax(int randomDistanceMax)
-    {
-        this.randomDistanceMax = randomDistanceMax;
     }
 
     public int getOffsetTowardsEnemy()

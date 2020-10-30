@@ -7,6 +7,7 @@ import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
+import pwcg.campaign.context.MapArea;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
@@ -25,10 +26,14 @@ public class MissionCenterBuilderMulti implements IMissionCenterBuilder
         this.participatingPlayers = participatingPlayers;
     }
     
-    public Coordinate findMissionCenter() throws PWCGException
+    public Coordinate findMissionCenter(int missionBoxRadius) throws PWCGException
     {
         Coordinate averagePlayerLocation = findAveragePlayerLocation();
         Coordinate missionCenterCoordinate = findMissionCenter(averagePlayerLocation);
+                
+        MapArea usableMapArea = PWCGContext.getInstance().getCurrentMap().getUsableMapArea();
+        missionCenterCoordinate = MissionCenterAdjuster.keepWithinMap(missionCenterCoordinate.copy(), missionBoxRadius, usableMapArea);
+
         return missionCenterCoordinate;
     }
 

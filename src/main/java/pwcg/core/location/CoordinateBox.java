@@ -3,8 +3,6 @@ package pwcg.core.location;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.context.FrontParameters;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -326,29 +324,6 @@ public class CoordinateBox
     {
         double width = ne.getZPos() - sw.getZPos();
         return width;
-    }
-
-    public void keepWithinMap() throws PWCGException
-    {
-        FrontParameters frontParameters = PWCGContext.getInstance().getCurrentMap().getFrontParameters();
-
-
-        if (sw.getXPos() < frontParameters.getxMin())
-        {
-            sw.setXPos(frontParameters.getxMin());
-        }
-        if (sw.getZPos() < frontParameters.getzMin())
-        {
-            sw.setZPos(frontParameters.getzMin());
-        }
-        if (ne.getXPos() > frontParameters.getxMax())
-        {
-            ne.setXPos(frontParameters.getxMax());
-        }
-        if (ne.getZPos() > frontParameters.getzMax())
-        {
-            ne.setZPos(frontParameters.getzMax());
-        }
     }
     
     public double getAreaRadius() throws PWCGException

@@ -38,7 +38,9 @@ public class BodenplatteMap extends PWCGMap
         this.missionOptions = new BodenplatteMissionOptions();
         this.mapWeather = new BodenplatteMapWeather();
         
-        frontParameters = new BodenplatteFrontParameters();
+        mapArea = new BodenplatteMapArea();
+        usableMapArea = new BodenplatteMapUsableArea();
+
         buildArmedServicesActiveForMap();
         
         super.configure();

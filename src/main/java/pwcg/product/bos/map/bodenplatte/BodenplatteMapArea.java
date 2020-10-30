@@ -1,8 +1,8 @@
 package pwcg.product.bos.map.bodenplatte;
 
-import pwcg.campaign.context.FrontParameters;
+import pwcg.campaign.context.MapArea;
 
-public class BodenplatteFrontParameters extends FrontParameters
+public class BodenplatteMapArea extends MapArea
 {
     static private double BODENPLATTE_XMIN = 0;
     static private double BODENPLATTE_XMAX = 384000;
@@ -10,7 +10,7 @@ public class BodenplatteFrontParameters extends FrontParameters
     static private double BODENPLATTE_ZMIN = 0;
     static private double BODENPLATTE_ZMAX = 460800;
     
-    public BodenplatteFrontParameters ()
+    public BodenplatteMapArea ()
     {
         xMin = BODENPLATTE_XMIN;
         xMax = BODENPLATTE_XMAX;

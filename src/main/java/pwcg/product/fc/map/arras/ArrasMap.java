@@ -55,7 +55,9 @@ public class ArrasMap extends PWCGMap
             this.mapWeather = new ArrasMapWeather();
         }
         
-        frontParameters = new ArrasFrontParameters();
+        mapArea = new ArrasMapArea();
+        usableMapArea = new ArrasMapUsableArea();
+
         buildArmedServicesActiveForMap();
         
         super.configure();

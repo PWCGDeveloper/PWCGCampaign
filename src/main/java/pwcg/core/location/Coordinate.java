@@ -166,9 +166,9 @@ public class Coordinate implements Cloneable
 			if (other instanceof Coordinate)
 			{
 				Coordinate otherCoord = (Coordinate)other;
-				if (this.xPos == otherCoord.xPos && 
-					this.yPos == otherCoord.yPos && 
-					this.zPos == otherCoord.zPos)
+				if ((Math.abs(this.xPos - otherCoord.xPos) < 0.1) && 
+					(Math.abs(this.yPos - otherCoord.yPos) < 0.1) && 
+					(Math.abs(this.zPos - otherCoord.zPos) < 0.1))
 				{
 					isEqual = true;
 				}

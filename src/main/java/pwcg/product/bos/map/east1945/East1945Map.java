@@ -36,7 +36,9 @@ public class East1945Map extends PWCGMap
         this.missionOptions = new East1945MissionOptions();
         this.mapWeather = new East1945MapWeather();
         
-        frontParameters = new East1945FrontParameters();
+        mapArea = new East1945MapArea();
+        usableMapArea = new East1945MapUsableArea();
+
         buildArmedServicesActiveForMap();
         
         super.configure();

@@ -43,6 +43,10 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     private static final int VWP_SEPARATION_DISTANCE = 8000;
     private static final int VWP_PROXIMITY_TO_BOX_DISTANCE = 3000;
     private static final int VWP_PROXIMITY_TO_FRONT_DISTANCE = 8000;
+    private static final int MAX_DEPTH_OF_PENETRATION_PATROL = 3000;
+    private static final int MIN_DEPTH_OF_PENETRATION_OFFENSIVE = 3000;
+    private static final int MAX_DEPTH_OF_PENETRATION_OFFENSIVE = 10000;
+    private static final int MIN_DISTANCE_BETWEEN_PATROL_POINTS = 5000;
 
     @Override
     public boolean useWaypointGoal()
@@ -475,5 +479,29 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     public int getVwpProximityToFrontDistance()
     {
         return VWP_PROXIMITY_TO_FRONT_DISTANCE;
+    }    
+
+    @Override
+    public int getMaxDepthOfPenetrationPatrol()
+    {
+        return MAX_DEPTH_OF_PENETRATION_PATROL;
+    }
+
+    @Override
+    public int getMaxDepthOfPenetrationOffensive()
+    {
+        return MAX_DEPTH_OF_PENETRATION_OFFENSIVE;
+    }
+
+    @Override
+    public int getMinDepthOfPenetrationOffensive()
+    {
+        return MIN_DEPTH_OF_PENETRATION_OFFENSIVE;
+    }    
+
+    @Override
+    public double getMinimumDistanceBetweenPatrolPoints()
+    {
+        return MIN_DISTANCE_BETWEEN_PATROL_POINTS;
     }    
 }
