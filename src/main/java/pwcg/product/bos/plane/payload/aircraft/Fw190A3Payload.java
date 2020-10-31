@@ -23,6 +23,7 @@ public class Fw190A3Payload extends PlanePayload implements IPlanePayload
         setAvailablePayload(2, "101", PayloadElement.SC250_X1);
         setAvailablePayload(3, "1001", PayloadElement.SC500_X1);
         setAvailablePayload(4, "10001", PayloadElement.MGFF_WING_GUNS);
+        setAvailablePayload(5, "100001", PayloadElement.MGFF_WING_GUNS_EXTRA_AMMO);
 	}
 
     @Override

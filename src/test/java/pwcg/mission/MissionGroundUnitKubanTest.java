@@ -48,7 +48,7 @@ public class MissionGroundUnitKubanTest
         Side side = Side.ALLIED;
         List<TargetType> availableGroundUnitTypes = mission.getMissionGroundUnitBuilder().getAvailableGroundUnitTargetTypesForMissionForSide(side);
         
-        List<TargetType> expectedGroundUnitTypes = Arrays.asList(TargetType.TARGET_SHIPPING, TargetType.TARGET_INFANTRY, TargetType.TARGET_TRANSPORT, TargetType.TARGET_TRAIN);
+        List<TargetType> expectedGroundUnitTypes = Arrays.asList(TargetType.TARGET_SHIPPING, TargetType.TARGET_ASSAULT, TargetType.TARGET_TRANSPORT, TargetType.TARGET_TRAIN);
         boolean allExist = validateExpectedGroundUnits(side , availableGroundUnitTypes, expectedGroundUnitTypes);
         assert(allExist);
         
@@ -62,7 +62,7 @@ public class MissionGroundUnitKubanTest
         Side side = Side.AXIS;
         List<TargetType> availableGroundUnitTypes = mission.getMissionGroundUnitBuilder().getAvailableGroundUnitTargetTypesForMissionForSide(side);
         
-        List<TargetType> expectedGroundUnitTypes = Arrays.asList(TargetType.TARGET_SHIPPING, TargetType.TARGET_INFANTRY, TargetType.TARGET_TRANSPORT, TargetType.TARGET_TRAIN, TargetType.TARGET_DRIFTER);
+        List<TargetType> expectedGroundUnitTypes = Arrays.asList(TargetType.TARGET_SHIPPING, TargetType.TARGET_ASSAULT, TargetType.TARGET_TRANSPORT, TargetType.TARGET_TRAIN, TargetType.TARGET_DRIFTER);
         boolean allExist = validateExpectedGroundUnits(side , availableGroundUnitTypes, expectedGroundUnitTypes);
         assert(allExist);
         

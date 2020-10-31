@@ -30,8 +30,7 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
     private TargetDefinition createTargetDefinitionFromGroundUnit (IFlightInformation flightInformation, IGroundUnitCollection groundUnitCollection) throws PWCGException
     {
         List<IGroundUnit> enemyGroundUnits = groundUnitCollection.getInterestingGroundUnitsForSide(flightInformation.getSquadron().determineEnemySide());
-        int index = RandomNumberGenerator.getRandom(enemyGroundUnits.size());
-        IGroundUnit selectedGroundUnit = enemyGroundUnits.get(index);
+        IGroundUnit selectedGroundUnit = findTarget(enemyGroundUnits);
         
         TargetDefinition targetDefinition = new TargetDefinition(
                 selectedGroundUnit.getTargetType(), selectedGroundUnit.getPosition().copy(),
@@ -39,4 +38,45 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
         
         return targetDefinition;
     }
+
+    private IGroundUnit findTarget(List<IGroundUnit> enemyGroundUnits)
+    {
+        IGroundUnit selectedGroundUnit = null;
+        if (preferArmor())
+        {
+            selectedGroundUnit = findArmoredTarget(enemyGroundUnits);
+        }
+        
+        if (selectedGroundUnit == null)
+        {
+            int index = RandomNumberGenerator.getRandom(enemyGroundUnits.size());
+            selectedGroundUnit = enemyGroundUnits.get(index);
+        }
+        
+        return selectedGroundUnit;
+    }
+
+    private boolean preferArmor()
+    {
+        int preferArmorTarget = RandomNumberGenerator.getRandom(100);
+        if (preferArmorTarget < 50)
+        {
+            return true;
+        }
+        return false;
+    }
+    
+
+    private IGroundUnit findArmoredTarget(List<IGroundUnit> enemyGroundUnits)
+    {
+        for (IGroundUnit enemyGroundUnit : enemyGroundUnits)
+        {
+            if (enemyGroundUnit.getTargetType() == TargetType.TARGET_ARMOR)
+            {
+                return enemyGroundUnit;
+            }
+        }
+        return null;
+    }
+
 }

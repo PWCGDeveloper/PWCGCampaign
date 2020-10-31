@@ -40,7 +40,7 @@ public class AAABridgeBuilder
 	            double distance = 100 + RandomNumberGenerator.getRandom(400);
 	            Coordinate aaaPosition = MathUtils.calcNextCoord(bridge.getPosition(), angle, distance);
 	            
-	            TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_INFANTRY, aaaPosition, bridge.getCountry(campaign.getDate()));
+	            TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, aaaPosition, bridge.getCountry(campaign.getDate()));
 	            AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
 	            IGroundUnitCollection aaaArty = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM);
 	            bridgeAAA.add(aaaArty);

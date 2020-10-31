@@ -46,7 +46,7 @@ public class AAAUnitBuilderTest
     @Test
     public void createAAAArtilleryBatteryTest () throws PWCGException 
     {
-        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_INFANTRY, new Coordinate (100000, 0, 100000), country);
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, new Coordinate (100000, 0, 100000), country);
         AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
         IGroundUnitCollection groundUnitGroup = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM);
         assert (groundUnitGroup.getGroundUnits().size() == 1);
@@ -69,7 +69,7 @@ public class AAAUnitBuilderTest
     @Test
     public void createAAAMGBatteryTest () throws PWCGException 
     {
-        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_INFANTRY, new Coordinate (100000, 0, 100000), country);
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, new Coordinate (100000, 0, 100000), country);
         AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
         IGroundUnitCollection groundUnitGroup = groundUnitFactory.createAAAMGBattery(GroundUnitSize.GROUND_UNIT_SIZE_HIGH);
         assert (groundUnitGroup.getGroundUnits().size() == 1);
@@ -93,7 +93,7 @@ public class AAAUnitBuilderTest
     @Test
     public void createAAAArtilleryBatteryWithSearchLightTest () throws PWCGException 
     {
-        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_INFANTRY, new Coordinate (100000, 0, 100000), country);
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, new Coordinate (100000, 0, 100000), country);
         AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
         IGroundUnitCollection groundUnitGroup = groundUnitFactory.createAAAArtilleryBatteryWithSearchLight(GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM);
         assert(groundUnitGroup.getGroundUnits().size() == 2);

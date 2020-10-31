@@ -1,9 +1,12 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
 import pwcg.campaign.plane.PlaneType;
+import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.RoleCategory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
@@ -28,6 +31,9 @@ public class Fw190A8Payload extends PlanePayload implements IPlanePayload
         setAvailablePayload(4, "1001", PayloadElement.BR21_X2);
         setAvailablePayload(16, "11", PayloadElement.MK108_30);
         setAvailablePayload(32, "100001", PayloadElement.FW190F8);
+        setAvailablePayload(34, "100001", PayloadElement.FW190F8_SC70_X4);
+        setAvailablePayload(36, "100001", PayloadElement.FW190F8_PB1_X12);
+        setAvailablePayload(37, "100001", PayloadElement.FW190F8_PB1M8_X12);
 	}
     
     @Override
@@ -39,7 +45,7 @@ public class Fw190A8Payload extends PlanePayload implements IPlanePayload
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight)
+    public int createWeaponsPayload(IFlight flight) throws PWCGException
     {
         selectedPrimaryPayloadId = 0;
         if (flight.getFlightType() == FlightTypes.GROUND_ATTACK)
@@ -58,7 +64,7 @@ public class Fw190A8Payload extends PlanePayload implements IPlanePayload
         return selectedPrimaryPayloadId;
     }    
 
-    protected void createStandardPayload()
+    private void createStandardPayload()
     {
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 20)
@@ -71,7 +77,41 @@ public class Fw190A8Payload extends PlanePayload implements IPlanePayload
         }
     }
 
-	protected void selectGroundAttackPayload(IFlight flight)
+    private void selectGroundAttackPayload(IFlight flight) throws PWCGException
+    {
+        Role squadronPrimaryRole = flight.getSquadron().determineSquadronPrimaryRole(flight.getCampaign().getDate());
+        if (squadronPrimaryRole.isRoleCategory(RoleCategory.ATTACK))
+        {
+            selectFW190F8GroundAttackPayload(flight);
+        }
+        else
+        {
+            selectFW190A8GroundAttackPayload(flight);
+        }
+    }
+
+    private void selectFW190F8GroundAttackPayload(IFlight flight)
+    {
+        selectedPrimaryPayloadId = 32;
+        if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
+        {
+            selectedPrimaryPayloadId = 37;
+        }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
+        {
+            selectedPrimaryPayloadId = 36;
+        }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
+        {
+            selectedPrimaryPayloadId = 34;
+        }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
+        {
+            selectedPrimaryPayloadId = 34;
+        }
+    }
+
+    private void selectFW190A8GroundAttackPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)

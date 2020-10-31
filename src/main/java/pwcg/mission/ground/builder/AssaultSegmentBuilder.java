@@ -37,7 +37,7 @@ public class AssaultSegmentBuilder
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, 
                 "Battle Segment", 
-                TargetType.TARGET_INFANTRY,
+                TargetType.TARGET_ASSAULT,
                 Coalition.getCoalitions());
 
         this.battleSegmentUnitCollection = new GroundUnitCollection ("Assault Segment", groundUnitCollectionData);
@@ -72,7 +72,7 @@ public class AssaultSegmentBuilder
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsAttackerOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS);  
 
-        GroundUnitInformation groundUnitInformation = buildAssaultGroundUnitInformation(machineGunStartPosition, "Machine Gun");
+        GroundUnitInformation groundUnitInformation = buildAssaultGroundUnitInformation(machineGunStartPosition, "Machine Gun", TargetType.TARGET_INFANTRY);
         IGroundUnit assaultingMachineGunUnit = assaultFactory.createMachineGunUnit (groundUnitInformation);
         battleSegmentUnitCollection.addGroundUnit(assaultingMachineGunUnit);
     }
@@ -83,7 +83,7 @@ public class AssaultSegmentBuilder
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsAttackerOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 50.0);  
 
-        GroundUnitInformation groundUnitInformation = buildAssaultGroundUnitInformation(machineGunStartPosition, "Machine Gun");
+        GroundUnitInformation groundUnitInformation = buildAssaultGroundUnitInformation(machineGunStartPosition, "Machine Gun", TargetType.TARGET_INFANTRY);
         IFlight triggeringFlight = getTriggeringFlight(groundUnitInformation.getCountry().getSide());
         if (triggeringFlight != null)
         {
@@ -98,7 +98,7 @@ public class AssaultSegmentBuilder
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsAttackerOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 1000.0);  
         
-        GroundUnitInformation groundUnitInformation = buildAssaultGroundUnitInformation(tankAssaultStartPosition, "Tank");
+        GroundUnitInformation groundUnitInformation = buildAssaultGroundUnitInformation(tankAssaultStartPosition, "Tank", TargetType.TARGET_ARMOR);
         IGroundUnit assaultTankUnit = assaultFactory.createAssaultTankUnit (groundUnitInformation);
         battleSegmentUnitCollection.addGroundUnit(assaultTankUnit);
     }
@@ -109,7 +109,7 @@ public class AssaultSegmentBuilder
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsAttackerOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 3500.0);          
 
-        GroundUnitInformation groundUnitInformation = buildAssaultGroundUnitInformation(artilleryAssaultPosition, "Artillery");
+        GroundUnitInformation groundUnitInformation = buildAssaultGroundUnitInformation(artilleryAssaultPosition, "Artillery", TargetType.TARGET_ARTILLERY);
         IGroundUnit assaultArtilleryUnit = assaultFactory.createAssaultArtilleryUnit (groundUnitInformation);
         battleSegmentUnitCollection.addGroundUnit(assaultArtilleryUnit);
     }
@@ -120,7 +120,7 @@ public class AssaultSegmentBuilder
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsAttackerOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 300.0);     
 
-        GroundUnitInformation groundUnitInformation = buildAssaultGroundUnitInformation(aaaMgAssaultPosition, "AA Machine Gun");
+        GroundUnitInformation groundUnitInformation = buildAssaultGroundUnitInformation(aaaMgAssaultPosition, "AA Machine Gun", TargetType.TARGET_INFANTRY);
         IGroundUnit assaultAAMachineGunUnit = assaultFactory.createAAMachineGunUnitUnit(groundUnitInformation);
         battleSegmentUnitCollection.addGroundUnit(assaultAAMachineGunUnit);
     }
@@ -131,18 +131,18 @@ public class AssaultSegmentBuilder
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsAttackerOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 1500.0);            
 
-        GroundUnitInformation groundUnitInformation = buildAssaultGroundUnitInformation(aaaArtyAssaultPosition, "AA Machine Gun");
+        GroundUnitInformation groundUnitInformation = buildAssaultGroundUnitInformation(aaaArtyAssaultPosition, "AA Machine Gun", TargetType.TARGET_INFANTRY);
         IGroundUnit assaultAAArtilleryUnit = assaultFactory.createAAArtilleryUnitUnit(groundUnitInformation);
         battleSegmentUnitCollection.addGroundUnit(assaultAAArtilleryUnit);
     }
     
 
-    private GroundUnitInformation buildAssaultGroundUnitInformation(Coordinate unitPosition, String unitName) throws PWCGException
+    private GroundUnitInformation buildAssaultGroundUnitInformation(Coordinate unitPosition, String unitName,TargetType targetType) throws PWCGException
     {
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 mission.getCampaign(), 
                 assaultDefinition.getAssaultingCountry(),
-                TargetType.TARGET_INFANTRY, 
+                targetType, 
                 unitPosition, 
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsDefenderOrientation());
@@ -169,7 +169,7 @@ public class AssaultSegmentBuilder
 
     private void defendingMachineGun() throws PWCGException
     { 
-        GroundUnitInformation groundUnitInformation = buildDefenseGroundUnitInformation(assaultDefinition.getDefensePosition(), "Machine Gun");
+        GroundUnitInformation groundUnitInformation = buildDefenseGroundUnitInformation(assaultDefinition.getDefensePosition(), "Machine Gun", TargetType.TARGET_INFANTRY);
         AssaultGroundUnitFactory assaultFactory =  new AssaultGroundUnitFactory();
         IGroundUnit defenseMachineGunUnit = assaultFactory.createMachineGunUnit (groundUnitInformation);
         battleSegmentUnitCollection.addGroundUnit(defenseMachineGunUnit);
@@ -181,7 +181,7 @@ public class AssaultSegmentBuilder
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsDefenderOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 50.0);  
 
-        GroundUnitInformation groundUnitInformation = buildDefenseGroundUnitInformation(machineGunStartPosition, "Machine Gun");
+        GroundUnitInformation groundUnitInformation = buildDefenseGroundUnitInformation(machineGunStartPosition, "Machine Gun", TargetType.TARGET_INFANTRY);
         IFlight triggeringFlight = getTriggeringFlight(groundUnitInformation.getCountry().getSide());
         if (triggeringFlight != null)
         {
@@ -209,7 +209,7 @@ public class AssaultSegmentBuilder
                 assaultDefinition.getAssaultPosition(), 
                 assaultDefinition.getTowardsDefenderOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 1000.0);  
         
-        GroundUnitInformation groundUnitInformation = buildAssaultGroundUnitInformation(tankDefenseStartPosition, "Tank");
+        GroundUnitInformation groundUnitInformation = buildAssaultGroundUnitInformation(tankDefenseStartPosition, "Tank", TargetType.TARGET_ARMOR);
         IGroundUnit assaultTankUnit = assaultFactory.createAssaultTankUnit (groundUnitInformation);
         battleSegmentUnitCollection.addGroundUnit(assaultTankUnit);
     }
@@ -220,7 +220,7 @@ public class AssaultSegmentBuilder
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsDefenderOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 150.0);     
 
-        GroundUnitInformation groundUnitInformation = buildDefenseGroundUnitInformation(antiTankDefensePosition, "Anti Tank Gun");
+        GroundUnitInformation groundUnitInformation = buildDefenseGroundUnitInformation(antiTankDefensePosition, "Anti Tank Gun", TargetType.TARGET_INFANTRY);
         IGroundUnit defenseAntiTankUnit = assaultFactory.createAntiTankGunUnit (groundUnitInformation);
         battleSegmentUnitCollection.addGroundUnit(defenseAntiTankUnit);
     }
@@ -231,7 +231,7 @@ public class AssaultSegmentBuilder
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsDefenderOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 3000.0);     
 
-        GroundUnitInformation groundUnitInformation = buildDefenseGroundUnitInformation(artilleryDefensePosition, "Artillery");
+        GroundUnitInformation groundUnitInformation = buildDefenseGroundUnitInformation(artilleryDefensePosition, "Artillery", TargetType.TARGET_ARTILLERY);
         IGroundUnit defenseArtilleryUnit = assaultFactory.createAssaultArtilleryUnit (groundUnitInformation);
         battleSegmentUnitCollection.addGroundUnit(defenseArtilleryUnit);
     }
@@ -242,7 +242,7 @@ public class AssaultSegmentBuilder
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsDefenderOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 150.0);     
 
-        GroundUnitInformation groundUnitInformation = buildDefenseGroundUnitInformation(aaaMgDefensePosition, "Machine Gun AA");
+        GroundUnitInformation groundUnitInformation = buildDefenseGroundUnitInformation(aaaMgDefensePosition, "Machine Gun AA", TargetType.TARGET_INFANTRY);
         IGroundUnit defenseAAMachineGunUnit = assaultFactory.createAAMachineGunUnitUnit(groundUnitInformation);
         battleSegmentUnitCollection.addGroundUnit(defenseAAMachineGunUnit);
     }
@@ -253,17 +253,17 @@ public class AssaultSegmentBuilder
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsDefenderOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 1000.0);     
 
-        GroundUnitInformation groundUnitInformation = buildDefenseGroundUnitInformation(aaaArtilleryDefensePosition, "AA Artillery");
+        GroundUnitInformation groundUnitInformation = buildDefenseGroundUnitInformation(aaaArtilleryDefensePosition, "AA Artillery", TargetType.TARGET_ARTILLERY);
         IGroundUnit assaultAAArtilleryUnit = assaultFactory.createAAArtilleryUnitUnit(groundUnitInformation);
         battleSegmentUnitCollection.addGroundUnit(assaultAAArtilleryUnit);
     }
 
-    private GroundUnitInformation buildDefenseGroundUnitInformation(Coordinate unitPosition, String unitName) throws PWCGException
+    private GroundUnitInformation buildDefenseGroundUnitInformation(Coordinate unitPosition, String unitName,TargetType targetType) throws PWCGException
     {
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 mission.getCampaign(), 
                 assaultDefinition.getDefendingCountry(),
-                TargetType.TARGET_INFANTRY, 
+                targetType, 
                 unitPosition, 
                 assaultDefinition.getAssaultPosition(), 
                 assaultDefinition.getTowardsAttackerOrientation());

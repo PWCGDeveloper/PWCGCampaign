@@ -28,6 +28,8 @@ public class Bf110G2Payload extends PlanePayload
         setAvailablePayload(6, "10001", PayloadElement.SC1000_X1);
         setAvailablePayload(7, "10001", PayloadElement.SC1000_X1, PayloadElement.SC250_X2);
         setAvailablePayload(8, "10001", PayloadElement.SC1000_X1, PayloadElement.SC50_X4);
+        setAvailablePayload(9,  "1000001", PayloadElement.MG151_20_PODS);
+        setAvailablePayload(10,  "1000001", PayloadElement.MG151_20_PODS, PayloadElement.SC50_X4);
 		setAvailablePayload(11, "1000001", PayloadElement.BK37_AP_GUNPOD);
 		setAvailablePayload(12, "1000001", PayloadElement.BK37_AP_GUNPOD, PayloadElement.SC50_X4);
 		setAvailablePayload(13, "1000001", PayloadElement.BK37_HE_GUNPOD);
@@ -45,10 +47,17 @@ public class Bf110G2Payload extends PlanePayload
     public int createWeaponsPayload(IFlight flight)
     {
         createStandardPayload();
+        
         if (flight.getFlightType() == FlightTypes.GROUND_ATTACK)
         {
             selectGroundAttackPayload(flight);
         }
+        
+        if (flight.getFlightType() == FlightTypes.INTERCEPT)
+        {
+            selectedPrimaryPayloadId = 9;
+        }
+        
         return selectedPrimaryPayloadId;
     }
 
@@ -61,7 +70,7 @@ public class Bf110G2Payload extends PlanePayload
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectedPrimaryPayloadId = 1;
+            selectedPrimaryPayloadId = 11;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
@@ -69,7 +78,7 @@ public class Bf110G2Payload extends PlanePayload
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectedPrimaryPayloadId = 1;
+            selectedPrimaryPayloadId = 4;
         }
     }
     

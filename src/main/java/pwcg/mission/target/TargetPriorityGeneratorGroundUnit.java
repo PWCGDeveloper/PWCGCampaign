@@ -18,7 +18,7 @@ public class TargetPriorityGeneratorGroundUnit
         
         if (squadron.determineSquadronCountry(campaign.getDate()).getSideNoNeutral() == Side.ALLIED)
         {
-            addItemToWeightedList(targetTypesByIndex, campaign, ConfigItemKeys.AlliedTargetTypeInfantryKey, TargetType.TARGET_INFANTRY);
+            addItemToWeightedList(targetTypesByIndex, campaign, ConfigItemKeys.AlliedTargetTypeInfantryKey, TargetType.TARGET_ASSAULT);
             addItemToWeightedList(targetTypesByIndex, campaign, ConfigItemKeys.AlliedTargetTypeTransportKey, TargetType.TARGET_TRANSPORT);
             addItemToWeightedList(targetTypesByIndex, campaign, ConfigItemKeys.AlliedTargetTypeTrainKey, TargetType.TARGET_TRAIN);
             addItemToWeightedList(targetTypesByIndex, campaign, ConfigItemKeys.AlliedTargetTypeAirfieldKey, TargetType.TARGET_AIRFIELD);
@@ -27,7 +27,7 @@ public class TargetPriorityGeneratorGroundUnit
         }
         else
         {
-            addItemToWeightedList(targetTypesByIndex, campaign, ConfigItemKeys.AxisTargetTypeInfantryKey, TargetType.TARGET_INFANTRY);
+            addItemToWeightedList(targetTypesByIndex, campaign, ConfigItemKeys.AlliedTargetTypeInfantryKey, TargetType.TARGET_ASSAULT);
             addItemToWeightedList(targetTypesByIndex, campaign, ConfigItemKeys.AxisTargetTypeTransportKey, TargetType.TARGET_TRANSPORT);
             addItemToWeightedList(targetTypesByIndex, campaign, ConfigItemKeys.AxisTargetTypeTrainKey, TargetType.TARGET_TRAIN);
             addItemToWeightedList(targetTypesByIndex, campaign, ConfigItemKeys.AxisTargetTypeAirfieldKey, TargetType.TARGET_AIRFIELD);

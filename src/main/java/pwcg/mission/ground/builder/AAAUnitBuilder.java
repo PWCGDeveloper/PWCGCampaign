@@ -39,7 +39,7 @@ public class AAAUnitBuilder
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, 
                 "AA MG Battery", 
-                TargetType.TARGET_INFANTRY,
+                TargetType.TARGET_ARTILLERY,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
         IGroundUnitCollection groundUnitCollection = new GroundUnitCollection ("AAA MG Battery", groundUnitCollectionData);
@@ -70,7 +70,7 @@ public class AAAUnitBuilder
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, 
                 "AA Artillery Battery", 
-                TargetType.TARGET_INFANTRY,
+                TargetType.TARGET_ARTILLERY,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
         IGroundUnitCollection groundUnitCollection = new GroundUnitCollection ("AAA Artillery Battery", groundUnitCollectionData);
@@ -91,7 +91,7 @@ public class AAAUnitBuilder
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, 
                 "AA Artillery Battery With Search Light", 
-                TargetType.TARGET_INFANTRY,
+                TargetType.TARGET_ARTILLERY,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
         IGroundUnitCollection groundUnitCollection = new GroundUnitCollection ("AAA Search Light Battery", groundUnitCollectionData);
@@ -107,7 +107,7 @@ public class AAAUnitBuilder
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 campaign, 
                 targetDefinition.getCountry(), 
-                TargetType.TARGET_INFANTRY, 
+                TargetType.TARGET_ARTILLERY, 
                 targetDefinition.getPosition(), 
                 targetDefinition.getPosition(), 
                 Orientation.createRandomOrientation());
@@ -130,7 +130,7 @@ public class AAAUnitBuilder
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 campaign, 
                 targetDefinition.getCountry(), 
-                TargetType.TARGET_INFANTRY, 
+                TargetType.TARGET_ARTILLERY, 
                 targetDefinition.getPosition(), 
                 targetDefinition.getPosition(), 
                 Orientation.createRandomOrientation());

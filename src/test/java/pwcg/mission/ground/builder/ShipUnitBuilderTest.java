@@ -42,7 +42,7 @@ public class ShipUnitBuilderTest
     @Test
     public void createCargoShipTest () throws PWCGException 
     {
-        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_INFANTRY, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA));
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_SHIPPING, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA));
         ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(campaign, targetDefinition);
         IGroundUnitCollection groundUnitGroup = shippingFactory.createShippingUnit(VehicleClass.ShipCargo);
         assert (groundUnitGroup.getGroundUnits().size() == 1);
@@ -65,7 +65,7 @@ public class ShipUnitBuilderTest
     @Test
     public void createWarshipTest () throws PWCGException 
     {
-        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_INFANTRY, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA));
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_SHIPPING, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA));
         ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(campaign, targetDefinition);
         IGroundUnitCollection groundUnitGroup = shippingFactory.createShippingUnit(VehicleClass.ShipWarship);
         assert (groundUnitGroup.getGroundUnits().size() == 1);
@@ -88,7 +88,7 @@ public class ShipUnitBuilderTest
     @Test
     public void createSubmarineTest () throws PWCGException 
     {
-        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_INFANTRY, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA));
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_SHIPPING, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA));
         ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(campaign, targetDefinition);
         IGroundUnitCollection groundUnitGroup = shippingFactory.createShippingUnit(VehicleClass.Submarine);
         assert (groundUnitGroup.getGroundUnits().size() == 1);

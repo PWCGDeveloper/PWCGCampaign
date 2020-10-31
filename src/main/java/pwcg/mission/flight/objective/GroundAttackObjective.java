@@ -48,13 +48,21 @@ public class GroundAttackObjective
         TargetType targetType = enemyGroundUnit.getTargetType();
         
         
-        if (targetType == TargetType.TARGET_INFANTRY)
+        if (targetType == TargetType.TARGET_ASSAULT)
         {
-            objective = "Attack enemy troops" + objectiveLocation; 
+            objective = "Attack enemy armor and infantry" + objectiveLocation; 
+        }
+        else if (targetType == TargetType.TARGET_ARMOR)
+        {
+            objective = "Attack enemy armor" + objectiveLocation; 
         }
         else if (targetType == TargetType.TARGET_INFANTRY)
         {
-            objective = "Attack enemy troops" + objectiveLocation; 
+            objective = "Attack enemy infantry" + objectiveLocation; 
+        }
+        else if (targetType == TargetType.TARGET_ARTILLERY)
+        {
+            objective = "Attack enemy artillery" + objectiveLocation; 
         }
         else if (targetType == TargetType.TARGET_AIRFIELD)
         {
