@@ -96,7 +96,7 @@ public class P38J25Payload extends PlanePayload implements IPlanePayload
         }
         else
         {
-            selectedPrimaryPayloadId = 4;
+            selectedPrimaryPayloadId = 10;
         }
     }
 

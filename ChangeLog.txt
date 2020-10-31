@@ -8,8 +8,8 @@ FW190 A3 now has wing guns with extra ammo
 FW190 A5 fixed to include ordnance with U17 selection
 FW190 A5 ground attack units now use U17 as standard equipment
 Bf110 G2 now has 20mm gun pods available.   PWCG will assign this on intercept missions.
-If a battle is the target area. made flights prefer armored targets if they are available.  Payloads are responsive to this.
-
+Adjusted P38 and P47 payloads vs armored targets
+If a battle is the target area, made flights more likely to target armored targets if it is present.  Payloads are responsive to this.
 
 11.4.1
 AI bombers bomb

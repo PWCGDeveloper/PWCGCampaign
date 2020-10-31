@@ -92,7 +92,7 @@ public class P47D28Payload extends PlanePayload implements IPlanePayload
         }
         else
         {
-            selectedPrimaryPayloadId = 24;
+            selectedPrimaryPayloadId = 48;
         }
     }
 
