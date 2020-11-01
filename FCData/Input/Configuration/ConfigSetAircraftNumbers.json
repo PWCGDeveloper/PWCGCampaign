@@ -58,7 +58,7 @@
       "help": "Altitude atground attack"
     },
     "PatrolDistanceBase": {
-      "value": "10",
+      "value": "20",
       "label": "Patrol Distance Base",
       "help": "Base for maximum patrol distance (km)"
     },
