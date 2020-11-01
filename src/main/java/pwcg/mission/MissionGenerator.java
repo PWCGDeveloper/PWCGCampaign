@@ -21,6 +21,10 @@ public class MissionGenerator
     {
         MissionProfile missionProfile = generateProfile(participatingPlayers);
         List<FlightTypes> playerFlightTypes = PlayerFlightTypeBuilder.finalizePlayerFlightTypes(campaign, participatingPlayers, missionProfile);
+
+        // TODO ERASE THIS!!!!
+        playerFlightTypes = Arrays.asList(FlightTypes.CONTACT_PATROL);
+
         Mission mission = buildMission(participatingPlayers, playerFlightTypes, missionProfile);
         return mission;
     }

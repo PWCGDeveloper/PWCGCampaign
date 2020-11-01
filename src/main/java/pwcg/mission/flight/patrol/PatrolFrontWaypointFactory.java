@@ -18,6 +18,7 @@ import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointRouteSet;
 import pwcg.mission.flight.waypoint.patterns.PathAlongFront;
 import pwcg.mission.flight.waypoint.patterns.PathAlongFrontData;
+import pwcg.mission.flight.waypoint.patterns.PathAlongFrontDataBuilder;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class PatrolFrontWaypointFactory
@@ -44,14 +45,14 @@ public class PatrolFrontWaypointFactory
     }
     
     private List<McuWaypoint> createTargetWaypoints(Coordinate startPosition) throws PWCGException  
-    {   
-        List<McuWaypoint> targetWaypoints = new ArrayList<>();
+    {        
+        PathAlongFrontDataBuilder pathAlongFrontDataBuilder = new PathAlongFrontDataBuilder(flight);
+        PathAlongFrontData pathAlongFrontData = pathAlongFrontDataBuilder.buildPathAlongFrontData(startPosition, calculateDepthOfPenetration(), calculatePatrolDistance());
         
-        PathAlongFrontData pathAlongFrontData = buildPathAlongFrontData(startPosition);
         PathAlongFront pathAlongFront = new PathAlongFront();
         List<Coordinate> patrolCoordinates = pathAlongFront.createPathAlongFront(pathAlongFrontData);
-        patrolCoordinates = this.setPatrolPositionAltitude(patrolCoordinates);
-        
+ 
+        List<McuWaypoint> targetWaypoints = new ArrayList<>();
         for (Coordinate patrolCoordinate : patrolCoordinates)
         {
             McuWaypoint waypoint = createWP(patrolCoordinate.copy());
@@ -62,48 +63,32 @@ public class PatrolFrontWaypointFactory
         return targetWaypoints;
     }
 
-    private PathAlongFrontData buildPathAlongFrontData(Coordinate ingressPosition) throws PWCGException
+    private int calculatePatrolDistance() throws PWCGException
     {
         Campaign campaign = flight.getCampaign();
-        
         int patrolDistanceBase = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.PatrolDistanceBaseKey) * 1000;
-        patrolDistanceBase = patrolDistanceBase * 2;
         int patrolDistanceRandom = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.PatrolDistanceRandomKey) * 1000;
         int patrolDistance = patrolDistanceBase + RandomNumberGenerator.getRandom(patrolDistanceRandom);
+        return patrolDistance;
+    }
 
+    private int calculateDepthOfPenetration()
+    {
         IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int depthOfPenetrationMax = productSpecific.getMaxDepthOfPenetrationPatrol();
         int depthOfPenetration = RandomNumberGenerator.getRandom(depthOfPenetrationMax);
         depthOfPenetration -= 1000;
-                
-        PathAlongFrontData pathAlongFrontData = new PathAlongFrontData();
-        pathAlongFrontData.setMission(flight.getMission());
-        pathAlongFrontData.setDate(campaign.getDate());
-        pathAlongFrontData.setOffsetTowardsEnemy(depthOfPenetration);
-        pathAlongFrontData.setPathDistance(patrolDistance / 2);
-        pathAlongFrontData.setTargetGeneralLocation(ingressPosition);
-        pathAlongFrontData.setReturnAlongRoute(true);
-        pathAlongFrontData.setSide(flight.getSquadron().determineSide());
-        
-        return pathAlongFrontData;
-    }
-    
-    private List<Coordinate> setPatrolPositionAltitude(List<Coordinate> patrolCoordinates)
-    {
-        for (Coordinate patrolCoordinate : patrolCoordinates)
-        {
-            patrolCoordinate.setYPos(flight.getFlightInformation().getAltitude());
-        }
-        return patrolCoordinates;
+        return depthOfPenetration;
     }
 
-	private McuWaypoint createWP(Coordinate coord) throws PWCGException 
+	private McuWaypoint createWP(Coordinate patrolCoord) throws PWCGException 
 	{
+        patrolCoord.setYPos(flight.getFlightInformation().getAltitude());
+
 		McuWaypoint wp = WaypointFactory.createPatrolWaypointType();
 		wp.setTriggerArea(McuWaypoint.COMBAT_AREA);
-		wp.setSpeed(flight.getFlightCruisingSpeed());		
-		wp.setPosition(coord);
-
+		wp.setSpeed(flight.getFlightCruisingSpeed());			
+		wp.setPosition(patrolCoord);
 		return wp;
 	}
 }
