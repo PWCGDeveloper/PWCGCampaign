@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "artillery\\flak38\\",
   "vehicleType": "flak38",
+  "vehicleName": "Flak 38 20mm AA Gun",
   "displayName": "anti aircraft gun",
   "countries": [
     "GERMANY",

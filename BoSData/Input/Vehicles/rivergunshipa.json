@@ -2,6 +2,7 @@
   "scriptDir": "ships\\",
   "modelDir": "ships\\rivergunshipa\\",
   "vehicleType": "rivergunshipa",
+  "vehicleName": "River Gunship",
   "displayName": "river boat",
   "countries": [
     "GERMANY",

@@ -1,6 +1,7 @@
 package pwcg.aar.inmission.phase1.parse;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
 
 public class AARLogParser implements IAARLogParser 
@@ -19,7 +20,23 @@ public class AARLogParser implements IAARLogParser
     {
         AARLogReader logReader = new AARLogReader(aarLogFileMissionFile);
         AARLogLineParser logLineParser = new AARLogLineParser();
-        return logLineParser.parseLogLinesForMission(logReader.readLogFilesForMission(campaign));
+        AARLogEventData logEventData = logLineParser.parseLogLinesForMission(logReader.readLogFilesForMission(campaign));
+        
+        debugLogData(logEventData);
+        
+        return logEventData;
+    }
+
+    private void debugLogData(AARLogEventData logEventData)
+    {
+        if (TestDriver.getInstance().isEnabled())
+        {
+            if (!TestDriver.getInstance().isDebugAARLogs())
+            {
+                AAREventAnalyzer analyzer = new AAREventAnalyzer(logEventData);
+                analyzer.analyze();
+            }
+        }
     }
 }
 

@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\zis\\",
   "vehicleType": "zis5-72k",
+  "vehicleName": "ZiS-5 25mm AA Truck",
   "displayName": "truck",
   "countries": [
     "RUSSIA"

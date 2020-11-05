@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "artillery\\pak35\\",
   "vehicleType": "pak35",
+  "vehicleName": "PaK-35 37 37mm AT Gun",
   "displayName": "anti tank gun",
   "countries": [
     "GERMANY",

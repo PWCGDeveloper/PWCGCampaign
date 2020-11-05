@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\gaz\\",
   "vehicleType": "gaz-m",
+  "vehicleName": "GAZ-M Staff car",
   "displayName": "staff car",
   "countries": [
     "RUSSIA"

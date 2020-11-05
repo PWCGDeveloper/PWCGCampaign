@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\m4a3\\",
   "vehicleType": "m4a3",
+  "vehicleName": "M4-A3 Sherman",
   "displayName": "Sherman",
   "countries": [
     "USA",

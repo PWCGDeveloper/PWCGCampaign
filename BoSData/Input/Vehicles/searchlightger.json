@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "artillery\\searchlightger\\",
   "vehicleType": "searchlightger",
+  "vehicleName": "German Searchlight",
   "displayName": "search light",
   "countries": [
     "GERMANY",

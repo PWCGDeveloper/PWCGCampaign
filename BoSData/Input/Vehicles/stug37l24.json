@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\stug37l24\\",
   "vehicleType": "stug37l24",
+  "vehicleName": "Stug III 75mm L24",
   "displayName": "Stug III",
   "countries": [
     "GERMANY",

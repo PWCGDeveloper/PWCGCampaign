@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "artillery\\searchlightsu\\",
   "vehicleType": "searchlightsu",
+  "vehicleName": "Russian Searchlight",
   "displayName": "search light",
   "countries": [
     "RUSSIA"

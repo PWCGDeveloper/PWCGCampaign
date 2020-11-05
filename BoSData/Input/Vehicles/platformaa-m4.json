@@ -2,6 +2,7 @@
   "scriptDir": "trains\\",
   "modelDir": "trains\\platformaa-m4\\",
   "vehicleType": "platformaa-m4",
+  "vehicleName": "M-4 AA Car",
   "displayName": "train car",
   "countries": [
     "RUSSIA",

@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\t70\\",
   "vehicleType": "t70",
+  "vehicleName": "T70",
   "displayName": "Light Tank",
   "countries": [
     "RUSSIA"

@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\t34-76stz-41\\",
   "vehicleType": "t34-76stz-41",
+  "vehicleName": "T34 76-41",
   "displayName": "T34",
   "countries": [
     "RUSSIA"

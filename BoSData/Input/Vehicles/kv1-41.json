@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\kv1-41\\",
   "vehicleType": "kv1-41",
+  "vehicleName": "KV1-41",
   "displayName": "KV1",
   "countries": [
     "RUSSIA"

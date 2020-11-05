@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\pz38t\\",
   "vehicleType": "marderiii-h",
+  "vehicleName": "Marder III",
   "displayName": "Marder III",
   "countries": [
     "GERMANY",

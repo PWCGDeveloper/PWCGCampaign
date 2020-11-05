@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "artillery\\m2mg\\",
   "vehicleType": "m2mg",
+  "vehicleName": "M2 50 Cal MG",
   "displayName": "machine gun",
   "countries": [
     "USA",

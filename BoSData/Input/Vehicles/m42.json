@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "artillery\\m42\\",
   "vehicleType": "m42",
+  "vehicleName": "M-42 45mm AT Gun",
   "displayName": "anti tank gun",
   "countries": [
     "RUSSIA"

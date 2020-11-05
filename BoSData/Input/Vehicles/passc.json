@@ -2,6 +2,7 @@
   "scriptDir": "trains\\",
   "modelDir": "trains\\traincars\\",
   "vehicleType": "passc",
+  "vehicleName": "Caboose Car",
   "displayName": "train car",
   "countries": [
     "GERMANY",

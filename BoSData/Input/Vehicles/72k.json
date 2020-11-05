@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "artillery\\72k\\",
   "vehicleType": "72k",
+  "vehicleName": "72-K 25mm AA Gun",
   "displayName": "anti aircraft gun",
   "countries": [
     "RUSSIA"

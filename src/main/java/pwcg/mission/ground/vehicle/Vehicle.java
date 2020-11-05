@@ -21,6 +21,7 @@ import pwcg.mission.mcu.McuTREntity;
 public class Vehicle implements Cloneable, IVehicle
 {
     protected IVehicleDefinition vehicleDefinition;
+    protected String vehicleName = "";
     protected String vehicleType = "";
     protected int index;
     protected int linkTrId;
@@ -59,6 +60,7 @@ public class Vehicle implements Cloneable, IVehicle
     {
         Vehicle clone = new Vehicle();
         clone.vehicleDefinition = this.vehicleDefinition;
+        clone.vehicleName = this.vehicleName;
         clone.vehicleType = this.vehicleType;
         clone.index = this.index;
         clone.linkTrId = this.linkTrId;
@@ -88,6 +90,7 @@ public class Vehicle implements Cloneable, IVehicle
     {
         country = vehicleCountry;
         vehicleType = vehicleDefinition.getVehicleType();
+        vehicleName = vehicleDefinition.getVehicleName();
         script = "LuaScripts\\WorldObjects\\" + vehicleDefinition.getScriptDir() + vehicleDefinition.getVehicleType() + ".txt";
         model = "graphics\\" + vehicleDefinition.getModelDir() + vehicleDefinition.getVehicleType() + ".mgm";
         setPosition(new Coordinate());
@@ -154,7 +157,7 @@ public class Vehicle implements Cloneable, IVehicle
     {
         try
         {
-            writer.write("  Name = \"" + vehicleType + "\";");
+            writer.write("  Name = \"" + vehicleName + "\";");
             writer.newLine();
             writer.write("  Index = " + index + ";");
             writer.newLine();
@@ -279,9 +282,9 @@ public class Vehicle implements Cloneable, IVehicle
         return country;
     }
 
-    public String getVehicleType()
+    public String getVehicleName()
     {
-        return vehicleType;
+        return vehicleName;
     }
 
     public String getScript()

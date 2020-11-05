@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\land_canvas\\",
   "vehicleType": "land_canvas",
+  "vehicleName": "Canvas",
   "displayName": "canvas",
   "countries": [
     "GERMANY",

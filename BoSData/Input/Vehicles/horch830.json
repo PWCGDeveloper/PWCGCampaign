@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\horch\\",
   "vehicleType": "horch830",
+  "vehicleName": "Horch-830 Staff car",
   "displayName": "staff car",
   "countries": [
     "GERMANY",

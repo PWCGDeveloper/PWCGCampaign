@@ -2,7 +2,8 @@
   "scriptDir": "ships\\",
   "modelDir": "ships\\subtype2b\\",
   "vehicleType": "subtype2b",
-  "displayName": "torpedo boat",
+  "vehicleName": "Submarine",
+  "displayName": "submarine",
   "countries": [
     "GERMANY",
     "ITALY",

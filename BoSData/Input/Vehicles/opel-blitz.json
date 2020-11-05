@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\opel\\",
   "vehicleType": "opel-blitz",
+  "vehicleName": "Ope Blitz Truck",
   "displayName": "truck",
   "countries": [
     "GERMANY",

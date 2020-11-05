@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\ford\\",
   "vehicleType": "ford-g917",
+  "vehicleName": "Ford Truck",
   "displayName": "truck",
   "countries": [
     "GERMANY",

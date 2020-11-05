@@ -2,6 +2,7 @@
   "scriptDir": "ships\\",
   "modelDir": "ships\\landboata\\",
   "vehicleType": "landboata",
+  "vehicleName": "Landing Craft",
   "displayName": "landing craft",
   "countries": [
     "RUSSIA"

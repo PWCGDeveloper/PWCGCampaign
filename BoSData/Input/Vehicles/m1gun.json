@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "artillery\\m1gun\\",
   "vehicleType": "m1gun",
+  "vehicleName": "M1 105mm Howitzer",
   "displayName": "howitzer",
   "countries": [
     "USA",

@@ -12,6 +12,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
+import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
 
 public class PwcgMissionDataEvaluator
 {
@@ -85,6 +86,11 @@ public class PwcgMissionDataEvaluator
 
     public boolean wasPilotAssignedToMissionByName(String destroyedEntityName) throws PWCGException
     {
+        if (VehicleDefinitionManager.isLocomotive(destroyedEntityName))
+        {
+            return false;
+        }
+
         for (SquadronMember pilotInMission : aarPreliminarytData.getCampaignMembersInMission().getSquadronMemberCollection().values())
         {
             if (destroyedEntityName == null)

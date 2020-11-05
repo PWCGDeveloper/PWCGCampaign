@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "artillery\\lefh18\\",
   "vehicleType": "lefh18",
+  "vehicleName": "105mm Howitzer",
   "displayName": "howitzer",
   "countries": [
     "GERMANY",

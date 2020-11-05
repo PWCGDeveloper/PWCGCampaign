@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "artillery\\ml20\\",
   "vehicleType": "ml20",
+  "vehicleName": "ML-20 152mm Howitzer",
   "displayName": "howitzer",
   "countries": [
     "RUSSIA"

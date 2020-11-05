@@ -11,7 +11,7 @@ public enum TargetType
     TARGET_TRAIN("train", TargetCategory.TARGET_CATEGORY_ARMORED),
     TARGET_SHIPPING("shipping", TargetCategory.TARGET_CATEGORY_HEAVY),
     TARGET_DRIFTER("transport barges", TargetCategory.TARGET_CATEGORY_MEDIUM),
-    TARGET_AIRFIELD("airfield", TargetCategory.TARGET_CATEGORY_MEDIUM),
+    TARGET_AIRFIELD("airfield", TargetCategory.TARGET_CATEGORY_MEDIUM), 
 
     TARGET_BALLOON("balloon", TargetCategory.TARGET_CATEGORY_AIR_TO_AIR),
 

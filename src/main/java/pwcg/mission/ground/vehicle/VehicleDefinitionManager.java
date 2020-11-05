@@ -48,15 +48,33 @@ public class VehicleDefinitionManager
     {
         for (VehicleDefinition definition : allVehiclesDefinitions)
         {
-            if (definition.getVehicleType().equals(vehicleName))
+            if (definition.getVehicleName().equals(vehicleName))
             {
                 return definition;
             }
         }
         
-        return null;
+        return getVehicleDefinitionByVehicleType(vehicleName);
     }
     
+    public static boolean isLocomotive(String vehicleIdentifier)
+    {
+        if (vehicleIdentifier.toLowerCase().equals("e") || vehicleIdentifier.toLowerCase().equals("g8"))
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    public static boolean isTrainCar(String vehicleIdentifier)
+    {
+        if (vehicleIdentifier.toLowerCase().contentEquals("wagon"))
+        {
+            return true;
+        }        
+        return false;
+    }
+        
     public IVehicleDefinition getVehicleDefinitionForRequest(VehicleRequestDefinition requestDefinition) throws PWCGException
     {
         List<VehicleDefinition> matchingDefinitions = new ArrayList<>();

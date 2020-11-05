@@ -2,6 +2,7 @@
   "scriptDir": "trains\\",
   "modelDir": "trains\\g8\\",
   "vehicleType": "g8",
+  "vehicleName": "G8",
   "displayName": "locomotive",
   "countries": [
     "GERMANY",

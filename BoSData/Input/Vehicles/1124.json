@@ -2,7 +2,8 @@
   "scriptDir": "ships\\",
   "modelDir": "ships\\1124\\",
   "vehicleType": "1124",
-  "displayName": "drifter",
+  "vehicleName": "BK-1124 Gunboat",
+  "displayName": "barge",
   "countries": [
     "GERMANY",
     "ITALY",

@@ -7,6 +7,7 @@ import pwcg.campaign.group.BlockDefinitionManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.ground.vehicle.IVehicleDefinition;
+import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
 
 public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBase
 {    
@@ -142,6 +143,16 @@ public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBa
         if (blockDefinition != null)
         {
             return blockDefinition.getDesc();
+        }
+
+        if (VehicleDefinitionManager.isLocomotive(victoryEntity.getName()) || VehicleDefinitionManager.isLocomotive(victoryEntity.getType()))
+        {
+            return "Locomotive";
+        }
+        
+        if (VehicleDefinitionManager.isTrainCar(victoryEntity.getName()) || VehicleDefinitionManager.isTrainCar(victoryEntity.getType()))
+        {
+            return "Train Car";
         }
 
         return "vehicle";

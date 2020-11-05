@@ -2,6 +2,7 @@
   "scriptDir": "ships\\",
   "modelDir": "ships\\torpboats38\\",
   "vehicleType": "torpboats38",
+  "vehicleName": "Torpedo Boat 38",
   "displayName": "torpedo boat",
   "countries": [
     "GERMANY",

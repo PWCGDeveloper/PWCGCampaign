@@ -18,4 +18,6 @@ public interface IVehicleDefinition
 
     boolean shouldUse(VehicleRequestDefinition requestDefinition) throws PWCGException;
 
+    String getVehicleName();
+
 }

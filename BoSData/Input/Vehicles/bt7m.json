@@ -2,7 +2,8 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\bt7m\\",
   "vehicleType": "bt7m",
-  "displayName": "Light Tank",
+  "vehicleName": "BT-7",
+  "displayName": "BT-7",
   "countries": [
     "RUSSIA"
   ],

@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\m16\\",
   "vehicleType": "m16",
+  "vehicleName": "M-16 Half Track",
   "displayName": "half track",
   "countries": [
     "USA",

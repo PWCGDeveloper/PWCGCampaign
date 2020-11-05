@@ -2,6 +2,7 @@
   "scriptDir": "Balloons\\",
   "modelDir": "balloons\\parseval\\",
   "vehicleType": "parseval",
+  "vehicleName": "Parseval Balloon",
   "displayName": "Balloon",
   "countries": [
     "RUSSIA",

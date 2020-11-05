@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\pz38t\\",
   "vehicleType": "pz38t",
+  "vehicleName": "Pz 38t",
   "displayName": "Pz 38t",
   "countries": [
     "GERMANY",

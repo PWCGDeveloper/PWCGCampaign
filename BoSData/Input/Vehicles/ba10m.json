@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\ba10m\\",
   "vehicleType": "ba10m",
+  "vehicleName": "BA-10 Armored car",
   "displayName": "Armored car",
   "countries": [
     "RUSSIA"

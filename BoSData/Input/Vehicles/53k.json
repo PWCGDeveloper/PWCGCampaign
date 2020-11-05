@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "artillery\\53k\\",
   "vehicleType": "53k",
+  "vehicleName": "53-K 45mm AT Gun",
   "displayName": "anti tank gun",
   "countries": [
     "RUSSIA"

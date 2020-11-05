@@ -2,6 +2,7 @@
   "scriptDir": "trains\\",
   "modelDir": "trains\\traincars\\",
   "vehicleType": "boxnb",
+  "vehicleName": "Box Car NB",
   "displayName": "train car",
   "countries": [
     "GERMANY",

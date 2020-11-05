@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\gmc-cckw\\",
   "vehicleType": "gmc-cckw",
+  "vehicleName": "GMC-CCKW Truck",
   "displayName": "truck",
   "countries": [
     "USA",

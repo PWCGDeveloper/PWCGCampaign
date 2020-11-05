@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\pzvi-h1\\",
   "vehicleType": "pzvi-h1",
+  "vehicleName": "PzKw Mk VI Tiger",
   "displayName": "Tiger I",
   "countries": [
     "GERMANY",

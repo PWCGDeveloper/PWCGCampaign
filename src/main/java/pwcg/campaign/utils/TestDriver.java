@@ -11,42 +11,49 @@ import pwcg.mission.target.TargetType;
 public class TestDriver
 {
     private static TestDriver testDriver = new TestDriver();
-    
+
     private boolean enabled = false;
     private boolean createPlayerOnly = false;
     private boolean writeCampaignFile = true;
-    private boolean useTestFlightType = false;
-    
-    private Role currentRole = Role.ROLE_NONE;
-    
+    private boolean debugAARLogs = false;
+
     private TestFlightType testFighterFlightType = new TestFlightType();
     private TestFlightType testReconFlightType = new TestFlightType();
     private TestFlightType testAttackFlightType = new TestFlightType();
     private TestFlightType testDiveBombFlightType = new TestFlightType();
     private TestFlightType testBombFlightType = new TestFlightType();
     private TestFlightType testStrategicBombFlightType = new TestFlightType();
-    
+
     private TargetType testPlayerTacticalTargetType = TargetType.TARGET_TRANSPORT;
     private TargetType testAITacticalTargetType = TargetType.TARGET_ASSAULT;
 
-    private List<SquadronMember>assignedSquadMembers = null;
+    private List<SquadronMember> assignedSquadMembers = null;
 
     private TestDriver()
     {
         testFighterFlightType.playerFlightType = FlightTypes.OFFENSIVE;
         testFighterFlightType.aiFlightType = FlightTypes.PATROL;
+
+        testReconFlightType.playerFlightType = FlightTypes.RECON;
+        testReconFlightType.aiFlightType = FlightTypes.RECON;
+
+        testAttackFlightType.playerFlightType = FlightTypes.GROUND_ATTACK;
+        testAttackFlightType.aiFlightType = FlightTypes.GROUND_ATTACK;
+
+        testDiveBombFlightType.playerFlightType = FlightTypes.DIVE_BOMB;
+        testDiveBombFlightType.aiFlightType = FlightTypes.DIVE_BOMB;
+
+        testBombFlightType.playerFlightType = FlightTypes.BOMB;
+        testBombFlightType.aiFlightType = FlightTypes.BOMB;
+
+        testStrategicBombFlightType.playerFlightType = FlightTypes.STRATEGIC_BOMB;
+        testStrategicBombFlightType.aiFlightType = FlightTypes.STRATEGIC_BOMB;
     }
-    
+
     public static TestDriver getInstance()
     {
         return testDriver;
     }
-
-    public void setEnabled(boolean enabled)
-    {
-        this.enabled = enabled;
-    }
-    
 
     public boolean isEnabled()
     {
@@ -59,13 +66,8 @@ public class TestDriver
         {
             return this.createPlayerOnly;
         }
-            
-        return false;
-    }
 
-    public void setCreatePlayerOnly(boolean createPlayerOnly)
-    {
-        this.createPlayerOnly = createPlayerOnly;
+        return false;
     }
 
     public boolean isWriteCampaignFile()
@@ -74,96 +76,44 @@ public class TestDriver
         {
             return writeCampaignFile;
         }
-            
+
         return false;
     }
 
-    public void setWriteCampaignFile(boolean writeCampaignFile)
+    public boolean isDebugAARLogs()
     {
-        this.writeCampaignFile = writeCampaignFile;
+        return debugAARLogs;
     }
 
-    public boolean isUseTestFlightType()
+    public TestFlightType getTestFlightTypeForRole(Role role) throws PWCGException
     {
-        return useTestFlightType;
-    }
-
-    public void setUseTestFlightType(boolean useTestFlightType)
-    {
-        this.useTestFlightType = useTestFlightType;
-    }
-
-    private TestFlightType getTestFlightTypeForRole() throws PWCGException
-    {
-        if (currentRole == Role.ROLE_FIGHTER)
+        if (role == Role.ROLE_FIGHTER)
         {
             return testFighterFlightType;
         }
-        else if (currentRole == Role.ROLE_BOMB)
+        else if (role == Role.ROLE_BOMB)
         {
             return testBombFlightType;
         }
-        else if (currentRole == Role.ROLE_STRAT_BOMB)
+        else if (role == Role.ROLE_STRAT_BOMB)
         {
             return testStrategicBombFlightType;
         }
-        else if (currentRole == Role.ROLE_RECON)
+        else if (role == Role.ROLE_RECON)
         {
             return testReconFlightType;
         }
-        else if (currentRole == Role.ROLE_DIVE_BOMB)
+        else if (role == Role.ROLE_DIVE_BOMB)
         {
             return testDiveBombFlightType;
         }
-        else if (currentRole == Role.ROLE_ATTACK)
+        else if (role == Role.ROLE_ATTACK)
         {
             return testAttackFlightType;
         }
         else
         {
-            throw new PWCGException ("Invalid role for test flight: " + currentRole);
-        }
-    }
-
-    public FlightTypes getTestFlightType(boolean playerFlight) throws PWCGException
-    {
-        if (enabled)
-        {
-            if (useTestFlightType)
-            {
-                TestFlightType testFlightType = getTestFlightTypeForRole();
-                if (playerFlight)
-                {
-                    return testFlightType.playerFlightType;
-                }
-                else
-                {
-                    return testFlightType.aiFlightType;
-                }
-            }
-        }
-        
-        return FlightTypes.ANY;
-    }
-
-    public void setTestFlightType(boolean playerFlight, Role role, FlightTypes newTestFlightType) throws PWCGException
-    {
-        if (enabled)
-        {
-            if (useTestFlightType)
-            {
-                currentRole = role;
-                
-                TestFlightType testFlightType = getTestFlightTypeForRole();
-                if (playerFlight)
-                {
-                    testFlightType.playerFlightType = newTestFlightType;
-                }
-                else
-                {
-                    testFlightType.aiFlightType = newTestFlightType;
-                }
-            }
+            throw new PWCGException("Invalid role for test flight: " + role);
         }
     }
 
@@ -171,19 +121,16 @@ public class TestDriver
     {
         if (enabled)
         {
-            if (useTestFlightType)
+            if (playerFlight)
             {
-                if (playerFlight)
-                {
-                    return this.testPlayerTacticalTargetType;
-                }
-                else
-                {
-                    return this.testAITacticalTargetType;
-                }
+                return this.testPlayerTacticalTargetType;
+            }
+            else
+            {
+                return this.testAITacticalTargetType;
             }
         }
-        
+
         return TargetType.TARGET_NONE;
     }
 
@@ -197,9 +144,9 @@ public class TestDriver
         this.assignedSquadMembers = assignedSquadMembers;
     }
 
-    private class TestFlightType
+    public class TestFlightType
     {
-        private FlightTypes playerFlightType = FlightTypes.ANY;
-        private FlightTypes aiFlightType = FlightTypes.ANY;
+        public FlightTypes playerFlightType = FlightTypes.ANY;
+        public FlightTypes aiFlightType = FlightTypes.ANY;
     }
 }

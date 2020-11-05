@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "artillery\\m5gun\\",
   "vehicleType": "m5gun",
+  "vehicleName": "M-5 76.2mm AT Gun",
   "displayName": "anti tank gun",
   "countries": [
     "USA",

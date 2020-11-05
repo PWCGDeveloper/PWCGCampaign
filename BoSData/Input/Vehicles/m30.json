@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "artillery\\m30\\",
   "vehicleType": "m30",
+  "vehicleName": "M-30 122mm Howitzer",
   "displayName": "howitzer",
   "countries": [
     "RUSSIA"

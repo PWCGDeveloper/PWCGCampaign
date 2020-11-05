@@ -2,6 +2,7 @@
   "scriptDir": "trains\\",
   "modelDir": "trains\\platformaa-mg34\\",
   "vehicleType": "platformaa-mg34",
+  "vehicleName": "MG34 AA Car",
   "displayName": "train car",
   "countries": [
     "GERMANY",

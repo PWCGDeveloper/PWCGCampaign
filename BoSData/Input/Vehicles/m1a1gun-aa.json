@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "artillery\\m1a1gun-aa\\",
   "vehicleType": "m1a1gun-aa",
+  "vehicleName": "M1-A1 90mm AA Gun",
   "displayName": "anti aircraft gun",
   "countries": [
     "USA",

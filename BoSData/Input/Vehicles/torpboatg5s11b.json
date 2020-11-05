@@ -2,6 +2,7 @@
   "scriptDir": "ships\\",
   "modelDir": "ships\\torpboatg5s11b\\",
   "vehicleType": "torpboatg5s11b",
+  "vehicleName": "Torpedo Boat G5 Ser 7",
   "displayName": "torpedo boat",
   "countries": [
     "RUSSIA",

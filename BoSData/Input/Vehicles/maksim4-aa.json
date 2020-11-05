@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "artillery\\maksim4-aa\\",
   "vehicleType": "maksim4-aa",
+  "vehicleName": "Maksim-4 AA MG",
   "displayName": "AAA machine gun",
   "countries": [
     "RUSSIA"

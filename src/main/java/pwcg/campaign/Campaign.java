@@ -22,6 +22,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;
+import pwcg.campaign.utils.TestDriver;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
@@ -84,6 +85,14 @@ public class Campaign
 
     public void write() throws PWCGException
     {
+        if (TestDriver.getInstance().isEnabled())
+        {
+            if (!TestDriver.getInstance().isWriteCampaignFile())
+            {
+                return;
+            }
+        }
+        
         CampaignDirectoryBuilder.initializeCampaignDirectories(this);
         CampaignIOJson.writeJson(this);
     }

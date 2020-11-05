@@ -2,6 +2,7 @@
   "scriptDir": "ships\\",
   "modelDir": "ships\\rivershipgeorgia\\",
   "vehicleType": "rivershipgeorgiaaaa",
+  "vehicleName": "Georgia AA Gunship",
   "displayName": "river boat",
   "countries": [
     "GERMANY",

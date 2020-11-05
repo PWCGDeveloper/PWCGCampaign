@@ -2,6 +2,7 @@
   "scriptDir": "trains\\",
   "modelDir": "trains\\g8t\\",
   "vehicleType": "g8t",
+  "vehicleName": "G8 Coal Car",
   "displayName": "train car",
   "countries": [
     "GERMANY",

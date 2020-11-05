@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "artillery\\zis3gun\\",
   "vehicleType": "zis3gun",
+  "vehicleName": "ZiS-3 76mm AT Gun",
   "displayName": "anti tank gun",
   "countries": [
     "RUSSIA"

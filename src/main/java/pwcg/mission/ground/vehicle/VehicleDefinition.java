@@ -1,6 +1,5 @@
 package pwcg.mission.ground.vehicle;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,6 +12,7 @@ public class VehicleDefinition implements IVehicleDefinition, IWeight
 {
     private String scriptDir;
     private String modelDir;
+    private String vehicleName;
     private String vehicleType;
     private String displayName;
     private List<Country> countries;
@@ -21,19 +21,6 @@ public class VehicleDefinition implements IVehicleDefinition, IWeight
     private int rarityWeight;
     private VehicleClass vehicleClass;
     private String associatedBlock;
-    
-    public VehicleDefinition(String scriptDir, String modelDir, String vehicleType, String displayName, List<Country> countries, Date startDate, Date endDate, int rarityWeight, VehicleClass vehicleClass)
-    {
-        this.scriptDir = scriptDir;
-        this.modelDir = modelDir;
-        this.vehicleType = vehicleType;
-        this.displayName = displayName;
-        this.countries = new ArrayList<>(countries);
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.rarityWeight = rarityWeight;
-        this.vehicleClass = vehicleClass;
-    }
     
     @Override
     public String getScriptDir()
@@ -51,6 +38,12 @@ public class VehicleDefinition implements IVehicleDefinition, IWeight
     public String getVehicleType()
     {
         return vehicleType;
+    }
+
+    @Override
+    public String getVehicleName()
+    {
+        return vehicleName;
     }
 
     @Override

@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\sdkfz251\\",
   "vehicleType": "sdkfz251-1c",
+  "vehicleName": "Sd.Kfz 251-1C",
   "displayName": "half track",
   "countries": [
     "GERMANY",

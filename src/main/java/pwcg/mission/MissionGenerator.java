@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.plane.Role;
+import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
 import pwcg.mission.flight.FlightTypes;
@@ -22,9 +24,11 @@ public class MissionGenerator
         MissionProfile missionProfile = generateProfile(participatingPlayers);
         List<FlightTypes> playerFlightTypes = PlayerFlightTypeBuilder.finalizePlayerFlightTypes(campaign, participatingPlayers, missionProfile);
 
-        // TODO ERASE THIS!!!!
-        playerFlightTypes = Arrays.asList(FlightTypes.CONTACT_PATROL);
-
+        if (TestDriver.getInstance().isEnabled())
+        {
+            playerFlightTypes = Arrays.asList(TestDriver.getInstance().getTestFlightTypeForRole(Role.ROLE_FIGHTER).playerFlightType);
+        }
+        
         Mission mission = buildMission(participatingPlayers, playerFlightTypes, missionProfile);
         return mission;
     }

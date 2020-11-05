@@ -1,6 +1,7 @@
 {
   "scriptDir": "ships\\",
   "modelDir": "ships\\largetankershiptype1\\",
+  "vehicleName": "Tanker Ship",
   "vehicleType": "largetankershiptype1",
   "displayName": "tanker",
   "countries": [

@@ -2,6 +2,7 @@
   "scriptDir": "trains\\",
   "modelDir": "trains\\platformaa-flak38\\",
   "vehicleType": "platformaa-flak38",
+  "vehicleName": "Flak-38 AA Car",
   "displayName": "train car",
   "countries": [
     "GERMANY",

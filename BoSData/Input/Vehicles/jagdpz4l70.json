@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\jagdpz4l70\\",
   "vehicleType": "jagdpz4l70",
+  "vehicleName": "Jpz IV",
   "displayName": "Jpz IV",
   "countries": [
     "GERMANY",

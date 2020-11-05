@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\willys\\",
   "vehicleType": "willysmb",
+  "vehicleName": "Jeep",
   "displayName": "jeep",
   "countries": [
     "USA",

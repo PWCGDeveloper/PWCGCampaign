@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\ba64\\",
   "vehicleType": "ba64",
+  "vehicleName": "BA-64 Armored car",
   "displayName": "Armored car",
   "countries": [
     "RUSSIA"
