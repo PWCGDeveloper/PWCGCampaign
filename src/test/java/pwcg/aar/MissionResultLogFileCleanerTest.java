@@ -24,7 +24,6 @@ import pwcg.core.utils.FileUtils;
 public class MissionResultLogFileCleanerTest
 {
     @Mock private DirectoryReader directoryReader;
-    @Mock private FileUtils fileUtils;
     @Mock private ConfigManagerGlobal configManagerGlobal;
 
     private List<String> filenames = new ArrayList<String>();
@@ -58,9 +57,7 @@ public class MissionResultLogFileCleanerTest
         Mockito.when(directoryReader.getFiles()).thenReturn(filenames);
         Mockito.when(configManagerGlobal.getIntConfigParam(ConfigItemKeys.DeleteAllMissionLogsKey)).thenReturn(1);
 
-        MissionResultLogFileCleaner cleaner = new MissionResultLogFileCleaner(directoryReader, fileUtils);
-        cleaner.setDirectoryReader(directoryReader);
-        cleaner.setFileUtils(fileUtils);
+        MissionResultLogFileCleaner cleaner = new MissionResultLogFileCleaner(directoryReader);
         
         int numCleaned = cleaner.cleanMissionResultLogFiles();
         
@@ -76,10 +73,7 @@ public class MissionResultLogFileCleanerTest
     
         Mockito.when(configManagerGlobal.getIntConfigParam(ConfigItemKeys.DeleteAllMissionLogsKey)).thenReturn(1);
     
-        MissionResultLogFileCleaner cleaner = new MissionResultLogFileCleaner(directoryReader, fileUtils);
-        cleaner.setDirectoryReader(directoryReader);
-        cleaner.setFileUtils(fileUtils);
-        
+        MissionResultLogFileCleaner cleaner = new MissionResultLogFileCleaner(directoryReader);        
         int numCleaned = cleaner.cleanMissionResultLogFiles();
         
         assert(numCleaned == 0);
@@ -104,9 +98,7 @@ public class MissionResultLogFileCleanerTest
 
         Mockito.when(configManagerGlobal.getIntConfigParam(ConfigItemKeys.DeleteAllMissionLogsKey)).thenReturn(0);
 
-        MissionResultLogFileCleaner cleaner = new MissionResultLogFileCleaner(directoryReader, fileUtils);
-        cleaner.setDirectoryReader(directoryReader);
-        cleaner.setFileUtils(fileUtils);
+        MissionResultLogFileCleaner cleaner = new MissionResultLogFileCleaner(directoryReader);
         
         int numCleaned = cleaner.cleanMissionResultLogFiles();
         
@@ -124,9 +116,7 @@ public class MissionResultLogFileCleanerTest
 
         Mockito.when(configManagerGlobal.getIntConfigParam(ConfigItemKeys.DeleteAllMissionLogsKey)).thenReturn(1);
 
-        MissionResultLogFileCleaner cleaner = new MissionResultLogFileCleaner(directoryReader, fileUtils);
-        cleaner.setDirectoryReader(directoryReader);
-        cleaner.setFileUtils(fileUtils);
+        MissionResultLogFileCleaner cleaner = new MissionResultLogFileCleaner(directoryReader);
         
         int numCleaned = cleaner.cleanMissionResultLogFiles();
         

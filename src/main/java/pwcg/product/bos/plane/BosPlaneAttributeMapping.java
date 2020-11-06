@@ -58,6 +58,7 @@ public enum BosPlaneAttributeMapping implements IPlaneAttributeMapping
     PE2_S35("pe2s35", "static_pe2", "static_pe2_open"),
     PE2_S87("pe2s87", "static_pe2", "static_pe2_open"),
     A20B("a20b", "static_a20b"),
+    C47("c47a", "static_a20b"),
     B25("b25draf", "static_b25d");
 
     

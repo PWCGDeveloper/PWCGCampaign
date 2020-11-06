@@ -143,8 +143,10 @@ public class InitialReplacementEquipperTest
         
         EquipmentDepotInitializer replacementEquipper = new EquipmentDepotInitializer(campaign, vvs);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        assert(equipment.getAvailableDepotPlanes().size() == 64);
+        assert(equipment.getAvailableDepotPlanes().size() == 90);
         
+        boolean c47 = false;
+        boolean hurricane = false;
         boolean i16Found = false;
         boolean mig3 = false;
         boolean lagg3 = false;
@@ -157,6 +159,14 @@ public class InitialReplacementEquipperTest
             if (replacementPlane.getType().equals("i16t24"))
             {
                 i16Found = true;
+            }
+            else if (replacementPlane.getType().equals("c47a"))
+            {
+                c47 = true;
+            }
+            else if (replacementPlane.getType().equals("hurricanemkii"))
+            {
+                hurricane = true;
             }
             else if (replacementPlane.getType().equals("mig3s24"))
             {
@@ -180,6 +190,8 @@ public class InitialReplacementEquipperTest
             }
         }
         
+        assert(hurricane);
+        assert(c47);
         assert(i16Found);
         assert(mig3);
         assert(lagg3);
@@ -199,8 +211,10 @@ public class InitialReplacementEquipperTest
         
         EquipmentDepotInitializer replacementEquipper = new EquipmentDepotInitializer(campaign, vvs);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        assert(equipment.getAvailableDepotPlanes().size() == 138);
+        assert(equipment.getAvailableDepotPlanes().size() == 175);
         
+        boolean c47 = false;
+        boolean hurricane = false;
         boolean i16Found = false;
         boolean mig3 = false;
         boolean lagg3 = false;
@@ -214,6 +228,14 @@ public class InitialReplacementEquipperTest
             if (replacementPlane.getType().equals("i16t24"))
             {
                 i16Found = true;
+            }
+            else if (replacementPlane.getType().equals("c47a"))
+            {
+                c47 = true;
+            }
+            else if (replacementPlane.getType().equals("hurricanemkii"))
+            {
+                hurricane = true;
             }
             else if (replacementPlane.getType().equals("mig3s24"))
             {
@@ -241,6 +263,8 @@ public class InitialReplacementEquipperTest
             }
         }
         
+        assert(hurricane);
+        assert(c47);
         assert(i16Found);
         assert(mig3);
         assert(lagg3);

@@ -1,0 +1,26 @@
+{
+  "type": "c47a",
+  "archType": "c47",
+  "side": "ALLIED",
+  "primaryUsedBy": [
+    "USA",
+    "BRITAIN",
+    "RUSSIA"
+  ],
+  "displayName": "C-47",
+  "script": "LuaScripts\\WorldObjects\\Planes\\c47a.txt",
+  "model": "graphics\\planes\\c47a\\c47a.mgm",
+  "desc": "",
+  "cruisingSpeed": 200,
+  "climbOutRate": 500,
+  "goodness": 25,
+  "range": 1200,
+  "isFlyable": false,
+  "planeSize": "PLANE_SIZE_MEDIUM",
+  "roles": [
+    "ROLE_TRANSPORT"
+  ],
+  "introduction": "19400101",
+  "endProduction": "19450601",
+  "withdrawal": "19450601"
+}

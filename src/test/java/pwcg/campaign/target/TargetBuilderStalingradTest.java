@@ -67,7 +67,7 @@ public class TargetBuilderStalingradTest
 
         IGroundUnit groundUnit = groundUnits.getInterestingGroundUnitsForSide(playerFlight.getFlightInformation().getSquadron().determineEnemySide()).get(0);
         assert(groundUnit.getCountry().getCountry() == Country.RUSSIA);
-        assert(groundUnit.getTargetType() == TargetType.TARGET_ASSAULT);
+        assert(groundUnit.getTargetType() == TargetType.TARGET_ARMOR || groundUnit.getTargetType() == TargetType.TARGET_INFANTRY || groundUnit.getTargetType() == TargetType.TARGET_ARTILLERY);
     }
     
     @Test

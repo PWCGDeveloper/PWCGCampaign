@@ -29,7 +29,6 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DirectoryReader;
-import pwcg.core.utils.FileUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
@@ -232,8 +231,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
         aarCoordinator.completeAAR();
 
         DirectoryReader directoryReader = new DirectoryReader();
-        FileUtils fileUtils = new FileUtils();
-        MissionResultLogFileCleaner missionResultLogFileCleaner = new MissionResultLogFileCleaner(directoryReader, fileUtils);
+        MissionResultLogFileCleaner missionResultLogFileCleaner = new MissionResultLogFileCleaner(directoryReader);
         missionResultLogFileCleaner.cleanMissionResultLogFiles();
         
         MissionFileCleaner missionFileCleaner = new MissionFileCleaner();

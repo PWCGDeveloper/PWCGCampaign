@@ -14,13 +14,11 @@ import pwcg.core.utils.FileUtils;
 
 public class MissionResultLogFileCleaner 
 {
-    private FileUtils fileUtils;
     private DirectoryReader directoryReader;
 
-    public MissionResultLogFileCleaner(DirectoryReader directoryReader, FileUtils fileUtils)
+    public MissionResultLogFileCleaner(DirectoryReader directoryReader)
     {
         this.directoryReader = directoryReader;
-        this.fileUtils = fileUtils;
     }
     
     public int cleanMissionResultLogFiles() throws PWCGException 
@@ -87,25 +85,5 @@ public class MissionResultLogFileCleaner
 
         return results;
     }
-
-    public FileUtils getFileUtils()
-    {
-        return fileUtils;
-    }
-
-    public void setFileUtils(FileUtils fileUtils)
-    {
-        this.fileUtils = fileUtils;
-    }
-
-    public DirectoryReader getDirectoryReader()
-    {
-        return directoryReader;
-    }
-
-    public void setDirectoryReader(DirectoryReader directoryReader)
-    {
-        this.directoryReader = directoryReader;
-    }	
 }
 

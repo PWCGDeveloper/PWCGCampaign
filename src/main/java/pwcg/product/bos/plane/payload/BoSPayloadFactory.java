@@ -20,6 +20,7 @@ import pwcg.product.bos.plane.payload.aircraft.Bf109G6Payload;
 import pwcg.product.bos.plane.payload.aircraft.Bf109K4Payload;
 import pwcg.product.bos.plane.payload.aircraft.Bf110E2Payload;
 import pwcg.product.bos.plane.payload.aircraft.Bf110G2Payload;
+import pwcg.product.bos.plane.payload.aircraft.C47Payload;
 import pwcg.product.bos.plane.payload.aircraft.Fw190A3Payload;
 import pwcg.product.bos.plane.payload.aircraft.Fw190A5Payload;
 import pwcg.product.bos.plane.payload.aircraft.Fw190A8Payload;
@@ -231,6 +232,10 @@ public class BoSPayloadFactory implements IPayloadFactory
         else if (attributeMapping == BosPlaneAttributeMapping.B25)
         {
             return new B25DRAFPayload(planeType);
+        }
+        else if (attributeMapping == BosPlaneAttributeMapping.C47)
+        {
+            return new C47Payload(planeType);
         }
         else if (attributeMapping == BosPlaneAttributeMapping.HURRICANE_MKII)
         {
