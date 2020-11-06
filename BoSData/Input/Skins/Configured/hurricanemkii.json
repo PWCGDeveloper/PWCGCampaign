@@ -1,0 +1,114 @@
+{
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"hurricanemkii_skin_00": {
+			"skinName": "hurricanemkii_skin_00",
+			"planeType": "hurricanemkii",
+			"startDate": "19400801",
+			"endDate": "19430601",
+			"squadId": -2,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"hurricanemkii_skin_01": {
+			"skinName": "hurricanemkii_skin_01",
+			"planeType": "hurricanemkii",
+			"startDate": "19400801",
+			"endDate": "19430601",
+			"squadId": -2,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		},
+		"hurricanemkii_skin_02": {
+			"skinName": "hurricanemkii_skin_02",
+			"planeType": "hurricanemkii",
+			"startDate": "19430601",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"hurricanemkii_skin_03": {
+			"skinName": "hurricanemkii_skin_03",
+			"planeType": "hurricanemkii",
+			"startDate": "19400801",
+			"endDate": "19430601",
+			"squadId": -2,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"hurricanemkii_skin_04": {
+			"skinName": "hurricanemkii_skin_04",
+			"planeType": "hurricanemkii",
+			"startDate": "19430601",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"hurricanemkii_skin_06": {
+			"skinName": "hurricanemkii_skin_06",
+			"planeType": "hurricanemkii",
+			"startDate": "19400801",
+			"endDate": "19430601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"hurricanemkii_skin_07": {
+			"skinName": "hurricanemkii_skin_07",
+			"planeType": "hurricanemkii",
+			"startDate": "19400801",
+			"endDate": "19430601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"hurricanemkii_skin_08": {
+			"skinName": "hurricanemkii_skin_08",
+			"planeType": "hurricanemkii",
+			"startDate": "19430601",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Russia",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"hurricanemkii_skin_09": {
+			"skinName": "hurricanemkii_skin_09",
+			"planeType": "hurricanemkii",
+			"startDate": "19400801",
+			"endDate": "19430601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"hurricanemkii_skin_12": {
+			"skinName": "hurricanemkii_skin_12",
+			"planeType": "hurricanemkii",
+			"startDate": "19440601",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "Britain",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		}
+}

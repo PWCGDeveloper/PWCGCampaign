@@ -9,9 +9,6 @@ public class CampaignFixer
     {
         CampaignCleaner cleaner = new CampaignCleaner(campaign);
         cleaner.cleanDataFiles();
-
-        P47Adder p47Adder = new P47Adder(campaign);
-        p47Adder.addP47D22();
         
         mergeAddedAces(campaign);
     }

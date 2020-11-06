@@ -1,0 +1,25 @@
+{
+  "type": "hurricanemkii",
+  "archType": "hurricane",
+  "side": "ALLIED",
+  "primaryUsedBy": [
+    "RUSSIA"
+  ],
+  "displayName": "Hurricane Mk.II",
+  "script": "LuaScripts\\WorldObjects\\Planes\\hurricanemkii.txt",
+  "model": "graphics\\planes\\hurricanemkii\\hurricanemkii.mgm",
+  "desc": "",
+  "cruisingSpeed": 300,
+  "climbOutRate": 1200,
+  "goodness": 25,
+  "range": 600,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER",
+    "ROLE_ATTACK"
+  ],
+  "introduction": "19390801",
+  "endProduction": "19440101",
+  "withdrawal": "19441001"
+}

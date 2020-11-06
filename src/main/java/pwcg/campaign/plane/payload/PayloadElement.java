@@ -20,6 +20,7 @@ public enum PayloadElement
     LB230_X2(PayloadElementCategory.ORDNANCE_BOMB, "230 lb Bomb x2", 230),
     LB112x8(PayloadElementCategory.ORDNANCE_BOMB, "112 lb Bomb x8", 480),
     LB112x16(PayloadElementCategory.ORDNANCE_BOMB, "112 lb Bomb x16", 960),
+    LB250x1(PayloadElementCategory.ORDNANCE_BOMB, "250 lb Bomb x1", 240),
     LB250x2(PayloadElementCategory.ORDNANCE_BOMB, "250 lb Bomb x2", 240),
     LB250x3(PayloadElementCategory.ORDNANCE_BOMB, "250 lb Bomb x3", 360),
     LB250x4(PayloadElementCategory.ORDNANCE_BOMB, "250 lb Bomb x4", 480),
@@ -92,6 +93,9 @@ public enum PayloadElement
     DB605DC_ENGINE(PayloadElementCategory.MODIFICATION, "DB605DC engine", 100),
     MN28(PayloadElementCategory.MODIFICATION, "MN28", 0),
     LA5_AMMO(PayloadElementCategory.MODIFICATION, "LA5 Ammo Scheme", 0),
+    HE_AMMO(PayloadElementCategory.MODIFICATION, "High Explosive Ammo", 0),
+    AP_AMMO(PayloadElementCategory.MODIFICATION, "Armor Piercing Ammo", 0),
+    EXTRA_AMMO(PayloadElementCategory.MODIFICATION, "Extra Ammo", 0),
     FW190F8(PayloadElementCategory.MODIFICATION, "FW190 F8", 100),
     FW190F8_SC70_X4(PayloadElementCategory.MODIFICATION, "FW190 F8 500 kb Bomb x1", 100),
     FW190F8_PB1_X12(PayloadElementCategory.MODIFICATION, "FW190 F8 PB1 x12", 100),
@@ -99,7 +103,9 @@ public enum PayloadElement
     ETC501(PayloadElementCategory.MODIFICATION, "ETC 501 Bomb Rack", 100),
     OCTANE_150_FUEL(PayloadElementCategory.MODIFICATION, "150 Octane Fuel", 100),
     LB_11_BOOST(PayloadElementCategory.MODIFICATION, "11 lb. Boost", 100),
+    LB_14_BOOST(PayloadElementCategory.MODIFICATION, "14 lb. Boost", 100),
     PBP_1A(PayloadElementCategory.MODIFICATION, "PBP 1A", 100),
+    AIR_FILTER(PayloadElementCategory.MODIFICATION, "Air Filter", 10),
 
     
 
@@ -158,6 +164,10 @@ public enum PayloadElement
     BR21_X2(PayloadElementCategory.ORDNANCE_ROCKET, "Werfer-Granate 21 x2", 100),
     R4M_X26(PayloadElementCategory.ORDNANCE_ROCKET, "Rakete, 4Kilogramm Minenkopf", 200),
 
+    BROWNING_303_X4(PayloadElementCategory.WEAPON, "Browning 303 X4", 0),
+    HISPANO_MKII_X4(PayloadElementCategory.WEAPON, "20mm Hispano Mk.II X4", 50),
+    VICKERS_S40_X2(PayloadElementCategory.WEAPON, "40mm Vickers S40 X2", 100),
+    SHVAK_X2(PayloadElementCategory.WEAPON, "Shvak X2", 0),
     SHVAK_GUNPOD(PayloadElementCategory.WEAPON, "Shvak Gun Pod", 50),
     SHVAK_UPGRADE(PayloadElementCategory.WEAPON, "Shvak Upgrade", 50),
 	BK_GUNPOD(PayloadElementCategory.WEAPON, "BK Gun Pod", 50),
