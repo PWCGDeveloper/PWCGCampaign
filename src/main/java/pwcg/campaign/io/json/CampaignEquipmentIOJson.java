@@ -10,12 +10,12 @@ import pwcg.campaign.resupply.depot.EquipmentDepot;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
 
-public class CampaignEquipmentOJson 
+public class CampaignEquipmentIOJson 
 {
     public static  void writeJson(Campaign campaign) throws PWCGException
     {
         makeEquipmentDir(campaign);
-        writeSquadrons(campaign);
+        writeEquipmentForCampaign(campaign);
         writeReplacements(campaign);
     }
     
@@ -28,15 +28,21 @@ public class CampaignEquipmentOJson
         FileUtils.createDirIfNeeded(campaignReplacementsDir);
     }
 
-    private static void writeSquadrons(Campaign campaign) throws PWCGException
+    private static void writeEquipmentForCampaign(Campaign campaign) throws PWCGException
     {
-        String campaignEquipmentReplacementDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Equipment\\";
-        JsonWriter<Equipment> jsonWriterEquipment = new JsonWriter<>();
         for (Integer squadronId : campaign.getEquipmentManager().getEquipmentAllSquadrons().keySet())
         {
-            Equipment squadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadronId);
-            jsonWriterEquipment.writeAsJson(squadronEquipment, campaignEquipmentReplacementDir, squadronId + ".json");
+            writeEquipmentForSquadron(campaign, squadronId);
         }
+    }
+
+    public static void writeEquipmentForSquadron(Campaign campaign, int squadronId) throws PWCGException
+    {
+        Equipment squadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadronId);
+
+        JsonWriter<Equipment> jsonWriterEquipment = new JsonWriter<>();
+        String campaignEquipmentReplacementDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Equipment\\";
+        jsonWriterEquipment.writeAsJson(squadronEquipment, campaignEquipmentReplacementDir, squadronId + ".json");
     }
 
     private static void writeReplacements(Campaign campaign) throws PWCGException

@@ -7,7 +7,7 @@
     "BRITAIN",
     "RUSSIA"
   ],
-  "displayName": "C-47",
+  "displayName": "C-47A",
   "script": "LuaScripts\\WorldObjects\\Planes\\c47a.txt",
   "model": "graphics\\planes\\c47a\\c47a.mgm",
   "desc": "",

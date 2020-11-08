@@ -9,17 +9,17 @@ import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
 public class CampaignMembersInMissionFinder
 {
     public SquadronMembers determineCampaignMembersInMission(Campaign campaign, PwcgMissionData pwcgMissionData) throws PWCGException
-    {        
+    {
         SquadronMembers campaignMembersInMission = new SquadronMembers();
         for (PwcgGeneratedMissionPlaneData missionPlane : pwcgMissionData.getMissionPlanes().values())
         {
-    		SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(missionPlane.getPilotSerialNumber());
-    		if (pilot != null)
-    		{
-    	        campaignMembersInMission.addToSquadronMemberCollection(pilot);
-    		}
-         }
-                        
+            SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(missionPlane.getPilotSerialNumber());
+            if (pilot != null)
+            {
+                campaignMembersInMission.addToSquadronMemberCollection(pilot);
+            }
+        }
+
         return campaignMembersInMission;
     }
 

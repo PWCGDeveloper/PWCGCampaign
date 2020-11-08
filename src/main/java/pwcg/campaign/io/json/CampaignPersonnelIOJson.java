@@ -33,13 +33,20 @@ public class CampaignPersonnelIOJson
 
     private static void writeSquadrons(Campaign campaign) throws PWCGException
     {
-        String campaignPersonnelDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Personnel\\";
-        JsonWriter<SquadronMembers> jsonWriterSquadrons = new JsonWriter<>();
         for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
         {
-            SquadronMembers squadronMembersToWrite = squadronPersonnel.getSquadronMembers();
-            jsonWriterSquadrons.writeAsJson(squadronMembersToWrite, campaignPersonnelDir, squadronPersonnel.getSquadron().getSquadronId() + ".json");
+            writeSquadron(campaign, squadronPersonnel.getSquadron().getSquadronId());
         }
+    }
+
+    public static void writeSquadron(Campaign campaign, int squadronId) throws PWCGException
+    {
+        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronId);
+        SquadronMembers squadronMembersToWrite = squadronPersonnel.getSquadronMembers();
+
+        String campaignPersonnelDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Personnel\\";
+        JsonWriter<SquadronMembers> jsonWriterSquadrons = new JsonWriter<>();
+        jsonWriterSquadrons.writeAsJson(squadronMembersToWrite, campaignPersonnelDir, squadronPersonnel.getSquadron().getSquadronId() + ".json");
     }
 
     private static void writeReplacements(Campaign campaign) throws PWCGException

@@ -111,27 +111,32 @@ public class AARVehicleBuilder
     {        
         for (IAType12 atype12 : vehicleList)
         {
-            if (pwcgMissionDataEvaluator.wasPilotAssignedToMissionByName(atype12.getName()))
-            {
-                createLogPlane(atype12);
-            }
-            else if (Balloon.isBalloonName(atype12.getName()))
-            {
-                createLogBalloon(atype12);
-            }
-            else if (atype12.getName().contains("BlocksArray"))
-            {
-                handleBuildingSpawn(atype12);
-            }
-            else
-            {
-                createLogGroundUNit(atype12);
-            }
+            sortLogEntity(atype12);
         }
         
         if (logPlanes.isEmpty())
         {
         	throw new PWCGException("No planes found in logs to associate with the latest mission");
+        }
+    }
+
+    private void sortLogEntity(IAType12 atype12) throws PWCGException
+    {
+        if (pwcgMissionDataEvaluator.wasPilotAssignedToMissionByName(atype12.getName()))
+        {
+            createLogPlane(atype12);
+        }
+        else if (Balloon.isBalloonName(atype12.getName()))
+        {
+            createLogBalloon(atype12);
+        }
+        else if (atype12.getName().contains("BlocksArray"))
+        {
+            handleBuildingSpawn(atype12);
+        }
+        else
+        {
+            createLogGroundUnit(atype12);
         }
     }
 
@@ -163,7 +168,7 @@ public class AARVehicleBuilder
         PWCGLogger.log(LogLevel.DEBUG, "Add Plane: " + atype12.getName() + " ID:" + atype12.getId() + " Type:" + atype12.getType());
     }
 
-    private void createLogGroundUNit(IAType12 atype12) throws PWCGException
+    private void createLogGroundUnit(IAType12 atype12) throws PWCGException
     {
         LogAIEntity logEntity;
         logEntity = new LogGroundUnit(atype12.getSequenceNum());

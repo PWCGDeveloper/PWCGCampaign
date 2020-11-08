@@ -28,7 +28,7 @@ public class CampaignIOJson
         jsonCampaignLogsWriter.writeAsJson(campaign.getCampaignLogs(), campaignDir, "CampaignLog.json");
 
         CampaignPersonnelIOJson.writeJson(campaign);
-        CampaignEquipmentOJson.writeJson(campaign);
+        CampaignEquipmentIOJson.writeJson(campaign);
     }
 
     public static void readJson(Campaign campaign) throws PWCGException
@@ -45,7 +45,7 @@ public class CampaignIOJson
             readCampaignLogs(campaign, campaignDir);
     
             CampaignPersonnelIOJson.readJson(campaign);
-            CampaignEquipmentOJson.readJson(campaign);
+            CampaignEquipmentIOJson.readJson(campaign);
         }
     }
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.io.json.CampaignEquipmentIOJson;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.resupply.InitialSquadronEquipper;
 import pwcg.campaign.resupply.depot.EquipmentWeightCalculator;
@@ -34,6 +35,7 @@ public class CampaignUpdateNewSquadronEquipper
                 Equipment squadronEquipment = equipmentStaffer.generateEquipment();
                 campaign.getEquipmentManager().addEquipmentForSquadron(squadron.getSquadronId(), squadronEquipment);
                 squadronsEquipped.add(squadron.getSquadronId());
+                CampaignEquipmentIOJson.writeEquipmentForSquadron(campaign, squadron.getSquadronId());
             }
         }
         
