@@ -1,4 +1,4 @@
-package pwcg.gui.campaign.transfer;
+package pwcg.gui.campaign.activity;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -39,8 +39,8 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
-import pwcg.gui.campaign.coop.CampaignCoopAdminScreen;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
+import pwcg.gui.campaign.personnel.CampaignCoopAdminScreen;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -65,13 +65,13 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 	private JButton acceptButton = null;
     private ArmedService service = null;
 
-	public CampaignTransferScreen  (CampaignHomeScreen parent, SquadronMember squadronMemberToTransfer)
+	public CampaignTransferScreen  (CampaignHomeScreen campaignHome, SquadronMember squadronMemberToTransfer)
 	{
         super("");
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
-		this.campaignHome = parent;
+		this.campaignHome = campaignHome;
         this.squadronMemberToTransfer = squadronMemberToTransfer;
 		this.campaign = PWCGContext.getInstance().getCampaign();
 	}

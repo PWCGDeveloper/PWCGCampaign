@@ -1,4 +1,4 @@
-package pwcg.gui.campaign.coop;
+package pwcg.gui.campaign.personnel;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -22,8 +22,8 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.activity.CampaignTransferScreen;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
-import pwcg.gui.campaign.transfer.CampaignTransferScreen;
 import pwcg.gui.dialogs.ConfirmDialog;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorSupport;

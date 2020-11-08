@@ -1,4 +1,4 @@
-package pwcg.gui.campaign.home;
+package pwcg.gui.campaign.personnel;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -21,6 +21,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -114,7 +115,7 @@ public class CampaignReferencePilotSelectorScreen extends ImageResizingPanel imp
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept Reference Pilot", "AcceptReferencePilot", "Make this pilot the reference pilot", this);
+        JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept", "AcceptReferencePilot", "Make this pilot the reference pilot", this);
         buttonPanel.add(acceptButton);
 
         JButton cancelButton = PWCGButtonFactory.makeTranslucentMenuButton("Cancel", "CancelReferencePilot", "Do not change the reference pilot", this);

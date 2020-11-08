@@ -1,4 +1,4 @@
-package pwcg.gui.campaign.skins;
+package pwcg.gui.campaign.personnel;
 
 import java.util.ArrayList;
 import java.util.HashMap;

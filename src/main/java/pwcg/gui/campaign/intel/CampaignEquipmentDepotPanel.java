@@ -1,4 +1,4 @@
-package pwcg.gui.campaign.depot;
+package pwcg.gui.campaign.intel;
 
 import java.awt.BorderLayout;
 import java.awt.Font;

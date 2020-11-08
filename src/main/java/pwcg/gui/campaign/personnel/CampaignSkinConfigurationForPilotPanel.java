@@ -1,4 +1,4 @@
-package pwcg.gui.campaign.skins;
+package pwcg.gui.campaign.personnel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

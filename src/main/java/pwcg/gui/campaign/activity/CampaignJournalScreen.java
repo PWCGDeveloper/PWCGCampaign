@@ -1,4 +1,4 @@
-package pwcg.gui.campaign.journal;
+package pwcg.gui.campaign.activity;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;

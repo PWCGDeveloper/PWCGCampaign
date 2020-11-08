@@ -1,4 +1,4 @@
-package pwcg.gui.campaign.transfer;
+package pwcg.gui.campaign.activity;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

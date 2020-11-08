@@ -2,7 +2,6 @@ package pwcg.gui.campaign.home;
 
 import java.awt.event.ActionEvent;
 
-import pwcg.aar.AARCoordinator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -12,29 +11,14 @@ import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGErrorBundler;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.campaign.config.CampaignAdvancedConfigurationScreen;
-import pwcg.gui.campaign.config.CampaignSimpleConfigurationScreen;
-import pwcg.gui.campaign.coop.CampaignCoopAdminScreen;
-import pwcg.gui.campaign.depot.CampaignEquipmentDepotScreen;
-import pwcg.gui.campaign.intel.CampaignIntelligenceReportScreen;
-import pwcg.gui.campaign.journal.CampaignJournalScreen;
-import pwcg.gui.campaign.journal.CampaignSquadronLogScreen;
+import pwcg.gui.campaign.activity.CampaignActivityScreen;
+import pwcg.gui.campaign.config.CampaignConfigurationScreen;
+import pwcg.gui.campaign.intel.CampaignIntelScreen;
+import pwcg.gui.campaign.mission.CampaignMissionScreen;
+import pwcg.gui.campaign.personnel.CampaignPersonnelScreen;
 import pwcg.gui.campaign.pilot.CampaignPilotScreen;
-import pwcg.gui.campaign.skins.CampaignSkinConfigurationScreen;
-import pwcg.gui.campaign.transfer.CampaignLeaveScreen;
-import pwcg.gui.campaign.transfer.CampaignTransferScreen;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.HelpDialog;
-import pwcg.gui.maingui.campaigngenerate.CampaignNewPilotScreen;
-import pwcg.gui.rofmap.brief.BriefingCoopPersonaChooser;
-import pwcg.gui.rofmap.brief.BriefingDescriptionScreen;
-import pwcg.gui.rofmap.debrief.DebriefMissionDescriptionScreen;
-import pwcg.gui.rofmap.intelmap.IntelMapGUI;
-import pwcg.gui.sound.MusicManager;
-import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.UIUtils;
-import pwcg.mission.Mission;
-import pwcg.mission.MissionHumanParticipants;
 
 public class CampaignHomeAction
 {
@@ -63,84 +47,27 @@ public class CampaignHomeAction
             }
             else if (action.equalsIgnoreCase("CampMission"))
             {
-            	if (campaign.isCoop() && campaign.getCurrentMission() == null)
-            	{
-                	showCoopPersonaChooser();
-            	}
-            	else
-            	{
-	                MissionHumanParticipants participatingPlayers = buildParticipatingPlayersSinglePlayer();
-	            	GuiMissionInitiator missionInitiator = new GuiMissionInitiator(campaign, participatingPlayers);
-	                Mission mission = missionInitiator.makeMission(false);
-	                showBriefingMap(mission);
-            	}
+                showCampaignMissionActions();
             }
-            else if (action.equalsIgnoreCase("CampMissionLoneWolf"))
+            else if (action.equalsIgnoreCase("CampPersonnel"))
             {
-                MissionHumanParticipants participatingPlayers = buildParticipatingPlayersSinglePlayer();
-             	GuiMissionInitiator missionInitiator = new GuiMissionInitiator(campaign, participatingPlayers);
-                Mission mission = missionInitiator.makeMission(true);
-                showBriefingMap(mission);
+                showCampaignPersonnelActions();
             }
-            else if (action.equalsIgnoreCase("CampChangeReferencePilot"))
+            else if (action.equalsIgnoreCase("CampActivity"))
             {
-                showChangeReferencePilot();
+                showCampaignActivities();
             }
-            else if (action.equalsIgnoreCase("CampFlowTransfer"))
+            else if (action.equals("CampIntel"))
             {
-                showTransfer();
+                showIntel();
             }
-            else if (action.equalsIgnoreCase("CampFlowCombatReport"))
+            else if (action.equals("CampConfig"))
             {
-                showAAR();
-            }
-            else if (action.equalsIgnoreCase("CampFlowLeave"))
-            {
-                showLeavePage();
-            }
-            else if (action.equalsIgnoreCase("CampFlowJournal"))
-            {
-                showJournal();
-            }
-            else if (action.equalsIgnoreCase("AdminCoopPilots"))
-            {
-                showAdminCoopPilots();
-            }
-            else if (action.equalsIgnoreCase("CampFlowLog"))
-            {
-                showCampaignLog();
-            }
-            else if (action.equalsIgnoreCase("CampSkinManager"))
-            {
-                showSkinManager();
-            }
-            else if (action.equalsIgnoreCase("CampFlowIntelligence"))
-            {
-                showIntelReport();
-            }
-            else if (action.equalsIgnoreCase("EquipmentDepotReport"))
-            {
-                showEquipmentDepotReport();
-            }
-            else if (action.equalsIgnoreCase("CampIntelMap"))
-            {
-                showIntelMap();
+                showConfig();
             }
             else if (action.startsWith("CampFlowPilot"))
             {
                 showPilot(action);
-            }
-            else if (action.equalsIgnoreCase("AddHumanPilot"))
-            {
-                showAddHumanPilot();
-            }
-            else if (action.equals("CampSimpleConfig"))
-            {
-                showSimpleConfig();
-            }
-            else if (action.equals("CampAdvancedConfig"))
-            {
-                showAdvancedConfig();
             }
         }
         catch (PWCGUserException ue)
@@ -163,153 +90,6 @@ public class CampaignHomeAction
         }
     }
 
-    private void showAddHumanPilot() throws PWCGException
-    {
-        SoundManager.getInstance().playSound("Typewriter.WAV");
-        CampaignNewPilotScreen addPilotDisplay = new CampaignNewPilotScreen(campaign, campaignHome, null);
-        addPilotDisplay.makePanels();        
-        CampaignGuiContextManager.getInstance().pushToContextStack(addPilotDisplay);
-    }
-
-    private void showBriefingMap(Mission mission) throws PWCGException 
-    {
-    	MusicManager.playMissionBriefingTheme();
-    	SoundManager.getInstance().playSound("Typewriter.WAV");
-
-        BriefingDescriptionScreen briefingMap = new BriefingDescriptionScreen(campaignHome, mission);
-        briefingMap.makePanels();
-        CampaignGuiContextManager.getInstance().pushToContextStack(briefingMap);
-    }
-
-    private void showCoopPersonaChooser() throws PWCGException 
-    {
-    	BriefingCoopPersonaChooser coopPersonaChooser = new BriefingCoopPersonaChooser(campaign, campaignHome);
-    	coopPersonaChooser.makePanels();
-        CampaignGuiContextManager.getInstance().pushToContextStack(coopPersonaChooser);
-    }
-
-    private void showChangeReferencePilot() throws PWCGException
-    {
-        CampaignReferencePilotSelectorScreen referencePilotSelector = new CampaignReferencePilotSelectorScreen(campaign, campaignHome);
-        referencePilotSelector.makePanels();
-        CampaignGuiContextManager.getInstance().pushToContextStack(referencePilotSelector);
-    }
-
-    private void showTransfer() throws PWCGException 
-    {
-        SoundManager.getInstance().playSound("Typewriter.WAV");
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
-        CampaignTransferScreen transferDisplay = new CampaignTransferScreen(campaignHome, referencePlayer);
-        transferDisplay.makePanels();        
-        CampaignGuiContextManager.getInstance().pushToContextStack(transferDisplay);
-    }
-
-    private void showLeavePage() throws PWCGException 
-    {
-        SoundManager.getInstance().playSound("Typewriter.WAV");
-
-        CampaignLeaveScreen leaveDisplay = new CampaignLeaveScreen(campaignHome);
-        leaveDisplay.makePanels();
-        
-        CampaignGuiContextManager.getInstance().pushToContextStack(leaveDisplay);
-    }
-
-    private void showAAR() throws PWCGException 
-    {
-        SoundManager.getInstance().playSound("Typewriter.WAV");
-        
-        try
-        {
-            AARCoordinator.getInstance().aarPreliminary(campaign);
-            
-            DebriefMissionDescriptionScreen combatReportDisplay = new DebriefMissionDescriptionScreen(campaign, campaignHome);
-            combatReportDisplay.makePanels();
-            CampaignGuiContextManager.getInstance().pushToContextStack(combatReportDisplay);
-        }
-        catch (PWCGException e)
-        {
-            new  HelpDialog("PWCG was unable to find a log set for your last mission " + campaign.getCampaignData().getName());
-        }
-    }
-
-    private void showJournal() throws PWCGException 
-    {
-        SoundManager.getInstance().playSound("BookOpen.WAV");
-
-        CampaignJournalScreen journalDisplay = new CampaignJournalScreen(campaign);
-        journalDisplay.makePanels();
-
-        CampaignGuiContextManager.getInstance().pushToContextStack(journalDisplay);
-    }
-
-    private void showAdminCoopPilots() throws PWCGException 
-    {
-        SoundManager.getInstance().playSound("BookOpen.WAV");
-
-        CampaignCoopAdminScreen adminCoopPilotDisplay = new CampaignCoopAdminScreen(campaignHome, campaign);
-        adminCoopPilotDisplay.makePanels();
-
-        CampaignGuiContextManager.getInstance().pushToContextStack(adminCoopPilotDisplay);
-    }
-
-    private void showCampaignLog() throws PWCGException 
-    {
-        SoundManager.getInstance().playSound("BookOpen.WAV");
-
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
-        CampaignSquadronLogScreen logDisplay = new CampaignSquadronLogScreen(referencePlayer.getSquadronId());
-        logDisplay.makePanels();
-
-        CampaignGuiContextManager.getInstance().pushToContextStack(logDisplay);
-    }
-
-    private void showSkinManager() throws PWCGException 
-    {
-        SoundManager.getInstance().playSound("Typewriter.WAV");
-        
-        CampaignSkinConfigurationScreen skinDisplay = new CampaignSkinConfigurationScreen(campaign);
-        skinDisplay.makePanels();
-
-        CampaignGuiContextManager.getInstance().pushToContextStack(skinDisplay);
-    }
-
-    private void showIntelReport() throws PWCGException 
-    {
-        CampaignIntelligenceReportScreen intelligence = new CampaignIntelligenceReportScreen(campaign);
-        intelligence.makePanels();
-
-        CampaignGuiContextManager.getInstance().pushToContextStack(intelligence);
-    }
-
-    private void showEquipmentDepotReport() throws PWCGException 
-    {
-        CampaignEquipmentDepotScreen depot = new CampaignEquipmentDepotScreen(campaign);
-        depot.makePanels();
-
-        CampaignGuiContextManager.getInstance().pushToContextStack(depot);
-    }
-    
-    private void showIntelMap() throws PWCGException 
-    {
-        IntelMapGUI map = new IntelMapGUI(campaign.getDate());
-        map.makePanels();
-        CampaignGuiContextManager.getInstance().pushToContextStack(map);
-    }
-
-    private void showSimpleConfig() throws PWCGException 
-    {
-        CampaignSimpleConfigurationScreen simpleConfigGUI = new CampaignSimpleConfigurationScreen(campaign);
-        simpleConfigGUI.makePanels();
-        CampaignGuiContextManager.getInstance().pushToContextStack(simpleConfigGUI);
-    }
-
-    private void showAdvancedConfig() throws PWCGException 
-    {
-        CampaignAdvancedConfigurationScreen simpleConfigGUI = new CampaignAdvancedConfigurationScreen(campaign);
-        simpleConfigGUI.makePanels();
-        CampaignGuiContextManager.getInstance().pushToContextStack(simpleConfigGUI);
-    }
-
     private void showPilot(String action) throws PWCGException 
     {
         SquadronMember pilot = UIUtils.getPilotFromAction(campaign, action);
@@ -327,13 +107,40 @@ public class CampaignHomeAction
             CampaignGuiContextManager.getInstance().pushToContextStack(pilotPanel);
         }
     }
-    
-    private MissionHumanParticipants buildParticipatingPlayersSinglePlayer() throws PWCGException
+
+    private void showCampaignMissionActions() throws PWCGException
     {
-        MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-	    SquadronMember referencePlayer = campaign.findReferencePlayer();
-        participatingPlayers.addSquadronMember(referencePlayer);        
-        return participatingPlayers;
+        CampaignMissionScreen missionGUI = new CampaignMissionScreen(campaign, campaignHome);
+        missionGUI.makePanels();
+        CampaignGuiContextManager.getInstance().pushToContextStack(missionGUI);        
+    }
+    
+    private void showCampaignPersonnelActions() throws PWCGException
+    {
+        CampaignPersonnelScreen personnelGUI = new CampaignPersonnelScreen(campaign, campaignHome);
+        personnelGUI.makePanels();
+        CampaignGuiContextManager.getInstance().pushToContextStack(personnelGUI);        
+    }
+    
+    private void showCampaignActivities() throws PWCGException
+    {
+        CampaignActivityScreen activityGUI = new CampaignActivityScreen(campaign, campaignHome);
+        activityGUI.makePanels();
+        CampaignGuiContextManager.getInstance().pushToContextStack(activityGUI);        
+    }
+
+    private void showIntel() throws PWCGException
+    {
+        CampaignIntelScreen intelGUI = new CampaignIntelScreen(campaign);
+        intelGUI.makePanels();
+        CampaignGuiContextManager.getInstance().pushToContextStack(intelGUI);
+    }
+
+    private void showConfig() throws PWCGException
+    {
+        CampaignConfigurationScreen configGUI = new CampaignConfigurationScreen(campaign);
+        configGUI.makePanels();
+        CampaignGuiContextManager.getInstance().pushToContextStack(configGUI);
     }
 
 }

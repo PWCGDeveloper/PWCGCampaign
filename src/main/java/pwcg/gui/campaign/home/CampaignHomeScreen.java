@@ -91,7 +91,7 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
 
     private JPanel makeLeftPanel() throws PWCGException
     {
-        CampaignHomeGUILeftPanelBuilder leftPanelBuilder = new CampaignHomeGUILeftPanelBuilder(campaign, this);
+        CampaignHomeGUILeftPanelBuilder leftPanelBuilder = new CampaignHomeGUILeftPanelBuilder(this);
         return leftPanelBuilder.makeLeftPanel();
     }
 
