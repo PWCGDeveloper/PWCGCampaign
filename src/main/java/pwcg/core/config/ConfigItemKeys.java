@@ -17,6 +17,8 @@ public class ConfigItemKeys
 	public static final String SimpleConfigAirKey = "SimpleConfigAir";
     public static final String SimpleConfigGroundKey = "SimpleConfigGround";
     public static final String SimpleConfigAAKey = "SimpleConfigAA";
+    public static final String SimpleConfigCpuAllowanceKey = "SimpleConfigCpuAllowance";
+    
 	
 	public static final String WeatherClearCloudsKey = "Weather1ClearClouds";
 	public static final String WeatherLightCloudsKey = "Weather2LightClouds";

@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\leyland3tonraf\\",
   "vehicleType": "leyland3tonraf",
+  "vehicleName": "Leyland 3 Ton Truck",
   "displayName": "truck",
   "countries": [
     "FRANCE",

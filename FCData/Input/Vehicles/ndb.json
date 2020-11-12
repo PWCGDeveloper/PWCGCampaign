@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\ndb\\",
   "vehicleType": "ndb",
+  "vehicleName": "radio beacon",
   "displayName": "radio beacon",
   "countries": [
     "GERMANY",

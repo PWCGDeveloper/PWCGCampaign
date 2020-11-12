@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\mk5m\\",
   "vehicleType": "mk5m",
+  "vehicleName": "MK.5M Tank",
   "displayName": "Tank",
   "countries": [
     "FRANCE",

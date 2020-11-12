@@ -50,6 +50,11 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
     private ButtonModel aaMedButtonModel = null;
     private ButtonModel aaHighButtonModel = null;
 
+    private ButtonGroup cpuAllowanceButtonGroup = new ButtonGroup();
+    private ButtonModel cpuAllowanceLowButtonModel = null;
+    private ButtonModel cpuAllowanceMedButtonModel = null;
+    private ButtonModel cpuAllowanceHighButtonModel = null;
+
     private Campaign campaign;
 
     public CampaignSimpleConfigurationScreen(Campaign campaign)
@@ -118,6 +123,20 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
         {
             aaButtonGroup.setSelected(aaHighButtonModel, true);
         }
+        
+        String currentCpuAllowanceSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigCpuAllowanceKey);
+        if (currentCpuAllowanceSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        {
+            cpuAllowanceButtonGroup.setSelected(cpuAllowanceLowButtonModel, true);
+        }
+        else if (currentCpuAllowanceSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+        {
+            cpuAllowanceButtonGroup.setSelected(cpuAllowanceMedButtonModel, true);
+        }
+        else if (currentCpuAllowanceSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+        {
+            cpuAllowanceButtonGroup.setSelected(cpuAllowanceHighButtonModel, true);
+        }
 
 	}
 
@@ -155,7 +174,7 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
 		JPanel airButtonPanel = createAirConfigPanel();
         JPanel groundButtonPanel = createGroundConfigPanel();
         JPanel aaButtonPanel = createAAConfigPanel();
-        
+        JPanel cpuAllowanceButtonPanel = createCpuAllowanceConfigPanel();
         
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
         ImageResizingPanel simpleConfigButtonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
@@ -166,10 +185,11 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
 		simpleConfigButtonPanel.add(airButtonPanel);
         simpleConfigButtonPanel.add(groundButtonPanel);
         simpleConfigButtonPanel.add(aaButtonPanel);
+        simpleConfigButtonPanel.add(cpuAllowanceButtonPanel);
 				
 		return simpleConfigButtonPanel;
 	}
-    
+
     private JPanel createAirConfigPanel() throws PWCGException
     {
         JPanel airButtonPanel = new JPanel(new BorderLayout());
@@ -270,6 +290,40 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
         aaButtonPanel.add(aaDensityGrid, BorderLayout.NORTH);
         
         return aaButtonPanel;
+    }
+    
+    private JPanel createCpuAllowanceConfigPanel() throws PWCGException
+    {
+        JPanel cpuAllowanceButtonPanel = new JPanel(new BorderLayout());
+        cpuAllowanceButtonPanel.setOpaque(false);
+
+        JLabel spacerLabel = makeLabel("          ");        
+        cpuAllowanceButtonPanel.add(spacerLabel, BorderLayout.WEST);
+
+        JPanel cpuAllowanceGrid = new JPanel(new GridLayout(0,1));
+        cpuAllowanceGrid.setOpaque(false);
+        
+        JLabel cpuAllowanceLabel = PWCGButtonFactory.makePaperLabelLarge(CampaignConfigurationSimpleGUIController.ACTION_SET_CPU_ALOWANCE_DENSITY + ":");
+        cpuAllowanceGrid.add(cpuAllowanceLabel);
+
+        JRadioButton lowDensity = PWCGButtonFactory.makeRadioButton("Low", "Low CPU Allowance", "Very few CPU expensive units", false, this, ColorMap.PAPER_FOREGROUND);     
+        cpuAllowanceGrid.add(lowDensity);
+        cpuAllowanceLowButtonModel = lowDensity.getModel();
+        cpuAllowanceButtonGroup.add(lowDensity);
+
+        JRadioButton medDensity = PWCGButtonFactory.makeRadioButton("Med", "Med CPU Allowance", "Some CPU expensive units", false, this, ColorMap.PAPER_FOREGROUND);     
+        cpuAllowanceGrid.add(medDensity);
+        cpuAllowanceMedButtonModel = medDensity.getModel();
+        cpuAllowanceButtonGroup.add(medDensity);
+        
+        JRadioButton highDensity = PWCGButtonFactory.makeRadioButton("High", "High CPU Allowance", "No consideration of CPU expense", false, this, ColorMap.PAPER_FOREGROUND);     
+        cpuAllowanceGrid.add(highDensity);
+        cpuAllowanceHighButtonModel = highDensity.getModel();
+        cpuAllowanceButtonGroup.add(highDensity);
+
+        cpuAllowanceButtonPanel.add(cpuAllowanceGrid, BorderLayout.NORTH);
+        
+        return cpuAllowanceButtonPanel;
     }
 
 	private JLabel makeLabel(String buttonName) throws PWCGException

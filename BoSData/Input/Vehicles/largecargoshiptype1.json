@@ -1,18 +1,19 @@
 {
-  "scriptDir": "ships\\",
-  "modelDir": "ships\\largecargoshiptype1\\",
-  "vehicleType": "largecargoshiptype1",
-  "vehicleName": "Cargo Ship",
-  "displayName": "cargo ship",
-  "countries": [
-    "GERMANY",
-    "ITALY",
-    "RUSSIA",
-    "USA",
-    "BRITAIN"
-  ],
-  "startDate": "19390901",
-  "endDate": "19460724",
-  "rarityWeight": 80,
-  "vehicleClass": "ShipCargo"
+	"scriptDir": "ships\\",
+	"modelDir": "ships\\largecargoshiptype1\\",
+	"vehicleType": "largecargoshiptype1",
+	"vehicleName": "Cargo Ship",
+	"displayName": "cargo ship",
+	"countries": [
+		"GERMANY",
+		"ITALY",
+		"RUSSIA",
+		"USA",
+		"BRITAIN"
+	],
+	"startDate": "19390901",
+	"endDate": "19460724",
+	"rarityWeight": 80,
+	"vehicleClass": "ShipCargo",
+	"vehicleLength": 230
 }

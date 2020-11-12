@@ -5,7 +5,11 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.RoleCategory;
 import pwcg.core.config.ConfigItemKeys;
+import pwcg.core.config.ConfigManagerCampaign;
+import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypeCategory;
 import pwcg.mission.flight.FlightTypes;
@@ -74,19 +78,31 @@ public class MissionFlightKeeper
     
     private List<IFlight> selectFlightsToKeep(int maxToKeep, Side side, List<IFlight> aiFlights) throws PWCGException
     {
+        int maxBomberToKeep = getMaxBomberFlights(maxToKeep, side);
+        int numBomberKept = 0;
+
         int maxFighterToKeep = getMaxFighterFlights(maxToKeep);
         int numFighterKept = 0;
         
         List<IFlight> keptFlights = new ArrayList<IFlight>();
         for (IFlight flight : aiFlights)
         {
-            boolean isFighterFlight = isConsideredExcessFighterFlight(flight);
-            if (isFighterFlight)
+            boolean isPossibleExcessFighterFlight = isConsideredExcessFighterFlight(flight);
+            boolean isPossibleExcessBomberFlight = isConsideredExcessBomberFlight(flight);
+            if (isPossibleExcessFighterFlight)
             {
                 if ((numFighterKept < maxFighterToKeep) && (keptFlights.size() < maxToKeep))
                 {
                     keptFlights.add(flight);
                     ++numFighterKept;
+                }
+            }
+            else if (isPossibleExcessBomberFlight)
+            {
+                if ((numBomberKept < maxBomberToKeep) && (keptFlights.size() < maxToKeep))
+                {
+                    keptFlights.add(flight);
+                    ++numBomberKept;
                 }
             }
             else
@@ -100,19 +116,33 @@ public class MissionFlightKeeper
 
         return keptFlights;
     }
-    
+
     private boolean isConsideredExcessFighterFlight(IFlight aiFlight)
     {
-    	boolean isPlayerFlightFighter = mission.getMissionFlightBuilder().hasPlayerFlightWithFlightTypes(FlightTypes.getFlightTypesByCategory(FlightTypeCategory.FIGHTER));
+        boolean isPlayerFlightFighter = mission.getMissionFlightBuilder().hasPlayerFlightWithFlightTypes(FlightTypes.getFlightTypesByCategory(FlightTypeCategory.FIGHTER));
         boolean isAiFighterSquadron = aiFlight.isFlightHasFighterPlanes();
         boolean isAiFighterFlight = aiFlight.getFlightType().isCategory(FlightTypeCategory.FIGHTER);
         
         if (isAiFighterFlight)
         {
-        	return true;
+            return true;
         }
 
         if (!isPlayerFlightFighter && isAiFighterSquadron)
+        {
+            return true;
+        }
+        
+        return false;
+    }
+
+    private boolean isConsideredExcessBomberFlight(IFlight aiFlight) throws PWCGException
+    {
+        Role squadronPrimaryRole = aiFlight.getSquadron().determineSquadronPrimaryRole(campaign.getDate());
+        boolean isAiBomberFlight = squadronPrimaryRole.isRoleCategory(RoleCategory.BOMBER) || 
+                squadronPrimaryRole.isRoleCategory(RoleCategory.TRANSPORT);
+        
+        if (isAiBomberFlight)
         {
             return true;
         }
@@ -124,5 +154,37 @@ public class MissionFlightKeeper
     {
         MaxFighterFlightCalculator maxFighterFlightCalculator = new MaxFighterFlightCalculator(campaign, mission);
         return maxFighterFlightCalculator.getMaxFighterFlightsForMission(maxFlightsForSide);
+    }
+    
+    private int getMaxBomberFlights(int maxToKeep, Side side) throws PWCGException
+    {
+        int maxBomberFlights = 1;
+        ConfigManagerCampaign configManager = mission.getCampaign().getCampaignConfigManager();
+        String currentCpuAllowanceSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigCpuAllowanceKey);
+        if (currentCpuAllowanceSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        {
+            Side missionSide = mission.getMissionSide();
+            if (missionSide == Side.NEUTRAL)
+            {
+                maxBomberFlights = 1;
+            }
+            else if (missionSide == side)
+            {
+                maxBomberFlights = 0;
+            }
+            else
+            {
+                maxBomberFlights = 1;
+            }
+        }
+        else if (currentCpuAllowanceSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+        {
+            maxBomberFlights = 1;
+        }
+        else if (currentCpuAllowanceSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+        {
+            maxBomberFlights = 99;
+        }
+        return maxBomberFlights;
     }
 }

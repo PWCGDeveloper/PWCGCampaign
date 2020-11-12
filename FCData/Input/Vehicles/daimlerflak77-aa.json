@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\daimlerm1914\\",
   "vehicleType": "daimlerflak77-aa",
+  "vehicleName": "Daimler Flak77 Truck",
   "displayName": "truck",
   "countries": [
     "GERMANY"

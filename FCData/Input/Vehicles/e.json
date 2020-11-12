@@ -2,6 +2,7 @@
   "scriptDir": "trains\\",
   "modelDir": "trains\\e\\",
   "vehicleType": "e",
+  "vehicleName": "E Type Locomotive",
   "displayName": "locomotive",
   "countries": [
     "GERMANY",

@@ -1,18 +1,19 @@
 {
-  "scriptDir": "ships\\",
-  "modelDir": "ships\\subtypesh10\\",
-  "vehicleType": "subtypesh10",
-  "vehicleName": "Large Submarine",
-  "displayName": "submarine",
-  "countries": [
-    "GERMANY",
-    "ITALY",
-    "RUSSIA",
-    "USA",
-    "BRITAIN"
-  ],
-  "startDate": "19390901",
-  "endDate": "19460724",
-  "rarityWeight": 30,
-  "vehicleClass": "Submarine"
+	"scriptDir": "ships\\",
+	"modelDir": "ships\\subtypesh10\\",
+	"vehicleType": "subtypesh10",
+	"vehicleName": "Large Submarine",
+	"displayName": "submarine",
+	"countries": [
+		"GERMANY",
+		"ITALY",
+		"RUSSIA",
+		"USA",
+		"BRITAIN"
+	],
+	"startDate": "19390901",
+	"endDate": "19460724",
+	"rarityWeight": 30,
+	"vehicleClass": "Submarine",
+	"vehicleLength": 120
 }

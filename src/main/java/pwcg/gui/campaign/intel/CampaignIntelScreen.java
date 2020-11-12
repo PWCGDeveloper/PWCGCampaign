@@ -7,14 +7,17 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.EmergencyResupplyHandler;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.dialogs.ConfirmDialog;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.rofmap.intelmap.IntelMapGUI;
 import pwcg.gui.utils.CommonUIActions;
@@ -72,6 +75,12 @@ public class CampaignIntelScreen extends ImageResizingPanel implements ActionLis
         JButton equipmentDepotButton = PWCGButtonFactory.makeTranslucentMenuButton("Depot Report", "EquipmentDepotReport", "View equipment depot report", this);
         buttonPanel.add(equipmentDepotButton);
 
+        JLabel spacer3 = PWCGButtonFactory.makePaperLabelLarge("   ");
+        buttonPanel.add(spacer3);
+
+        JButton emergencyResupplyButton = PWCGButtonFactory.makeTranslucentMenuButton("Emergency Resupply", "EmergencyResupply", "Resupply depleted units", this);
+        buttonPanel.add(emergencyResupplyButton);
+
 		simpleConfigAcceptPanel.add(buttonPanel, BorderLayout.NORTH);
 
 		return simpleConfigAcceptPanel;
@@ -93,6 +102,10 @@ public class CampaignIntelScreen extends ImageResizingPanel implements ActionLis
             else if (action.equalsIgnoreCase("CampIntelMap"))
             {
                 showIntelMap();
+            }
+            else if (action.equalsIgnoreCase("EmergencyResupply"))
+            {
+                emergencyResupply();
             }
             else if (action.equals(CommonUIActions.FINISHED))
             {
@@ -127,6 +140,23 @@ public class CampaignIntelScreen extends ImageResizingPanel implements ActionLis
         IntelMapGUI map = new IntelMapGUI(campaign.getDate());
         map.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(map);
+    }
+
+    private void emergencyResupply()
+    {
+        int result = ConfirmDialog.areYouSure("Confirm Emergency Resupply.  Cannot be reversed");
+        if (result == JOptionPane.YES_OPTION)
+        {
+            try
+            {
+                EmergencyResupplyHandler resupplyHandler = new EmergencyResupplyHandler(campaign);
+                resupplyHandler.emergencyResupply();
+            }
+            catch (PWCGException e)
+            {
+                PWCGLogger.logException(e);
+            }
+        }        
     }
 }
 

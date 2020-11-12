@@ -2,6 +2,7 @@
   "scriptDir": "ships\\",
   "modelDir": "ships\\1124\\",
   "vehicleType": "1124",
+  "vehicleName": "Barge",
   "displayName": "drifter",
   "countries": [
     "GERMANY",

@@ -1,6 +1,34 @@
 
 ​At the PWCG web site
 
+11.6.1
+Fixed flying boats on rivers
+Fixed error in AAR in FC due to missing vehicle names
+
+11.6.0
+Updated Campaign Main Screen
+- Consolidated several buttons into sub menus.
+- See tool tip (hover over button) to see where things have gone
+Added Emergency Resupply feature
+- Use if your campaign is depleted and not generating oppositon
+- Campaign -> Intelligence -> Emergency Resupply
+- Verify resupply by looking at Campaign -> Intelligence -> Intelligence Report
+Added CPU Allowance Simple Config
+- Accessible from the simple config screen
+- Allows you to tone down high CPU mission elements
+- Low: One enemy bomber flight.  No friendly bomber flights.  No virtual escorts.
+- Medium: One enemy bomber flight.  One friendly bomber flights.  COnfigured max virtual escorts for enemy flights.
+- High: CPU allowances not considered.
+- CPU allowance config does not affect other configs such as air, ground, and AA.  Also does not impact advanced configs.  
+- Setting air, ground, AA, and CPU allowance to low gets lightest possible mission.
+- Allows for more limits on high CPU mission elements as they are identified.
+- If you are low CPU allowance, recommend scrubbing strategic intercepts.
+
+11.5.1
+Fix designation of C47 "Type"
+- Could cause AAR failure to accept claim
+Fix failure to write new squadrons under some conditions
+- Could cause AAR to fail
 
 11.5.0
 Hurricane

@@ -8,6 +8,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IMissionFile;
+import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.io.json.CampaignMissionIOJson;
@@ -275,6 +276,38 @@ public class Mission
     {
         MissionAirfieldBuilder airfieldBuilder = new MissionAirfieldBuilder(campaign, this);
         return airfieldBuilder.getFieldsForPatrol();
+    }
+
+    public Side getMissionSide() throws PWCGException
+    {
+        boolean hasPlayerAllied = false;
+        boolean hasPlayerAxis = false;
+        for (IFlight flight : missionFlightBuilder.getPlayerFlights())
+        {
+            if (flight.getSquadron().determineSide() == Side.ALLIED)
+            {
+                hasPlayerAllied = true;
+            }
+            else
+            {
+                hasPlayerAxis = true;
+            }
+        }
+        
+        if (hasPlayerAllied && hasPlayerAxis)
+        {
+            return Side.NEUTRAL;
+        }
+        else if (hasPlayerAllied)
+        {
+            return Side.ALLIED;
+        }
+        else if (hasPlayerAxis)
+        {
+            return Side.AXIS;
+        }
+        
+        return Side.NEUTRAL;
     }
 
     public void registerAssault(AssaultDefinition missionBattle)

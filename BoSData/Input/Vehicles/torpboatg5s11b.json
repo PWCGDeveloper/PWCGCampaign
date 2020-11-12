@@ -1,16 +1,17 @@
 {
-  "scriptDir": "ships\\",
-  "modelDir": "ships\\torpboatg5s11b\\",
-  "vehicleType": "torpboatg5s11b",
-  "vehicleName": "Torpedo Boat G5 Ser 7",
-  "displayName": "torpedo boat",
-  "countries": [
-    "RUSSIA",
-    "USA",
-    "BRITAIN"
-  ],
-  "startDate": "19390901",
-  "endDate": "19460724",
-  "rarityWeight": 80,
-  "vehicleClass": "ShipWarship"
+	"scriptDir": "ships\\",
+	"modelDir": "ships\\torpboatg5s11b\\",
+	"vehicleType": "torpboatg5s11b",
+	"vehicleName": "Torpedo Boat G5 Ser 7",
+	"displayName": "torpedo boat",
+	"countries": [
+		"RUSSIA",
+		"USA",
+		"BRITAIN"
+	],
+	"startDate": "19390901",
+	"endDate": "19460724",
+	"rarityWeight": 80,
+	"vehicleClass": "ShipWarship",
+	"vehicleLength": 50
 }

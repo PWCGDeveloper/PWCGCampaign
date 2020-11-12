@@ -69,4 +69,19 @@ public enum VehicleClass
         VehicleClass[] possibleValues = VehicleClass.class.getEnumConstants();
         return Arrays.asList(possibleValues);
     }
+    
+    public static boolean isShip(VehicleClass vehicleClass)
+    {
+        if (vehicleClass == Drifter || vehicleClass == DrifterAAA)
+        {
+            return true;
+        }
+        
+        if (vehicleClass == ShipCargo || vehicleClass == ShipWarship || vehicleClass == Submarine)
+        {
+            return true;
+        }
+        
+        return false;
+    }
 }

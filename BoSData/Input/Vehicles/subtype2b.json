@@ -1,18 +1,19 @@
 {
-  "scriptDir": "ships\\",
-  "modelDir": "ships\\subtype2b\\",
-  "vehicleType": "subtype2b",
-  "vehicleName": "Submarine",
-  "displayName": "submarine",
-  "countries": [
-    "GERMANY",
-    "ITALY",
-    "RUSSIA",
-    "USA",
-    "BRITAIN"
-  ],
-  "startDate": "19390901",
-  "endDate": "19460724",
-  "rarityWeight": 80,
-  "vehicleClass": "Submarine"
+	"scriptDir": "ships\\",
+	"modelDir": "ships\\subtype2b\\",
+	"vehicleType": "subtype2b",
+	"vehicleName": "Submarine",
+	"displayName": "submarine",
+	"countries": [
+		"GERMANY",
+		"ITALY",
+		"RUSSIA",
+		"USA",
+		"BRITAIN"
+	],
+	"startDate": "19390901",
+	"endDate": "19460724",
+	"rarityWeight": 80,
+	"vehicleClass": "Submarine",
+	"vehicleLength": 90
 }

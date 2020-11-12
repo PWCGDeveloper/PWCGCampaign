@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "artillery\\qf45in\\",
   "vehicleType": "qf45in",
+  "vehicleName": "QF 4.5 Inch Howitzer",
   "displayName": "howitzer",
   "countries": [
     "FRANCE",

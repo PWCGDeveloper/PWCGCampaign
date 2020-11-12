@@ -1,18 +1,19 @@
 {
-  "scriptDir": "ships\\",
-  "modelDir": "ships\\1124bm13\\",
-  "vehicleType": "1124bm13",
-  "vehicleName": "BK-1124 BM13 Gunboat",
-  "displayName": "drifter",
-  "countries": [
-    "GERMANY",
-    "ITALY",
-    "RUSSIA",
-    "USA",
-    "BRITAIN"
-  ],
-  "startDate": "19390901",
-  "endDate": "19460724",
-  "rarityWeight": 60,
-  "vehicleClass": "Drifter"
+	"scriptDir": "ships\\",
+	"modelDir": "ships\\1124bm13\\",
+	"vehicleType": "1124bm13",
+	"vehicleName": "BK-1124 BM13 Gunboat",
+	"displayName": "drifter",
+	"countries": [
+		"GERMANY",
+		"ITALY",
+		"RUSSIA",
+		"USA",
+		"BRITAIN"
+	],
+	"startDate": "19390901",
+	"endDate": "19460724",
+	"rarityWeight": 60,
+	"vehicleClass": "Drifter",
+	"vehicleLength": 50
 }

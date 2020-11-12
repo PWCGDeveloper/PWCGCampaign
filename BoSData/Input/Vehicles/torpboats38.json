@@ -1,15 +1,16 @@
 {
-  "scriptDir": "ships\\",
-  "modelDir": "ships\\torpboats38\\",
-  "vehicleType": "torpboats38",
-  "vehicleName": "Torpedo Boat 38",
-  "displayName": "torpedo boat",
-  "countries": [
-    "GERMANY",
-    "ITALY"
-  ],
-  "startDate": "19390901",
-  "endDate": "19460724",
-  "rarityWeight": 80,
-  "vehicleClass": "ShipWarship"
+	"scriptDir": "ships\\",
+	"modelDir": "ships\\torpboats38\\",
+	"vehicleType": "torpboats38",
+	"vehicleName": "Torpedo Boat 38",
+	"displayName": "torpedo boat",
+	"countries": [
+		"GERMANY",
+		"ITALY"
+	],
+	"startDate": "19390901",
+	"endDate": "19460724",
+	"rarityWeight": 80,
+	"vehicleClass": "ShipWarship",
+	"vehicleLength": 80
 }

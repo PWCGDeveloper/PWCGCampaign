@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "artillery\\qf13pdr6cwt\\",
   "vehicleType": "qf13pdr6cwt",
+  "vehicleName": "QF 13 Pdr AA Gun",
   "displayName": "anti aircraft gun",
   "countries": [
     "FRANCE",

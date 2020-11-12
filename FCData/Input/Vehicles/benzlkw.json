@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\benzlkw\\",
   "vehicleType": "benzlkw",
+  "vehicleName": "Benz Truck",
   "displayName": "truck",
   "countries": [
 	"GERMANY"

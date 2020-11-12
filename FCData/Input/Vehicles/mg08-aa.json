@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "artillery\\mg08\\",
   "vehicleType": "mg08-aa",
+  "vehicleName": "MG08 AA",
   "displayName": "AAA machine gun",
   "countries": [
     "GERMANY"

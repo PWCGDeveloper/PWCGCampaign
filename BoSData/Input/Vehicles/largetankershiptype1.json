@@ -1,18 +1,19 @@
 {
-  "scriptDir": "ships\\",
-  "modelDir": "ships\\largetankershiptype1\\",
-  "vehicleName": "Tanker Ship",
-  "vehicleType": "largetankershiptype1",
-  "displayName": "tanker",
-  "countries": [
-    "GERMANY",
-    "ITALY",
-    "RUSSIA",
-    "USA",
-    "BRITAIN"
-  ],
-  "startDate": "19390901",
-  "endDate": "19460724",
-  "rarityWeight": 10,
-  "vehicleClass": "ShipCargo"
+	"scriptDir": "ships\\",
+	"modelDir": "ships\\largetankershiptype1\\",
+	"vehicleName": "Tanker Ship",
+	"vehicleType": "largetankershiptype1",
+	"displayName": "tanker",
+	"countries": [
+		"GERMANY",
+		"ITALY",
+		"RUSSIA",
+		"USA",
+		"BRITAIN"
+	],
+	"startDate": "19390901",
+	"endDate": "19460724",
+	"rarityWeight": 10,
+	"vehicleClass": "ShipCargo",
+	"vehicleLength": 250
 }

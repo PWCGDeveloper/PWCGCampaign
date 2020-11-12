@@ -2,6 +2,7 @@
   "scriptDir": "trains\\",
   "modelDir": "trains\\platformaa-61k\\",
   "vehicleType": "platformaa-61k",
+  "vehicleName": "61K AA Train Car",
   "displayName": "train car",
   "countries": [
     "GERMANY",

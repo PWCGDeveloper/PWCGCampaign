@@ -2,6 +2,7 @@
   "scriptDir": "ships\\",
   "modelDir": "ships\\destroyertype7\\",
   "vehicleType": "destroyertype7",
+  "vehicleName": "Destroyer",
   "displayName": "destroyer",
   "countries": [
     "GERMANY",

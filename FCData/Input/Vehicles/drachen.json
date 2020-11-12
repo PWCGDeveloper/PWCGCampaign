@@ -2,7 +2,8 @@
   "scriptDir": "Balloons\\",
   "modelDir": "balloons\\drachen\\",
   "vehicleType": "drachen",
-  "displayName": "Balloon",
+  "vehicleName": "Drachen Balloon",
+  "displayName": "balloon",
   "countries": [
 	"GERMANY"
   ],

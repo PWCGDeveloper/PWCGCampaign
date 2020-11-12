@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\mercedeskw22\\",
   "vehicleType": "mercedeskw22",
+  "vehicleName": "Mercedes Staff Car",
   "displayName": "staff car",
   "countries": [
     "GERMANY"

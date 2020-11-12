@@ -8,7 +8,7 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.personnel.PersonnelReplacementsService;
-import pwcg.campaign.personnel.SquadronMemberFemaleConverter;
+import pwcg.campaign.personnel.SquadronMemberFemaleGenerator;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.resupply.personnel.TransferRecord;
 import pwcg.campaign.squadmember.Ace;
@@ -125,15 +125,9 @@ public class PersonnelUpdater
     {
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(transferRecord.getTransferTo());
         transferRecord.getSquadronMember().setSquadronId(transferRecord.getTransferTo());
-        convertToFemale(transferRecord);
+        SquadronMember converted = SquadronMemberFemaleGenerator.convertToFemale(campaign, transferRecord.getTransferTo(), transferRecord.getSquadronMember());
+        transferRecord.setSquadronMember(converted);
         squadronPersonnel.addSquadronMember(transferRecord.getSquadronMember());
-    }
-
-    private void convertToFemale(TransferRecord transferRecord) throws PWCGException
-    {
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(transferRecord.getTransferTo());
-        ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
-        SquadronMemberFemaleConverter.convertNightWitchesToFemale(campaign, service, transferRecord.getSquadronMember());
     }
 
     private void removeFromReplacementPool(TransferRecord transferRecord) throws PWCGException

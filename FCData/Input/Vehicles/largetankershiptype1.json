@@ -2,6 +2,7 @@
   "scriptDir": "ships\\",
   "modelDir": "ships\\largetankershiptype1\\",
   "vehicleType": "largetankershiptype1",
+  "vehicleName": "Tanker Ship",
   "displayName": "tanker",
   "countries": [
     "GERMANY",

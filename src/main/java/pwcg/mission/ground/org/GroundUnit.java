@@ -18,6 +18,7 @@ import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.unittypes.GroundUnitSpawningTrainBuilder;
 import pwcg.mission.ground.unittypes.GroundUnitSpawningVehicleBuilder;
 import pwcg.mission.ground.vehicle.IVehicle;
+import pwcg.mission.ground.vehicle.IVehicleDefinition;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.mcu.AttackAreaType;
 import pwcg.mission.mcu.McuFormation;
@@ -266,6 +267,19 @@ public abstract class GroundUnit implements IGroundUnit
             }
         }
     }
+    
+    protected void createVehiclesFromDefinition(List<Coordinate> vehicleStartPositions, IVehicleDefinition vehicleDefinition) throws PWCGException 
+    {       
+        for (Coordinate vehiclePosition : vehicleStartPositions)
+        {
+            IVehicle vehicle = GroundUnitSpawningVehicleBuilder.createVehicleToSpawnFromDefinition(pwcgGroundUnitInformation, vehicleClass, vehicleDefinition);
+            vehicle.setPosition(vehiclePosition);
+            GroundUnitElement groundElement = new GroundUnitElement(vehicle, vehiclePosition);
+            groundElement.createGroundUnitElement();
+            groundElements.add(groundElement);
+        }
+    }
+
 
     protected void createSpawnTimer() 
     {

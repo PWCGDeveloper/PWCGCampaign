@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\crossleyt5\\",
   "vehicleType": "crossleyt5",
+  "vehicleName": "Crossley Staff Car",
   "displayName": "staff car",
   "countries": [
     "FRANCE",

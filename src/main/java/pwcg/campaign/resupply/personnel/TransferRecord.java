@@ -29,4 +29,9 @@ public class TransferRecord
     {
         return transferTo;
     }
+
+    public void setSquadronMember(SquadronMember squadronMember)
+    {
+        this.squadronMember = squadronMember;
+    }
 }

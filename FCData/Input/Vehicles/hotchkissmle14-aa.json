@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "artillery\\hotchkissmle14\\",
   "vehicleType": "hotchkissmle14-aa",
+  "vehicleName": "Hotchkiss AA MG",
   "displayName": "AAA machine gun",
   "countries": [
     "BRITAIN",

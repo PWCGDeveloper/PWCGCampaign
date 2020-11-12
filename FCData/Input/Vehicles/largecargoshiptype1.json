@@ -2,6 +2,7 @@
   "scriptDir": "ships\\",
   "modelDir": "ships\\largecargoshiptype1\\",
   "vehicleType": "largecargoshiptype1",
+  "vehicleName": "Cargo Ship",
   "displayName": "cargo ship",
   "countries": [
     "GERMANY",

@@ -106,6 +106,20 @@ public class ConfigSimple
         setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigAAKey, ConfigSimple.CONFIG_LEVEL_HIGH);
     }
 
+    public void setCpuAllowanceHigh() throws PWCGException 
+    {
+        setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigCpuAllowanceKey, ConfigSimple.CONFIG_LEVEL_HIGH);
+    }
+    public void setCpuAllowanceLow() throws PWCGException 
+    {
+        setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigCpuAllowanceKey, ConfigSimple.CONFIG_LEVEL_LOW);
+    }
+    
+    public void setCpuAllowanceMed() throws PWCGException 
+    {
+        setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigCpuAllowanceKey, ConfigSimple.CONFIG_LEVEL_MED);
+    }
+
     public void setParamForSimpleConfigChange (String key, String value) throws PWCGException 
     {
         ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();

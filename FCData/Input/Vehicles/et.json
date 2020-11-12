@@ -2,6 +2,7 @@
   "scriptDir": "trains\\",
   "modelDir": "trains\\et\\",
   "vehicleType": "et",
+  "vehicleName": "E Type Coal Car",
   "displayName": "train car",
   "countries": [
     "GERMANY",

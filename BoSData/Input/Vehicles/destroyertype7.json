@@ -1,18 +1,19 @@
 {
-  "scriptDir": "ships\\",
-  "modelDir": "ships\\destroyertype7\\",
-  "vehicleType": "destroyertype7",
-  "vehicleName": "Destroyer",
-  "displayName": "destroyer",
-  "countries": [
-    "GERMANY",
-    "ITALY",
-    "RUSSIA",
-    "USA",
-    "BRITAIN"
-  ],
-  "startDate": "19390901",
-  "endDate": "19460724",
-  "rarityWeight": 20,
-  "vehicleClass": "ShipWarship"
+	"scriptDir": "ships\\",
+	"modelDir": "ships\\destroyertype7\\",
+	"vehicleType": "destroyertype7",
+	"vehicleName": "Destroyer",
+	"displayName": "destroyer",
+	"countries": [
+		"GERMANY",
+		"ITALY",
+		"RUSSIA",
+		"USA",
+		"BRITAIN"
+	],
+	"startDate": "19390901",
+	"endDate": "19460724",
+	"rarityWeight": 20,
+	"vehicleClass": "ShipWarship",
+	"vehicleLength": 230
 }

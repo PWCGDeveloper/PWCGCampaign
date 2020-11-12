@@ -37,7 +37,7 @@ public class NewPilotRankDetermination
     	}
         else
         {
-            int NewPilotRankOddsLowest = 30;
+            int NewPilotRankOddsLowest = 50;
             int rankOdds = RandomNumberGenerator.getRandom(100);
             if (rankOdds < NewPilotRankOddsLowest)
             {

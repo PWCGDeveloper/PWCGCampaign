@@ -113,8 +113,10 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
 
         buttonGrid.add(PWCGButtonFactory.makeDummy());
 
-        JButton backToMapButton = PWCGButtonFactory.makeTranslucentMenuButton("Back To Waypoint Editor", "Back To Waypoint Editor", "Go back to waypoint editor screen", this);
+        JButton backToMapButton = PWCGButtonFactory.makeTranslucentMenuButton("Back To WP Editor", "Back To WP Editor", "Go back to waypoint editor screen", this);
         buttonGrid.add(backToMapButton);
+
+        buttonGrid.add(PWCGButtonFactory.makeDummy());
 
         if (!mission.isFinalized())
         {
@@ -160,7 +162,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         try
         {
             String action = ae.getActionCommand();
-            if (action.equalsIgnoreCase("Back To Waypoint Editor"))
+            if (action.equalsIgnoreCase("Back To WP Editor"))
             {
                 CampaignGuiContextManager.getInstance().popFromContextStack();
                 return;

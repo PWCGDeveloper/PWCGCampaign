@@ -2,7 +2,8 @@
   "scriptDir": "Balloons\\",
   "modelDir": "balloons\\caquot\\",
   "vehicleType": "caquot",
-  "displayName": "Balloon",
+  "vehicleName": "Caquot Balloon",
+  "displayName": "balloon",
   "countries": [
     "FRANCE",
     "USA",

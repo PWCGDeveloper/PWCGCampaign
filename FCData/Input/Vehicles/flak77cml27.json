@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "artillery\\flak77cml27\\",
   "vehicleType": "flak77cml27",
+  "vehicleName": "Flak 77mm AA Gun",
   "displayName": "anti aircraft gun",
   "countries": [
 	"GERMANY"

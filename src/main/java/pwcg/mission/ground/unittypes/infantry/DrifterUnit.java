@@ -3,6 +3,7 @@ package pwcg.mission.ground.unittypes.infantry;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -11,7 +12,9 @@ import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.org.GroundUnit;
 import pwcg.mission.ground.org.GroundUnitNumberCalculator;
+import pwcg.mission.ground.vehicle.IVehicleDefinition;
 import pwcg.mission.ground.vehicle.VehicleClass;
+import pwcg.mission.ground.vehicle.VehicleRequestDefinition;
 
 public class DrifterUnit extends GroundUnit
 {
@@ -24,16 +27,20 @@ public class DrifterUnit extends GroundUnit
     public void createGroundUnit() throws PWCGException
     {
         super.createSpawnTimer();
-        List<Coordinate> vehicleStartPositions = createVehicleStartPositions();
-        super.createVehicles(vehicleStartPositions);
+        
+        VehicleRequestDefinition requestDefinition = new VehicleRequestDefinition(pwcgGroundUnitInformation.getCountry().getCountry(), pwcgGroundUnitInformation.getDate(), vehicleClass);
+        IVehicleDefinition vehicleDefinition = PWCGContext.getInstance().getVehicleDefinitionManager().getVehicleDefinitionForRequest(requestDefinition);
+
+        List<Coordinate> vehicleStartPositions = createVehicleStartPositions(vehicleDefinition);
+        super.createVehiclesFromDefinition(vehicleStartPositions, vehicleDefinition);
         super.linkElements();
     }
 
-    private List<Coordinate> createVehicleStartPositions() throws PWCGException 
+    private List<Coordinate> createVehicleStartPositions(IVehicleDefinition vehicleDefinition) throws PWCGException 
     {
         List<Coordinate> spawnerLocations = new ArrayList<>();
 
-        int numDrifter = calcNumUnits();
+        int numDrifter = calcNumUnits(vehicleDefinition);
 
         // Face towards orientation
         double drifterFacingAngle = MathUtils.adjustAngle(pwcgGroundUnitInformation.getOrientation().getyOri(), 180.0);
@@ -43,6 +50,10 @@ public class DrifterUnit extends GroundUnit
         Coordinate drifterCoords = pwcgGroundUnitInformation.getPosition().copy();
 
         double drifterSpacing = 30.0;
+        if (vehicleDefinition.getVehicleLength() > drifterSpacing)
+        {
+            drifterSpacing = vehicleDefinition.getVehicleLength();
+        }
         
         // Direction in which subsequent units will be placed
         double placementOrientation = pwcgGroundUnitInformation.getOrientation().getyOri();        
@@ -57,25 +68,41 @@ public class DrifterUnit extends GroundUnit
         return spawnerLocations;       
     }
 
-    private int calcNumUnits() throws PWCGException
+    private int calcNumUnits(IVehicleDefinition vehicleDefinition) throws PWCGException
     {
+        int numUnits = 1;
         if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
         {
-             return GroundUnitNumberCalculator.calcNumUnits(1, 1);
+            numUnits = GroundUnitNumberCalculator.calcNumUnits(1, 1);
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
         {
-             return GroundUnitNumberCalculator.calcNumUnits(2, 3);
+            numUnits = GroundUnitNumberCalculator.calcNumUnits(2, 3);
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM)
         {
-             return GroundUnitNumberCalculator.calcNumUnits(2, 4);
+            numUnits = GroundUnitNumberCalculator.calcNumUnits(2, 4);
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_HIGH)
         {
-             return GroundUnitNumberCalculator.calcNumUnits(3, 6);
+            numUnits = GroundUnitNumberCalculator.calcNumUnits(3, 6);
         }
         
-        throw new PWCGException ("No unit size provided for ground unit");
+        if (vehicleDefinition.getVehicleLength() > 200.0)
+        {
+            if (numUnits > 2)
+            {
+                numUnits = 2;
+            }
+        }
+        else if (vehicleDefinition.getVehicleLength() > 50.0)
+        {
+            if (numUnits > 3)
+            {
+                numUnits = 3;
+            }
+        }
+        
+        return numUnits;
     }
 }

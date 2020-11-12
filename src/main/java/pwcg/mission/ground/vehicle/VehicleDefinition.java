@@ -21,7 +21,8 @@ public class VehicleDefinition implements IVehicleDefinition, IWeight
     private int rarityWeight;
     private VehicleClass vehicleClass;
     private String associatedBlock;
-    
+    private int vehicleLength;
+
     @Override
     public String getScriptDir()
     {
@@ -65,8 +66,14 @@ public class VehicleDefinition implements IVehicleDefinition, IWeight
     }
 
     @Override
-    public String getAssociatedBlock() {
+    public String getAssociatedBlock()
+    {
         return associatedBlock;
+    }
+
+    public int getVehicleLength()
+    {
+        return vehicleLength;
     }
 
     @Override
@@ -76,12 +83,12 @@ public class VehicleDefinition implements IVehicleDefinition, IWeight
         {
             return false;
         }
-        
+
         if (!DateUtils.isDateInRange(requestDefinition.getDate(), startDate, endDate))
         {
             return false;
         }
-        
+
         for (Country vehicleCountry : countries)
         {
             if (vehicleCountry == requestDefinition.getCountry())

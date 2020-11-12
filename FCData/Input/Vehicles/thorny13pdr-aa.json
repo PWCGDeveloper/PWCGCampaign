@@ -2,6 +2,7 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\thornyjtype\\",
   "vehicleType": "thorny13pdr-aa",
+  "vehicleName": "Thorny 13 pdr AA Truck",
   "displayName": "truck",
   "countries": [
     "FRANCE",

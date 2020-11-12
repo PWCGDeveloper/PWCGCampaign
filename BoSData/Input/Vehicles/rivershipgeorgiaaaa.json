@@ -1,18 +1,19 @@
 {
-  "scriptDir": "ships\\",
-  "modelDir": "ships\\rivershipgeorgia\\",
-  "vehicleType": "rivershipgeorgiaaaa",
-  "vehicleName": "Georgia AA Gunship",
-  "displayName": "river boat",
-  "countries": [
-    "GERMANY",
-    "ITALY",
-    "RUSSIA",
-    "USA",
-    "BRITAIN"
-  ],
-  "startDate": "19390901",
-  "endDate": "19460724",
-  "rarityWeight": 10,
-  "vehicleClass": "DrifterAAA"
+	"scriptDir": "ships\\",
+	"modelDir": "ships\\rivershipgeorgia\\",
+	"vehicleType": "rivershipgeorgiaaaa",
+	"vehicleName": "Georgia AA Gunship",
+	"displayName": "large river gunship",
+	"countries": [
+		"GERMANY",
+		"ITALY",
+		"RUSSIA",
+		"USA",
+		"BRITAIN"
+	],
+	"startDate": "19390901",
+	"endDate": "19460724",
+	"rarityWeight": 10,
+	"vehicleClass": "DrifterAAA",
+	"vehicleLength": 230
 }

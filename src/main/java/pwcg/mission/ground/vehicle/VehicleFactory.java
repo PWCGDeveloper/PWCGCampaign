@@ -12,6 +12,12 @@ public class VehicleFactory
     {
         VehicleRequestDefinition requestDefinition = new VehicleRequestDefinition(country.getCountry(), date, vehicleClass);
         IVehicleDefinition vehicleDefinition = PWCGContext.getInstance().getVehicleDefinitionManager().getVehicleDefinitionForRequest(requestDefinition);
+        IVehicle vehicle = createVehicleFromDefinition(country, date, vehicleDefinition);
+        return vehicle;
+    }
+
+    public static IVehicle createVehicleFromDefinition(ICountry country, Date date, IVehicleDefinition vehicleDefinition) throws PWCGException
+    {
         IVehicle vehicle = new Vehicle(vehicleDefinition);
         vehicle.makeVehicleFromDefinition(country);
         return vehicle;
