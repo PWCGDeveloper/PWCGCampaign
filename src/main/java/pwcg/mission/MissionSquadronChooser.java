@@ -35,17 +35,27 @@ public class MissionSquadronChooser
     
     public Squadron determineSquadronToBeEscorted(Campaign campaign, Squadron escortSquadron) throws PWCGException
     {
-        List<Role> bomberRole = new ArrayList<Role>(Arrays.asList(Role.ROLE_BOMB));
-        Side friendlySide = escortSquadron.determineSide();
-        List<Squadron> squadronsToExclude = new ArrayList<>(squadronsInUse.values());
-        Squadron friendlyBombSquadron = PWCGContext.getInstance().getSquadronManager().getSingleViableAiSquadronByRoleAndSideAndCurrentMap(campaign, bomberRole, friendlySide, squadronsToExclude);
+        Squadron escortedSquadron = determineSquadronForRoleToBeEscorted(campaign, escortSquadron, Role.ROLE_BOMB);
+        if (escortedSquadron == null)
+        {
+            escortedSquadron = determineSquadronForRoleToBeEscorted(campaign, escortSquadron, Role.ROLE_ATTACK);
+        }
 
-        if (friendlyBombSquadron == null)
+        if (escortedSquadron == null)
         {
             throw new PWCGMissionGenerationException ("Escort mission with no viable squadrons to be escorted - please create another mission");
         }
         
-        return friendlyBombSquadron;
+        return escortedSquadron;
+    }
+    
+    public Squadron determineSquadronForRoleToBeEscorted(Campaign campaign, Squadron escortSquadron, Role role) throws PWCGException
+    {
+        List<Role> bomberRole = new ArrayList<Role>(Arrays.asList(role));
+        Side friendlySide = escortSquadron.determineSide();
+        List<Squadron> squadronsToExclude = new ArrayList<>(squadronsInUse.values());
+        Squadron escortedSquadron = PWCGContext.getInstance().getSquadronManager().getSingleViableAiSquadronByRoleAndSideAndCurrentMap(campaign, bomberRole, friendlySide, squadronsToExclude);
+        return escortedSquadron;
     }
 
 
