@@ -27,7 +27,7 @@
       "help": "Minimum number of aircraft"
     },
     "GroundAttackAdditional": {
-      "value": "1",
+      "value": "2",
       "label": "Ground Attack Additional",
       "help": "Maximum additional aircraft"
     },
@@ -37,7 +37,7 @@
       "help": "Minimum number of aircraft"
     },
     "PatrolAdditional": {
-      "value": "4",
+      "value": "2",
       "label": "Patrol Additional",
       "help": "Maximum additional aircraft"
     },
