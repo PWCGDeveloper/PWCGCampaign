@@ -1,6 +1,7 @@
 package pwcg.campaign;
 
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignFixer
@@ -11,8 +12,18 @@ public class CampaignFixer
         cleaner.cleanDataFiles();
         
         mergeAddedAces(campaign);
+        trimNames(campaign);
     }
     
+    private static void trimNames(Campaign campaign) throws PWCGException
+    {
+        for (SquadronMember player : campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
+        {
+            String name = player.getName().trim();
+            player.setName(name);
+        }
+    }
+
     private static void mergeAddedAces(Campaign campaign) throws PWCGException
     {
         CampaignAces aces =  PWCGContext.getInstance().getAceManager().loadFromHistoricalAces(campaign.getDate());
