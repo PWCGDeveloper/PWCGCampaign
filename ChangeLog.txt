@@ -4,6 +4,7 @@
 11.6.1
 Fixed flying boats on rivers
 Fixed error in AAR in FC due to missing vehicle names
+Corrected pilot names with spaces accidentally typed on the end
 
 11.6.0
 Updated Campaign Main Screen
