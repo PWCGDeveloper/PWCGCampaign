@@ -42,7 +42,7 @@ public interface IFlightInformation
     IAirfield getDepartureAirfield() throws PWCGException;
 
     List<PlaneMcu> getPlanes();
-
+    
     Campaign getCampaign();
 
     Coordinate getTargetSearchStartLocation();
@@ -68,4 +68,6 @@ public interface IFlightInformation
     int getFlightCruisingSpeed();
 
     void setCruisingSpeed(int cruisingSpeed);
+        
+    int getFormationType();
 }

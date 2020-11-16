@@ -49,10 +49,8 @@ public class GroundAspectFormationMovement implements IGroundAspect
         formationTimer.setPosition(vehicle.getPosition().copy());
         formationTimer.setTime(1);
 
-        formation = new McuFormation();
+        formation = new McuFormation(movementType, McuFormation.FORMATION_DENSITY_MED);
         formation.setPosition(vehicle.getPosition().copy());
-        formation.setFormationType(movementType);
-        formation.setFormationDensity(McuFormation.FORMATION_DENSITY_MED);
     }
 
     private void createWaypoint()

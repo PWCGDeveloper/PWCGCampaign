@@ -197,14 +197,4 @@ public abstract class MissionPointSetMultipleWaypointSet implements IMissionPoin
     {
         return waypointsBefore.getLastWaypoint();
     }
-    
-    protected WaypointSet duplicateBeginWaypoints(int positionInFormation) throws PWCGException
-    {
-        return waypointsBefore.duplicateInFormation(positionInFormation);
-    }
-    
-    protected WaypointSet duplicateAfterWaypoints(int positionInFormation) throws PWCGException
-    {
-        return waypointsAfter.duplicateInFormation(positionInFormation);
-    }
 }

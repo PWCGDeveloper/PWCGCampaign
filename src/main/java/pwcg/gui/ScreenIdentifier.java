@@ -50,9 +50,6 @@ public enum ScreenIdentifier
     OpenJournal("OpenJournal", "Open Pilot Journal", "OpenJournal.png"),
     OpenSquadronLog("OpenSquadronLog", "Open Squadron Log Book", "OpenJournal.png");
     
-    
-    
-    
     private String screenKey;
     private String screenDescription;
     private String defaultImageName;

@@ -25,12 +25,12 @@ import pwcg.mission.flight.waypoint.virtual.VirtualWaypointStartFinder;
 public class VirtualWaypointConsolidatorTest
 {
     @Mock private IFlight flight;
-    VirtualWayPointCoordinate vwpCoordinate1 = new VirtualWayPointCoordinate();
-    VirtualWayPointCoordinate vwpCoordinate2 = new VirtualWayPointCoordinate();
-    VirtualWayPointCoordinate vwpCoordinate3 = new VirtualWayPointCoordinate();
-    VirtualWayPointCoordinate vwpCoordinate4 = new VirtualWayPointCoordinate();
-    VirtualWayPointCoordinate vwpCoordinate5 = new VirtualWayPointCoordinate();
-    VirtualWayPointCoordinate vwpCoordinate6 = new VirtualWayPointCoordinate();
+    VirtualWayPointCoordinate vwpCoordinate1 = new VirtualWayPointCoordinate(flight);
+    VirtualWayPointCoordinate vwpCoordinate2 = new VirtualWayPointCoordinate(flight);
+    VirtualWayPointCoordinate vwpCoordinate3 = new VirtualWayPointCoordinate(flight);
+    VirtualWayPointCoordinate vwpCoordinate4 = new VirtualWayPointCoordinate(flight);
+    VirtualWayPointCoordinate vwpCoordinate5 = new VirtualWayPointCoordinate(flight);
+    VirtualWayPointCoordinate vwpCoordinate6 = new VirtualWayPointCoordinate(flight);
 
     @Before
     public void setup() throws PWCGException

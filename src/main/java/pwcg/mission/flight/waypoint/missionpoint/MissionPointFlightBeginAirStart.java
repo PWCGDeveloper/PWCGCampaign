@@ -90,7 +90,7 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
     {
         IFlightInformation flightInformation = flight.getFlightInformation();
 
-        formationEntity = new McuFormation();
+        formationEntity = new McuFormation(flightInformation.getFormationType(), McuFormation.FORMATION_DENSITY_LOOSE);
         formationEntity.setPosition(flightInformation.getDepartureAirfield().getPosition());
 
         formationTimer = new McuTimer();

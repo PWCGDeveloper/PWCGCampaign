@@ -134,7 +134,7 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
     {
         IFlightInformation flightInformation = flight.getFlightInformation();
 
-        formationEntity = new McuFormation();
+        formationEntity = new McuFormation(flight.getFlightInformation().getFormationType(), McuFormation.FORMATION_DENSITY_LOOSE);
         formationEntity.setPosition(flightInformation.getDepartureAirfield().getPosition());
 
         formationTimer = new McuTimer();

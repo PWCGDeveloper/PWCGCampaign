@@ -83,15 +83,15 @@ public class CampaignPilotMedalBox extends ImageResizingPanel implements ActionL
         }
         else if (monitorSize == MonitorSize.FRAME_SMALL)
         {
-            return 3;
+            return 2;
         }
         if (monitorSize == MonitorSize.FRAME_MEDIUM)
         {
-            return 4;
+            return 3;
         }
         else
         {
-            return 5;
+            return 4;
         }
     }
 

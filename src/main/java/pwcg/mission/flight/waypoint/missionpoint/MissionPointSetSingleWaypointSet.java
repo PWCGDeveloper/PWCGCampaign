@@ -105,10 +105,4 @@ public abstract class MissionPointSetSingleWaypointSet implements IMissionPointS
         }
         return missionPoints;
     }
-        
-    protected WaypointSet duplicateWaypoints(int positionInFormation) throws PWCGException
-    {
-        return waypoints.duplicateInFormation(positionInFormation);
-    }
-
 }

@@ -6,7 +6,11 @@ import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 
 public class VirtualWaypointEscortBuilder
 {
-    public static VirtualWaypointEscort buildVirtualEscort(IFlightInformation vwpEscortFlightInformation, VirtualWayPointCoordinate vwpCoordinate, VirtualWaypointPlanes vwpPlanes, VirtualWaypointTriggered vwpActivate) throws PWCGException
+    public static VirtualWaypointEscort buildVirtualEscort(
+            IFlightInformation vwpEscortFlightInformation, 
+            VirtualWayPointCoordinate vwpCoordinate, 
+            VirtualWaypointPlanes vwpPlanes, 
+            VirtualWaypointTriggered vwpActivate) throws PWCGException
     {
         try
         {

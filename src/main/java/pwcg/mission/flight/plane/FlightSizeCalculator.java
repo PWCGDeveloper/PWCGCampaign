@@ -1,8 +1,13 @@
 package pwcg.mission.flight.plane;
 
+import pwcg.campaign.context.Country;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.plane.Role;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypeCategory;
 import pwcg.mission.flight.IFlightInformation;
@@ -48,7 +53,6 @@ public class FlightSizeCalculator
         else if (flightInformation.getFlightType().isCategory(FlightTypeCategory.TRANSPORT))
 	   	{
 	   		minNumPlanes = configManager.getIntConfigParam(ConfigItemKeys.TransportMinimumKey);
-	   		minNumPlanes += 2;
 	   		randomNumPlanes = configManager.getIntConfigParam(ConfigItemKeys.TransportAdditionalKey);
 	   	}
     	else
@@ -57,7 +61,7 @@ public class FlightSizeCalculator
             randomNumPlanes = configManager.getIntConfigParam(ConfigItemKeys.PatrolAdditionalKey);
     	}
 
-    	int numPlanesInFlight = calculateNumberOfPlanesInFlight(minNumPlanes, randomNumPlanes, adjustMinMax);
+        int numPlanesInFlight = calculateNumberOfPlanesInFlight(minNumPlanes, randomNumPlanes, adjustMinMax);
     	
         return numPlanesInFlight;
     }
@@ -67,35 +71,38 @@ public class FlightSizeCalculator
         randomNumPlanes += 1;
     	int numPlanesInFlight = minNumPlanes + RandomNumberGenerator.getRandom(randomNumPlanes);
    	
+        numPlanesInFlight = adjustfPlanesInFlightForFlightType(flightInformation, numPlanesInFlight);
         if (adjustMinMax == true)
     	{
     		numPlanesInFlight = adjustMinMaxPlanesInFlight(numPlanesInFlight);
-            if (flightInformation.getFlightType().isCategory(FlightTypeCategory.FIGHTER))
-            {
-                numPlanesInFlight = adjustForElementSize(numPlanesInFlight);
-            }
     	}
         return numPlanesInFlight;
     }
 
-	private int adjustForElementSize(int originalNumPlanesInFlight) throws PWCGException
+    private int adjustfPlanesInFlightForFlightType(IFlightInformation flightInformation, int numPlanesInFlight) throws PWCGException
     {
-	    int maxElements = 2;
-	    
-        int elementSize = FlightElementSizeCalculator.calculateElementSizeForFighters(flightInformation);
-        int excessPlanes = originalNumPlanesInFlight % elementSize;
-        int adjustedNumPlanesInFlight = originalNumPlanesInFlight - excessPlanes;
-        if (adjustedNumPlanesInFlight < 2)
+        if (PWCGContext.getProduct() == PWCGProduct.BOS)
         {
-            adjustedNumPlanesInFlight = elementSize;
+            if (flightInformation.getSquadron().determineSquadronPrimaryRole(flightInformation.getCampaign().getDate()) == Role.ROLE_FIGHTER)
+            {
+                if (numPlanesInFlight <= 2)
+                {
+                    return numPlanesInFlight;
+                }
+                else if (numPlanesInFlight <= 4 && 
+                        flightInformation.getSquadron().getCountry().getCountry() == Country.RUSSIA && 
+                        flightInformation.getCampaign().getDate().before(DateUtils.getDateYYYYMMDD("19431001")))
+
+                {
+                    return 3;
+                }
+                else if (numPlanesInFlight <= 4)
+                {
+                    return 4;
+                }
+            }
         }
-        
-        if ((adjustedNumPlanesInFlight / elementSize) > maxElements)
-        {
-            adjustedNumPlanesInFlight = maxElements * elementSize;
-        }
-        
-        return adjustedNumPlanesInFlight;
+        return numPlanesInFlight;
     }
 
     private int adjustMinMaxPlanesInFlight(int numPlanesInFlight)

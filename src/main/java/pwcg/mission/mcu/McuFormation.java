@@ -26,13 +26,16 @@ public class McuFormation extends BaseFlightMcu
 	public static int FORMATION_DENSITY_MED = 1;
 	public static int FORMATION_DENSITY_LOOSE = 2;
 	
-	private int formationType = FORMATION_RIGHT;
+	private int formationType = FORMATION_V;
 	private int formationDensity = FORMATION_DENSITY_LOOSE;
 
- 	public McuFormation ()
+ 	public McuFormation (int formationType, int formationDensity)
 	{
  		super();
  		
+        this.formationType = formationType;
+        this.formationDensity = formationDensity;
+
   		setName("Command Formation");
  		formationType = FORMATION_RIGHT;
 	}
@@ -64,25 +67,5 @@ public class McuFormation extends BaseFlightMcu
             PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
-	}
-
-
-	public int getFormationType() {
-		return formationType;
-	}
-
-
-	public void setFormationType(int formationType) {
-		this.formationType = formationType;
-	}
-
-
-	public int getFormationDensity() {
-		return formationDensity;
-	}
-
-
-	public void setFormationDensity(int formationDensity) {
-		this.formationDensity = formationDensity;
 	}
 }

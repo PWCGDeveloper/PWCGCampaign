@@ -24,7 +24,7 @@ public class VirtualWaypointTriggered
     private VirtualWayPointCoordinate vwpCoordinate;
     private VirtualWaypointPlanes vwpPlanes;
 
-    private McuFormation formation = new McuFormation();
+    private McuFormation formation;
     private McuActivate activate = new McuActivate();
 
     private McuTimer activateTimer = new McuTimer();
@@ -52,7 +52,7 @@ public class VirtualWaypointTriggered
         createObjectAssociations();
     }
 
-    private void buildMcus()
+    private void buildMcus() throws PWCGException
     {
         activate.setPosition(vwpCoordinate.getPosition().copy());
         activate.setOrientation(vwpCoordinate.getOrientation().copy());
@@ -81,6 +81,7 @@ public class VirtualWaypointTriggered
         formationTimer.setName("Formation Timer");
         formationTimer.setDesc("Formation Timer");
 
+        formation = new McuFormation(flight.getFlightInformation().getFormationType(), McuFormation.FORMATION_DENSITY_LOOSE);
         formation.setPosition(vwpCoordinate.getPosition().copy());
     }
 
@@ -97,7 +98,7 @@ public class VirtualWaypointTriggered
         activateTimer.setTarget(activate.getIndex());
         formationTimer.setTarget(formation.getIndex());
         
-        int wpIndex = vwpCoordinate.getWaypointIdentifier(flight);
+        int wpIndex = vwpCoordinate.getWaypointIdentifier();
         waypointTimer.setTarget(wpIndex);
 
         activateTimer.setTarget(formationTimer.getIndex());

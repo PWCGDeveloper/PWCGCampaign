@@ -16,7 +16,9 @@ import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
+import pwcg.mission.flight.plane.FormationTypeCalculator;
 import pwcg.mission.flight.plane.PlaneMcu;
+import pwcg.mission.mcu.McuFormation;
 
 public class FlightInformation implements IFlightInformation
 {
@@ -24,14 +26,15 @@ public class FlightInformation implements IFlightInformation
     private Campaign campaign;
     private Mission mission;
     private FlightTypes flightType;
-    private Squadron squadron;
     private List<PlaneMcu> planes;
+    private Squadron squadron;
     private Coordinate targetSearchStartLocation;
     private boolean isPlayerFlight = false;
     private boolean isEscortedByPlayerFlight = false;
     private boolean isEscortForPlayerFlight = false;
     private int altitude = 0;
     private int flightCruisingSpeed = 0;
+    private int formationType = McuFormation.FORMATION_V;
 
     public FlightInformation(Mission mission)
     {
@@ -76,6 +79,7 @@ public class FlightInformation implements IFlightInformation
     public void setFlightType(FlightTypes flightType)
     {
         this.flightType = flightType;
+        this.formationType = FormationTypeCalculator.calculateFormationType(flightType);
     }
 
     @Override
@@ -279,6 +283,12 @@ public class FlightInformation implements IFlightInformation
     public int getFlightId()
     {
         return flightId;
+    }
+
+    @Override
+    public int getFormationType()
+    {
+        return formationType;
     }
 
 }

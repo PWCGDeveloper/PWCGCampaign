@@ -3,6 +3,7 @@ package pwcg.gui.utils;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,13 +22,18 @@ public class ImageResizingPanel extends JPanel
     protected String imagePath = "";
     private Map<String, JPanel> children = new HashMap<>();
 
-	public ImageResizingPanel(String imagePath)
+    public ImageResizingPanel(String imagePath)
     {
-	    this.imagePath = imagePath;
-	    if (!imagePath.isEmpty())
-	    {
-	        setImage(imagePath);
-	    }
+        this.imagePath = imagePath;
+        if (!imagePath.isEmpty())
+        {
+            setImage(imagePath);
+        }
+    }
+
+    public ImageResizingPanel(BufferedImage image)
+    {
+        this.image = image;
     }
 
     @Override

@@ -12,6 +12,7 @@ import pwcg.mission.flight.waypoint.missionpoint.MissionPointFlightBeginAirStart
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
+import pwcg.mission.mcu.group.virtual.VirtualWaypoint;
 
 public class BombingAirStartFlightValidator 
 {
@@ -22,6 +23,7 @@ public class BombingAirStartFlightValidator
         validateWaypointTypes(flight);
         validateAirStart(flight);
         verifyStartAltltude(flight);
+        validateFormationSpacing(flight);
     }
 
     private void validateAirStart(IFlight flight)
@@ -29,6 +31,21 @@ public class BombingAirStartFlightValidator
         for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
             assert(plane.getPosition().getYPos() > 300);
+        }
+    }
+
+    private void validateFormationSpacing(IFlight flight)
+    {
+        if (flight.getFlightInformation().isVirtual())
+        {
+            for (VirtualWaypoint vwp : flight.getVirtualWaypointPackage().getVirtualWaypoints())
+            {
+                PlaneSpacingValidator.verifySpacing(vwp.getVwpPlanes().getAllPlanes());            
+            }
+        }
+        else
+        {
+            PlaneSpacingValidator.verifySpacing(flight.getFlightPlanes().getPlanes());            
         }
     }
 

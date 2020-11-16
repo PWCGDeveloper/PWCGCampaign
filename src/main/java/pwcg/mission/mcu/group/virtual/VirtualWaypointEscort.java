@@ -89,7 +89,7 @@ public class VirtualWaypointEscort
     {
         int altitudeOffset = 500;
         VirtualWaypointPlaneBuilder vwpPlaneBuilder = new VirtualWaypointPlaneBuilder(vwpCoordinate, altitudeOffset);
-        escortPlanes = vwpPlaneBuilder.buildVwpPlanes(vwpEscortFlightInformation.getPlanes());
+        escortPlanes = vwpPlaneBuilder.buildVwpPlanes(vwpEscortFlightInformation.getPlanes(), vwpEscortFlightInformation.getFormationType());
     }
 
     private void buildPayloadForEscorts() throws PWCGException

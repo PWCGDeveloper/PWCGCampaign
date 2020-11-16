@@ -58,7 +58,7 @@ public final class VirtualWaypoint implements IVirtualWaypoint
         {
             for (BaseFlightMcu flightPoint : flight.getWaypointPackage().getAllFlightPoints())
             {
-                if (flightPoint.getIndex() == vwpCoordinate.getWaypointIdentifier(flight))
+                if (flightPoint.getIndex() == vwpCoordinate.getWaypointIdentifier())
                 {
                     if (flightPoint instanceof McuWaypoint)
                     {
@@ -84,7 +84,7 @@ public final class VirtualWaypoint implements IVirtualWaypoint
     {
         vwpEscort = VirtualWaypointEscortBuilder.buildVirtualEscort(vwpEscortFlightInformation, vwpCoordinate, vwpPlanes, vwpTriggered);
     }
-    
+
     @Override
     public void write(BufferedWriter writer) throws PWCGException 
     {

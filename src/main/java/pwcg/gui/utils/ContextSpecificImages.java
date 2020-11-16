@@ -31,6 +31,13 @@ public class ContextSpecificImages
         return picPath;
     }
 
+    public static String imagesPaperDoll() 
+    {
+        String picPath = PWCGContext.getInstance().getDirectoryManager().getPwcgImagesDir() + "Medals\\PaperDoll";
+        
+        return picPath;
+    }
+
     public static String imagesMedals() 
     {
         String picPath = PWCGContext.getInstance().getDirectoryManager().getPwcgImagesDir() + "Medals\\";

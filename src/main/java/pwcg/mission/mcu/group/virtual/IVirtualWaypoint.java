@@ -34,7 +34,7 @@ public interface IVirtualWaypoint
 
     VirtualWaypointPlanes getVwpPlanes();
 
-    void addEscort(IFlightInformation vwpEscortFlightInformation) throws PWCGException;
-
     boolean isShouldLinkToAttack();
+
+    void addEscort(IFlightInformation vwpEscortFlightInformation) throws PWCGException;
 }

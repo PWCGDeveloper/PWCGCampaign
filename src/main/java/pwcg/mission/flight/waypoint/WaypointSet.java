@@ -199,17 +199,4 @@ public class WaypointSet
             previousWaypoint = waypoint;
         }
     }
-    
-    public WaypointSet duplicateInFormation(int positionInFormation) throws PWCGException
-    {
-        WaypointSet duplicate = new WaypointSet();
-        for (McuWaypoint waypoint : waypoints)
-        {
-            McuWaypoint planeWaypoint = waypoint.copy();
-            Coordinate position = FormationGenerator.generatePositionForPlaneInFormation(waypoint.getOrientation(), planeWaypoint.getPosition(), positionInFormation);
-            planeWaypoint.setPosition(position);
-            duplicate.waypoints.add(planeWaypoint);
-        }
-        return duplicate;
-    }
 }

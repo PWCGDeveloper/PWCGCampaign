@@ -15,9 +15,11 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
+import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
@@ -27,6 +29,7 @@ import pwcg.testutils.SquadronTestProfile;
 @RunWith(MockitoJUnitRunner.class)
 public class MissionFlightKeeperTest
 {
+    @Mock private  Campaign campaign;
     @Mock private  Mission mission;
     @Mock private  MissionFlightBuilder missionFlightBuilder;
     @Mock private ConfigManagerCampaign configManagerCampaign;
@@ -72,10 +75,18 @@ public class MissionFlightKeeperTest
         Mockito.when(alliedSquadron.determineSide()).thenReturn(Side.ALLIED);
 
         PWCGContext.setProduct(PWCGProduct.BOS);
+        Mockito.when(mission.getCampaign()).thenReturn(campaign);
         Mockito.when(mission.getMissionFlightBuilder()).thenReturn(missionFlightBuilder);
         Mockito.when(mission.getMissionSquadronChooser()).thenReturn(missionSquadronChooser);
         Mockito.when(missionFlightBuilder.getPlayerFlightsForSide(Side.ALLIED)).thenReturn(alliedPlayerFlights);
         Mockito.when(missionFlightBuilder.getPlayerFlightsForSide(Side.AXIS)).thenReturn(axisPlayerFlights);
+
+        Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManagerCampaign);
+        Mockito.when(configManagerCampaign.getStringConfigParam(ConfigItemKeys.SimpleConfigCpuAllowanceKey)).thenReturn(ConfigSimple.CONFIG_LEVEL_MED);
+
+        Mockito.when(alliedSquadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(Role.ROLE_FIGHTER);
+        Mockito.when(axisSquadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(Role.ROLE_FIGHTER);
+
         
         Mockito.when(configManagerCampaign.getIntConfigParam(ConfigItemKeys.AlliedFlightsToKeepKey)).thenReturn(5);
         Mockito.when(configManagerCampaign.getIntConfigParam(ConfigItemKeys.AxisFlightsToKeepKey)).thenReturn(3);

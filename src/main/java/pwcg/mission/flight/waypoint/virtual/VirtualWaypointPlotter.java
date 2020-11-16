@@ -165,7 +165,7 @@ public class VirtualWaypointPlotter
 
     private VirtualWayPointCoordinate createVwpCoordinate(int targetWaypointIndex, Coordinate vwpPosition, double orientationAngle, int waitInSecondsForVWP)
     {
-        VirtualWayPointCoordinate virtualWayPointCoordinate = new VirtualWayPointCoordinate();
+        VirtualWayPointCoordinate virtualWayPointCoordinate = new VirtualWayPointCoordinate(flight);
         
         virtualWayPointCoordinate.setCoordinate(vwpPosition.copy());
         virtualWayPointCoordinate.setOrientation(new Orientation(orientationAngle));

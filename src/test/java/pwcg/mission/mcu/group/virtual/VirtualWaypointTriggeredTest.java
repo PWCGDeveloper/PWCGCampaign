@@ -14,17 +14,20 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPlanes;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.validate.IndexLinkValidator;
 import pwcg.mission.flight.waypoint.IWaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointPackage;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
+import pwcg.mission.mcu.McuFormation;
 
 @RunWith(MockitoJUnitRunner.class)
 public class VirtualWaypointTriggeredTest
 {
     @Mock private IFlight flight;
+    @Mock private IFlightInformation flightInformation;
     @Mock private IFlightPlanes flightPlanes;
     private PlaneMcu plane1;
     private PlaneMcu plane2;
@@ -50,10 +53,13 @@ public class VirtualWaypointTriggeredTest
         Orientation vwpOrientation = new Orientation(270.0);
         Mockito.when(vwpCoordinate.getOrientation()).thenReturn(vwpOrientation);        
 
-        Mockito.when(vwpCoordinate.getWaypointIdentifier(Mockito.any())).thenReturn(99999);        
+        Mockito.when(vwpCoordinate.getWaypointIdentifier()).thenReturn(99999);        
 
         Mockito.when(vwpPlanes.getLeadActivatePlane()).thenReturn(plane1);        
         Mockito.when(vwpPlanes.getAllPlanes()).thenReturn(planes);        
+
+        Mockito.when(flight.getFlightInformation()).thenReturn(flightInformation);        
+        Mockito.when(flightInformation.getFormationType()).thenReturn(McuFormation.FORMATION_V);        
     }
     
     @Test
