@@ -62,6 +62,7 @@ public enum PayloadElement
 
     
     //WW II
+    ERLA_CANOPY(PayloadElementCategory.MODIFICATION, "Erla Canopy", 0),
     BUBBLE_CANOPY(PayloadElementCategory.MODIFICATION, "Bubble Canopy", 0),
     REMOVE_HEADREST(PayloadElementCategory.MODIFICATION, "Remove Headrest", 0),
     GLASS_HEADREST(PayloadElementCategory.MODIFICATION, "Glass Headrest", 0),
@@ -104,6 +105,7 @@ public enum PayloadElement
     OCTANE_150_FUEL(PayloadElementCategory.MODIFICATION, "150 Octane Fuel", 100),
     LB_11_BOOST(PayloadElementCategory.MODIFICATION, "11 lb. Boost", 100),
     LB_14_BOOST(PayloadElementCategory.MODIFICATION, "14 lb. Boost", 100),
+    MW50(PayloadElementCategory.MODIFICATION, "MW50", 0),
     PBP_1A(PayloadElementCategory.MODIFICATION, "PBP 1A", 100),
     AIR_FILTER(PayloadElementCategory.MODIFICATION, "Air Filter", 10),
 

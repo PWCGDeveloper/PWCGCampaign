@@ -50,6 +50,16 @@
 			"definedInGame": true
 		},
 		{
+			"skinName": "bf109g6late_skin_12",
+			"planeType": "bf109g6late",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -1,
+			"country": "",
+			"category": "",
+			"definedInGame": true
+		},
+		{
 			"skinName": "bf109g14_skin_01",
 			"planeType": "bf109g14",
 			"startDate": "19400801",

@@ -1,0 +1,25 @@
+{
+  "type": "bf109g6late",
+  "archType": "bf109",
+  "side": "AXIS",
+  "primaryUsedBy": [
+    "GERMANY"
+  ],
+  "displayName": "Bf 109 G-6 Late",
+  "script": "LuaScripts\\WorldObjects\\Planes\\bf109g6late.txt",
+  "model": "graphics\\planes\\bf109g6late\\bf109g6late.mgm",
+  "desc": "",
+  "cruisingSpeed": 360,
+  "climbOutRate": 1300,
+  "goodness": 60,
+  "range": 600,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER",
+    "ROLE_ATTACK"
+  ],
+  "introduction": "19440101",
+  "endProduction": "19441001",
+  "withdrawal": "19450101"
+}

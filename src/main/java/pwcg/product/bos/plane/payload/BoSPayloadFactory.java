@@ -16,6 +16,7 @@ import pwcg.product.bos.plane.payload.aircraft.Bf109F4Payload;
 import pwcg.product.bos.plane.payload.aircraft.Bf109G14Payload;
 import pwcg.product.bos.plane.payload.aircraft.Bf109G2Payload;
 import pwcg.product.bos.plane.payload.aircraft.Bf109G4Payload;
+import pwcg.product.bos.plane.payload.aircraft.Bf109G6LatePayload;
 import pwcg.product.bos.plane.payload.aircraft.Bf109G6Payload;
 import pwcg.product.bos.plane.payload.aircraft.Bf109K4Payload;
 import pwcg.product.bos.plane.payload.aircraft.Bf110E2Payload;
@@ -90,6 +91,10 @@ public class BoSPayloadFactory implements IPayloadFactory
         else if (attributeMapping == BosPlaneAttributeMapping.BF109_G6)
         {
             return new Bf109G6Payload(planeType);
+        }
+        else if (attributeMapping == BosPlaneAttributeMapping.BF109_G6_LATE)
+        {
+            return new Bf109G6LatePayload(planeType);
         }
         else if (attributeMapping == BosPlaneAttributeMapping.BF109_G14)
         {

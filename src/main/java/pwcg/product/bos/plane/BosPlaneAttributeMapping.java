@@ -10,6 +10,7 @@ public enum BosPlaneAttributeMapping implements IPlaneAttributeMapping
     BF109_G2("bf109g2", "static_bf109","static_bf109_open", "static_bf109_net"),
     BF109_G4("bf109g4", "static_bf109","static_bf109_open", "static_bf109_net"),
     BF109_G6("bf109g6", "static_bf109","static_bf109_open", "static_bf109_net"),
+    BF109_G6_LATE("bf109g6late", "static_bf109","static_bf109_open", "static_bf109_net"),
     BF109_G14("bf109g14", "static_bf109","static_bf109_open", "static_bf109_net"),
     BF109_K4("bf109k4", "static_bf109k4", "static_bf109_net"),
     BF110_E2("bf110e2", "static_bf110e2", "static_bf110e2_open"),

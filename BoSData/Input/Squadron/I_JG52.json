@@ -96,6 +96,16 @@
 			"definedInGame": false
 		},
 		{
+			"skinName": "bf109g6late_skin_10",
+			"planeType": "bf109g6late",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 20112051,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": true
+		},
+		{
 			"skinName": "I_JG52",
 			"planeType": "bf109g14",
 			"startDate": "19400801",
