@@ -133,7 +133,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 		try
 		{
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.PwcgMainScreen);
-	        this.setImage(imagePath);
+	        this.setImageFromName(imagePath);
 			
             pwcgThreePanel.setLeftPanel(makeLeftPanel());
             pwcgThreePanel.setCenterPanel(makeCenterPanel());

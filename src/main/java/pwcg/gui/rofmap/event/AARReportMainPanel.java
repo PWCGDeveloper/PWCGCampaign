@@ -75,7 +75,7 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
 	public void makePanels() throws PWCGException  
 	{        
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.AARReportMainPanel);
-        this.setImage(imagePath);
+        this.setImageFromName(imagePath);
 
         this.add(BorderLayout.WEST, makeNavigationPanel());
         resetCenterPanels();

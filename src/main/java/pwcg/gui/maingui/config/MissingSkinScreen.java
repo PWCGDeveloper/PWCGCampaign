@@ -54,7 +54,7 @@ public class MissingSkinScreen extends ImageResizingPanel implements ActionListe
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.PwcgSkinConfigurationAnalysisScreen);
-            this.setImage(imagePath);
+            this.setImageFromName(imagePath);
 
             this.add(BorderLayout.WEST, makeButtonPanel());
             this.add(BorderLayout.CENTER, makeCenterPanel());

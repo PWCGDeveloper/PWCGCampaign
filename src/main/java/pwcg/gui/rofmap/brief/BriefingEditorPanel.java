@@ -57,7 +57,7 @@ public class BriefingEditorPanel extends ImageResizingPanel implements ActionLis
 	public void makePanels() throws PWCGException 
 	{
         String imagePath = ContextSpecificImages.imagesMisc() + "Document.png";
-        this.setImage(imagePath);
+        this.setImageFromName(imagePath);
 
 		editorPanel = new JPanel();
 		editorPanel.setLayout(new BorderLayout());

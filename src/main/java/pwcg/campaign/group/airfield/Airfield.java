@@ -132,7 +132,9 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
         this.orientation = desc.getOrientation().copy();
         this.name = desc.getName();
         for (Runway r : desc.getRunways())
+        {
             this.runways.add(r.copy());
+        }
     }
 
     public double getPlaneOrientation()

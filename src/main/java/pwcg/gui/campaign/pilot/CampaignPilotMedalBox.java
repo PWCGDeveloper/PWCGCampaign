@@ -57,7 +57,7 @@ public class CampaignPilotMedalBox extends ImageResizingPanel implements ActionL
         SoundManager.getInstance().playSound("MedalCaseOpen.WAV");
 
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.OpenMedalBox);
-        this.setImage(imagePath);        
+        this.setImageFromName(imagePath);        
         this.setBorder(PwcgBorderFactory.createMedalBoxBorder());
 
 	    this.add(BorderLayout.CENTER, makeCenterPanel());

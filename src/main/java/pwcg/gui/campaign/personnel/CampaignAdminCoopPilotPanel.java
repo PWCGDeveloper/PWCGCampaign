@@ -59,7 +59,7 @@ public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements A
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-            this.setImage(imagePath);
+            this.setImageFromName(imagePath);
             this.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 
             JPanel centerPanel = makeDisplay();

@@ -71,7 +71,7 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
     public void makePanels() throws PWCGException  
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignJournalScreen);
-        this.setImage(imagePath);
+        this.setImageFromName(imagePath);
 
         calculateLinesPerPage();
         getJournalEntries();

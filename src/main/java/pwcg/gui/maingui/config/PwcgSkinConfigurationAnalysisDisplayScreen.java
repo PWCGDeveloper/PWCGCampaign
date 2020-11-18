@@ -55,7 +55,7 @@ public class PwcgSkinConfigurationAnalysisDisplayScreen extends ImageResizingPan
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.PwcgSkinConfigurationAnalysisDisplayScreen);
-            this.setImage(imagePath);
+            this.setImageFromName(imagePath);
 
             this.add(BorderLayout.WEST, makeButtonPanel());
             this.add(BorderLayout.CENTER, makeCenterPanel());

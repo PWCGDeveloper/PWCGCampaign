@@ -77,7 +77,7 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
         squeezerPanel.setOpaque(false);
         squeezerPanel.setLayout(new BorderLayout());
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        squeezerPanel.setImage(imagePath);
+        squeezerPanel.setImageFromName(imagePath);
         this.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 
         squadronsByRoleContainer = new ImageResizingPanel("");
@@ -105,7 +105,7 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
         intelTextPanel.setOpaque(false);
         intelTextPanel.setLayout(new BorderLayout());
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        intelTextPanel.setImage(imagePath);
+        intelTextPanel.setImageFromName(imagePath);
         this.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 
         Font font = PWCGMonitorFonts.getTypewriterFont();

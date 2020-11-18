@@ -78,7 +78,7 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
 	public void makePanels() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignPilotScreen);
-        this.setImage(imagePath);
+        this.setImageFromName(imagePath);
 
         this.add(BorderLayout.WEST, makenavigationPanel());
         centerPanel = makeCenterPanel();

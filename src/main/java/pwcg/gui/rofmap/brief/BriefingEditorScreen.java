@@ -47,7 +47,7 @@ public class BriefingEditorScreen extends ImageResizingPanel implements ActionLi
 	public void makePanels() throws PWCGException 
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.BriefingEditorEditorScreen);
-        this.setImage(imagePath);
+        this.setImageFromName(imagePath);
 
 		editorPanel = new BriefingEditorPanel();
 		editorPanel.makePanels();

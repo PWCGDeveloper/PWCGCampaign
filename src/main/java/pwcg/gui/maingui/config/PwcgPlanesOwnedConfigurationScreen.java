@@ -58,7 +58,7 @@ public class PwcgPlanesOwnedConfigurationScreen extends ImageResizingPanel imple
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.PwcgPlanesOwnedConfigurationScreen);
-            this.setImage(imagePath);
+            this.setImageFromName(imagePath);
             
             this.add(makeButtonPanel(), BorderLayout.WEST);
             this.add(makeCenterPanel(), BorderLayout.CENTER);

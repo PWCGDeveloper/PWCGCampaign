@@ -48,7 +48,7 @@ public class PwcgCoopGlobalAdminScreen extends ImageResizingPanel implements Act
         try
         {        	
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.PwcgCoopGlobalAdminScreen);
-            this.setImage(imagePath);
+            this.setImageFromName(imagePath);
 
             pwcgThreePanel.setLeftPanel(makeNavigatePanel());
             pwcgThreePanel.setRightPanel(makeCoopAdminActionSelectPanel());

@@ -57,7 +57,7 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignHomeScreen);
-            this.setImage(imagePath);
+            this.setImageFromName(imagePath);
             
             createCampaignHomeContext();
         }

@@ -27,7 +27,7 @@ public class ImageResizingPanel extends JPanel
         this.imagePath = imagePath;
         if (!imagePath.isEmpty())
         {
-            setImage(imagePath);
+            setImageFromName(imagePath);
         }
     }
 
@@ -58,7 +58,12 @@ public class ImageResizingPanel extends JPanel
         children.put(panelId, panel);
     }
 
-    public void setImage(String imagePath)
+    public void setImage(BufferedImage image)
+    {
+        this.image = image;
+    }
+
+    public void setImageFromName(String imagePath)
 	{
 		try 
 		{

@@ -40,7 +40,7 @@ public class CoopCreateUserPanel extends ImageResizingPanel implements ActionLis
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-            this.setImage(imagePath);
+            this.setImageFromName(imagePath);
             this.setBorder(BorderFactory.createEmptyBorder(150,40,40,150));
 
 	        JPanel centerPanel = makeCoopUserEntryPanel();

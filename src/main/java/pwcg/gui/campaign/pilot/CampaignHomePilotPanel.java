@@ -51,7 +51,7 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
 	public void makePanel(List<SquadronMember>pilots, String description, String action) throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.PlagueBronzeBackground);
-        this.setImage(imagePath);
+        this.setImageFromName(imagePath);
         this.setBorder(PwcgBorderFactory.createPlaqueBackgroundBorder());
 
         JPanel pilotListGrid = new JPanel(new GridLayout(0, 1));

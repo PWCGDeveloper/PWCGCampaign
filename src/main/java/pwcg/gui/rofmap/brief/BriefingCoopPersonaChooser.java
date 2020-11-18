@@ -61,7 +61,7 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.BriefingCoopPersonaChooser);
-            this.setImage(imagePath);
+            this.setImageFromName(imagePath);
 
         	coopPersonaAccept = new CoopPersonaChooserPanel(campaign, this);
             coopPersonaAccept.makePanels();

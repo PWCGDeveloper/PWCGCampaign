@@ -1,23 +1,16 @@
 package pwcg.gui.campaign.pilot;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.util.List;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import pwcg.campaign.api.ICountry;
-import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.medals.MedalText;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -30,12 +23,9 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
-import pwcg.gui.image.ImageRetriever;
-import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
-import pwcg.gui.utils.PWCGFrame;
 import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
@@ -57,7 +47,7 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
 	public void makePanels() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignMedalScreen);
-        this.setImage(imagePath);
+        this.setImageFromName(imagePath);
 
         this.add(BorderLayout.WEST, makenavigationPanel());
         this.add(BorderLayout.CENTER, makeCenterPanel());     
@@ -223,61 +213,10 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
 
     private JPanel makePaperDollPanel() throws PWCGException
     {
-        BufferedImage paperDoll = buildPaperDollWithOverlay();
-        ImageResizingPanel paperDollPanel = ImageResizingPanelBuilder.makeImageResizingPanel(paperDoll);
-        paperDollPanel.setBorder(PwcgBorderFactory.createDocumentBorderWithExtraSpaceFromTop());
-        
+        CampaignPaperDollPanel paperDollPanel = new CampaignPaperDollPanel(pilot);
+        paperDollPanel.makePaperDollPanel();
         return paperDollPanel;
     }
-
-    private BufferedImage buildPaperDollWithOverlay() throws PWCGException
-    {
-        ICountry country = CountryFactory.makeCountryByCountry(pilot.getCountry());
-        String imagePath = ContextSpecificImages.imagesPaperDoll() + "\\" + country.getCountryName();
-        String paperDollPath = imagePath + "\\PaperDoll.png";
-        BufferedImage paperDoll = ImageRetriever.getImageFromFile(paperDollPath);
-        
-        
-        BufferedImage combinedPaperDollImage = paperDoll;
-        for (Medal medal : pilot.getMedals())
-        {
-            try 
-            {
-                String medalPath = imagePath + "\\" + medal.getMedalName() + ".png";
-                BufferedImage medalOverlay = ImageRetriever.getImageFromFile(medalPath);
-                if (medalOverlay != null)
-                {
-                    combinedPaperDollImage = combineOverlayWithMap(combinedPaperDollImage, medalOverlay);
-                }
-            }
-            catch (Exception ex) 
-            {
-                PWCGLogger.logException(ex);
-            }            
-        }
-
-        return combinedPaperDollImage;
-    }
-
-    private BufferedImage combineOverlayWithMap(BufferedImage paperDollImage, BufferedImage medalOverlay)
-    {
-        BufferedImage result = new BufferedImage(paperDollImage.getWidth(), paperDollImage.getHeight(), BufferedImage.TYPE_INT_RGB);
-        Graphics g = result.getGraphics();
-        g.drawImage(paperDollImage, 0, 0, null);
-        g.drawImage(medalOverlay, 0, 0, null);
-        return result;
-    }
-
-    private JLabel makePaperDollSpacerLabel()
-    {
-        double width = PWCGFrame.getInstance().getBounds().getWidth();
-        int numSpaces = width * .4;
-
-        JLabel medalLabel = new JLabel(medalIcon);
-        medalLabel.setOpaque(false);
-        return medalLabel;
-    }
-
 
 	public void actionPerformed(ActionEvent ae)
 	{

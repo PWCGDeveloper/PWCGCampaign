@@ -47,7 +47,7 @@ public class AARInitiationScreen extends ImageResizingPanel implements ActionLis
     public void makePanel() throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.AARInitiationScreen);
-        this.setImage(imagePath);
+        this.setImageFromName(imagePath);
 
         this.add(makeNavigationPanel(), BorderLayout.WEST);
         this.add(makeCenterPanel(), BorderLayout.CENTER);

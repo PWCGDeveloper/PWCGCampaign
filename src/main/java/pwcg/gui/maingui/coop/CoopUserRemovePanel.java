@@ -41,7 +41,7 @@ public class CoopUserRemovePanel extends ImageResizingPanel implements ActionLis
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-            this.setImage(imagePath);
+            this.setImageFromName(imagePath);
 
             JPanel centerPanel = makeAcceptancePanel();
             this.add(centerPanel, BorderLayout.CENTER);

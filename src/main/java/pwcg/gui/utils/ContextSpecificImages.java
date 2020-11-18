@@ -33,7 +33,7 @@ public class ContextSpecificImages
 
     public static String imagesPaperDoll() 
     {
-        String picPath = PWCGContext.getInstance().getDirectoryManager().getPwcgImagesDir() + "Medals\\PaperDoll";
+        String picPath = PWCGContext.getInstance().getDirectoryManager().getPwcgImagesDir() + "PaperDoll\\";
         
         return picPath;
     }

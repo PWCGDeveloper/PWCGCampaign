@@ -49,7 +49,7 @@ public class CoopPersonaChooserPanel extends ImageResizingPanel implements ISele
 		try
 		{
 	        String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-	        this.setImage(imagePath);
+	        this.setImageFromName(imagePath);
 	        this.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
 
 	        JPanel centerPanel = makeAcceptancePanel();

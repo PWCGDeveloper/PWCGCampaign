@@ -55,7 +55,7 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignCoopAdminScreen);
-            this.setImage(imagePath);
+            this.setImageFromName(imagePath);
 
             this.add(BorderLayout.WEST, makeNavigatePanel());
             this.add(BorderLayout.CENTER, makeCenterPanel());

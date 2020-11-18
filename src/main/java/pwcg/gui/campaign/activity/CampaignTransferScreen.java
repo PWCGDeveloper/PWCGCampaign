@@ -79,7 +79,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 	public void makePanels() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignTransferScreen);
-        this.setImage(imagePath);
+        this.setImageFromName(imagePath);
 
         service = this.squadronMemberToTransfer.determineService(campaign.getDate());
 

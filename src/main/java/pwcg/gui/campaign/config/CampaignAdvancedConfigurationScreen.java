@@ -60,7 +60,7 @@ public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel impl
 	public void makePanels() throws PWCGException 
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignAdvancedConfigurationScreen);
-        this.setImage(imagePath);
+        this.setImageFromName(imagePath);
 
         pwcgThreePanel.setLeftPanel(makeNavigatePanel());
         pwcgThreePanel.setCenterPanel(makeBlankCenterPanel());

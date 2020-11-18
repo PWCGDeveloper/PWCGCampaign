@@ -54,7 +54,7 @@ public class CampaignPilotLogScreen extends ImageResizingPanel implements Action
 	public void makePanels() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignPilotLogScreen);
-        this.setImage(imagePath);
+        this.setImageFromName(imagePath);
 
         pilotLogPages = new PilotLogPages(campaign, pilot);
         pilotLogPages.makePages();

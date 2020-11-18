@@ -76,7 +76,7 @@ public class CampaignSquadronLogScreen extends ImageResizingPanel implements Act
 	public void makePanels() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignSquadronLogScreen);
-        this.setImage(imagePath);
+        this.setImageFromName(imagePath);
 
 		pages = orderPageEntries();
 		this.add(BorderLayout.WEST, makeLogLeftPanel());

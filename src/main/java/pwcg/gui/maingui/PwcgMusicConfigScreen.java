@@ -52,7 +52,7 @@ public class PwcgMusicConfigScreen extends ImageResizingPanel implements ActionL
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.PwcgMusicConfigScreen);
-            this.setImage(imagePath);
+            this.setImageFromName(imagePath);
             
             this.add(BorderLayout.WEST, makeButtonPanel());
             this.add(BorderLayout.CENTER, makeCampaignSelectPanel());

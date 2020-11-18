@@ -48,7 +48,7 @@ public class CampaignDeleteScreen extends ImageResizingPanel implements ActionLi
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignDeleteScreen);
-            this.setImage(imagePath);
+            this.setImageFromName(imagePath);
 
             this.add(BorderLayout.WEST, makeButtonPanel());
             this.add(BorderLayout.CENTER, makeCampaignSelectPanel());

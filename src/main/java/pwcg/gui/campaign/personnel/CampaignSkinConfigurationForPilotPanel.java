@@ -74,7 +74,7 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
         this.setOpaque(false);
 
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        this.setImage(imagePath);
+        this.setImageFromName(imagePath);
         this.setBorder(BorderFactory.createEmptyBorder(30, 30, 50, 70));
         
         this.campaign = campaign;

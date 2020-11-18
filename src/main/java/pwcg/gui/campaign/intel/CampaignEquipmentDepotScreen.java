@@ -45,7 +45,7 @@ public class CampaignEquipmentDepotScreen extends ImageResizingPanel implements 
 	public void makePanels() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignEquipmentDepotScreen);
-        this.setImage(imagePath);
+        this.setImageFromName(imagePath);
 
         this.add(BorderLayout.WEST, makeNavigatePanel());
         this.add(BorderLayout.CENTER,  makeCenterPanel());
@@ -76,7 +76,7 @@ public class CampaignEquipmentDepotScreen extends ImageResizingPanel implements 
         equipmentDepotPanel.setOpaque(false);
         equipmentDepotPanel.setLayout(new BorderLayout());
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        equipmentDepotPanel.setImage(imagePath);
+        equipmentDepotPanel.setImageFromName(imagePath);
         equipmentDepotPanel.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
         
         Color tabBG = ColorMap.PAPER_BACKGROUND;

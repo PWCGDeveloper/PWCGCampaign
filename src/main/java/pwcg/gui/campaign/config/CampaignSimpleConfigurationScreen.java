@@ -69,7 +69,7 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
 	public void makePanels() throws PWCGException 
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignSimpleConfigurationScreen);
-        this.setImage(imagePath);
+        this.setImageFromName(imagePath);
 
         this.add(BorderLayout.WEST, makeNavigatePanel());
 	    this.add(BorderLayout.CENTER, makeConfigControlPanel());
@@ -178,7 +178,7 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
         
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
         ImageResizingPanel simpleConfigButtonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        simpleConfigButtonPanel.setImage(imagePath);
+        simpleConfigButtonPanel.setImageFromName(imagePath);
         simpleConfigButtonPanel.setLayout(new GridLayout(0,1));
         simpleConfigButtonPanel.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 

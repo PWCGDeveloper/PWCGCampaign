@@ -47,7 +47,7 @@ public class AARClaimPanels extends ImageResizingPanel
     public void makePanels() throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        this.setImage(imagePath);
+        this.setImageFromName(imagePath);
         this.setBorder(BorderFactory.createEmptyBorder(30,30,100,120));
 
         this.add(makeTabbedClaimsPanel(), BorderLayout.CENTER);

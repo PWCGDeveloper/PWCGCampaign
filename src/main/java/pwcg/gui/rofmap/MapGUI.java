@@ -22,7 +22,7 @@ public abstract class MapGUI extends ImageResizingPanel
 	{
         super("");
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.MapScreens);
-        this.setImage(imagePath);
+        this.setImageFromName(imagePath);
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 

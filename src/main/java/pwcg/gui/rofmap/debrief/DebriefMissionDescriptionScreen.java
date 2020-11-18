@@ -50,7 +50,7 @@ public class DebriefMissionDescriptionScreen extends ImageResizingPanel implemen
 		try
 		{
 	        String imagePath = UiImageResolver.getImage(ScreenIdentifier.DebriefMissionDescriptionScreen);
-	        this.setImage(imagePath);
+	        this.setImageFromName(imagePath);
 
 			this.removeAll();	
 			this.add(BorderLayout.WEST, makeButtonPanel());

@@ -68,7 +68,7 @@ public class CampaignGeneratorScreen extends ImageResizingPanel implements Actio
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignGeneratorScreen);
-            this.setImage(imagePath);
+            this.setImageFromName(imagePath);
 
             pwcgThreePanel.setLeftPanel(makeButtonPanel());
             pwcgThreePanel.setCenterPanel(makeCampaignProfilePanel());

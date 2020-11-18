@@ -54,7 +54,7 @@ public class CampaignReferencePilotSelectorScreen extends ImageResizingPanel imp
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignReferencePilotSelectorScreen);
-            this.setImage(imagePath);
+            this.setImageFromName(imagePath);
 
             this.add(BorderLayout.WEST, makeNavigatePanel());
             this.add(BorderLayout.CENTER, makeCoopPersonaSelectorPanel());

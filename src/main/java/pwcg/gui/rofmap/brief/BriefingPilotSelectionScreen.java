@@ -69,7 +69,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.BriefingPilotSelectionScreen);
-            this.setImage(imagePath);
+            this.setImageFromName(imagePath);
             
             briefingFlightChooser = new BriefingFlightChooser(mission, this);
             briefingFlightChooser.createBriefingSquadronSelectPanel();

@@ -45,7 +45,7 @@ public class CoopPersonaInfoPanel extends ImageResizingPanel
 		try
 		{
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-            this.setImage(imagePath);
+            this.setImageFromName(imagePath);
             this.setBorder(BorderFactory.createEmptyBorder(150,40,40,150));
 
             JPanel centerPanel = makeDisplay();

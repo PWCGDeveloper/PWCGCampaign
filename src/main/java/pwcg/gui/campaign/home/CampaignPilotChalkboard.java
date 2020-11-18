@@ -33,7 +33,7 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
     public void makePanels(List<SquadronMember> sortedPilots) throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignPilotChalkboard);
-        this.setImage(imagePath);
+        this.setImageFromName(imagePath);
         this.setBorder(PwcgBorderFactory.createCampaignHomeChalkboardBoxBorder());        
 
         JPanel equipmentPanel = createPilotListPanel(sortedPilots);

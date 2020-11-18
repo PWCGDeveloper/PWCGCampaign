@@ -41,7 +41,7 @@ public class AARCombatReportPanel extends AARDocumentPanel
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-            this.setImage(imagePath);
+            this.setImageFromName(imagePath);
 
             createCombatReportGUI();
             JPanel eventTabPane =createPostCombatReportTabs();

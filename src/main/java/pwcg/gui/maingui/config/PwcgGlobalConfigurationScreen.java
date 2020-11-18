@@ -53,7 +53,7 @@ public class PwcgGlobalConfigurationScreen extends ImageResizingPanel implements
     public void makePanels() throws PWCGException 
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.PwcgGlobalConfigurationScreen);
-        this.setImage(imagePath);
+        this.setImageFromName(imagePath);
 
         configManager = ConfigManagerGlobal.getInstance();
         

@@ -41,7 +41,7 @@ public class ConfigurationParametersGUI extends ImageResizingPanel
 	public void makeGUI() throws PWCGException 
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        this.setImage(imagePath);
+        this.setImageFromName(imagePath);
         this.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
 
 		if (configSet == null)

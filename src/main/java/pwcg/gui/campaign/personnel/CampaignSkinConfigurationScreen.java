@@ -49,7 +49,7 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
     {
         PWCGContext.getInstance().getSkinManager().initialize();
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignSkinConfigurationScreen);
-        this.setImage(imagePath);
+        this.setImageFromName(imagePath);
 
         SquadronMember referencePlayer = campaign.findReferencePlayer();
 

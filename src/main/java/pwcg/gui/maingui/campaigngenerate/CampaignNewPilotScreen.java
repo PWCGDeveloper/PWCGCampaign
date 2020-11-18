@@ -58,7 +58,7 @@ public class CampaignNewPilotScreen extends ImageResizingPanel implements Action
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignNewPilotScreen);
-            this.setImage(imagePath);
+            this.setImageFromName(imagePath);
 
             this.add(BorderLayout.WEST, makeButtonPanel());
             this.add(BorderLayout.CENTER, SpacerPanelFactory.makeSpacerPercentPanel(20));

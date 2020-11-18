@@ -63,7 +63,7 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
     public void makePanels() throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignLeaveScreen);
-        this.setImage(imagePath);
+        this.setImageFromName(imagePath);
 
         this.add(BorderLayout.WEST, makeNavPanel());
         this.add(BorderLayout.CENTER, makeLeaveCenterPanel());

@@ -57,7 +57,7 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
 		try
 		{
 	        String imagePath = UiImageResolver.getImage(ScreenIdentifier.BriefingDescriptionScreen);
-            this.setImage(imagePath);
+            this.setImageFromName(imagePath);
 
             briefingFlightChooser = new BriefingFlightChooser(mission, this);
             briefingFlightChooser.createBriefingSquadronSelectPanel();

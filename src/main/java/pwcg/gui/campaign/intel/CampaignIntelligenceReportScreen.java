@@ -42,7 +42,7 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
 	public void makePanels() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignIntelligenceReportScreen);
-        this.setImage(imagePath);
+        this.setImageFromName(imagePath);
 
         this.add(BorderLayout.WEST, makeNavigatePanel());
         this.add(BorderLayout.CENTER,  makeCenterPanel());

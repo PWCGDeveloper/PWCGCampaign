@@ -66,7 +66,7 @@ public class PwcgSkinConfigurationAnalysisScreen extends ImageResizingPanel impl
         try
         {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.PwcgSkinConfigurationAnalysisScreen);
-            this.setImage(imagePath);
+            this.setImageFromName(imagePath);
             
             skinAnalyzer.analyze();
             

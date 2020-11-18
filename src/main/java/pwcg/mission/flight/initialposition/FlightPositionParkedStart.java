@@ -1,5 +1,6 @@
 package pwcg.mission.flight.initialposition;
 
+import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.plane.PlaneType.PlaneSize;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -22,7 +23,8 @@ public class FlightPositionParkedStart
     {
         PlaneMcu flightLeader = flight.getFlightPlanes().getFlightLeader();
         PWCGLocation parkingLocation = flight.getFlightInformation().getDepartureAirfield().getParkingLocation();
-        double offsetAngle = MathUtils.adjustAngle(parkingLocation.getOrientation().getyOri(), 90);
+        double angleOffsetForPlanePlacement = calculateAngleForLeadToBeClosestToRunway(flight.getFlightInformation().getDepartureAirfield());
+        double offsetAngle = MathUtils.adjustAngle(parkingLocation.getOrientation().getyOri(), angleOffsetForPlanePlacement);
         int planeSpacing = calculateParkedSpacing(flightLeader);
 
         // Initial position has already been set for ground starts
@@ -33,10 +35,30 @@ public class FlightPositionParkedStart
             int startParkedVal = FlightStartPosition.START_PARKED;
 
             setPlanePosition(flightLeader, parkingLocation, plane, planeCoords, startParkedVal);
-
-
             ++i;
         }
+    }
+    
+    private double calculateAngleForLeadToBeClosestToRunway(IAirfield airfield) throws PWCGException
+    {
+        PWCGLocation parkingLocation = flight.getFlightInformation().getDepartureAirfield().getParkingLocation();
+        PWCGLocation takeoffLocation = flight.getFlightInformation().getDepartureAirfield().getTakeoffLocation();
+                
+        double parkingAngle = parkingLocation.getOrientation().getyOri();
+        double parkingAngle90 = MathUtils.adjustAngle(parkingAngle, 90);
+        double parkingAngle270 = MathUtils.adjustAngle(parkingAngle, 270);
+        
+        double angleParkingToTakeoff = MathUtils.calcAngle(parkingLocation.getPosition(), takeoffLocation.getPosition());
+        double angle90Difference = Math.min(Math.abs((2 * Math.PI) - Math.abs(parkingAngle90 - angleParkingToTakeoff)), Math.abs(parkingAngle90 - angleParkingToTakeoff));
+        double angle270Difference = Math.min(Math.abs((2 * Math.PI) - Math.abs(parkingAngle270 - angleParkingToTakeoff)), Math.abs(parkingAngle270 - angleParkingToTakeoff));
+        
+        double oppositeMovement = 90;
+        if (angle90Difference < angle270Difference)
+        {
+            oppositeMovement = 270;
+        }
+
+        return oppositeMovement;
     }
 
     private void setPlanePosition(PlaneMcu flightLeader, PWCGLocation parkingLocation, PlaneMcu plane, Coordinate planeCoords, int startParkedVal)
