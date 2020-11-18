@@ -33,21 +33,20 @@ public class CampaignPaperDollPanel extends ImageResizingPanel
     {
         ICountry country = CountryFactory.makeCountryByCountry(pilot.getCountry());
         String paperDollDirectory = ContextSpecificImages.imagesPaperDoll() + country.getCountryName();
-
-        BufferedImage paperDoll = buildPaperDollWithOverlay(paperDollDirectory);
-        this.setImage(paperDoll);
-        this.setBorder(PwcgBorderFactory.createDocumentBorderWithExtraSpaceFromTop());
-    }
-
-    private BufferedImage buildPaperDollWithOverlay(String paperDollDirectory) throws PWCGException
-    {
         String paperDollPath = paperDollDirectory + "\\PaperDoll.png";
         BufferedImage paperDoll = ImageRetriever.getImageFromFile(paperDollPath);
+        if (paperDoll != null)
+        {
+            buildPaperDollWithOverlay(paperDollDirectory, paperDoll);
+        }
+    }
 
+    private void buildPaperDollWithOverlay(String paperDollDirectory, BufferedImage paperDoll) throws PWCGException
+    {
         paperDoll = addDefaultMedals(paperDollDirectory, paperDoll, pilot.getMedals());
         paperDoll = addKnightsCross(paperDollDirectory, paperDoll, pilot.getMedals());
-
-        return paperDoll;
+        this.setImage(paperDoll);
+        this.setBorder(PwcgBorderFactory.createDocumentBorderWithExtraSpaceFromTop());
     }
 
     private BufferedImage addDefaultMedals(String paperDollDirectory, BufferedImage paperDoll, List<Medal> medals)
@@ -73,7 +72,7 @@ public class CampaignPaperDollPanel extends ImageResizingPanel
                 knightCross = medal;
             }
         }
-        
+
         if (knightCross != null)
         {
             paperDoll = addMedal(paperDollDirectory, paperDoll, knightCross);
