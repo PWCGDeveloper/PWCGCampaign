@@ -49,7 +49,7 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignMedalScreen);
         this.setImageFromName(imagePath);
 
-        this.add(BorderLayout.WEST, makenavigationPanel());
+        this.add(BorderLayout.WEST, makeNavigationPanel());
         this.add(BorderLayout.CENTER, makeCenterPanel());     
 	}
 
@@ -63,7 +63,7 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
         return medalCenterPanel;
     }
 
-    private JPanel makenavigationPanel() throws PWCGException  
+    private JPanel makeNavigationPanel() throws PWCGException  
     {
         JPanel medalNavPanel = new JPanel(new BorderLayout());
         medalNavPanel.setOpaque(false);

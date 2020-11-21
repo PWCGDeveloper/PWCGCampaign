@@ -2,6 +2,31 @@ https://github.com/PWCGDeveloper/PWCG.git
 
 
 
+These are the must haves to get the basic functionality, then you can tweak from here
+
+ 
+
+1. The lead aircraft is closest to the active runway (for this 4 ship flight) 
+2. The Fake Airfield object "USAAF Florennes NE" is very close to the parking area and oriented in the same direction as the active runway (for this flight)
+3. Concert taxi ways is easier on AI than dirt and grass taxi ways
+4. The taxi nodes seem to affect AI taxi speed but too few or too many cases issues like (random spinning and loss of orientation)
+5. Round the curves with nodes but not too close to keep them on center line
+6. Taxi paths that are 90° angles work very well in some instances
+7. AI tend to not like taxi paths that run parallel to the takeoff/landing path (during taxi, AI has a tendency to veer off course directly to the takeoff VPP)
+8. Note how close the parking area is the active runway.
+9. AI skill may have a role to play as well (but not tested fully)
+
+ 
+
+Hope this help and we appreciate your work!
+
+To add - This works best for open area airfields
+With Command Takeoff set to "No taxi Takeoff"
+
+
+ 
+
+
 
 Coop Test Cases ***
 - Auto move of campaign directory to user ***

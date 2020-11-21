@@ -60,4 +60,9 @@ public class PWCGDirectoryUserManager
     {
         return pwcgUserConfigDir;
     }
+
+    public String getPwcgUserDir()
+    {
+        return pwcgUserDir;
+    }
 }

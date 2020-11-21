@@ -2,6 +2,7 @@ package pwcg.gui.utils;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 
@@ -34,6 +35,13 @@ public class ContextSpecificImages
     public static String imagesPaperDoll() 
     {
         String picPath = PWCGContext.getInstance().getDirectoryManager().getPwcgImagesDir() + "PaperDoll\\";
+        
+        return picPath;
+    }
+
+    public static String imagesPlayerPaperDoll() 
+    {
+        String picPath = PWCGDirectoryUserManager.getInstance().getPwcgUserDir() + "PaperDoll\\";
         
         return picPath;
     }

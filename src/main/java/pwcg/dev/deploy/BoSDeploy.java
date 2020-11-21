@@ -99,6 +99,12 @@ public class BoSDeploy extends DeployBase
         directoriesToCopy.put("Royal Air Force", null);
         directoriesToCopy.put("Voyenno-Vozdushnye Sily", null);
         directoriesToCopy.put("Female", null);
+        directoriesToCopy.put("PaperDoll", null);
+
+        directoriesToCopy.put("Germany", null);
+        directoriesToCopy.put("Britain", null);
+        directoriesToCopy.put("Russia", null);
+        directoriesToCopy.put("USA", null);
 
 		return directoriesToCopy;
 	}

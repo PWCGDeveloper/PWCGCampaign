@@ -1,6 +1,13 @@
 
 ​At the PWCG web site
 
+11.7.0
+Added Bf109 G6 Late
+Added Paper Dolls in medal view
+Varied formations
+- Most fighters will use V
+- Bombers may use v or echelon
+
 11.6.1
 Fixed flying boats on rivers
 Fixed error in AAR in FC due to missing vehicle names
