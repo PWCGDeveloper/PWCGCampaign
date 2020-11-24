@@ -3,7 +3,6 @@ package pwcg.mission.mcu.group.virtual;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -32,7 +31,6 @@ public class VirtualWaypointPlaneBuilder
             PlaneMcu plane = originalPlane.copy();
             plane.setOrientation(new Orientation(vwpCoordinate.calculateAngleToWaypoint()));
             
-            setPlaneIndex(plane);
             setPlaneNumberInFormation(plane, numberInFormation);
             setPlaneDisabled(plane);
             
@@ -55,23 +53,9 @@ public class VirtualWaypointPlaneBuilder
         return planesAtActivate;
     }
 
-    private void linkToFlightLeader(PlaneMcu plane, int linkTrId)
+    private void linkToFlightLeader(PlaneMcu plane, int flightLeaderLinkTrId)
     {
-        plane.getEntity().clearTargets();
-        plane.getEntity().setTarget(linkTrId);
-        
-    }
-
-    private void setPlaneIndex(PlaneMcu plane)
-    {
-        int planeIndex = IndexGenerator.getInstance().getNextIndex();
-        int planeLinkIndex = IndexGenerator.getInstance().getNextIndex();
-        
-        plane.setIndex(planeIndex);
-        plane.setLinkTrId(planeLinkIndex);
-        
-        plane.getEntity().setIndex(planeLinkIndex);
-        plane.getEntity().setMisObjID(planeIndex);
+        plane.resetTarget(flightLeaderLinkTrId);
     }
     
     private void setLeadPlanePosition(PlaneMcu plane) throws PWCGException
@@ -94,7 +78,7 @@ public class VirtualWaypointPlaneBuilder
 
     private void setPlaneDisabled(PlaneMcu plane)
     {
-        plane.getEntity().setEnabled(0);
+        plane.enable(false);
     }
 
     private void setPlaneNumberInFormation(PlaneMcu plane, int numberInFormation)

@@ -110,10 +110,10 @@ public class VirtualWaypointTriggered
     {
         for (PlaneMcu plane : vwpPlanes.getAllPlanes())
         {
-            activate.setObject(plane.getEntity().getIndex());
+            activate.setObject(plane.getLinkTrId());
         }
         
-        formation.setObject(vwpPlanes.getLeadActivatePlane().getEntity().getIndex());
+        formation.setObject(vwpPlanes.getLeadActivatePlane().getLinkTrId());
     }
 
     public void write(BufferedWriter writer) throws PWCGException

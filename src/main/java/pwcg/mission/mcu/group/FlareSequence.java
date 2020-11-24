@@ -78,7 +78,7 @@ public class FlareSequence
     {
         for (PlaneMcu triggeringPlane : triggeringFlight.getFlightPlanes().getPlanes())
         {
-            missionBeginUnit.setCheckZoneTriggerObject(triggeringPlane.getEntity().getIndex());
+            missionBeginUnit.setCheckZoneTriggerObject(triggeringPlane.getLinkTrId());
         }
     }
 

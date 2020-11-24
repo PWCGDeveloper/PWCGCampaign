@@ -29,7 +29,7 @@ public class FlightPlanes implements IFlightPlanes
         {
             for (PlaneMcu plane : planes)
             {
-                plane.getEntity().setEnabled(1);
+                plane.enable(true);
             }
         }
     }

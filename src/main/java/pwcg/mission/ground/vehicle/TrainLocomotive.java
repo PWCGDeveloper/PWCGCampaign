@@ -44,7 +44,7 @@ public class TrainLocomotive extends Vehicle implements IVehicle
         locomotive.position = new Coordinate();
         locomotive.orientation = new Orientation();
 
-        locomotive.entity = new McuTREntity();
+        locomotive.entity = new McuTREntity(locomotive.index);
 
         locomotive.populateEntity();
 

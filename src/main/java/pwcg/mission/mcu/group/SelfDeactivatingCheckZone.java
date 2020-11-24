@@ -205,7 +205,7 @@ public class SelfDeactivatingCheckZone
         {
             for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
             {
-                triggerPlanes.add(plane.getEntity().getIndex());
+                triggerPlanes.add(plane.getLinkTrId());
             }
         }
         checkZone.triggerCheckZoneByMultipleObjects(triggerPlanes);        
@@ -223,7 +223,7 @@ public class SelfDeactivatingCheckZone
                 {
                     for (PlaneMcu plane : virtualWaypoint.getVwpPlanes().getAllPlanes())
                     {
-                        triggerPlanes.add(plane.getEntity().getIndex());
+                        triggerPlanes.add(plane.getLinkTrId());
                     }
                 }
             }

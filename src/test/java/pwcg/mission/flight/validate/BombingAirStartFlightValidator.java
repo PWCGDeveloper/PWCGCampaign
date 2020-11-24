@@ -77,7 +77,7 @@ public class BombingAirStartFlightValidator
         McuWaypoint airStartWaypoint = flight.getWaypointPackage().getAllWaypoints().get(0);
         for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
-            double planeStartAltitude = plane.getEntity().getPosition().getYPos();
+            double planeStartAltitude = plane.getPosition().getYPos();
             double airStartAltitude = airStartWaypoint.getPosition().getYPos();
             double altDifference = Math.abs(planeStartAltitude - airStartAltitude);
             assert(altDifference < 1000.0);

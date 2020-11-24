@@ -57,7 +57,7 @@ public class MissionObjectiveGroup
         missionObjective.setSuccess(0);
 
         PlaneMcu referencePlane = mission.getMissionFlightBuilder().getReferencePlayerFlight().getFlightPlanes().getPlayerPlanes().get(0);
-        referencePlane.getEntity().setOnMessages(
+        referencePlane.setOnMessages(
                         McuMessage.ONKILL,
                         missionBeginUnit.getStartTimeindex(),
                         missionObjectiveTimer.getIndex());
@@ -68,7 +68,7 @@ public class MissionObjectiveGroup
         McuEvent planeDamagedEvent = new McuEvent();
         planeDamagedEvent.setType(McuEvent.ONPLANECRASHED);
         planeDamagedEvent.setTarId(missionObjectiveTimer.getIndex());
-        referencePlane.getEntity().addEvent(planeDamagedEvent);
+        referencePlane.addEvent(planeDamagedEvent);
     }
 
     public void write(BufferedWriter writer) throws PWCGException 

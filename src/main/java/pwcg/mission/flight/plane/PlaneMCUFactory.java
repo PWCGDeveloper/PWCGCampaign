@@ -11,7 +11,6 @@ import pwcg.campaign.plane.Role;
 import pwcg.campaign.plane.RoleCategory;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
@@ -68,9 +67,7 @@ public class PlaneMCUFactory
         	{
 	            EquippedPlane equippedPlane = planesTypesForFlight.get(index);
 	            SquadronMember pilot = crewsForFlight.get(index);            
-	            PlaneMcu plane = createPlaneMcuByPlaneType(flightInformation.getCampaign(), equippedPlane, flightInformation.getSquadron().getCountry(), pilot);
-	
-	            plane.setIndex(IndexGenerator.getInstance().getNextIndex());
+	            PlaneMcu plane = createPlaneMcuByPlaneType(flightInformation.getCampaign(), equippedPlane, flightInformation.getSquadron().getCountry(), pilot);	
 	            planesForFlight.add(plane);
         	}
         	catch (Exception e)

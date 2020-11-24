@@ -169,7 +169,7 @@ public class PlayerEscortFlightValidator
         McuWaypoint escortedEgressWP = getEscortedFlightWaypoint(WaypointAction.WP_ACTION_EGRESS);
 
         PlaneMcu leadBomber = escortedFlight.getFlightPlanes().getFlightLeader();
-        assert (IndexLinkValidator.isIndexInTargetList(cover.getTargets(), leadBomber.getEntity().getIndex()));
+        assert (IndexLinkValidator.isIndexInTargetList(cover.getTargets(), leadBomber.getLinkTrId()));
 
         assert (IndexLinkValidator.isIndexInTargetList(coverTimer.getTargets(), escortedIngressWP.getIndex()));
         assert (IndexLinkValidator.isIndexInTargetList(escortCompleteTimer.getTargets(), egressWaypoint.getIndex()));

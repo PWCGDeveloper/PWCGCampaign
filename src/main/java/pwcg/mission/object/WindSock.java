@@ -42,7 +42,7 @@ public class WindSock
 	protected int countPlanes = 1;
 	protected int countVehicles = 1; 
 	
-	protected McuTREntity entity = new McuTREntity();
+	protected McuTREntity entity;
 
     public static WindSock createWindSock(IFlight flight) throws PWCGException 
     {
@@ -66,6 +66,9 @@ public class WindSock
 	public WindSock(Coordinate position) 
 	{
 		index = IndexGenerator.getInstance().getNextIndex();
+        entity = new McuTREntity(index);
+        linkTrId = entity.getIndex();
+
 		this.position = position;
 		name = "WindSock";
 	
@@ -79,9 +82,6 @@ public class WindSock
             script = "LuaScripts\\WorldObjects\\windsock.txt";
 		}
 		
-		// Set entity linkage
-		linkTrId = entity.getIndex();
-		entity.setMisObjID(index);
 		entity.setPosition(position.copy());
 		entity.setEnabled(1);
 	}

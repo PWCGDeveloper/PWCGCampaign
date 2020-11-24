@@ -49,8 +49,8 @@ public class WingmanMcuGroup
     
         cover  = new McuCover();
         cover.setPosition(coverStartWaypoint.getPosition());
-        cover.setObject(coveringPlane.getEntity().getIndex());
-        cover.setTarget(planeToCover.getEntity().getIndex());
+        cover.setObject(coveringPlane.getLinkTrId());
+        cover.setTarget(planeToCover.getLinkTrId());
 
         coverTimer  = new McuTimer();
         coverTimer.setName("Cover Timer");

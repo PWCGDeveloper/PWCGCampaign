@@ -196,7 +196,7 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
     {
         formationTimer.setTarget(formationEntity.getIndex());
         
-        flight.getFlightPlanes().getFlightLeader().getEntity().setOnMessages(
+        flight.getFlightPlanes().getFlightLeader().setOnMessages(
                 McuMessage.ONTAKEOFF,
                 takeoffMcu.getIndex(),
                 super.getFirstWaypoint().getIndex());

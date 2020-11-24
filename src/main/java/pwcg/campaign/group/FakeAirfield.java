@@ -26,16 +26,16 @@ public class FakeAirfield extends FixedPosition implements Cloneable
     protected int rearmTime = 0;
     protected int refuelTime = 0;
     protected int maintenanceRadius = 1000;
-    private McuTREntity entity = new McuTREntity();
+    private McuTREntity entity;
 
     public FakeAirfield (IAirfield airfield, Date date) throws PWCGException
     {
         super();
+        entity = new McuTREntity(index);
+        linkTrId = entity.getIndex();
 
         name = "Fake " + airfield.getName();
-        
-        linkTrId = entity.getIndex();
-        
+                
         country = airfield.getCountry(date).getCountry();
         position = airfield.getFakeAirfieldLocation().getPosition().copy();
         orientation = airfield.getFakeAirfieldLocation().getOrientation().copy();
@@ -55,11 +55,9 @@ public class FakeAirfield extends FixedPosition implements Cloneable
     
     public void populateEntity()
     {
-        this.linkTrId = entity.getIndex();
         
         entity.setPosition(position);
         entity.setOrientation(orientation);
-        entity.setMisObjID(index);
         entity.setEnabled(1);
     }
 

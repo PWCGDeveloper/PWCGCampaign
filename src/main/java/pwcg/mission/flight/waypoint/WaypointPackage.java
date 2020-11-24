@@ -271,7 +271,7 @@ public class WaypointPackage implements IWaypointPackage
         {
             for (BaseFlightMcu mcu : missionPointSet.getAllFlightPoints()) 
             {
-                mcu.setObject(leadPlane.getEntity().getIndex());
+                mcu.setObject(leadPlane.getLinkTrId());
             }
         }
     }

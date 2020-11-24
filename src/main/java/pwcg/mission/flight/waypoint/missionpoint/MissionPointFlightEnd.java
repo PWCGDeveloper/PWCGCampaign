@@ -116,7 +116,7 @@ public class MissionPointFlightEnd extends MissionPointSetSingleWaypointSet impl
     private void createobjectAssociations (PlaneMcu plane)
     {
         landingMcu.clearObjects();
-        landingMcu.setObject(plane.getEntity().getIndex());
+        landingMcu.setObject(plane.getLinkTrId());
     }
 
     @Override

@@ -16,6 +16,7 @@ import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
@@ -27,6 +28,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogCategory;
 import pwcg.mission.flight.FlightStartPosition;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.mcu.McuEvent;
 import pwcg.mission.mcu.McuTREntity;
 import pwcg.mission.mcu.group.IPlaneRemover;
 import pwcg.mission.mcu.group.WingmanMcuGroup;
@@ -66,13 +68,36 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
 
     private IPlanePayload payload = null;
 
-    private McuTREntity entity = new McuTREntity();
+    private McuTREntity entity;
 
     private Campaign campaign;
     private SquadronMember pilot;
 
     public PlaneMcu()
     {
+        super();
+        this.index = IndexGenerator.getInstance().getNextIndex();
+        this.entity = new McuTREntity(index);
+        this.linkTrId = entity.getIndex();
+    }
+
+    public PlaneMcu(Campaign campaign, EquippedPlane equippedPlane, ICountry country, SquadronMember pilot)
+    {
+        super();
+
+        this.campaign = campaign;
+        this.pilot = pilot;
+
+        this.index = IndexGenerator.getInstance().getNextIndex();
+        this.entity = new McuTREntity(index);
+        this.linkTrId = entity.getIndex();
+
+        equippedPlane.copyTemplate(this);
+        this.setCountry(country);
+        this.setName(pilot.getNameAndRank());
+        this.setDesc(pilot.getNameAndRank());
+
+        startInAir = FlightStartPosition.START_IN_AIR;
     }
 
     public PlaneMcu copy()
@@ -87,8 +112,6 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         super.copyTemplate(plane);
 
         plane.name = this.name;
-        plane.index = this.index;
-        plane.linkTrId = this.linkTrId;
         plane.position = this.position;
         plane.orientation = this.orientation;
         plane.skin = this.skin;
@@ -117,34 +140,20 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         {
             plane.payload = null;
         }
-        plane.entity = this.entity.copy();
+
+        plane.index = IndexGenerator.getInstance().getNextIndex();
+        plane.entity = this.entity.copy(plane.index);
+        plane.linkTrId = entity.getIndex();
+
         plane.campaign = this.campaign;
         plane.pilot = this.pilot;
     }
 
-    public PlaneMcu(Campaign campaign, EquippedPlane equippedPlane, ICountry country, SquadronMember pilot)
-    {
-        this.campaign = campaign;
-        this.pilot = pilot;
-
-        equippedPlane.copyTemplate(this);
-        this.setCountry(country);
-        this.setName(pilot.getNameAndRank());
-        this.setDesc(pilot.getNameAndRank());
-
-        startInAir = FlightStartPosition.START_IN_AIR;
-    }
-
     public void populateEntity(IFlight flight, PlaneMcu flightLeader)
     {
-        this.linkTrId = entity.getIndex();
-
-        entity.setOrientation(orientation);
-        entity.setMisObjID(index);
-
         if (flightLeader.getIndex() != index)
         {
-            entity.setTarget(flightLeader.getEntity().getIndex());
+            entity.setTarget(flightLeader.getLinkTrId());
         }
     }
 
@@ -379,11 +388,6 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         return index;
     }
 
-    public void setIndex(int index)
-    {
-        this.index = index;
-    }
-
     public int getLinkTrId()
     {
         return linkTrId;
@@ -527,16 +531,6 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         this.damageThreshold = damageThreshold;
     }
 
-    public McuTREntity getEntity()
-    {
-        return entity;
-    }
-
-    public void setEntity(McuTREntity entity)
-    {
-        this.entity = entity;
-    }
-
     public ICountry getCountry()
     {
         return country;
@@ -615,4 +609,53 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
     {
         return skin;
     }
+
+    public void setTarget(int target)
+    {
+        entity.setTarget(target);
+    }
+
+    public void copyEntityIndexFromPlane(PlaneMcu flightLeaderPlaneMcu)
+    {
+        entity.setIndex(flightLeaderPlaneMcu.entity.getIndex());
+        linkTrId = entity.getIndex();
+    }
+
+    public void enable(boolean enable)
+    {
+        if (enable)
+        {
+            entity.setEnabled(1);
+        }
+        else
+        {
+            entity.setEnabled(0);
+        }
+    }
+
+    public void setOnMessages(int message, int takeoffIndex, int waypointIndex)
+    {
+        entity.setOnMessages(
+                message,
+                takeoffIndex,
+                waypointIndex);
+    }
+
+    public void addEvent(McuEvent event)
+    {
+        entity.addEvent(event);
+    }
+
+    public void resetTarget(int flightLeaderLinkTrId)
+    {
+        entity.clearTargets();
+        entity.setTarget(flightLeaderLinkTrId);
+    }
+
+    public McuTREntity getEntity()
+    {
+        return entity;
+    }
+    
+    
 }

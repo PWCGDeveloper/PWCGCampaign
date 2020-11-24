@@ -43,17 +43,18 @@ public class Vehicle implements Cloneable, IVehicle
     protected ICountry country = CountryFactory.makeCountryByCountry(Country.NEUTRAL);
     protected IVehicle associatedBlock;
 
-    protected McuTREntity entity = new McuTREntity();
+    protected McuTREntity entity;
 
     private Vehicle()
     {
-        
     }
     
     public Vehicle(IVehicleDefinition vehicleDefinition)
     {
         this.vehicleDefinition = vehicleDefinition;
         index = IndexGenerator.getInstance().getNextIndex();
+        entity = new McuTREntity(index);
+        linkTrId = entity.getIndex();
     }
 
     public IVehicle clone()
@@ -62,8 +63,6 @@ public class Vehicle implements Cloneable, IVehicle
         clone.vehicleDefinition = this.vehicleDefinition;
         clone.vehicleName = this.vehicleName;
         clone.vehicleType = this.vehicleType;
-        clone.index = this.index;
-        clone.linkTrId = this.linkTrId;
         clone.position = this.position.copy();
         clone.orientation = this.orientation.copy();
         clone.script = this.script;
@@ -83,6 +82,11 @@ public class Vehicle implements Cloneable, IVehicle
         {
             clone.associatedBlock = this.associatedBlock.clone();
         }
+
+        clone.index = IndexGenerator.getInstance().getNextIndex();
+        clone.entity = this.entity.copy(clone.index);
+        clone.linkTrId = entity.getIndex();
+
         return clone;
     }
     
@@ -101,14 +105,8 @@ public class Vehicle implements Cloneable, IVehicle
 
     public void populateEntity()
     {
-        // Link this plane to the MCU
-        this.linkTrId = entity.getIndex();
-
-        // Position is same as vehicle
         entity.setPosition(position);
         entity.setOrientation(orientation);
-
-        entity.setMisObjID(index);
     }
 
     private void buildAssociatedBlock()

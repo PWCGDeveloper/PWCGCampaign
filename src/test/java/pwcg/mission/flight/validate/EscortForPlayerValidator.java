@@ -65,7 +65,7 @@ public class EscortForPlayerValidator
         IMissionPointSet escortMissionPointSetInterface = escortForPlayerFlight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_ESCORT);
         MissionPointEscortWaypointSet escortMissionPointSet = (MissionPointEscortWaypointSet) escortMissionPointSetInterface;
         McuCover cover = escortMissionPointSet.getEscortSequence().getCover();
-        assert(cover.getTargets().get(0).equals(Integer.valueOf(leadEscortedPlane.getEntity().getIndex()).toString()));
+        assert(cover.getTargets().get(0).equals(Integer.valueOf(leadEscortedPlane.getLinkTrId()).toString()));
    
         McuWaypoint airstartWP = WaypointGeneratorUtils.findWaypointByType(escortForPlayerFlight.getWaypointPackage().getAllWaypoints(), WaypointType.AIR_START_WAYPOINT.getName());
         PlaneMcu leadEscortPlane = escortForPlayerFlight.getFlightPlanes().getFlightLeader();
@@ -137,7 +137,7 @@ public class EscortForPlayerValidator
         assert(IndexLinkValidator.isIndexInTargetList(escortAirStartWP.getTargets(), escortRendezvousWP.getIndex()));
         assert(IndexLinkValidator.isIndexInTargetList(playerRendezvousWP.getTargets(), coverTimer.getIndex()));
         assert(IndexLinkValidator.isIndexInTargetList(coverTimer.getTargets(), cover.getIndex()));
-        assert(IndexLinkValidator.isIndexInTargetList(cover.getTargets(), playerFlight.getFlightPlanes().getFlightLeader().getEntity().getIndex()));
+        assert(IndexLinkValidator.isIndexInTargetList(cover.getTargets(), playerFlight.getFlightPlanes().getFlightLeader().getLinkTrId()));
 		
         assert(IndexLinkValidator.isIndexInTargetList(playerEgressWP.getTargets(), forceCompleteTimer.getIndex()));
         assert(IndexLinkValidator.isIndexInTargetList(forceCompleteTimer.getTargets(), escortCompleteTimer.getIndex()));

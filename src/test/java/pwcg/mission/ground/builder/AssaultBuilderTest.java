@@ -34,7 +34,6 @@ import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleClass;
-import pwcg.mission.mcu.McuTREntity;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({RandomNumberGenerator.class})
@@ -49,7 +48,6 @@ public class AssaultBuilderTest
     @Mock private ICountry country;
     @Mock private IFlightPlanes flightPlanes;
     @Mock private PlaneMcu playerPlane;
-    @Mock private McuTREntity playerPlaneEntity;
         
     @Before
     public void setup() throws PWCGException
@@ -71,8 +69,6 @@ public class AssaultBuilderTest
         Mockito.when(country.getSide()).thenReturn(Side.AXIS);
         Mockito.when(playerFlight.getFlightPlanes()).thenReturn(flightPlanes);
         Mockito.when(flightPlanes.getPlanes()).thenReturn(playerFlightPlanes);
-        Mockito.when(playerPlane.getEntity()).thenReturn(playerPlaneEntity);
-        Mockito.when(playerPlaneEntity.getIndex()).thenReturn(100);
 
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19430401"));

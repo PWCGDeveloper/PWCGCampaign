@@ -22,11 +22,13 @@ public abstract class Effect implements Cloneable
     protected String model = "";
     protected String Desc = "";
 
-    protected McuTREntity entity = new McuTREntity();
+    protected McuTREntity entity;
 
     protected Effect()
     {
         index = IndexGenerator.getInstance().getNextIndex();
+        entity = new McuTREntity(index);
+        linkTrId = entity.getIndex();
     }
 
     public void populateEntity()
@@ -35,7 +37,6 @@ public abstract class Effect implements Cloneable
 
         entity.setPosition(position);
         entity.setOrientation(orientation);
-        entity.setMisObjID(index);
         entity.setEnabled(1);
     }
 

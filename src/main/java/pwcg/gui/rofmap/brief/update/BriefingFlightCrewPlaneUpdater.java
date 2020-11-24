@@ -11,7 +11,6 @@ import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PayloadElementManager;
 import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
@@ -128,8 +127,7 @@ public class BriefingFlightCrewPlaneUpdater
         PlaneMcu flightmember = playerFlight.getFlightPlanes().getFlightLeader();
         PlaneMcu updatedPlaneMcu = PlaneMCUFactory.createPlaneMcuByPlaneType(campaign, crewPlane.getPlane(), 
                 playerFlight.getFlightInformation().getCountry(), crewPlane.getPilot());
-        updatedPlaneMcu.setIndex(IndexGenerator.getInstance().getNextIndex());
-        updatedPlaneMcu.getEntity().setTarget(flightmember.getLinkTrId());
+        updatedPlaneMcu.setTarget(flightmember.getLinkTrId());
         updatedPlaneMcu.setFuel(flightmember.getFuel());
 
         return updatedPlaneMcu;
@@ -140,9 +138,9 @@ public class BriefingFlightCrewPlaneUpdater
         PlaneMcu updatedFlightLeader = PlaneMCUFactory.createPlaneMcuByPlaneType(campaign, crewPlane.getPlane(), 
                 playerFlight.getFlightInformation().getCountry(), crewPlane.getPilot());
         PlaneMcu flightLeaderPlaneMcu = playerFlight.getFlightPlanes().getFlightLeader();        
-        updatedFlightLeader.setIndex(flightLeaderPlaneMcu.getIndex());
+        updatedFlightLeader.copyEntityIndexFromPlane(flightLeaderPlaneMcu);
         updatedFlightLeader.setLinkTrId(flightLeaderPlaneMcu.getLinkTrId());
-        updatedFlightLeader.getEntity().setIndex(flightLeaderPlaneMcu.getEntity().getIndex());
+        updatedFlightLeader.copyEntityIndexFromPlane(flightLeaderPlaneMcu);
         updatedFlightLeader.setFuel(flightLeaderPlaneMcu.getFuel());
 
         return updatedFlightLeader;

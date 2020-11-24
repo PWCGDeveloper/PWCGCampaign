@@ -49,8 +49,8 @@ public class EscortMcuSequence
         
         cover  = new McuCover();
         cover.setPosition(rendevousPosition);
-        cover.setObject(flightLeader.getEntity().getIndex());
-        cover.setTarget(escortedFlight.getFlightPlanes().getFlightLeader().getEntity().getIndex());
+        cover.setObject(flightLeader.getLinkTrId());
+        cover.setTarget(escortedFlight.getFlightPlanes().getFlightLeader().getLinkTrId());
 
         coverTimer  = new McuTimer();
         coverTimer.setName("Cover Timer");
@@ -85,7 +85,7 @@ public class EscortMcuSequence
         forceComplete.setDesc("Escort Cover Force Complete");
         forceComplete.setOrientation(new Orientation());
         forceComplete.setPosition(rendevousPosition);
-        forceComplete.setObject(flightLeader.getEntity().getIndex());
+        forceComplete.setObject(flightLeader.getLinkTrId());
 
         escortCompleteTimer = new McuTimer();
         escortCompleteTimer.setName("Escort Complete Timer");

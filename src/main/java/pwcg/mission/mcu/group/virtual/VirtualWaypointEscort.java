@@ -136,7 +136,7 @@ public class VirtualWaypointEscort
     {
         for (PlaneMcu escortPlane : escortPlanes)
         {
-            activateEscort.setObject(escortPlane.getEntity().getIndex());
+            activateEscort.setObject(escortPlane.getLinkTrId());
         }
         
         cover.setObject(escortPlanes.get(0).getLinkTrId());
