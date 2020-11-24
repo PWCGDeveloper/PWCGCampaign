@@ -31,7 +31,7 @@ public class PlaneMCUFactory
     public List<PlaneMcu> createPlanesForFlight(int numPlanes) throws PWCGException
     {
         List<SquadronMember> crewsForFlight = buildFlightCrews(numPlanes);
-        List<EquippedPlane> planesTypesForFlight = buildEquipmentForFLlght(numPlanes);
+        List<EquippedPlane> planesTypesForFlight = buildEquipmentForFllght(numPlanes);
         List<PlaneMcu> planesForFlight = createPlanes(planesTypesForFlight, crewsForFlight);
         
         return planesForFlight;
@@ -43,7 +43,7 @@ public class PlaneMCUFactory
         return plane;
     }
 
-	private List<EquippedPlane> buildEquipmentForFLlght(int numPlanes) throws PWCGException 
+	private List<EquippedPlane> buildEquipmentForFllght(int numPlanes) throws PWCGException 
 	{
 		Equipment equipmentForSquadron = flightInformation.getCampaign().getEquipmentManager().getEquipmentForSquadron(flightInformation.getSquadron().getSquadronId());
         FlightPlaneTypeBuilder planeTypeBuilder = new FlightPlaneTypeBuilder(equipmentForSquadron, numPlanes);
@@ -67,7 +67,12 @@ public class PlaneMCUFactory
         	{
 	            EquippedPlane equippedPlane = planesTypesForFlight.get(index);
 	            SquadronMember pilot = crewsForFlight.get(index);            
-	            PlaneMcu plane = createPlaneMcuByPlaneType(flightInformation.getCampaign(), equippedPlane, flightInformation.getSquadron().getCountry(), pilot);	
+	            PlaneMcu plane = createPlaneMcuByPlaneType(flightInformation.getCampaign(), equippedPlane, flightInformation.getSquadron().getCountry(), pilot);
+	            if (index > 0)
+	            {
+	                PlaneMcu leadPlane = planesForFlight.get(0);
+	                plane.setTarget(leadPlane.getLinkTrId());
+	            }
 	            planesForFlight.add(plane);
         	}
         	catch (Exception e)
