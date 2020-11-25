@@ -143,7 +143,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
 
         plane.index = IndexGenerator.getInstance().getNextIndex();
         plane.entity = this.entity.copy(plane.index);
-        plane.linkTrId = entity.getIndex();
+        plane.linkTrId = plane.entity.getIndex();
 
         plane.campaign = this.campaign;
         plane.pilot = this.pilot;
