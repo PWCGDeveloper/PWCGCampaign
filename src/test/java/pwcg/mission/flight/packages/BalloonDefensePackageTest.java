@@ -53,7 +53,7 @@ public class BalloonDefensePackageTest
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
 
-        MissionWeather weather = new MissionWeather(campaign, MissionProfile.DAY_TACTICAL_MISSION);
+        MissionWeather weather = new MissionWeather(campaign);
         weather.createMissionWeather();
         Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders, weather);
         mission.generate(Arrays.asList(FlightTypes.BALLOON_DEFENSE));

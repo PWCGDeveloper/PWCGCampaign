@@ -9,7 +9,6 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.options.MapSeasonalParameters.Season;
 import pwcg.product.bos.map.IMapClimate;
@@ -19,7 +18,6 @@ public class MissionWeather
     private String weatherDescription = "";
     private String cloudConfig = "Oops";
     private Campaign campaign;
-    private MissionProfile missionProfile;
 
     private int cloudLevel = 2100;
     private int cloudDensity = 600;
@@ -34,10 +32,9 @@ public class MissionWeather
 
     private List<WindLayer> windLayers = new ArrayList<WindLayer>();
 
-    public MissionWeather(Campaign campaign, MissionProfile missionProfile)
+    public MissionWeather(Campaign campaign)
     {
         this.campaign = campaign;
-        this.missionProfile = missionProfile;
     }
 
     public void createMissionWeather() throws PWCGException
@@ -122,7 +119,7 @@ public class MissionWeather
     {
         int weatherAverageClouds = 30;
         int weatherLightsClouds = weatherAverageClouds + 30;
-        int weatherClearClouds = weatherLightsClouds + 20;
+        int weatherClearClouds = weatherLightsClouds + 30;
 
         int sky = RandomNumberGenerator.getRandom(weatherClearClouds);
         if (sky < weatherAverageClouds)
@@ -149,12 +146,13 @@ public class MissionWeather
         }
         else
         {
-            int weatherHeavyClouds = 10;
+            int weatherHeavyClouds = 15;
             int weatherAverageClouds = weatherHeavyClouds + 30;
             int weatherLightsClouds = weatherAverageClouds + 30;
-            int weatherClearClouds = weatherLightsClouds + 20;
+            int weatherClearClouds = weatherLightsClouds + 30;
 
             int sky = RandomNumberGenerator.getRandom(weatherClearClouds);
+            System.out.println("SKy: " + sky);
             if (sky < weatherHeavyClouds)
             {
                 heavyWeather();
@@ -197,11 +195,80 @@ public class MissionWeather
         }
     }
 
+    private void lightWeather() throws PWCGException
+    {
+        cloudConfig = SeasonStringBuilder.getLightSkys(campaign.getDate());
+        cloudLevel = 2000 + RandomNumberGenerator.getRandom(4000);
+        cloudDensity = 300 + RandomNumberGenerator.getRandom(300);
+        precType = PrecipitationType.CLEAR;
+        precLevel = 0;
+        turbulence = 1 + RandomNumberGenerator.getRandom(2);
+
+        if (cloudLevel < 1500)
+        {
+            weatherDescription = "Light cloud cover, low altitude.";
+        }
+        else if (cloudLevel < 4000)
+        {
+            weatherDescription = "Light cloud cover, medium altitude.";
+        }
+        else
+        {
+            weatherDescription = "Light cloud cover, high altitude.";
+        }
+    }
+
+    private void averageWeather() throws PWCGException
+    {
+        cloudConfig = SeasonStringBuilder.getAverageSkys(campaign.getDate());
+        cloudLevel = 1500 + RandomNumberGenerator.getRandom(4000);
+        cloudDensity = 500 + RandomNumberGenerator.getRandom(400);
+        precType = PrecipitationType.CLEAR;
+        precLevel = 0;
+        turbulence = 1 + RandomNumberGenerator.getRandom(2);
+
+        if (cloudLevel < 1500)
+        {
+            weatherDescription = "Medium cloud cover, low altitude.";
+        }
+        else if (cloudLevel < 4000)
+        {
+            weatherDescription = "Medium cloud cover, medium altitude.";
+        }
+        else
+        {
+            weatherDescription = "Medium cloud cover, high altitude.";
+        }
+    }
+
+    private void heavyWeather() throws PWCGException
+    {
+        cloudConfig = SeasonStringBuilder.getHeavySkys(campaign.getDate());
+        cloudLevel = 1000 + RandomNumberGenerator.getRandom(3000);
+        cloudDensity = 600 + RandomNumberGenerator.getRandom(600);
+        precType = PrecipitationType.CLEAR;
+        precLevel = 0;
+        turbulence = 1 + RandomNumberGenerator.getRandom(3);
+
+        if (cloudLevel < 1500)
+        {
+            weatherDescription = "Heavy cloud cover, low altitude.";
+        }
+        else if (cloudLevel < 3000)
+        {
+            weatherDescription = "Heavy cloud cover, medium altitude.";
+        }
+        else
+        {
+            weatherDescription = "Heavy cloud cover, high altitude.";
+        }
+    }
+
     private void overcastWeather() throws PWCGException
     {
         cloudConfig = SeasonStringBuilder.getOvercastSkys(campaign.getDate());
         cloudLevel = 1000 + RandomNumberGenerator.getRandom(1000);
-        cloudDensity = 600 + RandomNumberGenerator.getRandom(2000);
+        cloudDensity = 600 + RandomNumberGenerator.getRandom(1000);
         precLevel = 1 + RandomNumberGenerator.getRandom(8);
         turbulence = 1 + RandomNumberGenerator.getRandom(3);
 
@@ -231,83 +298,14 @@ public class MissionWeather
         }
     }
 
-    private void heavyWeather() throws PWCGException
-    {
-        cloudConfig = SeasonStringBuilder.getHeavySkys(campaign.getDate());
-        cloudLevel = 1000 + RandomNumberGenerator.getRandom(3000);
-        cloudDensity = 600 + RandomNumberGenerator.getRandom(600);
-        precType = PrecipitationType.CLEAR;
-        precLevel = 0;
-        turbulence = 1 + RandomNumberGenerator.getRandom(3);
-
-        if (cloudLevel < 1500)
-        {
-            weatherDescription = "Heavy cloud cover, low altitude.";
-        }
-        else if (cloudLevel < 3000)
-        {
-            weatherDescription = "Heavy cloud cover, medium altitude.";
-        }
-        else
-        {
-            weatherDescription = "Heavy cloud cover, high altitude.";
-        }
-    }
-
-    private void averageWeather() throws PWCGException
-    {
-        cloudConfig = SeasonStringBuilder.getAverageSkys(campaign.getDate());
-        cloudLevel = 1500 + RandomNumberGenerator.getRandom(4000);
-        cloudDensity = 500 + RandomNumberGenerator.getRandom(400);
-        precType = PrecipitationType.CLEAR;
-        precLevel = 0;
-        turbulence = 1 + RandomNumberGenerator.getRandom(2);
-
-        if (cloudLevel < 1500)
-        {
-            weatherDescription = "Medium cloud cover, low altitude.";
-        }
-        else if (cloudLevel < 3000)
-        {
-            weatherDescription = "Medium cloud cover, medium altitude.";
-        }
-        else
-        {
-            weatherDescription = "Medium cloud cover, high altitude.";
-        }
-    }
-
-    private void lightWeather() throws PWCGException
-    {
-        cloudConfig = SeasonStringBuilder.getLightSkys(campaign.getDate());
-        cloudLevel = 2000 + RandomNumberGenerator.getRandom(4000);
-        cloudDensity = 300 + RandomNumberGenerator.getRandom(300);
-        precType = PrecipitationType.CLEAR;
-        precLevel = 0;
-        turbulence = 1 + RandomNumberGenerator.getRandom(2);
-
-        if (cloudLevel < 1500)
-        {
-            weatherDescription = "Light cloud cover, low altitude.";
-        }
-        else if (cloudLevel < 3000)
-        {
-            weatherDescription = "Light cloud cover, medium altitude.";
-        }
-        else
-        {
-            weatherDescription = "Light cloud cover, high altitude.";
-        }
-    }
-
     private void createWind() throws PWCGException
     {
-        windLayers = MissionWeatherWind.createWind(campaign, missionProfile, this);
+        windLayers = MissionWeatherWind.createWind(campaign, this);
     }
 
     private void createHaze() throws PWCGException
     {
-        haze = MissionWeatherHaze.createHaze(campaign, missionProfile, this);
+        haze = MissionWeatherHaze.createHaze(campaign, this);
     }
 
     private void setTurbulenceForMaximum() throws PWCGException

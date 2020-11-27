@@ -22,10 +22,10 @@ public class MissionGenerator
 
     public Mission makeMission(MissionHumanParticipants participatingPlayers) throws PWCGException 
     {
-        MissionProfile missionProfile = generateProfile(participatingPlayers);
-
-        MissionWeather weather = new MissionWeather(campaign, missionProfile);
+        MissionWeather weather = new MissionWeather(campaign);
         weather.createMissionWeather();
+
+        MissionProfile missionProfile = generateProfile(participatingPlayers);
 
         List<FlightTypes> playerFlightTypes = PlayerFlightTypeBuilder.finalizePlayerFlightTypes(campaign, participatingPlayers, missionProfile, weather);
 
@@ -40,7 +40,7 @@ public class MissionGenerator
 
     public Mission makeLoneWolfMission(MissionHumanParticipants participatingPlayers) throws PWCGException 
     {
-        MissionWeather weather = new MissionWeather(campaign, MissionProfile.DAY_TACTICAL_MISSION);
+        MissionWeather weather = new MissionWeather(campaign);
         weather.createMissionWeather();
 
         List<FlightTypes> playerFlightTypes = Arrays.asList(FlightTypes.LONE_WOLF);
@@ -50,7 +50,7 @@ public class MissionGenerator
 
     public Mission makeTestSingleMissionFromFlightType(MissionHumanParticipants participatingPlayers, FlightTypes playerFlightType, MissionProfile missionProfile) throws PWCGException 
     {
-        MissionWeather weather = new MissionWeather(campaign, missionProfile);
+        MissionWeather weather = new MissionWeather(campaign);
         weather.createMissionWeather();
 
         List<FlightTypes> playerFlightTypes = Arrays.asList(playerFlightType);
@@ -60,7 +60,7 @@ public class MissionGenerator
 
     public Mission makeTestCoopMissionFromFlightType(MissionHumanParticipants participatingPlayers, List<FlightTypes> playerFlightTypes, MissionProfile missionProfile) throws PWCGException 
     {
-        MissionWeather weather = new MissionWeather(campaign, missionProfile);
+        MissionWeather weather = new MissionWeather(campaign);
         weather.createMissionWeather();
 
         Mission mission = buildMission(participatingPlayers, playerFlightTypes, missionProfile, weather);

@@ -21,7 +21,7 @@ public class WindLayer
         int maxWind = configManager.getIntConfigParam(ConfigItemKeys.MaxWindKey);
         if (speed > maxWind)
         {
-            speed = maxWind;
+            this.speed = maxWind;
         }
     }
 

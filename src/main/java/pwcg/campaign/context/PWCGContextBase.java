@@ -197,7 +197,13 @@ public abstract class PWCGContextBase implements IPWCGContextManager
 
         return airfield;
     }
-    
+
+    @Override
+    public void setCurrentMap(FrontMapIdentifier mapIdentifier) throws PWCGException
+    {
+        changeContext(mapIdentifier);        
+    }
+
     @Override
     public SquadronManager getSquadronManager()
     {

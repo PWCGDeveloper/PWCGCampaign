@@ -70,4 +70,6 @@ public interface IPWCGContextManager
     void setMissionLogDirectory(String missionLogPath);
 
     String getMissionLogDirectory();
+
+    void setCurrentMap(FrontMapIdentifier bodenplatteMap) throws PWCGException;
 }

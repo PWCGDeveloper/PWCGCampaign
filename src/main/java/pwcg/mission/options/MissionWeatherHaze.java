@@ -5,12 +5,11 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.MissionProfile;
 
 public class MissionWeatherHaze
 {
 
-    public static double createHaze(Campaign campaign, MissionProfile missionProfile, MissionWeather missionWeather) throws PWCGException
+    public static double createHaze(Campaign campaign, MissionWeather missionWeather) throws PWCGException
     {
         int hazeValue = hazeValueByAtmosphericConditions(missionWeather);
         hazeValue = hazeLimits(campaign, hazeValue);
@@ -27,7 +26,7 @@ public class MissionWeatherHaze
             minimumHaze = 0;
             maximumHaze = 4;
         }
-        if (missionWeather.getCloudConfig().toLowerCase().contains("light"))
+        else if (missionWeather.getCloudConfig().toLowerCase().contains("light"))
         {
             minimumHaze = 0;
             maximumHaze = 6;
