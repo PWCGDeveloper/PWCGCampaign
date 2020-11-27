@@ -37,7 +37,7 @@ public class MissionFlightFinalizer
         if (campaign.isCoop())
         {
             MissionCoopConverter coopConverter = new MissionCoopConverter();
-            coopConverter.convertToCoop(mission.getMissionFlightBuilder());
+            coopConverter.convertToCoop(mission);
         }
     }
 

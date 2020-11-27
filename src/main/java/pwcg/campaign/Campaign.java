@@ -265,7 +265,7 @@ public class Campaign
 
     public Season getSeason()
     {
-        return PWCGContext.getInstance().getCurrentMap().getMapWeather().getSeason(getDate());
+        return PWCGContext.getInstance().getCurrentMap().getMapClimate().getSeason(getDate());
     }
 
     public SquadronMember findReferencePlayer() throws PWCGException

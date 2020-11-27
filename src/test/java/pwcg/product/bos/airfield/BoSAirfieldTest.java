@@ -20,6 +20,8 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
+import pwcg.mission.Mission;
+import pwcg.mission.options.MissionWeather;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
@@ -27,6 +29,8 @@ import pwcg.testutils.SquadronTestProfile;
 public class BoSAirfieldTest
 {
     @Mock private ConfigManagerCampaign configManagerCampaign;
+    @Mock private Mission mission;
+    @Mock private MissionWeather weather;
 
 	private static final String airfieldName = "Bahmutovo";
 	private static final String refChart =
@@ -171,8 +175,9 @@ public class BoSAirfieldTest
 
         Airfield airfield = (Airfield) PWCGContext.getInstance().getAirfieldAllMaps(airfieldName);
 
-		PWCGContext.getInstance().getCurrentMap().getMapWeather().setWindDirection(180);
-        assert(airfield.getChart().equals(refChart));
+        Mockito.when(mission.getWeather()).thenReturn(weather);
+        Mockito.when(weather.getWindDirection()).thenReturn(90);        
+        assert(airfield.getChart(mission).equals(refChart));
 	}
 
 	@Test

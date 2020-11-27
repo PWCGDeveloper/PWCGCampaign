@@ -16,8 +16,8 @@ public class FirePotBuilder
 
         FirePotSeries firePotSeries = new FirePotSeries();
 
-        PWCGLocation takeoffLocation = airfield.getTakeoffLocation();
-        PWCGLocation landingLocation = airfield.getLandingLocation();
+        PWCGLocation takeoffLocation = airfield.getTakeoffLocation(flight.getMission());
+        PWCGLocation landingLocation = airfield.getLandingLocation(flight.getMission());
         double airfieldOrientation = MathUtils.calcAngle(takeoffLocation.getPosition(), landingLocation.getPosition());
         
         Coordinate planePosition = takeoffLocation.getPosition().copy();

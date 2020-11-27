@@ -3,15 +3,14 @@ package pwcg.product.bos.map.stalingrad;
 import java.util.Calendar;
 import java.util.Date;
 
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.options.MapSeasonalParameters.Season;
-import pwcg.product.bos.map.BoSMapWeatherBase;
+import pwcg.product.bos.map.IMapClimate;
 
 
-public class StalingradMapWeather extends BoSMapWeatherBase
+public class StalingradMapClimate implements IMapClimate
 {
-	public StalingradMapWeather()
+	public StalingradMapClimate()
 	{
 	    super();
 	}	
@@ -45,9 +44,9 @@ public class StalingradMapWeather extends BoSMapWeatherBase
     }
     
     @Override
-    protected void setTemperature(Date date, FrontMapIdentifier frontMap)
+    public int getTemperature(Date date)
     {
-        temperature = 25;
+        int temperature = 25;
         
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
@@ -101,5 +100,6 @@ public class StalingradMapWeather extends BoSMapWeatherBase
         {
             temperature = -10 +  RandomNumberGenerator.getRandom(5);
         }
+        return temperature;
     }
 }

@@ -1,22 +1,18 @@
 package pwcg.product.bos.map.east1944;
 
 import pwcg.mission.options.MapSeasonalParameters;
-import pwcg.mission.options.MissionOptions;
+import pwcg.product.bos.map.IMapSeason;
+import pwcg.product.bos.map.MapSeasonBase;
 
 
-public class East1944MissionOptions extends MissionOptions
+public class East1944MapSeason extends MapSeasonBase implements IMapSeason
 {
-    public East1944MissionOptions()
+    public East1944MapSeason()
     {
         super();
-
-    	makeWinter();
-    	makeSpring();
-    	makeSummer();
-        makeAutumn();
     }
 
-	private void makeWinter()
+	protected void makeWinter()
 	{
 		winter.setHeightMap("graphics\\LANDSCAPE_Stalin_w\\height.hini");
     	winter.setTextureMap("graphics\\LANDSCAPE_Stalin_w\\textures.tini");
@@ -26,7 +22,7 @@ public class East1944MissionOptions extends MissionOptions
     	winter.setSeason(MapSeasonalParameters.WINTER_STRING);
 	}
 
-	private void makeSpring()
+	protected void makeSpring()
 	{
 		spring.setHeightMap("graphics\\LANDSCAPE_Stalin_s\\height.hini");
 		spring.setTextureMap("graphics\\LANDSCAPE_Stalin_s\\textures.tini");
@@ -36,7 +32,7 @@ public class East1944MissionOptions extends MissionOptions
     	spring.setSeason(MapSeasonalParameters.SUMMER_STRING);
 	}
 
-	private void makeSummer()
+	protected void makeSummer()
 	{
 		summer.setHeightMap("graphics\\LANDSCAPE_Stalin_s\\height.hini");
 		summer.setTextureMap("graphics\\LANDSCAPE_Stalin_s\\textures.tini");
@@ -46,7 +42,7 @@ public class East1944MissionOptions extends MissionOptions
     	summer.setSeason(MapSeasonalParameters.SUMMER_STRING);
 	}
 
-	private void makeAutumn()
+	protected void makeAutumn()
 	{
 		autumn.setHeightMap("graphics\\LANDSCAPE_Stalin_a\\height.hini");
 		autumn.setTextureMap("graphics\\LANDSCAPE_Stalin_a\\textures.tini");

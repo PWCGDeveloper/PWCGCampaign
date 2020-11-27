@@ -1,22 +1,18 @@
 package pwcg.product.fc.map.arras;
 
 import pwcg.mission.options.MapSeasonalParameters;
-import pwcg.mission.options.MissionOptions;
+import pwcg.product.bos.map.IMapSeason;
+import pwcg.product.bos.map.MapSeasonBase;
 
 
-public class ArrasMissionOptions extends MissionOptions
+public class ArrasMapSeason extends MapSeasonBase implements IMapSeason
 {
-    public ArrasMissionOptions()
+    public ArrasMapSeason()
     {
         super();
-
-    	makeWinter();
-    	makeSpring();
-    	makeSummer();
-        makeAutumn();
     }
 
-	private void makeWinter()
+	protected void makeWinter()
 	{
 		winter.setHeightMap("graphics\\LANDSCAPE_Arras_sp\\height.hini");
     	winter.setTextureMap("graphics\\LANDSCAPE_Arras_sp\\textures.tini");
@@ -26,7 +22,7 @@ public class ArrasMissionOptions extends MissionOptions
     	winter.setSeason(MapSeasonalParameters.WINTER_STRING);
 	}
 
-	private void makeSpring()
+	protected void makeSpring()
 	{
 	    spring.setHeightMap("graphics\\LANDSCAPE_Arras_sp\\height.hini");
         spring.setTextureMap("graphics\\LANDSCAPE_Arras_sp\\textures.tini");
@@ -36,7 +32,7 @@ public class ArrasMissionOptions extends MissionOptions
     	spring.setSeason(MapSeasonalParameters.SUMMER_STRING);
 	}
 
-	private void makeSummer()
+	protected void makeSummer()
 	{
 	    summer.setHeightMap("graphics\\LANDSCAPE_Arras_sp\\height.hini");
         summer.setTextureMap("graphics\\LANDSCAPE_Arras_sp\\textures.tini");
@@ -46,7 +42,7 @@ public class ArrasMissionOptions extends MissionOptions
     	summer.setSeason(MapSeasonalParameters.SUMMER_STRING);
 	}
 
-	private void makeAutumn()
+	protected void makeAutumn()
 	{
 	    autumn.setHeightMap("graphics\\LANDSCAPE_Arras_sp\\height.hini");
         autumn.setTextureMap("graphics\\LANDSCAPE_Arras_sp\\textures.tini");

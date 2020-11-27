@@ -6,6 +6,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.MathUtils;
+import pwcg.mission.Mission;
 import pwcg.mission.flight.FlightStartPosition;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
@@ -21,8 +22,9 @@ public class FlightPositionParkedStart
 
     public void createPlanePositionParkedStart() throws PWCGException
     {
+        Mission mission = flight.getMission();
         PlaneMcu flightLeader = flight.getFlightPlanes().getFlightLeader();
-        PWCGLocation parkingLocation = flight.getFlightInformation().getDepartureAirfield().getParkingLocation();
+        PWCGLocation parkingLocation = flight.getFlightInformation().getDepartureAirfield().getParkingLocation(mission);
         double angleOffsetForPlanePlacement = calculateAngleForLeadToBeClosestToRunway(flight.getFlightInformation().getDepartureAirfield());
         double offsetAngle = MathUtils.adjustAngle(parkingLocation.getOrientation().getyOri(), angleOffsetForPlanePlacement);
         int planeSpacing = calculateParkedSpacing(flightLeader);
@@ -41,8 +43,9 @@ public class FlightPositionParkedStart
     
     private double calculateAngleForLeadToBeClosestToRunway(IAirfield airfield) throws PWCGException
     {
-        PWCGLocation parkingLocation = flight.getFlightInformation().getDepartureAirfield().getParkingLocation();
-        PWCGLocation takeoffLocation = flight.getFlightInformation().getDepartureAirfield().getTakeoffLocation();
+        Mission mission = flight.getMission();
+        PWCGLocation parkingLocation = flight.getFlightInformation().getDepartureAirfield().getParkingLocation(mission);
+        PWCGLocation takeoffLocation = flight.getFlightInformation().getDepartureAirfield().getTakeoffLocation(mission);
                 
         double parkingAngle = parkingLocation.getOrientation().getyOri();
         double parkingAngle90 = MathUtils.adjustAngle(parkingAngle, 90);

@@ -11,6 +11,8 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.product.bos.country.BoSServiceManager;
+import pwcg.product.bos.map.IMapClimate;
+import pwcg.product.bos.map.IMapSeason;
 
 public class MoscowMap extends PWCGMap
 {
@@ -35,23 +37,13 @@ public class MoscowMap extends PWCGMap
     {
         this.mapName = MOSCOW_MAP_NAME;        
         this.mapIdentifier = FrontMapIdentifier.MOSCOW_MAP;
-        
-        if (missionOptions == null)
-        {
-            missionOptions = new MoscowMissionOptions();
-        }
-
-        if (mapWeather == null)
-        {
-            mapWeather = new MoscowMapWeather();
-        }
 
         mapArea = new MoscowMapArea();
         usableMapArea = new MoscowMapUsableArea();
         buildArmedServicesActiveForMap();
         super.configure();
     }
-    
+
     private void buildArmedServicesActiveForMap()
     {
         armedServicesActiveForMap.add(BoSServiceManager.VVS);
@@ -89,5 +81,23 @@ public class MoscowMap extends PWCGMap
     protected Map<String, Integer> getMissionSpacingMyDate()
     {
         return missionSpacingMyDate;
+    }
+
+    @Override
+    protected IMapClimate buildMapClimate()
+    {
+        return new MoscowMapClimate();
+    }
+
+    @Override
+    protected IMapSeason buildMapSeason()
+    {
+        return new MoscowMapSeason();
+    }
+
+    @Override
+    public int getRainChances()
+    {
+        return 15;
     }
 }

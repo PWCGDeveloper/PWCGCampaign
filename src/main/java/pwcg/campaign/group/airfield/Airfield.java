@@ -179,9 +179,9 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
         return runways;
     }
 
-    private PWCGLocation getRunwayStart() throws PWCGException
+    private PWCGLocation getRunwayStart(Mission mission) throws PWCGException
     {
-        Runway runway = selectRunway();
+        Runway runway = selectRunway(mission);
 
         if (runway != null)
         {
@@ -198,9 +198,9 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
         }
     }
 
-    private PWCGLocation getLandingStart() throws PWCGException
+    private PWCGLocation getLandingStart(Mission mission) throws PWCGException
     {
-        Runway runway = selectRunway();
+        Runway runway = selectRunway(mission);
 
         if (runway != null)
         {
@@ -219,21 +219,21 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
     }
 
     @Override
-    public PWCGLocation getTakeoffLocation() throws PWCGException
+    public PWCGLocation getTakeoffLocation(Mission mission) throws PWCGException
     {
-        return getRunwayStart();
+        return getRunwayStart(mission);
     }
 
     @Override
-    public PWCGLocation getLandingLocation() throws PWCGException
+    public PWCGLocation getLandingLocation(Mission mission) throws PWCGException
     {
-        return getLandingStart();
+        return getLandingStart(mission);
     }
 
     @Override
-    public PWCGLocation getParkingLocation() throws PWCGException
+    public PWCGLocation getParkingLocation(Mission mission) throws PWCGException
     {
-        Runway runway = selectRunway();
+        Runway runway = selectRunway(mission);
 
         if (runway == null)
             return this;
@@ -242,18 +242,18 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
     }
 
     @Override
-    public PWCGLocation getFakeAirfieldLocation() throws PWCGException
+    public PWCGLocation getFakeAirfieldLocation(Mission mission) throws PWCGException
     {
         ConfigManagerCampaign configManager = PWCGContext.getInstance().getCampaign().getCampaignConfigManager();
         if (configManager.getIntConfigParam(ConfigItemKeys.AllowAirStartsKey) == 2)
         {
             // The game sometimes seems to go funny if the airfield location is on the runway when
             // doing cold starts, so move to the parking area instead
-            return getParkingLocation();
+            return getParkingLocation(mission);
         }
         else
         {
-            Runway runway = selectRunway();
+            Runway runway = selectRunway(mission);
 
             PWCGLocation loc = new PWCGLocation();
             Coordinate pos = new Coordinate();
@@ -271,21 +271,39 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
         }
     }
 
-    private Runway selectRunway() throws PWCGException
+    public String getChart(Mission mission) throws PWCGException
     {
-        RunwayChooser runwayChooser = new RunwayChooser();
-        runwayChooser.selectRunway(runways);
+        Runway runway = selectRunway(mission);
 
-        Runway bestRunway = runwayChooser.getBestRunway();
-        return bestRunway.copy();
+        if (runway == null)
+            return "";
+
+        if (runway.getParkingLocation() == null)
+            return "";
+
+        String chart;
+
+        chart = "    Chart\n";
+        chart += "    {\n";
+        chart += getChartPoint(mission, 0, runway.getParkingLocation().getPosition());
+        for (Coordinate pos : runway.getTaxiToStart())
+            chart += getChartPoint(mission, 1, pos);
+        chart += getChartPoint(mission, 2, runway.getStartPos());
+        chart += getChartPoint(mission, 2, runway.getEndPos());
+        for (Coordinate pos : runway.getTaxiFromEnd())
+            chart += getChartPoint(mission, 1, pos);
+        chart += getChartPoint(mission, 0, runway.getParkingLocation().getPosition());
+        chart += "    }\n";
+
+        return chart;
     }
 
-    private String getChartPoint(int ptype, Coordinate point) throws PWCGException
+    private String getChartPoint(Mission mission, int ptype, Coordinate point) throws PWCGException
     {
-        double xpos = point.getXPos() - getFakeAirfieldLocation().getPosition().getXPos();
-        double ypos = point.getZPos() - getFakeAirfieldLocation().getPosition().getZPos();
+        double xpos = point.getXPos() - getFakeAirfieldLocation(mission).getPosition().getXPos();
+        double ypos = point.getZPos() - getFakeAirfieldLocation(mission).getPosition().getZPos();
 
-        double angle = Math.toRadians(-getFakeAirfieldLocation().getOrientation().getyOri());
+        double angle = Math.toRadians(-getFakeAirfieldLocation(mission).getOrientation().getyOri());
 
         double rxpos = Math.cos(angle) * xpos - Math.sin(angle) * ypos;
         double rypos = Math.cos(angle) * ypos + Math.sin(angle) * xpos;
@@ -300,41 +318,23 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
         return pos;
     }
 
-    public String getChart() throws PWCGException
+    private Runway selectRunway(Mission mission) throws PWCGException
     {
-        Runway runway = selectRunway();
+        RunwayChooser runwayChooser = new RunwayChooser(mission);
+        runwayChooser.selectRunway(runways);
 
-        if (runway == null)
-            return "";
-
-        if (runway.getParkingLocation() == null)
-            return "";
-
-        String chart;
-
-        chart = "    Chart\n";
-        chart += "    {\n";
-        chart += getChartPoint(0, runway.getParkingLocation().getPosition());
-        for (Coordinate pos : runway.getTaxiToStart())
-            chart += getChartPoint(1, pos);
-        chart += getChartPoint(2, runway.getStartPos());
-        chart += getChartPoint(2, runway.getEndPos());
-        for (Coordinate pos : runway.getTaxiFromEnd())
-            chart += getChartPoint(1, pos);
-        chart += getChartPoint(0, runway.getParkingLocation().getPosition());
-        chart += "    }\n";
-
-        return chart;
+        Runway bestRunway = runwayChooser.getBestRunway();
+        return bestRunway.copy();
     }
 
     @Override
-    public boolean isNearRunwayOrTaxiway(Coordinate pos) throws PWCGException
+    public boolean isNearRunwayOrTaxiway(Mission mission, Coordinate pos) throws PWCGException
     {
         if (runways.size() == 0)
         {
-            double runwayOrientation = getTakeoffLocation().getOrientation().getyOri();
-            Coordinate startOfRunway = getTakeoffLocation().getPosition();
-            Coordinate endOfRunway = MathUtils.calcNextCoord(getTakeoffLocation().getPosition(), runwayOrientation, 2000.0);
+            double runwayOrientation = getTakeoffLocation(mission).getOrientation().getyOri();
+            Coordinate startOfRunway = getTakeoffLocation(mission).getPosition();
+            Coordinate endOfRunway = MathUtils.calcNextCoord(getTakeoffLocation(mission).getPosition(), runwayOrientation, 2000.0);
 
             return MathUtils.distFromLine(startOfRunway, endOfRunway, pos) < 120;
         }

@@ -18,6 +18,7 @@ import pwcg.mission.flight.FlightTypes;
 public class FCFlightTypeFactory implements IFlightTypeFactory
 {
     private Campaign campaign;
+
     private List<Integer> weightedOdds = new ArrayList<>();
     private Map<Integer, FlightTypes> flightTypesByIndex = new HashMap<>();
 

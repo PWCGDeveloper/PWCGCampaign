@@ -124,8 +124,8 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
             if (!flight.getFlightInformation().isAirStart())
             {
                 takeoffMcu = new McuTakeoff();
-                takeoffMcu.setPosition(flight.getFlightInformation().getDepartureAirfield().getTakeoffLocation().getPosition().copy());
-                takeoffMcu.setOrientation(flight.getFlightInformation().getDepartureAirfield().getTakeoffLocation().getOrientation().copy());
+                takeoffMcu.setPosition(flight.getFlightInformation().getDepartureAirfield().getTakeoffLocation(flight.getMission()).getPosition().copy());
+                takeoffMcu.setOrientation(flight.getFlightInformation().getDepartureAirfield().getTakeoffLocation(flight.getMission()).getOrientation().copy());
             }
         }
     }
@@ -162,7 +162,7 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
         takeoffWP.setDesc(flight.getSquadron().determineDisplayName(flight.getCampaign().getDate()), WaypointType.TAKEOFF_WAYPOINT.getName());
         takeoffWP.setSpeed(flight.getFlightCruisingSpeed());
         takeoffWP.setPosition(initialClimbCoords);
-        takeoffWP.setOrientation(flight.getFlightInformation().getAirfield().getTakeoffLocation().getOrientation().copy());
+        takeoffWP.setOrientation(flight.getFlightInformation().getAirfield().getTakeoffLocation(flight.getMission()).getOrientation().copy());
 
         super.addWaypoint(takeoffWP);
         return takeoffWP;
@@ -173,8 +173,8 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
         int takeoffWaypointDistance = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.TakeoffWaypointDistanceKey);
         int takeoffWaypointAltitude = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.TakeoffWaypointAltitudeKey);
 
-        double takeoffOrientation = flight.getFlightInformation().getAirfield().getTakeoffLocation().getOrientation().getyOri();
-        Coordinate initialClimbCoords = MathUtils.calcNextCoord(flight.getFlightInformation().getAirfield().getTakeoffLocation().getPosition().copy(), takeoffOrientation, takeoffWaypointDistance);
+        double takeoffOrientation = flight.getFlightInformation().getAirfield().getTakeoffLocation(flight.getMission()).getOrientation().getyOri();
+        Coordinate initialClimbCoords = MathUtils.calcNextCoord(flight.getFlightInformation().getAirfield().getTakeoffLocation(flight.getMission()).getPosition().copy(), takeoffOrientation, takeoffWaypointDistance);
         initialClimbCoords.setYPos(takeoffWaypointAltitude);
 
         return initialClimbCoords;

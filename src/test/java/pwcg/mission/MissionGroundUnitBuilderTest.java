@@ -22,6 +22,7 @@ import pwcg.mission.ground.MissionTrainBuilder;
 import pwcg.mission.ground.MissionTruckConvoyBuilder;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.options.MissionWeather;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestParticipatingHumanBuilder;
@@ -41,7 +42,9 @@ public class MissionGroundUnitBuilderTest
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
+        MissionWeather weather = new MissionWeather(campaign, MissionProfile.DAY_TACTICAL_MISSION);
+        weather.createMissionWeather();
+        Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders, weather);
         mission.generate(Arrays.asList(FlightTypes.DIVE_BOMB));
 
         MissionBattleBuilder battleBuilder = new MissionBattleBuilder(campaign, mission);
@@ -61,7 +64,9 @@ public class MissionGroundUnitBuilderTest
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
+        MissionWeather weather = new MissionWeather(campaign, MissionProfile.DAY_TACTICAL_MISSION);
+        weather.createMissionWeather();
+        Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders, weather);
         mission.generate(Arrays.asList(FlightTypes.DIVE_BOMB));
 
         MissionTruckConvoyBuilder truckConvoyBuilder = new MissionTruckConvoyBuilder(campaign, mission);
@@ -97,7 +102,9 @@ public class MissionGroundUnitBuilderTest
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
+        MissionWeather weather = new MissionWeather(campaign, MissionProfile.DAY_TACTICAL_MISSION);
+        weather.createMissionWeather();
+        Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders, weather);
         mission.generate(Arrays.asList(FlightTypes.DIVE_BOMB));
 
         MissionTrainBuilder trainBuilder = new MissionTrainBuilder(campaign, mission);
@@ -133,7 +140,9 @@ public class MissionGroundUnitBuilderTest
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
+        MissionWeather weather = new MissionWeather(campaign, MissionProfile.DAY_TACTICAL_MISSION);
+        weather.createMissionWeather();
+        Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders, weather);
         mission.generate(Arrays.asList(FlightTypes.DIVE_BOMB));
 
         AAAManager aaaManager = new AAAManager(campaign, mission);

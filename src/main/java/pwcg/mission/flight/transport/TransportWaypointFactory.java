@@ -7,6 +7,7 @@ import pwcg.campaign.api.IAirfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
+import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.end.ApproachWaypointGenerator;
@@ -57,11 +58,12 @@ public class TransportWaypointFactory
 
     private McuWaypoint createMidWaypoint() throws PWCGException  
     {
-        double angleFromTargetToHomeAirfield = MathUtils.calcAngle(fromAirfield.getLandingLocation().getPosition(), toAirfield.getLandingLocation().getPosition());
-        double distanceBetweenAirfields = MathUtils.calcDist(fromAirfield.getTakeoffLocation().getPosition(), toAirfield.getLandingLocation().getPosition());
+        Mission mission = flight.getMission();
+        double angleFromTargetToHomeAirfield = MathUtils.calcAngle(fromAirfield.getLandingLocation(mission).getPosition(), toAirfield.getLandingLocation(mission).getPosition());
+        double distanceBetweenAirfields = MathUtils.calcDist(fromAirfield.getTakeoffLocation(mission).getPosition(), toAirfield.getLandingLocation(mission).getPosition());
         distanceBetweenAirfields = distanceBetweenAirfields / 2;
         
-        Coordinate midPointCoords = MathUtils.calcNextCoord(fromAirfield.getTakeoffLocation().getPosition(), angleFromTargetToHomeAirfield, distanceBetweenAirfields);
+        Coordinate midPointCoords = MathUtils.calcNextCoord(fromAirfield.getTakeoffLocation(mission).getPosition(), angleFromTargetToHomeAirfield, distanceBetweenAirfields);
         midPointCoords.setYPos(flight.getFlightInformation().getAltitude());
 
         McuWaypoint midPointWP = WaypointFactory.createMoveToWaypointType();
@@ -74,9 +76,10 @@ public class TransportWaypointFactory
 			
     private McuWaypoint createDestinationWaypoint(McuWaypoint lastWp) throws PWCGException  
 	{
-        double angleFromTargetToHomeAirfield = MathUtils.calcAngle(toAirfield.getLandingLocation().getPosition(), lastWp.getPosition());
+        Mission mission = flight.getMission();
+        double angleFromTargetToHomeAirfield = MathUtils.calcAngle(toAirfield.getLandingLocation(mission).getPosition(), lastWp.getPosition());
         
-        Coordinate destinationCoords = MathUtils.calcNextCoord(toAirfield.getLandingLocation().getPosition(), angleFromTargetToHomeAirfield, 10000.0);
+        Coordinate destinationCoords = MathUtils.calcNextCoord(toAirfield.getLandingLocation(mission).getPosition(), angleFromTargetToHomeAirfield, 10000.0);
         destinationCoords.setYPos(flight.getFlightInformation().getAltitude());
 
         McuWaypoint destinationWP = WaypointFactory.createMoveToWaypointType();

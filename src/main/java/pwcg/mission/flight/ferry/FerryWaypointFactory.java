@@ -10,6 +10,7 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
+import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.end.EgressWaypointGenerator;
@@ -60,9 +61,10 @@ public class FerryWaypointFactory
 
     private McuWaypoint createFirstHopWaypoint() throws PWCGException  
     {
-        double wpOrientation = MathUtils.calcAngle(fromAirfield.getTakeoffLocation().getPosition(), toAirfield.getTakeoffLocation().getPosition());
+        Mission mission = flight.getMission();
+        double wpOrientation = MathUtils.calcAngle(fromAirfield.getTakeoffLocation(mission).getPosition(), toAirfield.getTakeoffLocation(mission).getPosition());
         int LandingApproachWaypointDistance = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.LandingApproachWaypointDistanceKey);
-        Coordinate hopCoords = MathUtils.calcNextCoord(fromAirfield.getTakeoffLocation().getPosition().copy(), wpOrientation, LandingApproachWaypointDistance);
+        Coordinate hopCoords = MathUtils.calcNextCoord(fromAirfield.getTakeoffLocation(mission).getPosition().copy(), wpOrientation, LandingApproachWaypointDistance);
         
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int initialWaypointAltitude = productSpecificConfiguration.getInitialWaypointAltitude();
@@ -77,9 +79,10 @@ public class FerryWaypointFactory
 
     private McuWaypoint createSecondHopWaypoint() throws PWCGException  
     {
-        double wpOrientation = MathUtils.calcAngle(toAirfield.getTakeoffLocation().getPosition(), fromAirfield.getTakeoffLocation().getPosition());
+        Mission mission = flight.getMission();
+        double wpOrientation = MathUtils.calcAngle(toAirfield.getTakeoffLocation(mission).getPosition(), fromAirfield.getTakeoffLocation(mission).getPosition());
         int LandingApproachWaypointDistance = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.LandingApproachWaypointDistanceKey);
-        Coordinate hopCoords = MathUtils.calcNextCoord(toAirfield.getTakeoffLocation().getPosition().copy(), wpOrientation, LandingApproachWaypointDistance);
+        Coordinate hopCoords = MathUtils.calcNextCoord(toAirfield.getTakeoffLocation(mission).getPosition().copy(), wpOrientation, LandingApproachWaypointDistance);
         
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int initialWaypointAltitude = productSpecificConfiguration.getInitialWaypointAltitude();

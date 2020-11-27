@@ -135,7 +135,7 @@ public class AirfieldHotSpotTranslator implements IHotSpotTranslator
 
     private List<HotSpot> selectHotSpotsFromEmptySpace(IAirfield airfield) throws PWCGException
     {
-        EmptySpaceFinder emptySpaceFinder = new EmptySpaceFinder();
+        EmptySpaceFinder emptySpaceFinder = new EmptySpaceFinder(mission);
         List<Coordinate> boundary = airfield.getBoundary();
         int targetNumber = (int) (Math.sqrt(MathUtils.polygonArea(boundary)) / SPOT_DENSITY);
         return emptySpaceFinder.findEmptySpaces(boundary, targetNumber);

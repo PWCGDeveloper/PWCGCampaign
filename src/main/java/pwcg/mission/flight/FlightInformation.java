@@ -240,7 +240,7 @@ public class FlightInformation implements IFlightInformation
     public void calculateAltitude() throws PWCGException
     {
         IMissionAltitudeGenerator missionAltitudeGenerator = MissionAltitudeGeneratorFactory.createMissionAltitudeGenerator();
-        this.altitude = missionAltitudeGenerator.determineFlightAltitude(campaign, flightType);
+        this.altitude = missionAltitudeGenerator.determineFlightAltitude(campaign, flightType, mission.getWeather());
     }
 
     @Override

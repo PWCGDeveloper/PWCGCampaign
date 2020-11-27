@@ -11,6 +11,8 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.product.bos.country.BoSServiceManager;
+import pwcg.product.bos.map.IMapClimate;
+import pwcg.product.bos.map.IMapSeason;
 
 public class KubanMap extends PWCGMap
 {
@@ -37,16 +39,6 @@ public class KubanMap extends PWCGMap
     {
         this.mapName = KUBAN_MAP_NAME;        
         this.mapIdentifier = FrontMapIdentifier.KUBAN_MAP;
-        
-        if (missionOptions == null)
-        {
-            missionOptions = new KubanMissionOptions();
-        }
-
-        if (mapWeather == null)
-        {
-            this.mapWeather = new KubanMapWeather();
-        }
 
         mapArea = new KubanMapArea();
         usableMapArea = new KubanMapUsableArea();
@@ -55,7 +47,7 @@ public class KubanMap extends PWCGMap
         
         super.configure();
     }
-    
+
     private void buildArmedServicesActiveForMap()
     {
         armedServicesActiveForMap.add(BoSServiceManager.VVS);
@@ -98,5 +90,23 @@ public class KubanMap extends PWCGMap
     protected Map<String, Integer> getMissionSpacingMyDate()
     {
         return missionSpacingMyDate;
+    }
+
+    @Override
+    protected IMapClimate buildMapClimate()
+    {
+        return new KubanMapClimate();
+    }
+
+    @Override
+    protected IMapSeason buildMapSeason()
+    {
+        return new KubanMapSeason();
+    }
+
+    @Override
+    public int getRainChances()
+    {
+        return 25;
     }
 }

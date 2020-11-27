@@ -1,21 +1,21 @@
-package pwcg.product.bos.map.east1944;
+package pwcg.product.fc.map.arras;
 
 import java.util.Calendar;
 import java.util.Date;
 
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.options.MapSeasonalParameters.Season;
-import pwcg.product.bos.map.BoSMapWeatherBase;
+import pwcg.product.bos.map.IMapClimate;
 
 
-public class East1944MapWeather extends BoSMapWeatherBase
+public class ArrasMapClimate implements IMapClimate
 {
-	public East1944MapWeather()
+	public ArrasMapClimate()
 	{
 	    super();
 	}	
-
+	
+	   
     @Override
     public Season getSeason(Date date)
     {
@@ -28,7 +28,7 @@ public class East1944MapWeather extends BoSMapWeatherBase
         {
             season = Season.WINTER;
         }
-        else if (month == 3 || month == 4 || month == 5)
+        else if (month == 3 || month == 4 | month == 5)
         {
             season = Season.SPRING;
         }
@@ -46,9 +46,9 @@ public class East1944MapWeather extends BoSMapWeatherBase
     
     
     @Override
-    protected void setTemperature(Date date, FrontMapIdentifier frontMap)
+    public int getTemperature(Date date)
     {
-        temperature = 25;
+        int temperature = 25;
         
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
@@ -56,51 +56,53 @@ public class East1944MapWeather extends BoSMapWeatherBase
 
         if (month == 1)
         {
-            temperature = -15 +  RandomNumberGenerator.getRandom(10);
+            temperature = -3 +  RandomNumberGenerator.getRandom(10);
         }
         else if (month == 2)
         {
-            temperature = -10 +  RandomNumberGenerator.getRandom(8);
+            temperature = -1 +  RandomNumberGenerator.getRandom(10);
         }
         else if (month == 3)
         {
-            temperature = -7 +  RandomNumberGenerator.getRandom(9);
+            temperature = 4 +  RandomNumberGenerator.getRandom(10);
         }
         else if (month == 4)
         {
-            temperature = 2 +  RandomNumberGenerator.getRandom(10);
+            temperature = 10 +  RandomNumberGenerator.getRandom(10);
         }
         else if (month == 5)
         {
-            temperature = 10 +  RandomNumberGenerator.getRandom(10);
+            temperature = 15 +  RandomNumberGenerator.getRandom(10);
         }
         else if (month == 6)
         {
-            temperature = 15 +  RandomNumberGenerator.getRandom(10);
+            temperature = 20 +  RandomNumberGenerator.getRandom(10);
         }
         else if (month == 7)
         {
-            temperature = 17 +  RandomNumberGenerator.getRandom(10);
+            temperature = 22 +  RandomNumberGenerator.getRandom(10);
         }
         else if (month == 8)
         {
-            temperature = 15 +  RandomNumberGenerator.getRandom(15);
+            temperature = 22 +  RandomNumberGenerator.getRandom(15);
         }
         else if (month == 9)
         {
-            temperature = 10 +  RandomNumberGenerator.getRandom(10);
+            temperature = 18 +  RandomNumberGenerator.getRandom(10);
         }
         else if (month == 10)
         {
-            temperature = 6 +  RandomNumberGenerator.getRandom(10);
+            temperature = 8 +  RandomNumberGenerator.getRandom(10);
         }       
         else if (month == 11)
         {
-            temperature = -5 +  RandomNumberGenerator.getRandom(8);
+            temperature = 5 +  RandomNumberGenerator.getRandom(10);
         }       
         else if (month == 12)
         {
-            temperature = -10 +  RandomNumberGenerator.getRandom(5);
+            temperature = 0 +  RandomNumberGenerator.getRandom(10);
         }
+        return temperature;
     }
+
 }

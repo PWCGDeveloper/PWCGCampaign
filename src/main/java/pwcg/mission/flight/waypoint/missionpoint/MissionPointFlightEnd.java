@@ -99,7 +99,7 @@ public class MissionPointFlightEnd extends MissionPointSetSingleWaypointSet impl
     
     private void createLanding() throws PWCGException
     {
-        PWCGLocation location = landingAirfield.getLandingLocation();
+        PWCGLocation location = landingAirfield.getLandingLocation(flight.getMission());
         
         landingMcu = new McuLanding();
         landingMcu.setDesc("Land");

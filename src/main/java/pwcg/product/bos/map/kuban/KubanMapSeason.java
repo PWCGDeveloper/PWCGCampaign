@@ -1,22 +1,17 @@
 package pwcg.product.bos.map.kuban;
 
 import pwcg.mission.options.MapSeasonalParameters;
-import pwcg.mission.options.MissionOptions;
+import pwcg.product.bos.map.IMapSeason;
+import pwcg.product.bos.map.MapSeasonBase;
 
-public class KubanMissionOptions  extends MissionOptions
+public class KubanMapSeason extends MapSeasonBase implements IMapSeason
 {
-	
-    public KubanMissionOptions()
+    public KubanMapSeason()
     {
         super();
-
-    	makeWinter();
-    	makeSpring();
-    	makeSummer();
-        makeAutumn();
     }
 
-	private void makeWinter()
+	protected void makeWinter()
 	{
 		winter.setHeightMap("graphics\\LANDSCAPE_Kuban_sp\\height.hini");
     	winter.setTextureMap("graphics\\LANDSCAPE_Kuban_sp\\textures.tini");
@@ -26,7 +21,7 @@ public class KubanMissionOptions  extends MissionOptions
     	winter.setSeason(MapSeasonalParameters.SUMMER_STRING);
 	}
 
-	private void makeSpring()
+	protected void makeSpring()
 	{
 		spring.setHeightMap("graphics\\LANDSCAPE_Kuban_sp\\height.hini");
 		spring.setTextureMap("graphics\\LANDSCAPE_Kuban_sp\\textures.tini");
@@ -36,7 +31,7 @@ public class KubanMissionOptions  extends MissionOptions
     	spring.setSeason(MapSeasonalParameters.SUMMER_STRING);
 	}
 
-	private void makeSummer()
+	protected void makeSummer()
 	{
 		summer.setHeightMap("graphics\\LANDSCAPE_Kuban_s\\height.hini");
 		summer.setTextureMap("graphics\\LANDSCAPE_Kuban_s\\textures.tini");
@@ -46,7 +41,7 @@ public class KubanMissionOptions  extends MissionOptions
     	summer.setSeason(MapSeasonalParameters.SUMMER_STRING);
 	}
 
-	private void makeAutumn()
+	protected void makeAutumn()
 	{
 		autumn.setHeightMap("graphics\\LANDSCAPE_Kuban_a\\height.hini");
 		autumn.setTextureMap("graphics\\LANDSCAPE_Kuban_a\\textures.tini");

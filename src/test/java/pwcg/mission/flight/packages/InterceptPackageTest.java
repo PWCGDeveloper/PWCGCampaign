@@ -22,6 +22,7 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.intercept.InterceptPackage;
 import pwcg.mission.mcu.McuWaypoint;
+import pwcg.mission.options.MissionWeather;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestParticipatingHumanBuilder;
@@ -53,7 +54,9 @@ public class InterceptPackageTest
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
 
-        Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
+        MissionWeather weather = new MissionWeather(campaign, MissionProfile.DAY_TACTICAL_MISSION);
+        weather.createMissionWeather();
+        Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders, weather);
         mission.generate(Arrays.asList(FlightTypes.INTERCEPT));
 
         campaign.setCurrentMission(mission);

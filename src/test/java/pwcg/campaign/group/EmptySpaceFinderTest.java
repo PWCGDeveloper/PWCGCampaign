@@ -3,17 +3,21 @@ package pwcg.campaign.group;
 import java.util.List;
 
 import org.junit.Test;
+import org.mockito.Mock;
 
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
-import pwcg.campaign.group.airfield.hotspot.HotSpot;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.group.airfield.hotspot.HotSpot;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
+import pwcg.mission.Mission;
 
 public class EmptySpaceFinderTest
 {
+    @Mock Mission mission;
+    
     @Test
     public void findEmptySpaceAroundAirfield() throws PWCGException
     {
@@ -23,7 +27,7 @@ public class EmptySpaceFinderTest
         
         for (IAirfield airfield : airfieldManager.getAllAirfields().values())
         {
-            EmptySpaceFinder emptySpaceFinder = new EmptySpaceFinder();
+            EmptySpaceFinder emptySpaceFinder = new EmptySpaceFinder(mission);
             List<HotSpot> hotSpots = emptySpaceFinder.findEmptySpaces(airfield.getBoundary(), 50);
             
             assert (hotSpots.size() > 0);

@@ -18,16 +18,12 @@ public class ConfigItemKeys
     public static final String SimpleConfigGroundKey = "SimpleConfigGround";
     public static final String SimpleConfigAAKey = "SimpleConfigAA";
     public static final String SimpleConfigCpuAllowanceKey = "SimpleConfigCpuAllowance";
-    
-	
-	public static final String WeatherClearCloudsKey = "Weather1ClearClouds";
-	public static final String WeatherLightCloudsKey = "Weather2LightClouds";
-	public static final String WeatherAverageCloudsKey = "Weather3AverageClouds";
-	public static final String WeatherHeavyCloudsKey = "Weather4HeavyClouds";
-	public static final String WeatherOvercastCloudsKey = "Weather5OvercastClouds";
 
-	public static final String MaxTurbulenceKey = "MaxTurbulence";
-	public static final String MaxWindKey = "MaxWind";
+    public static final String UseRealisticWeatherKey = "UseRealisticWeather";
+    public static final String MaxTurbulenceKey = "MaxTurbulence";
+    public static final String MaxWindKey = "MaxWind";
+    public static final String MinHazeKey = "MinHaze";
+    public static final String MaxHazeKey = "MaxHaze";
 
 	// Mission Type
 	public static final String AxisOffensiveMissionKey = "AxisOffensiveMission";

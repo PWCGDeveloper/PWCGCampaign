@@ -29,7 +29,7 @@ public class FlightPositionRunwayStart
         {
             plane.setPosition(takeOffPositions.get(plane.getNumberInFormation()-1));
 
-            Orientation orient = flight.getFlightInformation().getDepartureAirfield().getTakeoffLocation().getOrientation().copy();
+            Orientation orient = flight.getFlightInformation().getDepartureAirfield().getTakeoffLocation(flight.getMission()).getOrientation().copy();
             plane.setOrientation(orient);
 
             plane.populateEntity(flight, flightLeader);

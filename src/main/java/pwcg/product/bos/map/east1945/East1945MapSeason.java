@@ -1,22 +1,18 @@
-package pwcg.product.bos.map.bodenplatte;
+package pwcg.product.bos.map.east1945;
 
 import pwcg.mission.options.MapSeasonalParameters;
-import pwcg.mission.options.MissionOptions;
+import pwcg.product.bos.map.IMapSeason;
+import pwcg.product.bos.map.MapSeasonBase;
 
 
-public class BodenplatteMissionOptions extends MissionOptions
+public class East1945MapSeason extends MapSeasonBase implements IMapSeason
 {
-    public BodenplatteMissionOptions()
+    public East1945MapSeason()
     {
         super();
-
-    	makeWinter();
-    	makeSpring();
-    	makeSummer();
-        makeAutumn();
     }
 
-	private void makeWinter()
+	protected void makeWinter()
 	{
 		winter.setHeightMap("graphics\\LANDSCAPE_Rheinland_wi\\height.hini");
     	winter.setTextureMap("graphics\\LANDSCAPE_Rheinland_wi\\textures.tini");
@@ -26,7 +22,7 @@ public class BodenplatteMissionOptions extends MissionOptions
     	winter.setSeason(MapSeasonalParameters.WINTER_STRING);
 	}
 
-	private void makeSpring()
+	protected void makeSpring()
 	{
 	    spring.setHeightMap("graphics\\LANDSCAPE_Rheinland_sp\\height.hini");
         spring.setTextureMap("graphics\\LANDSCAPE_Rheinland_sp\\textures.tini");
@@ -37,7 +33,7 @@ public class BodenplatteMissionOptions extends MissionOptions
     	spring.setSeason(MapSeasonalParameters.SUMMER_STRING);
 	}
 
-	private void makeSummer()
+	protected void makeSummer()
 	{
 	    summer.setHeightMap("graphics\\LANDSCAPE_Rheinland_su\\height.hini");
         summer.setTextureMap("graphics\\LANDSCAPE_Rheinland_su\\textures.tini");
@@ -47,7 +43,7 @@ public class BodenplatteMissionOptions extends MissionOptions
     	summer.setSeason(MapSeasonalParameters.SUMMER_STRING);
 	}
 
-	private void makeAutumn()
+	protected void makeAutumn()
 	{
 	    autumn.setHeightMap("graphics\\LANDSCAPE_Rheinland_au\\height.hini");
         autumn.setTextureMap("graphics\\LANDSCAPE_Rheinland_au\\textures.tini");

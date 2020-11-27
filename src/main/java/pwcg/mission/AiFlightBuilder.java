@@ -13,6 +13,8 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.factory.IFlightTypeFactory;
 import pwcg.mission.flight.factory.NightFlightTypeConverter;
+import pwcg.mission.flight.factory.WeatherFlightTypeConverter;
+import pwcg.mission.options.MissionWeather;
 
 public class AiFlightBuilder
 {
@@ -27,7 +29,7 @@ public class AiFlightBuilder
     
     private List<IFlight> missionFlights = new ArrayList<IFlight>();
 
-    public List<IFlight> createAiFlights() throws PWCGException 
+    public List<IFlight> createAiFlights(MissionWeather missionWeather) throws PWCGException 
     {
         TestDriver testDriver = TestDriver.getInstance();
         if (testDriver.isCreatePlayerOnly())
@@ -40,6 +42,7 @@ public class AiFlightBuilder
         {
             FlightTypes flightType = determineFlightType(squadron);
             flightType = NightFlightTypeConverter.getFlightType(flightType, mission.isNightMission());
+            flightType = WeatherFlightTypeConverter.getFlightType(flightType, missionWeather);
 
             IFlight flight = buildFlight(flightType, squadron);
             if (flight != null)

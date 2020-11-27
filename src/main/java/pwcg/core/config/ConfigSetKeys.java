@@ -16,7 +16,7 @@ public class ConfigSetKeys
 	public static final String ConfigSetMissionLimits = "ConfigSetMissionLimits";
 	public static final String ConfigSetMissionSpacing = "ConfigSetMissionSpacing";
 	public static final String ConfigSetSimple = "ConfigSetSimple";
-	public static final String ConfigSetUserPref = "ConfigSetUserPref";
+    public static final String ConfigSetWeather = "ConfigSetWeather";
+    public static final String ConfigSetUserPref = "ConfigSetUserPref";
 	public static final String ConfigSetUserPrefCampaign = "ConfigSetUserPrefCampaign";
-	public static final String ConfigSetWeather = "ConfigSetWeather";
 }

@@ -11,6 +11,8 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.product.bos.country.BoSServiceManager;
+import pwcg.product.bos.map.IMapClimate;
+import pwcg.product.bos.map.IMapSeason;
 
 public class BodenplatteMap extends PWCGMap
 {
@@ -35,8 +37,7 @@ public class BodenplatteMap extends PWCGMap
         this.mapName = BODENPLATTE_MAP_NAME;        
         this.mapIdentifier = FrontMapIdentifier.BODENPLATTE_MAP;
         
-        this.missionOptions = new BodenplatteMissionOptions();
-        this.mapWeather = new BodenplatteMapWeather();
+        this.mapClimate = new BodenplatteMapClimate();
         
         mapArea = new BodenplatteMapArea();
         usableMapArea = new BodenplatteMapUsableArea();
@@ -45,7 +46,7 @@ public class BodenplatteMap extends PWCGMap
         
         super.configure();
     }
-    
+
     private void buildArmedServicesActiveForMap()
     {
         armedServicesActiveForMap.add(BoSServiceManager.USAAF);
@@ -87,5 +88,23 @@ public class BodenplatteMap extends PWCGMap
     protected Map<String, Integer> getMissionSpacingMyDate()
     {
         return missionSpacingMyDate;
+    }
+
+    @Override
+    protected IMapClimate buildMapClimate()
+    {
+        return new BodenplatteMapClimate();
+    }
+
+    @Override
+    protected IMapSeason buildMapSeason()
+    {
+        return new BodenplatteMapSeason();
+    }
+
+    @Override
+    public int getRainChances()
+    {
+        return 25;
     }
 }

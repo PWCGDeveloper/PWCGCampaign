@@ -47,14 +47,14 @@ public class WindSock
     public static WindSock createWindSock(IFlight flight) throws PWCGException 
     {
         IAirfield flightAirfield = flight.getFlightInformation().getAirfield();
-        double takeoffOrientation = flightAirfield.getTakeoffLocation().getOrientation().getyOri();
+        double takeoffOrientation = flightAirfield.getTakeoffLocation(flight.getMission()).getOrientation().getyOri();
 
         Double angleWindSockLeft = MathUtils.adjustAngle(takeoffOrientation, -90);
         
         Campaign campaign = PWCGContext.getInstance().getCampaign();
         ConfigManager configManager = campaign.getCampaignConfigManager();
         int windsockDistance = configManager.getIntConfigParam(ConfigItemKeys.WindsockDistanceKey);
-        Coordinate windSockCoordMoveLeft = MathUtils.calcNextCoord(flightAirfield.getTakeoffLocation().getPosition(), angleWindSockLeft, windsockDistance);
+        Coordinate windSockCoordMoveLeft = MathUtils.calcNextCoord(flightAirfield.getTakeoffLocation(flight.getMission()).getPosition(), angleWindSockLeft, windsockDistance);
 
         double angleBack = MathUtils.adjustAngle(takeoffOrientation, 180);
         Coordinate windsockPos = MathUtils.calcNextCoord(windSockCoordMoveLeft, angleBack, -20.0);

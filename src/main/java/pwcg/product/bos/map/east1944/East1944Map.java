@@ -11,6 +11,8 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.product.bos.country.BoSServiceManager;
+import pwcg.product.bos.map.IMapClimate;
+import pwcg.product.bos.map.IMapSeason;
 
 public class East1944Map extends PWCGMap
 {
@@ -29,21 +31,11 @@ public class East1944Map extends PWCGMap
     {
         super();
     }
-
+    
     public void configure() throws PWCGException
     {
         this.mapName = EAST1944_MAP_NAME;        
         this.mapIdentifier = FrontMapIdentifier.EAST1944_MAP;
-        
-        if (missionOptions == null)
-        {
-            missionOptions = new East1944MissionOptions();
-        }
-
-        if (mapWeather == null)
-        {
-            this.mapWeather = new East1944MapWeather();
-        }
         
         mapArea = new East1944MapArea();
         usableMapArea = new East1944MapUsableArea();
@@ -52,7 +44,7 @@ public class East1944Map extends PWCGMap
         
         super.configure();
     }
-    
+
     private void buildArmedServicesActiveForMap()
     {
         armedServicesActiveForMap.add(BoSServiceManager.VVS);
@@ -95,5 +87,23 @@ public class East1944Map extends PWCGMap
     protected Map<String, Integer> getMissionSpacingMyDate()
     {
         return missionSpacingMyDate;
+    }
+
+    @Override
+    protected IMapClimate buildMapClimate()
+    {
+        return new East1944MapClimate();
+    }
+
+    @Override
+    protected IMapSeason buildMapSeason()
+    {
+        return new East1944MapSeason();
+    }
+
+    @Override
+    public int getRainChances()
+    {
+        return 15;
     }
 }

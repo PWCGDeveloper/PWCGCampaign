@@ -10,9 +10,9 @@ import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
 import pwcg.mission.options.MapSeasonalParameters;
-import pwcg.mission.options.MapWeather;
-import pwcg.mission.options.MapWeather.WindLayer;
 import pwcg.mission.options.MissionOptions;
+import pwcg.mission.options.MissionWeather;
+import pwcg.mission.options.WindLayer;
 
 public class MissionFileOptionWriter
 {
@@ -27,8 +27,8 @@ public class MissionFileOptionWriter
     {
         try
         {
-            MissionOptions missionOptions = PWCGContext.getInstance().getCurrentMap().getMissionOptions();
-            MapWeather mapWeather = PWCGContext.getInstance().getCurrentMap().getMapWeather();
+            MissionOptions missionOptions = mission.getMissionOptions();
+            MissionWeather mapWeather = mission.getWeather();
 
             writer.write("Options");
             writer.newLine();
@@ -52,7 +52,7 @@ public class MissionFileOptionWriter
             writer.write("  Date = " + missionDate + ";");
             writer.newLine();
             
-            MapSeasonalParameters mapSeasonalParameters = missionOptions.getSeasonBasedParameters(mission.getCampaign().getDate());
+            MapSeasonalParameters mapSeasonalParameters =PWCGContext.getInstance().getCurrentMap().getMapSeason().getSeasonBasedParameters(mission.getCampaign().getDate());
             
             writer.write("  HMap = \"" + mapSeasonalParameters.getHeightMap() + "\";");
             writer.newLine();
@@ -91,6 +91,8 @@ public class MissionFileOptionWriter
             writer.newLine();
             writer.write("  Pressure = " + mapWeather.getPressure() + ";");
             writer.newLine();
+            writer.write("  Haze = " + mapWeather.getHaze() + ";");
+            writer.newLine();
 
             writer.write("  WindLayers");
             writer.newLine();
@@ -99,7 +101,7 @@ public class MissionFileOptionWriter
             
             for (WindLayer layer : mapWeather.getWindLayers())
             {
-                writer.write("    " + layer.layer + " :     " + layer.direction + " :     " + layer.speed + ";");
+                writer.write("    " + layer.getLayer() + " :     " + layer.getDirection() + " :     " + layer.getSpeed() + ";");
                 writer.newLine();           
             }
             

@@ -33,45 +33,14 @@ public interface IAirfield extends IFixedPosition
     public String getModel();
 
     public String getScript();
-    
-    /**
-     * Gets the location of the airfield as a whole, used for map coordinates,
-     * distance checking etc. Does not relate to takeoff/landing locations.
-     */
+
     public Coordinate getPosition();
 
-    /**
-     * Gets the position and direction for the start of the takeoff run from
-     * this airfield.
-     * @return Takeoff position and orientation
-     * @throws PWCGException
-     */
-    public PWCGLocation getTakeoffLocation() throws PWCGException;
+    public PWCGLocation getTakeoffLocation(Mission mission) throws PWCGException;
 
-    /**
-     * Gets the position and direction for the touchdown point when landing at
-     * this airfield.
-     * @return Landing position and orientation
-     * @throws PWCGException
-     */
-    public PWCGLocation getLandingLocation() throws PWCGException;
+    public PWCGLocation getLandingLocation(Mission mission) throws PWCGException;
 
-    /**
-     * Gets the position and direction of the lead plane when starting parked.
-     * @return Parking position and orientation
-     * @throws PWCGException
-     */
-    public PWCGLocation getParkingLocation() throws PWCGException;
-    
-    /**
-     * Gets the position and direction that the fake airfield object should
-     * be placed at.
-     * @return Airfield position and orientation
-     * @throws PWCGException
-     */
-    public PWCGLocation getFakeAirfieldLocation() throws PWCGException;
-
-    public boolean isNearRunwayOrTaxiway(Coordinate pos) throws PWCGException;
+    public boolean isNearRunwayOrTaxiway(Mission mission, Coordinate pos) throws PWCGException;
 
     public Date getStartDate();
 
@@ -80,4 +49,8 @@ public interface IAirfield extends IFixedPosition
     public List<Coordinate> getBoundary() throws PWCGException;
 
     int getUnitCount();
+
+    PWCGLocation getFakeAirfieldLocation(Mission mission) throws PWCGException;
+
+    PWCGLocation getParkingLocation(Mission mission) throws PWCGException;
 }

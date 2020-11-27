@@ -290,14 +290,14 @@ public class MissionFileWriter implements IMissionFile
                 if (radioBeacon != null)
                 {
                     IAirfield flightAirfield = playerFlight.getFlightInformation().getAirfield();
-                    double takeoffOrientation = flightAirfield.getTakeoffLocation().getOrientation().getyOri();
+                    double takeoffOrientation = flightAirfield.getTakeoffLocation(mission).getOrientation().getyOri();
 
                     Double angleBeaconLeft = MathUtils.adjustAngle(takeoffOrientation, -90);
 
                     Campaign campaign = PWCGContext.getInstance().getCampaign();
                     ConfigManager configManager = campaign.getCampaignConfigManager();
                     int windsockDistance = configManager.getIntConfigParam(ConfigItemKeys.WindsockDistanceKey);
-                    Coordinate beaconCoordMoveLeft = MathUtils.calcNextCoord(flightAirfield.getTakeoffLocation().getPosition(), angleBeaconLeft, windsockDistance);
+                    Coordinate beaconCoordMoveLeft = MathUtils.calcNextCoord(flightAirfield.getTakeoffLocation(mission).getPosition(), angleBeaconLeft, windsockDistance);
 
                     Coordinate beaconPos = MathUtils.calcNextCoord(beaconCoordMoveLeft, takeoffOrientation, 200.0);
 
@@ -322,7 +322,7 @@ public class MissionFileWriter implements IMissionFile
                 if (landCanvas != null)
                 {
                     IAirfield flightAirfield = playerFlight.getFlightInformation().getAirfield();
-                    Orientation takeoffOrientation = flightAirfield.getTakeoffLocation().getOrientation().copy();
+                    Orientation takeoffOrientation = flightAirfield.getTakeoffLocation(mission).getOrientation().copy();
                     IVehicle landCanvas2 = VehicleFactory.createVehicle(
                             playerFlight.getFlightInformation().getCountry(), mission.getCampaign().getDate(), VehicleClass.LandCanvas);
 
@@ -331,7 +331,7 @@ public class MissionFileWriter implements IMissionFile
                     Campaign campaign = PWCGContext.getInstance().getCampaign();
                     ConfigManager configManager = campaign.getCampaignConfigManager();
                     int windsockDistance = configManager.getIntConfigParam(ConfigItemKeys.WindsockDistanceKey);
-                    Coordinate pos1 = MathUtils.calcNextCoord(flightAirfield.getTakeoffLocation().getPosition(), angleRight, windsockDistance);
+                    Coordinate pos1 = MathUtils.calcNextCoord(flightAirfield.getTakeoffLocation(mission).getPosition(), angleRight, windsockDistance);
                     pos1 = MathUtils.calcNextCoord(pos1, takeoffOrientation.getyOri(), -15.0);
 
                     landCanvas.setPosition(pos1);
@@ -357,7 +357,7 @@ public class MissionFileWriter implements IMissionFile
         Map<String, IAirfield> allAirFields =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAllAirfields();
         for (IAirfield airfield : allAirFields.values())
         {
-            FakeAirfield fakeAirfiield = new FakeAirfield(airfield, mission.getCampaign().getDate());
+            FakeAirfield fakeAirfiield = new FakeAirfield(airfield, mission);
             fakeAirfiield.write(writer);
         }
     }

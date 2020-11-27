@@ -11,17 +11,19 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.product.bos.country.BoSServiceManager;
+import pwcg.product.bos.map.IMapClimate;
+import pwcg.product.bos.map.IMapSeason;
 
 public class East1945Map extends PWCGMap
 {
     private static final Map<String, Integer> missionSpacingMyDate;
     static
-    { 
-        missionSpacingMyDate = new TreeMap<>(); 
-        missionSpacingMyDate.put("19450101", 3); 
-        missionSpacingMyDate.put("19450201", 2); 
-        missionSpacingMyDate.put("19450301", 1); 
-    } 
+    {
+        missionSpacingMyDate = new TreeMap<>();
+        missionSpacingMyDate.put("19450101", 3);
+        missionSpacingMyDate.put("19450201", 2);
+        missionSpacingMyDate.put("19450301", 1);
+    }
 
     public East1945Map()
     {
@@ -30,20 +32,17 @@ public class East1945Map extends PWCGMap
 
     public void configure() throws PWCGException
     {
-        this.mapName = EAST1945_MAP_NAME;        
+        this.mapName = EAST1945_MAP_NAME;
         this.mapIdentifier = FrontMapIdentifier.EAST1945_MAP;
-        
-        this.missionOptions = new East1945MissionOptions();
-        this.mapWeather = new East1945MapWeather();
-        
+
         mapArea = new East1945MapArea();
         usableMapArea = new East1945MapUsableArea();
 
         buildArmedServicesActiveForMap();
-        
+
         super.configure();
     }
-    
+
     private void buildArmedServicesActiveForMap()
     {
         armedServicesActiveForMap.add(BoSServiceManager.VVS);
@@ -80,5 +79,23 @@ public class East1945Map extends PWCGMap
     protected Map<String, Integer> getMissionSpacingMyDate()
     {
         return missionSpacingMyDate;
+    }
+
+    @Override
+    protected IMapClimate buildMapClimate()
+    {
+        return new East1945MapClimate();
+    }
+
+    @Override
+    protected IMapSeason buildMapSeason()
+    {
+        return new East1945MapSeason();
+    }
+
+    @Override
+    public int getRainChances()
+    {
+        return 25;
     }
 }

@@ -11,6 +11,8 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.product.bos.country.BoSServiceManager;
+import pwcg.product.bos.map.IMapClimate;
+import pwcg.product.bos.map.IMapSeason;
 
 public class StalingradMap extends PWCGMap
 {
@@ -40,17 +42,7 @@ public class StalingradMap extends PWCGMap
     {
         this.mapName = STALINGRAD_MAP_NAME;        
         this.mapIdentifier = FrontMapIdentifier.STALINGRAD_MAP;
-        
-        if (missionOptions == null)
-        {
-            missionOptions = new StalingradMissionOptions();
-        }
 
-        if (mapWeather == null)
-        {
-            this.mapWeather = new StalingradMapWeather();
-        }
-        
         mapArea = new StalingradMapArea();
         usableMapArea = new StalingradMapUsableArea();
 
@@ -58,7 +50,7 @@ public class StalingradMap extends PWCGMap
         
         super.configure();
     }
-    
+
     private void buildArmedServicesActiveForMap()
     {
         armedServicesActiveForMap.add(BoSServiceManager.VVS);
@@ -98,5 +90,23 @@ public class StalingradMap extends PWCGMap
     protected Map<String, Integer> getMissionSpacingMyDate()
     {
         return missionSpacingMyDate;
+    }
+
+    @Override
+    protected IMapClimate buildMapClimate()
+    {
+        return new StalingradMapClimate();
+    }
+
+    @Override
+    protected IMapSeason buildMapSeason()
+    {
+        return new StalingradMapSeason();
+    }
+
+    @Override
+    public int getRainChances()
+    {
+        return 15;
     }
 }

@@ -16,15 +16,18 @@ import pwcg.campaign.target.preference.TargetPreferenceManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
-import pwcg.mission.options.MapWeather;
-import pwcg.mission.options.MissionOptions;
+import pwcg.product.bos.map.IMapClimate;
+import pwcg.product.bos.map.IMapSeason;
 
 public abstract class PWCGMap
 {
-    protected abstract void configureTransitionDates() throws PWCGException;
     public abstract ICountry getGroundCountryForMapBySide(Side side);
+    public abstract int getRainChances();
+    protected abstract void configureTransitionDates() throws PWCGException;
     protected abstract Map<String, Integer> getMissionSpacingMyDate();
-
+    protected abstract IMapClimate buildMapClimate();
+    protected abstract IMapSeason buildMapSeason();
+    
     public enum FrontMapIdentifier
     {
         MOSCOW_MAP,
@@ -46,6 +49,8 @@ public abstract class PWCGMap
     public static final String ARRAS_MAP_NAME = "Arras";
 
     protected FrontMapIdentifier mapIdentifier = null;
+    protected IMapClimate mapClimate;
+    protected IMapSeason mapSeason;
     protected Map<Date, FrontLinesForMap> frontLinesForMapByDate = new TreeMap<>();
     protected FrontDatesForMap frontDatesForMap;
     protected DrifterManager drifterManager = null;
@@ -55,11 +60,8 @@ public abstract class PWCGMap
     protected TargetPreferenceManager targetPreferenceManager = null;
     protected MapArea mapArea = null;
     protected MapArea usableMapArea = null;
-    protected MissionOptions missionOptions = null;
-    protected MapWeather mapWeather = null;
     protected String mapName = "";
     protected List<Integer> armedServicesActiveForMap = new ArrayList<>();
-
     
     public PWCGMap()
     {
@@ -142,6 +144,24 @@ public abstract class PWCGMap
         return false;
     }
 
+    public IMapClimate getMapClimate()
+    {
+        if (mapClimate == null)
+        {
+            mapClimate = buildMapClimate();
+        }
+        return mapClimate;
+    }
+
+    public IMapSeason getMapSeason() throws PWCGException
+    {
+        if (mapSeason == null)
+        {
+            mapSeason = buildMapSeason();
+        }
+        return mapSeason;
+    }
+
     public FrontMapIdentifier getMapIdentifier()
     {
         return mapIdentifier;
@@ -206,16 +226,6 @@ public abstract class PWCGMap
     public String getMapName()
     {
         return mapName;
-    }
-
-    public MissionOptions getMissionOptions()
-    {
-        return missionOptions;
-    }
-
-    public MapWeather getMapWeather()
-    {
-        return mapWeather;
     }
 
     public Coordinate getMapCenter()

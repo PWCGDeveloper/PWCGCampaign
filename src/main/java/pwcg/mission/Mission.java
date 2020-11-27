@@ -30,6 +30,7 @@ import pwcg.mission.io.MissionFileFactory;
 import pwcg.mission.mcu.group.MissionObjectiveGroup;
 import pwcg.mission.mcu.group.StopAttackingNearAirfieldSequence;
 import pwcg.mission.options.MissionOptions;
+import pwcg.mission.options.MissionWeather;
 import pwcg.mission.target.AssaultDefinition;
 
 public class Mission
@@ -38,6 +39,7 @@ public class Mission
     private MissionHumanParticipants participatingPlayers;
     private CoordinateBox missionBorders;
 
+    private MissionWeather weather;
     private MissionFlightBuilder missionFlightBuilder;
     private MissionObjectiveGroup missionObjectiveSuccess = new MissionObjectiveGroup();
     private MissionObjectiveGroup missionObjectiveFailure = new MissionObjectiveGroup();
@@ -59,13 +61,14 @@ public class Mission
     private MissionOptions missionOptions;
     private List<StopAttackingNearAirfieldSequence> stopSequenceForMission = new ArrayList<>();
 
-    public Mission(Campaign campaign, MissionProfile missionProfile, MissionHumanParticipants participatingPlayers, CoordinateBox missionBorders)
+    public Mission(Campaign campaign, MissionProfile missionProfile, MissionHumanParticipants participatingPlayers, CoordinateBox missionBorders, MissionWeather weather)
             throws PWCGException
     {
         this.campaign = campaign;
         this.participatingPlayers = participatingPlayers;
         this.missionProfile = missionProfile;
         this.missionBorders = missionBorders;
+        this.weather = weather;
 
         initialize();
     }
@@ -106,13 +109,13 @@ public class Mission
         missionFlightBuilder = new MissionFlightBuilder(campaign, this);
         missionFrontLines = new MissionFrontLineIconBuilder(campaign);
         missionSquadronIconBuilder = new MissionSquadronIconBuilder(campaign);
+
+        missionOptions = new MissionOptions(this);
+        missionOptions.createFlightSpecificMissionOptions();
     }
 
     public void generate(List<FlightTypes> playerFlightTypes) throws PWCGException
     {
-        missionOptions = PWCGContext.getInstance().getCurrentMap().getMissionOptions();
-        missionOptions.createFlightSpecificMissionOptions(this);
-
         validate();
         createGroundUnits();
         generateFlights(playerFlightTypes);
@@ -207,7 +210,6 @@ public class Mission
     {
         if (!isFinalized)
         {
-            MissionOptions missionOptions = PWCGContext.getInstance().getCurrentMap().getMissionOptions();
             setMissionScript(missionOptions);
 
             missionFlightBuilder.finalizeMissionFlights();
@@ -430,11 +432,6 @@ public class Mission
         return missionOptions;
     }
 
-    public void setMissionOptions(MissionOptions missionOptions)
-    {
-        this.missionOptions = missionOptions;
-    }
-
     public List<StopAttackingNearAirfieldSequence> getStopSequenceForMission()
     {
         return stopSequenceForMission;
@@ -448,5 +445,10 @@ public class Mission
     public SkinsInUse getSkinsInUse()
     {
         return skinsInUse;
+    }
+
+    public MissionWeather getWeather()
+    {
+        return weather;
     }
 }

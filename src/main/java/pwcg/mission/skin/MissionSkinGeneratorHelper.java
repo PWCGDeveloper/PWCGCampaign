@@ -3,6 +3,7 @@ package pwcg.mission.skin;
 import java.util.Date;
 import java.util.List;
 
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.utils.PWCGLogger;
@@ -10,7 +11,7 @@ import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
-import pwcg.mission.options.MapWeather;
+import pwcg.mission.options.MapSeasonalParameters.Season;
 
 public class MissionSkinGeneratorHelper 
 {
@@ -73,7 +74,8 @@ public class MissionSkinGeneratorHelper
         {
             plane.setPlaneSkin(skin);
             flight.getMission().addSkinInUse(skin);
-            if (MapWeather.isWinter(flight.getCampaign().getDate()) && skin.isWinter())
+            Season season = PWCGContext.getInstance().getCurrentMap().getMapClimate().getSeason(flight.getCampaign().getDate());
+            if ((season == Season.WINTER) && skin.isWinter())
             {
                 PWCGLogger.log(LogLevel.DEBUG, "SKIN: Assign squadron personal: " + skin.getSkinName());
             }

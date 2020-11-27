@@ -10,6 +10,8 @@ import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
+import pwcg.product.bos.map.IMapClimate;
+import pwcg.product.bos.map.IMapSeason;
 import pwcg.product.fc.country.FCServiceManager;
 
 public class ArrasMap extends PWCGMap
@@ -45,16 +47,6 @@ public class ArrasMap extends PWCGMap
         this.mapName = ARRAS_MAP_NAME;        
         this.mapIdentifier = FrontMapIdentifier.ARRAS_MAP;
         
-        if (missionOptions == null)
-        {
-            missionOptions = new ArrasMissionOptions();
-        }
-
-        if (mapWeather == null)
-        {
-            this.mapWeather = new ArrasMapWeather();
-        }
-        
         mapArea = new ArrasMapArea();
         usableMapArea = new ArrasMapUsableArea();
 
@@ -62,7 +54,7 @@ public class ArrasMap extends PWCGMap
         
         super.configure();
     }
-    
+
     private void buildArmedServicesActiveForMap()
     {
         armedServicesActiveForMap.add(FCServiceManager.AVIATION_MILITAIRE_BELGE);
@@ -115,4 +107,21 @@ public class ArrasMap extends PWCGMap
         return missionSpacingMyDate;
     }
 
+    @Override
+    protected IMapClimate buildMapClimate()
+    {
+        return new ArrasMapClimate();
+    }
+
+    @Override
+    protected IMapSeason buildMapSeason()
+    {
+        return new ArrasMapSeason();
+    }
+
+    @Override
+    public int getRainChances()
+    {
+        return 15;
+    }
 }

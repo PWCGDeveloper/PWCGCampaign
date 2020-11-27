@@ -3,15 +3,14 @@ package pwcg.product.bos.map.bodenplatte;
 import java.util.Calendar;
 import java.util.Date;
 
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.options.MapSeasonalParameters.Season;
-import pwcg.product.bos.map.BoSMapWeatherBase;
+import pwcg.product.bos.map.IMapClimate;
 
 
-public class BodenplatteMapWeather extends BoSMapWeatherBase
+public class BodenplatteMapClimate implements IMapClimate
 {
-	public BodenplatteMapWeather()
+	public BodenplatteMapClimate()
 	{
 	    super();
 	}	
@@ -46,9 +45,9 @@ public class BodenplatteMapWeather extends BoSMapWeatherBase
     
     
     @Override
-    protected void setTemperature(Date date, FrontMapIdentifier frontMap)
+    public int getTemperature(Date date)
     {
-        temperature = 25;
+        int temperature = 25;
         
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
@@ -102,5 +101,6 @@ public class BodenplatteMapWeather extends BoSMapWeatherBase
         {
             temperature = -5 +  RandomNumberGenerator.getRandom(10);
         }
+        return temperature;
     }
 }

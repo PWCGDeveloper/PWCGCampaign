@@ -14,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -173,7 +172,7 @@ public class BriefingEditorPanel extends ImageResizingPanel implements ActionLis
 
     private void createTimeDisplay()
     {
-        MissionTime missionTime = PWCGContext.getInstance().getCurrentMap().getMissionOptions().getMissionTime();
+        MissionTime missionTime = mission.getMissionOptions().getMissionTime();
 		
         cbMissionTime = new JComboBox<String>();
         cbMissionTime.setActionCommand("ChangeTime");

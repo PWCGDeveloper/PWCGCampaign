@@ -25,6 +25,7 @@ import pwcg.mission.flight.waypoint.missionpoint.MissionPointAttackSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.options.MissionWeather;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestParticipatingHumanBuilder;
@@ -56,7 +57,9 @@ public class GroundAttackPackageTest
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
 
-        Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders);
+        MissionWeather weather = new MissionWeather(campaign, MissionProfile.DAY_TACTICAL_MISSION);
+        weather.createMissionWeather();
+        Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders, weather);
         mission.generate(Arrays.asList(FlightTypes.GROUND_ATTACK));
 
         campaign.setCurrentMission(mission);

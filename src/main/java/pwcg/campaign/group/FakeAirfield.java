@@ -2,7 +2,6 @@ package pwcg.campaign.group;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.Date;
 
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.group.airfield.Airfield;
@@ -10,35 +9,37 @@ import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.mission.Mission;
 import pwcg.mission.mcu.McuTREntity;
 
 public class FakeAirfield extends FixedPosition implements Cloneable
 {
-    protected Callsign callsign = Callsign.NONE;
-    protected int callnum = 0;
-    protected String chart = "";
-    protected int returnPlanes = 0;
-    protected int hydrodrome = 0;
-    protected int repairFriendlies = 0;
-    protected int rearmFriendlies = 0;
-    protected int refuelFriendlies = 0;
-    protected int repairTime = 0;
-    protected int rearmTime = 0;
-    protected int refuelTime = 0;
-    protected int maintenanceRadius = 1000;
+    private Callsign callsign = Callsign.NONE;
+    private int callnum = 0;
+    private String chart = "";
+    private int returnPlanes = 0;
+    private int hydrodrome = 0;
+    private int repairFriendlies = 0;
+    private int rearmFriendlies = 0;
+    private int refuelFriendlies = 0;
+    private int repairTime = 0;
+    private int rearmTime = 0;
+    private int refuelTime = 0;
+    private int maintenanceRadius = 1000;
     private McuTREntity entity;
 
-    public FakeAirfield (IAirfield airfield, Date date) throws PWCGException
+    public FakeAirfield (IAirfield airfield, Mission mission) throws PWCGException
     {
         super();
+        
         entity = new McuTREntity(index);
         linkTrId = entity.getIndex();
 
         name = "Fake " + airfield.getName();
                 
-        country = airfield.getCountry(date).getCountry();
-        position = airfield.getFakeAirfieldLocation().getPosition().copy();
-        orientation = airfield.getFakeAirfieldLocation().getOrientation().copy();
+        country = airfield.getCountry(mission.getCampaign().getDate()).getCountry();
+        position = airfield.getFakeAirfieldLocation(mission).getPosition().copy();
+        orientation = airfield.getFakeAirfieldLocation(mission).getOrientation().copy();
         
         model = "graphics\\airfields\\fakefield.mgm";
         script = "LuaScripts\\WorldObjects\\Airfields\\fakefield.txt";
@@ -48,7 +49,7 @@ public class FakeAirfield extends FixedPosition implements Cloneable
         damageThreshold = 1;
         deleteAfterDeath = 1;
         
-        chart = ((Airfield) airfield).getChart();
+        chart = ((Airfield) airfield).getChart(mission);
 
         populateEntity();
     }

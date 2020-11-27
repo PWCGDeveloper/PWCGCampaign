@@ -8,6 +8,7 @@ import pwcg.campaign.api.IAirfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
+import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 
 public class RunwayPlacerLineAbreast implements IRunwayPlacer
@@ -52,17 +53,19 @@ public class RunwayPlacerLineAbreast implements IRunwayPlacer
     
     private Coordinate calculateInitialPlacement() throws PWCGException
     {
-        double takeoffAngle = airfield.getTakeoffLocation().getOrientation().getyOri();
+        Mission mission = flight.getMission();
+        double takeoffAngle = airfield.getTakeoffLocation(mission).getOrientation().getyOri();
         double initialPlacementAngleAngle = MathUtils.adjustAngle(takeoffAngle, 270);
 
-        Coordinate fieldPlanePosition = airfield.getTakeoffLocation().getPosition().copy();
+        Coordinate fieldPlanePosition = airfield.getTakeoffLocation(mission).getPosition().copy();
         Coordinate initialCoord = MathUtils.calcNextCoord(fieldPlanePosition, initialPlacementAngleAngle, (25.0));
         return initialCoord;
     }
     
     private Coordinate calculateNextAbreast(Coordinate lastPosition, int takeoffSpacing) throws PWCGException
     {
-        double takeoffAngle = airfield.getTakeoffLocation().getOrientation().getyOri();
+        Mission mission = flight.getMission();
+        double takeoffAngle = airfield.getTakeoffLocation(mission).getOrientation().getyOri();
         double nextlacementAngleAngle = MathUtils.adjustAngle(takeoffAngle, 90);
 
         Coordinate nextTakeoffCoord = MathUtils.calcNextCoord(lastPosition, nextlacementAngleAngle, (takeoffSpacing));

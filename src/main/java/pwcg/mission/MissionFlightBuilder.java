@@ -92,7 +92,7 @@ public class MissionFlightBuilder
         if (isCreateAiFlights())
         {
             AiFlightBuilder aiFlightBuilder = new AiFlightBuilder(campaign, mission);
-            aiFlights = aiFlightBuilder.createAiFlights();
+            aiFlights = aiFlightBuilder.createAiFlights(mission.getWeather());
         }
     }
 

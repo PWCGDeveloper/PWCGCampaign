@@ -12,8 +12,9 @@ import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.escort.EscortForPlayerFlight;
 import pwcg.mission.flight.objective.MissionObjectiveFactory;
-import pwcg.mission.options.MapWeather;
 import pwcg.mission.options.MissionOptions;
+import pwcg.mission.options.MissionWeather;
+import pwcg.mission.options.WindLayer;
 
 public class MissionDescriptionSinglePlayer implements IMissionDescription 
 {
@@ -63,11 +64,11 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 
 	public String createDescription() throws PWCGException 
     {
-        MapWeather mapWeather = PWCGContext.getInstance().getCurrentMap().getMapWeather();
-        setClouds(mapWeather.getWeatherDescription());
-        setWind(mapWeather.getWindLayers().get(0));
+        MissionWeather weather = mission.getWeather();
+        setClouds(weather.getWeatherDescription());
+        setWind(weather.getWindLayers().get(0));
 
-        MissionOptions missionOptions = PWCGContext.getInstance().getCurrentMap().getMissionOptions();
+        MissionOptions missionOptions = mission.getMissionOptions();
         setMissionDateTime(DateUtils.getDateAsMissionFileFormat(campaign.getDate()), missionOptions.getMissionTime().getMissionTime());
 
         setAircraft(playerFlight.getFlightPlanes().getFlightLeader().getDisplayName());
@@ -132,10 +133,10 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 		descSinglePlayerTemplate = replace(descSinglePlayerTemplate, "<CLOUDS>", replacement);
 	}
 	
-	private void setWind(MapWeather.WindLayer layer) throws PWCGException
+	private void setWind(WindLayer layer) throws PWCGException
 	{
-		int windFrom = Double.valueOf(MathUtils.adjustAngle (layer.direction, 180)).intValue();		
-		String windCond = "Wind speed is " + layer.speed + " M/S." + 
+		int windFrom = Double.valueOf(MathUtils.adjustAngle (layer.getDirection(), 180)).intValue();		
+		String windCond = "Wind speed is " + layer.getSpeed() + " M/S." + 
 				  "\n    Wind direction is " + windFrom + ".";			
 		
 		descSinglePlayerTemplate = replace(descSinglePlayerTemplate, "<WIND>", windCond);

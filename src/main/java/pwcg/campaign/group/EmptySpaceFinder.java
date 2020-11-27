@@ -10,10 +10,13 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.MathUtils;
+import pwcg.mission.Mission;
 
 public class EmptySpaceFinder
 {
     private static final double HOT_SPOT_CLEARANCE = 40.0;
+    
+    private Mission mission;
     
     private List<HotSpot> hotSpots = new ArrayList<>();
     private List<Block> blocksInArea = new ArrayList<>();
@@ -22,6 +25,11 @@ public class EmptySpaceFinder
     private CoordinateBox coordinateBox;
     private List<Coordinate> boundary;
     private int targetNumber;
+    
+    public EmptySpaceFinder(Mission mission)
+    {
+        this.mission = mission;
+    }
 
     public List<HotSpot> findEmptySpaces (List<Coordinate> boundary, int targetNumber) throws PWCGException
     {
@@ -75,7 +83,7 @@ public class EmptySpaceFinder
     {
         for (IAirfield airfield : airfieldsInArea)
         {
-            if (airfield.isNearRunwayOrTaxiway(coordinateExaminedNow))
+            if (airfield.isNearRunwayOrTaxiway(mission, coordinateExaminedNow))
                 return true;
         }
 

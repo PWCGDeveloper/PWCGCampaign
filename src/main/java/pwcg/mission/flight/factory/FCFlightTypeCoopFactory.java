@@ -7,7 +7,7 @@ import pwcg.mission.flight.FlightTypes;
 
 public class FCFlightTypeCoopFactory implements IFlightTypeFactory
 {
-    protected Campaign campaign;
+    private Campaign campaign;
     
     public FCFlightTypeCoopFactory (Campaign campaign) 
     {
