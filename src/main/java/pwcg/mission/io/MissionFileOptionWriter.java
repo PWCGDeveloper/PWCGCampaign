@@ -80,7 +80,7 @@ public class MissionFileOptionWriter
             writer.newLine();
             writer.write("  CloudConfig = \"" + mapWeather.getCloudConfig() + "\";");
             writer.newLine();
-            writer.write("  SeaState = " + missionOptions.getSeaState() + ";");
+            writer.write("  SeaState = " + mapWeather.getSeaState() + ";");
             writer.newLine();
             writer.write("  Turbulence = " + mapWeather.getTurbulence() + ";");
             writer.newLine();

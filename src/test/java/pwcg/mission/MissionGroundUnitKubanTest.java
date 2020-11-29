@@ -16,7 +16,7 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.target.TargetType;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
-import pwcg.testutils.TestParticipatingHumanBuilder;
+import pwcg.testutils.TestMissionBuilderUtility;
 
 public class MissionGroundUnitKubanTest
 {
@@ -37,7 +37,7 @@ public class MissionGroundUnitKubanTest
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(
-                TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.GROUND_ATTACK, MissionProfile.DAY_TACTICAL_MISSION);
+                TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.GROUND_ATTACK, MissionProfile.DAY_TACTICAL_MISSION);
 
         verifyAllied(mission);
         verifyAxis(mission);

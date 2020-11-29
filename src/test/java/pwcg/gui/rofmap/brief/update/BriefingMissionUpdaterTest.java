@@ -23,7 +23,7 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
-import pwcg.testutils.TestParticipatingHumanBuilder;
+import pwcg.testutils.TestMissionBuilderUtility;
 
 public class BriefingMissionUpdaterTest
 {
@@ -38,7 +38,7 @@ public class BriefingMissionUpdaterTest
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.KG53_PROFILE);
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        mission = missionGenerator.makeTestSingleMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.BOMB, MissionProfile.DAY_TACTICAL_MISSION);
+        mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.BOMB, MissionProfile.DAY_TACTICAL_MISSION);
 
         BriefingDataBuilder briefingDataBuilder = new BriefingDataBuilder(mission);
         briefingData = briefingDataBuilder.buildBriefingData();

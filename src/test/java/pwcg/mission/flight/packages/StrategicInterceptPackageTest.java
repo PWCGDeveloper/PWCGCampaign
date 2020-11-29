@@ -20,10 +20,9 @@ import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.strategicintercept.StrategicInterceptPackage;
 import pwcg.mission.mcu.McuWaypoint;
-import pwcg.mission.options.MissionWeather;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
-import pwcg.testutils.TestParticipatingHumanBuilder;
+import pwcg.testutils.TestMissionBuilderUtility;
 
 public class StrategicInterceptPackageTest
 {
@@ -47,15 +46,14 @@ public class StrategicInterceptPackageTest
     private IFlight buildFlight() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_26_PROFILE_WEST);
-        MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
+        MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
         
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
 
-        MissionWeather weather = new MissionWeather(campaign);
-        weather.createMissionWeather();
-        Mission mission = new Mission(campaign, MissionProfile.DAY_TACTICAL_MISSION, participatingPlayers, missionBorders, weather);
-        campaign.setCurrentMission(mission);
+        MissionProfile missionProfile = MissionProfile.DAY_TACTICAL_MISSION;
+        
+        Mission mission = TestMissionBuilderUtility.createTestMission(campaign, participatingPlayers, missionBorders, missionProfile);
 
         StrategicInterceptPackage flightPackage = new StrategicInterceptPackage();
         boolean isPlayerFlight = true;

@@ -1,7 +1,9 @@
 package pwcg.mission.options;
 
+import java.util.Date;
+
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.Mission;
+import pwcg.mission.MissionProfile;
 import pwcg.mission.utils.MissionTime;
 
 public class MissionOptions 
@@ -14,17 +16,19 @@ public class MissionOptions
 	private int lCAuthor = 2;
     private String layers = "";
     private int aqmId = 0;
-    private int seaState = 0;
 	
 	private int missionType = SINGLE_MISSION;
 	
     private String playerConfig = "";
     private MissionTime missionTime = null;
-    private Mission mission = null;
+    private Date date;
+    private MissionProfile missionProfile;
+    
 
-    public MissionOptions(Mission mission)
+    public MissionOptions(Date date, MissionProfile missionProfile)
     {       
-        this.mission = mission;
+        this.date = date;
+        this.missionProfile = missionProfile;
     }
 
     public void createFlightSpecificMissionOptions() throws PWCGException 
@@ -34,7 +38,7 @@ public class MissionOptions
 
     private void createMissionTime() throws PWCGException 
     {          
-        missionTime = new MissionTime(mission.getCampaign().getDate(), mission.isNightMission());
+        missionTime = new MissionTime(date, missionProfile.isNightMission());
         missionTime.generateMissionDateTime();
     }
 
@@ -70,11 +74,6 @@ public class MissionOptions
         return aqmId;
     }
 
-    public int getSeaState()
-    {
-        return seaState;
-    }
-
     public void setPlayerConfig(String playerConfig) {
         this.playerConfig = playerConfig;
     }
@@ -87,4 +86,14 @@ public class MissionOptions
 	{
 		return missionType;
 	}
+
+    public int getMissionHour()
+    {
+        if (missionTime == null)
+        {
+            return 12;
+        }
+        
+        return missionTime.getMissionHour();
+    }
 }

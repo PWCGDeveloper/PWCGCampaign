@@ -52,7 +52,8 @@ public class MissionWeatherTest
 
         for (int i = 0; i < 50; ++i)
         {
-            MissionWeather weather = new MissionWeather(campaign);
+            int missionTimeHours = 10;
+            MissionWeather weather = new MissionWeather(campaign, missionTimeHours);
             weather.createMissionWeather();
             
             if (weather.getCloudConfig().toLowerCase().contains("clear"))
@@ -102,7 +103,8 @@ public class MissionWeatherTest
 
         for (int i = 0; i < 50; ++i)
         {
-            MissionWeather weather = new MissionWeather(campaign);
+            int missionTimeHours = 10;
+            MissionWeather weather = new MissionWeather(campaign, missionTimeHours);
             weather.createMissionWeather();
             
             if (weather.getCloudConfig().toLowerCase().contains("clear"))

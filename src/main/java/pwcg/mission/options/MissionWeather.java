@@ -11,13 +11,13 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.options.MapSeasonalParameters.Season;
-import pwcg.product.bos.map.IMapClimate;
 
 public class MissionWeather
 {
     private String weatherDescription = "";
     private String cloudConfig = "Oops";
     private Campaign campaign;
+    private int timeHours;
 
     private int cloudLevel = 2100;
     private int cloudDensity = 600;
@@ -29,12 +29,14 @@ public class MissionWeather
     private int pressure = 760;
     private int windDirection = 0;
     private double haze = 0.0;
+    private int seaState = 0;
 
     private List<WindLayer> windLayers = new ArrayList<WindLayer>();
 
-    public MissionWeather(Campaign campaign)
+    public MissionWeather(Campaign campaign, int timeHours)
     {
         this.campaign = campaign;
+        this.timeHours = timeHours;
     }
 
     public void createMissionWeather() throws PWCGException
@@ -43,9 +45,7 @@ public class MissionWeather
         createWindDirection();
         createWind();
         createHaze();
-
-        IMapClimate climate = PWCGContext.getInstance().getCurrentMap().getMapClimate();
-        temperature = climate.getTemperature(campaign.getDate());
+        createTemperature();
     }
 
     public boolean isWeatherFlightTypeImpactful(FlightTypes flightType)
@@ -318,6 +318,11 @@ public class MissionWeather
         }
     }
 
+    private void createTemperature()
+    {
+        temperature = MissionWeatherTemperatature.calculateTemperature(campaign.getDate(), timeHours);
+    }
+
     public int getCloudLevel()
     {
         return cloudLevel;
@@ -391,5 +396,10 @@ public class MissionWeather
     public double getHaze()
     {
         return haze;
+    }
+
+    public int getSeaState()
+    {
+        return seaState;
     }
 }

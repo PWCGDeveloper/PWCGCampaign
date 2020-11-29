@@ -28,7 +28,7 @@ import pwcg.mission.target.TargetSelectorGroundUnit;
 import pwcg.mission.target.TargetType;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
-import pwcg.testutils.TestParticipatingHumanBuilder;
+import pwcg.testutils.TestMissionBuilderUtility;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({TargetPriorityGeneratorGroundUnit.class})
@@ -46,7 +46,7 @@ public class TargetBuilderArrasTest
         if (mission == null)
         {
             MissionGenerator missionGenerator = new MissionGenerator(campaign);
-            mission = missionGenerator.makeTestSingleMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.GROUND_ATTACK, MissionProfile.DAY_TACTICAL_MISSION);
+            mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.GROUND_ATTACK, MissionProfile.DAY_TACTICAL_MISSION);
         }
     }
     

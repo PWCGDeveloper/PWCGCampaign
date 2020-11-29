@@ -18,7 +18,7 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.ground.vehicle.VehicleSetBuilderComprehensive;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
-import pwcg.testutils.TestParticipatingHumanBuilder;
+import pwcg.testutils.TestMissionBuilderUtility;
 
 @RunWith(MockitoJUnitRunner.class)
 public class VehicleSetBuilderComprehensiveTest
@@ -45,7 +45,7 @@ public class VehicleSetBuilderComprehensiveTest
     @Test
     public void patrolFlightTest() throws PWCGException
     {
-        MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
+        MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
     	MissionGenerator missionGenerator = new MissionGenerator(campaign);
     	mission = missionGenerator.makeTestSingleMissionFromFlightType(participatingPlayers, FlightTypes.PATROL, MissionProfile.DAY_TACTICAL_MISSION);
         mission.generateAllGroundUnitTypesForTest();

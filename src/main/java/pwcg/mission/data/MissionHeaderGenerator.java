@@ -15,7 +15,7 @@ public class MissionHeaderGenerator
     public MissionHeader generateMissionHeader(Campaign campaign, Mission mission) throws PWCGException
     {
         // Even for Coop flights we have to set the header.  Doesn't really matter which flight 
-        // as long as itis a player flight
+        // as long as it is a player flight
         IFlight myFlight = mission.getMissionFlightBuilder().getReferencePlayerFlight();
         Squadron mySquadron =myFlight.getSquadron();
         

@@ -61,7 +61,13 @@ public class Mission
     private MissionOptions missionOptions;
     private List<StopAttackingNearAirfieldSequence> stopSequenceForMission = new ArrayList<>();
 
-    public Mission(Campaign campaign, MissionProfile missionProfile, MissionHumanParticipants participatingPlayers, CoordinateBox missionBorders, MissionWeather weather)
+    public Mission(
+            Campaign campaign, 
+            MissionProfile missionProfile, 
+            MissionHumanParticipants participatingPlayers, 
+            CoordinateBox missionBorders, 
+            MissionWeather weather,
+            MissionOptions missionOptions)
             throws PWCGException
     {
         this.campaign = campaign;
@@ -69,6 +75,7 @@ public class Mission
         this.missionProfile = missionProfile;
         this.missionBorders = missionBorders;
         this.weather = weather;
+        this.missionOptions = missionOptions;
 
         initialize();
     }
@@ -109,9 +116,6 @@ public class Mission
         missionFlightBuilder = new MissionFlightBuilder(campaign, this);
         missionFrontLines = new MissionFrontLineIconBuilder(campaign);
         missionSquadronIconBuilder = new MissionSquadronIconBuilder(campaign);
-
-        missionOptions = new MissionOptions(this);
-        missionOptions.createFlightSpecificMissionOptions();
     }
 
     public void generate(List<FlightTypes> playerFlightTypes) throws PWCGException

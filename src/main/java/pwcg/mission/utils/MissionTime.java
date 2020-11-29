@@ -243,4 +243,10 @@ public class MissionTime
         public int sunsetHour = 18;
         public int sunsetMinute = 30;
     }
+
+    public int getMissionHour()
+    {
+        String hourString = missionTime.substring(0, 2);
+        return Integer.valueOf(hourString);
+    }
 }
