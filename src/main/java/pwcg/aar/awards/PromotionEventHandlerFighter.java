@@ -10,20 +10,20 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 
-public class PromotionEventHandlerFighter
+public abstract class PromotionEventHandlerFighter implements IPromotionEventHandler
 {
-	public static int PilotRankMedVictories = 1;          // Number of victories to advance pilot Rank from low to medium
-    public static int PilotRankHighMinVictories = 3;      // Number of victories to advance pilot Rank from medium to high
-    public static int PilotRankExecVictories = 5;         // Number of victories to advance pilot Rank from high to exec
-    public static int PilotRankCommandVictories = 10;     // Number of victories to advance pilot Rank from exec to command
+	protected int PilotRankMedVictories = 1;          // Number of victories to advance pilot Rank from low to medium
+	protected int PilotRankHighMinVictories = 3;      // Number of victories to advance pilot Rank from medium to high
+	protected int PilotRankExecVictories = 5;         // Number of victories to advance pilot Rank from high to exec
+	protected int PilotRankCommandVictories = 10;     // Number of victories to advance pilot Rank from exec to command
 
-    public static int PilotRankMedMinMissions = 10;       // Number of missions to advance pilot Rank from low to medium
-    public static int PilotRankHighMinMissions = 25;      // Number of victories to advance pilot Rank from medium to high
-    public static int PilotRankExecMinMissions = 40;      // Number of victories to advance pilot Rank from medium to exec
-    public static int PilotRankCommandMinMissions = 60;   // Number of victories to advance pilot Rank from exec to command
+	protected int PilotRankMedMinMissions = 10;       // Number of missions to advance pilot Rank from low to medium
+	protected int PilotRankHighMinMissions = 25;      // Number of victories to advance pilot Rank from medium to high
+	protected int PilotRankExecMinMissions = 40;      // Number of victories to advance pilot Rank from medium to exec
+	protected int PilotRankCommandMinMissions = 60;   // Number of victories to advance pilot Rank from exec to command
 
 
-    public String determineScoutPromotion(Campaign campaign, SquadronMember pilot) throws PWCGException 
+    public String determinePromotion(Campaign campaign, SquadronMember pilot) throws PWCGException 
     {
         String promotion = PromotionEventHandler.NO_PROMOTION;
         

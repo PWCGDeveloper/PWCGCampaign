@@ -1,4 +1,4 @@
-package pwcg.aar.outofmission.phase1.elapsedtime;
+package pwcg.aar.awards;
 
 import java.util.Date;
 import java.util.List;
@@ -11,14 +11,15 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import pwcg.aar.awards.PromotionEventHandler;
-import pwcg.aar.awards.PromotionEventHandlerFighter;
+import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberVictories;
 import pwcg.campaign.squadmember.Victory;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
@@ -29,11 +30,10 @@ public class PromotionEventHandlerFighterTest
 {
     private Campaign campaign;
     
-    @Mock
-    private SquadronMember squadronMember;
-    
-    @Mock
-    private SquadronMemberVictories squadronMemberVictories;
+    @Mock private ArmedService service;
+    @Mock private Squadron squadron;
+    @Mock private SquadronMember squadronMember;
+    @Mock private SquadronMemberVictories squadronMemberVictories;
 
     @Before
     public void setupForTestEnvironment() throws PWCGException
@@ -41,20 +41,21 @@ public class PromotionEventHandlerFighterTest
         PWCGContext.setProduct(PWCGProduct.FC);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
         Mockito.when(squadronMember.getSquadronMemberVictories()).thenReturn(squadronMemberVictories);
+        Mockito.when(squadronMember.determineSquadron()).thenReturn(squadron);
+        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(Role.ROLE_FIGHTER);
     }
 
     @Test
     public void promoteCorporalToSergent () throws PWCGException
     {     
-        List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(PromotionEventHandlerFighter.PilotRankMedVictories, campaign.getDate());
+        List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(1, campaign.getDate());
 
         Mockito.when(squadronMemberVictories.getAirToAirVictories()).thenReturn(victories.size());
         Mockito.when(squadronMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
-        Mockito.when(squadronMember.getMissionFlown()).thenReturn(PromotionEventHandlerFighter.PilotRankMedMinMissions);
+        Mockito.when(squadronMember.getMissionFlown()).thenReturn(20);
         Mockito.when(squadronMember.getRank()).thenReturn("Corporal");
 
-        PromotionEventHandlerFighter promotionEventHandlerFighter = new PromotionEventHandlerFighter();
-        String promotion = promotionEventHandlerFighter.determineScoutPromotion(campaign, squadronMember);
+        String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
         assert (promotion.equals("Sergent"));
     }
@@ -62,15 +63,14 @@ public class PromotionEventHandlerFighterTest
     @Test
     public void promoteSergent () throws PWCGException
     {     
-        List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(PromotionEventHandlerFighter.PilotRankHighMinVictories, campaign.getDate());
+        List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(3, campaign.getDate());
 
         Mockito.when(squadronMemberVictories.getAirToAirVictories()).thenReturn(victories.size());
         Mockito.when(squadronMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
-        Mockito.when(squadronMember.getMissionFlown()).thenReturn(PromotionEventHandlerFighter.PilotRankHighMinMissions);
+        Mockito.when(squadronMember.getMissionFlown()).thenReturn(40);
         Mockito.when(squadronMember.getRank()).thenReturn("Sergent");
 
-        PromotionEventHandlerFighter promotionEventHandlerFighter = new PromotionEventHandlerFighter();
-        String promotion = promotionEventHandlerFighter.determineScoutPromotion(campaign, squadronMember);
+        String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
         assert (promotion.equals("Sous Lieutenant"));
     }
@@ -78,15 +78,13 @@ public class PromotionEventHandlerFighterTest
     @Test
     public void promoteSousLieutenant () throws PWCGException
     {     
-        List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(PromotionEventHandlerFighter.PilotRankExecVictories, campaign.getDate());
+        List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(8, campaign.getDate());
 
         Mockito.when(squadronMemberVictories.getAirToAirVictories()).thenReturn(victories.size());
         Mockito.when(squadronMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
-        Mockito.when(squadronMember.getMissionFlown()).thenReturn(PromotionEventHandlerFighter.PilotRankExecMinMissions);
+        Mockito.when(squadronMember.getMissionFlown()).thenReturn(70);
         Mockito.when(squadronMember.getRank()).thenReturn("Sous Lieutenant");
-
-        PromotionEventHandlerFighter promotionEventHandlerFighter = new PromotionEventHandlerFighter();
-        String promotion = promotionEventHandlerFighter.determineScoutPromotion(campaign, squadronMember);
+        String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
         assert (promotion.equals("Lieutenant"));
     }
@@ -94,17 +92,16 @@ public class PromotionEventHandlerFighterTest
     @Test
     public void promoteCapitaine () throws PWCGException
     {     
-        List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(PromotionEventHandlerFighter.PilotRankCommandVictories, campaign.getDate());
+        List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(12, campaign.getDate());
 
         Mockito.when(squadronMemberVictories.getAirToAirVictories()).thenReturn(victories.size());
         Mockito.when(squadronMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
-        Mockito.when(squadronMember.getMissionFlown()).thenReturn(PromotionEventHandlerFighter.PilotRankCommandMinMissions);
+        Mockito.when(squadronMember.getMissionFlown()).thenReturn(90);
         Mockito.when(squadronMember.getRank()).thenReturn("Lieutenant");
         Mockito.when(squadronMember.isPlayer()).thenReturn(true);
         Mockito.when(squadronMember.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
 
-        PromotionEventHandlerFighter promotionEventHandlerFighter = new PromotionEventHandlerFighter();
-        String promotion = promotionEventHandlerFighter.determineScoutPromotion(campaign, squadronMember);
+        String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
         assert (promotion.equals("Capitaine"));
     }
@@ -112,17 +109,16 @@ public class PromotionEventHandlerFighterTest
     @Test
     public void promoteCapitaineFailNotPlayer () throws PWCGException
     {     
-        List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(PromotionEventHandlerFighter.PilotRankCommandVictories, campaign.getDate());
+        List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(10, campaign.getDate());
 
         Mockito.when(squadronMemberVictories.getAirToAirVictories()).thenReturn(victories.size());
         Mockito.when(squadronMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
-        Mockito.when(squadronMember.getMissionFlown()).thenReturn(PromotionEventHandlerFighter.PilotRankCommandMinMissions);
+        Mockito.when(squadronMember.getMissionFlown()).thenReturn(90);
         Mockito.when(squadronMember.getRank()).thenReturn("Lieutenant");
         Mockito.when(squadronMember.isPlayer()).thenReturn(false);
         Mockito.when(squadronMember.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
 
-        PromotionEventHandlerFighter promotionEventHandlerFighter = new PromotionEventHandlerFighter();
-        String promotion = promotionEventHandlerFighter.determineScoutPromotion(campaign, squadronMember);
+        String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
         assert (promotion.equals(PromotionEventHandler.NO_PROMOTION));
     }
@@ -130,17 +126,16 @@ public class PromotionEventHandlerFighterTest
     @Test
     public void promoteCapitaineFailNotEnoughMissions () throws PWCGException
     {     
-        List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(PromotionEventHandlerFighter.PilotRankCommandVictories, campaign.getDate());
+        List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(10, campaign.getDate());
 
         Mockito.when(squadronMemberVictories.getAirToAirVictories()).thenReturn(victories.size());
         Mockito.when(squadronMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
-        Mockito.when(squadronMember.getMissionFlown()).thenReturn(PromotionEventHandlerFighter.PilotRankCommandMinMissions-1);
+        Mockito.when(squadronMember.getMissionFlown()).thenReturn(89);
         Mockito.when(squadronMember.getRank()).thenReturn("Lieutenant");
         Mockito.when(squadronMember.isPlayer()).thenReturn(true);
         Mockito.when(squadronMember.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
 
-        PromotionEventHandlerFighter promotionEventHandlerFighter = new PromotionEventHandlerFighter();
-        String promotion = promotionEventHandlerFighter.determineScoutPromotion(campaign, squadronMember);
+        String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
         assert (promotion.equals(PromotionEventHandler.NO_PROMOTION));
     }
@@ -148,17 +143,16 @@ public class PromotionEventHandlerFighterTest
     @Test
     public void promoteCapitaineFailNotEnoughictories () throws PWCGException
     {     
-        List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(PromotionEventHandlerFighter.PilotRankCommandVictories-1, campaign.getDate());
+        List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(9, campaign.getDate());
 
         Mockito.when(squadronMemberVictories.getAirToAirVictories()).thenReturn(victories.size());
         Mockito.when(squadronMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
-        Mockito.when(squadronMember.getMissionFlown()).thenReturn(PromotionEventHandlerFighter.PilotRankCommandMinMissions);
+        Mockito.when(squadronMember.getMissionFlown()).thenReturn(90);
         Mockito.when(squadronMember.getRank()).thenReturn("Lieutenant");
         Mockito.when(squadronMember.isPlayer()).thenReturn(true);
         Mockito.when(squadronMember.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
 
-        PromotionEventHandlerFighter promotionEventHandlerFighter = new PromotionEventHandlerFighter();
-        String promotion = promotionEventHandlerFighter.determineScoutPromotion(campaign, squadronMember);
+        String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
         assert (promotion.equals(PromotionEventHandler.NO_PROMOTION));
     }

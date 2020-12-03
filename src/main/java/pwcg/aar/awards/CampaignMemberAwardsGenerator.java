@@ -30,8 +30,7 @@ public abstract class CampaignMemberAwardsGenerator
  
     protected void promotions(SquadronMember squadronMember) throws PWCGException 
     {
-        PromotionEventHandler promotionHandler = new PromotionEventHandler(campaign);
-        String promotion = promotionHandler.promoteNonHistoricalPilots(squadronMember);
+        String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
         if (!promotion.equals(PromotionEventHandler.NO_PROMOTION))
         {
             personnelAwards.addPromotion(squadronMember.getSerialNumber(), promotion);

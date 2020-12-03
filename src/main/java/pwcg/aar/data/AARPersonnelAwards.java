@@ -40,14 +40,14 @@ public class AARPersonnelAwards
         medalsForPilot.put(medal.getMedalName(), medal);
     }
 
-    public void addMissionsFlown(Integer serialNumber, Integer newRank)
+    public void addMissionsFlown(Integer serialNumber, Integer newMissionsFlown)
     {
-        missionsFlown.put(serialNumber, newRank);
+        missionsFlown.put(serialNumber, newMissionsFlown);
     }
 
-    public void addPromotion(Integer serialNumber, String pilotMissionsFlown)
+    public void addPromotion(Integer serialNumber, String promotion)
     {
-        promotions.put(serialNumber, pilotMissionsFlown);
+        promotions.put(serialNumber, promotion);
     }
 
 

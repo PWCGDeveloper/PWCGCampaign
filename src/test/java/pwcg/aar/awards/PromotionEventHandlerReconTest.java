@@ -1,4 +1,4 @@
-package pwcg.aar.outofmission.phase1.elapsedtime;
+package pwcg.aar.awards;
 
 import java.util.Date;
 
@@ -12,10 +12,14 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.awards.PromotionEventHandler;
 import pwcg.aar.awards.PromotionEventHandlerRecon;
+import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMemberVictories;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
@@ -25,14 +29,18 @@ public class PromotionEventHandlerReconTest
 {
     private Campaign campaign;
     
-    @Mock
-    private SquadronMember squadronMember;
+    @Mock private ArmedService service;
+    @Mock private Squadron squadron;
+    @Mock private SquadronMember squadronMember;
+    @Mock private SquadronMemberVictories squadronMemberVictories;
 
     @Before
     public void setupForTestEnvironment() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
+        Mockito.when(squadronMember.determineSquadron()).thenReturn(squadron);
+        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(Role.ROLE_RECON);
     }
 
     @Test
@@ -42,8 +50,7 @@ public class PromotionEventHandlerReconTest
         Mockito.when(squadronMember.getMissionFlown()).thenReturn(PromotionEventHandlerRecon.PilotRankMedMinMissions);
         Mockito.when(squadronMember.getRank()).thenReturn("Corporal");
 
-        PromotionEventHandlerRecon promotionEventHandlerFighter = new PromotionEventHandlerRecon();
-        String promotion = promotionEventHandlerFighter.determineReconPromotion(campaign, squadronMember);
+        String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
         assert (promotion.equals("Sergent"));
     }
@@ -55,8 +62,7 @@ public class PromotionEventHandlerReconTest
         Mockito.when(squadronMember.getMissionFlown()).thenReturn(PromotionEventHandlerRecon.PilotRankHighMinMissions);
         Mockito.when(squadronMember.getRank()).thenReturn("Sergent");
 
-        PromotionEventHandlerRecon promotionEventHandlerFighter = new PromotionEventHandlerRecon();
-        String promotion = promotionEventHandlerFighter.determineReconPromotion(campaign, squadronMember);
+        String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
         assert (promotion.equals("Sous Lieutenant"));
     }
@@ -68,8 +74,7 @@ public class PromotionEventHandlerReconTest
         Mockito.when(squadronMember.getMissionFlown()).thenReturn(PromotionEventHandlerRecon.PilotRankExecMinMissions);
         Mockito.when(squadronMember.getRank()).thenReturn("Sous Lieutenant");
 
-        PromotionEventHandlerRecon promotionEventHandlerFighter = new PromotionEventHandlerRecon();
-        String promotion = promotionEventHandlerFighter.determineReconPromotion(campaign, squadronMember);
+        String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
         assert (promotion.equals("Lieutenant"));
     }
@@ -83,8 +88,7 @@ public class PromotionEventHandlerReconTest
         Mockito.when(squadronMember.isPlayer()).thenReturn(true);
         Mockito.when(squadronMember.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
 
-        PromotionEventHandlerRecon promotionEventHandlerFighter = new PromotionEventHandlerRecon();
-        String promotion = promotionEventHandlerFighter.determineReconPromotion(campaign, squadronMember);
+        String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
         assert (promotion.equals("Capitaine"));
     }
@@ -98,8 +102,7 @@ public class PromotionEventHandlerReconTest
         Mockito.when(squadronMember.isPlayer()).thenReturn(false);
         Mockito.when(squadronMember.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
 
-        PromotionEventHandlerRecon promotionEventHandlerFighter = new PromotionEventHandlerRecon();
-        String promotion = promotionEventHandlerFighter.determineReconPromotion(campaign, squadronMember);
+        String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
         assert (promotion.equals(PromotionEventHandler.NO_PROMOTION));
     }
@@ -113,8 +116,7 @@ public class PromotionEventHandlerReconTest
         Mockito.when(squadronMember.isPlayer()).thenReturn(true);
         Mockito.when(squadronMember.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
 
-        PromotionEventHandlerRecon promotionEventHandlerFighter = new PromotionEventHandlerRecon();
-        String promotion = promotionEventHandlerFighter.determineReconPromotion(campaign, squadronMember);
+        String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
         assert (promotion.equals(PromotionEventHandler.NO_PROMOTION));
     }
