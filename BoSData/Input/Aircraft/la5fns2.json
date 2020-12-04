@@ -5,7 +5,7 @@
   "primaryUsedBy": [
     "RUSSIA"
   ],
-  "displayName": "La-5N ser.2",
+  "displayName": "La-5FN ser.2",
   "script": "LuaScripts\\WorldObjects\\Planes\\la5fns2.txt",
   "model": "graphics\\planes\\la5fns2\\la5fns2.mgm",
   "desc": "",
