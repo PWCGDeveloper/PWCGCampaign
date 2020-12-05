@@ -45,7 +45,6 @@ public class AARContext
 
     public void resetContextForNextTimeIncrement() throws PWCGException
     {
-        preliminaryData = new AARPreliminaryData();
         missionLogRawData = new AARMissionLogRawData();
         missionEvaluationData = new AARMissionEvaluationData();
         reconciledInMissionData = new ReconciledInMissionData();
