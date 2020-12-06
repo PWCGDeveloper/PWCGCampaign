@@ -57,6 +57,19 @@ public class VehicleDefinitionManager
         return getVehicleDefinitionByVehicleType(vehicleName);
     }
     
+    public IVehicleDefinition getVehicleDefinitionByVehicleDisplayName(String vehicleName) throws PWCGException
+    {
+        for (VehicleDefinition definition : allVehiclesDefinitions)
+        {
+            if (definition.getDisplayName().equals(vehicleName))
+            {
+                return definition;
+            }
+        }
+        
+        return getVehicleDefinitionByVehicleType(vehicleName);
+    }
+    
     public static boolean isLocomotive(String vehicleIdentifier)
     {
         if (vehicleIdentifier.toLowerCase().equals("e") || vehicleIdentifier.toLowerCase().equals("g8"))

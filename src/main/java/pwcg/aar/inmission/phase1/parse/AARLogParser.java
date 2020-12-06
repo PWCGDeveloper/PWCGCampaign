@@ -29,13 +29,10 @@ public class AARLogParser implements IAARLogParser
 
     private void debugLogData(AARLogEventData logEventData)
     {
-        if (TestDriver.getInstance().isEnabled())
+        if (TestDriver.getInstance().isDebugAARLogs())
         {
-            if (!TestDriver.getInstance().isDebugAARLogs())
-            {
-                AAREventAnalyzer analyzer = new AAREventAnalyzer(logEventData);
-                analyzer.analyze();
-            }
+            AAREventAnalyzer analyzer = new AAREventAnalyzer(logEventData);
+            analyzer.analyze();
         }
     }
 }

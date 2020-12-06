@@ -6,6 +6,8 @@ import pwcg.campaign.group.BlockDefinition;
 import pwcg.campaign.group.BlockDefinitionManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.ground.vehicle.IVehicleDefinition;
 import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
 
@@ -127,18 +129,18 @@ public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBa
 
     private String getGroundUnitName(VictoryEntity victoryEntity) throws PWCGException
     {
-        IVehicleDefinition vehicleDefinitionType = PWCGContext.getInstance().getVehicleDefinitionManager().getVehicleDefinitionByVehicleName(victoryEntity.getType());
-        if (vehicleDefinitionType != null)
+        String vehicleNameFromType = getVehicleName(victoryEntity.getType());
+        if (vehicleNameFromType != null)
         {
-            return vehicleDefinitionType.getDisplayName();
+            return vehicleNameFromType;
         }
 
-        IVehicleDefinition vehicleDefinitionByName = PWCGContext.getInstance().getVehicleDefinitionManager().getVehicleDefinitionByVehicleName(victoryEntity.getName());
-        if (vehicleDefinitionByName != null)
+        String vehicleNameFromName = getVehicleName(victoryEntity.getName());
+        if (vehicleNameFromName != null)
         {
-            return vehicleDefinitionByName.getDisplayName();
+            return vehicleNameFromName;
         }
-        
+
         BlockDefinition blockDefinition = BlockDefinitionManager.getInstance().getBlockDefinition(victoryEntity.getType());
         if (blockDefinition != null)
         {
@@ -155,6 +157,24 @@ public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBa
             return "Train Car";
         }
 
+        PWCGLogger.log(LogLevel.ERROR, "No vehicle match found for " + victoryEntity.getName() + " or " + victoryEntity.getType());
         return "vehicle";
+    }
+
+    private String getVehicleName(String vehicleDescriptor) throws PWCGException
+    {
+        IVehicleDefinition vehicleDefinitionByName = PWCGContext.getInstance().getVehicleDefinitionManager().getVehicleDefinitionByVehicleName(vehicleDescriptor);
+        if (vehicleDefinitionByName != null)
+        {
+            return vehicleDefinitionByName.getDisplayName();
+        }
+
+        IVehicleDefinition vehicleDefinitionByDisplayName = PWCGContext.getInstance().getVehicleDefinitionManager().getVehicleDefinitionByVehicleDisplayName(vehicleDescriptor);
+        if (vehicleDefinitionByDisplayName != null)
+        {
+            return vehicleDefinitionByDisplayName.getDisplayName();
+        }
+        
+        return null;
     }
 }

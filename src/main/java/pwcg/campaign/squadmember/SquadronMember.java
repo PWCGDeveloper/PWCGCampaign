@@ -202,22 +202,37 @@ public class SquadronMember implements Cloneable
     	return (rankPos == 0);
     }
 
-    public boolean isPilotName(String name)
+    public boolean isPilotName(String searchName)
     {
-        if (name == null || name.isEmpty())
+        if (searchName == null || searchName.isEmpty())
         {
             return false;
         }
         
-        if (getName().equalsIgnoreCase(name)                || 
-            this.getName().contains(name)                   ||
-            name.contains(this.getName())                   ||
-            this.getNameAndRank().equalsIgnoreCase(name))
+        String truncatedSearchName = truncateNameToGameMax(searchName);
+        String truncatedName = truncateNameToGameMax(this.getName());
+        String truncatedNameAndRank = truncateNameToGameMax(this.getNameAndRank());
+                
+        if (truncatedName.equalsIgnoreCase(truncatedSearchName)           || 
+            truncatedNameAndRank.equalsIgnoreCase(truncatedSearchName))
         {
             return true;
         }
 
         return false;
+    }
+    
+    private String truncateNameToGameMax(String originalName) 
+    {
+        if (originalName.length() > 22)
+        {
+            String truncatedName = originalName.substring(0,22);
+            return truncatedName;
+        }
+        else
+        {
+            return originalName;
+        }
     }
 
     public String determineSortKey(Date date) throws PWCGException
@@ -411,6 +426,20 @@ public class SquadronMember implements Cloneable
         }
     }
 
+    public boolean isPlayer()
+    {
+        boolean isPlayer = false;
+        if (serialNumber != SerialNumber.NO_SERIAL_NUMBER)
+        {
+            if (SerialNumber.getSerialNumberClassification(serialNumber) == SerialNumberClassification.PLAYER)
+            {
+                isPlayer = true;
+            }
+        }
+        
+        return isPlayer;
+    }
+
     public int getMissionFlown()
     {
         return missionFlown;
@@ -550,20 +579,6 @@ public class SquadronMember implements Cloneable
     public void setCountry(Country country)
     {
         this.country = country;
-    }
-
-    public boolean isPlayer()
-    {
-        boolean isPlayer = false;
-        if (serialNumber != SerialNumber.NO_SERIAL_NUMBER)
-        {
-            if (SerialNumber.getSerialNumberClassification(serialNumber) == SerialNumberClassification.PLAYER)
-            {
-                isPlayer = true;
-            }
-        }
-        
-        return isPlayer;
     }
 
     public int getSquadronId()
