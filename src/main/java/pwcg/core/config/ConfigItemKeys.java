@@ -159,8 +159,9 @@ public class ConfigItemKeys
 	public static final String UseToolTipKey = "UseToolTip";
 	public static final String ScreenSizeAutoKey = "ScreenSizeAuto";
 	public static final String ScreenSizeHeightKey = "ScreenSizeHeight";
-	public static final String ScreenSizeWidthKey = "ScreenSizeWidth";
-
+    public static final String ScreenSizeWidthKey = "ScreenSizeWidth";
+    public static final String ShowFrontLineEditorKey = "ShowFrontLineEditor";
+	
 	public static final String LandingApproachWaypointDistanceKey = "LandingApproachWaypointDistance";
 	public static final String ApproachWaypointAltitudeKey = "ApproachWaypointAltitude";
 	public static final String LandingDistanceKey = "LandingDistance";

@@ -101,6 +101,11 @@
       "label": "PWCG screen width",
       "help": "PWCG screen width if ScreenSizeAuto \u003d 0"
     },
+    "ShowFrontLineEditor": {
+      "value": "0",
+      "label": "Show Front Line Editor",
+      "help": "Show Front Line Editor - use at own risk"
+    },
     "TypewriterFont": {
       "value": "Serif",
       "label": "Typewriter Font",

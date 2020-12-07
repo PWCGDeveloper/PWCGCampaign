@@ -1,6 +1,45 @@
 
 ​At the PWCG web site
 
+PWCG 11.8.1
+Small fixes
+Luftwaffe promotions are slower
+Fix error that could cause La5FN to be denied
+Fix error where very long names were not being matched, causing claims to be denied
+Fixed some part of too many missions flown
+
+PWCG 11.8.0
+Weather modifications
+The mission will conform to the weather.  You will get much more variety, in particular. lots more rain and snow.  Most battle areas have upwards of 25% rainy days.  
+
+Any given weather pattern may or may not impact a given mission type.  If it is overcast and rainy most of the missions are going to be pushed to low altitude.  
+Dive bombing missions are particularly affected.  Dive bombing will be swapped for an attack mission where the Stuka will drop bombs much like a fighter or IL2.  
+Tactical bombing will be pushed lower.  
+Patrols will be pushed lower.  
+Deeper penetration missions will be scrapped in favor of lower altitude missions near the front.  
+If cloud cover is not overcast or heavy then you will fly the missions as usual with whatever cloud cover there may be.
+
+Weather related advanced configuration:
+Campaign ->Configuration -> Advanced Config -> Weather
+Use realistic weather: set to 1 to use weather than includes heavier weather.  Set to 0 to fly in relatively clear skies (Still has clouds but no rain)
+Min Haze/Max Haze: Minimum and maximum values for haze. Proper values are 1-10.  This makes use of the new haze feature
+Max Wind: Not a new config.  Maximum wind speed in meters per second
+Max turbulence: Not a new config.  Proper values are 1-10.  Maximum turbulence value in the mission.
+
+ 
+
+11.7.2
+Fix the thing that I broke in 11.7.1 (which fixed the thing that I broke in 11.7.0)
+- Escort and air start were fixed in 11.7.1 but virtual start got broken
+Verified proper spawn and activity of player air start, escort air start, and virtual flights.
+Thanks @FodderMonkey
+
+ 
+
+11.7.1
+Fixed air start
+Fixed escorts for player not appearing
+ 
 11.7.0
 Added Bf109 G6 Late
 Added Paper Dolls in medal view

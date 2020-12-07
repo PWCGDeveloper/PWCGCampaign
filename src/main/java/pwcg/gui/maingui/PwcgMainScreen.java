@@ -24,6 +24,8 @@ import pwcg.campaign.context.PWCGDirectorySimulatorManager;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.utils.PlanesOwnedManager;
+import pwcg.core.config.ConfigItemKeys;
+import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MissionLogFileValidator;
 import pwcg.core.utils.PWCGLogger;
@@ -54,11 +56,10 @@ import pwcg.gui.utils.ToolTipManager;
 public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
-    private static final String VERSION = "   PWCG Version 11.8.0";
+    private static final String VERSION = "   PWCG Version 11.8.1";
 
     private PwcgThreePanelUI pwcgThreePanel;
 	private List<JButton> campaignButtonList = new ArrayList<JButton>();
-	private boolean displayFrontLineEditor = false;
 
 	public PwcgMainScreen() 
 	{
@@ -236,7 +237,8 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
         makeMenuButton ("PWCG Information", "PWCG Information", buttonPanel);
         makeMenuButton ("Administer Coop", "Administer Coop", buttonPanel);
         
-        if (displayFrontLineEditor)
+        int showFrontLineEditor = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.ShowFrontLineEditorKey);
+        if (showFrontLineEditor == 1)
         {
             makeMenuButton ("PWCG Edit Front", "PWCG Edit Front", buttonPanel);
         }
