@@ -39,6 +39,13 @@ public abstract class PWCGMap
         ARRAS_MAP
     }
 
+    public enum PWCGFront
+    {
+        WWII_EASTERN_FRONT,
+        WWII_WESTERN_FRONT,
+        WWI_WESTERN_FRONT
+     }
+
     public static final String MOSCOW_MAP_NAME = "Moscow";
     public static final String STALINGRAD_MAP_NAME = "Stalingrad";
     public static final String EAST1944_MAP_NAME = "East1944";
@@ -112,6 +119,40 @@ public abstract class PWCGMap
         frontNameIdentifierMap.put(ARRAS_MAP_NAME, FrontMapIdentifier.ARRAS_MAP);            
 
         return frontNameIdentifierMap.get(name);
+    }
+    
+    public PWCGFront getFront()
+    {
+        if (mapIdentifier == FrontMapIdentifier.BODENPLATTE_MAP)
+        {
+            return PWCGFront.WWII_WESTERN_FRONT;
+        }
+        else if (mapIdentifier == FrontMapIdentifier.ARRAS_MAP)
+        {
+            return PWCGFront.WWI_WESTERN_FRONT;
+        }
+        else if (mapIdentifier == FrontMapIdentifier.MOSCOW_MAP)
+        {
+            return PWCGFront.WWII_EASTERN_FRONT;
+        }
+        else if (mapIdentifier == FrontMapIdentifier.STALINGRAD_MAP)
+        {
+            return PWCGFront.WWII_EASTERN_FRONT;
+        }
+        else if (mapIdentifier == FrontMapIdentifier.EAST1944_MAP)
+        {
+            return PWCGFront.WWII_EASTERN_FRONT;
+        }
+        else if (mapIdentifier == FrontMapIdentifier.EAST1945_MAP)
+        {
+            return PWCGFront.WWII_EASTERN_FRONT;
+        }
+        else if (mapIdentifier == FrontMapIdentifier.KUBAN_MAP)
+        {
+            return PWCGFront.WWII_EASTERN_FRONT;
+        }
+
+        return PWCGFront.WWII_WESTERN_FRONT;
     }
     
     public int getDaysBetweenMissionForDate(Date date) throws PWCGException

@@ -5,6 +5,9 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.prelim.CampaignMembersOutOfMissionFinder;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGMap;
+import pwcg.campaign.context.PWCGMap.PWCGFront;
 import pwcg.campaign.outofmission.DuringCampaignVictimGenerator;
 import pwcg.campaign.outofmission.OutOfMissionVictoryGenerator;
 import pwcg.campaign.personnel.EnemySquadronFinder;
@@ -72,12 +75,40 @@ public class OutOfMissionVictoryEventHandler
         	victoryOdds += 40;
         }
         
+        victoryOdds = addLuftwaffeEasternFrontBonus(squadronMember, victoryOdds);
+
+        return victoryOdds;
+    }
+
+    private int addLuftwaffeEasternFrontBonus(SquadronMember squadronMember, int victoryOdds) throws PWCGException
+    {
         ArmedService service = squadronMember.determineService(campaign.getDate());
         if (service.getServiceId() == BoSServiceManager.LUFTWAFFE)
         {
-            victoryOdds += 30;
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());
+            if (squadron != null)
+            {
+                PWCGMap map = squadron.getMapForAirfield(campaign.getDate());
+                if (map != null)
+                {
+                    if (map.getFront() == PWCGFront.WWII_EASTERN_FRONT)
+                    {
+                        if (squadronMember.getAiSkillLevel() == AiSkillLevel.ACE)
+                        {
+                            victoryOdds += 30;
+                        }
+                        else if (squadronMember.getAiSkillLevel() == AiSkillLevel.VETERAN)
+                        {
+                            victoryOdds += 20;
+                        }
+                        else
+                        {
+                            victoryOdds += 10;
+                        }
+                    }
+                }
+            }
         }
-
         return victoryOdds;
     }
 

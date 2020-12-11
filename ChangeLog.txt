@@ -1,6 +1,16 @@
 
 ​At the PWCG web site
 
+PWCG 11.8.2
+Remove high priority waypoints for some flights.
+- No need anymore since flights fly in formation.
+Verified AI adjustments in advanced configs work as intended - they do.
+Changed Luftwaffe odds of victory bonus
+- Limited to LW on eastern front
+- Reduced bonus for non ace pilots
+- Also introduces concept of differentiation by front
+
+
 PWCG 11.8.1
 Small fixes
 Luftwaffe promotions are slower

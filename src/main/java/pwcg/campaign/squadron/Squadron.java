@@ -530,9 +530,7 @@ public class Squadron
 
         squadronInfo.append("Airfield: " + determineCurrentAirfieldName(campaignDate) + "\n");
         
-    	String airfieldName = determineCurrentAirfieldName(campaignDate);
-    	List<FrontMapIdentifier> airfieldMapIdentifiers = MapForAirfieldFinder.getMapForAirfield(airfieldName);
-    	PWCGMap map = PWCGContext.getInstance().getMapByMapId(airfieldMapIdentifiers.get(0));
+    	PWCGMap map = getMapForAirfield(campaignDate);
         squadronInfo.append("Map: " + map.getMapName() + "\n");
 
 
@@ -540,6 +538,14 @@ public class Squadron
         squadronInfo.append("\n");
 
         return squadronInfo.toString();
+    }
+
+    public PWCGMap getMapForAirfield(Date campaignDate)
+    {
+        String airfieldName = determineCurrentAirfieldName(campaignDate);
+    	List<FrontMapIdentifier> airfieldMapIdentifiers = MapForAirfieldFinder.getMapForAirfield(airfieldName);
+    	PWCGMap map = PWCGContext.getInstance().getMapByMapId(airfieldMapIdentifiers.get(0));
+        return map;
     }
 
     public boolean isStartsCloseToFront(Date date) throws PWCGException
