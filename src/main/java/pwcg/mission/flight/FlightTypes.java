@@ -72,13 +72,6 @@ public enum FlightTypes
 
     public static boolean isHighPriorityFlight(FlightTypes flightType)
     {
-        if (flightType == FlightTypes.STRATEGIC_BOMB ||
-            flightType == FlightTypes.PARATROOP_DROP ||
-            flightType == FlightTypes.CARGO_DROP)
-        {
-            return true;
-        }
-         
         return false;
     }
 
