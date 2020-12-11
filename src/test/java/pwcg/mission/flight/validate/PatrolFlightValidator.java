@@ -29,7 +29,7 @@ public class PatrolFlightValidator
         }
     }
 
-    private void validateWaypointTypes(IFlight flight) 
+    private void validateWaypointTypes(IFlight flight) throws PWCGException
     {
         boolean patrolFound = false;
 

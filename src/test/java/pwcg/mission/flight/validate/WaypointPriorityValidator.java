@@ -1,5 +1,6 @@
 package pwcg.mission.flight.validate;
 
+import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypeCategory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
@@ -10,7 +11,7 @@ import pwcg.mission.mcu.McuWaypoint;
 public class WaypointPriorityValidator
 {
 
-    public static void validateWaypointTypes(IFlight flight)
+    public static void validateWaypointTypes(IFlight flight) throws PWCGException
     {
 
         WaypointPriority expectedWaypointPriority = WaypointPriority.PRIORITY_MED;
@@ -23,7 +24,7 @@ public class WaypointPriorityValidator
             expectedWaypointPriority = WaypointPriority.PRIORITY_MED;
             if (FlightTypes.isHighPriorityFlight(flight.getFlightType()))
             {
-                expectedWaypointPriority = WaypointPriority.PRIORITY_HIGH;
+                throw new PWCGException("No high priority flights");
             }
         }
 

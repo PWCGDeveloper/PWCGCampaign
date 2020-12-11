@@ -36,7 +36,7 @@ public class GroundAttackFlightValidator
 		}
 	}
 
-	private void validateWaypointTypes(IFlight attackFlight) 
+	private void validateWaypointTypes(IFlight attackFlight)  throws PWCGException
 	{
 		boolean attackIngressFound = false;
 		boolean attackFinalFound = false;

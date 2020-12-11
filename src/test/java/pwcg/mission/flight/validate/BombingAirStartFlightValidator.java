@@ -85,7 +85,7 @@ public class BombingAirStartFlightValidator
     }
 
 
-    private void validateWaypointTypes(IFlight flight) 
+    private void validateWaypointTypes(IFlight flight)  throws PWCGException
     {
         boolean targetFinalFound = false;
 

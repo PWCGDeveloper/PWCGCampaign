@@ -66,7 +66,7 @@ public class FighterAirStartFlightValidator
         assert(flight.getWaypointPackage().getAllWaypoints().get(1).getWaypointType() == WaypointType.INGRESS_WAYPOINT);
     }
 
-    private void validateWaypointTypes(IFlight flight) 
+    private void validateWaypointTypes(IFlight flight)  throws PWCGException
     {
         boolean patrolFound = false;
 

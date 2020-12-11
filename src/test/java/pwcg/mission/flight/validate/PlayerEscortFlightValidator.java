@@ -202,7 +202,7 @@ public class PlayerEscortFlightValidator
         throw new PWCGException("No waypoint of type found: " + wpActionIngress);
     }
 
-    private void validateWaypointTypes()
+    private void validateWaypointTypes() throws PWCGException
     {
         boolean rendezvousFound = false;
 
