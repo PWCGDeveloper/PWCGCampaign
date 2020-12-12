@@ -122,12 +122,16 @@ public abstract class ConfigManager
 
         if (userConfigSet.hasConfigItem(parameterKey))
         {
-            return userConfigSet.getConfigItem(parameterKey).getValue();
+            String config = userConfigSet.getConfigItem(parameterKey).getValue();
+            config = config.trim();
+            return config;
         }
 
         if (defaultConfigSet.hasConfigItem(parameterKey))
         {
-            return defaultConfigSet.getConfigItem(parameterKey).getValue();
+            String config = defaultConfigSet.getConfigItem(parameterKey).getValue();
+            config = config.trim();
+            return config;
         }
 
         throw new PWCGException("Config value not found: " + parameterKey);
