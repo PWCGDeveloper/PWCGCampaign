@@ -94,39 +94,9 @@ public class MissionGroundUnitBuilder
 
     public void write(BufferedWriter writer) throws PWCGException
     {
-        for (IGroundUnitCollection battle : missionBattles)
+        for (IGroundUnitCollection groundUnit : getAllMissionGroundUnits())
         {
-            battle.write(writer);
-        }
-
-        for (IGroundUnitCollection train : missionTrains)
-        {
-            train.write(writer);
-        }
-
-        for (IGroundUnitCollection truckConvoy : missionTrucks)
-        {
-            truckConvoy.write(writer);
-        }
-
-        for (IGroundUnitCollection drifter : missionDrifters)
-        {
-            drifter.write(writer);
-        }
-
-        for (IGroundUnitCollection balloons : missionBalloons)
-        {
-            balloons.write(writer);
-        }
-
-        for (IGroundUnitCollection aa : AA)
-        {
-            aa.write(writer);
-        }
-
-        for (IGroundUnitCollection flightSpecificGroundUnit : flightSpecificGroundUnits)
-        {
-            flightSpecificGroundUnit.write(writer);
+            groundUnit.write(writer);
         }
     }
     
@@ -134,11 +104,11 @@ public class MissionGroundUnitBuilder
     {
         List<IGroundUnitCollection> allMissionGroundUnits = new ArrayList<>();
         allMissionGroundUnits.addAll(missionBattles);
-        allMissionGroundUnits.addAll(missionTrucks);
         allMissionGroundUnits.addAll(missionTrains);
-        allMissionGroundUnits.addAll(missionDrifters);
+        allMissionGroundUnits.addAll(missionTrucks);
         allMissionGroundUnits.addAll(missionBalloons);
         allMissionGroundUnits.addAll(missionShips);
+        allMissionGroundUnits.addAll(missionDrifters);
         allMissionGroundUnits.addAll(AA);
         allMissionGroundUnits.addAll(flightSpecificGroundUnits);
         return allMissionGroundUnits;
