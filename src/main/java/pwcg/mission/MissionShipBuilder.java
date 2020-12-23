@@ -89,23 +89,23 @@ public class MissionShipBuilder
     
     private int detemineNumbeConvoys() throws PWCGException 
     {
-        int numShipCOnvoysPerSide = 1;      
+        int numShipConvoysPerSide = 1;      
         ConfigManagerCampaign configManager = mission.getCampaign().getCampaignConfigManager();
         String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
         if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
-            numShipCOnvoysPerSide = 1;      
+            numShipConvoysPerSide = 1;      
         }
         else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
         {
             int roll = RandomNumberGenerator.getRandom(100);
             if (roll < 60)
             {
-                numShipCOnvoysPerSide = 1;
+                numShipConvoysPerSide = 1;
             }
             else
             {
-                numShipCOnvoysPerSide = 2;
+                numShipConvoysPerSide = 2;
             }
         }
         else
@@ -113,18 +113,18 @@ public class MissionShipBuilder
             int roll = RandomNumberGenerator.getRandom(100);
             if (roll < 30)
             {
-                numShipCOnvoysPerSide = 1;
+                numShipConvoysPerSide = 1;
             }
             else if (roll < 70)
             {
-                numShipCOnvoysPerSide = 2;
+                numShipConvoysPerSide = 2;
             }
             else
             {
-                numShipCOnvoysPerSide = 3;
+                numShipConvoysPerSide = 3;
             }
         }
 
-        return numShipCOnvoysPerSide;
+        return numShipConvoysPerSide;
     }
 }

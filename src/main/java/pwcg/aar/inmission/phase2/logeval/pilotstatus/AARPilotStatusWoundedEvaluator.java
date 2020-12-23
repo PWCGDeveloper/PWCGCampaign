@@ -28,5 +28,4 @@ public class AARPilotStatusWoundedEvaluator
             return SquadronMemberStatus.STATUS_ACTIVE;
         }
     }
-
 }
