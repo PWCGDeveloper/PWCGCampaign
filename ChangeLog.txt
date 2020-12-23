@@ -9,7 +9,7 @@ Changed Luftwaffe odds of victory bonus
 - Limited to LW on eastern front
 - Reduced bonus for non ace pilots
 - Also introduces concept of differentiation by front
-Added code to remove keading/trailing spaces from config entries
+Added code to remove heading/trailing spaces from config entries
 - Helps correct typos on user entry
 
 
