@@ -177,6 +177,8 @@ public class MissionGroundUnitBuilder
         int truckCount = 0;
         int aaCount = 0;
         int battleCount = 0;
+        int shipCount = 0;
+        
         for (IGroundUnitCollection groundUnitCollection : missionTrains)
         {
             trainCount += groundUnitCollection.getUnitCount();
@@ -193,13 +195,18 @@ public class MissionGroundUnitBuilder
         {
             battleCount += groundUnitCollection.getUnitCount();
         }
+        for (IGroundUnitCollection groundUnitCollection : missionShips)
+        {
+            shipCount += groundUnitCollection.getUnitCount();
+        }
 
+        System.out.println("Mission unit count battle : " + battleCount);
         System.out.println("Mission unit count train : " + trainCount);
         System.out.println("Mission unit count truck : " + truckCount);
+        System.out.println("Mission unit count ships : " + shipCount);
         System.out.println("Mission unit count AA : " + aaCount);
-        System.out.println("Mission unit count battle : " + battleCount);
         
-        int missionUnitCount = trainCount + truckCount + aaCount + battleCount;
+        int missionUnitCount = trainCount + truckCount + aaCount + battleCount + shipCount;
         System.out.println("Mission unit count total : " + missionUnitCount);
         return missionUnitCount;
 

@@ -18,6 +18,7 @@ import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Orientation;
 import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.mission.mcu.McuTREntity;
 
 public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosition
 {
@@ -32,6 +33,7 @@ public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosi
     protected int deleteAfterDeath = 0;
     protected Map<Integer, Double> damaged = new HashMap<>();
     protected Country country = Country.NEUTRAL;
+    protected McuTREntity entity;
 
     public FixedPosition()
     {
@@ -89,13 +91,21 @@ public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosi
             position.write(writer);
             orientation.write(writer);
             writeDamaged(writer);
-
         }
         catch (IOException e)
         {
             PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
+    }
+    
+    protected void buildEntity()
+    {
+        entity = new McuTREntity(index);
+        linkTrId = entity.getIndex();
+        
+        entity.setPosition(position.copy());
+        entity.setOrientation(orientation.copy());
     }
 
     private void writeDamaged(BufferedWriter writer) throws IOException

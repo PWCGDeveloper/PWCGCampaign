@@ -21,7 +21,6 @@ public class AirfieldBlock extends FixedPosition implements Cloneable
 	private Date startDate = null;
 	private GroundUnit aaa = null;
 	private McuIcon airfieldOrientationIcon = null;
-    private McuTREntity entity;
 
 	public AirfieldBlock()
 	{

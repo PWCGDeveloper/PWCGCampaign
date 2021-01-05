@@ -82,8 +82,8 @@ public class InterceptOpposingFlightBuilder
         FlightTypes opposingFlightType = getFlightType(opposingSquadron);
         
         boolean isPlayerFlight = false;
-        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(playerFlightInformation.getMission(), opposingSquadron, isPlayerFlight);        
-        IFlight opposingFlight = buildOpposingFlight(flightBuildInformation, opposingFlightType);
+        FlightBuildInformation opposingFlightBuildInformation = new FlightBuildInformation(playerFlightInformation.getMission(), opposingSquadron, isPlayerFlight);        
+        IFlight opposingFlight = buildOpposingFlight(opposingFlightBuildInformation, opposingFlightType);
         
         opposingFlight.createFlight();
         return opposingFlight;
