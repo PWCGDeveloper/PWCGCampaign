@@ -24,7 +24,7 @@ import pwcg.mission.flight.attack.GroundAttackPackage;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointAttackSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
@@ -75,7 +75,7 @@ public class GroundAttackPackageTest
 
         MissionPointAttackSet attackMissionPoint = (MissionPointAttackSet)flight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_ATTACK);
         boolean groundAttackCloseToTarget = false;
-        for (IGroundUnitCollection groundUnitCollection : flight.getMission().getMissionGroundUnitBuilder().getAllMissionGroundUnits())
+        for (GroundUnitCollection groundUnitCollection : flight.getMission().getMissionGroundUnitBuilder().getAllMissionGroundUnits())
         {
             for (IGroundUnit groundUnit : groundUnitCollection.getGroundUnits())
             {

@@ -10,7 +10,6 @@ import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.GroundUnitCollectionData;
 import pwcg.mission.ground.org.GroundUnitCollectionType;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.unittypes.artillery.GroundAAArtilleryBattery;
 import pwcg.mission.ground.unittypes.artillery.GroundAAMachineGunBattery;
 import pwcg.mission.ground.unittypes.infantry.BalloonUnit;
@@ -24,7 +23,7 @@ public class BalloonUnitBuilder
     private Campaign campaign;
     private TargetDefinition targetDefinition;
     private GroundUnitInformation groundUnitInformation;
-    private IGroundUnitCollection groundUnitCollection;
+    private GroundUnitCollection groundUnitCollection;
 
     public BalloonUnitBuilder (Mission mission, TargetDefinition targetDefinition)
     {
@@ -33,7 +32,7 @@ public class BalloonUnitBuilder
         this.targetDefinition  = targetDefinition;
     }
 
-    public IGroundUnitCollection createBalloonUnit () throws PWCGException
+    public GroundUnitCollection createBalloonUnit () throws PWCGException
     {
         buildGroundUnitInformation();
         

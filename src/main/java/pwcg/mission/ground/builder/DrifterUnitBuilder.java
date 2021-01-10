@@ -10,7 +10,6 @@ import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.GroundUnitCollectionData;
 import pwcg.mission.ground.org.GroundUnitCollectionType;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.unittypes.infantry.DrifterAAAUnit;
 import pwcg.mission.ground.unittypes.infantry.DrifterUnit;
 import pwcg.mission.mcu.Coalition;
@@ -29,7 +28,7 @@ public class DrifterUnitBuilder
         this.country  = country;
     }
 
-    public IGroundUnitCollection createDrifterUnit () throws PWCGException
+    public GroundUnitCollection createDrifterUnit () throws PWCGException
     {
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 campaign, 
@@ -51,7 +50,7 @@ public class DrifterUnitBuilder
                 TargetType.TARGET_DRIFTER,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
-        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection ("Drifter", groundUnitCollectionData);
+        GroundUnitCollection groundUnitCollection = new GroundUnitCollection ("Drifter", groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(drifterUnit);
         groundUnitCollection.addGroundUnit(aaDrifterUnit);
         groundUnitCollection.setPrimaryGroundUnit(drifterUnit);

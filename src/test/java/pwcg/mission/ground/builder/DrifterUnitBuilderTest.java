@@ -22,7 +22,7 @@ import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleClass;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -50,7 +50,7 @@ public class DrifterUnitBuilderTest
         location.setOrientation(new Orientation (50));
         
         DrifterUnitBuilder groundUnitFactory = new DrifterUnitBuilder(campaign, location, CountryFactory.makeCountryByCountry(Country.RUSSIA));
-        IGroundUnitCollection groundUnitGroup = groundUnitFactory.createDrifterUnit();
+        GroundUnitCollection groundUnitGroup = groundUnitFactory.createDrifterUnit();
         assert (groundUnitGroup.getGroundUnits().size() >= 2);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {

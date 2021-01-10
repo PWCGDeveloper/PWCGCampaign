@@ -16,14 +16,14 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.ground.builder.AAAUnitBuilder;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
 
 public class AAAFrontLinesBuilder 
 {
     private Campaign campaign;
-	private List<IGroundUnitCollection> aaaForFront = new ArrayList<>();
+	private List<GroundUnitCollection> aaaForFront = new ArrayList<>();
 	private FrontLinesForMap frontLinesForMap;
 	private Coordinate lastAAAPosition = null;
 
@@ -32,7 +32,7 @@ public class AAAFrontLinesBuilder
         this.campaign = campaign;
 	}
 	
-	public List<IGroundUnitCollection> generateAAAEmplacements () throws PWCGException
+	public List<GroundUnitCollection> generateAAAEmplacements () throws PWCGException
 	{
         frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
 
@@ -107,7 +107,7 @@ public class AAAFrontLinesBuilder
 
         TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, aaaMgPosition, icountry);
         AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
-        IGroundUnitCollection aaaMg = groundUnitFactory.createAAAMGBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
+        GroundUnitCollection aaaMg = groundUnitFactory.createAAAMGBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
         aaaForFront.add(aaaMg);
     }
     
@@ -117,11 +117,11 @@ public class AAAFrontLinesBuilder
         ICountry icountry = CountryFactory.makeMapReferenceCountry(side);
         TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, aaaArtyPosition, icountry);
         AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
-        IGroundUnitCollection aaaArty = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
+        GroundUnitCollection aaaArty = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
         aaaForFront.add(aaaArty);
     }
 
-	public List<IGroundUnitCollection> getAA()
+	public List<GroundUnitCollection> getAA()
 	{
 		return aaaForFront;
 	}

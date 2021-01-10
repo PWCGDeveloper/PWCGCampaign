@@ -22,7 +22,7 @@ import pwcg.core.location.Orientation;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.MissionGroundUnitResourceManager;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleClass;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -48,7 +48,7 @@ public class TruckConvoyBuilderTest
     public void createSearchLightBatteryTest () throws PWCGException 
     {
         TruckConvoyBuilder groundUnitFactory =  new TruckConvoyBuilder(campaign, bridge, CountryFactory.makeCountryByCountry(Country.RUSSIA));
-        IGroundUnitCollection groundUnitGroup = groundUnitFactory.createTruckConvoy();
+        GroundUnitCollection groundUnitGroup = groundUnitFactory.createTruckConvoy();
         assert (groundUnitGroup.getGroundUnits().size() == 2);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {

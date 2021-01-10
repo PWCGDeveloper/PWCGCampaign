@@ -5,7 +5,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 
 public class McuIconFactory
 {
@@ -29,7 +29,7 @@ public class McuIconFactory
         return new McuIcon(action, missionPoint, side);
     }
     
-    public static McuIcon buildBalloonIcon (IGroundUnitCollection balloon, Side side) throws PWCGException
+    public static McuIcon buildBalloonIcon (GroundUnitCollection balloon, Side side) throws PWCGException
     {
         return new McuIcon(balloon, side);
     }

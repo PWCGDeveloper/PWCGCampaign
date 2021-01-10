@@ -21,11 +21,11 @@ import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.builder.TruckConvoyBuilder;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 
 public class MissionTruckConvoyBuilder extends MissionUnitBuilder
 {
-    private List<IGroundUnitCollection> missionTransportConvoys = new ArrayList<>();
+    private List<GroundUnitCollection> missionTransportConvoys = new ArrayList<>();
 
     public MissionTruckConvoyBuilder (Campaign campaign, Mission mission)
     {
@@ -33,16 +33,16 @@ public class MissionTruckConvoyBuilder extends MissionUnitBuilder
     }
 
     
-    public List<IGroundUnitCollection> generateMissionTrucks() throws PWCGException 
+    public List<GroundUnitCollection> generateMissionTrucks() throws PWCGException 
     {
         missionTransportConvoys.addAll(buildTruckConvoysForSide(Side.ALLIED));
         missionTransportConvoys.addAll(buildTruckConvoysForSide(Side.AXIS));
         return missionTransportConvoys;
     }
 
-    private List<IGroundUnitCollection> buildTruckConvoysForSide(Side truckSide) throws PWCGException 
+    private List<GroundUnitCollection> buildTruckConvoysForSide(Side truckSide) throws PWCGException 
     {
-        List<IGroundUnitCollection> missionTransportConvoysForSide = new ArrayList<>();
+        List<GroundUnitCollection> missionTransportConvoysForSide = new ArrayList<>();
         int maxTrucks = getMaxTruckConvoys(campaign);
         
         ArrayList<Bridge> bridgesForSide = getBridgesForConvoys(truckSide);
@@ -57,7 +57,7 @@ public class MissionTruckConvoyBuilder extends MissionUnitBuilder
             int roll = RandomNumberGenerator.getRandom(100);
             if (roll < 50)
             {
-                IGroundUnitCollection truckUnit = makeTruckConvoy(truckSide, bridge);
+                GroundUnitCollection truckUnit = makeTruckConvoy(truckSide, bridge);
                 missionTransportConvoysForSide.add( truckUnit);
             }
         }
@@ -95,11 +95,11 @@ public class MissionTruckConvoyBuilder extends MissionUnitBuilder
         return new ArrayList<Bridge>(sortedStationsByDistance.values());
     }
 
-    private IGroundUnitCollection makeTruckConvoy(Side truckSide, Bridge bridge) throws PWCGException
+    private GroundUnitCollection makeTruckConvoy(Side truckSide, Bridge bridge) throws PWCGException
     {
         ICountry truckCountry = CountryFactory.makeMapReferenceCountry(truckSide);
         TruckConvoyBuilder groundUnitFactory =  new TruckConvoyBuilder(campaign, bridge, truckCountry);
-        IGroundUnitCollection truckUnit = groundUnitFactory.createTruckConvoy();
+        GroundUnitCollection truckUnit = groundUnitFactory.createTruckConvoy();
         return truckUnit;
     }
 

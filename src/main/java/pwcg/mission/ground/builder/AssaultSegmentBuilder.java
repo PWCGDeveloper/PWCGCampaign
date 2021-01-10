@@ -14,7 +14,6 @@ import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.GroundUnitCollectionData;
 import pwcg.mission.ground.org.GroundUnitCollectionType;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.unittypes.infantry.AssaultGroundUnitFactory;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.target.AssaultDefinition;
@@ -27,7 +26,7 @@ public class AssaultSegmentBuilder
     private AssaultDefinition assaultDefinition;
     private AssaultGroundUnitFactory assaultFactory =  new AssaultGroundUnitFactory();
 
-    private IGroundUnitCollection battleSegmentUnitCollection;
+    private GroundUnitCollection battleSegmentUnitCollection;
    
     public AssaultSegmentBuilder(Mission mission, AssaultDefinition assaultDefinition)
 	{
@@ -44,7 +43,7 @@ public class AssaultSegmentBuilder
 	}
 
 
-    public IGroundUnitCollection generateAssaultSegment() throws PWCGException
+    public GroundUnitCollection generateAssaultSegment() throws PWCGException
     {
         createAssault();
         createDefenders();        

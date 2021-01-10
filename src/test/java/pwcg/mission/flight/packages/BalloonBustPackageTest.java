@@ -23,7 +23,7 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.ground.org.GroundUnitElement;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.unittypes.infantry.BalloonUnit;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.testutils.CampaignCache;
@@ -101,7 +101,7 @@ public class BalloonBustPackageTest
     private List<BalloonUnit> getBalloonUnits(IFlight flight) throws PWCGException
     {
         List<BalloonUnit> balloons = new ArrayList<>();
-        for (IGroundUnitCollection groundUnitCollection : flight.getMission().getMissionGroundUnitBuilder().getBalloonUnits())
+        for (GroundUnitCollection groundUnitCollection : flight.getMission().getMissionGroundUnitBuilder().getBalloonUnits())
         {
             for (IGroundUnit groundUnit : groundUnitCollection.getGroundUnits())
             {

@@ -20,11 +20,11 @@ import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.builder.DrifterUnitBuilder;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 
 public class MissionDrifterBuilder extends MissionUnitBuilder
 {
-    private List<IGroundUnitCollection> missionDrifterUnits = new ArrayList<>();
+    private List<GroundUnitCollection> missionDrifterUnits = new ArrayList<>();
 
     public MissionDrifterBuilder (Campaign campaign, Mission mission)
     {
@@ -32,16 +32,16 @@ public class MissionDrifterBuilder extends MissionUnitBuilder
     }
 
     
-    public List<IGroundUnitCollection> generateMissionDrifters() throws PWCGException 
+    public List<GroundUnitCollection> generateMissionDrifters() throws PWCGException 
     {
         missionDrifterUnits.addAll(buildDriftersForSide(Side.ALLIED));
         missionDrifterUnits.addAll(buildDriftersForSide(Side.AXIS));
         return missionDrifterUnits;
     }
 
-    private List<IGroundUnitCollection> buildDriftersForSide(Side drifterSide) throws PWCGException 
+    private List<GroundUnitCollection> buildDriftersForSide(Side drifterSide) throws PWCGException 
     {
-        List<IGroundUnitCollection> missionDrifterUnitsForSide = new ArrayList<>();
+        List<GroundUnitCollection> missionDrifterUnitsForSide = new ArrayList<>();
         int maxDrifters = getMaxDrifters(campaign);
         
         ArrayList<PWCGLocation> drifterPositionsForSide = getRiversForDrifters(drifterSide);
@@ -53,7 +53,7 @@ public class MissionDrifterBuilder extends MissionUnitBuilder
                 break;
             }
             
-            IGroundUnitCollection drifterUnit = makeDrifter(drifterSide, drifterPosition);
+            GroundUnitCollection drifterUnit = makeDrifter(drifterSide, drifterPosition);
             missionDrifterUnitsForSide.add(drifterUnit);
         }
         
@@ -87,11 +87,11 @@ public class MissionDrifterBuilder extends MissionUnitBuilder
         return new ArrayList<PWCGLocation>(sortedStationsByDistance.values());
     }
 
-    private IGroundUnitCollection makeDrifter(Side drifterSide, PWCGLocation drifterPosition) throws PWCGException
+    private GroundUnitCollection makeDrifter(Side drifterSide, PWCGLocation drifterPosition) throws PWCGException
     {
         ICountry drifterCountry = CountryFactory.makeMapReferenceCountry(drifterSide);
         DrifterUnitBuilder drifterUnitBuilder =  new DrifterUnitBuilder(mission.getCampaign(), drifterPosition, drifterCountry);
-        IGroundUnitCollection drifterUnit = drifterUnitBuilder.createDrifterUnit();
+        GroundUnitCollection drifterUnit = drifterUnitBuilder.createDrifterUnit();
         return drifterUnit;
     }
 

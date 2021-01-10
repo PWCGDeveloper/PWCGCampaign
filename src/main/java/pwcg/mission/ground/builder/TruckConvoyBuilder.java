@@ -13,7 +13,6 @@ import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.GroundUnitCollectionData;
 import pwcg.mission.ground.org.GroundUnitCollectionType;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.unittypes.transport.GroundTruckAAConvoyUnit;
 import pwcg.mission.ground.unittypes.transport.GroundTruckConvoyUnit;
 import pwcg.mission.mcu.Coalition;
@@ -32,13 +31,13 @@ public class TruckConvoyBuilder
         this.country  = country;
     }
 
-    public IGroundUnitCollection createTruckConvoy () throws PWCGException
+    public GroundUnitCollection createTruckConvoy () throws PWCGException
     {
-        IGroundUnitCollection groundUnitCollection = createTrucks();
+        GroundUnitCollection groundUnitCollection = createTrucks();
         return groundUnitCollection;
     }
 
-    private IGroundUnitCollection createTrucks () throws PWCGException
+    private GroundUnitCollection createTrucks () throws PWCGException
     {
         GroundUnitInformation groundUnitInformation = createGroundUnitInformationForUnit();
         IGroundUnit truckConvoy = new GroundTruckConvoyUnit(groundUnitInformation);
@@ -53,7 +52,7 @@ public class TruckConvoyBuilder
                 TargetType.TARGET_TRANSPORT,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
         
-        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection("Truck Convoy", groundUnitCollectionData);
+        GroundUnitCollection groundUnitCollection = new GroundUnitCollection("Truck Convoy", groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(truckConvoy);
         groundUnitCollection.addGroundUnit(aatruckConvoy);
         groundUnitCollection.setPrimaryGroundUnit(truckConvoy);

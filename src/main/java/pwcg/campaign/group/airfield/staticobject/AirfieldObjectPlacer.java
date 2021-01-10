@@ -19,7 +19,7 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.builder.AAAUnitBuilder;
 import pwcg.mission.ground.builder.SearchLightBuilder;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
@@ -80,7 +80,7 @@ public class AirfieldObjectPlacer
         if (!airfieldCountry.isNeutral())
         {
             SearchLightBuilder groundUnitFactory =  new SearchLightBuilder(campaign);
-            IGroundUnitCollection searchLightGroup = groundUnitFactory.createOneSearchLight(airfieldCountry, hotSpot.getPosition());
+            GroundUnitCollection searchLightGroup = groundUnitFactory.createOneSearchLight(airfieldCountry, hotSpot.getPosition());
             airfieldObjects.addVehiclesForAirfield(searchLightGroup);
         }
     }
@@ -92,7 +92,7 @@ public class AirfieldObjectPlacer
             TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, hotSpot.getPosition(), airfield.getCountry(campaign.getDate()));
             AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
 
-            IGroundUnitCollection aaaMg;
+            GroundUnitCollection aaaMg;
 
             int roll = RandomNumberGenerator.getRandom(100);
             if (roll < 80)
@@ -135,7 +135,7 @@ public class AirfieldObjectPlacer
         if (airfieldFlight != null)
         {
             AirfieldApproachAABuilder airfieldApproachAABuilder = new AirfieldApproachAABuilder();
-            List<IGroundUnitCollection> airfieldApproachAA = airfieldApproachAABuilder.addAirfieldApproachAA(airfieldFlight);
+            List<GroundUnitCollection> airfieldApproachAA = airfieldApproachAABuilder.addAirfieldApproachAA(airfieldFlight);
             airfieldObjects.setAirfieldApproachAA(airfieldApproachAA);;
         }
     }

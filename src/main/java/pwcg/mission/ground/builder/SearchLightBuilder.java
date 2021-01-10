@@ -12,7 +12,6 @@ import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.GroundUnitCollectionData;
 import pwcg.mission.ground.org.GroundUnitCollectionType;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.unittypes.artillery.SearchLightUnit;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.target.TargetDefinition;
@@ -27,7 +26,7 @@ public class SearchLightBuilder
         this.campaign = campaign;
     }
 
-    public IGroundUnitCollection createSearchLightGroup (TargetDefinition targetDefinition) throws PWCGException
+    public GroundUnitCollection createSearchLightGroup (TargetDefinition targetDefinition) throws PWCGException
     {
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 campaign, 
@@ -40,22 +39,22 @@ public class SearchLightBuilder
         IGroundUnit searchLightUnit = new SearchLightUnit(groundUnitInformation);
         searchLightUnit.createGroundUnit();
         
-        IGroundUnitCollection groundUnitCollection = makeSearchLightGroundUnit(groundUnitInformation, searchLightUnit);
+        GroundUnitCollection groundUnitCollection = makeSearchLightGroundUnit(groundUnitInformation, searchLightUnit);
 
         return groundUnitCollection;
     }
     
-    public IGroundUnitCollection createOneSearchLight (ICountry country, Coordinate position) throws PWCGException
+    public GroundUnitCollection createOneSearchLight (ICountry country, Coordinate position) throws PWCGException
     {
         GroundUnitInformation groundUnitInformation = createGroundUnitInformation(country, position);
         IGroundUnit searchLightUnit = new SearchLightUnit(groundUnitInformation);
         searchLightUnit.createGroundUnit();
 
-        IGroundUnitCollection groundUnitCollection = makeSearchLightGroundUnit(groundUnitInformation, searchLightUnit);
+        GroundUnitCollection groundUnitCollection = makeSearchLightGroundUnit(groundUnitInformation, searchLightUnit);
         return groundUnitCollection;
     }
 
-    private IGroundUnitCollection makeSearchLightGroundUnit(GroundUnitInformation groundUnitInformation, IGroundUnit searchLightUnit) throws PWCGException
+    private GroundUnitCollection makeSearchLightGroundUnit(GroundUnitInformation groundUnitInformation, IGroundUnit searchLightUnit) throws PWCGException
     {
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, 
@@ -63,7 +62,7 @@ public class SearchLightBuilder
                 TargetType.TARGET_ARTILLERY,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
-        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection ("Search Light", groundUnitCollectionData);
+        GroundUnitCollection groundUnitCollection = new GroundUnitCollection ("Search Light", groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(searchLightUnit);
         groundUnitCollection.setPrimaryGroundUnit(searchLightUnit);
         groundUnitCollection.finishGroundUnitCollection();

@@ -1,7 +1,7 @@
 package pwcg.mission;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 
 public class MissionCheckZoneTriggerBuilder
 {
@@ -14,7 +14,7 @@ public class MissionCheckZoneTriggerBuilder
     
     public void triggerGroundUnits() throws PWCGException
     {
-        for (IGroundUnitCollection groundUnit: mission.getMissionGroundUnitBuilder().getAllMissionGroundUnits())
+        for (GroundUnitCollection groundUnit: mission.getMissionGroundUnitBuilder().getAllMissionGroundUnits())
         {
             groundUnit.triggerGroundUnitCollection(mission);
         }

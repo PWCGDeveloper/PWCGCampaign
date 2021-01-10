@@ -8,7 +8,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.unittypes.staticunits.AirfieldTargetGroup;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.target.TargetType;
@@ -26,7 +26,7 @@ public class GroundAttackObjective
         {
             Coordinate flightTargetPosition = targetWaypoints.get(0).getPosition();
             Side enemySide = flight.getSquadron().determineEnemySide();
-            IGroundUnitCollection groundUnitCollection = flight.getMission().getMissionGroundUnitBuilder().getClosestGroundUnitForSide(flightTargetPosition, enemySide);
+            GroundUnitCollection groundUnitCollection = flight.getMission().getMissionGroundUnitBuilder().getClosestGroundUnitForSide(flightTargetPosition, enemySide);
             for (IGroundUnit groundUnit : groundUnitCollection.getGroundUnits())
             {
                 if (!groundUnit.getCountry().isSameSide(flight.getFlightInformation().getCountry()))

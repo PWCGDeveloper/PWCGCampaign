@@ -17,14 +17,14 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.ground.builder.BalloonUnitBuilder;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
 import pwcg.mission.target.locator.TargetLocationFinder;
 
 public class MissionBalloonBuilder
 {
-    private List<IGroundUnitCollection> missionBalloons = new ArrayList<>();
+    private List<GroundUnitCollection> missionBalloons = new ArrayList<>();
     private Mission mission;
 
     public MissionBalloonBuilder(Mission mission)
@@ -32,7 +32,7 @@ public class MissionBalloonBuilder
         this.mission = mission;
     }
     
-    public List<IGroundUnitCollection> createMissionBalloons() throws PWCGException 
+    public List<GroundUnitCollection> createMissionBalloons() throws PWCGException 
     {
         if (shouldMakeBalloons())
         {
@@ -44,7 +44,7 @@ public class MissionBalloonBuilder
     public int getUnitCount() 
     {
         int missionBalloonUnitCount = 0;
-        for (IGroundUnitCollection groundUnitCollection : missionBalloons)
+        for (GroundUnitCollection groundUnitCollection : missionBalloons)
         {
             missionBalloonUnitCount += groundUnitCollection.getUnitCount();
             System.out.println("Unit count balloon : " + groundUnitCollection.getUnitCount());
@@ -83,7 +83,7 @@ public class MissionBalloonBuilder
                     TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_BALLOON, balloonPosition, balloonCountry);
                     
                     BalloonUnitBuilder groundUnitBuilderBalloonDefense = new BalloonUnitBuilder(mission, targetDefinition);
-                    IGroundUnitCollection balloonGroup = groundUnitBuilderBalloonDefense.createBalloonUnit();
+                    GroundUnitCollection balloonGroup = groundUnitBuilderBalloonDefense.createBalloonUnit();
                     mission.getMissionGroundUnitManager().registerBalloon(balloonGroup.getPrimaryGroundUnit());
                     missionBalloons.add(balloonGroup);
                 }
@@ -171,7 +171,7 @@ public class MissionBalloonBuilder
 
     public void write(BufferedWriter writer) throws PWCGException
     {
-        for (IGroundUnitCollection missionBalloon : missionBalloons)
+        for (GroundUnitCollection missionBalloon : missionBalloons)
         {
             missionBalloon.write(writer);
         }

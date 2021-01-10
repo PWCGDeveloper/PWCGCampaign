@@ -16,15 +16,15 @@ import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.builder.AAAUnitBuilder;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
 
 public class AirfieldApproachAABuilder
 {
-    private List<IGroundUnitCollection> airfieldApproachAA = new ArrayList<>();
+    private List<GroundUnitCollection> airfieldApproachAA = new ArrayList<>();
 
-    public List<IGroundUnitCollection> addAirfieldApproachAA(IFlight flight) throws PWCGException
+    public List<GroundUnitCollection> addAirfieldApproachAA(IFlight flight) throws PWCGException
     {
         MissionPoint approachPositionMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_LANDING_APPROACH);
         MissionPoint landingPositionMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_LANDING);
@@ -111,7 +111,7 @@ public class AirfieldApproachAABuilder
             TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, aaPoint, flight.getSquadron().getCountry());
             AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(flight.getCampaign(), targetDefinition);
 
-            IGroundUnitCollection aaa = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
+            GroundUnitCollection aaa = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
             if (aaa != null)
             {
                 for (IGroundUnit aaGun : aaa.getGroundUnits())

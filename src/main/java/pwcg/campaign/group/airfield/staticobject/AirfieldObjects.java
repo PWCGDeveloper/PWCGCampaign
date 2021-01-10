@@ -11,7 +11,6 @@ import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.GroundUnitCollectionData;
 import pwcg.mission.ground.org.GroundUnitCollectionType;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.target.TargetType;
@@ -20,8 +19,8 @@ public class AirfieldObjects
 {
     private List<IVehicle> airfieldObjects = new ArrayList<IVehicle>();
     private List<IStaticPlane> staticPlanes = new ArrayList<IStaticPlane>();
-    private IGroundUnitCollection vehiclesForAirfield = new GroundUnitCollection(null, null);
-    private List<IGroundUnitCollection> airfieldApproachAA = new ArrayList<>();
+    private GroundUnitCollection vehiclesForAirfield = new GroundUnitCollection(null, null);
+    private List<GroundUnitCollection> airfieldApproachAA = new ArrayList<>();
 
     public AirfieldObjects(Side airfieldSide)
     {
@@ -50,12 +49,12 @@ public class AirfieldObjects
         this.staticPlanes.add(staticPlane);
     }
 
-    public IGroundUnitCollection getVehiclesForAirfield()
+    public GroundUnitCollection getVehiclesForAirfield()
     {
         return vehiclesForAirfield;
     }
 
-    public void addVehiclesForAirfield(IGroundUnitCollection aaaMg)
+    public void addVehiclesForAirfield(GroundUnitCollection aaaMg)
     {
         vehiclesForAirfield.merge(aaaMg);
     }
@@ -75,7 +74,7 @@ public class AirfieldObjects
     {
         int airfieldUnitCount = vehiclesForAirfield.getUnitCount();
 
-        for (IGroundUnitCollection airfieldApproachAAGun : airfieldApproachAA)
+        for (GroundUnitCollection airfieldApproachAAGun : airfieldApproachAA)
         {
             airfieldUnitCount += airfieldApproachAAGun.getUnitCount();
         }
@@ -83,12 +82,12 @@ public class AirfieldObjects
         return airfieldUnitCount;
     }
 
-    public List<IGroundUnitCollection> getAirfieldApproachAA()
+    public List<GroundUnitCollection> getAirfieldApproachAA()
     {
         return airfieldApproachAA;
     }
 
-    public void setAirfieldApproachAA(List<IGroundUnitCollection> airfieldApproachAA)
+    public void setAirfieldApproachAA(List<GroundUnitCollection> airfieldApproachAA)
     {
         this.airfieldApproachAA = airfieldApproachAA;
     }

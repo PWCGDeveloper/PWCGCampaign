@@ -6,7 +6,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 
 public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuilder
 {
@@ -21,13 +21,13 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
     public TargetDefinition buildTargetDefinition () throws PWCGException
     {        
         TargetSelectorGroundUnit targetSelector = new TargetSelectorGroundUnit(flightInformation);
-        IGroundUnitCollection target = targetSelector.findTarget();
+        GroundUnitCollection target = targetSelector.findTarget();
         TargetDefinition targetDefinition = createTargetDefinitionFromGroundUnit(flightInformation, target);
 
         return targetDefinition;
     }
     
-    private TargetDefinition createTargetDefinitionFromGroundUnit (IFlightInformation flightInformation, IGroundUnitCollection groundUnitCollection) throws PWCGException
+    private TargetDefinition createTargetDefinitionFromGroundUnit (IFlightInformation flightInformation, GroundUnitCollection groundUnitCollection) throws PWCGException
     {
         List<IGroundUnit> enemyGroundUnits = groundUnitCollection.getInterestingGroundUnitsForSide(flightInformation.getSquadron().determineEnemySide());
         IGroundUnit selectedGroundUnit = findTarget(enemyGroundUnits);

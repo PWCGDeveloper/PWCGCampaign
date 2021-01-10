@@ -19,7 +19,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
@@ -44,7 +44,7 @@ public class ShipUnitBuilderTest
     {
         TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_SHIPPING, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA));
         ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(campaign, targetDefinition);
-        IGroundUnitCollection groundUnitGroup = shippingFactory.createShippingUnit(VehicleClass.ShipCargo);
+        GroundUnitCollection groundUnitGroup = shippingFactory.createShippingUnit(VehicleClass.ShipCargo);
         assert (groundUnitGroup.getGroundUnits().size() == 1);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {
@@ -67,7 +67,7 @@ public class ShipUnitBuilderTest
     {
         TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_SHIPPING, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA));
         ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(campaign, targetDefinition);
-        IGroundUnitCollection groundUnitGroup = shippingFactory.createShippingUnit(VehicleClass.ShipWarship);
+        GroundUnitCollection groundUnitGroup = shippingFactory.createShippingUnit(VehicleClass.ShipWarship);
         assert (groundUnitGroup.getGroundUnits().size() == 1);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {
@@ -90,7 +90,7 @@ public class ShipUnitBuilderTest
     {
         TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_SHIPPING, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA));
         ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(campaign, targetDefinition);
-        IGroundUnitCollection groundUnitGroup = shippingFactory.createShippingUnit(VehicleClass.Submarine);
+        GroundUnitCollection groundUnitGroup = shippingFactory.createShippingUnit(VehicleClass.Submarine);
         assert (groundUnitGroup.getGroundUnits().size() == 1);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {

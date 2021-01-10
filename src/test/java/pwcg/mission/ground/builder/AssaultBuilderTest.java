@@ -32,7 +32,7 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightPlanes;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleClass;
 
 @RunWith(PowerMockRunner.class)
@@ -80,7 +80,7 @@ public class AssaultBuilderTest
     {
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19430401"));
         createLargeAssaultTest ();
-        IGroundUnitCollection groundUnitGroup = createLargeAssaultTest ();
+        GroundUnitCollection groundUnitGroup = createLargeAssaultTest ();
         validate(groundUnitGroup, Country.GERMANY, Country.RUSSIA);
     }
 
@@ -90,7 +90,7 @@ public class AssaultBuilderTest
         Mockito.when(RandomNumberGenerator.getRandom(100)).thenReturn(79);
 
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420901"));
-        IGroundUnitCollection groundUnitGroup = createLargeAssaultTest ();
+        GroundUnitCollection groundUnitGroup = createLargeAssaultTest ();
         validate(groundUnitGroup, Country.GERMANY, Country.RUSSIA);
     }
 
@@ -100,20 +100,20 @@ public class AssaultBuilderTest
         Mockito.when(RandomNumberGenerator.getRandom(100)).thenReturn(81);
 
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420901"));
-        IGroundUnitCollection groundUnitGroup = createLargeAssaultTest ();
+        GroundUnitCollection groundUnitGroup = createLargeAssaultTest ();
         validate(groundUnitGroup, Country.RUSSIA, Country.GERMANY);
     }
     
-    public IGroundUnitCollection createLargeAssaultTest () throws PWCGException 
+    public GroundUnitCollection createLargeAssaultTest () throws PWCGException 
     {
-        IGroundUnitCollection groundUnitGroup = AssaultBuilder.generateAssault(mission, new Coordinate (102000, 0, 100000));
+        GroundUnitCollection groundUnitGroup = AssaultBuilder.generateAssault(mission, new Coordinate (102000, 0, 100000));
         
         assert (groundUnitGroup.getGroundUnits().size() >= 10);
         groundUnitGroup.validate();
         return groundUnitGroup;
     }
 
-    private void validate(IGroundUnitCollection groundUnitGroup, Country attacker, Country defender) throws PWCGException
+    private void validate(GroundUnitCollection groundUnitGroup, Country attacker, Country defender) throws PWCGException
     {
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {

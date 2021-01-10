@@ -19,7 +19,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
@@ -44,7 +44,7 @@ public class SearchLightUnitBuilderTest
     {
         TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA));
         SearchLightBuilder groundUnitFactory =  new SearchLightBuilder(campaign);
-        IGroundUnitCollection groundUnitGroup = groundUnitFactory.createSearchLightGroup(targetDefinition);
+        GroundUnitCollection groundUnitGroup = groundUnitFactory.createSearchLightGroup(targetDefinition);
         assert (groundUnitGroup.getGroundUnits().size() == 1);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {
@@ -66,7 +66,7 @@ public class SearchLightUnitBuilderTest
     public void createOneSearchLightTest () throws PWCGException 
     {
         SearchLightBuilder groundUnitFactory =  new SearchLightBuilder(campaign);
-        IGroundUnitCollection groundUnitGroup = groundUnitFactory.createOneSearchLight(
+        GroundUnitCollection groundUnitGroup = groundUnitFactory.createOneSearchLight(
                 CountryFactory.makeCountryByCountry(Country.GERMANY), new Coordinate (102000, 0, 100000));
         assert (groundUnitGroup.getGroundUnits().size() == 1);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())

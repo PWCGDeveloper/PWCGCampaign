@@ -10,7 +10,7 @@ import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.builder.AAAUnitBuilder;
 import pwcg.mission.ground.builder.SearchLightBuilder;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetDefinitionBuilderStrategic;
@@ -46,7 +46,7 @@ public class StrategicBombingPackage implements IFlightPackage
     private void createAAA(IFlightInformation flightInformation, TargetDefinition targetDefinition, BombingFlight bombingFlight) throws PWCGException
     {
         AAAUnitBuilder groundUnitBuilder = new AAAUnitBuilder(flightInformation.getCampaign(), targetDefinition);
-        IGroundUnitCollection aaaArty = groundUnitBuilder.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_HIGH);
+        GroundUnitCollection aaaArty = groundUnitBuilder.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_HIGH);
         flightInformation.getMission().getMissionGroundUnitBuilder().addFlightSpecificGroundUnit(aaaArty);
     }
 
@@ -55,7 +55,7 @@ public class StrategicBombingPackage implements IFlightPackage
         if (flightInformation.getMission().isNightMission())
         {
             SearchLightBuilder groundUnitBuilder =  new SearchLightBuilder(flightInformation.getCampaign());
-            IGroundUnitCollection searchLightGroup = groundUnitBuilder.createSearchLightGroup(targetDefinition);
+            GroundUnitCollection searchLightGroup = groundUnitBuilder.createSearchLightGroup(targetDefinition);
             flightInformation.getMission().getMissionGroundUnitBuilder().addFlightSpecificGroundUnit(searchLightGroup);
         }
     }

@@ -22,7 +22,7 @@ import pwcg.core.location.Orientation;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.MissionGroundUnitResourceManager;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleClass;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -48,7 +48,7 @@ public class TrainUnitBuilderTest
     public void createTrainTest () throws PWCGException 
     {
         TrainUnitBuilder groundUnitFactory =  new TrainUnitBuilder(campaign, station, CountryFactory.makeCountryByCountry(Country.RUSSIA));
-        IGroundUnitCollection groundUnitGroup = groundUnitFactory.createTrainUnit();
+        GroundUnitCollection groundUnitGroup = groundUnitFactory.createTrainUnit();
         assert (groundUnitGroup.getGroundUnits().size() == 1);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {

@@ -15,7 +15,7 @@ import pwcg.core.utils.PositionFinder;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBalloonBuilder;
 import pwcg.mission.MissionShipBuilder;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.target.TargetType;
 
 public class MissionGroundUnitBuilder
@@ -23,14 +23,14 @@ public class MissionGroundUnitBuilder
     private Mission mission = null;
     private Campaign campaign = null;
 
-    private List<IGroundUnitCollection> missionBattles = new ArrayList<>();
-    private List<IGroundUnitCollection> missionTrains = new ArrayList<>();
-    private List<IGroundUnitCollection> missionTrucks = new ArrayList<>();
-    private List<IGroundUnitCollection> missionDrifters = new ArrayList<>();
-    private List<IGroundUnitCollection> missionBalloons = new ArrayList<>();
-    private List<IGroundUnitCollection> missionShips = new ArrayList<>();
-    private List<IGroundUnitCollection> flightSpecificGroundUnits = new ArrayList<>();
-    private List<IGroundUnitCollection> AA = new ArrayList<>();
+    private List<GroundUnitCollection> missionBattles = new ArrayList<>();
+    private List<GroundUnitCollection> missionTrains = new ArrayList<>();
+    private List<GroundUnitCollection> missionTrucks = new ArrayList<>();
+    private List<GroundUnitCollection> missionDrifters = new ArrayList<>();
+    private List<GroundUnitCollection> missionBalloons = new ArrayList<>();
+    private List<GroundUnitCollection> missionShips = new ArrayList<>();
+    private List<GroundUnitCollection> flightSpecificGroundUnits = new ArrayList<>();
+    private List<GroundUnitCollection> AA = new ArrayList<>();
 
     public MissionGroundUnitBuilder (Campaign campaign, Mission mission)
     {
@@ -94,15 +94,15 @@ public class MissionGroundUnitBuilder
 
     public void write(BufferedWriter writer) throws PWCGException
     {
-        for (IGroundUnitCollection groundUnit : getAllMissionGroundUnits())
+        for (GroundUnitCollection groundUnit : getAllMissionGroundUnits())
         {
             groundUnit.write(writer);
         }
     }
     
-    public List<IGroundUnitCollection> getAllMissionGroundUnits()
+    public List<GroundUnitCollection> getAllMissionGroundUnits()
     {
-        List<IGroundUnitCollection> allMissionGroundUnits = new ArrayList<>();
+        List<GroundUnitCollection> allMissionGroundUnits = new ArrayList<>();
         allMissionGroundUnits.addAll(missionBattles);
         allMissionGroundUnits.addAll(missionTrains);
         allMissionGroundUnits.addAll(missionTrucks);
@@ -114,9 +114,9 @@ public class MissionGroundUnitBuilder
         return allMissionGroundUnits;
     }
     
-    public List<IGroundUnitCollection> getAllInterestingMissionGroundUnits()
+    public List<GroundUnitCollection> getAllInterestingMissionGroundUnits()
     {
-        List<IGroundUnitCollection> allMissionGroundUnits = new ArrayList<>();
+        List<GroundUnitCollection> allMissionGroundUnits = new ArrayList<>();
         allMissionGroundUnits.addAll(missionBattles);
         allMissionGroundUnits.addAll(missionTrucks);
         allMissionGroundUnits.addAll(missionTrains);
@@ -131,9 +131,9 @@ public class MissionGroundUnitBuilder
         return allMissionGroundUnits;
     }
     
-    public List<IGroundUnitCollection> getBattleMissionGroundUnits()
+    public List<GroundUnitCollection> getBattleMissionGroundUnits()
     {
-        List<IGroundUnitCollection> allMissionGroundUnits = new ArrayList<>();
+        List<GroundUnitCollection> allMissionGroundUnits = new ArrayList<>();
         allMissionGroundUnits.addAll(missionBattles);
         if (allMissionGroundUnits.size() == 0)
         {
@@ -145,7 +145,7 @@ public class MissionGroundUnitBuilder
     public List<TargetType> getAvailableGroundUnitTargetTypesForMission() throws PWCGException
     {
         Map <TargetType, TargetType> uniqueTargetTypes = new HashMap<>();
-        for (IGroundUnitCollection groundUnitCollection : getAllMissionGroundUnits())
+        for (GroundUnitCollection groundUnitCollection : getAllMissionGroundUnits())
         {
             if (groundUnitCollection.getTargetType() != TargetType.TARGET_NONE)
             {
@@ -158,7 +158,7 @@ public class MissionGroundUnitBuilder
     public List<TargetType> getAvailableGroundUnitTargetTypesForMissionForSide(Side side) throws PWCGException
     {
         Map <TargetType, TargetType> uniqueTargetTypesForSide = new HashMap<>();
-        for (IGroundUnitCollection groundUnitCollection : getAllMissionGroundUnits())
+        for (GroundUnitCollection groundUnitCollection : getAllMissionGroundUnits())
         {
             if (groundUnitCollection.getTargetType() != TargetType.TARGET_NONE)
             {
@@ -179,23 +179,23 @@ public class MissionGroundUnitBuilder
         int battleCount = 0;
         int shipCount = 0;
         
-        for (IGroundUnitCollection groundUnitCollection : missionTrains)
+        for (GroundUnitCollection groundUnitCollection : missionTrains)
         {
             trainCount += groundUnitCollection.getUnitCount();
         }
-        for (IGroundUnitCollection groundUnitCollection : missionTrucks)
+        for (GroundUnitCollection groundUnitCollection : missionTrucks)
         {
             truckCount += groundUnitCollection.getUnitCount();
         }
-        for (IGroundUnitCollection groundUnitCollection : AA)
+        for (GroundUnitCollection groundUnitCollection : AA)
         {
             aaCount += groundUnitCollection.getUnitCount();
         }
-        for (IGroundUnitCollection groundUnitCollection : missionBattles)
+        for (GroundUnitCollection groundUnitCollection : missionBattles)
         {
             battleCount += groundUnitCollection.getUnitCount();
         }
-        for (IGroundUnitCollection groundUnitCollection : missionShips)
+        for (GroundUnitCollection groundUnitCollection : missionShips)
         {
             shipCount += groundUnitCollection.getUnitCount();
         }
@@ -212,22 +212,22 @@ public class MissionGroundUnitBuilder
 
     }
 
-    public List<IGroundUnitCollection> getBalloonUnits()
+    public List<GroundUnitCollection> getBalloonUnits()
     {
         return missionBalloons;
     }
 
-    public void addFlightSpecificGroundUnit(IGroundUnitCollection flightSpecificGroundUnit)
+    public void addFlightSpecificGroundUnit(GroundUnitCollection flightSpecificGroundUnit)
     {
         flightSpecificGroundUnits.add(flightSpecificGroundUnit);        
     }
 
-    public IGroundUnitCollection getClosestGroundUnitForSide(Coordinate position, Side side) throws PWCGException
+    public GroundUnitCollection getClosestGroundUnitForSide(Coordinate position, Side side) throws PWCGException
     {
-        IGroundUnitCollection closestGroundUnitForSide = null;
+        GroundUnitCollection closestGroundUnitForSide = null;
         
         double closestDistanceToPosition = PositionFinder.ABSURDLY_LARGE_DISTANCE;
-        for (IGroundUnitCollection groundUnitCollection : getAllInterestingMissionGroundUnits())
+        for (GroundUnitCollection groundUnitCollection : getAllInterestingMissionGroundUnits())
         {
             if (!groundUnitCollection.getGroundUnitsForSide(side).isEmpty())
             {

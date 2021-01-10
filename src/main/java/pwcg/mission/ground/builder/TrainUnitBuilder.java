@@ -13,7 +13,6 @@ import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.GroundUnitCollectionData;
 import pwcg.mission.ground.org.GroundUnitCollectionType;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.unittypes.transport.GroundTrainUnit;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.target.TargetType;
@@ -31,13 +30,13 @@ public class TrainUnitBuilder
         this.country = country;
     }
 
-    public IGroundUnitCollection createTrainUnit () throws PWCGException
+    public GroundUnitCollection createTrainUnit () throws PWCGException
     {
-        IGroundUnitCollection groundUnitCollection = createTrain();
+        GroundUnitCollection groundUnitCollection = createTrain();
         return groundUnitCollection;
     }
     
-    private IGroundUnitCollection createTrain() throws PWCGException
+    private GroundUnitCollection createTrain() throws PWCGException
     {
         GroundUnitInformation groundUnitInformation = createGroundUnitInformation();
         IGroundUnit train = new GroundTrainUnit(groundUnitInformation);
@@ -49,7 +48,7 @@ public class TrainUnitBuilder
                 TargetType.TARGET_TRAIN,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
-        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection ("Train", groundUnitCollectionData);
+        GroundUnitCollection groundUnitCollection = new GroundUnitCollection ("Train", groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(train);
         groundUnitCollection.setPrimaryGroundUnit(train);
         groundUnitCollection.finishGroundUnitCollection();

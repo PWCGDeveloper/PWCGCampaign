@@ -21,7 +21,7 @@ import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGroundUnitResourceManager;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
@@ -51,7 +51,7 @@ public class BalloonUnitBuilderTest
     {
         TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA));
         BalloonUnitBuilder groundUnitFactory = new BalloonUnitBuilder(mission, targetDefinition);
-        IGroundUnitCollection groundUnitGroup = groundUnitFactory.createBalloonUnit();
+        GroundUnitCollection groundUnitGroup = groundUnitFactory.createBalloonUnit();
         validateBalloonUnit(groundUnitGroup, Country.RUSSIA);
         groundUnitGroup.validate();
     }
@@ -61,12 +61,12 @@ public class BalloonUnitBuilderTest
     {
         TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.GERMANY));
         BalloonUnitBuilder groundUnitFactory = new BalloonUnitBuilder(mission, targetDefinition);
-        IGroundUnitCollection groundUnitGroup = groundUnitFactory.createBalloonUnit();
+        GroundUnitCollection groundUnitGroup = groundUnitFactory.createBalloonUnit();
         validateBalloonUnit(groundUnitGroup, Country.GERMANY);
         groundUnitGroup.validate();
     }
 
-    private void validateBalloonUnit(IGroundUnitCollection groundUnitGroup, Country country) throws PWCGException
+    private void validateBalloonUnit(GroundUnitCollection groundUnitGroup, Country country) throws PWCGException
     {
         assert (groundUnitGroup.getGroundUnits().size() == 3);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())

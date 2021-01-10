@@ -14,7 +14,7 @@ import pwcg.mission.mcu.group.MissionBeginCheckZoneBase;
 import pwcg.mission.mcu.group.MissionBeginSelfDeactivatingCheckZone;
 import pwcg.mission.target.TargetType;
 
-public class GroundUnitCollection implements IGroundUnitCollection
+public class GroundUnitCollection
 {
     private final static int GROUND_UNIT_SPAWN_DISTANCE = 5000;
 
@@ -39,7 +39,7 @@ public class GroundUnitCollection implements IGroundUnitCollection
         return targetCoordinates;
     }
 
-    public void merge(IGroundUnitCollection relatedGroundCollection)
+    public void merge(GroundUnitCollection relatedGroundCollection)
     {
         groundUnits.addAll(relatedGroundCollection.getGroundUnits());
     }
@@ -109,13 +109,11 @@ public class GroundUnitCollection implements IGroundUnitCollection
         }
     }
 
-    @Override
     public List<IGroundUnit> getGroundUnits()
     {
         return groundUnits;
     }
 
-    @Override
     public Coordinate getPosition() throws PWCGException
     {
         GroundUnitCollectionTargetFinder groundUnitCollectionTargetFinder = new GroundUnitCollectionTargetFinder(this);
@@ -124,13 +122,11 @@ public class GroundUnitCollection implements IGroundUnitCollection
         return targetCoordinates;
     }
 
-    @Override
     public TargetType getTargetType()
     {
         return groundUnitCollectionData.getTargetType();
     }
 
-    @Override
     public void write(BufferedWriter writer) throws PWCGException
     {
         try
@@ -163,7 +159,6 @@ public class GroundUnitCollection implements IGroundUnitCollection
         }
     }
 
-    @Override
     public void validate() throws PWCGException
     {
         missionBeginUnit.validate();
@@ -175,19 +170,16 @@ public class GroundUnitCollection implements IGroundUnitCollection
         }
     }
 
-    @Override
     public GroundUnitCollectionType getGroundUnitCollectionType()
     {
         return groundUnitCollectionData.getGroundUnitCollectionType();
     }
 
-    @Override
     public void addGroundUnit(IGroundUnit groundUnit)
     {
         groundUnits.add(groundUnit);
     }
 
-    @Override
     public IGroundUnit getPrimaryGroundUnit()
     {
         if (primaryGroundUnit == null)
@@ -200,13 +192,11 @@ public class GroundUnitCollection implements IGroundUnitCollection
         }
     }
 
-    @Override
     public void setPrimaryGroundUnit(IGroundUnit groundUnit)
     {
         primaryGroundUnit = groundUnit;
     }
 
-    @Override
     public void triggerGroundUnitCollection(Mission mission) throws PWCGException
     {
         missionBeginUnit.triggerMissionBeginCheckZone(mission);

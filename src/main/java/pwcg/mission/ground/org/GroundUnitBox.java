@@ -9,7 +9,7 @@ import pwcg.core.location.CoordinateBox;
 
 public class GroundUnitBox
 {
-    public static CoordinateBox buildBattleBox(IGroundUnitCollection groundUnitCollection) throws PWCGException
+    public static CoordinateBox buildBattleBox(GroundUnitCollection groundUnitCollection) throws PWCGException
     {
         List<Coordinate> coordinates = new ArrayList<>();
         for (IGroundUnit groundUnit : groundUnitCollection.getGroundUnits())

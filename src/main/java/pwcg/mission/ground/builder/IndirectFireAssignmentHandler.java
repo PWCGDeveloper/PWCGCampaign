@@ -10,7 +10,7 @@ import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.unittypes.artillery.GroundArtilleryBattery;
 
 public class IndirectFireAssignmentHandler
@@ -33,10 +33,10 @@ public class IndirectFireAssignmentHandler
 
     private void loadGroundUnitsBySide() throws PWCGException
     {
-        List<IGroundUnitCollection> allGroundUnits = new ArrayList<>();
+        List<GroundUnitCollection> allGroundUnits = new ArrayList<>();
         allGroundUnits.addAll(mission.getMissionGroundUnitBuilder().getAllMissionGroundUnits());
         
-        for (IGroundUnitCollection groundUnitCollection : allGroundUnits)
+        for (GroundUnitCollection groundUnitCollection : allGroundUnits)
         {
             allAlliedGroundUnits.addAll(groundUnitCollection.getGroundUnitsForSide(Side.ALLIED));
             allAxisGroundUnits.addAll(groundUnitCollection.getGroundUnitsForSide(Side.AXIS));

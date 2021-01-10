@@ -20,27 +20,27 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.builder.TrainUnitBuilder;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 
 public class MissionTrainBuilder extends MissionUnitBuilder
 {
-    private List<IGroundUnitCollection> missionTrains = new ArrayList<>();
+    private List<GroundUnitCollection> missionTrains = new ArrayList<>();
 
     public MissionTrainBuilder (Campaign campaign, Mission mission)
     {
         super(campaign, mission);
     }
     
-    public List<IGroundUnitCollection> generateMissionTrains() throws PWCGException 
+    public List<GroundUnitCollection> generateMissionTrains() throws PWCGException 
     {
         missionTrains.addAll(buildTrainsForSide(Side.ALLIED));
         missionTrains.addAll(buildTrainsForSide(Side.AXIS));
         return missionTrains;
     }
 
-    private List<IGroundUnitCollection> buildTrainsForSide(Side trainSide) throws PWCGException
+    private List<GroundUnitCollection> buildTrainsForSide(Side trainSide) throws PWCGException
     {
-        List<IGroundUnitCollection> missionTrainsForSide = new ArrayList<>();
+        List<GroundUnitCollection> missionTrainsForSide = new ArrayList<>();
         int maxTrains = getMaxTrains();
         ArrayList<Block> stationsForSide = getRailroadsForTrains(trainSide);
         ArrayList<Block> sortedStationsByDistance = sortTrainStationsByDistanceFromMission(stationsForSide);
@@ -51,7 +51,7 @@ public class MissionTrainBuilder extends MissionUnitBuilder
                 break;
             }
 
-            IGroundUnitCollection trainUnit = makeTrain(trainSide, station);
+            GroundUnitCollection trainUnit = makeTrain(trainSide, station);
             missionTrainsForSide.add(trainUnit);
         }
         return missionTrainsForSide;
@@ -87,11 +87,11 @@ public class MissionTrainBuilder extends MissionUnitBuilder
         return new ArrayList<Block>(sortedStationsByDistance.values());
     }
 
-    private IGroundUnitCollection makeTrain(Side trainSide, Block station) throws PWCGException
+    private GroundUnitCollection makeTrain(Side trainSide, Block station) throws PWCGException
     {
         ICountry trainCountry = CountryFactory.makeMapReferenceCountry(trainSide);
         TrainUnitBuilder trainfactory =  new TrainUnitBuilder(campaign, station, trainCountry);
-        IGroundUnitCollection trainUnit = trainfactory.createTrainUnit();
+        GroundUnitCollection trainUnit = trainfactory.createTrainUnit();
         return trainUnit;
     }
 

@@ -23,7 +23,7 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.objective.MissionObjectiveFactory;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.product.fc.plane.FCPlaneAttributeMapping;
 
 public class McuIcon extends BaseFlightMcu
@@ -148,7 +148,7 @@ public class McuIcon extends BaseFlightMcu
         coalitions.add(CoalitionFactory.getCoalitionBySide(side));
     }
 
-    public McuIcon(IGroundUnitCollection balloon, Side side) throws PWCGException
+    public McuIcon(GroundUnitCollection balloon, Side side) throws PWCGException
     {
         super();
 

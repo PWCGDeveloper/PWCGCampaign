@@ -11,7 +11,6 @@ import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.GroundUnitCollectionData;
 import pwcg.mission.ground.org.GroundUnitCollectionType;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.unittypes.artillery.GroundAAArtilleryBattery;
 import pwcg.mission.ground.unittypes.artillery.GroundAAMachineGunBattery;
 import pwcg.mission.ground.unittypes.artillery.SearchLightUnit;
@@ -30,7 +29,7 @@ public class AAAUnitBuilder
         this.targetDefinition  = targetDefinition;
     }
 
-    public IGroundUnitCollection createAAAMGBattery (GroundUnitSize groundUnitSize) throws PWCGException
+    public GroundUnitCollection createAAAMGBattery (GroundUnitSize groundUnitSize) throws PWCGException
     {
         GroundUnitInformation groundUnitInformation = createAAGroundUnitInformation(groundUnitSize);
         IGroundUnit mgBattery = new GroundAAMachineGunBattery(groundUnitInformation);
@@ -42,14 +41,14 @@ public class AAAUnitBuilder
                 TargetType.TARGET_ARTILLERY,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
-        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection ("AAA MG Battery", groundUnitCollectionData);
+        GroundUnitCollection groundUnitCollection = new GroundUnitCollection ("AAA MG Battery", groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(mgBattery);
         groundUnitCollection.setPrimaryGroundUnit(mgBattery);
         groundUnitCollection.finishGroundUnitCollection();
         return groundUnitCollection;
     }
     
-    public IGroundUnitCollection createAAAArtilleryBatteryFromMission(Mission mission, GroundUnitSize groundUnitSize) throws PWCGException
+    public GroundUnitCollection createAAAArtilleryBatteryFromMission(Mission mission, GroundUnitSize groundUnitSize) throws PWCGException
     {
         if (mission.isNightMission())
         {
@@ -61,7 +60,7 @@ public class AAAUnitBuilder
         }
     }
     
-    public IGroundUnitCollection createAAAArtilleryBattery (GroundUnitSize groundUnitSize) throws PWCGException
+    public GroundUnitCollection createAAAArtilleryBattery (GroundUnitSize groundUnitSize) throws PWCGException
     {
         GroundUnitInformation groundUnitInformation = createAAGroundUnitInformation(groundUnitSize);
         IGroundUnit aaaBattery = new GroundAAArtilleryBattery(groundUnitInformation);
@@ -73,14 +72,14 @@ public class AAAUnitBuilder
                 TargetType.TARGET_ARTILLERY,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
-        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection ("AAA Artillery Battery", groundUnitCollectionData);
+        GroundUnitCollection groundUnitCollection = new GroundUnitCollection ("AAA Artillery Battery", groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(aaaBattery);
         groundUnitCollection.setPrimaryGroundUnit(aaaBattery);
         groundUnitCollection.finishGroundUnitCollection();
         return groundUnitCollection;
     }
 
-    public IGroundUnitCollection createAAAArtilleryBatteryWithSearchLight (GroundUnitSize groundUnitSize) throws PWCGException
+    public GroundUnitCollection createAAAArtilleryBatteryWithSearchLight (GroundUnitSize groundUnitSize) throws PWCGException
     {
         GroundUnitInformation groundUnitInformation = createAAGroundUnitInformation(groundUnitSize);
         IGroundUnit aaaBattery = new GroundAAArtilleryBattery(groundUnitInformation);
@@ -94,7 +93,7 @@ public class AAAUnitBuilder
                 TargetType.TARGET_ARTILLERY,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
-        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection ("AAA Search Light Battery", groundUnitCollectionData);
+        GroundUnitCollection groundUnitCollection = new GroundUnitCollection ("AAA Search Light Battery", groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(aaaBattery);
         groundUnitCollection.addGroundUnit(searchLightUnit);
         groundUnitCollection.setPrimaryGroundUnit(aaaBattery);

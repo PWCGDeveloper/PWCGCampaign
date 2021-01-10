@@ -22,7 +22,7 @@ import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.target.TargetPriorityGeneratorGroundUnit;
 import pwcg.mission.target.TargetSelectorGroundUnit;
 import pwcg.mission.target.TargetType;
@@ -61,7 +61,7 @@ public class TargetBuilderKubanTest
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         
         TargetSelectorGroundUnit targetBuilder = new TargetSelectorGroundUnit(playerFlight.getFlightInformation());
-        IGroundUnitCollection groundUnits = targetBuilder.findTarget();
+        GroundUnitCollection groundUnits = targetBuilder.findTarget();
         
         assert(groundUnits.getGroundUnits().size() >= 1);
         assert(groundUnits.getTargetType() == TargetType.TARGET_ASSAULT);
@@ -81,7 +81,7 @@ public class TargetBuilderKubanTest
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         
         TargetSelectorGroundUnit targetBuilder = new TargetSelectorGroundUnit(playerFlight.getFlightInformation());
-        IGroundUnitCollection groundUnits = targetBuilder.findTarget();
+        GroundUnitCollection groundUnits = targetBuilder.findTarget();
         
         assert(groundUnits.getGroundUnits().size() >= 1);
         assert(groundUnits.getTargetType() == TargetType.TARGET_TRANSPORT);
@@ -101,7 +101,7 @@ public class TargetBuilderKubanTest
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         
         TargetSelectorGroundUnit targetBuilder = new TargetSelectorGroundUnit(playerFlight.getFlightInformation());
-        IGroundUnitCollection groundUnits = targetBuilder.findTarget();
+        GroundUnitCollection groundUnits = targetBuilder.findTarget();
         
         assert(groundUnits.getGroundUnits().size() >= 1);
         assert(groundUnits.getTargetType() == TargetType.TARGET_SHIPPING);
@@ -121,7 +121,7 @@ public class TargetBuilderKubanTest
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         
         TargetSelectorGroundUnit targetBuilder = new TargetSelectorGroundUnit(playerFlight.getFlightInformation());
-        IGroundUnitCollection groundUnits = targetBuilder.findTarget();
+        GroundUnitCollection groundUnits = targetBuilder.findTarget();
         
         assert(groundUnits.getGroundUnits().size() >= 1);
         assert(groundUnits.getTargetType() == TargetType.TARGET_TRAIN);

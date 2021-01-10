@@ -17,7 +17,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.intercept.InterceptAiCoordinateGenerator;
 import pwcg.mission.flight.intercept.InterceptPlayerCoordinateGenerator;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
 import pwcg.mission.utils.BehindFriendlyLinesPositionCalculator;
@@ -119,8 +119,8 @@ public class TargetLocatorAir
 
     public Coordinate getBalloonCoordinate(Side oppositeSide) throws PWCGException
     {
-        List<IGroundUnitCollection> shuffledGroundUnits = flightInformation.getMission().getMissionGroundUnitBuilder().getAllMissionGroundUnits();
-        for (IGroundUnitCollection groundUnit : shuffledGroundUnits)
+        List<GroundUnitCollection> shuffledGroundUnits = flightInformation.getMission().getMissionGroundUnitBuilder().getAllMissionGroundUnits();
+        for (GroundUnitCollection groundUnit : shuffledGroundUnits)
         {
             if (groundUnit.getTargetType() == TargetType.TARGET_BALLOON)
             {
@@ -133,7 +133,7 @@ public class TargetLocatorAir
 
     public Coordinate getBattleCoordinate() throws PWCGException
     {
-        List<IGroundUnitCollection> shuffledGroundUnits = flightInformation.getMission().getMissionGroundUnitBuilder().getBattleMissionGroundUnits();
+        List<GroundUnitCollection> shuffledGroundUnits = flightInformation.getMission().getMissionGroundUnitBuilder().getBattleMissionGroundUnits();
         Coordinate battleCoordinate = shuffledGroundUnits.get(0).getPosition().copy();
         FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(flightInformation.getCampaign().getDate());
         Coordinate targetCoordinate = frontLinesForMap.findClosestFrontCoordinateForSide(battleCoordinate, flightInformation.getCountry().getSide());

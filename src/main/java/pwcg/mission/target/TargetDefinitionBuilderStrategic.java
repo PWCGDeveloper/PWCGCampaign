@@ -6,7 +6,7 @@ import java.util.List;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.IFlightInformation;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.target.locator.StrategicTargetLocator;
 
 public class TargetDefinitionBuilderStrategic implements ITargetDefinitionBuilder
@@ -48,7 +48,7 @@ public class TargetDefinitionBuilderStrategic implements ITargetDefinitionBuilde
     private TargetDefinition findStrategicTarget(List<TargetType> strategicTargetTypes, List<TargetDefinition> availableTargets) throws PWCGException
     {
         List<TargetType> shuffledTargetTypes = TargetPriorityGeneratorGroundUnit.getTargetTypePriorities(flightInformation.getCampaign(), flightInformation.getSquadron());
-        List<IGroundUnitCollection> shuffledGroundUnits = flightInformation.getMission().getMissionGroundUnitBuilder().getAllMissionGroundUnits();
+        List<GroundUnitCollection> shuffledGroundUnits = flightInformation.getMission().getMissionGroundUnitBuilder().getAllMissionGroundUnits();
         Collections.shuffle(shuffledGroundUnits);
 
         for (TargetType desiredTargetType : shuffledTargetTypes)

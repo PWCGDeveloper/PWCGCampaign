@@ -4,7 +4,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.ground.builder.AAASpotterBuilder;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 
 public class FlightSpotterBuilder
 {
@@ -16,7 +16,7 @@ public class FlightSpotterBuilder
         {
             if (missionPoint.getAction() == WaypointAction.WP_ACTION_PATROL)
             {
-                IGroundUnitCollection spotter = spotterBuilder.createAAASpotterBattery(missionPoint.getPosition());
+                GroundUnitCollection spotter = spotterBuilder.createAAASpotterBattery(missionPoint.getPosition());
                 if (spotter != null)
                 {
                     playerFlight.getMission().getMissionGroundUnitBuilder().addFlightSpecificGroundUnit(spotter);

@@ -12,7 +12,6 @@ import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.GroundUnitCollectionData;
 import pwcg.mission.ground.org.GroundUnitCollectionType;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.unittypes.transport.ShipCargoConvoyUnit;
 import pwcg.mission.ground.unittypes.transport.ShipSubmarineConvoyUnit;
 import pwcg.mission.ground.unittypes.transport.ShipWarshipConvoyUnit;
@@ -32,14 +31,14 @@ public class ShippingUnitBuilder
         this.targetDefinition  = targetDefinition;
     }
 
-    public IGroundUnitCollection createShippingUnit (VehicleClass shipType) throws PWCGException 
+    public GroundUnitCollection createShippingUnit (VehicleClass shipType) throws PWCGException 
     {
-        IGroundUnitCollection shipConvoyUnit = generateConvoy(shipType);
+        GroundUnitCollection shipConvoyUnit = generateConvoy(shipType);
         return shipConvoyUnit;
     }
 
 
-    private IGroundUnitCollection generateConvoy(VehicleClass shipType) throws PWCGException 
+    private GroundUnitCollection generateConvoy(VehicleClass shipType) throws PWCGException 
     {
         GroundUnitInformation groundUnitInformation = createGroundUnitInformationForUnit();
         
@@ -70,7 +69,7 @@ public class ShippingUnitBuilder
                 TargetType.TARGET_SHIPPING,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
-        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection ("Shipping", groundUnitCollectionData);
+        GroundUnitCollection groundUnitCollection = new GroundUnitCollection ("Shipping", groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(shipGroup);
         groundUnitCollection.setPrimaryGroundUnit(shipGroup);
         groundUnitCollection.finishGroundUnitCollection();

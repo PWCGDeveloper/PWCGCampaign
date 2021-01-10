@@ -9,7 +9,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
@@ -24,7 +24,7 @@ public class AAASpotterBuilder
         this.flightInformation  = flightInformation;
     }
 
-    public IGroundUnitCollection createAAASpotterBattery (Coordinate position) throws PWCGException
+    public GroundUnitCollection createAAASpotterBattery (Coordinate position) throws PWCGException
     {
         if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
@@ -34,7 +34,7 @@ public class AAASpotterBuilder
         TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, position, flightInformation.getCountry());
         AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(flightInformation.getCampaign(), targetDefinition);
         
-        IGroundUnitCollection spotterMG = groundUnitFactory.createAAAMGBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
+        GroundUnitCollection spotterMG = groundUnitFactory.createAAAMGBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
         if (spotterMG != null)
         {
             CountryDesignator countryDesignator = new CountryDesignator();

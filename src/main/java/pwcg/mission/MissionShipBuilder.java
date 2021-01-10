@@ -15,14 +15,14 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.ground.builder.ShipTypeChooser;
 import pwcg.mission.ground.builder.ShippingUnitBuilder;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
 
 public class MissionShipBuilder
 {
-    private List<IGroundUnitCollection> missionShips = new ArrayList<>();
+    private List<GroundUnitCollection> missionShips = new ArrayList<>();
     private Mission mission;
 
     public MissionShipBuilder(Mission mission)
@@ -30,7 +30,7 @@ public class MissionShipBuilder
         this.mission = mission;
     }
     
-    public List<IGroundUnitCollection> createMissionShips() throws PWCGException 
+    public List<GroundUnitCollection> createMissionShips() throws PWCGException 
     {
         if (shouldMakeShips())
         {
@@ -42,7 +42,7 @@ public class MissionShipBuilder
     public int getUnitCount() 
     {
         int missionBalloonUnitCount = 0;
-        for (IGroundUnitCollection groundUnitCollection : missionShips)
+        for (GroundUnitCollection groundUnitCollection : missionShips)
         {
             missionBalloonUnitCount += groundUnitCollection.getUnitCount();
             System.out.println("Unit count balloon : " + groundUnitCollection.getUnitCount());
@@ -73,7 +73,7 @@ public class MissionShipBuilder
             TargetDefinition targetDefinition = makeTargetDefinition(shipSide);        
             ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(mission.getCampaign(), targetDefinition);
             VehicleClass shipType = ShipTypeChooser.chooseShipType(targetDefinition.getCountry().getSide());
-            IGroundUnitCollection convoy = shippingFactory.createShippingUnit(shipType);
+            GroundUnitCollection convoy = shippingFactory.createShippingUnit(shipType);
             
             missionShips.add(convoy);
         }

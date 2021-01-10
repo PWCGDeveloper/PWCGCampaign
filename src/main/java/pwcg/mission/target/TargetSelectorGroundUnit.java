@@ -6,7 +6,7 @@ import java.util.List;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlightInformation;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 
 public class TargetSelectorGroundUnit
 {
@@ -17,7 +17,7 @@ public class TargetSelectorGroundUnit
         this.flightInformation = flightInformation;
     }
 
-	public IGroundUnitCollection findTarget() throws PWCGException 
+	public GroundUnitCollection findTarget() throws PWCGException 
 	{
 	    FlightTypes flightType = flightInformation.getFlightType();
 	    if (flightType == FlightTypes.CONTACT_PATROL || 
@@ -32,9 +32,9 @@ public class TargetSelectorGroundUnit
         }
 	}
 
-    private IGroundUnitCollection findInfantryGroundUnits() throws PWCGException
+    private GroundUnitCollection findInfantryGroundUnits() throws PWCGException
     {
-        for (IGroundUnitCollection groundUnitCollection : flightInformation.getMission().getMissionGroundUnitBuilder().getAllMissionGroundUnits())
+        for (GroundUnitCollection groundUnitCollection : flightInformation.getMission().getMissionGroundUnitBuilder().getAllMissionGroundUnits())
         {
             if (groundUnitCollection.getTargetType() == TargetType.TARGET_INFANTRY)
             {
@@ -46,7 +46,7 @@ public class TargetSelectorGroundUnit
             }
         }
         
-        IGroundUnitCollection targetGroundUnit = findGroundUnitsOfType(TargetType.TARGET_ASSAULT);
+        GroundUnitCollection targetGroundUnit = findGroundUnitsOfType(TargetType.TARGET_ASSAULT);
         if (targetGroundUnit != null)
         {
             return targetGroundUnit;
@@ -73,9 +73,9 @@ public class TargetSelectorGroundUnit
         return findAnyGroundUnits();
     }
 
-    private IGroundUnitCollection findGroundUnitsOfType(TargetType targetType) throws PWCGException
+    private GroundUnitCollection findGroundUnitsOfType(TargetType targetType) throws PWCGException
     {
-        for (IGroundUnitCollection groundUnitCollection : flightInformation.getMission().getMissionGroundUnitBuilder().getAllMissionGroundUnits())
+        for (GroundUnitCollection groundUnitCollection : flightInformation.getMission().getMissionGroundUnitBuilder().getAllMissionGroundUnits())
         {
             if (groundUnitCollection.getTargetType() == targetType)
             {
@@ -89,15 +89,15 @@ public class TargetSelectorGroundUnit
         return null;
     }
 
-    private IGroundUnitCollection findAnyGroundUnits() throws PWCGException
+    private GroundUnitCollection findAnyGroundUnits() throws PWCGException
     {
         List<TargetType> shuffledTargetTypes = TargetPriorityGeneratorGroundUnit.getTargetTypePriorities(flightInformation.getCampaign(), flightInformation.getSquadron());
-        List<IGroundUnitCollection> shuffledGroundUnits = flightInformation.getMission().getMissionGroundUnitBuilder().getAllInterestingMissionGroundUnits();
+        List<GroundUnitCollection> shuffledGroundUnits = flightInformation.getMission().getMissionGroundUnitBuilder().getAllInterestingMissionGroundUnits();
         Collections.shuffle(shuffledGroundUnits);
 
         for (TargetType desiredTargetType : shuffledTargetTypes)
         {
-            for (IGroundUnitCollection groundUnitCollection : shuffledGroundUnits)
+            for (GroundUnitCollection groundUnitCollection : shuffledGroundUnits)
             {
                 TargetType unitTargetType = groundUnitCollection.getTargetType();
                 if (desiredTargetType == unitTargetType)

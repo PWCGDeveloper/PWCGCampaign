@@ -13,14 +13,14 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.ground.builder.AAAUnitBuilder;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
 
 public class AAARailroadBuilder 
 {
 	private Campaign campaign;
-	private List<IGroundUnitCollection> railroadAAA = new ArrayList<>();
+	private List<GroundUnitCollection> railroadAAA = new ArrayList<>();
 
 	
     public AAARailroadBuilder(Campaign campaign) throws PWCGException
@@ -28,7 +28,7 @@ public class AAARailroadBuilder
         this.campaign = campaign;
 	}
 
-	public List<IGroundUnitCollection> createAAAForRailroads() throws PWCGException
+	public List<GroundUnitCollection> createAAAForRailroads() throws PWCGException
 	{
         GroupManager groupData = PWCGContext.getInstance().getCurrentMap().getGroupManager();
 
@@ -52,7 +52,7 @@ public class AAARailroadBuilder
         Coordinate aaaPosition = MathUtils.calcNextCoord(railroadStation.getPosition(), angle, distance);               
         TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, aaaPosition, railroadStation.getCountry(campaign.getDate()));
         AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
-        IGroundUnitCollection aaaMg = groundUnitFactory.createAAAMGBattery(GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM);
+        GroundUnitCollection aaaMg = groundUnitFactory.createAAAMGBattery(GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM);
         railroadAAA.add(aaaMg);
     }
 
@@ -63,7 +63,7 @@ public class AAARailroadBuilder
         Coordinate aaaPosition = MathUtils.calcNextCoord(railroadStation.getPosition(), angle, distance);               
         TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, aaaPosition, railroadStation.getCountry(campaign.getDate()));
         AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
-        IGroundUnitCollection aaaArty = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM);
+        GroundUnitCollection aaaArty = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM);
         railroadAAA.add(aaaArty);
     }
 }

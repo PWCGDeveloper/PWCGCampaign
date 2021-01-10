@@ -8,7 +8,7 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetDefinitionBuilderAirToGround;
@@ -35,7 +35,7 @@ public class ArtillerySpotPackage implements IFlightPackage
 
     private IFlight createFlight() throws PWCGException
     {        
-        IGroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
+        GroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
         Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(flightInformation.getSquadron().determineEnemySide());
 		IFlight artySpot = null;
 		if (flightInformation.isPlayerFlight())
@@ -51,7 +51,7 @@ public class ArtillerySpotPackage implements IFlightPackage
         return artySpot;
     }
 
-    private IGroundUnitCollection createGroundUnitsForFlight() throws PWCGException
+    private GroundUnitCollection createGroundUnitsForFlight() throws PWCGException
     {
         TargetSelectorGroundUnit targetBuilder = new TargetSelectorGroundUnit(flightInformation);
         return targetBuilder.findTarget();

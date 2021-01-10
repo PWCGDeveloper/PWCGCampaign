@@ -17,14 +17,14 @@ import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.builder.AssaultBuilder;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 
 public class MissionBattleBuilder
 {
     private Mission mission = null;
     private Campaign campaign = null;
 
-    private List<IGroundUnitCollection> battles = new ArrayList<>();
+    private List<GroundUnitCollection> battles = new ArrayList<>();
 
     public MissionBattleBuilder (Campaign campaign, Mission mission)
     {
@@ -32,7 +32,7 @@ public class MissionBattleBuilder
         this.campaign = campaign;
     }
 
-    public List<IGroundUnitCollection> generateBattles() throws PWCGException 
+    public List<GroundUnitCollection> generateBattles() throws PWCGException 
     {
         int maxBattles = getMaxBattles();
         int numBattles = RandomNumberGenerator.getRandom(maxBattles+1);
@@ -42,7 +42,7 @@ public class MissionBattleBuilder
             Coordinate battleLocation = getBattleLocation();
             if (battleLocation != null)
             {
-                IGroundUnitCollection battleUnitCollection = AssaultBuilder.generateAssault(mission, battleLocation);
+                GroundUnitCollection battleUnitCollection = AssaultBuilder.generateAssault(mission, battleLocation);
                 battles.add(battleUnitCollection);
             }
 

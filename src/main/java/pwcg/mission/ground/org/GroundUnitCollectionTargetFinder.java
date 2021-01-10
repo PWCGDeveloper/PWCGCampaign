@@ -10,10 +10,10 @@ import pwcg.core.exception.PWCGException;
 
 public class GroundUnitCollectionTargetFinder
 {
-    private IGroundUnitCollection groundUnitCollection;
+    private GroundUnitCollection groundUnitCollection;
     private Map<GroundUnitType, List<IGroundUnit>> groundUnitsForSideByUnitType = new HashMap<>();
 
-    public GroundUnitCollectionTargetFinder(IGroundUnitCollection groundUnitCollection)
+    public GroundUnitCollectionTargetFinder(GroundUnitCollection groundUnitCollection)
     {
         this.groundUnitCollection = groundUnitCollection;
     }

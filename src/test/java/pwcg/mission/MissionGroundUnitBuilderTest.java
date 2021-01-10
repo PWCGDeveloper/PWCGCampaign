@@ -21,7 +21,7 @@ import pwcg.mission.ground.MissionBattleBuilder;
 import pwcg.mission.ground.MissionTrainBuilder;
 import pwcg.mission.ground.MissionTruckConvoyBuilder;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
@@ -46,10 +46,10 @@ public class MissionGroundUnitBuilderTest
         mission.generate(Arrays.asList(FlightTypes.DIVE_BOMB));
 
         MissionBattleBuilder battleBuilder = new MissionBattleBuilder(campaign, mission);
-        List<IGroundUnitCollection> battles = battleBuilder.generateBattles();
+        List<GroundUnitCollection> battles = battleBuilder.generateBattles();
 
         assert (battles.size() < 3);
-        for (IGroundUnitCollection battle : battles)
+        for (GroundUnitCollection battle : battles)
         {
             assert (battle.getGroundUnitsForSide(Side.ALLIED).size() > 0);
             assert (battle.getGroundUnitsForSide(Side.AXIS).size() > 0);
@@ -67,14 +67,14 @@ public class MissionGroundUnitBuilderTest
         mission.generate(Arrays.asList(FlightTypes.DIVE_BOMB));
 
         MissionTruckConvoyBuilder truckConvoyBuilder = new MissionTruckConvoyBuilder(campaign, mission);
-        List<IGroundUnitCollection> trucks = truckConvoyBuilder.generateMissionTrucks();
+        List<GroundUnitCollection> trucks = truckConvoyBuilder.generateMissionTrucks();
 
         assert (trucks.size() >= 2);
         assert (trucks.size() <= 12);
 
         boolean alliedTrainFound = false;
         boolean axisTrainFound = false;
-        for (IGroundUnitCollection truckUnit : trucks)
+        for (GroundUnitCollection truckUnit : trucks)
         {
             for (IGroundUnit groundUnit : truckUnit.getGroundUnits())
             {
@@ -104,14 +104,14 @@ public class MissionGroundUnitBuilderTest
         mission.generate(Arrays.asList(FlightTypes.DIVE_BOMB));
 
         MissionTrainBuilder trainBuilder = new MissionTrainBuilder(campaign, mission);
-        List<IGroundUnitCollection> trains = trainBuilder.generateMissionTrains();
+        List<GroundUnitCollection> trains = trainBuilder.generateMissionTrains();
 
         assert (trains.size() >= 2);
         assert (trains.size() <= 8);
 
         boolean alliedTrainFound = false;
         boolean axisTrainFound = false;
-        for (IGroundUnitCollection train : trains)
+        for (GroundUnitCollection train : trains)
         {
             for (IGroundUnit groundUnit : train.getGroundUnits())
             {
@@ -141,10 +141,10 @@ public class MissionGroundUnitBuilderTest
         mission.generate(Arrays.asList(FlightTypes.DIVE_BOMB));
 
         AAAManager aaaManager = new AAAManager(campaign, mission);
-        List<IGroundUnitCollection> AAA = aaaManager.getAAAForMission();
+        List<GroundUnitCollection> AAA = aaaManager.getAAAForMission();
 
         assert (AAA.size() > 10);
-        for (IGroundUnitCollection aaaUnit : AAA)
+        for (GroundUnitCollection aaaUnit : AAA)
         {
             for (IGroundUnit groundUnit : aaaUnit.getGroundUnits())
             {

@@ -14,7 +14,6 @@ import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.GroundUnitCollectionData;
 import pwcg.mission.ground.org.GroundUnitCollectionType;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.unittypes.staticunits.AirfieldTargetGroup;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.target.TargetDefinition;
@@ -31,7 +30,7 @@ public class AirfieldUnitBuilder
         this.targetDefinition  = targetDefinition;
     }
 
-    public IGroundUnitCollection createAirfieldUnit () throws PWCGException
+    public GroundUnitCollection createAirfieldUnit () throws PWCGException
     {
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 campaign, 
@@ -51,7 +50,7 @@ public class AirfieldUnitBuilder
                 TargetType.TARGET_AIRFIELD,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
-        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection ("Airfield Unit", groundUnitCollectionData);
+        GroundUnitCollection groundUnitCollection = new GroundUnitCollection ("Airfield Unit", groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(airfieldGroup);
         groundUnitCollection.setPrimaryGroundUnit(airfieldGroup);
         groundUnitCollection.finishGroundUnitCollection();
