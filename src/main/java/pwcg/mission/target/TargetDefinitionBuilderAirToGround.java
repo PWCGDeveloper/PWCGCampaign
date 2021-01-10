@@ -33,7 +33,8 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
         IGroundUnit selectedGroundUnit = findTarget(enemyGroundUnits);
         
         TargetDefinition targetDefinition = new TargetDefinition(
-                selectedGroundUnit.getTargetType(), selectedGroundUnit.getPosition().copy(),
+                selectedGroundUnit.getTargetType(), 
+                selectedGroundUnit.getPosition().copy(),
                 selectedGroundUnit.getCountry());
         
         return targetDefinition;

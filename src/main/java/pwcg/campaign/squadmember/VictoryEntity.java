@@ -36,22 +36,22 @@ public class VictoryEntity
             LogPlane logPlane = (LogPlane)logEntity;
             initializeForPlane(victoryDate, logPlane, pilotName);
         }
-        if (logEntity instanceof LogBalloon)
+        else if (logEntity instanceof LogBalloon)
         {
             LogBalloon logBalloon = (LogBalloon)logEntity;
             initializeForBalloon(logBalloon);
         }
-        if (logEntity instanceof LogGroundUnit)
+        else if (logEntity instanceof LogGroundUnit)
         {
             LogGroundUnit logGroundUnit = (LogGroundUnit)logEntity;
             initializeForGround(logGroundUnit);
         }
-        if (logEntity instanceof LogTurret)
+        else if (logEntity instanceof LogTurret)
         {
             LogTurret logTurret = (LogTurret)logEntity;
             initializeForTurret(victoryDate, logTurret, pilotName);
         }
-        if (logEntity instanceof LogBuilding)
+        else if (logEntity instanceof LogBuilding)
         {
             LogBuilding logGroundUnit = (LogBuilding)logEntity;
             initializeForBuilding(logGroundUnit);

@@ -1,7 +1,34 @@
 https://github.com/PWCGDeveloper/PWCG.git
 
+Add destroyed for certain ground objects
+Bridges bridge
+Railroads (starts with rw)
+Hangars (contains hangar)
+Churches (contains church)
+Port Facilities (starts with port)
+Factories industrial
+Depot (contains warehouse - will start with industrial)
+Fuel Depot (contains fuel - will start with industrial)
+Static planes and vehicles
 
- 
+
+
+3. Assign level bombing missions to these targets
+- new target type list (reuse Strategic?) 
+
+4. Add new category building or structure (in addition to air and ground)
+5. Find destroyed structures
+6. Award to same as ground units
+7. Treat as ground victories
+- identify buildings
+- Identify parked planes
+- Identify parked vehicles
+
+Done
+1. Make such facilities have a linked entity and a country
+
+
+Future
 New Events
 - Add page and squadron log for aircraft introduced
 - Add page and squadron log for aircraft removed from service
