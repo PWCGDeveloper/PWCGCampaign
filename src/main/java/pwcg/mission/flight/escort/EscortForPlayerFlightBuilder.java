@@ -6,7 +6,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.McuWaypoint;
@@ -35,7 +35,7 @@ public class EscortForPlayerFlightBuilder
 
     private IFlight createEscortForPlayerFlight(IFlight playerFlight) throws PWCGException 
     {
-        IFlightInformation playerFlightInformation = playerFlight.getFlightInformation();
+        FlightInformation playerFlightInformation = playerFlight.getFlightInformation();
         Side friendlySide = playerFlightInformation.getSquadron().determineSquadronCountry(playerFlightInformation.getCampaign().getDate()).getSide();
         Squadron friendlyFighterSquadron = playerFlight.getMission().getMissionSquadronChooser().getEscortSquadron(playerFlightInformation.getCampaign(), friendlySide);
 
@@ -49,7 +49,7 @@ public class EscortForPlayerFlightBuilder
             if (rendezvousWP != null)
             {
                 Coordinate rendezvous = rendezvousWP.getPosition().copy();
-                IFlightInformation escortFlightInformation = EscortForPlayerFlightInformationBuilder.buildEscortForPlayerFlightInformation(playerFlight.getFlightInformation(), 
+                FlightInformation escortFlightInformation = EscortForPlayerFlightInformationBuilder.buildEscortForPlayerFlightInformation(playerFlight.getFlightInformation(), 
                         friendlyFighterSquadron, rendezvous);
                 TargetDefinition targetDefinition = EscortForPlayerTargetDefinitionBuilder.buildEscortForPlayerTargetDefinition(escortFlightInformation, rendezvous);
                 EscortForPlayerFlight escortForPlayerFlight = new EscortForPlayerFlight(escortFlightInformation, targetDefinition, playerFlight);

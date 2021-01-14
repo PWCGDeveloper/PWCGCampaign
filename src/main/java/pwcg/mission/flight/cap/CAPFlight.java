@@ -4,7 +4,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightPayloadBuilder;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.initialposition.FlightPositionSetter;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
 import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory;
@@ -16,7 +16,7 @@ import pwcg.mission.target.TargetDefinition;
 
 public class CAPFlight extends Flight implements IFlight
 {
-    public CAPFlight(IFlightInformation flightInformation, TargetDefinition targetDefinition)
+    public CAPFlight(FlightInformation flightInformation, TargetDefinition targetDefinition)
     {
         super(flightInformation, targetDefinition);
     }

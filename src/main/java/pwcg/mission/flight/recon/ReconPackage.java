@@ -5,7 +5,7 @@ import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
@@ -20,7 +20,7 @@ public class ReconPackage implements IFlightPackage
     @Override
     public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
-        IFlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.RECON);
+        FlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.RECON);
         TargetDefinition targetDefinition = buildTargetDefintion(flightInformation);
 
         ReconFlight reconFlight = new ReconFlight (flightInformation, targetDefinition);
@@ -28,7 +28,7 @@ public class ReconPackage implements IFlightPackage
         return reconFlight;
     }
 
-    private TargetDefinition buildTargetDefintion(IFlightInformation flightInformation) throws PWCGException
+    private TargetDefinition buildTargetDefintion(FlightInformation flightInformation) throws PWCGException
     {
         ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilderAirToAir(flightInformation);
         return  targetDefinitionBuilder.buildTargetDefinition();

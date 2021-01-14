@@ -9,13 +9,13 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.OpposingSquadronChooser;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 
 public class InterceptOpposingFlightSquadronChooser
 {
-    private IFlightInformation playerFlightInformation;
+    private FlightInformation playerFlightInformation;
 
-    public InterceptOpposingFlightSquadronChooser(IFlightInformation playerFlightInformation)
+    public InterceptOpposingFlightSquadronChooser(FlightInformation playerFlightInformation)
     {
         this.playerFlightInformation = playerFlightInformation;
     }

@@ -8,7 +8,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuTimer;
@@ -91,7 +91,7 @@ public class MissionPointFlightActivateVirtual implements IMissionPointSet, IVir
 
     private void createActivation() throws PWCGException
     {
-        IFlightInformation flightInformation = flight.getFlightInformation();
+        FlightInformation flightInformation = flight.getFlightInformation();
    
         missionBeginTimer = new McuTimer();
         missionBeginTimer.setName("Mission Begin VWP Timer");

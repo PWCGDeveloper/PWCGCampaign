@@ -6,13 +6,12 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.FlightPlaneBuilder;
 
 public class VirtualEscortFlightInformationBuilder
 {
 
-    public static IFlightInformation buildVirtualEscortFlightInformation(Mission mission, Squadron friendlyFighterSquadron) throws PWCGException
+    public static FlightInformation buildVirtualEscortFlightInformation(Mission mission, Squadron friendlyFighterSquadron) throws PWCGException
     {
         Coordinate positionDoesntMatter = new Coordinate(0, 0, 0);
         

@@ -5,7 +5,7 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightPayloadBuilder;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.initialposition.FlightPositionSetter;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
 import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory;
@@ -25,7 +25,7 @@ public class OffensiveFlight extends Flight implements IFlight
         OFFENSIVE_FLIGHT_AIRFIELD,
     }
 
-    public OffensiveFlight(IFlightInformation flightInformation, TargetDefinition targetDefinition)
+    public OffensiveFlight(FlightInformation flightInformation, TargetDefinition targetDefinition)
     {
         super(flightInformation, targetDefinition);
     }

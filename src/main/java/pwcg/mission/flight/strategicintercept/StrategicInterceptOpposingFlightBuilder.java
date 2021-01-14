@@ -10,18 +10,18 @@ import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.bomb.BombingFlight;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
 
 public class StrategicInterceptOpposingFlightBuilder
 {
-    private IFlightInformation playerFlightInformation;
+    private FlightInformation playerFlightInformation;
     private TargetDefinition playerTargetDefinition;
     private StrategicInterceptOpposingFlightSquadronChooser opposingFlightSquadronChooser;
 
-    public StrategicInterceptOpposingFlightBuilder(IFlightInformation playerFlightInformation, TargetDefinition playerTargetDefinition)
+    public StrategicInterceptOpposingFlightBuilder(FlightInformation playerFlightInformation, TargetDefinition playerTargetDefinition)
     {
         this.playerFlightInformation = playerFlightInformation;
         this.playerTargetDefinition = playerTargetDefinition;
@@ -48,22 +48,22 @@ public class StrategicInterceptOpposingFlightBuilder
     
     private IFlight createBomberFlight(Squadron opposingBomberSquadron) throws PWCGException
     {
-        IFlightInformation opposingFlightInformation = buildOpposingFlightInformation(opposingBomberSquadron);
+        FlightInformation opposingFlightInformation = buildOpposingFlightInformation(opposingBomberSquadron);
         TargetDefinition opposingTargetDefinition = buildOpposingTargetDefintion(opposingFlightInformation);    
         IFlight opposingFlight = new BombingFlight(opposingFlightInformation, opposingTargetDefinition);
         opposingFlight.createFlight();
         return opposingFlight;
     }
 
-    private IFlightInformation buildOpposingFlightInformation(Squadron opposingSquadron) throws PWCGException
+    private FlightInformation buildOpposingFlightInformation(Squadron opposingSquadron) throws PWCGException
     {
         boolean isPlayerFlight = false;
         FlightBuildInformation flightBuildInformation = new FlightBuildInformation(this.playerFlightInformation.getMission(), opposingSquadron, isPlayerFlight);
-        IFlightInformation opposingFlightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.STRATEGIC_BOMB);
+        FlightInformation opposingFlightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.STRATEGIC_BOMB);
         return opposingFlightInformation;
     }
 
-    private TargetDefinition buildOpposingTargetDefintion(IFlightInformation opposingFlightInformation) throws PWCGException
+    private TargetDefinition buildOpposingTargetDefintion(FlightInformation opposingFlightInformation) throws PWCGException
     {
         TargetDefinition opposingTargetDefinition = new TargetDefinition(TargetType.TARGET_AIR, playerTargetDefinition.getPosition(), opposingFlightInformation.getCountry());
         return opposingTargetDefinition;

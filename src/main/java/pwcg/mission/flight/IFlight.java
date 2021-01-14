@@ -23,7 +23,7 @@ public interface IFlight
 
     void finalizeFlight() throws PWCGException;
     
-    IFlightInformation getFlightInformation();
+    FlightInformation getFlightInformation();
 
     IFlightPlanes getFlightPlanes();
 

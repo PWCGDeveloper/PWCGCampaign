@@ -3,7 +3,7 @@ package pwcg.mission.flight.escort;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetBuilder;
@@ -11,12 +11,12 @@ import pwcg.mission.target.TargetBuilder;
 
 public class EscortedByPlayerFlightBuilder
 {
-    private IFlightInformation playerEscortFlightInformation;
+    private FlightInformation playerEscortFlightInformation;
     private TargetDefinition playerEscortTargetDefinition;
-    private IFlightInformation escortedFlightInformation;
+    private FlightInformation escortedFlightInformation;
     private TargetDefinition escortedTargetDefinition;
 
-	public EscortedByPlayerFlightBuilder(IFlightInformation playerEscortFlightInformation, TargetDefinition playerEscortTargetDefinition)
+	public EscortedByPlayerFlightBuilder(FlightInformation playerEscortFlightInformation, TargetDefinition playerEscortTargetDefinition)
     {
         this.playerEscortFlightInformation = playerEscortFlightInformation;
         this.playerEscortTargetDefinition = playerEscortTargetDefinition;
@@ -52,7 +52,7 @@ public class EscortedByPlayerFlightBuilder
         return missionBeginUnit;
     }
 
-    private TargetDefinition buildTargetDefintion(IFlightInformation escortedFlightInformation) throws PWCGException
+    private TargetDefinition buildTargetDefintion(FlightInformation escortedFlightInformation) throws PWCGException
     {
         ITargetDefinitionBuilder targetDefinitionBuilder = new TargetBuilder(escortedFlightInformation);
         return targetDefinitionBuilder.buildTargetDefinition();

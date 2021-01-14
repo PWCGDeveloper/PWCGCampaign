@@ -13,13 +13,13 @@ import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 
 public class ScrambleOpposingFlightSquadronChooser
 {
-    private IFlightInformation playerFlightInformation;
+    private FlightInformation playerFlightInformation;
 
-    public ScrambleOpposingFlightSquadronChooser(IFlightInformation playerFlightInformation)
+    public ScrambleOpposingFlightSquadronChooser(FlightInformation playerFlightInformation)
     {
         this.playerFlightInformation = playerFlightInformation;
     }

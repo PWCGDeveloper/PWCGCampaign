@@ -2,7 +2,7 @@ package pwcg.mission.flight.escort;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetDefinitionBuilderAirToAir;
@@ -11,7 +11,7 @@ public class EscortForPlayerTargetDefinitionBuilder
 {
 
     public static TargetDefinition buildEscortForPlayerTargetDefinition(
-            IFlightInformation escortFlightInformation, 
+            FlightInformation escortFlightInformation, 
             Coordinate playerRendezvous) throws PWCGException
     {
         ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilderAirToAir(escortFlightInformation);

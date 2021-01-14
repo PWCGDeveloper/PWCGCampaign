@@ -30,7 +30,7 @@ import pwcg.mission.MissionFlightBuilder;
 import pwcg.mission.MissionGroundUnitResourceManager;
 import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 
 public class KubanAttackMockCampaign
 {
@@ -43,7 +43,7 @@ public class KubanAttackMockCampaign
     @Mock protected CampaignEquipmentManager equipmentManager;
     @Mock protected Equipment squadronEquipment;
     @Mock protected SquadronMember player;
-    @Mock protected IFlightInformation flightInformation;
+    @Mock protected FlightInformation flightInformation;
     @Mock protected MissionHumanParticipants humanParticipants;
 
     protected ICountry country = CountryFactory.makeCountryByCountry(Country.GERMANY);

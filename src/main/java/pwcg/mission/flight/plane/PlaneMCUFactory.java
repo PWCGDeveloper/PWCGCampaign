@@ -14,16 +14,16 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.crew.FlightCrewBuilder;
 
 public class PlaneMCUFactory
 {
     public static final int NUM_IN_FORMATION_START = 1;
     
-    private IFlightInformation flightInformation;
+    private FlightInformation flightInformation;
 	
-    public PlaneMCUFactory(IFlightInformation flightInformation)
+    public PlaneMCUFactory(FlightInformation flightInformation)
     {
         this.flightInformation = flightInformation;
     }

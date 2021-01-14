@@ -3,7 +3,7 @@ package pwcg.mission.flight.waypoint.missionpoint;
 import pwcg.campaign.api.IAirfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -27,7 +27,7 @@ public class MissionPointSetFactory
 
     public static IMissionPointSet createFlightBegin(IFlight flight, IMissionPointSet flightActivate, AirStartPattern airStartPattern, McuWaypoint waypointToLinkAirSTart) throws PWCGException, PWCGException 
     {
-        IFlightInformation flightInformation = flight.getFlightInformation();
+        FlightInformation flightInformation = flight.getFlightInformation();
         if (!flightInformation.isAirStart())
         {
             MissionPointFlightBeginTakeoff flightBegin = new MissionPointFlightBeginTakeoff(flight, flightActivate);

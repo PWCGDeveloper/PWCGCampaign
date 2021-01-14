@@ -10,14 +10,14 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypeCategory;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 
 public class FlightSizeCalculator 
 {
 	private ConfigManagerCampaign configManager;
-	private IFlightInformation flightInformation;
+	private FlightInformation flightInformation;
 
-	public FlightSizeCalculator(IFlightInformation flightInformation)
+	public FlightSizeCalculator(FlightInformation flightInformation)
     {
         this.flightInformation = flightInformation;
         configManager = flightInformation.getCampaign().getCampaignConfigManager();
@@ -79,7 +79,7 @@ public class FlightSizeCalculator
         return numPlanesInFlight;
     }
 
-    private int adjustfPlanesInFlightForFlightType(IFlightInformation flightInformation, int numPlanesInFlight) throws PWCGException
+    private int adjustfPlanesInFlightForFlightType(FlightInformation flightInformation, int numPlanesInFlight) throws PWCGException
     {
         if (PWCGContext.getProduct() == PWCGProduct.BOS)
         {

@@ -10,7 +10,7 @@ import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.McuActivate;
@@ -39,7 +39,7 @@ public class VirtualWaypointEscort
         this.vwpActivate = vwpActivate;
     }
 
-    public void buildEscort(IFlightInformation vwpEscortFlightInformation) throws PWCGException
+    public void buildEscort(FlightInformation vwpEscortFlightInformation) throws PWCGException
     {
         buildEscortPlanes(vwpEscortFlightInformation);
         buildPayloadForEscorts();
@@ -85,7 +85,7 @@ public class VirtualWaypointEscort
         }
     }
 
-    private void buildEscortPlanes(IFlightInformation vwpEscortFlightInformation) throws PWCGException
+    private void buildEscortPlanes(FlightInformation vwpEscortFlightInformation) throws PWCGException
     {
         int altitudeOffset = 500;
         VirtualWaypointPlaneBuilder vwpPlaneBuilder = new VirtualWaypointPlaneBuilder(vwpCoordinate, altitudeOffset);

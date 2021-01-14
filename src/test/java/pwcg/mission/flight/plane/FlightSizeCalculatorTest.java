@@ -20,14 +20,14 @@ import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FlightSizeCalculatorTest 
 {
-    @Mock private IFlightInformation flightInformation;
+    @Mock private FlightInformation flightInformation;
     @Mock private Squadron squadron;
     @Mock private Campaign campaign;
     private List<Country> countries = Arrays.asList(Country.GERMANY, Country.RUSSIA);

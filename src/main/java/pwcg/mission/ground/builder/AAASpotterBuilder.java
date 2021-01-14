@@ -6,7 +6,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.GroundUnitCollection;
@@ -17,9 +17,9 @@ import pwcg.mission.target.TargetType;
 public class AAASpotterBuilder
 {    
     private static final int SPOTTER_RANGE = 20000;
-    private IFlightInformation flightInformation;
+    private FlightInformation flightInformation;
     
-    public AAASpotterBuilder (IFlightInformation flightInformation)
+    public AAASpotterBuilder (FlightInformation flightInformation)
     {
         this.flightInformation  = flightInformation;
     }

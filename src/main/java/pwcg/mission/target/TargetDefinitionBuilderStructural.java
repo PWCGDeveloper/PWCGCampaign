@@ -7,16 +7,16 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.ground.building.PwcgBuilding;
 import pwcg.mission.ground.building.PwcgBuildingIdentifier;
 
 public class TargetDefinitionBuilderStructural
 {
-    private IFlightInformation flightInformation;
+    private FlightInformation flightInformation;
     private List<TargetDefinition> targetDefinitions = new ArrayList<>();
 
-    public TargetDefinitionBuilderStructural(IFlightInformation flightInformation) throws PWCGException
+    public TargetDefinitionBuilderStructural(FlightInformation flightInformation) throws PWCGException
     {
         this.flightInformation = flightInformation;
     }

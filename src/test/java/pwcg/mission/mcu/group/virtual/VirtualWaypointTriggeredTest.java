@@ -14,7 +14,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightPlanes;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.validate.IndexLinkValidator;
@@ -27,7 +27,7 @@ import pwcg.mission.mcu.McuFormation;
 public class VirtualWaypointTriggeredTest
 {
     @Mock private IFlight flight;
-    @Mock private IFlightInformation flightInformation;
+    @Mock private FlightInformation flightInformation;
     @Mock private IFlightPlanes flightPlanes;
     private PlaneMcu plane1;
     private PlaneMcu plane2;

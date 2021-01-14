@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 
@@ -36,5 +36,5 @@ public interface IVirtualWaypoint
 
     boolean isShouldLinkToAttack();
 
-    void addEscort(IFlightInformation vwpEscortFlightInformation) throws PWCGException;
+    void addEscort(FlightInformation vwpEscortFlightInformation) throws PWCGException;
 }

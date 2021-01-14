@@ -1,13 +1,13 @@
 package pwcg.mission.mcu.group.virtual;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 
 public class VirtualWaypointEscortBuilder
 {
     public static VirtualWaypointEscort buildVirtualEscort(
-            IFlightInformation vwpEscortFlightInformation, 
+            FlightInformation vwpEscortFlightInformation, 
             VirtualWayPointCoordinate vwpCoordinate, 
             VirtualWaypointPlanes vwpPlanes, 
             VirtualWaypointTriggered vwpActivate) throws PWCGException

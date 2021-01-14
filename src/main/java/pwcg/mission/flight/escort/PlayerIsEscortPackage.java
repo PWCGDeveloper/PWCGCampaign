@@ -6,7 +6,7 @@ import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
@@ -14,7 +14,7 @@ import pwcg.mission.target.TargetDefinitionBuilderAirToAir;
 
 public class PlayerIsEscortPackage implements IFlightPackage
 {
-    private IFlightInformation playerFlightInformation;    
+    private FlightInformation playerFlightInformation;    
     private TargetDefinition targetDefinition;
 
     public PlayerIsEscortPackage()

@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 
 public class TargetBuilder implements ITargetDefinitionBuilder
 {
-    private IFlightInformation flightInformation;
+    private FlightInformation flightInformation;
 
-    public TargetBuilder(IFlightInformation flightInformation) throws PWCGException
+    public TargetBuilder(FlightInformation flightInformation) throws PWCGException
     {
         this.flightInformation = flightInformation;
     }

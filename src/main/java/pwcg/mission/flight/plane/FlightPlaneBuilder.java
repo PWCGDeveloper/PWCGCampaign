@@ -7,13 +7,12 @@ import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.IFlightInformation;
 
 public class FlightPlaneBuilder 
 {
-	private IFlightInformation flightInformation;
+	private FlightInformation flightInformation;
 	
-	public FlightPlaneBuilder(IFlightInformation flightInformation)
+	public FlightPlaneBuilder(FlightInformation flightInformation)
 	{
 		this.flightInformation = flightInformation;
 	}

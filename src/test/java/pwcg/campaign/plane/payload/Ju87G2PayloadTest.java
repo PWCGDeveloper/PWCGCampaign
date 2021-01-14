@@ -16,7 +16,7 @@ import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.product.bos.plane.BosPlaneAttributeMapping;
 
@@ -24,7 +24,7 @@ import pwcg.product.bos.plane.BosPlaneAttributeMapping;
 public class Ju87G2PayloadTest 
 {
 	@Mock IFlight flight;
-	@Mock IFlightInformation flightInformation;
+	@Mock FlightInformation flightInformation;
 	@Mock TargetDefinition targetDefinition;
 	@Mock Campaign campaign;
 	@Mock Squadron squadron;

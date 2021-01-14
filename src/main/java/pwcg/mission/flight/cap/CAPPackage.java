@@ -7,7 +7,7 @@ import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightSpotterBuilder;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
@@ -15,7 +15,7 @@ import pwcg.mission.target.TargetDefinitionBuilderAirToAir;
 
 public class CAPPackage implements IFlightPackage
 {	
-    private IFlightInformation flightInformation;
+    private FlightInformation flightInformation;
     private TargetDefinition targetDefinition;
     private FlightTypes flightType;
 

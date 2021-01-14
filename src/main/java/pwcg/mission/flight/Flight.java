@@ -21,7 +21,7 @@ import pwcg.mission.target.TargetDefinition;
 
 public abstract class Flight implements IFlight
 {
-    private IFlightInformation flightInformation;
+    private FlightInformation flightInformation;
     private FlightPlanes flightPlanes;
     private ILinkedFlights linkedFlights = new LinkedFlights();
     private FlightPlayerContact flightPlayerContact = new FlightPlayerContact();
@@ -30,7 +30,7 @@ public abstract class Flight implements IFlight
     private TargetDefinition targetDefinition;
     private int index = IndexGenerator.getInstance().getNextIndex();
 
-    public Flight(IFlightInformation flightInformation, TargetDefinition targetDefinition)
+    public Flight(FlightInformation flightInformation, TargetDefinition targetDefinition)
     {
         this.flightInformation = flightInformation;
         this.targetDefinition = targetDefinition;
@@ -94,7 +94,7 @@ public abstract class Flight implements IFlight
         }
     }
 
-    public IFlightInformation getFlightInformation()
+    public FlightInformation getFlightInformation()
     {
         return flightInformation;
     }

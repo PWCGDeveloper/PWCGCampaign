@@ -13,7 +13,7 @@ import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.attack.GroundAttackPackage;
 import pwcg.mission.flight.bomb.BombingPackage;
 import pwcg.mission.flight.divebomb.DiveBombingPackage;
@@ -22,7 +22,7 @@ import pwcg.mission.target.TargetDefinition;
 
 public class InterceptOpposingFlightBuilder
 {
-    private IFlightInformation playerFlightInformation;
+    private FlightInformation playerFlightInformation;
     private TargetDefinition playerTargetDefinition;
 
     public InterceptOpposingFlightBuilder(IFlight playerFlight)

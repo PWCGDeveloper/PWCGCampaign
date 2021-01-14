@@ -9,7 +9,7 @@ import pwcg.mission.ground.org.GroundUnitCollection;
 public class FlightSpotterBuilder
 {
 
-    public static void createSpotters(IFlight playerFlight, IFlightInformation flightInformation) throws PWCGException
+    public static void createSpotters(IFlight playerFlight, FlightInformation flightInformation) throws PWCGException
     {
         AAASpotterBuilder spotterBuilder = new AAASpotterBuilder(flightInformation);
         for (MissionPoint missionPoint : playerFlight.getWaypointPackage().getFlightMissionPoints())

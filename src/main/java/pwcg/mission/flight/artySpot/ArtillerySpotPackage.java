@@ -6,7 +6,7 @@ import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetBuilder;
@@ -14,7 +14,7 @@ import pwcg.mission.target.TargetDefinition;
 
 public class ArtillerySpotPackage implements IFlightPackage
 {
-    private IFlightInformation flightInformation;
+    private FlightInformation flightInformation;
     private TargetDefinition targetDefinition;
 
     public ArtillerySpotPackage()

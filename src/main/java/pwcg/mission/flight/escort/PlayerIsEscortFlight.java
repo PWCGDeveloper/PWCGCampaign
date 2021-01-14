@@ -4,7 +4,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightPayloadBuilder;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.initialposition.FlightPositionSetter;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
 import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory;
@@ -18,7 +18,7 @@ public class PlayerIsEscortFlight extends Flight implements IFlight
 {
     private EscortedByPlayerFlight escortedFlight;
     
-    public PlayerIsEscortFlight(IFlightInformation flightInformation, TargetDefinition targetDefinition, EscortedByPlayerFlight escortedFlight)
+    public PlayerIsEscortFlight(FlightInformation flightInformation, TargetDefinition targetDefinition, EscortedByPlayerFlight escortedFlight)
     {
         super(flightInformation, targetDefinition);
         this.escortedFlight = escortedFlight;

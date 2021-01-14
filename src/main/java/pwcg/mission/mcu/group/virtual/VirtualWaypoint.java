@@ -10,7 +10,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
@@ -80,7 +80,7 @@ public final class VirtualWaypoint implements IVirtualWaypoint
     }
 
     @Override
-    public void addEscort(IFlightInformation vwpEscortFlightInformation) throws PWCGException 
+    public void addEscort(FlightInformation vwpEscortFlightInformation) throws PWCGException 
     {
         vwpEscort = VirtualWaypointEscortBuilder.buildVirtualEscort(vwpEscortFlightInformation, vwpCoordinate, vwpPlanes, vwpTriggered);
     }

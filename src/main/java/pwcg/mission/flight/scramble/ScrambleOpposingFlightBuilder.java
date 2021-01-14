@@ -10,15 +10,15 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
 
 public class ScrambleOpposingFlightBuilder
 {
-    private IFlightInformation playerFlightInformation;
+    private FlightInformation playerFlightInformation;
 
-    public ScrambleOpposingFlightBuilder(IFlightInformation playerFlightInformation)
+    public ScrambleOpposingFlightBuilder(FlightInformation playerFlightInformation)
     {
         this.playerFlightInformation = playerFlightInformation;
     }
@@ -60,7 +60,7 @@ public class ScrambleOpposingFlightBuilder
     {
         FlightTypes opposingFlightType = getFlightType(opposingSquadron);
         
-        IFlightInformation opposingFlightInformation = ScrambleOpposingFlightInformationBuilder.buildAiScrambleOpposingFlightInformation(
+        FlightInformation opposingFlightInformation = ScrambleOpposingFlightInformationBuilder.buildAiScrambleOpposingFlightInformation(
                 opposingSquadron, playerFlightInformation, opposingFlightType);
         
         TargetDefinition opposingTargetDefinition = buildOpposingTargetDefintion(opposingFlightInformation);
@@ -126,7 +126,7 @@ public class ScrambleOpposingFlightBuilder
         return possibleOpposingFlightTypes.get(index);
     }
 
-    private TargetDefinition buildOpposingTargetDefintion(IFlightInformation opposingFlightInformation) throws PWCGException
+    private TargetDefinition buildOpposingTargetDefintion(FlightInformation opposingFlightInformation) throws PWCGException
     {
         Squadron playerSquadron = playerFlightInformation.getSquadron();
         Coordinate squadronLocation = playerSquadron.determineCurrentPosition(playerFlightInformation.getCampaign().getDate());

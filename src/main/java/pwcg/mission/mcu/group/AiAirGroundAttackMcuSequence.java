@@ -6,7 +6,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.mcu.AttackAreaType;
 import pwcg.mission.mcu.FlightAttackAreaFactory;
 import pwcg.mission.mcu.McuAttackArea;
@@ -17,7 +17,7 @@ import pwcg.mission.target.TargetDefinition;
 
 public class AiAirGroundAttackMcuSequence implements IAirGroundAttackMcuSequence
 {    
-    private IFlightInformation flightInformation;
+    private FlightInformation flightInformation;
     private TargetDefinition targetDefinition;
 
     private McuTimer activateTimer = new McuTimer();

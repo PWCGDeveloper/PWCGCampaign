@@ -23,7 +23,7 @@ import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
@@ -36,7 +36,7 @@ public class PlaneFactoryTest
     @Mock
     IFlight flight;
     @Mock
-    IFlightInformation flightInformation;
+    FlightInformation flightInformation;
 
     @Before
     public void setup() throws PWCGException
@@ -57,7 +57,7 @@ public class PlaneFactoryTest
         boolean isPlayerFlight = true;
         FlightBuildInformation flightBuildInformation = new FlightBuildInformation(mission, squadron, isPlayerFlight);
 
-        IFlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.BOMB);
+        FlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.BOMB);
 
         PlaneMCUFactory planeFactory = new PlaneMCUFactory(flightInformation);
         List<PlaneMcu> assignedPlanes = planeFactory.createPlanesForFlight(4);
@@ -92,7 +92,7 @@ public class PlaneFactoryTest
         boolean isPlayerFlight = false;
         FlightBuildInformation flightBuildInformation = new FlightBuildInformation(mission, squadron, isPlayerFlight);
 
-        IFlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.BOMB);
+        FlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.BOMB);
 
         PlaneMCUFactory planeFactory = new PlaneMCUFactory(flightInformation);
         List<PlaneMcu> assignedPlanes = planeFactory.createPlanesForFlight(4);

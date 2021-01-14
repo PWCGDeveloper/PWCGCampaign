@@ -7,7 +7,7 @@ import pwcg.mission.flight.plane.FlightPlaneBuilder;
 
 public class FlightInformationFactory
 {
-    public static IFlightInformation buildFlightInformation(FlightBuildInformation flightBuildInformation, FlightTypes flightType) throws PWCGException
+    public static FlightInformation buildFlightInformation(FlightBuildInformation flightBuildInformation, FlightTypes flightType) throws PWCGException
     {
         if (flightBuildInformation.isPlayerFlight())
         {
@@ -15,11 +15,11 @@ public class FlightInformationFactory
         }
         else
         {
-            return buildAiFlightInformation(flightBuildInformation.getMission(), flightBuildInformation.getSquadron(), flightType);
+            return buildAFlightInformation(flightBuildInformation.getMission(), flightBuildInformation.getSquadron(), flightType);
         }
     }
     
-    private static IFlightInformation buildPlayerFlightInformation(Mission mission, Squadron squadron, FlightTypes flightType) throws PWCGException
+    private static FlightInformation buildPlayerFlightInformation(Mission mission, Squadron squadron, FlightTypes flightType) throws PWCGException
     {    	
         FlightInformation playerFlightInformation = new FlightInformation(mission);
         playerFlightInformation.setFlightType(flightType);
@@ -36,20 +36,20 @@ public class FlightInformationFactory
         return playerFlightInformation;
     }
 
-    private static IFlightInformation buildAiFlightInformation(Mission mission, Squadron squadron, FlightTypes flightType) throws PWCGException
+    private static FlightInformation buildAFlightInformation(Mission mission, Squadron squadron, FlightTypes flightType) throws PWCGException
     {
-        FlightInformation aiFlightInformation = new FlightInformation(mission);
-        aiFlightInformation.setFlightType(flightType);
-        aiFlightInformation.setMission(mission);
-        aiFlightInformation.setCampaign(mission.getCampaign());
-        aiFlightInformation.setSquadron(squadron);
-        aiFlightInformation.setPlayerFlight(false);
-        aiFlightInformation.setEscortForPlayerFlight(false);
-        aiFlightInformation.setEscortedByPlayerFlight(false);
-        aiFlightInformation.setTargetSearchStartLocation(mission.getMissionBorders().getCenter());
-        FlightPlaneBuilder.buildPlanes (aiFlightInformation);
-        aiFlightInformation.calculateAltitude();
+        FlightInformation aFlightInformation = new FlightInformation(mission);
+        aFlightInformation.setFlightType(flightType);
+        aFlightInformation.setMission(mission);
+        aFlightInformation.setCampaign(mission.getCampaign());
+        aFlightInformation.setSquadron(squadron);
+        aFlightInformation.setPlayerFlight(false);
+        aFlightInformation.setEscortForPlayerFlight(false);
+        aFlightInformation.setEscortedByPlayerFlight(false);
+        aFlightInformation.setTargetSearchStartLocation(mission.getMissionBorders().getCenter());
+        FlightPlaneBuilder.buildPlanes (aFlightInformation);
+        aFlightInformation.calculateAltitude();
 
-        return aiFlightInformation;
+        return aFlightInformation;
     }
 }

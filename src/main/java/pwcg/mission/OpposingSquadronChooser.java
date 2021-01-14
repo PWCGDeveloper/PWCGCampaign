@@ -13,15 +13,15 @@ import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 
 public class OpposingSquadronChooser
 {
-    private IFlightInformation playerFlightInformation;
+    private FlightInformation playerFlightInformation;
     private List<Role> opposingRoles = new ArrayList<>();
     private int numberOfOpposingFlights = 1;
 
-    public OpposingSquadronChooser(IFlightInformation playerFlightInformation, List<Role> opposingRoles, int numberOfOpposingFlights)
+    public OpposingSquadronChooser(FlightInformation playerFlightInformation, List<Role> opposingRoles, int numberOfOpposingFlights)
     {
         this.playerFlightInformation = playerFlightInformation;
         this.opposingRoles = opposingRoles;

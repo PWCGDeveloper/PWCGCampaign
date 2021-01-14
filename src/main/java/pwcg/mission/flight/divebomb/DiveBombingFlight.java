@@ -4,7 +4,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightPayloadBuilder;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.initialposition.FlightPositionSetter;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
@@ -17,7 +17,7 @@ import pwcg.mission.target.TargetDefinition;
 
 public class DiveBombingFlight extends Flight implements IFlight
 {
-    public DiveBombingFlight(IFlightInformation flightInformation, TargetDefinition targetDefinition)
+    public DiveBombingFlight(FlightInformation flightInformation, TargetDefinition targetDefinition)
     {
         super(flightInformation, targetDefinition);
     }

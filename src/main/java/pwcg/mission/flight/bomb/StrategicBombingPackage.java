@@ -5,7 +5,7 @@ import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.builder.AAAUnitBuilder;
@@ -25,7 +25,7 @@ public class StrategicBombingPackage implements IFlightPackage
     @Override
     public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {        
-        IFlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.STRATEGIC_BOMB);
+        FlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.STRATEGIC_BOMB);
         TargetDefinition targetDefinition = buildTargetDefinition(flightInformation);
         
         BombingFlight bombingFlight = new BombingFlight (flightInformation, targetDefinition);
@@ -37,20 +37,20 @@ public class StrategicBombingPackage implements IFlightPackage
         return bombingFlight;
     }
     
-    private TargetDefinition buildTargetDefinition(IFlightInformation flightInformation) throws PWCGException
+    private TargetDefinition buildTargetDefinition(FlightInformation flightInformation) throws PWCGException
     {
         ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilderStrategic(flightInformation);
         return targetDefinitionBuilder.buildTargetDefinition();
     }
 
-    private void createAAA(IFlightInformation flightInformation, TargetDefinition targetDefinition, BombingFlight bombingFlight) throws PWCGException
+    private void createAAA(FlightInformation flightInformation, TargetDefinition targetDefinition, BombingFlight bombingFlight) throws PWCGException
     {
         AAAUnitBuilder groundUnitBuilder = new AAAUnitBuilder(flightInformation.getCampaign(), targetDefinition);
         GroundUnitCollection aaaArty = groundUnitBuilder.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_HIGH);
         flightInformation.getMission().getMissionGroundUnitBuilder().addFlightSpecificGroundUnit(aaaArty);
     }
 
-    private void createSearchlight(IFlightInformation flightInformation, TargetDefinition targetDefinition, BombingFlight bombingFlight) throws PWCGException
+    private void createSearchlight(FlightInformation flightInformation, TargetDefinition targetDefinition, BombingFlight bombingFlight) throws PWCGException
     {
         if (flightInformation.getMission().isNightMission())
         {

@@ -4,13 +4,12 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.FlightPlaneBuilder;
 
 public class ScrambleOpposingFlightInformationBuilder
 {
 
-    public static IFlightInformation buildAiScrambleOpposingFlightInformation(Squadron opposingSquadron, IFlightInformation playerFlightInformation, FlightTypes opposingFlightType) throws PWCGException
+    public static FlightInformation buildAiScrambleOpposingFlightInformation(Squadron opposingSquadron, FlightInformation playerFlightInformation, FlightTypes opposingFlightType) throws PWCGException
     {
         FlightInformation scrambleOpposingFlightInformation = new FlightInformation(playerFlightInformation.getMission());
         scrambleOpposingFlightInformation.setFlightType(opposingFlightType);

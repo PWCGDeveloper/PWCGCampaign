@@ -3,7 +3,7 @@ package pwcg.mission.flight.scramble;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.attack.GroundAttackWaypointFactory;
 import pwcg.mission.flight.waypoint.attack.GroundAttackWaypointHelper;
 import pwcg.mission.flight.waypoint.end.EgressWaypointGenerator;
@@ -41,7 +41,7 @@ public class ScrambleOpposingGroundAttackWaypointFactory
 
     private void createTargetWaypoints(Coordinate ingressPosition) throws PWCGException  
     {
-        IFlightInformation flightInformation = flight.getFlightInformation();
+        FlightInformation flightInformation = flight.getFlightInformation();
         GroundAttackWaypointHelper groundAttackWaypointHelper = new GroundAttackWaypointHelper(flight, ingressPosition, flightInformation.getAltitude());
         groundAttackWaypointHelper.createTargetWaypoints();
         for (McuWaypoint groundAttackWaypoint : groundAttackWaypointHelper.getWaypointsBefore())

@@ -5,14 +5,14 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.target.locator.TargetLocatorAir;
 
 public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
 {
-    private IFlightInformation flightInformation;
+    private FlightInformation flightInformation;
 
-    public TargetDefinitionBuilderAirToAir(IFlightInformation flightInformation)
+    public TargetDefinitionBuilderAirToAir(FlightInformation flightInformation)
     {
         this.flightInformation = flightInformation;
     }

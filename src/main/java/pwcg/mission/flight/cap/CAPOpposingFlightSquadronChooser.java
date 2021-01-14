@@ -8,13 +8,13 @@ import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.OpposingSquadronChooser;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 
 public class CAPOpposingFlightSquadronChooser
 {
-    private IFlightInformation playerFlightInformation;
+    private FlightInformation playerFlightInformation;
 
-    public CAPOpposingFlightSquadronChooser(IFlightInformation playerFlightInformation)
+    public CAPOpposingFlightSquadronChooser(FlightInformation playerFlightInformation)
     {
         this.playerFlightInformation = playerFlightInformation;
     }

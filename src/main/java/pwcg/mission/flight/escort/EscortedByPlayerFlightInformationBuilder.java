@@ -4,14 +4,13 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.FlightPlaneBuilder;
 import pwcg.mission.target.TargetDefinition;
 
 public class EscortedByPlayerFlightInformationBuilder
 {
 
-    public static IFlightInformation buildEscortedByPlayerFlightInformation(IFlightInformation playerEscortFlightInformation, TargetDefinition playerEscortTargetDefinition, Squadron friendlyBomberSquadron) throws PWCGException
+    public static FlightInformation buildEscortedByPlayerFlightInformation(FlightInformation playerEscortFlightInformation, TargetDefinition playerEscortTargetDefinition, Squadron friendlyBomberSquadron) throws PWCGException
     {
         FlightInformation escortedFlightInformation = new FlightInformation(playerEscortFlightInformation.getMission());
         escortedFlightInformation.setFlightType(FlightTypes.BOMB);

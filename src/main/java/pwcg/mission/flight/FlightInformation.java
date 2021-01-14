@@ -20,9 +20,9 @@ import pwcg.mission.flight.plane.FormationTypeCalculator;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.mcu.McuFormation;
 
-public class FlightInformation implements IFlightInformation
+public class FlightInformation
 {
-    private int flightId = IndexGenerator.getInstance().getNextIndex(); 
+    private int flightId = IndexGenerator.getInstance().getNextIndex();
     private Campaign campaign;
     private Mission mission;
     private FlightTypes flightType;
@@ -41,14 +41,12 @@ public class FlightInformation implements IFlightInformation
         this.mission = mission;
         this.campaign = mission.getCampaign();
     }
-    
-    @Override
+
     public List<SquadronMember> getParticipatingPlayersForFlight()
     {
-		return mission.getParticipatingPlayers().getParticipatingPlayersForSquadron(squadron.getSquadronId());
+        return mission.getParticipatingPlayers().getParticipatingPlayersForSquadron(squadron.getSquadronId());
     }
-    
-    @Override
+
     public Mission getMission()
     {
         return mission;
@@ -59,7 +57,6 @@ public class FlightInformation implements IFlightInformation
         this.mission = mission;
     }
 
-    @Override
     public Squadron getSquadron()
     {
         return squadron;
@@ -70,7 +67,6 @@ public class FlightInformation implements IFlightInformation
         this.squadron = squadron;
     }
 
-    @Override
     public FlightTypes getFlightType()
     {
         return flightType;
@@ -82,7 +78,6 @@ public class FlightInformation implements IFlightInformation
         this.formationType = FormationTypeCalculator.calculateFormationType(flightType);
     }
 
-    @Override
     public boolean isPlayerFlight()
     {
         return isPlayerFlight;
@@ -93,7 +88,6 @@ public class FlightInformation implements IFlightInformation
         this.isPlayerFlight = isPlayerFlight;
     }
 
-    @Override
     public boolean isEscortedByPlayerFlight()
     {
         return isEscortedByPlayerFlight;
@@ -104,7 +98,6 @@ public class FlightInformation implements IFlightInformation
         this.isEscortedByPlayerFlight = isPlayerEscortedFlight;
     }
 
-    @Override
     public boolean isEscortForPlayerFlight()
     {
         return isEscortForPlayerFlight;
@@ -115,7 +108,6 @@ public class FlightInformation implements IFlightInformation
         this.isEscortForPlayerFlight = isEscortForPlayerFlight;
     }
 
-    @Override
     public boolean isPlayerRelatedFlight()
     {
         if (isPlayerFlight || isEscortedByPlayerFlight || isEscortForPlayerFlight)
@@ -124,19 +116,17 @@ public class FlightInformation implements IFlightInformation
         }
         return false;
     }
-    
-    @Override
-    public List<SquadronMember> getFlightParticipatingPlayers() 
+
+    public List<SquadronMember> getFlightParticipatingPlayers()
     {
-		return mission.getParticipatingPlayers().getParticipatingPlayersForSquadron(squadron.getSquadronId());
-	}
+        return mission.getParticipatingPlayers().getParticipatingPlayersForSquadron(squadron.getSquadronId());
+    }
 
-    public void setCampaign(Campaign campaign) 
-	{
-		this.campaign = campaign;
-	}
+    public void setCampaign(Campaign campaign)
+    {
+        this.campaign = campaign;
+    }
 
-	@Override
     public boolean isVirtual()
     {
         boolean isVirtual = true;
@@ -147,7 +137,6 @@ public class FlightInformation implements IFlightInformation
         return isVirtual;
     }
 
-    @Override
     public boolean isAirStart() throws PWCGException
     {
         boolean airstart = true;
@@ -162,7 +151,6 @@ public class FlightInformation implements IFlightInformation
         return airstart;
     }
 
-    @Override
     public boolean isParkedStart() throws PWCGException
     {
         boolean parkedStart = false;
@@ -176,8 +164,7 @@ public class FlightInformation implements IFlightInformation
         }
         return parkedStart;
     }
-    
-    @Override
+
     public IAirfield getDepartureAirfield() throws PWCGException
     {
         String airfieldName = squadron.determineCurrentAirfieldName(campaign.getDate());
@@ -185,7 +172,6 @@ public class FlightInformation implements IFlightInformation
         return departureAirfield;
     }
 
-    @Override
     public List<PlaneMcu> getPlanes()
     {
         return planes;
@@ -196,13 +182,11 @@ public class FlightInformation implements IFlightInformation
         this.planes = planes;
     }
 
-    @Override
     public Campaign getCampaign()
     {
         return campaign;
     }
 
-    @Override
     public Coordinate getTargetSearchStartLocation()
     {
         return targetSearchStartLocation.copy();
@@ -213,19 +197,16 @@ public class FlightInformation implements IFlightInformation
         this.targetSearchStartLocation = targetSearchStartLocation;
     }
 
-    @Override
     public int getAltitude()
     {
         return altitude;
     }
-    
-    @Override
+
     public void setAltitude(int altitude)
     {
         this.altitude = altitude;
     }
 
-    @Override
     public int getFlightCruisingSpeed()
     {
         return flightCruisingSpeed;
@@ -236,14 +217,12 @@ public class FlightInformation implements IFlightInformation
         this.flightCruisingSpeed = cruisingSpeed;
     }
 
-    @Override
     public void calculateAltitude() throws PWCGException
     {
         IMissionAltitudeGenerator missionAltitudeGenerator = MissionAltitudeGeneratorFactory.createMissionAltitudeGenerator();
         this.altitude = missionAltitudeGenerator.determineFlightAltitude(campaign, flightType, mission.getWeather());
     }
 
-    @Override
     public boolean isFighterMission()
     {
         boolean isFighterMission = false;
@@ -255,37 +234,31 @@ public class FlightInformation implements IFlightInformation
         return isFighterMission;
     }
 
-    @Override
     public ICountry getCountry()
     {
         return squadron.getCountry();
     }
 
-    @Override
     public Coordinate getFlightHomePosition() throws PWCGException
     {
         return squadron.determineCurrentPosition(campaign.getDate()).copy();
     }
 
-    @Override
     public String getAirfieldName()
     {
         return squadron.determineCurrentAirfieldName(campaign.getDate());
     }
 
-    @Override
     public IAirfield getAirfield()
     {
         return squadron.determineCurrentAirfieldCurrentMap(campaign.getDate());
     }
-    
-    @Override
+
     public int getFlightId()
     {
         return flightId;
     }
 
-    @Override
     public int getFormationType()
     {
         return formationType;

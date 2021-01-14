@@ -6,13 +6,13 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.attack.GroundAttackPackage;
 import pwcg.mission.target.TargetDefinition;
 
 public class CAPOpposingFlightBuilder
 {
-    private IFlightInformation playerFlightInformation;
+    private FlightInformation playerFlightInformation;
     private TargetDefinition playerTargetDefinition;
 
     public CAPOpposingFlightBuilder(IFlight playerFlight)

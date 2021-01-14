@@ -5,14 +5,13 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.FlightPlaneBuilder;
 
 public class EscortForPlayerFlightInformationBuilder
 {
 
-    public static IFlightInformation buildEscortForPlayerFlightInformation(
-            IFlightInformation playerFlightInformation, 
+    public static FlightInformation buildEscortForPlayerFlightInformation(
+            FlightInformation playerFlightInformation, 
             Squadron friendlyFighterSquadron,
             Coordinate rendezvous) throws PWCGException
     {

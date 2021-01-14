@@ -4,7 +4,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightPayloadBuilder;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.initialposition.FlightPositionSetter;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
 import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory;
@@ -18,7 +18,7 @@ public class StrategicInterceptFlight extends Flight implements IFlight
 {
     private IFlight targetFlight;
     
-    public StrategicInterceptFlight(IFlightInformation flightInformation, TargetDefinition targetDefinition, IFlight targetFlight)
+    public StrategicInterceptFlight(FlightInformation flightInformation, TargetDefinition targetDefinition, IFlight targetFlight)
     {
         super(flightInformation, targetDefinition);
         this.targetFlight = targetFlight;

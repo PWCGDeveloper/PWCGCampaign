@@ -11,18 +11,18 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PositionFinder;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
 
 public class StrategicTargetLocator
 {
-    private IFlightInformation flightInformation;
+    private FlightInformation flightInformation;
     private Coordinate targetLocation;
     private int preferredRadius;
     private List<TargetDefinition> availableTargets = new ArrayList<>();
 
-    public StrategicTargetLocator(IFlightInformation flightInformation, int preferredRadius, Coordinate referenceLocation) throws PWCGException
+    public StrategicTargetLocator(FlightInformation flightInformation, int preferredRadius, Coordinate referenceLocation) throws PWCGException
     {
         this.preferredRadius = preferredRadius;
         this.flightInformation = flightInformation;

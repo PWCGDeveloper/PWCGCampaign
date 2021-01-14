@@ -6,7 +6,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightPayloadBuilder;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.initialposition.FlightPositionSetter;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
 import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory;
@@ -18,7 +18,7 @@ import pwcg.mission.target.TargetDefinition;
 
 public class FerryFlight extends Flight implements IFlight
 {
-    public FerryFlight(IFlightInformation flightInformation, TargetDefinition targetDefinition)
+    public FerryFlight(FlightInformation flightInformation, TargetDefinition targetDefinition)
     {
         super(flightInformation, targetDefinition);
     }
@@ -51,7 +51,7 @@ public class FerryFlight extends Flight implements IFlight
 
     private IMissionPointSet createFerryMissionPointSet(McuWaypoint ingressWaypoint) throws PWCGException
     {
-        IFlightInformation flightInformation = this.getFlightInformation();
+        FlightInformation flightInformation = this.getFlightInformation();
         if (flightInformation.getCampaign().getSquadronMoveEvent() != null)
         {
             IAirfield fromAirfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(flightInformation.getCampaign().getSquadronMoveEvent().getLastAirfield());

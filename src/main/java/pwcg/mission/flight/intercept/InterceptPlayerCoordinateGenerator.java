@@ -1,15 +1,15 @@
 package pwcg.mission.flight.intercept;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetBuilder;
 
 public class InterceptPlayerCoordinateGenerator
 {
-    private IFlightInformation flightInformation;
+    private FlightInformation flightInformation;
 
-    public InterceptPlayerCoordinateGenerator(IFlightInformation flightInformation)
+    public InterceptPlayerCoordinateGenerator(FlightInformation flightInformation)
     {
         this.flightInformation = flightInformation;
     }

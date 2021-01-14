@@ -10,7 +10,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointFactory;
@@ -132,7 +132,7 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
     
     private void createFormation() throws PWCGException
     {
-        IFlightInformation flightInformation = flight.getFlightInformation();
+        FlightInformation flightInformation = flight.getFlightInformation();
 
         formationEntity = new McuFormation(flight.getFlightInformation().getFormationType(), McuFormation.FORMATION_DENSITY_LOOSE);
         formationEntity.setPosition(flightInformation.getDepartureAirfield().getPosition());

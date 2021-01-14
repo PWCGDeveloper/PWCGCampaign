@@ -6,7 +6,7 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
@@ -88,7 +88,7 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
 
     private void createFormation() throws PWCGException
     {
-        IFlightInformation flightInformation = flight.getFlightInformation();
+        FlightInformation flightInformation = flight.getFlightInformation();
 
         formationEntity = new McuFormation(flightInformation.getFormationType(), McuFormation.FORMATION_DENSITY_LOOSE);
         formationEntity.setPosition(flightInformation.getDepartureAirfield().getPosition());

@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.IGroundUnit;
 
 public class TargetDefinitionBuilderInfantry
 {
-    private IFlightInformation flightInformation;
+    private FlightInformation flightInformation;
     private List<TargetDefinition> targetDefinitions = new ArrayList<>();
 
-    public TargetDefinitionBuilderInfantry(IFlightInformation flightInformation) throws PWCGException
+    public TargetDefinitionBuilderInfantry(FlightInformation flightInformation) throws PWCGException
     {
         this.flightInformation = flightInformation;
     }

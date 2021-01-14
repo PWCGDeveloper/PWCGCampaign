@@ -158,9 +158,10 @@ public class AirfieldManager
         for (IAirfield airfield : airfields.values())
         {
             double distanceFromClick = MathUtils.calcDist(airfield.getPosition(), clickCoordinate);
-            if (closestDistance < distanceFromClick)
+            if (distanceFromClick < closestDistance)
             {
                 closestAirfield = airfield;
+                closestDistance = distanceFromClick;
             }
         }
         return closestAirfield;

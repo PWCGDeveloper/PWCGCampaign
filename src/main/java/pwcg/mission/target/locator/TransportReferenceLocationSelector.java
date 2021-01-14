@@ -16,7 +16,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.FlightInformation;
 
 public class TransportReferenceLocationSelector
 {
@@ -26,7 +26,7 @@ public class TransportReferenceLocationSelector
     private Campaign campaign;
     private Squadron squadron;
     
-    public TransportReferenceLocationSelector(IFlightInformation flightInformation)
+    public TransportReferenceLocationSelector(FlightInformation flightInformation)
     {
         this.campaign = flightInformation.getCampaign();
         this.squadron = flightInformation.getSquadron();
