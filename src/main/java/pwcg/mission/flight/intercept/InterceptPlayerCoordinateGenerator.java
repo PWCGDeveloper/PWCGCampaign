@@ -3,7 +3,7 @@ package pwcg.mission.flight.intercept;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderAirToGround;
+import pwcg.mission.target.TargetBuilder;
 
 public class InterceptPlayerCoordinateGenerator
 {
@@ -16,7 +16,7 @@ public class InterceptPlayerCoordinateGenerator
     
     public TargetDefinition createTargetCoordinates() throws PWCGException
     {
-        TargetDefinitionBuilderAirToGround targetDefinitionBuilder = new TargetDefinitionBuilderAirToGround(flightInformation);
+        TargetBuilder targetDefinitionBuilder = new TargetBuilder(flightInformation);
         TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
         return targetDefinition;
     }

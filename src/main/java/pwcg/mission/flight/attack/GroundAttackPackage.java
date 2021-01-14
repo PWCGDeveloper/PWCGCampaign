@@ -9,7 +9,7 @@ import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderAirToGround;
+import pwcg.mission.target.TargetBuilder;
 
 public class GroundAttackPackage implements IFlightPackage
 {
@@ -30,7 +30,7 @@ public class GroundAttackPackage implements IFlightPackage
     
     private TargetDefinition buildTargetDefinition(IFlightInformation flightInformation) throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilderAirToGround(flightInformation);
+        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetBuilder(flightInformation);
         return targetDefinitionBuilder.buildTargetDefinition();
     }
 }

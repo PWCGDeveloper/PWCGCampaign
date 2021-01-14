@@ -21,17 +21,16 @@ import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.org.GroundUnitCollection;
-import pwcg.mission.target.TargetPriorityGeneratorGroundUnit;
-import pwcg.mission.target.TargetSelectorGroundUnit;
+import pwcg.mission.target.TargetBuilder;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetPriorityGeneratorTactical;
 import pwcg.mission.target.TargetType;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({TargetPriorityGeneratorGroundUnit.class})
+@PrepareForTest({TargetPriorityGeneratorTactical.class})
 public class TargetBuilderStalingradTest
 {
     private Campaign campaign;
@@ -41,7 +40,7 @@ public class TargetBuilderStalingradTest
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
 
         if (mission == null)
         {
@@ -53,80 +52,96 @@ public class TargetBuilderStalingradTest
     @Test
     public void findInfantryTest()  throws PWCGException
     {
-        PowerMockito.mockStatic(TargetPriorityGeneratorGroundUnit.class);
-        List<TargetType> shuffledTargetTypes = Arrays.asList(TargetType.TARGET_ASSAULT, TargetType.TARGET_ASSAULT, TargetType.TARGET_FACTORY);
-        Mockito.when(TargetPriorityGeneratorGroundUnit.getTargetTypePriorities(Mockito.any(), Mockito.any())).thenReturn(shuffledTargetTypes);
+        PowerMockito.mockStatic(TargetPriorityGeneratorTactical.class);
+        List<TargetType> shuffledTargetTypes = Arrays.asList(TargetType.TARGET_INFANTRY, TargetType.TARGET_INFANTRY, TargetType.TARGET_FACTORY);
+        Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(shuffledTargetTypes);
 
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         
-        TargetSelectorGroundUnit targetBuilder = new TargetSelectorGroundUnit(playerFlight.getFlightInformation());
-        GroundUnitCollection groundUnits = targetBuilder.findTarget();
-        
-        assert(groundUnits.getGroundUnits().size() >= 1);
-        assert(groundUnits.getTargetType() == TargetType.TARGET_ASSAULT);
+        TargetBuilder targetBuilder = new TargetBuilder(playerFlight.getFlightInformation());
+        TargetDefinition targetDefinition = targetBuilder.buildTargetDefinition();
 
-        IGroundUnit groundUnit = groundUnits.getInterestingGroundUnitsForSide(playerFlight.getFlightInformation().getSquadron().determineEnemySide()).get(0);
-        assert(groundUnit.getCountry().getCountry() == Country.RUSSIA);
-        assert(groundUnit.getTargetType() == TargetType.TARGET_ARMOR || groundUnit.getTargetType() == TargetType.TARGET_INFANTRY || groundUnit.getTargetType() == TargetType.TARGET_ARTILLERY);
+        assert(targetDefinition.getCountry().getCountry() == Country.RUSSIA);
+        assert(targetDefinition.getTargetType() == TargetType.TARGET_ARMOR || targetDefinition.getTargetType() == TargetType.TARGET_INFANTRY || targetDefinition.getTargetType() == TargetType.TARGET_ARTILLERY);
     }
     
     @Test
     public void findTransportTest() throws PWCGException
     {
-        PowerMockito.mockStatic(TargetPriorityGeneratorGroundUnit.class);
-        List<TargetType> shuffledTargetTypes = Arrays.asList(TargetType.TARGET_TRANSPORT, TargetType.TARGET_ASSAULT, TargetType.TARGET_FACTORY);
-        Mockito.when(TargetPriorityGeneratorGroundUnit.getTargetTypePriorities(Mockito.any(), Mockito.any())).thenReturn(shuffledTargetTypes);
+        PowerMockito.mockStatic(TargetPriorityGeneratorTactical.class);
+        List<TargetType> shuffledTargetTypes = Arrays.asList(TargetType.TARGET_TRANSPORT, TargetType.TARGET_INFANTRY, TargetType.TARGET_FACTORY);
+        Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(shuffledTargetTypes);
 
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         
-        TargetSelectorGroundUnit targetBuilder = new TargetSelectorGroundUnit(playerFlight.getFlightInformation());
-        GroundUnitCollection groundUnits = targetBuilder.findTarget();
-        
-        assert(groundUnits.getGroundUnits().size() >= 1);
-        assert(groundUnits.getTargetType() == TargetType.TARGET_TRANSPORT);
+        TargetBuilder targetBuilder = new TargetBuilder(playerFlight.getFlightInformation());
+        TargetDefinition targetDefinition = targetBuilder.buildTargetDefinition();
 
-        IGroundUnit groundUnit = groundUnits.getGroundUnits().get(0);
-        assert(groundUnit.getCountry().getCountry() == Country.RUSSIA);
-        assert(groundUnit.getTargetType() == TargetType.TARGET_TRANSPORT);
+        assert(targetDefinition.getCountry().getCountry() == Country.RUSSIA);
+        assert(targetDefinition.getTargetType() == TargetType.TARGET_TRANSPORT);
+    }
+    
+    @Test
+    public void findAirfieldTest() throws PWCGException
+    {
+        PowerMockito.mockStatic(TargetPriorityGeneratorTactical.class);
+        List<TargetType> shuffledTargetTypes = Arrays.asList(TargetType.TARGET_AIRFIELD, TargetType.TARGET_INFANTRY, TargetType.TARGET_FACTORY);
+        Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(shuffledTargetTypes);
+
+        IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
+        
+        TargetBuilder targetBuilder = new TargetBuilder(playerFlight.getFlightInformation());
+        TargetDefinition targetDefinition = targetBuilder.buildTargetDefinition();
+
+        assert(targetDefinition.getCountry().getCountry() == Country.RUSSIA);
+        assert(targetDefinition.getTargetType() == TargetType.TARGET_AIRFIELD);
+    }
+    
+    @Test
+    public void findBridgeTest() throws PWCGException
+    {
+        PowerMockito.mockStatic(TargetPriorityGeneratorTactical.class);
+        List<TargetType> shuffledTargetTypes = Arrays.asList(TargetType.TARGET_BRIDGE, TargetType.TARGET_INFANTRY, TargetType.TARGET_FACTORY);
+        Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(shuffledTargetTypes);
+
+        IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
+        
+        TargetBuilder targetBuilder = new TargetBuilder(playerFlight.getFlightInformation());
+        TargetDefinition targetDefinition = targetBuilder.buildTargetDefinition();
+
+        assert(targetDefinition.getCountry().getCountry() == Country.RUSSIA);
+        assert(targetDefinition.getTargetType() == TargetType.TARGET_BRIDGE);
     }
     
     @Test
     public void findDrifterTest() throws PWCGException
     {
-        PowerMockito.mockStatic(TargetPriorityGeneratorGroundUnit.class);
-        List<TargetType> shuffledTargetTypes = Arrays.asList(TargetType.TARGET_DRIFTER, TargetType.TARGET_ASSAULT, TargetType.TARGET_FACTORY);
-        Mockito.when(TargetPriorityGeneratorGroundUnit.getTargetTypePriorities(Mockito.any(), Mockito.any())).thenReturn(shuffledTargetTypes);
+        PowerMockito.mockStatic(TargetPriorityGeneratorTactical.class);
+        List<TargetType> shuffledTargetTypes = Arrays.asList(TargetType.TARGET_DRIFTER, TargetType.TARGET_INFANTRY, TargetType.TARGET_FACTORY);
+        Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(shuffledTargetTypes);
 
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         
-        TargetSelectorGroundUnit targetBuilder = new TargetSelectorGroundUnit(playerFlight.getFlightInformation());
-        GroundUnitCollection groundUnits = targetBuilder.findTarget();
-        
-        assert(groundUnits.getGroundUnits().size() >= 1);
-        assert(groundUnits.getTargetType() == TargetType.TARGET_DRIFTER);
+        TargetBuilder targetBuilder = new TargetBuilder(playerFlight.getFlightInformation());
+        TargetDefinition targetDefinition = targetBuilder.buildTargetDefinition();
 
-        IGroundUnit groundUnit = groundUnits.getGroundUnits().get(0);
-        assert(groundUnit.getCountry().getCountry() == Country.RUSSIA);
-        assert(groundUnit.getTargetType() == TargetType.TARGET_DRIFTER);
+        assert(targetDefinition.getCountry().getCountry() == Country.RUSSIA);
+        assert(targetDefinition.getTargetType() == TargetType.TARGET_DRIFTER);
     }
 
     @Test
     public void findTrainTest() throws PWCGException
     {
-        PowerMockito.mockStatic(TargetPriorityGeneratorGroundUnit.class);
-        List<TargetType> shuffledTargetTypes = Arrays.asList(TargetType.TARGET_TRAIN, TargetType.TARGET_ASSAULT, TargetType.TARGET_FACTORY);
-        Mockito.when(TargetPriorityGeneratorGroundUnit.getTargetTypePriorities(Mockito.any(), Mockito.any())).thenReturn(shuffledTargetTypes);
+        PowerMockito.mockStatic(TargetPriorityGeneratorTactical.class);
+        List<TargetType> shuffledTargetTypes = Arrays.asList(TargetType.TARGET_TRAIN, TargetType.TARGET_INFANTRY, TargetType.TARGET_FACTORY);
+        Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(shuffledTargetTypes);
 
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         
-        TargetSelectorGroundUnit targetBuilder = new TargetSelectorGroundUnit(playerFlight.getFlightInformation());
-        GroundUnitCollection groundUnits = targetBuilder.findTarget();
-        
-        assert(groundUnits.getGroundUnits().size() >= 1);
-        assert(groundUnits.getTargetType() == TargetType.TARGET_TRAIN);
+        TargetBuilder targetBuilder = new TargetBuilder(playerFlight.getFlightInformation());
+        TargetDefinition targetDefinition = targetBuilder.buildTargetDefinition();
 
-        IGroundUnit groundUnit = groundUnits.getGroundUnits().get(0);
-        assert(groundUnit.getCountry().getCountry() == Country.RUSSIA);
-        assert(groundUnit.getTargetType() == TargetType.TARGET_TRAIN);
+        assert(targetDefinition.getCountry().getCountry() == Country.RUSSIA);
+        assert(targetDefinition.getTargetType() == TargetType.TARGET_TRAIN);
     }
 }

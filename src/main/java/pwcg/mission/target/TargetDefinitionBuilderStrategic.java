@@ -24,8 +24,7 @@ public class TargetDefinitionBuilderStrategic implements ITargetDefinitionBuilde
         Coordinate proposedTargetPosition = flightInformation.getTargetSearchStartLocation();
         List<TargetDefinition> availableTargets = getAvailableStrategicTargets(proposedTargetPosition);
 
-        List<TargetType> strategicTargetTypes = TargetPriorityGeneratorStrategic.getTargetTypePriorities(flightInformation.getCampaign(), flightInformation.getSquadron());
-        TargetDefinition targetDefinition = findStrategicTarget(strategicTargetTypes, availableTargets);
+        TargetDefinition targetDefinition = findStrategicTarget(availableTargets);
 
         return targetDefinition;
     }
@@ -45,9 +44,9 @@ public class TargetDefinitionBuilderStrategic implements ITargetDefinitionBuilde
     }
     
 
-    private TargetDefinition findStrategicTarget(List<TargetType> strategicTargetTypes, List<TargetDefinition> availableTargets) throws PWCGException
+    private TargetDefinition findStrategicTarget(List<TargetDefinition> availableTargets) throws PWCGException
     {
-        List<TargetType> shuffledTargetTypes = TargetPriorityGeneratorGroundUnit.getTargetTypePriorities(flightInformation.getCampaign(), flightInformation.getSquadron());
+        List<TargetType> shuffledTargetTypes = TargetPriorityGeneratorStrategic.getTargetTypePriorities(flightInformation.getCampaign(), flightInformation.getSquadron());
         List<GroundUnitCollection> shuffledGroundUnits = flightInformation.getMission().getMissionGroundUnitBuilder().getAllMissionGroundUnits();
         Collections.shuffle(shuffledGroundUnits);
 

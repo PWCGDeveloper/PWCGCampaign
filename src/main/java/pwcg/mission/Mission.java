@@ -41,6 +41,7 @@ public class Mission
 
     private MissionWeather weather;
     private MissionFlightBuilder missionFlightBuilder;
+    private MissionBlockBuilder missionBlockBuilder;
     private MissionObjectiveGroup missionObjectiveSuccess = new MissionObjectiveGroup();
     private MissionObjectiveGroup missionObjectiveFailure = new MissionObjectiveGroup();
     private MissionBattleManager missionBattleManager = new MissionBattleManager();
@@ -114,6 +115,7 @@ public class Mission
         missionGroundUnitManager = new MissionGroundUnitResourceManager();
         missionGroundUnitBuilder = new MissionGroundUnitBuilder(campaign, this);
         missionFlightBuilder = new MissionFlightBuilder(campaign, this);
+        missionBlockBuilder = new MissionBlockBuilder(this);
         missionFrontLines = new MissionFrontLineIconBuilder(campaign);
         missionSquadronIconBuilder = new MissionSquadronIconBuilder(campaign);
     }
@@ -121,8 +123,15 @@ public class Mission
     public void generate(List<FlightTypes> playerFlightTypes) throws PWCGException
     {
         validate();
+        createStructures();
         createGroundUnits();
         generateFlights(playerFlightTypes);
+
+    }
+
+    private void createStructures() throws PWCGException
+    {
+        missionBlockBuilder.buildFixedPositionsForMission();
     }
 
     private void generateFlights(List<FlightTypes> playerFlightTypes) throws PWCGException
@@ -454,5 +463,10 @@ public class Mission
     public MissionWeather getWeather()
     {
         return weather;
+    }
+
+    public MissionBlockBuilder getMissionBlockBuilder()
+    {
+        return missionBlockBuilder;
     }
 }

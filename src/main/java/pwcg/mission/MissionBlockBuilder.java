@@ -9,18 +9,19 @@ import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.campaign.group.GroupManager;
+import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
-import pwcg.mission.flight.IFlight;
 
 public class MissionBlockBuilder
 {
     private Mission mission;
     private List<FixedPosition> positionsForMission = new ArrayList<>();
-    
-    public MissionBlockBuilder (Mission mission)
+
+    public MissionBlockBuilder(Mission mission)
     {
         this.mission = mission;
     }
@@ -31,8 +32,8 @@ public class MissionBlockBuilder
         getTrainStationsPatrol();
         getBridgesForPatrol();
     }
-    
-    private void getStandaloneBlocksPatrol() throws PWCGException 
+
+    private void getStandaloneBlocksPatrol() throws PWCGException
     {
         List<Block> selectedBlocks = new ArrayList<Block>();
 
@@ -40,16 +41,19 @@ public class MissionBlockBuilder
         int keepGroupSpread = configManager.getIntConfigParam(ConfigItemKeys.KeepGroupSpreadKey);
         CoordinateBox missionBorders = mission.getMissionBorders().expandBox(keepGroupSpread);
 
-        GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupData = PWCGContext.getInstance().getCurrentMap().getGroupManager();
         for (Block block : groupData.getStandaloneBlocks())
         {
             if (missionBorders.isInBox(block.getPosition()))
             {
                 selectedBlocks.add(block);
-            } else {
-                for (IFlight playerFlight : mission.getMissionFlightBuilder().getPlayerFlights())
+            }
+            else
+            {
+                for (SquadronMember player : mission.getParticipatingPlayers().getAllParticipatingPlayers())
                 {
-                    IAirfield airfield = playerFlight.getFlightInformation().getAirfield();
+                    Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
+                    IAirfield airfield = squadron.determineCurrentAirfieldAnyMap(mission.getCampaign().getDate());
                     CoordinateBox airfieldBox = CoordinateBox.coordinateBoxFromCenter(airfield.getPosition(), 10000);
                     if (airfieldBox.isInBox(block.getPosition()))
                     {
@@ -62,7 +66,7 @@ public class MissionBlockBuilder
         positionsForMission.addAll(selectedBlocks);
     }
 
-    private void getTrainStationsPatrol() throws PWCGException 
+    private void getTrainStationsPatrol() throws PWCGException
     {
         List<Block> selectedRRStations = new ArrayList<Block>();
 
@@ -70,7 +74,7 @@ public class MissionBlockBuilder
         int keepGroupSpread = configManager.getIntConfigParam(ConfigItemKeys.KeepGroupSpreadKey);
         CoordinateBox missionBorders = mission.getMissionBorders().expandBox(keepGroupSpread);
 
-        GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupData = PWCGContext.getInstance().getCurrentMap().getGroupManager();
         for (Block rrStation : groupData.getRailroadList())
         {
             if (missionBorders.isInBox(rrStation.getPosition()))
@@ -82,7 +86,7 @@ public class MissionBlockBuilder
         positionsForMission.addAll(selectedRRStations);
     }
 
-    private void getBridgesForPatrol() throws PWCGException 
+    private void getBridgesForPatrol() throws PWCGException
     {
         ArrayList<Bridge> selectedBridges = new ArrayList<Bridge>();
 
@@ -90,7 +94,7 @@ public class MissionBlockBuilder
         int keepGroupSpread = configManager.getIntConfigParam(ConfigItemKeys.KeepGroupSpreadKey);
         CoordinateBox missionBorders = mission.getMissionBorders().expandBox(keepGroupSpread);
 
-        GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupData = PWCGContext.getInstance().getCurrentMap().getGroupManager();
         for (Bridge bridge : groupData.getBridgeFinder().findAllBridges())
         {
             if (missionBorders.isInBox(bridge.getPosition()))

@@ -44,7 +44,7 @@ public class MissionGroundUnitBodenplatteTest
         {
             List<TargetType> availableGroundUnitTypes = mission.getMissionGroundUnitBuilder().getAvailableGroundUnitTargetTypesForMissionForSide(side);
             
-            List<TargetType> expectedGroundUnitTypes = Arrays.asList(TargetType.TARGET_ASSAULT, TargetType.TARGET_TRANSPORT, TargetType.TARGET_TRAIN);
+            List<TargetType> expectedGroundUnitTypes = Arrays.asList(TargetType.TARGET_INFANTRY, TargetType.TARGET_TRANSPORT, TargetType.TARGET_TRAIN);
             boolean allExist = validateExpectedGroundUnits(side , availableGroundUnitTypes, expectedGroundUnitTypes);
             assert(allExist);
             

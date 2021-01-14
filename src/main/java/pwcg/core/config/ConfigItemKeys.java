@@ -60,19 +60,35 @@ public class ConfigItemKeys
     public static final String AlliedCargoDropKey = "AlliedCargoDrop";
     public static final String AlliedParachuteDropKey = "AlliedParachuteDrop";    
 
+    public static final String AlliedTargetTypeArmorKey = "AlliedTargetTypeArmor";    
     public static final String AlliedTargetTypeInfantryKey = "AlliedTargetTypeInfantry";    
     public static final String AlliedTargetTypeTransportKey = "AlliedTargetTypeTransport";    
     public static final String AlliedTargetTypeTrainKey = "AlliedTargetTypeTrain";    
-    public static final String AlliedTargetTypeAirfieldKey = "AlliedTargetTypeAirfield";    
     public static final String AlliedTargetTypeShippingKey = "AlliedTargetTypeShipping";    
-    public static final String AlliedTargetTypeDrifterKey = "AlliedTargetTypeDrifter";    
+    public static final String AlliedTargetTypeDrifterKey = "AlliedTargetTypeDrifter";
 
+    public static final String AlliedTargetTypeAirfieldKey = "AlliedTargetTypeAirfield";    
+    public static final String AlliedTargetTypeBridgeKey = "AlliedTargetTypeBridge";    
+    public static final String AlliedTargetTypeRailKey = "AlliedTargetTypeRail";    
+    public static final String AlliedTargetTypeFactoryKey = "AlliedTargetTypeFactory";    
+    public static final String AlliedTargetTypePortKey = "AlliedTargetTypePort";    
+    public static final String AlliedTargetTypeDepotKey = "AlliedTargetTypeDepot";    
+    public static final String AlliedTargetTypeFuelDepotKey = "AlliedTargetTypeFuelDepot";    
+
+    public static final String AxisTargetTypeArmorKey = "AxisTargetTypeArmor";    
     public static final String AxisTargetTypeInfantryKey = "AxisTargetTypeInfantry";    
     public static final String AxisTargetTypeTransportKey = "AxisTargetTypeTransport";    
     public static final String AxisTargetTypeTrainKey = "AxisTargetTypeTrain";    
-    public static final String AxisTargetTypeAirfieldKey = "AxisTargetTypeAirfield";    
     public static final String AxisTargetTypeShippingKey = "AxisTargetTypeShipping";    
     public static final String AxisTargetTypeDrifterKey = "AxisTargetTypeDrifter";    
+
+    public static final String AxisTargetTypeAirfieldKey = "AxisTargetTypeAirfield";    
+    public static final String AxisTargetTypeBridgeKey = "AxisTargetTypeBridge";    
+    public static final String AxisTargetTypeRailKey = "AxisTargetTypeRail";    
+    public static final String AxisTargetTypeFactoryKey = "AxisTargetTypeFactory";    
+    public static final String AxisTargetTypePortKey = "AxisTargetTypePort";    
+    public static final String AxisTargetTypeDepotKey = "AxisTargetTypeDepot";    
+    public static final String AxisTargetTypeFuelDepotKey = "AxisTargetTypeFuelDepot";    
 
     public static final String MaxVirtualEscortedFlightKey = "MaxVirtualEscortedFlight";
     public static final String IsVirtualBombingEscortedOddsKey = "IsVirtualBombingEscortedOdds";

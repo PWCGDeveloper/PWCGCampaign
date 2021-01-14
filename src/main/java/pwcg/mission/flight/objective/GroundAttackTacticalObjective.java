@@ -13,7 +13,7 @@ import pwcg.mission.ground.unittypes.staticunits.AirfieldTargetGroup;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.target.TargetType;
 
-public class GroundAttackObjective
+public class GroundAttackTacticalObjective
 {
     static String getMissionObjective(IFlight flight) throws PWCGException 
     {

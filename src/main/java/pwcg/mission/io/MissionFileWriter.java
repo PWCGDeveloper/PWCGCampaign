@@ -163,9 +163,7 @@ public class MissionFileWriter implements IMissionFile
 
     private void writeBlocks(BufferedWriter writer) throws PWCGException
     {
-        MissionBlockBuilder missionBlockBuilder = new MissionBlockBuilder(mission);
-        missionBlockBuilder.buildFixedPositionsForMission();
-        
+        MissionBlockBuilder missionBlockBuilder = mission.getMissionBlockBuilder();
         List<FixedPosition> damagedFixedPositions = adjustBlockDamage(missionBlockBuilder.getPositionsForMission());
         adjustBlockSmoke(damagedFixedPositions);
         setBlockCountries(missionBlockBuilder.getPositionsForMission());

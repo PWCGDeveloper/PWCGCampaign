@@ -6,7 +6,7 @@ import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderAirToGround;
+import pwcg.mission.target.TargetBuilder;
 
 
 public class EscortedByPlayerFlightBuilder
@@ -54,7 +54,7 @@ public class EscortedByPlayerFlightBuilder
 
     private TargetDefinition buildTargetDefintion(IFlightInformation escortedFlightInformation) throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilderAirToGround(escortedFlightInformation);
+        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetBuilder(escortedFlightInformation);
         return targetDefinitionBuilder.buildTargetDefinition();
     }
 }

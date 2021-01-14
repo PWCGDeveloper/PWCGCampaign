@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import pwcg.mission.target.TargetType;
+
 public enum PwcgBuilding
 {
     CHURCH ("church", new BuildingSearchCriteria("church_", BuildingSearchMethod.SEARCH_BEGINS)),
@@ -67,5 +69,39 @@ public enum PwcgBuilding
         }
         
         return false;
+    }
+
+    public TargetType toTargetType()
+    {
+        if (this == BRIDGE)
+        {
+            return TargetType.TARGET_BRIDGE;
+        }
+        else if (this == RAILWAY)
+        {
+            return TargetType.TARGET_RAIL;
+        }
+        else if (this == HANGAR)
+        {
+            return TargetType.TARGET_AIRFIELD;
+        }
+        else if (this == PORT_FACILITY)
+        {
+            return TargetType.TARGET_PORT;
+        }
+        else if (this == INDUSTRIAL)
+        {
+            return TargetType.TARGET_FACTORY;
+        }
+        else if (this == DEPOT)
+        {
+            return TargetType.TARGET_DEPOT;
+        }
+        else if (this == FUEL)
+        {
+            return TargetType.TARGET_FUEL;
+        }
+        
+        return TargetType.TARGET_NONE;
     }
 }

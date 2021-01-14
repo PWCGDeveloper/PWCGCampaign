@@ -8,11 +8,9 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
-import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.target.ITargetDefinitionBuilder;
+import pwcg.mission.target.TargetBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderAirToGround;
-import pwcg.mission.target.TargetSelectorGroundUnit;
 
 public class ArtillerySpotPackage implements IFlightPackage
 {
@@ -35,8 +33,7 @@ public class ArtillerySpotPackage implements IFlightPackage
 
     private IFlight createFlight() throws PWCGException
     {        
-        GroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
-        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(flightInformation.getSquadron().determineEnemySide());
+        TargetDefinition selectedTarget = createGroundUnitsForFlight();
 		IFlight artySpot = null;
 		if (flightInformation.isPlayerFlight())
 		{
@@ -44,17 +41,17 @@ public class ArtillerySpotPackage implements IFlightPackage
 		}
 		else
 		{
-            artySpot = createAiFlight(targetCoordinates);
+            artySpot = createAiFlight(selectedTarget.getPosition());
 		}
 
-        flightInformation.getMission().getMissionGroundUnitBuilder().addFlightSpecificGroundUnit(groundUnitCollection);
         return artySpot;
     }
 
-    private GroundUnitCollection createGroundUnitsForFlight() throws PWCGException
+    private TargetDefinition createGroundUnitsForFlight() throws PWCGException
     {
-        TargetSelectorGroundUnit targetBuilder = new TargetSelectorGroundUnit(flightInformation);
-        return targetBuilder.findTarget();
+        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        TargetDefinition selectedTarget  = targetBuilder.buildTargetDefinition();
+        return selectedTarget;
     }
 
     private IFlight createAiFlight(Coordinate targetCoordinates) throws PWCGException
@@ -68,7 +65,7 @@ public class ArtillerySpotPackage implements IFlightPackage
 
     private TargetDefinition buildTargetDefintion() throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilderAirToGround(flightInformation);
+        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetBuilder(flightInformation);
         return targetDefinitionBuilder.buildTargetDefinition();
     }
 }
