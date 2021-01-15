@@ -2,27 +2,34 @@
   "targetPreferences": [
     {
       "startDate": "19411001",
-      "endDate": "19421101",
+      "endDate": "19411201",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_AIRFIELD",
+      "oddsOfUse": "40"
+    },
+    {
+      "startDate": "19411101",
+      "endDate": "19411201",
       "targetSide": "ALLIED",
       "targetType": "TARGET_INFANTRY",
       "oddsOfUse": "40"
     },
     {
-      "startDate": "19421101",
+      "startDate": "19411201",
       "endDate": "19420301",
       "targetSide": "ALLIED",
-      "targetType": "TARGET_INFANTRY",
+      "targetType": "TARGET_ARMOR",
       "oddsOfUse": "40"
     },
     {
       "startDate": "19411001",
-      "endDate": "19421101",
+      "endDate": "19411201",
       "targetSide": "AXIS",
-      "targetType": "TARGET_INFANTRY",
+      "targetType": "TARGET_ARMOR",
       "oddsOfUse": "30"
     },
     {
-      "startDate": "19421101",
+      "startDate": "19411201",
       "endDate": "19420301",
       "targetSide": "AXIS",
       "targetType": "TARGET_INFANTRY",

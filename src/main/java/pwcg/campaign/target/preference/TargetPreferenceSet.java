@@ -21,21 +21,16 @@ public class TargetPreferenceSet
         this.targetPreferences = targetPreferences;
     }
 
-    public TargetPreference getTargetPreferenceToUse(Date date, Side side) throws PWCGException 
+    public List<TargetPreference> getTargetPreferences(Date date, Side side) throws PWCGException 
     {
-        return getTargetPreferenceForDate(date, side);
-    }
-
-    private TargetPreference getTargetPreferenceForDate(Date date, Side side)
-    {
-        TargetPreference selectedTargetPreference = null;
+        List<TargetPreference> targetPreferences = new ArrayList<>();
         for (TargetPreference targetPreference : targetPreferences)
         {
             if ((!date.before(targetPreference.getStartDate())) && !(date.after(targetPreference.getEndDate())) && targetPreference.getTargetSide() == side)
             {
-                selectedTargetPreference = targetPreference;
+                targetPreferences.add(targetPreference);
             }
         }
-        return selectedTargetPreference;
+        return targetPreferences;
     }
 }

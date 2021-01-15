@@ -1,6 +1,11 @@
 {
 	"configSetName": "ConfigSetTarget",
 	"configMap": {
+		"PWCGChangesTargetOdds": {
+			"value": "1",
+			"label": "PWCG Changes Odds",
+			"help": "Let PWCG change odds for historical purposes"
+		},
 		"AlliedTargetTypeArmor": {
 			"value": "5",
 			"label": "Allied Target Enemy Armor",

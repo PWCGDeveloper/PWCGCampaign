@@ -105,6 +105,18 @@ public enum FlightTypes
         return false;
     }
 
+    public static boolean isLevelBombingFlight(FlightTypes flightType)
+    {
+        if (flightType == FlightTypes.BOMB ||
+            flightType == FlightTypes.LOW_ALT_BOMB ||
+            flightType == FlightTypes.STRATEGIC_BOMB)
+        {
+            return true;
+        }
+        
+        return false;
+    }
+
     public static boolean isFlightWithTargetArea(FlightTypes flightType)
     {
         if (isBombingFlight(flightType))

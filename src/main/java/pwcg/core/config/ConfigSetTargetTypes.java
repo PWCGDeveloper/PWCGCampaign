@@ -6,7 +6,9 @@ public class ConfigSetTargetTypes
 	{
 		ConfigSet configSet = new ConfigSet();
 		configSet.setConfigSetName(ConfigSetKeys.ConfigSetReconMission);
-
+		
+        configSet.addConfigItem(ConfigItemKeys.PWCGChangesTargetOddsKey, new ConfigItem("1"));
+		
         configSet.addConfigItem(ConfigItemKeys.AlliedTargetTypeArmorKey, new ConfigItem("10"));
         configSet.addConfigItem(ConfigItemKeys.AlliedTargetTypeInfantryKey, new ConfigItem("20"));
         configSet.addConfigItem(ConfigItemKeys.AlliedTargetTypeTransportKey, new ConfigItem("10"));

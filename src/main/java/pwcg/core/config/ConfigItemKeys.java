@@ -60,6 +60,9 @@ public class ConfigItemKeys
     public static final String AlliedCargoDropKey = "AlliedCargoDrop";
     public static final String AlliedParachuteDropKey = "AlliedParachuteDrop";    
 
+    // Target Odds
+    public static final String PWCGChangesTargetOddsKey = "PWCGChangesTargetOdds";    
+
     public static final String AlliedTargetTypeArmorKey = "AlliedTargetTypeArmor";    
     public static final String AlliedTargetTypeInfantryKey = "AlliedTargetTypeInfantry";    
     public static final String AlliedTargetTypeTransportKey = "AlliedTargetTypeTransport";    

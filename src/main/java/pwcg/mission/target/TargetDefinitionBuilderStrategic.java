@@ -46,7 +46,7 @@ public class TargetDefinitionBuilderStrategic implements ITargetDefinitionBuilde
 
     private TargetDefinition findStrategicTarget(List<TargetDefinition> availableTargets) throws PWCGException
     {
-        List<TargetType> shuffledTargetTypes = TargetPriorityGeneratorStrategic.getTargetTypePriorities(flightInformation.getCampaign(), flightInformation.getSquadron());
+        List<TargetType> shuffledTargetTypes = TargetPriorityGeneratorStrategic.getTargetTypePriorities(flightInformation);
         List<GroundUnitCollection> shuffledGroundUnits = flightInformation.getMission().getMissionGroundUnitBuilder().getAllMissionGroundUnits();
         Collections.shuffle(shuffledGroundUnits);
 

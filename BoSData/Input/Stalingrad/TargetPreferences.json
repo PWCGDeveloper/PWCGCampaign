@@ -22,10 +22,17 @@
       "oddsOfUse": "40"
     },
     {
+      "startDate": "19421126",
+      "endDate": "19430301",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_ARMOR",
+      "oddsOfUse": "40"
+    },
+    {
       "startDate": "19420601",
       "endDate": "19420830",
       "targetSide": "AXIS",
-      "targetType": "TARGET_INFANTRY",
+      "targetType": "TARGET_ARMOR",
       "oddsOfUse": "30"
     },
     {

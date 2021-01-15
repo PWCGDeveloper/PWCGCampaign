@@ -54,7 +54,7 @@ public class TargetBuilderStalingradTest
     {
         PowerMockito.mockStatic(TargetPriorityGeneratorTactical.class);
         List<TargetType> shuffledTargetTypes = Arrays.asList(TargetType.TARGET_INFANTRY, TargetType.TARGET_INFANTRY, TargetType.TARGET_FACTORY);
-        Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(shuffledTargetTypes);
+        Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any())).thenReturn(shuffledTargetTypes);
 
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         
@@ -70,7 +70,7 @@ public class TargetBuilderStalingradTest
     {
         PowerMockito.mockStatic(TargetPriorityGeneratorTactical.class);
         List<TargetType> shuffledTargetTypes = Arrays.asList(TargetType.TARGET_TRANSPORT, TargetType.TARGET_INFANTRY, TargetType.TARGET_FACTORY);
-        Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(shuffledTargetTypes);
+        Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any())).thenReturn(shuffledTargetTypes);
 
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         
@@ -86,7 +86,7 @@ public class TargetBuilderStalingradTest
     {
         PowerMockito.mockStatic(TargetPriorityGeneratorTactical.class);
         List<TargetType> shuffledTargetTypes = Arrays.asList(TargetType.TARGET_AIRFIELD, TargetType.TARGET_INFANTRY, TargetType.TARGET_FACTORY);
-        Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(shuffledTargetTypes);
+        Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any())).thenReturn(shuffledTargetTypes);
 
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         
@@ -102,7 +102,7 @@ public class TargetBuilderStalingradTest
     {
         PowerMockito.mockStatic(TargetPriorityGeneratorTactical.class);
         List<TargetType> shuffledTargetTypes = Arrays.asList(TargetType.TARGET_BRIDGE, TargetType.TARGET_INFANTRY, TargetType.TARGET_FACTORY);
-        Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(shuffledTargetTypes);
+        Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any())).thenReturn(shuffledTargetTypes);
 
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         
@@ -118,7 +118,7 @@ public class TargetBuilderStalingradTest
     {
         PowerMockito.mockStatic(TargetPriorityGeneratorTactical.class);
         List<TargetType> shuffledTargetTypes = Arrays.asList(TargetType.TARGET_DRIFTER, TargetType.TARGET_INFANTRY, TargetType.TARGET_FACTORY);
-        Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(shuffledTargetTypes);
+        Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any())).thenReturn(shuffledTargetTypes);
 
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         
@@ -134,7 +134,7 @@ public class TargetBuilderStalingradTest
     {
         PowerMockito.mockStatic(TargetPriorityGeneratorTactical.class);
         List<TargetType> shuffledTargetTypes = Arrays.asList(TargetType.TARGET_TRAIN, TargetType.TARGET_INFANTRY, TargetType.TARGET_FACTORY);
-        Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any(), Mockito.any(), Mockito.any())).thenReturn(shuffledTargetTypes);
+        Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any())).thenReturn(shuffledTargetTypes);
 
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         

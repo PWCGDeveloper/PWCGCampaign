@@ -1,5 +1,7 @@
 package pwcg.campaign.target.preference;
 
+import java.util.List;
+
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.io.json.TargetPreferenceIOJson;
@@ -18,9 +20,9 @@ public class TargetPreferenceManager
         }        
     }
 
-    public TargetPreference getTargetPreference(Campaign campaign, Side side) throws PWCGException
+    public List<TargetPreference> getTargetPreference(Campaign campaign, Side side) throws PWCGException
     {
-        TargetPreference targetPreference = targetPreferenceSet.getTargetPreferenceToUse(campaign.getDate(), side);
-        return targetPreference;
+        List<TargetPreference> targetPreferences = targetPreferenceSet.getTargetPreferences(campaign.getDate(), side);
+        return targetPreferences;
     }
 }

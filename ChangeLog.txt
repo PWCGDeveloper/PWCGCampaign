@@ -2,6 +2,14 @@
 ​At the PWCG web site
 
 PWCG 11.9.0
+Add Structures as creditable targets
+- Add structures as targets
+- Includes static planes and static trucks
+- Add mission briefings for structures
+- Change target selection to make appropriate use of structures as targets
+- Make game report structure destruction
+- Ability to identify and record victories on structures
+
 Remove high priority waypoints for some flights.
 - No need anymore since flights fly in formation.
 Verified AI adjustments in advanced configs work as intended - they do.

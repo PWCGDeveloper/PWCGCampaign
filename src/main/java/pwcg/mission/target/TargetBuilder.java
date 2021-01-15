@@ -43,7 +43,7 @@ public class TargetBuilder implements ITargetDefinitionBuilder
 
     private TargetDefinition findTarget(List<TargetDefinition> availableTargets) throws PWCGException
     {
-        List<TargetType> shuffledTargetTypes = TargetPriorityGeneratorTactical.getTargetTypePriorities(flightInformation.getCampaign(), flightInformation.getSquadron(), flightInformation.getFlightType());
+        List<TargetType> shuffledTargetTypes = TargetPriorityGeneratorTactical.getTargetTypePriorities(flightInformation);
 
         for (TargetType desiredTargetType : shuffledTargetTypes)
         {
