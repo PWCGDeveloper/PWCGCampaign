@@ -1,13 +1,17 @@
 package pwcg.campaign.squadmember;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.IStaticPlaneSelector;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.factory.StaticPlaneSelectorFactory;
 import pwcg.campaign.group.BlockDefinition;
 import pwcg.campaign.group.BlockDefinitionManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
+import pwcg.mission.ground.building.PwcgBuilding;
+import pwcg.mission.ground.building.PwcgBuildingIdentifier;
 import pwcg.mission.ground.vehicle.IVehicleDefinition;
 import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
 
@@ -129,6 +133,19 @@ public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBa
 
     private String getGroundUnitName(VictoryEntity victoryEntity) throws PWCGException
     {
+        PwcgBuilding building = PwcgBuildingIdentifier.identifyBuilding(victoryEntity.getType());
+        if (building != PwcgBuilding.UNKNOWN)
+        {
+            if (building == PwcgBuilding.STATIC_VEHICLE)
+            {
+                return identifyStaticVehicle(victoryEntity);
+            }
+            else
+            {
+                return building.getDescription();
+            }
+        }
+        
         String vehicleNameFromType = getVehicleName(victoryEntity.getType());
         if (vehicleNameFromType != null)
         {
@@ -158,6 +175,23 @@ public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBa
         }
 
         PWCGLogger.log(LogLevel.ERROR, "No vehicle match found for " + victoryEntity.getName() + " or " + victoryEntity.getType());
+        return "vehicle";
+    }
+
+    private String identifyStaticVehicle(VictoryEntity victoryEntity) throws PWCGException
+    {
+        IVehicleDefinition vehicle = PWCGContext.getInstance().getStaticObjectDefinitionManager().findStaticVehicle(victoryEntity.getType());
+        if (vehicle != null)
+        {
+            return vehicle.getDisplayName();
+        }
+        
+        IStaticPlaneSelector staticPlaneFactory = StaticPlaneSelectorFactory.createStaticPlaneSelector();
+        if (staticPlaneFactory.isStaticPlane(victoryEntity.getType()))
+        {
+            return "parked plane";
+        }
+
         return "vehicle";
     }
 

@@ -14,21 +14,41 @@ public class BoSPlaneAttributeFactory
 {
     public static BosPlaneAttributeMapping createPlaneAttributeMap(String planeTypeName) throws PWCGException
     {
- 	   List<BosPlaneAttributeMapping> BosPlaneAttributeMappingsList = Arrays.asList(BosPlaneAttributeMapping.values());
- 	   Map<String, BosPlaneAttributeMapping> BosPlaneAttributeMappings = new HashMap<>();;
- 	   for (BosPlaneAttributeMapping BosPlaneAttributeMapping : BosPlaneAttributeMappingsList)
+ 	   List<BosPlaneAttributeMapping> planeAttributeMappingsList = Arrays.asList(BosPlaneAttributeMapping.values());
+ 	   Map<String, BosPlaneAttributeMapping> planeAttributeMappings = new HashMap<>();;
+ 	   for (BosPlaneAttributeMapping BosPlaneAttributeMapping : planeAttributeMappingsList)
  	   {
- 		  BosPlaneAttributeMappings.put(BosPlaneAttributeMapping.getPlaneType(), BosPlaneAttributeMapping);
+ 		  planeAttributeMappings.put(BosPlaneAttributeMapping.getPlaneType(), BosPlaneAttributeMapping);
  	   }
  	   
- 	   return BosPlaneAttributeMappings.get(planeTypeName);
+ 	   return planeAttributeMappings.get(planeTypeName);
     }
 
-	public static IStaticPlane getStaticPlane(String planeType) throws PWCGException 
-	{
-		IPlaneAttributeMapping BosPlaneAttributeMapping = createPlaneAttributeMap(planeType);
-		String[] staticPlaneMatches = BosPlaneAttributeMapping.getStaticPlaneMatches();
-		int index = RandomNumberGenerator.getRandom(staticPlaneMatches.length);
-		return new BoSStaticPlane(staticPlaneMatches[index]);
-	}
+    public static IStaticPlane getStaticPlane(String planeType) throws PWCGException 
+    {
+        IPlaneAttributeMapping BosPlaneAttributeMapping = createPlaneAttributeMap(planeType);
+        String[] staticPlaneMatches = BosPlaneAttributeMapping.getStaticPlaneMatches();
+        int index = RandomNumberGenerator.getRandom(staticPlaneMatches.length);
+        return new BoSStaticPlane(staticPlaneMatches[index]);
+    }
+
+    public static boolean isStaticPlane(String planeType) throws PWCGException 
+    {
+        List<BosPlaneAttributeMapping> planeAttributeMappingsList = Arrays.asList(BosPlaneAttributeMapping.values());
+        for (BosPlaneAttributeMapping planeAttributeMappings : planeAttributeMappingsList)
+        {
+            for (String staticPlaneType : planeAttributeMappings.getStaticPlaneMatches())
+            {
+                if (planeType.contains(staticPlaneType)) 
+                {
+                    return true;
+                }
+                if (staticPlaneType.contains(planeType)) 
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

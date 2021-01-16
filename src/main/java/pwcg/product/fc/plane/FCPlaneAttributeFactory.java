@@ -35,4 +35,25 @@ public class FCPlaneAttributeFactory
 		}
 		return null;
 	}
+
+
+    public static boolean isStaticPlane(String planeType) throws PWCGException 
+    {
+        List<FCPlaneAttributeMapping> planeAttributeMappingsList = Arrays.asList(FCPlaneAttributeMapping.values());
+        for (FCPlaneAttributeMapping planeAttributeMappings : planeAttributeMappingsList)
+        {
+            for (String staticPlaneType : planeAttributeMappings.getStaticPlaneMatches())
+            {
+                if (planeType.contains(staticPlaneType)) 
+                {
+                    return true;
+                }
+                if (staticPlaneType.contains(planeType)) 
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

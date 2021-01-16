@@ -4,7 +4,6 @@ import java.util.Date;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogAIEntity;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBalloon;
-import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBuilding;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogGroundUnit;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
@@ -51,11 +50,6 @@ public class VictoryEntity
             LogTurret logTurret = (LogTurret)logEntity;
             initializeForTurret(victoryDate, logTurret, pilotName);
         }
-        else if (logEntity instanceof LogBuilding)
-        {
-            LogBuilding logGroundUnit = (LogBuilding)logEntity;
-            initializeForBuilding(logGroundUnit);
-        }
     }
 
     public boolean determineCompleteForAir()
@@ -74,7 +68,7 @@ public class VictoryEntity
         LogPilot logPilot = logPlane.getLogPilot();
 
         airOrGround = Victory.AIR_VICTORY;
-        type = logPlane.getVehicleType();
+        setType(logPlane.getVehicleType());
         name = logPlane.getName();
         pilotStatus = logPilot.getStatus();
         pilotSerialNumber = logPilot.getSerialNumber();
@@ -85,14 +79,14 @@ public class VictoryEntity
     private void initializeForBalloon(LogBalloon logBalloon) throws PWCGException
     {
         airOrGround = Victory.AIR_VICTORY;
-        type = logBalloon.getVehicleType();
+        setType(logBalloon.getVehicleType());
         name = logBalloon.getName();
     }
 
     private void initializeForGround(LogGroundUnit logGrountUnit) throws PWCGException
     {
         airOrGround = Victory.GROUND_VICTORY;
-        type = logGrountUnit.getVehicleType();
+        setType(logGrountUnit.getVehicleType());
         name = logGrountUnit.getName();
     }
 
@@ -104,13 +98,6 @@ public class VictoryEntity
         LogPlane logPlane = (LogPlane) logTurret.getParent();
         initializeForPlane(victoryDate, logPlane, pilotName);
         isGunner = true;
-    }
-
-    private void initializeForBuilding(LogBuilding logBuilding) throws PWCGException
-    {
-        airOrGround = Victory.GROUND_VICTORY;
-        type = logBuilding.getVehicleType();
-        name = logBuilding.getName();
     }
 
     public int getAirOrGround()
@@ -128,9 +115,15 @@ public class VictoryEntity
         return type;
     }
 
-    public void setType(String type)
+    public void setType(String vehicleType)
     {
-        this.type = type;
+        if (vehicleType.contains("["))
+        {
+            int indexEnd = vehicleType.indexOf("[");
+            vehicleType = vehicleType.substring(0, indexEnd);
+        }
+
+        this.type = vehicleType;
     }
 
     public String getName()

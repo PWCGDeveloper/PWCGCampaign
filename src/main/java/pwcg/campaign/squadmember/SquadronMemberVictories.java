@@ -6,7 +6,7 @@ public class SquadronMemberVictories
 {
     private int airToAirVictories = 0;
     private int tankVictories = 0;
-    private int softGroundVictories = 0;
+    private int groundVictories = 0;
     
     public SquadronMemberVictories (List<Victory> victories)
     {
@@ -19,21 +19,9 @@ public class SquadronMemberVictories
             
             if (victory.getVictim().getAirOrGround() == Victory.GROUND_VICTORY)
             {
-                if (isTank())
-                {
-                    ++tankVictories;
-                }
-                else
-                {
-                    ++softGroundVictories;
-                }
+                ++groundVictories;
             }
         }
-    }
-
-    private boolean isTank()
-    {
-        return false;
     }
 
     public int getAirToAirVictories()
@@ -46,8 +34,8 @@ public class SquadronMemberVictories
         return tankVictories;
     }
 
-    public int getSoftGroundVictories()
+    public int getGroundVictories()
     {
-        return softGroundVictories;
+        return groundVictories;
     }
 }

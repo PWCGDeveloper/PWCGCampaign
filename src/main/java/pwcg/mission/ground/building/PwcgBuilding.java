@@ -14,8 +14,8 @@ public enum PwcgBuilding
     HANGAR ("hangar", new BuildingSearchCriteria("hangar", BuildingSearchMethod.SEARCH_CONTAINS)),
     PORT_FACILITY ("port facility", new BuildingSearchCriteria("port_", BuildingSearchMethod.SEARCH_BEGINS)),
     INDUSTRIAL ("industrial facility", new BuildingSearchCriteria("industrial_", BuildingSearchMethod.SEARCH_BEGINS)),
-    DEPOT ("depot facility", new BuildingSearchCriteria("warehouse", BuildingSearchMethod.SEARCH_CONTAINS)),
-    FUEL ("fuel depot facility", new BuildingSearchCriteria("industrial_block_fuel", BuildingSearchMethod.SEARCH_BEGINS)),
+    DEPOT ("depot", new BuildingSearchCriteria("warehouse", BuildingSearchMethod.SEARCH_CONTAINS)),
+    FUEL ("fuel depot", new BuildingSearchCriteria("industrial_block_fuel", BuildingSearchMethod.SEARCH_BEGINS)),
     STATIC_VEHICLE ("vehicle", new BuildingSearchCriteria("static_", BuildingSearchMethod.SEARCH_BEGINS)),
     UNKNOWN ("some random building", new BuildingSearchCriteria("", BuildingSearchMethod.SEARCH_NONE));
 

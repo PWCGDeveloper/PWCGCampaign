@@ -49,6 +49,25 @@ public class StaticObjectDefinitionManager
         return chooseMatchingVehicle(matchingDefinitions);
     }
 
+    
+    public IVehicleDefinition findStaticVehicle(String vehicleType) throws PWCGException
+    {
+        for (VehicleDefinition definition : allStaticObjectsDefinitions)
+        {
+            if (definition.getVehicleType().contains(vehicleType))
+            {
+                return definition;
+            }
+            
+            if (vehicleType.contains(definition.getVehicleType()))
+            {
+                return definition;
+            }
+        }
+        
+        return null;
+    }
+
     private IVehicleDefinition chooseMatchingVehicle(List<VehicleDefinition> matchingDefinitions)
     {
         List<IWeight> vehiclesByWeight = new ArrayList<>();

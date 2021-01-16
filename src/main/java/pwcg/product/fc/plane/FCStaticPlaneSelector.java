@@ -12,4 +12,10 @@ public class FCStaticPlaneSelector implements IStaticPlaneSelector
 		return FCPlaneAttributeFactory.getStaticPlane(planeName);
 	}
 
+    @Override
+    public boolean isStaticPlane(String planeType) throws PWCGException 
+    {
+        return FCPlaneAttributeFactory.isStaticPlane(planeType);
+    }
+
 }

@@ -29,6 +29,11 @@ public class VictoryDescription
         {
             return createVictoryDescriptionAirToAir();
         }
+        else if (victory.getVictim().getAirOrGround() == Victory.AIR_VICTORY && victory.getVictor().getAirOrGround() == Victory.UNSPECIFIED_VICTORY)
+        {
+            return descriptionBuilderAir.createVictoryDescriptionUnknownToAir();
+        }
+
         else if (victory.getVictim().getAirOrGround() == Victory.GROUND_VICTORY && victory.getVictor().getAirOrGround() == Victory.AIR_VICTORY)
         {
             return descriptionBuilderGround.createVictoryDescriptionAirToGround();
@@ -40,10 +45,6 @@ public class VictoryDescription
         else if (victory.getVictim().getAirOrGround() == Victory.GROUND_VICTORY && victory.getVictor().getAirOrGround() == Victory.GROUND_VICTORY)
         {
             return descriptionBuilderGround.createVictoryDescriptionGroundToGround();
-        }
-        else if (victory.getVictim().getAirOrGround() == Victory.AIR_VICTORY && victory.getVictor().getAirOrGround() == Victory.UNSPECIFIED_VICTORY)
-        {
-            return descriptionBuilderAir.createVictoryDescriptionUnknownToAir();
         }
         else if (victory.getVictim().getAirOrGround() == Victory.GROUND_VICTORY && victory.getVictor().getAirOrGround() == Victory.UNSPECIFIED_VICTORY)
         {

@@ -9,7 +9,6 @@ import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase1.parse.event.IAType12;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogAIEntity;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBalloon;
-import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBuilding;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogGroundUnit;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogTurret;
@@ -22,8 +21,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
-import pwcg.mission.ground.building.PwcgBuilding;
-import pwcg.mission.ground.building.PwcgBuildingIdentifier;
 
 public class AARVehicleBuilder
 {
@@ -35,7 +32,6 @@ public class AARVehicleBuilder
     private Map<String, LogBalloon> logBalloons = new HashMap<>();
     private Map<String, LogGroundUnit> logGroundUnits = new HashMap<>();
     private Map<String, LogTurret> logTurrets = new HashMap<>();
-    private Map<String, LogBuilding> logBuildings = new HashMap<>();
 
     public AARVehicleBuilder(AARBotVehicleMapper botPlaneMapper, AARVehiclePlaneLanded landedMapper, PwcgMissionDataEvaluator pwcgMissionDataEvaluator)
     {
@@ -69,10 +65,6 @@ public class AARVehicleBuilder
         else if (logTurrets.containsKey(id))
         {
             return findEntityForTurret(id);
-        }
-        else if (logBuildings.containsKey(id))
-        {
-            return logBuildings.get(id);
         }
 
         return null;
@@ -126,10 +118,6 @@ public class AARVehicleBuilder
         else if (Balloon.isBalloonName(atype12.getName()))
         {
             createLogBalloon(atype12);
-        }
-        else if (PwcgBuildingIdentifier.identifyBuilding(atype12.getName()) != PwcgBuilding.UNKNOWN)
-        {
-            handleBuildingSpawn(atype12);
         }
         else
         {
@@ -212,14 +200,6 @@ public class AARVehicleBuilder
         }
 
         return null;
-    }
-
-    private void handleBuildingSpawn(IAType12 atype12) throws PWCGException
-    {
-        LogBuilding logBuilding;
-        logBuilding = new LogBuilding(atype12.getSequenceNum());
-        logBuilding.initializeEntityFromEvent(atype12);
-        logBuildings.put(atype12.getId(), logBuilding);
     }
 
     public Map<String, LogPlane> getLogPlanes()
