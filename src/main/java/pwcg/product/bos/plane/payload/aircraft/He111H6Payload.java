@@ -50,7 +50,7 @@ public class He111H6Payload extends PlanePayload
         return selectedPrimaryPayloadId;
     }
 
-    protected void selectBombingPayload(IFlight flight)
+    private void selectBombingPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 2;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
@@ -69,9 +69,13 @@ public class He111H6Payload extends PlanePayload
         {
             selectHeavyTargetPayload();
         }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectStructureTargetPayload();
+        }
     }
 
-    protected void selectSoftTargetPayload()
+    private void selectSoftTargetPayload()
     {
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 80)
@@ -84,19 +88,23 @@ public class He111H6Payload extends PlanePayload
         }
     }    
 
-    protected void selectArmoredTargetPayload()
+    private void selectArmoredTargetPayload()
     {
         selectedPrimaryPayloadId = 3;
     }
 
-    protected void selectMediumTargetPayload()
+    private void selectMediumTargetPayload()
     {
         selectedPrimaryPayloadId = 1;
     }
 
-    protected void selectHeavyTargetPayload()
+    private void selectHeavyTargetPayload()
     {
         selectedPrimaryPayloadId = 2;
     }
 
+    private void selectStructureTargetPayload()
+    {
+        selectedPrimaryPayloadId = 7;
+    }
 }

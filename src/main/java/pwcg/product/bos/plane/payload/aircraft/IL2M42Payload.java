@@ -84,7 +84,7 @@ public class IL2M42Payload extends PlanePayload implements IPlanePayload
         return selectedPrimaryPayloadId;
     }
 
-    protected void selectGroundAttackPayload(IFlight flight)
+    private void selectGroundAttackPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 4;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
@@ -103,9 +103,13 @@ public class IL2M42Payload extends PlanePayload implements IPlanePayload
         {
             selectHeavyTargetPayload();
         }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectStructureTargetPayload();
+        }
     }
 
-    protected void selectSoftTargetPayload()
+    private void selectSoftTargetPayload()
     {
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 30)
@@ -130,7 +134,7 @@ public class IL2M42Payload extends PlanePayload implements IPlanePayload
         }
     }    
 
-    protected void selectArmoredTargetPayload()
+    private void selectArmoredTargetPayload()
     {
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 40)
@@ -151,7 +155,7 @@ public class IL2M42Payload extends PlanePayload implements IPlanePayload
         }
     }
 
-    protected void selectMediumTargetPayload()
+    private void selectMediumTargetPayload()
     {
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 50)
@@ -172,9 +176,22 @@ public class IL2M42Payload extends PlanePayload implements IPlanePayload
         }
     }
 
-    protected void selectHeavyTargetPayload()
+    private void selectHeavyTargetPayload()
     {
         selectedPrimaryPayloadId = 25;
+    }
+
+    private void selectStructureTargetPayload()
+    {
+        int diceRoll = RandomNumberGenerator.getRandom(100);
+        if (diceRoll < 70)
+        {
+            selectedPrimaryPayloadId = 18;
+        }
+        else
+        {
+            selectedPrimaryPayloadId = 25;
+        }
     }
 
     private void il2Turret() throws PWCGException
@@ -183,7 +200,7 @@ public class IL2M42Payload extends PlanePayload implements IPlanePayload
         int il2TurretOddsKey = 50;
         if (roll < il2TurretOddsKey)
         {
-        	this.addModification(PayloadElement.TURRET);
+            this.addModification(PayloadElement.TURRET);
         }
     }
 }

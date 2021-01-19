@@ -66,5 +66,9 @@ public class P39L1Payload extends PlanePayload implements IPlanePayload
         {
             selectedPrimaryPayloadId = 6;
         }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectedPrimaryPayloadId = 12;
+        }
     }
 }

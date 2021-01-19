@@ -51,7 +51,7 @@ public class I16Type24Payload extends PlanePayload implements IPlanePayload
         return selectedPrimaryPayloadId;
     }    
 
-    protected void selectGroundAttackPayload(IFlight flight)
+    private void selectGroundAttackPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
@@ -70,9 +70,13 @@ public class I16Type24Payload extends PlanePayload implements IPlanePayload
         {
             selectHeavyTargetPayload();
         }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectStructureTargetPayload();
+        }
     }
 
-    protected void selectSoftTargetPayload()
+    private void selectSoftTargetPayload()
     {
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 60)
@@ -85,12 +89,12 @@ public class I16Type24Payload extends PlanePayload implements IPlanePayload
         }
     }    
 
-    protected void selectArmoredTargetPayload()
+    private void selectArmoredTargetPayload()
     {
         selectedPrimaryPayloadId = 3;
     }
 
-    protected void selectMediumTargetPayload()
+    private void selectMediumTargetPayload()
     {
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 60)
@@ -103,7 +107,12 @@ public class I16Type24Payload extends PlanePayload implements IPlanePayload
         }
     }
 
-    protected void selectHeavyTargetPayload()
+    private void selectHeavyTargetPayload()
+    {
+        selectedPrimaryPayloadId = 1;
+    }
+
+    private void selectStructureTargetPayload()
     {
         selectedPrimaryPayloadId = 1;
     }

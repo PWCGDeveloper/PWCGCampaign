@@ -109,6 +109,10 @@ public class Fw190A8Payload extends PlanePayload implements IPlanePayload
         {
             selectedPrimaryPayloadId = 34;
         }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectedPrimaryPayloadId = 34;
+        }
     }
 
     private void selectFW190A8GroundAttackPayload(IFlight flight)
@@ -129,6 +133,10 @@ public class Fw190A8Payload extends PlanePayload implements IPlanePayload
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
             selectedPrimaryPayloadId = 2;
+        }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectedPrimaryPayloadId = 3;
         }
     }
 

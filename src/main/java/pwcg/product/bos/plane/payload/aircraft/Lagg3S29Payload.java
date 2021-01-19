@@ -64,6 +64,10 @@ public class Lagg3S29Payload extends PlanePayload implements IPlanePayload
         {
             selectHeavyTargetPayload();
         }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectStructureTargetPayload();
+        }
     }
 
     private void selectSoftTargetPayload()
@@ -106,6 +110,11 @@ public class Lagg3S29Payload extends PlanePayload implements IPlanePayload
     }
 
     private void selectHeavyTargetPayload()
+    {
+        selectedPrimaryPayloadId = 14;
+    }
+
+    private void selectStructureTargetPayload()
     {
         selectedPrimaryPayloadId = 14;
     }

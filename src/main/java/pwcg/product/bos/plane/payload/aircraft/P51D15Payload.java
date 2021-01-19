@@ -70,5 +70,9 @@ public class P51D15Payload extends PlanePayload implements IPlanePayload
         {
             selectedPrimaryPayloadId = 8;
         }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectedPrimaryPayloadId = 8;
+        }
     }
 }

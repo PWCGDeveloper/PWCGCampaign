@@ -80,6 +80,10 @@ public class Bf110G2Payload extends PlanePayload
         {
             selectedPrimaryPayloadId = 4;
         }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectedPrimaryPayloadId = 6;
+        }
     }
     
     private void createStandardPayload()

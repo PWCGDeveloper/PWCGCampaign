@@ -8,7 +8,7 @@ public class GroundAttackObjective
 {
     static String getMissionObjective(IFlight flight) throws PWCGException 
     {
-        if (flight.getTargetDefinition().getTargetType().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRATEGIC)
+        if (flight.getTargetDefinition().getTargetType().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
             return GroundAttackObjectiveStrategic.getMissionObjective(flight);
         }

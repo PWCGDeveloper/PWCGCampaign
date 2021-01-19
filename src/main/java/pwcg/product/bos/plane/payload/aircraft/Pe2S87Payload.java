@@ -45,10 +45,14 @@ public class Pe2S87Payload extends PlanePayload implements IPlanePayload
     public int createWeaponsPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 1;
-    	if (flight.getFlightType() == FlightTypes.GROUND_ATTACK)
-    	{
-    		selectGroundAttackPayload(flight);
-    	}
+        if (flight.getFlightType() == FlightTypes.GROUND_ATTACK)
+        {
+            selectGroundAttackPayload(flight);
+        }
+        else if (flight.getFlightType() == FlightTypes.DIVE_BOMB)
+        {
+            selectDiveBombPayload(flight);
+        }
     	else
     	{
     		selectBombingPayload(flight);
@@ -74,10 +78,19 @@ public class Pe2S87Payload extends PlanePayload implements IPlanePayload
         {
             selectedPrimaryPayloadId = 6;
         }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectedPrimaryPayloadId = 6;
+        }
     }
 
     private void selectGroundAttackPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 7;
+    }
+
+    private void selectDiveBombPayload(IFlight flight)
+    {
+        selectedPrimaryPayloadId = 3;
     }
 }

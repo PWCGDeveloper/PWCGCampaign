@@ -51,7 +51,7 @@ public class He111H16Payload extends PlanePayload
         return selectedPrimaryPayloadId;
     }
 
-    protected void selectBombingPayload(IFlight flight)
+    private void selectBombingPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 2;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
@@ -70,25 +70,34 @@ public class He111H16Payload extends PlanePayload
         {
             selectHeavyTargetPayload();
         }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectStructureTargetPayload();
+        }
     }
 
-    protected void selectSoftTargetPayload()
+    private void selectSoftTargetPayload()
     {
         selectedPrimaryPayloadId = 0;
     }    
 
-    protected void selectArmoredTargetPayload()
+    private void selectArmoredTargetPayload()
     {
         selectedPrimaryPayloadId = 7;
     }
 
-    protected void selectMediumTargetPayload()
+    private void selectMediumTargetPayload()
     {
         selectedPrimaryPayloadId = 2;
     }
 
-    protected void selectHeavyTargetPayload()
+    private void selectHeavyTargetPayload()
     {
         selectedPrimaryPayloadId = 7;
+    }
+
+    private void selectStructureTargetPayload()
+    {
+        selectedPrimaryPayloadId = 10;
     }
 }

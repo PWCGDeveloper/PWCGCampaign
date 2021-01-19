@@ -75,6 +75,10 @@ public class Ju87D3Payload extends PlanePayload
         {
             selectedPrimaryPayloadId = 2;
         }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectedPrimaryPayloadId = 6;
+        }
     }
 
     private void selectGroundAttackPayload()

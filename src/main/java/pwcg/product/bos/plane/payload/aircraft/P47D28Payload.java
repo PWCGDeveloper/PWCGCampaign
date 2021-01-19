@@ -75,6 +75,10 @@ public class P47D28Payload extends PlanePayload implements IPlanePayload
         {
             selectHeavyTargetPayload();
         }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectStructureTargetPayload();
+        }
     }
     
 
@@ -114,6 +118,11 @@ public class P47D28Payload extends PlanePayload implements IPlanePayload
     }
 
     protected void selectHeavyTargetPayload()
+    {
+        selectedPrimaryPayloadId = 24;
+    }
+
+    protected void selectStructureTargetPayload()
     {
         selectedPrimaryPayloadId = 24;
     }

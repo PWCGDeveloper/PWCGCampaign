@@ -60,6 +60,10 @@ public class SpitfireMkIXePayload extends PlanePayload implements IPlanePayload
         {
             selectedPrimaryPayloadId = 1;
         }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectedPrimaryPayloadId = 1;
+        }
     }
     
     @Override

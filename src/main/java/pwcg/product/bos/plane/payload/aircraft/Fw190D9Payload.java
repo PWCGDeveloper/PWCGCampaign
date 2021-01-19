@@ -81,6 +81,10 @@ public class Fw190D9Payload extends PlanePayload implements IPlanePayload
         {
             selectedPrimaryPayloadId = 3;
         }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectedPrimaryPayloadId = 3;
+        }
     }
 
     protected void selectInterceptPayload()

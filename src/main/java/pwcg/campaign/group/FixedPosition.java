@@ -106,6 +106,7 @@ public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosi
         
         entity.setPosition(position.copy());
         entity.setOrientation(orientation.copy());
+        entity.setEnabled(1);
     }
 
     private void writeDamaged(BufferedWriter writer) throws IOException

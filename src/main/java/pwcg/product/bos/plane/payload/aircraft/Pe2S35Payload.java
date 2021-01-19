@@ -47,6 +47,10 @@ public class Pe2S35Payload extends PlanePayload implements IPlanePayload
     	{
     		selectGroundAttackPayload(flight);
     	}
+        else if (flight.getFlightType() == FlightTypes.DIVE_BOMB)
+        {
+            selectDiveBombPayload(flight);
+        }
     	else
     	{
     		selectBombingPayload(flight);
@@ -58,7 +62,7 @@ public class Pe2S35Payload extends PlanePayload implements IPlanePayload
     {
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectedPrimaryPayloadId = 7;
+            selectedPrimaryPayloadId = 1;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
@@ -72,10 +76,19 @@ public class Pe2S35Payload extends PlanePayload implements IPlanePayload
         {
             selectedPrimaryPayloadId = 6;
         }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectedPrimaryPayloadId = 6;
+        }
     }
 
     private void selectGroundAttackPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 7;
+    }
+
+    private void selectDiveBombPayload(IFlight flight)
+    {
+        selectedPrimaryPayloadId = 3;
     }
 }

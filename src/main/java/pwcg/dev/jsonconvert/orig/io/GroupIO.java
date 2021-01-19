@@ -14,12 +14,6 @@ import pwcg.core.utils.Parsers;
 
 public class GroupIO 
 {		
-	/**
-	 * @param reader
-	 * @return
-	 * @throws PWCGIOException 
-	 * @throws PWCGException 
-	 */
 	public static Block readBlock (BufferedReader reader) throws PWCGException 
 	{
 		try
@@ -102,7 +96,8 @@ public class GroupIO
             }
             block.setPosition(coords);
             block.setOrientation(ori);
-
+            block.setDeleteAfterDeath(0);
+            
             return block;
         }
         catch (IOException e)
@@ -211,16 +206,13 @@ public class GroupIO
             	{
             		bridge.setDamageThreshold(Parsers.getInt(line));
             	}
-            	else if (line.contains(DevIOConstants.DELAFTERDEATH))
-            	{
-            		bridge.setDeleteAfterDeath(Parsers.getInt(line));
-            	}
             	else if (line.contains(DevIOConstants.COUNTRY))
             	{
             	}
             }
             bridge.setPosition(coords);
             bridge.setOrientation(ori);
+            bridge.setDeleteAfterDeath(0);
 
             return bridge;
         }

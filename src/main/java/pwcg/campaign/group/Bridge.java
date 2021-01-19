@@ -37,6 +37,7 @@ public class Bridge extends FixedPosition
             
             if (entity != null)
             {
+                System.out.println(this.getModel());
                 entity.write(writer);
             }
         }

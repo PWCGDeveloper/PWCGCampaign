@@ -59,6 +59,10 @@ public class HurricaneMkIIPayloadRAF
         {
             selectedPrimaryPayloadId = selectHeavyTargetPayload(flight);
         }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectedPrimaryPayloadId = selectStructureTargetPayload(flight);
+        }
         return selectedPrimaryPayloadId;
     }
 
@@ -125,6 +129,12 @@ public class HurricaneMkIIPayloadRAF
             selectedPrimaryPayloadId = 14;
         }
 
+        return selectedPrimaryPayloadId;
+    }
+
+    protected int selectStructureTargetPayload(IFlight flight) throws PWCGException
+    {
+        int selectedPrimaryPayloadId = 4;
         return selectedPrimaryPayloadId;
     }
 }

@@ -81,5 +81,9 @@ public class Hs129B2Payload extends PlanePayload
         {
             selectedPrimaryPayloadId = 3;
         }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectedPrimaryPayloadId = 3;
+        }
     }
 }

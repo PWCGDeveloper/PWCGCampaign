@@ -45,6 +45,10 @@ public abstract class Bf109Payload extends PlanePayload
         {
             selectHeavyTargetPayload();
         }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectStructureTargetPayload();
+        }
     }
 
     protected void createStandardPayload()
@@ -68,6 +72,11 @@ public abstract class Bf109Payload extends PlanePayload
     }
 
     protected void selectHeavyTargetPayload()
+    {
+        selectedPrimaryPayloadId = 2;
+    }
+
+    protected void selectStructureTargetPayload()
     {
         selectedPrimaryPayloadId = 2;
     }

@@ -66,5 +66,9 @@ public class La5NS2Payload extends PlanePayload implements IPlanePayload
         {
             selectedPrimaryPayloadId = 2;
         }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectedPrimaryPayloadId = 2;
+        }
     }
 }

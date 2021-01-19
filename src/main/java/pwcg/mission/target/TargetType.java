@@ -14,14 +14,14 @@ public enum TargetType
 
     TARGET_BALLOON("balloon", TargetCategory.TARGET_CATEGORY_AIR_TO_AIR),
 
-    TARGET_AIRFIELD("airfield", TargetCategory.TARGET_CATEGORY_STRATEGIC), 
-    TARGET_BRIDGE("bridge", TargetCategory.TARGET_CATEGORY_STRATEGIC),
-    TARGET_RAIL("railway facility", TargetCategory.TARGET_CATEGORY_STRATEGIC),
-    TARGET_CITY("city", TargetCategory.TARGET_CATEGORY_STRATEGIC), 
-    TARGET_FACTORY("factory", TargetCategory.TARGET_CATEGORY_STRATEGIC),
-    TARGET_PORT("port facility", TargetCategory.TARGET_CATEGORY_STRATEGIC),
-    TARGET_DEPOT("equipment depot", TargetCategory.TARGET_CATEGORY_STRATEGIC),
-    TARGET_FUEL("fuel depot", TargetCategory.TARGET_CATEGORY_STRATEGIC),
+    TARGET_AIRFIELD("airfield", TargetCategory.TARGET_CATEGORY_STRUCTURE), 
+    TARGET_BRIDGE("bridge", TargetCategory.TARGET_CATEGORY_STRUCTURE),
+    TARGET_RAIL("railway facility", TargetCategory.TARGET_CATEGORY_STRUCTURE),
+    TARGET_CITY("city", TargetCategory.TARGET_CATEGORY_STRUCTURE), 
+    TARGET_FACTORY("factory", TargetCategory.TARGET_CATEGORY_STRUCTURE),
+    TARGET_PORT("port facility", TargetCategory.TARGET_CATEGORY_STRUCTURE),
+    TARGET_DEPOT("equipment depot", TargetCategory.TARGET_CATEGORY_STRUCTURE),
+    TARGET_FUEL("fuel depot", TargetCategory.TARGET_CATEGORY_STRUCTURE),
 
     TARGET_AIR("aircraft", TargetCategory.TARGET_CATEGORY_AIR_TO_AIR);
     

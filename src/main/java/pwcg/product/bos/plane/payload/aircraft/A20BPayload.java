@@ -65,6 +65,10 @@ public class A20BPayload extends PlanePayload implements IPlanePayload
         {
             selectBombingHeavyTargetPayload();
         }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectStructureTargetPayload();
+        }
     }
 
     private void selectGroundAttackPayload(IFlight flight)
@@ -88,6 +92,11 @@ public class A20BPayload extends PlanePayload implements IPlanePayload
     }
 
     private void selectBombingHeavyTargetPayload()
+    {
+        selectedPrimaryPayloadId = 4;
+    }
+
+    private void selectStructureTargetPayload()
     {
         selectedPrimaryPayloadId = 4;
     }

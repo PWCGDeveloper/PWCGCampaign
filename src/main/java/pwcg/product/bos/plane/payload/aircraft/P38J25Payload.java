@@ -71,6 +71,10 @@ public class P38J25Payload extends PlanePayload implements IPlanePayload
         {
             selectHeavyTargetPayload();
         }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectStructureTargetPayload();
+        }
     }
     
 
@@ -121,6 +125,19 @@ public class P38J25Payload extends PlanePayload implements IPlanePayload
     {
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 80)
+        {
+            selectedPrimaryPayloadId = 4;
+        }
+        else
+        {
+            selectedPrimaryPayloadId = 6;
+        }
+    }
+
+    protected void selectStructureTargetPayload()
+    {
+        int diceRoll = RandomNumberGenerator.getRandom(100);
+        if (diceRoll < 70)
         {
             selectedPrimaryPayloadId = 4;
         }

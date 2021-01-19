@@ -83,6 +83,10 @@ public class Fw190A5Payload extends PlanePayload implements IPlanePayload
             {
                 selectedPrimaryPayloadId = 2;
             }
+            else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+            {
+                selectedPrimaryPayloadId = 3;
+            }
         }
     }
 

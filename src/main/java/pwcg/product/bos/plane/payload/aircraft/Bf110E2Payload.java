@@ -68,6 +68,10 @@ public class Bf110E2Payload extends PlanePayload
         {
             selectHeavyTargetPayload();
         }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectStructureTargetPayload();
+        }
     }
     
     private void createStandardPayload()
@@ -80,20 +84,22 @@ public class Bf110E2Payload extends PlanePayload
         selectedPrimaryPayloadId = 1;
     }    
 
-
     private void selectArmoredTargetPayload()
     {
         selectedPrimaryPayloadId = 4;
     }
-
 
     private void selectMediumTargetPayload()
     {
         selectedPrimaryPayloadId = 4;
     }
 
-
     private void selectHeavyTargetPayload()
+    {
+        selectedPrimaryPayloadId = 4;
+    }
+
+    private void selectStructureTargetPayload()
     {
         selectedPrimaryPayloadId = 4;
     }

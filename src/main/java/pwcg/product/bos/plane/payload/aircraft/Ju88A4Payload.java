@@ -5,6 +5,7 @@ import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetCategory;
 
@@ -43,11 +44,23 @@ public class Ju88A4Payload extends PlanePayload
     
     public int createWeaponsPayload(IFlight flight)
     {
-        selectBombingPayload(flight);
+        selectedPrimaryPayloadId = 1;
+        if (flight.getFlightType() == FlightTypes.GROUND_ATTACK)
+        {
+            selectGroundAttackPayload(flight);
+        }
+        else if (flight.getFlightType() == FlightTypes.DIVE_BOMB)
+        {
+            selectDiveBombPayload(flight);
+        }
+        else
+        {
+            selectBombingPayload(flight);
+        }
         return selectedPrimaryPayloadId;
     }
 
-    protected void selectBombingPayload(IFlight flight)
+    private void selectBombingPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
@@ -66,9 +79,13 @@ public class Ju88A4Payload extends PlanePayload
         {
             selectHeavyTargetPayload();
         }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectStructureTargetPayload();
+        }
     }
 
-    protected void selectSoftTargetPayload()
+    private void selectSoftTargetPayload()
     {
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 80)
@@ -81,18 +98,33 @@ public class Ju88A4Payload extends PlanePayload
         }
     }    
 
-    protected void selectArmoredTargetPayload()
+    private void selectArmoredTargetPayload()
     {
         selectedPrimaryPayloadId = 6;
     }
 
-    protected void selectMediumTargetPayload()
+    private void selectMediumTargetPayload()
     {
         selectedPrimaryPayloadId = 1;
     }
 
-    protected void selectHeavyTargetPayload()
+    private void selectHeavyTargetPayload()
     {
         selectedPrimaryPayloadId = 9;
+    }
+
+    private void selectStructureTargetPayload()
+    {
+        selectedPrimaryPayloadId = 9;
+    }
+
+    private void selectGroundAttackPayload(IFlight flight)
+    {
+        selectedPrimaryPayloadId = 2;        
+    }
+
+    private void selectDiveBombPayload(IFlight flight)
+    {
+        selectedPrimaryPayloadId = 0;        
     }
 }

@@ -63,6 +63,10 @@ public class Fw190A3Payload extends PlanePayload implements IPlanePayload
         {
             selectHeavyTargetPayload();
         }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectStructureTargetPayload();
+        }
     }
     
     private void createStandardPayload()
@@ -88,5 +92,10 @@ public class Fw190A3Payload extends PlanePayload implements IPlanePayload
     protected void selectHeavyTargetPayload()
     {
         selectedPrimaryPayloadId = 2;
+    }
+
+    protected void selectStructureTargetPayload()
+    {
+        selectedPrimaryPayloadId = 3;
     }
 }
