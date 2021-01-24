@@ -5,12 +5,12 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IStaticPlane;
 import pwcg.campaign.api.IStaticPlaneSelector;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.StaticPlaneSelectorFactory;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;
@@ -22,7 +22,7 @@ import pwcg.core.utils.RandomNumberGenerator;
 public class AirfieldStaticPlanePlacer
 {
 
-    public IStaticPlane getStaticPlane(IAirfield airfield, Date date, Coordinate position) throws PWCGException  
+    public IStaticPlane getStaticPlane(Airfield airfield, Date date, Coordinate position) throws PWCGException  
     {
         Orientation objectOrientation = Orientation.createRandomOrientation();
         IStaticPlane staticPlane = getStaticPlaneForField(airfield, date);
@@ -38,7 +38,7 @@ public class AirfieldStaticPlanePlacer
         return null;
     }
 
-    private IStaticPlane getStaticPlaneForField(IAirfield airfield, Date date) throws PWCGException 
+    private IStaticPlane getStaticPlaneForField(Airfield airfield, Date date) throws PWCGException 
     {
         IStaticPlane selectedStaticPlane = null;
         

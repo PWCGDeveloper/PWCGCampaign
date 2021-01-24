@@ -3,12 +3,12 @@ package pwcg.mission;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.campaign.group.GroupManager;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
@@ -53,7 +53,7 @@ public class MissionBlockBuilder
                 for (SquadronMember player : mission.getParticipatingPlayers().getAllParticipatingPlayers())
                 {
                     Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
-                    IAirfield airfield = squadron.determineCurrentAirfieldAnyMap(mission.getCampaign().getDate());
+                    Airfield airfield = squadron.determineCurrentAirfieldAnyMap(mission.getCampaign().getDate());
                     CoordinateBox airfieldBox = CoordinateBox.coordinateBoxFromCenter(airfield.getPosition(), 10000);
                     if (airfieldBox.isInBox(block.getPosition()))
                     {

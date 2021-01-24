@@ -1,11 +1,11 @@
 package pwcg.mission.ground.builder;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.group.AirfieldFinder;
 import pwcg.campaign.group.AirfieldManager;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Orientation;
 import pwcg.mission.ground.GroundUnitInformation;
@@ -40,7 +40,7 @@ public class AirfieldUnitBuilder
                 targetDefinition.getPosition(), 
                 Orientation.createRandomOrientation());
         
-        IAirfield targetAirfield = findTargetAirfield();
+        Airfield targetAirfield = findTargetAirfield();
         IGroundUnit airfieldGroup = new AirfieldTargetGroup(campaign, targetAirfield, groundUnitInformation);
         airfieldGroup.createGroundUnit();
         
@@ -58,12 +58,12 @@ public class AirfieldUnitBuilder
         return groundUnitCollection;
     }
 
-    private IAirfield findTargetAirfield() throws PWCGException
+    private Airfield findTargetAirfield() throws PWCGException
     {
         PWCGMap map = PWCGContext.getInstance().getCurrentMap();
         AirfieldManager airfieldManager = map.getAirfieldManager();
         AirfieldFinder airfieldFinder = airfieldManager.getAirfieldFinder();
-        IAirfield targetAirfield = airfieldFinder.findClosestAirfieldForSide(targetDefinition.getPosition(), campaign.getDate(), targetDefinition.getCountry().getSide().getOppositeSide());
+        Airfield targetAirfield = airfieldFinder.findClosestAirfieldForSide(targetDefinition.getPosition(), campaign.getDate(), targetDefinition.getCountry().getSide().getOppositeSide());
         return targetAirfield;
     }   
 }

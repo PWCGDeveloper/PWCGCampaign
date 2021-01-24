@@ -16,9 +16,9 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.AirfieldManager;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -59,8 +59,8 @@ public class IntelMapPanel extends MapPanelBase
 
 		airfieldPoints.clear();
 		AirfieldManager airfieldData =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
-        Map<String, IAirfield> allAF = airfieldData.getAllAirfields();
-	    for (IAirfield af : allAF.values())
+        Map<String, Airfield> allAF = airfieldData.getAllAirfields();
+	    for (Airfield af : allAF.values())
 	    {
 	    	addAirfieldPoint(af);
 	    }
@@ -231,7 +231,7 @@ public class IntelMapPanel extends MapPanelBase
 		return selectedMapPoints;
 	}
 
-	private void addAirfieldPoint(IAirfield field) throws PWCGException 
+	private void addAirfieldPoint(Airfield field) throws PWCGException 
 	{
 		if (field != null)
 		{
@@ -248,7 +248,7 @@ public class IntelMapPanel extends MapPanelBase
 	private void addSquadronPoint(Squadron squadron) throws PWCGException 
 	{
 		String fieldName = squadron.determineCurrentAirfieldName(parent.getMapDate());
-		IAirfield field =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(fieldName);
+		Airfield field =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(fieldName);
 
 		if (field != null)
 		{

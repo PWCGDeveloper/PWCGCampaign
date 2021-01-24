@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.api.IAirfield;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.PWCGLocation;
 import pwcg.mission.flight.IFlight;
@@ -20,11 +20,11 @@ public class MissionPointFlightEnd extends MissionPointSetSingleWaypointSet impl
     private IFlight flight;
 
     private McuLanding landingMcu;
-    private IAirfield landingAirfield;
+    private Airfield landingAirfield;
     private boolean linkToNextTarget = true;
     private MissionPointSetType missionPointSetType;
 
-    public MissionPointFlightEnd(IFlight flight, IAirfield landingAirfield)
+    public MissionPointFlightEnd(IFlight flight, Airfield landingAirfield)
     {
         this.flight = flight;
         this.landingAirfield = landingAirfield;

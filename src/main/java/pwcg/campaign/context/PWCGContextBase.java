@@ -8,9 +8,9 @@ import java.util.Map;
 
 import pwcg.campaign.BattleManager;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.group.AirfieldManager;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.group.airfield.staticobject.StaticObjectDefinitionManager;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.payload.IPayloadFactory;
@@ -174,9 +174,9 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     }
 
     @Override
-    public IAirfield getAirfieldAllMaps(String airfieldName)
+    public Airfield getAirfieldAllMaps(String airfieldName)
     {
-        IAirfield airfield = null;
+        Airfield airfield = null;
         
         for (PWCGMap map : pwcgMaps.values())
         {

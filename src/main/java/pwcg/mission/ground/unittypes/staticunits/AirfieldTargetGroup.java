@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.AirfieldManager;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.exception.PWCGException;
@@ -21,9 +21,9 @@ import pwcg.mission.ground.vehicle.VehicleClass;
 public class AirfieldTargetGroup extends GroundUnit
 {
     protected Campaign campaign;
-    protected IAirfield targetAirfield;
+    protected Airfield targetAirfield;
 
-	public AirfieldTargetGroup(Campaign campaign, IAirfield targetAirfield, GroundUnitInformation pwcgGroundUnitInformation) 
+	public AirfieldTargetGroup(Campaign campaign, Airfield targetAirfield, GroundUnitInformation pwcgGroundUnitInformation) 
 	{
         super(VehicleClass.Truck, pwcgGroundUnitInformation);
         this.campaign = campaign;
@@ -39,7 +39,7 @@ public class AirfieldTargetGroup extends GroundUnit
         super.linkElements();
     }
 
-    public IAirfield getAirfield()
+    public Airfield getAirfield()
     {
         return targetAirfield;
     }

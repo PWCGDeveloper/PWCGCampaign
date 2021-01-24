@@ -1,13 +1,13 @@
 package pwcg.mission.flight.transport;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.AirfieldManager;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightPayloadBuilder;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.initialposition.FlightPositionSetter;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
@@ -20,7 +20,7 @@ import pwcg.mission.target.TargetDefinition;
 
 public class TransportFlight extends Flight implements IFlight
 {
-    private IAirfield arrivalAirfield = null;
+    private Airfield arrivalAirfield = null;
 
     public TransportFlight(FlightInformation flightInformation, TargetDefinition targetDefinition)
     {
@@ -66,7 +66,7 @@ public class TransportFlight extends Flight implements IFlight
 	            this.getTargetDefinition().getPosition(), getCampaign().getDate(), this.getSquadron().getCountry().getSide());    
     }
 
-    public IAirfield getArrivalAirfield()
+    public Airfield getArrivalAirfield()
     {
         return arrivalAirfield;
     }

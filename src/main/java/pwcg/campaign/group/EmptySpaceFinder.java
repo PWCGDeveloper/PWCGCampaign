@@ -3,8 +3,8 @@ package pwcg.campaign.group;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.group.airfield.hotspot.HotSpot;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -20,7 +20,7 @@ public class EmptySpaceFinder
     
     private List<HotSpot> hotSpots = new ArrayList<>();
     private List<Block> blocksInArea = new ArrayList<>();
-    private List<IAirfield> airfieldsInArea = new ArrayList<>();
+    private List<Airfield> airfieldsInArea = new ArrayList<>();
     private Coordinate coordinateExaminedNow;
     private CoordinateBox coordinateBox;
     private List<Coordinate> boundary;
@@ -81,7 +81,7 @@ public class EmptySpaceFinder
 
     private boolean isNearRunway() throws PWCGException
     {
-        for (IAirfield airfield : airfieldsInArea)
+        for (Airfield airfield : airfieldsInArea)
         {
             if (airfield.isNearRunwayOrTaxiway(mission, coordinateExaminedNow))
                 return true;

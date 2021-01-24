@@ -10,7 +10,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
-import pwcg.mission.ground.building.PwcgBuilding;
+import pwcg.mission.ground.building.PwcgStructure;
 import pwcg.mission.ground.building.PwcgBuildingIdentifier;
 import pwcg.mission.ground.vehicle.IVehicleDefinition;
 import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
@@ -133,10 +133,10 @@ public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBa
 
     private String getGroundUnitName(VictoryEntity victoryEntity) throws PWCGException
     {
-        PwcgBuilding building = PwcgBuildingIdentifier.identifyBuilding(victoryEntity.getType());
-        if (building != PwcgBuilding.UNKNOWN)
+        PwcgStructure building = PwcgBuildingIdentifier.identifyBuilding(victoryEntity.getType());
+        if (building != PwcgStructure.UNKNOWN)
         {
-            if (building == PwcgBuilding.STATIC_VEHICLE)
+            if (building == PwcgStructure.STATIC_VEHICLE)
             {
                 return identifyStaticVehicle(victoryEntity);
             }

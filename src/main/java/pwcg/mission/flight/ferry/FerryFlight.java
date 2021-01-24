@@ -1,12 +1,12 @@
 package pwcg.mission.flight.ferry;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightPayloadBuilder;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.initialposition.FlightPositionSetter;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
 import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory;
@@ -54,8 +54,8 @@ public class FerryFlight extends Flight implements IFlight
         FlightInformation flightInformation = this.getFlightInformation();
         if (flightInformation.getCampaign().getSquadronMoveEvent() != null)
         {
-            IAirfield fromAirfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(flightInformation.getCampaign().getSquadronMoveEvent().getLastAirfield());
-            IAirfield toAirfield = flightInformation.getSquadron().determineCurrentAirfieldCurrentMap(flightInformation.getCampaign().getDate());
+            Airfield fromAirfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(flightInformation.getCampaign().getSquadronMoveEvent().getLastAirfield());
+            Airfield toAirfield = flightInformation.getSquadron().determineCurrentAirfieldCurrentMap(flightInformation.getCampaign().getDate());
             FerryWaypointFactory missionWaypointFactory = new FerryWaypointFactory(this, fromAirfield, toAirfield);
             IMissionPointSet missionWaypoints = missionWaypointFactory.createWaypoints(ingressWaypoint);
             return missionWaypoints;

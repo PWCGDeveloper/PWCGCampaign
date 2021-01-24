@@ -1,6 +1,6 @@
 package pwcg.aar.inmission.phase2.logeval.equipmentstatus;
 
-import pwcg.campaign.api.IAirfield;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -8,9 +8,9 @@ import pwcg.core.utils.MathUtils;
 public class EquipmentSurvivalCalculator
 {
     private Coordinate downAt;
-    private IAirfield field;
+    private Airfield field;
 
-    public EquipmentSurvivalCalculator(Coordinate downAt, IAirfield field)
+    public EquipmentSurvivalCalculator(Coordinate downAt, Airfield field)
     {
         this.downAt = downAt;
         this.field = field;

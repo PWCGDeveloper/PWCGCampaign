@@ -2,11 +2,11 @@ package pwcg.campaign;
 
 import java.util.List;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.MapForAirfieldFinder;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.factory.ArmedServiceFactory;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -88,7 +88,7 @@ public class CampaignGenerator
     private void setMapForNewCampaign() throws PWCGException
     {
         Squadron squad = PWCGContext.getInstance().getSquadronManager().getSquadronByName(generatorModel.getSquadronName(), generatorModel.getCampaignDate());
-        IAirfield airfield = squad.determineCurrentAirfieldAnyMap(generatorModel.getCampaignDate());
+        Airfield airfield = squad.determineCurrentAirfieldAnyMap(generatorModel.getCampaignDate());
         List<FrontMapIdentifier> airfieldMaps = MapForAirfieldFinder.getMapForAirfield(airfield.getName());
         FrontMapIdentifier initialAirfieldMap = airfieldMaps.get(0);
 

@@ -1,6 +1,6 @@
 package pwcg.mission;
 
-import pwcg.campaign.api.IAirfield;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.PWCGLocation;
@@ -12,7 +12,7 @@ public class FirePotBuilder
 {
     public FirePotSeries createFirePots(IFlight flight) throws PWCGException 
     {
-        IAirfield airfield = flight.getSquadron().determineCurrentAirfieldAnyMap(flight.getCampaign().getDate());
+        Airfield airfield = flight.getSquadron().determineCurrentAirfieldAnyMap(flight.getCampaign().getDate());
 
         FirePotSeries firePotSeries = new FirePotSeries();
 

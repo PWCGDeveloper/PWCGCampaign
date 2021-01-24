@@ -3,11 +3,11 @@ package pwcg.mission.flight;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IMissionAltitudeGenerator;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.MissionAltitudeGeneratorFactory;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.IndexGenerator;
@@ -165,10 +165,10 @@ public class FlightInformation
         return parkedStart;
     }
 
-    public IAirfield getDepartureAirfield() throws PWCGException
+    public Airfield getDepartureAirfield() throws PWCGException
     {
         String airfieldName = squadron.determineCurrentAirfieldName(campaign.getDate());
-        IAirfield departureAirfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(airfieldName);
+        Airfield departureAirfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(airfieldName);
         return departureAirfield;
     }
 
@@ -249,7 +249,7 @@ public class FlightInformation
         return squadron.determineCurrentAirfieldName(campaign.getDate());
     }
 
-    public IAirfield getAirfield()
+    public Airfield getAirfield()
     {
         return squadron.determineCurrentAirfieldCurrentMap(campaign.getDate());
     }

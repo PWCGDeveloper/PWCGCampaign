@@ -17,7 +17,6 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
@@ -26,6 +25,7 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.group.TownFinder;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.LocationSet;
@@ -106,8 +106,8 @@ public class EditorMapPanel extends MapPanelBase
 			if (whatToDisplay[DISPLAY_AIRFIELDS])
 			{
 		        AirfieldManager airfieldData =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
-		        Map<String, IAirfield> allAF = airfieldData.getAllAirfields();
-		        for (IAirfield af : allAF.values())
+		        Map<String, Airfield> allAF = airfieldData.getAllAirfields();
+		        for (Airfield af : allAF.values())
 		        {
 		            drawCross(g, af.getPosition(), af.getName());
 		        }

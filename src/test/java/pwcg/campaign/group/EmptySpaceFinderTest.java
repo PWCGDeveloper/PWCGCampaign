@@ -5,10 +5,10 @@ import java.util.List;
 import org.junit.Test;
 import org.mockito.Mock;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.group.airfield.hotspot.HotSpot;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
@@ -25,7 +25,7 @@ public class EmptySpaceFinderTest
         PWCGContext.getInstance().changeContext(FrontMapIdentifier.STALINGRAD_MAP);
         AirfieldManager airfieldManager  = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
         
-        for (IAirfield airfield : airfieldManager.getAllAirfields().values())
+        for (Airfield airfield : airfieldManager.getAllAirfields().values())
         {
             EmptySpaceFinder emptySpaceFinder = new EmptySpaceFinder(mission);
             List<HotSpot> hotSpots = emptySpaceFinder.findEmptySpaces(airfield.getBoundary(), 50);

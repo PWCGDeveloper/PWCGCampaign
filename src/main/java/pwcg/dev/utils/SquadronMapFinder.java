@@ -3,10 +3,10 @@ package pwcg.dev.utils;
 import java.util.List;
 import java.util.TreeMap;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -40,7 +40,7 @@ public class SquadronMapFinder
         List<Squadron> allSq =  PWCGContext.getInstance().getSquadronManager().getAllSquadrons();
         for (Squadron squadron : allSq)
         {
-            IAirfield airfield = squadron.determineCurrentAirfieldCurrentMap(DateUtils.getDateYYYYMMDD("19430801"));
+            Airfield airfield = squadron.determineCurrentAirfieldCurrentMap(DateUtils.getDateYYYYMMDD("19430801"));
             if (airfield != null)
             {
                 airfieldsOnMapSorted.put(squadron.getSquadronId(), airfield.getName());

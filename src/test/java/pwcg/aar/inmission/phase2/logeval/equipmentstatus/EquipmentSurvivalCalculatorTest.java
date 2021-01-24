@@ -6,15 +6,14 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import pwcg.aar.inmission.phase2.logeval.equipmentstatus.EquipmentSurvivalCalculator;
-import pwcg.campaign.api.IAirfield;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 
 @RunWith(MockitoJUnitRunner.class)
 public class EquipmentSurvivalCalculatorTest
 {
-    @Mock private IAirfield field;
+    @Mock private Airfield field;
 
     @Test
     public void testEquipmentNotDestroyed () throws PWCGException

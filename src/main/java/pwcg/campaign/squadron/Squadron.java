@@ -11,7 +11,6 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.SquadHistory;
 import pwcg.campaign.SquadHistoryEntry;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.IRankHelper;
@@ -26,6 +25,7 @@ import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.factory.RankFactory;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.EquippedPlane;
@@ -175,9 +175,9 @@ public class Squadron
         airfields.put(assignmentDate, airfield);
     }
 
-    public IAirfield determineCurrentAirfieldAnyMap(Date campaignDate) throws PWCGException 
+    public Airfield determineCurrentAirfieldAnyMap(Date campaignDate) throws PWCGException 
     {
-        IAirfield field = null;
+        Airfield field = null;
         
         String airfieldName = determineCurrentAirfieldName(campaignDate);
         if (airfieldName != null)
@@ -188,9 +188,9 @@ public class Squadron
         return field;
     }
 
-    public IAirfield determineCurrentAirfieldCurrentMap(Date campaignDate)
+    public Airfield determineCurrentAirfieldCurrentMap(Date campaignDate)
     {
-        IAirfield field = null;
+        Airfield field = null;
         
         String airfieldName = determineCurrentAirfieldName(campaignDate);
         if (airfieldName != null)
@@ -203,7 +203,7 @@ public class Squadron
 
     public Coordinate determineCurrentPosition(Date campaignDate) throws PWCGException 
     {
-        IAirfield field = determineCurrentAirfieldAnyMap(campaignDate);
+        Airfield field = determineCurrentAirfieldAnyMap(campaignDate);
         if (field != null)
         {
             return field.getPosition().copy();
@@ -356,7 +356,7 @@ public class Squadron
 		return squadronDescription;
 	}
 
-	public List<Date> determineDatesSquadronAtField(IAirfield field)
+	public List<Date> determineDatesSquadronAtField(Airfield field)
 	{
 		List<Date> datesSquadronAtField = new ArrayList<Date>();
 		
@@ -377,7 +377,7 @@ public class Squadron
         
         ICountry squadronCountry = CountryFactory.makeCountryByCountry(country);
         Side enemySide = squadronCountry.getSideNoNeutral().getOppositeSide();
-        IAirfield field = determineCurrentAirfieldCurrentMap(date);
+        Airfield field = determineCurrentAirfieldCurrentMap(date);
         squads =  PWCGContext.getInstance().getSquadronManager().getActiveSquadronsBySideAndProximity(enemySide, date, field.getPosition(), 30000);
 
         // Use an enemy squadron as a reference country.

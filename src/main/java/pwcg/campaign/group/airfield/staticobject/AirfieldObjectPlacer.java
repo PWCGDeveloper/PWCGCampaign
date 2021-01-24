@@ -3,13 +3,12 @@ package pwcg.campaign.group.airfield.staticobject;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IAirfield;
-import pwcg.campaign.api.IAirfieldObjectSelector;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IHotSpotTranslator;
 import pwcg.campaign.api.IStaticPlane;
 import pwcg.campaign.factory.AirfieldObjectSelectorFactory;
 import pwcg.campaign.factory.HotSpotTranslatorFactory;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.group.airfield.hotspot.HotSpot;
 import pwcg.campaign.group.airfield.hotspot.HotSpotType;
 import pwcg.core.exception.PWCGException;
@@ -29,9 +28,9 @@ public class AirfieldObjectPlacer
 	private AirfieldObjects airfieldObjects;
     private Mission mission;
     private Campaign campaign;
-    private IAirfield airfield;
+    private Airfield airfield;
     
-    public AirfieldObjectPlacer(Mission mission, IAirfield airfield) throws PWCGException
+    public AirfieldObjectPlacer(Mission mission, Airfield airfield) throws PWCGException
     {
         this.mission = mission;
         this.campaign = mission.getCampaign();
@@ -123,7 +122,7 @@ public class AirfieldObjectPlacer
 
     private void addAirfieldObject(HotSpot hotSpot) throws PWCGException 
     {
-        IAirfieldObjectSelector  airfieldObjectSelector = AirfieldObjectSelectorFactory.createAirfieldObjectSelector(campaign.getDate());
+        AirfieldObjectSelector  airfieldObjectSelector = AirfieldObjectSelectorFactory.createAirfieldObjectSelector(campaign.getDate());
         IVehicle airfieldObject  = airfieldObjectSelector.createAirfieldObject(hotSpot, airfield);
         airfieldObjects.addAirfieldObject(airfieldObject);
     }

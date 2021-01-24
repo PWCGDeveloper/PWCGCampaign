@@ -1,9 +1,9 @@
 package pwcg.mission.flight.waypoint.missionpoint;
 
-import pwcg.campaign.api.IAirfield;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -54,11 +54,11 @@ public class MissionPointSetFactory
 
     public static IMissionPointSet createFlightEndAtHomeField(IFlight flight) throws PWCGException, PWCGException 
     {
-        IAirfield landingAirfield = flight.getFlightInformation().getAirfield();
+        Airfield landingAirfield = flight.getFlightInformation().getAirfield();
         return createFlightEnd(flight, landingAirfield);
     }
     
-    public static IMissionPointSet createFlightEnd(IFlight flight, IAirfield landingAirfield) throws PWCGException, PWCGException 
+    public static IMissionPointSet createFlightEnd(IFlight flight, Airfield landingAirfield) throws PWCGException, PWCGException 
     {
         MissionPointFlightEnd flightEnd = new MissionPointFlightEnd(flight, landingAirfield);
         flightEnd.createFlightEnd();

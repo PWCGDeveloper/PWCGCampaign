@@ -1,6 +1,6 @@
 package pwcg.mission.flight.waypoint.end;
 
-import pwcg.campaign.api.IAirfield;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -14,7 +14,7 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public class ApproachWaypointGenerator
 {
-    public static McuWaypoint createApproachWaypoint(IFlight flight, IAirfield landingAirfield) throws PWCGException  
+    public static McuWaypoint createApproachWaypoint(IFlight flight, Airfield landingAirfield) throws PWCGException  
     {        
         PWCGLocation landingLocation = landingAirfield.getLandingLocation(flight.getMission());
         int LandingApproachWaypointDistance = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.LandingApproachWaypointDistanceKey);

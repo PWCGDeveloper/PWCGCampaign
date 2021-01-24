@@ -54,12 +54,12 @@ public class StaticObjectDefinitionManager
     {
         for (VehicleDefinition definition : allStaticObjectsDefinitions)
         {
-            if (definition.getVehicleType().contains(vehicleType))
+            if (definition.getVehicleType().toLowerCase().contains(vehicleType.toLowerCase()))
             {
                 return definition;
             }
             
-            if (vehicleType.contains(definition.getVehicleType()))
+            if (vehicleType.toLowerCase().contains(definition.getVehicleType().toLowerCase()))
             {
                 return definition;
             }

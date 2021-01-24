@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.utils.LCIndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
@@ -189,7 +189,7 @@ public class McuIcon extends BaseFlightMcu
     }
 
 
-    public McuIcon(IAirfield airfield, Side side)
+    public McuIcon(Airfield airfield, Side side)
     {
         super();
 

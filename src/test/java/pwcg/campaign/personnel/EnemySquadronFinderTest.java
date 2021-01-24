@@ -10,12 +10,12 @@ import org.mockito.junit.MockitoJUnitRunner;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignEquipmentManager;
 import pwcg.campaign.CampaignPersonnelManager;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
@@ -32,7 +32,7 @@ public class EnemySquadronFinderTest
     @Mock private CampaignEquipmentManager equipmentManager;
     @Mock private Equipment equipment;
     @Mock private SquadronPersonnel squadronPersonnel;
-    @Mock private IAirfield squadronAirfield;
+    @Mock private Airfield squadronAirfield;
     @Mock private ConfigManagerCampaign configManagerCampaign;
     
     @Before

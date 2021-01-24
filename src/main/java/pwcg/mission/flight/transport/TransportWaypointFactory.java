@@ -3,7 +3,7 @@ package pwcg.mission.flight.transport;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.api.IAirfield;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -17,13 +17,13 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public class TransportWaypointFactory
 {
-    private IAirfield fromAirfield;
-    private IAirfield toAirfield;
+    private Airfield fromAirfield;
+    private Airfield toAirfield;
 
     private IFlight flight;
     private MissionPointRouteSet missionPointSet = new MissionPointRouteSet();
 
-    public TransportWaypointFactory(IFlight flight, IAirfield fromAirfield, IAirfield toAirfield) throws PWCGException
+    public TransportWaypointFactory(IFlight flight, Airfield fromAirfield, Airfield toAirfield) throws PWCGException
     {
         this.flight = flight;
         this.toAirfield = toAirfield;

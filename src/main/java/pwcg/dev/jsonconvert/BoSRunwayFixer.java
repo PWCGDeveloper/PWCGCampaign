@@ -3,9 +3,9 @@ package pwcg.dev.jsonconvert;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.api.IAirfieldConfiguration;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.group.airfield.AirfieldConfiguration;
 import pwcg.campaign.group.airfield.AirfieldDescriptor;
 import pwcg.campaign.group.airfield.AirfieldDescriptorSet;
 import pwcg.campaign.group.airfield.Runway;
@@ -32,9 +32,9 @@ public class BoSRunwayFixer
     public void limitAllMapsToOneRunway (String mapName) throws PWCGException
     {
         String pwcgInputDir = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\";
-        AirfieldDescriptorSet airfieldDescriptors = AirfieldDescriptorIOJson.readJson(pwcgInputDir, IAirfieldConfiguration.AIRFIELD_LOCATION_FILE_NAME);
+        AirfieldDescriptorSet airfieldDescriptors = AirfieldDescriptorIOJson.readJson(pwcgInputDir, AirfieldConfiguration.AIRFIELD_LOCATION_FILE_NAME);
         limitToOneRunway(airfieldDescriptors);
-        // AirfieldDescriptorIOJson.writeJson(pwcgInputDir,  IAirfieldConfiguration.AIRFIELD_LOCATION_FILE_NAME, airfieldDescriptors);
+        // AirfieldDescriptorIOJson.writeJson(pwcgInputDir,  AirfieldConfiguration.AIRFIELD_LOCATION_FILE_NAME, airfieldDescriptors);
     }
 
     private void limitToOneRunway(AirfieldDescriptorSet airfieldDescriptors)

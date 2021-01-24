@@ -7,7 +7,7 @@ import pwcg.campaign.context.Country;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.mission.ground.building.PwcgBuilding;
+import pwcg.mission.ground.building.PwcgStructure;
 import pwcg.mission.ground.building.PwcgBuildingIdentifier;
 import pwcg.product.bos.plane.BoSStaticPlane;
 import pwcg.product.fc.plane.FCStaticPlane;
@@ -71,7 +71,7 @@ public class Block extends FixedPosition
             return true;
         }
         
-        if (PwcgBuildingIdentifier.identifyBuilding(this.getModel()) != PwcgBuilding.UNKNOWN)
+        if (PwcgBuildingIdentifier.identifyBuilding(this.getModel()) != PwcgStructure.UNKNOWN)
         {
             return true;
         }

@@ -7,9 +7,9 @@ import java.util.TreeMap;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.io.json.SquadronIOJson;
 import pwcg.campaign.plane.Role;
 import pwcg.core.config.ConfigItemKeys;
@@ -168,14 +168,14 @@ public class SquadronManager
 		return list;
 	}
 
-    public Squadron getAnyActiveSquadronForAirfield(IAirfield airfield, Date date) throws PWCGException 
+    public Squadron getAnyActiveSquadronForAirfield(Airfield airfield, Date date) throws PWCGException 
     {
         for (Squadron squadron : squadronMap.values())
         {
             String currentFieldNameForSquad = squadron.determineCurrentAirfieldName(date);
             if (currentFieldNameForSquad != null)
             {
-                IAirfield currentFieldForSquad =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(currentFieldNameForSquad);
+                Airfield currentFieldForSquad =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(currentFieldNameForSquad);
                 
                 if (currentFieldForSquad != null)
                 {

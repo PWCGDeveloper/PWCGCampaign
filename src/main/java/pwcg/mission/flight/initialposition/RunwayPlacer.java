@@ -2,9 +2,9 @@ package pwcg.mission.flight.initialposition;
 
 import java.util.List;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.plane.PlaneType.PlaneSize;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -20,7 +20,7 @@ public class RunwayPlacer
     public List<Coordinate> getFlightTakeoffPositions(IFlight flight) throws PWCGException
     {
         int takeoffSpacing = calculateTakeoffSpacing(flight.getFlightPlanes().getFlightLeader());
-        IAirfield airfield = flight.getFlightInformation().getAirfield();
+        Airfield airfield = flight.getFlightInformation().getAirfield();
 
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         IRunwayPlacer runwayPlacer = null;

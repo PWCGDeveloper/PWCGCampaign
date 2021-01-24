@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.GroupManager;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -92,15 +92,15 @@ public class TransportReferenceLocationSelector
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
 
         AirfieldManager airfieldManager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
-        List<IAirfield> airfieldsWithinRadius = airfieldManager.getAirfieldFinder().getAirfieldsWithinRadiusBySide(startCoords, campaign.getDate(), CLOSE_ENOUGH_FOR_TRANSPORT, squadron.getCountry().getSide());
-        List<IAirfield> airfieldsFarEnoughAway = getAirfieldsFarEnoughAway(startCoords, airfieldsWithinRadius);        
+        List<Airfield> airfieldsWithinRadius = airfieldManager.getAirfieldFinder().getAirfieldsWithinRadiusBySide(startCoords, campaign.getDate(), CLOSE_ENOUGH_FOR_TRANSPORT, squadron.getCountry().getSide());
+        List<Airfield> airfieldsFarEnoughAway = getAirfieldsFarEnoughAway(startCoords, airfieldsWithinRadius);        
         return chooseAirfield(airfieldsWithinRadius, airfieldsFarEnoughAway);
     }
 
-    private List<IAirfield> getAirfieldsFarEnoughAway(Coordinate startCoords, List<IAirfield> airfields)
+    private List<Airfield> getAirfieldsFarEnoughAway(Coordinate startCoords, List<Airfield> airfields)
     {
-        List<IAirfield> airfieldsFarEnoughAway = new ArrayList<>();
-        for (IAirfield airfield : airfields)
+        List<Airfield> airfieldsFarEnoughAway = new ArrayList<>();
+        for (Airfield airfield : airfields)
         {
             double distance = MathUtils.calcDist(startCoords, airfield.getPosition());
             if (distance > FAR_ENOUGH_AWAY_FOR_TRANSPORT)
@@ -112,9 +112,9 @@ public class TransportReferenceLocationSelector
         return airfieldsFarEnoughAway;
     }
 
-    private Coordinate chooseAirfield(List<IAirfield> airfieldsWithinRadius, List<IAirfield> airfieldsFarEnoughAway)
+    private Coordinate chooseAirfield(List<Airfield> airfieldsWithinRadius, List<Airfield> airfieldsFarEnoughAway)
     {
-        List<IAirfield> airfieldsToChooseFrom = airfieldsWithinRadius;
+        List<Airfield> airfieldsToChooseFrom = airfieldsWithinRadius;
         if (airfieldsFarEnoughAway.size() > 0)
         {
             airfieldsToChooseFrom = airfieldsFarEnoughAway;

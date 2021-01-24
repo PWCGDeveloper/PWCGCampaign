@@ -34,7 +34,6 @@ public class TargetPriorityGeneratorTactical
             addItemToWeightedList(targetTypesByIndex, flightInformation, ConfigItemKeys.AlliedTargetTypeInfantryKey, TargetType.TARGET_INFANTRY);
             addItemToWeightedList(targetTypesByIndex, flightInformation, ConfigItemKeys.AlliedTargetTypeTransportKey, TargetType.TARGET_TRANSPORT);
             addItemToWeightedList(targetTypesByIndex, flightInformation, ConfigItemKeys.AlliedTargetTypeTrainKey, TargetType.TARGET_TRAIN);
-            addItemToWeightedList(targetTypesByIndex, flightInformation, ConfigItemKeys.AlliedTargetTypeAirfieldKey, TargetType.TARGET_AIRFIELD);
             addItemToWeightedList(targetTypesByIndex, flightInformation, ConfigItemKeys.AlliedTargetTypeShippingKey, TargetType.TARGET_SHIPPING);
             addItemToWeightedList(targetTypesByIndex, flightInformation, ConfigItemKeys.AlliedTargetTypeDrifterKey, TargetType.TARGET_DRIFTER);
         }
@@ -44,7 +43,6 @@ public class TargetPriorityGeneratorTactical
             addItemToWeightedList(targetTypesByIndex, flightInformation, ConfigItemKeys.AxisTargetTypeInfantryKey, TargetType.TARGET_INFANTRY);
             addItemToWeightedList(targetTypesByIndex, flightInformation, ConfigItemKeys.AxisTargetTypeTransportKey, TargetType.TARGET_TRANSPORT);
             addItemToWeightedList(targetTypesByIndex, flightInformation, ConfigItemKeys.AxisTargetTypeTrainKey, TargetType.TARGET_TRAIN);
-            addItemToWeightedList(targetTypesByIndex, flightInformation, ConfigItemKeys.AxisTargetTypeAirfieldKey, TargetType.TARGET_AIRFIELD);
             addItemToWeightedList(targetTypesByIndex, flightInformation, ConfigItemKeys.AxisTargetTypeShippingKey, TargetType.TARGET_SHIPPING);
             addItemToWeightedList(targetTypesByIndex, flightInformation, ConfigItemKeys.AxisTargetTypeDrifterKey, TargetType.TARGET_DRIFTER);
         }

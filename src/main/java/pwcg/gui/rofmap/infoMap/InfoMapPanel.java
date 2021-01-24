@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
@@ -22,6 +21,7 @@ import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.GroupManager;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.plane.RoleCategory;
 import pwcg.campaign.squadron.Squadron;
@@ -92,8 +92,8 @@ public class InfoMapPanel extends MapPanelBase
 			if (whatToDisplay[DISPLAY_AIRFIELDS])
 			{
 		        AirfieldManager airfieldData =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
-		        Map<String, IAirfield> allAF = airfieldData.getAllAirfields();
-		        for (IAirfield af : allAF.values())
+		        Map<String, Airfield> allAF = airfieldData.getAllAirfields();
+		        for (Airfield af : allAF.values())
 		        {
 		            drawPointsByCountry(g, af.getPosition(), af.createCountry(parent.getMapDate()));
 		        }        
@@ -341,7 +341,7 @@ public class InfoMapPanel extends MapPanelBase
     {
         if (whatToDisplay[DISPLAY_AIRFIELDS] == true)
         {
-            IAirfield field = null;
+            Airfield field = null;
             try
             {
                 Coordinate clickCoord = this.pointToCoordinate(clickPoint);
@@ -376,13 +376,13 @@ public class InfoMapPanel extends MapPanelBase
         return false;
     }
 
-    private void showEditAirfieldLocation(MouseEvent e, IAirfield field)
+    private void showEditAirfieldLocation(MouseEvent e, Airfield field)
     {
         InfoAirfieldSelectPopup menu = new InfoAirfieldSelectPopup(this, field.getName());
         menu.show(e.getComponent(), e.getX(), e.getY());
     }
 
-    private void showAirfieldInfo(MouseEvent e, IAirfield field)
+    private void showAirfieldInfo(MouseEvent e, Airfield field)
     {
         InfoMapPopup menu = new InfoMapPopup(this, field.getName());
         menu.show(e.getComponent(), e.getX(), e.getY());
@@ -428,7 +428,7 @@ public class InfoMapPanel extends MapPanelBase
             {
                 // Is the squadron based near a field that was clicked on
                 Coordinate clickCoord = this.pointToCoordinate(clickPoint);
-                IAirfield nearbyField = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().getNearbyAirfield(clickCoord, 5000.0);
+                Airfield nearbyField = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().getNearbyAirfield(clickCoord, 5000.0);
                 if (nearbyField != null)
                 {
                     String squadronFieldName = squadron.determineCurrentAirfieldName(parent.getMapDate());

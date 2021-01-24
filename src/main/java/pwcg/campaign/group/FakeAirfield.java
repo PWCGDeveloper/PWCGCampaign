@@ -3,7 +3,6 @@ package pwcg.campaign.group;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
@@ -28,7 +27,7 @@ public class FakeAirfield extends FixedPosition implements Cloneable
     private int maintenanceRadius = 1000;
     private McuTREntity entity;
 
-    public FakeAirfield (IAirfield airfield, Mission mission) throws PWCGException
+    public FakeAirfield (Airfield airfield, Mission mission) throws PWCGException
     {
         super();
         

@@ -4,12 +4,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.plane.RoleCategory;
 import pwcg.campaign.squadron.Squadron;
@@ -76,15 +76,15 @@ public class AirfieldDistanceEvaluator
     {
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         
-        Map <String, IAirfield> fighterFields = airfieldSet.getFighterFields();
-        Map <String, IAirfield> bomberFields = airfieldSet.getBomberFields();
+        Map <String, Airfield> fighterFields = airfieldSet.getFighterFields();
+        Map <String, Airfield> bomberFields = airfieldSet.getBomberFields();
 
         List<Squadron> allActiveSquadrons = squadronManager.getActiveSquadrons(dateNow);
         for (Squadron squadron : allActiveSquadrons)
         {
             boolean bad = false;
             
-            IAirfield squadronField = squadron.determineCurrentAirfieldAnyMap(dateNow);
+            Airfield squadronField = squadron.determineCurrentAirfieldAnyMap(dateNow);
             
             if (squadron.determineSquadronCountry(dateNow).getSide() != sideSquadrons)
             {

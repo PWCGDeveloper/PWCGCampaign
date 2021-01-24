@@ -4,12 +4,12 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
@@ -46,7 +46,7 @@ public class WindSock
 
     public static WindSock createWindSock(IFlight flight) throws PWCGException 
     {
-        IAirfield flightAirfield = flight.getFlightInformation().getAirfield();
+        Airfield flightAirfield = flight.getFlightInformation().getAirfield();
         double takeoffOrientation = flightAirfield.getTakeoffLocation(flight.getMission()).getOrientation().getyOri();
 
         Double angleWindSockLeft = MathUtils.adjustAngle(takeoffOrientation, -90);

@@ -6,13 +6,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import pwcg.campaign.api.IAirfield;
-import pwcg.campaign.api.IAirfieldConfiguration;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.factory.AirfieldConfigurationFactory;
+import pwcg.campaign.group.airfield.Airfield;
+import pwcg.campaign.group.airfield.AirfieldConfiguration;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.core.location.Coordinate;
@@ -23,7 +24,7 @@ import pwcg.core.utils.PositionFinder;
 
 public class AirfieldManager
 {
-    private Map<String, IAirfield> airfields = new TreeMap<String, IAirfield>();
+    private Map<String, Airfield> airfields = new TreeMap<String, Airfield>();
 
     public AirfieldManager()
     {
@@ -36,7 +37,7 @@ public class AirfieldManager
 
     public void configure(String mapName) throws PWCGException
     {
-        IAirfieldConfiguration airfieldConfiguration = AirfieldConfigurationFactory.createAirfieldConfiguration();
+        AirfieldConfiguration airfieldConfiguration = AirfieldConfigurationFactory.createAirfieldConfiguration();
         airfields = airfieldConfiguration.configure(mapName);
     }
 
@@ -49,7 +50,7 @@ public class AirfieldManager
             AirfieldManager airfieldManager = map.getAirfieldManager();
             if (airfieldManager != null)
             {
-                IAirfield field = airfieldManager.getAirfield(airfieldName);
+                Airfield field = airfieldManager.getAirfield(airfieldName);
                 if (field != null)
                 {
                     mapsForAirfield.add(map.getMapIdentifier());
@@ -65,7 +66,7 @@ public class AirfieldManager
         return mapsForAirfield;
     }
 
-    public void addField(IAirfield field)
+    public void addField(Airfield field)
     {
         if (airfields.containsKey(field.getName()))
         {
@@ -76,9 +77,9 @@ public class AirfieldManager
         PWCGLogger.log(LogLevel.DEBUG, "Add to allied: " + field.getName());
     }
 
-    public IAirfield getAirfield(String airfieldName)
+    public Airfield getAirfield(String airfieldName)
     {
-        IAirfield airfield = getAirfieldNoClone(airfieldName);
+        Airfield airfield = getAirfieldNoClone(airfieldName);
 
         if (airfield != null)
         {
@@ -88,9 +89,9 @@ public class AirfieldManager
         return null;
     }
 
-    private IAirfield getAirfieldNoClone(String airfieldName)
+    private Airfield getAirfieldNoClone(String airfieldName)
     {
-        IAirfield airfield = null;
+        Airfield airfield = null;
 
         if (airfields.containsKey(airfieldName))
         {
@@ -116,7 +117,7 @@ public class AirfieldManager
     {
         boolean hasAirfield = false;
 
-        IAirfield field = getAirfield(airfieldName);
+        Airfield field = getAirfield(airfieldName);
         if (field != null)
         {
             hasAirfield = true;
@@ -125,11 +126,11 @@ public class AirfieldManager
         return hasAirfield;
     }
 
-    public List<IAirfield> getAirFieldsForSide(Date date, Side side) throws PWCGException
+    public List<Airfield> getAirFieldsForSide(Date date, Side side) throws PWCGException
     {
-        ArrayList<IAirfield> fieldsForSide = new ArrayList<IAirfield>();
+        ArrayList<Airfield> fieldsForSide = new ArrayList<Airfield>();
 
-        for (IAirfield airfield : airfields.values())
+        for (Airfield airfield : airfields.values())
         {
             if (airfield.createCountry(date).getSide() == side)
             {
@@ -146,16 +147,16 @@ public class AirfieldManager
         return airfieldFinder;
     }
     
-    public Map<String, IAirfield> getAllAirfields()
+    public Map<String, Airfield> getAllAirfields()
     {
         return airfields;
     }
 
-    public IAirfield getClosestAirfield(Coordinate clickCoordinate)
+    public Airfield getClosestAirfield(Coordinate clickCoordinate)
     {
-        IAirfield closestAirfield = null;
+        Airfield closestAirfield = null;
         double closestDistance = PositionFinder.ABSURDLY_LARGE_DISTANCE;
-        for (IAirfield airfield : airfields.values())
+        for (Airfield airfield : airfields.values())
         {
             double distanceFromClick = MathUtils.calcDist(airfield.getPosition(), clickCoordinate);
             if (distanceFromClick < closestDistance)
@@ -165,6 +166,22 @@ public class AirfieldManager
             }
         }
         return closestAirfield;
+    }
+
+    public boolean isAirfieldOccupied(List<Squadron> activeSquadrons, Date date)
+    {
+        for (Squadron squadron : activeSquadrons)
+        {
+            Airfield squadronAirfield = squadron.determineCurrentAirfieldCurrentMap(date);
+            for (Airfield airfield : airfields.values())
+            {
+                if (squadronAirfield.getName().equals(airfield.getName()))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 }

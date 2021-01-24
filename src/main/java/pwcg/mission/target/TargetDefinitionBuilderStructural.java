@@ -8,7 +8,7 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.ground.building.PwcgBuilding;
+import pwcg.mission.ground.building.PwcgStructure;
 import pwcg.mission.ground.building.PwcgBuildingIdentifier;
 
 public class TargetDefinitionBuilderStructural
@@ -28,8 +28,8 @@ public class TargetDefinitionBuilderStructural
             ICountry structureCountry = structure.getCountry(flightInformation.getCampaign().getDate());
             if (structureCountry.getCountry() != Country.NEUTRAL && (structureCountry.getSide() != flightInformation.getCountry().getSide()))
             {
-                PwcgBuilding building = PwcgBuildingIdentifier.identifyBuilding(structure.getModel());
-                if (building != PwcgBuilding.CHURCH && building != PwcgBuilding.STATIC_VEHICLE && building != PwcgBuilding.UNKNOWN)
+                PwcgStructure building = PwcgBuildingIdentifier.identifyBuilding(structure.getModel());
+                if (building != PwcgStructure.CHURCH && building != PwcgStructure.STATIC_VEHICLE && building != PwcgStructure.UNKNOWN)
                 {
                     createTargetDefinitionFromStructures(structure, building.toTargetType());
                 }

@@ -8,9 +8,9 @@ import java.util.Map;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.Role;
@@ -124,7 +124,7 @@ public class SquadronViability
         List<Squadron> listForMap = new ArrayList<Squadron>();
         for (Squadron squadron : squadrons)
         {
-            IAirfield field = squadron.determineCurrentAirfieldCurrentMap(date);
+            Airfield field = squadron.determineCurrentAirfieldCurrentMap(date);
             if (field != null)
             {
                 listForMap.add(squadron);

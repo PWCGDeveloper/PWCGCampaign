@@ -5,11 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
@@ -56,7 +56,7 @@ public class AirfieldInEnemyTerritory
 
 	private void determineSquadronIsOnCorrectSide(FrontMapIdentifier mapId, Date startDate, Squadron squadron) throws PWCGException
 	{
-		IAirfield squadronField = squadron.determineCurrentAirfieldCurrentMap(startDate);
+		Airfield squadronField = squadron.determineCurrentAirfieldCurrentMap(startDate);
 		if (squadronField != null)
 		{
 		    List<FrontMapIdentifier> mapsForAirfield = AirfieldManager.getMapIdForAirfield(squadronField.getName());
@@ -70,7 +70,7 @@ public class AirfieldInEnemyTerritory
 		}
 	}
 
-	private void noteBadlyPlacedSquadron(Date startDate, Squadron squadron, IAirfield squadronField,
+	private void noteBadlyPlacedSquadron(Date startDate, Squadron squadron, Airfield squadronField,
 	        FrontMapIdentifier mapForAirfield) throws PWCGException
 	{
 		ICountry squadronCountry = squadron.determineSquadronCountry(startDate);
@@ -114,7 +114,7 @@ public class AirfieldInEnemyTerritory
 		}
 	}
 	
-	private String formKey (Squadron squadron, IAirfield squadronField)
+	private String formKey (Squadron squadron, Airfield squadronField)
 	{
     	return squadron.getSquadronId() + " at " + squadronField.getName();
 	}

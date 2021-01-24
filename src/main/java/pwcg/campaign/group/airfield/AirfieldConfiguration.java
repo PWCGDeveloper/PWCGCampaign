@@ -3,17 +3,17 @@ package pwcg.campaign.group.airfield;
 import java.util.Map;
 import java.util.TreeMap;
 
-import pwcg.campaign.api.IAirfield;
-import pwcg.campaign.api.IAirfieldConfiguration;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.AirfieldDescriptorIOJson;
 import pwcg.core.exception.PWCGException;
 
-public class AirfieldConfiguration implements IAirfieldConfiguration
+public class AirfieldConfiguration
 {
-    public Map<String, IAirfield> configure (String mapName) throws PWCGException
+    public static final String AIRFIELD_LOCATION_FILE_NAME = "AirfieldLocations";
+    
+    public Map<String, Airfield> configure (String mapName) throws PWCGException
     {
-        Map<String, IAirfield> airfields = new TreeMap<String, IAirfield>();
+        Map<String, Airfield> airfields = new TreeMap<String, Airfield>();
         
         airfields.clear();
 

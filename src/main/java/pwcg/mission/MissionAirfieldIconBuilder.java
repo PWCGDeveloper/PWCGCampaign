@@ -6,9 +6,9 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignModeChooser;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.mission.mcu.McuIcon;
@@ -33,8 +33,8 @@ public class MissionAirfieldIconBuilder
 
     private void createAirfieldIconsForSide(Campaign campaign, Mission mission, Side side) throws PWCGException
     {
-        List<IAirfield> airfields = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirFieldsForSide(campaign.getDate(), side);
-		for (IAirfield airfield : airfields)
+        List<Airfield> airfields = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirFieldsForSide(campaign.getDate(), side);
+		for (Airfield airfield : airfields)
 		{
 	        McuIcon airfieldIcon = new McuIcon(airfield, airfield.getCountry(campaign.getDate()).getSide());
             airfieldIcons.add(airfieldIcon);

@@ -3,9 +3,9 @@ package pwcg.campaign.group.airfield.hotspot;
 import java.util.Date;
 import java.util.List;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IHotSpotTranslator;
 import pwcg.campaign.group.EmptySpaceFinder;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
@@ -21,22 +21,22 @@ public class AirfieldHotSpotTranslator implements IHotSpotTranslator
     private static double SPOT_DENSITY = 20;
 
     private Mission mission;
-    private IAirfield airfield;
+    private Airfield airfield;
 
-    public AirfieldHotSpotTranslator(Mission mission, IAirfield airfield)
+    public AirfieldHotSpotTranslator(Mission mission, Airfield airfield)
     {
         this.mission = mission;
         this.airfield = airfield;
     }
 
-    public List<HotSpot> getHotSpots(IAirfield airfield, Date date) throws PWCGException
+    public List<HotSpot> getHotSpots(Airfield airfield, Date date) throws PWCGException
     {
         List<HotSpot> hotSpots = classifyAirfieldHotspots(airfield, date);
         hotSpots.addAll(classifyRandomHotspots(airfield));
         return hotSpots;
     }
 
-    private List<HotSpot> classifyAirfieldHotspots(IAirfield airfield, Date date) throws PWCGException
+    private List<HotSpot> classifyAirfieldHotspots(Airfield airfield, Date date) throws PWCGException
     {
         List<HotSpot> hotSpots = airfield.getNearbyHotSpots();
 
@@ -55,7 +55,7 @@ public class AirfieldHotSpotTranslator implements IHotSpotTranslator
         return hotSpots;
     }
 
-    private List<HotSpot> classifyRandomHotspots(IAirfield airfield) throws PWCGException
+    private List<HotSpot> classifyRandomHotspots(Airfield airfield) throws PWCGException
     {
         List<HotSpot> hotSpots = selectHotSpotsFromEmptySpace(airfield);
 
@@ -133,7 +133,7 @@ public class AirfieldHotSpotTranslator implements IHotSpotTranslator
         return numAAHotSpots;
     }
 
-    private List<HotSpot> selectHotSpotsFromEmptySpace(IAirfield airfield) throws PWCGException
+    private List<HotSpot> selectHotSpotsFromEmptySpace(Airfield airfield) throws PWCGException
     {
         EmptySpaceFinder emptySpaceFinder = new EmptySpaceFinder(mission);
         List<Coordinate> boundary = airfield.getBoundary();

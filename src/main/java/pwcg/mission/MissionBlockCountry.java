@@ -2,10 +2,10 @@ package pwcg.mission;
 
 import java.util.List;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.FixedPosition;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
 
@@ -32,7 +32,7 @@ public class MissionBlockCountry
     private boolean setCountryFromAirfield(FixedPosition fixedPosition) throws PWCGException
     {
         AirfieldManager airfieldManager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
-        IAirfield field = airfieldManager.getAirfieldFinder().findClosestAirfield(fixedPosition.getPosition());
+        Airfield field = airfieldManager.getAirfieldFinder().findClosestAirfield(fixedPosition.getPosition());
         if (MathUtils.calcDist(fixedPosition.getPosition(), field.getPosition()) < 5000)
         {
             fixedPosition.setCountry(field.getCountry(mission.getCampaign().getDate()).getCountry());

@@ -2,29 +2,15 @@ package pwcg.mission.ground.building;
 
 public class PwcgBuildingIdentifier
 {
-    public static PwcgBuilding identifyBuilding(String buildingidentifier)
+    public static PwcgStructure identifyBuilding(String buildingidentifier)
     {        
         buildingidentifier = parseModel(buildingidentifier);
-        PwcgBuilding buildingType = determineGenericBuildingType(buildingidentifier);
-        buildingType = determineSpecificBuildingType(buildingType, buildingidentifier);        
-        return buildingType;
-    }
-
-    private static PwcgBuilding determineSpecificBuildingType(PwcgBuilding genericBuildingType, String buildingidentifier)
-    {
-        for (PwcgBuilding building : PwcgBuilding.getAllBuildings())
+        PwcgStructure buildingType = determineIndustrialBuildingType(buildingidentifier);
+        if (buildingType == PwcgStructure.UNKNOWN)
         {
-            if (building == PwcgBuilding.UNKNOWN || building == PwcgBuilding.INDUSTRIAL)
-            {
-                continue;
-            }
-            else if (building.matches(buildingidentifier))
-            {
-                return building;
-            }
+            buildingType = determineSpecificBuildingType(buildingType, buildingidentifier);
         }
-        
-        return genericBuildingType;
+        return buildingType;
     }
     
     private static String parseModel(String buildingidentifier)
@@ -38,12 +24,37 @@ public class PwcgBuildingIdentifier
         return parsed;
     }
 
-    private static PwcgBuilding determineGenericBuildingType(String buildingidentifier)
+    private static PwcgStructure determineIndustrialBuildingType(String buildingidentifier)
     {
-        if (PwcgBuilding.INDUSTRIAL.matches(buildingidentifier))
+        if (PwcgStructure.PORT_FACILITY.matches(buildingidentifier))
         {
-            return PwcgBuilding.INDUSTRIAL;
+            return PwcgStructure.PORT_FACILITY;
         }
-        return PwcgBuilding.UNKNOWN;
+        else if (PwcgStructure.DEPOT.matches(buildingidentifier))
+        {
+            return PwcgStructure.DEPOT;
+        }
+        else if (PwcgStructure.FUEL.matches(buildingidentifier))
+        {
+            return PwcgStructure.FUEL;
+        }
+        else if (PwcgStructure.INDUSTRIAL.matches(buildingidentifier))
+        {
+            return PwcgStructure.INDUSTRIAL;
+        }
+        return PwcgStructure.UNKNOWN;
+    }
+
+    private static PwcgStructure determineSpecificBuildingType(PwcgStructure genericBuildingType, String buildingidentifier)
+    {
+        for (PwcgStructure building : PwcgStructure.getAllBuildings())
+        {
+            if (building.matches(buildingidentifier))
+            {
+                return building;
+            }
+        }
+        
+        return genericBuildingType;
     }
 }

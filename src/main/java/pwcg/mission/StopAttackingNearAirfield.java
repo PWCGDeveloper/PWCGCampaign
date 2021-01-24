@@ -3,11 +3,11 @@ package pwcg.mission;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -22,10 +22,10 @@ import pwcg.mission.mcu.group.StopAttackingNearAirfieldSequence;
 public class StopAttackingNearAirfield
 {
     private IFlight flight;
-    private List<IAirfield> airfieldsInMission;
+    private List<Airfield> airfieldsInMission;
     private List<StopAttackingNearAirfieldSequence>sequencesForFlight = new ArrayList<>();
 
-    public StopAttackingNearAirfield (IFlight flight, List<IAirfield> airfieldsInMission)
+    public StopAttackingNearAirfield (IFlight flight, List<Airfield> airfieldsInMission)
     {
         this.flight = flight;
         this.airfieldsInMission = airfieldsInMission;
@@ -42,7 +42,7 @@ public class StopAttackingNearAirfield
 
     private void makeStopAttackForEachAirfield() throws PWCGException
     {
-        for (IAirfield airfield : airfieldsInMission)
+        for (Airfield airfield : airfieldsInMission)
         {
             if (isAirfieldForStopAttack(airfield))
             {
@@ -51,7 +51,7 @@ public class StopAttackingNearAirfield
         }
     }
 
-    private void makeStopAttackForEachPlane(IAirfield airfield) throws PWCGException
+    private void makeStopAttackForEachPlane(Airfield airfield) throws PWCGException
     {
         for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
@@ -85,7 +85,7 @@ public class StopAttackingNearAirfield
         return true;
     }
     
-    private boolean isAirfieldForStopAttack(IAirfield airfield) throws PWCGException
+    private boolean isAirfieldForStopAttack(Airfield airfield) throws PWCGException
     {
         if (airfield.getCountry(flight.getCampaign().getDate()).getSide() == flight.getSquadron().determineSide())
         {

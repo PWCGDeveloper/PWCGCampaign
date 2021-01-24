@@ -5,12 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.FixedPosition;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -63,7 +63,7 @@ public class MissionBlockDamage
     private boolean isCloseToAirfield(FixedPosition fixedPosition) throws PWCGException
     {
         AirfieldManager airfieldManager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
-        IAirfield field = airfieldManager.getAirfieldFinder().findClosestAirfield(fixedPosition.getPosition());
+        Airfield field = airfieldManager.getAirfieldFinder().findClosestAirfield(fixedPosition.getPosition());
         double distanceFromField = MathUtils.calcDist(fixedPosition.getPosition(), field.getPosition());
         if (distanceFromField < 5000)
         {

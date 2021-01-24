@@ -1,7 +1,7 @@
 package pwcg.mission.flight.objective;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetType;
@@ -20,7 +20,7 @@ public class GroundAttackObjectiveStrategic
         
         if (targetType == TargetType.TARGET_AIRFIELD)
         {
-            IAirfield target = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getClosestAirfield(flight.getTargetDefinition().getPosition().copy());
+            Airfield target = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getClosestAirfield(flight.getTargetDefinition().getPosition().copy());
             objective = "Attack the airfield at " + target.getName();
         }
         else if (targetType == TargetType.TARGET_BRIDGE)

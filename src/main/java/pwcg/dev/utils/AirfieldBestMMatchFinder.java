@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.plane.RoleCategory;
 import pwcg.campaign.squadron.Squadron;
@@ -16,12 +16,12 @@ import pwcg.dev.utils.AirfieldDistanceOrganizer.AirfieldSet;
 
 public class AirfieldBestMMatchFinder
 {
-    public static IAirfield recommendBestMatch(Squadron squadron, Date date) throws PWCGException
+    public static Airfield recommendBestMatch(Squadron squadron, Date date) throws PWCGException
     {        
-        IAirfield squadronField = squadron.determineCurrentAirfieldAnyMap(date);
+        Airfield squadronField = squadron.determineCurrentAirfieldAnyMap(date);
 
         double closest = 100000000.0;
-        IAirfield bestField = null;
+        Airfield bestField = null;
         
         AirfieldDistanceOrganizer airfieldDistanceOrganizer = new AirfieldDistanceOrganizer();
         airfieldDistanceOrganizer.process(date, FrontMapIdentifier.MOSCOW_MAP);
@@ -32,14 +32,14 @@ public class AirfieldBestMMatchFinder
             airfieldSet = airfieldDistanceOrganizer.alliedAirfieldSet;
         }
         
-        List<IAirfield> relativeFields = new ArrayList<IAirfield>(airfieldSet.getBomberFields().values());
+        List<Airfield> relativeFields = new ArrayList<Airfield>(airfieldSet.getBomberFields().values());
         Role squadronRole = squadron.determineSquadronPrimaryRole(date);
         if (squadronRole.isRoleCategory(RoleCategory.FIGHTER))
         {
-            relativeFields = new ArrayList<IAirfield>(airfieldSet.getFighterFields().values());
+            relativeFields = new ArrayList<Airfield>(airfieldSet.getFighterFields().values());
         }
         
-        for (IAirfield field: relativeFields)
+        for (Airfield field: relativeFields)
         {
             double distanceToOtherField = MathUtils.calcDist(squadronField.getPosition(), field.getPosition());
             if (distanceToOtherField < closest)

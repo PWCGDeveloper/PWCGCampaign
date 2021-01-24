@@ -7,12 +7,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.AirfieldManager;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -84,14 +84,14 @@ public class AirfieldDistanceOrganizer
         }
     }
 
-    private AirfieldSet sortAirfieldsByDistance(List<IAirfield> fields, Date date, Side side) throws PWCGException
+    private AirfieldSet sortAirfieldsByDistance(List<Airfield> fields, Date date, Side side) throws PWCGException
     {
         AirfieldSet airfieldSet = new AirfieldSet();
 
         System.out.println("\n\n\n" + side + "\n");
 
         // Sort the fields 
-        for (IAirfield field: fields)
+        for (Airfield field: fields)
         {
             if (field.getName().contains("DUPLICATE"))
             {
@@ -128,27 +128,27 @@ public class AirfieldDistanceOrganizer
     
     public class AirfieldSet
     {
-        private Map <String, IAirfield> fieldsFighter = new TreeMap <String, IAirfield>();
-        private Map <String, IAirfield> fieldsBomber = new TreeMap <String, IAirfield>();
-        private Map <String, IAirfield> fieldsEither = new TreeMap <String, IAirfield>();
-        private Map <String, IAirfield> fieldsTooClose = new TreeMap <String, IAirfield>();  
-        private Map <String, IAirfield> fieldsTooFar = new TreeMap <String, IAirfield>();  
+        private Map <String, Airfield> fieldsFighter = new TreeMap <String, Airfield>();
+        private Map <String, Airfield> fieldsBomber = new TreeMap <String, Airfield>();
+        private Map <String, Airfield> fieldsEither = new TreeMap <String, Airfield>();
+        private Map <String, Airfield> fieldsTooClose = new TreeMap <String, Airfield>();  
+        private Map <String, Airfield> fieldsTooFar = new TreeMap <String, Airfield>();  
         private Side side;
         private Date date;
         
         public void dump() throws PWCGException
         {
-        	dumpList ("Close", new ArrayList<IAirfield>(fieldsTooClose.values()));
-        	dumpList ("Fighter", new ArrayList<IAirfield>(fieldsFighter.values()));
-        	dumpList ("Attack", new ArrayList<IAirfield>(fieldsEither.values()));
-        	dumpList ("Bomber", new ArrayList<IAirfield>(fieldsBomber.values()));
-        	dumpList ("Far", new ArrayList<IAirfield>(fieldsTooFar.values()));
+        	dumpList ("Close", new ArrayList<Airfield>(fieldsTooClose.values()));
+        	dumpList ("Fighter", new ArrayList<Airfield>(fieldsFighter.values()));
+        	dumpList ("Attack", new ArrayList<Airfield>(fieldsEither.values()));
+        	dumpList ("Bomber", new ArrayList<Airfield>(fieldsBomber.values()));
+        	dumpList ("Far", new ArrayList<Airfield>(fieldsTooFar.values()));
         }
         
-        private void dumpList(String description, List<IAirfield> fields) throws PWCGException
+        private void dumpList(String description, List<Airfield> fields) throws PWCGException
         {
             System.out.println(description);
-        	for (IAirfield field : fields)
+        	for (Airfield field : fields)
         	{
                 int distance = AirfieldReporter.getDistanceToFront(field, side, date);
 
@@ -156,9 +156,9 @@ public class AirfieldDistanceOrganizer
         	}
         }
         
-        public Map <String, IAirfield> getFighterFields()
+        public Map <String, Airfield> getFighterFields()
         {
-            Map <String, IAirfield> fighterFields = new HashMap <String, IAirfield>();
+            Map <String, Airfield> fighterFields = new HashMap <String, Airfield>();
             
             fighterFields.putAll(fieldsFighter);
             fighterFields.putAll(fieldsEither);
@@ -166,9 +166,9 @@ public class AirfieldDistanceOrganizer
             return fighterFields;
         }
         
-        public Map <String, IAirfield> getBomberFields()
+        public Map <String, Airfield> getBomberFields()
         {
-            Map <String, IAirfield> bomberFields = new HashMap <String, IAirfield>();
+            Map <String, Airfield> bomberFields = new HashMap <String, Airfield>();
             
             bomberFields.putAll(fieldsBomber);
             bomberFields.putAll(fieldsEither);
@@ -176,27 +176,27 @@ public class AirfieldDistanceOrganizer
             return bomberFields;
         }
 
-        public Map<String, IAirfield> getFieldsFighter()
+        public Map<String, Airfield> getFieldsFighter()
         {
             return fieldsFighter;
         }
 
-        public Map<String, IAirfield> getFieldsBomber()
+        public Map<String, Airfield> getFieldsBomber()
         {
             return fieldsBomber;
         }
 
-        public Map<String, IAirfield> getFieldsEither()
+        public Map<String, Airfield> getFieldsEither()
         {
             return fieldsEither;
         }
 
-        public Map<String, IAirfield> getFieldsTooClose()
+        public Map<String, Airfield> getFieldsTooClose()
         {
             return fieldsTooClose;
         }
 
-        public Map<String, IAirfield> getFieldsTooFar()
+        public Map<String, Airfield> getFieldsTooFar()
         {
             return fieldsTooFar;
         }

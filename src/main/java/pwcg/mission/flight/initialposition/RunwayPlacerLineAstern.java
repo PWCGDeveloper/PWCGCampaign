@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import pwcg.campaign.api.IAirfield;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -14,10 +14,10 @@ import pwcg.mission.flight.IFlight;
 public class RunwayPlacerLineAstern implements IRunwayPlacer
 {
     private IFlight flight = null;
-    private IAirfield airfield = null;
+    private Airfield airfield = null;
     private int takeoffSpacing = 40;
 
-    public RunwayPlacerLineAstern (IFlight flight, IAirfield airfield, int takeoffSpacing)
+    public RunwayPlacerLineAstern (IFlight flight, Airfield airfield, int takeoffSpacing)
     {
         this.flight = flight;
         this.airfield = airfield;

@@ -6,11 +6,11 @@ import java.util.List;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IMissionFile;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.io.json.CampaignMissionIOJson;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.skin.SkinsInUse;
@@ -24,6 +24,7 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.ground.MissionGroundUnitBuilder;
 import pwcg.mission.ground.builder.IndirectFireAssignmentHandler;
+import pwcg.mission.ground.unittypes.GroundUnitEngagableAAAEvaluator;
 import pwcg.mission.ground.vehicle.VehicleSetBuilderComprehensive;
 import pwcg.mission.io.MissionDescriptionFile;
 import pwcg.mission.io.MissionFileFactory;
@@ -38,29 +39,35 @@ public class Mission
     private Campaign campaign;
     private MissionHumanParticipants participatingPlayers;
     private CoordinateBox missionBorders;
-
-    private MissionWeather weather;
-    private MissionFlightBuilder missionFlightBuilder;
-    private MissionBlockBuilder missionBlockBuilder;
-    private MissionObjectiveGroup missionObjectiveSuccess = new MissionObjectiveGroup();
-    private MissionObjectiveGroup missionObjectiveFailure = new MissionObjectiveGroup();
-    private MissionBattleManager missionBattleManager = new MissionBattleManager();
-    private MissionGroundUnitResourceManager missionGroundUnitManager;
-    private MissionGroundUnitBuilder missionGroundUnitBuilder;
-    private MissionWaypointIconBuilder missionWaypointIconBuilder = new MissionWaypointIconBuilder();
-    private MissionAirfieldIconBuilder missionAirfieldIconBuilder = new MissionAirfieldIconBuilder();
-    private MissionSquadronIconBuilder missionSquadronIconBuilder;
-    private MissionAssaultIconBuilder missionAssaultIconBuilder = new MissionAssaultIconBuilder();
-    private MissionSquadronChooser missionSquadronChooser = new MissionSquadronChooser();
-    private MissionVirtualEscortHandler missionVirtualEscortHandler = new MissionVirtualEscortHandler();
-    private MissionFrontLineIconBuilder missionFrontLines;
-    private MissionEffects missionEffects = new MissionEffects();
-    private SkinsInUse skinsInUse = new SkinsInUse();
-    private VehicleSetBuilderComprehensive vehicleSetBuilder = new VehicleSetBuilderComprehensive();
-    private boolean isFinalized = false;
     private MissionProfile missionProfile = MissionProfile.DAY_TACTICAL_MISSION;
     private MissionOptions missionOptions;
+    private MissionFrontLineIconBuilder frontLines;
+
+    private MissionWeather weather;
+    private MissionObjectiveGroup missionObjectiveSuccess = new MissionObjectiveGroup();
+    private MissionObjectiveGroup missionObjectiveFailure = new MissionObjectiveGroup();
+
+    private MissionSquadronChooser squadronChooser = new MissionSquadronChooser();
+    private MissionFlightBuilder flightBuilder;
+    private MissionVirtualEscortHandler virtualEscortHandler = new MissionVirtualEscortHandler();
+    private SkinsInUse skinsInUse = new SkinsInUse();
     private List<StopAttackingNearAirfieldSequence> stopSequenceForMission = new ArrayList<>();
+
+    private MissionBlockBuilder blockBuilder;
+    private MissionAirfieldBuilder airfieldBuilder;
+
+    private MissionBattleManager battleManager = new MissionBattleManager();
+    private MissionGroundUnitBuilder groundUnitBuilder;
+    private MissionGroundUnitResourceManager groundUnitManager;
+    private VehicleSetBuilderComprehensive vehicleSetBuilder = new VehicleSetBuilderComprehensive();
+
+    private MissionWaypointIconBuilder waypointIconBuilder = new MissionWaypointIconBuilder();
+    private MissionAirfieldIconBuilder airfieldIconBuilder = new MissionAirfieldIconBuilder();
+    private MissionSquadronIconBuilder squadronIconBuilder;
+    private MissionAssaultIconBuilder assaultIconBuilder = new MissionAssaultIconBuilder();
+    
+    private MissionEffects missionEffects = new MissionEffects();
+    private boolean isFinalized = false;
 
     public Mission(
             Campaign campaign, 
@@ -80,14 +87,39 @@ public class Mission
 
         initialize();
     }
+
+    private void initialize() throws PWCGException
+    {
+        PWCGLogger.eraseLog();
+        MissionStringHandler subtitleHandler = MissionStringHandler.getInstance();
+        subtitleHandler.clear();
+
+        groundUnitManager = new MissionGroundUnitResourceManager();
+        groundUnitBuilder = new MissionGroundUnitBuilder(campaign, this);
+        flightBuilder = new MissionFlightBuilder(campaign, this);
+        blockBuilder = new MissionBlockBuilder(this);
+        airfieldBuilder = new MissionAirfieldBuilder(campaign, this);
+        frontLines = new MissionFrontLineIconBuilder(campaign);
+        squadronIconBuilder = new MissionSquadronIconBuilder(campaign);
+    }
+
+    public void generate(List<FlightTypes> playerFlightTypes) throws PWCGException
+    {
+        validate();
+        createStructures();
+        createGroundUnits();
+        createAirfields();
+        generateFlights(playerFlightTypes);
+
+    }
     
     public int getGroundUnitCount() throws PWCGException
     {
-        int unitCountMissionGroundUnits = missionGroundUnitBuilder.getUnitCount();        
+        int unitCountMissionGroundUnits = groundUnitBuilder.getUnitCount();        
         int unitCountInFlights = 0;
         
         int unitCountInAirfields = 0;
-        for (IAirfield field : getFieldsForPatrol())
+        for (Airfield field : getFieldsForPatrol())
         {
             unitCountInAirfields += field.getUnitCount();
         }
@@ -106,37 +138,19 @@ public class Mission
         return unitCountInMission;
     }
 
-    private void initialize() throws PWCGException
+    private void createAirfields() throws PWCGException
     {
-        PWCGLogger.eraseLog();
-        MissionStringHandler subtitleHandler = MissionStringHandler.getInstance();
-        subtitleHandler.clear();
-
-        missionGroundUnitManager = new MissionGroundUnitResourceManager();
-        missionGroundUnitBuilder = new MissionGroundUnitBuilder(campaign, this);
-        missionFlightBuilder = new MissionFlightBuilder(campaign, this);
-        missionBlockBuilder = new MissionBlockBuilder(this);
-        missionFrontLines = new MissionFrontLineIconBuilder(campaign);
-        missionSquadronIconBuilder = new MissionSquadronIconBuilder(campaign);
-    }
-
-    public void generate(List<FlightTypes> playerFlightTypes) throws PWCGException
-    {
-        validate();
-        createStructures();
-        createGroundUnits();
-        generateFlights(playerFlightTypes);
-
+        airfieldBuilder.buildFieldsForPatrol();;
     }
 
     private void createStructures() throws PWCGException
     {
-        missionBlockBuilder.buildFixedPositionsForMission();
+        blockBuilder.buildFixedPositionsForMission();
     }
 
     private void generateFlights(List<FlightTypes> playerFlightTypes) throws PWCGException
     {
-        missionFlightBuilder.generateFlights(participatingPlayers, playerFlightTypes);
+        flightBuilder.generateFlights(participatingPlayers, playerFlightTypes);
         createFirePots();
     }
 
@@ -172,15 +186,15 @@ public class Mission
 
     private void createGroundUnits() throws PWCGException, PWCGException
     {
-        missionGroundUnitBuilder = new MissionGroundUnitBuilder(campaign, this);
-        missionGroundUnitBuilder.generateGroundUnitsForMission();
+        groundUnitBuilder = new MissionGroundUnitBuilder(campaign, this);
+        groundUnitBuilder.generateGroundUnitsForMission();
     }
 
     public void write() throws PWCGException
     {
         IMissionFile missionFile = MissionFileFactory.createMissionFile(this);
 
-        IMissionDescription missionDescription = MissionDescriptionFactory.buildMissionDescription(campaign, this, missionFlightBuilder.getReferencePlayerFlight());
+        IMissionDescription missionDescription = MissionDescriptionFactory.buildMissionDescription(campaign, this, flightBuilder.getReferencePlayerFlight());
         String missionDescriptionText = missionDescription.createDescription();
 
         MissionDescriptionFile missionDescriptionFile = new MissionDescriptionFile();
@@ -214,7 +228,7 @@ public class Mission
 
     private void setMissionScript(MissionOptions missionOptions) throws PWCGException
     {
-        List<PlaneMcu> playerPlanes = missionFlightBuilder.getReferencePlayerFlight().getFlightPlanes().getPlayerPlanes();
+        List<PlaneMcu> playerPlanes = flightBuilder.getReferencePlayerFlight().getFlightPlanes().getPlayerPlanes();
         String playerScript = playerPlanes.get(0).getScript();
         missionOptions.setPlayerConfig(playerScript);
     }
@@ -225,20 +239,21 @@ public class Mission
         {
             setMissionScript(missionOptions);
 
-            missionFlightBuilder.finalizeMissionFlights();
-            missionFrontLines.buildFrontLineIcons();
-            missionWaypointIconBuilder.createWaypointIcons(missionFlightBuilder.getPlayerFlights());
-            missionAirfieldIconBuilder.createWaypointIcons(campaign, this);
-            missionAssaultIconBuilder.createAssaultIcons(missionBattleManager.getMissionAssaultDefinitions());
+            flightBuilder.finalizeMissionFlights();
+            frontLines.buildFrontLineIcons();
+            waypointIconBuilder.createWaypointIcons(flightBuilder.getPlayerFlights());
+            airfieldIconBuilder.createWaypointIcons(campaign, this);
+            assaultIconBuilder.createAssaultIcons(battleManager.getMissionAssaultDefinitions());
 
             MissionCheckZoneTriggerBuilder missionCheckZoneTriggerBuilder = new MissionCheckZoneTriggerBuilder(this);
             missionCheckZoneTriggerBuilder.triggerGroundUnits();
 
             assignIndirectFireTargets();
+            setEngagableAAA();
 
-            if (missionFlightBuilder.getPlayerFlights().size() > 1)
+            if (flightBuilder.getPlayerFlights().size() > 1)
             {
-                missionSquadronIconBuilder.createSquadronIcons(missionFlightBuilder.getPlayerFlights());
+                squadronIconBuilder.createSquadronIcons(flightBuilder.getPlayerFlights());
             }
 
             if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
@@ -260,6 +275,11 @@ public class Mission
         getGroundUnitCount();
         
         isFinalized = true;
+    }
+
+    private void setEngagableAAA()
+    {
+        GroundUnitEngagableAAAEvaluator.setAAUnitsEngageableStatus(this);        
     }
 
     private void stopAttackingNearAirfield() throws PWCGException
@@ -287,9 +307,8 @@ public class Mission
         }
     }
 
-    public List<IAirfield> getFieldsForPatrol() throws PWCGException
+    public List<Airfield> getFieldsForPatrol() throws PWCGException
     {
-        MissionAirfieldBuilder airfieldBuilder = new MissionAirfieldBuilder(campaign, this);
         return airfieldBuilder.getFieldsForPatrol();
     }
 
@@ -297,7 +316,7 @@ public class Mission
     {
         boolean hasPlayerAllied = false;
         boolean hasPlayerAxis = false;
-        for (IFlight flight : missionFlightBuilder.getPlayerFlights())
+        for (IFlight flight : flightBuilder.getPlayerFlights())
         {
             if (flight.getSquadron().determineSide() == Side.ALLIED)
             {
@@ -327,7 +346,7 @@ public class Mission
 
     public void registerAssault(AssaultDefinition missionBattle)
     {
-        missionBattleManager.addMissionBattle(missionBattle);
+        battleManager.addMissionBattle(missionBattle);
     }
 
     public Campaign getCampaign()
@@ -352,7 +371,7 @@ public class Mission
 
     public MissionGroundUnitResourceManager getMissionGroundUnitManager()
     {
-        return missionGroundUnitManager;
+        return groundUnitManager;
     }
 
     public MissionObjectiveGroup getMissionObjectiveSuccess()
@@ -367,52 +386,52 @@ public class Mission
 
     public MissionGroundUnitBuilder getMissionGroundUnitBuilder()
     {
-        return missionGroundUnitBuilder;
+        return groundUnitBuilder;
     }
 
     public MissionFlightBuilder getMissionFlightBuilder()
     {
-        return missionFlightBuilder;
+        return flightBuilder;
     }
 
     public MissionFrontLineIconBuilder getMissionFrontLineIconBuilder()
     {
-        return missionFrontLines;
+        return frontLines;
     }
 
     public MissionWaypointIconBuilder getMissionWaypointIconBuilder()
     {
-        return missionWaypointIconBuilder;
+        return waypointIconBuilder;
     }
 
     public MissionAirfieldIconBuilder getMissionAirfieldIconBuilder()
     {
-        return missionAirfieldIconBuilder;
+        return airfieldIconBuilder;
     }
 
     public MissionAssaultIconBuilder getMissionAssaultIconBuilder()
     {
-        return missionAssaultIconBuilder;
+        return assaultIconBuilder;
     }
 
     public MissionSquadronIconBuilder getMissionSquadronIconBuilder()
     {
-        return missionSquadronIconBuilder;
+        return squadronIconBuilder;
     }
 
     public MissionBattleManager getMissionBattleManager()
     {
-        return missionBattleManager;
+        return battleManager;
     }
 
     public MissionSquadronChooser getMissionSquadronChooser()
     {
-        return missionSquadronChooser;
+        return squadronChooser;
     }
 
     public MissionVirtualEscortHandler getMissionVirtualEscortHandler()
     {
-        return missionVirtualEscortHandler;
+        return virtualEscortHandler;
     }
 
     public VehicleSetBuilderComprehensive getVehicleSetBuilder()
@@ -467,6 +486,11 @@ public class Mission
 
     public MissionBlockBuilder getMissionBlockBuilder()
     {
-        return missionBlockBuilder;
+        return blockBuilder;
+    }
+
+    public MissionAirfieldBuilder getMissionAirfieldBuilder()
+    {
+        return airfieldBuilder;
     }
 }

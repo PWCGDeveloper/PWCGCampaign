@@ -15,9 +15,9 @@ import pwcg.aar.data.AARContext;
 import pwcg.aar.data.CampaignUpdateData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
@@ -34,8 +34,8 @@ public class ElapsedTimeEventGeneratorTest
     @Mock private AARContext aarContext;
     @Mock private CampaignUpdateData campaignUpdateData;
     @Mock private Squadron squad;
-    @Mock private IAirfield currentAirfield;
-    @Mock private IAirfield newAirfield;
+    @Mock private Airfield currentAirfield;
+    @Mock private Airfield newAirfield;
 
     private Date campaignDate;
     private Date newDate;

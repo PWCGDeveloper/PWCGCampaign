@@ -5,8 +5,8 @@ import java.util.List;
 
 import pwcg.campaign.BattleManager;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.group.airfield.staticobject.StaticObjectDefinitionManager;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.payload.IPayloadFactory;
@@ -41,7 +41,7 @@ public interface IPWCGContextManager
 
     List<PWCGMap> getAllMaps();
 
-    IAirfield getAirfieldAllMaps(String airfieldName);
+    Airfield getAirfieldAllMaps(String airfieldName);
 
     IPayloadFactory getPayloadFactory() throws PWCGException;
 

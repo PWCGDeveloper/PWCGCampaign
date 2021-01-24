@@ -4,12 +4,12 @@
 PWCG 11.9.0
 Add Structures as creditable targets
 - Add structures as targets
+- Include structures in payload decision
 - Includes static planes and static trucks
 - Add mission briefings for structures
 - Change target selection to make appropriate use of structures as targets
 - Make game report structure destruction
 - Ability to identify and record victories on structures
-
 Remove high priority waypoints for some flights.
 - No need anymore since flights fly in formation.
 Verified AI adjustments in advanced configs work as intended - they do.
@@ -19,8 +19,9 @@ Changed Luftwaffe odds of victory bonus
 - Also introduces concept of differentiation by front
 Added code to remove heading/trailing spaces from config entries
 - Helps correct typos on user entry
+Added Lydia Lytviak (thanks Dutch2)
 Fixed ships not written to mission file
-
+Fixed issue where rockets could be assigned to PE2 on bombing missions
 
 PWCG 11.8.1
 Small fixes

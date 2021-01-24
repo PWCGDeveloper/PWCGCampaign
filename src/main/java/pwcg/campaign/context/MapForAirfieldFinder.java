@@ -3,9 +3,9 @@ package pwcg.campaign.context;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.group.AirfieldManager;
+import pwcg.campaign.group.airfield.Airfield;
 
 public class MapForAirfieldFinder
 {
@@ -18,7 +18,7 @@ public class MapForAirfieldFinder
             AirfieldManager airfieldManager = map.getAirfieldManager();
             if (airfieldManager != null)
             {
-                IAirfield airfield = airfieldManager.getAirfield(airfieldName);
+                Airfield airfield = airfieldManager.getAirfield(airfieldName);
                 
                 if (airfield != null)
                 {

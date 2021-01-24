@@ -1,6 +1,6 @@
 package pwcg.mission.flight.initialposition;
 
-import pwcg.campaign.api.IAirfield;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.plane.PlaneType.PlaneSize;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -41,7 +41,7 @@ public class FlightPositionParkedStart
         }
     }
     
-    private double calculateAngleForLeadToBeClosestToRunway(IAirfield airfield) throws PWCGException
+    private double calculateAngleForLeadToBeClosestToRunway(Airfield airfield) throws PWCGException
     {
         Mission mission = flight.getMission();
         PWCGLocation parkingLocation = flight.getFlightInformation().getDepartureAirfield().getParkingLocation(mission);

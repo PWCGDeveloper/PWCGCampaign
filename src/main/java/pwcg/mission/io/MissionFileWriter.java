@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IMissionFile;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGDirectorySimulatorManager;
@@ -16,6 +15,7 @@ import pwcg.campaign.group.BlockDefinition;
 import pwcg.campaign.group.BlockDefinitionManager;
 import pwcg.campaign.group.FakeAirfield;
 import pwcg.campaign.group.FixedPosition;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
@@ -267,8 +267,8 @@ public class MissionFileWriter implements IMissionFile
 
     private void writeFieldsInMission(BufferedWriter writer) throws PWCGException
     {
-        List<IAirfield>  fieldsForPatrol = mission.getFieldsForPatrol();
-        for (IAirfield field : fieldsForPatrol)
+        List<Airfield>  fieldsForPatrol = mission.getFieldsForPatrol();
+        for (Airfield field : fieldsForPatrol)
         {
             if (!field.isGroup())
             {
@@ -287,7 +287,7 @@ public class MissionFileWriter implements IMissionFile
                         playerFlight.getFlightInformation().getCountry(), mission.getCampaign().getDate(), VehicleClass.RadioBeacon);
                 if (radioBeacon != null)
                 {
-                    IAirfield flightAirfield = playerFlight.getFlightInformation().getAirfield();
+                    Airfield flightAirfield = playerFlight.getFlightInformation().getAirfield();
                     double takeoffOrientation = flightAirfield.getTakeoffLocation(mission).getOrientation().getyOri();
 
                     Double angleBeaconLeft = MathUtils.adjustAngle(takeoffOrientation, -90);
@@ -319,7 +319,7 @@ public class MissionFileWriter implements IMissionFile
                         playerFlight.getFlightInformation().getCountry(), mission.getCampaign().getDate(), VehicleClass.LandCanvas);
                 if (landCanvas != null)
                 {
-                    IAirfield flightAirfield = playerFlight.getFlightInformation().getAirfield();
+                    Airfield flightAirfield = playerFlight.getFlightInformation().getAirfield();
                     Orientation takeoffOrientation = flightAirfield.getTakeoffLocation(mission).getOrientation().copy();
                     IVehicle landCanvas2 = VehicleFactory.createVehicle(
                             playerFlight.getFlightInformation().getCountry(), mission.getCampaign().getDate(), VehicleClass.LandCanvas);
@@ -352,8 +352,8 @@ public class MissionFileWriter implements IMissionFile
 
     private void writeFakeAirfieldForAiReturnToBase(BufferedWriter writer) throws PWCGException
     {
-        Map<String, IAirfield> allAirFields =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAllAirfields();
-        for (IAirfield airfield : allAirFields.values())
+        Map<String, Airfield> allAirFields =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAllAirfields();
+        for (Airfield airfield : allAirFields.values())
         {
             FakeAirfield fakeAirfiield = new FakeAirfield(airfield, mission);
             fakeAirfiield.write(writer);

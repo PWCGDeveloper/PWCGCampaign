@@ -8,9 +8,9 @@ import java.util.Map;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.plane.Role;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -51,7 +51,7 @@ public class SquadronReducer
         List<Squadron> squadronsForMap = new ArrayList<Squadron>();
         for (Squadron squadron : squadrons)
         {
-            IAirfield field = squadron.determineCurrentAirfieldCurrentMap(date);
+            Airfield field = squadron.determineCurrentAirfieldCurrentMap(date);
             if (field != null)
             {
                 squadronsForMap.add(squadron);
@@ -111,7 +111,7 @@ public class SquadronReducer
         List<Squadron> squadronsWithinRadius = new ArrayList<Squadron>();
         for (Squadron squadron : squadrons)
         {
-            IAirfield field = squadron.determineCurrentAirfieldCurrentMap(date);
+            Airfield field = squadron.determineCurrentAirfieldCurrentMap(date);
             if (field != null)
             {
                 double distanceFromReference = MathUtils.calcDist(referencePosition, field.getPosition());

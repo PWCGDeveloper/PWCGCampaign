@@ -3,9 +3,9 @@ package pwcg.mission.flight.ferry;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -20,13 +20,13 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public class FerryWaypointFactory
 {
-    private IAirfield fromAirfield;
-    private IAirfield toAirfield;
+    private Airfield fromAirfield;
+    private Airfield toAirfield;
 
     private IFlight flight;
     private MissionPointRouteSet missionPointSet = new MissionPointRouteSet();
 
-    public FerryWaypointFactory(IFlight flight, IAirfield fromAirfield, IAirfield toAirfield)
+    public FerryWaypointFactory(IFlight flight, Airfield fromAirfield, Airfield toAirfield)
     {
         this.flight = flight;
         this.toAirfield = toAirfield;

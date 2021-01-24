@@ -3,12 +3,12 @@ package pwcg.mission.flight.offensive;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IFixedPosition;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.IFlight;
@@ -65,7 +65,7 @@ public class OffensiveWaypointsAirfieldFactory
     {
         double missionTargetRadius = flight.getMission().getMissionBorders().getAreaRadius();
         Side enemySide = flight.getFlightInformation().getCountry().getSide().getOppositeSide();
-        List <IAirfield> enemyAirfields = new ArrayList<>();
+        List <Airfield> enemyAirfields = new ArrayList<>();
         while (!stopLooking(enemyAirfields, missionTargetRadius))
         {
             enemyAirfields =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().
@@ -74,7 +74,7 @@ public class OffensiveWaypointsAirfieldFactory
         }
 
         List <IFixedPosition> enemyFixedPositions = new ArrayList<>();
-        for (IAirfield airfield : enemyAirfields)
+        for (Airfield airfield : enemyAirfields)
         {
             enemyFixedPositions.add(airfield);
         }
@@ -82,7 +82,7 @@ public class OffensiveWaypointsAirfieldFactory
     }
     
     
-    private boolean stopLooking(List <IAirfield> enemyAirfields, double maxRadius)
+    private boolean stopLooking(List <Airfield> enemyAirfields, double maxRadius)
     {
         if (enemyAirfields.size() >= 2)
         {

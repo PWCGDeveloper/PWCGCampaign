@@ -4,71 +4,71 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PositionFinder;
 
 public class AirfieldFinder
 {
-    private List<IAirfield> airfields = new ArrayList<>();
+    private List<Airfield> airfields = new ArrayList<>();
 
-    public AirfieldFinder(List<IAirfield> airfields)
+    public AirfieldFinder(List<Airfield> airfields)
     {
         this.airfields = airfields;
     }    
     
-    public List<IAirfield> getWithinRadius(Coordinate referenceLocation, double radius) throws PWCGException
+    public List<Airfield> getWithinRadius(Coordinate referenceLocation, double radius) throws PWCGException
     {
-        PositionFinder<IAirfield> positionFinder = new PositionFinder<IAirfield>();
-        List<IAirfield> airfieldsWithinRadius = positionFinder.findWithinExpandingRadius(airfields, referenceLocation, radius, radius * 3);
+        PositionFinder<Airfield> positionFinder = new PositionFinder<Airfield>();
+        List<Airfield> airfieldsWithinRadius = positionFinder.findWithinExpandingRadius(airfields, referenceLocation, radius, radius * 3);
         return airfieldsWithinRadius;
     }
 
-    public List<IAirfield> getAirfieldsWithinRadiusBySide(Coordinate referenceLocation, Date date, double radius, Side side) throws PWCGException
+    public List<Airfield> getAirfieldsWithinRadiusBySide(Coordinate referenceLocation, Date date, double radius, Side side) throws PWCGException
     {
-        PositionFinder<IAirfield> positionFinder = new PositionFinder<IAirfield>();
-        List<IAirfield> airfieldsForSide = getAirfieldsBySide(side, date);
-        List<IAirfield> airfieldsWithinRadius = positionFinder.findWithinExpandingRadius(airfieldsForSide, referenceLocation, radius, radius * 3);
+        PositionFinder<Airfield> positionFinder = new PositionFinder<Airfield>();
+        List<Airfield> airfieldsForSide = getAirfieldsBySide(side, date);
+        List<Airfield> airfieldsWithinRadius = positionFinder.findWithinExpandingRadius(airfieldsForSide, referenceLocation, radius, radius * 3);
         return airfieldsWithinRadius;
     }
 
-    public IAirfield findClosestAirfield(Coordinate referenceLocation) throws PWCGException
+    public Airfield findClosestAirfield(Coordinate referenceLocation) throws PWCGException
     {
-        PositionFinder<IAirfield> positionFinder = new PositionFinder<IAirfield>();
-        List<IAirfield> airfieldsList = new ArrayList<>(airfields);
-        IAirfield closestAirfield = positionFinder.selectClosestPosition(airfieldsList, referenceLocation);
+        PositionFinder<Airfield> positionFinder = new PositionFinder<Airfield>();
+        List<Airfield> airfieldsList = new ArrayList<>(airfields);
+        Airfield closestAirfield = positionFinder.selectClosestPosition(airfieldsList, referenceLocation);
         return closestAirfield;
     }
 
-    public IAirfield getNearbyAirfield(Coordinate referenceLocation, double radius) throws PWCGException
+    public Airfield getNearbyAirfield(Coordinate referenceLocation, double radius) throws PWCGException
     {
-        PositionFinder<IAirfield> positionFinder = new PositionFinder<IAirfield>();
-        List<IAirfield> airfieldsList = new ArrayList<>(airfields);
-        IAirfield closestAirfield = positionFinder.selectPositionWithinExpandingRadius(airfieldsList, referenceLocation, radius, radius);
+        PositionFinder<Airfield> positionFinder = new PositionFinder<Airfield>();
+        List<Airfield> airfieldsList = new ArrayList<>(airfields);
+        Airfield closestAirfield = positionFinder.selectPositionWithinExpandingRadius(airfieldsList, referenceLocation, radius, radius);
         return closestAirfield;
     }
 
-    public IAirfield getNearbyAirfieldForSide(Coordinate referenceLocation, double radius, Date date, Side side) throws PWCGException
+    public Airfield getNearbyAirfieldForSide(Coordinate referenceLocation, double radius, Date date, Side side) throws PWCGException
     {
-        PositionFinder<IAirfield> positionFinder = new PositionFinder<IAirfield>();
-        List<IAirfield> airfieldsForSide = getAirfieldsBySide(side, date);
-        IAirfield closestAirfield = positionFinder.selectPositionWithinExpandingRadius(airfieldsForSide, referenceLocation, radius, radius);
+        PositionFinder<Airfield> positionFinder = new PositionFinder<Airfield>();
+        List<Airfield> airfieldsForSide = getAirfieldsBySide(side, date);
+        Airfield closestAirfield = positionFinder.selectPositionWithinExpandingRadius(airfieldsForSide, referenceLocation, radius, radius);
         return closestAirfield;
     }
 
-    public IAirfield findClosestAirfieldForSide(Coordinate referenceLocation, Date date, Side side) throws PWCGException
+    public Airfield findClosestAirfieldForSide(Coordinate referenceLocation, Date date, Side side) throws PWCGException
     {
-        PositionFinder<IAirfield> positionFinder = new PositionFinder<IAirfield>();
-        IAirfield closestAirfield = positionFinder.selectClosestPosition(getAirfieldsBySide(side, date), referenceLocation);
+        PositionFinder<Airfield> positionFinder = new PositionFinder<Airfield>();
+        Airfield closestAirfield = positionFinder.selectClosestPosition(getAirfieldsBySide(side, date), referenceLocation);
         return closestAirfield;
     }
     
-    public List<IAirfield> getAirfieldsBySide(Side side, Date date) throws PWCGException 
+    public List<Airfield> getAirfieldsBySide(Side side, Date date) throws PWCGException 
     {
-        List<IAirfield>airfieldsForSide = new ArrayList<IAirfield>();
-        for (IAirfield airfield : airfields)
+        List<Airfield>airfieldsForSide = new ArrayList<Airfield>();
+        for (Airfield airfield : airfields)
         {
             if (airfield.createCountry(date).getSide() == side)
             {

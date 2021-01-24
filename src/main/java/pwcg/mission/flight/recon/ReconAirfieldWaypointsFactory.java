@@ -3,9 +3,9 @@ package pwcg.mission.flight.recon;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -48,7 +48,7 @@ public class ReconAirfieldWaypointsFactory
         Side enemySide = flight.getFlightInformation().getCountry().getSide().getOppositeSide();
 
         // Find airfields to recon
-        List <IAirfield> enemyAirfields = new ArrayList<IAirfield>();
+        List <Airfield> enemyAirfields = new ArrayList<Airfield>();
         double maxRadius = 40000.0;
         
         while (enemyAirfields.size() <= 2)
@@ -65,13 +65,13 @@ public class ReconAirfieldWaypointsFactory
             numWaypoints = enemyAirfields.size();
         }
         
-        List <IAirfield> remainingAirfields = enemyAirfields;
+        List <Airfield> remainingAirfields = enemyAirfields;
         Coordinate lastCoord = flight.getTargetDefinition().getPosition().copy();
         for (int i = 0; i < numWaypoints; ++i)
         {
             int index = getNextAirfield(remainingAirfields, lastCoord);
             
-            IAirfield field = remainingAirfields.get(index);
+            Airfield field = remainingAirfields.get(index);
             McuWaypoint wp = createWP(field.getPosition().copy());
             targetWaypoints.add(wp);
 
@@ -81,14 +81,14 @@ public class ReconAirfieldWaypointsFactory
         return targetWaypoints;
     }
 
-    private int getNextAirfield(List <IAirfield> remainingAirfields, Coordinate lastCoord) 
+    private int getNextAirfield(List <Airfield> remainingAirfields, Coordinate lastCoord) 
     {
         int index = 0;
         double leastDistance = PositionFinder.ABSURDLY_LARGE_DISTANCE;
         
         for (int i = 0; i < remainingAirfields.size(); ++i)
         {
-            IAirfield field = remainingAirfields.get(i);
+            Airfield field = remainingAirfields.get(i);
             double thisDistance = MathUtils.calcDist(lastCoord, field.getPosition());
             if (thisDistance < leastDistance)
             {

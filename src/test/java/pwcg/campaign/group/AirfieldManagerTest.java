@@ -8,10 +8,10 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.options.MissionWeather;
@@ -41,7 +41,7 @@ public class AirfieldManagerTest
 	public void airfieldValidityCheckFranceTest() throws PWCGException 
 	{
         AirfieldManager airfieldManager = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.ARRAS_MAP).getAirfieldManager();
-        for (IAirfield airfield : airfieldManager.getAllAirfields().values())
+        for (Airfield airfield : airfieldManager.getAllAirfields().values())
         {
             assert (airfield.getTakeoffLocation(mission) != null);
             assert (airfield.getLandingLocation(mission) != null);

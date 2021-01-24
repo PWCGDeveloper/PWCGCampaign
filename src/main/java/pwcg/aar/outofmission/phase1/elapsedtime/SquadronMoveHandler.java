@@ -5,10 +5,10 @@ import java.util.List;
 
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.group.AirfieldManager;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
@@ -80,8 +80,8 @@ public class SquadronMoveHandler
     private double calculateDistanceBetweenAirfields(String airfieldNameNow, String airfieldNameNext)
     {
         double distance = 1000000.0;
-        IAirfield airfieldNow = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(airfieldNameNow);
-        IAirfield airfieldNext = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(airfieldNameNext);
+        Airfield airfieldNow = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(airfieldNameNow);
+        Airfield airfieldNext = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(airfieldNameNext);
         if (airfieldNow != null && airfieldNext != null)
         {
             distance = MathUtils.calcDist(airfieldNow.getPosition(), airfieldNext.getPosition());

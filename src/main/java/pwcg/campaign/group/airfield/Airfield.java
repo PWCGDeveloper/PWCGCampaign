@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IStaticPlane;
 import pwcg.campaign.context.PWCGContext;
@@ -32,7 +31,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.vehicle.IVehicle;
 
-public class Airfield extends FixedPosition implements IAirfield, Cloneable
+public class Airfield extends FixedPosition implements Cloneable
 {
     private List<Runway> runways = new ArrayList<>();
     private AirfieldObjects airfieldObjects;
@@ -42,7 +41,6 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
         deleteAfterDeath = 0;
     }
 
-    @Override
     public Airfield copy()
     {
         Airfield clone = new Airfield();
@@ -82,7 +80,6 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
         }
     }
     
-    @Override
     public int getUnitCount()
     {
         if (airfieldObjects != null)
@@ -118,7 +115,6 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
         return output.toString();
     }
 
-    @Override
     public void initializeAirfieldFromLocation(PWCGLocation planePosition)
     {
         this.position = planePosition.getPosition().copy();
@@ -142,7 +138,6 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
         return orientation.getyOri();
     }
 
-    @Override
     public void addAirfieldObjects(Mission mission) throws PWCGException
     {
         if (!(createCountry(mission.getCampaign().getDate()).isNeutral()))
@@ -153,13 +148,11 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
         }
     }
 
-    @Override
     public boolean isGroup()
     {
         return false;
     }
 
-    @Override
     public Date getStartDate()
     {
         try
@@ -218,19 +211,16 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
         }
     }
 
-    @Override
     public PWCGLocation getTakeoffLocation(Mission mission) throws PWCGException
     {
         return getRunwayStart(mission);
     }
 
-    @Override
     public PWCGLocation getLandingLocation(Mission mission) throws PWCGException
     {
         return getLandingStart(mission);
     }
 
-    @Override
     public PWCGLocation getParkingLocation(Mission mission) throws PWCGException
     {
         Runway runway = selectRunway(mission);
@@ -241,7 +231,6 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
         return runway.getParkingLocation();
     }
 
-    @Override
     public PWCGLocation getFakeAirfieldLocation(Mission mission) throws PWCGException
     {
         ConfigManagerCampaign configManager = PWCGContext.getInstance().getCampaign().getCampaignConfigManager();
@@ -327,7 +316,6 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
         return bestRunway.copy();
     }
 
-    @Override
     public boolean isNearRunwayOrTaxiway(Mission mission, Coordinate pos) throws PWCGException
     {
         if (runways.size() == 0)
@@ -395,7 +383,6 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
         return super.getCountry(date);
     }
 
-    @Override
     public List<HotSpot> getNearbyHotSpots() throws PWCGException
     {
         List<HotSpot> nearbyAirfieldHotSpots = new ArrayList<HotSpot>();
@@ -416,7 +403,6 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
         return nearbyAirfieldHotSpots;
     }
 
-    @Override
     public List<Coordinate> getBoundary() throws PWCGException
     {
         List<Coordinate> points = new ArrayList<>();

@@ -2,9 +2,9 @@ package pwcg.campaign.context;
 
 import java.util.Date;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.PWCGLocation;
@@ -116,7 +116,7 @@ public class BehindEnemyLines
     private boolean notBehindLinesByAirfield(Coordinate landingCoordinates, Side pilotSide, boolean behindEnemyLines)
                     throws PWCGException
     {
-        IAirfield closestAirfield =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().findClosestAirfield(landingCoordinates);
+        Airfield closestAirfield =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().findClosestAirfield(landingCoordinates);
         if (closestAirfield != null)
         {
             if (closestAirfield.getCountry(date).getCountry() == Country.NEUTRAL)

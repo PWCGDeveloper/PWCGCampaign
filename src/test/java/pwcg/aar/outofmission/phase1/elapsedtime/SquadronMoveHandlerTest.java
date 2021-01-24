@@ -11,10 +11,10 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -24,8 +24,8 @@ public class SquadronMoveHandlerTest
 {
     @Mock private Campaign campaign;
     @Mock Squadron squadron;
-    @Mock IAirfield currentAirfield;
-    @Mock IAirfield newAirfield;
+    @Mock Airfield currentAirfield;
+    @Mock Airfield newAirfield;
 
     private Date campaignDate;
     private Date newDate;
