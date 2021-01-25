@@ -89,11 +89,11 @@ public class BriefingEditorScreen extends ImageResizingPanel implements ActionLi
         buttonGrid.add(scrubMissionButton);
 
         buttonGrid.add(PWCGButtonFactory.makeDummy());
-        JButton goBackToBriefingMapButton = makeButton("Back To Map", "Back To Map", "Go back to briefing map screen");
+        JButton goBackToBriefingMapButton = makeButton("Back: Map", "Back: Map", "Go back to briefing map screen");
         buttonGrid.add(goBackToBriefingMapButton);
 
         buttonGrid.add(PWCGButtonFactory.makeDummy());
-        JButton goToPilotSelectionButton = makeButton("Pilot Selection", "Pilot Selection", "Progress to pilot selection screen");
+        JButton goToPilotSelectionButton = makeButton("Next: Pilots", "Next: Pilots", "Progress to pilot selection screen");
         buttonGrid.add(goToPilotSelectionButton);
 
         buttonGrid.add(PWCGButtonFactory.makeDummy());
@@ -115,11 +115,11 @@ public class BriefingEditorScreen extends ImageResizingPanel implements ActionLi
         try
         {
             String action = arg0.getActionCommand();
-            if (action.equalsIgnoreCase("Back To Map"))
+            if (action.equalsIgnoreCase("Back: Map"))
             {
                 backToBriefingMap();
             }
-            else if (action.equals("Pilot Selection"))
+            else if (action.equals("Next: Pilots"))
             {
                 forwardToPilotSelection();
             }

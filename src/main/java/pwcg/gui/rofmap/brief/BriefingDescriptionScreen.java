@@ -105,7 +105,7 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
         buttonGrid.add(scrubMissionButton);
 
         buttonGrid.add(PWCGButtonFactory.makeDummy());
-        JButton goToBriefingMapButton = makeButton("Briefing Map", "Briefing Map", "Progress to briefing map screen");
+        JButton goToBriefingMapButton = makeButton("Next: Map", "Next: Map", "Progress to briefing map screen");
         buttonGrid.add(goToBriefingMapButton);
 
         buttonPanel.add(buttonGrid, BorderLayout.NORTH);
@@ -143,7 +143,7 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
             {
                 backToCampaign();
             }
-            else if (action.equals("Briefing Map"))
+            else if (action.equals("Next: Map"))
             {
                 forwardToBriefingMap();
             }

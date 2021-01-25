@@ -173,11 +173,14 @@ public class AirfieldManager
         for (Squadron squadron : activeSquadrons)
         {
             Airfield squadronAirfield = squadron.determineCurrentAirfieldCurrentMap(date);
-            for (Airfield airfield : airfields.values())
+            if (squadronAirfield != null)
             {
-                if (squadronAirfield.getName().equals(airfield.getName()))
+                for (Airfield airfield : airfields.values())
                 {
-                    return true;
+                    if (squadronAirfield.getName().equals(airfield.getName()))
+                    {
+                        return true;
+                    }
                 }
             }
         }

@@ -113,7 +113,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
 
         buttonGrid.add(PWCGButtonFactory.makeDummy());
 
-        JButton backToMapButton = PWCGButtonFactory.makeTranslucentMenuButton("Back To WP Editor", "Back To WP Editor", "Go back to waypoint editor screen", this);
+        JButton backToMapButton = PWCGButtonFactory.makeTranslucentMenuButton("Back: WP Editor", "Back: WP Editor", "Go back to waypoint editor screen", this);
         buttonGrid.add(backToMapButton);
 
         buttonGrid.add(PWCGButtonFactory.makeDummy());
@@ -125,7 +125,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         }
         else
         {
-            JButton backToCampaignButton = PWCGButtonFactory.makeTranslucentMenuButton("Back To Campaign", "Back To Campaign", "Return to campaign home screen", this);
+            JButton backToCampaignButton = PWCGButtonFactory.makeTranslucentMenuButton("Return To Campaign", "Return To Campaign", "Return to campaign home screen", this);
             buttonGrid.add(backToCampaignButton);
         }
         buttonGrid.add(PWCGButtonFactory.makeDummy());
@@ -162,7 +162,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         try
         {
             String action = ae.getActionCommand();
-            if (action.equalsIgnoreCase("Back To WP Editor"))
+            if (action.equalsIgnoreCase("Back: WP Editor"))
             {
                 CampaignGuiContextManager.getInstance().popFromContextStack();
                 return;
@@ -181,7 +181,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
             {
                 acceptMission();
             }
-            else if (action.equals("Back To Campaign"))
+            else if (action.equals("Return To Campaign"))
             {
                 backToCampaign();
             }

@@ -28,6 +28,7 @@ public class CampaignUpdateNewSquadronStafferTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
+        campaign.write();
     }
 
 

@@ -140,11 +140,11 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
         buttonGrid.add(scrubMissionButton);
 
         buttonGrid.add(PWCGButtonFactory.makeDummy());
-        JButton goBackToBriefingDescriptionButton = makeButton("Briefing Description", "Briefing Description", "Go back to briefing description screen");
+        JButton goBackToBriefingDescriptionButton = makeButton("Back: Briefing", "Back: Briefing", "Go back to briefing description screen");
         buttonGrid.add(goBackToBriefingDescriptionButton);
 
         buttonGrid.add(PWCGButtonFactory.makeDummy());
-        JButton goToWaypointEditButton = makeButton("Waypoint Editor", "Waypoint Editor", "Progress to waypoint editor screen");
+        JButton goToWaypointEditButton = makeButton("Next: Waypoint", "Next: Waypoint", "Progress to waypoint editor screen");
         buttonGrid.add(goToWaypointEditButton);
 
         buttonGrid.add(PWCGButtonFactory.makeDummy());
@@ -171,11 +171,11 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 		{
 			String action = arg0.getActionCommand();
 			
-            if (action.equals("Briefing Description"))
+            if (action.equals("Back: Briefing"))
             {
                 backToBriefingDescription();
             }
-            else if (action.equals("Waypoint Editor"))
+            else if (action.equals("Next: Waypoint"))
             {
                 forwardToWaypointEditor();
             }
