@@ -171,7 +171,6 @@ public class CoopPlayerInclusionTest
             {
                 germanBomberFound = true;
                 assert(playerPlane.isPrimaryRole(Role.ROLE_BOMB));
-                assert(FlightTypes.isBombingFlight(flight.getFlightType()) == true);
             }
             else if (playerPlane.getName().contains("Russian Fighter"))
             {

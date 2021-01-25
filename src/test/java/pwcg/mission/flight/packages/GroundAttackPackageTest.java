@@ -53,20 +53,6 @@ public class GroundAttackPackageTest
     }
 
     @Test
-    public void groundAttackShipTargetTest() throws PWCGException
-    {
-        TestDriver.getInstance().setEnabled(true);
-        TestDriver.getInstance().setTestPlayerTacticalTargetType(TargetType.TARGET_SHIPPING);
-        
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_KUBAN_PROFILE);
-        IFlight flight = buildFlight(campaign);
-        assert(flight.getFlightInformation().getTargetDefinition().getTargetType() == TargetType.TARGET_SHIPPING);
-        verifyProximityToTargetUnit(flight);
-
-        TestDriver.getInstance().setEnabled(true);
-    }
-
-    @Test
     public void groundAttackAirfieldTargetTest() throws PWCGException
     {
         TestDriver.getInstance().setEnabled(true);

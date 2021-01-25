@@ -68,7 +68,7 @@ public class PromotionEventHandlerTest
         Mockito.when(squadronMemberVictories.getAirToAirVictories()).thenReturn(victories.size());
 
         Mockito.when(squadronMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
-        Mockito.when(squadronMember.getMissionFlown()).thenReturn(10);
+        Mockito.when(squadronMember.getMissionFlown()).thenReturn(20);
         Mockito.when(squadronMember.getRank()).thenReturn("Corporal");
         Mockito.when(squadronMember.determineSquadron()).thenReturn(squadron);
         Mockito.when(squadron.determineSquadronPrimaryRole(ArgumentMatchers.<Date>any())).thenReturn(Role.ROLE_FIGHTER);

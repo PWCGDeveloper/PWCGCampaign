@@ -65,7 +65,7 @@ public class PlayerFlightTypeBoSFighterTest
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
 
-        assert(mission.getMissionFlightBuilder().getAiFlights().size() > 2);
+        assert(mission.getMissionFlightBuilder().getAiFlights().size() >= 2);
 	}
 
     @Test
@@ -90,7 +90,7 @@ public class PlayerFlightTypeBoSFighterTest
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
 
-        assert(mission.getMissionFlightBuilder().getAiFlights().size() > 2);
+        assert(mission.getMissionFlightBuilder().getAiFlights().size() >= 2);
     }
 
     @Test
@@ -140,7 +140,7 @@ public class PlayerFlightTypeBoSFighterTest
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
 
-        assert(mission.getMissionFlightBuilder().getAiFlights().size() > 2);
+        assert(mission.getMissionFlightBuilder().getAiFlights().size() >= 2);
 	}
 
 	@Test
@@ -165,7 +165,7 @@ public class PlayerFlightTypeBoSFighterTest
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
 
-        assert(mission.getMissionFlightBuilder().getAiFlights().size() > 2);
+        assert(mission.getMissionFlightBuilder().getAiFlights().size() >= 2);
 	}
 
     @Test
@@ -190,7 +190,7 @@ public class PlayerFlightTypeBoSFighterTest
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
 
-        assert(mission.getMissionFlightBuilder().getAiFlights().size() > 2);
+        assert(mission.getMissionFlightBuilder().getAiFlights().size() >= 2);
     }
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)
