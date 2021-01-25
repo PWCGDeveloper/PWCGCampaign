@@ -19,6 +19,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.flight.plane.FormationTypeCalculator;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.mcu.McuFormation;
+import pwcg.mission.target.TargetDefinition;
 
 public class FlightInformation
 {
@@ -35,6 +36,7 @@ public class FlightInformation
     private int altitude = 0;
     private int flightCruisingSpeed = 0;
     private int formationType = McuFormation.FORMATION_V;
+    private TargetDefinition targetDefinition;;
 
     public FlightInformation(Mission mission)
     {
@@ -264,4 +266,13 @@ public class FlightInformation
         return formationType;
     }
 
+    public TargetDefinition getTargetDefinition()
+    {
+        return targetDefinition;
+    }
+
+    public void setTargetDefinition(TargetDefinition targetDefinition)
+    {
+        this.targetDefinition = targetDefinition;
+    }
 }

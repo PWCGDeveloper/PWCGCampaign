@@ -3,6 +3,7 @@ package pwcg.mission.target;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightInformation;
 
@@ -23,8 +24,10 @@ public class TargetBuilder implements ITargetDefinitionBuilder
         List<TargetDefinition> allTargets = new ArrayList<>();
         allTargets.addAll(targetaDefinitionsForGroundUnit);
         allTargets.addAll(targetaDefinitionsForStructure);
-        return findTarget(allTargets);
-
+        TargetDefinition targetDefinition =  findTarget(allTargets);
+        
+        flightInformation.setTargetDefinition(targetDefinition);
+        return targetDefinition;
     }
 
     private List<TargetDefinition> createTargetDefinitionsForInfantry() throws PWCGException
@@ -43,7 +46,7 @@ public class TargetBuilder implements ITargetDefinitionBuilder
 
     private TargetDefinition findTarget(List<TargetDefinition> availableTargets) throws PWCGException
     {
-        List<TargetType> shuffledTargetTypes = TargetPriorityGeneratorTactical.getTargetTypePriorities(flightInformation);
+        List<TargetType> shuffledTargetTypes = getTargetPreferences();
 
         for (TargetType desiredTargetType : shuffledTargetTypes)
         {
@@ -55,6 +58,22 @@ public class TargetBuilder implements ITargetDefinitionBuilder
                 }
             }
         }
-        throw new PWCGException ("No strategic targets available in mission");
+        throw new PWCGException ("No targets available in mission");
+    }
+
+    private List<TargetType> getTargetPreferences() throws PWCGException
+    {
+        if (TestDriver.getInstance().isEnabled())
+        {
+            if (TestDriver.getInstance().getTestPlayerTacticalTargetType() != TargetType.TARGET_NONE)
+            {
+                List<TargetType> testTargetTypes = new ArrayList<>();
+                testTargetTypes.add(TestDriver.getInstance().getTestPlayerTacticalTargetType());
+                return testTargetTypes;
+            }
+        }
+        
+        List<TargetType> shuffledTargetTypes = TargetPriorityGeneratorTactical.getTargetTypePriorities(flightInformation);
+        return shuffledTargetTypes;
     }
 }

@@ -24,8 +24,8 @@ public class TestDriver
     private TestFlightType testBombFlightType = new TestFlightType();
     private TestFlightType testStrategicBombFlightType = new TestFlightType();
 
-    private TargetType testPlayerTacticalTargetType = TargetType.TARGET_TRANSPORT;
-    private TargetType testAITacticalTargetType = TargetType.TARGET_INFANTRY;
+    private TargetType testPlayerTacticalTargetType = TargetType.TARGET_NONE;
+    private TargetType testAITacticalTargetType = TargetType.TARGET_NONE;
 
     private List<SquadronMember> assignedSquadMembers = null;
 
@@ -148,5 +148,90 @@ public class TestDriver
     {
         public FlightTypes playerFlightType = FlightTypes.ANY;
         public FlightTypes aiFlightType = FlightTypes.ANY;
+    }
+
+    public TestFlightType getTestFighterFlightType()
+    {
+        return testFighterFlightType;
+    }
+
+    public void setTestFighterFlightType(TestFlightType testFighterFlightType)
+    {
+        this.testFighterFlightType = testFighterFlightType;
+    }
+
+    public TestFlightType getTestReconFlightType()
+    {
+        return testReconFlightType;
+    }
+
+    public void setTestReconFlightType(TestFlightType testReconFlightType)
+    {
+        this.testReconFlightType = testReconFlightType;
+    }
+
+    public TestFlightType getTestAttackFlightType()
+    {
+        return testAttackFlightType;
+    }
+
+    public void setTestAttackFlightType(TestFlightType testAttackFlightType)
+    {
+        this.testAttackFlightType = testAttackFlightType;
+    }
+
+    public TestFlightType getTestDiveBombFlightType()
+    {
+        return testDiveBombFlightType;
+    }
+
+    public void setTestDiveBombFlightType(TestFlightType testDiveBombFlightType)
+    {
+        this.testDiveBombFlightType = testDiveBombFlightType;
+    }
+
+    public TestFlightType getTestBombFlightType()
+    {
+        return testBombFlightType;
+    }
+
+    public void setTestBombFlightType(TestFlightType testBombFlightType)
+    {
+        this.testBombFlightType = testBombFlightType;
+    }
+
+    public TestFlightType getTestStrategicBombFlightType()
+    {
+        return testStrategicBombFlightType;
+    }
+
+    public void setTestStrategicBombFlightType(TestFlightType testStrategicBombFlightType)
+    {
+        this.testStrategicBombFlightType = testStrategicBombFlightType;
+    }
+
+    public TargetType getTestPlayerTacticalTargetType()
+    {
+        return testPlayerTacticalTargetType;
+    }
+
+    public void setTestPlayerTacticalTargetType(TargetType testPlayerTacticalTargetType)
+    {
+        this.testPlayerTacticalTargetType = testPlayerTacticalTargetType;
+    }
+
+    public TargetType getTestAITacticalTargetType()
+    {
+        return testAITacticalTargetType;
+    }
+
+    public void setTestAITacticalTargetType(TargetType testAITacticalTargetType)
+    {
+        this.testAITacticalTargetType = testAITacticalTargetType;
+    }
+
+    public void setEnabled(boolean enabled)
+    {
+        this.enabled= enabled;
     }
 }
