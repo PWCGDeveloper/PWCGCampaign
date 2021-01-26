@@ -34,8 +34,8 @@ public class MissionFlightBuilder
     public void generateFlights(MissionHumanParticipants participatingPlayers, List<FlightTypes> playerFlightTypes) throws PWCGException
     {
         createAiFlights(playerFlightTypes);
-        keepAiFlights();
         createPlayerFlights(participatingPlayers, playerFlightTypes);
+        keepAiFlights();
     }
 
     private void keepAiFlights() throws PWCGException
