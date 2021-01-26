@@ -1,7 +1,7 @@
 
 ​At the PWCG web site
 
-PWCG 11.9.0
+PWCG 11.9.1
 Add Structures as creditable targets
 - Add structures as targets
 - Include structures in payload decision
