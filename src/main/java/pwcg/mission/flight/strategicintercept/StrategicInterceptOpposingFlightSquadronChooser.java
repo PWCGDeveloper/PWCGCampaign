@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import pwcg.campaign.api.Side;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -22,7 +23,8 @@ public class StrategicInterceptOpposingFlightSquadronChooser
     public List<Squadron> getOpposingBomberSquadron() throws PWCGException
     {
         List<Role> opposingFlightRoles = new ArrayList<>(Arrays.asList(Role.ROLE_BOMB));
-        OpposingSquadronChooser opposingSquadronChooser = new OpposingSquadronChooser(playerFlightInformation, opposingFlightRoles, 5);
+        Side opposingSquadronSide = playerFlightInformation.getSquadron().determineEnemySide();
+        OpposingSquadronChooser opposingSquadronChooser = new OpposingSquadronChooser(playerFlightInformation.getCampaign(), opposingFlightRoles, opposingSquadronSide, 5);
         List<Squadron> opposingSquadrons = opposingSquadronChooser.getOpposingSquadrons();
         return opposingSquadrons;
     }

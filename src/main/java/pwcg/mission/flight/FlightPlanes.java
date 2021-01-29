@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.plane.Role;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -129,12 +128,6 @@ public class FlightPlanes implements IFlightPlanes
         }
         
         return cruisingSpeed;
-    }
-
-    @Override
-    public boolean isFlightHasFighterPlanes()
-    {
-        return getPlanes().get(0).isPrimaryRole(Role.ROLE_FIGHTER);
     }
 
     @Override

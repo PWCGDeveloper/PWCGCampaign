@@ -33,6 +33,7 @@ public class FlightInformation
     private boolean isPlayerFlight = false;
     private boolean isEscortedByPlayerFlight = false;
     private boolean isEscortForPlayerFlight = false;
+    private boolean isOpposingFlight = false;
     private int altitude = 0;
     private int flightCruisingSpeed = 0;
     private int formationType = McuFormation.FORMATION_V;
@@ -275,4 +276,14 @@ public class FlightInformation
     {
         this.targetDefinition = targetDefinition;
     }
+
+    public boolean isOpposingFlight()
+    {
+        return isOpposingFlight;
+    }
+
+    public void setOpposingFlight(boolean isOpposingFlight)
+    {
+        this.isOpposingFlight = isOpposingFlight;
+    }    
 }

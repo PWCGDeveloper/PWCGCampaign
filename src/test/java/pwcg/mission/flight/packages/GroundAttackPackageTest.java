@@ -1,7 +1,5 @@
 package pwcg.mission.flight.packages;
 
-import java.util.Arrays;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,6 +16,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.MissionBorderBuilder;
 import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.MissionProfile;
+import pwcg.mission.MissionSquadronFlightTypes;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointAttackSet;
@@ -28,6 +27,7 @@ import pwcg.mission.target.TargetType;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
+import pwcg.testutils.TestMissionFlightTypeBuilder;
 
 public class GroundAttackPackageTest
 {
@@ -73,8 +73,9 @@ public class GroundAttackPackageTest
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
 
+        MissionSquadronFlightTypes playerFlightTypes = TestMissionFlightTypeBuilder.buildFlightType(campaign, FlightTypes.GROUND_ATTACK);
         Mission mission = TestMissionBuilderUtility.createTestMission(campaign, participatingPlayers, missionBorders, MissionProfile.DAY_TACTICAL_MISSION);
-        mission.generate(Arrays.asList(FlightTypes.GROUND_ATTACK));
+        mission.generate(playerFlightTypes);
 
         campaign.setCurrentMission(mission);
         return mission.getMissionFlightBuilder().getPlayerFlights().get(0);

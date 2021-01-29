@@ -6,7 +6,6 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
@@ -31,18 +30,12 @@ public class MissionFlightBuilder
         this.mission = mission;
     }
 
-    public void generateFlights(MissionHumanParticipants participatingPlayers, List<FlightTypes> playerFlightTypes) throws PWCGException
+    public void generateFlights(MissionSquadronFlightTypes playerFlightTypes) throws PWCGException
     {
+        createOpposingAiFlights(playerFlightTypes);
         createAiFlights(playerFlightTypes);
-        createPlayerFlights(participatingPlayers, playerFlightTypes);
+        createPlayerFlights(playerFlightTypes);
         keepAiFlights();
-    }
-
-    private void keepAiFlights() throws PWCGException
-    {
-        MissionFlightKeeper missionFlightKeeper = new MissionFlightKeeper(campaign, mission);
-        List<IFlight> finalizedMissionFlights = missionFlightKeeper.keepLimitedFlights();
-        aiFlights = finalizedMissionFlights;
     }
 
     public void finalizeMissionFlights() throws PWCGException
@@ -51,17 +44,14 @@ public class MissionFlightBuilder
         flightFinalizer.finalizeMissionFlights();
     }
 
-    private void createPlayerFlights(MissionHumanParticipants participatingPlayers, List<FlightTypes> playerFlightTypes) throws PWCGException
+    private void createPlayerFlights(MissionSquadronFlightTypes playerFlightTypes) throws PWCGException
     {
-        int index = 0;
-        for (Integer playerSquadronId : participatingPlayers.getParticipatingSquadronIds())
+        for (Squadron playerSquadron : playerFlightTypes.getSquadrons())
         {
-            FlightTypes playerFlightType = playerFlightTypes.get(index);
-            ++index;
+            FlightTypes playerFlightType = playerFlightTypes.getFlightTypeForSquadron(playerSquadron.getSquadronId());
             
-            Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(playerSquadronId);
             PlayerFlightBuilder playerFlightBuilder = new PlayerFlightBuilder(campaign, mission);
-            IFlight playerFlight = playerFlightBuilder.createPlayerFlight(playerFlightType, playerSquadron, participatingPlayers, mission.isNightMission());
+            IFlight playerFlight = playerFlightBuilder.createPlayerFlight(playerFlightType, playerSquadron, mission.getParticipatingPlayers(), mission.isNightMission());
             playerFlights.add(playerFlight);
             
             if (NeedsEscortDecider.playerNeedsEscort(playerFlight))
@@ -72,6 +62,45 @@ public class MissionFlightBuilder
             
             mission.getMissionSquadronChooser().registerSquadronInUse(playerSquadron);
         }
+    }
+
+    private void createOpposingAiFlights(MissionSquadronFlightTypes playerFlightTypes) throws PWCGException
+    {
+        AiOpposingFlightBuilder aiOpposingFlightBuilder = new AiOpposingFlightBuilder(campaign, mission, playerFlightTypes);
+        List<IFlight> opposingFlights = aiOpposingFlightBuilder.createOpposingAiFlights();
+        aiFlights.addAll(opposingFlights);
+    }
+
+    private void createAiFlights(MissionSquadronFlightTypes playerFlightTypes) throws PWCGException
+    {
+        if (isCreateAiFlights(playerFlightTypes))
+        {
+            AiFlightBuilder aiFlightBuilder = new AiFlightBuilder(campaign, mission);
+            List<IFlight> otherAiFlights = aiFlightBuilder.createAiFlights(mission.getWeather());
+            aiFlights.addAll(otherAiFlights);
+        }
+    }
+
+    private void keepAiFlights() throws PWCGException
+    {
+        MissionFlightKeeper missionFlightKeeper = new MissionFlightKeeper(campaign, mission);
+        List<IFlight> finalizedMissionFlights = missionFlightKeeper.keepLimitedFlights();
+        aiFlights = finalizedMissionFlights;
+    }
+
+    private boolean isCreateAiFlights(MissionSquadronFlightTypes playerFlightTypes)
+    {
+        if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
+        {
+            for (FlightTypes playerFlightType : playerFlightTypes.getFlightTypes())
+            {
+                if (playerFlightType == FlightTypes.STRATEGIC_INTERCEPT)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public List<Integer> determinePlayerPlaneIds() throws PWCGException
@@ -87,30 +116,6 @@ public class MissionFlightBuilder
         return playerPlaneIds;
     }
 
-    private void createAiFlights(List<FlightTypes> playerFlightTypes) throws PWCGException
-    {
-        if (isCreateAiFlights(playerFlightTypes))
-        {
-            AiFlightBuilder aiFlightBuilder = new AiFlightBuilder(campaign, mission);
-            aiFlights = aiFlightBuilder.createAiFlights(mission.getWeather());
-        }
-    }
-
-    private boolean isCreateAiFlights(List<FlightTypes> playerFlightTypes)
-    {
-        if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
-        {
-            for (FlightTypes playerFlightType : playerFlightTypes)
-            {
-                if (playerFlightType == FlightTypes.STRATEGIC_INTERCEPT)
-                {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-    
     public List<IFlight> getAllFlightsForSide(Side side) throws PWCGException
     {
         List<IFlight> flightsForSide = new ArrayList<IFlight>();

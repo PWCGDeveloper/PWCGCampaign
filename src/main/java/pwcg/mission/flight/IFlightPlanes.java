@@ -27,8 +27,6 @@ public interface IFlightPlanes
 
     void setFuelForFlight(double myFuel);
 
-    boolean isFlightHasFighterPlanes();
-
     void setPlanes(List<PlaneMcu> planes) throws PWCGException;
 
     List<Integer> getPlaneLinkTrIds();

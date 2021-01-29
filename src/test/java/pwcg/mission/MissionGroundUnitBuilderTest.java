@@ -1,6 +1,5 @@
 package pwcg.mission;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
@@ -20,11 +19,12 @@ import pwcg.mission.ground.AAAManager;
 import pwcg.mission.ground.MissionBattleBuilder;
 import pwcg.mission.ground.MissionTrainBuilder;
 import pwcg.mission.ground.MissionTruckConvoyBuilder;
-import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.GroundUnitCollection;
+import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
+import pwcg.testutils.TestMissionFlightTypeBuilder;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MissionGroundUnitBuilderTest
@@ -42,9 +42,10 @@ public class MissionGroundUnitBuilderTest
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
         
+        MissionSquadronFlightTypes playerFlightTypes = TestMissionFlightTypeBuilder.buildFlightType(campaign, FlightTypes.DIVE_BOMB);
         Mission mission = TestMissionBuilderUtility.createTestMission(campaign, participatingPlayers, missionBorders, MissionProfile.DAY_TACTICAL_MISSION);
-        mission.generate(Arrays.asList(FlightTypes.DIVE_BOMB));
-
+        mission.generate(playerFlightTypes);
+  
         MissionBattleBuilder battleBuilder = new MissionBattleBuilder(campaign, mission);
         List<GroundUnitCollection> battles = battleBuilder.generateBattles();
 
@@ -63,8 +64,9 @@ public class MissionGroundUnitBuilderTest
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
 
+        MissionSquadronFlightTypes playerFlightTypes = TestMissionFlightTypeBuilder.buildFlightType(campaign, FlightTypes.DIVE_BOMB);
         Mission mission = TestMissionBuilderUtility.createTestMission(campaign, participatingPlayers, missionBorders, MissionProfile.DAY_TACTICAL_MISSION);
-        mission.generate(Arrays.asList(FlightTypes.DIVE_BOMB));
+        mission.generate(playerFlightTypes);
 
         MissionTruckConvoyBuilder truckConvoyBuilder = new MissionTruckConvoyBuilder(campaign, mission);
         List<GroundUnitCollection> trucks = truckConvoyBuilder.generateMissionTrucks();
@@ -100,8 +102,9 @@ public class MissionGroundUnitBuilderTest
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
 
+        MissionSquadronFlightTypes playerFlightTypes = TestMissionFlightTypeBuilder.buildFlightType(campaign, FlightTypes.DIVE_BOMB);
         Mission mission = TestMissionBuilderUtility.createTestMission(campaign, participatingPlayers, missionBorders, MissionProfile.DAY_TACTICAL_MISSION);
-        mission.generate(Arrays.asList(FlightTypes.DIVE_BOMB));
+        mission.generate(playerFlightTypes);
 
         MissionTrainBuilder trainBuilder = new MissionTrainBuilder(campaign, mission);
         List<GroundUnitCollection> trains = trainBuilder.generateMissionTrains();
@@ -137,8 +140,9 @@ public class MissionGroundUnitBuilderTest
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
 
+        MissionSquadronFlightTypes playerFlightTypes = TestMissionFlightTypeBuilder.buildFlightType(campaign, FlightTypes.DIVE_BOMB);
         Mission mission = TestMissionBuilderUtility.createTestMission(campaign, participatingPlayers, missionBorders, MissionProfile.DAY_TACTICAL_MISSION);
-        mission.generate(Arrays.asList(FlightTypes.DIVE_BOMB));
+        mission.generate(playerFlightTypes);
 
         AAAManager aaaManager = new AAAManager(campaign, mission);
         List<GroundUnitCollection> AAA = aaaManager.getAAAForMission();

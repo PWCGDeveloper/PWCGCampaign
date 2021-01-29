@@ -1,17 +1,17 @@
 package pwcg.mission.flight.cap;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightBuildInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightSpotterBuilder;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetDefinitionBuilderAirToAir;
+import pwcg.mission.target.TargetDefinitionBuilderOpposing;
 
 public class CAPPackage implements IFlightPackage
 {	
@@ -41,31 +41,23 @@ public class CAPPackage implements IFlightPackage
         if (flightInformation.isPlayerFlight())
         {
             FlightSpotterBuilder.createSpotters(interceptFlight, flightInformation);
-            
-            buildOpposingInterceptFlights(interceptFlight);
         }
         
         return interceptFlight;
     }
 
-    private void buildOpposingInterceptFlights(IFlight flight) throws PWCGException
-    {
-        
-        int roll = RandomNumberGenerator.getRandom(100);
-        if (roll < 50)
-        {
-            CAPOpposingFlightBuilder opposingFlightBuilder = new CAPOpposingFlightBuilder(flight);
-            IFlight opposingFlight = opposingFlightBuilder.buildOpposingFlights();
-            if (opposingFlight != null)
-            {
-                flight.getLinkedFlights().addLinkedFlight(opposingFlight);
-            }
-        }
-    }
-
     private TargetDefinition buildTargetDefintion() throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilderAirToAir(flightInformation);
+        ITargetDefinitionBuilder targetDefinitionBuilder;
+        if (this.flightInformation.isPlayerFlight())
+        {
+            targetDefinitionBuilder = new TargetDefinitionBuilderOpposing(flightInformation);
+        }
+        else
+        {
+            targetDefinitionBuilder = new TargetDefinitionBuilderAirToAir(flightInformation);
+        }
+
         return  targetDefinitionBuilder.buildTargetDefinition();
     }
 }

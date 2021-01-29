@@ -20,6 +20,7 @@ public class AiFlightBuilder
 {
     private Campaign campaign;
     private Mission mission;
+    private List<IFlight> missionFlights = new ArrayList<IFlight>();
 
     AiFlightBuilder (Campaign campaign, Mission mission)
     {
@@ -27,8 +28,6 @@ public class AiFlightBuilder
         this.mission = mission;
     }
     
-    private List<IFlight> missionFlights = new ArrayList<IFlight>();
-
     public List<IFlight> createAiFlights(MissionWeather missionWeather) throws PWCGException 
     {
         TestDriver testDriver = TestDriver.getInstance();

@@ -13,18 +13,19 @@ import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.flight.FlightInformation;
 
 public class OpposingSquadronChooser
 {
-    private FlightInformation playerFlightInformation;
+    private Campaign campaign;
     private List<Role> opposingRoles = new ArrayList<>();
+    private Side opposingSide;
     private int numberOfOpposingFlights = 1;
 
-    public OpposingSquadronChooser(FlightInformation playerFlightInformation, List<Role> opposingRoles, int numberOfOpposingFlights)
+    public OpposingSquadronChooser(Campaign campaign, List<Role> opposingRoles, Side opposingSide, int numberOfOpposingFlights)
     {
-        this.playerFlightInformation = playerFlightInformation;
+        this.campaign = campaign;
         this.opposingRoles = opposingRoles;
+        this.opposingSide = opposingSide;
         this.numberOfOpposingFlights = numberOfOpposingFlights;
     }
 
@@ -60,9 +61,7 @@ public class OpposingSquadronChooser
 
     private List<Squadron> getViableOpposingSquadrons() throws PWCGException
     {        
-        Campaign campaign = playerFlightInformation.getCampaign();
-        Side enemySide = playerFlightInformation.getSquadron().determineEnemySide();
-        List<Squadron> viableOpposingSquads = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, opposingRoles, enemySide);
+        List<Squadron> viableOpposingSquads = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, opposingRoles, opposingSide);
         return viableOpposingSquads;
     }
 }

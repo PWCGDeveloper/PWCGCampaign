@@ -47,8 +47,6 @@ public interface IFlight
 
     boolean isPlayerFlight();
 
-    boolean isFlightHasFighterPlanes();
-
     double getClosestContactWithPlayerDistance();
     
     int getFlightCruisingSpeed();

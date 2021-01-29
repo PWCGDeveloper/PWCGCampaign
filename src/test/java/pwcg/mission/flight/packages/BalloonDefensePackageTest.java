@@ -1,7 +1,6 @@
 package pwcg.mission.flight.packages;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
@@ -17,16 +16,18 @@ import pwcg.mission.Mission;
 import pwcg.mission.MissionBorderBuilder;
 import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.MissionProfile;
+import pwcg.mission.MissionSquadronFlightTypes;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointType;
-import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.GroundUnitCollection;
+import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.unittypes.infantry.BalloonUnit;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
+import pwcg.testutils.TestMissionFlightTypeBuilder;
 
 public class BalloonDefensePackageTest
 {
@@ -52,9 +53,9 @@ public class BalloonDefensePackageTest
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
 
+        MissionSquadronFlightTypes playerFlightTypes = TestMissionFlightTypeBuilder.buildFlightType(campaign, FlightTypes.BALLOON_DEFENSE);
         Mission mission = TestMissionBuilderUtility.createTestMission(campaign, participatingPlayers, missionBorders, MissionProfile.DAY_TACTICAL_MISSION);
-        mission.generate(Arrays.asList(FlightTypes.BALLOON_DEFENSE));
-        campaign.setCurrentMission(mission);
+        mission.generate(playerFlightTypes);
 
         return mission.getMissionFlightBuilder().getPlayerFlights().get(0);
     }

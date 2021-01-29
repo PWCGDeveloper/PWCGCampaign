@@ -5,14 +5,11 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.plane.Role;
-import pwcg.campaign.plane.RoleCategory;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypeCategory;
-import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 
 public class MissionFlightKeeper
@@ -21,48 +18,97 @@ public class MissionFlightKeeper
     private Campaign campaign;
     private MissionFlightProximitySorter proximitySorter;
 
+    List<IFlight> alliedFighterFlightsKept = new ArrayList<IFlight>();
+    List<IFlight> alliedBomberFlightsKept = new ArrayList<IFlight>();
+    List<IFlight> alliedOtherFlightsKept = new ArrayList<IFlight>();
+    List<IFlight> axisFighterFlightsKept = new ArrayList<IFlight>();
+    List<IFlight> axisBomberFlightsKept = new ArrayList<IFlight>();
+    List<IFlight> axisOtherFlightsKept = new ArrayList<IFlight>();
+
     public MissionFlightKeeper (Campaign campaign, Mission mission)
     {
         this.mission = mission;
         this.campaign = campaign;
+        this.proximitySorter = new MissionFlightProximitySorter();
     }
 
     public List<IFlight> keepLimitedFlights() throws PWCGException 
     {
-        proximitySorter = new MissionFlightProximitySorter();
         proximitySorter.mapEnemyDistanceToPlayerFlights(mission);
 
-        List<IFlight> aiFlightsKept = new ArrayList<IFlight>();
-        List<IFlight> axisAiFlights = keepLimitedAxisFlights();        
-        List<IFlight> alliedAiFlights = keepLimitedAlliedFlights();
+        keepRequiredAlliedFlights();
+        keepRequiredAxisFlights();
 
-        aiFlightsKept.addAll(alliedAiFlights);
-        aiFlightsKept.addAll(axisAiFlights);
+        keepLimitedAlliedFlights();
+        keepLimitedAxisFlights(); 
         
+        List<IFlight> aiFlightsKept = combineKeptFlights();
+        return aiFlightsKept;
+    }
+
+    private List<IFlight> combineKeptFlights()
+    {
+        List<IFlight> aiFlightsKept = new ArrayList<>();        
+        aiFlightsKept.addAll(alliedFighterFlightsKept);
+        aiFlightsKept.addAll(alliedBomberFlightsKept);
+        aiFlightsKept.addAll(alliedOtherFlightsKept);
+        aiFlightsKept.addAll(axisFighterFlightsKept);
+        aiFlightsKept.addAll(axisBomberFlightsKept);
+        aiFlightsKept.addAll(axisOtherFlightsKept);
+
         for (IFlight keptFlight : aiFlightsKept)
         {
             mission.getMissionSquadronChooser().registerSquadronInUse(keptFlight.getSquadron());
         }
-        
         return aiFlightsKept;
     }
 
-    private List<IFlight> keepLimitedAlliedFlights() throws PWCGException
+    private void keepRequiredAlliedFlights()
+    {
+        keepRequiredFlights(proximitySorter.getFlightsByProximity(Side.ALLIED), alliedFighterFlightsKept, alliedBomberFlightsKept, alliedOtherFlightsKept);
+    }
+
+    private void keepRequiredAxisFlights()
+    {
+        keepRequiredFlights(proximitySorter.getFlightsByProximity(Side.AXIS), axisFighterFlightsKept, axisBomberFlightsKept, axisOtherFlightsKept);
+    }
+    
+    private void keepRequiredFlights(List<IFlight> flights, List<IFlight> fighterFlightsKept, List<IFlight> bomberFlightsKept, List<IFlight> otherFlightsKept)
+    {
+        for (IFlight flight : flights)
+        {
+            if(isNecessaryFlight(flight))
+            {
+                if (flight.getFlightType().isCategory(FlightTypeCategory.FIGHTER))
+                {
+                    fighterFlightsKept.add(flight);
+                }
+                else if (flight.getFlightType().isCategory(FlightTypeCategory.BOMB))
+                {
+                    bomberFlightsKept.add(flight);
+                }
+                else
+                {
+                    otherFlightsKept.add(flight);
+                }
+            }
+        }
+    }
+
+    private void keepLimitedAlliedFlights() throws PWCGException
     {
         List<IFlight> alliedAiFlights = proximitySorter.getFlightsByProximity(Side.ALLIED);
         int configuredAlliedAiFlights = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedFlightsToKeepKey);
         int maxAlliedAiFlights =  calculateFlightsToKeepForSide(Side.ALLIED, configuredAlliedAiFlights);
-        List<IFlight> alliedAiFlightsKept = selectFlightsToKeep(maxAlliedAiFlights, Side.ALLIED, alliedAiFlights);
-        return alliedAiFlightsKept;
+        selectFlightsToKeep(maxAlliedAiFlights, Side.ALLIED, alliedAiFlights);
     }
 
-    private List<IFlight> keepLimitedAxisFlights() throws PWCGException
+    private void keepLimitedAxisFlights() throws PWCGException
     {
         List<IFlight> axisAiFlights = proximitySorter.getFlightsByProximity(Side.AXIS);
         int configuredAxisAiFlights = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisFlightsToKeepKey);
         int maxAxisAiFlights =  calculateFlightsToKeepForSide(Side.AXIS, configuredAxisAiFlights);
-        List<IFlight> axisAiFlightsKept = selectFlightsToKeep(maxAxisAiFlights, Side.AXIS, axisAiFlights);
-        return axisAiFlightsKept;
+        selectFlightsToKeep(maxAxisAiFlights, Side.AXIS, axisAiFlights);
     }
 
     private int calculateFlightsToKeepForSide(Side side, int configuredFlightsToKeep) throws PWCGException
@@ -76,73 +122,58 @@ public class MissionFlightKeeper
         return aiFlightsToKeep;
     }
     
-    private List<IFlight> selectFlightsToKeep(int maxToKeep, Side side, List<IFlight> aiFlights) throws PWCGException
+    private void selectFlightsToKeep(int maxToKeep, Side side, List<IFlight> aiFlights) throws PWCGException
     {
         int maxBomberToKeep = getMaxBomberFlights(maxToKeep, side);
-        int numBomberKept = 0;
-
         int maxFighterToKeep = getMaxFighterFlights(maxToKeep);
-        int numFighterKept = 0;
         
-        List<IFlight> keptFlights = new ArrayList<IFlight>();
+        
+       List<IFlight> fighterFlightsKept = alliedFighterFlightsKept;
+       List<IFlight> bomberFlightsKept = alliedBomberFlightsKept;
+       List<IFlight> otherFlightsKept = alliedOtherFlightsKept;
+       if (side == Side.AXIS)
+       {
+           fighterFlightsKept = axisFighterFlightsKept;
+           bomberFlightsKept = axisBomberFlightsKept;
+           otherFlightsKept = axisOtherFlightsKept;
+       }
+        
         for (IFlight flight : aiFlights)
         {
-            boolean isPossibleExcessFighterFlight = isConsideredExcessFighterFlight(flight);
-            boolean isPossibleExcessBomberFlight = isConsideredExcessBomberFlight(flight);
-            if (isPossibleExcessFighterFlight)
+            if (isNecessaryFlight(flight))
             {
-                if ((numFighterKept < maxFighterToKeep) && (keptFlights.size() < maxToKeep))
+                continue;
+            }
+            
+            int totalFlightsKept = fighterFlightsKept.size() + bomberFlightsKept.size() + otherFlightsKept.size();
+
+            if (flight.getFlightType().isCategory(FlightTypeCategory.FIGHTER))
+            {
+                if ((fighterFlightsKept.size() < maxFighterToKeep) && (totalFlightsKept < maxToKeep))
                 {
-                    keptFlights.add(flight);
-                    ++numFighterKept;
+                    fighterFlightsKept.add(flight);
                 }
             }
-            else if (isPossibleExcessBomberFlight)
+            else if (flight.getFlightType().isCategory(FlightTypeCategory.BOMB))
             {
-                if ((numBomberKept < maxBomberToKeep) && (keptFlights.size() < maxToKeep))
+                if ((bomberFlightsKept.size() < maxBomberToKeep) && (totalFlightsKept < maxToKeep))
                 {
-                    keptFlights.add(flight);
-                    ++numBomberKept;
+                    bomberFlightsKept.add(flight);
                 }
             }
             else
             {
-                if(keptFlights.size() < maxToKeep)
+                if (totalFlightsKept < maxToKeep)
                 {
-                    keptFlights.add(flight);
+                    otherFlightsKept.add(flight);
                 }
             }
         }
-
-        return keptFlights;
     }
-
-    private boolean isConsideredExcessFighterFlight(IFlight aiFlight)
+    
+    private boolean isNecessaryFlight(IFlight flight)
     {
-        boolean isPlayerFlightFighter = mission.getMissionFlightBuilder().hasPlayerFlightWithFlightTypes(FlightTypes.getFlightTypesByCategory(FlightTypeCategory.FIGHTER));
-        boolean isAiFighterSquadron = aiFlight.isFlightHasFighterPlanes();
-        boolean isAiFighterFlight = aiFlight.getFlightType().isCategory(FlightTypeCategory.FIGHTER);
-        
-        if (isAiFighterFlight)
-        {
-            return true;
-        }
-
-        if (!isPlayerFlightFighter && isAiFighterSquadron)
-        {
-            return true;
-        }
-        
-        return false;
-    }
-
-    private boolean isConsideredExcessBomberFlight(IFlight aiFlight) throws PWCGException
-    {
-        Role squadronPrimaryRole = aiFlight.getSquadron().determineSquadronPrimaryRole(campaign.getDate());
-        boolean isAiBomberFlight = squadronPrimaryRole.isRoleCategory(RoleCategory.BOMBER) || 
-                squadronPrimaryRole.isRoleCategory(RoleCategory.TRANSPORT);
-        
-        if (isAiBomberFlight)
+        if(flight.getFlightInformation().isPlayerFlight() || flight.getFlightInformation().isOpposingFlight())
         {
             return true;
         }

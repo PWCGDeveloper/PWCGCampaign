@@ -33,27 +33,7 @@ public class MaxFighterFlightCalculator
             numFighterFlightsToKeep = maxFighterToKeepIfGroundCampaign;
         }
         
-        if (numFighterFlightsToKeep > 0)
-        {
-            numFighterFlightsToKeep = reduceFighterFlightsIfNotEnoughBomberFlights(maxFlightsForSide, numFighterFlightsToKeep);
-        }
-        
         return reduceFlightsForPeriodOfLowActivity(numFighterFlightsToKeep);
-    }
-    
-    private int reduceFighterFlightsIfNotEnoughBomberFlights(int maxFlightsForSide, int numFighterFlightsToKeep)
-    {
-        int numBomberFlightsToKeep = maxFlightsForSide - numFighterFlightsToKeep;
-        if (numBomberFlightsToKeep < 3)
-        {
-            numFighterFlightsToKeep = RandomNumberGenerator.getRandom(numFighterFlightsToKeep) + 1;
-        }
-        else
-        {
-            numFighterFlightsToKeep = RandomNumberGenerator.getRandom(numFighterFlightsToKeep - 1) + 2;
-        }
-        
-        return numFighterFlightsToKeep;
     }
 
     private int reduceFlightsForPeriodOfLowActivity(int numFighterFlightsToKeep) throws PWCGException

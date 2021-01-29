@@ -1,7 +1,6 @@
 package pwcg.mission.flight.crew;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
@@ -20,6 +19,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.MissionProfile;
+import pwcg.mission.MissionSquadronFlightTypes;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.testutils.CampaignCache;
@@ -49,8 +49,13 @@ public class FlightCrewBuilderCoopTest
     		}
     	}
     	
+        MissionSquadronFlightTypes playerFlightTypes = new MissionSquadronFlightTypes();
+    	for (SquadronMember player : participatingPlayers.getAllParticipatingPlayers())
+    	{
+    	    playerFlightTypes.add(player.determineSquadron(), FlightTypes.GROUND_ATTACK);
+    	}
+    	
         MissionGenerator missionGenerator = new MissionGenerator(coopCampaign);
-        List<FlightTypes> playerFlightTypes = Arrays.asList(FlightTypes.GROUND_ATTACK, FlightTypes.GROUND_ATTACK);
         Mission mission = missionGenerator.makeTestCoopMissionFromFlightType(participatingPlayers, playerFlightTypes, MissionProfile.DAY_TACTICAL_MISSION);
         
         FlightInformation flightInformation = new FlightInformation(mission);
@@ -90,9 +95,16 @@ public class FlightCrewBuilderCoopTest
     			participatingPlayers.addSquadronMember(player);
     		}
     	}
+        
+        List<FlightTypes> playerFlightTypeList = makeFlightTypes(participatingPlayers);
+        MissionSquadronFlightTypes playerFlightTypes = new MissionSquadronFlightTypes();
+        for (int i = 0; i < participatingPlayers.getParticipatingSquadronIds().size(); ++i)
+        {
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(participatingPlayers.getParticipatingSquadronIds().get(i));
+            playerFlightTypes.add(squadron, playerFlightTypeList.get(i));
+        }
 
         MissionGenerator missionGenerator = new MissionGenerator(coopCampaign);
-        List<FlightTypes> playerFlightTypes = makeFlightTypes(participatingPlayers);
         Mission mission = missionGenerator.makeTestCoopMissionFromFlightType(participatingPlayers, playerFlightTypes, MissionProfile.DAY_TACTICAL_MISSION);
 
         FlightInformation flightInformation = new FlightInformation(mission);
@@ -143,9 +155,16 @@ public class FlightCrewBuilderCoopTest
     			participatingPlayers.addSquadronMember(player);
     		}
     	}
+        
+        List<FlightTypes> playerFlightTypeList = makeFlightTypes(participatingPlayers);
+        MissionSquadronFlightTypes playerFlightTypes = new MissionSquadronFlightTypes();
+        for (int i = 0; i < participatingPlayers.getParticipatingSquadronIds().size(); ++i)
+        {
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(participatingPlayers.getParticipatingSquadronIds().get(i));
+            playerFlightTypes.add(squadron, playerFlightTypeList.get(i));
+        }
 
         MissionGenerator missionGenerator = new MissionGenerator(coopCampaign);
-        List<FlightTypes> playerFlightTypes = makeFlightTypes(participatingPlayers);
         Mission mission = missionGenerator.makeTestCoopMissionFromFlightType(participatingPlayers, playerFlightTypes, MissionProfile.DAY_TACTICAL_MISSION);
 
         FlightInformation flightInformation = new FlightInformation(mission);

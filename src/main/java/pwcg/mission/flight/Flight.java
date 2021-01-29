@@ -235,12 +235,6 @@ public abstract class Flight implements IFlight
     }
 
     @Override
-    public boolean isFlightHasFighterPlanes()
-    {
-        return flightPlanes.isFlightHasFighterPlanes();
-    }
-
-    @Override
     public double getClosestContactWithPlayerDistance()
     {
         return flightPlayerContact.getClosestContactWithPlayerDistance();

@@ -1,11 +1,6 @@
 package pwcg.mission;
 
-import java.util.Arrays;
-import java.util.List;
-
 import pwcg.campaign.Campaign;
-import pwcg.campaign.plane.Role;
-import pwcg.campaign.utils.TestDriver;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
@@ -32,12 +27,7 @@ public class MissionGenerator
         MissionWeather weather = new MissionWeather(campaign, missionOptions.getMissionHour());
         weather.createMissionWeather();
 
-        List<FlightTypes> playerFlightTypes = PlayerFlightTypeBuilder.finalizePlayerFlightTypes(campaign, participatingPlayers, missionProfile, weather);
-
-        if (TestDriver.getInstance().isEnabled())
-        {
-            playerFlightTypes = Arrays.asList(TestDriver.getInstance().getTestFlightTypeForRole(Role.ROLE_FIGHTER).playerFlightType);
-        }
+        MissionSquadronFlightTypes playerFlightTypes = PlayerFlightTypeBuilder.finalizePlayerFlightTypes(campaign, participatingPlayers, missionProfile, weather);
 
         Mission mission = buildMission(participatingPlayers, playerFlightTypes, missionProfile, weather, missionOptions);
         return mission;
@@ -53,7 +43,9 @@ public class MissionGenerator
         MissionWeather weather = new MissionWeather(campaign, missionOptions.getMissionHour());
         weather.createMissionWeather();
 
-        List<FlightTypes> playerFlightTypes = Arrays.asList(FlightTypes.LONE_WOLF);
+        MissionSquadronFlightTypes playerFlightTypes = new MissionSquadronFlightTypes();
+        playerFlightTypes.add(participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron(), FlightTypes.LONE_WOLF);
+
         Mission mission = buildMission(participatingPlayers, playerFlightTypes, MissionProfile.DAY_TACTICAL_MISSION, weather, missionOptions);
         return mission;
     }
@@ -68,12 +60,14 @@ public class MissionGenerator
         MissionWeather weather = new MissionWeather(campaign, missionOptions.getMissionHour());
         weather.createMissionWeather();
 
-        List<FlightTypes> playerFlightTypes = Arrays.asList(playerFlightType);
+        MissionSquadronFlightTypes playerFlightTypes = new MissionSquadronFlightTypes();
+        playerFlightTypes.add(participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron(), playerFlightType);
+        
         Mission mission = buildMission(participatingPlayers, playerFlightTypes, missionProfile, weather, missionOptions);
         return mission;
     }
 
-    public Mission makeTestCoopMissionFromFlightType(MissionHumanParticipants participatingPlayers, List<FlightTypes> playerFlightTypes,
+    public Mission makeTestCoopMissionFromFlightType(MissionHumanParticipants participatingPlayers, MissionSquadronFlightTypes playerFlightTypes,
             MissionProfile missionProfile) throws PWCGException
     {
         MissionOptions missionOptions = new MissionOptions(campaign.getDate(), missionProfile);
@@ -94,7 +88,7 @@ public class MissionGenerator
         return missionProfile;
     }
 
-    private Mission buildMission(MissionHumanParticipants participatingPlayers, List<FlightTypes> playerFlightTypes, MissionProfile missionProfile,
+    private Mission buildMission(MissionHumanParticipants participatingPlayers, MissionSquadronFlightTypes playerFlightTypes, MissionProfile missionProfile,
             MissionWeather weather, MissionOptions missionOptions) throws PWCGException
     {
         campaign.setCurrentMission(null);

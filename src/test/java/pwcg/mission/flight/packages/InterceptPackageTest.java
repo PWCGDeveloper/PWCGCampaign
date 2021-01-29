@@ -1,6 +1,5 @@
 package pwcg.mission.flight.packages;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
@@ -17,6 +16,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.MissionBorderBuilder;
 import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.MissionProfile;
+import pwcg.mission.MissionSquadronFlightTypes;
 import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
@@ -25,6 +25,7 @@ import pwcg.mission.mcu.McuWaypoint;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
+import pwcg.testutils.TestMissionFlightTypeBuilder;
 
 public class InterceptPackageTest
 {
@@ -53,8 +54,9 @@ public class InterceptPackageTest
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
 
+        MissionSquadronFlightTypes playerFlightTypes = TestMissionFlightTypeBuilder.buildFlightType(campaign, FlightTypes.INTERCEPT);
         Mission mission = TestMissionBuilderUtility.createTestMission(campaign, participatingPlayers, missionBorders, MissionProfile.DAY_TACTICAL_MISSION);
-        mission.generate(Arrays.asList(FlightTypes.INTERCEPT));
+        mission.generate(playerFlightTypes);
 
         campaign.setCurrentMission(mission);
 

@@ -8,9 +8,9 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetCategory;
 
-public class La5NS2Payload extends PlanePayload implements IPlanePayload
+public class La5FNS2Payload extends PlanePayload implements IPlanePayload
 {
-    public La5NS2Payload(PlaneType planeType)
+    public La5FNS2Payload(PlaneType planeType)
     {
         super(planeType);
         noOrdnancePayloadElement = 0;
@@ -30,7 +30,7 @@ public class La5NS2Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        La5NS2Payload clone = new La5NS2Payload(planeType);
+        La5FNS2Payload clone = new La5FNS2Payload(planeType);
         
         return super.copy(clone);
     }

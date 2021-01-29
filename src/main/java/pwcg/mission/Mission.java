@@ -19,7 +19,6 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.data.PwcgGeneratedMission;
-import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.ground.MissionGroundUnitBuilder;
@@ -103,7 +102,7 @@ public class Mission
         squadronIconBuilder = new MissionSquadronIconBuilder(campaign);
     }
 
-    public void generate(List<FlightTypes> playerFlightTypes) throws PWCGException
+    public void generate(MissionSquadronFlightTypes playerFlightTypes) throws PWCGException
     {
         validate();
         createStructures();
@@ -148,9 +147,9 @@ public class Mission
         blockBuilder.buildFixedPositionsForMission();
     }
 
-    private void generateFlights(List<FlightTypes> playerFlightTypes) throws PWCGException
+    private void generateFlights(MissionSquadronFlightTypes playerFlightTypes) throws PWCGException
     {
-        flightBuilder.generateFlights(participatingPlayers, playerFlightTypes);
+        flightBuilder.generateFlights(playerFlightTypes);
         createFirePots();
     }
 
