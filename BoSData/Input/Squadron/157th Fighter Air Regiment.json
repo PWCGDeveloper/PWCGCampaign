@@ -62,7 +62,7 @@
 	"skins": [
 		{
 			"skinName": "hurricanemkii_skin_00",
-			"planeType": "hurricane",
+			"planeType": "hurricanemkii",
 			"startDate": "19400801",
 			"endDate": "19430601",
 			"squadId": 10111157,
@@ -72,7 +72,7 @@
 		},
 		{
 			"skinName": "hurricanemkii_skin_01",
-			"planeType": "hurricane",
+			"planeType": "hurricanemkii",
 			"startDate": "19400801",
 			"endDate": "19430601",
 			"squadId": 10111157,
@@ -82,7 +82,7 @@
 		},
 		{
 			"skinName": "hurricanemkii_skin_02",
-			"planeType": "hurricane",
+			"planeType": "hurricanemkii",
 			"startDate": "19430601",
 			"endDate": "19450601",
 			"squadId": 10111157,

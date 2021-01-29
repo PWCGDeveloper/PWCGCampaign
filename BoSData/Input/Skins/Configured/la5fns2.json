@@ -1,9 +1,9 @@
 {
 	"skinSetType": "SKIN_CONFIGURED",
 	"skins": {
-		"la5ns2_skin_00": {
-			"skinName": "la5ns2_skin_00",
-			"planeType": "la5ns2",
+		"la5fns2_skin_00": {
+			"skinName": "la5fns2_skin_00",
+			"planeType": "la5fns2",
 			"startDate": "19400801",
 			"endDate": "19440301",
 			"squadId": -2,
@@ -12,9 +12,9 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"la5ns2_skin_01": {
-			"skinName": "la5ns2_skin_01",
-			"planeType": "la5ns2",
+		"la5fns2_skin_01": {
+			"skinName": "la5fns2_skin_01",
+			"planeType": "la5fns2",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -2,
@@ -23,9 +23,9 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"la5ns2_skin_02": {
-			"skinName": "la5ns2_skin_04",
-			"planeType": "la5ns2",
+		"la5fns2_skin_02": {
+			"skinName": "la5fns2_skin_04",
+			"planeType": "la5fns2",
 			"startDate": "19400801",
 			"endDate": "19440301",
 			"squadId": -1,
@@ -34,9 +34,9 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"la5ns2_skin_03": {
-			"skinName": "la5ns2_skin_03",
-			"planeType": "la5ns2",
+		"la5fns2_skin_03": {
+			"skinName": "la5fns2_skin_03",
+			"planeType": "la5fns2",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -45,9 +45,9 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"la5ns2_skin_04": {
-			"skinName": "la5ns2_skin_04",
-			"planeType": "la5ns2",
+		"la5fns2_skin_04": {
+			"skinName": "la5fns2_skin_04",
+			"planeType": "la5fns2",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -56,9 +56,9 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"la5ns2_skin_06": {
-			"skinName": "la5ns2_skin_06",
-			"planeType": "la5ns2",
+		"la5fns2_skin_06": {
+			"skinName": "la5fns2_skin_06",
+			"planeType": "la5fns2",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": 10111003,
@@ -67,9 +67,9 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"la5ns2_skin_07": {
-			"skinName": "la5ns2_skin_07",
-			"planeType": "la5ns2",
+		"la5fns2_skin_07": {
+			"skinName": "la5fns2_skin_07",
+			"planeType": "la5fns2",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -78,9 +78,9 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"la5ns2_skin_08": {
-			"skinName": "la5ns2_skin_08",
-			"planeType": "la5ns2",
+		"la5fns2_skin_08": {
+			"skinName": "la5fns2_skin_08",
+			"planeType": "la5fns2",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -89,9 +89,9 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"la5ns2_skin_09": {
-			"skinName": "la5ns2_skin_09",
-			"planeType": "la5ns2",
+		"la5fns2_skin_09": {
+			"skinName": "la5fns2_skin_09",
+			"planeType": "la5fns2",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -100,9 +100,9 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"la5ns2_skin_10": {
-			"skinName": "la5ns2_skin_10",
-			"planeType": "la5ns2",
+		"la5fns2_skin_10": {
+			"skinName": "la5fns2_skin_10",
+			"planeType": "la5fns2",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -111,9 +111,9 @@
 			"definedInGame": true,
 			"winter": true
 		},
-		"la5ns2_skin_11": {
-			"skinName": "la5ns2_skin_11",
-			"planeType": "la5ns2",
+		"la5fns2_skin_11": {
+			"skinName": "la5fns2_skin_11",
+			"planeType": "la5fns2",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -122,9 +122,9 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"la5ns2_skin_12": {
-			"skinName": "la5ns2_skin_12",
-			"planeType": "la5ns2",
+		"la5fns2_skin_12": {
+			"skinName": "la5fns2_skin_12",
+			"planeType": "la5fns2",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -133,9 +133,9 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"la5ns2_skin_13": {
-			"skinName": "la5ns2_skin_13",
-			"planeType": "la5ns2",
+		"la5fns2_skin_13": {
+			"skinName": "la5fns2_skin_13",
+			"planeType": "la5fns2",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -144,9 +144,9 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"la5ns2_skin_14": {
-			"skinName": "la5ns2_skin_14",
-			"planeType": "la5ns2",
+		"la5fns2_skin_14": {
+			"skinName": "la5fns2_skin_14",
+			"planeType": "la5fns2",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -155,9 +155,9 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"la5ns2_skin_15": {
-			"skinName": "la5ns2_skin_15",
-			"planeType": "la5ns2",
+		"la5fns2_skin_15": {
+			"skinName": "la5fns2_skin_15",
+			"planeType": "la5fns2",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -166,9 +166,9 @@
 			"definedInGame": true,
 			"winter": false
 		},
-		"la5ns2_skin_16": {
-			"skinName": "la5ns2_skin_16",
-			"planeType": "la5ns2",
+		"la5fns2_skin_16": {
+			"skinName": "la5fns2_skin_16",
+			"planeType": "la5fns2",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -179,7 +179,7 @@
 		},
 		"La5FN-02": {
 			"skinName": "La5FN-02",
-			"planeType": "la5ns2",
+			"planeType": "la5fns2",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -190,7 +190,7 @@
 		},
 		"La5FN-KOZHEDUB": {
 			"skinName": "La5FN-KOZHEDUB",
-			"planeType": "la5ns2",
+			"planeType": "la5fns2",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -201,7 +201,7 @@
 		},
 		"La5FN-MONGOLSKIY": {
 			"skinName": "La5FN-MONGOLSKIY",
-			"planeType": "la5ns2",
+			"planeType": "la5fns2",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -212,7 +212,7 @@
 		},
 		"La5FN-WHITE68": {
 			"skinName": "La5FN-WHITE68",
-			"planeType": "la5ns2",
+			"planeType": "la5fns2",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -223,7 +223,7 @@
 		},
 		"RIS": {
 			"skinName": "RIS",
-			"planeType": "la5ns2",
+			"planeType": "la5fns2",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,
@@ -234,7 +234,7 @@
 		},
 		"zsf-La5FN-36": {
 			"skinName": "zsf-La5FN-36",
-			"planeType": "la5ns2",
+			"planeType": "la5fns2",
 			"startDate": "19440101",
 			"endDate": "19450601",
 			"squadId": -1,

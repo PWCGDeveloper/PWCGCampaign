@@ -64,8 +64,8 @@
 			"definedInGame": true
 		},
 		{
-			"skinName": "la5ns2_skin_05",
-			"planeType": "la5ns2",
+			"skinName": "la5fns2_skin_05",
+			"planeType": "la5fns2",
 			"startDate": "19440102",
 			"endDate": "19450601",
 			"squadId": 10111013,
