@@ -16,6 +16,7 @@ import pwcg.mission.target.locator.TargetLocatorOpposing;
 public class TargetDefinitionBuilderOpposing implements ITargetDefinitionBuilder
 {
     private FlightInformation flightInformation;
+    private TargetLocatorOpposing targetLocatorOpposing;
 
     public TargetDefinitionBuilderOpposing(FlightInformation flightInformation)
     {
@@ -34,6 +35,7 @@ public class TargetDefinitionBuilderOpposing implements ITargetDefinitionBuilder
     {
         if (flightInformation.getFlightType() == FlightTypes.LOW_ALT_CAP ||
             flightInformation.getFlightType() == FlightTypes.INTERCEPT ||
+            flightInformation.getFlightType() == FlightTypes.SCRAMBLE ||
             flightInformation.getFlightType() == FlightTypes.BALLOON_BUST ||
             flightInformation.getFlightType() == FlightTypes.BALLOON_DEFENSE)
         {
@@ -44,10 +46,6 @@ public class TargetDefinitionBuilderOpposing implements ITargetDefinitionBuilder
         else if (flightInformation.getFlightType() == FlightTypes.STRATEGIC_INTERCEPT)
         {
             throw new PWCGException("Strategic intercept not yet implemented ");
-        }
-        else if (flightInformation.getFlightType() == FlightTypes.SCRAMBLE)
-        {
-            throw new PWCGException("Scramble not yet implemented ");
         }
         else
         {
@@ -88,13 +86,17 @@ public class TargetDefinitionBuilderOpposing implements ITargetDefinitionBuilder
         {
             return Arrays.asList(FlightTypes.BALLOON_BUST);
         }
-        else if (flightInformation.getFlightType() == FlightTypes.STRATEGIC_INTERCEPT)
+        else if (flightInformation.getFlightType() == FlightTypes.BALLOON_DEFENSE)
         {
-            throw new PWCGException("Strategic intercept not yet implemented ");
+            return Arrays.asList(FlightTypes.BALLOON_BUST);
         }
         else if (flightInformation.getFlightType() == FlightTypes.SCRAMBLE)
         {
-            throw new PWCGException("Scramble not yet implemented ");
+            return Arrays.asList(FlightTypes.BOMB, FlightTypes.DIVE_BOMB, FlightTypes.GROUND_ATTACK);
+        }
+        else if (flightInformation.getFlightType() == FlightTypes.STRATEGIC_INTERCEPT)
+        {
+            throw new PWCGException("Strategic intercept not yet implemented ");
         }
         else
         {

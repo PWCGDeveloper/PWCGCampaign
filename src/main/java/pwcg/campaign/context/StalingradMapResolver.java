@@ -17,13 +17,13 @@ public class StalingradMapResolver
         
         if (mapIdentifier == FrontMapIdentifier.STALINGRAD_MAP || mapIdentifier == FrontMapIdentifier.EAST1944_MAP)
         {
-            if (campaign.getDate().before(DateUtils.getDateYYYYMMDD("19440101")))
+            if (DateUtils.isDateInRange(campaign.getDate(), DateUtils.getDateYYYYMMDD("19440101"), DateUtils.getDateYYYYMMDD("19450601")))
             {
-                mapIdentifier = FrontMapIdentifier.STALINGRAD_MAP;
+                mapIdentifier = FrontMapIdentifier.EAST1944_MAP;
             }
             else
             {
-                mapIdentifier = FrontMapIdentifier.EAST1944_MAP;
+                mapIdentifier = FrontMapIdentifier.STALINGRAD_MAP;
             }
         }
         

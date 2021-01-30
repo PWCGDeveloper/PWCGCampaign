@@ -251,7 +251,7 @@ public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel impl
 				}
 				
 				campaign.getCampaignConfigManager().write();
-				PWCGContext.getInstance().resetForMovingFront();
+				PWCGContext.getInstance().configurePwcgMaps();
 		        CampaignGuiContextManager.getInstance().popFromContextStack();
 				return;
 			}

@@ -1,10 +1,8 @@
-package pwcg.mission.flight.scramble;
+package pwcg.mission.flight.opposing;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.attack.GroundAttackWaypointFactory;
 import pwcg.mission.flight.waypoint.attack.GroundAttackWaypointHelper;
 import pwcg.mission.flight.waypoint.end.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
@@ -14,14 +12,16 @@ import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.mcu.group.AirGroundAttackMcuSequenceFactory;
 import pwcg.mission.mcu.group.IAirGroundAttackMcuSequence;
 
-public class ScrambleOpposingGroundAttackWaypointFactory
+public class ScrambleOpposingBombWaypointFactory
 {
     private IFlight flight;
     private MissionPointAttackSet missionPointSet = new MissionPointAttackSet();
+    private int attackTime;
 
-    public ScrambleOpposingGroundAttackWaypointFactory(IFlight flight) throws PWCGException
+    public ScrambleOpposingBombWaypointFactory(IFlight flight, int attackTime) throws PWCGException
     {
         this.flight = flight;
+        this.attackTime = attackTime;
     }
     
     public IMissionPointSet createWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
@@ -41,8 +41,7 @@ public class ScrambleOpposingGroundAttackWaypointFactory
 
     private void createTargetWaypoints(Coordinate ingressPosition) throws PWCGException  
     {
-        FlightInformation flightInformation = flight.getFlightInformation();
-        GroundAttackWaypointHelper groundAttackWaypointHelper = new GroundAttackWaypointHelper(flight, ingressPosition, flightInformation.getAltitude());
+        GroundAttackWaypointHelper groundAttackWaypointHelper = new GroundAttackWaypointHelper(flight, ingressPosition, flight.getFlightInformation().getAltitude());
         groundAttackWaypointHelper.createTargetWaypoints();
         for (McuWaypoint groundAttackWaypoint : groundAttackWaypointHelper.getWaypointsBefore())
         {
@@ -56,7 +55,7 @@ public class ScrambleOpposingGroundAttackWaypointFactory
     
     private IAirGroundAttackMcuSequence createAttackArea() throws PWCGException 
     {
-        IAirGroundAttackMcuSequence attackMcuSequence = AirGroundAttackMcuSequenceFactory.buildAirGroundAttackSequence(flight, GroundAttackWaypointFactory.GROUND_ATTACK_TIME, AttackAreaType.GROUND_TARGETS);
+        IAirGroundAttackMcuSequence attackMcuSequence = AirGroundAttackMcuSequenceFactory.buildAirGroundAttackSequence(flight, attackTime, AttackAreaType.INDIRECT);
         return attackMcuSequence;
     }
 }

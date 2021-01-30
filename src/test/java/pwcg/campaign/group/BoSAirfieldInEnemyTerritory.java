@@ -22,7 +22,8 @@ public class BoSAirfieldInEnemyTerritory extends AirfieldInEnemyTerritory
 	@Before 
 	public void setup() throws PWCGException
 	{
-    	PWCGContext.setProduct(PWCGProduct.BOS);      
+    	PWCGContext.setProduct(PWCGProduct.BOS);
+    	PWCGContext.getInstance().setCampaign(null);
 	}
 	
 	@Test

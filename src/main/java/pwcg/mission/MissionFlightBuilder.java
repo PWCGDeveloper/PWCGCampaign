@@ -15,6 +15,7 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.escort.EscortForPlayerFlightBuilder;
 import pwcg.mission.flight.escort.NeedsEscortDecider;
+import pwcg.mission.flight.opposing.AiOpposingFlightBuilder;
 import pwcg.mission.flight.plane.PlaneMcu;
 
 public class MissionFlightBuilder
@@ -66,7 +67,7 @@ public class MissionFlightBuilder
 
     private void createOpposingAiFlights(MissionSquadronFlightTypes playerFlightTypes) throws PWCGException
     {
-        AiOpposingFlightBuilder aiOpposingFlightBuilder = new AiOpposingFlightBuilder(campaign, mission, playerFlightTypes);
+        AiOpposingFlightBuilder aiOpposingFlightBuilder = new AiOpposingFlightBuilder(mission, playerFlightTypes);
         List<IFlight> opposingFlights = aiOpposingFlightBuilder.createOpposingAiFlights();
         aiFlights.addAll(opposingFlights);
     }

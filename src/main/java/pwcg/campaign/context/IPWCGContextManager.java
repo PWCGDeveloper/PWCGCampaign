@@ -65,7 +65,7 @@ public interface IPWCGContextManager
 
     void setMapForCampaign(Campaign campaign) throws PWCGException;
 
-    void resetForMovingFront() throws PWCGException;
+    void configurePwcgMaps() throws PWCGException;
 
     void setMissionLogDirectory(String missionLogPath);
 

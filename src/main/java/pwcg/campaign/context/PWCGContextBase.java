@@ -41,7 +41,7 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     protected List<String> campaignStartDates = new ArrayList<String>();
     
     @Override
-    public void resetForMovingFront() throws PWCGException
+    public void configurePwcgMaps() throws PWCGException
     {        
         for (PWCGMap map : pwcgMaps.values())
         {
@@ -88,7 +88,7 @@ public abstract class PWCGContextBase implements IPWCGContextManager
         if (mapIdentifier != null)
         {
             changeContext(mapIdentifier);
-            resetForMovingFront();
+            configurePwcgMaps();
         }
     }
 

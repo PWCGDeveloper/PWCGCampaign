@@ -2,6 +2,8 @@ package pwcg.mission.utils;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.RoleCategory;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
@@ -31,7 +33,7 @@ public class AiAdjuster
         {
             for (PlaneMcu plane: flight.getFlightPlanes().getAiPlanes())
             {
-                adjustAi(plane);
+                adjustAi(plane, flight.getSquadron());
             }
         }
     }
@@ -46,18 +48,18 @@ public class AiAdjuster
                 {
                     for (PlaneMcu plane: virtualWaypoint.getVwpPlanes().getAllPlanes())
                     {
-                        adjustAi(plane);
+                        adjustAi(plane, flight.getSquadron());
                     }
                 }
             }
         }
     }
 
-    private void adjustAi(PlaneMcu plane) throws PWCGException
+    private void adjustAi(PlaneMcu plane, Squadron squadron) throws PWCGException
     {
-
+        Role squadronPrimaryRole = squadron.determineSquadronPrimaryRole(campaign.getDate());
         int aiSkillValue = plane.getAiLevel().getAiSkillLevel();
-        if (plane.isPrimaryRole(Role.ROLE_FIGHTER))
+        if (squadronPrimaryRole.isRoleCategory(RoleCategory.FIGHTER))
         {
             int fighterAISkillAdjustment = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.FighterAISkillAdjustmentKey);
             aiSkillValue += fighterAISkillAdjustment;

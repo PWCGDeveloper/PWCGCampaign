@@ -18,7 +18,6 @@ public class CampaignModeAARFactory
 {
     public static IClaimResolver createClaimResolver(Campaign campaign, AARContext aarContext, Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
     {
-        // TODO COMP COOP this sucks but still no better solution
         if (CampaignModeChooser.isCampaignModeCompetitive(campaign))
         {
             return new ClaimResolverCompetitiveCoop(campaign, aarContext.getMissionEvaluationData().getVictoryResults());

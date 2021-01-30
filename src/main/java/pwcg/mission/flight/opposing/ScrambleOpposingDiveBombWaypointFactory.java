@@ -1,8 +1,9 @@
-package pwcg.mission.flight.scramble;
+package pwcg.mission.flight.opposing;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.divebomb.DiveBombingWaypointFactory;
 import pwcg.mission.flight.waypoint.attack.GroundAttackWaypointHelper;
 import pwcg.mission.flight.waypoint.end.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
@@ -12,16 +13,14 @@ import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.mcu.group.AirGroundAttackMcuSequenceFactory;
 import pwcg.mission.mcu.group.IAirGroundAttackMcuSequence;
 
-public class ScrambleOpposingBombWaypointFactory
+public class ScrambleOpposingDiveBombWaypointFactory
 {
     private IFlight flight;
     private MissionPointAttackSet missionPointSet = new MissionPointAttackSet();
-    private int attackTime;
 
-    public ScrambleOpposingBombWaypointFactory(IFlight flight, int attackTime) throws PWCGException
+    public ScrambleOpposingDiveBombWaypointFactory(IFlight flight) throws PWCGException
     {
         this.flight = flight;
-        this.attackTime = attackTime;
     }
     
     public IMissionPointSet createWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
@@ -55,7 +54,7 @@ public class ScrambleOpposingBombWaypointFactory
     
     private IAirGroundAttackMcuSequence createAttackArea() throws PWCGException 
     {
-        IAirGroundAttackMcuSequence attackMcuSequence = AirGroundAttackMcuSequenceFactory.buildAirGroundAttackSequence(flight, attackTime, AttackAreaType.INDIRECT);
+        IAirGroundAttackMcuSequence attackMcuSequence = AirGroundAttackMcuSequenceFactory.buildAirGroundAttackSequence(flight, DiveBombingWaypointFactory.DIVE_BOMB_ATTACK_TIME, AttackAreaType.GROUND_TARGETS);
         return attackMcuSequence;
     }
 }

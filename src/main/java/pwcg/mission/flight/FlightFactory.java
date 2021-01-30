@@ -77,10 +77,7 @@ public class FlightFactory
         }
         else if (flightType == FlightTypes.ESCORT)
         {
-            if (isPlayerFlight)
-            {
-                flightPackage = new PlayerIsEscortPackage();
-            }
+            flightPackage = new PlayerIsEscortPackage();
         }
         else if (flightType == FlightTypes.GROUND_ATTACK)
         {
@@ -136,10 +133,7 @@ public class FlightFactory
         }
         else if (flightType == FlightTypes.SCRAMBLE)
         {
-            if (isPlayerFlight)
-            {
-                flightPackage = new PlayerScramblePackage();
-            }
+            flightPackage = new PlayerScramblePackage();
         }
         else if (flightType == FlightTypes.STRATEGIC_INTERCEPT)
         {
@@ -150,15 +144,8 @@ public class FlightFactory
             throw new PWCGMissionGenerationException("Invalid flight type: " + flightType);
         }
 
-        if (flightPackage != null)
-        {
-            FlightBuildInformation flightBuildInformation = new FlightBuildInformation(mission, squadron, isPlayerFlight);
-            flight = flightPackage.createPackage(flightBuildInformation);
-        }
-        else
-        {
-            throw new PWCGMissionGenerationException("Cannot create package for flight type: " + flightType);
-        }
+        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(mission, squadron, isPlayerFlight);
+        flight = flightPackage.createPackage(flightBuildInformation);
         
         return flight;
     }

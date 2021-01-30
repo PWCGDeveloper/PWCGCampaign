@@ -12,6 +12,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -36,6 +38,8 @@ public class MissionSkinSetBuilderTest
     @Before
     public void setup() throws PWCGException
     {
+        PWCGContext.setProduct(PWCGProduct.BOS);
+        
         Mockito.when(flight.getCampaign()).thenReturn(campaign);
 
         Mockito.when(flight.getFlightPlanes()).thenReturn(flightPlanes);

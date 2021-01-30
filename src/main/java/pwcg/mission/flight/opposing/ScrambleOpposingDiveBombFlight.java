@@ -1,4 +1,4 @@
-package pwcg.mission.flight.scramble;
+package pwcg.mission.flight.opposing;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
@@ -14,9 +14,9 @@ import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetFactory;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.target.TargetDefinition;
 
-public class ScrambleOpposingGroundAttackFlight extends Flight implements IFlight
+public class ScrambleOpposingDiveBombFlight extends Flight implements IFlight
 {	
-    public ScrambleOpposingGroundAttackFlight(FlightInformation flightInformation, TargetDefinition targetDefinition)
+    public ScrambleOpposingDiveBombFlight(FlightInformation flightInformation, TargetDefinition targetDefinition)
     {
         super(flightInformation, targetDefinition);
     }
@@ -39,7 +39,7 @@ public class ScrambleOpposingGroundAttackFlight extends Flight implements IFligh
         IMissionPointSet flightBegin = MissionPointSetFactory.createFlightBegin(this, flightActivate, AirStartPattern.AIR_START_NEAR_WAYPOINT, ingressWaypoint);
         this.getWaypointPackage().addMissionPointSet(flightBegin);
 
-        ScrambleOpposingGroundAttackWaypointFactory missionWaypointFactory = new ScrambleOpposingGroundAttackWaypointFactory(this);
+        ScrambleOpposingDiveBombWaypointFactory missionWaypointFactory = new ScrambleOpposingDiveBombWaypointFactory(this);
         IMissionPointSet missionWaypoints = missionWaypointFactory.createWaypoints(ingressWaypoint);
         this.getWaypointPackage().addMissionPointSet(missionWaypoints);
         

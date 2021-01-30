@@ -1,4 +1,4 @@
-package pwcg.mission.flight.scramble;
+package pwcg.mission.flight.opposing;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightInformation;
