@@ -16,7 +16,6 @@ import pwcg.mission.target.locator.TargetLocatorOpposing;
 public class TargetDefinitionBuilderOpposing implements ITargetDefinitionBuilder
 {
     private FlightInformation flightInformation;
-    private TargetLocatorOpposing targetLocatorOpposing;
 
     public TargetDefinitionBuilderOpposing(FlightInformation flightInformation)
     {
@@ -24,6 +23,24 @@ public class TargetDefinitionBuilderOpposing implements ITargetDefinitionBuilder
     }
 
     public TargetDefinition buildTargetDefinition() throws PWCGException
+    {
+        if (findOpposingFlight() == null)
+        {
+            return revertToStandardTargetDefinitionBuilder();
+        }
+        else
+        {
+            return buildOpposingTargetDefinition();
+        }
+    }
+
+    private TargetDefinition revertToStandardTargetDefinitionBuilder() throws PWCGException
+    {
+        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilderAirToAir(flightInformation);
+        return targetDefinitionBuilder.buildTargetDefinition();
+    }
+
+    private TargetDefinition buildOpposingTargetDefinition() throws PWCGException
     {
         Coordinate targetLocation = createTargetLocation();
         ICountry targetCountry = PWCGContext.getInstance().getCurrentMap().getGroundCountryForMapBySide(flightInformation.getSquadron().determineEnemySide());
@@ -63,8 +80,8 @@ public class TargetDefinitionBuilderOpposing implements ITargetDefinitionBuilder
                 return opposingFlight;
             }
         }
-
-        throw new PWCGException( "Unable to find opposing flight for " + flightInformation.getFlightType());
+        
+        return null;
     }
     
 

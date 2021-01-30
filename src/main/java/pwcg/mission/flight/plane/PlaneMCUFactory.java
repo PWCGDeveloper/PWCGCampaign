@@ -31,6 +31,10 @@ public class PlaneMCUFactory
     public List<PlaneMcu> createPlanesForFlight(int numPlanes) throws PWCGException
     {
         List<SquadronMember> crewsForFlight = buildFlightCrews(numPlanes);
+        if (crewsForFlight.size() < numPlanes)
+        {
+            numPlanes = crewsForFlight.size();
+        }
         List<EquippedPlane> planesTypesForFlight = buildEquipmentForFllght(numPlanes);
         List<PlaneMcu> planesForFlight = createPlanes(planesTypesForFlight, crewsForFlight);
         
