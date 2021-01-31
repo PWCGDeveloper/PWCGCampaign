@@ -9,7 +9,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
 
 public class HurricaneMkIIPayload extends PlanePayload implements IPlanePayload
-{
+{    
     public HurricaneMkIIPayload(PlaneType planeType)
     {
         super(planeType);
@@ -17,7 +17,7 @@ public class HurricaneMkIIPayload extends PlanePayload implements IPlanePayload
     }
 
     protected void initialize()
-    {
+    {        
         setAvailablePayload(-3, "100000000", PayloadElement.AIR_FILTER);
         setAvailablePayload(-2, "10000000", PayloadElement.MIRROR);
         setAvailablePayload(-1, "1000000", PayloadElement.LB_14_BOOST);

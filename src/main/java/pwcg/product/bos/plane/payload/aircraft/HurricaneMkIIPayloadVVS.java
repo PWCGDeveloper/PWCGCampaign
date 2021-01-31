@@ -1,5 +1,7 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.Date;
+
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -9,12 +11,23 @@ import pwcg.mission.target.TargetCategory;
 
 public class HurricaneMkIIPayloadVVS
 {
+    private Date hispanoIntroDate;
+
     public HurricaneMkIIPayloadVVS()
     {
     }
 
     public int createWeaponsPayload(IFlight flight) throws PWCGException
     {
+        try
+        {
+            hispanoIntroDate = DateUtils.getDateDDMMYYYY("19420801");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
         if (flight.getFlightType() == FlightTypes.GROUND_ATTACK)
         {
             return selectGroundAttackPayload(flight);
@@ -28,19 +41,17 @@ public class HurricaneMkIIPayloadVVS
     private int createStandardPayload(IFlight flight) throws PWCGException
     {
         int selectedPrimaryPayloadId = 1;
-        if (flight.getCampaign().getDate().before(DateUtils.getDateYYYYMMDD("19420801")))
+        if (flight.getCampaign().getDate().after(hispanoIntroDate))
         {
-            selectedPrimaryPayloadId = 2;
-        }
-        else
-        {
-            selectedPrimaryPayloadId = 12;
-        }
-
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 40)
-        {
-            selectedPrimaryPayloadId = 17;
+            int diceRoll = RandomNumberGenerator.getRandom(100);
+            if (diceRoll < 40)
+            {
+                selectedPrimaryPayloadId = 12;
+            }
+            else if (diceRoll < 60)
+            {
+                selectedPrimaryPayloadId = 17;
+            }
         }
 
         return selectedPrimaryPayloadId;
@@ -72,10 +83,10 @@ public class HurricaneMkIIPayloadVVS
         return selectedPrimaryPayloadId;
     }
 
-    protected int selectSoftTargetPayload(IFlight flight) throws PWCGException
+    private int selectSoftTargetPayload(IFlight flight) throws PWCGException
     {
         int selectedPrimaryPayloadId = 2;
-        if (flight.getCampaign().getDate().before(DateUtils.getDateYYYYMMDD("19420801")))
+        if (flight.getCampaign().getDate().before(hispanoIntroDate))
         {
             selectedPrimaryPayloadId = 2;
         }
@@ -93,10 +104,10 @@ public class HurricaneMkIIPayloadVVS
         return selectedPrimaryPayloadId;
     }    
 
-    protected int selectArmoredTargetPayload(IFlight flight) throws PWCGException
+    private int selectArmoredTargetPayload(IFlight flight) throws PWCGException
     {
         int selectedPrimaryPayloadId = 4;
-        if (flight.getCampaign().getDate().before(DateUtils.getDateYYYYMMDD("19420801")))
+        if (flight.getCampaign().getDate().before(hispanoIntroDate))
         {
             selectedPrimaryPayloadId = 4;
         }
@@ -118,10 +129,10 @@ public class HurricaneMkIIPayloadVVS
         return selectedPrimaryPayloadId;
     }
 
-    protected int selectMediumTargetPayload(IFlight flight) throws PWCGException
+    private int selectMediumTargetPayload(IFlight flight) throws PWCGException
     {
         int selectedPrimaryPayloadId = 2;
-        if (flight.getCampaign().getDate().before(DateUtils.getDateYYYYMMDD("19420801")))
+        if (flight.getCampaign().getDate().before(hispanoIntroDate))
         {
             selectedPrimaryPayloadId = 2;
         }
@@ -139,10 +150,10 @@ public class HurricaneMkIIPayloadVVS
         return selectedPrimaryPayloadId;
     }
 
-    protected int selectHeavyTargetPayload(IFlight flight) throws PWCGException
+    private int selectHeavyTargetPayload(IFlight flight) throws PWCGException
     {
         int selectedPrimaryPayloadId = 4;
-        if (flight.getCampaign().getDate().before(DateUtils.getDateYYYYMMDD("19420801")))
+        if (flight.getCampaign().getDate().before(hispanoIntroDate))
         {
             selectedPrimaryPayloadId = 4;
         }
@@ -160,7 +171,7 @@ public class HurricaneMkIIPayloadVVS
         return selectedPrimaryPayloadId;
     }
 
-    protected int selectStructureTargetPayload(IFlight flight) throws PWCGException
+    private int selectStructureTargetPayload(IFlight flight) throws PWCGException
     {
         int selectedPrimaryPayloadId = 4;
         return selectedPrimaryPayloadId;
