@@ -21,7 +21,7 @@ public class HurricaneMkIIPayloadVVS
     {
         try
         {
-            hispanoIntroDate = DateUtils.getDateDDMMYYYY("19420801");
+            hispanoIntroDate = DateUtils.getDateYYYYMMDD("19420801");
         }
         catch (Exception e)
         {

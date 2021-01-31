@@ -61,6 +61,11 @@ public class Block extends FixedPosition
             return false;
         }
         
+        if (PwcgBuildingIdentifier.identifyBuilding(this.getModel()) == PwcgStructure.BRIDGE)
+        {
+            return false;
+        }
+        
         if (this instanceof BoSStaticPlane)
         {
             return true;

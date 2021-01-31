@@ -21,7 +21,7 @@ public class HurricaneMkIIPayloadRAF
     {
         try
         {
-            hispanoIntroDate = DateUtils.getDateDDMMYYYY("19410601");
+            hispanoIntroDate = DateUtils.getDateYYYYMMDD("19410601");
         }
         catch (Exception e)
         {

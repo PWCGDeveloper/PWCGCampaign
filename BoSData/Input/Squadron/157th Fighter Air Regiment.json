@@ -78,7 +78,8 @@
 			"squadId": 10111157,
 			"country": "Russia",
 			"category": "Squadron",
-			"definedInGame": true
+			"definedInGame": true,
+			"winter": true
 		},
 		{
 			"skinName": "hurricanemkii_skin_02",
