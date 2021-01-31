@@ -15,7 +15,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignAces;
 import pwcg.campaign.CampaignPersonnelManager;
-import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.HistoricalAce;

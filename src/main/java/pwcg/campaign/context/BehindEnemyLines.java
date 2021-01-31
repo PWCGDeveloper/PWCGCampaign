@@ -3,7 +3,6 @@ package pwcg.campaign.context;
 import java.util.Date;
 
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;

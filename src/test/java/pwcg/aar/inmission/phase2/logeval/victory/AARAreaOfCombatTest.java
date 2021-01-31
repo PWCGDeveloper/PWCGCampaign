@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
-import pwcg.aar.inmission.phase2.logeval.victory.AARAreaOfCombat;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 

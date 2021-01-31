@@ -1,6 +1,5 @@
 package pwcg.campaign.context;
 
-import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.fc.plane.payload.FCPayloadFactory;

@@ -430,7 +430,7 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
     {
         String squadronIdString = "" + squadronId;
         String countryCodeString = squadronIdString.substring(0,3);
-        Integer countryCode = new Integer(countryCodeString);
+        Integer countryCode = Integer.valueOf(countryCodeString);
         ICountry country = CountryFactory.makeCountryByCode(countryCode);
     
         return getPrimaryServiceForNation(country.getCountry(), date);
