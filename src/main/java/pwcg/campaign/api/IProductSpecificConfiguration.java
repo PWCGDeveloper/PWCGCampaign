@@ -14,9 +14,7 @@ public interface IProductSpecificConfiguration
     TakeoffFormation getTakeoffFormation();
     int getAdditionalInitialTargetRadius(FlightTypes flightType);
     int getAdditionalMaxTargetRadius(FlightTypes flightType);
-    int getInitialFrontLineRadius();
     int geNeutralZone();
-    int getInterceptRadius();
     int getInterceptCrossDiameterDistance();
     int getInterceptCreepLegDistance();
     int getInterceptCreepCrossDistance();

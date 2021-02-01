@@ -20,6 +20,7 @@ public class ScrambleOpposingFlightInformationBuilder
         scrambleOpposingFlightInformation.setPlayerFlight(false);
         scrambleOpposingFlightInformation.setEscortForPlayerFlight(false);
         scrambleOpposingFlightInformation.setEscortedByPlayerFlight(false);
+        scrambleOpposingFlightInformation.setScrambleOpposeFlight(true);
         scrambleOpposingFlightInformation.setTargetSearchStartLocation(playerSquadron.determineCurrentPosition(mission.getCampaign().getDate()));
         FlightPlaneBuilder.buildPlanes (scrambleOpposingFlightInformation);
         scrambleOpposingFlightInformation.calculateAltitude();

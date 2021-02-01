@@ -2,14 +2,11 @@ package pwcg.mission.flight.opposing;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightPayloadBuilder;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.bomb.BombingWaypointFactory;
 import pwcg.mission.flight.initialposition.FlightPositionSetter;
-import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
-import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory;
-import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory.IngressWaypointPattern;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetFactory;
 import pwcg.mission.mcu.McuWaypoint;
@@ -32,13 +29,7 @@ public class ScrambleOpposingBombFlight extends Flight implements IFlight
 
     private void createWaypoints() throws PWCGException
     {
-        McuWaypoint ingressWaypoint = IngressWaypointFactory.createIngressWaypoint(IngressWaypointPattern.INGRESS_AT_TARGET, this);
-
-        IMissionPointSet flightActivate = MissionPointSetFactory.createFlightActivate(this);
-        this.getWaypointPackage().addMissionPointSet(flightActivate);
-
-        IMissionPointSet flightBegin = MissionPointSetFactory.createFlightBegin(this, flightActivate, AirStartPattern.AIR_START_NEAR_WAYPOINT, ingressWaypoint);
-        this.getWaypointPackage().addMissionPointSet(flightBegin);
+        McuWaypoint ingressWaypoint =ScrambleOpposingEntryWaypointFactory.createScrambleEntryWaypoints(this);
 
         ScrambleOpposingBombWaypointFactory missionWaypointFactory = new ScrambleOpposingBombWaypointFactory(this, BombingWaypointFactory.BOMB_ATTACK_TIME);
         IMissionPointSet missionWaypoints = missionWaypointFactory.createWaypoints(ingressWaypoint);

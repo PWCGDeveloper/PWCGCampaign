@@ -36,15 +36,15 @@ public class AirStartWaypointFactory
 
     private static McuWaypoint createAirStartNearWaypoint(IFlight flight, McuWaypoint referenceWaypointForAirStart) throws PWCGException
     {
-        Orientation waypolintOrientation = referenceWaypointForAirStart.getOrientation();
+        double angleBackToBase = MathUtils.calcAngle(flight.getFlightHomePosition(), referenceWaypointForAirStart.getPosition());
         
-        double angleBack = MathUtils.adjustAngle(waypolintOrientation.getyOri(), 180);
+        double angleBack = MathUtils.adjustAngle(angleBackToBase, 180);
         Coordinate airStartPosition = MathUtils.calcNextCoord(referenceWaypointForAirStart.getPosition(), angleBack, 3000.0);
         airStartPosition.setYPos(referenceWaypointForAirStart.getPosition().getYPos());
         
         McuWaypoint airStartWP = WaypointFactory.createAirStartWaypointType();
         airStartWP.setPosition(airStartPosition);
-        airStartWP.setOrientation(waypolintOrientation.copy());
+        airStartWP.setOrientation(new Orientation(angleBackToBase));
         airStartWP.setSpeed(flight.getFlightCruisingSpeed());
         return airStartWP;
     }  

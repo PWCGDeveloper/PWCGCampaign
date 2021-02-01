@@ -80,9 +80,7 @@ public enum FlightTypes
         if (flightType == FlightTypes.ARTILLERY_SPOT    ||
             flightType == FlightTypes.CONTACT_PATROL    ||
             flightType == FlightTypes.GROUND_ATTACK     ||
-            flightType == FlightTypes.SCRAMBLE          ||
-            flightType == FlightTypes.SCRAMBLE          ||
-            flightType == FlightTypes.SCRAMBLE          ||
+            flightType == FlightTypes.SCRAMBLE     ||
             flightType == FlightTypes.SPY_EXTRACT)
         {
             return true;

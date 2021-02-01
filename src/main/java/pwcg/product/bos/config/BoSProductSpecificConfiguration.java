@@ -12,12 +12,10 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     private static final int BALLOON_DEFENSE_LOOP_DISTANCE = 20000;
     private static final int CLIMB_DISTANCE = 10000;
     private static final int NEUTRAL_ZONE = 5000;
-    private static final int FRONT_LINE_MISSION_RADIUS = 40000;
     private static final int MIN_CLIMB_WP_ALT = 2000;
     private static final int CROSS_DIAMETER = 25000;
     private static final int CREEPING_LINE_LENGTH = 15000;
     private static final int CREEPING_LINE_CROSS = 8000;
-    private static final int INTERCEPT_RADIUS = 60000;
     private static final int CLOSE_TO_FRONT_DISTANCE = 80000;
     private static final int MAX_DISTANCE_FROM_PLAYER_BOX = 60000;
     private static final int MISSION_RADIUS_LARGE = 100000;
@@ -82,12 +80,6 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     public TakeoffFormation getTakeoffFormation()
     {
         return TakeoffFormation.STAGGERED;
-    }
-
-    @Override
-    public int getInitialFrontLineRadius()
-    {
-        return FRONT_LINE_MISSION_RADIUS;
     }
 
     @Override
@@ -299,12 +291,6 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     public int getInterceptCreepCrossDistance()
     {
         return CREEPING_LINE_CROSS;
-    }
-
-    @Override
-    public int getInterceptRadius()
-    {
-        return INTERCEPT_RADIUS;
     }
 
     @Override

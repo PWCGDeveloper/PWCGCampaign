@@ -36,32 +36,38 @@ public class CircleWaypointPattern
         this.legsInCircle = legsInCircle;
 	}
 
-    public List<McuWaypoint> generateCircleWPs(McuWaypoint lastWP, double endAlt, double legDistance) throws PWCGException
+    public List<McuWaypoint> generateCircleWPs(Coordinate circleCenter, double entryOrientation, double entryAlt, double endAlt, double legDistance) throws PWCGException
     {
-        int legCount = 0;
-        
-        double deltaAlt = (endAlt - lastWP.getPosition().getYPos()) / legsInCircle;
-                        
-        generateCircleWP(lastWP, endAlt, deltaAlt, legDistance, legCount);
-        
+        double deltaAlt = (endAlt - entryAlt) / legsInCircle;                        
+        startGenerateCircleWP(circleCenter, entryAlt, endAlt, deltaAlt, legDistance);
         return circleWPs;
     }
 
+    private void startGenerateCircleWP(Coordinate circleCenter, double entryAngle, double endAlt, double deltaAlt, double legDistance) throws PWCGException
+    {
+        McuWaypoint firstCircleWP = createCircleWaypoint();
+        
+        Coordinate circleCoords = MathUtils.calcNextCoord(circleCenter, entryAngle, legDistance);
+        firstCircleWP.setPosition(circleCoords);
+
+        double circleLegAngle = (360.0 / legsInCircle);
+        double circleWPOrientationAngle = MathUtils.adjustAngle(entryAngle, circleLegAngle);
+        Orientation circleWPOrientation = new Orientation(circleWPOrientationAngle);
+        firstCircleWP.setOrientation(circleWPOrientation);
+
+        circleWPs.add(firstCircleWP);
+        
+        generateCircleWP(firstCircleWP, endAlt, deltaAlt, legDistance, 1);
+
+    }
+    
     private void generateCircleWP(McuWaypoint lastWP, double endAlt, double deltaAlt, double legDistance, int legCount) throws PWCGException
     {
-        McuWaypoint nextCircleWP = WaypointFactory.createDefinedWaypointType(wpType, wpAction);
-        
-        nextCircleWP.setTriggerArea(wpTriggerArea);
-        nextCircleWP.setDesc(flight.getSquadron().determineDisplayName(campaign.getDate()), wpType.getName());
-        nextCircleWP.setWpAction(wpAction);
-
-        nextCircleWP.setSpeed(waypointSpeed - 20);
-        nextCircleWP.setPriority(WaypointPriority.PRIORITY_LOW);
+        McuWaypoint nextCircleWP = createCircleWaypoint();
 
         double circleWPOrientationAngle = getNextCircleWPAngle(lastWP);
         
-        Orientation circleWPOrientation = new Orientation();
-        circleWPOrientation.setyOri(circleWPOrientationAngle);
+        Orientation circleWPOrientation = new Orientation(circleWPOrientationAngle);
         nextCircleWP.setOrientation(circleWPOrientation);
 
         Coordinate circleCoords = MathUtils.calcNextCoord(lastWP.getPosition().copy(), circleWPOrientationAngle, legDistance);
@@ -75,6 +81,19 @@ public class CircleWaypointPattern
         {
             generateCircleWP(nextCircleWP, endAlt, deltaAlt, legDistance, legCount);
         }
+    }
+
+    private McuWaypoint createCircleWaypoint() throws PWCGException
+    {
+        McuWaypoint nextCircleWP = WaypointFactory.createDefinedWaypointType(wpType, wpAction);
+        
+        nextCircleWP.setTriggerArea(wpTriggerArea);
+        nextCircleWP.setDesc(flight.getSquadron().determineDisplayName(campaign.getDate()), wpType.getName());
+        nextCircleWP.setWpAction(wpAction);
+
+        nextCircleWP.setSpeed(waypointSpeed - 20);
+        nextCircleWP.setPriority(WaypointPriority.PRIORITY_LOW);
+        return nextCircleWP;
     }
 
     private double getNextCircleWPAngle(McuWaypoint lastCircleWP) throws PWCGException

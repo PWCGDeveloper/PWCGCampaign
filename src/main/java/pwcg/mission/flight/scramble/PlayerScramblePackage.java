@@ -46,7 +46,13 @@ public class PlayerScramblePackage implements IFlightPackage
             targetDefinitionBuilder = new TargetDefinitionBuilderAirToAir(flightInformation);
         }
 
-        return  targetDefinitionBuilder.buildTargetDefinition();
+        TargetDefinition targetDefinition =  targetDefinitionBuilder.buildTargetDefinition();
+        
+        if (targetDefinition.getPosition().getYPos() < 1000)
+        {
+            targetDefinition.getPosition().setYPos(1000);
+        }
+        return targetDefinition;
     }
 
     private PlayerScrambleFlight createPlayerFlight() throws PWCGException

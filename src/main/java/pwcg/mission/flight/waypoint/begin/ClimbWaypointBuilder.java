@@ -49,7 +49,13 @@ public class ClimbWaypointBuilder
     		    		numClimbLegs);
     		    
     		    IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-    		    List<McuWaypoint> climbCircleWPs = circleWaypointGenerator.generateCircleWPs(takeoffWP, flightAlt, productSpecificConfiguration.getClimbDistance());
+    		    
+    	        List<McuWaypoint> climbCircleWPs = circleWaypointGenerator.generateCircleWPs(
+    	                flight.getFlightHomePosition(), 
+    	                takeoffWP.getOrientation().getyOri(), 
+    	                takeoffWP.getPosition().getYPos(),
+    	                flight.getFlightInformation().getAltitude(), 
+    	                productSpecificConfiguration.getClimbDistance());
     
     		    climbWPs.addAll(climbCircleWPs);
 		    }

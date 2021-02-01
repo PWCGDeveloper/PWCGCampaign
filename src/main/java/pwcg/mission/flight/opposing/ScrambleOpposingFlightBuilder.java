@@ -58,28 +58,22 @@ public class ScrambleOpposingFlightBuilder implements IOpposingFlightBuilder
         
         TargetDefinition opposingTargetDefinition = buildOpposingTargetDefintion(opposingFlightInformation);
                 
-        if (opposingFlightType == FlightTypes.BOMB)
+        IFlight opposingFlight = null;
+        if (opposingFlightType == FlightTypes.LOW_ALT_BOMB)
         {
-            ScrambleOpposingBombFlight opposingFlight = new ScrambleOpposingBombFlight (opposingFlightInformation, opposingTargetDefinition);
-            opposingFlight.createFlight();
-            return opposingFlight;            
+            opposingFlight = new ScrambleOpposingBombFlight (opposingFlightInformation, opposingTargetDefinition);
         }
         else if (opposingFlightType == FlightTypes.DIVE_BOMB)
         {
-            ScrambleOpposingDiveBombFlight opposingFlight = new ScrambleOpposingDiveBombFlight (opposingFlightInformation, opposingTargetDefinition);
-            opposingFlight.createFlight();
-            return opposingFlight;            
+            opposingFlight = new ScrambleOpposingDiveBombFlight (opposingFlightInformation, opposingTargetDefinition);
         }
-        else if (opposingFlightType == FlightTypes.GROUND_ATTACK)
+        else
         {
-            ScrambleOpposingGroundAttackFlight opposingFlight = new ScrambleOpposingGroundAttackFlight (opposingFlightInformation, opposingTargetDefinition);
-            opposingFlight.createFlight();
-            return opposingFlight;            
+            opposingFlight = new ScrambleOpposingGroundAttackFlight (opposingFlightInformation, opposingTargetDefinition);
         }
-        else 
-        {
-            throw new PWCGException("No valid scramble flight type generated " + opposingSquadron.getFileName());
-        }
+        
+        opposingFlight.createFlight();
+        return opposingFlight;        
     }
     
     private FlightTypes getFlightType(Squadron opposingSquadron) throws PWCGException
@@ -95,7 +89,7 @@ public class ScrambleOpposingFlightBuilder implements IOpposingFlightBuilder
         }
         if (opposingSquadron.isSquadronThisRole(campaign.getDate(), Role.ROLE_BOMB))
         {   
-            possibleOpposingFlightTypes.add(FlightTypes.BOMB);
+            possibleOpposingFlightTypes.add(FlightTypes.LOW_ALT_BOMB);
         }
         
         if (possibleOpposingFlightTypes.size() == 0) 

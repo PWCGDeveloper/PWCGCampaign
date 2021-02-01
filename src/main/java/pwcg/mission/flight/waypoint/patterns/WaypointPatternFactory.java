@@ -23,9 +23,15 @@ public class WaypointPatternFactory
                     double endAlt, 
                     double legDistance) throws PWCGException
     {
-        CircleWaypointPattern pattern = new CircleWaypointPattern(campaign, flight, wpType, wpAction, wpTriggerArea, legsInCircle);
+        CircleWaypointPattern circleWaypointGenerator = new CircleWaypointPattern(campaign, flight, wpType, wpAction, wpTriggerArea, legsInCircle);
 
-        List<McuWaypoint> waypoints = pattern.generateCircleWPs(lastWP, endAlt, legDistance);
+        List<McuWaypoint> waypoints = circleWaypointGenerator.generateCircleWPs(
+                lastWP.getPosition(), 
+                lastWP.getOrientation().getyOri(), 
+                lastWP.getPosition().getYPos(),
+                endAlt, 
+                legDistance);
+
 
         return waypoints;
     }

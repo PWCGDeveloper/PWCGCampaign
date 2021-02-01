@@ -25,7 +25,6 @@ public class AiOpposingFlightBuilder
         this.playerFlightTypes = playerFlightTypes;
     }
     
-
     public List<IFlight> createOpposingAiFlights() throws PWCGException 
     {
         for (Squadron playerSquadron : playerFlightTypes.getSquadrons())

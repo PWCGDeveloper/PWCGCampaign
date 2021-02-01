@@ -3,15 +3,16 @@ package pwcg.mission.flight.scramble;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.api.IProductSpecificConfiguration;
+import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.core.location.Orientation;
-import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.waypoint.WaypointFactory;
+import pwcg.mission.flight.waypoint.WaypointAction;
+import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.flight.waypoint.end.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointRouteSet;
+import pwcg.mission.flight.waypoint.patterns.CircleWaypointPattern;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class ScrambleWaypointFactory
@@ -28,7 +29,7 @@ public class ScrambleWaypointFactory
     {
         missionPointSet.addWaypoint(ingressWaypoint);
         
-        List<McuWaypoint> waypoints = createTargetWaypoints();
+        List<McuWaypoint> waypoints = createTargetWaypoints(ingressWaypoint);
         missionPointSet.addWaypoints(waypoints);
 
         McuWaypoint egressWaypoint = EgressWaypointGenerator.createEgressWaypoint(flight, ingressWaypoint.getPosition());
@@ -37,31 +38,36 @@ public class ScrambleWaypointFactory
         return missionPointSet;
     }
 
-    private List<McuWaypoint> createTargetWaypoints() throws PWCGException  
+    private List<McuWaypoint> createTargetWaypoints(McuWaypoint ingressWaypoint) throws PWCGException  
 	{
         List<McuWaypoint> waypoints = new ArrayList<>();
 
-		McuWaypoint scrambleTargetWP = createTargetScrambleWaypoint();
-		waypoints.add(scrambleTargetWP);
+		List<McuWaypoint> scrambleTargetWPs = createTargetScrambleWaypoint(ingressWaypoint);
+		waypoints.addAll(scrambleTargetWPs);
 
         return waypoints;
 	}
 
-    private McuWaypoint createTargetScrambleWaypoint() throws PWCGException
+    private List<McuWaypoint> createTargetScrambleWaypoint(McuWaypoint ingressWaypoint) throws PWCGException
     {
-        double angleToTarget = MathUtils.calcAngle(flight.getFlightHomePosition(), flight.getTargetDefinition().getPosition());
-        Orientation wpOrientation = new Orientation();
-        wpOrientation.setyOri(angleToTarget);
+        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        int loopLegDistance = productSpecificConfiguration.getInterceptInnerLoopDistance();
         
-        Coordinate scrambleTargetCoords =  flight.getTargetDefinition().getPosition();
-        scrambleTargetCoords.setYPos(flight.getFlightInformation().getAltitude());
-         
-        McuWaypoint scrambleTargetWP = WaypointFactory.createPatrolWaypointType();
-		scrambleTargetWP.setPosition(scrambleTargetCoords);	
-		scrambleTargetWP.setOrientation(wpOrientation.copy());
-		scrambleTargetWP.setTargetWaypoint(true);
-		scrambleTargetWP.setTriggerArea(McuWaypoint.COMBAT_AREA);
-		scrambleTargetWP.setSpeed(flight.getFlightCruisingSpeed());
-        return scrambleTargetWP;
+        CircleWaypointPattern circleWaypointPattern = new CircleWaypointPattern(
+                flight.getCampaign(), 
+                flight, 
+                WaypointType.PATROL_WAYPOINT, 
+                WaypointAction.WP_ACTION_PATROL,
+                3000,
+                6);
+        
+        List<McuWaypoint> waypoints = circleWaypointPattern.generateCircleWPs(
+                flight.getFlightHomePosition(), 
+                ingressWaypoint.getOrientation().getyOri(), 
+                ingressWaypoint.getPosition().getYPos(),
+                flight.getFlightInformation().getAltitude(), 
+                loopLegDistance);
+        
+        return waypoints;
     }
 }

@@ -12,12 +12,10 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     private static final int BALLOON_DEFENSE_LOOP_DISTANCE = 8000;
     private static final int CLIMB_DISTANCE = 5000;
     private static final int NEUTRAL_ZONE = 3000;
-    private static final int FRONT_LINE_MISSION_RADIUS = 15000;
     private static final int MIN_CLIMB_WP_ALT = 1200;
     private static final int CROSS_DIAMETER = 15000;
     private static final int CREEPING_LINE_LENGTH = 10000;
     private static final int CREEPING_LINE_CROSS = 5000;
-    private static final int INTERCEPT_RADIUS = 20000;
     private static final int CLOSE_TO_FRONT_DISTANCE = 30000;
     private static final int MAX_DISTANCE_FROM_PLAYER_BOX = 20000;
     private static final int MISSION_RADIUS_LARGE = 50000;
@@ -88,12 +86,6 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     public int getClimbDistance()
     {
         return CLIMB_DISTANCE;
-    }
-
-    @Override
-    public int getInitialFrontLineRadius()
-    {
-        return FRONT_LINE_MISSION_RADIUS;
     }
 
     @Override
@@ -299,12 +291,6 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     public int getInterceptCreepCrossDistance()
     {
         return CREEPING_LINE_CROSS;
-    }
-
-    @Override
-    public int getInterceptRadius()
-    {
-        return INTERCEPT_RADIUS;
     }
 
     @Override

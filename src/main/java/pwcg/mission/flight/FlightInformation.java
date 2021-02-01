@@ -33,6 +33,7 @@ public class FlightInformation
     private boolean isPlayerFlight = false;
     private boolean isEscortedByPlayerFlight = false;
     private boolean isEscortForPlayerFlight = false;
+    private boolean isScrambleOpposeFlight = false;
     private boolean isOpposingFlight = false;
     private int altitude = 0;
     private int flightCruisingSpeed = 0;
@@ -111,13 +112,24 @@ public class FlightInformation
         this.isEscortForPlayerFlight = isEscortForPlayerFlight;
     }
 
-    public boolean isPlayerRelatedFlight()
+    public boolean isOpposingFlight()
     {
-        if (isPlayerFlight || isEscortedByPlayerFlight || isEscortForPlayerFlight)
-        {
-            return true;
-        }
-        return false;
+        return isOpposingFlight;
+    }
+
+    public void setOpposingFlight(boolean isOpposingFlight)
+    {
+        this.isOpposingFlight = isOpposingFlight;
+    }    
+    
+    public boolean isScrambleOpposeFlight()
+    {
+        return isScrambleOpposeFlight;
+    }
+
+    public void setScrambleOpposeFlight(boolean isScrambleOpposeFlight)
+    {
+        this.isScrambleOpposeFlight = isScrambleOpposeFlight;
     }
 
     public List<SquadronMember> getFlightParticipatingPlayers()
@@ -133,7 +145,7 @@ public class FlightInformation
     public boolean isVirtual()
     {
         boolean isVirtual = true;
-        if (isPlayerFlight || isEscortedByPlayerFlight || isEscortForPlayerFlight)
+        if (isPlayerFlight || isEscortedByPlayerFlight || isEscortForPlayerFlight || isScrambleOpposeFlight)
         {
             isVirtual = false;
         }
@@ -276,14 +288,4 @@ public class FlightInformation
     {
         this.targetDefinition = targetDefinition;
     }
-
-    public boolean isOpposingFlight()
-    {
-        return isOpposingFlight;
-    }
-
-    public void setOpposingFlight(boolean isOpposingFlight)
-    {
-        this.isOpposingFlight = isOpposingFlight;
-    }    
 }
