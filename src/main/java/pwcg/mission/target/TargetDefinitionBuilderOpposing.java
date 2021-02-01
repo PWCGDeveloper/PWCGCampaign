@@ -72,18 +72,10 @@ public class TargetDefinitionBuilderOpposing implements ITargetDefinitionBuilder
 
     private IFlight findOpposingFlight() throws PWCGException
     {
-        for (FlightTypes opposingFlightType : findOpposingFlightTypes())
-        {
-            IFlight opposingFlight = findOpposingFlightOfType(opposingFlightType);
-            if (opposingFlight != null)
-            {
-                return opposingFlight;
-            }
-        }
-        
-        return null;
+        Side enemySide = flightInformation.getSquadron().determineEnemySide();
+        List<FlightTypes> opposingFlightTypes = findOpposingFlightTypes();
+        return flightInformation.getMission().getMissionFlightBuilder().findOpposingFlight(opposingFlightTypes, enemySide);
     }
-    
 
     private List<FlightTypes> findOpposingFlightTypes() throws PWCGException
     {
@@ -109,7 +101,7 @@ public class TargetDefinitionBuilderOpposing implements ITargetDefinitionBuilder
         }
         else if (flightInformation.getFlightType() == FlightTypes.SCRAMBLE)
         {
-            return Arrays.asList(FlightTypes.BOMB, FlightTypes.DIVE_BOMB, FlightTypes.GROUND_ATTACK);
+            return Arrays.asList(FlightTypes.LOW_ALT_BOMB, FlightTypes.DIVE_BOMB, FlightTypes.GROUND_ATTACK);
         }
         else if (flightInformation.getFlightType() == FlightTypes.STRATEGIC_INTERCEPT)
         {
@@ -119,23 +111,6 @@ public class TargetDefinitionBuilderOpposing implements ITargetDefinitionBuilder
         {
             throw new PWCGException("No opposing flight type for flight type " + flightInformation.getFlightType());
         }
-    }
-
-    private IFlight findOpposingFlightOfType(FlightTypes opposingFlightType) throws PWCGException
-    {
-        Side enemySide = flightInformation.getSquadron().determineEnemySide();
-        for (IFlight opposingFlight: flightInformation.getMission().getMissionFlightBuilder().getAiFlightsForSide(enemySide))
-        {
-            if (opposingFlight.getFlightInformation().isOpposingFlight())
-            {
-                if (opposingFlight.getFlightInformation().getFlightType() == opposingFlightType)
-                {
-                    return opposingFlight;
-                }
-            }
-        }
-        
-        return null;
     }
 
 }

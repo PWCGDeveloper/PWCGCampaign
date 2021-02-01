@@ -185,6 +185,36 @@ public class MissionFlightBuilder
         return allFlights;
     }
 
+    public IFlight findOpposingFlight(List<FlightTypes> opposingFlightTypes, Side side) throws PWCGException
+    {
+        for (FlightTypes opposingFlightType : opposingFlightTypes)
+        {
+            IFlight opposingFlight = findOpposingFlightOfType(opposingFlightType, side);
+            if (opposingFlight != null)
+            {
+                return opposingFlight;
+            }
+        }
+        
+        return null;
+    }
+
+    private IFlight findOpposingFlightOfType(FlightTypes opposingFlightType, Side side) throws PWCGException
+    {
+        for (IFlight opposingFlight: getAiFlightsForSide(side))
+        {
+            if (opposingFlight.getFlightInformation().isOpposingFlight())
+            {
+                if (opposingFlight.getFlightInformation().getFlightType() == opposingFlightType)
+                {
+                    return opposingFlight;
+                }
+            }
+        }
+        
+        return null;
+    }
+
     public boolean hasPlayerFlightWithFlightTypes(List<FlightTypes> flightTypes)
     {
         for (FlightTypes flightType : flightTypes)

@@ -25,9 +25,10 @@ public class PlayerScramblePackage implements IFlightPackage
     @Override
     public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
-        this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.SCRAMBLE);
+        this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.SCRAMBLE);        
         this.targetDefinition = buildTargetDefintion();
-        
+        adjustAltitudeToMatchOpposingFlight();
+
 		PlayerScrambleFlight playerFlight = createPlayerFlight();
         FlightSpotterBuilder.createSpotters(playerFlight, flightInformation);
 
@@ -47,10 +48,9 @@ public class PlayerScramblePackage implements IFlightPackage
         }
 
         TargetDefinition targetDefinition =  targetDefinitionBuilder.buildTargetDefinition();
-        
-        if (targetDefinition.getPosition().getYPos() < 1000)
+        if (targetDefinition.getPosition().getYPos() < ScrambleWaypointFactory.SCRAMBLE_MINIMUM_ALTITUDE)
         {
-            targetDefinition.getPosition().setYPos(1000);
+            targetDefinition.getPosition().setYPos(ScrambleWaypointFactory.SCRAMBLE_MINIMUM_ALTITUDE);
         }
         return targetDefinition;
     }
@@ -60,5 +60,21 @@ public class PlayerScramblePackage implements IFlightPackage
         PlayerScrambleFlight playerFlight = new PlayerScrambleFlight (flightInformation, targetDefinition);
         playerFlight.createFlight();
         return playerFlight;
+    }
+    
+    
+    private void adjustAltitudeToMatchOpposingFlight()
+    { 
+        if (targetDefinition.getPosition().getYPos() > ScrambleWaypointFactory.SCRAMBLE_MINIMUM_ALTITUDE)
+        {
+            int numAltitudeChunks = Double.valueOf(targetDefinition.getPosition().getYPos()).intValue() / 500;
+            ++numAltitudeChunks;
+            int interceptAltitude = numAltitudeChunks * 500;
+            flightInformation.setAltitude(interceptAltitude);
+        }
+        else
+        {
+            flightInformation.setAltitude(ScrambleWaypointFactory.SCRAMBLE_MINIMUM_ALTITUDE);
+        }
     }
 }

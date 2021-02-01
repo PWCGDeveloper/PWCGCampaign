@@ -27,14 +27,10 @@ public class InterceptPackage implements IFlightPackage
     @Override
     public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
-        if (flightType != FlightTypes.INTERCEPT)
-        {
-            throw new PWCGException("Invalid intercept flight type " + flightType);
-        }
-        
         this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, flightType);
         this.targetDefinition = buildTargetDefintion();
-
+        adjustAltitudeToMatchOpposingFlight();
+        
         InterceptFlight interceptFlight = new InterceptFlight (flightInformation, targetDefinition);
         interceptFlight.createFlight();
         
@@ -59,5 +55,13 @@ public class InterceptPackage implements IFlightPackage
         }
 
         return  targetDefinitionBuilder.buildTargetDefinition();
+    }
+    
+    private void adjustAltitudeToMatchOpposingFlight()
+    { 
+        int numAltitudeChunks = Double.valueOf(targetDefinition.getPosition().getYPos()).intValue() / 500;
+        ++numAltitudeChunks;
+        int interceptAltitude = numAltitudeChunks * 500;
+        flightInformation.setAltitude(interceptAltitude);
     }
 }

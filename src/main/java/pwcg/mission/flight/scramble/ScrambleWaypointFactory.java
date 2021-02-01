@@ -17,6 +17,8 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public class ScrambleWaypointFactory
 {
+    public static final int SCRAMBLE_MINIMUM_ALTITUDE = 1000;
+    
     private IFlight flight;
     private MissionPointRouteSet missionPointSet = new MissionPointRouteSet();
     
@@ -61,11 +63,17 @@ public class ScrambleWaypointFactory
                 3000,
                 6);
         
+        int targetAltitude = flight.getFlightInformation().getAltitude();
+        if (targetAltitude < SCRAMBLE_MINIMUM_ALTITUDE)
+        {
+            targetAltitude = SCRAMBLE_MINIMUM_ALTITUDE;
+        }
+        
         List<McuWaypoint> waypoints = circleWaypointPattern.generateCircleWPs(
                 flight.getFlightHomePosition(), 
                 ingressWaypoint.getOrientation().getyOri(), 
                 ingressWaypoint.getPosition().getYPos(),
-                flight.getFlightInformation().getAltitude(), 
+                targetAltitude, 
                 loopLegDistance);
         
         return waypoints;
