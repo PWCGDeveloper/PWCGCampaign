@@ -59,7 +59,6 @@ public class StaticObject extends Block implements IVehicle
 
     @Override
     public boolean vehicleExists() {
-        // TODO Auto-generated method stub
         return false;
     }
 

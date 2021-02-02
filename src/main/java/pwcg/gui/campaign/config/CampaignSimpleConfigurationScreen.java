@@ -55,6 +55,11 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
     private ButtonModel cpuAllowanceMedButtonModel = null;
     private ButtonModel cpuAllowanceHighButtonModel = null;
 
+    private ButtonGroup structureButtonGroup = new ButtonGroup();
+    private ButtonModel structureLowButtonModel = null;
+    private ButtonModel structureMedButtonModel = null;
+    private ButtonModel structureHighButtonModel = null;
+
     private Campaign campaign;
 
     public CampaignSimpleConfigurationScreen(Campaign campaign)
@@ -137,7 +142,20 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
         {
             cpuAllowanceButtonGroup.setSelected(cpuAllowanceHighButtonModel, true);
         }
-
+ 
+        String currentstructureSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigStructuresKey);
+        if (currentstructureSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        {
+            structureButtonGroup.setSelected(structureLowButtonModel, true);
+        }
+        else if (currentstructureSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+        {
+            structureButtonGroup.setSelected(structureMedButtonModel, true);
+        }
+        else if (currentstructureSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+        {
+            structureButtonGroup.setSelected(structureHighButtonModel, true);
+        }
 	}
 
 	private JPanel makeNavigatePanel() throws PWCGException
@@ -175,6 +193,7 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
         JPanel groundButtonPanel = createGroundConfigPanel();
         JPanel aaButtonPanel = createAAConfigPanel();
         JPanel cpuAllowanceButtonPanel = createCpuAllowanceConfigPanel();
+        JPanel structureButtonPanel = createStructureConfigPanel();
         
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
         ImageResizingPanel simpleConfigButtonPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
@@ -186,6 +205,7 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
         simpleConfigButtonPanel.add(groundButtonPanel);
         simpleConfigButtonPanel.add(aaButtonPanel);
         simpleConfigButtonPanel.add(cpuAllowanceButtonPanel);
+        simpleConfigButtonPanel.add(structureButtonPanel);
 				
 		return simpleConfigButtonPanel;
 	}
@@ -325,6 +345,42 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
         
         return cpuAllowanceButtonPanel;
     }
+    
+    private JPanel createStructureConfigPanel() throws PWCGException
+    {
+        JPanel structureButtonPanel = new JPanel(new BorderLayout());
+        structureButtonPanel.setOpaque(false);
+
+        JLabel spacerLabel = makeLabel("          ");        
+        structureButtonPanel.add(spacerLabel, BorderLayout.WEST);
+
+        JPanel structureGrid = new JPanel(new GridLayout(0,1));
+        structureGrid.setOpaque(false);
+        
+        JLabel structureLabel = PWCGButtonFactory.makePaperLabelLarge(CampaignConfigurationSimpleGUIController.ACTION_SET_STRUCTURE_DENSITY + ":");
+        structureGrid.add(structureLabel);
+
+        JRadioButton lowDensity = PWCGButtonFactory.makeRadioButton("Low", "Low Structure", "Structures limited to mission box", false, this, ColorMap.PAPER_FOREGROUND);     
+        structureGrid.add(lowDensity);
+        structureLowButtonModel = lowDensity.getModel();
+        structureButtonGroup.add(lowDensity);
+
+        JRadioButton medDensity = PWCGButtonFactory.makeRadioButton("Med", "Med Structure", "Structures extend to players field", false, this, ColorMap.PAPER_FOREGROUND);     
+        structureGrid.add(medDensity);
+        structureMedButtonModel = medDensity.getModel();
+        structureButtonGroup.add(medDensity);
+        
+        JRadioButton highDensity = PWCGButtonFactory.makeRadioButton("High", "High Structure", "Structures extend beyond players field", false, this, ColorMap.PAPER_FOREGROUND);     
+        structureGrid.add(highDensity);
+        structureHighButtonModel = highDensity.getModel();
+        structureButtonGroup.add(highDensity);
+
+        structureButtonPanel.add(structureGrid, BorderLayout.NORTH);
+        
+        return structureButtonPanel;
+    }
+
+    
 
 	private JLabel makeLabel(String buttonName) throws PWCGException
 	{

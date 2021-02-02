@@ -1,6 +1,17 @@
 
 ​At the PWCG web site
 
+PWCG 11.10.0
+Improve flights targeting other flights
+- Intercept flights now target an existing flight
+	- Altitude matches and search area targets enemy flight without being exact.
+- Scrambles completely rewritten
+- Balloon bust flights target existing balloons and defense.
+- Balloon defense flights cover existing balloon and attacking flight.
+- Using an existing flight matters because it avoids extra flights
+- Fixed object not found.  Might cause issues crediting bridges.
+- Fixed incorrect config label
+
 PWCG 11.9.1
 Add Structures as creditable targets
 - Add structures as targets

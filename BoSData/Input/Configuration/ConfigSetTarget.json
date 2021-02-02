@@ -76,7 +76,7 @@
 		
 		"AxisTargetTypeArmor": {
 			"value": "30",
-			"label": "Allied Target Enemy Armor",
+			"label": "Axis Target Enemy Armor",
 			"help": "Weight given to of targeting an enemy armor - (Axis)"
 		},
 		"AxisTargetTypeInfantry": {

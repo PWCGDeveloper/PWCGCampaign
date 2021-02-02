@@ -14,6 +14,7 @@ public class CampaignConfigurationSimpleGUIController
     static public final String ACTION_SET_GROUND_DENSITY = "Ground Density";
     static public final String ACTION_SET_AA_DENSITY = "AA Density";
     static public final String ACTION_SET_CPU_ALOWANCE_DENSITY = "CPU Allowance";
+    static public final String ACTION_SET_STRUCTURE_DENSITY = "Structure";
     
     static public final String CAMPAIGN_TYPE = "Campaign Type";
     
@@ -43,6 +44,10 @@ public class CampaignConfigurationSimpleGUIController
             else if (action.contains(ACTION_SET_CPU_ALOWANCE_DENSITY))
             {
                 setCpuAllowanceDensity(action);
+            }           
+            else if (action.contains(ACTION_SET_STRUCTURE_DENSITY))
+            {
+                setStructureDensity(action);
             }           
             else if (action.equalsIgnoreCase(CommonUIActions.ACTION_ACCEPT))
 			{
@@ -129,6 +134,23 @@ public class CampaignConfigurationSimpleGUIController
         else if (action.contains(ConfigSimple.CONFIG_LEVEL_HIGH))
         {
             configSetSimpleConfig.setCpuAllowanceHigh();
+        }
+    }
+
+    private void setStructureDensity(String action) throws PWCGException
+    {
+        ConfigSimple configSetSimpleConfig = new ConfigSimple(campaign);
+        if (action.contains(ConfigSimple.CONFIG_LEVEL_LOW))
+        {
+            configSetSimpleConfig.setStructureLow();;
+        }
+        else if (action.contains(ConfigSimple.CONFIG_LEVEL_MED))
+        {
+            configSetSimpleConfig.setStructureMed();;
+        }
+        else if (action.contains(ConfigSimple.CONFIG_LEVEL_HIGH))
+        {
+            configSetSimpleConfig.setStructureHigh();;
         }
     }
 

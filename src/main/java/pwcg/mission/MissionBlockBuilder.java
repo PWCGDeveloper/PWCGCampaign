@@ -37,9 +37,7 @@ public class MissionBlockBuilder
     {
         List<Block> selectedBlocks = new ArrayList<Block>();
 
-        ConfigManager configManager = mission.getCampaign().getCampaignConfigManager();
-        int keepGroupSpread = configManager.getIntConfigParam(ConfigItemKeys.KeepGroupSpreadKey);
-        CoordinateBox missionBorders = mission.getMissionBorders().expandBox(keepGroupSpread);
+        CoordinateBox missionBorders = MissionBlockBoxAdjuster.getBordersForStructures(mission);
 
         GroupManager groupData = PWCGContext.getInstance().getCurrentMap().getGroupManager();
         for (Block block : groupData.getStandaloneBlocks())

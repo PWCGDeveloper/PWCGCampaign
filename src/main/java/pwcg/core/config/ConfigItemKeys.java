@@ -18,7 +18,8 @@ public class ConfigItemKeys
     public static final String SimpleConfigGroundKey = "SimpleConfigGround";
     public static final String SimpleConfigAAKey = "SimpleConfigAA";
     public static final String SimpleConfigCpuAllowanceKey = "SimpleConfigCpuAllowance";
-
+    public static final String SimpleConfigStructuresKey = "SimpleConfigStructures";
+    
     public static final String UseRealisticWeatherKey = "UseRealisticWeather";
     public static final String MaxTurbulenceKey = "MaxTurbulence";
     public static final String MaxWindKey = "MaxWind";

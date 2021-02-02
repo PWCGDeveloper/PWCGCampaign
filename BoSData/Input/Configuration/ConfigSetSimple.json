@@ -20,6 +20,11 @@
 			"value": "Med",
 			"label": "CPU Allowance",
 			"help": "Influences the amount of high CPU units in a mission"
+		},
+		"SimpleConfigStructures": {
+			"value": "Low",
+			"label": "CPU Allowance",
+			"help": "Influences the amount of structures in a mission"
 		}
 	}
 }

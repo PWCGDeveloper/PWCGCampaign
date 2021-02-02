@@ -21,6 +21,22 @@ public class CoordinateBox
     protected Coordinate east = new Coordinate();
     protected Coordinate west = new Coordinate();
     
+    public static CoordinateBox copy(CoordinateBox source)
+    {
+        CoordinateBox copy = new CoordinateBox();
+        copy.sw = source.sw.copy();
+        copy.ne = source.ne.copy();
+        copy.se = source.se.copy();
+        copy.nw = source.nw.copy();
+        copy.center = source.center.copy();
+        copy.north = source.north.copy();
+        copy.south = source.south.copy();
+        copy.east = source.east.copy();
+        copy.west = source.west.copy();
+        
+        return copy;
+    }
+    
     public static CoordinateBox coordinateBoxFromCorners (Coordinate sw, Coordinate ne) throws PWCGException
     {
         CoordinateBox coordinateBox = new CoordinateBox();
@@ -124,7 +140,30 @@ public class CoordinateBox
         
         return coordinateBox;
     }
-    
+
+    public void expandBoxCornersFromCoordinates(List<Coordinate> coordinates) throws PWCGException
+    {
+        for (Coordinate coordinate : coordinates)
+        {
+            if (coordinate.getXPos() < sw.getXPos())
+            {
+                sw.setXPos(coordinate.getXPos());
+            }
+            if (coordinate.getZPos() < sw.getZPos())
+            {
+                sw.setZPos(coordinate.getZPos());
+            }
+            if (coordinate.getXPos() > ne.getXPos())
+            {
+                ne.setXPos(coordinate.getXPos());
+            }
+            if (coordinate.getZPos() > ne.getZPos())
+            {
+                ne.setZPos(coordinate.getZPos());
+            }
+        }
+    }
+
     public boolean isInBox (Coordinate itemPosition)
     {
         boolean isInBox = false;

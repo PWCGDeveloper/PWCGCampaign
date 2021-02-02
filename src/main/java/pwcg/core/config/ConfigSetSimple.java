@@ -11,7 +11,8 @@ public class ConfigSetSimple
         configSet.addConfigItem(ConfigItemKeys.SimpleConfigGroundKey, new ConfigItem(ConfigSimple.CONFIG_LEVEL_MED));
         configSet.addConfigItem(ConfigItemKeys.SimpleConfigAAKey, new ConfigItem(ConfigSimple.CONFIG_LEVEL_MED));
         configSet.addConfigItem(ConfigItemKeys.SimpleConfigCpuAllowanceKey, new ConfigItem(ConfigSimple.CONFIG_LEVEL_MED));
-        
+        configSet.addConfigItem(ConfigItemKeys.SimpleConfigStructuresKey, new ConfigItem(ConfigSimple.CONFIG_LEVEL_LOW));
+
 		return configSet;
 	}
 }
