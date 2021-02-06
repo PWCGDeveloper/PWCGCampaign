@@ -114,7 +114,7 @@ public class PlaneArchType
         }
         else if (archType.contains("lagg")) 
         {
-            archTypeDescription = "LaaG";
+            archTypeDescription = "LaGG";
         }
         else if (archType.contains("mc200")) 
         {
