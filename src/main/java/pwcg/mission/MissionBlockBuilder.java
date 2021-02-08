@@ -93,7 +93,8 @@ public class MissionBlockBuilder
         CoordinateBox missionBorders = mission.getMissionBorders().expandBox(keepGroupSpread);
 
         GroupManager groupData = PWCGContext.getInstance().getCurrentMap().getGroupManager();
-        for (Bridge bridge : groupData.getBridgeFinder().findAllBridges())
+        List<Bridge> allBridges = groupData.getBridgeFinder().findAllBridges();
+        for (Bridge bridge : allBridges)
         {
             if (missionBorders.isInBox(bridge.getPosition()))
             {

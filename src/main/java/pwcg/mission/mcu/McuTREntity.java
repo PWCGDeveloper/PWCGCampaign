@@ -86,18 +86,12 @@ public class McuTREntity extends BaseFlightMcu
             writer.newLine();
             writer.write("  MisObjID = " + misObjID + ";");
             writer.newLine();
-            writer.write("  OnMessages");
-            writer.newLine();
-            writer.write("  {");
-            writer.newLine();
-            for (int i = 0; i < onMessages.size(); ++i)
+            
+            if (onMessages.size() > 0)
             {
-                McuMessage message = onMessages.get(i);
-                message.write(writer);
+                writeOnMessages(writer);
             }
-            writer.write("  }");
-            writer.newLine();
-    
+
             if (eventList.size() > 0)
             {
                 writer.write("  OnEvents");
@@ -132,6 +126,21 @@ public class McuTREntity extends BaseFlightMcu
             PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
+    }
+
+    private void writeOnMessages(BufferedWriter writer) throws IOException, PWCGIOException
+    {
+        writer.write("  OnMessages");
+        writer.newLine();
+        writer.write("  {");
+        writer.newLine();
+        for (int i = 0; i < onMessages.size(); ++i)
+        {
+            McuMessage message = onMessages.get(i);
+            message.write(writer);
+        }
+        writer.write("  }");
+        writer.newLine();
     }
 
     public String toString()

@@ -42,7 +42,6 @@ public class Block extends FixedPosition
     		
     		if (entity != null)
     		{
-    		    System.out.println(this.getModel());
                 entity.write(writer);
     		}
         }
@@ -59,23 +58,7 @@ public class Block extends FixedPosition
         if (country == Country.NEUTRAL)
         {
             return false;
-        }
-        
-        if (PwcgBuildingIdentifier.identifyBuilding(this.getModel()) == PwcgStructure.BRIDGE)
-        {
-            return false;
-        }
-        
-        if (PwcgBuildingIdentifier.identifyBuilding(this.getModel()) == PwcgStructure.DEPOT)
-        {
-            return false;
-        }
-        
-        if (PwcgBuildingIdentifier.identifyBuilding(this.getModel()) == PwcgStructure.FUEL)
-        {
-            return false;
-        }
-        
+        }        
         if (this instanceof BoSStaticPlane)
         {
             return true;

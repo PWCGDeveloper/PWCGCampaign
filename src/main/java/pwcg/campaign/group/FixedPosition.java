@@ -18,6 +18,8 @@ import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Orientation;
 import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.mission.ground.building.PwcgBuildingIdentifier;
+import pwcg.mission.ground.building.PwcgStructure;
 import pwcg.mission.mcu.McuTREntity;
 
 public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosition
@@ -107,6 +109,20 @@ public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosi
         entity.setPosition(position.copy());
         entity.setOrientation(orientation.copy());
         entity.setEnabled(1);
+        
+        setEntityName();
+    }
+
+    private void setEntityName()
+    {
+        if (PwcgBuildingIdentifier.identifyBuilding(model) == PwcgStructure.BRIDGE)
+        {
+            entity.setName("Bridge entity");
+        }
+        else
+        {
+            entity.setName("Block entity");
+        }
     }
 
     private void writeDamaged(BufferedWriter writer) throws IOException
