@@ -2,6 +2,12 @@
 ​At the PWCG web site
 
 PWCG 11.10.1
+Rewrite of airfield item placement
+- Fix missing AA
+- Reduce number of static planes to sane number
+- Reduce number of static vehicles to sane number
+Fixed zero altitude waypoint on some player missions
+Fixed zero altitude waypoint on some scramble opposition missions.
 Fixed typo: LaaG should be LaGG
 Fixed script entry for Kuban bridges
 Fixed invalid small warehouse entry on Kuban map

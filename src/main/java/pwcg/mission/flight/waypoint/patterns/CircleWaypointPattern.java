@@ -36,18 +36,19 @@ public class CircleWaypointPattern
         this.legsInCircle = legsInCircle;
 	}
 
-    public List<McuWaypoint> generateCircleWPs(Coordinate circleCenter, double entryOrientation, double entryAlt, double endAlt, double legDistance) throws PWCGException
+    public List<McuWaypoint> generateCircleWPs(Coordinate circleCenter, double entryAngle, double entryAlt, double endAlt, double legDistance) throws PWCGException
     {
         double deltaAlt = (endAlt - entryAlt) / legsInCircle;                        
-        startGenerateCircleWP(circleCenter, entryAlt, endAlt, deltaAlt, legDistance);
+        startGenerateCircleWP(circleCenter, entryAngle, entryAlt, endAlt, deltaAlt, legDistance);
         return circleWPs;
     }
 
-    private void startGenerateCircleWP(Coordinate circleCenter, double entryAngle, double endAlt, double deltaAlt, double legDistance) throws PWCGException
+    private void startGenerateCircleWP(Coordinate circleCenter, double entryAngle, double entryAlt, double endAlt, double deltaAlt, double legDistance) throws PWCGException
     {
         McuWaypoint firstCircleWP = createCircleWaypoint();
         
         Coordinate circleCoords = MathUtils.calcNextCoord(circleCenter, entryAngle, legDistance);
+        circleCoords.setYPos(entryAlt);
         firstCircleWP.setPosition(circleCoords);
 
         double circleLegAngle = (360.0 / legsInCircle);
@@ -73,6 +74,7 @@ public class CircleWaypointPattern
         Coordinate circleCoords = MathUtils.calcNextCoord(lastWP.getPosition().copy(), circleWPOrientationAngle, legDistance);
         
         circleCoords.setYPos(lastWP.getPosition().getYPos() + deltaAlt);
+
         nextCircleWP.setPosition(circleCoords);
                 
         circleWPs.add(nextCircleWP);
