@@ -4,39 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.api.IStaticPlane;
-import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.org.GroundUnitCollection;
-import pwcg.mission.ground.org.GroundUnitCollectionData;
-import pwcg.mission.ground.org.GroundUnitCollectionType;
-import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.vehicle.IVehicle;
-import pwcg.mission.mcu.Coalition;
-import pwcg.mission.target.TargetType;
 
 public class AirfieldObjects
 {
-    private List<IVehicle> airfieldObjects = new ArrayList<IVehicle>();
+    private List<IVehicle> staticTrucks = new ArrayList<IVehicle>();
     private List<IStaticPlane> staticPlanes = new ArrayList<IStaticPlane>();
-    private GroundUnitCollection vehiclesForAirfield = new GroundUnitCollection(null, null);
-    private List<GroundUnitCollection> airfieldApproachAA = new ArrayList<>();
+    private List<GroundUnitCollection> airfieldVehicles = new ArrayList<>();
+    private List<GroundUnitCollection> airfieldAAA = new ArrayList<>();
 
-    public AirfieldObjects(Side airfieldSide)
+    public List<IVehicle> getStaticTrucks()
     {
-        GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION,
-                "Airfield vehicles", TargetType.TARGET_TRANSPORT, Coalition.getCoalitionsForSide(airfieldSide.getOppositeSide()));
-        vehiclesForAirfield = new GroundUnitCollection("Airfield vehicles", groundUnitCollectionData);
-    }
-
-    public List<IVehicle> getAirfieldObjects()
-    {
-        return airfieldObjects;
+        return staticTrucks;
     }
 
     public void addAirfieldObject(IVehicle airfieldObject)
     {
-        this.airfieldObjects.add(airfieldObject);
+        this.staticTrucks.add(airfieldObject);
     }
 
     public List<IStaticPlane> getStaticPlanes()
@@ -49,46 +36,55 @@ public class AirfieldObjects
         this.staticPlanes.add(staticPlane);
     }
 
-    public GroundUnitCollection getVehiclesForAirfield()
+    public List<GroundUnitCollection> getAirfieldVehicles()
     {
-        return vehiclesForAirfield;
+        return airfieldVehicles;
     }
 
-    public void addVehiclesForAirfield(GroundUnitCollection aaaMg)
+    public void addAirfieldVehicle(GroundUnitCollection vehicle)
     {
-        vehiclesForAirfield.merge(aaaMg);
+        airfieldVehicles.add(vehicle);
     }
 
-    public void addVehiclesForAirfield(IGroundUnit airfieldGroup)
+    public List<GroundUnitCollection> getAirfieldAAA()
     {
-        vehiclesForAirfield.addGroundUnit(airfieldGroup);
+        return airfieldAAA;
+    }
+
+    public void addAirfieldAAA(GroundUnitCollection aaaMg)
+    {
+        airfieldAAA.add(aaaMg);
     }
 
     public void finish(Mission mission) throws PWCGException
     {
-        vehiclesForAirfield.finishGroundUnitCollection();
-        vehiclesForAirfield.triggerGroundUnitCollection(mission);
+        for (GroundUnitCollection airfieldAAGun : airfieldAAA)
+        {
+            airfieldAAGun.finishGroundUnitCollection();
+            airfieldAAGun.triggerGroundUnitCollection(mission);
+        }
+
+        for (GroundUnitCollection airfieldVehicle : airfieldVehicles)
+        {
+            airfieldVehicle.finishGroundUnitCollection();
+            airfieldVehicle.triggerGroundUnitCollection(mission);
+        }
     }
 
     public int getUnitCount()
     {
-        int airfieldUnitCount = vehiclesForAirfield.getUnitCount();
+        int airfieldUnitCount = 0;
 
-        for (GroundUnitCollection airfieldApproachAAGun : airfieldApproachAA)
+        for (GroundUnitCollection airfieldAAGun : airfieldAAA)
         {
-            airfieldUnitCount += airfieldApproachAAGun.getUnitCount();
+            airfieldUnitCount += airfieldAAGun.getUnitCount();
+        }
+
+        for (GroundUnitCollection airfieldVehicle : airfieldVehicles)
+        {
+            airfieldUnitCount += airfieldVehicle.getUnitCount();
         }
 
         return airfieldUnitCount;
-    }
-
-    public List<GroundUnitCollection> getAirfieldApproachAA()
-    {
-        return airfieldApproachAA;
-    }
-
-    public void setAirfieldApproachAA(List<GroundUnitCollection> airfieldApproachAA)
-    {
-        this.airfieldApproachAA = airfieldApproachAA;
     }
 }

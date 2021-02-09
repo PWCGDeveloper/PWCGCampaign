@@ -34,7 +34,7 @@ public class AirfieldObjectPlacer
         this.mission = mission;
         this.campaign = mission.getCampaign();
         this.airfield = airfield;
-        this.airfieldObjects = new AirfieldObjects(airfield.getCountry(campaign.getDate()).getSide());
+        this.airfieldObjects = new AirfieldObjects();
     }
 
     public AirfieldObjects createAirfieldObjects() throws PWCGException 
@@ -87,7 +87,7 @@ public class AirfieldObjectPlacer
         {
             SearchLightBuilder groundUnitFactory =  new SearchLightBuilder(campaign);
             GroundUnitCollection searchLightGroup = groundUnitFactory.createOneSearchLight(airfieldCountry, hotSpot.getPosition());
-            airfieldObjects.addVehiclesForAirfield(searchLightGroup);
+            airfieldObjects.addAirfieldVehicle(searchLightGroup);
         }
     }
 
@@ -112,7 +112,7 @@ public class AirfieldObjectPlacer
 
             if (aaaUnit != null)
             {
-                airfieldObjects.addVehiclesForAirfield(aaaUnit);
+                airfieldObjects.addAirfieldAAA(aaaUnit);
             }
         }
     }
@@ -139,6 +139,9 @@ public class AirfieldObjectPlacer
     {
         AirfieldApproachAABuilder airfieldApproachAABuilder = new AirfieldApproachAABuilder(mission, airfield);
         List<GroundUnitCollection> airfieldApproachAA = airfieldApproachAABuilder.addAirfieldApproachAA();
-        airfieldObjects.setAirfieldApproachAA(airfieldApproachAA);;
+        for (GroundUnitCollection aaaUnit : airfieldApproachAA)
+        {
+            airfieldObjects.addAirfieldAAA(aaaUnit);
+        }
     }
 }

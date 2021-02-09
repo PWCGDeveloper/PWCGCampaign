@@ -55,14 +55,14 @@ public class Airfield extends FixedPosition implements Cloneable
     {
         if (airfieldObjects != null)
         {
-            if (airfieldObjects.getVehiclesForAirfield().getGroundUnits().size() > 0)
+            for (GroundUnitCollection airfieldVehicle : airfieldObjects.getAirfieldVehicles())
             {
-                airfieldObjects.getVehiclesForAirfield().write(writer);
+                airfieldVehicle.write(writer);
             }
 
-            for (IVehicle airfieldObject : airfieldObjects.getAirfieldObjects())
+            for (GroundUnitCollection airfieldAAA : airfieldObjects.getAirfieldAAA())
             {
-                airfieldObject.write(writer);
+                airfieldAAA.write(writer);
             }
 
             for (IStaticPlane staticPlane : airfieldObjects.getStaticPlanes())
@@ -70,9 +70,9 @@ public class Airfield extends FixedPosition implements Cloneable
                 staticPlane.write(writer);
             }
 
-            for (GroundUnitCollection airfieldApproachAAGun : airfieldObjects.getAirfieldApproachAA())
+            for (IVehicle airfieldObject : airfieldObjects.getStaticTrucks())
             {
-                airfieldApproachAAGun.write(writer);
+                airfieldObject.write(writer);
             }
         }
     }
