@@ -3,6 +3,8 @@
 
 PWCG 11.10.1
 Fixed typo: LaaG should be LaGG
+Fixed script entry for Kuban bridges
+Fixed invalid small warehouse entry on Kuban map
 
 PWCG 11.10.0
 Improve flights targeting other flights

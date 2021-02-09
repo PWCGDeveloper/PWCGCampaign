@@ -30,7 +30,7 @@ public class MissionAirfieldBuilder
         TreeMap<String, Airfield> selectedFields = selectAirfieldsWithinMissionBoundaries(missionBorders);
         fieldSet = new ArrayList<>(selectedFields.values());
     }
-    
+
     public List<Airfield> getFieldsForPatrol() throws PWCGException 
     {
         return fieldSet;

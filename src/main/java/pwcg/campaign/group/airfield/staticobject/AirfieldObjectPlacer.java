@@ -4,17 +4,16 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.api.IHotSpotTranslator;
 import pwcg.campaign.api.IStaticPlane;
 import pwcg.campaign.factory.AirfieldObjectSelectorFactory;
 import pwcg.campaign.factory.HotSpotTranslatorFactory;
 import pwcg.campaign.group.airfield.Airfield;
+import pwcg.campaign.group.airfield.hotspot.AirfieldHotSpotTranslator;
 import pwcg.campaign.group.airfield.hotspot.HotSpot;
 import pwcg.campaign.group.airfield.hotspot.HotSpotType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.builder.AAAUnitBuilder;
 import pwcg.mission.ground.builder.SearchLightBuilder;
@@ -38,7 +37,15 @@ public class AirfieldObjectPlacer
         this.airfieldObjects = new AirfieldObjects(airfield.getCountry(campaign.getDate()).getSide());
     }
 
-    public AirfieldObjects createAirfieldObjectsWithEmptySpace() throws PWCGException 
+    public AirfieldObjects createAirfieldObjects() throws PWCGException 
+    {
+        createApproachAA();
+        createHotSpotObjects();
+        airfieldObjects.finish(mission);
+        return airfieldObjects;
+    }
+
+    public AirfieldObjects createFlightSpecificAirfieldObjects() throws PWCGException 
     {
         createApproachAA();
         createHotSpotObjects();
@@ -48,9 +55,9 @@ public class AirfieldObjectPlacer
 
     private void createHotSpotObjects() throws PWCGException
     {
-        IHotSpotTranslator hotSpotTranslator = HotSpotTranslatorFactory.createHotSpotTranslatorFactory(mission, airfield);
+        AirfieldHotSpotTranslator hotSpotTranslator = HotSpotTranslatorFactory.createHotSpotTranslatorFactory(mission, airfield);
         
-        List<HotSpot> hotSpots = hotSpotTranslator.getHotSpots(airfield, campaign.getDate());
+        List<HotSpot> hotSpots = hotSpotTranslator.getHotSpots();
         
         for (HotSpot hotSpot : hotSpots)
         {       
@@ -91,21 +98,21 @@ public class AirfieldObjectPlacer
             TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, hotSpot.getPosition(), airfield.getCountry(campaign.getDate()));
             AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
 
-            GroundUnitCollection aaaMg;
+            GroundUnitCollection aaaUnit;
 
             int roll = RandomNumberGenerator.getRandom(100);
             if (roll < 80)
             {
-                aaaMg = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
+                aaaUnit = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
             }
             else
             {
-                aaaMg = groundUnitFactory.createAAAMGBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
+                aaaUnit = groundUnitFactory.createAAAMGBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
             }
 
-            if (aaaMg != null)
+            if (aaaUnit != null)
             {
-                airfieldObjects.addVehiclesForAirfield(aaaMg);
+                airfieldObjects.addVehiclesForAirfield(aaaUnit);
             }
         }
     }
@@ -130,12 +137,8 @@ public class AirfieldObjectPlacer
 
     private void createApproachAA() throws PWCGException
     {
-        IFlight airfieldFlight = mission.getMissionFlightBuilder().getFlightForAirfield(airfield);
-        if (airfieldFlight != null)
-        {
-            AirfieldApproachAABuilder airfieldApproachAABuilder = new AirfieldApproachAABuilder();
-            List<GroundUnitCollection> airfieldApproachAA = airfieldApproachAABuilder.addAirfieldApproachAA(airfieldFlight);
-            airfieldObjects.setAirfieldApproachAA(airfieldApproachAA);;
-        }
+        AirfieldApproachAABuilder airfieldApproachAABuilder = new AirfieldApproachAABuilder(mission, airfield);
+        List<GroundUnitCollection> airfieldApproachAA = airfieldApproachAABuilder.addAirfieldApproachAA();
+        airfieldObjects.setAirfieldApproachAA(airfieldApproachAA);;
     }
 }

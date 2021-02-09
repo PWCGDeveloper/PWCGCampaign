@@ -10,7 +10,6 @@ public class RunwayChooser
 {
     private Mission mission;
     private Runway bestRunway = null;
-    private boolean invertRunway = false;
 
     public RunwayChooser(Mission mission)
     {
@@ -26,17 +25,14 @@ public class RunwayChooser
 
         for (Runway runway : runways) {
             double offset = MathUtils.calcNumberOfDegrees(windDirection, runway.getHeading());
-            boolean invert = false;
 
             if (offset > 90.0) {
                 offset = 180 - offset;
-                invert = true;
             }
 
             if (offset < bestOffset) {
                 bestOffset = offset;
                 bestRunway = runway;
-                invertRunway = invert;
             }
         }
     }
@@ -44,20 +40,5 @@ public class RunwayChooser
     public Runway getBestRunway()
     {
         return bestRunway;
-    }
-
-    public void setBestRunway(Runway bestRunway)
-    {
-        this.bestRunway = bestRunway;
-    }
-
-    public boolean isInvertRunway()
-    {
-        return invertRunway;
-    }
-
-    public void setInvertRunway(boolean invertRunway)
-    {
-        this.invertRunway = invertRunway;
     }
 }

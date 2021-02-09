@@ -3,91 +3,79 @@ package pwcg.campaign.group.airfield.staticobject;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
+import pwcg.campaign.context.Country;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.waypoint.WaypointAction;
-import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
+import pwcg.mission.Mission;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.builder.AAAUnitBuilder;
-import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.GroundUnitCollection;
+import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
 
 public class AirfieldApproachAABuilder
 {
     private List<GroundUnitCollection> airfieldApproachAA = new ArrayList<>();
-
-    public List<GroundUnitCollection> addAirfieldApproachAA(IFlight flight) throws PWCGException
+    private Campaign campaign;
+    private Mission mission;
+    private Airfield airfield;
+    
+    public AirfieldApproachAABuilder (Mission mission, Airfield airfield)
     {
-        MissionPoint approachPositionMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_LANDING_APPROACH);
-        MissionPoint landingPositionMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_LANDING);
-        
-        if (approachPositionMissionPoint == null || landingPositionMissionPoint == null)
+        this.campaign = mission.getCampaign();
+        this.mission = mission;
+        this.airfield = airfield;
+    }
+    
+    public List<GroundUnitCollection> addAirfieldApproachAA() throws PWCGException
+    {
+        if (airfield.createCountry(campaign.getDate()).getCountry() == Country.NEUTRAL)
         {
             return airfieldApproachAA;
         }
         
-        Coordinate approachPosition = approachPositionMissionPoint.getPosition().copy();
-        Coordinate landingPosition = landingPositionMissionPoint.getPosition().copy();
-        double angleOut = MathUtils.calcAngle(landingPosition, approachPosition);
+        PWCGLocation landingPosition = airfield.getLandingLocation(mission);
+        double aaProgressionAngle = airfield.getTakeoffLocation(mission).getOrientation().getyOri();
+        Coordinate aaStartPosition = MathUtils.calcNextCoord(landingPosition.getPosition(), aaProgressionAngle, 500.0);
         
-        double angleLeft = MathUtils.adjustAngle(angleOut, 270);
-        double angleRight = MathUtils.adjustAngle(angleOut, 90);
-        Coordinate firstAAPoint = MathUtils.calcNextCoord(landingPosition, angleOut, 500);
-        
-        List<Coordinate> aaCoordinates = buildAirfieldAAPositions(flight, angleOut, angleLeft, angleRight, firstAAPoint);
-        buildFlightPathAA(flight, aaCoordinates);
+        List<Coordinate> aaCoordinates = buildAirfieldAAPositions(aaProgressionAngle, aaProgressionAngle, aaStartPosition);
+        buildFlightPathAA(aaCoordinates);
 
         return airfieldApproachAA;
     }
 
-    private List<Coordinate> buildAirfieldAAPositions(IFlight flight, double angleOut, double angleLeft, double angleRight, Coordinate firstAAPoint) throws PWCGException
+    private List<Coordinate> buildAirfieldAAPositions(double angleOut, double aaProgressionAngle, Coordinate aaStartPosition) throws PWCGException
     {
+        double angleLeft = MathUtils.adjustAngle(aaProgressionAngle, 270);
+        double angleRight = MathUtils.adjustAngle(aaProgressionAngle, 90);
+
         List<Coordinate> aaCoordinates = new ArrayList<>();
-        if (shouldCreateApproachAA(flight))
+        int numPairs = getNumAAGunPairs();
+        for (int i = 0; i < numPairs; ++i)
         {
-            int numPairs = getNumAAGunPairs(flight);
-            for (int i = 0; i < numPairs; ++i)
-            {
-                Coordinate aaCenterCoordinate = MathUtils.calcNextCoord(firstAAPoint, angleOut, (i * 1000));
-                Coordinate leftAAPoint = MathUtils.calcNextCoord(aaCenterCoordinate, angleLeft, 500);
-                Coordinate rightAAPoint = MathUtils.calcNextCoord(aaCenterCoordinate, angleRight, 500);
-                
-                aaCoordinates.add(leftAAPoint);
-                aaCoordinates.add(rightAAPoint);
-            }
+            Coordinate aaCenterCoordinate = MathUtils.calcNextCoord(aaStartPosition, angleOut, (i * 1000));
+            Coordinate leftAAPoint = MathUtils.calcNextCoord(aaCenterCoordinate, angleLeft, 500);
+            Coordinate rightAAPoint = MathUtils.calcNextCoord(aaCenterCoordinate, angleRight, 500);
+            
+            aaCoordinates.add(leftAAPoint);
+            aaCoordinates.add(rightAAPoint);
         }
         return aaCoordinates;
     }
 
-    private boolean shouldCreateApproachAA(IFlight flight) throws PWCGException
-    {
-        if (flight.isPlayerFlight())
-        {
-            return true;
-        }
-        
-        ConfigManagerCampaign configManager = flight.getCampaign().getCampaignConfigManager();
-        String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigAAKey);
-        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
-        {
-            return true;
-        }
-        
-        return false;
-    }
-
-    private int getNumAAGunPairs(IFlight flight) throws PWCGException
+    private int getNumAAGunPairs() throws PWCGException
     {
         int numAAGunPairs = 2;
-        ConfigManagerCampaign configManager = flight.getCampaign().getCampaignConfigManager();
+        ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
         String currentAASetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigAAKey);
         if (currentAASetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
@@ -104,12 +92,12 @@ public class AirfieldApproachAABuilder
         return numAAGunPairs;
     }
 
-    private void buildFlightPathAA(IFlight flight, List<Coordinate> aaCoordinates) throws PWCGException
+    private void buildFlightPathAA(List<Coordinate> aaCoordinates) throws PWCGException
     {
         for (Coordinate aaPoint : aaCoordinates)
         {            
-            TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, aaPoint, flight.getSquadron().getCountry());
-            AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(flight.getCampaign(), targetDefinition);
+            TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, aaPoint, airfield.createCountry(campaign.getDate()));
+            AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
 
             GroundUnitCollection aaa = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
             if (aaa != null)

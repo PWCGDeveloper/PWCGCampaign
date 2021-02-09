@@ -11,9 +11,6 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.campaign.group.GroupManager;
-import pwcg.campaign.group.airfield.hotspot.AirfieldHotSpotDefinition;
-import pwcg.campaign.group.airfield.hotspot.HotSpot;
-import pwcg.campaign.group.airfield.hotspot.HotSpotManager;
 import pwcg.campaign.group.airfield.staticobject.AirfieldObjectPlacer;
 import pwcg.campaign.group.airfield.staticobject.AirfieldObjects;
 import pwcg.campaign.squadron.Squadron;
@@ -133,18 +130,12 @@ public class Airfield extends FixedPosition implements Cloneable
         }
     }
 
-    public double getPlaneOrientation()
-    {
-        return orientation.getyOri();
-    }
-
     public void addAirfieldObjects(Mission mission) throws PWCGException
     {
         if (!(createCountry(mission.getCampaign().getDate()).isNeutral()))
         {
             AirfieldObjectPlacer airfieldObjectPlacer = new AirfieldObjectPlacer(mission, this);
-            airfieldObjects = airfieldObjectPlacer.createAirfieldObjectsWithEmptySpace();
-            
+            airfieldObjects = airfieldObjectPlacer.createAirfieldObjects();
         }
     }
 
@@ -383,26 +374,6 @@ public class Airfield extends FixedPosition implements Cloneable
         return super.getCountry(date);
     }
 
-    public List<HotSpot> getNearbyHotSpots() throws PWCGException
-    {
-        List<HotSpot> nearbyAirfieldHotSpots = new ArrayList<HotSpot>();
-
-        GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();
-
-        List<Block>nearbyBlocks = groupManager.getBlockFinder().getBlocksWithinRadius(getPosition().copy(), 3000.0);
-        for (Block block : nearbyBlocks)
-        {
-            List<AirfieldHotSpotDefinition> boSHotSpotDefinitions =  HotSpotManager.getInstance().getAirfieldHotSpots(block.getModel());
-            for (AirfieldHotSpotDefinition boSHotSpotDefinition : boSHotSpotDefinitions)
-            {
-                HotSpot hotSpot = boSHotSpotDefinition.convert(block.getPosition(), block.getOrientation());
-                nearbyAirfieldHotSpots.add(hotSpot);
-            }
-        }
-
-        return nearbyAirfieldHotSpots;
-    }
-
     public List<Coordinate> getBoundary() throws PWCGException
     {
         List<Coordinate> points = new ArrayList<>();
@@ -432,11 +403,6 @@ public class Airfield extends FixedPosition implements Cloneable
             
             points.add(runway.getStartPos());
             points.add(runway.getEndPos());
-        }
-
-        for (HotSpot hotspot : getNearbyHotSpots())
-        {
-            points.add(hotspot.getPosition());
         }
 
         GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();

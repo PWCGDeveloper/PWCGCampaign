@@ -1,9 +1,9 @@
 package pwcg.campaign.group.airfield.hotspot;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-import pwcg.campaign.api.IHotSpotTranslator;
 import pwcg.campaign.group.EmptySpaceFinder;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.config.ConfigItemKeys;
@@ -16,12 +16,14 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 
-public class AirfieldHotSpotTranslator implements IHotSpotTranslator
+public class AirfieldHotSpotTranslator
 {
     private static double SPOT_DENSITY = 20;
 
     private Mission mission;
     private Airfield airfield;
+    private List<HotSpot> hotSpots = new ArrayList<>();
+    int nextHotSpot = 0;
 
     public AirfieldHotSpotTranslator(Mission mission, Airfield airfield)
     {
@@ -29,74 +31,77 @@ public class AirfieldHotSpotTranslator implements IHotSpotTranslator
         this.airfield = airfield;
     }
 
-    public List<HotSpot> getHotSpots(Airfield airfield, Date date) throws PWCGException
+    public List<HotSpot> getHotSpots() throws PWCGException
     {
-        List<HotSpot> hotSpots = classifyAirfieldHotspots(airfield, date);
-        hotSpots.addAll(classifyRandomHotspots(airfield));
-        return hotSpots;
+       hotSpots = selectHotSpotsFromEmptySpace();
+       Collections.shuffle(hotSpots);
+       
+       classifyAirfieldHotspots();
+       if (hotSpots.size() > 30)
+       {
+           hotSpots = hotSpots.subList(0, 30);
+       }
+       return hotSpots;
     }
 
-    private List<HotSpot> classifyAirfieldHotspots(Airfield airfield, Date date) throws PWCGException
+    private List<HotSpot> selectHotSpotsFromEmptySpace() throws PWCGException
     {
-        List<HotSpot> hotSpots = airfield.getNearbyHotSpots();
+        EmptySpaceFinder emptySpaceFinder = new EmptySpaceFinder(mission);
+        List<Coordinate> boundary = airfield.getBoundary();
+        int targetNumber = (int) (Math.sqrt(MathUtils.polygonArea(boundary)) / SPOT_DENSITY);
+        return emptySpaceFinder.findEmptySpaces(boundary, targetNumber);
+    }
 
-        for (HotSpot hotSpot : hotSpots)
+    private void classifyAirfieldHotspots() throws PWCGException
+    {
+        int numSearchLightHotSpots = determineNumSearchLightHotSpots();
+        for (int i = 0; i < numSearchLightHotSpots; ++i)
         {
-            int roll = RandomNumberGenerator.getRandom(100);
-            if (roll < 90)
-            {
-                hotSpot.setHotSpotType(HotSpotType.HOTSPOT_PLANE);
-            }
-            else
-            {
-                hotSpot.setHotSpotType(HotSpotType.HOTSPOT_ITEM);
-            }
+            classifyHotSpot(HotSpotType.HOTSPOT_SEARCHLIGHT);
         }
-        return hotSpots;
-    }
 
-    private List<HotSpot> classifyRandomHotspots(Airfield airfield) throws PWCGException
-    {
-        List<HotSpot> hotSpots = selectHotSpotsFromEmptySpace(airfield);
-
-        int numAAAHotSpots = determineNumAAAHotSpots(hotSpots.size());
+        int numAAAHotSpots = determineNumAAAHotSpots();
         for (int i = 0; i < numAAAHotSpots && i < hotSpots.size(); ++i)
         {
-            hotSpots.get(i).setHotSpotType(HotSpotType.HOTSPOT_AAA);
+            classifyHotSpot(HotSpotType.HOTSPOT_AAA);
         }
 
-        int numSearchLightHotSpots = determineNumSearchLightHotSpots(hotSpots.size(), numAAAHotSpots);
-        for (int i = numAAAHotSpots; i < numSearchLightHotSpots + numAAAHotSpots && i < hotSpots.size(); ++i)
-        {
-            hotSpots.get(i).setHotSpotType(HotSpotType.HOTSPOT_SEARCHLIGHT);
-        }
-
-        for (int i = numAAAHotSpots + numSearchLightHotSpots; i < hotSpots.size(); ++i)
+        int maxStaticPlanes = determineNumStaticAirplanes();
+        int numStaticPlanesAdded = 0;
+        for (int i = 0; i < hotSpots.size(); ++i)
         {
             int roll = RandomNumberGenerator.getRandom(100);
-            if (roll < 50)
+            if (roll < 40 && numStaticPlanesAdded < maxStaticPlanes)
             {
-                hotSpots.get(i).setHotSpotType(HotSpotType.HOTSPOT_PLANE);
+                classifyHotSpot(HotSpotType.HOTSPOT_PLANE);
+                ++numStaticPlanesAdded;
             }
             else
             {
-                hotSpots.get(i).setHotSpotType(HotSpotType.HOTSPOT_ITEM);
+                classifyHotSpot(HotSpotType.HOTSPOT_ITEM);
             }
         }
-        return hotSpots;
+    }
+    
+    private void classifyHotSpot(HotSpotType hotSpotType)
+    {
+        if (nextHotSpot < hotSpots.size())
+        {
+            hotSpots.get(nextHotSpot).setHotSpotType(hotSpotType);
+            ++nextHotSpot;
+        }
     }
 
-    private int determineNumSearchLightHotSpots(int numHotSpots, int numAAAHotSpots)
+    private int determineNumSearchLightHotSpots()
     {
-        int numLights = 0;
         if (mission.isNightMission())
         {
-            numLights = Math.max(numLights, 2);
+            return 2;
         }
-        return numLights;
+        return 0;
     }
 
-    private int determineNumAAAHotSpots(int numHotSpots) throws PWCGException
+    private int determineNumAAAHotSpots() throws PWCGException
     {
         int numAAHotSpots = 4;
 
@@ -133,12 +138,8 @@ public class AirfieldHotSpotTranslator implements IHotSpotTranslator
         return numAAHotSpots;
     }
 
-    private List<HotSpot> selectHotSpotsFromEmptySpace(Airfield airfield) throws PWCGException
+    private int determineNumStaticAirplanes()
     {
-        EmptySpaceFinder emptySpaceFinder = new EmptySpaceFinder(mission);
-        List<Coordinate> boundary = airfield.getBoundary();
-        int targetNumber = (int) (Math.sqrt(MathUtils.polygonArea(boundary)) / SPOT_DENSITY);
-        return emptySpaceFinder.findEmptySpaces(boundary, targetNumber);
-
+        return 9;
     }
 }
