@@ -89,6 +89,10 @@ public class BoSCountry extends CountryBase implements Cloneable, ICountry
         {
             country = new BoSCountry(Country.BRITAIN);
         }       
+        else if (service.getServiceId() == BoSServiceManager.RCAF)
+        {
+            country = new BoSCountry(Country.BRITAIN);
+        }       
 
 		return country;
 	}

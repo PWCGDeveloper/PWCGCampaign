@@ -14,6 +14,7 @@ import pwcg.core.utils.PWCGLogger;
 public abstract class CountryBase
 {
     public static String sNEUTRAL = "Neutral";
+    public static String sCANADA = "Canada";
     public static String sFRANCE = "France";
     public static String sBELGIUM = "Belgium";
     public static String sUSA = "USA";
@@ -23,6 +24,7 @@ public abstract class CountryBase
     public static String sAUSTRIA = "Austria";
     public static String sITALY = "Italy";
 
+    public static String sCANADIAN = "Canadian";
     public static String sFRENCH = "French";
     public static String sBELGIAN = "Belgian";
     public static String sAMERICAN = "American";
@@ -48,6 +50,10 @@ public abstract class CountryBase
         if (country == Country.FRANCE)
         {
             countryName = sFRANCE;
+        }
+        else if (country == Country.CANADA)
+        {
+            countryName = sCANADA;
         }
         else if (country == Country.BELGIUM)
         {
@@ -88,6 +94,10 @@ public abstract class CountryBase
         if (country == Country.FRANCE)
         {
             nationality = sFRENCH;
+        }
+        else if (country == Country.CANADA)
+        {
+            nationality = sCANADIAN;
         }
         else if (country == Country.BELGIUM)
         {

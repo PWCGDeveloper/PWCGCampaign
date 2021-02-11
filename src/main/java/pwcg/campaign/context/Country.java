@@ -5,6 +5,7 @@ public enum Country
     NEUTRAL,
     FRANCE,
     BRITAIN,
+    CANADA,
     USA,
     RUSSIA,
     BELGIUM,

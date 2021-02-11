@@ -1,8 +1,8 @@
 {
   "country": "BRITAIN",
-  "squadronId": 103084066,
-  "name": "66 Squadron",
-  "fileName": "66 Squadron.json",
+  "squadronId": 103084403,
+  "name": "403 Squadron",
+  "fileName": "403 Squadron.json",
   "skill": 75,
   "planeAssignments": [
     {
@@ -13,32 +13,32 @@
   ],
   "airfields": {
     "19440901": "Deurne",
-    "19441001": "Eindhoven",
+    "19441001": "Gilze-Rijen",
     "19441101": "Volkel",
-    "19441220": "GraveKeent",
+    "19441220": "Mill",
     "19441225": "Schijndel",
-    "19441229": "Volkel",
+    "19441229": "Rips",
     "19450207": "Heesch",
-    "19450310": "Volkel",
+    "19450310": "Schijndel",
     "19450404": "Kirchhellen"
   },
   "skins": [
 		{
-			"skinName": "No66",
+			"skinName": "No403",
 			"planeType": "spitfiremkvb",
 			"startDate": "19440101",
-			"endDate": "19450601",
-			"squadId": 103084066,
+			"endDate": "19441001",
+			"squadId": 103084403,
 			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false
 		},
 		{
-			"skinName": "No66",
+			"skinName": "No403",
 			"planeType": "spitfiremkixe",
 			"startDate": "19440601",
 			"endDate": "19450601",
-			"squadId": 103084066,
+			"squadId": 103084403,
 			"country": "Britain",
 			"category": "Squadron",
 			"definedInGame": false
@@ -47,7 +47,7 @@
   "squadHistory": {
     "squadHistoryEntries": []
   },
-  "serviceId": 10103,
+  "serviceId": 10106,
   "squadronRoles": {
     "squadronRolePeriods": [
       {
@@ -81,6 +81,6 @@
   },
   "conversionPeriods": [],
   "callsigns": {
-    "19410801": "VICEROY"
+    "19410801": "BAFFIN"
   }
 }

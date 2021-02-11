@@ -51,6 +51,7 @@ public class BodenplatteMap extends PWCGMap
     {
         armedServicesActiveForMap.add(BoSServiceManager.USAAF);
         armedServicesActiveForMap.add(BoSServiceManager.RAF);
+        armedServicesActiveForMap.add(BoSServiceManager.RCAF);
         armedServicesActiveForMap.add(BoSServiceManager.FREE_FRENCH);
         armedServicesActiveForMap.add(BoSServiceManager.LUFTWAFFE);
     }

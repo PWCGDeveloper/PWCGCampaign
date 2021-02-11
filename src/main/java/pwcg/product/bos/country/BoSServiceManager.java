@@ -27,6 +27,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
     public static int RAF = 10103;
     public static int NORMANDIE = 10104;
     public static int FREE_FRENCH = 10105;
+    public static int RCAF = 10106;
     public static int LUFTWAFFE = 20101;
     public static int REGIA_AERONAUTICA = 20202;
         
@@ -35,6 +36,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
     private static String VVS_NAME ="Voyenno-Vozdushnye Sily";
     private static String USAAF_NAME ="United States Army Air Force";
     private static String RAF_NAME ="Royal Air Force";
+    private static String RCAF_NAME ="Royal Canadian Air Force";
     private static String NORMANDIE_NAME = "Normandie";
     private static String FREE_FRENCH_NAME ="Free French";
     
@@ -43,6 +45,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
     private static String VVS_ICON ="ServiceVVS";
     private static String USAAF_ICON ="ServiceUSAAF";
     private static String RAF_ICON ="ServiceRAF";
+    private static String RCAF_ICON ="ServiceRCAF";
     private static String NORMANDIE_ICON ="ServiceNormandie";
     private static String FREE_FRENCH_NAME_ICON ="ServiceFreeFrench";
     
@@ -242,6 +245,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
    
         createRAF(britishServices);
         createFreeFrench(britishServices);
+        createRCAF(britishServices);
     }
 
     private void createRAF(List<ArmedService> britishServices) throws PWCGException
@@ -302,6 +306,36 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         freeFrench.addServiceQuality(DateUtils.getDateYYYYMMDD("19450101"), 70);
         
         britishServices.add(freeFrench);
+    }
+
+    private void createRCAF(List<ArmedService> britishServices) throws PWCGException
+    {
+        ArmedService rcaf = new ArmedService();
+        rcaf.setServiceId(RCAF);
+        rcaf.setCountry(CountryFactory.makeCountryByCountry(Country.BRITAIN));
+        rcaf.setNameCountry(CountryFactory.makeCountryByCountry(Country.CANADA));
+        rcaf.setName(RCAF_NAME);
+        rcaf.setServiceIcon(RCAF_ICON);
+        rcaf.setEndDate(DateUtils.getEndOfWar());
+        rcaf.setServiceColorMap(new FrenchColorMap());
+        rcaf.setGeneralRankForService("Air Vice-Marshal");
+        rcaf.setStartDate(DateUtils.getDateYYYYMMDD("19440901"));
+        rcaf.setDailyPersonnelReplacementRatePerSquadron(2.2);
+        rcaf.setDailyEquipmentReplacementRatePerSquadron(3.0);
+
+        List<String> rafPics = new ArrayList<String>();
+        rafPics.add("British");
+        rcaf.setPicDirs(rafPics);
+        
+        rcaf.addServiceQuality(DateUtils.getDateYYYYMMDD("19390101"), 60);
+        rcaf.addServiceQuality(DateUtils.getDateYYYYMMDD("19400101"), 70);
+        rcaf.addServiceQuality(DateUtils.getDateYYYYMMDD("19410101"), 70);
+        rcaf.addServiceQuality(DateUtils.getDateYYYYMMDD("19420101"), 70);
+        rcaf.addServiceQuality(DateUtils.getDateYYYYMMDD("19430101"), 70);
+        rcaf.addServiceQuality(DateUtils.getDateYYYYMMDD("19440101"), 70);
+        rcaf.addServiceQuality(DateUtils.getDateYYYYMMDD("19450101"), 70);
+        
+        britishServices.add(rcaf);
     }
 
 	@Override

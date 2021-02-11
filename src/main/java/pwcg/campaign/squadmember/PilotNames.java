@@ -136,6 +136,18 @@ public class PilotNames
 			lastNameList = lastNamesFrance;
 		}
         
+        if (country.isCountry(Country.CANADA))
+        {
+            firstNameList = firstNamesBritain;
+            lastNameList = lastNamesBritain;
+            int odds = RandomNumberGenerator.getRandom(100);
+            if (odds < 10)
+            {
+                firstNameList = firstNamesFrance;
+                lastNameList = lastNamesFrance;
+            }
+        }
+
         if (country.isCountry(Country.BELGIUM))
         {
             firstNameList = firstNamesFrance;
