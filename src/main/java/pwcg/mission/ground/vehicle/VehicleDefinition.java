@@ -89,6 +89,11 @@ public class VehicleDefinition implements IVehicleDefinition, IWeight
             return false;
         }
 
+        if (requestDefinition.getVehicleClass().getName().contains("Drifter") && vehicleLength > 100)
+        {
+            return false;
+        }
+
         for (Country vehicleCountry : countries)
         {
             if (vehicleCountry == requestDefinition.getCountry())
