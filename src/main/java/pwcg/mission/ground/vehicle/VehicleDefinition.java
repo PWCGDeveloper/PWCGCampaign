@@ -76,6 +76,26 @@ public class VehicleDefinition implements IVehicleDefinition, IWeight
         return vehicleLength;
     }
 
+    public VehicleClass getVehicleClass()
+    {
+        return vehicleClass;
+    }
+
+    public List<Country> getCountries()
+    {
+        return countries;
+    }
+
+    public Date getStartDate()
+    {
+        return startDate;
+    }
+
+    public Date getEndDate()
+    {
+        return endDate;
+    }
+
     @Override
     public boolean shouldUse(VehicleRequestDefinition requestDefinition) throws PWCGException
     {
@@ -89,9 +109,12 @@ public class VehicleDefinition implements IVehicleDefinition, IWeight
             return false;
         }
 
-        if (requestDefinition.getVehicleClass().getName().contains("Drifter") && vehicleLength > 100)
+        if (requestDefinition.getVehicleClass() == VehicleClass.Drifter || requestDefinition.getVehicleClass() == VehicleClass.DrifterAAA)
         {
-            return false;
+            if (vehicleLength > 100)
+            {
+                return false;
+            }
         }
 
         for (Country vehicleCountry : countries)
