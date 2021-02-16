@@ -37,9 +37,9 @@ public class SmokeGroupTest
         smokeGroup.buildSmokeGroup(mission, smokeEffectPosition, SmokeEffect.SMOKE_VILLAGE);
         
         assert(smokeGroup.getSmokeEffects().size() == 3);
-        assert(smokeGroup.getSmokeEffects().get(0).getScript().contains("city_fire.txt"));
-        assert(smokeGroup.getSmokeEffects().get(1).getScript().contains("city_firesmall.txt"));
-        assert(smokeGroup.getSmokeEffects().get(2).getScript().contains("villagesmoke.txt"));
+        assert(smokeGroup.getSmokeEffects().get(0).getScript().contains("city_fire_loop.txt"));
+        assert(smokeGroup.getSmokeEffects().get(1).getScript().contains("city_firesmall_loop.txt"));
+        assert(smokeGroup.getSmokeEffects().get(2).getScript().contains("villagesmoke_loop.txt"));
         
         assert(MathUtils.calcDist(smokeGroup.getPosition(), smokeEffectPosition) < 5.0);
     }

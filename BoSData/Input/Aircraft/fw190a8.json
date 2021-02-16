@@ -11,7 +11,7 @@
   "desc": "",
   "cruisingSpeed": 360,
   "climbOutRate": 1100,
-  "goodness": 70,
+  "goodness": 75,
   "range": 700,
   "isFlyable": true,
   "planeSize": "PLANE_SIZE_SMALL",
@@ -19,7 +19,7 @@
     "ROLE_FIGHTER",
     "ROLE_ATTACK"
   ],
-  "introduction": "19440301",
+  "introduction": "19440401",
   "endProduction": "19450601",
   "withdrawal": "19450601"
 }

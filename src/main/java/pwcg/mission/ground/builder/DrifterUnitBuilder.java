@@ -10,7 +10,6 @@ import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.GroundUnitCollectionData;
 import pwcg.mission.ground.org.GroundUnitCollectionType;
 import pwcg.mission.ground.org.IGroundUnit;
-import pwcg.mission.ground.unittypes.infantry.DrifterAAAUnit;
 import pwcg.mission.ground.unittypes.infantry.DrifterUnit;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.target.TargetType;
@@ -41,9 +40,6 @@ public class DrifterUnitBuilder
         IGroundUnit drifterUnit = new DrifterUnit(groundUnitInformation);
         drifterUnit.createGroundUnit();
 
-        IGroundUnit aaDrifterUnit = new DrifterAAAUnit(groundUnitInformation);
-        aaDrifterUnit.createGroundUnit();
-        
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.TRANSPORT_GROUND_UNIT_COLLECTION, 
                 "Drifters", 
@@ -52,9 +48,9 @@ public class DrifterUnitBuilder
 
         GroundUnitCollection groundUnitCollection = new GroundUnitCollection ("Drifter", groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(drifterUnit);
-        groundUnitCollection.addGroundUnit(aaDrifterUnit);
         groundUnitCollection.setPrimaryGroundUnit(drifterUnit);
         groundUnitCollection.finishGroundUnitCollection();
+
         return groundUnitCollection;
     }
 }

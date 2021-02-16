@@ -6,7 +6,7 @@ public class SmokeVillage extends Effect
 	{
 		super();
 		
-		script = "luascripts\\worldobjects\\mapemitters\\villagesmoke.txt";
+		script = "luascripts\\worldobjects\\mapemitters\\villagesmoke_loop.txt";
         name = "Village Smoke";
 	}
 }

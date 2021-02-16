@@ -1,6 +1,12 @@
 
 ​At the PWCG web site
 
+PWCG 11.10.2
+Canadians!
+- Added RCAF as a service
+- Added 403 Squadron
+Removed large river traffic to hopfully avoid flying boats
+
 PWCG 11.10.1
 Rewrite of airfield item placement
 - Fix missing AA

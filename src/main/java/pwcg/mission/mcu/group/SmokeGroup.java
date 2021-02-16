@@ -11,37 +11,22 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.mcu.McuActivate;
 import pwcg.mission.mcu.McuCheckZone;
-import pwcg.mission.mcu.McuDeactivate;
+import pwcg.mission.mcu.McuCommandEffect;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.effect.Effect;
-import pwcg.mission.mcu.effect.EffectCommand;
 import pwcg.mission.mcu.effect.SmokeCity;
 import pwcg.mission.mcu.effect.SmokeCitySmall;
 import pwcg.mission.mcu.effect.SmokeVillage;
 
 public class SmokeGroup
 {
-    private MissionBeginUnit missionBeginUnit;
-    
-    private McuTimer smokeActivateTriggeredTimer = new McuTimer();
-    private McuTimer smokeInitiateTimer = new McuTimer();
-    private McuTimer smokeDectivateTriggeredTimer = new McuTimer();
-    private McuTimer smokeStartTimer = new McuTimer();
-    private McuTimer smokeStopTimer = new McuTimer();
-    private McuTimer smokeLoopTimer = new McuTimer();
-    private McuTimer deactivateCzTimer = new McuTimer();
-    
-    private McuCheckZone activateCheckZone;
-    private McuCheckZone deactivateCheckZone;
-    
-    private McuActivate activateSmoke = new McuActivate();
-    private McuDeactivate deactivateSmoke = new McuDeactivate();
-    
+    private MissionBeginUnit missionBeginUnit;    
+    private McuTimer smokeCheckZoneTimer = new McuTimer();    
+    private McuCheckZone smokeStartCheckZone;    
+    private McuTimer smokeStartTimer = new McuTimer();    
+    private McuCommandEffect activateSmoke = new McuCommandEffect();
     private List<Effect> smokeEffects = new ArrayList<>();
-    private EffectCommand startSmokeEffectCommand = new EffectCommand(EffectCommand.START_EFFECT);
-    private EffectCommand stopSmokeEffectCommand = new EffectCommand(EffectCommand.STOP_EFFECT);
     
     private Coordinate position;
 
@@ -58,7 +43,6 @@ public class SmokeGroup
         addSmokeEffect(requestedSmokeEffect);
         
         buildActivate(mission.getMissionFlightBuilder().getPlayersInMission());
-        buildDeactivate(mission.getMissionFlightBuilder().getPlayersInMission());
         setTimers();
         setTargetAssociations();
         setObjectAssociations();
@@ -90,20 +74,10 @@ public class SmokeGroup
     
     private void setPositions()
     {
-        smokeActivateTriggeredTimer.setPosition(position.copy());
-        smokeInitiateTimer.setPosition(position.copy());
-        smokeDectivateTriggeredTimer.setPosition(position.copy());
+        smokeCheckZoneTimer.setPosition(position.copy());
+        smokeStartCheckZone.setPosition(position.copy());
         smokeStartTimer.setPosition(position.copy());
-        smokeStopTimer.setPosition(position.copy());
-        smokeLoopTimer.setPosition(position.copy());
-        deactivateCzTimer.setPosition(position.copy());
-        activateCheckZone.setPosition(position.copy());
-        deactivateCheckZone.setPosition(position.copy());
         activateSmoke.setPosition(position.copy());
-        deactivateSmoke.setPosition(position.copy());
-        startSmokeEffectCommand.setPosition(position.copy());
-        stopSmokeEffectCommand.setPosition(position.copy());
-
         for (Effect smokeEffect : smokeEffects)
         {
             smokeEffect.setPosition(position.copy());
@@ -112,17 +86,10 @@ public class SmokeGroup
     
     private void setNames()
     {
-        smokeActivateTriggeredTimer.setName("smokeTriggeredTimer");
-        smokeInitiateTimer.setName("smokeInitiateTimer");
-        smokeDectivateTriggeredTimer.setName("smokeDectivateTimer");
+        smokeCheckZoneTimer.setName("smokeCheckZoneTimer");
+        smokeStartCheckZone.setName("smokeStartCheckZone");
         smokeStartTimer.setName("smokeStartTimer");
-        smokeStopTimer.setName("smokeStopTimer");
-        smokeLoopTimer.setName("smokeLoopTimer");
-        deactivateCzTimer.setName("deactivateCzTimer");
         activateSmoke.setName("activateSmoke");
-        deactivateSmoke.setName("deactivateSmoke");
-        startSmokeEffectCommand.setName("startSmokeEffectCommand");
-        stopSmokeEffectCommand.setName("stopSmokeEffectCommand");
 
         for (Effect smokeEffect : smokeEffects)
         {
@@ -132,66 +99,32 @@ public class SmokeGroup
 
     private void setTimers()
     {
-        smokeActivateTriggeredTimer.setTime(1);
-        smokeInitiateTimer.setTime(1);
-        smokeDectivateTriggeredTimer.setTime(1);
-        smokeLoopTimer.setTime(14);
+        smokeCheckZoneTimer.setTime(1);
         smokeStartTimer.setTime(1);
-        smokeStopTimer.setTime(1);        
     }
 
     private void setTargetAssociations()
     {        
-        // Activate smoke loop
-        missionBeginUnit.linkToMissionBegin(activateCheckZone.getIndex());
-        activateCheckZone.setTarget(smokeActivateTriggeredTimer.getIndex());
-        smokeActivateTriggeredTimer.setTarget(activateSmoke.getIndex());
-        activateSmoke.setTarget(smokeLoopTimer.getIndex());
-
-        // Initiate Smoke
-        smokeActivateTriggeredTimer.setTarget(smokeInitiateTimer.getIndex());
-        smokeInitiateTimer.setTarget(smokeStopTimer.getIndex());
-        
-        // Smoke loop
-        smokeStopTimer.setTarget(smokeStartTimer.getIndex());
-        smokeStartTimer.setTarget(smokeLoopTimer.getIndex());
-        smokeLoopTimer.setTarget(smokeStopTimer.getIndex());
-
-        // Deactivate
-        activateCheckZone.setTarget(deactivateCzTimer.getIndex());
-        deactivateCzTimer.setTarget(deactivateCheckZone.getIndex());
-        deactivateCheckZone.setTarget(smokeDectivateTriggeredTimer.getIndex());
-        smokeDectivateTriggeredTimer.setTarget(deactivateSmoke.getIndex());
-        deactivateSmoke.setTarget(smokeLoopTimer.getIndex());
-        
-        // Smoke stop and start effect commands
-        smokeStopTimer.setTarget(stopSmokeEffectCommand.getIndex());
-        smokeStartTimer.setTarget(startSmokeEffectCommand.getIndex());
+        missionBeginUnit.linkToMissionBegin(smokeCheckZoneTimer.getIndex());
+        smokeCheckZoneTimer.setTarget(smokeStartCheckZone.getIndex());
+        smokeStartCheckZone.setTarget(smokeStartTimer.getIndex());
+        smokeStartTimer.setTarget(activateSmoke.getIndex());
     }
 
     private void setObjectAssociations()
     {
         for (Effect smokeEffect : smokeEffects)
         {
-            startSmokeEffectCommand.setObject(smokeEffect.getLinkTrId());
-            stopSmokeEffectCommand.setObject(smokeEffect.getLinkTrId());
+            activateSmoke.setObject(smokeEffect.getLinkTrId());
         }
-    }
-
-    private void buildDeactivate(List<Integer> playerPlaneIds) throws PWCGException
-    {
-        deactivateCheckZone = new McuCheckZone("CheckZone Smoke Deactivate");
-        deactivateCheckZone.setCloser(0);
-        deactivateCheckZone.setZone(25000);
-        deactivateCheckZone.triggerCheckZoneByMultipleObjects(playerPlaneIds);
     }
 
     private void buildActivate(List<Integer> playerPlaneIds) throws PWCGException
     {
-        activateCheckZone = new McuCheckZone("CheckZone Smoke Activate");
-        activateCheckZone.setCloser(1);
-        activateCheckZone.setZone(20000);
-        activateCheckZone.triggerCheckZoneByMultipleObjects(playerPlaneIds);
+        smokeStartCheckZone = new McuCheckZone("CheckZone Smoke Activate");
+        smokeStartCheckZone.setCloser(1);
+        smokeStartCheckZone.setZone(30000);
+        smokeStartCheckZone.triggerCheckZoneByMultipleObjects(playerPlaneIds);
     }
 
     public void write(BufferedWriter writer) throws PWCGException 
@@ -203,23 +136,12 @@ public class SmokeGroup
             writer.write("{");
             writer.newLine();
             
-    
             missionBeginUnit.write(writer);
-    
-            smokeActivateTriggeredTimer.write(writer);
-            smokeInitiateTimer.write(writer);
-            smokeDectivateTriggeredTimer.write(writer);
+            smokeCheckZoneTimer.write(writer);
+            smokeStartCheckZone.write(writer);
             smokeStartTimer.write(writer);
-            smokeStopTimer.write(writer);
-            smokeLoopTimer.write(writer);
-            deactivateCzTimer.write(writer);
-            activateCheckZone.write(writer);
-            deactivateCheckZone.write(writer);
-            activateSmoke .write(writer);
-            deactivateSmoke.write(writer);
-            startSmokeEffectCommand.write(writer);
-            stopSmokeEffectCommand.write(writer);
-    
+            activateSmoke.write(writer);
+
             for (Effect smokeEffect : smokeEffects)
             {
                 smokeEffect.write(writer);

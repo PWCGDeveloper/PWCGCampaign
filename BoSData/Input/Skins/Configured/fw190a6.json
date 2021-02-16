@@ -1,0 +1,27 @@
+{
+	"skinSetType": "SKIN_CONFIGURED",
+	"skins": {
+		"fw190a6_skin_00": {
+			"skinName": "fw190a6_skin_00",
+			"planeType": "fw190a6",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": false
+		},
+		"fw190a6_skin_01": {
+			"skinName": "fw190a6_skin_01",
+			"planeType": "fw190a6",
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": -2,
+			"country": "Germany",
+			"category": "Configured",
+			"definedInGame": true,
+			"winter": true
+		}
+	}
+}
