@@ -1,0 +1,15 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\opel\\",
+  "vehicleType": "opel-blitz-ammo",
+  "vehicleName": "Opel Blitz Truck Ammo",
+  "displayName": "truck",
+  "countries": [
+    "GERMANY",
+    "ITALY"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 100,
+  "vehicleClass": "TruckAmmo"
+}

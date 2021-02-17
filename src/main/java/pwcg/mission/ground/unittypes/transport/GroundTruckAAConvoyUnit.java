@@ -69,7 +69,7 @@ public class GroundTruckAAConvoyUnit extends GroundUnit
     {
         double placementOrientation = MathUtils.adjustAngle (pwcgGroundUnitInformation.getOrientation().getyOri(), 180);
         List<Coordinate> vehiclePositions = new ArrayList<>();
-        Coordinate vehicleCoordinate = MathUtils.calcNextCoord(firstVehicleCoordinate, placementOrientation, 300.0);
+        Coordinate vehicleCoordinate = MathUtils.calcNextCoord(firstVehicleCoordinate, placementOrientation, 250.0);
         for (int i = 0; i < numvehicles; ++i)
         {   
             vehicleCoordinate = MathUtils.calcNextCoord(vehicleCoordinate.copy(), placementOrientation, 15.0);

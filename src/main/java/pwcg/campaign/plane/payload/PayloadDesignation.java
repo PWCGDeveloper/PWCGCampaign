@@ -52,4 +52,16 @@ public class PayloadDesignation
         }
         return payloadDescription;
     }
+
+    public boolean containsElement(PayloadElement searchPayloadElement)
+    {
+        for (PayloadElement payloadElement : payloadElements)
+        {
+            if (payloadElement == searchPayloadElement)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

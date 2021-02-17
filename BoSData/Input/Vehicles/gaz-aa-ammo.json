@@ -1,0 +1,14 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\gaz\\",
+  "vehicleType": "gaz-aa-ammo",
+  "vehicleName": "GAZ-AA Truck Ammo",
+  "displayName": "truck",
+  "countries": [
+    "RUSSIA"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 20,
+  "vehicleClass": "TruckAmmo"
+}

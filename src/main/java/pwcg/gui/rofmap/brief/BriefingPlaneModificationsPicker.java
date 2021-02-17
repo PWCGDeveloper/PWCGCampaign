@@ -13,8 +13,6 @@ import javax.swing.JPanel;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
-import pwcg.campaign.plane.payload.PayloadDesignation;
-import pwcg.campaign.plane.payload.PayloadElementCategory;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -74,20 +72,17 @@ public class BriefingPlaneModificationsPicker
 
     private void makePlaneModificationCheckBoxes() throws PWCGException 
     {
-        IPayloadFactory payloadfactory = PWCGContext.getInstance().getPayloadFactory();
-        IPlanePayload payload = payloadfactory.createPlanePayload(crewPlane.getPlane().getType());
+        BriefingPlaneModificationsFilter briefingPlaneModificationsFilter = new BriefingPlaneModificationsFilter(crewPlane);
+        List<String> payloadsForPlane = briefingPlaneModificationsFilter.selectModificationsForPlane();
         
-        for (PayloadDesignation payloadDesignation : payload.getPayloadDesignations())
+        for (String payloadForPlane : payloadsForPlane)
         {
-            if (payloadDesignation.getPayloadElements().get(0).getCategory() == PayloadElementCategory.MODIFICATION)
-            {
-                JCheckBox planeModificationsCheckBox= PWCGButtonFactory.makeSmallCheckBox(
-                        payloadDesignation.getPayloadDescription(), 
-                        "SelectPlaneModification:" + crewPlane.getPilot().getSerialNumber(), 
-                        ColorMap.CHALK_FOREGROUND,
-                        actionListener);
-                planeModifications.put(payloadDesignation.getPayloadDescription(), planeModificationsCheckBox);
-            }
+            JCheckBox planeModificationsCheckBox= PWCGButtonFactory.makeSmallCheckBox(
+                    payloadForPlane, 
+                    "SelectPlaneModification:" + crewPlane.getPilot().getSerialNumber(), 
+                    ColorMap.CHALK_FOREGROUND,
+                    actionListener);
+            planeModifications.put(payloadForPlane, planeModificationsCheckBox);
         }
     }
 

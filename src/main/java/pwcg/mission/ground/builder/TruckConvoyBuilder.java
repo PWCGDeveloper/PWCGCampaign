@@ -14,6 +14,7 @@ import pwcg.mission.ground.org.GroundUnitCollectionData;
 import pwcg.mission.ground.org.GroundUnitCollectionType;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.unittypes.transport.GroundTruckAAConvoyUnit;
+import pwcg.mission.ground.unittypes.transport.GroundTruckAmmoConvoyUnit;
 import pwcg.mission.ground.unittypes.transport.GroundTruckConvoyUnit;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.target.TargetType;
@@ -43,8 +44,11 @@ public class TruckConvoyBuilder
         IGroundUnit truckConvoy = new GroundTruckConvoyUnit(groundUnitInformation);
         truckConvoy.createGroundUnit();
         
-        IGroundUnit aatruckConvoy = new GroundTruckAAConvoyUnit(groundUnitInformation);
-        aatruckConvoy.createGroundUnit();
+        IGroundUnit ammoTruckConvoy = new GroundTruckAmmoConvoyUnit(groundUnitInformation);
+        ammoTruckConvoy.createGroundUnit();
+        
+        IGroundUnit aaTruckConvoy = new GroundTruckAAConvoyUnit(groundUnitInformation);
+        aaTruckConvoy.createGroundUnit();
         
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.TRANSPORT_GROUND_UNIT_COLLECTION, 
@@ -54,7 +58,8 @@ public class TruckConvoyBuilder
         
         GroundUnitCollection groundUnitCollection = new GroundUnitCollection("Truck Convoy", groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(truckConvoy);
-        groundUnitCollection.addGroundUnit(aatruckConvoy);
+        groundUnitCollection.addGroundUnit(ammoTruckConvoy);
+        groundUnitCollection.addGroundUnit(aaTruckConvoy);
         groundUnitCollection.setPrimaryGroundUnit(truckConvoy);
         groundUnitCollection.finishGroundUnitCollection();
 

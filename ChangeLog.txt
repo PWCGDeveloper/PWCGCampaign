@@ -1,6 +1,15 @@
 
 ​At the PWCG web site
 
+PWCG 11.11.0
+Added FW190 A6
+- A6 is also G3.  jabo units exclusively fly G3
+Modified FW190 A8 payloads
+- A8 is also F8.  jabo units exclusively fly F8
+Added ammo trucks
+Changes smoke to use new emitters
+Fixed missing drifter AAA
+
 PWCG 11.10.2
 Canadians!
 - Added RCAF as a service

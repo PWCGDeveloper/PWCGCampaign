@@ -19,16 +19,17 @@ public class Fw190A6Payload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
 	{
+        setAvailablePayload(-1, "10000000", PayloadElement.SET_MG17);
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(1, "10001", PayloadElement.SC70_X4);
         setAvailablePayload(2, "10001", PayloadElement.SC250_X1);
         setAvailablePayload(3, "10001", PayloadElement.SC500_X1);
         setAvailablePayload(4, "100001", PayloadElement.BR21_X2);
-        setAvailablePayload(8, "1000001", PayloadElement.FW190_REM_GUNS);
-        setAvailablePayload(9, "1000001", PayloadElement.SC70_X4, PayloadElement.FW190_REM_GUNS);
-        setAvailablePayload(10, "1000001", PayloadElement.SC250_X1, PayloadElement.FW190_REM_GUNS);
-        setAvailablePayload(11, "1000001", PayloadElement.SC500_X1, PayloadElement.FW190_REM_GUNS);
-        setAvailablePayload(32, "10000011", PayloadElement.FW190A6_STURMJAGER);
+        setAvailablePayload(8, "1000001", PayloadElement.FW190A6_REM_GUNS);
+        setAvailablePayload(9, "1000001", PayloadElement.SC70_X4, PayloadElement.FW190A6_REM_GUNS);
+        setAvailablePayload(10, "1000001", PayloadElement.SC250_X1, PayloadElement.FW190A6_REM_GUNS);
+        setAvailablePayload(11, "1000001", PayloadElement.SC500_X1, PayloadElement.FW190A6_REM_GUNS);
+        setAvailablePayload(16, "11", PayloadElement.FW190A6_STURMJAGER);
 
         setAvailablePayload(48, "101", PayloadElement.FW190G3);
         setAvailablePayload(49, "10101", PayloadElement.FW190G3, PayloadElement.SC70_X4);

@@ -307,7 +307,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
             Integer pilotSerialNumber = getPilotSerialNumberFromAction(action);
             CrewPlanePayloadPairing crewPlane = briefingMissionHandler.getPairingByPilot(pilotSerialNumber);
 
-            BriefingPayloadPicker briefingPayloadPicker = new BriefingPayloadPicker(this);
+            BriefingPayloadPicker briefingPayloadPicker = new BriefingPayloadPicker(this, briefingData);
             int newPayload = briefingPayloadPicker.pickPayload(crewPlane.getPlane().getType());
             if (newPayload != -1)
             {

@@ -49,7 +49,7 @@ public class TruckConvoyBuilderTest
     {
         TruckConvoyBuilder groundUnitFactory =  new TruckConvoyBuilder(campaign, bridge, CountryFactory.makeCountryByCountry(Country.RUSSIA));
         GroundUnitCollection groundUnitGroup = groundUnitFactory.createTruckConvoy();
-        assert (groundUnitGroup.getGroundUnits().size() == 2);
+        assert (groundUnitGroup.getGroundUnits().size() == 3);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {
             assert (groundUnit.getCountry().getCountry() == Country.RUSSIA);
@@ -60,6 +60,10 @@ public class TruckConvoyBuilderTest
             else if (groundUnit.getVehicleClass() == VehicleClass.TruckAAA)
             {
                 assert (groundUnit.getVehicles().size() == 2);
+            }
+            else if (groundUnit.getVehicleClass() == VehicleClass.TruckAmmo)
+            {
+                assert (groundUnit.getVehicles().size() > 0);
             }
             else
             {

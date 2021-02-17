@@ -12,11 +12,11 @@ import pwcg.mission.ground.org.GroundUnit;
 import pwcg.mission.ground.org.GroundUnitNumberCalculator;
 import pwcg.mission.ground.vehicle.VehicleClass;
 
-public class GroundTruckConvoyUnit extends GroundUnit
+public class GroundTruckAmmoConvoyUnit extends GroundUnit
 {
-    public GroundTruckConvoyUnit(GroundUnitInformation pwcgGroundUnitInformation)
+    public GroundTruckAmmoConvoyUnit(GroundUnitInformation pwcgGroundUnitInformation)
     {
-        super(VehicleClass.Truck, pwcgGroundUnitInformation);
+        super(VehicleClass.TruckAmmo, pwcgGroundUnitInformation);
     }   
 
     @Override
@@ -39,15 +39,15 @@ public class GroundTruckConvoyUnit extends GroundUnit
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
         {
-            return GroundUnitNumberCalculator.calcNumUnits(2, 4);
+            return GroundUnitNumberCalculator.calcNumUnits(1, 1);
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM)
         {
-            return GroundUnitNumberCalculator.calcNumUnits(3, 6);
+            return GroundUnitNumberCalculator.calcNumUnits(1, 2);
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_HIGH)
         {
-            return GroundUnitNumberCalculator.calcNumUnits(4, 8);
+            return GroundUnitNumberCalculator.calcNumUnits(1, 2);
         }
         
         throw new PWCGException ("No unit size provided for ground unit");
@@ -65,19 +65,19 @@ public class GroundTruckConvoyUnit extends GroundUnit
 
     private List<Coordinate> createVehiclePositions(Coordinate firstVehicleCoordinate, int numvehicles) throws PWCGException
     {
-        double placementOrientation = MathUtils.adjustAngle (pwcgGroundUnitInformation.getOrientation().getyOri(), 180);       
+        double placementOrientation = MathUtils.adjustAngle (pwcgGroundUnitInformation.getOrientation().getyOri(), 180);
         List<Coordinate> vehiclePositions = new ArrayList<>();
-        Coordinate vehicleCoordinate = MathUtils.calcNextCoord(firstVehicleCoordinate, placementOrientation, 100.0);
+        Coordinate vehicleCoordinate = MathUtils.calcNextCoord(firstVehicleCoordinate, placementOrientation, 200.0);
         for (int i = 0; i < numvehicles; ++i)
         {   
-            vehicleCoordinate = MathUtils.calcNextCoord(vehicleCoordinate.copy(), placementOrientation, 10.0);
+            vehicleCoordinate = MathUtils.calcNextCoord(vehicleCoordinate.copy(), placementOrientation, 15.0);
             vehiclePositions.add(vehicleCoordinate);
         }       
         return vehiclePositions;
     }
 
     private void addAspects(List<Coordinate> destinations) throws PWCGException
-    {
+    {       
         int unitSpeed = 10;
         super.addMovementAspect(unitSpeed, destinations, GroundFormationType.FORMATION_TYPE_ON_ROAD);
     }

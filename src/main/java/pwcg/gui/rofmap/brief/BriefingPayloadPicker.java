@@ -7,19 +7,27 @@ import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.RoleCategory;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadDesignation;
+import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PayloadElementCategory;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.gui.rofmap.brief.model.BriefingData;
+import pwcg.product.bos.plane.BosPlaneAttributeMapping;
 
 public class BriefingPayloadPicker
 {
     private JComponent parent;
+    private BriefingData briefingData;
     
-    public BriefingPayloadPicker(JComponent parent)
+    public BriefingPayloadPicker(JComponent parent, BriefingData briefingData)
     {
         this.parent = parent;
+        this.briefingData = briefingData;
     }
 
     public int pickPayload(String planeType) throws PWCGException 
@@ -51,7 +59,10 @@ public class BriefingPayloadPicker
         {
             if (!(payloadDesignation.getPayloadElements().get(0).getCategory() == PayloadElementCategory.MODIFICATION))
             {
-                payloadDescriptions.add(payloadDesignation.getPayloadDescription());
+                if (shouldIncludeModification(payloadDesignation, planeTypeName))
+                {
+                    payloadDescriptions.add(payloadDesignation.getPayloadDescription());
+                }
             }
         }
         
@@ -64,5 +75,38 @@ public class BriefingPayloadPicker
         IPlanePayload payload = payloadfactory.createPlanePayload(planeTypeName);
         
         return payload.getPayloadIdByDescription(payloadDescription);
+    }
+    
+    
+    private boolean shouldIncludeModification(PayloadDesignation payloadDesignation, String planeType) throws PWCGException
+    {
+        Squadron squadron = briefingData.getSelectedFlight().getSquadron();
+        Role squadronPrimaryRole = squadron.determineSquadronPrimaryRole(briefingData.getSelectedFlight().getCampaign().getDate());
+        if (planeType.equals(BosPlaneAttributeMapping.FW190_A6.getPlaneType()))
+        {
+            return shouldIncludeFW190Payload(payloadDesignation, squadronPrimaryRole, PayloadElement.FW190G3);
+        }
+        else if (planeType.equals(BosPlaneAttributeMapping.FW190_A8.getPlaneType()))
+        {
+            return shouldIncludeFW190Payload(payloadDesignation, squadronPrimaryRole, PayloadElement.FW190F8);
+        }
+        
+        return true;
+    }
+
+    private boolean shouldIncludeFW190Payload(PayloadDesignation payloadDesignation, Role squadronPrimaryRole, PayloadElement payloadElementKey)
+    {
+        if (squadronPrimaryRole.isRoleCategory(RoleCategory.ATTACK) && payloadDesignation.containsElement(payloadElementKey))
+        {
+            return true;
+        }
+        else if (!squadronPrimaryRole.isRoleCategory(RoleCategory.ATTACK) && !payloadDesignation.containsElement(payloadElementKey))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

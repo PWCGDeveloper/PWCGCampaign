@@ -36,7 +36,8 @@ public enum VehicleClass
     TrainCoalCar(false, "Coal Car", GroundUnitType.TRANSPORT_UNIT),
     TrainLocomotive(false, "Locomotive", GroundUnitType.TRANSPORT_UNIT),
     Truck(false, "Truck", GroundUnitType.TRANSPORT_UNIT),
-    TruckAAA(false, "Truck AA", GroundUnitType.TRANSPORT_UNIT);
+    TruckAAA(false, "Truck AA", GroundUnitType.TRANSPORT_UNIT),
+    TruckAmmo(false, "Truck Ammo", GroundUnitType.TRANSPORT_UNIT);
  
     private boolean isStatic = false;
     private String name = "Ground Unit";

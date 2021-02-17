@@ -19,7 +19,7 @@ public class Fw190A8Payload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
 	{        
-        setAvailablePayload(-2, "1000000", PayloadElement.FW190_REM_GUNS);
+        setAvailablePayload(-2, "1000000", PayloadElement.FW190A8_REM_GUNS);
         setAvailablePayload(-1, "10000", PayloadElement.EXTRA_ARMOR);
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(1, "101", PayloadElement.SD70_X4);
@@ -29,9 +29,9 @@ public class Fw190A8Payload extends PlanePayload implements IPlanePayload
         setAvailablePayload(16, "11", PayloadElement.MK108_30);
         
         setAvailablePayload(32, "100001", PayloadElement.FW190F8);
-        setAvailablePayload(34, "100001", PayloadElement.FW190F8_SC70_X4);
-        setAvailablePayload(36, "100001", PayloadElement.FW190F8_PB1_X12);
-        setAvailablePayload(37, "100001", PayloadElement.FW190F8_PB1M8_X12);
+        setAvailablePayload(34, "100001", PayloadElement.FW190F8, PayloadElement.FW190F8_SC70_X4);
+        setAvailablePayload(36, "100001", PayloadElement.FW190F8, PayloadElement.FW190F8_PB1_X12);
+        setAvailablePayload(37, "100001", PayloadElement.FW190F8, PayloadElement.FW190F8_PB1M8_X12);
 	}
     
     @Override

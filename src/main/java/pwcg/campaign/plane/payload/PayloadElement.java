@@ -61,6 +61,14 @@ public enum PayloadElement
     BOMBS(PayloadElementCategory.ORDNANCE_BOMB, "Bombs", 60),
 
     
+    FW190A6_REM_GUNS(PayloadElementCategory.WEAPON, "Remove Outboard Guns", 0),
+    FW190A6_STURMJAGER(PayloadElementCategory.WEAPON, "Sturm Jager", 500),
+    FW190F8(PayloadElementCategory.ORDNANCE_BOMB, "FW190 F8", 100),
+    FW190F8_SC70_X4(PayloadElementCategory.ORDNANCE_BOMB, "FW190 F8 70 KB Bomb x4", 100),
+    FW190F8_PB1_X12(PayloadElementCategory.ORDNANCE_BOMB, "FW190 F8 PB1 x12", 100),
+    FW190F8_PB1M8_X12(PayloadElementCategory.ORDNANCE_BOMB, "FW190 F8 PB1 M8 x12", 100),
+    FW190G3(PayloadElementCategory.ORDNANCE_BOMB, "FW190 G3", 100),
+
     //WW II
     ERLA_CANOPY(PayloadElementCategory.MODIFICATION, "Erla Canopy", 0),
     BUBBLE_CANOPY(PayloadElementCategory.MODIFICATION, "Bubble Canopy", 0),
@@ -83,8 +91,8 @@ public enum PayloadElement
     BELLY_TURRET(PayloadElementCategory.MODIFICATION, "Belly Turret", 250),
     NOSE_TURRET(PayloadElementCategory.MODIFICATION, "Nose Turret", 250),
     U2_GUNNER(PayloadElementCategory.MODIFICATION, "Rear Gunner", 100),
-    FW190_REM_GUNS(PayloadElementCategory.MODIFICATION, "Remove Outboard Guns", 0),
-    FW190A6_STURMJAGER(PayloadElementCategory.MODIFICATION, "Sturm Jager", 500),
+    FW190A8_REM_GUNS(PayloadElementCategory.MODIFICATION, "Remove Outboard Guns", 0),
+    SET_MG17(PayloadElementCategory.MODIFICATION, "Add MG17", 0),
     U_17(PayloadElementCategory.MODIFICATION, "U/17", 300),
     PEILG6(PayloadElementCategory.MODIFICATION, "Peil G6", 0),
     FUG16_ZY(PayloadElementCategory.MODIFICATION, "FuG 16 ZY", 10),
@@ -98,12 +106,6 @@ public enum PayloadElement
     HE_AMMO(PayloadElementCategory.MODIFICATION, "High Explosive Ammo", 0),
     AP_AMMO(PayloadElementCategory.MODIFICATION, "Armor Piercing Ammo", 0),
     EXTRA_AMMO(PayloadElementCategory.MODIFICATION, "Extra Ammo", 0),
-    
-    FW190F8(PayloadElementCategory.MODIFICATION, "FW190 F8", 100),
-    FW190F8_SC70_X4(PayloadElementCategory.MODIFICATION, "FW190 F8 70 KB Bomb x4", 100),
-    FW190F8_PB1_X12(PayloadElementCategory.MODIFICATION, "FW190 F8 PB1 x12", 100),
-    FW190F8_PB1M8_X12(PayloadElementCategory.MODIFICATION, "FW190 F8 PB1 M8 x12", 100),
-    FW190G3(PayloadElementCategory.MODIFICATION, "FW190 G3", 100),
     
     ETC501(PayloadElementCategory.MODIFICATION, "ETC 501 Bomb Rack", 100),
     OCTANE_150_FUEL(PayloadElementCategory.MODIFICATION, "150 Octane Fuel", 100),
