@@ -51,7 +51,7 @@ public class DrifterUnitBuilderTest
         
         DrifterUnitBuilder groundUnitFactory = new DrifterUnitBuilder(campaign, location, CountryFactory.makeCountryByCountry(Country.RUSSIA));
         GroundUnitCollection groundUnitGroup = groundUnitFactory.createDrifterUnit();
-        assert (groundUnitGroup.getGroundUnits().size() >= 2);
+        assert (groundUnitGroup.getGroundUnits().size() >= 1);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {
             assert (groundUnit.getCountry().getCountry() == Country.RUSSIA);
@@ -59,10 +59,6 @@ public class DrifterUnitBuilderTest
             {
                 assert (groundUnit.getVehicles().size() >= 2);
                 assert (groundUnit.getVehicles().size() <= 4);
-            }
-            else if (groundUnit.getVehicleClass() == VehicleClass.DrifterAAA)
-            {
-                assert (groundUnit.getVehicles().size() == 2);
             }
             else
             {

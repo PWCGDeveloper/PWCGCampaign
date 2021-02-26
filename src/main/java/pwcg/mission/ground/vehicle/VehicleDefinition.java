@@ -109,7 +109,7 @@ public class VehicleDefinition implements IVehicleDefinition, IWeight
             return false;
         }
 
-        if (requestDefinition.getVehicleClass() == VehicleClass.Drifter || requestDefinition.getVehicleClass() == VehicleClass.DrifterAAA)
+        if (requestDefinition.getVehicleClass() == VehicleClass.Drifter)
         {
             if (vehicleLength > 100)
             {

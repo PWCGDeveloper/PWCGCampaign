@@ -81,6 +81,17 @@ public class CampaignPersonnelManager
         return getPlayersForStatus(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
     }
 
+    public SquadronMembers getAllPlayers() throws PWCGException
+    {
+        SquadronMembers allPlayers =  new SquadronMembers();
+        for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
+        {
+            SquadronMembers playersInSquadron = squadronPersonnel.getPlayers();
+            allPlayers.addSquadronMembers(playersInSquadron);
+        }
+        return allPlayers;
+    }
+
     public SquadronMembers getFlyingPlayers() throws PWCGException
     {
         return getPlayersForStatus(SquadronMemberStatus.STATUS_ACTIVE);

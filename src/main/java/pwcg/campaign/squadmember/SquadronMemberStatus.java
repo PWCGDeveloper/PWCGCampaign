@@ -18,6 +18,7 @@ public class SquadronMemberStatus
     public static String SERIOUSLY_WOUNDED_STATUS = "Seriously Wounded";
     public static String CAPTURED_STATUS = "Captured";
     public static String KIA_STATUS = "Killed in Action";
+    public static String RETIRED_STATUS = "Retired";
     
 
     public static String pilotStatusToStatusDescription(int pilotStatus)
@@ -50,9 +51,13 @@ public class SquadronMemberStatus
         {
             return KIA_STATUS;
         }
+        else if (pilotStatus == STATUS_RETIRED)
+        {
+            return RETIRED_STATUS;
+        }
         else
         {
-            return ACTIVE_STATUS;
+            return "";
         }
     }
 

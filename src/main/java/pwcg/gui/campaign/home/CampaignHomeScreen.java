@@ -8,7 +8,6 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import pwcg.aar.AARCoordinator;
-import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.personnel.SquadronMemberFilter;
@@ -20,6 +19,7 @@ import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.IRefreshableParentUI;
 import pwcg.gui.PwcgThreePanelUI;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
@@ -30,7 +30,7 @@ import pwcg.gui.rofmap.event.AARReportMainPanel.EventPanelReason;
 import pwcg.gui.sound.MusicManager;
 import pwcg.gui.utils.ImageResizingPanel;
 
-public class CampaignHomeScreen extends ImageResizingPanel implements ActionListener
+public class CampaignHomeScreen extends ImageResizingPanel implements ActionListener, IRefreshableParentUI
 {
     private static final long serialVersionUID = 1L;
 
@@ -59,7 +59,7 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignHomeScreen);
             this.setImageFromName(imagePath);
             
-            createCampaignHomeContext();
+            refreshInformation();
         }
         catch (PWCGException e)
         {
@@ -68,7 +68,7 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
         }
     }
 
-    public void createCampaignHomeContext() throws PWCGException
+    public void refreshInformation() throws PWCGException
     {
         MusicManager.playCampaignTheme(determineCampaignSideForMusic());
         this.add(BorderLayout.WEST, makeLeftPanel());
@@ -85,7 +85,7 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
         if (needContextRefresh)
         {
             needContextRefresh = false;
-            createCampaignHomeContext();
+            refreshInformation();
         }
     }
 
@@ -192,15 +192,6 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
         CampaignGuiContextManager.getInstance().pushToContextStack(eventDisplay);
     }
 
-    public void campaignTimePassedForTransfer(int timePassedDays, TransferEvent pilotEvent) throws PWCGException
-    {
-        campaign.setCurrentMission(null);
-        AARCoordinator.getInstance().submitTransfer(campaign, timePassedDays);
-        AARReportMainPanel eventDisplay = new AARReportMainPanel(campaign, this, EventPanelReason.EVENT_PANEL_REASON_TRANSFER, pilotEvent);
-        eventDisplay.makePanels();
-        CampaignGuiContextManager.getInstance().pushToContextStack(eventDisplay);
-    }
-
     public Campaign getCampaign()
     {
         return campaign;
@@ -216,5 +207,11 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
     public ChalkboardSelector getChalkboardSelector()
     {
         return chalkboardSelector;
+    }
+
+    @Override
+    public JPanel getScreen()
+    {
+        return this;
     }
 }

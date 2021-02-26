@@ -177,7 +177,7 @@ public class DebriefMissionDescriptionScreen extends ImageResizingPanel implemen
 
     private void backToCampaign() throws PWCGException
     {
-        homeGui.createCampaignHomeContext();
+        homeGui.refreshInformation();
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }
 }

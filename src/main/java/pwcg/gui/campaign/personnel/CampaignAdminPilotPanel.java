@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -28,6 +29,7 @@ import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.IRefreshableParentUI;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
@@ -37,21 +39,27 @@ import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 
-public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements ActionListener
+public class CampaignAdminPilotPanel extends ImageResizingPanel implements ActionListener, IRefreshableParentUI
 {
     private static final long serialVersionUID = 1L;
     private List<CoopDisplayRecord> coopDisplayRecords = new ArrayList<>();
     private Map<Integer, JComboBox<String>> userSelectors = new HashMap<>();
-    private ButtonGroup buttonGroup = new ButtonGroup();
+    private ButtonGroup pilotButtonGroup = new ButtonGroup();
+    private Map<Integer, ButtonModel> pilotButtonModels = new HashMap<>();
+
     private int selectedPilotSerialNumber;
+    private JPanel centerPanel;
+    
+    private IRefreshableParentUI parentScreen;
     private Campaign campaign;
 
-    public CampaignAdminCoopPilotPanel(Campaign campaign)
+    public CampaignAdminPilotPanel(Campaign campaign, IRefreshableParentUI parentScreen)
     {
         super("");
         this.setLayout(new BorderLayout());
 
         this.campaign = campaign;
+        this.parentScreen = parentScreen;
     }
     
     public void makePanels() 
@@ -62,8 +70,7 @@ public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements A
             this.setImageFromName(imagePath);
             this.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 
-            JPanel centerPanel = makeDisplay();
-            this.add(centerPanel, BorderLayout.NORTH);
+            this.add(makeDisplay(), BorderLayout.NORTH);
         }
         catch (Throwable e)
         {
@@ -74,9 +81,16 @@ public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements A
 
     private JPanel makeDisplay() throws PWCGException
     {
+        pilotButtonModels.clear();
+        
         loadCoopRecords();
 
         JPanel recordListPanel = new JPanel(new GridLayout(0, 4));
+        if (campaign.isCoop())
+        {
+            recordListPanel = new JPanel(new GridLayout(0, 5));
+        }
+        
         recordListPanel.setOpaque(false);
 
         for (CoopDisplayRecord coopDisplayRecord : coopDisplayRecords)
@@ -84,23 +98,33 @@ public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements A
             JRadioButton pilotSelector = makeRadioButton(coopDisplayRecord);
             JComboBox<String> userSelector = makeUserSelector(coopDisplayRecord.getUsername());
             JLabel campaignNameLabel = makeDataLabel(coopDisplayRecord.getCampaignName());
+            JLabel pilotStatusLabel = makeDataLabel("     " + SquadronMemberStatus.pilotStatusToStatusDescription(coopDisplayRecord.getPilotStatus()));
             JLabel squadronNameLabel = makeDataLabel("     " + coopDisplayRecord.getSquadronName());
+            
             recordListPanel.add(pilotSelector);
             recordListPanel.add(campaignNameLabel);
-            recordListPanel.add(userSelector);
+            
+            
+            if (campaign.isCoop())
+            {
+                recordListPanel.add(userSelector);
+            }
+            
+            recordListPanel.add(pilotStatusLabel);
             recordListPanel.add(squadronNameLabel);
             
+            pilotButtonModels.put(coopDisplayRecord.getPilotSerialNumber(), pilotSelector.getModel());
             userSelectors.put(coopDisplayRecord.getPilotSerialNumber(), userSelector);
         }
 
 
         JScrollPane planeListScroll = ScrollBarWrapper.makeScrollPane(recordListPanel);
         
-        JPanel recordListHolderPanel = new JPanel();
-        recordListHolderPanel.setOpaque(false);
-        recordListHolderPanel.add(planeListScroll, BorderLayout.NORTH);
+        centerPanel = new JPanel();
+        centerPanel.setOpaque(false);
+        centerPanel.add(planeListScroll, BorderLayout.NORTH);
 
-        return recordListHolderPanel;
+        return centerPanel;
     }
 
     
@@ -137,7 +161,7 @@ public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements A
         button.setBackground(bg);
         button.setFont(font);
         
-        buttonGroup.add(button);
+        pilotButtonGroup.add(button);
 
         return button;
     }
@@ -149,10 +173,7 @@ public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements A
         List<CoopDisplayRecord> coopDisplayRecordsForCampaign = coopPersonaDataBuilder.getPlayerSquadronMembersForUser(campaign);
         for (CoopDisplayRecord coopDisplayRecord : coopDisplayRecordsForCampaign)
         {
-            if (coopDisplayRecord.getPilotStatus() > SquadronMemberStatus.STATUS_CAPTURED)
-            {
-                coopDisplayRecords.add(coopDisplayRecord);
-            }
+            coopDisplayRecords.add(coopDisplayRecord);
         }
     }
     
@@ -176,6 +197,7 @@ public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements A
         try
         {
             selectedPilotSerialNumber = Integer.valueOf(ae.getActionCommand());
+            parentScreen.refreshInformation();
         }
         catch (Throwable e)
         {
@@ -212,5 +234,28 @@ public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements A
             personasForUser.add(serialNumber);
         }
         return personaByUser;            
+    }
+
+    @Override
+    public void refreshInformation() throws PWCGException
+    {
+        this.remove(centerPanel);
+        this.add(makeDisplay(), BorderLayout.NORTH);
+        
+        CoopDisplayRecord coopDisplayRecord = getSelectedPilot();
+        if (coopDisplayRecord != null)
+        {
+            if (pilotButtonModels.containsKey(selectedPilotSerialNumber))
+            {
+                ButtonModel pilotButtonModel = pilotButtonModels.get(selectedPilotSerialNumber);
+                pilotButtonGroup.setSelected(pilotButtonModel, true);
+            }
+        }
+    }
+
+    @Override
+    public JPanel getScreen()
+    {
+        return this;
     }
 }

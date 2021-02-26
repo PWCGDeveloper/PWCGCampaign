@@ -130,7 +130,10 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
         SquadronMember referencePlayer = campaign.findReferencePlayer();
-        CampaignTransferScreen transferDisplay = new CampaignTransferScreen(campaignHome, referencePlayer);
+        
+        boolean passTime = true;
+        CampaignTransferScreen transferDisplay = new CampaignTransferScreen(campaign, referencePlayer, campaignHome, passTime);
+
         transferDisplay.makePanels();        
         CampaignGuiContextManager.getInstance().pushToContextStack(transferDisplay);
     }

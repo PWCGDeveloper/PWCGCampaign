@@ -62,10 +62,10 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
     private JPanel infoContainerPanel = new JPanel(new BorderLayout());
 
     private ButtonGroup aircraftButtonGroup = new ButtonGroup();
-    List<ButtonModel> aircraftButtonModels = new ArrayList<ButtonModel>();
+    List<ButtonModel> aircraftButtonModels = new ArrayList<>();
 
     private ButtonGroup skinButtonGroup = new ButtonGroup();
-    private List<ButtonModel> skinButtonModels = new ArrayList<ButtonModel>();
+    private List<ButtonModel> skinButtonModels = new ArrayList<>();
 
 	public CampaignSkinConfigurationForPilotPanel(Campaign campaign, SkinSessionManager skinSessionManager) throws PWCGException
 	{

@@ -156,13 +156,13 @@ public class BriefingEditorScreen extends ImageResizingPanel implements ActionLi
     private void scrubMission() throws PWCGException
     {
         mission.getCampaign().setCurrentMission(null);
-        campaignHomeGui.createCampaignHomeContext();
+        campaignHomeGui.refreshInformation();
         CampaignGuiContextManager.getInstance().backToCampaignHome();
     }
     
     private void backToCampaign() throws PWCGException
     {
-        campaignHomeGui.createCampaignHomeContext();
+        campaignHomeGui.refreshInformation();
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }
 

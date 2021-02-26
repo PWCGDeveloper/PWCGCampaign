@@ -407,7 +407,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     private void scrubMission() throws PWCGException
     {
         campaign.setCurrentMission(null);
-        campaignHomeGui.createCampaignHomeContext();
+        campaignHomeGui.refreshInformation();
         CampaignGuiContextManager.getInstance().backToCampaignHome();
     }
 
@@ -432,14 +432,14 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         BriefingMissionUpdater.finalizeMission(briefingData);
 
         campaign.setCurrentMission(mission);
-        campaignHomeGui.createCampaignHomeContext();        
+        campaignHomeGui.refreshInformation();        
         this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
         CampaignGuiContextManager.getInstance().backToCampaignHome();
     }
 
     private void backToCampaign() throws PWCGException, PWCGException
     {
-        campaignHomeGui.createCampaignHomeContext();
+        campaignHomeGui.refreshInformation();
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }
     

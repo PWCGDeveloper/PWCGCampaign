@@ -255,7 +255,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
         }
         else
         {
-            home.createCampaignHomeContext();
+            home.refreshInformation();
         }
     }
     
@@ -305,7 +305,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
                 }
                 else if (action.equals("Cancel"))
                 {
-                    home.createCampaignHomeContext();
+                    home.refreshInformation();
                     CampaignGuiContextManager.getInstance().backToCampaignHome();
                 }
 			}

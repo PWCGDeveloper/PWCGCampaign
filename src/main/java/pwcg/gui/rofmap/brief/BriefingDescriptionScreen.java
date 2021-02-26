@@ -179,7 +179,7 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
     {
         Campaign campaign  = PWCGContext.getInstance().getCampaign();
         campaign.setCurrentMission(null);
-        campaignHomeGui.createCampaignHomeContext();
+        campaignHomeGui.refreshInformation();
         CampaignGuiContextManager.getInstance().backToCampaignHome();
     }
 
@@ -191,7 +191,7 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
         
         campaign.setCurrentMission(mission);
         
-        campaignHomeGui.createCampaignHomeContext();
+        campaignHomeGui.refreshInformation();
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }
     

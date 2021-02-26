@@ -126,7 +126,7 @@ public class AARInitiationScreen extends ImageResizingPanel implements ActionLis
             }
             else if (action.equals("Cancel"))
             {
-                home.createCampaignHomeContext();
+                home.refreshInformation();
                 CampaignGuiContextManager.getInstance().popFromContextStack();
             }
         }

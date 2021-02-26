@@ -50,7 +50,7 @@ public class VehicleDefinitionBoSTest
 
             assert (vehicleDefinition.getVehicleName() != null);
             assert (!vehicleDefinition.getVehicleName().isEmpty());
-            if (vehicleDefinition.getVehicleClass() == VehicleClass.Drifter || vehicleDefinition.getVehicleClass() == VehicleClass.DrifterAAA)
+            if (vehicleDefinition.getVehicleClass() == VehicleClass.Drifter)
             {
                 if (vehicleDefinition.getVehicleLength() < 100)
                 {

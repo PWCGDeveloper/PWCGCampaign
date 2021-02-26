@@ -158,14 +158,11 @@ public class SquadronPersonnel
     public SquadronMembers getPlayersByStatus(int status)
     {
         SquadronMembers activePlayers = new SquadronMembers();
-        for (SquadronMember squadronMember : squadronMembers.getSquadronMemberList())
+        for (SquadronMember player : getPlayers().getSquadronMemberList())
         {
-            if (squadronMember.getPilotActiveStatus() >= status)
+            if (player.getPilotActiveStatus() >= status)
             {
-                if (squadronMember.isPlayer())
-                {
-                    activePlayers.addToSquadronMemberCollection(squadronMember);
-                }
+                activePlayers.addToSquadronMemberCollection(player);
             }
         }
         return activePlayers;
@@ -183,4 +180,17 @@ public class SquadronPersonnel
 		}
 		return false;
 	}
+
+    public SquadronMembers getPlayers()
+    {
+        SquadronMembers players = new SquadronMembers();
+        for (SquadronMember squadronMember : squadronMembers.getSquadronMemberList())
+        {
+            if (squadronMember.isPlayer())
+            {
+                players.addToSquadronMemberCollection(squadronMember);
+            }
+        }
+        return players;
+    }
 }

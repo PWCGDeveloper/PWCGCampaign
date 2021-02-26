@@ -16,7 +16,7 @@ public class CoopPersonaDataBuilder
     {
         List<CoopDisplayRecord> coopDisplayRecords = new ArrayList<>();
 
-        for (SquadronMember squadronMember : campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
+        for (SquadronMember squadronMember : campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList())
         {
             try
             {

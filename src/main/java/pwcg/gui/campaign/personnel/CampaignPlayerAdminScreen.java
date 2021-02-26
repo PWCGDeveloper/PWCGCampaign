@@ -20,33 +20,30 @@ import pwcg.coop.model.CoopDisplayRecord;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.IRefreshableParentUI;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.activity.CampaignTransferScreen;
-import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.dialogs.ConfirmDialog;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.dialogs.PWCGMonitorSupport;
-import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.maingui.campaigngenerate.CampaignNewPilotScreen;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignCoopAdminScreen extends ImageResizingPanel implements ActionListener
+public class CampaignPlayerAdminScreen extends ImageResizingPanel implements ActionListener, IRefreshableParentUI
 {
     private static final long serialVersionUID = 1L;
     private Campaign campaign;
-    private CampaignAdminCoopPilotPanel coopPersonaInfoPanel;
-    private CampaignHomeScreen campaignHome;
+    private CampaignAdminPilotPanel personaInfoPanel;
+    private JPanel personaActionsPanel;
 
-    public CampaignCoopAdminScreen(CampaignHomeScreen campaignHome, Campaign campaign)
+    public CampaignPlayerAdminScreen(Campaign campaign)
     {
         super("");
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
-        this.campaignHome = campaignHome;
         this.campaign = campaign;
     }
 
@@ -59,6 +56,7 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
 
             this.add(BorderLayout.WEST, makeNavigatePanel());
             this.add(BorderLayout.CENTER, makeCenterPanel());
+            this.add(BorderLayout.EAST, makeRightPanel());
         }
         catch (Throwable e)
         {
@@ -69,9 +67,9 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
 
     public JPanel makeCenterPanel()
     {
-        coopPersonaInfoPanel = new CampaignAdminCoopPilotPanel(campaign);
-        coopPersonaInfoPanel.makePanels();
-        return coopPersonaInfoPanel;
+        personaInfoPanel = new CampaignAdminPilotPanel(campaign, this);
+        personaInfoPanel.makePanels();
+        return personaInfoPanel;
     }
 
     public JPanel makeNavigatePanel() throws PWCGException
@@ -85,23 +83,14 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
         JButton finishedAndCancel = PWCGButtonFactory.makeTranslucentMenuButton("Cancel", "Cancel", "Finished do not save results of coop administration", this);
         buttonPanel.add(finishedAndCancel);
 
-        for (int i = 0; i < 3; ++i)
-        {
-            JLabel space1 = PWCGButtonFactory.makeDummy();
-            buttonPanel.add(space1);
-        }
-
-        JPanel actionPanel = makeCoopAdminActionSelectPanel();
-
         JPanel navPanel = new JPanel(new BorderLayout());
         navPanel.setOpaque(false);
         navPanel.add(buttonPanel, BorderLayout.NORTH);
-        navPanel.add(actionPanel, BorderLayout.CENTER);
 
         return navPanel;
     }
 
-    public JPanel makeCoopAdminActionSelectPanel() throws PWCGException
+    public JPanel makeRightPanel() throws PWCGException
     {
 
         JPanel buttonPanel = new JPanel(new GridLayout(0, 1));
@@ -111,28 +100,24 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
         buttonPanel.add(label);
 
         buttonPanel.add(makeActionButton("Add Pilot", "Add a coop persona to the campaign"));
-        buttonPanel.add(makeActionButton("Transfer Pilot", "Transfer a coop persona to a new squadron"));
-        buttonPanel.add(makeActionButton("Retire Pilot", "Retire a coop persona. Cannot be undone"));
-
-        add(buttonPanel);
-
-        JPanel actionSelectionPanel = new JPanel(new BorderLayout());
-        actionSelectionPanel.setOpaque(false);
-        actionSelectionPanel.add(buttonPanel, BorderLayout.NORTH);
-
-        if (PWCGMonitorSupport.getFrameWidth() == MonitorSize.FRAME_LARGE)
+        if (getSquadronMemberForSelectedPilot() != null)
         {
-            JPanel actionPanel = new JPanel(new BorderLayout());
-            actionPanel.setOpaque(false);
-            actionPanel.add(actionSelectionPanel, BorderLayout.CENTER);
-
-            return actionPanel;
+            if (getSquadronMemberForSelectedPilot().getPilotActiveStatus() == SquadronMemberStatus.STATUS_ACTIVE)
+            {
+                buttonPanel.add(makeActionButton("Transfer Pilot", "Transfer a coop persona to a new squadron"));
+                buttonPanel.add(makeActionButton("Retire Pilot", "Retire a coop persona. Cannot be undone"));
+            }
+            else
+            {
+                buttonPanel.add(makeActionButton("Activate Pilot", "Activate a disabled pilot"));
+            }
         }
-        else
-        {
-            return actionSelectionPanel;
-        }
+        
 
+        personaActionsPanel = new JPanel(new BorderLayout());
+        personaActionsPanel.setOpaque(false);
+        personaActionsPanel.add(buttonPanel, BorderLayout.NORTH);
+        return personaActionsPanel;
     }
 
     private JButton makeActionButton(String buttonText, String tooltip) throws PWCGException
@@ -161,37 +146,19 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
 
             if (action.equalsIgnoreCase("Add Pilot"))
             {
-                SoundManager.getInstance().playSound("Typewriter.WAV");
-                CampaignNewPilotScreen addPilotDisplay = new CampaignNewPilotScreen(campaign, campaignHome, this);
-                addPilotDisplay.makePanels();
-                CampaignGuiContextManager.getInstance().pushToContextStack(addPilotDisplay);
+                addPilot();
             }
             else if (action.equalsIgnoreCase("Transfer Pilot"))
             {
-                SquadronMember pilot = getSquadronMemberForSelectedPilot();
-                if (pilot != null)
-                {
-                    SoundManager.getInstance().playSound("Typewriter.WAV");
-                    CampaignTransferScreen transferDisplay = new CampaignTransferScreen(campaignHome, pilot);
-                    transferDisplay.makePanels();
-                    CampaignGuiContextManager.getInstance().pushToContextStack(transferDisplay);
-                }
+                transferPilot();
             }
             else if (action.contains("Retire Pilot"))
             {
-                SquadronMember pilot = getSquadronMemberForSelectedPilot();
-                if (pilot != null)
-                {
-                    int result = ConfirmDialog.areYouSure("Confirm Retire " + pilot.getNameAndRank() + ".  Cannot be reversed");
-                    if (result == JOptionPane.YES_OPTION)
-                    {
-                        SoundManager.getInstance().playSound("Typewriter.WAV");
-                        pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_RETIRED, campaign.getDate(), null);
-                        campaign.write();
-
-                        redisplayUpdatedCoopAdminScreen(campaignHome);
-                    }
-                }
+                retirePilot();
+            }
+            else if (action.contains("Activate Pilot"))
+            {
+                activatePilot();
             }
         }
         catch (Throwable e)
@@ -201,23 +168,80 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
         }
     }
 
+    private void addPilot() throws PWCGException
+    {
+        SoundManager.getInstance().playSound("Typewriter.WAV");
+        CampaignNewPilotScreen addPilotDisplay = new CampaignNewPilotScreen(campaign, this);
+        addPilotDisplay.makePanels();
+        CampaignGuiContextManager.getInstance().pushToContextStack(addPilotDisplay);
+    }
+
+    private void transferPilot() throws PWCGException
+    {
+        SquadronMember pilot = getSquadronMemberForSelectedPilot();
+        if (pilot != null)
+        {
+            SoundManager.getInstance().playSound("Typewriter.WAV");
+            boolean passTime = false;
+            CampaignTransferScreen transferDisplay = new CampaignTransferScreen(campaign, pilot, this, passTime);
+            transferDisplay.makePanels();
+            CampaignGuiContextManager.getInstance().pushToContextStack(transferDisplay);
+        }
+    }
+
+    private void retirePilot() throws PWCGException
+    {
+        SquadronMember pilot = getSquadronMemberForSelectedPilot();
+        if (pilot != null)
+        {
+            int result = ConfirmDialog.areYouSure("Confirm Retire " + pilot.getNameAndRank() + ".  Cannot be reversed");
+            if (result == JOptionPane.YES_OPTION)
+            {
+                SoundManager.getInstance().playSound("Typewriter.WAV");
+                pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_RETIRED, campaign.getDate(), null);
+                campaign.write();
+
+                refreshInformation();
+            }
+        }
+    }
+
+    private void activatePilot() throws PWCGException
+    {
+        SquadronMember pilot = getSquadronMemberForSelectedPilot();
+        if (pilot != null)
+        {
+            int result = ConfirmDialog.areYouSure("Confirm Reactivation of " + pilot.getNameAndRank() + ".  Cannot be reversed");
+            if (result == JOptionPane.YES_OPTION)
+            {
+                SoundManager.getInstance().playSound("Typewriter.WAV");
+                pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, campaign.getDate(), null);
+                campaign.write();
+
+                refreshInformation();
+            }
+        }
+    }
+
     private void updateCoopUserRecordsForUserSelection() throws PWCGException
     {
-        Map<String, List<Integer>> personaByUser = coopPersonaInfoPanel.getUsersForPersonas();
+        Map<String, List<Integer>> personaByUser = personaInfoPanel.getUsersForPersonas();
         CoopUserCampaignMassUpdate.updateCoopUserRecordsForUserSelectionMakeANewClassAndTestIt(campaign, personaByUser);
     }
-    
-    public static void redisplayUpdatedCoopAdminScreen(CampaignHomeScreen campaignHome) throws PWCGException
+
+    public void refreshInformation() throws PWCGException
     {
-        CampaignGuiContextManager.getInstance().backToCampaignHome();
-        CampaignCoopAdminScreen adminCoopPilotDisplay = new CampaignCoopAdminScreen(campaignHome, campaignHome.getCampaign());
-        adminCoopPilotDisplay.makePanels();
-        CampaignGuiContextManager.getInstance().pushToContextStack(adminCoopPilotDisplay);
+        this.remove(personaActionsPanel);
+        this.add(BorderLayout.EAST, makeRightPanel());
+
+        personaInfoPanel.refreshInformation();
+        
+        refresh();
     }
 
     private SquadronMember getSquadronMemberForSelectedPilot() throws PWCGException
     {
-        CoopDisplayRecord coopDisplayRecord = coopPersonaInfoPanel.getSelectedPilot();
+        CoopDisplayRecord coopDisplayRecord = personaInfoPanel.getSelectedPilot();
         if (coopDisplayRecord != null)
         {
             SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(coopDisplayRecord.getPilotSerialNumber());
@@ -231,5 +255,11 @@ public class CampaignCoopAdminScreen extends ImageResizingPanel implements Actio
     {
         this.revalidate();
         this.repaint();
+    }
+
+    @Override
+    public JPanel getScreen()
+    {
+        return this;
     }
 }

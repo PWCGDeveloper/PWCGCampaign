@@ -242,7 +242,7 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
     {
         Campaign campaign  = PWCGContext.getInstance().getCampaign();
         campaign.setCurrentMission(null);        
-        campaignHomeGui.createCampaignHomeContext();
+        campaignHomeGui.refreshInformation();
         CampaignGuiContextManager.getInstance().backToCampaignHome();
     }
 

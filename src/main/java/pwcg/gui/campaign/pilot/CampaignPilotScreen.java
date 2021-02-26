@@ -318,7 +318,7 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
             }
             else if (action.startsWith("PilotFinished"))
             {
-                parent.createCampaignHomeContext();
+                parent.refreshInformation();
                 CampaignGuiContextManager.getInstance().popFromContextStack();
             }
             

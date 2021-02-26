@@ -20,10 +20,9 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.IRefreshableParentUI;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
-import pwcg.gui.campaign.home.CampaignHomeScreen;
-import pwcg.gui.campaign.personnel.CampaignCoopAdminScreen;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -36,21 +35,19 @@ public class CampaignNewPilotScreen extends ImageResizingPanel implements Action
     private Campaign campaign;
     private JButton newPilotCreateButton;
     private NewPilotDataEntryGUI dataEntry;
-    private CampaignHomeScreen campaignHome = null;
-    private CampaignCoopAdminScreen alternateParent = null;
     
     private NewPilotGeneratorDO newPilotGeneratorDO = new NewPilotGeneratorDO();
     private NewPilotState newPilotState;
+    private IRefreshableParentUI parentScreen;
 
-    public CampaignNewPilotScreen(Campaign campaign, CampaignHomeScreen parent, CampaignCoopAdminScreen alternateParent)
+    public CampaignNewPilotScreen(Campaign campaign, IRefreshableParentUI parentScreen)
     {
         super("");
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
         
         this.campaign = campaign;
-        this.campaignHome = parent;
-        this.alternateParent = alternateParent;        
+        this.parentScreen = parentScreen;        
     }
 
     public void makePanels() throws PWCGException 
@@ -124,15 +121,8 @@ public class CampaignNewPilotScreen extends ImageResizingPanel implements Action
             else if (action.equalsIgnoreCase("Create Pilot"))
             {
                 createPilot();
-                if (alternateParent != null)
-                {
-                    CampaignCoopAdminScreen.redisplayUpdatedCoopAdminScreen(campaignHome);
-                }
-                else if (campaignHome != null)
-                {
-                    campaignHome.createCampaignHomeContext();
-                    CampaignGuiContextManager.getInstance().popFromContextStack();
-                }
+                parentScreen.refreshInformation();
+                CampaignGuiContextManager.getInstance().popFromContextStack();
             }
         }
         catch (Exception e)

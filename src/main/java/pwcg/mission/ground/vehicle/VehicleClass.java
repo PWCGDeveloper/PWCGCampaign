@@ -25,7 +25,6 @@ public enum VehicleClass
 
     Car(false, "Car", GroundUnitType.TRANSPORT_UNIT),
     Drifter(false, "Barge", GroundUnitType.TRANSPORT_UNIT),
-    DrifterAAA(false, "Barge AA", GroundUnitType.TRANSPORT_UNIT),
     ShipCargo(false, "Cargo Ship", GroundUnitType.TRANSPORT_UNIT),
     ShipWarship(false, "Warship", GroundUnitType.TRANSPORT_UNIT),
     Submarine(false, "Submarine", GroundUnitType.TRANSPORT_UNIT),
@@ -73,7 +72,7 @@ public enum VehicleClass
     
     public static boolean isShip(VehicleClass vehicleClass)
     {
-        if (vehicleClass == Drifter || vehicleClass == DrifterAAA)
+        if (vehicleClass == Drifter)
         {
             return true;
         }

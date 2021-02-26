@@ -199,13 +199,13 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
     {
         Campaign campaign  = PWCGContext.getInstance().getCampaign();
         campaign.setCurrentMission(null);
-        campaignHomeGui.createCampaignHomeContext();
+        campaignHomeGui.refreshInformation();
         CampaignGuiContextManager.getInstance().backToCampaignHome();
     }
     
     private void backToCampaign() throws PWCGException
     {
-        campaignHomeGui.createCampaignHomeContext();
+        campaignHomeGui.refreshInformation();
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }
 

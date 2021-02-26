@@ -20,11 +20,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignAces;
-import pwcg.campaign.CampaignMode;
 import pwcg.campaign.TransferHandler;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
@@ -37,13 +37,14 @@ import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.IRefreshableParentUI;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
-import pwcg.gui.campaign.home.CampaignHomeScreen;
-import pwcg.gui.campaign.personnel.CampaignCoopAdminScreen;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
+import pwcg.gui.rofmap.event.AARReportMainPanel;
+import pwcg.gui.rofmap.event.AARReportMainPanel.EventPanelReason;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
@@ -55,25 +56,28 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 {
     private static final long serialVersionUID = 1L;
 
-    private CampaignHomeScreen campaignHome = null;
-	private Campaign campaign = null;	
-	private SquadronMember squadronMemberToTransfer = null;	
-    private JComboBox<String> cbService;
+    private SquadronMember squadronMemberToTransfer = null; 
+    private IRefreshableParentUI parentScreen = null;
+    private Campaign campaign = null;   
+    private boolean passTime = false;   
+    
+	private JComboBox<String> cbService;
 	private JComboBox<String> cbSquadron;
     private JComboBox<String> cbRole;
     private JTextArea tSquadronInfo;
 	private JButton acceptButton = null;
     private ArmedService service = null;
 
-	public CampaignTransferScreen  (CampaignHomeScreen campaignHome, SquadronMember squadronMemberToTransfer)
+	public CampaignTransferScreen  (Campaign campaign, SquadronMember squadronMemberToTransfer, IRefreshableParentUI parentScreen, boolean passTime)
 	{
         super("");
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
-		this.campaignHome = campaignHome;
+		this.parentScreen = parentScreen;
         this.squadronMemberToTransfer = squadronMemberToTransfer;
-		this.campaign = PWCGContext.getInstance().getCampaign();
+        this.campaign = campaign;
+        this.passTime = passTime;
 	}
 
 	public void makePanels() throws PWCGException  
@@ -465,13 +469,13 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
             else if (action.equalsIgnoreCase("Accept Transfer"))
             {
                 SoundManager.getInstance().playSound("Stapling.WAV");
-                if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
+                if (passTime)
                 {
-                    acceptSinglePlayerTransfer();
+                    acceptPlayerTransferWithTimePassed();
                 }
                 else
                 {
-                    acceptCoopPlayerTransfer();
+                    acceptPlayerTransferWithNoTimePassed();
                 }
             }
             else if (action.equalsIgnoreCase("Reject Transfer"))
@@ -487,18 +491,24 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 		}
 	}
 
-    private void acceptSinglePlayerTransfer() throws PWCGException 
+    private void acceptPlayerTransferWithTimePassed() throws PWCGException 
     {        
         SoundManager.getInstance().playSound("Stapling.WAV");
         TransferEvent transferEvent = transferPlayer();        
-        campaignHome.campaignTimePassedForTransfer(transferEvent.getLeaveTime(), transferEvent);
+
+        campaign.setCurrentMission(null);
+        AARCoordinator.getInstance().submitTransfer(campaign, transferEvent.getLeaveTime());
+        AARReportMainPanel eventDisplay = new AARReportMainPanel(campaign, parentScreen, EventPanelReason.EVENT_PANEL_REASON_TRANSFER, transferEvent);
+        eventDisplay.makePanels();
+        CampaignGuiContextManager.getInstance().pushToContextStack(eventDisplay);
     }
-    
-    private void acceptCoopPlayerTransfer() throws PWCGException
+
+    private void acceptPlayerTransferWithNoTimePassed() throws PWCGException
     {
         transferPlayer();
         campaign.write();
-        CampaignCoopAdminScreen.redisplayUpdatedCoopAdminScreen(campaignHome);
+        parentScreen.refreshInformation();
+        CampaignGuiContextManager.getInstance().popFromContextStack();
     }
 
     private TransferEvent transferPlayer() throws PWCGException

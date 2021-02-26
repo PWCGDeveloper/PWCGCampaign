@@ -139,7 +139,7 @@ public class CampaignReferencePilotSelectorScreen extends ImageResizingPanel imp
                     campaign.getCampaignData().setReferencePlayerSerialNumber(referencePlayer.getSerialNumber());
                 }
                 
-                campaignHomeGui.createCampaignHomeContext();
+                campaignHomeGui.refreshInformation();
                 CampaignGuiContextManager.getInstance().popFromContextStack();
             }
             else if (action.equalsIgnoreCase("CancelReferencePilot"))

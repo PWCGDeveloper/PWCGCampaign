@@ -15,9 +15,9 @@ import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.IRefreshableParentUI;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
-import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -28,8 +28,8 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
     private static final long serialVersionUID = 1L;
     
     private Campaign campaign;
-    private CampaignHomeScreen home = null;
-
+    private IRefreshableParentUI parentScreen;
+    
     private List<IAAREventPanel> eventPanelsToDisplay = new ArrayList<>();
     
     private JButton prevButton = null;
@@ -48,26 +48,26 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
         EVENT_PANEL_REASON_TRANSFER
     }
     
-    public AARReportMainPanel(Campaign campaign, CampaignHomeScreen home, EventPanelReason reasonToAdvanceTime)
+    public AARReportMainPanel(Campaign campaign, IRefreshableParentUI parentScreen, EventPanelReason reasonToAdvanceTime)
     {
         super("");
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
         this.campaign = campaign;
-        this.home = home;
+        this.parentScreen = parentScreen;
         this.reasonToAdvanceTime = reasonToAdvanceTime;
         this.transferEventForTimeDueToTransfer = null;
     }
     
-    public AARReportMainPanel(Campaign campaign, CampaignHomeScreen home, EventPanelReason reasonToAdvanceTime, TransferEvent transferEventForTimeDueToTransfer)
+    public AARReportMainPanel(Campaign campaign, IRefreshableParentUI parentScreen, EventPanelReason reasonToAdvanceTime, TransferEvent transferEventForTimeDueToTransfer)
     {
         super("");
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
         this.campaign = campaign;
-        this.home = home;
+        this.parentScreen = parentScreen;
         this.reasonToAdvanceTime = reasonToAdvanceTime;
         this.transferEventForTimeDueToTransfer = transferEventForTimeDueToTransfer;
     }
@@ -254,8 +254,8 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
                 IAAREventPanel thisPanel = eventPanelsToDisplay.get(currentPanelIndex);
                 thisPanel.finished();
                 CampaignGuiContextManager.getInstance().backToCampaignHome();
-                home.createCampaignHomeContext();
-                CampaignGuiContextManager.getInstance().refreshCurrentContext(home);
+                parentScreen.refreshInformation();
+                CampaignGuiContextManager.getInstance().refreshCurrentContext(parentScreen.getScreen());
             }
         }
         catch (Exception e)
