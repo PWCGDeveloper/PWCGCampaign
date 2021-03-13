@@ -1,8 +1,12 @@
 package pwcg.mission;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import pwcg.campaign.context.MapArea;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -11,6 +15,13 @@ import pwcg.product.bos.map.moscow.MoscowMapUsableArea;
 
 public class MissionCenterBuilderFrontLinesTest
 {
+    @Before
+    public void setup() throws PWCGException
+    {
+        PWCGContext.setProduct(PWCGProduct.BOS);
+        PWCGContext.getInstance().setCurrentMap(FrontMapIdentifier.MOSCOW_MAP);
+    }
+    
     @Test
     public void testNoAdjustmment() throws PWCGException
     {

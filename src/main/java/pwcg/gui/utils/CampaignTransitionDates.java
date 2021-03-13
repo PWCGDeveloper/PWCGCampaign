@@ -59,14 +59,12 @@ public class CampaignTransitionDates
     private void addMovingFrontDates(Map<Date, Date> sortedDates) throws PWCGException
     {
         String mapPath = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + PWCGContext.getInstance().getCurrentMap().getMapName();      
-        directoryReader.sortilesInDir(mapPath);
-        for (String filename : directoryReader.getDirectories()) 
+        directoryReader.sortFilesInDir(mapPath);
+        for (File frontDirectory : directoryReader.getDirectories()) 
         {
-            String dirPath = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + filename;
-            File child = new File(dirPath);
-            if (child.getName().contains("19"))
+            if (frontDirectory.getName().contains("19"))
             {
-                String dateStr = child.getName();
+                String dateStr = frontDirectory.getName();
                 Date date = DateUtils.getDateYYYYMMDD(dateStr);
                 sortedDates.put(date, date);
             }

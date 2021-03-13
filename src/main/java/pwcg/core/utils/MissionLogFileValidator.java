@@ -22,12 +22,12 @@ public class MissionLogFileValidator
 		try
 		{
 		    String simulatorDataDir = PWCGDirectorySimulatorManager.getInstance().getSimulatorDataDir();
-            directoryReader.sortilesInDir(simulatorDataDir);
-            for (String filename : directoryReader.getFiles()) 
+            directoryReader.sortFilesInDir(simulatorDataDir);
+            for (File file : directoryReader.getFiles()) 
             {
-                if (filename.toLowerCase().contains("startup.cfg"))
+                if (file.getName().toLowerCase().contains("startup.cfg"))
                 {
-                    String configFilePath = simulatorDataDir + filename;
+                    String configFilePath = simulatorDataDir + file;
                     analyzeFileContents(configFilePath);
                 }
             }

@@ -1,11 +1,13 @@
 package pwcg.aar.inmission.phase1.parse;
 
+import java.io.File;
 import java.util.List;
 
 import pwcg.aar.prelim.AARHeaderParser;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.FileUtils;
 
 public class AARMissionFileLogResultMatcher
 {
@@ -18,15 +20,15 @@ public class AARMissionFileLogResultMatcher
         this.aarHeaderParser = aarHeaderParser;
     }
 
-    public AARMissionLogFileSet matchMissionFileAndLogFile(PwcgMissionData pwcgMissionData, List<String> sortedLogSets) throws PWCGException 
+    public AARMissionLogFileSet matchMissionFileAndLogFile(PwcgMissionData pwcgMissionData, List<File> sortedLogSets) throws PWCGException 
     {
-    	for (String logFileName : sortedLogSets)
+    	for (File logFile : sortedLogSets)
     	{
-            String missionFileNameFromLogs = aarHeaderParser.parseHeaderOnly(campaign.getCampaignData().getName(), logFileName);
+            String missionFileNameFromLogs = aarHeaderParser.parseHeaderOnly(campaign.getCampaignData().getName(), logFile);
             String missionFileNameFromPwcg = pwcgMissionData.getMissionHeader().getMissionFileName();
             if (missionFileNameFromPwcg.toLowerCase().equalsIgnoreCase(missionFileNameFromLogs.toLowerCase()))
             {
-                AARMissionLogFileSet logFileMissionFileSet = makeMissionLogFileSet(logFileName, pwcgMissionData);
+                AARMissionLogFileSet logFileMissionFileSet = makeMissionLogFileSet(logFile, pwcgMissionData);
                 if (AARLogSetValidator.isLogSetValid(campaign, logFileMissionFileSet))
                 {
                     return logFileMissionFileSet;
@@ -37,10 +39,10 @@ public class AARMissionFileLogResultMatcher
         return null;
     }
 
-    private AARMissionLogFileSet makeMissionLogFileSet(String logFileName, PwcgMissionData pwcgMissionData) throws PWCGException
+    private AARMissionLogFileSet makeMissionLogFileSet(File logFile, PwcgMissionData pwcgMissionData) throws PWCGException
     {
         AARMissionLogFileSet logFileMissionFile = new AARMissionLogFileSet();
-        logFileMissionFile.setLogFileName(logFileName);                    
+        logFileMissionFile.setLogFileName(FileUtils.stripFileExtension(logFile.getName()));                    
         return logFileMissionFile;
     }
 }

@@ -82,7 +82,7 @@ public class MissionTruckConvoyBuilder extends MissionUnitBuilder
         return bridgesForSide;
     }
     
-    private ArrayList<Bridge> sortBridgesDistanceFromMission(ArrayList<Bridge> bridgesForSide)
+    private ArrayList<Bridge> sortBridgesDistanceFromMission(ArrayList<Bridge> bridgesForSide) throws PWCGException
     {
         Map<Double, Bridge> sortedStationsByDistance = new TreeMap<>();
         

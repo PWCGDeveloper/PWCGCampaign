@@ -1,10 +1,8 @@
 package pwcg.testutils;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.MapFinderForCampaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.CampaignRemover;
 
@@ -27,8 +25,7 @@ public class CampaignCache
             campaign = bosCampaignCache.makeCampaignForceCreation(campaignProfile);
         }
         
-        FrontMapIdentifier mapIdentifier = MapFinderForCampaign.findMapForCampaign(campaign);
-        PWCGContext.getInstance().changeContext(mapIdentifier);
+        PWCGContext.getInstance().setCampaign(campaign);
         return campaign;
     }
 }

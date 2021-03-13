@@ -1,5 +1,6 @@
 package pwcg.aar.prelim;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,18 +22,18 @@ public class AARPwcgMissionFinder
     
     public List<PwcgMissionData> getSortedPwcgMissionsForCampaign() throws PWCGException
     {
-        directoryReader.sortilesInDir(CampaignMissionIOJson.buildMissionDataPath(campaign));
-        List<String> pwcgMissionFileNames = directoryReader.getSortedFilesWithFilter(CampaignMissionIOJson.MISSION_DATA_SUFFIX);
+        directoryReader.sortFilesInDir(CampaignMissionIOJson.buildMissionDataPath(campaign));
+        List<File> pwcgMissionFileNames = directoryReader.getSortedFilesWithFilter(CampaignMissionIOJson.MISSION_DATA_SUFFIX);
 
         return loadPwcgMissionDataSets(pwcgMissionFileNames);
     }
 
-    private List<PwcgMissionData> loadPwcgMissionDataSets(List<String> pwcgMissionFileNames) throws PWCGException
+    private List<PwcgMissionData> loadPwcgMissionDataSets(List<File> pwcgMissionFiles) throws PWCGException
     {
     	List<PwcgMissionData> sortedPwcgMissionData = new ArrayList<>();
-        for (String pwcgMissionFileName : pwcgMissionFileNames) 
+        for (File pwcgMissionFile : pwcgMissionFiles) 
         {
-            PwcgMissionData pwcgMissionData = CampaignMissionIOJson.readJson(campaign, pwcgMissionFileName);
+            PwcgMissionData pwcgMissionData = CampaignMissionIOJson.readJson(campaign, pwcgMissionFile.getName());
             sortedPwcgMissionData.add(pwcgMissionData);
         }
         

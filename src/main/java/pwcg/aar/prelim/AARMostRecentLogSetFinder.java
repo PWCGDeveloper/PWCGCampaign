@@ -1,5 +1,6 @@
 package pwcg.aar.prelim;
 
+import java.io.File;
 import java.util.Date;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class AARMostRecentLogSetFinder
         pwcgMissionData = getMissionDataForCampaignDate();
         if (pwcgMissionData != null)
         {
-            List<String> sortedLogSets = logSetFinder.getSortedLogFileSets();
+            List<File> sortedLogSets = logSetFinder.getSortedLogFileSets();
             aarLogFileMissionFile = matcher.matchMissionFileAndLogFile(pwcgMissionData, sortedLogSets);
         }
     }

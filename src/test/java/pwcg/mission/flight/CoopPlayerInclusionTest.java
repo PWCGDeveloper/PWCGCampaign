@@ -32,7 +32,6 @@ public class CoopPlayerInclusionTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         coopCampaign = CampaignCache.makeCampaign(SquadronTestProfile.COOP_COMPETITIVE_PROFILE);
-        PWCGContext.getInstance().setCampaign(coopCampaign);
         generateCoopUsers();
         generateHumanPilots();
         removeCoopUsers();

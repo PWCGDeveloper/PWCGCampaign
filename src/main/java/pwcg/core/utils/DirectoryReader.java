@@ -9,10 +9,10 @@ import pwcg.core.exception.PWCGException;
 
 public class DirectoryReader
 {
-    private List<String> directories = new ArrayList<>();
-    private List<String> files = new ArrayList<>();
+    private List<File> directories = new ArrayList<>();
+    private List<File> files = new ArrayList<>();
 
-    public void sortilesInDir(String dirName) throws PWCGException
+    public void sortFilesInDir(String dirName) throws PWCGException
     {
         File dir = new File(dirName);
         if (dir.exists())
@@ -28,53 +28,53 @@ public class DirectoryReader
         }
     }
 
-    private List<String> sortDirectoryContents(File[] children)
+    private List<File> sortDirectoryContents(File[] children)
     {
         for (File child : children)
         {
             if (child.isDirectory())
             {
-                directories.add(child.getName());
+                directories.add(child);
             }
             else
             {
-                files.add(child.getName());
+                files.add(child);
             }
         }
         
         return directories;
     }
 
-    public List<String> getSortedFilesWithFilter(String filter)
+    public List<File> getSortedFilesWithFilter(String filter)
     {
-        TreeMap <String, String> sortedFiles = new TreeMap<>();
+        TreeMap <String, File> sortedFiles = new TreeMap<>();
 
-        for (String filename : files)
+        for (File file : files)
         {
-            if (filename.contains(filter))
+            if (file.getName().contains(filter))
             {
-            	sortedFiles.put(filename, filename);
+            	sortedFiles.put(file.getName(), file);
             }
         }
         
-        List<String> results = new ArrayList<>();
+        List<File> results = new ArrayList<>();
         results.addAll(sortedFiles.descendingMap().values());
         return results;
     }
 
-    public List<String> getDirectories()
+    public List<File> getDirectories()
     {
         return directories;
     }
 
-    public List<String> getFiles()
+    public List<File> getFiles()
     {
         return files;
     }
 
-    public List<String> getAllContent()
+    public List<File> getAllContent()
     {
-        List<String> allContent = new ArrayList<>();
+        List<File> allContent = new ArrayList<>();
         allContent.addAll(directories);
         allContent.addAll(files);
         return allContent;

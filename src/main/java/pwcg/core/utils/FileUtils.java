@@ -88,11 +88,10 @@ public class FileUtils
 
     }
 
-    public static void deleteFilesByFileName(List<String> filesToDelete)
+    public static void deleteFiles(List<File> filesToDelete)
     {
-        for (String pathname : filesToDelete)
+        for (File file : filesToDelete)
         {
-            File file = new File(pathname);
             if (file.exists())
             {
                 file.delete();
@@ -182,14 +181,13 @@ public class FileUtils
         }
     }
 
-    public static long ageOfFilesInMillis(String pathname) throws PWCGException
+    public static long ageOfFilesInMillis(File file) throws PWCGException
     {
-        File file = new File(pathname);
         if (file.exists())
         {
             try
             {
-                Path path = FileSystems.getDefault().getPath(pathname);
+                Path path = FileSystems.getDefault().getPath(file.getPath());
                 BasicFileAttributes attr = Files.readAttributes(path, BasicFileAttributes.class);
                 FileTime fileTime = attr.creationTime();
                 return fileTime.toMillis();
@@ -197,12 +195,12 @@ public class FileUtils
             catch (IOException e)
             {
                 PWCGLogger.logException(e);
-                throw new PWCGException("Could not get  file time for file " + pathname);
+                throw new PWCGException("Could not get  file time for file " + file.getPath());
             }
         }
         else
         {
-            throw new PWCGException("Could not get  file time.  File does not exist " + pathname);
+            throw new PWCGException("Could not get  file time.  File does not exist " + file.getPath());
         }
     }
 

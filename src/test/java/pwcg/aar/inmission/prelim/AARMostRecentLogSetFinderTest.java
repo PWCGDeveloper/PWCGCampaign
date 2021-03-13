@@ -1,5 +1,6 @@
 package pwcg.aar.inmission.prelim;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,8 +36,8 @@ public class AARMostRecentLogSetFinderTest
     @Mock private AARMissionLogFileSet aarLogFileMissionFile;
 
     @Mock private Campaign campaign;
-    
-    private List<String> sortedLogSets = new ArrayList<String>();
+
+    private List<File> sortedLogSets = new ArrayList<>();
     
     @Before
     public void setup() throws PWCGException
@@ -56,7 +57,7 @@ public class AARMostRecentLogSetFinderTest
         missionDataForCampaign.add(evalPwcgMissionData1);
         Mockito.when(pwcgMissionFinder.getSortedPwcgMissionsForCampaign()).thenReturn(missionDataForCampaign);
     }
-    
+
     @Test
     public void testGetMostRecentLogSet () throws PWCGException
     {
@@ -66,10 +67,6 @@ public class AARMostRecentLogSetFinderTest
         List<PwcgMissionData> sortedPwcgMissionDataForCampaign = new ArrayList<>();
         sortedPwcgMissionDataForCampaign.add(evalPwcgMissionData2);
         sortedPwcgMissionDataForCampaign.add(evalPwcgMissionData1);
-
-        sortedLogSets.add("LogSet1");
-        sortedLogSets.add("LogSet2");
-        sortedLogSets.add("LogSet3");
 
         AARMostRecentLogSetFinder mostRecentogSetFinder = new AARMostRecentLogSetFinder(campaign, matcher, logSetFinder, pwcgMissionFinder);
         mostRecentogSetFinder.determineMostRecentAARLogFileMissionDataSetForCampaign();
@@ -89,10 +86,6 @@ public class AARMostRecentLogSetFinderTest
         sortedPwcgMissionDataForCampaign.add(evalPwcgMissionData2);
         sortedPwcgMissionDataForCampaign.add(evalPwcgMissionData1);
 
-        sortedLogSets.add("LogSet1");
-        sortedLogSets.add("LogSet2");
-        sortedLogSets.add("LogSet3");
-
         AARMostRecentLogSetFinder mostRecentogSetFinder = new AARMostRecentLogSetFinder(campaign, matcher, logSetFinder, pwcgMissionFinder);
         mostRecentogSetFinder.determineMostRecentAARLogFileMissionDataSetForCampaign();
         PwcgMissionData missionData = mostRecentogSetFinder.getPwcgMissionData();
@@ -109,10 +102,6 @@ public class AARMostRecentLogSetFinderTest
         List<PwcgMissionData> sortedPwcgMissionDataForCampaign = new ArrayList<>();
         sortedPwcgMissionDataForCampaign.add(evalPwcgMissionData2);
         sortedPwcgMissionDataForCampaign.add(evalPwcgMissionData1);
-
-        sortedLogSets.add("LogSet1");
-        sortedLogSets.add("LogSet2");
-        sortedLogSets.add("LogSet3");
 
         AARMostRecentLogSetFinder mostRecentogSetFinder = new AARMostRecentLogSetFinder(campaign, matcher, logSetFinder, pwcgMissionFinder);
         mostRecentogSetFinder.determineMostRecentAARLogFileMissionDataSetForCampaign();

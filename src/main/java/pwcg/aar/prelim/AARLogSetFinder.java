@@ -1,8 +1,9 @@
 package pwcg.aar.prelim;
 
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.TreeMap;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGDirectorySimulatorManager;
@@ -18,37 +19,48 @@ public class AARLogSetFinder
         this.directoryReader = directoryReader;
     }
     
-    public List<String> getSortedLogFileSets() throws PWCGException
+    public List<File> getSortedLogFileSets() throws PWCGException
     {
-        List<String> sortedLogSetsFromData = getLogFilesFromData();
-        List<String> sortedLogSetsFromUserDefined = getLogFilesFromUserDefined();
+        TreeMap<String, File> sortedLogSetsFromData = getLogFilesFromData();
+        TreeMap<String, File> sortedLogSetsFromUserDefined = getLogFilesFromUserDefined();
 
-        List<String> sortedLogSets = new ArrayList<>();
-        sortedLogSets.addAll(sortedLogSetsFromData);
-        sortedLogSets.addAll(sortedLogSetsFromUserDefined);
-        Collections.sort(sortedLogSets);
-        Collections.reverse(sortedLogSets);
-        return sortedLogSets;
+        TreeMap<String, File> sortedLogSets = new TreeMap<>();
+        sortedLogSets.putAll(sortedLogSetsFromData);
+        sortedLogSets.putAll(sortedLogSetsFromUserDefined);
+        
+        return new ArrayList<File>(sortedLogSets.values());
     }
 
-    private List<String> getLogFilesFromData() throws PWCGException
+    private TreeMap<String, File> getLogFilesFromData() throws PWCGException
     {
         String simulatorDataDir = PWCGDirectorySimulatorManager.getInstance().getSimulatorDataDir();
-        directoryReader.sortilesInDir(simulatorDataDir);
-        List<String> sortedLogSetsFromData = directoryReader.getSortedFilesWithFilter("[0].txt");
-        return sortedLogSetsFromData;
+        return getLogFilesFromDirectory(simulatorDataDir);
     }
 
-    private List<String> getLogFilesFromUserDefined() throws PWCGException
+    private TreeMap<String, File> getLogFilesFromUserDefined() throws PWCGException
     {
-        List<String> sortedLogSetsFromUserDefined = new ArrayList<>();
-
         String userLogDir = PWCGContext.getInstance().getMissionLogDirectory();
-        if (!userLogDir.isEmpty())
+        return getLogFilesFromDirectory(userLogDir);
+    }
+
+    private TreeMap<String, File> getLogFilesFromDirectory(String logFileDirectoryName) throws PWCGException
+    {
+        if (!logFileDirectoryName.isEmpty())
         {
-            directoryReader.sortilesInDir(userLogDir);
-            sortedLogSetsFromUserDefined = directoryReader.getSortedFilesWithFilter("[0].txt");
+            directoryReader.sortFilesInDir(logFileDirectoryName);
+            List<File> logSetsFromData = directoryReader.getSortedFilesWithFilter("[0].txt");
+            return sortLogSets(logSetsFromData);
         }
-        return sortedLogSetsFromUserDefined;
+        return new TreeMap<>();
+    }
+
+    private TreeMap<String, File> sortLogSets(List<File> logSetsFromData)
+    {
+        TreeMap<String, File> sortedLogSets = new TreeMap<>();
+        for (File logSet : logSetsFromData)
+        {
+            sortedLogSets.put(logSet.getName(), logSet);
+        }
+        return sortedLogSets;
     }
 }

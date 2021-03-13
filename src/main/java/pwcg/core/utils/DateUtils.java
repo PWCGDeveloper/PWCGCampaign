@@ -289,11 +289,9 @@ public class DateUtils
     		String inputDir = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir();		
     		
     		DirectoryReader directoryReader = new DirectoryReader();
-            directoryReader.sortilesInDir(inputDir);
-            for (String frontDateDirName : directoryReader.getDirectories()) 
+            directoryReader.sortFilesInDir(inputDir);
+            for (File frontDateDir : directoryReader.getDirectories()) 
             {
-                String frontDateDirs = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + frontDateDirName;
-                File frontDateDir = new File(frontDateDirs);
                 if (frontDateDir.isDirectory() && frontDateDir.getName().contains("19"))
                 {
                     DateFormat df = new SimpleDateFormat("yyyyMMdd");

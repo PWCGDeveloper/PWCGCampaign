@@ -74,7 +74,7 @@ public class MissionDrifterBuilder extends MissionUnitBuilder
         return drifterPositionsForSide;
     }
     
-    private ArrayList<PWCGLocation> sortCoordinatesDistanceFromMission(ArrayList<PWCGLocation> drifterPositionsForSide)
+    private ArrayList<PWCGLocation> sortCoordinatesDistanceFromMission(ArrayList<PWCGLocation> drifterPositionsForSide) throws PWCGException
     {
         Map<Double, PWCGLocation> sortedStationsByDistance = new TreeMap<>();
         

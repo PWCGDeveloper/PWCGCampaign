@@ -1,6 +1,7 @@
 package pwcg.aar.inmission.phase1.parse;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -30,13 +31,13 @@ public class AARLogReader
             String selectedFileSet = aarLogFileMissionFile.getLogFileName();
                         
             aarLogFileSetFactory.determineMissionResultsFileForRequestedFileSet(selectedFileSet);
-            List<String> aarLogFilesForThisSet = aarLogFileSetFactory.getLogFileSets();
+            List<File> aarLogFilesForThisSet = aarLogFileSetFactory.getLogFileSets();
             if (aarLogFilesForThisSet.size() == 0)
             {
                 throw new PWCGException("No files found for log set " + selectedFileSet);
             }
             
-            for (String filename : aarLogFilesForThisSet) 
+            for (File filename : aarLogFilesForThisSet) 
             {
                 readLogFile(filename);
             }
@@ -57,9 +58,9 @@ public class AARLogReader
         }
     }
 
-    private void readLogFile(String filename) throws FileNotFoundException, IOException, PWCGException
+    private void readLogFile(File file) throws FileNotFoundException, IOException, PWCGException
     {
-        BufferedReader reader = new BufferedReader(new FileReader(filename));
+        BufferedReader reader = new BufferedReader(new FileReader(file));
         String line;
 
         while ((line = reader.readLine()) != null) 

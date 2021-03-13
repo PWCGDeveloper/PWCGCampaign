@@ -1,5 +1,6 @@
 package pwcg.aar.inmission.phase1.parse;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +12,7 @@ import pwcg.core.utils.DirectoryReader;
 
 public class AARLogFileSetFactory
 {
-    private Map<Integer, String> logFileSetsAvailable = new TreeMap<Integer, String>();
+    private Map<Integer, File> logFileSetsAvailable = new TreeMap<>();
     private DirectoryReader directoryReader = new DirectoryReader();
     
     public AARLogFileSetFactory()
@@ -28,22 +29,20 @@ public class AARLogFileSetFactory
     {
         String fileSetIdentifier = extractMissionDateFromMissionLogFileName(rootLogFileName);
         String logFileDir = AARLogFileLocationFinder.determineLogFileLocation(rootLogFileName);
-        directoryReader.sortilesInDir(logFileDir);
-        for (String logFileName : directoryReader.getFiles()) 
+        directoryReader.sortFilesInDir(logFileDir);
+        for (File logFile : directoryReader.getFiles()) 
         {
-            if (logFileName.contains(fileSetIdentifier))
+            if (logFile.getName().contains(fileSetIdentifier))
             {
-                addLogFileToResultSet( logFileName);
+                addLogFileToResultSet(logFile);
             }
         }
     }
 
-    private void addLogFileToResultSet(String rootLogFileName) throws PWCGException
+    private void addLogFileToResultSet(File logFile) throws PWCGException
     {
-        String logFileDir = AARLogFileLocationFinder.determineLogFileLocation(rootLogFileName);
-        int fileIndex = extractMissionSequenceFromMissionLogFileName(rootLogFileName);
-        String filepath = logFileDir + rootLogFileName;
-        logFileSetsAvailable.put(fileIndex, filepath);
+        int fileIndex = extractMissionSequenceFromMissionLogFileName(logFile.getName());
+        logFileSetsAvailable.put(fileIndex, logFile);
     }
 
     private int extractMissionSequenceFromMissionLogFileName(String rootLogFileName)
@@ -65,9 +64,9 @@ public class AARLogFileSetFactory
         return fileSetIdentifier;
     }
 
-    public List<String> getLogFileSets()
+    public List<File> getLogFileSets()
     {
-        return new ArrayList<String>(logFileSetsAvailable.values());
+        return new ArrayList<File>(logFileSetsAvailable.values());
     }
 
     public DirectoryReader getDirectoryReader()

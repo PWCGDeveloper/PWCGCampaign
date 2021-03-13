@@ -14,6 +14,7 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.plane.Equipment;
@@ -39,7 +40,8 @@ public class EnemySquadronFinderTest
     public void setupForTestEnvironment() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        
+        PWCGContext.getInstance().setCurrentMap(FrontMapIdentifier.STALINGRAD_MAP);
+
         ICountry squadronCountry = CountryFactory.makeCountryByCountry(Country.GERMANY);
 
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420801"));

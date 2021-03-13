@@ -1,5 +1,6 @@
 package pwcg.aar.ui.events;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -55,15 +56,15 @@ public class NewspaperEventGenerator
     private List<String> getDateBasedNewspaperFiles(String newspaperDir) throws PWCGException
     {
         DirectoryReader directoryReader = new DirectoryReader();
-        directoryReader.sortilesInDir(newspaperDir);
-        List<String> newspaperFiles = directoryReader.getFiles();
+        directoryReader.sortFilesInDir(newspaperDir);
+        List<File> newspaperFiles = directoryReader.getFiles();
         
         List<String> dateBasedNewspaperFiles = new ArrayList<>();
-        for (String filename : newspaperFiles)
+        for (File newspaperFile : newspaperFiles)
         {
-            if (filename.startsWith("19"))
+            if (newspaperFile.getName().startsWith("19"))
             {
-                dateBasedNewspaperFiles.add(filename);
+                dateBasedNewspaperFiles.add(newspaperFile.getName());
             }
         }
         

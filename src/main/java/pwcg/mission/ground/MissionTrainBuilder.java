@@ -74,7 +74,7 @@ public class MissionTrainBuilder extends MissionUnitBuilder
         return stationsForSide;
     }
     
-    private ArrayList<Block> sortTrainStationsByDistanceFromMission(ArrayList<Block> stationsForSide)
+    private ArrayList<Block> sortTrainStationsByDistanceFromMission(ArrayList<Block> stationsForSide) throws PWCGException
     {
         Map<Double, Block> sortedStationsByDistance = new TreeMap<>();
         

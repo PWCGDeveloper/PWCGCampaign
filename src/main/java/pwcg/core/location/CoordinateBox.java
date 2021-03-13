@@ -13,26 +13,12 @@ public class CoordinateBox
 {
     private Coordinate sw = new Coordinate();
     private Coordinate ne = new Coordinate();
-    private Coordinate se = new Coordinate();
-    private Coordinate nw = new Coordinate();
-    private Coordinate center = new Coordinate();
-    private Coordinate north = new Coordinate();
-    private Coordinate south = new Coordinate();
-    private Coordinate east = new Coordinate();
-    private Coordinate west = new Coordinate();
     
     public static CoordinateBox copy(CoordinateBox source)
     {
         CoordinateBox copy = new CoordinateBox();
         copy.sw = source.sw.copy();
         copy.ne = source.ne.copy();
-        copy.se = source.se.copy();
-        copy.nw = source.nw.copy();
-        copy.center = source.center.copy();
-        copy.north = source.north.copy();
-        copy.south = source.south.copy();
-        copy.east = source.east.copy();
-        copy.west = source.west.copy();
         
         return copy;
     }
@@ -42,7 +28,6 @@ public class CoordinateBox
         CoordinateBox coordinateBox = new CoordinateBox();
         coordinateBox.sw = sw;
         coordinateBox.ne = ne;
-        coordinateBox.calcBoxImportantLocations();        
         return coordinateBox;
     }
     
@@ -51,7 +36,6 @@ public class CoordinateBox
         CoordinateBox coordinateBox = new CoordinateBox();
         coordinateBox.calculateSW(center, boxSize);
         coordinateBox.calculateNE(center, boxSize);
-        coordinateBox.calcBoxImportantLocations();
         return coordinateBox;
     }
     
@@ -60,7 +44,6 @@ public class CoordinateBox
         CoordinateBox coordinateBox = new CoordinateBox();
         coordinateBox.calculateSWCornerFromTwoCoordinates(coordinate1, coordinate2);
         coordinateBox.calculateNECornerFromTwoCoordinates(coordinate1, coordinate2);
-        coordinateBox.calcBoxImportantLocations();
         return coordinateBox;
     }
     
@@ -68,7 +51,6 @@ public class CoordinateBox
     {
         CoordinateBox coordinateBox = new CoordinateBox();
         coordinateBox.setBoxCornersFromCoordinates(coordinates);
-        coordinateBox.calcBoxImportantLocations();
         return coordinateBox;
     }
 
@@ -134,8 +116,6 @@ public class CoordinateBox
 
         ne.setXPos(ne.getXPos() + meters);
         ne.setZPos(ne.getZPos() + meters);
-        
-        calcBoxImportantLocations();        
     }
 
     public void expandBoxCornersFromCoordinates(List<Coordinate> coordinates) throws PWCGException
@@ -192,39 +172,12 @@ public class CoordinateBox
         return targetCoord;
     }
 
-    private void calcBoxImportantLocations() throws PWCGException
-    {
-        calcSouthEast();
-        calcNorthWest();
-        calcCenterOfBox();
-        calcNorthOfBox();
-        calcSouthOfBox();
-        calcEastOfBox();
-        calcWestOfBox();
-    }
-    
-    private Coordinate calcSouthEast() throws PWCGException
-    {
-        se = new Coordinate();
-        se.setXPos(sw.getXPos());
-        se.setZPos(ne.getZPos());
-        return se;
-    }
-
-    private Coordinate calcNorthWest() throws PWCGException
-    {
-        nw = new Coordinate();
-        nw.setXPos(ne.getXPos());
-        nw.setZPos(sw.getZPos());
-        return nw;
-    }
-
     private Coordinate calcCenterOfBox() throws PWCGException
     {
         double xDistance = ne.getXPos() - sw.getXPos();
         double zDistance = ne.getZPos() - sw.getZPos();
         
-        center = new Coordinate();
+        Coordinate center = new Coordinate();
         center.setXPos(sw.getXPos() + (xDistance / 2));
         center.setZPos(sw.getZPos() + (zDistance / 2));
         return center;
@@ -232,34 +185,50 @@ public class CoordinateBox
     
     private Coordinate calcNorthOfBox() throws PWCGException
     {
-        north = new Coordinate();
+        Coordinate north = new Coordinate();
         north.setXPos(ne.getXPos());
-        north.setZPos(center.getZPos());
+        north.setZPos(calcCenterOfBox().getZPos());
         return north;
     }
 
     private Coordinate calcSouthOfBox() throws PWCGException
     {
-        south = new Coordinate();
+        Coordinate south = new Coordinate();
         south.setXPos(sw.getXPos());
-        south.setZPos(center.getZPos());
+        south.setZPos(calcCenterOfBox().getZPos());
         return south;
     }
 
     private Coordinate calcEastOfBox() throws PWCGException
     {
-        east = new Coordinate();
-        east.setXPos(center.getXPos());
+        Coordinate east = new Coordinate();
+        east.setXPos(calcCenterOfBox().getXPos());
         east.setZPos(ne.getZPos());
         return east;
     }
 
     private Coordinate calcWestOfBox() throws PWCGException
     {
-        west = new Coordinate();
-        west.setXPos(center.getXPos());
+        Coordinate west = new Coordinate();
+        west.setXPos(calcCenterOfBox().getXPos());
         west.setZPos(sw.getZPos());
         return west;
+    }
+
+    private Coordinate calcSouthEastOfBox() throws PWCGException
+    {
+        Coordinate east = new Coordinate();
+        east.setXPos(sw.getXPos());
+        east.setZPos(ne.getZPos());
+        return east;
+    }
+
+    private Coordinate calcNorthWestOfBox() throws PWCGException
+    {
+        Coordinate east = new Coordinate();
+        east.setXPos(ne.getXPos());
+        east.setZPos(sw.getZPos());
+        return east;
     }
 
     private void calculateSWCornerFromTwoCoordinates (Coordinate coordinate1, Coordinate coordinate2) throws PWCGException
@@ -373,38 +342,38 @@ public class CoordinateBox
         return ne.copy();
     }
 
-    public Coordinate getSE()
+    public Coordinate getSE() throws PWCGException
     {
-        return se.copy();
+        return this.calcSouthEastOfBox();
     }
 
-    public Coordinate getNW()
+    public Coordinate getNW() throws PWCGException
     {
-        return nw.copy();
+        return this.calcNorthWestOfBox();
     }
 
-    public Coordinate getCenter()
+    public Coordinate getCenter() throws PWCGException
     {
-        return center.copy();
+        return this.calcCenterOfBox();
     }
 
-    public Coordinate getNorth()
+    public Coordinate getNorth() throws PWCGException
     {
-        return north.copy();
+        return this.calcNorthOfBox();
     }
 
-    public Coordinate getSouth()
+    public Coordinate getSouth() throws PWCGException
     {
-        return south.copy();
+        return this.calcSouthOfBox();
     }
 
-    public Coordinate getEast()
+    public Coordinate getEast() throws PWCGException
     {
-        return east.copy();
+        return this.calcEastOfBox();
     }
 
-    public Coordinate getWest()
+    public Coordinate getWest() throws PWCGException
     {
-        return west.copy();
+        return this.calcWestOfBox();
     }
 }
