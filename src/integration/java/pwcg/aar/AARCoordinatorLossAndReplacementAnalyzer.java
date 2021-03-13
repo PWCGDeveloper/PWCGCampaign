@@ -40,7 +40,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
     @Test
     public void runMissionAARLeave () throws PWCGException
     {
-        aarContext = new AARContext(campaign);
+        aarContext = AARFactory.makeAARContext(campaign);
     	Date newDate = DateUtils.getDateYYYYMMDD("19420801");
 
     	int totalVictories = 0;
@@ -110,7 +110,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
                 }
             }
 
-            AAROutOfMissionStepper stepper = new AAROutOfMissionStepper(campaign, aarContext);
+            AAROutOfMissionStepper stepper = AARFactory.makeAAROutOfMissionStepper(campaign, aarContext);
             stepper.oneStep();
             
             printShortHandedSquadrons();

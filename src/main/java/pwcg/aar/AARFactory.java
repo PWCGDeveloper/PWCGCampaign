@@ -1,5 +1,8 @@
 package pwcg.aar;
 
+import pwcg.aar.awards.CampaignMemberAwardsGeneratorCommon;
+import pwcg.aar.data.AARContext;
+import pwcg.aar.data.AARPersonnelAwards;
 import pwcg.aar.inmission.phase1.parse.AARLogEvaluationCoordinator;
 import pwcg.aar.inmission.phase1.parse.AARMissionFileLogResultMatcher;
 import pwcg.aar.prelim.AARHeaderParser;
@@ -33,7 +36,24 @@ public class AARFactory
         AARLogSetFinder logSetFinder = new AARLogSetFinder(directoryReader);
         return logSetFinder;
     }
-
     
+    public static AARContext makeAARContext(Campaign campaign) throws PWCGException
+    {
+        return new AARContext(campaign);
+    }
     
+    public static AAROutOfMissionStepper makeAAROutOfMissionStepper(Campaign campaign, AARContext aarContext)
+    {
+        return new AAROutOfMissionStepper(campaign, aarContext);
+    }
+    
+    public static CampaignMemberAwardsGeneratorCommon makeCampaignMemberAwardsGeneratorCommon(Campaign campaign)
+    {
+        return new CampaignMemberAwardsGeneratorCommon(campaign);
+    }
+    
+    public static AARPersonnelAwards makeAARPersonnelAwards()
+    {
+        return new AARPersonnelAwards();
+    }    
 }

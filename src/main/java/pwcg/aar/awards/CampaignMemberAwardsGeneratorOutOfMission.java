@@ -1,5 +1,6 @@
 package pwcg.aar.awards;
 
+import pwcg.aar.AARFactory;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.AARPersonnelAwards;
 import pwcg.aar.outofmission.phase1.elapsedtime.OutOfMissionPilotSelector;
@@ -9,13 +10,19 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 
-public class CampaignMemberAwardsGeneratorOutOfMission extends CampaignMemberAwardsGenerator
+public class CampaignMemberAwardsGeneratorOutOfMission
 {
+    private Campaign campaign;
+    private AARContext aarContext;
+    private CampaignMemberAwardsGeneratorCommon awardsGeneratorCommon;
+
     public CampaignMemberAwardsGeneratorOutOfMission(
             Campaign campaign, 
             AARContext aarContext)
     {
-        super(campaign, aarContext);
+        this.campaign = campaign;
+        this.aarContext = aarContext;
+        this.awardsGeneratorCommon =  AARFactory.makeCampaignMemberAwardsGeneratorCommon(campaign);
     }
 
     public AARPersonnelAwards createCampaignMemberAwards() throws PWCGException
@@ -24,14 +31,15 @@ public class CampaignMemberAwardsGeneratorOutOfMission extends CampaignMemberAwa
                 campaign, aarContext.getPreliminaryData().getCampaignMembersInMission());
         for (SquadronMember squadronMember : campaignMembersNotInMission.getSquadronMemberList())
         {
-            promotions(squadronMember);
-            medals(squadronMember, 1);
+            awardsGeneratorCommon.promotions(squadronMember);
+            int pseudoVictories = 1;
+            awardsGeneratorCommon.medals(squadronMember, pseudoVictories);
             if (OutOfMissionPilotSelector.shouldPilotBeEvaluated(campaign, squadronMember)) 
             {
-                missionsFlown(squadronMember);
+                awardsGeneratorCommon.missionsFlown(squadronMember);
             }
         }
         
-        return personnelAwards;
+        return awardsGeneratorCommon.getPersonnelAwards();
     }
 }

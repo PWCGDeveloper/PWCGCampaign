@@ -2,6 +2,7 @@ package pwcg.aar.awards;
 
 import java.util.Map;
 
+import pwcg.aar.AARFactory;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.AARPersonnelAwards;
 import pwcg.campaign.Campaign;
@@ -10,32 +11,43 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 
-public class CampaignMemberAwardsGeneratorInMission extends CampaignMemberAwardsGenerator
+public class CampaignMemberAwardsGeneratorInMission
 {
+    private Campaign campaign;
+    private AARContext aarContext;
+    private CampaignMemberAwardsGeneratorCommon awardsGeneratorCommon;
+    
     public CampaignMemberAwardsGeneratorInMission(
             Campaign campaign, 
             AARContext aarContext)
     {
-    	super(campaign, aarContext);
+        this.campaign = campaign;
+        this.aarContext = aarContext;
+    	this.awardsGeneratorCommon =  AARFactory.makeCampaignMemberAwardsGeneratorCommon(campaign);
     }
     
     public AARPersonnelAwards createCampaignMemberAwards() throws PWCGException
     {
         generateWoundBadgesForCampaignMembersInMission();
         generateAwardsForCampaignMembersInMission();
-        return personnelAwards;
+        return awardsGeneratorCommon.getPersonnelAwards();
     }
 
 	private void generateWoundBadgesForCampaignMembersInMission() throws PWCGException
 	{
 		for (SquadronMember campaignMemberKilledInMission : aarContext.getCampaignUpdateData().getPersonnelLosses().getPersonnelKilled().values())
         {
-            awardWoundMedal(campaignMemberKilledInMission);
+		    awardsGeneratorCommon.awardWoundMedal(campaignMemberKilledInMission);
         }
         
         for (SquadronMember campaignMemberWoundedInMission : aarContext.getCampaignUpdateData().getPersonnelLosses().getPersonnelMaimed().values())
         {
-            awardWoundMedal(campaignMemberWoundedInMission);
+            awardsGeneratorCommon.awardWoundMedal(campaignMemberWoundedInMission);
+        }
+        
+        for (SquadronMember campaignMemberWoundedInMission : aarContext.getCampaignUpdateData().getPersonnelLosses().getPersonnelWounded().values())
+        {
+            awardsGeneratorCommon.awardWoundMedal(campaignMemberWoundedInMission);
         }
 	}
 
@@ -53,8 +65,8 @@ public class CampaignMemberAwardsGeneratorInMission extends CampaignMemberAwards
 	private void generateEvents(SquadronMember campaignMemberInMission) throws PWCGException
 	{
         int victoriesInMissionForPilot = aarContext.getReconciledInMissionData().getReconciledVictoryData().getVictoryAwardsForPilot(campaignMemberInMission.getSerialNumber()).size();
-        promotions(campaignMemberInMission);
-        medals(campaignMemberInMission, victoriesInMissionForPilot);
-        missionsFlown(campaignMemberInMission);
+        awardsGeneratorCommon.promotions(campaignMemberInMission);
+        awardsGeneratorCommon.medals(campaignMemberInMission, victoriesInMissionForPilot);
+        awardsGeneratorCommon.missionsFlown(campaignMemberInMission);
 	}
 }

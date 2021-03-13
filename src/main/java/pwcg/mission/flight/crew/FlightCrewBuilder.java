@@ -60,10 +60,6 @@ public class FlightCrewBuilder
         while (assignedCrewMap.size() < numCrewNeeded)
         {
             List<Integer> unassignedAiCrewSerialNumbers = buildUnassignedAiCrewMembers();
-            if (unassignedAiCrewSerialNumbers.size() == 0)
-            {
-                System.out.println("oops");
-            }
             
             int crewIndex = RandomNumberGenerator.getRandom(unassignedAiCrewSerialNumbers.size());
             int selectedSerialNumber = unassignedAiCrewSerialNumbers.get(crewIndex);
@@ -89,11 +85,11 @@ public class FlightCrewBuilder
 	
 	private boolean shouldAssignAIPilot(int unassignedCrewSerialNumber)
 	{
-        if (SerialNumber.getSerialNumberClassification(unassignedCrewSerialNumber) != SerialNumberClassification.AI)
+        if (SerialNumber.getSerialNumberClassification(unassignedCrewSerialNumber) == SerialNumberClassification.AI)
         {
             return true;
         }
-        else if (SerialNumber.getSerialNumberClassification(unassignedCrewSerialNumber) != SerialNumberClassification.ACE)
+        else if (SerialNumber.getSerialNumberClassification(unassignedCrewSerialNumber) == SerialNumberClassification.ACE)
         {
             return true;
         }
