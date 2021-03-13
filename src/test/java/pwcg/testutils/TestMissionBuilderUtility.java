@@ -8,6 +8,7 @@ import pwcg.core.location.CoordinateBox;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.MissionProfile;
+import pwcg.mission.StructureBorderBuilder;
 import pwcg.mission.options.MissionOptions;
 import pwcg.mission.options.MissionWeather;
 
@@ -24,7 +25,10 @@ public class TestMissionBuilderUtility
         MissionWeather weather = new MissionWeather(campaign, missionOptions.getMissionHour());
         weather.createMissionWeather();
         
-        Mission mission = new Mission(campaign, missionProfile, participatingPlayers, missionBorders, weather, missionOptions);
+        StructureBorderBuilder structureBorderBuilder = new StructureBorderBuilder(campaign, participatingPlayers, missionBorders);
+        CoordinateBox structureBorders = structureBorderBuilder.getBordersForStructures();
+        
+        Mission mission = new Mission(campaign, missionProfile, participatingPlayers, missionBorders, structureBorders, weather, missionOptions);
         campaign.setCurrentMission(mission);
         return mission;
     }

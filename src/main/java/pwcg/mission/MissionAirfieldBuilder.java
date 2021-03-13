@@ -7,8 +7,6 @@ import java.util.TreeMap;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
 
@@ -16,18 +14,19 @@ public class MissionAirfieldBuilder
 {
     private Campaign campaign;
     private Mission mission;
+    private CoordinateBox structureBorders;
     private List<Airfield> fieldSet = new ArrayList<>();;
 
-    public MissionAirfieldBuilder (Campaign campaign, Mission mission)
+    public MissionAirfieldBuilder (Mission mission)
     {
-        this.campaign = campaign;
         this.mission = mission;
+        this.campaign = mission.getCampaign();
+        this.structureBorders = mission.getStructureBorders();
     }
     
     public void buildFieldsForPatrol() throws PWCGException 
     {
-        CoordinateBox missionBorders = createMissionBordersForAirfields();
-        TreeMap<String, Airfield> selectedFields = selectAirfieldsWithinMissionBoundaries(missionBorders);
+        TreeMap<String, Airfield> selectedFields = selectAirfieldsWithinMissionBoundaries();
         fieldSet = new ArrayList<>(selectedFields.values());
     }
 
@@ -36,7 +35,7 @@ public class MissionAirfieldBuilder
         return fieldSet;
     }
 
-    private TreeMap<String, Airfield> selectAirfieldsWithinMissionBoundaries(CoordinateBox missionBorders) throws PWCGException
+    private TreeMap<String, Airfield> selectAirfieldsWithinMissionBoundaries() throws PWCGException
     {
         TreeMap<String, Airfield> selectedFields = new TreeMap<>();
         for (Airfield airfield :  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAllAirfields().values())
@@ -44,7 +43,7 @@ public class MissionAirfieldBuilder
             if (PWCGContext.getInstance().getCurrentMap().getAirfieldManager().isAirfieldOccupied(
                     PWCGContext.getInstance().getSquadronManager().getActiveSquadrons(campaign.getDate()), campaign.getDate()))
             {
-            	if (missionBorders.isInBox(airfield.getPosition()))
+            	if (structureBorders.isInBox(airfield.getPosition()))
                 {
                     selectedFields.put(airfield.getName(), airfield);
                     airfield.addAirfieldObjects(mission);
@@ -54,12 +53,4 @@ public class MissionAirfieldBuilder
         
         return selectedFields;
     }
-
-	private CoordinateBox createMissionBordersForAirfields() throws PWCGException, PWCGException
-	{
-		ConfigManager configManager = campaign.getCampaignConfigManager();
-        int keepAirfieldSpread = configManager.getIntConfigParam(ConfigItemKeys.KeepAirfieldSpreadKey);
-        CoordinateBox keepAirfieldsBorder = mission.getMissionBorders().expandBox(keepAirfieldSpread);
-		return keepAirfieldsBorder;
-	}
 }

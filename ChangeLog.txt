@@ -8,10 +8,10 @@ Added Pilot Management Screen
 - Revive a lost pilot (New)
 - Retire a pilot (unchanged) 
 - Transfer a pilot without incurring a delay (new for SP)
+Moved intro date of FW190 A6 up to August 1943
 Fixed error on Drifter AA units that was causing issues with Stalingrad
 Fixed campaign creation error: Luftwaffe/Attack/Dec 1 1943 
 
-Moved intro date of FW190 A6 up to August 1943
 
 PWCG 11.11.0
 Added FW190 A6

@@ -32,10 +32,10 @@ public class MissionGroundUnitBuilder
     private List<GroundUnitCollection> flightSpecificGroundUnits = new ArrayList<>();
     private List<GroundUnitCollection> AA = new ArrayList<>();
 
-    public MissionGroundUnitBuilder (Campaign campaign, Mission mission)
+    public MissionGroundUnitBuilder (Mission mission)
     {
         this.mission = mission;
-        this.campaign = campaign;
+        this.campaign = mission.getCampaign();
     }
 
     public void generateGroundUnitsForMission() throws PWCGException 

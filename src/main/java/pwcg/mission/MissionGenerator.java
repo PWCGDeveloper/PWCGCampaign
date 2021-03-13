@@ -93,7 +93,8 @@ public class MissionGenerator
     {
         campaign.setCurrentMission(null);
         CoordinateBox missionBorders = buildMissionBorders(missionProfile, participatingPlayers);
-        Mission mission = new Mission(campaign, missionProfile, participatingPlayers, missionBorders, weather, missionOptions);
+        CoordinateBox structureBorders = buildStructureBorders(missionProfile, participatingPlayers, missionBorders);
+        Mission mission = new Mission(campaign, missionProfile, participatingPlayers, missionBorders, structureBorders, weather, missionOptions);
         campaign.setCurrentMission(mission);
         mission.generate(playerFlightTypes);
 
@@ -105,5 +106,12 @@ public class MissionGenerator
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
         return missionBorders;
+    }
+
+    private CoordinateBox buildStructureBorders(MissionProfile missionProfile, MissionHumanParticipants participatingPlayers, CoordinateBox missionBorders) throws PWCGException
+    {
+        StructureBorderBuilder structureBorderBuilder = new StructureBorderBuilder(campaign, participatingPlayers, missionBorders);
+        CoordinateBox structureBorder = structureBorderBuilder.getBordersForStructures();
+        return structureBorder;
     }
 }

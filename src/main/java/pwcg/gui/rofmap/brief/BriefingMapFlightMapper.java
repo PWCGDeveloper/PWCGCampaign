@@ -46,7 +46,8 @@ public class BriefingMapFlightMapper
 
     private void mapFlightBox() throws PWCGException
     {
-        CoordinateBox missionBorders = briefingMissionHandler.getMission().getMissionBorders().expandBox(5000);
-        mapPanel.setMissionBorders(missionBorders);
+        CoordinateBox briefingBorders = CoordinateBox.copy(briefingMissionHandler.getMission().getMissionBorders());
+        briefingBorders.expandBox(5000);
+        mapPanel.setMissionBorders(briefingBorders);
     }
 }

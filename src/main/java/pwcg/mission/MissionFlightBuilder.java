@@ -25,10 +25,10 @@ public class MissionFlightBuilder
     private List<IFlight> playerFlights = new ArrayList<>();
     private List<IFlight> aiFlights = new ArrayList<IFlight>();
 
-    public MissionFlightBuilder(Campaign campaign, Mission mission)
+    public MissionFlightBuilder(Mission mission)
     {
-        this.campaign = campaign;
         this.mission = mission;
+        this.campaign = mission.getCampaign();
     }
 
     public void generateFlights(MissionSquadronFlightTypes playerFlightTypes) throws PWCGException

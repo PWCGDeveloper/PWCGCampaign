@@ -38,6 +38,7 @@ public class Mission
     private Campaign campaign;
     private MissionHumanParticipants participatingPlayers;
     private CoordinateBox missionBorders;
+    private CoordinateBox structureBorders;
     private MissionProfile missionProfile = MissionProfile.DAY_TACTICAL_MISSION;
     private MissionOptions missionOptions;
     private MissionFrontLineIconBuilder frontLines;
@@ -73,6 +74,7 @@ public class Mission
             MissionProfile missionProfile, 
             MissionHumanParticipants participatingPlayers, 
             CoordinateBox missionBorders, 
+            CoordinateBox structureBorders, 
             MissionWeather weather,
             MissionOptions missionOptions)
             throws PWCGException
@@ -81,6 +83,7 @@ public class Mission
         this.participatingPlayers = participatingPlayers;
         this.missionProfile = missionProfile;
         this.missionBorders = missionBorders;
+        this.structureBorders = structureBorders;
         this.weather = weather;
         this.missionOptions = missionOptions;
 
@@ -94,10 +97,10 @@ public class Mission
         subtitleHandler.clear();
 
         groundUnitManager = new MissionGroundUnitResourceManager();
-        groundUnitBuilder = new MissionGroundUnitBuilder(campaign, this);
-        flightBuilder = new MissionFlightBuilder(campaign, this);
+        groundUnitBuilder = new MissionGroundUnitBuilder(this);
+        flightBuilder = new MissionFlightBuilder(this);
         blockBuilder = new MissionBlockBuilder(this);
-        airfieldBuilder = new MissionAirfieldBuilder(campaign, this);
+        airfieldBuilder = new MissionAirfieldBuilder(this);
         frontLines = new MissionFrontLineIconBuilder(campaign);
         squadronIconBuilder = new MissionSquadronIconBuilder(campaign);
     }
@@ -106,8 +109,8 @@ public class Mission
     {
         validate();
         createStructures();
-        createGroundUnits();
         createAirfields();
+        createGroundUnits();
         generateFlights(playerFlightTypes);
 
     }
@@ -185,7 +188,6 @@ public class Mission
 
     private void createGroundUnits() throws PWCGException, PWCGException
     {
-        groundUnitBuilder = new MissionGroundUnitBuilder(campaign, this);
         groundUnitBuilder.generateGroundUnitsForMission();
     }
 
@@ -456,6 +458,11 @@ public class Mission
     public CoordinateBox getMissionBorders()
     {
         return missionBorders;
+    }
+
+    public CoordinateBox getStructureBorders()
+    {
+        return structureBorders;
     }
 
     public MissionOptions getMissionOptions()

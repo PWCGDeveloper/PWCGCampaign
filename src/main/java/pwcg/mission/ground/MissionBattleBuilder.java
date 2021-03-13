@@ -77,13 +77,14 @@ public class MissionBattleBuilder
 
     private Coordinate getBattleLocation() throws PWCGException
     {
-        CoordinateBox missionBorders = mission.getMissionBorders().expandBox(3000);
+        CoordinateBox battleLocationBorders = CoordinateBox.copy(mission.getMissionBorders());
+        battleLocationBorders.expandBox(3000);
         
         FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         List<FrontLinePoint> closestFrontLinePoints = new ArrayList<>();
         for (FrontLinePoint frontLinePoint : frontLinesForMap.getFrontLines(Side.ALLIED))
         {
-            if (missionBorders.isInBox(frontLinePoint.getPosition()))
+            if (battleLocationBorders.isInBox(frontLinePoint.getPosition()))
             {
                 closestFrontLinePoints.add(frontLinePoint);
             }

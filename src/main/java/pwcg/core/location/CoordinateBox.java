@@ -11,15 +11,15 @@ import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 
 public class CoordinateBox
 {
-    protected Coordinate sw = new Coordinate();
-    protected Coordinate ne = new Coordinate();
-    protected Coordinate se = new Coordinate();
-    protected Coordinate nw = new Coordinate();
-    protected Coordinate center = new Coordinate();
-    protected Coordinate north = new Coordinate();
-    protected Coordinate south = new Coordinate();
-    protected Coordinate east = new Coordinate();
-    protected Coordinate west = new Coordinate();
+    private Coordinate sw = new Coordinate();
+    private Coordinate ne = new Coordinate();
+    private Coordinate se = new Coordinate();
+    private Coordinate nw = new Coordinate();
+    private Coordinate center = new Coordinate();
+    private Coordinate north = new Coordinate();
+    private Coordinate south = new Coordinate();
+    private Coordinate east = new Coordinate();
+    private Coordinate west = new Coordinate();
     
     public static CoordinateBox copy(CoordinateBox source)
     {
@@ -119,14 +119,13 @@ public class CoordinateBox
         }
     }
 
-    public CoordinateBox expandBox(int meters) throws PWCGException
+    public void expandBox(int meters) throws PWCGException
     {
-        CoordinateBox coordinateBox = this.copy();
         if (meters < 0)
         {
             if ((getBoxWidth() < Math.abs(meters)) || getBoxHeight() < Math.abs(meters))
             {
-                return coordinateBox;
+                return;
             }
         }
         
@@ -136,9 +135,7 @@ public class CoordinateBox
         ne.setXPos(ne.getXPos() + meters);
         ne.setZPos(ne.getZPos() + meters);
         
-        calcBoxImportantLocations();
-        
-        return coordinateBox;
+        calcBoxImportantLocations();        
     }
 
     public void expandBoxCornersFromCoordinates(List<Coordinate> coordinates) throws PWCGException
@@ -195,7 +192,7 @@ public class CoordinateBox
         return targetCoord;
     }
 
-    protected void calcBoxImportantLocations() throws PWCGException
+    private void calcBoxImportantLocations() throws PWCGException
     {
         calcSouthEast();
         calcNorthWest();
@@ -206,7 +203,7 @@ public class CoordinateBox
         calcWestOfBox();
     }
     
-    protected Coordinate calcSouthEast() throws PWCGException
+    private Coordinate calcSouthEast() throws PWCGException
     {
         se = new Coordinate();
         se.setXPos(sw.getXPos());
@@ -214,7 +211,7 @@ public class CoordinateBox
         return se;
     }
 
-    protected Coordinate calcNorthWest() throws PWCGException
+    private Coordinate calcNorthWest() throws PWCGException
     {
         nw = new Coordinate();
         nw.setXPos(ne.getXPos());
@@ -222,7 +219,7 @@ public class CoordinateBox
         return nw;
     }
 
-    protected Coordinate calcCenterOfBox() throws PWCGException
+    private Coordinate calcCenterOfBox() throws PWCGException
     {
         double xDistance = ne.getXPos() - sw.getXPos();
         double zDistance = ne.getZPos() - sw.getZPos();
@@ -233,7 +230,7 @@ public class CoordinateBox
         return center;
     }
     
-    protected Coordinate calcNorthOfBox() throws PWCGException
+    private Coordinate calcNorthOfBox() throws PWCGException
     {
         north = new Coordinate();
         north.setXPos(ne.getXPos());
@@ -241,7 +238,7 @@ public class CoordinateBox
         return north;
     }
 
-    protected Coordinate calcSouthOfBox() throws PWCGException
+    private Coordinate calcSouthOfBox() throws PWCGException
     {
         south = new Coordinate();
         south.setXPos(sw.getXPos());
@@ -249,7 +246,7 @@ public class CoordinateBox
         return south;
     }
 
-    protected Coordinate calcEastOfBox() throws PWCGException
+    private Coordinate calcEastOfBox() throws PWCGException
     {
         east = new Coordinate();
         east.setXPos(center.getXPos());
@@ -257,7 +254,7 @@ public class CoordinateBox
         return east;
     }
 
-    protected Coordinate calcWestOfBox() throws PWCGException
+    private Coordinate calcWestOfBox() throws PWCGException
     {
         west = new Coordinate();
         west.setXPos(center.getXPos());
@@ -265,7 +262,7 @@ public class CoordinateBox
         return west;
     }
 
-    protected void calculateSWCornerFromTwoCoordinates (Coordinate coordinate1, Coordinate coordinate2) throws PWCGException
+    private void calculateSWCornerFromTwoCoordinates (Coordinate coordinate1, Coordinate coordinate2) throws PWCGException
     {
         sw = coordinate1.copy();
         if (coordinate2.getXPos() < sw.getXPos())
@@ -278,7 +275,7 @@ public class CoordinateBox
         }
     }
 
-    protected void calculateNECornerFromTwoCoordinates (Coordinate coordinate1, Coordinate coordinate2) throws PWCGException
+    private void calculateNECornerFromTwoCoordinates (Coordinate coordinate1, Coordinate coordinate2) throws PWCGException
     {
         ne = coordinate1.copy();
         if (coordinate2.getXPos() > ne.getXPos())
@@ -291,27 +288,18 @@ public class CoordinateBox
         }
     }
 
-    protected Coordinate calculateSW (Coordinate center, int boxSize) throws PWCGException
+    private Coordinate calculateSW (Coordinate center, int boxSize) throws PWCGException
     {
         sw = MathUtils.calcNextCoord(center, 270, boxSize / 2);
         sw = MathUtils.calcNextCoord(sw, 180, boxSize / 2);
         return sw;
     }
     
-    protected Coordinate calculateNE (Coordinate center, int boxSize) throws PWCGException
+    private Coordinate calculateNE (Coordinate center, int boxSize) throws PWCGException
     {
         ne = MathUtils.calcNextCoord(center, 90, boxSize / 2);
         ne = MathUtils.calcNextCoord(ne, 0, boxSize / 2);
         return ne;
-    }
-    
-    private CoordinateBox copy()
-    {
-        CoordinateBox coordinateBox = new CoordinateBox();
-        coordinateBox.sw = this.sw.copy();
-        coordinateBox.ne = this.ne.copy();
-        coordinateBox.center = this.center.copy();
-        return coordinateBox;
     }
 
     public Coordinate chooseCoordinateWithinBox() throws PWCGException

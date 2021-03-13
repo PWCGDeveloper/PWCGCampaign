@@ -45,14 +45,6 @@ public class AirfieldObjectPlacer
         return airfieldObjects;
     }
 
-    public AirfieldObjects createFlightSpecificAirfieldObjects() throws PWCGException 
-    {
-        createApproachAA();
-        createHotSpotObjects();
-        airfieldObjects.finish(mission);
-        return airfieldObjects;
-    }
-
     private void createHotSpotObjects() throws PWCGException
     {
         AirfieldHotSpotTranslator hotSpotTranslator = HotSpotTranslatorFactory.createHotSpotTranslatorFactory(mission, airfield);
