@@ -12,7 +12,7 @@
     }
   ],
   "airfields": {
-    "19441001": "Woensdrecht",
+    "19440928": "GraveKeent",
     "19441101": "Mill",
     "19441220": "Volkel",
     "19441225": "Volkel",
@@ -22,16 +22,18 @@
     "19450404": "Coesfeld-Lette"
   },
   "skins": [
-		{
-			"skinName": "tempestmkvs2_skin_05",
-			"planeType": "tempestmkvs2",
-			"startDate": "19440601",
-			"endDate": "19450601",
-			"squadId": 103083182,
-			"country": "Britain",
-			"category": "Squadron",
-			"definedInGame": true
-		}
+    {
+      "skinName": "tempestmkvs2_skin_05",
+      "planeType": "tempestmkvs2",
+      "archTypes": [],
+      "startDate": "19440601",
+      "endDate": "19450601",
+      "squadId": 103083182,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": true,
+      "winter": false
+    }
   ],
   "squadHistory": {
     "squadHistoryEntries": []
@@ -54,6 +56,9 @@
         ]
       }
     ]
+  },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
   },
   "nightMissionOdds": {
     "nightMissionPeriods": [

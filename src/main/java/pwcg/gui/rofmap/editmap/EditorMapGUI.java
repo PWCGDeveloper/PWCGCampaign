@@ -345,7 +345,7 @@ public class EditorMapGUI extends MapGUI implements ActionListener
             }   
             else if (action.contains("Refresh"))
             {               
-                PWCGContext.getInstance().initializeMap();
+                PWCGContext.getInstance().getCurrentMap().configure();
                 editorMapPanel.resetFromActual();
             }   
             else if (action.contains("Mirror"))

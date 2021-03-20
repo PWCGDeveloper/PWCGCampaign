@@ -1,72 +1,78 @@
 {
-	"country": "BRITAIN",
-	"squadronId": 103083184,
-	"name": "184 Squadron",
-	"fileName": "184 Squadron.json",
-	"skill": 70,
-	"planeAssignments": [
-		{
-			"archType": "tempest",
-			"squadronIntroduction": "19440901",
-			"squadronWithdrawal": "19450601"
-		}
-	],
-	"airfields": {
-		"19440901": "Grimbergen",
-		"19441001": "Woensdrecht",
-		"19441101": "GraveKeent",
-		"19441220": "Heesch",
-		"19441225": "Heesch",
-		"19441229": "Schijndel",
-		"19450207": "GraveKeent",
-		"19450310": "Eindhoven",
-		"19450404": "Werl"
-	},
-	"skins": [
-		{
-			"skinName": "tempestmkvs2_skin_06",
-			"planeType": "tempestmkvs2",
-			"startDate": "19440601",
-			"endDate": "19450601",
-			"squadId": 103083182,
-			"country": "Britain",
-			"category": "Squadron",
-			"definedInGame": true
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 10103,
-	"squadronRoles": {
-		"squadronRolePeriods": [
-			{
-				"startDate": "19420801",
-				"endDate": "19450601",
-				"weightedRoles": [
-					{
-						"role": "ROLE_FIGHTER",
-						"weight": 60
-					},
-					{
-						"role": "ROLE_ATTACK",
-						"weight": 40
-					}
-				]
-			}
-		]
-	},
-	"nightMissionOdds": {
-		"nightMissionPeriods": [
-			{
-				"startDate": "19440901",
-				"endDate": "19450601",
-				"nightMissionOdds": 7
-			}
-		]
-	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19410801": "CHARLIE"
-	}
+  "country": "BRITAIN",
+  "squadronId": 103083184,
+  "name": "184 Squadron",
+  "fileName": "184 Squadron.json",
+  "skill": 70,
+  "planeAssignments": [
+    {
+      "archType": "tempest",
+      "squadronIntroduction": "19440901",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "airfields": {
+    "19440901": "Grimbergen",
+    "19440925": "Diest",
+    "19440928": "Mill",
+    "19441101": "GraveKeent",
+    "19441220": "Heesch",
+    "19441225": "Heesch",
+    "19441229": "Schijndel",
+    "19450207": "GraveKeent",
+    "19450310": "Eindhoven",
+    "19450404": "Werl"
+  },
+  "skins": [
+    {
+      "skinName": "tempestmkvs2_skin_06",
+      "planeType": "tempestmkvs2",
+      "archTypes": [],
+      "startDate": "19440601",
+      "endDate": "19450601",
+      "squadId": 103083182,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": true,
+      "winter": false
+    }
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": []
+  },
+  "serviceId": 10103,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19420801",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 60
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 40
+          }
+        ]
+      }
+    ]
+  },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "nightMissionOdds": 7
+      }
+    ]
+  },
+  "conversionPeriods": [],
+  "callsigns": {
+    "19410801": "CHARLIE"
+  }
 }

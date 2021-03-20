@@ -12,36 +12,40 @@
     }
   ],
   "airfields": {
-    "19441001": "St.Trond",
+    "19440928": "St.Trond",
     "19441101": "Rips",
-    "19441220": "Eindhoven",
-    "19441225": "Eindhoven",
-    "19441229": "Eindhoven",
+    "19441220": "Helmond",
+    "19441225": "Helmond",
+    "19441229": "Helmond",
     "19450207": "PetitBrogel",
     "19450310": "Rips",
     "19450404": "Dortmund"
   },
   "skins": [
-		{
-			"skinName": "FG366",
-			"planeType": "p47d22",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 102366389,
-			"country": "USA",
-			"category": "Squadron",
-			"definedInGame": true
-		},
-		{
-			"skinName": "FG366",
-			"planeType": "p47d28",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 102366389,
-			"country": "USA",
-			"category": "Squadron",
-			"definedInGame": true
-		}		
+    {
+      "skinName": "FG366",
+      "planeType": "p47d22",
+      "archTypes": [],
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 102366389,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": true,
+      "winter": false
+    },
+    {
+      "skinName": "FG366",
+      "planeType": "p47d28",
+      "archTypes": [],
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 102366389,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": true,
+      "winter": false
+    }
   ],
   "squadHistory": {
     "squadHistoryEntries": []
@@ -68,6 +72,9 @@
         ]
       }
     ]
+  },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
   },
   "nightMissionOdds": {
     "nightMissionPeriods": [

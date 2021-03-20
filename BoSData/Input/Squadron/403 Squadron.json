@@ -13,7 +13,8 @@
   ],
   "airfields": {
     "19440901": "Deurne",
-    "19441001": "Gilze-Rijen",
+    "19440925": "Eindhoven",
+    "19440928": "Helmond",
     "19441101": "Volkel",
     "19441220": "Mill",
     "19441225": "Schijndel",
@@ -23,26 +24,30 @@
     "19450404": "Kirchhellen"
   },
   "skins": [
-		{
-			"skinName": "No403",
-			"planeType": "spitfiremkvb",
-			"startDate": "19440101",
-			"endDate": "19441001",
-			"squadId": 103084403,
-			"country": "Britain",
-			"category": "Squadron",
-			"definedInGame": false
-		},
-		{
-			"skinName": "No403",
-			"planeType": "spitfiremkixe",
-			"startDate": "19440601",
-			"endDate": "19450601",
-			"squadId": 103084403,
-			"country": "Britain",
-			"category": "Squadron",
-			"definedInGame": false
-		}
+    {
+      "skinName": "No403",
+      "planeType": "spitfiremkvb",
+      "archTypes": [],
+      "startDate": "19440101",
+      "endDate": "19441001",
+      "squadId": 103084403,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": false
+    },
+    {
+      "skinName": "No403",
+      "planeType": "spitfiremkixe",
+      "archTypes": [],
+      "startDate": "19440601",
+      "endDate": "19450601",
+      "squadId": 103084403,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": false
+    }
   ],
   "squadHistory": {
     "squadHistoryEntries": []
@@ -69,6 +74,9 @@
         ]
       }
     ]
+  },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
   },
   "nightMissionOdds": {
     "nightMissionPeriods": [

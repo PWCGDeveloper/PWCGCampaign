@@ -74,6 +74,7 @@ public class EditorMapPanel extends MapPanelBase
     {
         makeVisible(false);
         makeVisible(true);
+        repaint();
     }
 
 	public void paintComponent(Graphics g)
@@ -362,8 +363,8 @@ public class EditorMapPanel extends MapPanelBase
     public void mirrorFrontLines() throws PWCGException
     {
         FrontLineCreator frontLineCreator = new FrontLineCreator();
-        List<FrontLinePoint> oppositeFrontLines = frontLineCreator.createAlliedLinesEastFront(frontLineEditor.getUserCreatedFrontLines());
-        frontLineEditor.addAdditionalFrontLinePoints(oppositeFrontLines);
+        List<FrontLinePoint> modifiedFrontLines = frontLineCreator.createFrontLines(frontLineEditor.getUserCreatedFrontLines());
+        frontLineEditor.replaceFrontLines(modifiedFrontLines);
         repaintMap();
     }
 

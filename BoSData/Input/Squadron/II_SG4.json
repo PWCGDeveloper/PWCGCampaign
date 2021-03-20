@@ -13,50 +13,56 @@
   ],
   "airfields": {
     "19440901": "Asch",
-    "19441001": "Venlo",
-    "19441101": "Twente",
+    "19440925": "Volkel",
+    "19440928": "Arnhem Deelen",
+    "19441101": "Dusseldorf-Lohausen",
     "19441220": "Krefeld",
-    "19441225": "Krefeld",
-    "19441229": "Krefeld",
+    "19441225": "Kelz",
+    "19441229": "Odendorf",
     "19450207": "Koln-Butzweilerhof",
-    "19450310": "Limburg-Linter",
+    "19450310": "Kirchhellen",
     "19450404": "Ettinghausen"
   },
   "skins": [
-		{
-			"skinName": "II_SG4",
-			"planeType": "fw190a3",
-			"startDate": "19411101",
-			"endDate": "19450601",
-			"squadId": 20122004,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		},
-		{
-			"skinName": "II_SG4",
-			"planeType": "fw190a5",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 20122004,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		},
-		{
-			"skinName": "II_SG4",
-			"planeType": "fw190a8",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 20122004,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		}
+    {
+      "skinName": "II_SG4",
+      "planeType": "fw190a3",
+      "archTypes": [],
+      "startDate": "19411101",
+      "endDate": "19450601",
+      "squadId": 20122004,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": false
+    },
+    {
+      "skinName": "II_SG4",
+      "planeType": "fw190a5",
+      "archTypes": [],
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 20122004,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": false
+    },
+    {
+      "skinName": "II_SG4",
+      "planeType": "fw190a8",
+      "archTypes": [],
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 20122004,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": false
+    }
   ],
   "squadHistory": {
-    "squadHistoryEntries": [
-    ]
+    "squadHistoryEntries": []
   },
   "serviceId": 20101,
   "squadronRoles": {
@@ -73,6 +79,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -82,8 +91,7 @@
       }
     ]
   },
-  "conversionPeriods": [
-  ],
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "CRANE"
   }

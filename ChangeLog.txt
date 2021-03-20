@@ -1,6 +1,13 @@
 
 ​At the PWCG web site
 
+PWCG 11.11.2
+Added new front lines to show progress of Arnhem
+Added newspaper entries for Arnhem
+Fix unselected player pilot could be assigned to mission
+Fix Sometimes player airfields do not have AAA or other units
+Adjusted unit placement to get some unts closer to the front
+
 PWCG 11.11.1
 Added Pilot Management Screen
 <Campaign>->Personnel->Administer Pilots

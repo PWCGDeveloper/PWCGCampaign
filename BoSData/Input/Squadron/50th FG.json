@@ -13,7 +13,7 @@
   ],
   "airfields": {
     "19440901": "Diest",
-    "19441001": "Ophoven",
+    "19440928": "St.Trond",
     "19441101": "Ophoven",
     "19441220": "Ophoven",
     "19441225": "Ophoven",
@@ -23,26 +23,30 @@
     "19450404": "Merzhausen"
   },
   "skins": [
-		{
-			"skinName": "FG50",
-			"planeType": "p47d28",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 102050010,
-			"country": "USA",
-			"category": "Squadron",
-			"definedInGame": false
-		},
-		{
-			"skinName": "FG50",
-			"planeType": "p47d28",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 102050010,
-			"country": "USA",
-			"category": "Squadron",
-			"definedInGame": true
-		}
+    {
+      "skinName": "FG50",
+      "planeType": "p47d28",
+      "archTypes": [],
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 102050010,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": false
+    },
+    {
+      "skinName": "FG50",
+      "planeType": "p47d28",
+      "archTypes": [],
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 102050010,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": true,
+      "winter": false
+    }
   ],
   "squadHistory": {
     "squadHistoryEntries": []
@@ -69,6 +73,9 @@
         ]
       }
     ]
+  },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
   },
   "nightMissionOdds": {
     "nightMissionPeriods": [

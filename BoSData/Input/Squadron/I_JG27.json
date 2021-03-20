@@ -1,115 +1,127 @@
 {
-	"country": "GERMANY",
-	"squadronId": 20111027,
-	"name": "I./JG27",
-	"fileName": "I_JG27.json",
-	"skill": 85,
-	"planeAssignments": [
-		{
-			"archType": "fw190",
-			"squadronIntroduction": "19440901",
-			"squadronWithdrawal": "19441001"
-		},
-		{
-			"archType": "fw190d",
-			"squadronIntroduction": "19441001",
-			"squadronWithdrawal": "19450601"
-		}
-	],
-	"airfields": {
-		"19440901": "Eindhoven",
-		"19441001": "Kluis",
-		"19441101": "Essen-Mulheim",
-		"19441220": "Bonn-Hangelar_3960",
-		"19441225": "Strassfeld",
-		"19441229": "Bonn-Hangelar_3960",
-		"19450207": "Krefeld-Linn",
-		"19450310": "Breitscheid",
-		"19450404": "Stormede"
-	},
-	"skins": [
-		{
-			"skinName": "I_JG27",
-			"planeType": "fw190a3",
-			"startDate": "19411101",
-			"endDate": "19450601",
-			"squadId": 20111027,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		},
-		{
-			"skinName": "I_JG27",
-			"planeType": "fw190a5",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 20111027,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		},
-		{
-			"skinName": "I_JG27",
-			"planeType": "fw190a8",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 20111027,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		},
-		{
-			"skinName": "I_JG27",
-			"planeType": "fw190d9",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 20111027,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		}
-	],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 20101,
-	"squadronRoles": {
-		"squadronRolePeriods": [
-			{
-				"startDate": "19440901",
-				"endDate": "19450601",
-				"weightedRoles": [
-					{
-						"role": "ROLE_STRATEGIC_INTERCEPT",
-						"weight": 20
-					},
-					{
-						"role": "ROLE_RECON",
-						"weight": 3
-					},
-					{
-						"role": "ROLE_FIGHTER",
-						"weight": 80
-					},
-					{
-						"role": "ROLE_ATTACK",
-						"weight": 20
-					}
-				]
-			}
-		]
-	},
-	"nightMissionOdds": {
-		"nightMissionPeriods": [
-			{
-				"startDate": "19440901",
-				"endDate": "19450601",
-				"nightMissionOdds": 3
-			}
-		]
-	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19411001": "ROOK"
-	}
+  "country": "GERMANY",
+  "squadronId": 20111027,
+  "name": "I./JG27",
+  "fileName": "I_JG27.json",
+  "skill": 85,
+  "planeAssignments": [
+    {
+      "archType": "fw190",
+      "squadronIntroduction": "19440901",
+      "squadronWithdrawal": "19441001"
+    },
+    {
+      "archType": "fw190d",
+      "squadronIntroduction": "19441001",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "airfields": {
+    "19440901": "Eindhoven",
+    "19440925": "Asch",
+    "19440928": "Ophoven",
+    "19441101": "Krefeld-Linn",
+    "19441220": "Koln-Butzweilerhof",
+    "19441225": "Strassfeld",
+    "19441229": "Bonn-Hangelar_3960",
+    "19450207": "Krefeld-Linn",
+    "19450310": "Dortmund",
+    "19450404": "Stormede"
+  },
+  "skins": [
+    {
+      "skinName": "I_JG27",
+      "planeType": "fw190a3",
+      "archTypes": [],
+      "startDate": "19411101",
+      "endDate": "19450601",
+      "squadId": 20111027,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": false
+    },
+    {
+      "skinName": "I_JG27",
+      "planeType": "fw190a5",
+      "archTypes": [],
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 20111027,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": false
+    },
+    {
+      "skinName": "I_JG27",
+      "planeType": "fw190a8",
+      "archTypes": [],
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 20111027,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": false
+    },
+    {
+      "skinName": "I_JG27",
+      "planeType": "fw190d9",
+      "archTypes": [],
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 20111027,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": false
+    }
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": []
+  },
+  "serviceId": 20101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_STRATEGIC_INTERCEPT",
+            "weight": 20
+          },
+          {
+            "role": "ROLE_RECON",
+            "weight": 3
+          },
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 80
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 20
+          }
+        ]
+      }
+    ]
+  },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "nightMissionOdds": 3
+      }
+    ]
+  },
+  "conversionPeriods": [],
+  "callsigns": {
+    "19411001": "ROOK"
+  }
 }

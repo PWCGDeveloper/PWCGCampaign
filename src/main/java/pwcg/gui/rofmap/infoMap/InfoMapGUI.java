@@ -146,12 +146,6 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         return selectionPanel;
     }
 
-    
-    /**
-     * @param selectionPanel
-     * @throws PWCGException
-     * @throws PWCGException
-     */
     private JPanel createDateSelection(JPanel selectionPanel) throws PWCGException, PWCGException
     {
         JPanel datePanel = new JPanel(new BorderLayout());
@@ -176,10 +170,6 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         return datePanel;
     }
 
-    /**
-     * @return
-     * @throws PWCGException
-     */
     private JPanel makeMapCheckBoxes() throws PWCGException
     {
         JPanel mapPanel = new JPanel(new BorderLayout());

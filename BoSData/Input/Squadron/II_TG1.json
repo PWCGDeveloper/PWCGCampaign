@@ -13,19 +13,19 @@
   ],
   "airfields": {
     "19440901": "Volkel",
-    "19441001": "Essen-Mulheim",
-    "19441101": "Breitscheid",
-    "19441220": "Breitscheid",
-    "19441225": "Breitscheid",
-    "19441229": "Breitscheid",
-    "19450207": "Breitscheid",
+    "19440925": "Kluis",
+    "19440928": "Krefeld-Linn",
+    "19441101": "Coesfeld-Lette",
+    "19441220": "Dortmund",
+    "19441225": "Eudenbach/Asbach",
+    "19441229": "Eudenbach/Asbach",
+    "19450207": "Koln-Wahn",
     "19450310": "Werl",
     "19450404": "Quackenbruck"
   },
   "skins": [],
   "squadHistory": {
-    "squadHistoryEntries": [
-    ]
+    "squadHistoryEntries": []
   },
   "serviceId": 20101,
   "squadronRoles": {
@@ -41,6 +41,9 @@
         ]
       }
     ]
+  },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
   },
   "nightMissionOdds": {
     "nightMissionPeriods": [

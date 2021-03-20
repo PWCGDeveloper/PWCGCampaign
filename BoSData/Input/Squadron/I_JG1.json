@@ -1,96 +1,106 @@
 {
-	"country": "GERMANY",
-	"squadronId": 20111001,
-	"name": "I./JG1",
-	"fileName": "I_JG1.json",
-	"skill": 85,
-	"planeAssignments": [
-		{
-			"archType": "fw190",
-			"squadronIntroduction": "19440901",
-			"squadronWithdrawal": "19450601"
-		}
-	],
-	"airfields": {
-		"19440901": "Aachen",
-		"19441001": "Kelz",
-		"19441101": "Koln-Ostheim",
-		"19441220": "Soesterberg",
-		"19441225": "Twente",
-		"19441229": "Twente",
-		"19450207": "Soesterberg",
-		"19450310": "Coesfeld-Lette",
-		"19450404": "Plantlunne"
-	},
-	"skins": [
-		{
-			"skinName": "I_JG1",
-			"planeType": "fw190a3",
-			"startDate": "19411101",
-			"endDate": "19450601",
-			"squadId": 20111001,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		},
-		{
-			"skinName": "I_JG1",
-			"planeType": "fw190a5",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 20111001,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		},
-		{
-			"skinName": "I_JG1",
-			"planeType": "fw190a8",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 20111001,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		}
-	],
-	"squadHistory": {
-		
-	},
-	"serviceId": 20101,
-	"squadronRoles": {
-		"squadronRolePeriods": [
-			{
-				"startDate": "19440901",
-				"endDate": "19450601",
-				"weightedRoles": [
-					{
-						"role": "ROLE_STRATEGIC_INTERCEPT",
-						"weight": 30
-					},
-					{
-						"role": "ROLE_FIGHTER",
-						"weight": 70
-					},
-					{
-						"role": "ROLE_ATTACK",
-						"weight": 30
-					}
-				]
-			}
-		]
-	},
-	"nightMissionOdds": {
-		"nightMissionPeriods": [
-			{
-				"startDate": "19440901",
-				"endDate": "19450601",
-				"nightMissionOdds": 3
-			}
-		]
-	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19410801": "SWIFT"
-	}
+  "country": "GERMANY",
+  "squadronId": 20111001,
+  "name": "I./JG1",
+  "fileName": "I_JG1.json",
+  "skill": 85,
+  "planeAssignments": [
+    {
+      "archType": "fw190",
+      "squadronIntroduction": "19440901",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "airfields": {
+    "19440901": "Aachen",
+    "19440925": "Schijndel",
+    "19440928": "Soesterberg",
+    "19441101": "Strassfeld",
+    "19441220": "Arnhem Deelen",
+    "19441225": "Twente",
+    "19441229": "Krefeld-Linn",
+    "19450207": "Bonninghardt-Sud",
+    "19450310": "Coesfeld-Lette",
+    "19450404": "Plantlunne"
+  },
+  "skins": [
+    {
+      "skinName": "I_JG1",
+      "planeType": "fw190a3",
+      "archTypes": [],
+      "startDate": "19411101",
+      "endDate": "19450601",
+      "squadId": 20111001,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": false
+    },
+    {
+      "skinName": "I_JG1",
+      "planeType": "fw190a5",
+      "archTypes": [],
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 20111001,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": false
+    },
+    {
+      "skinName": "I_JG1",
+      "planeType": "fw190a8",
+      "archTypes": [],
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 20111001,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": false
+    }
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": []
+  },
+  "serviceId": 20101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_STRATEGIC_INTERCEPT",
+            "weight": 30
+          },
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 70
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 30
+          }
+        ]
+      }
+    ]
+  },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "nightMissionOdds": 3
+      }
+    ]
+  },
+  "conversionPeriods": [],
+  "callsigns": {
+    "19410801": "SWIFT"
+  }
 }

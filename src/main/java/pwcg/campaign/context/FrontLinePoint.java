@@ -29,6 +29,11 @@ public class FrontLinePoint extends PWCGLocation
         return country;
     }
 
+    public Side getSide()
+    {
+        return country.getSide();
+    }
+
 
     public void setCountry(ICountry country)
     {
@@ -98,27 +103,4 @@ public class FrontLinePoint extends PWCGLocation
         setFromLocation(location);
         setCountryFromName(getName());
     }
-
-    public static String getAlliedFrontLine()
-    {
-        return ALLIED_FRONT_LINE;
-    }
-
-    public static void setAlliedFrontLine(String alliedFrontLine)
-    {
-        ALLIED_FRONT_LINE = alliedFrontLine;
-    }
-
-    public static String getAxisFrontLine()
-    {
-        return AXIS_FRONT_LINE;
-    }
-
-    public static void setAxisFrontLine(String axisFrontLine)
-    
-    {
-        AXIS_FRONT_LINE = axisFrontLine;
-    }
- 
-    
 }

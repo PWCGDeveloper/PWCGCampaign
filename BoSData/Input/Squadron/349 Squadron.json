@@ -12,36 +12,40 @@
     }
   ],
   "airfields": {
-    "19441001": "Gilze-Rijen",
-    "19441101": "Gilze-Rijen",
+    "19440928": "Eindhoven",
+    "19441101": "Heesch",
     "19441220": "Schijndel",
-    "19441225": "Gilze-Rijen",
-    "19441229": "Gilze-Rijen",
+    "19441225": "GraveKeent",
+    "19441229": "Mill",
     "19450207": "Rips",
     "19450310": "GraveKeent",
     "19450404": "Coesfeld-Lette"
   },
   "skins": [
-		{
-			"skinName": "No349",
-			"planeType": "spitfiremkvb",
-			"startDate": "19440101",
-			"endDate": "19450601",
-			"squadId": 103084349,
-			"country": "Britain",
-			"category": "Squadron",
-			"definedInGame": false
-		},
-		{
-			"skinName": "No349",
-			"planeType": "spitfiremkixe",
-			"startDate": "19440601",
-			"endDate": "19450601",
-			"squadId": 103084349,
-			"country": "Britain",
-			"category": "Squadron",
-			"definedInGame": false
-		}
+    {
+      "skinName": "No349",
+      "planeType": "spitfiremkvb",
+      "archTypes": [],
+      "startDate": "19440101",
+      "endDate": "19450601",
+      "squadId": 103084349,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": false
+    },
+    {
+      "skinName": "No349",
+      "planeType": "spitfiremkixe",
+      "archTypes": [],
+      "startDate": "19440601",
+      "endDate": "19450601",
+      "squadId": 103084349,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": false
+    }
   ],
   "squadHistory": {
     "squadHistoryEntries": []
@@ -68,6 +72,9 @@
         ]
       }
     ]
+  },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
   },
   "nightMissionOdds": {
     "nightMissionPeriods": [

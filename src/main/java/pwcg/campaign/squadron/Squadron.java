@@ -173,6 +173,12 @@ public class Squadron
     public void assignAirfield(Date assignmentDate, String airfield) throws PWCGException 
     {
         airfields.put(assignmentDate, airfield);
+        TreeMap<Date, String> airfieldModified = new TreeMap<>();
+        for (Date fieldDate : airfields.keySet())
+        {
+            airfieldModified.put(fieldDate, (airfields.get(fieldDate)));
+        }
+        airfields = airfieldModified;
     }
 
     public Airfield determineCurrentAirfieldAnyMap(Date campaignDate) throws PWCGException 

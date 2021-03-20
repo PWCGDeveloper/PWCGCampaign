@@ -13,30 +13,32 @@
   ],
   "airfields": {
     "19440901": "Schijndel",
-    "19441001": "Strassfeld",
+    "19440925": "GraveKeent",
+    "19440928": "Hilversum",
     "19441101": "Koln-Wahn",
     "19441220": "Koln-Wahn",
     "19441225": "Koln-Wahn",
     "19441229": "Koln-Wahn",
-    "19450207": "Limburg-Linter",
-    "19450310": "Altenstadt",
+    "19450207": "Eudenbach/Asbach",
+    "19450310": "Greven-Lette",
     "19450404": "Vorden"
   },
   "skins": [
-		{
-			"skinName": "I_KG54",
-			"planeType": "ju88a4",
-			"startDate": "19410101",
-			"endDate": "19450601",
-			"squadId": 20131054,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		}
+    {
+      "skinName": "I_KG54",
+      "planeType": "ju88a4",
+      "archTypes": [],
+      "startDate": "19410101",
+      "endDate": "19450601",
+      "squadId": 20131054,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": false
+    }
   ],
   "squadHistory": {
-    "squadHistoryEntries": [
-    ]
+    "squadHistoryEntries": []
   },
   "serviceId": 20101,
   "squadronRoles": {
@@ -61,6 +63,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -70,8 +75,7 @@
       }
     ]
   },
-  "conversionPeriods": [
-  ],
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "GANNET"
   }

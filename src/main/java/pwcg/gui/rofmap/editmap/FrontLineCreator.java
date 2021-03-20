@@ -3,7 +3,10 @@ package pwcg.gui.rofmap.editmap;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGMap.PWCGFront;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -14,24 +17,49 @@ public class FrontLineCreator
     {
     }
 
-    public List<FrontLinePoint> createAlliedLinesWestFront(List<FrontLinePoint> userFrontLines) throws PWCGException
+    public List<FrontLinePoint> createFrontLines(List<FrontLinePoint> userFrontLines) throws PWCGException
     {
-        return createLines(userFrontLines, 270, FrontLinePoint.ALLIED_FRONT_LINE);
+        if (PWCGContext.getInstance().getCurrentMap().getFront() == PWCGFront.WWII_EASTERN_FRONT)
+        {
+            return createAlliedLinesEastFront(userFrontLines);
+        }
+        else
+        {
+            return createAlliedLinesWestFront(userFrontLines);
+        }
     }
     
-    public List<FrontLinePoint> createAlliedLinesEastFront(List<FrontLinePoint> userFrontLines) throws PWCGException
+    private List<FrontLinePoint> createAlliedLinesWestFront(List<FrontLinePoint> userFrontLines) throws PWCGException
     {
-        return createLines(userFrontLines, 90, FrontLinePoint.ALLIED_FRONT_LINE);
-    }
-
-    public List<FrontLinePoint> createAxisLinesWestFront(List<FrontLinePoint> userFrontLines) throws PWCGException
-    {
-        return createLines(userFrontLines, 90, FrontLinePoint.AXIS_FRONT_LINE);
+        List<FrontLinePoint> axisLines = reduceToAxisLines(userFrontLines);
+        List<FrontLinePoint> alliedLines =  createLines(axisLines, 270, FrontLinePoint.ALLIED_FRONT_LINE);
+        List<FrontLinePoint> allFrontLines = new ArrayList<>();
+        allFrontLines.addAll(alliedLines);
+        allFrontLines.addAll(axisLines);
+        return allFrontLines;
     }
     
-    public List<FrontLinePoint> createAxisLinesEastFront(List<FrontLinePoint> userFrontLines) throws PWCGException
+    private List<FrontLinePoint> createAlliedLinesEastFront(List<FrontLinePoint> userFrontLines) throws PWCGException
     {
-        return createLines(userFrontLines, 270, FrontLinePoint.AXIS_FRONT_LINE);
+        List<FrontLinePoint> axisLines = reduceToAxisLines(userFrontLines);
+        List<FrontLinePoint> alliedLines = createLines(axisLines, 90, FrontLinePoint.ALLIED_FRONT_LINE);
+        List<FrontLinePoint> allFrontLines = new ArrayList<>();
+        allFrontLines.addAll(alliedLines);
+        allFrontLines.addAll(axisLines);
+        return allFrontLines;
+    }
+    
+    private List<FrontLinePoint> reduceToAxisLines(List<FrontLinePoint> userFrontLines) throws PWCGException
+    {
+        List<FrontLinePoint> axisLines = new ArrayList<>();
+        for (FrontLinePoint frontLinePoint : userFrontLines)
+        {
+            if (frontLinePoint.getSide() == Side.AXIS)
+            {
+                axisLines.add(frontLinePoint);
+            }
+        }
+        return axisLines;
     }
 
     private List<FrontLinePoint> createLines(List<FrontLinePoint> userFrontLines, int oppositeFrontLineAngle, String frontLinePointName) throws PWCGException

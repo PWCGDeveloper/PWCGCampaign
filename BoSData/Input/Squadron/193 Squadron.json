@@ -13,36 +13,41 @@
   ],
   "airfields": {
     "19440901": "Deurne",
+    "19440928": "Rips",
     "19441001": "Gilze-Rijen",
     "19441101": "Schijndel",
     "19441220": "Mill",
-    "19441225": "Schijndel",
+    "19441225": "Kluis",
     "19441229": "Rips",
-    "19450207": "Gilze-Rijen",
+    "19450207": "Eindhoven",
     "19450310": "Schijndel",
-    "19450404": "Essen-Mulheim"
+    "19450404": "Werl"
   },
   "skins": [
-		{
-			"skinName": "No193",
-			"planeType": "spitfiremkvb",
-			"startDate": "19440101",
-			"endDate": "19450601",
-			"squadId": 103084193,
-			"country": "Britain",
-			"category": "Squadron",
-			"definedInGame": false
-		},
-		{
-			"skinName": "No193",
-			"planeType": "spitfiremkixe",
-			"startDate": "19440601",
-			"endDate": "19450601",
-			"squadId": 103084193,
-			"country": "Britain",
-			"category": "Squadron",
-			"definedInGame": false
-		}
+    {
+      "skinName": "No193",
+      "planeType": "spitfiremkvb",
+      "archTypes": [],
+      "startDate": "19440101",
+      "endDate": "19450601",
+      "squadId": 103084193,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": false
+    },
+    {
+      "skinName": "No193",
+      "planeType": "spitfiremkixe",
+      "archTypes": [],
+      "startDate": "19440601",
+      "endDate": "19450601",
+      "squadId": 103084193,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": false
+    }
   ],
   "squadHistory": {
     "squadHistoryEntries": []

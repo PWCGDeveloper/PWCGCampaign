@@ -13,34 +13,36 @@
   ],
   "airfields": {
     "19440901": "Rips",
-    "19441001": "Twente",
-    "19441101": "Twente",
+    "19440925": "Mill",
+    "19440928": "Krefeld",
+    "19441101": "Essen-Mulheim",
     "19441220": "Kirchhellen",
     "19441225": "Twente",
-    "19441229": "Twente",
+    "19441229": "Koln-Ostheim",
     "19450207": "Twente",
     "19450310": "Twente",
     "19450404": "Achmer"
   },
   "skins": [
-		{
-			"skinName": "me262a_skin_02",
-			"planeType": "me262a",
-			"startDate": "19410101",
-			"endDate": "19450601",
-			"squadId": 20131051,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": true
-		}
+    {
+      "skinName": "me262a_skin_02",
+      "planeType": "me262a",
+      "archTypes": [],
+      "startDate": "19410101",
+      "endDate": "19450601",
+      "squadId": 20131051,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": true,
+      "winter": false
+    }
   ],
   "squadHistory": {
-    "squadHistoryEntries": [
-    ]
+    "squadHistoryEntries": []
   },
   "serviceId": 20101,
   "squadronRoles": {
-      "squadronRolePeriods": [
+    "squadronRolePeriods": [
       {
         "startDate": "19400101",
         "endDate": "19450601",
@@ -53,6 +55,9 @@
       }
     ]
   },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
   "nightMissionOdds": {
     "nightMissionPeriods": [
       {
@@ -62,8 +67,7 @@
       }
     ]
   },
-  "conversionPeriods": [
-  ],
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "SEAGULL"
   }

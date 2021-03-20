@@ -95,33 +95,26 @@ public class FrontLineEditor
         int selectedFrontPointIndex = selectNearestFrontPointToMouseClick(e, 20000.0);
         if (selectedFrontPointIndex != LOCATION_INDEX_NOT_FOUND)
         {
-            if (selectedFrontPointIndex == 0)
-            {
-                addFrontPoint(0, 1);
-            }
-            else if (selectedFrontPointIndex == (userFrontLines.size()-1))
-            {
-                addFrontPoint((userFrontLines.size()-2), (userFrontLines.size()-1));
-            }
-            else
-            {
-                int closestFrontPointIndex = selectNearestFrontPointIndexToOtherFrontPoint (selectedFrontPointIndex);
-                addFrontPoint(selectedFrontPointIndex, closestFrontPointIndex);
-            }
+            addFrontPoint(selectedFrontPointIndex);
         }        
     }   
 
-    private void addFrontPoint(int selectedFrontPointRightIndex, int selectedFrontPointLeftIndex) throws PWCGException
+    private void addFrontPoint(int selectedFrontPointIndex) throws PWCGException
     {
-        FrontLinePoint selectedFrontPointRight = userFrontLines.get(selectedFrontPointRightIndex);
-        FrontLinePoint selectedFrontPointLeft = userFrontLines.get(selectedFrontPointLeftIndex);
+        if (selectedFrontPointIndex == (userFrontLines.size()-1))
+        {
+            return;
+        }
+        
+        FrontLinePoint selectedFrontPointLeft = userFrontLines.get(selectedFrontPointIndex);
+        FrontLinePoint selectedFrontPointRight = userFrontLines.get(selectedFrontPointIndex+1);
         
         double angle = MathUtils.calcAngle(selectedFrontPointRight.getPosition(), selectedFrontPointLeft.getPosition());
         double distance = MathUtils.calcDist(selectedFrontPointRight.getPosition(), selectedFrontPointLeft.getPosition());
         Coordinate frontCoordinate = MathUtils.calcNextCoord(selectedFrontPointRight.getPosition(), angle, distance / 2);
 
         FrontLinePoint newFrontFrontLinePoint = makeFrontLinePoint(frontCoordinate, selectedFrontPointRight.getName());
-        userFrontLines.add(selectedFrontPointRightIndex, newFrontFrontLinePoint);
+        userFrontLines.add(selectedFrontPointIndex+1, newFrontFrontLinePoint);
     }
 
     public void setFromMap(List<FrontLinePoint> frontLines)
@@ -139,9 +132,9 @@ public class FrontLineEditor
     }
 
 
-    public void addAdditionalFrontLinePoints(List<FrontLinePoint> additionalFrontLinePoints)
+    public void replaceFrontLines(List<FrontLinePoint> modifiedFrontLinePoints)
     {
-        userFrontLines.addAll(additionalFrontLinePoints);
+        userFrontLines = modifiedFrontLinePoints;
     }
 
     private int selectNearestFrontPointToMouseClick(MouseEvent e, double radius)
@@ -178,35 +171,6 @@ public class FrontLineEditor
         }
         
         return LOCATION_INDEX_NOT_FOUND;
-    }
-    
-
-    private int selectNearestFrontPointIndexToOtherFrontPoint (int selectedFrontPointIndex)
-    {
-        if (selectedFrontPointIndex == 0)
-        {
-            return 1;
-        }
-        else if (selectedFrontPointIndex == (userFrontLines.size()-1))
-        {
-            return (userFrontLines.size()-2);
-        }
-        else
-        {
-            FrontLinePoint selectedFrontPoint = userFrontLines.get(selectedFrontPointIndex);
-            FrontLinePoint selectedFrontPointRight = userFrontLines.get(selectedFrontPointIndex-1);
-            FrontLinePoint selectedFrontPointLeft = userFrontLines.get(selectedFrontPointIndex+1);
-            double distanceRight = MathUtils.calcDist(selectedFrontPoint.getPosition(), selectedFrontPointRight.getPosition());
-            double distanceLeft = MathUtils.calcDist(selectedFrontPoint.getPosition(), selectedFrontPointLeft.getPosition());
-            if (distanceRight < distanceLeft)
-            {
-                return (selectedFrontPointIndex-1);
-            }
-            else
-            {
-                return (selectedFrontPointIndex+1);
-            }
-        }
     }
 
     private FrontLinePoint makeFrontLinePoint(Coordinate coordinate, String name)

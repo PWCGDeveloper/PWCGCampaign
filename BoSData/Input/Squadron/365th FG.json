@@ -13,36 +13,41 @@
   ],
   "airfields": {
     "19440901": "Evere",
-    "19441001": "St.Trond",
+    "19440925": "Diest",
+    "19440928": "St.Trond",
     "19441101": "Helmond",
     "19441220": "Helmond",
-    "19441225": "Eindhoven",
+    "19441225": "Helmond",
     "19441229": "Aachen",
     "19450207": "Aachen",
     "19450310": "Kelz",
     "19450404": "Limburg-Linter"
   },
   "skins": [
-		{
-			"skinName": "FG365",
-			"planeType": "p47d22",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 102036022,
-			"country": "USA",
-			"category": "Squadron",
-			"definedInGame": false
-		},
-		{
-			"skinName": "FG365",
-			"planeType": "p47d28",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 102036022,
-			"country": "USA",
-			"category": "Squadron",
-			"definedInGame": false
-		}
+    {
+      "skinName": "FG365",
+      "planeType": "p47d22",
+      "archTypes": [],
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 102036022,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": false
+    },
+    {
+      "skinName": "FG365",
+      "planeType": "p47d28",
+      "archTypes": [],
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 102036022,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": false
+    }
   ],
   "squadHistory": {
     "squadHistoryEntries": []
@@ -69,6 +74,9 @@
         ]
       }
     ]
+  },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
   },
   "nightMissionOdds": {
     "nightMissionPeriods": [
