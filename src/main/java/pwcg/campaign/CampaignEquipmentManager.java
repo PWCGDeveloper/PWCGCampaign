@@ -6,12 +6,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneStatus;
+import pwcg.campaign.plane.PlaneType;
+import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.resupply.depot.EquipmentDepot;
 import pwcg.campaign.resupply.depot.EquipmentDepotInitializer;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignEquipmentManager
@@ -65,7 +69,7 @@ public class CampaignEquipmentManager
         return new ArrayList<Integer>(equipmentDepotsForServices.keySet());
     }
     
-    public EquippedPlane getAnyPlane(Integer serialNumber) throws PWCGException
+    public EquippedPlane getAnyPlaneWithPreference(Integer serialNumber) throws PWCGException
     {
         EquippedPlane equippedPlane = getPlaneFromAnySquadron(serialNumber);
         if (equippedPlane == null)
@@ -129,7 +133,7 @@ public class CampaignEquipmentManager
 
     public EquippedPlane destroyPlane(int serialNumber, Date date) throws PWCGException
     {
-        EquippedPlane destroyedPlane = getAnyPlane(serialNumber);
+        EquippedPlane destroyedPlane = getAnyPlaneWithPreference(serialNumber);
         destroyedPlane.setPlaneStatus(PlaneStatus.STATUS_DESTROYED);
         destroyedPlane.setDateRemovedFromService(date);
         return destroyedPlane;
@@ -157,6 +161,24 @@ public class CampaignEquipmentManager
         depot.setLastReplacementDate(campaign.getDate());
         depot.setEquippment(equipment);
         campaign.getEquipmentManager().addEquipmentDepotForService(armedService.getServiceId(), depot);
+    }
+
+
+    public void replaceAircraftForSquadron(Squadron squadron, List<Integer> serialNumbersOfChangedPlanes, String planeTypeToChangeTo) throws PWCGException
+    {
+        for (int serialNumber : serialNumbersOfChangedPlanes)
+        {
+            this.destroyPlane(serialNumber, campaign.getDate());
+        }
+        
+        Equipment squadronEquipment = equipmentAllSquadrons.get(squadron.getSquadronId());
+        for (int i = 0; i < serialNumbersOfChangedPlanes.size(); ++i)
+        {
+            PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
+            PlaneType planeType = planeTypeFactory.getPlaneByDisplayName(planeTypeToChangeTo);
+            EquippedPlane equippedPlane = new EquippedPlane(planeType, campaign.getSerialNumber().getNextPlaneSerialNumber(), squadron.getSquadronId(), PlaneStatus.STATUS_DEPLOYED);
+            squadronEquipment.addEquippedPlane(equippedPlane);
+        }
     }
 
 }

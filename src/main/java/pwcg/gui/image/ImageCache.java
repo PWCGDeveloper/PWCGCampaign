@@ -193,7 +193,7 @@ public class ImageCache
             return null;
         }
         
-        SquadronMember referencePlayer = campaign.getPersonnelManager().getAnyCampaignMember(campaign.getCampaignData().getReferencePlayerSerialNumber());
+        SquadronMember referencePlayer = campaign.getReferencePlayer();
         if (referencePlayer == null)
         {
             return null;

@@ -177,6 +177,26 @@ public class PlaneTypeFactory
         return null;
     }
 
+    public List<PlaneType> getAvailablePlaneTypes(ICountry country, Role role, Date date) throws PWCGException
+    {
+        Map<Integer, PlaneType> availablePlaneTypes = new TreeMap<>();
+        for (PlaneType thisPlane : planeTypes.values())
+        {
+            if (thisPlane.isUsedBy(country))
+            {
+                if (thisPlane.isPrimaryRole(role))
+                {
+                    if (thisPlane.getIntroduction().before(date))
+                    {
+                        availablePlaneTypes.put(thisPlane.getGoodness(), thisPlane);
+                    }
+                }
+            }
+        }
+        
+        return new ArrayList<>(availablePlaneTypes.values());
+    }
+
     public List<PlaneType> createPlaneTypesForArchType(String planeArchType) throws PWCGException
     {
         List<PlaneType> planeTypesForArchType = new ArrayList<>();
@@ -336,7 +356,7 @@ public class PlaneTypeFactory
         return selectedPlane;
     }
     
-    private PlaneType getPlaneByDisplayName(String pwcgDesc) 
+    public PlaneType getPlaneByDisplayName(String pwcgDesc) 
     {
         PlaneType plane = null;
 

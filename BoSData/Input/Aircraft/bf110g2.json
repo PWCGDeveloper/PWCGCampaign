@@ -11,7 +11,7 @@
   "desc": "",
   "cruisingSpeed": 320,
   "climbOutRate": 800,
-  "goodness": 20,
+  "goodness": 40,
   "range": 1200,
   "isFlyable": true,
   "planeSize": "PLANE_SIZE_MEDIUM",

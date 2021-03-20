@@ -85,6 +85,9 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
         JButton journalButton = PWCGButtonFactory.makeTranslucentMenuButton("Journal", "CampFlowJournal", "Update your personal journal", this);
         buttonPanel.add(journalButton);
 
+        JButton equipmentRequestButton = PWCGButtonFactory.makeTranslucentMenuButton("Equipment Request", "EquipmentRequest", "Make a request for specific equipment", this);
+        buttonPanel.add(equipmentRequestButton);
+
         JButton squadronLogButton = PWCGButtonFactory.makeTranslucentMenuButton("Squadron Log", "CampFlowLog", "View campaign logs", this);
         buttonPanel.add(squadronLogButton);
 
@@ -109,6 +112,10 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
             else if (action.equalsIgnoreCase("CampFlowJournal"))
             {
                 showJournal();
+            }
+            else if (action.equalsIgnoreCase("EquipmentRequest"))
+            {
+                showEquipmentRequest();
             }
             else if (action.equalsIgnoreCase("CampFlowLog"))
             {
@@ -156,6 +163,16 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
         journalDisplay.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(journalDisplay);
+    }
+
+    private void showEquipmentRequest() throws PWCGException 
+    {
+        SoundManager.getInstance().playSound("Typewriter.WAV");
+
+        EquipmentRequestScreen equipmentRequestScreen = new EquipmentRequestScreen(campaign);
+        equipmentRequestScreen.makePanels();
+
+        CampaignGuiContextManager.getInstance().pushToContextStack(equipmentRequestScreen);
     }
 
     private void showCampaignLog() throws PWCGException 

@@ -304,6 +304,11 @@ public class PWCGButtonFactory extends JButton
         return paddedString;
     }
 
+    public static JCheckBox makeCheckBox(String buttonText, Color fgColor) throws PWCGException 
+    {
+        return makeCheckBox(buttonText, "", fgColor, null);
+    }
+
     public static JCheckBox makeCheckBox(String buttonText, String actionCommand, Color fgColor, ActionListener actionListener) throws PWCGException 
     {
         Font font = PWCGMonitorFonts.getPrimaryFont();
@@ -315,9 +320,11 @@ public class PWCGButtonFactory extends JButton
         button.setOpaque(false);
         button.setForeground(fgColor);
         button.setFont(font);
-        button.setActionCommand(actionCommand);
-        button.addActionListener(actionListener);
-
+        if (actionListener != null)
+        {
+            button.setActionCommand(actionCommand);
+            button.addActionListener(actionListener);
+        }
         return button;
     }
 

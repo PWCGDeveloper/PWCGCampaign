@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -34,7 +35,7 @@ public class Equipment
 
     public Map<Integer, EquippedPlane> getActiveEquippedPlanes()
     {
-        Map<Integer, EquippedPlane> activeEquippedPlanes = new HashMap<>();
+        Map<Integer, EquippedPlane> activeEquippedPlanes = new TreeMap<>();
         for (EquippedPlane equippedPlane : equippedPlanes.values())
         {
             if (equippedPlane.getPlaneStatus() == PlaneStatus.STATUS_DEPLOYED && equippedPlane.getDateRemovedFromService() == null)

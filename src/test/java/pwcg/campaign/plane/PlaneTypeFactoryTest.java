@@ -12,8 +12,10 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -45,6 +47,27 @@ public class PlaneTypeFactoryTest
         PlaneType planeType =  planeTypeFactory.createPlaneTypeByAnyName("Bf 109 F-4");
         assert(planeType.getType().equals("bf109f4"));
         assert(planeType.getArchType().equals("bf109"));
+    }
+
+    @Test
+    public void getAvailablePlaneTypesTest() throws PWCGException
+    {
+        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
+        
+        List<PlaneType> availableGermanPlaneTypes = planeTypeFactory.getAvailablePlaneTypes(CountryFactory.makeCountryByCountry(Country.GERMANY), Role.ROLE_FIGHTER, DateUtils.getDateYYYYMMDD("19430101"));        
+        assert(availableGermanPlaneTypes.size() == 5);
+
+        List<PlaneType> availableBritishPlaneTypes = planeTypeFactory.getAvailablePlaneTypes(CountryFactory.makeCountryByCountry(Country.BRITAIN), Role.ROLE_FIGHTER, DateUtils.getDateYYYYMMDD("19430101"));        
+        assert(availableBritishPlaneTypes.size() == 1);
+
+        List<PlaneType> availableAmericanPlaneTypes = planeTypeFactory.getAvailablePlaneTypes(CountryFactory.makeCountryByCountry(Country.USA), Role.ROLE_FIGHTER, DateUtils.getDateYYYYMMDD("19430101"));        
+        assert(availableAmericanPlaneTypes.size() == 2);
+
+        List<PlaneType> availableRussianPlaneTypes = planeTypeFactory.getAvailablePlaneTypes(CountryFactory.makeCountryByCountry(Country.RUSSIA), Role.ROLE_FIGHTER, DateUtils.getDateYYYYMMDD("19430101"));        
+        assert(availableRussianPlaneTypes.size() == 8);
+        
+        List<PlaneType> availableGermanAttackPlaneTypes = planeTypeFactory.getAvailablePlaneTypes(CountryFactory.makeCountryByCountry(Country.GERMANY), Role.ROLE_ATTACK, DateUtils.getDateYYYYMMDD("19430101"));        
+        assert(availableGermanAttackPlaneTypes.size() == 4);
     }
 
     @Test

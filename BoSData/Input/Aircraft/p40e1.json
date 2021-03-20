@@ -3,7 +3,8 @@
   "archType": "p40",
   "side": "ALLIED",
   "primaryUsedBy": [
-    "USA"
+    "USA",
+    "RUSSIA"
   ],
   "displayName": "P-40E-1",
   "script": "LuaScripts\\WorldObjects\\Planes\\p40e1.txt",

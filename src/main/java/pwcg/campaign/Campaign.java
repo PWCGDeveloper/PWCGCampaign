@@ -372,4 +372,14 @@ public class Campaign
         FrontMapIdentifier mapIdentifier = MapFinderForCampaign.findMapForCampaign(this);
         return mapIdentifier;
     }
+
+    public SquadronMember getReferencePlayer() throws PWCGException
+    {
+        SquadronMember referencePlayer = personnelManager.getAnyCampaignMember(campaignData.getReferencePlayerSerialNumber());
+        if (referencePlayer == null)
+        {
+            throw new PWCGException("reference player not found on request for serial number" + campaignData.getReferencePlayerSerialNumber());
+        }
+        return referencePlayer;
+    }
 }
