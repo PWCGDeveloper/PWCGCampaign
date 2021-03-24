@@ -6,7 +6,7 @@ import java.util.List;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGMap.PWCGFront;
+import pwcg.campaign.context.PWCGFront;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -19,7 +19,7 @@ public class FrontLineCreator
 
     public List<FrontLinePoint> createFrontLines(List<FrontLinePoint> userFrontLines) throws PWCGException
     {
-        if (PWCGContext.getInstance().getCurrentMap().getFront() == PWCGFront.WWII_EASTERN_FRONT)
+        if (PWCGContext.getInstance().getCurrentMap().getMapIdentifier().getFront() == PWCGFront.WWII_EASTERN_FRONT)
         {
             return createAlliedLinesEastFront(userFrontLines);
         }

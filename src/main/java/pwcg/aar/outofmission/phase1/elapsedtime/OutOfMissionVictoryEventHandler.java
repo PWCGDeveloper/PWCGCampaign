@@ -6,8 +6,8 @@ import pwcg.aar.prelim.CampaignMembersOutOfMissionFinder;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGFront;
 import pwcg.campaign.context.PWCGMap;
-import pwcg.campaign.context.PWCGMap.PWCGFront;
 import pwcg.campaign.outofmission.DuringCampaignVictimGenerator;
 import pwcg.campaign.outofmission.OutOfMissionVictoryGenerator;
 import pwcg.campaign.personnel.EnemySquadronFinder;
@@ -91,7 +91,7 @@ public class OutOfMissionVictoryEventHandler
                 PWCGMap map = squadron.getMapForAirfield(campaign.getDate());
                 if (map != null)
                 {
-                    if (map.getFront() == PWCGFront.WWII_EASTERN_FRONT)
+                    if (map.getMapIdentifier().getFront() == PWCGFront.WWII_EASTERN_FRONT)
                     {
                         if (squadronMember.getAiSkillLevel() == AiSkillLevel.ACE)
                         {

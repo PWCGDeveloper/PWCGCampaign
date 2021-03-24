@@ -1,0 +1,40 @@
+{
+  "battles": [
+    {
+      "name": "Stalingrad",
+      "neCorner": {
+        "xPos": 300000.0,
+        "yPos": 0.0,
+        "zPos": 300000.0
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "GERMANY",
+      "defendercountry": "RUSSIA",
+      "startDate": "19420815",
+      "stopDate": "19421101",
+      "map": "STALINGRAD_MAP"
+    },
+    {
+      "name": "Stalingrad Operation Uranus",
+      "neCorner": {
+        "xPos": 300000.0,
+        "yPos": 0.0,
+        "zPos": 300000.0
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "RUSSIA",
+      "defendercountry": "GERMANY",
+      "startDate": "19421120",
+      "stopDate": "19430215",
+      "map": "STALINGRAD_MAP"
+    }
+  ]
+}

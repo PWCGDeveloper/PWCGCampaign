@@ -9,7 +9,7 @@ import java.util.TreeMap;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.factory.AirfieldConfigurationFactory;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.group.airfield.AirfieldConfiguration;
@@ -35,10 +35,10 @@ public class AirfieldManager
         airfields.clear();
     }
 
-    public void configure(String mapName) throws PWCGException
+    public void configure(FrontMapIdentifier mapIdentifier) throws PWCGException
     {
         AirfieldConfiguration airfieldConfiguration = AirfieldConfigurationFactory.createAirfieldConfiguration();
-        airfields = airfieldConfiguration.configure(mapName);
+        airfields = airfieldConfiguration.configure(mapIdentifier);
     }
 
     public static List<FrontMapIdentifier> getMapIdForAirfield(String airfieldName) throws PWCGException

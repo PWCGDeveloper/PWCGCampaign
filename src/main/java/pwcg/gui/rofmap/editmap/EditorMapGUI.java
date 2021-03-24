@@ -22,9 +22,8 @@ import javax.swing.SwingConstants;
 
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGMap;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -217,15 +216,16 @@ public class EditorMapGUI extends MapGUI implements ActionListener
         
         if (PWCGContext.getProduct() == PWCGProduct.BOS)
         {
-            mapGrid.add(makeRadioButton(PWCGMap.MOSCOW_MAP_NAME, MAP_DELIMITER + PWCGMap.MOSCOW_MAP_NAME, mapButtonGroup));
-            mapGrid.add(makeRadioButton(PWCGMap.STALINGRAD_MAP_NAME, MAP_DELIMITER + PWCGMap.STALINGRAD_MAP_NAME, mapButtonGroup));
-            mapGrid.add(makeRadioButton(PWCGMap.KUBAN_MAP_NAME, MAP_DELIMITER + PWCGMap.KUBAN_MAP_NAME, mapButtonGroup));
-            mapGrid.add(makeRadioButton(PWCGMap.EAST1944_MAP_NAME, MAP_DELIMITER + PWCGMap.EAST1944_MAP_NAME, mapButtonGroup));
-            mapGrid.add(makeRadioButton(PWCGMap.BODENPLATTE_MAP_NAME, MAP_DELIMITER + PWCGMap.BODENPLATTE_MAP_NAME, mapButtonGroup));
+            addToMapGrid(mapGrid, FrontMapIdentifier.MOSCOW_MAP);
+            addToMapGrid(mapGrid, FrontMapIdentifier.STALINGRAD_MAP);
+            addToMapGrid(mapGrid, FrontMapIdentifier.KUBAN_MAP);
+            addToMapGrid(mapGrid, FrontMapIdentifier.EAST1944_MAP);
+            addToMapGrid(mapGrid, FrontMapIdentifier.EAST1945_MAP);
+            addToMapGrid(mapGrid, FrontMapIdentifier.BODENPLATTE_MAP);
         }
         else if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
-            mapGrid.add(makeRadioButton(PWCGMap.ARRAS_MAP_NAME, MAP_DELIMITER + PWCGMap.ARRAS_MAP_NAME, mapButtonGroup));
+            addToMapGrid(mapGrid, FrontMapIdentifier.ARRAS_MAP);
         }
         else
         {
@@ -233,6 +233,11 @@ public class EditorMapGUI extends MapGUI implements ActionListener
         }
 
         return mapPanel;
+    }
+
+    private void addToMapGrid(JPanel mapGrid, FrontMapIdentifier mapIdentifier) throws PWCGException
+    {
+        mapGrid.add(makeRadioButton(mapIdentifier.getMapName(), MAP_DELIMITER + mapIdentifier.getMapName(), mapButtonGroup));
     }
 
     private void setDateSelectionsByPossibleStartDatesAndMovingFront() throws PWCGException, PWCGException
@@ -366,7 +371,7 @@ public class EditorMapGUI extends MapGUI implements ActionListener
             {
                 int indexOfMapName = MAP_DELIMITER.length();
                 String mapName = action.substring(indexOfMapName);
-                FrontMapIdentifier mapIdentifier = PWCGMap.getFrontMapIdentifierForName(mapName);
+                FrontMapIdentifier mapIdentifier = FrontMapIdentifier.getFrontMapIdentifierForName(mapName);
                 PWCGContext.getInstance().changeContext(mapIdentifier);
                 
                 setDateSelectionsByPossibleStartDatesAndMovingFront();

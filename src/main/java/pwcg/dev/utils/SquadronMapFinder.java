@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.TreeMap;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.squadron.Squadron;

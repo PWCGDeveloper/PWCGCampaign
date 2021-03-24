@@ -5,8 +5,8 @@ import java.util.Date;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
@@ -24,7 +24,7 @@ public class AirfieldReporter
             
             PWCGContext.getInstance();
             
-            manager.configure(PWCGMap.STALINGRAD_MAP_NAME);
+            manager.configure(FrontMapIdentifier.STALINGRAD_MAP);
             
             System.out.println("\n\n\n\n\nAllied");
             for (Airfield field: manager.getAirFieldsForSide(date, Side.ALLIED))

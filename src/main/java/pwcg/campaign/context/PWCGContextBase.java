@@ -6,9 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.campaign.BattleManager;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.group.airfield.staticobject.StaticObjectDefinitionManager;
@@ -30,7 +29,6 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     protected Campaign campaign = null;
     protected AceManager aceManager = new AceManager();
     protected SquadronManager squadronManager = new SquadronManager();
-    protected BattleManager battleManager = new BattleManager();
     protected SkinManager skinManager = new SkinManager();
     protected VehicleDefinitionManager vehicleDefinitionManager = new VehicleDefinitionManager();
     protected StaticObjectDefinitionManager staticObjectDefinitionManager = new StaticObjectDefinitionManager();
@@ -58,7 +56,6 @@ public abstract class PWCGContextBase implements IPWCGContextManager
         planeTypeFactory.initialize();
         aceManager.configure();
         squadronManager.initialize();
-        battleManager.initialize();
         skinManager.initialize();
         vehicleDefinitionManager.initialize();
         staticObjectDefinitionManager.initialize();
@@ -130,7 +127,7 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     @Override
     public PWCGMap getMapByMapName(String mapName)
     {
-        FrontMapIdentifier mapId = PWCGMap.getFrontMapIdentifierForName(mapName);
+        FrontMapIdentifier mapId = FrontMapIdentifier.getFrontMapIdentifierForName(mapName);
         return pwcgMaps.get(mapId);
     }
 
@@ -208,12 +205,6 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     public SquadronManager getSquadronManager()
     {
         return squadronManager;
-    }
-
-    @Override
-    public BattleManager getBattleManager()
-    {
-        return battleManager;
     }
 
     @Override

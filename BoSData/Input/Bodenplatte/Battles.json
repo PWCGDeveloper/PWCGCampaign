@@ -1,0 +1,58 @@
+{
+  "battles": [
+    {
+      "name": "Liberation Of Holland",
+      "neCorner": {
+        "xPos": 384000,
+        "yPos": 0.0,
+        "zPos": 460800
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "USA",
+      "defendercountry": "GERMANY",
+      "startDate": "19440901",
+      "stopDate": "19441210",
+      "map": "BODENPLATTE_MAP"
+    },
+    {
+      "name": "Ardennes OOffensive",
+      "neCorner": {
+        "xPos": 384000,
+        "yPos": 0.0,
+        "zPos": 460800
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "GERMANY",
+      "defendercountry": "USA",
+      "startDate": "19441216",
+      "stopDate": "19441223",
+      "map": "BODENPLATTE_MAP"
+    },
+    {
+      "name": "Defeat of Germany",
+      "neCorner": {
+        "xPos": 384000,
+        "yPos": 0.0,
+        "zPos": 460800
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "USA",
+      "defendercountry": "GERMANY",
+      "startDate": "19441223",
+      "stopDate": "19450601",
+      "map": "BODENPLATTE_MAP"
+    }
+  ]
+}

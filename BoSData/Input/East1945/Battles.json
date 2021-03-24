@@ -1,0 +1,22 @@
+{
+  "battles": [
+    {
+      "name": "Battle for Berlin",
+      "neCorner": {
+        "xPos": 384000,
+        "yPos": 0.0,
+        "zPos": 460800
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "RUSSIA",
+      "defendercountry": "GERMANY",
+      "startDate": "19450117",
+      "stopDate": "19450601",
+      "map": "EAST1945_MAP"
+    }
+  ]
+}

@@ -6,6 +6,7 @@ import java.util.TreeMap;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
@@ -44,7 +45,6 @@ public class ArrasMap extends PWCGMap
 
     public void configure() throws PWCGException
     {
-        this.mapName = ARRAS_MAP_NAME;        
         this.mapIdentifier = FrontMapIdentifier.ARRAS_MAP;
         
         mapArea = new ArrasMapArea();

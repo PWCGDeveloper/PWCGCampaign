@@ -12,7 +12,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IArmedServiceManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.resupply.depot.EquipmentDepotInitializer;
 import pwcg.campaign.squadmember.SerialNumber;

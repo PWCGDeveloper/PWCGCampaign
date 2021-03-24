@@ -54,7 +54,7 @@ public class AssaultDefinitionGenerator
 
     private ICountry getDefendingCountry(Coordinate battleLocation)
     {
-        BattleManager battleManager = PWCGContext.getInstance().getBattleManager();
+        BattleManager battleManager = PWCGContext.getInstance().getCurrentMap().getBattleManager();
         Battle battle = battleManager.getBattleForCampaign(PWCGContext.getInstance().getCurrentMap().getMapIdentifier(), battleLocation,
                 campaign.getDate());
         if (battle != null)

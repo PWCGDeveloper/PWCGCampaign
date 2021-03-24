@@ -3,7 +3,7 @@ package pwcg.campaign.context;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;

@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.plane.RoleCategory;

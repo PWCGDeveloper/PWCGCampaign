@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import pwcg.campaign.context.MapArea;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;

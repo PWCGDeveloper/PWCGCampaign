@@ -9,7 +9,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadron.Squadron;

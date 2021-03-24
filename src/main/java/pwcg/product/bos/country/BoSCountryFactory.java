@@ -7,7 +7,7 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 
 public class BoSCountryFactory implements ICountryFactory
 {

@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.Battles;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
@@ -16,7 +17,7 @@ public class BattleIOJsonTest
     public void readJsonTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
-        Battles battles = BattleIOJson.readJson();
+        Battles battles = BattleIOJson.readJson(FrontMapIdentifier.ARRAS_MAP.getMapName());
         assert (battles.getBattles().size() > 0);
     }
     
@@ -24,7 +25,7 @@ public class BattleIOJsonTest
     public void readJsonBoSTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        Battles battles = BattleIOJson.readJson();
+        Battles battles = BattleIOJson.readJson(FrontMapIdentifier.STALINGRAD_MAP.getMapName());
         assert (battles.getBattles().size() > 0);
     }
 }

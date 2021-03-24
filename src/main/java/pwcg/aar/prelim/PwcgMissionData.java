@@ -3,8 +3,7 @@ package pwcg.aar.prelim;
 import java.util.HashMap;
 import java.util.Map;
 
-import pwcg.campaign.context.PWCGMap;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.data.MissionHeader;
 import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
@@ -62,7 +61,7 @@ public class PwcgMissionData
     public FrontMapIdentifier getMapId()
     {
         String mapName = missionHeader.getMapName();
-        FrontMapIdentifier mapId = PWCGMap.getFrontMapIdentifierForName(mapName);
+        FrontMapIdentifier mapId = FrontMapIdentifier.getFrontMapIdentifierForName(mapName);
         return mapId;
     }
  }

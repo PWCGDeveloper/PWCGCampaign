@@ -20,7 +20,7 @@ import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.MapForAirfieldFinder;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;

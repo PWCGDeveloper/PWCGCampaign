@@ -3,7 +3,7 @@ package pwcg.campaign.context;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.airfield.Airfield;
 

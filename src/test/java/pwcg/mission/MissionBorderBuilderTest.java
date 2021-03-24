@@ -8,7 +8,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;

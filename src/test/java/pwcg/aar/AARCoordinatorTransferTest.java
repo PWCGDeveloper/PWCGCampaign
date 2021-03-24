@@ -6,8 +6,8 @@ import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;

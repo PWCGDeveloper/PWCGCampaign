@@ -4,7 +4,7 @@ import java.util.Date;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.plane.Role;
 
 public class TestCampaignDescription

@@ -10,7 +10,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.target.TargetType;

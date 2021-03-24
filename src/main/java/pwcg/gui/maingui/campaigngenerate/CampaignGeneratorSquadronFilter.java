@@ -9,7 +9,7 @@ import pwcg.campaign.CampaignAces;
 import pwcg.campaign.context.AceManager;
 import pwcg.campaign.context.MapForAirfieldFinder;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadron.Squadron;

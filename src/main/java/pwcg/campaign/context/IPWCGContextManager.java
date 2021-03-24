@@ -3,9 +3,7 @@ package pwcg.campaign.context;
 import java.util.Date;
 import java.util.List;
 
-import pwcg.campaign.BattleManager;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.group.airfield.staticobject.StaticObjectDefinitionManager;
 import pwcg.campaign.plane.PlaneTypeFactory;
@@ -48,8 +46,6 @@ public interface IPWCGContextManager
     void initializeMap() throws PWCGException;
     
     SquadronManager getSquadronManager();
-
-    BattleManager getBattleManager();
 
     SkinManager getSkinManager();
 

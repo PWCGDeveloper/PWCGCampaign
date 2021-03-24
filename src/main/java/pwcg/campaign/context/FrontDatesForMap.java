@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateRange;
 import pwcg.core.utils.DateUtils;

@@ -2,11 +2,11 @@ package pwcg.campaign.context;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import pwcg.campaign.BattleManager;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.group.AirfieldManager;
@@ -27,33 +27,6 @@ public abstract class PWCGMap
     protected abstract Map<String, Integer> getMissionSpacingMyDate();
     protected abstract IMapClimate buildMapClimate();
     protected abstract IMapSeason buildMapSeason();
-    
-    public enum FrontMapIdentifier
-    {
-        MOSCOW_MAP,
-        STALINGRAD_MAP,
-        KUBAN_MAP,
-        EAST1944_MAP,
-        EAST1945_MAP,
-        BODENPLATTE_MAP,
-        ARRAS_MAP
-    }
-
-    public enum PWCGFront
-    {
-        WWII_EASTERN_FRONT,
-        WWII_WESTERN_FRONT,
-        WWI_WESTERN_FRONT
-     }
-
-    public static final String MOSCOW_MAP_NAME = "Moscow";
-    public static final String STALINGRAD_MAP_NAME = "Stalingrad";
-    public static final String EAST1944_MAP_NAME = "East1944";
-    public static final String EAST1945_MAP_NAME = "East1945";
-    public static final String KUBAN_MAP_NAME = "Kuban";
-    public static final String BODENPLATTE_MAP_NAME = "Bodenplatte";
-
-    public static final String ARRAS_MAP_NAME = "Arras";
 
     protected FrontMapIdentifier mapIdentifier = null;
     protected IMapClimate mapClimate;
@@ -67,9 +40,9 @@ public abstract class PWCGMap
     protected TargetPreferenceManager targetPreferenceManager = null;
     protected MapArea mapArea = null;
     protected MapArea usableMapArea = null;
-    protected String mapName = "";
     protected List<Integer> armedServicesActiveForMap = new ArrayList<>();
-    
+    protected BattleManager battleManager;
+
     public PWCGMap()
     {
     }
@@ -77,8 +50,12 @@ public abstract class PWCGMap
     public void configure() throws PWCGException
     {
         String mapName = getMapName();
+        mapIdentifier = FrontMapIdentifier.getFrontMapIdentifierForName(mapName);
         
-        frontDatesForMap = new FrontDatesForMap(PWCGMap.getFrontMapIdentifierForName(mapName));
+        battleManager = new BattleManager(mapIdentifier);
+        battleManager.initialize();
+
+        frontDatesForMap = new FrontDatesForMap(mapIdentifier);
         configureTransitionDates();
     	frontDatesForMap.cleanUnwantedDateDirectories(mapName);
     	for (Date frontDate : frontDatesForMap.getFrontDates())
@@ -99,62 +76,12 @@ public abstract class PWCGMap
 
         airfieldManager = new AirfieldManager();
         
-        airfieldManager.configure(mapName);
+        airfieldManager.configure(mapIdentifier);
         
         targetPreferenceManager = new TargetPreferenceManager();
         targetPreferenceManager.configure(mapName);
     }
 
-    public static FrontMapIdentifier getFrontMapIdentifierForName(String name)
-    {
-        Map<String, FrontMapIdentifier> frontNameIdentifierMap = new HashMap<String, FrontMapIdentifier>();
-        
-        frontNameIdentifierMap.put(MOSCOW_MAP_NAME, FrontMapIdentifier.MOSCOW_MAP);            
-        frontNameIdentifierMap.put(STALINGRAD_MAP_NAME, FrontMapIdentifier.STALINGRAD_MAP);
-        frontNameIdentifierMap.put(KUBAN_MAP_NAME, FrontMapIdentifier.KUBAN_MAP);            
-        frontNameIdentifierMap.put(EAST1944_MAP_NAME, FrontMapIdentifier.EAST1944_MAP);
-        frontNameIdentifierMap.put(EAST1945_MAP_NAME, FrontMapIdentifier.EAST1945_MAP);
-        frontNameIdentifierMap.put(BODENPLATTE_MAP_NAME, FrontMapIdentifier.BODENPLATTE_MAP);            
-
-        frontNameIdentifierMap.put(ARRAS_MAP_NAME, FrontMapIdentifier.ARRAS_MAP);            
-
-        return frontNameIdentifierMap.get(name);
-    }
-    
-    public PWCGFront getFront()
-    {
-        if (mapIdentifier == FrontMapIdentifier.BODENPLATTE_MAP)
-        {
-            return PWCGFront.WWII_WESTERN_FRONT;
-        }
-        else if (mapIdentifier == FrontMapIdentifier.ARRAS_MAP)
-        {
-            return PWCGFront.WWI_WESTERN_FRONT;
-        }
-        else if (mapIdentifier == FrontMapIdentifier.MOSCOW_MAP)
-        {
-            return PWCGFront.WWII_EASTERN_FRONT;
-        }
-        else if (mapIdentifier == FrontMapIdentifier.STALINGRAD_MAP)
-        {
-            return PWCGFront.WWII_EASTERN_FRONT;
-        }
-        else if (mapIdentifier == FrontMapIdentifier.EAST1944_MAP)
-        {
-            return PWCGFront.WWII_EASTERN_FRONT;
-        }
-        else if (mapIdentifier == FrontMapIdentifier.EAST1945_MAP)
-        {
-            return PWCGFront.WWII_EASTERN_FRONT;
-        }
-        else if (mapIdentifier == FrontMapIdentifier.KUBAN_MAP)
-        {
-            return PWCGFront.WWII_EASTERN_FRONT;
-        }
-
-        return PWCGFront.WWII_WESTERN_FRONT;
-    }
-    
     public int getDaysBetweenMissionForDate(Date date) throws PWCGException
     {
         int numDaysSpacing = 2;
@@ -266,7 +193,7 @@ public abstract class PWCGMap
 
     public String getMapName()
     {
-        return mapName;
+        return mapIdentifier.getMapName();
     }
 
     public Coordinate getMapCenter()
@@ -277,5 +204,10 @@ public abstract class PWCGMap
     public TargetPreferenceManager getTargetPreferenceManager()
     {
         return targetPreferenceManager;
+    }
+
+    public BattleManager getBattleManager()
+    {
+        return battleManager;
     }
 }

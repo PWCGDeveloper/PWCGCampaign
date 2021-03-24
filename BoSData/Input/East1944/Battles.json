@@ -1,0 +1,40 @@
+{
+  "battles": [
+    {
+      "name": "Across the Dnieper",
+      "neCorner": {
+        "xPos": 300000.0,
+        "yPos": 0.0,
+        "zPos": 300000.0
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "RUSSIA",
+      "defendercountry": "GERMANY",
+      "startDate": "19440201",
+      "stopDate": "19440325",
+      "map": "EAST1944_MAP"
+    },
+    {
+      "name": "Bagration",
+      "neCorner": {
+        "xPos": 300000.0,
+        "yPos": 0.0,
+        "zPos": 300000.0
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "RUSSIA",
+      "defendercountry": "GERMANY",
+      "startDate": "19440622",
+      "stopDate": "19440822",
+      "map": "EAST1944_MAP"
+    }
+  ]
+}

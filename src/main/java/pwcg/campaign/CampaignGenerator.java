@@ -4,7 +4,7 @@ import java.util.List;
 
 import pwcg.campaign.context.MapForAirfieldFinder;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.squadmember.SquadronMember;

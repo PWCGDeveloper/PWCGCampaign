@@ -7,7 +7,7 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IMissionAltitudeGenerator;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.plane.Balloon;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;

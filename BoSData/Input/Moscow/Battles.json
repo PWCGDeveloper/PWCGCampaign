@@ -1,0 +1,40 @@
+{
+  "battles": [
+    {
+      "name": "Moscow",
+      "neCorner": {
+        "xPos": 300000.0,
+        "yPos": 0.0,
+        "zPos": 300000.0
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "GERMANY",
+      "defendercountry": "RUSSIA",
+      "startDate": "19411015",
+      "stopDate": "19411201",
+      "map": "MOSCOW_MAP"
+    },
+    {
+      "name": "Moscow Russian Counteroffensive",
+      "neCorner": {
+        "xPos": 300000.0,
+        "yPos": 0.0,
+        "zPos": 300000.0
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "RUSSIA",
+      "defendercountry": "GERMANY",
+      "startDate": "19411206",
+      "stopDate": "19420315",
+      "map": "MOSCOW_MAP"
+    }
+  ]
+}

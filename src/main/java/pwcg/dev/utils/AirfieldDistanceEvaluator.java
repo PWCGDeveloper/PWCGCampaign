@@ -5,9 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGMap;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.plane.Role;
@@ -31,8 +30,6 @@ public class AirfieldDistanceEvaluator
     };
 
     AirfieldDistanceOrganizer airfieldDistanceOrganizer = new AirfieldDistanceOrganizer();
-
-    String mapName = PWCGMap.KUBAN_MAP_NAME;
     
     public static void main(String[] args) throws PWCGException
     {

@@ -10,7 +10,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.SquadronMemberFilter;

@@ -22,7 +22,7 @@ import javax.swing.SwingConstants;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.squadron.Squadron;
@@ -253,37 +253,37 @@ public class IntelMapGUI extends MapGUI implements ActionListener
             PWCGMap moscowMap = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.MOSCOW_MAP);
             if (moscowMap.getFrontDatesForMap().isMapActive(campaign.getDate()))
             {
-                mapGrid.add(makeRadioButton(PWCGMap.MOSCOW_MAP_NAME, MAP_DELIMITER + PWCGMap.MOSCOW_MAP_NAME, mapButtonGroup));
+                addToMapGrid(mapGrid, FrontMapIdentifier.MOSCOW_MAP);
             }
             
             PWCGMap stalingradMap = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.STALINGRAD_MAP);
             if (stalingradMap.getFrontDatesForMap().isMapActive(campaign.getDate()))
             {
-                mapGrid.add(makeRadioButton(PWCGMap.STALINGRAD_MAP_NAME, MAP_DELIMITER + PWCGMap.STALINGRAD_MAP_NAME, mapButtonGroup));
+                addToMapGrid(mapGrid, FrontMapIdentifier.STALINGRAD_MAP);
             }
             
             PWCGMap kubanMap = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.KUBAN_MAP);
             if (kubanMap.getFrontDatesForMap().isMapActive(campaign.getDate()))
             {
-                mapGrid.add(makeRadioButton(PWCGMap.KUBAN_MAP_NAME, MAP_DELIMITER + PWCGMap.KUBAN_MAP_NAME, mapButtonGroup));
+                addToMapGrid(mapGrid, FrontMapIdentifier.KUBAN_MAP);
             }
             
             PWCGMap east1944Map = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.EAST1944_MAP);
             if (east1944Map.getFrontDatesForMap().isMapActive(campaign.getDate()))
             {
-                mapGrid.add(makeRadioButton(PWCGMap.EAST1944_MAP_NAME, MAP_DELIMITER + PWCGMap.EAST1944_MAP_NAME, mapButtonGroup));
+                addToMapGrid(mapGrid, FrontMapIdentifier.EAST1944_MAP);
             }
             
             PWCGMap east1945Map = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.EAST1945_MAP);
             if (east1945Map.getFrontDatesForMap().isMapActive(campaign.getDate()))
             {
-                mapGrid.add(makeRadioButton(PWCGMap.EAST1945_MAP_NAME, MAP_DELIMITER + PWCGMap.EAST1945_MAP_NAME, mapButtonGroup));
+                addToMapGrid(mapGrid, FrontMapIdentifier.EAST1945_MAP);
             }
             
             PWCGMap bodenplatteMap = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.BODENPLATTE_MAP);
             if (bodenplatteMap.getFrontDatesForMap().isMapActive(campaign.getDate()))
             {
-                mapGrid.add(makeRadioButton(PWCGMap.BODENPLATTE_MAP_NAME, MAP_DELIMITER + PWCGMap.BODENPLATTE_MAP_NAME, mapButtonGroup));
+                addToMapGrid(mapGrid, FrontMapIdentifier.BODENPLATTE_MAP);
             }
         }
         else if (PWCGContext.getProduct() == PWCGProduct.FC)
@@ -291,7 +291,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
             PWCGMap arrasMap = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.ARRAS_MAP);
             if (arrasMap.getFrontDatesForMap().isMapActive(campaign.getDate()))
             {
-                mapGrid.add(makeRadioButton(PWCGMap.ARRAS_MAP_NAME, MAP_DELIMITER + PWCGMap.ARRAS_MAP_NAME, mapButtonGroup));
+                addToMapGrid(mapGrid, FrontMapIdentifier.ARRAS_MAP);
             }
         }
         else
@@ -300,6 +300,11 @@ public class IntelMapGUI extends MapGUI implements ActionListener
         }
         
         return mapPanel;
+    }
+
+    private void addToMapGrid(JPanel mapGrid, FrontMapIdentifier mapIdentifier) throws PWCGException
+    {
+        mapGrid.add(makeRadioButton(mapIdentifier.getMapName(), MAP_DELIMITER + mapIdentifier.getMapName(), mapButtonGroup));
     }
 
     private JRadioButton makeRadioButton(String buttonText, String commandString, ButtonGroup buttonGroup) throws PWCGException 
@@ -339,7 +344,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
             {
                 int indexOfMapName = MAP_DELIMITER.length();
                 String mapName = action.substring(indexOfMapName);
-                FrontMapIdentifier mapIdentifier = PWCGMap.getFrontMapIdentifierForName(mapName);
+                FrontMapIdentifier mapIdentifier = FrontMapIdentifier.getFrontMapIdentifierForName(mapName);
                 PWCGContext.getInstance().changeContext(mapIdentifier);
                 JPanel mapCenterPanel = createMapPanel();
                 this.add(BorderLayout.CENTER, mapCenterPanel); 

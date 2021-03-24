@@ -6,10 +6,11 @@ import pwcg.core.exception.PWCGException;
 
 public class BattleIOJson 
 {
-	public static Battles readJson() throws PWCGException
+	public static Battles readJson(String mapName) throws PWCGException
 	{
 		JsonObjectReader<Battles> jsoReader = new JsonObjectReader<>(Battles.class);
-		Battles battles = jsoReader.readJsonFile(PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir(), "Battles.json"); 
+		String directory = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\";
+		Battles battles = jsoReader.readJsonFile(directory, "Battles.json"); 
 		return battles;
 	}
 }

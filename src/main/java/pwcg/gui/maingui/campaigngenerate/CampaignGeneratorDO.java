@@ -7,7 +7,7 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.IRankHelper;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;

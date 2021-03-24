@@ -24,9 +24,8 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGMap;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadmember.SerialNumber;
@@ -117,7 +116,7 @@ public class AARPlayerStatusEvaluatorTest
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.PilotInjuryKey)).thenReturn(maxPlayerInjury);
         Mockito.when(pwcgMissionData.getMissionHeader()).thenReturn(missionHeader);
-        Mockito.when(missionHeader.getMapName()).thenReturn(PWCGMap.ARRAS_MAP_NAME);
+        Mockito.when(missionHeader.getMapName()).thenReturn(FrontMapIdentifier.ARRAS_MAP.getMapName());
         		
         AARPilotStatusEvaluator aarPilotStatusEvaluator = new AARPilotStatusEvaluator(campaign, pwcgMissionData, destroyedStatusEvaluator, logEventData, aarVehicleBuilder);
         aarPilotStatusEvaluator.setAarPilotStatusCapturedEvaluator(aarPilotStatusCapturedEvaluator);

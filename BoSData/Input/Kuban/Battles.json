@@ -1,0 +1,40 @@
+{
+  "battles": [
+    {
+      "name": "Kuban German Caucasus Offensive",
+      "neCorner": {
+        "xPos": 460800.0,
+        "yPos": 0.0,
+        "zPos": 358400.0
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "GERMANY",
+      "defendercountry": "RUSSIA",
+      "startDate": "19420715",
+      "stopDate": "19421118",
+      "map": "KUBAN_MAP"
+    },
+    {
+      "name": "Kuban",
+      "neCorner": {
+        "xPos": 460800.0,
+        "yPos": 0.0,
+        "zPos": 358400.0
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "RUSSIA",
+      "defendercountry": "GERMANY",
+      "startDate": "19430415",
+      "stopDate": "19431101",
+      "map": "KUBAN_MAP"
+    }
+  ]
+}

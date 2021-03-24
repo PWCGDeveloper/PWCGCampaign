@@ -9,8 +9,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.BehindEnemyLines;
-import pwcg.campaign.context.PWCGMap;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 
 /**
@@ -78,7 +77,7 @@ public class AARVictoryEvaluator
         LogPlane victimPlane = (LogPlane)missionResultVictory.getVictim();
         BehindEnemyLines pilotCapture = new BehindEnemyLines(campaign.getDate());
         String missionMapName = pwcgMissionData.getMissionHeader().getMapName();
-        FrontMapIdentifier mapId = PWCGMap.getFrontMapIdentifierForName(missionMapName);
+        FrontMapIdentifier mapId = FrontMapIdentifier.getFrontMapIdentifierForName(missionMapName);
         boolean inReportingRange = pilotCapture.inReportingRange(mapId, missionResultVictory.getLocation(), victimPlane.getCountry().getSide());
         victimPlane.setCrashedInSight(inReportingRange);
     }

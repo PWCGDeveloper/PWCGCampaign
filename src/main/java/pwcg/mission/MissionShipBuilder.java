@@ -6,7 +6,7 @@ import java.util.List;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.shipping.ShippingLane;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;

@@ -1,15 +1,12 @@
 package pwcg.campaign.context;
 
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.bos.plane.payload.BoSPayloadFactory;
 
 public class BoSContext extends PWCGContextBase implements IPWCGContextManager
 { 
-    /**
-     * 
-     */
 	protected BoSContext()
     {
         campaignStartDates.add("01/10/1941");

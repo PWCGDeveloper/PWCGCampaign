@@ -9,7 +9,7 @@ import pwcg.aar.ui.events.model.SquadronMoveEvent;
 import pwcg.campaign.context.MapFinderForCampaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGDirectoryUserManager;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CampaignModeFactory;
 import pwcg.campaign.io.json.CampaignIOJson;

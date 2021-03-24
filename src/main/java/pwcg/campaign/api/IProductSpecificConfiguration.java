@@ -55,4 +55,5 @@ public interface IProductSpecificConfiguration
     int getMaxDepthOfPenetrationOffensive();
     int getMinDepthOfPenetrationOffensive();
     double getMinimumDistanceBetweenPatrolPoints();
+    int getCloseToBattleDistance();
 }
