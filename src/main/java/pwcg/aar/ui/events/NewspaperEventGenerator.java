@@ -1,6 +1,5 @@
 package pwcg.aar.ui.events;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -57,14 +56,14 @@ public class NewspaperEventGenerator
     {
         DirectoryReader directoryReader = new DirectoryReader();
         directoryReader.sortFilesInDir(newspaperDir);
-        List<File> newspaperFiles = directoryReader.getFiles();
+        List<String> newspaperFiles = directoryReader.getFiles();
         
         List<String> dateBasedNewspaperFiles = new ArrayList<>();
-        for (File newspaperFile : newspaperFiles)
+        for (String filename : newspaperFiles)
         {
-            if (newspaperFile.getName().startsWith("19"))
+            if (filename.startsWith("19"))
             {
-                dateBasedNewspaperFiles.add(newspaperFile.getName());
+                dateBasedNewspaperFiles.add(filename);
             }
         }
         

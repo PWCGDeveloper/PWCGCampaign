@@ -60,11 +60,13 @@ public class CampaignTransitionDates
     {
         String mapPath = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + PWCGContext.getInstance().getCurrentMap().getMapName();      
         directoryReader.sortFilesInDir(mapPath);
-        for (File frontDirectory : directoryReader.getDirectories()) 
+        for (String filename : directoryReader.getDirectories()) 
         {
-            if (frontDirectory.getName().contains("19"))
+            String dirPath = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + filename;
+            File child = new File(dirPath);
+            if (child.getName().contains("19"))
             {
-                String dateStr = frontDirectory.getName();
+                String dateStr = child.getName();
                 Date date = DateUtils.getDateYYYYMMDD(dateStr);
                 sortedDates.put(date, date);
             }

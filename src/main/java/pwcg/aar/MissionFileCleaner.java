@@ -1,6 +1,5 @@
 package pwcg.aar;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,58 +21,54 @@ public class MissionFileCleaner
 
     public int cleanMissionFiles() throws PWCGException 
     {
-        List<File> filesToDelete = getMissionFilesToDelete();
-        FileUtils.deleteFiles(filesToDelete);
+        List<String> filesToDelete = getMissionFilesToDelete();
+        FileUtils.deleteFilesByFileName(filesToDelete);
         
         return filesToDelete.size();
     }
 
-    private List<File> getMissionFilesToDelete() throws PWCGException 
+    private List<String> getMissionFilesToDelete() throws PWCGException 
     {
+        List<String> results = new ArrayList<String>();
+
         String singlePlayerMissionDir = PWCGDirectorySimulatorManager.getInstance().getSinglePlayerMissionFilePath();
-        List<File> singlePlayerFilesToDelete = deleteOldMissionFiles(singlePlayerMissionDir);
+        deleteOldMissionFiles(results, singlePlayerMissionDir);
 
         String coopMissionDir = PWCGDirectorySimulatorManager.getInstance().getCoopMissionFilePath();
-        List<File> coopFilesToDelete = deleteOldMissionFiles(coopMissionDir);
+        deleteOldMissionFiles(results, coopMissionDir);
         
-        List<File> filesToDelete = new ArrayList<>();
-        filesToDelete.addAll(singlePlayerFilesToDelete);
-        filesToDelete.addAll(coopFilesToDelete);
-        
-        return filesToDelete;
+        return results;
     }
 
-    private List<File> deleteOldMissionFiles(String missionDir) throws PWCGException
+    private void deleteOldMissionFiles(List<String> results, String missionDir) throws PWCGException
     {
-        List<File> filesToDelete = new ArrayList<>();
-        
         directoryReader.sortFilesInDir(missionDir);
         if (!directoryReader.getFiles().isEmpty())
         {
-            List<String> fileNames = getMissionFileNameRootsForCampaign(directoryReader.getFiles());
+            List<String> fileNames = getMissionFilesForCampaign(directoryReader.getFiles());
             selectFilesToDelete(fileNames);
-            filesToDelete = addExtensions(missionDir, fileNames);
+            addExtensions(results, missionDir, fileNames);
         }
-        return filesToDelete;
     }
 
-    private List<String> getMissionFileNameRootsForCampaign(List<File> filesInDirectory)
+    private List<String> getMissionFilesForCampaign(List<String> filesInDirectory)
     {
         Campaign campaign = PWCGContext.getInstance().getCampaign();
         
-        List<String> missionFilesForCampaign = new ArrayList<>();
-        for (File file : filesInDirectory) 
+        List<String> missionFilesForCampaign = new ArrayList<String>();
+
+        for (String filename : filesInDirectory) 
         {
             try
             {
-                PWCGLogger.log(LogLevel.DEBUG, "Campaign = " + campaign.getCampaignData().getName() + "    " + file);
-                if (file.getName().contains(campaign.getCampaignData().getName()))
+                PWCGLogger.log(LogLevel.DEBUG, "Campaign = " + campaign.getCampaignData().getName() + "    " + filename);
+                if (filename.contains(campaign.getCampaignData().getName()))
                 {
-                    if (file.getName().contains(".mission"))
+                    if (filename.contains(".mission"))
                     {
-                        int index = file.getName().indexOf(".mission");
-                        String fileNameRoot = file.getName().substring(0, index);
-                        missionFilesForCampaign.add(fileNameRoot);
+                        int index = filename.indexOf(".mission");
+                        filename = filename.substring(0, index);
+                        missionFilesForCampaign.add(filename);
                     }
                 }
             }
@@ -88,6 +83,7 @@ public class MissionFileCleaner
     private void selectFilesToDelete(List<String> fileNames) throws PWCGException, PWCGException
     {
         int numMissionFilesToSave = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.SaveOldMissionsKey);
+
         if (fileNames.size() == 0 || fileNames.size() <= numMissionFilesToSave)
         {
             fileNames.clear();
@@ -102,24 +98,21 @@ public class MissionFileCleaner
         }
     }	
 
-    private List<File> addExtensions(String missionDir, List<String> fileNames)
+    private void addExtensions(List<String> results, String missionDir, List<String> fileNames)
     {
-        List<File> filesToDelete = new ArrayList<>();
-
         for (String filename : fileNames)
         {
-            filesToDelete.add(new File(missionDir + "\\" + filename + ".mission"));
-            filesToDelete.add(new File(missionDir + "\\" + filename + ".msnbin"));
-            filesToDelete.add(new File(missionDir + "\\" + filename + ".list"));
-            filesToDelete.add(new File(missionDir + "\\" + filename + ".spa"));
-            filesToDelete.add(new File(missionDir + "\\" + filename + ".eng"));
-            filesToDelete.add(new File(missionDir + "\\" + filename + ".fra"));
-            filesToDelete.add(new File(missionDir + "\\" + filename + ".rus"));
-            filesToDelete.add(new File(missionDir + "\\" + filename + ".ger"));
-            filesToDelete.add(new File(missionDir + "\\" + filename + ".pol"));
-            filesToDelete.add(new File(missionDir + "\\" + filename + ".chs"));
+            results.add(missionDir + "\\" + filename + ".mission");
+            results.add(missionDir + "\\" + filename + ".msnbin");
+            results.add(missionDir + "\\" + filename + ".list");
+            results.add(missionDir + "\\" + filename + ".spa");
+            results.add(missionDir + "\\" + filename + ".eng");
+            results.add(missionDir + "\\" + filename + ".fra");
+            results.add(missionDir + "\\" + filename + ".rus");
+            results.add(missionDir + "\\" + filename + ".ger");
+            results.add(missionDir + "\\" + filename + ".pol");
+            results.add(missionDir + "\\" + filename + ".chs");
         }
-        return filesToDelete;
     }
 
     public FileUtils getFileUtils()

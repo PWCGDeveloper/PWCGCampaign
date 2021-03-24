@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+import pwcg.aar.AARLogFileLocationFinder;
 import pwcg.aar.inmission.phase1.parse.AARMissionLogFileSet;
 import pwcg.aar.inmission.phase1.parse.event.AType;
 import pwcg.aar.inmission.phase1.parse.event.IAType0;
@@ -19,12 +20,14 @@ public class AARHeaderParser
     {
     }
 
-    public String parseHeaderOnly(String campaignName, File logFile) throws PWCGException, PWCGIOException 
+    public String parseHeaderOnly(String campaignName, String logFileName) throws PWCGException, PWCGIOException 
     {
         String missionFileName = AARMissionLogFileSet.NOT_AVAILABLE;
         try
         {
-            BufferedReader reader = new BufferedReader(new FileReader(logFile));
+            String logFileDirDir = AARLogFileLocationFinder.determineLogFileLocation(logFileName);
+            File logFileWithHeader = new File(logFileDirDir + logFileName);
+            BufferedReader reader = new BufferedReader(new FileReader(logFileWithHeader));
             String line;
 
             while ((line = reader.readLine()) != null) 

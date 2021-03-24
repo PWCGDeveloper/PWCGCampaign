@@ -63,7 +63,8 @@ public class SquadronAirfieldAssignmentTest
         validMoveDates.add("19440701");
         validMoveDates.add("19440801");
         validMoveDates.add("19440901");
-        validMoveDates.add("19441001");
+        validMoveDates.add("19440925");
+        validMoveDates.add("19440928");
         validMoveDates.add("19441101");
         validMoveDates.add("19441201");
 

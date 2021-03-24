@@ -23,7 +23,7 @@ public class MissionResultLogFileCleaner
     
     public int cleanMissionResultLogFiles() throws PWCGException 
     {
-        List<File> filesToDelete = new ArrayList<>();
+        List<String> filesToDelete = new ArrayList<String>();
         int deleteAll = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.DeleteAllMissionLogsKey);
         if (deleteAll == 1)
         {
@@ -40,27 +40,28 @@ public class MissionResultLogFileCleaner
         return filesToDelete.size();
     }
 
-    private List<File> cleanOldMissionLogs(String simulatorDataDir) throws PWCGException
+    private List<String> cleanOldMissionLogs(String simulatorDataDir) throws PWCGException
     {
-        List<File> filesToDelete;
-        List<File> allMissionFiles = getAllMissionResultsFiles(simulatorDataDir);
+        List<String> filesToDelete;
+        List<String> allMissionFiles = getAllMissionResultsFiles(simulatorDataDir);
         filesToDelete = selectOlderMissionLogFiles(allMissionFiles);
-        FileUtils.deleteFiles (filesToDelete);
+        FileUtils.deleteFilesByFileName (filesToDelete);
         return filesToDelete;
     }
 
-    private  List<File> selectOlderMissionLogFiles(List<File> allMissionFiles) throws PWCGException 
+    public  List<String> selectOlderMissionLogFiles(List<String> allMissionFiles) throws PWCGException 
     {
-        List<File> filesToDelete = new ArrayList<>();
-        for (File missionLogFile : allMissionFiles) 
+        List<String> filesToDelete = new ArrayList<String>();
+        for (String pathname : allMissionFiles) 
         {
+            File missionLogFile = new File(pathname);
             if (missionLogFile.exists())
             {
-                long ageOfFile = FileUtils.ageOfFilesInMillis(missionLogFile);
+                long ageOfFile = FileUtils.ageOfFilesInMillis(pathname);
                 long oneDayAgo = System.currentTimeMillis() - 86400000;
                 if (ageOfFile < oneDayAgo)
                 {
-                    filesToDelete.add(missionLogFile);
+                    filesToDelete.add(pathname);
                 }
             }
         }
@@ -68,16 +69,17 @@ public class MissionResultLogFileCleaner
         return filesToDelete;
     }
 
-    private List<File> getAllMissionResultsFiles(String directory) throws PWCGException 
+    private List<String> getAllMissionResultsFiles(String directory) throws PWCGException 
     {
-        List<File> results = new ArrayList<>();
+        List<String> results = new ArrayList<String>();
 
         directoryReader.sortFilesInDir(directory);
-        for (File file : directoryReader.getFiles()) 
+        for (String filename : directoryReader.getFiles()) 
         {
-            if (file.getName().contains("missionReport") && file.getName().contains(".txt"))
+            if (filename.contains("missionReport") && filename.contains(".txt"))
             {
-                results.add(file);
+                String filepath = directory + filename;
+                results.add(filepath);
             }
         }
 
