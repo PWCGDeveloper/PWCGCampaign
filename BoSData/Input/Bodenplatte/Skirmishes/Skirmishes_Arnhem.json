@@ -1,0 +1,256 @@
+{
+	"skirmishes": [
+		{
+			"name": "Arnhem-Paradrop",
+			"swCorner": {
+				"xPos": 200000,
+				"yPos": 0.0,
+				"zPos": 140000
+			},
+			"neCorner": {
+				"xPos": 230000,
+				"yPos": 0.0,
+				"zPos": 180000
+			},
+			"startDate": "19440917",
+			"stopDate": "19440917",
+			"aggressor": "ALLIED",
+			"iconicFlightTypes": [
+				"PARATROOP_DROP"
+			],
+			"skirmishMissionPreferences": [
+				{
+					"side": "ALLIED",
+					"role": "ROLE_ATTACK",
+					"preferredFlightType": "GROUND_ATTACK",
+					"targetType": "TARGET_INFANTRY"
+				},
+				{
+					"side": "ALLIED",
+					"role": "ROLE_BOMB",
+					"preferredFlightType": "BOMB",
+					"targetType": "TARGET_INFANTRY"
+				},
+				{
+					"side": "ALLIED",
+					"role": "ROLE_FIGHTER",
+					"preferredFlightType": "LOW_ALT_CAP",
+					"targetType": "TARGET_AIR"
+				},
+				{
+					"side": "ALLIED",
+					"role": "ROLE_TRANSPORT",
+					"preferredFlightType": "PARATROOP_DROP",
+					"targetType": "TARGET_INFANTRY"
+				},
+				{
+					"side": "AXIS",
+					"role": "ROLE_ATTACK",
+					"preferredFlightType": "GROUND_ATTACK",
+					"targetType": "TARGET_INFANTRY"
+				},
+				{
+					"side": "AXIS",
+					"role": "ROLE_BOMB",
+					"preferredFlightType": "BOMB",
+					"targetType": "TARGET_INFANTRY"
+				},
+				{
+					"side": "AXIS",
+					"role": "ROLE_FIGHTER",
+					"preferredFlightType": "INTERCEPT",
+					"targetType": "TARGET_AIR"
+				}
+			]
+		},
+		{
+			"name": "Arnhem-Initial-Advance",
+			"swCorner": {
+				"xPos": 200000,
+				"yPos": 0.0,
+				"zPos": 140000
+			},
+			"neCorner": {
+				"xPos": 230000,
+				"yPos": 0.0,
+				"zPos": 180000
+			},
+			"startDate": "19440918",
+			"stopDate": "19440925",
+			"aggressor": "ALLIED",
+			"iconicFlightTypes": [
+				"CARGO_DROP"
+			],
+			"skirmishMissionPreferences": [
+				{
+					"side": "ALLIED",
+					"role": "ROLE_ATTACK",
+					"preferredFlightType": "GROUND_ATTACK",
+					"targetType": "TARGET_INFANTRY"
+				},
+				{
+					"side": "ALLIED",
+					"role": "ROLE_BOMB",
+					"preferredFlightType": "BOMB",
+					"targetType": "TARGET_INFANTRY"
+				},
+				{
+					"side": "ALLIED",
+					"role": "ROLE_FIGHTER",
+					"preferredFlightType": "LOW_ALT_CAP",
+					"targetType": "TARGET_AIR"
+				},
+				{
+					"side": "ALLIED",
+					"role": "ROLE_TRANSPORT",
+					"preferredFlightType": "CARGO_DROP",
+					"targetType": "TARGET_INFANTRY"
+				},
+				{
+					"side": "AXIS",
+					"role": "ROLE_ATTACK",
+					"preferredFlightType": "GROUND_ATTACK",
+					"targetType": "TARGET_INFANTRY"
+				},
+				{
+					"side": "AXIS",
+					"role": "ROLE_BOMB",
+					"preferredFlightType": "BOMB",
+					"targetType": "TARGET_INFANTRY"
+				},
+				{
+					"side": "AXIS",
+					"role": "ROLE_FIGHTER",
+					"preferredFlightType": "INTERCEPT",
+					"targetType": "TARGET_AIR"
+				}
+			]
+		},
+		{
+			"name": "Arnhem-Eindhoven",
+			"swCorner": {
+				"xPos": 205000,
+				"yPos": 0.0,
+				"zPos": 150000
+			},
+			"neCorner": {
+				"xPos": 226000,
+				"yPos": 0.0,
+				"zPos": 187000
+			},
+			"startDate": "19440925",
+			"stopDate": "19440927",
+			"aggressor": "ALLIED",
+			"iconicFlightTypes": [
+				"CARGO_DROP"
+			],
+			"skirmishMissionPreferences": [
+				{
+					"side": "ALLIED",
+					"role": "ROLE_ATTACK",
+					"preferredFlightType": "GROUND_ATTACK",
+					"targetType": "TARGET_INFANTRY"
+				},
+				{
+					"side": "ALLIED",
+					"role": "ROLE_BOMB",
+					"preferredFlightType": "BOMB",
+					"targetType": "TARGET_INFANTRY"
+				},
+				{
+					"side": "ALLIED",
+					"role": "ROLE_FIGHTER",
+					"preferredFlightType": "LOW_ALT_CAP",
+					"targetType": "TARGET_AIR"
+				},
+				{
+					"side": "ALLIED",
+					"role": "ROLE_TRANSPORT",
+					"preferredFlightType": "CARGO_DROP",
+					"targetType": "TARGET_INFANTRY"
+				},
+				{
+					"side": "AXIS",
+					"role": "ROLE_ATTACK",
+					"preferredFlightType": "GROUND_ATTACK",
+					"targetType": "TARGET_INFANTRY"
+				},
+				{
+					"side": "AXIS",
+					"role": "ROLE_BOMB",
+					"preferredFlightType": "BOMB",
+					"targetType": "TARGET_INFANTRY"
+				},
+				{
+					"side": "AXIS",
+					"role": "ROLE_FIGHTER",
+					"preferredFlightType": "INTERCEPT",
+					"targetType": "TARGET_AIR"
+				}
+			]
+		},
+		{
+			"name": "Arnhem-Nijmegen",
+			"swCorner": {
+				"xPos": 250000,
+				"yPos": 0.0,
+				"zPos": 165000
+			},
+			"neCorner": {
+				"xPos": 260000,
+				"yPos": 0.0,
+				"zPos": 207000
+			},
+			"startDate": "19440928",
+			"stopDate": "19440929",
+			"aggressor": "ALLIED",
+			"iconicFlightTypes": [
+				"CARGO_DROP"
+			],
+			"skirmishMissionPreferences": [
+				{
+					"side": "ALLIED",
+					"role": "ROLE_ATTACK",
+					"preferredFlightType": "GROUND_ATTACK",
+					"targetType": "TARGET_INFANTRY"
+				},
+				{
+					"side": "ALLIED",
+					"role": "ROLE_BOMB",
+					"preferredFlightType": "BOMB",
+					"targetType": "TARGET_INFANTRY"
+				},
+				{
+					"side": "ALLIED",
+					"role": "ROLE_FIGHTER",
+					"preferredFlightType": "LOW_ALT_CAP",
+					"targetType": "TARGET_AIR"
+				},
+				{
+					"side": "ALLIED",
+					"role": "ROLE_TRANSPORT",
+					"preferredFlightType": "CARGO_DROP",
+					"targetType": "TARGET_INFANTRY"
+				},
+				{
+					"side": "AXIS",
+					"role": "ROLE_ATTACK",
+					"preferredFlightType": "GROUND_ATTACK",
+					"targetType": "TARGET_INFANTRY"
+				},
+				{
+					"side": "AXIS",
+					"role": "ROLE_BOMB",
+					"preferredFlightType": "BOMB",
+					"targetType": "TARGET_INFANTRY"
+				},
+				{
+					"side": "AXIS",
+					"role": "ROLE_FIGHTER",
+					"preferredFlightType": "INTERCEPT",
+					"targetType": "TARGET_AIR"
+				}
+			]
+		}
+	]
+}

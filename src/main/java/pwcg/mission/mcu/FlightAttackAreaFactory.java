@@ -15,20 +15,16 @@ public class FlightAttackAreaFactory
         if (flightType == FlightTypes.BOMB || 
             flightType == FlightTypes.LOW_ALT_BOMB || 
             flightType == FlightTypes.TRANSPORT ||
+            flightType == FlightTypes.PARATROOP_DROP ||
             flightType == FlightTypes.CARGO_DROP)
         {
             attackArea = new McuAttackArea(AttackAreaType.INDIRECT);
             attackArea.setAttackRadius(ATTACK_AREA_BOMB_DROP_DISTANCE);
         }
-        else if (flightType == FlightTypes.DIVE_BOMB || 
-                flightType == FlightTypes.GROUND_ATTACK)
+        else
         {
             attackArea = new McuAttackArea(AttackAreaType.GROUND_TARGETS);
             attackArea.setAttackRadius(ATTACK_AREA_SELECT_TARGET_DISTANCE);
-        }
-        else
-        {
-            attackArea = new McuAttackArea(AttackAreaType.AIR_TARGETS);
         }
 
         attackArea.setName("Attack Area");

@@ -8,6 +8,7 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.io.json.LocationIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.location.CoordinateBox;
 import pwcg.core.location.LocationSet;
 import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.DateUtils;
@@ -163,12 +164,19 @@ public class FrontLinesForMap
         return frontPointsWithinRadius.get(index);
     }
 
-
     public List<FrontLinePoint> findClosestFrontPositionsForSide(Coordinate referenceLocation, double initialRadius, Side side) throws PWCGException 
     {
         PositionFinder<FrontLinePoint> positionFinder = new PositionFinder<FrontLinePoint>();
         List<FrontLinePoint> frontLines = findAllFrontLinesForSide(side);
         List<FrontLinePoint> frontPointsWithinRadius = positionFinder.findWithinExpandingRadius(frontLines, referenceLocation, initialRadius, 2000000.0);
+        return frontPointsWithinRadius;
+    }
+
+    public List<FrontLinePoint> findFrontPositionsForSideInBox(CoordinateBox coordinateBox, Side side) throws PWCGException 
+    {
+        PositionFinder<FrontLinePoint> positionFinder = new PositionFinder<FrontLinePoint>();
+        List<FrontLinePoint> frontLines = findAllFrontLinesForSide(side);
+        List<FrontLinePoint> frontPointsWithinRadius = positionFinder.findWithinBox(frontLines, coordinateBox);
         return frontPointsWithinRadius;
     }
 

@@ -6,6 +6,8 @@ import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.Skirmish;
+import pwcg.campaign.SkirmishBuilder;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.context.FrontMapIdentifier;
@@ -14,6 +16,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
+import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
@@ -40,7 +43,7 @@ public class MissionBorderBuilderTest
         
         for (int i = 0; i < 10; ++i)
         {
-            MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
+            MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null);
             
             CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
             Coordinate missionBoxCenter = missionBorders.getCenter();
@@ -67,11 +70,36 @@ public class MissionBorderBuilderTest
         
         for (int i = 0; i < 10; ++i)
         {
-            MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(coopCampaign, participatingPlayers);
+            MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(coopCampaign, participatingPlayers, null);
             CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
             Coordinate missionBoxCenter = missionBorders.getCenter();
             assert(missionBoxCenter.getXPos() > 0.0);
             assert(missionBoxCenter.getZPos() > 0.0);
         }
+    }
+
+    @Test
+    public void buildBorderForSkirmishTest() throws PWCGException
+    {
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
+        PWCGContext.getInstance().setCampaign(campaign);
+        campaign.setDate(DateUtils.getDateYYYYMMDD("19440917"));
+        
+        MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
+        for (SquadronMember player: campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
+        {
+            participatingPlayers.addSquadronMember(player);
+        }
+
+        SkirmishBuilder skirmishBuilder = new SkirmishBuilder(campaign, participatingPlayers);
+        Skirmish skirmish = skirmishBuilder.chooseBestSkirmish();
+
+        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, skirmish);
+        CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
+
+        Coordinate missionBoxCenter = missionBorders.getCenter();
+        
+        assert(skirmish.getCoordinateBox().isInBox(missionBoxCenter));
+
     }
 }

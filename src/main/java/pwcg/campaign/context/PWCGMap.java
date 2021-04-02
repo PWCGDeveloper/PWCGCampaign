@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import pwcg.campaign.BattleManager;
+import pwcg.campaign.SkirmishManager;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.group.AirfieldManager;
@@ -42,6 +43,7 @@ public abstract class PWCGMap
     protected MapArea usableMapArea = null;
     protected List<Integer> armedServicesActiveForMap = new ArrayList<>();
     protected BattleManager battleManager;
+    protected SkirmishManager skirmishManager;
 
     public PWCGMap()
     {
@@ -54,6 +56,9 @@ public abstract class PWCGMap
         
         battleManager = new BattleManager(mapIdentifier);
         battleManager.initialize();
+        
+        skirmishManager = new SkirmishManager(mapIdentifier);
+        skirmishManager.initialize();
 
         frontDatesForMap = new FrontDatesForMap(mapIdentifier);
         configureTransitionDates();
@@ -209,5 +214,10 @@ public abstract class PWCGMap
     public BattleManager getBattleManager()
     {
         return battleManager;
+    }
+
+    public SkirmishManager getSkirmishManager()
+    {
+        return skirmishManager;
     }
 }

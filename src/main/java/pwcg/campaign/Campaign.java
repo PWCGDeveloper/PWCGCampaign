@@ -205,6 +205,25 @@ public class Campaign
         return false;
     }
 
+    public boolean isLongRange() throws PWCGException
+    {
+        for (SquadronMember player : this.personnelManager.getAllActivePlayers().getSquadronMemberList())
+        {
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
+            Role squadronPrimaryRole = squadron.determineSquadronPrimaryRole(this.getDate());
+            if (squadronPrimaryRole.isRoleCategory(RoleCategory.FIGHTER))
+            {
+                return false;
+            }
+            else if (squadronPrimaryRole.isRoleCategory(RoleCategory.ATTACK))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public boolean isValidCampaignForProduct() throws PWCGException
     {
         Date campaignDate = campaignData.getDate();

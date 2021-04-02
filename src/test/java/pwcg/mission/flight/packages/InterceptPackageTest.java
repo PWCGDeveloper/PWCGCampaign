@@ -51,7 +51,7 @@ public class InterceptPackageTest
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_26_PROFILE_WEST);
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
         
-        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
+        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
 
         MissionSquadronFlightTypes playerFlightTypes = TestMissionFlightTypeBuilder.buildFlightType(campaign, FlightTypes.INTERCEPT);

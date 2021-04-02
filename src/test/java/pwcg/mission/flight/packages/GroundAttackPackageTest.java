@@ -70,7 +70,7 @@ public class GroundAttackPackageTest
     {
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
 
-        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
+        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
 
         MissionSquadronFlightTypes playerFlightTypes = TestMissionFlightTypeBuilder.buildFlightType(campaign, FlightTypes.GROUND_ATTACK);

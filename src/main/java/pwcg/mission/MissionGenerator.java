@@ -1,6 +1,8 @@
 package pwcg.mission;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.Skirmish;
+import pwcg.campaign.SkirmishBuilder;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
@@ -27,8 +29,7 @@ public class MissionGenerator
         MissionWeather weather = new MissionWeather(campaign, missionOptions.getMissionHour());
         weather.createMissionWeather();
 
-        MissionSquadronFlightTypes playerFlightTypes = PlayerFlightTypeBuilder.finalizePlayerFlightTypes(campaign, participatingPlayers, missionProfile, weather);
-
+        MissionSquadronFlightTypes playerFlightTypes = new MissionSquadronFlightTypes();
         Mission mission = buildMission(participatingPlayers, playerFlightTypes, missionProfile, weather, missionOptions);
         return mission;
     }
@@ -92,18 +93,25 @@ public class MissionGenerator
             MissionWeather weather, MissionOptions missionOptions) throws PWCGException
     {
         campaign.setCurrentMission(null);
-        CoordinateBox missionBorders = buildMissionBorders(missionProfile, participatingPlayers);
+        Skirmish skirmish = getSkirmishForMission(participatingPlayers);
+        CoordinateBox missionBorders = buildMissionBorders(missionProfile, participatingPlayers, skirmish);
         CoordinateBox structureBorders = buildStructureBorders(missionProfile, participatingPlayers, missionBorders);
-        Mission mission = new Mission(campaign, missionProfile, participatingPlayers, missionBorders, structureBorders, weather, missionOptions);
+        Mission mission = new Mission(campaign, missionProfile, participatingPlayers, missionBorders, structureBorders, weather, skirmish, missionOptions);
         campaign.setCurrentMission(mission);
         mission.generate(playerFlightTypes);
 
         return mission;
     }
-
-    private CoordinateBox buildMissionBorders(MissionProfile missionProfile, MissionHumanParticipants participatingPlayers) throws PWCGException
+    
+    private Skirmish getSkirmishForMission(MissionHumanParticipants participatingPlayers) throws PWCGException
     {
-        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
+        SkirmishBuilder skirmishBuilder = new SkirmishBuilder(campaign, participatingPlayers);
+        return skirmishBuilder.chooseBestSkirmish();
+    }
+
+    private CoordinateBox buildMissionBorders(MissionProfile missionProfile, MissionHumanParticipants participatingPlayers, Skirmish skirmish) throws PWCGException
+    {
+        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, skirmish);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
         return missionBorders;
     }

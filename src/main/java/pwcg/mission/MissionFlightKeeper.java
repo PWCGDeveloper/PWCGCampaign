@@ -63,17 +63,17 @@ public class MissionFlightKeeper
         return aiFlightsKept;
     }
 
-    private void keepRequiredAlliedFlights()
+    private void keepRequiredAlliedFlights() throws PWCGException
     {
         keepRequiredFlights(proximitySorter.getFlightsByProximity(Side.ALLIED), alliedFighterFlightsKept, alliedBomberFlightsKept, alliedOtherFlightsKept);
     }
 
-    private void keepRequiredAxisFlights()
+    private void keepRequiredAxisFlights() throws PWCGException
     {
         keepRequiredFlights(proximitySorter.getFlightsByProximity(Side.AXIS), axisFighterFlightsKept, axisBomberFlightsKept, axisOtherFlightsKept);
     }
     
-    private void keepRequiredFlights(List<IFlight> flights, List<IFlight> fighterFlightsKept, List<IFlight> bomberFlightsKept, List<IFlight> otherFlightsKept)
+    private void keepRequiredFlights(List<IFlight> flights, List<IFlight> fighterFlightsKept, List<IFlight> bomberFlightsKept, List<IFlight> otherFlightsKept) throws PWCGException
     {
         for (IFlight flight : flights)
         {
@@ -171,12 +171,23 @@ public class MissionFlightKeeper
         }
     }
     
-    private boolean isNecessaryFlight(IFlight flight)
+    private boolean isNecessaryFlight(IFlight flight) throws PWCGException
     {
-        if(flight.getFlightInformation().isPlayerFlight() || flight.getFlightInformation().isOpposingFlight())
+        if(flight.getFlightInformation().isPlayerFlight())
         {
             return true;
         }
+        
+        if(flight.getFlightInformation().isOpposingFlight())
+        {
+            return true;
+        }
+        
+        if(mission.getSkirmish() != null && mission.getSkirmish().isIconicFlightType(flight.getFlightInformation().getFlightType()))
+        {
+            return true;
+        }
+
         
         return false;
     }

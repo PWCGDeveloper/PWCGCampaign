@@ -22,6 +22,8 @@ public class BodenplatteMap extends PWCGMap
     { 
         missionSpacingMyDate = new TreeMap<>(); 
         missionSpacingMyDate.put("19440901", 3); 
+        missionSpacingMyDate.put("19440917", 1); 
+        missionSpacingMyDate.put("19440930", 3); 
         missionSpacingMyDate.put("19441216", 1); 
         missionSpacingMyDate.put("19450125", 2); 
         missionSpacingMyDate.put("19450220", 3); 

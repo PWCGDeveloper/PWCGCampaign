@@ -9,7 +9,7 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.target.ITargetDefinitionBuilder;
-import pwcg.mission.target.TargetBuilder;
+import pwcg.mission.target.TargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
 
 public class ArtillerySpotPackage implements IFlightPackage
@@ -49,7 +49,7 @@ public class ArtillerySpotPackage implements IFlightPackage
 
     private TargetDefinition createGroundUnitsForFlight() throws PWCGException
     {
-        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        TargetDefinitionBuilder targetBuilder = new TargetDefinitionBuilder(flightInformation);
         TargetDefinition selectedTarget  = targetBuilder.buildTargetDefinition();
         return selectedTarget;
     }
@@ -65,7 +65,7 @@ public class ArtillerySpotPackage implements IFlightPackage
 
     private TargetDefinition buildTargetDefintion() throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetBuilder(flightInformation);
+        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilder(flightInformation);
         return targetDefinitionBuilder.buildTargetDefinition();
     }
 }

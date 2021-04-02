@@ -4,6 +4,7 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 
 public class C47Payload extends PlanePayload
@@ -16,7 +17,9 @@ public class C47Payload extends PlanePayload
 
     protected void initialize()
 	{
-        setAvailablePayload(2, "1001", PayloadElement.CARGO);
+        setAvailablePayload(0, "11", PayloadElement.CARGO);
+        setAvailablePayload(1, "101", PayloadElement.PARADROP_CARGO);
+        setAvailablePayload(2, "1001", PayloadElement.PARATROOPERS);
         setAvailablePayload(6, "1", PayloadElement.EMPTY);
 	}
 
@@ -30,7 +33,18 @@ public class C47Payload extends PlanePayload
     @Override
     public int createWeaponsPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 2;
+        if (flight.getFlightType() == FlightTypes.PARATROOP_DROP)
+        {
+            selectedPrimaryPayloadId = 2;
+        }
+        else if (flight.getFlightType() == FlightTypes.CARGO_DROP)
+        {
+            selectedPrimaryPayloadId = 1;
+        }
+        else
+        {
+            selectedPrimaryPayloadId = 0;
+        }
         return selectedPrimaryPayloadId;
     }    
 }

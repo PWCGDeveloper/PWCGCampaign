@@ -133,7 +133,8 @@ public enum PayloadElement
 
     EMPTY(PayloadElementCategory.CARGO, "EMpty", 0),
     PARATROOPERS(PayloadElementCategory.CARGO, "Paratroopers", 1000),
-	CARGO(PayloadElementCategory.CARGO, "Cargo", 1000),
+    PARADROP_CARGO(PayloadElementCategory.CARGO, "Cargo", 1000),
+    CARGO(PayloadElementCategory.CARGO, "Cargo", 1000),
     RADIO(PayloadElementCategory.CARGO, "Radio", 20),
     CAMERA(PayloadElementCategory.CARGO, "Camera", 10),
 

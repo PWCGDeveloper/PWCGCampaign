@@ -12,11 +12,6 @@ public class Battles
 		return battles;
 	}
 
-	public void setBattles(List<Battle> battles)
-	{
-		this.battles = battles;
-	}
-
 	public void addBattle(Battle battle)
 	{
 		battles.add(battle);

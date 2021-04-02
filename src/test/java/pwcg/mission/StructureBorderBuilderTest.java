@@ -38,7 +38,7 @@ public class StructureBorderBuilderTest
         SquadronMember player = campaign.findReferencePlayer();
         participatingPlayers.addSquadronMember(player);
 
-        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
+        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
 
         StructureBorderBuilder structureBorderBuilder = new StructureBorderBuilder(campaign, participatingPlayers, missionBorders);
@@ -64,7 +64,7 @@ public class StructureBorderBuilderTest
         SquadronMember player = campaign.findReferencePlayer();
         participatingPlayers.addSquadronMember(player);
 
-        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
+        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
 
         StructureBorderBuilder structureBorderBuilder = new StructureBorderBuilder(campaign, participatingPlayers, missionBorders);
@@ -92,7 +92,7 @@ public class StructureBorderBuilderTest
         SquadronMember player = campaign.findReferencePlayer();
         participatingPlayers.addSquadronMember(player);
 
-        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
+        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
 
         StructureBorderBuilder structureBorderBuilder = new StructureBorderBuilder(campaign, participatingPlayers, missionBorders);
@@ -118,7 +118,7 @@ public class StructureBorderBuilderTest
         SquadronMember player = campaign.findReferencePlayer();
         participatingPlayers.addSquadronMember(player);
 
-        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
+        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
 
         StructureBorderBuilder structureBorderBuilder = new StructureBorderBuilder(campaign, participatingPlayers, missionBorders);

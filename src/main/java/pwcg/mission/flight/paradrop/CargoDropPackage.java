@@ -2,14 +2,14 @@ package pwcg.mission.flight.paradrop;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightBuildInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.target.ITargetDefinitionBuilder;
+import pwcg.mission.target.TargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetBuilder;
 
 public class CargoDropPackage implements IFlightPackage
 {
@@ -23,14 +23,14 @@ public class CargoDropPackage implements IFlightPackage
         FlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.CARGO_DROP);
         TargetDefinition targetDefinition = buildTargetDefintion(flightInformation);
 
-        ParaDropFlight paraDropFlight = new ParaDropFlight (flightInformation, targetDefinition);
-        paraDropFlight.createFlight();
-        return paraDropFlight;
+        CargoDropFlight cargoDropFlight = new CargoDropFlight (flightInformation, targetDefinition);
+        cargoDropFlight.createFlight();
+        return cargoDropFlight;
     }
 
     private TargetDefinition buildTargetDefintion(FlightInformation flightInformation) throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetBuilder(flightInformation);
+        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilder(flightInformation);
         return targetDefinitionBuilder.buildTargetDefinition();
     }
 }

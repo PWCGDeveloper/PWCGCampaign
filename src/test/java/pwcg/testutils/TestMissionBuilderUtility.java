@@ -28,7 +28,7 @@ public class TestMissionBuilderUtility
         StructureBorderBuilder structureBorderBuilder = new StructureBorderBuilder(campaign, participatingPlayers, missionBorders);
         CoordinateBox structureBorders = structureBorderBuilder.getBordersForStructures();
         
-        Mission mission = new Mission(campaign, missionProfile, participatingPlayers, missionBorders, structureBorders, weather, missionOptions);
+        Mission mission = new Mission(campaign, missionProfile, participatingPlayers, missionBorders, structureBorders, weather, null, missionOptions);
         campaign.setCurrentMission(mission);
         return mission;
     }

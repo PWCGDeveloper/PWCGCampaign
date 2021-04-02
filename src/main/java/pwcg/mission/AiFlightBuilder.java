@@ -5,6 +5,7 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.factory.PWCGFlightTypeAbstractFactory;
+import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
@@ -54,7 +55,7 @@ public class AiFlightBuilder
 
     private FlightTypes determineFlightType(Squadron squadron) throws PWCGException 
     {
-        IFlightTypeFactory flightTypeFactory = PWCGFlightTypeAbstractFactory.createFlightFactory(campaign);
+        IFlightTypeFactory flightTypeFactory = makeFlightTypeFactory();
         boolean isPlayerFlight = false;
         FlightTypes flightType = flightTypeFactory.getFlightType(squadron, isPlayerFlight);
         return flightType;
@@ -68,4 +69,16 @@ public class AiFlightBuilder
         return flight;        
     }
 
+    
+    private IFlightTypeFactory makeFlightTypeFactory() throws PWCGException
+    {
+        if (mission.getSkirmish() == null)
+        {
+            return PWCGFlightTypeAbstractFactory.createFlightTypeFactory(campaign);
+        }
+        else
+        {
+            return PWCGFlightTypeAbstractFactory.createSkirmishFlightTypeFactory(campaign, mission.getSkirmish());
+        }
+    }
 }

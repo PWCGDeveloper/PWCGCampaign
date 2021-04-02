@@ -3,15 +3,16 @@ package pwcg.mission.target;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightInformation;
 
-public class TargetBuilder implements ITargetDefinitionBuilder
+public class TargetDefinitionBuilder implements ITargetDefinitionBuilder
 {
     private FlightInformation flightInformation;
 
-    public TargetBuilder(FlightInformation flightInformation) throws PWCGException
+    public TargetDefinitionBuilder(FlightInformation flightInformation) throws PWCGException
     {
         this.flightInformation = flightInformation;
     }
@@ -74,6 +75,17 @@ public class TargetBuilder implements ITargetDefinitionBuilder
         }
         
         List<TargetType> shuffledTargetTypes = TargetPriorityGeneratorTactical.getTargetTypePriorities(flightInformation);
+        injectIconicTargetTypeAsFirstTargetChoice(shuffledTargetTypes);
+        
         return shuffledTargetTypes;
+    }
+
+    private void injectIconicTargetTypeAsFirstTargetChoice(List<TargetType> shuffledTargetTypes) throws PWCGException
+    {
+        TargetType iconicTargetType = PWCGContext.getInstance().getCurrentMap().getSkirmishManager().getIconicTargetTypes(flightInformation);
+        if (iconicTargetType != TargetType.TARGET_NONE)
+        {
+            shuffledTargetTypes.add(0, iconicTargetType);
+        }
     }
 }

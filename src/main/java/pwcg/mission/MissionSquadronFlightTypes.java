@@ -59,7 +59,16 @@ public class MissionSquadronFlightTypes
         }
         return null;
     }
-    
+
+    public boolean hasPlayerFlightTypes()
+    {
+        if (flightTypesForSquadrons.isEmpty())
+        {
+            return false;
+        }
+        return true;
+    }
+
     private class MissionSquadronFlightType
     {
         private Squadron squadron;

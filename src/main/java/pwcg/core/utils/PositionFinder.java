@@ -5,6 +5,7 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.location.CoordinateBox;
 import pwcg.core.location.PWCGLocation;
 
 public class PositionFinder <T>
@@ -61,6 +62,29 @@ public class PositionFinder <T>
             else
             {
                 throw new PWCGException ("Passed something that was not a fixed position to findWithinRadius");
+            }
+        }
+        
+        return selectedLocations;
+    }
+
+    public List<T> findWithinBox(List<T> listOfPositions, CoordinateBox coordinateBox) throws PWCGException
+    {
+        List<T> selectedLocations = new ArrayList<>();
+
+        for (T t : listOfPositions)
+        {
+            if (t instanceof PWCGLocation)
+            {
+                PWCGLocation location = (PWCGLocation)t;
+                if (coordinateBox.isInBox(location.getPosition()))
+                {
+                    selectedLocations.add(t);
+                }
+            }
+            else
+            {
+                throw new PWCGException ("Passed something that was not a fixed position to findWithinBox");
             }
         }
         

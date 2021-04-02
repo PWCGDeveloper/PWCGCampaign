@@ -5,8 +5,8 @@ public enum TargetType
     TARGET_NONE("None", TargetCategory.TARGET_CATEGORY_NONE),
     
     TARGET_ARTILLERY("Artillery", TargetCategory.TARGET_CATEGORY_SOFT),
-    TARGET_ARMOR("Infantry", TargetCategory.TARGET_CATEGORY_ARMORED),
-    TARGET_INFANTRY("Armor", TargetCategory.TARGET_CATEGORY_SOFT),
+    TARGET_ARMOR("Armor", TargetCategory.TARGET_CATEGORY_ARMORED),
+    TARGET_INFANTRY("Infantry", TargetCategory.TARGET_CATEGORY_SOFT),
     TARGET_TRANSPORT("transport units", TargetCategory.TARGET_CATEGORY_SOFT),
     TARGET_TRAIN("train", TargetCategory.TARGET_CATEGORY_ARMORED),
     TARGET_SHIPPING("shipping", TargetCategory.TARGET_CATEGORY_HEAVY),

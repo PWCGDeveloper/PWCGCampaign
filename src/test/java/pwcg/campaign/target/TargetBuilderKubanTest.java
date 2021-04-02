@@ -21,7 +21,7 @@ import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.target.TargetBuilder;
+import pwcg.mission.target.TargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetPriorityGeneratorTactical;
 import pwcg.mission.target.TargetType;
@@ -59,7 +59,7 @@ public class TargetBuilderKubanTest
 
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         
-        TargetBuilder targetBuilder = new TargetBuilder(playerFlight.getFlightInformation());
+        TargetDefinitionBuilder targetBuilder = new TargetDefinitionBuilder(playerFlight.getFlightInformation());
         TargetDefinition targetDefinition = targetBuilder.buildTargetDefinition();
 
         assert(targetDefinition.getCountry().getCountry() == Country.GERMANY);
@@ -75,7 +75,7 @@ public class TargetBuilderKubanTest
 
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         
-        TargetBuilder targetBuilder = new TargetBuilder(playerFlight.getFlightInformation());
+        TargetDefinitionBuilder targetBuilder = new TargetDefinitionBuilder(playerFlight.getFlightInformation());
         TargetDefinition targetDefinition = targetBuilder.buildTargetDefinition();
 
         assert(targetDefinition.getCountry().getCountry() == Country.GERMANY);
@@ -91,7 +91,7 @@ public class TargetBuilderKubanTest
 
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         
-        TargetBuilder targetBuilder = new TargetBuilder(playerFlight.getFlightInformation());
+        TargetDefinitionBuilder targetBuilder = new TargetDefinitionBuilder(playerFlight.getFlightInformation());
         TargetDefinition targetDefinition = targetBuilder.buildTargetDefinition();
 
         assert(targetDefinition.getCountry().getCountry() == Country.GERMANY);
@@ -107,7 +107,7 @@ public class TargetBuilderKubanTest
 
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         
-        TargetBuilder targetBuilder = new TargetBuilder(playerFlight.getFlightInformation());
+        TargetDefinitionBuilder targetBuilder = new TargetDefinitionBuilder(playerFlight.getFlightInformation());
         TargetDefinition targetDefinition = targetBuilder.buildTargetDefinition();
 
         assert(targetDefinition.getCountry().getCountry() == Country.GERMANY);

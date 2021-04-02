@@ -6,6 +6,7 @@ import java.util.List;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
+import pwcg.campaign.Skirmish;
 import pwcg.campaign.api.IMissionFile;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
@@ -65,6 +66,7 @@ public class Mission
     private MissionAirfieldIconBuilder airfieldIconBuilder = new MissionAirfieldIconBuilder();
     private MissionSquadronIconBuilder squadronIconBuilder;
     private MissionAssaultIconBuilder assaultIconBuilder = new MissionAssaultIconBuilder();
+    private Skirmish skirmish;
     
     private MissionEffects missionEffects = new MissionEffects();
     private boolean isFinalized = false;
@@ -76,6 +78,7 @@ public class Mission
             CoordinateBox missionBorders, 
             CoordinateBox structureBorders, 
             MissionWeather weather,
+            Skirmish skirmish,
             MissionOptions missionOptions)
             throws PWCGException
     {
@@ -85,6 +88,7 @@ public class Mission
         this.missionBorders = missionBorders;
         this.structureBorders = structureBorders;
         this.weather = weather;
+        this.skirmish = skirmish;
         this.missionOptions = missionOptions;
 
         initialize();
@@ -105,13 +109,13 @@ public class Mission
         squadronIconBuilder = new MissionSquadronIconBuilder(campaign);
     }
 
-    public void generate(MissionSquadronFlightTypes playerFlightTypes) throws PWCGException
+    public void generate(MissionSquadronFlightTypes playerFlightTypeOverride) throws PWCGException
     {
         validate();
         createStructures();
         createAirfields();
         createGroundUnits();
-        generateFlights(playerFlightTypes);
+        generateFlights(playerFlightTypeOverride);
 
     }
     
@@ -150,10 +154,24 @@ public class Mission
         blockBuilder.buildFixedPositionsForMission();
     }
 
-    private void generateFlights(MissionSquadronFlightTypes playerFlightTypes) throws PWCGException
+    private void generateFlights(MissionSquadronFlightTypes playerFlightTypeOverrides) throws PWCGException
     {
+        MissionSquadronFlightTypes playerFlightTypes = makePlayerFlightTypes(playerFlightTypeOverrides);
         flightBuilder.generateFlights(playerFlightTypes);
         createFirePots();
+    }
+    
+    private MissionSquadronFlightTypes makePlayerFlightTypes(MissionSquadronFlightTypes playerFlightTypeOverrides) throws PWCGException
+    {
+        if (!playerFlightTypeOverrides.hasPlayerFlightTypes())
+        {
+            return PlayerFlightTypeBuilder.finalizePlayerFlightTypes(campaign, participatingPlayers, missionProfile, weather, skirmish);
+        }
+        else
+        {
+            return playerFlightTypeOverrides;
+        }
+
     }
 
     private void validate() throws PWCGException
@@ -498,5 +516,10 @@ public class Mission
     public MissionAirfieldBuilder getMissionAirfieldBuilder()
     {
         return airfieldBuilder;
+    }
+
+    public Skirmish getSkirmish()
+    {
+        return skirmish;
     }
 }
