@@ -64,8 +64,10 @@ public class BodenplatteMap extends PWCGMap
         this.frontDatesForMap.addMapDateRange(DateUtils.getDateYYYYMMDD("19440901"), DateUtils.getDateYYYYMMDD("19450503"));
 
         this.frontDatesForMap.addFrontDate("19440901");
+        this.frontDatesForMap.addFrontDate("19440917");
         this.frontDatesForMap.addFrontDate("19440925");
         this.frontDatesForMap.addFrontDate("19440928");
+        this.frontDatesForMap.addFrontDate("19440930");
         this.frontDatesForMap.addFrontDate("19441101");
         this.frontDatesForMap.addFrontDate("19441220");
         this.frontDatesForMap.addFrontDate("19441225");

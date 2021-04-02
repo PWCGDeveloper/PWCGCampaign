@@ -31,8 +31,8 @@ public class FrontLineCreator
     
     private List<FrontLinePoint> createAlliedLinesWestFront(List<FrontLinePoint> userFrontLines) throws PWCGException
     {
-        List<FrontLinePoint> axisLines = reduceToAxisLines(userFrontLines);
-        List<FrontLinePoint> alliedLines =  createLines(axisLines, 270, FrontLinePoint.ALLIED_FRONT_LINE);
+        List<FrontLinePoint> axisLines = reduceLinesToSide(userFrontLines, Side.ALLIED);
+        List<FrontLinePoint> alliedLines = createLines(axisLines, 90, FrontLinePoint.AXIS_FRONT_LINE);
         List<FrontLinePoint> allFrontLines = new ArrayList<>();
         allFrontLines.addAll(alliedLines);
         allFrontLines.addAll(axisLines);
@@ -41,25 +41,25 @@ public class FrontLineCreator
     
     private List<FrontLinePoint> createAlliedLinesEastFront(List<FrontLinePoint> userFrontLines) throws PWCGException
     {
-        List<FrontLinePoint> axisLines = reduceToAxisLines(userFrontLines);
-        List<FrontLinePoint> alliedLines = createLines(axisLines, 90, FrontLinePoint.ALLIED_FRONT_LINE);
+        List<FrontLinePoint> axisLines = reduceLinesToSide(userFrontLines, Side.ALLIED);
+        List<FrontLinePoint> alliedLines = createLines(axisLines, 270, FrontLinePoint.AXIS_FRONT_LINE);
         List<FrontLinePoint> allFrontLines = new ArrayList<>();
         allFrontLines.addAll(alliedLines);
         allFrontLines.addAll(axisLines);
         return allFrontLines;
     }
-    
-    private List<FrontLinePoint> reduceToAxisLines(List<FrontLinePoint> userFrontLines) throws PWCGException
+
+    private List<FrontLinePoint> reduceLinesToSide(List<FrontLinePoint> userFrontLines, Side side) throws PWCGException
     {
-        List<FrontLinePoint> axisLines = new ArrayList<>();
+        List<FrontLinePoint> frontLinesForSide = new ArrayList<>();
         for (FrontLinePoint frontLinePoint : userFrontLines)
         {
-            if (frontLinePoint.getSide() == Side.AXIS)
+            if (frontLinePoint.getSide() == side)
             {
-                axisLines.add(frontLinePoint);
+                frontLinesForSide.add(frontLinePoint);
             }
         }
-        return axisLines;
+        return frontLinesForSide;
     }
 
     private List<FrontLinePoint> createLines(List<FrontLinePoint> userFrontLines, int oppositeFrontLineAngle, String frontLinePointName) throws PWCGException
