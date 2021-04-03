@@ -9,9 +9,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class MissionAiSquadronFinder
 {
@@ -67,6 +65,7 @@ public class MissionAiSquadronFinder
         acceptableRoles.add(Role.ROLE_FIGHTER);
         acceptableRoles.add(Role.ROLE_BOMB);
         acceptableRoles.add(Role.ROLE_ATTACK);
+        acceptableRoles.add(Role.ROLE_TRANSPORT);
 
         List<Squadron> otherAlliedSquads = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, Side.ALLIED);
         List<Squadron> otherAxisSquads = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, Side.AXIS);
@@ -142,6 +141,11 @@ public class MissionAiSquadronFinder
         }
         else if (mission.isNightMission())
         {
+            if (squadron.getNightOdds(campaign.getDate()) >= 10)
+            {
+                return true;
+            }
+            
             int roll = RandomNumberGenerator.getRandom(100);
             if (roll >= squadron.getNightOdds(campaign.getDate()))
             {
