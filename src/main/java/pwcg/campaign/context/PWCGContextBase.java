@@ -7,17 +7,15 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.group.airfield.staticobject.StaticObjectDefinitionManager;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.skin.SkinManager;
+import pwcg.campaign.squadron.SkirmishProfileManager;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.PWCGLogger;
-import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
 
 public abstract class PWCGContextBase implements IPWCGContextManager
@@ -30,6 +28,7 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     protected AceManager aceManager = new AceManager();
     protected SquadronManager squadronManager = new SquadronManager();
     protected SkinManager skinManager = new SkinManager();
+    protected SkirmishProfileManager skirmishProfileManager = new SkirmishProfileManager();
     protected VehicleDefinitionManager vehicleDefinitionManager = new VehicleDefinitionManager();
     protected StaticObjectDefinitionManager staticObjectDefinitionManager = new StaticObjectDefinitionManager();
     protected PlaneTypeFactory planeTypeFactory = new PlaneTypeFactory();
@@ -56,6 +55,7 @@ public abstract class PWCGContextBase implements IPWCGContextManager
         planeTypeFactory.initialize();
         aceManager.configure();
         squadronManager.initialize();
+        skirmishProfileManager.initialize();
         skinManager.initialize();
         vehicleDefinitionManager.initialize();
         staticObjectDefinitionManager.initialize();
@@ -184,12 +184,9 @@ public abstract class PWCGContextBase implements IPWCGContextManager
                 
                 if (airfield != null)
                 {
-                    PWCGLogger.log(LogLevel.DEBUG, airfieldName + ": found on map " + map.getMapName());
                     return airfield;
                 }
             }
-
-            PWCGLogger.log(LogLevel.DEBUG, airfieldName + ": found NOT on map " + map.getMapName());
         }
 
         return airfield;
@@ -205,6 +202,13 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     public SquadronManager getSquadronManager()
     {
         return squadronManager;
+    }
+
+
+    @Override
+    public SkirmishProfileManager getSkirmishProfileManager()
+    {
+        return skirmishProfileManager;
     }
 
     @Override

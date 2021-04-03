@@ -1,24 +1,19 @@
 package pwcg.campaign;
 
-import pwcg.campaign.api.Side;
 import pwcg.campaign.plane.Role;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.target.TargetType;
 
-public class SkirmishMissionPreference
+public class SkirmishProfileElement
 {
-    private Side side;
+    private SkirmishProfileAssociation association;
     private Role role;
     private FlightTypes preferredFlightType;
     private TargetType targetType;
 
-	public SkirmishMissionPreference()
-	{
-	}
-
-    public Side getSide()
+    public SkirmishProfileAssociation getAssociation()
     {
-        return side;
+        return association;
     }
 
     public Role getRole()

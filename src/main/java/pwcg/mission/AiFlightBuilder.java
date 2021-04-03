@@ -5,10 +5,11 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.factory.PWCGFlightTypeAbstractFactory;
-import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.flight.FlightFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
@@ -48,6 +49,10 @@ public class AiFlightBuilder
             if (flight != null)
             {
                 missionFlights.add(flight);
+            }
+            else
+            {
+                PWCGLogger.log(LogLevel.DEBUG, "Failed to generate a flight for : " + squadron.determineDisplayName(campaign.getDate()));
             }
         }
         return missionFlights;

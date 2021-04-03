@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -21,9 +22,9 @@ public class Skirmish
 	private Coordinate swCorner;
     private Date startDate;
     private Date stopDate;
-    private Side aggressor;
+    private Side attacker;
+    private SkirmishProfileType profileType;
     private List<FlightTypes> iconicFlightTypes = new ArrayList<>();
-    private List<SkirmishMissionPreference> skirmishMissionPreferences = new ArrayList<>();
 
 	public Skirmish()
 	{
@@ -50,36 +51,10 @@ public class Skirmish
         return stopDate;
     }
 
-    public Side getAggressor()
-    {
-        return aggressor;
-    }
-
-    public List<SkirmishMissionPreference> getSkirmishMissionPreferences()
-    {
-        return skirmishMissionPreferences;
-    }
-
     public Coordinate getCenter() throws PWCGException
     {
         CoordinateBox skirmishBox = CoordinateBox.coordinateBoxFromCorners(swCorner, neCorner);
         return skirmishBox.getCenter();
-    }
-
-    public FlightTypes getFlighTypeForRole(Squadron squadron, Role role) throws PWCGException
-    {
-        for (SkirmishMissionPreference skirmishMissionPreference : skirmishMissionPreferences)
-        {
-            if (skirmishMissionPreference.getSide() == squadron.determineSide())
-            {
-                if (skirmishMissionPreference.getRole() == role)
-                {
-                    return skirmishMissionPreference.getPreferredFlightType();
-                }
-            }
-        }
-        
-        return FlightTypes.ANY;
     }
 
     public boolean isIconicFlightType (FlightTypes flightTypes) throws PWCGException
@@ -95,19 +70,82 @@ public class Skirmish
         return false;
     }
 
+    public boolean hasFlighTypeForRole(Squadron squadron, Role role) throws PWCGException
+    {
+        List<SkirmishProfileElement> skirmishElementsForSide = getSkirmishProfileElementForSide(squadron);
+        for (SkirmishProfileElement skirmishProfileElement : skirmishElementsForSide)
+        {
+            if (skirmishProfileElement.getRole() == role)
+            {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+
+    public FlightTypes getFlighTypeForRole(Squadron squadron, Role role) throws PWCGException
+    {
+        List<SkirmishProfileElement> skirmishElementsForSide = getSkirmishProfileElementForSide(squadron);
+        for (SkirmishProfileElement skirmishProfileElement : skirmishElementsForSide)
+        {
+            if (skirmishProfileElement.getRole() == role)
+            {
+                return skirmishProfileElement.getPreferredFlightType();
+            }
+        }
+        
+        return FlightTypes.ANY;
+    }
+
     public TargetType getTargetForFlightType(FlightInformation flightInformation) throws PWCGException
     {
-        for (SkirmishMissionPreference skirmishMissionPreference : skirmishMissionPreferences)
+        List<SkirmishProfileElement> skirmishElementsForSide = getSkirmishProfileElementForSide(flightInformation.getSquadron());
+        for (SkirmishProfileElement skirmishProfileElement : skirmishElementsForSide)
         {
-            if (skirmishMissionPreference.getSide() == flightInformation.getSquadron().determineSide())
+            if (skirmishProfileElement.getPreferredFlightType() == flightInformation.getFlightType())
             {
-                if (skirmishMissionPreference.getPreferredFlightType() == flightInformation.getFlightType())
-                {
-                    return skirmishMissionPreference.getTargetType();
-                }
+                return skirmishProfileElement.getTargetType();
             }
         }
         
         return TargetType.TARGET_NONE;
+    }
+    
+    private List<SkirmishProfileElement> getSkirmishProfileElementForSide(Squadron squadron) throws PWCGException
+    {
+        List<SkirmishProfileElement> skirmishElementsForSide = new ArrayList<>();
+        SkirmishProfileAssociation squadronAssociation = getSkirmishAssociation(squadron);
+
+        SkirmishProfile skirmishProfile = PWCGContext.getInstance().getSkirmishProfileManager().getSkirmishProfile(profileType);
+        for (SkirmishProfileElement skirmishProfileElement : skirmishProfile.getSkirmishProfileElements())
+        {
+            if (skirmishProfileElement.getAssociation() == squadronAssociation)
+            {
+                skirmishElementsForSide.add(skirmishProfileElement);
+            }
+        }
+        
+        return skirmishElementsForSide;
+    }
+
+    private SkirmishProfileAssociation getSkirmishAssociation(Squadron squadron) throws PWCGException
+    {
+        SkirmishProfileAssociation squadronAssociation = SkirmishProfileAssociation.DEFENDER;
+        if (squadron.determineSide() == attacker)
+        {
+            squadronAssociation = SkirmishProfileAssociation.ATTACKER;
+        }
+        return squadronAssociation;
+    }
+
+    public Side getAttacker()
+    {
+        return attacker;
+    }
+
+    public SkirmishProfileType getProfileType()
+    {
+        return profileType;
     }
 }

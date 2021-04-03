@@ -25,8 +25,12 @@ public class SkirmishFlightTypeFactory implements IFlightTypeFactory
     {
         Role missionRole = squadron.getSquadronRoles().selectRoleForMission(campaign.getDate());
 
-        FlightTypes flightType = skirmish.getFlighTypeForRole(squadron, missionRole);
-        if (flightType == FlightTypes.ANY)
+        FlightTypes flightType = FlightTypes.ANY;
+        if (skirmish.hasFlighTypeForRole(squadron, missionRole))
+        {
+            flightType = skirmish.getFlighTypeForRole(squadron, missionRole);
+        }
+        else
         {
             flightType = backupFlightTypeFactory.getFlightType(squadron, isPlayerFlight);
         }

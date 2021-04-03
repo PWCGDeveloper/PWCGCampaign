@@ -28,7 +28,7 @@ public class SkirmishBuilder
     public Skirmish chooseBestSkirmish() throws PWCGException
     {
         SkirmishManager skirmishManager = PWCGContext.getInstance().getCurrentMap().getSkirmishManager();
-        List<Skirmish> skirmishes = skirmishManager.getSkirmishesForCampaign(campaign.getDate());
+        List<Skirmish> skirmishes = skirmishManager.getSkirmishesForDate(campaign.getDate());
         List<Skirmish> candidateSkirmishes = new ArrayList<>();
         
         for (Skirmish skirmish : skirmishes)
@@ -71,7 +71,7 @@ public class SkirmishBuilder
         int closeToBattleDistance = productSpecific.getCloseToBattleDistance();
         if (campaign.isLongRange())
         {
-            closeToBattleDistance += 20000;
+            closeToBattleDistance += 50000;
         }
         return closeToBattleDistance;
     }

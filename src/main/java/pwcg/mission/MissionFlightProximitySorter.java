@@ -2,33 +2,27 @@ package pwcg.mission;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.plot.FlightProximityAnalyzer;
 
 public class MissionFlightProximitySorter
 {
-    private Map<Double, IFlight> axisFlightsByContactDistance = new TreeMap<>();
-    private Map<Double, IFlight> alliedFlightsByContactDistance = new TreeMap<>();
+    private List<IFlight> axisFlightsByContactDistance = new ArrayList<>();
+    private List<IFlight> alliedFlightsByContactDistance = new ArrayList<>();
         
-    public void mapEnemyDistanceToPlayerFlights(Mission mission) throws PWCGException
+    public void mapEnemyDistanceToPlayerFlights(List<IFlight> flights) throws PWCGException
     {
-        FlightProximityAnalyzer proximityAnalyzer = new FlightProximityAnalyzer(mission);
-        proximityAnalyzer.plotFlightEncounters();
-        
-        for (IFlight aiFlight : mission.getMissionFlightBuilder().getAiFlights())
+        for (IFlight aiFlight : flights)
         {
             if (aiFlight.getSquadron().determineSide() == Side.ALLIED)
             {
-                alliedFlightsByContactDistance.put(aiFlight.getClosestContactWithPlayerDistance(), aiFlight);
+                addFlightToListByDistance(alliedFlightsByContactDistance, aiFlight);
             }
             else
             {
-                axisFlightsByContactDistance.put(aiFlight.getClosestContactWithPlayerDistance(), aiFlight);
+                addFlightToListByDistance(axisFlightsByContactDistance, aiFlight);
             }
         }
     }
@@ -37,11 +31,27 @@ public class MissionFlightProximitySorter
     {
         if (side == Side.ALLIED)
         {
-            return new ArrayList<IFlight>(alliedFlightsByContactDistance.values());
+            return new ArrayList<IFlight>(alliedFlightsByContactDistance);
         }
         else
         {
-            return new ArrayList<IFlight>(axisFlightsByContactDistance.values());
+            return new ArrayList<IFlight>(axisFlightsByContactDistance);
         }
+    }
+    
+    private void addFlightToListByDistance(List<IFlight> flightsByContactDistance, IFlight aiFlight)
+    {
+        int position = 0;
+        for (IFlight flightInList : flightsByContactDistance)
+        {
+            if (aiFlight.getClosestContactWithPlayerDistance() < flightInList.getClosestContactWithPlayerDistance())
+            {
+                break;
+            }
+            
+            ++position;
+        }
+        
+        flightsByContactDistance.add(position, aiFlight);
     }
 }

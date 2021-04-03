@@ -9,7 +9,9 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class MissionAiSquadronFinder
 {

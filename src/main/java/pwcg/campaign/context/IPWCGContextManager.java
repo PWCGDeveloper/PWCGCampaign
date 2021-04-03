@@ -9,6 +9,7 @@ import pwcg.campaign.group.airfield.staticobject.StaticObjectDefinitionManager;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.skin.SkinManager;
+import pwcg.campaign.squadron.SkirmishProfileManager;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
@@ -47,6 +48,8 @@ public interface IPWCGContextManager
     
     SquadronManager getSquadronManager();
 
+    SkirmishProfileManager getSkirmishProfileManager();
+    
     SkinManager getSkinManager();
 
     PlaneTypeFactory getPlaneTypeFactory();

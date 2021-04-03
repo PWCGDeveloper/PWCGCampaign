@@ -11,6 +11,8 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.target.TargetType;
@@ -24,25 +26,25 @@ public class ArnhemFlightTest
     public void fighterFlightTests() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
+        PWCGLogger.setActiveLogLevel(LogLevel.DEBUG);
     }
 
     @Test
     public void hasSkirmishAndParaDropTest() throws PWCGException
     {
+        verifyParaDropOnDate(DateUtils.getDateYYYYMMDD("19440917"));
+        verifyParaDropOnDate(DateUtils.getDateYYYYMMDD("19440918"));
+    }
+
+    private void verifyParaDropOnDate(Date date) throws PWCGException
+    {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
-        campaign.setDate(DateUtils.getDateYYYYMMDD("19440917"));
+        campaign.setDate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
 
-        boolean paraDropFound = false;
-        for (IFlight flight : mission.getMissionFlightBuilder().getAiFlightsForSide(Side.ALLIED))
-        {
-            if (flight.getFlightInformation().getFlightType() == FlightTypes.PARATROOP_DROP)
-            {
-                paraDropFound = true;
-            }
-        }
-        
+        boolean paraDropFound = findFlightType(mission, FlightTypes.PARATROOP_DROP);
+
         assert (mission.getSkirmish() != null);
         assert (paraDropFound);
     }
@@ -50,9 +52,12 @@ public class ArnhemFlightTest
     @Test
     public void hasSkirmishAndCargoDropTest() throws PWCGException
     {
-        verifyCargoDropsOnDate(DateUtils.getDateYYYYMMDD("19440918"));
-        verifyCargoDropsOnDate(DateUtils.getDateYYYYMMDD("19440925"));
-        verifyCargoDropsOnDate(DateUtils.getDateYYYYMMDD("19440928"));
+        for (int i = 0; i < 10; ++i)
+        {
+            verifyCargoDropsOnDate(DateUtils.getDateYYYYMMDD("19440920"));
+            verifyCargoDropsOnDate(DateUtils.getDateYYYYMMDD("19440925"));
+            verifyCargoDropsOnDate(DateUtils.getDateYYYYMMDD("19440928"));
+        }
     }
 
     private void verifyCargoDropsOnDate(Date date) throws PWCGException
@@ -62,15 +67,7 @@ public class ArnhemFlightTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
 
-        boolean cargoDropFound = false;
-        for (IFlight flight : mission.getMissionFlightBuilder().getAiFlightsForSide(Side.ALLIED))
-        {
-            if (flight.getFlightInformation().getFlightType() == FlightTypes.CARGO_DROP)
-            {
-                cargoDropFound = true;
-            }
-        }
-        
+        boolean cargoDropFound = findFlightType(mission, FlightTypes.CARGO_DROP);
         assert (mission.getSkirmish() != null);
         assert (cargoDropFound);        
 
@@ -103,15 +100,23 @@ public class ArnhemFlightTest
                 assert (flight.getTargetDefinition().getTargetType() == TargetType.TARGET_INFANTRY);
             }
             
-            if (flight.getFlightType() == FlightTypes.LOW_ALT_BOMB)
-            {
-                assert (flight.getTargetDefinition().getTargetType() == TargetType.TARGET_INFANTRY);
-            }
-            
             if (flight.getFlightType() == FlightTypes.BOMB)
             {
                 assert (flight.getTargetDefinition().getTargetType() == TargetType.TARGET_INFANTRY);
             }
         }
+    }
+
+    private boolean findFlightType(Mission mission, FlightTypes flightType) throws PWCGException
+    {
+        boolean flightTypeFound = false;
+        for (IFlight flight : mission.getMissionFlightBuilder().getAiFlightsForSide(Side.ALLIED))
+        {
+            if (flight.getFlightInformation().getFlightType() == flightType)
+            {
+                flightTypeFound = true;
+            }
+        }
+        return flightTypeFound;
     }
 }

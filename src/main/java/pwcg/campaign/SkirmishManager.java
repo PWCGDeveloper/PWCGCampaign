@@ -34,7 +34,7 @@ public class SkirmishManager
         }
 	}
 
-    public List<Skirmish> getSkirmishesForCampaign(Date date) 
+    public List<Skirmish> getSkirmishesForDate(Date date) 
     {     
         List<Skirmish> skirmishesForCampaign = new ArrayList<>();
         
@@ -76,5 +76,10 @@ public class SkirmishManager
         }
 
         return TargetType.TARGET_NONE;
+    }
+
+    public Skirmishes getSkirmishes()
+    {
+        return skirmishes;
     }
 }

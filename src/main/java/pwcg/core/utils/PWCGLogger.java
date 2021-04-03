@@ -98,14 +98,7 @@ public class PWCGLogger
             if (logThisMessage(logLevel))
             {
                 // For the console
-                if (logLevel == LogLevel.ERROR)
-                {
-                    System.err.println(message);
-                }
-                else
-                {
-                    System.out.println(message);
-                }
+                System.out.println(message);
                 
                 // to the file
                 fw = new FileWriter ("PWCGErrorLog.txt", true);

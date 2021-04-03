@@ -1,0 +1,47 @@
+{
+	"profileType": "SKIRMISH_PROFILE_CARGO_DROP",
+	"skirmishProfileElements": [
+		{
+			"association": "ATTACKER",
+			"role": "ROLE_ATTACK",
+			"preferredFlightType": "GROUND_ATTACK",
+			"targetType": "TARGET_INFANTRY"
+		},
+		{
+			"association": "ATTACKER",
+			"role": "ROLE_BOMB",
+			"preferredFlightType": "BOMB",
+			"targetType": "TARGET_INFANTRY"
+		},
+		{
+			"association": "ATTACKER",
+			"role": "ROLE_FIGHTER",
+			"preferredFlightType": "LOW_ALT_CAP",
+			"targetType": "TARGET_AIR"
+		},
+		{
+			"association": "ATTACKER",
+			"role": "ROLE_TRANSPORT",
+			"preferredFlightType": "CARGO_DROP",
+			"targetType": "TARGET_INFANTRY"
+		},
+		{
+			"association": "DEFENDER",
+			"role": "ROLE_ATTACK",
+			"preferredFlightType": "GROUND_ATTACK",
+			"targetType": "TARGET_INFANTRY"
+		},
+		{
+			"association": "DEFENDER",
+			"role": "ROLE_BOMB",
+			"preferredFlightType": "BOMB",
+			"targetType": "TARGET_INFANTRY"
+		},
+		{
+			"association": "DEFENDER",
+			"role": "ROLE_FIGHTER",
+			"preferredFlightType": "INTERCEPT",
+			"targetType": "TARGET_AIR"
+		}
+	]
+}
