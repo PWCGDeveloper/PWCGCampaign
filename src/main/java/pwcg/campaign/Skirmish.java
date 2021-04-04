@@ -25,6 +25,7 @@ public class Skirmish
     private Side attacker;
     private SkirmishProfileType profileType;
     private List<FlightTypes> iconicFlightTypes = new ArrayList<>();
+    private List<SkirmishForceRoleConversion> forcedRoleConversions = new ArrayList<>();
 
 	public Skirmish()
 	{
@@ -111,7 +112,23 @@ public class Skirmish
         
         return TargetType.TARGET_NONE;
     }
-    
+
+    public Role forceRoleConversion(Role role, Side side)
+    {
+        for (SkirmishForceRoleConversion forcedRoleConversion : forcedRoleConversions)
+        {
+            if (forcedRoleConversion.getSide() == side)
+            {
+                if (forcedRoleConversion.getFromRole() == role)
+                {
+                    return forcedRoleConversion.getToRole();
+                }
+            }
+        }
+        
+        return role;
+    }
+
     private List<SkirmishProfileElement> getSkirmishProfileElementForSide(Squadron squadron) throws PWCGException
     {
         List<SkirmishProfileElement> skirmishElementsForSide = new ArrayList<>();
