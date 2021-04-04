@@ -38,7 +38,9 @@ public class AiFlightBuilder
             return missionFlights;
         }
         
-        List<Squadron> aiSquadronsForMission = mission.getMissionSquadronChooser().determineParticipatingSquadrons(mission);
+        AiSquadronIncluder aiSquadronIncluder = new AiSquadronIncluder(mission);
+        List<Squadron> aiSquadronsForMission = aiSquadronIncluder.decideSquadronsForMission();
+        
         for (Squadron squadron : aiSquadronsForMission)
         {
             FlightTypes flightType = determineFlightType(squadron);

@@ -1,8 +1,18 @@
 package pwcg.mission.flight.escort;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import pwcg.campaign.Campaign;
+import pwcg.campaign.api.Side;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.mission.MissionBeginUnit;
+import pwcg.mission.MissionSquadronRecorder;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
@@ -39,9 +49,9 @@ public class EscortedByPlayerFlightBuilder
 
     private MissionBeginUnit buildEscortedFlightInformation() throws PWCGException
     {
-        Squadron friendlyBomberSquadron = playerEscortFlightInformation.getMission().getMissionSquadronChooser().determineSquadronToBeEscorted(
+        Squadron friendlyBomberSquadron = determineSquadronToBeEscorted(
                 playerEscortFlightInformation.getCampaign(), playerEscortFlightInformation.getSquadron());
-        playerEscortFlightInformation.getMission().getMissionSquadronChooser().registerSquadronInUse(friendlyBomberSquadron);
+        playerEscortFlightInformation.getMission().getMissionSquadronRecorder().registerSquadronInUse(friendlyBomberSquadron);
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit(friendlyBomberSquadron.determineCurrentPosition(playerEscortFlightInformation.getCampaign().getDate()));     
         
         this.escortedFlightInformation = EscortedByPlayerFlightInformationBuilder.buildEscortedByPlayerFlightInformation(
@@ -50,6 +60,32 @@ public class EscortedByPlayerFlightBuilder
         this.escortedTargetDefinition = buildTargetDefintion(escortedFlightInformation);
 
         return missionBeginUnit;
+    }
+    
+    private Squadron determineSquadronToBeEscorted(Campaign campaign, Squadron escortSquadron) throws PWCGException
+    {
+        Squadron escortedSquadron = determineSquadronForRoleToBeEscorted(campaign, escortSquadron, Role.ROLE_BOMB);
+        if (escortedSquadron == null)
+        {
+            escortedSquadron = determineSquadronForRoleToBeEscorted(campaign, escortSquadron, Role.ROLE_ATTACK);
+        }
+
+        if (escortedSquadron == null)
+        {
+            throw new PWCGMissionGenerationException ("Escort mission with no viable squadrons to be escorted - please create another mission");
+        }
+        
+        return escortedSquadron;
+    }
+    
+    private Squadron determineSquadronForRoleToBeEscorted(Campaign campaign, Squadron escortSquadron, Role role) throws PWCGException
+    {
+        List<Role> bomberRole = new ArrayList<Role>(Arrays.asList(role));
+        Side friendlySide = escortSquadron.determineSide();
+        MissionSquadronRecorder squadronInUseRecorder = playerEscortFlightInformation.getMission().getMissionSquadronRecorder();
+        List<Squadron> squadronsToExclude = squadronInUseRecorder.getSquadronsInUse();
+        Squadron escortedSquadron = PWCGContext.getInstance().getSquadronManager().getSingleViableAiSquadronByRoleAndSideAndCurrentMap(campaign, bomberRole, friendlySide, squadronsToExclude);
+        return escortedSquadron;
     }
 
     private TargetDefinition buildTargetDefintion(FlightInformation escortedFlightInformation) throws PWCGException

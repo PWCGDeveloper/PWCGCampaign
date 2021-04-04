@@ -30,7 +30,7 @@ public class SkirmishManagerTest
         SkirmishManager skirmishManager = new SkirmishManager(FrontMapIdentifier.BODENPLATTE_MAP);
         skirmishManager.initialize();
         
-        assert (skirmishManager.getSkirmishes().getSkirmishes().size() == 6);
+        assert (skirmishManager.getSkirmishes().getSkirmishes().size() == 14);
         
         List<Skirmish> skirmishesForDate = skirmishManager.getSkirmishesForDate(DateUtils.getDateYYYYMMDD("19440917"));
         assert (skirmishesForDate.size() == 3);
@@ -49,9 +49,7 @@ public class SkirmishManagerTest
         
         SkirmishManager skirmishManager = new SkirmishManager(FrontMapIdentifier.BODENPLATTE_MAP);
         skirmishManager.initialize();
-        
-        assert (skirmishManager.getSkirmishes().getSkirmishes().size() == 6);
-        
+                
         List<Skirmish> skirmishesForDate = skirmishManager.getSkirmishesForDate(DateUtils.getDateYYYYMMDD("19440921"));
         assert (skirmishesForDate.size() == 3);
         

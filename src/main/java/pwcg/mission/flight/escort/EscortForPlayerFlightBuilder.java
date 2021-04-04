@@ -37,11 +37,11 @@ public class EscortForPlayerFlightBuilder
     {
         FlightInformation playerFlightInformation = playerFlight.getFlightInformation();
         Side friendlySide = playerFlightInformation.getSquadron().determineSquadronCountry(playerFlightInformation.getCampaign().getDate()).getSide();
-        Squadron friendlyFighterSquadron = playerFlight.getMission().getMissionSquadronChooser().getEscortSquadron(playerFlightInformation.getCampaign(), friendlySide);
+        Squadron friendlyFighterSquadron = EscortSquadronSelector.getEscortSquadron(playerFlight, friendlySide);
 
         if (friendlyFighterSquadron != null)
         {          
-            playerFlight.getMission().getMissionSquadronChooser().registerSquadronInUse(friendlyFighterSquadron);
+            playerFlight.getMission().getMissionSquadronRecorder().registerSquadronInUse(friendlyFighterSquadron);
 
             McuWaypoint rendezvousWP = WaypointGeneratorUtils.findWaypointByType(playerFlight.getWaypointPackage().getAllWaypoints(), 
                     WaypointType.RENDEZVOUS_WAYPOINT.getName());

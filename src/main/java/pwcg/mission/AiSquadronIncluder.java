@@ -34,10 +34,7 @@ public class AiSquadronIncluder
         {
             if (squadronWillGenerateAFlight(squadron))
             {
-                if (!mission.getMissionSquadronChooser().isSquadronInUse(squadron.getSquadronId()))
-                {
-                    squadronsForMission.add(squadron);
-                }
+                squadronsForMission.add(squadron);
             }
         }
     }

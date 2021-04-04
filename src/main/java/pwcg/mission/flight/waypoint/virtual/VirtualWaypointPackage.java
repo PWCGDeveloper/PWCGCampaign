@@ -7,9 +7,10 @@ import java.util.List;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.escort.EscortSquadronSelector;
 import pwcg.mission.flight.escort.VirtualEscortFlightInformationBuilder;
 import pwcg.mission.flight.waypoint.missionpoint.IVirtualActivate;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
@@ -54,10 +55,10 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
     public void addEscort() throws PWCGException
     {
         Squadron squadronToEscort = flight.getSquadron();
-        Squadron friendlyFighterSquadron = flight.getMission().getMissionSquadronChooser().getEscortSquadron(flight.getCampaign(), squadronToEscort.determineSide());
+        Squadron friendlyFighterSquadron = EscortSquadronSelector.getEscortSquadron(flight, squadronToEscort.determineSide());
         if (friendlyFighterSquadron != null)
         {
-            flight.getMission().getMissionSquadronChooser().registerSquadronInUse(friendlyFighterSquadron);
+            flight.getMission().getMissionSquadronRecorder().registerSquadronInUse(friendlyFighterSquadron);
             FlightInformation vwpEscortFlightInformation = VirtualEscortFlightInformationBuilder.buildVirtualEscortFlightInformation(flight.getMission(), friendlyFighterSquadron);
             for (VirtualWaypoint virtualWaypoint : virtualWaypoints)
             {

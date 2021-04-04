@@ -61,7 +61,7 @@ public class MissionFlightBuilder
                 escortFlightBuilder.addEscort(mission, playerFlight);
             }
             
-            mission.getMissionSquadronChooser().registerSquadronInUse(playerSquadron);
+            mission.getMissionSquadronRecorder().registerSquadronInUse(playerSquadron);
         }
     }
 
