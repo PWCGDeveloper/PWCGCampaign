@@ -1,0 +1,29 @@
+{
+	"profileType": "SKIRMISH_PROFILE_AIRFIELD",
+	"skirmishProfileElements": [
+		{
+			"association": "ATTACKER",
+			"role": "ROLE_ATTACK",
+			"preferredFlightType": "GROUND_ATTACK",
+			"targetType": "TARGET_AIRFIELD"
+		},
+		{
+			"association": "ATTACKER",
+			"role": "ROLE_DIVE_BOMB",
+			"preferredFlightType": "GROUND_ATTACK",
+			"targetType": "TARGET_AIRFIELD"
+		},
+		{
+			"association": "ATTACKER",
+			"role": "ROLE_BOMB",
+			"preferredFlightType": "BOMB",
+			"targetType": "TARGET_AIRFIELD"
+		},
+		{
+			"association": "DEFENDER",
+			"role": "ROLE_FIGHTER",
+			"preferredFlightType": "SCRAMBLE",
+			"targetType": "TARGET_AIR"
+		},
+	]
+}

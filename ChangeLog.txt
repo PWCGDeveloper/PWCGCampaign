@@ -1,6 +1,16 @@
 
 ​At the PWCG web site
 
+PWCG 11.12.0
+Introduced concept of focused skirmishes for historical events
+- Places activities in skirmish area
+- Causes flight types for player squadron to conform to activities
+- Ensures iconic flight types are added to the mission
+- Example: parachute drops or cargo drops for airborne assaults
+- Added skirmishes for Arnhem
+Altered map front lines to show Arnhem drops
+Improved odds of contact in night missions
+
 PWCG 11.11.2
 Added new front lines to show progress of Arnhem
 Added newspaper entries for Arnhem

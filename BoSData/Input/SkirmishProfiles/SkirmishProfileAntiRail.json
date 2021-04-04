@@ -1,0 +1,23 @@
+{
+	"profileType": "SKIRMISH_PROFILE_ANTI_RAIL",
+	"skirmishProfileElements": [
+		{
+			"association": "ATTACKER",
+			"role": "ROLE_ATTACK",
+			"preferredFlightType": "GROUND_ATTACK",
+			"targetType": "TARGET_TRAIN"
+		},
+		{
+			"association": "ATTACKER",
+			"role": "ROLE_DIVE_BOMB",
+			"preferredFlightType": "GROUND_ATTACK",
+			"targetType": "TARGET_TRAIN"
+		},
+		{
+			"association": "ATTACKER",
+			"role": "ROLE_BOMB",
+			"preferredFlightType": "BOMB",
+			"targetType": "TARGET_TRAIN"
+		}
+	]
+}

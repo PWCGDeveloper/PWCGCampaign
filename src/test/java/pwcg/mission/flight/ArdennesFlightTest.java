@@ -20,7 +20,7 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
-public class ArnhemFlightTest
+public class ArdennesFlightTest
 {
     @Before
     public void fighterFlightTests() throws PWCGException
@@ -30,36 +30,37 @@ public class ArnhemFlightTest
     }
 
     @Test
-    public void hasSkirmishAndParaDropTest() throws PWCGException
+    public void hasSkirmishAndGroundAttackTest() throws PWCGException
     {
-        verifyParaDropOnDate(DateUtils.getDateYYYYMMDD("19440917"));
-        verifyParaDropOnDate(DateUtils.getDateYYYYMMDD("19440918"));
+        verifyAntiArmorOnDate(DateUtils.getDateYYYYMMDD("19441220"));
+        verifyAntiArmorOnDate(DateUtils.getDateYYYYMMDD("19441224"));
+        verifyAntiArmorOnDate(DateUtils.getDateYYYYMMDD("19441229"));
+        verifyAntiArmorOnDate(DateUtils.getDateYYYYMMDD("19441230"));
     }
 
-    private void verifyParaDropOnDate(Date date) throws PWCGException
+    private void verifyAntiArmorOnDate(Date date) throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
         campaign.setDate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
 
-        boolean paraDropFound = findFlightType(mission, FlightTypes.PARATROOP_DROP);
+        boolean groundAttackFound = findFlightType(mission, FlightTypes.GROUND_ATTACK);
 
         assert (mission.getSkirmish() != null);
-        assert (paraDropFound);
+        assert (groundAttackFound);
     }
 
     @Test
     public void hasSkirmishAndCargoDropTest() throws PWCGException
     {
-        verifyCargoDropsOnDate(DateUtils.getDateYYYYMMDD("19440920"));
-        verifyCargoDropsOnDate(DateUtils.getDateYYYYMMDD("19440925"));
-        verifyCargoDropsOnDate(DateUtils.getDateYYYYMMDD("19440928"));
+        verifyCargoDropsOnDate(DateUtils.getDateYYYYMMDD("19441225"));
+        verifyCargoDropsOnDate(DateUtils.getDateYYYYMMDD("19441228"));
     }
 
     private void verifyCargoDropsOnDate(Date date) throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
         campaign.setDate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
@@ -74,13 +75,13 @@ public class ArnhemFlightTest
     @Test
     public void doesNotHaveSkirmishTest() throws PWCGException
     {
-        noSkirmish(DateUtils.getDateYYYYMMDD("19440916"));
-        noSkirmish(DateUtils.getDateYYYYMMDD("19440930"));
+        noSkirmish(DateUtils.getDateYYYYMMDD("19441219"));
+        noSkirmish(DateUtils.getDateYYYYMMDD("19441231"));
     }
 
     private void noSkirmish(Date date) throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
         campaign.setDate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));

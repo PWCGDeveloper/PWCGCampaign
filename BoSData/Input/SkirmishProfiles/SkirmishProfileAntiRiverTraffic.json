@@ -1,0 +1,23 @@
+{
+	"profileType": "SKIRMISH_PROFILE_ANTI_RIVER_TRAFFIC",
+	"skirmishProfileElements": [
+		{
+			"association": "ATTACKER",
+			"role": "ROLE_ATTACK",
+			"preferredFlightType": "GROUND_ATTACK",
+			"targetType": "TARGET_DRIFTER"
+		},
+		{
+			"association": "ATTACKER",
+			"role": "ROLE_DIVE_BOMB",
+			"preferredFlightType": "GROUND_ATTACK",
+			"targetType": "TARGET_DRIFTER"
+		},
+		{
+			"association": "ATTACKER",
+			"role": "ROLE_BOMB",
+			"preferredFlightType": "BOMB",
+			"targetType": "TARGET_DRIFTER"
+		}
+	]
+}

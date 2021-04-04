@@ -1,0 +1,104 @@
+{
+	"skirmishes": [
+		{
+			"name": "Bodenplatte-Volkel",
+			"swCorner": {
+				"xPos": 230000,
+				"yPos": 0.0,
+				"zPos": 180000
+			},
+			"neCorner": {
+				"xPos": 234000,
+				"yPos": 0.0,
+				"zPos": 184000
+			},
+			"startDate": "19450101",
+			"stopDate": "19450101",
+			"iconicFlightTypes": [
+				"GROUND_ATTACK"
+			],
+			"profileType": "SKIRMISH_PROFILE_AIRFIELD",
+			"attacker": "AXIS"
+		},
+		{
+			"name": "Bodenplatte-Gravekent",
+			"swCorner": {
+				"xPos": 244000,
+				"yPos": 0.0,
+				"zPos": 180000
+			},
+			"neCorner": {
+				"xPos": 248000,
+				"yPos": 0.0,
+				"zPos": 184000
+			},
+			"startDate": "19450101",
+			"stopDate": "19450101",
+			"iconicFlightTypes": [
+				"GROUND_ATTACK"
+			],
+			"profileType": "SKIRMISH_PROFILE_AIRFIELD",
+			"attacker": "AXIS"
+		},
+		{
+			"name": "Bodenplatte-Petit-Brogel",
+			"swCorner": {
+				"xPos": 177000,
+				"yPos": 0.0,
+				"zPos": 163000
+			},
+			"neCorner": {
+				"xPos": 181000,
+				"yPos": 0.0,
+				"zPos": 167000
+			},
+			"startDate": "19450101",
+			"stopDate": "19450101",
+			"iconicFlightTypes": [
+				"GROUND_ATTACK"
+			],
+			"profileType": "SKIRMISH_PROFILE_AIRFIELD",
+			"attacker": "AXIS"
+		},
+		{
+			"name": "Bodenplatte-Ophoven",
+			"swCorner": {
+				"xPos": 162000,
+				"yPos": 0.0,
+				"zPos": 168000
+			},
+			"neCorner": {
+				"xPos": 166000,
+				"yPos": 0.0,
+				"zPos": 172000
+			},
+			"startDate": "19450101",
+			"stopDate": "19450101",
+			"iconicFlightTypes": [
+				"GROUND_ATTACK"
+			],
+			"profileType": "SKIRMISH_PROFILE_AIRFIELD",
+			"attacker": "AXIS"
+		},
+		{
+			"name": "Bodenplatte-Asch",
+			"swCorner": {
+				"xPos": 154000,
+				"yPos": 0.0,
+				"zPos": 169000
+			},
+			"neCorner": {
+				"xPos": 158000,
+				"yPos": 0.0,
+				"zPos": 173000
+			},
+			"startDate": "19450101",
+			"stopDate": "19450101",
+			"iconicFlightTypes": [
+				"GROUND_ATTACK"
+			],
+			"profileType": "SKIRMISH_PROFILE_AIRFIELD",
+			"attacker": "AXIS"
+		}
+	]
+}

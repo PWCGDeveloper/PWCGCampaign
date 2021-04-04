@@ -21,10 +21,6 @@ public class SkirmishProfileIOJsonTest
         PWCGContext.setProduct(PWCGProduct.BOS);
         PWCGContext.getInstance();
         Map<SkirmishProfileType, SkirmishProfile> skirmishProfiles = SkirmishProfileIOJson.readJson();
-        assert (skirmishProfiles.size() > 0);
-        for (SkirmishProfile skirmishProfile : skirmishProfiles.values())
-        {
-            assert (skirmishProfile.getSkirmishProfileElements().size() > 0);
-        }
+        assert (skirmishProfiles.size() == 6);
     }
 }

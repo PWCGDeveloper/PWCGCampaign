@@ -1,0 +1,41 @@
+{
+	"profileType": "SKIRMISH_PROFILE_ANTI_ARMOR",
+	"skirmishProfileElements": [
+		{
+			"association": "ATTACKER",
+			"role": "ROLE_ATTACK",
+			"preferredFlightType": "GROUND_ATTACK",
+			"targetType": "TARGET_ARMOR"
+		},
+		{
+			"association": "ATTACKER",
+			"role": "ROLE_DIVE_BOMB",
+			"preferredFlightType": "GROUND_ATTACK",
+			"targetType": "TARGET_ARMOR"
+		},
+		{
+			"association": "ATTACKER",
+			"role": "ROLE_BOMB",
+			"preferredFlightType": "BOMB",
+			"targetType": "TARGET_INFANTRY"
+		},
+		{
+			"association": "DEFENDER",
+			"role": "ROLE_ATTACK",
+			"preferredFlightType": "GROUND_ATTACK",
+			"targetType": "TARGET_ARMOR"
+		},
+		{
+			"association": "DEFENDER",
+			"role": "ROLE_DIVE_BOMB",
+			"preferredFlightType": "GROUND_ATTACK",
+			"targetType": "TARGET_ARMOR"
+		},
+		{
+			"association": "DEFENDER",
+			"role": "ROLE_BOMB",
+			"preferredFlightType": "BOMB",
+			"targetType": "TARGET_INFANTRY"
+		}
+	]
+}
