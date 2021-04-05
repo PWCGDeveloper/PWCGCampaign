@@ -24,7 +24,8 @@ public class SkirmishFlightTypeFactory implements IFlightTypeFactory
     public FlightTypes getFlightType(Squadron squadron, boolean isPlayerFlight) throws PWCGException
     {
         Role missionRole = squadron.getSquadronRoles().selectRoleForMission(campaign.getDate());
-
+        missionRole = skirmish.forceRoleConversion(missionRole, squadron.determineSide());
+        
         FlightTypes flightType = FlightTypes.ANY;
         if (skirmish.hasFlighTypeForRole(squadron, missionRole))
         {

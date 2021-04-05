@@ -17,6 +17,18 @@
 			"iconicFlightTypes": [
 				"GROUND_ATTACK"
 			],
+			"forcedRoleConversions": [
+				{
+					"side": "AXIS",
+					"fromRole": "ROLE_FIGHTER",
+					"toRole": "ROLE_ATTACK"					
+				},
+				{
+					"side": "ALLIED",
+					"fromRole": "ROLE_ATTACK",
+					"toRole": "ROLE_FIGHTER"					
+				}
+			],
 			"profileType": "SKIRMISH_PROFILE_AIRFIELD",
 			"attacker": "AXIS"
 		},
@@ -36,6 +48,19 @@
 			"stopDate": "19450101",
 			"iconicFlightTypes": [
 				"GROUND_ATTACK"
+			],
+			"forcedRoleConversions": [
+				{
+					"side": "AXIS",
+					"fromRole": "ROLE_FIGHTER",
+					"toRole": "ROLE_ATTACK"					
+				},
+				{
+					"side": "ALLIED",
+					"fromRole": "ROLE_ATTACK",
+					"toRole": "ROLE_FIGHTER"					
+				}
+				
 			],
 			"profileType": "SKIRMISH_PROFILE_AIRFIELD",
 			"attacker": "AXIS"
@@ -57,6 +82,19 @@
 			"iconicFlightTypes": [
 				"GROUND_ATTACK"
 			],
+			"forcedRoleConversions": [
+				{
+					"side": "AXIS",
+					"fromRole": "ROLE_FIGHTER",
+					"toRole": "ROLE_ATTACK"					
+				},
+				{
+					"side": "ALLIED",
+					"fromRole": "ROLE_ATTACK",
+					"toRole": "ROLE_FIGHTER"					
+				}
+				
+			],
 			"profileType": "SKIRMISH_PROFILE_AIRFIELD",
 			"attacker": "AXIS"
 		},
@@ -77,6 +115,18 @@
 			"iconicFlightTypes": [
 				"GROUND_ATTACK"
 			],
+			"forcedRoleConversions": [
+				{
+					"side": "AXIS",
+					"fromRole": "ROLE_FIGHTER",
+					"toRole": "ROLE_ATTACK"					
+				},
+				{
+					"side": "ALLIED",
+					"fromRole": "ROLE_ATTACK",
+					"toRole": "ROLE_FIGHTER"					
+				}
+			],
 			"profileType": "SKIRMISH_PROFILE_AIRFIELD",
 			"attacker": "AXIS"
 		},
@@ -96,6 +146,18 @@
 			"stopDate": "19450101",
 			"iconicFlightTypes": [
 				"GROUND_ATTACK"
+			],
+			"forcedRoleConversions": [
+				{
+					"side": "AXIS",
+					"fromRole": "ROLE_FIGHTER",
+					"toRole": "ROLE_ATTACK"					
+				},
+				{
+					"side": "ALLIED",
+					"fromRole": "ROLE_ATTACK",
+					"toRole": "ROLE_FIGHTER"					
+				}
 			],
 			"profileType": "SKIRMISH_PROFILE_AIRFIELD",
 			"attacker": "AXIS"

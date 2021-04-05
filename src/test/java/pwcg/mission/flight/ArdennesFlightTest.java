@@ -65,9 +65,11 @@ public class ArdennesFlightTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
 
+        boolean groundAttackFound = findFlightType(mission, FlightTypes.GROUND_ATTACK);
         boolean cargoDropFound = findFlightType(mission, FlightTypes.CARGO_DROP);
         assert (mission.getSkirmish() != null);
-        assert (cargoDropFound);        
+        assert (groundAttackFound);        
+        assert (cargoDropFound);
 
         verifyFlightTargets(mission);
     }
