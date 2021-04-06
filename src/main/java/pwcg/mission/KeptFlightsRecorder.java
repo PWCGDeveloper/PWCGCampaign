@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.api.Side;
+import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
 
@@ -71,5 +72,30 @@ public class KeptFlightsRecorder
         allKeptFlights.addAll(axisKeptFlights.getKeptFlights());
         
         return allKeptFlights;
+    }
+    
+    
+    public boolean needsMoreFlights(IFlight flight) throws PWCGException
+    {
+        KeptFlights keptFlightsForSide = getKeptFlightsForSide(flight);
+        int configuredNumFlights = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedFlightsToKeepKey);
+        if (flight.getSquadron().determineSide() == Side.AXIS)
+        {
+            configuredNumFlights = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedFlightsToKeepKey);
+        }
+        
+        if (keptFlightsForSide.getKeptFlights().size() < configuredNumFlights)
+        {
+            return true;
+        }
+        
+        return false;
+    }
+
+    
+    public boolean airfieldInUse(IFlight flight) throws PWCGException
+    {
+        KeptFlights keptFlightsForSide = getKeptFlightsForSide(flight);
+        return keptFlightsForSide.airfieldInUse(flight);
     }
 }

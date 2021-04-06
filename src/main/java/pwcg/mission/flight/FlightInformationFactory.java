@@ -50,6 +50,11 @@ public class FlightInformationFactory
         FlightPlaneBuilder.buildPlanes (aFlightInformation);
         aFlightInformation.calculateAltitude();
 
+        if (flightType == FlightTypes.SCRAMBLE)
+        {
+            aFlightInformation.setAiTriggeredTakeoff(true);
+        }
+        
         return aFlightInformation;
     }
 }

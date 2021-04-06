@@ -44,6 +44,7 @@ public class BodenplatteFlightTest
         for (IFlight flight : mission.getMissionFlightBuilder().getAiFlightsForSide(Side.ALLIED))
         {
             assert(flight.getFlightInformation().getFlightType() == FlightTypes.SCRAMBLE);
+            assert(!flight.getFlightInformation().isVirtual());
         }
         
         campaign.write();

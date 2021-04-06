@@ -30,8 +30,20 @@ public class NecessaryFlightKeeper
     {
         PWCGLogger.log(LogLevel.DEBUG, "*** Necessary Flight Keeper Started ***: ");
 
+        keepPlayerFlights(mission.getMissionFlightBuilder().getPlayerFlights());
         keepRequiredAlliedFlights();
         keepRequiredAxisFlights();
+    }
+
+    private void keepPlayerFlights(List<IFlight> flights) throws PWCGException
+    {
+        for (IFlight flight : flights)
+        {
+            if (flight.isPlayerFlight())
+            {
+                keptFlightsRecorder.keepFlight(flight);
+            }
+        }
     }
 
     private void keepRequiredAlliedFlights() throws PWCGException
@@ -74,14 +86,33 @@ public class NecessaryFlightKeeper
             return true;
         }
 
-        int numFlightsOfTypeKept = keptFlightsRecorder.getNumKeptFlightType(flight);
-        if (mission.getSkirmish() != null && mission.getSkirmish().needsMoreIconicFlightType(flight.getFlightInformation().getFlightType(), numFlightsOfTypeKept))
+        if (keepForSkirmish(flight) == true)
         {
             PWCGLogger.log(LogLevel.DEBUG, "necessary flight because iconic: " + flight.getSquadron().determineDisplayName(campaign.getDate()));
             return true;
         }
 
         PWCGLogger.log(LogLevel.DEBUG, "Not necessary flight: " + flight.getSquadron().determineDisplayName(campaign.getDate()));
+        return false;
+    }
+
+    private boolean keepForSkirmish(IFlight flight) throws PWCGException
+    {
+        int numFlightsOfTypeKept = keptFlightsRecorder.getNumKeptFlightType(flight);
+        if (mission.getSkirmish() != null)
+        {
+            if (mission.getSkirmish().needsMoreIconicFlightType(flight.getFlightInformation().getFlightType(), numFlightsOfTypeKept))
+            {
+                if (keptFlightsRecorder.needsMoreFlights(flight))
+                {
+                    if (!keptFlightsRecorder.airfieldInUse(flight))
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        
         return false;
     }
 }

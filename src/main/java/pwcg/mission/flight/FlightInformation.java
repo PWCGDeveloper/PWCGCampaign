@@ -192,6 +192,23 @@ public class FlightInformation
         return departureAirfield;
     }
 
+    public void calculateAltitude() throws PWCGException
+    {
+        IMissionAltitudeGenerator missionAltitudeGenerator = MissionAltitudeGeneratorFactory.createMissionAltitudeGenerator();
+        this.altitude = missionAltitudeGenerator.determineFlightAltitude(campaign, flightType, mission.getWeather());
+    }
+
+    public boolean isFighterMission()
+    {
+        boolean isFighterMission = false;
+        if (flightType.isCategory(FlightTypeCategory.FIGHTER))
+        {
+            isFighterMission = true;
+        }
+
+        return isFighterMission;
+    }
+
     public List<PlaneMcu> getPlanes()
     {
         return planes;
@@ -237,22 +254,6 @@ public class FlightInformation
         this.flightCruisingSpeed = cruisingSpeed;
     }
 
-    public void calculateAltitude() throws PWCGException
-    {
-        IMissionAltitudeGenerator missionAltitudeGenerator = MissionAltitudeGeneratorFactory.createMissionAltitudeGenerator();
-        this.altitude = missionAltitudeGenerator.determineFlightAltitude(campaign, flightType, mission.getWeather());
-    }
-
-    public boolean isFighterMission()
-    {
-        boolean isFighterMission = false;
-        if (flightType.isCategory(FlightTypeCategory.FIGHTER))
-        {
-            isFighterMission = true;
-        }
-
-        return isFighterMission;
-    }
 
     public ICountry getCountry()
     {
@@ -298,6 +299,9 @@ public class FlightInformation
     {
         return isAiTriggeredTakeoff;
     }
-    
-    
+
+    public void setAiTriggeredTakeoff(boolean isAiTriggeredTakeoff)
+    {
+        this.isAiTriggeredTakeoff = isAiTriggeredTakeoff;
+    }
 }

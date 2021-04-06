@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.KeptFlightsRecorder.KeptFlightCountType;
 import pwcg.mission.flight.FlightTypeCategory;
@@ -18,6 +19,7 @@ public class KeptFlights
     private Map<Integer, IFlight> otherFlightsKept = new HashMap<>();
     
     private List<FlightTypes> keptFlightTypes = new ArrayList<>();
+    private List<Airfield> keptFlightAirfields = new ArrayList<>();
 
     public void keepFlight(IFlight keptFlight) throws PWCGException
     {
@@ -35,7 +37,7 @@ public class KeptFlights
         }
         
         keptFlightTypes.add(keptFlight.getFlightType());
-        
+        keptFlightAirfields.add(keptFlight.getSquadron().determineCurrentAirfieldCurrentMap(keptFlight.getCampaign().getDate()));
         keptFlight.getMission().getMissionSquadronRecorder().registerSquadronInUse(keptFlight.getSquadron());
     }
     
@@ -86,5 +88,17 @@ public class KeptFlights
         
         return keptFlights;
     }
-
+    
+    public boolean airfieldInUse(IFlight flight)
+    {
+        for (Airfield keptFlightAirfield : keptFlightAirfields)
+        {
+            Airfield flightAirfield = flight.getSquadron().determineCurrentAirfieldCurrentMap(flight.getCampaign().getDate());
+            if (keptFlightAirfield.getName().equals(flightAirfield.getName()))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
