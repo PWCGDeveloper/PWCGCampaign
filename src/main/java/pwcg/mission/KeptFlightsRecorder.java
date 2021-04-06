@@ -48,10 +48,10 @@ public class KeptFlightsRecorder
         }
     }
 
-    public boolean hasKeptFlightType(IFlight keptFlight) throws PWCGException
+    public int getNumKeptFlightType(IFlight keptFlight) throws PWCGException
     {
         KeptFlights keptFlightsForSide = getKeptFlightsForSide(keptFlight);
-        return keptFlightsForSide.hasKeptFlightType(keptFlight.getFlightType());
+        return keptFlightsForSide.getNumKeptFlightType(keptFlight.getFlightType());
     }
 
     public int getFlightKeptCount(KeptFlightCountType keptFlightCountType, IFlight keptFlight) throws PWCGException

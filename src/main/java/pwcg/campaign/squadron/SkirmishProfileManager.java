@@ -3,9 +3,9 @@ package pwcg.campaign.squadron;
 import java.util.HashMap;
 import java.util.Map;
 
-import pwcg.campaign.SkirmishProfile;
-import pwcg.campaign.SkirmishProfileType;
 import pwcg.campaign.io.json.SkirmishProfileIOJson;
+import pwcg.campaign.skirmish.SkirmishProfile;
+import pwcg.campaign.skirmish.SkirmishProfileType;
 import pwcg.core.exception.PWCGException;
 
 public class SkirmishProfileManager 

@@ -74,26 +74,14 @@ public class NecessaryFlightKeeper
             return true;
         }
 
-        if (mission.getSkirmish() != null && mission.getSkirmish().isIconicFlightType(flight.getFlightInformation().getFlightType()))
+        int numFlightsOfTypeKept = keptFlightsRecorder.getNumKeptFlightType(flight);
+        if (mission.getSkirmish() != null && mission.getSkirmish().needsMoreIconicFlightType(flight.getFlightInformation().getFlightType(), numFlightsOfTypeKept))
         {
-            if (!hasIconicFlightType(flight))
-            {
-                PWCGLogger.log(LogLevel.DEBUG, "necessary flight because iconic: " + flight.getSquadron().determineDisplayName(campaign.getDate()));
-                return true;
-            }
-        }
-
-        PWCGLogger.log(LogLevel.DEBUG, "Not necessary flight: " + flight.getSquadron().determineDisplayName(campaign.getDate()));
-        return false;
-    }
-
-    private boolean hasIconicFlightType(IFlight flight) throws PWCGException
-    {
-        if (keptFlightsRecorder.hasKeptFlightType(flight))
-        {
+            PWCGLogger.log(LogLevel.DEBUG, "necessary flight because iconic: " + flight.getSquadron().determineDisplayName(campaign.getDate()));
             return true;
         }
 
+        PWCGLogger.log(LogLevel.DEBUG, "Not necessary flight: " + flight.getSquadron().determineDisplayName(campaign.getDate()));
         return false;
     }
 }

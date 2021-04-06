@@ -13,12 +13,12 @@ import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetDefinitionBuilderAirToAir;
 import pwcg.mission.target.TargetDefinitionBuilderOpposing;
 
-public class PlayerScramblePackage implements IFlightPackage
+public class ScramblePackage implements IFlightPackage
 {
     private FlightInformation flightInformation;
     private TargetDefinition targetDefinition;
 
-    public PlayerScramblePackage()
+    public ScramblePackage()
     {
     }
 
@@ -29,10 +29,17 @@ public class PlayerScramblePackage implements IFlightPackage
         this.targetDefinition = buildTargetDefintion();
         adjustAltitudeToMatchOpposingFlight();
 
-		PlayerScrambleFlight playerFlight = createPlayerFlight();
-        FlightSpotterBuilder.createSpotters(playerFlight, flightInformation);
-
-		return playerFlight;
+        if (flightBuildInformation.isPlayerFlight())
+        {
+            PlayerScrambleFlight playerFlight = createPlayerFlight();
+            FlightSpotterBuilder.createSpotters(playerFlight, flightInformation);
+            return playerFlight;
+        }
+        else
+        {
+            AiScrambleFlight aiFlight = createAiFlight();
+            return aiFlight;
+        }
 	}
 
     private TargetDefinition buildTargetDefintion() throws PWCGException
@@ -61,8 +68,14 @@ public class PlayerScramblePackage implements IFlightPackage
         playerFlight.createFlight();
         return playerFlight;
     }
-    
-    
+
+    private AiScrambleFlight createAiFlight() throws PWCGException
+    {
+        AiScrambleFlight aiFlight = new AiScrambleFlight (flightInformation, targetDefinition);
+        aiFlight.createFlight();
+        return aiFlight;
+    }
+
     private void adjustAltitudeToMatchOpposingFlight()
     { 
         if (targetDefinition.getPosition().getYPos() > ScrambleWaypointFactory.SCRAMBLE_MINIMUM_ALTITUDE)

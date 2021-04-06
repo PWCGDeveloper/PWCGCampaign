@@ -1,9 +1,10 @@
-package pwcg.campaign;
+package pwcg.campaign.skirmish;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;

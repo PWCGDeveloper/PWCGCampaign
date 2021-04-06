@@ -1,4 +1,4 @@
-package pwcg.campaign;
+package pwcg.campaign.skirmish;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,7 +24,7 @@ public class Skirmish
     private Date stopDate;
     private Side attacker;
     private SkirmishProfileType profileType;
-    private List<FlightTypes> iconicFlightTypes = new ArrayList<>();
+    private List<SkirmishIconicFlights> iconicFlightTypes = new ArrayList<>();
     private List<SkirmishForceRoleConversion> forcedRoleConversions = new ArrayList<>();
 
 	public Skirmish()
@@ -58,13 +58,16 @@ public class Skirmish
         return skirmishBox.getCenter();
     }
 
-    public boolean isIconicFlightType (FlightTypes flightTypes) throws PWCGException
+    public boolean needsMoreIconicFlightType (FlightTypes flightType, int currentCount) throws PWCGException
     {
-        for (FlightTypes iconicFlightType : iconicFlightTypes)
+        for (SkirmishIconicFlights iconicFlightType : iconicFlightTypes)
         {
-            if (iconicFlightType == flightTypes)
+            if (iconicFlightType.getFlightType() == flightType)
             {
-                return true;
+                if (currentCount < iconicFlightType.getMaxForcedFlightTypes())
+                {
+                    return true;
+                }
             }
         }
         

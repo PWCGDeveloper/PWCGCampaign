@@ -4,9 +4,9 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-import pwcg.campaign.SkirmishProfile;
-import pwcg.campaign.SkirmishProfileType;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.skirmish.SkirmishProfile;
+import pwcg.campaign.skirmish.SkirmishProfileType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
 

@@ -1,9 +1,9 @@
 package pwcg.mission;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.Skirmish;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.PWCGFlightTypeAbstractFactory;
+import pwcg.campaign.skirmish.Skirmish;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;

@@ -15,7 +15,10 @@
 			"startDate": "19441220",
 			"stopDate": "19441224",
 			"iconicFlightTypes": [
-				"GROUND_ATTACK"
+				{
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 1
+				}
 			],
 			"profileType": "SKIRMISH_PROFILE_ANTI_ARMOR",
 			"attacker": "AXIS"
@@ -35,8 +38,14 @@
 			"startDate": "19441225",
 			"stopDate": "19441228",
 			"iconicFlightTypes": [
-				"CARGO_DROP",
-				"GROUND_ATTACK"
+				{
+					"flightType": "CARGO_DROP",
+					"maxForcedFlightTypes": 1
+				},
+				{
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 1
+				}
 			],
 			"profileType": "SKIRMISH_PROFILE_CARGO_DROP",
 			"attacker": "ALLIED"
@@ -56,7 +65,10 @@
 			"startDate": "19441229",
 			"stopDate": "19441230",
 			"iconicFlightTypes": [
-				"GROUND_ATTACK"
+				{
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 1
+				}
 			],
 			"profileType": "SKIRMISH_PROFILE_ANTI_ARMOR",
 			"attacker": "ALLIED"

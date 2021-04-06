@@ -6,10 +6,10 @@ import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.Skirmish;
-import pwcg.campaign.SkirmishBuilder;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.skirmish.Skirmish;
+import pwcg.campaign.skirmish.SkirmishBuilder;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;

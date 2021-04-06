@@ -1,4 +1,4 @@
-package pwcg.campaign;
+package pwcg.campaign.skirmish;
 
 import pwcg.campaign.plane.Role;
 import pwcg.mission.flight.FlightTypes;

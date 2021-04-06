@@ -4,10 +4,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import pwcg.campaign.Skirmishes;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.skirmish.Skirmishes;
 import pwcg.core.exception.PWCGException;
 
 @RunWith(MockitoJUnitRunner.class)

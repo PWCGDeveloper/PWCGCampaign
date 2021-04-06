@@ -7,11 +7,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.Skirmish;
-import pwcg.campaign.SkirmishManager;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.skirmish.Skirmish;
+import pwcg.campaign.skirmish.SkirmishManager;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;

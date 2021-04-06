@@ -4,10 +4,10 @@ import java.util.Collections;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.Skirmish;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.skirmish.Skirmish;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 

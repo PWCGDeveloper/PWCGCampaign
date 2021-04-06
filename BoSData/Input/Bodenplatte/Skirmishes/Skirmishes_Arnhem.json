@@ -15,7 +15,10 @@
 			"startDate": "19440917",
 			"stopDate": "19440918",
 			"iconicFlightTypes": [
-				"PARATROOP_DROP"
+				{
+					"flightType": "PARATROOP_DROP",
+					"maxForcedFlightTypes": 1
+				}
 			],
 			"profileType": "SKIRMISH_PROFILE_PARA_DROP",
 			"attacker": "ALLIED"
@@ -35,7 +38,10 @@
 			"startDate": "19440917",
 			"stopDate": "19440918",
 			"iconicFlightTypes": [
-				"PARATROOP_DROP"
+				{
+					"flightType": "PARATROOP_DROP",
+					"maxForcedFlightTypes": 1
+				}
 			],
 			"profileType": "SKIRMISH_PROFILE_PARA_DROP",
 			"attacker": "ALLIED"
@@ -55,7 +61,10 @@
 			"startDate": "19440917",
 			"stopDate": "19440919",
 			"iconicFlightTypes": [
-				"PARATROOP_DROP"
+				{
+					"flightType": "PARATROOP_DROP",
+					"maxForcedFlightTypes": 1
+				}
 			],
 			"profileType": "SKIRMISH_PROFILE_PARA_DROP",
 			"attacker": "ALLIED"
@@ -76,7 +85,10 @@
 			"stopDate": "19440924",
 			"aggressor": "ALLIED",
 			"iconicFlightTypes": [
-				"CARGO_DROP"
+				{
+					"flightType": "CARGO_DROP",
+					"maxForcedFlightTypes": 1
+				}
 			],
 			"profileType": "SKIRMISH_PROFILE_CARGO_DROP",
 			"attacker": "ALLIED"
@@ -97,7 +109,10 @@
 			"stopDate": "19440927",
 			"aggressor": "ALLIED",
 			"iconicFlightTypes": [
-				"CARGO_DROP"
+				{
+					"flightType": "CARGO_DROP",
+					"maxForcedFlightTypes": 1
+				}
 			],
 			"profileType": "SKIRMISH_PROFILE_CARGO_DROP",
 			"attacker": "ALLIED"
@@ -118,7 +133,10 @@
 			"stopDate": "19440929",
 			"aggressor": "ALLIED",
 			"iconicFlightTypes": [
-				"CARGO_DROP"
+				{
+					"flightType": "CARGO_DROP",
+					"maxForcedFlightTypes": 1
+				}
 			],
 			"profileType": "SKIRMISH_PROFILE_CARGO_DROP",
 			"attacker": "ALLIED"

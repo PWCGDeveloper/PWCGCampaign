@@ -1,4 +1,4 @@
-package pwcg.campaign;
+package pwcg.campaign.skirmish;
 
 import java.util.ArrayList;
 import java.util.List;

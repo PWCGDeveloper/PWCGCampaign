@@ -1,4 +1,4 @@
-package pwcg.campaign;
+package pwcg.campaign.skirmish;
 
 public enum SkirmishProfileType
 {

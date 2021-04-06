@@ -7,12 +7,12 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import pwcg.campaign.BattleManager;
-import pwcg.campaign.SkirmishManager;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.shipping.ShippingLaneManager;
+import pwcg.campaign.skirmish.SkirmishManager;
 import pwcg.campaign.target.preference.TargetPreferenceManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;

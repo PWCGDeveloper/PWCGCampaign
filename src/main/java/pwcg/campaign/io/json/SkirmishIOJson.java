@@ -2,8 +2,8 @@ package pwcg.campaign.io.json;
 
 import java.io.File;
 
-import pwcg.campaign.Skirmishes;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.skirmish.Skirmishes;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
 

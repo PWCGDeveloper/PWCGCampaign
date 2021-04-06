@@ -7,6 +7,8 @@ import org.junit.Test;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.skirmish.Skirmish;
+import pwcg.campaign.skirmish.SkirmishBuilder;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;

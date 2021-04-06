@@ -1,7 +1,7 @@
 package pwcg.mission;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.Skirmish;
+import pwcg.campaign.skirmish.Skirmish;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;

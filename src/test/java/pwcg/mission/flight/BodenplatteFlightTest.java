@@ -7,7 +7,6 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.plane.Role;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
@@ -38,48 +37,17 @@ public class BodenplatteFlightTest
 
         for (IFlight flight : mission.getMissionFlightBuilder().getAiFlightsForSide(Side.AXIS))
         {
-            if (flight.getSquadron().determineSquadronPrimaryRole(campaign.getDate()) == Role.ROLE_FIGHTER)
-            {
-                assert(flight.getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK);
-                assert(flight.getTargetDefinition().getTargetType() == TargetType.TARGET_AIRFIELD);
-            }
-            else if (flight.getSquadron().determineSquadronPrimaryRole(campaign.getDate()) == Role.ROLE_ATTACK)
-            {
-                assert(flight.getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK);
-                assert(flight.getTargetDefinition().getTargetType() == TargetType.TARGET_AIRFIELD);
-            }
-            else if (flight.getSquadron().determineSquadronPrimaryRole(campaign.getDate()) == Role.ROLE_BOMB)
-            {
-                assert(flight.getFlightInformation().getFlightType() == FlightTypes.BOMB);
-                assert(flight.getTargetDefinition().getTargetType() == TargetType.TARGET_AIRFIELD);
-            }
-            else
-            {
-                assert(flight.getSquadron().determineSquadronPrimaryRole(campaign.getDate()) == Role.ROLE_TRANSPORT);
-            }
+            assert(flight.getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK);
+            assert(flight.getTargetDefinition().getTargetType() == TargetType.TARGET_AIRFIELD);
         }
 
         for (IFlight flight : mission.getMissionFlightBuilder().getAiFlightsForSide(Side.ALLIED))
         {
-            if (flight.getSquadron().determineSquadronPrimaryRole(campaign.getDate()) == Role.ROLE_FIGHTER)
-            {
-                assert(flight.getFlightInformation().getFlightType() == FlightTypes.SCRAMBLE);
-                assert(flight.getTargetDefinition().getTargetType() == TargetType.TARGET_AIRFIELD);
-            }
-            else if (flight.getSquadron().determineSquadronPrimaryRole(campaign.getDate()) == Role.ROLE_ATTACK)
-            {
-                assert(flight.getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK);
-                assert(flight.getTargetDefinition().getTargetType() == TargetType.TARGET_AIRFIELD);
-            }
-            else if (flight.getSquadron().determineSquadronPrimaryRole(campaign.getDate()) == Role.ROLE_BOMB)
-            {
-                assert(flight.getFlightInformation().getFlightType() == FlightTypes.BOMB);
-                assert(flight.getTargetDefinition().getTargetType() == TargetType.TARGET_AIRFIELD);
-            }
-            else
-            {
-                assert(flight.getSquadron().determineSquadronPrimaryRole(campaign.getDate()) == Role.ROLE_TRANSPORT);
-            }
+            assert(flight.getFlightInformation().getFlightType() == FlightTypes.SCRAMBLE);
         }
+        
+        campaign.write();
+        mission.finalizeMission();
+        mission.write();
     }
 }

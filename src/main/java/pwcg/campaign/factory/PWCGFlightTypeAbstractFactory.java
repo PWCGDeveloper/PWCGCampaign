@@ -1,9 +1,9 @@
 package pwcg.campaign.factory;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.Skirmish;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.skirmish.Skirmish;
 import pwcg.mission.flight.factory.BoSFlightTypeCoopFactory;
 import pwcg.mission.flight.factory.BoSFlightTypeFactory;
 import pwcg.mission.flight.factory.SkirmishFlightTypeFactory;

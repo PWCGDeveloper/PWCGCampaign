@@ -15,7 +15,14 @@
 			"startDate": "19450101",
 			"stopDate": "19450101",
 			"iconicFlightTypes": [
-				"GROUND_ATTACK"
+				{
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 100
+				},
+				{
+					"flightType": "SCRAMBLE",
+					"maxForcedFlightTypes": 100
+				}
 			],
 			"forcedRoleConversions": [
 				{
@@ -47,7 +54,14 @@
 			"startDate": "19450101",
 			"stopDate": "19450101",
 			"iconicFlightTypes": [
-				"GROUND_ATTACK"
+				{
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 100
+				},
+				{
+					"flightType": "SCRAMBLE",
+					"maxForcedFlightTypes": 100
+				}
 			],
 			"forcedRoleConversions": [
 				{
@@ -80,7 +94,14 @@
 			"startDate": "19450101",
 			"stopDate": "19450101",
 			"iconicFlightTypes": [
-				"GROUND_ATTACK"
+				{
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 100
+				},
+				{
+					"flightType": "SCRAMBLE",
+					"maxForcedFlightTypes": 100
+				}
 			],
 			"forcedRoleConversions": [
 				{
@@ -113,7 +134,14 @@
 			"startDate": "19450101",
 			"stopDate": "19450101",
 			"iconicFlightTypes": [
-				"GROUND_ATTACK"
+				{
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 100
+				},
+				{
+					"flightType": "SCRAMBLE",
+					"maxForcedFlightTypes": 100
+				}
 			],
 			"forcedRoleConversions": [
 				{
@@ -145,7 +173,14 @@
 			"startDate": "19450101",
 			"stopDate": "19450101",
 			"iconicFlightTypes": [
-				"GROUND_ATTACK"
+				{
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 100
+				},
+				{
+					"flightType": "SCRAMBLE",
+					"maxForcedFlightTypes": 100
+				}
 			],
 			"forcedRoleConversions": [
 				{

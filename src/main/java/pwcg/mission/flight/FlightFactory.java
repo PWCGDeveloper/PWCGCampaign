@@ -23,7 +23,7 @@ import pwcg.mission.flight.paradrop.ParaDropPackage;
 import pwcg.mission.flight.patrol.LowAltPatrolPackage;
 import pwcg.mission.flight.patrol.PatrolPackage;
 import pwcg.mission.flight.recon.ReconPackage;
-import pwcg.mission.flight.scramble.PlayerScramblePackage;
+import pwcg.mission.flight.scramble.ScramblePackage;
 import pwcg.mission.flight.spy.SpyExtractPackage;
 import pwcg.mission.flight.strategicintercept.StrategicInterceptPackage;
 import pwcg.mission.flight.transport.TransportPackage;
@@ -133,7 +133,7 @@ public class FlightFactory
         }
         else if (flightType == FlightTypes.SCRAMBLE)
         {
-            flightPackage = new PlayerScramblePackage();
+            flightPackage = new ScramblePackage();
         }
         else if (flightType == FlightTypes.STRATEGIC_INTERCEPT)
         {

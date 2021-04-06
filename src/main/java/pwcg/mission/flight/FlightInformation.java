@@ -35,6 +35,7 @@ public class FlightInformation
     private boolean isEscortForPlayerFlight = false;
     private boolean isScrambleOpposeFlight = false;
     private boolean isOpposingFlight = false;
+    private boolean isAiTriggeredTakeoff = false;
     private int altitude = 0;
     private int flightCruisingSpeed = 0;
     private int formationType = McuFormation.FORMATION_V;
@@ -145,7 +146,7 @@ public class FlightInformation
     public boolean isVirtual()
     {
         boolean isVirtual = true;
-        if (isPlayerFlight || isEscortedByPlayerFlight || isEscortForPlayerFlight || isScrambleOpposeFlight)
+        if (isPlayerFlight || isEscortedByPlayerFlight || isEscortForPlayerFlight || isScrambleOpposeFlight || isAiTriggeredTakeoff)
         {
             isVirtual = false;
         }
@@ -162,6 +163,10 @@ public class FlightInformation
             {
                 airstart = false;
             }
+        }
+        if (isAiTriggeredTakeoff)
+        {
+            airstart = false;
         }
         return airstart;
     }
@@ -288,4 +293,11 @@ public class FlightInformation
     {
         this.targetDefinition = targetDefinition;
     }
+
+    public boolean isAiTriggeredTakeoff()
+    {
+        return isAiTriggeredTakeoff;
+    }
+    
+    
 }

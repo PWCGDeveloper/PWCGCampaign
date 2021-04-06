@@ -119,14 +119,11 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
     private void createTakeoff() throws PWCGException
     {
         takeoffMcu = null;
-        if (flight.isPlayerFlight())
+        if (!flight.getFlightInformation().isAirStart())
         {
-            if (!flight.getFlightInformation().isAirStart())
-            {
-                takeoffMcu = new McuTakeoff();
-                takeoffMcu.setPosition(flight.getFlightInformation().getDepartureAirfield().getTakeoffLocation(flight.getMission()).getPosition().copy());
-                takeoffMcu.setOrientation(flight.getFlightInformation().getDepartureAirfield().getTakeoffLocation(flight.getMission()).getOrientation().copy());
-            }
+            takeoffMcu = new McuTakeoff();
+            takeoffMcu.setPosition(flight.getFlightInformation().getDepartureAirfield().getTakeoffLocation(flight.getMission()).getPosition().copy());
+            takeoffMcu.setOrientation(flight.getFlightInformation().getDepartureAirfield().getTakeoffLocation(flight.getMission()).getOrientation().copy());
         }
     }
     

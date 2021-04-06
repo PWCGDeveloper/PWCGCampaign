@@ -39,16 +39,17 @@ public class KeptFlights
         keptFlight.getMission().getMissionSquadronRecorder().registerSquadronInUse(keptFlight.getSquadron());
     }
     
-    public boolean hasKeptFlightType(FlightTypes flightType)
+    public int getNumKeptFlightType(FlightTypes flightType)
     {
+        int numKeptFlightsOfType = 0;
         for (FlightTypes keptFlightType : keptFlightTypes)
         {
             if (keptFlightType == flightType)
             {
-                return true;
+                ++numKeptFlightsOfType;
             }
         }
-        return false;
+        return numKeptFlightsOfType;
     }
 
     public int getFlightKeptCount(KeptFlightCountType keptFlightCountType) throws PWCGException

@@ -17,6 +17,12 @@ public class MissionPointSetFactory
             flightActivate.createFlightActivate();
             return flightActivate;
         }
+        else if (flight.getFlightInformation().isAiTriggeredTakeoff())
+        {
+            MissionPointFlightActivateTriggered flightActivate = new MissionPointFlightActivateTriggered(flight);
+            flightActivate.createFlightActivate();
+            return flightActivate;
+        }
         else
         {
             MissionPointFlightActivateReal flightActivate = new MissionPointFlightActivateReal(flight);

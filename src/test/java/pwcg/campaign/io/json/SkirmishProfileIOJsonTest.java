@@ -6,10 +6,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import pwcg.campaign.SkirmishProfile;
-import pwcg.campaign.SkirmishProfileType;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.skirmish.SkirmishProfile;
+import pwcg.campaign.skirmish.SkirmishProfileType;
 import pwcg.core.exception.PWCGException;
 
 @RunWith(MockitoJUnitRunner.class)
