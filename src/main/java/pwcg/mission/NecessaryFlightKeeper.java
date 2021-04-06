@@ -31,6 +31,7 @@ public class NecessaryFlightKeeper
         PWCGLogger.log(LogLevel.DEBUG, "*** Necessary Flight Keeper Started ***: ");
 
         keepPlayerFlights(mission.getMissionFlightBuilder().getPlayerFlights());
+        keepOpposingPlayerFlights(mission.getMissionFlightBuilder().getAiFlights());
         keepRequiredAlliedFlights();
         keepRequiredAxisFlights();
     }
@@ -40,6 +41,17 @@ public class NecessaryFlightKeeper
         for (IFlight flight : flights)
         {
             if (flight.isPlayerFlight())
+            {
+                keptFlightsRecorder.keepFlight(flight);
+            }
+        }
+    }
+
+    private void keepOpposingPlayerFlights(List<IFlight> flights) throws PWCGException
+    {
+        for (IFlight flight : flights)
+        {
+            if (flight.getFlightInformation().isOpposingFlight())
             {
                 keptFlightsRecorder.keepFlight(flight);
             }

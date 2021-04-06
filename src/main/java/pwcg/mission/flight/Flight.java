@@ -23,7 +23,7 @@ public abstract class Flight implements IFlight
 {
     private FlightInformation flightInformation;
     private FlightPlanes flightPlanes;
-    private ILinkedFlights linkedFlights = new LinkedFlights();
+    private LinkedFlights linkedFlights = new LinkedFlights();
     private FlightPlayerContact flightPlayerContact = new FlightPlayerContact();
     private IWaypointPackage waypointPackage;
     private VirtualWaypointPackage virtualWaypointPackage;
@@ -77,21 +77,6 @@ public abstract class Flight implements IFlight
             PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
-
-        
-        writeLinkedFlights(writer);
-    }
-
-    private void writeLinkedFlights(BufferedWriter writer) throws PWCGException
-    {
-        for (IFlight flight : linkedFlights.getLinkedFlights())
-        {
-            flight.write(writer);
-            for (IFlight linkedFlight : flight.getLinkedFlights().getLinkedFlights())
-            {
-                linkedFlight.write(writer);
-            }
-        }
     }
 
     public FlightInformation getFlightInformation()
@@ -109,7 +94,7 @@ public abstract class Flight implements IFlight
         return waypointPackage;
     }
 
-    public ILinkedFlights getLinkedFlights()
+    public LinkedFlights getLinkedFlights()
     {
         return linkedFlights;
     }

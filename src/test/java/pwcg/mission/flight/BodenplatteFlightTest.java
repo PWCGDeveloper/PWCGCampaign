@@ -1,5 +1,8 @@
 package pwcg.mission.flight;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -7,6 +10,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
@@ -29,7 +33,7 @@ public class BodenplatteFlightTest
 
     @Test
     public void hasSkirmishAndAirfieldAttackTest() throws PWCGException
-    {
+    {        
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_26_PROFILE_WEST);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19450101"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
@@ -46,9 +50,17 @@ public class BodenplatteFlightTest
             assert(flight.getFlightInformation().getFlightType() == FlightTypes.SCRAMBLE);
             assert(!flight.getFlightInformation().isVirtual());
         }
-        
+
         campaign.write();
         mission.finalizeMission();
+        
+        Map<Integer, Squadron> includedSquadrons = new HashMap<>();
+        for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
+        {
+            assert(!includedSquadrons.containsKey(flight.getSquadron().getSquadronId()));
+            includedSquadrons.put(flight.getSquadron().getSquadronId(), flight.getSquadron());
+        }
+
         mission.write();
     }
 }

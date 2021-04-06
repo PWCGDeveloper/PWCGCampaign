@@ -27,10 +27,10 @@ public class ScramblePackage implements IFlightPackage
     {
         this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.SCRAMBLE);        
         this.targetDefinition = buildTargetDefintion();
-        adjustAltitudeToMatchOpposingFlight();
 
         if (flightBuildInformation.isPlayerFlight())
         {
+            adjustAltitudeToMatchOpposingFlight();
             PlayerScrambleFlight playerFlight = createPlayerFlight();
             FlightSpotterBuilder.createSpotters(playerFlight, flightInformation);
             return playerFlight;

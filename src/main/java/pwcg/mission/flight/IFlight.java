@@ -29,7 +29,7 @@ public interface IFlight
 
     IWaypointPackage getWaypointPackage();
 
-    ILinkedFlights getLinkedFlights();
+    LinkedFlights getLinkedFlights();
 
     Coordinate getFlightHomePosition() throws PWCGException;
 

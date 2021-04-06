@@ -7,11 +7,10 @@ import pwcg.mission.flight.escort.EscortForPlayerFlight;
 import pwcg.mission.flight.escort.EscortedByPlayerFlight;
 import pwcg.mission.flight.waypoint.IWaypointPackage;
 
-public class LinkedFlights implements ILinkedFlights
+public class LinkedFlights
 {
     private List<IFlight> linkedFlights = new ArrayList<>();
 
-    @Override
     public IWaypointPackage getLinkedWaypoints()
     {
         for (IFlight linkedFlight : linkedFlights)
@@ -25,19 +24,16 @@ public class LinkedFlights implements ILinkedFlights
         return null;
     }
     
-    @Override
     public void addLinkedFlight(IFlight linkedFlight)
     {
         linkedFlights.add(linkedFlight);
     }
     
-    @Override
     public List<IFlight> getLinkedFlights()
     {
         return linkedFlights;
     }
 
-    @Override
     public EscortForPlayerFlight getEscortForPlayer()
     {
         EscortForPlayerFlight escortForPlayerFlight = null;
@@ -51,7 +47,6 @@ public class LinkedFlights implements ILinkedFlights
         return escortForPlayerFlight;
     }
 
-    @Override
     public EscortedByPlayerFlight getEscortedByPlayer()
     {
         EscortedByPlayerFlight escortedByPlayerFlight = null;
