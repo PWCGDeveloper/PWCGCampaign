@@ -4,6 +4,8 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.api.IProductSpecificConfiguration;
+import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 import pwcg.mission.MissionBeginUnit;
@@ -24,10 +26,12 @@ public class MissionPointFlightActivateTriggered implements IMissionPointSet
 
     private MissionBeginUnit missionBeginUnit;
     private McuTimer activationTimer = null;
+    private McuTimer takeoffStartTimer = null;
     private McuCheckZone takeoffCheckZone = null;
     private McuActivate activationEntity = null;
     private boolean linkToNextTarget = true;
     private MissionPointSetType missionPointSetType;
+    private int delaySeconds = 1;
 
     public MissionPointFlightActivateTriggered(IFlight flight)
     {
@@ -35,6 +39,13 @@ public class MissionPointFlightActivateTriggered implements IMissionPointSet
         this.missionPointSetType = MissionPointSetType.MISSION_POINT_SET_ACTIVATE;
     }
     
+    public MissionPointFlightActivateTriggered(IFlight flight, int delaySeconds)
+    {
+        this.flight = flight;
+        this.delaySeconds = delaySeconds;
+        this.missionPointSetType = MissionPointSetType.MISSION_POINT_SET_ACTIVATE;
+    }
+
     public void createFlightActivate() throws PWCGException, PWCGException 
     {
         createFlightMissionBegin();
@@ -45,7 +56,7 @@ public class MissionPointFlightActivateTriggered implements IMissionPointSet
     @Override
     public void setLinkToNextTarget(int nextTargetIndex) throws PWCGException
     {
-        activationTimer.setTarget(nextTargetIndex);
+        takeoffStartTimer.setTarget(nextTargetIndex);
     }
 
     @Override
@@ -82,9 +93,10 @@ public class MissionPointFlightActivateTriggered implements IMissionPointSet
     public void write(BufferedWriter writer) throws PWCGException 
     {
         missionBeginUnit.write(writer);
-        activationTimer.write(writer);
         takeoffCheckZone.write(writer);
+        activationTimer.write(writer);
         activationEntity.write(writer);
+        takeoffStartTimer.write(writer);
     }
     
     private void createFlightMissionBegin() throws PWCGException
@@ -99,8 +111,11 @@ public class MissionPointFlightActivateTriggered implements IMissionPointSet
    
         Coalition enemyCoalition = CoalitionFactory.getEnemyCoalition(flight.getSquadron().getCountry());
 
+        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        int triggerRadius = productSpecificConfiguration.getSmallMissionRadius();
+        
         takeoffCheckZone = new McuCheckZone("Check Zone Takeoff");
-        takeoffCheckZone.setZone(10000);
+        takeoffCheckZone.setZone(triggerRadius);
         takeoffCheckZone.triggerCheckZoneByCoalition(enemyCoalition);
         takeoffCheckZone.setDesc("Check Zone Takeoff");
         takeoffCheckZone.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());
@@ -115,6 +130,12 @@ public class MissionPointFlightActivateTriggered implements IMissionPointSet
         activationTimer.setDesc("Activation Timer");
         activationTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());        
         activationTimer.setTime(1);
+
+        takeoffStartTimer = new McuTimer();
+        takeoffStartTimer.setName("Takeoff Start Timer");
+        takeoffStartTimer.setDesc("Takeoff Start  Timer");
+        takeoffStartTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());        
+        takeoffStartTimer.setTime(delaySeconds);
     }
 
     private void createTargetAssociations()
@@ -122,6 +143,8 @@ public class MissionPointFlightActivateTriggered implements IMissionPointSet
         missionBeginUnit.linkToMissionBegin(takeoffCheckZone.getIndex());
         takeoffCheckZone.setTarget(activationTimer.getIndex());
         activationTimer.setTarget(activationEntity.getIndex());
+        activationTimer.setTarget(takeoffStartTimer.getIndex());
+        takeoffStartTimer.setTarget(takeoffStartTimer.getIndex());
     }
 
     private void createObjectAssociations(PlaneMcu plane)

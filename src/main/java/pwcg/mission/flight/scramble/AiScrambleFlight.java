@@ -1,6 +1,7 @@
 package pwcg.mission.flight.scramble;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightPayloadBuilder;
@@ -33,7 +34,9 @@ public class AiScrambleFlight extends Flight implements IFlight
     {
         McuWaypoint ingressWaypoint = IngressWaypointFactory.createIngressWaypoint(IngressWaypointPattern.INGRESS_NEAR_FIELD, this);
 
-        IMissionPointSet flightActivate = MissionPointSetFactory.createFlightActivate(this);
+        int takeoffDelaySeconds = calculateTakeoffDelay();
+        
+        IMissionPointSet flightActivate = MissionPointSetFactory.createScrambleFlightActivateWithDelay(this, takeoffDelaySeconds);
         this.getWaypointPackage().addMissionPointSet(flightActivate);
 
         IMissionPointSet flightBegin = MissionPointSetFactory.createFlightBegin(this, flightActivate, AirStartPattern.AIR_START_FROM_AIRFIELD, ingressWaypoint);
@@ -45,6 +48,12 @@ public class AiScrambleFlight extends Flight implements IFlight
         
         IMissionPointSet flightEnd = MissionPointSetFactory.createFlightEndAtHomeField(this);
         this.getWaypointPackage().addMissionPointSet(flightEnd);        
+    }
+
+    private int calculateTakeoffDelay()
+    {
+        int randomDelay = 60 + RandomNumberGenerator.getRandom(180);
+        return randomDelay;
     }
 
     private void setFlightPayload() throws PWCGException

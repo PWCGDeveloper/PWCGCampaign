@@ -31,6 +31,13 @@ public class MissionPointSetFactory
         }
     }
 
+    public static IMissionPointSet createScrambleFlightActivateWithDelay(IFlight flight, int delaySeconds) throws PWCGException, PWCGException 
+    {
+        MissionPointFlightActivateTriggered flightActivate = new MissionPointFlightActivateTriggered(flight,delaySeconds);
+        flightActivate.createFlightActivate();
+        return flightActivate;
+    }
+
     public static IMissionPointSet createFlightBegin(IFlight flight, IMissionPointSet flightActivate, AirStartPattern airStartPattern, McuWaypoint waypointToLinkAirSTart) throws PWCGException, PWCGException 
     {
         FlightInformation flightInformation = flight.getFlightInformation();
