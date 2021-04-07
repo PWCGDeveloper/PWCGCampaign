@@ -21,7 +21,6 @@ public class FlightPlanes implements IFlightPlanes
         this.planes = flight.getFlightInformation().getPlanes();
     }
     
-    @Override
     public void enableNonVirtualFlight()
     {
         if (!flight.getFlightInformation().isVirtual())

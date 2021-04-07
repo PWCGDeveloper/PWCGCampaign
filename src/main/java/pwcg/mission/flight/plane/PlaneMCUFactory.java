@@ -18,9 +18,7 @@ import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.crew.FlightCrewBuilder;
 
 public class PlaneMCUFactory
-{
-    public static final int NUM_IN_FORMATION_START = 1;
-    
+{    
     private FlightInformation flightInformation;
 	
     public PlaneMCUFactory(FlightInformation flightInformation)
@@ -92,7 +90,7 @@ public class PlaneMCUFactory
 
 	private void initializePlaneParameters(List<PlaneMcu> planesForFlight) throws PWCGException
 	{
-		int numInFormation = NUM_IN_FORMATION_START;
+		int numInFormation = 1;
         for (PlaneMcu plane : planesForFlight)
         {
             setPlaceInFormation(numInFormation, plane);
@@ -105,14 +103,7 @@ public class PlaneMCUFactory
 
 	private void setPlaceInFormation(int numInFormation, PlaneMcu aiPlane)
 	{
-		if (flightInformation.isVirtual())
-		{
-		    aiPlane.setNumberInFormation(NUM_IN_FORMATION_START);
-		}
-		else
-		{
-		    aiPlane.setNumberInFormation(numInFormation);
-		}
+        aiPlane.setNumberInFormation(numInFormation);
 	}
 
 	private void setPlaneDescription(PlaneMcu plane) throws PWCGException

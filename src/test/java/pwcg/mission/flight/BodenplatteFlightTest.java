@@ -10,6 +10,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -45,13 +46,17 @@ public class BodenplatteFlightTest
             assert(flight.getTargetDefinition().getTargetType() == TargetType.TARGET_AIRFIELD);
         }
 
+        boolean scrambleFound = false;
         for (IFlight flight : mission.getMissionFlightBuilder().getAiFlightsForSide(Side.ALLIED))
         {
-            assert(flight.getFlightInformation().getFlightType() == FlightTypes.SCRAMBLE);
-            assert(!flight.getFlightInformation().isVirtual());
+            if (flight.getFlightInformation().getFlightType() == FlightTypes.SCRAMBLE)
+            {
+                assert(!flight.getFlightInformation().isVirtual());
+                scrambleFound = true;
+            }
         }
+        assert(scrambleFound);
 
-        campaign.write();
         mission.finalizeMission();
         
         Map<Integer, Squadron> includedSquadrons = new HashMap<>();
@@ -60,7 +65,16 @@ public class BodenplatteFlightTest
             assert(!includedSquadrons.containsKey(flight.getSquadron().getSquadronId()));
             includedSquadrons.put(flight.getSquadron().getSquadronId(), flight.getSquadron());
         }
-
+        
+        Map<String, Airfield> includedAirfields = new HashMap<>();
+        for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
+        {
+            Airfield airfield = flight.getSquadron().determineCurrentAirfieldAnyMap(campaign.getDate());
+            assert(!includedAirfields.containsKey(airfield.getName()));
+            includedAirfields.put(airfield.getName(), airfield);
+        }
+        
+        campaign.write();
         mission.write();
     }
 }

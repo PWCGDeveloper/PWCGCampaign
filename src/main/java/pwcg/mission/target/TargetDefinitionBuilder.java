@@ -3,7 +3,6 @@ package pwcg.mission.target;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightInformation;
@@ -19,30 +18,23 @@ public class TargetDefinitionBuilder implements ITargetDefinitionBuilder
 
     public TargetDefinition buildTargetDefinition() throws PWCGException
     {
-        List<TargetDefinition> targetaDefinitionsForGroundUnit = createTargetDefinitionsForInfantry();
-        List<TargetDefinition> targetaDefinitionsForStructure = createTargetDefinitionsForStructures();
-        
-        List<TargetDefinition> allTargets = new ArrayList<>();
-        allTargets.addAll(targetaDefinitionsForGroundUnit);
-        allTargets.addAll(targetaDefinitionsForStructure);
+        SkirmishTargetDefinitionBuilder skirmishTargetDefinitionBuilder = new SkirmishTargetDefinitionBuilder(flightInformation);
+        TargetDefinition targetDefinition = skirmishTargetDefinitionBuilder.findIconicTarget();
+        if (targetDefinition == null)
+        {
+            targetDefinition = buildCommonTargetDefinition();
+        }
+        return targetDefinition;
+    }
+    
+    public TargetDefinition buildCommonTargetDefinition() throws PWCGException
+    {
+        TargetDefinitionCollector targetDefinitionCollector = new TargetDefinitionCollector(flightInformation);
+        List<TargetDefinition> allTargets = targetDefinitionCollector.collectTargetDefinition();
         TargetDefinition targetDefinition =  findTarget(allTargets);
         
         flightInformation.setTargetDefinition(targetDefinition);
         return targetDefinition;
-    }
-
-    private List<TargetDefinition> createTargetDefinitionsForInfantry() throws PWCGException
-    {
-        TargetDefinitionBuilderInfantry targetSelector = new TargetDefinitionBuilderInfantry(flightInformation);
-        List<TargetDefinition> targetaDefinitionsForGroundUnit = targetSelector.findInfantryGroundUnits();
-        return targetaDefinitionsForGroundUnit;
-    }
-
-    private List<TargetDefinition> createTargetDefinitionsForStructures() throws PWCGException
-    {
-        TargetDefinitionBuilderStructural targetSelector = new TargetDefinitionBuilderStructural(flightInformation);
-        List<TargetDefinition> targetaDefinitionsForStructures = targetSelector.findStructures();
-        return targetaDefinitionsForStructures;
     }
 
     private TargetDefinition findTarget(List<TargetDefinition> availableTargets) throws PWCGException
@@ -75,17 +67,7 @@ public class TargetDefinitionBuilder implements ITargetDefinitionBuilder
         }
         
         List<TargetType> shuffledTargetTypes = TargetPriorityGeneratorTactical.getTargetTypePriorities(flightInformation);
-        injectIconicTargetTypeAsFirstTargetChoice(shuffledTargetTypes);
         
         return shuffledTargetTypes;
-    }
-
-    private void injectIconicTargetTypeAsFirstTargetChoice(List<TargetType> shuffledTargetTypes) throws PWCGException
-    {
-        TargetType iconicTargetType = PWCGContext.getInstance().getCurrentMap().getSkirmishManager().getIconicTargetTypes(flightInformation);
-        if (iconicTargetType != TargetType.TARGET_NONE)
-        {
-            shuffledTargetTypes.add(0, iconicTargetType);
-        }
     }
 }

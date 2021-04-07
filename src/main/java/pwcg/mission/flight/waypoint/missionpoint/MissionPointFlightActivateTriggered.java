@@ -23,8 +23,7 @@ public class MissionPointFlightActivateTriggered implements IMissionPointSet
     private IFlight flight;
 
     private MissionBeginUnit missionBeginUnit;
-    private McuTimer missionBeginTimer = null;
-    private McuTimer checkzoneTriggeredTimer = null;
+    private McuTimer activationTimer = null;
     private McuCheckZone takeoffCheckZone = null;
     private McuActivate activationEntity = null;
     private boolean linkToNextTarget = true;
@@ -46,13 +45,13 @@ public class MissionPointFlightActivateTriggered implements IMissionPointSet
     @Override
     public void setLinkToNextTarget(int nextTargetIndex) throws PWCGException
     {
-        missionBeginTimer.setTarget(nextTargetIndex);
+        activationTimer.setTarget(nextTargetIndex);
     }
 
     @Override
     public int getEntryPoint() throws PWCGException
     {
-        return missionBeginTimer.getIndex();
+        return activationTimer.getIndex();
     }
 
     @Override
@@ -83,9 +82,8 @@ public class MissionPointFlightActivateTriggered implements IMissionPointSet
     public void write(BufferedWriter writer) throws PWCGException 
     {
         missionBeginUnit.write(writer);
-        missionBeginTimer.write(writer);
+        activationTimer.write(writer);
         takeoffCheckZone.write(writer);
-        checkzoneTriggeredTimer.write(writer);
         activationEntity.write(writer);
     }
     
@@ -112,25 +110,18 @@ public class MissionPointFlightActivateTriggered implements IMissionPointSet
         activationEntity.setDesc("Activate entity");
         activationEntity.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());
 
-        missionBeginTimer = new McuTimer();
-        missionBeginTimer.setName("Activation Timer");
-        missionBeginTimer.setDesc("Activation Timer");
-        missionBeginTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());        
-        missionBeginTimer.setTime(1);
-
-        checkzoneTriggeredTimer = new McuTimer();
-        checkzoneTriggeredTimer.setName("Takeoff Check Zone Timer");
-        checkzoneTriggeredTimer.setDesc("Takeoff Check Zone Timer");
-        checkzoneTriggeredTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());        
-        checkzoneTriggeredTimer.setTime(1);
+        activationTimer = new McuTimer();
+        activationTimer.setName("Activation Timer");
+        activationTimer.setDesc("Activation Timer");
+        activationTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());        
+        activationTimer.setTime(1);
     }
 
     private void createTargetAssociations()
     {
-        missionBeginUnit.linkToMissionBegin(missionBeginTimer.getIndex());
-        missionBeginTimer.setTarget(takeoffCheckZone.getIndex());
-        takeoffCheckZone.setTarget(checkzoneTriggeredTimer.getIndex());
-        checkzoneTriggeredTimer.setTarget(activationEntity.getIndex());
+        missionBeginUnit.linkToMissionBegin(takeoffCheckZone.getIndex());
+        takeoffCheckZone.setTarget(activationTimer.getIndex());
+        activationTimer.setTarget(activationEntity.getIndex());
     }
 
     private void createObjectAssociations(PlaneMcu plane)
@@ -201,6 +192,6 @@ public class MissionPointFlightActivateTriggered implements IMissionPointSet
 
     public McuTimer getMissionBeginTimer()
     {
-        return missionBeginTimer;
+        return activationTimer;
     }    
 }
