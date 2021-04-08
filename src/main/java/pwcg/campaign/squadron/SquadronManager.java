@@ -246,6 +246,18 @@ public class SquadronManager
         List<Squadron> availableSquadrons = removeExcludedSquadrons(selectedSquadronsNoPlayer, squadronsToExclude);
         return chooseSquadron(availableSquadrons);
     }
+
+    public Squadron getClosestSquadron(Coordinate position, Date date) throws PWCGException 
+    {
+        Airfield airfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().findClosestAirfield(position);
+        if (airfield != null)
+        {
+            Squadron squadron = getAnyActiveSquadronForAirfield(airfield, date);
+            return squadron;
+        }
+
+        return null;
+    }
     
     private List<Squadron> removeExcludedSquadrons(List<Squadron> selectedSquadronsNoPlayer, List<Squadron> squadronsToExclude)
     {

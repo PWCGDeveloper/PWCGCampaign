@@ -1,6 +1,13 @@
 
 ​At the PWCG web site
 
+PWCG 12.0.0
+Add iconc events
+- Arnhem: parachute and cargo drops
+- Ardennes: Bastogne cargo drops
+- Bodenplatte: airfield attacks
+Fixed issue that could cause planes to spawn on top of each other
+
 PWCG 11.12.0
 Introduced concept of focused skirmishes for historical events
 - Places activities in skirmish area
