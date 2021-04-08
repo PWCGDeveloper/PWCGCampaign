@@ -78,7 +78,7 @@ public class KubanAttackMockCampaign
         Mockito.when(mission.getMissionGroundUnitManager()).thenReturn(missionGroundUnitResourceManager);
         
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(myTestPosition, 100000);
-        Mockito.when(mission.getMissionFlightBuilder()).thenReturn(missionFlightBuilder);
+        Mockito.when(mission.getMissionFlights()).thenReturn(missionFlightBuilder);
         Mockito.when(mission.getMissionBorders()).thenReturn(missionBorders);
         Mockito.when(mission.getCampaign()).thenReturn(campaign);
         

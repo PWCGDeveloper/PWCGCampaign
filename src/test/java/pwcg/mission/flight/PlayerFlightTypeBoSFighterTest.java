@@ -48,7 +48,7 @@ public class PlayerFlightTypeBoSFighterTest
 	{
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.PATROL, MissionProfile.DAY_TACTICAL_MISSION);
-        PatrolFlight flight = (PatrolFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
+        PatrolFlight flight = (PatrolFlight) mission.getMissionFlights().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
         assert (targetMissionPoint != null);
@@ -65,7 +65,7 @@ public class PlayerFlightTypeBoSFighterTest
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
 
-        assert(mission.getMissionFlightBuilder().getAiFlights().size() >= 3);
+        assert(mission.getMissionFlights().getAiFlights().size() >= 3);
 	}
 
     @Test
@@ -73,7 +73,7 @@ public class PlayerFlightTypeBoSFighterTest
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.INTERCEPT, MissionProfile.DAY_TACTICAL_MISSION);
-        InterceptFlight flight = (InterceptFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
+        InterceptFlight flight = (InterceptFlight) mission.getMissionFlights().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
         assert (targetMissionPoint != null);
@@ -90,7 +90,7 @@ public class PlayerFlightTypeBoSFighterTest
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
 
-        assert(mission.getMissionFlightBuilder().getAiFlights().size() >= 3);
+        assert(mission.getMissionFlights().getAiFlights().size() >= 3);
     }
 
     @Test
@@ -98,7 +98,7 @@ public class PlayerFlightTypeBoSFighterTest
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.STRATEGIC_INTERCEPT, MissionProfile.DAY_TACTICAL_MISSION);
-        StrategicInterceptFlight flight = (StrategicInterceptFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
+        StrategicInterceptFlight flight = (StrategicInterceptFlight) mission.getMissionFlights().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
         assert (targetMissionPoint != null);
@@ -115,7 +115,7 @@ public class PlayerFlightTypeBoSFighterTest
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
         
-        assert(mission.getMissionFlightBuilder().getAiFlights().size() == 0);
+        assert(mission.getMissionFlights().getAiFlights().size() == 0);
     }
 
 	@Test
@@ -123,7 +123,7 @@ public class PlayerFlightTypeBoSFighterTest
 	{
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.OFFENSIVE, MissionProfile.DAY_TACTICAL_MISSION);
-        OffensiveFlight flight = (OffensiveFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
+        OffensiveFlight flight = (OffensiveFlight) mission.getMissionFlights().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
         assert (targetMissionPoint != null);
@@ -140,7 +140,7 @@ public class PlayerFlightTypeBoSFighterTest
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
 
-        assert(mission.getMissionFlightBuilder().getAiFlights().size() >= 3);
+        assert(mission.getMissionFlights().getAiFlights().size() >= 3);
 	}
 
 	@Test
@@ -148,7 +148,7 @@ public class PlayerFlightTypeBoSFighterTest
 	{
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT, MissionProfile.DAY_TACTICAL_MISSION);
-        PlayerIsEscortFlight flight = (PlayerIsEscortFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
+        PlayerIsEscortFlight flight = (PlayerIsEscortFlight) mission.getMissionFlights().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
         assert (targetMissionPoint != null);
@@ -165,7 +165,7 @@ public class PlayerFlightTypeBoSFighterTest
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
 
-        assert(mission.getMissionFlightBuilder().getAiFlights().size() >= 3);
+        assert(mission.getMissionFlights().getAiFlights().size() >= 3);
 	}
 
     @Test
@@ -173,7 +173,7 @@ public class PlayerFlightTypeBoSFighterTest
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.SCRAMBLE, MissionProfile.DAY_TACTICAL_MISSION);
-        PlayerScrambleFlight flight = (PlayerScrambleFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
+        PlayerScrambleFlight flight = (PlayerScrambleFlight) mission.getMissionFlights().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
         assert (targetMissionPoint != null);
@@ -190,7 +190,7 @@ public class PlayerFlightTypeBoSFighterTest
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
 
-        assert(mission.getMissionFlightBuilder().getAiFlights().size() >= 3);
+        assert(mission.getMissionFlights().getAiFlights().size() >= 3);
     }
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)

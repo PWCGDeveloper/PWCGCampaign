@@ -73,7 +73,7 @@ public class BriefingDataInitializerTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         Mockito.when(mission.getCampaign()).thenReturn(campaign);
-        Mockito.when(mission.getMissionFlightBuilder()).thenReturn(missionFlightBuilder);
+        Mockito.when(mission.getMissionFlights()).thenReturn(missionFlightBuilder);
 
         Mockito.when(missionFlightBuilder.getPlayerFlightForSquadron(Mockito.anyInt())).thenReturn(flight);
 

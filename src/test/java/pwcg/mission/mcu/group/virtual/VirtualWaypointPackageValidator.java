@@ -19,7 +19,7 @@ public class VirtualWaypointPackageValidator
 
     public void validate() throws PWCGException
     {
-        for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
+        for (IFlight flight : mission.getMissionFlights().getAllAerialFlights())
         {
             validateIfVirtual(flight);
         }

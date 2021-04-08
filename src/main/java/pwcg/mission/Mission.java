@@ -303,7 +303,7 @@ public class Mission
 
     private void stopAttackingNearAirfield() throws PWCGException
     {
-        for (IFlight flight : this.getMissionFlightBuilder().getAllAerialFlights())
+        for (IFlight flight : this.getMissionFlights().getAllAerialFlights())
         {
             StopAttackingNearAirfield stopAttackingNearAirfield = new StopAttackingNearAirfield(flight, getFieldsForPatrol());
             List<StopAttackingNearAirfieldSequence> stopSequenceForFlight = stopAttackingNearAirfield.stopAttackingAirfields();
@@ -408,7 +408,7 @@ public class Mission
         return groundUnitBuilder;
     }
 
-    public MissionFlights getMissionFlightBuilder()
+    public MissionFlights getMissionFlights()
     {
         return flightBuilder;
     }

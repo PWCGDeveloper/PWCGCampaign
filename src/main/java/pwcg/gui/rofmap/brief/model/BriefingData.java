@@ -29,7 +29,7 @@ public class BriefingData
     
     public IFlight getSelectedFlight()
     {
-        IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(selectedSquadronId);
+        IFlight playerFlight = mission.getMissionFlights().getPlayerFlightForSquadron(selectedSquadronId);
         return playerFlight;
     }
 

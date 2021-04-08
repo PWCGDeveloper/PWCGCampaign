@@ -37,7 +37,7 @@ public class BomberAirStartTest
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.BOMB, MissionProfile.DAY_TACTICAL_MISSION);
-        BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
+        BombingFlight flight = (BombingFlight) mission.getMissionFlights().getPlayerFlights().get(0);
         mission.finalizeMission();
 
         BombingAirStartFlightValidator airStartFlightValidator = new BombingAirStartFlightValidator();
@@ -57,7 +57,7 @@ public class BomberAirStartTest
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.LOW_ALT_BOMB, MissionProfile.DAY_TACTICAL_MISSION);
-        BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
+        BombingFlight flight = (BombingFlight) mission.getMissionFlights().getPlayerFlights().get(0);
         mission.finalizeMission();
 
         BombingAirStartFlightValidator airStartFlightValidator = new BombingAirStartFlightValidator();

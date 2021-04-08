@@ -40,14 +40,14 @@ public class BodenplatteFlightTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
 
-        for (IFlight flight : mission.getMissionFlightBuilder().getAiFlightsForSide(Side.AXIS))
+        for (IFlight flight : mission.getMissionFlights().getAiFlightsForSide(Side.AXIS))
         {
             assert(flight.getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK);
             assert(flight.getTargetDefinition().getTargetType() == TargetType.TARGET_AIRFIELD);
         }
 
         boolean scrambleFound = false;
-        for (IFlight flight : mission.getMissionFlightBuilder().getAiFlightsForSide(Side.ALLIED))
+        for (IFlight flight : mission.getMissionFlights().getAiFlightsForSide(Side.ALLIED))
         {
             if (flight.getFlightInformation().getFlightType() == FlightTypes.SCRAMBLE)
             {
@@ -60,14 +60,14 @@ public class BodenplatteFlightTest
         mission.finalizeMission();
         
         Map<Integer, Squadron> includedSquadrons = new HashMap<>();
-        for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
+        for (IFlight flight : mission.getMissionFlights().getAllAerialFlights())
         {
             assert(!includedSquadrons.containsKey(flight.getSquadron().getSquadronId()));
             includedSquadrons.put(flight.getSquadron().getSquadronId(), flight.getSquadron());
         }
         
         Map<String, Airfield> includedAirfields = new HashMap<>();
-        for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
+        for (IFlight flight : mission.getMissionFlights().getAllAerialFlights())
         {
             Airfield airfield = flight.getSquadron().determineCurrentAirfieldAnyMap(campaign.getDate());
             assert(!includedAirfields.containsKey(airfield.getName()));

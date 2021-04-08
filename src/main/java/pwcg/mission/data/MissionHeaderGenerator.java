@@ -16,7 +16,7 @@ public class MissionHeaderGenerator
     {
         // Even for Coop flights we have to set the header.  Doesn't really matter which flight 
         // as long as it is a player flight
-        IFlight myFlight = mission.getMissionFlightBuilder().getReferencePlayerFlight();
+        IFlight myFlight = mission.getMissionFlights().getReferencePlayerFlight();
         Squadron mySquadron =myFlight.getSquadron();
         
         MissionHeader missionHeader = new MissionHeader();

@@ -74,7 +74,7 @@ public class TargetDefinitionBuilderOpposing implements ITargetDefinitionBuilder
     {
         Side enemySide = flightInformation.getSquadron().determineEnemySide();
         List<FlightTypes> opposingFlightTypes = findOpposingFlightTypes();
-        return flightInformation.getMission().getMissionFlightBuilder().findOpposingFlight(opposingFlightTypes, enemySide);
+        return flightInformation.getMission().getMissionFlights().findOpposingFlight(opposingFlightTypes, enemySide);
     }
 
     private List<FlightTypes> findOpposingFlightTypes() throws PWCGException

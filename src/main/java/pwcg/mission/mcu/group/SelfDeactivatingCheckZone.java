@@ -193,14 +193,14 @@ public class SelfDeactivatingCheckZone
 
     public void triggerCheckZoneByPlayer(Mission mission) throws PWCGException
     {
-        List<Integer> triggerPlanes = mission.getMissionFlightBuilder().getPlayersInMission();
+        List<Integer> triggerPlanes = mission.getMissionFlights().getPlayersInMission();
         checkZone.triggerCheckZoneByMultipleObjects(triggerPlanes);        
     }
     
     private void triggerCheckZoneByActualFlights(Mission mission) throws PWCGException
     {
         List<Integer> triggerPlanes = new ArrayList<>();
-        List<IFlight> flights = mission.getMissionFlightBuilder().getAllAerialFlights();
+        List<IFlight> flights = mission.getMissionFlights().getAllAerialFlights();
         for (IFlight flight : flights)
         {
             for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
@@ -214,7 +214,7 @@ public class SelfDeactivatingCheckZone
     private void triggerCheckZoneByVirtualFlights(Mission mission) throws PWCGException
     {
         List<Integer> triggerPlanes = new ArrayList<>();
-        List<IFlight> flights = mission.getMissionFlightBuilder().getAllAerialFlights();
+        List<IFlight> flights = mission.getMissionFlights().getAllAerialFlights();
         for (IFlight flight : flights)
         {
             if (flight.getFlightInformation().isVirtual())

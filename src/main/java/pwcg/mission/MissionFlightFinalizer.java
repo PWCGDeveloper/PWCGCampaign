@@ -43,7 +43,7 @@ public class MissionFlightFinalizer
 
     private void finalizeFlights() throws PWCGException
     {
-        for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
+        for (IFlight flight : mission.getMissionFlights().getAllAerialFlights())
         {
             flight.finalizeFlight();
         }
@@ -52,14 +52,14 @@ public class MissionFlightFinalizer
     private void addVirtualEscorts() throws PWCGException
     {
         List<IFlight> shuffledFlights = new ArrayList<>();
-        if (mission.getMissionFlightBuilder().hasPlayerFlightForSide(Side.AXIS))
+        if (mission.getMissionFlights().hasPlayerFlightForSide(Side.AXIS))
         {
-            shuffledFlights.addAll(mission.getMissionFlightBuilder().getAiFlightsForSide(Side.ALLIED));
+            shuffledFlights.addAll(mission.getMissionFlights().getAiFlightsForSide(Side.ALLIED));
         }
         
-        if (mission.getMissionFlightBuilder().hasPlayerFlightForSide(Side.ALLIED))
+        if (mission.getMissionFlights().hasPlayerFlightForSide(Side.ALLIED))
         {
-            shuffledFlights.addAll(mission.getMissionFlightBuilder().getAiFlightsForSide(Side.AXIS));
+            shuffledFlights.addAll(mission.getMissionFlights().getAiFlightsForSide(Side.AXIS));
         }
         
         Collections.shuffle(shuffledFlights);
@@ -81,7 +81,7 @@ public class MissionFlightFinalizer
 
     private void setCzTriggers() throws PWCGException  
     {
-        for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
+        for (IFlight flight : mission.getMissionFlights().getAllAerialFlights())
         {
             triggerOtherFlightCZFromPlayerFlight(flight);
             for (IFlight linkedFlight : flight.getLinkedFlights().getLinkedFlights())
@@ -100,7 +100,7 @@ public class MissionFlightFinalizer
             {
                 if (vwp != null)
                 {
-                    for (int planeIndex : flight.getMission().getMissionFlightBuilder().determinePlayerPlaneIds())
+                    for (int planeIndex : flight.getMission().getMissionFlights().determinePlayerPlaneIds())
                     {
                         vwp.setVwpTriggerObject(planeIndex);
                     }

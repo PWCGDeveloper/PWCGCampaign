@@ -56,7 +56,7 @@ public class TargetBuilderArrasTest
         List<TargetType> shuffledTargetTypes = Arrays.asList(TargetType.TARGET_INFANTRY, TargetType.TARGET_INFANTRY, TargetType.TARGET_FACTORY);
         Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any())).thenReturn(shuffledTargetTypes);
 
-        IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
+        IFlight playerFlight = mission.getMissionFlights().getPlayerFlights().get(0);
         
         TargetDefinitionBuilder targetBuilder = new TargetDefinitionBuilder(playerFlight.getFlightInformation());
         TargetDefinition targetDefinition = targetBuilder.buildTargetDefinition();
@@ -72,7 +72,7 @@ public class TargetBuilderArrasTest
         List<TargetType> shuffledTargetTypes = Arrays.asList(TargetType.TARGET_TRANSPORT, TargetType.TARGET_INFANTRY, TargetType.TARGET_FACTORY);
         Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any())).thenReturn(shuffledTargetTypes);
 
-        IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
+        IFlight playerFlight = mission.getMissionFlights().getPlayerFlights().get(0);
         
         TargetDefinitionBuilder targetBuilder = new TargetDefinitionBuilder(playerFlight.getFlightInformation());
         TargetDefinition targetDefinition = targetBuilder.buildTargetDefinition();
@@ -88,7 +88,7 @@ public class TargetBuilderArrasTest
         List<TargetType> shuffledTargetTypes = Arrays.asList(TargetType.TARGET_TRAIN, TargetType.TARGET_INFANTRY, TargetType.TARGET_FACTORY);
         Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any())).thenReturn(shuffledTargetTypes);
 
-        IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
+        IFlight playerFlight = mission.getMissionFlights().getPlayerFlights().get(0);
         
         TargetDefinitionBuilder targetBuilder = new TargetDefinitionBuilder(playerFlight.getFlightInformation());
         TargetDefinition targetDefinition = targetBuilder.buildTargetDefinition();
@@ -104,7 +104,7 @@ public class TargetBuilderArrasTest
         List<TargetType> shuffledTargetTypes = Arrays.asList(TargetType.TARGET_BALLOON, TargetType.TARGET_INFANTRY, TargetType.TARGET_FACTORY);
         Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any())).thenReturn(shuffledTargetTypes);
 
-        IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
+        IFlight playerFlight = mission.getMissionFlights().getPlayerFlights().get(0);
         
         TargetDefinitionBuilder targetBuilder = new TargetDefinitionBuilder(playerFlight.getFlightInformation());
         TargetDefinition targetDefinition = targetBuilder.buildTargetDefinition();

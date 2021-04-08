@@ -79,7 +79,7 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
         buildTitleDescription(campaign.getCampaignData().getName(), playerFlight.getFlightType().toString());
 
         HashMap<String, IFlight> squadronMap = new HashMap<String, IFlight>();
-        for (IFlight flight : mission.getMissionFlightBuilder().getAiFlights())
+        for (IFlight flight : mission.getMissionFlights().getAiFlights())
         {
             squadronMap.put(flight.getSquadron().determineDisplayName(campaign.getDate()), flight);
         }

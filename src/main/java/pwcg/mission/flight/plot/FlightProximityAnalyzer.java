@@ -27,11 +27,11 @@ public class FlightProximityAnalyzer
     private void plotPlayerFlightEncounters() throws PWCGException 
     {
         int playerEncounerDistance = VirtualWaypoint.VWP_TRIGGGER_DISTANCE;
-        for (IFlight aiFlight : mission.getMissionFlightBuilder().getAiFlights())
+        for (IFlight aiFlight : mission.getMissionFlights().getAiFlights())
         {
             if (!aiFlight.isPlayerFlight())
             {
-                for (IFlight playerFlight : mission.getMissionFlightBuilder().getPlayerFlights())
+                for (IFlight playerFlight : mission.getMissionFlights().getPlayerFlights())
                 {
                     plotEncounter(playerFlight, aiFlight, playerEncounerDistance);
                 }

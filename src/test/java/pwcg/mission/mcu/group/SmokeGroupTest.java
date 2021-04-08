@@ -22,7 +22,7 @@ public class SmokeGroupTest
     @Before
     public void setup() throws PWCGException
     {
-        Mockito.when(mission.getMissionFlightBuilder()).thenReturn(missionFlightBuilder);
+        Mockito.when(mission.getMissionFlights()).thenReturn(missionFlightBuilder);
     }
 
     @Test

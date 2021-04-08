@@ -90,7 +90,7 @@ public class ArnhemFlightTest
 
     private void verifyFlightTargets(Mission mission) throws PWCGException
     {
-        for (IFlight flight : mission.getMissionFlightBuilder().getAiFlightsForSide(Side.ALLIED))
+        for (IFlight flight : mission.getMissionFlights().getAiFlightsForSide(Side.ALLIED))
         {
             if (flight.getFlightType() == FlightTypes.GROUND_ATTACK)
             {
@@ -107,7 +107,7 @@ public class ArnhemFlightTest
     private boolean findFlightType(Mission mission, FlightTypes flightType) throws PWCGException
     {
         boolean flightTypeFound = false;
-        for (IFlight flight : mission.getMissionFlightBuilder().getAiFlightsForSide(Side.ALLIED))
+        for (IFlight flight : mission.getMissionFlights().getAiFlightsForSide(Side.ALLIED))
         {
             if (flight.getFlightInformation().getFlightType() == flightType)
             {

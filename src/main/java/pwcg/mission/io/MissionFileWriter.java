@@ -199,7 +199,7 @@ public class MissionFileWriter implements IMissionFile
 
     private void writeWindSock(BufferedWriter writer) throws PWCGException
     {
-    	for (IFlight playerFlight: mission.getMissionFlightBuilder().getPlayerFlights())
+    	for (IFlight playerFlight: mission.getMissionFlights().getPlayerFlights())
     	{
 	        WindSock windSock = WindSock.createWindSock(playerFlight);
 	        if (windSock != null)
@@ -281,7 +281,7 @@ public class MissionFileWriter implements IMissionFile
     {
         if (PWCGContext.getProduct() == PWCGProduct.BOS)
         {
-            for (IFlight playerFlight:  mission.getMissionFlightBuilder().getPlayerFlights())
+            for (IFlight playerFlight:  mission.getMissionFlights().getPlayerFlights())
             {
                 IVehicle radioBeacon = VehicleFactory.createVehicle(
                         playerFlight.getFlightInformation().getCountry(), mission.getCampaign().getDate(), VehicleClass.RadioBeacon);
@@ -313,7 +313,7 @@ public class MissionFileWriter implements IMissionFile
     {
         if (PWCGContext.getProduct() == PWCGProduct.BOS)
         {
-            for (IFlight playerFlight:  mission.getMissionFlightBuilder().getPlayerFlights())
+            for (IFlight playerFlight:  mission.getMissionFlights().getPlayerFlights())
             {
                 IVehicle landCanvas = VehicleFactory.createVehicle(
                         playerFlight.getFlightInformation().getCountry(), mission.getCampaign().getDate(), VehicleClass.LandCanvas);

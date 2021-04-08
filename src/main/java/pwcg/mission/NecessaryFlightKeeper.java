@@ -30,8 +30,8 @@ public class NecessaryFlightKeeper
     {
         PWCGLogger.log(LogLevel.DEBUG, "*** Necessary Flight Keeper Started ***: ");
 
-        keepPlayerFlights(mission.getMissionFlightBuilder().getPlayerFlights());
-        keepOpposingPlayerFlights(mission.getMissionFlightBuilder().getAiFlights());
+        keepPlayerFlights(mission.getMissionFlights().getPlayerFlights());
+        keepOpposingPlayerFlights(mission.getMissionFlights().getAiFlights());
         keepRequiredAlliedFlights();
         keepRequiredAxisFlights();
     }

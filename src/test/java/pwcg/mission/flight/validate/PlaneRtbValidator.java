@@ -8,7 +8,7 @@ public class PlaneRtbValidator
 {
     public static void verifyPlaneRtbDisabled(Mission mission)
     {
-        for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
+        for (IFlight flight : mission.getMissionFlights().getAllAerialFlights())
         {
             for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
             {
@@ -19,7 +19,7 @@ public class PlaneRtbValidator
 
     public static void verifyPlaneRtbEnabled(Mission mission)
     {
-        for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
+        for (IFlight flight : mission.getMissionFlights().getAllAerialFlights())
         {
             for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
             {

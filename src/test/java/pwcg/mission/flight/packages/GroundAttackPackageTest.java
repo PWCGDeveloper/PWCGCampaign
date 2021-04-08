@@ -78,7 +78,7 @@ public class GroundAttackPackageTest
         mission.generate(playerFlightTypes);
 
         campaign.setCurrentMission(mission);
-        return mission.getMissionFlightBuilder().getPlayerFlights().get(0);
+        return mission.getMissionFlights().getPlayerFlights().get(0);
     }
 
     private void verifyProximityToTargetUnit(IFlight flight) throws PWCGException

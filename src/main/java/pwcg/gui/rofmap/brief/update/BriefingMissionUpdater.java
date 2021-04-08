@@ -44,7 +44,7 @@ public class BriefingMissionUpdater
 
         for (BriefingFlight briefingFlight : briefingData.getBriefingFlights())
         {
-            IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(briefingFlight.getSquadronId());
+            IFlight playerFlight = mission.getMissionFlights().getPlayerFlightForSquadron(briefingFlight.getSquadronId());
             playerFlight.getWaypointPackage().updateWaypointsFromBriefing(briefingFlight.getBriefingFlightParameters().getBriefingMapMapPoints());
         }
     }
@@ -54,7 +54,7 @@ public class BriefingMissionUpdater
         Mission mission = briefingData.getMission();
         for (BriefingFlight briefingFlight : briefingData.getBriefingFlights())
         {
-            IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(briefingFlight.getSquadronId());
+            IFlight playerFlight = mission.getMissionFlights().getPlayerFlightForSquadron(briefingFlight.getSquadronId());
             BriefingFlightCrewPlaneUpdater crewePlaneUpdater = new BriefingFlightCrewPlaneUpdater(mission.getCampaign(), playerFlight);
             crewePlaneUpdater.updatePlayerPlanes(briefingFlight.getBriefingAssignmentData().getCrews());
         }
@@ -68,7 +68,7 @@ public class BriefingMissionUpdater
 
         for (BriefingFlight briefingFlight : briefingData.getBriefingFlights())
         {
-            IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(briefingFlight.getSquadronId());
+            IFlight playerFlight = mission.getMissionFlights().getPlayerFlightForSquadron(briefingFlight.getSquadronId());
             playerFlight.getFlightPlanes().setFuelForFlight(briefingFlight.getSelectedFuel());
         }
     }

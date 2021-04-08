@@ -29,7 +29,7 @@ public class AiAdjuster
 
     private void adjustAIForRealFlights(Mission mission) throws PWCGException
     {
-        for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
+        for (IFlight flight : mission.getMissionFlights().getAllAerialFlights())
         {
             for (PlaneMcu plane: flight.getFlightPlanes().getAiPlanes())
             {
@@ -40,7 +40,7 @@ public class AiAdjuster
     
     private void adjustAIForVirtualMissions(Mission mission) throws PWCGException
     {
-        for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
+        for (IFlight flight : mission.getMissionFlights().getAllAerialFlights())
         {
             if (flight.getFlightInformation().isVirtual())
             {

@@ -42,7 +42,7 @@ public class SmokeGroup
 
         addSmokeEffect(requestedSmokeEffect);
         
-        buildActivate(mission.getMissionFlightBuilder().getPlayersInMission());
+        buildActivate(mission.getMissionFlights().getPlayersInMission());
         setTimers();
         setTargetAssociations();
         setObjectAssociations();

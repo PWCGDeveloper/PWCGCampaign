@@ -15,7 +15,7 @@ public class MissionEffects
 
     public void createFirePots(Mission mission) throws PWCGException 
     {
-        for (IFlight flight: mission.getMissionFlightBuilder().getPlayerFlights())
+        for (IFlight flight: mission.getMissionFlights().getPlayerFlights())
         {
             FirePotBuilder firePotBuilder = new FirePotBuilder();
             FirePotSeries firePotSeries = firePotBuilder.createFirePots(flight);

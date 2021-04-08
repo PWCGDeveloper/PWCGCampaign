@@ -59,7 +59,7 @@ public class BalloonBustPackageTest
         Mission mission = TestMissionBuilderUtility.createTestMission(campaign, participatingPlayers, missionBorders, MissionProfile.DAY_TACTICAL_MISSION);
         mission.generate(playerFlightTypes);
 
-        return mission.getMissionFlightBuilder().getPlayerFlights().get(0);
+        return mission.getMissionFlights().getPlayerFlights().get(0);
     }
 
     private void verifyBalloonPosition(IFlight flight) throws PWCGException

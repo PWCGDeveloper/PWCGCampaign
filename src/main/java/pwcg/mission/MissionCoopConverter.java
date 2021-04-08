@@ -13,7 +13,7 @@ public class MissionCoopConverter
         MissionOptions missionOptions = mission.getMissionOptions();
         missionOptions.setMissionType(MissionOptions.COOP_MISSION);
 
-        for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
+        for (IFlight flight : mission.getMissionFlights().getAllAerialFlights())
         {
             flight.getFlightPlanes().preparePlaneForCoop(flight);
         }

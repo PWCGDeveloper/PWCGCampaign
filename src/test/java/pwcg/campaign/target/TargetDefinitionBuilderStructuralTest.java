@@ -43,7 +43,7 @@ public class TargetDefinitionBuilderStructuralTest
     @Test
     public void verifyEnemyStructuresTest()  throws PWCGException
     {
-        TargetDefinitionBuilderStructural targetSelector = new TargetDefinitionBuilderStructural(mission.getMissionFlightBuilder().getPlayerFlights().get(0).getFlightInformation());
+        TargetDefinitionBuilderStructural targetSelector = new TargetDefinitionBuilderStructural(mission.getMissionFlights().getPlayerFlights().get(0).getFlightInformation());
         List<TargetDefinition> targetaDefinitionsForStructures = targetSelector.findStructures();
         Assert.assertFalse(targetaDefinitionsForStructures.isEmpty());
 
@@ -56,7 +56,7 @@ public class TargetDefinitionBuilderStructuralTest
     @Test
     public void verifyBridgeStructuresTest()  throws PWCGException
     {
-        TargetDefinitionBuilderStructural targetSelector = new TargetDefinitionBuilderStructural(mission.getMissionFlightBuilder().getPlayerFlights().get(0).getFlightInformation());
+        TargetDefinitionBuilderStructural targetSelector = new TargetDefinitionBuilderStructural(mission.getMissionFlights().getPlayerFlights().get(0).getFlightInformation());
         List<TargetDefinition> targetaDefinitionsForStructures = targetSelector.findStructures();
         Assert.assertFalse(targetaDefinitionsForStructures.isEmpty());
 
@@ -74,7 +74,7 @@ public class TargetDefinitionBuilderStructuralTest
     @Test
     public void verifyAirfieldStructuresTest()  throws PWCGException
     {
-        TargetDefinitionBuilderStructural targetSelector = new TargetDefinitionBuilderStructural(mission.getMissionFlightBuilder().getPlayerFlights().get(0).getFlightInformation());
+        TargetDefinitionBuilderStructural targetSelector = new TargetDefinitionBuilderStructural(mission.getMissionFlights().getPlayerFlights().get(0).getFlightInformation());
         List<TargetDefinition> targetaDefinitionsForStructures = targetSelector.findStructures();
         Assert.assertFalse(targetaDefinitionsForStructures.isEmpty());
 
@@ -92,7 +92,7 @@ public class TargetDefinitionBuilderStructuralTest
     @Test
     public void verifyRailStructuresTest()  throws PWCGException
     {
-        TargetDefinitionBuilderStructural targetSelector = new TargetDefinitionBuilderStructural(mission.getMissionFlightBuilder().getPlayerFlights().get(0).getFlightInformation());
+        TargetDefinitionBuilderStructural targetSelector = new TargetDefinitionBuilderStructural(mission.getMissionFlights().getPlayerFlights().get(0).getFlightInformation());
         List<TargetDefinition> targetaDefinitionsForStructures = targetSelector.findStructures();
         Assert.assertFalse(targetaDefinitionsForStructures.isEmpty());
 

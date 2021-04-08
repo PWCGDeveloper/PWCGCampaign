@@ -40,7 +40,7 @@ public class MissionFlightKeeper
     {
         FlightProximityAnalyzer proximityAnalyzer = new FlightProximityAnalyzer(mission);
         proximityAnalyzer.plotFlightEncounters();
-        proximitySorter.mapEnemyDistanceToPlayerFlights(mission.getMissionFlightBuilder().getAiFlights());
+        proximitySorter.mapEnemyDistanceToPlayerFlights(mission.getMissionFlights().getAiFlights());
     }
 
     private void keepRequiredFlights() throws PWCGException

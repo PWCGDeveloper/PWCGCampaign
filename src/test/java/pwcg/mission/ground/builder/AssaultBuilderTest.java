@@ -62,7 +62,7 @@ public class AssaultBuilderTest
         
         PWCGContext.setProduct(PWCGProduct.BOS);
         Mockito.when(mission.getCampaign()).thenReturn(campaign);
-        Mockito.when(mission.getMissionFlightBuilder()).thenReturn(missionFlightBuilder);
+        Mockito.when(mission.getMissionFlights()).thenReturn(missionFlightBuilder);
         Mockito.when(missionFlightBuilder.getPlayerFlights()).thenReturn(playerFlights);
         Mockito.when(squadron.getCountry()).thenReturn(country);
         Mockito.when(playerFlight.getSquadron()).thenReturn(squadron);

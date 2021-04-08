@@ -53,7 +53,7 @@ public class BriefingFlightChooser implements ActionListener
         flightChooserButtonPanelGrid.add(spacerLabel3);
 
         Map<Integer, Squadron> playerSquadronsInMission = new HashMap<>();
-        for (IFlight playerFlight : mission.getMissionFlightBuilder().getPlayerFlights())
+        for (IFlight playerFlight : mission.getMissionFlights().getPlayerFlights())
         {
             Squadron squadron = playerFlight.getSquadron();
             playerSquadronsInMission.put(squadron.getSquadronId(), squadron);
