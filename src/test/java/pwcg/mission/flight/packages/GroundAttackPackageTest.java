@@ -49,6 +49,8 @@ public class GroundAttackPackageTest
         assert(flight.getFlightInformation().getTargetDefinition().getTargetType() == TargetType.TARGET_INFANTRY);
         verifyProximityToTargetUnit(flight);
 
+        assert(flight.getLinkedFlights().getLinkedFlights().size() == 1);
+
         TestDriver.getInstance().setEnabled(true);
     }
 
@@ -62,6 +64,8 @@ public class GroundAttackPackageTest
         IFlight flight = buildFlight(campaign);
         assert(flight.getFlightInformation().getTargetDefinition().getTargetType() == TargetType.TARGET_AIRFIELD);
         verifyProximityToTargetAirfield(flight);
+        
+        assert(flight.getLinkedFlights().getLinkedFlights().size() == 2);
 
         TestDriver.getInstance().setEnabled(true);
     }

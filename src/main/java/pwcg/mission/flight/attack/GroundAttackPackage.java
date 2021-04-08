@@ -43,9 +43,12 @@ public class GroundAttackPackage implements IFlightPackage
     {
         if (groundAttackFlight.getTargetDefinition().getTargetType() == TargetType.TARGET_AIRFIELD)
         {
-            AirfieldAttackScrambleFlightBuilder groundAttackOpposingFlightBuilder = new AirfieldAttackScrambleFlightBuilder(groundAttackFlight);
-            IFlight opposingScrambleFlight = groundAttackOpposingFlightBuilder.createOpposingFlight();
-            groundAttackFlight.getLinkedFlights().addLinkedFlight(opposingScrambleFlight);
+            if (groundAttackFlight.isPlayerFlight())
+            {
+                AirfieldAttackScrambleFlightBuilder groundAttackOpposingFlightBuilder = new AirfieldAttackScrambleFlightBuilder(groundAttackFlight);
+                IFlight opposingScrambleFlight = groundAttackOpposingFlightBuilder.createOpposingFlight();
+                groundAttackFlight.getLinkedFlights().addLinkedFlight(opposingScrambleFlight);
+            }
         }
     }
 }
