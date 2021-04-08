@@ -29,7 +29,7 @@ import pwcg.core.utils.DateUtils;
 import pwcg.gui.rofmap.brief.BriefingDataInitializer;
 import pwcg.gui.rofmap.brief.model.BriefingPilotAssignmentData;
 import pwcg.mission.Mission;
-import pwcg.mission.MissionFlightBuilder;
+import pwcg.mission.MissionFlights;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightPlanes;
 import pwcg.mission.flight.plane.PlaneMcu;
@@ -47,7 +47,7 @@ public class BriefingDataInitializerTest
     @Mock protected SquadronPersonnel squadronPersonnel;
     @Mock protected SquadronMembers squadronMembers;
     @Mock protected Mission mission;
-    @Mock protected MissionFlightBuilder missionFlightBuilder;
+    @Mock protected MissionFlights missionFlightBuilder;
     @Mock protected IFlight flight;
     @Mock protected IFlightPlanes flightPlanes;
     @Mock protected PlaneMcu plane1;

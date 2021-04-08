@@ -27,7 +27,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
-import pwcg.mission.MissionFlightBuilder;
+import pwcg.mission.MissionFlights;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightPlanes;
 import pwcg.mission.flight.plane.PlaneMcu;
@@ -43,7 +43,7 @@ public class AssaultBuilderTest
     @Mock private Mission mission;
     @Mock private Squadron squadron;
     @Mock private ConfigManagerCampaign configManager;
-    @Mock private MissionFlightBuilder missionFlightBuilder;
+    @Mock private MissionFlights missionFlightBuilder;
     @Mock private IFlight playerFlight;
     @Mock private ICountry country;
     @Mock private IFlightPlanes flightPlanes;

@@ -21,7 +21,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;
-import pwcg.mission.MissionFlightBuilder;
+import pwcg.mission.MissionFlights;
 import pwcg.mission.MissionGroundUnitResourceManager;
 
 public class FranceAttackMockCampaign
@@ -33,7 +33,7 @@ public class FranceAttackMockCampaign
     protected Mission mission;
 
     @Mock
-    protected MissionFlightBuilder missionFlightBuilder;
+    protected MissionFlights missionFlightBuilder;
 
     @Mock
     protected ConfigManagerCampaign configManager;

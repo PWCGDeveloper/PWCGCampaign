@@ -26,7 +26,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;
-import pwcg.mission.MissionFlightBuilder;
+import pwcg.mission.MissionFlights;
 import pwcg.mission.MissionGroundUnitResourceManager;
 import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.flight.FlightTypes;
@@ -36,7 +36,7 @@ public class KubanAttackMockCampaign
 {
     @Mock protected Campaign campaign;
     @Mock protected Mission mission;
-    @Mock protected MissionFlightBuilder missionFlightBuilder;
+    @Mock protected MissionFlights missionFlightBuilder;
     @Mock protected ConfigManagerCampaign configManager;
     @Mock protected CampaignPersonnelManager personnelManager;
     @Mock protected SquadronPersonnel squadronPersonnel;

@@ -11,13 +11,13 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
-import pwcg.mission.MissionFlightBuilder;
+import pwcg.mission.MissionFlights;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SmokeGroupTest
 {
     @Mock Mission mission;
-    @Mock MissionFlightBuilder missionFlightBuilder;
+    @Mock MissionFlights missionFlightBuilder;
     
     @Before
     public void setup() throws PWCGException

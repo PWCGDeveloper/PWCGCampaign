@@ -49,7 +49,7 @@ public class Mission
     private MissionObjectiveGroup missionObjectiveFailure = new MissionObjectiveGroup();
 
     private MissionSquadronRecorder squadronChooser = new MissionSquadronRecorder();
-    private MissionFlightBuilder flightBuilder;
+    private MissionFlights flightBuilder;
     private MissionVirtualEscortHandler virtualEscortHandler = new MissionVirtualEscortHandler();
     private SkinsInUse skinsInUse = new SkinsInUse();
     private List<StopAttackingNearAirfieldSequence> stopSequenceForMission = new ArrayList<>();
@@ -102,7 +102,7 @@ public class Mission
 
         groundUnitManager = new MissionGroundUnitResourceManager();
         groundUnitBuilder = new MissionGroundUnitBuilder(this);
-        flightBuilder = new MissionFlightBuilder(this);
+        flightBuilder = new MissionFlights(this);
         blockBuilder = new MissionBlockBuilder(this);
         airfieldBuilder = new MissionAirfieldBuilder(this);
         frontLines = new MissionFrontLineIconBuilder(campaign);
@@ -408,7 +408,7 @@ public class Mission
         return groundUnitBuilder;
     }
 
-    public MissionFlightBuilder getMissionFlightBuilder()
+    public MissionFlights getMissionFlightBuilder()
     {
         return flightBuilder;
     }
