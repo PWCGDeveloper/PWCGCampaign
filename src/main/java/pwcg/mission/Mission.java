@@ -49,7 +49,7 @@ public class Mission
     private MissionObjectiveGroup missionObjectiveFailure = new MissionObjectiveGroup();
 
     private MissionSquadronRecorder squadronChooser = new MissionSquadronRecorder();
-    private MissionFlights flightBuilder;
+    private MissionFlights missionFlights;
     private MissionVirtualEscortHandler virtualEscortHandler = new MissionVirtualEscortHandler();
     private SkinsInUse skinsInUse = new SkinsInUse();
     private List<StopAttackingNearAirfieldSequence> stopSequenceForMission = new ArrayList<>();
@@ -102,7 +102,7 @@ public class Mission
 
         groundUnitManager = new MissionGroundUnitResourceManager();
         groundUnitBuilder = new MissionGroundUnitBuilder(this);
-        flightBuilder = new MissionFlights(this);
+        missionFlights = new MissionFlights(this);
         blockBuilder = new MissionBlockBuilder(this);
         airfieldBuilder = new MissionAirfieldBuilder(this);
         frontLines = new MissionFrontLineIconBuilder(campaign);
@@ -157,7 +157,7 @@ public class Mission
     private void generateFlights(MissionSquadronFlightTypes playerFlightTypeOverrides) throws PWCGException
     {
         MissionSquadronFlightTypes playerFlightTypes = makePlayerFlightTypes(playerFlightTypeOverrides);
-        flightBuilder.generateFlights(playerFlightTypes);
+        missionFlights.generateFlights(playerFlightTypes);
         createFirePots();
     }
     
@@ -213,7 +213,7 @@ public class Mission
     {
         IMissionFile missionFile = MissionFileFactory.createMissionFile(this);
 
-        IMissionDescription missionDescription = MissionDescriptionFactory.buildMissionDescription(campaign, this, flightBuilder.getReferencePlayerFlight());
+        IMissionDescription missionDescription = MissionDescriptionFactory.buildMissionDescription(campaign, this, missionFlights.getReferencePlayerFlight());
         String missionDescriptionText = missionDescription.createDescription();
 
         MissionDescriptionFile missionDescriptionFile = new MissionDescriptionFile();
@@ -247,7 +247,7 @@ public class Mission
 
     private void setMissionScript(MissionOptions missionOptions) throws PWCGException
     {
-        List<PlaneMcu> playerPlanes = flightBuilder.getReferencePlayerFlight().getFlightPlanes().getPlayerPlanes();
+        List<PlaneMcu> playerPlanes = missionFlights.getReferencePlayerFlight().getFlightPlanes().getPlayerPlanes();
         String playerScript = playerPlanes.get(0).getScript();
         missionOptions.setPlayerConfig(playerScript);
     }
@@ -258,9 +258,9 @@ public class Mission
         {
             setMissionScript(missionOptions);
 
-            flightBuilder.finalizeMissionFlights();
+            missionFlights.finalizeMissionFlights();
             frontLines.buildFrontLineIcons();
-            waypointIconBuilder.createWaypointIcons(flightBuilder.getPlayerFlights());
+            waypointIconBuilder.createWaypointIcons(missionFlights.getPlayerFlights());
             airfieldIconBuilder.createWaypointIcons(campaign, this);
             assaultIconBuilder.createAssaultIcons(battleManager.getMissionAssaultDefinitions());
 
@@ -270,9 +270,9 @@ public class Mission
             assignIndirectFireTargets();
             setEngagableAAA();
 
-            if (flightBuilder.getPlayerFlights().size() > 1)
+            if (missionFlights.getPlayerFlights().size() > 1)
             {
-                squadronIconBuilder.createSquadronIcons(flightBuilder.getPlayerFlights());
+                squadronIconBuilder.createSquadronIcons(missionFlights.getPlayerFlights());
             }
 
             if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
@@ -335,7 +335,7 @@ public class Mission
     {
         boolean hasPlayerAllied = false;
         boolean hasPlayerAxis = false;
-        for (IFlight flight : flightBuilder.getPlayerFlights())
+        for (IFlight flight : missionFlights.getPlayerFlights())
         {
             if (flight.getSquadron().determineSide() == Side.ALLIED)
             {
@@ -410,7 +410,7 @@ public class Mission
 
     public MissionFlights getMissionFlights()
     {
-        return flightBuilder;
+        return missionFlights;
     }
 
     public MissionFrontLineIconBuilder getMissionFrontLineIconBuilder()

@@ -19,16 +19,16 @@ public class OptionalFlightKeeper
     private Mission mission;
     private Campaign campaign;
 
-    private List<IFlight> alliedProximitySortedFlights;
-    private List<IFlight> axisProximitySortedFlights;
+    private List<IFlight> alliedAiFlightsByProximityToPlayer;
+    private List<IFlight> axisAiFlightsByProximityToPlayer;
     private KeptFlightsRecorder keptFlightsRecorder;
 
-    public OptionalFlightKeeper(Mission mission, List<IFlight> alliedProximitySortedFlights, List<IFlight> axisProximitySortedFlights, KeptFlightsRecorder keptFlightsRecorder)
+    public OptionalFlightKeeper(Mission mission, List<IFlight> alliedAiFlightsByProximityToPlayer, List<IFlight> axisAiFlightsByProximityToPlayer, KeptFlightsRecorder keptFlightsRecorder)
     {
         this.mission = mission;
         this.campaign = mission.getCampaign();
-        this.alliedProximitySortedFlights = alliedProximitySortedFlights;
-        this.axisProximitySortedFlights = axisProximitySortedFlights;
+        this.alliedAiFlightsByProximityToPlayer = alliedAiFlightsByProximityToPlayer;
+        this.axisAiFlightsByProximityToPlayer = axisAiFlightsByProximityToPlayer;
         this.keptFlightsRecorder = keptFlightsRecorder;
     }
 
@@ -44,14 +44,14 @@ public class OptionalFlightKeeper
     {
         int configuredAlliedAiFlights = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedFlightsToKeepKey);
         int maxAlliedAiFlights = calculateFlightsToKeepForSide(Side.ALLIED, configuredAlliedAiFlights);
-        selectFlightsToKeep(maxAlliedAiFlights, Side.ALLIED, alliedProximitySortedFlights);
+        selectFlightsToKeep(maxAlliedAiFlights, Side.ALLIED, alliedAiFlightsByProximityToPlayer);
     }
 
     private void keepLimitedAxisFlights() throws PWCGException
     {
         int configuredAxisAiFlights = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisFlightsToKeepKey);
         int maxAxisAiFlights = calculateFlightsToKeepForSide(Side.AXIS, configuredAxisAiFlights);
-        selectFlightsToKeep(maxAxisAiFlights, Side.AXIS, axisProximitySortedFlights);
+        selectFlightsToKeep(maxAxisAiFlights, Side.AXIS, axisAiFlightsByProximityToPlayer);
     }
 
     private int calculateFlightsToKeepForSide(Side side, int configuredFlightsToKeep) throws PWCGException

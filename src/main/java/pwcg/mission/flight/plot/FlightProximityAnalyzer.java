@@ -6,17 +6,18 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PositionFinder;
-import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.mcu.group.virtual.VirtualWaypoint;
 
 public class FlightProximityAnalyzer
 {
-    private Mission mission = null;
+    private List<IFlight> playerFlights;
+    private List<IFlight> aFlights;
 
-    public FlightProximityAnalyzer (Mission mission)
+    public FlightProximityAnalyzer (List<IFlight> playerFlights, List<IFlight> aFlights)
     {
-        this.mission = mission;
+        this.playerFlights = playerFlights;
+        this.aFlights = aFlights;
     }
 
     public void plotFlightEncounters() throws PWCGException 
@@ -27,11 +28,11 @@ public class FlightProximityAnalyzer
     private void plotPlayerFlightEncounters() throws PWCGException 
     {
         int playerEncounerDistance = VirtualWaypoint.VWP_TRIGGGER_DISTANCE;
-        for (IFlight aiFlight : mission.getMissionFlights().getAiFlights())
+        for (IFlight aiFlight : aFlights)
         {
             if (!aiFlight.isPlayerFlight())
             {
-                for (IFlight playerFlight : mission.getMissionFlights().getPlayerFlights())
+                for (IFlight playerFlight : playerFlights)
                 {
                     plotEncounter(playerFlight, aiFlight, playerEncounerDistance);
                 }

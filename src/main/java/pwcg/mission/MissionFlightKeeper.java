@@ -2,7 +2,6 @@ package pwcg.mission;
 
 import java.util.List;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -14,12 +13,16 @@ public class MissionFlightKeeper
 {
     private Mission mission;
     private MissionFlightProximitySorter proximitySorter;
+    private List<IFlight> allPlayerFlights;
+    private List<IFlight> allAIFlights;
 
     private KeptFlightsRecorder keptFlightsRecorder;
 
-    public MissionFlightKeeper(Campaign campaign, Mission mission)
+    public MissionFlightKeeper(Mission mission, List<IFlight> allPlayerFlights, List<IFlight> allAIFlights)
     {
         this.mission = mission;
+        this.allPlayerFlights = allPlayerFlights;
+        this.allAIFlights = allAIFlights;
         this.proximitySorter = new MissionFlightProximitySorter();
         this.keptFlightsRecorder = new KeptFlightsRecorder();
     }
@@ -38,14 +41,14 @@ public class MissionFlightKeeper
 
     private void sortFlightsByProximity() throws PWCGException
     {
-        FlightProximityAnalyzer proximityAnalyzer = new FlightProximityAnalyzer(mission);
+        FlightProximityAnalyzer proximityAnalyzer = new FlightProximityAnalyzer(allPlayerFlights, allAIFlights);
         proximityAnalyzer.plotFlightEncounters();
-        proximitySorter.mapEnemyDistanceToPlayerFlights(mission.getMissionFlights().getAiFlights());
+        proximitySorter.mapEnemyDistanceToPlayerFlights(allAIFlights);
     }
 
     private void keepRequiredFlights() throws PWCGException
     {
-        NecessaryFlightKeeper necessaryFlightKeeper = new NecessaryFlightKeeper(mission, proximitySorter.getFlightsByProximity(Side.ALLIED), proximitySorter.getFlightsByProximity(Side.AXIS), keptFlightsRecorder);   
+        NecessaryFlightKeeper necessaryFlightKeeper = new NecessaryFlightKeeper(mission, allPlayerFlights, proximitySorter.getFlightsByProximity(Side.ALLIED), proximitySorter.getFlightsByProximity(Side.AXIS), keptFlightsRecorder);   
         necessaryFlightKeeper.keepNecessaryFlights();
     }
 

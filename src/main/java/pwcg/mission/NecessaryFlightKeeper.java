@@ -1,5 +1,6 @@
 package pwcg.mission;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
@@ -13,16 +14,18 @@ public class NecessaryFlightKeeper
     private Mission mission;
     private Campaign campaign;
 
-    private List<IFlight> alliedProximitySortedFlights;
-    private List<IFlight> axisProximitySortedFlights;
+    private List<IFlight> playerFlights;
+    private List<IFlight> alliedAiFlightsByProximityToPlayer;
+    private List<IFlight> axisAiFlightsByProximityToPlayer;
     private KeptFlightsRecorder keptFlightsRecorder;
 
-    public NecessaryFlightKeeper(Mission mission, List<IFlight> alliedProximitySortedFlights, List<IFlight> axisProximitySortedFlights, KeptFlightsRecorder keptFlights)
+    public NecessaryFlightKeeper(Mission mission, List<IFlight> playerFlights, List<IFlight> alliedAiFlightsByProximityToPlayer, List<IFlight> axisAiFlightsByProximityToPlayer, KeptFlightsRecorder keptFlights)
     {
         this.mission = mission;
         this.campaign = mission.getCampaign();
-        this.alliedProximitySortedFlights = alliedProximitySortedFlights;
-        this.axisProximitySortedFlights = axisProximitySortedFlights;
+        this.playerFlights = playerFlights;
+        this.alliedAiFlightsByProximityToPlayer = alliedAiFlightsByProximityToPlayer;
+        this.axisAiFlightsByProximityToPlayer = axisAiFlightsByProximityToPlayer;
         this.keptFlightsRecorder = keptFlights;
     }
 
@@ -30,10 +33,18 @@ public class NecessaryFlightKeeper
     {
         PWCGLogger.log(LogLevel.DEBUG, "*** Necessary Flight Keeper Started ***: ");
 
-        keepPlayerFlights(mission.getMissionFlights().getPlayerFlights());
-        keepOpposingPlayerFlights(mission.getMissionFlights().getAiFlights());
+        keepPlayerFlights(playerFlights);
+        keepOpposingPlayerFlights(getAllAiFights());
         keepRequiredAlliedFlights();
         keepRequiredAxisFlights();
+    }
+
+    private List<IFlight> getAllAiFights()
+    {
+        List<IFlight> aiFlights = new ArrayList<>();
+        aiFlights.addAll(alliedAiFlightsByProximityToPlayer);
+        aiFlights.addAll(axisAiFlightsByProximityToPlayer);
+        return aiFlights;
     }
 
     private void keepPlayerFlights(List<IFlight> flights) throws PWCGException
@@ -60,12 +71,12 @@ public class NecessaryFlightKeeper
 
     private void keepRequiredAlliedFlights() throws PWCGException
     {
-        keepRequiredFlights(alliedProximitySortedFlights);
+        keepRequiredFlights(alliedAiFlightsByProximityToPlayer);
     }
 
     private void keepRequiredAxisFlights() throws PWCGException
     {
-        keepRequiredFlights(axisProximitySortedFlights);
+        keepRequiredFlights(axisAiFlightsByProximityToPlayer);
     }
 
     private void keepRequiredFlights(List<IFlight> flights) throws PWCGException
