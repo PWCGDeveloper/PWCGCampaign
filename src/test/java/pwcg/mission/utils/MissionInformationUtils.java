@@ -12,13 +12,16 @@ public class MissionInformationUtils
 
     public static void verifyFlightTargets(Mission mission, FlightTypes expectedFlightType, TargetType expectedTargetType, Side side) throws PWCGException
     {
+        boolean targetTypeFound = false;
         for (IFlight flight : mission.getMissionFlights().getAiFlightsForSide(side))
         {
             if (flight.getFlightType() == expectedFlightType)
             {
-                assert (flight.getTargetDefinition().getTargetType() == expectedTargetType);
+                targetTypeFound = true;
             }
         }
+
+        assert (targetTypeFound);
     }
 
     public static void verifyAiFlightTypeInMission(Mission mission, FlightTypes flightType, Side side) throws PWCGException

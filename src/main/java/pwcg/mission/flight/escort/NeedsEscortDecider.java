@@ -30,6 +30,11 @@ public class NeedsEscortDecider
             return false;
         }
         
+        if (escortedFlight.getFlightInformation().getFlightType() == FlightTypes.STRATEGIC_BOMB)
+        {
+            return true;
+        }
+        
         int escortedOdds = getEsortOddsForFlightType(escortedFlight);
         int escortedDiceRoll = RandomNumberGenerator.getRandom(100);        
         if (escortedDiceRoll < escortedOdds)

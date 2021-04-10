@@ -43,7 +43,7 @@ public class AirfieldAttackScrambleFlightBuilder
     private IFlight createOpposingFlight() throws PWCGException
     {
         Squadron opposingSquadron = getOpposingSquadrons();
-        if (opposingSquadron == null)
+        if (opposingSquadron != null)
         {
             return createOpposingFlight(opposingSquadron);
         }
