@@ -10,7 +10,7 @@
 		{
 			"association": "ATTACKER",
 			"role": "ROLE_DIVE_BOMB",
-			"preferredFlightType": "GROUND_ATTACK",
+			"preferredFlightType": "DIVE_BOMB",
 			"targetType": "TARGET_DRIFTER"
 		},
 		{

@@ -58,7 +58,6 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
         Squadron friendlyFighterSquadron = EscortSquadronSelector.getEscortSquadron(flight, squadronToEscort.determineSide());
         if (friendlyFighterSquadron != null)
         {
-            flight.getMission().getMissionSquadronRecorder().registerSquadronInUse(friendlyFighterSquadron);
             FlightInformation vwpEscortFlightInformation = VirtualEscortFlightInformationBuilder.buildVirtualEscortFlightInformation(flight.getMission(), friendlyFighterSquadron);
             for (VirtualWaypoint virtualWaypoint : virtualWaypoints)
             {

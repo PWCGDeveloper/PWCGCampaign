@@ -95,9 +95,9 @@ public class TargetLocatorAir
                 nearbyEnemyFrontPosition, homePosition, rendezvousDistanceFromFront, flightInformation.getCampaign().getDate(), getFriendlySide());
     }
 
-    public Coordinate getEscortForPlayerRendezvousCoordinate()
+    public Coordinate getEscortForPlayerRendezvousCoordinate() throws PWCGException
     {
-        return new Coordinate();
+        return flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
     }
 
     private Side getFriendlySide() throws PWCGException

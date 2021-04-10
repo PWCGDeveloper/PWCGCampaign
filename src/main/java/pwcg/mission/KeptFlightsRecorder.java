@@ -98,4 +98,10 @@ public class KeptFlightsRecorder
         KeptFlights keptFlightsForSide = getKeptFlightsForSide(flight);
         return keptFlightsForSide.airfieldInUse(flight);
     }
+
+    public boolean isSquadronInKept(IFlight flight) throws PWCGException
+    {
+        KeptFlights keptFlightsForSide = getKeptFlightsForSide(flight);
+        return keptFlightsForSide.isSquadronInKept(flight.getSquadron().getSquadronId());
+    }
 }

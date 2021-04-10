@@ -17,7 +17,7 @@ public class KeptFlights
     private Map<Integer, IFlight> fighterFlightsKept = new HashMap<>();
     private Map<Integer, IFlight> bomberFlightsKept = new HashMap<>();
     private Map<Integer, IFlight> otherFlightsKept = new HashMap<>();
-    
+
     private List<FlightTypes> keptFlightTypes = new ArrayList<>();
     private List<Airfield> keptFlightAirfields = new ArrayList<>();
 
@@ -35,12 +35,11 @@ public class KeptFlights
         {
             otherFlightsKept.put(keptFlight.getSquadron().getSquadronId(), keptFlight);
         }
-        
+
         keptFlightTypes.add(keptFlight.getFlightType());
         keptFlightAirfields.add(keptFlight.getSquadron().determineCurrentAirfieldCurrentMap(keptFlight.getCampaign().getDate()));
-        keptFlight.getMission().getMissionSquadronRecorder().registerSquadronInUse(keptFlight.getSquadron());
     }
-    
+
     public int getNumKeptFlightType(FlightTypes flightType)
     {
         int numKeptFlightsOfType = 0;
@@ -81,14 +80,14 @@ public class KeptFlights
     public List<IFlight> getKeptFlights()
     {
         List<IFlight> keptFlights = new ArrayList<>();
-        
+
         keptFlights.addAll(fighterFlightsKept.values());
         keptFlights.addAll(bomberFlightsKept.values());
         keptFlights.addAll(otherFlightsKept.values());
-        
+
         return keptFlights;
     }
-    
+
     public boolean airfieldInUse(IFlight flight)
     {
         for (Airfield keptFlightAirfield : keptFlightAirfields)
@@ -99,6 +98,26 @@ public class KeptFlights
                 return true;
             }
         }
+        return false;
+    }
+
+    public boolean isSquadronInKept(int squadronId)
+    {
+        if (fighterFlightsKept.containsKey(squadronId))
+        {
+            return true;
+        }
+        
+        if (bomberFlightsKept.containsKey(squadronId))
+        {
+            return true;
+        }
+        
+        if (otherFlightsKept.containsKey(squadronId))
+        {
+            return true;
+        }
+        
         return false;
     }
 }

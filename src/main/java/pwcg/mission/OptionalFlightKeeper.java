@@ -72,7 +72,7 @@ public class OptionalFlightKeeper
 
         for (IFlight flight : aiFlights)
         {
-            if (mission.getMissionSquadronRecorder().isSquadronInUse(flight.getSquadron().getSquadronId()))
+            if (keptFlightsRecorder.isSquadronInKept(flight))
             {
                 continue;
             }

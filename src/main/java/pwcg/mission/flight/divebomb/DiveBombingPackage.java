@@ -7,6 +7,7 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightPackage;
+import pwcg.mission.flight.scramble.AirfieldAttackScrambleFlightBuilder;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetDefinitionBuilder;
@@ -23,9 +24,12 @@ public class DiveBombingPackage implements IFlightPackage
         FlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.DIVE_BOMB);
         TargetDefinition targetDefinition = buildTargetDefinition(flightInformation);
         
-        DiveBombingFlight bombingFlight = new DiveBombingFlight (flightInformation, targetDefinition);
-        bombingFlight.createFlight();
-        return bombingFlight;
+        DiveBombingFlight diveBombingFlight = new DiveBombingFlight (flightInformation, targetDefinition);
+        diveBombingFlight.createFlight();
+        
+        AirfieldAttackScrambleFlightBuilder.addAirfieldScrambleToFlight(diveBombingFlight);
+
+        return diveBombingFlight;
     }
     
     private TargetDefinition buildTargetDefinition(FlightInformation flightInformation) throws PWCGException

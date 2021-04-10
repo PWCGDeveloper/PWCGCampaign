@@ -5,10 +5,9 @@ import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.FlightPayloadBuilder;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.initialposition.FlightPositionSetter;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
+import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory;
 import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory.IngressWaypointPattern;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
@@ -27,8 +26,8 @@ public class FerryFlight extends Flight implements IFlight
     {
         initialize(this);
         createWaypoints();
-        FlightPositionSetter.setFlightInitialPosition(this);
-        setFlightPayload();
+        WaypointPriority.setWaypointsNonFighterPriority(this);
+        createFlightCommonPostBuild();
     }
 
     private void createWaypoints() throws PWCGException
@@ -62,11 +61,5 @@ public class FerryFlight extends Flight implements IFlight
         }
         
         throw new PWCGException("Attempt to create a ferry flight with no ferry event recorded on campaign");
-    }
-
-    private void setFlightPayload() throws PWCGException
-    {
-        FlightPayloadBuilder flightPayloadHelper = new FlightPayloadBuilder(this);
-        flightPayloadHelper.setFlightPayload();
     }
 }

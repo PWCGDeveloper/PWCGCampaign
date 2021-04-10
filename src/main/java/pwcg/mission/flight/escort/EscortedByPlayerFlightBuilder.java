@@ -12,7 +12,6 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.MissionSquadronRecorder;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
@@ -51,7 +50,6 @@ public class EscortedByPlayerFlightBuilder
     {
         Squadron friendlyBomberSquadron = determineSquadronToBeEscorted(
                 playerEscortFlightInformation.getCampaign(), playerEscortFlightInformation.getSquadron());
-        playerEscortFlightInformation.getMission().getMissionSquadronRecorder().registerSquadronInUse(friendlyBomberSquadron);
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit(friendlyBomberSquadron.determineCurrentPosition(playerEscortFlightInformation.getCampaign().getDate()));     
         
         this.escortedFlightInformation = EscortedByPlayerFlightInformationBuilder.buildEscortedByPlayerFlightInformation(
@@ -82,9 +80,7 @@ public class EscortedByPlayerFlightBuilder
     {
         List<Role> bomberRole = new ArrayList<Role>(Arrays.asList(role));
         Side friendlySide = escortSquadron.determineSide();
-        MissionSquadronRecorder squadronInUseRecorder = playerEscortFlightInformation.getMission().getMissionSquadronRecorder();
-        List<Squadron> squadronsToExclude = squadronInUseRecorder.getSquadronsInUse();
-        Squadron escortedSquadron = PWCGContext.getInstance().getSquadronManager().getSingleViableAiSquadronByRoleAndSideAndCurrentMap(campaign, bomberRole, friendlySide, squadronsToExclude);
+        Squadron escortedSquadron = PWCGContext.getInstance().getSquadronManager().getEscortOrEscortedSquadron(campaign, playerEscortFlightInformation.getMission().getMissionBorders().getCenter(), bomberRole, friendlySide);
         return escortedSquadron;
     }
 

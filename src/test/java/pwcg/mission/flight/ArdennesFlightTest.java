@@ -16,6 +16,8 @@ import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.target.TargetType;
+import pwcg.mission.utils.MissionFlightValidator;
+import pwcg.mission.utils.MissionInformationUtils;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
@@ -45,10 +47,9 @@ public class ArdennesFlightTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
 
-        boolean groundAttackFound = findFlightType(mission, FlightTypes.GROUND_ATTACK);
-
         assert (mission.getSkirmish() != null);
-        assert (groundAttackFound);
+
+        MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_ARMOR, Side.ALLIED);
     }
 
     @Test
@@ -65,13 +66,12 @@ public class ArdennesFlightTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
 
-        boolean groundAttackFound = findFlightType(mission, FlightTypes.GROUND_ATTACK);
-        boolean cargoDropFound = findFlightType(mission, FlightTypes.CARGO_DROP);
         assert (mission.getSkirmish() != null);
-        assert (groundAttackFound);        
-        assert (cargoDropFound);
 
-        verifyFlightTargets(mission);
+        MissionInformationUtils.verifyAiFlightTypeInMission(mission, FlightTypes.CARGO_DROP, Side.ALLIED);
+        MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_INFANTRY, Side.ALLIED);
+        MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.BOMB, TargetType.TARGET_INFANTRY, Side.ALLIED);
+        MissionFlightValidator.validateMission(mission);
     }
 
     @Test
@@ -89,34 +89,5 @@ public class ArdennesFlightTest
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         
         assert (mission.getSkirmish() == null);
-    }
-
-    private void verifyFlightTargets(Mission mission) throws PWCGException
-    {
-        for (IFlight flight : mission.getMissionFlights().getAiFlightsForSide(Side.ALLIED))
-        {
-            if (flight.getFlightType() == FlightTypes.GROUND_ATTACK)
-            {
-                assert (flight.getTargetDefinition().getTargetType() == TargetType.TARGET_INFANTRY);
-            }
-            
-            if (flight.getFlightType() == FlightTypes.BOMB)
-            {
-                assert (flight.getTargetDefinition().getTargetType() == TargetType.TARGET_INFANTRY);
-            }
-        }
-    }
-
-    private boolean findFlightType(Mission mission, FlightTypes flightType) throws PWCGException
-    {
-        boolean flightTypeFound = false;
-        for (IFlight flight : mission.getMissionFlights().getAiFlightsForSide(Side.ALLIED))
-        {
-            if (flight.getFlightInformation().getFlightType() == flightType)
-            {
-                flightTypeFound = true;
-            }
-        }
-        return flightTypeFound;
     }
 }

@@ -49,9 +49,7 @@ public class MissionFlightBuilder
             {
                 EscortForPlayerFlightBuilder escortFlightBuilder = new EscortForPlayerFlightBuilder();
                 escortFlightBuilder.addEscort(mission, playerFlight);
-            }
-            
-            mission.getMissionSquadronRecorder().registerSquadronInUse(playerSquadron);
+            }            
         }
     }
 
@@ -75,11 +73,7 @@ public class MissionFlightBuilder
     private List<IFlight> keepAiFlights() throws PWCGException
     {
         MissionFlightKeeper missionFlightKeeper = new MissionFlightKeeper(mission, playerFlights, aiflights);
-        List<IFlight> keptAiFlights = missionFlightKeeper.keepLimitedFlights();
-        
-        List<IFlight> keptFlights = new ArrayList<>();
-        keptFlights.addAll(playerFlights);
-        keptFlights.addAll(keptAiFlights);
+        List<IFlight> keptFlights = missionFlightKeeper.keepLimitedFlights();
         return keptFlights;
     }
 

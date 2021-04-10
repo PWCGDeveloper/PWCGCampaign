@@ -11,6 +11,7 @@ import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
+import pwcg.mission.flight.initialposition.FlightPositionSetter;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.IWaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointPackage;
@@ -41,6 +42,19 @@ public abstract class Flight implements IFlight
         this.flightPlanes = new FlightPlanes(flight);
         this.waypointPackage = new WaypointPackage(flight);
         this.virtualWaypointPackage = new VirtualWaypointPackage(flight);
+    }
+
+
+    public void createFlightCommonPostBuild() throws PWCGException
+    {
+        FlightPositionSetter.setFlightInitialPosition(this);
+        setFlightPayload();
+    }
+
+    private void setFlightPayload() throws PWCGException
+    {
+        FlightPayloadBuilder flightPayloadHelper = new FlightPayloadBuilder(this);
+        flightPayloadHelper.setFlightPayload();
     }
 
     public void write(BufferedWriter writer) throws PWCGException 

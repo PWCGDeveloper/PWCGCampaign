@@ -51,7 +51,7 @@ public class GroundAttackPackageTest
 
         assert(flight.getLinkedFlights().getLinkedFlights().size() == 1);
 
-        TestDriver.getInstance().setEnabled(true);
+        TestDriver.getInstance().setEnabled(false);
     }
 
     @Test
@@ -66,8 +66,8 @@ public class GroundAttackPackageTest
         verifyProximityToTargetAirfield(flight);
         
         assert(flight.getLinkedFlights().getLinkedFlights().size() == 2);
-
-        TestDriver.getInstance().setEnabled(true);
+        
+        TestDriver.getInstance().setEnabled(false);
     }
 
     private IFlight buildFlight(Campaign campaign) throws PWCGException

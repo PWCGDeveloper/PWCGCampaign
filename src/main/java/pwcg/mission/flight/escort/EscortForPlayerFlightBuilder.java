@@ -41,8 +41,6 @@ public class EscortForPlayerFlightBuilder
 
         if (friendlyFighterSquadron != null)
         {          
-            playerFlight.getMission().getMissionSquadronRecorder().registerSquadronInUse(friendlyFighterSquadron);
-
             McuWaypoint rendezvousWP = WaypointGeneratorUtils.findWaypointByType(playerFlight.getWaypointPackage().getAllWaypoints(), 
                     WaypointType.RENDEZVOUS_WAYPOINT.getName());
 

@@ -3,10 +3,8 @@ package pwcg.mission.flight.offensive;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightPayloadBuilder;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.initialposition.FlightPositionSetter;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
 import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory;
 import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory.IngressWaypointPattern;
@@ -34,8 +32,7 @@ public class OffensiveFlight extends Flight implements IFlight
     {
         initialize(this);
         createWaypoints();
-        FlightPositionSetter.setFlightInitialPosition(this);
-        setFlightPayload();
+        createFlightCommonPostBuild();
     }
 
     private void createWaypoints() throws PWCGException
@@ -73,12 +70,6 @@ public class OffensiveFlight extends Flight implements IFlight
             OffensiveWaypointsFrontFactory missionWaypointFactory = new OffensiveWaypointsFrontFactory(this);
             return  missionWaypointFactory.createWaypoints(ingressWaypoint);
         }
-    }
-
-    private void setFlightPayload() throws PWCGException
-    {
-        FlightPayloadBuilder flightPayloadHelper = new FlightPayloadBuilder(this);
-        flightPayloadHelper.setFlightPayload();
     }
 
     private void createOffensiveFlightType()

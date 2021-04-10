@@ -1,14 +1,17 @@
 package pwcg.campaign.squadron;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.TreeMap;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.io.json.SquadronIOJson;
 import pwcg.campaign.plane.Role;
@@ -18,7 +21,6 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
-import pwcg.core.utils.RandomNumberGenerator;
 
 public class SquadronManager 
 {
@@ -240,11 +242,23 @@ public class SquadronManager
         }
     }
 
-    public Squadron getSingleViableAiSquadronByRoleAndSideAndCurrentMap(Campaign campaign, List <Role> acceptableRoles, Side side, List<Squadron> squadronsToExclude) throws PWCGException 
+    public Squadron getEscortOrEscortedSquadron(Campaign campaign, Coordinate referenceCoordinate, List <Role> acceptableRoles, Side side) throws PWCGException 
     {
         List<Squadron> selectedSquadronsNoPlayer = getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, side);
-        List<Squadron> availableSquadrons = removeExcludedSquadrons(selectedSquadronsNoPlayer, squadronsToExclude);
-        return chooseSquadron(availableSquadrons);
+
+        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        int squadronSearchRadius = productSpecific.getLargeMissionRadius();
+
+        List<Squadron> inRangeSquadrons = SquadronReducer.reduceToProximityOnCurrentMap(selectedSquadronsNoPlayer, campaign.getDate(), referenceCoordinate, squadronSearchRadius);
+        if (inRangeSquadrons.size() > 0)
+        {
+            Collections.shuffle(inRangeSquadrons);
+            return inRangeSquadrons.get(0);
+        }
+        else
+        {
+            return null;
+        }
     }
 
     public Squadron getClosestSquadron(Coordinate position, Date date) throws PWCGException 
@@ -257,40 +271,5 @@ public class SquadronManager
         }
 
         return null;
-    }
-    
-    private List<Squadron> removeExcludedSquadrons(List<Squadron> selectedSquadronsNoPlayer, List<Squadron> squadronsToExclude)
-    {
-        List<Squadron> availableSquadrons = new ArrayList<>();
-        for (Squadron selectedSquadron : selectedSquadronsNoPlayer)
-        {
-            boolean exclude = false;
-            for (Squadron excludedSquadron : squadronsToExclude)
-            {
-                if (excludedSquadron.getSquadronId() == selectedSquadron.getSquadronId())
-                {
-                    exclude = true;
-                    break;
-                }
-            }
-
-            if (!exclude)
-            { 
-                availableSquadrons.add(selectedSquadron);
-            }
-        }
-        return availableSquadrons;
-    }
-
-    private Squadron chooseSquadron(List<Squadron> squadrons)
-    {
-        Squadron selectedSquadron = null;
-        if (squadrons.size() > 0)
-        {
-            int index = RandomNumberGenerator.getRandom(squadrons.size());
-            selectedSquadron = squadrons.get(index);
-        }
-
-        return selectedSquadron;
     }
 }

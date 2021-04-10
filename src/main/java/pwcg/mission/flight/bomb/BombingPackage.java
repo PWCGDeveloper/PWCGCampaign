@@ -11,7 +11,6 @@ import pwcg.mission.flight.scramble.AirfieldAttackScrambleFlightBuilder;
 import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetDefinitionBuilder;
-import pwcg.mission.target.TargetType;
 
 public class BombingPackage implements IFlightPackage
 {
@@ -31,7 +30,7 @@ public class BombingPackage implements IFlightPackage
         BombingFlight bombingFlight = new BombingFlight (flightInformation, targetDefinition);
         bombingFlight.createFlight();
         
-        buildOpposingFlight(bombingFlight);
+        AirfieldAttackScrambleFlightBuilder.addAirfieldScrambleToFlight(bombingFlight);
 
         return bombingFlight;
     }
@@ -40,15 +39,5 @@ public class BombingPackage implements IFlightPackage
     {
         ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilder(flightInformation);
         return targetDefinitionBuilder.buildTargetDefinition();
-    }
-    
-    private void buildOpposingFlight(IFlight groundAttackFlight) throws PWCGException
-    {
-        if (groundAttackFlight.getTargetDefinition().getTargetType() == TargetType.TARGET_AIRFIELD)
-        {
-            AirfieldAttackScrambleFlightBuilder groundAttackOpposingFlightBuilder = new AirfieldAttackScrambleFlightBuilder(groundAttackFlight);
-            IFlight opposingScrambleFlight = groundAttackOpposingFlightBuilder.createOpposingFlight();
-            groundAttackFlight.getLinkedFlights().addLinkedFlight(opposingScrambleFlight);
-        }
     }
 }

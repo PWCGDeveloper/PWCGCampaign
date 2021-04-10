@@ -48,7 +48,6 @@ public class Mission
     private MissionObjectiveGroup missionObjectiveSuccess = new MissionObjectiveGroup();
     private MissionObjectiveGroup missionObjectiveFailure = new MissionObjectiveGroup();
 
-    private MissionSquadronRecorder squadronChooser = new MissionSquadronRecorder();
     private MissionFlights missionFlights;
     private MissionVirtualEscortHandler virtualEscortHandler = new MissionVirtualEscortHandler();
     private SkinsInUse skinsInUse = new SkinsInUse();
@@ -441,11 +440,6 @@ public class Mission
     public MissionBattleManager getMissionBattleManager()
     {
         return battleManager;
-    }
-
-    public MissionSquadronRecorder getMissionSquadronRecorder()
-    {
-        return squadronChooser;
     }
 
     public MissionVirtualEscortHandler getMissionVirtualEscortHandler()

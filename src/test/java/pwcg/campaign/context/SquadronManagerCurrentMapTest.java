@@ -30,19 +30,31 @@ public class SquadronManagerCurrentMapTest
     }
 
     @Test
-    public void getSingleViableAiSquadronByRoleAndSideAndCurrentMapTest() throws PWCGException
+    public void getEscortOrEscortedSquadronAlliedTest() throws PWCGException
     {
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
 
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.RAF_184_PROFILE.getSquadronId());
+        
         List<Role> roles = new ArrayList<Role>(Arrays.asList(Role.ROLE_BOMB));
-        Squadron nearbySquadron = squadronManager.getSingleViableAiSquadronByRoleAndSideAndCurrentMap(campaign, roles, Side.ALLIED, new ArrayList<>());
+        Squadron nearbySquadron = squadronManager.getEscortOrEscortedSquadron(campaign, squadron.determineCurrentPosition(campaign.getDate()), roles, Side.ALLIED);
+
         assert(nearbySquadron != null);
         assert(nearbySquadron.determineSide() == Side.ALLIED);
         assert(nearbySquadron.getSquadronRoles().isSquadronThisRole(campaign.getDate(), Role.ROLE_BOMB) == true);
-        
-        roles = new ArrayList<Role>(Arrays.asList(Role.ROLE_FIGHTER));
-        nearbySquadron = squadronManager.getSingleViableAiSquadronByRoleAndSideAndCurrentMap(campaign, roles, Side.AXIS, new ArrayList<>());
+    }
+
+    @Test
+    public void getEscortOrEscortedSquadronAxisTest() throws PWCGException
+    {
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
+         
+        List<Role> roles = new ArrayList<Role>(Arrays.asList(Role.ROLE_FIGHTER));
+        Squadron nearbySquadron = squadronManager.getEscortOrEscortedSquadron(campaign, squadron.determineCurrentPosition(campaign.getDate()), roles, Side.AXIS);
         assert(nearbySquadron != null);
         assert(nearbySquadron.determineSide() == Side.AXIS);
         assert(nearbySquadron.getSquadronRoles().isSquadronThisRole(campaign.getDate(), Role.ROLE_FIGHTER) == true);

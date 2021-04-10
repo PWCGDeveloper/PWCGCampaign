@@ -1,0 +1,27 @@
+{
+	"skirmishes": [
+		{
+			"name": "Stalingrad-Barges",
+			"swCorner": {
+				"xPos": 131000,
+				"yPos": 0.0,
+				"zPos": 254500
+			},
+			"neCorner": {
+				"xPos": 132000,
+				"yPos": 0.0,
+				"zPos": 255500
+			},
+			"startDate": "19420908",
+			"stopDate": "19420912",
+			"iconicFlightTypes": [
+				{
+					"flightType": "DIVE_BOMB",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_ANTI_RIVER_TRAFFIC",
+			"attacker": "AXIS"
+		}
+	]
+}

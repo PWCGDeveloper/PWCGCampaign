@@ -1,0 +1,17 @@
+{
+	"profileType": "SKIRMISH_PROFILE_CARPET_BOMB",
+	"skirmishProfileElements": [
+		{
+			"association": "ATTACKER",
+			"role": "ROLE_ATTACK",
+			"preferredFlightType": "BOMB",
+			"targetType": "TARGET_CITY"
+		},
+		{
+			"association": "DEFENDER",
+			"role": "ROLE_FIGHTER",
+			"preferredFlightType": "INTERCEPT",
+			"targetType": "TARGET_AIR"
+		}
+	]
+}

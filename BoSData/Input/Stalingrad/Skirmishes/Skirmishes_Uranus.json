@@ -1,0 +1,50 @@
+{
+	"skirmishes": [
+		{
+			"name": "Stalingrad-Uranus-South",
+			"swCorner": {
+				"xPos": 90000,
+				"yPos": 0.0,
+				"zPos": 250000
+			},
+			"neCorner": {
+				"xPos": 105000,
+				"yPos": 0.0,
+				"zPos": 265000
+			},
+			"startDate": "19421111",
+			"stopDate": "19421122",
+			"iconicFlightTypes": [
+				{
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_ANTI_ARMOR",
+			"attacker": "ALLIED"
+		},
+		{
+			"name": "Stalingrad-Uranus-North",
+			"swCorner": {
+				"xPos": 160000,
+				"yPos": 0.0,
+				"zPos": 210000
+			},
+			"neCorner": {
+				"xPos": 180000,
+				"yPos": 0.0,
+				"zPos": 260000
+			},
+			"startDate": "19421111",
+			"stopDate": "19421122",
+			"iconicFlightTypes": [
+				{
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_ANTI_ARMOR",
+			"attacker": "ALLIED"
+		}
+	]
+}

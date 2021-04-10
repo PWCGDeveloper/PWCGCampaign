@@ -3,7 +3,6 @@ package pwcg.mission;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
@@ -12,7 +11,6 @@ import pwcg.mission.flight.IFlight;
 public class NecessaryFlightKeeper
 {
     private Mission mission;
-    private Campaign campaign;
 
     private List<IFlight> playerFlights;
     private List<IFlight> alliedAiFlightsByProximityToPlayer;
@@ -22,7 +20,6 @@ public class NecessaryFlightKeeper
     public NecessaryFlightKeeper(Mission mission, List<IFlight> playerFlights, List<IFlight> alliedAiFlightsByProximityToPlayer, List<IFlight> axisAiFlightsByProximityToPlayer, KeptFlightsRecorder keptFlights)
     {
         this.mission = mission;
-        this.campaign = mission.getCampaign();
         this.playerFlights = playerFlights;
         this.alliedAiFlightsByProximityToPlayer = alliedAiFlightsByProximityToPlayer;
         this.axisAiFlightsByProximityToPlayer = axisAiFlightsByProximityToPlayer;
@@ -35,6 +32,7 @@ public class NecessaryFlightKeeper
 
         keepPlayerFlights(playerFlights);
         keepOpposingPlayerFlights(getAllAiFights());
+        keepLinkedPlayerFlights(playerFlights);
         keepRequiredAlliedFlights();
         keepRequiredAxisFlights();
     }
@@ -69,6 +67,20 @@ public class NecessaryFlightKeeper
         }
     }
 
+    private void keepLinkedPlayerFlights(List<IFlight> playerFlights) throws PWCGException
+    {
+        for (IFlight playerFlight : playerFlights)
+        {
+            if (playerFlight.isPlayerFlight())
+            {
+                for (IFlight linkedFlight : playerFlight.getLinkedFlights().getLinkedFlights())
+                {
+                    keptFlightsRecorder.keepFlight(linkedFlight);
+                }
+            }
+        }
+    }
+
     private void keepRequiredAlliedFlights() throws PWCGException
     {
         keepRequiredFlights(alliedAiFlightsByProximityToPlayer);
@@ -83,44 +95,16 @@ public class NecessaryFlightKeeper
     {
         for (IFlight flight : flights)
         {
-            if (isNecessaryFlight(flight))
+            if (keepForSkirmish(flight))
             {
                 keptFlightsRecorder.keepFlight(flight);
             }
         }
     }
 
-    private boolean isNecessaryFlight(IFlight flight) throws PWCGException
-    {
-        if (mission.getMissionSquadronRecorder().isSquadronInUse(flight.getSquadron().getSquadronId()))
-        {
-            return false;
-        }
-        
-        if (flight.getFlightInformation().isPlayerFlight())
-        {
-            PWCGLogger.log(LogLevel.DEBUG, "necessary flight because player: " + flight.getSquadron().determineDisplayName(campaign.getDate()));
-            return true;
-        }
-
-        if (flight.getFlightInformation().isOpposingFlight())
-        {
-            PWCGLogger.log(LogLevel.DEBUG, "necessary flight because opposing: " + flight.getSquadron().determineDisplayName(campaign.getDate()));
-            return true;
-        }
-
-        if (keepForSkirmish(flight) == true)
-        {
-            PWCGLogger.log(LogLevel.DEBUG, "necessary flight because iconic: " + flight.getSquadron().determineDisplayName(campaign.getDate()));
-            return true;
-        }
-
-        PWCGLogger.log(LogLevel.DEBUG, "Not necessary flight: " + flight.getSquadron().determineDisplayName(campaign.getDate()));
-        return false;
-    }
-
     private boolean keepForSkirmish(IFlight flight) throws PWCGException
     {
+        
         int numFlightsOfTypeKept = keptFlightsRecorder.getNumKeptFlightType(flight);
         if (mission.getSkirmish() != null)
         {

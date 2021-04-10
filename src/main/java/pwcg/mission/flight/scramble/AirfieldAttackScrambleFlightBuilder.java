@@ -8,6 +8,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetType;
 
 public class AirfieldAttackScrambleFlightBuilder
 {
@@ -15,17 +16,41 @@ public class AirfieldAttackScrambleFlightBuilder
     private Mission mission;
     private TargetDefinition targetDefinition;
 
-    public AirfieldAttackScrambleFlightBuilder(IFlight groundAttackFlight)
+    public static void addAirfieldScrambleToFlight(IFlight flight) throws PWCGException
+    {
+        if (flight.isPlayerFlight())
+        {
+            if (flight.getTargetDefinition().getTargetType() == TargetType.TARGET_AIRFIELD)
+            {
+                AirfieldAttackScrambleFlightBuilder scrambleFlightBuilder = new AirfieldAttackScrambleFlightBuilder(flight);
+                IFlight opposingScrambleFlight = scrambleFlightBuilder.createOpposingFlight();
+                if (opposingScrambleFlight != null)
+                {
+                    flight.getLinkedFlights().addLinkedFlight(opposingScrambleFlight);
+                }
+            }
+        }
+
+    }
+    
+    private AirfieldAttackScrambleFlightBuilder(IFlight groundAttackFlight)
     {
         this.targetDefinition = groundAttackFlight.getTargetDefinition();
         this.mission = groundAttackFlight.getMission();
         this.campaign = groundAttackFlight.getCampaign();
     }
 
-    public IFlight createOpposingFlight() throws PWCGException
+    private IFlight createOpposingFlight() throws PWCGException
     {
-        Squadron opposingSquadron = getOpposingSquadrons();            
-        return createOpposingFlight(opposingSquadron);
+        Squadron opposingSquadron = getOpposingSquadrons();
+        if (opposingSquadron == null)
+        {
+            return createOpposingFlight(opposingSquadron);
+        }
+        else
+        {
+            return null;
+        }
     }
 
     private Squadron getOpposingSquadrons() throws PWCGException

@@ -111,14 +111,11 @@ public class SquadronReducer
         List<Squadron> squadronsWithinRadius = new ArrayList<Squadron>();
         for (Squadron squadron : squadrons)
         {
-            Airfield field = squadron.determineCurrentAirfieldCurrentMap(date);
-            if (field != null)
+            Coordinate squadronPosition = squadron.determineCurrentPosition(date);
+            double distanceFromReference = MathUtils.calcDist(referencePosition, squadronPosition);
+            if (distanceFromReference <= radius)
             {
-                double distanceFromReference = MathUtils.calcDist(referencePosition, field.getPosition());
-                if (distanceFromReference <= radius)
-                {
-                    squadronsWithinRadius.add(squadron);
-                }
+                squadronsWithinRadius.add(squadron);
             }
         }
 

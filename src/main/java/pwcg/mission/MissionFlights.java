@@ -1,7 +1,9 @@
 package pwcg.mission;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
@@ -79,20 +81,30 @@ public class MissionFlights
 
     public List<IFlight> getAllAerialFlights()
     {
+        Set<Integer> flightIds = new HashSet<>();
+
         ArrayList<IFlight> allFlights = new ArrayList<IFlight>();
         for (IFlight flight : flights)
         {
             if (flight.getFlightPlanes().getPlanes().size() > 0)
             {
-                allFlights.add(flight);
+                if (!flightIds.contains(flight.getFlightId()))
+                {
+                    allFlights.add((IFlight) flight);
+                    flightIds.add(flight.getFlightId());
+                }
             }
 
             for (IFlight linkedFlight : flight.getLinkedFlights().getLinkedFlights())
             {
-                allFlights.add((IFlight) linkedFlight);
+                if (!flightIds.contains(linkedFlight.getFlightId()))
+                {
+                    allFlights.add((IFlight) linkedFlight);
+                    flightIds.add(linkedFlight.getFlightId());
+                }
             }
         }
-
+        
         return allFlights;
     }
 
