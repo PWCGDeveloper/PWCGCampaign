@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import pwcg.campaign.BattleManager;
-import pwcg.campaign.NoBattlePeriod;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.battle.BattleManager;
+import pwcg.campaign.battle.NoBattlePeriod;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.shipping.ShippingLaneManager;

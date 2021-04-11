@@ -1,4 +1,4 @@
-package pwcg.campaign;
+package pwcg.campaign.battle;
 
 import java.util.Date;
 

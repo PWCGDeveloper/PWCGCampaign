@@ -1,8 +1,8 @@
 {
 	"landingName": "Kuban Kerch",
-	"landingDateStart": "19441101",
-	"landingDateEnd": "19441111",
-	"side": "ALLIED",
+	"landingStartDate": "19441101",
+	"landingStopDate": "19441111",
+	"aggressorcountry": "RUSSIA",
 	"ships": [
 		{
 			"shipType": "landboata",

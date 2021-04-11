@@ -1,6 +1,6 @@
 package pwcg.campaign.io.json;
 
-import pwcg.campaign.Battles;
+import pwcg.campaign.battle.Battles;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 

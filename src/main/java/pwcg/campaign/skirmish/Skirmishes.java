@@ -12,11 +12,6 @@ public class Skirmishes
 		return skirmishes;
 	}
 
-	public void addSkirmish(Skirmish Skirmish)
-	{
-		skirmishes.add(Skirmish);
-	}
-
     public void addSkirmish(Skirmishes skirmishesForBattle)
     {
         skirmishes.addAll(skirmishesForBattle.skirmishes);

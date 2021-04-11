@@ -3,12 +3,12 @@ package pwcg.mission.target;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.Battle;
-import pwcg.campaign.BattleManager;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.battle.Battle;
+import pwcg.campaign.battle.BattleManager;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;

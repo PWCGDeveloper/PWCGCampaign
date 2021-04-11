@@ -3,9 +3,9 @@ package pwcg.product.bos.map.kuban;
 import java.util.Map;
 import java.util.TreeMap;
 
-import pwcg.campaign.NoBattlePeriod;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.battle.NoBattlePeriod;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGMap;
