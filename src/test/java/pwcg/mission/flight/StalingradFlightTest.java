@@ -43,8 +43,8 @@ public class StalingradFlightTest
     
             assert (mission.getSkirmish() != null);
             
-            boolean bombFlightFound = findFlightType(mission, FlightTypes.BOMB, Side.AXIS);
-            boolean lowAltBombFlightFound = findFlightType(mission, FlightTypes.LOW_ALT_BOMB, Side.AXIS);
+            boolean bombFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.BOMB, Side.AXIS);
+            boolean lowAltBombFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.LOW_ALT_BOMB, Side.AXIS);
             assert (bombFlightFound || lowAltBombFlightFound);
     
             boolean bombFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.BOMB, TargetType.TARGET_CITY, Side.AXIS);
@@ -67,8 +67,8 @@ public class StalingradFlightTest
     
             assert (mission.getSkirmish() != null);
     
-            boolean diveBombFlightFound = findFlightType(mission, FlightTypes.DIVE_BOMB, Side.AXIS);
-            boolean groundAttackFlightFound = findFlightType(mission, FlightTypes.GROUND_ATTACK, Side.AXIS);
+            boolean diveBombFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.DIVE_BOMB, Side.AXIS);
+            boolean groundAttackFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.GROUND_ATTACK, Side.AXIS);
             assert (diveBombFlightFound || groundAttackFlightFound);
     
             boolean diveBombFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.DIVE_BOMB, TargetType.TARGET_DRIFTER, Side.AXIS);
@@ -89,10 +89,10 @@ public class StalingradFlightTest
 
         assert (mission.getSkirmish() != null);
 
-        boolean groundAttackFlightFound = findFlightType(mission, FlightTypes.GROUND_ATTACK, Side.ALLIED);
-        assert (groundAttackFlightFound);
+        assert(MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.GROUND_ATTACK, Side.ALLIED));
+        assert(MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_INFANTRY, Side.ALLIED));
 
-        MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_INFANTRY, Side.ALLIED);
+        MissionFlightValidator.validateMission(mission);
     }
 
     @Test
@@ -105,8 +105,9 @@ public class StalingradFlightTest
 
         assert (mission.getSkirmish() != null);
 
-        boolean cargoDropFound = findFlightType(mission, FlightTypes.CARGO_DROP, Side.AXIS);
-        assert (cargoDropFound);
+        assert(MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.CARGO_DROP, Side.AXIS));
+
+        MissionFlightValidator.validateMission(mission);
     }
 
     @Test
@@ -124,17 +125,6 @@ public class StalingradFlightTest
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         
         assert (mission.getSkirmish() == null);
-    }
-
-    private boolean findFlightType(Mission mission, FlightTypes flightType, Side side) throws PWCGException
-    {
-        for (IFlight flight : mission.getMissionFlights().getAiFlightsForSide(side))
-        {
-            if (flight.getFlightInformation().getFlightType() == flightType)
-            {
-                return true;
-            }
-        }
-        return false;
+        MissionFlightValidator.validateMission(mission);
     }
 }

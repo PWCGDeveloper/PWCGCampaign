@@ -26,6 +26,7 @@ public class SkirmishFlightTypeFactory implements IFlightTypeFactory
     public FlightTypes getFlightType(Squadron squadron, boolean isPlayerFlight) throws PWCGException
     {
         Role missionRole = squadron.getSquadronRoles().selectRoleForMission(campaign.getDate());
+        missionRole = convertUnaccaptableRolesForSkirmish(missionRole, squadron);
         missionRole = skirmish.forceRoleConversion(missionRole, squadron.determineSide());
         
         FlightTypes flightType = FlightTypes.ANY;
@@ -41,5 +42,37 @@ public class SkirmishFlightTypeFactory implements IFlightTypeFactory
         }
 
         return flightType;
+    }
+    
+    private Role convertUnaccaptableRolesForSkirmish (Role missionRole, Squadron squadron) throws PWCGException
+    {
+        if (missionRole == Role.ROLE_STRATEGIC_INTERCEPT)
+        {
+            return Role.ROLE_FIGHTER;
+        }
+        
+        if (missionRole == Role.ROLE_STRAT_BOMB)
+        {
+            return Role.ROLE_BOMB;
+        }
+        
+        if (missionRole == Role.ROLE_RECON)
+        {
+            Role squadronPrimaryRole = squadron.determineSquadronPrimaryRole(campaign.getDate());
+            if (squadronPrimaryRole == Role.ROLE_FIGHTER)
+            {
+                return Role.ROLE_FIGHTER;
+            }
+            else if (squadronPrimaryRole == Role.ROLE_BOMB)
+            {
+                return Role.ROLE_BOMB;
+            }
+            else if (squadronPrimaryRole == Role.ROLE_RECON)
+            {
+                return Role.ROLE_BOMB;
+            }
+        }
+        
+        return missionRole;
     }
 }
