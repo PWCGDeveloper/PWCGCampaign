@@ -3,10 +3,23 @@
 
 PWCG 12.0.0
 Add iconc events
-- Arnhem: parachute and cargo drops
-- Ardennes: Bastogne cargo drops
-- Bodenplatte: airfield attacks
+Arnhem: 
+- parachute and cargo drops
+- Rhine map front line improvements to show drops
+Ardennes: 
+- German attack
+- Bastogne cargo drops
+- Allied counter attack
+Bodenplatte: 
+- German airfield attacks and Allied scramples
+Stalingrad: 
+- German bombing of city
+- German dive bombing of barges
+- Uranus
+- Encirclement with cargo drops
+Added runway start AI scramble missions to airfield attacks.
 Fixed issue that could cause planes to spawn on top of each other
+Fixed issue some places where bomber could act like a fighter
 
 PWCG 11.12.0
 Introduced concept of focused skirmishes for historical events

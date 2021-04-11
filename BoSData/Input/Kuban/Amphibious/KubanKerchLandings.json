@@ -1,0 +1,203 @@
+{
+	"landingName": "Kuban Kerch",
+	"landingDateStart": "19441101",
+	"landingDateEnd": "19441111",
+	"side": "ALLIED",
+	"ships": [
+		{
+			"shipType": "landboata",
+			"destination": {
+				"xPos": 269674.604,
+				"yPos": 0.0,
+				"zPos": 127000.916
+			},
+			"orientation": {
+				"xPos": 0.0,
+				"yPos": 0.0,
+				"zPos": 0.0
+			}
+		},
+		{
+			"shipType": "landboata",
+			"destination": {
+				"xPos": 269640.440,
+				"yPos": 0.0,
+				"zPos": 126682.525
+			},
+			"orientation": {
+				"xPos": 0.0,
+				"yPos": 0.0,
+				"zPos": 0.0
+			}
+		},
+		{
+			"shipType": "landboata",
+			"destination": {
+				"xPos": 269656.583,
+				"yPos": 0.0,
+				"zPos": 127257.920
+			},
+			"orientation": {
+				"xPos": 0.0,
+				"yPos": 0.0,
+				"zPos": 0.0
+			}
+		},
+		{
+			"shipType": "landboata",
+			"destination": {
+				"xPos": 269604.694,
+				"yPos": 0.0,
+				"zPos": 127502.376
+			},
+			"orientation": {
+				"xPos": 0.0,
+				"yPos": 0.0,
+				"zPos": 0.0
+			}
+		},
+		{
+			"shipType": "landboata",
+			"destination": {
+				"xPos": 269669.267,
+				"yPos": 0.0,
+				"zPos": 126502.643
+			},
+			"orientation": {
+				"xPos": 0.0,
+				"yPos": 0.0,
+				"zPos": 0.0
+			}
+		},
+		{
+			"shipType": "landboata",
+			"destination": {
+				"xPos": 269718.850,
+				"yPos": 0.0,
+				"zPos": 126002.200
+			},
+			"orientation": {
+				"xPos": 0.0,
+				"yPos": 0.0,
+				"zPos": 0.0
+			}
+		},
+		{
+			"shipType": "landboata",
+			"destination": {
+				"xPos": 269672.860,
+				"yPos": 0.0,
+				"zPos": 126259.034
+			},
+			"orientation": {
+				"xPos": 0.0,
+				"yPos": 0.0,
+				"zPos": 0.0
+			}
+		},
+		{
+			"shipType": "landboata",
+			"destination": {
+				"xPos": 269726.816,
+				"yPos": 0.0,
+				"zPos": 125770.430
+			},
+			"orientation": {
+				"xPos": 0.0,
+				"yPos": 0.0,
+				"zPos": 0.0
+			}
+		},
+		{
+			"shipType": "landboata",
+			"destination": {
+				"xPos": 269770.780,
+				"yPos": 0.0,
+				"zPos": 125499.650
+			},
+			"orientation": {
+				"xPos": 0.0,
+				"yPos": 0.0,
+				"zPos": 0.0
+			}
+		},
+		{
+			"shipType": "landboata",
+			"destination": {
+				"xPos": 269681.570,
+				"yPos": 0.0,
+				"zPos": 125009.470
+			},
+			"orientation": {
+				"xPos": 0.0,
+				"yPos": 0.0,
+				"zPos": 0.0
+			}
+		},
+		{
+			"shipType": "landboata",
+			"destination": {
+				"xPos": 269588.697,
+				"yPos": 0.0,
+				"zPos": 124517.590
+			},
+			"orientation": {
+				"xPos": 0.0,
+				"yPos": 0.0,
+				"zPos": 0.0
+			}
+		},
+		{
+			"shipType": "landboata",
+			"destination": {
+				"xPos": 269629.974,
+				"yPos": 0.0,
+				"zPos": 124011.950
+			},
+			"orientation": {
+				"xPos": 0.0,
+				"yPos": 0.0,
+				"zPos": 0.0
+			}
+		},
+		{
+			"shipType": "destroyertype7",
+			"destination": {
+				"xPos": 269186.786,
+				"yPos": 0.0,
+				"zPos": 125651.245
+			},
+			"orientation": {
+				"xPos": 0.0,
+				"yPos": 0.0,
+				"zPos": 0.0
+			}
+		},
+		{
+			"shipType": "destroyertype7",
+			"destination": {
+				"xPos": 269151.664,
+				"yPos": 0.0,
+				"zPos": 124190.174
+			},
+			"orientation": {
+				"xPos": 0.0,
+				"yPos": 0.0,
+				"zPos": 0.0
+			}
+		},
+		{
+			"shipType": "destroyertype7",
+			"destination": {
+				"xPos": 269190.298,
+				"yPos": 0.0,
+				"zPos": 127119.341
+			},
+			"orientation": {
+				"xPos": 0.0,
+				"yPos": 0.0,
+				"zPos": 0.0
+			}
+		}
+	]
+}
