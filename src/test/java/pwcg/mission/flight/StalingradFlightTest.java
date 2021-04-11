@@ -34,49 +34,43 @@ public class StalingradFlightTest
     @Test
     public void hasBombTest() throws PWCGException
     {
-        for (int i = 0; i < 10; ++i)
-        {
-            Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
-            campaign.setDate(DateUtils.getDateYYYYMMDD("19420824"));
-            MissionGenerator missionGenerator = new MissionGenerator(campaign);
-            Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
-    
-            assert (mission.getSkirmish() != null);
-            
-            boolean bombFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.BOMB, Side.AXIS);
-            boolean lowAltBombFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.LOW_ALT_BOMB, Side.AXIS);
-            assert (bombFlightFound || lowAltBombFlightFound);
-    
-            boolean bombFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.BOMB, TargetType.TARGET_CITY, Side.AXIS);
-            boolean lowAltBombFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.LOW_ALT_BOMB, TargetType.TARGET_CITY, Side.AXIS);
-            assert (bombFlightTargetFound || lowAltBombFlightTargetFound);
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
+        campaign.setDate(DateUtils.getDateYYYYMMDD("19420824"));
+        MissionGenerator missionGenerator = new MissionGenerator(campaign);
+        Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
 
-            MissionFlightValidator.validateMission(mission);
-        }
+        assert (mission.getSkirmish() != null);
+        
+        boolean bombFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.BOMB, Side.AXIS);
+        boolean lowAltBombFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.LOW_ALT_BOMB, Side.AXIS);
+        assert (bombFlightFound || lowAltBombFlightFound);
+
+        boolean bombFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.BOMB, TargetType.TARGET_CITY, Side.AXIS);
+        boolean lowAltBombFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.LOW_ALT_BOMB, TargetType.TARGET_CITY, Side.AXIS);
+        assert (bombFlightTargetFound || lowAltBombFlightTargetFound);
+
+        MissionFlightValidator.validateMission(mission);
     }
 
     @Test
     public void hasDiveBombTest() throws PWCGException
     {
-        for (int i = 0; i < 10; ++i)
-        {
-            Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
-            campaign.setDate(DateUtils.getDateYYYYMMDD("19420910"));
-            MissionGenerator missionGenerator = new MissionGenerator(campaign);
-            Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
-    
-            assert (mission.getSkirmish() != null);
-    
-            boolean diveBombFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.DIVE_BOMB, Side.AXIS);
-            boolean groundAttackFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.GROUND_ATTACK, Side.AXIS);
-            assert (diveBombFlightFound || groundAttackFlightFound);
-    
-            boolean diveBombFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.DIVE_BOMB, TargetType.TARGET_DRIFTER, Side.AXIS);
-            boolean groundAttackFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_DRIFTER, Side.AXIS);
-            assert (diveBombFlightTargetFound || groundAttackFlightTargetFound);
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
+        campaign.setDate(DateUtils.getDateYYYYMMDD("19420910"));
+        MissionGenerator missionGenerator = new MissionGenerator(campaign);
+        Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
 
-            MissionFlightValidator.validateMission(mission);
-        }
+        assert (mission.getSkirmish() != null);
+
+        boolean diveBombFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.DIVE_BOMB, Side.AXIS);
+        boolean groundAttackFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.GROUND_ATTACK, Side.AXIS);
+        assert (diveBombFlightFound || groundAttackFlightFound);
+
+        boolean diveBombFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.DIVE_BOMB, TargetType.TARGET_DRIFTER, Side.AXIS);
+        boolean groundAttackFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_DRIFTER, Side.AXIS);
+        assert (diveBombFlightTargetFound || groundAttackFlightTargetFound);
+
+        MissionFlightValidator.validateMission(mission);
     }
 
     @Test
