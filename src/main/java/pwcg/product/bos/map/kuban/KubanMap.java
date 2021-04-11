@@ -3,6 +3,7 @@ package pwcg.product.bos.map.kuban;
 import java.util.Map;
 import java.util.TreeMap;
 
+import pwcg.campaign.NoBattlePeriod;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
@@ -44,8 +45,14 @@ public class KubanMap extends PWCGMap
         usableMapArea = new KubanMapUsableArea();
 
         buildArmedServicesActiveForMap();
+        buildNoBattlePeriodsForMap();
         
         super.configure();
+    }
+
+    private void buildNoBattlePeriodsForMap() throws PWCGException
+    {
+        noBattlePeriods.add(new NoBattlePeriod(DateUtils.getDateYYYYMMDD("19431008"), DateUtils.getDateYYYYMMDD("19431031")));
     }
 
     private void buildArmedServicesActiveForMap()
@@ -71,6 +78,8 @@ public class KubanMap extends PWCGMap
         this.frontDatesForMap.addFrontDate("19430927");
         this.frontDatesForMap.addFrontDate("19431004");
         this.frontDatesForMap.addFrontDate("19431008");
+        this.frontDatesForMap.addFrontDate("19431101");
+        this.frontDatesForMap.addFrontDate("19431111");
     }
 
     @Override

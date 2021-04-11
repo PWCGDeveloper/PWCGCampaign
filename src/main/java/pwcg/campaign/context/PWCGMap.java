@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import pwcg.campaign.BattleManager;
+import pwcg.campaign.NoBattlePeriod;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.group.AirfieldManager;
@@ -44,6 +45,7 @@ public abstract class PWCGMap
     protected List<Integer> armedServicesActiveForMap = new ArrayList<>();
     protected BattleManager battleManager;
     protected SkirmishManager skirmishManager;
+    protected List<NoBattlePeriod> noBattlePeriods = new ArrayList<>();
 
     public PWCGMap()
     {
@@ -103,6 +105,18 @@ public abstract class PWCGMap
             numDaysSpacing = missionSpacingMyDate.get(mapDate);
         }
         return numDaysSpacing;
+    }
+    
+    public boolean isNoBattlePeriod(Date date) throws PWCGException
+    {
+        for (NoBattlePeriod noBattlePeriod : noBattlePeriods)
+        {
+            if (DateUtils.isDateInRange(date, noBattlePeriod.getStartNoBattlePeriod(), noBattlePeriod.getEndNoBattlePeriod()))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean isMapHasService(int serviceId)

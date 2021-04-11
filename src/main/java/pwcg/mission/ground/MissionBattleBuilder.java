@@ -34,6 +34,11 @@ public class MissionBattleBuilder
 
     public List<GroundUnitCollection> generateBattles() throws PWCGException 
     {
+        if (PWCGContext.getInstance().getCurrentMap().isNoBattlePeriod(campaign.getDate()))
+        {
+            return battles;
+        }
+        
         int maxBattles = getMaxBattles();
         int numBattles = RandomNumberGenerator.getRandom(maxBattles+1);
 
