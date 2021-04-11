@@ -3,7 +3,7 @@
 	"skirmishProfileElements": [
 		{
 			"association": "ATTACKER",
-			"role": "ROLE_ATTACK",
+			"role": "ROLE_BOMB",
 			"preferredFlightType": "BOMB",
 			"targetType": "TARGET_CITY"
 		},

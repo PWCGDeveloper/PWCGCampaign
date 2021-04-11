@@ -19,11 +19,12 @@ public class MissionFlightValidator
         validateAirfieldUsedOnlyOnce(mission);
     }
 
-    private static void validateSquadronsUsedOnlyOnce(Mission mission)
+    private static void validateSquadronsUsedOnlyOnce(Mission mission) throws PWCGException
     {
         Set<Integer> squadronsUsedInMission = new HashSet<>();
         for (IFlight flight: mission.getMissionFlights().getAllAerialFlights())
         {
+            System.out.println(flight.getFlightInformation().getSquadron().determineDisplayName(mission.getCampaign().getDate()) + "    " + flight.getFlightInformation().getFlightType());
             assert (!squadronsUsedInMission.contains(flight.getSquadron().getSquadronId()));
             squadronsUsedInMission.add(flight.getSquadron().getSquadronId());
         }
@@ -34,7 +35,13 @@ public class MissionFlightValidator
         Map<String, Airfield> includedAirfields = new HashMap<>();
         for (IFlight flight : mission.getMissionFlights().getAllAerialFlights())
         {
+            if (flight.getFlightInformation().isVirtual())
+            {
+                continue;
+            }
+            
             Airfield airfield = flight.getSquadron().determineCurrentAirfieldAnyMap(mission.getCampaign().getDate());
+            System.out.println(flight.getFlightInformation().getSquadron().determineDisplayName(mission.getCampaign().getDate()) + "    " + airfield.getName() + "    " + flight.getFlightInformation().getFlightType());
             assert(!includedAirfields.containsKey(airfield.getName()));
             includedAirfields.put(airfield.getName(), airfield);
         }

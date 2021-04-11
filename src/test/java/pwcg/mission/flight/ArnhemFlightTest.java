@@ -52,9 +52,9 @@ public class ArnhemFlightTest
 
         assert (mission.getSkirmish() != null);
         
-        MissionInformationUtils.verifyAiFlightTypeInMission(mission, FlightTypes.PARATROOP_DROP, Side.ALLIED);
-        MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_INFANTRY, Side.ALLIED);
-        MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.BOMB, TargetType.TARGET_INFANTRY, Side.ALLIED);
+        assert(MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.PARATROOP_DROP, Side.ALLIED));
+        assert(MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_INFANTRY, Side.ALLIED));
+        assert(MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.BOMB, TargetType.TARGET_INFANTRY, Side.ALLIED));
         MissionFlightValidator.validateMission(mission);
     }
 
@@ -85,9 +85,9 @@ public class ArnhemFlightTest
 
         assert (mission.getSkirmish() != null);
 
-        MissionInformationUtils.verifyAiFlightTypeInMission(mission, FlightTypes.CARGO_DROP, Side.ALLIED);
-        MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_INFANTRY, Side.ALLIED);
-        MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.BOMB, TargetType.TARGET_INFANTRY, Side.ALLIED);
+        assert(MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.CARGO_DROP, Side.ALLIED));
+        assert(MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_INFANTRY, Side.ALLIED));
+        assert(MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.BOMB, TargetType.TARGET_INFANTRY, Side.ALLIED));
         MissionFlightValidator.validateMission(mission);
     }
 

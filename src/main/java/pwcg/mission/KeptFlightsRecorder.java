@@ -93,10 +93,10 @@ public class KeptFlightsRecorder
     }
 
     
-    public boolean airfieldInUse(IFlight flight) throws PWCGException
+    public boolean airfieldInUseForTakeoff(IFlight flight) throws PWCGException
     {
         KeptFlights keptFlightsForSide = getKeptFlightsForSide(flight);
-        return keptFlightsForSide.airfieldInUse(flight);
+        return keptFlightsForSide.airfieldInUseForTakeoff(flight);
     }
 
     public boolean isSquadronInKept(IFlight flight) throws PWCGException

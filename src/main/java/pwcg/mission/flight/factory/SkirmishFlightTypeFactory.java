@@ -5,6 +5,8 @@ import pwcg.campaign.plane.Role;
 import pwcg.campaign.skirmish.Skirmish;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.flight.FlightTypes;
 
 public class SkirmishFlightTypeFactory implements IFlightTypeFactory
@@ -30,10 +32,12 @@ public class SkirmishFlightTypeFactory implements IFlightTypeFactory
         if (skirmish.hasFlighTypeForRole(squadron, missionRole))
         {
             flightType = skirmish.getFlighTypeForRole(squadron, missionRole);
+            PWCGLogger.log(LogLevel.DEBUG, "Skirmish flight type factory returned: " + flightType + " for role " + missionRole + " Squadron " + squadron.determineDisplayName(campaign.getDate()));
         }
         else
         {
             flightType = backupFlightTypeFactory.getFlightType(squadron, isPlayerFlight);
+            PWCGLogger.log(LogLevel.DEBUG, "Backup flight type factory returned: " + flightType + " for role " + missionRole + " Squadron " + squadron.determineDisplayName(campaign.getDate()));
         }
 
         return flightType;

@@ -22,6 +22,7 @@ public enum PwcgStructure
     DEPOT ("depot", TargetType.TARGET_DEPOT, new BuildingSearchCriteria("warehouse", BuildingSearchMethod.SEARCH_CONTAINS)),
     FUEL ("fuel depot", TargetType.TARGET_NONE, new BuildingSearchCriteria("industrial_block_fuel", BuildingSearchMethod.SEARCH_BEGINS)),
     INDUSTRIAL ("industrial facility", TargetType.TARGET_FACTORY, new BuildingSearchCriteria("industrial_", BuildingSearchMethod.SEARCH_BEGINS)),
+    CITY ("town", TargetType.TARGET_CITY, new BuildingSearchCriteria("town", BuildingSearchMethod.SEARCH_BEGINS)),
     STATIC_VEHICLE ("vehicle", TargetType.TARGET_FUEL, new BuildingSearchCriteria("static_", BuildingSearchMethod.SEARCH_BEGINS)),
     UNKNOWN ("some random building", TargetType.TARGET_NONE, new BuildingSearchCriteria("", BuildingSearchMethod.SEARCH_NONE));
 

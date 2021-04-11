@@ -10,31 +10,32 @@ import pwcg.mission.target.TargetType;
 public class MissionInformationUtils
 {
 
-    public static void verifyFlightTargets(Mission mission, FlightTypes expectedFlightType, TargetType expectedTargetType, Side side) throws PWCGException
+    public static boolean verifyFlightTargets(Mission mission, FlightTypes expectedFlightType, TargetType expectedTargetType, Side side) throws PWCGException
     {
-        boolean targetTypeFound = false;
         for (IFlight flight : mission.getMissionFlights().getAiFlightsForSide(side))
         {
             if (flight.getFlightType() == expectedFlightType)
             {
-                targetTypeFound = true;
+                if (flight.getFlightInformation().getTargetDefinition().getTargetType() != expectedTargetType)
+                {
+                    return false;
+                }
             }
         }
 
-        assert (targetTypeFound);
+        return true;
     }
 
-    public static void verifyAiFlightTypeInMission(Mission mission, FlightTypes flightType, Side side) throws PWCGException
+    public static boolean verifyFlightTypeInMission(Mission mission, FlightTypes flightType, Side side) throws PWCGException
     {
-        boolean flightTypeFound = false;
-        for (IFlight flight : mission.getMissionFlights().getAiFlightsForSide(side))
+        for (IFlight flight : mission.getMissionFlights().getFlightsForSide(side))
         {
             if (flight.getFlightInformation().getFlightType() == flightType)
             {
-                flightTypeFound = true;
+                return true;
             }
         }
-        assert (flightTypeFound);        
+        return false;
     }
 
 }

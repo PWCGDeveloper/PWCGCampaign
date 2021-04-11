@@ -16,10 +16,12 @@
 			"stopDate": "19450101",
 			"iconicFlightTypes": [
 				{
+					"side": "AXIS",
 					"flightType": "GROUND_ATTACK",
 					"maxForcedFlightTypes": 100
 				},
 				{
+					"side": "ALLIED",
 					"flightType": "SCRAMBLE",
 					"maxForcedFlightTypes": 100
 				}
@@ -55,10 +57,12 @@
 			"stopDate": "19450101",
 			"iconicFlightTypes": [
 				{
+					"side": "AXIS",
 					"flightType": "GROUND_ATTACK",
 					"maxForcedFlightTypes": 100
 				},
 				{
+					"side": "ALLIED",
 					"flightType": "SCRAMBLE",
 					"maxForcedFlightTypes": 100
 				}
@@ -95,10 +99,12 @@
 			"stopDate": "19450101",
 			"iconicFlightTypes": [
 				{
+					"side": "AXIS",
 					"flightType": "GROUND_ATTACK",
 					"maxForcedFlightTypes": 100
 				},
 				{
+					"side": "ALLIED",
 					"flightType": "SCRAMBLE",
 					"maxForcedFlightTypes": 100
 				}
@@ -174,10 +180,12 @@
 			"stopDate": "19450101",
 			"iconicFlightTypes": [
 				{
+					"side": "AXIS",
 					"flightType": "GROUND_ATTACK",
 					"maxForcedFlightTypes": 100
 				},
 				{
+					"side": "ALLIED",
 					"flightType": "SCRAMBLE",
 					"maxForcedFlightTypes": 100
 				}

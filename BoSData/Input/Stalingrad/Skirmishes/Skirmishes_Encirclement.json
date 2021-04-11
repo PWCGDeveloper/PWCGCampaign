@@ -16,6 +16,7 @@
 			"stopDate": "19421231",
 			"iconicFlightTypes": [
 				{
+					"side": "AXIS",
 					"flightType": "CARGO_DROP",
 					"maxForcedFlightTypes": 1
 				}

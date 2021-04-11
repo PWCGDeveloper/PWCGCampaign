@@ -51,6 +51,7 @@ public class NecessaryFlightKeeper
         {
             if (flight.isPlayerFlight())
             {
+                PWCGLogger.log(LogLevel.DEBUG, "Keep Player Flight: " + flight.getSquadron().determineDisplayName(flight.getCampaign().getDate()));
                 keptFlightsRecorder.keepFlight(flight);
             }
         }
@@ -62,6 +63,7 @@ public class NecessaryFlightKeeper
         {
             if (flight.getFlightInformation().isOpposingFlight())
             {
+                PWCGLogger.log(LogLevel.DEBUG, "Keep Opposing Flight: " + flight.getSquadron().determineDisplayName(flight.getCampaign().getDate()));
                 keptFlightsRecorder.keepFlight(flight);
             }
         }
@@ -75,6 +77,7 @@ public class NecessaryFlightKeeper
             {
                 for (IFlight linkedFlight : playerFlight.getLinkedFlights().getLinkedFlights())
                 {
+                    PWCGLogger.log(LogLevel.DEBUG, "Keep Linked Flight: " + linkedFlight.getSquadron().determineDisplayName(linkedFlight.getCampaign().getDate()));
                     keptFlightsRecorder.keepFlight(linkedFlight);
                 }
             }
@@ -83,43 +86,45 @@ public class NecessaryFlightKeeper
 
     private void keepRequiredAlliedFlights() throws PWCGException
     {
-        keepRequiredFlights(alliedAiFlightsByProximityToPlayer);
+        keepForSkirmish(alliedAiFlightsByProximityToPlayer);
     }
 
     private void keepRequiredAxisFlights() throws PWCGException
     {
-        keepRequiredFlights(axisAiFlightsByProximityToPlayer);
+        keepForSkirmish(axisAiFlightsByProximityToPlayer);
     }
 
-    private void keepRequiredFlights(List<IFlight> flights) throws PWCGException
+    private void keepForSkirmish(List<IFlight> flights) throws PWCGException
     {
+        if (mission.getSkirmish() == null)
+        {
+            return;
+        }
+
         for (IFlight flight : flights)
         {
-            if (keepForSkirmish(flight))
+            int numFlightsOfTypeKept = keptFlightsRecorder.getNumKeptFlightType(flight);
+            
+            if (!mission.getSkirmish().needsMoreIconicFlightType(flight.getFlightInformation(), numFlightsOfTypeKept))
             {
-                keptFlightsRecorder.keepFlight(flight);
+                PWCGLogger.log(LogLevel.DEBUG, "Reject Skirmish because not iconic: " + flight.getSquadron().determineDisplayName(flight.getCampaign().getDate()));
+                continue;
             }
-        }
-    }
-
-    private boolean keepForSkirmish(IFlight flight) throws PWCGException
-    {
-        
-        int numFlightsOfTypeKept = keptFlightsRecorder.getNumKeptFlightType(flight);
-        if (mission.getSkirmish() != null)
-        {
-            if (mission.getSkirmish().needsMoreIconicFlightType(flight.getFlightInformation().getFlightType(), numFlightsOfTypeKept))
+            
+            if (!keptFlightsRecorder.needsMoreFlights(flight))
             {
-                if (keptFlightsRecorder.needsMoreFlights(flight))
-                {
-                    if (!keptFlightsRecorder.airfieldInUse(flight))
-                    {
-                        return true;
-                    }
-                }
+                PWCGLogger.log(LogLevel.DEBUG, "Reject Skirmish because has enough flights: " + flight.getSquadron().determineDisplayName(flight.getCampaign().getDate()));
+                continue;
             }
+            
+            if (keptFlightsRecorder.airfieldInUseForTakeoff(flight))
+            {
+                PWCGLogger.log(LogLevel.DEBUG, "Reject Skirmish because airfield in use: " + flight.getSquadron().determineDisplayName(flight.getCampaign().getDate()));
+                continue;
+            }
+            
+            PWCGLogger.log(LogLevel.DEBUG, "Keep Skirmish Flight: " + flight.getSquadron().determineDisplayName(flight.getCampaign().getDate()));
+            keptFlightsRecorder.keepFlight(flight);
         }
-        
-        return false;
     }
 }

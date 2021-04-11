@@ -1,7 +1,7 @@
 {
 	"skirmishes": [
 		{
-			"name": "Stalingrad-Barges",
+			"name": "Stalingrad-City",
 			"swCorner": {
 				"xPos": 131000,
 				"yPos": 0.0,
@@ -16,6 +16,7 @@
 			"stopDate": "19420825",
 			"iconicFlightTypes": [
 				{
+					"side": "AXIS",
 					"flightType": "BOMB",
 					"maxForcedFlightTypes": 1
 				}

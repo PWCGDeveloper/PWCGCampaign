@@ -28,9 +28,9 @@ public class MissionBlockBuilder
 
     public void buildFixedPositionsForMission() throws PWCGException
     {
-        getStandaloneBlocksPatrol();
         getTrainStationsPatrol();
         getBridgesForPatrol();
+        getStandaloneBlocksPatrol();
     }
 
     private void getStandaloneBlocksPatrol() throws PWCGException

@@ -32,15 +32,20 @@ public class ArdennesFlightTest
     }
 
     @Test
-    public void hasSkirmishAndGroundAttackTest() throws PWCGException
+    public void hasGermanAssaultdGroundAttackTest() throws PWCGException
     {
-        verifyAntiArmorOnDate(DateUtils.getDateYYYYMMDD("19441220"));
-        verifyAntiArmorOnDate(DateUtils.getDateYYYYMMDD("19441224"));
-        verifyAntiArmorOnDate(DateUtils.getDateYYYYMMDD("19441229"));
-        verifyAntiArmorOnDate(DateUtils.getDateYYYYMMDD("19441230"));
+        verifyAntiArmorOnDate(DateUtils.getDateYYYYMMDD("19441220"), Side.AXIS);
+        verifyAntiArmorOnDate(DateUtils.getDateYYYYMMDD("19441224"), Side.AXIS);
     }
 
-    private void verifyAntiArmorOnDate(Date date) throws PWCGException
+    @Test
+    public void hasAlliednAssaultdGroundAttackTest() throws PWCGException
+    {
+        verifyAntiArmorOnDate(DateUtils.getDateYYYYMMDD("19441229"), Side.ALLIED);
+        verifyAntiArmorOnDate(DateUtils.getDateYYYYMMDD("19441230"), Side.ALLIED);
+    }
+
+    private void verifyAntiArmorOnDate(Date date, Side side) throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
         campaign.setDate(date);
@@ -49,7 +54,12 @@ public class ArdennesFlightTest
 
         assert (mission.getSkirmish() != null);
 
-        MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_ARMOR, Side.ALLIED);
+        assert(MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.GROUND_ATTACK, side));
+        assert(MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.LOW_ALT_CAP, side));
+
+        boolean armorAttackFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_ARMOR, side);
+        boolean infantryAttackFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_INFANTRY, side);
+        assert(armorAttackFound || infantryAttackFound);
     }
 
     @Test
@@ -68,9 +78,9 @@ public class ArdennesFlightTest
 
         assert (mission.getSkirmish() != null);
 
-        MissionInformationUtils.verifyAiFlightTypeInMission(mission, FlightTypes.CARGO_DROP, Side.ALLIED);
-        MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_INFANTRY, Side.ALLIED);
-        MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.BOMB, TargetType.TARGET_INFANTRY, Side.ALLIED);
+        assert(MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.CARGO_DROP, Side.ALLIED));
+        assert(MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_INFANTRY, Side.ALLIED));
+        assert(MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.BOMB, TargetType.TARGET_INFANTRY, Side.ALLIED));
         MissionFlightValidator.validateMission(mission);
     }
 

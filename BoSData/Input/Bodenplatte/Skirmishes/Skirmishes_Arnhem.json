@@ -16,6 +16,7 @@
 			"stopDate": "19440918",
 			"iconicFlightTypes": [
 				{
+					"side": "ALLIED",
 					"flightType": "PARATROOP_DROP",
 					"maxForcedFlightTypes": 1
 				}
@@ -39,6 +40,7 @@
 			"stopDate": "19440918",
 			"iconicFlightTypes": [
 				{
+					"side": "ALLIED",
 					"flightType": "PARATROOP_DROP",
 					"maxForcedFlightTypes": 1
 				}
@@ -62,6 +64,7 @@
 			"stopDate": "19440919",
 			"iconicFlightTypes": [
 				{
+					"side": "ALLIED",
 					"flightType": "PARATROOP_DROP",
 					"maxForcedFlightTypes": 1
 				}
@@ -86,6 +89,7 @@
 			"aggressor": "ALLIED",
 			"iconicFlightTypes": [
 				{
+					"side": "ALLIED",
 					"flightType": "CARGO_DROP",
 					"maxForcedFlightTypes": 1
 				}
@@ -110,6 +114,7 @@
 			"aggressor": "ALLIED",
 			"iconicFlightTypes": [
 				{
+					"side": "ALLIED",
 					"flightType": "CARGO_DROP",
 					"maxForcedFlightTypes": 1
 				}
@@ -134,6 +139,7 @@
 			"aggressor": "ALLIED",
 			"iconicFlightTypes": [
 				{
+					"side": "ALLIED",
 					"flightType": "CARGO_DROP",
 					"maxForcedFlightTypes": 1
 				}

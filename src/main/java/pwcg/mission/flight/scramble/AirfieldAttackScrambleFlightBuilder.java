@@ -61,9 +61,13 @@ public class AirfieldAttackScrambleFlightBuilder
 
     private IFlight createOpposingFlight(Squadron opposingSquadron) throws PWCGException
     {
-        FlightInformation flightInformation = AirfieldAttackScrambleFlightInformationBuilder.buildAiGroundAttackOpposingFlightInformation(mission, opposingSquadron, targetDefinition.getPosition());
-        AiScrambleFlight aiScrambleFlight = new AiScrambleFlight (flightInformation, targetDefinition);
-        aiScrambleFlight.createFlight();
-        return aiScrambleFlight;
+        if (mission.getSkirmish() == null)
+        {
+            FlightInformation flightInformation = AirfieldAttackScrambleFlightInformationBuilder.buildAiGroundAttackOpposingFlightInformation(mission, opposingSquadron, targetDefinition.getPosition());
+            AiScrambleFlight aiScrambleFlight = new AiScrambleFlight (flightInformation, targetDefinition);
+            aiScrambleFlight.createFlight();
+            return aiScrambleFlight;
+        }
+        return null;
     }    
 }

@@ -162,4 +162,34 @@ public enum FlightTypes
         return true;
     }
 
+    public boolean isLowAltEquivalentFlightType(FlightTypes flightType)
+    {
+        if (this == flightType)
+        {
+            return true;
+        }
+        
+        if (this == FlightTypes.BOMB && flightType == FlightTypes.LOW_ALT_BOMB)
+        {
+            return true;
+        }
+        
+        if (this == FlightTypes.DIVE_BOMB && flightType == FlightTypes.GROUND_ATTACK)
+        {
+            return true;
+        }
+        
+        if (this == FlightTypes.PATROL && flightType == FlightTypes.LOW_ALT_PATROL)
+        {
+            return true;
+        }
+
+        if (this == FlightTypes.INTERCEPT && flightType == FlightTypes.LOW_ALT_CAP)
+        {
+            return true;
+        }
+        
+        return false;
+    }
+
 }

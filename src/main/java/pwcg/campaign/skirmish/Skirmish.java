@@ -11,6 +11,8 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.target.TargetType;
@@ -58,16 +60,32 @@ public class Skirmish
         return skirmishBox.getCenter();
     }
 
-    public boolean needsMoreIconicFlightType (FlightTypes flightType, int currentCount) throws PWCGException
+    public boolean needsMoreIconicFlightType (FlightInformation flightInformation, int currentCount) throws PWCGException
     {
         for (SkirmishIconicFlights iconicFlightType : iconicFlightTypes)
         {
-            if (iconicFlightType.getFlightType() == flightType)
+            if (iconicFlightType.getSide() == flightInformation.getSquadron().determineSide())
             {
-                if (currentCount < iconicFlightType.getMaxForcedFlightTypes())
+                if (iconicFlightType.getFlightType().isLowAltEquivalentFlightType(flightInformation.getFlightType()))
                 {
-                    return true;
+                    if (currentCount < iconicFlightType.getMaxForcedFlightTypes())
+                    {
+                        PWCGLogger.log(LogLevel.DEBUG, "Accept Skirmish: " + flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()) + " flying " + flightInformation.getFlightType());
+                        return true;
+                    }
+                    else
+                    {
+                        PWCGLogger.log(LogLevel.DEBUG, "Reject Skirmish because has enough of flight type: " + flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()));
+                    }
                 }
+                else
+                {
+                    PWCGLogger.log(LogLevel.DEBUG, "Reject Skirmish because wrong flight type: " + flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()) + " flying " + flightInformation.getFlightType());
+                }
+            }
+            else
+            {
+                PWCGLogger.log(LogLevel.DEBUG, "Reject Skirmish because wrong side: " + flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()));
             }
         }
         
@@ -167,5 +185,46 @@ public class Skirmish
     public SkirmishProfileType getProfileType()
     {
         return profileType;
+    }
+
+    public boolean hasTargetType(TargetType targetType) throws PWCGException
+    {
+        SkirmishProfile skirmishProfile = PWCGContext.getInstance().getSkirmishProfileManager().getSkirmishProfile(profileType);
+        for (SkirmishProfileElement skirmishProfileElement : skirmishProfile.getSkirmishProfileElements())
+        {
+            if (skirmishProfileElement.getTargetType() == targetType)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+
+    public TargetType getTargetTypeForFlightType(FlightTypes flightType, Side side) throws PWCGException
+    {
+        SkirmishProfileAssociation attackerOrDefender = getSkirmishProfileAssociationForSide(side);
+        
+        SkirmishProfile skirmishProfile = PWCGContext.getInstance().getSkirmishProfileManager().getSkirmishProfile(profileType);
+        for (SkirmishProfileElement skirmishProfileElement : skirmishProfile.getSkirmishProfileElements())
+        {
+            if (skirmishProfileElement.getAssociation() == attackerOrDefender)
+            {
+                if (skirmishProfileElement.getPreferredFlightType() == flightType)
+                {
+                    return skirmishProfileElement.getTargetType();
+                }
+            }
+        }
+        return TargetType.TARGET_NONE;
+    }
+
+    private SkirmishProfileAssociation getSkirmishProfileAssociationForSide(Side side)
+    {
+        if (attacker == side)
+        {
+            return SkirmishProfileAssociation.ATTACKER;
+        }
+        return SkirmishProfileAssociation.DEFENDER;
     }
 }

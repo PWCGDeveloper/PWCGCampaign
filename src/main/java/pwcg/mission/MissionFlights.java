@@ -65,6 +65,19 @@ public class MissionFlights
         return aiFlightsForSide;
     }
 
+    public List<IFlight> getFlightsForSide(Side side)
+    {
+        List<IFlight> flightsForSide = new ArrayList<IFlight>();
+        for (IFlight flight : getAllAerialFlights())
+        {
+            if (flight.getFlightInformation().getCountry().getSide() == side)
+            {
+                flightsForSide.add(flight);
+            }
+        }
+        return flightsForSide;
+    }
+
     public List<IFlight> getPlayerFlightsForSide(Side side) throws PWCGException
     {
         List<IFlight> playerFlightsForSide = new ArrayList<IFlight>();

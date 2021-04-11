@@ -1,23 +1,35 @@
 {
-	"profileType": "SKIRMISH_PROFILE_ANTI_ARMOR",
+	"profileType": "SKIRMISH_PROFILE_ANTI_INFANTRY",
 	"skirmishProfileElements": [
+		{
+			"association": "ATTACKER",
+			"role": "ROLE_FIGHTER",
+			"preferredFlightType": "LOW_ALT_CAP",
+			"targetType": "TARGET_AIR"
+		},
 		{
 			"association": "ATTACKER",
 			"role": "ROLE_ATTACK",
 			"preferredFlightType": "GROUND_ATTACK",
-			"targetType": "TARGET_ARMOR"
+			"targetType": "TARGET_INFANTRY"
 		},
 		{
 			"association": "ATTACKER",
 			"role": "ROLE_DIVE_BOMB",
 			"preferredFlightType": "DIVE_BOMB",
-			"targetType": "TARGET_ARMOR"
+			"targetType": "TARGET_INFANTRY"
 		},
 		{
 			"association": "ATTACKER",
 			"role": "ROLE_BOMB",
 			"preferredFlightType": "BOMB",
 			"targetType": "TARGET_INFANTRY"
+		},
+		{
+			"association": "DEFENDER",
+			"role": "ROLE_FIGHTER",
+			"preferredFlightType": "LOW_ALT_CAP",
+			"targetType": "TARGET_AIR"
 		},
 		{
 			"association": "DEFENDER",

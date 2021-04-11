@@ -3,6 +3,7 @@ package pwcg.mission.target;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.skirmish.Skirmish;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightInformation;
@@ -24,6 +25,7 @@ public class TargetDefinitionBuilder implements ITargetDefinitionBuilder
         {
             targetDefinition = buildCommonTargetDefinition();
         }
+        flightInformation.setTargetDefinition(targetDefinition);
         return targetDefinition;
     }
     
@@ -32,8 +34,6 @@ public class TargetDefinitionBuilder implements ITargetDefinitionBuilder
         TargetDefinitionCollector targetDefinitionCollector = new TargetDefinitionCollector(flightInformation);
         List<TargetDefinition> allTargets = targetDefinitionCollector.collectTargetDefinition();
         TargetDefinition targetDefinition =  findTarget(allTargets);
-        
-        flightInformation.setTargetDefinition(targetDefinition);
         return targetDefinition;
     }
 
@@ -67,7 +67,24 @@ public class TargetDefinitionBuilder implements ITargetDefinitionBuilder
         }
         
         List<TargetType> shuffledTargetTypes = TargetPriorityGeneratorTactical.getTargetTypePriorities(flightInformation);
+        TargetType skirmishTargetType = getSkirmishPreferredTargetType();
+        if (skirmishTargetType != TargetType.TARGET_NONE)
+        {
+            shuffledTargetTypes.add(0, skirmishTargetType);
+        }
         
         return shuffledTargetTypes;
+    }
+    
+    private TargetType getSkirmishPreferredTargetType() throws PWCGException
+    {
+        TargetType skirmishTargetType = TargetType.TARGET_NONE;
+        
+        Skirmish skirmish = flightInformation.getMission().getSkirmish();
+        if (skirmish != null)
+        {
+            skirmishTargetType = skirmish.getTargetTypeForFlightType(flightInformation.getFlightType(), flightInformation.getSquadron().determineSide());
+        }
+        return skirmishTargetType;
     }
 }

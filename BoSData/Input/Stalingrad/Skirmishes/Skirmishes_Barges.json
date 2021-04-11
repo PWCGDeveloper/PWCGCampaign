@@ -16,6 +16,7 @@
 			"stopDate": "19420912",
 			"iconicFlightTypes": [
 				{
+					"side": "AXIS",
 					"flightType": "DIVE_BOMB",
 					"maxForcedFlightTypes": 1
 				}

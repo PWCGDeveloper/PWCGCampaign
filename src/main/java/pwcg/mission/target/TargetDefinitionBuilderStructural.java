@@ -40,6 +40,25 @@ public class TargetDefinitionBuilderStructural
         return targetDefinitions;
     }
 
+    public List<TargetDefinition> findAllStructures() throws PWCGException
+    {
+        for (FixedPosition structure : flightInformation.getMission().getMissionBlockBuilder().getPositionsForMission())
+        {
+            ICountry structureCountry = structure.getCountry(flightInformation.getCampaign().getDate());
+            if (structureCountry.getCountry() != Country.NEUTRAL && (structureCountry.getSide() != flightInformation.getCountry().getSide()))
+            {
+                PwcgStructure building = PwcgBuildingIdentifier.identifyBuilding(structure.getModel());
+                if (building != PwcgStructure.CHURCH && building != PwcgStructure.STATIC_VEHICLE && building != PwcgStructure.UNKNOWN)
+                {
+                    createTargetDefinitionFromStructures(structure, building.toTargetType());
+                }
+            }
+        }
+
+       
+        return targetDefinitions;
+    }
+
     private void createTargetDefinitionFromStructures(FixedPosition structure, TargetType targetType) throws PWCGException
     {
         TargetDefinition targetDefinition = new TargetDefinition(targetType, structure.getPosition().copy(), structure.getCountry(flightInformation.getCampaign().getDate()));

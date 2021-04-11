@@ -16,11 +16,17 @@
 			"stopDate": "19441224",
 			"iconicFlightTypes": [
 				{
+					"side": "AXIS",
 					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 1
+				},
+				{
+					"side": "AXIS",
+					"flightType": "LOW_ALT_CAP",
 					"maxForcedFlightTypes": 1
 				}
 			],
-			"profileType": "SKIRMISH_PROFILE_ANTI_ARMOR",
+			"profileType": "SKIRMISH_PROFILE_ANTI_INFANTRY",
 			"attacker": "AXIS"
 		},
 		{
@@ -39,10 +45,12 @@
 			"stopDate": "19441228",
 			"iconicFlightTypes": [
 				{
+					"side": "ALLIED",
 					"flightType": "CARGO_DROP",
 					"maxForcedFlightTypes": 1
 				},
 				{
+					"side": "ALLIED",
 					"flightType": "GROUND_ATTACK",
 					"maxForcedFlightTypes": 1
 				}
@@ -51,7 +59,7 @@
 			"attacker": "ALLIED"
 		},
 		{
-			"name": "Ardennes Start",
+			"name": "Ardennes End",
 			"swCorner": {
 				"xPos": 45000,
 				"yPos": 0.0,
@@ -66,11 +74,17 @@
 			"stopDate": "19441230",
 			"iconicFlightTypes": [
 				{
+					"side": "ALLIED",
 					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 1
+				},
+				{
+					"side": "ALLIED",
+					"flightType": "LOW_ALT_CAP",
 					"maxForcedFlightTypes": 1
 				}
 			],
-			"profileType": "SKIRMISH_PROFILE_ANTI_ARMOR",
+			"profileType": "SKIRMISH_PROFILE_ANTI_INFANTRY",
 			"attacker": "ALLIED"
 		}
 	]

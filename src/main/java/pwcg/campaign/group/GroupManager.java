@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.group.airfield.AirfieldBlock;
 import pwcg.campaign.io.json.GroundObjectIOJson;
 import pwcg.campaign.io.json.LocationIOJson;
 import pwcg.core.exception.PWCGException;
@@ -58,11 +57,6 @@ public class GroupManager
     public LocationSet getTownLocations()
     {
         return townFinder.getTownLocations();
-    }
-
-    public List<AirfieldBlock> getAifieldsFromBlocks()
-    {
-        return groundStructureGroup.getAirfieldBlocks();
     }
 
     public TownFinder getTownFinder()

@@ -76,6 +76,11 @@ public class OptionalFlightKeeper
             {
                 continue;
             }
+            
+            if (keptFlightsRecorder.airfieldInUseForTakeoff(flight))
+            {
+                continue;
+            }
 
             int totalFlightsKept = keptFlightsRecorder.getFlightKeptCount(KeptFlightCountType.KEPT_FLIGHT_COUNT_ALL, flight);
             if (flight.getFlightType().isCategory(FlightTypeCategory.FIGHTER))
@@ -83,6 +88,7 @@ public class OptionalFlightKeeper
                 int fighterFlightsKept = keptFlightsRecorder.getFlightKeptCount(KeptFlightCountType.KEPT_FLIGHT_COUNT_FIGHTER, flight);
                 if ((fighterFlightsKept < maxFighterToKeep) && (totalFlightsKept < maxToKeep))
                 {
+                    PWCGLogger.log(LogLevel.DEBUG, "Keep Fighter Flight: " + flight.getSquadron().determineDisplayName(flight.getCampaign().getDate()));
                     keptFlightsRecorder.keepFlight(flight);
                 }
             }
@@ -91,6 +97,7 @@ public class OptionalFlightKeeper
                 int bomberFlightsKept = keptFlightsRecorder.getFlightKeptCount(KeptFlightCountType.KEPT_FLIGHT_COUNT_BOMBER, flight);
                 if ((bomberFlightsKept < maxBomberToKeep) && (totalFlightsKept < maxToKeep))
                 {
+                    PWCGLogger.log(LogLevel.DEBUG, "Keep Bombing Flight: " + flight.getSquadron().determineDisplayName(flight.getCampaign().getDate()));
                     keptFlightsRecorder.keepFlight(flight);
                 }
             }
@@ -98,6 +105,7 @@ public class OptionalFlightKeeper
             {
                 if (totalFlightsKept < maxToKeep)
                 {
+                    PWCGLogger.log(LogLevel.DEBUG, "Keep Any Flight: " + flight.getSquadron().determineDisplayName(flight.getCampaign().getDate()));
                     keptFlightsRecorder.keepFlight(flight);
                 }
             }

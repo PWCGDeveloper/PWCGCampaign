@@ -16,11 +16,12 @@
 			"stopDate": "19421122",
 			"iconicFlightTypes": [
 				{
+					"side": "ALLIED",
 					"flightType": "GROUND_ATTACK",
 					"maxForcedFlightTypes": 1
 				}
 			],
-			"profileType": "SKIRMISH_PROFILE_ANTI_ARMOR",
+			"profileType": "SKIRMISH_PROFILE_ANTI_INFANTRY",
 			"attacker": "ALLIED"
 		},
 		{
@@ -39,11 +40,12 @@
 			"stopDate": "19421122",
 			"iconicFlightTypes": [
 				{
+					"side": "ALLIED",
 					"flightType": "GROUND_ATTACK",
 					"maxForcedFlightTypes": 1
 				}
 			],
-			"profileType": "SKIRMISH_PROFILE_ANTI_ARMOR",
+			"profileType": "SKIRMISH_PROFILE_ANTI_INFANTRY",
 			"attacker": "ALLIED"
 		}
 	]
