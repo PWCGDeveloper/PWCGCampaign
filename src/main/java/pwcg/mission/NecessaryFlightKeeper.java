@@ -105,6 +105,12 @@ public class NecessaryFlightKeeper
         {
             int numFlightsOfTypeKept = keptFlightsRecorder.getNumKeptFlightType(flight);
             
+            if (keptFlightsRecorder.isSquadronInKept(flight))
+            {
+                PWCGLogger.log(LogLevel.DEBUG, "Reject Skirmish because squadron already kept: " + flight.getSquadron().determineDisplayName(flight.getCampaign().getDate()));
+                continue;
+            }
+
             if (!mission.getSkirmish().needsMoreIconicFlightType(flight.getFlightInformation(), numFlightsOfTypeKept))
             {
                 PWCGLogger.log(LogLevel.DEBUG, "Reject Skirmish because not iconic: " + flight.getSquadron().determineDisplayName(flight.getCampaign().getDate()));

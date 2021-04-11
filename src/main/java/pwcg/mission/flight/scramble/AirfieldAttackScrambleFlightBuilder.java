@@ -22,11 +22,14 @@ public class AirfieldAttackScrambleFlightBuilder
         {
             if (flight.getTargetDefinition().getTargetType() == TargetType.TARGET_AIRFIELD)
             {
-                AirfieldAttackScrambleFlightBuilder scrambleFlightBuilder = new AirfieldAttackScrambleFlightBuilder(flight);
-                IFlight opposingScrambleFlight = scrambleFlightBuilder.createOpposingFlight();
-                if (opposingScrambleFlight != null)
+                if (flight.getMission().getSkirmish() == null)
                 {
-                    flight.getLinkedFlights().addLinkedFlight(opposingScrambleFlight);
+                    AirfieldAttackScrambleFlightBuilder scrambleFlightBuilder = new AirfieldAttackScrambleFlightBuilder(flight);
+                    IFlight opposingScrambleFlight = scrambleFlightBuilder.createOpposingFlight();
+                    if (opposingScrambleFlight != null)
+                    {
+                        flight.getLinkedFlights().addLinkedFlight(opposingScrambleFlight);
+                    }
                 }
             }
         }

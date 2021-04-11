@@ -37,6 +37,7 @@ public class BodenplatteFlightTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
 
+        assert(MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.GROUND_ATTACK, Side.AXIS));
         assert(MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.SCRAMBLE, Side.ALLIED));
         assert(MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_AIRFIELD, Side.AXIS));
         assert(MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.BOMB, TargetType.TARGET_AIRFIELD, Side.AXIS));
