@@ -51,6 +51,8 @@ public class MissionGroundUnitBuilder
 
     private void generateBattles() throws PWCGException 
     {
+        generateAmphibiousAssBattles();
+
         MissionBattleBuilder battleBuilder = new MissionBattleBuilder(campaign, mission);
         missionBattles = battleBuilder.generateBattles();
     }

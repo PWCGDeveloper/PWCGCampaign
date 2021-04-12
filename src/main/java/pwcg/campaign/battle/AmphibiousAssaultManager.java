@@ -8,19 +8,19 @@ import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
-import pwcg.campaign.io.json.BattleIOJson;
+import pwcg.campaign.io.json.AmphibiousAssaultIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PWCGLogger;
 
-public class BattleManager
+public class AmphibiousAssaultManager
 {
-	private Battles battles = new Battles();
+	private AmphibiousAssaults amphibiousAssaults = new AmphibiousAssaults();
     private FrontMapIdentifier map;
 
-	public BattleManager(FrontMapIdentifier map)
+	public AmphibiousAssaultManager(FrontMapIdentifier map)
 	{
 	    this.map = map;
 	}
@@ -29,7 +29,7 @@ public class BattleManager
 	{
         try
         {
-            battles = BattleIOJson.readJson(map.getMapName());
+            amphibiousAssaults = AmphibiousAssaultIOJson.readJson(map.getMapName());
         }
         catch (Exception e)
         {
@@ -37,19 +37,19 @@ public class BattleManager
         }
 	}
 
-    public Battle getBattleForCampaign(FrontMapIdentifier mapId, Coordinate position, Date date) 
+    public AmphibiousAssault getAmphibiousAssaultsForCampaign(FrontMapIdentifier mapId, Coordinate position, Date date) 
     {     
         try
         {
-            for (Battle battle : battles.getBattles())
+            for (AmphibiousAssault amphibiousAssault : amphibiousAssaults.getAmphibiousAssaults())
             {
-                if (isBattleAtRightTime(date, battle))
+                if (isAmphibiousAssaultAtRightTime(date, amphibiousAssault))
                 {
-	                if (isBattleOnRightMap(battle, mapId))
+	                if (isAmphibiousAssaultOnRightMap(amphibiousAssault, mapId))
 	                {
-                        if (isBattleNearPlayer(position, battle, mapId, date))
+                        if (isAmphibiousAssaultNearPlayer(position, amphibiousAssault, mapId, date))
                         {
-                            return battle;
+                            return amphibiousAssault;
                         }
                     }
                 }
@@ -63,14 +63,14 @@ public class BattleManager
         return null;
     }
 
-    private boolean isBattleOnRightMap(Battle battle, FrontMapIdentifier mapId)
+    private boolean isAmphibiousAssaultOnRightMap(AmphibiousAssault amphibiousAssault, FrontMapIdentifier mapId)
 	{
     	if (mapId == null)
     	{
     		return false;
     	}
     	
-    	if (battle.getMap() == mapId)
+    	if (map == mapId)
     	{
     		return true;
     	}
@@ -78,9 +78,9 @@ public class BattleManager
 		return false;
 	}
 
-	private boolean isBattleAtRightTime(Date date, Battle battle) throws PWCGException
+	private boolean isAmphibiousAssaultAtRightTime(Date date, AmphibiousAssault amphibiousAssault) throws PWCGException
     {
-	    if (DateUtils.isDateInRange(date, battle.getStartDate(), battle.getStopDate()))
+        if (DateUtils.isDateInRange(date, amphibiousAssault.getLandingStartDate(), amphibiousAssault.getLandingStopDate()))
         {
         	return true;
         }
@@ -88,15 +88,15 @@ public class BattleManager
         return false;
     }
     
-    private boolean isBattleNearPlayer(Coordinate position, Battle battle, FrontMapIdentifier matchingMap, Date date) throws PWCGException
+    private boolean isAmphibiousAssaultNearPlayer(Coordinate position, AmphibiousAssault amphibiousAssault, FrontMapIdentifier matchingMap, Date date) throws PWCGException
     {
         FrontLinesForMap frontLineMarker =  PWCGContext.getInstance().getMapByMapId(matchingMap).getFrontLinesForMap(date);
         Coordinate closestFrontLines = frontLineMarker.findClosestFrontCoordinateForSide(position, Side.ALLIED);
 
-        double distanceFromBattleFront = MathUtils.calcDist(closestFrontLines, position);
+        double distanceFromAmphibiousAssaultFront = MathUtils.calcDist(closestFrontLines, position);
         IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        int closeToBattleDistance = productSpecific.getCloseToBattleDistance();
-        if (distanceFromBattleFront < closeToBattleDistance)
+        int closeToAmphibiousAssaultDistance = productSpecific.getCloseToBattleDistance();
+        if (distanceFromAmphibiousAssaultFront < closeToAmphibiousAssaultDistance)
         {
             return true;
         }
