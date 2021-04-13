@@ -1,0 +1,62 @@
+{
+	"skirmishes": [
+		{
+			"name": "Kerch Invasion",
+			"swCorner": {
+				"xPos": 265000,
+				"yPos": 0.0,
+				"zPos": 122000
+			},
+			"neCorner": {
+				"xPos": 275000,
+				"yPos": 0.0,
+				"zPos": 132000
+			},
+			"startDate": "19431101",
+			"stopDate": "19443107",
+			"iconicFlightTypes": [
+				{
+					"side": "AXIS",
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 1
+				},
+				{
+					"side": "ALLIED",
+					"flightType": "LOW_ALT_CAP",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_INVASION",
+			"attacker": "ALLIED"
+		},
+		{
+			"name": "Eltigen Invasion",
+			"swCorner": {
+				"xPos": 252000,
+				"yPos": 0.0,
+				"zPos": 108000
+			},
+			"neCorner": {
+				"xPos": 262000,
+				"yPos": 0.0,
+				"zPos": 118000
+			},
+			"startDate": "19431102",
+			"stopDate": "19443111",
+			"iconicFlightTypes": [
+				{
+					"side": "AXIS",
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 1
+				},
+				{
+					"side": "ALLIED",
+					"flightType": "LOW_ALT_CAP",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_INVASION",
+			"attacker": "ALLIED"
+		}
+	]
+}

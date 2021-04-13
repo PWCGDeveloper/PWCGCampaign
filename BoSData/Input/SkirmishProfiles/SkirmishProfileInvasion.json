@@ -1,47 +1,53 @@
 {
-	"profileType": "SKIRMISH_PROFILE_ANTI_SHIPPING",
+	"profileType": "SKIRMISH_PROFILE_INVASION",
 	"skirmishProfileElements": [
 		{
-			"association": "ATTACKER",
+			"association": "DEFENDER",
 			"role": "ROLE_FIGHTER",
-			"preferredFlightType": "INTERCEPT",
+			"preferredFlightType": "LOW_ALT_CAP",
 			"targetType": "TARGET_AIR"
 		},
 		{
-			"association": "ATTACKER",
+			"association": "DEFENDER",
 			"role": "ROLE_ATTACK",
 			"preferredFlightType": "GROUND_ATTACK",
 			"targetType": "TARGET_SHIPPING"
 		},
 		{
-			"association": "ATTACKER",
+			"association": "DEFENDER",
 			"role": "ROLE_DIVE_BOMB",
 			"preferredFlightType": "DIVE_BOMB",
 			"targetType": "TARGET_SHIPPING"
 		},
 		{
+			"association": "DEFENDER",
+			"role": "ROLE_BOMB",
+			"preferredFlightType": "BOMB",
+			"targetType": "TARGET_SHIPPING"
+		},
+		{
+			"association": "ATTACKER",
+			"role": "ROLE_ATTACK",
+			"preferredFlightType": "GROUND_ATTACK",
+			"targetType": "TARGET_INFANTRY"
+		},
+		{
+			"association": "ATTACKER",
+			"role": "ROLE_DIVE_BOMB",
+			"preferredFlightType": "DIVE_BOMB",
+			"targetType": "TARGET_INFANTRY"
+		},
+		{
 			"association": "ATTACKER",
 			"role": "ROLE_BOMB",
 			"preferredFlightType": "BOMB",
-			"targetType": "TARGET_SHIPPING"
+			"targetType": "TARGET_INFANTRY"
 		},
 		{
-			"association": "DEFENDER",
-			"role": "ROLE_ATTACK",
-			"preferredFlightType": "GROUND_ATTACK",
-			"targetType": "TARGET_SHIPPING"
-		},
-		{
-			"association": "DEFENDER",
-			"role": "ROLE_BOMB",
-			"preferredFlightType": "BOMB",
-			"targetType": "TARGET_SHIPPING"
-		},
-		{
-			"association": "DEFENDER",
+			"association": "ATTACKER",
 			"role": "ROLE_FIGHTER",
 			"preferredFlightType": "LOW_ALT_CAP",
-			"targetType": "INTERCEPT"
+			"targetType": "TARGET_AIR"
 		}
 	]
 }
