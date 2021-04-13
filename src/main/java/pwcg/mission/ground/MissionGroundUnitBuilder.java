@@ -8,6 +8,8 @@ import java.util.Map;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.battle.AmphibiousAssault;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -15,6 +17,7 @@ import pwcg.core.utils.PositionFinder;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBalloonBuilder;
 import pwcg.mission.MissionShipBuilder;
+import pwcg.mission.ground.builder.AmphibiousAssaultBuilder;
 import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.target.TargetType;
 
@@ -51,10 +54,17 @@ public class MissionGroundUnitBuilder
 
     private void generateBattles() throws PWCGException 
     {
-        generateAmphibiousAssBattles();
-
-        MissionBattleBuilder battleBuilder = new MissionBattleBuilder(campaign, mission);
-        missionBattles = battleBuilder.generateBattles();
+        AmphibiousAssault amphibiousAssault = PWCGContext.getInstance().getCurrentMap().getAmphibiousAssaultManager().getAmphibiousAssaultsForCampaign(campaign.getDate());
+        if (amphibiousAssault != null)
+        {
+            AmphibiousAssaultBuilder amphibiousAssaultBuilder =new AmphibiousAssaultBuilder(mission, amphibiousAssault);
+            missionBattles = amphibiousAssaultBuilder.generateAmphibiousAssault();
+        }
+        else
+        {
+            MissionBattleBuilder battleBuilder = new MissionBattleBuilder(campaign, mission);
+            missionBattles = battleBuilder.generateBattles();
+        }
     }
 
     private void generateTrains() throws PWCGException 

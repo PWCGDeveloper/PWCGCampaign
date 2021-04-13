@@ -2,17 +2,10 @@ package pwcg.campaign.battle;
 
 import java.util.Date;
 
-import pwcg.campaign.api.IProductSpecificConfiguration;
-import pwcg.campaign.api.Side;
-import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.FrontMapIdentifier;
-import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.io.json.AmphibiousAssaultIOJson;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PWCGLogger;
 
 public class AmphibiousAssaultManager
@@ -37,7 +30,7 @@ public class AmphibiousAssaultManager
         }
 	}
 
-    public AmphibiousAssault getAmphibiousAssaultsForCampaign(FrontMapIdentifier mapId, Coordinate position, Date date) 
+    public AmphibiousAssault getAmphibiousAssaultsForCampaign(Date date) 
     {     
         try
         {
@@ -45,13 +38,7 @@ public class AmphibiousAssaultManager
             {
                 if (isAmphibiousAssaultAtRightTime(date, amphibiousAssault))
                 {
-	                if (isAmphibiousAssaultOnRightMap(amphibiousAssault, mapId))
-	                {
-                        if (isAmphibiousAssaultNearPlayer(position, amphibiousAssault, mapId, date))
-                        {
-                            return amphibiousAssault;
-                        }
-                    }
+                    return amphibiousAssault;
                 }
             }
         }
@@ -63,21 +50,6 @@ public class AmphibiousAssaultManager
         return null;
     }
 
-    private boolean isAmphibiousAssaultOnRightMap(AmphibiousAssault amphibiousAssault, FrontMapIdentifier mapId)
-	{
-    	if (mapId == null)
-    	{
-    		return false;
-    	}
-    	
-    	if (map == mapId)
-    	{
-    		return true;
-    	}
-    	
-		return false;
-	}
-
 	private boolean isAmphibiousAssaultAtRightTime(Date date, AmphibiousAssault amphibiousAssault) throws PWCGException
     {
         if (DateUtils.isDateInRange(date, amphibiousAssault.getLandingStartDate(), amphibiousAssault.getLandingStopDate()))
@@ -85,22 +57,6 @@ public class AmphibiousAssaultManager
         	return true;
         }
             
-        return false;
-    }
-    
-    private boolean isAmphibiousAssaultNearPlayer(Coordinate position, AmphibiousAssault amphibiousAssault, FrontMapIdentifier matchingMap, Date date) throws PWCGException
-    {
-        FrontLinesForMap frontLineMarker =  PWCGContext.getInstance().getMapByMapId(matchingMap).getFrontLinesForMap(date);
-        Coordinate closestFrontLines = frontLineMarker.findClosestFrontCoordinateForSide(position, Side.ALLIED);
-
-        double distanceFromAmphibiousAssaultFront = MathUtils.calcDist(closestFrontLines, position);
-        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        int closeToAmphibiousAssaultDistance = productSpecific.getCloseToBattleDistance();
-        if (distanceFromAmphibiousAssaultFront < closeToAmphibiousAssaultDistance)
-        {
-            return true;
-        }
-        
         return false;
     }
 }

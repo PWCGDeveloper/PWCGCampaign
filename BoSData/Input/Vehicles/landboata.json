@@ -10,6 +10,6 @@
 	"startDate": "19390901",
 	"endDate": "19460724",
 	"rarityWeight": 5,
-	"vehicleClass": "ShipCargo",
+	"vehicleClass": "ShipLandingCraft",
 	"vehicleLength": 100
 }

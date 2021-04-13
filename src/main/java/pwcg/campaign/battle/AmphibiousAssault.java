@@ -11,7 +11,8 @@ public class AmphibiousAssault
     private String name;
     private Date landingStartDate;
     private Date landingStopDate;
-    private Country aggressorcountry;
+    private Country aggressorCountry;
+    private Country defendingCountry;
     private List<AmphibiousAssaultShip> ships = new ArrayList<>();
 
     public String getName()
@@ -29,9 +30,14 @@ public class AmphibiousAssault
         return landingStopDate;
     }
 
-    public Country getAggressorcountry()
+    public Country getAggressorCountry()
     {
-        return aggressorcountry;
+        return aggressorCountry;
+    }
+    
+    public Country getDefendingCountry()
+    {
+        return defendingCountry;
     }
 
     public List<AmphibiousAssaultShip> getShips()

@@ -25,6 +25,7 @@ public enum VehicleClass
 
     Car(false, "Car", GroundUnitType.TRANSPORT_UNIT),
     Drifter(false, "Barge", GroundUnitType.TRANSPORT_UNIT),
+    ShipLandingCraft(false, "Landing Craft", GroundUnitType.TRANSPORT_UNIT),
     ShipCargo(false, "Cargo Ship", GroundUnitType.TRANSPORT_UNIT),
     ShipWarship(false, "Warship", GroundUnitType.TRANSPORT_UNIT),
     Submarine(false, "Submarine", GroundUnitType.TRANSPORT_UNIT),

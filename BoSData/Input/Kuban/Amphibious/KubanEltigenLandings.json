@@ -2,7 +2,8 @@
 	"landingName": "Kuban Eltigen",
 	"landingStartDate": "19441101",
 	"landingStopDate": "19441111",
-	"aggressorcountry": "RUSSIA",
+	"aggressorCountry": "RUSSIA",
+	"defendingCountry": "GERMANY",
 	"ships": [
 		{
 			"shipType": "landboata",
