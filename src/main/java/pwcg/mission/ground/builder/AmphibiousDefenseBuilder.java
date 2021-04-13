@@ -30,8 +30,6 @@ public class AmphibiousDefenseBuilder
     private Orientation assaultOrientation;
     private Orientation defenseOrientation;
     
-    public static final int DISTANCE_FROM_LANDING_CRAFT = 350;
-
     public AmphibiousDefenseBuilder(Mission mission, AmphibiousAssault amphibiousAssault)
     {
         this.mission = mission;
@@ -39,17 +37,16 @@ public class AmphibiousDefenseBuilder
         
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, 
-                "Battle Segment", 
+                "Amphibious Defense", 
                 TargetType.TARGET_INFANTRY,
                 Coalition.getCoalitions());
 
         amphibiousAssaultDefense = new GroundUnitCollection ("Amphibious Assault Defense", groundUnitCollectionData);
     }
 
-
     public GroundUnitCollection generateAmphibiousAssaultDefense() throws PWCGException
     {
-        buildDefensePositionAndOrientation();
+        buildPositionAndOrientation();
 
         defendingMachineGun();
         defendingATGuns();
@@ -60,8 +57,7 @@ public class AmphibiousDefenseBuilder
         return amphibiousAssaultDefense;        
     }
 
-
-    private void buildDefensePositionAndOrientation() throws PWCGException
+    private void buildPositionAndOrientation() throws PWCGException
     {
         AmphibiousAssaultShip referenceShip = amphibiousAssault.getShips().get(0);
         defensePosition = MathUtils.calcNextCoord(referenceShip.getDestination(), referenceShip.getOrientation().getyOri(), 350);

@@ -1,14 +1,11 @@
 package pwcg.mission.ground.builder;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import pwcg.campaign.battle.AmphibiousAssault;
 import pwcg.campaign.battle.AmphibiousAssaultShip;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.IGroundUnit;
@@ -17,40 +14,56 @@ public class AmphibiousAssaultBuilder
 {
     private Mission mission;
     private AmphibiousAssault amphibiousAssault;
+    private List<GroundUnitCollection> amphibiousAssaultUnits = new ArrayList<>();
     
     public AmphibiousAssaultBuilder(Mission mission, AmphibiousAssault amphibiousAssault)
     {
-        
+        this.mission = mission;
+        this.amphibiousAssault = amphibiousAssault;
     }
     
-    public GroundUnitCollection generateAmphibiousAssault() throws PWCGException
+    public List<GroundUnitCollection> generateAmphibiousAssault() throws PWCGException
+    {
+        makeLandingCraft();
+        makeLanding();
+        makeDefense();
+        
+        return amphibiousAssaultUnits;
+    }
+
+    private void makeLandingCraft() throws PWCGException
     {
         AmphibiousAssaultShipBuilder amphibiousAssaultShipBuilder = new AmphibiousAssaultShipBuilder(mission, amphibiousAssault);
-        GroundUnitCollection ships = amphibiousAssaultShipBuilder.makeShips(amphibiousAssault);
-        GroundUnitCollection defense = makeDefense(amphibiousAssault);
-        
-        ships.merge(defense);
+        GroundUnitCollection ships = amphibiousAssaultShipBuilder.generateAmphibiousAssautShips();
+        finishGroundUnitCollection(ships);
+    }
 
+    private void makeLanding() throws PWCGException
+    {
+        for (AmphibiousAssaultShip shipDefinition : amphibiousAssault.getShips())
+        {
+            if (shipDefinition.getShipType().startsWith("land"))
+            {
+                AmphibiousAssaultAttackBuilder amphibiousAssaultShipBuilder = new AmphibiousAssaultAttackBuilder(mission, amphibiousAssault, shipDefinition);
+                GroundUnitCollection assault = amphibiousAssaultShipBuilder.generateAmphibiousAssaultAttack();
+                finishGroundUnitCollection(assault);
+            }
+        }
+    }
+
+    private void makeDefense() throws PWCGException
+    {
+        AmphibiousDefenseBuilder amphibiousDefenseBuilder = new AmphibiousDefenseBuilder(mission, amphibiousAssault);
+        GroundUnitCollection defense = amphibiousDefenseBuilder.generateAmphibiousAssaultDefense();
+        finishGroundUnitCollection(defense);
+    }
+
+    private void finishGroundUnitCollection(GroundUnitCollection amphibiousGroundUnit) throws PWCGException
+    {
         List<IGroundUnit> primaryAssaultSegmentGroundUnits = new ArrayList<>();
-        primaryAssaultSegmentGroundUnits.add(ships.getPrimaryGroundUnit());
-
-        ships.setPrimaryGroundUnit(primaryAssaultSegmentGroundUnits.get(0));
-        ships.finishGroundUnitCollection();
-        return ships;
-    }
-
-    private Coordinate makeLandingCraftStartPosition(AmphibiousAssaultShip amphibiousAssaultShip) throws PWCGException
-    {
-        double angle = MathUtils.adjustAngle(amphibiousAssaultShip.getOrientation().getyOri(), 180);
-        Coordinate startPosition = MathUtils.calcNextCoord(amphibiousAssaultShip.getDestination(), angle, 2000);
-        return startPosition;
-    }
-
-    private static GroundUnitCollection makeDefense(AmphibiousAssault amphibiousAssault)
-    {
-        // Make Defending MGs 200 yards from ship landing at orientation = ship orientation
-        // Make Defending AT guns 500 yards
-        // Make Defending Artillery 2KM
-        return null;
+        primaryAssaultSegmentGroundUnits.add(amphibiousGroundUnit.getPrimaryGroundUnit());
+        amphibiousGroundUnit.setPrimaryGroundUnit(primaryAssaultSegmentGroundUnits.get(0));
+        amphibiousGroundUnit.finishGroundUnitCollection();
+        amphibiousAssaultUnits.add(amphibiousGroundUnit);
     }
  }

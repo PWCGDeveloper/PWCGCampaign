@@ -23,13 +23,22 @@ public class AmphibiousAssaultShipBuilder
 {
     private Mission mission;
     private AmphibiousAssault amphibiousAssault;
+    private GroundUnitCollection ships;
     
     public AmphibiousAssaultShipBuilder(Mission mission, AmphibiousAssault amphibiousAssault)
     {
         
     }
 
-    public GroundUnitCollection makeShips(AmphibiousAssault amphibiousAssault) throws PWCGException
+    public GroundUnitCollection generateAmphibiousAssautShips() throws PWCGException
+    {
+        ships = buildLandingCraft();
+        GroundUnitCollection destroyers = buildLandingDestroyers();
+        ships.merge(destroyers);
+        return ships;
+    }
+
+    private GroundUnitCollection buildLandingCraft() throws PWCGException
     {
         ICountry shipCountry = CountryFactory.makeCountryByCountry(amphibiousAssault.getAggressorCountry());
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
@@ -38,16 +47,43 @@ public class AmphibiousAssaultShipBuilder
                 TargetType.TARGET_SHIPPING,
                 Coalition.getCoalitionsForSide(shipCountry.getSide()));
 
-        GroundUnitCollection ships = new GroundUnitCollection("Landing Craft", groundUnitCollectionData);
+        GroundUnitCollection landingCraft = new GroundUnitCollection("Landing Craft", groundUnitCollectionData);
         for (AmphibiousAssaultShip amphibiousAssaultShip : amphibiousAssault.getShips())
         {
-            GroundUnitInformation groundUnitInformation = createGroundUnitInformationForUnit(amphibiousAssaultShip);
-            LandingCraftUnit landingCraftUnit = new LandingCraftUnit(groundUnitInformation);
-            landingCraftUnit.createGroundUnit();
-            ships.addGroundUnit(landingCraftUnit);
+            if (amphibiousAssaultShip.getShipType().startsWith("land"))
+            {
+                GroundUnitInformation groundUnitInformation = createGroundUnitInformationForUnit(amphibiousAssaultShip);
+                LandingCraftUnit landingCraftUnit = new LandingCraftUnit(groundUnitInformation);
+                landingCraftUnit.createGroundUnit();
+                landingCraft.addGroundUnit(landingCraftUnit);
+            }
         }
 
-        return ships;
+        return landingCraft;
+    }
+
+    private GroundUnitCollection buildLandingDestroyers() throws PWCGException
+    {
+        ICountry shipCountry = CountryFactory.makeCountryByCountry(amphibiousAssault.getAggressorCountry());
+        GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
+                GroundUnitCollectionType.TRANSPORT_GROUND_UNIT_COLLECTION, 
+                "Destroyer", 
+                TargetType.TARGET_SHIPPING,
+                Coalition.getCoalitionsForSide(shipCountry.getSide()));
+
+        GroundUnitCollection destroyers = new GroundUnitCollection("Destroyer", groundUnitCollectionData);
+        for (AmphibiousAssaultShip amphibiousAssaultShip : amphibiousAssault.getShips())
+        {
+            if (amphibiousAssaultShip.getShipType().startsWith("dest"))
+            {
+                GroundUnitInformation groundUnitInformation = createGroundUnitInformationForUnit(amphibiousAssaultShip);
+                LandingCraftUnit destroyerUnit = new LandingCraftUnit(groundUnitInformation);
+                destroyerUnit.createGroundUnit();
+                destroyers.addGroundUnit(destroyerUnit);
+            }
+        }
+
+        return destroyers;
     }
 
     private GroundUnitInformation createGroundUnitInformationForUnit(AmphibiousAssaultShip amphibiousAssaultShip) throws PWCGException
