@@ -40,12 +40,11 @@ public class AmphibiousAssaultShipBuilder
 
     private GroundUnitCollection buildLandingCraft() throws PWCGException
     {
-        ICountry shipCountry = CountryFactory.makeCountryByCountry(amphibiousAssault.getAggressorCountry());
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.TRANSPORT_GROUND_UNIT_COLLECTION, 
                 "Landing Craft", 
                 TargetType.TARGET_SHIPPING,
-                Coalition.getCoalitionsForSide(shipCountry.getSide()));
+                Coalition.getCoalitions());
 
         GroundUnitCollection landingCraft = new GroundUnitCollection("Landing Craft", groundUnitCollectionData);
         for (AmphibiousAssaultShip amphibiousAssaultShip : amphibiousAssault.getShips())
@@ -64,12 +63,11 @@ public class AmphibiousAssaultShipBuilder
 
     private GroundUnitCollection buildLandingDestroyers() throws PWCGException
     {
-        ICountry shipCountry = CountryFactory.makeCountryByCountry(amphibiousAssault.getAggressorCountry());
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.TRANSPORT_GROUND_UNIT_COLLECTION, 
                 "Destroyer", 
                 TargetType.TARGET_SHIPPING,
-                Coalition.getCoalitionsForSide(shipCountry.getSide()));
+                Coalition.getCoalitions());
 
         GroundUnitCollection destroyers = new GroundUnitCollection("Destroyer", groundUnitCollectionData);
         for (AmphibiousAssaultShip amphibiousAssaultShip : amphibiousAssault.getShips())
