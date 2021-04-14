@@ -20,7 +20,7 @@ import pwcg.mission.mcu.McuTREntity;
 
 public class Vehicle implements Cloneable, IVehicle
 {
-    protected IVehicleDefinition vehicleDefinition;
+    protected VehicleDefinition vehicleDefinition;
     protected String vehicleName = "";
     protected String vehicleType = "";
     protected int index;
@@ -49,7 +49,7 @@ public class Vehicle implements Cloneable, IVehicle
     {
     }
     
-    public Vehicle(IVehicleDefinition vehicleDefinition)
+    public Vehicle(VehicleDefinition vehicleDefinition)
     {
         this.vehicleDefinition = vehicleDefinition;
         index = IndexGenerator.getInstance().getNextIndex();
@@ -111,7 +111,7 @@ public class Vehicle implements Cloneable, IVehicle
 
     private void buildAssociatedBlock()
     {
-        IVehicleDefinition blockDefinition = PWCGContext.getInstance().getStaticObjectDefinitionManager().getVehicleDefinitionByType(vehicleDefinition.getAssociatedBlock());
+        VehicleDefinition blockDefinition = PWCGContext.getInstance().getStaticObjectDefinitionManager().getVehicleDefinitionByType(vehicleDefinition.getAssociatedBlock());
         if (blockDefinition != null)
         {
             associatedBlock = new StaticObject(blockDefinition);

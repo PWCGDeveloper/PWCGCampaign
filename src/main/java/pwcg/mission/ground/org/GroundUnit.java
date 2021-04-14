@@ -18,7 +18,7 @@ import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.unittypes.GroundUnitSpawningTrainBuilder;
 import pwcg.mission.ground.unittypes.GroundUnitSpawningVehicleBuilder;
 import pwcg.mission.ground.vehicle.IVehicle;
-import pwcg.mission.ground.vehicle.IVehicleDefinition;
+import pwcg.mission.ground.vehicle.VehicleDefinition;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.mcu.AttackAreaType;
 import pwcg.mission.mcu.McuFormation;
@@ -251,9 +251,17 @@ public abstract class GroundUnit implements IGroundUnit
         {
             GroundUnitSpawningTrainBuilder trainBuilder = new GroundUnitSpawningTrainBuilder(pwcgGroundUnitInformation);
             IVehicle vehicle = trainBuilder.createTrainToSpawn();
-            GroundUnitElement groundElement = new GroundUnitElement(vehicle, pwcgGroundUnitInformation.getPosition());
-            groundElement.createGroundUnitElement();
-            groundElements.add(groundElement);
+            Coordinate vehiclePosition =  pwcgGroundUnitInformation.getPosition().copy();
+            finishGroundUnit(vehicle, vehiclePosition);
+        }
+        else if (!pwcgGroundUnitInformation.getRequestedUnitType().isEmpty())
+        {
+            for (Coordinate vehiclePosition : vehicleStartPositions)
+            {
+                IVehicle vehicle = GroundUnitSpawningVehicleBuilder.getRequestedVehicle(pwcgGroundUnitInformation);
+                vehicle.setPosition(vehiclePosition);
+                finishGroundUnit(vehicle, vehiclePosition);
+            }
         }
         else
         {
@@ -261,22 +269,27 @@ public abstract class GroundUnit implements IGroundUnit
             {
                 IVehicle vehicle = GroundUnitSpawningVehicleBuilder.createVehicleToSpawn(pwcgGroundUnitInformation, vehicleClass);
                 vehicle.setPosition(vehiclePosition);
-                GroundUnitElement groundElement = new GroundUnitElement(vehicle, vehiclePosition);
-                groundElement.createGroundUnitElement();
-                groundElements.add(groundElement);
+                finishGroundUnit(vehicle, vehiclePosition);
             }
         }
     }
+
+    private void finishGroundUnit(IVehicle vehicle, Coordinate vehiclePosition) throws PWCGException
+    {
+        GroundUnitElement groundElement = new GroundUnitElement(vehicle, vehiclePosition);
+        groundElement.createGroundUnitElement();
+        groundElements.add(groundElement);
+    }
     
-    protected void createVehiclesFromDefinition(List<Coordinate> vehicleStartPositions, IVehicleDefinition vehicleDefinition) throws PWCGException 
+    
+    
+    protected void createVehiclesFromDefinition(List<Coordinate> vehicleStartPositions, VehicleDefinition vehicleDefinition) throws PWCGException 
     {       
         for (Coordinate vehiclePosition : vehicleStartPositions)
         {
             IVehicle vehicle = GroundUnitSpawningVehicleBuilder.createVehicleToSpawnFromDefinition(pwcgGroundUnitInformation, vehicleClass, vehicleDefinition);
             vehicle.setPosition(vehiclePosition);
-            GroundUnitElement groundElement = new GroundUnitElement(vehicle, vehiclePosition);
-            groundElement.createGroundUnitElement();
-            groundElements.add(groundElement);
+            finishGroundUnit(vehicle, vehiclePosition);
         }
     }
 

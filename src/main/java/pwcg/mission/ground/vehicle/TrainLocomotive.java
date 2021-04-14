@@ -16,7 +16,7 @@ public class TrainLocomotive extends Vehicle implements IVehicle
 {
     private List<IVehicle> cars = new ArrayList<>();
 
-    public TrainLocomotive(IVehicleDefinition vehicleDefinition)
+    public TrainLocomotive(VehicleDefinition vehicleDefinition)
     {
         super(vehicleDefinition);
     }

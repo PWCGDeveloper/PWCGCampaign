@@ -12,7 +12,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.ground.building.PwcgStructure;
 import pwcg.mission.ground.building.PwcgBuildingIdentifier;
-import pwcg.mission.ground.vehicle.IVehicleDefinition;
+import pwcg.mission.ground.vehicle.VehicleDefinition;
 import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
 
 public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBase
@@ -180,7 +180,7 @@ public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBa
 
     private String identifyStaticVehicle(VictoryEntity victoryEntity) throws PWCGException
     {
-        IVehicleDefinition vehicle = PWCGContext.getInstance().getStaticObjectDefinitionManager().findStaticVehicle(victoryEntity.getType());
+        VehicleDefinition vehicle = PWCGContext.getInstance().getStaticObjectDefinitionManager().findStaticVehicle(victoryEntity.getType());
         if (vehicle != null)
         {
             return vehicle.getDisplayName();
@@ -197,13 +197,13 @@ public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBa
 
     private String getVehicleName(String vehicleDescriptor) throws PWCGException
     {
-        IVehicleDefinition vehicleDefinitionByName = PWCGContext.getInstance().getVehicleDefinitionManager().getVehicleDefinitionByVehicleName(vehicleDescriptor);
+        VehicleDefinition vehicleDefinitionByName = PWCGContext.getInstance().getVehicleDefinitionManager().getVehicleDefinitionByVehicleName(vehicleDescriptor);
         if (vehicleDefinitionByName != null)
         {
             return vehicleDefinitionByName.getDisplayName();
         }
 
-        IVehicleDefinition vehicleDefinitionByDisplayName = PWCGContext.getInstance().getVehicleDefinitionManager().getVehicleDefinitionByVehicleDisplayName(vehicleDescriptor);
+        VehicleDefinition vehicleDefinitionByDisplayName = PWCGContext.getInstance().getVehicleDefinitionManager().getVehicleDefinitionByVehicleDisplayName(vehicleDescriptor);
         if (vehicleDefinitionByDisplayName != null)
         {
             return vehicleDefinitionByDisplayName.getDisplayName();

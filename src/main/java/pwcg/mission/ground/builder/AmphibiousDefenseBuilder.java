@@ -92,7 +92,7 @@ public class AmphibiousDefenseBuilder
     
     private void defendingAAAMachineGun() throws PWCGException
     {
-        Coordinate aaaMgDefensePosition = MathUtils.calcNextCoord(amphibiousPositionBuilder.getAssaultPosition(), amphibiousPositionBuilder.getAssaultOrientation().getyOri(), 30);  
+        Coordinate aaaMgDefensePosition = MathUtils.calcNextCoord(amphibiousPositionBuilder.getDefensePosition(), amphibiousPositionBuilder.getAssaultOrientation().getyOri(), 30);  
         double toTheRight = MathUtils.adjustAngle( amphibiousPositionBuilder.getAssaultOrientation().getyOri(), 90);
         aaaMgDefensePosition = MathUtils.calcNextCoord(aaaMgDefensePosition.copy(), toTheRight, 50);  
 

@@ -22,7 +22,7 @@ public class AmphibiousPositionBuilder
     public void buildPositionAndOrientation() throws PWCGException
     {
         defensePosition = MathUtils.calcNextCoord(amphibiousAssaultShip.getDestination(), amphibiousAssaultShip.getOrientation().getyOri(), 1500);
-        assaultPosition = MathUtils.calcNextCoord(amphibiousAssaultShip.getDestination(), amphibiousAssaultShip.getOrientation().getyOri(), 300);
+        assaultPosition = MathUtils.calcNextCoord(amphibiousAssaultShip.getDestination(), amphibiousAssaultShip.getOrientation().getyOri(), 100);
 
         double defenseAngle = MathUtils.adjustAngle(amphibiousAssaultShip.getOrientation().getyOri(), 180);
         defenseOrientation = new Orientation(defenseAngle);

@@ -10,17 +10,17 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.ground.vehicle.IVehicle;
-import pwcg.mission.ground.vehicle.IVehicleDefinition;
+import pwcg.mission.ground.vehicle.VehicleDefinition;
 import pwcg.mission.mcu.McuTREntity;
 
 public class StaticObject extends Block implements IVehicle
 {
-    protected IVehicleDefinition vehicleDefinition;
+    protected VehicleDefinition vehicleDefinition;
 
     private StaticObject() {
     }
 
-    public StaticObject(IVehicleDefinition vehicleDefinition)
+    public StaticObject(VehicleDefinition vehicleDefinition)
     {
         super();
         this.vehicleDefinition = vehicleDefinition;

@@ -21,8 +21,8 @@ public class Runway
     {
         Runway clone = new Runway();
 
-        clone.startPos = startPos;
-        clone.endPos = endPos;
+        clone.startPos = startPos.copy();
+        clone.endPos = endPos.copy();
         clone.parkingLocation = parkingLocation;
 
         for (Coordinate t : taxiToStart)

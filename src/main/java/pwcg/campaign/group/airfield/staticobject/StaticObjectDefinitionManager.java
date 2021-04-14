@@ -7,7 +7,6 @@ import pwcg.campaign.io.json.StaticObjectIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.IWeight;
 import pwcg.core.utils.WeightCalculator;
-import pwcg.mission.ground.vehicle.IVehicleDefinition;
 import pwcg.mission.ground.vehicle.VehicleDefinition;
 import pwcg.mission.ground.vehicle.VehicleRequestDefinition;
 
@@ -30,7 +29,7 @@ public class StaticObjectDefinitionManager
     }
     
     
-    public IVehicleDefinition getVehicleDefinitionForRequest(VehicleRequestDefinition requestDefinition) throws PWCGException
+    public VehicleDefinition getVehicleDefinitionForRequest(VehicleRequestDefinition requestDefinition) throws PWCGException
     {
         List<VehicleDefinition> matchingDefinitions = new ArrayList<>();
         for (VehicleDefinition definition : allStaticObjectsDefinitions)
@@ -50,7 +49,7 @@ public class StaticObjectDefinitionManager
     }
 
     
-    public IVehicleDefinition findStaticVehicle(String vehicleType) throws PWCGException
+    public VehicleDefinition findStaticVehicle(String vehicleType) throws PWCGException
     {
         for (VehicleDefinition definition : allStaticObjectsDefinitions)
         {
@@ -68,7 +67,7 @@ public class StaticObjectDefinitionManager
         return null;
     }
 
-    private IVehicleDefinition chooseMatchingVehicle(List<VehicleDefinition> matchingDefinitions)
+    private VehicleDefinition chooseMatchingVehicle(List<VehicleDefinition> matchingDefinitions)
     {
         List<IWeight> vehiclesByWeight = new ArrayList<>();
         for (VehicleDefinition definition : matchingDefinitions)
@@ -81,7 +80,7 @@ public class StaticObjectDefinitionManager
         return matchingDefinitions.get(index);
     }
 
-    public IVehicleDefinition getVehicleDefinitionByType(String name)
+    public VehicleDefinition getVehicleDefinitionByType(String name)
     {
         for (VehicleDefinition definition : allStaticObjectsDefinitions)
         {

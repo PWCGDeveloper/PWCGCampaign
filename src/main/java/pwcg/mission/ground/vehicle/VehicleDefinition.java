@@ -8,7 +8,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.IWeight;
 
-public class VehicleDefinition implements IVehicleDefinition, IWeight
+public class VehicleDefinition implements IWeight
 {
     private String scriptDir;
     private String modelDir;
@@ -23,49 +23,41 @@ public class VehicleDefinition implements IVehicleDefinition, IWeight
     private String associatedBlock;
     private int vehicleLength;
 
-    @Override
     public String getScriptDir()
     {
         return scriptDir;
     }
 
-    @Override
     public String getModelDir()
     {
         return modelDir;
     }
 
-    @Override
     public String getVehicleType()
     {
         return vehicleType;
     }
 
-    @Override
     public String getVehicleName()
     {
         return vehicleName;
     }
 
-    @Override
     public String getDisplayName()
     {
         return displayName;
     }
 
-    @Override
     public int getRarityWeight()
     {
         return rarityWeight;
     }
 
-    @Override
     public int getWeight()
     {
         return rarityWeight;
     }
 
-    @Override
     public String getAssociatedBlock()
     {
         return associatedBlock;
@@ -96,7 +88,6 @@ public class VehicleDefinition implements IVehicleDefinition, IWeight
         return endDate;
     }
 
-    @Override
     public boolean shouldUse(VehicleRequestDefinition requestDefinition) throws PWCGException
     {
         if (vehicleClass != requestDefinition.getVehicleClass())

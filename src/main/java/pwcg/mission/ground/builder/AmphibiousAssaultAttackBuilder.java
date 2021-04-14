@@ -2,6 +2,7 @@ package pwcg.mission.ground.builder;
 
 import pwcg.campaign.battle.AmphibiousAssault;
 import pwcg.campaign.battle.AmphibiousAssaultShip;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -63,6 +64,15 @@ public class AmphibiousAssaultAttackBuilder
         Coordinate tankAssaultStartPosition = MathUtils.calcNextCoord(amphibiousPositionBuilder.getAssaultPosition(), amphibiousPositionBuilder.getAssaultOrientation().getyOri(), 100);  
 
         GroundUnitInformation groundUnitInformation = buildAssaultGroundUnitInformation(tankAssaultStartPosition, "Tank", TargetType.TARGET_ARMOR, GroundUnitSize.GROUND_UNIT_SIZE_LOW);
+        if (amphibiousAssault.getAggressorCountry() == Country.RUSSIA)
+        {
+            groundUnitInformation.setRequestedUnitType("t70");
+        }
+        else if (amphibiousAssault.getAggressorCountry() == Country.USA || amphibiousAssault.getAggressorCountry() == Country.BRITAIN)
+        {
+            groundUnitInformation.setRequestedUnitType("m4a3");
+        }
+        
         IGroundUnit assaultTankUnit = assaultFactory.createAssaultTankUnit (groundUnitInformation);
         amphibiousAssaultAttack.addGroundUnit(assaultTankUnit);
     }

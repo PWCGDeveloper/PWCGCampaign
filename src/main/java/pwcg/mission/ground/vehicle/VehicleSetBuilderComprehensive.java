@@ -16,7 +16,7 @@ public class VehicleSetBuilderComprehensive
     public List<IVehicle> makeOneOfEachType() throws PWCGException
     {
         List< VehicleDefinition> allVehicleDefinitions = VehicleDefinitionIOJson.readJson();
-        for (IVehicleDefinition vehicleDefinition : allVehicleDefinitions)
+        for (VehicleDefinition vehicleDefinition : allVehicleDefinitions)
         {
             IVehicle vehicle = new Vehicle(vehicleDefinition);
             allVehicles.add(vehicle);

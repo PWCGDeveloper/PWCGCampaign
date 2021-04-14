@@ -19,6 +19,7 @@ public class GroundUnitInformation
 	private Orientation orientation = new Orientation();
     private TargetType targetType = TargetType.TARGET_NONE;
     private GroundUnitSize unitSize = GroundUnitSize.GROUND_UNIT_SIZE_TINY;
+    private String requestedUnitType = "";
 
     public ICountry getCountry()
     {
@@ -98,5 +99,15 @@ public class GroundUnitInformation
     public void setDate(Date date)
     {
         this.date = date;
+    }
+
+    public String getRequestedUnitType()
+    {
+        return requestedUnitType;
+    }
+
+    public void setRequestedUnitType(String requestedUnitType)
+    {
+        this.requestedUnitType = requestedUnitType;
     }
 }

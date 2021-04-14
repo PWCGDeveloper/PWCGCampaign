@@ -12,7 +12,7 @@ import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.org.GroundUnit;
 import pwcg.mission.ground.org.GroundUnitNumberCalculator;
-import pwcg.mission.ground.vehicle.IVehicleDefinition;
+import pwcg.mission.ground.vehicle.VehicleDefinition;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.ground.vehicle.VehicleRequestDefinition;
 
@@ -29,14 +29,14 @@ public class DrifterUnit extends GroundUnit
         super.createSpawnTimer();
         
         VehicleRequestDefinition requestDefinition = new VehicleRequestDefinition(pwcgGroundUnitInformation.getCountry().getCountry(), pwcgGroundUnitInformation.getDate(), vehicleClass);
-        IVehicleDefinition vehicleDefinition = PWCGContext.getInstance().getVehicleDefinitionManager().getVehicleDefinitionForRequest(requestDefinition);
+        VehicleDefinition vehicleDefinition = PWCGContext.getInstance().getVehicleDefinitionManager().getVehicleDefinitionForRequest(requestDefinition);
 
         List<Coordinate> vehicleStartPositions = createVehicleStartPositions(vehicleDefinition);
         super.createVehiclesFromDefinition(vehicleStartPositions, vehicleDefinition);
         super.linkElements();
     }
 
-    private List<Coordinate> createVehicleStartPositions(IVehicleDefinition vehicleDefinition) throws PWCGException 
+    private List<Coordinate> createVehicleStartPositions(VehicleDefinition vehicleDefinition) throws PWCGException 
     {
         List<Coordinate> spawnerLocations = new ArrayList<>();
 
@@ -68,7 +68,7 @@ public class DrifterUnit extends GroundUnit
         return spawnerLocations;       
     }
 
-    private int calcNumUnits(IVehicleDefinition vehicleDefinition) throws PWCGException
+    private int calcNumUnits(VehicleDefinition vehicleDefinition) throws PWCGException
     {
         int numUnits = 1;
         if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)

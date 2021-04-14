@@ -31,7 +31,7 @@ public class VehicleDefinitionManager
         return allVehiclesDefinitions;
     }
     
-    public IVehicleDefinition getVehicleDefinitionByVehicleType(String vehicleType) throws PWCGException
+    public VehicleDefinition getVehicleDefinitionByVehicleType(String vehicleType) throws PWCGException
     {
         for (VehicleDefinition definition : allVehiclesDefinitions)
         {
@@ -44,7 +44,7 @@ public class VehicleDefinitionManager
         return null;
     }
     
-    public IVehicleDefinition getVehicleDefinitionByVehicleName(String vehicleName) throws PWCGException
+    public VehicleDefinition getVehicleDefinitionByVehicleName(String vehicleName) throws PWCGException
     {
         for (VehicleDefinition definition : allVehiclesDefinitions)
         {
@@ -57,7 +57,7 @@ public class VehicleDefinitionManager
         return getVehicleDefinitionByVehicleType(vehicleName);
     }
     
-    public IVehicleDefinition getVehicleDefinitionByVehicleDisplayName(String vehicleName) throws PWCGException
+    public VehicleDefinition getVehicleDefinitionByVehicleDisplayName(String vehicleName) throws PWCGException
     {
         for (VehicleDefinition definition : allVehiclesDefinitions)
         {
@@ -88,7 +88,7 @@ public class VehicleDefinitionManager
         return false;
     }
         
-    public IVehicleDefinition getVehicleDefinitionForRequest(VehicleRequestDefinition requestDefinition) throws PWCGException
+    public VehicleDefinition getVehicleDefinitionForRequest(VehicleRequestDefinition requestDefinition) throws PWCGException
     {
         List<VehicleDefinition> matchingDefinitions = new ArrayList<>();
         for (VehicleDefinition definition : allVehiclesDefinitions)
@@ -107,7 +107,7 @@ public class VehicleDefinitionManager
         return chooseMatchingVehicle(matchingDefinitions);
     }
 
-    private IVehicleDefinition chooseMatchingVehicle(List<VehicleDefinition> matchingDefinitions)
+    private VehicleDefinition chooseMatchingVehicle(List<VehicleDefinition> matchingDefinitions)
     {
         List<IWeight> vehiclesByWeight = new ArrayList<>();
         for (VehicleDefinition definition : matchingDefinitions)
