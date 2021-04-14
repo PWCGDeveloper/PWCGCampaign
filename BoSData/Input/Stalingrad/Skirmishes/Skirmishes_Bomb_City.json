@@ -1,7 +1,7 @@
 {
 	"skirmishes": [
 		{
-			"name": "Stalingrad-City",
+			"skirmishName": "Stalingrad-City",
 			"swCorner": {
 				"xPos": 131000,
 				"yPos": 0.0,

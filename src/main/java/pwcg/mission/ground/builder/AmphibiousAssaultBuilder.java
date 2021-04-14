@@ -53,9 +53,15 @@ public class AmphibiousAssaultBuilder
 
     private void makeDefense() throws PWCGException
     {
-        AmphibiousDefenseBuilder amphibiousDefenseBuilder = new AmphibiousDefenseBuilder(mission, amphibiousAssault);
-        GroundUnitCollection defense = amphibiousDefenseBuilder.generateAmphibiousAssaultDefense();
-        finishGroundUnitCollection(defense);
+        for (AmphibiousAssaultShip shipDefinition : amphibiousAssault.getShips())
+        {
+            if (shipDefinition.getShipType().startsWith("land"))
+            {
+                AmphibiousDefenseBuilder amphibiousDefenseBuilder = new AmphibiousDefenseBuilder(mission, amphibiousAssault, shipDefinition);
+                GroundUnitCollection defense = amphibiousDefenseBuilder.generateAmphibiousAssaultDefense();
+                finishGroundUnitCollection(defense);
+            }
+        }
     }
 
     private void finishGroundUnitCollection(GroundUnitCollection amphibiousGroundUnit) throws PWCGException

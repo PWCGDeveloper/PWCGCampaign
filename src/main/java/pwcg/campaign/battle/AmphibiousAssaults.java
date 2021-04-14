@@ -16,4 +16,16 @@ public class AmphibiousAssaults
     {
         amphibiousAssaults.add(amphibiousAssault);
     }
+
+    public AmphibiousAssault getAmphibiousAssault(String skirmishName)
+    {
+        for (AmphibiousAssault amphibiousAssault : amphibiousAssaults)
+        {
+            if (amphibiousAssault.getSkirmishName().equals(skirmishName))
+            {
+                return amphibiousAssault;
+            }
+        }
+        return null;
+    }
 }

@@ -1,7 +1,7 @@
 {
 	"skirmishes": [
 		{
-			"name": "Stalingrad-Encirclement",
+			"skirmishName": "Stalingrad-Encirclement",
 			"swCorner": {
 				"xPos": 114000,
 				"yPos": 0.0,

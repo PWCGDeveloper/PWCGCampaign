@@ -8,16 +8,16 @@ import pwcg.campaign.context.Country;
 
 public class AmphibiousAssault
 {
-    private String name;
+    private String skirmishName;
     private Date landingStartDate;
     private Date landingStopDate;
     private Country aggressorCountry;
     private Country defendingCountry;
     private List<AmphibiousAssaultShip> ships = new ArrayList<>();
 
-    public String getName()
+    public String getSkirmishName()
     {
-        return name;
+        return skirmishName;
     }
 
     public Date getLandingStartDate()

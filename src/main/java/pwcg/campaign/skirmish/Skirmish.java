@@ -19,7 +19,7 @@ import pwcg.mission.target.TargetType;
 
 public class Skirmish
 {
-    private String name;
+    private String skirmishName;
 	private Coordinate neCorner;
 	private Coordinate swCorner;
     private Date startDate;
@@ -33,10 +33,17 @@ public class Skirmish
 	{
 	}
 
-    public String getName()
+    public String getSkirmishName()
     {
-        return name;
+        return skirmishName;
     }
+
+    public void setSkirmishName(String skirmishName)
+    {
+        this.skirmishName = skirmishName;
+    }
+
+
 
     public CoordinateBox getCoordinateBox() throws PWCGException
     {

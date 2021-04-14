@@ -47,9 +47,15 @@ public class FrontLinesForMap
 
     public Coordinate getCoordinates(int index, Side side ) throws PWCGException 
     {
-        List<FrontLinePoint>frontLines = findAllFrontLinesForSide(side);
-        
-        return frontLines.get(index).getPosition().copy();
+        try 
+        {
+            List<FrontLinePoint>frontLines = findAllFrontLinesForSide(side);        
+            return frontLines.get(index).getPosition().copy();
+        }
+        catch (Exception e)
+        {
+            throw new PWCGException("Invalid front line index: " + index);
+        }
     }
 
     public double getOrientation(int index, Side side, Date date) throws PWCGException 

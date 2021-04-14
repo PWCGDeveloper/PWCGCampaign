@@ -10,6 +10,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.battle.AmphibiousAssault;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.skirmish.Skirmish;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -54,7 +55,7 @@ public class MissionGroundUnitBuilder
 
     private void generateBattles() throws PWCGException 
     {
-        AmphibiousAssault amphibiousAssault = PWCGContext.getInstance().getCurrentMap().getAmphibiousAssaultManager().getAmphibiousAssaultsForCampaign(campaign.getDate());
+        AmphibiousAssault amphibiousAssault = getActiveAmphibiousAssault();
         if (amphibiousAssault != null)
         {
             AmphibiousAssaultBuilder amphibiousAssaultBuilder =new AmphibiousAssaultBuilder(mission, amphibiousAssault);
@@ -65,6 +66,17 @@ public class MissionGroundUnitBuilder
             MissionBattleBuilder battleBuilder = new MissionBattleBuilder(campaign, mission);
             missionBattles = battleBuilder.generateBattles();
         }
+    }
+
+    private AmphibiousAssault getActiveAmphibiousAssault()
+    {
+        AmphibiousAssault amphibiousAssault = null;
+        Skirmish skirmish = mission.getSkirmish();
+        if (skirmish != null)
+        {
+            amphibiousAssault = PWCGContext.getInstance().getCurrentMap().getAmphibiousAssaultManager().getAmphibiousAssaultsForCampaign(skirmish.getSkirmishName());
+        }
+        return amphibiousAssault;
     }
 
     private void generateTrains() throws PWCGException 

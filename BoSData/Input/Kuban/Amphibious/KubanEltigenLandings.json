@@ -1,7 +1,7 @@
 {
-	"landingName": "Kuban Eltigen",
-	"landingStartDate": "19441101",
-	"landingStopDate": "19441111",
+	"skirmishName": "Eltigen Amphibious Assault",
+	"landingStartDate": "19431102",
+	"landingStopDate": "19431111",
 	"aggressorCountry": "RUSSIA",
 	"defendingCountry": "GERMANY",
 	"ships": [
@@ -13,178 +13,165 @@
 				"zPos": 113579.0
 			},
 			"orientation": {
-				"xPos": 0.0,
-				"yPos": 270.0,
-				"zPos": 0.0
+				"xOri": 0.0,
+				"yOri": 270.0,
+				"zOri": 0.0
 			}
 		},
 		{
 			"shipType": "landboata",
 			"destination": {
-				"xPos": 257240.807,
+				"xPos": 257487.0,
 				"yPos": 0.0,
-				"zPos": 113579.043
+				"zPos": 113751.0
 			},
 			"orientation": {
-				"xPos": 0.0,
-				"yPos": 270.0,
-				"zPos": 0.0
+				"xOri": 0.0,
+				"yOri": 270.0,
+				"zOri": 0.0
 			}
 		},
 		{
 			"shipType": "landboata",
 			"destination": {
-				"xPos": 257487.864,
+				"xPos": 256993.0,
 				"yPos": 0.0,
-				"zPos": 113751.827
+				"zPos": 113373.0
 			},
 			"orientation": {
-				"xPos": 0.0,
-				"yPos": 270.0,
-				"zPos": 0.0
+				"xOri": 0.0,
+				"yOri": 270.0,
+				"zOri": 0.0
 			}
 		},
 		{
 			"shipType": "landboata",
 			"destination": {
-				"xPos": 256993.619,
+				"xPos": 256701.0,
 				"yPos": 0.0,
-				"zPos": 113373.793
+				"zPos": 113184.0
 			},
 			"orientation": {
-				"xPos": 0.0,
-				"yPos": 270.0,
-				"zPos": 0.0
+				"xOri": 0.0,
+				"yOri": 270.0,
+				"zOri": 0.0
 			}
 		},
 		{
 			"shipType": "landboata",
 			"destination": {
-				"xPos": 256701.206,
+				"xPos": 256506.0,
 				"yPos": 0.0,
-				"zPos": 113184.809
+				"zPos": 113038.0
 			},
 			"orientation": {
-				"xPos": 0.0,
-				"yPos": 270.0,
-				"zPos": 0.0
+				"xOri": 0.0,
+				"yOri": 270.0,
+				"zOri": 0.0
 			}
 		},
 		{
 			"shipType": "landboata",
 			"destination": {
-				"xPos": 256506.272,
+				"xPos": 256199.0,
 				"yPos": 0.0,
-				"zPos": 113038.095
+				"zPos": 112878.0
 			},
 			"orientation": {
-				"xPos": 0.0,
-				"yPos": 270.0,
-				"zPos": 0.0
+				"xOri": 0.0,
+				"yOri": 270.0,
+				"zOri": 0.0
 			}
 		},
 		{
 			"shipType": "landboata",
 			"destination": {
-				"xPos": 256199.234,
+				"xPos": 255999.0,
 				"yPos": 0.0,
-				"zPos": 112878.492
+				"zPos": 112734.0
 			},
 			"orientation": {
-				"xPos": 0.0,
-				"yPos": 270.0,
-				"zPos": 0.0
+				"xOri": 0.0,
+				"yOri": 270.0,
+				"zOri": 0.0
 			}
 		},
 		{
 			"shipType": "landboata",
 			"destination": {
-				"xPos": 255999.572,
+				"xPos": 255516.0,
 				"yPos": 0.0,
-				"zPos": 112734.196
+				"zPos": 112551.0
 			},
 			"orientation": {
-				"xPos": 0.0,
-				"yPos": 270.0,
-				"zPos": 0.0
+				"xOri": 0.0,
+				"yOri": 270.0,
+				"zOri": 0.0
 			}
 		},
 		{
 			"shipType": "landboata",
 			"destination": {
-				"xPos": 255516.385,
+				"xPos": 257778.0,
 				"yPos": 0.0,
-				"zPos": 112551.820
+				"zPos": 113907.0
 			},
 			"orientation": {
-				"xPos": 0.0,
-				"yPos": 270.0,
-				"zPos": 0.0
+				"xOri": 0.0,
+				"yOri": 270.0,
+				"zOri": 0.0
 			}
 		},
 		{
 			"shipType": "landboata",
 			"destination": {
-				"xPos": 257778.511,
+				"xPos": 257996.0,
 				"yPos": 0.0,
-				"zPos": 113907.776
+				"zPos": 113826.0
 			},
 			"orientation": {
-				"xPos": 0.0,
-				"yPos": 270.0,
-				"zPos": 0.0
-			}
-		},
-		{
-			"shipType": "landboata",
-			"destination": {
-				"xPos": 257996.957,
-				"yPos": 0.0,
-				"zPos": 113826.423
-			},
-			"orientation": {
-				"xPos": 0.0,
-				"yPos": 270.0,
-				"zPos": 0.0
+				"xOri": 0.0,
+				"yOri": 270.0,
+				"zOri": 0.0
 			}
 		},
 		{
 			"shipType": "destroyertype7",
 			"destination": {
-				"xPos": 257992.032,
+				"xPos": 257992.0,
 				"yPos": 0.0,
-				"zPos": 114196.282
+				"zPos": 114196.0
 			},
 			"orientation": {
-				"xPos": 0.0,
-				"yPos": 270.0,
-				"zPos": 0.0
+				"xOri": 0.0,
+				"yOri": 270.0,
+				"zOri": 0.0
 			}
 		},
 		{
 			"shipType": "destroyertype7",
 			"destination": {
-				"xPos": 256997.227,
+				"xPos": 256997.0,
 				"yPos": 0.0,
-				"zPos": 113930.743
+				"zPos": 113930.0
 			},
 			"orientation": {
-				"xPos": 0.0,
-				"yPos": 270.0,
-				"zPos": 0.0
+				"xOri": 0.0,
+				"yOri": 270.0,
+				"zOri": 0.0
 			}
 		},
 		{
 			"shipType": "destroyertype7",
 			"destination": {
-				"xPos": 256165.673,
+				"xPos": 256165.0,
 				"yPos": 0.0,
-				"zPos": 113422.365
+				"zPos": 113422.0
 			},
 			"orientation": {
-				"xPos": 0.0,
-				"yPos": 270.0,
-				"zPos": 0.0
+				"xOri": 0.0,
+				"yOri": 270.0,
+				"zOri": 0.0
 			}
 		}
 	]

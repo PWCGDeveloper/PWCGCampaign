@@ -104,9 +104,17 @@ public class PathAlongFront
     {
         FrontLinePoint startPoint = frontLinesForMap.findClosestFrontPositionForSide(pathAlongFrontData.getTargetGeneralLocation(), frontLineSide);
         coordinatesForPath.add(startPoint.getPosition());
-        
-        int firstFrontIndex = frontLinesForMap.findIndexForClosestPosition(pathAlongFrontData.getTargetGeneralLocation(), frontLineSide);
+        return findStartingFrontLinePoint();
+    }
 
+    private int findStartingFrontLinePoint() throws PWCGException
+    {
+        int firstFrontIndex = frontLinesForMap.findIndexForClosestPosition(pathAlongFrontData.getTargetGeneralLocation(), frontLineSide);
+        if (frontLines.size() < 20)
+        {
+            return 2;
+        }
+        
         if (firstFrontIndex > (frontLines.size() - 8))
         {
             firstFrontIndex = frontLines.size() - 8;

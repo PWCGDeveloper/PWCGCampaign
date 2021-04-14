@@ -1,7 +1,7 @@
 {
 	"skirmishes": [
 		{
-			"name": "Kerch Invasion",
+			"skirmishName": "Kerch Amphibious Assault",
 			"swCorner": {
 				"xPos": 265000,
 				"yPos": 0.0,
@@ -13,11 +13,11 @@
 				"zPos": 132000
 			},
 			"startDate": "19431101",
-			"stopDate": "19443107",
+			"stopDate": "19431107",
 			"iconicFlightTypes": [
 				{
 					"side": "AXIS",
-					"flightType": "GROUND_ATTACK",
+					"flightType": "DIVE_BOMB",
 					"maxForcedFlightTypes": 1
 				},
 				{
@@ -30,7 +30,7 @@
 			"attacker": "ALLIED"
 		},
 		{
-			"name": "Eltigen Invasion",
+			"skirmishName": "Eltigen Amphibious Assault",
 			"swCorner": {
 				"xPos": 252000,
 				"yPos": 0.0,
@@ -42,7 +42,7 @@
 				"zPos": 118000
 			},
 			"startDate": "19431102",
-			"stopDate": "19443111",
+			"stopDate": "19431111",
 			"iconicFlightTypes": [
 				{
 					"side": "AXIS",

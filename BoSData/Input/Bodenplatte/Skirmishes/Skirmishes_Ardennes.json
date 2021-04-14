@@ -1,7 +1,7 @@
 {
 	"skirmishes": [
 		{
-			"name": "Ardennes Start",
+			"skirmishName": "Ardennes German Offensive",
 			"swCorner": {
 				"xPos": 45000,
 				"yPos": 0.0,
@@ -30,7 +30,7 @@
 			"attacker": "AXIS"
 		},
 		{
-			"name": "Bastogne",
+			"skirmishName": "Bastogne",
 			"swCorner": {
 				"xPos": 42000,
 				"yPos": 0.0,
@@ -59,7 +59,7 @@
 			"attacker": "ALLIED"
 		},
 		{
-			"name": "Ardennes End",
+			"skirmishName": "Ardennes Allied Counterattack",
 			"swCorner": {
 				"xPos": 45000,
 				"yPos": 0.0,

@@ -1,7 +1,7 @@
 {
 	"skirmishes": [
 		{
-			"name": "Bodenplatte-Volkel",
+			"skirmishName": "Bodenplatte-Volkel",
 			"swCorner": {
 				"xPos": 230000,
 				"yPos": 0.0,
@@ -42,7 +42,7 @@
 			"attacker": "AXIS"
 		},
 		{
-			"name": "Bodenplatte-Gravekent",
+			"skirmishName": "Bodenplatte-Gravekent",
 			"swCorner": {
 				"xPos": 244000,
 				"yPos": 0.0,
@@ -84,7 +84,7 @@
 			"attacker": "AXIS"
 		},
 		{
-			"name": "Bodenplatte-Petit-Brogel",
+			"skirmishName": "Bodenplatte-Petit-Brogel",
 			"swCorner": {
 				"xPos": 177000,
 				"yPos": 0.0,
@@ -126,7 +126,7 @@
 			"attacker": "AXIS"
 		},
 		{
-			"name": "Bodenplatte-Ophoven",
+			"skirmishName": "Bodenplatte-Ophoven",
 			"swCorner": {
 				"xPos": 162000,
 				"yPos": 0.0,
@@ -165,7 +165,7 @@
 			"attacker": "AXIS"
 		},
 		{
-			"name": "Bodenplatte-Asch",
+			"skirmishName": "Bodenplatte-Asch",
 			"swCorner": {
 				"xPos": 154000,
 				"yPos": 0.0,
