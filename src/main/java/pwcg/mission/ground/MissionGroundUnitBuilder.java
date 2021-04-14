@@ -44,6 +44,33 @@ public class MissionGroundUnitBuilder
 
     public void generateGroundUnitsForMission() throws PWCGException 
     {
+        if (isGenerateHistoricalBattle())
+        {
+            generateHistoricalBattle();
+        }
+        else
+        {
+            generateNormalGroundActivity();
+        }
+    }
+
+    private boolean isGenerateHistoricalBattle()
+    {
+        AmphibiousAssault amphibiousAssault = getActiveAmphibiousAssault();
+        if (amphibiousAssault != null)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void generateHistoricalBattle() throws PWCGException 
+    {
+        generateAmphibiousAssault();
+    }
+    
+    public void generateNormalGroundActivity() throws PWCGException 
+    {
         generateBattles();
         generateTrains();
         generateTrucks();
@@ -53,19 +80,11 @@ public class MissionGroundUnitBuilder
         createFrontLineAAA();
     }
 
-    private void generateBattles() throws PWCGException 
+    private void generateAmphibiousAssault() throws PWCGException 
     {
         AmphibiousAssault amphibiousAssault = getActiveAmphibiousAssault();
-        if (amphibiousAssault != null)
-        {
-            AmphibiousAssaultBuilder amphibiousAssaultBuilder =new AmphibiousAssaultBuilder(mission, amphibiousAssault);
-            missionBattles = amphibiousAssaultBuilder.generateAmphibiousAssault();
-        }
-        else
-        {
-            MissionBattleBuilder battleBuilder = new MissionBattleBuilder(campaign, mission);
-            missionBattles = battleBuilder.generateBattles();
-        }
+        AmphibiousAssaultBuilder amphibiousAssaultBuilder =new AmphibiousAssaultBuilder(mission, amphibiousAssault);
+        missionBattles = amphibiousAssaultBuilder.generateAmphibiousAssault();
     }
 
     private AmphibiousAssault getActiveAmphibiousAssault()
@@ -77,6 +96,12 @@ public class MissionGroundUnitBuilder
             amphibiousAssault = PWCGContext.getInstance().getCurrentMap().getAmphibiousAssaultManager().getAmphibiousAssaultsForCampaign(skirmish.getSkirmishName());
         }
         return amphibiousAssault;
+    }
+
+    private void generateBattles() throws PWCGException 
+    {
+        MissionBattleBuilder battleBuilder = new MissionBattleBuilder(campaign, mission);
+        missionBattles = battleBuilder.generateBattles();
     }
 
     private void generateTrains() throws PWCGException 

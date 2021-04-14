@@ -16,7 +16,6 @@ import pwcg.mission.ground.org.GroundUnitCollectionType;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.unittypes.infantry.AssaultGroundUnitFactory;
 import pwcg.mission.mcu.Coalition;
-import pwcg.mission.target.AssaultDefinitionGenerator;
 import pwcg.mission.target.TargetType;
 
 public class AmphibiousDefenseBuilder
@@ -73,13 +72,9 @@ public class AmphibiousDefenseBuilder
 
     private void defendingATGuns() throws PWCGException
     { 
-        Coordinate atGunStartPosition = MathUtils.calcNextCoord(amphibiousPositionBuilder.getDefensePosition(), amphibiousPositionBuilder.getAssaultOrientation().getyOri(), 20);
+        Coordinate antiTankDefensePosition = MathUtils.calcNextCoord(amphibiousPositionBuilder.getDefensePosition(), amphibiousPositionBuilder.getAssaultOrientation().getyOri(), 20);
         double toTheRight = MathUtils.adjustAngle( amphibiousPositionBuilder.getAssaultOrientation().getyOri(), 90);
-        atGunStartPosition = MathUtils.calcNextCoord(atGunStartPosition.copy(), toTheRight, 75);  
-
-        Coordinate antiTankDefensePosition = MathUtils.calcNextCoord(
-                atGunStartPosition, 
-                amphibiousPositionBuilder.getDefenseOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 200.0);     
+        antiTankDefensePosition = MathUtils.calcNextCoord(antiTankDefensePosition.copy(), toTheRight, 75);  
 
         GroundUnitInformation groundUnitInformation = buildDefenseGroundUnitInformation(antiTankDefensePosition, "Anti Tank Gun", TargetType.TARGET_INFANTRY);
         IGroundUnit defenseAntiTankUnit = assaultFactory.createAntiTankGunUnit (groundUnitInformation);
@@ -88,11 +83,7 @@ public class AmphibiousDefenseBuilder
 
     private void defendingArtillery() throws PWCGException
     { 
-        Coordinate artilleryStartPosition = MathUtils.calcNextCoord(amphibiousPositionBuilder.getDefensePosition(), amphibiousPositionBuilder.getAssaultOrientation().getyOri(), 1000);  
-
-        Coordinate artilleryDefensePosition = MathUtils.calcNextCoord(
-                artilleryStartPosition, 
-                amphibiousPositionBuilder.getDefenseOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 3000.0);     
+        Coordinate artilleryDefensePosition = MathUtils.calcNextCoord(amphibiousPositionBuilder.getDefensePosition(), amphibiousPositionBuilder.getAssaultOrientation().getyOri(), 1000);  
 
         GroundUnitInformation groundUnitInformation = buildDefenseGroundUnitInformation(artilleryDefensePosition, "Artillery", TargetType.TARGET_ARTILLERY);
         IGroundUnit defenseArtilleryUnit = assaultFactory.createAssaultArtilleryUnit (groundUnitInformation);
@@ -101,13 +92,9 @@ public class AmphibiousDefenseBuilder
     
     private void defendingAAAMachineGun() throws PWCGException
     {
-        Coordinate aaaMachineGunStartPosition = MathUtils.calcNextCoord(amphibiousPositionBuilder.getAssaultPosition(), amphibiousPositionBuilder.getAssaultOrientation().getyOri(), 30);  
+        Coordinate aaaMgDefensePosition = MathUtils.calcNextCoord(amphibiousPositionBuilder.getAssaultPosition(), amphibiousPositionBuilder.getAssaultOrientation().getyOri(), 30);  
         double toTheRight = MathUtils.adjustAngle( amphibiousPositionBuilder.getAssaultOrientation().getyOri(), 90);
-        aaaMachineGunStartPosition = MathUtils.calcNextCoord(aaaMachineGunStartPosition.copy(), toTheRight, 50);  
-
-        Coordinate aaaMgDefensePosition = MathUtils.calcNextCoord(
-                aaaMachineGunStartPosition, 
-                amphibiousPositionBuilder.getDefenseOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 100.0);     
+        aaaMgDefensePosition = MathUtils.calcNextCoord(aaaMgDefensePosition.copy(), toTheRight, 50);  
 
         GroundUnitInformation groundUnitInformation = buildDefenseGroundUnitInformation(aaaMgDefensePosition, "Machine Gun AA", TargetType.TARGET_INFANTRY);
         IGroundUnit defenseAAMachineGunUnit = assaultFactory.createAAMachineGunUnitUnit(groundUnitInformation);
