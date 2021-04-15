@@ -14,6 +14,7 @@ public class AmphibiousAssault
     private Date landingStopDate;
     private Country aggressorCountry;
     private Country defendingCountry;
+    private int landingCraftBackOff;
     private List<AmphibiousAssaultShipDefinition> shipDefinitions = new ArrayList<>();
 
     public String getSkirmishName()
@@ -44,6 +45,11 @@ public class AmphibiousAssault
     public List<AmphibiousAssaultShipDefinition> getShipDefinitions()
     {
         return shipDefinitions;
+    }
+
+    public int getLandingCraftBackOff()
+    {
+        return landingCraftBackOff;
     }
 
     public void shuffleLandingCraft()

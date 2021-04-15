@@ -3,10 +3,8 @@ package pwcg.mission.ground.builder;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.api.ICountry;
 import pwcg.campaign.battle.AmphibiousAssault;
 import pwcg.campaign.battle.AmphibiousAssaultShipDefinition;
-import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.GroundUnitSize;
@@ -37,8 +35,7 @@ public class AmphibiousAssaultBuilder
 
     private void makeLandingCraft(List<AmphibiousAssaultShipDefinition> shipsForMission) throws PWCGException
     {
-        ICountry shipCountry = CountryFactory.makeCountryByCountry(amphibiousAssault.getAggressorCountry());
-        AmphibiousAssaultShipBuilder amphibiousAssaultShipBuilder = new AmphibiousAssaultShipBuilder(mission, shipsForMission, shipCountry);
+        AmphibiousAssaultShipBuilder amphibiousAssaultShipBuilder = new AmphibiousAssaultShipBuilder(mission, amphibiousAssault, shipsForMission);
         GroundUnitCollection ships = amphibiousAssaultShipBuilder.generateAmphibiousAssautShips();
         amphibiousAssaultUnits.add(ships);
     }

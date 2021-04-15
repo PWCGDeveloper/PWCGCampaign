@@ -4,6 +4,7 @@
 	"landingStopDate": "19431111",
 	"aggressorCountry": "RUSSIA",
 	"defendingCountry": "GERMANY",
+	"landingCraftBackOff": 700,
 	"shipDefinitions": [
 		{
 			"shipType": "landboata",

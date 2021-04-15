@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.battle.AmphibiousAssault;
 import pwcg.campaign.battle.AmphibiousAssaultShipDefinition;
+import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -24,15 +26,15 @@ import pwcg.mission.target.TargetType;
 public class AmphibiousAssaultShipBuilder
 {
     private Mission mission;
-    private ICountry shipCountry;
+    private AmphibiousAssault amphibiousAssault;
     private List<AmphibiousAssaultShipDefinition> shipsForMission;
     private GroundUnitCollection amphibiousAssaultShips;
     
-    public AmphibiousAssaultShipBuilder(Mission mission, List<AmphibiousAssaultShipDefinition> shipsForMission, ICountry shipCountry)
+    public AmphibiousAssaultShipBuilder(Mission mission, AmphibiousAssault amphibiousAssault, List<AmphibiousAssaultShipDefinition> shipsForMission)
     {
         this.mission = mission;
         this.shipsForMission = shipsForMission;
-        this.shipCountry = shipCountry;
+        this.amphibiousAssault = amphibiousAssault;
     }
 
     public GroundUnitCollection generateAmphibiousAssautShips() throws PWCGException
@@ -119,14 +121,15 @@ public class AmphibiousAssaultShipBuilder
     private TargetDefinition makeTargetDefinition(AmphibiousAssaultShipDefinition amphibiousAssaultShip) throws PWCGException
     {
         Coordinate startPosition = makeLandingCraftStartPosition(amphibiousAssaultShip);
-        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_SHIPPING, startPosition, shipCountry);
+        ICountry country = CountryFactory.makeCountryByCountry(amphibiousAssault.getAggressorCountry());
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_SHIPPING, startPosition, country);
         return targetDefinition;
     }
 
     private Coordinate makeLandingCraftStartPosition(AmphibiousAssaultShipDefinition amphibiousAssaultShip) throws PWCGException
     {
         double angle = MathUtils.adjustAngle(amphibiousAssaultShip.getOrientation().getyOri(), 180);
-        Coordinate startPosition = MathUtils.calcNextCoord(amphibiousAssaultShip.getDestination(), angle, 700);
+        Coordinate startPosition = MathUtils.calcNextCoord(amphibiousAssaultShip.getDestination(), angle, amphibiousAssault.getLandingCraftBackOff());
         return startPosition;
     }
  }

@@ -1,0 +1,89 @@
+{
+	"skirmishName": "Plunder South",
+	"landingStartDate": "19450323",
+	"landingStopDate": "19450323",
+	"aggressorCountry": "USA",
+	"defendingCountry": "GERMANY",
+	"landingCraftBackOff": 200,
+	"shipDefinitions": [
+		{
+			"shipType": "landboata",
+			"destination": {
+				"xPos": 231924.0,
+				"yOri": 40.0,
+				"zPos": 244472.0
+			},
+			"orientation": {
+				"xOri": 0.0,
+				"yOri": 0.0,
+				"zOri": 0.0
+			}
+		},
+		{
+			"shipType": "landboata",
+			"destination": {
+				"xPos": 231833.0,
+				"yOri": 40.0,
+				"zPos": 244614.0
+			},
+			"orientation": {
+				"xOri": 0.0,
+				"yOri": 0.0,
+				"zOri": 0.0
+			}
+		},
+		{
+			"shipType": "landboata",
+			"destination": {
+				"xPos": 231737.0,
+				"yOri": 40.0,
+				"zPos": 244750.0
+			},
+			"orientation": {
+				"xOri": 0.0,
+				"yOri": 0.0,
+				"zOri": 0.0
+			}
+		},
+		{
+			"shipType": "landboata",
+			"destination": {
+				"xPos": 231620.0,
+				"yOri": 40.0,
+				"zPos": 244885.0
+			},
+			"orientation": {
+				"xOri": 0.0,
+				"yOri": 0.0,
+				"zOri": 0.0
+			}
+		},
+		{
+			"shipType": "landboata",
+			"destination": {
+				"xPos": 231532.0,
+				"yOri": 40.0,
+				"zPos": 244996.0
+			},
+			"orientation": {
+				"xOri": 0.0,
+				"yOri": 0.0,
+				"zOri": 0.0
+			}
+		},
+		{
+			"shipType": "landboata",
+			"destination": {
+				"xPos": 231435.0,
+				"yOri": 40.0,
+				"zPos": 245110.0
+			},
+			"orientation": {
+				"xOri": 0.0,
+				"yOri": 0.0,
+				"zOri": 0.0
+			}
+		}
+	]
+}
+
