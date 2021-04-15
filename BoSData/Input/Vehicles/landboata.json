@@ -5,7 +5,10 @@
 	"vehicleName": "Landing Craft",
 	"displayName": "landing craft",
 	"countries": [
-		"RUSSIA"
+		"RUSSIA",
+		"USA",
+		"BRITAIN",
+		"GERMANY"
 	],
 	"startDate": "19390901",
 	"endDate": "19460724",

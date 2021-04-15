@@ -1,0 +1,106 @@
+{
+	"skirmishes": [
+		{
+			"skirmishName": "Plunder North",
+			"swCorner": {
+				"xPos": 234000.0,
+				"yPos": 0.0,
+				"zPos": 230000.0
+			},
+			"neCorner": {
+				"xPos": 240000.0,
+				"yPos": 0.0,
+				"zPos": 235000.0
+			},
+			"startDate": "19450323",
+			"stopDate": "19450323",
+			"iconicFlightTypes": [
+				{
+					"side": "AXIS",
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 1
+				},
+								{
+					"side": "ALLIED",
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 1
+				},
+				{
+					"side": "ALLIED",
+					"flightType": "LOW_ALT_CAP",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_INVASION",
+			"attacker": "ALLIED"
+		},
+		{
+			"skirmishName": "Plunder Central",
+			"swCorner": {
+				"xPos": 230000,
+				"yPos": 0.0,
+				"zPos": 233000
+			},
+			"neCorner": {
+				"xPos": 236000,
+				"yPos": 0.0,
+				"zPos": 240000
+			},
+			"startDate": "19450323",
+			"stopDate": "19450323",
+			"iconicFlightTypes": [
+				{
+					"side": "AXIS",
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 1
+				},
+								{
+					"side": "ALLIED",
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 1
+				},
+				{
+					"side": "ALLIED",
+					"flightType": "LOW_ALT_CAP",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_INVASION",
+			"attacker": "ALLIED"
+		},
+		{
+			"skirmishName": "Plunder South",
+			"swCorner": {
+				"xPos": 228000,
+				"yPos": 0.0,
+				"zPos": 242000
+			},
+			"neCorner": {
+				"xPos": 234000,
+				"yPos": 0.0,
+				"zPos": 248000
+			},
+			"startDate": "19450323",
+			"stopDate": "19450323",
+			"iconicFlightTypes": [
+				{
+					"side": "AXIS",
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 1
+				},
+								{
+					"side": "ALLIED",
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 1
+				},
+				{
+					"side": "ALLIED",
+					"flightType": "LOW_ALT_CAP",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_INVASION",
+			"attacker": "ALLIED"
+		}
+	]
+}
