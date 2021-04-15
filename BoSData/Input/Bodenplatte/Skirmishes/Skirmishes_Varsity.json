@@ -1,0 +1,28 @@
+{
+	"skirmishes": [
+		{
+			"skirmishName": "Varsity-Paradrop",
+			"swCorner": {
+				"xPos": 233000,
+				"yPos": 0.0,
+				"zPos": 252000
+			},
+			"neCorner": {
+				"xPos": 243000,
+				"yPos": 0.0,
+				"zPos": 262000
+			},
+			"startDate": "19450324",
+			"stopDate": "19450324",
+			"iconicFlightTypes": [
+				{
+					"side": "ALLIED",
+					"flightType": "PARATROOP_DROP",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_PARA_DROP",
+			"attacker": "ALLIED"
+		}
+	]
+}
