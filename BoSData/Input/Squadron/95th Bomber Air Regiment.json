@@ -35,7 +35,7 @@
     "19430918": "Popovicheskaya",
     "19430927": "Andreevskaya",
     "19431004": "Holmskaya",
-    "19431008": "Holmskaya",
+    "19431008": "Gostagaevskaya",
     "19440101": "Rahinka",
     "19440201": "Rahinka",
     "19440301": "Rahinka",
@@ -55,26 +55,30 @@
     "19450501": "ef_Stormede"
   },
   "skins": [
-		{
-			"skinName": "pe2s35_skin_10",
-			"planeType": "pe2s35",
-			"startDate": "19400801",
-			"endDate": "19450601",
-			"squadId": 10131095,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": true
-		},
-		{
-			"skinName": "pe2s87_skin_10",
-			"planeType": "pe2s87",
-			"startDate": "19440101",
-			"endDate": "19450601",
-			"squadId": 10131010,
-			"country": "Russia",
-			"category": "Squadron",
-			"definedInGame": true
-		}
+    {
+      "skinName": "pe2s35_skin_10",
+      "planeType": "pe2s35",
+      "archTypes": [],
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 10131095,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": true,
+      "winter": false
+    },
+    {
+      "skinName": "pe2s87_skin_10",
+      "planeType": "pe2s87",
+      "archTypes": [],
+      "startDate": "19440101",
+      "endDate": "19450601",
+      "squadId": 10131010,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": true,
+      "winter": false
+    }
   ],
   "squadHistory": {
     "squadHistoryEntries": [

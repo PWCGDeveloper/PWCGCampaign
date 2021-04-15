@@ -27,6 +27,9 @@ public class BodenplatteMap extends PWCGMap
         missionSpacingMyDate.put("19441216", 1); 
         missionSpacingMyDate.put("19450125", 2); 
         missionSpacingMyDate.put("19450220", 3); 
+        missionSpacingMyDate.put("19450310", 2); 
+        missionSpacingMyDate.put("19450323", 1); 
+        missionSpacingMyDate.put("19450324", 1); 
         missionSpacingMyDate.put("19450401", 5); 
     } 
 
@@ -74,6 +77,8 @@ public class BodenplatteMap extends PWCGMap
         this.frontDatesForMap.addFrontDate("19441229");
         this.frontDatesForMap.addFrontDate("19450207");
         this.frontDatesForMap.addFrontDate("19450310");
+        this.frontDatesForMap.addFrontDate("19450323");
+        this.frontDatesForMap.addFrontDate("19450324");
         this.frontDatesForMap.addFrontDate("19450404");
     }
 

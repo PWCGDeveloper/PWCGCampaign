@@ -24,7 +24,7 @@
     "19430918": "Holmskaya",
     "19430927": "Holmskaya",
     "19431004": "Abinskaya",
-    "19431008": "Krymskaya",
+    "19431008": "Gostagaevskaya",
     "19440101": "Solodovka",
     "19440201": "Leninsk",
     "19440301": "Raygorod",
@@ -47,22 +47,26 @@
     {
       "skinName": "pe2s35_skin_03",
       "planeType": "pe2s35",
+      "archTypes": [],
       "startDate": "19400801",
       "endDate": "19450601",
       "squadId": 10131010,
       "country": "Russia",
       "category": "Squadron",
-      "definedInGame": true
+      "definedInGame": true,
+      "winter": false
     },
     {
       "skinName": "pe2s87_skin_04",
       "planeType": "pe2s87",
+      "archTypes": [],
       "startDate": "19440101",
       "endDate": "19450601",
       "squadId": 10131010,
       "country": "Russia",
       "category": "Squadron",
-      "definedInGame": true
+      "definedInGame": true,
+      "winter": false
     }
   ],
   "serviceId": 10101,

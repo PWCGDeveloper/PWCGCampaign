@@ -25,6 +25,7 @@
     "19430927": "Marfovka",
     "19431004": "Marfovka",
     "19431008": "Hardji-Bie",
+    "19431101": "Semisotka",
     "19440101": "Bol. Ivanovka",
     "19440201": "Bol. Ivanovka",
     "19440301": "Bol. Ivanovka",
@@ -44,37 +45,42 @@
     "19450501": "ef_Chievres"
   },
   "skins": [
-		{
-			"skinName": "III_KG27",
-			"planeType": "he111h6",
-			"startDate": "19400801",
-			"endDate": "19421101",
-			"squadId": 20133027,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		},
-		{
-			"skinName": "III_KG27_W",
-			"planeType": "he111h6",
-			"startDate": "19421101",
-			"endDate": "19430301",
-			"squadId": 20133027,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": true
-		},
-		{
-			"skinName": "II_KG53",
-			"planeType": "he111h6",
-			"startDate": "19430301",
-			"endDate": "19450601",
-			"squadId": 20133027,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		}
+    {
+      "skinName": "III_KG27",
+      "planeType": "he111h6",
+      "archTypes": [],
+      "startDate": "19400801",
+      "endDate": "19421101",
+      "squadId": 20133027,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": false
+    },
+    {
+      "skinName": "III_KG27_W",
+      "planeType": "he111h6",
+      "archTypes": [],
+      "startDate": "19421101",
+      "endDate": "19430301",
+      "squadId": 20133027,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": true
+    },
+    {
+      "skinName": "II_KG53",
+      "planeType": "he111h6",
+      "archTypes": [],
+      "startDate": "19430301",
+      "endDate": "19450601",
+      "squadId": 20133027,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": false
+    }
   ],
   "squadHistory": {
     "squadHistoryEntries": [
