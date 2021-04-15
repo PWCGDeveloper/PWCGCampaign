@@ -1,7 +1,10 @@
 package pwcg.mission.ground.builder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.campaign.battle.AmphibiousAssault;
-import pwcg.campaign.battle.AmphibiousAssaultShip;
+import pwcg.campaign.battle.AmphibiousAssaultShipDefinition;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -22,12 +25,12 @@ public class AmphibiousDefenseBuilder
 {
     private Mission mission;
     private AmphibiousAssault amphibiousAssault;
-    private AmphibiousAssaultShip landingCraft;
+    private AmphibiousAssaultShipDefinition landingCraft;
     private AssaultGroundUnitFactory assaultFactory =  new AssaultGroundUnitFactory();
     private GroundUnitCollection amphibiousAssaultDefense;
     private AmphibiousPositionBuilder amphibiousPositionBuilder;
     
-    public AmphibiousDefenseBuilder(Mission mission, AmphibiousAssault amphibiousAssault, AmphibiousAssaultShip landingCraft)
+    public AmphibiousDefenseBuilder(Mission mission, AmphibiousAssault amphibiousAssault, AmphibiousAssaultShipDefinition landingCraft)
     {
         this.mission = mission;
         this.amphibiousAssault = amphibiousAssault;
@@ -50,8 +53,17 @@ public class AmphibiousDefenseBuilder
         defendingATGuns();
         defendingArtillery();
         defendingAAAMachineGun();
+        finishGroundUnitCollection();
         
         return amphibiousAssaultDefense;        
+    }
+
+    private void finishGroundUnitCollection() throws PWCGException
+    {
+        List<IGroundUnit> primaryAssaultSegmentGroundUnits = new ArrayList<>();
+        primaryAssaultSegmentGroundUnits.add(amphibiousAssaultDefense.getPrimaryGroundUnit());
+        amphibiousAssaultDefense.setPrimaryGroundUnit(primaryAssaultSegmentGroundUnits.get(0));
+        amphibiousAssaultDefense.finishGroundUnitCollection();
     }
 
     private void buildPositionAndOrientation() throws PWCGException

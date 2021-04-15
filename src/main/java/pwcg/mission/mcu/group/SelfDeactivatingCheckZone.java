@@ -35,18 +35,18 @@ public class SelfDeactivatingCheckZone
     private McuDeactivate deactivateCZ = new McuDeactivate();
 	
 
-    public SelfDeactivatingCheckZone (String name, Coordinate coordinate, int zone)
+    public SelfDeactivatingCheckZone (String name, Coordinate coordinate, int zoneMeters)
     {
         checkZone = new McuCheckZone(name);
-        initialize(coordinate, zone);
+        initialize(coordinate, zoneMeters);
         linkTargets();
     }
 
-    private void initialize(Coordinate coordinate, int zone) 
+    private void initialize(Coordinate coordinate, int zoneMeters) 
     {
         checkZone.setDesc("CZ");
         checkZone.setPosition(coordinate.copy());
-        checkZone.setZone(zone);
+        checkZone.setZone(zoneMeters);
           
         deactivateCZTimer.setPosition(coordinate.copy());
         deactivateCZTimer.setName("CZ Deactivate Timer");
@@ -143,9 +143,9 @@ public class SelfDeactivatingCheckZone
         checkZone.triggerCheckZoneByCoalitions(coalitions);
     }
 
-    public McuCheckZone getCheckZone()
+    public void setCheckZoneTriggerDistance(int zoneMeters)
     {
-        return checkZone;
+        checkZone.setZone(zoneMeters);
     }
 
     public void validate() throws PWCGException

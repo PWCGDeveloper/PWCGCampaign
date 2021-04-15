@@ -1,7 +1,10 @@
 package pwcg.mission.ground.builder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.campaign.battle.AmphibiousAssault;
-import pwcg.campaign.battle.AmphibiousAssaultShip;
+import pwcg.campaign.battle.AmphibiousAssaultShipDefinition;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
@@ -23,16 +26,16 @@ public class AmphibiousAssaultAttackBuilder
 {
     private Mission mission;
     private AmphibiousAssault amphibiousAssault;
-    private AmphibiousAssaultShip landingCraft;
+    private AmphibiousAssaultShipDefinition landingCraftDefinition;
     private AssaultGroundUnitFactory assaultFactory =  new AssaultGroundUnitFactory();
     private GroundUnitCollection amphibiousAssaultAttack;
     private AmphibiousPositionBuilder amphibiousPositionBuilder;
     
-    public AmphibiousAssaultAttackBuilder(Mission mission, AmphibiousAssault amphibiousAssault, AmphibiousAssaultShip landingCraft)
+    public AmphibiousAssaultAttackBuilder(Mission mission, AmphibiousAssault amphibiousAssault, AmphibiousAssaultShipDefinition landingCraftDefinition)
     {
         this.mission = mission;
         this.amphibiousAssault = amphibiousAssault;
-        this.landingCraft = landingCraft;
+        this.landingCraftDefinition = landingCraftDefinition;
         
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, 
@@ -49,13 +52,25 @@ public class AmphibiousAssaultAttackBuilder
 
         assaultingTanks();
         assaultingAAAMachineGun();
-        
+        finishGroundUnitCollection();
+                
         return amphibiousAssaultAttack;        
+    }
+
+    private void finishGroundUnitCollection() throws PWCGException
+    {
+        List<IGroundUnit> primaryAssaultSegmentGroundUnits = new ArrayList<>();
+        primaryAssaultSegmentGroundUnits.add(amphibiousAssaultAttack.getPrimaryGroundUnit());
+        amphibiousAssaultAttack.setPrimaryGroundUnit(primaryAssaultSegmentGroundUnits.get(0));
+        amphibiousAssaultAttack.finishGroundUnitCollection();
+        
+        amphibiousAssaultAttack.setCheckZoneTriggerDistance(250);
+        amphibiousAssaultAttack.setCheckZoneTriggerUnit(landingCraftDefinition.getLandingCraftGroundUnit().getGroundUnits().get(0).getVehicles().get(0).getEntity().getIndex());
     }
 
     private void buildPositionAndOrientation() throws PWCGException
     {
-        amphibiousPositionBuilder = new AmphibiousPositionBuilder(landingCraft);
+        amphibiousPositionBuilder = new AmphibiousPositionBuilder(landingCraftDefinition);
         amphibiousPositionBuilder.buildPositionAndOrientation();
     }
 

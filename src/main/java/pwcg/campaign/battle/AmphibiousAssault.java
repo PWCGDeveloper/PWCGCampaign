@@ -1,6 +1,7 @@
 package pwcg.campaign.battle;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class AmphibiousAssault
     private Date landingStopDate;
     private Country aggressorCountry;
     private Country defendingCountry;
-    private List<AmphibiousAssaultShip> ships = new ArrayList<>();
+    private List<AmphibiousAssaultShipDefinition> shipDefinitions = new ArrayList<>();
 
     public String getSkirmishName()
     {
@@ -40,9 +41,13 @@ public class AmphibiousAssault
         return defendingCountry;
     }
 
-    public List<AmphibiousAssaultShip> getShips()
+    public List<AmphibiousAssaultShipDefinition> getShipDefinitions()
     {
-        return ships;
+        return shipDefinitions;
     }
 
+    public void shuffleLandingCraft()
+    {
+        Collections.shuffle(shipDefinitions);
+    }
 }

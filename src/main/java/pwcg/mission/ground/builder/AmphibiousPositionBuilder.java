@@ -1,6 +1,6 @@
 package pwcg.mission.ground.builder;
 
-import pwcg.campaign.battle.AmphibiousAssaultShip;
+import pwcg.campaign.battle.AmphibiousAssaultShipDefinition;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -8,13 +8,13 @@ import pwcg.core.utils.MathUtils;
 
 public class AmphibiousPositionBuilder
 {
-    private AmphibiousAssaultShip amphibiousAssaultShip;
+    private AmphibiousAssaultShipDefinition amphibiousAssaultShip;
     private Coordinate assaultPosition;
     private Coordinate defensePosition;
     private Orientation assaultOrientation;
     private Orientation defenseOrientation;
 
-    public AmphibiousPositionBuilder (AmphibiousAssaultShip amphibiousAssaultShip)
+    public AmphibiousPositionBuilder (AmphibiousAssaultShipDefinition amphibiousAssaultShip)
     {
         this.amphibiousAssaultShip = amphibiousAssaultShip;
     }

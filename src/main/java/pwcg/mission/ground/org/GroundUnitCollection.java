@@ -50,6 +50,16 @@ public class GroundUnitCollection
         createTargetAssociations();
     }
 
+    public void setCheckZoneTriggerDistance(int zoneMeters)
+    {
+        missionBeginUnit.setCheckZoneTriggerDistance(zoneMeters);
+    }
+
+    public void setCheckZoneTriggerUnit(int unitIndex)
+    {
+        missionBeginUnit.setCheckZoneTriggerObject(unitIndex);
+    }
+
     public List<IGroundUnit> getGroundUnitsForSide(Side side) throws PWCGException
     {
         List<IGroundUnit> groundUnitsForSide = new ArrayList<>();

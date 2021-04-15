@@ -3,12 +3,14 @@ package pwcg.mission.ground.builder;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.battle.AmphibiousAssault;
-import pwcg.campaign.battle.AmphibiousAssaultShip;
+import pwcg.campaign.battle.AmphibiousAssaultShipDefinition;
+import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
+import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.org.GroundUnitCollection;
-import pwcg.mission.ground.org.IGroundUnit;
 
 public class AmphibiousAssaultBuilder
 {
@@ -24,52 +26,72 @@ public class AmphibiousAssaultBuilder
     
     public List<GroundUnitCollection> generateAmphibiousAssault() throws PWCGException
     {
-        makeLandingCraft();
-        makeLanding();
-        makeDefense();
+        List<AmphibiousAssaultShipDefinition> shipsForMission = getLandingCraftForAssault();
+
+        makeLandingCraft(shipsForMission);
+        makeLanding(shipsForMission);
+        makeDefense(shipsForMission);
         
         return amphibiousAssaultUnits;
     }
 
-    private void makeLandingCraft() throws PWCGException
+    private void makeLandingCraft(List<AmphibiousAssaultShipDefinition> shipsForMission) throws PWCGException
     {
-        AmphibiousAssaultShipBuilder amphibiousAssaultShipBuilder = new AmphibiousAssaultShipBuilder(mission, amphibiousAssault);
+        ICountry shipCountry = CountryFactory.makeCountryByCountry(amphibiousAssault.getAggressorCountry());
+        AmphibiousAssaultShipBuilder amphibiousAssaultShipBuilder = new AmphibiousAssaultShipBuilder(mission, shipsForMission, shipCountry);
         GroundUnitCollection ships = amphibiousAssaultShipBuilder.generateAmphibiousAssautShips();
-        finishGroundUnitCollection(ships);
+        amphibiousAssaultUnits.add(ships);
     }
 
-    private void makeLanding() throws PWCGException
+    private void makeLanding(List<AmphibiousAssaultShipDefinition> shipsForMission) throws PWCGException
     {
-        for (AmphibiousAssaultShip shipDefinition : amphibiousAssault.getShips())
+        for (AmphibiousAssaultShipDefinition shipDefinition :shipsForMission)
         {
             if (shipDefinition.getShipType().startsWith("land"))
             {
                 AmphibiousAssaultAttackBuilder amphibiousAssaultShipBuilder = new AmphibiousAssaultAttackBuilder(mission, amphibiousAssault, shipDefinition);
                 GroundUnitCollection assault = amphibiousAssaultShipBuilder.generateAmphibiousAssaultAttack();
-                finishGroundUnitCollection(assault);
+                amphibiousAssaultUnits.add(assault);
             }
         }
     }
 
-    private void makeDefense() throws PWCGException
+    private void makeDefense(List<AmphibiousAssaultShipDefinition> shipsForMission) throws PWCGException
     {
-        for (AmphibiousAssaultShip shipDefinition : amphibiousAssault.getShips())
+        for (AmphibiousAssaultShipDefinition shipDefinition : shipsForMission)
         {
             if (shipDefinition.getShipType().startsWith("land"))
             {
                 AmphibiousDefenseBuilder amphibiousDefenseBuilder = new AmphibiousDefenseBuilder(mission, amphibiousAssault, shipDefinition);
                 GroundUnitCollection defense = amphibiousDefenseBuilder.generateAmphibiousAssaultDefense();
-                finishGroundUnitCollection(defense);
+                amphibiousAssaultUnits.add(defense);
             }
         }
     }
 
-    private void finishGroundUnitCollection(GroundUnitCollection amphibiousGroundUnit) throws PWCGException
+    private List<AmphibiousAssaultShipDefinition> getLandingCraftForAssault() throws PWCGException
     {
-        List<IGroundUnit> primaryAssaultSegmentGroundUnits = new ArrayList<>();
-        primaryAssaultSegmentGroundUnits.add(amphibiousGroundUnit.getPrimaryGroundUnit());
-        amphibiousGroundUnit.setPrimaryGroundUnit(primaryAssaultSegmentGroundUnits.get(0));
-        amphibiousGroundUnit.finishGroundUnitCollection();
-        amphibiousAssaultUnits.add(amphibiousGroundUnit);
+        GroundUnitSize groundUnitSizeConfig = GroundUnitSize.calcNumUnitsByConfig(mission.getCampaign());
+        int numLandingCraft = 3;
+        if (groundUnitSizeConfig == GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM)
+        {
+            numLandingCraft = 6;
+        }
+        else if (groundUnitSizeConfig == GroundUnitSize.GROUND_UNIT_SIZE_HIGH)
+        {
+            numLandingCraft = 9;
+        }
+        
+        amphibiousAssault.shuffleLandingCraft();;
+        List<AmphibiousAssaultShipDefinition> shipsForMission = new ArrayList<>();
+        for (int i = 0; i < numLandingCraft; ++ i)
+        {
+            if (i < (amphibiousAssault.getShipDefinitions().size()-1))
+            {
+                shipsForMission.add(amphibiousAssault.getShipDefinitions().get(i));
+            }
+        }
+        return shipsForMission;
     }
+
  }

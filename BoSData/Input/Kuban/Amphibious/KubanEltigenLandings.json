@@ -4,7 +4,7 @@
 	"landingStopDate": "19431111",
 	"aggressorCountry": "RUSSIA",
 	"defendingCountry": "GERMANY",
-	"ships": [
+	"shipDefinitions": [
 		{
 			"shipType": "landboata",
 			"destination": {

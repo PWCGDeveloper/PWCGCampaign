@@ -48,6 +48,11 @@ public class MissionBeginCheckZoneBase
         checkZone.setCheckZoneTriggerObject(triggerObject);
     }
 
+    public void setCheckZoneTriggerDistance(int zoneMeters)
+    {
+        checkZone.setCheckZoneTriggerDistance(zoneMeters);
+    }
+
     public void setCheckZoneCoalitions(List<Coalition> triggerCoalitions)
     {
         checkZone.setCheckZoneTriggerCoalitions(triggerCoalitions);
