@@ -1,0 +1,346 @@
+{
+	"routeDefinitions": [
+		{
+			"routeStartDate": "19431008",
+			"routeStopDate": "19431031",
+			"country": "RUSSIA",
+			"routeDefinition": {
+				{
+					"routeStart": {
+						"xPos": 307783.0,
+						"yPos": 0.0,
+						"zPos": 152117.0
+					},
+					"routeDestination": {
+						"xPos": 272290.0,
+						"yPos": 0.0,
+						"zPos": 134230.0
+					}
+				}
+			}
+		},
+		{
+			"routeStartDate": "19431008",
+			"routeStopDate": "19431031",
+			"country": "RUSSIA",
+			"routeDefinition": {
+				{
+					"routeStart": {
+						"xPos": 284625.0,
+						"yPos": 0.0,
+						"zPos": 144267.0
+					},
+					"routeDestination": {
+						"xPos": 268757.0,
+						"yPos": 0.0,
+						"zPos": 130417.0
+					}
+				}
+			}
+		},
+		{
+			"routeStartDate": "19431008",
+			"routeStopDate": "19431031",
+			"country": "RUSSIA",
+			"routeDefinition": {
+				{
+					"routeStart": {
+						"xPos": 264550.0,
+						"yPos": 0.0,
+						"zPos": 122730.0
+					},
+					"routeDestination": {
+						"xPos": 256925.0,
+						"yPos": 0.0,
+						"zPos": 130075.0
+					}
+				}
+			}
+		},
+		{
+			"routeStartDate": "19431008",
+			"routeStopDate": "19431031",
+			"country": "RUSSIA",
+			"routeDefinition": {
+				{
+					"routeStart": {
+						"xPos": 263149.0,
+						"yPos": 0.0,
+						"zPos": 147681.0
+					},
+					"routeDestination": {
+						"xPos": 260065.0,
+						"yPos": 0.0,
+						"zPos": 147962.0
+					}
+				}
+			}
+		},
+		{
+			"routeStartDate": "19431008",
+			"routeStopDate": "19431031",
+			"country": "RUSSIA",
+			"routeDefinition": {
+				{
+					"routeStart": {
+						"xPos": 263317.0,
+						"yPos": 0.0,
+						"zPos": 150990.0
+					},
+					"routeDestination": {
+						"xPos": 264046.0,
+						"yPos": 0.0,
+						"zPos": 156877.0
+					}
+				}
+			}
+		},
+		{
+			"routeStartDate": "19431008",
+			"routeStopDate": "19431031",
+			"country": "RUSSIA",
+			"routeDefinition": {
+				{
+					"routeStart": {
+						"xPos": 261733.0,
+						"yPos": 0.0,
+						"zPos": 129290.0
+					},
+					"routeDestination": {
+						"xPos": 261564.0,
+						"yPos": 0.0,
+						"zPos": 145327.0
+					}
+				}
+			}
+		},
+		{
+			"routeStartDate": "19431008",
+			"routeStopDate": "19431031",
+			"country": "RUSSIA",
+			"routeDefinition": {
+				{
+					"routeStart": {
+						"xPos": 235432.0,
+						"yPos": 0.0,
+						"zPos": 138927.0
+					},
+					"routeDestination": {
+						"xPos": 258589.0,
+						"yPos": 0.0,
+						"zPos": 120031.0
+					}
+				}
+			}
+		},
+		{
+			"routeStartDate": "19431008",
+			"routeStopDate": "19431031",
+			"country": "RUSSIA",
+			"routeDefinition": {
+				{
+					"routeStart": {
+						"xPos": 223489.0,
+						"yPos": 0.0,
+						"zPos": 128442.0
+					},
+					"routeDestination": {
+						"xPos": 256234.0,
+						"yPos": 0.0,
+						"zPos": 121208.0
+					}
+				}
+			}
+		},
+		{
+			"routeStartDate": "19431008",
+			"routeStopDate": "19431031",
+			"country": "RUSSIA",
+			"routeDefinition": {
+				{
+					"routeStart": {
+						"xPos": 261281.0,
+						"yPos": 0.0,
+						"zPos": 120087.0
+					},
+					"routeDestination": {
+						"xPos": 235600.0,
+						"yPos": 0.0,
+						"zPos": 133208.0
+					}
+				}
+			}
+		},
+		{
+			"routeStartDate": "19431008",
+			"routeStopDate": "19431031",
+			"country": "GERMANY",
+			"routeDefinition": {
+				{
+					"routeStart": {
+						"xPos": 307783.0,
+						"yPos": 0.0,
+						"zPos": 152117.0
+					},
+					"routeDestination": {
+						"xPos": 272290.0,
+						"yPos": 0.0,
+						"zPos": 134230.0
+					}
+				}
+			}
+		},
+		{
+			"routeStartDate": "19431008",
+			"routeStopDate": "19431031",
+			"country": "GERMANY",
+			"routeDefinition": {
+				{
+					"routeStart": {
+						"xPos": 284625.0,
+						"yPos": 0.0,
+						"zPos": 144267.0
+					},
+					"routeDestination": {
+						"xPos": 268757.0,
+						"yPos": 0.0,
+						"zPos": 130417.0
+					}
+				}
+			}
+		},
+		{
+			"routeStartDate": "19431008",
+			"routeStopDate": "19431031",
+			"country": "GERMANY",
+			"routeDefinition": {
+				{
+					"routeStart": {
+						"xPos": 264550.0,
+						"yPos": 0.0,
+						"zPos": 122730.0
+					},
+					"routeDestination": {
+						"xPos": 256925.0,
+						"yPos": 0.0,
+						"zPos": 130075.0
+					}
+				}
+			}
+		},
+		{
+			"routeStartDate": "19431008",
+			"routeStopDate": "19431031",
+			"country": "GERMANY",
+			"routeDefinition": {
+				{
+					"routeStart": {
+						"xPos": 263149.0,
+						"yPos": 0.0,
+						"zPos": 147681.0
+					},
+					"routeDestination": {
+						"xPos": 260065.0,
+						"yPos": 0.0,
+						"zPos": 147962.0
+					}
+				}
+			}
+		},
+		{
+			"routeStartDate": "19431008",
+			"routeStopDate": "19431031",
+			"country": "GERMANY",
+			"routeDefinition": {
+				{
+					"routeStart": {
+						"xPos": 263317.0,
+						"yPos": 0.0,
+						"zPos": 150990.0
+					},
+					"routeDestination": {
+						"xPos": 264046.0,
+						"yPos": 0.0,
+						"zPos": 156877.0
+					}
+				}
+			}
+		},
+		{
+			"routeStartDate": "19431008",
+			"routeStopDate": "19431031",
+			"country": "GERMANY",
+			"routeDefinition": {
+				{
+					"routeStart": {
+						"xPos": 261733.0,
+						"yPos": 0.0,
+						"zPos": 129290.0
+					},
+					"routeDestination": {
+						"xPos": 261564.0,
+						"yPos": 0.0,
+						"zPos": 145327.0
+					}
+				}
+			}
+		},
+		{
+			"routeStartDate": "19431008",
+			"routeStopDate": "19431031",
+			"country": "GERMANY",
+			"routeDefinition": {
+				{
+					"routeStart": {
+						"xPos": 235432.0,
+						"yPos": 0.0,
+						"zPos": 138927.0
+					},
+					"routeDestination": {
+						"xPos": 258589.0,
+						"yPos": 0.0,
+						"zPos": 120031.0
+					}
+				}
+			}
+		},
+		{
+			"routeStartDate": "19431008",
+			"routeStopDate": "19431031",
+			"country": "GERMANY",
+			"routeDefinition": {
+				{
+					"routeStart": {
+						"xPos": 223489.0,
+						"yPos": 0.0,
+						"zPos": 128442.0
+					},
+					"routeDestination": {
+						"xPos": 256234.0,
+						"yPos": 0.0,
+						"zPos": 121208.0
+					}
+				}
+			}
+		},
+		{
+			"routeStartDate": "19431008",
+			"routeStopDate": "19431031",
+			"country": "GERMANY",
+			"routeDefinition": {
+				{
+					"routeStart": {
+						"xPos": 261281.0,
+						"yPos": 0.0,
+						"zPos": 120087.0
+					},
+					"routeDestination": {
+						"xPos": 235600.0,
+						"yPos": 0.0,
+						"zPos": 133208.0
+					}
+				}
+			}
+		}
+	]
+}
