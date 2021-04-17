@@ -40,7 +40,7 @@ public class SeaBattleBuilder implements IBattleBuilder
         {
             CargoRoute cargoRoute = getCargoRoutesForSide(mission, side);
             TargetDefinition targetDefinition = makeTargetDefinition(cargoRoute);        
-            ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(mission.getCampaign(), targetDefinition);
+            ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(mission.getCampaign(), targetDefinition, cargoRoute.getRouteDestination());
             VehicleClass shipType = ShipTypeChooser.chooseShipType(targetDefinition.getCountry().getSide());
             GroundUnitCollection convoy = shippingFactory.createShippingUnit(shipType);
             if (convoy != null)

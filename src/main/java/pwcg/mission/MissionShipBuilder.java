@@ -5,13 +5,15 @@ import java.util.List;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.shipping.ShippingLane;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
+import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.ground.builder.ShipTypeChooser;
 import pwcg.mission.ground.builder.ShippingUnitBuilder;
@@ -70,8 +72,9 @@ public class MissionShipBuilder
     {
         for (int i = 0; i < detemineNumbeConvoys(); ++i)
         {
-            TargetDefinition targetDefinition = makeTargetDefinition(shipSide);        
-            ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(mission.getCampaign(), targetDefinition);
+            TargetDefinition targetDefinition = makeTargetDefinition(shipSide);
+            Coordinate destination = makeRandomDestination(targetDefinition);
+            ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(mission.getCampaign(), targetDefinition, destination);
             VehicleClass shipType = ShipTypeChooser.chooseShipType(targetDefinition.getCountry().getSide());
             GroundUnitCollection convoy = shippingFactory.createShippingUnit(shipType);
             
@@ -79,6 +82,13 @@ public class MissionShipBuilder
         }
     }
 
+    private Coordinate makeRandomDestination(TargetDefinition targetDefinition) throws PWCGException
+    {
+        int angle = RandomNumberGenerator.getRandom(360);
+        Coordinate destination = MathUtils.calcNextCoord(targetDefinition.getPosition(), angle, 50000);
+        return destination;
+    }
+    
     private TargetDefinition makeTargetDefinition(Side shipSide) throws PWCGException
     {
         ICountry shipCountry = PWCGContext.getInstance().getCurrentMap().getGroundCountryForMapBySide(shipSide);

@@ -5,7 +5,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.org.GroundUnitCollection;
@@ -24,29 +23,29 @@ public class ShippingUnitBuilder
 {
     private Campaign campaign;
     private TargetDefinition targetDefinition;
+    private Coordinate destination;
     
-    public ShippingUnitBuilder (Campaign campaign, TargetDefinition targetDefinition)
+    public ShippingUnitBuilder (Campaign campaign, TargetDefinition targetDefinition, Coordinate destination)
     {
         this.campaign = campaign;
         this.targetDefinition  = targetDefinition;
+        this.destination  = destination;
     }
 
-    public GroundUnitCollection createShippingUnit (VehicleClass shipType) throws PWCGException 
-    {
-        GroundUnitCollection shipConvoyUnit = generateConvoy(shipType);
-        return shipConvoyUnit;
-    }
-
-
-    private GroundUnitCollection generateConvoy(VehicleClass shipType) throws PWCGException 
+    public  GroundUnitCollection createShippingUnit (VehicleClass shipType) throws PWCGException 
     {
         GroundUnitInformation groundUnitInformation = createGroundUnitInformationForUnit();
-        
+
         IGroundUnit shipGroup = null;
+        IGroundUnit shipGroupEscort = null;
         if (shipType == VehicleClass.ShipCargo)
         {
             shipGroup = new ShipCargoConvoyUnit(groundUnitInformation);
             shipGroup.createGroundUnit();
+            
+            GroundUnitInformation escortGroundUnitInformation = createEscortGroundUnitInformationForUnit();
+            shipGroupEscort = new ShipWarshipConvoyUnit(escortGroundUnitInformation);
+            shipGroupEscort.createGroundUnit();
         }
         else if (shipType == VehicleClass.ShipWarship)
         {
@@ -69,23 +68,42 @@ public class ShippingUnitBuilder
                 TargetType.TARGET_SHIPPING,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
-        GroundUnitCollection groundUnitCollection = new GroundUnitCollection ("Shipping", groundUnitCollectionData);
-        groundUnitCollection.addGroundUnit(shipGroup);
-        groundUnitCollection.setPrimaryGroundUnit(shipGroup);
-        groundUnitCollection.finishGroundUnitCollection();
-        return groundUnitCollection;
+        GroundUnitCollection convoyGroundUnitCollection = new GroundUnitCollection ("Shipping", groundUnitCollectionData);
+        convoyGroundUnitCollection.addGroundUnit(shipGroup);
+        if (shipGroupEscort != null)
+        {
+            convoyGroundUnitCollection.addGroundUnit(shipGroupEscort);
+        }
+        convoyGroundUnitCollection.setPrimaryGroundUnit(shipGroup);
+        convoyGroundUnitCollection.finishGroundUnitCollection();
+
+        return convoyGroundUnitCollection;
     }
 
     private GroundUnitInformation createGroundUnitInformationForUnit() throws PWCGException
     {
-        int angle = RandomNumberGenerator.getRandom(360);
-        Coordinate destination = MathUtils.calcNextCoord(targetDefinition.getPosition(), angle, 50000);
-
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 campaign, 
                 targetDefinition.getCountry(), 
                 TargetType.TARGET_SHIPPING,
                 targetDefinition.getPosition(), 
+                destination,
+                Orientation.createRandomOrientation());
+
+        groundUnitInformation.setDestination(destination);
+        return groundUnitInformation;
+    }
+
+    private GroundUnitInformation createEscortGroundUnitInformationForUnit() throws PWCGException
+    {
+        double angleAheadOfCargoShips = MathUtils.calcAngle(targetDefinition.getPosition(), destination);
+        Coordinate escortStartPosition = MathUtils.calcNextCoord(targetDefinition.getPosition(), angleAheadOfCargoShips, 2000);
+
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                campaign, 
+                targetDefinition.getCountry(), 
+                TargetType.TARGET_SHIPPING,
+                escortStartPosition, 
                 destination,
                 Orientation.createRandomOrientation());
 

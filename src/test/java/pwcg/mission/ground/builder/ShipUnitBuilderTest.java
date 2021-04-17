@@ -18,6 +18,8 @@ import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
+import pwcg.core.utils.MathUtils;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleClass;
@@ -43,9 +45,9 @@ public class ShipUnitBuilderTest
     public void createCargoShipTest () throws PWCGException 
     {
         TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_SHIPPING, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA));
-        ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(campaign, targetDefinition);
+        ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(campaign, targetDefinition, makeRandomDestination(targetDefinition));
         GroundUnitCollection groundUnitGroup = shippingFactory.createShippingUnit(VehicleClass.ShipCargo);
-        assert (groundUnitGroup.getGroundUnits().size() == 1);
+        assert (groundUnitGroup.getGroundUnits().size() == 2);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {
             assert (groundUnit.getCountry().getCountry() == Country.RUSSIA);
@@ -53,6 +55,11 @@ public class ShipUnitBuilderTest
             {
                 assert (groundUnit.getVehicles().size() >= 3);
                 assert (groundUnit.getVehicles().size() <= 5);
+            }
+            else if (groundUnit.getVehicleClass() == VehicleClass.ShipWarship)
+            {
+                assert (groundUnit.getVehicles().size() >= 2);
+                assert (groundUnit.getVehicles().size() <= 3);
             }
             else
             {
@@ -66,7 +73,7 @@ public class ShipUnitBuilderTest
     public void createWarshipTest () throws PWCGException 
     {
         TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_SHIPPING, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA));
-        ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(campaign, targetDefinition);
+        ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(campaign, targetDefinition, makeRandomDestination(targetDefinition));
         GroundUnitCollection groundUnitGroup = shippingFactory.createShippingUnit(VehicleClass.ShipWarship);
         assert (groundUnitGroup.getGroundUnits().size() == 1);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
@@ -89,7 +96,7 @@ public class ShipUnitBuilderTest
     public void createSubmarineTest () throws PWCGException 
     {
         TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_SHIPPING, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA));
-        ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(campaign, targetDefinition);
+        ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(campaign, targetDefinition, makeRandomDestination(targetDefinition));
         GroundUnitCollection groundUnitGroup = shippingFactory.createShippingUnit(VehicleClass.Submarine);
         assert (groundUnitGroup.getGroundUnits().size() == 1);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
@@ -105,5 +112,13 @@ public class ShipUnitBuilderTest
             }
         }
         groundUnitGroup.validate();
+    }
+    
+
+    private Coordinate makeRandomDestination(TargetDefinition targetDefinition) throws PWCGException
+    {
+        int angle = RandomNumberGenerator.getRandom(360);
+        Coordinate destination = MathUtils.calcNextCoord(targetDefinition.getPosition(), angle, 50000);
+        return destination;
     }
 }
