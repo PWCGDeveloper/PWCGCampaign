@@ -16,6 +16,7 @@ import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestMissionBuilderUtility;
 
 public class MissionCenterBuilderSkirmishTest
 {    
@@ -31,7 +32,7 @@ public class MissionCenterBuilderSkirmishTest
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         PWCGContext.getInstance().setCampaign(campaign);
 
-        List<Skirmish> skirmishes = PWCGContext.getInstance().getCurrentMap().getSkirmishManager().getSkirmishesForDate(campaign.getDate());
+        List<Skirmish> skirmishes = PWCGContext.getInstance().getCurrentMap().getSkirmishManager().getSkirmishesForDate(campaign, TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         assert (skirmishes.size() == 0);
     }
 
@@ -59,7 +60,7 @@ public class MissionCenterBuilderSkirmishTest
     {
         MissionHumanParticipants participatingPlayers = makeParticipatingPlayers(campaign);
                 
-        List<Skirmish> skirmishes = PWCGContext.getInstance().getCurrentMap().getSkirmishManager().getSkirmishesForDate(campaign.getDate());
+        List<Skirmish> skirmishes = PWCGContext.getInstance().getCurrentMap().getSkirmishManager().getSkirmishesForDate(campaign, TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         assert (skirmishes.size() > 0);
         
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, skirmishes.get(0));

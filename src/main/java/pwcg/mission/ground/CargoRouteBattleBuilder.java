@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.shipping.CargoRoute;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.skirmish.Skirmish;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -22,11 +21,11 @@ import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
 
-public class SeaBattleBuilder implements IBattleBuilder
+public class CargoRouteBattleBuilder implements IBattleBuilder
 {
     private Mission mission;
     
-    public SeaBattleBuilder(Mission mission)
+    public CargoRouteBattleBuilder(Mission mission)
     {
         this.mission = mission;
     }
@@ -36,9 +35,9 @@ public class SeaBattleBuilder implements IBattleBuilder
     {
         List<GroundUnitCollection> convoysOnCargoRoute = new ArrayList<>();
         
-        for (Side side : mission.getParticipatingPlayers().getMissionPlayerSides())
+        if (mission.getSkirmish() != null && mission.getSkirmish().isCargoRouteBattle())
         {
-            CargoRoute cargoRoute = getCargoRoutesForSide(mission, side);
+            CargoRoute cargoRoute = getCargoRoutesForSkirmish(mission.getSkirmish());
             TargetDefinition targetDefinition = makeTargetDefinition(cargoRoute);        
             ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(mission.getCampaign(), targetDefinition, cargoRoute.getRouteDestination());
             VehicleClass shipType = ShipTypeChooser.chooseShipType(targetDefinition.getCountry().getSide());
@@ -51,11 +50,9 @@ public class SeaBattleBuilder implements IBattleBuilder
         return convoysOnCargoRoute;
     }
 
-    private CargoRoute getCargoRoutesForSide(Mission mission, Side side) throws PWCGException
+    private CargoRoute getCargoRoutesForSkirmish(Skirmish skirmish) throws PWCGException
     {
-        Squadron squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(mission.getParticipatingPlayers().getAllParticipatingPlayers().get(0).getSquadronId());
-        Coordinate playerSquadronPosition = squadron.determineCurrentAirfieldAnyMap(mission.getCampaign().getDate()).getPosition();
-        CargoRoute cargoRouteForSide = PWCGContext.getInstance().getCurrentMap().getShippingLaneManager().getNearbyCargoShipRouteBySide(playerSquadronPosition, side);
+        CargoRoute cargoRouteForSide = PWCGContext.getInstance().getCurrentMap().getShippingLaneManager().getCargoShipRouteByName(skirmish.getSkirmishName());
         return cargoRouteForSide;
     }
 

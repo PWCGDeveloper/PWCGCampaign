@@ -113,7 +113,7 @@ public abstract class PWCGMap
         return numDaysSpacing;
     }
     
-    public boolean isNoBattlePeriod(Date date) throws PWCGException
+    public boolean isNoDynamicBattlePeriod(Date date) throws PWCGException
     {
         for (NoBattlePeriod noBattlePeriod : noBattlePeriods)
         {

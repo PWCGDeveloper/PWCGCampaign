@@ -18,6 +18,7 @@ import pwcg.core.utils.DateUtils;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestMissionBuilderUtility;
 
 public class SkirmishFlightTypeFactoryTest
 {
@@ -42,7 +43,7 @@ public class SkirmishFlightTypeFactoryTest
         
         SkirmishManager skirmishManager = new SkirmishManager(FrontMapIdentifier.BODENPLATTE_MAP);
         skirmishManager.initialize();
-        List<Skirmish> skirmishesForDate = skirmishManager.getSkirmishesForDate(campaign.getDate());
+        List<Skirmish> skirmishesForDate = skirmishManager.getSkirmishesForDate(campaign, TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
 
         SkirmishFlightTypeFactory skirmishFlightTypeFactory = new SkirmishFlightTypeFactory(campaign, skirmishesForDate.get(0), null);
         Squadron c47Squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(102012437);
@@ -67,7 +68,7 @@ public class SkirmishFlightTypeFactoryTest
         
         SkirmishManager skirmishManager = new SkirmishManager(FrontMapIdentifier.BODENPLATTE_MAP);
         skirmishManager.initialize();
-        List<Skirmish> skirmishesForDate = skirmishManager.getSkirmishesForDate(campaign.getDate());
+        List<Skirmish> skirmishesForDate = skirmishManager.getSkirmishesForDate(campaign, TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
 
         SkirmishFlightTypeFactory skirmishFlightTypeFactory = new SkirmishFlightTypeFactory(campaign, skirmishesForDate.get(0), null);
         Squadron c47Squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(102012437);

@@ -8,6 +8,7 @@ import java.util.List;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.factory.CountryFactory;
+import pwcg.campaign.skirmish.SkirmishDistance;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
@@ -47,13 +48,18 @@ public class CargoRoutes
         return null;
     }
 
-    public CargoRoute getNearbyCargoShipRouteBySide(Coordinate targetGeneralLocation, Side side)
+    public CargoRoute getNearbyCargoShipRouteBySide(Date date, Coordinate targetGeneralLocation, Side side) throws PWCGException
     {
         List<CargoRoute> nearbyRouteDefinitions = new ArrayList<>();
         for (CargoRoute cargoRoute : routeDefinitions)
         {
+            if (!DateUtils.isDateInRange(date, cargoRoute.getRouteStartDate(), cargoRoute.getRouteStopDate()))
+            {
+                continue;
+            }
+            
             double distance = MathUtils.calcDist(cargoRoute.getRouteDestination(), targetGeneralLocation);
-            if (distance < 120000)
+            if (distance < SkirmishDistance.findMaxSkirmishDistance())
             {
                 nearbyRouteDefinitions.add(cargoRoute);
             }
@@ -65,6 +71,19 @@ public class CargoRoutes
             return nearbyRouteDefinitions.get(0);
         }
         return null;
+    }
+
+    public CargoRoute getCargoShipRouteByName(String skirmishName) throws PWCGException
+    {
+        for (CargoRoute cargoRoute : routeDefinitions)
+        {
+            if (cargoRoute.getName().equals(skirmishName))
+            {
+                return cargoRoute;
+            }
+        }
+        
+        throw new PWCGException("No cargo route for name " + skirmishName);
     }
 
 }

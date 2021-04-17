@@ -5,9 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -29,7 +27,7 @@ public class SkirmishBuilder
     public Skirmish chooseBestSkirmish() throws PWCGException
     {
         SkirmishManager skirmishManager = PWCGContext.getInstance().getCurrentMap().getSkirmishManager();
-        List<Skirmish> skirmishes = skirmishManager.getSkirmishesForDate(campaign.getDate());
+        List<Skirmish> skirmishes = skirmishManager.getSkirmishesForDate(campaign, participatingPlayers);
         List<Skirmish> candidateSkirmishes = new ArrayList<>();
         
         for (Skirmish skirmish : skirmishes)
@@ -52,28 +50,16 @@ public class SkirmishBuilder
 
     private boolean isWithinRange(Coordinate skirmishCenter) throws PWCGException
     {
-        int maxSkirmishDistance = findMaxSkirmishDistance();
         for (SquadronMember player : participatingPlayers.getAllParticipatingPlayers())
         {
             Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
             Coordinate squadronPosition = squadron.determineCurrentPosition(campaign.getDate());
             double distance = MathUtils.calcDist(skirmishCenter, squadronPosition);
-            if (distance > maxSkirmishDistance)
+            if (distance > SkirmishDistance.findMaxSkirmishDistance())
             {
                 return false;
             }            
         }
         return true;
-    }
-
-    private int findMaxSkirmishDistance() throws PWCGException
-    {
-        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        int closeToBattleDistance = productSpecific.getCloseToBattleDistance();
-        if (campaign.isLongRange())
-        {
-            closeToBattleDistance += 50000;
-        }
-        return closeToBattleDistance;
     }
 }

@@ -15,6 +15,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestMissionBuilderUtility;
 
 public class SkirmishManagerTest
 {
@@ -33,9 +34,9 @@ public class SkirmishManagerTest
         SkirmishManager skirmishManager = new SkirmishManager(FrontMapIdentifier.BODENPLATTE_MAP);
         skirmishManager.initialize();
         
-        assert (skirmishManager.getSkirmishes().getSkirmishes().size() == 14);
+        assert (skirmishManager.getSkirmishes().getSkirmishes().size() == 18);
         
-        List<Skirmish> skirmishesForDate = skirmishManager.getSkirmishesForDate(DateUtils.getDateYYYYMMDD("19440917"));
+        List<Skirmish> skirmishesForDate = skirmishManager.getSkirmishesForDate(campaign, TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         assert (skirmishesForDate.size() == 3);
         
         for (Skirmish skirmish : skirmishesForDate)
@@ -53,7 +54,7 @@ public class SkirmishManagerTest
         SkirmishManager skirmishManager = new SkirmishManager(FrontMapIdentifier.BODENPLATTE_MAP);
         skirmishManager.initialize();
                 
-        List<Skirmish> skirmishesForDate = skirmishManager.getSkirmishesForDate(DateUtils.getDateYYYYMMDD("19440921"));
+        List<Skirmish> skirmishesForDate = skirmishManager.getSkirmishesForDate(campaign, TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         assert (skirmishesForDate.size() == 3);
         
         for (Skirmish skirmish : skirmishesForDate)

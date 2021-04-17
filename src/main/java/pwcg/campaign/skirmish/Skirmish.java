@@ -19,9 +19,11 @@ import pwcg.mission.target.TargetType;
 
 public class Skirmish
 {
+    public static String CARGO_ROUTE_BATTLE = "Cargo Route";
+
     private String skirmishName;
-	private Coordinate neCorner;
-	private Coordinate swCorner;
+    private Coordinate neCorner;
+    private Coordinate swCorner;
     private Date startDate;
     private Date stopDate;
     private Side attacker;
@@ -29,9 +31,29 @@ public class Skirmish
     private List<SkirmishIconicFlights> iconicFlightTypes = new ArrayList<>();
     private List<SkirmishForceRoleConversion> forcedRoleConversions = new ArrayList<>();
 
-	public Skirmish()
-	{
-	}
+    public Skirmish(
+            String skirmishName, 
+            Coordinate position, 
+            Date date, 
+            Side attacker, 
+            SkirmishProfileType profileType, 
+            List<SkirmishIconicFlights> iconicFlightTypes,
+            List<SkirmishForceRoleConversion> forcedRoleConversions)
+    {
+        this.skirmishName = skirmishName;
+        this.swCorner = new Coordinate(position.getXPos() - 5000, 0, position.getZPos() - 5000);
+        this.neCorner = new Coordinate(position.getXPos() + 5000, 0, position.getZPos() + 5000);
+        this.startDate = date;
+        this.stopDate = date;
+        this.attacker = attacker;
+        this.profileType = profileType;
+        this.iconicFlightTypes = iconicFlightTypes;
+        this.forcedRoleConversions = forcedRoleConversions;
+    }
+
+    public Skirmish()
+    {
+    }
 
     public String getSkirmishName()
     {
@@ -42,8 +64,6 @@ public class Skirmish
     {
         this.skirmishName = skirmishName;
     }
-
-
 
     public CoordinateBox getCoordinateBox() throws PWCGException
     {
@@ -67,7 +87,7 @@ public class Skirmish
         return skirmishBox.getCenter();
     }
 
-    public boolean needsMoreIconicFlightType (FlightInformation flightInformation, int currentCount) throws PWCGException
+    public boolean needsMoreIconicFlightType(FlightInformation flightInformation, int currentCount) throws PWCGException
     {
         for (SkirmishIconicFlights iconicFlightType : iconicFlightTypes)
         {
@@ -77,25 +97,32 @@ public class Skirmish
                 {
                     if (currentCount < iconicFlightType.getMaxForcedFlightTypes())
                     {
-                        PWCGLogger.log(LogLevel.DEBUG, "Accept Skirmish: " + flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()) + " flying " + flightInformation.getFlightType());
+                        PWCGLogger.log(LogLevel.DEBUG,
+                                "Accept Skirmish: " + flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate())
+                                        + " flying " + flightInformation.getFlightType());
                         return true;
                     }
                     else
                     {
-                        PWCGLogger.log(LogLevel.DEBUG, "Reject Skirmish because has enough of flight type: " + flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()));
+                        PWCGLogger.log(LogLevel.DEBUG, "Reject Skirmish because has enough of flight type: "
+                                + flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()));
                     }
                 }
                 else
                 {
-                    PWCGLogger.log(LogLevel.DEBUG, "Reject Skirmish because wrong flight type: " + flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()) + " flying " + flightInformation.getFlightType());
+                    PWCGLogger.log(LogLevel.DEBUG,
+                            "Reject Skirmish because wrong flight type: "
+                                    + flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()) + " flying "
+                                    + flightInformation.getFlightType());
                 }
             }
             else
             {
-                PWCGLogger.log(LogLevel.DEBUG, "Reject Skirmish because wrong side: " + flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()));
+                PWCGLogger.log(LogLevel.DEBUG, "Reject Skirmish because wrong side: "
+                        + flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()));
             }
         }
-        
+
         return false;
     }
 
@@ -109,7 +136,7 @@ public class Skirmish
                 return true;
             }
         }
-        
+
         return false;
     }
 
@@ -123,7 +150,7 @@ public class Skirmish
                 return skirmishProfileElement.getPreferredFlightType();
             }
         }
-        
+
         return FlightTypes.ANY;
     }
 
@@ -137,7 +164,7 @@ public class Skirmish
                 return skirmishProfileElement.getTargetType();
             }
         }
-        
+
         return TargetType.TARGET_NONE;
     }
 
@@ -153,7 +180,7 @@ public class Skirmish
                 }
             }
         }
-        
+
         return role;
     }
 
@@ -170,7 +197,7 @@ public class Skirmish
                 skirmishElementsForSide.add(skirmishProfileElement);
             }
         }
-        
+
         return skirmishElementsForSide;
     }
 
@@ -206,12 +233,11 @@ public class Skirmish
         }
         return false;
     }
-    
 
     public TargetType getTargetTypeForFlightType(FlightTypes flightType, Side side) throws PWCGException
     {
         SkirmishProfileAssociation attackerOrDefender = getSkirmishProfileAssociationForSide(side);
-        
+
         SkirmishProfile skirmishProfile = PWCGContext.getInstance().getSkirmishProfileManager().getSkirmishProfile(profileType);
         for (SkirmishProfileElement skirmishProfileElement : skirmishProfile.getSkirmishProfileElements())
         {
@@ -233,5 +259,14 @@ public class Skirmish
             return SkirmishProfileAssociation.ATTACKER;
         }
         return SkirmishProfileAssociation.DEFENDER;
+    }
+
+    public boolean isCargoRouteBattle()
+    {
+        if (skirmishName.startsWith(CARGO_ROUTE_BATTLE))
+        {
+            return true;
+        }
+        return false;
     }
 }

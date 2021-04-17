@@ -2,13 +2,12 @@ package pwcg.campaign.battle;
 
 import java.util.Date;
 
-import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.io.json.BattleIOJson;
+import pwcg.campaign.skirmish.SkirmishDistance;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
@@ -94,9 +93,7 @@ public class BattleManager
         Coordinate closestFrontLines = frontLineMarker.findClosestFrontCoordinateForSide(position, Side.ALLIED);
 
         double distanceFromBattleFront = MathUtils.calcDist(closestFrontLines, position);
-        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        int closeToBattleDistance = productSpecific.getCloseToBattleDistance();
-        if (distanceFromBattleFront < closeToBattleDistance)
+        if (distanceFromBattleFront < SkirmishDistance.findMaxSkirmishDistance())
         {
             return true;
         }

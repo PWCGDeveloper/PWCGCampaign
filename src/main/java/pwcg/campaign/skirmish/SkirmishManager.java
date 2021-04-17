@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.io.json.SkirmishIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.target.TargetType;
 
@@ -34,25 +36,33 @@ public class SkirmishManager
         }
 	}
 
-    public List<Skirmish> getSkirmishesForDate(Date date) 
+    public List<Skirmish> getSkirmishesForDate(Campaign campaign, MissionHumanParticipants participatingPlayers) throws PWCGException 
     {     
-        List<Skirmish> skirmishesForCampaign = new ArrayList<>();
-        
-        try
+        List<Skirmish> skirmishesForCampaign =  getSetPieceSkirmishesForDate(campaign);
+        if (skirmishesForCampaign.isEmpty())
         {
-            for (Skirmish skirmish : skirmishes.getSkirmishes())
+            skirmishesForCampaign = getDynamicSkirmishesForDate(campaign, participatingPlayers);
+        }
+        return skirmishesForCampaign;
+    }
+
+    private List<Skirmish> getSetPieceSkirmishesForDate(Campaign campaign) throws PWCGException
+    {
+        List<Skirmish> skirmishesForCampaign = new ArrayList<>();
+        for (Skirmish skirmish : skirmishes.getSkirmishes())
+        {
+            if (isSkirmishAtRightTime(campaign.getDate(), skirmish))
             {
-                if (isSkirmishAtRightTime(date, skirmish))
-                {
-                    skirmishesForCampaign.add(skirmish);
-                }
+                skirmishesForCampaign.add(skirmish);
             }
         }
-        catch (Throwable t)
-        {
-           PWCGLogger.logException(t);
-        }
         
+        return skirmishesForCampaign;
+    }
+
+    private List<Skirmish> getDynamicSkirmishesForDate(Campaign campaign, MissionHumanParticipants participatingPlayers) throws PWCGException
+    {
+        List<Skirmish> skirmishesForCampaign = DynamicSkirmishBuilder.getSkirmishesForDate(campaign, participatingPlayers);
         return skirmishesForCampaign;
     }
 

@@ -15,6 +15,7 @@ import pwcg.core.utils.DateUtils;
 import pwcg.mission.MissionHumanParticipants;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TestMissionBuilderUtility;
 
 public class SkirmishBuilderTest
 {
@@ -30,7 +31,7 @@ public class SkirmishBuilderTest
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         PWCGContext.getInstance().setCampaign(campaign);
 
-        List<Skirmish> skirmishes = PWCGContext.getInstance().getCurrentMap().getSkirmishManager().getSkirmishesForDate(campaign.getDate());
+        List<Skirmish> skirmishes = PWCGContext.getInstance().getCurrentMap().getSkirmishManager().getSkirmishesForDate(campaign, TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         assert (skirmishes.size() == 0);
     }
 

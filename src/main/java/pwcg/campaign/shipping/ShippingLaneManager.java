@@ -1,5 +1,7 @@
 package pwcg.campaign.shipping;
 
+import java.util.Date;
+
 import pwcg.campaign.api.Side;
 import pwcg.campaign.io.json.CargoRoutesIOJson;
 import pwcg.campaign.io.json.ShippingLaneIOJson;
@@ -36,21 +38,22 @@ public class ShippingLaneManager
         return shippingLanes.getClosestShippingLaneBySide(targetGeneralLocation, side);
     }
 
-    public CargoRoute getNearbyCargoShipRouteBySide(Coordinate targetGeneralLocation, Side side) throws PWCGException
+    public CargoRoute getNearbyCargoShipRouteBySide(Date date, Coordinate targetGeneralLocation, Side side) throws PWCGException
     {
-        return cargoRoutes.getNearbyCargoShipRouteBySide(targetGeneralLocation, side);
-    }
-
-    public boolean hasNearbyCargoShipRouteBySide(Coordinate targetGeneralLocation, Side side) throws PWCGException
-    {
-        CargoRoute cargoRoute = cargoRoutes.getNearbyCargoShipRouteBySide(targetGeneralLocation, side);
+        CargoRoute cargoRoute = cargoRoutes.getNearbyCargoShipRouteBySide(date, targetGeneralLocation, side);
         if (cargoRoute != null)
         {
-            return true;
+            return cargoRoute.copy();
         }
         else
         {
-            return false;
+            return null;
         }
+    }
+
+    public CargoRoute getCargoShipRouteByName(String skirmishName) throws PWCGException
+    {
+        CargoRoute cargoRoute = cargoRoutes.getCargoShipRouteByName(skirmishName);
+        return cargoRoute;
     }
 }
