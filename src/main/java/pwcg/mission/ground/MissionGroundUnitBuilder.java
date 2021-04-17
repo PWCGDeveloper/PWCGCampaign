@@ -8,9 +8,6 @@ import java.util.Map;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.battle.AmphibiousAssault;
-import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.skirmish.Skirmish;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -18,7 +15,7 @@ import pwcg.core.utils.PositionFinder;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBalloonBuilder;
 import pwcg.mission.MissionShipBuilder;
-import pwcg.mission.ground.builder.AmphibiousAssaultBuilder;
+import pwcg.mission.ground.builder.IBattleBuilder;
 import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.target.TargetType;
 
@@ -44,34 +41,7 @@ public class MissionGroundUnitBuilder
 
     public void generateGroundUnitsForMission() throws PWCGException 
     {
-        if (isGenerateHistoricalBattle())
-        {
-            generateHistoricalBattle();
-        }
-        else
-        {
-            generateNormalGroundActivity();
-        }
-    }
-
-    private boolean isGenerateHistoricalBattle()
-    {
-        AmphibiousAssault amphibiousAssault = getActiveAmphibiousAssault();
-        if (amphibiousAssault != null)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public void generateHistoricalBattle() throws PWCGException 
-    {
-        generateAmphibiousAssault();
-    }
-    
-    public void generateNormalGroundActivity() throws PWCGException 
-    {
-        generateBattles();
+        generateBattle();
         generateTrains();
         generateTrucks();
         generateDrifters();
@@ -80,28 +50,10 @@ public class MissionGroundUnitBuilder
         createFrontLineAAA();
     }
 
-    private void generateAmphibiousAssault() throws PWCGException 
+    private void generateBattle() throws PWCGException 
     {
-        AmphibiousAssault amphibiousAssault = getActiveAmphibiousAssault();
-        AmphibiousAssaultBuilder amphibiousAssaultBuilder =new AmphibiousAssaultBuilder(mission, amphibiousAssault);
-        missionBattles = amphibiousAssaultBuilder.generateAmphibiousAssault();
-    }
-
-    private AmphibiousAssault getActiveAmphibiousAssault()
-    {
-        AmphibiousAssault amphibiousAssault = null;
-        Skirmish skirmish = mission.getSkirmish();
-        if (skirmish != null)
-        {
-            amphibiousAssault = PWCGContext.getInstance().getCurrentMap().getAmphibiousAssaultManager().getAmphibiousAssaultsForCampaign(skirmish.getSkirmishName());
-        }
-        return amphibiousAssault;
-    }
-
-    private void generateBattles() throws PWCGException 
-    {
-        MissionBattleBuilder battleBuilder = new MissionBattleBuilder(campaign, mission);
-        missionBattles = battleBuilder.generateBattles();
+        IBattleBuilder battleBuilder = MissionBattleBuilderFactory.getBattleBuilder(mission);
+        missionBattles = battleBuilder.generateBattle();
     }
 
     private void generateTrains() throws PWCGException 
@@ -133,7 +85,6 @@ public class MissionGroundUnitBuilder
         MissionBalloonBuilder balloonBuilder = new MissionBalloonBuilder(mission);
         missionBalloons = balloonBuilder.createMissionBalloons();
     }
-
 
     private void generateShips() throws PWCGException
     {

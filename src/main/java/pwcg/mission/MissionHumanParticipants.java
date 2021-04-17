@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
@@ -93,4 +94,29 @@ public class MissionHumanParticipants
         return averagePlayerDistanceToTarget;
     }
 
+    public List<Squadron> getMissionPlayerSquadrons() throws PWCGException
+    {
+        Map<Integer, Squadron> playerSquadronsMap = new HashMap<>();
+        for (int playersSquadronId : participatingPlayers.keySet())
+        {
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(playersSquadronId);
+            playerSquadronsMap.put(playersSquadronId, squadron);
+        }
+        
+        List<Squadron> squadrons = new ArrayList<>(playerSquadronsMap.values());
+        return squadrons;
+    }
+
+    public List<Side> getMissionPlayerSides() throws PWCGException
+    {
+        Map<Side, Side> playerSideMap = new HashMap<>();
+        for (int playersSquadronId : participatingPlayers.keySet())
+        {
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(playersSquadronId);
+            playerSideMap.put(squadron.determineSide(), squadron.determineSide());
+        }
+        
+        List<Side> playerSides = new ArrayList<>(playerSideMap.values());
+        return playerSides;
+    }
 }

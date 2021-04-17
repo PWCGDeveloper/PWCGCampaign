@@ -10,7 +10,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.org.GroundUnitCollection;
 
-public class AmphibiousAssaultBuilder
+public class AmphibiousAssaultBuilder implements IBattleBuilder
 {
     private Mission mission;
     private AmphibiousAssault amphibiousAssault;
@@ -21,8 +21,14 @@ public class AmphibiousAssaultBuilder
         this.mission = mission;
         this.amphibiousAssault = amphibiousAssault;
     }
-    
-    public List<GroundUnitCollection> generateAmphibiousAssault() throws PWCGException
+
+    @Override
+    public List<GroundUnitCollection> generateBattle() throws PWCGException
+    {
+        return generateAmphibiousAssault();
+    }
+
+    private List<GroundUnitCollection> generateAmphibiousAssault() throws PWCGException
     {
         List<AmphibiousAssaultShipDefinition> shipsForMission = getLandingCraftForAssault();
 
@@ -90,5 +96,4 @@ public class AmphibiousAssaultBuilder
         }
         return shipsForMission;
     }
-
  }

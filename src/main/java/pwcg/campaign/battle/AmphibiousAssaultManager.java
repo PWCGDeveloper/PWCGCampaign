@@ -2,7 +2,9 @@ package pwcg.campaign.battle;
 
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.io.json.AmphibiousAssaultIOJson;
+import pwcg.campaign.skirmish.Skirmish;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.mission.Mission;
 
 public class AmphibiousAssaultManager
 {
@@ -26,8 +28,14 @@ public class AmphibiousAssaultManager
         }
 	}
 
-    public AmphibiousAssault getAmphibiousAssaultsForCampaign(String skirmishName) 
-    {     
-        return amphibiousAssaults.getAmphibiousAssault(skirmishName);
+
+	public AmphibiousAssault getActiveAmphibiousAssault(Mission mission)
+    {
+        Skirmish skirmish = mission.getSkirmish();
+        if (skirmish != null)
+        {
+            return amphibiousAssaults.getAmphibiousAssault(skirmish.getSkirmishName());
+        }
+        return null;
     }
 }

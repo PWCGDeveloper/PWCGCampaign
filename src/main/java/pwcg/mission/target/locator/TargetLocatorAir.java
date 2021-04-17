@@ -8,12 +8,9 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
-import pwcg.campaign.shipping.ShippingLane;
-import pwcg.campaign.shipping.ShippingLaneManager;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.Mission;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.intercept.InterceptAiCoordinateGenerator;
 import pwcg.mission.flight.intercept.InterceptPlayerCoordinateGenerator;
@@ -75,14 +72,6 @@ public class TargetLocatorAir
     public Coordinate getFerryAirfieldCoordinate() throws PWCGException
     {
         throw new PWCGException("Ferry missions not implemented");
-    }
-
-    public Coordinate getSeaLaneCoordinate() throws PWCGException
-    {
-        Mission mission = flightInformation.getMission();
-        ShippingLaneManager shippingLaneManager = PWCGContext.getInstance().getCurrentMap().getShippingLaneManager();        
-        ShippingLane selectedShippingLane = shippingLaneManager.getClosestShippingLane(mission.getMissionBorders().getCenter());
-        return selectedShippingLane.getShippingLaneBorders().getCoordinateInBox();
     }
 
     public Coordinate getPlayerEscortRendezvousCoordinate() throws PWCGException

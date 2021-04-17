@@ -46,8 +46,8 @@ public class MissionGroundUnitBuilderTest
         Mission mission = TestMissionBuilderUtility.createTestMission(campaign, participatingPlayers, missionBorders, MissionProfile.DAY_TACTICAL_MISSION);
         mission.generate(playerFlightTypes);
   
-        MissionBattleBuilder battleBuilder = new MissionBattleBuilder(campaign, mission);
-        List<GroundUnitCollection> battles = battleBuilder.generateBattles();
+        MissionBattleBuilder battleBuilder = new MissionBattleBuilder(mission);
+        List<GroundUnitCollection> battles = battleBuilder.generateBattle();
 
         assert (battles.size() < 3);
         for (GroundUnitCollection battle : battles)

@@ -1,0 +1,23 @@
+{
+	"skirmishes": [
+		{
+			"skirmishName": "Kerch Cargo German Attack",
+			"swCorner": {
+				"xPos": 302000,
+				"yPos": 0.0,
+				"zPos": 147000
+			},
+			"neCorner": {
+				"xPos": 312000,
+				"yPos": 0.0,
+				"zPos": 157000
+			},
+			"startDate": "19431008",
+			"stopDate": "19431031",
+			"iconicFlightTypes": [
+			],
+			"profileType": "SKIRMISH_PROFILE_ANTI_SHIPPING",
+			"attacker": "AXIS"
+		}
+	]
+}

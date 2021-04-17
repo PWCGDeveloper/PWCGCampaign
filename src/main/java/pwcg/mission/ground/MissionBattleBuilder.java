@@ -17,28 +17,31 @@ import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.builder.AssaultBuilder;
+import pwcg.mission.ground.builder.IBattleBuilder;
 import pwcg.mission.ground.org.GroundUnitCollection;
 
-public class MissionBattleBuilder
+public class MissionBattleBuilder implements IBattleBuilder
 {
     private Mission mission = null;
     private Campaign campaign = null;
 
     private List<GroundUnitCollection> battles = new ArrayList<>();
 
-    public MissionBattleBuilder (Campaign campaign, Mission mission)
+    public MissionBattleBuilder (Mission mission)
     {
         this.mission = mission;
-        this.campaign = campaign;
+        this.campaign = mission.getCampaign();
     }
 
-    public List<GroundUnitCollection> generateBattles() throws PWCGException 
+
+    @Override
+    public List<GroundUnitCollection> generateBattle() throws PWCGException
     {
-        if (PWCGContext.getInstance().getCurrentMap().isNoBattlePeriod(campaign.getDate()))
-        {
-            return battles;
-        }
-        
+        return generateLandBattles();
+    }
+
+    public List<GroundUnitCollection> generateLandBattles() throws PWCGException 
+    {
         int maxBattles = getMaxBattles();
         int numBattles = RandomNumberGenerator.getRandom(maxBattles+1);
 
