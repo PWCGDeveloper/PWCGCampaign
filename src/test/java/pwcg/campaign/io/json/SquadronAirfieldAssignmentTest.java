@@ -53,7 +53,9 @@ public class SquadronAirfieldAssignmentTest
         validMoveDates.add("19430927");
         validMoveDates.add("19431004");
         validMoveDates.add("19431008");
-        
+        validMoveDates.add("19431101");
+        validMoveDates.add("19431111");
+
         validMoveDates.add("19440101");
         validMoveDates.add("19440201");
         validMoveDates.add("19440301");
@@ -72,6 +74,8 @@ public class SquadronAirfieldAssignmentTest
         validMoveDates.add("19450101");
         validMoveDates.add("19450201");
         validMoveDates.add("19450301");
+        validMoveDates.add("19450323");
+        validMoveDates.add("19450324");
         validMoveDates.add("19450401");
         validMoveDates.add("19450501");
 

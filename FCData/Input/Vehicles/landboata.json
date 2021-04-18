@@ -11,8 +11,8 @@
 		"FRANCE",
 		"GERMANY"
 	],
-	"startDate": "19390901",
-	"endDate": "19460724",
+	"startDate": "19140801",
+	"endDate": "19190101",
 	"rarityWeight": 5,
 	"vehicleClass": "ShipLandingCraft",
 	"vehicleLength": 100

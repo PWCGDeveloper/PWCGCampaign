@@ -81,12 +81,6 @@ public class KubanInvasionFlightTest
     }
 
     @Test
-    public void doesNotHaveSkirmishBeforeTest() throws PWCGException
-    {
-        noSkirmish(DateUtils.getDateYYYYMMDD("19431031"));
-    }
-
-    @Test
     public void doesNotHaveSkirmishAfterTest() throws PWCGException
     {
         noSkirmish(DateUtils.getDateYYYYMMDD("19431112"));
