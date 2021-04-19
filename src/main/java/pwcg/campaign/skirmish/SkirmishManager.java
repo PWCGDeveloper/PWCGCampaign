@@ -62,7 +62,8 @@ public class SkirmishManager
 
     private List<Skirmish> getDynamicSkirmishesForDate(Campaign campaign, MissionHumanParticipants participatingPlayers) throws PWCGException
     {
-        List<Skirmish> skirmishesForCampaign = DynamicSkirmishBuilder.getSkirmishesForDate(campaign, participatingPlayers);
+        DynamicSkirmishBuilder dynamicSkirmishBuilder = new DynamicSkirmishBuilder(campaign, participatingPlayers);
+        List<Skirmish> skirmishesForCampaign = dynamicSkirmishBuilder.getSkirmishesForDate();
         return skirmishesForCampaign;
     }
 

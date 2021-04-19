@@ -43,4 +43,19 @@ public class ShipTypeChooser
         return shipType;
     }
 
+    public static VehicleClass chooseShipTypeForEncounter()
+    {
+        int shipTypeRoll = RandomNumberGenerator.getRandom(100);
+        VehicleClass shipType = VehicleClass.ShipWarship;
+        if (shipTypeRoll < 30)
+        {
+            shipType = VehicleClass.ShipCargo;
+        }
+        else
+        {
+            shipType = VehicleClass.ShipWarship;
+        }
+        return shipType;
+    }
+
 }

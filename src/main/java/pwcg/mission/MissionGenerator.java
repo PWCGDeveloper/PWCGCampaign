@@ -30,7 +30,8 @@ public class MissionGenerator
         weather.createMissionWeather();
 
         MissionSquadronFlightTypes playerFlightTypes = new MissionSquadronFlightTypes();
-        Mission mission = buildMission(participatingPlayers, playerFlightTypes, missionProfile, weather, missionOptions);
+        Skirmish skirmish = getSkirmishForMission(participatingPlayers);
+        Mission mission = buildMission(participatingPlayers, playerFlightTypes, missionProfile, weather, skirmish, missionOptions);
         return mission;
     }
 
@@ -47,7 +48,8 @@ public class MissionGenerator
         MissionSquadronFlightTypes playerFlightTypes = new MissionSquadronFlightTypes();
         playerFlightTypes.add(participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron(), FlightTypes.LONE_WOLF);
 
-        Mission mission = buildMission(participatingPlayers, playerFlightTypes, MissionProfile.DAY_TACTICAL_MISSION, weather, missionOptions);
+        Skirmish skirmish = null;
+        Mission mission = buildMission(participatingPlayers, playerFlightTypes, MissionProfile.DAY_TACTICAL_MISSION, weather, skirmish, missionOptions);
         return mission;
     }
 
@@ -64,7 +66,7 @@ public class MissionGenerator
         MissionSquadronFlightTypes playerFlightTypes = new MissionSquadronFlightTypes();
         playerFlightTypes.add(participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron(), playerFlightType);
         
-        Mission mission = buildMission(participatingPlayers, playerFlightTypes, missionProfile, weather, missionOptions);
+        Mission mission = buildMission(participatingPlayers, playerFlightTypes, missionProfile, weather, null, missionOptions);
         return mission;
     }
 
@@ -78,7 +80,25 @@ public class MissionGenerator
         MissionWeather weather = new MissionWeather(campaign, missionOptions.getMissionHour());
         weather.createMissionWeather();
 
-        Mission mission = buildMission(participatingPlayers, playerFlightTypes, missionProfile, weather, missionOptions);
+        Skirmish skirmish = null;
+        Mission mission = buildMission(participatingPlayers, playerFlightTypes, missionProfile, weather, skirmish, missionOptions);
+        return mission;
+    }
+
+    public Mission makeTestMissionFromFlightTypeWithSkirmish(
+            MissionHumanParticipants participatingPlayers, 
+            MissionSquadronFlightTypes playerFlightTypes,
+            MissionProfile missionProfile,
+            Skirmish skirmish) throws PWCGException
+    {
+        MissionOptions missionOptions = new MissionOptions(campaign.getDate(), missionProfile);
+        missionOptions.createFlightSpecificMissionOptions();
+
+        campaign.getCampaignConfigManager().setParam(ConfigItemKeys.UseRealisticWeatherKey, "0");
+        MissionWeather weather = new MissionWeather(campaign, missionOptions.getMissionHour());
+        weather.createMissionWeather();
+
+        Mission mission = buildMission(participatingPlayers, playerFlightTypes, missionProfile, weather, skirmish, missionOptions);
         return mission;
     }
 
@@ -89,11 +109,15 @@ public class MissionGenerator
         return missionProfile;
     }
 
-    private Mission buildMission(MissionHumanParticipants participatingPlayers, MissionSquadronFlightTypes playerFlightTypes, MissionProfile missionProfile,
-            MissionWeather weather, MissionOptions missionOptions) throws PWCGException
+    private Mission buildMission(
+            MissionHumanParticipants participatingPlayers, 
+            MissionSquadronFlightTypes playerFlightTypes, 
+            MissionProfile missionProfile,
+            MissionWeather weather, 
+            Skirmish skirmish,
+            MissionOptions missionOptions) throws PWCGException
     {
         campaign.setCurrentMission(null);
-        Skirmish skirmish = getSkirmishForMission(participatingPlayers);
         CoordinateBox missionBorders = buildMissionBorders(missionProfile, participatingPlayers, skirmish);
         CoordinateBox structureBorders = buildStructureBorders(missionProfile, participatingPlayers, missionBorders);
         Mission mission = new Mission(campaign, missionProfile, participatingPlayers, missionBorders, structureBorders, weather, skirmish, missionOptions);

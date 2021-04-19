@@ -30,7 +30,7 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
-public class KubanCargoRouteTest
+public class KubanShippingZoneTest
 {
     @Before
     public void setup() throws PWCGException
@@ -40,7 +40,7 @@ public class KubanCargoRouteTest
     }
 
     @Test
-    public void hasDiveBombCargoRouteTest() throws PWCGException
+    public void hasDiveBombShippingZoneTest() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_KUBAN_PROFILE);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19431009"));
@@ -48,7 +48,7 @@ public class KubanCargoRouteTest
         MissionHumanParticipants playerParticipants = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
                 
         DynamicSkirmishBuilder dynamicSkirmishBuilder = new DynamicSkirmishBuilder(campaign, playerParticipants);
-        Skirmish cargoRouteSkirmish = dynamicSkirmishBuilder.buildSkirmishForCargoRoute();
+        Skirmish shippingZoneSkirmish = dynamicSkirmishBuilder.buildSkirmishForShippingEncounter();
                 
         MissionSquadronFlightTypes playerFlightTypes = new MissionSquadronFlightTypes();
         for (SquadronMember player : playerParticipants.getAllParticipatingPlayers())
@@ -57,20 +57,28 @@ public class KubanCargoRouteTest
         }
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        Mission mission = missionGenerator.makeTestMissionFromFlightTypeWithSkirmish(playerParticipants, playerFlightTypes, MissionProfile.DAY_TACTICAL_MISSION, cargoRouteSkirmish);
+        Mission mission = missionGenerator.makeTestMissionFromFlightTypeWithSkirmish(playerParticipants, playerFlightTypes, MissionProfile.DAY_TACTICAL_MISSION, shippingZoneSkirmish);
 
         assert (mission.getSkirmish() != null);
-        assert (mission.getSkirmish().getSkirmishName().startsWith("Cargo"));
-        assert (mission.getSkirmish().getAttacker() == Side.AXIS);
-        boolean shipsFound = false;
+        assert (mission.getSkirmish().getSkirmishName().startsWith("Ship Encounter"));
+        boolean axisShipsFound = false;
+        boolean alliedShipsFound = false;
         for (GroundUnitCollection groundUnitCollection : mission.getMissionGroundUnitBuilder().getAllMissionGroundUnits())
         {
             if (groundUnitCollection.getTargetType() == TargetType.TARGET_SHIPPING)
             {
-                shipsFound = true;
+                if (groundUnitCollection.getGroundUnits().get(0).getCountry().getSide() == Side.ALLIED)
+                {
+                    alliedShipsFound = true;
+                }
+                else
+                {
+                    axisShipsFound = true;
+                }
             }
         }
-        assert (shipsFound);
+        assert (alliedShipsFound);
+        assert (axisShipsFound);
 
         boolean diveBombFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.DIVE_BOMB, Side.AXIS);
         boolean groundAttackFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.GROUND_ATTACK, Side.AXIS);

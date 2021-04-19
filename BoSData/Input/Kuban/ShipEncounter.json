@@ -1,0 +1,79 @@
+{
+	"shipEncounterZones": [
+		{
+			"name": "Ship Encounter Zone 1",
+			"startDate": "19431008",
+			"endDate": "19431101",
+			"swCorner": {
+				"xPos": 242000.0,
+				"yPos": 0.0,
+				"zPos": 117000.0
+			},
+			"neCorner": {
+				"xPos": 255000.0,
+				"yPos": 0.0,
+				"zPos": 125000.0
+			}
+		},
+		{
+			"name": "Ship Encounter Zone 2",
+			"startDate": "19431008",
+			"endDate": "19431101",
+			"swCorner": {
+				"xPos": 255000.0,
+				"yPos": 0.0,
+				"zPos": 115000.0
+			},
+			"neCorner": {
+				"xPos": 259000.0,
+				"yPos": 0.0,
+				"zPos": 123000.0
+			}
+		},
+		{
+			"name": "Ship Encounter Zone 3",
+			"startDate": "19431008",
+			"endDate": "19431101",
+			"swCorner": {
+				"xPos": 264000.0,
+				"yPos": 0.0,
+				"zPos": 120000.0
+			},
+			"neCorner": {
+				"xPos": 268000.0,
+				"yPos": 0.0,
+				"zPos": 128000.0
+			}
+		},
+		{
+			"name": "Ship Encounter Zone 4",
+			"startDate": "19431008",
+			"endDate": "19431101",
+			"swCorner": {
+				"xPos": 210000.0,
+				"yPos": 0.0,
+				"zPos": 100000.0
+			},
+			"neCorner": {
+				"xPos": 235000.0,
+				"yPos": 0.0,
+				"zPos": 145000.0
+			}
+		},
+		{
+			"name": "Ship Encounter Zone 5",
+			"startDate": "19431008",
+			"endDate": "19431101",
+			"swCorner": {
+				"xPos": 285000.0,
+				"yPos": 0.0,
+				"zPos": 110000.0
+			},
+			"neCorner": {
+				"xPos": 300000.0,
+				"yPos": 0.0,
+				"zPos": 150000.0
+			}
+		}
+	]
+}

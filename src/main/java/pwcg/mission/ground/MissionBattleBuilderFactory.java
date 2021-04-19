@@ -21,6 +21,11 @@ public class MissionBattleBuilderFactory
         {
             return new CargoRouteBattleBuilder(mission);
         }
+        
+        if (mission.getSkirmish() != null && mission.getSkirmish().isShipEncounterZoneBattle())
+        {
+            return new ShippingEncounterBattleBuilder(mission);
+        }
 
         if (PWCGContext.getInstance().getCurrentMap().isNoDynamicBattlePeriod(mission.getCampaign().getDate()))
         {

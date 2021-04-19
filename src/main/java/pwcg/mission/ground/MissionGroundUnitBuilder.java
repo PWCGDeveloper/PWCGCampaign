@@ -88,8 +88,11 @@ public class MissionGroundUnitBuilder
 
     private void generateShips() throws PWCGException
     {
-        MissionShipBuilder shipBuilder = new MissionShipBuilder(mission);
-        missionShips = shipBuilder.createMissionShips();
+        if (mission.getSkirmish() == null)
+        {
+            MissionShipBuilder shipBuilder = new MissionShipBuilder(mission);
+            missionShips = shipBuilder.createMissionShips();
+        }
     }
 
     public void write(BufferedWriter writer) throws PWCGException

@@ -3,21 +3,30 @@
 
 PWCG 12.0.0
 Add iconc events
-Arnhem: 
-- parachute and cargo drops
+Rhine: 
+- Arnhem: 
+- parachute and cargo drops 9/17/1944 - 9/28/1944
 - Rhine map front line improvements to show drops
-Ardennes: 
-- German attack
-- Bastogne cargo drops
+- Ardennes: 
+- German attack 
+- Bastogne cargo drops 
 - Allied counter attack
-Bodenplatte: 
-- German airfield attacks and Allied scramples
+- Bodenplatte Jan 1 1945
+- German airfield attacks and Allied scrambles
+- Plunder Rhine crossing March 23 1945
+- Varsity air drop March 24 1945
 Stalingrad: 
-- German bombing of city
-- German dive bombing of barges
-- Uranus
-- Encirclement with cargo drops
+- German bombing of city August 1942
+- German dive bombing of barges September 1942
+- Uranus November 1942
+- Encirclement with cargo drops December 1942
+Kuban:
+- Anti shipping period Oct 8 1943 - Nov 1 1943
+- Includes scenarios with opposing sides coming into contact
+- Russian invasion of Kerch Nov 1 1943 - Nov 11 1943
+
 Added runway start AI scramble missions to airfield attacks.
+Bugs:
 Fixed issue that could cause planes to spawn on top of each other
 Fixed issue some places where bomber could act like a fighter
 

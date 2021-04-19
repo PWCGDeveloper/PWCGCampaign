@@ -31,6 +31,22 @@ public class BoSDeploy extends DeployBase
         directoriesToCopy.put("East1945", null);
         directoriesToCopy.put("Bodenplatte", null);        
 
+        // Bodenplatte dates
+        directoriesToCopy.put("19440901", null);
+        directoriesToCopy.put("19440917", null);
+        directoriesToCopy.put("19440925", null);
+        directoriesToCopy.put("19440928", null);
+        directoriesToCopy.put("19440930", null);
+        directoriesToCopy.put("19441101", null);
+        directoriesToCopy.put("19441220", null);
+        directoriesToCopy.put("19441225", null);
+        directoriesToCopy.put("19441229", null);
+        directoriesToCopy.put("19450207", null);
+        directoriesToCopy.put("19450310", null);
+        directoriesToCopy.put("19450323", null);
+        directoriesToCopy.put("19450324", null);
+        directoriesToCopy.put("19450404", null);
+
 		// Moscow dates
         directoriesToCopy.put("19411001", null);
         directoriesToCopy.put("19411020", null);
@@ -60,6 +76,8 @@ public class BoSDeploy extends DeployBase
         directoriesToCopy.put("19430927", null);
         directoriesToCopy.put("19431004", null);
         directoriesToCopy.put("19431008", null);
+        directoriesToCopy.put("19431101", null);
+        directoriesToCopy.put("19431111", null);
         
         // East Front 1944 dates
         directoriesToCopy.put("19440101", null);
@@ -81,19 +99,6 @@ public class BoSDeploy extends DeployBase
         directoriesToCopy.put("19450301", null);
         directoriesToCopy.put("19450401", null);
         directoriesToCopy.put("19450501", null);
-
-        
-        // Bodenplatte dates
-        directoriesToCopy.put("19440901", null);
-        directoriesToCopy.put("19440925", null);
-        directoriesToCopy.put("19440928", null);
-        directoriesToCopy.put("19441101", null);
-        directoriesToCopy.put("19441220", null);
-        directoriesToCopy.put("19441225", null);
-        directoriesToCopy.put("19441229", null);
-        directoriesToCopy.put("19450207", null);
-        directoriesToCopy.put("19450310", null);
-        directoriesToCopy.put("19450404", null);
         
         // Service Themes
         directoriesToCopy.put("Luftwaffe", null);

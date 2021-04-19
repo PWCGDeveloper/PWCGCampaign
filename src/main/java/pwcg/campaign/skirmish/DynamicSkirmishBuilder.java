@@ -8,17 +8,38 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.shipping.CargoRoute;
 import pwcg.campaign.shipping.CargoRouteManager;
+import pwcg.campaign.shipping.ShipEncounterZone;
+import pwcg.campaign.shipping.ShipEncounterZoneManager;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.MissionHumanParticipants;
 
 public class DynamicSkirmishBuilder
 {
-    public static  List<Skirmish> getSkirmishesForDate(Campaign campaign, MissionHumanParticipants participatingPlayers) throws PWCGException 
+    private Campaign campaign;
+    private MissionHumanParticipants participatingPlayers;
+    
+    public DynamicSkirmishBuilder(Campaign campaign, MissionHumanParticipants participatingPlayers)
+    {
+        this.campaign = campaign;
+        this.participatingPlayers = participatingPlayers;
+    }
+    
+    public  List<Skirmish> getSkirmishesForDate() throws PWCGException 
     {     
-        Skirmish cargoRouteSkirmish = buildSkirmishForCargoRoute(campaign, participatingPlayers);
-        if (cargoRouteSkirmish != null)
+        Skirmish seaSkirmish = null;
+        if (isCargo())
         {
-            return Arrays.asList(cargoRouteSkirmish);
+            seaSkirmish = buildSkirmishForCargoRoute();
+        }
+        else
+        {
+            seaSkirmish = buildSkirmishForShippingEncounter();
+        }
+
+        if (seaSkirmish != null)
+        {
+            return Arrays.asList(seaSkirmish);
         }
         else
         {
@@ -26,7 +47,17 @@ public class DynamicSkirmishBuilder
         }
     }
 
-    private static Skirmish buildSkirmishForCargoRoute(Campaign campaign, MissionHumanParticipants participatingPlayers) throws PWCGException
+    public boolean isCargo()
+    {
+        int roll = RandomNumberGenerator.getRandom(100);
+        if (roll < 30)
+        {
+            return false; 
+        }
+        return true;
+    }
+
+    public Skirmish buildSkirmishForCargoRoute() throws PWCGException
     {
         Side playerSide = participatingPlayers.getMissionPlayerSides().get(0);
         Side shipSide = playerSide.getOppositeSide();
@@ -37,6 +68,29 @@ public class DynamicSkirmishBuilder
             return new Skirmish(
                     cargoRoute.getName(),
                     cargoRoute.getRouteStartPosition(), 
+                    campaign.getDate(), 
+                    playerSide,
+                    SkirmishProfileType.SKIRMISH_PROFILE_ANTI_SHIPPING, 
+                    new ArrayList<SkirmishIconicFlights>(),
+                    new ArrayList<SkirmishForceRoleConversion>());
+        }
+        else
+        {
+            return null;
+        }
+    }
+    
+    
+    public Skirmish buildSkirmishForShippingEncounter() throws PWCGException
+    {
+        ShipEncounterZone shipEncounterZone = ShipEncounterZoneManager.getShipEncounterZone(campaign, participatingPlayers);
+        Side playerSide = participatingPlayers.getMissionPlayerSides().get(0);
+
+        if (shipEncounterZone != null)
+        {
+            return new Skirmish(
+                    shipEncounterZone.getName(),
+                    shipEncounterZone.getEncounterPoint(), 
                     campaign.getDate(), 
                     playerSide,
                     SkirmishProfileType.SKIRMISH_PROFILE_ANTI_SHIPPING, 

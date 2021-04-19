@@ -20,6 +20,7 @@ import pwcg.mission.target.TargetType;
 public class Skirmish
 {
     public static String CARGO_ROUTE_BATTLE = "Cargo Route";
+    public static String SHIPPING_ENCOUNTER_BATTLE = "Ship Encounter";
 
     private String skirmishName;
     private Coordinate neCorner;
@@ -264,6 +265,15 @@ public class Skirmish
     public boolean isCargoRouteBattle()
     {
         if (skirmishName.startsWith(CARGO_ROUTE_BATTLE))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isShipEncounterZoneBattle()
+    {
+        if (skirmishName.startsWith(SHIPPING_ENCOUNTER_BATTLE))
         {
             return true;
         }

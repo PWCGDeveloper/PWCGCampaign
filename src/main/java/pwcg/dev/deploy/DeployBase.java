@@ -209,6 +209,7 @@ public abstract class DeployBase
         directoriesToCopy.put("Configuration", null);
         directoriesToCopy.put("Ranks", null);
         directoriesToCopy.put("Skins", null);
+        directoriesToCopy.put("SkirmishProfiles", null);        
         directoriesToCopy.put("Squadron", null);
         directoriesToCopy.put("StaticObjects", null);
         directoriesToCopy.put("Vehicles", null);
@@ -218,6 +219,10 @@ public abstract class DeployBase
 
         // From Input/Skins
         directoriesToCopy.put("Configured", null);
+
+        // From Skirmishes
+        directoriesToCopy.put("Amphibious", null);        
+        directoriesToCopy.put("Skirmishes", null);        
 
         return directoriesToCopy;
     }

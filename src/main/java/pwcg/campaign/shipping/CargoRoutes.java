@@ -5,9 +5,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.skirmish.SkirmishDistance;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -21,31 +19,6 @@ public class CargoRoutes
     public List<CargoRoute> getRouteDefinitions()
     {
         return routeDefinitions;
-    }
-
-    public CargoRoute getCargoRouteForSideAndDate(Side side, Date date) throws PWCGException
-    {
-        List<CargoRoute> availableRouteDefinitions = new ArrayList<>();
-        for (CargoRoute cargoRoute : routeDefinitions)
-        {
-            ICountry country = CountryFactory.makeCountryByCountry(cargoRoute.getCountry());
-            if (country.getSide() == side)
-            {
-                if (DateUtils.isDateInRange(date, cargoRoute.getRouteStartDate(), cargoRoute.getRouteStopDate()))
-                {
-                    availableRouteDefinitions.add(cargoRoute);
-                }
-            }
-        }
-        
-        
-        if (!availableRouteDefinitions.isEmpty())
-        {
-            Collections.shuffle(availableRouteDefinitions);
-            return availableRouteDefinitions.get(0);
-        }
-        
-        return null;
     }
 
     public CargoRoute getNearbyCargoShipRouteBySide(Date date, Coordinate targetGeneralLocation, Side side) throws PWCGException
