@@ -70,6 +70,7 @@ public class DynamicSkirmishBuilder
                     cargoRoute.getRouteStartPosition(), 
                     campaign.getDate(), 
                     playerSide,
+                    playerSide,
                     SkirmishProfileType.SKIRMISH_PROFILE_ANTI_SHIPPING, 
                     new ArrayList<SkirmishIconicFlights>(),
                     new ArrayList<SkirmishForceRoleConversion>());
@@ -92,6 +93,7 @@ public class DynamicSkirmishBuilder
                     shipEncounterZone.getName(),
                     shipEncounterZone.getEncounterPoint(), 
                     campaign.getDate(), 
+                    playerSide,
                     playerSide,
                     SkirmishProfileType.SKIRMISH_PROFILE_ANTI_SHIPPING, 
                     new ArrayList<SkirmishIconicFlights>(),

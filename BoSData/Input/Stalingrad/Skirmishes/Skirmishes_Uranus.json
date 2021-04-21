@@ -22,7 +22,8 @@
 				}
 			],
 			"profileType": "SKIRMISH_PROFILE_ANTI_INFANTRY",
-			"attacker": "ALLIED"
+			"attackerAir": "ALLIED",
+			"attackerGround": "ALLIED"
 		},
 		{
 			"skirmishName": "Stalingrad-Uranus-North",
@@ -46,7 +47,8 @@
 				}
 			],
 			"profileType": "SKIRMISH_PROFILE_ANTI_INFANTRY",
-			"attacker": "ALLIED"
+			"attackerAir": "ALLIED",
+			"attackerGround": "ALLIED"
 		}
 	]
 }

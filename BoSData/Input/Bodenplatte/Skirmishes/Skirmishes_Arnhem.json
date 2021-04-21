@@ -22,7 +22,8 @@
 				}
 			],
 			"profileType": "SKIRMISH_PROFILE_PARA_DROP",
-			"attacker": "ALLIED"
+			"attackerAir": "ALLIED",
+			"attackerGround": "AXIS"
 		},
 		{
 			"skirmishName": "Nijmegen-Paradrop",
@@ -46,7 +47,8 @@
 				}
 			],
 			"profileType": "SKIRMISH_PROFILE_PARA_DROP",
-			"attacker": "ALLIED"
+			"attackerAir": "ALLIED",
+			"attackerGround": "AXIS"
 		},
 		{
 			"skirmishName": "Arnhem-Paradrop",
@@ -70,7 +72,8 @@
 				}
 			],
 			"profileType": "SKIRMISH_PROFILE_PARA_DROP",
-			"attacker": "ALLIED"
+			"attackerAir": "ALLIED",
+			"attackerGround": "AXIS"
 		},
 		{
 			"skirmishName": "Eindhoven-Resupply",
@@ -95,7 +98,8 @@
 				}
 			],
 			"profileType": "SKIRMISH_PROFILE_CARGO_DROP",
-			"attacker": "ALLIED"
+			"attackerAir": "ALLIED",
+			"attackerGround": "AXIS"
 		},
 		{
 			"skirmishName": "Nijmegen-Resupply",
@@ -120,7 +124,8 @@
 				}
 			],
 			"profileType": "SKIRMISH_PROFILE_CARGO_DROP",
-			"attacker": "ALLIED"
+			"attackerAir": "ALLIED",
+			"attackerGround": "AXIS"
 		},
 		{
 			"skirmishName": "Arnhem-Resupply",
@@ -145,7 +150,8 @@
 				}
 			],
 			"profileType": "SKIRMISH_PROFILE_CARGO_DROP",
-			"attacker": "ALLIED"
+			"attackerAir": "ALLIED",
+			"attackerGround": "AXIS"
 		}
 	]
 }

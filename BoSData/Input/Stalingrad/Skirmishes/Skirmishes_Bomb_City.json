@@ -22,7 +22,8 @@
 				}
 			],
 			"profileType": "SKIRMISH_PROFILE_CARPET_BOMB",
-			"attacker": "AXIS"
+			"attackerAir": "AXIS",
+			"attackerGround": "AXIS"
 		}
 	]
 }

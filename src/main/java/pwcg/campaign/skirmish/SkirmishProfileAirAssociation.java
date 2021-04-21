@@ -1,6 +1,6 @@
 package pwcg.campaign.skirmish;
 
-public enum SkirmishProfileAssociation
+public enum SkirmishProfileAirAssociation
 {
     ATTACKER,
     DEFENDER

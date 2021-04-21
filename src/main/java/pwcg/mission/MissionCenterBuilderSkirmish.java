@@ -26,7 +26,7 @@ public class MissionCenterBuilderSkirmish implements IMissionCenterBuilder
     public Coordinate findMissionCenter(int missionBoxRadius) throws PWCGException
     {   
         FrontLinesForMap frontlines = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
-        List<FrontLinePoint> coordinatesInBox = frontlines.findFrontPositionsForSideInBox(skirmish.getCoordinateBox(), skirmish.getAttacker().getOppositeSide());
+        List<FrontLinePoint> coordinatesInBox = frontlines.findFrontPositionsForSideInBox(skirmish.getCoordinateBox(), skirmish.getAttackerAir().getOppositeSide());
         if (!coordinatesInBox.isEmpty())
         {
             Collections.shuffle(coordinatesInBox);

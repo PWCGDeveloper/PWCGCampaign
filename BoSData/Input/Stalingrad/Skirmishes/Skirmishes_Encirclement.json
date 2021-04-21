@@ -22,7 +22,8 @@
 				}
 			],
 			"profileType": "SKIRMISH_PROFILE_CARGO_DROP",
-			"attacker": "AXIS"
+			"attackerAir": "AXIS",
+			"attackerGround": "ALLIED"
 		}
 	]
 }

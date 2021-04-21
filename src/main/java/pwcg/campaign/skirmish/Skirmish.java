@@ -27,7 +27,8 @@ public class Skirmish
     private Coordinate swCorner;
     private Date startDate;
     private Date stopDate;
-    private Side attacker;
+    private Side attackerAir;
+    private Side attackerGround;
     private SkirmishProfileType profileType;
     private List<SkirmishIconicFlights> iconicFlightTypes = new ArrayList<>();
     private List<SkirmishForceRoleConversion> forcedRoleConversions = new ArrayList<>();
@@ -36,7 +37,8 @@ public class Skirmish
             String skirmishName, 
             Coordinate position, 
             Date date, 
-            Side attacker, 
+            Side attackerAir, 
+            Side attackerGround, 
             SkirmishProfileType profileType, 
             List<SkirmishIconicFlights> iconicFlightTypes,
             List<SkirmishForceRoleConversion> forcedRoleConversions)
@@ -46,7 +48,8 @@ public class Skirmish
         this.neCorner = new Coordinate(position.getXPos() + 5000, 0, position.getZPos() + 5000);
         this.startDate = date;
         this.stopDate = date;
-        this.attacker = attacker;
+        this.attackerAir = attackerAir;
+        this.attackerGround = attackerGround;
         this.profileType = profileType;
         this.iconicFlightTypes = iconicFlightTypes;
         this.forcedRoleConversions = forcedRoleConversions;
@@ -188,7 +191,7 @@ public class Skirmish
     private List<SkirmishProfileElement> getSkirmishProfileElementForSide(Squadron squadron) throws PWCGException
     {
         List<SkirmishProfileElement> skirmishElementsForSide = new ArrayList<>();
-        SkirmishProfileAssociation squadronAssociation = getSkirmishAssociation(squadron);
+        SkirmishProfileAirAssociation squadronAssociation = getSkirmishAssociation(squadron);
 
         SkirmishProfile skirmishProfile = PWCGContext.getInstance().getSkirmishProfileManager().getSkirmishProfile(profileType);
         for (SkirmishProfileElement skirmishProfileElement : skirmishProfile.getSkirmishProfileElements())
@@ -202,24 +205,14 @@ public class Skirmish
         return skirmishElementsForSide;
     }
 
-    private SkirmishProfileAssociation getSkirmishAssociation(Squadron squadron) throws PWCGException
+    private SkirmishProfileAirAssociation getSkirmishAssociation(Squadron squadron) throws PWCGException
     {
-        SkirmishProfileAssociation squadronAssociation = SkirmishProfileAssociation.DEFENDER;
-        if (squadron.determineSide() == attacker)
+        SkirmishProfileAirAssociation squadronAssociation = SkirmishProfileAirAssociation.DEFENDER;
+        if (squadron.determineSide() == attackerAir)
         {
-            squadronAssociation = SkirmishProfileAssociation.ATTACKER;
+            squadronAssociation = SkirmishProfileAirAssociation.ATTACKER;
         }
         return squadronAssociation;
-    }
-
-    public Side getAttacker()
-    {
-        return attacker;
-    }
-
-    public SkirmishProfileType getProfileType()
-    {
-        return profileType;
     }
 
     public boolean hasTargetType(TargetType targetType) throws PWCGException
@@ -237,7 +230,7 @@ public class Skirmish
 
     public TargetType getTargetTypeForFlightType(FlightTypes flightType, Side side) throws PWCGException
     {
-        SkirmishProfileAssociation attackerOrDefender = getSkirmishProfileAssociationForSide(side);
+        SkirmishProfileAirAssociation attackerOrDefender = getSkirmishProfileAirAssociationForSide(side);
 
         SkirmishProfile skirmishProfile = PWCGContext.getInstance().getSkirmishProfileManager().getSkirmishProfile(profileType);
         for (SkirmishProfileElement skirmishProfileElement : skirmishProfile.getSkirmishProfileElements())
@@ -253,13 +246,13 @@ public class Skirmish
         return TargetType.TARGET_NONE;
     }
 
-    private SkirmishProfileAssociation getSkirmishProfileAssociationForSide(Side side)
+    private SkirmishProfileAirAssociation getSkirmishProfileAirAssociationForSide(Side side)
     {
-        if (attacker == side)
+        if (attackerAir == side)
         {
-            return SkirmishProfileAssociation.ATTACKER;
+            return SkirmishProfileAirAssociation.ATTACKER;
         }
-        return SkirmishProfileAssociation.DEFENDER;
+        return SkirmishProfileAirAssociation.DEFENDER;
     }
 
     public boolean isCargoRouteBattle()
@@ -278,5 +271,20 @@ public class Skirmish
             return true;
         }
         return false;
+    }
+
+    public Side getAttackerAir()
+    {
+        return attackerAir;
+    }
+
+    public Side getAttackerGround()
+    {
+        return attackerGround;
+    }
+
+    public SkirmishProfileType getProfileType()
+    {
+        return profileType;
     }
 }

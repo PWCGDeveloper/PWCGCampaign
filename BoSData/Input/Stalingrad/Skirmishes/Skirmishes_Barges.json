@@ -22,7 +22,8 @@
 				}
 			],
 			"profileType": "SKIRMISH_PROFILE_ANTI_RIVER_TRAFFIC",
-			"attacker": "AXIS"
+			"attackerAir": "AXIS",
+			"attackerGround": "AXIS"
 		}
 	]
 }

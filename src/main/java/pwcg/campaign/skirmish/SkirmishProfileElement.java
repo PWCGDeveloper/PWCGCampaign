@@ -6,12 +6,12 @@ import pwcg.mission.target.TargetType;
 
 public class SkirmishProfileElement
 {
-    private SkirmishProfileAssociation association;
+    private SkirmishProfileAirAssociation association;
     private Role role;
     private FlightTypes preferredFlightType;
     private TargetType targetType;
 
-    public SkirmishProfileAssociation getAssociation()
+    public SkirmishProfileAirAssociation getAssociation()
     {
         return association;
     }

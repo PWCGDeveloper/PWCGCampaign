@@ -61,7 +61,7 @@ public class KubanCargoRouteTest
 
         assert (mission.getSkirmish() != null);
         assert (mission.getSkirmish().getSkirmishName().startsWith("Cargo"));
-        assert (mission.getSkirmish().getAttacker() == Side.AXIS);
+        assert (mission.getSkirmish().getAttackerAir() == Side.AXIS);
         boolean shipsFound = false;
         for (GroundUnitCollection groundUnitCollection : mission.getMissionGroundUnitBuilder().getAllMissionGroundUnits())
         {

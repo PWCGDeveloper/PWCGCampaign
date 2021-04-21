@@ -39,7 +39,8 @@
 				}
 			],
 			"profileType": "SKIRMISH_PROFILE_AIRFIELD",
-			"attacker": "AXIS"
+			"attackerAir": "AXIS",
+			"attackerGround": "ALLIED"
 		},
 		{
 			"skirmishName": "Bodenplatte-Gravekent",
@@ -81,7 +82,8 @@
 				
 			],
 			"profileType": "SKIRMISH_PROFILE_AIRFIELD",
-			"attacker": "AXIS"
+			"attackerAir": "AXIS",
+			"attackerGround": "ALLIED"
 		},
 		{
 			"skirmishName": "Bodenplatte-Petit-Brogel",
@@ -123,7 +125,8 @@
 				
 			],
 			"profileType": "SKIRMISH_PROFILE_AIRFIELD",
-			"attacker": "AXIS"
+			"attackerAir": "AXIS",
+			"attackerGround": "ALLIED"
 		},
 		{
 			"skirmishName": "Bodenplatte-Ophoven",
@@ -162,7 +165,8 @@
 				}
 			],
 			"profileType": "SKIRMISH_PROFILE_AIRFIELD",
-			"attacker": "AXIS"
+			"attackerAir": "AXIS",
+			"attackerGround": "ALLIED"
 		},
 		{
 			"skirmishName": "Bodenplatte-Asch",
@@ -203,7 +207,8 @@
 				}
 			],
 			"profileType": "SKIRMISH_PROFILE_AIRFIELD",
-			"attacker": "AXIS"
+			"attackerAir": "AXIS",
+			"attackerGround": "ALLIED"
 		}
 	]
 }

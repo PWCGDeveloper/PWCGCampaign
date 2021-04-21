@@ -9,6 +9,7 @@ import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.battle.Battle;
 import pwcg.campaign.battle.BattleManager;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
@@ -18,6 +19,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.Mission;
 import pwcg.mission.ground.BattleSize;
 
 public class AssaultDefinitionGenerator
@@ -25,11 +27,13 @@ public class AssaultDefinitionGenerator
     public static final int DISTANCE_BETWEEN_COMBATANTS = 200;
 
     protected Campaign campaign;
+    protected Mission mission;
     protected List<AssaultDefinition> assaultInformationElements = new ArrayList<>();
 
-    public AssaultDefinitionGenerator(Campaign campaign)
+    public AssaultDefinitionGenerator(Mission mission)
     {
-        this.campaign = campaign;
+        this.mission = mission;
+        this.campaign = mission.getCampaign();
     }
 
     public List<AssaultDefinition> generateAssaultDefinition(Coordinate battleLocation) throws PWCGException
@@ -53,6 +57,28 @@ public class AssaultDefinitionGenerator
     }
 
     private ICountry getDefendingCountry(Coordinate battleLocation)
+    {
+        ICountry defendingCountry = getDefendingCountryFromSkirmish();
+        if (defendingCountry.getCountry() == Country.NEUTRAL)
+        {
+            defendingCountry = getDefendingCountryByMapCircumstances(battleLocation);
+        }
+        return defendingCountry;
+    }
+    
+    private ICountry getDefendingCountryFromSkirmish()
+    {
+        if (mission.getSkirmish() != null)
+        {
+            Side defendingSide =  mission.getSkirmish().getAttackerGround().getOppositeSide();
+            ICountry defendingCountry = CountryFactory.makeMapReferenceCountry(defendingSide);
+            return defendingCountry;
+        }
+        
+        return CountryFactory.makeCountryByCountry(Country.NEUTRAL);
+    }
+
+    private ICountry getDefendingCountryByMapCircumstances(Coordinate battleLocation)
     {
         BattleManager battleManager = PWCGContext.getInstance().getCurrentMap().getBattleManager();
         Battle battle = battleManager.getBattleForCampaign(PWCGContext.getInstance().getCurrentMap().getMapIdentifier(), battleLocation,

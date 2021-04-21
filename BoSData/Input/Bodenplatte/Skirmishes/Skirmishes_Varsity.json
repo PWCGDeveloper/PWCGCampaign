@@ -22,7 +22,8 @@
 				}
 			],
 			"profileType": "SKIRMISH_PROFILE_PARA_DROP",
-			"attacker": "ALLIED"
+			"attackerAir": "ALLIED",
+			"attackerGround": "ALLIED"
 		}
 	]
 }

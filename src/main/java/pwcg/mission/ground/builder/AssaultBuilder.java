@@ -19,7 +19,7 @@ public class AssaultBuilder
 {
     public static GroundUnitCollection generateAssault(Mission mission, Coordinate battleLocation) throws PWCGException
     {
-        AssaultDefinitionGenerator assaultDefinitionGenerator = new AssaultDefinitionGenerator(mission.getCampaign());
+        AssaultDefinitionGenerator assaultDefinitionGenerator = new AssaultDefinitionGenerator(mission);
         List<AssaultDefinition> assaultDefinitions = assaultDefinitionGenerator.generateAssaultDefinition(battleLocation);
         
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
