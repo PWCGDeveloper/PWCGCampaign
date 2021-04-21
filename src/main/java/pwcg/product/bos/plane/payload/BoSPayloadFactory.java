@@ -54,6 +54,7 @@ import pwcg.product.bos.plane.payload.aircraft.Pe2S35Payload;
 import pwcg.product.bos.plane.payload.aircraft.Pe2S87Payload;
 import pwcg.product.bos.plane.payload.aircraft.SpitfireMkIXePayload;
 import pwcg.product.bos.plane.payload.aircraft.SpitfireMkVbPayload;
+import pwcg.product.bos.plane.payload.aircraft.SpitfireMkXIVPayload;
 import pwcg.product.bos.plane.payload.aircraft.TempestMKVS2Payload;
 import pwcg.product.bos.plane.payload.aircraft.U2VSPayload;
 import pwcg.product.bos.plane.payload.aircraft.Yak1S127Payload;
@@ -258,6 +259,10 @@ public class BoSPayloadFactory implements IPayloadFactory
         else if (attributeMapping == BosPlaneAttributeMapping.SPITFIRE_MKIXE)
         {
             return new SpitfireMkIXePayload(planeType);
+        }
+        else if (attributeMapping == BosPlaneAttributeMapping.SPITFIRE_MKXIV)
+        {
+            return new SpitfireMkXIVPayload(planeType);
         }
         else if (attributeMapping == BosPlaneAttributeMapping.TEMPEST_MKVS2)
         {
