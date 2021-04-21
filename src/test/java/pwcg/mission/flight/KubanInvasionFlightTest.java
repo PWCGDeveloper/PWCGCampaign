@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.utils.TestDriver;
@@ -16,6 +17,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
+import pwcg.mission.target.AssaultDefinition;
 import pwcg.mission.target.TargetType;
 import pwcg.mission.utils.MissionFlightValidator;
 import pwcg.mission.utils.MissionInformationUtils;
@@ -42,6 +44,11 @@ public class KubanInvasionFlightTest
 
         assert (mission.getSkirmish() != null);
         assert (mission.getSkirmish().getSkirmishName().equals("Kerch Amphibious Assault"));
+        for (AssaultDefinition assaultDefinition : mission.getMissionBattleManager().getMissionAssaultDefinitions())
+        {
+            assert (assaultDefinition.getAssaultingCountry().getCountry() == Country.RUSSIA);
+
+        }
 
         boolean diveBombFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.DIVE_BOMB, Side.AXIS);
         boolean groundAttackFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.GROUND_ATTACK, Side.AXIS);
@@ -66,6 +73,11 @@ public class KubanInvasionFlightTest
 
         assert (mission.getSkirmish() != null);
         assert (mission.getSkirmish().getSkirmishName().equals("Eltigen Amphibious Assault"));
+        for (AssaultDefinition assaultDefinition : mission.getMissionBattleManager().getMissionAssaultDefinitions())
+        {
+            assert (assaultDefinition.getAssaultingCountry().getCountry() == Country.RUSSIA);
+
+        }
 
         boolean diveBombFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.DIVE_BOMB, Side.AXIS);
         boolean groundAttackFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.GROUND_ATTACK, Side.AXIS);
