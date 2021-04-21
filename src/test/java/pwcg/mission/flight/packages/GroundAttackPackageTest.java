@@ -46,7 +46,7 @@ public class GroundAttackPackageTest
         
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
         IFlight flight = buildFlight(campaign);
-        assert(flight.getFlightInformation().getTargetDefinition().getTargetType() == TargetType.TARGET_INFANTRY);
+        assert(flight.getTargetDefinition().getTargetType() == TargetType.TARGET_INFANTRY);
         verifyProximityToTargetUnit(flight);
 
         assert(flight.getLinkedFlights().getLinkedFlights().size() == 1);
@@ -62,7 +62,7 @@ public class GroundAttackPackageTest
         
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
         IFlight flight = buildFlight(campaign);
-        assert(flight.getFlightInformation().getTargetDefinition().getTargetType() == TargetType.TARGET_AIRFIELD);
+        assert(flight.getTargetDefinition().getTargetType() == TargetType.TARGET_AIRFIELD);
         verifyProximityToTargetAirfield(flight);
         
         assert(flight.getLinkedFlights().getLinkedFlights().size() == 2);

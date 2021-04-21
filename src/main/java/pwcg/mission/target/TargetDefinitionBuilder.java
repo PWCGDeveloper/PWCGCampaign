@@ -25,7 +25,6 @@ public class TargetDefinitionBuilder implements ITargetDefinitionBuilder
         {
             targetDefinition = buildCommonTargetDefinition();
         }
-        flightInformation.setTargetDefinition(targetDefinition);
         return targetDefinition;
     }
     

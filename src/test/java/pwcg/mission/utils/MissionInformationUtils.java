@@ -16,7 +16,7 @@ public class MissionInformationUtils
         {
             if (flight.getFlightType() == expectedFlightType)
             {
-                if (flight.getFlightInformation().getTargetDefinition().getTargetType() != expectedTargetType)
+                if (flight.getTargetDefinition().getTargetType() != expectedTargetType)
                 {
                     return false;
                 }
