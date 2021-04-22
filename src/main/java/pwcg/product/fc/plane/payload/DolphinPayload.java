@@ -18,12 +18,19 @@ public class DolphinPayload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
     {
+        setAvailablePayload(-3, "100000", PayloadElement.COCKPIT_LIGHT);
         setAvailablePayload(-2, "10000", PayloadElement.TEMPERATURE_GUAGE);
+        
         setAvailablePayload(-1, "1000", PayloadElement.ALDIS_SIGHT);
+        
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(2, "1000000", PayloadElement.BOMBS);
         setAvailablePayload(4, "11", PayloadElement.LEWIS_TOP);
         setAvailablePayload(7, "101", PayloadElement.LEWIS_WING);
+        setAvailablePayload(10, "111", PayloadElement.LEWIS_TOP, PayloadElement.LEWIS_WING);
+
+        addStockModifications(PayloadElement.COCKPIT_LIGHT);
+        addStockModifications(PayloadElement.TEMPERATURE_GUAGE);
     }
 
     @Override

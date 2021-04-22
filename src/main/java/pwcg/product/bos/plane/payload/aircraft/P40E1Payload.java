@@ -28,6 +28,8 @@ public class P40E1Payload extends PlanePayload implements IPlanePayload
         setAvailablePayload(10, "100011", PayloadElement.MG50CAL_4x, PayloadElement.FAB500M_X1);
         setAvailablePayload(12, "1001", PayloadElement.ROS82_X4);
         setAvailablePayload(14, "1011", PayloadElement.MG50CAL_4x, PayloadElement.ROS82_X4);
+
+        addStockModifications(PayloadElement.MIRROR);
 	}
  
     @Override

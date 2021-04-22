@@ -16,16 +16,22 @@ public class Me262APayload extends PlanePayload implements IPlanePayload
     }
 
     protected void initialize()
-    {
-        setAvailablePayload(-5, "100000000", PayloadElement.AUTO_VALVE);
+    {        
         setAvailablePayload(-4, "10000", PayloadElement.REMOVE_ARMOR);
         setAvailablePayload(-3, "10000", PayloadElement.EXTRA_ARMOR);
+
+        setAvailablePayload(-5, "100000000", PayloadElement.AUTO_VALVE);
         setAvailablePayload(-2, "1000", PayloadElement.ARMORED_HEADREST);
         setAvailablePayload(-1, "10", PayloadElement.GYRO_GUNSIGHT);
+        
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(1, "1000001", PayloadElement.REMOVE_INNER_GUNS);
         setAvailablePayload(2, "101", PayloadElement.R4M_X26);
         setAvailablePayload(3, "10000001", PayloadElement.KG500x1);
+        
+        addStockModifications(PayloadElement.AUTO_VALVE);
+        addStockModifications(PayloadElement.ARMORED_HEADREST);
+        addStockModifications(PayloadElement.GYRO_GUNSIGHT);
     }
 
     @Override

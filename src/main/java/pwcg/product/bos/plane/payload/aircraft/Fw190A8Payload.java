@@ -31,7 +31,7 @@ public class Fw190A8Payload extends PlanePayload implements IPlanePayload
         setAvailablePayload(32, "100001", PayloadElement.FW190F8);
         setAvailablePayload(34, "100001", PayloadElement.FW190F8, PayloadElement.FW190F8_SC70_X4);
         setAvailablePayload(36, "100001", PayloadElement.FW190F8, PayloadElement.FW190F8_PB1_X12);
-        setAvailablePayload(37, "100001", PayloadElement.FW190F8, PayloadElement.FW190F8_PB1M8_X12);
+        setAvailablePayload(37, "100001", PayloadElement.FW190F8, PayloadElement.FW190F8_PB1M8_X12);        
 	}
     
     @Override

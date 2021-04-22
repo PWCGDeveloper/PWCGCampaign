@@ -29,6 +29,8 @@ public class Bf110E2Payload extends PlanePayload
 		setAvailablePayload(6, "100001", PayloadElement.SC1000_X1);
 		setAvailablePayload(7, "100001", PayloadElement.SC1000_X1, PayloadElement.SC250_X2);
 		setAvailablePayload(8, "10000", PayloadElement.SC1000_X1, PayloadElement.SC50_X4);
+		
+        addStockModifications(PayloadElement.ARMORED_WINDSCREEN);
 	}
 
     @Override

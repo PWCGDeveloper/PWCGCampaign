@@ -15,6 +15,7 @@ public abstract class PlanePayload implements IPlanePayload
 	protected int selectedPrimaryPayloadId = 0;
 	protected Map<String, PayloadElement>modifications = new TreeMap<>();
     protected Map<Integer, PayloadDesignation> availablePayload = new TreeMap<>();
+    protected List<PayloadElement> stockModifications = new ArrayList<>();
     protected PlaneType planeType;
     protected int noOrdnancePayloadElement = 0;
 
@@ -22,8 +23,9 @@ public abstract class PlanePayload implements IPlanePayload
 	{
 	    this.planeType = planeType;
 	    initialize();
+	    addStockModifications();
 	}
-	
+
     public PayloadDesignation getSelectedPayloadDesignation() throws PWCGException
     {
         if (!availablePayload.containsKey(selectedPrimaryPayloadId))
@@ -40,12 +42,13 @@ public abstract class PlanePayload implements IPlanePayload
         target.selectedPrimaryPayloadId = this.selectedPrimaryPayloadId;
         target.modifications = this.modifications;
         target.availablePayload = this.availablePayload;
+        target.stockModifications = this.stockModifications;
         target.planeType = this.planeType;
         
         return target;
     }
 
-    public void setAvailablePayload(int payloadId, String modMask, PayloadElement ... requestedPayloadElements)
+    protected void setAvailablePayload(int payloadId, String modMask, PayloadElement ... requestedPayloadElements)
     {
         PayloadDesignation payloadDesignation = new PayloadDesignation();
         
@@ -80,6 +83,7 @@ public abstract class PlanePayload implements IPlanePayload
     public void clearModifications()
     {
     	modifications.clear();
+    	addStockModifications();
     }
 
     public List<PayloadElement> getModifications()
@@ -106,7 +110,41 @@ public abstract class PlanePayload implements IPlanePayload
     
     public List<PayloadDesignation> getPayloadDesignations()
     {
-        return new ArrayList<PayloadDesignation>(availablePayload.values());
+        List<PayloadDesignation> selectablePayloadDesignations = new ArrayList<>();
+        for (PayloadDesignation payloadDesignation : availablePayload.values())
+        {
+            if (!isStockModification(payloadDesignation))
+            {
+                selectablePayloadDesignations.add(payloadDesignation);
+            }
+        }
+        return selectablePayloadDesignations;
+    }
+    
+    protected void addStockModifications(PayloadElement payloadElement)
+    {
+        stockModifications.add(payloadElement);
+    }
+
+    private void addStockModifications()
+    {
+        for (PayloadElement payloadElement : stockModifications)
+        {
+            addModification(payloadElement);
+        }
+    }
+
+    private boolean isStockModification(PayloadDesignation payloadDesignation)
+    {
+        for (PayloadElement stockModification : stockModifications)
+        {
+            for (PayloadElement payloadElementInDesignation : payloadDesignation.getPayloadElements())
+            if (stockModification == payloadElementInDesignation)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public int getPayloadIdByDescription(String payloadDescription)
@@ -131,7 +169,7 @@ public abstract class PlanePayload implements IPlanePayload
                 return payloadDesignation.getModMask();
             }
         }
-        
+
         return "";
     }
     

@@ -23,7 +23,7 @@ public class P47D28Payload extends PlanePayload implements IPlanePayload
         setAvailablePayload(-3, "10000000", PayloadElement.MIRROR);
         setAvailablePayload(-2, "1000000", PayloadElement.MN28);
         setAvailablePayload(-1, "100000", PayloadElement.P47_GUNSIGHT);
-        
+
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(1, "11", PayloadElement.MG50CAL_6x);
         setAvailablePayload(2, "101", PayloadElement.MG50CAL_4x);
@@ -34,6 +34,11 @@ public class P47D28Payload extends PlanePayload implements IPlanePayload
         setAvailablePayload(24, "10001", PayloadElement.LB1000x2);
         setAvailablePayload(36, "10001", PayloadElement.M8X6);
         setAvailablePayload(48, "10001", PayloadElement.P47_BOMBS_AND_ROCKETS);
+        
+        addStockModifications(PayloadElement.OCTANE_150_FUEL);
+        addStockModifications(PayloadElement.MIRROR);
+        addStockModifications(PayloadElement.MN28);
+        addStockModifications(PayloadElement.P47_GUNSIGHT);
 	}
  
     @Override

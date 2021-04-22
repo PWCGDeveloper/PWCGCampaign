@@ -19,6 +19,7 @@ public class CamelPayload extends PlanePayload implements IPlanePayload
     {
         setAvailablePayload(-2, "100", PayloadElement.WING_CUTOUT);
         setAvailablePayload(-1, "10", PayloadElement.ALDIS_SIGHT);
+
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(2, "10001", PayloadElement.BOMBS);
     }

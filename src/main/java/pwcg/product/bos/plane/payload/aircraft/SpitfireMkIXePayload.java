@@ -19,14 +19,20 @@ public class SpitfireMkIXePayload extends PlanePayload implements IPlanePayload
     protected void initialize()
 	{
         setAvailablePayload(-5, "100000000", PayloadElement.OCTANE_150_FUEL);
-        setAvailablePayload(-4, "10000000", PayloadElement.MERLIN_70_ENGINE);
-        setAvailablePayload(-3, "1000000", PayloadElement.SPITFIRE_CLIPPED_WINGS);
         setAvailablePayload(-2, "100000", PayloadElement.MIRROR);
         setAvailablePayload(-1, "10000", PayloadElement.GYRO_GUNSIGHT);
+
+        setAvailablePayload(-4, "10000000", PayloadElement.MERLIN_70_ENGINE);
+        setAvailablePayload(-3, "1000000", PayloadElement.SPITFIRE_CLIPPED_WINGS);
+        
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(1, "11", PayloadElement.SC500_X1);
         setAvailablePayload(2, "101", PayloadElement.SC250_X2);
-        setAvailablePayload(4, "1001", PayloadElement.RP3_X2);        
+        setAvailablePayload(4, "1001", PayloadElement.RP3_X2);
+        
+        addStockModifications(PayloadElement.OCTANE_150_FUEL);
+        addStockModifications(PayloadElement.MIRROR);
+        addStockModifications(PayloadElement.GYRO_GUNSIGHT);
 	}
 
     @Override

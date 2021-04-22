@@ -17,10 +17,16 @@ public class Se5aPayload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
     {
+        setAvailablePayload(-3, "1000", PayloadElement.COCKPIT_LIGHT);
         setAvailablePayload(-2, "100", PayloadElement.FUEL_GUAGE);
+        
         setAvailablePayload(-1, "10", PayloadElement.ALDIS_SIGHT);
+        
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(2, "10001", PayloadElement.BOMBS);
+        
+        addStockModifications(PayloadElement.COCKPIT_LIGHT);
+        addStockModifications(PayloadElement.FUEL_GUAGE);
     }
 
     @Override

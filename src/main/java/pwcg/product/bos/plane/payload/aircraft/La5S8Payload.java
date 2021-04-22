@@ -20,11 +20,16 @@ public class La5S8Payload extends PlanePayload implements IPlanePayload
 	{
         setAvailablePayload(-4, "1000", PayloadElement.RPK10);
         setAvailablePayload(-3, "10000", PayloadElement.WINDSCREEN);
+        
         setAvailablePayload(-2, "100000", PayloadElement.LA5_AMMO);
         setAvailablePayload(-1, "1000000", PayloadElement.M82F_ENGINE);
+        
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(1, "11", PayloadElement.FAB50SV_X2);
         setAvailablePayload(2, "101", PayloadElement.FAB100M_X2);
+        
+        addStockModifications(PayloadElement.RPK10);
+        addStockModifications(PayloadElement.WINDSCREEN);
 	}
 
     @Override

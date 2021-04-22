@@ -21,11 +21,18 @@ public class SpitfireMkXIVPayload extends PlanePayload implements IPlanePayload
         setAvailablePayload(-4, "100000000", PayloadElement.OCTANE_150_FUEL);
         setAvailablePayload(-3, "10000000", PayloadElement.GYRO_GUNSIGHT);
         setAvailablePayload(-2, "100000", PayloadElement.MIRROR);
+        
         setAvailablePayload(-1, "1000", PayloadElement.SPITFIRE_XIV_E_TYPE_WINGS);
+
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(1, "11", PayloadElement.SC500_X1);
         setAvailablePayload(2, "101", PayloadElement.SC250_X2);
-        setAvailablePayload(3, "111", PayloadElement.SC500_X1, PayloadElement.SC250_X2);        
+        setAvailablePayload(3, "111", PayloadElement.SC500_X1, PayloadElement.SC250_X2);
+        
+        addStockModifications(PayloadElement.OCTANE_150_FUEL);
+        addStockModifications(PayloadElement.GYRO_GUNSIGHT);
+        addStockModifications(PayloadElement.MIRROR);
+
 	}
 
     @Override

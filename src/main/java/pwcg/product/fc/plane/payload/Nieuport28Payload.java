@@ -16,7 +16,24 @@ public class Nieuport28Payload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
     {
+        setAvailablePayload(-8, "1000000000", PayloadElement.COCKPIT_LIGHT);
+        setAvailablePayload(-7, "100000000", PayloadElement.SIDE_SLIP_GUAGE);
+        setAvailablePayload(-6, "10000000", PayloadElement.CLOCK_GUAGE);
+        setAvailablePayload(-5, "1000000", PayloadElement.COMPASS_GUAGE);
+        setAvailablePayload(-4, "100000", PayloadElement.ATTITUDE_GUAGE);
+        
+        setAvailablePayload(-3, "10000", PayloadElement.SPEED_GUAGE);
+        setAvailablePayload(-2, "1000", PayloadElement.LE_CHRETIAN_SIGHT);
+        setAvailablePayload(-1, "100", PayloadElement.ALDIS_SIGHT);
+        
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
+        setAvailablePayload(1, "11", PayloadElement.BALLOON_GUN);
+        
+        addStockModifications(PayloadElement.COCKPIT_LIGHT);
+        addStockModifications(PayloadElement.SIDE_SLIP_GUAGE);
+        addStockModifications(PayloadElement.CLOCK_GUAGE);
+        addStockModifications(PayloadElement.COMPASS_GUAGE);
+        addStockModifications(PayloadElement.ATTITUDE_GUAGE);
     }
 
     @Override

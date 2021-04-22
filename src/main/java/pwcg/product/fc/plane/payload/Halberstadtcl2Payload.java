@@ -17,13 +17,22 @@ public class Halberstadtcl2Payload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
     {
-        setAvailablePayload(-3, "100000", PayloadElement.ATTITUDE_GUAGE);
+        setAvailablePayload(-6, "1000000", PayloadElement.COCKPIT_LIGHT);
+        setAvailablePayload(-5, "100000", PayloadElement.ATTITUDE_GUAGE);
+        
+        setAvailablePayload(-4, "10000", PayloadElement.ALDIS_SIGHT);
+        setAvailablePayload(-3, "1000", PayloadElement.BECKER_GUN_TURRET);
         setAvailablePayload(-2, "100", PayloadElement.TWIN_GUN_TURRET);
         setAvailablePayload(-1, "10", PayloadElement.TWIN_SPANDAU);
+        
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(1, "10000001", PayloadElement.BOMBS);
         setAvailablePayload(2, "100000001", PayloadElement.CAMERA);
         setAvailablePayload(3, "1000000001", PayloadElement.RADIO);
+        
+        
+        addStockModifications(PayloadElement.COCKPIT_LIGHT);
+        addStockModifications(PayloadElement.ATTITUDE_GUAGE);
     }
 
     @Override

@@ -16,7 +16,16 @@ public class Spad13Payload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
     {
+        setAvailablePayload(-3, "10000", PayloadElement.COCKPIT_LIGHT);
+        
+        setAvailablePayload(-2, "1000", PayloadElement.LE_CHRETIAN_SIGHT);
+        setAvailablePayload(-1, "100", PayloadElement.ALDIS_SIGHT);
+        
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
+        setAvailablePayload(2, "11", PayloadElement.BALLOON_GUN);
+        setAvailablePayload(3, "100001", PayloadElement.BOMBS);
+        
+        addStockModifications(PayloadElement.COCKPIT_LIGHT);
     }
 
     @Override

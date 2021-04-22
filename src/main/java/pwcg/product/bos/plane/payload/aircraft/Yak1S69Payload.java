@@ -25,6 +25,8 @@ public class Yak1S69Payload extends PlanePayload implements IPlanePayload
         setAvailablePayload(5, "101", PayloadElement.ROS82_X6);
         setAvailablePayload(9, "1001", PayloadElement.FAB50SV_X2);
         setAvailablePayload(10, "10001", PayloadElement.FAB100M_X2);
+        
+        addStockModifications(PayloadElement.RPK10);
 	}
 
     @Override
