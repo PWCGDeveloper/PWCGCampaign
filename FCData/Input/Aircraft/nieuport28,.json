@@ -1,0 +1,22 @@
+{
+  "type": "nieuport28",
+  "archType": "nieuport28",
+  "side": "ALLIED",
+  "displayName": "Nieuport 28",
+  "script": "LuaScripts\\WorldObjects\\Planes\\nieuport28.txt",
+  "model": "graphics\\planes\\spad13\\nieuport28.mgm",
+  "desc": "",
+  "cruisingSpeed": 170,
+  "climbOutRate": 300,
+  "goodness": 60,
+  "range": 200,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER",
+    "ROLE_ATTACK"
+  ],
+  "introduction": "19180301",
+  "endProduction": "19180701",
+  "withdrawal": "19181111"
+}

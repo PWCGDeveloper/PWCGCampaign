@@ -62,6 +62,7 @@ public class ArrasMap extends PWCGMap
         armedServicesActiveForMap.add(FCServiceManager.RAF);
         armedServicesActiveForMap.add(FCServiceManager.RFC);
         armedServicesActiveForMap.add(FCServiceManager.RNAS);
+        armedServicesActiveForMap.add(FCServiceManager.USAS);
         armedServicesActiveForMap.add(FCServiceManager.DEUTSCHE_LUFTSTREITKRAFTE);
     }
 

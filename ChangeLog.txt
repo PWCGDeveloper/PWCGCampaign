@@ -25,6 +25,9 @@ Kuban:
 - Includes scenarios with opposing sides coming into contact
 - Russian invasion of Kerch Nov 1 1943 - Nov 11 1943
 
+Added Spitfire Mk. XIV
+Added Nieuport 28
+Moved start date for USAS up to April 1918.
 Added runway start AI scramble missions to airfield attacks.
 Bugs:
 Fixed issue that could cause planes to spawn on top of each other

@@ -56,6 +56,10 @@ public class FCPayloadFactory implements IPayloadFactory
         {
             return new DolphinPayload(planeType);
         }
+        else if (attributeMapping == FCPlaneAttributeMapping.NIEUPORT28)
+        {
+            return new Nieuport28Payload(planeType);
+        }
         else if (attributeMapping == FCPlaneAttributeMapping.SPAD13)
         {
             return new Spad13Payload(planeType);

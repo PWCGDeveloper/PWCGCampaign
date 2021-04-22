@@ -13,6 +13,7 @@ public enum FCPlaneAttributeMapping implements IPlaneAttributeMapping
     HALBERSTADTCLII("halberstadtcl2"),
     HALBERSTADTCLIIAU("halberstadtcl2au"),
 
+    NIEUPORT28("nieuport28"),
     SPAD13("spad13"),
 
     SE5A("se5a"),

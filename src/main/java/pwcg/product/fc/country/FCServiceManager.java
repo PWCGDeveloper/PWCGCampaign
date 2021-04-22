@@ -155,7 +155,7 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
         usas.setNameCountry(CountryFactory.makeCountryByCountry(Country.USA));
         usas.setName(USAS_NAME);
         usas.setServiceIcon(USAS_ICON);
-        usas.setStartDate(DateUtils.getDateWithValidityCheck("01/05/1918"));
+        usas.setStartDate(DateUtils.getDateWithValidityCheck("01/04/1918"));
         usas.setEndDate(endDate);
         usas.setServiceColorMap(new AmericanColorMap());
         usas.setGeneralRankForService("Major-General");
