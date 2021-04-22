@@ -22,6 +22,8 @@ public class Skin implements Cloneable
     private String category = "";
     private boolean definedInGame = false;
     private boolean winter = false;
+    private boolean useTacticalCodes = false;
+    private TacticalCodeColor tacticalCodeColor = TacticalCodeColor.BLACK;
 	
     public static int FACTORY_GENERIC = -2;
     public static int PERSONAL_SKIN = -1;
@@ -48,6 +50,8 @@ public class Skin implements Cloneable
 			skin.category = this.category;
             skin.definedInGame = this.definedInGame;
             skin.winter = this.winter;
+            skin.useTacticalCodes = this.useTacticalCodes;
+            skin.tacticalCodeColor = this.tacticalCodeColor;
 		}
 		catch (Exception e)
 		{
@@ -170,5 +174,15 @@ public class Skin implements Cloneable
     public void setWinter(boolean winter)
     {
         this.winter = winter;
+    }
+
+    public boolean isUseTacticalCodes()
+    {
+        return useTacticalCodes;
+    }
+
+    public TacticalCodeColor getTacticalCodeColor()
+    {
+        return tacticalCodeColor;
     }
 }

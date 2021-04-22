@@ -12,6 +12,7 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.campaign.skin.TacticalCodeColor;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
@@ -45,6 +46,7 @@ public class PlaneType implements Cloneable
     protected Side side = null;
     protected List<Country> primaryUsedBy = new ArrayList<>();
     protected List<PayloadElement> stockModifications = new ArrayList<>();
+    protected TacticalCodeColor tacticalCodeColor = TacticalCodeColor.BLACK;
 
 
     public PlaneType()
@@ -84,6 +86,7 @@ public class PlaneType implements Cloneable
 
         planeType.side = this.side;
         planeType.primaryUsedBy = new ArrayList<>(this.primaryUsedBy);
+        planeType.tacticalCodeColor = this.tacticalCodeColor;
     }
 
     public int getCruisingSpeed()
@@ -399,4 +402,10 @@ public class PlaneType implements Cloneable
     {
         return primaryUsedBy;
     }
+
+    public TacticalCodeColor getTacticalCodeColor()
+    {
+        return tacticalCodeColor;
+    }
+
 }

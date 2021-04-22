@@ -1,11 +1,14 @@
 package pwcg.campaign.context;
 
+import java.io.BufferedWriter;
+
 import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.IPlaneMarkingManager;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.product.fc.plane.payload.FCPayloadFactory;
 
 public class FCContext extends PWCGContextBase implements IPWCGContextManager
@@ -69,6 +72,11 @@ public class FCContext extends PWCGContextBase implements IPWCGContextManager
             public String determineDisplayMarkings(Campaign campaign, EquippedPlane equippedPlane) throws PWCGException
             {
                 return Integer.toString(equippedPlane.getSerialNumber());
+            }
+
+            @Override
+            public void writeTacticalCodes(BufferedWriter writer, Campaign campaign, PlaneMcu equippedPlane) throws PWCGException
+            {
             }
         };
     }

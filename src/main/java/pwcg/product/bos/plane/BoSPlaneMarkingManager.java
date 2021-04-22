@@ -1,5 +1,8 @@
 package pwcg.product.bos.plane;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,9 +11,13 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.IPlaneMarkingManager;
+import pwcg.campaign.skin.TacticalCodeColor;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.exception.PWCGIOException;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.product.bos.country.BoSServiceManager;
 
 public class BoSPlaneMarkingManager implements IPlaneMarkingManager
@@ -127,5 +134,94 @@ public class BoSPlaneMarkingManager implements IPlaneMarkingManager
         }
 
         return Integer.toString(equippedPlane.getSerialNumber());
+    }
+
+    private String convertGerman(String in)
+    {
+        String str = in;
+        str = str.replace("<<-", "\"\u0027");
+        str = str.replace("<<", "\"");
+        str = str.replace("<-", "\u0021\u0027");
+        str = str.replace("<", "\u0021");
+        str = str.replace("\u25cb|", "\u0024"); // Open circle followed by bar
+        str = str.replace("\u25cb", "\u0023");  // Open circle
+        str = str.replace("||", "\u0026");
+        str = str.replace("|", "\u0025");
+        str = str.replace("\u25b2", "\u0028");  // Solid triangle
+        str = str.replace("\u25cb", "\u003a");  // Solid circle
+        str = str.replace("-", "\u003b");
+        str = str.replace("+", "\u003c");
+        str = str.replace("~~", "\u003e");
+        str = str.replace("~", "\u003d");
+        return str;
+    }
+
+    @Override
+    public void writeTacticalCodes(BufferedWriter writer, Campaign campaign, PlaneMcu planeMcu) throws PWCGException
+    {
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(planeMcu.getSquadronId());
+        String tCode = null;
+        String tCodeColor = null;
+
+        TacticalCodeColor tacticalCodeColor = planeMcu.getTacticalCodeColor();
+        if (planeMcu.getSkin() != null)
+        {
+            tacticalCodeColor = planeMcu.getSkin().getTacticalCodeColor();
+        }
+
+        if (squadron.getService() == BoSServiceManager.LUFTWAFFE)
+        {
+            if (squadron.determineDisplayName(campaign.getDate()).contains("JG") ||
+                squadron.determineDisplayName(campaign.getDate()).contains("Sch.G") ||
+                (squadron.determineDisplayName(campaign.getDate()).contains("SG") &&
+                 squadron.determineUnitIdCode(campaign.getDate()) == null))
+            {
+                tCode = String.format("%2s%-2s",
+                                      convertGerman(planeMcu.getAircraftIdCode()),
+                                      convertGerman(squadron.determineSubUnitIdCode(campaign.getDate())));
+                tCodeColor = String.format("%1$s%1$s%1$s%1$s", tacticalCodeColor.getColorCode());
+            } else {
+                tCode = String.format("%2s%s%s",
+                                      convertGerman(squadron.determineUnitIdCode(campaign.getDate())),
+                                      convertGerman(planeMcu.getAircraftIdCode()),
+                                      convertGerman(squadron.determineSubUnitIdCode(campaign.getDate())));
+                tCodeColor = String.format("%1$s%1$s%1$s%1$s", tacticalCodeColor.getColorCode());
+            }
+        }
+        else if (squadron.getService() == BoSServiceManager.VVS ||
+                 squadron.getService() == BoSServiceManager.NORMANDIE)
+        {
+            tCode = String.format("%-4s", planeMcu.getAircraftIdCode());
+            tCodeColor = String.format("%1$s%1$s%1$s%1$s", tacticalCodeColor.getColorCode());
+        }
+        else if (squadron.getService() == BoSServiceManager.USAAF ||
+                 squadron.getService() == BoSServiceManager.RAF ||
+                 squadron.getService() == BoSServiceManager.FREE_FRENCH)
+        {
+            tCode = String.format("%2s%s",
+                                  squadron.determineUnitIdCode(campaign.getDate()),
+                                  planeMcu.getAircraftIdCode());
+            tCodeColor = String.format("%1$s%1$s%1$s", tacticalCodeColor.getColorCode());
+        }
+        else if (squadron.getService() == BoSServiceManager.REGIA_AERONAUTICA)
+        {
+            tCode = String.format("%3s%-2s",
+                                  squadron.determineUnitIdCode(campaign.getDate()),
+                                  planeMcu.getAircraftIdCode());
+            tCodeColor = String.format("%1$s%1$s%1$s%1$s%1$s", tacticalCodeColor.getColorCode());
+        }
+
+        if (tCode != null)
+        {
+            try {
+                writer.write("  TCode = \"" + URLEncoder.encode(tCode, "UTF-8").replace("+",  "%20") + "\";");
+                writer.newLine();
+                writer.write("  TCodeColor = \"" + tCodeColor + "\";");
+                writer.newLine();
+            } catch (IOException e) {
+                PWCGLogger.logException(e);
+                throw new PWCGIOException(e.getMessage());
+            }
+        }
     }
 }
