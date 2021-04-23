@@ -21,4 +21,5 @@ public interface IPlanePayload
     public String generateFullModificationMask();
     public IPlanePayload copy();
     public void noOrdnance();
+    List<PayloadElement> getStockModifications();
 }

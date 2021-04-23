@@ -1,24 +1,25 @@
 {
-  "type": "ju88a4",
-  "archType": "ju88",
-  "side": "AXIS",
-  "primaryUsedBy": [
-    "GERMANY"
-  ],
-  "displayName": "Ju 88 A-4",
-  "script": "LuaScripts\\WorldObjects\\Planes\\ju88a4.txt",
-  "model": "graphics\\planes\\ju88a4\\ju88a4.mgm",
-  "desc": "",
-  "cruisingSpeed": 310,
-  "climbOutRate": 800,
-  "goodness": 45,
-  "range": 1300,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_MEDIUM",
-  "roles": [
-    "ROLE_BOMB"
-  ],
-  "introduction": "19410601",
-  "endProduction": "19450601",
-  "withdrawal": "19450601"
+	"type": "ju88a4",
+	"archType": "ju88",
+	"side": "AXIS",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [],
+	"displayName": "Ju 88 A-4",
+	"script": "LuaScripts\\WorldObjects\\Planes\\ju88a4.txt",
+	"model": "graphics\\planes\\ju88a4\\ju88a4.mgm",
+	"desc": "",
+	"cruisingSpeed": 310,
+	"climbOutRate": 800,
+	"goodness": 45,
+	"range": 1300,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_MEDIUM",
+	"roles": [
+		"ROLE_BOMB"
+	],
+	"introduction": "19410601",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
 }

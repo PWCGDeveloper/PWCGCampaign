@@ -1,24 +1,31 @@
 {
-  "type": "halberstadtcl2au",
-  "archType": "halberstadtcl",
-  "side": "AXIS",
-  "displayName": "Halberstadt CL.II 200hp",
-  "script": "LuaScripts\\WorldObjects\\Planes\\halberstadtcl2au.txt",
-  "model": "graphics\\planes\\halberstadtcl2au\\halberstadtcl2au.mgm",
-  "desc": "",
-  "cruisingSpeed": 130,
-  "climbOutRate": 140,
-  "goodness": 67,
-  "range": 600,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_SMALL",
-  "roles": [
-    "ROLE_ATTACK",
-    "ROLE_RECON",
-    "ROLE_BOMB",
-    "ROLE_ARTILLERY_SPOT"
-  ],
-  "introduction": "19180401",
-  "endProduction": "19181201",
-  "withdrawal": "19181111"
+	"type": "halberstadtcl2au",
+	"archType": "halberstadtcl",
+	"side": "AXIS",
+	"displayName": "Halberstadt CL.II 200hp",
+	"script": "LuaScripts\\WorldObjects\\Planes\\halberstadtcl2au.txt",
+	"model": "graphics\\planes\\halberstadtcl2au\\halberstadtcl2au.mgm",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [
+		"COCKPIT_LIGHT",
+		"ATTITUDE_GUAGE"
+	],
+	"desc": "",
+	"cruisingSpeed": 130,
+	"climbOutRate": 140,
+	"goodness": 67,
+	"range": 600,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roles": [
+		"ROLE_ATTACK",
+		"ROLE_RECON",
+		"ROLE_BOMB",
+		"ROLE_ARTILLERY_SPOT"
+	],
+	"introduction": "19180401",
+	"endProduction": "19181201",
+	"withdrawal": "19181111"
 }

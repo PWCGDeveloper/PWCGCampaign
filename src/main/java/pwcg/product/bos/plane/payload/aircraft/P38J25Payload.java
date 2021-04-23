@@ -30,8 +30,6 @@ public class P38J25Payload extends PlanePayload implements IPlanePayload
         setAvailablePayload(10, "1001", PayloadElement.P38_BOMBS_AND_ROCKETS);
         setAvailablePayload(14, "1001", PayloadElement.LB500x4);
         setAvailablePayload(16, "1001", PayloadElement.LB500x6);
-        
-        addStockModifications(PayloadElement.MN28);
 	}
  
     @Override

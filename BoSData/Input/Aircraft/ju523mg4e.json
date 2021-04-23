@@ -1,24 +1,27 @@
 {
-  "type": "ju523mg4e",
-  "archType": "ju52",
-  "side": "AXIS",
-  "primaryUsedBy": [
-    "GERMANY"
-  ],
-  "displayName": "Ju 52 3mg4e",
-  "script": "LuaScripts\\WorldObjects\\Planes\\ju523mg4e.txt",
-  "model": "graphics\\planes\\ju523mg4e\\ju523mg4e.mgm",
-  "desc": "",
-  "cruisingSpeed": 200,
-  "climbOutRate": 500,
-  "goodness": 25,
-  "range": 1200,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_MEDIUM",
-  "roles": [
-    "ROLE_TRANSPORT"
-  ],
-  "introduction": "19410601",
-  "endProduction": "19450601",
-  "withdrawal": "19450601"
+	"type": "ju523mg4e",
+	"archType": "ju52",
+	"side": "AXIS",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [
+		"TURRET"
+	],
+	"displayName": "Ju 52 3mg4e",
+	"script": "LuaScripts\\WorldObjects\\Planes\\ju523mg4e.txt",
+	"model": "graphics\\planes\\ju523mg4e\\ju523mg4e.mgm",
+	"desc": "",
+	"cruisingSpeed": 200,
+	"climbOutRate": 500,
+	"goodness": 25,
+	"range": 1200,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_MEDIUM",
+	"roles": [
+		"ROLE_TRANSPORT"
+	],
+	"introduction": "19410601",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
 }

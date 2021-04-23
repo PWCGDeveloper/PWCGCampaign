@@ -1,25 +1,26 @@
 {
-  "type": "bf109e7",
-  "archType": "bf109e",
-  "side": "AXIS",
-  "primaryUsedBy": [
-    "GERMANY"
-  ],
-  "displayName": "Bf 109 E-7",
-  "script": "LuaScripts\\WorldObjects\\Planes\\bf109e7.txt",
-  "model": "graphics\\planes\\bf109e7\\bf109e7.mgm",
-  "desc": "",
-  "cruisingSpeed": 360,
-  "climbOutRate": 1000,
-  "goodness": 25,
-  "range": 600,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_SMALL",
-  "roles": [
-    "ROLE_ATTACK",
-    "ROLE_FIGHTER"
-  ],
-  "introduction": "19410601",
-  "endProduction": "19430401",
-  "withdrawal": "19430401"
+	"type": "bf109e7",
+	"archType": "bf109e",
+	"side": "AXIS",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [],
+	"displayName": "Bf 109 E-7",
+	"script": "LuaScripts\\WorldObjects\\Planes\\bf109e7.txt",
+	"model": "graphics\\planes\\bf109e7\\bf109e7.mgm",
+	"desc": "",
+	"cruisingSpeed": 360,
+	"climbOutRate": 1000,
+	"goodness": 25,
+	"range": 600,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roles": [
+		"ROLE_ATTACK",
+		"ROLE_FIGHTER"
+	],
+	"introduction": "19410601",
+	"endProduction": "19430401",
+	"withdrawal": "19430401"
 }

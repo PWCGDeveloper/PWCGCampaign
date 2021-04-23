@@ -18,9 +18,7 @@ public class SpitfireMkVbPayload extends PlanePayload implements IPlanePayload
 	{
         setAvailablePayload(-2, "10", PayloadElement.MERLIN_ENGINE);
         setAvailablePayload(-1, "100", PayloadElement.MIRROR);
-        setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        
-        addStockModifications(PayloadElement.MIRROR);
+        setAvailablePayload(0, "1", PayloadElement.STANDARD);        
 	}
 
     @Override

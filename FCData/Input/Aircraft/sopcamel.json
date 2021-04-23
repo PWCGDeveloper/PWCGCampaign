@@ -1,22 +1,26 @@
 {
-  "type": "sopcamel",
-  "archType": "sopcamel",
-  "side": "ALLIED",
-  "displayName": "Sopwith Camel",
-  "script": "LuaScripts\\WorldObjects\\Planes\\sopcamel.txt",
-  "model": "graphics\\planes\\sopcamel\\sopcamel.mgm",
-  "desc": "",
-  "cruisingSpeed": 150,
-  "climbOutRate": 280,
-  "goodness": 54,
-  "range": 250,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_SMALL",
-  "roles": [
-    "ROLE_FIGHTER",
-    "ROLE_ATTACK"
-  ],
-  "introduction": "19170401",
-  "endProduction": "19181201",
-  "withdrawal": "19181111"
+	"type": "sopcamel",
+	"archType": "sopcamel",
+	"side": "ALLIED",
+	"displayName": "Sopwith Camel",
+	"script": "LuaScripts\\WorldObjects\\Planes\\sopcamel.txt",
+	"model": "graphics\\planes\\sopcamel\\sopcamel.mgm",
+	"primaryUsedBy": [
+		"BRITAIN"
+	],
+	"stockModifications": [],
+	"desc": "",
+	"cruisingSpeed": 150,
+	"climbOutRate": 280,
+	"goodness": 54,
+	"range": 250,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roles": [
+		"ROLE_FIGHTER",
+		"ROLE_ATTACK"
+	],
+	"introduction": "19170401",
+	"endProduction": "19181201",
+	"withdrawal": "19181111"
 }

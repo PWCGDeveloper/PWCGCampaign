@@ -11,6 +11,7 @@ import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
+import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
@@ -43,6 +44,7 @@ public class PlaneType implements Cloneable
     protected Date endProduction;;
     protected Side side = null;
     protected List<Country> primaryUsedBy = new ArrayList<>();
+    protected List<PayloadElement> stockModifications = new ArrayList<>();
 
 
     public PlaneType()
@@ -384,6 +386,11 @@ public class PlaneType implements Cloneable
         }
 
         return false;
+    }
+
+    public List<PayloadElement> getStockModifications()
+    {
+        return stockModifications;
     }
 
     public List<Country> getPrimaryUsedBy()

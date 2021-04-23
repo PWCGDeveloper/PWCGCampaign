@@ -26,9 +26,6 @@ public class Bf109G6LatePayload extends Bf109Payload implements IPlanePayload
         setAvailablePayload(4, "100001", PayloadElement.BR21_X2);
         setAvailablePayload(8, "11", PayloadElement.MK108_30);
         setAvailablePayload(11, "111", PayloadElement.MK108_30, PayloadElement.MG151_20_GUNPOD);
-
-        addStockModifications(PayloadElement.ERLA_CANOPY);
-        addStockModifications(PayloadElement.MW50);
 	}
 
     @Override

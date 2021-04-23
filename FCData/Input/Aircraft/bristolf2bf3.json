@@ -1,25 +1,32 @@
 {
-  "type": "bristolf2bf3",
-  "archType": "bristolf2b",
-  "side": "ALLIED",
-  "displayName": "Bristol F2B (F.III)",
-  "script": "LuaScripts\\WorldObjects\\Planes\\bristolf2bf3.txt",
-  "model": "graphics\\planes\\bristolf2bf3\\bristolf2bf3.mgm",
-  "desc": "",
-  "cruisingSpeed": 150,
-  "climbOutRate": 180,
-  "goodness": 80,
-  "range": 700,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_MEDIUM",
-  "roles": [
-    "ROLE_RECON",
-    "ROLE_FIGHTER",
-    "ROLE_BOMB",
-    "ROLE_ATTACK",
-    "ROLE_ARTILLERY_SPOT"
-  ],
-  "introduction": "19180801",
-  "endProduction": "19181201",
-  "withdrawal": "19181201"
+	"type": "bristolf2bf3",
+	"archType": "bristolf2b",
+	"side": "ALLIED",
+	"displayName": "Bristol F2B (F.III)",
+	"script": "LuaScripts\\WorldObjects\\Planes\\bristolf2bf3.txt",
+	"model": "graphics\\planes\\bristolf2bf3\\bristolf2bf3.mgm",
+	"primaryUsedBy": [
+		"BRITAIN"
+	],
+	"stockModifications": [
+		"COCKPIT_LIGHT",
+		"FUEL_GUAGE"
+	],
+	"desc": "",
+	"cruisingSpeed": 150,
+	"climbOutRate": 180,
+	"goodness": 80,
+	"range": 700,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_MEDIUM",
+	"roles": [
+		"ROLE_RECON",
+		"ROLE_FIGHTER",
+		"ROLE_BOMB",
+		"ROLE_ATTACK",
+		"ROLE_ARTILLERY_SPOT"
+	],
+	"introduction": "19180801",
+	"endProduction": "19181201",
+	"withdrawal": "19181201"
 }

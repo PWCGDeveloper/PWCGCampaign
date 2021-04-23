@@ -24,8 +24,6 @@ public class Bf109G14Payload extends Bf109Payload implements IPlanePayload
         setAvailablePayload(3, "111", PayloadElement.MG151_20_GUNPOD);
         setAvailablePayload(4, "1001", PayloadElement.BR21_X2);
         setAvailablePayload(8, "11", PayloadElement.MK108_30);
-        
-        addStockModifications(PayloadElement.FUG16_ZY);
 	}
 
     @Override

@@ -1,25 +1,28 @@
 {
-  "type": "mc202s8",
-  "archType": "mc200",
-  "side": "AXIS",
-  "primaryUsedBy": [
-    "ITALY"
-  ],
-  "displayName": "MC.202 ser.VIII",
-  "script": "LuaScripts\\WorldObjects\\Planes\\mc202s8.txt",
-  "model": "graphics\\planes\\mc202s8\\mc202s8.mgm",
-  "desc": "",
-  "cruisingSpeed": 350,
-  "climbOutRate": 1100,
-  "goodness": 35,
-  "range": 700,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_SMALL",
-  "roles": [
-    "ROLE_FIGHTER",
-    "ROLE_ATTACK"
-  ],
-  "introduction": "19410601",
-  "endProduction": "19450601",
-  "withdrawal": "19450601"
+	"type": "mc202s8",
+	"archType": "mc200",
+	"side": "AXIS",
+	"primaryUsedBy": [
+		"ITALY"
+	],
+	"stockModifications": [
+		"ARMORED_WINDSCREEN"
+	],
+	"displayName": "MC.202 ser.VIII",
+	"script": "LuaScripts\\WorldObjects\\Planes\\mc202s8.txt",
+	"model": "graphics\\planes\\mc202s8\\mc202s8.mgm",
+	"desc": "",
+	"cruisingSpeed": 350,
+	"climbOutRate": 1100,
+	"goodness": 35,
+	"range": 700,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roles": [
+		"ROLE_FIGHTER",
+		"ROLE_ATTACK"
+	],
+	"introduction": "19410601",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
 }

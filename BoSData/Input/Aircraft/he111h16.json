@@ -1,24 +1,25 @@
 {
-  "type": "he111h16",
-  "archType": "he111",
-  "side": "AXIS",
-  "primaryUsedBy": [
-    "GERMANY"
-  ],
-  "displayName": "He 111 H-16",
-  "script": "LuaScripts\\WorldObjects\\Planes\\he111h16.txt",
-  "model": "graphics\\planes\\he111h16\\he111h16.mgm",
-  "desc": "",
-  "cruisingSpeed": 310,
-  "climbOutRate": 600,
-  "goodness": 25,
-  "range": 1100,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_MEDIUM",
-  "roles": [
-    "ROLE_BOMB"
-  ],
-  "introduction": "19420901",
-  "endProduction": "19450601",
-  "withdrawal": "19450601"
+	"type": "he111h16",
+	"archType": "he111",
+	"side": "AXIS",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [],
+	"displayName": "He 111 H-16",
+	"script": "LuaScripts\\WorldObjects\\Planes\\he111h16.txt",
+	"model": "graphics\\planes\\he111h16\\he111h16.mgm",
+	"desc": "",
+	"cruisingSpeed": 310,
+	"climbOutRate": 600,
+	"goodness": 25,
+	"range": 1100,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_MEDIUM",
+	"roles": [
+		"ROLE_BOMB"
+	],
+	"introduction": "19420901",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
 }

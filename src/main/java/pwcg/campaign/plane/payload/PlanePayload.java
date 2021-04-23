@@ -23,8 +23,14 @@ public abstract class PlanePayload implements IPlanePayload
 	{
 	    this.planeType = planeType;
 	    initialize();
-	    addStockModifications();
+        loadStockModifications();
+        addStockModifications();
 	}
+
+    private void loadStockModifications()
+    {
+        stockModifications.addAll(planeType.getStockModifications());
+    }
 
     public PayloadDesignation getSelectedPayloadDesignation() throws PWCGException
     {
@@ -120,11 +126,6 @@ public abstract class PlanePayload implements IPlanePayload
         }
         return selectablePayloadDesignations;
     }
-    
-    protected void addStockModifications(PayloadElement payloadElement)
-    {
-        stockModifications.add(payloadElement);
-    }
 
     private void addStockModifications()
     {
@@ -184,8 +185,13 @@ public abstract class PlanePayload implements IPlanePayload
     public void noOrdnance()
     {
         selectedPrimaryPayloadId = noOrdnancePayloadElement ;
-    }
+    }    
 
+    @Override
+    public List<PayloadElement> getStockModifications()
+    {
+        return stockModifications;
+    }
 
     abstract public int createWeaponsPayload(IFlight flight) throws PWCGException;
     abstract protected void initialize();

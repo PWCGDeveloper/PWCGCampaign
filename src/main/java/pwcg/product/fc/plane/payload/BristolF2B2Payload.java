@@ -28,9 +28,6 @@ public class BristolF2B2Payload extends PlanePayload implements IPlanePayload
         setAvailablePayload(2, "1000001", PayloadElement.BOMBS);
         setAvailablePayload(1, "10000001", PayloadElement.CAMERA);
         setAvailablePayload(3, "100000001", PayloadElement.RADIO);
-        
-        addStockModifications(PayloadElement.COCKPIT_LIGHT);
-        addStockModifications(PayloadElement.FUEL_GUAGE);
     }
 
     @Override

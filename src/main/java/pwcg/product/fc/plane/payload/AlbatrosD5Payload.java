@@ -28,12 +28,6 @@ public class AlbatrosD5Payload extends PlanePayload implements IPlanePayload
 
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(2, "1000000001", PayloadElement.LEWIS_TOP);
-        
-        addStockModifications(PayloadElement.COCKPIT_LIGHT);
-        addStockModifications(PayloadElement.TEMPERATURE_GUAGE);
-        addStockModifications(PayloadElement.AMMO_COUNTER);
-        addStockModifications(PayloadElement.ATTITUDE_GUAGE);
-        addStockModifications(PayloadElement.ALTITUDE_GUAGE);
     }
 
     @Override

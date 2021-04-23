@@ -28,9 +28,6 @@ public class DolphinPayload extends PlanePayload implements IPlanePayload
         setAvailablePayload(4, "11", PayloadElement.LEWIS_TOP);
         setAvailablePayload(7, "101", PayloadElement.LEWIS_WING);
         setAvailablePayload(10, "111", PayloadElement.LEWIS_TOP, PayloadElement.LEWIS_WING);
-
-        addStockModifications(PayloadElement.COCKPIT_LIGHT);
-        addStockModifications(PayloadElement.TEMPERATURE_GUAGE);
     }
 
     @Override

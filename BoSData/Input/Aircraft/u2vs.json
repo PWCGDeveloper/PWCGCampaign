@@ -1,24 +1,27 @@
 {
-  "type": "u2vs",
-  "archType": "u2",
-  "side": "ALLIED",
-  "primaryUsedBy": [
-    "RUSSIA"
-  ],
-  "displayName": "U-2VS",
-  "script": "LuaScripts\\WorldObjects\\Planes\\u2vs.txt",
-  "model": "graphics\\planes\\u2vs\\u2vs.mgm",
-  "desc": "",
-  "cruisingSpeed": 220,
-  "climbOutRate": 600,
-  "goodness": 10,
-  "range": 400,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_SMALL",
-  "roles": [
-    "ROLE_ATTACK"
-  ],
-  "introduction": "19410601",
-  "endProduction": "19450601",
-  "withdrawal": "19450601"
+	"type": "u2vs",
+	"archType": "u2",
+	"side": "ALLIED",
+	"primaryUsedBy": [
+		"RUSSIA"
+	],
+	"stockModifications": [
+		"U2_GUNNER"
+	],
+	"displayName": "U-2VS",
+	"script": "LuaScripts\\WorldObjects\\Planes\\u2vs.txt",
+	"model": "graphics\\planes\\u2vs\\u2vs.mgm",
+	"desc": "",
+	"cruisingSpeed": 220,
+	"climbOutRate": 600,
+	"goodness": 10,
+	"range": 400,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roles": [
+		"ROLE_ATTACK"
+	],
+	"introduction": "19410601",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
 }

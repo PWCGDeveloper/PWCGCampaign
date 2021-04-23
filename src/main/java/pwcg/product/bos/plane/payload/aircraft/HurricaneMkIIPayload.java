@@ -47,8 +47,6 @@ public class HurricaneMkIIPayload extends PlanePayload implements IPlanePayload
         setAvailablePayload(18, "100001", PayloadElement.SHVAK_X2, PayloadElement.FAB100M_X2);
         setAvailablePayload(19, "100001", PayloadElement.SHVAK_X2, PayloadElement.ROS82_X6);
         setAvailablePayload(23, "100001", PayloadElement.SHVAK_X2, PayloadElement.FAB100M_X2, PayloadElement.ROS82_X6);
-
-        addStockModifications(PayloadElement.MIRROR);
     }
 
     @Override

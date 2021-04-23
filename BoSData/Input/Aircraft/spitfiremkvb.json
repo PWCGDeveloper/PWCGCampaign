@@ -1,24 +1,27 @@
 {
-  "type": "spitfiremkvb",
-  "archType": "spitfire",
-  "side": "ALLIED",
-  "primaryUsedBy": [
-    "BRITAIN"
-  ],
-  "displayName": "Spitfire Mk.VB",
-  "script": "LuaScripts\\WorldObjects\\Planes\\spitfiremkvb.txt",
-  "model": "graphics\\planes\\spitfiremkvb\\spitfiremkvb.mgm",
-  "desc": "",
-  "cruisingSpeed": 350,
-  "climbOutRate": 1800,
-  "goodness": 40,
-  "range": 600,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_SMALL",
-  "roles": [
-    "ROLE_FIGHTER"
-  ],
-  "introduction": "19410901",
-  "endProduction": "19430801",
-  "withdrawal": "19440101"
+	"type": "spitfiremkvb",
+	"archType": "spitfire",
+	"side": "ALLIED",
+	"primaryUsedBy": [
+		"BRITAIN"
+	],
+	"stockModifications": [
+		"MIRROR"
+	],
+	"displayName": "Spitfire Mk.VB",
+	"script": "LuaScripts\\WorldObjects\\Planes\\spitfiremkvb.txt",
+	"model": "graphics\\planes\\spitfiremkvb\\spitfiremkvb.mgm",
+	"desc": "",
+	"cruisingSpeed": 350,
+	"climbOutRate": 1800,
+	"goodness": 40,
+	"range": 600,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roles": [
+		"ROLE_FIGHTER"
+	],
+	"introduction": "19410901",
+	"endProduction": "19430801",
+	"withdrawal": "19440101"
 }

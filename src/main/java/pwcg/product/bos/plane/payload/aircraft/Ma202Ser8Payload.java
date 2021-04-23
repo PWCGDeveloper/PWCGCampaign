@@ -25,8 +25,6 @@ public class Ma202Ser8Payload extends PlanePayload implements IPlanePayload
 		setAvailablePayload(2, "1001", PayloadElement.T100_X2);
 		setAvailablePayload(3, "10001", PayloadElement.BREDA_GUNPOD);
 		setAvailablePayload(4, "100001", PayloadElement.MG151_20_GUNPOD);
-		
-        addStockModifications(PayloadElement.ARMORED_WINDSCREEN);
 	}
 
     @Override

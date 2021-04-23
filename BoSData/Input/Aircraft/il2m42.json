@@ -1,24 +1,25 @@
 {
-  "type": "il2m42",
-  "archType": "il2",
-  "side": "ALLIED",
-  "primaryUsedBy": [
-    "RUSSIA"
-  ],
-  "displayName": "Il-2 mod.1942",
-  "script": "LuaScripts\\WorldObjects\\Planes\\il2m42.txt",
-  "model": "graphics\\planes\\il2m42\\il2m42.mgm",
-  "desc": "",
-  "cruisingSpeed": 300,
-  "climbOutRate": 700,
-  "goodness": 25,
-  "range": 650,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_MEDIUM",
-  "roles": [
-    "ROLE_ATTACK"
-  ],
-  "introduction": "19420301",
-  "endProduction": "19430401",
-  "withdrawal": "19430701"
+	"type": "il2m42",
+	"archType": "il2",
+	"side": "ALLIED",
+	"primaryUsedBy": [
+		"RUSSIA"
+	],
+	"stockModifications": [],
+	"displayName": "Il-2 mod.1942",
+	"script": "LuaScripts\\WorldObjects\\Planes\\il2m42.txt",
+	"model": "graphics\\planes\\il2m42\\il2m42.mgm",
+	"desc": "",
+	"cruisingSpeed": 300,
+	"climbOutRate": 700,
+	"goodness": 25,
+	"range": 650,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_MEDIUM",
+	"roles": [
+		"ROLE_ATTACK"
+	],
+	"introduction": "19420301",
+	"endProduction": "19430401",
+	"withdrawal": "19430701"
 }

@@ -1,25 +1,30 @@
 {
-  "type": "spitfiremkixe",
-  "archType": "spitfire",
-  "side": "ALLIED",
-  "primaryUsedBy": [
-    "BRITAIN"
-  ],
-  "displayName": "Spitfire Mk.IXe",
-  "script": "LuaScripts\\WorldObjects\\Planes\\spitfiremkixe.txt",
-  "model": "graphics\\planes\\spitfiremkixe\\spitfiremkixe.mgm",
-  "desc": "",
-  "cruisingSpeed": 370,
-  "climbOutRate": 1800,
-  "goodness": 65,
-  "range": 600,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_SMALL",
-  "roles": [
-    "ROLE_FIGHTER",
-    "ROLE_ATTACK"
-  ],
-  "introduction": "19430301",
-  "endProduction": "19450601",
-  "withdrawal": "19450601"
+	"type": "spitfiremkixe",
+	"archType": "spitfire",
+	"side": "ALLIED",
+	"primaryUsedBy": [
+		"BRITAIN"
+	],
+	"stockModifications": [
+		"MIRROR",
+		"GYRO_GUNSIGHT",
+		"OCTANE_150_FUEL"
+	],
+	"displayName": "Spitfire Mk.IXe",
+	"script": "LuaScripts\\WorldObjects\\Planes\\spitfiremkixe.txt",
+	"model": "graphics\\planes\\spitfiremkixe\\spitfiremkixe.mgm",
+	"desc": "",
+	"cruisingSpeed": 370,
+	"climbOutRate": 1800,
+	"goodness": 65,
+	"range": 600,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roles": [
+		"ROLE_FIGHTER",
+		"ROLE_ATTACK"
+	],
+	"introduction": "19430301",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
 }

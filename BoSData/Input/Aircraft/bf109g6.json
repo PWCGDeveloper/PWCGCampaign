@@ -1,25 +1,28 @@
 {
-  "type": "bf109g6",
-  "archType": "bf109",
-  "side": "AXIS",
-  "primaryUsedBy": [
-    "GERMANY"
-  ],
-  "displayName": "Bf 109 G-6",
-  "script": "LuaScripts\\WorldObjects\\Planes\\bf109g6.txt",
-  "model": "graphics\\planes\\bf109g6\\bf109g6.mgm",
-  "desc": "",
-  "cruisingSpeed": 360,
-  "climbOutRate": 1300,
-  "goodness": 55,
-  "range": 600,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_SMALL",
-  "roles": [
-    "ROLE_FIGHTER",
-    "ROLE_ATTACK"
-  ],
-  "introduction": "19430601",
-  "endProduction": "19440401",
-  "withdrawal": "19440901"
+	"type": "bf109g6",
+	"archType": "bf109",
+	"side": "AXIS",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [
+		"GLASS_HEADREST"
+	],
+	"displayName": "Bf 109 G-6",
+	"script": "LuaScripts\\WorldObjects\\Planes\\bf109g6.txt",
+	"model": "graphics\\planes\\bf109g6\\bf109g6.mgm",
+	"desc": "",
+	"cruisingSpeed": 360,
+	"climbOutRate": 1300,
+	"goodness": 55,
+	"range": 600,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roles": [
+		"ROLE_FIGHTER",
+		"ROLE_ATTACK"
+	],
+	"introduction": "19430601",
+	"endProduction": "19440401",
+	"withdrawal": "19440901"
 }

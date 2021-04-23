@@ -1,25 +1,29 @@
 {
-  "type": "fw190d9",
-  "archType": "fw190d",
-  "side": "AXIS",
-  "primaryUsedBy": [
-    "GERMANY"
-  ],
-  "displayName": "Fw 190 D-9",
-  "script": "LuaScripts\\WorldObjects\\Planes\\fw190d9.txt",
-  "model": "graphics\\planes\\fw190a8\\fw190d9.mgm",
-  "desc": "",
-  "cruisingSpeed": 360,
-  "climbOutRate": 1100,
-  "goodness": 85,
-  "range": 700,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_SMALL",
-  "roles": [
-    "ROLE_FIGHTER",
-    "ROLE_ATTACK"
-  ],
-  "introduction": "19440801",
-  "endProduction": "19450601",
-  "withdrawal": "19450601"
+	"type": "fw190d9",
+	"archType": "fw190d",
+	"side": "AXIS",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [
+		"BUBBLE_CANOPY",
+		"GYRO_GUNSIGHT"
+	],
+	"displayName": "Fw 190 D-9",
+	"script": "LuaScripts\\WorldObjects\\Planes\\fw190d9.txt",
+	"model": "graphics\\planes\\fw190a8\\fw190d9.mgm",
+	"desc": "",
+	"cruisingSpeed": 360,
+	"climbOutRate": 1100,
+	"goodness": 85,
+	"range": 700,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roles": [
+		"ROLE_FIGHTER",
+		"ROLE_ATTACK"
+	],
+	"introduction": "19440801",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
 }

@@ -27,10 +27,6 @@ public class La5FNS2Payload extends PlanePayload implements IPlanePayload
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(1, "11", PayloadElement.FAB50SV_X2);
         setAvailablePayload(2, "101", PayloadElement.FAB100M_X2);
-        
-        addStockModifications(PayloadElement.LANDING_LIGHTS);
-        addStockModifications(PayloadElement.RPK10);
-        addStockModifications(PayloadElement.MIRROR);
 	}
 
     @Override

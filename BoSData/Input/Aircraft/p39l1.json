@@ -1,26 +1,29 @@
 {
-  "type": "p39l1",
-  "archType": "p39",
-  "side": "ALLIED",
-  "primaryUsedBy": [
-    "USA",
-    "RUSSIA"
-  ],
-  "displayName": "P-39L-1",
-  "script": "LuaScripts\\WorldObjects\\Planes\\p39l1.txt",
-  "model": "graphics\\planes\\p39l1\\p39l1.mgm",
-  "desc": "",
-  "cruisingSpeed": 350,
-  "climbOutRate": 1800,
-  "goodness": 60,
-  "range": 800,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_SMALL",
-  "roles": [
-    "ROLE_FIGHTER",
-    "ROLE_ATTACK"
-  ],
-  "introduction": "19421001",
-  "endProduction": "19450601",
-  "withdrawal": "19450601"
+	"type": "p39l1",
+	"archType": "p39",
+	"side": "ALLIED",
+	"primaryUsedBy": [
+		"USA",
+		"RUSSIA"
+	],
+	"stockModifications": [
+		"RPK10"
+	],
+	"displayName": "P-39L-1",
+	"script": "LuaScripts\\WorldObjects\\Planes\\p39l1.txt",
+	"model": "graphics\\planes\\p39l1\\p39l1.mgm",
+	"desc": "",
+	"cruisingSpeed": 350,
+	"climbOutRate": 1800,
+	"goodness": 60,
+	"range": 800,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roles": [
+		"ROLE_FIGHTER",
+		"ROLE_ATTACK"
+	],
+	"introduction": "19421001",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
 }

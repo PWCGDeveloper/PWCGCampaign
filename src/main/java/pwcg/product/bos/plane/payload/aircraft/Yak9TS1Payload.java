@@ -26,11 +26,6 @@ public class Yak9TS1Payload extends PlanePayload implements IPlanePayload
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(1, "1", PayloadElement.YAK937MM_AP);
         setAvailablePayload(2, "1", PayloadElement.YAK937MM_HE);
-        
-        addStockModifications(PayloadElement.AMMO_COUNTER);
-        addStockModifications(PayloadElement.MIRROR);
-        addStockModifications(PayloadElement.LANDING_LIGHTS);
-        addStockModifications(PayloadElement.RPK10);
 	}
 
     @Override

@@ -32,9 +32,6 @@ public class P47D22Payload extends PlanePayload implements IPlanePayload
         setAvailablePayload(24, "10001", PayloadElement.LB1000x2);
         setAvailablePayload(36, "10001", PayloadElement.M8X6);
         setAvailablePayload(48, "10001", PayloadElement.P47_BOMBS_AND_ROCKETS);
-        
-        addStockModifications(PayloadElement.MN28);
-        addStockModifications(PayloadElement.OCTANE_150_FUEL);
 	}
  
     @Override

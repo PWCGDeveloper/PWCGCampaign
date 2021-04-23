@@ -1,25 +1,29 @@
 {
-  "type": "la5s8",
-  "archType": "lagg",
-  "side": "ALLIED",
-  "primaryUsedBy": [
-    "RUSSIA"
-  ],
-  "displayName": "La-5 ser.8",
-  "script": "LuaScripts\\WorldObjects\\Planes\\la5s8.txt",
-  "model": "graphics\\planes\\la5s8\\la5s8.mgm",
-  "desc": "",
-  "cruisingSpeed": 350,
-  "climbOutRate": 1300,
-  "goodness": 50,
-  "range": 650,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_SMALL",
-  "roles": [
-    "ROLE_FIGHTER",
-    "ROLE_ATTACK"
-  ],
-  "introduction": "19420701",
-  "endProduction": "19431101",
-  "withdrawal": "19440501"
+	"type": "la5s8",
+	"archType": "lagg",
+	"side": "ALLIED",
+	"primaryUsedBy": [
+		"RUSSIA"
+	],
+	"stockModifications": [
+		"RPK10",
+		"WINDSCREEN"
+	],
+	"displayName": "La-5 ser.8",
+	"script": "LuaScripts\\WorldObjects\\Planes\\la5s8.txt",
+	"model": "graphics\\planes\\la5s8\\la5s8.mgm",
+	"desc": "",
+	"cruisingSpeed": 350,
+	"climbOutRate": 1300,
+	"goodness": 50,
+	"range": 650,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roles": [
+		"ROLE_FIGHTER",
+		"ROLE_ATTACK"
+	],
+	"introduction": "19420701",
+	"endProduction": "19431101",
+	"withdrawal": "19440501"
 }

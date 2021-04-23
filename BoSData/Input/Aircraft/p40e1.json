@@ -1,26 +1,29 @@
 {
-  "type": "p40e1",
-  "archType": "p40",
-  "side": "ALLIED",
-  "primaryUsedBy": [
-    "USA",
-    "RUSSIA"
-  ],
-  "displayName": "P-40E-1",
-  "script": "LuaScripts\\WorldObjects\\Planes\\p40e1.txt",
-  "model": "graphics\\planes\\p40e1\\p40e1.mgm",
-  "desc": "",
-  "cruisingSpeed": 350,
-  "climbOutRate": 1800,
-  "goodness": 28,
-  "range": 800,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_SMALL",
-  "roles": [
-    "ROLE_FIGHTER",
-    "ROLE_ATTACK"
-  ],
-  "introduction": "19410601",
-  "endProduction": "19430603",
-  "withdrawal": "19440503"
+	"type": "p40e1",
+	"archType": "p40",
+	"side": "ALLIED",
+	"primaryUsedBy": [
+		"USA",
+		"RUSSIA"
+	],
+	"stockModifications": [
+		"MIRROR"
+	],
+	"displayName": "P-40E-1",
+	"script": "LuaScripts\\WorldObjects\\Planes\\p40e1.txt",
+	"model": "graphics\\planes\\p40e1\\p40e1.mgm",
+	"desc": "",
+	"cruisingSpeed": 350,
+	"climbOutRate": 1800,
+	"goodness": 28,
+	"range": 800,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roles": [
+		"ROLE_FIGHTER",
+		"ROLE_ATTACK"
+	],
+	"introduction": "19410601",
+	"endProduction": "19430603",
+	"withdrawal": "19440503"
 }

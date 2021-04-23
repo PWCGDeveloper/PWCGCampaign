@@ -29,9 +29,6 @@ public class Halberstadtcl2auPayload extends PlanePayload implements IPlanePaylo
         setAvailablePayload(1, "10000001", PayloadElement.BOMBS);
         setAvailablePayload(2, "100000001", PayloadElement.CAMERA);
         setAvailablePayload(3, "1000000001", PayloadElement.RADIO);
-        
-        addStockModifications(PayloadElement.COCKPIT_LIGHT);
-        addStockModifications(PayloadElement.ATTITUDE_GUAGE);
     }
 
     @Override

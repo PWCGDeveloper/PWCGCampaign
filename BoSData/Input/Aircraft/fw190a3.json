@@ -1,25 +1,26 @@
 {
-  "type": "fw190a3",
-  "archType": "fw190",
-  "side": "AXIS",
-  "primaryUsedBy": [
-    "GERMANY"
-  ],
-  "displayName": "Fw 190 A-3",
-  "script": "LuaScripts\\WorldObjects\\Planes\\fw190a3.txt",
-  "model": "graphics\\planes\\fw190a3\\fw190a3.mgm",
-  "desc": "",
-  "cruisingSpeed": 360,
-  "climbOutRate": 1100,
-  "goodness": 55,
-  "range": 700,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_SMALL",
-  "roles": [
-    "ROLE_FIGHTER",
-    "ROLE_ATTACK"
-  ],
-  "introduction": "19410601",
-  "endProduction": "19430301",
-  "withdrawal": "19430901"
+	"type": "fw190a3",
+	"archType": "fw190",
+	"side": "AXIS",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [],
+	"displayName": "Fw 190 A-3",
+	"script": "LuaScripts\\WorldObjects\\Planes\\fw190a3.txt",
+	"model": "graphics\\planes\\fw190a3\\fw190a3.mgm",
+	"desc": "",
+	"cruisingSpeed": 360,
+	"climbOutRate": 1100,
+	"goodness": 55,
+	"range": 700,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roles": [
+		"ROLE_FIGHTER",
+		"ROLE_ATTACK"
+	],
+	"introduction": "19410601",
+	"endProduction": "19430301",
+	"withdrawal": "19430901"
 }

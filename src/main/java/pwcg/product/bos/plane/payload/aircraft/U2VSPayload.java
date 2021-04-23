@@ -33,12 +33,6 @@ public class U2VSPayload extends PlanePayload implements IPlanePayload
     public int createWeaponsPayload(IFlight flight) throws PWCGException
     {
         selectedPrimaryPayloadId = 1;
-        u2Turret();
         return selectedPrimaryPayloadId;
     }    
-
-    private void u2Turret() throws PWCGException
-    {
-        this.addModification(PayloadElement.U2_GUNNER);
-    }
 }

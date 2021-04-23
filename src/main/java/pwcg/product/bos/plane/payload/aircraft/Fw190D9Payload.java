@@ -27,9 +27,6 @@ public class Fw190D9Payload extends PlanePayload implements IPlanePayload
         setAvailablePayload(3, "1001", PayloadElement.SC500_X1);
         setAvailablePayload(4, "10001", PayloadElement.BR21_X2);
         setAvailablePayload(8, "100001", PayloadElement.R4M_X26);
-
-        addStockModifications(PayloadElement.BUBBLE_CANOPY);
-        addStockModifications(PayloadElement.GYRO_GUNSIGHT);
 	}
     
     @Override

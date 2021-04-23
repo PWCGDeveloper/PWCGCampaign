@@ -28,11 +28,6 @@ public class SpitfireMkXIVPayload extends PlanePayload implements IPlanePayload
         setAvailablePayload(1, "11", PayloadElement.SC500_X1);
         setAvailablePayload(2, "101", PayloadElement.SC250_X2);
         setAvailablePayload(3, "111", PayloadElement.SC500_X1, PayloadElement.SC250_X2);
-        
-        addStockModifications(PayloadElement.OCTANE_150_FUEL);
-        addStockModifications(PayloadElement.GYRO_GUNSIGHT);
-        addStockModifications(PayloadElement.MIRROR);
-
 	}
 
     @Override

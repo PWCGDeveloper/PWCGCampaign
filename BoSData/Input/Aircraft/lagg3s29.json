@@ -1,25 +1,26 @@
 {
-  "type": "lagg3s29",
-  "archType": "lagg",
-  "side": "ALLIED",
-  "primaryUsedBy": [
-    "RUSSIA"
-  ],
-  "displayName": "LaGG-3 ser.29",
-  "script": "LuaScripts\\WorldObjects\\Planes\\lagg3s29.txt",
-  "model": "graphics\\planes\\lagg3s29\\lagg3s29.mgm",
-  "desc": "",
-  "cruisingSpeed": 350,
-  "climbOutRate": 1000,
-  "goodness": 30,
-  "range": 700,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_SMALL",
-  "roles": [
-    "ROLE_FIGHTER",
-    "ROLE_ATTACK"
-  ],
-  "introduction": "19410601",
-  "endProduction": "19431001",
-  "withdrawal": "19440201"
+	"type": "lagg3s29",
+	"archType": "lagg",
+	"side": "ALLIED",
+	"primaryUsedBy": [
+		"RUSSIA"
+	],
+	"stockModifications": [],
+	"displayName": "LaGG-3 ser.29",
+	"script": "LuaScripts\\WorldObjects\\Planes\\lagg3s29.txt",
+	"model": "graphics\\planes\\lagg3s29\\lagg3s29.mgm",
+	"desc": "",
+	"cruisingSpeed": 350,
+	"climbOutRate": 1000,
+	"goodness": 30,
+	"range": 700,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roles": [
+		"ROLE_FIGHTER",
+		"ROLE_ATTACK"
+	],
+	"introduction": "19410601",
+	"endProduction": "19431001",
+	"withdrawal": "19440201"
 }

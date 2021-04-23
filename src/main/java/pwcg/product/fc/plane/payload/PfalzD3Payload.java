@@ -28,13 +28,6 @@ public class PfalzD3Payload extends PlanePayload implements IPlanePayload
         setAvailablePayload(-1, "10", PayloadElement.DAY_SIGHT);
 
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        
-        addStockModifications(PayloadElement.COCKPIT_LIGHT);
-        addStockModifications(PayloadElement.TEMPERATURE_GUAGE);
-        addStockModifications(PayloadElement.AMMO_COUNTER);
-        addStockModifications(PayloadElement.ATTITUDE_GUAGE);
-        addStockModifications(PayloadElement.ALTITUDE_GUAGE);
-        addStockModifications(PayloadElement.SPEED_GUAGE);
     }
 
     @Override

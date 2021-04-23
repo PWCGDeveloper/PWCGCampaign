@@ -25,8 +25,6 @@ public class P39L1Payload extends PlanePayload implements IPlanePayload
         setAvailablePayload(4, "10001", PayloadElement.REM_M230);
         setAvailablePayload(6, "11", PayloadElement.FAB100M_X1);
         setAvailablePayload(12, "101", PayloadElement.FAB250SV_X1);
-        
-        addStockModifications(PayloadElement.RPK10);
 	}
  
     @Override

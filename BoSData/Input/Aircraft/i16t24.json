@@ -1,25 +1,26 @@
 {
-  "type": "i16t24",
-  "archType": "i16",
-  "side": "ALLIED",
-  "primaryUsedBy": [
-    "RUSSIA"
-  ],
-  "displayName": "I-16 type 24",
-  "script": "LuaScripts\\WorldObjects\\Planes\\i16t24.txt",
-  "model": "graphics\\planes\\i16t24\\i16t24.mgm",
-  "desc": "",
-  "cruisingSpeed": 300,
-  "climbOutRate": 600,
-  "goodness": 15,
-  "range": 700,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_SMALL",
-  "roles": [
-    "ROLE_FIGHTER",
-    "ROLE_ATTACK"
-  ],
-  "introduction": "19410601",
-  "endProduction": "19430401",
-  "withdrawal": "19430401"
+	"type": "i16t24",
+	"archType": "i16",
+	"side": "ALLIED",
+	"primaryUsedBy": [
+		"RUSSIA"
+	],
+	"stockModifications": [],
+	"displayName": "I-16 type 24",
+	"script": "LuaScripts\\WorldObjects\\Planes\\i16t24.txt",
+	"model": "graphics\\planes\\i16t24\\i16t24.mgm",
+	"desc": "",
+	"cruisingSpeed": 300,
+	"climbOutRate": 600,
+	"goodness": 15,
+	"range": 700,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roles": [
+		"ROLE_FIGHTER",
+		"ROLE_ATTACK"
+	],
+	"introduction": "19410601",
+	"endProduction": "19430401",
+	"withdrawal": "19430401"
 }

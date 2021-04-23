@@ -1,25 +1,30 @@
 {
-  "type": "me262a",
-  "archType": "me262",
-  "side": "AXIS",
-  "primaryUsedBy": [
-    "GERMANY"
-  ],
-  "displayName": "Me 262 A",
-  "script": "LuaScripts\\WorldObjects\\Planes\\me262a.txt",
-  "model": "graphics\\planes\\fw190a3\\me262a.mgm",
-  "desc": "",
-  "cruisingSpeed": 430,
-  "climbOutRate": 1100,
-  "goodness": 99,
-  "range": 700,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_SMALL",
-  "roles": [
-    "ROLE_FIGHTER",
-    "ROLE_ATTACK"
-  ],
-  "introduction": "19440901",
-  "endProduction": "19450601",
-  "withdrawal": "19450601"
+	"type": "me262a",
+	"archType": "me262",
+	"side": "AXIS",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [
+		"AUTO_VALVE",
+		"ARMORED_HEADREST",
+		"GYRO_GUNSIGHT"
+	],
+	"displayName": "Me 262 A",
+	"script": "LuaScripts\\WorldObjects\\Planes\\me262a.txt",
+	"model": "graphics\\planes\\fw190a3\\me262a.mgm",
+	"desc": "",
+	"cruisingSpeed": 430,
+	"climbOutRate": 1100,
+	"goodness": 99,
+	"range": 700,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roles": [
+		"ROLE_FIGHTER",
+		"ROLE_ATTACK"
+	],
+	"introduction": "19440901",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
 }

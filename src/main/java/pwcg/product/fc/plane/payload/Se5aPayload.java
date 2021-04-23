@@ -24,9 +24,6 @@ public class Se5aPayload extends PlanePayload implements IPlanePayload
         
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(2, "10001", PayloadElement.BOMBS);
-        
-        addStockModifications(PayloadElement.COCKPIT_LIGHT);
-        addStockModifications(PayloadElement.FUEL_GUAGE);
     }
 
     @Override

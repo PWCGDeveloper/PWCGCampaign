@@ -1,25 +1,30 @@
 {
-  "type": "yak9s1",
-  "archType": "yak",
-  "side": "ALLIED",
-  "primaryUsedBy": [
-    "RUSSIA"
-  ],
-  "displayName": "Yak-9 ser.1",
-  "script": "LuaScripts\\WorldObjects\\Planes\\yak9s1.txt",
-  "model": "graphics\\planes\\yak7bs36\\yak9s1.mgm",
-  "desc": "",
-  "cruisingSpeed": 350,
-  "climbOutRate": 1300,
-  "goodness": 65,
-  "range": 600,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_SMALL",
-  "roles": [
-    "ROLE_FIGHTER",
-    "ROLE_ATTACK"
-  ],
-  "introduction": "19430301",
-  "endProduction": "19450601",
-  "withdrawal": "19450601"
+	"type": "yak9s1",
+	"archType": "yak",
+	"side": "ALLIED",
+	"primaryUsedBy": [
+		"RUSSIA"
+	],
+	"stockModifications": [
+		"MIRROR",
+		"RPK10",
+		"LANDING_LIGHTS"
+	],
+	"displayName": "Yak-9 ser.1",
+	"script": "LuaScripts\\WorldObjects\\Planes\\yak9s1.txt",
+	"model": "graphics\\planes\\yak7bs36\\yak9s1.mgm",
+	"desc": "",
+	"cruisingSpeed": 350,
+	"climbOutRate": 1300,
+	"goodness": 65,
+	"range": 600,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roles": [
+		"ROLE_FIGHTER",
+		"ROLE_ATTACK"
+	],
+	"introduction": "19430301",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
 }

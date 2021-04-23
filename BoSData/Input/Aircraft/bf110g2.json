@@ -1,25 +1,26 @@
 {
-  "type": "bf110g2",
-  "archType": "bf110",
-  "side": "AXIS",
-  "primaryUsedBy": [
-    "GERMANY"
-  ],
-  "displayName": "Bf 110 G-2",
-  "script": "LuaScripts\\WorldObjects\\Planes\\bf110g2.txt",
-  "model": "graphics\\planes\\bf110g2\\bf110g2.mgm",
-  "desc": "",
-  "cruisingSpeed": 320,
-  "climbOutRate": 800,
-  "goodness": 40,
-  "range": 1200,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_MEDIUM",
-  "roles": [
-    "ROLE_ATTACK",
-    "ROLE_FIGHTER"
-  ],
-  "introduction": "19420601",
-  "endProduction": "19450601",
-  "withdrawal": "19450601"
+	"type": "bf110g2",
+	"archType": "bf110",
+	"side": "AXIS",
+	"primaryUsedBy": [
+		"GERMANY"
+	],
+	"stockModifications": [],
+	"displayName": "Bf 110 G-2",
+	"script": "LuaScripts\\WorldObjects\\Planes\\bf110g2.txt",
+	"model": "graphics\\planes\\bf110g2\\bf110g2.mgm",
+	"desc": "",
+	"cruisingSpeed": 320,
+	"climbOutRate": 800,
+	"goodness": 40,
+	"range": 1200,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_MEDIUM",
+	"roles": [
+		"ROLE_ATTACK",
+		"ROLE_FIGHTER"
+	],
+	"introduction": "19420601",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
 }

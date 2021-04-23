@@ -1,25 +1,31 @@
 {
-  "type": "p47d28",
-  "archType": "p47",
-  "side": "ALLIED",
-  "primaryUsedBy": [
-    "USA"
-  ],
-  "displayName": "P-47D-28",
-  "script": "LuaScripts\\WorldObjects\\Planes\\p47d28.txt",
-  "model": "graphics\\planes\\p47d28\\p47d28.mgm",
-  "desc": "",
-  "cruisingSpeed": 380,
-  "climbOutRate": 1800,
-  "goodness": 70,
-  "range": 1000,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_SMALL",
-  "roles": [
-    "ROLE_FIGHTER",
-    "ROLE_ATTACK"
-  ],
-  "introduction": "19440401",
-  "endProduction": "19450601",
-  "withdrawal": "19450601"
+	"type": "p47d28",
+	"archType": "p47",
+	"side": "ALLIED",
+	"primaryUsedBy": [
+		"USA"
+	],
+	"stockModifications": [
+		"MIRROR",
+		"P47_GUNSIGHT",
+		"MN28",
+		"OCTANE_150_FUEL"
+	],
+	"displayName": "P-47D-28",
+	"script": "LuaScripts\\WorldObjects\\Planes\\p47d28.txt",
+	"model": "graphics\\planes\\p47d28\\p47d28.mgm",
+	"desc": "",
+	"cruisingSpeed": 380,
+	"climbOutRate": 1800,
+	"goodness": 70,
+	"range": 1000,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roles": [
+		"ROLE_FIGHTER",
+		"ROLE_ATTACK"
+	],
+	"introduction": "19440401",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
 }

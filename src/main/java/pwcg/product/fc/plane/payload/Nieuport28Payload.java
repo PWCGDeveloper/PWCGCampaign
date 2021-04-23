@@ -28,12 +28,6 @@ public class Nieuport28Payload extends PlanePayload implements IPlanePayload
         
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(1, "11", PayloadElement.BALLOON_GUN);
-        
-        addStockModifications(PayloadElement.COCKPIT_LIGHT);
-        addStockModifications(PayloadElement.SIDE_SLIP_GUAGE);
-        addStockModifications(PayloadElement.CLOCK_GUAGE);
-        addStockModifications(PayloadElement.COMPASS_GUAGE);
-        addStockModifications(PayloadElement.ATTITUDE_GUAGE);
     }
 
     @Override

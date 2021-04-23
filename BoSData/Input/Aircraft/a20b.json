@@ -1,26 +1,28 @@
 {
-  "type": "a20b",
-  "archType": "a20",
-  "side": "ALLIED",
-  "displayName": "A-20B",
-  "primaryUsedBy": [
-    "USA",
-    "RUSSIA"
-  ],
-  "script": "LuaScripts\\WorldObjects\\Planes\\a20b.txt",
-  "model": "graphics\\planes\\a20b\\a20b.mgm",
-  "desc": "",
-  "cruisingSpeed": 310,
-  "climbOutRate": 800,
-  "goodness": 40,
-  "range": 1300,
-  "isFlyable": true,
-  "planeSize": "PLANE_SIZE_MEDIUM",
-  "roles": [
-    "ROLE_BOMB",
-    "ROLE_ATTACK"
-  ],
-  "introduction": "19410601",
-  "endProduction": "19450601",
-  "withdrawal": "19450601"
+	"type": "a20b",
+	"archType": "a20",
+	"side": "ALLIED",
+	"displayName": "A-20B",
+	"primaryUsedBy": [
+		"USA",
+		"RUSSIA"
+	],
+	"stockModifications": [
+	],
+	"script": "LuaScripts\\WorldObjects\\Planes\\a20b.txt",
+	"model": "graphics\\planes\\a20b\\a20b.mgm",
+	"desc": "",
+	"cruisingSpeed": 310,
+	"climbOutRate": 800,
+	"goodness": 40,
+	"range": 1300,
+	"isFlyable": true,
+	"planeSize": "PLANE_SIZE_MEDIUM",
+	"roles": [
+		"ROLE_BOMB",
+		"ROLE_ATTACK"
+	],
+	"introduction": "19410601",
+	"endProduction": "19450601",
+	"withdrawal": "19450601"
 }
