@@ -210,17 +210,26 @@ public class Mission
 
     public void write() throws PWCGException
     {
-        IMissionFile missionFile = MissionFileFactory.createMissionFile(this);
+        String missionDescriptionText = writeGameMissionFiles();
+        writePwcgMissionData(missionDescriptionText);
+    }
 
+    public String writeGameMissionFiles() throws PWCGException
+    {
+        IMissionFile missionFile = MissionFileFactory.createMissionFile(this);
+        missionFile.writeMission();
+        String missionDescriptionText = writeMissionDescriptionFile();
+        return missionDescriptionText;
+    }
+
+    private String writeMissionDescriptionFile() throws PWCGException
+    {
         IMissionDescription missionDescription = MissionDescriptionFactory.buildMissionDescription(campaign, this, missionFlights.getReferencePlayerFlight());
         String missionDescriptionText = missionDescription.createDescription();
 
         MissionDescriptionFile missionDescriptionFile = new MissionDescriptionFile();
         missionDescriptionFile.writeMissionDescription(missionDescription, campaign);
-
-        missionFile.writeMission();
-
-        writePwcgMissionData(missionDescriptionText);
+        return missionDescriptionText;
     }
 
     private void writePwcgMissionData(String missionDescriptionText) throws PWCGException

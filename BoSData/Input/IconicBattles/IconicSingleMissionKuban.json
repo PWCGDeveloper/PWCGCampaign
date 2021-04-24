@@ -1,0 +1,36 @@
+{
+	"iconicMissions": [
+		{
+			"campaignName": "Kuban: Shipping",
+			"dateString": "19431020",
+			"iconicBattleParticipants": [
+				10111233,
+				10111495,
+				10121312,
+				10131132,
+				10131136,
+				20112051,
+				20101026,
+				20144002,
+				20122002,
+				20131076
+			]
+		},
+		{
+			"campaignName": "Kuban: Kerch Amphibious Assault",
+			"dateString": "19431101",
+			"iconicBattleParticipants": [
+				10111233,
+				10111495,
+				10121503,
+				10131132,
+				10131136,
+				20112051,
+				20101026,
+				20144002,
+				20122002,
+				20131076
+			]
+		}
+	]
+}

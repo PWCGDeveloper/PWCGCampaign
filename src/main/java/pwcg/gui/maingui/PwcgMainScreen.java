@@ -39,6 +39,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.maingui.campaigngenerate.CampaignGeneratorScreen;
 import pwcg.gui.maingui.config.PwcgGlobalConfigurationScreen;
+import pwcg.gui.maingui.config.PwcgIconicMissionGenerationScreen;
 import pwcg.gui.maingui.config.PwcgPlanesOwnedConfigurationScreen;
 import pwcg.gui.maingui.config.PwcgSkinConfigurationAnalysisScreen;
 import pwcg.gui.maingui.coop.PwcgCoopGlobalAdminScreen;
@@ -236,6 +237,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
         makeMenuButton ("Skin Analysis", "Skin Analysis", buttonPanel);
         makeMenuButton ("PWCG Information", "PWCG Information", buttonPanel);
         makeMenuButton ("Administer Coop", "Administer Coop", buttonPanel);
+        makeMenuButton ("Iconic Missions", "Iconic Missions", buttonPanel);
         
         int showFrontLineEditor = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.ShowFrontLineEditorKey);
         if (showFrontLineEditor == 1)
@@ -437,9 +439,13 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
             {
                 showCoopAdmin();
             }
+            else if (action.equals("Iconic Missions"))
+            {
+                showIconicMissions();
+            }
             else if (action.equals("Configuration"))
             {
-                showGlobalConfigOwned();
+                showGlobalConfig();
             }
             else if (action.equals("New Campaign"))
             {
@@ -504,7 +510,17 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 
         CampaignGuiContextManager.getInstance().pushToContextStack(coopAdmin);
     }
-    
+
+    private void showIconicMissions() throws PWCGException
+    {
+        SoundManager.getInstance().playSound("Stapler.WAV");
+
+        PwcgIconicMissionGenerationScreen iconicMissionsScreen = new PwcgIconicMissionGenerationScreen();
+        iconicMissionsScreen.makePanels();
+
+        CampaignGuiContextManager.getInstance().pushToContextStack(iconicMissionsScreen);
+    }
+
     private void showSkinAnalysis() throws PWCGException 
     {
         SoundManager.getInstance().playSound("BookOpen.WAV");
@@ -515,7 +531,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
         CampaignGuiContextManager.getInstance().pushToContextStack(skinAnalysis);
     }
 
-    private void showGlobalConfigOwned() throws PWCGException 
+    private void showGlobalConfig() throws PWCGException 
     {
         SoundManager.getInstance().playSound("BookOpen.WAV");
 

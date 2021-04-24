@@ -24,7 +24,6 @@ public class StalingradMap extends PWCGMap
         missionSpacingMyDate.put("19420101", 5); 
         missionSpacingMyDate.put("19420801", 3); 
         missionSpacingMyDate.put("19420823", 2); 
-        missionSpacingMyDate.put("19420823", 2); 
         missionSpacingMyDate.put("19420905", 1); 
         missionSpacingMyDate.put("19420927", 2); 
         missionSpacingMyDate.put("19421014", 1); 

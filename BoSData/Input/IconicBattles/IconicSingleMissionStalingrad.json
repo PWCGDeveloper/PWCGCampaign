@@ -1,0 +1,39 @@
+{
+	"iconicMissions": [
+		{
+			"campaignName": "Stalingrad Bombing",
+			"dateString": "19420824",
+			"iconicBattleParticipants": [
+				20133027,
+				20112052,
+				10111495
+			]
+		},
+		{
+			"campaignName": "Stalingrad Barges",
+			"dateString": "19420910",
+			"iconicBattleParticipants": [
+				20121077,
+				20112052,
+				10111126
+			]
+		},
+		{
+			"campaignName": "Stalingrad Uranus",
+			"dateString": "19421120",
+			"iconicBattleParticipants": [
+				10121312,
+				10111495
+			]
+		},
+		{
+			"campaignName": "Stalingrad Encirclement",
+			"dateString": "19421223",
+			"iconicBattleParticipants": [
+				20142002,
+				20112052,
+				10111027
+			]
+		}
+	]
+}

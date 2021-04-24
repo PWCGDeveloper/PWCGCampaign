@@ -1,0 +1,109 @@
+{
+	"iconicMissions": [
+		{
+			"campaignName": "Rhine: Market Garden",
+			"dateString": "19440917",
+			"iconicBattleParticipants": [
+				102050010,
+				102362377,
+				103083056,
+				103084193,
+				102363033,
+				20111001,
+				20111077,
+				20122004,
+				20131051
+			]
+		},
+		{
+			"campaignName": "Rhine: Ardennes: German Assault",
+			"dateString": "19441215",
+			"iconicBattleParticipants": [
+				102050010,
+				102362377,
+				103083056,
+				103084193,
+				102363033,
+				20111001,
+				20111077,
+				20122004,
+				20131051
+			]
+		},
+		{
+			"campaignName": "Rhine: Ardennes: Bastogne",
+			"dateString": "19441225",
+			"iconicBattleParticipants": [
+				102050010,
+				102362377,
+				103083056,
+				103084193,
+				102363033,
+				20111001,
+				20111077,
+				20122004,
+				20131051
+			]
+		},
+		{
+			"campaignName": "Rhine: Ardennes: Allied Counterattack",
+			"dateString": "19441228",
+			"iconicBattleParticipants": [
+				102050010,
+				102362377,
+				103083056,
+				103084193,
+				102363033,
+				20111001,
+				20111077,
+				20122004,
+				20131051
+			]
+		},
+		{
+			"campaignName": "Rhine: Bodenplatte",
+			"dateString": "19450101",
+			"iconicBattleParticipants": [
+				102050010,
+				102362377,
+				103083056,
+				103084193,
+				102363033,
+				20111001,
+				20111077,
+				20122004,
+				20131051
+			]
+		},
+		{
+			"campaignName": "Rhine: Plunder",
+			"dateString": "19450323",
+			"iconicBattleParticipants": [
+				102050010,
+				102362377,
+				103083056,
+				103084193,
+				102363033,
+				20111001,
+				20111077,
+				20122004,
+				20131051
+			]
+		},
+		{
+			"campaignName": "Rhine: Varsity",
+			"dateString": "19450324",
+			"iconicBattleParticipants": [
+				102050010,
+				102362377,
+				103083056,
+				103084193,
+				102363033,
+				20111001,
+				20111077,
+				20122004,
+				20131051
+			]
+		}
+	]
+}
