@@ -8,13 +8,15 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class AirfieldDistanceOrganizer
 {
@@ -67,13 +69,13 @@ public class AirfieldDistanceOrganizer
             AirfieldManager manager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
 
             alliedAirfieldSet = sortAirfieldsByDistance(manager.getAirFieldsForSide(startDate, Side.ALLIED), startDate, Side.ALLIED);
-            System.out.println("\n\n\nAllied");
+            PWCGLogger.log(LogLevel.DEBUG, "\n\n\nAllied");
             alliedAirfieldSet.side = Side.ALLIED;
             alliedAirfieldSet.date = startDate;
             alliedAirfieldSet.dump();
 
             axisAirfieldSet = sortAirfieldsByDistance(manager.getAirFieldsForSide(startDate, Side.AXIS), startDate, Side.AXIS);
-            System.out.println("\n\n\nAxis");
+            PWCGLogger.log(LogLevel.DEBUG, "\n\n\nAxis");
             axisAirfieldSet.side = Side.AXIS;
             axisAirfieldSet.date = startDate;
             axisAirfieldSet.dump();
@@ -88,7 +90,7 @@ public class AirfieldDistanceOrganizer
     {
         AirfieldSet airfieldSet = new AirfieldSet();
 
-        System.out.println("\n\n\n" + side + "\n");
+        PWCGLogger.log(LogLevel.DEBUG, "\n\n\n" + side + "\n");
 
         // Sort the fields 
         for (Airfield field: fields)
@@ -147,12 +149,12 @@ public class AirfieldDistanceOrganizer
         
         private void dumpList(String description, List<Airfield> fields) throws PWCGException
         {
-            System.out.println(description);
+            PWCGLogger.log(LogLevel.DEBUG, description);
         	for (Airfield field : fields)
         	{
                 int distance = AirfieldReporter.getDistanceToFront(field, side, date);
 
-                System.out.println("    " + field.getName() + ".  Distance: " + distance);
+                PWCGLogger.log(LogLevel.DEBUG, "    " + field.getName() + ".  Distance: " + distance);
         	}
         }
         

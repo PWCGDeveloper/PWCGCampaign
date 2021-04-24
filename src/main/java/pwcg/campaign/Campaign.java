@@ -120,7 +120,7 @@ public class Campaign
 
     public void initializeCampaignConfigs() throws PWCGException
     {
-        String campaignConfigDir = getCampaignPath() + "config\\";
+        String campaignConfigDir = getCampaignPathAutoCreateDirectory() + "config\\";
         campaignConfigManager = new ConfigManagerCampaign(campaignConfigDir);
         campaignConfigManager.initialize();
     }
@@ -176,17 +176,22 @@ public class Campaign
         return campaignList;
     }
 
-    public String getCampaignPath()
+    public String getCampaignPathAutoCreateDirectory()
     {
-        String dir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir();
-        String campaignPath = dir + campaignData.getName() + "\\";
-
+        String campaignPath = getCampaignPath();
         File campaignDir = new File(campaignPath);
         if (!campaignDir.exists())
         {
             campaignDir.mkdir();
         }
 
+        return campaignPath;
+    }
+
+    public String getCampaignPath()
+    {
+        String dir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir();
+        String campaignPath = dir + campaignData.getName() + "\\";
         return campaignPath;
     }
 
@@ -282,6 +287,16 @@ public class Campaign
         }
 
         return true;
+    }
+
+    public boolean isInMemory()
+    {
+        File campaignPathFile = new File(getCampaignPath());
+        if (!campaignPathFile.exists())
+        {
+            return true;
+        }
+        return false;
     }
 
     public Season getSeason()

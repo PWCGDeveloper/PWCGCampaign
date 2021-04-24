@@ -13,7 +13,6 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
-import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.rofmap.brief.model.BriefingData;
 import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
@@ -26,18 +25,18 @@ public class BriefingEditorScreen extends ImageResizingPanel implements ActionLi
 {
 	private static final long serialVersionUID = 1L;
 
-	private CampaignHomeScreen campaignHomeGui;
+    private CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper;
     private Mission mission;
     private BriefingData briefingData;
     private BriefingEditorPanel editorPanel;
 
-	public BriefingEditorScreen(CampaignHomeScreen campaignHomeGui) throws PWCGException  
+	public BriefingEditorScreen(CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper) throws PWCGException  
 	{
 		super("");
 		this.setLayout(new BorderLayout());
 		this.setOpaque(false);
 		
-		this.campaignHomeGui = campaignHomeGui;
+		this.campaignHomeGuiBriefingWrapper = campaignHomeGuiBriefingWrapper;
         this.briefingData =  BriefingContext.getInstance().getBriefingData();
         this.mission =  briefingData.getMission();
 
@@ -148,7 +147,7 @@ public class BriefingEditorScreen extends ImageResizingPanel implements ActionLi
     private void forwardToPilotSelection() throws PWCGException
     {
         pushEditsToModel();
-        BriefingPilotSelectionScreen pilotSelection = new BriefingPilotSelectionScreen(campaignHomeGui);
+        BriefingPilotSelectionScreen pilotSelection = new BriefingPilotSelectionScreen(campaignHomeGuiBriefingWrapper);
         pilotSelection.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(pilotSelection);
     }
@@ -156,13 +155,13 @@ public class BriefingEditorScreen extends ImageResizingPanel implements ActionLi
     private void scrubMission() throws PWCGException
     {
         mission.getCampaign().setCurrentMission(null);
-        campaignHomeGui.refreshInformation();
+        campaignHomeGuiBriefingWrapper.refreshCampaignPage();
         CampaignGuiContextManager.getInstance().backToCampaignHome();
     }
     
     private void backToCampaign() throws PWCGException
     {
-        campaignHomeGui.refreshInformation();
+        campaignHomeGuiBriefingWrapper.refreshCampaignPage();
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }
 

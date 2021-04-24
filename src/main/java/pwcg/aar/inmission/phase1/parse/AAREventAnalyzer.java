@@ -2,6 +2,8 @@ package pwcg.aar.inmission.phase1.parse;
 
 import pwcg.aar.inmission.phase1.parse.event.IAType12;
 import pwcg.aar.inmission.phase1.parse.event.IAType3;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class AAREventAnalyzer
 {
@@ -18,7 +20,7 @@ public class AAREventAnalyzer
         {
             String victim = getVehicleName(destroyed.getVictim());
             String victor = getVehicleName(destroyed.getVictor());
-            System.out.println(victim + " killed by " + victor);
+            PWCGLogger.log(LogLevel.DEBUG, victim + " killed by " + victor);
         }
     }
     

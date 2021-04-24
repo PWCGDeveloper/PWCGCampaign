@@ -9,6 +9,8 @@ import pwcg.campaign.CampaignLogs;
 import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class CampaignIOJson 
 {
@@ -70,7 +72,7 @@ public class CampaignIOJson
             if (file.exists())
             {
                 boolean wasDeleted = file.delete();
-                System.out.println("was deleted " + wasDeleted);
+                PWCGLogger.log(LogLevel.DEBUG, "was deleted " + wasDeleted);
             }
         }
     }

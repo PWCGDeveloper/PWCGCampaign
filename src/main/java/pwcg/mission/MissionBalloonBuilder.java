@@ -15,6 +15,7 @@ import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.ground.builder.BalloonUnitBuilder;
 import pwcg.mission.ground.org.GroundUnitCollection;
@@ -47,7 +48,7 @@ public class MissionBalloonBuilder
         for (GroundUnitCollection groundUnitCollection : missionBalloons)
         {
             missionBalloonUnitCount += groundUnitCollection.getUnitCount();
-            System.out.println("Unit count balloon : " + groundUnitCollection.getUnitCount());
+            PWCGLogger.log(LogLevel.INFO, "Unit count balloon : " + groundUnitCollection.getUnitCount());
         }
         return missionBalloonUnitCount;
     }

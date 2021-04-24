@@ -7,6 +7,8 @@ import pwcg.campaign.io.json.JsonObjectReader;
 import pwcg.campaign.io.json.JsonWriter;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.dev.jsonconvert.orig.io.GroundObjectsFile;
 
 public class GroundObjectIOJsonConverter {
@@ -46,7 +48,7 @@ public class GroundObjectIOJsonConverter {
 		GroundStructureGroup groundStructureGroup = jsonReader.readJsonFile(PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\", "GroundStructures.json");
 		for (AirfieldBlock airfieldBlock : groundStructureGroup.getAirfieldBlocks())
 		{
-			System.out.println(airfieldBlock.getModel());
+			PWCGLogger.log(LogLevel.INFO, airfieldBlock.getModel());
 		}
 	}
 }

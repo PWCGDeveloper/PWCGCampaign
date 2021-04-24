@@ -152,7 +152,6 @@ public class MissionWeather
             int weatherClearClouds = weatherLightsClouds + 30;
 
             int sky = RandomNumberGenerator.getRandom(weatherClearClouds);
-            System.out.println("SKy: " + sky);
             if (sky < weatherHeavyClouds)
             {
                 heavyWeather();

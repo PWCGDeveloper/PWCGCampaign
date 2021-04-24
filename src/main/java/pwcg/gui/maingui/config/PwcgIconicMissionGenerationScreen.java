@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
+import pwcg.campaign.skirmish.IconicMissionsManager;
+import pwcg.campaign.skirmish.IconicSingleMission;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
@@ -86,23 +88,14 @@ public class PwcgIconicMissionGenerationScreen extends ImageResizingPanel implem
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
+        
+        
         buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("Iconic Missions:"));
+        addMissionsForMapToButtonPanel(buttonPanel, "Stalingrad");
+        addMissionsForMapToButtonPanel(buttonPanel, "Kuban");
+        addMissionsForMapToButtonPanel(buttonPanel, "Rhine");
         buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
-        buttonPanel.add(makeCategoryRadioButton("Stalingerad: Bombing of Stalingrad", "19420824"));
-        buttonPanel.add(makeCategoryRadioButton("Stalingerad: Bombing of Barges", "19420910"));
-        buttonPanel.add(makeCategoryRadioButton("Stalingerad: Uranus", "19421120"));
-        buttonPanel.add(makeCategoryRadioButton("Stalingerad: Encirclement", "19421223"));
         buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
-        buttonPanel.add(makeCategoryRadioButton("Kuban: Shipping", "19431020"));
-        buttonPanel.add(makeCategoryRadioButton("Kuban: Kerch Amphibious Assault", "19431101"));
-        buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
-        buttonPanel.add(makeCategoryRadioButton("Rhine: Markey Garden", "19440917"));
-        buttonPanel.add(makeCategoryRadioButton("Rhine: Ardennes: German Assault", "19441215"));
-        buttonPanel.add(makeCategoryRadioButton("Rhine: Ardennes: Bastogne", "19441225"));
-        buttonPanel.add(makeCategoryRadioButton("Rhine: Ardennes: Allied Counterattack", "19441228"));
-        buttonPanel.add(makeCategoryRadioButton("Rhine: Bodenplatte", "19450101"));
-        buttonPanel.add(makeCategoryRadioButton("Rhine: Plunder", "19450323"));
-        buttonPanel.add(makeCategoryRadioButton("Rhine: Varsity", "19450324"));
         buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
 
         add (buttonPanel);
@@ -112,6 +105,15 @@ public class PwcgIconicMissionGenerationScreen extends ImageResizingPanel implem
         return configPanel;
     }
 
+    private void addMissionsForMapToButtonPanel(JPanel buttonPanel, String mapName) throws PWCGException
+    {
+        buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
+        for (IconicSingleMission iconicMission : IconicMissionsManager.getInstance().getIconicMissionsForMapByDate(mapName))
+        {
+            buttonPanel.add(makeCategoryRadioButton(iconicMission.getMapName() + ": " + iconicMission.getCampaignName(), iconicMission.getDateString()));
+        }
+    }
+    
     private JRadioButton makeCategoryRadioButton(String buttonText, String battleDate) throws PWCGException 
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;

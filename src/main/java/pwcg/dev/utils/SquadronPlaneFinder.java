@@ -68,13 +68,13 @@ public class SquadronPlaneFinder
         PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
         for (Squadron squad : allSq)
         {
-            System.out.println("Squadron: " + squad.getSquadronId());
+            PWCGLogger.log(LogLevel.DEBUG, "Squadron: " + squad.getSquadronId());
             boolean hasPlane = false;
             for (SquadronPlaneAssignment planeAssignment : squad.getPlaneAssignments())
             {
                 for (PlaneType plane : planeTypeFactory.createPlaneTypesForArchType(planeAssignment.getArchType()))
                 {
-                    System.out.println("        " + plane.getDisplayName());
+                    PWCGLogger.log(LogLevel.DEBUG, "        " + plane.getDisplayName());
                 }
             }
 

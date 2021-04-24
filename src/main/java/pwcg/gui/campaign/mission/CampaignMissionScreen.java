@@ -24,6 +24,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.HelpDialog;
 import pwcg.gui.rofmap.brief.BriefingCoopPersonaChooser;
 import pwcg.gui.rofmap.brief.BriefingDescriptionScreen;
+import pwcg.gui.rofmap.brief.CampaignHomeGuiBriefingWrapper;
 import pwcg.gui.rofmap.debrief.DebriefMissionDescriptionScreen;
 import pwcg.gui.sound.MusicManager;
 import pwcg.gui.sound.SoundManager;
@@ -149,14 +150,16 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
         MusicManager.playMissionBriefingTheme();
         SoundManager.getInstance().playSound("Typewriter.WAV");
 
-        BriefingDescriptionScreen briefingMap = new BriefingDescriptionScreen(campaignHome, mission);
+        CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper = new CampaignHomeGuiBriefingWrapper(campaignHome);
+        BriefingDescriptionScreen briefingMap = new BriefingDescriptionScreen(campaignHomeGuiBriefingWrapper, mission);
         briefingMap.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(briefingMap);
     }
     
     private void showCoopPersonaChooser() throws PWCGException 
     {
-        BriefingCoopPersonaChooser coopPersonaChooser = new BriefingCoopPersonaChooser(campaign, campaignHome);
+        CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper = new CampaignHomeGuiBriefingWrapper(campaignHome);
+        BriefingCoopPersonaChooser coopPersonaChooser = new BriefingCoopPersonaChooser(campaign, campaignHomeGuiBriefingWrapper);
         coopPersonaChooser.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(coopPersonaChooser);
     }

@@ -8,6 +8,8 @@ import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class CoopUserIOJson 
 {	
@@ -47,7 +49,7 @@ public class CoopUserIOJson
 			}
 			catch (Exception e)
 			{
-			    System.out.println("Fubar " + jsonFile.getName());
+			    PWCGLogger.log(LogLevel.DEBUG, "Fubar " + jsonFile.getName());
 			}
 		}
 		

@@ -12,6 +12,8 @@ import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class AirfieldReporter
 {
@@ -26,18 +28,18 @@ public class AirfieldReporter
             
             manager.configure(FrontMapIdentifier.STALINGRAD_MAP);
             
-            System.out.println("\n\n\n\n\nAllied");
+            PWCGLogger.log(LogLevel.DEBUG, "\n\n\n\n\nAllied");
             for (Airfield field: manager.getAirFieldsForSide(date, Side.ALLIED))
             {
                 int distanceToFront = getDistanceToFront(field, Side.ALLIED, date);
-                System.out.println(field.getName() + "   Km to front: " + distanceToFront);
+                PWCGLogger.log(LogLevel.DEBUG, field.getName() + "   Km to front: " + distanceToFront);
             }
             
-            System.out.println("\n\n\n\n\nAxis");
+            PWCGLogger.log(LogLevel.DEBUG, "\n\n\n\n\nAxis");
             for (Airfield field: manager.getAirFieldsForSide(date, Side.AXIS))
             {
                 int distanceToFront = getDistanceToFront(field, Side.AXIS, date);
-                System.out.println(field.getName() + "   Km to front: " + distanceToFront);
+                PWCGLogger.log(LogLevel.DEBUG, field.getName() + "   Km to front: " + distanceToFront);
             }
         }
         catch (Exception e)

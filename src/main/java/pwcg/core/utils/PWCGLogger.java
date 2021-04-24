@@ -46,7 +46,7 @@ public class PWCGLogger
             if (categoryIsEnabled)
             {
                 // For the console
-                System.out.println(message);
+                PWCGLogger.log(LogLevel.DEBUG, message);
                 
                 // to the file
                 fw = new FileWriter ("PWCGErrorLog.txt", true);
@@ -98,7 +98,7 @@ public class PWCGLogger
             if (logThisMessage(logLevel))
             {
                 // For the console
-                System.out.println(message);
+                PWCGLogger.log(LogLevel.DEBUG, message);
                 
                 // to the file
                 fw = new FileWriter ("PWCGErrorLog.txt", true);

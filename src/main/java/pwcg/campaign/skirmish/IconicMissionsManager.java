@@ -2,6 +2,7 @@ package pwcg.campaign.skirmish;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeMap;
 
 import pwcg.campaign.io.json.IconicMissionsIOJson;
 import pwcg.core.exception.PWCGException;
@@ -9,7 +10,7 @@ import pwcg.core.utils.PWCGLogger;
 
 public class IconicMissionsManager
 {
-	private List<IconicMission> iconicMissions = new ArrayList<>();
+	private List<IconicSingleMission> iconicMissions = new ArrayList<>();
     
     private static IconicMissionsManager instance = null; 
 
@@ -39,9 +40,9 @@ public class IconicMissionsManager
         }
 	}
 
-    public IconicMission getSelectedMissionProfile(String missionKey) throws PWCGException 
+    public IconicSingleMission getSelectedMissionProfile(String missionKey) throws PWCGException 
     {     
-        for (IconicMission iconicMission : iconicMissions)
+        for (IconicSingleMission iconicMission : iconicMissions)
         {
             if (iconicMission.getDateString().equals(missionKey))
             {
@@ -51,8 +52,16 @@ public class IconicMissionsManager
         throw new PWCGException("No iconic mission found for key " + missionKey);
     }
 
-    public List<IconicMission> getIconicMissions()
+    public List<IconicSingleMission> getIconicMissionsForMapByDate(String mapName)
     {
-        return iconicMissions;
+        TreeMap<String, IconicSingleMission> iconicMissionsForMapByDate = new TreeMap<>();
+        for (IconicSingleMission iconicMission : iconicMissions)
+        {
+            if (iconicMission.getMapName().equals(mapName))
+            {
+                iconicMissionsForMapByDate.put(iconicMission.getDateString(), iconicMission);
+            }
+        }
+        return new ArrayList<>(iconicMissionsForMapByDate.values());
     }
 }

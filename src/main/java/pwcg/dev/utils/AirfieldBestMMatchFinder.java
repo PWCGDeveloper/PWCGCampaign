@@ -12,6 +12,8 @@ import pwcg.campaign.plane.RoleCategory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.dev.utils.AirfieldDistanceOrganizer.AirfieldSet;
 
 public class AirfieldBestMMatchFinder
@@ -49,7 +51,7 @@ public class AirfieldBestMMatchFinder
             }
         }
         
-        System.out.println(bestField.getName() + "   Km to front: " + closest);
+        PWCGLogger.log(LogLevel.DEBUG, bestField.getName() + "   Km to front: " + closest);
         
         return bestField;
     }

@@ -19,6 +19,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.data.PwcgGeneratedMission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
@@ -135,10 +136,10 @@ public class Mission
         unitCountInMission += unitCountMissionGroundUnits;
         unitCountInMission += unitCountInAirfields;
 
-        System.out.println("unit count flights : " + unitCountInFlights);
-        System.out.println("unit count misson : " + unitCountMissionGroundUnits);
-        System.out.println("unit count airfields : " + unitCountInAirfields);
-        System.out.println("unit count total : " + unitCountInMission);
+        PWCGLogger.log(LogLevel.INFO, "unit count flights : " + unitCountInFlights);
+        PWCGLogger.log(LogLevel.INFO, "unit count misson : " + unitCountMissionGroundUnits);
+        PWCGLogger.log(LogLevel.INFO, "unit count airfields : " + unitCountInAirfields);
+        PWCGLogger.log(LogLevel.INFO, "unit count total : " + unitCountInMission);
 
         return unitCountInMission;
     }
@@ -234,15 +235,18 @@ public class Mission
 
     private void writePwcgMissionData(String missionDescriptionText) throws PWCGException
     {
-        StringBuffer missionDescriptionBuffer = new StringBuffer("");
-        missionDescriptionBuffer.append("Mission: \n");
-        missionDescriptionBuffer.append(missionDescriptionText);
-
-        PwcgGeneratedMission pwcgMission = new PwcgGeneratedMission(campaign);
-        PwcgMissionData pwcgMissionData = pwcgMission.generateMissionData(this);
-        pwcgMissionData.setMissionDescription(missionDescriptionBuffer.toString());
-
-        CampaignMissionIOJson.writeJson(campaign, pwcgMissionData);
+        if (!campaign.isInMemory())
+        {
+            StringBuffer missionDescriptionBuffer = new StringBuffer("");
+            missionDescriptionBuffer.append("Mission: \n");
+            missionDescriptionBuffer.append(missionDescriptionText);
+    
+            PwcgGeneratedMission pwcgMission = new PwcgGeneratedMission(campaign);
+            PwcgMissionData pwcgMissionData = pwcgMission.generateMissionData(this);
+            pwcgMissionData.setMissionDescription(missionDescriptionBuffer.toString());
+    
+            CampaignMissionIOJson.writeJson(campaign, pwcgMissionData);
+        }
     }
 
     private void createFirePots() throws PWCGException

@@ -17,7 +17,6 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
-import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.rofmap.brief.model.BriefingData;
 import pwcg.gui.rofmap.brief.update.BriefingMissionUpdater;
@@ -29,20 +28,20 @@ import pwcg.mission.Mission;
 
 public class BriefingDescriptionScreen extends ImageResizingPanel implements ActionListener, IFlightChanged
 {
-    private CampaignHomeScreen campaignHomeGui = null;
-
 	private static final long serialVersionUID = 1L;
+
+	private CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper;
     private Mission mission;
     private BriefingData briefingData;
     private BriefingFlightChooser briefingFlightChooser;
     private BriefingDescriptionChalkboard briefingChalkboard;
     
-	public BriefingDescriptionScreen(CampaignHomeScreen campaignHomeGui, Mission mission) throws PWCGException 
+	public BriefingDescriptionScreen(CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper, Mission mission) throws PWCGException 
 	{
         super("");
         this.setLayout(new BorderLayout());
 	    
-        this.campaignHomeGui =  campaignHomeGui;
+        this.campaignHomeGuiBriefingWrapper =  campaignHomeGuiBriefingWrapper;
         this.mission =  mission;
 
         BriefingContext briefingContext = BriefingContext.getInstance();
@@ -170,7 +169,7 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
 
-        BriefingMapGUI briefingMap = new BriefingMapGUI(campaignHomeGui.getCampaign(), campaignHomeGui);
+        BriefingMapGUI briefingMap = new BriefingMapGUI(mission.getCampaign(), campaignHomeGuiBriefingWrapper);
         briefingMap.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(briefingMap);
     }
@@ -179,7 +178,7 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
     {
         Campaign campaign  = PWCGContext.getInstance().getCampaign();
         campaign.setCurrentMission(null);
-        campaignHomeGui.refreshInformation();
+        campaignHomeGuiBriefingWrapper.refreshCampaignPage();
         CampaignGuiContextManager.getInstance().backToCampaignHome();
     }
 
@@ -191,10 +190,10 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
         
         campaign.setCurrentMission(mission);
         
-        campaignHomeGui.refreshInformation();
+        campaignHomeGuiBriefingWrapper.refreshCampaignPage();
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }
-    
+
     public void refreshScreen() throws PWCGException
     {
         briefingChalkboard.setMissionText();

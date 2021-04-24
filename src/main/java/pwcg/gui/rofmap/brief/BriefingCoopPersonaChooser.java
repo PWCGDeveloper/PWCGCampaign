@@ -24,7 +24,6 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
-import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.campaign.home.GuiMissionInitiator;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -38,22 +37,23 @@ import pwcg.mission.MissionHumanParticipants;
 public class BriefingCoopPersonaChooser extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
+    
     private CoopPersonaChooserPanel coopPersonaAccept;
     private JPanel coopPersonaErrorPanel;
     private List<String> errorMessages = new ArrayList<>();
-    private CampaignHomeScreen campaignHomeGui;
+    private CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper;
     private Campaign campaign;
     private JButton missionButton;
     private MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
 
-    public BriefingCoopPersonaChooser(Campaign campaign,CampaignHomeScreen campaignHomeGui)
+    public BriefingCoopPersonaChooser(Campaign campaign, CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper)
     {
         super("");
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
         this.campaign = campaign;
-        this.campaignHomeGui = campaignHomeGui;
+        this.campaignHomeGuiBriefingWrapper = campaignHomeGuiBriefingWrapper;
     }
     
     public void makePanels() 
@@ -233,7 +233,7 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
     	MusicManager.playMissionBriefingTheme();
     	SoundManager.getInstance().playSound("Typewriter.WAV");
 
-        BriefingDescriptionScreen briefingMap = new BriefingDescriptionScreen(campaignHomeGui, mission);
+        BriefingDescriptionScreen briefingMap = new BriefingDescriptionScreen(campaignHomeGuiBriefingWrapper, mission);
         briefingMap.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(briefingMap);
     }
@@ -242,7 +242,7 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
     {
         Campaign campaign  = PWCGContext.getInstance().getCampaign();
         campaign.setCurrentMission(null);        
-        campaignHomeGui.refreshInformation();
+        campaignHomeGuiBriefingWrapper.refreshCampaignPage();
         CampaignGuiContextManager.getInstance().backToCampaignHome();
     }
 

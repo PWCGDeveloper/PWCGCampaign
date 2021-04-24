@@ -11,6 +11,8 @@ import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.core.utils.PositionFinder;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBalloonBuilder;
@@ -203,14 +205,14 @@ public class MissionGroundUnitBuilder
             shipCount += groundUnitCollection.getUnitCount();
         }
 
-        System.out.println("Mission unit count battle : " + battleCount);
-        System.out.println("Mission unit count train : " + trainCount);
-        System.out.println("Mission unit count truck : " + truckCount);
-        System.out.println("Mission unit count ships : " + shipCount);
-        System.out.println("Mission unit count AA : " + aaCount);
+        PWCGLogger.log(LogLevel.INFO, "Mission unit count battle : " + battleCount);
+        PWCGLogger.log(LogLevel.INFO, "Mission unit count train : " + trainCount);
+        PWCGLogger.log(LogLevel.INFO, "Mission unit count truck : " + truckCount);
+        PWCGLogger.log(LogLevel.INFO, "Mission unit count ships : " + shipCount);
+        PWCGLogger.log(LogLevel.INFO, "Mission unit count AA : " + aaCount);
         
         int missionUnitCount = trainCount + truckCount + aaCount + battleCount + shipCount;
-        System.out.println("Mission unit count total : " + missionUnitCount);
+        PWCGLogger.log(LogLevel.INFO, "Mission unit count total : " + missionUnitCount);
         return missionUnitCount;
 
     }

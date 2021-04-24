@@ -32,7 +32,7 @@ public class ConfigManagerCampaignTest
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
         CampaignIOJson.writeJson(campaign);
         
-        String campaignConfigDir = campaign.getCampaignPath() + "config\\";
+        String campaignConfigDir = campaign.getCampaignPathAutoCreateDirectory() + "config\\";
         ConfigManagerCampaign campaignConfigManager = new ConfigManagerCampaign(campaignConfigDir);
         campaignConfigManager.initializeDefault();
         

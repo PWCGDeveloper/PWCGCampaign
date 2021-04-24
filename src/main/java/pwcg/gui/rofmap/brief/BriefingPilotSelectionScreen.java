@@ -26,7 +26,6 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
-import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.rofmap.brief.model.BriefingData;
 import pwcg.gui.rofmap.brief.model.BriefingFlight;
@@ -42,7 +41,8 @@ import pwcg.mission.flight.plane.PlaneMcu;
 public class BriefingPilotSelectionScreen extends ImageResizingPanel implements ActionListener, MouseWheelListener, IFlightChanged
 {
     private static final long serialVersionUID = 1L;
-    private CampaignHomeScreen campaignHomeGui;
+    
+    private CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper;
     private Campaign campaign;
     private Mission mission;
     private JPanel briefingMapCenterPanel;
@@ -52,12 +52,12 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     private BriefingFlightChooser briefingFlightChooser;
     private int selectedPilotSerialNumber = -1;
 
-    public BriefingPilotSelectionScreen(CampaignHomeScreen campaignHomeGui)
+    public BriefingPilotSelectionScreen(CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper)
     {
         super("");
         this.setLayout(new BorderLayout());
         
-        this.campaignHomeGui = campaignHomeGui;
+        this.campaignHomeGuiBriefingWrapper = campaignHomeGuiBriefingWrapper;
         
         this.briefingData =  BriefingContext.getInstance().getBriefingData();
         this.mission =  briefingData.getMission();
@@ -407,7 +407,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     private void scrubMission() throws PWCGException
     {
         campaign.setCurrentMission(null);
-        campaignHomeGui.refreshInformation();
+        campaignHomeGuiBriefingWrapper.refreshCampaignPage();
         CampaignGuiContextManager.getInstance().backToCampaignHome();
     }
 
@@ -432,20 +432,21 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         BriefingMissionUpdater.finalizeMission(briefingData);
 
         campaign.setCurrentMission(mission);
-        campaignHomeGui.refreshInformation();        
         this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+
+        campaignHomeGuiBriefingWrapper.refreshCampaignPage();        
         CampaignGuiContextManager.getInstance().backToCampaignHome();
     }
 
     private void backToCampaign() throws PWCGException, PWCGException
     {
-        campaignHomeGui.refreshInformation();
+        campaignHomeGuiBriefingWrapper.refreshCampaignPage();
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }
     
     private boolean ensurePlayerIsInMission() throws PWCGException
     {
-    	if (campaignHomeGui.getCampaign().isCoop())
+    	if (mission.getCampaign().isCoop())
     	{
     		return true;
     	}

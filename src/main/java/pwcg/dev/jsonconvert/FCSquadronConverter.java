@@ -20,6 +20,8 @@ import pwcg.campaign.squadron.SquadronRolePeriod;
 import pwcg.campaign.squadron.SquadronRoleSet;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.product.fc.country.FCServiceManager;
 
 public class FCSquadronConverter extends GroundObjectIOJsonConverter{
@@ -38,7 +40,7 @@ public class FCSquadronConverter extends GroundObjectIOJsonConverter{
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         for (Squadron squadron : squadronManager.getAllSquadrons())
         {
-            System.out.println(squadron.determineDisplayName(DateUtils.getDateYYYYMMDD("19180601")));
+            PWCGLogger.log(LogLevel.INFO, squadron.determineDisplayName(DateUtils.getDateYYYYMMDD("19180601")));
             
             List<Skin> skins = new ArrayList<Skin>();
             squadron.setSkins(skins);

@@ -22,18 +22,21 @@ import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.RankFactory;
-import pwcg.campaign.skirmish.IconicMission;
+import pwcg.campaign.skirmish.IconicSingleMission;
 import pwcg.campaign.skirmish.IconicMissionsManager;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
+import pwcg.gui.rofmap.brief.BriefingDescriptionScreen;
+import pwcg.gui.rofmap.brief.CampaignHomeGuiBriefingWrapper;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.mission.Mission;
@@ -77,7 +80,7 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
         buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("Iconic Mission Squadrons:"));
         buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
 
-        IconicMission iconicMission = IconicMissionsManager.getInstance().getSelectedMissionProfile(iconicBattleKey);
+        IconicSingleMission iconicMission = IconicMissionsManager.getInstance().getSelectedMissionProfile(iconicBattleKey);
         for (Integer squadronId : iconicMission.getIconicBattleParticipants())
         {
             String description = formDescription(squadronId);
@@ -135,7 +138,12 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
             {
                 if (selectedSquadron > 0)
                 {
-                    generateMission();
+                    Campaign campaign = generateCampaign();
+                    Mission mission = generateMission(campaign);
+                    CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper = new CampaignHomeGuiBriefingWrapper(null);
+                    BriefingDescriptionScreen briefingMap = new BriefingDescriptionScreen(campaignHomeGuiBriefingWrapper, mission);
+                    briefingMap.makePanels();
+                    CampaignGuiContextManager.getInstance().pushToContextStack(briefingMap);
                 }
                 return;
             }
@@ -150,31 +158,11 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
             ErrorDialog.internalError(e.getMessage());
         }
     }
-    
-    private void generateMission() throws PWCGException
+
+    private Campaign generateCampaign() throws PWCGException
     {
         CampaignGeneratorModel model = makeCampaignModelForProfile();        
-        Campaign campaign = makeCampaignFromModel(model);
-        MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        Mission mission = missionGenerator.makeMission(buildTestParticipatingHumans(campaign));
-        mission.finalizeMission();
-        
-        mission.writeGameMissionFiles();
-    }
-
-    public MissionHumanParticipants buildTestParticipatingHumans(Campaign campaign) throws PWCGException
-    {
-        MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-        for (SquadronMember player: campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
-        {
-            participatingPlayers.addSquadronMember(player);
-        }
-        return participatingPlayers;
-    }
-
-    private Campaign makeCampaignFromModel(CampaignGeneratorModel generatorModel) throws PWCGException
-    {
-        CampaignGenerator generator = new CampaignGenerator(generatorModel);
+        CampaignGenerator generator = new CampaignGenerator(model);
         Campaign campaign = generator.generate();          
         PWCGContext.getInstance().setCampaign(campaign);
         return campaign;
@@ -182,7 +170,7 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
 
     private CampaignGeneratorModel makeCampaignModelForProfile() throws PWCGException
     {
-        IconicMission iconicMission = IconicMissionsManager.getInstance().getSelectedMissionProfile(iconicBattleKey);
+        IconicSingleMission iconicMission = IconicMissionsManager.getInstance().getSelectedMissionProfile(iconicBattleKey);
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(selectedSquadron);
         Date campaignDate = DateUtils.getDateYYYYMMDD(iconicBattleKey);
 
@@ -194,7 +182,7 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
     
         CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
         generatorModel.setCampaignDate(campaignDate);
-        generatorModel.setCampaignName(iconicMission.getCampaignName());
+        generatorModel.setCampaignName(iconicMission.getMapName() + " " + iconicMission.getCampaignName());
         generatorModel.setPlayerName("Iconic Player");
         generatorModel.setPlayerRank(rankName);
         generatorModel.setPlayerRegion("");
@@ -203,6 +191,26 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
         generatorModel.setCampaignMode(CampaignMode.CAMPAIGN_MODE_SINGLE);
 
         return generatorModel;
+    }
+
+    private MissionHumanParticipants buildTestParticipatingHumans(Campaign campaign) throws PWCGException
+    {
+        MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
+        for (SquadronMember player: campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
+        {
+            participatingPlayers.addSquadronMember(player);
+        }
+        return participatingPlayers;
+    }
+
+    private Mission generateMission(Campaign campaign) throws PWCGException
+    {
+        MissionGenerator missionGenerator = new MissionGenerator(campaign);
+        Mission mission = missionGenerator.makeMission(buildTestParticipatingHumans(campaign));
+        return mission;
+        
+        // mission.finalizeMission();
+        // mission.writeGameMissionFiles();
     }
 
 }

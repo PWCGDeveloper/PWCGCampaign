@@ -12,6 +12,8 @@ import pwcg.campaign.plane.PlaneEquipmentFactory;
 import pwcg.campaign.resupply.depot.EquipmentReplacementUtils;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.core.utils.RandomNumberGenerator;
 
 public class WithdrawnEquipmentReplacer
@@ -118,7 +120,7 @@ public class WithdrawnEquipmentReplacer
             }
             else
             {
-                System.out.println("");
+                PWCGLogger.log(LogLevel.DEBUG, "");
             }
         }
         return availableArchTypes;

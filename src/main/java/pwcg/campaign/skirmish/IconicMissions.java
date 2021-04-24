@@ -5,9 +5,9 @@ import java.util.List;
 
 public class IconicMissions
 {
-	private List<IconicMission> iconicMissions = new ArrayList<>();
+	private List<IconicSingleMission> iconicMissions = new ArrayList<>();
 
-	public List<IconicMission> getIconicMissiones()
+	public List<IconicSingleMission> getIconicMissiones()
 	{
 		return iconicMissions;
 	}

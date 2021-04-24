@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class FindTheObject
 {
@@ -45,7 +46,7 @@ public class FindTheObject
             
             if (!found)
             {
-                System.out.println("Bad object is " + objectFromMission);
+                PWCGLogger.log(LogLevel.DEBUG, "Bad object is " + objectFromMission);
             }
         }
     }

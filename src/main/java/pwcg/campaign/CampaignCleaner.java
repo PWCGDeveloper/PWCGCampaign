@@ -20,6 +20,8 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.campaign.squadron.SquadronViability;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class CampaignCleaner
 {
@@ -131,7 +133,7 @@ public class CampaignCleaner
                 {
                     SquadronPersonnel campaignPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronId);
                     SquadronMember  squadronMember = campaignPersonnel.getSquadronMember(serialNumber);
-                    System.out.println("Replace " + squadronMember.getName() + " squadron member : " + serialNumber + " flying for " + squadronId);
+                    PWCGLogger.log(LogLevel.DEBUG, "Replace " + squadronMember.getName() + " squadron member : " + serialNumber + " flying for " + squadronId);
                     
                     if (!firstTime)
                     {
@@ -183,7 +185,7 @@ public class CampaignCleaner
             {
                 for (Integer squadronId : squadronsForSerialNumber)
                 {
-                    System.out.println("Duplicate squadron member : " + serialNumber + " flying for " + squadronId);
+                    PWCGLogger.log(LogLevel.DEBUG, "Duplicate squadron member : " + serialNumber + " flying for " + squadronId);
                 }
             }
         }
@@ -268,7 +270,7 @@ public class CampaignCleaner
         }
         else
         {
-            System.out.println("Could not find medal for " + medal.getMedalName());
+            PWCGLogger.log(LogLevel.DEBUG, "Could not find medal for " + medal.getMedalName());
         }
     }
 }

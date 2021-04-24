@@ -18,7 +18,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.rofmap.MapGUI;
@@ -33,18 +32,18 @@ import pwcg.mission.mcu.McuWaypoint;
 public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightChanged, IBriefingSquadronSelectedCallback
 {
 	private static final long serialVersionUID = 1L;
-    private CampaignHomeScreen campaignHomeGui;
 
+    private CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper;
     private Mission mission;
     private BriefingData briefingData;
     private BriefingFlightChooser briefingFlightChooser;
     private BriefingMapPanel mapPanel;
 
-	public BriefingMapGUI(Campaign campaign, CampaignHomeScreen campaignHomeGui) throws PWCGException  
+	public BriefingMapGUI(Campaign campaign, CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper) throws PWCGException  
 	{
 		super(campaign.getDate());
 		
-        this.campaignHomeGui =  campaignHomeGui;
+        this.campaignHomeGuiBriefingWrapper =  campaignHomeGuiBriefingWrapper;
         this.briefingData =  BriefingContext.getInstance().getBriefingData();
         this.mission =  briefingData.getMission();
 
@@ -199,13 +198,13 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
     {
         Campaign campaign  = PWCGContext.getInstance().getCampaign();
         campaign.setCurrentMission(null);
-        campaignHomeGui.refreshInformation();
+        campaignHomeGuiBriefingWrapper.refreshCampaignPage();
         CampaignGuiContextManager.getInstance().backToCampaignHome();
     }
     
     private void backToCampaign() throws PWCGException
     {
-        campaignHomeGui.refreshInformation();
+        campaignHomeGuiBriefingWrapper.refreshCampaignPage();
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }
 
@@ -217,7 +216,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 
     private void forwardToWaypointEditor() throws PWCGException 
     {
-        BriefingEditorScreen waypointEditorScreen = new BriefingEditorScreen(campaignHomeGui);
+        BriefingEditorScreen waypointEditorScreen = new BriefingEditorScreen(campaignHomeGuiBriefingWrapper);
         waypointEditorScreen.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(waypointEditorScreen);
     }

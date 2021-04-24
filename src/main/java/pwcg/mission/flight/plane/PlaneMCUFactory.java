@@ -14,6 +14,8 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.crew.FlightCrewBuilder;
 
@@ -80,7 +82,7 @@ public class PlaneMCUFactory
         	catch (Exception e)
         	{
         		e.printStackTrace();
-        		System.out.println(e.getMessage());
+        		PWCGLogger.log(LogLevel.ERROR, e.getMessage());
         	}
         }
         

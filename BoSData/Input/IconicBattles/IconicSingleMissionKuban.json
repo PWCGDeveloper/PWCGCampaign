@@ -1,7 +1,8 @@
 {
 	"iconicMissions": [
 		{
-			"campaignName": "Kuban: Shipping",
+			"mapName": "Kuban",
+			"campaignName": "Shipping",
 			"dateString": "19431020",
 			"iconicBattleParticipants": [
 				10111233,
@@ -17,7 +18,8 @@
 			]
 		},
 		{
-			"campaignName": "Kuban: Kerch Amphibious Assault",
+			"mapName": "Kuban",
+			"campaignName": "Kerch Amphibious Assault",
 			"dateString": "19431101",
 			"iconicBattleParticipants": [
 				10111233,

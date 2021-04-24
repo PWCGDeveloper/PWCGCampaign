@@ -10,6 +10,8 @@ import pwcg.campaign.io.json.HistoricalAceIOJson;
 import pwcg.campaign.squadmember.HistoricalAce;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.core.utils.DateUtils;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class AceCsvReader
 {
@@ -46,9 +48,9 @@ public class AceCsvReader
         for (String aceVictoryEntry : aceVictoryEntries)
         {
             String[] entrySplit = aceVictoryEntry.split(",");
-            System.out.println(entrySplit[0]);
-            System.out.println(entrySplit[1]);
-            System.out.println(entrySplit[2]);
+            PWCGLogger.log(LogLevel.DEBUG, entrySplit[0]);
+            PWCGLogger.log(LogLevel.DEBUG, entrySplit[1]);
+            PWCGLogger.log(LogLevel.DEBUG, entrySplit[2]);
             
             Victory victory = new Victory();
             victory.getVictim().setType(entrySplit[2]);
@@ -60,7 +62,7 @@ public class AceCsvReader
         
         HistoricalAceIOJson.writeJson(historicalAce);
         
-        System.out.println(aceName + " completed");
+        PWCGLogger.log(LogLevel.DEBUG, aceName + " completed");
     }
     
     private void readLogFile(String filename) throws Exception

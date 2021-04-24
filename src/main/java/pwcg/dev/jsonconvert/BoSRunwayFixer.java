@@ -13,6 +13,8 @@ import pwcg.campaign.io.json.AirfieldDescriptorIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class BoSRunwayFixer
 {
@@ -62,10 +64,10 @@ public class BoSRunwayFixer
             String name = desc.getName();
             
             Double distance = MathUtils.calcDist(parkingLocation, takeoffLocation);
-            System.out.println(name + " distance: " + distance.intValue());
+            PWCGLogger.log(LogLevel.DEBUG, name + " distance: " + distance.intValue());
 
             Double taxiInitialDistance = MathUtils.calcDist(parkingLocation, taxiStartLocations.get(0));
-            System.out.println(name + " taxi initial distance: " + taxiInitialDistance.intValue());
+            PWCGLogger.log(LogLevel.DEBUG, name + " taxi initial distance: " + taxiInitialDistance.intValue());
 
             
             Coordinate lasttaxiLoc = null;
@@ -74,7 +76,7 @@ public class BoSRunwayFixer
                 if (lasttaxiLoc != null)
                 {
                     Double taxiDistance = MathUtils.calcDist(lasttaxiLoc, taxiLoc);
-                    System.out.println(name + " taxi distance: " + taxiDistance.intValue());
+                    PWCGLogger.log(LogLevel.DEBUG, name + " taxi distance: " + taxiDistance.intValue());
                 }
                 
                 lasttaxiLoc = taxiLoc;

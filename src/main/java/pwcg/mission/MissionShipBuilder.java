@@ -14,6 +14,8 @@ import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.ground.builder.ShipTypeChooser;
 import pwcg.mission.ground.builder.ShippingUnitBuilder;
@@ -47,7 +49,7 @@ public class MissionShipBuilder
         for (GroundUnitCollection groundUnitCollection : missionShips)
         {
             missionBalloonUnitCount += groundUnitCollection.getUnitCount();
-            System.out.println("Unit count balloon : " + groundUnitCollection.getUnitCount());
+            PWCGLogger.log(LogLevel.INFO, "Unit count balloon : " + groundUnitCollection.getUnitCount());
         }
         return missionBalloonUnitCount;
     }

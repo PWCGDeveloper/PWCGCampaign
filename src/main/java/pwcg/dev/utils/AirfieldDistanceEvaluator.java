@@ -15,6 +15,8 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.dev.utils.AirfieldDistanceOrganizer.AirfieldSet;
 
 public class AirfieldDistanceEvaluator
@@ -52,7 +54,7 @@ public class AirfieldDistanceEvaluator
                 String startDateString = mapTransitionDates[i];
                 String endDateString = mapTransitionDates[i+1];
                 
-                System.out.println("\n\n\nDate is " + startDateString + " to " + endDateString);
+                PWCGLogger.log(LogLevel.DEBUG, "\n\n\nDate is " + startDateString + " to " + endDateString);
                 
                 Date startDate = DateUtils.getDateWithValidityCheck(startDateString);
                              
@@ -143,9 +145,9 @@ public class AirfieldDistanceEvaluator
 
             if (bad)
             {
-                System.out.println("\nSquadron " + squadron.getSquadronId() + " at field " + squadronField.getName() + " on date " + dateNow + reason);
+                PWCGLogger.log(LogLevel.DEBUG, "\nSquadron " + squadron.getSquadronId() + " at field " + squadronField.getName() + " on date " + dateNow + reason);
                 int distance = AirfieldReporter.getDistanceToFront(squadronField, sideSquadrons, dateNow);
-                System.out.println(squadronField.getName() + "   Km to front: " + distance);
+                PWCGLogger.log(LogLevel.DEBUG, squadronField.getName() + "   Km to front: " + distance);
                 AirfieldBestMMatchFinder.recommendBestMatch(squadron, dateNow);
             }
         }

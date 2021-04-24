@@ -2,11 +2,17 @@ package pwcg.campaign.skirmish;
 
 import java.util.List;
 
-public class IconicMission
+public class IconicSingleMission
 {
+    private String mapName;
     private String campaignName;
     private String dateString;
     List<Integer> iconicBattleParticipants;
+
+    public String getMapName()
+    {
+        return mapName;
+    }
 
     public String getCampaignName()
     {
