@@ -12,7 +12,6 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.skirmish.DynamicSkirmishBuilder;
 import pwcg.campaign.skirmish.Skirmish;
 import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
@@ -80,9 +79,7 @@ public class KubanCargoRouteTest
         boolean groundAttackFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_SHIPPING, Side.AXIS);
         assert (diveBombFlightTargetFound || groundAttackFlightTargetFound);
 
-        MissionFlightValidator.validateMission(mission);
-        
-        TestDriver.saveTestMission(campaign, mission);
+        MissionFlightValidator.validateMission(mission);        
     }
 
     @Test

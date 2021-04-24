@@ -2,11 +2,9 @@ package pwcg.campaign.utils;
 
 import java.util.List;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.Mission;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.target.TargetType;
 
@@ -56,13 +54,6 @@ public class TestDriver
     public static TestDriver getInstance()
     {
         return testDriver;
-    }
-
-    public static void saveTestMission (Campaign campaign, Mission mission) throws PWCGException
-    {
-        mission.finalizeMission();
-        campaign.write();
-        mission.write();
     }
 
     public boolean isEnabled()
