@@ -12,8 +12,6 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.PWCGLogger;
-import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.target.AssaultDefinition;
@@ -26,30 +24,32 @@ import pwcg.testutils.TestMissionBuilderUtility;
 
 public class ArdennesFlightTest
 {
+    Campaign fg362Campaign = null;
+    
     @Before
     public void fighterFlightTests() throws PWCGException
     {
+        fg362Campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
+
         PWCGContext.setProduct(PWCGProduct.BOS);
-        PWCGLogger.setActiveLogLevel(LogLevel.DEBUG);
     }
 
     @Test
     public void hasGermanAssaultdGroundAttackTest() throws PWCGException
     {
-        verifyAntiArmorOnDate(DateUtils.getDateYYYYMMDD("19441220"), Side.AXIS);
-        verifyAntiArmorOnDate(DateUtils.getDateYYYYMMDD("19441224"), Side.AXIS);
+        verifyAntiArmorOnDate(fg362Campaign, DateUtils.getDateYYYYMMDD("19441220"), Side.AXIS);
+        verifyAntiArmorOnDate(fg362Campaign, DateUtils.getDateYYYYMMDD("19441224"), Side.AXIS);
     }
 
     @Test
     public void hasAlliednAssaultdGroundAttackTest() throws PWCGException
     {
-        verifyAntiArmorOnDate(DateUtils.getDateYYYYMMDD("19441229"), Side.ALLIED);
-        verifyAntiArmorOnDate(DateUtils.getDateYYYYMMDD("19441230"), Side.ALLIED);
+        verifyAntiArmorOnDate(fg362Campaign, DateUtils.getDateYYYYMMDD("19441229"), Side.ALLIED);
+        verifyAntiArmorOnDate(fg362Campaign, DateUtils.getDateYYYYMMDD("19441230"), Side.ALLIED);
     }
 
-    private void verifyAntiArmorOnDate(Date date, Side side) throws PWCGException
+    private void verifyAntiArmorOnDate(Campaign campaign, Date date, Side side) throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
         campaign.setDate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
@@ -72,13 +72,12 @@ public class ArdennesFlightTest
     @Test
     public void hasSkirmishAndCargoDropTest() throws PWCGException
     {
-        verifyCargoDropsOnDate(DateUtils.getDateYYYYMMDD("19441225"));
-        verifyCargoDropsOnDate(DateUtils.getDateYYYYMMDD("19441228"));
+        verifyCargoDropsOnDate(fg362Campaign, DateUtils.getDateYYYYMMDD("19441225"));
+        verifyCargoDropsOnDate(fg362Campaign, DateUtils.getDateYYYYMMDD("19441228"));
     }
 
-    private void verifyCargoDropsOnDate(Date date) throws PWCGException
+    private void verifyCargoDropsOnDate(Campaign campaign, Date date) throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
         campaign.setDate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
@@ -105,10 +104,9 @@ public class ArdennesFlightTest
 
     private void noSkirmish(Date date) throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
-        campaign.setDate(date);
-        MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
+        fg362Campaign.setDate(date);
+        MissionGenerator missionGenerator = new MissionGenerator(fg362Campaign);
+        Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(fg362Campaign));
         
         assert (mission.getSkirmish() == null);
     }

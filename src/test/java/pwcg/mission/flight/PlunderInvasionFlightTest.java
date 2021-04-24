@@ -11,8 +11,6 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.PWCGLogger;
-import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.utils.MissionFlightValidator;
@@ -27,7 +25,6 @@ public class PlunderInvasionFlightTest
     public void fighterFlightTests() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        PWCGLogger.setActiveLogLevel(LogLevel.DEBUG);
     }
 
     @Test

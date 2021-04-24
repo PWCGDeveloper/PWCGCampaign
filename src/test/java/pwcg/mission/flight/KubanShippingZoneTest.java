@@ -14,8 +14,6 @@ import pwcg.campaign.skirmish.Skirmish;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.PWCGLogger;
-import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionHumanParticipants;
@@ -35,7 +33,6 @@ public class KubanShippingZoneTest
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        PWCGLogger.setActiveLogLevel(LogLevel.DEBUG);
     }
 
     @Test

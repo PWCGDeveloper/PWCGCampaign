@@ -5,7 +5,6 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.io.json.CampaignPersonnelIOJson;
 import pwcg.campaign.personnel.InitialSquadronStaffer;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadron.Squadron;
@@ -34,7 +33,6 @@ public class CampaignUpdateNewSquadronStaffer
                 SquadronPersonnel squadronPersonnel = squadronStaffer.generatePersonnel();
                 campaign.getPersonnelManager().addPersonnelForSquadron(squadronPersonnel);
                 squadronsAdded.add(squadron.getSquadronId());
-                CampaignPersonnelIOJson.writeSquadron(campaign, squadron.getSquadronId());
             }
         }
         

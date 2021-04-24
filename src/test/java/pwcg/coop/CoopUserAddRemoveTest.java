@@ -3,6 +3,7 @@ package pwcg.coop;
 import java.io.File;
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,6 +18,7 @@ import pwcg.campaign.squadmember.SquadronMemberReplacer;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.CampaignRemover;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignCacheBase;
 import pwcg.testutils.SquadronTestProfile;
@@ -36,6 +38,12 @@ public class CoopUserAddRemoveTest
         CampaignInitialWriter.doInitialCampaignWrite(coopCampaign);
     }
 
+    @After
+    public void cleanup()
+    {
+        CampaignRemover.deleteCampaign(coopCampaign.getCampaignData().getName());
+    }
+    
     @Test
     public void testCoopCampaignLifeCycle() throws Exception
     {

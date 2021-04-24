@@ -12,8 +12,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.PWCGLogger;
-import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.target.TargetType;
@@ -29,7 +27,6 @@ public class BodenplatteFlightTest
     public void fighterFlightTests() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        PWCGLogger.setActiveLogLevel(LogLevel.DEBUG);
     }
 
     @Test
