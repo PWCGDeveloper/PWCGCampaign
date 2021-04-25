@@ -116,6 +116,7 @@ public class EmergencyResupplyHandler
         String planeTypeName = determinePlaneTypeToAdd(squadronId);
         PlaneEquipmentFactory equipmentFactory = new PlaneEquipmentFactory(campaign);
         EquippedPlane equippedPlane = equipmentFactory.makePlaneForDepot(planeTypeName);
+        PWCGContext.getInstance().getPlaneMarkingManager().allocatePlaneIdCode(campaign, squadronId, squadronEquipment, equippedPlane);
         squadronEquipment.addEquippedPlane(equippedPlane);
     }
 

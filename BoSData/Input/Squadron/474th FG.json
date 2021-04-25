@@ -4,6 +4,7 @@
   "name": "474th Fighter Group",
   "fileName": "474th FG.json",
   "skill": 70,
+  "unitIdCode": "7Y",
   "planeAssignments": [
     {
       "archType": "p38",

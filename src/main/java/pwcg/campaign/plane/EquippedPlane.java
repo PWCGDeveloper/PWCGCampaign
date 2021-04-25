@@ -2,7 +2,10 @@ package pwcg.campaign.plane;
 
 import java.util.Date;
 
+import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SerialNumber;
+import pwcg.core.exception.PWCGException;
 
 public class EquippedPlane extends PlaneType
 {
@@ -10,6 +13,7 @@ public class EquippedPlane extends PlaneType
     protected int planeStatus = PlaneStatus.NO_STATUS;
     protected int squadronId;
     protected Date dateRemovedFromService;
+    protected String aircraftIdCode;
 
     public EquippedPlane()
     {
@@ -32,6 +36,7 @@ public class EquippedPlane extends PlaneType
         equippedPlane.squadronId = this.squadronId;
         equippedPlane.dateRemovedFromService = this.dateRemovedFromService;
         equippedPlane.planeStatus = this.planeStatus;
+        equippedPlane.aircraftIdCode = this.aircraftIdCode;
     }
     
     public int getSerialNumber()
@@ -72,5 +77,20 @@ public class EquippedPlane extends PlaneType
     public void setSquadronId(int squadronId)
     {
         this.squadronId = squadronId;
+    }
+
+    public String getAircraftIdCode()
+    {
+        return aircraftIdCode;
+    }
+
+    public void setAircraftIdCode(String aircraftIdCode)
+    {
+        this.aircraftIdCode = aircraftIdCode;
+    }
+
+    public String getDisplayMarkings() throws PWCGException {
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
+        return PWCGContext.getInstance().getPlaneMarkingManager().determineDisplayMarkings(campaign, this);
     }
 }

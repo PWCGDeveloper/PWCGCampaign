@@ -1,6 +1,5 @@
 package pwcg.campaign.context;
 
-import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.bos.map.bodenplatte.BodenplatteMap;
 import pwcg.product.bos.map.east1944.East1944Map;

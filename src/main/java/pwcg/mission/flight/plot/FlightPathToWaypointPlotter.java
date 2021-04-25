@@ -25,7 +25,7 @@ public class FlightPathToWaypointPlotter
         
         double totalDistance = calculateTotalDistanceToRequestedAction(requestedAction);
         Double timeInHours = (totalDistance / 1000) / flight.getFlightCruisingSpeed();
-        int timeInSeconds = new Double(timeInHours * 60 * 60).intValue();
+        int timeInSeconds = Double.valueOf(timeInHours * 60 * 60).intValue();
         return timeInSeconds;
     }
 

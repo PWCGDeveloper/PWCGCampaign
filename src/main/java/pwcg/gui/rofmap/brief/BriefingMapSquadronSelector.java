@@ -111,7 +111,7 @@ public class BriefingMapSquadronSelector implements ActionListener
     {
         try
         {
-            int squadronId = new Integer(ae.getActionCommand());
+            int squadronId = Integer.parseInt(ae.getActionCommand());
             if (squadronId == ALL_SQUADRONS)
             {
                 for (JCheckBox checkBox : squadronCheckBoxes.values())

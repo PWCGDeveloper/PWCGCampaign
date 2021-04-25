@@ -1,7 +1,6 @@
 package pwcg.campaign.context;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 

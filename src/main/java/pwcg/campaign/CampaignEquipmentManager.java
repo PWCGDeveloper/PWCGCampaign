@@ -177,6 +177,7 @@ public class CampaignEquipmentManager
             PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
             PlaneType planeType = planeTypeFactory.getPlaneByDisplayName(planeTypeToChangeTo);
             EquippedPlane equippedPlane = new EquippedPlane(planeType, campaign.getSerialNumber().getNextPlaneSerialNumber(), squadron.getSquadronId(), PlaneStatus.STATUS_DEPLOYED);
+            PWCGContext.getInstance().getPlaneMarkingManager().allocatePlaneIdCode(campaign, squadron.getSquadronId(), squadronEquipment, equippedPlane);
             squadronEquipment.addEquippedPlane(equippedPlane);
         }
     }

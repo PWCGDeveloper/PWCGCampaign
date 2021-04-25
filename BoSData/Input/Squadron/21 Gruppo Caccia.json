@@ -4,6 +4,7 @@
 	"name": "22 Gruppo Caccia",
 	"fileName": "21 Gruppo Caccia.json",
 	"skill": 55,
+	"unitIdCode": "356",
 	"planeAssignments": [
 		{
 			"archType": "mc200",

@@ -4,6 +4,7 @@
   "name": "437th Transport Group",
   "fileName": "437th TG.json",
   "skill": 30,
+  "unitIdCode": "T2",
   "planeAssignments": [
     {
       "archType": "c47",

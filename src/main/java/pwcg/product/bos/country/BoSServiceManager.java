@@ -406,7 +406,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         if (squadronIdString.length() >= 3)
         {
             String countryCodeString = squadronIdString.substring(0,3);
-            Integer countryCode = new Integer(countryCodeString);
+            Integer countryCode = Integer.valueOf(countryCodeString);
             ICountry country = CountryFactory.makeCountryByCode(countryCode);
     
             return getPrimaryServiceForNation(country.getCountry(), date);

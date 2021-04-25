@@ -11,6 +11,7 @@
 		"MN28",
 		"OCTANE_150_FUEL"
 	],
+	"tacticalCodeColor": "BLACK",
 	"displayName": "P-51D-15",
 	"script": "LuaScripts\\WorldObjects\\Planes\\p51d15.txt",
 	"model": "graphics\\planes\\p51d15\\p51d15.mgm",

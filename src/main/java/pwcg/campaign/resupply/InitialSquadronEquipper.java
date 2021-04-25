@@ -59,6 +59,7 @@ public class InitialSquadronEquipper
             
             PlaneEquipmentFactory equipmentFactory = new PlaneEquipmentFactory(campaign);
             EquippedPlane equippedPlane = equipmentFactory.makePlaneForSquadron(planeTypeName, squadron.getSquadronId());
+            PWCGContext.getInstance().getPlaneMarkingManager().allocatePlaneIdCode(campaign, squadron.getSquadronId(), equipment, equippedPlane);
             equipment.addEquippedPlane(equippedPlane);
         }
     }

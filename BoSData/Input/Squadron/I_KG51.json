@@ -4,6 +4,8 @@
   "name": "I./KG51",
   "fileName": "I_KG51.json",
   "skill": 60,
+  "unitIdCode": "9K",
+  "subUnitIdCode": "K",
   "planeAssignments": [
     {
       "archType": "me262",

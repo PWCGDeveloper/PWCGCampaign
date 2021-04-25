@@ -4,6 +4,7 @@
   "name": "354th Fighter Group",
   "fileName": "354th FG.json",
   "skill": 80,
+  "unitIdCode": "AJ",
   "planeAssignments": [
     {
       "archType": "p51",

@@ -13,7 +13,6 @@ import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.bos.plane.BosPlaneAttributeMapping;
-import pwcg.product.bos.plane.payload.BoSPayloadFactory;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BoSPayloadFactoryTest

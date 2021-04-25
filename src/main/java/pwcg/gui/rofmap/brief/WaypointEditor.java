@@ -77,12 +77,12 @@ public class WaypointEditor
 
     public int getAltitudeValue()
     {
-        return new Integer(altitudeTextField.getText());
+        return Integer.parseInt(altitudeTextField.getText());
     }
 
     public int getCruisingSpeedValue()
     {
-        return new Integer(cruisingSpeedTextField.getText());
+        return Integer.parseInt(cruisingSpeedTextField.getText());
     }
 
     public void setEnabled(boolean enabled)

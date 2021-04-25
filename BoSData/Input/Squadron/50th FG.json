@@ -4,6 +4,7 @@
   "name": "50th Fighter Group",
   "fileName": "50th FG.json",
   "skill": 65,
+  "unitIdCode": "T5",
   "planeAssignments": [
     {
       "archType": "p47",

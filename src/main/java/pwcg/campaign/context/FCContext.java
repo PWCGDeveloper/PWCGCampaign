@@ -1,8 +1,14 @@
 package pwcg.campaign.context;
 
-import pwcg.campaign.context.FrontMapIdentifier;
+import java.io.BufferedWriter;
+
+import pwcg.campaign.Campaign;
+import pwcg.campaign.plane.Equipment;
+import pwcg.campaign.plane.EquippedPlane;
+import pwcg.campaign.plane.IPlaneMarkingManager;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.product.fc.plane.payload.FCPayloadFactory;
 
 public class FCContext extends PWCGContextBase implements IPWCGContextManager
@@ -52,5 +58,26 @@ public class FCContext extends PWCGContextBase implements IPWCGContextManager
     public PWCGDirectoryProductManager getDirectoryManager()
     {
         return new PWCGDirectoryProductManager(PWCGProduct.FC);
+    }
+
+    @Override
+    public IPlaneMarkingManager getPlaneMarkingManager()
+    {
+         return new IPlaneMarkingManager() {
+            @Override
+            public void allocatePlaneIdCode(Campaign campaign, int squadronId, Equipment equipment, EquippedPlane equippedPlane) throws PWCGException {
+            }
+
+            @Override
+            public String determineDisplayMarkings(Campaign campaign, EquippedPlane equippedPlane) throws PWCGException
+            {
+                return Integer.toString(equippedPlane.getSerialNumber());
+            }
+
+            @Override
+            public void writeTacticalCodes(BufferedWriter writer, Campaign campaign, PlaneMcu equippedPlane) throws PWCGException
+            {
+            }
+        };
     }
 }

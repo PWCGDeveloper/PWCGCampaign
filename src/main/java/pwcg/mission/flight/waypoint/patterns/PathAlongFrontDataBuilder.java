@@ -47,7 +47,7 @@ public class PathAlongFrontDataBuilder
     private int adjustPatrolDistanceForAircraftRange(int patrolDistance)
     {
         double planeRange = flight.getFlightPlanes().getFlightLeader().getRange();
-        int maxPatrolRangeForPlane = new Double(planeRange * 0.67).intValue();
+        int maxPatrolRangeForPlane = Double.valueOf(planeRange * 0.67).intValue();
         maxPatrolRangeForPlane *= 1000;
         if (maxPatrolRangeForPlane  < patrolDistance)
         {
@@ -61,7 +61,7 @@ public class PathAlongFrontDataBuilder
     {
         if (determineHasReturnLeg())
         {
-            Double patrolDistanceDouble = new Integer(patrolDistance).doubleValue();
+            Double patrolDistanceDouble = Integer.valueOf(patrolDistance).doubleValue();
             patrolDistanceDouble = patrolDistanceDouble * 0.67;
             return patrolDistanceDouble.intValue();
         }
