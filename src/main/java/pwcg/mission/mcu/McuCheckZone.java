@@ -29,10 +29,13 @@ public class McuCheckZone extends BaseFlightMcu
 
     public void triggerCheckZoneByCoalitions (List<Coalition> coalitions)
     {
-        triggerCoalitions.clear();
-        for (Coalition coalition: coalitions)
+        if (!coalitions.isEmpty())
         {
-            addPlaneCoalition(coalition);
+            triggerCoalitions.clear();
+            for (Coalition coalition: coalitions)
+            {
+                addPlaneCoalition(coalition);
+            }
         }
     }
     
@@ -44,10 +47,13 @@ public class McuCheckZone extends BaseFlightMcu
 
     public void triggerCheckZoneByFlight (IFlight flight)
     {
-        triggerCoalitions.clear();
-        for (PlaneMcu plane: flight.getFlightPlanes().getPlanes())
+        if (!flight.getFlightPlanes().getPlanes().isEmpty())
         {
-            this.setObject(plane.getLinkTrId());
+            triggerCoalitions.clear();
+            for (PlaneMcu plane: flight.getFlightPlanes().getPlanes())
+            {
+                this.setObject(plane.getLinkTrId());
+            }
         }
     }
 
@@ -57,13 +63,16 @@ public class McuCheckZone extends BaseFlightMcu
         this.setObject(objectId);
     }
 
-	public void triggerCheckZoneByMultipleObjects(Iterable<Integer> playerPlaneIds) throws PWCGException
-    {       
-		triggerCoalitions.clear();
-		for (int playerPlaneId : playerPlaneIds)
-		{
-			setObject(playerPlaneId);
-		}
+	public void triggerCheckZoneByMultiplePlaneIds(List<Integer> planeIds) throws PWCGException
+    {
+        if (!planeIds.isEmpty())
+        {
+            triggerCoalitions.clear();
+            for (int planeId : planeIds)
+            {
+                setObject(planeId);
+            }
+        }
     }
 
 	

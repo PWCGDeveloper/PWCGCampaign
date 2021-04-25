@@ -124,7 +124,7 @@ public class SmokeGroup
         smokeStartCheckZone = new McuCheckZone("CheckZone Smoke Activate");
         smokeStartCheckZone.setCloser(1);
         smokeStartCheckZone.setZone(30000);
-        smokeStartCheckZone.triggerCheckZoneByMultipleObjects(playerPlaneIds);
+        smokeStartCheckZone.triggerCheckZoneByMultiplePlaneIds(playerPlaneIds);
     }
 
     public void write(BufferedWriter writer) throws PWCGException 

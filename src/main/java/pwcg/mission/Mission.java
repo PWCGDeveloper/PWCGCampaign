@@ -123,22 +123,13 @@ public class Mission
     {
         int unitCountMissionGroundUnits = groundUnitBuilder.getUnitCount();        
         int unitCountInFlights = 0;
-        
-        int unitCountInAirfields = 0;
-        for (Airfield field : getFieldsForPatrol())
-        {
-            unitCountInAirfields += field.getUnitCount();
-        }
-
 
         int unitCountInMission = 0;
         unitCountInMission += unitCountInFlights;
         unitCountInMission += unitCountMissionGroundUnits;
-        unitCountInMission += unitCountInAirfields;
 
         PWCGLogger.log(LogLevel.INFO, "unit count flights : " + unitCountInFlights);
         PWCGLogger.log(LogLevel.INFO, "unit count misson : " + unitCountMissionGroundUnits);
-        PWCGLogger.log(LogLevel.INFO, "unit count airfields : " + unitCountInAirfields);
         PWCGLogger.log(LogLevel.INFO, "unit count total : " + unitCountInMission);
 
         return unitCountInMission;
@@ -276,9 +267,7 @@ public class Mission
             airfieldIconBuilder.createWaypointIcons(campaign, this);
             assaultIconBuilder.createAssaultIcons(battleManager.getMissionAssaultDefinitions());
 
-            MissionCheckZoneTriggerBuilder missionCheckZoneTriggerBuilder = new MissionCheckZoneTriggerBuilder(this);
-            missionCheckZoneTriggerBuilder.triggerGroundUnits();
-
+            setGroundUnitTriggers();
             assignIndirectFireTargets();
             setEngagableAAA();
 
@@ -306,6 +295,12 @@ public class Mission
         getGroundUnitCount();
         
         isFinalized = true;
+    }
+
+    private void setGroundUnitTriggers() throws PWCGException
+    {
+        MissionCheckZoneTriggerBuilder missionCheckZoneTriggerBuilder = new MissionCheckZoneTriggerBuilder(this);
+        missionCheckZoneTriggerBuilder.triggerGroundUnits();
     }
 
     private void setEngagableAAA()

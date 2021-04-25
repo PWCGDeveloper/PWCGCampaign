@@ -33,7 +33,9 @@ public class MissionGroundUnitBuilder
     private List<GroundUnitCollection> missionBalloons = new ArrayList<>();
     private List<GroundUnitCollection> missionShips = new ArrayList<>();
     private List<GroundUnitCollection> flightSpecificGroundUnits = new ArrayList<>();
-    private List<GroundUnitCollection> AA = new ArrayList<>();
+    private List<GroundUnitCollection> AAA = new ArrayList<>();
+    private List<GroundUnitCollection> airfieldAAA = new ArrayList<>();
+    private List<GroundUnitCollection> airfieldVehicles = new ArrayList<>();
 
     public MissionGroundUnitBuilder (Mission mission)
     {
@@ -79,7 +81,7 @@ public class MissionGroundUnitBuilder
     private void createAAAForMission() throws PWCGException 
     {
         AAAManager aaaManager = new AAAManager(campaign, mission);
-        AA = aaaManager.getAAAForMission();
+        AAA = aaaManager.getAAAForMission();
     }
 
     private void generateBalloons() throws PWCGException
@@ -114,26 +116,30 @@ public class MissionGroundUnitBuilder
         allMissionGroundUnits.addAll(missionBalloons);
         allMissionGroundUnits.addAll(missionShips);
         allMissionGroundUnits.addAll(missionDrifters);
-        allMissionGroundUnits.addAll(AA);
+        allMissionGroundUnits.addAll(AAA);
+        allMissionGroundUnits.addAll(airfieldAAA);
+        allMissionGroundUnits.addAll(airfieldVehicles);
         allMissionGroundUnits.addAll(flightSpecificGroundUnits);
         return allMissionGroundUnits;
     }
     
     public List<GroundUnitCollection> getAllInterestingMissionGroundUnits()
     {
-        List<GroundUnitCollection> allMissionGroundUnits = new ArrayList<>();
-        allMissionGroundUnits.addAll(missionBattles);
-        allMissionGroundUnits.addAll(missionTrucks);
-        allMissionGroundUnits.addAll(missionTrains);
-        allMissionGroundUnits.addAll(missionDrifters);
-        allMissionGroundUnits.addAll(missionBalloons);
-        allMissionGroundUnits.addAll(missionShips);
+        List<GroundUnitCollection> allInterestingMissionGroundUnits = new ArrayList<>();
+        allInterestingMissionGroundUnits.addAll(missionBattles);
+        allInterestingMissionGroundUnits.addAll(missionTrucks);
+        allInterestingMissionGroundUnits.addAll(missionTrains);
+        allInterestingMissionGroundUnits.addAll(missionDrifters);
+        allInterestingMissionGroundUnits.addAll(missionBalloons);
+        allInterestingMissionGroundUnits.addAll(missionShips);
+        allInterestingMissionGroundUnits.addAll(airfieldVehicles);
 
-        if (allMissionGroundUnits.size() == 0)
+        if (allInterestingMissionGroundUnits.size() == 0)
         {
-            allMissionGroundUnits.addAll(AA);
+            allInterestingMissionGroundUnits.addAll(AAA);
+            allInterestingMissionGroundUnits.addAll(airfieldAAA);
         }
-        return allMissionGroundUnits;
+        return allInterestingMissionGroundUnits;
     }
     
     public List<GroundUnitCollection> getBattleMissionGroundUnits()
@@ -142,7 +148,7 @@ public class MissionGroundUnitBuilder
         allMissionGroundUnits.addAll(missionBattles);
         if (allMissionGroundUnits.size() == 0)
         {
-            allMissionGroundUnits.addAll(AA);
+            allMissionGroundUnits.addAll(AAA);
         }
         return allMissionGroundUnits;
     }
@@ -192,7 +198,15 @@ public class MissionGroundUnitBuilder
         {
             truckCount += groundUnitCollection.getUnitCount();
         }
-        for (GroundUnitCollection groundUnitCollection : AA)
+        for (GroundUnitCollection groundUnitCollection : airfieldVehicles)
+        {
+            truckCount += groundUnitCollection.getUnitCount();
+        }
+        for (GroundUnitCollection groundUnitCollection : AAA)
+        {
+            aaCount += groundUnitCollection.getUnitCount();
+        }
+        for (GroundUnitCollection groundUnitCollection : airfieldAAA)
         {
             aaCount += groundUnitCollection.getUnitCount();
         }
@@ -247,4 +261,16 @@ public class MissionGroundUnitBuilder
         }
         return closestGroundUnitForSide;
     }
+    
+
+    public void addAirfieldVehicle(GroundUnitCollection vehicle)
+    {
+        airfieldVehicles.add(vehicle);
+    }
+
+    public void addAirfieldAAA(GroundUnitCollection aaaMg)
+    {
+        airfieldAAA.add(aaaMg);
+    }
+
  }

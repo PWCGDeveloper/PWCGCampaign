@@ -25,7 +25,6 @@ import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
-import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.vehicle.IVehicle;
 
 public class Airfield extends FixedPosition implements Cloneable
@@ -55,16 +54,6 @@ public class Airfield extends FixedPosition implements Cloneable
     {
         if (airfieldObjects != null)
         {
-            for (GroundUnitCollection airfieldVehicle : airfieldObjects.getAirfieldVehicles())
-            {
-                airfieldVehicle.write(writer);
-            }
-
-            for (GroundUnitCollection airfieldAAA : airfieldObjects.getAirfieldAAA())
-            {
-                airfieldAAA.write(writer);
-            }
-
             for (IStaticPlane staticPlane : airfieldObjects.getStaticPlanes())
             {
                 staticPlane.write(writer);
@@ -74,18 +63,6 @@ public class Airfield extends FixedPosition implements Cloneable
             {
                 airfieldObject.write(writer);
             }
-        }
-    }
-    
-    public int getUnitCount()
-    {
-        if (airfieldObjects != null)
-        {
-            return airfieldObjects.getUnitCount();
-        }
-        else
-        {
-            return 0;
         }
     }
 

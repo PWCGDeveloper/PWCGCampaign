@@ -43,7 +43,6 @@ public class AirfieldObjectPlacer
     {
         createApproachAA();
         createHotSpotObjects();
-        airfieldObjects.finish(mission);
         return airfieldObjects;
     }
 
@@ -80,7 +79,7 @@ public class AirfieldObjectPlacer
         {
             SearchLightBuilder groundUnitFactory =  new SearchLightBuilder(campaign);
             GroundUnitCollection searchLightGroup = groundUnitFactory.createOneSearchLight(airfieldCountry, hotSpot.getPosition());
-            airfieldObjects.addAirfieldVehicle(searchLightGroup);
+            mission.getMissionGroundUnitBuilder().addAirfieldVehicle(searchLightGroup);
         }
     }
 
@@ -105,7 +104,7 @@ public class AirfieldObjectPlacer
 
             if (aaaUnit != null)
             {
-                airfieldObjects.addAirfieldAAA(aaaUnit);
+                mission.getMissionGroundUnitBuilder().addAirfieldAAA(aaaUnit);
             }
         }
     }
@@ -134,7 +133,7 @@ public class AirfieldObjectPlacer
         List<GroundUnitCollection> airfieldApproachAA = airfieldApproachAABuilder.addAirfieldApproachAA();
         for (GroundUnitCollection aaaUnit : airfieldApproachAA)
         {
-            airfieldObjects.addAirfieldAAA(aaaUnit);
+            mission.getMissionGroundUnitBuilder().addAirfieldAAA(aaaUnit);
         }
     }
 }

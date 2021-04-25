@@ -194,7 +194,7 @@ public class SelfDeactivatingCheckZone
     public void triggerCheckZoneByPlayer(Mission mission) throws PWCGException
     {
         List<Integer> triggerPlanes = mission.getMissionFlights().getPlayersInMission();
-        checkZone.triggerCheckZoneByMultipleObjects(triggerPlanes);        
+        checkZone.triggerCheckZoneByMultiplePlaneIds(triggerPlanes);        
     }
     
     private void triggerCheckZoneByActualFlights(Mission mission) throws PWCGException
@@ -208,7 +208,7 @@ public class SelfDeactivatingCheckZone
                 triggerPlanes.add(plane.getLinkTrId());
             }
         }
-        checkZone.triggerCheckZoneByMultipleObjects(triggerPlanes);        
+        checkZone.triggerCheckZoneByMultiplePlaneIds(triggerPlanes);        
     }
 
     private void triggerCheckZoneByVirtualFlights(Mission mission) throws PWCGException
@@ -228,6 +228,6 @@ public class SelfDeactivatingCheckZone
                 }
             }
         }
-        checkZone.triggerCheckZoneByMultipleObjects(triggerPlanes);        
+        checkZone.triggerCheckZoneByMultiplePlaneIds(triggerPlanes);        
     }
 }
