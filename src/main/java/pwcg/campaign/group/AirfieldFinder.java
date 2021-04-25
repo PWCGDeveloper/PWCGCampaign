@@ -70,7 +70,7 @@ public class AirfieldFinder
         List<Airfield>airfieldsForSide = new ArrayList<Airfield>();
         for (Airfield airfield : airfields)
         {
-            if (airfield.createCountry(date).getSide() == side)
+            if (airfield.determineCountryOnDate(date).getSide() == side)
             {
                 airfieldsForSide.add(airfield);
             }

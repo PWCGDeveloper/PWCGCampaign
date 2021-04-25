@@ -238,7 +238,7 @@ public class IntelMapPanel extends MapPanelBase
             IntelAirfieldMapPoint mapPoint = new IntelAirfieldMapPoint();
             mapPoint.name = field.getName();
             mapPoint.coord = field.getPosition().copy();
-            mapPoint.countryName = field.createCountry(parent.getMapDate()).getCountryName();
+            mapPoint.countryName = field.determineCountryOnDate(parent.getMapDate()).getCountryName();
 
             airfieldPoints.put(mapPoint.name, mapPoint);
 		}

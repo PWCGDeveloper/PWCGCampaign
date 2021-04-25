@@ -36,7 +36,7 @@ public class SkirmishBuilderTest
     }
 
     @Test
-    public void singlePlayerSkirmishInRangeTest() throws PWCGException
+    public void singlePlayerSkirmishArnhemStartTest() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
         PWCGContext.getInstance().setCampaign(campaign);
@@ -47,14 +47,14 @@ public class SkirmishBuilderTest
     }
 
     @Test
-    public void singlePlayerSkirmishTooFarTest() throws PWCGException
+    public void singlePlayerSkirmishArnhemEndTest() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
         PWCGContext.getInstance().setCampaign(campaign);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19440928"));
 
         Skirmish skirmish =createMissionAtSkirmish(campaign);
-        assert (skirmish == null);
+        assert (skirmish != null);
     }
 
     private Skirmish createMissionAtSkirmish(Campaign campaign) throws PWCGException

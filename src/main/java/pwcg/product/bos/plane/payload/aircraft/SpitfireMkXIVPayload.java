@@ -51,7 +51,7 @@ public class SpitfireMkXIVPayload extends PlanePayload implements IPlanePayload
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectedPrimaryPayloadId = 4;
+            selectedPrimaryPayloadId = 1;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {

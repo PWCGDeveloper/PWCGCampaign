@@ -6,10 +6,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IFixedPosition;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.CountryDesignator;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.io.IOConstants;
 import pwcg.campaign.utils.IndexGenerator;
@@ -34,7 +36,6 @@ public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosi
     protected int damageThreshold = 1;
     protected int deleteAfterDeath = 0;
     protected Map<Integer, Double> damaged = new HashMap<>();
-    protected Country country = Country.NEUTRAL;
     protected McuTREntity entity;
 
     public FixedPosition()
@@ -53,7 +54,6 @@ public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosi
         clone.orientation = this.orientation.copy();
         clone.model = this.model;
         clone.script = this.script;
-        clone.country = this.country;
         clone.desc = this.desc;
         clone.durability = this.durability;
         clone.damageReport = this.damageReport;
@@ -101,6 +101,22 @@ public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosi
         }
     }
     
+    public ICountry determineCountry() throws PWCGException
+    {
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
+        if (campaign != null)
+        {
+            return CountryDesignator.determineCountry(position, campaign.getDate());
+        }
+            
+        return CountryFactory.makeCountryByCountry(Country.NEUTRAL);
+    }
+
+    public ICountry determineCountryOnDate(Date date) throws PWCGException
+    {
+        return CountryDesignator.determineCountry(position, date);
+    }
+
     protected void buildEntity()
     {
         entity = new McuTREntity(index);
@@ -145,21 +161,10 @@ public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosi
         }
     }
 
-    public ICountry createCountry(Date date) throws PWCGException
-    {
-        CountryDesignator countryDesignator = new CountryDesignator();
-        return countryDesignator.determineCountry(this.position, date);
-    }
-
     public ICountry getCountry(Date date) throws PWCGException
     {
-        ICountry icountry = createCountry(date);
+        ICountry icountry = determineCountryOnDate(date);
         return icountry;
-    }
-
-    public void setCountry(Country country)
-    {
-        this.country = country;
     }
 
     public int getIndex()
@@ -270,10 +275,5 @@ public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosi
     public void setDamaged(Map<Integer, Double> damaged)
     {
         this.damaged = damaged;
-    }
-
-    public ICountry determineCountry()
-    {
-        return CountryFactory.makeCountryByCountry(country);
     }
 }

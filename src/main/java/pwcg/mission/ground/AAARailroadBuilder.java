@@ -34,7 +34,7 @@ public class AAARailroadBuilder
 
 		for (Block railroadStation : groupData.getRailroadList())
 		{
-	        ICountry country = railroadStation.createCountry(campaign.getDate());
+	        ICountry country = railroadStation.determineCountryOnDate(campaign.getDate());
 	        if (!country.isNeutral())
 	        {
 	            createRailroadAAAMG(railroadStation);

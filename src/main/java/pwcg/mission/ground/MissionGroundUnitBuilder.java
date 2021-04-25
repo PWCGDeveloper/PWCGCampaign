@@ -49,7 +49,7 @@ public class MissionGroundUnitBuilder
         generateDrifters();
         generateBalloons();
         generateShips();
-        createFrontLineAAA();
+        createAAAForMission();
     }
 
     private void generateBattle() throws PWCGException 
@@ -76,7 +76,7 @@ public class MissionGroundUnitBuilder
         missionDrifters = drifterBuilder.generateMissionDrifters();
     }
 
-    private void createFrontLineAAA() throws PWCGException 
+    private void createAAAForMission() throws PWCGException 
     {
         AAAManager aaaManager = new AAAManager(campaign, mission);
         AA = aaaManager.getAAAForMission();

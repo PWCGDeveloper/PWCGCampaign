@@ -93,10 +93,9 @@ public class LocationSet
         List<PWCGLocation> selectedLocations = new ArrayList<>();
         List<PWCGLocation> locationsWithinRadius = getLocationsWithinRadius(referenceLocation, radius);
         
-    	CountryDesignator countryDesignator = new CountryDesignator();
         for (PWCGLocation location : locationsWithinRadius)
         {
-        	ICountry countryOwningLocation = countryDesignator.determineCountry(location.getPosition(), date);
+        	ICountry countryOwningLocation = CountryDesignator.determineCountry(location.getPosition(), date);
         	if (countryOwningLocation.getSide() == side)
         	{
         		selectedLocations.add(location);
@@ -141,10 +140,9 @@ public class LocationSet
 	private List<PWCGLocation> getLocationsBySide(Date date, Side side) throws PWCGException 
     {
         List<PWCGLocation> selectedLocations = new ArrayList<>();        
-        CountryDesignator countryDesignator = new CountryDesignator();
         for (PWCGLocation location : locations)
         {
-            ICountry countryOwningLocation = countryDesignator.determineCountry(location.getPosition(), date);
+            ICountry countryOwningLocation = CountryDesignator.determineCountry(location.getPosition(), date);
             if (countryOwningLocation.getSide() == side)
             {
                 selectedLocations.add(location);

@@ -101,9 +101,12 @@ public class PWCGLogger
                 PWCGLogger.log(LogLevel.DEBUG, message);
                 
                 // to the file
-                fw = new FileWriter ("PWCGErrorLog.txt", true);
-                pw = new PrintWriter (fw);
-                pw.write(message + "\n\n");
+                if (logLevel != LogLevel.DEBUG)
+                {
+                    fw = new FileWriter ("PWCGErrorLog.txt", true);
+                    pw = new PrintWriter (fw);
+                    pw.write(message + "\n\n");
+                }
             }
         }
         catch (Throwable t)

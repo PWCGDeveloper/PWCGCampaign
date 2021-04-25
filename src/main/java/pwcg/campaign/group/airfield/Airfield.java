@@ -103,7 +103,14 @@ public class Airfield extends FixedPosition implements Cloneable
         output.append("  ZPos = " + position.getZPos() + ";\n");
         output.append("  YOri = " + orientation.getyOri() + ";\n");
 
-        output.append("  Country = " + determineCountry().getCountryName() + ";\n");
+        try
+        {
+            output.append("  Country = " + determineCountry().getCountryName() + ";\n");
+        }
+        catch (PWCGException e)
+        {
+            e.printStackTrace();
+        }
 
         output.append("}\n");
         output.append("\n");
@@ -130,11 +137,11 @@ public class Airfield extends FixedPosition implements Cloneable
         }
     }
 
-    public void addAirfieldObjects(Mission mission) throws PWCGException
+    public void addAirfieldObjects(Mission mission, ICountry airfieldCountry) throws PWCGException
     {
-        if (!(createCountry(mission.getCampaign().getDate()).isNeutral()))
+        if (!(determineCountryOnDate(mission.getCampaign().getDate()).isNeutral()))
         {
-            AirfieldObjectPlacer airfieldObjectPlacer = new AirfieldObjectPlacer(mission, this);
+            AirfieldObjectPlacer airfieldObjectPlacer = new AirfieldObjectPlacer(mission, this, airfieldCountry);
             airfieldObjects = airfieldObjectPlacer.createAirfieldObjects();
         }
     }

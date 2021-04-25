@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.config.ConfigItemKeys;
@@ -28,17 +29,19 @@ public class AirfieldApproachAABuilder
     private Campaign campaign;
     private Mission mission;
     private Airfield airfield;
-    
-    public AirfieldApproachAABuilder (Mission mission, Airfield airfield)
+    private ICountry airfieldCountry;
+
+    public AirfieldApproachAABuilder (Mission mission, Airfield airfield, ICountry airfieldCountry)
     {
         this.campaign = mission.getCampaign();
         this.mission = mission;
         this.airfield = airfield;
+        this.airfieldCountry = airfieldCountry;
     }
     
     public List<GroundUnitCollection> addAirfieldApproachAA() throws PWCGException
     {
-        if (airfield.createCountry(campaign.getDate()).getCountry() == Country.NEUTRAL)
+        if (airfieldCountry.getCountry() == Country.NEUTRAL)
         {
             return airfieldApproachAA;
         }
@@ -96,7 +99,7 @@ public class AirfieldApproachAABuilder
     {
         for (Coordinate aaPoint : aaCoordinates)
         {            
-            TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, aaPoint, airfield.createCountry(campaign.getDate()));
+            TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, aaPoint, airfieldCountry);
             AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
 
             GroundUnitCollection aaa = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);

@@ -74,7 +74,7 @@ public class AirfieldInEnemyTerritory
 	        FrontMapIdentifier mapForAirfield) throws PWCGException
 	{
 		ICountry squadronCountry = squadron.determineSquadronCountry(startDate);
-		ICountry airfieldCountry = squadronField.createCountry(startDate);
+		ICountry airfieldCountry = squadronField.determineCountryOnDate(startDate);
 		if (isBadlyPlaced(squadronCountry, airfieldCountry))
 		{
 			String key = formKey(squadron, squadronField);
@@ -83,7 +83,7 @@ public class AirfieldInEnemyTerritory
 					"\n   	field " + squadronField.getName() + 
 					"\n     map " + mapForAirfield + 
 					"\n     date " + DateUtils.getDateStringDashDelimitedYYYYMMDD(startDate) + 
-					"\n     side " + squadronField.createCountry(startDate).getCountryName();
+					"\n     side " + squadronField.determineCountryOnDate(startDate).getCountryName();
 			badAirfields.put(key, message);
 		}
 	}

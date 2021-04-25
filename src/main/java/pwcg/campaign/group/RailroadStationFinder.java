@@ -61,7 +61,7 @@ public class RailroadStationFinder
         List<Block>selectedRailroadStations = new ArrayList<Block>();
         for (Block railroadStations : railroadStations)
         {
-            if (railroadStations.createCountry(date).getSide() == side)
+            if (railroadStations.determineCountryOnDate(date).getSide() == side)
             {
                 selectedRailroadStations.add(railroadStations);
             }

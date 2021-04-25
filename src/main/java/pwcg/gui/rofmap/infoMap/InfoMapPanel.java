@@ -95,7 +95,7 @@ public class InfoMapPanel extends MapPanelBase
 		        Map<String, Airfield> allAF = airfieldData.getAllAirfields();
 		        for (Airfield af : allAF.values())
 		        {
-		            drawPointsByCountry(g, af.getPosition(), af.createCountry(parent.getMapDate()));
+		            drawPointsByCountry(g, af.getPosition(), af.determineCountryOnDate(parent.getMapDate()));
 		        }        
 			}
 			
@@ -115,7 +115,7 @@ public class InfoMapPanel extends MapPanelBase
                 List<Block> railroads = groupData.getRailroadList();
                 for (Block railroad : railroads)
                 {
-                    drawPointsByCountry(g, railroad.getPosition(), railroad.createCountry(parent.getMapDate()));
+                    drawPointsByCountry(g, railroad.getPosition(), railroad.determineCountryOnDate(parent.getMapDate()));
                 }        
             }
             
@@ -125,7 +125,7 @@ public class InfoMapPanel extends MapPanelBase
                 List<Bridge> bridges = groupData.getBridgeFinder().findAllBridges();
                 for (Bridge bridge : bridges)
                 {
-                    drawPointsByCountry(g, bridge.getPosition(), bridge.createCountry(parent.getMapDate()));
+                    drawPointsByCountry(g, bridge.getPosition(), bridge.determineCountryOnDate(parent.getMapDate()));
                 }        
             }
             

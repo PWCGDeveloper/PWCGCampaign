@@ -28,12 +28,14 @@ public class AirfieldObjectPlacer
     private Mission mission;
     private Campaign campaign;
     private Airfield airfield;
+    private ICountry airfieldCountry;
     
-    public AirfieldObjectPlacer(Mission mission, Airfield airfield) throws PWCGException
+    public AirfieldObjectPlacer(Mission mission, Airfield airfield, ICountry airfieldCountry) throws PWCGException
     {
         this.mission = mission;
         this.campaign = mission.getCampaign();
         this.airfield = airfield;
+        this.airfieldCountry = airfieldCountry;
         this.airfieldObjects = new AirfieldObjects();
     }
 
@@ -74,7 +76,6 @@ public class AirfieldObjectPlacer
 
     private void addSearchlight(HotSpot hotSpot) throws PWCGException
     {
-        ICountry airfieldCountry = airfield.createCountry(campaign.getDate());
         if (!airfieldCountry.isNeutral())
         {
             SearchLightBuilder groundUnitFactory =  new SearchLightBuilder(campaign);
@@ -85,9 +86,9 @@ public class AirfieldObjectPlacer
 
     private void addAAA(HotSpot hotSpot) throws PWCGException
     {
-        if (!airfield.createCountry(campaign.getDate()).isNeutral())
+        if (!airfield.determineCountryOnDate(campaign.getDate()).isNeutral())
         {            
-            TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, hotSpot.getPosition(), airfield.getCountry(campaign.getDate()));
+            TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, hotSpot.getPosition(), airfieldCountry);
             AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
 
             GroundUnitCollection aaaUnit;
@@ -112,7 +113,7 @@ public class AirfieldObjectPlacer
     private void addStaticPlane(HotSpot hotSpot) throws PWCGException
     {
         AirfieldStaticPlanePlacer airfieldStaticPlane = new AirfieldStaticPlanePlacer();
-        IStaticPlane staticPlane = airfieldStaticPlane.getStaticPlane(airfield, campaign.getDate(), hotSpot.getPosition());
+        IStaticPlane staticPlane = airfieldStaticPlane.getStaticPlane(airfield, airfieldCountry, campaign.getDate(), hotSpot.getPosition());
         if (staticPlane != null)
         {
         	airfieldObjects.addStaticPlane(staticPlane);
@@ -122,14 +123,14 @@ public class AirfieldObjectPlacer
     private void addAirfieldObject(HotSpot hotSpot) throws PWCGException 
     {
         AirfieldObjectSelector  airfieldObjectSelector = AirfieldObjectSelectorFactory.createAirfieldObjectSelector(campaign.getDate());
-        IVehicle airfieldObject  = airfieldObjectSelector.createAirfieldObject(hotSpot, airfield);
+        IVehicle airfieldObject  = airfieldObjectSelector.createAirfieldObject(hotSpot, airfield, airfieldCountry);
         airfieldObjects.addAirfieldObject(airfieldObject);
     }
     
 
     private void createApproachAA() throws PWCGException
     {
-        AirfieldApproachAABuilder airfieldApproachAABuilder = new AirfieldApproachAABuilder(mission, airfield);
+        AirfieldApproachAABuilder airfieldApproachAABuilder = new AirfieldApproachAABuilder(mission, airfield, airfieldCountry);
         List<GroundUnitCollection> airfieldApproachAA = airfieldApproachAABuilder.addAirfieldApproachAA();
         for (GroundUnitCollection aaaUnit : airfieldApproachAA)
         {

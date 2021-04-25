@@ -3,12 +3,11 @@ package pwcg.campaign.group;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import pwcg.campaign.context.Country;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.mission.ground.building.PwcgStructure;
 import pwcg.mission.ground.building.PwcgBuildingIdentifier;
+import pwcg.mission.ground.building.PwcgStructure;
 import pwcg.product.bos.plane.BoSStaticPlane;
 import pwcg.product.fc.plane.FCStaticPlane;
 
@@ -53,9 +52,9 @@ public class Block extends FixedPosition
 	}
 	
 	   
-    private boolean isBuildEntity()
+    private boolean isBuildEntity() throws PWCGException
     {
-        if (country == Country.NEUTRAL)
+        if (determineCountry().isNeutral())
         {
             return false;
         }        

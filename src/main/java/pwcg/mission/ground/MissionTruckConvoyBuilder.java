@@ -73,7 +73,7 @@ public class MissionTruckConvoyBuilder extends MissionUnitBuilder
         GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
         for (Bridge bridge : groupData.getBridgeFinder().findAllBridges())
         {
-            if (bridge.createCountry(campaign.getDate()).getSide() == truckSide)
+            if (bridge.determineCountryOnDate(campaign.getDate()).getSide() == truckSide)
             {
                 bridgesForSide.add(bridge);
             }

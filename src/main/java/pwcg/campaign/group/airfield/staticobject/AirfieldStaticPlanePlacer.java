@@ -22,7 +22,7 @@ import pwcg.core.utils.RandomNumberGenerator;
 public class AirfieldStaticPlanePlacer
 {
 
-    public IStaticPlane getStaticPlane(Airfield airfield, Date date, Coordinate position) throws PWCGException  
+    public IStaticPlane getStaticPlane(Airfield airfield, ICountry airfieldCountry, Date date, Coordinate position) throws PWCGException  
     {
         Orientation objectOrientation = Orientation.createRandomOrientation();
         IStaticPlane staticPlane = getStaticPlaneForField(airfield, date);
@@ -30,7 +30,6 @@ public class AirfieldStaticPlanePlacer
         {
             staticPlane.setPosition(position);
             staticPlane.setOrientation(objectOrientation);
-            staticPlane.setCountry(airfield.getCountry(date).getCountry());
             
             return staticPlane;
         }
@@ -43,13 +42,6 @@ public class AirfieldStaticPlanePlacer
         IStaticPlane selectedStaticPlane = null;
         
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
-        
-        ICountry country = airfield.createCountry(date);
-        if (country.isNeutral())
-        {
-            return null;
-        }
-    
         Squadron squadronForField = squadronManager.getAnyActiveSquadronForAirfield(airfield, date);
         if (squadronForField == null)
         {

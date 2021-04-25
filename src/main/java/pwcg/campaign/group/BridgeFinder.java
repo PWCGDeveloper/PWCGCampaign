@@ -64,7 +64,7 @@ public class BridgeFinder
         List<Bridge>selectedBridges = new ArrayList<Bridge>();
         for (Bridge bridge : bridges)
         {
-            if (bridge.createCountry(date).getSide() == side)
+            if (bridge.determineCountryOnDate(date).getSide() == side)
             {
                 selectedBridges.add(bridge);
             }

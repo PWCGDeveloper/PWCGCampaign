@@ -33,7 +33,7 @@ public class AAABridgeBuilder
 
 		for (Bridge bridge : groupData.getBridgeFinder().findAllBridges())
 		{
-	        ICountry country = bridge.createCountry(campaign.getDate());
+	        ICountry country = bridge.determineCountryOnDate(campaign.getDate());
 	        if (!country.isNeutral())
 	        {
 	            double angle = RandomNumberGenerator.getRandom(360);

@@ -114,8 +114,6 @@ public class GroundAttackPackageTest
 
     private void verifyProximityToTargetAirfield(IFlight flight) throws PWCGException
     {
-        System.out.println("Target type is " + flight.getFlightInformation().getTargetSearchStartLocation());
-
         MissionPointAttackSet attackMissionPoint = (MissionPointAttackSet)flight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_ATTACK);
         boolean groundAttackCloseToTarget = false;
         for (Airfield airfield : flight.getMission().getMissionAirfieldBuilder().getFieldsForPatrol())
@@ -125,11 +123,11 @@ public class GroundAttackPackageTest
             if (distanceFromAirfield < 5000)
             {
                 groundAttackCloseToTarget = true;
-                System.out.println("CLOSE TO " + airfield.getName());
+                System.out.println("CLOSE TO " + airfield.getName() + " " + airfield.determineCountry().getCountryName());
             }
             else
             {
-                System.out.println("Not close to " + airfield.getName());
+                System.out.println("Not close to " + airfield.getName() + " " + airfield.determineCountry().getCountryName());
             }
         }
         assert (groundAttackCloseToTarget == true);

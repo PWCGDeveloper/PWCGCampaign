@@ -7,7 +7,7 @@ import pwcg.core.location.Coordinate;
 
 public interface IFixedPosition extends IPWCGObject
 {
-	public ICountry createCountry(Date date) throws PWCGException;
+	public ICountry determineCountryOnDate(Date date) throws PWCGException;
     public ICountry getCountry(Date date) throws PWCGException;
     public Coordinate getPosition() throws PWCGException;
 }

@@ -121,12 +121,12 @@ public class StrategicTargetLocator
             {
                 if (block.getModel().contains(blockType))
                 {
-                    if (block.createCountry(flightInformation.getCampaign().getDate()).isNeutral())
+                    if (block.determineCountryOnDate(flightInformation.getCampaign().getDate()).isNeutral())
                     {
                         continue;
                     }
     
-                    if (block.createCountry(flightInformation.getCampaign().getDate()).getSide() == flightInformation.getSquadron().determineEnemySide())
+                    if (block.determineCountryOnDate(flightInformation.getCampaign().getDate()).getSide() == flightInformation.getSquadron().determineEnemySide())
                     {
                         double distanceToTarget = MathUtils.calcDist(targetLocation, block.getPosition());
                         if (distanceToTarget < preferredRadius)

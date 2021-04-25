@@ -1,7 +1,6 @@
 package pwcg.campaign.group.airfield.staticobject;
 
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.BlockDefinition;
 import pwcg.campaign.group.BlockDefinitionManager;
@@ -16,8 +15,10 @@ import pwcg.mission.mcu.McuTREntity;
 public class StaticObject extends Block implements IVehicle
 {
     protected VehicleDefinition vehicleDefinition;
+    protected ICountry country;
 
-    private StaticObject() {
+    private StaticObject()
+    {
     }
 
     public StaticObject(VehicleDefinition vehicleDefinition)
@@ -28,7 +29,6 @@ public class StaticObject extends Block implements IVehicle
 
     public void makeVehicleFromDefinition(ICountry vehicleCountry)
     {
-        country = vehicleCountry.getCountry();
         script = "LuaScripts\\WorldObjects\\" + vehicleDefinition.getScriptDir() + vehicleDefinition.getVehicleType() + ".txt";
         model = "graphics\\" + vehicleDefinition.getModelDir() + vehicleDefinition.getVehicleType() + ".mgm";
         setPosition(new Coordinate());
@@ -41,7 +41,8 @@ public class StaticObject extends Block implements IVehicle
     }
 
     @Override
-    public IVehicle clone() {
+    public IVehicle clone()
+    {
         StaticObject clone = new StaticObject();
         clone(clone);
         clone.vehicleDefinition = this.vehicleDefinition;
@@ -49,53 +50,68 @@ public class StaticObject extends Block implements IVehicle
     }
 
     @Override
-    public void populateEntity() throws PWCGException {
+    public void populateEntity() throws PWCGException
+    {
     }
 
     @Override
-    public McuTREntity getEntity() {
+    public McuTREntity getEntity()
+    {
         return null;
     }
 
     @Override
-    public boolean vehicleExists() {
+    public boolean vehicleExists()
+    {
         return false;
     }
 
     @Override
-    public void setAiLevel(AiSkillLevel aiLevel) {
+    public void setAiLevel(AiSkillLevel aiLevel)
+    {
     }
 
     @Override
-    public void setCountry(ICountry country) {
-        setCountry(country.getCountry());
+    public void setSpotterRange(int spotterRange)
+    {
     }
 
     @Override
-    public void setSpotterRange(int spotterRange) {
+    public void setBeaconChannel(int beaconChannel)
+    {
     }
 
     @Override
-    public void setBeaconChannel(int beaconChannel) {
-    }
-
-    @Override
-    public String getDescription() {
+    public String getDescription()
+    {
         return (vehicleDefinition.getVehicleType() + " / " + script + " / " + model);
     }
 
     @Override
-    public ICountry getCountry() {
-        return CountryFactory.makeCountryByCountry(country);
-    }
-
-    @Override
-    public int getBeaconChannel() {
+    public int getBeaconChannel()
+    {
         return 0;
     }
 
     @Override
     public void setEngageable(int engageable)
-    {        
+    {
+    }
+
+    @Override
+    public void setCountry(ICountry country)
+    {
+        this.country = country;
+    }
+
+    @Override
+    public ICountry getCountry() throws PWCGException
+    {
+        if (country == null || country.isNeutral())
+        {
+            return determineCountry();
+        }
+        
+        return country;
     }
 }

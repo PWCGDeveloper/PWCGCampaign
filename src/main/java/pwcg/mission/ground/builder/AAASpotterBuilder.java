@@ -37,8 +37,7 @@ public class AAASpotterBuilder
         GroundUnitCollection spotterMG = groundUnitFactory.createAAAMGBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
         if (spotterMG != null)
         {
-            CountryDesignator countryDesignator = new CountryDesignator();
-            ICountry ownerOfLocation = countryDesignator.determineCountry(position, flightInformation.getCampaign().getDate());
+            ICountry ownerOfLocation = CountryDesignator.determineCountry(position, flightInformation.getCampaign().getDate());
             if (ownerOfLocation.getCountry() == flightInformation.getCountry().getCountry())
             {
                 IGroundUnit groundUnit = spotterMG.getGroundUnits().get(0);

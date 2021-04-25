@@ -125,7 +125,7 @@ public class BehindEnemyLines
                 behindEnemyLines = false;
             }
             
-            if (pilotSide == closestAirfield.createCountry(date).getSide())
+            if (pilotSide == closestAirfield.determineCountryOnDate(date).getSide())
             {
             	reason = "You found friendly positions after coming down near the friendly airfield of " + closestAirfield.getName();
                 behindEnemyLines = false;

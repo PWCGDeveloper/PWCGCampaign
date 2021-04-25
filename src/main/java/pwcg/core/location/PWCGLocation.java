@@ -60,7 +60,6 @@ public class PWCGLocation
 
 	public ICountry getCountry(Date date) throws PWCGException
 	{
-		CountryDesignator countryDesignator = new CountryDesignator();
-		return countryDesignator.determineCountry(position, date);
+		return CountryDesignator.determineCountry(position, date);
 	}
 }

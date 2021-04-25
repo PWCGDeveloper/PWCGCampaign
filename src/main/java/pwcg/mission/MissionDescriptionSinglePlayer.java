@@ -162,7 +162,7 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 		
 		String squadron = flight.getSquadron().determineDisplayName(campaign.getDate());
 		String aircraft = flight.getFlightPlanes().getFlightLeader().getDisplayName();
-		ICountry flightCountry = flight.getFlightInformation().getAirfield().createCountry(campaign.getDate());
+		ICountry flightCountry = flight.getFlightInformation().getAirfield().determineCountryOnDate(campaign.getDate());
 		
 		if (country.isSameSide(flightCountry))
 		{

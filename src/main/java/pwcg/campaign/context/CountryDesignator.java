@@ -14,7 +14,7 @@ import pwcg.core.utils.MathUtils;
 public class CountryDesignator
 {
     
-    public ICountry determineCountry(Coordinate objectCoordinate, Date date) throws PWCGException
+    public static ICountry determineCountry(Coordinate objectCoordinate, Date date) throws PWCGException
     {
         ICountry country = CountryFactory.makeNeutralCountry();
         

@@ -65,7 +65,7 @@ public class MissionTrainBuilder extends MissionUnitBuilder
         GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
         for (Block station : groupData.getRailroadList())
         {
-            if (trainSide == station.createCountry(campaign.getDate()).getSide())
+            if (trainSide == station.determineCountryOnDate(campaign.getDate()).getSide())
             {
                 stationsForSide.add(station);
             }

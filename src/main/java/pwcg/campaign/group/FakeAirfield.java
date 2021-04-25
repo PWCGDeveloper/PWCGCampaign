@@ -36,7 +36,6 @@ public class FakeAirfield extends FixedPosition implements Cloneable
 
         name = "Fake " + airfield.getName();
                 
-        country = airfield.getCountry(mission.getCampaign().getDate()).getCountry();
         position = airfield.getFakeAirfieldLocation(mission).getPosition().copy();
         orientation = airfield.getFakeAirfieldLocation(mission).getOrientation().copy();
         
@@ -72,7 +71,7 @@ public class FakeAirfield extends FixedPosition implements Cloneable
             
             super.write(writer);
                         
-            writer.write("    Callsign = " + callsign.getNum(country) + ";");
+            writer.write("    Callsign = " + callsign.getNum(determineCountry().getCountry()) + ";");
             writer.newLine();
             writer.write("    Callnum = " + callnum + ";");
             writer.newLine();

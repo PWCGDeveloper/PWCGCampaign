@@ -5,8 +5,14 @@ import java.util.List;
 import java.util.TreeMap;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.ICountry;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.group.airfield.Airfield;
+import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
 
@@ -15,7 +21,7 @@ public class MissionAirfieldBuilder
     private Campaign campaign;
     private Mission mission;
     private CoordinateBox structureBorders;
-    private List<Airfield> fieldSet = new ArrayList<>();;
+    private TreeMap<String, Airfield> fieldSet = new TreeMap<>();
 
     public MissionAirfieldBuilder (Mission mission)
     {
@@ -26,31 +32,64 @@ public class MissionAirfieldBuilder
     
     public void buildFieldsForPatrol() throws PWCGException 
     {
-        TreeMap<String, Airfield> selectedFields = selectAirfieldsWithinMissionBoundaries();
-        fieldSet = new ArrayList<>(selectedFields.values());
+        selectAirfieldsWithinMissionBoundaries();
+        selectPlayerAirfields();
+        addAirfieldObjects();
     }
 
     public List<Airfield> getFieldsForPatrol() throws PWCGException 
     {
-        return fieldSet;
+        return new ArrayList<>(fieldSet.values());
     }
 
-    private TreeMap<String, Airfield> selectAirfieldsWithinMissionBoundaries() throws PWCGException
+    private void selectAirfieldsWithinMissionBoundaries() throws PWCGException
     {
-        TreeMap<String, Airfield> selectedFields = new TreeMap<>();
         for (Airfield airfield :  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAllAirfields().values())
         {
-            if (PWCGContext.getInstance().getCurrentMap().getAirfieldManager().isAirfieldOccupied(
-                    PWCGContext.getInstance().getSquadronManager().getActiveSquadrons(campaign.getDate()), campaign.getDate()))
+            if (structureBorders.isInBox(airfield.getPosition()))
             {
-            	if (structureBorders.isInBox(airfield.getPosition()))
-                {
-                    selectedFields.put(airfield.getName(), airfield);
-                    airfield.addAirfieldObjects(mission);
-                }
+                fieldSet.put(airfield.getName(), airfield);
             }
         }
+    }
+
+    private void selectPlayerAirfields() throws PWCGException
+    {
+        for (SquadronMember player : mission.getParticipatingPlayers().getAllParticipatingPlayers())
+        {
+            Squadron squadron = player.determineSquadron();
+            Airfield playerField = squadron.determineCurrentAirfieldAnyMap(mission.getCampaign().getDate());
+            fieldSet.put(playerField.getName(), playerField);
+        }
+    }
+
+    private void addAirfieldObjects() throws PWCGException
+    {
+        for (Airfield airfield : fieldSet.values())
+        {
+            ICountry airfieldCountry = getAirfieldCountry(airfield);
+            if (airfieldCountry.getCountry() != Country.NEUTRAL)
+            {
+                airfield.addAirfieldObjects(mission, airfieldCountry);
+            }
+        }
+    }
+    
+    private ICountry getAirfieldCountry(Airfield airfield) throws PWCGException
+    {
+        ICountry airfieldCountry = airfield.getCountry(campaign.getDate());
+        if (airfieldCountry.getCountry() != Country.NEUTRAL)
+        {
+            return airfieldCountry;
+        }
         
-        return selectedFields;
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        Squadron squadronForField = squadronManager.getAnyActiveSquadronForAirfield(airfield, campaign.getDate());
+        if (squadronForField != null)
+        {
+            return squadronForField.getCountry();
+        }
+
+        return CountryFactory.makeCountryByCountry(Country.NEUTRAL);
     }
 }

@@ -20,12 +20,11 @@ public class AirfieldObjectSelector
     	this.date = date;
 	}
 
-    public IVehicle createAirfieldObject(HotSpot hotSpot, Airfield airfield) throws PWCGException 
+    public IVehicle createAirfieldObject(HotSpot hotSpot, Airfield airfield, ICountry airfieldCountry) throws PWCGException 
     {
         Orientation objectOrientation = Orientation.createRandomOrientation();
         
-        ICountry country = airfield.getCountry(date);
-        ICountry groundObjectCountry = PWCGContext.getInstance().getCurrentMap().getGroundCountryForMapBySide(country.getSide());
+        ICountry groundObjectCountry = PWCGContext.getInstance().getCurrentMap().getGroundCountryForMapBySide(airfieldCountry.getSide());
                 
         IVehicle airfieldObject = StaticObjectFactory.createStaticObject(groundObjectCountry, date, VehicleClass.StaticAirfield);        
         airfieldObject.setPosition(hotSpot.getPosition().copy());

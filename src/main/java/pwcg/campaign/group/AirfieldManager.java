@@ -132,7 +132,7 @@ public class AirfieldManager
 
         for (Airfield airfield : airfields.values())
         {
-            if (airfield.createCountry(date).getSide() == side)
+            if (airfield.determineCountryOnDate(date).getSide() == side)
             {
                 fieldsForSide.add(airfield);
             }

@@ -51,7 +51,7 @@ public class PortFacilityFinder
         List<Block> blocksForSide = new ArrayList<>();
         for (Block block : this.getAllBlocks())
         {
-            if (block.createCountry(date).getSide() == side)
+            if (block.determineCountryOnDate(date).getSide() == side)
             {
                 blocksForSide.add(block);
             }
