@@ -207,6 +207,7 @@ public abstract class DeployBase
         directoriesToCopy.put("Aces", null);
         directoriesToCopy.put("Aircraft", null);
         directoriesToCopy.put("Configuration", null);
+        directoriesToCopy.put("IconicBattles", null);
         directoriesToCopy.put("Ranks", null);
         directoriesToCopy.put("Skins", null);
         directoriesToCopy.put("SkirmishProfiles", null);        

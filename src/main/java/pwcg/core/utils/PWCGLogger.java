@@ -98,7 +98,7 @@ public class PWCGLogger
             if (logThisMessage(logLevel))
             {
                 // For the console
-                PWCGLogger.log(LogLevel.DEBUG, message);
+                System.out.println(message);
                 
                 // to the file
                 if (logLevel != LogLevel.DEBUG)

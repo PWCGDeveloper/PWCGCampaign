@@ -1,6 +1,22 @@
 
 ​At the PWCG web site
 
+PWCG 12.1.0
+Iconic mission from the main screen
+- Generate an iconic mission without the campaign.
+- Good way to kick off one of these scenarios if you just feel like playing one
+Use auto generated unit codes
+- From Murleen
+- Makes use of the new unit code decal feature
+- Only available on the P51 for now
+Added several missing modifications for WWI planes
+Standard Modifications
+- Makes the most common modifications standard.
+- Things like a mirror in WWII or optional instruments in WWI
+- Alleviates situation where there are more modifications than the screen can handle (Pfalz has 9!)
+Fixed situation that would prevent airfield AAA from spawning.
+Fixed incorrect ground attack payload for Spitfire Mk XIV
+
 PWCG 12.0.0
 Add iconc events
 Rhine: 
