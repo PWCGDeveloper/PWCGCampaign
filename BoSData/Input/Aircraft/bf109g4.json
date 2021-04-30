@@ -6,7 +6,6 @@
 		"GERMANY"
 	],
 	"stockModifications": [
-		"GLASS_HEADREST"
 	],
 	"displayName": "Bf 109 G-4",
 	"script": "LuaScripts\\WorldObjects\\Planes\\bf109g4.txt",
