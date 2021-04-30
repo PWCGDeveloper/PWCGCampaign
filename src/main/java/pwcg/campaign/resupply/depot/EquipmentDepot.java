@@ -29,9 +29,9 @@ public class EquipmentDepot
         return equipment.getAvailableDepotPlanes().size();
     }
     
-    public void addPlaneToDepot(EquippedPlane equippedPlane)
+    public void addPlaneToDepot(EquippedPlane equippedPlane) throws PWCGException
     {
-        equipment.addEquippedPlane(equippedPlane);
+        equipment.addEPlaneToDepot(equippedPlane);
     }
     
     public EquippedPlane removeBestPlaneFromDepot(List<String> activeArchTypes)

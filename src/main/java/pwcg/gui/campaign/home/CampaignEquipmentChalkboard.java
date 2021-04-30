@@ -13,7 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.IPlaneMarkingManager;
 import pwcg.campaign.plane.PlaneSorter;
@@ -57,7 +56,7 @@ public class CampaignEquipmentChalkboard extends ImageResizingPanel
     private JPanel createEquipmentListPanel(Campaign campaign, Map<Integer, EquippedPlane> planesForSquadron) throws PWCGException
     {
         List<EquippedPlane> sortedAircraftOnInventory = PlaneSorter.sortEquippedPlanesByGoodness(new ArrayList<EquippedPlane>(planesForSquadron.values()));
-        IPlaneMarkingManager planeMarkingManager = PWCGContext.getInstance().getPlaneMarkingManager();
+        IPlaneMarkingManager planeMarkingManager = campaign.getPlaneMarkingManager();
 
         Color buttonBG = ColorMap.CHALK_BACKGROUND;
         Color buttonFG = ColorMap.CHALK_FOREGROUND;

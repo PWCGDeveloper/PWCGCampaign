@@ -114,10 +114,8 @@ public class EmergencyResupplyHandler
     private void replaceEquipmentForSquadron(Equipment squadronEquipment, int squadronId, int totalNewPlanes) throws PWCGException
     {
         String planeTypeName = determinePlaneTypeToAdd(squadronId);
-        PlaneEquipmentFactory equipmentFactory = new PlaneEquipmentFactory(campaign);
-        EquippedPlane equippedPlane = equipmentFactory.makePlaneForDepot(planeTypeName);
-        PWCGContext.getInstance().getPlaneMarkingManager().allocatePlaneIdCode(campaign, squadronId, squadronEquipment, equippedPlane);
-        squadronEquipment.addEquippedPlane(equippedPlane);
+        EquippedPlane equippedPlane = PlaneEquipmentFactory.makePlaneForDepot(campaign, planeTypeName);
+        squadronEquipment.addEquippedPlaneToSquadron(campaign, squadronId, equippedPlane);
     }
 
     private String determinePlaneTypeToAdd(int squadronId) throws PWCGException

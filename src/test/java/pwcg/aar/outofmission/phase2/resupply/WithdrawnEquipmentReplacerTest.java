@@ -10,6 +10,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.PlaneMarkingManagerFactory;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.Equipment;
@@ -47,18 +48,18 @@ public class WithdrawnEquipmentReplacerTest
     {
         Date campaigndate = DateUtils.getDateYYYYMMDD("19420404");
         Mockito.when(campaign.getDate()).thenReturn(campaigndate);
+        Mockito.when(campaign.getPlaneMarkingManager()).thenReturn(PlaneMarkingManagerFactory.buildIPlaneMarkingManager());
 
-        PlaneEquipmentFactory planeEquipmentFactory = new PlaneEquipmentFactory(campaign);
         for (int i = 0; i < 6; ++i)
         {
-            EquippedPlane equippedPlane  = planeEquipmentFactory.makePlaneForSquadron("bf109f2", 20111051);
-            equipment.addEquippedPlane(equippedPlane);
+            EquippedPlane equippedPlane  = PlaneEquipmentFactory.makePlaneForSquadron(campaign, "bf109f2", 20111051);
+            equipment.addEquippedPlaneToSquadron(campaign, 20111051, equippedPlane);
         }
         
         for (int i = 0; i < 8; ++i)
         {
-            EquippedPlane equippedPlane  = planeEquipmentFactory.makePlaneForSquadron("bf109f4", 20111051);
-            equipment.addEquippedPlane(equippedPlane);
+            EquippedPlane equippedPlane  = PlaneEquipmentFactory.makePlaneForSquadron(campaign, "bf109f4", 20111051);
+            equipment.addEquippedPlaneToSquadron(campaign, 20111051, equippedPlane);
         }
 
         WithdrawnEquipmentReplacer withdrawnEquipmentReplacer = new WithdrawnEquipmentReplacer(campaign, equipment, squadron);
@@ -76,18 +77,18 @@ public class WithdrawnEquipmentReplacerTest
     {
         Date campaigndate = DateUtils.getDateYYYYMMDD("19420401");
         Mockito.when(campaign.getDate()).thenReturn(campaigndate);
+        Mockito.when(campaign.getPlaneMarkingManager()).thenReturn(PlaneMarkingManagerFactory.buildIPlaneMarkingManager());
 
-        PlaneEquipmentFactory planeEquipmentFactory = new PlaneEquipmentFactory(campaign);
         for (int i = 0; i < 6; ++i)
         {
-            EquippedPlane equippedPlane  = planeEquipmentFactory.makePlaneForSquadron("bf109f2", 20111051);
-            equipment.addEquippedPlane(equippedPlane);
+            EquippedPlane equippedPlane  = PlaneEquipmentFactory.makePlaneForSquadron(campaign, "bf109f2", 20111051);
+            equipment.addEquippedPlaneToSquadron(campaign, 20111051, equippedPlane);
         }
         
         for (int i = 0; i < 8; ++i)
         {
-            EquippedPlane equippedPlane  = planeEquipmentFactory.makePlaneForSquadron("bf109f4", 20111051);
-            equipment.addEquippedPlane(equippedPlane);
+            EquippedPlane equippedPlane  = PlaneEquipmentFactory.makePlaneForSquadron(campaign, "bf109f4", 20111051);
+            equipment.addEquippedPlaneToSquadron(campaign, 20111051, equippedPlane);
         }
 
         WithdrawnEquipmentReplacer withdrawnEquipmentReplacer = new WithdrawnEquipmentReplacer(campaign, equipment, squadron);
@@ -110,18 +111,18 @@ public class WithdrawnEquipmentReplacerTest
     {
         Date campaigndate = DateUtils.getDateYYYYMMDD("19420404");
         Mockito.when(campaign.getDate()).thenReturn(campaigndate);
+        Mockito.when(campaign.getPlaneMarkingManager()).thenReturn(PlaneMarkingManagerFactory.buildIPlaneMarkingManager());
 
-        PlaneEquipmentFactory planeEquipmentFactory = new PlaneEquipmentFactory(campaign);
         for (int i = 0; i < 3; ++i)
         {
-            EquippedPlane equippedPlane  = planeEquipmentFactory.makePlaneForSquadron("bf109f2", 20111051);
-            equipment.addEquippedPlane(equippedPlane);
+            EquippedPlane equippedPlane  = PlaneEquipmentFactory.makePlaneForSquadron(campaign, "bf109f2", 20111051);
+            equipment.addEquippedPlaneToSquadron(campaign, 20111051, equippedPlane);
         }
         
         for (int i = 0; i < 8; ++i)
         {
-            EquippedPlane equippedPlane  = planeEquipmentFactory.makePlaneForSquadron("bf109f4", 20111051);
-            equipment.addEquippedPlane(equippedPlane);
+            EquippedPlane equippedPlane  = PlaneEquipmentFactory.makePlaneForSquadron(campaign, "bf109f4", 20111051);
+            equipment.addEquippedPlaneToSquadron(campaign, 20111051, equippedPlane);
         }
 
         assert(equipment.getActiveEquippedPlanes().size() == 11);
@@ -146,18 +147,18 @@ public class WithdrawnEquipmentReplacerTest
     {
         Date campaigndate = DateUtils.getDateYYYYMMDD("19420404");
         Mockito.when(campaign.getDate()).thenReturn(campaigndate);
+        Mockito.when(campaign.getPlaneMarkingManager()).thenReturn(PlaneMarkingManagerFactory.buildIPlaneMarkingManager());
 
-        PlaneEquipmentFactory planeEquipmentFactory = new PlaneEquipmentFactory(campaign);
         for (int i = 0; i < 3; ++i)
         {
-            EquippedPlane equippedPlane  = planeEquipmentFactory.makePlaneForSquadron("bf109f2", 20111051);
-            equipment.addEquippedPlane(equippedPlane);
+            EquippedPlane equippedPlane  = PlaneEquipmentFactory.makePlaneForSquadron(campaign, "bf109f2", 20111051);
+            equipment.addEquippedPlaneToSquadron(campaign, 20111051, equippedPlane);
         }
         
         for (int i = 0; i < 3; ++i)
         {
-            EquippedPlane equippedPlane  = planeEquipmentFactory.makePlaneForSquadron("bf109f4", 20111051);
-            equipment.addEquippedPlane(equippedPlane);
+            EquippedPlane equippedPlane  = PlaneEquipmentFactory.makePlaneForSquadron(campaign, "bf109f4", 20111051);
+            equipment.addEquippedPlaneToSquadron(campaign, 20111051, equippedPlane);
         }
 
         WithdrawnEquipmentReplacer withdrawnEquipmentReplacer = new WithdrawnEquipmentReplacer(campaign, equipment, squadron);

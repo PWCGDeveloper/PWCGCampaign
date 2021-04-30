@@ -10,6 +10,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
+import pwcg.campaign.plane.PlaneEquipmentFactory;
 import pwcg.campaign.plane.PlaneStatus;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PlaneTypeFactory;
@@ -176,9 +177,8 @@ public class CampaignEquipmentManager
         {
             PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
             PlaneType planeType = planeTypeFactory.getPlaneByDisplayName(planeTypeToChangeTo);
-            EquippedPlane equippedPlane = new EquippedPlane(planeType, campaign.getSerialNumber().getNextPlaneSerialNumber(), squadron.getSquadronId(), PlaneStatus.STATUS_DEPLOYED);
-            PWCGContext.getInstance().getPlaneMarkingManager().allocatePlaneIdCode(campaign, squadron.getSquadronId(), squadronEquipment, equippedPlane);
-            squadronEquipment.addEquippedPlane(equippedPlane);
+            EquippedPlane equippedPlane = PlaneEquipmentFactory.makePlaneForSquadron(campaign, planeType.getType(), squadron.getSquadronId());
+            squadronEquipment.addEquippedPlaneToSquadron(campaign, squadron.getSquadronId(), equippedPlane);
         }
     }
 

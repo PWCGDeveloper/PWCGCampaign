@@ -29,9 +29,8 @@ public class ArdennesFlightTest
     @Before
     public void fighterFlightTests() throws PWCGException
     {
-        fg362Campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
-
         PWCGContext.setProduct(PWCGProduct.BOS);
+        fg362Campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
     }
 
     @Test

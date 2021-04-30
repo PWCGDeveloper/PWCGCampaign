@@ -2,7 +2,6 @@ package pwcg.aar.campaign.update;
 
 import pwcg.aar.data.AARContext;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneStatus;
@@ -44,8 +43,7 @@ public class EquipmentUpdater
             EquippedPlane replacementPlane = equipmentResupplyRecord.getEquippedPlane();
             replacementPlane.setSquadronId(equipmentResupplyRecord.getTransferTo());
             replacementPlane.setPlaneStatus(PlaneStatus.STATUS_DEPLOYED);
-            PWCGContext.getInstance().getPlaneMarkingManager().allocatePlaneIdCode(campaign, equipmentResupplyRecord.getTransferTo(), equipment, replacementPlane);
-            equipment.addEquippedPlane(replacementPlane);
+            equipment.addEquippedPlaneToSquadron(campaign, equipmentResupplyRecord.getTransferTo(), replacementPlane);
         }
     }
  }

@@ -97,8 +97,7 @@ public class BeforeCampaignVictimGenerator implements IVictimGenerator
     @Override
     public EquippedPlane generateVictimPlane() throws PWCGException
     {
-        PlaneEquipmentFactory planeEquipmentFactory = new PlaneEquipmentFactory(campaign);
-        EquippedPlane equippedPlane = planeEquipmentFactory.makePlaneForBeforeCampaign(victimSquadron.determineSide(), date);
+        EquippedPlane equippedPlane = PlaneEquipmentFactory.makePlaneForBeforeCampaign(campaign, victimSquadron.determineSide(), date);
         return equippedPlane;
     }
 }

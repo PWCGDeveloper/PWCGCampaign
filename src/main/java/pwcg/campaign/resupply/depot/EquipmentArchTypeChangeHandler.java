@@ -72,10 +72,8 @@ public class EquipmentArchTypeChangeHandler
             PlaneType bestPlaneType = getBestPlaneTypeForSquadron(squadron);
             for (int i = 0; i < numPlanesNeeded; ++i)
             {
-                PlaneEquipmentFactory equipmentFactory = new PlaneEquipmentFactory(campaign);
-                EquippedPlane replacementPlane = equipmentFactory.makePlaneForSquadron(bestPlaneType.getType(), squadron.getSquadronId());
-                PWCGContext.getInstance().getPlaneMarkingManager().allocatePlaneIdCode(campaign, squadron.getSquadronId(), squadronEquipment, replacementPlane);
-                squadronEquipment.addEquippedPlane(replacementPlane);
+                EquippedPlane replacementPlane = PlaneEquipmentFactory.makePlaneForSquadron(campaign, bestPlaneType.getType(), squadron.getSquadronId());
+                squadronEquipment.addEquippedPlaneToSquadron(campaign, squadron.getSquadronId(), replacementPlane);
             }
         }
     }

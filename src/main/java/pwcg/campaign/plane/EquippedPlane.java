@@ -91,6 +91,6 @@ public class EquippedPlane extends PlaneType
 
     public String getDisplayMarkings() throws PWCGException {
         Campaign campaign = PWCGContext.getInstance().getCampaign();
-        return PWCGContext.getInstance().getPlaneMarkingManager().determineDisplayMarkings(campaign, this);
+        return campaign.getPlaneMarkingManager().determineDisplayMarkings(campaign, this);
     }
 }

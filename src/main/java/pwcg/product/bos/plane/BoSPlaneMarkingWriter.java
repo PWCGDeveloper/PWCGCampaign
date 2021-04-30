@@ -16,7 +16,6 @@ import pwcg.product.bos.country.BoSServiceManager;
 
 public class BoSPlaneMarkingWriter
 {
-
     public void writeTacticalCodes(BufferedWriter writer, Campaign campaign, PlaneMcu planeMcu) throws PWCGException
     {
         if (planeMcu.getAircraftIdCode() == null)

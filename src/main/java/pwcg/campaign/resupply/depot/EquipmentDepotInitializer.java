@@ -17,13 +17,11 @@ public class EquipmentDepotInitializer
     private Campaign campaign;
     private ArmedService service;
     private Equipment equipment = new Equipment();
-    private PlaneEquipmentFactory equipmentFactory;
 
     public EquipmentDepotInitializer(Campaign campaign, ArmedService service) 
     {
         this.campaign = campaign;
         this.service = service;
-        this.equipmentFactory = new PlaneEquipmentFactory(campaign);
     }
 
     public Equipment createReplacementPoolForService() throws PWCGException
@@ -56,8 +54,8 @@ public class EquipmentDepotInitializer
         for (int i = 0; i < numPlanes; ++i)
         {
             String planeTypeName = equipmentWeightCalculator.getPlaneTypeFromWeight();
-            EquippedPlane equippedPlane = equipmentFactory.makePlaneForDepot(planeTypeName);
-            equipment.addEquippedPlane(equippedPlane);
+            EquippedPlane equippedPlane = PlaneEquipmentFactory.makePlaneForDepot(campaign, planeTypeName);
+            equipment.addEPlaneToDepot(equippedPlane);
         }
     }
 }

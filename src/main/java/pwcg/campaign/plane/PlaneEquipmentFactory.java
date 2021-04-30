@@ -11,14 +11,7 @@ import pwcg.core.utils.RandomNumberGenerator;
 
 public class PlaneEquipmentFactory
 {
-    private Campaign campaign;
-
-    public PlaneEquipmentFactory(Campaign campaign)
-    {
-        this.campaign = campaign;
-    }
-
-    public EquippedPlane makePlaneForSquadron (String planteTypeName, int squadronId) throws PWCGException
+    public static EquippedPlane makePlaneForSquadron (Campaign campaign, String planteTypeName, int squadronId) throws PWCGException
     {
         PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
         PlaneType planeType = planeTypeFactory.createPlaneTypeByType(planteTypeName);        
@@ -27,7 +20,7 @@ public class PlaneEquipmentFactory
         return equippedPlane;
     }
 
-    public EquippedPlane makePlaneForDepot (String planteTypeName) throws PWCGException
+    public static EquippedPlane makePlaneForDepot (Campaign campaign, String planteTypeName) throws PWCGException
     {
         PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
         PlaneType planeType = planeTypeFactory.createPlaneTypeByType(planteTypeName);        
@@ -36,7 +29,7 @@ public class PlaneEquipmentFactory
         return equippedPlane;
     }
 
-    public EquippedPlane makePlaneForBeforeCampaign (Side side, Date date) throws PWCGException
+    public static EquippedPlane makePlaneForBeforeCampaign (Campaign campaign, Side side, Date date) throws PWCGException
     {
         PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
         List<PlaneType> planeTypes = planeTypeFactory.createActivePlaneTypesForDateAndSide(side, date);

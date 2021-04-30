@@ -1,8 +1,9 @@
 package pwcg.product.bos.plane;
 
 import java.io.BufferedWriter;
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Set;
+import java.util.Map;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -17,26 +18,71 @@ import pwcg.product.bos.country.BoSServiceManager;
 
 public class BoSPlaneMarkingManager implements IPlaneMarkingManager
 {
-
+    private Map<Integer, HashSet<String>> allocatedCodesForSquadrons = new HashMap<>();
+    
     @Override
-    public void allocatePlaneIdCode(Campaign campaign, int squadronId, Equipment equipment, EquippedPlane equippedPlane) throws PWCGException
+    public void initialize(Campaign campaign) throws PWCGException
+    {
+        for (Integer squadronId : campaign.getEquipmentManager().getEquipmentAllSquadrons().keySet())
+        {
+            Equipment squadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadronId);
+            for (EquippedPlane equippedPlane : squadronEquipment.getActiveEquippedPlanes().values())
+            {
+                recordPlaneIdCode(campaign, squadronId, equippedPlane);
+            }
+        }
+    }
+    
+    @Override
+    public void recordPlaneIdCode(Campaign campaign, int squadronId, EquippedPlane equippedPlane) throws PWCGException
+    {
+        HashSet<String> codesForSquadron = getCodesForSquadron(squadronId);
+        if (recordExistingCode(equippedPlane, codesForSquadron))
+        {
+            return;
+        }
+        else
+        {
+            allocatePlaneIdCode(campaign, squadronId, equippedPlane, codesForSquadron);
+        }
+    }
+
+    private HashSet<String> getCodesForSquadron(int squadronId)
+    {
+        if (!allocatedCodesForSquadrons.containsKey(squadronId))
+        {
+            HashSet<String> codesForSquadron = new HashSet<>();
+            allocatedCodesForSquadrons.put(squadronId, codesForSquadron);
+        }
+        HashSet<String> codesForSquadron = allocatedCodesForSquadrons.get(squadronId);
+        return codesForSquadron;
+    }
+
+    private boolean recordExistingCode(EquippedPlane equippedPlane, HashSet<String> codesForSquadron)
+    {
+        if (equippedPlane.getAircraftIdCode() != null && !equippedPlane.getAircraftIdCode().isEmpty())
+        {
+            codesForSquadron.add(equippedPlane.getAircraftIdCode());
+            return true;
+        }
+        return false;
+    }
+
+    private void allocatePlaneIdCode(Campaign campaign, int squadronId, EquippedPlane equippedPlane, HashSet<String> codesForSquadron) throws PWCGException
     {
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
-
-        Set<String> allocatedCodes = new HashSet<>();
-        for (EquippedPlane plane : equipment.getActiveEquippedPlanes().values())
+        if (squadron.determineUnitIdCode(campaign.getDate()) == null)
         {
-            allocatedCodes.add(plane.getAircraftIdCode());
+            return;
         }
 
         if (squadron.getService() == BoSServiceManager.LUFTWAFFE)
         {
-            if (squadron.determineDisplayName(campaign.getDate()).contains("JG")
-                    || (squadron.determineDisplayName(campaign.getDate()).contains("SG") && squadron.determineUnitIdCode(campaign.getDate()) == null))
+            if (squadron.determineDisplayName(campaign.getDate()).contains("JG") || squadron.determineDisplayName(campaign.getDate()).contains("SG"))
             {
                 // Allocate numbers 1-N
                 int code = 1;
-                while (allocatedCodes.contains(Integer.toString(code)))
+                while (codesForSquadron.contains(Integer.toString(code)))
                     code++;
 
                 equippedPlane.setAircraftIdCode(Integer.toString(code));
@@ -46,7 +92,7 @@ public class BoSPlaneMarkingManager implements IPlaneMarkingManager
                 // Allocate letters from A
                 // Do this randomly rather than in sequence?
                 char code = 'A';
-                while (allocatedCodes.contains(Character.toString(code)))
+                while (codesForSquadron.contains(Character.toString(code)))
                     code++;
                 if (code > 'Z')
                     throw new PWCGException("Unable to allocate plane ID code for squadron " + squadron.getSquadronId());
@@ -58,7 +104,7 @@ public class BoSPlaneMarkingManager implements IPlaneMarkingManager
         {
             // Random numbers 1-99
             int code = RandomNumberGenerator.getRandom(99);
-            while (allocatedCodes.contains(Integer.toString(code + 1)))
+            while (codesForSquadron.contains(Integer.toString(code + 1)))
                 code = (code + 1) % 99;
 
             equippedPlane.setAircraftIdCode(Integer.toString(code + 1));
@@ -67,7 +113,7 @@ public class BoSPlaneMarkingManager implements IPlaneMarkingManager
         {
             // Allocate numbers 1-N
             int code = 1;
-            while (allocatedCodes.contains(Integer.toString(code)))
+            while (codesForSquadron.contains(Integer.toString(code)))
                 code++;
 
             equippedPlane.setAircraftIdCode(Integer.toString(code));
@@ -78,7 +124,7 @@ public class BoSPlaneMarkingManager implements IPlaneMarkingManager
             // Allocate letters randomly
             char startCode = (char) ('A' + RandomNumberGenerator.getRandom(25));
             char code = startCode;
-            while (allocatedCodes.contains(Character.toString(code)))
+            while (codesForSquadron.contains(Character.toString(code)))
             {
                 if (code == 'Z')
                     code = 'A';
@@ -89,6 +135,7 @@ public class BoSPlaneMarkingManager implements IPlaneMarkingManager
             }
 
             equippedPlane.setAircraftIdCode(Character.toString(code));
+            codesForSquadron.add(Character.toString(code));
         }
     }
 

@@ -6,10 +6,10 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.MapFinderForCampaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGDirectoryUserManager;
-import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CampaignModeFactory;
 import pwcg.campaign.io.json.CampaignIOJson;
@@ -17,6 +17,7 @@ import pwcg.campaign.mode.ICampaignActive;
 import pwcg.campaign.mode.ICampaignDescriptionBuilder;
 import pwcg.campaign.personnel.InitialSquadronBuilder;
 import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.plane.IPlaneMarkingManager;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.plane.RoleCategory;
 import pwcg.campaign.squadmember.SerialNumber;
@@ -38,6 +39,7 @@ public class Campaign
     private CampaignData campaignData = new CampaignData();
     private ConfigManagerCampaign campaignConfigManager = null;
     private CampaignLogs campaignLogs = null;
+    private IPlaneMarkingManager planeMarkingManager = PlaneMarkingManagerFactory.buildIPlaneMarkingManager();
 
     private Mission currentMission = null;
     private CampaignPersonnelManager personnelManager;
@@ -415,5 +417,10 @@ public class Campaign
             throw new PWCGException("reference player not found on request for serial number" + campaignData.getReferencePlayerSerialNumber());
         }
         return referencePlayer;
+    }
+    
+    public IPlaneMarkingManager getPlaneMarkingManager()
+    {
+        return planeMarkingManager;
     }
 }

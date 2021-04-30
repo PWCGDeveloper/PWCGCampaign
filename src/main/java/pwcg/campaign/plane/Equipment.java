@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -74,7 +75,13 @@ public class Equipment
         }
     }
 
-    public void addEquippedPlane(EquippedPlane equippedPlane)
+    public void addEquippedPlaneToSquadron(Campaign campaign, int squadronId, EquippedPlane equippedPlane) throws PWCGException
+    {
+        equippedPlanes.put(equippedPlane.getSerialNumber(), equippedPlane);
+        campaign.getPlaneMarkingManager().recordPlaneIdCode(campaign, squadronId, equippedPlane);
+    }
+
+    public void addEPlaneToDepot(EquippedPlane equippedPlane) throws PWCGException
     {
         equippedPlanes.put(equippedPlane.getSerialNumber(), equippedPlane);
     }
