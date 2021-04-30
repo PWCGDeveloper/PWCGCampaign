@@ -70,6 +70,8 @@ public class Campaign
         initialSquadronBuilder.buildNewSquadrons(this);
 
         verifyRepresentativePlayer();
+        
+        planeMarkingManager.initialize(this);
 
         return true;
     }

@@ -1,6 +1,15 @@
 
 ​At the PWCG web site
 
+PWCG 12.1.2
+Moved plane markings manager to be scoped to the campaign level
+Fixed null pointer scenario in markings manager
+Fixed error that would cause AI squadrons not to upgrade to better planes.
+Fixed error: glass head rest on the 109 should not be a stock modification as doing so prevents other head rest options.
+
+PWCG 12.1.1
+Fixed packaging error
+
 PWCG 12.1.0
 Iconic mission from the main screen
 - Generate an iconic mission without the campaign.
