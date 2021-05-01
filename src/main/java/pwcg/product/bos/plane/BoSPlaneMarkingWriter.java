@@ -24,7 +24,12 @@ public class BoSPlaneMarkingWriter
         }
 
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(planeMcu.getSquadronId());
-        if (squadron.determineSubUnitIdCode(campaign.getDate()) == null)
+        if (squadron == null)
+        {
+            return;
+        }
+
+        if (planeMcu.getSkin() == null || planeMcu.getSkin().isUseTacticalCodes())
         {
             return;
         }

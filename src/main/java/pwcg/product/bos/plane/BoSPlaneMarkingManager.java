@@ -1,8 +1,12 @@
 package pwcg.product.bos.plane;
 
 import java.io.BufferedWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
@@ -12,14 +16,13 @@ import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.IPlaneMarkingManager;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.product.bos.country.BoSServiceManager;
 
 public class BoSPlaneMarkingManager implements IPlaneMarkingManager
 {
     private Map<Integer, HashSet<String>> allocatedCodesForSquadrons = new HashMap<>();
-    
+
     @Override
     public void initialize(Campaign campaign) throws PWCGException
     {
@@ -32,7 +35,7 @@ public class BoSPlaneMarkingManager implements IPlaneMarkingManager
             }
         }
     }
-    
+
     @Override
     public void recordPlaneIdCode(Campaign campaign, int squadronId, EquippedPlane equippedPlane) throws PWCGException
     {
@@ -76,67 +79,89 @@ public class BoSPlaneMarkingManager implements IPlaneMarkingManager
             return;
         }
 
+        String code = "";
         if (squadron.getService() == BoSServiceManager.LUFTWAFFE)
         {
             if (squadron.determineDisplayName(campaign.getDate()).contains("JG") || squadron.determineDisplayName(campaign.getDate()).contains("SG"))
             {
-                // Allocate numbers 1-N
-                int code = 1;
-                while (codesForSquadron.contains(Integer.toString(code)))
-                    code++;
-
-                equippedPlane.setAircraftIdCode(Integer.toString(code));
+                code = pickLowNumericCode(codesForSquadron);
             }
             else
             {
-                // Allocate letters from A
-                // Do this randomly rather than in sequence?
-                char code = 'A';
-                while (codesForSquadron.contains(Character.toString(code)))
-                    code++;
-                if (code > 'Z')
-                    throw new PWCGException("Unable to allocate plane ID code for squadron " + squadron.getSquadronId());
-
-                equippedPlane.setAircraftIdCode(Character.toString(code));
+                code = pickAlphaCode(codesForSquadron);
             }
         }
         else if (squadron.getService() == BoSServiceManager.VVS || squadron.getService() == BoSServiceManager.NORMANDIE)
         {
-            // Random numbers 1-99
-            int code = RandomNumberGenerator.getRandom(99);
-            while (codesForSquadron.contains(Integer.toString(code + 1)))
-                code = (code + 1) % 99;
-
-            equippedPlane.setAircraftIdCode(Integer.toString(code + 1));
+            code = pickHighNumericCode(codesForSquadron);
         }
         else if (squadron.getService() == BoSServiceManager.REGIA_AERONAUTICA)
         {
-            // Allocate numbers 1-N
-            int code = 1;
-            while (codesForSquadron.contains(Integer.toString(code)))
-                code++;
-
-            equippedPlane.setAircraftIdCode(Integer.toString(code));
+            code = pickLowNumericCode(codesForSquadron);
         }
         else if (squadron.getService() == BoSServiceManager.USAAF || squadron.getService() == BoSServiceManager.RAF
                 || squadron.getService() == BoSServiceManager.FREE_FRENCH)
         {
-            // Allocate letters randomly
-            char startCode = (char) ('A' + RandomNumberGenerator.getRandom(25));
-            char code = startCode;
-            while (codesForSquadron.contains(Character.toString(code)))
+            code = pickAlphaCode(codesForSquadron);
+        }
+
+        if (!code.isEmpty())
+        {
+            equippedPlane.setAircraftIdCode(code);
+            codesForSquadron.add(code);
+        }
+}
+
+    private String pickHighNumericCode(HashSet<String> codesForSquadron)
+    {
+        String code;
+        List<String> possibleCodes = new ArrayList<>();
+        for (int i = 10; i < 99; ++i)
+        {
+            possibleCodes.add("" + i);
+        }
+        code = pickACode(codesForSquadron, possibleCodes);
+        return code;
+    }
+
+    private String pickLowNumericCode(HashSet<String> codesForSquadron)
+    {
+        String code;
+        List<String> possibleCodes = new ArrayList<>();
+        for (int i = 1; i < 19; ++i)
+        {
+            possibleCodes.add("" + i);
+        }
+        code = pickACode(codesForSquadron, possibleCodes);
+        return code;
+    }
+
+    private String pickAlphaCode(HashSet<String> codesForSquadron)
+    {
+        String code;
+        // Allocate letters randomly
+        List<String> possibleCodes = Arrays.asList("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
+                "V", "W", "X", "Y", "Z");
+        code = pickACode(codesForSquadron, possibleCodes);
+        return code;
+    }
+
+    private String pickACode(HashSet<String> codesForSquadron, List<String> possibleCodes)
+    {
+        String code = "";
+
+        Collections.shuffle(possibleCodes);
+        for (String possibleCode : possibleCodes)
+        {
+            if (codesForSquadron.contains(possibleCode))
             {
-                if (code == 'Z')
-                    code = 'A';
-                else
-                    code++;
-                if (code == startCode)
-                    throw new PWCGException("Unable to allocate plane ID code for squadron " + squadron.getSquadronId());
+                continue;
             }
 
-            equippedPlane.setAircraftIdCode(Character.toString(code));
-            codesForSquadron.add(Character.toString(code));
+            code = possibleCode;
+            break;
         }
+        return code;
     }
 
     @Override
@@ -149,12 +174,11 @@ public class BoSPlaneMarkingManager implements IPlaneMarkingManager
             if (squadron.determineDisplayName(campaign.getDate()).contains("JG") || squadron.determineDisplayName(campaign.getDate()).contains("Sch.G")
                     || (squadron.determineDisplayName(campaign.getDate()).contains("SG") && squadron.determineUnitIdCode(campaign.getDate()) == null))
             {
-                return equippedPlane.getAircraftIdCode() + "+" + squadron.determineSubUnitIdCode(campaign.getDate());
+                return formGermanFighterCode(campaign, equippedPlane, squadron);
             }
             else
             {
-                return squadron.determineUnitIdCode(campaign.getDate()) + "+" + equippedPlane.getAircraftIdCode()
-                        + squadron.determineSubUnitIdCode(campaign.getDate());
+                return formGermanBomberCode(campaign, equippedPlane, squadron);
             }
         }
         else if (squadron.getService() == BoSServiceManager.VVS || squadron.getService() == BoSServiceManager.NORMANDIE)
@@ -168,6 +192,44 @@ public class BoSPlaneMarkingManager implements IPlaneMarkingManager
         }
 
         return Integer.toString(equippedPlane.getSerialNumber());
+    }
+
+    private String formGermanFighterCode(Campaign campaign, EquippedPlane equippedPlane, Squadron squadron) throws PWCGException
+    {
+        String code = "";
+        String aircraftIdCode = equippedPlane.getAircraftIdCode();
+        if (aircraftIdCode != null)
+        {
+            code = equippedPlane.getAircraftIdCode();
+        }
+        else
+        {
+            return "";
+        }
+
+        String subUnitIdCode = squadron.determineSubUnitIdCode(campaign.getDate());
+        if (subUnitIdCode != null)
+        {
+            code += "+" + subUnitIdCode;
+        }
+        return code;
+    }
+
+    private String formGermanBomberCode(Campaign campaign, EquippedPlane equippedPlane, Squadron squadron) throws PWCGException
+    {
+        String code = squadron.determineUnitIdCode(campaign.getDate());
+        String aircraftIdCode = equippedPlane.getAircraftIdCode();
+        if (aircraftIdCode != null)
+        {
+            code += "+" + equippedPlane.getAircraftIdCode();
+        }
+
+        String subUnitIdCode = squadron.determineSubUnitIdCode(campaign.getDate());
+        if (subUnitIdCode != null)
+        {
+            code += subUnitIdCode;
+        }
+        return code;
     }
 
     @Override
