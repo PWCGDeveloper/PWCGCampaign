@@ -338,11 +338,8 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
             writer.write("  WMMask = " + payload.generateFullModificationMask() + ";");
             writer.newLine();
 
-            if (skin == null || skin.isUseTacticalCodes())
-            {
-                Campaign campaign = PWCGContext.getInstance().getCampaign();
-                campaign.getPlaneMarkingManager().writeTacticalCodes(writer, campaign, this);
-            }
+            Campaign campaign = PWCGContext.getInstance().getCampaign();
+            campaign.getPlaneMarkingManager().writeTacticalCodes(writer, campaign, this);
 
             writer.write("}");
             writer.newLine();

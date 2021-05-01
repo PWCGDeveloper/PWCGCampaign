@@ -18,18 +18,13 @@ public class BoSPlaneMarkingWriter
 {
     public void writeTacticalCodes(BufferedWriter writer, Campaign campaign, PlaneMcu planeMcu) throws PWCGException
     {
-        if (planeMcu.getAircraftIdCode() == null)
-        {
-            return;
-        }
-
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(planeMcu.getSquadronId());
         if (squadron == null)
         {
             return;
         }
-
-        if (planeMcu.getSkin() == null || planeMcu.getSkin().isUseTacticalCodes())
+        
+        if (!shouldUseTacticalCodes(squadron, planeMcu))
         {
             return;
         }
@@ -47,7 +42,28 @@ public class BoSPlaneMarkingWriter
         }
     }
 
-    private TacticalCodeMarkings getTacticalMarkings(Campaign campaign, PlaneMcu planeMcu, Squadron squadron, TacticalCodeColor tacticalCodeColor) throws PWCGException
+    private boolean shouldUseTacticalCodes(Squadron squadron, PlaneMcu planeMcu) throws PWCGException
+    {
+        if (planeMcu.getAircraftIdCode() == null)
+        {
+            return false;
+        }
+
+        if (planeMcu.getSkin() == null)
+        {
+            return false;
+        }
+
+        if (!planeMcu.getSkin().isUseTacticalCodes())
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private TacticalCodeMarkings getTacticalMarkings(Campaign campaign, PlaneMcu planeMcu, Squadron squadron, TacticalCodeColor tacticalCodeColor)
+            throws PWCGException
     {
         TacticalCodeMarkings tacticalCodeMarkings = null;
         if (squadron.getService() == BoSServiceManager.LUFTWAFFE)
@@ -153,7 +169,7 @@ public class BoSPlaneMarkingWriter
             {
                 return true;
             }
-            
+
             return false;
         }
 
