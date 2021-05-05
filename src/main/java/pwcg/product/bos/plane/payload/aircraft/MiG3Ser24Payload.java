@@ -114,4 +114,21 @@ public class MiG3Ser24Payload extends PlanePayload implements IPlanePayload
     {
         selectedPrimaryPayloadId = 6;
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+        
+        if (selectedPrimaryPayloadId == 0 || 
+            selectedPrimaryPayloadId == 16)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

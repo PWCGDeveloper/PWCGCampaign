@@ -103,4 +103,20 @@ public class Bf110E2Payload extends PlanePayload
     {
         selectedPrimaryPayloadId = 4;
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+        
+        if (selectedPrimaryPayloadId == 0) 
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

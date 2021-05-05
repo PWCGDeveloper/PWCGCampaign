@@ -90,4 +90,24 @@ public class Bf110G2Payload extends PlanePayload
     {
         selectedPrimaryPayloadId = getPayloadIdByDescription(PayloadElement.STANDARD.getDescription());
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+        
+        if (selectedPrimaryPayloadId == 0 || 
+            selectedPrimaryPayloadId == 9 ||
+            selectedPrimaryPayloadId == 10 ||
+            selectedPrimaryPayloadId == 11 ||
+            selectedPrimaryPayloadId == 13)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

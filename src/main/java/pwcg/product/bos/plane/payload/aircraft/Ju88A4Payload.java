@@ -127,4 +127,15 @@ public class Ju88A4Payload extends PlanePayload
     {
         selectedPrimaryPayloadId = 0;        
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

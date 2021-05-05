@@ -69,4 +69,21 @@ public class Ju52Payload extends PlanePayload
     {
         selectedPrimaryPayloadId = 2;
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+        
+        if (selectedPrimaryPayloadId == 0 || 
+            selectedPrimaryPayloadId == 3)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

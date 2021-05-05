@@ -90,5 +90,23 @@ public class Ma202Ser8Payload extends PlanePayload implements IPlanePayload
         {
             selectedPrimaryPayloadId = 4;
         }
-    }    
+    }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+        
+        if (selectedPrimaryPayloadId == 0 || 
+            selectedPrimaryPayloadId == 3 || 
+            selectedPrimaryPayloadId == 4)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

@@ -20,6 +20,7 @@ public class ScrambleOpposingDiveBombFlight extends Flight implements IFlight
     public void createFlight() throws PWCGException
     {
         initialize(this);
+        setFlightPayload();
         createWaypoints();
         WaypointPriority.setWaypointsNonFighterPriority(this);
         createFlightCommonPostBuild();

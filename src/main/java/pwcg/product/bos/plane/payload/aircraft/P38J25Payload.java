@@ -146,4 +146,22 @@ public class P38J25Payload extends PlanePayload implements IPlanePayload
             selectedPrimaryPayloadId = 6;
         }
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+        
+        if (selectedPrimaryPayloadId == 0 || 
+            selectedPrimaryPayloadId == 1 || 
+            selectedPrimaryPayloadId == 8)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

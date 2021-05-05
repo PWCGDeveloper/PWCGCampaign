@@ -157,9 +157,7 @@ public class GroundUnitElement
 
     private void createEventAssociations()
     {
-        McuEvent event = new McuEvent();
-        event.setType(McuEvent.ONKILLED);
-        event.setTarId(spawnDeactivate.getIndex());
+        McuEvent event = new McuEvent(McuEvent.ONKILLED, spawnDeactivate.getIndex());
         vehicle.getEntity().addEvent(event);
     }
 

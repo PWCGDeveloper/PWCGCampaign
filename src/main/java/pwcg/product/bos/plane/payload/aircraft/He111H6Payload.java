@@ -107,4 +107,15 @@ public class He111H6Payload extends PlanePayload
     {
         selectedPrimaryPayloadId = 7;
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

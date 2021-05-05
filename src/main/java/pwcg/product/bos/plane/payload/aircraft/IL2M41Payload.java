@@ -181,4 +181,24 @@ public class IL2M41Payload extends PlanePayload implements IPlanePayload
             selectedPrimaryPayloadId = 16;
         }
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+        
+        if (selectedPrimaryPayloadId == 0 || 
+            selectedPrimaryPayloadId == 1 ||
+            selectedPrimaryPayloadId == 2 ||
+            selectedPrimaryPayloadId == 3 ||
+            selectedPrimaryPayloadId == 72)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

@@ -14,7 +14,8 @@ import pwcg.mission.mcu.group.IAirGroundAttackMcuSequence;
 
 public class ParaDropWaypointFactory
 {    
-    static public int PARA_DROP_TIME = 240;
+    static public int PARA_DROP_TIME = 120;
+    static public int PARA_DROP_BINGO_TIME = 15;
 
     private IFlight flight;
     private MissionPointAttackSet missionPointSet = new MissionPointAttackSet();
@@ -56,7 +57,7 @@ public class ParaDropWaypointFactory
     
     private IAirGroundAttackMcuSequence createAttackArea() throws PWCGException 
     {
-        IAirGroundAttackMcuSequence attackMcuSequence = AirGroundAttackMcuSequenceFactory.buildAirGroundAttackSequence(flight, PARA_DROP_TIME, AttackAreaType.INDIRECT);
+        IAirGroundAttackMcuSequence attackMcuSequence = AirGroundAttackMcuSequenceFactory.buildAirGroundAttackSequence(flight, PARA_DROP_TIME, PARA_DROP_BINGO_TIME, AttackAreaType.INDIRECT);
         return attackMcuSequence;
     }
 }

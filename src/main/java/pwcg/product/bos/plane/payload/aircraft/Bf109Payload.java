@@ -80,4 +80,22 @@ public abstract class Bf109Payload extends PlanePayload
     {
         selectedPrimaryPayloadId = 2;
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+        
+        if (selectedPrimaryPayloadId == 1 || selectedPrimaryPayloadId == 2)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

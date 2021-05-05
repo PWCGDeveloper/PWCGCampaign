@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.plane.PlaneMcu;
+import pwcg.mission.flight.FlightPlanes;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuWaypoint;
@@ -52,14 +52,11 @@ public class MissionPointAttackSet extends MissionPointSetMultipleWaypointSet im
     }
 
     @Override
-    public void finalizeMissionPointSet(PlaneMcu plane) throws PWCGException
+    public void finalizeMissionPointSet(FlightPlanes flightPlanes) throws PWCGException
     {
-        super.finalizeMissionPointSet(plane);
-        attackSequence.setAttackToTriggerOnPlane(plane.getLinkTrId());
-        
-        McuWaypoint linkToAttack = super.getLastWaypointBefore();
-        attackSequence.setLinkToAttack(linkToAttack);        
-        
+        super.finalizeMissionPointSet(flightPlanes);
+        attackSequence.setAttackToTriggerOnPlane(flightPlanes.getPlanes());
+         
         McuWaypoint firstWaypointAfter = super.getFirstWaypointAfter();
         attackSequence.setLinkToNextTarget(firstWaypointAfter.getIndex());        
     }

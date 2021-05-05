@@ -11,6 +11,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.FlightPlanes;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointFactory;
@@ -77,11 +78,11 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
     }
 
     @Override
-    public void finalizeMissionPointSet(PlaneMcu plane) throws PWCGException
+    public void finalizeMissionPointSet(FlightPlanes flightPlanes) throws PWCGException
     {
-        super.finalizeMissionPointSet(plane);
+        super.finalizeMissionPointSet(flightPlanes);
         createTargetAssociations();
-        createObjectAssociations(plane);        
+        createObjectAssociations(flightPlanes.getFlightLeader());        
     }
 
     @Override

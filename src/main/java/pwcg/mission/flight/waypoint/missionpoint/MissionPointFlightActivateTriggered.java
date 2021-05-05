@@ -11,6 +11,7 @@ import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.FlightPlanes;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.Coalition;
@@ -84,9 +85,9 @@ public class MissionPointFlightActivateTriggered implements IMissionPointSet
     }
 
     @Override
-    public void finalizeMissionPointSet(PlaneMcu flightLeader) throws PWCGException
+    public void finalizeMissionPointSet(FlightPlanes flightPlanes) throws PWCGException
     {
-        createObjectAssociations(flightLeader);
+        createObjectAssociations(flightPlanes.getFlightLeader());
     }
 
     @Override

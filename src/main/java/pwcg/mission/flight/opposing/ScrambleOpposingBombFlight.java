@@ -4,7 +4,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.bomb.BombingWaypointFactory;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetFactory;
@@ -21,6 +20,7 @@ public class ScrambleOpposingBombFlight extends Flight implements IFlight
     public void createFlight() throws PWCGException
     {
         initialize(this);
+        setFlightPayload();
         createWaypoints();
         WaypointPriority.setWaypointsNonFighterPriority(this);
         createFlightCommonPostBuild();
@@ -30,7 +30,7 @@ public class ScrambleOpposingBombFlight extends Flight implements IFlight
     {
         McuWaypoint ingressWaypoint =ScrambleOpposingEntryWaypointFactory.createScrambleEntryWaypoints(this);
 
-        ScrambleOpposingBombWaypointFactory missionWaypointFactory = new ScrambleOpposingBombWaypointFactory(this, BombingWaypointFactory.BOMB_ATTACK_TIME);
+        ScrambleOpposingBombWaypointFactory missionWaypointFactory = new ScrambleOpposingBombWaypointFactory(this);
         IMissionPointSet missionWaypoints = missionWaypointFactory.createWaypoints(ingressWaypoint);
         this.getWaypointPackage().addMissionPointSet(missionWaypoints);
         

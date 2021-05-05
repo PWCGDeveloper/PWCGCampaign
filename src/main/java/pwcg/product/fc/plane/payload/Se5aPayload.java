@@ -47,4 +47,15 @@ public class Se5aPayload extends PlanePayload implements IPlanePayload
     {
         selectedPrimaryPayloadId = 2;
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (selectedPrimaryPayloadId == 2)
+        {
+            return true;
+        }
+
+        return false;
+    }
 }

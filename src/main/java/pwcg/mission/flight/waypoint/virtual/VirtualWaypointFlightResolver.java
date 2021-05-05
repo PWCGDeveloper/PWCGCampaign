@@ -26,7 +26,7 @@ public class VirtualWaypointFlightResolver
 
     private static void linkVirtualWaypointToTarget(IFlight flight, IVirtualWaypoint virtualWaypoint) throws PWCGException
     {
-        flight.getWaypointPackage().setAttackToTriggerOnPlane(virtualWaypoint.getVwpPlanes().getLeadActivatePlane().getLinkTrId());
+        flight.getWaypointPackage().setAttackToTriggerOnPlane(virtualWaypoint.getVwpPlanes().getAllPlanes());
     }
 
     private static void adjustPayloadForSpawnAfterTarget(IFlight flight, IVirtualWaypoint virtualWaypoint) throws PWCGException

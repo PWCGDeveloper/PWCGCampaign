@@ -22,4 +22,5 @@ public interface IPlanePayload
     public IPlanePayload copy();
     public void noOrdnance();
     List<PayloadElement> getStockModifications();
+    public boolean isOrdnance();
 }

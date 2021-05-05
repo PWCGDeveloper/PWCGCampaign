@@ -2,6 +2,7 @@ package pwcg.mission.flight.escort;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.bomb.BombingWaypointFactory;
 import pwcg.mission.flight.waypoint.attack.GroundAttackWaypointHelper;
 import pwcg.mission.flight.waypoint.end.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
@@ -13,8 +14,6 @@ import pwcg.mission.mcu.group.IAirGroundAttackMcuSequence;
 
 public class EscortedByPlayerWaypointFactory
 {
-    static public int BOMB_ATTACK_TIME = 240;
-
     private IFlight flight;
     private MissionPointAttackSet missionPointSet = new MissionPointAttackSet();
 
@@ -49,7 +48,7 @@ public class EscortedByPlayerWaypointFactory
 
     private void createAttackArea() throws PWCGException 
     {
-        IAirGroundAttackMcuSequence attackMcuSequence = AirGroundAttackMcuSequenceFactory.buildAirGroundAttackSequence(flight, BOMB_ATTACK_TIME, AttackAreaType.INDIRECT);
+        IAirGroundAttackMcuSequence attackMcuSequence = AirGroundAttackMcuSequenceFactory.buildAirGroundAttackSequence(flight, BombingWaypointFactory.BOMB_ATTACK_TIME, BombingWaypointFactory.BOMB_ATTACK_BINGO_TIME, AttackAreaType.INDIRECT);
         missionPointSet.setAttackSequence(attackMcuSequence);
     }
 

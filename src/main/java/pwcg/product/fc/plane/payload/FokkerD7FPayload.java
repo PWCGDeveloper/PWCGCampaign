@@ -40,4 +40,10 @@ public class FokkerD7FPayload extends PlanePayload implements IPlanePayload
         selectedPrimaryPayloadId = 0;
         return selectedPrimaryPayloadId;
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        return false;
+    }
 }

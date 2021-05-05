@@ -16,6 +16,7 @@ import pwcg.mission.mcu.group.IAirGroundAttackMcuSequence;
 public class GroundAttackWaypointFactory
 {
     static public int GROUND_ATTACK_TIME = 300;
+    static public int GROUND_ATTACK_BINGO_TIME = 30;
         
     private IFlight flight;
     private MissionPointAttackSet missionPointSet = new MissionPointAttackSet();
@@ -57,7 +58,7 @@ public class GroundAttackWaypointFactory
     
     private IAirGroundAttackMcuSequence createAttackArea() throws PWCGException 
     {
-        IAirGroundAttackMcuSequence attackMcuSequence = AirGroundAttackMcuSequenceFactory.buildAirGroundAttackSequence(flight, GROUND_ATTACK_TIME, AttackAreaType.GROUND_TARGETS);
+        IAirGroundAttackMcuSequence attackMcuSequence = AirGroundAttackMcuSequenceFactory.buildAirGroundAttackSequence(flight, GROUND_ATTACK_TIME, GROUND_ATTACK_BINGO_TIME, AttackAreaType.GROUND_TARGETS);
         return attackMcuSequence;
     }
 }

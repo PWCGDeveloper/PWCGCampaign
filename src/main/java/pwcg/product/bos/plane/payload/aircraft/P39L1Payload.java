@@ -71,4 +71,22 @@ public class P39L1Payload extends PlanePayload implements IPlanePayload
             selectedPrimaryPayloadId = 12;
         }
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+        
+        if (selectedPrimaryPayloadId == 0 || 
+            selectedPrimaryPayloadId == 2 || 
+            selectedPrimaryPayloadId == 4)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

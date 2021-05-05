@@ -31,8 +31,6 @@ public interface IFlightPlanes
 
     List<Integer> getPlaneLinkTrIds();
 
-    void setFlightPayload() throws PWCGException;
-
     void setPlanePosition(Integer planeLinkTrId, Coordinate planeCoords, Orientation planeOrientation, int startingPoint);
 
     void preparePlaneForCoop(IFlight flight) throws PWCGException;

@@ -32,4 +32,15 @@ public class B25DRAFPayload extends PlanePayload implements IPlanePayload
         selectedPrimaryPayloadId = 1;
         return selectedPrimaryPayloadId;
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

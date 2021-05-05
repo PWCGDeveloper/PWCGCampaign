@@ -104,4 +104,21 @@ public class Fw190D9Payload extends PlanePayload implements IPlanePayload
         }
     }    
 
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+        
+        if (selectedPrimaryPayloadId == 0 || 
+            selectedPrimaryPayloadId == 4 ||
+            selectedPrimaryPayloadId == 8)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

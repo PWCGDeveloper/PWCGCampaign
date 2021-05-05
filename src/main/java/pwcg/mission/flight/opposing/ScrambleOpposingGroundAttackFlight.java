@@ -20,6 +20,7 @@ public class ScrambleOpposingGroundAttackFlight extends Flight implements IFligh
     public void createFlight() throws PWCGException
     {
         initialize(this);
+        setFlightPayload();
         createWaypoints();
         WaypointPriority.setWaypointsNonFighterPriority(this);
         createFlightCommonPostBuild();

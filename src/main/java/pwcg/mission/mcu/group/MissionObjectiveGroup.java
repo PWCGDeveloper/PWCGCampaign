@@ -65,9 +65,7 @@ public class MissionObjectiveGroup
         missionObjectiveTimer.setTarget(missionObjective.getIndex());
         missionObjectiveTimer.setPosition(squadronLocation);
 
-        McuEvent planeDamagedEvent = new McuEvent();
-        planeDamagedEvent.setType(McuEvent.ONPLANECRASHED);
-        planeDamagedEvent.setTarId(missionObjectiveTimer.getIndex());
+        McuEvent planeDamagedEvent = new McuEvent(McuEvent.ONPLANECRASHED, missionObjectiveTimer.getIndex());
         referencePlane.addEvent(planeDamagedEvent);
     }
 

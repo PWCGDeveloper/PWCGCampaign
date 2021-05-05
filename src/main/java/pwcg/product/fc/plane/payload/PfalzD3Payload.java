@@ -42,4 +42,10 @@ public class PfalzD3Payload extends PlanePayload implements IPlanePayload
         selectedPrimaryPayloadId = 0;
         return selectedPrimaryPayloadId;
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        return false;
+    }
 }

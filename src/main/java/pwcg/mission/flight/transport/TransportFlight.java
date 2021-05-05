@@ -29,6 +29,7 @@ public class TransportFlight extends Flight implements IFlight
     {
         initialize(this);
         
+        setFlightPayload();
         determineTargetAirfield();
         createWaypoints();
         WaypointPriority.setWaypointsNonFighterPriority(this);

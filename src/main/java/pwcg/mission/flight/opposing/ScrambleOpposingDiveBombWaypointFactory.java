@@ -54,7 +54,7 @@ public class ScrambleOpposingDiveBombWaypointFactory
     
     private IAirGroundAttackMcuSequence createAttackArea() throws PWCGException 
     {
-        IAirGroundAttackMcuSequence attackMcuSequence = AirGroundAttackMcuSequenceFactory.buildAirGroundAttackSequence(flight, DiveBombingWaypointFactory.DIVE_BOMB_ATTACK_TIME, AttackAreaType.GROUND_TARGETS);
+        IAirGroundAttackMcuSequence attackMcuSequence = AirGroundAttackMcuSequenceFactory.buildAirGroundAttackSequence(flight, DiveBombingWaypointFactory.DIVE_BOMB_ATTACK_TIME, DiveBombingWaypointFactory.DIVE_BOMB_ATTACK_BINGO_TIME, AttackAreaType.GROUND_TARGETS);
         return attackMcuSequence;
     }
 }

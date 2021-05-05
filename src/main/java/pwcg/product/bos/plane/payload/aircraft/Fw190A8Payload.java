@@ -67,4 +67,22 @@ public class Fw190A8Payload extends PlanePayload implements IPlanePayload
         selectedPrimaryPayloadId = Fw190F8PayloadHelper.selectFW190F8Payload(flight);
         return selectedPrimaryPayloadId;
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+        
+        if (selectedPrimaryPayloadId == 0 || 
+            selectedPrimaryPayloadId == 4 ||
+            selectedPrimaryPayloadId == 16)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

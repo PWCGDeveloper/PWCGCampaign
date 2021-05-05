@@ -69,4 +69,15 @@ public class BristolF2B2Payload extends PlanePayload implements IPlanePayload
     {
         selectedPrimaryPayloadId = 3;
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (selectedPrimaryPayloadId == 2)
+        {
+            return true;
+        }
+
+        return false;
+    }
 }

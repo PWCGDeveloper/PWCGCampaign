@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.flight.FlightPlanes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
 import pwcg.mission.mcu.BaseFlightMcu;
@@ -65,9 +65,9 @@ public class MissionPointFlightBeginVirtual extends MissionPointSetSingleWaypoin
     }
 
     @Override
-    public void finalizeMissionPointSet(PlaneMcu plane) throws PWCGException
+    public void finalizeMissionPointSet(FlightPlanes flightPlanes) throws PWCGException
     {
-        super.finalizeMissionPointSet(plane);
+        super.finalizeMissionPointSet(flightPlanes);
     }
 
     @Override

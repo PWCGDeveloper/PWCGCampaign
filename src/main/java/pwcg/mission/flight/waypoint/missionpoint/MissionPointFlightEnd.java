@@ -7,6 +7,7 @@ import java.util.List;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.PWCGLocation;
+import pwcg.mission.flight.FlightPlanes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.WaypointAction;
@@ -78,11 +79,11 @@ public class MissionPointFlightEnd extends MissionPointSetSingleWaypointSet impl
     }
 
     @Override
-    public void finalizeMissionPointSet(PlaneMcu plane) throws PWCGException
+    public void finalizeMissionPointSet(FlightPlanes flightPlanes) throws PWCGException
     {
-        super.finalizeMissionPointSet(plane);
+        super.finalizeMissionPointSet(flightPlanes);
         createTargetAssociations();
-        createobjectAssociations(plane);
+        createobjectAssociations(flightPlanes.getFlightLeader());
     }
     
     @Override

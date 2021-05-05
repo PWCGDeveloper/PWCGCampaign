@@ -184,7 +184,12 @@ public abstract class PlanePayload implements IPlanePayload
     @Override
     public void noOrdnance()
     {
-        selectedPrimaryPayloadId = noOrdnancePayloadElement ;
+        selectedPrimaryPayloadId = noOrdnancePayloadElement;
+    }    
+
+    public boolean isOrdnanceDroppedPayload()
+    {
+        return (selectedPrimaryPayloadId == noOrdnancePayloadElement);
     }    
 
     @Override

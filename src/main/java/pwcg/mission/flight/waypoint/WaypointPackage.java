@@ -7,6 +7,7 @@ import java.util.List;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
 import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
+import pwcg.mission.flight.FlightPlanes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.plot.FlightPathToWaypointPlotter;
@@ -106,12 +107,12 @@ public class WaypointPackage implements IWaypointPackage
     
 
     @Override
-    public void setAttackToTriggerOnPlane(int planeIndex) throws PWCGException
+    public void setAttackToTriggerOnPlane(List<PlaneMcu> planes) throws PWCGException
     {
         MissionPointAttackSet attackMissionPoint = (MissionPointAttackSet)getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_ATTACK);
         if (attackMissionPoint != null)
         {
-            attackMissionPoint.getAttackSequence().setAttackToTriggerOnPlane(planeIndex);
+            attackMissionPoint.getAttackSequence().setAttackToTriggerOnPlane(planes);
         }
     }
 
@@ -137,11 +138,11 @@ public class WaypointPackage implements IWaypointPackage
     }
 
     @Override
-    public void finalize(PlaneMcu flightLeader) throws PWCGException
+    public void finalize(FlightPlanes flightPlanes) throws PWCGException
     {
         for (IMissionPointSet missionPointSet : missionPointSets)
         {
-            missionPointSet.finalizeMissionPointSet(flightLeader);
+            missionPointSet.finalizeMissionPointSet(flightPlanes);
         }
         linkMissionPointSets();
     }

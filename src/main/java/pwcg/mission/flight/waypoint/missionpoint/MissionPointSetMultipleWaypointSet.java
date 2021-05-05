@@ -6,7 +6,7 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
-import pwcg.mission.flight.plane.PlaneMcu;
+import pwcg.mission.flight.FlightPlanes;
 import pwcg.mission.flight.waypoint.WaypointSet;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -119,10 +119,10 @@ public abstract class MissionPointSetMultipleWaypointSet implements IMissionPoin
         waypointsAfter.removeUnwantedWaypoints(waypointsToKeep);        
     }
 
-    protected void finalizeMissionPointSet(PlaneMcu plane) throws PWCGException
+    protected void finalizeMissionPointSet(FlightPlanes flightPlanes) throws PWCGException
     {
-        waypointsBefore.finalize(plane);
-        waypointsAfter.finalize(plane);
+        waypointsBefore.finalize(flightPlanes.getFlightLeader());
+        waypointsAfter.finalize(flightPlanes.getFlightLeader());
     }
 
     protected void write(BufferedWriter writer) throws PWCGException

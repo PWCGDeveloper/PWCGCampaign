@@ -86,4 +86,26 @@ public class Hs129B2Payload extends PlanePayload
             selectedPrimaryPayloadId = 3;
         }
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+        
+        if (selectedPrimaryPayloadId == 0 || 
+            selectedPrimaryPayloadId == 7 ||
+            selectedPrimaryPayloadId == 8 ||
+            selectedPrimaryPayloadId == 11 ||
+            selectedPrimaryPayloadId == 13 ||
+            selectedPrimaryPayloadId == 15 ||
+            selectedPrimaryPayloadId == 17)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

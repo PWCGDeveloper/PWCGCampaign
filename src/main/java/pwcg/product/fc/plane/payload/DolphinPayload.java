@@ -65,4 +65,15 @@ public class DolphinPayload extends PlanePayload implements IPlanePayload
             selectedPrimaryPayloadId = 7;
         }
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (selectedPrimaryPayloadId == 2)
+        {
+            return true;
+        }
+
+        return false;
+    }
 }

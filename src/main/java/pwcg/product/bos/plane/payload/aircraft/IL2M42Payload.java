@@ -203,4 +203,27 @@ public class IL2M42Payload extends PlanePayload implements IPlanePayload
             this.addModification(PayloadElement.TURRET);
         }
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+        
+        if (selectedPrimaryPayloadId == 0 || 
+            selectedPrimaryPayloadId == 1 ||
+            selectedPrimaryPayloadId == 2 ||
+            selectedPrimaryPayloadId == 3 ||
+            selectedPrimaryPayloadId == 4 ||
+            selectedPrimaryPayloadId == 5 ||
+            selectedPrimaryPayloadId == 6 ||
+            selectedPrimaryPayloadId == 87)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

@@ -147,13 +147,6 @@ public class FlightPlanes implements IFlightPlanes
     }
     
     @Override
-    public void setFlightPayload() throws PWCGException
-    {
-        FlightPayloadBuilder payloadBuilder = new FlightPayloadBuilder(flight);
-        payloadBuilder.setFlightPayload();
-    }
-    
-    @Override
     public void setPlanePosition(Integer planeLinkTrId, Coordinate planeCoords, Orientation planeOrientation, int startingPoint)
     {
         PlaneMcu plane = this.getPlaneByLinkTrId(planeLinkTrId);

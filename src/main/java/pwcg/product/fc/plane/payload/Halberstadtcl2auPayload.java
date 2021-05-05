@@ -70,4 +70,15 @@ public class Halberstadtcl2auPayload extends PlanePayload implements IPlanePaylo
     {
         selectedPrimaryPayloadId = 3;
     }    
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (selectedPrimaryPayloadId == 1)
+        {
+            return true;
+        }
+
+        return false;
+    }
 }

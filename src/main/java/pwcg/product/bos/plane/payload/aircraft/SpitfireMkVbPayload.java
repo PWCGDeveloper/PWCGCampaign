@@ -35,4 +35,10 @@ public class SpitfireMkVbPayload extends PlanePayload implements IPlanePayload
         
         return super.copy(clone);
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        return false;
+    }
 }

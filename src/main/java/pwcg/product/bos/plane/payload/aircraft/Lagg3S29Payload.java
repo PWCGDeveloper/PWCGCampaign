@@ -118,4 +118,20 @@ public class Lagg3S29Payload extends PlanePayload implements IPlanePayload
     {
         selectedPrimaryPayloadId = 14;
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+        
+        if (selectedPrimaryPayloadId == 0)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

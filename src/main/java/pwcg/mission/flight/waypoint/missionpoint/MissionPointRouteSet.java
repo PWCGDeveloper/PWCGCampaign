@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.plane.PlaneMcu;
+import pwcg.mission.flight.FlightPlanes;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -60,9 +60,9 @@ public class MissionPointRouteSet extends MissionPointSetSingleWaypointSet imple
     }
     
     @Override
-    public void finalizeMissionPointSet(PlaneMcu plane) throws PWCGException
+    public void finalizeMissionPointSet(FlightPlanes flightPlanes) throws PWCGException
     {
-        super.finalizeMissionPointSet(plane);
+        super.finalizeMissionPointSet(flightPlanes);
     }
 
     @Override

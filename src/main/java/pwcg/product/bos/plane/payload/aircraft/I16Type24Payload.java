@@ -116,4 +116,21 @@ public class I16Type24Payload extends PlanePayload implements IPlanePayload
     {
         selectedPrimaryPayloadId = 1;
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+        
+        if (selectedPrimaryPayloadId == 0 || 
+            selectedPrimaryPayloadId == 11)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

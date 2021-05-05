@@ -98,4 +98,22 @@ public class Fw190A3Payload extends PlanePayload implements IPlanePayload
     {
         selectedPrimaryPayloadId = 3;
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+        
+        if (selectedPrimaryPayloadId == 0 || 
+            selectedPrimaryPayloadId == 4 ||
+            selectedPrimaryPayloadId == 5)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

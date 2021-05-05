@@ -11,6 +11,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.WaypointAction;
+import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.mcu.McuCover;
 import pwcg.mission.mcu.McuForceComplete;
 import pwcg.mission.mcu.McuTimer;
@@ -84,12 +85,13 @@ public class WingmanMcuGroup
         finishCoverTimer.setPosition(coverFinishWaypoint.getPosition());
         finishCoverTimer.setTime(1);
 
-        forceCompleteFinishCover = new McuForceComplete();
+        int emergencyDropOrdnance = 0;
+        forceCompleteFinishCover = new McuForceComplete(WaypointPriority.PRIORITY_HIGH, emergencyDropOrdnance);
         forceCompleteFinishCover.setName("Escort Cover Force Complete");
         forceCompleteFinishCover.setDesc("Escort Cover Force Complete");
         forceCompleteFinishCover.setOrientation(new Orientation());
         forceCompleteFinishCover.setPosition(coverFinishWaypoint.getPosition());
-        forceCompleteFinishCover.setObject(coveringPlane.getIndex());
+        forceCompleteFinishCover.setObject(coveringPlane.getLinkTrId());
         
         coverFinishWaypoint.setTarget(finishCoverTimer.getIndex());
         finishCoverTimer.setTarget(forceCompleteFinishCover.getIndex());

@@ -13,11 +13,13 @@ import pwcg.core.utils.PWCGLogger;
 public class McuCounter extends BaseFlightMcu
 {
 	private int counter = 1;
-	private int dropcount  = 1;
+	private int dropcount  = 0;
 
-	public McuCounter ()
+	public McuCounter (int counter, int dropcount)
 	{
 		super();
+        this.counter = counter;
+        this.dropcount = dropcount;
 	}
 
 	public void write(BufferedWriter writer) throws PWCGIOException
@@ -47,24 +49,4 @@ public class McuCounter extends BaseFlightMcu
             throw new PWCGIOException(e.getMessage());
         }
 	}
-
-    public int getCounter()
-    {
-        return this.counter;
-    }
-
-    public void setCounter(int counter)
-    {
-        this.counter = counter;
-    }
-
-    public int getDropcount()
-    {
-        return this.dropcount;
-    }
-
-    public void setDropcount(int dropcount)
-    {
-        this.dropcount = dropcount;
-    }
 }

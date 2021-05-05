@@ -73,4 +73,23 @@ public class Fw190A6Payload extends PlanePayload implements IPlanePayload
         selectedPrimaryPayloadId = Fw190G3PayloadHelper.selectFW190G3Payload(flight);
         return selectedPrimaryPayloadId;
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+        
+        if (selectedPrimaryPayloadId == 0 || 
+            selectedPrimaryPayloadId == 4 ||
+            selectedPrimaryPayloadId == 8 ||
+            selectedPrimaryPayloadId == 16)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

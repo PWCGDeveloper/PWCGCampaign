@@ -12,7 +12,6 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.initialposition.FlightPositionSetter;
-import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.IWaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointPackage;
 import pwcg.mission.flight.waypoint.virtual.IVirtualWaypointPackage;
@@ -48,10 +47,9 @@ public abstract class Flight implements IFlight
     public void createFlightCommonPostBuild() throws PWCGException
     {
         FlightPositionSetter.setFlightInitialPosition(this);
-        setFlightPayload();
     }
 
-    private void setFlightPayload() throws PWCGException
+    public void setFlightPayload() throws PWCGException
     {
         FlightPayloadBuilder flightPayloadHelper = new FlightPayloadBuilder(this);
         flightPayloadHelper.setFlightPayload();
@@ -147,8 +145,7 @@ public abstract class Flight implements IFlight
     private void finalizeCoreFlight() throws PWCGException
     {
         flightPlanes.finalize();
-        PlaneMcu flightLeader = flightPlanes.getFlightLeader();
-        waypointPackage.finalize(flightLeader);
+        waypointPackage.finalize(flightPlanes);
     }
 
     private void finalizeWingmenForFlight() throws PWCGException

@@ -91,4 +91,21 @@ public class Pe2S35Payload extends PlanePayload implements IPlanePayload
     {
         selectedPrimaryPayloadId = 3;
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+        
+        if (selectedPrimaryPayloadId == 0 || 
+            selectedPrimaryPayloadId == 11)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

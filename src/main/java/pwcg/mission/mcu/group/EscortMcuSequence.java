@@ -8,6 +8,7 @@ import pwcg.core.location.Orientation;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
+import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.McuCover;
 import pwcg.mission.mcu.McuForceComplete;
@@ -80,7 +81,8 @@ public class EscortMcuSequence
         forceCompleteTimer.setPosition(rendevousPosition);
         forceCompleteTimer.setTime(1);
 
-        forceComplete = new McuForceComplete();
+        int emergencyDropOrdnance = 0;
+        forceComplete = new McuForceComplete(WaypointPriority.PRIORITY_HIGH, emergencyDropOrdnance);
         forceComplete.setName("Escort Cover Force Complete");
         forceComplete.setDesc("Escort Cover Force Complete");
         forceComplete.setOrientation(new Orientation());

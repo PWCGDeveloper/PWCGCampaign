@@ -61,11 +61,6 @@ public class McuTREntity extends BaseFlightMcu
         this.enabled = enabled;
     }
 
-    public List<McuEvent> getEventList()
-    {
-        return eventList;
-    }
-
     public void addEvent(McuEvent event)
     {
         this.eventList.add(event);

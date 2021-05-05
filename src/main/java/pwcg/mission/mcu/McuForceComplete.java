@@ -10,10 +10,13 @@ import pwcg.mission.flight.waypoint.WaypointPriority;
 public class McuForceComplete extends BaseFlightMcu
 {
 	private WaypointPriority priority = WaypointPriority.PRIORITY_LOW;
+	private int emergencyOrdnanceDrop = 0;
 
-	public McuForceComplete ()
+	public McuForceComplete (WaypointPriority priority, int emergencyOrdnanceDrop)
 	{
 		super();
+        this.priority = priority;
+        this.emergencyOrdnanceDrop = emergencyOrdnanceDrop;
 	}
 
 	public void write(BufferedWriter writer) throws PWCGIOException
@@ -27,7 +30,8 @@ public class McuForceComplete extends BaseFlightMcu
             
             super.write(writer);
             
-            writer.write("  Priority   = " + priority.getPriorityValue() + ";");
+            writer.write("  Priority = " + priority.getPriorityValue() + ";");
+            writer.write("  EmergencyOrdnanceDrop = " + emergencyOrdnanceDrop + ";");
             writer.newLine();
 
             writer.write("}");
@@ -40,13 +44,5 @@ public class McuForceComplete extends BaseFlightMcu
             PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
-	}
-	
-	public WaypointPriority getPriority() {
-		return priority;
-	}
-
-	public void setPriority(WaypointPriority priority) {		
-		this.priority = priority;
 	}
 }

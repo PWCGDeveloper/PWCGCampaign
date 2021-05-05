@@ -38,4 +38,15 @@ public class Spad13Payload extends PlanePayload implements IPlanePayload
         selectedPrimaryPayloadId = 0;
         return selectedPrimaryPayloadId;
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (selectedPrimaryPayloadId == 3)
+        {
+            return true;
+        }
+
+        return false;
+    }
 }

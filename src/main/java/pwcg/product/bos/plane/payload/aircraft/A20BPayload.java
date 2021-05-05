@@ -100,4 +100,15 @@ public class A20BPayload extends PlanePayload implements IPlanePayload
     {
         selectedPrimaryPayloadId = 4;
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

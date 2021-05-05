@@ -112,4 +112,20 @@ public class Yak1S69Payload extends PlanePayload implements IPlanePayload
     {
         selectedPrimaryPayloadId = 10;
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+        
+        if (selectedPrimaryPayloadId == 0)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

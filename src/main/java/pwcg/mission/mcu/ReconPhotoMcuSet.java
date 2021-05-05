@@ -9,7 +9,7 @@ public class ReconPhotoMcuSet
 {
 	private McuTimer cameraStartTimer = new McuTimer();
 	private McuMedia startCamera = new McuMedia(McuMedia.MEDIA_TYPE_START);
-	private McuCounter counter = new McuCounter();
+	private McuCounter counter = new McuCounter(1, 0);
 	private McuMedia stopCamera = new McuMedia(McuMedia.MEDIA_TYPE_STOP);
 	private McuTimer nextWaypointTimer = new McuTimer();
 	
@@ -62,9 +62,7 @@ public class ReconPhotoMcuSet
 		counter.setDesc("Camera Click Counter");
 		counter.setPosition(coordinate.copy());
 
-		McuEvent cameraEvent = new McuEvent();
-		cameraEvent.setType(14);
-		cameraEvent.setTarId(counter.getIndex());
+		McuEvent cameraEvent = new McuEvent(McuEvent.ONPHOTO, counter.getIndex());
 		startCamera.addEvent(cameraEvent);
 	}
 	

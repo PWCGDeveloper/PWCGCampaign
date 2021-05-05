@@ -56,7 +56,7 @@ public class ScrambleOpposingGroundAttackWaypointFactory
     
     private IAirGroundAttackMcuSequence createAttackArea() throws PWCGException 
     {
-        IAirGroundAttackMcuSequence attackMcuSequence = AirGroundAttackMcuSequenceFactory.buildAirGroundAttackSequence(flight, GroundAttackWaypointFactory.GROUND_ATTACK_TIME, AttackAreaType.GROUND_TARGETS);
+        IAirGroundAttackMcuSequence attackMcuSequence = AirGroundAttackMcuSequenceFactory.buildAirGroundAttackSequence(flight, GroundAttackWaypointFactory.GROUND_ATTACK_TIME, GroundAttackWaypointFactory.GROUND_ATTACK_BINGO_TIME, AttackAreaType.GROUND_TARGETS);
         return attackMcuSequence;
     }
 }

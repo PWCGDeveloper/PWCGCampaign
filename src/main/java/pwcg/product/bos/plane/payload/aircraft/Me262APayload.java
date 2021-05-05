@@ -61,4 +61,22 @@ public class Me262APayload extends PlanePayload implements IPlanePayload
     {
         selectedPrimaryPayloadId = 2;
     }    
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+        
+        if (selectedPrimaryPayloadId == 0 || 
+            selectedPrimaryPayloadId == 1 || 
+            selectedPrimaryPayloadId == 2)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

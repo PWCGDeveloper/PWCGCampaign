@@ -74,4 +74,27 @@ public class HurricaneMkIIPayload extends PlanePayload implements IPlanePayload
         
         return selectedPrimaryPayloadId;
     }    
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+        
+        if (selectedPrimaryPayloadId == 0 || 
+            selectedPrimaryPayloadId == 1 ||
+            selectedPrimaryPayloadId == 5 ||
+            selectedPrimaryPayloadId == 7 ||
+            selectedPrimaryPayloadId == 12 ||
+            selectedPrimaryPayloadId == 15 ||
+            selectedPrimaryPayloadId == 16 ||
+            selectedPrimaryPayloadId == 17)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

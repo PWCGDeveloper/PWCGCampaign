@@ -34,5 +34,21 @@ public class U2VSPayload extends PlanePayload implements IPlanePayload
     {
         selectedPrimaryPayloadId = 1;
         return selectedPrimaryPayloadId;
-    }    
+    }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+        
+        if (selectedPrimaryPayloadId == 0)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

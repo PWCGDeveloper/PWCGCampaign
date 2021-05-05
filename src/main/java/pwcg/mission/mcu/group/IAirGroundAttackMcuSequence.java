@@ -1,17 +1,18 @@
 package pwcg.mission.mcu.group;
 
 import java.io.BufferedWriter;
+import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.mcu.AttackAreaType;
 import pwcg.mission.mcu.McuAttackArea;
-import pwcg.mission.mcu.McuWaypoint;
 
 public interface IAirGroundAttackMcuSequence
 {
 
-    void createAttackArea(int attackTime, AttackAreaType attackAreaType) throws PWCGException;
+    void createAttackArea(int maxAttackTimeSeconds, int bingoLoiterTimeSeconds, AttackAreaType attackAreaType) throws PWCGException;
 
     Coordinate getPosition();
 
@@ -21,8 +22,5 @@ public interface IAirGroundAttackMcuSequence
 
     void write(BufferedWriter writer) throws PWCGException;
 
-    void setAttackToTriggerOnPlane(int planeIndex);
-
-    void setLinkToAttack(McuWaypoint linkToAttack);
-
+    void setAttackToTriggerOnPlane(List<PlaneMcu> planes) throws PWCGException;
 }

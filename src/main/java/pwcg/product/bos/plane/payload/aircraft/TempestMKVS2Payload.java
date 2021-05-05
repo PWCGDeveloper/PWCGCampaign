@@ -68,4 +68,20 @@ public class TempestMKVS2Payload extends PlanePayload implements IPlanePayload
         
         return super.copy(clone);
     }
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+        
+        if (selectedPrimaryPayloadId == 0)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

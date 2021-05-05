@@ -47,4 +47,15 @@ public class C47Payload extends PlanePayload
         }
         return selectedPrimaryPayloadId;
     }    
+
+    @Override
+    public boolean isOrdnance()
+    {
+        if (isOrdnanceDroppedPayload())
+        {
+            return false;
+        }
+
+        return true;
+    }
 }
