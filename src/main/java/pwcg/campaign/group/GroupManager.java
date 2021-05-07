@@ -1,13 +1,17 @@
 package pwcg.campaign.group;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.GroundObjectIOJson;
 import pwcg.campaign.io.json.LocationIOJson;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.core.location.LocationSet;
+import pwcg.core.location.PWCGLocation;
 
 public class GroupManager 
 {
@@ -57,6 +61,11 @@ public class GroupManager
     public LocationSet getTownLocations()
     {
         return townFinder.getTownLocations();
+    }
+
+    public List<PWCGLocation> findTownsForSideWithinRadius(Side side, Date date, Coordinate referenceLocation, double radius) throws PWCGException
+    {
+        return townFinder.findTownsForSideWithinRadius(side, date, referenceLocation, radius);
     }
 
     public TownFinder getTownFinder()

@@ -34,6 +34,8 @@ public class BombingWaypointFactory
         IAirGroundAttackMcuSequence attackMcuSequence = createAttackArea();
         missionPointSet.setAttackSequence(attackMcuSequence);
         
+        System.out.println("Chose target at " + attackMcuSequence.getAttackAreaMcu().getPosition().toString());
+        
         McuWaypoint egressWaypoint = EgressWaypointGenerator.createEgressWaypoint(flight, ingressWaypoint.getPosition());
         missionPointSet.addWaypointAfter(egressWaypoint);
 

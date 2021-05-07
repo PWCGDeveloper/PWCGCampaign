@@ -3,6 +3,8 @@ package pwcg.mission.target;
 import java.util.Collections;
 import java.util.List;
 
+import pwcg.campaign.context.FrontLinesForMap;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.FlightInformation;
@@ -50,17 +52,20 @@ public class TargetDefinitionBuilderStrategic implements ITargetDefinitionBuilde
         List<GroundUnitCollection> shuffledGroundUnits = flightInformation.getMission().getMissionGroundUnitBuilder().getAllMissionGroundUnits();
         Collections.shuffle(shuffledGroundUnits);
 
+        FrontLinesForMap frontlines = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(flightInformation.getCampaign().getDate());
         for (TargetType desiredTargetType : shuffledTargetTypes)
         {
             for (TargetDefinition targetDefinition : availableTargets)
             {
                 if (desiredTargetType == targetDefinition.getTargetType())
                 {
-                    return targetDefinition;
+                    if (frontlines.isFarFromFront(targetDefinition.getPosition(), flightInformation.getSquadron().determineSide(), flightInformation.getCampaign().getDate()))
+                    {
+                        return targetDefinition;
+                    }
                 }
             }
         }
         throw new PWCGException ("No strategic targets available in mission");
     }
-
 }

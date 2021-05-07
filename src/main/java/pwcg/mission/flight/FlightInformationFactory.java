@@ -15,7 +15,7 @@ public class FlightInformationFactory
         }
         else
         {
-            return buildAFlightInformation(flightBuildInformation.getMission(), flightBuildInformation.getSquadron(), flightType);
+            return buildAiFlightInformation(flightBuildInformation.getMission(), flightBuildInformation.getSquadron(), flightType);
         }
     }
     
@@ -36,7 +36,7 @@ public class FlightInformationFactory
         return playerFlightInformation;
     }
 
-    private static FlightInformation buildAFlightInformation(Mission mission, Squadron squadron, FlightTypes flightType) throws PWCGException
+    private static FlightInformation buildAiFlightInformation(Mission mission, Squadron squadron, FlightTypes flightType) throws PWCGException
     {
         FlightInformation aFlightInformation = new FlightInformation(mission);
         aFlightInformation.setFlightType(flightType);

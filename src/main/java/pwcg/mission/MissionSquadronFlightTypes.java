@@ -30,6 +30,18 @@ public class MissionSquadronFlightTypes
         return FlightTypes.ANY;
     }
 
+    public boolean isStrategicInterceptPlayerFlight()
+    {
+        for (MissionSquadronFlightType squadronFlightType : flightTypesForSquadrons.values())
+        {
+            if (squadronFlightType.flightType == FlightTypes.STRATEGIC_INTERCEPT)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public List<FlightTypes> getFlightTypes()
     {
         List<FlightTypes> flightTypes = new ArrayList<>();

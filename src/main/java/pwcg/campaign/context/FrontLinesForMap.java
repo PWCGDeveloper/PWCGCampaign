@@ -107,6 +107,14 @@ public class FrontLinesForMap
         return angle;
     }
 
+    public double findClosestFriendlyPositionDistance(Coordinate referenceLocation, Side side) throws PWCGException 
+    {
+        PositionFinder<FrontLinePoint> positionFinder = new PositionFinder<FrontLinePoint>();
+        List<FrontLinePoint>frontLines = findAllFrontLinesForSide(side);
+        FrontLinePoint closestFrontLinePoint = positionFinder.selectClosestPosition(frontLines, referenceLocation);
+        return MathUtils.calcDist(referenceLocation, closestFrontLinePoint.getPosition());
+    }
+
 
     public double findClosestEnemyPositionAngle(Coordinate source, Side side) throws PWCGException 
     {
@@ -114,6 +122,17 @@ public class FrontLinesForMap
         FrontLinePoint closestEnemyPosition = this.findClosestFrontPositionForSide(source, side.getOppositeSide());
         double angle = MathUtils.calcAngle(closestFriendlyPosition.getPosition(), closestEnemyPosition.getPosition());
         return angle;
+    }
+    
+    public boolean isFarFromFront (Coordinate position, Side side, Date date) throws PWCGException
+    {
+        double closestFrontDistance = findClosestFriendlyPositionDistance(position, side);
+        if (closestFrontDistance > 30000)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public boolean isCoordinateAllied(Coordinate source) throws PWCGException 
