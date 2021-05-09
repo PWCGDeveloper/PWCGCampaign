@@ -26,11 +26,16 @@ import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.unittypes.infantry.BalloonUnit;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.testutils.CampaignCache;
+import pwcg.testutils.PwcgTestBase;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
-public class BalloonDefensePackageTest
+public class BalloonDefensePackageTest extends PwcgTestBase
 {
+    public BalloonDefensePackageTest()
+    {
+        super (PWCGProduct.BOS);
+    }
     
     @Before
     public void setup() throws PWCGException

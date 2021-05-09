@@ -23,12 +23,17 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.strategicintercept.StrategicInterceptPackage;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.testutils.CampaignCache;
+import pwcg.testutils.PwcgTestBase;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
-public class StrategicInterceptPackageTest
+public class StrategicInterceptPackageTest extends PwcgTestBase
 {
-    
+    public StrategicInterceptPackageTest()
+    {
+        super (PWCGProduct.BOS);
+    }
+
     @Before
     public void setup() throws PWCGException
     {

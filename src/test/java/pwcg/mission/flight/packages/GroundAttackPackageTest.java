@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.squadron.Squadron;
@@ -26,22 +25,26 @@ import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.target.TargetType;
 import pwcg.testutils.CampaignCache;
+import pwcg.testutils.PwcgTestBase;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
-public class GroundAttackPackageTest
+public class GroundAttackPackageTest extends PwcgTestBase
 {
+    public GroundAttackPackageTest()
+    {
+        super (PWCGProduct.BOS);
+    }
 
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.BOS);
     }
 
     @Test
     public void groundAttackInfantryTargetTest() throws PWCGException
     {
-        TestDriver.getInstance().setEnabled(true);
+        TestDriver.getInstance().enableTestDriver();
         TestDriver.getInstance().setTestPlayerTacticalTargetType(TargetType.TARGET_INFANTRY);
         
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
@@ -51,13 +54,13 @@ public class GroundAttackPackageTest
 
         assert(flight.getLinkedFlights().getLinkedFlights().size() == 1);
 
-        TestDriver.getInstance().setEnabled(false);
+        TestDriver.getInstance().reset();
     }
 
     @Test
     public void groundAttackAirfieldTargetTest() throws PWCGException
     {
-        TestDriver.getInstance().setEnabled(true);
+        TestDriver.getInstance().enableTestDriver();
         TestDriver.getInstance().setTestPlayerTacticalTargetType(TargetType.TARGET_AIRFIELD);
         
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
@@ -67,7 +70,7 @@ public class GroundAttackPackageTest
         
         assert(flight.getLinkedFlights().getLinkedFlights().size() == 2);
         
-        TestDriver.getInstance().setEnabled(false);
+        TestDriver.getInstance().reset();
     }
 
     private IFlight buildFlight(Campaign campaign) throws PWCGException

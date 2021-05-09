@@ -32,6 +32,7 @@ public class PlayerFlightTypeBoSInterceptTest
 	{
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.STRATEGIC_INTERCEPT, MissionProfile.DAY_TACTICAL_MISSION);
+        mission.finalizeMission();
         
         IFlight playerFlight = mission.getMissionFlights().getPlayerFlights().get(0);
         if (playerFlight.getFlightType() == FlightTypes.GROUND_ATTACK)
@@ -42,27 +43,22 @@ public class PlayerFlightTypeBoSInterceptTest
         assert (playerFlight.getFlightType() == FlightTypes.STRATEGIC_INTERCEPT);
 
         List<IFlight> randomAiFlights = mission.getMissionFlights().getAiFlights();
-        assert (randomAiFlights.isEmpty());
+        assert (randomAiFlights.size() == 1);
 
         List<IFlight> linkedAiFlights = playerFlight.getLinkedFlights().getLinkedFlights();
         assert (!linkedAiFlights.isEmpty());
 
-        boolean escortFound = false;
         boolean bombersFound = false;
         for (IFlight aiFlight : linkedAiFlights)
         {
             if (aiFlight.getFlightType() == FlightTypes.STRATEGIC_BOMB)
             {
                 bombersFound = true;
-            }
-            if (aiFlight.getFlightType() == FlightTypes.ESCORT)
-            {
-                escortFound = true;
+                assert(aiFlight.getVirtualWaypointPackage().getEscort().getEscortPlanes().size() > 0);
             }
         }
 
         assert (bombersFound);
-        assert (escortFound);
 
 	}
 }
