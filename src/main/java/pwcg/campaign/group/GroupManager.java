@@ -58,6 +58,11 @@ public class GroupManager
         return groundStructureGroup.getStandaloneBlocks();
     }
 
+    public List<Block> getAirfieldBlocks() 
+    {
+        return groundStructureGroup.getAirfieldBlocks();
+    }
+
     public LocationSet getTownLocations()
     {
         return townFinder.getTownLocations();

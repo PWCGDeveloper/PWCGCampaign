@@ -1,7 +1,5 @@
 package pwcg.mission;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.TreeMap;
 
 import pwcg.campaign.Campaign;
@@ -23,23 +21,20 @@ public class MissionAirfieldBuilder
     private CoordinateBox structureBorders;
     private TreeMap<String, Airfield> fieldSet = new TreeMap<>();
 
-    public MissionAirfieldBuilder (Mission mission)
+    public MissionAirfieldBuilder (Mission mission, CoordinateBox structureBorders)
     {
         this.mission = mission;
         this.campaign = mission.getCampaign();
-        this.structureBorders = mission.getStructureBorders();
+        this.structureBorders = structureBorders;
     }
     
-    public void buildFieldsForPatrol() throws PWCGException 
+    public MissionAirfields buildFieldsForPatrol() throws PWCGException 
     {
         selectAirfieldsWithinMissionBoundaries();
         selectPlayerAirfields();
         addAirfieldObjects();
-    }
-
-    public List<Airfield> getFieldsForPatrol() throws PWCGException 
-    {
-        return new ArrayList<>(fieldSet.values());
+        
+        return new MissionAirfields(fieldSet);
     }
 
     private void selectAirfieldsWithinMissionBoundaries() throws PWCGException

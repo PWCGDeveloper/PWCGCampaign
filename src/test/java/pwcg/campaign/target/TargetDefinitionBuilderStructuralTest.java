@@ -44,7 +44,7 @@ public class TargetDefinitionBuilderStructuralTest
     public void verifyEnemyStructuresTest()  throws PWCGException
     {
         TargetDefinitionBuilderStructural targetSelector = new TargetDefinitionBuilderStructural(mission.getMissionFlights().getPlayerFlights().get(0).getFlightInformation());
-        List<TargetDefinition> targetaDefinitionsForStructures = targetSelector.findStructures();
+        List<TargetDefinition> targetaDefinitionsForStructures = targetSelector.findTargetStructures();
         Assert.assertFalse(targetaDefinitionsForStructures.isEmpty());
 
         for (TargetDefinition targetDefinition : targetaDefinitionsForStructures)
@@ -57,7 +57,7 @@ public class TargetDefinitionBuilderStructuralTest
     public void verifyBridgeStructuresTest()  throws PWCGException
     {
         TargetDefinitionBuilderStructural targetSelector = new TargetDefinitionBuilderStructural(mission.getMissionFlights().getPlayerFlights().get(0).getFlightInformation());
-        List<TargetDefinition> targetaDefinitionsForStructures = targetSelector.findStructures();
+        List<TargetDefinition> targetaDefinitionsForStructures = targetSelector.findTargetStructures();
         Assert.assertFalse(targetaDefinitionsForStructures.isEmpty());
 
         boolean bridgeFound = false;
@@ -75,7 +75,7 @@ public class TargetDefinitionBuilderStructuralTest
     public void verifyAirfieldStructuresTest()  throws PWCGException
     {
         TargetDefinitionBuilderStructural targetSelector = new TargetDefinitionBuilderStructural(mission.getMissionFlights().getPlayerFlights().get(0).getFlightInformation());
-        List<TargetDefinition> targetaDefinitionsForStructures = targetSelector.findStructures();
+        List<TargetDefinition> targetaDefinitionsForStructures = targetSelector.findTargetStructures();
         Assert.assertFalse(targetaDefinitionsForStructures.isEmpty());
 
         boolean airfieldFound = false;
@@ -93,7 +93,7 @@ public class TargetDefinitionBuilderStructuralTest
     public void verifyRailStructuresTest()  throws PWCGException
     {
         TargetDefinitionBuilderStructural targetSelector = new TargetDefinitionBuilderStructural(mission.getMissionFlights().getPlayerFlights().get(0).getFlightInformation());
-        List<TargetDefinition> targetaDefinitionsForStructures = targetSelector.findStructures();
+        List<TargetDefinition> targetaDefinitionsForStructures = targetSelector.findTargetStructures();
         Assert.assertFalse(targetaDefinitionsForStructures.isEmpty());
 
         boolean ralwayStationFound = false;

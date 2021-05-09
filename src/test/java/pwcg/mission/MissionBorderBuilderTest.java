@@ -18,6 +18,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
@@ -43,12 +44,14 @@ public class MissionBorderBuilderTest
         
         for (int i = 0; i < 10; ++i)
         {
-            MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null);
+            Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
+            MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.PATROL, playerSquadron);
+
+            MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null, playerFlightTypes);
             
             CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
             Coordinate missionBoxCenter = missionBorders.getCenter();
             
-            Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
             Coordinate playerSquadronLocation = playerSquadron.determineCurrentPosition(campaign.getDate());
             
             double distanceToMission = MathUtils.calcDist(missionBoxCenter, playerSquadronLocation);
@@ -70,7 +73,11 @@ public class MissionBorderBuilderTest
         
         for (int i = 0; i < 10; ++i)
         {
-            MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(coopCampaign, participatingPlayers, null);
+            Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
+            MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.PATROL, playerSquadron);
+
+            MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(coopCampaign, participatingPlayers, null, playerFlightTypes);
+
             CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
             Coordinate missionBoxCenter = missionBorders.getCenter();
             assert(missionBoxCenter.getXPos() > 0.0);
@@ -94,7 +101,11 @@ public class MissionBorderBuilderTest
         SkirmishBuilder skirmishBuilder = new SkirmishBuilder(campaign, participatingPlayers);
         Skirmish skirmish = skirmishBuilder.chooseBestSkirmish();
 
-        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, skirmish);
+        Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
+        MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.PATROL, playerSquadron);
+
+        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, skirmish, playerFlightTypes);
+
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
 
         Coordinate missionBoxCenter = missionBorders.getCenter();

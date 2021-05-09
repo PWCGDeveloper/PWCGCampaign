@@ -1,5 +1,7 @@
 package pwcg.mission.ground.building;
 
+import pwcg.campaign.group.Block;
+
 public class PwcgBuildingIdentifier
 {
     public static PwcgStructure identifyBuilding(String buildingidentifier)
@@ -22,6 +24,16 @@ public class PwcgBuildingIdentifier
             parsed = parsed.substring(startModelIndex+1);
         }
         return parsed;
+    }
+
+    public static boolean isAirfield(Block block)
+    {
+        PwcgStructure pwcgStructure = identifyBuilding(block.getModel());
+        if (pwcgStructure == PwcgStructure.AIRFIELD_AF || pwcgStructure == PwcgStructure.AIRFIELD_ARF || pwcgStructure == PwcgStructure.HANGAR || pwcgStructure == PwcgStructure.TOWER)
+        {
+            return true;
+        }
+        return false;
     }
 
     private static PwcgStructure determineIndustrialBuildingType(String buildingidentifier)

@@ -60,7 +60,7 @@ public class CargoRouteBattleBuilder implements IBattleBuilder
     {
         ICountry shipCountry = CountryFactory.makeCountryByCountry(cargoRoute.getCountry());
         Coordinate startPosition = getConvoyStartPosition(cargoRoute);
-        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_SHIPPING, startPosition, shipCountry);
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_SHIPPING, startPosition, shipCountry, "Cargo Ship");
         return targetDefinition;
     }
     

@@ -44,7 +44,7 @@ public class TargetDefinitionBuilderOpposing implements ITargetDefinitionBuilder
     {
         Coordinate targetLocation = createTargetLocation();
         ICountry targetCountry = PWCGContext.getInstance().getCurrentMap().getGroundCountryForMapBySide(flightInformation.getSquadron().determineEnemySide());
-        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_AIR, targetLocation, targetCountry);
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_AIR, targetLocation, targetCountry, "Opposing Air");
         return targetDefinition;
     }
 

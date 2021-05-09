@@ -14,10 +14,6 @@ import pwcg.mission.target.TargetDefinitionBuilder;
 
 public class GroundAttackPackage implements IFlightPackage
 {
-    public GroundAttackPackage()
-    {
-    }
-
     @Override
     public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {        

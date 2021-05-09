@@ -65,7 +65,7 @@ public class StrategicInterceptOpposingFlightBuilder
 
     private TargetDefinition buildOpposingTargetDefintion(FlightInformation opposingFlightInformation) throws PWCGException
     {
-        TargetDefinition opposingTargetDefinition = new TargetDefinition(TargetType.TARGET_CITY, playerTargetDefinition.getPosition(), opposingFlightInformation.getCountry());
+        TargetDefinition opposingTargetDefinition = new TargetDefinition(TargetType.TARGET_CITY, playerTargetDefinition.getPosition(), opposingFlightInformation.getCountry(), "City");
         return opposingTargetDefinition;
     }
 }

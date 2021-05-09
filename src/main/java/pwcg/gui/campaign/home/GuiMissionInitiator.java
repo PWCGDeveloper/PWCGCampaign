@@ -7,6 +7,7 @@ import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionHumanParticipants;
+import pwcg.mission.flight.FlightTypes;
 
 public class GuiMissionInitiator 
 {
@@ -34,7 +35,7 @@ public class GuiMissionInitiator
                 MissionGenerator missionGenerator = new MissionGenerator(campaign);
                 if (isLoneWolf)
                 {
-                    mission = missionGenerator.makeLoneWolfMission(participatingPlayers);
+                    mission = missionGenerator.makeMissionwithSpecifiedType(participatingPlayers, FlightTypes.LONE_WOLF);
                 }
                 else
                 {

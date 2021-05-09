@@ -24,7 +24,7 @@ public class MissionBorderBuilder
 
     public CoordinateBox buildCoordinateBox() throws PWCGException
     {
-        IMissionCenterBuilder missionCenterBuilder = MissionBorderBuilderFactory.buildCoordinateBoxNearFront(campaign, participatingPlayers, skirmish, playerFlightTypes);
+        IMissionCenterBuilder missionCenterBuilder = MissionBorderBuilderFactory.buildMissionCenterBuilder(campaign, participatingPlayers, skirmish, playerFlightTypes);
         
         int missionBoxRadius = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.MissionBoxSizeKey) * 1000;
         Coordinate missionCenterCoordinate = missionCenterBuilder.findMissionCenter(missionBoxRadius);

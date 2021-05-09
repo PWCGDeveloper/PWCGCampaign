@@ -7,6 +7,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.airfield.Airfield;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -27,7 +28,6 @@ import pwcg.mission.target.TargetType;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
-import pwcg.testutils.TestMissionFlightTypeBuilder;
 
 public class GroundAttackPackageTest
 {
@@ -74,10 +74,12 @@ public class GroundAttackPackageTest
     {
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
 
-        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null);
+        Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
+        MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.GROUND_ATTACK, playerSquadron);
+
+        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null, playerFlightTypes);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
 
-        MissionSquadronFlightTypes playerFlightTypes = TestMissionFlightTypeBuilder.buildFlightType(campaign, FlightTypes.GROUND_ATTACK);
         Mission mission = TestMissionBuilderUtility.createTestMission(campaign, participatingPlayers, missionBorders, MissionProfile.DAY_TACTICAL_MISSION);
         mission.generate(playerFlightTypes);
 
@@ -115,19 +117,21 @@ public class GroundAttackPackageTest
     private void verifyProximityToTargetAirfield(IFlight flight) throws PWCGException
     {
         MissionPointAttackSet attackMissionPoint = (MissionPointAttackSet)flight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_ATTACK);
+        Coordinate attackPosition = attackMissionPoint.getAttackSequence().getAttackAreaMcu().getPosition();
+        System.out.println("Attack Position at " + attackPosition);
+
         boolean groundAttackCloseToTarget = false;
-        for (Airfield airfield : flight.getMission().getMissionAirfieldBuilder().getFieldsForPatrol())
+        for (Airfield airfield : flight.getMission().getFieldsForPatrol())
         {
-            Coordinate attackPosition = attackMissionPoint.getAttackSequence().getAttackAreaMcu().getPosition();
             double distanceFromAirfield = MathUtils.calcDist(attackPosition, airfield.getPosition());
             if (distanceFromAirfield < 5000)
             {
                 groundAttackCloseToTarget = true;
-                System.out.println("CLOSE TO " + airfield.getName() + " " + airfield.determineCountry().getCountryName());
+                System.out.println("CLOSE TO " + airfield.getName() + " " + airfield.determineCountry().getCountryName() + " distance is " + distanceFromAirfield);
             }
             else
             {
-                System.out.println("Not close to " + airfield.getName() + " " + airfield.determineCountry().getCountryName());
+                System.out.println("Not close to " + airfield.getName() + " " + airfield.determineCountry().getCountryName() + " distance is " + distanceFromAirfield);
             }
         }
         assert (groundAttackCloseToTarget == true);

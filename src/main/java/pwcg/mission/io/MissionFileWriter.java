@@ -11,10 +11,7 @@ import pwcg.campaign.api.IMissionFile;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGDirectorySimulatorManager;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.group.BlockDefinition;
-import pwcg.campaign.group.BlockDefinitionManager;
 import pwcg.campaign.group.FakeAirfield;
-import pwcg.campaign.group.FixedPosition;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.config.ConfigItemKeys;
@@ -29,9 +26,6 @@ import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
-import pwcg.mission.MissionBlockBuilder;
-import pwcg.mission.MissionBlockDamage;
-import pwcg.mission.MissionBlockSmoke;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.ground.MissionGroundUnitBuilder;
 import pwcg.mission.ground.vehicle.IVehicle;
@@ -162,13 +156,7 @@ public class MissionFileWriter implements IMissionFile
 
     private void writeBlocks(BufferedWriter writer) throws PWCGException
     {
-        MissionBlockBuilder missionBlockBuilder = mission.getMissionBlockBuilder();
-        List<FixedPosition> damagedFixedPositions = adjustBlockDamage(missionBlockBuilder.getPositionsForMission());
-        adjustBlockSmoke(damagedFixedPositions);
-        adjustBlockDurability(missionBlockBuilder.getPositionsForMission());
-
-        MissionBlockWriter missionBlockWriter = new MissionBlockWriter(missionBlockBuilder);
-        missionBlockWriter.writeFixedPositions(writer, missionBlockBuilder.getPositionsForMission());
+        MissionBlockWriter.writeFixedPositions(writer, mission.getBlocksForPatrol());
     }
 
     private void writeIcons(BufferedWriter writer) throws PWCGIOException
@@ -221,32 +209,6 @@ public class MissionFileWriter implements IMissionFile
 		return filename;
 	}
 	
-    
-    private List<FixedPosition> adjustBlockDamage(List<FixedPosition> fixedPositions) throws PWCGException
-    {
-        MissionBlockDamage missionBlockDamage = new MissionBlockDamage(mission);      
-        return missionBlockDamage.setDamageToFixedPositions(fixedPositions);
-    }
-    
-    private void adjustBlockSmoke(List<FixedPosition> fixedPositions) throws PWCGException
-    {
-        MissionBlockSmoke missionBlockSmoke = new MissionBlockSmoke(mission);      
-        missionBlockSmoke.addSmokeToDamagedAreas(fixedPositions);
-    }
-
-    private void adjustBlockDurability(List<FixedPosition> fixedPositions)
-    {
-        BlockDefinitionManager blockDefinitionManager = BlockDefinitionManager.getInstance();
-        for (FixedPosition fixedPosition : fixedPositions)
-        {
-            BlockDefinition blockDefinition = blockDefinitionManager.getBlockDefinition(fixedPosition);
-            if (blockDefinition != null)
-            {
-                fixedPosition.setDurability(blockDefinition.getDurability());
-            }
-        }
-    }
-
     private void writeProductSpecific(BufferedWriter writer) throws PWCGException
     {
         writeFieldsInMission(writer);

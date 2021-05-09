@@ -99,7 +99,7 @@ public class AirfieldApproachAABuilder
     {
         for (Coordinate aaPoint : aaCoordinates)
         {            
-            TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, aaPoint, airfieldCountry);
+            TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, aaPoint, airfieldCountry, "AAA Artillery");
             AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
 
             GroundUnitCollection aaa = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);

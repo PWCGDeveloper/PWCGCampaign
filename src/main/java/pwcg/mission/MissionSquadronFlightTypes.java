@@ -12,6 +12,13 @@ public class MissionSquadronFlightTypes
 {
     private Map<Integer, MissionSquadronFlightType> flightTypesForSquadrons = new HashMap<>();
     
+    public static MissionSquadronFlightTypes buildPlayerFlightType(FlightTypes flightType, Squadron squadron)
+    {
+        MissionSquadronFlightTypes playerFlightTypes = new MissionSquadronFlightTypes();
+        playerFlightTypes.add(squadron, flightType);
+        return playerFlightTypes;
+    }
+    
     public void add(Squadron squadron, FlightTypes flightType)
     {
         MissionSquadronFlightType squadronFlightType = new MissionSquadronFlightType();

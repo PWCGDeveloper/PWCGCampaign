@@ -23,6 +23,7 @@ public class GroundObjectIOJson
 	}
 	
 	private static String formPath(String mapName) {
-	    return PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\";
+	    String inputDir = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir();
+	    return inputDir + mapName + "\\";
 	}
 }

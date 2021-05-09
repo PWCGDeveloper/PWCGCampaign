@@ -49,7 +49,7 @@ public class BalloonUnitBuilderTest
     @Test
     public void createAAAArtilleryBatteryTest () throws PWCGException 
     {
-        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA));
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA), "Artillery");
         BalloonUnitBuilder groundUnitFactory = new BalloonUnitBuilder(mission, targetDefinition);
         GroundUnitCollection groundUnitGroup = groundUnitFactory.createBalloonUnit();
         validateBalloonUnit(groundUnitGroup, Country.RUSSIA);
@@ -59,7 +59,7 @@ public class BalloonUnitBuilderTest
     @Test
     public void createAAAArtilleryBatteryOppositeSideTest () throws PWCGException 
     {
-        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.GERMANY));
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.GERMANY), "Artillery");
         BalloonUnitBuilder groundUnitFactory = new BalloonUnitBuilder(mission, targetDefinition);
         GroundUnitCollection groundUnitGroup = groundUnitFactory.createBalloonUnit();
         validateBalloonUnit(groundUnitGroup, Country.GERMANY);

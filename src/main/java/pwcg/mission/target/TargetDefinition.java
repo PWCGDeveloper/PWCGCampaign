@@ -8,12 +8,14 @@ public class TargetDefinition
     private TargetType targetType;
     private Coordinate position;
     private ICountry country;
+    private String targetName;
     
-    public TargetDefinition (TargetType targetType, Coordinate position, ICountry country)
+    public TargetDefinition (TargetType targetType, Coordinate position, ICountry country, String targetName)
     {
         this.targetType = targetType;
         this.position = position;
         this.country = country;
+        this.targetName = targetName;
     }
 
     public TargetType getTargetType()
@@ -34,5 +36,10 @@ public class TargetDefinition
     public TargetCategory getTargetCategory()
     {
         return targetType.getTargetCategory();
+    }
+
+    public String getTargetName()
+    {
+        return targetName;
     }
 }

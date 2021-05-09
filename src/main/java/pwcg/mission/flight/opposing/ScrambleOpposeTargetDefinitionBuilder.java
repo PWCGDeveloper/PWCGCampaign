@@ -11,7 +11,7 @@ public class ScrambleOpposeTargetDefinitionBuilder
     public static TargetDefinition buildScrambleOpposeTargetDefinitionAirToAir(FlightInformation scrambleOpposingFlightInformation, TargetType targetType) throws PWCGException
     {
         Coordinate targetLocation = scrambleOpposingFlightInformation.getTargetSearchStartLocation();
-        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_AIR, targetLocation, scrambleOpposingFlightInformation.getCountry());
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_AIR, targetLocation, scrambleOpposingFlightInformation.getCountry(), "Scramble Opposition");
         return targetDefinition;
     }
 
@@ -19,7 +19,7 @@ public class ScrambleOpposeTargetDefinitionBuilder
     public static TargetDefinition buildScrambleOpposeTargetDefinitionAirToGround(FlightInformation scrambleOpposingFlightInformation, TargetType targetType) throws PWCGException
     {
         Coordinate targetLocation = scrambleOpposingFlightInformation.getTargetSearchStartLocation();
-        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_AIR, targetLocation, scrambleOpposingFlightInformation.getCountry());
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_AIR, targetLocation, scrambleOpposingFlightInformation.getCountry(), "Scramble Opposition Airfield");
         return targetDefinition;
     }
 }

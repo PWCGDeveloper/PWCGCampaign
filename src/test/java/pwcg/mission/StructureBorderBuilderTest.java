@@ -1,12 +1,14 @@
 package pwcg.mission;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
@@ -14,6 +16,7 @@ import pwcg.core.config.ConfigManager;
 import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
@@ -38,18 +41,20 @@ public class StructureBorderBuilderTest
         SquadronMember player = campaign.findReferencePlayer();
         participatingPlayers.addSquadronMember(player);
 
-        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null);
+        Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
+        MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.PATROL, playerSquadron);
+
+        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null, playerFlightTypes);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
 
         StructureBorderBuilder structureBorderBuilder = new StructureBorderBuilder(campaign, participatingPlayers, missionBorders);
-        CoordinateBox structureBorder = structureBorderBuilder.getBordersForStructures();
+        CoordinateBox structureBorder = structureBorderBuilder.getBordersForStructuresConsideringFlights(new ArrayList<>());
 
         ConfigManager configManager = campaign.getCampaignConfigManager();
         int keepGroupSpread = configManager.getIntConfigParam(ConfigItemKeys.KeepGroupSpreadKey);
 
         assert((missionBorders.getBoxHeight() + keepGroupSpread) <= structureBorder.getBoxHeight());
         assert((missionBorders.getBoxWidth() + keepGroupSpread) <= structureBorder.getBoxWidth());
-        assert(missionBorders.getCenter().getXPos() == structureBorder.getCenter().getXPos());
     }
 
     @Test
@@ -64,11 +69,14 @@ public class StructureBorderBuilderTest
         SquadronMember player = campaign.findReferencePlayer();
         participatingPlayers.addSquadronMember(player);
 
-        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null);
+        Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
+        MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.PATROL, playerSquadron);
+
+        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null, playerFlightTypes);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
 
         StructureBorderBuilder structureBorderBuilder = new StructureBorderBuilder(campaign, participatingPlayers, missionBorders);
-        CoordinateBox structureBorder = structureBorderBuilder.getBordersForStructures();
+        CoordinateBox structureBorder = structureBorderBuilder.getBordersForStructuresConsideringFlights(new ArrayList<>());
 
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
         assert(structureBorder.isInBox(squadron.determineCurrentPosition(campaign.getDate())));
@@ -92,11 +100,14 @@ public class StructureBorderBuilderTest
         SquadronMember player = campaign.findReferencePlayer();
         participatingPlayers.addSquadronMember(player);
 
-        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null);
+        Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
+        MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.PATROL, playerSquadron);
+
+        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null, playerFlightTypes);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
 
         StructureBorderBuilder structureBorderBuilder = new StructureBorderBuilder(campaign, participatingPlayers, missionBorders);
-        CoordinateBox structureBorder = structureBorderBuilder.getBordersForStructures();
+        CoordinateBox structureBorder = structureBorderBuilder.getBordersForStructuresConsideringFlights(new ArrayList<>());
 
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
         assert(structureBorder.isInBox(squadron.determineCurrentPosition(campaign.getDate())));
@@ -118,19 +129,22 @@ public class StructureBorderBuilderTest
         SquadronMember player = campaign.findReferencePlayer();
         participatingPlayers.addSquadronMember(player);
 
-        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null);
+        Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
+        MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.PATROL, playerSquadron);
+
+        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null, playerFlightTypes);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
 
         StructureBorderBuilder structureBorderBuilder = new StructureBorderBuilder(campaign, participatingPlayers, missionBorders);
         
         campaign.getCampaignConfigManager().setConfigParam(ConfigItemKeys.SimpleConfigStructuresKey, ConfigSimple.CONFIG_LEVEL_LOW);
-        CoordinateBox structureBorderLow = structureBorderBuilder.getBordersForStructures();
+        CoordinateBox structureBorderLow = structureBorderBuilder.getBordersForStructuresConsideringFlights(new ArrayList<>());
         
         campaign.getCampaignConfigManager().setConfigParam(ConfigItemKeys.SimpleConfigStructuresKey, ConfigSimple.CONFIG_LEVEL_MED);
-        CoordinateBox structureBorderMed = structureBorderBuilder.getBordersForStructures();
+        CoordinateBox structureBorderMed = structureBorderBuilder.getBordersForStructuresConsideringFlights(new ArrayList<>());
         
         campaign.getCampaignConfigManager().setConfigParam(ConfigItemKeys.SimpleConfigStructuresKey, ConfigSimple.CONFIG_LEVEL_HIGH);
-        CoordinateBox structureBorderHigh = structureBorderBuilder.getBordersForStructures();
+        CoordinateBox structureBorderHigh = structureBorderBuilder.getBordersForStructuresConsideringFlights(new ArrayList<>());
 
         assert(structureBorderLow.getBoxHeight() <= structureBorderMed.getBoxHeight());
         assert(structureBorderLow.getBoxWidth() <= structureBorderMed.getBoxWidth());

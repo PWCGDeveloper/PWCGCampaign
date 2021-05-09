@@ -56,7 +56,6 @@ public enum PwcgStructure
         return Arrays.asList(allBuildings);
     }
     
-    
     public boolean matches (String buildingidentifier)
     {
         for (BuildingSearchCriteria buildingSearchCriteria : searchCriteria)

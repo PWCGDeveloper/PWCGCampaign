@@ -20,17 +20,19 @@ public class MissionBlockBuilder
     private CoordinateBox structureBorder;
     private List<FixedPosition> positionsForMission = new ArrayList<>();
 
-    public MissionBlockBuilder(Mission mission)
+    public MissionBlockBuilder(Mission mission, CoordinateBox structureBorder)
     {
         this.mission = mission;
-        this.structureBorder = mission.getStructureBorders();
+        this.structureBorder = structureBorder;
     }
 
-    public void buildFixedPositionsForMission() throws PWCGException
+    public MissionBlocks buildFixedPositionsForMission() throws PWCGException
     {
         getTrainStationsPatrol();
         getBridgesForPatrol();
         getStandaloneBlocksPatrol();
+        
+        return new MissionBlocks(mission, positionsForMission);
     }
 
     private void getStandaloneBlocksPatrol() throws PWCGException
@@ -44,22 +46,29 @@ public class MissionBlockBuilder
             {
                 selectedBlocks.add(block);
             }
-            else
+            else if (isBlockNearPlayerAirfield(block))
             {
-                for (SquadronMember player : mission.getParticipatingPlayers().getAllParticipatingPlayers())
-                {
-                    Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
-                    Airfield airfield = squadron.determineCurrentAirfieldAnyMap(mission.getCampaign().getDate());
-                    CoordinateBox airfieldBox = CoordinateBox.coordinateBoxFromCenter(airfield.getPosition(), 10000);
-                    if (airfieldBox.isInBox(block.getPosition()))
-                    {
-                        selectedBlocks.add(block);
-                    }
-                }
+                selectedBlocks.add(block);
             }
         }
 
         positionsForMission.addAll(selectedBlocks);
+    }
+
+    private boolean isBlockNearPlayerAirfield(Block block) throws PWCGException
+    {
+        for (SquadronMember player : mission.getParticipatingPlayers().getAllParticipatingPlayers())
+        {
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
+            Airfield airfield = squadron.determineCurrentAirfieldAnyMap(mission.getCampaign().getDate());
+            CoordinateBox airfieldBox = CoordinateBox.coordinateBoxFromCenter(airfield.getPosition(), 10000);
+            if (airfieldBox.isInBox(block.getPosition()))
+            {
+                return true;
+            }
+        }
+        
+        return false;
     }
 
     private void getTrainStationsPatrol() throws PWCGException
@@ -91,10 +100,5 @@ public class MissionBlockBuilder
         }
 
         positionsForMission.addAll(selectedBridges);
-    }
-
-    public List<FixedPosition> getPositionsForMission()
-    {
-        return positionsForMission;
     }
 }

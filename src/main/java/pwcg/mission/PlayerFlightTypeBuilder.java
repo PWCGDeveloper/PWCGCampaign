@@ -14,7 +14,7 @@ import pwcg.mission.options.MissionWeather;
 
 public class PlayerFlightTypeBuilder
 {
-    public static MissionSquadronFlightTypes finalizePlayerFlightTypes(
+    public static MissionSquadronFlightTypes buildPlayerFlightTypes(
             Campaign campaign, 
             MissionHumanParticipants participatingPlayers, 
             MissionProfile missionProfile, 

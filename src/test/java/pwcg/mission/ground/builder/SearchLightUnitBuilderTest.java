@@ -42,7 +42,7 @@ public class SearchLightUnitBuilderTest
     @Test
     public void createSearchLightBatteryTest () throws PWCGException 
     {
-        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA));
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA), "Artillery");
         SearchLightBuilder groundUnitFactory =  new SearchLightBuilder(campaign);
         GroundUnitCollection groundUnitGroup = groundUnitFactory.createSearchLightGroup(targetDefinition);
         assert (groundUnitGroup.getGroundUnits().size() == 1);

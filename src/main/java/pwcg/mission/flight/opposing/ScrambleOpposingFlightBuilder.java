@@ -105,7 +105,7 @@ public class ScrambleOpposingFlightBuilder implements IOpposingFlightBuilder
     private TargetDefinition buildOpposingTargetDefintion(FlightInformation opposingFlightInformation) throws PWCGException
     {
         Coordinate playerSquadronLocation = playerSquadron.determineCurrentPosition(campaign.getDate());
-        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_AIRFIELD, playerSquadronLocation, playerSquadron.getCountry());
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_AIRFIELD, playerSquadronLocation, playerSquadron.getCountry(), "Scramble Opposition Airfield");
         return targetDefinition;
         
     }

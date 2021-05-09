@@ -43,4 +43,28 @@ public enum TargetType
     {
         return targetCategory;
     }
+    
+    public static boolean isCityTargetType(TargetType targetType)
+    {
+        if (targetType == TargetType.TARGET_CITY)
+        {
+            return true;
+        }
+        else if (targetType == TargetType.TARGET_FACTORY)
+        {
+            return true;
+        }
+        else if (targetType == TargetType.TARGET_FUEL)
+        {
+            return true;
+        }
+        else if (targetType == TargetType.TARGET_PORT)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

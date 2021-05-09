@@ -50,7 +50,7 @@ public class AAARailroadBuilder
         double angle = RandomNumberGenerator.getRandom(360);
         double distance = 100 + RandomNumberGenerator.getRandom(200);
         Coordinate aaaPosition = MathUtils.calcNextCoord(railroadStation.getPosition(), angle, distance);               
-        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, aaaPosition, railroadStation.getCountry(campaign.getDate()));
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, aaaPosition, railroadStation.getCountry(campaign.getDate()), "AAA For Railroad");
         AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
         GroundUnitCollection aaaMg = groundUnitFactory.createAAAMGBattery(GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM);
         railroadAAA.add(aaaMg);
@@ -61,7 +61,7 @@ public class AAARailroadBuilder
         double angle = RandomNumberGenerator.getRandom(360);
         double distance = 300 + RandomNumberGenerator.getRandom(200);
         Coordinate aaaPosition = MathUtils.calcNextCoord(railroadStation.getPosition(), angle, distance);               
-        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, aaaPosition, railroadStation.getCountry(campaign.getDate()));
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, aaaPosition, railroadStation.getCountry(campaign.getDate()), "AAA For Railroad");
         AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
         GroundUnitCollection aaaArty = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM);
         railroadAAA.add(aaaArty);

@@ -41,8 +41,8 @@ public class PlayerFlightTypeBoSInterceptTest
 	
         assert (playerFlight.getFlightType() == FlightTypes.STRATEGIC_INTERCEPT);
 
-//        List<IFlight> randomAiFlights = mission.getMissionFlights().getAiFlights();
-//        assert (randomAiFlights.isEmpty());
+        List<IFlight> randomAiFlights = mission.getMissionFlights().getAiFlights();
+        assert (randomAiFlights.isEmpty());
 
         List<IFlight> linkedAiFlights = playerFlight.getLinkedFlights().getLinkedFlights();
         assert (!linkedAiFlights.isEmpty());

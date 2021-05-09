@@ -119,7 +119,7 @@ public class ShippingEncounterBattleBuilder implements IBattleBuilder
     
     private TargetDefinition makeTargetDefinition(ShipEncounterZone shipEncounterZone, ICountry shipCountry, Coordinate startPosition) throws PWCGException
     {
-        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_SHIPPING, startPosition, shipCountry);
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_SHIPPING, startPosition, shipCountry, "Warship");
         return targetDefinition;
     }
 }

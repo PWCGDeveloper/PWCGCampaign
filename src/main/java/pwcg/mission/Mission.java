@@ -10,6 +10,7 @@ import pwcg.campaign.api.IMissionFile;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.group.FixedPosition;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.io.json.CampaignMissionIOJson;
 import pwcg.campaign.skin.Skin;
@@ -40,7 +41,6 @@ public class Mission
     private Campaign campaign;
     private MissionHumanParticipants participatingPlayers;
     private CoordinateBox missionBorders;
-    private CoordinateBox structureBorders;
     private MissionProfile missionProfile = MissionProfile.DAY_TACTICAL_MISSION;
     private MissionOptions missionOptions;
     private MissionFrontLineIconBuilder frontLines;
@@ -49,13 +49,13 @@ public class Mission
     private MissionObjectiveGroup missionObjectiveSuccess = new MissionObjectiveGroup();
     private MissionObjectiveGroup missionObjectiveFailure = new MissionObjectiveGroup();
 
+    private MissionBlocks missionBlocks = null;
+    private MissionAirfields missionAirfields = null;
+    
     private MissionFlights missionFlights;
     private MissionVirtualEscortHandler virtualEscortHandler = new MissionVirtualEscortHandler();
     private SkinsInUse skinsInUse = new SkinsInUse();
     private List<StopAttackingNearAirfieldSequence> stopSequenceForMission = new ArrayList<>();
-
-    private MissionBlockBuilder blockBuilder;
-    private MissionAirfieldBuilder airfieldBuilder;
 
     private MissionBattleManager battleManager = new MissionBattleManager();
     private MissionGroundUnitBuilder groundUnitBuilder;
@@ -76,7 +76,6 @@ public class Mission
             MissionProfile missionProfile, 
             MissionHumanParticipants participatingPlayers, 
             CoordinateBox missionBorders, 
-            CoordinateBox structureBorders, 
             MissionWeather weather,
             Skirmish skirmish,
             MissionOptions missionOptions)
@@ -86,7 +85,6 @@ public class Mission
         this.participatingPlayers = participatingPlayers;
         this.missionProfile = missionProfile;
         this.missionBorders = missionBorders;
-        this.structureBorders = structureBorders;
         this.weather = weather;
         this.skirmish = skirmish;
         this.missionOptions = missionOptions;
@@ -103,8 +101,7 @@ public class Mission
         groundUnitManager = new MissionGroundUnitResourceManager();
         groundUnitBuilder = new MissionGroundUnitBuilder(this);
         missionFlights = new MissionFlights(this);
-        blockBuilder = new MissionBlockBuilder(this);
-        airfieldBuilder = new MissionAirfieldBuilder(this);
+        
         frontLines = new MissionFrontLineIconBuilder(campaign);
         squadronIconBuilder = new MissionSquadronIconBuilder(campaign);
     }
@@ -112,13 +109,39 @@ public class Mission
     public void generate(MissionSquadronFlightTypes playerFlightTypes) throws PWCGException
     {
         validate();
-        createStructures();
-        createAirfields();
+        createStructuresForTargeting();
         createGroundUnits();
         generateFlights(playerFlightTypes);
-
+        createExpandedStructuresBoxForMission();
     }
-    
+
+    private void createStructuresForTargeting() throws PWCGException
+    {
+        MissionBlockBuilder blockBuilder = new MissionBlockBuilder(this, missionBorders);
+        missionBlocks = blockBuilder.buildFixedPositionsForMission();
+
+        MissionAirfieldBuilder airfieldBuilder = new MissionAirfieldBuilder(this, missionBorders);
+        missionAirfields = airfieldBuilder.buildFieldsForPatrol();;
+    }
+
+    private void createExpandedStructuresBoxForMission() throws PWCGException
+    {
+        CoordinateBox structureBorders = buildStructureBorders(missionProfile, participatingPlayers, missionBorders);
+        
+        MissionBlockBuilder blockBuilder = new MissionBlockBuilder(this, structureBorders);
+        missionBlocks = blockBuilder.buildFixedPositionsForMission();
+
+        MissionAirfieldBuilder airfieldBuilder = new MissionAirfieldBuilder(this, structureBorders);
+        missionAirfields = airfieldBuilder.buildFieldsForPatrol();;
+    }
+
+    private CoordinateBox buildStructureBorders(MissionProfile missionProfile, MissionHumanParticipants participatingPlayers, CoordinateBox missionBorders) throws PWCGException
+    {
+        StructureBorderBuilder structureBorderBuilder = new StructureBorderBuilder(campaign, participatingPlayers, missionBorders);
+        CoordinateBox structureBorder = structureBorderBuilder.getBordersForStructuresConsideringFlights( missionFlights.getPlayerFlights());
+        return structureBorder;
+    }
+
     public int getGroundUnitCount() throws PWCGException
     {
         int unitCountMissionGroundUnits = groundUnitBuilder.getUnitCount();        
@@ -133,16 +156,6 @@ public class Mission
         PWCGLogger.log(LogLevel.INFO, "unit count total : " + unitCountInMission);
 
         return unitCountInMission;
-    }
-
-    private void createAirfields() throws PWCGException
-    {
-        airfieldBuilder.buildFieldsForPatrol();;
-    }
-
-    private void createStructures() throws PWCGException
-    {
-        blockBuilder.buildFixedPositionsForMission();
     }
 
     private void generateFlights(MissionSquadronFlightTypes playerFlightTypes) throws PWCGException
@@ -298,7 +311,7 @@ public class Mission
     {
         for (IFlight flight : this.getMissionFlights().getAllAerialFlights())
         {
-            StopAttackingNearAirfield stopAttackingNearAirfield = new StopAttackingNearAirfield(flight, getFieldsForPatrol());
+            StopAttackingNearAirfield stopAttackingNearAirfield = new StopAttackingNearAirfield(flight, missionAirfields.getFieldsForPatrol());
             List<StopAttackingNearAirfieldSequence> stopSequenceForFlight = stopAttackingNearAirfield.stopAttackingAirfields();
             stopSequenceForMission.addAll(stopSequenceForFlight);
         }
@@ -317,11 +330,6 @@ public class Mission
             missionObjectiveSuccess.createSuccessMissionObjective(campaign, this);
             missionObjectiveFailure.createFailureMissionObjective(campaign, this);
         }
-    }
-
-    public List<Airfield> getFieldsForPatrol() throws PWCGException
-    {
-        return airfieldBuilder.getFieldsForPatrol();
     }
 
     public Side getMissionSide() throws PWCGException
@@ -466,11 +474,6 @@ public class Mission
         return missionBorders;
     }
 
-    public CoordinateBox getStructureBorders()
-    {
-        return structureBorders;
-    }
-
     public MissionOptions getMissionOptions()
     {
         return missionOptions;
@@ -496,14 +499,14 @@ public class Mission
         return weather;
     }
 
-    public MissionBlockBuilder getMissionBlockBuilder()
+    public List<Airfield> getFieldsForPatrol() throws PWCGException
     {
-        return blockBuilder;
+        return missionAirfields.getFieldsForPatrol();
     }
 
-    public MissionAirfieldBuilder getMissionAirfieldBuilder()
+    public List<FixedPosition> getBlocksForPatrol() throws PWCGException
     {
-        return airfieldBuilder;
+        return missionBlocks.getPositionsForMission();
     }
 
     public Skirmish getSkirmish()

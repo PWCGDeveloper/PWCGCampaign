@@ -146,7 +146,7 @@ public class StrategicTargetLocator
     {
         for (IFixedPosition target : targets)
         {
-            TargetDefinition targetDefinition = new TargetDefinition(targetType, target.getPosition(), target.getCountry(flightInformation.getCampaign().getDate()));
+            TargetDefinition targetDefinition = new TargetDefinition(targetType, target.getPosition(), target.getCountry(flightInformation.getCampaign().getDate()), targetType.getTargetName());
             availableTargets.add(targetDefinition);
         }
     }

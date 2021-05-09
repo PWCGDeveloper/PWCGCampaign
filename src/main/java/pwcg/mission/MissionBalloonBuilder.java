@@ -81,7 +81,7 @@ public class MissionBalloonBuilder
                 boolean alreadyTaken = isBalloonPositionTaken(balloonPosition);
                 if (!alreadyTaken)
                 {
-                    TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_BALLOON, balloonPosition, balloonCountry);
+                    TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_BALLOON, balloonPosition, balloonCountry, "Balloon");
                     
                     BalloonUnitBuilder groundUnitBuilderBalloonDefense = new BalloonUnitBuilder(mission, targetDefinition);
                     GroundUnitCollection balloonGroup = groundUnitBuilderBalloonDefense.createBalloonUnit();

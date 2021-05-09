@@ -95,7 +95,7 @@ public class MissionShipBuilder
     {
         ICountry shipCountry = PWCGContext.getInstance().getCurrentMap().getGroundCountryForMapBySide(shipSide);
         ShippingLane shippngLane = MissionAntiShippingSeaLaneFinder.getShippingLaneForMission(mission, shipSide);
-        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_SHIPPING, shippngLane.getShippingLaneBorders().getCoordinateInBox(), shipCountry);
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_SHIPPING, shippngLane.getShippingLaneBorders().getCoordinateInBox(), shipCountry, "Ship");
         return targetDefinition;
     }
     

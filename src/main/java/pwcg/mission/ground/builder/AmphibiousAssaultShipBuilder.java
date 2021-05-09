@@ -122,7 +122,7 @@ public class AmphibiousAssaultShipBuilder
     {
         Coordinate startPosition = makeLandingCraftStartPosition(amphibiousAssaultShip);
         ICountry country = CountryFactory.makeCountryByCountry(amphibiousAssault.getAggressorCountry());
-        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_SHIPPING, startPosition, country);
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_SHIPPING, startPosition, country, "Landing Craft");
         return targetDefinition;
     }
 

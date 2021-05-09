@@ -8,7 +8,7 @@ import pwcg.core.exception.PWCGException;
 
 public class MissionBorderBuilderFactory 
 {
-    public static IMissionCenterBuilder buildCoordinateBoxNearFront(Campaign campaign, MissionHumanParticipants participatingPlayers, Skirmish skirmish, MissionSquadronFlightTypes playerFlightTypes) throws PWCGException
+    public static IMissionCenterBuilder buildMissionCenterBuilder(Campaign campaign, MissionHumanParticipants participatingPlayers, Skirmish skirmish, MissionSquadronFlightTypes playerFlightTypes) throws PWCGException
     {
         if (playerFlightTypes.isStrategicInterceptPlayerFlight() && campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
         {

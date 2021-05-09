@@ -15,6 +15,8 @@ import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 
 public class StructureBorderBuilder 
 {
@@ -29,51 +31,29 @@ public class StructureBorderBuilder
         this.missionBorders = missionBorders;
 	}
 
-    public CoordinateBox getBordersForStructures() throws PWCGException
+    public CoordinateBox getBordersForStructuresConsideringFlights(List<IFlight> playerFlights) throws PWCGException
+    {
+        CoordinateBox structureBorders = expandMissionBordersForPlayerFields();
+        structureBorders = expandMissionBordersForPlayerFlightRoutes(structureBorders, playerFlights);
+        return applyStructureExpansion(structureBorders);
+    }
+
+    private CoordinateBox applyStructureExpansion(CoordinateBox structureBorders) throws PWCGException
     {
         ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
         String currentCpuAllowanceSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigStructuresKey);
-        if   (currentCpuAllowanceSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        if (currentCpuAllowanceSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
         {
-            return getLowStructureKeepBox();
+            return applySpreadToBox(structureBorders, 3);
         }
         else if (currentCpuAllowanceSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
         {
-            return getMediumStructureKeepBox();
+            return applySpreadToBox(structureBorders, 2);
         }
-        else if (currentCpuAllowanceSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+        else
         {
-            return getHighStructureKeepBox();
+            return applySpreadToBox(structureBorders, 1);
         }
-    
-        return getLowStructureKeepBox();
-    }
-
-    private CoordinateBox getLowStructureKeepBox() throws PWCGException
-    {
-        int spreadMultiplier = 1;
-        CoordinateBox structureBorders = applySpreadToBox(missionBorders, spreadMultiplier);
-        return structureBorders;
-    }
-
-    private CoordinateBox getMediumStructureKeepBox() throws PWCGException
-    {
-        CoordinateBox structureBorders = expandMissionBordersForPlayerFields();
-        
-        int spreadMultiplier = 2;
-        structureBorders = applySpreadToBox(structureBorders, spreadMultiplier);
-
-        return structureBorders;
-    }
-
-    private CoordinateBox getHighStructureKeepBox() throws PWCGException
-    {
-        CoordinateBox structureBorders = expandMissionBordersForPlayerFields();
-        
-        int spreadMultiplier = 3;
-        structureBorders = applySpreadToBox(structureBorders, spreadMultiplier);
-
-        return structureBorders;
     }
 
     private CoordinateBox expandMissionBordersForPlayerFields() throws PWCGException
@@ -89,6 +69,21 @@ public class StructureBorderBuilder
         }
         
         structureBorders.expandBoxCornersFromCoordinates(airfieldCoordinates);
+        return structureBorders;
+    }
+
+    private CoordinateBox expandMissionBordersForPlayerFlightRoutes(CoordinateBox structureBorders, List<IFlight> playerFlights) throws PWCGException
+    {        
+        List<Coordinate> flightPointCoordinates = new ArrayList<>();
+        for (IFlight playerFlight : playerFlights)
+        {
+            for (MissionPoint missionPoint : playerFlight.getWaypointPackage().getFlightMissionPoints())
+            {
+                flightPointCoordinates.add(missionPoint.getPosition());
+            }
+        }
+        
+        structureBorders.expandBoxCornersFromCoordinates(flightPointCoordinates);
         return structureBorders;
     }
 

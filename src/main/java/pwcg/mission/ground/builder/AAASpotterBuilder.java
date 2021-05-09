@@ -31,7 +31,7 @@ public class AAASpotterBuilder
             return null;
         }
         
-        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, position, flightInformation.getCountry());
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, position, flightInformation.getCountry(), "Spotter");
         AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(flightInformation.getCampaign(), targetDefinition);
         
         GroundUnitCollection spotterMG = groundUnitFactory.createAAAMGBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);

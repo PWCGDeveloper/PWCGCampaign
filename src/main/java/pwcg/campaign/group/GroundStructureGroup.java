@@ -3,14 +3,14 @@ package pwcg.campaign.group;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.group.airfield.AirfieldBlock;
+import pwcg.mission.ground.building.PwcgBuildingIdentifier;
 
 public class GroundStructureGroup
 {
 	private List<Block> railroadStations = new ArrayList<Block>();
 	private List<Block> standaloneBlocks = new ArrayList<Block>();
 	private List<Bridge> bridges = new ArrayList<Bridge>();
-	private List<AirfieldBlock> airfieldBlocks = new ArrayList<AirfieldBlock>();
+	private List<Block> airfieldBlocks = new ArrayList<Block>();
 
 	public List<Block> getRailroadStations()
 	{
@@ -42,12 +42,12 @@ public class GroundStructureGroup
 		this.bridges = bridges;
 	}
 
-	public List<AirfieldBlock> getAirfieldBlocks()
+	public List<Block> getAirfieldBlocks()
 	{
 		return airfieldBlocks;
 	}
 
-	public void setAirfieldBlocks(List<AirfieldBlock> airfieldBlocks)
+	public void setAirfieldBlocks(List<Block> airfieldBlocks)
 	{
 		this.airfieldBlocks = airfieldBlocks;
 	}
@@ -56,8 +56,30 @@ public class GroundStructureGroup
 	{
         List<FixedPosition> fixedPositions = new ArrayList<>();
         fixedPositions.addAll(railroadStations);
-        fixedPositions.addAll(standaloneBlocks);
         fixedPositions.addAll(bridges);
         fixedPositions.addAll(airfieldBlocks);
+        fixedPositions.addAll(standaloneBlocks);
 	}
+	
+
+    public void generateAirfieldRelationships()
+    {
+        List<Block> newStandaloneBlocks = new ArrayList<Block>();
+        List<Block> newAirfieldBlocks = new ArrayList<Block>();
+        for (Block block : standaloneBlocks)
+        {
+            if (PwcgBuildingIdentifier.isAirfield(block))
+            {
+                newAirfieldBlocks.add(block);
+            }
+            else
+            {
+                newStandaloneBlocks.add(block);
+            }
+        }
+
+        standaloneBlocks = newStandaloneBlocks;
+        airfieldBlocks = newAirfieldBlocks;
+    }
+
 }

@@ -241,8 +241,6 @@ public class MathUtils
             prevPoint = finalPoint;
         }
 
-        assert(hull.indexOf(pointOnHull) == 0);
-
         return hull;
     }
 

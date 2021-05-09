@@ -87,7 +87,7 @@ public class AirfieldObjectPlacer
     {
         if (!airfield.determineCountryOnDate(campaign.getDate()).isNeutral())
         {            
-            TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, hotSpot.getPosition(), airfieldCountry);
+            TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, hotSpot.getPosition(), airfieldCountry, "Airfield AAA");
             AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
 
             GroundUnitCollection aaaUnit;

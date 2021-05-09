@@ -38,7 +38,7 @@ public class TargetDefinitionCollector
     private List<TargetDefinition> createTargetDefinitionsForAssignedStructures() throws PWCGException
     {
         TargetDefinitionBuilderStructural targetSelector = new TargetDefinitionBuilderStructural(flightInformation);
-        List<TargetDefinition> targetaDefinitionsForStructures = targetSelector.findStructures();
+        List<TargetDefinition> targetaDefinitionsForStructures = targetSelector.findTargetStructures();
         Collections.shuffle(targetaDefinitionsForStructures);
         return targetaDefinitionsForStructures;
     }

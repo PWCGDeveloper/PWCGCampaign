@@ -105,7 +105,7 @@ public class AAAFrontLinesBuilder
         Coordinate aaaMgPosition = frontLinesForMap.findPositionBehindLinesForSide(lastAAAPosition, 1000, 50, 200, side);
         ICountry icountry = CountryFactory.makeMapReferenceCountry(side);
 
-        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, aaaMgPosition, icountry);
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, aaaMgPosition, icountry, "AAA For Front Lines");
         AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
         GroundUnitCollection aaaMg = groundUnitFactory.createAAAMGBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
         aaaForFront.add(aaaMg);
@@ -115,7 +115,7 @@ public class AAAFrontLinesBuilder
     {
         Coordinate aaaArtyPosition = frontLinesForMap.findPositionBehindLinesForSide(lastAAAPosition, 1000, 1000, 2000, side);
         ICountry icountry = CountryFactory.makeMapReferenceCountry(side);
-        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, aaaArtyPosition, icountry);
+        TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, aaaArtyPosition, icountry, "AAA For Front Lines");
         AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
         GroundUnitCollection aaaArty = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
         aaaForFront.add(aaaArty);
