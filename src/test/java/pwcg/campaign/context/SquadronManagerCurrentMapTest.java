@@ -15,6 +15,8 @@ import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.MissionSquadronRegistry;
+import pwcg.mission.flight.escort.EscortSquadronSelector;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
@@ -33,28 +35,26 @@ public class SquadronManagerCurrentMapTest
     public void getEscortOrEscortedSquadronAlliedTest() throws PWCGException
     {
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
 
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.RAF_184_PROFILE.getSquadronId());
         
-        List<Role> roles = new ArrayList<Role>(Arrays.asList(Role.ROLE_BOMB));
-        Squadron nearbySquadron = squadronManager.getEscortOrEscortedSquadron(campaign, squadron.determineCurrentPosition(campaign.getDate()), roles, Side.ALLIED);
+        Squadron nearbySquadron = EscortSquadronSelector.getEscortedSquadron(campaign, squadron);
 
         assert(nearbySquadron != null);
         assert(nearbySquadron.determineSide() == Side.ALLIED);
-        assert(nearbySquadron.getSquadronRoles().isSquadronThisRole(campaign.getDate(), Role.ROLE_BOMB) == true);
+        boolean isBomb = nearbySquadron.getSquadronRoles().isSquadronThisRole(campaign.getDate(), Role.ROLE_BOMB);
+        boolean isAttack = nearbySquadron.getSquadronRoles().isSquadronThisRole(campaign.getDate(), Role.ROLE_ATTACK);
+        assert(isBomb || isAttack);
     }
 
     @Test
     public void getEscortOrEscortedSquadronAxisTest() throws PWCGException
     {
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
-        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
 
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
-         
-        List<Role> roles = new ArrayList<Role>(Arrays.asList(Role.ROLE_FIGHTER));
-        Squadron nearbySquadron = squadronManager.getEscortOrEscortedSquadron(campaign, squadron.determineCurrentPosition(campaign.getDate()), roles, Side.AXIS);
+                 
+        Squadron nearbySquadron = EscortSquadronSelector.getEscortSquadron(campaign, squadron, new MissionSquadronRegistry());
         assert(nearbySquadron != null);
         assert(nearbySquadron.determineSide() == Side.AXIS);
         assert(nearbySquadron.getSquadronRoles().isSquadronThisRole(campaign.getDate(), Role.ROLE_FIGHTER) == true);

@@ -8,6 +8,8 @@ import org.junit.Test;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.core.config.ConfigItemKeys;
+import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
@@ -27,8 +29,37 @@ public class PlayerFlightTypeBoSInterceptTest
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.JV44_PROFILE);
     }
 
-	@Test
-	public void patrolFlightTest() throws PWCGException
+    @Test
+    public void strategicInterceptFlightLowAirConfigTest() throws PWCGException
+    {
+        campaign.getCampaignConfigManager().setConfigParam(ConfigItemKeys.SimpleConfigAirKey, ConfigSimple.CONFIG_LEVEL_LOW);
+        runStrategicInterceptFlightTest(1, 1);
+    }
+
+    @Test
+    public void strategicInterceptFlightMediumAirConfigTest() throws PWCGException
+    {
+        campaign.getCampaignConfigManager().setConfigParam(ConfigItemKeys.SimpleConfigAirKey, ConfigSimple.CONFIG_LEVEL_MED);
+        runStrategicInterceptFlightTest(2, 2);
+    }
+
+    @Test
+    public void strategicInterceptFlightHighAirConfigTest() throws PWCGException
+    {
+        campaign.getCampaignConfigManager().setConfigParam(ConfigItemKeys.SimpleConfigAirKey, ConfigSimple.CONFIG_LEVEL_HIGH);
+        campaign.getCampaignConfigManager().setConfigParam(ConfigItemKeys.MaxVirtualEscortedFlightKey, "3");
+        runStrategicInterceptFlightTest(3, 3);
+    }
+
+    @Test
+    public void strategicInterceptFlightHighAirConfigWithNotEnoughEscortsTest() throws PWCGException
+    {
+        campaign.getCampaignConfigManager().setConfigParam(ConfigItemKeys.SimpleConfigAirKey, ConfigSimple.CONFIG_LEVEL_HIGH);
+        campaign.getCampaignConfigManager().setConfigParam(ConfigItemKeys.MaxVirtualEscortedFlightKey, "2");
+        runStrategicInterceptFlightTest(3, 2);
+    }
+
+	public void runStrategicInterceptFlightTest(int expectedFlights, int expectedEscorts) throws PWCGException
 	{
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.STRATEGIC_INTERCEPT, MissionProfile.DAY_TACTICAL_MISSION);
@@ -43,22 +74,27 @@ public class PlayerFlightTypeBoSInterceptTest
         assert (playerFlight.getFlightType() == FlightTypes.STRATEGIC_INTERCEPT);
 
         List<IFlight> randomAiFlights = mission.getMissionFlights().getAiFlights();
-        assert (randomAiFlights.size() == 1);
+        assert (randomAiFlights.size() == expectedFlights);
 
         List<IFlight> linkedAiFlights = playerFlight.getLinkedFlights().getLinkedFlights();
         assert (!linkedAiFlights.isEmpty());
 
-        boolean bombersFound = false;
+        int actualBombers = 0;
+        int actualEscorts = 0;
         for (IFlight aiFlight : linkedAiFlights)
         {
             if (aiFlight.getFlightType() == FlightTypes.STRATEGIC_BOMB)
             {
-                bombersFound = true;
-                assert(aiFlight.getVirtualWaypointPackage().getEscort().getEscortPlanes().size() > 0);
+                ++actualBombers;
+               if (aiFlight.getVirtualWaypointPackage().getEscort() != null)
+               {
+                   ++actualEscorts;
+               }
             }
         }
 
-        assert (bombersFound);
+        assert (expectedFlights == actualBombers);
+        assert (expectedEscorts == actualEscorts);
 
 	}
 }

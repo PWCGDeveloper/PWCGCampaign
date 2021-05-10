@@ -35,6 +35,11 @@ public class MissionFlightKeeper
 
         keepRequiredFlights();
         keepOptionalFlights();
+        
+        for (IFlight flight : keptFlightsRecorder.getKeptFlights())
+        {
+            mission.getMissionSquadronRegistry().registerSquadronForUse(flight.getSquadron());
+        }
 
         return keptFlightsRecorder.getKeptFlights();
     }

@@ -1,13 +1,6 @@
 package pwcg.mission.flight.escort;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
@@ -62,25 +55,13 @@ public class EscortedByPlayerFlightBuilder
     
     private Squadron determineSquadronToBeEscorted(Campaign campaign, Squadron escortSquadron) throws PWCGException
     {
-        Squadron escortedSquadron = determineSquadronForRoleToBeEscorted(campaign, escortSquadron, Role.ROLE_BOMB);
-        if (escortedSquadron == null)
-        {
-            escortedSquadron = determineSquadronForRoleToBeEscorted(campaign, escortSquadron, Role.ROLE_ATTACK);
-        }
+        Squadron escortedSquadron = EscortSquadronSelector.getEscortedSquadron(campaign, playerEscortFlightInformation.getSquadron());
 
         if (escortedSquadron == null)
         {
             throw new PWCGMissionGenerationException ("Escort mission with no viable squadrons to be escorted - please create another mission");
         }
         
-        return escortedSquadron;
-    }
-    
-    private Squadron determineSquadronForRoleToBeEscorted(Campaign campaign, Squadron escortSquadron, Role role) throws PWCGException
-    {
-        List<Role> bomberRole = new ArrayList<Role>(Arrays.asList(role));
-        Side friendlySide = escortSquadron.determineSide();
-        Squadron escortedSquadron = PWCGContext.getInstance().getSquadronManager().getEscortOrEscortedSquadron(campaign, playerEscortFlightInformation.getMission().getMissionBorders().getCenter(), bomberRole, friendlySide);
         return escortedSquadron;
     }
 

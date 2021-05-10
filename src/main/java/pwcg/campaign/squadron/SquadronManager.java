@@ -1,17 +1,14 @@
 package pwcg.campaign.squadron;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.TreeMap;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.io.json.SquadronIOJson;
 import pwcg.campaign.plane.Role;
@@ -239,25 +236,6 @@ public class SquadronManager
         else
         {
             return selectedSquadronsForCurrentMap;
-        }
-    }
-
-    public Squadron getEscortOrEscortedSquadron(Campaign campaign, Coordinate referenceCoordinate, List <Role> acceptableRoles, Side side) throws PWCGException 
-    {
-        List<Squadron> selectedSquadronsNoPlayer = getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, side);
-
-        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        int squadronSearchRadius = productSpecific.getLargeMissionRadius();
-
-        List<Squadron> inRangeSquadrons = SquadronReducer.reduceToProximityOnCurrentMap(selectedSquadronsNoPlayer, campaign.getDate(), referenceCoordinate, squadronSearchRadius);
-        if (inRangeSquadrons.size() > 0)
-        {
-            Collections.shuffle(inRangeSquadrons);
-            return inRangeSquadrons.get(0);
-        }
-        else
-        {
-            return null;
         }
     }
 

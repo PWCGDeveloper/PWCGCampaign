@@ -6,7 +6,7 @@ Make planes exit attacks more quickly
 - When one or two planes goes bingo bombs the rest will jettison remaining ordnance and exit after 30 seconds.
 Rewrite of strategic intercept to use more realistic targets.
 Expand inclusion of airfield and city blocks to make airfield and city attacks mor elikely to trigger.
-
+Allowed possibility to escort bombers or ground attack
 
 
 PWCG 12.1.2

@@ -1,12 +1,11 @@
 package pwcg.mission.flight.escort;
 
-import pwcg.campaign.api.Side;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.McuWaypoint;
@@ -35,9 +34,7 @@ public class EscortForPlayerFlightBuilder
 
     private IFlight createEscortForPlayerFlight(IFlight playerFlight) throws PWCGException 
     {
-        FlightInformation playerFlightInformation = playerFlight.getFlightInformation();
-        Side friendlySide = playerFlightInformation.getSquadron().determineSquadronCountry(playerFlightInformation.getCampaign().getDate()).getSide();
-        Squadron friendlyFighterSquadron = EscortSquadronSelector.getEscortSquadron(playerFlight, friendlySide);
+        Squadron friendlyFighterSquadron = EscortSquadronSelector.getEscortSquadron(playerFlight.getCampaign(), playerFlight.getSquadron(), playerFlight.getMission().getMissionSquadronRegistry());
 
         if (friendlyFighterSquadron != null)
         {          

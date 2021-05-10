@@ -66,6 +66,7 @@ public class Mission
     private MissionAirfieldIconBuilder airfieldIconBuilder = new MissionAirfieldIconBuilder();
     private MissionSquadronIconBuilder squadronIconBuilder;
     private MissionAssaultIconBuilder assaultIconBuilder = new MissionAssaultIconBuilder();
+    private MissionSquadronRegistry missionSquadronRegistry = new MissionSquadronRegistry();
     private Skirmish skirmish;
     
     private MissionEffects missionEffects = new MissionEffects();
@@ -512,5 +513,10 @@ public class Mission
     public Skirmish getSkirmish()
     {
         return skirmish;
+    }
+
+    public MissionSquadronRegistry getMissionSquadronRegistry()
+    {
+        return missionSquadronRegistry;
     }
 }

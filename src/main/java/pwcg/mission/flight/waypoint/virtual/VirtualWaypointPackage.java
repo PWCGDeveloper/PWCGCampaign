@@ -6,6 +6,8 @@ import java.util.List;
 
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
@@ -54,8 +56,7 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
     @Override
     public void addEscort() throws PWCGException
     {
-        Squadron squadronToEscort = flight.getSquadron();
-        Squadron friendlyFighterSquadron = EscortSquadronSelector.getEscortSquadron(flight, squadronToEscort.determineSide());
+        Squadron friendlyFighterSquadron = EscortSquadronSelector.getEscortSquadron(flight.getCampaign(), flight.getSquadron(), flight.getMission().getMissionSquadronRegistry());
         if (friendlyFighterSquadron != null)
         {
             FlightInformation vwpEscortFlightInformation = VirtualEscortFlightInformationBuilder.buildVirtualEscortFlightInformation(flight.getMission(), friendlyFighterSquadron);
@@ -63,6 +64,12 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
             {
                 virtualWaypoint.addEscort(vwpEscortFlightInformation);
             }
+            
+            flight.getMission().getMissionSquadronRegistry().registerSquadronForUse(friendlyFighterSquadron);
+        }
+        else
+        {
+            PWCGLogger.log(LogLevel.DEBUG, "No escort available for virtual flight");
         }
     }
 
