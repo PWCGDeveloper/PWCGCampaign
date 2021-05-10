@@ -7,7 +7,11 @@ Make planes exit attacks more quickly
 Rewrite of strategic intercept to use more realistic targets.
 Expand inclusion of airfield and city blocks to make airfield and city attacks mor elikely to trigger.
 Allowed possibility to escort bombers or ground attack
+Fixed incorrect (low) altitude of ingress waypoint on strategic intercept missions
 
+- Null in planes in briefing
+- Ingress WP is too low (probably zero) on transports
+- Make sure that start point for flights is not the same as others.
 
 PWCG 12.1.2
 Got plane markings working for 354th
