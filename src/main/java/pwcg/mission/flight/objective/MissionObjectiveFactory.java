@@ -188,13 +188,13 @@ public class MissionObjectiveFactory
     {
         String objective = "Close Air Patrol over our troops.  " + 
                 "Engage any enemy aircraft that you encounter as a first priority.  " +
-                "Attack targets of opportuity on the ground.  ";
+                "Attack targets of opportunity on the ground.  ";
         String objectiveName =  MissionObjectiveLocation.formMissionObjectiveLocation(flight.getTargetDefinition().getPosition().copy()) + "."; 
         if (!objectiveName.isEmpty())
         {
             objective = "Close Air Patrol over our troops " + objectiveName +
                     "  Engage any enemy aircraft that you encounter as a first priority." +
-                    "  Attack targets of opportuity on the ground.  ";
+                    "  Attack targets of opportunity on the ground.  ";
         }
         
         return objective;

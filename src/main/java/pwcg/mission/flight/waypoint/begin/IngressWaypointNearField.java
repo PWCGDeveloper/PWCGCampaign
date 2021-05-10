@@ -3,7 +3,6 @@ package pwcg.mission.flight.waypoint.begin;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -42,9 +41,11 @@ public class IngressWaypointNearField implements IIngressWaypoint
         double distanceToIngress = productSpecificConfiguration.getInterceptInnerLoopDistance();
 
         Coordinate ingressCoordinate = MathUtils.calcNextCoord(flight.getFlightHomePosition(), runwayOrientation, distanceToIngress);
-        
-        int takeoffWaypointAltitude = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.TakeoffWaypointAltitudeKey);
-        ingressCoordinate.setYPos(takeoffWaypointAltitude + 200);
+        ingressCoordinate.setYPos(flight.getFlightInformation().getAltitude() - 200);
+        if (ingressCoordinate.getYPos() < 700)
+        {
+            ingressCoordinate.setYPos(700.0);
+        }
 
         return ingressCoordinate;
     }
