@@ -4,14 +4,18 @@
 PWCG 12.2.0
 Make planes exit attacks more quickly
 - When one or two planes goes bingo bombs the rest will jettison remaining ordnance and exit after 30 seconds.
-Rewrite of strategic intercept to use more realistic targets.
-Expand inclusion of airfield and city blocks to make airfield and city attacks mor elikely to trigger.
+Rewrite of strategic intercept
+- Use more realistic targets.
+- Multiple enemy flights based on air density config
+- Enemy flights are escorted
+- Improved spotter position
+Included more airfield and city blocks as targets to make airfield and city attacks more likely to trigger.
+Expanded structure inclusion box to encompass the flight path of all human players.
 Allowed possibility to escort bombers or ground attack
 Fixed incorrect (low) altitude of ingress waypoint on strategic intercept and transport missions
 Fixed spelling of opportunity in mission briefing
-
-- Null in planes in briefing
-- Make sure that start point for flights is not the same as others.
+FIxed missing plane codes.
+Fixed Me262s could not take off from airfield (moved to different field)
 
 PWCG 12.1.2
 Got plane markings working for 354th

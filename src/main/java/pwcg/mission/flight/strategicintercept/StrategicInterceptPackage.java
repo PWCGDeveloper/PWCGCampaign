@@ -31,25 +31,29 @@ public class StrategicInterceptPackage implements IFlightPackage
         this.targetDefinition = buildTargetDefintion();
 
         List<IFlight> opposingFlights = makeOpposingFlights();
-
         if (opposingFlights.isEmpty())
         {
             return null;
         }
-        
+
         resetFlightInformationAltitudeToMatchTargetFlightList(opposingFlights);
+        StrategicInterceptFlight interceptFlight = createPlayerFlight(opposingFlights);
+        FlightSpotterBuilder.createSpottersForStrategicIntercept(interceptFlight, opposingFlights);
+
+        return interceptFlight;
+    }
+
+    private StrategicInterceptFlight createPlayerFlight(List<IFlight> opposingFlights) throws PWCGException
+    {
         StrategicInterceptFlight interceptFlight = new StrategicInterceptFlight (flightInformation, targetDefinition, opposingFlights.get(0));
         interceptFlight.createFlight();
-        
         if (flightInformation.isPlayerFlight())
         {
-            FlightSpotterBuilder.createSpotters(interceptFlight, flightInformation);
             for (IFlight opposingFlight: opposingFlights)
             {
                 interceptFlight.getLinkedFlights().addLinkedFlight(opposingFlight);
             }
         }
-
         return interceptFlight;
     }
 
