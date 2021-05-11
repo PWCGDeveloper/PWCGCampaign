@@ -74,11 +74,6 @@ public class BoSPlaneMarkingManager implements IPlaneMarkingManager
     private void allocatePlaneIdCode(Campaign campaign, int squadronId, EquippedPlane equippedPlane, HashSet<String> codesForSquadron) throws PWCGException
     {
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
-        if (squadron.determineUnitIdCode(campaign.getDate()) == null)
-        {
-            return;
-        }
-
         String code = "";
         if (squadron.getService() == BoSServiceManager.LUFTWAFFE)
         {
@@ -171,8 +166,10 @@ public class BoSPlaneMarkingManager implements IPlaneMarkingManager
 
         if (squadron.getService() == BoSServiceManager.LUFTWAFFE)
         {
-            if (squadron.determineDisplayName(campaign.getDate()).contains("JG") || squadron.determineDisplayName(campaign.getDate()).contains("Sch.G")
-                    || (squadron.determineDisplayName(campaign.getDate()).contains("SG") && squadron.determineUnitIdCode(campaign.getDate()) == null))
+            if (squadron.determineDisplayName(campaign.getDate()).contains("JG") || 
+                squadron.determineDisplayName(campaign.getDate()).contains("JV") || 
+                squadron.determineDisplayName(campaign.getDate()).contains("Sch.G") || 
+                (squadron.determineDisplayName(campaign.getDate()).contains("SG") && squadron.determineUnitIdCode(campaign.getDate()) == null))
             {
                 return formGermanFighterCode(campaign, equippedPlane, squadron);
             }

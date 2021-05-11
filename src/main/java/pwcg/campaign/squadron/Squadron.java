@@ -808,6 +808,10 @@ public class Squadron
             if (squadHistoryEntry != null)
             {
                 code = squadHistoryEntry.getUnitIdCode();
+                if (code == null)
+                {
+                    code = "";
+                }
             }
         }
 

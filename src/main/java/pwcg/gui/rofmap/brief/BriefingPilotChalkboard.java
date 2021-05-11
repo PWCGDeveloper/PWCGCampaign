@@ -190,7 +190,7 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
 
     private void addPlaneColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane, int row) throws PWCGException
     {
-        String planeName = crewPlane.getPlane().getDisplayName() + " (" + crewPlane.getPlane().getDisplayMarkings() + ")";
+        String planeName = formPlaneName(crewPlane.getPlane().getDisplayName(), crewPlane.getPlane().getDisplayMarkings());
         JButton planeButton = PWCGButtonFactory.makeBriefingChalkBoardButton(planeName, 
                 "Change Plane:" + crewPlane.getPilot().getSerialNumber(), "Change aircraft for  " + crewPlane.getPilot().getNameAndRank(), parent);
         planeButton.setVerticalAlignment(SwingConstants.TOP);
@@ -202,6 +202,16 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
 
         GridBagConstraints constraints = makeGridBagConstraints(row, 2, planeNameWeightx, planeNameWeighty);
         assignedPilotPanel.add(assignedPlaneGroupingPanel, constraints);
+    }
+
+    private String formPlaneName(String planeDisplayName, String planeMarkings) throws PWCGException
+    {
+        String planeName = planeDisplayName;
+        if (planeMarkings != null && !planeMarkings.isEmpty())
+        {
+            planeName += " (" + planeMarkings + ")";
+        }
+        return planeName;
     }
 
     private void addPayloadColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane, int row) throws PWCGException
@@ -291,7 +301,7 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
             if (sortedUnassignedPlanes.size() > i)
             {
                 EquippedPlane unassignedPlane = sortedUnassignedPlanes.get(i);
-                String planeNameText = unassignedPlane.getDisplayName() + " (" + unassignedPlane.getDisplayMarkings() + ")";
+                String planeNameText = formPlaneName(unassignedPlane.getDisplayName(), unassignedPlane.getDisplayMarkings());
                 JLabel planeLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel(planeNameText);
                 unassignedPilotGrid.add(planeLabel);
             }

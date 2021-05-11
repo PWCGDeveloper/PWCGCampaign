@@ -4,6 +4,7 @@
 	"name": "I./JG3",
 	"fileName": "I_JG3.json",
 	"skill": 85,
+	"unitIdCode": "",
 	"subUnitIdCode": "",
 	"planeAssignments": [
 		{
@@ -95,7 +96,6 @@
 			"category": "Squadron",
 			"definedInGame": false
 		}
-		
 	],
 	"squadHistory": {
 		"squadHistoryEntries": []
