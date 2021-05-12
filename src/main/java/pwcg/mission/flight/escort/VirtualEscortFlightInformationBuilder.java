@@ -6,6 +6,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.NecessaryFlightType;
 import pwcg.mission.flight.plane.FlightPlaneBuilder;
 
 public class VirtualEscortFlightInformationBuilder
@@ -15,14 +16,10 @@ public class VirtualEscortFlightInformationBuilder
     {
         Coordinate positionDoesntMatter = new Coordinate(0, 0, 0);
         
-        FlightInformation virtualEscortFlightInformation = new FlightInformation(mission);
+        FlightInformation virtualEscortFlightInformation = new FlightInformation(mission, NecessaryFlightType.VIRTUAL_ESCORT);
         virtualEscortFlightInformation.setFlightType(FlightTypes.ESCORT);
-        virtualEscortFlightInformation.setMission(mission);
         virtualEscortFlightInformation.setCampaign(mission.getCampaign());
         virtualEscortFlightInformation.setSquadron(friendlyFighterSquadron);
-        virtualEscortFlightInformation.setPlayerFlight(false);
-        virtualEscortFlightInformation.setEscortForPlayerFlight(false);
-        virtualEscortFlightInformation.setEscortedByPlayerFlight(false);
         virtualEscortFlightInformation.setTargetSearchStartLocation(positionDoesntMatter);
         FlightPlaneBuilder.buildPlanes (virtualEscortFlightInformation);
 

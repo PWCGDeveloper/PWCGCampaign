@@ -20,6 +20,7 @@ import pwcg.mission.MissionSquadronFlightTypes;
 import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.NecessaryFlightType;
 import pwcg.mission.flight.strategicintercept.StrategicInterceptPackage;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.testutils.CampaignCache;
@@ -66,9 +67,8 @@ public class StrategicInterceptPackageTest extends PwcgTestBase
         Mission mission = TestMissionBuilderUtility.createTestMission(campaign, participatingPlayers, missionBorders, missionProfile);
 
         StrategicInterceptPackage flightPackage = new StrategicInterceptPackage();
-        boolean isPlayerFlight = true;
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_26_PROFILE_WEST.getSquadronId());
-        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(mission, squadron, isPlayerFlight);
+        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(mission, squadron, NecessaryFlightType.PLAYER_FLIGHT);
         IFlight flight = flightPackage.createPackage(flightBuildInformation);
         return flight;
     }

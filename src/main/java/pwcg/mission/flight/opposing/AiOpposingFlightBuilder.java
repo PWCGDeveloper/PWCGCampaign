@@ -36,7 +36,6 @@ public class AiOpposingFlightBuilder
                 IFlight flight = opposingFlightBuilder.createOpposingFlight();
                 if (flight != null)
                 {
-                    flight.getFlightInformation().setOpposingFlight(true);
                     missionFlights.add(flight);
                 }
             }

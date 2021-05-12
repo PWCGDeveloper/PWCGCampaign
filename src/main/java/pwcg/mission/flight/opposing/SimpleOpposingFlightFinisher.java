@@ -12,6 +12,7 @@ import pwcg.mission.OpposingSquadronChooser;
 import pwcg.mission.flight.FlightFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.NecessaryFlightType;
 
 public class SimpleOpposingFlightFinisher
 {
@@ -55,8 +56,7 @@ public class SimpleOpposingFlightFinisher
     private IFlight buildFlight(FlightTypes opposingFlightType, Squadron opposingSquadron) throws PWCGException
     {
         FlightFactory flightFactory = new FlightFactory(campaign);
-        boolean isPlayerFlight = false;
-        IFlight flight = flightFactory.buildFlight(mission, opposingSquadron, opposingFlightType, isPlayerFlight);
+        IFlight flight = flightFactory.buildFlight(mission, opposingSquadron, opposingFlightType, NecessaryFlightType.OPPOSING_FLIGHT);
         return flight;
     }
 }

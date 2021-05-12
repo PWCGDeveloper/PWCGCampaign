@@ -13,6 +13,7 @@ import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.flight.FlightFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.NecessaryFlightType;
 import pwcg.mission.flight.factory.IFlightTypeFactory;
 import pwcg.mission.flight.factory.NightFlightTypeConverter;
 import pwcg.mission.flight.factory.WeatherFlightTypeConverter;
@@ -71,8 +72,7 @@ public class AiFlightBuilder
     private IFlight buildFlight(FlightTypes flightType, Squadron squadron) throws PWCGException
     {
         FlightFactory flightFactory = new FlightFactory(campaign);
-        boolean isPlayerFlight = false;
-        IFlight flight = flightFactory.buildFlight(mission, squadron, flightType, isPlayerFlight);
+        IFlight flight = flightFactory.buildFlight(mission, squadron, flightType, NecessaryFlightType.NONE);
         return flight;        
     }
 

@@ -5,6 +5,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.NecessaryFlightType;
 import pwcg.mission.flight.plane.FlightPlaneBuilder;
 
 public class EscortForPlayerFlightInformationBuilder
@@ -15,14 +16,10 @@ public class EscortForPlayerFlightInformationBuilder
             Squadron friendlyFighterSquadron,
             Coordinate rendezvous) throws PWCGException
     {
-        FlightInformation escortFlightInformation = new FlightInformation(playerFlightInformation.getMission());
+        FlightInformation escortFlightInformation = new FlightInformation(playerFlightInformation.getMission(), NecessaryFlightType.PLAYER_ESCORT);
         escortFlightInformation.setFlightType(FlightTypes.ESCORT);
-        escortFlightInformation.setMission(playerFlightInformation.getMission());
         escortFlightInformation.setCampaign(playerFlightInformation.getCampaign());
         escortFlightInformation.setSquadron(friendlyFighterSquadron);
-        escortFlightInformation.setPlayerFlight(false);
-        escortFlightInformation.setEscortForPlayerFlight(true);
-        escortFlightInformation.setEscortedByPlayerFlight(false);
         escortFlightInformation.setTargetSearchStartLocation(rendezvous.copy());
         
         FlightPlaneBuilder.buildPlanes (escortFlightInformation);

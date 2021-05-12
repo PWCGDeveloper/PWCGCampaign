@@ -21,14 +21,10 @@ public class FlightInformationFactory
     
     private static FlightInformation buildPlayerFlightInformation(Mission mission, Squadron squadron, FlightTypes flightType) throws PWCGException
     {    	
-        FlightInformation playerFlightInformation = new FlightInformation(mission);
+        FlightInformation playerFlightInformation = new FlightInformation(mission, NecessaryFlightType.PLAYER_FLIGHT);
         playerFlightInformation.setFlightType(flightType);
-        playerFlightInformation.setMission(mission);
         playerFlightInformation.setCampaign(mission.getCampaign());
         playerFlightInformation.setSquadron(squadron);
-        playerFlightInformation.setPlayerFlight(true);
-        playerFlightInformation.setEscortForPlayerFlight(false);
-        playerFlightInformation.setEscortedByPlayerFlight(false);
         playerFlightInformation.setTargetSearchStartLocation(mission.getMissionBorders().getCenter());
         FlightPlaneBuilder.buildPlanes (playerFlightInformation);
         playerFlightInformation.calculateAltitude();
@@ -38,14 +34,10 @@ public class FlightInformationFactory
 
     private static FlightInformation buildAiFlightInformation(Mission mission, Squadron squadron, FlightTypes flightType) throws PWCGException
     {
-        FlightInformation aFlightInformation = new FlightInformation(mission);
+        FlightInformation aFlightInformation = new FlightInformation(mission, NecessaryFlightType.NONE);
         aFlightInformation.setFlightType(flightType);
-        aFlightInformation.setMission(mission);
         aFlightInformation.setCampaign(mission.getCampaign());
         aFlightInformation.setSquadron(squadron);
-        aFlightInformation.setPlayerFlight(false);
-        aFlightInformation.setEscortForPlayerFlight(false);
-        aFlightInformation.setEscortedByPlayerFlight(false);
         aFlightInformation.setTargetSearchStartLocation(mission.getMissionBorders().getCenter());
         FlightPlaneBuilder.buildPlanes (aFlightInformation);
         aFlightInformation.calculateAltitude();

@@ -29,20 +29,18 @@ public class FlightInformation
     private List<PlaneMcu> planes;
     private Squadron squadron;
     private Coordinate targetSearchStartLocation;
-    private boolean isPlayerFlight = false;
-    private boolean isEscortedByPlayerFlight = false;
-    private boolean isEscortForPlayerFlight = false;
-    private boolean isScrambleOpposeFlight = false;
-    private boolean isOpposingFlight = false;
+    private NecessaryFlightType necessaryFlightType = NecessaryFlightType.NONE;
+    
     private boolean isAiTriggeredTakeoff = false;
     private int altitude = 0;
     private int flightCruisingSpeed = 0;
     private int formationType = McuFormation.FORMATION_V;
 
-    public FlightInformation(Mission mission)
+    public FlightInformation(Mission mission, NecessaryFlightType necessaryFlightType)
     {
         this.mission = mission;
         this.campaign = mission.getCampaign();
+        this.necessaryFlightType = necessaryFlightType;
     }
 
     public List<SquadronMember> getParticipatingPlayersForFlight()
@@ -53,11 +51,6 @@ public class FlightInformation
     public Mission getMission()
     {
         return mission;
-    }
-
-    public void setMission(Mission mission)
-    {
-        this.mission = mission;
     }
 
     public Squadron getSquadron()
@@ -83,52 +76,22 @@ public class FlightInformation
 
     public boolean isPlayerFlight()
     {
-        return isPlayerFlight;
-    }
-
-    public void setPlayerFlight(boolean isPlayerFlight)
-    {
-        this.isPlayerFlight = isPlayerFlight;
+        return (necessaryFlightType == NecessaryFlightType.PLAYER_FLIGHT);
     }
 
     public boolean isEscortedByPlayerFlight()
     {
-        return isEscortedByPlayerFlight;
-    }
-
-    public void setEscortedByPlayerFlight(boolean isPlayerEscortedFlight)
-    {
-        this.isEscortedByPlayerFlight = isPlayerEscortedFlight;
+        return (necessaryFlightType == NecessaryFlightType.PLAYER_ESCORTED);
     }
 
     public boolean isEscortForPlayerFlight()
     {
-        return isEscortForPlayerFlight;
-    }
-
-    public void setEscortForPlayerFlight(boolean isEscortForPlayerFlight)
-    {
-        this.isEscortForPlayerFlight = isEscortForPlayerFlight;
+        return (necessaryFlightType == NecessaryFlightType.PLAYER_ESCORT);
     }
 
     public boolean isOpposingFlight()
     {
-        return isOpposingFlight;
-    }
-
-    public void setOpposingFlight(boolean isOpposingFlight)
-    {
-        this.isOpposingFlight = isOpposingFlight;
-    }    
-    
-    public boolean isScrambleOpposeFlight()
-    {
-        return isScrambleOpposeFlight;
-    }
-
-    public void setScrambleOpposeFlight(boolean isScrambleOpposeFlight)
-    {
-        this.isScrambleOpposeFlight = isScrambleOpposeFlight;
+        return (necessaryFlightType == NecessaryFlightType.OPPOSING_FLIGHT);
     }
 
     public List<SquadronMember> getFlightParticipatingPlayers()
@@ -144,7 +107,7 @@ public class FlightInformation
     public boolean isVirtual()
     {
         boolean isVirtual = true;
-        if (isPlayerFlight || isEscortedByPlayerFlight || isEscortForPlayerFlight || isScrambleOpposeFlight || isAiTriggeredTakeoff)
+        if ((necessaryFlightType != NecessaryFlightType.NONE) || isAiTriggeredTakeoff)
         {
             isVirtual = false;
         }
@@ -154,7 +117,7 @@ public class FlightInformation
     public boolean isAirStart() throws PWCGException
     {
         boolean airstart = true;
-        if (isPlayerFlight)
+        if (necessaryFlightType == NecessaryFlightType.PLAYER_FLIGHT)
         {
             ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
             if (configManager.getIntConfigParam(ConfigItemKeys.AllowAirStartsKey) != 1)
@@ -172,7 +135,7 @@ public class FlightInformation
     public boolean isParkedStart() throws PWCGException
     {
         boolean parkedStart = false;
-        if (isPlayerFlight)
+        if (necessaryFlightType == NecessaryFlightType.PLAYER_FLIGHT)
         {
             ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
             if (configManager.getIntConfigParam(ConfigItemKeys.AllowAirStartsKey) == 2)

@@ -4,6 +4,8 @@
   "name": "102nd Transport Air Regiment",
   "fileName": "102nd Transport Air Regiment.json",
   "skill": 30,
+  "unitIdCode": "",
+  "subUnitIdCode": "",
   "planeAssignments": [
     {
       "archType": "c47",

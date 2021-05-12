@@ -7,13 +7,13 @@ public class FlightBuildInformation
 {
     private Mission mission;
     private Squadron squadron;
-    private boolean isPlayerFlight = false;
+    private NecessaryFlightType necessaryFlightType = NecessaryFlightType.NONE;
 
-    public FlightBuildInformation(Mission mission, Squadron squadron, boolean isPlayerFlight)
+    public FlightBuildInformation(Mission mission, Squadron squadron, NecessaryFlightType necessaryFlightType)
     {
         this.mission = mission;
         this.squadron = squadron;
-        this.isPlayerFlight = isPlayerFlight;
+        this.necessaryFlightType = necessaryFlightType;
     }
 
     public Mission getMission()
@@ -26,8 +26,13 @@ public class FlightBuildInformation
         return squadron;
     }
 
+    public NecessaryFlightType getNecessaryFlightType()
+    {
+        return necessaryFlightType;
+    }
+
     public boolean isPlayerFlight()
     {
-        return isPlayerFlight;
+        return (necessaryFlightType == NecessaryFlightType.PLAYER_FLIGHT);
     }
 }

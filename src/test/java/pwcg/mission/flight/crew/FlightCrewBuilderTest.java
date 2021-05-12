@@ -19,6 +19,7 @@ import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.NecessaryFlightType;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
@@ -42,7 +43,7 @@ public class FlightCrewBuilderTest
     @Test
     public void testPlayerFlightGeneration() throws PWCGException
     {
-        FlightInformation flightInformation = new FlightInformation(mission);
+        FlightInformation flightInformation = new FlightInformation(mission, NecessaryFlightType.PLAYER_FLIGHT);
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.KG53_PROFILE.getSquadronId());
         flightInformation.setSquadron(squadron);
         
@@ -67,7 +68,7 @@ public class FlightCrewBuilderTest
     @Test
     public void testAiFlightGeneration() throws PWCGException
     {
-        FlightInformation flightInformation = new FlightInformation(mission);
+        FlightInformation flightInformation = new FlightInformation(mission, NecessaryFlightType.PLAYER_FLIGHT);
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(20111052);
         flightInformation.setSquadron(squadron);
 

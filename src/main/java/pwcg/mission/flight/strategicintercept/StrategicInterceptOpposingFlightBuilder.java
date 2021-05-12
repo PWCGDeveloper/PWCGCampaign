@@ -16,6 +16,7 @@ import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.NecessaryFlightType;
 import pwcg.mission.flight.bomb.BombingFlight;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
@@ -72,8 +73,7 @@ public class StrategicInterceptOpposingFlightBuilder
 
     private FlightInformation buildOpposingFlightInformation(Squadron opposingSquadron) throws PWCGException
     {
-        boolean isPlayerFlight = false;
-        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(this.playerFlightInformation.getMission(), opposingSquadron, isPlayerFlight);
+        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(this.playerFlightInformation.getMission(), opposingSquadron, NecessaryFlightType.OPPOSING_FLIGHT);
         FlightInformation opposingFlightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.STRATEGIC_BOMB);
         return opposingFlightInformation;
     }

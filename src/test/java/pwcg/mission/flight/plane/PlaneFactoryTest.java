@@ -23,6 +23,7 @@ import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.NecessaryFlightType;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
@@ -54,8 +55,7 @@ public class PlaneFactoryTest
 
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.KG53_PROFILE.getSquadronId());
 
-        boolean isPlayerFlight = true;
-        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(mission, squadron, isPlayerFlight);
+        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(mission, squadron, NecessaryFlightType.PLAYER_FLIGHT);
 
         FlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.BOMB);
 
@@ -89,8 +89,7 @@ public class PlaneFactoryTest
 
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(20111052);
 
-        boolean isPlayerFlight = false;
-        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(mission, squadron, isPlayerFlight);
+        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(mission, squadron, NecessaryFlightType.PLAYER_FLIGHT);
 
         FlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.BOMB);
 

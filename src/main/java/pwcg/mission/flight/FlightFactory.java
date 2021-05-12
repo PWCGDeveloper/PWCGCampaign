@@ -40,8 +40,8 @@ public class FlightFactory
     public IFlight buildFlight(
     		Mission mission,
     		Squadron squadron,
-    		FlightTypes flightType,
-    		boolean isPlayerFlight) throws PWCGException 
+            FlightTypes flightType,
+            NecessaryFlightType necessaryFlightType) throws PWCGException 
     {
         IFlight flight = null;
         
@@ -144,7 +144,7 @@ public class FlightFactory
             throw new PWCGMissionGenerationException("Invalid flight type: " + flightType);
         }
 
-        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(mission, squadron, isPlayerFlight);
+        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(mission, squadron, necessaryFlightType);
         flight = flightPackage.createPackage(flightBuildInformation);
         
         return flight;
