@@ -56,7 +56,7 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
     @Override
     public void addEscort() throws PWCGException
     {
-        Squadron friendlyFighterSquadron = EscortSquadronSelector.getEscortSquadron(flight.getCampaign(), flight.getSquadron(), flight.getMission().getMissionSquadronRegistry());
+        Squadron friendlyFighterSquadron = EscortSquadronSelector.getEscortSquadron(flight.getCampaign(), flight.getSquadron(), flight.getMission().getMissionBorders().getCenter(), flight.getMission().getMissionSquadronRegistry());
         if (friendlyFighterSquadron != null)
         {
             FlightInformation vwpEscortFlightInformation = VirtualEscortFlightInformationBuilder.buildVirtualEscortFlightInformation(flight.getMission(), friendlyFighterSquadron);

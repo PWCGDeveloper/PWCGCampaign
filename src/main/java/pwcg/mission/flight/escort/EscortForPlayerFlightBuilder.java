@@ -34,7 +34,7 @@ public class EscortForPlayerFlightBuilder
 
     private IFlight createEscortForPlayerFlight(IFlight playerFlight) throws PWCGException 
     {
-        Squadron friendlyFighterSquadron = EscortSquadronSelector.getEscortSquadron(playerFlight.getCampaign(), playerFlight.getSquadron(), playerFlight.getMission().getMissionSquadronRegistry());
+        Squadron friendlyFighterSquadron = EscortSquadronSelector.getEscortSquadron(playerFlight.getCampaign(), playerFlight.getSquadron(), playerFlight.getMission().getMissionBorders().getCenter(), playerFlight.getMission().getMissionSquadronRegistry());
 
         if (friendlyFighterSquadron != null)
         {          

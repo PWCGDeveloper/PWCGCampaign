@@ -55,7 +55,7 @@ public class EscortedByPlayerFlightBuilder
     
     private Squadron determineSquadronToBeEscorted(Campaign campaign, Squadron escortSquadron) throws PWCGException
     {
-        Squadron escortedSquadron = EscortSquadronSelector.getEscortedSquadron(campaign, playerEscortFlightInformation.getSquadron());
+        Squadron escortedSquadron = EscortSquadronSelector.getEscortedSquadron(campaign, playerEscortFlightInformation.getSquadron(), playerEscortFlightInformation.getMission().getMissionBorders().getCenter());
 
         if (escortedSquadron == null)
         {

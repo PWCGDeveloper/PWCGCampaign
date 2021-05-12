@@ -38,7 +38,7 @@ public class SquadronManagerCurrentMapTest
 
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.RAF_184_PROFILE.getSquadronId());
         
-        Squadron nearbySquadron = EscortSquadronSelector.getEscortedSquadron(campaign, squadron);
+        Squadron nearbySquadron = EscortSquadronSelector.getEscortedSquadron(campaign, squadron, squadron.determineCurrentPosition(campaign.getDate()));
 
         assert(nearbySquadron != null);
         assert(nearbySquadron.determineSide() == Side.ALLIED);
@@ -54,7 +54,7 @@ public class SquadronManagerCurrentMapTest
 
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
                  
-        Squadron nearbySquadron = EscortSquadronSelector.getEscortSquadron(campaign, squadron, new MissionSquadronRegistry());
+        Squadron nearbySquadron = EscortSquadronSelector.getEscortSquadron(campaign, squadron, squadron.determineCurrentPosition(campaign.getDate()), new MissionSquadronRegistry());
         assert(nearbySquadron != null);
         assert(nearbySquadron.determineSide() == Side.AXIS);
         assert(nearbySquadron.getSquadronRoles().isSquadronThisRole(campaign.getDate(), Role.ROLE_FIGHTER) == true);
