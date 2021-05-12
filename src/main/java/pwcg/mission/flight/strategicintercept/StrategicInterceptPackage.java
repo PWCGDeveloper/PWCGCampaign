@@ -1,5 +1,6 @@
 package pwcg.mission.flight.strategicintercept;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
@@ -19,41 +20,34 @@ public class StrategicInterceptPackage implements IFlightPackage
 {
     private FlightInformation flightInformation;
     private TargetDefinition targetDefinition;
-
-    public StrategicInterceptPackage()
-    {
-    }
+    private List<IFlight> packageFlights = new ArrayList<>();
 
     @Override
-    public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
+    public List<IFlight> createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
         this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.STRATEGIC_INTERCEPT);
         this.targetDefinition = buildTargetDefintion();
 
-        List<IFlight> opposingFlights = makeOpposingFlights();
-        if (opposingFlights.isEmpty())
+        if (!flightInformation.isPlayerFlight())
         {
-            return null;
+            return packageFlights;
         }
+
+        List<IFlight> opposingFlights = makeOpposingFlights();
+        packageFlights.addAll(opposingFlights);
 
         resetFlightInformationAltitudeToMatchTargetFlightList(opposingFlights);
         StrategicInterceptFlight interceptFlight = createPlayerFlight(opposingFlights);
         FlightSpotterBuilder.createSpottersForStrategicIntercept(interceptFlight, opposingFlights);
 
-        return interceptFlight;
+        packageFlights.add(interceptFlight);
+        return packageFlights;
     }
 
     private StrategicInterceptFlight createPlayerFlight(List<IFlight> opposingFlights) throws PWCGException
     {
         StrategicInterceptFlight interceptFlight = new StrategicInterceptFlight (flightInformation, targetDefinition, opposingFlights.get(0));
         interceptFlight.createFlight();
-        if (flightInformation.isPlayerFlight())
-        {
-            for (IFlight opposingFlight: opposingFlights)
-            {
-                interceptFlight.getLinkedFlights().addLinkedFlight(opposingFlight);
-            }
-        }
         return interceptFlight;
     }
 

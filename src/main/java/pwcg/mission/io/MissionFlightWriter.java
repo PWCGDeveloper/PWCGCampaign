@@ -31,10 +31,6 @@ public class MissionFlightWriter
         for (IFlight flight : flights)
         {
             writeFlight(writer, flight);
-            for (IFlight linkedFlight : flight.getLinkedFlights().getLinkedFlights())
-            {
-                writeFlight(writer, linkedFlight);
-            }
         }
     }
 

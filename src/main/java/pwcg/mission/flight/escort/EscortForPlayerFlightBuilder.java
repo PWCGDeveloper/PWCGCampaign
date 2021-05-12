@@ -13,23 +13,20 @@ import pwcg.mission.target.TargetDefinition;
 
 public class EscortForPlayerFlightBuilder
 {
-    public void addEscort(Mission mission, IFlight escortedFlight) throws PWCGException 
+    public IFlight addEscort(Mission mission, IFlight escortedFlight) throws PWCGException 
     {
         if (mission.isNightMission())
         {
-            return;
+            return null;
         }
         
         if (!escortedFlight.getFlightInformation().isPlayerFlight())
         {
-            return;
+            return null;
         }
         
         IFlight escortFlight = createEscortForPlayerFlight(escortedFlight);
-        if (escortFlight != null)
-        {
-            escortedFlight.getLinkedFlights().addLinkedFlight(escortFlight);
-        }
+        return escortFlight;
     }
 
     private IFlight createEscortForPlayerFlight(IFlight playerFlight) throws PWCGException 

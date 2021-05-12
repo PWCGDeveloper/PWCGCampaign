@@ -1,5 +1,8 @@
 package pwcg.mission.flight.lonewolf;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformationFactory;
@@ -15,20 +18,19 @@ public class LoneWolfPackage implements IFlightPackage
 {
     private FlightInformation flightInformation;
     private TargetDefinition targetDefinition;
-
-    public LoneWolfPackage()
-    {
-    }
+    private List<IFlight> packageFlights = new ArrayList<>();
 
     @Override
-    public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
+    public List<IFlight> createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
         this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.LONE_WOLF);
         this.targetDefinition = buildTargetDefintion();
 
-        LoneWolfFlight patrolFlight = new LoneWolfFlight (flightInformation, targetDefinition);
-        patrolFlight.createFlight();
-        return patrolFlight;
+        LoneWolfFlight loneWolfFlight = new LoneWolfFlight (flightInformation, targetDefinition);
+        loneWolfFlight.createFlight();
+
+        packageFlights.add(loneWolfFlight);
+        return packageFlights;
     }
 
     private TargetDefinition buildTargetDefintion() throws PWCGException

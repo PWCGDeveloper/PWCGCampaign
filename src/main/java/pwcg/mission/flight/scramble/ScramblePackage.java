@@ -1,5 +1,8 @@
 package pwcg.mission.flight.scramble;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformation;
@@ -17,29 +20,30 @@ public class ScramblePackage implements IFlightPackage
 {
     private FlightInformation flightInformation;
     private TargetDefinition targetDefinition;
-
-    public ScramblePackage()
-    {
-    }
+    private List<IFlight> packageFlights = new ArrayList<>();
 
     @Override
-    public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
+    public List<IFlight> createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
         this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.SCRAMBLE);        
         this.targetDefinition = buildTargetDefintion();
 
+        IFlight scrambleFlight = null;
         if (flightBuildInformation.isPlayerFlight())
         {
             adjustAltitudeToMatchOpposingFlight();
             PlayerScrambleFlight playerFlight = createPlayerFlight();
             FlightSpotterBuilder.createSpotters(playerFlight, flightInformation);
-            return playerFlight;
+            scrambleFlight = playerFlight;
         }
         else
         {
             AiScrambleFlight aiFlight = createAiFlight();
-            return aiFlight;
+            scrambleFlight = aiFlight;
         }
+
+        packageFlights.add(scrambleFlight);
+        return packageFlights;
 	}
 
     private TargetDefinition buildTargetDefintion() throws PWCGException

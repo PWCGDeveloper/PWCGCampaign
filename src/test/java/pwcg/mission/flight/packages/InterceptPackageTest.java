@@ -14,14 +14,13 @@ import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBorderBuilder;
+import pwcg.mission.MissionFlights;
 import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.MissionProfile;
 import pwcg.mission.MissionSquadronFlightTypes;
-import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.NecessaryFlightType;
-import pwcg.mission.flight.intercept.InterceptPackage;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.PwcgTestBase;
@@ -44,18 +43,20 @@ public class InterceptPackageTest extends PwcgTestBase
     @Test
     public void playerPackageTest() throws PWCGException
     {
-        IFlight flight = buildFlight();
-        for (IFlight opposingFlight : flight.getLinkedFlights().getLinkedFlights())
-        {
-            verifyInterceptOpposingIsCloseToPlayer(flight, opposingFlight);        
-        }
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_26_PROFILE_WEST);
+        MissionFlights missionFlights = buildFlight(campaign);
+        
+        List<IFlight> opposingFlights = missionFlights.getNecessaryFlightsByType(NecessaryFlightType.OPPOSING_FLIGHT);
+        assert(opposingFlights.size() == 1);
+
+        IFlight playerFlight = missionFlights.getPlayerFlights().get(0);
+        verifyInterceptOpposingIsCloseToPlayer(playerFlight, opposingFlights.get(0));        
    }
 
-    private IFlight buildFlight() throws PWCGException
+    private MissionFlights buildFlight(Campaign campaign) throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_26_PROFILE_WEST);
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
-        
+
         Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
         MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.INTERCEPT, playerSquadron);
 
@@ -66,12 +67,7 @@ public class InterceptPackageTest extends PwcgTestBase
         mission.generate(playerFlightTypes);
 
         campaign.setCurrentMission(mission);
-
-        InterceptPackage flightPackage = new InterceptPackage(FlightTypes.INTERCEPT);
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_26_PROFILE_WEST.getSquadronId());
-        FlightBuildInformation flightBuildInformation = new FlightBuildInformation(mission, squadron, NecessaryFlightType.PLAYER_FLIGHT);
-        IFlight flight = flightPackage.createPackage(flightBuildInformation);
-        return flight;
+        return mission.getMissionFlights();
     }
 
     private void verifyInterceptOpposingIsCloseToPlayer(IFlight flight, IFlight opposingFlight)

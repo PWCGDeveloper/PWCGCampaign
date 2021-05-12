@@ -1,9 +1,12 @@
 package pwcg.mission.flight.validate;
 
+import java.util.List;
+
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
+import pwcg.mission.MissionFlights;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.escort.EscortForPlayerFlight;
+import pwcg.mission.flight.NecessaryFlightType;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
@@ -18,16 +21,25 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public class EscortForPlayerValidator 
 {
-    private IFlight playerFlight;
-    private EscortForPlayerFlight escortForPlayerFlight;
+    private MissionFlights missionFlights;
+    private IFlight playerFlight = null;
+    private IFlight escortForPlayerFlight = null;
 
-    public EscortForPlayerValidator (IFlight playerFlight)
+    public EscortForPlayerValidator (MissionFlights missionFlights) throws PWCGException
     {
-        this.playerFlight = playerFlight;
+        this.missionFlights = missionFlights;
+        this.playerFlight = missionFlights.getPlayerFlights().get(0);
+        
+        List<IFlight> escortForPlayerFlights = missionFlights.getNecessaryFlightsByType(NecessaryFlightType.PLAYER_ESCORT);
+        if (!escortForPlayerFlights.isEmpty())
+        {
+            escortForPlayerFlight = escortForPlayerFlights.get(0);
+        }
     }
     
     public void validateEscortForPlayer() throws PWCGException
     {
+        IFlight playerFlight = missionFlights.getPlayerFlights().get(0);
         if (playerFlight.getMission().isNightMission())
         {
             validateNoEscortForPlayer();
@@ -38,11 +50,10 @@ public class EscortForPlayerValidator
         }
     }
 
-
-    public void validateNoEscortForPlayer()
+    public void validateNoEscortForPlayer() throws PWCGException
     {
-        escortForPlayerFlight = playerFlight.getLinkedFlights().getEscortForPlayer();
         assert(escortForPlayerFlight == null);        
+        assert(playerFlight.getAssociatedFlight() == null);        
     }
 
     private void validatePlayerEscortFlight() throws PWCGException
@@ -89,11 +100,8 @@ public class EscortForPlayerValidator
 
     private void validateLinkedEscort()
     {
-        for (IFlight linkedFlight : playerFlight.getLinkedFlights().getLinkedFlights())
-        {
-            assert(linkedFlight instanceof EscortForPlayerFlight);
-            escortForPlayerFlight = (EscortForPlayerFlight)linkedFlight;    
-        }
+        assert(escortForPlayerFlight != null);        
+        assert(playerFlight.getAssociatedFlight() != null);        
     }
 
     private void validateEscortFlags() throws PWCGException

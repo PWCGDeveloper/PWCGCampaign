@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
@@ -35,7 +36,7 @@ public class SquadronReducer
     
     public static List<Squadron> reduceToSide(List<Squadron> squadrons, Side side) throws PWCGException
     {       
-        List<Squadron> squadronsForSide = new ArrayList<Squadron>();
+        List<Squadron> squadronsForSide = new ArrayList<>();
         for (Squadron squadron : squadrons)
         {
             if (side == squadron.determineSide())
@@ -48,7 +49,7 @@ public class SquadronReducer
 
     public static List<Squadron> reduceToCurrentMap(List<Squadron> squadrons, Date date) throws PWCGException 
     {
-        List<Squadron> squadronsForMap = new ArrayList<Squadron>();
+        List<Squadron> squadronsForMap = new ArrayList<>();
         for (Squadron squadron : squadrons)
         {
             Airfield field = squadron.determineCurrentAirfieldCurrentMap(date);
@@ -108,7 +109,7 @@ public class SquadronReducer
 
     public static List<Squadron> reduceToProximityOnCurrentMap(List<Squadron> squadrons, Date date, Coordinate referencePosition, double radius) throws PWCGException 
     {
-        List<Squadron> squadronsWithinRadius = new ArrayList<Squadron>();
+        List<Squadron> squadronsWithinRadius = new ArrayList<>();
         for (Squadron squadron : squadrons)
         {
             Coordinate squadronPosition = squadron.determineCurrentPosition(date);
@@ -121,10 +122,23 @@ public class SquadronReducer
 
         return squadronsWithinRadius;
     }
+
+    public static List<Squadron> sortByProximityOnCurrentMap(List<Squadron> squadrons, Date date, Coordinate referencePosition) throws PWCGException 
+    {
+        Map<Integer, Squadron> squadronsByProximity = new TreeMap<>();
+        for (Squadron squadron : squadrons)
+        {
+            Coordinate squadronPosition = squadron.determineCurrentPosition(date);
+            Double distanceFromReference = MathUtils.calcDist(referencePosition, squadronPosition);
+            squadronsByProximity.put(distanceFromReference.intValue(), squadron);
+        }
+
+        return new ArrayList<Squadron>(squadronsByProximity.values());
+    }
     
     public static List<Squadron> reduceToNoAnomalies(List<Squadron> squadrons, Date date) throws PWCGException
     {       
-        List<Squadron> squadronsWithoutAnomalies = new ArrayList<Squadron>();
+        List<Squadron> squadronsWithoutAnomalies = new ArrayList<>();
         for (Squadron squadron : squadrons)
         {
             if (!squadronIsAnomaly(squadron, date))

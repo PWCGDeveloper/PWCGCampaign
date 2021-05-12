@@ -5,10 +5,8 @@ import java.util.Collections;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronReducer;
@@ -45,10 +43,7 @@ public class EscortSquadronSelector
 
         List<Squadron> selectedSquadronsNoPlayer = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, side);
 
-        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        int squadronSearchRadius = productSpecific.getLargeMissionRadius();
-
-        List<Squadron> inRangeSquadrons = SquadronReducer.reduceToProximityOnCurrentMap(selectedSquadronsNoPlayer, campaign.getDate(), referenceCoordinate, squadronSearchRadius);
+        List<Squadron> inRangeSquadrons = SquadronReducer.sortByProximityOnCurrentMap(selectedSquadronsNoPlayer, campaign.getDate(), referenceCoordinate);
         return inRangeSquadrons;
     }
     

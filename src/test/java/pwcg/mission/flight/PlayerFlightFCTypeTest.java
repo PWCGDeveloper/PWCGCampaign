@@ -72,7 +72,7 @@ public class PlayerFlightFCTypeTest
         validateTargetDefinition(flight.getTargetDefinition());
         assert(flight.getFlightType() == FlightTypes.GROUND_ATTACK);
         
-        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getMissionFlights());
         playerEscortedFlightValidator.validateEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
         
@@ -98,7 +98,7 @@ public class PlayerFlightFCTypeTest
         assert(flight.getFlightType() == FlightTypes.BOMB);
         PlaneRtbValidator.verifyPlaneRtbDisabled(mission);
 
-        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getMissionFlights());
         playerEscortedFlightValidator.validateEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
         
@@ -224,7 +224,7 @@ public class PlayerFlightFCTypeTest
         assert (targetMissionPoint != null);
         PlaneRtbValidator.verifyPlaneRtbDisabled(mission);
 
-		PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator(flight);
+		PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator(mission.getMissionFlights());
 		escortFlightValidator.validateEscortFlight();
         assert(flight.getFlightType() == FlightTypes.ESCORT);
         PositionEvaluator.evaluateAiFlight(mission);

@@ -3,7 +3,6 @@ package pwcg.mission.flight.opposing;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
@@ -13,30 +12,19 @@ import pwcg.mission.flight.IFlight;
 
 public class AiOpposingFlightBuilder
 {
-    private Campaign campaign;
-    private Mission mission;
-    private MissionSquadronFlightTypes playerFlightTypes;
-    private List<IFlight> missionFlights = new ArrayList<IFlight>();
-
-    public AiOpposingFlightBuilder (Mission mission, MissionSquadronFlightTypes playerFlightTypes)
+    public static List<IFlight> createOpposingAiFlights(Mission mission, MissionSquadronFlightTypes playerFlightTypes) throws PWCGException 
     {
-        this.mission = mission;
-        this.campaign = mission.getCampaign();
-        this.playerFlightTypes = playerFlightTypes;
-    }
-    
-    public List<IFlight> createOpposingAiFlights() throws PWCGException 
-    {
+        List<IFlight> missionFlights = new ArrayList<IFlight>();
         for (Squadron playerSquadron : playerFlightTypes.getSquadrons())
         {
             FlightTypes playerFlightType = playerFlightTypes.getFlightTypeForSquadron(playerSquadron.getSquadronId());
-            IOpposingFlightBuilder opposingFlightBuilder = OpposingFlightBuilderFactory.buildFlightBuilderFactory(campaign, mission, playerSquadron, playerFlightType);
+            IOpposingFlightBuilder opposingFlightBuilder = OpposingFlightBuilderFactory.buildFlightBuilderFactory(mission, playerSquadron, playerFlightType);
             if (opposingFlightBuilder != null)
             {
-                IFlight flight = opposingFlightBuilder.createOpposingFlight();
+                List<IFlight> flight = opposingFlightBuilder.createOpposingFlight();
                 if (flight != null)
                 {
-                    missionFlights.add(flight);
+                    missionFlights.addAll(flight);
                 }
             }
         }

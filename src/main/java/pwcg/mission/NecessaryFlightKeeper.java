@@ -1,6 +1,5 @@
 package pwcg.mission;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
@@ -30,26 +29,18 @@ public class NecessaryFlightKeeper
     {
         PWCGLogger.log(LogLevel.DEBUG, "*** Necessary Flight Keeper Started ***: ");
 
-        keepPlayerFlights(playerFlights);
-        keepOpposingPlayerFlights(getAllAiFights());
-        keepLinkedPlayerFlights(playerFlights);
-        keepRequiredAlliedFlights();
-        keepRequiredAxisFlights();
+        keepNecessaryFlights(playerFlights);
+        keepNecessaryFlights(alliedAiFlightsByProximityToPlayer);
+        keepNecessaryFlights(axisAiFlightsByProximityToPlayer);
+        keepSkirmishAlliedFlights();
+        keepSkirmishAxisFlights();
     }
 
-    private List<IFlight> getAllAiFights()
-    {
-        List<IFlight> aiFlights = new ArrayList<>();
-        aiFlights.addAll(alliedAiFlightsByProximityToPlayer);
-        aiFlights.addAll(axisAiFlightsByProximityToPlayer);
-        return aiFlights;
-    }
-
-    private void keepPlayerFlights(List<IFlight> flights) throws PWCGException
+    private void keepNecessaryFlights(List<IFlight> flights) throws PWCGException
     {
         for (IFlight flight : flights)
         {
-            if (flight.isPlayerFlight())
+            if (flight.getFlightInformation().isNecessaryFlight())
             {
                 PWCGLogger.log(LogLevel.DEBUG, "Keep Player Flight: " + flight.getSquadron().determineDisplayName(flight.getCampaign().getDate()));
                 keptFlightsRecorder.keepFlight(flight);
@@ -57,39 +48,12 @@ public class NecessaryFlightKeeper
         }
     }
 
-    private void keepOpposingPlayerFlights(List<IFlight> flights) throws PWCGException
-    {
-        for (IFlight flight : flights)
-        {
-            if (flight.getFlightInformation().isOpposingFlight())
-            {
-                PWCGLogger.log(LogLevel.DEBUG, "Keep Opposing Flight: " + flight.getSquadron().determineDisplayName(flight.getCampaign().getDate()));
-                keptFlightsRecorder.keepFlight(flight);
-            }
-        }
-    }
-
-    private void keepLinkedPlayerFlights(List<IFlight> playerFlights) throws PWCGException
-    {
-        for (IFlight playerFlight : playerFlights)
-        {
-            if (playerFlight.isPlayerFlight())
-            {
-                for (IFlight linkedFlight : playerFlight.getLinkedFlights().getLinkedFlights())
-                {
-                    PWCGLogger.log(LogLevel.DEBUG, "Keep Linked Flight: " + linkedFlight.getSquadron().determineDisplayName(linkedFlight.getCampaign().getDate()));
-                    keptFlightsRecorder.keepFlight(linkedFlight);
-                }
-            }
-        }
-    }
-
-    private void keepRequiredAlliedFlights() throws PWCGException
+    private void keepSkirmishAlliedFlights() throws PWCGException
     {
         keepForSkirmish(alliedAiFlightsByProximityToPlayer);
     }
 
-    private void keepRequiredAxisFlights() throws PWCGException
+    private void keepSkirmishAxisFlights() throws PWCGException
     {
         keepForSkirmish(axisAiFlightsByProximityToPlayer);
     }

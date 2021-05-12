@@ -58,7 +58,7 @@ public class PlayerFlightTypeBoSAttackTest
             assert(plane.getPlanePayload().getSelectedPayloadId() > 0);
         }
         
-        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getMissionFlights());
         playerEscortedFlightValidator.validateEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
         

@@ -1,8 +1,10 @@
 package pwcg.mission.flight;
 
+import java.util.List;
+
 import pwcg.core.exception.PWCGException;
 
 public interface IFlightPackage
 {
-    IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException;
+    List<IFlight> createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException;
 }

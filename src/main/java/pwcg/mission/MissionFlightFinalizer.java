@@ -84,10 +84,6 @@ public class MissionFlightFinalizer
         for (IFlight flight : mission.getMissionFlights().getAllAerialFlights())
         {
             triggerOtherFlightCZFromPlayerFlight(flight);
-            for (IFlight linkedFlight : flight.getLinkedFlights().getLinkedFlights())
-            {
-                triggerOtherFlightCZFromPlayerFlight(linkedFlight);
-            }
         }
     }
 

@@ -1,7 +1,5 @@
 package pwcg.gui.rofmap.brief.builder;
 
-import java.util.List;
-
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.gui.rofmap.brief.model.BriefingFlightParameters;
@@ -89,10 +87,10 @@ public class BriefingFlightParametersBuilder
 	
     private void updateEscortWaypointsOnMap() throws PWCGException
     {
-    	List<McuWaypoint> escortedWaypoints = playerFlight.getLinkedFlights().getLinkedWaypoints().getAllWaypoints();
-	    if (escortedWaypoints != null)
+        IFlight escortedByPlayerFlight = playerFlight.getAssociatedFlight();
+        if (escortedByPlayerFlight != null)
 	    {
-	        for (McuWaypoint waypoint : escortedWaypoints)
+	        for (McuWaypoint waypoint : escortedByPlayerFlight.getWaypointPackage().getAllWaypoints())
 	        {
 	            if (waypoint.getWpAction() == WaypointAction.WP_ACTION_LANDING_APPROACH)
 	            {

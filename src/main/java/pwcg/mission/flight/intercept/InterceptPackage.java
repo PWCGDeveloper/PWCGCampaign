@@ -1,5 +1,8 @@
 package pwcg.mission.flight.intercept;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformation;
@@ -18,6 +21,7 @@ public class InterceptPackage implements IFlightPackage
     private FlightInformation flightInformation;
     private TargetDefinition targetDefinition;
     private FlightTypes flightType;
+    private List<IFlight> packageFlights = new ArrayList<>();
 
     public InterceptPackage(FlightTypes flightType)
     {
@@ -25,7 +29,7 @@ public class InterceptPackage implements IFlightPackage
     }
 
     @Override
-    public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
+    public List<IFlight> createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
         this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, flightType);
         this.targetDefinition = buildTargetDefintion();
@@ -39,7 +43,8 @@ public class InterceptPackage implements IFlightPackage
             FlightSpotterBuilder.createSpotters(interceptFlight, flightInformation);
         }
         
-        return interceptFlight;
+        packageFlights.add(interceptFlight);
+        return packageFlights;
     }
 
     private TargetDefinition buildTargetDefintion() throws PWCGException

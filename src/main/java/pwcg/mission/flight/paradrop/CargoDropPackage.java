@@ -1,5 +1,8 @@
 package pwcg.mission.flight.paradrop;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformation;
@@ -13,19 +16,19 @@ import pwcg.mission.target.TargetDefinition;
 
 public class CargoDropPackage implements IFlightPackage
 {
-    public CargoDropPackage()
-    {
-    }
+    private List<IFlight> packageFlights = new ArrayList<>();
 
     @Override
-    public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
+    public List<IFlight> createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
         FlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.CARGO_DROP);
         TargetDefinition targetDefinition = buildTargetDefintion(flightInformation);
 
         CargoDropFlight cargoDropFlight = new CargoDropFlight (flightInformation, targetDefinition);
         cargoDropFlight.createFlight();
-        return cargoDropFlight;
+
+        packageFlights.add(cargoDropFlight);
+        return packageFlights;
     }
 
     private TargetDefinition buildTargetDefintion(FlightInformation flightInformation) throws PWCGException

@@ -1,5 +1,8 @@
 package pwcg.mission.flight.bomb;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformation;
@@ -15,6 +18,7 @@ import pwcg.mission.target.TargetDefinitionBuilder;
 public class BombingPackage implements IFlightPackage
 {
     private FlightTypes flightType;
+    private List<IFlight> packageFlights = new ArrayList<>();
 
     public BombingPackage(FlightTypes flightType)
     {
@@ -22,7 +26,7 @@ public class BombingPackage implements IFlightPackage
     }
     
     @Override
-    public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
+    public List<IFlight> createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {        
         FlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, flightType);
         TargetDefinition targetDefinition = buildTargetDefinition(flightInformation);
@@ -30,11 +34,25 @@ public class BombingPackage implements IFlightPackage
         BombingFlight bombingFlight = new BombingFlight (flightInformation, targetDefinition);
         bombingFlight.createFlight();
         
-        AirfieldAttackScrambleFlightBuilder.addAirfieldScrambleToFlight(bombingFlight);
-
-        return bombingFlight;
+        IFlight scrambleFlight = addScrambleFlight(bombingFlight);
+        if (scrambleFlight != null)
+        {
+            packageFlights.add(scrambleFlight);
+        }
+        
+        packageFlights.add(bombingFlight);
+        return packageFlights;
     }
-    
+
+    private IFlight addScrambleFlight(IFlight flight) throws PWCGException
+    {
+        if (flight.isPlayerFlight())
+        {
+            return AirfieldAttackScrambleFlightBuilder.addAirfieldScrambleToFlight(flight);
+        }
+        return null;
+    }
+
     private TargetDefinition buildTargetDefinition(FlightInformation flightInformation) throws PWCGException
     {
         ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilder(flightInformation);

@@ -1,5 +1,8 @@
 package pwcg.mission.flight.balloonBust;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformation;
@@ -16,19 +19,22 @@ public class BalloonBustPackage implements IFlightPackage
 {
     private FlightInformation flightInformation;
     private TargetDefinition targetDefinition;
+    private List<IFlight> packageFlights = new ArrayList<>();
 
     public BalloonBustPackage()
     {
     }
 
     @Override
-    public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
+    public List<IFlight> createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
         this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.BALLOON_BUST);
         this.targetDefinition = buildTargetDefintion();
 
-        BalloonBustFlight balloonBustFlight = buildBalloonBustFlight();		
-		return balloonBustFlight;
+        BalloonBustFlight balloonBustFlight = buildBalloonBustFlight();
+        
+        packageFlights.add(balloonBustFlight);
+        return packageFlights;
 	}
 
     private BalloonBustFlight buildBalloonBustFlight() throws PWCGException

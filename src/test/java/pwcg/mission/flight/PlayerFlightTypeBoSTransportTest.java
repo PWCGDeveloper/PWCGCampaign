@@ -54,7 +54,7 @@ public class PlayerFlightTypeBoSTransportTest
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
         assert (flight.getFlightType() == FlightTypes.PARATROOP_DROP);
-        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getMissionFlights());
         playerEscortedFlightValidator.validateEscortForPlayer();
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
@@ -77,7 +77,7 @@ public class PlayerFlightTypeBoSTransportTest
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
         assert (flight.getFlightType() == FlightTypes.CARGO_DROP);
-        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getMissionFlights());
         playerEscortedFlightValidator.validateEscortForPlayer();
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
@@ -97,7 +97,7 @@ public class PlayerFlightTypeBoSTransportTest
         FlightActivateValidator.validate(flight);
 
         assert (flight.getFlightType() == FlightTypes.TRANSPORT);
-        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getMissionFlights());
         playerEscortedFlightValidator.validateNoEscortForPlayer();
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
@@ -121,7 +121,7 @@ public class PlayerFlightTypeBoSTransportTest
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
         assert (flight.getFlightType() == FlightTypes.BOMB);
-        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getMissionFlights());
         playerEscortedFlightValidator.validateEscortForPlayer();
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
@@ -144,7 +144,7 @@ public class PlayerFlightTypeBoSTransportTest
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
         assert (flight.getFlightType() == FlightTypes.LOW_ALT_BOMB);
-        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getMissionFlights());
         playerEscortedFlightValidator.validateEscortForPlayer();
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);

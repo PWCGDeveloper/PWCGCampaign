@@ -26,11 +26,11 @@ public class CAPOpposingFlightBuilder implements IOpposingFlightBuilder
     }
 
     @Override
-    public IFlight createOpposingFlight() throws PWCGException 
+    public List<IFlight> createOpposingFlight() throws PWCGException 
     {
         SimpleOpposingFlightFinisher opposingFlightFinisher = new SimpleOpposingFlightFinisher(campaign, mission, playerSquadron);
         List<Role> opposingFlightRoles = new ArrayList<>(Arrays.asList(Role.ROLE_ATTACK));
-        IFlight flight = opposingFlightFinisher.createOpposingFlights(FlightTypes.GROUND_ATTACK, opposingFlightRoles);
-        return flight;
+        List<IFlight> opposingFlights = opposingFlightFinisher.createOpposingFlights(FlightTypes.GROUND_ATTACK, opposingFlightRoles);
+        return opposingFlights;
     }
 }

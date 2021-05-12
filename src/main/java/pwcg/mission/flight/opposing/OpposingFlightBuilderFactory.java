@@ -1,6 +1,5 @@
 package pwcg.mission.flight.opposing;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
@@ -8,7 +7,7 @@ import pwcg.mission.flight.FlightTypes;
 
 public class OpposingFlightBuilderFactory
 {
-    public static IOpposingFlightBuilder buildFlightBuilderFactory(Campaign campaign, Mission mission, Squadron playerSquadron, FlightTypes playerFlightType) throws PWCGException
+    public static IOpposingFlightBuilder buildFlightBuilderFactory(Mission mission, Squadron playerSquadron, FlightTypes playerFlightType) throws PWCGException
     {
         if (playerFlightType == FlightTypes.BALLOON_BUST)
         {

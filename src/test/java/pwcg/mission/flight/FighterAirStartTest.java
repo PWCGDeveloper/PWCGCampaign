@@ -53,7 +53,7 @@ public class FighterAirStartTest
         assert(flight.getFlightType() == FlightTypes.PATROL);
         FlightActivateValidator.validate(flight);
         
-        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getMissionFlights());
         playerEscortedFlightValidator.validateNoEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
         

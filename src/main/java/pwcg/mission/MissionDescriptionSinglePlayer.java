@@ -10,7 +10,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.escort.EscortForPlayerFlight;
 import pwcg.mission.flight.objective.MissionObjectiveFactory;
 import pwcg.mission.options.MissionOptions;
 import pwcg.mission.options.MissionWeather;
@@ -145,10 +144,11 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 	private void setEscortedBy(IFlight playerFlight) throws PWCGException
 	{
         String escortedByText = "";
-        EscortForPlayerFlight escortForPlayerFlight = playerFlight.getLinkedFlights().getEscortForPlayer();
+        IFlight escortForPlayerFlight = playerFlight.getAssociatedFlight();
         if (escortForPlayerFlight != null)
         {
-            escortedByText = "Escorted by " + escortForPlayerFlight.getFlightPlanes().getFlightLeader().getDisplayName() + "s of " + escortForPlayerFlight.getSquadron().determineDisplayName(campaign.getDate());
+            escortedByText = "Escorted by " + escortForPlayerFlight.getFlightPlanes().getFlightLeader().getDisplayName() + "s of " + 
+                    escortForPlayerFlight.getSquadron().determineDisplayName(campaign.getDate());
         }
 	    
 	    descSinglePlayerTemplate = replace(descSinglePlayerTemplate, "<ESCORTED_BY>", escortedByText);

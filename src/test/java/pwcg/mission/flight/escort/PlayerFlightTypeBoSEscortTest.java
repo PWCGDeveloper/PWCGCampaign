@@ -39,7 +39,7 @@ public class PlayerFlightTypeBoSEscortTest
         PlayerIsEscortFlight flight = (PlayerIsEscortFlight) mission.getMissionFlights().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
-        PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator(flight);
+        PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator(mission.getMissionFlights());
         escortFlightValidator.validateEscortFlight();
         assert (flight.getFlightType() == FlightTypes.ESCORT);
         for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())

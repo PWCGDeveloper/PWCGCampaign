@@ -5,7 +5,6 @@ import java.util.Date;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.escort.EscortedByPlayerFlight;
 import pwcg.mission.flight.offensive.OffensiveFlight;
 import pwcg.mission.flight.recon.ReconFlight;
 import pwcg.mission.flight.transport.TransportFlight;
@@ -122,28 +121,33 @@ public class MissionObjectiveFactory
         return objective;
     }
 
-    private static String getEscortMissionObjective(IFlight flight, Date date) throws PWCGException 
+    private static String getEscortMissionObjective(IFlight playerFlight, Date date) throws PWCGException 
     {
-        EscortedByPlayerFlight escortedByPlayerFlight = flight.getLinkedFlights().getEscortedByPlayer();
-        MissionPoint rendezvousPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_RENDEZVOUS);
-        String rendezvousName =  MissionObjectiveLocation.formMissionObjectiveLocation(rendezvousPoint.getPosition());
-        String objectiveName =  MissionObjectiveLocation.formMissionObjectiveLocation(escortedByPlayerFlight.getTargetDefinition().getPosition().copy());
-
-        String objective = "Rendezvous with " + escortedByPlayerFlight.getFlightPlanes().getFlightLeader().getDisplayName() + "s of " + escortedByPlayerFlight.getSquadron().determineDisplayName(date);
-        if (!rendezvousName.isEmpty())
+        IFlight escortedByPlayerFlight = playerFlight.getAssociatedFlight();
+        if (escortedByPlayerFlight != null)
         {
-            objective += rendezvousName;
+            MissionPoint rendezvousPoint = playerFlight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_RENDEZVOUS);
+            String rendezvousName =  MissionObjectiveLocation.formMissionObjectiveLocation(rendezvousPoint.getPosition());
+            String objectiveName =  MissionObjectiveLocation.formMissionObjectiveLocation(escortedByPlayerFlight.getTargetDefinition().getPosition().copy());
+    
+            String objective = "Rendezvous with " + escortedByPlayerFlight.getFlightPlanes().getFlightLeader().getDisplayName() + "s of " + escortedByPlayerFlight.getSquadron().determineDisplayName(date);
+            if (!rendezvousName.isEmpty())
+            {
+                objective += rendezvousName;
+            }
+            objective += ". Escort them to ";
+            if (!objectiveName.isEmpty())
+            {
+                objective += "the location" + objectiveName + ".";
+            } else {
+                objective += "the specified location.";
+            }
+            objective += " Accompany them until they cross our lines.";
+    
+            return objective;
         }
-        objective += ". Escort them to ";
-        if (!objectiveName.isEmpty())
-        {
-            objective += "the location" + objectiveName + ".";
-        } else {
-            objective += "the specified location.";
-        }
-        objective += " Accompany them until they cross our lines.";
-
-        return objective;
+        
+        throw new PWCGException("No escorted flight for escort mission");
     }
 
     private static String getInterceptMissionObjective(IFlight flight) throws PWCGException 

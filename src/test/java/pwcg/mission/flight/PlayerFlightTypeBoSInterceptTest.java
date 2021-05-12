@@ -73,15 +73,12 @@ public class PlayerFlightTypeBoSInterceptTest
 	
         assert (playerFlight.getFlightType() == FlightTypes.STRATEGIC_INTERCEPT);
 
-        List<IFlight> randomAiFlights = mission.getMissionFlights().getAiFlights();
-        assert (randomAiFlights.size() == expectedFlights);
-
-        List<IFlight> linkedAiFlights = playerFlight.getLinkedFlights().getLinkedFlights();
-        assert (!linkedAiFlights.isEmpty());
+        List<IFlight> aiFlights = mission.getMissionFlights().getAiFlights();
+        assert (aiFlights.size() == expectedFlights);
 
         int actualBombers = 0;
         int actualEscorts = 0;
-        for (IFlight aiFlight : linkedAiFlights)
+        for (IFlight aiFlight : aiFlights)
         {
             if (aiFlight.getFlightType() == FlightTypes.STRATEGIC_BOMB)
             {

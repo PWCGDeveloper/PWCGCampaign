@@ -1,5 +1,8 @@
 package pwcg.mission.flight.artySpot;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.FlightBuildInformation;
@@ -16,19 +19,21 @@ public class ArtillerySpotPackage implements IFlightPackage
 {
     private FlightInformation flightInformation;
     private TargetDefinition targetDefinition;
+    private List<IFlight> packageFlights = new ArrayList<>();
 
     public ArtillerySpotPackage()
     {
     }
 
     @Override
-    public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
+    public List<IFlight> createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
         this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.ARTILLERY_SPOT);
         this.targetDefinition = buildTargetDefintion();
         
         IFlight artySpot = createFlight();
-		return artySpot;
+        packageFlights.add(artySpot);
+		return packageFlights;
 	}
 
     private IFlight createFlight() throws PWCGException

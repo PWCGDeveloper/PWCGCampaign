@@ -1,5 +1,6 @@
 package pwcg.mission.flight.opposing;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -27,18 +28,14 @@ public class SimpleOpposingFlightFinisher
         this.playerSquadron = playerSquadron;
     }
 
-    public IFlight createOpposingFlights(FlightTypes opposingFlightType, List<Role> opposingFlightRoles) throws PWCGException 
+    public List<IFlight> createOpposingFlights(FlightTypes opposingFlightType, List<Role> opposingFlightRoles) throws PWCGException 
     {
         Squadron opposingSquadron = determineOpposingSquadron(opposingFlightRoles);
         if (opposingSquadron != null)
         {
-            IFlight flight = buildFlight(opposingFlightType, opposingSquadron);
-            if (flight != null)
-            {
-                return flight;
-            }
+            return buildFlight(opposingFlightType, opposingSquadron);
         }
-        return null;
+        return new ArrayList<>();
     }
 
     private Squadron determineOpposingSquadron(List<Role> opposingFlightRoles) throws PWCGException
@@ -53,10 +50,10 @@ public class SimpleOpposingFlightFinisher
         return null;
     }
     
-    private IFlight buildFlight(FlightTypes opposingFlightType, Squadron opposingSquadron) throws PWCGException
+    private List<IFlight> buildFlight(FlightTypes opposingFlightType, Squadron opposingSquadron) throws PWCGException
     {
         FlightFactory flightFactory = new FlightFactory(campaign);
-        IFlight flight = flightFactory.buildFlight(mission, opposingSquadron, opposingFlightType, NecessaryFlightType.OPPOSING_FLIGHT);
-        return flight;
+        List<IFlight> flights = flightFactory.buildFlight(mission, opposingSquadron, opposingFlightType, NecessaryFlightType.OPPOSING_FLIGHT);
+        return flights;
     }
 }

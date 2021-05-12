@@ -1,11 +1,13 @@
 package pwcg.mission.flight.validate;
 
+import java.util.List;
+
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
+import pwcg.mission.MissionFlights;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.escort.EscortedByPlayerFlight;
-import pwcg.mission.flight.escort.PlayerIsEscortFlight;
+import pwcg.mission.flight.NecessaryFlightType;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
@@ -18,12 +20,18 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public class PlayerEscortFlightValidator
 {
-    private PlayerIsEscortFlight playerFlight;
-    private EscortedByPlayerFlight escortedFlight;
+    private IFlight playerFlight;
+    private IFlight escortedFlight;
 
-    public PlayerEscortFlightValidator(PlayerIsEscortFlight playerFlight)
+    public PlayerEscortFlightValidator(MissionFlights missionFlights) throws PWCGException
     {
-        this.playerFlight = playerFlight;
+        this.playerFlight = missionFlights.getPlayerFlights().get(0);
+        
+        List<IFlight> escortForPlayerFlights = missionFlights.getNecessaryFlightsByType(NecessaryFlightType.PLAYER_ESCORTED);
+        if (!escortForPlayerFlights.isEmpty())
+        {
+            escortedFlight = escortForPlayerFlights.get(0);
+        }
     }
 
     public void validateEscortFlight() throws PWCGException
@@ -38,11 +46,8 @@ public class PlayerEscortFlightValidator
 
     private void validateEscortedFlight() throws PWCGException
     {
-        for (IFlight unit : playerFlight.getLinkedFlights().getLinkedFlights())
-        {
-            assert (unit instanceof EscortedByPlayerFlight);
-            escortedFlight = (EscortedByPlayerFlight) unit;
-        }
+        assert(escortedFlight != null);        
+        assert(playerFlight.getAssociatedFlight() != null);        
 
         assert (escortedFlight != null);
         assert (escortedFlight.getFlightInformation().isVirtual() == false);

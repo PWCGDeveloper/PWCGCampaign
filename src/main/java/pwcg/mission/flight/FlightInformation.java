@@ -73,20 +73,16 @@ public class FlightInformation
         this.flightType = flightType;
         this.formationType = FormationTypeCalculator.calculateFormationType(flightType);
     }
+    
+    public boolean isNecessaryFlight()
+    {
+        return (necessaryFlightType != NecessaryFlightType.NONE);
+    }
+
 
     public boolean isPlayerFlight()
     {
         return (necessaryFlightType == NecessaryFlightType.PLAYER_FLIGHT);
-    }
-
-    public boolean isEscortedByPlayerFlight()
-    {
-        return (necessaryFlightType == NecessaryFlightType.PLAYER_ESCORTED);
-    }
-
-    public boolean isEscortForPlayerFlight()
-    {
-        return (necessaryFlightType == NecessaryFlightType.PLAYER_ESCORT);
     }
 
     public boolean isOpposingFlight()
@@ -107,7 +103,10 @@ public class FlightInformation
     public boolean isVirtual()
     {
         boolean isVirtual = true;
-        if ((necessaryFlightType != NecessaryFlightType.NONE) || isAiTriggeredTakeoff)
+        if (necessaryFlightType == NecessaryFlightType.PLAYER_ESCORT ||
+            necessaryFlightType == NecessaryFlightType.PLAYER_ESCORTED ||
+            necessaryFlightType == NecessaryFlightType.PLAYER_FLIGHT ||
+            isAiTriggeredTakeoff)
         {
             isVirtual = false;
         }
@@ -254,5 +253,10 @@ public class FlightInformation
     public void setAiTriggeredTakeoff(boolean isAiTriggeredTakeoff)
     {
         this.isAiTriggeredTakeoff = isAiTriggeredTakeoff;
+    }
+
+    public NecessaryFlightType getNecessaryFlightType()
+    {
+        return necessaryFlightType;
     }
 }

@@ -12,6 +12,7 @@ Rewrite of strategic intercept
 Included more airfield and city blocks as targets to make airfield and city attacks more likely to trigger.
 Expanded structure inclusion box to encompass the flight path of all human players.
 Allowed possibility to escort bombers or ground attack
+Added enemy scrambles to escort missions when the escorted flight is attacking an airfield
 Fixed incorrect (low) altitude of ingress waypoint on strategic intercept and transport missions
 Fixed spelling of opportunity in mission briefing
 FIxed missing plane codes.

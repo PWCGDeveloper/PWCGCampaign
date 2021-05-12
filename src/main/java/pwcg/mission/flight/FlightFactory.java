@@ -1,5 +1,7 @@
 package pwcg.mission.flight;
 
+import java.util.List;
+
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -37,14 +39,12 @@ public class FlightFactory
         this.campaign = campaign;
     }
     
-    public IFlight buildFlight(
+    public List<IFlight> buildFlight(
     		Mission mission,
     		Squadron squadron,
             FlightTypes flightType,
             NecessaryFlightType necessaryFlightType) throws PWCGException 
-    {
-        IFlight flight = null;
-        
+    {        
         if (flightType == FlightTypes.ANY)
         {
             throw new PWCGException("No flight type determined at build process");
@@ -145,8 +145,8 @@ public class FlightFactory
         }
 
         FlightBuildInformation flightBuildInformation = new FlightBuildInformation(mission, squadron, necessaryFlightType);
-        flight = flightPackage.createPackage(flightBuildInformation);
+        List<IFlight> packageFlights = flightPackage.createPackage(flightBuildInformation);
         
-        return flight;
+        return packageFlights;
     }
 }

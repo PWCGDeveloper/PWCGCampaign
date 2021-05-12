@@ -16,7 +16,7 @@ public class AirfieldAttackScrambleFlightBuilder
     private Mission mission;
     private TargetDefinition targetDefinition;
 
-    public static void addAirfieldScrambleToFlight(IFlight flight) throws PWCGException
+    public static IFlight addAirfieldScrambleToFlight(IFlight flight) throws PWCGException
     {
         if (flight.isPlayerFlight())
         {
@@ -26,13 +26,12 @@ public class AirfieldAttackScrambleFlightBuilder
                 {
                     AirfieldAttackScrambleFlightBuilder scrambleFlightBuilder = new AirfieldAttackScrambleFlightBuilder(flight);
                     IFlight opposingScrambleFlight = scrambleFlightBuilder.createOpposingFlight();
-                    if (opposingScrambleFlight != null)
-                    {
-                        flight.getLinkedFlights().addLinkedFlight(opposingScrambleFlight);
-                    }
+                    return opposingScrambleFlight;
                 }
             }
         }
+        
+        return null;
 
     }
     

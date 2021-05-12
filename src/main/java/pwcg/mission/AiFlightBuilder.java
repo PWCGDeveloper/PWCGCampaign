@@ -8,8 +8,6 @@ import pwcg.campaign.factory.PWCGFlightTypeAbstractFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.PWCGLogger;
-import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.flight.FlightFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
@@ -48,14 +46,10 @@ public class AiFlightBuilder
             flightType = NightFlightTypeConverter.getFlightType(flightType, mission.isNightMission());
             flightType = WeatherFlightTypeConverter.getFlightType(flightType, missionWeather);
 
-            IFlight flight = buildFlight(flightType, squadron);
-            if (flight != null)
+            List<IFlight> flights = buildFlight(flightType, squadron);
+            for (IFlight flight : flights)
             {
                 missionFlights.add(flight);
-            }
-            else
-            {
-                PWCGLogger.log(LogLevel.DEBUG, "Failed to generate a flight for : " + squadron.determineDisplayName(campaign.getDate()));
             }
         }
         return missionFlights;
@@ -69,11 +63,11 @@ public class AiFlightBuilder
         return flightType;
     }
 
-    private IFlight buildFlight(FlightTypes flightType, Squadron squadron) throws PWCGException
+    private List<IFlight> buildFlight(FlightTypes flightType, Squadron squadron) throws PWCGException
     {
         FlightFactory flightFactory = new FlightFactory(campaign);
-        IFlight flight = flightFactory.buildFlight(mission, squadron, flightType, NecessaryFlightType.NONE);
-        return flight;        
+        List<IFlight> flights = flightFactory.buildFlight(mission, squadron, flightType, NecessaryFlightType.NONE);
+        return flights;        
     }
 
     

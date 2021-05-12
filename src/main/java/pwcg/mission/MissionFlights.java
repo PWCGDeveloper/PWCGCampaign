@@ -13,6 +13,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypeCategory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.NecessaryFlightType;
 import pwcg.mission.flight.plane.PlaneMcu;
 
 public class MissionFlights
@@ -91,6 +92,20 @@ public class MissionFlights
 
         return playerFlightsForSide;
     }
+    
+    public List<IFlight> getNecessaryFlightsByType(NecessaryFlightType necessaryFlightType) throws PWCGException
+    {
+        List<IFlight> necessaryFlights = new ArrayList<IFlight>();
+        for (IFlight flight : this.getAllAerialFlights())
+        {
+            if (flight.getFlightInformation().getNecessaryFlightType() == necessaryFlightType)
+            {
+                necessaryFlights.add(flight);
+            }
+        }
+
+        return necessaryFlights;
+    }
 
     public List<IFlight> getAllAerialFlights()
     {
@@ -105,15 +120,6 @@ public class MissionFlights
                 {
                     allFlights.add((IFlight) flight);
                     flightIds.add(flight.getFlightId());
-                }
-            }
-
-            for (IFlight linkedFlight : flight.getLinkedFlights().getLinkedFlights())
-            {
-                if (!flightIds.contains(linkedFlight.getFlightId()))
-                {
-                    allFlights.add((IFlight) linkedFlight);
-                    flightIds.add(linkedFlight.getFlightId());
                 }
             }
         }

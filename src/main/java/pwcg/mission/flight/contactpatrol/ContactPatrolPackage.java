@@ -1,5 +1,8 @@
 package pwcg.mission.flight.contactpatrol;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformationFactory;
@@ -13,20 +16,19 @@ import pwcg.mission.target.TargetDefinitionBuilder;
 
 public class ContactPatrolPackage implements IFlightPackage
 {
-    public ContactPatrolPackage()
-    {
-    }
-
+    private List<IFlight> packageFlights = new ArrayList<>();
 
     @Override
-    public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
+    public List<IFlight> createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {        
         FlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.CONTACT_PATROL);
         TargetDefinition targetDefinition = buildTargetDefinition(flightInformation);
         
         ContactPatrolFlight contactPatrol = new ContactPatrolFlight (flightInformation, targetDefinition);
         contactPatrol.createFlight();
-        return contactPatrol;
+        
+        packageFlights.add(contactPatrol);
+        return packageFlights;
     }
     
     private TargetDefinition buildTargetDefinition(FlightInformation flightInformation) throws PWCGException

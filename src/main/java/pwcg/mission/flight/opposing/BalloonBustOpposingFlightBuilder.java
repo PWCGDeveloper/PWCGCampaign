@@ -26,11 +26,11 @@ public class BalloonBustOpposingFlightBuilder implements IOpposingFlightBuilder
     }
 
     @Override
-    public IFlight createOpposingFlight() throws PWCGException 
+    public List<IFlight> createOpposingFlight() throws PWCGException 
     {
         SimpleOpposingFlightFinisher opposingFlightFinisher = new SimpleOpposingFlightFinisher(campaign, mission, playerSquadron);
         List<Role> opposingFlightRoles = new ArrayList<>(Arrays.asList(Role.ROLE_FIGHTER));
-        IFlight flight = opposingFlightFinisher.createOpposingFlights(FlightTypes.BALLOON_DEFENSE, opposingFlightRoles);
-        return flight;
+        List<IFlight> opposingFlights = opposingFlightFinisher.createOpposingFlights(FlightTypes.BALLOON_DEFENSE, opposingFlightRoles);
+        return opposingFlights;
     }
 }

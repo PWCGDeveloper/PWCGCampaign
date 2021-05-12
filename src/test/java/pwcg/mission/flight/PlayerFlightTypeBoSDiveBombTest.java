@@ -55,7 +55,7 @@ public class PlayerFlightTypeBoSDiveBombTest
         assert (flight.getFlightType() == FlightTypes.DIVE_BOMB);
         
         PositionEvaluator.evaluateAiFlight(mission);
-        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getMissionFlights());
         playerEscortedFlightValidator.validateEscortForPlayer();
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);

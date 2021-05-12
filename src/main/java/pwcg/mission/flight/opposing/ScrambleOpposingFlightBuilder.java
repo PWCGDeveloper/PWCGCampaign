@@ -1,6 +1,7 @@
 package pwcg.mission.flight.opposing;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
@@ -30,23 +31,31 @@ public class ScrambleOpposingFlightBuilder implements IOpposingFlightBuilder
     }
 
     @Override
-    public IFlight createOpposingFlight() throws PWCGException
+    public List<IFlight> createOpposingFlight() throws PWCGException
     {
         ScrambleOpposingFlightSquadronChooser opposingFlightSquadronChooser = new ScrambleOpposingFlightSquadronChooser(campaign, playerSquadron.determineEnemySide());
         Squadron opposingSquadron = opposingFlightSquadronChooser.getOpposingSquadrons();            
-        return createOpposingFlight(opposingSquadron);
+        IFlight scrambleOpposingFlight =  createOpposingFlight(opposingSquadron);
+        if (scrambleOpposingFlight != null)
+        {
+            return Arrays.asList(scrambleOpposingFlight);
+        }
+        else
+        {
+            return new ArrayList<>();
+        }
     }
 
     private IFlight createOpposingFlight(Squadron opposingSquadron) throws PWCGException
     {
-        IFlight ScrambleOpposingFlight = null;
+        IFlight scrambleOpposingFlight = null;
         String opposingFieldName = opposingSquadron.determineCurrentAirfieldName(campaign.getDate());
         if (opposingFieldName != null)
         {
-            ScrambleOpposingFlight = buildOpposingFlight(opposingSquadron);
+            scrambleOpposingFlight = buildOpposingFlight(opposingSquadron);
         }
         
-        return ScrambleOpposingFlight;
+        return scrambleOpposingFlight;
     }
 
     private IFlight buildOpposingFlight(Squadron opposingSquadron) throws PWCGException 
@@ -75,7 +84,7 @@ public class ScrambleOpposingFlightBuilder implements IOpposingFlightBuilder
         opposingFlight.createFlight();
         return opposingFlight;        
     }
-    
+
     private FlightTypes getFlightType(Squadron opposingSquadron) throws PWCGException
     {
         List<FlightTypes> possibleOpposingFlightTypes = new ArrayList<>();

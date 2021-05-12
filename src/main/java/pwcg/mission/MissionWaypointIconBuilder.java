@@ -9,7 +9,7 @@ import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.escort.EscortedByPlayerFlight;
+import pwcg.mission.flight.NecessaryFlightType;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.mcu.McuIcon;
@@ -61,13 +61,13 @@ public class MissionWaypointIconBuilder
             waypointIcons.add(icon);
 
             if (waypoint.getWpAction() == WaypointAction.WP_ACTION_RENDEZVOUS)
-            {
-                EscortedByPlayerFlight escortedFlight = playerFlight.getLinkedFlights().getEscortedByPlayer();
-                if (escortedFlight != null)
+            {                
+                IFlight escortedByPlayerFlight = playerFlight.getAssociatedFlight();
+                if (escortedByPlayerFlight != null && escortedByPlayerFlight.getFlightInformation().getNecessaryFlightType() == NecessaryFlightType.PLAYER_ESCORTED)
                 {
                     boolean foundRendezvous = false;
 
-                    for (McuWaypoint escortWaypoint : escortedFlight.getWaypointPackage().getAllWaypoints())
+                    for (McuWaypoint escortWaypoint : escortedByPlayerFlight.getWaypointPackage().getAllWaypoints())
                     {
                         if (escortWaypoint.getWpAction() == WaypointAction.WP_ACTION_LANDING_APPROACH)
                         {
@@ -94,8 +94,8 @@ public class MissionWaypointIconBuilder
 
                         if (escortWaypoint.getWpAction() == WaypointAction.WP_ACTION_TARGET_FINAL)
                         {
-                            MissionPoint target = escortedFlight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_ATTACK);
-                            icon = McuIconFactory.buildWaypointActionIcon(WaypointAction.WP_ACTION_ATTACK, target, escortedFlight.getFlightInformation().getCountry().getSide());
+                            MissionPoint target = escortedByPlayerFlight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_ATTACK);
+                            icon = McuIconFactory.buildWaypointActionIcon(WaypointAction.WP_ACTION_ATTACK, target, escortedByPlayerFlight.getFlightInformation().getCountry().getSide());
                             icon.setName("Escort " + icon.getName());
                             if (productSpecificConfiguration.usePosition1()) {
                                 prevIcon.setLineType(McuIconLineType.ICON_LINE_TYPE_POSITION2);

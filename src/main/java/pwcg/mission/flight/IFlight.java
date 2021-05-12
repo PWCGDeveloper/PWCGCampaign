@@ -29,8 +29,6 @@ public interface IFlight
 
     IWaypointPackage getWaypointPackage();
 
-    LinkedFlights getLinkedFlights();
-
     Coordinate getFlightHomePosition() throws PWCGException;
 
     IFlightPlayerContact getFlightPlayerContact();
@@ -56,4 +54,8 @@ public interface IFlight
     TargetDefinition getTargetDefinition();
 
     void addVirtualEscort() throws PWCGException;
+
+    void setAssociatedFlight(IFlight associatedFlight);
+
+    IFlight getAssociatedFlight();
 }

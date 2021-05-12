@@ -1,5 +1,8 @@
 package pwcg.mission.flight.bomb;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformationFactory;
@@ -17,13 +20,15 @@ import pwcg.mission.target.TargetDefinitionBuilderStrategic;
 
 public class StrategicBombingPackage implements IFlightPackage
 {
+    private List<IFlight> packageFlights = new ArrayList<>();
+
     public StrategicBombingPackage()
     {
     }
     
     
     @Override
-    public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
+    public List<IFlight> createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {        
         FlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.STRATEGIC_BOMB);
         TargetDefinition targetDefinition = buildTargetDefinition(flightInformation);
@@ -34,7 +39,8 @@ public class StrategicBombingPackage implements IFlightPackage
         createAAA(flightInformation, targetDefinition, bombingFlight);
         createSearchlight(flightInformation, targetDefinition, bombingFlight);
 
-        return bombingFlight;
+        packageFlights.add(bombingFlight);
+        return packageFlights;
     }
     
     private TargetDefinition buildTargetDefinition(FlightInformation flightInformation) throws PWCGException

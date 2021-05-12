@@ -1,5 +1,7 @@
 package pwcg.mission.flight;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -58,7 +60,7 @@ public class PlayerFlightTypeBoSFighterTest
 		patrolFlightValidator.validatePatrolFlight(flight);
         assert(flight.getFlightType() == FlightTypes.PATROL);
         FlightActivateValidator.validate(flight);
-        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getMissionFlights());
         playerEscortedFlightValidator.validateNoEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
         
@@ -83,7 +85,7 @@ public class PlayerFlightTypeBoSFighterTest
         patrolFlightValidator.validatePatrolFlight(flight);
         assert(flight.getFlightType() == FlightTypes.INTERCEPT);
         FlightActivateValidator.validate(flight);
-        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getMissionFlights());
         playerEscortedFlightValidator.validateNoEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
         
@@ -110,7 +112,7 @@ public class PlayerFlightTypeBoSFighterTest
         assert(flight.getFlightType() == FlightTypes.STRATEGIC_INTERCEPT);
         FlightActivateValidator.validate(flight);
         
-        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getMissionFlights());
         playerEscortedFlightValidator.validateNoEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
         
@@ -137,7 +139,7 @@ public class PlayerFlightTypeBoSFighterTest
         assert(flight.getFlightType() == FlightTypes.OFFENSIVE);
         
         FlightActivateValidator.validate(flight);
-        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getMissionFlights());
         playerEscortedFlightValidator.validateNoEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
         
@@ -158,14 +160,16 @@ public class PlayerFlightTypeBoSFighterTest
         assert (targetMissionPoint != null);
         PlaneRtbValidator.verifyPlaneRtbEnabled(mission);
 
-		PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator(flight);
+		PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator(mission.getMissionFlights());
 		escortFlightValidator.validateEscortFlight();
         assert(flight.getFlightType() == FlightTypes.ESCORT);
         FlightActivateValidator.validate(flight);
-        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
-        playerEscortedFlightValidator.validateNoEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
-        
+
+        List<IFlight> playerEscortedFlight = mission.getMissionFlights().getNecessaryFlightsByType(NecessaryFlightType.PLAYER_ESCORTED);
+        assert(playerEscortedFlight != null);        
+        assert(flight.getAssociatedFlight() != null);        
+
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
 
@@ -187,7 +191,7 @@ public class PlayerFlightTypeBoSFighterTest
         patrolFlightValidator.validatePatrolFlight(flight);
         assert(flight.getFlightType() == FlightTypes.SCRAMBLE);        
         FlightActivateValidator.validate(flight);
-        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getMissionFlights());
         playerEscortedFlightValidator.validateNoEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
         

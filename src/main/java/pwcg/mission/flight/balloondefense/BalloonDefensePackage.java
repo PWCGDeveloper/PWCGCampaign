@@ -1,5 +1,8 @@
  package pwcg.mission.flight.balloondefense;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformation;
@@ -16,19 +19,21 @@ public class BalloonDefensePackage implements IFlightPackage
 {
     private FlightInformation flightInformation;
     private TargetDefinition targetDefinition;
+    private List<IFlight> packageFlights = new ArrayList<>();
 
     public BalloonDefensePackage()
     {
     }
 
     @Override
-    public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
+    public List<IFlight> createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
         this.flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.BALLOON_DEFENSE);
         this.targetDefinition = buildTargetDefintion();
 
         IFlight balloonDefenseFlight = buildBalloonDefenseFllght();
-		return balloonDefenseFlight;
+        packageFlights.add(balloonDefenseFlight);
+		return packageFlights;
 	}
 
     private IFlight buildBalloonDefenseFllght() throws PWCGException

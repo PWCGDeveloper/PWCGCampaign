@@ -23,11 +23,11 @@ public abstract class Flight implements IFlight
 {
     private FlightInformation flightInformation;
     private FlightPlanes flightPlanes;
-    private LinkedFlights linkedFlights = new LinkedFlights();
     private FlightPlayerContact flightPlayerContact = new FlightPlayerContact();
     private IWaypointPackage waypointPackage;
     private VirtualWaypointPackage virtualWaypointPackage;
     private TargetDefinition targetDefinition;
+    private IFlight associatedFlight = null;
     private int index = IndexGenerator.getInstance().getNextIndex();
 
     public Flight(FlightInformation flightInformation, TargetDefinition targetDefinition)
@@ -106,11 +106,6 @@ public abstract class Flight implements IFlight
         return waypointPackage;
     }
 
-    public LinkedFlights getLinkedFlights()
-    {
-        return linkedFlights;
-    }
-
     public Coordinate getFlightHomePosition() throws PWCGException
     {
         return flightInformation.getFlightHomePosition();
@@ -131,7 +126,6 @@ public abstract class Flight implements IFlight
     {
         finalizeCoreFlight();        
         finalizeWingmenForFlight();
-        finalizeLinkedFlights();
         finalizeSkinsForFlight();
         finalizeVirtualFlight();        
     }
@@ -161,14 +155,6 @@ public abstract class Flight implements IFlight
             virtualWaypointPackage.buildVirtualWaypoints();
             virtualWaypointPackage.addDelayForPlayerDelay(flightInformation.getMission());
          }
-    }
-
-    private void finalizeLinkedFlights() throws PWCGException
-    {
-        for (IFlight linkedFlight : linkedFlights.getLinkedFlights())
-        {
-            linkedFlight.finalizeFlight();
-        }
     }
 
     private void finalizeSkinsForFlight() throws PWCGException
@@ -240,5 +226,17 @@ public abstract class Flight implements IFlight
     public TargetDefinition getTargetDefinition()
     {
         return targetDefinition;
+    }    
+
+    @Override
+    public void setAssociatedFlight(IFlight associatedFlight)
+    {
+        this.associatedFlight = associatedFlight;;
+    }    
+
+    @Override
+    public IFlight getAssociatedFlight()
+    {
+        return associatedFlight;
     }    
 }

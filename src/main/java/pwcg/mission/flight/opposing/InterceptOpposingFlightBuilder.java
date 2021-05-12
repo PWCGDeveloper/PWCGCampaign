@@ -31,19 +31,19 @@ public class InterceptOpposingFlightBuilder implements IOpposingFlightBuilder
     }
 
     @Override
-    public IFlight createOpposingFlight() throws PWCGException 
+    public List<IFlight> createOpposingFlight() throws PWCGException 
     {
         Squadron opposingSquadron = determineOpposingSquadron();
         FlightTypes opposingFlightType = determineOpposingFlightType(opposingSquadron);
         if (opposingSquadron != null)
         {
-            IFlight flight = buildFlight(opposingFlightType, opposingSquadron);
+            List<IFlight> flight = buildFlight(opposingFlightType, opposingSquadron);
             if (flight != null)
             {
                 return flight;
             }
         }
-        return null;
+        return new ArrayList<>();
     }
 
     private FlightTypes determineOpposingFlightType(Squadron opposingSquadron) throws PWCGException 
@@ -53,10 +53,6 @@ public class InterceptOpposingFlightBuilder implements IOpposingFlightBuilder
         {
             return WeatherFlightTypeConverter.getFlightType(FlightTypes.DIVE_BOMB, mission.getWeather());
         }
-        else if (opposingSquadronPrimaryRole == Role.ROLE_TRANSPORT)
-        {
-            return WeatherFlightTypeConverter.getFlightType(FlightTypes.CARGO_DROP, mission.getWeather());
-        }
         else
         {
             return WeatherFlightTypeConverter.getFlightType(FlightTypes.BOMB, mission.getWeather());
@@ -65,7 +61,7 @@ public class InterceptOpposingFlightBuilder implements IOpposingFlightBuilder
 
     private Squadron determineOpposingSquadron() throws PWCGException
     {
-        List<Role> opposingFlightRoles = new ArrayList<>(Arrays.asList(Role.ROLE_BOMB, Role.ROLE_DIVE_BOMB, Role.ROLE_TRANSPORT));
+        List<Role> opposingFlightRoles = new ArrayList<>(Arrays.asList(Role.ROLE_BOMB, Role.ROLE_DIVE_BOMB));
         OpposingSquadronChooser opposingSquadronChooser = new OpposingSquadronChooser(campaign, opposingFlightRoles, playerSquadron.determineEnemySide(), 1);
         List<Squadron> viableSquadrons = opposingSquadronChooser.getOpposingSquadrons();
         if (viableSquadrons.size() > 0)
@@ -76,10 +72,10 @@ public class InterceptOpposingFlightBuilder implements IOpposingFlightBuilder
         return null;
     }
     
-    private IFlight buildFlight(FlightTypes opposingFlightType, Squadron opposingSquadron) throws PWCGException
+    private List<IFlight> buildFlight(FlightTypes opposingFlightType, Squadron opposingSquadron) throws PWCGException
     {
         FlightFactory flightFactory = new FlightFactory(campaign);
-        IFlight flight = flightFactory.buildFlight(mission, opposingSquadron, opposingFlightType, NecessaryFlightType.OPPOSING_FLIGHT);
-        return flight;
+        List<IFlight> flights = flightFactory.buildFlight(mission, opposingSquadron, opposingFlightType, NecessaryFlightType.OPPOSING_FLIGHT);
+        return flights;
     }
 }

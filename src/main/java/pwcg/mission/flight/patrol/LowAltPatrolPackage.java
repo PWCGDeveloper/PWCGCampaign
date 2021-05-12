@@ -1,5 +1,8 @@
 package pwcg.mission.flight.patrol;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformationFactory;
@@ -14,19 +17,19 @@ import pwcg.mission.target.TargetDefinitionBuilderAirToAir;
 public class LowAltPatrolPackage implements IFlightPackage
 
 {
-    public LowAltPatrolPackage()
-    {
-    }
+    private List<IFlight> packageFlights = new ArrayList<>();
 
     @Override
-    public IFlight createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
+    public List<IFlight> createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {
         FlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.LOW_ALT_PATROL);
         TargetDefinition targetDefinition = buildTargetDefintion(flightInformation);
 
         PatrolFlight patrolFlight = new PatrolFlight (flightInformation, targetDefinition);
         patrolFlight.createFlight();
-        return patrolFlight;
+
+        packageFlights.add(patrolFlight);
+        return packageFlights;
     }
 
     private TargetDefinition buildTargetDefintion(FlightInformation flightInformation) throws PWCGException

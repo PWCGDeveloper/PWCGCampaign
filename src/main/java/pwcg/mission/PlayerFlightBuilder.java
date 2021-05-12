@@ -1,5 +1,7 @@
 package pwcg.mission;
 
+import java.util.List;
+
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -14,7 +16,7 @@ public class PlayerFlightBuilder
     private Campaign campaign;
     private Mission mission;
 
-    private IFlight playerFlight;
+    private List<IFlight> playerFlightSet;
  
     public PlayerFlightBuilder(Campaign campaign, Mission mission)
     {
@@ -22,22 +24,23 @@ public class PlayerFlightBuilder
         this.mission = mission;
     }
     
-    public IFlight createPlayerFlight(FlightTypes requestedFlightType, Squadron squadron, MissionHumanParticipants participatingPlayers, boolean isNightMission) throws PWCGException 
+    public List<IFlight> createPlayerFlight(FlightTypes requestedFlightType, Squadron squadron, MissionHumanParticipants participatingPlayers, boolean isNightMission) throws PWCGException 
     {
         buildFlight(requestedFlightType, squadron);
-        return playerFlight;
+        return playerFlightSet;
     }
 
     private void buildFlight(FlightTypes requestedFlightType, Squadron squadron) throws PWCGException
     {
         FlightFactory flightFactory = new FlightFactory(campaign);
-        playerFlight = flightFactory.buildFlight(mission, squadron, requestedFlightType, NecessaryFlightType.PLAYER_FLIGHT);        
+        playerFlightSet = flightFactory.buildFlight(mission, squadron, requestedFlightType, NecessaryFlightType.PLAYER_FLIGHT);        
         validatePlayerFlight();
     }
 
     private void validatePlayerFlight() throws PWCGException
     {
         boolean playerIsInFlight = false;
+        IFlight playerFlight = MissionFlightBuilder.getPlayerFlight(playerFlightSet);
         for (PlaneMcu plane : playerFlight.getFlightPlanes().getPlanes())
         {
             if (plane.getPilot().isPlayer())
