@@ -26,13 +26,25 @@ public class MissionBlockBuilder
         this.structureBorder = structureBorder;
     }
 
-    public MissionBlocks buildFixedPositionsForMission() throws PWCGException
+    public MissionBlocks buildFixedPositionsForMissionTargeting() throws PWCGException
     {
         getTrainStationsPatrol();
         getBridgesForPatrol();
         getStandaloneBlocksPatrol();
         
         return new MissionBlocks(mission, positionsForMission);
+    }
+
+    public MissionBlocks buildFixedPositionsForMissionFile() throws PWCGException
+    {
+        getTrainStationsPatrol();
+        getBridgesForPatrol();
+        getStandaloneBlocksPatrol();
+
+        MissionBlocks missionBlocks = new MissionBlocks(mission, positionsForMission);
+        missionBlocks.adjustBlockStatus();
+        
+        return missionBlocks;
     }
 
     private void getStandaloneBlocksPatrol() throws PWCGException

@@ -119,7 +119,7 @@ public class Mission
     private void createStructuresForTargeting() throws PWCGException
     {
         MissionBlockBuilder blockBuilder = new MissionBlockBuilder(this, missionBorders);
-        missionBlocks = blockBuilder.buildFixedPositionsForMission();
+        missionBlocks = blockBuilder.buildFixedPositionsForMissionTargeting();
 
         MissionAirfieldBuilder airfieldBuilder = new MissionAirfieldBuilder(this, missionBorders);
         missionAirfields = airfieldBuilder.buildFieldsForPatrol();;
@@ -130,7 +130,7 @@ public class Mission
         CoordinateBox structureBorders = buildStructureBorders(missionProfile, participatingPlayers, missionBorders);
         
         MissionBlockBuilder blockBuilder = new MissionBlockBuilder(this, structureBorders);
-        missionBlocks = blockBuilder.buildFixedPositionsForMission();
+        missionBlocks = blockBuilder.buildFixedPositionsForMissionFile();
 
         MissionAirfieldBuilder airfieldBuilder = new MissionAirfieldBuilder(this, structureBorders);
         missionAirfields = airfieldBuilder.buildFieldsForPatrol();;

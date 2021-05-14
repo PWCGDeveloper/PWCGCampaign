@@ -3,7 +3,6 @@ package pwcg.mission;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.group.BlockDefinition;
 import pwcg.campaign.group.BlockDefinitionManager;
 import pwcg.campaign.group.FixedPosition;
@@ -25,7 +24,7 @@ public class MissionBlocks
         return positionsForMission;
     }
 
-    public void adjustBlockStatus(Campaign campaign) throws PWCGException
+    public void adjustBlockStatus() throws PWCGException
     {
         adjustBlockDamage();
         adjustBlockSmoke();
