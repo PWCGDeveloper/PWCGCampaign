@@ -10,11 +10,14 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.FlightTypeCategory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.NecessaryFlightType;
 import pwcg.mission.flight.plane.PlaneMcu;
+import pwcg.mission.flight.waypoint.WaypointAction;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 
 public class MissionFlights
 {
@@ -287,7 +290,7 @@ public class MissionFlights
 
     public IFlight getFlightForAirfield(Airfield airfield)
     {
-        for (IFlight flight : this.getAllAerialFlights())
+        for (IFlight flight : flights)
         {
             Airfield squadronAirfield = flight.getSquadron().determineCurrentAirfieldCurrentMap(campaign.getDate());
             if(squadronAirfield.getName().equals(airfield.getName()))
@@ -296,5 +299,19 @@ public class MissionFlights
             }
         }
         return null;
+    }
+
+    public List<Coordinate> getTargetCoordinatesForMission() throws PWCGException
+    {
+        List<Coordinate> missionTargetCoordiinates = new ArrayList<>();
+        for (IFlight flight : flights)
+        {
+            if (FlightTypes.isBombingFlight(flight.getFlightType()))
+            {
+                MissionPoint targetArea = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_ATTACK);
+                missionTargetCoordiinates.add(targetArea.getPosition());
+            }
+        }
+        return missionTargetCoordiinates;
     }
 }

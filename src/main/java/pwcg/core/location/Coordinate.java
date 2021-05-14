@@ -2,6 +2,7 @@ package pwcg.core.location;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.List;
 
@@ -177,4 +178,19 @@ public class Coordinate implements Cloneable
 		
 		return isEqual;
 	}
+
+    public static List<Coordinate> findWithinRadius(List<Coordinate> listOfPositions, Coordinate referenceLocation, double radius) throws PWCGException
+    {
+        List<Coordinate> selectedPositions = new ArrayList<>();
+        for (Coordinate position : selectedPositions)
+        {
+            double distance = MathUtils.calcDist(position, referenceLocation);
+            if (distance <= radius)
+            {
+                selectedPositions.add(position);
+            }
+        }
+        
+        return selectedPositions;
+    }
 }

@@ -133,7 +133,10 @@ public class Mission
         missionBlocks = blockBuilder.buildFixedPositionsForMissionFile();
 
         MissionAirfieldBuilder airfieldBuilder = new MissionAirfieldBuilder(this, structureBorders);
-        missionAirfields = airfieldBuilder.buildFieldsForPatrol();;
+        missionAirfields = airfieldBuilder.buildFieldsForPatrol();
+        
+        MissionBlockEntityBuilder missionBlockEntityBuilder = new MissionBlockEntityBuilder(this);
+        missionBlockEntityBuilder.buildEntitiesForTargetStructures(missionBlocks);
     }
 
     private CoordinateBox buildStructureBorders(MissionProfile missionProfile, MissionHumanParticipants participatingPlayers, CoordinateBox missionBorders) throws PWCGException

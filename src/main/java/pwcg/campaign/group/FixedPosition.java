@@ -36,7 +36,7 @@ public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosi
     protected int damageThreshold = 1;
     protected int deleteAfterDeath = 0;
     protected Map<Integer, Double> damaged = new HashMap<>();
-    protected McuTREntity entity;
+    protected McuTREntity entity = null;
 
     public FixedPosition()
     {
@@ -117,7 +117,7 @@ public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosi
         return CountryDesignator.determineCountry(position, date);
     }
 
-    protected void buildEntity()
+    public void buildEntity()
     {
         entity = new McuTREntity(index);
         linkTrId = entity.getIndex();
