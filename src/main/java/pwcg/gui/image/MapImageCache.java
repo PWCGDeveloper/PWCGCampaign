@@ -2,7 +2,6 @@ package pwcg.gui.image;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.lang.ref.SoftReference;
 import java.util.HashMap;
 
 import pwcg.core.exception.PWCGException;
@@ -13,7 +12,7 @@ import pwcg.gui.utils.ContextSpecificImages;
 public class MapImageCache
 {
     private static MapImageCache instance = null;
-    private static HashMap<String, SoftReference<BufferedImage>> bufferedMapImageCache = new HashMap<>();
+    private static HashMap<String, BufferedImage> bufferedMapImageCache = new HashMap<>();
     private static boolean disableOverlays = true;
 
     private MapImageCache()
@@ -43,7 +42,7 @@ public class MapImageCache
             mapImageForDisplay = buildMapWithOverlay(mapImageFileName);
             if (mapImageForDisplay != null)
             {
-                bufferedMapImageCache.put(mapImageFileName, new SoftReference<>(mapImageForDisplay));
+                bufferedMapImageCache.put(mapImageFileName, mapImageForDisplay);
                 return mapImageForDisplay;
             }
 
@@ -55,15 +54,8 @@ public class MapImageCache
 
     private BufferedImage getImageFromCache(String mapImageFileName)
     {
-        SoftReference<BufferedImage> ref;
-        BufferedImage image;
-        ref = bufferedMapImageCache.get(mapImageFileName);
-        image = ref != null ? ref.get() : null;
-        if (image != null)
-        {
-            return image;
-        }
-        return image;
+        BufferedImage mapImage = bufferedMapImageCache.get(mapImageFileName);
+        return mapImage;
     }
 
     private BufferedImage buildMapWithOverlay(String mapImageFileName) throws PWCGException
