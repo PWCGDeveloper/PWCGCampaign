@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.flight.AltitudeForOpposingFlightAdjuster;
 import pwcg.mission.flight.FlightBuildInformation;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightInformationFactory;
@@ -62,11 +64,15 @@ public class InterceptPackage implements IFlightPackage
         return  targetDefinitionBuilder.buildTargetDefinition();
     }
     
-    private void adjustAltitudeToMatchOpposingFlight()
-    { 
-        int numAltitudeChunks = Double.valueOf(targetDefinition.getPosition().getYPos()).intValue() / 500;
-        ++numAltitudeChunks;
-        int interceptAltitude = numAltitudeChunks * 500;
-        flightInformation.setAltitude(interceptAltitude);
+    private void adjustAltitudeToMatchOpposingFlight() throws PWCGException
+    {
+        double highestOpposingAltitude = AltitudeForOpposingFlightAdjuster.getAltitudeForOpposingFlights(flightInformation.getMission());
+        if (highestOpposingAltitude > 1500.0)
+        {
+            int interceptAltitude = Double.valueOf(highestOpposingAltitude).intValue();
+            interceptAltitude += 200;
+            interceptAltitude += RandomNumberGenerator.getRandom(500);
+            flightInformation.setAltitude(interceptAltitude);
+        }
     }
 }

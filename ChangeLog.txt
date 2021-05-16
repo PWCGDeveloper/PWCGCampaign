@@ -1,6 +1,10 @@
 
 ​At the PWCG web site
 
+12.2.1
+Limited assignment of entities to structures in target zones (performance). 
+Fixed error that could cause missions to fail to generate
+
 PWCG 12.2.0
 Make planes exit attacks more quickly
 - When one or two planes goes bingo bombs the rest will jettison remaining ordnance and exit after 30 seconds.

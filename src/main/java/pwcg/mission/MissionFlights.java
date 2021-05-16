@@ -30,11 +30,23 @@ public class MissionFlights
         this.mission = mission;
         this.campaign = mission.getCampaign();
     }
-
+    
     public void generateFlights(MissionSquadronFlightTypes playerFlightTypes) throws PWCGException
     {
         MissionFlightBuilder missionFlightBuilder = new MissionFlightBuilder(mission);
-        flights = missionFlightBuilder.generateFlights(playerFlightTypes);
+
+        List<IFlight> opposingFlights =  missionFlightBuilder.createOpposingAiFlights(playerFlightTypes);
+        flights.addAll(opposingFlights);
+
+        List<IFlight> aiFlights = missionFlightBuilder.createAiFlights(playerFlightTypes);
+        flights.addAll(aiFlights);
+
+
+        List<IFlight> playerFlights = missionFlightBuilder.createPlayerFlights(playerFlightTypes);
+        flights.addAll(playerFlights);
+
+        MissionFlightKeeper missionFlightKeeper = new MissionFlightKeeper(mission, flights);
+        flights = missionFlightKeeper.keepLimitedFlights();
     }
 
     public void finalizeMissionFlights() throws PWCGException
