@@ -53,11 +53,11 @@ public abstract class ImagePanel extends JPanel
         }
     }
 
-    public void setMapImage(String mapImageName)
+    public void setMapImage(MapImageCache mapImageCache, String mapImageName)
     {
         try 
         {
-            image = MapImageCache.getInstance().getMapImage(mapImageName);
+            image = mapImageCache.getMapImage(mapImageName);
         }
         catch (Exception ex) 
         {

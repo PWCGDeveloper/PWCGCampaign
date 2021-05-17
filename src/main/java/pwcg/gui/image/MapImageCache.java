@@ -4,50 +4,91 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.utils.ContextSpecificImages;
 
-public class MapImageCache
+public class MapImageCache implements Runnable
 {
-    private static MapImageCache instance = null;
-    private static HashMap<String, BufferedImage> bufferedMapImageCache = new HashMap<>();
-    private static boolean disableOverlays = true;
+    private HashMap<String, BufferedImage> bufferedMapImageCache = new HashMap<>();
+    private String mapFileNameBase = "";
+    private boolean disableOverlays = true;
+    private boolean isLoaded = false;
+    private Thread mapLoadThread = null;
 
-    private MapImageCache()
+    public MapImageCache()
     {
+        this.mapFileNameBase = PWCGContext.getInstance().getCurrentMap().getMapName() + "Map";
     }
 
-    public static MapImageCache getInstance()
+    public void loadCurrentMap()
     {
-        if (instance == null)
+        try
         {
-            instance = new MapImageCache();
-        }
+            if (isLoaded)
+            {
+                return;
+            }
+            
+            loadPrimaryMap();
+            isLoaded = true;
 
-        return instance;
+            mapLoadThread = new Thread(this);
+            mapLoadThread.start();
+        }
+        catch (Exception e)
+        {
+            PWCGLogger.logException(e);
+        }
+    }
+    
+    private void loadPrimaryMap()
+    {
+        try
+        {
+            getMapImage(mapFileNameBase + "100"); 
+        }
+        catch (Exception e)
+        {
+            PWCGLogger.log(LogLevel.ERROR, "Failed to load map " + mapFileNameBase + "100");
+            PWCGLogger.logException(e);
+        }
+    }
+
+    @Override
+    public void run()
+    {
+        try
+        {
+            getMapImage(mapFileNameBase + "050"); 
+            getMapImage(mapFileNameBase + "075"); 
+            getMapImage(mapFileNameBase + "125"); 
+            getMapImage(mapFileNameBase + "150"); 
+        }
+        catch (PWCGException e)
+        {
+            PWCGLogger.logException(e);
+        } 
     }
 
     public BufferedImage getMapImage(String mapImageFileName) throws PWCGException
     {
-        synchronized (this)
+        BufferedImage mapImageForDisplay = getImageFromCache(mapImageFileName);
+        if (mapImageForDisplay != null)
         {
-            BufferedImage mapImageForDisplay = getImageFromCache(mapImageFileName);
-            if (mapImageForDisplay != null)
-            {
-                return mapImageForDisplay;
-            }
-
-            mapImageForDisplay = buildMapWithOverlay(mapImageFileName);
-            if (mapImageForDisplay != null)
-            {
-                bufferedMapImageCache.put(mapImageFileName, mapImageForDisplay);
-                return mapImageForDisplay;
-            }
-
-            PWCGLogger.log(LogLevel.DEBUG, "Image not found: " + mapImageFileName);
+            return mapImageForDisplay;
         }
+
+        mapImageForDisplay = buildMapWithOverlay(mapImageFileName);
+        if (mapImageForDisplay != null)
+        {
+            bufferedMapImageCache.put(mapImageFileName, mapImageForDisplay);
+            return mapImageForDisplay;
+        }
+
+        PWCGLogger.log(LogLevel.DEBUG, "Image not found: " + mapImageFileName);
 
         return null;
     }

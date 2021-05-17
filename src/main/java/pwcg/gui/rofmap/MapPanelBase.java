@@ -22,9 +22,9 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
-import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
+import pwcg.gui.image.MapImageCache;
 import pwcg.gui.utils.ImagePanel;
 
 public abstract class MapPanelBase extends ImagePanel implements ActionListener
@@ -45,10 +45,13 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
     protected Point mapScrollPositionNow = new Point();
 
     protected MapGUI parent;
+    private MapImageCache mapImageCache;
 
     public MapPanelBase(MapGUI parent) throws PWCGException
     {
         this.parent = parent;
+        this.mapImageCache = new MapImageCache();
+        mapImageCache.loadCurrentMap();
 
         PWCGMouseClickListener mouseClickListener = new PWCGMouseClickListener(this);
         PWCGMouseMotionListener mouseMotionListener = new PWCGMouseMotionListener(this);
@@ -59,27 +62,8 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
         this.addMouseWheelListener(mouseWheelListener);
     }
 
-    public static void preloadMaps()
-    {
-        try
-        {
-            String mapPrefix = PWCGContext.getInstance().getCurrentMap().getMapName() + "Map";
-
-            MapLoader mapLoader = new MapLoader(mapPrefix);
-            mapLoader.loadPrimaryMap();
-            
-            Thread mapLoadThread = new Thread(mapLoader);
-            mapLoadThread.start();
-        }
-        catch (Exception e)
-        {
-            PWCGLogger.logException(e);
-        }
-    }
-
     public void setMapBackground(int zoom)
     {
-        preloadMaps();
         scaleLevel = zoom;
 
         String mapImageName = PWCGContext.getInstance().getCurrentMap().getMapName() + "Map";
@@ -88,7 +72,7 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
             mapImageName += "0";
         }
         mapImageName += scaleLevel;
-        super.setMapImage(mapImageName);
+        super.setMapImage(mapImageCache, mapImageName);
         
         if (image == null)
         {
