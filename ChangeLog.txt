@@ -1,6 +1,12 @@
 
 ​At the PWCG web site
 
+12.2.2
+Improved performance of the waypoint editor screen
+Improved (slightly) performance of the map screens
+- Press new button edit waypoint details to edit 
+Fixed error that cause incorrect intercept waypoint altitudes
+
 12.2.1
 Limited assignment of entities to structures in target zones (performance). 
 Fixed error that could cause missions to fail to generate
