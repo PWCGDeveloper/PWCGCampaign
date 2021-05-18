@@ -1,24 +1,24 @@
 package pwcg.gui.rofmap.brief;
 
-import javax.swing.JLabel;
+import javax.swing.JComponent;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 
-public interface IWaypointViewer
+public interface IWaypointDetails
 {
 
     void initializeWPEdit(BriefingMapPoint previousMapPoint, BriefingMapPoint thisMapPoint) throws PWCGException;
 
-    JLabel getDescriptionField();
+    JComponent getDescriptionField();
 
-    JLabel getAltitudeTextField();
+    JComponent getAltitudeField();
 
-    JLabel getCruisingSpeedTextField();
+    JComponent getCruisingSpeedField();
 
-    JLabel getDistanceTextField();
+    JComponent getDistanceField();
 
-    JLabel getHeadingTextField();
+    JComponent getHeadingField();
 
     int getAltitudeValue();
 

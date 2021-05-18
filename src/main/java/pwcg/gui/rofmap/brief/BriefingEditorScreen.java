@@ -96,6 +96,10 @@ public class BriefingEditorScreen extends ImageResizingPanel implements ActionLi
         buttonGrid.add(goToPilotSelectionButton);
 
         buttonGrid.add(PWCGButtonFactory.makeDummy());
+        JButton makeWaypointsEditableButton = makeButton("Edit Waypoint Details", "Edit Waypoints", "Make waypoint data editable");
+        buttonGrid.add(makeWaypointsEditableButton);
+
+        buttonGrid.add(PWCGButtonFactory.makeDummy());
         buttonGrid.add(PWCGButtonFactory.makeDummy());
 
         buttonPanel.add(buttonGrid, BorderLayout.NORTH);
@@ -130,6 +134,11 @@ public class BriefingEditorScreen extends ImageResizingPanel implements ActionLi
             {
                 scrubMission();
             }
+            else if (action.equals("Edit Waypoints"))
+            {
+                makeWaypointsEditable();
+            }
+            
         }
         catch (Exception e)
         {
@@ -158,7 +167,12 @@ public class BriefingEditorScreen extends ImageResizingPanel implements ActionLi
         campaignHomeGuiBriefingWrapper.refreshCampaignPage();
         CampaignGuiContextManager.getInstance().backToCampaignHome();
     }
-    
+
+    private void makeWaypointsEditable() throws PWCGException
+    {
+        editorPanel.makeEditable();        
+    }
+
     private void backToCampaign() throws PWCGException
     {
         campaignHomeGuiBriefingWrapper.refreshCampaignPage();
@@ -169,7 +183,7 @@ public class BriefingEditorScreen extends ImageResizingPanel implements ActionLi
     {
         for (BriefingMapPoint briefingMapPoint : briefingData.getActiveBriefingFlight().getBriefingFlightParameters().getBriefingMapMapPoints())
         {
-            WaypointEditor editor = editorPanel.getWaypointEditors().getWaypointEditorByid(briefingMapPoint.getWaypointID());
+            IWaypointDetails editor = editorPanel.getWaypointEditors().getWaypointEditorByid(briefingMapPoint.getWaypointID());
             if (editor != null)
             {
                 int altitude = editor.getAltitudeValue();

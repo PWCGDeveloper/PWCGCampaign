@@ -3,20 +3,22 @@ package pwcg.gui.rofmap.brief;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 
-public class WaypointEditor
+public class WaypointEditor implements IWaypointDetails
 {
     private long associatedWaypointID;
-    private JTextField descTextField;
+    private JLabel descTextField;
     private JTextField altitudeTextField;
     private JTextField cruisingSpeedTextField;
-    private JTextField distanceTextField;
-    private JTextField headingTextField;
+    private JLabel distanceTextField;
+    private JLabel headingTextField;
     private String actionCommandKey = "";
 
     public WaypointEditor(long associatedWaypointID)
@@ -26,17 +28,13 @@ public class WaypointEditor
     
     public void initializeWPEdit(BriefingMapPoint previousMapPoint, BriefingMapPoint thisMapPoint) throws PWCGException
     {
-        descTextField = makeTextField();
+        descTextField = makeLabelField();
         descTextField.setText(thisMapPoint.getDesc());
 
         altitudeTextField = makeTextField();
         cruisingSpeedTextField = makeTextField();
-        distanceTextField = makeTextField();
-        headingTextField = makeTextField();
-
-        descTextField.setEditable(false);
-        distanceTextField.setEditable(false);
-        headingTextField.setEditable(false);
+        distanceTextField = makeLabelField();
+        headingTextField = makeLabelField();
         
         if (thisMapPoint.isEditable())
         {
@@ -45,32 +43,33 @@ public class WaypointEditor
         else
         {
             altitudeTextField.setEditable(false);
+            altitudeTextField.setBorder(javax.swing.BorderFactory.createEmptyBorder());
         }
 
         calculateWPParameters(previousMapPoint, thisMapPoint);
     }
 
-    public JTextField getDescriptionField()
+    public JLabel getDescriptionField()
     {
         return descTextField;
     }
 
-    public JTextField getAltitudeTextField()
+    public JTextField getAltitudeField()
     {
         return altitudeTextField;
     }
 
-    public JTextField getCruisingSpeedTextField()
+    public JTextField getCruisingSpeedField()
     {
         return cruisingSpeedTextField;
     }
 
-    public JTextField getDistanceTextField()
+    public JLabel getDistanceField()
     {
         return distanceTextField;
     }
 
-    public JTextField getHeadingtextField()
+    public JLabel getHeadingField()
     {
         return headingTextField;
     }
@@ -87,9 +86,7 @@ public class WaypointEditor
 
     public void setEnabled(boolean enabled)
     {
-        descTextField.setEditable(false);
         altitudeTextField.setEditable(enabled);
-        distanceTextField.setEditable(false);
     }
 
     private void calculateWPParameters(BriefingMapPoint previousMapPoint, BriefingMapPoint briefingMapPoint) throws PWCGException
@@ -117,7 +114,7 @@ public class WaypointEditor
         refreshTextField(headingTextField);
     }
 
-    private void refreshTextField(JTextField textField)
+    private void refreshTextField(JComponent textField)
     {
         if (textField.getGraphics() != null)
         {
@@ -133,6 +130,19 @@ public class WaypointEditor
         field.setOpaque(false);
         field.setFont(font);
         field.setHorizontalAlignment(JTextField.RIGHT);
+        field.setForeground(Color.BLACK);
+
+        return field;
+    }
+
+    private JLabel makeLabelField() throws PWCGException
+    {
+        Font font = PWCGMonitorFonts.getTypewriterFont();
+
+        JLabel field = new JLabel();
+        field.setOpaque(false);
+        field.setFont(font);
+        field.setHorizontalAlignment(JLabel.RIGHT);
         field.setForeground(Color.BLACK);
 
         return field;

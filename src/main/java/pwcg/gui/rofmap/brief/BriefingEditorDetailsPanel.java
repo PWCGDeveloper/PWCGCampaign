@@ -19,7 +19,13 @@ public class BriefingEditorDetailsPanel
 {
     private JPanel waypointPanel = new JPanel(new BorderLayout());
     private WaypointEditorSet waypointEditors = new WaypointEditorSet();
+    private boolean isEditable = false;
 
+    public BriefingEditorDetailsPanel (boolean isEditable)
+    {
+        this.isEditable = isEditable;
+    }
+    
     public void buildWaypointPanel(BriefingFlight activeBriefingFlight) throws PWCGException
     {
         waypointPanel.setOpaque(false);
@@ -37,33 +43,45 @@ public class BriefingEditorDetailsPanel
         BriefingMapPoint previousMapPoint = null;
 	    for (BriefingMapPoint briefingMapPoint : activeBriefingFlight.getBriefingFlightParameters().getBriefingMapMapPoints())
 	    {
-	        WaypointEditor waypointEditor = new WaypointEditor(briefingMapPoint.getWaypointID());
-	        waypointEditor.initializeWPEdit(previousMapPoint, briefingMapPoint);
+	        IWaypointDetails waypointViewer = buildWaypointViewer(briefingMapPoint.getWaypointID());
+	        waypointViewer.initializeWPEdit(previousMapPoint, briefingMapPoint);
 	    	
 	        constraints.gridy = constraints.gridy + 1;
 
 			constraints.gridx = 0;
-			waypointDetailsPanel.add(waypointEditor.getDescriptionField(), constraints);
+			waypointDetailsPanel.add(waypointViewer.getDescriptionField(), constraints);
             
             constraints.gridx = 1;
-            waypointDetailsPanel.add(waypointEditor.getAltitudeTextField(), constraints);
+            waypointDetailsPanel.add(waypointViewer.getAltitudeField(), constraints);
             
             constraints.gridx = 2;
-            waypointDetailsPanel.add(waypointEditor.getCruisingSpeedTextField(), constraints);
+            waypointDetailsPanel.add(waypointViewer.getCruisingSpeedField(), constraints);
             
             constraints.gridx = 3;
-            waypointDetailsPanel.add(waypointEditor.getDistanceTextField(), constraints);
+            waypointDetailsPanel.add(waypointViewer.getDistanceField(), constraints);
         
             constraints.gridx = 4;
-            waypointDetailsPanel.add(waypointEditor.getHeadingtextField(), constraints);
+            waypointDetailsPanel.add(waypointViewer.getHeadingField(), constraints);
             
-            waypointEditors.addWaypointEditor(waypointEditor);
+            waypointEditors.addWaypointEditor(waypointViewer);
             
             previousMapPoint = briefingMapPoint;
 	    }	    
 	    
         JScrollPane waypointScrollPane = ScrollBarWrapper.makeScrollPane(waypointDetailsPanel);
         waypointPanel.add(waypointScrollPane, BorderLayout.NORTH);
+    }
+    
+    private IWaypointDetails buildWaypointViewer(long waypointID)
+    {
+        if (isEditable)
+        {
+            return new WaypointEditor(waypointID);
+        }
+        else
+        {
+            return new WaypointViewer(waypointID);
+        }
     }
 
     private void createMissionParametersHeader(GridBagConstraints constraints, JPanel panel) throws PWCGException

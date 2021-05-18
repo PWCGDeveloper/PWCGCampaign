@@ -9,14 +9,14 @@ import pwcg.core.exception.PWCGException;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 
-public class WaypointViewer implements IWaypointViewer
+public class WaypointViewer implements IWaypointDetails
 {
     private long associatedWaypointID;
-    private JLabel descTextField;
-    private JLabel altitudeTextField;
-    private JLabel cruisingSpeedTextField;
-    private JLabel distanceTextField;
-    private JLabel headingTextField;
+    private JLabel descField;
+    private JLabel altitudeField;
+    private JLabel cruisingSpeedField;
+    private JLabel distanceField;
+    private JLabel headingField;
     private String actionCommandKey = "";
 
     public WaypointViewer(long associatedWaypointID)
@@ -27,13 +27,13 @@ public class WaypointViewer implements IWaypointViewer
     @Override
     public void initializeWPEdit(BriefingMapPoint previousMapPoint, BriefingMapPoint thisMapPoint) throws PWCGException
     {
-        descTextField = makeLabelField();
-        descTextField.setText(thisMapPoint.getDesc());
+        descField = makeLabelField();
+        descField.setText(thisMapPoint.getDesc());
 
-        altitudeTextField = makeLabelField();
-        cruisingSpeedTextField = makeLabelField();
-        distanceTextField = makeLabelField();
-        headingTextField = makeLabelField();
+        altitudeField = makeLabelField();
+        cruisingSpeedField = makeLabelField();
+        distanceField = makeLabelField();
+        headingField = makeLabelField();
 
         calculateWPParameters(previousMapPoint, thisMapPoint);
     }
@@ -41,43 +41,43 @@ public class WaypointViewer implements IWaypointViewer
     @Override
     public JLabel getDescriptionField()
     {
-        return descTextField;
+        return descField;
     }
 
     @Override
-    public JLabel getAltitudeTextField()
+    public JLabel getAltitudeField()
     {
-        return altitudeTextField;
+        return altitudeField;
     }
 
     @Override
-    public JLabel getCruisingSpeedTextField()
+    public JLabel getCruisingSpeedField()
     {
-        return cruisingSpeedTextField;
+        return cruisingSpeedField;
     }
 
     @Override
-    public JLabel getDistanceTextField()
+    public JLabel getDistanceField()
     {
-        return distanceTextField;
+        return distanceField;
     }
 
     @Override
-    public JLabel getHeadingTextField()
+    public JLabel getHeadingField()
     {
-        return headingTextField;
+        return headingField;
     }
 
     @Override
     public int getAltitudeValue()
     {
-        return Integer.parseInt(altitudeTextField.getText());
+        return Integer.parseInt(altitudeField.getText());
     }
 
     @Override
     public int getCruisingSpeedValue()
     {
-        return Integer.parseInt(cruisingSpeedTextField.getText());
+        return Integer.parseInt(cruisingSpeedField.getText());
     }
 
     private void calculateWPParameters(BriefingMapPoint previousMapPoint, BriefingMapPoint briefingMapPoint) throws PWCGException
@@ -91,10 +91,10 @@ public class WaypointViewer implements IWaypointViewer
             heading = BriefingMapPointDistanceCalculator.calculateHeading(previousMapPoint.getPosition(), briefingMapPoint.getPosition());
         }
 
-        altitudeTextField.setText("" + briefingMapPoint.getAltitude());
-        cruisingSpeedTextField.setText("" + briefingMapPoint.getCruisingSpeed());
-        distanceTextField.setText(Integer.valueOf(distance / 1000).toString());
-        headingTextField.setText(Integer.valueOf(heading).toString());
+        altitudeField.setText("" + briefingMapPoint.getAltitude());
+        cruisingSpeedField.setText("" + briefingMapPoint.getCruisingSpeed());
+        distanceField.setText(Integer.valueOf(distance / 1000).toString());
+        headingField.setText(Integer.valueOf(heading).toString());
     }
 
     private JLabel makeLabelField() throws PWCGException

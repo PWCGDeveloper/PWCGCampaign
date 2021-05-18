@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -27,11 +28,9 @@ public class BriefingEditorPanel extends ImageResizingPanel implements ActionLis
 
     private JComboBox<String> cbFuel;
     private JComboBox<String> cbMissionTime;
-    private BriefingEditorDetailsPanel activePanel;
-    private BriefingEditorDetailsPanel waypointViewPanel;
-    private BriefingEditorDetailsPanel waypointEditPanel;
+    private BriefingEditorDetailsPanel waypointDetailsPanel;
     private JPanel editorPanel;
-    private JPanel editablePanel;
+    private JPanel editDetailsPanel;
     private Mission mission;
     private BriefingData briefingData;
 
@@ -58,21 +57,29 @@ public class BriefingEditorPanel extends ImageResizingPanel implements ActionLis
 		editorPanel.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
 
         BriefingFlight activeBriefingFlight = briefingData.getActiveBriefingFlight();
-		waypointViewPanel = new BriefingEditorDetailsPanel();
-		waypointViewPanel.buildWaypointPanel(activeBriefingFlight);
-		
-        activePanel = waypointViewPanel;
-        waypointEditPanel = waypointViewPanel;
-
+        waypointDetailsPanel = new BriefingEditorDetailsPanel(false);
+        waypointDetailsPanel.buildWaypointPanel(activeBriefingFlight);
+        
         JPanel editableLabelPanel = createEditableLabelPanel();
         editorPanel.add(editableLabelPanel, BorderLayout.NORTH);
 
-        editablePanel = new JPanel(new BorderLayout());
-        editablePanel.setOpaque(false);
-        makeEditablePanel();
-        editorPanel.add(editablePanel, BorderLayout.CENTER);
+        editDetailsPanel = new JPanel(new BorderLayout());
+        editDetailsPanel.setOpaque(false);
+        makeDetailsPanel();
 
+        editorPanel.add(editDetailsPanel, BorderLayout.CENTER);
         this.add(editorPanel, BorderLayout.CENTER);
+	}
+	
+	public void makeEditable() throws PWCGException
+	{
+	    JComponent previousPanel = waypointDetailsPanel.getWaypointPanel();
+	    
+        BriefingFlight activeBriefingFlight = briefingData.getActiveBriefingFlight();
+        waypointDetailsPanel = new BriefingEditorDetailsPanel(true);
+        waypointDetailsPanel.buildWaypointPanel(activeBriefingFlight);
+        
+        setWaypointViewPanel(previousPanel);        
 	}
 
     private JPanel createEditableLabelPanel() throws PWCGException
@@ -89,15 +96,27 @@ public class BriefingEditorPanel extends ImageResizingPanel implements ActionLis
         return editableLabelPanel;
     }
 
-    private void makeEditablePanel() throws PWCGException
+    private void makeDetailsPanel() throws PWCGException
     {
-        editablePanel = new JPanel(new BorderLayout());
-        editablePanel.setOpaque(false);
+        editDetailsPanel = new JPanel(new BorderLayout());
+        editDetailsPanel.setOpaque(false);
 
         JPanel dropDownPanel = createDropDownPanel();
-        editablePanel.add(dropDownPanel, BorderLayout.NORTH);
+        editDetailsPanel.add(dropDownPanel, BorderLayout.NORTH);
 
-        editablePanel.add(activePanel.getWaypointPanel(), BorderLayout.CENTER);        
+        setWaypointViewPanel(null);        
+    }
+    
+    private void setWaypointViewPanel(JComponent previousPanel)
+    {
+        if (previousPanel != null)
+        {
+            editDetailsPanel.remove(previousPanel);
+        }
+        
+        editDetailsPanel.add(waypointDetailsPanel.getWaypointPanel(), BorderLayout.CENTER);
+        editDetailsPanel.setVisible(false);
+        editDetailsPanel.setVisible(true);
     }
 
     private JPanel createDropDownPanel() throws PWCGException
@@ -275,6 +294,6 @@ public class BriefingEditorPanel extends ImageResizingPanel implements ActionLis
 
     public WaypointEditorSet getWaypointEditors()
     {
-        return waypointEditPanel.getWaypointEditors();
+        return waypointDetailsPanel.getWaypointEditors();
     }
 }

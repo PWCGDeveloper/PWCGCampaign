@@ -7,11 +7,11 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public class WaypointEditorSet
 {
-    private List<WaypointEditor> waypointEditors = new ArrayList<>();
+    private List<IWaypointDetails> waypointEditors = new ArrayList<>();
 
-    public WaypointEditor getWaypointEditorByid(long waypointId)
+    public IWaypointDetails getWaypointEditorByid(long waypointId)
     {
-        for (WaypointEditor waypointEditor : waypointEditors)
+        for (IWaypointDetails waypointEditor : waypointEditors)
         {
             if (!(waypointEditor.getAssociatedWaypointID() == McuWaypoint.NO_WAYPOINT_ID))
             {
@@ -24,7 +24,7 @@ public class WaypointEditorSet
         return null;
     }
     
-    public void addWaypointEditor(WaypointEditor waypointEditor)
+    public void addWaypointEditor(IWaypointDetails waypointEditor)
     {
         waypointEditors.add(waypointEditor);
     }
