@@ -68,7 +68,8 @@ public class Squadron
 	private int serviceId;
     private SquadronRoleSet squadronRoles = new SquadronRoleSet();
     private SquadronSpecializedRoleSet squadronSpecializedRoles = new SquadronSpecializedRoleSet();
-	private NightMissionSet nightMissionOdds = new NightMissionSet();
+    private NightMissionSet nightMissionOdds = new NightMissionSet();
+    private TargetPreferenceSet targetPreferences = new TargetPreferenceSet();
 	private List<SquadronConversionPeriod> conversionPeriods = new ArrayList<>();
     private Map<Date, Callsign> callsigns = new TreeMap<>();
 
@@ -751,17 +752,29 @@ public class Squadron
 		this.serviceId = serviceId;
 	}
 
-	public int getNightOdds(Date date)
-	{
-	    if (nightMissionOdds == null)
-	    {
-	        return 0;
-	    }
-	    else
-	    {
-	        return nightMissionOdds.determineNighMissionOdds(date);
-	    }
-	}
+    public TargetPreferencePeriod getTargetPreference(Date date)
+    {
+        if (targetPreferences == null)
+        {
+            return null;
+        }
+        else
+        {
+            return targetPreferences.determineTargetPreference(date);
+        }
+    }
+
+    public int getNightOdds(Date date)
+    {
+        if (nightMissionOdds == null)
+        {
+            return 0;
+        }
+        else
+        {
+            return nightMissionOdds.determineNighMissionOdds(date);
+        }
+    }
 
     public List<Skin> getSkins()
     {

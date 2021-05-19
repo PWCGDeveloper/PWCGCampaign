@@ -64,11 +64,11 @@
           },
           {
             "role": "ROLE_FIGHTER",
-            "weight": 50
+            "weight": 40
           },
           {
             "role": "ROLE_ATTACK",
-            "weight": 50
+            "weight": 60
           }
         ]
       }
@@ -83,6 +83,16 @@
         "startDate": "19440901",
         "endDate": "19450601",
         "nightMissionOdds": 5
+      }
+    ]
+  },
+  "targetPreferences": {
+    "targetPreferencePeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "targetType": "TARGET_TRAIN",
+        "targetPreferenceOdds": 30
       }
     ]
   },

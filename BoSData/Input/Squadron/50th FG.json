@@ -65,11 +65,11 @@
           },
           {
             "role": "ROLE_FIGHTER",
-            "weight": 50
+            "weight": 40
           },
           {
             "role": "ROLE_ATTACK",
-            "weight": 50
+            "weight": 60
           }
         ]
       }
