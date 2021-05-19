@@ -1,6 +1,14 @@
 
 ​At the PWCG web site
 
+12.2.3
+Added squadron level target preferences.  
+- Allows squadrons to be directed towards specific target types
+Made several P-47 squadrons prefer ground attack
+- Target preference for some is trains
+Moved units closer to the front on Kuban map April 1943
+- Added shipping target preference to 45th Bomber regiment (A20)
+
 12.2.2
 Improved performance of the waypoint editor screen
 Improved (slightly) performance of the map screens

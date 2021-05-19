@@ -33,7 +33,7 @@
     "19430120": "Novo Sergievskiy",
     "19430301": "Kerch",
     "19430330": "Kerch",
-    "19430418": "Kerch",
+    "19430418": "Zaporojskaya",
     "19430918": "Kerch",
     "19430927": "Bagerovo",
     "19431004": "Bagerovo",
@@ -66,7 +66,9 @@
       "country": "Germany",
       "category": "Squadron",
       "definedInGame": false,
-      "winter": false
+      "winter": false,
+      "useTacticalCodes": false,
+      "tacticalCodeColor": "BLACK"
     },
     {
       "skinName": "II_KG76_W",
@@ -78,7 +80,9 @@
       "country": "Germany",
       "category": "Squadron",
       "definedInGame": false,
-      "winter": true
+      "winter": true,
+      "useTacticalCodes": false,
+      "tacticalCodeColor": "BLACK"
     }
   ],
   "squadHistory": {
@@ -135,6 +139,9 @@
         "nightMissionOdds": 10
       }
     ]
+  },
+  "targetPreferences": {
+    "targetPreferencePeriods": []
   },
   "conversionPeriods": [
     {

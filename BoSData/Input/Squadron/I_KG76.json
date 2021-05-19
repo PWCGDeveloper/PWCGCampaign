@@ -33,7 +33,7 @@
     "19430120": "Chernishkovskiy",
     "19430301": "Kerch",
     "19430330": "Kerch",
-    "19430418": "Kerch",
+    "19430418": "Zaporojskaya",
     "19430918": "Hardji-Bie",
     "19430927": "Bagerovo",
     "19431004": "Bagerovo",
@@ -57,27 +57,34 @@
     "19450501": "ef_Chievres"
   },
   "skins": [
-		{
-			"skinName": "I_KG76",
-			"planeType": "ju88a4",
-			"startDate": "19410101",
-			"endDate": "19450601",
-			"squadId": 20131076,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false
-		},
-		{
-			"skinName": "I_KG76_W",
-			"planeType": "ju88a4",
-			"startDate": "19410101",
-			"endDate": "19430601",
-			"squadId": 20131076,
-			"country": "Germany",
-			"category": "Squadron",
-			"definedInGame": false,
-			"winter": true
-		}
+    {
+      "skinName": "I_KG76",
+      "planeType": "ju88a4",
+      "archTypes": [],
+      "startDate": "19410101",
+      "endDate": "19450601",
+      "squadId": 20131076,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": false,
+      "useTacticalCodes": false,
+      "tacticalCodeColor": "BLACK"
+    },
+    {
+      "skinName": "I_KG76_W",
+      "planeType": "ju88a4",
+      "archTypes": [],
+      "startDate": "19410101",
+      "endDate": "19430601",
+      "squadId": 20131076,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "winter": true,
+      "useTacticalCodes": false,
+      "tacticalCodeColor": "BLACK"
+    }
   ],
   "squadHistory": {
     "squadHistoryEntries": [
@@ -125,6 +132,9 @@
         "nightMissionOdds": 10
       }
     ]
+  },
+  "targetPreferences": {
+    "targetPreferencePeriods": []
   },
   "conversionPeriods": [],
   "callsigns": {
