@@ -146,7 +146,7 @@ public class PlaneMCUFactory
     {
         Role squadronPrimaryRole = flightInformation.getSquadron().determineSquadronPrimaryRole(flightInformation.getCampaign().getDate());
         AiSkillLevel aiLevel;
-        if (squadronPrimaryRole.isRoleCategory(RoleCategory.FIGHTER))
+        if (squadronPrimaryRole.isRoleCategory(RoleCategory.FIGHTER) || !plane.isNovice())
         {
             aiLevel = plane.getPilot().getAiSkillLevel();
         }

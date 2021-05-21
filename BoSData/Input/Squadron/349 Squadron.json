@@ -7,8 +7,13 @@
   "unitIdCode": "GE",
   "planeAssignments": [
     {
-      "archType": "spitfire",
+      "archType": "spitfireGriffon",
       "squadronIntroduction": "19440901",
+      "squadronWithdrawal": "19441001"
+    },
+    {
+      "archType": "spitfire",
+      "squadronIntroduction": "19441001",
       "squadronWithdrawal": "19450601"
     }
   ],

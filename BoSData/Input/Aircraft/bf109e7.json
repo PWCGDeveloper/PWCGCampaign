@@ -15,6 +15,7 @@
 	"goodness": 25,
 	"range": 600,
 	"isFlyable": true,
+	"isNovice": false,
 	"planeSize": "PLANE_SIZE_SMALL",
 	"roles": [
 		"ROLE_ATTACK",

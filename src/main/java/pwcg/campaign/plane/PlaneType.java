@@ -38,6 +38,7 @@ public class PlaneType implements Cloneable
     protected int goodness = 50;
     protected int range = 400;
     protected boolean isFlyable = false;
+    protected boolean isNovice = false;
     protected PlaneSize planeSize = PlaneSize.PLANE_SIZE_SMALL;
     protected ArrayList<Role> roles = new ArrayList<Role>();
     protected Date introduction;
@@ -75,6 +76,7 @@ public class PlaneType implements Cloneable
         planeType.range = this.range;
 
         planeType.isFlyable = this.isFlyable;
+        planeType.isNovice = this.isNovice;
         planeType.planeSize = this.planeSize;
 
         planeType.roles = new ArrayList<Role>();
@@ -408,4 +410,8 @@ public class PlaneType implements Cloneable
         return tacticalCodeColor;
     }
 
+    public boolean isNovice()
+    {
+        return isNovice;
+    }
 }

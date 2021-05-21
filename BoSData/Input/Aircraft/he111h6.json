@@ -15,6 +15,7 @@
 	"goodness": 25,
 	"range": 1100,
 	"isFlyable": true,
+	"isNovice": true,
 	"planeSize": "PLANE_SIZE_MEDIUM",
 	"roles": [
 		"ROLE_BOMB"

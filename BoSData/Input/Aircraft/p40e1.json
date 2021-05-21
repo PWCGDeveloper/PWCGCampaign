@@ -18,6 +18,7 @@
 	"goodness": 28,
 	"range": 800,
 	"isFlyable": true,
+	"isNovice": false,
 	"planeSize": "PLANE_SIZE_SMALL",
 	"roles": [
 		"ROLE_FIGHTER",

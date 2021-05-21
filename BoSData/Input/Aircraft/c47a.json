@@ -17,6 +17,7 @@
 	"goodness": 25,
 	"range": 1200,
 	"isFlyable": false,
+	"isNovice": true,
 	"planeSize": "PLANE_SIZE_MEDIUM",
 	"roles": [
 		"ROLE_TRANSPORT"

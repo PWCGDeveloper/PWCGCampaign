@@ -1,6 +1,6 @@
 {
 	"type": "spitfiremkxiv",
-	"archType": "spitfire",
+	"archType": "spitfireGriffon",
 	"side": "ALLIED",
 	"primaryUsedBy": [
 		"BRITAIN"
@@ -19,6 +19,7 @@
 	"goodness": 85,
 	"range": 600,
 	"isFlyable": true,
+	"isNovice": false,
 	"planeSize": "PLANE_SIZE_SMALL",
 	"roles": [
 		"ROLE_FIGHTER",

@@ -4,10 +4,11 @@
 12.2.3
 Added squadron level target preferences.  
 - Allows squadrons to be directed towards specific target types
-Made several P-47 squadrons prefer ground attack
-- Target preference for some is trains
-Moved units closer to the front on Kuban map April 1943
+- Target preference for P-47 units some is trains
 - Added shipping target preference to 45th Bomber regiment (A20)
+Made several P-47 squadrons prefer ground attack
+Moved units closer to the front on Kuban map April 1943
+Added flag to prevent some planes from being designated as novice in the misson
 
 12.2.2
 Improved performance of the waypoint editor screen

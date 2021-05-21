@@ -7,8 +7,13 @@
   "unitIdCode": "DP",
   "planeAssignments": [
     {
-      "archType": "spitfire",
+      "archType": "spitfireGriffon",
       "squadronIntroduction": "19440901",
+      "squadronWithdrawal": "19441201"
+    },
+    {
+      "archType": "spitfire",
+      "squadronIntroduction": "19441201",
       "squadronWithdrawal": "19450601"
     }
   ],
