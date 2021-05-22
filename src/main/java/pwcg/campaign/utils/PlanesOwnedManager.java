@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class PlanesOwnedManager 
 {
@@ -83,7 +84,7 @@ public class PlanesOwnedManager
 		}
 		catch (Exception e)
 		{
-			PWCGLogger.logException(e);
+			PWCGLogger.log(LogLevel.DEBUG, "Planes owned file not found");
 		}
 	}
 	
