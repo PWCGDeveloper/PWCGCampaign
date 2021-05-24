@@ -12,7 +12,6 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
@@ -49,15 +48,21 @@ public class MissionBattleBuilder implements IBattleBuilder
 
         if (numBattles > 0)
         {
-            List<Coordinate> battleLocations = getBattleLocations(numBattles);
-            for (Coordinate battleLocation : battleLocations)
-            {
-                GroundUnitCollection assaultUnitCollection = AssaultBuilder.generateAssault(mission, battleLocation);
-                battles.add(assaultUnitCollection);
-            }
+            List<Integer> assaultLocations = getBattleLocations(numBattles);
+            generateAssaultsAtLocations(assaultLocations);
         }
         
         return battles;
+    }
+
+
+    private void generateAssaultsAtLocations(List<Integer> assaultLocations) throws PWCGException
+    {
+        for (Integer assaultLocation : assaultLocations)
+        {
+            GroundUnitCollection assaultUnitCollection = AssaultBuilder.generateAssault(mission, assaultLocation);
+            battles.add(assaultUnitCollection);
+        }
     }
 
     private int getMaxBattles() throws PWCGException
@@ -77,10 +82,30 @@ public class MissionBattleBuilder implements IBattleBuilder
         {
             maxBattles = 3;
         }
+        
+        maxBattles = reduceNumberOfbattlesForSmallFront(maxBattles);
+
         return maxBattles;
     }
 
-    private List<Coordinate> getBattleLocations(int numBattles) throws PWCGException
+    private int reduceNumberOfbattlesForSmallFront(int maxBattles) throws PWCGException
+    {
+        List<FrontLinePoint> battleBoxFrontLinePoints = getFrontLineIndecesInBox();
+        if (battleBoxFrontLinePoints.size() < 25)
+        {
+            maxBattles = 1;
+        }        
+        else if (battleBoxFrontLinePoints.size() < 40)
+        {
+            if (maxBattles > 2)
+            {
+                maxBattles = 1;
+            }
+        }
+        return maxBattles;
+    }
+
+    private List<Integer> getBattleLocations(int numBattles) throws PWCGException
     {
         List<FrontLinePoint> battleBoxFrontLinePoints = getFrontLineIndecesInBox();
         if (battleBoxFrontLinePoints.isEmpty())
@@ -97,14 +122,8 @@ public class MissionBattleBuilder implements IBattleBuilder
                 battlePositionIndeces.add(selectedIndex);
             }
         }
-        
-        List<Coordinate> battlePositions = new ArrayList<>();
-        for (int battlePositionIndex : battlePositionIndeces)
-        {
-            battlePositions.add(battleBoxFrontLinePoints.get(battlePositionIndex).getPosition());
-        }
 
-        return battlePositions;
+        return battlePositionIndeces;
     }
 
     private List<FrontLinePoint> getFrontLineIndecesInBox() throws PWCGException

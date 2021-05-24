@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.GroundUnitCollectionData;
@@ -17,10 +16,10 @@ import pwcg.mission.target.TargetType;
 
 public class AssaultBuilder
 {
-    public static GroundUnitCollection generateAssault(Mission mission, Coordinate battleLocation) throws PWCGException
+    public static GroundUnitCollection generateAssault(Mission mission, Integer assaultLocation) throws PWCGException
     {
         AssaultDefinitionGenerator assaultDefinitionGenerator = new AssaultDefinitionGenerator(mission);
-        List<AssaultDefinition> assaultDefinitions = assaultDefinitionGenerator.generateAssaultDefinition(battleLocation);
+        List<AssaultDefinition> assaultDefinitions = assaultDefinitionGenerator.generateAssaultDefinition(assaultLocation);
         
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, 

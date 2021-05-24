@@ -9,6 +9,7 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.battle.Battle;
 import pwcg.campaign.battle.BattleManager;
 import pwcg.campaign.context.Country;
+import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
@@ -33,19 +34,19 @@ public class AssaultDefinitionGenerator
         this.campaign = mission.getCampaign();
     }
 
-    public List<AssaultDefinition> generateAssaultDefinition(Coordinate battleLocation) throws PWCGException
+    public List<AssaultDefinition> generateAssaultDefinition(Integer assaultLocation) throws PWCGException
     {
-        generateMiniAssaultOnEachIndex(battleLocation);
+        generateMiniAssaultOnEachIndex(assaultLocation);
         return assaultInformationElements;
     }
 
-    private void generateMiniAssaultOnEachIndex(Coordinate battleLocation) throws PWCGException
+    private void generateMiniAssaultOnEachIndex(Integer assaultLocation) throws PWCGException
     {
         BattleSize battleSize = AssaultBattleSizeGenerator.createAssaultBattleSize(campaign);
-        ICountry defendingCountry = getDefendingCountry(battleLocation);
+        ICountry defendingCountry = getDefendingCountry(assaultLocation);
         ICountry assaultingCountry = getAssaultingCountry(defendingCountry);
 
-        List<Integer> battleFrontIndeces = getFrontBattleIndeces(defendingCountry, battleLocation, battleSize);
+        List<Integer> battleFrontIndeces = getFrontBattleIndeces(defendingCountry, assaultLocation, battleSize);
         FrontLinesForMap frontLineMarker = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         for (int battleIndex : battleFrontIndeces)
         {
@@ -53,12 +54,14 @@ public class AssaultDefinitionGenerator
         }
     }
 
-    private ICountry getDefendingCountry(Coordinate battleLocation)
+    private ICountry getDefendingCountry(int assaultLocation) throws PWCGException
     {
         ICountry defendingCountry = getDefendingCountryFromSkirmish();
         if (defendingCountry.getCountry() == Country.NEUTRAL)
         {
-            defendingCountry = getDefendingCountryByMapCircumstances(battleLocation);
+            FrontLinesForMap frontLineMarker = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+            List<FrontLinePoint> frontLines = frontLineMarker.getFrontLines(Side.ALLIED);
+            defendingCountry = getDefendingCountryByMapCircumstances(frontLines.get(assaultLocation).getPosition());
         }
         return defendingCountry;
     }
@@ -144,23 +147,24 @@ public class AssaultDefinitionGenerator
         assaultInformationElements.add(assaultDefinition);
     }
 
-    private List<Integer> getFrontBattleIndeces(ICountry defendingCountry, Coordinate battleLocation, BattleSize battleSize) throws PWCGException
+    private List<Integer> getFrontBattleIndeces(ICountry defendingCountry, int assaultCenter, BattleSize battleSize) throws PWCGException
     {
         List<Integer> battleFrontIndeces = new ArrayList<>();
-        int centerFrontIndex = AssaultDefinitionRange.determineCenterOfBattle(campaign, defendingCountry, battleLocation);
-        int numAssaults = AssaultDefinitionRange.determineNumberOfAssaultSegments(battleSize, centerFrontIndex);
+        int numAssaultSegments = AssaultDefinitionRange.determineNumberOfAssaultSegments(battleSize, assaultCenter);
 
-        int startFrontIndex = centerFrontIndex;
-        int finishFrontIndex = centerFrontIndex;
-        if (numAssaults > 1)
+        int startFrontIndex = assaultCenter;
+        if (numAssaultSegments > 1)
         {
-            startFrontIndex = centerFrontIndex - (numAssaults * 3);
-            finishFrontIndex = startFrontIndex + (numAssaults * 3);
+            int numAssaultSegmentsPerFlank = (numAssaultSegments / 2);
+            startFrontIndex = assaultCenter - (numAssaultSegmentsPerFlank * 2);
         }
         
-        for (int battleIndex = startFrontIndex; battleIndex <= finishFrontIndex; ++battleIndex)
+        System.out.println("Start Segment");
+        for (int i = 0; i < numAssaultSegments; ++i)
         {
-            battleFrontIndeces.add(battleIndex);
+            int assaultSegmentIndex = startFrontIndex + (i * 2);
+            battleFrontIndeces.add(assaultSegmentIndex);
+            System.out.println("    - Add Segment index " + assaultSegmentIndex);
         }
 
         return battleFrontIndeces;

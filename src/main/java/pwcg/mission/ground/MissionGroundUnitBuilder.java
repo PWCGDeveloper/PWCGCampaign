@@ -146,32 +146,39 @@ public class MissionGroundUnitBuilder
     
     private void eliminateDuplicateGroundUnits() throws PWCGException
     {
-        flightSpecificGroundUnits = eliminateDuplicateGroundUnitsFromCollection(flightSpecificGroundUnits);
-        missionBalloons = eliminateDuplicateGroundUnitsFromCollection(missionBalloons);
-        missionBattles = eliminateDuplicateGroundUnitsFromCollection(missionBattles);
-        missionTrucks = eliminateDuplicateGroundUnitsFromCollection(missionTrucks);
-        missionTrains = eliminateDuplicateGroundUnitsFromCollection(missionTrains);
-        missionDrifters = eliminateDuplicateGroundUnitsFromCollection(missionDrifters);
-        missionShips = eliminateDuplicateGroundUnitsFromCollection(missionShips);
-        airfieldVehicles = eliminateDuplicateGroundUnitsFromCollection(airfieldVehicles);
-        AAA = eliminateDuplicateGroundUnitsFromCollection(AAA);
+        eliminateDuplicateGroundUnitsFromCollection(flightSpecificGroundUnits);
+        eliminateDuplicateGroundUnitsFromCollection(missionBalloons);
+        eliminateDuplicateGroundUnitsFromCollection(missionBattles);
+        eliminateDuplicateGroundUnitsFromCollection(missionTrucks);
+        eliminateDuplicateGroundUnitsFromCollection(missionTrains);
+        eliminateDuplicateGroundUnitsFromCollection(missionDrifters);
+        eliminateDuplicateGroundUnitsFromCollection(missionShips);
+        eliminateDuplicateGroundUnitsFromCollection(airfieldVehicles);
+        eliminateDuplicateGroundUnitsFromCollection(AAA);
     }
     
-    private List<GroundUnitCollection> eliminateDuplicateGroundUnitsFromCollection(List<GroundUnitCollection> originalGroundUnitCollection) throws PWCGException
+    private void eliminateDuplicateGroundUnitsFromCollection(List<GroundUnitCollection> groundUnitCollections) throws PWCGException
     {
-        List<GroundUnitCollection> notDuplicateGroundUnitCollection = new ArrayList<>();
-        for (GroundUnitCollection groundUnitCollection : originalGroundUnitCollection)
+        while (eliminateDuplicateGroundUnitFromCollection(groundUnitCollections))
         {
-            if (GroundUnitPositionVerifier.verifyGroundCollectionUnitPositionsNotDuplicated(getAllMissionGroundUnits(), groundUnitCollection))
-            {
-                notDuplicateGroundUnitCollection.add(groundUnitCollection);
-            }
-            else
+            
+        }
+    }
+    
+    private boolean eliminateDuplicateGroundUnitFromCollection(List<GroundUnitCollection> groundUnitCollections) throws PWCGException
+    {
+        GroundUnitPositionVerifier groundUnitPositionVerifier = new GroundUnitPositionVerifier();        
+        for (GroundUnitCollection groundUnitCollection : groundUnitCollections)
+        {
+            if (!groundUnitPositionVerifier.verifyGroundCollectionUnitPositionsNotDuplicated(getAllMissionGroundUnits(), groundUnitCollection))
             {
                 System.out.println("Eliminating duplicate " + groundUnitCollection.getPrimaryGroundUnit().getName());
+                groundUnitCollections.remove(groundUnitCollection);
+                return true;
             }
         }
-        return notDuplicateGroundUnitCollection;
+                        
+        return false;
     }
 
     public List<GroundUnitCollection> getBattleMissionGroundUnits()

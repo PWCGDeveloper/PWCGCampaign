@@ -28,9 +28,9 @@ import pwcg.testutils.TestMissionBuilderUtility;
 
 public class PlayerFlightTypeBoSDiveBombTest
 {
-    Mission mission;
-    Campaign campaign;
-    
+    private Campaign campaign;
+    private GroundUnitPositionVerifier groundUnitPositionVerifier = new GroundUnitPositionVerifier();
+
     @Before
     public void setup() throws PWCGException
     {
@@ -62,7 +62,7 @@ public class PlayerFlightTypeBoSDiveBombTest
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
         
-        GroundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
+        groundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
     }
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)
