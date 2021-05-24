@@ -18,10 +18,11 @@ import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.unittypes.GroundUnitSpawningTrainBuilder;
 import pwcg.mission.ground.unittypes.GroundUnitSpawningVehicleBuilder;
 import pwcg.mission.ground.vehicle.IVehicle;
-import pwcg.mission.ground.vehicle.VehicleDefinition;
 import pwcg.mission.ground.vehicle.VehicleClass;
+import pwcg.mission.ground.vehicle.VehicleDefinition;
 import pwcg.mission.mcu.AttackAreaType;
 import pwcg.mission.mcu.McuFormation;
+import pwcg.mission.mcu.McuSpawn;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.target.TargetType;
 
@@ -133,6 +134,17 @@ public abstract class GroundUnit implements IGroundUnit
             vehicles.add(groundElement.getVehicle());
         }
         return vehicles;
+    }
+
+    @Override
+    public List<McuSpawn> getSpawns()
+    {
+        List<McuSpawn> vehicleSpawns = new ArrayList<>();
+        for (GroundUnitElement groundElement : groundElements)
+        {
+            vehicleSpawns.add(groundElement.getSpawn());
+        }
+        return vehicleSpawns;
     }
 
     @Override
@@ -326,6 +338,10 @@ public abstract class GroundUnit implements IGroundUnit
         return groundElements.size();
     }
 
+    public int getIndex()
+    {
+        return index;
+    }
 }	
 
 

@@ -19,9 +19,11 @@ import pwcg.mission.Mission;
 import pwcg.mission.ground.builder.AssaultBuilder;
 import pwcg.mission.ground.builder.IBattleBuilder;
 import pwcg.mission.ground.org.GroundUnitCollection;
+import pwcg.mission.target.AssaultDefinitionRange;
 
 public class MissionBattleBuilder implements IBattleBuilder
 {
+    private static final int BATTLE_BOX_EXPANSION_FROM_MISSION = 5000;
     private Mission mission = null;
     private Campaign campaign = null;
 
@@ -40,23 +42,18 @@ public class MissionBattleBuilder implements IBattleBuilder
         return generateLandBattles();
     }
 
-    public List<GroundUnitCollection> generateLandBattles() throws PWCGException 
+    private List<GroundUnitCollection> generateLandBattles() throws PWCGException 
     {
         int maxBattles = getMaxBattles();
         int numBattles = RandomNumberGenerator.getRandom(maxBattles+1);
 
-        for (int i = 0; i < 10; ++i)
+        if (numBattles > 0)
         {
-            Coordinate battleLocation = getBattleLocation();
-            if (battleLocation != null)
+            List<Coordinate> battleLocations = getBattleLocations(numBattles);
+            for (Coordinate battleLocation : battleLocations)
             {
-                GroundUnitCollection battleUnitCollection = AssaultBuilder.generateAssault(mission, battleLocation);
-                battles.add(battleUnitCollection);
-            }
-
-            if (battles.size() >= numBattles)
-            {
-                break;
+                GroundUnitCollection assaultUnitCollection = AssaultBuilder.generateAssault(mission, battleLocation);
+                battles.add(assaultUnitCollection);
             }
         }
         
@@ -83,28 +80,71 @@ public class MissionBattleBuilder implements IBattleBuilder
         return maxBattles;
     }
 
-    private Coordinate getBattleLocation() throws PWCGException
+    private List<Coordinate> getBattleLocations(int numBattles) throws PWCGException
+    {
+        List<FrontLinePoint> battleBoxFrontLinePoints = getFrontLineIndecesInBox();
+        if (battleBoxFrontLinePoints.isEmpty())
+        {
+            return new ArrayList<>();
+        }
+
+        List<Integer> battlePositionIndeces = new ArrayList<>();
+        for (int i = 0; i < numBattles; ++i)
+        {
+            int selectedIndex = getFrontIndexForBattle(battleBoxFrontLinePoints, battlePositionIndeces);
+            if (selectedIndex != 0)
+            {
+                battlePositionIndeces.add(selectedIndex);
+            }
+        }
+        
+        List<Coordinate> battlePositions = new ArrayList<>();
+        for (int battlePositionIndex : battlePositionIndeces)
+        {
+            battlePositions.add(battleBoxFrontLinePoints.get(battlePositionIndex).getPosition());
+        }
+
+        return battlePositions;
+    }
+
+    private List<FrontLinePoint> getFrontLineIndecesInBox() throws PWCGException
     {
         CoordinateBox battleLocationBorders = CoordinateBox.copy(mission.getMissionBorders());
-        battleLocationBorders.expandBox(3000);
+        battleLocationBorders.expandBox(BATTLE_BOX_EXPANSION_FROM_MISSION);
         
+        List<FrontLinePoint> battleBoxFrontLinePoints = new ArrayList<>();
         FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
-        List<FrontLinePoint> closestFrontLinePoints = new ArrayList<>();
         for (FrontLinePoint frontLinePoint : frontLinesForMap.getFrontLines(Side.ALLIED))
         {
             if (battleLocationBorders.isInBox(frontLinePoint.getPosition()))
             {
-                closestFrontLinePoints.add(frontLinePoint);
+                battleBoxFrontLinePoints.add(frontLinePoint);
             }
         }
+        return battleBoxFrontLinePoints;
+    }
 
+    private int getFrontIndexForBattle(List<FrontLinePoint> battleBoxFrontLinePoints, List<Integer> battlePositionIndeces)
+    {
+        List<FrontLinePoint> remainingBattleBoxFrontLinePoints = reduceBattleBoxFrontLinePoints(battleBoxFrontLinePoints, battlePositionIndeces);
         int selectedIndex = 0;
-        if (closestFrontLinePoints.size() > 0)
+        if (remainingBattleBoxFrontLinePoints.size() > 0)
         {
-            selectedIndex = RandomNumberGenerator.getRandom(closestFrontLinePoints.size());
-            return closestFrontLinePoints.get(selectedIndex).getPosition();
+            selectedIndex = RandomNumberGenerator.getRandom(remainingBattleBoxFrontLinePoints.size());
         }
-        
-        return null;
+        return selectedIndex;
+    }
+
+    private List<FrontLinePoint> reduceBattleBoxFrontLinePoints(List<FrontLinePoint> battleBoxFrontLinePoints, List<Integer> battlePositionIndeces)
+    {
+        List<FrontLinePoint> remainingBattleBoxFrontLinePoints = new ArrayList<>();
+        for (int index = 0; index < battleBoxFrontLinePoints.size(); ++index)
+        {
+            if (!AssaultDefinitionRange.isInUse(index, battlePositionIndeces))
+            {
+                remainingBattleBoxFrontLinePoints.add(battleBoxFrontLinePoints.get(index));
+            }
+        }
+        return remainingBattleBoxFrontLinePoints;
     }
 }

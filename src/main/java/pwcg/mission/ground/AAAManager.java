@@ -23,7 +23,7 @@ public class AAAManager
 		this.mission = mission;
 	}
 
-	public List<GroundUnitCollection> getAAAForMission () throws PWCGException
+	public void getAAAForMission (MissionGroundUnitBuilder missionGroundUnitBuilder) throws PWCGException
 	{
 		List<GroundUnitCollection> allAAA = new ArrayList<>();
 		        
@@ -44,7 +44,10 @@ public class AAAManager
 		}
 		
         List<GroundUnitCollection> selectedAAA = selectAAAForMission(allAAA);
-		return selectedAAA;
+        for (GroundUnitCollection aaa : selectedAAA)
+        {
+            missionGroundUnitBuilder.addMissionAAA(aaa);
+        }
 	}
 
 

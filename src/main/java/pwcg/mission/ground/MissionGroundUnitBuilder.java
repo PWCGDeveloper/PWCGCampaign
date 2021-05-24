@@ -34,7 +34,6 @@ public class MissionGroundUnitBuilder
     private List<GroundUnitCollection> missionShips = new ArrayList<>();
     private List<GroundUnitCollection> flightSpecificGroundUnits = new ArrayList<>();
     private List<GroundUnitCollection> AAA = new ArrayList<>();
-    private List<GroundUnitCollection> airfieldAAA = new ArrayList<>();
     private List<GroundUnitCollection> airfieldVehicles = new ArrayList<>();
 
     public MissionGroundUnitBuilder (Mission mission)
@@ -81,7 +80,7 @@ public class MissionGroundUnitBuilder
     private void createAAAForMission() throws PWCGException 
     {
         AAAManager aaaManager = new AAAManager(campaign, mission);
-        AAA = aaaManager.getAAAForMission();
+        aaaManager.getAAAForMission(this);
     }
 
     private void generateBalloons() throws PWCGException
@@ -117,7 +116,6 @@ public class MissionGroundUnitBuilder
         allMissionGroundUnits.addAll(missionShips);
         allMissionGroundUnits.addAll(missionDrifters);
         allMissionGroundUnits.addAll(AAA);
-        allMissionGroundUnits.addAll(airfieldAAA);
         allMissionGroundUnits.addAll(airfieldVehicles);
         allMissionGroundUnits.addAll(flightSpecificGroundUnits);
         return allMissionGroundUnits;
@@ -137,11 +135,45 @@ public class MissionGroundUnitBuilder
         if (allInterestingMissionGroundUnits.size() == 0)
         {
             allInterestingMissionGroundUnits.addAll(AAA);
-            allInterestingMissionGroundUnits.addAll(airfieldAAA);
         }
         return allInterestingMissionGroundUnits;
     }
     
+    public void finalizeGroundUnits() throws PWCGException
+    {
+        eliminateDuplicateGroundUnits();
+    }
+    
+    private void eliminateDuplicateGroundUnits() throws PWCGException
+    {
+        flightSpecificGroundUnits = eliminateDuplicateGroundUnitsFromCollection(flightSpecificGroundUnits);
+        missionBalloons = eliminateDuplicateGroundUnitsFromCollection(missionBalloons);
+        missionBattles = eliminateDuplicateGroundUnitsFromCollection(missionBattles);
+        missionTrucks = eliminateDuplicateGroundUnitsFromCollection(missionTrucks);
+        missionTrains = eliminateDuplicateGroundUnitsFromCollection(missionTrains);
+        missionDrifters = eliminateDuplicateGroundUnitsFromCollection(missionDrifters);
+        missionShips = eliminateDuplicateGroundUnitsFromCollection(missionShips);
+        airfieldVehicles = eliminateDuplicateGroundUnitsFromCollection(airfieldVehicles);
+        AAA = eliminateDuplicateGroundUnitsFromCollection(AAA);
+    }
+    
+    private List<GroundUnitCollection> eliminateDuplicateGroundUnitsFromCollection(List<GroundUnitCollection> originalGroundUnitCollection) throws PWCGException
+    {
+        List<GroundUnitCollection> notDuplicateGroundUnitCollection = new ArrayList<>();
+        for (GroundUnitCollection groundUnitCollection : originalGroundUnitCollection)
+        {
+            if (GroundUnitPositionVerifier.verifyGroundCollectionUnitPositionsNotDuplicated(getAllMissionGroundUnits(), groundUnitCollection))
+            {
+                notDuplicateGroundUnitCollection.add(groundUnitCollection);
+            }
+            else
+            {
+                System.out.println("Eliminating duplicate " + groundUnitCollection.getPrimaryGroundUnit().getName());
+            }
+        }
+        return notDuplicateGroundUnitCollection;
+    }
+
     public List<GroundUnitCollection> getBattleMissionGroundUnits()
     {
         List<GroundUnitCollection> allMissionGroundUnits = new ArrayList<>();
@@ -206,10 +238,6 @@ public class MissionGroundUnitBuilder
         {
             aaCount += groundUnitCollection.getUnitCount();
         }
-        for (GroundUnitCollection groundUnitCollection : airfieldAAA)
-        {
-            aaCount += groundUnitCollection.getUnitCount();
-        }
         for (GroundUnitCollection groundUnitCollection : missionBattles)
         {
             battleCount += groundUnitCollection.getUnitCount();
@@ -268,9 +296,14 @@ public class MissionGroundUnitBuilder
         airfieldVehicles.add(vehicle);
     }
 
-    public void addAirfieldAAA(GroundUnitCollection aaaMg)
+    public void addMissionAAA(GroundUnitCollection aaa)
     {
-        airfieldAAA.add(aaaMg);
+        AAA.add(aaa);
+    }
+
+    public List<GroundUnitCollection> getAAA()
+    {
+        return AAA;
     }
 
  }

@@ -19,6 +19,7 @@ import pwcg.mission.flight.validate.PlaneRtbValidator;
 import pwcg.mission.flight.validate.PositionEvaluator;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
+import pwcg.mission.ground.GroundUnitPositionVerifier;
 import pwcg.mission.mcu.group.virtual.VirtualWaypointPackageValidator;
 import pwcg.mission.target.TargetCategory;
 import pwcg.mission.target.TargetDefinition;
@@ -66,6 +67,8 @@ public class PlayerFlightTypeBoSBombTest
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
+        
+        GroundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
     }
 
     @Test
@@ -91,6 +94,8 @@ public class PlayerFlightTypeBoSBombTest
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
+        
+        GroundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
     }
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)

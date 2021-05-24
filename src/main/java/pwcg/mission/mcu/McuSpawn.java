@@ -8,24 +8,24 @@ import pwcg.core.utils.PWCGLogger;
 
 public class McuSpawn extends BaseFlightMcu
 {
-	private int spawnAtMe = 1;
+    private int spawnAtMe = 1;
 
-	public McuSpawn ()
-	{
-		super();
-	}
+    public McuSpawn()
+    {
+        super();
+    }
 
-	public void write(BufferedWriter writer) throws PWCGIOException
-	{
-		try
+    public void write(BufferedWriter writer) throws PWCGIOException
+    {
+        try
         {
             writer.write("MCU_Spawner");
             writer.newLine();
             writer.write("{");
             writer.newLine();
-            
+
             super.write(writer);
-            
+
             writer.write("  SpawnAtMe  = " + spawnAtMe + ";");
             writer.newLine();
 
@@ -39,13 +39,15 @@ public class McuSpawn extends BaseFlightMcu
             PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
-	}
-	
-	public int getSpawnAtMe() {
-		return spawnAtMe;
-	}
+    }
 
-	public void setSpawnAtMe(int spawnAtMe) {
-		this.spawnAtMe = spawnAtMe;
-	}
+    public int getSpawnAtMe()
+    {
+        return spawnAtMe;
+    }
+
+    public void setSpawnAtMe(int spawnAtMe)
+    {
+        this.spawnAtMe = spawnAtMe;
+    }
 }

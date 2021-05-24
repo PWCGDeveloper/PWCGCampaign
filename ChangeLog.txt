@@ -8,7 +8,10 @@ Added squadron level target preferences.
 - Added shipping target preference to 45th Bomber regiment (A20)
 Made several P-47 squadrons prefer ground attack
 Moved units closer to the front on Kuban map April 1943
-Added flag to prevent some planes from being designated as novice in the misson
+Added flag to prevent some planes from being designated as novice in the mission
+Made Spitfire Mk IV its own archtype to reflect complete replacement.
+- Currently flown by 193 and 349 squadron.  Others keep the Mk IX
+- 349 is acknowledged to be non historical.  It kept the IX.  I just wanted at least 2 units to fly the XIV.
 
 12.2.2
 Improved performance of the waypoint editor screen

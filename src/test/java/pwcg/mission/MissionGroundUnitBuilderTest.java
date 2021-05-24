@@ -145,7 +145,8 @@ public class MissionGroundUnitBuilderTest
         mission.generate(playerFlightTypes);
 
         AAAManager aaaManager = new AAAManager(campaign, mission);
-        List<GroundUnitCollection> AAA = aaaManager.getAAAForMission();
+        aaaManager.getAAAForMission(mission.getMissionGroundUnitBuilder());
+        List<GroundUnitCollection> AAA = mission.getMissionGroundUnitBuilder().getAAA();
 
         assert (AAA.size() > 10);
         for (GroundUnitCollection aaaUnit : AAA)

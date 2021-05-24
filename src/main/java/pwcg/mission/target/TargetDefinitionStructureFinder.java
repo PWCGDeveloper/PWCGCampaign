@@ -93,7 +93,6 @@ public class TargetDefinitionStructureFinder
             double distanceFromAirfield = MathUtils.calcDist(structure.getPosition(), airfield.getPosition());
             if (distanceFromAirfield < 5000)
             {
-                System.out.println("Structure close to " + airfield.getName() + " " + airfield.determineCountry().getCountryName() + " distance is " + distanceFromAirfield);
                 return true;
             }
         }

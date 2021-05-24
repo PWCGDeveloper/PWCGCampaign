@@ -48,7 +48,7 @@ public class Vehicle implements Cloneable, IVehicle
     private Vehicle()
     {
     }
-    
+
     public Vehicle(VehicleDefinition vehicleDefinition)
     {
         this.vehicleDefinition = vehicleDefinition;
@@ -89,7 +89,7 @@ public class Vehicle implements Cloneable, IVehicle
 
         return clone;
     }
-    
+
     public void makeVehicleFromDefinition(ICountry vehicleCountry)
     {
         country = vehicleCountry;
@@ -111,7 +111,8 @@ public class Vehicle implements Cloneable, IVehicle
 
     private void buildAssociatedBlock()
     {
-        VehicleDefinition blockDefinition = PWCGContext.getInstance().getStaticObjectDefinitionManager().getVehicleDefinitionByType(vehicleDefinition.getAssociatedBlock());
+        VehicleDefinition blockDefinition = PWCGContext.getInstance().getStaticObjectDefinitionManager()
+                .getVehicleDefinitionByType(vehicleDefinition.getAssociatedBlock());
         if (blockDefinition != null)
         {
             associatedBlock = new StaticObject(blockDefinition);
@@ -299,17 +300,24 @@ public class Vehicle implements Cloneable, IVehicle
     @Override
     public void setSpotterRange(int spotterRange)
     {
-        this.spotter = spotterRange;        
+        this.spotter = spotterRange;
     }
 
     @Override
-    public int getBeaconChannel() {
+    public int getBeaconChannel()
+    {
         return beaconChannel;
     }
 
     @Override
-    public void setBeaconChannel(int beaconChannel) {
+    public void setBeaconChannel(int beaconChannel)
+    {
         this.beaconChannel = beaconChannel;
     }
 
+    @Override
+    public String getVehicleType()
+    {
+        return vehicleType;
+    }
 }

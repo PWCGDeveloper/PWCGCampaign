@@ -114,4 +114,16 @@ public class StaticObject extends Block implements IVehicle
         
         return country;
     }
+
+    @Override
+    public String getVehicleType()
+    {
+        return desc;
+    }
+
+    @Override
+    public String getVehicleName()
+    {
+        return desc;
+    }
 }

@@ -5,16 +5,13 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.battle.Battle;
 import pwcg.campaign.battle.BattleManager;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
-import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -150,48 +147,23 @@ public class AssaultDefinitionGenerator
     private List<Integer> getFrontBattleIndeces(ICountry defendingCountry, Coordinate battleLocation, BattleSize battleSize) throws PWCGException
     {
         List<Integer> battleFrontIndeces = new ArrayList<>();
-        int centerFrontIndex = determineCenterOfBattle(defendingCountry, battleLocation);
-        int numAssaults = determineNumberOfAssaultSegments(battleSize);
+        int centerFrontIndex = AssaultDefinitionRange.determineCenterOfBattle(campaign, defendingCountry, battleLocation);
+        int numAssaults = AssaultDefinitionRange.determineNumberOfAssaultSegments(battleSize, centerFrontIndex);
 
         int startFrontIndex = centerFrontIndex;
         int finishFrontIndex = centerFrontIndex;
         if (numAssaults > 1)
         {
-            startFrontIndex = centerFrontIndex - (numAssaults / 2);
-            finishFrontIndex = startFrontIndex + numAssaults;
+            startFrontIndex = centerFrontIndex - (numAssaults * 3);
+            finishFrontIndex = startFrontIndex + (numAssaults * 3);
         }
-
+        
         for (int battleIndex = startFrontIndex; battleIndex <= finishFrontIndex; ++battleIndex)
         {
             battleFrontIndeces.add(battleIndex);
         }
 
         return battleFrontIndeces;
-    }
-
-    private int determineNumberOfAssaultSegments(BattleSize battleSize)
-    {
-        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        int numAssaults = productSpecific.getNumAssaultSegments(battleSize);
-        return numAssaults;
-    }
-
-    private int determineCenterOfBattle(ICountry defendingCountry, Coordinate battleLocation) throws PWCGException
-    {
-        FrontLinesForMap frontLineMarker = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
-        List<FrontLinePoint> frontLines = frontLineMarker.getFrontLines(defendingCountry.getSide());
-        int centerFrontIndex = frontLineMarker.findIndexForClosestPosition(battleLocation, defendingCountry.getSide());
-        if (centerFrontIndex < 10)
-        {
-            centerFrontIndex = 10;
-        }
-
-        if (centerFrontIndex > (frontLines.size() - 10))
-        {
-            centerFrontIndex = frontLines.size() - 10;
-        }
-
-        return centerFrontIndex;
     }
 
     private Coordinate getAssaultPositionAcrossFromAssaultingUnit(Side assaultingSide, Coordinate defensePosition) throws PWCGException

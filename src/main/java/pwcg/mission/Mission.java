@@ -122,7 +122,7 @@ public class Mission
         missionBlocks = blockBuilder.buildFixedPositionsForMissionTargeting();
 
         MissionAirfieldBuilder airfieldBuilder = new MissionAirfieldBuilder(this, missionBorders);
-        missionAirfields = airfieldBuilder.buildFieldsForPatrol();;
+        missionAirfields = airfieldBuilder.findFieldsForPatrol();;
     }
 
     private void createExpandedStructuresBoxForMission() throws PWCGException
@@ -265,6 +265,8 @@ public class Mission
             setMissionScript(missionOptions);
 
             missionFlights.finalizeMissionFlights();
+            groundUnitBuilder.finalizeGroundUnits();
+            
             frontLines.buildFrontLineIcons();
             waypointIconBuilder.createWaypointIcons(missionFlights.getPlayerFlights());
             airfieldIconBuilder.createWaypointIcons(campaign, this);

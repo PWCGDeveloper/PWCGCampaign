@@ -26,6 +26,7 @@ import pwcg.mission.flight.validate.PlayerEscortFlightValidator;
 import pwcg.mission.flight.validate.PositionEvaluator;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
+import pwcg.mission.ground.GroundUnitPositionVerifier;
 import pwcg.mission.mcu.group.virtual.VirtualWaypointPackageValidator;
 import pwcg.mission.target.TargetCategory;
 import pwcg.mission.target.TargetDefinition;
@@ -68,6 +69,8 @@ public class PlayerFlightTypeBoSFighterTest
         virtualWaypointPackageValidator.validate();
 
         assert(mission.getMissionFlights().getAiFlights().size() >= 3);
+        
+        GroundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
 	}
 
     @Test
@@ -93,6 +96,8 @@ public class PlayerFlightTypeBoSFighterTest
         virtualWaypointPackageValidator.validate();
 
         assert(mission.getMissionFlights().getAiFlights().size() >= 3);
+
+        GroundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
     }
 
     @Test
@@ -120,6 +125,8 @@ public class PlayerFlightTypeBoSFighterTest
         virtualWaypointPackageValidator.validate();
         
         assert(mission.getMissionFlights().getAiFlights().size() == 1);
+
+        GroundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
     }
 
 	@Test
@@ -147,6 +154,8 @@ public class PlayerFlightTypeBoSFighterTest
         virtualWaypointPackageValidator.validate();
 
         assert(mission.getMissionFlights().getAiFlights().size() >= 3);
+
+        GroundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
 	}
 
 	@Test
@@ -174,6 +183,8 @@ public class PlayerFlightTypeBoSFighterTest
         virtualWaypointPackageValidator.validate();
 
         assert(mission.getMissionFlights().getAiFlights().size() >= 3);
+
+        GroundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
 	}
 
     @Test
@@ -199,6 +210,8 @@ public class PlayerFlightTypeBoSFighterTest
         virtualWaypointPackageValidator.validate();
 
         assert(mission.getMissionFlights().getAiFlights().size() >= 3);
+
+        GroundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
     }
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)

@@ -17,6 +17,7 @@ import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.mission.flight.validate.PositionEvaluator;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
+import pwcg.mission.ground.GroundUnitPositionVerifier;
 import pwcg.mission.mcu.group.virtual.VirtualWaypointPackageValidator;
 import pwcg.mission.target.TargetCategory;
 import pwcg.mission.target.TargetDefinition;
@@ -60,6 +61,8 @@ public class PlayerFlightTypeBoSDiveBombTest
         
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
+        
+        GroundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
     }
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)

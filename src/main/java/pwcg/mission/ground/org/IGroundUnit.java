@@ -9,6 +9,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.ground.vehicle.VehicleClass;
+import pwcg.mission.mcu.McuSpawn;
 import pwcg.mission.target.TargetType;
 
 public interface IGroundUnit
@@ -41,4 +42,11 @@ public interface IGroundUnit
     TargetType getTargetType();
 
     int getUnitCount();
+    
+    int getIndex();
+
+    List<GroundUnitElement> getGroundElements();
+
+    List<McuSpawn> getSpawns();
+
 }

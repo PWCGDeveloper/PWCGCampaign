@@ -104,7 +104,7 @@ public class AirfieldObjectPlacer
 
             if (aaaUnit != null)
             {
-                mission.getMissionGroundUnitBuilder().addAirfieldAAA(aaaUnit);
+                mission.getMissionGroundUnitBuilder().addMissionAAA(aaaUnit);
             }
         }
     }
@@ -133,7 +133,7 @@ public class AirfieldObjectPlacer
         List<GroundUnitCollection> airfieldApproachAA = airfieldApproachAABuilder.addAirfieldApproachAA();
         for (GroundUnitCollection aaaUnit : airfieldApproachAA)
         {
-            mission.getMissionGroundUnitBuilder().addAirfieldAAA(aaaUnit);
+            mission.getMissionGroundUnitBuilder().addMissionAAA(aaaUnit);
         }
     }
 }

@@ -28,6 +28,14 @@ public class MissionAirfieldBuilder
         this.structureBorders = structureBorders;
     }
     
+    public MissionAirfields findFieldsForPatrol() throws PWCGException 
+    {
+        selectAirfieldsWithinMissionBoundaries();
+        selectPlayerAirfields();
+        
+        return new MissionAirfields(fieldSet);
+    }
+    
     public MissionAirfields buildFieldsForPatrol() throws PWCGException 
     {
         selectAirfieldsWithinMissionBoundaries();

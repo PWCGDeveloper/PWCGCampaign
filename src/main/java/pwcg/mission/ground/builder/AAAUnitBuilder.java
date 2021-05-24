@@ -3,7 +3,6 @@ package pwcg.mission.ground.builder;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Orientation;
-import pwcg.mission.Mission;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.GroundUnitSize;
@@ -47,19 +46,7 @@ public class AAAUnitBuilder
         groundUnitCollection.finishGroundUnitCollection();
         return groundUnitCollection;
     }
-    
-    public GroundUnitCollection createAAAArtilleryBatteryFromMission(Mission mission, GroundUnitSize groundUnitSize) throws PWCGException
-    {
-        if (mission.isNightMission())
-        {
-            return createAAAArtilleryBatteryWithSearchLight(groundUnitSize);
-        }
-        else
-        {
-            return createAAAArtilleryBattery(groundUnitSize);
-        }
-    }
-    
+
     public GroundUnitCollection createAAAArtilleryBattery (GroundUnitSize groundUnitSize) throws PWCGException
     {
         GroundUnitInformation groundUnitInformation = createAAGroundUnitInformation(groundUnitSize);

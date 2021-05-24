@@ -10,6 +10,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
+import pwcg.mission.mcu.McuSpawn;
 import pwcg.mission.mcu.group.MissionBeginCheckZoneBase;
 import pwcg.mission.mcu.group.MissionBeginSelfDeactivatingCheckZone;
 import pwcg.mission.target.TargetType;
@@ -31,15 +32,7 @@ public class GroundUnitCollection
         this.groundUnitCollectionData = groundUnitCollectionData;
     }
 
-    public Coordinate getTargetCoordinatesFromGroundUnits(Side side) throws PWCGException
-    {
-        GroundUnitCollectionTargetFinder groundUnitCollectionTargetFinder = new GroundUnitCollectionTargetFinder(this);
-        IGroundUnit targetUnit = groundUnitCollectionTargetFinder.findTargetUnit(side);
-        Coordinate targetCoordinates = targetUnit.getPosition();
-        return targetCoordinates;
-    }
-
-    public void merge(GroundUnitCollection relatedGroundCollection)
+    public void merge(GroundUnitCollection relatedGroundCollection) throws PWCGException
     {
         groundUnits.addAll(relatedGroundCollection.getGroundUnits());
     }
@@ -124,6 +117,17 @@ public class GroundUnitCollection
         return groundUnits;
     }
 
+    public List<McuSpawn> getSpawns()
+    {
+        List<McuSpawn> groundUnitCollectionVehicleSpawns = new ArrayList<>();
+        for (IGroundUnit groundUnit : groundUnits)
+        {
+            List<McuSpawn> groundUnitVehicleSpawns = groundUnit.getSpawns();
+            groundUnitCollectionVehicleSpawns.addAll(groundUnitVehicleSpawns);
+        }
+        return groundUnitCollectionVehicleSpawns;
+    }
+
     public Coordinate getPosition() throws PWCGException
     {
         GroundUnitCollectionTargetFinder groundUnitCollectionTargetFinder = new GroundUnitCollectionTargetFinder(this);
@@ -185,7 +189,7 @@ public class GroundUnitCollection
         return groundUnitCollectionData.getGroundUnitCollectionType();
     }
 
-    public void addGroundUnit(IGroundUnit groundUnit)
+    public void addGroundUnit(IGroundUnit groundUnit) throws PWCGException
     {
         groundUnits.add(groundUnit);
     }
@@ -210,5 +214,15 @@ public class GroundUnitCollection
     public void triggerGroundUnitCollection(Mission mission) throws PWCGException
     {
         missionBeginUnit.triggerMissionBeginCheckZone(mission);
+    }
+
+    public int getIndex()
+    {
+        return index;
+    }
+
+    public String getName()
+    {
+        return groundUnitName;
     }
 }

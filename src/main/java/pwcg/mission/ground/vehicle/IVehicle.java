@@ -29,4 +29,6 @@ public interface IVehicle extends IPWCGObject
     public Orientation getOrientation();
     public int getBeaconChannel();
     public int getIndex();
+    public String getVehicleType();
+    public String getVehicleName();
 }
