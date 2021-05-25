@@ -12,6 +12,8 @@ Added flag to prevent some planes from being designated as novice in the mission
 Made Spitfire Mk IV its own archtype to reflect complete replacement.
 - Currently flown by 193 and 349 squadron.  Others keep the Mk IX
 - 349 is acknowledged to be non historical.  It kept the IX.  I just wanted at least 2 units to fly the XIV.
+Fixed many instances of duplicated units
+- They weren't really duplicates.  They were just positioned on top of each other.
 
 12.2.2
 Improved performance of the waypoint editor screen

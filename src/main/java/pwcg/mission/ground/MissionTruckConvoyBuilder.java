@@ -18,7 +18,6 @@ import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.builder.TruckConvoyBuilder;
 import pwcg.mission.ground.org.GroundUnitCollection;
@@ -53,13 +52,9 @@ public class MissionTruckConvoyBuilder extends MissionUnitBuilder
             {
                 break;
             }
-            
-            int roll = RandomNumberGenerator.getRandom(100);
-            if (roll < 50)
-            {
-                GroundUnitCollection truckUnit = makeTruckConvoy(truckSide, bridge);
-                missionTransportConvoysForSide.add( truckUnit);
-            }
+                        
+            GroundUnitCollection truckUnit = makeTruckConvoy(truckSide, bridge);
+            missionTransportConvoysForSide.add( truckUnit);
         }
         
         return missionTransportConvoysForSide;
@@ -90,10 +85,27 @@ public class MissionTruckConvoyBuilder extends MissionUnitBuilder
         for (Bridge bridge : bridgesForSide)
         {
             Double distanceFromMission = MathUtils.calcDist(missionCenter, bridge.getPosition());
-            sortedStationsByDistance.put(distanceFromMission, bridge);
+            if (!isTooCloseToOtherBridge(bridge, sortedStationsByDistance))
+            {
+                sortedStationsByDistance.put(distanceFromMission, bridge);
+            }
         }
         return new ArrayList<Bridge>(sortedStationsByDistance.values());
     }
+
+    private boolean isTooCloseToOtherBridge(Bridge bridge, Map<Double, Bridge> inUseBridges)
+    {
+        for (Bridge inUseBridge : inUseBridges.values())
+        {
+            double distance = MathUtils.calcDist(bridge.getPosition(), inUseBridge.getPosition());
+            if (distance < 3000)                      
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     private GroundUnitCollection makeTruckConvoy(Side truckSide, Bridge bridge) throws PWCGException
     {

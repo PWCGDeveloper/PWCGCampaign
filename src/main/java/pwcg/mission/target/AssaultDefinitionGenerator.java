@@ -159,12 +159,10 @@ public class AssaultDefinitionGenerator
             startFrontIndex = assaultCenter - (numAssaultSegmentsPerFlank * 2);
         }
         
-        System.out.println("Start Segment");
         for (int i = 0; i < numAssaultSegments; ++i)
         {
             int assaultSegmentIndex = startFrontIndex + (i * 2);
             battleFrontIndeces.add(assaultSegmentIndex);
-            System.out.println("    - Add Segment index " + assaultSegmentIndex);
         }
 
         return battleFrontIndeces;
