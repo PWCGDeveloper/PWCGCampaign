@@ -53,12 +53,10 @@ public class AAAManager
 
 	private List<GroundUnitCollection> selectAAAForMission(List<GroundUnitCollection> allAAA) throws PWCGException, PWCGException
 	{
-	    CoordinateBox missionBorders = getFrontBorders();
-
 		List<GroundUnitCollection> selectedAAA = new ArrayList<>();
 		for (GroundUnitCollection aaa : allAAA)
 		{
-			if (missionBorders.isInBox(aaa.getPosition()))
+			if (isAddAAA(aaa))
 			{
 				selectedAAA.add(aaa);
 			}
@@ -66,8 +64,30 @@ public class AAAManager
 		
 		return selectedAAA;
 	}
+	
+	private boolean isAddAAA(GroundUnitCollection aaa) throws PWCGException
+	{
+        CoordinateBox missionBorders = getFrontBorders();
+        if (!missionBorders.isInBox(aaa.getPosition()))
+        {
+            return false;
+        }
+        
+        if (!isAAAFarEnoughAwayFromOtherUnits(aaa))
+        {
+            return false;
+        }
 
-	private CoordinateBox getFrontBorders() throws PWCGException, PWCGException
+        return true;
+	}
+
+	private boolean isAAAFarEnoughAwayFromOtherUnits(GroundUnitCollection aaa) throws PWCGException
+    {
+	    GroundUnitPositionVerifier groundUnitPositionVerifier = new GroundUnitPositionVerifier();
+	    return groundUnitPositionVerifier.verifyGroundCollectionUnitPositionsNotDuplicated(mission.getMissionGroundUnitBuilder().getAllMissionGroundUnits(), aaa);
+    }
+
+    private CoordinateBox getFrontBorders() throws PWCGException, PWCGException
 	{
 		ConfigManager configManager = campaign.getCampaignConfigManager();
         int keepGroupSpread = configManager.getIntConfigParam(ConfigItemKeys.KeepGroupSpreadKey);        
