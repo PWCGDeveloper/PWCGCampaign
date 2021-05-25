@@ -33,7 +33,7 @@
     "19430120": "Rahinsky",
     "19430301": "Maykop-3",
     "19430330": "Juravskaya",
-    "19430418": "Novovelichkovskaya",
+    "19430418": "Ivanovskaya",
     "19430918": "Gelenjik-3",
     "19430927": "Ivanovskaya",
     "19431004": "Krasnoarmeyskayas",
@@ -101,6 +101,9 @@
         "nightMissionOdds": 10
       }
     ]
+  },
+  "targetPreferences": {
+    "targetPreferencePeriods": []
   },
   "conversionPeriods": [],
   "callsigns": {

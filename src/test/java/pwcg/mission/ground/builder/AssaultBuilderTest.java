@@ -23,7 +23,6 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
@@ -31,8 +30,8 @@ import pwcg.mission.MissionFlights;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightPlanes;
 import pwcg.mission.flight.plane.PlaneMcu;
-import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.GroundUnitCollection;
+import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.vehicle.VehicleClass;
 
 @RunWith(PowerMockRunner.class)
@@ -106,7 +105,8 @@ public class AssaultBuilderTest
     
     public GroundUnitCollection createLargeAssaultTest () throws PWCGException 
     {
-        GroundUnitCollection groundUnitGroup = AssaultBuilder.generateAssault(mission, new Coordinate (102000, 0, 100000));
+        int frontIndex = 50;
+        GroundUnitCollection groundUnitGroup = AssaultBuilder.generateAssault(mission, frontIndex);
         
         assert (groundUnitGroup.getGroundUnits().size() >= 10);
         groundUnitGroup.validate();
