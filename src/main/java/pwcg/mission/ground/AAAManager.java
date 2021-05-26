@@ -83,7 +83,7 @@ public class AAAManager
 
 	private boolean isAAAFarEnoughAwayFromOtherUnits(GroundUnitCollection aaa) throws PWCGException
     {
-	    GroundUnitPositionVerifier groundUnitPositionVerifier = new GroundUnitPositionVerifier();
+	    GroundUnitPositionDuplicateDetector groundUnitPositionVerifier = new GroundUnitPositionDuplicateDetector();
 	    return groundUnitPositionVerifier.verifyGroundCollectionUnitPositionsNotDuplicated(mission.getMissionGroundUnitBuilder().getAllMissionGroundUnits(), aaa);
     }
 

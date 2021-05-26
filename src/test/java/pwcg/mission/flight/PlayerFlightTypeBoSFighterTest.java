@@ -26,11 +26,11 @@ import pwcg.mission.flight.validate.PlayerEscortFlightValidator;
 import pwcg.mission.flight.validate.PositionEvaluator;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
-import pwcg.mission.ground.GroundUnitPositionVerifier;
 import pwcg.mission.mcu.group.virtual.VirtualWaypointPackageValidator;
 import pwcg.mission.target.TargetCategory;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
+import pwcg.mission.utils.GroundUnitPositionVerifier;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
@@ -38,7 +38,6 @@ import pwcg.testutils.TestMissionBuilderUtility;
 public class PlayerFlightTypeBoSFighterTest 
 {    
     private Campaign campaign;
-    private GroundUnitPositionVerifier groundUnitPositionVerifier = new GroundUnitPositionVerifier();
 
     @Before
     public void setup() throws PWCGException
@@ -71,7 +70,7 @@ public class PlayerFlightTypeBoSFighterTest
 
         assert(mission.getMissionFlights().getAiFlights().size() >= 3);
         
-        groundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
+        GroundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
 	}
 
     @Test
@@ -98,7 +97,7 @@ public class PlayerFlightTypeBoSFighterTest
 
         assert(mission.getMissionFlights().getAiFlights().size() >= 3);
 
-        groundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
+        GroundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
     }
 
     @Test
@@ -127,7 +126,7 @@ public class PlayerFlightTypeBoSFighterTest
         
         assert(mission.getMissionFlights().getAiFlights().size() == 1);
 
-        groundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
+        GroundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
     }
 
 	@Test
@@ -156,7 +155,7 @@ public class PlayerFlightTypeBoSFighterTest
 
         assert(mission.getMissionFlights().getAiFlights().size() >= 3);
 
-        groundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
+        GroundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
 	}
 
 	@Test
@@ -185,7 +184,7 @@ public class PlayerFlightTypeBoSFighterTest
 
         assert(mission.getMissionFlights().getAiFlights().size() >= 3);
 
-        groundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
+        GroundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
 	}
 
     @Test
@@ -212,7 +211,7 @@ public class PlayerFlightTypeBoSFighterTest
 
         assert(mission.getMissionFlights().getAiFlights().size() >= 3);
 
-        groundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
+        GroundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
     }
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)

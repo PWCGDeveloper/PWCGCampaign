@@ -12,6 +12,7 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
@@ -48,19 +49,19 @@ public class MissionBattleBuilder implements IBattleBuilder
 
         if (numBattles > 0)
         {
-            List<Integer> assaultLocations = getBattleLocations(numBattles);
-            generateAssaultsAtLocations(assaultLocations);
+            List<Coordinate> assaultPositions = getBattleLocations(numBattles);
+            generateAssaultsAtLocations(assaultPositions);
         }
         
         return battles;
     }
 
 
-    private void generateAssaultsAtLocations(List<Integer> assaultLocations) throws PWCGException
+    private void generateAssaultsAtLocations(List<Coordinate> assaultPositions) throws PWCGException
     {
-        for (Integer assaultLocation : assaultLocations)
+        for (Coordinate assaultPosition : assaultPositions)
         {
-            GroundUnitCollection assaultUnitCollection = AssaultBuilder.generateAssault(mission, assaultLocation);
+            GroundUnitCollection assaultUnitCollection = AssaultBuilder.generateAssault(mission, assaultPosition);
             battles.add(assaultUnitCollection);
         }
     }
@@ -91,21 +92,15 @@ public class MissionBattleBuilder implements IBattleBuilder
     private int reduceNumberOfbattlesForSmallFront(int maxBattles) throws PWCGException
     {
         List<FrontLinePoint> battleBoxFrontLinePoints = getFrontLineIndecesInBox();
-        if (battleBoxFrontLinePoints.size() < 25)
+        int maxBattlesForFrontPoints = AssaultDefinitionRange.calculateMaximumAssultsForFrontPoints(battleBoxFrontLinePoints.size(), maxBattles);
+        if (maxBattlesForFrontPoints < maxBattles)
         {
-            maxBattles = 1;
-        }        
-        else if (battleBoxFrontLinePoints.size() < 40)
-        {
-            if (maxBattles > 2)
-            {
-                maxBattles = 1;
-            }
+            maxBattles = maxBattlesForFrontPoints;
         }
         return maxBattles;
     }
 
-    private List<Integer> getBattleLocations(int numBattles) throws PWCGException
+    private List<Coordinate> getBattleLocations(int numBattles) throws PWCGException
     {
         List<FrontLinePoint> battleBoxFrontLinePoints = getFrontLineIndecesInBox();
         if (battleBoxFrontLinePoints.isEmpty())
@@ -113,14 +108,11 @@ public class MissionBattleBuilder implements IBattleBuilder
             return new ArrayList<>();
         }
 
-        List<Integer> battlePositionIndeces = new ArrayList<>();
-        for (int i = 0; i < numBattles; ++i)
+        List<Coordinate> battlePositionIndeces = new ArrayList<>();
+        List<Integer> indecesToUse = AssaultDefinitionRange.calculateFirstBattlePoints(battleBoxFrontLinePoints.size(), numBattles);
+        for (int indexToUse : indecesToUse)
         {
-            int selectedIndex = getFrontIndexForBattle(battleBoxFrontLinePoints, battlePositionIndeces);
-            if (selectedIndex != 0)
-            {
-                battlePositionIndeces.add(selectedIndex);
-            }
+            battlePositionIndeces.add(battleBoxFrontLinePoints.get(indexToUse).getPosition());
         }
 
         return battlePositionIndeces;
@@ -141,29 +133,5 @@ public class MissionBattleBuilder implements IBattleBuilder
             }
         }
         return battleBoxFrontLinePoints;
-    }
-
-    private int getFrontIndexForBattle(List<FrontLinePoint> battleBoxFrontLinePoints, List<Integer> battlePositionIndeces)
-    {
-        List<FrontLinePoint> remainingBattleBoxFrontLinePoints = reduceBattleBoxFrontLinePoints(battleBoxFrontLinePoints, battlePositionIndeces);
-        int selectedIndex = 0;
-        if (remainingBattleBoxFrontLinePoints.size() > 0)
-        {
-            selectedIndex = RandomNumberGenerator.getRandom(remainingBattleBoxFrontLinePoints.size());
-        }
-        return selectedIndex;
-    }
-
-    private List<FrontLinePoint> reduceBattleBoxFrontLinePoints(List<FrontLinePoint> battleBoxFrontLinePoints, List<Integer> battlePositionIndeces)
-    {
-        List<FrontLinePoint> remainingBattleBoxFrontLinePoints = new ArrayList<>();
-        for (int index = 0; index < battleBoxFrontLinePoints.size(); ++index)
-        {
-            if (!AssaultDefinitionRange.isInUse(index, battlePositionIndeces))
-            {
-                remainingBattleBoxFrontLinePoints.add(battleBoxFrontLinePoints.get(index));
-            }
-        }
-        return remainingBattleBoxFrontLinePoints;
     }
 }

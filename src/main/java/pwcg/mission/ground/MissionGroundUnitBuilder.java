@@ -167,7 +167,7 @@ public class MissionGroundUnitBuilder
     
     private boolean eliminateDuplicateGroundUnitFromCollection(List<GroundUnitCollection> groundUnitCollections) throws PWCGException
     {
-        GroundUnitPositionVerifier groundUnitPositionVerifier = new GroundUnitPositionVerifier();        
+        GroundUnitPositionDuplicateDetector groundUnitPositionVerifier = new GroundUnitPositionDuplicateDetector();        
         for (GroundUnitCollection groundUnitCollection : groundUnitCollections)
         {
             if (!groundUnitPositionVerifier.verifyGroundCollectionUnitPositionsNotDuplicated(getAllMissionGroundUnits(), groundUnitCollection))
@@ -313,4 +313,8 @@ public class MissionGroundUnitBuilder
         return AAA;
     }
 
+    public List<GroundUnitCollection> getAssaults()
+    {
+        return missionBattles;
+    }
  }

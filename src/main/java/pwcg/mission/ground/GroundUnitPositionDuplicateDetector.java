@@ -6,20 +6,12 @@ import java.util.Map;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.Mission;
 import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.mcu.McuSpawn;
 
-public class GroundUnitPositionVerifier
+public class GroundUnitPositionDuplicateDetector
 {
     Map <Integer, Integer> duplicateGroundUnitCollections = new HashMap<>();
-    
-    public void verifyGroundUnitPositionsAndAssert (Mission mission) throws PWCGException
-    {
-        boolean noDuplicates = verifyMissionGroundUnitPositionsNotDuplicated(mission.getMissionGroundUnitBuilder().getAllMissionGroundUnits(), mission.getMissionGroundUnitBuilder().getAllMissionGroundUnits());
-        assert (noDuplicates);
-    }
-    
     
     public boolean verifyMissionGroundUnitPositionsNotDuplicated (List<GroundUnitCollection> testGroundUnitCollections, List<GroundUnitCollection> groundUnitCollections) throws PWCGException
     {

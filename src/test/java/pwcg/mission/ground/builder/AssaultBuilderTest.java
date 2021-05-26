@@ -23,6 +23,7 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
@@ -105,8 +106,8 @@ public class AssaultBuilderTest
     
     public GroundUnitCollection createLargeAssaultTest () throws PWCGException 
     {
-        int frontIndex = 50;
-        GroundUnitCollection groundUnitGroup = AssaultBuilder.generateAssault(mission, frontIndex);
+        Coordinate assaultPosition = new Coordinate(150000, 0, 150000);
+        GroundUnitCollection groundUnitGroup = AssaultBuilder.generateAssault(mission, assaultPosition);
         
         assert (groundUnitGroup.getGroundUnits().size() >= 10);
         groundUnitGroup.validate();
@@ -147,6 +148,10 @@ public class AssaultBuilderTest
             else if (groundUnit.getCountry().getCountry() == defender)
             {
                 if (groundUnit.getVehicleClass() == VehicleClass.ArtilleryAntiTank)
+                {
+                    assert (groundUnit.getVehicles().size() >= 2);
+                }
+                else if (groundUnit.getVehicleClass() == VehicleClass.Tank)
                 {
                     assert (groundUnit.getVehicles().size() >= 2);
                 }

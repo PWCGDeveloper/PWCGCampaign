@@ -19,11 +19,11 @@ import pwcg.mission.flight.validate.PlaneRtbValidator;
 import pwcg.mission.flight.validate.PositionEvaluator;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
-import pwcg.mission.ground.GroundUnitPositionVerifier;
 import pwcg.mission.mcu.group.virtual.VirtualWaypointPackageValidator;
 import pwcg.mission.target.TargetCategory;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
+import pwcg.mission.utils.GroundUnitPositionVerifier;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
@@ -31,7 +31,6 @@ import pwcg.testutils.TestMissionBuilderUtility;
 public class PlayerFlightTypeBoSBombTest
 {
     private Campaign campaign;
-    private GroundUnitPositionVerifier groundUnitPositionVerifier = new GroundUnitPositionVerifier();
 
 
     @Before
@@ -70,7 +69,7 @@ public class PlayerFlightTypeBoSBombTest
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
         
-        groundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
+        GroundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
     }
 
     @Test
@@ -97,7 +96,7 @@ public class PlayerFlightTypeBoSBombTest
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
         
-        groundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
+        GroundUnitPositionVerifier.verifyGroundUnitPositionsAndAssert(mission);
     }
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)
