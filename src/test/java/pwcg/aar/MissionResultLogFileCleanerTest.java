@@ -47,6 +47,8 @@ public class MissionResultLogFileCleanerTest
         filenames.add("missionReport(2016-09-11-22-51-08)[4].txt");
         
         Mockito.when(directoryReader.getFiles()).thenReturn(filenames);
+        
+        Mockito.when(FileUtils.fileExists(ArgumentMatchers.<String>any())).thenReturn(true);
     }
 
     @Test
@@ -67,8 +69,8 @@ public class MissionResultLogFileCleanerTest
     @Test
     public void testCleanMissionLogsFilesAreNew() throws PWCGException
     {
-        long oneDayAgoPlus = System.currentTimeMillis() - 86300000;
-        Mockito.when(FileUtils.ageOfFilesInMillis(ArgumentMatchers.<String>any())).thenReturn(Long.valueOf(oneDayAgoPlus));
+        long lessThanOneDayAgo = System.currentTimeMillis() - 86300000;
+        Mockito.when(FileUtils.ageOfFilesInMillis(ArgumentMatchers.<String>any())).thenReturn(Long.valueOf(lessThanOneDayAgo));
         Mockito.when(directoryReader.getFiles()).thenReturn(filenames);
     
         Mockito.when(configManagerGlobal.getIntConfigParam(ConfigItemKeys.DeleteAllMissionLogsKey)).thenReturn(1);
