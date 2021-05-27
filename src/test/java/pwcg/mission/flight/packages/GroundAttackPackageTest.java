@@ -75,7 +75,6 @@ public class GroundAttackPackageTest extends PwcgTestBase
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
         
         MissionFlights missionFlights = buildFlight(campaign);
-        //MissionFlights missionFlights = TestMissionBuilderUtility.createTestMission(campaign, MissionProfile.DAY_TACTICAL_MISSION, FlightTypes.GROUND_ATTACK)
         
         IFlight playerFlight = missionFlights.getPlayerFlights().get(0);
         assert(playerFlight.getTargetDefinition().getTargetType() == TargetType.TARGET_AIRFIELD);

@@ -37,6 +37,7 @@ public class KubanInvasionFlightTest
         campaign.setDate(DateUtils.getDateYYYYMMDD("19431101"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
+        mission.finalizeMission();
 
         assert (mission.getSkirmish() != null);
         assert (mission.getSkirmish().getSkirmishName().equals("Kerch Amphibious Assault"));
@@ -64,6 +65,7 @@ public class KubanInvasionFlightTest
         campaign.setDate(DateUtils.getDateYYYYMMDD("19431110"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
+        mission.finalizeMission();
 
         assert (mission.getSkirmish() != null);
         assert (mission.getSkirmish().getSkirmishName().equals("Eltigen Amphibious Assault"));
@@ -96,7 +98,8 @@ public class KubanInvasionFlightTest
         campaign.setDate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
-        
+        mission.finalizeMission();
+
         assert (mission.getSkirmish() == null);
         
         MissionFlightValidator.validateMission(mission);

@@ -32,6 +32,10 @@ public class EgressWaypointGenerator
         double angleOffsetFromIngress = MathUtils.adjustAngle(angleFromFieldToFront, headingOffsetFromIngress);
         Coordinate egressCoord = MathUtils.calcNextCoord(ingressWaypointCoord, angleOffsetFromIngress, 5000);
         egressCoord.setYPos(flight.getFlightInformation().getAltitude());
+        if (egressCoord.getYPos() < 500)
+        {
+            egressCoord.setYPos(500);
+        }
 
         return egressCoord;
     }

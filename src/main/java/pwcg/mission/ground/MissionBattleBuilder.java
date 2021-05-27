@@ -45,17 +45,28 @@ public class MissionBattleBuilder implements IBattleBuilder
     private List<GroundUnitCollection> generateLandBattles() throws PWCGException 
     {
         int maxBattles = getMaxBattles();
-        int numBattles = RandomNumberGenerator.getRandom(maxBattles+1);
-
-        if (numBattles > 0)
+        if (maxBattles > 0)
         {
-            List<Coordinate> assaultPositions = getBattleLocations(numBattles);
-            generateAssaultsAtLocations(assaultPositions);
+            int numBattles = getNumBattles(maxBattles);
+            if (numBattles > 0)
+            {
+                List<Coordinate> assaultPositions = getBattleLocations(numBattles);
+                generateAssaultsAtLocations(assaultPositions);
+            }
         }
         
         return battles;
     }
 
+    private int getNumBattles(int maxBattles)
+    {
+        int numBattles = RandomNumberGenerator.getRandom(maxBattles+1);
+        if (numBattles == 0)
+        {
+            numBattles = 1;
+        }
+        return numBattles;
+    }
 
     private void generateAssaultsAtLocations(List<Coordinate> assaultPositions) throws PWCGException
     {
@@ -112,7 +123,10 @@ public class MissionBattleBuilder implements IBattleBuilder
         List<Integer> indecesToUse = AssaultDefinitionRange.calculateFirstBattlePoints(battleBoxFrontLinePoints.size(), numBattles);
         for (int indexToUse : indecesToUse)
         {
-            battlePositionIndeces.add(battleBoxFrontLinePoints.get(indexToUse).getPosition());
+            if (indexToUse > 0 && indexToUse < battleBoxFrontLinePoints.size())
+            {
+                battlePositionIndeces.add(battleBoxFrontLinePoints.get(indexToUse).getPosition());
+            }
         }
 
         return battlePositionIndeces;
@@ -120,11 +134,11 @@ public class MissionBattleBuilder implements IBattleBuilder
 
     private List<FrontLinePoint> getFrontLineIndecesInBox() throws PWCGException
     {
+        List<FrontLinePoint> battleBoxFrontLinePoints = new ArrayList<>();
         CoordinateBox battleLocationBorders = CoordinateBox.copy(mission.getMissionBorders());
         battleLocationBorders.expandBox(BATTLE_BOX_EXPANSION_FROM_MISSION);
-        
-        List<FrontLinePoint> battleBoxFrontLinePoints = new ArrayList<>();
-        FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         for (FrontLinePoint frontLinePoint : frontLinesForMap.getFrontLines(Side.ALLIED))
         {
             if (battleLocationBorders.isInBox(frontLinePoint.getPosition()))
@@ -132,6 +146,7 @@ public class MissionBattleBuilder implements IBattleBuilder
                 battleBoxFrontLinePoints.add(frontLinePoint);
             }
         }
+
         return battleBoxFrontLinePoints;
     }
 }

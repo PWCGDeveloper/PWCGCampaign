@@ -35,7 +35,7 @@ public class MissionFlightValidator
         Map<String, Airfield> includedAirfields = new HashMap<>();
         for (IFlight flight : mission.getMissionFlights().getAllAerialFlights())
         {
-            if (flight.getFlightInformation().isVirtual())
+            if (flight.getFlightInformation().isAirStart())
             {
                 continue;
             }

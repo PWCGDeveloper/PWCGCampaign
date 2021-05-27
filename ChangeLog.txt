@@ -14,6 +14,8 @@ Made Spitfire Mk IV its own archtype to reflect complete replacement.
 - 349 is acknowledged to be non historical.  It kept the IX.  I just wanted at least 2 units to fly the XIV.
 Fixed many instances of duplicated units
 - They weren't really duplicates.  They were just positioned on top of each other.
+Fixed case where battle was not being generated when it was required
+Fixed case where Ai scramble missions could have a zero altitude waypoint
 
 12.2.2
 Improved performance of the waypoint editor screen

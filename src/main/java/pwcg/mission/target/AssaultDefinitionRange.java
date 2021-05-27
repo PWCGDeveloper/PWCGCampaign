@@ -24,6 +24,17 @@ public class AssaultDefinitionRange
     public static int calculateMaximumAssultsForFrontPoints(int numberOfIndeces, int numBattles)
     {
         int maxBattles = numberOfIndeces / MINIMUM_INDECES_FOR_ASSAULT;
+        if (numberOfIndeces > 0)
+        {
+            if (maxBattles < 1)
+            {
+                maxBattles = 1;
+            }
+        }
+        else
+        {
+            maxBattles = 0;
+        }
         return maxBattles;
     }
 
