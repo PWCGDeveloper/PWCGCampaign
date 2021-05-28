@@ -1,6 +1,10 @@
 
 ​At the PWCG web site
 
+12.2.4
+Added 41 Squadron flying Spitfire Mk XIV
+Reverted 349 Squadron to Spitfire Mk IX
+
 12.2.3
 Added squadron level target preferences.  
 - Allows squadrons to be directed towards specific target types
