@@ -47,20 +47,19 @@ public class SoundManager extends Thread
             soundVolume = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.SoundVolumeKey);
             playMusic = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.PlayMusicKey);
             playSounds = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.PlaySoundsKey);
-
-            toggleMusic();
 	    }
 	    catch (Exception exp)
 	    {
 	        
 	    }
 	}
-	
+
 	private void toggleMusic()
 	{
         if (playMusic != 1)
         {
-            stopMusic();        }
+            stopMusic(); 
+        }
 	}
 
     @Override
@@ -71,7 +70,6 @@ public class SoundManager extends Thread
             int sleepTime = 5000;
             try
             {
-                // Avoid simultaneous access to the queue
                 synchronized(this)
                 {
         	        if (musicQueue.size() > 0)
@@ -149,9 +147,6 @@ public class SoundManager extends Thread
 		return sleepTime;
 	}
 
-    /**
-     * @param audioFile
-     */
     public void playSound(String audioFile)
     {
         try

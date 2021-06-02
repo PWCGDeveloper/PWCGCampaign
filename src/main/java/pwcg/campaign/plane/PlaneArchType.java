@@ -156,6 +156,10 @@ public class PlaneArchType
         {
             archTypeDescription = "Tempest";
         }
+        else if (archType.contains("typhoon")) 
+        {
+            archTypeDescription = "Typhoon";
+        }
         else if (archType.contains("yak")) 
         {
             archTypeDescription = "Yak";

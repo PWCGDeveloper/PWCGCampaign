@@ -33,6 +33,11 @@ public enum PayloadElement
     LB1000x2(PayloadElementCategory.ORDNANCE_BOMB, "1000 lb Bomb x2", 1820),
     LB2000x2(PayloadElementCategory.ORDNANCE_BOMB, "2000 lb Bomb x2", 3640),
     M8X6(PayloadElementCategory.ORDNANCE_BOMB, "6x M8 Rocket", 240),
+    MKI_HE_ROCKETS_X8(PayloadElementCategory.ORDNANCE_BOMB, "8x MK I HE Rocket", 240),
+    MKI_AP_ROCKETS_X8(PayloadElementCategory.ORDNANCE_BOMB, "8x MK I AP Rocket", 240),
+    MKI_ROCKETS_DOUBLE(PayloadElementCategory.ORDNANCE_BOMB, "MK I HE Rocket Double Payload", 580),
+    MKIII_HE_ROCKETS_X8(PayloadElementCategory.ORDNANCE_BOMB, "8x MK III HE Rocket", 240),
+    MKIII_AP_ROCKETS_X8(PayloadElementCategory.ORDNANCE_BOMB, "8x MK III AP Rocket", 240),
     P38_BOMBS_AND_ROCKETS(PayloadElementCategory.ORDNANCE_BOMB, "500 lb Bomb x2 and 6x M8 Rocket", 240),
     P47_BOMBS_AND_ROCKETS(PayloadElementCategory.ORDNANCE_BOMB, "500 lb Bomb x2 and 6x M8 Rocket", 240),
     LB1650x1(PayloadElementCategory.ORDNANCE_BOMB, "1650 lb Bomb x1`", 800),
@@ -79,6 +84,7 @@ public enum PayloadElement
     WINDSCREEN(PayloadElementCategory.MODIFICATION, "Windscreen", 2),
     MIRROR(PayloadElementCategory.MODIFICATION, "Mirror", 0),
     GYRO_GUNSIGHT(PayloadElementCategory.MODIFICATION, "Gyro Gunsight", 0),
+    REFLECTOR_GUNSIGHT(PayloadElementCategory.MODIFICATION, "Reflector Gunsight", 0),
     P47_GUNSIGHT(PayloadElementCategory.MODIFICATION, "P-47 Gunsight", 0),
     P51_GUNSIGHT(PayloadElementCategory.MODIFICATION, "P-51 Gunsight", 0),
     LANDING_LIGHTS(PayloadElementCategory.MODIFICATION, "Landing Lights", 0),
@@ -115,6 +121,7 @@ public enum PayloadElement
     MW50(PayloadElementCategory.MODIFICATION, "MW50", 0),
     PBP_1A(PayloadElementCategory.MODIFICATION, "PBP 1A", 100),
     AIR_FILTER(PayloadElementCategory.MODIFICATION, "Air Filter", 10),
+    FOUR_PLADE_PROP(PayloadElementCategory.MODIFICATION, "Four Blade Propellor", 10),
 
 
     AMMO_COUNTER(PayloadElementCategory.MODIFICATION, "Ammo Counter", 0),
@@ -133,7 +140,8 @@ public enum PayloadElement
     DAY_SIGHT(PayloadElementCategory.MODIFICATION, "Day SIght", 0),
     NIGHT_SIGHT(PayloadElementCategory.MODIFICATION, "Night SIght", 0),
     WING_CUTOUT(PayloadElementCategory.MODIFICATION, "Wing Cutout", 0),
-    
+    DUST_DEFLECTOR(PayloadElementCategory.MODIFICATION, "Dust Deflector", 0),
+
     TWIN_SPANDAU(PayloadElementCategory.WEAPON, "Twin Spandau", 50),
     LEWIS_TOP(PayloadElementCategory.WEAPON, "Lewis Gun Top", 50),
     LEWIS_WING(PayloadElementCategory.WEAPON, "Lewis Gun Wing", 50),
@@ -256,11 +264,9 @@ public enum PayloadElement
     MK108_30(PayloadElementCategory.WEAPON, "MK 108 30mm", 50),
 	BK37_HE_GUNPOD(PayloadElementCategory.WEAPON, "37mm Gun Pod (HE)", 100),
 	BK37_AP_GUNPOD(PayloadElementCategory.WEAPON, "37mm Gun Pod (AP)", 100),
-    BREDA_GUNPOD(PayloadElementCategory.WEAPON, "Breda Gun Pod", 50),
+    BREDA_GUNPOD(PayloadElementCategory.WEAPON, "Breda Gun Pod", 50);
 
-    
-	NONE(PayloadElementCategory.MODIFICATION, "No Modifications", 0);
-	
+    	
 	private String description;
     private int weight;
 	private PayloadElementCategory category;

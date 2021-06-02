@@ -7,13 +7,8 @@
   "unitIdCode": "DP",
   "planeAssignments": [
     {
-      "archType": "spitfireGriffon",
+      "archType": "typhoon",
       "squadronIntroduction": "19440901",
-      "squadronWithdrawal": "19441201"
-    },
-    {
-      "archType": "spitfire",
-      "squadronIntroduction": "19441201",
       "squadronWithdrawal": "19450601"
     }
   ],
@@ -67,11 +62,11 @@
         "weightedRoles": [
           {
             "role": "ROLE_FIGHTER",
-            "weight": 80
+            "weight": 40
           },
           {
             "role": "ROLE_ATTACK",
-            "weight": 20
+            "weight": 60
           }
         ]
       }

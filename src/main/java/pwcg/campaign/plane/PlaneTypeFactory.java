@@ -186,7 +186,7 @@ public class PlaneTypeFactory
             {
                 if (thisPlane.isPrimaryRole(role))
                 {
-                    if (thisPlane.getIntroduction().before(date))
+                    if (DateUtils.isDateInRange(date, thisPlane.getIntroduction(), thisPlane.getWithdrawal()))
                     {
                         availablePlaneTypes.put(thisPlane.getGoodness(), thisPlane);
                     }

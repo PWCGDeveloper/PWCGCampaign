@@ -10,6 +10,7 @@ public enum FCPlaneAttributeMapping implements IPlaneAttributeMapping
     FOKKERDR1("fokkerdr1"),
     FOKKERD7("fokkerd7"),
     FOKKERD7F("fokkerd7f"),
+    FOKKERD8("fokkerd8"),
     HALBERSTADTCLII("halberstadtcl2"),
     HALBERSTADTCLIIAU("halberstadtcl2au"),
 
