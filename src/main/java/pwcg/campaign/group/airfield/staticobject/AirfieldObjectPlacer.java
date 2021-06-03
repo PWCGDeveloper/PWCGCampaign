@@ -51,7 +51,6 @@ public class AirfieldObjectPlacer
         AirfieldHotSpotTranslator hotSpotTranslator = HotSpotTranslatorFactory.createHotSpotTranslatorFactory(mission, airfield);
         
         List<HotSpot> hotSpots = hotSpotTranslator.getHotSpots();
-        
         for (HotSpot hotSpot : hotSpots)
         {       
             if (hotSpot.getHotSpotType() == HotSpotType.HOTSPOT_SEARCHLIGHT)

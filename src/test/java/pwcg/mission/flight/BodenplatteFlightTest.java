@@ -36,6 +36,7 @@ public class BodenplatteFlightTest
         campaign.setDate(DateUtils.getDateYYYYMMDD("19450101"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
+        mission.finalizeMission();
 
         assert (mission.getSkirmish() != null);
 
@@ -53,6 +54,7 @@ public class BodenplatteFlightTest
         campaign.setDate(DateUtils.getDateYYYYMMDD("19450101"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
+        mission.finalizeMission();
 
         assert (mission.getSkirmish() != null);
         assert (mission.getSkirmish().getSkirmishName().contentEquals("Bodenplatte-Ophoven"));
@@ -76,6 +78,7 @@ public class BodenplatteFlightTest
         campaign.setDate(DateUtils.getDateYYYYMMDD("19450101"));
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
+        mission.finalizeMission();
 
         assert (mission.getSkirmish() != null);
         assert (mission.getSkirmish().getSkirmishName().contentEquals("Bodenplatte-Volkel"));

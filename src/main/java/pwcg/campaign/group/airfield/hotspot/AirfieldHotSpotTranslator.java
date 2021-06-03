@@ -18,6 +18,7 @@ import pwcg.mission.flight.IFlight;
 
 public class AirfieldHotSpotTranslator
 {
+    private static final int MAX_HOT_SPOTS = 30;
     private static double SPOT_DENSITY = 20;
 
     private Mission mission;
@@ -37,9 +38,9 @@ public class AirfieldHotSpotTranslator
        Collections.shuffle(hotSpots);
        
        classifyAirfieldHotspots();
-       if (hotSpots.size() > 30)
+       if (hotSpots.size() > MAX_HOT_SPOTS)
        {
-           hotSpots = hotSpots.subList(0, 30);
+           hotSpots = hotSpots.subList(0, MAX_HOT_SPOTS);
        }
        return hotSpots;
     }
@@ -111,35 +112,56 @@ public class AirfieldHotSpotTranslator
             ConfigManagerCampaign configManager = flight.getCampaign().getCampaignConfigManager();
             String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
     
-            if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+            if (flight.isPlayerFlight())
             {
-                numAAHotSpots = 8;
+                numAAHotSpots = getNumAAAForPlayerAirfield(currentGroundSetting);
             }
-            
-            if (flight != null)
+            else
             {
-                if (flight.isPlayerFlight())
-                {
-                     if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
-                    {
-                        numAAHotSpots = 4;
-                    }
-                    else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
-                    {
-                        numAAHotSpots = 6;
-                    }
-                    else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
-                    {
-                        numAAHotSpots = 10;
-                    }
-                }
+                numAAHotSpots = getNumAAAForAiAirfield(currentGroundSetting);
             }
+        }
+        return numAAHotSpots;
+    }
+
+    private int getNumAAAForPlayerAirfield(String currentGroundSetting)
+    {
+        int numAAHotSpots = 4;
+        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        {
+            numAAHotSpots = 4;
+        }
+        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+        {
+            numAAHotSpots = 6;
+        }
+        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+        {
+            numAAHotSpots = 8;
+        }
+        return numAAHotSpots;
+    }
+
+    private int getNumAAAForAiAirfield(String currentGroundSetting)
+    {
+        int numAAHotSpots = 2;
+        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        {
+            numAAHotSpots = 2;
+        }
+        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+        {
+            numAAHotSpots = 3;
+        }
+        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+        {
+            numAAHotSpots = 4;
         }
         return numAAHotSpots;
     }
 
     private int determineNumStaticAirplanes()
     {
-        return 9;
+        return 6;
     }
 }
