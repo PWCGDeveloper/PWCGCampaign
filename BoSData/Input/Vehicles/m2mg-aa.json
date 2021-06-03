@@ -5,8 +5,7 @@
   "vehicleName": "M2 50 Cal AA MG",
   "displayName": "AAA machine gun",
   "countries": [
-    "USA",
-    "BRITAIN"
+    "USA"
   ],
   "startDate": "19390901",
   "endDate": "19460724",

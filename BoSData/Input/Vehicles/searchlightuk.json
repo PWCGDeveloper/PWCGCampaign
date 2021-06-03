@@ -1,11 +1,11 @@
 {
   "scriptDir": "vehicles\\",
-  "modelDir": "artillery\\searchlightus\\",
-  "vehicleType": "searchlightus",
-  "vehicleName": "US Searchlight",
+  "modelDir": "artillery\\searchlightuk\\",
+  "vehicleType": "searchlightuk",
+  "vehicleName": "UK Searchlight",
   "displayName": "search light",
   "countries": [
-    "USA"
+    "BRITAIN"
   ],
   "startDate": "19390901",
   "endDate": "19460724",

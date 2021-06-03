@@ -2,8 +2,12 @@
 ​At the PWCG web site
 
 12.2.4
+Added Typhoon
+Added Fokker D8
 Added 41 Squadron flying Spitfire Mk XIV
 Reverted 349 Squadron to Spitfire Mk IX
+Changed 193 squadron to Typhoon
+Fixed missing airfield structures
 
 12.2.3
 Added squadron level target preferences.  

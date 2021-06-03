@@ -1,0 +1,15 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "artillery\\qf17pdr\\",
+  "vehicleType": "qf17pdr",
+  "vehicleName": "17 Pdr AT Gun",
+  "displayName": "anti tank gun",
+  "countries": [
+    "BRITAIN"
+  ],
+  "startDate": "19430901",
+  "endDate": "19460724",
+  "rarityWeight": 80,
+  "vehicleClass": "ArtilleryAntiTank",
+  "associatedBlock": "art_position_medium"
+}

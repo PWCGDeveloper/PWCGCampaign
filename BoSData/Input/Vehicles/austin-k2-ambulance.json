@@ -1,15 +1,14 @@
 {
   "scriptDir": "vehicles\\",
-  "modelDir": "vehicles\\opel\\",
-  "vehicleType": "opel-blitz",
-  "vehicleName": "Opel Blitz Truck",
+  "modelDir": "vehicles\\austin-k2\\",
+  "vehicleType": "austin-k2-ambulance",
+  "vehicleName": "Austin K2 Ambulence",
   "displayName": "truck",
   "countries": [
-    "GERMANY",
-    "ITALY"
+    "BRITAIN"
   ],
   "startDate": "19390901",
   "endDate": "19460724",
-  "rarityWeight": 100,
+  "rarityWeight": 5,
   "vehicleClass": "Truck"
 }

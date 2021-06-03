@@ -1,8 +1,8 @@
 {
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\opel\\",
-  "vehicleType": "opel-blitz",
-  "vehicleName": "Opel Blitz Truck",
+  "vehicleType": "opel-tankwagen",
+  "vehicleName": "Opel Tankwagen Truck",
   "displayName": "truck",
   "countries": [
     "GERMANY",
@@ -10,6 +10,6 @@
   ],
   "startDate": "19390901",
   "endDate": "19460724",
-  "rarityWeight": 100,
+  "rarityWeight": 10,
   "vehicleClass": "Truck"
 }

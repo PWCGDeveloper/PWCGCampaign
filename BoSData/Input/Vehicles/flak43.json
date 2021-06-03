@@ -1,0 +1,16 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "artillery\\flak43\\",
+  "vehicleType": "flak43",
+  "vehicleName": "Flak 43 37mm AA Gun",
+  "displayName": "anti aircraft gun",
+  "countries": [
+    "GERMANY",
+    "ITALY"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 40,
+  "vehicleClass": "AAAArtillery",
+  "associatedBlock": "art_position_medium"
+}

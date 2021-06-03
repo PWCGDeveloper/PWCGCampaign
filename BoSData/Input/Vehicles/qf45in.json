@@ -1,11 +1,11 @@
 {
   "scriptDir": "vehicles\\",
-  "modelDir": "artillery\\m1gun\\",
-  "vehicleType": "m1gun",
-  "vehicleName": "M1 105mm Howitzer",
+  "modelDir": "artillery\\qf45in\\",
+  "vehicleType": "qf45in",
+  "vehicleName": "4.5 in Howitzer",
   "displayName": "howitzer",
   "countries": [
-    "USA"
+    "BRITAIN"
   ],
   "startDate": "19390901",
   "endDate": "19460724",

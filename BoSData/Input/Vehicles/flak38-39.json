@@ -1,0 +1,16 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "artillery\\flak38-39\\",
+  "vehicleType": "flak38-39",
+  "vehicleName": "Flak 38-39 105mm AA Gun",
+  "displayName": "anti aircraft gun",
+  "countries": [
+    "GERMANY",
+    "ITALY"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 10,
+  "vehicleClass": "AAAArtillery",
+  "associatedBlock": "art_position_medium"
+}

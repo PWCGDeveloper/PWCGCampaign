@@ -1,0 +1,15 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\sdkfz222\\",
+  "vehicleType": "sdkfz222",
+  "vehicleName": "Sd.Kfz 222",
+  "displayName": "Sd.Kfz 222",
+  "countries": [
+    "GERMANY",
+    "ITALY"
+  ],
+  "startDate": "19390901",
+  "endDate": "19430201",
+  "rarityWeight": 20,
+  "vehicleClass": "Tank"
+}

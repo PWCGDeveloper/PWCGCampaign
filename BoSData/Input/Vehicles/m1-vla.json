@@ -1,11 +1,15 @@
 {
   "scriptDir": "Balloons\\",
-  "modelDir": "balloons\\drachen\\",
-  "vehicleType": "drachen",
-  "vehicleName": "Drachen Balloon",
+  "modelDir": "balloons\\m1-vla\\",
+  "vehicleType": "m1-vla",
+  "vehicleName": "M1 VLA Balloon",
   "displayName": "Balloon",
   "countries": [
-	"GERMANY"
+  	"GERMANY",
+	"ITALY",
+    "RUSSIA",
+    "USA",
+    "BRITAIN"
   ],
   "startDate": "19400101",
   "endDate": "19450601",
