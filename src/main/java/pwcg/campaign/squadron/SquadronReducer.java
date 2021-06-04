@@ -110,7 +110,8 @@ public class SquadronReducer
     public static List<Squadron> reduceToProximityOnCurrentMap(List<Squadron> squadrons, Date date, Coordinate referencePosition, double radius) throws PWCGException 
     {
         List<Squadron> squadronsWithinRadius = new ArrayList<>();
-        for (Squadron squadron : squadrons)
+        List<Squadron> squadronsOnMap = reduceToCurrentMap(squadrons, date);
+        for (Squadron squadron : squadronsOnMap)
         {
             Coordinate squadronPosition = squadron.determineCurrentPosition(date);
             double distanceFromReference = MathUtils.calcDist(referencePosition, squadronPosition);
@@ -126,7 +127,8 @@ public class SquadronReducer
     public static List<Squadron> sortByProximityOnCurrentMap(List<Squadron> squadrons, Date date, Coordinate referencePosition) throws PWCGException 
     {
         Map<Integer, Squadron> squadronsByProximity = new TreeMap<>();
-        for (Squadron squadron : squadrons)
+        List<Squadron> squadronsOnMap = reduceToCurrentMap(squadrons, date);
+        for (Squadron squadron : squadronsOnMap)
         {
             Coordinate squadronPosition = squadron.determineCurrentPosition(date);
             Double distanceFromReference = MathUtils.calcDist(referencePosition, squadronPosition);

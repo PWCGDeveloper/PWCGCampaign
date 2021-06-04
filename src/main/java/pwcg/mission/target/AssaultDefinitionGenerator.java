@@ -23,36 +23,38 @@ public class AssaultDefinitionGenerator
 {
     public static final int DISTANCE_BETWEEN_COMBATANTS = 200;
 
-    protected Campaign campaign;
-    protected Mission mission;
-    protected List<AssaultDefinition> assaultInformationElements = new ArrayList<>();
+    private Campaign campaign;
+    private Mission mission;
+    private List<AssaultDefinition> assaultInformationElements = new ArrayList<>();
+    private Coordinate assaultPosition;
 
-    public AssaultDefinitionGenerator(Mission mission)
+    public AssaultDefinitionGenerator(Mission mission, Coordinate assaultPosition)
     {
         this.mission = mission;
+        this.assaultPosition = assaultPosition;
         this.campaign = mission.getCampaign();
     }
 
-    public List<AssaultDefinition> generateAssaultDefinition(Coordinate assaultPosition) throws PWCGException
+    public List<AssaultDefinition> generateAssaultDefinition() throws PWCGException
     {
-        generateMiniAssaultOnEachIndex(assaultPosition);
+        generateMiniAssaultOnEachIndex();
         return assaultInformationElements;
     }
 
-    private void generateMiniAssaultOnEachIndex(Coordinate centerAssaultDefensePosition) throws PWCGException
+    private void generateMiniAssaultOnEachIndex() throws PWCGException
     {
         BattleSize battleSize = AssaultBattleSizeGenerator.createAssaultBattleSize(campaign);
-        ICountry defendingCountry = getDefendingCountry(centerAssaultDefensePosition);
+        ICountry defendingCountry = getDefendingCountry();
         ICountry assaultingCountry = getAssaultingCountry(defendingCountry);
 
-        List<Coordinate> assaultDefensePositions = getDefensePositions(defendingCountry, centerAssaultDefensePosition, battleSize);
+        List<Coordinate> assaultDefensePositions = getDefensePositions(defendingCountry, battleSize);
         for (Coordinate assaultDefensePosition : assaultDefensePositions)
         {
             completeBattleDefinition(defendingCountry, assaultingCountry, battleSize, assaultDefensePosition);
         }
     }
 
-    private ICountry getDefendingCountry(Coordinate assaultPosition) throws PWCGException
+    private ICountry getDefendingCountry() throws PWCGException
     {
         ICountry defendingCountry = getDefendingCountryFromSkirmish();
         if (defendingCountry.getCountry() == Country.NEUTRAL)
@@ -74,7 +76,7 @@ public class AssaultDefinitionGenerator
         return CountryFactory.makeCountryByCountry(Country.NEUTRAL);
     }
 
-    private ICountry getDefendingCountryByMapCircumstances(Coordinate battleLocation)
+    private ICountry getDefendingCountryByMapCircumstances(Coordinate battleLocation) throws PWCGException
     {
         BattleManager battleManager = PWCGContext.getInstance().getCurrentMap().getBattleManager();
         Battle battle = battleManager.getBattleForCampaign(PWCGContext.getInstance().getCurrentMap().getMapIdentifier(), battleLocation,
@@ -95,10 +97,10 @@ public class AssaultDefinitionGenerator
         return chooseSidesRandom();
     }
 
-    private ICountry chooseSidesRandom()
+    private ICountry chooseSidesRandom() throws PWCGException
     {
-        ICountry alliedCountry = CountryFactory.makeMapReferenceCountry(Side.ALLIED);
-        ICountry axisCountry = CountryFactory.makeMapReferenceCountry(Side.AXIS);
+        ICountry alliedCountry = CountryFactory.makeAssaultProximityCountry(Side.ALLIED, assaultPosition, campaign.getDate());
+        ICountry axisCountry = CountryFactory.makeAssaultProximityCountry(Side.AXIS, assaultPosition, campaign.getDate());
 
         int roll = RandomNumberGenerator.getRandom(100);
         if (roll < 50)
@@ -110,18 +112,17 @@ public class AssaultDefinitionGenerator
             return axisCountry;
         }
     }
-    
 
-    private ICountry getAssaultingCountry(ICountry defendingCountry)
+    private ICountry getAssaultingCountry(ICountry defendingCountry) throws PWCGException
     {
         if (defendingCountry.getSide() == Side.ALLIED)
         {
-            ICountry axisCountry = CountryFactory.makeMapReferenceCountry(Side.AXIS);
+            ICountry axisCountry = CountryFactory.makeAssaultProximityCountry(Side.AXIS, assaultPosition, campaign.getDate());
             return axisCountry;
         }
         else
         {
-            ICountry alliedCountry = CountryFactory.makeMapReferenceCountry(Side.ALLIED);
+            ICountry alliedCountry = CountryFactory.makeAssaultProximityCountry(Side.ALLIED, assaultPosition, campaign.getDate());
             return alliedCountry;
         }
     }
@@ -141,7 +142,7 @@ public class AssaultDefinitionGenerator
         assaultInformationElements.add(assaultDefinition);
     }
 
-    private List<Coordinate> getDefensePositions(ICountry defendingCountry, Coordinate assaultPosition, BattleSize battleSize) throws PWCGException
+    private List<Coordinate> getDefensePositions(ICountry defendingCountry, BattleSize battleSize) throws PWCGException
     {
         FrontLinesForMap frontLines = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         int centerIndex = frontLines.findIndexForClosestPosition(assaultPosition, defendingCountry.getSide());

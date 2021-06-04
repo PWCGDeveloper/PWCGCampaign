@@ -6,7 +6,9 @@ Added Typhoon
 Added Fokker D8
 Added 41 Squadron flying Spitfire Mk XIV
 Reverted 349 Squadron to Spitfire Mk IX
-Changed 193 squadron to Typhoon
+Changed 193 squadron to Typhoon with a focus on ground attack
+Added 15 new vehicles and guns
+Made battles context aware to be manned with British or American units
 Fixed missing airfield structures
 
 12.2.3
