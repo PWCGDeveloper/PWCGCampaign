@@ -1,6 +1,10 @@
 
 ​At the PWCG web site
 
+12.2.5
+Add skins for 41 Squadron
+Fix 41 Squadron withdrawal erroneous date for Spitfire MK XIV
+
 12.2.4
 Added Typhoon
 Added Fokker D8
