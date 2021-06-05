@@ -7,11 +7,13 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.ground.vehicle.VehicleDefinition;
+import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
 
 public class SquadronMemberVictories
 {
     private List<Victory>  airToAirVictories = new ArrayList<>();
     private List<Victory>  tankVictories = new ArrayList<>();
+    private List<Victory>  trainVictories = new ArrayList<>();
     private List<Victory>  groundVictories = new ArrayList<>();
     
     public SquadronMemberVictories (List<Victory> victories) throws PWCGException
@@ -25,10 +27,14 @@ public class SquadronMemberVictories
             
             if (victory.getVictim().getAirOrGround() == Victory.GROUND_VICTORY)
             {
-                VehicleDefinition vehicleDefinitionByName = PWCGContext.getInstance().getVehicleDefinitionManager().getVehicleDefinitionByVehicleName(victory.getVictim().getType());
+                VehicleDefinition vehicleDefinitionByName = PWCGContext.getInstance().getVehicleDefinitionManager().getVehicleDefinitionByVehicleName(victory.getVictim().getName());
                 if (vehicleDefinitionByName != null && vehicleDefinitionByName.getVehicleClass() == VehicleClass.Tank)
                 {
                     tankVictories.add(victory);
+                }
+                else if (vehicleDefinitionByName != null && vehicleDefinitionByName.getVehicleClass() == VehicleClass.TrainLocomotive)
+                {
+                    trainVictories.add(victory);
                 }
                 else
                 {
@@ -48,6 +54,11 @@ public class SquadronMemberVictories
         return new ArrayList<>(tankVictories);
     }
 
+    public List<Victory> getTrainVictories()
+    {
+        return new ArrayList<>(trainVictories);
+    }
+
     public List<Victory> getGroundVictories()
     {
         return new ArrayList<>(groundVictories);
@@ -63,6 +74,11 @@ public class SquadronMemberVictories
         return tankVictories.size();
     }
 
+    public int getTrainVictoryCount()
+    {
+        return trainVictories.size();
+    }
+
     public int getGroundVictoryCount()
     {
         return groundVictories.size();
@@ -70,7 +86,7 @@ public class SquadronMemberVictories
 
     public int getGroundVictoryPointTotal()
     {
-        int numPilotGroundVictoryPoints = getGroundVictoryCount() + (getTankVictoryCount() * 3);
+        int numPilotGroundVictoryPoints = getGroundVictoryCount() + (getTankVictoryCount() * 3) + (getTrainVictoryCount() * 3);
         return numPilotGroundVictoryPoints;
     }
 

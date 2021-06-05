@@ -2,9 +2,13 @@
 ​At the PWCG web site
 
 12.2.5
-Tank Busters: tanks now considered separate victory category
+Tank and Train Busters: tanks and trains now considered separate victory categories
+- Tank and train victories weigh more heavily into medals and promotions
+- Tank and train victories have separate counts on the first page of the pilots journal
+- Tank and train victories have their own detailed section in the pilots journal 
 Add skins for 41 Squadron
 Fix 41 Squadron withdrawal erroneous date for Spitfire MK XIV
+Fix 66 Squadron withdrawal erroneous date for Spitfire MK XIV
 
 12.2.4
 Added Typhoon

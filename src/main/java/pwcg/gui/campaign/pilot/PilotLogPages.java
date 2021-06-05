@@ -34,9 +34,14 @@ public class PilotLogPages
             pageCount = addVictoriesToPage(pageCount, squadronMember.getSquadronMemberVictories().getAirToAirVictories());
         }
 
-        if (squadronMember.getSquadronMemberVictories().getGroundVictoryCount() > 0)
+        if (squadronMember.getSquadronMemberVictories().getTankVictoryCount() > 0)
         {
             pageCount = addVictoriesToPage(pageCount, squadronMember.getSquadronMemberVictories().getTankVictories());
+        }
+
+        if (squadronMember.getSquadronMemberVictories().getTrainVictoryCount() > 0)
+        {
+            pageCount = addVictoriesToPage(pageCount, squadronMember.getSquadronMemberVictories().getTrainVictories());
         }
 
         if (squadronMember.getSquadronMemberVictories().getGroundVictoryCount() > 0)
@@ -65,6 +70,9 @@ public class PilotLogPages
         String pilotTankVictories = "Tank Victories: " + squadronMember.getSquadronMemberVictories().getTankVictoryCount() + "\n";
         pageOneBuffer.append(pilotTankVictories + "\n");
 
+        String pilotTraniVictories = "Train Victories: " + squadronMember.getSquadronMemberVictories().getTrainVictoryCount() + "\n";
+        pageOneBuffer.append(pilotTraniVictories + "\n");        
+        
         String pilotGroundVictories = "Ground Victories: " + squadronMember.getSquadronMemberVictories().getGroundVictoryCount() + "\n";
         pageOneBuffer.append(pilotGroundVictories + "\n");
 
