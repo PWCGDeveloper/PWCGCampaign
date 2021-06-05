@@ -116,7 +116,7 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
         return squadronPanel;
     }
 
-    private void addPilotsToChalkBoard(List<SquadronMember> sortedPilots, JPanel squadronPanel, GridBagConstraints constraints, Color buttonBG, Color buttonFG, Font font)
+    private void addPilotsToChalkBoard(List<SquadronMember> sortedPilots, JPanel squadronPanel, GridBagConstraints constraints, Color buttonBG, Color buttonFG, Font font) throws PWCGException
     {
         int gridbaRow = 1;
         for (SquadronMember pilot : sortedPilots)
@@ -149,7 +149,7 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
             constraints.gridy = gridbaRow;
             squadronPanel.add(lMissions, constraints);
             
-            JLabel lVictories = new JLabel("" + pilot.getSquadronMemberVictories().getAirToAirVictories(), JLabel.RIGHT);
+            JLabel lVictories = new JLabel("" + pilot.getSquadronMemberVictories().getAirToAirVictoryCount(), JLabel.RIGHT);
             lVictories.setOpaque(false);
             lVictories.setForeground(buttonFG);
             lVictories.setFont(font);

@@ -65,7 +65,7 @@ public class PromotionEventHandlerTest
     public void promoteCorporalToSergentFighter () throws PWCGException
     {     
         List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(1, campaign.getDate());
-        Mockito.when(squadronMemberVictories.getAirToAirVictories()).thenReturn(victories.size());
+        Mockito.when(squadronMemberVictories.getAirToAirVictoryCount()).thenReturn(victories.size());
 
         Mockito.when(squadronMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
         Mockito.when(squadronMember.getMissionFlown()).thenReturn(20);

@@ -165,14 +165,14 @@ public class SquadronMemberInitialVictoryBuilderTest
         }
     }
 
-    private void validateVictoryRange(SquadronMember squadronMember, int min, int max)
+    private void validateVictoryRange(SquadronMember squadronMember, int min, int max) throws PWCGException
     {
         if (squadronMember instanceof Ace)
         {
             return;
         }
         
-        int numVictories = squadronMember.getVictories().size();
+        int numVictories = squadronMember.getSquadronMemberVictories().getAirToAirVictoryCount();
         if (numVictories < min || numVictories > max)
         {
             System.out.println("Victoris not in range : " + numVictories + "     Min: " + min + "     Max: " + max);

@@ -102,6 +102,7 @@ public class InitialReplacementEquipperTest
         
         boolean me110g2Found = false;
         boolean he111h6Found = false;
+        boolean he111h16Found = false;
         boolean me109G2Found = false;
         boolean ju87d3Found = false;
         boolean ju52Found = false;
@@ -113,6 +114,10 @@ public class InitialReplacementEquipperTest
                 me110g2Found = true;
             }
             else if (replacementPlane.getType().equals("he111h6"))
+            {
+                he111h6Found = true;
+            }
+            else if (replacementPlane.getType().equals("he111h16"))
             {
                 he111h6Found = true;
             }
@@ -131,7 +136,7 @@ public class InitialReplacementEquipperTest
         }
         
         assert(me110g2Found);
-        assert(he111h6Found);
+        assert(he111h6Found || he111h16Found);
         assert(me109G2Found);
         assert(ju87d3Found);
         assert(ju52Found);

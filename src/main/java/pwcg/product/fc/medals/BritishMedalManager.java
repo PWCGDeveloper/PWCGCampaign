@@ -103,14 +103,14 @@ public class BritishMedalManager extends FCMedalManager
             }
         }
 
-        if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 15) && !hasMedal(pilot, medals.get(DSO)))
+        if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 15) && !hasMedal(pilot, medals.get(DSO)))
         {
             return medals.get(DSO);
         }
 
         if (victoriesThisMission >= 2)
         {
-            if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 25   && 
+            if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 25   && 
                 hasMedal(pilot, medals.get(DSO))    &&
                 !hasMedal(pilot, medals.get(DSO_BAR)))
             {
@@ -121,7 +121,7 @@ public class BritishMedalManager extends FCMedalManager
 		
         if (!campaign.getDate().before(rafStartDate))
         {
-            if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 30       &&
+            if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 30       &&
                 hasMedal(pilot, medals.get(DFC))        &&
                 hasMedal(pilot, medals.get(DFC_BAR_1))  &&
                 !hasMedal(pilot, medals.get(DFC_BAR_2)))
@@ -136,14 +136,14 @@ public class BritishMedalManager extends FCMedalManager
 
 		if (!hasMedal(pilot, medals.get(VC)))
 		{
-			if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 40)
+			if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 40)
 			{
 				if (victoriesThisMission >= 2)
 				{
 					return medals.get(VC);
 				}
 			}
-			if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 35)
+			if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 35)
 			{
 				if (victoriesThisMission >= 3)
 				{
@@ -160,7 +160,7 @@ public class BritishMedalManager extends FCMedalManager
     	ArmedService service = pilot.determineService(campaign.getDate());
         if (service.getServiceId() == FCServiceManager.RFC)
         {
-            if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 3   && 
+            if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 3   && 
                 !hasMedal(pilot, medals.get(MC)))
             {
                 return medals.get(MC);
@@ -169,7 +169,7 @@ public class BritishMedalManager extends FCMedalManager
         
         if (service.getServiceId() == FCServiceManager.RNAS)
         {
-            if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 3   && 
+            if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 3   && 
                 !hasMedal(pilot, medals.get(DSC)))
             {
                 return medals.get(DSC);
@@ -178,7 +178,7 @@ public class BritishMedalManager extends FCMedalManager
         
         if (service.getServiceId() == FCServiceManager.RNAS)
         {
-            if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 12   && 
+            if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 12   && 
                     hasMedal(pilot, medals.get(DSC))    &&
                     !hasMedal(pilot, medals.get(DSC_BAR)))
             {
@@ -192,16 +192,16 @@ public class BritishMedalManager extends FCMedalManager
         return null;
     }
 
-    private Medal getAfterRAF(SquadronMember pilot, int victoriesThisMission)
+    private Medal getAfterRAF(SquadronMember pilot, int victoriesThisMission) throws PWCGException
     {
-        if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 8 && !hasMedal(pilot, medals.get(DFC)))
+        if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 8 && !hasMedal(pilot, medals.get(DFC)))
         {
             return medals.get(DFC);
         }
                     
         // if we did not award a third order medal, consider a second order medal.
         // DFC With BAR for RAF
-        if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 12   && 
+        if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 12   && 
             hasMedal(pilot, medals.get(DFC))    &&
             !hasMedal(pilot, medals.get(DFC_BAR_1)))
         {
@@ -220,17 +220,18 @@ public class BritishMedalManager extends FCMedalManager
      */
     public Medal awardBomber(SquadronMember pilot, ArmedService service, int victoriesThisMission) throws PWCGException 
     {
+        int numPilotGroundVictoryPoints = pilot.getSquadronMemberVictories().getGroundVictoryPointTotal();
         Date rafStartDate = DateUtils.getRAFDate();
 
         // Military Cross
-        if (pilot.getMissionFlown() >= 20 && pilot.getGroundVictories().size() > 15)
+        if (pilot.getMissionFlown() >= 20 && numPilotGroundVictoryPoints > 15)
         {
             // MC for RFC
             if (campaign.getDate().before(rafStartDate))
             {
                 if (pilot.determineService(campaign.getDate()).getServiceId() == FCServiceManager.RFC)
                 {
-                    if (pilot.getGroundVictories().size() >= 10   && 
+                    if (numPilotGroundVictoryPoints >= 10   && 
                         !hasMedal(pilot, medals.get(MC)))
                     {
                         return medals.get(MC);
@@ -238,7 +239,7 @@ public class BritishMedalManager extends FCMedalManager
                 }
                 else if (pilot.determineService(campaign.getDate()).getServiceId() == FCServiceManager.RNAS)
                 {
-                    if (pilot.getGroundVictories().size() >= 10   && 
+                    if (numPilotGroundVictoryPoints >= 10   && 
                         !hasMedal(pilot, medals.get(DSC)))
                     {
                         return medals.get(DSC);
@@ -251,7 +252,7 @@ public class BritishMedalManager extends FCMedalManager
         // DFC With BAR for RAF
         if (!campaign.getDate().before(rafStartDate))
         {
-            if (pilot.getGroundVictories().size() >= 40   && 
+            if (numPilotGroundVictoryPoints >= 40   && 
                 hasMedal(pilot, medals.get(DFC))    &&
                 !hasMedal(pilot, medals.get(DFC_BAR_1)))
             {
@@ -261,7 +262,7 @@ public class BritishMedalManager extends FCMedalManager
         else if (pilot.determineService(campaign.getDate()).getServiceId() == FCServiceManager.RNAS)
         {
             // DSC With BAR for RNAS
-            if (pilot.getGroundVictories().size() >= 40   && 
+            if (numPilotGroundVictoryPoints >= 40   && 
                     hasMedal(pilot, medals.get(DSC))    &&
                     !hasMedal(pilot, medals.get(DSC_BAR)))
             {
@@ -273,7 +274,7 @@ public class BritishMedalManager extends FCMedalManager
         // For all forces throughout the war
         if (!hasMedal(pilot, medals.get(DSO)))
         {
-            if (pilot.getMissionFlown() >= 60 && pilot.getGroundVictories().size() > 60)
+            if (pilot.getMissionFlown() >= 60 && numPilotGroundVictoryPoints > 60)
             {
                 return medals.get(DSO);
             }
@@ -282,7 +283,7 @@ public class BritishMedalManager extends FCMedalManager
         // DSO with bar (4)
         if (hasMedal(pilot, medals.get(DSO)) && !hasMedal(pilot, medals.get(DSO_BAR)))
         {
-            if (pilot.getMissionFlown() >= 80 && pilot.getGroundVictories().size() > 80)
+            if (pilot.getMissionFlown() >= 80 && numPilotGroundVictoryPoints > 80)
             {
                 return medals.get(DSO);
             }
@@ -294,7 +295,7 @@ public class BritishMedalManager extends FCMedalManager
         {
             if (hasMedal(pilot, medals.get(DFC)) && hasMedal(pilot, medals.get(DFC_BAR_1)) && !hasMedal(pilot, medals.get(DFC_BAR_2)))
             {
-                if (pilot.getMissionFlown() >= 140 && pilot.getGroundVictories().size() > 80)
+                if (pilot.getMissionFlown() >= 140 && numPilotGroundVictoryPoints > 80)
                 {
                     return medals.get(DFC_BAR_2);
                 }
@@ -304,7 +305,7 @@ public class BritishMedalManager extends FCMedalManager
         // VC (5)
         if (!hasMedal(pilot, medals.get(VC)))
         {
-            if (pilot.getMissionFlown() >= 110 && pilot.getGroundVictories().size() > 120)
+            if (pilot.getMissionFlown() >= 110 && numPilotGroundVictoryPoints > 120)
             {
                 return medals.get(VC);
             }

@@ -28,7 +28,7 @@ public abstract class PromotionEventHandlerFighter implements IPromotionEventHan
         String promotion = PromotionEventHandler.NO_PROMOTION;
         
         ArmedService service = pilot.determineService(campaign.getDate());
-        int numPilotVictories = pilot.getSquadronMemberVictories().getAirToAirVictories();
+        int numPilotVictories = pilot.getSquadronMemberVictories().getAirToAirVictoryCount();
         int numMissions = pilot.getMissionFlown();        
         IRankHelper rankHelper = RankFactory.createRankHelper();
         int rankPosBeforePromotion = rankHelper.getRankPosByService(pilot.getRank(), service);

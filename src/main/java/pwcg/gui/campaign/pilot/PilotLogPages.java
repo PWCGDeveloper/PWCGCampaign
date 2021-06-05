@@ -29,14 +29,19 @@ public class PilotLogPages
         makePageOne();
         
         int pageCount = 2;
-        if (squadronMember.getSquadronMemberVictories().getAirToAirVictories() > 0)
+        if (squadronMember.getSquadronMemberVictories().getAirToAirVictoryCount() > 0)
         {
-            pageCount = addVictoriesToPage(pageCount, squadronMember.getVictories());
+            pageCount = addVictoriesToPage(pageCount, squadronMember.getSquadronMemberVictories().getAirToAirVictories());
         }
 
-        if (squadronMember.getGroundVictories().size() > 0)
+        if (squadronMember.getSquadronMemberVictories().getGroundVictoryCount() > 0)
         {
-            pageCount = addVictoriesToPage(pageCount, squadronMember.getGroundVictories());
+            pageCount = addVictoriesToPage(pageCount, squadronMember.getSquadronMemberVictories().getTankVictories());
+        }
+
+        if (squadronMember.getSquadronMemberVictories().getGroundVictoryCount() > 0)
+        {
+            pageCount = addVictoriesToPage(pageCount, squadronMember.getSquadronMemberVictories().getGroundVictories());
         }
         
         return;
@@ -54,10 +59,13 @@ public class PilotLogPages
 
         pageOneBuffer.append(squadronMember.skillAsString() + "\n");
 
-        String pilotAirVictories = "Air Victories: " + squadronMember.getSquadronMemberVictories().getAirToAirVictories() + "\n";
+        String pilotAirVictories = "Air Victories: " + squadronMember.getSquadronMemberVictories().getAirToAirVictoryCount() + "\n";
         pageOneBuffer.append(pilotAirVictories + "\n");
 
-        String pilotGroundVictories = "Ground Victories: " + squadronMember.getGroundVictories().size() + "\n";
+        String pilotTankVictories = "Tank Victories: " + squadronMember.getSquadronMemberVictories().getTankVictoryCount() + "\n";
+        pageOneBuffer.append(pilotTankVictories + "\n");
+
+        String pilotGroundVictories = "Ground Victories: " + squadronMember.getSquadronMemberVictories().getGroundVictoryCount() + "\n";
         pageOneBuffer.append(pilotGroundVictories + "\n");
 
         pages.put(1, pageOneBuffer);

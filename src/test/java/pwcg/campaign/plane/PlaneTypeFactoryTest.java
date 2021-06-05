@@ -58,7 +58,7 @@ public class PlaneTypeFactoryTest
         assert(availableGermanPlaneTypes.size() == 5);
 
         List<PlaneType> availableBritishPlaneTypes = planeTypeFactory.getAvailablePlaneTypes(CountryFactory.makeCountryByCountry(Country.BRITAIN), Role.ROLE_FIGHTER, DateUtils.getDateYYYYMMDD("19430101"));        
-        assert(availableBritishPlaneTypes.size() == 1);
+        assert(availableBritishPlaneTypes.size() == 2);
 
         List<PlaneType> availableAmericanPlaneTypes = planeTypeFactory.getAvailablePlaneTypes(CountryFactory.makeCountryByCountry(Country.USA), Role.ROLE_FIGHTER, DateUtils.getDateYYYYMMDD("19430101"));        
         assert(availableAmericanPlaneTypes.size() == 2);
@@ -118,7 +118,7 @@ public class PlaneTypeFactoryTest
     {
         PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
         List<PlaneType> planeTypes =  planeTypeFactory.getAllFightersForCampaign(campaign);
-        assert(planeTypes.size() == 13);
+        assert(planeTypes.size() == 14);
     }
 
 }

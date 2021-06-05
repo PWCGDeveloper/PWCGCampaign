@@ -91,7 +91,7 @@ public class SquadronMemberFactory
         }
         
         PilotSkill pilotSkill = new PilotSkill(campaign);
-        pilotSkill.advanceSkillofPilot(newPilot, squadron);
+        pilotSkill.advancePilotSkillForInitialCreation(newPilot, squadron);
         
         CampaignValidatorMedals medalFixer = new CampaignValidatorMedals(campaign);
         medalFixer.assignMissingMedalsForSquadMember(newPilot);

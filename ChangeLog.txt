@@ -2,6 +2,7 @@
 ​At the PWCG web site
 
 12.2.5
+Tank Busters: tanks now considered separate victory category
 Add skins for 41 Squadron
 Fix 41 Squadron withdrawal erroneous date for Spitfire MK XIV
 

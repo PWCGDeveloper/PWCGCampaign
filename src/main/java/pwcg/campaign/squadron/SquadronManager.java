@@ -138,7 +138,7 @@ public class SquadronManager
             radius += 5000;
             if (radius > 500000)
             {
-                throw new PWCGException("Failed to find active squadron on map");
+                break;
             }
         }
         return activeSquadronsForSideInRange;        

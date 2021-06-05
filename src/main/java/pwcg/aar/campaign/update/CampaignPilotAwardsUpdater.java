@@ -105,7 +105,7 @@ public class CampaignPilotAwardsUpdater
         for (SquadronMember pilot : squadronMembers.getSquadronMemberCollection().values())
         {
             PilotSkill pilotSkill = new PilotSkill(campaign);
-            pilotSkill.advanceSkillofPilot(pilot, pilot.determineSquadron());
+            pilotSkill.advancePilotSkillForPerformance(pilot);
         }
     }
 

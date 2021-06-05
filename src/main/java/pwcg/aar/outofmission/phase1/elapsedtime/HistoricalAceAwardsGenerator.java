@@ -75,9 +75,9 @@ public class HistoricalAceAwardsGenerator
         aceAtPreviousDate.setMissionFlown(aceAtPreviousDate.getMissionFlown() + 3);
     }
 
-    private void aceVictories(Ace aceAtPreviousDate, Ace aceAtNewDate)
+    private void aceVictories(Ace aceAtPreviousDate, Ace aceAtNewDate) throws PWCGException
     {
-        for (Victory victory : aceAtNewDate.getVictories())
+        for (Victory victory : aceAtNewDate.getSquadronMemberVictories().getAirToAirVictories())
         {
             if (victory.getDate().before(newDate) &&
                             (victory.getDate().equals(campaign.getDate()) || victory.getDate().after(campaign.getDate())))

@@ -9,12 +9,12 @@
 		{
 			"archType": "spitfire",
 			"squadronIntroduction": "19440901",
-			"squadronWithdrawal": "19441031"
+			"squadronWithdrawal": "19441101"
 		},
 		{
 			"archType": "spitfireGriffon",
 			"squadronIntroduction": "19441101",
-			"squadronWithdrawal": "19441001"
+			"squadronWithdrawal": "19450601"
 		}
 	],
 	"airfields": {

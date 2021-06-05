@@ -60,10 +60,10 @@ public class Ace extends SquadronMember
         setCountry(historicalAce.getCountry());
         setRank(historicalAceNow.getRank());
 
-        for (Victory historicalVictory : historicalAceNow.getVictories())
+        for (Victory historicalVictory : historicalAceNow.getSquadronMemberVictories().getAirToAirVictories())
         {
             boolean found = false;
-            for (Victory victory : getVictories())
+            for (Victory victory : getSquadronMemberVictories().getAirToAirVictories())
             {
                 if (victory.getDate().equals(historicalVictory.getDate())
                                 && victory.getVictim().getType().equals(historicalVictory.getVictim().getType()))
@@ -77,7 +77,7 @@ public class Ace extends SquadronMember
                 this.addVictory(historicalVictory);
             }
         }
-        Collections.sort(getVictories());
+        Collections.sort(getSquadronMemberVictories().getAirToAirVictories());
 
         for (Medal historicalMedal : historicalAceNow.getMedals())
         {

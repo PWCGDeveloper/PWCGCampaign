@@ -240,7 +240,7 @@ public class SquadronMember implements Cloneable
         IRankHelper rankObj = RankFactory.createRankHelper();
         int rankPos = rankObj.getRankPosByService(rank, determineService(date));
 
-        int numVictoriesKey = 999 - getSquadronMemberVictories().getAirToAirVictories();
+        int numVictoriesKey = 999 - getSquadronMemberVictories().getAirToAirVictoryCount();
         String victoriesString = String.format("%03d", numVictoriesKey);
 
         String sortKey = "" + rankPos + victoriesString + name;
@@ -313,11 +313,11 @@ public class SquadronMember implements Cloneable
         return false;
     }
 
-    public SquadronMemberVictories getSquadronMemberVictories()
+    public SquadronMemberVictories getSquadronMemberVictories() throws PWCGException
     {
         List<Victory> victories = new ArrayList<>();
-        victories.addAll(this.getVictories());
-        victories.addAll(this.getGroundVictories());
+        victories.addAll(this.victories);
+        victories.addAll(this.groundVictories);
         return new SquadronMemberVictories(victories);
     }
 
@@ -494,16 +494,6 @@ public class SquadronMember implements Cloneable
     public void setCommonSense(int commonSense)
     {
         this.commonSense = commonSense;
-    }
-
-    public List<Victory> getVictories()
-    {
-        return victories;
-    }
-
-    public List<Victory> getGroundVictories()
-    {
-        return groundVictories;
     }
 
     public void addVictory(Victory victory)

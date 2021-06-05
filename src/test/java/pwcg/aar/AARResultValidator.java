@@ -21,27 +21,27 @@ public class AARResultValidator
     {
         SquadronMember player = campaign.findReferencePlayer();
         assert(campaign.getDate().after(DateUtils.getDateYYYYMMDD("19411101")));
-        assert(player.getVictories().size() == expectedResults.getPlayerAirVictories());
-        assert(player.getGroundVictories().size() == expectedResults.getPlayerGroundVictories());
+        assert(player.getSquadronMemberVictories().getAirToAirVictoryCount() == expectedResults.getPlayerAirVictories());
+        assert(player.getSquadronMemberVictories().getGroundVictoryCount() == expectedResults.getPlayerGroundVictories());
         
         SquadronMember otherPilot = campaign.getPersonnelManager().getAnyCampaignMember(expectedResults.getSquadronMemberPilotSerialNumber());        
-        assert(otherPilot.getVictories().size() == expectedResults.getSquadronMemberAirVictories());
-        assert(otherPilot.getGroundVictories().size() == expectedResults.getSquadronMemberGroundVictories());
+        assert(otherPilot.getSquadronMemberVictories().getAirToAirVictoryCount() == expectedResults.getSquadronMemberAirVictories());
+        assert(otherPilot.getSquadronMemberVictories().getGroundVictoryCount() == expectedResults.getSquadronMemberGroundVictories());
         for (Integer serialNumber : expectedResults.getLostPilots())
         {
             SquadronMember lostPilot = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
             assert(lostPilot.getPilotActiveStatus() <= SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
         }
         assert(player.getMissionFlown()  == (playerMissionsFlown+1));
-        assert(player.getVictories().size() == expectedPlayerVictories);
+        assert(player.getSquadronMemberVictories().getAirToAirVictoryCount() == expectedPlayerVictories);
     }
 
     public void validateLeave() throws PWCGException
     {
         SquadronMember player = campaign.findReferencePlayer();
         assert(campaign.getDate().after(DateUtils.getDateYYYYMMDD("19411101")));
-        assert(player.getVictories().size() == 0);
-        assert(player.getGroundVictories().size() == 0);
+        assert(player.getSquadronMemberVictories().getAirToAirVictoryCount() == 0);
+        assert(player.getSquadronMemberVictories().getGroundVictoryCount() == 0);
         
         for (Integer serialNumber : expectedResults.getLostPilots())
         {

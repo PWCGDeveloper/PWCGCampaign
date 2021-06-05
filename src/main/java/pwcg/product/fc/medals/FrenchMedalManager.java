@@ -4,6 +4,7 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.core.exception.PWCGException;
 
 public class FrenchMedalManager extends FCMedalManager 
 {
@@ -84,41 +85,41 @@ public class FrenchMedalManager extends FCMedalManager
         return null;
     }
 
-	public Medal awardFighter(SquadronMember pilot, ArmedService service, int victoriesThisMission) 
+	public Medal awardFighter(SquadronMember pilot, ArmedService service, int victoriesThisMission) throws PWCGException 
 	{
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 2) && !hasMedal(pilot, medals.get(MILITARY_MEDAL)))
+		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 2) && !hasMedal(pilot, medals.get(MILITARY_MEDAL)))
 		{
 			return medals.get(MILITARY_MEDAL);
 		}
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 3) && !hasMedal(pilot, medals.get(CROIX_DE_GUERRE)))
+		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 3) && !hasMedal(pilot, medals.get(CROIX_DE_GUERRE)))
 		{
 			return medals.get(CROIX_DE_GUERRE);
 		}
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 5) && !hasMedal(pilot, medals.get(CROIX_DE_GUERRE_BRONZE_STAR)))
+		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 5) && !hasMedal(pilot, medals.get(CROIX_DE_GUERRE_BRONZE_STAR)))
 		{
 			return medals.get(CROIX_DE_GUERRE_BRONZE_STAR);
 		}
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 7) && !hasMedal(pilot, medals.get(CROIX_DE_GUERRE_SILVER_STAR)))
+		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 7) && !hasMedal(pilot, medals.get(CROIX_DE_GUERRE_SILVER_STAR)))
 		{
 			return medals.get(CROIX_DE_GUERRE_SILVER_STAR);
 		}
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 9) && !hasMedal(pilot, medals.get(MEDAILLE_DE_HONNEUR)))
+		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 9) && !hasMedal(pilot, medals.get(MEDAILLE_DE_HONNEUR)))
 		{
 			return medals.get(MEDAILLE_DE_HONNEUR);
 		}
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 11) && !hasMedal(pilot, medals.get(CROIX_DE_GUERRE_GILT_STAR)))
+		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 11) && !hasMedal(pilot, medals.get(CROIX_DE_GUERRE_GILT_STAR)))
 		{
 			return medals.get(CROIX_DE_GUERRE_GILT_STAR);
 		}
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 14) && !hasMedal(pilot, medals.get(CROIX_DE_GUERRE_BRONZE_PALM)))
+		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 14) && !hasMedal(pilot, medals.get(CROIX_DE_GUERRE_BRONZE_PALM)))
 		{
 			return medals.get(CROIX_DE_GUERRE_BRONZE_PALM);
 		}
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 18) && !hasMedal(pilot, medals.get(CROIX_DE_GUERRE_SILVER_PALM)))
+		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 18) && !hasMedal(pilot, medals.get(CROIX_DE_GUERRE_SILVER_PALM)))
 		{
 			return medals.get(CROIX_DE_GUERRE_SILVER_PALM);
 		}
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 25) && !hasMedal(pilot, medals.get(LEGION_DE_HONNEUR)))
+		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 25) && !hasMedal(pilot, medals.get(LEGION_DE_HONNEUR)))
 		{
 			return medals.get(LEGION_DE_HONNEUR);
 		}
@@ -126,8 +127,9 @@ public class FrenchMedalManager extends FCMedalManager
 		return null;
 	}
 
-    public Medal awardBomber(SquadronMember pilot, ArmedService service, int victoriesThisMission) 
+    public Medal awardBomber(SquadronMember pilot, ArmedService service, int victoriesThisMission) throws PWCGException 
     {
+        int numPilotGroundVictoryPoints = pilot.getSquadronMemberVictories().getGroundVictoryPointTotal();
         if (!hasMedal(pilot, medals.get(MILITARY_MEDAL)))
         {
             if (pilot.getMissionFlown() >= 15)
@@ -137,56 +139,56 @@ public class FrenchMedalManager extends FCMedalManager
         }
         if (!hasMedal(pilot, medals.get(CROIX_DE_GUERRE)))
         {
-            if (pilot.getMissionFlown() >= 20 && pilot.getGroundVictories().size() > 10)
+            if (pilot.getMissionFlown() >= 20 && numPilotGroundVictoryPoints > 10)
             {
                 return medals.get(CROIX_DE_GUERRE);
             }
         }
         if (!hasMedal(pilot, medals.get(CROIX_DE_GUERRE_BRONZE_STAR)))
         {
-            if (pilot.getMissionFlown() >= 25 && pilot.getGroundVictories().size() > 15)
+            if (pilot.getMissionFlown() >= 25 && numPilotGroundVictoryPoints > 15)
             {
                 return medals.get(CROIX_DE_GUERRE_BRONZE_STAR);
             }
         }
         if (!hasMedal(pilot, medals.get(CROIX_DE_GUERRE_SILVER_STAR)))
         {
-            if (pilot.getMissionFlown() >= 30 && pilot.getGroundVictories().size() > 20)
+            if (pilot.getMissionFlown() >= 30 && numPilotGroundVictoryPoints > 20)
             {
                 return medals.get(CROIX_DE_GUERRE_SILVER_STAR);
             }
         }
         if (!hasMedal(pilot, medals.get(MEDAILLE_DE_HONNEUR)))
         {
-            if (pilot.getMissionFlown() >= 40 && pilot.getGroundVictories().size() > 25)
+            if (pilot.getMissionFlown() >= 40 && numPilotGroundVictoryPoints > 25)
             {
                 return medals.get(MEDAILLE_DE_HONNEUR);
             }
         }
         if (!hasMedal(pilot, medals.get(CROIX_DE_GUERRE_GILT_STAR)))
         {
-            if (pilot.getMissionFlown() >= 45 && pilot.getGroundVictories().size() > 30)
+            if (pilot.getMissionFlown() >= 45 && numPilotGroundVictoryPoints > 30)
             {
                 return medals.get(CROIX_DE_GUERRE_GILT_STAR);
             }
         }
         if (!hasMedal(pilot, medals.get(CROIX_DE_GUERRE_BRONZE_PALM)))
         {
-            if (pilot.getMissionFlown() >= 60 && pilot.getGroundVictories().size() > 45)
+            if (pilot.getMissionFlown() >= 60 && numPilotGroundVictoryPoints > 45)
             {
                 return medals.get(CROIX_DE_GUERRE_BRONZE_PALM);
             }
         }
         if (!hasMedal(pilot, medals.get(CROIX_DE_GUERRE_SILVER_PALM)))
         {
-            if (pilot.getMissionFlown() >= 70 && pilot.getGroundVictories().size() > 60)
+            if (pilot.getMissionFlown() >= 70 && numPilotGroundVictoryPoints > 60)
             {
                 return medals.get(CROIX_DE_GUERRE_SILVER_PALM);
             }
         }
         if (!hasMedal(pilot, medals.get(LEGION_DE_HONNEUR)))
         {
-            if (pilot.getMissionFlown() >= 100 && pilot.getGroundVictories().size() > 80)
+            if (pilot.getMissionFlown() >= 100 && numPilotGroundVictoryPoints > 80)
             {
                 return medals.get(CROIX_DE_GUERRE_SILVER_PALM);
             }

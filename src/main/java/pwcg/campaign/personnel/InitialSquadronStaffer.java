@@ -125,7 +125,7 @@ public class InitialSquadronStaffer
         SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAINoWounded(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
         for (SquadronMember squadronMember : squadronMembers.getSquadronMemberList())
         {
-            int minimumMissions = 1 + (squadronMember.getSquadronMemberVictories().getAirToAirVictories() * 3);
+            int minimumMissions = 1 + (squadronMember.getSquadronMemberVictories().getAirToAirVictoryCount() * 3);
             if (!squadronMember.isPlayer())
             {
                 if (squadronMember.getMissionFlown() < minimumMissions)

@@ -4,6 +4,7 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.core.exception.PWCGException;
 
 public class AmericanMedalManager extends BoSMedalManager 
 {
@@ -46,21 +47,21 @@ public class AmericanMedalManager extends BoSMedalManager
 		return medals.get(PURPLE_HEART);
 	}
 
-	public Medal awardFighter(SquadronMember pilot, ArmedService service, int victoriesThisMission) 
+	public Medal awardFighter(SquadronMember pilot, ArmedService service, int victoriesThisMission) throws PWCGException 
 	{
-        if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 3) && !hasMedal(pilot, medals.get(BRONZE_STAR)))
+        if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 3) && !hasMedal(pilot, medals.get(BRONZE_STAR)))
         {
             return medals.get(BRONZE_STAR);
         }
-        else if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 6) && !hasMedal(pilot, medals.get(DISTINGUISHED_FLYING_CROSS)))
+        else if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 6) && !hasMedal(pilot, medals.get(DISTINGUISHED_FLYING_CROSS)))
 		{
 			return medals.get(DISTINGUISHED_FLYING_CROSS);
 		}
-        else if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 15 && !hasMedal(pilot, medals.get(SILVER_STAR)))
+        else if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 15 && !hasMedal(pilot, medals.get(SILVER_STAR)))
         {
             return medals.get(SILVER_STAR);
         }
-        else if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 20 && !hasMedal(pilot, medals.get(DISTINGUISHED_SERVICE_CROSS)))
+        else if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 20 && !hasMedal(pilot, medals.get(DISTINGUISHED_SERVICE_CROSS)))
         {
             return medals.get(DISTINGUISHED_SERVICE_CROSS);
         }
@@ -68,15 +69,15 @@ public class AmericanMedalManager extends BoSMedalManager
 		{
 			if (!hasMedal(pilot, medals.get(MEDAL_OF_HONOR)))
 			{
-				if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 20) && (victoriesThisMission >= 3))
+				if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 20) && (victoriesThisMission >= 3))
 				{
                     return medals.get(MEDAL_OF_HONOR);
 				}
-				else if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 30) && (victoriesThisMission >= 2))
+				else if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 30) && (victoriesThisMission >= 2))
 				{
                     return medals.get(MEDAL_OF_HONOR);
 				}
-                else if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 35))
+                else if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 35))
                 {
                     return medals.get(MEDAL_OF_HONOR);
                 }
@@ -86,46 +87,41 @@ public class AmericanMedalManager extends BoSMedalManager
 		return null;
 	}
 
-    public Medal awardBomber(SquadronMember pilot, ArmedService service, int victoriesThisMission) 
+    public Medal awardBomber(SquadronMember pilot, ArmedService service, int victoriesThisMission) throws PWCGException 
     {
+        int numPilotGroundVictoryPoints = pilot.getSquadronMemberVictories().getGroundVictoryPointTotal();
+
         if (!hasMedal(pilot, medals.get(BRONZE_STAR)))
         {
-            if (pilot.getMissionFlown() >= 15 || pilot.getGroundVictories().size() > 5)
+            if (pilot.getMissionFlown() >= 15 || numPilotGroundVictoryPoints > 8)
             {
                 return medals.get(BRONZE_STAR);
             }
         }
         else if (!hasMedal(pilot, medals.get(DISTINGUISHED_FLYING_CROSS)))
         {
-            if (pilot.getMissionFlown() >= 25 || pilot.getGroundVictories().size() > 10)
+            if (pilot.getMissionFlown() >= 25 || numPilotGroundVictoryPoints > 15)
             {
                 return medals.get(DISTINGUISHED_FLYING_CROSS);
             }
         }
         else if (!hasMedal(pilot, medals.get(SILVER_STAR)))
         {
-            if (pilot.getMissionFlown() >= 30 || pilot.getGroundVictories().size() > 25)
-            {
-                return medals.get(SILVER_STAR);
-            }
-        }
-        else if (!hasMedal(pilot, medals.get(SILVER_STAR)))
-        {
-            if (pilot.getMissionFlown() >= 30 || pilot.getGroundVictories().size() > 25)
+            if (pilot.getMissionFlown() >= 30 || numPilotGroundVictoryPoints > 30)
             {
                 return medals.get(SILVER_STAR);
             }
         }
         else if (!hasMedal(pilot, medals.get(DISTINGUISHED_SERVICE_CROSS)))
         {
-            if (pilot.getMissionFlown() >= 50 || pilot.getGroundVictories().size() > 50)
+            if (pilot.getMissionFlown() >= 50 || numPilotGroundVictoryPoints > 60)
             {
                 return medals.get(DISTINGUISHED_SERVICE_CROSS);
             }
         }
         else if (!hasMedal(pilot, medals.get(MEDAL_OF_HONOR)))
         {
-            if (pilot.getMissionFlown() >= 100 || pilot.getGroundVictories().size() > 100)
+            if (pilot.getMissionFlown() >= 100 || numPilotGroundVictoryPoints > 120)
             {
                 return medals.get(MEDAL_OF_HONOR);
             }

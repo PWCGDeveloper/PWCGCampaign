@@ -39,9 +39,9 @@ public abstract class MedalManagerTestBase
         players = new ArrayList<>();
         players.add(player);
         
-        Mockito.when(player.getVictories()).thenReturn(victories);
         Mockito.when(player.getMedals()).thenReturn(medals);
         Mockito.when(player.getSquadronMemberVictories()).thenReturn(squadronMemberVictories);
+        Mockito.when(squadronMemberVictories.getAirToAirVictoryCount()).thenReturn(victories.size());
         Mockito.when(squadron.getSquadronRoles()).thenReturn(squadronRoleSet);
         Mockito.when(squadronRoleSet.isSquadronThisRole(ArgumentMatchers.<Date>any(), ArgumentMatchers.<Role>any())).thenReturn(true);
     }
@@ -57,13 +57,7 @@ public abstract class MedalManagerTestBase
 
     protected void makeVictories(int numVictories)
     {
-        victories.clear();
-        for (int i = 0; i < numVictories; ++i)
-        {
-            victories.add(new Victory());
-        }
-        
-        Mockito.when(squadronMemberVictories.getAirToAirVictories()).thenReturn(numVictories);
+        Mockito.when(squadronMemberVictories.getAirToAirVictoryCount()).thenReturn(numVictories);
     }
 
 }

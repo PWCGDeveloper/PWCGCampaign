@@ -39,12 +39,12 @@ public class CampaignAceUpdaterTest extends AARTestSetup
         aceVictories.put(101064, victories);
         
         Ace aceInCampaign = campaign.getPersonnelManager().getCampaignAces().retrieveAceBySerialNumber(101064);   
-        int aceVictoriesBefore = aceInCampaign.getVictories().size();
+        int aceVictoriesBefore = aceInCampaign.getSquadronMemberVictories().getAirToAirVictoryCount();
         
         CampaignAceUpdater updater = new CampaignAceUpdater(campaign, aceVictories);
         updater.updatesCampaignAces();
 
-        int aceVictoriesAfter = aceInCampaign.getVictories().size();
+        int aceVictoriesAfter = aceInCampaign.getSquadronMemberVictories().getAirToAirVictoryCount();
         
         assertTrue (aceVictoriesAfter == (aceVictoriesBefore+1));
     }
@@ -61,12 +61,12 @@ public class CampaignAceUpdaterTest extends AARTestSetup
         aceVictories.put(101143, victories);
         
         Ace aceInCampaign = campaign.getPersonnelManager().getCampaignAces().retrieveAceBySerialNumber(101143);   
-        int aceVictoriesBefore = aceInCampaign.getVictories().size();
+        int aceVictoriesBefore = aceInCampaign.getSquadronMemberVictories().getAirToAirVictoryCount();
         
         CampaignAceUpdater updater = new CampaignAceUpdater(campaign, aceVictories);
         updater.updatesCampaignAces();
 
-        int aceVictoriesAfter = aceInCampaign.getVictories().size();
+        int aceVictoriesAfter = aceInCampaign.getSquadronMemberVictories().getAirToAirVictoryCount();
         
         assertTrue (aceVictoriesAfter == (aceVictoriesBefore+1));
     }

@@ -8,18 +8,18 @@ import pwcg.core.utils.RandomNumberGenerator;
 
 public class PilotSkill 
 {
-    public static int PilotSkillMedVictories = 1;           // Number of victories to advance pilot skill from low to medium
-    public static int PilotSkillMedMinMissions = 5;         // Number of missions to advance pilot skill from low to medium
+    public static int PilotSkillCommonVictories = 1;                // Number of victories to advance pilot skill from novice to common
+    public static int PilotSkillMedCommonMissions = 10;             // Number of missions to advance pilot skill from novice to common
     
-    public static int PilotSkillHighVictories = 2;          // Number of victories to advance pilot skill from medium to high
-    public static int PilotSkillHighMinVictories = 1;       // Minimum victories to advance pilot skill from medium to high
-    public static int PilotSkillHighMinMissions = 10;       // Minimum victories to advance pilot skill from medium to high
+    public static int PilotSkillVeteranAirVictories = 3;            // Number of victories to advance pilot skill from common to veteran
+    public static int PilotSkillVeteranMinAirVictories = 2;         // Minimum victories to advance pilot skill from common to veteran
+    public static int PilotSkillVeteranMinAirMissions = 40;         // Minimum victories to advance pilot skill from common to veteran
 
-    public static int PilotSkillAceVictories = 5;           // Number of victories to advance pilot skill from high to ace
+    public static int PilotSkillAceAirVictories = 5;                // Number of victories to advance pilot skill from veteran to ace
 
-    public static int PilotSkillMedGroundVictories = 1;        // Number of victories to advance pilot skill from low to medium
-    public static int PilotSkillHighGroundVictories = 20;      // Number of victories to advance pilot skill from medium to high
-    public static int PilotSkillHighMinGroundVictories = 8;    // Minimum victories to advance pilot skill from medium to high
+    public static int PilotSkillCommonGroundVictoryPoints = 5;          // Number of victories to advance pilot skill from novice to common
+    public static int PilotSkillVeteranGroundVictoryPoints = 25;        // Number of victories to advance pilot skill from common to veteran
+    public static int PilotSkillAceGroundVictoryPoints = 50;            // Number of victories to advance pilot skill from veteran to ace
 
     private Campaign campaign;
     
@@ -27,28 +27,51 @@ public class PilotSkill
 	{
 		this.campaign = campaign;
 	}
-	public void advanceSkillofPilot(SquadronMember squadronMember, Squadron squad) throws PWCGException 
-	{
-		if (squadronMember.getPilotActiveStatus() == SquadronMemberStatus.STATUS_KIA)
-		{
-			return;
-		}
-		
-		if (squadronMember.isPlayer())
-		{
-			return;
-		}
-		
-		if (squadronMember instanceof Ace)
-		{
-			return;
-		}
-		
-        int numPilotVictories = squadronMember.getSquadronMemberVictories().getAirToAirVictories();
-        int numPilotGroundVictories = squadronMember.getGroundVictories().size();
+    
+    public void advancePilotSkillForPerformance(SquadronMember squadronMember) throws PWCGException 
+    {
+        if (isAdjustSkill(squadronMember))
+        {
+            adjustSquadronMemberSkillForPerformance(squadronMember);
+        }
+    }
+    
+    public void advancePilotSkillForInitialCreation(SquadronMember squadronMember, Squadron squad) throws PWCGException 
+    {
+        if (isAdjustSkill(squadronMember))
+        {
+            adjustSquadronMemberSkillForPerformance(squadronMember);
+            adjustSquadronMemberSkillForSquadronSkill(squadronMember, squad);
+        }
+    }
+
+    private boolean isAdjustSkill(SquadronMember squadronMember)
+    {
+        if (squadronMember.getPilotActiveStatus() == SquadronMemberStatus.STATUS_KIA)
+        {
+            return false;
+        }
+        
+        if (squadronMember.isPlayer())
+        {
+            return false;
+        }
+        
+        if (squadronMember instanceof Ace)
+        {
+            return false;
+        }
+        
+        return true;
+    }
+	
+    private void adjustSquadronMemberSkillForPerformance(SquadronMember squadronMember) throws PWCGException
+    {
+        int numPilotVictories = squadronMember.getSquadronMemberVictories().getAirToAirVictoryCount();
+        int numPilotGroundVictoryPoints = squadronMember.getSquadronMemberVictories().getGroundVictoryPointTotal();
 		int numMissions = squadronMember.getMissionFlown();
 		
-		if (numPilotVictories >= PilotSkillMedVictories || numPilotGroundVictories >= PilotSkillMedGroundVictories || numMissions > PilotSkillMedMinMissions)
+		if (numPilotVictories >= PilotSkillCommonVictories || numPilotGroundVictoryPoints >= PilotSkillCommonGroundVictoryPoints || numMissions > PilotSkillMedCommonMissions)
 		{
 			if (squadronMember.getAiSkillLevel() != AiSkillLevel.NOVICE)
 			{
@@ -57,10 +80,9 @@ public class PilotSkill
 		}
 		
         // Veteran pilot skill
-        if ((numPilotVictories >= PilotSkillHighVictories) || 
-            (numPilotGroundVictories >= PilotSkillHighGroundVictories) || 
-            (numPilotVictories > PilotSkillHighMinVictories && numMissions > PilotSkillHighMinMissions) ||
-            (numPilotGroundVictories > PilotSkillHighMinGroundVictories && numMissions > PilotSkillHighMinMissions))
+        if ((numPilotVictories >= PilotSkillVeteranAirVictories) || 
+            (numPilotVictories > PilotSkillVeteranMinAirVictories && numMissions > PilotSkillVeteranMinAirMissions) ||
+            (numPilotGroundVictoryPoints > PilotSkillVeteranGroundVictoryPoints && numMissions > PilotSkillVeteranMinAirMissions))
         {
             if (squadronMember.getAiSkillLevel().lessThan(AiSkillLevel.VETERAN))
             {
@@ -68,16 +90,18 @@ public class PilotSkill
             }
         }
  
-        if (numPilotVictories >= PilotSkillAceVictories)
+        if (numPilotVictories >= PilotSkillAceAirVictories || numPilotGroundVictoryPoints > PilotSkillAceGroundVictoryPoints)
         {
             if (squadronMember.getAiSkillLevel().lessThan(AiSkillLevel.ACE))
             {
                 squadronMember.setAiSkillLevel(AiSkillLevel.ACE);
             }
         }
-		
-		// Adjust for squadron skill
-		
+    }
+	
+    private void adjustSquadronMemberSkillForSquadronSkill(SquadronMember squadronMember, Squadron squad) throws PWCGException
+    {
+        // Adjust for squadron skill
         int squadronAdjustmentRoll = RandomNumberGenerator.getRandom(100);
 
         // Adjustments for elite squadrons
@@ -118,7 +142,7 @@ public class PilotSkill
                 }
             }
         }
-        // Adjustments for average squadrons - no adjustments
+        // Adjustments for common squadrons - no adjustments
         else if (squadronQuality >= 45)
         {
         }
@@ -142,5 +166,5 @@ public class PilotSkill
                 }
             }
         }
-	}
+    }
 }

@@ -17,7 +17,7 @@ public class GreatAce
     	SquadronMember referencePlayer = campaign.findReferencePlayer();
         if (referencePlayer != null)
         {
-            int numVictories = referencePlayer.getSquadronMemberVictories().getAirToAirVictories();
+            int numVictories = referencePlayer.getSquadronMemberVictories().getAirToAirVictoryCount();
             if (isSquadronMemberGreatAce(campaign, numVictories))
             {
                 return true;

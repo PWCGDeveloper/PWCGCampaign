@@ -123,9 +123,9 @@ public class TopAcesListBuilder
         int topAceCount = 1;
 	    for (SquadronMember ace : allPilotsInCampaign.values()) 
 	    {  
-	        if (ace.getVictories().size() >= 5)
+	        if (ace.getSquadronMemberVictories().getAirToAirVictoryCount() >= 5)
 	        {
-    			String newKey = new String ("" + (ACE_VICTORY_SORT_CONSTANT - ((100 * ace.getSquadronMemberVictories().getAirToAirVictories()) + topAceCount)));
+    			String newKey = new String ("" + (ACE_VICTORY_SORT_CONSTANT - ((100 * ace.getSquadronMemberVictories().getAirToAirVictoryCount()) + topAceCount)));
     			sortedAcesByVictories.put(newKey, ace);    			
     			++topAceCount;
 	        }

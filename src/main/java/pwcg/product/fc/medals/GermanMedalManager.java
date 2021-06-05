@@ -6,6 +6,7 @@ import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.core.exception.PWCGException;
 import pwcg.product.fc.country.FCServiceManager;
 
 public class GermanMedalManager extends FCMedalManager 
@@ -114,25 +115,25 @@ public class GermanMedalManager extends FCMedalManager
         return null;
     }
 
-	protected Medal awardFighter(SquadronMember pilot, ArmedService service, int victoriesThisMission) 
+	protected Medal awardFighter(SquadronMember pilot, ArmedService service, int victoriesThisMission) throws PWCGException 
 	{
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 1) && !hasMedal(pilot, medals.get(IRON_CROSS_2)))
+		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 1) && !hasMedal(pilot, medals.get(IRON_CROSS_2)))
 		{
 			return medals.get(IRON_CROSS_2);
 		}
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 6)  && !hasMedal(pilot, medals.get(IRON_CROSS_1)))
+		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 6)  && !hasMedal(pilot, medals.get(IRON_CROSS_1)))
 		{
 			return medals.get(IRON_CROSS_1);
 		}
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 13) && !hasMedal(pilot, medals.get(ORDER_HOUSE_HOHENZOLLERN)))
+		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 13) && !hasMedal(pilot, medals.get(ORDER_HOUSE_HOHENZOLLERN)))
 		{
 			return medals.get(ORDER_HOUSE_HOHENZOLLERN);
 		}
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 20) && !hasMedal(pilot, medals.get(POUR_LE_MERIT)))
+		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 20) && !hasMedal(pilot, medals.get(POUR_LE_MERIT)))
 		{
 			return medals.get(POUR_LE_MERIT);
 		}
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 70) && !hasMedal(pilot, medals.get(ORDER_RED_EAGLE)))
+		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 70) && !hasMedal(pilot, medals.get(ORDER_RED_EAGLE)))
 		{
 			return medals.get(ORDER_RED_EAGLE);
 		}
@@ -160,20 +161,20 @@ public class GermanMedalManager extends FCMedalManager
 		return medal;
 	}
 
-	private Medal getPrussianMedal(SquadronMember pilot, ArmedService service)
+	private Medal getPrussianMedal(SquadronMember pilot, ArmedService service) throws PWCGException
 	{
 		if (pilot.getPlayerRegion().equalsIgnoreCase(SquadronMember.PRUSSIA))
 		{
 			if (!hasMedal(pilot, medals.get(P_WAR_MERIT_MEDAL)))
 			{
-				if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 4)
+				if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 4)
 				{
 					return medals.get(P_WAR_MERIT_MEDAL);
 				}
 			}
 			if (!hasMedal(pilot, medals.get(P_MILITARY_MERIT_CROSS)))
 			{
-				if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 8)
+				if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 8)
 				{
 					
 					IRankHelper rankObj = RankFactory.createRankHelper();
@@ -189,27 +190,27 @@ public class GermanMedalManager extends FCMedalManager
 		return null;
 	}
 
-	private Medal getBavarianMedal(SquadronMember pilot)
+	private Medal getBavarianMedal(SquadronMember pilot) throws PWCGException
 	{
 		if (pilot.getPlayerRegion().equalsIgnoreCase(SquadronMember.BAVARIA))
 		{
 			if (!hasMedal(pilot, medals.get(B_MEDAL_BRAVERY)))
 			{
-				if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 4)
+				if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 4)
 				{
 					return medals.get(B_MEDAL_BRAVERY);
 				}
 			}
 			if (!hasMedal(pilot, medals.get(B_MILITARY_MERIT)))
 			{
-				if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 8)
+				if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 8)
 				{
 					return medals.get(B_MILITARY_MERIT);
 				}
 			}
 			if (!hasMedal(pilot, medals.get(B_MAX_JOSEPH)))
 			{
-				if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 35)
+				if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 35)
 				{
 					return medals.get(B_MAX_JOSEPH);
 				}
@@ -219,20 +220,20 @@ public class GermanMedalManager extends FCMedalManager
 		return null;
 	}
 
-	private Medal getWurttemburgMedal(SquadronMember pilot)
+	private Medal getWurttemburgMedal(SquadronMember pilot) throws PWCGException
 	{
 		if (pilot.getPlayerRegion().equalsIgnoreCase(SquadronMember.WURTTEMBURG))
 		{
 			if (!hasMedal(pilot, medals.get(W_MILITARY_MERIT)))
 			{
-				if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 8)
+				if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 8)
 				{
 					return medals.get(W_MILITARY_MERIT);
 				}
 			}
 			if (!hasMedal(pilot, medals.get(W_FREDRICH_ORDER)))
 			{
-				if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 25)
+				if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 25)
 				{
 					return medals.get(W_FREDRICH_ORDER);
 				}
@@ -242,27 +243,27 @@ public class GermanMedalManager extends FCMedalManager
 		return null;
 	}
 
-	private Medal getSaxonyMedal(SquadronMember pilot)
+	private Medal getSaxonyMedal(SquadronMember pilot) throws PWCGException
 	{
 		if (pilot.getPlayerRegion().equalsIgnoreCase(SquadronMember.SAXONY))
 		{
 			if (!hasMedal(pilot, medals.get(S_WAR_MERIT_CROSS)))
 			{
-				if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 4)
+				if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 4)
 				{
 					return medals.get(S_WAR_MERIT_CROSS);
 				}
 			}
 			if (!hasMedal(pilot, medals.get(S_ORDER_ALBERT)))
 			{
-				if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 8)
+				if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 8)
 				{
 					return medals.get(S_ORDER_ALBERT);
 				}
 			}
 			if (!hasMedal(pilot, medals.get(S_MILITARY_ORDER_ST_HENRY)))
 			{
-				if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 30)
+				if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 30)
 				{
 					return medals.get(S_MILITARY_ORDER_ST_HENRY);
 				}
@@ -272,11 +273,12 @@ public class GermanMedalManager extends FCMedalManager
 		return null;
 	}
 
-    protected Medal awardBomber(SquadronMember pilot, ArmedService service, int victoriesThisMission) 
+    protected Medal awardBomber(SquadronMember pilot, ArmedService service, int victoriesThisMission) throws PWCGException 
     {
+        int numPilotGroundVictoryPoints = pilot.getSquadronMemberVictories().getGroundVictoryPointTotal();
         if (!(hasMedal(pilot, medals.get(IRON_CROSS_2))))
         {
-            if ((pilot.getMissionFlown() >= 15) || (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 1))
+            if ((pilot.getMissionFlown() >= 15) || (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 1))
             {
                 return medals.get(IRON_CROSS_2);
             }
@@ -289,7 +291,7 @@ public class GermanMedalManager extends FCMedalManager
             {
                 return medals.get(IRON_CROSS_1);
             }
-            if (pilot.getMissionFlown() >= 30 && pilot.getGroundVictories().size() > 15)
+            if (pilot.getMissionFlown() >= 30 && numPilotGroundVictoryPoints > 15)
             {
                 return medals.get(IRON_CROSS_1);
             }
@@ -302,7 +304,7 @@ public class GermanMedalManager extends FCMedalManager
             {
                 return medals.get(ORDER_HOUSE_HOHENZOLLERN);
             }
-            if (pilot.getMissionFlown() >= 70 && pilot.getGroundVictories().size() > 30)
+            if (pilot.getMissionFlown() >= 70 && numPilotGroundVictoryPoints > 30)
             {
                 return medals.get(ORDER_HOUSE_HOHENZOLLERN);
             }
@@ -310,7 +312,7 @@ public class GermanMedalManager extends FCMedalManager
         // PLM
         if (!hasMedal(pilot, medals.get(POUR_LE_MERIT)))
         {
-            if (pilot.getMissionFlown() >= 70 && pilot.getGroundVictories().size() > 75)
+            if (pilot.getMissionFlown() >= 70 && numPilotGroundVictoryPoints > 75)
             {
                 return medals.get(POUR_LE_MERIT);
             }
@@ -321,7 +323,7 @@ public class GermanMedalManager extends FCMedalManager
             // War Merit Medal
             if (!hasMedal(pilot, medals.get(P_WAR_MERIT_MEDAL)))
             {
-                if (pilot.getMissionFlown() >= 20 && pilot.getGroundVictories().size() > 5)
+                if (pilot.getMissionFlown() >= 20 && numPilotGroundVictoryPoints > 5)
                 {
                     return medals.get(P_WAR_MERIT_MEDAL);
                 }
@@ -329,7 +331,7 @@ public class GermanMedalManager extends FCMedalManager
             // Military Merit Cross
             if (!hasMedal(pilot, medals.get(P_MILITARY_MERIT_CROSS)))
             {
-                if (pilot.getMissionFlown() >= 30 && pilot.getGroundVictories().size() > 25)
+                if (pilot.getMissionFlown() >= 30 && numPilotGroundVictoryPoints > 25)
                 {
                     IRankHelper rankObj = RankFactory.createRankHelper();
                     int rankPos = rankObj.getRankPosByService(pilot.getRank(), service);
@@ -346,7 +348,7 @@ public class GermanMedalManager extends FCMedalManager
             // Medal for Bravery
             if (!hasMedal(pilot, medals.get(B_MEDAL_BRAVERY)))
             {
-                if (pilot.getMissionFlown() >= 20 && pilot.getGroundVictories().size() > 15)
+                if (pilot.getMissionFlown() >= 20 && numPilotGroundVictoryPoints > 15)
                 {
                     return medals.get(B_MEDAL_BRAVERY);
                 }
@@ -354,7 +356,7 @@ public class GermanMedalManager extends FCMedalManager
             // Military Merit
             if (!hasMedal(pilot, medals.get(B_MILITARY_MERIT)))
             {
-                if (pilot.getMissionFlown() >= 50 && pilot.getGroundVictories().size() > 25)
+                if (pilot.getMissionFlown() >= 50 && numPilotGroundVictoryPoints > 25)
                 {
                     return medals.get(B_MILITARY_MERIT);
                 }
@@ -362,7 +364,7 @@ public class GermanMedalManager extends FCMedalManager
             // Max Joseph
             if (!hasMedal(pilot, medals.get(B_MAX_JOSEPH)))
             {
-                if (pilot.getMissionFlown() >= 100 && pilot.getGroundVictories().size() > 90)
+                if (pilot.getMissionFlown() >= 100 && numPilotGroundVictoryPoints > 90)
                 {
                     return medals.get(B_MILITARY_MERIT);
                 }
@@ -374,7 +376,7 @@ public class GermanMedalManager extends FCMedalManager
             // Military Merit
             if (!hasMedal(pilot, medals.get(W_MILITARY_MERIT)))
             {
-                if (pilot.getMissionFlown() >= 50 && pilot.getGroundVictories().size() > 25)
+                if (pilot.getMissionFlown() >= 50 && numPilotGroundVictoryPoints > 25)
                 {
                     return medals.get(W_MILITARY_MERIT);
                 }
@@ -382,7 +384,7 @@ public class GermanMedalManager extends FCMedalManager
             // Freidrich Order
             if (!hasMedal(pilot, medals.get(W_FREDRICH_ORDER)))
             {
-                if (pilot.getMissionFlown() >= 100 && pilot.getGroundVictories().size() > 90)
+                if (pilot.getMissionFlown() >= 100 && numPilotGroundVictoryPoints > 90)
                 {
                     return medals.get(W_FREDRICH_ORDER);
                 }
@@ -394,7 +396,7 @@ public class GermanMedalManager extends FCMedalManager
             // Military Merit
             if (!hasMedal(pilot, medals.get(S_WAR_MERIT_CROSS)))
             {
-                if (pilot.getMissionFlown() >= 20 && pilot.getGroundVictories().size() > 15)
+                if (pilot.getMissionFlown() >= 20 && numPilotGroundVictoryPoints > 15)
                 {
                     return medals.get(S_WAR_MERIT_CROSS);
                 }
@@ -402,7 +404,7 @@ public class GermanMedalManager extends FCMedalManager
             // Military Merit
             if (!hasMedal(pilot, medals.get(S_ORDER_ALBERT)))
             {
-                if (pilot.getMissionFlown() >= 50 && pilot.getGroundVictories().size() > 25)
+                if (pilot.getMissionFlown() >= 50 && numPilotGroundVictoryPoints > 25)
                 {
                     return medals.get(S_ORDER_ALBERT);
                 }
@@ -410,7 +412,7 @@ public class GermanMedalManager extends FCMedalManager
             // St Henry Order 
             if (!hasMedal(pilot, medals.get(S_MILITARY_ORDER_ST_HENRY)))
             {
-                if (pilot.getMissionFlown() >= 100 && pilot.getGroundVictories().size() > 90)
+                if (pilot.getMissionFlown() >= 100 && numPilotGroundVictoryPoints > 90)
                 {
                     return medals.get(W_FREDRICH_ORDER);
                 }

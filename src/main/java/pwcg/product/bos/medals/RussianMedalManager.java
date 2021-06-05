@@ -4,6 +4,7 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.core.exception.PWCGException;
 
 public class RussianMedalManager extends BoSMedalManager 
 {
@@ -49,9 +50,9 @@ public class RussianMedalManager extends BoSMedalManager
         return null;
     }
 
-	protected Medal awardFighter(SquadronMember pilot, ArmedService service, int numMissionVictories) 
+	protected Medal awardFighter(SquadronMember pilot, ArmedService service, int numMissionVictories) throws PWCGException 
 	{
-	    int pilotTotalVictories = pilot.getSquadronMemberVictories().getAirToAirVictories();
+	    int pilotTotalVictories = pilot.getSquadronMemberVictories().getAirToAirVictoryCount();
 		if ((pilotTotalVictories >= 2) && !hasMedal(pilot, medals.get(ORDER_RED_STAR)))
 		{
 			return medals.get(ORDER_RED_STAR);
@@ -90,15 +91,16 @@ public class RussianMedalManager extends BoSMedalManager
 		return null;
 	}
 
-    protected Medal awardBomber(SquadronMember pilot, ArmedService service, int victoriesThisMission) 
+    protected Medal awardBomber(SquadronMember pilot, ArmedService service, int victoriesThisMission) throws PWCGException 
     {
+        int numPilotGroundVictoryPoints = pilot.getSquadronMemberVictories().getGroundVictoryPointTotal();
         if (!hasMedal(pilot, medals.get(ORDER_RED_STAR)))
         {
 	        if ((pilot.getMissionFlown() >= 15))
 	        {
 	            return medals.get(ORDER_RED_STAR);
 	        }
-            if (pilot.getGroundVictories().size() > 5)
+            if (numPilotGroundVictoryPoints > 5)
             {
                 return medals.get(ORDER_RED_STAR);
             }
@@ -106,7 +108,7 @@ public class RussianMedalManager extends BoSMedalManager
         
         if (!hasMedal(pilot, medals.get(ORDER_OF_GLORY)))
         {
-            if (pilot.getGroundVictories().size() > 20)
+            if (numPilotGroundVictoryPoints > 20)
             {
                 return medals.get(ORDER_OF_GLORY);
             }
@@ -114,7 +116,7 @@ public class RussianMedalManager extends BoSMedalManager
         
         if (!hasMedal(pilot, medals.get(ORDER_PATRIOTIC_WAR_2)))
         {
-            if ((pilot.getMissionFlown() >= 20) && pilot.getGroundVictories().size() > 30)
+            if ((pilot.getMissionFlown() >= 20) && numPilotGroundVictoryPoints > 30)
             {
                 return medals.get(ORDER_PATRIOTIC_WAR_2);
             }
@@ -122,7 +124,7 @@ public class RussianMedalManager extends BoSMedalManager
         
         if (!hasMedal(pilot, medals.get(ORDER_PATRIOTIC_WAR_1)))
         {
-            if ((pilot.getMissionFlown() >= 30) && pilot.getGroundVictories().size() > 50)
+            if ((pilot.getMissionFlown() >= 30) && numPilotGroundVictoryPoints > 50)
             {
                 return medals.get(ORDER_PATRIOTIC_WAR_1);
             }
@@ -138,7 +140,7 @@ public class RussianMedalManager extends BoSMedalManager
         
         if (!hasMedal(pilot, medals.get(HERO_SOVIET_UNION)))
         {
-            if ((pilot.getMissionFlown() >= 40) && pilot.getGroundVictories().size() > 120)
+            if ((pilot.getMissionFlown() >= 40) && numPilotGroundVictoryPoints > 120)
             {
                 return medals.get(HERO_SOVIET_UNION);
             }

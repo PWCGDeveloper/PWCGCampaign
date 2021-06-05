@@ -74,9 +74,9 @@ public class HistoricalAce extends SquadronMember
         }
     }
 
-    private void determineAceMissionsFlown(Ace aceNow)
+    private void determineAceMissionsFlown(Ace aceNow) throws PWCGException
     {
-        int missionsFlown = aceNow.getSquadronMemberVictories().getAirToAirVictories() * 3;
+        int missionsFlown = aceNow.getSquadronMemberVictories().getAirToAirVictoryCount() * 3;
         missionsFlown += RandomNumberGenerator.getRandom(20);
         aceNow.setMissionFlown(missionsFlown);
     }

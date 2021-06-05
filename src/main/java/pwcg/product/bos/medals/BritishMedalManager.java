@@ -51,12 +51,12 @@ public class BritishMedalManager extends BoSMedalManager
 
     public Medal awardFighter(SquadronMember pilot, ArmedService service, int victoriesThisMission) throws PWCGException
     {
-        if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 5 && !hasMedal(pilot, medals.get(DFC)))
+        if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 5 && !hasMedal(pilot, medals.get(DFC)))
         {
             return medals.get(DFC);
         }
 
-        if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 10 && hasMedal(pilot, medals.get(DFC)) && !hasMedal(pilot, medals.get(DFC_BAR_1)))
+        if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 10 && hasMedal(pilot, medals.get(DFC)) && !hasMedal(pilot, medals.get(DFC_BAR_1)))
         {
             if (victoriesThisMission >= 1)
             {
@@ -64,26 +64,26 @@ public class BritishMedalManager extends BoSMedalManager
             }
         }
 
-        if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 15) && !hasMedal(pilot, medals.get(DSO)))
+        if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 15) && !hasMedal(pilot, medals.get(DSO)))
         {
             return medals.get(DSO);
         }
 
-        if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 25) && !hasMedal(pilot, medals.get(DSO_BAR)))
+        if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 25) && !hasMedal(pilot, medals.get(DSO_BAR)))
         {
             return medals.get(DSO_BAR);            
         }
 
         if (!hasMedal(pilot, medals.get(VC)))
         {
-            if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 40)
+            if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 40)
             {
                 if (victoriesThisMission >= 3)
                 {
                     return medals.get(VC);
                 }
             }
-            if (pilot.getSquadronMemberVictories().getAirToAirVictories() >= 30)
+            if (pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 30)
             {
                 if (victoriesThisMission >= 5)
                 {
@@ -97,12 +97,14 @@ public class BritishMedalManager extends BoSMedalManager
 
     public Medal awardBomber(SquadronMember pilot, ArmedService service, int victoriesThisMission) throws PWCGException
     {
-        if (pilot.getGroundVictories().size() >= 15 && !hasMedal(pilot, medals.get(DFC)))
+        int numPilotGroundVictoryPoints = pilot.getSquadronMemberVictories().getGroundVictoryPointTotal();
+
+        if (numPilotGroundVictoryPoints >= 15 && !hasMedal(pilot, medals.get(DFC)))
         {
             return medals.get(DFC);
         }
 
-        if (pilot.getGroundVictories().size() >= 25 && !hasMedal(pilot, medals.get(DFC_BAR_1)))
+        if (numPilotGroundVictoryPoints >= 25 && !hasMedal(pilot, medals.get(DFC_BAR_1)))
         {
             if (victoriesThisMission >= 1)
             {
@@ -110,17 +112,17 @@ public class BritishMedalManager extends BoSMedalManager
             }
         }
 
-        if (pilot.getGroundVictories().size() >= 50 && !hasMedal(pilot, medals.get(DSO)))
+        if (numPilotGroundVictoryPoints >= 50 && !hasMedal(pilot, medals.get(DSO)))
         {
             return medals.get(DSO);
         }
 
-        if (pilot.getGroundVictories().size() >= 75 && !hasMedal(pilot, medals.get(DSO_BAR)))
+        if (numPilotGroundVictoryPoints >= 75 && !hasMedal(pilot, medals.get(DSO_BAR)))
         {
             return medals.get(DSO_BAR);            
         }
 
-        if (pilot.getGroundVictories().size() >= 100 && !hasMedal(pilot, medals.get(VC)))
+        if (numPilotGroundVictoryPoints >= 120 && !hasMedal(pilot, medals.get(VC)))
         {
             return medals.get(VC);            
         }

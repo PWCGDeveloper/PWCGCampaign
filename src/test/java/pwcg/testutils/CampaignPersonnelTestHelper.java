@@ -14,7 +14,7 @@ import pwcg.core.exception.PWCGException;
 public class CampaignPersonnelTestHelper
 {
 
-    public static void addVictories (SquadronMember squadronMember, Date date, int numVictories)
+    public static void addVictories (SquadronMember squadronMember, Date date, int numVictories) throws PWCGException
     {
         for (int i = 0; i < numVictories; ++i)
         {
@@ -28,7 +28,7 @@ public class CampaignPersonnelTestHelper
             victory.setVictim(victim);
             victory.setVictor(victor);
             
-            squadronMember.getVictories().add(victory);
+            squadronMember.addVictory(victory);
         }
     }
     

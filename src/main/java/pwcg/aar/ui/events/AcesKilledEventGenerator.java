@@ -51,7 +51,7 @@ public class AcesKilledEventGenerator
     {
         AceKilledEvent aceKilledEvent = null;
         
-        if (ace.getSquadronMemberVictories().getAirToAirVictories() >= NUM_VICTORIES_FOR_ACE_TO_BE_NEWSWORTHY)
+        if (ace.getSquadronMemberVictories().getAirToAirVictoryCount() >= NUM_VICTORIES_FOR_ACE_TO_BE_NEWSWORTHY)
         {
             String status = SquadronMemberStatus.pilotStatusToStatusDescription(ace.getPilotActiveStatus());
     

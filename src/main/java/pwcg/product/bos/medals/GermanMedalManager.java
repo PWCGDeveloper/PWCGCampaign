@@ -4,6 +4,7 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.core.exception.PWCGException;
 
 public class GermanMedalManager extends BoSMedalManager 
 {
@@ -66,33 +67,33 @@ public class GermanMedalManager extends BoSMedalManager
         return null;
     }
 
-	protected Medal awardFighter(SquadronMember pilot, ArmedService service, int victoriesThisMission) 
+	protected Medal awardFighter(SquadronMember pilot, ArmedService service, int victoriesThisMission) throws PWCGException 
 	{
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 2) && !hasMedal(pilot, medals.get(IRON_CROSS_2)))
+		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 2) && !hasMedal(pilot, medals.get(IRON_CROSS_2)))
 		{
 			return medals.get(IRON_CROSS_2);
 		}
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 10)  && !hasMedal(pilot, medals.get(IRON_CROSS_1)))
+		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 10)  && !hasMedal(pilot, medals.get(IRON_CROSS_1)))
 		{
 			return medals.get(IRON_CROSS_1);
 		}
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 25) && !hasMedal(pilot, medals.get(GERMAN_CROSS_GOLD)))
+		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 25) && !hasMedal(pilot, medals.get(GERMAN_CROSS_GOLD)))
 		{
 			return medals.get(GERMAN_CROSS_GOLD);
 		}
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 40) && !hasMedal(pilot, medals.get(KNIGHTS_CROSS)))
+		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 40) && !hasMedal(pilot, medals.get(KNIGHTS_CROSS)))
 		{
 			return medals.get(KNIGHTS_CROSS);
 		}
-		if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 100) && !hasMedal(pilot, medals.get(KNIGHTS_CROSS_OAK_LEAVES)))
+		if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 100) && !hasMedal(pilot, medals.get(KNIGHTS_CROSS_OAK_LEAVES)))
 		{
 			return medals.get(KNIGHTS_CROSS_OAK_LEAVES);
 		}
-        if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 150) && !hasMedal(pilot, medals.get(KNIGHTS_CROSS_SWORDS)))
+        if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 150) && !hasMedal(pilot, medals.get(KNIGHTS_CROSS_SWORDS)))
         {
             return medals.get(KNIGHTS_CROSS_SWORDS);
         }
-        if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 200) && !hasMedal(pilot, medals.get(KNIGHTS_CROSS_DIAMONDS)))
+        if ((pilot.getSquadronMemberVictories().getAirToAirVictoryCount() >= 200) && !hasMedal(pilot, medals.get(KNIGHTS_CROSS_DIAMONDS)))
         {
             return medals.get(KNIGHTS_CROSS_DIAMONDS);
         }
@@ -100,15 +101,17 @@ public class GermanMedalManager extends BoSMedalManager
 		return null;
 	}
 
-    protected Medal awardBomber(SquadronMember pilot, ArmedService service, int victoriesThisMission) 
+    protected Medal awardBomber(SquadronMember pilot, ArmedService service, int victoriesThisMission) throws PWCGException 
     {
+        int numPilotGroundVictoryPoints = pilot.getSquadronMemberVictories().getGroundVictoryPointTotal();
+
         if (!hasMedal(pilot, medals.get(IRON_CROSS_2)))
         {
 	        if ((pilot.getMissionFlown() >= 15))
 	        {
 	            return medals.get(IRON_CROSS_2);
 	        }
-            if (pilot.getGroundVictories().size() > 5)
+            if (numPilotGroundVictoryPoints > 5)
             {
                 return medals.get(IRON_CROSS_2);
             }
@@ -120,7 +123,7 @@ public class GermanMedalManager extends BoSMedalManager
             {
                 return medals.get(IRON_CROSS_1);
             }
-            if (pilot.getMissionFlown() >= 10 && pilot.getGroundVictories().size() > 20)
+            if (pilot.getMissionFlown() >= 10 && numPilotGroundVictoryPoints > 20)
             {
                 return medals.get(IRON_CROSS_1);
             }
@@ -128,20 +131,20 @@ public class GermanMedalManager extends BoSMedalManager
         
         if (!hasMedal(pilot, medals.get(GERMAN_CROSS_GOLD)))
         {
-            if (pilot.getMissionFlown() >= 20 && pilot.getGroundVictories().size() > 35)
+            if (pilot.getMissionFlown() >= 20 && numPilotGroundVictoryPoints > 35)
             {
                 return medals.get(GERMAN_CROSS_GOLD);
             }
         }
         
-        if (pilot.getMissionFlown() >= 30 && pilot.getGroundVictories().size() > 80)
+        if (pilot.getMissionFlown() >= 30 && numPilotGroundVictoryPoints > 80)
         {
             return medals.get(KNIGHTS_CROSS);
         }
         
         if (!hasMedal(pilot, medals.get(KNIGHTS_CROSS_OAK_LEAVES)))
         {
-            if (pilot.getMissionFlown() >= 40 && pilot.getGroundVictories().size() > 120)
+            if (pilot.getMissionFlown() >= 40 && numPilotGroundVictoryPoints > 120)
             {
                 return medals.get(KNIGHTS_CROSS_OAK_LEAVES);
             }
@@ -149,7 +152,7 @@ public class GermanMedalManager extends BoSMedalManager
         
         if (!hasMedal(pilot, medals.get(KNIGHTS_CROSS_SWORDS)))
         {
-            if (pilot.getMissionFlown() >= 50 && pilot.getGroundVictories().size() > 200)
+            if (pilot.getMissionFlown() >= 50 && numPilotGroundVictoryPoints > 200)
             {
                 return medals.get(KNIGHTS_CROSS_SWORDS);
             }
@@ -157,7 +160,7 @@ public class GermanMedalManager extends BoSMedalManager
         
         if (!hasMedal(pilot, medals.get(KNIGHTS_CROSS_DIAMONDS)))
         {
-            if (pilot.getMissionFlown() >= 50 && pilot.getGroundVictories().size() > 400)
+            if (pilot.getMissionFlown() >= 50 && numPilotGroundVictoryPoints > 400)
             {
                 return medals.get(KNIGHTS_CROSS_DIAMONDS);
             }
