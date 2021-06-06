@@ -72,10 +72,6 @@ public class Squadron
     private TargetPreferenceSet targetPreferences = new TargetPreferenceSet();
 	private List<SquadronConversionPeriod> conversionPeriods = new ArrayList<>();
     private Map<Date, Callsign> callsigns = new TreeMap<>();
-
-	public Squadron ()
-	{
-	}
 	
 	public static boolean isPlayerSquadron (Campaign campaign, int squadronId)
 	{

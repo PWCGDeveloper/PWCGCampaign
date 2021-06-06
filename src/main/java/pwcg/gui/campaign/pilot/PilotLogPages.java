@@ -7,6 +7,7 @@ import java.util.TreeMap;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.campaign.squadmember.SquadronMemberVictories;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.campaign.squadmember.VictoryDescription;
 import pwcg.core.exception.PWCGException;
@@ -29,24 +30,25 @@ public class PilotLogPages
         makePageOne();
         
         int pageCount = 2;
-        if (squadronMember.getSquadronMemberVictories().getAirToAirVictoryCount() > 0)
+        SquadronMemberVictories squadronMemberVictories = squadronMember.getSquadronMemberVictories();
+        if (squadronMemberVictories.getAirToAirVictoryCount() > 0)
         {
-            pageCount = addVictoriesToPage(pageCount, squadronMember.getSquadronMemberVictories().getAirToAirVictories());
+            pageCount = addVictoriesToPage(pageCount, squadronMemberVictories.getAirToAirVictories());
         }
 
-        if (squadronMember.getSquadronMemberVictories().getTankVictoryCount() > 0)
+        if (squadronMemberVictories.getTankVictoryCount() > 0)
         {
-            pageCount = addVictoriesToPage(pageCount, squadronMember.getSquadronMemberVictories().getTankVictories());
+            pageCount = addVictoriesToPage(pageCount, squadronMemberVictories.getTankVictories());
         }
 
-        if (squadronMember.getSquadronMemberVictories().getTrainVictoryCount() > 0)
+        if (squadronMemberVictories.getTrainVictoryCount() > 0)
         {
-            pageCount = addVictoriesToPage(pageCount, squadronMember.getSquadronMemberVictories().getTrainVictories());
+            pageCount = addVictoriesToPage(pageCount, squadronMemberVictories.getTrainVictories());
         }
 
-        if (squadronMember.getSquadronMemberVictories().getGroundVictoryCount() > 0)
+        if (squadronMemberVictories.getGroundVictoryCount() > 0)
         {
-            pageCount = addVictoriesToPage(pageCount, squadronMember.getSquadronMemberVictories().getGroundVictories());
+            pageCount = addVictoriesToPage(pageCount, squadronMemberVictories.getGroundVictories());
         }
         
         return;
@@ -64,17 +66,52 @@ public class PilotLogPages
 
         pageOneBuffer.append(squadronMember.skillAsString() + "\n");
 
-        String pilotAirVictories = "Air Victories: " + squadronMember.getSquadronMemberVictories().getAirToAirVictoryCount() + "\n";
-        pageOneBuffer.append(pilotAirVictories + "\n");
-
-        String pilotTankVictories = "Tank Victories: " + squadronMember.getSquadronMemberVictories().getTankVictoryCount() + "\n";
-        pageOneBuffer.append(pilotTankVictories + "\n");
-
-        String pilotTraniVictories = "Train Victories: " + squadronMember.getSquadronMemberVictories().getTrainVictoryCount() + "\n";
-        pageOneBuffer.append(pilotTraniVictories + "\n");        
+        SquadronMemberVictories squadronMemberVictories = squadronMember.getSquadronMemberVictories();
         
-        String pilotGroundVictories = "Ground Victories: " + squadronMember.getSquadronMemberVictories().getGroundVictoryCount() + "\n";
-        pageOneBuffer.append(pilotGroundVictories + "\n");
+        String pilotAirVictories = "Air Victories: " + squadronMemberVictories.getAirToAirVictoryCount() + "\n";
+        pageOneBuffer.append(pilotAirVictories);
+
+        String pilotTankVictories = "Tank Victories: " + squadronMemberVictories.getTankVictoryCount() + "\n";
+        pageOneBuffer.append(pilotTankVictories);
+
+        String pilotTraniVictories = "Train Victories: " + squadronMemberVictories.getTrainVictoryCount() + "\n";
+        pageOneBuffer.append(pilotTraniVictories);        
+        
+        String pilotGroundVictories = "Ground Victories: " + squadronMemberVictories.getGroundVictoryCount() + "\n";
+        pageOneBuffer.append(pilotGroundVictories);
+        pageOneBuffer.append("\n");
+
+        for (String playerAircraftName : squadronMemberVictories.getAirVictoriesdInType().keySet())
+        {
+            List<Victory> airVictoriesdInType = squadronMemberVictories.getAirVictoriesdInType().get(playerAircraftName);
+            String victoriesInType = "Air Victories in " + playerAircraftName + ": " + airVictoriesdInType.size() + "\n";
+            pageOneBuffer.append(victoriesInType);
+        }
+        pageOneBuffer.append("\n");
+        
+        for (String playerAircraftName : squadronMemberVictories.getGroundVictoriesdInType().keySet())
+        {
+            List<Victory> groundVictoriesdInType = squadronMemberVictories.getGroundVictoriesdInType().get(playerAircraftName);
+            String victoriesInType = "Ground Victories in " + playerAircraftName + ": " + groundVictoriesdInType.size() + "\n";
+            pageOneBuffer.append(victoriesInType);
+        }
+        pageOneBuffer.append("\n");
+        
+        for (String victimAircraftName : squadronMemberVictories.getAirVictoriesType().keySet())
+        {
+            List<Victory> groundVictoriesdOverType = squadronMemberVictories.getAirVictoriesType().get(victimAircraftName);
+            String victoriesInType = "Air Victories over " + victimAircraftName + ": " + groundVictoriesdOverType.size() + "\n";
+            pageOneBuffer.append(victoriesInType);
+        }
+        pageOneBuffer.append("\n");
+        
+        for (String victimTankName : squadronMemberVictories.getTankVictoriesType().keySet())
+        {
+            List<Victory> airVictoriesdOverType = squadronMemberVictories.getTankVictoriesType().get(victimTankName);
+            String victoriesInType = "Air Victories over " + victimTankName + ": " + airVictoriesdOverType.size() + "\n";
+            pageOneBuffer.append(victoriesInType);
+        }
+        pageOneBuffer.append("\n");
 
         pages.put(1, pageOneBuffer);
     }

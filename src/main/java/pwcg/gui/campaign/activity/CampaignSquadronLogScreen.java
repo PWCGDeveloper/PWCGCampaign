@@ -14,13 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.CampaignLog;
-import pwcg.campaign.CampaignLogEntry;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
@@ -28,8 +23,6 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorBorders;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.dialogs.PWCGMonitorSupport;
-import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
@@ -44,15 +37,13 @@ public class CampaignSquadronLogScreen extends ImageResizingPanel implements Act
     private JPanel pageTurnerPanel = null;
 
 	private Campaign campaign = null;
-    private int linesPerPage = 20;
-    private int charsPerLine = 50;
     private int logsForSquadronId = 0;
 	
 	private JPanel leftpage = null;
 	private JPanel rightpage = null;
 
 	private int pageNum = 0;
-	private Map<Integer, StringBuffer> pages = null;
+	private Map<Integer, StringBuffer> pages = new TreeMap<>();
 
 	public CampaignSquadronLogScreen (int logsForSquadronId)
 	{        
@@ -61,10 +52,6 @@ public class CampaignSquadronLogScreen extends ImageResizingPanel implements Act
         this.setOpaque(false);
 
         this.logsForSquadronId = logsForSquadronId;
-
-        calculateLinesPerPage();
-        calculateCharsPerLine();
-        adjustTextForFontSize();
 
 		this.campaign = PWCGContext.getInstance().getCampaign();
 	}
@@ -78,74 +65,18 @@ public class CampaignSquadronLogScreen extends ImageResizingPanel implements Act
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignSquadronLogScreen);
         this.setImageFromName(imagePath);
 
-		pages = orderPageEntries();
+        CampaignSquadronLogSummaryPageBuilder summaryPageBuilder = new CampaignSquadronLogSummaryPageBuilder(campaign, logsForSquadronId);
+        Map<Integer, StringBuffer> summaryPages = summaryPageBuilder.buildSummaryPage();
+        pages.putAll(summaryPages);
+
+        CampaignSquadronLogDetailPageBuilder detailPageBuilder = new CampaignSquadronLogDetailPageBuilder(logsForSquadronId);
+        Map<Integer, StringBuffer> detailPages = detailPageBuilder.buildDetailPages();
+        pages.putAll(detailPages);
+        
 		this.add(BorderLayout.WEST, makeLogLeftPanel());
 		this.add(BorderLayout.CENTER, makeLogCenterPanel());
 		
         makePages();        
-	}
-
-	private Map<Integer, StringBuffer> orderPageEntries()
-	{
-		Map<Integer, StringBuffer> pages = new TreeMap<Integer, StringBuffer>();
-		
-		StringBuffer page = new StringBuffer("\n\n");
-		int pageCount = 0;
-
-        for (CampaignLog campaignLog : campaign.getCampaignLogs().retrieveCampaignLogsInDateOrder())
-		{            
-			// Don't end the page with a date entry. leave room for at least one logs
-			if (countLines(page.toString()) >= (linesPerPage-5))
-			{
-				pages.put(pageCount, page);
-				++pageCount;
-                page = new StringBuffer("\n\n");
-			}
-			
-			String dateAsString = DateUtils.getDateStringPretty(campaignLog.getDate());
-            page.append("\n");
-			page.append(dateAsString);
-            page.append("\n");
-			
-        	for (CampaignLogEntry logEntry : campaignLog.getLogs())
-			{
-        	    if (logEntry.getSquadronId() != logsForSquadronId)
-        	    {
-        	        continue;
-        	    }
-        	    
-                int linesCountedEntry = countLines(logEntry.getLog());
-                int linesCountedPage = countLines(page.toString());
-				if ((linesCountedPage+linesCountedEntry) >= linesPerPage)
-				{
-					pages.put(pageCount, page);
-					++pageCount;
-	                page = new StringBuffer("\n\n");
-				}
-				
-                page.append(logEntry.getLog() + "\n");
-			}
-		}
-		
-		pages.put(pageCount, page);
-		
-		return pages;
-	}
-
-	private int countLines(String logLine)
-	{
-	    String[] lines = logLine.split("\r\n|\r|\n");
-	    int calculatedLines = lines.length;
-	    for (String line : lines)
-	    {
-	        if (line.length() > charsPerLine)
-	        {
-	            ++calculatedLines;
-	        }
-	    }
-	    
-	    
-	    return  calculatedLines;
 	}
 
 	private JPanel makeLogLeftPanel() throws PWCGException  
@@ -324,60 +255,5 @@ public class CampaignSquadronLogScreen extends ImageResizingPanel implements Act
         makePages();
         this.revalidate();
         this.repaint();
-    }
-
-
-    private void adjustTextForFontSize()
-    {
-        try
-        {
-            int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.CursiveFontSizeKey);
-            
-            if (fontSize > 20)
-            {
-                charsPerLine -= 10;
-                linesPerPage -= 10;
-            }
-        }
-        catch (PWCGException e)
-        {
-            e.printStackTrace();
-        }
-    }
-
-    private void calculateLinesPerPage()
-    {
-        MonitorSize monitorSize = PWCGMonitorSupport.getFrameHeight();
-        linesPerPage = 40;
-        if (monitorSize == MonitorSize.FRAME_MEDIUM)
-        {
-            linesPerPage = 30;
-        }
-        else if (monitorSize == MonitorSize.FRAME_SMALL)
-        {
-            linesPerPage = 25;
-        }
-        else if (monitorSize == MonitorSize.FRAME_VERY_SMALL)
-        {
-            linesPerPage = 20;
-        }
-    }
-
-    private void calculateCharsPerLine()
-    {
-        MonitorSize monitorSize = PWCGMonitorSupport.getFrameWidth();
-        charsPerLine = 70;
-        if (monitorSize == MonitorSize.FRAME_MEDIUM)
-        {
-            charsPerLine = 60;
-        }
-        else if (monitorSize == MonitorSize.FRAME_SMALL)
-        {
-            charsPerLine = 45;
-        }
-        else if (monitorSize == MonitorSize.FRAME_VERY_SMALL)
-        {
-            charsPerLine = 35;
-        }
     }
 }

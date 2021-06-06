@@ -1,13 +1,16 @@
 package pwcg.campaign.squadmember;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.plane.PlaneArchType;
+import pwcg.campaign.plane.PlaneType;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.ground.vehicle.VehicleDefinition;
-import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
 
 public class SquadronMemberVictories
 {
@@ -16,6 +19,11 @@ public class SquadronMemberVictories
     private List<Victory>  trainVictories = new ArrayList<>();
     private List<Victory>  groundVictories = new ArrayList<>();
     
+    private Map<String, List<Victory>> airVictoriesdInType = new HashMap<>();
+    private Map<String, List<Victory>> groundVictoriesdInType = new HashMap<>();
+    private Map<String, List<Victory>> airVictoriesType = new HashMap<>();
+    private Map<String, List<Victory>> tankVictoriesType = new HashMap<>();
+    
     public SquadronMemberVictories (List<Victory> victories) throws PWCGException
     {
         for (Victory victory : victories)
@@ -23,6 +31,8 @@ public class SquadronMemberVictories
             if (victory.getVictim().getAirOrGround() == Victory.AIR_VICTORY || victory.getVictim().getAirOrGround() == Victory.UNSPECIFIED_VICTORY)
             {
                 airToAirVictories.add(victory);
+                addAirVictoryInType(victory);
+                addAirTypeVictory(victory);
             }
             
             if (victory.getVictim().getAirOrGround() == Victory.GROUND_VICTORY)
@@ -31,6 +41,7 @@ public class SquadronMemberVictories
                 if (vehicleDefinitionByName != null && vehicleDefinitionByName.getVehicleClass() == VehicleClass.Tank)
                 {
                     tankVictories.add(victory);
+                    addTankTypeVictory(victory);
                 }
                 else if (vehicleDefinitionByName != null && vehicleDefinitionByName.getVehicleClass() == VehicleClass.TrainLocomotive)
                 {
@@ -40,8 +51,70 @@ public class SquadronMemberVictories
                 {
                     groundVictories.add(victory);
                 }
+                
+                addGroundVictoryInType(victory);
             }
         }
+    }
+
+    private void addAirVictoryInType(Victory victory)
+    {
+        String key = getPlaneArchTypeForPlaneName(victory.getVictor().getType());
+        if (!airVictoriesdInType.containsKey(key))
+        {
+            List<Victory> playerAircraftTypeTypeList = new ArrayList<>();
+            airVictoriesdInType.put(key, playerAircraftTypeTypeList);
+        }
+        List<Victory> playerAircraftTypeTypeList = airVictoriesdInType.get(key);
+        playerAircraftTypeTypeList.add(victory);
+    }
+
+    private void addGroundVictoryInType(Victory victory)
+    {
+        String key = getPlaneArchTypeForPlaneName(victory.getVictor().getType());
+        if (!groundVictoriesdInType.containsKey(key))
+        {
+            List<Victory> playerAircraftTypeTypeList = new ArrayList<>();
+            groundVictoriesdInType.put(key, playerAircraftTypeTypeList);
+        }
+        List<Victory> playerAircraftTypeTypeList = groundVictoriesdInType.get(key);
+        playerAircraftTypeTypeList.add(victory);
+    }
+
+    private void addAirTypeVictory(Victory victory)
+    {
+        String key = getPlaneArchTypeForPlaneName(victory.getVictim().getType());
+        if (!airVictoriesType.containsKey(key))
+        {
+            List<Victory> planeTypeList = new ArrayList<>();
+            airVictoriesType.put(key, planeTypeList);
+        }
+        List<Victory> planeTypeList = airVictoriesType.get(key);
+        planeTypeList.add(victory);
+    }
+
+    private void addTankTypeVictory(Victory victory)
+    {
+        String key = victory.getVictim().getType();
+        if (!tankVictoriesType.containsKey(key))
+        {
+            List<Victory> tankTypeList = new ArrayList<>();
+            tankVictoriesType.put(key, tankTypeList);
+        }
+        List<Victory> tankTypeList = tankVictoriesType.get(key);
+        tankTypeList.add(victory);
+    }
+    
+    private String getPlaneArchTypeForPlaneName(String planeTypeName)
+    {
+        PlaneType planeType = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneByDisplayName(planeTypeName);
+        String archTypeName = "Unknown";
+        if (planeType != null)
+        {
+            PlaneArchType planeArchType = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneArchType(planeType.getArchType());
+            archTypeName = PlaneArchType.getArchTypeDescription(planeArchType.getPlaneArchTypeName());
+        }
+        return archTypeName;
     }
 
     public List<Victory> getAirToAirVictories()
@@ -82,6 +155,26 @@ public class SquadronMemberVictories
     public int getGroundVictoryCount()
     {
         return groundVictories.size();
+    }
+
+    public Map<String, List<Victory>> getAirVictoriesdInType()
+    {
+        return airVictoriesdInType;
+    }
+
+    public Map<String, List<Victory>> getGroundVictoriesdInType()
+    {
+        return groundVictoriesdInType;
+    }
+
+    public Map<String, List<Victory>> getAirVictoriesType()
+    {
+        return airVictoriesType;
+    }
+
+    public Map<String, List<Victory>> getTankVictoriesType()
+    {
+        return tankVictoriesType;
     }
 
     public int getGroundVictoryPointTotal()
