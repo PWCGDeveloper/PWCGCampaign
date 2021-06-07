@@ -22,7 +22,7 @@ public class MissionBlockEntityBuilder
     public void buildEntitiesForTargetStructures(MissionBlocks missionBlocks) throws PWCGException
     {
         List<Coordinate> missionTargetCoordiinates = mission.getMissionFlights().getTargetCoordinatesForMission();
-        for (FixedPosition structure : missionBlocks.getPositionsForMission())
+        for (FixedPosition structure : missionBlocks.getAllStructuresForMission())
         {
             if (isNearTarget(structure, missionTargetCoordiinates))
             {

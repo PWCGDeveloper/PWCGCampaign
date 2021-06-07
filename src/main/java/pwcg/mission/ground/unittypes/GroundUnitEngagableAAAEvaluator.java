@@ -54,7 +54,7 @@ public class GroundUnitEngagableAAAEvaluator
 
     private static boolean isAAAGuardingStructure(Mission mission, IGroundUnit groundUnit) throws PWCGException
     {
-        for (FixedPosition block : mission.getBlocksForPatrol())
+        for (FixedPosition block : mission.getMissionBlocks().getAllStructuresForMission())
         {
             if (isCloseEnough(block.getPosition(), groundUnit.getPosition()))
             {

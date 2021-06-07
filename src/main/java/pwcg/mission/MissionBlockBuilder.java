@@ -18,22 +18,14 @@ import pwcg.core.location.CoordinateBox;
 public class MissionBlockBuilder
 {
     private Mission mission;
-    private CoordinateBox structureBorder;
     private List<FixedPosition> positionsForMission = new ArrayList<>();
 
     public MissionBlockBuilder(Mission mission, CoordinateBox structureBorder)
     {
         this.mission = mission;
-        this.structureBorder = structureBorder;
     }
 
-    public MissionBlocks buildFixedPositionsForMissionTargeting() throws PWCGException
-    {
-        getBlocks();
-        return new MissionBlocks(mission, positionsForMission);
-    }
-
-    public MissionBlocks buildFixedPositionsForMissionFile() throws PWCGException
+    public MissionBlocks buildFixedPositionsForMission() throws PWCGException
     {
         getBlocks();
         MissionBlocks missionBlocks = new MissionBlocks(mission, positionsForMission);
@@ -114,7 +106,7 @@ public class MissionBlockBuilder
 
     private boolean isBlockIncluded(Coordinate blockPosition) throws PWCGException
     {
-        if (structureBorder.isInBox(blockPosition))
+        if (mission.getStructureBorders().isInBox(blockPosition))
         {
             return true;
         }

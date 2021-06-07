@@ -11,42 +11,54 @@ import pwcg.core.exception.PWCGException;
 public class MissionBlocks
 {
     private Mission mission;
-    private List<FixedPosition> positionsForMission = new ArrayList<>();
+    private List<FixedPosition> structuresForMission = new ArrayList<>();
 
-    public MissionBlocks(Mission mission, List<FixedPosition> positionsForMission)
+    public MissionBlocks(Mission mission, List<FixedPosition> structuresForMission)
     {
         this.mission = mission;
-        this.positionsForMission = positionsForMission;
+        this.structuresForMission = structuresForMission;
     }
 
-    public List<FixedPosition> getPositionsForMission()
+    public List<FixedPosition> getStructuresWithinMissionBorders()
     {
-        return positionsForMission;
+        List<FixedPosition> structuresWithinMissionBorders = new ArrayList<>();
+        for (FixedPosition structure : structuresForMission)
+        {
+            if (mission.getStructureBorders().isInBox(structure.getPosition()))
+            {
+                structuresWithinMissionBorders.add(structure);
+            }
+        }
+        return structuresWithinMissionBorders;
+    }
+
+    public List<FixedPosition> getAllStructuresForMission()
+    {
+        return structuresForMission;
     }
 
     public void adjustBlockStatus() throws PWCGException
     {
         adjustBlockDamage();
-        adjustBlockSmoke();
         adjustBlockDurability();
+    }
+    
+    public void createBlockSmoke() throws PWCGException
+    {
+        MissionBlockSmoke missionBlockSmoke = new MissionBlockSmoke(mission);      
+        missionBlockSmoke.addSmokeToDamagedAreas(structuresForMission);
     }
 
     private List<FixedPosition> adjustBlockDamage() throws PWCGException
     {
         MissionBlockDamageDecorator missionBlockDamage = new MissionBlockDamageDecorator();      
-        return missionBlockDamage.setDamageToFixedPositions(positionsForMission, mission.getCampaign().getDate());
-    }
-    
-    private void adjustBlockSmoke() throws PWCGException
-    {
-        MissionBlockSmoke missionBlockSmoke = new MissionBlockSmoke(mission);      
-        missionBlockSmoke.addSmokeToDamagedAreas(positionsForMission);
+        return missionBlockDamage.setDamageToFixedPositions(structuresForMission, mission.getCampaign().getDate());
     }
 
     private void adjustBlockDurability()
     {
         BlockDefinitionManager blockDefinitionManager = BlockDefinitionManager.getInstance();
-        for (FixedPosition fixedPosition : positionsForMission)
+        for (FixedPosition fixedPosition : structuresForMission)
         {
             BlockDefinition blockDefinition = blockDefinitionManager.getBlockDefinition(fixedPosition);
             if (blockDefinition != null)

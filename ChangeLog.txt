@@ -5,8 +5,17 @@
 Tank and Train Busters: tanks and trains now considered separate victory categories
 - Tank and train victories weigh more heavily into medals and promotions
 - Tank and train victories have separate counts on the first page of the pilots journal
-- Tank and train victories have their own detailed section in the pilots journal 
-Add skins for 41 Squadron
+- Tank and train victories have their own detailed section in the pilots journal
+Added columns for tank, train, and ground to chalkboard
+Added summary to Squadron Log
+- How many pilots lost
+- How many air, tank, train, and ground victories
+Expanded summary to Pilot Log
+- Air and ground victories scored in aircraft type
+- Number of Air and Tank victories summarized by vehicle types
+Add skin configurations for Griphon Spitfires
+Added skin pack from 41 Squadron Ryksen) for Griphon Spitfires
+- PWCG Skin Pack 16
 Fix 41 Squadron withdrawal erroneous date for Spitfire MK XIV
 Fix 66 Squadron withdrawal erroneous date for Spitfire MK XIV
 

@@ -9,7 +9,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.mcu.McuCheckZone;
 import pwcg.mission.mcu.McuCommandEffect;
@@ -27,14 +26,16 @@ public class SmokeGroup
     private McuTimer smokeStartTimer = new McuTimer();    
     private McuCommandEffect activateSmoke = new McuCommandEffect();
     private List<Effect> smokeEffects = new ArrayList<>();
+    private List<Integer> triggerUnits = new ArrayList<>();
     
     private Coordinate position;
 
-    public SmokeGroup()
+    public SmokeGroup(List<Integer> triggerUnits)
     {
+        this.triggerUnits = triggerUnits;
     }
 
-    public void buildSmokeGroup(Mission mission, Coordinate smokeEffectPosition, SmokeEffect requestedSmokeEffect) throws PWCGException 
+    public void buildSmokeGroup(Coordinate smokeEffectPosition, SmokeEffect requestedSmokeEffect) throws PWCGException 
     {
         this.position = smokeEffectPosition;
         position.setYPos(0.0);
@@ -42,7 +43,7 @@ public class SmokeGroup
 
         addSmokeEffect(requestedSmokeEffect);
         
-        buildActivate(mission.getMissionFlights().getPlayersInMission());
+        buildActivate();
         setTimers();
         setTargetAssociations();
         setObjectAssociations();
@@ -119,12 +120,12 @@ public class SmokeGroup
         }
     }
 
-    private void buildActivate(List<Integer> playerPlaneIds) throws PWCGException
+    private void buildActivate() throws PWCGException
     {
         smokeStartCheckZone = new McuCheckZone("CheckZone Smoke Activate");
         smokeStartCheckZone.setCloser(1);
         smokeStartCheckZone.setZone(30000);
-        smokeStartCheckZone.triggerCheckZoneByMultiplePlaneIds(playerPlaneIds);
+        smokeStartCheckZone.triggerCheckZoneByMultiplePlaneIds(triggerUnits);
     }
 
     public void write(BufferedWriter writer) throws PWCGException 
@@ -166,4 +167,11 @@ public class SmokeGroup
     {
         return smokeEffects;
     }
+
+    public McuCheckZone getSmokeStartCheckZone()
+    {
+        return smokeStartCheckZone;
+    }
+    
+    
 }

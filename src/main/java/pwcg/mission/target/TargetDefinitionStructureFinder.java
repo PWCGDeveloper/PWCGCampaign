@@ -40,7 +40,7 @@ public class TargetDefinitionStructureFinder
 
     private void addTargetStructuresFromMissionBox() throws PWCGException
     {
-        for (FixedPosition structure : flightInformation.getMission().getBlocksForPatrol())
+        for (FixedPosition structure : flightInformation.getMission().getMissionBlocks().getStructuresWithinMissionBorders())
         {
             ICountry structureCountry = structure.getCountry(flightInformation.getCampaign().getDate());
             if (structureCountry.getSide() == flightInformation.getCountry().getSide().getOppositeSide())

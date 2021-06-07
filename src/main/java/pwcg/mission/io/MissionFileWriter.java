@@ -156,7 +156,7 @@ public class MissionFileWriter implements IMissionFile
 
     private void writeBlocks(BufferedWriter writer) throws PWCGException
     {
-        MissionBlockWriter.writeFixedPositions(writer, mission.getBlocksForPatrol());
+        MissionBlockWriter.writeFixedPositions(writer, mission.getMissionBlocks().getAllStructuresForMission());
     }
 
     private void writeIcons(BufferedWriter writer) throws PWCGIOException

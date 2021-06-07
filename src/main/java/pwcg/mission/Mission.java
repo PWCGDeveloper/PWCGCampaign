@@ -10,7 +10,6 @@ import pwcg.campaign.api.IMissionFile;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.group.FixedPosition;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.io.json.CampaignMissionIOJson;
 import pwcg.campaign.skin.Skin;
@@ -41,6 +40,7 @@ public class Mission
     private Campaign campaign;
     private MissionHumanParticipants participatingPlayers;
     private CoordinateBox missionBorders;
+    private CoordinateBox structureBorders;
     private MissionProfile missionProfile = MissionProfile.DAY_TACTICAL_MISSION;
     private MissionOptions missionOptions;
     private MissionFrontLineIconBuilder frontLines;
@@ -110,27 +110,16 @@ public class Mission
     public void generate(MissionSquadronFlightTypes playerFlightTypes) throws PWCGException
     {
         validate();
-        createStructuresForTargeting();
+        createStructuresBoxForMission();
         createGroundUnits();
         generateFlights(playerFlightTypes);
-        createExpandedStructuresBoxForMission();
     }
 
-    private void createStructuresForTargeting() throws PWCGException
-    {
-        MissionBlockBuilder blockBuilder = new MissionBlockBuilder(this, missionBorders);
-        missionBlocks = blockBuilder.buildFixedPositionsForMissionTargeting();
-
-        MissionAirfieldBuilder airfieldBuilder = new MissionAirfieldBuilder(this, missionBorders);
-        missionAirfields = airfieldBuilder.findFieldsForPatrol();;
-    }
-
-    private void createExpandedStructuresBoxForMission() throws PWCGException
-    {
-        CoordinateBox structureBorders = buildStructureBorders(missionProfile, participatingPlayers, missionBorders);
-        
+    private void createStructuresBoxForMission() throws PWCGException
+    {        
+        buildStructureBorders();
         MissionBlockBuilder blockBuilder = new MissionBlockBuilder(this, structureBorders);
-        missionBlocks = blockBuilder.buildFixedPositionsForMissionFile();
+        missionBlocks = blockBuilder.buildFixedPositionsForMission();
 
         MissionAirfieldBuilder airfieldBuilder = new MissionAirfieldBuilder(this, structureBorders);
         missionAirfields = airfieldBuilder.buildFieldsForPatrol();
@@ -139,11 +128,10 @@ public class Mission
         missionBlockEntityBuilder.buildEntitiesForTargetStructures(missionBlocks);
     }
 
-    private CoordinateBox buildStructureBorders(MissionProfile missionProfile, MissionHumanParticipants participatingPlayers, CoordinateBox missionBorders) throws PWCGException
+    private void buildStructureBorders() throws PWCGException
     {
         StructureBorderBuilder structureBorderBuilder = new StructureBorderBuilder(campaign, participatingPlayers, missionBorders);
-        CoordinateBox structureBorder = structureBorderBuilder.getBordersForStructuresConsideringFlights( missionFlights.getPlayerFlights());
-        return structureBorder;
+        structureBorders = structureBorderBuilder.getBordersForStructuresConsideringFlights( missionFlights.getPlayerFlights());
     }
 
     public int getGroundUnitCount() throws PWCGException
@@ -271,6 +259,7 @@ public class Mission
             waypointIconBuilder.createWaypointIcons(missionFlights.getPlayerFlights());
             airfieldIconBuilder.createWaypointIcons(campaign, this);
             assaultIconBuilder.createAssaultIcons(battleManager.getMissionAssaultDefinitions());
+            missionBlocks.createBlockSmoke();
 
             setGroundUnitTriggers();
             assignIndirectFireTargets();
@@ -480,6 +469,11 @@ public class Mission
         return missionBorders;
     }
 
+    public CoordinateBox getStructureBorders()
+    {
+        return structureBorders;
+    }
+
     public MissionOptions getMissionOptions()
     {
         return missionOptions;
@@ -510,9 +504,9 @@ public class Mission
         return missionAirfields.getFieldsForPatrol();
     }
 
-    public List<FixedPosition> getBlocksForPatrol() throws PWCGException
+    public MissionBlocks getMissionBlocks() throws PWCGException
     {
-        return missionBlocks.getPositionsForMission();
+        return missionBlocks;
     }
 
     public Skirmish getSkirmish()

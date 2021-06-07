@@ -34,7 +34,7 @@ public class MissionBlockBuilderTest
         mission.finalizeMission();
         
         boolean airfieldStructuresFound = false;
-        for (FixedPosition blockForPatrol : mission.getBlocksForPatrol())
+        for (FixedPosition blockForPatrol : mission.getMissionBlocks().getAllStructuresForMission())
         {
             if (blockForPatrol instanceof Block)
             {

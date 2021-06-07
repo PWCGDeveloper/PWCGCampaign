@@ -57,7 +57,7 @@ public class MissionBlockSmoke
         {
             if (mission.getMissionBattleManager().isNearAnyBattle(fixedPosition.getPosition()))
             {
-                createSmoke(fixedPosition.getPosition(), SmokeEffect.SMOKE_CITY);
+                createSmokeForStructure(fixedPosition.getPosition(), SmokeEffect.SMOKE_CITY);
             }
         }
     }
@@ -69,15 +69,15 @@ public class MissionBlockSmoke
             int roll =  RandomNumberGenerator.getRandom(100);
             if (roll <= 10)
             {
-                createSmoke(fixedPosition.getPosition(), SmokeEffect.SMOKE_VILLAGE);
+                createSmokeForStructure(fixedPosition.getPosition(), SmokeEffect.SMOKE_VILLAGE);
             }
         }
     }
 
-    private void createSmoke(Coordinate position, SmokeEffect smokeEffect) throws PWCGException
+    private void createSmokeForStructure(Coordinate position, SmokeEffect smokeEffect) throws PWCGException
     {
-        SmokeGroup smokeGroup = new SmokeGroup();   
-        smokeGroup.buildSmokeGroup(mission, position, smokeEffect);
+        SmokeGroup smokeGroup = new SmokeGroup(mission.getMissionFlights().getPlayersInMission());   
+        smokeGroup.buildSmokeGroup(position, smokeEffect);
         addSmokingPosition(smokeGroup);
     }
 

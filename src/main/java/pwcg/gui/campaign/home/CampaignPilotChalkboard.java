@@ -97,20 +97,47 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
         constraints.gridy = 0;
         squadronPanel.add(lMissionHeader, constraints);
 
-        JLabel lVictoryHeader = new JLabel("Victories", JLabel.RIGHT);
-        lVictoryHeader.setOpaque(false);
-        lVictoryHeader.setForeground(buttonFG);
-        lVictoryHeader.setFont(font);
+        JLabel airVictoryHeader = new JLabel("Air", JLabel.RIGHT);
+        airVictoryHeader.setOpaque(false);
+        airVictoryHeader.setForeground(buttonFG);
+        airVictoryHeader.setFont(font);
         constraints.weightx = 0.1;
         constraints.gridx = 3;
         constraints.gridy = 0;
-        squadronPanel.add(lVictoryHeader, constraints);
+        squadronPanel.add(airVictoryHeader, constraints);
+
+        JLabel tankVictoryHeader = new JLabel("Tank", JLabel.RIGHT);
+        tankVictoryHeader.setOpaque(false);
+        tankVictoryHeader.setForeground(buttonFG);
+        tankVictoryHeader.setFont(font);
+        constraints.weightx = 0.1;
+        constraints.gridx = 4;
+        constraints.gridy = 0;
+        squadronPanel.add(tankVictoryHeader, constraints);
+
+        JLabel trainVictoryHeader = new JLabel("Train", JLabel.RIGHT);
+        trainVictoryHeader.setOpaque(false);
+        trainVictoryHeader.setForeground(buttonFG);
+        trainVictoryHeader.setFont(font);
+        constraints.weightx = 0.1;
+        constraints.gridx = 5;
+        constraints.gridy = 0;
+        squadronPanel.add(trainVictoryHeader, constraints);
+
+        JLabel groundVictoryHeader = new JLabel("Ground", JLabel.RIGHT);
+        groundVictoryHeader.setOpaque(false);
+        groundVictoryHeader.setForeground(buttonFG);
+        groundVictoryHeader.setFont(font);
+        constraints.weightx = 0.1;
+        constraints.gridx = 6;
+        constraints.gridy = 0;
+        squadronPanel.add(groundVictoryHeader, constraints);
 
         lDummy = new JLabel("     ");
         lDummy.setOpaque(false);
         lDummy.setForeground(buttonFG);
         lDummy.setFont(font);           constraints.weightx = 0.15;
-        constraints.gridx = 4;
+        constraints.gridx = 7;
         constraints.gridy = 0;
         squadronPanel.add(lDummy, constraints);
         return squadronPanel;
@@ -149,20 +176,47 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
             constraints.gridy = gridbaRow;
             squadronPanel.add(lMissions, constraints);
             
-            JLabel lVictories = new JLabel("" + pilot.getSquadronMemberVictories().getAirToAirVictoryCount(), JLabel.RIGHT);
-            lVictories.setOpaque(false);
-            lVictories.setForeground(buttonFG);
-            lVictories.setFont(font);
+            JLabel airVictories = new JLabel("" + pilot.getSquadronMemberVictories().getAirToAirVictoryCount(), JLabel.RIGHT);
+            airVictories.setOpaque(false);
+            airVictories.setForeground(buttonFG);
+            airVictories.setFont(font);
             constraints.weightx = 0.1;
             constraints.gridx = 3;
             constraints.gridy = gridbaRow;
-            squadronPanel.add(lVictories, constraints);
+            squadronPanel.add(airVictories, constraints);
+            
+            JLabel tankVictories = new JLabel("" + pilot.getSquadronMemberVictories().getTankVictoryCount(), JLabel.RIGHT);
+            tankVictories.setOpaque(false);
+            tankVictories.setForeground(buttonFG);
+            tankVictories.setFont(font);
+            constraints.weightx = 0.1;
+            constraints.gridx = 4;
+            constraints.gridy = gridbaRow;
+            squadronPanel.add(tankVictories, constraints);
+            
+            JLabel trainVictories = new JLabel("" + pilot.getSquadronMemberVictories().getTrainVictoryCount(), JLabel.RIGHT);
+            trainVictories.setOpaque(false);
+            trainVictories.setForeground(buttonFG);
+            trainVictories.setFont(font);
+            constraints.weightx = 0.1;
+            constraints.gridx = 5;
+            constraints.gridy = gridbaRow;
+            squadronPanel.add(trainVictories, constraints);
+            
+            JLabel groundVictories = new JLabel("" + pilot.getSquadronMemberVictories().getGroundVictoryCount(), JLabel.RIGHT);
+            groundVictories.setOpaque(false);
+            groundVictories.setForeground(buttonFG);
+            groundVictories.setFont(font);
+            constraints.weightx = 0.1;
+            constraints.gridx = 6;
+            constraints.gridy = gridbaRow;
+            squadronPanel.add(groundVictories, constraints);
              
             lDummy = new JLabel("     ");
             lDummy.setOpaque(false);
             lDummy.setForeground(buttonFG);
             lDummy.setFont(font);               constraints.weightx = 0.15;
-            constraints.gridx = 4;
+            constraints.gridx = 7;
             constraints.gridy = gridbaRow;
             squadronPanel.add(lDummy, constraints);
 
