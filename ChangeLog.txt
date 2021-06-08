@@ -1,6 +1,9 @@
 
 ​At the PWCG web site
 
+12.2.6
+Fixed smoke
+
 12.2.5
 Tank and Train Busters: tanks and trains now considered separate victory categories
 - Tank and train victories weigh more heavily into medals and promotions
