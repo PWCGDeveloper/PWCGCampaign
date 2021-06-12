@@ -43,7 +43,7 @@ public class CampaignReportPromotionGUI extends CampaignDocumentGUI
         String promotionText = "Know ye that reposing special trust and confidence in the fidelity and abilities of ";
         promotionText += "NAME I do hereby appoint him RANK of the SERVICE of NATION, ";
         promotionText += "to rank as such from DATE.  He is carefully and diligently to discharge the duty of ";
-        promotionText += "RANK by doing and performing all manner of things threrunto belonging.  And I do ";
+        promotionText += "RANK by doing and performing all manner of things thereunto belonging.  And I do ";
         promotionText += "strictly require all Soldiers under his command to be obedient to his orders as RANK ";
         promotionText += "as he shall receive from his Superior Officers set over him, according to the rules ";
         promotionText += "and discipline of war. ";
