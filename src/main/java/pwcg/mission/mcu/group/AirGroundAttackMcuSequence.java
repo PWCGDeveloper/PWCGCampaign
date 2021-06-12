@@ -32,7 +32,7 @@ public class AirGroundAttackMcuSequence implements IAirGroundAttackMcuSequence
     private McuTimer attackAreaTimeoutTimer = new McuTimer();
     private McuDeactivate attackAreaDeactivateEntity = new McuDeactivate();
     private McuAttackArea attackArea;
-    private McuCounter bingoBombsCounter = new McuCounter(2, 0);
+    private McuCounter bingoBombsCounter;
     private McuTimer exitAttackTimer = new McuTimer();
     private McuDeactivate killTimeoutTimerEntity = new McuDeactivate();
     private McuForceComplete forceCompleteDropOrnance;
@@ -47,11 +47,24 @@ public class AirGroundAttackMcuSequence implements IAirGroundAttackMcuSequence
     @Override
     public void createAttackArea(int maxAttackTimeSeconds, int bingoLoiterTimeSeconds, AttackAreaType attackAreaType) throws PWCGException 
     {
+        buildBingoCounter();
         buildAttackAreaTrigger();
         createAttackArea(maxAttackTimeSeconds, attackAreaType);
         buildAttackAreaElements(maxAttackTimeSeconds, bingoLoiterTimeSeconds);
         createTargetAssociations();
     }
+
+    private void buildBingoCounter()
+    {
+        int bingoCount = (flightInformation.getPlanes().size() / 2) + 1;
+        if (bingoCount < 2)
+        {
+            bingoCount = 2;
+        }
+        
+        bingoBombsCounter = new McuCounter(bingoCount, 0);        
+    }
+
 
     private void buildAttackAreaTrigger()
     {
@@ -180,4 +193,6 @@ public class AirGroundAttackMcuSequence implements IAirGroundAttackMcuSequence
         McuEvent planeEvent = new McuEvent(bingoElement, bingoBombsCounter.getIndex());
         plane.addEvent(planeEvent);
     }
+    
+    
 }
