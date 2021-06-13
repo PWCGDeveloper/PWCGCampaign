@@ -18,21 +18,10 @@ public class TargetDefinitionBuilder implements ITargetDefinitionBuilder
     {
         this.flightInformation = flightInformation;
     }
-
+    
     public TargetDefinition buildTargetDefinition() throws PWCGException
     {
-        SkirmishTargetDefinitionBuilder skirmishTargetDefinitionBuilder = new SkirmishTargetDefinitionBuilder(flightInformation);
-        TargetDefinition targetDefinition = skirmishTargetDefinitionBuilder.findIconicTarget();
-        if (targetDefinition == null)
-        {
-            targetDefinition = buildCommonTargetDefinition();
-        }
-        return targetDefinition;
-    }
-    
-    private TargetDefinition buildCommonTargetDefinition() throws PWCGException
-    {
-        TargetDefinitionCollector targetDefinitionCollector = new TargetDefinitionCollector(flightInformation);
+        GroundTargetDefinitionCollector targetDefinitionCollector = new GroundTargetDefinitionCollector(flightInformation);
         List<TargetDefinition> allTargets = targetDefinitionCollector.collectTargetDefinition();
         TargetDefinition targetDefinition =  findTarget(allTargets);
         return targetDefinition;

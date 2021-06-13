@@ -66,7 +66,7 @@ public class MissionFileOptionWriter
             writer.newLine();
             writer.write("  SeasonPrefix = \"" + mapSeasonalParameters.getSeasonAbbreviation() + "\";");
             writer.newLine();
-            writer.write("  MissionType = " + missionOptions.getMissionType() + ";");
+            writer.write("  MissionType = " + missionOptions.getMissionType().getMissionTypeCode() + ";");
             writer.newLine();
             writer.write("  AqmId = " + missionOptions.getAqmId() + ";");
             writer.newLine();

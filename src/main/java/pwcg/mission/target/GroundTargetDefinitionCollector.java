@@ -7,11 +7,11 @@ import java.util.List;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightInformation;
 
-public class TargetDefinitionCollector
+public class GroundTargetDefinitionCollector
 {
     private FlightInformation flightInformation;
 
-    public TargetDefinitionCollector(FlightInformation flightInformation) throws PWCGException
+    public GroundTargetDefinitionCollector(FlightInformation flightInformation) throws PWCGException
     {
         this.flightInformation = flightInformation;
     }

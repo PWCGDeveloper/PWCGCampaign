@@ -20,6 +20,7 @@ import pwcg.campaign.CampaignGenerator;
 import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.skirmish.IconicMissionsManager;
@@ -42,10 +43,13 @@ import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionHumanParticipants;
+import pwcg.mission.aaatruck.AAATruckMissionPostProcessor;
 
 public class IconicBattlesGUI extends ImageResizingPanel implements ActionListener
 {
-	private static final long serialVersionUID = 1L;
+    private static final int SDKFZ_AAA_TRUCK_SQUADRON_ID = 999999999;
+    private static final int GAZ_AAA_TRUCK_SQUADRON_ID = 999999998;
+    private static final long serialVersionUID = 1L;
     private ButtonGroup buttonGroup = new ButtonGroup();
     private String iconicBattleKey;
     private int selectedSquadron = 0;
@@ -86,6 +90,9 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
             String description = formDescription(squadronId);
             buttonPanel.add(makeCategoryRadioButton(description, squadronId));
         }
+
+        buttonPanel.add(makeCategoryRadioButton("Gaz-MM-72-K AAA Truck", GAZ_AAA_TRUCK_SQUADRON_ID));
+        buttonPanel.add(makeCategoryRadioButton("German Stand In AAA Truck", SDKFZ_AAA_TRUCK_SQUADRON_ID));
 
         buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
         buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
@@ -140,10 +147,17 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
                 {
                     Campaign campaign = generateCampaign();
                     Mission mission = generateMission(campaign);
-                    CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper = new CampaignHomeGuiBriefingWrapper(null);
-                    BriefingDescriptionScreen briefingMap = new BriefingDescriptionScreen(campaignHomeGuiBriefingWrapper, mission);
-                    briefingMap.makePanels();
-                    CampaignGuiContextManager.getInstance().pushToContextStack(briefingMap);
+                    if (selectedSquadron == GAZ_AAA_TRUCK_SQUADRON_ID)
+                    {
+                        finishAAATruckMission(mission);
+                    }
+                    else
+                    {
+                        CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper = new CampaignHomeGuiBriefingWrapper(null);
+                        BriefingDescriptionScreen briefingMap = new BriefingDescriptionScreen(campaignHomeGuiBriefingWrapper, mission);
+                        briefingMap.makePanels();
+                        CampaignGuiContextManager.getInstance().pushToContextStack(briefingMap);
+                    }
                 }
                 return;
             }
@@ -171,7 +185,7 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
     private CampaignGeneratorModel makeCampaignModelForProfile() throws PWCGException
     {
         IconicSingleMission iconicMission = IconicMissionsManager.getInstance().getSelectedMissionProfile(iconicBattleKey);
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(selectedSquadron);
+        Squadron squadron = findPlayerSquadronForMission();
         Date campaignDate = DateUtils.getDateYYYYMMDD(iconicBattleKey);
 
         ArmedService service = squadron.determineServiceForSquadron(campaignDate);
@@ -193,6 +207,29 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
         return generatorModel;
     }
 
+    private Squadron findPlayerSquadronForMission() throws PWCGException
+    {
+        Squadron playerSquadron = null;
+        if (selectedSquadron == GAZ_AAA_TRUCK_SQUADRON_ID)
+        {
+            IconicSingleMission iconicMission = IconicMissionsManager.getInstance().getSelectedMissionProfile(iconicBattleKey);
+            for (Integer squadronId : iconicMission.getIconicBattleParticipants())
+            {
+                Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+                if (squadron.determineSide() == Side.ALLIED)
+                {
+                    return squadron;
+                }
+            }
+        }
+        else
+        {
+            playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(selectedSquadron);
+        }
+        
+        return playerSquadron;
+    }
+
     private MissionHumanParticipants buildTestParticipatingHumans(Campaign campaign) throws PWCGException
     {
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
@@ -206,11 +243,30 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
     private Mission generateMission(Campaign campaign) throws PWCGException
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        Mission mission = missionGenerator.makeMission(buildTestParticipatingHumans(campaign));
-        return mission;
         
-        // mission.finalizeMission();
-        // mission.writeGameMissionFiles();
+        Mission mission = null;
+        if (selectedSquadron == GAZ_AAA_TRUCK_SQUADRON_ID || selectedSquadron == SDKFZ_AAA_TRUCK_SQUADRON_ID)
+        {
+            mission = missionGenerator.makeAAAMission(buildTestParticipatingHumans(campaign));
+        }
+        else
+        {
+            mission = missionGenerator.makeMission(buildTestParticipatingHumans(campaign));
+        }
+                
+        return mission;
     }
 
+    private void finishAAATruckMission(Mission mission) throws PWCGException
+    {
+        Side truckSide = Side.AXIS;
+        if (selectedSquadron == GAZ_AAA_TRUCK_SQUADRON_ID)
+        {
+            truckSide = Side.ALLIED;
+        }
+        mission.finalizeMission();
+        AAATruckMissionPostProcessor aaaPostProcessor = new AAATruckMissionPostProcessor(mission);
+        aaaPostProcessor.convertToAAATruckMission(truckSide);
+        mission.writeGameMissionFiles();
+    }
 }

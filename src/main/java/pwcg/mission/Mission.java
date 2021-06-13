@@ -32,6 +32,7 @@ import pwcg.mission.io.MissionFileFactory;
 import pwcg.mission.mcu.group.MissionObjectiveGroup;
 import pwcg.mission.mcu.group.StopAttackingNearAirfieldSequence;
 import pwcg.mission.options.MissionOptions;
+import pwcg.mission.options.MissionType;
 import pwcg.mission.options.MissionWeather;
 import pwcg.mission.target.AssaultDefinition;
 
@@ -53,6 +54,7 @@ public class Mission
     private MissionAirfields missionAirfields = null;
     
     private MissionFlights missionFlights;
+    private MissionAAATruck missionAAATrucks = new MissionAAATruck();
     private MissionVirtualEscortHandler virtualEscortHandler = new MissionVirtualEscortHandler();
     private SkinsInUse skinsInUse = new SkinsInUse();
     private List<StopAttackingNearAirfieldSequence> stopSequenceForMission = new ArrayList<>();
@@ -102,9 +104,9 @@ public class Mission
         groundUnitManager = new MissionGroundUnitResourceManager();
         groundUnitBuilder = new MissionGroundUnitBuilder(this);
         missionFlights = new MissionFlights(this);
-        
         frontLines = new MissionFrontLineIconBuilder(campaign);
         squadronIconBuilder = new MissionSquadronIconBuilder(campaign);
+        
     }
 
     public void generate(MissionSquadronFlightTypes playerFlightTypes) throws PWCGException
@@ -112,7 +114,16 @@ public class Mission
         validate();
         createStructuresBoxForMission();
         createGroundUnits();
+        createAAATruck();
         generateFlights(playerFlightTypes);
+    }
+
+    private void createAAATruck() throws PWCGException
+    {
+        if (missionOptions.getMissionType() == MissionType.SINGLE_AAA_MISSION)
+        {
+            missionAAATrucks.buildAAATruck(this, participatingPlayers.getMissionPlayerSquadrons().get(0).determineSide(), campaign.getDate());
+        }
     }
 
     private void createStructuresBoxForMission() throws PWCGException
@@ -207,7 +218,7 @@ public class Mission
 
     private String writeMissionDescriptionFile() throws PWCGException
     {
-        IMissionDescription missionDescription = MissionDescriptionFactory.buildMissionDescription(campaign, this, missionFlights.getReferencePlayerFlight());
+        IMissionDescription missionDescription = MissionDescriptionFactory.buildMissionDescription(campaign, this);
         String missionDescriptionText = missionDescription.createDescription();
 
         MissionDescriptionFile missionDescriptionFile = new MissionDescriptionFile();
@@ -517,5 +528,10 @@ public class Mission
     public MissionSquadronRegistry getMissionSquadronRegistry()
     {
         return missionSquadronRegistry;
+    }
+
+    public MissionAAATruck getMissionAAATrucks()
+    {
+        return missionAAATrucks;
     }
 }

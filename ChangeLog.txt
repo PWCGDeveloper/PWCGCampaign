@@ -1,6 +1,11 @@
 
 ​At the PWCG web site
 
+12.2.7
+Added capability to create iconic missions for AA trucks
+Reduced probability of planes prematurely jettisoning munitions
+Fixed typo
+
 12.2.6
 Fixed smoke
 

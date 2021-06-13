@@ -23,7 +23,7 @@ import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilder;
+import pwcg.mission.target.GroundTargetDefinitionFactory;
 import pwcg.mission.target.TargetPriorityGeneratorTactical;
 import pwcg.mission.target.TargetType;
 import pwcg.testutils.CampaignCache;
@@ -63,8 +63,7 @@ public class TargetBuilderTest
 
         IFlight playerFlight = mission.getMissionFlights().getPlayerFlights().get(0);
         
-        TargetDefinitionBuilder targetBuilder = new TargetDefinitionBuilder(playerFlight.getFlightInformation());
-        TargetDefinition targetDefinition = targetBuilder.buildTargetDefinition();
+        TargetDefinition targetDefinition = GroundTargetDefinitionFactory.buildTargetDefinition(playerFlight.getFlightInformation());
 
         assert(targetDefinition.getCountry().getCountry() == Country.GERMANY);
         assert(targetDefinition.getTargetType() == TargetType.TARGET_TRAIN);
@@ -83,8 +82,7 @@ public class TargetBuilderTest
 
         IFlight playerFlight = mission.getMissionFlights().getPlayerFlights().get(0);
         
-        TargetDefinitionBuilder targetBuilder = new TargetDefinitionBuilder(playerFlight.getFlightInformation());
-        TargetDefinition targetDefinition = targetBuilder.buildTargetDefinition();
+        TargetDefinition targetDefinition = GroundTargetDefinitionFactory.buildTargetDefinition(playerFlight.getFlightInformation());
 
         assert(targetDefinition.getCountry().getCountry() == Country.GERMANY);
         assert(targetDefinition.getTargetType() != TargetType.TARGET_TRAIN);

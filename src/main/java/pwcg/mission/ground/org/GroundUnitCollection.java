@@ -8,6 +8,7 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
 import pwcg.mission.mcu.McuSpawn;
@@ -143,6 +144,11 @@ public class GroundUnitCollection
 
     public void write(BufferedWriter writer) throws PWCGException
     {
+        if (groundUnits.isEmpty())
+        {
+            return;
+        }
+        
         try
         {
             writer.write("Group");
@@ -224,5 +230,19 @@ public class GroundUnitCollection
     public String getName()
     {
         return groundUnitName;
+    }
+
+    public void removeExtraUnits(Coordinate coordinate, int keepRadius) throws PWCGException
+    {
+        List<IGroundUnit> groundUnitsToKeep = new ArrayList<>();
+        for (IGroundUnit groundUnit : groundUnits)
+        {
+            double distance = MathUtils.calcDist(coordinate, groundUnit.getPosition());
+            if (distance < keepRadius)
+            {
+                groundUnitsToKeep.add(groundUnit);
+            }
+        }
+        groundUnits = groundUnitsToKeep;
     }
 }

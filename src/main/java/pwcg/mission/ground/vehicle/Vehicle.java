@@ -320,4 +320,10 @@ public class Vehicle implements Cloneable, IVehicle
     {
         return vehicleType;
     }
+
+    @Override
+    public int getLinkTrId()
+    {
+        return linkTrId;
+    }
 }

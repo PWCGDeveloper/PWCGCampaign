@@ -137,4 +137,9 @@ public class MissionWaypointIconBuilder
         }
     }
 
+    public void removeWaypointIcons() throws PWCGIOException
+    {
+        waypointIcons.clear();
+    }
+
 }

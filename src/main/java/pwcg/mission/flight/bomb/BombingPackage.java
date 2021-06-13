@@ -11,9 +11,8 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.flight.scramble.AirfieldAttackScrambleFlightBuilder;
-import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilder;
+import pwcg.mission.target.GroundTargetDefinitionFactory;
 
 public class BombingPackage implements IFlightPackage
 {
@@ -55,7 +54,6 @@ public class BombingPackage implements IFlightPackage
 
     private TargetDefinition buildTargetDefinition(FlightInformation flightInformation) throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilder(flightInformation);
-        return targetDefinitionBuilder.buildTargetDefinition();
+        return GroundTargetDefinitionFactory.buildTargetDefinition(flightInformation);
     }
 }

@@ -317,4 +317,24 @@ public class MissionGroundUnitBuilder
     {
         return missionBattles;
     }
+
+    public void removeExtraUnits(Coordinate coordinate, int keepRadius) throws PWCGException
+    {
+        removeExtraUnitsFromGroundUnitList(missionBattles, coordinate, keepRadius);
+        removeExtraUnitsFromGroundUnitList(missionTrains, coordinate, keepRadius);
+        removeExtraUnitsFromGroundUnitList(missionTrucks, coordinate, keepRadius);
+        removeExtraUnitsFromGroundUnitList(missionDrifters, coordinate, keepRadius);
+        removeExtraUnitsFromGroundUnitList(missionBalloons, coordinate, keepRadius);
+        removeExtraUnitsFromGroundUnitList(flightSpecificGroundUnits, coordinate, keepRadius);
+        removeExtraUnitsFromGroundUnitList(AAA, coordinate, keepRadius);
+        removeExtraUnitsFromGroundUnitList(airfieldVehicles, coordinate, keepRadius);
+    }
+    
+    private void removeExtraUnitsFromGroundUnitList(List<GroundUnitCollection> groundUnitCollections, Coordinate coordinate, int keepRadius) throws PWCGException
+    {
+        for (GroundUnitCollection groundUnitCollection : groundUnitCollections)
+        {
+            groundUnitCollection.removeExtraUnits(coordinate, keepRadius);
+        }
+    }
  }

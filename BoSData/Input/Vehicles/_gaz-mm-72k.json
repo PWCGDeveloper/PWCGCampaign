@@ -1,0 +1,17 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\_gaz-mm\\",
+  "vehicleType": "_gaz-mm-72k",
+  "vehicleName": "GAZ-MM 72-K",
+  "displayName": "truck",
+  "countries": [
+    "GERMANY",
+    "RUSSIA",
+    "USA",
+    "BRITAIN"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 100,
+  "vehicleClass": "TruckAAAPlayer"
+}

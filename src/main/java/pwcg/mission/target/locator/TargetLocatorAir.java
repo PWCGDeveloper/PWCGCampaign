@@ -13,9 +13,9 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.intercept.InterceptAiCoordinateGenerator;
-import pwcg.mission.flight.intercept.InterceptPlayerCoordinateGenerator;
 import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.GroundTargetDefinitionFactory;
 import pwcg.mission.target.TargetType;
 import pwcg.mission.utils.BehindFriendlyLinesPositionCalculator;
 
@@ -51,8 +51,7 @@ public class TargetLocatorAir
         
         if (flightInformation.isPlayerFlight())
         {
-            InterceptPlayerCoordinateGenerator coordinateGenerator = new InterceptPlayerCoordinateGenerator(flightInformation);
-            TargetDefinition interceptedFlightTarget = coordinateGenerator.createTargetCoordinates();
+            TargetDefinition interceptedFlightTarget = GroundTargetDefinitionFactory.buildTargetDefinition(flightInformation);;
             return interceptedFlightTarget.getPosition();
         }
         else

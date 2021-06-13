@@ -9,6 +9,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.options.MissionOptions;
+import pwcg.mission.options.MissionType;
 import pwcg.mission.options.MissionWeather;
 
 public class MissionGenerator
@@ -26,6 +27,25 @@ public class MissionGenerator
 
         MissionOptions missionOptions = new MissionOptions(campaign.getDate(), missionProfile);
         missionOptions.createFlightSpecificMissionOptions();
+
+        MissionWeather weather = new MissionWeather(campaign, missionOptions.getMissionHour());
+        weather.createMissionWeather();
+
+        Skirmish skirmish = getSkirmishForMission(participatingPlayers);
+        MissionSquadronFlightTypes playerFlightTypes = PlayerFlightTypeBuilder.buildPlayerFlightTypes(campaign, participatingPlayers, missionProfile, weather, skirmish);
+        
+        Mission mission = buildMission(participatingPlayers, playerFlightTypes, missionProfile, weather, skirmish, missionOptions);
+        
+        return mission;
+    }
+
+    public Mission makeAAAMission(MissionHumanParticipants participatingPlayers) throws PWCGException
+    {
+        MissionProfile missionProfile = generateProfile(participatingPlayers);
+
+        MissionOptions missionOptions = new MissionOptions(campaign.getDate(), missionProfile);
+        missionOptions.createFlightSpecificMissionOptions();
+        missionOptions.setMissionType(MissionType.SINGLE_AAA_MISSION);
 
         MissionWeather weather = new MissionWeather(campaign, missionOptions.getMissionHour());
         weather.createMissionWeather();

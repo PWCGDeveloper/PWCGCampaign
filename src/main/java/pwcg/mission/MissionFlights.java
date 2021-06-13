@@ -326,4 +326,10 @@ public class MissionFlights
         }
         return missionTargetCoordiinates;
     }
+
+    public void removePlayerFlights()
+    {
+        List<IFlight> aiFlights = getAiFlights();
+        flights = aiFlights;
+    }
 }

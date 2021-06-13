@@ -21,8 +21,8 @@ import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionProfile;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.target.TargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.GroundTargetDefinitionFactory;
 import pwcg.mission.target.TargetPriorityGeneratorTactical;
 import pwcg.mission.target.TargetType;
 import pwcg.testutils.CampaignCache;
@@ -58,8 +58,7 @@ public class TargetBuilderStalingradTest
 
         IFlight playerFlight = mission.getMissionFlights().getPlayerFlights().get(0);
         
-        TargetDefinitionBuilder targetBuilder = new TargetDefinitionBuilder(playerFlight.getFlightInformation());
-        TargetDefinition targetDefinition = targetBuilder.buildTargetDefinition();
+        TargetDefinition targetDefinition = GroundTargetDefinitionFactory.buildTargetDefinition(playerFlight.getFlightInformation());
 
         assert(targetDefinition.getCountry().getCountry() == Country.RUSSIA);
         assert(targetDefinition.getTargetType() == TargetType.TARGET_ARMOR || targetDefinition.getTargetType() == TargetType.TARGET_INFANTRY || targetDefinition.getTargetType() == TargetType.TARGET_ARTILLERY);
@@ -74,8 +73,7 @@ public class TargetBuilderStalingradTest
 
         IFlight playerFlight = mission.getMissionFlights().getPlayerFlights().get(0);
         
-        TargetDefinitionBuilder targetBuilder = new TargetDefinitionBuilder(playerFlight.getFlightInformation());
-        TargetDefinition targetDefinition = targetBuilder.buildTargetDefinition();
+        TargetDefinition targetDefinition = GroundTargetDefinitionFactory.buildTargetDefinition(playerFlight.getFlightInformation());
 
         assert(targetDefinition.getCountry().getCountry() == Country.RUSSIA);
         assert(targetDefinition.getTargetType() == TargetType.TARGET_TRANSPORT);
@@ -90,8 +88,7 @@ public class TargetBuilderStalingradTest
 
         IFlight playerFlight = mission.getMissionFlights().getPlayerFlights().get(0);
         
-        TargetDefinitionBuilder targetBuilder = new TargetDefinitionBuilder(playerFlight.getFlightInformation());
-        TargetDefinition targetDefinition = targetBuilder.buildTargetDefinition();
+        TargetDefinition targetDefinition = GroundTargetDefinitionFactory.buildTargetDefinition(playerFlight.getFlightInformation());
 
         assert(targetDefinition.getCountry().getCountry() == Country.RUSSIA);
         assert(targetDefinition.getTargetType() == TargetType.TARGET_AIRFIELD);
@@ -106,8 +103,7 @@ public class TargetBuilderStalingradTest
 
         IFlight playerFlight = mission.getMissionFlights().getPlayerFlights().get(0);
         
-        TargetDefinitionBuilder targetBuilder = new TargetDefinitionBuilder(playerFlight.getFlightInformation());
-        TargetDefinition targetDefinition = targetBuilder.buildTargetDefinition();
+        TargetDefinition targetDefinition = GroundTargetDefinitionFactory.buildTargetDefinition(playerFlight.getFlightInformation());
 
         assert(targetDefinition.getCountry().getCountry() == Country.RUSSIA);
         assert(targetDefinition.getTargetType() == TargetType.TARGET_BRIDGE);
@@ -122,8 +118,7 @@ public class TargetBuilderStalingradTest
 
         IFlight playerFlight = mission.getMissionFlights().getPlayerFlights().get(0);
         
-        TargetDefinitionBuilder targetBuilder = new TargetDefinitionBuilder(playerFlight.getFlightInformation());
-        TargetDefinition targetDefinition = targetBuilder.buildTargetDefinition();
+        TargetDefinition targetDefinition = GroundTargetDefinitionFactory.buildTargetDefinition(playerFlight.getFlightInformation());
 
         assert(targetDefinition.getCountry().getCountry() == Country.RUSSIA);
         assert(targetDefinition.getTargetType() == TargetType.TARGET_DRIFTER);
@@ -138,8 +133,7 @@ public class TargetBuilderStalingradTest
 
         IFlight playerFlight = mission.getMissionFlights().getPlayerFlights().get(0);
         
-        TargetDefinitionBuilder targetBuilder = new TargetDefinitionBuilder(playerFlight.getFlightInformation());
-        TargetDefinition targetDefinition = targetBuilder.buildTargetDefinition();
+        TargetDefinition targetDefinition = GroundTargetDefinitionFactory.buildTargetDefinition(playerFlight.getFlightInformation());
 
         assert(targetDefinition.getCountry().getCountry() == Country.RUSSIA);
         assert(targetDefinition.getTargetType() == TargetType.TARGET_TRAIN);

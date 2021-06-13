@@ -9,8 +9,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.FlightInformation;
 
-public class SkirmishTargetDefinitionBuilder
-{
+public class SkirmishTargetDefinitionBuilder implements ITargetDefinitionBuilder
+{ 
     private FlightInformation flightInformation;
 
     public SkirmishTargetDefinitionBuilder(FlightInformation flightInformation) throws PWCGException
@@ -18,20 +18,29 @@ public class SkirmishTargetDefinitionBuilder
         this.flightInformation = flightInformation;
     }
 
-    public TargetDefinition findIconicTarget() throws PWCGException
+    public TargetDefinition buildTargetDefinition() throws PWCGException
     {
         TargetType iconicTargetType = PWCGContext.getInstance().getCurrentMap().getSkirmishManager().getIconicTargetTypes(flightInformation);
-        
         if (iconicTargetType != TargetType.TARGET_NONE)
         {
-            TargetDefinitionCollector targetDefinitionCollector = new TargetDefinitionCollector(flightInformation);
+            GroundTargetDefinitionCollector targetDefinitionCollector = new GroundTargetDefinitionCollector(flightInformation);
             List<TargetDefinition> allTargets = targetDefinitionCollector.collectTargetDefinition();
 
             List<TargetDefinition> iconicTargets = getIconicTargets(allTargets, iconicTargetType);
             return getIconicTargetsNearSkirmish(iconicTargets);
         }
         
-        return null;
+        throw new PWCGException("Could not create iconic mission");
+    }
+    
+    public boolean isUseIconicMission() throws PWCGException
+    {
+        TargetType iconicTargetType = PWCGContext.getInstance().getCurrentMap().getSkirmishManager().getIconicTargetTypes(flightInformation);
+        if (iconicTargetType != TargetType.TARGET_NONE)
+        {
+            return true;
+        }
+        return false;
     }
 
     private List<TargetDefinition> getIconicTargets(List<TargetDefinition> availableTargets, TargetType iconicTargetType)

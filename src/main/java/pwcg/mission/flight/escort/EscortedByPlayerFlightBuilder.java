@@ -6,9 +6,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.target.ITargetDefinitionBuilder;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilder;
+import pwcg.mission.target.GroundTargetDefinitionFactory;
 
 
 public class EscortedByPlayerFlightBuilder
@@ -67,7 +66,6 @@ public class EscortedByPlayerFlightBuilder
 
     private TargetDefinition buildTargetDefintion(FlightInformation escortedFlightInformation) throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilder(escortedFlightInformation);
-        return targetDefinitionBuilder.buildTargetDefinition();
+        return GroundTargetDefinitionFactory.buildTargetDefinition(escortedFlightInformation);
     }
 }

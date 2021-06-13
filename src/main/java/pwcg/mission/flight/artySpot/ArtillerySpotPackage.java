@@ -6,13 +6,12 @@ import java.util.List;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.FlightBuildInformation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightPackage;
-import pwcg.mission.target.ITargetDefinitionBuilder;
-import pwcg.mission.target.TargetDefinitionBuilder;
+import pwcg.mission.target.GroundTargetDefinitionFactory;
 import pwcg.mission.target.TargetDefinition;
 
 public class ArtillerySpotPackage implements IFlightPackage
@@ -54,8 +53,7 @@ public class ArtillerySpotPackage implements IFlightPackage
 
     private TargetDefinition createGroundUnitsForFlight() throws PWCGException
     {
-        TargetDefinitionBuilder targetBuilder = new TargetDefinitionBuilder(flightInformation);
-        TargetDefinition selectedTarget  = targetBuilder.buildTargetDefinition();
+        TargetDefinition selectedTarget  = GroundTargetDefinitionFactory.buildTargetDefinition(flightInformation);
         return selectedTarget;
     }
 
@@ -70,7 +68,6 @@ public class ArtillerySpotPackage implements IFlightPackage
 
     private TargetDefinition buildTargetDefintion() throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilder(flightInformation);
-        return targetDefinitionBuilder.buildTargetDefinition();
+        return GroundTargetDefinitionFactory.buildTargetDefinition(flightInformation);
     }
 }

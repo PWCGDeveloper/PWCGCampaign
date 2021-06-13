@@ -186,12 +186,19 @@ public class SelfDeactivatingCheckZone
 
     public void triggerCheckZone(Mission mission) throws PWCGException
     {
+        triggerCheckZoneByAAATruck(mission);
         triggerCheckZoneByPlayer(mission);
         triggerCheckZoneByActualFlights(mission);
         triggerCheckZoneByVirtualFlights(mission);
     }
 
-    public void triggerCheckZoneByPlayer(Mission mission) throws PWCGException
+    private void triggerCheckZoneByAAATruck(Mission mission) throws PWCGException
+    {
+        List<Integer> triggerAAATrucks = mission.getMissionAAATrucks().getPlayerTruckIds();
+        checkZone.triggerCheckZoneByMultiplePlaneIds(triggerAAATrucks);        
+    }
+
+    private void triggerCheckZoneByPlayer(Mission mission) throws PWCGException
     {
         List<Integer> triggerPlanes = mission.getMissionFlights().getPlayersInMission();
         checkZone.triggerCheckZoneByMultiplePlaneIds(triggerPlanes);        

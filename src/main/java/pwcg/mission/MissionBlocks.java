@@ -7,6 +7,8 @@ import pwcg.campaign.group.BlockDefinition;
 import pwcg.campaign.group.BlockDefinitionManager;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
+import pwcg.core.utils.MathUtils;
 
 public class MissionBlocks
 {
@@ -66,5 +68,19 @@ public class MissionBlocks
                 fixedPosition.setDurability(blockDefinition.getDurability());
             }
         }
+    }
+
+    public void removeExtraStructures(Coordinate truckCoordinates, int keepRadius)
+    {
+        List<FixedPosition> structuresToKeep = new ArrayList<>();
+        for (FixedPosition structureForMission : structuresForMission)
+        {
+            double distance = MathUtils.calcDist(truckCoordinates, structureForMission.getPosition());
+            if (distance < keepRadius)
+            {
+                structuresToKeep.add(structureForMission);
+            }
+        }
+        structuresForMission = structuresToKeep;    
     }
 }
