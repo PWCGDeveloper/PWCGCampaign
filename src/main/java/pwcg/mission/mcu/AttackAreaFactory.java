@@ -2,15 +2,18 @@ package pwcg.mission.mcu;
 
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 
-public class FlightAttackAreaFactory
+public class AttackAreaFactory
 {
-    public static final int ATTACK_AREA_SELECT_TARGET_DISTANCE = 7000;
+    public static final int ATTACK_AREA_SELECT_TARGET_DISTANCE = 5000;
     public static final int ATTACK_AREA_BOMB_DROP_DISTANCE = 1000;
+    public static final int ATTACK_AREA_AA_TRUCK_PROXIMITY_DISTANCE = 1000;
     
-    public static McuAttackArea createAttackArea(FlightTypes flightType, Coordinate targetCoords, int altitude, int attackTime)
+    public static McuAttackArea createAttackArea(FlightInformation flightInformation, Coordinate targetCoords, int attackTime)
     {
+        FlightTypes flightType = flightInformation.getFlightType();
         McuAttackArea attackArea = null;
         if (flightType == FlightTypes.BOMB || 
             flightType == FlightTypes.LOW_ALT_BOMB || 
@@ -26,6 +29,11 @@ public class FlightAttackAreaFactory
             attackArea = new McuAttackArea(AttackAreaType.GROUND_TARGETS);
             attackArea.setAttackRadius(ATTACK_AREA_SELECT_TARGET_DISTANCE);
         }
+        
+        if (flightInformation.getMission().isAAATruckMission())
+        {
+            attackArea.setAttackRadius(ATTACK_AREA_AA_TRUCK_PROXIMITY_DISTANCE);
+        }
 
         attackArea.setName("Attack Area");
         attackArea.setDesc("Attack Area");
@@ -34,7 +42,7 @@ public class FlightAttackAreaFactory
         attackArea.setOrientation(new Orientation());
 
         Coordinate attackAreaCoords = targetCoords.copy();
-        attackAreaCoords.setYPos(altitude);
+        attackAreaCoords.setYPos(flightInformation.getAltitude());
 
         attackArea.setPosition(attackAreaCoords);
 

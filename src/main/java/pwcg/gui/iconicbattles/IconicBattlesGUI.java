@@ -243,7 +243,6 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
     private Mission generateMission(Campaign campaign) throws PWCGException
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        
         Mission mission = null;
         if (selectedSquadron == GAZ_AAA_TRUCK_SQUADRON_ID || selectedSquadron == SDKFZ_AAA_TRUCK_SQUADRON_ID)
         {

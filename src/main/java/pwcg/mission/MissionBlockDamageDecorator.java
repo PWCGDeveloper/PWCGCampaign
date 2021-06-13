@@ -10,6 +10,7 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.AirfieldManager;
+import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
@@ -27,8 +28,11 @@ public class MissionBlockDamageDecorator
             {
                 if (!isCloseToAirfield(fixedPosition))
                 {
-                    damageFixedPositionsCloseToFront(fixedPosition);
-                    fixedPositionCloseToFront.add(fixedPosition);
+                    if (!(fixedPosition instanceof Bridge))
+                    {
+                        damageFixedPositionsCloseToFront(fixedPosition);
+                        fixedPositionCloseToFront.add(fixedPosition);
+                    }
                 }
             }
         }

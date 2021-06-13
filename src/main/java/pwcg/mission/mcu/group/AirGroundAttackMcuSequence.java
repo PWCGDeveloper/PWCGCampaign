@@ -12,8 +12,8 @@ import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.WaypointPriority;
+import pwcg.mission.mcu.AttackAreaFactory;
 import pwcg.mission.mcu.AttackAreaType;
-import pwcg.mission.mcu.FlightAttackAreaFactory;
 import pwcg.mission.mcu.McuAttackArea;
 import pwcg.mission.mcu.McuCounter;
 import pwcg.mission.mcu.McuDeactivate;
@@ -56,13 +56,20 @@ public class AirGroundAttackMcuSequence implements IAirGroundAttackMcuSequence
 
     private void buildBingoCounter()
     {
-        int bingoCount = (flightInformation.getPlanes().size() / 2) + 1;
-        if (bingoCount < 2)
+        if (flightInformation.getMission().isAAATruckMission())
         {
-            bingoCount = 2;
+            bingoBombsCounter = new McuCounter(50, 0);        
         }
-        
-        bingoBombsCounter = new McuCounter(bingoCount, 0);        
+        else
+        {
+            int bingoCount = (flightInformation.getPlanes().size() / 2) + 1;
+            if (bingoCount < 2)
+            {
+                bingoCount = 2;
+            }
+            
+            bingoBombsCounter = new McuCounter(bingoCount, 0);
+        }
     }
 
 
@@ -76,7 +83,7 @@ public class AirGroundAttackMcuSequence implements IAirGroundAttackMcuSequence
     private void createAttackArea(int maxAttackTimeSeconds, AttackAreaType attackAreaType)
     {
         attackArea = new McuAttackArea(attackAreaType);
-        attackArea = FlightAttackAreaFactory.createAttackArea(flightInformation.getFlightType(), targetDefinition.getPosition(), flightInformation.getAltitude(), maxAttackTimeSeconds);
+        attackArea = AttackAreaFactory.createAttackArea(flightInformation, targetDefinition.getPosition(), maxAttackTimeSeconds);
     }
 
     @Override

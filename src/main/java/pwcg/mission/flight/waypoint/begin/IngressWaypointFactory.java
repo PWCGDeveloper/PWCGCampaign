@@ -16,6 +16,11 @@ public class IngressWaypointFactory
     
     public static McuWaypoint createIngressWaypoint(IngressWaypointPattern pattern, IFlight flight) throws PWCGException
     {
+        if (flight.getMission().isAAATruckMission())
+        {
+            pattern = IngressWaypointPattern.INGRESS_AT_TARGET;
+        }
+        
         if (pattern == IngressWaypointPattern.INGRESS_NEAR_FRONT)
         {
             return createIngressWaypointNearFront(flight);

@@ -33,6 +33,8 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
     @Override   
     public void buildVirtualWaypoints() throws PWCGException    
     {   
+        virtualWaypoints = new ArrayList<>();
+        
         generateVirtualWaypoints(); 
         linkVirtualWaypointToMissionBegin();
         if (FlightTypes.isFlightWithTargetArea(flight.getFlightType()))

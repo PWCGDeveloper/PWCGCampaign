@@ -114,6 +114,11 @@ public class OptionalFlightKeeper
 
     private int getMaxFighterFlights(int maxFlightsForSide) throws PWCGException
     {
+        if (mission.isAAATruckMission())
+        {
+            return 0;
+        }
+
         MaxFighterFlightCalculator maxFighterFlightCalculator = new MaxFighterFlightCalculator(campaign, mission);
         return maxFighterFlightCalculator.getMaxFighterFlightsForMission(maxFlightsForSide);
     }

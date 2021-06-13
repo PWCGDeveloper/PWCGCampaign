@@ -100,6 +100,11 @@ public class MissionFlightFinalizer
                     {
                         vwp.setVwpTriggerObject(planeIndex);
                     }
+                    
+                    for (int truckIndex : mission.getMissionAAATrucks().getPlayerTruckIds())
+                    {
+                        vwp.setVwpTriggerObject(truckIndex);
+                    }
                 }
             }
         }

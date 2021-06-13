@@ -106,7 +106,6 @@ public class Mission
         missionFlights = new MissionFlights(this);
         frontLines = new MissionFrontLineIconBuilder(campaign);
         squadronIconBuilder = new MissionSquadronIconBuilder(campaign);
-        
     }
 
     public void generate(MissionSquadronFlightTypes playerFlightTypes) throws PWCGException
@@ -120,7 +119,7 @@ public class Mission
 
     private void createAAATruck() throws PWCGException
     {
-        if (missionOptions.getMissionType() == MissionType.SINGLE_AAA_MISSION)
+        if (isAAATruckMission())
         {
             missionAAATrucks.buildAAATruck(this, participatingPlayers.getMissionPlayerSquadrons().get(0).determineSide(), campaign.getDate());
         }
@@ -368,6 +367,15 @@ public class Mission
         }
         
         return Side.NEUTRAL;
+    }
+    
+    public boolean isAAATruckMission()
+    {
+        if (missionOptions.getMissionType() == MissionType.SINGLE_AAA_MISSION || missionOptions.getMissionType() == MissionType.COOP_AAA_MISSION)
+        {
+            return true;
+        }
+        return false;
     }
 
     public void registerAssault(AssaultDefinition missionBattle)

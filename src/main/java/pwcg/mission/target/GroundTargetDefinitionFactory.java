@@ -2,13 +2,12 @@ package pwcg.mission.target;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.options.MissionType;
 
 public class GroundTargetDefinitionFactory
 {
     public static TargetDefinition buildTargetDefinition(FlightInformation flightInformation) throws PWCGException
     {
-        if (flightInformation.getMission().getMissionOptions().getMissionType() == MissionType.SINGLE_AAA_MISSION)
+        if (flightInformation.getMission().isAAATruckMission())
         {
             TargetDefinitionBuilderAAATruck aaaTruckTargetDefinitionBuilder = new TargetDefinitionBuilderAAATruck(flightInformation);
             return aaaTruckTargetDefinitionBuilder.buildTargetDefinition();

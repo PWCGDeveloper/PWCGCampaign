@@ -20,14 +20,15 @@ public class McuAttackArea extends BaseFlightMcu
 	{
  		super();
  		setName("Command AttackArea");
- 		
         if (attackAreaType == AttackAreaType.AIR_TARGETS)
         {
            attackAir = 1;
+           attackRadius = 20000;
         }
         else if (attackAreaType == AttackAreaType.GROUND_TARGETS)
         {
             attackGTargets = 1;
+            attackRadius = 5000;
         }
         else
         {
