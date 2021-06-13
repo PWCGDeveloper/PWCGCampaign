@@ -2,19 +2,18 @@ package pwcg.mission;
 
 import pwcg.campaign.Campaign;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.options.MissionType;
 
 public class MissionDescriptionFactory 
 {
 	public static IMissionDescription buildMissionDescription(Campaign campaign, Mission mission)
 	{
-	    if (mission.getMissionOptions().getMissionType() == MissionType.SINGLE_MISSION || mission.getMissionOptions().getMissionType() == MissionType.COOP_MISSION)
+	    if (mission.isAAATruckMission())
 	    {
-	        return new MissionDescriptionSinglePlayer(campaign, mission, mission.getMissionFlights().getReferencePlayerFlight());
+            return new MissionDescriptionAAATruck(campaign, mission);
 	    }
 	    else
 	    {
-            return new MissionDescriptionAAATruck(campaign, mission);
+            return new MissionDescriptionSinglePlayer(campaign, mission, mission.getMissionFlights().getReferencePlayerFlight());
 	    }
 	}
 

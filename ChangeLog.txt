@@ -2,6 +2,10 @@
 ​At the PWCG web site
 
 12.2.7
+Iconic missions for AAA trucks
+- From PWCG main screen go to iconic missions
+- Choose an AAA truck
+- PWCG generates a mission in an AAA truck.
 Added capability to create iconic missions for AA trucks
 Reduced probability of planes prematurely jettisoning munitions
 Fixed typo
