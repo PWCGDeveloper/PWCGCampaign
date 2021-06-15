@@ -8,6 +8,7 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.ground.vehicle.VehicleDefinition;
 import pwcg.mission.options.MissionOptions;
 import pwcg.mission.options.MissionType;
 import pwcg.mission.options.MissionWeather;
@@ -34,12 +35,13 @@ public class MissionGenerator
         Skirmish skirmish = getSkirmishForMission(participatingPlayers);
         MissionSquadronFlightTypes playerFlightTypes = PlayerFlightTypeBuilder.buildPlayerFlightTypes(campaign, participatingPlayers, missionProfile, weather, skirmish);
         
-        Mission mission = buildMission(participatingPlayers, playerFlightTypes, missionProfile, weather, skirmish, missionOptions);
+        VehicleDefinition playerVehicleDefinition = null;
+        Mission mission = buildMission(participatingPlayers, playerFlightTypes, playerVehicleDefinition, missionProfile, weather, skirmish, missionOptions);
         
         return mission;
     }
 
-    public Mission makeAAAMission(MissionHumanParticipants participatingPlayers) throws PWCGException
+    public Mission makeAAAMission(MissionHumanParticipants participatingPlayers, VehicleDefinition playerVehicleDefinition) throws PWCGException
     {
         MissionProfile missionProfile = generateProfile(participatingPlayers);
 
@@ -53,7 +55,7 @@ public class MissionGenerator
         Skirmish skirmish = getSkirmishForMission(participatingPlayers);
         MissionSquadronFlightTypes playerFlightTypes = PlayerFlightTypeBuilder.buildPlayerFlightTypes(campaign, participatingPlayers, missionProfile, weather, skirmish);
         
-        Mission mission = buildMission(participatingPlayers, playerFlightTypes, missionProfile, weather, skirmish, missionOptions);
+        Mission mission = buildMission(participatingPlayers, playerFlightTypes, playerVehicleDefinition, missionProfile, weather, skirmish, missionOptions);
         
         return mission;
     }
@@ -72,7 +74,8 @@ public class MissionGenerator
         MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(playerFlightType, playerSquadron);
 
         Skirmish skirmish = null;
-        Mission mission = buildMission(participatingPlayers, playerFlightTypes, MissionProfile.DAY_TACTICAL_MISSION, weather, skirmish, missionOptions);
+        VehicleDefinition playerVehicleDefinition = null;
+        Mission mission = buildMission(participatingPlayers, playerFlightTypes, playerVehicleDefinition, MissionProfile.DAY_TACTICAL_MISSION, weather, skirmish, missionOptions);
         return mission;
     }
 
@@ -88,7 +91,9 @@ public class MissionGenerator
         Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
         MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(playerFlightType, playerSquadron);
         
-        Mission mission = buildMission(participatingPlayers, playerFlightTypes, missionProfile, weather, null, missionOptions);
+        Skirmish skirmish = null;
+        VehicleDefinition playerVehicleDefinition = null;
+        Mission mission = buildMission(participatingPlayers, playerFlightTypes, playerVehicleDefinition, missionProfile, weather, skirmish, missionOptions);
         return mission;
     }
 
@@ -102,7 +107,8 @@ public class MissionGenerator
         weather.createMissionWeather();
 
         Skirmish skirmish = null;
-        Mission mission = buildMission(participatingPlayers, playerFlightTypes, missionProfile, weather, skirmish, missionOptions);
+        VehicleDefinition playerVehicleDefinition = null;
+        Mission mission = buildMission(participatingPlayers, playerFlightTypes, playerVehicleDefinition, missionProfile, weather, skirmish, missionOptions);
         return mission;
     }
 
@@ -119,7 +125,8 @@ public class MissionGenerator
         MissionWeather weather = new MissionWeather(campaign, missionOptions.getMissionHour());
         weather.createMissionWeather();
 
-        Mission mission = buildMission(participatingPlayers, playerFlightTypes, missionProfile, weather, skirmish, missionOptions);
+        VehicleDefinition playerVehicleDefinition = null;
+        Mission mission = buildMission(participatingPlayers, playerFlightTypes, playerVehicleDefinition, missionProfile, weather, skirmish, missionOptions);
         return mission;
     }
 
@@ -133,6 +140,7 @@ public class MissionGenerator
     private Mission buildMission(
             MissionHumanParticipants participatingPlayers, 
             MissionSquadronFlightTypes playerFlightTypes, 
+            VehicleDefinition playerVehicleDefinition,
             MissionProfile missionProfile,
             MissionWeather weather, 
             Skirmish skirmish,
@@ -141,7 +149,7 @@ public class MissionGenerator
         campaign.setCurrentMission(null);
         
         CoordinateBox missionBorders = buildMissionBorders(missionProfile, participatingPlayers, skirmish, playerFlightTypes);
-        Mission mission = new Mission(campaign, missionProfile, participatingPlayers, missionBorders, weather, skirmish, missionOptions);
+        Mission mission = new Mission(campaign, missionProfile, participatingPlayers, playerVehicleDefinition, missionBorders, weather, skirmish, missionOptions);
         campaign.setCurrentMission(mission);
         mission.generate(playerFlightTypes);
 

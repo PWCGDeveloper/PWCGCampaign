@@ -26,6 +26,7 @@ import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.ground.MissionGroundUnitBuilder;
 import pwcg.mission.ground.builder.IndirectFireAssignmentHandler;
 import pwcg.mission.ground.unittypes.GroundUnitEngagableAAAEvaluator;
+import pwcg.mission.ground.vehicle.VehicleDefinition;
 import pwcg.mission.ground.vehicle.VehicleSetBuilderComprehensive;
 import pwcg.mission.io.MissionDescriptionFile;
 import pwcg.mission.io.MissionFileFactory;
@@ -54,7 +55,8 @@ public class Mission
     private MissionAirfields missionAirfields = null;
     
     private MissionFlights missionFlights;
-    private MissionAAATruck missionAAATrucks = new MissionAAATruck();
+    private MissionPlayerVehicle missionPlayerVehicles = new MissionPlayerVehicle();
+    private VehicleDefinition playerVehicleDefinition = null;
     private MissionVirtualEscortHandler virtualEscortHandler = new MissionVirtualEscortHandler();
     private SkinsInUse skinsInUse = new SkinsInUse();
     private List<StopAttackingNearAirfieldSequence> stopSequenceForMission = new ArrayList<>();
@@ -78,6 +80,7 @@ public class Mission
             Campaign campaign, 
             MissionProfile missionProfile, 
             MissionHumanParticipants participatingPlayers, 
+            VehicleDefinition playerVehicleDefinition,
             CoordinateBox missionBorders, 
             MissionWeather weather,
             Skirmish skirmish,
@@ -86,6 +89,7 @@ public class Mission
     {
         this.campaign = campaign;
         this.participatingPlayers = participatingPlayers;
+        this.playerVehicleDefinition = playerVehicleDefinition;
         this.missionProfile = missionProfile;
         this.missionBorders = missionBorders;
         this.weather = weather;
@@ -113,15 +117,15 @@ public class Mission
         validate();
         createStructuresBoxForMission();
         createGroundUnits();
-        createAAATruck();
+        createPlayerVehicle();
         generateFlights(playerFlightTypes);
     }
 
-    private void createAAATruck() throws PWCGException
+    private void createPlayerVehicle() throws PWCGException
     {
         if (isAAATruckMission())
         {
-            missionAAATrucks.buildAAATruck(this, participatingPlayers.getMissionPlayerSquadrons().get(0).determineSide(), campaign.getDate());
+            missionPlayerVehicles.buildPlayerVehicle(this, playerVehicleDefinition, participatingPlayers.getMissionPlayerSquadrons().get(0).determineSide(), campaign.getDate());
         }
     }
 
@@ -538,8 +542,8 @@ public class Mission
         return missionSquadronRegistry;
     }
 
-    public MissionAAATruck getMissionAAATrucks()
+    public MissionPlayerVehicle getMissionAAATrucks()
     {
-        return missionAAATrucks;
+        return missionPlayerVehicles;
     }
 }

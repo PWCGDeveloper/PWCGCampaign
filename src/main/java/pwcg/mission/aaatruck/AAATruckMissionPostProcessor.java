@@ -15,7 +15,7 @@ public class AAATruckMissionPostProcessor
         this.mission = mission;
     }
 
-    public void convertToAAATruckMission(Side truckSide) throws PWCGException
+    public void convertToPlayerVehicleMission(Side truckSide) throws PWCGException
     {
         removePlayerFlight();
         removeStructuresOutsideOfRange();

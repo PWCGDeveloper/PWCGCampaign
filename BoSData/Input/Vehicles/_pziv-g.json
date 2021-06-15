@@ -1,0 +1,14 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\_pziv-g\\",
+  "vehicleType": "_pziv-g",
+  "vehicleName": "Pz.Kpfw.IV Ausf.G",
+  "displayName": "tank",
+  "countries": [
+    "GERMANY"
+  ],
+  "startDate": "19420401",
+  "endDate": "19460724",
+  "rarityWeight": 100,
+  "vehicleClass": "TankPlayer"
+}

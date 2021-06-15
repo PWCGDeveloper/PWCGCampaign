@@ -1,0 +1,14 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\_t34-76stz\\",
+  "vehicleType": "_t34-76stz",
+  "vehicleName": "T-34-76 STZ 41",
+  "displayName": "tank",
+  "countries": [
+    "RUSSIA"
+  ],
+  "startDate": "19410101",
+  "endDate": "19460724",
+  "rarityWeight": 300,
+  "vehicleClass": "TankPlayer"
+}

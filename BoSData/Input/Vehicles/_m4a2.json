@@ -1,9 +1,9 @@
 {
   "scriptDir": "vehicles\\",
-  "modelDir": "vehicles\\_gaz-mm\\",
-  "vehicleType": "_gaz-mm-72k",
-  "vehicleName": "GAZ-MM 72-K",
-  "displayName": "truck",
+  "modelDir": "vehicles\\_m4a2\\",
+  "vehicleType": "_m4a2",
+  "vehicleName": "M4A2",
+  "displayName": "tank",
   "countries": [
     "RUSSIA",
     "USA",
@@ -12,5 +12,5 @@
   "startDate": "19390901",
   "endDate": "19460724",
   "rarityWeight": 100,
-  "vehicleClass": "TruckAAAPlayer"
+  "vehicleClass": "TankPlayer"
 }

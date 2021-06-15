@@ -1,0 +1,14 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\_sdkfz184\\",
+  "vehicleType": "_sdkfz184",
+  "vehicleName": "Sd.Kfz.184",
+  "displayName": "tank",
+  "countries": [
+    "GERMANY"
+  ],
+  "startDate": "19430501",
+  "endDate": "19460724",
+  "rarityWeight": 80,
+  "vehicleClass": "TankPlayer"
+}

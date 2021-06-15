@@ -6,7 +6,13 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -19,9 +25,12 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignGenerator;
 import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.CampaignMode;
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.skirmish.IconicMissionsManager;
 import pwcg.campaign.skirmish.IconicSingleMission;
@@ -45,16 +54,22 @@ import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.aaatruck.AAATruckMissionPostProcessor;
+import pwcg.mission.ground.vehicle.VehicleClass;
+import pwcg.mission.ground.vehicle.VehicleDefinition;
+import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
+import pwcg.mission.ground.vehicle.VehicleRequestDefinition;
 import pwcg.mission.io.MissionFileWriter;
 
 public class IconicBattlesGUI extends ImageResizingPanel implements ActionListener
 {
-    private static final int SDKFZ_AAA_TRUCK_SQUADRON_ID = 999999999;
-    private static final int GAZ_AAA_TRUCK_SQUADRON_ID = 999999998;
+    private static final int AXIS_STAND_IN_SQUADRON_ID = 999999999;
+    private static final int ALLIED_STAND_IN_SQUADRON_ID = 999999998;
     private static final long serialVersionUID = 1L;
     private ButtonGroup buttonGroup = new ButtonGroup();
     private String iconicBattleKey;
     private int selectedSquadron = 0;
+    private String selectedButtonText = "";
+    private VehicleDefinition playerVehicleDefinition = null;
 
 	public IconicBattlesGUI(String iconicBattleKey) 
 	{		
@@ -83,21 +98,33 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
-        buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("Iconic Mission Squadrons:"));
-        buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
+        buttonPanel.add(PWCGButtonFactory.makePaperLabelLarge("Iconic Mission Squadrons:"));
+        buttonPanel.add(PWCGButtonFactory.makePaperLabelLarge("   "));
 
         IconicSingleMission iconicMission = IconicMissionsManager.getInstance().getSelectedMissionProfile(iconicBattleKey);
+        
+        Set<Country> countriesInBattle = new HashSet<>();
         for (Integer squadronId : iconicMission.getIconicBattleParticipants())
         {
             String description = formDescription(squadronId);
             buttonPanel.add(makeCategoryRadioButton(description, squadronId));
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+            countriesInBattle.add(squadron.getCountry().getCountry());
         }
+        
+        buttonPanel.add(PWCGButtonFactory.makePaperLabelLarge("   "));
+        buttonPanel.add(PWCGButtonFactory.makePaperLabelLarge("Iconic Mission Vehicles:"));
+        buttonPanel.add(PWCGButtonFactory.makePaperLabelLarge("   "));
 
-        buttonPanel.add(makeCategoryRadioButton("Gaz-MM-72-K AAA Truck", GAZ_AAA_TRUCK_SQUADRON_ID));
-        buttonPanel.add(makeCategoryRadioButton("German Stand In AAA Truck", SDKFZ_AAA_TRUCK_SQUADRON_ID));
+        Date battleDate = DateUtils.getDateYYYYMMDD(iconicMission.getDateString());        
+        List<VehicleDefinition> matchingTrucks = getVehicleDefinitionsOfType(VehicleClass.TruckAAAPlayer, countriesInBattle, battleDate);
+        addVehicleRadioButtons(buttonPanel, matchingTrucks);
 
-        buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
-        buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
+        List<VehicleDefinition> matchingTanks = getVehicleDefinitionsOfType(VehicleClass.TankPlayer, countriesInBattle, battleDate);
+        addVehicleRadioButtons(buttonPanel, matchingTanks);
+
+        buttonPanel.add(PWCGButtonFactory.makePaperLabelLarge("   "));
+        buttonPanel.add(PWCGButtonFactory.makePaperLabelLarge("   "));
         buttonPanel.add(PWCGButtonFactory.makePaperButtonWithBorder("Generate Mission", "Generate Mission", this));
         
         add (buttonPanel);
@@ -105,6 +132,54 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
         configPanel.add(buttonPanel, BorderLayout.NORTH);
         
         return configPanel;
+    }
+
+    private void addVehicleRadioButtons(JPanel buttonPanel, List<VehicleDefinition> matchingVehicles) throws PWCGException
+    {
+        for (VehicleDefinition matchingVehicle : matchingVehicles)
+        {
+            ICountry country = CountryFactory.makeCountryByCountry(matchingVehicle.getCountries().get(0));
+            if (country.getSide() == Side.ALLIED)
+            {
+                buttonPanel.add(makeCategoryRadioButton(matchingVehicle.getVehicleName(), ALLIED_STAND_IN_SQUADRON_ID));
+            }
+            else
+            {
+                buttonPanel.add(makeCategoryRadioButton(matchingVehicle.getVehicleName(), AXIS_STAND_IN_SQUADRON_ID));
+            }
+        }
+    }
+    
+    List<VehicleDefinition> getVehicleDefinitionsOfType(VehicleClass vehicleClass, Set<Country> countriesInBattle, Date battleDate) throws PWCGException
+    {
+        VehicleDefinitionManager vehicleDefinitionManager = PWCGContext.getInstance().getVehicleDefinitionManager();
+
+        Map<String, VehicleDefinition> matchingVehiclesAllied = new TreeMap<>();
+        Map<String, VehicleDefinition> matchingVehiclesAxis = new TreeMap<>();
+        for (Country country : countriesInBattle)
+        {
+            VehicleRequestDefinition vehicleRequestDefinition = new VehicleRequestDefinition(country, battleDate, vehicleClass);
+            for (VehicleDefinition vehicleDefinition : vehicleDefinitionManager.getAllVehicleDefinitions())
+            {
+                if (vehicleDefinition != null && vehicleDefinition.shouldUse(vehicleRequestDefinition))
+                {
+                    ICountry icountry = CountryFactory.makeCountryByCountry(country);
+                    if (icountry.getSide() == Side.ALLIED)
+                    {
+                        matchingVehiclesAllied.put(vehicleDefinition.getVehicleName(), vehicleDefinition);
+                    }
+                    else
+                    {
+                        matchingVehiclesAxis.put(vehicleDefinition.getVehicleName(), vehicleDefinition);
+                    }
+                }
+            }
+        }
+        
+        List<VehicleDefinition> matchingVehicles = new ArrayList<>();
+        matchingVehicles.addAll(matchingVehiclesAllied.values());
+        matchingVehicles.addAll(matchingVehiclesAxis.values());
+        return matchingVehicles;
     }
 
     private String formDescription(Integer squadronId) throws PWCGException
@@ -122,7 +197,7 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
         Font font = PWCGMonitorFonts.getPrimaryFont();
 
         JRadioButton button = new JRadioButton(buttonText);
-        button.setActionCommand("" + squadronId);
+        button.setActionCommand(buttonText + ":" + squadronId);
         button.setHorizontalAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
         button.setFocusPainted(false);
@@ -147,6 +222,7 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
             {
                 if (selectedSquadron > 0)
                 {
+                    setRequestedVehicle();
                     Campaign campaign = generateCampaign();
                     Mission mission = generateMission(campaign);
                     if (isAAATruckMission())
@@ -166,7 +242,9 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
             }
             else
             {
-                selectedSquadron = Integer.valueOf(action);
+                String[] parts = action.split(":");
+                selectedButtonText = parts[0];
+                selectedSquadron = Integer.valueOf(parts[1]);
             }
         }
         catch (Throwable e)
@@ -256,7 +334,7 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
         Mission mission = null;
         if (isAAATruckMission())
         {
-            mission = missionGenerator.makeAAAMission(buildTestParticipatingHumans(campaign));
+            mission = missionGenerator.makeAAAMission(buildTestParticipatingHumans(campaign), playerVehicleDefinition);
         }
         else
         {
@@ -268,18 +346,32 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
 
     private void finishAAATruckMission(Mission mission) throws PWCGException
     {
-        Side truckSide = getTruckSide();
-        
+        Side vehicleSide = getTruckSide();
         mission.finalizeMission();
+        
         AAATruckMissionPostProcessor aaaPostProcessor = new AAATruckMissionPostProcessor(mission);
-        aaaPostProcessor.convertToAAATruckMission(truckSide);
+        aaaPostProcessor.convertToPlayerVehicleMission(vehicleSide);
         mission.writeGameMissionFiles();
     }
+    
+    
+    private void setRequestedVehicle() throws PWCGException
+    {
+        VehicleDefinitionManager vehicleDefinitionManager = PWCGContext.getInstance().getVehicleDefinitionManager();
+        for (VehicleDefinition vehicleDefinition : vehicleDefinitionManager.getAllVehicleDefinitions())
+        {
+            if (vehicleDefinition != null && vehicleDefinition.getVehicleName().startsWith(selectedButtonText))
+            {
+                playerVehicleDefinition = vehicleDefinition;
+            }
+        }
+    }
+
 
     private Side getTruckSide()
     {
         Side truckSide = Side.AXIS;
-        if (selectedSquadron == GAZ_AAA_TRUCK_SQUADRON_ID)
+        if (selectedSquadron == ALLIED_STAND_IN_SQUADRON_ID)
         {
             truckSide = Side.ALLIED;
         }
@@ -288,7 +380,7 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
     
     private boolean isAAATruckMission()
     {
-        if (selectedSquadron == GAZ_AAA_TRUCK_SQUADRON_ID || selectedSquadron == SDKFZ_AAA_TRUCK_SQUADRON_ID)
+        if (selectedSquadron == ALLIED_STAND_IN_SQUADRON_ID || selectedSquadron == AXIS_STAND_IN_SQUADRON_ID)
         {
             return true;
         }

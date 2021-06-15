@@ -1,0 +1,14 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\_pziii-m\\",
+  "vehicleType": "_pziii-m",
+  "vehicleName": "Pz.Kpfw.III Ausf.M",
+  "displayName": "tank",
+  "countries": [
+    "GERMANY"
+  ],
+  "startDate": "19420401",
+  "endDate": "19460724",
+  "rarityWeight": 20,
+  "vehicleClass": "TankPlayer"
+}

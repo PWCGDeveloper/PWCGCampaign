@@ -2,12 +2,10 @@
   "scriptDir": "vehicles\\",
   "modelDir": "vehicles\\_gaz-mm\\",
   "vehicleType": "_gaz-mm-72k",
-  "vehicleName": "GAZ-MM 72-K",
+  "vehicleName": "Sd.Kfz. 10/5 Flak 38",
   "displayName": "truck",
   "countries": [
-    "RUSSIA",
-    "USA",
-    "BRITAIN"
+    "GERMANY"
   ],
   "startDate": "19390901",
   "endDate": "19460724",

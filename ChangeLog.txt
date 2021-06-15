@@ -1,7 +1,10 @@
 
 ​At the PWCG web site
 
-12.2.7
+12.3.1
+Enhanced iconic missions to allow the player to crew any appropriate TC vehicle.
+
+12.3.0
 Iconic missions for AAA trucks
 - From PWCG main screen go to iconic missions
 - Choose an AAA truck

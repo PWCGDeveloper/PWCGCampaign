@@ -29,8 +29,10 @@ public enum VehicleClass
     Car(false, "Car", GroundUnitType.TRANSPORT_UNIT, TargetType.TARGET_TRANSPORT),
     Truck(false, "Truck", GroundUnitType.TRANSPORT_UNIT, TargetType.TARGET_TRANSPORT),
     TruckAAA(false, "Truck AA", GroundUnitType.TRANSPORT_UNIT, TargetType.TARGET_TRANSPORT),
-    TruckAAAPlayer(false, "Truck AA Player", GroundUnitType.TRANSPORT_UNIT, TargetType.TARGET_TRANSPORT),
     TruckAmmo(false, "Truck Ammo", GroundUnitType.TRANSPORT_UNIT, TargetType.TARGET_TRANSPORT),
+
+    TruckAAAPlayer(false, "Truck AA Player", GroundUnitType.TRANSPORT_UNIT, TargetType.TARGET_TRANSPORT),
+    TankPlayer(false, "Tank Player", GroundUnitType.TANK_UNIT, TargetType.TARGET_ARMOR),
 
     Drifter(false, "Barge", GroundUnitType.TRANSPORT_UNIT, TargetType.TARGET_DRIFTER),
     ShipLandingCraft(false, "Landing Craft", GroundUnitType.TRANSPORT_UNIT, TargetType.TARGET_SHIPPING),
