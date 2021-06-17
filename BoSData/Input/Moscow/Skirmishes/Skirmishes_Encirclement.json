@@ -1,0 +1,29 @@
+{
+	"skirmishes": [
+		{
+			"skirmishName": "Stalingrad-Encirclement",
+			"swCorner": {
+				"xPos": 114000,
+				"yPos": 0.0,
+				"zPos": 223000
+			},
+			"neCorner": {
+				"xPos": 155000,
+				"yPos": 0.0,
+				"zPos": 265000
+			},
+			"startDate": "19421201",
+			"stopDate": "19421231",
+			"iconicFlightTypes": [
+				{
+					"side": "AXIS",
+					"flightType": "CARGO_DROP",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_CARGO_DROP",
+			"attackerAir": "AXIS",
+			"attackerGround": "ALLIED"
+		}
+	]
+}

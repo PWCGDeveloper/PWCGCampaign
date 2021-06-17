@@ -15,8 +15,10 @@
   ],
   "airfields": {
     "19411001": "Novoye Selo",
+    "19411011": "Losinski",
+    "19411016": "Sychevka",
     "19411020": "Gzhatsk",
-    "19411110": "Ryabinki",
+    "19411110": "Gorstovo",
     "19411120": "Gorstovo",
     "19411215": "Varvarovka",
     "19420110": "Dugino",
@@ -68,7 +70,9 @@
       "country": "Germany",
       "category": "Squadron",
       "definedInGame": true,
-      "winter": false
+      "winter": false,
+      "useTacticalCodes": false,
+      "tacticalCodeColor": "BLACK"
     },
     {
       "skinName": "I_ZG26",
@@ -80,7 +84,9 @@
       "country": "Germany",
       "category": "Squadron",
       "definedInGame": true,
-      "winter": false
+      "winter": false,
+      "useTacticalCodes": false,
+      "tacticalCodeColor": "BLACK"
     }
   ],
   "squadHistory": {
@@ -124,6 +130,9 @@
         "nightMissionOdds": 10
       }
     ]
+  },
+  "targetPreferences": {
+    "targetPreferencePeriods": []
   },
   "conversionPeriods": [],
   "callsigns": {

@@ -46,7 +46,7 @@ public class AiAdjusterTest
         {
             for (PlaneMcu plane: flight.getFlightPlanes().getAiPlanes())
             {
-                if (plane.isPrimaryRole(Role.ROLE_FIGHTER))
+                if (plane.isPrimaryRole(Role.ROLE_FIGHTER) || plane.isNovice() == false)
                 {
                     assert(plane.getAiLevel() == AiSkillLevel.ACE);
                 }
@@ -72,7 +72,7 @@ public class AiAdjusterTest
         {
             for (PlaneMcu plane: flight.getFlightPlanes().getAiPlanes())
             {
-                if (plane.isPrimaryRole(Role.ROLE_FIGHTER))
+                if (plane.isPrimaryRole(Role.ROLE_FIGHTER) || plane.isNovice() == false)
                 {
                     assert(plane.getAiLevel() == AiSkillLevel.NOVICE);
                 }
@@ -98,7 +98,7 @@ public class AiAdjusterTest
         {
             for (PlaneMcu plane: flight.getFlightPlanes().getAiPlanes())
             {
-                if (plane.isPrimaryRole(Role.ROLE_FIGHTER))
+                if (plane.isPrimaryRole(Role.ROLE_FIGHTER) || plane.isNovice() == false)
                 {
                     assert(plane.getAiLevel().getAiSkillLevel() >= AiSkillLevel.NOVICE.getAiSkillLevel() &&
                            plane.getAiLevel().getAiSkillLevel() <= AiSkillLevel.ACE.getAiSkillLevel());
@@ -133,7 +133,7 @@ public class AiAdjusterTest
         {
             for (PlaneMcu plane: flight.getFlightPlanes().getAiPlanes())
             {
-                if (plane.isPrimaryRole(Role.ROLE_FIGHTER))
+                if (plane.isPrimaryRole(Role.ROLE_FIGHTER) || plane.isNovice() == false)
                 {
                     assert(plane.getAiLevel().getAiSkillLevel() >= AiSkillLevel.COMMON.getAiSkillLevel() &&
                            plane.getAiLevel().getAiSkillLevel() <= AiSkillLevel.ACE.getAiSkillLevel());

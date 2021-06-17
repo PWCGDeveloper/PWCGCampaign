@@ -1,0 +1,89 @@
+{
+	"skirmishes": [
+		{
+			"skirmishName": "Moscow-Bryansk-Prep",
+			"swCorner": {
+				"xPos": 20000,
+				"yPos": 0.0,
+				"zPos": 120000
+			},
+			"neCorner": {
+				"xPos": 52000,
+				"yPos": 0.0,
+				"zPos": 150000
+			},
+			"startDate": "19411001",
+			"stopDate": "19411004",
+			"iconicFlightTypes": [
+				{
+					"side": "AXIS",
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_ANTI_RAIL",
+			"attackerAir": "AXIS",
+			"attackerGround": "AXIS"
+		},
+		{
+			"skirmishName": "Moscow-Bryansk-Start",
+			"swCorner": {
+				"xPos": 48000,
+				"yPos": 0.0,
+				"zPos": 130000
+			},
+			"neCorner": {
+				"xPos": 65000,
+				"yPos": 0.0,
+				"zPos": 138000
+			},
+			"startDate": "19421111",
+			"stopDate": "19421122",
+			"iconicFlightTypes": [
+				{
+					"side": "AXIS",
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 1
+				},
+				{
+					"side": "ALLIED",
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_ANTI_INFANTRY",
+			"attackerAir": "AXIS",
+			"attackerGround": "AXIS"
+		},
+		{
+			"skirmishName": "Moscow-Bryansk-Encirclement",
+			"swCorner": {
+				"xPos": 18000,
+				"yPos": 0.0,
+				"zPos": 118000
+			},
+			"neCorner": {
+				"xPos": 56000,
+				"yPos": 0.0,
+				"zPos": 167000
+			},
+			"startDate": "19421111",
+			"stopDate": "19421122",
+			"iconicFlightTypes": [
+				{
+					"side": "AXIS",
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 1
+				},
+				{
+					"side": "ALLIED",
+					"flightType": "GROUND_ATTACK",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_ANTI_INFANTRY",
+			"attackerAir": "AXIS",
+			"attackerGround": "AXIS"
+		}
+	]
+}

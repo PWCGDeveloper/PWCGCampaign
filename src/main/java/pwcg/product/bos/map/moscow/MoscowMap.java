@@ -22,7 +22,10 @@ public class MoscowMap extends PWCGMap
     { 
         missionSpacingMyDate = new TreeMap<>(); 
         missionSpacingMyDate.put("19411001", 2); 
-        missionSpacingMyDate.put("19411010", 1); 
+        missionSpacingMyDate.put("19411003", 1); 
+        missionSpacingMyDate.put("19411012", 2); 
+        missionSpacingMyDate.put("19411016", 1); 
+        missionSpacingMyDate.put("19411024", 2); 
         missionSpacingMyDate.put("19421205", 2); 
         missionSpacingMyDate.put("19420101", 3); 
         missionSpacingMyDate.put("19420110", 4); 
@@ -57,6 +60,9 @@ public class MoscowMap extends PWCGMap
         this.frontDatesForMap.addMapDateRange(DateUtils.getDateYYYYMMDD("19411001"), DateUtils.getDateYYYYMMDD("19420301"));
 
         this.frontDatesForMap.addFrontDate("19411001");
+        this.frontDatesForMap.addFrontDate("19411005");
+        this.frontDatesForMap.addFrontDate("19411011");
+        this.frontDatesForMap.addFrontDate("19411016");
         this.frontDatesForMap.addFrontDate("19411020");
         this.frontDatesForMap.addFrontDate("19411110");
         this.frontDatesForMap.addFrontDate("19411120");
