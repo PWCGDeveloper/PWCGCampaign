@@ -3,6 +3,7 @@
 
 12.3.1
 Enhanced iconic missions to allow the player to crew any appropriate TC vehicle.
+Extended ground unit spawn distance from 5km to 15km/8kmfor BoS/FC
 
 12.3.0
 Iconic missions for AAA trucks

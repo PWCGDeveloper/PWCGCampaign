@@ -1,6 +1,7 @@
 package pwcg.testutils;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.skirmish.Skirmish;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
@@ -13,6 +14,7 @@ import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.MissionProfile;
 import pwcg.mission.MissionSquadronFlightTypes;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.ground.vehicle.VehicleDefinition;
 import pwcg.mission.options.MissionOptions;
 import pwcg.mission.options.MissionWeather;
 
@@ -29,7 +31,9 @@ public class TestMissionBuilderUtility
         MissionWeather weather = new MissionWeather(campaign, missionOptions.getMissionHour());
         weather.createMissionWeather();
 
-        Mission mission = new Mission(campaign, missionProfile, participatingPlayers, missionBorders, weather, null, missionOptions);
+        Skirmish skirmish = null;
+        VehicleDefinition playerVehicleDefinition = null;
+        Mission mission = new Mission(campaign, missionProfile, participatingPlayers, playerVehicleDefinition, missionBorders, weather, skirmish, missionOptions);
         campaign.setCurrentMission(mission);
         return mission;
     }

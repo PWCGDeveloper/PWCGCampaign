@@ -35,11 +35,23 @@ public class VehicleFactoryFCTest
     {
         for (VehicleClass vehicleClass: VehicleClass.getAllVehicleClasses())
         {
-            if (!vehicleClass.isStatic())
+            if (vehicleClass.isStatic())
             {
-                IVehicle vehicle = VehicleFactory.createVehicle(country, date, vehicleClass);
-                assert(vehicle != null);
+                continue;
             }
+            
+            if (vehicleClass == VehicleClass.TankPlayer)
+            {
+                continue;
+            }
+            
+            if (vehicleClass == VehicleClass.TruckAAAPlayer)
+            {
+                continue;
+            }
+            
+            IVehicle vehicle = VehicleFactory.createVehicle(country, date, vehicleClass);
+            assert(vehicle != null);
         }
     }
     

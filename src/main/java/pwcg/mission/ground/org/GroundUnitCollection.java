@@ -4,7 +4,9 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -18,8 +20,6 @@ import pwcg.mission.target.TargetType;
 
 public class GroundUnitCollection
 {
-    private final static int GROUND_UNIT_SPAWN_DISTANCE = 5000;
-
     private GroundUnitCollectionData groundUnitCollectionData;
     private int index = IndexGenerator.getInstance().getNextIndex();
     private MissionBeginCheckZoneBase missionBeginUnit;
@@ -101,7 +101,10 @@ public class GroundUnitCollection
 
     private void createCheckZone() throws PWCGException
     {
-        missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone("Check Zone " + groundUnitName, getPosition(), GROUND_UNIT_SPAWN_DISTANCE);
+        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        int groundUnitSpawnDistance = productSpecific.getGroundUnitSpawnDistance();
+        
+        missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone("Check Zone " + groundUnitName, getPosition(), groundUnitSpawnDistance);
         missionBeginUnit.setCheckZoneCoalitions(groundUnitCollectionData.getTriggerCoalitions());
     }
 
