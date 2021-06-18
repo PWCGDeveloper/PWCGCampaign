@@ -29,6 +29,8 @@ public enum ScreenIdentifier
     CampaignIntelligenceReportScreen("CampaignIntelligenceReportScreen", "Campaign Intelligence Report Screen", "TableTop.jpg"),
     CampaignJournalScreen("CampaignJournalScreen", "Campaign Journal Screen", "TableTop.jpg"),
     CampaignSquadronLogScreen("CampaignSquadronLogScreen", "Campaign Squadron Log Screen", "TableTop.jpg"),
+    CampaignNewsScreen("CampaignNewsScreen", "Campaign News Screen", "TableTop.jpg"),
+    Newspaper("Newspaper", "Newspaper", "Newspaper.jpg"),
     CampaignMedalScreen("CampaignMedalScreen", "Campaign Medal Screen", "TableTop.jpg"),    
     CampaignPilotLogScreen("CampaignPilotLogScreen", "Campaign Pilot Log Screen", "TableTop.jpg"),    
     CampaignSkinConfigurationScreen("CampaignSkinConfigurationScreen", "Campaign Skin Configuration Screen", "TableTop.jpg"),    

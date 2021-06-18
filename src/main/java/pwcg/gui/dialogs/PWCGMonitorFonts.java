@@ -120,19 +120,32 @@ public class PWCGMonitorFonts
         return font;
     }
 
-	public static Font getPilotFont() throws PWCGException
-	{
-		String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.PilotFontKey);
-		int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.PilotFontSizeKey);
+    public static Font getPilotFont() throws PWCGException
+    {
+        String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.PilotFontKey);
+        int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.PilotFontSizeKey);
         fontSize = verifyFontSizeForScreenSize(fontSize);
         
-		Font font = new Font(
-				fontName, 
-				Font.BOLD, 
-				fontSize);
-		
-		return font;
-	}
+        Font font = new Font(
+                fontName, 
+                Font.BOLD, 
+                fontSize);
+        
+        return font;
+    }
+
+    public static Font getNewspaperFont() throws PWCGException
+    {
+        String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.NewspaperFontKey);
+        int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.NewspaperFontSizeKey);
+        
+        Font font = new Font(
+                fontName, 
+                Font.TRUETYPE_FONT, 
+                fontSize);
+        
+        return font;
+    }
 
     public static Font getPilotLogBookFont() throws PWCGException 
     {

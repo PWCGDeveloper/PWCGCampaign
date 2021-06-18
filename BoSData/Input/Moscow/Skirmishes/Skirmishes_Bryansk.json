@@ -17,7 +17,7 @@
 			"iconicFlightTypes": [
 				{
 					"side": "AXIS",
-					"flightType": "GROUND_ATTACK",
+					"flightType": "DIVE_BOMB",
 					"maxForcedFlightTypes": 1
 				}
 			],
@@ -28,26 +28,21 @@
 		{
 			"skirmishName": "Moscow-Bryansk-Start",
 			"swCorner": {
-				"xPos": 48000,
+				"xPos": 36000,
 				"yPos": 0.0,
-				"zPos": 130000
+				"zPos": 108000
 			},
 			"neCorner": {
-				"xPos": 65000,
+				"xPos": 67000,
 				"yPos": 0.0,
-				"zPos": 138000
+				"zPos": 142000
 			},
-			"startDate": "19421111",
-			"stopDate": "19421122",
+			"startDate": "19411005",
+			"stopDate": "19411010",
 			"iconicFlightTypes": [
 				{
 					"side": "AXIS",
-					"flightType": "GROUND_ATTACK",
-					"maxForcedFlightTypes": 1
-				},
-				{
-					"side": "ALLIED",
-					"flightType": "GROUND_ATTACK",
+					"flightType": "DIVE_BOMB",
 					"maxForcedFlightTypes": 1
 				}
 			],
@@ -58,9 +53,9 @@
 		{
 			"skirmishName": "Moscow-Bryansk-Encirclement",
 			"swCorner": {
-				"xPos": 18000,
+				"xPos": 17000,
 				"yPos": 0.0,
-				"zPos": 118000
+				"zPos": 115000
 			},
 			"neCorner": {
 				"xPos": 56000,
@@ -68,16 +63,61 @@
 				"zPos": 167000
 			},
 			"startDate": "19421111",
-			"stopDate": "19421122",
+			"stopDate": "19421115",
 			"iconicFlightTypes": [
 				{
 					"side": "AXIS",
-					"flightType": "GROUND_ATTACK",
+					"flightType": "DIVE_BOMB",
 					"maxForcedFlightTypes": 1
-				},
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_ANTI_INFANTRY",
+			"attackerAir": "AXIS",
+			"attackerGround": "AXIS"
+		},
+		{
+			"skirmishName": "Rzhev-Prep",
+			"swCorner": {
+				"xPos": 172000,
+				"yPos": 0.0,
+				"zPos": 30000
+			},
+			"neCorner": {
+				"xPos": 200,
+				"yPos": 0.0,
+				"zPos": 70000
+			},
+			"startDate": "19421116",
+			"stopDate": "19421117",
+			"iconicFlightTypes": [
 				{
-					"side": "ALLIED",
-					"flightType": "GROUND_ATTACK",
+					"side": "AXIS",
+					"flightType": "DIVE_BOMB",
+					"maxForcedFlightTypes": 1
+				}
+			],
+			"profileType": "SKIRMISH_PROFILE_ANTI_RAIL",
+			"attackerAir": "AXIS",
+			"attackerGround": "AXIS"
+		},
+		{
+			"skirmishName": "Rzhev",
+			"swCorner": {
+				"xPos": 177000,
+				"yPos": 0.0,
+				"zPos": 35000
+			},
+			"neCorner": {
+				"xPos": 190000,
+				"yPos": 0.0,
+				"zPos": 55000
+			},
+			"startDate": "19421118",
+			"stopDate": "19421119",
+			"iconicFlightTypes": [
+				{
+					"side": "AXIS",
+					"flightType": "DIVE_BOMB",
 					"maxForcedFlightTypes": 1
 				}
 			],

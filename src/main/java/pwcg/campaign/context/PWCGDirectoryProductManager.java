@@ -99,4 +99,9 @@ public class PWCGDirectoryProductManager
     {
         return getPwcgInputDir() + "Aces\\";
     }
+
+    public String getPwcgNewspaperDir()
+    {
+        return getPwcgInputDir() + "Newspapers\\";
+    }
 }

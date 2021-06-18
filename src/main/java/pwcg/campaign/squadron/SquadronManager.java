@@ -21,7 +21,7 @@ import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class SquadronManager 
 {
-	private TreeMap<Integer, Squadron> squadronMap = new TreeMap<Integer, Squadron>();
+	private TreeMap<Integer, Squadron> squadronMap = new TreeMap<>();
 
 	public SquadronManager ()
 	{

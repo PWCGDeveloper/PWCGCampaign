@@ -91,6 +91,9 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
         JButton squadronLogButton = PWCGButtonFactory.makeTranslucentMenuButton("Squadron Log", "CampFlowLog", "View campaign logs", this);
         buttonPanel.add(squadronLogButton);
 
+        JButton newsButton = PWCGButtonFactory.makeTranslucentMenuButton("News", "CampFlowNews", "View campaign news", this);
+        buttonPanel.add(newsButton);
+
 		leftSidePanel.add(buttonPanel, BorderLayout.NORTH);
 
 		return leftSidePanel;
@@ -120,6 +123,10 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
             else if (action.equalsIgnoreCase("CampFlowLog"))
             {
                 showCampaignLog();
+            }
+            else if (action.equalsIgnoreCase("CampFlowNews"))
+            {
+                showCampaignNews();
             }
             else if (action.equals(CommonUIActions.FINISHED))
             {
@@ -184,6 +191,16 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
         logDisplay.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(logDisplay);
+    }
+
+    private void showCampaignNews() throws PWCGException 
+    {
+        SoundManager.getInstance().playSound("BookOpen.WAV");
+
+        CampaignNewsScreen newsDisplay = new CampaignNewsScreen(campaign);
+        newsDisplay.makePanels();
+
+        CampaignGuiContextManager.getInstance().pushToContextStack(newsDisplay);
     }
 
     private boolean isDisplayTransferButton() throws PWCGException

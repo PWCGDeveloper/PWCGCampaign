@@ -10,6 +10,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.group.airfield.staticobject.StaticObjectDefinitionManager;
+import pwcg.campaign.newspapers.NewspaperManager;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.skin.SkinManager;
@@ -27,6 +28,7 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     protected Campaign campaign = null;
     protected AceManager aceManager = new AceManager();
     protected SquadronManager squadronManager = new SquadronManager();
+    protected NewspaperManager newspaperManager = new NewspaperManager();
     protected SkinManager skinManager = new SkinManager();
     protected SkirmishProfileManager skirmishProfileManager = new SkirmishProfileManager();
     protected VehicleDefinitionManager vehicleDefinitionManager = new VehicleDefinitionManager();
@@ -46,6 +48,7 @@ public abstract class PWCGContextBase implements IPWCGContextManager
         }
 
         squadronManager.initialize();
+        newspaperManager.initialize();
     }
 
     protected void initialize() throws PWCGException 
@@ -251,6 +254,12 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     public String getMissionLogDirectory()
     {
         return missionLogPath;        
+    }
+    
+    @Override
+    public NewspaperManager getNewspaperManager()
+    {
+        return newspaperManager;
     }
 
     @Override

@@ -1,8 +1,16 @@
 package pwcg.mission.ground.vehicle;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
+import pwcg.campaign.api.ICountry;
+import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
+import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.io.json.VehicleDefinitionIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.IWeight;
@@ -118,6 +126,36 @@ public class VehicleDefinitionManager
         WeightCalculator weightCalculator = new WeightCalculator(vehiclesByWeight);
         int index = weightCalculator.getItemFromWeight();
         return matchingDefinitions.get(index);
+    }
+    
+    public List<VehicleDefinition> getVehicleDefinitionsOfTypeBySide(VehicleClass vehicleClass, Set<Country> countriesInBattle, Date battleDate) throws PWCGException
+    {
+        Map<String, VehicleDefinition> matchingVehiclesAllied = new TreeMap<>();
+        Map<String, VehicleDefinition> matchingVehiclesAxis = new TreeMap<>();
+        for (Country country : countriesInBattle)
+        {
+            VehicleRequestDefinition vehicleRequestDefinition = new VehicleRequestDefinition(country, battleDate, vehicleClass);
+            for (VehicleDefinition vehicleDefinition : getAllVehicleDefinitions())
+            {
+                if (vehicleDefinition != null && vehicleDefinition.shouldUse(vehicleRequestDefinition))
+                {
+                    ICountry icountry = CountryFactory.makeCountryByCountry(country);
+                    if (icountry.getSide() == Side.ALLIED)
+                    {
+                        matchingVehiclesAllied.put(vehicleDefinition.getVehicleName(), vehicleDefinition);
+                    }
+                    else
+                    {
+                        matchingVehiclesAxis.put(vehicleDefinition.getVehicleName(), vehicleDefinition);
+                    }
+                }
+            }
+        }
+        
+        List<VehicleDefinition> matchingVehicles = new ArrayList<>();
+        matchingVehicles.addAll(matchingVehiclesAllied.values());
+        matchingVehicles.addAll(matchingVehiclesAxis.values());
+        return matchingVehicles;
     }
 
 }

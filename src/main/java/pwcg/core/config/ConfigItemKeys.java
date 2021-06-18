@@ -165,8 +165,10 @@ public class ConfigItemKeys
 	public static final String ChalkboardFontSizeKey = "ChalkboardFontSize";
 	public static final String BriefingFontKey = "BriefingFont";
 	public static final String BriefingFontSizeKey = "BriefingFontSize";
-	public static final String PilotFontKey = "PilotFont";
-	public static final String PilotFontSizeKey = "PilotFontSize";
+    public static final String PilotFontKey = "PilotFont";
+    public static final String PilotFontSizeKey = "PilotFontSize";
+    public static final String NewspaperFontKey = "NewspaperFont";
+    public static final String NewspaperFontSizeKey = "NewspaperFontSize";
 	public static final String MissionDescriptionFontKey = "MissionDescriptionFont";
 	public static final String MissionDescriptionFontSizeKey = "MissionDescriptionFontSize";
 	public static final String TypewriterFontKey = "TypewriterFont";

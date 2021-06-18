@@ -6,13 +6,10 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.TreeMap;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -57,7 +54,6 @@ import pwcg.mission.aaatruck.AAATruckMissionPostProcessor;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.ground.vehicle.VehicleDefinition;
 import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
-import pwcg.mission.ground.vehicle.VehicleRequestDefinition;
 import pwcg.mission.io.MissionFileWriter;
 
 public class IconicBattlesGUI extends ImageResizingPanel implements ActionListener
@@ -152,34 +148,7 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
     
     List<VehicleDefinition> getVehicleDefinitionsOfType(VehicleClass vehicleClass, Set<Country> countriesInBattle, Date battleDate) throws PWCGException
     {
-        VehicleDefinitionManager vehicleDefinitionManager = PWCGContext.getInstance().getVehicleDefinitionManager();
-
-        Map<String, VehicleDefinition> matchingVehiclesAllied = new TreeMap<>();
-        Map<String, VehicleDefinition> matchingVehiclesAxis = new TreeMap<>();
-        for (Country country : countriesInBattle)
-        {
-            VehicleRequestDefinition vehicleRequestDefinition = new VehicleRequestDefinition(country, battleDate, vehicleClass);
-            for (VehicleDefinition vehicleDefinition : vehicleDefinitionManager.getAllVehicleDefinitions())
-            {
-                if (vehicleDefinition != null && vehicleDefinition.shouldUse(vehicleRequestDefinition))
-                {
-                    ICountry icountry = CountryFactory.makeCountryByCountry(country);
-                    if (icountry.getSide() == Side.ALLIED)
-                    {
-                        matchingVehiclesAllied.put(vehicleDefinition.getVehicleName(), vehicleDefinition);
-                    }
-                    else
-                    {
-                        matchingVehiclesAxis.put(vehicleDefinition.getVehicleName(), vehicleDefinition);
-                    }
-                }
-            }
-        }
-        
-        List<VehicleDefinition> matchingVehicles = new ArrayList<>();
-        matchingVehicles.addAll(matchingVehiclesAllied.values());
-        matchingVehicles.addAll(matchingVehiclesAxis.values());
-        return matchingVehicles;
+        return PWCGContext.getInstance().getVehicleDefinitionManager().getVehicleDefinitionsOfTypeBySide(vehicleClass, countriesInBattle, battleDate);
     }
 
     private String formDescription(Integer squadronId) throws PWCGException

@@ -1,0 +1,100 @@
+{
+	"newspapers": [
+		{
+			"imageName": "19440924Allied.jpg",
+			"newspaperEventDate": "19440924",
+			"side": "ALLIED",
+			"headline": "Allied Paratroopers Attack"
+		},
+		{
+			"imageName": "19440924Axis.jpg",
+			"newspaperEventDate": "19440924",
+			"side": "AXIS",
+			"headline": "German Forces Resist at Arnhem"
+		},
+		{
+			"imageName": "19440929Allied.jpg",
+			"newspaperEventDate": "19440929",
+			"side": "ALLIED",
+			"headline": "Allies Capture Key Bridges"
+		},
+		{
+			"imageName": "19440929Axis.jpg",
+			"newspaperEventDate": "19440929",
+			"side": "AXIS",
+			"headline": "Allied Paratroopers Wiped Out"
+		},
+		{
+			"imageName": "19441220Allied.jpg",
+			"newspaperEventDate": "19441220",
+			"side": "ALLIED",
+			"headline": "German Surprise Attack"
+		},
+		{
+			"imageName": "19441220Axis.jpg",
+			"newspaperEventDate": "19441220",
+			"side": "AXIS",
+			"headline": "Germany Attacks!"
+		},
+		{
+			"imageName": "19441225Allied.jpg",
+			"newspaperEventDate": "19441225",
+			"side": "ALLIED",
+			"headline": "Bastogne Holds!"
+		},
+		{
+			"imageName": "19441225Axis.jpg",
+			"newspaperEventDate": "19441225",
+			"side": "AXIS",
+			"headline": "Bastogne Surrounded!"
+		},
+		{
+			"imageName": "19441229Allied.jpg",
+			"newspaperEventDate": "19441229",
+			"side": "ALLIED",
+			"headline": "Bulge Is No More!"
+		},
+		{
+			"imageName": "19441229Axis.jpg",
+			"newspaperEventDate": "19441229",
+			"side": "AXIS",
+			"headline": "Assault Retains Gains"
+		},
+		{
+			"imageName": "19450101Allied.jpg",
+			"newspaperEventDate": "19450101",
+			"side": "ALLIED",
+			"headline": "German Air Raid Crushed"
+		},
+		{
+			"imageName": "19450101Axis.jpg",
+			"newspaperEventDate": "19450101",
+			"side": "AXIS",
+			"headline": "Allies Aircraft Destroyed"
+		},
+		{
+			"imageName": "19450323Allied.jpg",
+			"newspaperEventDate": "19450323",
+			"side": "ALLIED",
+			"headline": "Allies Cross Rhine"
+		},
+		{
+			"imageName": "19450323Axis.jpg",
+			"newspaperEventDate": "19450323",
+			"side": "AXIS",
+			"headline": "Resistance On Rhine"
+		},
+		{
+			"imageName": "19450324Allied.jpg",
+			"newspaperEventDate": "19450324",
+			"side": "ALLIED",
+			"headline": "Paratroopers Over The Rhine"
+		},
+		{
+			"imageName": "19450324Axis.jpg",
+			"newspaperEventDate": "19450324",
+			"side": "AXIS",
+			"headline": "Allied Paracute Attack"
+		}
+	]
+}

@@ -56,6 +56,16 @@
       "label": "Mission Description Font Size",
       "help": "Font size of mission description"
     },
+    "NewspaperFont": {
+      "value": "Serif",
+      "label": "Newspaper Font",
+      "help": "Font used for newspaper headline"
+    },
+    "NewspaperFontSize": {
+      "value": "36",
+      "label": "Newspaper Font Size",
+      "help": "Font size of newspaper headline"
+    },
     "PilotFont": {
       "value": "Serif",
       "label": "Pilot Font",
