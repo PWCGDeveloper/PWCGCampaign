@@ -14,9 +14,11 @@ import pwcg.campaign.PictureManager;
 import pwcg.campaign.api.IArmedServiceManager;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ArmedServiceFactory;
+import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.skin.Skin;
@@ -564,6 +566,12 @@ public class SquadronMember implements Cloneable
     public Country getCountry()
     {
         return country;
+    }
+
+    public Side getSide()
+    {
+        ICountry icountry = CountryFactory.makeCountryByCountry(country);
+        return icountry.getSide();
     }
 
     public void setCountry(Country country)

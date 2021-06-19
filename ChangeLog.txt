@@ -1,6 +1,26 @@
 
 ​At the PWCG web site
 
+12.4.0
+Bryansk iconic event added
+Newspapers
+Rewrote newspapers such that a new paper can be added by supplying a photo and adding a bit of data
+- Used to take me 30 moinutes to make a paper.  Now it's less than 5.
+- They look better too.
+- Hoping for community contributions
+Newspapers added for all iconic events
+Added news rack to view old newspapers
+- campaign->acitivites->news
+Fixed: In several places plaques were referred to as plagues.
+- Don't think they were visible to players but they bugged me
+
+Newspaper to do:
+- Deal with ace lost newspapers
+- Deal with end of war newspapers
+
+- Newspapers for FC
+- Newspapers in AAR
+
 12.3.1
 Enhanced iconic missions to allow the player to crew any appropriate TC vehicle.
 Extended ground unit spawn distance from 5km to 15km/8kmfor BoS/FC

@@ -5,13 +5,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import pwcg.aar.ui.events.model.NewspaperEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.Side;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.newspapers.Newspaper;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.DirectoryReader;
-import pwcg.gui.utils.ContextSpecificImages;
 
 public class NewspaperEventGenerator
 {
@@ -24,50 +21,18 @@ public class NewspaperEventGenerator
         this.newDate = newDate;
     }
 
-
-    public List<NewspaperEvent> createNewspaperEventsForElapsedTime() throws PWCGException
+    public List<Newspaper> createNewspaperEventsForElapsedTime() throws PWCGException
     {
-        List<NewspaperEvent> newspaperEventList = new ArrayList<>();
-        
-        String newspaperDir = ContextSpecificImages.imagesNewspaper();
-        List<String> dateBasedNewspaperFiles =  getDateBasedNewspaperFiles(newspaperDir);
-        
-        for (String filename : dateBasedNewspaperFiles)
+        List<Newspaper> newspaperEventList = new ArrayList<>();
+
+        for (Newspaper newspaper : PWCGContext.getInstance().getNewspaperManager().getNewspapersForSide(campaign.getReferencePlayer().getSide()))
         {
-        	Side side = Side.AXIS;
-            if (filename.contains("Allied"))
+            if (isNewspaperWithinDateBoundaries(newspaper.getNewspaperEventDate()))
             {
-            	side = Side.ALLIED;
+                newspaperEventList.add(newspaper);
             }
-
-            Date newsPaperDate = getNewspaperDate(filename);
-            if (!isNewspaperWithinDateBoundaries(newsPaperDate))
-            {
-                continue;
-            }
-
-            NewspaperEvent newspaperEvent = makeNewspaperEvent(newspaperDir, filename, newsPaperDate, side);
-            newspaperEventList.add(newspaperEvent);
         }
         return newspaperEventList;
-    }
-
-    private List<String> getDateBasedNewspaperFiles(String newspaperDir) throws PWCGException
-    {
-        DirectoryReader directoryReader = new DirectoryReader();
-        directoryReader.sortFilesInDir(newspaperDir);
-        List<String> newspaperFiles = directoryReader.getFiles();
-        
-        List<String> dateBasedNewspaperFiles = new ArrayList<>();
-        for (String filename : newspaperFiles)
-        {
-            if (filename.startsWith("19"))
-            {
-                dateBasedNewspaperFiles.add(filename);
-            }
-        }
-        
-        return dateBasedNewspaperFiles;
     }
 
     private boolean isNewspaperWithinDateBoundaries (Date newsPaperDate)
@@ -83,13 +48,6 @@ public class NewspaperEventGenerator
         
         return false;
     }
-    
-    private Date getNewspaperDate(String filename) throws PWCGException
-    {
-        String dateString = filename.substring(0, 8);
-        Date newsPaperDate = DateUtils.getDateYYYYMMDD(dateString);
-        return newsPaperDate;
-    }
 
     private Date getOldNewsDate()
     {
@@ -99,12 +57,4 @@ public class NewspaperEventGenerator
         Date oldNewsDate = calendar.getTime();
         return oldNewsDate;
     }
-
-    private NewspaperEvent makeNewspaperEvent(String newspaperDir, String filename, Date newsPaperDate, Side side)
-    {
-        boolean isNewsworthy = true;
-        NewspaperEvent newspaperEvent = new NewspaperEvent(filename, side, newsPaperDate, isNewsworthy);
-        return newspaperEvent;
-    }
-
 }

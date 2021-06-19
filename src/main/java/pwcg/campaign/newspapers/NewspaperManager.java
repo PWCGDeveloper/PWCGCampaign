@@ -62,7 +62,7 @@ public class NewspaperManager
         
     }
 
-    private List<Newspaper> getNewspapersForSide(Side side)
+    public List<Newspaper> getNewspapersForSide(Side side)
     {
         TreeMap<Date, Newspaper> newspapersForSide = axisNewspapers;
         if (side == Side.ALLIED)

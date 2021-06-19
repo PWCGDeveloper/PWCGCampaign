@@ -10,8 +10,8 @@ import pwcg.aar.ui.display.model.AARNewsPanelData;
 import pwcg.aar.ui.events.AcesKilledEventGenerator;
 import pwcg.aar.ui.events.NewspaperEventGenerator;
 import pwcg.aar.ui.events.model.AceKilledEvent;
-import pwcg.aar.ui.events.model.NewspaperEvent;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.newspapers.Newspaper;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.core.exception.PWCGException;
 
@@ -38,8 +38,8 @@ public class NewsPanelEventTabulator
     private AARNewsPanelData createDateBasedNewspaperEvents() throws PWCGException 
     {
         NewspaperEventGenerator newspaperEventGenerator = new NewspaperEventGenerator(campaign, aarContext.getNewDate());
-        List<NewspaperEvent> newspaperEventList = newspaperEventGenerator.createNewspaperEventsForElapsedTime();
-        newsPanelData.setNewspaperEventsDuringElapsedTime(newspaperEventList);
+        List<Newspaper> newspapers = newspaperEventGenerator.createNewspaperEventsForElapsedTime();
+        newsPanelData.setNewspaperEventsDuringElapsedTime(newspapers);
         
         return newsPanelData;
     }

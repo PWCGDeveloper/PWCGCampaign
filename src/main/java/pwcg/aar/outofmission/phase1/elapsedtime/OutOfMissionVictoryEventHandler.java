@@ -160,7 +160,5 @@ public class OutOfMissionVictoryEventHandler
 	public OutOfMissionVictoryData getVictoriesOutOMission()
 	{
 		return victoriesOutOMission;
-	}
-    
-    
+	}  
 }

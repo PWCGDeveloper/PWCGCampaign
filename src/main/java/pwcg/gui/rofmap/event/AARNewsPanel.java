@@ -11,32 +11,29 @@ import javax.swing.JTabbedPane;
 
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.events.model.AceKilledEvent;
-import pwcg.aar.ui.events.model.NewspaperEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.newspapers.Newspaper;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.campaign.activity.CampaignNewspaperUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.utils.ImageResizingPanel;
 
 public class AARNewsPanel extends AARDocumentPanel
 {
     private static final long serialVersionUID = 1L;
     private AARCoordinator aarCoordinator;
-    private Campaign campaign;
 
-    private HashMap<String, ImageResizingPanel> newsGuiList = new HashMap<String, ImageResizingPanel>();
+    private HashMap<String, JPanel> newsGuiList = new HashMap<>();
 
-    public AARNewsPanel(Campaign campaign)
+    public AARNewsPanel()
 	{
         super();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
-        this.campaign = campaign;
         this.aarCoordinator = AARCoordinator.getInstance();
 	}
 
@@ -72,7 +69,7 @@ public class AARNewsPanel extends AARDocumentPanel
         eventTabPane.setBackground(bgColor);
         eventTabPane.setOpaque(false);
        
-        HashMap<String, ImageResizingPanel> newsGuiList = createPilotNewsList() ;
+        HashMap<String, JPanel> newsGuiList = createPilotNewsList() ;
         for (String tabName : newsGuiList.keySet())
         {
             eventTabPane.addTab(tabName, newsGuiList.get(tabName));
@@ -83,7 +80,7 @@ public class AARNewsPanel extends AARDocumentPanel
         return eventTabPane;
     }
 
-	private HashMap<String, ImageResizingPanel> createPilotNewsList() throws PWCGException 
+	private HashMap<String, JPanel> createPilotNewsList() throws PWCGException 
 	{
         Campaign campaign = PWCGContext.getInstance().getCampaign();
         makeHistoricalNewspaperEvents();
@@ -117,16 +114,12 @@ public class AARNewsPanel extends AARDocumentPanel
 
     private void makeHistoricalNewspaperEvents() throws PWCGException
     {
-        List<NewspaperEvent> newspaperEvents = aarCoordinator.getAarContext().getUiDebriefData().getNewsPanelData().getNewspaperEventsDuringElapsedTime();
-        for (NewspaperEvent newspaperEvent : newspaperEvents)
+        List<Newspaper> newspapers = aarCoordinator.getAarContext().getUiDebriefData().getNewsPanelData().getNewspaperEventsDuringElapsedTime();
+        for (Newspaper newspaper : newspapers)
 		{
-            SquadronMember referencePlayer = campaign.findReferencePlayer();
-        	if (referencePlayer.determineCountry(campaign.getDate()).getSide() == newspaperEvent.getSide())
-        	{
-	            CampaignReportNewspaperGUI newspaperGui = new CampaignReportNewspaperGUI(newspaperEvent);
-	            String tabName = "News from the front: " + DateUtils.getDateStringPretty(newspaperEvent.getDate());
-	            newsGuiList.put(tabName, newspaperGui);
-        	}
+            CampaignNewspaperUI newspaperPage = new CampaignNewspaperUI(newspaper);
+            String tabName = "News from the front: " + DateUtils.getDateStringPretty(newspaper.getNewspaperEventDate());
+            newsGuiList.put(tabName, newspaperPage);
 		}
     }
 }

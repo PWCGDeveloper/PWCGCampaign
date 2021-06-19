@@ -162,7 +162,7 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
             AARPromotionPanel pilotsPromotionPanelSet = new AARPromotionPanel(campaign);
             allEventPanels.add(pilotsPromotionPanelSet);
 
-            AARNewsPanel newsPanelSet = new AARNewsPanel(campaign);
+            AARNewsPanel newsPanelSet = new AARNewsPanel();
             allEventPanels.add(newsPanelSet);
             
             for (IAAREventPanel eventPanel : allEventPanels)

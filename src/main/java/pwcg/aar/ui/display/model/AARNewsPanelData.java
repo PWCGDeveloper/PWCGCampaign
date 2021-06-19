@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.aar.ui.events.model.AceKilledEvent;
-import pwcg.aar.ui.events.model.NewspaperEvent;
+import pwcg.campaign.newspapers.Newspaper;
 
 public class AARNewsPanelData
 {
     private List<AceKilledEvent> acesKilledDuringElapsedTime = new ArrayList<>();
-    private List<NewspaperEvent> newspaperEventsDuringElapsedTime = new ArrayList<>();
+    private List<Newspaper> newspaperEventsDuringElapsedTime = new ArrayList<>();
 
     public List<AceKilledEvent> getAcesKilledDuringElapsedTime()
     {
@@ -21,12 +21,12 @@ public class AARNewsPanelData
         this.acesKilledDuringElapsedTime = acesKilledDuringElapsedTime;
     }
 
-    public List<NewspaperEvent> getNewspaperEventsDuringElapsedTime()
+    public List<Newspaper> getNewspaperEventsDuringElapsedTime()
     {
         return newspaperEventsDuringElapsedTime;
     }
 
-    public void setNewspaperEventsDuringElapsedTime(List<NewspaperEvent> newspaperEventsDuringElapsedTime)
+    public void setNewspaperEventsDuringElapsedTime(List<Newspaper> newspaperEventsDuringElapsedTime)
     {
         this.newspaperEventsDuringElapsedTime = newspaperEventsDuringElapsedTime;
     }
