@@ -114,6 +114,9 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
 		vvs.addServiceQuality(DateUtils.getDateYYYYMMDD("19420101"), 20);
         vvs.addServiceQuality(DateUtils.getDateYYYYMMDD("19430101"), 40);
         vvs.addServiceQuality(DateUtils.getDateYYYYMMDD("19440101"), 50);
+        
+        vvs.setAirVictoriesForgreatAce(20);
+        vvs.setGroundVictoriesForgreatAce(100);
 
 		russianServices.add(vvs);
     }
@@ -142,6 +145,9 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         normandie.addServiceQuality(DateUtils.getDateYYYYMMDD("19430101"), 50);
         normandie.addServiceQuality(DateUtils.getDateYYYYMMDD("19440101"), 50);
         
+        normandie.setAirVictoriesForgreatAce(20);
+        normandie.setGroundVictoriesForgreatAce(100);
+
         russianServices.add(normandie);
     }
 
@@ -174,6 +180,9 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         luftwaffe.addServiceQuality(DateUtils.getDateYYYYMMDD("19440601"), 50);
 		luftwaffe.setDailyPersonnelReplacementRatePerSquadron(1.3);
 		luftwaffe.setDailyEquipmentReplacementRatePerSquadron(1.0);
+        
+		luftwaffe.setAirVictoriesForgreatAce(50);
+		luftwaffe.setGroundVictoriesForgreatAce(150);
 
 		germanServices.add(luftwaffe);
 	}
@@ -201,6 +210,9 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
 		regiaAeronautica.setPicDirs(italianPics);
 		
 		regiaAeronautica.addServiceQuality(DateUtils.getDateYYYYMMDD("193900101"), 35);
+        
+		regiaAeronautica.setAirVictoriesForgreatAce(15);
+		regiaAeronautica.setGroundVictoriesForgreatAce(80);
 
 		italianServices.add(regiaAeronautica);
 	}
@@ -234,6 +246,9 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         usaaf.addServiceQuality(DateUtils.getDateYYYYMMDD("19430101"), 70);
         usaaf.addServiceQuality(DateUtils.getDateYYYYMMDD("19440101"), 75);
         usaaf.addServiceQuality(DateUtils.getDateYYYYMMDD("19450101"), 75);
+        
+        usaaf.setAirVictoriesForgreatAce(20);
+        usaaf.setGroundVictoriesForgreatAce(100);
 
         americanServices.add(usaaf);
     }
@@ -275,6 +290,9 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         raf.addServiceQuality(DateUtils.getDateYYYYMMDD("19440101"), 70);
         raf.addServiceQuality(DateUtils.getDateYYYYMMDD("19450101"), 70);
         
+        raf.setAirVictoriesForgreatAce(20);
+        raf.setGroundVictoriesForgreatAce(100);
+
         britishServices.add(raf);
     }
 
@@ -304,6 +322,9 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         freeFrench.addServiceQuality(DateUtils.getDateYYYYMMDD("19430101"), 70);
         freeFrench.addServiceQuality(DateUtils.getDateYYYYMMDD("19440101"), 70);
         freeFrench.addServiceQuality(DateUtils.getDateYYYYMMDD("19450101"), 70);
+        
+        freeFrench.setAirVictoriesForgreatAce(20);
+        freeFrench.setGroundVictoriesForgreatAce(100);
         
         britishServices.add(freeFrench);
     }
@@ -335,6 +356,9 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         rcaf.addServiceQuality(DateUtils.getDateYYYYMMDD("19440101"), 70);
         rcaf.addServiceQuality(DateUtils.getDateYYYYMMDD("19450101"), 70);
         
+        rcaf.setAirVictoriesForgreatAce(20);
+        rcaf.setGroundVictoriesForgreatAce(100);
+
         britishServices.add(rcaf);
     }
 

@@ -29,6 +29,8 @@ public class ArmedService
     private IServiceColorMap serviceColorMap;
     private List<String> picDirs = new ArrayList<String>();
     private ICountry nameCountry = CountryFactory.makeCountryByCountry(Country.NEUTRAL);
+    private int airVictoriesForgreatAce = 30;
+    private int groundVictoriesForgreatAce = 100;
 
     public ArmedService() throws PWCGException 
     {
@@ -184,5 +186,25 @@ public class ArmedService
             return true;
         }
         return false;
+    }
+
+    public int getAirVictoriesForgreatAce()
+    {
+        return airVictoriesForgreatAce;
+    }
+
+    public void setAirVictoriesForgreatAce(int airVictoriesForgreatAce)
+    {
+        this.airVictoriesForgreatAce = airVictoriesForgreatAce;
+    }
+
+    public int getGroundVictoriesForgreatAce()
+    {
+        return groundVictoriesForgreatAce;
+    }
+
+    public void setGroundVictoriesForgreatAce(int groundVictoriesForgreatAce)
+    {
+        this.groundVictoriesForgreatAce = groundVictoriesForgreatAce;
     }
 }

@@ -144,6 +144,9 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
         
         gas.addServiceQuality(DateUtils.getBeginningOfWar(), 75);
         
+        gas.setAirVictoriesForgreatAce(20);
+        gas.setGroundVictoriesForgreatAce(70);
+
         return gas;
     }
 
@@ -168,6 +171,9 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
 
         usas.addServiceQuality(DateUtils.getBeginningOfWar(), 40);
         
+        usas.setAirVictoriesForgreatAce(10);
+        usas.setGroundVictoriesForgreatAce(50);
+
         return usas;
     }
 
@@ -193,6 +199,9 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
 
         raf.addServiceQuality(DateUtils.getBeginningOfWar(), 50);
         
+        raf.setAirVictoriesForgreatAce(20);
+        raf.setGroundVictoriesForgreatAce(70);
+
         return raf;
     }
 
@@ -218,6 +227,9 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
 
         rnas.addServiceQuality(DateUtils.getBeginningOfWar(), 60);
         
+        rnas.setAirVictoriesForgreatAce(20);
+        rnas.setGroundVictoriesForgreatAce(70);
+
         return rnas;
     }
 
@@ -243,6 +255,9 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
 
         rfc.addServiceQuality(DateUtils.getBeginningOfWar(), 50);
         
+        rfc.setAirVictoriesForgreatAce(20);
+        rfc.setGroundVictoriesForgreatAce(70);
+
         return rfc;
     }
 
@@ -267,6 +282,9 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
 
         belgianAF.addServiceQuality(DateUtils.getBeginningOfWar(), 40);
         
+        belgianAF.setAirVictoriesForgreatAce(15);
+        belgianAF.setGroundVictoriesForgreatAce(70);
+
         return belgianAF;
     }
 
@@ -291,6 +309,9 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
 
         frenchArmy.addServiceQuality(DateUtils.getBeginningOfWar(), 40);
         
+        frenchArmy.setAirVictoriesForgreatAce(20);
+        frenchArmy.setGroundVictoriesForgreatAce(70);
+
         return frenchArmy;
     }
 
