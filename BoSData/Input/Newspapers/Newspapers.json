@@ -1,5 +1,141 @@
 {
+
 	"newspapers": [
+		{
+			"imageName": "19411005Allied.jpg",
+			"newspaperEventDate": "19411005",
+			"side": "ALLIED",
+			"headline": "Motherland Calls"
+		},
+		{
+			"imageName": "19411005Axis.jpg",
+			"newspaperEventDate": "19411005",
+			"side": "AXIS",
+			"headline": "Struggle In The East"
+		},	
+		{
+			"imageName": "19411019Allied.jpg",
+			"newspaperEventDate": "19411019",
+			"side": "ALLIED",
+			"headline": "Have You Signed Up?"
+		},
+		{
+			"imageName": "19411019Axis.jpg",
+			"newspaperEventDate": "19411019",
+			"side": "AXIS",
+			"headline": "Russians Suffer Massive Losses"
+		},	
+
+
+		{
+			"imageName": "19420820Allied.jpg",
+			"newspaperEventDate": "19420820",
+			"side": "ALLIED",
+			"headline": "Cowards Fire Bomb Stalingrad"
+		},
+		{
+			"imageName": "19420820Axis.jpg",
+			"newspaperEventDate": "19420820",
+			"side": "AXIS",
+			"headline": "Luftwaffe Bombs Stalingrad"
+		},	
+		{
+			"imageName": "19420908Allied.jpg",
+			"newspaperEventDate": "19420908",
+			"side": "ALLIED",
+			"headline": "No Land Behind the Volga"
+		},
+		{
+			"imageName": "19420908Axis.jpg",
+			"newspaperEventDate": "19420908",
+			"side": "AXIS",
+			"headline": "Luftwaffe At Stalingrad"
+		},	
+
+		{
+			"imageName": "19420912Allied.jpg",
+			"newspaperEventDate": "19420912",
+			"side": "ALLIED",
+			"headline": "Soviet Heroes At Stalingrad!"
+		},
+		{
+			"imageName": "19420912Axis.jpg",
+			"newspaperEventDate": "19420912",
+			"side": "AXIS",
+			"headline": "Stalingrad Advance Continues"
+		},	
+		{
+			"imageName": "19421014Allied.jpg",
+			"newspaperEventDate": "19421014",
+			"side": "ALLIED",
+			"headline": "Stalingrad Holds!"
+		},
+		{
+			"imageName": "19421014Axis.jpg",
+			"newspaperEventDate": "19421014",
+			"side": "AXIS",
+			"headline": "Stalingrad Taken!"
+		},	
+		{
+			"imageName": "19421111Allied.jpg",
+			"newspaperEventDate": "19421111",
+			"side": "ALLIED",
+			"headline": "Russia Responds"
+		},
+		{
+			"imageName": "19421111Axis.jpg",
+			"newspaperEventDate": "19421111",
+			"side": "AXIS",
+			"headline": "Russian Counterattacks Reported"
+		},	
+		{
+			"imageName": "19421201Allied.jpg",
+			"newspaperEventDate": "19421201",
+			"side": "ALLIED",
+			"headline": "Germany Army Surrounded!"
+		},
+		{
+			"imageName": "19421201Axis.jpg",
+			"newspaperEventDate": "19421201",
+			"side": "AXIS",
+			"headline": "Fortress Stalingrad!"
+		},
+		{
+			"imageName": "19421231Allied.jpg",
+			"newspaperEventDate": "19421231",
+			"side": "ALLIED",
+			"headline": "Germany Army Annihilated!"
+		},
+		{
+			"imageName": "19421231Axis.jpg",
+			"newspaperEventDate": "19421231",
+			"side": "AXIS",
+			"headline": "Heroic Sacrifice"
+		},		
+		{
+			"imageName": "19431015Allied.jpg",
+			"newspaperEventDate": "19431015",
+			"side": "ALLIED",
+			"headline": "Russian Bombers Take War to German Shipping"
+		},
+		{
+			"imageName": "19431015Axis.jpg",
+			"newspaperEventDate": "19431015",
+			"side": "AXIS",
+			"headline": "German Bombers Take War to German Shipping"
+		},
+		{
+			"imageName": "19431101Allied.jpg",
+			"newspaperEventDate": "19431101",
+			"side": "ALLIED",
+			"headline": "Russia Invades Kerch!"
+		},
+		{
+			"imageName": "19431101Axis.jpg",
+			"newspaperEventDate": "19431101",
+			"side": "AXIS",
+			"headline": "Germany Holds Kerch!"
+		},
 		{
 			"imageName": "19440924Allied.jpg",
 			"newspaperEventDate": "19440924",
@@ -58,7 +194,7 @@
 			"imageName": "19441229Axis.jpg",
 			"newspaperEventDate": "19441229",
 			"side": "AXIS",
-			"headline": "Assault Retains Gains"
+			"headline": "As We Fight!"
 		},
 		{
 			"imageName": "19450101Allied.jpg",
