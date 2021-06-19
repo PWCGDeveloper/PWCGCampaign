@@ -44,8 +44,8 @@ public enum ScreenIdentifier
         
     CampaignPilotChalkboard("CampaignPilotChalkboard", "Campaign Pilot Chalkboard", "chalkboard.png"),
     CampaignEquipmentChalkboard("CampaignEquipmentChalkboard", "Campaign Equipment Chalkboard", "chalkboard.png"),
-    PlagueBronzeBackground("PlagueBronzeBackground", "Campaign Home Pilot List Plaque", "PlagueBronzeBackground.png"),
-    CampaignHomeSquadronPlaque("CampaignHomeSquadronPlaque", "Campaign Home Squadron Plaque", "PlagueBronze.png"),
+    PlaqueBronzeBackground("PlaqueBronzeBackground", "Campaign Home Pilot List Plaque", "PlaqueBronzeBackground.png"),
+    CampaignHomeSquadronPlaque("CampaignHomeSquadronPlaque", "Campaign Home Squadron Plaque", "PlaqueBronze.png"),
     Document("Document", "Document", "document.png"),
     OpenMedalBox("OpenMedalBox", "Open Medal Box", "OpenMedalBox.png"),
     OpenPilotLog("OpenPilotLog", "Open Pilot Log", "OpenPilotLog.jpg"),

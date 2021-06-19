@@ -5,14 +5,14 @@
     "CampaignGeneratorScreen": "CampaignGenFullScreen.jpg",
     "CampaignNewPilotScreen": "CampaignGenFullScreen.jpg",
     "CampaignDeleteScreen": "CampaignGenFullScreen.jpg",
-	"MapScreens": "BrickWall.jpg",
+    "MapScreens": "BrickWall.jpg",
     "BriefingDescriptionScreen": "BrickWall.jpg",
     "BriefingPilotSelectionScreen": "BrickWall.jpg",
     "DebriefMissionDescriptionScreen": "BrickWall.jpg",
     "PwcgPlanesOwnedConfigurationScreen": "BrickWall.jpg",
     "PwcgSkinConfigurationAnalysisScreen": "BrickWall.jpg",
     "PwcgMusicConfigScreen": "BrickWall.jpg",
-    "CampaignPilotScreen": "PilotDeskTop.png",    
+    "CampaignPilotScreen": "PilotDeskTop.png",
     "PwcgCoopGlobalAdminScreen": "TableTop.jpg",
     "PwcgSkinConfigurationAnalysisDisplayScreen": "TableTop.jpg",
     "MissingSkinScreen": "TableTop.jpg",
@@ -40,7 +40,10 @@
     "OpenMedalBox": "OpenMedalBox.png",
     "OpenPilotLog": "OpenPilotLog.jpg",
     "OpenSquadronLog": "OpenJournal.png",
-    "PlagueBronzeBackground": "PlagueBronzeBackground.png",
-    "CampaignHomeSquadronPlaque": "PlagueBronze.png"
+    "PlaqueBronzeBackground": "PlaqueBronzeBackground.png",
+    "CampaignHomeSquadronPlaque": "PlaqueBronze.png",
+    "CampaignNewsScreen": "TableTop.jpg",
+    "Newspaper": "Newspaper.jpg",
+    "BriefingEditorEditorScreen": "TableTop.jpg"
   }
 }
