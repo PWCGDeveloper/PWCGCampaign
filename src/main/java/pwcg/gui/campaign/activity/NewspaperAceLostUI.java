@@ -16,26 +16,26 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.newspapers.Newspaper;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.image.ImageCache;
 
-public class NewspaperUI extends JPanel
+public class NewspaperAceLostUI extends JPanel
 {
     private static int NEWSPAPER_IMAGE_WIDTH = 800;
     private static int NEWSPAPER_IMAGE_HEIGHT = 1000;
     
     private static final long serialVersionUID = 1L;
-    private Newspaper newspaper;
+    private SquadronMember ace;
 
-    public NewspaperUI(Newspaper newspaper)
+    public NewspaperAceLostUI(SquadronMember ace)
     {
         this.setOpaque(false);
 
-        this.newspaper = newspaper;
+        this.ace = ace;
     }
 
     public void makePanels() throws PWCGException
@@ -69,10 +69,10 @@ public class NewspaperUI extends JPanel
 
     private BufferedImage buildNewspaperImage() throws PWCGException, IOException
     {
-        String imagePath = PWCGContext.getInstance().getDirectoryManager().getPwcgImagesDir() + "Newspaper\\newspaper.png";
+        String imagePath = PWCGContext.getInstance().getDirectoryManager().getPwcgImagesDir() + "Newspaper\\newspaperAce.png";
         BufferedImage newspaperImage = ImageCache.getImageFromFile(imagePath);
 
-        BufferedImage newspaperImageWithPicture = addNewpaperPicture(newspaperImage);
+        BufferedImage newspaperImageWithPicture = addAcePicture(newspaperImage);
         BufferedImage newspaperImageWithPictureAndHeadline = addheadline(newspaperImageWithPicture);
         BufferedImage resizedImage = resizeImage(newspaperImageWithPictureAndHeadline);
         return resizedImage;
@@ -95,16 +95,15 @@ public class NewspaperUI extends JPanel
         return resizedImage;
     }  
 
-    private BufferedImage addNewpaperPicture(BufferedImage newspaperImage) throws PWCGException
+    private BufferedImage addAcePicture(BufferedImage newspaperImage) throws PWCGException
     {
-        String imagePicturePath = PWCGContext.getInstance().getDirectoryManager().getPwcgImagesDir() + "Newspaper\\" + newspaper.formNewspaperPictureName();
-        BufferedImage newspaperPictureImage = ImageCache.getImageFromFile(imagePicturePath);
-        if (newspaperPictureImage != null)
+        BufferedImage acePicture = ace.getPilotPictureAsBufferedImage();
+        if (acePicture != null)
         {
             BufferedImage result = new BufferedImage(newspaperImage.getWidth(), newspaperImage.getHeight(), BufferedImage.TRANSLUCENT);
             Graphics g = result.getGraphics();
             g.drawImage(newspaperImage, 0, 0, null);
-            g.drawImage(newspaperPictureImage, 235, 160, null);
+            g.drawImage(acePicture, 10, 165, null);
             return result;
         }
         else
@@ -121,7 +120,8 @@ public class NewspaperUI extends JPanel
         
         Font headlineFont = PWCGMonitorFonts.getNewspaperFont();
         
-        int pixelsForHeadline = measureTextWidth(graphics, headlineFont, newspaper.getHeadline());        
+        String headline = ace.getNameAndRank() + " Lost In Combat";
+        int pixelsForHeadline = measureTextWidth(graphics, headlineFont, headline);        
         int newspaperImageWidth = 800;
         int startPosition = (newspaperImageWidth - pixelsForHeadline) / 2;
         if (startPosition < 40)
@@ -132,7 +132,7 @@ public class NewspaperUI extends JPanel
         
         graphics.setFont(headlineFont);
         graphics.drawImage(newspaperImage, 0, 0, null);
-        graphics.drawString(newspaper.getHeadline(), startPosition, 120);
+        graphics.drawString(headline, startPosition, 120);
         return result;
     }
     

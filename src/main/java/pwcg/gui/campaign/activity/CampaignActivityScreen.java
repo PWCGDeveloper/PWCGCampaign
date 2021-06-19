@@ -197,7 +197,7 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
     {
         SoundManager.getInstance().playSound("BookOpen.WAV");
 
-        CampaignNewsScreen newsDisplay = new CampaignNewsScreen(campaign);
+        CampaignNewsStandScreen newsDisplay = new CampaignNewsStandScreen(campaign);
         newsDisplay.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(newsDisplay);

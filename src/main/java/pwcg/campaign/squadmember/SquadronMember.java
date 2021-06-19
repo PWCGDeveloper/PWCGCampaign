@@ -1,5 +1,6 @@
 package pwcg.campaign.squadmember;
 
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -100,7 +101,7 @@ public class SquadronMember implements Cloneable
         return clone;
     }
 
-    public ImageIcon determinePilotPicture()
+    public ImageIcon getPilotPictureAsImageIcon()
     {
 
         ImageIcon imageIcon = null;
@@ -120,6 +121,27 @@ public class SquadronMember implements Cloneable
         }
 
         return imageIcon;
+    }
+
+    public BufferedImage getPilotPictureAsBufferedImage()
+    {
+
+        BufferedImage bufferedImage = null;
+        try
+        {
+            String picPath = PictureManager.getPicturePath(this);
+            bufferedImage = ImageIconCache.getInstance().getBufferedImage(picPath);
+            if (bufferedImage == null)
+            {
+                PWCGLogger.log(LogLevel.ERROR, "Got null image picture for " + getName() + " at " + picPath);
+            }
+        }
+        catch (Exception ex)
+        {
+            PWCGLogger.logException(ex);
+        }
+
+        return bufferedImage;
     }
 
     public String skillAsString() throws PWCGException

@@ -33,7 +33,7 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignNewsScreen extends ImageResizingPanel implements ActionListener
+public class CampaignNewsStandScreen extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     private Campaign campaign;
@@ -41,7 +41,7 @@ public class CampaignNewsScreen extends ImageResizingPanel implements ActionList
     private PwcgThreePanelUI pwcgThreePanel;
     private ButtonGroup buttonGroup = new ButtonGroup();
 
-    public CampaignNewsScreen(Campaign campaign)
+    public CampaignNewsStandScreen(Campaign campaign)
     {
         super("");
         this.setLayout(new BorderLayout());
@@ -160,7 +160,7 @@ public class CampaignNewsScreen extends ImageResizingPanel implements ActionList
             else
             {
                 Newspaper newsPaper = getNewspaper(action);
-                CampaignNewspaperUI campaignNewspaperUI = new CampaignNewspaperUI(newsPaper);
+                NewspaperUI campaignNewspaperUI = new NewspaperUI(newsPaper);
                 campaignNewspaperUI.makePanels();
                 pwcgThreePanel.setCenterPanel(campaignNewspaperUI);
             }

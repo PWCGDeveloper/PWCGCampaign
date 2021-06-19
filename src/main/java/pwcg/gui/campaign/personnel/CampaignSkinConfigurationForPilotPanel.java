@@ -411,7 +411,7 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
 
          // Pic in north
          SquadronMember pilot = skinSessionManager.getPilot();
-         ImageIcon imageIcon = pilot.determinePilotPicture();  
+         ImageIcon imageIcon = pilot.getPilotPictureAsImageIcon();  
 
          JPanel pilotInteriorInfoPanel = new JPanel (new BorderLayout());
          pilotInteriorInfoPanel.setOpaque(false);

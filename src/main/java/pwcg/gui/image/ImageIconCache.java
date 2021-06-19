@@ -33,27 +33,42 @@ public class ImageIconCache
 		return instance;
 	}
 
-	public ImageIcon getImageIcon(String imagePath) throws PWCGIOException 
-	{
-		try
+    public ImageIcon getImageIcon(String imagePath) throws PWCGIOException 
+    {
+        try
         {
             ImageIcon image = imageIconCache.get(imagePath);
             if (image == null)
             {
-            	BufferedImage bufferedImage = ImageIO.read(new File(imagePath));
-            	image = new ImageIcon(bufferedImage);  
-            	imageIconCache.put(imagePath, image);
+                BufferedImage bufferedImage = ImageIO.read(new File(imagePath));
+                image = new ImageIcon(bufferedImage);  
+                imageIconCache.put(imagePath, image);
             }
             
             return image;
         }
         catch (IOException e)
         {
-            PWCGLogger.log(LogLevel.ERROR, "Error readingimage file " + imagePath);
+            PWCGLogger.log(LogLevel.ERROR, "Error reading image file " + imagePath);
             PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
-	}
+    }
+
+    public BufferedImage getBufferedImage(String imagePath) throws PWCGIOException 
+    {
+        try
+        {
+            BufferedImage bufferedImage = ImageIO.read(new File(imagePath));
+            return bufferedImage;
+        }
+        catch (IOException e)
+        {
+            PWCGLogger.log(LogLevel.ERROR, "Error reading image file " + imagePath);
+            PWCGLogger.logException(e);
+            throw new PWCGIOException(e.getMessage());
+        }
+    }
 
     public ImageIcon getImageIconResized(String imagePath) throws PWCGIOException 
     {

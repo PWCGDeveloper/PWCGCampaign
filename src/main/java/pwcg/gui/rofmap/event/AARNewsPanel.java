@@ -14,10 +14,13 @@ import pwcg.aar.ui.events.model.AceKilledEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.newspapers.Newspaper;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.gui.campaign.activity.CampaignNewspaperUI;
+import pwcg.gui.campaign.activity.NewspaperAceLostUI;
+import pwcg.gui.campaign.activity.NewspaperEndOfWarUI;
+import pwcg.gui.campaign.activity.NewspaperUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 
@@ -92,11 +95,11 @@ public class AARNewsPanel extends AARDocumentPanel
 
     private void makeEndOfWarEvents(Campaign campaign) throws PWCGException
     {
-        CampaignReportEndOfWarGUI endOfWar = null;
+        NewspaperEndOfWarUI endOfWar = null;
         Date theEnd = DateUtils.getEndOfWar();
         if (campaign.getDate().after(theEnd))
         {
-             endOfWar = new CampaignReportEndOfWarGUI();
+             endOfWar = new NewspaperEndOfWarUI();
              newsGuiList.put("The War is Over!", endOfWar);
         }
     }
@@ -106,9 +109,13 @@ public class AARNewsPanel extends AARDocumentPanel
         List<AceKilledEvent> aceKilledEvents = aarCoordinator.getAarContext().getUiDebriefData().getNewsPanelData().getAcesKilledDuringElapsedTime();
         for (AceKilledEvent aceKilledEvent : aceKilledEvents)
         {
-            CampaignReportAceNewspaperGUI newspaperGui = new CampaignReportAceNewspaperGUI(aceKilledEvent, campaign);
-            String tabName = "News: " + aceKilledEvent.getPilotName();
-            newsGuiList.put(tabName, newspaperGui);
+            SquadronMember deadAce = campaign.getPersonnelManager().getAnyCampaignMember(aceKilledEvent.getPilotSerialNumber());
+            if (deadAce != null)
+            {
+                NewspaperAceLostUI newspaperGui = new NewspaperAceLostUI(deadAce);
+                String tabName = "News: " + aceKilledEvent.getPilotName();
+                newsGuiList.put(tabName, newspaperGui);
+            }
         }
     }
 
@@ -117,7 +124,7 @@ public class AARNewsPanel extends AARDocumentPanel
         List<Newspaper> newspapers = aarCoordinator.getAarContext().getUiDebriefData().getNewsPanelData().getNewspaperEventsDuringElapsedTime();
         for (Newspaper newspaper : newspapers)
 		{
-            CampaignNewspaperUI newspaperPage = new CampaignNewspaperUI(newspaper);
+            NewspaperUI newspaperPage = new NewspaperUI(newspaper);
             String tabName = "News from the front: " + DateUtils.getDateStringPretty(newspaper.getNewspaperEventDate());
             newsGuiList.put(tabName, newspaperPage);
 		}
