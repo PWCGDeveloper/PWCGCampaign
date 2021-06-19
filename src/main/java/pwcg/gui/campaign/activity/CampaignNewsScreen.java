@@ -115,18 +115,20 @@ public class CampaignNewsScreen extends ImageResizingPanel implements ActionList
         newspaperToDate = PWCGContext.getInstance().getNewspaperManager().getNewpapersToDate(playerCountry.getSide(), campaign.getDate());
         for (Newspaper newspaper : newspaperToDate)
         {
-            buttonPanel.add(makeNewspaperRadioButton(newspaper.getHeadline(), DateUtils.getDateStringYYYYMMDD(newspaper.getNewspaperEventDate())));
+            buttonPanel.add(makeNewspaperRadioButton(newspaper));
         }
     }
     
-    private JRadioButton makeNewspaperRadioButton(String newspaperHeadline, String newspaperDate) throws PWCGException 
+    private JRadioButton makeNewspaperRadioButton(Newspaper newspaper) throws PWCGException 
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
 
         Font font = PWCGMonitorFonts.getPrimaryFont();
 
-        JRadioButton button = new JRadioButton(newspaperHeadline);
-        button.setActionCommand(newspaperDate);
+        String newspaperDateActionCommand = DateUtils.getDateStringYYYYMMDD(newspaper.getNewspaperEventDate());
+        
+        JRadioButton button = new JRadioButton(getPrettyDate(newspaper));
+        button.setActionCommand(newspaperDateActionCommand);
         button.setHorizontalAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
         button.setFocusPainted(false);
@@ -138,6 +140,11 @@ public class CampaignNewsScreen extends ImageResizingPanel implements ActionList
         buttonGroup.add(button);
 
         return button;
+    }
+    
+    private String getPrettyDate(Newspaper newspaper)
+    {
+        return DateUtils.getDateStringPretty(newspaper.getNewspaperEventDate());
     }
 
     public void actionPerformed(ActionEvent ae)

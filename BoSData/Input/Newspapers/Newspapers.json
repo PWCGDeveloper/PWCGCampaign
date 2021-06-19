@@ -116,13 +116,13 @@
 			"imageName": "19431015Allied.jpg",
 			"newspaperEventDate": "19431015",
 			"side": "ALLIED",
-			"headline": "Russian Bombers Take War to German Shipping"
+			"headline": "Take War to German Shipping"
 		},
 		{
 			"imageName": "19431015Axis.jpg",
 			"newspaperEventDate": "19431015",
 			"side": "AXIS",
-			"headline": "German Bombers Take War to German Shipping"
+			"headline": "Take War to Russian Shipping"
 		},
 		{
 			"imageName": "19431101Allied.jpg",
@@ -206,7 +206,7 @@
 			"imageName": "19450101Axis.jpg",
 			"newspaperEventDate": "19450101",
 			"side": "AXIS",
-			"headline": "Allies Aircraft Destroyed"
+			"headline": "Allied Aircraft Destroyed"
 		},
 		{
 			"imageName": "19450323Allied.jpg",
