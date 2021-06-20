@@ -5,7 +5,6 @@ import java.util.List;
 
 import pwcg.aar.ui.events.model.AceKilledEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadron.Squadron;
@@ -23,10 +22,10 @@ public class AcesKilledEventGenerator
     }
 
 
-    public List<AceKilledEvent> createAceKilledEvents(List<Ace> acesKilledInMissionAndElapsedTime) throws PWCGException
+    public List<AceKilledEvent> createAceKilledEvents(List<SquadronMember> acesKilledInMissionAndElapsedTime) throws PWCGException
     {
         List<AceKilledEvent> aceKilledEvents = new ArrayList<>();
-        for (Ace ace : acesKilledInMissionAndElapsedTime)
+        for (SquadronMember ace : acesKilledInMissionAndElapsedTime)
         {
             if (ace == null)
             {

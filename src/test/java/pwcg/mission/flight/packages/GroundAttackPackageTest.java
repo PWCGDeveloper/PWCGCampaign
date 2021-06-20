@@ -15,7 +15,6 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
-import pwcg.mission.MissionBorderBuilder;
 import pwcg.mission.MissionFlights;
 import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.MissionProfile;
@@ -99,8 +98,7 @@ public class GroundAttackPackageTest extends PwcgTestBase
         Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
         MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.GROUND_ATTACK, playerSquadron);
 
-        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers, null, playerFlightTypes);
-        CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(150000,  0, 150000), 100000);
 
         Mission mission = TestMissionBuilderUtility.createTestMission(campaign, participatingPlayers, missionBorders, MissionProfile.DAY_TACTICAL_MISSION);
         mission.generate(playerFlightTypes);

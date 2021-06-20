@@ -22,18 +22,9 @@ public class UIDebriefData
     private TransferPanelData transferPanelData = new TransferPanelData();
     private AAROutOfMissionVictoryPanelData outOfMissionVictoryPanelData = new AAROutOfMissionVictoryPanelData();
 
-    public AARNewsPanelData getNewsPanelData()
+    public void addNewsPanelData(AARNewsPanelData newsPanelData)
     {
-        return newsPanelData;
-    }
-
-    public void setNewsPanelData(AARNewsPanelData newsPanelData)
-    {
-        this.newsPanelData = newsPanelData;
-    }
-    public AARAceLeavePanelData getAceLeavePanelData()
-    {
-        return aceLeavePanelData;
+        this.newsPanelData.merge(newsPanelData);
     }
 
     public void addAceLeavePanelData(AARAceLeavePanelData aceLeavePanelData)
@@ -41,59 +32,69 @@ public class UIDebriefData
         this.aceLeavePanelData.getAcesOnLeaveDuringElapsedTime().addAll(aceLeavePanelData.getAcesOnLeaveDuringElapsedTime());
     }
 
+    public void setMedalPanelData(AARMedalPanelData medalPanelData)
+    {
+        this.medalPanelData.merge(medalPanelData);
+    }
+
+    public void addEquipmentLossPanelData(AAREquipmentLossPanelData equipmentLossPanelData)
+    {
+        this.equipmentLossPanelData.merge(equipmentLossPanelData);
+    }
+
+    public void addPilotLossPanelData(AARPilotLossPanelData pilotLossPanelData)
+    {
+        this.pilotLossPanelData.merge(pilotLossPanelData);
+    }
+
+    public void addPromotionPanelData(AARPromotionPanelData promotionPanelData)
+    {
+        this.promotionPanelData.merge(promotionPanelData);
+    }
+
+    public void addTransferPanelData(TransferPanelData transferPanelData)
+    {
+        this.transferPanelData.merge(transferPanelData);
+    }
+
+    public void addOutOfMissionVictoryPanelData(AAROutOfMissionVictoryPanelData outOfMissionVictoryPanelData)
+    {
+        this.outOfMissionVictoryPanelData.merge(outOfMissionVictoryPanelData);
+    }
+
+    public AARNewsPanelData getNewsPanelData()
+    {
+        return newsPanelData;
+    }
+
+    public AARAceLeavePanelData getAceLeavePanelData()
+    {
+        return aceLeavePanelData;
+    }
+
     public AARMedalPanelData getMedalPanelData()
     {
         return medalPanelData;
-    }
-
-    public void setMedalPanelData(AARMedalPanelData medalPanelData)
-    {
-        this.medalPanelData = medalPanelData;
     }
 
     public AARPilotLossPanelData getPilotLossPanelData()
     {
         return pilotLossPanelData;
     }
-    
+
     public AAREquipmentLossPanelData getEquipmentLossPanelData()
     {
         return equipmentLossPanelData;
     }
 
-    public void setEquipmentLossPanelData(AAREquipmentLossPanelData equipmentLossPanelData)
-    {
-        this.equipmentLossPanelData = equipmentLossPanelData;
-    }
-
-    public void setPilotLossPanelData(AARPilotLossPanelData pilotLossPanelData)
-    {
-        this.pilotLossPanelData = pilotLossPanelData;
-    }
-    
     public AARPromotionPanelData getPromotionPanelData()
     {
         return promotionPanelData;
     }
 
-    public void setPromotionPanelData(AARPromotionPanelData promotionPanelData)
-    {
-        this.promotionPanelData = promotionPanelData;
-    }
-
     public TransferPanelData getTransferPanelData()
     {
         return transferPanelData;
-    }
-
-    public void setTransferPanelData(TransferPanelData transferPanelData)
-    {
-        this.transferPanelData = transferPanelData;
-    }
-
-    public void setOutOfMissionVictoryPanelData(AAROutOfMissionVictoryPanelData outOfMissionVictoryPanelData)
-    {
-        this.outOfMissionVictoryPanelData = outOfMissionVictoryPanelData;
     }
 
     public AAROutOfMissionVictoryPanelData getOutOfMissionVictoryPanelData()

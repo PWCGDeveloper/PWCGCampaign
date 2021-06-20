@@ -12,7 +12,7 @@ import pwcg.aar.ui.events.NewspaperEventGenerator;
 import pwcg.aar.ui.events.model.AceKilledEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.newspapers.Newspaper;
-import pwcg.campaign.squadmember.Ace;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 
 public class NewsPanelEventTabulator
@@ -46,7 +46,7 @@ public class NewsPanelEventTabulator
     
     private AARNewsPanelData createAcesKilledForNewspaperEvents() throws PWCGException 
     {
-        List<Ace> acesKilledInMissionAndElapsedTime = mergeAcesKilledInMissionAndElapsedTime();
+        List<SquadronMember> acesKilledInMissionAndElapsedTime = mergeAcesKilledInMissionAndElapsedTime();
         
         AcesKilledEventGenerator acesKilledEventGenerator = new AcesKilledEventGenerator(campaign);
         List<AceKilledEvent> acesKilledDuringElapsedTime = acesKilledEventGenerator.createAceKilledEvents(acesKilledInMissionAndElapsedTime);
@@ -55,12 +55,12 @@ public class NewsPanelEventTabulator
         return newsPanelData;
     }
     
-    private List <Ace> mergeAcesKilledInMissionAndElapsedTime()
+    private List <SquadronMember> mergeAcesKilledInMissionAndElapsedTime()
     {
-        Map<Integer, Ace> acesKilledMap = new HashMap<>();
+        Map<Integer, SquadronMember> acesKilledMap = new HashMap<>();
         acesKilledMap.putAll(aarContext.getReconciledInMissionData().getPersonnelLossesInMission().getAcesKilled());        
         acesKilledMap.putAll(aarContext.getReconciledOutOfMissionData().getPersonnelLossesOutOfMission().getAcesKilled());        
-        return new ArrayList<Ace>(acesKilledMap.values());
+        return new ArrayList<SquadronMember>(acesKilledMap.values());
     }
 
 

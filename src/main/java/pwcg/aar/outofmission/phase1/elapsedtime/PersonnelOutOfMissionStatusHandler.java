@@ -1,8 +1,8 @@
 package pwcg.aar.outofmission.phase1.elapsedtime;
 
-import java.util.HashMap;
 import java.util.Map;
 
+import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
@@ -10,22 +10,16 @@ import pwcg.core.utils.RandomNumberGenerator;
 
 public class PersonnelOutOfMissionStatusHandler
 {
-    private Map<Integer, SquadronMember> aiKilled = new HashMap<>();
-    private Map<Integer, SquadronMember> aiCaptured = new HashMap<>();
-    private Map<Integer, SquadronMember> aiMaimed = new HashMap<>();
-    private Map<Integer, SquadronMember> aiWounded = new HashMap<>();
+    private AARPersonnelLosses outOfMissionPersonnelLosses = new AARPersonnelLosses();
 
-    public PersonnelOutOfMissionStatusHandler()
-    {
-    }
-
-    public void determineFateOfShotDownPilots(Map<Integer, SquadronMember> shotDownPilots) throws PWCGException
+    public AARPersonnelLosses determineFateOfShotDownPilots(Map<Integer, SquadronMember> shotDownPilots) throws PWCGException
     {
         for (SquadronMember squadronMember : shotDownPilots.values())
         {
             int pilotStatus = fateOfShotDownPilot();
             sortByStatus(squadronMember, pilotStatus);
-        }        
+        }
+        return outOfMissionPersonnelLosses;        
     }
     
     private int fateOfShotDownPilot() throws PWCGException
@@ -57,39 +51,19 @@ public class PersonnelOutOfMissionStatusHandler
     {
         if (pilotStatus == SquadronMemberStatus.STATUS_KIA)
         {
-            aiKilled.put(squadronMember.getSerialNumber(), squadronMember);
+            outOfMissionPersonnelLosses.addPersonnelKilled(squadronMember);
         }
         else if (pilotStatus == SquadronMemberStatus.STATUS_CAPTURED)
         {
-            aiCaptured.put(squadronMember.getSerialNumber(), squadronMember);
+            outOfMissionPersonnelLosses.addPersonnelCaptured(squadronMember);
         }
         else if (pilotStatus == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
         {
-            aiMaimed.put(squadronMember.getSerialNumber(), squadronMember);
+            outOfMissionPersonnelLosses.addPersonnelMaimed(squadronMember);
         }
         else if (pilotStatus == SquadronMemberStatus.STATUS_WOUNDED)
         {
-            aiWounded.put(squadronMember.getSerialNumber(), squadronMember);
+            outOfMissionPersonnelLosses.addPersonnelWounded(squadronMember);
         }
-    }
-
-    public Map<Integer, SquadronMember> getAiKilled()
-    {
-        return aiKilled;
-    }
-
-    public Map<Integer, SquadronMember> getAiMaimed()
-    {
-        return aiMaimed;
-    }
-
-    public Map<Integer, SquadronMember> getAiCaptured()
-    {
-        return aiCaptured;
-    }
-
-    public Map<Integer, SquadronMember> getAiWounded()
-    {
-        return aiWounded;
     }
 }

@@ -1,7 +1,6 @@
 package pwcg.gui.rofmap.event;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -28,6 +27,7 @@ public class AARNewsPanel extends AARDocumentPanel
 {
     private static final long serialVersionUID = 1L;
     private AARCoordinator aarCoordinator;
+    private JTabbedPane eventTabPane;
 
     private HashMap<String, JPanel> newsGuiList = new HashMap<>();
 
@@ -44,8 +44,9 @@ public class AARNewsPanel extends AARDocumentPanel
 	{
         try
         {
-            JTabbedPane eventTabPane = createNewsEventTab();
-            createPostCombatReportTabs(eventTabPane);
+            createEventTab();
+            createNewsEventTab();
+            createPostCombatReportTabs();
             this.add(eventTabPane, BorderLayout.CENTER);
         }
         catch (Exception e)
@@ -55,7 +56,7 @@ public class AARNewsPanel extends AARDocumentPanel
         }
     }
 	
-    private void createPostCombatReportTabs(JTabbedPane eventTabPane)
+    private void createPostCombatReportTabs()
     {
         JPanel postCombatPanel = new JPanel(new BorderLayout());
         postCombatPanel.setOpaque(false);
@@ -64,23 +65,21 @@ public class AARNewsPanel extends AARDocumentPanel
         this.add(postCombatPanel, BorderLayout.CENTER);
     }
 
-    private JTabbedPane createNewsEventTab() throws PWCGException
+    private void createEventTab() throws PWCGException
     {
-        Color bgColor = ColorMap.PAPER_BACKGROUND;
-
-        JTabbedPane eventTabPane = new JTabbedPane();
-        eventTabPane.setBackground(bgColor);
+        eventTabPane = new JTabbedPane();
+        eventTabPane.setBackground(ColorMap.NEWSPAPER_BACKGROUND);
         eventTabPane.setOpaque(false);
-       
+    }
+    
+    private void createNewsEventTab() throws PWCGException
+    {
         HashMap<String, JPanel> newsGuiList = createPilotNewsList() ;
         for (String tabName : newsGuiList.keySet())
         {
             eventTabPane.addTab(tabName, newsGuiList.get(tabName));
             this.shouldDisplay = true;
         }
-
-
-        return eventTabPane;
     }
 
 	private HashMap<String, JPanel> createPilotNewsList() throws PWCGException 
@@ -100,6 +99,7 @@ public class AARNewsPanel extends AARDocumentPanel
         if (campaign.getDate().after(theEnd))
         {
              endOfWar = new NewspaperEndOfWarUI();
+             endOfWar.makePanels();
              newsGuiList.put("The War is Over!", endOfWar);
         }
     }
@@ -113,6 +113,7 @@ public class AARNewsPanel extends AARDocumentPanel
             if (deadAce != null)
             {
                 NewspaperAceLostUI newspaperGui = new NewspaperAceLostUI(deadAce);
+                newspaperGui.makePanels();
                 String tabName = "News: " + aceKilledEvent.getPilotName();
                 newsGuiList.put(tabName, newspaperGui);
             }
@@ -125,6 +126,7 @@ public class AARNewsPanel extends AARDocumentPanel
         for (Newspaper newspaper : newspapers)
 		{
             NewspaperUI newspaperPage = new NewspaperUI(newspaper);
+            newspaperPage.makePanels();
             String tabName = "News from the front: " + DateUtils.getDateStringPretty(newspaper.getNewspaperEventDate());
             newsGuiList.put(tabName, newspaperPage);
 		}

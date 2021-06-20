@@ -102,6 +102,7 @@ public abstract class AARTestSetup
     {
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19170901"));
         Mockito.when(campaign.getCampaignData()).thenReturn(campaignData);
+        Mockito.when(campaign.getReferencePlayer()).thenReturn(player);
         Mockito.when(squadronEsc103.determineDisplayName(Mockito.any())).thenReturn("Esc 103");
         Mockito.when(squadronEsc103.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         Mockito.when(jasta11.determineDisplayName(Mockito.any())).thenReturn("Jasta 11");

@@ -1,5 +1,6 @@
 package pwcg.aar.outofmission.phase1.elapsedtime;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +9,7 @@ import pwcg.aar.data.AARContext;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.Ace;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 
@@ -22,7 +24,7 @@ public class OutOfMissionAceLossCalculator
         this.aarContext = aarContext;
     }
 
-    public Map<Integer, Ace> acesKilledHistorically() throws PWCGException
+    public List<SquadronMember> acesKilledHistorically() throws PWCGException
     {
         PWCGContext.getInstance().getAceManager().loadFromHistoricalAces(aarContext.getNewDate());
 
@@ -45,6 +47,6 @@ public class OutOfMissionAceLossCalculator
             }
         }
         
-        return acesKilled;
+        return new ArrayList<SquadronMember>(acesKilled.values());
     }
 }

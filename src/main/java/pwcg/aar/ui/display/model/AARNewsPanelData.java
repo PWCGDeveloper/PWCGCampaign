@@ -33,7 +33,7 @@ public class AARNewsPanelData
 
     public void merge(AARNewsPanelData newsPanelData)
     {
-        acesKilledDuringElapsedTime.addAll(acesKilledDuringElapsedTime);
-        newspaperEventsDuringElapsedTime.addAll(newspaperEventsDuringElapsedTime);
+        acesKilledDuringElapsedTime.addAll(newsPanelData.getAcesKilledDuringElapsedTime());
+        newspaperEventsDuringElapsedTime.addAll(newsPanelData.getNewspaperEventsDuringElapsedTime());
     }
 }

@@ -25,7 +25,7 @@ public class AARNewsPanelEventTabulatorTest extends AARTestSetup
     private Map<Integer, SquadronMember> squadronMembersKilled = new HashMap<>();
     private Map<Integer, SquadronMember> squadronMembersCaptured = new HashMap<>();
     private Map<Integer, SquadronMember> squadronMembersMaimed = new HashMap<>();
-    private Map<Integer, Ace> acesKilledMissionSquadron = new HashMap<>();
+    private Map<Integer, SquadronMember> acesKilledMissionSquadron = new HashMap<>();
 
     @Before
     public void setup() throws PWCGException

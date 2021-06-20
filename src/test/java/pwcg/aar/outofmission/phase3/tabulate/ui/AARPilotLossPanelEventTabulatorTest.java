@@ -28,12 +28,12 @@ public class AARPilotLossPanelEventTabulatorTest extends AARTestSetup
     private Map<Integer, SquadronMember> squadronMembersKilledInMission = new HashMap<>();
     private Map<Integer, SquadronMember> squadronMembersCapturedInMission = new HashMap<>();
     private Map<Integer, SquadronMember> squadronMembersMaimedInMission = new HashMap<>();
-    private Map<Integer, Ace> acesKilledMissionSquadronInMission = new HashMap<>();
+    private Map<Integer, SquadronMember> acesKilledMissionSquadronInMission = new HashMap<>();
 
     private Map<Integer, SquadronMember> squadronMembersKilledOutMission = new HashMap<>();
     private Map<Integer, SquadronMember> squadronMembersCapturedOutMission = new HashMap<>();
     private Map<Integer, SquadronMember> squadronMembersMaimedOutMission = new HashMap<>();
-    private Map<Integer, Ace> acesKilledMissionSquadronOutMission = new HashMap<>();
+    private Map<Integer, SquadronMember> acesKilledMissionSquadronOutMission = new HashMap<>();
 
     @Before
     public void setupForTestEnvironment() throws PWCGException

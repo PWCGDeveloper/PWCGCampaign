@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
@@ -44,10 +45,10 @@ public class PersonnelOutOfMissionAiStatusHandlerTest
 
         for (int i = 0; i < 10; ++i)
         {
-            personnelLossOutOfMissionHandler.determineFateOfShotDownPilots(campaignMembers);
-            aiKilled.putAll(personnelLossOutOfMissionHandler.getAiKilled());
-            aiMaimed.putAll(personnelLossOutOfMissionHandler.getAiMaimed());
-            aiCaptured.putAll(personnelLossOutOfMissionHandler.getAiCaptured());
+            AARPersonnelLosses outOfMissionPersonnelLosses = personnelLossOutOfMissionHandler.determineFateOfShotDownPilots(campaignMembers);
+            aiKilled.putAll(outOfMissionPersonnelLosses.getPersonnelKilled());
+            aiMaimed.putAll(outOfMissionPersonnelLosses.getPersonnelMaimed());
+            aiCaptured.putAll(outOfMissionPersonnelLosses.getPersonnelCaptured());
         }
         
         assert (aiKilled.size() > 0);

@@ -1,6 +1,6 @@
 package pwcg.aar.outofmission.phase1.elapsedtime;
 
-import java.util.Map;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +13,7 @@ import pwcg.aar.data.AARContext;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadmember.Ace;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
@@ -40,9 +40,8 @@ public class PersonnelAceLossOutOfMissionHandlerTest
     public void testAceLossesOutOfMission () throws PWCGException
     {     
         OutOfMissionAceLossCalculator aceLossOutOfMissionHandler = new OutOfMissionAceLossCalculator(campaign, aarContext);
-        Map<Integer, Ace> acesKilled = aceLossOutOfMissionHandler.acesKilledHistorically();
-        assert (acesKilled.containsKey(101064));
-        assert (acesKilled.containsKey(101175));
+        List<SquadronMember> acesKilled = aceLossOutOfMissionHandler.acesKilledHistorically();
+        assert (acesKilled.size() == 5);
     }
 
 }

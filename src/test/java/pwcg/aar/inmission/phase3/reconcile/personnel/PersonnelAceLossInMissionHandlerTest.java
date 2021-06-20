@@ -2,7 +2,6 @@ package pwcg.aar.inmission.phase3.reconcile.personnel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +12,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.squadmember.Ace;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
@@ -48,7 +47,7 @@ public class PersonnelAceLossInMissionHandlerTest
     public void testHistoricalAcesKille() throws PWCGException
     {
         PersonnelAceLossInMissionHandler aceLossInMissionHandler = new PersonnelAceLossInMissionHandler(campaign);
-        Map<Integer, Ace> acesKilled = aceLossInMissionHandler.acesShotDownInMission(aceStatusList);
+        List<SquadronMember> acesKilled = aceLossInMissionHandler.acesShotDownInMission(aceStatusList);
         
         assert(acesKilled.size() == 2);
     }

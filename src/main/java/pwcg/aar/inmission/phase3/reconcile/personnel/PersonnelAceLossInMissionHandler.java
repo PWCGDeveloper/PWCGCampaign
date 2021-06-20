@@ -1,5 +1,6 @@
 package pwcg.aar.inmission.phase3.reconcile.personnel;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,7 @@ public class PersonnelAceLossInMissionHandler
         this.campaign = campaign;
     }
 
-    public Map<Integer, Ace> acesShotDownInMission(List<LogPilot> aceStatusList) throws PWCGException
+    public List<SquadronMember> acesShotDownInMission(List<LogPilot> aceStatusList) throws PWCGException
     {
         for (LogPilot aceStatus: aceStatusList)
         {
@@ -40,6 +41,6 @@ public class PersonnelAceLossInMissionHandler
             }
         }
         
-        return acesKilled;
+        return new ArrayList<SquadronMember>(acesKilled.values());
     }
 }

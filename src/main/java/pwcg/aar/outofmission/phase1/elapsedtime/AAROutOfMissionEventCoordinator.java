@@ -84,7 +84,7 @@ public class AAROutOfMissionEventCoordinator
     {
         OutOfMissionCommandChangeHandler commandChangeHandler = new OutOfMissionCommandChangeHandler(campaign);
         AARPersonnelLosses personnelLossesTransferHome = commandChangeHandler.replaceCommanderWithPlayer();
-        reconciledOutOfMissionData.getPersonnelLossesOutOfMission().mergePersonnelTransferredHome(personnelLossesTransferHome.getPersonnelTransferredHome());
+        reconciledOutOfMissionData.getPersonnelLossesOutOfMission().merge(personnelLossesTransferHome);
     }
 
     private void outOfMissionLosses(Map<Integer, SquadronMember> shotDownPilots, Map<Integer, LogPlane> shotDownPlanes) throws PWCGException 

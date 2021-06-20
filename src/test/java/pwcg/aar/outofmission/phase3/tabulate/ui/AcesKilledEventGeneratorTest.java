@@ -18,6 +18,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SerialNumber;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.core.exception.PWCGException;
@@ -44,7 +45,7 @@ public class AcesKilledEventGeneratorTest
     {       
         Ace aceKilledInMission = MissionEntityBuilder.makeDeadAceWithVictories("Ace A", SerialNumber.ACE_STARTING_SERIAL_NUMBER+1, AcesKilledEventGenerator.NUM_VICTORIES_FOR_ACE_TO_BE_NEWSWORTHY, campaign.getDate());
 
-        List<Ace> acesKilledInMissionAndElapsedTime = new ArrayList<>();
+        List<SquadronMember> acesKilledInMissionAndElapsedTime = new ArrayList<>();
         acesKilledInMissionAndElapsedTime.add(aceKilledInMission);
 
         AcesKilledEventGenerator acesKilledEventGenerator = new AcesKilledEventGenerator(campaign);
@@ -64,7 +65,7 @@ public class AcesKilledEventGeneratorTest
             aceKilledInMission.addVictory(victory);
         }
 
-        List<Ace> acesKilledInMissionAndElapsedTime = new ArrayList<>();
+        List<SquadronMember> acesKilledInMissionAndElapsedTime = new ArrayList<>();
         acesKilledInMissionAndElapsedTime.add(aceKilledInMission);
 
         AcesKilledEventGenerator acesKilledEventGenerator = new AcesKilledEventGenerator(campaign);

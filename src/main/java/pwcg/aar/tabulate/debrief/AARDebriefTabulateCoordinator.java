@@ -43,42 +43,42 @@ public class AARDebriefTabulateCoordinator
     {
         TransferPanelEventTabulator aarTransferPanelEventTabulator = new TransferPanelEventTabulator(campaign, aarContext);
         TransferPanelData transferPanelData = aarTransferPanelEventTabulator.tabulateForAARTransferPanel();
-        uiDebriefData.setTransferPanelData(transferPanelData);
+        uiDebriefData.addTransferPanelData(transferPanelData);
     }
 
     private void tabulatePromotions() throws PWCGException
     {
         PromotionPanelEventTabulator promotionEventTabulator = new PromotionPanelEventTabulator(campaign, aarContext);
         AARPromotionPanelData promotionPanelData = promotionEventTabulator.tabulateForAARPromotionPanel();
-        uiDebriefData.setPromotionPanelData(promotionPanelData);
+        uiDebriefData.addPromotionPanelData(promotionPanelData);
     }
 
     private void tabulatePilotLosses() throws PWCGException
     {
         PilotLossPanelEventTabulator pilotLossPanelEventTabulator = new PilotLossPanelEventTabulator(campaign, aarContext);
         AARPilotLossPanelData pilotLossPanelData = pilotLossPanelEventTabulator.tabulateForAARPilotLossPanel();
-        uiDebriefData.setPilotLossPanelData(pilotLossPanelData);
+        uiDebriefData.addPilotLossPanelData(pilotLossPanelData);
     }
 
     private void tabulateEquipmentLosses() throws PWCGException
     {
         EquipmentLossPanelEventTabulator equipmentLossPanelEventTabulator = new EquipmentLossPanelEventTabulator(campaign, aarContext);
         AAREquipmentLossPanelData equipmentLossPanelData = equipmentLossPanelEventTabulator.tabulateForAAREquipmentLossPanel();
-        uiDebriefData.setEquipmentLossPanelData(equipmentLossPanelData);        
+        uiDebriefData.addEquipmentLossPanelData(equipmentLossPanelData);        
     }
 
     private void tabulateOutOfMissionVictories() throws PWCGException
     {
         SquadronOutOfMissionVictoryPanelEventTabulator squadronOutOfMissionVictoryPanelEventTabulator = new SquadronOutOfMissionVictoryPanelEventTabulator(campaign, aarContext);
         AAROutOfMissionVictoryPanelData outOfMissionVictoryPanelData = squadronOutOfMissionVictoryPanelEventTabulator.tabulateOutOfMissionVictoriesForSquadron();
-        uiDebriefData.setOutOfMissionVictoryPanelData(outOfMissionVictoryPanelData);        
+        uiDebriefData.addOutOfMissionVictoryPanelData(outOfMissionVictoryPanelData);        
     }
     
     private void tabulateNews() throws PWCGException
     {
         NewsPanelEventTabulator newsPanelEventTabulator = new NewsPanelEventTabulator(campaign, aarContext);
         AARNewsPanelData newsPanelData = newsPanelEventTabulator.createNewspaperEvents();
-        uiDebriefData.setNewsPanelData(newsPanelData);
+        uiDebriefData.addNewsPanelData(newsPanelData);
     }
 
     private void tabulateMedals() throws PWCGException

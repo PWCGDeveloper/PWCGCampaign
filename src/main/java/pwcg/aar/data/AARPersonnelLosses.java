@@ -3,7 +3,6 @@ package pwcg.aar.data;
 import java.util.HashMap;
 import java.util.Map;
 
-import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 
 public class AARPersonnelLosses
@@ -13,7 +12,7 @@ public class AARPersonnelLosses
     private Map<Integer, SquadronMember> personnelMaimed = new HashMap<>();
     private Map<Integer, SquadronMember> personnelWounded = new HashMap<>();
     private Map<Integer, SquadronMember> personnelTransferredHome = new HashMap<>();
-    private Map<Integer, Ace> acesKilled = new HashMap<>();
+    private Map<Integer, SquadronMember> acesKilled = new HashMap<>();
 
     
     public AARPersonnelLosses()
@@ -46,7 +45,7 @@ public class AARPersonnelLosses
         return acesKilled.containsKey(aceSerialNumber);
     }
 
-    public Map<Integer, Ace> getAcesKilled()
+    public Map<Integer, SquadronMember> getAcesKilled()
     {
         return acesKilled;
     }
@@ -76,36 +75,6 @@ public class AARPersonnelLosses
         return personnelTransferredHome;
     }
 
-    public void mergePersonnelKilled(Map<Integer, SquadronMember> squadMembersKilled)
-    {
-        this.personnelKilled.putAll(squadMembersKilled);
-    }
-
-    public void mergePersonnelMaimed(Map<Integer, SquadronMember> squadMembersMaimed)
-    {
-        this.personnelMaimed.putAll(squadMembersMaimed);
-    }
-
-    public void mergePersonnelWounded(Map<Integer, SquadronMember> squadMembersWounded)
-    {
-        this.personnelWounded.putAll(squadMembersWounded);
-    }
-    
-    public void mergePersonnelCaptured(Map<Integer, SquadronMember> squadMembersCaptured)
-    {
-        this.personnelCaptured.putAll(squadMembersCaptured);
-    }
-    
-    public void mergePersonnelTransferredHome(Map<Integer, SquadronMember> personnelTransferredHome)
-    {
-        this.personnelTransferredHome.putAll(personnelTransferredHome);
-    }
-
-    public void mergeAcesKilled(Map<Integer, Ace> acesKilled)
-    {
-        this.acesKilled.putAll(acesKilled);
-    }
-
     public void addPersonnelKilled(SquadronMember campaignMemberKilled)
     {
         this.personnelKilled.put(campaignMemberKilled.getSerialNumber(), campaignMemberKilled);
@@ -126,7 +95,7 @@ public class AARPersonnelLosses
         this.personnelCaptured.put(campaignMemberCaptured.getSerialNumber(), campaignMemberCaptured);
     }
 
-    public void addAcesKilled(Ace aceKilled)
+    public void addAcesKilled(SquadronMember aceKilled)
     {
         this.acesKilled.put(aceKilled.getSerialNumber(), aceKilled);
     }

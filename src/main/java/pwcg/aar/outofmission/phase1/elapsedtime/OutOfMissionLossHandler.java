@@ -1,5 +1,6 @@
 package pwcg.aar.outofmission.phase1.elapsedtime;
 
+import java.util.List;
 import java.util.Map;
 
 import pwcg.aar.data.AARContext;
@@ -7,7 +8,6 @@ import pwcg.aar.data.AAREquipmentLosses;
 import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 
@@ -15,15 +15,13 @@ public class OutOfMissionLossHandler
 {
     private Campaign campaign;
     private AARContext aarContext;
-    private AARPersonnelLosses outOfMissionPersonnelLosses;
-    private AAREquipmentLosses outOfMissionEquipmentLosses;
+    private AARPersonnelLosses outOfMissionPersonnelLosses = new AARPersonnelLosses();
+    private AAREquipmentLosses outOfMissionEquipmentLosses = new AAREquipmentLosses();
 
     public OutOfMissionLossHandler(Campaign campaign, AARContext aarContext)
     {
         this.campaign = campaign;
         this.aarContext = aarContext;
-        outOfMissionPersonnelLosses = new AARPersonnelLosses();
-        outOfMissionEquipmentLosses = new AAREquipmentLosses();
     }
 
     public void lossesOutOfMission(Map<Integer, SquadronMember> shotDownPilots, Map<Integer, LogPlane> shotDownPlanes) throws PWCGException
@@ -37,19 +35,18 @@ public class OutOfMissionLossHandler
     private void calculateHistoricalAceLosses() throws PWCGException, PWCGException
     {
         OutOfMissionAceLossCalculator aceLossHandler = new OutOfMissionAceLossCalculator(campaign, aarContext);
-        Map<Integer, Ace> acesKilled = aceLossHandler.acesKilledHistorically();
-        outOfMissionPersonnelLosses.mergeAcesKilled(acesKilled);
+        List<SquadronMember> acesKilled = aceLossHandler.acesKilledHistorically();
+        for (SquadronMember deadAce : acesKilled)
+        {
+            outOfMissionPersonnelLosses.addAcesKilled(deadAce);
+        }
     }    
 
     private void calculateShotDownPersonnelLosses(Map<Integer, SquadronMember> shotDownPilots) throws PWCGException
     {
         PersonnelOutOfMissionStatusHandler personnelOutOfMissionHandler = new PersonnelOutOfMissionStatusHandler();
-        personnelOutOfMissionHandler.determineFateOfShotDownPilots(shotDownPilots);
-        
-        outOfMissionPersonnelLosses.mergePersonnelCaptured(personnelOutOfMissionHandler.getAiCaptured());
-        outOfMissionPersonnelLosses.mergePersonnelKilled(personnelOutOfMissionHandler.getAiKilled());
-        outOfMissionPersonnelLosses.mergePersonnelMaimed(personnelOutOfMissionHandler.getAiMaimed());
-        outOfMissionPersonnelLosses.mergePersonnelWounded(personnelOutOfMissionHandler.getAiWounded());
+        AARPersonnelLosses outOfMissionPersonnelLossesForTheDay = personnelOutOfMissionHandler.determineFateOfShotDownPilots(shotDownPilots);        
+        outOfMissionPersonnelLosses.merge(outOfMissionPersonnelLossesForTheDay);
     }
 
     private void calculateShotDownEquipmentLosses(Map<Integer, LogPlane> shotDownPlanes)
@@ -87,11 +84,8 @@ public class OutOfMissionLossHandler
     {
         Map<Integer, SquadronMember> pilotLossesDueToAAA = aaaLossCalculator.getPilotsLostDueToAAA();
         PersonnelOutOfMissionStatusHandler personnelOutOfMissionHandler = new PersonnelOutOfMissionStatusHandler();
-        personnelOutOfMissionHandler.determineFateOfShotDownPilots(pilotLossesDueToAAA);
-        outOfMissionPersonnelLosses.mergePersonnelCaptured(personnelOutOfMissionHandler.getAiCaptured());
-        outOfMissionPersonnelLosses.mergePersonnelKilled(personnelOutOfMissionHandler.getAiKilled());
-        outOfMissionPersonnelLosses.mergePersonnelMaimed(personnelOutOfMissionHandler.getAiMaimed());
-        outOfMissionPersonnelLosses.mergePersonnelWounded(personnelOutOfMissionHandler.getAiWounded());
+        AARPersonnelLosses outOfMissionPersonnelLossesForDay = personnelOutOfMissionHandler.determineFateOfShotDownPilots(pilotLossesDueToAAA);
+        outOfMissionPersonnelLosses.merge(outOfMissionPersonnelLossesForDay);
     }
 
 	public AARPersonnelLosses getOutOfMissionPersonnelLosses()

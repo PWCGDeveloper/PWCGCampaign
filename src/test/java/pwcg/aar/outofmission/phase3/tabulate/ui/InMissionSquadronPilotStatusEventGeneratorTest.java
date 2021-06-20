@@ -29,7 +29,7 @@ public class InMissionSquadronPilotStatusEventGeneratorTest extends AARTestSetup
     private Map<Integer, SquadronMember> squadronMembersCapturedInMission = new HashMap<>();
     private Map<Integer, SquadronMember> squadronMembersMaimedInMission = new HashMap<>();
     private Map<Integer, SquadronMember> squadronMembersWoundedInMission = new HashMap<>();
-    private Map<Integer, Ace> acesKilledMissionSquadronInMission = new HashMap<>();
+    private Map<Integer, SquadronMember> acesKilledMissionSquadronInMission = new HashMap<>();
 	
     @Before
     public void setup() throws PWCGException
