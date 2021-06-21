@@ -5,6 +5,6 @@ import pwcg.core.exception.PWCGException;
 public interface IClaimResolver
 {
 
-    ReconciledVictoryData resolvePlayerClaims() throws PWCGException;
+    ReconciledMissionVictoryData resolvePlayerClaims() throws PWCGException;
 
 }

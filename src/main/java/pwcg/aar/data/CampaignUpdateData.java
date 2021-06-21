@@ -1,6 +1,6 @@
 package pwcg.aar.data;
 
-import pwcg.aar.outofmission.phase2.resupply.AARResupplyData;
+import pwcg.aar.outofmission.phase3.resupply.AARResupplyData;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 
@@ -10,6 +10,7 @@ public class CampaignUpdateData
     private AAREquipmentLosses equipmentLosses = new AAREquipmentLosses();
     private AARResupplyData resupplyData = new AARResupplyData();
     private AARPersonnelAwards personnelAwards = new AARPersonnelAwards();
+    private AARPersonnelAcheivements personnelAcheivements = new AARPersonnelAcheivements();
     private AARLogEvents logEvents;
 
     public CampaignUpdateData(Campaign campaign)
@@ -39,6 +40,11 @@ public class CampaignUpdateData
     public AARResupplyData getResupplyData()
     {
         return resupplyData;
+    }
+
+    public AARPersonnelAcheivements getPersonnelAcheivements()
+    {
+        return personnelAcheivements;
     }
 
     public AARPersonnelAwards getPersonnelAwards()

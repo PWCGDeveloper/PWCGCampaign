@@ -33,26 +33,24 @@ public class AARCampaignUpdateTabulator
 
     private void tabulatePersonnelAwards()
     {
-        campaignUpdateData.getPersonnelAwards().mergeVictories(aarContext.getReconciledInMissionData().getReconciledVictoryData().getVictoryAwardsByPilot());
-        campaignUpdateData.getPersonnelAwards().merge(aarContext.getReconciledInMissionData().getPersonnelAwards());
-        campaignUpdateData.getPersonnelAwards().merge(aarContext.getReconciledOutOfMissionData().getPersonnelAwards());
+        campaignUpdateData.getPersonnelAcheivements().mergeVictories(aarContext.getReconciledMissionVictoryData().getVictoryAwardsByPilot());
+        campaignUpdateData.getPersonnelAcheivements().merge(aarContext.getPersonnelAcheivements());
+        campaignUpdateData.getPersonnelAwards().merge(aarContext.getPersonnelAwards());
     }
     
     private void tabulatePersonnelChanges()
     {
-        campaignUpdateData.getPersonnelLosses().merge(aarContext.getReconciledInMissionData().getPersonnelLossesInMission());
-        campaignUpdateData.getPersonnelLosses().merge(aarContext.getReconciledOutOfMissionData().getPersonnelLossesOutOfMission());
+        campaignUpdateData.getPersonnelLosses().merge(aarContext.getPersonnelLosses());
     }
     
     private void tabulateEquipmentChanges()
     {
-        campaignUpdateData.getEquipmentLosses().merge(aarContext.getReconciledInMissionData().getEquipmentLossesInMission());
-        campaignUpdateData.getEquipmentLosses().merge(aarContext.getReconciledOutOfMissionData().getEquipmentLossesOutOfMission());
+        campaignUpdateData.getEquipmentLosses().merge(aarContext.getEquipmentLosses());
     }
 
     private void tabulateTransfers()
     {
-        campaignUpdateData.getResupplyData().merge(aarContext.getReconciledOutOfMissionData().getResupplyData());
+        campaignUpdateData.getResupplyData().merge(aarContext.getResupplyData());
     }
 
     private void addEventsToCampaignUpdateData() throws PWCGException

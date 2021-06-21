@@ -8,6 +8,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.data.AARPersonnelLosses;
+import pwcg.aar.outofmission.phase3.resupply.HistoricalAceTransferHandler;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignAces;
 import pwcg.campaign.CampaignPersonnelManager;

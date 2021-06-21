@@ -15,7 +15,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.AARPersonnelLosses;
-import pwcg.aar.outofmission.phase1.elapsedtime.OutOfMissionCommandChangeHandler;
+import pwcg.aar.outofmission.phase4.ElapsedTIme.OutOfMissionCommandChangeHandler;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
@@ -169,7 +169,7 @@ public class CampaignSquadronPersonnelUpdaterTest
         
         for (SquadronMember squadronMember : personnelLossesTransferHome.getPersonnelTransferredHome().values())
         {
-            aarContext.getReconciledOutOfMissionData().getPersonnelLossesOutOfMission().addPersonnelTransferredHome(squadronMember);;
+            aarContext.getPersonnelLosses().addPersonnelTransferredHome(squadronMember);;
         }
 
         PersonnelUpdater personellUpdater = new PersonnelUpdater(campaign, aarContext);

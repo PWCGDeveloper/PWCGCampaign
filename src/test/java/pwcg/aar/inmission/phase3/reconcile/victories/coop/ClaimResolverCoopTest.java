@@ -9,7 +9,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase3.reconcile.victories.IClaimResolver;
-import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledVictoryData;
+import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledMissionVictoryData;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.LogVictoryHelper;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
@@ -58,7 +58,7 @@ public class ClaimResolverCoopTest
     public void testClaimAccepted() throws PWCGException
     {
         IClaimResolver claimResolver = new ClaimResolverCompetitiveCoop(campaign, logVictoryHelper.getLogVictories());
-        ReconciledVictoryData reconciledMissionData = claimResolver.resolvePlayerClaims();
+        ReconciledMissionVictoryData reconciledMissionData = claimResolver.resolvePlayerClaims();
         assert (reconciledMissionData.getVictoryAwardsByPilot().size() == 1);
         assert (reconciledMissionData.getVictoryAwardsByPilot().get(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER).size() == 5);
         assert (reconciledMissionData.getPlayerClaimsDenied().size() == 0);

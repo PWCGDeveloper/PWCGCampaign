@@ -41,6 +41,7 @@ public class OutOfMissionVictoryEventHandler
     {
         SquadronMembers campaignMembersNotInMission = CampaignMembersOutOfMissionFinder.getActiveCampaignMembersNotInMission(
                 campaign, aarContext.getPreliminaryData().getCampaignMembersInMission());
+        
         for (SquadronMember squadronMember : campaignMembersNotInMission.getSquadronMemberList())
         {
             if (OutOfMissionPilotSelector.shouldPilotBeEvaluated(campaign, squadronMember)) 

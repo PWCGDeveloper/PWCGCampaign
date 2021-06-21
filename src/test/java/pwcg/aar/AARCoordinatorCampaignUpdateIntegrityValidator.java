@@ -46,8 +46,8 @@ public class AARCoordinatorCampaignUpdateIntegrityValidator
     	Date newDate = DateUtils.getDateYYYYMMDD("19420801");
 	    do 
 	    {
-            personnelLosses = aarContext.getReconciledOutOfMissionData().getPersonnelLossesOutOfMission().getSquadMembersLost();
-            equipmentLosses = aarContext.getReconciledOutOfMissionData().getEquipmentLossesOutOfMission().getPlanesDestroyed();
+            personnelLosses = aarContext.getPersonnelLosses().getSquadMembersLost();
+            equipmentLosses = aarContext.getEquipmentLosses().getPlanesDestroyed();
             if (personnelLosses.size() > 0)
             {
                 validatePersonnelLossesInMemory();

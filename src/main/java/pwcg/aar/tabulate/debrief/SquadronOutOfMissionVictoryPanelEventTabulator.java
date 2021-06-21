@@ -33,14 +33,14 @@ public class SquadronOutOfMissionVictoryPanelEventTabulator
 
     private void createVictoryEventsForSquadronMembers() throws PWCGException
     {
-        Map<Integer, List<Victory>> victoryAwardByPilotInMission = aarContext.getReconciledInMissionData().getReconciledVictoryData().getVictoryAwardsByPilot();
+        Map<Integer, List<Victory>> victoryAwardByPilotInMission = aarContext.getReconciledMissionVictoryData().getVictoryAwardsByPilot();
         List<VictoryEvent> victoriesInMission = victoryEventGenerator.createPilotVictoryEvents(victoryAwardByPilotInMission);
         for (VictoryEvent victoryEvent : victoriesInMission)
         {
             squadMembersOutOfMissionVictoryData.addVictory(victoryEvent);
         }
         
-        Map<Integer, List<Victory>> victoryAwardByPilotOutOfMission = aarContext.getReconciledOutOfMissionData().getPersonnelAwards().getVictoriesByPilot();
+        Map<Integer, List<Victory>> victoryAwardByPilotOutOfMission = aarContext.getPersonnelAcheivements().getVictoriesByPilot();
         List<VictoryEvent> victoriesOutOfMission = victoryEventGenerator.createPilotVictoryEvents(victoryAwardByPilotOutOfMission);
         for (VictoryEvent victoryEvent : victoriesOutOfMission)
         {

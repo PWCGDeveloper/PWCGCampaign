@@ -104,4 +104,20 @@ public class AARPersonnelLosses
     {
         this.personnelTransferredHome.put(campaignMemberTransferred.getSerialNumber(), campaignMemberTransferred);
     }
+    
+    public Map<Integer, SquadronMember> getAllInjured()
+    {
+        Map<Integer, SquadronMember> allInjured = new HashMap<>();
+        allInjured.putAll(personnelWounded);
+        allInjured.putAll(personnelMaimed);
+        allInjured.putAll(personnelKilled);
+        allInjured.putAll(acesKilled);
+        return allInjured;
+    }
+
+    public boolean pilotisWoundedToday(SquadronMember squadronMember)
+    {
+        Map<Integer, SquadronMember> allInjured = getAllInjured();
+        return allInjured.containsKey(squadronMember.getSerialNumber());
+    }
 }

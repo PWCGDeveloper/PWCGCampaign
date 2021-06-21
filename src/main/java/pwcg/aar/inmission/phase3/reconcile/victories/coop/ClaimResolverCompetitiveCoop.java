@@ -5,7 +5,7 @@ import java.util.Map;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.inmission.phase3.reconcile.victories.IClaimResolver;
-import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledVictoryData;
+import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledMissionVictoryData;
 import pwcg.aar.inmission.phase3.reconcile.victories.common.ConfirmedVictories;
 import pwcg.aar.inmission.phase3.reconcile.victories.common.GroundDeclarationResolver;
 import pwcg.aar.inmission.phase3.reconcile.victories.common.VictoryEventHandler;
@@ -18,7 +18,7 @@ public class ClaimResolverCompetitiveCoop implements IClaimResolver
 {
     private Campaign campaign;
     private List<LogVictory> logVictories;
-    private ReconciledVictoryData reconciledMissionData = new ReconciledVictoryData();
+    private ReconciledMissionVictoryData reconciledMissionData = new ReconciledMissionVictoryData();
 
 
     public ClaimResolverCompetitiveCoop (Campaign campaign, List<LogVictory> logVictories)
@@ -28,7 +28,7 @@ public class ClaimResolverCompetitiveCoop implements IClaimResolver
     }
 
     @Override
-    public ReconciledVictoryData resolvePlayerClaims() throws PWCGException
+    public ReconciledMissionVictoryData resolvePlayerClaims() throws PWCGException
     {
         VictorySorter victorySorter = createVictorySorter();
         ConfirmedVictories verifiedAirMissionResultVictorys = createAirVictories(victorySorter);

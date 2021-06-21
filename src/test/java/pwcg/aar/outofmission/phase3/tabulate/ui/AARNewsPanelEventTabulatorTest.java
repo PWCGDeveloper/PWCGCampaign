@@ -37,10 +37,10 @@ public class AARNewsPanelEventTabulatorTest extends AARTestSetup
         squadronMembersMaimed.clear();
         acesKilledMissionSquadron.clear();
         
-        Mockito.when(personnelLossesInMissionData.getPersonnelKilled()).thenReturn(squadronMembersKilled);
-        Mockito.when(personnelLossesInMissionData.getPersonnelCaptured()).thenReturn(squadronMembersCaptured);
-        Mockito.when(personnelLossesInMissionData.getPersonnelMaimed()).thenReturn(squadronMembersMaimed);
-        Mockito.when(personnelLossesInMissionData.getAcesKilled()).thenReturn(acesKilledMissionSquadron);
+        Mockito.when(personnelLosses.getPersonnelKilled()).thenReturn(squadronMembersKilled);
+        Mockito.when(personnelLosses.getPersonnelCaptured()).thenReturn(squadronMembersCaptured);
+        Mockito.when(personnelLosses.getPersonnelMaimed()).thenReturn(squadronMembersMaimed);
+        Mockito.when(personnelLosses.getAcesKilled()).thenReturn(acesKilledMissionSquadron);
     }
 
     @Test

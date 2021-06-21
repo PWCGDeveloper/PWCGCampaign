@@ -7,8 +7,10 @@ import java.util.List;
 import pwcg.aar.data.ui.UIDebriefData;
 import pwcg.aar.inmission.phase1.parse.AARMissionLogRawData;
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
-import pwcg.aar.inmission.phase3.reconcile.ReconciledInMissionData;
-import pwcg.aar.outofmission.phase1.elapsedtime.ReconciledOutOfMissionData;
+import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledMissionVictoryData;
+import pwcg.aar.outofmission.phase2.awards.HistoricalAceAwards;
+import pwcg.aar.outofmission.phase3.resupply.AARResupplyData;
+import pwcg.aar.outofmission.phase4.ElapsedTIme.ElapsedTimeEvents;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.aar.tabulate.combatreport.UICombatReportData;
 import pwcg.campaign.Campaign;
@@ -20,15 +22,22 @@ public class AARContext
 
     private AARPreliminaryData preliminaryData = new AARPreliminaryData();
     private Date newDate;
-    private ExtendedTimeReason reasonForExtendedTime = ExtendedTimeReason.NO_EXTENDED_TIME;
 
-    // In mission
+    // Inputs
     private AARMissionLogRawData missionLogRawData = new AARMissionLogRawData();
     private AARMissionEvaluationData missionEvaluationData = new AARMissionEvaluationData();
-    private ReconciledInMissionData reconciledInMissionData = new ReconciledInMissionData();
+    
 
-    // Out of mission
-    private ReconciledOutOfMissionData reconciledOutOfMissionData = new ReconciledOutOfMissionData();
+    // Outputs
+    private ReconciledMissionVictoryData reconciledMissionVictoryData = new ReconciledMissionVictoryData();
+    private AARPersonnelLosses personnelLosses = new AARPersonnelLosses();
+    private AAREquipmentLosses equipmentLosses = new AAREquipmentLosses();
+    
+    private AARPersonnelAwards personnelAwards = new AARPersonnelAwards();
+    private AARPersonnelAcheivements personnelAcheivements = new AARPersonnelAcheivements();
+    private AARResupplyData resupplyData = new AARResupplyData();
+    private HistoricalAceAwards historicalAceEvents = new HistoricalAceAwards();
+    private ElapsedTimeEvents elapsedTimeEvents = new ElapsedTimeEvents();
 
     // Tabulated
     private CampaignUpdateData campaignUpdateData;
@@ -47,7 +56,6 @@ public class AARContext
     {
         missionLogRawData = new AARMissionLogRawData();
         missionEvaluationData = new AARMissionEvaluationData();
-        reconciledInMissionData = new ReconciledInMissionData();
     }
     
     public UICombatReportData findUiCombatReportDataForSquadron(int squadronId) throws PWCGException
@@ -77,74 +85,9 @@ public class AARContext
         return missionEvaluationData;
     }
 
-    public void setPreliminaryData(AARPreliminaryData preliminaryData)
-    {
-        this.preliminaryData = preliminaryData;
-    }
-
-    public void setMissionLogRawData(AARMissionLogRawData missionLogRawData)
-    {
-        this.missionLogRawData = missionLogRawData;
-    }
-
-    public void setMissionEvaluationData(AARMissionEvaluationData missionEvaluationData)
-    {
-        this.missionEvaluationData = missionEvaluationData;
-    }
-
-    public void setReconciledInMissionData(ReconciledInMissionData reconciledInMissionData)
-    {
-        this.reconciledInMissionData = reconciledInMissionData;
-    }
-
-    public ReconciledInMissionData getReconciledInMissionData()
-    {
-        return reconciledInMissionData;
-    }
-
-    public Date getNewDate()
-    {
-        return newDate;
-    }
-
-    public void setNewDate(Date newDate)
-    {
-        this.newDate = newDate;
-    }
-
-    public ExtendedTimeReason getReasonForExtendedTime()
-    {
-        return reasonForExtendedTime;
-    }
-
-    public void setReasonForExtendedTime(ExtendedTimeReason reasonForExtendedTime)
-    {
-        this.reasonForExtendedTime = reasonForExtendedTime;
-    }
-
     public CampaignUpdateData getCampaignUpdateData()
     {
         return campaignUpdateData;
-    }
-
-    public void setCampaignUpdateData(CampaignUpdateData campaignUpdateData)
-    {
-        this.campaignUpdateData = campaignUpdateData;
-    }
-
-    public List<UICombatReportData> getUiCombatReportData()
-    {
-        return uiCombatReportData;
-    }
-
-    public void setUiCombatReportData(List<UICombatReportData> uiCombatReportData)
-    {
-        this.uiCombatReportData = uiCombatReportData;
-    }
-
-    public UIDebriefData getUiDebriefData()
-    {
-        return uiDebriefData;
     }
 
     public void mergeDebriefUiData(UIDebriefData uiDebriefData) throws PWCGException
@@ -152,19 +95,115 @@ public class AARContext
         this.uiDebriefData.merge(campaign, uiDebriefData);
     }
 
-    public void setReconciledOutMissionData(ReconciledOutOfMissionData reconciledOutOfMissionDataForTimeStep)
-    {
-        this.reconciledOutOfMissionData = reconciledOutOfMissionDataForTimeStep;
-    }
-
-    public ReconciledOutOfMissionData getReconciledOutOfMissionData()
-    {
-        return reconciledOutOfMissionData;
-    }
-
     public int getNextOutOfMissionEventSequenceNumber()
     {
         ++outOfMissionEventSequenceNumber;
         return outOfMissionEventSequenceNumber;
+    }
+
+    public ReconciledMissionVictoryData getReconciledMissionVictoryData()
+    {
+        return reconciledMissionVictoryData;
+    }
+
+    public AARPersonnelLosses getPersonnelLosses()
+    {
+        return personnelLosses;
+    }
+
+    public AAREquipmentLosses getEquipmentLosses()
+    {
+        return equipmentLosses;
+    }
+
+    public AARPersonnelAwards getPersonnelAwards()
+    {
+        return personnelAwards;
+    }
+
+    public AARPersonnelAcheivements getPersonnelAcheivements()
+    {
+        return personnelAcheivements;
+    }
+
+    public ElapsedTimeEvents getElapsedTimeEvents()
+    {
+        return elapsedTimeEvents;
+    }
+    
+    public HistoricalAceAwards getHistoricalAceEvents()
+    {
+        return historicalAceEvents;
+    }
+
+    public AARResupplyData getResupplyData()
+    {
+        return resupplyData;
+    }    
+
+    public UIDebriefData getUiDebriefData()
+    {
+        return uiDebriefData;
+    }
+
+    public void setPreliminaryData(AARPreliminaryData preliminaryData)
+    {
+        this.preliminaryData = preliminaryData;
+    }
+
+    public void setMissionLogRawData(AARMissionLogRawData missionLogRawData)
+    {
+        this.missionLogRawData = missionLogRawData;        
+    }
+
+    public void setNewDate(Date newDate)
+    {
+        this.newDate = newDate;                
+    }
+
+    public void setMissionEvaluationData(AARMissionEvaluationData missionEvaluationData)
+    {
+        this.missionEvaluationData = missionEvaluationData;
+    }
+
+    public void setReconciledMissionVictoryData(ReconciledMissionVictoryData reconciledMissionVictoryData)
+    {
+        this.reconciledMissionVictoryData = reconciledMissionVictoryData;        
+    }
+
+    public void addPersonnelLosses(AARPersonnelLosses newPersonnelLosses)
+    {
+        personnelLosses.merge(newPersonnelLosses);
+    }
+
+    public void addEquipmentLossesInMission(AAREquipmentLosses newEquipmentLosses)
+    {
+        equipmentLosses.merge(newEquipmentLosses);
+        
+    }
+
+    public Date getNewDate()
+    {
+        return newDate;
+    }
+
+    public void addElapsedTimeEvents(ElapsedTimeEvents elapsedTimeEvents)
+    {
+        this.elapsedTimeEvents.merge(elapsedTimeEvents);
+    }
+
+    public void addResupplyData(AARResupplyData resupplyData)
+    {
+        this.resupplyData.merge(resupplyData);
+    }
+
+    public void addUiCombatReportData(List<UICombatReportData> combatReportUiDataSet)
+    {
+        uiCombatReportData.addAll(combatReportUiDataSet);
+    }
+
+    public void setCampaignUpdateData(CampaignUpdateData campaignUpdateData)
+    {
+        this.campaignUpdateData = campaignUpdateData;                        
     }
 }

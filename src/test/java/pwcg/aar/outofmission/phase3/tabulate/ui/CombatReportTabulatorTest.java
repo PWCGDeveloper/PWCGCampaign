@@ -17,7 +17,7 @@ import pwcg.aar.AARTestSetup;
 import pwcg.aar.data.AAREquipmentLosses;
 import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
-import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledVictoryData;
+import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledMissionVictoryData;
 import pwcg.aar.tabulate.combatreport.CombatReportTabulator;
 import pwcg.aar.ui.display.model.AARCombatReportPanelData;
 import pwcg.aar.ui.events.PilotStatusEventGenerator;
@@ -41,7 +41,7 @@ import pwcg.testutils.SquadronTestProfile;
 @RunWith(MockitoJUnitRunner.Silent.class) 
 public class CombatReportTabulatorTest extends AARTestSetup
 {
-    @Mock private ReconciledVictoryData reconciledVictoryData;
+    @Mock private ReconciledMissionVictoryData reconciledVictoryData;
     @Mock private SquadronMembers campaignMembersInMission;
     @Mock private PilotStatusEventGenerator pilotStatusEventGenerator;
     @Mock private PlaneStatusEventGenerator planeStatusEventGenerator;
@@ -78,8 +78,7 @@ public class CombatReportTabulatorTest extends AARTestSetup
         List<ClaimDeniedEvent> claimsDenied = new ArrayList<>();
         claimsDenied.add(claimDenied);
         Mockito.when(reconciledVictoryData.getPlayerClaimsDenied()).thenReturn(claimsDenied);
-        Mockito.when(reconciledInMissionData.getReconciledVictoryData()).thenReturn(reconciledVictoryData);
-        Mockito.when(aarContext.getReconciledInMissionData()).thenReturn(reconciledInMissionData);
+        Mockito.when(aarContext.getReconciledMissionVictoryData()).thenReturn(reconciledVictoryData);
 
         List<VictoryEvent> victories = new ArrayList<>();
         isNewsWorthy = true;

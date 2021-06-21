@@ -300,6 +300,16 @@ public class SquadronMember implements Cloneable
 
         return service;
     }
+    
+    public boolean isHistoricalAce()
+    {
+        HistoricalAce historicalAce = PWCGContext.getInstance().getAceManager().getHistoricalAceBySerialNumber(serialNumber);
+        if (historicalAce != null)
+        {
+            return true;
+        }
+        return false;
+    }
 
     public ICountry determineCountry(Date date) throws PWCGException
     {

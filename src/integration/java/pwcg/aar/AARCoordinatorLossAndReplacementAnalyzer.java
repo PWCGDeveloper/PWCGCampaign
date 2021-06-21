@@ -59,17 +59,17 @@ public class AARCoordinatorLossAndReplacementAnalyzer
 	    {
 	    	++cycleNum;
 	    	int viableSquadrons = PWCGContext.getInstance().getSquadronManager().getViableSquadrons(campaign).size();
-	    	int victories = aarContext.getReconciledOutOfMissionData().getPersonnelAwards().getTotalAirToAirVictories();
-	    	int losses = aarContext.getReconciledOutOfMissionData().getPersonnelLossesOutOfMission().getSquadMembersLost().size();
+	    	int victories = aarContext.getPersonnelAwards().getTotalAirToAirVictories();
+	    	int losses = aarContext.getPersonnelLossesOutOfMission().getSquadMembersLost().size();
 	    	int replacements = campaign.getPersonnelManager().getReplacementCount();
-	    	int medalsAwarded = aarContext.getReconciledOutOfMissionData().getPersonnelAwards().getMedalsAwarded().size();
-            int promotionsAwarded = aarContext.getReconciledOutOfMissionData().getPersonnelAwards().getPromotions().size();
-            int transfers = aarContext.getReconciledOutOfMissionData().getResupplyData().getSquadronTransferData().getSquadronMembersTransferred().size();
+	    	int medalsAwarded = aarContext.getPersonnelAwards().getMedalsAwarded().size();
+            int promotionsAwarded = aarContext.getPersonnelAwards().getPromotions().size();
+            int transfers = aarContext.getResupplyData().getSquadronTransferData().getSquadronMembersTransferred().size();
             
             Map<Integer, SquadronMember> allCampaignMembers = campaign.getPersonnelManager().getAllCampaignMembers();  
             SquadronMembers activeAiCampaignMembers = SquadronMemberFilter.filterActiveAI(allCampaignMembers, campaign.getDate());
             int numAiPilots = activeAiCampaignMembers.getSquadronMemberList().size();
-            int equipmentLosses = aarContext.getReconciledOutOfMissionData().getEquipmentLossesOutOfMission().getPlanesDestroyed().size();
+            int equipmentLosses = aarContext.getEquipmentLossesOutOfMission().getPlanesDestroyed().size();
 
             totalVictories += victories;
             totalPersonnelLosses += losses;
@@ -80,7 +80,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
             
 	    	int axisPersonnelLosses = 0;
 	    	int alliedPersonnelLosses = 0;
-	    	for (SquadronMember lostPilot : aarContext.getReconciledOutOfMissionData().getPersonnelLossesOutOfMission().getSquadMembersLost().values())
+	    	for (SquadronMember lostPilot : aarContext.getPersonnelLossesOutOfMission().getSquadMembersLost().values())
 	    	{
 	    		if (lostPilot.determineCountry(campaign.getDate()).getSide() == Side.ALLIED)
 	    		{
@@ -96,7 +96,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
             
             int alliedEquipmentLosses = 0;
             int axisEquipmentLosses = 0;
-            for (LogPlane lostPlane : aarContext.getReconciledOutOfMissionData().getEquipmentLossesOutOfMission().getPlanesDestroyed().values())
+            for (LogPlane lostPlane : aarContext.getEquipmentLossesOutOfMission().getPlanesDestroyed().values())
             {
                 if (lostPlane.getCountry().getSide() == Side.ALLIED)
                 {

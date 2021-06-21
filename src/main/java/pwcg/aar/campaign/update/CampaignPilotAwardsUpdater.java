@@ -2,7 +2,7 @@ package pwcg.aar.campaign.update;
 
 import java.util.Map;
 
-import pwcg.aar.data.AARPersonnelAwards;
+import pwcg.aar.data.CampaignUpdateData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.medals.Medal;
@@ -20,12 +20,12 @@ public class CampaignPilotAwardsUpdater
 {
 	private Campaign campaign = null;
 	
-	private AARPersonnelAwards personnelAwards;
+	private CampaignUpdateData campaignUpdateData;
 	
-	public CampaignPilotAwardsUpdater (Campaign campaign, AARPersonnelAwards personnelAwards) 
+	public CampaignPilotAwardsUpdater (Campaign campaign, CampaignUpdateData campaignUpdateData) 
 	{
         this.campaign = campaign;
-        this.personnelAwards = personnelAwards;
+        this.campaignUpdateData = campaignUpdateData;
 	}
 
     
@@ -44,19 +44,19 @@ public class CampaignPilotAwardsUpdater
 
     private void assignMissionsFlown() throws PWCGException
     {
-        for (Integer serialNumber : personnelAwards.getMissionsFlown().keySet())
+        for (Integer serialNumber : campaignUpdateData.getPersonnelAcheivements().getMissionsFlown().keySet())
         {
             SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
-            Integer missionFlown = personnelAwards.getMissionsFlown().get(serialNumber);
+            Integer missionFlown = campaignUpdateData.getPersonnelAcheivements().getMissionsFlown().get(serialNumber);
             pilot.setMissionFlown(missionFlown);
         }
     }
 
     private void assignVictories() throws PWCGException
     {
-        for (Integer serialNumber : personnelAwards.getVictoriesByPilot().keySet())
+        for (Integer serialNumber : campaignUpdateData.getPersonnelAcheivements().getVictoriesByPilot().keySet())
         {
-            for (Victory victory : personnelAwards.getVictoriesByPilot().get(serialNumber)) 
+            for (Victory victory : campaignUpdateData.getPersonnelAcheivements().getVictoriesByPilot().get(serialNumber)) 
             {
                 if (victory.getVictim().getAirOrGround() == Victory.AIR_VICTORY)
                 {
@@ -76,9 +76,9 @@ public class CampaignPilotAwardsUpdater
 
     private void assignMedals() throws PWCGException
     {
-        for (Integer serialNumber : personnelAwards.getCampaignMemberMedals().keySet())
+        for (Integer serialNumber : campaignUpdateData.getPersonnelAwards().getCampaignMemberMedals().keySet())
         {
-            Map<String, Medal> medals = personnelAwards.getCampaignMemberMedals().get(serialNumber);
+            Map<String, Medal> medals = campaignUpdateData.getPersonnelAwards().getCampaignMemberMedals().get(serialNumber);
             for (Medal medal : medals.values())
             {
                 SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
@@ -90,9 +90,9 @@ public class CampaignPilotAwardsUpdater
 
     private void assignPromotions() throws PWCGException
     {
-        for (Integer serialNumber : personnelAwards.getPromotions().keySet())
+        for (Integer serialNumber : campaignUpdateData.getPersonnelAwards().getPromotions().keySet())
         {
-            String rank = personnelAwards.getPromotions().get(serialNumber);
+            String rank = campaignUpdateData.getPersonnelAwards().getPromotions().get(serialNumber);
             SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
             pilot.setRank(rank);
         }
@@ -104,8 +104,11 @@ public class CampaignPilotAwardsUpdater
         SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAINoWounded(campaign.getPersonnelManager().getActiveCampaignMembers(), campaign.getDate());
         for (SquadronMember pilot : squadronMembers.getSquadronMemberCollection().values())
         {
-            PilotSkill pilotSkill = new PilotSkill(campaign);
-            pilotSkill.advancePilotSkillForPerformance(pilot);
+            if (!pilot.isHistoricalAce())
+            {
+                PilotSkill pilotSkill = new PilotSkill(campaign);
+                pilotSkill.advancePilotSkillForPerformance(pilot);
+            }
         }
     }
 

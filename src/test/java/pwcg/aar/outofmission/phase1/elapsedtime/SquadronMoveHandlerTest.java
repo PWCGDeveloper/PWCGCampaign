@@ -9,6 +9,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import pwcg.aar.outofmission.phase4.ElapsedTIme.SquadronMoveHandler;
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;

@@ -35,7 +35,7 @@ public class RussianMedalManager extends BoSMedalManager
         medals.put(HERO_SOVIET_UNION, new Medal ("Hero of the Soviet Union",                  "ussr_hero_of_the_soviet_union.png"));
 	} 
 
-	public Medal getWoundedAward(SquadronMember pilot, ArmedService service) 
+	public Medal awardWoundedAward(SquadronMember pilot, ArmedService service) 
 	{
         return medals.get(WOUND_STRIPE);
 	}

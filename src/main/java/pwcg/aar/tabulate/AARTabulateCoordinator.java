@@ -42,7 +42,7 @@ public class AARTabulateCoordinator
     {
         AARCombatReportTabulateCoordinator combatReportTabulator = new AARCombatReportTabulateCoordinator(campaign, aarContext);
         List<UICombatReportData> combatReportUiDataSet = combatReportTabulator.tabulate();
-        aarContext.setUiCombatReportData(combatReportUiDataSet);
+        aarContext.addUiCombatReportData(combatReportUiDataSet);
     }
 
     private void tabulateFlightDebriefUI() throws PWCGException 

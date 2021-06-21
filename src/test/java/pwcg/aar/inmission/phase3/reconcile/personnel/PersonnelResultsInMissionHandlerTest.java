@@ -51,7 +51,7 @@ public class PersonnelResultsInMissionHandlerTest
         createSquadronMembersInMission();
         createAcesInMission();
         
-        PersonnelResultsInMissionHandler inMissionHandler = new PersonnelResultsInMissionHandler(campaign, evaluationData);
+        PersonnelLossesInMissionHandler inMissionHandler = new PersonnelLossesInMissionHandler(campaign, evaluationData);
         inMissionHandler.personellChanges();
         
         assert(inMissionHandler.personellChanges().getPersonnelKilled().size() == 1);

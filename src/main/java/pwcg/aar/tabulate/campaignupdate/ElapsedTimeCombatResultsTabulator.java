@@ -43,14 +43,8 @@ public class ElapsedTimeCombatResultsTabulator
 
     private void createLossesForPilots() throws PWCGException
     {
-        Map<Integer, PilotStatusEvent> pilotsLostInMission = pilotStatusEventGenerator.createPilotLossEvents(aarContext.getReconciledInMissionData().getPersonnelLossesInMission());
+        Map<Integer, PilotStatusEvent> pilotsLostInMission = pilotStatusEventGenerator.createPilotLossEvents(aarContext.getPersonnelLosses());
         for (PilotStatusEvent pilotLostEvent : pilotsLostInMission.values())
-        {
-            elapsedTimeCombatResultsData.addPilotLost(pilotLostEvent);
-        }
-        
-        Map<Integer, PilotStatusEvent> pilotsLostOutOfMission = pilotStatusEventGenerator.createPilotLossEvents(aarContext.getReconciledOutOfMissionData().getPersonnelLossesOutOfMission());
-        for (PilotStatusEvent pilotLostEvent : pilotsLostOutOfMission.values())
         {
             elapsedTimeCombatResultsData.addPilotLost(pilotLostEvent);
         }
@@ -58,14 +52,8 @@ public class ElapsedTimeCombatResultsTabulator
 
     private void createLossesForEquipment() throws PWCGException
     {
-        Map<Integer, PlaneStatusEvent> planesLostInMission = planeStatusEventGenerator.createPlaneLossEvents(aarContext.getReconciledInMissionData().getEquipmentLossesInMission());
+        Map<Integer, PlaneStatusEvent> planesLostInMission = planeStatusEventGenerator.createPlaneLossEvents(aarContext.getEquipmentLosses());
         for (PlaneStatusEvent planeLostEvent : planesLostInMission.values())
-        {
-            elapsedTimeCombatResultsData.addPlaneLost(planeLostEvent);
-        }
-        
-        Map<Integer, PlaneStatusEvent> planesLostOutOfMission = planeStatusEventGenerator.createPlaneLossEvents(aarContext.getReconciledOutOfMissionData().getEquipmentLossesOutOfMission());
-        for (PlaneStatusEvent planeLostEvent : planesLostOutOfMission.values())
         {
             elapsedTimeCombatResultsData.addPlaneLost(planeLostEvent);
         }
@@ -73,16 +61,9 @@ public class ElapsedTimeCombatResultsTabulator
 
     private void createVictoryEventsForSquadronMembers() throws PWCGException
     {
-        Map<Integer, List<Victory>> victoryAwardByPilotInMission = aarContext.getReconciledInMissionData().getReconciledVictoryData().getVictoryAwardsByPilot();
+        Map<Integer, List<Victory>> victoryAwardByPilotInMission = aarContext.getReconciledMissionVictoryData().getVictoryAwardsByPilot();
         List<VictoryEvent> victoriesInMission = victoryEventGenerator.createPilotVictoryEvents(victoryAwardByPilotInMission);
         for (VictoryEvent victoryEvent : victoriesInMission)
-        {
-            elapsedTimeCombatResultsData.addVictory(victoryEvent);
-        }
-        
-        Map<Integer, List<Victory>> victoryAwardByPilotOutOfMission = aarContext.getReconciledOutOfMissionData().getPersonnelAwards().getVictoriesByPilot();
-        List<VictoryEvent> victoriesOutOfMission = victoryEventGenerator.createPilotVictoryEvents(victoryAwardByPilotOutOfMission);
-        for (VictoryEvent victoryEvent : victoriesOutOfMission)
         {
             elapsedTimeCombatResultsData.addVictory(victoryEvent);
         }

@@ -63,7 +63,7 @@ public class MedalPanelEventTabulatorTest extends AARTestSetup
 
         medalsAwarded.put(pilot1.getSerialNumber(), new HashMap<String, Medal>());
         medalsAwarded.put(pilot2.getSerialNumber(), new HashMap<String, Medal>());
-        Mockito.when(campaignMemberAwardsInMission.getCampaignMemberMedals()).thenReturn(medalsAwarded);
+        Mockito.when(personnelAwards.getCampaignMemberMedals()).thenReturn(medalsAwarded);
 
         Map<Integer, Medal> frenchMedals = medalManager.getMedals();
         Medal cdg = frenchMedals.get(FrenchMedalManager.CROIX_DE_GUERRE);
@@ -89,7 +89,7 @@ public class MedalPanelEventTabulatorTest extends AARTestSetup
 
         medalsAwarded.put(pilot1.getSerialNumber(), new HashMap<String, Medal>());
         medalsAwarded.put(pilot2.getSerialNumber(), new HashMap<String, Medal>());
-        Mockito.when(campaignMemberAwardsOutOfMission.getCampaignMemberMedals()).thenReturn(medalsAwarded);
+        Mockito.when(personnelAwards.getCampaignMemberMedals()).thenReturn(medalsAwarded);
 
         Map<Integer, Medal> frenchMedals = medalManager.getMedals();
         Medal cdg = frenchMedals.get(FrenchMedalManager.CROIX_DE_GUERRE);
@@ -115,7 +115,7 @@ public class MedalPanelEventTabulatorTest extends AARTestSetup
 
         medalsAwarded.put(pilot1.getSerialNumber(), new HashMap<String, Medal>());
         medalsAwarded.put(pilot2.getSerialNumber(), new HashMap<String, Medal>());
-        Mockito.when(campaignMemberAwardsOutOfMission.getCampaignMemberMedals()).thenReturn(medalsAwarded);
+        Mockito.when(personnelAwards.getCampaignMemberMedals()).thenReturn(medalsAwarded);
 
         FrenchMedalManager frenchMedalManager = new FrenchMedalManager(campaign);
         Medal cdg = frenchMedalManager.getMedal(FrenchMedalManager.CROIX_DE_GUERRE);

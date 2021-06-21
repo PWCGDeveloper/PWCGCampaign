@@ -23,7 +23,7 @@ public class CampaignUpdater
 
 	public void updateCampaign() throws PWCGException 
     {
-        CampaignPilotAwardsUpdater pilotUpdater = new CampaignPilotAwardsUpdater(campaign, aarContext.getCampaignUpdateData().getPersonnelAwards());
+        CampaignPilotAwardsUpdater pilotUpdater = new CampaignPilotAwardsUpdater(campaign, aarContext.getCampaignUpdateData());
         pilotUpdater.updatesForMissionEvents();
         
         CampaignAceUpdater aceUpdater = new CampaignAceUpdater(campaign, aarContext.getCampaignUpdateData().getPersonnelAwards().getHistoricalAceAwards().getAceVictories());

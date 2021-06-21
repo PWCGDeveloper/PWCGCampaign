@@ -78,7 +78,7 @@ public class GermanMedalManager extends FCMedalManager
 		medals.put(NAVAL_WOUND_BADGE_SILVER, new Medal ("N. Wound Badge(Silver)", 	"NSWB.jpg"));
 	} 
 
-	public Medal getWoundedAward(SquadronMember pilot, ArmedService service) 
+	public Medal awardWoundedAward(SquadronMember pilot, ArmedService service) 
 	{
 		if (service.getServiceId() == FCServiceManager.DEUTSCHE_LUFTSTREITKRAFTE)
 		{

@@ -25,7 +25,7 @@ public abstract class MedalManager implements IMedalManager
     protected abstract Medal awardWings(SquadronMember pilot)  ;
 
 	@Override
-	public abstract Medal getWoundedAward(SquadronMember pilot, ArmedService service);
+	public abstract Medal awardWoundedAward(SquadronMember pilot, ArmedService service);
 
 	protected Campaign campaign = null;
 	

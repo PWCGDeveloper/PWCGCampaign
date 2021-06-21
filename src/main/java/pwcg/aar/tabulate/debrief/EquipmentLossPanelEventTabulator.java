@@ -1,6 +1,5 @@
 package pwcg.aar.tabulate.debrief;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import pwcg.aar.data.AARContext;
@@ -26,20 +25,9 @@ public class EquipmentLossPanelEventTabulator
     public AAREquipmentLossPanelData tabulateForAAREquipmentLossPanel() throws PWCGException
     {
         PlaneStatusEventGenerator planeLossEventGenerator = new PlaneStatusEventGenerator(campaign);
-        Map<Integer, PlaneStatusEvent> allPlanesLost = determineAllPlanesLostInMission(planeLossEventGenerator);
+        Map<Integer, PlaneStatusEvent> allPlanesLost = planeLossEventGenerator.createPlaneLossEvents(aarContext.getEquipmentLosses());
         equipmentLossPanelData.setEquipmentLost(allPlanesLost);
                 
         return equipmentLossPanelData;
-    }
-
-    private Map<Integer, PlaneStatusEvent> determineAllPlanesLostInMission(PlaneStatusEventGenerator planeLossEventGenerator) throws PWCGException
-    {
-        Map<Integer, PlaneStatusEvent> allPlanesLost = new HashMap<>();
-        Map<Integer, PlaneStatusEvent> planesLostInMission = planeLossEventGenerator.createPlaneLossEvents(aarContext.getReconciledInMissionData().getEquipmentLossesInMission());
-        allPlanesLost.putAll(planesLostInMission);
-        
-        Map<Integer, PlaneStatusEvent> planesLostElapsedTime = planeLossEventGenerator.createPlaneLossEvents(aarContext.getReconciledOutOfMissionData().getEquipmentLossesOutOfMission());
-        allPlanesLost.putAll(planesLostElapsedTime);
-        return allPlanesLost;
     }
 }

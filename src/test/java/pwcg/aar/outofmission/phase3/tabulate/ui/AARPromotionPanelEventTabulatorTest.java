@@ -29,42 +29,15 @@ public class AARPromotionPanelEventTabulatorTest extends AARTestSetup
     }
 
     @Test
-    public void testPromotionsAwardedOutOfMission() throws PWCGException 
-    {
-        promotionsAwarded.put(SerialNumber.AI_STARTING_SERIAL_NUMBER+1, "Sergent");
-        promotionsAwarded.put(SerialNumber.AI_STARTING_SERIAL_NUMBER+2,"Lieutenant");
-        Mockito.when(campaignMemberAwardsOutOfMission.getPromotions()).thenReturn(promotionsAwarded);
-
-        PromotionPanelEventTabulator promotionPanelEventTabulator = new PromotionPanelEventTabulator(campaign, aarContext);
-        AARPromotionPanelData promotionPanelData = promotionPanelEventTabulator.tabulateForAARPromotionPanel();
-        
-        assert(promotionPanelData.getPromotionEventsDuringElapsedTime().size() == 2);
-    }
-
-    @Test
-    public void testPromotionsAwardedInMission() throws PWCGException 
-    {
-        promotionsAwarded.put(SerialNumber.AI_STARTING_SERIAL_NUMBER+1, "Sergent");
-        promotionsAwarded.put(SerialNumber.AI_STARTING_SERIAL_NUMBER+2,"Lieutenant");
-        Mockito.when(campaignMemberAwardsInMission.getPromotions()).thenReturn(promotionsAwarded);
-
-        PromotionPanelEventTabulator promotionPanelEventTabulator = new PromotionPanelEventTabulator(campaign, aarContext);
-        AARPromotionPanelData promotionPanelData = promotionPanelEventTabulator.tabulateForAARPromotionPanel();
-        
-        assert(promotionPanelData.getPromotionEventsDuringElapsedTime().size() == 2);
-    }
-
-    @Test
     public void testPromotionsAwardedCombined() throws PWCGException 
     {
         promotionsAwarded.put(SerialNumber.AI_STARTING_SERIAL_NUMBER+1, "Sergent");
         promotionsAwarded.put(SerialNumber.AI_STARTING_SERIAL_NUMBER+2,"Lieutenant");
-        Mockito.when(campaignMemberAwardsInMission.getPromotions()).thenReturn(promotionsAwarded);
-        Mockito.when(campaignMemberAwardsOutOfMission.getPromotions()).thenReturn(promotionsAwarded);
+        Mockito.when(personnelAwards.getPromotions()).thenReturn(promotionsAwarded);
 
         PromotionPanelEventTabulator promotionPanelEventTabulator = new PromotionPanelEventTabulator(campaign, aarContext);
         AARPromotionPanelData promotionPanelData = promotionPanelEventTabulator.tabulateForAARPromotionPanel();
         
-        assert(promotionPanelData.getPromotionEventsDuringElapsedTime().size() == 4);
+        assert(promotionPanelData.getPromotionEventsDuringElapsedTime().size() == 2);
     }
 }

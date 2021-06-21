@@ -26,9 +26,9 @@ public class ExpectedResults
 
     public void buildExpectedResultsFromAARContext(AARContext aarContext)
     {
-        addLostPilots(aarContext.getReconciledOutOfMissionData().getPersonnelLossesOutOfMission().getPersonnelKilled());
-        addLostPilots(aarContext.getReconciledOutOfMissionData().getPersonnelLossesOutOfMission().getPersonnelCaptured());
-        addLostPilots(aarContext.getReconciledOutOfMissionData().getPersonnelLossesOutOfMission().getPersonnelMaimed());
+        addLostPilots(aarContext.getPersonnelLosses().getPersonnelKilled());
+        addLostPilots(aarContext.getPersonnelLosses().getPersonnelCaptured());
+        addLostPilots(aarContext.getPersonnelLosses().getPersonnelMaimed());
     }
 
     private void addLostPilots(Map<Integer, SquadronMember> killedPilots)

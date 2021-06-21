@@ -46,14 +46,14 @@ public class TransferPanelEventTabulator
 
     private List<TransferEvent> transferAces(TransferEventGenerator transferEventGenerator) throws PWCGException
     {
-        List <TransferRecord> acesTransferredIn = aarContext.getReconciledOutOfMissionData().getResupplyData().getAcesTransferred().getSquadronMembersTransferred();
+        List <TransferRecord> acesTransferredIn = aarContext.getResupplyData().getAcesTransferred().getSquadronMembersTransferred();
         List<TransferEvent> transferEventsForAces = transferEventGenerator.createPilotTransferEvents(acesTransferredIn);
         return transferEventsForAces;
     }
 
     private List<TransferEvent> transferSquadronMembers(TransferEventGenerator transferEventGenerator) throws PWCGException
     {
-        List <TransferRecord> squadronMembersTransferredIn = aarContext.getReconciledOutOfMissionData().getResupplyData().getSquadronTransferData().getSquadronMembersTransferred();
+        List <TransferRecord> squadronMembersTransferredIn = aarContext.getResupplyData().getSquadronTransferData().getSquadronMembersTransferred();
         List<TransferEvent> transferEventsForSquadronMembers = transferEventGenerator.createPilotTransferEvents(squadronMembersTransferredIn);
         return transferEventsForSquadronMembers;
     }

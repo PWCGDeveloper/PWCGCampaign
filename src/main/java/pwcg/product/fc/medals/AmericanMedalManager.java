@@ -41,7 +41,7 @@ public class AmericanMedalManager extends FCMedalManager
         return null;
     }
 
-	public Medal getWoundedAward(SquadronMember pilot, ArmedService service) 
+	public Medal awardWoundedAward(SquadronMember pilot, ArmedService service) 
 	{
 		return medals.get(WOUND_CHEVRON);
 	}

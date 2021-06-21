@@ -8,13 +8,12 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import pwcg.aar.data.AARContext;
+import pwcg.aar.data.AARPersonnelAcheivements;
 import pwcg.aar.data.AARPersonnelAwards;
 import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.aar.data.CampaignUpdateData;
-import pwcg.aar.inmission.phase3.reconcile.ReconciledInMissionData;
-import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledVictoryData;
-import pwcg.aar.outofmission.phase1.elapsedtime.ReconciledOutOfMissionData;
-import pwcg.aar.outofmission.phase2.resupply.AARResupplyData;
+import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledMissionVictoryData;
+import pwcg.aar.outofmission.phase3.resupply.AARResupplyData;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.aar.prelim.PwcgMissionDataEvaluator;
@@ -52,14 +51,11 @@ public abstract class AARTestSetup
     @Mock protected MissionHeader missionHeader;
     @Mock protected AARPreliminaryData preliminaryData;
     @Mock protected SquadronMembers campaignMembersInMission;
-    @Mock protected ReconciledInMissionData reconciledInMissionData;
-    @Mock protected ReconciledVictoryData reconciledVictoryData;
-    @Mock protected ReconciledOutOfMissionData reconciledOutOfMissionData;
-    @Mock protected AARPersonnelLosses personnelLossesOutOfMissionData;
-    @Mock protected AARPersonnelLosses personnelLossesInMissionData;
+    @Mock protected ReconciledMissionVictoryData reconciledVictoryData;
+    @Mock protected AARPersonnelLosses personnelLosses;
     @Mock protected AARPersonnelLosses personnelLossesCampaignUpdate;
-    @Mock protected AARPersonnelAwards campaignMemberAwardsInMission;
-    @Mock protected AARPersonnelAwards campaignMemberAwardsOutOfMission;
+    @Mock protected AARPersonnelAwards personnelAwards;
+    @Mock protected AARPersonnelAcheivements personnelAcheivements;
     @Mock protected AARPersonnelAwards campaignMemberAwardsCampaignUpdate;
     @Mock protected AARResupplyData transferData;
     @Mock protected SquadronTransferData acesTransferred;
@@ -92,7 +88,6 @@ public abstract class AARTestSetup
         mockCampaign();        
         mockAARContext();
         mockPreliminaryData();
-        mockInMissionData();        
         mockOutOfMissionData();
         mockCampaignUpdate();
         mockPersonnel();
@@ -132,22 +127,14 @@ public abstract class AARTestSetup
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
         Mockito.when(aarContext.getNewDate()).thenReturn(DateUtils.getDateYYYYMMDD("19170901"));
         Mockito.when(aarContext.getCampaignUpdateData()).thenReturn(campaignUpdateData);
-        Mockito.when(aarContext.getReconciledInMissionData()).thenReturn(reconciledInMissionData);
-        Mockito.when(aarContext.getReconciledOutOfMissionData()).thenReturn(reconciledOutOfMissionData);
-    }
-
-    private void mockInMissionData()
-    {
-        Mockito.when(reconciledInMissionData.getPersonnelLossesInMission()).thenReturn(personnelLossesInMissionData);
-        Mockito.when(reconciledInMissionData.getPersonnelAwards()).thenReturn(campaignMemberAwardsInMission);
+        Mockito.when(aarContext.getPersonnelLosses()).thenReturn(personnelLosses);
+        Mockito.when(aarContext.getPersonnelAwards()).thenReturn(personnelAwards);
+        Mockito.when(aarContext.getPersonnelAcheivements()).thenReturn(personnelAcheivements);
+        Mockito.when(aarContext.getResupplyData()).thenReturn(transferData);
     }
 
     private void mockOutOfMissionData()
     {
-        Mockito.when(reconciledOutOfMissionData.getPersonnelLossesOutOfMission()).thenReturn(personnelLossesOutOfMissionData);
-        Mockito.when(reconciledOutOfMissionData.getPersonnelAwards()).thenReturn(campaignMemberAwardsOutOfMission);
-        Mockito.when(reconciledOutOfMissionData.getResupplyData()).thenReturn(transferData);
-        
         Mockito.when(transferData.getAcesTransferred()).thenReturn(acesTransferred);
         Mockito.when(transferData.getSquadronTransferData()).thenReturn(squadronMembersTransferred);
     }

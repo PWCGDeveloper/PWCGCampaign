@@ -1,6 +1,5 @@
 package pwcg.aar.tabulate.debrief;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.aar.data.AARContext;
@@ -26,14 +25,10 @@ public class MedalPanelEventTabulator
     public AARMedalPanelData tabulateForAARMedalPanel() throws PWCGException
     {
         MedalEventGenerator medalEventGenerator = new MedalEventGenerator(campaign);
-        List<MedalEvent> medalEventsForCampaignMembersOutOfMission = medalEventGenerator.createPilotMedalEvents(aarContext.getReconciledOutOfMissionData().getPersonnelAwards().getCampaignMemberMedals());
-        List<MedalEvent> medalEventsForCampaignMembersInMission = medalEventGenerator.createPilotMedalEvents(aarContext.getReconciledInMissionData().getPersonnelAwards().getCampaignMemberMedals());
+        List<MedalEvent> medalEventsForCampaignMembers = medalEventGenerator.createPilotMedalEvents(aarContext.getPersonnelAwards().getCampaignMemberMedals());
         
-        if (!medalEventsForCampaignMembersOutOfMission.isEmpty() || !medalEventsForCampaignMembersInMission.isEmpty())
+        if (!medalEventsForCampaignMembers.isEmpty())
         {
-            List<MedalEvent> medalEventsForCampaignMembers = new ArrayList<>();
-            medalEventsForCampaignMembers.addAll(medalEventsForCampaignMembersOutOfMission);
-            medalEventsForCampaignMembers.addAll(medalEventsForCampaignMembersInMission);
             medalPanelData.setMedalsAwarded(medalEventsForCampaignMembers);
         }
         return medalPanelData;

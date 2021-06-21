@@ -39,7 +39,7 @@ public class GermanMedalManager extends BoSMedalManager
 		medals.put(WOUND_BADGE_GOLD, new Medal ("Wound Badge(Gold)", 		"ger_wound_badge_gold.png"));
 	} 
 
-	public Medal getWoundedAward(SquadronMember pilot, ArmedService service) 
+	public Medal awardWoundedAward(SquadronMember pilot, ArmedService service) 
 	{
 	    if (!hasMedal(pilot, medals.get(WOUND_BADGE_BLACK)))
 	    {

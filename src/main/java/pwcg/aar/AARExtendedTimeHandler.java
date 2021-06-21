@@ -3,7 +3,6 @@ package pwcg.aar;
 import java.util.Date;
 
 import pwcg.aar.data.AARContext;
-import pwcg.aar.data.ExtendedTimeReason;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -23,7 +22,6 @@ public class AARExtendedTimeHandler
     {
         Date dateAfterLeave = DateUtils.advanceTimeDays(campaign.getDate(), timePassedDays);
         stepToNewDate(dateAfterLeave);
-        aarContext.setReasonForExtendedTime(ExtendedTimeReason.LEAVE);
         campaign.setCurrentMission(null);
     }
 
@@ -31,7 +29,6 @@ public class AARExtendedTimeHandler
     {
         Date dateAfterLeave = DateUtils.advanceTimeDays(campaign.getDate(), timePassedDays);
         stepToNewDate(dateAfterLeave);
-        aarContext.setReasonForExtendedTime(ExtendedTimeReason.TRANSFER);
         campaign.setCurrentMission(null);
     }
 

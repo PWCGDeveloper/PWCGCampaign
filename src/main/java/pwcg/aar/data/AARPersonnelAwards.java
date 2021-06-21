@@ -1,34 +1,17 @@
 package pwcg.aar.data;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import pwcg.aar.outofmission.phase1.elapsedtime.HistoricalAceAwards;
+import pwcg.aar.outofmission.phase2.awards.HistoricalAceAwards;
 import pwcg.campaign.medals.Medal;
-import pwcg.campaign.squadmember.Victory;
 
 public class AARPersonnelAwards
 {
-    private Map<Integer, Map<String, Medal>> medalsAwarded = new HashMap<>();
     private Map<Integer, String> promotions = new HashMap<>();
-    private Map<Integer, Integer> missionsFlown = new HashMap<>();
-    private Map<Integer, List<Victory>> victoryAwardByPilot = new HashMap<>();
+    private Map<Integer, Map<String, Medal>> medalsAwarded = new HashMap<>();
     private HistoricalAceAwards historicalAceAwards = new HistoricalAceAwards();
 
-    public void addVictoryAwardByPilot(Integer serialNumber, Victory victory)
-    {
-        if (!victoryAwardByPilot.containsKey(serialNumber))
-        {
-            victoryAwardByPilot.put(serialNumber, new ArrayList<Victory>());
-        }
-        
-        List<Victory> victoriesForPilot = victoryAwardByPilot.get(serialNumber);
-        victoriesForPilot.add(victory);
-    }
-    
-    
     public void addMedal(Integer serialNumber, Medal medal)
     {
         if (!medalsAwarded.containsKey(serialNumber))
@@ -40,11 +23,6 @@ public class AARPersonnelAwards
         medalsForPilot.put(medal.getMedalName(), medal);
     }
 
-    public void addMissionsFlown(Integer serialNumber, Integer newMissionsFlown)
-    {
-        missionsFlown.put(serialNumber, newMissionsFlown);
-    }
-
     public void addPromotion(Integer serialNumber, String promotion)
     {
         promotions.put(serialNumber, promotion);
@@ -54,8 +32,6 @@ public class AARPersonnelAwards
 	public void merge(AARPersonnelAwards sourcePersonnelAwards)
 	{
 		mergeMedals(sourcePersonnelAwards.getMedalsAwarded());
-		mergeVictories(sourcePersonnelAwards.getVictoriesByPilot());
-        missionsFlown.putAll(sourcePersonnelAwards.getMissionsFlown());
         promotions.putAll(sourcePersonnelAwards.getPromotions());
         historicalAceAwards.merge(sourcePersonnelAwards.getHistoricalAceAwards());
 	}
@@ -75,21 +51,6 @@ public class AARPersonnelAwards
 		}
 	}
 
-	public void mergeVictories(Map<Integer, List<Victory>> sourceVictoryAwardByPilot)
-	{
-		for (Integer serialNumber : sourceVictoryAwardByPilot.keySet())
-		{
-            if (!victoryAwardByPilot.containsKey(serialNumber))
-            {
-                victoryAwardByPilot.put(serialNumber, new ArrayList<Victory>());
-            }
-
-            List<Victory> sourceVictoriesForPilot = sourceVictoryAwardByPilot.get(serialNumber);
-            List<Victory> victoriesForPilot = victoryAwardByPilot.get(serialNumber);
-            victoriesForPilot.addAll(sourceVictoriesForPilot);
-		}
-	}
-	
     public Map<Integer, Map<String, Medal>> getCampaignMemberMedals()
     {
         return medalsAwarded;
@@ -98,26 +59,6 @@ public class AARPersonnelAwards
     public Map<Integer, String> getPromotions()
     {
         return promotions;
-    }
-    
-    public Map<Integer, Integer> getMissionsFlown()
-    {
-        return missionsFlown;
-    }
-    
-    public Map<Integer, List<Victory>> getVictoriesByPilot()
-    {
-        return victoryAwardByPilot;
-    }
-    
-    public int getTotalAirToAirVictories()
-    {
-    	int totalAirToAirVictories = 0;
-    	for (List<Victory> victoriesForPilot : victoryAwardByPilot.values())
-    	{
-    		totalAirToAirVictories += victoriesForPilot.size();
-    	}
-        return totalAirToAirVictories;
     }
 
     public Map<Integer, Map<String, Medal>> getMedalsAwarded()

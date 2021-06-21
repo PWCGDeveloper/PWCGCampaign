@@ -2,14 +2,16 @@ package pwcg.aar.inmission;
 
 import java.util.Map;
 
-import pwcg.aar.awards.CampaignMemberAwardsGeneratorInMission;
+import pwcg.aar.CampaignModeAARFactory;
 import pwcg.aar.data.AARContext;
-import pwcg.aar.data.AARPersonnelAwards;
-import pwcg.aar.inmission.phase1.parse.AARLogEvaluationCoordinator;
+import pwcg.aar.data.AAREquipmentLosses;
+import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
 import pwcg.aar.inmission.phase2.logeval.AARPhase2EvaluateCoordinator;
-import pwcg.aar.inmission.phase3.reconcile.AARPhase3ReconcileCoordinator;
-import pwcg.aar.inmission.phase3.reconcile.ReconciledInMissionData;
+import pwcg.aar.inmission.phase3.reconcile.equipment.EquipmentResultsInMissionHandler;
+import pwcg.aar.inmission.phase3.reconcile.personnel.PersonnelLossesInMissionHandler;
+import pwcg.aar.inmission.phase3.reconcile.victories.IClaimResolver;
+import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledMissionVictoryData;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
@@ -19,7 +21,7 @@ public class AARCoordinatorInMission
     private Campaign campaign;
     private AARContext aarContext;
 
-    public AARCoordinatorInMission (Campaign campaign, AARContext aarContext, AARLogEvaluationCoordinator logEvaluationCoordinator)
+    public AARCoordinatorInMission (Campaign campaign, AARContext aarContext)
     {
         this.campaign = campaign;
         this.aarContext = aarContext;
@@ -27,29 +29,37 @@ public class AARCoordinatorInMission
     
     public void coordinateInMissionAAR(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
     {        
-        phase2EvaluateLogEventToCampaignEvents();  
-        phase3ResolveMissionResultsAndPlayerClaims(playerDeclarations);
-        awardsInMission();
+        evaluateMissionEvents();  
+        reconcileVictories(playerDeclarations);
+        personnelChangesInMission();
+        equipmentChangesInMission();
     }
 
-    private void phase2EvaluateLogEventToCampaignEvents() throws PWCGException
+    private void evaluateMissionEvents() throws PWCGException
     {
         AARPhase2EvaluateCoordinator phase2Coordinator =  new AARPhase2EvaluateCoordinator(campaign, aarContext);
         AARMissionEvaluationData missionEvaluationData = phase2Coordinator.evaluateLogEvents();
         aarContext.setMissionEvaluationData(missionEvaluationData);
     }
 
-    private void phase3ResolveMissionResultsAndPlayerClaims(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
+    private void reconcileVictories(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
     {
-        AARPhase3ReconcileCoordinator phase3Coordinator = new AARPhase3ReconcileCoordinator(campaign, aarContext);
-        ReconciledInMissionData reconciledInMissionData = phase3Coordinator.reconcileLogsWithAAR(playerDeclarations);
-        aarContext.setReconciledInMissionData(reconciledInMissionData);
+        IClaimResolver missionResolver = CampaignModeAARFactory.createClaimResolver(campaign, aarContext, playerDeclarations);
+        ReconciledMissionVictoryData reconciledMissionVictoryData = missionResolver.resolvePlayerClaims();
+        aarContext.setReconciledMissionVictoryData(reconciledMissionVictoryData);
     }
 
-    private void awardsInMission() throws PWCGException
+    private void personnelChangesInMission() throws PWCGException 
     {
-        CampaignMemberAwardsGeneratorInMission awardsGeneratorInMission = new CampaignMemberAwardsGeneratorInMission(campaign, aarContext);
-        AARPersonnelAwards personnelAwards = awardsGeneratorInMission.createCampaignMemberAwards();
-        aarContext.getReconciledInMissionData().setPersonnelAwards(personnelAwards);
+        PersonnelLossesInMissionHandler personnelHandler = new PersonnelLossesInMissionHandler(campaign, aarContext.getMissionEvaluationData());
+        AARPersonnelLosses personnelResultsInMission = personnelHandler.personellChanges();
+        aarContext.addPersonnelLosses(personnelResultsInMission);
+    }
+
+    private void equipmentChangesInMission() throws PWCGException 
+    {
+        EquipmentResultsInMissionHandler equipmentHandler = new EquipmentResultsInMissionHandler(aarContext.getMissionEvaluationData());
+        AAREquipmentLosses equipmentResultsInMission = equipmentHandler.equipmentChanges();
+        aarContext.addEquipmentLossesInMission(equipmentResultsInMission);
     }
 }

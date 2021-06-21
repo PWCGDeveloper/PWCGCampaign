@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import pwcg.aar.outofmission.phase2.awards.HistoricalAceAwards;
+import pwcg.aar.outofmission.phase2.awards.HistoricalAceAwardsGenerator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;

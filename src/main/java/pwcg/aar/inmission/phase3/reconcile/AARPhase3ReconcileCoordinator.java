@@ -9,7 +9,7 @@ import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.aar.inmission.phase3.reconcile.equipment.EquipmentResultsInMissionHandler;
 import pwcg.aar.inmission.phase3.reconcile .personnel.PersonnelResultsInMissionHandler;
 import pwcg.aar.inmission.phase3.reconcile.victories.IClaimResolver;
-import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledVictoryData;
+import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledMissionVictoryData;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
@@ -18,7 +18,6 @@ public class AARPhase3ReconcileCoordinator
 {
     private Campaign campaign;
     private AARContext aarContext; 
-    private ReconciledInMissionData reconciledInMissionData = new ReconciledInMissionData();
     
     public AARPhase3ReconcileCoordinator(
                     Campaign campaign, 
@@ -40,8 +39,8 @@ public class AARPhase3ReconcileCoordinator
     private void reconcileVictories(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
     {
         IClaimResolver missionResolver = CampaignModeAARFactory.createClaimResolver(campaign, aarContext, playerDeclarations);
-        ReconciledVictoryData reconciledVictoryData = missionResolver.resolvePlayerClaims();
-        reconciledInMissionData.setReconciledVictoryData(reconciledVictoryData);
+        ReconciledMissionVictoryData reconciledVictoryData = missionResolver.resolvePlayerClaims();
+        aarContext.setReconciledMissionVictoryData(reconciledVictoryData);
     }
 
     private void personnelChangesInMission() throws PWCGException 

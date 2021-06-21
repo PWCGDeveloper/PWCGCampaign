@@ -10,7 +10,7 @@ import pwcg.core.exception.PWCGException;
 
 public interface IMedalManager
 {
-	Medal getWoundedAward(SquadronMember pilot, ArmedService service);
+	Medal awardWoundedAward(SquadronMember pilot, ArmedService service);
 	Medal award(Campaign campaign, SquadronMember pilot, ArmedService service, int victoriesThisMission) throws PWCGException;
 	boolean hasMedal(SquadronMember pilot, Medal medal);
 	List<MedalManager> getAllManagers(Campaign campaign);

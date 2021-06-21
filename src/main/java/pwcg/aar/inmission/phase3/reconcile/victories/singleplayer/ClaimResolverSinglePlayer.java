@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.aar.inmission.phase3.reconcile.victories.IClaimResolver;
-import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledVictoryData;
+import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledMissionVictoryData;
 import pwcg.aar.inmission.phase3.reconcile.victories.common.ConfirmedVictories;
 import pwcg.aar.inmission.phase3.reconcile.victories.common.VictoryEventHandler;
 import pwcg.aar.ui.events.model.ClaimDeniedEvent;
@@ -17,7 +17,7 @@ public class ClaimResolverSinglePlayer implements IClaimResolver
     private Campaign campaign;
     private VerifiedVictoryGenerator verifiedVictoryGenerator;
     private ClaimDenier claimDenier;
-    private ReconciledVictoryData reconciledMissionData = new ReconciledVictoryData();
+    private ReconciledMissionVictoryData reconciledMissionData = new ReconciledMissionVictoryData();
     private Map<Integer, PlayerDeclarations> playerDeclarations;
 
     public ClaimResolverSinglePlayer(
@@ -33,7 +33,7 @@ public class ClaimResolverSinglePlayer implements IClaimResolver
     }
 
     @Override
-    public ReconciledVictoryData resolvePlayerClaims() throws PWCGException
+    public ReconciledMissionVictoryData resolvePlayerClaims() throws PWCGException
     {
         confirmVictories(playerDeclarations);
         claimsDenied(playerDeclarations);       

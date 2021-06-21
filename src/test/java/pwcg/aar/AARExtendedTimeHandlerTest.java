@@ -10,7 +10,6 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.data.AARContext;
-import pwcg.aar.data.ExtendedTimeReason;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
@@ -139,7 +138,6 @@ public class AARExtendedTimeHandlerTest
         extendedTimeHandler.timePassedForLeave(21);
         Date endCampaignDate = campaign.getDate();
         
-        assert (aarContext.getReasonForExtendedTime() == ExtendedTimeReason.LEAVE);
         assert(endCampaignDate.after(startCampaignDate));
         int daysPassed = DateUtils.daysDifference(startCampaignDate, endCampaignDate);
         assert(daysPassed > 19);
@@ -154,7 +152,6 @@ public class AARExtendedTimeHandlerTest
         extendedTimeHandler.timePassedForTransfer(10);
         Date endCampaignDate = campaign.getDate();
         
-        assert (aarContext.getReasonForExtendedTime() == ExtendedTimeReason.TRANSFER);
         assert(endCampaignDate.after(startCampaignDate));
         int daysPassed = DateUtils.daysDifference(startCampaignDate, endCampaignDate);
         assert(daysPassed >= 9);

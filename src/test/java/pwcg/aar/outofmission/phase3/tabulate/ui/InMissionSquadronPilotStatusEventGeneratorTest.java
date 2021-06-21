@@ -57,11 +57,11 @@ public class InMissionSquadronPilotStatusEventGeneratorTest extends AARTestSetup
         Ace ace1 = MissionEntityBuilder.makeDeadAceWithVictories("Ace A", SerialNumber.ACE_STARTING_SERIAL_NUMBER+1, AcesKilledEventGenerator.NUM_VICTORIES_FOR_ACE_TO_BE_NEWSWORTHY, campaign.getDate());
         squadronMembersCapturedInMission.put(ace1.getSerialNumber(), ace1);
         
-        Mockito.when(personnelLossesInMissionData.getPersonnelKilled()).thenReturn(squadronMembersKilledInMission);
-        Mockito.when(personnelLossesInMissionData.getPersonnelCaptured()).thenReturn(squadronMembersCapturedInMission);
-        Mockito.when(personnelLossesInMissionData.getPersonnelMaimed()).thenReturn(squadronMembersMaimedInMission);
-        Mockito.when(personnelLossesInMissionData.getPersonnelWounded()).thenReturn(squadronMembersWoundedInMission);
-        Mockito.when(personnelLossesInMissionData.getAcesKilled()).thenReturn(acesKilledMissionSquadronInMission);
+        Mockito.when(personnelLosses.getPersonnelKilled()).thenReturn(squadronMembersKilledInMission);
+        Mockito.when(personnelLosses.getPersonnelCaptured()).thenReturn(squadronMembersCapturedInMission);
+        Mockito.when(personnelLosses.getPersonnelMaimed()).thenReturn(squadronMembersMaimedInMission);
+        Mockito.when(personnelLosses.getPersonnelWounded()).thenReturn(squadronMembersWoundedInMission);
+        Mockito.when(personnelLosses.getAcesKilled()).thenReturn(acesKilledMissionSquadronInMission);
     }
     
 	@Test
@@ -71,7 +71,7 @@ public class InMissionSquadronPilotStatusEventGeneratorTest extends AARTestSetup
         squadronMembersKilledInMission.put(player.getSerialNumber(), player);
 
         PilotStatusEventGenerator inMissionSquadronPilotStatusEventGenerator = new PilotStatusEventGenerator(campaign);
-        Map<Integer, PilotStatusEvent> pilotsLostInMission = inMissionSquadronPilotStatusEventGenerator.createPilotLossEvents(personnelLossesInMissionData);
+        Map<Integer, PilotStatusEvent> pilotsLostInMission = inMissionSquadronPilotStatusEventGenerator.createPilotLossEvents(personnelLosses);
         
         assert(pilotsLostInMission.size() == 6);
 	}
@@ -84,7 +84,7 @@ public class InMissionSquadronPilotStatusEventGeneratorTest extends AARTestSetup
         squadronMembersMaimedInMission.put(player.getSerialNumber(), player);
 
         PilotStatusEventGenerator inMissionSquadronPilotStatusEventGenerator = new PilotStatusEventGenerator(campaign);
-        Map<Integer, PilotStatusEvent> pilotsLostInMission = inMissionSquadronPilotStatusEventGenerator.createPilotLossEvents(personnelLossesInMissionData);
+        Map<Integer, PilotStatusEvent> pilotsLostInMission = inMissionSquadronPilotStatusEventGenerator.createPilotLossEvents(personnelLosses);
         
         assert(pilotsLostInMission.size() == 6);
     }
@@ -97,7 +97,7 @@ public class InMissionSquadronPilotStatusEventGeneratorTest extends AARTestSetup
         squadronMembersWoundedInMission.put(player.getSerialNumber(), player);
 
         PilotStatusEventGenerator inMissionSquadronPilotStatusEventGenerator = new PilotStatusEventGenerator(campaign);
-        Map<Integer, PilotStatusEvent> pilotsLostInMission = inMissionSquadronPilotStatusEventGenerator.createPilotLossEvents(personnelLossesInMissionData);
+        Map<Integer, PilotStatusEvent> pilotsLostInMission = inMissionSquadronPilotStatusEventGenerator.createPilotLossEvents(personnelLosses);
         
         assert(pilotsLostInMission.size() == 5);
     }
@@ -106,7 +106,7 @@ public class InMissionSquadronPilotStatusEventGeneratorTest extends AARTestSetup
 	public void testPilotAndPlayerOK() throws PWCGException
 	{
         PilotStatusEventGenerator inMissionSquadronPilotStatusEventGenerator = new PilotStatusEventGenerator(campaign);
-        Map<Integer, PilotStatusEvent> pilotsLostInMission = inMissionSquadronPilotStatusEventGenerator.createPilotLossEvents(personnelLossesInMissionData);
+        Map<Integer, PilotStatusEvent> pilotsLostInMission = inMissionSquadronPilotStatusEventGenerator.createPilotLossEvents(personnelLosses);
         
         assert(pilotsLostInMission.size() == 5);
 	}

@@ -54,7 +54,7 @@ public class CombatReportTabulator
 
     private void createDeniedClaims()
     {
-        combatReportPanelData.addClaimsDenied(aarContext.getReconciledInMissionData().getReconciledVictoryData().getPlayerClaimsDenied());        
+        combatReportPanelData.addClaimsDenied(aarContext.getReconciledMissionVictoryData().getPlayerClaimsDenied());        
     }
 
     private void createCrewsInMission() throws PWCGException
@@ -71,7 +71,7 @@ public class CombatReportTabulator
 
     private void createLossesForPilotsInMission() throws PWCGException
     {
-        Map<Integer, PilotStatusEvent> pilotsLostInMission = pilotStatusEventGenerator.createPilotLossEvents(aarContext.getReconciledInMissionData().getPersonnelLossesInMission());
+        Map<Integer, PilotStatusEvent> pilotsLostInMission = pilotStatusEventGenerator.createPilotLossEvents(aarContext.getPersonnelLosses());
         for (PilotStatusEvent pilotLostEvent : pilotsLostInMission.values())
         {
             if (pilotLostEvent.getSquadronId() == squadron.getSquadronId())
@@ -83,7 +83,7 @@ public class CombatReportTabulator
 
     private void createLossesForEquipmentInMission() throws PWCGException
     {
-        Map<Integer, PlaneStatusEvent> planesLostInMission = planeStatusEventGenerator.createPlaneLossEvents(aarContext.getReconciledInMissionData().getEquipmentLossesInMission());
+        Map<Integer, PlaneStatusEvent> planesLostInMission = planeStatusEventGenerator.createPlaneLossEvents(aarContext.getEquipmentLosses());
         for (PlaneStatusEvent planeLostEvent : planesLostInMission.values())
         {
             if (planeLostEvent.getSquadronId() == squadron.getSquadronId())
@@ -95,7 +95,7 @@ public class CombatReportTabulator
 
     private void createVictoryEventsForSquadronMembersInMission() throws PWCGException
     {
-        Map<Integer, List<Victory>> victoryAwardByPilot = aarContext.getReconciledInMissionData().getReconciledVictoryData().getVictoryAwardsByPilot();
+        Map<Integer, List<Victory>> victoryAwardByPilot = aarContext.getReconciledMissionVictoryData().getVictoryAwardsByPilot();
         List<VictoryEvent> victoriesInMission = victoryEventGenerator.createPilotVictoryEvents(victoryAwardByPilot);
         for (VictoryEvent victoryEvent : victoriesInMission)
         {

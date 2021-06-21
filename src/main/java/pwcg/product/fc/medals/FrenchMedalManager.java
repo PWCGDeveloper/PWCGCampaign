@@ -70,7 +70,7 @@ public class FrenchMedalManager extends FCMedalManager
 		medals.put(IBM, new Medal ("Insigne des Blesses Militaires", 		"IBM.jpg"));
 	} 
 
-	public Medal getWoundedAward(SquadronMember pilot, ArmedService service) 
+	public Medal awardWoundedAward(SquadronMember pilot, ArmedService service) 
 	{
 		return medals.get(IBM);
 	}

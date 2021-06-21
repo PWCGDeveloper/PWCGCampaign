@@ -23,7 +23,7 @@ public class AceLeavePanelEventTabulator
         
     public AARAceLeavePanelData tabulateForAARAceLeavePanel() throws PWCGException
     {
-        for (TransferRecord aceTransferRecord : aarContext.getReconciledOutOfMissionData().getResupplyData().getAcesTransferred().
+        for (TransferRecord aceTransferRecord : aarContext.getResupplyData().getAcesTransferred().
                         getSquadronMembersTransferred())
         {
             if (aceTransferRecord.getTransferTo() == SquadronMemberStatus.STATUS_ON_LEAVE)

@@ -32,7 +32,7 @@ public class ItalianMedalManager extends BoSMedalManager
         medals.put(CROSS_MILITARY_VALOR, new Medal ("Cross of Military Valour",            "ita_cross_of_merit_valor.png"));
 	} 
 
-	public Medal getWoundedAward(SquadronMember pilot, ArmedService service) 
+	public Medal awardWoundedAward(SquadronMember pilot, ArmedService service) 
 	{
         return medals.get(WOUND_STRIPE);
 	}
