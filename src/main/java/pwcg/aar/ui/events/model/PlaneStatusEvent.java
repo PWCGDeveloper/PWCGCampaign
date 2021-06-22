@@ -14,6 +14,7 @@ import pwcg.core.utils.DateUtils;
 
 public class PlaneStatusEvent extends AARPilotEvent
 {
+    private int pilotSerialNumber;
     private int planeSerialNumber;
     private String squadronName;
 	private int planeStatus;
@@ -21,6 +22,7 @@ public class PlaneStatusEvent extends AARPilotEvent
     public PlaneStatusEvent(Campaign campaign, LogPlane lostPlane, int planeStatus, boolean isNewsWorthy)
     {
         super(campaign, lostPlane.getSquadronId(), lostPlane.getPilotSerialNumber(), campaign.getDate(), isNewsWorthy);
+        this.pilotSerialNumber = lostPlane.getPilotSerialNumber();
         this.planeSerialNumber = lostPlane.getPlaneSerialNumber();
         this.planeStatus = planeStatus;
         
@@ -94,6 +96,11 @@ public class PlaneStatusEvent extends AARPilotEvent
     public int getPlaneSerialNumber()
     {
         return planeSerialNumber;
+    }
+    
+    public int getPilotSerialNumber()
+    {
+        return pilotSerialNumber;
     }
 
     public String getSquadronName()

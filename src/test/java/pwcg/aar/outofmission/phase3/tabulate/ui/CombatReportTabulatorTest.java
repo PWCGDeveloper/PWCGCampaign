@@ -15,10 +15,11 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.AARTestSetup;
 import pwcg.aar.data.AAREquipmentLosses;
+import pwcg.aar.data.AARPersonnelAcheivements;
 import pwcg.aar.data.AARPersonnelLosses;
+import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
-import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledMissionVictoryData;
-import pwcg.aar.tabulate.combatreport.CombatReportTabulator;
+import pwcg.aar.tabulate.combatreport.AARCombatReportTabulator;
 import pwcg.aar.ui.display.model.AARCombatReportPanelData;
 import pwcg.aar.ui.events.PilotStatusEventGenerator;
 import pwcg.aar.ui.events.PlaneStatusEventGenerator;
@@ -41,11 +42,12 @@ import pwcg.testutils.SquadronTestProfile;
 @RunWith(MockitoJUnitRunner.Silent.class) 
 public class CombatReportTabulatorTest extends AARTestSetup
 {
-    @Mock private ReconciledMissionVictoryData reconciledVictoryData;
     @Mock private SquadronMembers campaignMembersInMission;
     @Mock private PilotStatusEventGenerator pilotStatusEventGenerator;
     @Mock private PlaneStatusEventGenerator planeStatusEventGenerator;
     @Mock private VictoryEventGenerator victoryEventGenerator;
+    @Mock private AARMissionEvaluationData missionEvaluationData;
+    @Mock private AARPersonnelAcheivements personnelAcheivements;
     @Mock private Victory victory;
 
     private Map<Integer, SquadronMember> campaignMembersInMissionMap = new HashMap<>();
@@ -66,9 +68,12 @@ public class CombatReportTabulatorTest extends AARTestSetup
 
         Mockito.when(missionHeader.getMissionFileName()).thenReturn("MissionFileName");
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
+        Mockito.when(aarContext.getMissionEvaluationData()).thenReturn(missionEvaluationData);
+        Mockito.when(aarContext.getPersonnelAcheivements()).thenReturn(personnelAcheivements);
         Mockito.when(preliminaryData.getPwcgMissionData()).thenReturn(pwcgMissionData);
         Mockito.when(preliminaryData.getCampaignMembersInMission()).thenReturn(campaignMembersInMission);
         Mockito.when(campaignMembersInMission.getSquadronMemberCollection()).thenReturn(campaignMembersInMissionMap);
+        Mockito.when(missionEvaluationData.wasPilotInMission(Mockito.anyInt())).thenReturn(true);
         
         Mockito.when(pwcgMissionData.getMissionHeader()).thenReturn(missionHeader);
         
@@ -77,8 +82,7 @@ public class CombatReportTabulatorTest extends AARTestSetup
 
         List<ClaimDeniedEvent> claimsDenied = new ArrayList<>();
         claimsDenied.add(claimDenied);
-        Mockito.when(reconciledVictoryData.getPlayerClaimsDenied()).thenReturn(claimsDenied);
-        Mockito.when(aarContext.getReconciledMissionVictoryData()).thenReturn(reconciledVictoryData);
+        Mockito.when(aarContext.getPersonnelAcheivements().getPlayerClaimsDenied()).thenReturn(claimsDenied);
 
         List<VictoryEvent> victories = new ArrayList<>();
         isNewsWorthy = true;
@@ -104,7 +108,7 @@ public class CombatReportTabulatorTest extends AARTestSetup
         Mockito.when(planeStatusEventGenerator.createPlaneLossEvents(ArgumentMatchers.<AAREquipmentLosses>any())).thenReturn(planesLost);
 
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        CombatReportTabulator combatReportPanelEventTabulator = new CombatReportTabulator(campaign, squadron, aarContext);
+        AARCombatReportTabulator combatReportPanelEventTabulator = new AARCombatReportTabulator(campaign, squadron, aarContext);
         combatReportPanelEventTabulator.setPilotStatusEventGenerator(pilotStatusEventGenerator);
         combatReportPanelEventTabulator.setPlaneStatusEventGenerator(planeStatusEventGenerator);
         combatReportPanelEventTabulator.setVictoryEventGenerator(victoryEventGenerator);

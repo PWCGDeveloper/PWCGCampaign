@@ -7,7 +7,7 @@ import pwcg.aar.data.AARLogEvents;
 import pwcg.aar.data.ui.UIDebriefData;
 import pwcg.aar.outofmission.phase4.ElapsedTIme.ElapsedTimeEventGenerator;
 import pwcg.aar.outofmission.phase4.ElapsedTIme.ElapsedTimeEvents;
-import pwcg.aar.ui.display.model.AARElapsedTimeCombatResultsData;
+import pwcg.aar.ui.display.model.CampaignUpdateEvents;
 import pwcg.aar.ui.events.model.PilotStatusEvent;
 import pwcg.aar.ui.events.model.PlaneStatusEvent;
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
@@ -19,9 +19,9 @@ public class CampaignLogGenerator
 	private Campaign campaign;
     private AARContext aarContext;
     private AARLogEvents campaignLogEvents;
-    private AARElapsedTimeCombatResultsData elapsedTimeCombatResultsData;
+    private CampaignUpdateEvents elapsedTimeCombatResultsData;
 	
-	public CampaignLogGenerator(Campaign campaign, AARContext aarContext, AARElapsedTimeCombatResultsData elapsedTimeCombatResultsData)
+	public CampaignLogGenerator(Campaign campaign, AARContext aarContext, CampaignUpdateEvents elapsedTimeCombatResultsData)
 	{
 		this.campaign = campaign;
         this.aarContext = aarContext;

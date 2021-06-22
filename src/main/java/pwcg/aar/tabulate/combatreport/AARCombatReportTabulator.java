@@ -19,7 +19,7 @@ import pwcg.campaign.squadmember.Victory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
-public class CombatReportTabulator 
+public class AARCombatReportTabulator 
 {
     private Campaign campaign;
     private Squadron squadron;
@@ -30,7 +30,7 @@ public class CombatReportTabulator
     private VictoryEventGenerator victoryEventGenerator;
     private AARCombatReportPanelData combatReportPanelData = new AARCombatReportPanelData();
     
-    public CombatReportTabulator (Campaign campaign, Squadron squadron, AARContext aarContext)
+    public AARCombatReportTabulator (Campaign campaign, Squadron squadron, AARContext aarContext)
     {
         this.aarContext = aarContext;
         this.campaign = campaign;
@@ -54,7 +54,7 @@ public class CombatReportTabulator
 
     private void createDeniedClaims()
     {
-        combatReportPanelData.addClaimsDenied(aarContext.getReconciledMissionVictoryData().getPlayerClaimsDenied());        
+        combatReportPanelData.addClaimsDenied(aarContext.getPersonnelAcheivements().getPlayerClaimsDenied());        
     }
 
     private void createCrewsInMission() throws PWCGException
@@ -74,7 +74,7 @@ public class CombatReportTabulator
         Map<Integer, PilotStatusEvent> pilotsLostInMission = pilotStatusEventGenerator.createPilotLossEvents(aarContext.getPersonnelLosses());
         for (PilotStatusEvent pilotLostEvent : pilotsLostInMission.values())
         {
-            if (pilotLostEvent.getSquadronId() == squadron.getSquadronId())
+            if (isIncludeInCombatReport(pilotLostEvent.getSquadronId(), pilotLostEvent.getPilotSerialNumber()))
             {
                 combatReportPanelData.addPilotLostInMission(pilotLostEvent);
             }
@@ -86,7 +86,7 @@ public class CombatReportTabulator
         Map<Integer, PlaneStatusEvent> planesLostInMission = planeStatusEventGenerator.createPlaneLossEvents(aarContext.getEquipmentLosses());
         for (PlaneStatusEvent planeLostEvent : planesLostInMission.values())
         {
-            if (planeLostEvent.getSquadronId() == squadron.getSquadronId())
+            if (isIncludeInCombatReport(planeLostEvent.getSquadronId(), planeLostEvent.getPilotSerialNumber()))
             {
                 combatReportPanelData.addPlaneLostInMission(planeLostEvent);
             }
@@ -95,15 +95,28 @@ public class CombatReportTabulator
 
     private void createVictoryEventsForSquadronMembersInMission() throws PWCGException
     {
-        Map<Integer, List<Victory>> victoryAwardByPilot = aarContext.getReconciledMissionVictoryData().getVictoryAwardsByPilot();
+        Map<Integer, List<Victory>> victoryAwardByPilot = aarContext.getPersonnelAcheivements().getVictoriesByPilot();
         List<VictoryEvent> victoriesInMission = victoryEventGenerator.createPilotVictoryEvents(victoryAwardByPilot);
         for (VictoryEvent victoryEvent : victoriesInMission)
         {
-            if (victoryEvent.getSquadronId() == squadron.getSquadronId())
+            if (isIncludeInCombatReport(victoryEvent.getSquadronId(), victoryEvent.getPilotSerialNumber()))
             {
                 combatReportPanelData.addVictoryForSquadronMembers(victoryEvent);
             }
         }
+    }
+    
+    boolean isIncludeInCombatReport(int squadronId, int serialNumber) throws PWCGException
+    {
+        if (squadronId == squadron.getSquadronId())
+        {
+            if (aarContext.getMissionEvaluationData().wasPilotInMission(serialNumber))
+            {
+                return true;
+            }
+        }
+        
+        return false;
     }
 
     public void setPlaneStatusEventGenerator(PlaneStatusEventGenerator planeStatusEventGenerator)

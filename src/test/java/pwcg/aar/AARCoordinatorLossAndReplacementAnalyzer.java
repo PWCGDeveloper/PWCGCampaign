@@ -35,12 +35,12 @@ public class AARCoordinatorLossAndReplacementAnalyzer
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
+        campaign.write();
     }
 
     @Test
     public void runMissionAARLeave () throws PWCGException
     {
-        aarContext = AARFactory.makeAARContext(campaign);
     	Date newDate = DateUtils.getDateYYYYMMDD("19420801");
 
     	int totalVictories = 0;
@@ -57,10 +57,15 @@ public class AARCoordinatorLossAndReplacementAnalyzer
     	
 	    do 
 	    {
-	    	++cycleNum;
+	        aarContext = AARFactory.makeAARContext(campaign);
+            ++cycleNum;
+
+            AAROutOfMissionStepper stepper = AARFactory.makeAAROutOfMissionStepper(campaign, aarContext);
+            stepper.oneStep();
+
 	    	int viableSquadrons = PWCGContext.getInstance().getSquadronManager().getViableSquadrons(campaign).size();
-	    	int victories = aarContext.getPersonnelAwards().getTotalAirToAirVictories();
-	    	int losses = aarContext.getPersonnelLossesOutOfMission().getSquadMembersLost().size();
+	    	int victories = aarContext.getPersonnelAcheivements().getTotalAirToAirVictories();
+	    	int losses = aarContext.getPersonnelLosses().getSquadMembersLost().size();
 	    	int replacements = campaign.getPersonnelManager().getReplacementCount();
 	    	int medalsAwarded = aarContext.getPersonnelAwards().getMedalsAwarded().size();
             int promotionsAwarded = aarContext.getPersonnelAwards().getPromotions().size();
@@ -69,7 +74,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
             Map<Integer, SquadronMember> allCampaignMembers = campaign.getPersonnelManager().getAllCampaignMembers();  
             SquadronMembers activeAiCampaignMembers = SquadronMemberFilter.filterActiveAI(allCampaignMembers, campaign.getDate());
             int numAiPilots = activeAiCampaignMembers.getSquadronMemberList().size();
-            int equipmentLosses = aarContext.getEquipmentLossesOutOfMission().getPlanesDestroyed().size();
+            int equipmentLosses = aarContext.getEquipmentLosses().getPlanesDestroyed().size();
 
             totalVictories += victories;
             totalPersonnelLosses += losses;
@@ -80,7 +85,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
             
 	    	int axisPersonnelLosses = 0;
 	    	int alliedPersonnelLosses = 0;
-	    	for (SquadronMember lostPilot : aarContext.getPersonnelLossesOutOfMission().getSquadMembersLost().values())
+	    	for (SquadronMember lostPilot : aarContext.getPersonnelLosses().getSquadMembersLost().values())
 	    	{
 	    		if (lostPilot.determineCountry(campaign.getDate()).getSide() == Side.ALLIED)
 	    		{
@@ -96,7 +101,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
             
             int alliedEquipmentLosses = 0;
             int axisEquipmentLosses = 0;
-            for (LogPlane lostPlane : aarContext.getEquipmentLossesOutOfMission().getPlanesDestroyed().values())
+            for (LogPlane lostPlane : aarContext.getEquipmentLosses().getPlanesDestroyed().values())
             {
                 if (lostPlane.getCountry().getSide() == Side.ALLIED)
                 {
@@ -109,23 +114,21 @@ public class AARCoordinatorLossAndReplacementAnalyzer
                     ++totalAxisEquipmentLosses;
                 }
             }
-
-            AAROutOfMissionStepper stepper = AARFactory.makeAAROutOfMissionStepper(campaign, aarContext);
-            stepper.oneStep();
+            
             
             printShortHandedSquadrons();
-	    	
+            
             System.out.println("=====================================================");
             System.out.println("Cycle: " + cycleNum);
-	        System.out.println("Victories: " + victories);
-	        System.out.println("Losses: " + losses);
+            System.out.println("Victories: " + victories);
+            System.out.println("Losses: " + losses);
             System.out.println("  Allied Personnel: " + alliedPersonnelLosses);
             System.out.println("  Axis Personnel: " + axisPersonnelLosses);
             System.out.println("  Personnel Replacements Available: " + campaign.getPersonnelManager().getReplacementCount());
             System.out.println("  Allied Equipment: " + alliedEquipmentLosses);
             System.out.println("  Axis Equipment: " + axisEquipmentLosses);
             System.out.println("  Equipment Replacements Available: " + campaign.getEquipmentManager().getReplacementCount());
-	        System.out.println("Replacement: " + replacements);
+            System.out.println("Replacement: " + replacements);
             System.out.println("Squadrons: " + viableSquadrons);
             System.out.println("Medals: " + medalsAwarded);
             System.out.println("Promotions: " + promotionsAwarded);
@@ -133,6 +136,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
             System.out.println("Num Ai Pilots: " + numAiPilots);
             System.out.println("End of cycle " + cycleNum);
             System.out.println("=====================================================");
+
 	    }
 	    while(campaign.getDate().before(newDate));
 	    

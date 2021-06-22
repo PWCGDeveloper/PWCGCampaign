@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.aar.data.AARContext;
-import pwcg.aar.ui.display.model.AARElapsedTimeCombatResultsData;
+import pwcg.aar.ui.display.model.CampaignUpdateEvents;
 import pwcg.aar.ui.events.PilotStatusEventGenerator;
 import pwcg.aar.ui.events.PlaneStatusEventGenerator;
 import pwcg.aar.ui.events.VictoryEventGenerator;
@@ -15,16 +15,16 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.core.exception.PWCGException;
 
-public class ElapsedTimeCombatResultsTabulator 
+public class CampaignUpdateEventGenerator 
 {
     private AARContext aarContext;
     
     private PilotStatusEventGenerator pilotStatusEventGenerator;
     private PlaneStatusEventGenerator planeStatusEventGenerator;
     private VictoryEventGenerator victoryEventGenerator;
-    private AARElapsedTimeCombatResultsData elapsedTimeCombatResultsData = new AARElapsedTimeCombatResultsData();
+    private CampaignUpdateEvents campaignUpdateEvents = new CampaignUpdateEvents();
     
-    public ElapsedTimeCombatResultsTabulator (Campaign campaign, AARContext aarContext)
+    public CampaignUpdateEventGenerator (Campaign campaign, AARContext aarContext)
     {
         this.aarContext = aarContext;
         
@@ -33,39 +33,39 @@ public class ElapsedTimeCombatResultsTabulator
         victoryEventGenerator = new VictoryEventGenerator(campaign);
     }
         
-    public AARElapsedTimeCombatResultsData tabulateCombatResultsForElapsedTime() throws PWCGException
+    public CampaignUpdateEvents tabulateCombatResultsForElapsedTime() throws PWCGException
     {
-        createLossesForPilots();
-        createLossesForEquipment();
-        createVictoryEventsForSquadronMembers();
-        return elapsedTimeCombatResultsData;
+        createPilotLossEvents();
+        createEquipmentLossEvents();
+        createVictoryEvents();
+        return campaignUpdateEvents;
     }
 
-    private void createLossesForPilots() throws PWCGException
+    private void createPilotLossEvents() throws PWCGException
     {
         Map<Integer, PilotStatusEvent> pilotsLostInMission = pilotStatusEventGenerator.createPilotLossEvents(aarContext.getPersonnelLosses());
         for (PilotStatusEvent pilotLostEvent : pilotsLostInMission.values())
         {
-            elapsedTimeCombatResultsData.addPilotLost(pilotLostEvent);
+            campaignUpdateEvents.addPilotLost(pilotLostEvent);
         }
     }
 
-    private void createLossesForEquipment() throws PWCGException
+    private void createEquipmentLossEvents() throws PWCGException
     {
         Map<Integer, PlaneStatusEvent> planesLostInMission = planeStatusEventGenerator.createPlaneLossEvents(aarContext.getEquipmentLosses());
         for (PlaneStatusEvent planeLostEvent : planesLostInMission.values())
         {
-            elapsedTimeCombatResultsData.addPlaneLost(planeLostEvent);
+            campaignUpdateEvents.addPlaneLost(planeLostEvent);
         }
     }
 
-    private void createVictoryEventsForSquadronMembers() throws PWCGException
+    private void createVictoryEvents() throws PWCGException
     {
-        Map<Integer, List<Victory>> victoryAwardByPilotInMission = aarContext.getReconciledMissionVictoryData().getVictoryAwardsByPilot();
+        Map<Integer, List<Victory>> victoryAwardByPilotInMission = aarContext.getPersonnelAcheivements().getVictoriesByPilot();
         List<VictoryEvent> victoriesInMission = victoryEventGenerator.createPilotVictoryEvents(victoryAwardByPilotInMission);
         for (VictoryEvent victoryEvent : victoriesInMission)
         {
-            elapsedTimeCombatResultsData.addVictory(victoryEvent);
+            campaignUpdateEvents.addVictory(victoryEvent);
         }
     }
 }

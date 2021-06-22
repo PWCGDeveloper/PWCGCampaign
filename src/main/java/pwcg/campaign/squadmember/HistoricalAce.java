@@ -95,6 +95,8 @@ public class HistoricalAce extends SquadronMember
 
     private Squadron determineHistoricalAceSquadron(Date date, Ace aceNow) throws PWCGException
     {
+        aceNow.setSquadronId(-1);
+
         HistoricalAceSquadron lastHistoricalAceSquadron = null;
         for (int i = 0; i < squadrons.size(); ++i)
         {

@@ -3,7 +3,7 @@ package pwcg.aar.tabulate.campaignupdate;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.AARLogEvents;
 import pwcg.aar.data.CampaignUpdateData;
-import pwcg.aar.ui.display.model.AARElapsedTimeCombatResultsData;
+import pwcg.aar.ui.display.model.CampaignUpdateEvents;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 
@@ -33,7 +33,6 @@ public class AARCampaignUpdateTabulator
 
     private void tabulatePersonnelAwards()
     {
-        campaignUpdateData.getPersonnelAcheivements().mergeVictories(aarContext.getReconciledMissionVictoryData().getVictoryAwardsByPilot());
         campaignUpdateData.getPersonnelAcheivements().merge(aarContext.getPersonnelAcheivements());
         campaignUpdateData.getPersonnelAwards().merge(aarContext.getPersonnelAwards());
     }
@@ -55,8 +54,8 @@ public class AARCampaignUpdateTabulator
 
     private void addEventsToCampaignUpdateData() throws PWCGException
     {
-        ElapsedTimeCombatResultsTabulator elapsedTimeCombatResultsTabulator = new ElapsedTimeCombatResultsTabulator(campaign, aarContext);
-        AARElapsedTimeCombatResultsData elapsedTimeCombatResultsData = elapsedTimeCombatResultsTabulator.tabulateCombatResultsForElapsedTime();
+        CampaignUpdateEventGenerator elapsedTimeCombatResultsTabulator = new CampaignUpdateEventGenerator(campaign, aarContext);
+        CampaignUpdateEvents elapsedTimeCombatResultsData = elapsedTimeCombatResultsTabulator.tabulateCombatResultsForElapsedTime();
 
     	CampaignLogGenerator campaignLogGenerator = new CampaignLogGenerator(campaign, aarContext, elapsedTimeCombatResultsData);
     	AARLogEvents campaignLogEvents = campaignLogGenerator.createCampaignLogEventsForCampaignUpdate();

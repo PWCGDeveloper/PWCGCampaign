@@ -8,7 +8,7 @@ import pwcg.aar.data.ui.UIDebriefData;
 import pwcg.aar.tabulate.campaignupdate.AARCampaignUpdateTabulator;
 import pwcg.aar.tabulate.combatreport.AARCombatReportTabulateCoordinator;
 import pwcg.aar.tabulate.combatreport.UICombatReportData;
-import pwcg.aar.tabulate.debrief.AARDebriefTabulateCoordinator;
+import pwcg.aar.tabulate.debrief.AARDebriefTabulator;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 
@@ -47,7 +47,7 @@ public class AARTabulateCoordinator
 
     private void tabulateFlightDebriefUI() throws PWCGException 
     {
-        AARDebriefTabulateCoordinator uiDebriefTabulator = new AARDebriefTabulateCoordinator(campaign, aarContext);
+        AARDebriefTabulator uiDebriefTabulator = new AARDebriefTabulator(campaign, aarContext);
         UIDebriefData uiDebriefData = uiDebriefTabulator.tabulateForDebriefUI();
         aarContext.mergeDebriefUiData(uiDebriefData);
     }

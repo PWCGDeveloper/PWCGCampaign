@@ -33,7 +33,7 @@ public class AARCombatReportTabulateCoordinator
         List<Squadron> playerSquadronsInMission = aarContext.getPreliminaryData().getPlayerSquadronsInMission();
         for (Squadron playerSquadron : playerSquadronsInMission)
         {
-            CombatReportTabulator combatReportTabulator = new CombatReportTabulator(campaign, playerSquadron, aarContext);
+            AARCombatReportTabulator combatReportTabulator = new AARCombatReportTabulator(campaign, playerSquadron, aarContext);
             AARCombatReportPanelData combatReportPanelData = combatReportTabulator.tabulateForAARCombatReportPanel();
             
             UICombatReportData combatReportUiData = new UICombatReportData(playerSquadron.getSquadronId());

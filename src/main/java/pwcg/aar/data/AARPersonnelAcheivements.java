@@ -5,12 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import pwcg.aar.ui.events.model.ClaimDeniedEvent;
 import pwcg.campaign.squadmember.Victory;
 
 public class AARPersonnelAcheivements
 {
     private Map<Integer, Integer> missionsFlown = new HashMap<>();
     private Map<Integer, List<Victory>> victoryAwardByPilot = new HashMap<>();
+    private List<ClaimDeniedEvent> playerClaimsDenied = new ArrayList<>();
 
     public void addVictoryAwardByPilot(Integer serialNumber, Victory victory)
     {
@@ -67,5 +69,25 @@ public class AARPersonnelAcheivements
     		totalAirToAirVictories += victoriesForPilot.size();
     	}
         return totalAirToAirVictories;
+    }
+
+    public List<Victory> getVictoryAwardsForPilot(Integer serialNumber)
+    {
+        List<Victory> victoriesForPilot = new ArrayList<Victory>();
+        if (victoryAwardByPilot.containsKey(serialNumber))
+        {
+            victoriesForPilot = victoryAwardByPilot.get(serialNumber);
+        }
+        return victoriesForPilot;
+    }
+
+    public List<ClaimDeniedEvent> getPlayerClaimsDenied()
+    {
+        return playerClaimsDenied;
+    }
+
+    public void setPlayerClaimsDenied(List<ClaimDeniedEvent> playerClaimsDenied)
+    {
+        this.playerClaimsDenied = playerClaimsDenied;
     }
 }

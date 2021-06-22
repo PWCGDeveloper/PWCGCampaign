@@ -7,7 +7,7 @@ import pwcg.aar.ui.events.model.PilotStatusEvent;
 import pwcg.aar.ui.events.model.PlaneStatusEvent;
 import pwcg.aar.ui.events.model.VictoryEvent;
 
-public class AARElapsedTimeCombatResultsData
+public class CampaignUpdateEvents
 {
     private List<PilotStatusEvent> pilotsLost = new ArrayList<>();
     private List<PlaneStatusEvent> planesLost = new ArrayList<>();

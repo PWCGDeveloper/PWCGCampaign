@@ -28,16 +28,6 @@ public class ReconciledMissionVictoryData
         return victoryAwardByPilot;
     }
 
-    public List<Victory> getVictoryAwardsForPilot(Integer serialNumber)
-    {
-        List<Victory> victoriesForPilot = new ArrayList<Victory>();
-        if (victoryAwardByPilot.containsKey(serialNumber))
-        {
-            victoriesForPilot = victoryAwardByPilot.get(serialNumber);
-        }
-        return victoriesForPilot;
-    }
-
     public List<ClaimDeniedEvent> getPlayerClaimsDenied()
     {
         return playerClaimsDenied;

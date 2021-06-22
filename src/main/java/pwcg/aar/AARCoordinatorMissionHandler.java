@@ -7,7 +7,6 @@ import pwcg.aar.campaign.update.CampaignUpdater;
 import pwcg.aar.campaigndate.AARTimePassedAfterMission;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.AARCoordinatorInMission;
-import pwcg.aar.inmission.phase1.parse.AARLogEvaluationCoordinator;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.aar.outofmission.AARCoordinatorOutOfMission;
 import pwcg.aar.tabulate.AARTabulateCoordinator;
@@ -29,6 +28,7 @@ public class AARCoordinatorMissionHandler
     {
         inMission(playerDeclarations);
         outOfMission();
+        updateCampaign();
     }
 
     private void inMission(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
@@ -36,20 +36,17 @@ public class AARCoordinatorMissionHandler
         determineInMissionResults(playerDeclarations);
         elapsedTimeDuringMission();
         tabulateInMission();
-        updateCampaign();
     }
 
     private void outOfMission() throws PWCGException
     {
         determineOutOfMissionResults();
         tabulateOutOfMission();
-        updateCampaign();
     }
 
 	private void determineInMissionResults(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
 	{
-        AARLogEvaluationCoordinator inMissionCoordinator = new AARLogEvaluationCoordinator();
-        AARCoordinatorInMission coordinatorInMission = new AARCoordinatorInMission(campaign, aarContext, inMissionCoordinator);
+        AARCoordinatorInMission coordinatorInMission = new AARCoordinatorInMission(campaign, aarContext);
         coordinatorInMission.coordinateInMissionAAR(playerDeclarations);
 	}
 

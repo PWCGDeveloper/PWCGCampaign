@@ -9,8 +9,6 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBase;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SerialNumber.SerialNumberClassification;
 import pwcg.core.exception.PWCGException;
 
 public class AARMissionEvaluationData
@@ -33,26 +31,19 @@ public class AARMissionEvaluationData
 
         return null;
     }
-
-    public List<LogPilot> getPlayerCrewMembers() throws PWCGException
+    
+    public boolean wasPilotInMission(Integer serialNumber) throws PWCGException
     {
-        List<LogPilot> playerCrewMembers = new ArrayList<>();
-        for (LogPilot logPlayer : pilotsInMission)
+        for (LogPlane missionPlane : planeAiEntities.values())
         {
-            if (SerialNumber.getSerialNumberClassification(logPlayer.getSerialNumber()) == SerialNumberClassification.PLAYER)
+            if (missionPlane.isCrewMember(serialNumber))
             {
-                playerCrewMembers.add(logPlayer);
+                return true;
             }
         }
-        
-        if (playerCrewMembers.size() == 0)
-        {
-            throw new PWCGException ("No player crew member found in mission");
-        }
-        
-        return playerCrewMembers;
-    }
 
+        return false;
+    }
 
     public Map<String, LogPlane> getPlaneAiEntities()
     {

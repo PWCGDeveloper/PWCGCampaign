@@ -4,7 +4,7 @@ import pwcg.aar.ui.display.model.AARAceLeavePanelData;
 import pwcg.aar.ui.display.model.AAREquipmentLossPanelData;
 import pwcg.aar.ui.display.model.AARMedalPanelData;
 import pwcg.aar.ui.display.model.AARNewsPanelData;
-import pwcg.aar.ui.display.model.AAROutOfMissionVictoryPanelData;
+import pwcg.aar.ui.display.model.VictoryEvents;
 import pwcg.aar.ui.display.model.AARPilotLossPanelData;
 import pwcg.aar.ui.display.model.AARPromotionPanelData;
 import pwcg.aar.ui.display.model.TransferPanelData;
@@ -20,7 +20,7 @@ public class UIDebriefData
     private AAREquipmentLossPanelData equipmentLossPanelData = new AAREquipmentLossPanelData();
     private AARPromotionPanelData promotionPanelData = new AARPromotionPanelData();
     private TransferPanelData transferPanelData = new TransferPanelData();
-    private AAROutOfMissionVictoryPanelData outOfMissionVictoryPanelData = new AAROutOfMissionVictoryPanelData();
+    private VictoryEvents victoryPanelData = new VictoryEvents();
 
     public void addNewsPanelData(AARNewsPanelData newsPanelData)
     {
@@ -57,9 +57,9 @@ public class UIDebriefData
         this.transferPanelData.merge(transferPanelData);
     }
 
-    public void addOutOfMissionVictoryPanelData(AAROutOfMissionVictoryPanelData outOfMissionVictoryPanelData)
+    public void addVictoryPanelData(VictoryEvents victoryEvents)
     {
-        this.outOfMissionVictoryPanelData.merge(outOfMissionVictoryPanelData);
+        this.victoryPanelData.merge(victoryEvents);
     }
 
     public AARNewsPanelData getNewsPanelData()
@@ -97,9 +97,9 @@ public class UIDebriefData
         return transferPanelData;
     }
 
-    public AAROutOfMissionVictoryPanelData getOutOfMissionVictoryPanelData()
+    public VictoryEvents getOutOfMissionVictoryPanelData()
     {
-        return outOfMissionVictoryPanelData;
+        return victoryPanelData;
     }
 
     public void merge(Campaign campaign, UIDebriefData uiDebriefDataForIteration) throws PWCGException
@@ -110,6 +110,6 @@ public class UIDebriefData
         equipmentLossPanelData.merge(uiDebriefDataForIteration.getEquipmentLossPanelData());
         promotionPanelData.merge(uiDebriefDataForIteration.getPromotionPanelData());
         transferPanelData.merge(uiDebriefDataForIteration.getTransferPanelData());
-        outOfMissionVictoryPanelData.merge(uiDebriefDataForIteration.getOutOfMissionVictoryPanelData());
+        victoryPanelData.merge(uiDebriefDataForIteration.getOutOfMissionVictoryPanelData());
     }
 }

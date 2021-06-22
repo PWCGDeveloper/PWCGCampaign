@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase3.reconcile;
+package pwcg.aar.inmission.phase3;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,7 +13,6 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.data.AARContext;
-import pwcg.aar.inmission.AARCoordinatorInMission;
 import pwcg.aar.inmission.phase1.parse.AARMissionLogFileSet;
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
@@ -40,7 +39,7 @@ import pwcg.testutils.CampaignPersonnelTestHelper;
 import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
-public class AARCoordinatorInMissionTest
+public class AARInMissionResultGeneratorTest
 {
     private Campaign campaign;
     private List<LogPilot> pilotStatusList;
@@ -55,7 +54,6 @@ public class AARCoordinatorInMissionTest
 
     @Mock private AARMissionEvaluationData evaluationData;
     @Mock private AARMissionLogFileSet missionLogFileSet;
-    @Mock private AARContext aarContext;
     @Mock private AARPreliminaryData preliminaryData;
     @Mock private PwcgMissionData pwcgMissionData;
 
@@ -76,7 +74,6 @@ public class AARCoordinatorInMissionTest
         playerPlaneVictor.setSquadronId(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         aiPlaneVictor.setSquadronId(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         
-        Mockito.when(aarContext.getMissionEvaluationData()).thenReturn(evaluationData);
         Mockito.when(evaluationData.getPilotsInMission()).thenReturn(pilotStatusList);
         Mockito.when(evaluationData.getAceCrewsInMission()).thenReturn(aceStatusList);   
         Mockito.when(evaluationData.getVictoryResults()).thenReturn(firmVictories);   
@@ -95,20 +92,22 @@ public class AARCoordinatorInMissionTest
         createVictory(playerPlaneVictor, SerialNumber.AI_STARTING_SERIAL_NUMBER + 100, SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 100);
         createVictory(aiPlaneVictor, SerialNumber.AI_STARTING_SERIAL_NUMBER + 101, SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 101);
         createVictory(aiPlaneVictor, SerialNumber.AI_STARTING_SERIAL_NUMBER + 102, SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 102);
-
-        AARCoordinatorInMission coordinatorInMission = new AARCoordinatorInMission(campaign, aarContext);
-        ReconciledInMissionData reconciledInMissionData = coordinatorInMission.reconcileLogsWithAAR(playerDeclarations);
         
         AARContext aarContext = new AARContext(campaign);
+        aarContext.setMissionEvaluationData(evaluationData);
+        
+        AARInMissionResultGenerator coordinatorInMission = new AARInMissionResultGenerator(campaign, aarContext);
+        coordinatorInMission.generateInMissionResults(playerDeclarations);
+        
         assert(aarContext.getPersonnelLosses().getPersonnelKilled().size() == 1);
         assert(aarContext.getPersonnelLosses().getPersonnelCaptured().size() == 1);
         assert(aarContext.getPersonnelLosses().getPersonnelMaimed().size() == 1);
         assert(aarContext.getPersonnelLosses().getPersonnelWounded().size() == 2);
         assert(aarContext.getPersonnelLosses().getAcesKilled().size() == 2);
 
-        List<Victory> aiPilotVictories = aarContext.getReconciledMissionVictoryData().getVictoryAwardsForPilot(aiPlaneVictor.getPilotSerialNumber());
-        List<Victory> playerVictories = aarContext.getReconciledMissionVictoryData().getVictoryAwardsForPilot(playerPlaneVictor.getPilotSerialNumber());
-        List<ClaimDeniedEvent> playerClaimsDenied = aarContext.getReconciledMissionVictoryData().getPlayerClaimsDenied();
+        List<Victory> aiPilotVictories = aarContext.getPersonnelAcheivements().getVictoryAwardsForPilot(aiPlaneVictor.getPilotSerialNumber());
+        List<Victory> playerVictories = aarContext.getPersonnelAcheivements().getVictoryAwardsForPilot(playerPlaneVictor.getPilotSerialNumber());
+        List<ClaimDeniedEvent> playerClaimsDenied = aarContext.getPersonnelAcheivements().getPlayerClaimsDenied();
         assert (aiPilotVictories.size() == 2);
         assert (playerVictories.size() == 1);
         assert (playerClaimsDenied.size() == 2);

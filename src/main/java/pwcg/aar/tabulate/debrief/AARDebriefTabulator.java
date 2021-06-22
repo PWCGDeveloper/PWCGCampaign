@@ -6,20 +6,20 @@ import pwcg.aar.ui.display.model.AARAceLeavePanelData;
 import pwcg.aar.ui.display.model.AAREquipmentLossPanelData;
 import pwcg.aar.ui.display.model.AARMedalPanelData;
 import pwcg.aar.ui.display.model.AARNewsPanelData;
-import pwcg.aar.ui.display.model.AAROutOfMissionVictoryPanelData;
+import pwcg.aar.ui.display.model.VictoryEvents;
 import pwcg.aar.ui.display.model.AARPilotLossPanelData;
 import pwcg.aar.ui.display.model.AARPromotionPanelData;
 import pwcg.aar.ui.display.model.TransferPanelData;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 
-public class AARDebriefTabulateCoordinator
+public class AARDebriefTabulator
 {
     private Campaign campaign;
     private AARContext aarContext;
     private UIDebriefData uiDebriefData = new UIDebriefData();
 
-    public AARDebriefTabulateCoordinator (Campaign campaign, AARContext aarContext)
+    public AARDebriefTabulator (Campaign campaign, AARContext aarContext)
     {
         this.campaign = campaign;
         this.aarContext = aarContext;
@@ -27,7 +27,7 @@ public class AARDebriefTabulateCoordinator
     
     public UIDebriefData tabulateForDebriefUI() throws PWCGException 
     {        
-        tabulateOutOfMissionVictories();
+        createVictoryEvents();
         tabulateAceLeave();
         tabulateMedals();        
         tabulateNews();
@@ -67,11 +67,11 @@ public class AARDebriefTabulateCoordinator
         uiDebriefData.addEquipmentLossPanelData(equipmentLossPanelData);        
     }
 
-    private void tabulateOutOfMissionVictories() throws PWCGException
+    private void createVictoryEvents() throws PWCGException
     {
-        SquadronOutOfMissionVictoryPanelEventTabulator squadronOutOfMissionVictoryPanelEventTabulator = new SquadronOutOfMissionVictoryPanelEventTabulator(campaign, aarContext);
-        AAROutOfMissionVictoryPanelData outOfMissionVictoryPanelData = squadronOutOfMissionVictoryPanelEventTabulator.tabulateOutOfMissionVictoriesForSquadron();
-        uiDebriefData.addOutOfMissionVictoryPanelData(outOfMissionVictoryPanelData);        
+        VictoryPanelEventTabulator squadronOutOfMissionVictoryPanelEventTabulator = new VictoryPanelEventTabulator(campaign, aarContext);
+        VictoryEvents victoryPanelData = squadronOutOfMissionVictoryPanelEventTabulator.createVictoryEvents();
+        uiDebriefData.addVictoryPanelData(victoryPanelData);        
     }
     
     private void tabulateNews() throws PWCGException

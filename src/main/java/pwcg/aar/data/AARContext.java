@@ -7,7 +7,6 @@ import java.util.List;
 import pwcg.aar.data.ui.UIDebriefData;
 import pwcg.aar.inmission.phase1.parse.AARMissionLogRawData;
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
-import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledMissionVictoryData;
 import pwcg.aar.outofmission.phase2.awards.HistoricalAceAwards;
 import pwcg.aar.outofmission.phase3.resupply.AARResupplyData;
 import pwcg.aar.outofmission.phase4.ElapsedTIme.ElapsedTimeEvents;
@@ -29,7 +28,6 @@ public class AARContext
     
 
     // Outputs
-    private ReconciledMissionVictoryData reconciledMissionVictoryData = new ReconciledMissionVictoryData();
     private AARPersonnelLosses personnelLosses = new AARPersonnelLosses();
     private AAREquipmentLosses equipmentLosses = new AAREquipmentLosses();
     
@@ -101,11 +99,6 @@ public class AARContext
         return outOfMissionEventSequenceNumber;
     }
 
-    public ReconciledMissionVictoryData getReconciledMissionVictoryData()
-    {
-        return reconciledMissionVictoryData;
-    }
-
     public AARPersonnelLosses getPersonnelLosses()
     {
         return personnelLosses;
@@ -164,11 +157,6 @@ public class AARContext
     public void setMissionEvaluationData(AARMissionEvaluationData missionEvaluationData)
     {
         this.missionEvaluationData = missionEvaluationData;
-    }
-
-    public void setReconciledMissionVictoryData(ReconciledMissionVictoryData reconciledMissionVictoryData)
-    {
-        this.reconciledMissionVictoryData = reconciledMissionVictoryData;        
     }
 
     public void addPersonnelLosses(AARPersonnelLosses newPersonnelLosses)
