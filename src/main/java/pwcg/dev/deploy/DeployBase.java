@@ -179,6 +179,7 @@ public abstract class DeployBase
         directoriesToCopy.put("Misc", null);
         directoriesToCopy.put("National", null);
         directoriesToCopy.put("Newspaper", null);
+        directoriesToCopy.put("Newspapers", null);
         directoriesToCopy.put("PilotPictures", null);
         directoriesToCopy.put("Planes", null);
         directoriesToCopy.put("Profiles", null);

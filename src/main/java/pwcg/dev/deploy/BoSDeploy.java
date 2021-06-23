@@ -49,6 +49,9 @@ public class BoSDeploy extends DeployBase
 
 		// Moscow dates
         directoriesToCopy.put("19411001", null);
+        directoriesToCopy.put("19411005", null);
+        directoriesToCopy.put("19411011", null);
+        directoriesToCopy.put("19411016", null);
         directoriesToCopy.put("19411020", null);
         directoriesToCopy.put("19411110", null);
         directoriesToCopy.put("19411120", null);

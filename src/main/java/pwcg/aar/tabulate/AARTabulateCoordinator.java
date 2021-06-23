@@ -28,8 +28,6 @@ public class AARTabulateCoordinator
     public void tabulateInMission() throws PWCGException 
     {
         tabulateCombatReport();
-        tabulateFlightDebriefUI();
-        tabulateAARForCampaignUpdate();        
     }
     
     public void tabulateOutOfMission() throws PWCGException 

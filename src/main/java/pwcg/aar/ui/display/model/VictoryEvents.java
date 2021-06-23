@@ -20,8 +20,8 @@ public class VictoryEvents
         
     }
 
-    public void merge(VictoryEvents outOfMissionVictoryPanelData)
+    public void merge(VictoryEvents victoryEventsToMerge)
     {
-        victoryEvents.addAll(outOfMissionVictoryPanelData.getOutOfMissionVictoryEvents());
+        victoryEvents.addAll(victoryEventsToMerge.getOutOfMissionVictoryEvents());
     }
 }
