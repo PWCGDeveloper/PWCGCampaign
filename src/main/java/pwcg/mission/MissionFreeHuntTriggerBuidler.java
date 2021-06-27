@@ -1,8 +1,8 @@
 package pwcg.mission;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.groundhunt.GroundFreeHuntFlight;
 import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.target.TargetType;
@@ -20,11 +20,16 @@ public class MissionFreeHuntTriggerBuidler
     {
         for (IFlight playerFlight : mission.getMissionFlights().getPlayerFlights())
         {
-            if (playerFlight instanceof GroundFreeHuntFlight)
+            if (playerFlight.getFlightInformation().getFlightType() == FlightTypes.GROUND_HUNT)
             {
                 addTargetSequenceToGroundUnits(playerFlight);
             }
         }
+    }
+
+    public void addBingoOrdnanceSequence(IFlight playerFlight) throws PWCGException
+    {
+        playerFlight.buildBingoOrdnanceSequence();
     }
 
     private void addTargetSequenceToGroundUnits(IFlight playerFlight) throws PWCGException
@@ -37,7 +42,7 @@ public class MissionFreeHuntTriggerBuidler
                 if (groundUnit.getTargetType() == targetType)
                 {
                     groundUnitCollection.setCheckZoneTriggerDistance(150000);
-                    groundUnit.addTargetingFlight(playerFlight);
+                    groundUnit.addFreeHuntTargetingFlight(playerFlight);
                 }
             }
         }

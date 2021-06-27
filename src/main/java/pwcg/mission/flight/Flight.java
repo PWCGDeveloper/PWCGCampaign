@@ -10,11 +10,16 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
+import pwcg.mission.flight.groundattack.GroundAttackWaypointFactory;
 import pwcg.mission.flight.initialposition.FlightPositionSetter;
 import pwcg.mission.flight.waypoint.IWaypointPackage;
+import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointPackage;
 import pwcg.mission.flight.waypoint.virtual.IVirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.virtual.VirtualWaypointPackage;
+import pwcg.mission.mcu.McuWaypoint;
+import pwcg.mission.mcu.group.AirGroundAttackMcuSequenceFactory;
+import pwcg.mission.mcu.group.BingoOrdnanceMcuSequence;
 import pwcg.mission.skin.MissionSkinGenerator;
 import pwcg.mission.target.TargetDefinition;
 
@@ -27,6 +32,7 @@ public abstract class Flight implements IFlight
     private VirtualWaypointPackage virtualWaypointPackage;
     private TargetDefinition targetDefinition;
     private IFlight associatedFlight = null;
+    private BingoOrdnanceMcuSequence bingoOrdnanceMcuSequence = null;
     private int index = IndexGenerator.getInstance().getNextIndex();
 
     public Flight(FlightInformation flightInformation, TargetDefinition targetDefinition)
@@ -70,6 +76,8 @@ public abstract class Flight implements IFlight
             writer.write("  Desc = \"Flight " + flightInformation.getSquadron().determineDisplayName(getCampaign().getDate()) + "\";");
             writer.newLine();
 
+            writer.newLine();
+
             waypointPackage.write(writer);
             if (flightInformation.isVirtual())
             {
@@ -79,6 +87,14 @@ public abstract class Flight implements IFlight
             {
                 flightPlanes.write(writer);
             }
+
+            writer.newLine();
+
+            if(bingoOrdnanceMcuSequence != null)
+            {
+                bingoOrdnanceMcuSequence.write(writer);
+            }
+            
 
             writer.write("}");
             writer.newLine();
@@ -237,5 +253,16 @@ public abstract class Flight implements IFlight
     public IFlight getAssociatedFlight()
     {
         return associatedFlight;
-    }    
+    }
+
+    @Override
+    public void buildBingoOrdnanceSequence() throws PWCGException
+    {
+        McuWaypoint egressWaypoint = this.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_EGRESS);
+
+        bingoOrdnanceMcuSequence = AirGroundAttackMcuSequenceFactory.buildBingoOrdnanceMcuSequence(
+                this, 
+                GroundAttackWaypointFactory.GROUND_ATTACK_TIME,
+                egressWaypoint.getIndex());
+    }
 }

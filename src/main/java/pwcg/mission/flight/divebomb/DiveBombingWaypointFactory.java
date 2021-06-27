@@ -10,7 +10,7 @@ import pwcg.mission.flight.waypoint.missionpoint.MissionPointAttackSet;
 import pwcg.mission.mcu.AttackAreaType;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.mcu.group.AirGroundAttackMcuSequenceFactory;
-import pwcg.mission.mcu.group.IAirGroundAttackAreaMcuSequence;
+import pwcg.mission.mcu.group.AirGroundAttackMcuSequence;
 
 public class DiveBombingWaypointFactory
 {
@@ -31,7 +31,7 @@ public class DiveBombingWaypointFactory
         
         createTargetWaypoints(ingressWaypoint.getPosition());
         
-        IAirGroundAttackAreaMcuSequence attackMcuSequence = createAttackArea();
+        AirGroundAttackMcuSequence attackMcuSequence = createAttackArea();
         missionPointSet.setAttackSequence(attackMcuSequence);
         
         McuWaypoint egressWaypoint = EgressWaypointGenerator.createEgressWaypoint(flight, ingressWaypoint.getPosition());
@@ -55,9 +55,9 @@ public class DiveBombingWaypointFactory
     }
     
     
-    private IAirGroundAttackAreaMcuSequence createAttackArea() throws PWCGException 
+    private AirGroundAttackMcuSequence createAttackArea() throws PWCGException 
     {
-        IAirGroundAttackAreaMcuSequence attackMcuSequence = AirGroundAttackMcuSequenceFactory.buildAirGroundAttackSequence(flight, DIVE_BOMB_ATTACK_TIME, DIVE_BOMB_ATTACK_BINGO_TIME,AttackAreaType.GROUND_TARGETS);
+        AirGroundAttackMcuSequence attackMcuSequence = AirGroundAttackMcuSequenceFactory.buildAirGroundAttackSequence(flight, DIVE_BOMB_ATTACK_TIME, DIVE_BOMB_ATTACK_BINGO_TIME,AttackAreaType.GROUND_TARGETS);
         return attackMcuSequence;
     }
 }

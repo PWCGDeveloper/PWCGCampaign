@@ -24,7 +24,7 @@ import pwcg.mission.mcu.McuForceComplete;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.target.TargetDefinition;
 
-public class AirGroundAttackMcuSequence implements IAirGroundAttackAreaMcuSequence
+public class AirGroundAttackMcuSequence
 {    
     private FlightInformation flightInformation;
     private TargetDefinition targetDefinition;
@@ -85,7 +85,6 @@ public class AirGroundAttackMcuSequence implements IAirGroundAttackAreaMcuSequen
         attackArea = AttackAreaFactory.createAttackArea(flightInformation, targetDefinition.getPosition(), maxAttackTimeSeconds);
     }
 
-    @Override
     public void setAttackToTriggerOnPlane(List<PlaneMcu> planes) throws PWCGException
     {
         for (PlaneMcu plane : planes)
@@ -97,7 +96,6 @@ public class AirGroundAttackMcuSequence implements IAirGroundAttackAreaMcuSequen
         }
     }
 
-    @Override
     public void write(BufferedWriter writer) throws PWCGException 
     {
         missionBeginUnitCheckZone.write(writer);
@@ -111,19 +109,16 @@ public class AirGroundAttackMcuSequence implements IAirGroundAttackAreaMcuSequen
         forceCompleteDropOrnance.write(writer);
     }
 
-    @Override
     public void setLinkToNextTarget(int targetIndex)
     {
         exitAttackTimer.setTarget(targetIndex);
     }
 
-    @Override
     public BaseFlightMcu getAttackAreaMcu()
     {
         return attackArea;
     }
 
-    @Override
     public Coordinate getPosition()
     {
         return attackArea.getPosition();
@@ -200,7 +195,6 @@ public class AirGroundAttackMcuSequence implements IAirGroundAttackAreaMcuSequen
         plane.addEvent(planeEvent);
     }
 
-    @Override
     public void setVehiclesToAttack(List<IVehicle> vehicles) throws PWCGException
     {
         for (IVehicle vehicle : vehicles)

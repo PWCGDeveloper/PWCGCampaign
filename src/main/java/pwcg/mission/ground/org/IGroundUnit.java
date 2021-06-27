@@ -50,6 +50,6 @@ public interface IGroundUnit
 
     List<McuSpawn> getSpawns();
 
-    void addTargetingFlight(IFlight flight) throws PWCGException;
+    void addFreeHuntTargetingFlight(IFlight flight) throws PWCGException;
 
 }
