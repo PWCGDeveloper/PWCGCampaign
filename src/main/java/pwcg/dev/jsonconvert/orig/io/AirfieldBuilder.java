@@ -14,7 +14,6 @@ import pwcg.campaign.group.airfield.AirfieldDescriptorSet;
 import pwcg.campaign.group.airfield.Runway;
 import pwcg.campaign.io.json.AirfieldDescriptorIOJson;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Orientation;
 import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.MathUtils;
@@ -129,7 +128,7 @@ public class AirfieldBuilder
         catch (Exception e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
 	}
 
@@ -189,7 +188,7 @@ public class AirfieldBuilder
         catch (Exception e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
 

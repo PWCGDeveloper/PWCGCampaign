@@ -5,7 +5,6 @@ import java.io.IOException;
 
 import pwcg.aar.inmission.phase1.parse.AARLogParser;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 
@@ -32,7 +31,7 @@ public class AType2  extends ATypeBase implements IAType2
 	}
 
     @Override
-    public void write(BufferedWriter writer) throws PWCGIOException 
+    public void write(BufferedWriter writer) throws PWCGException 
     {
         try
         {
@@ -45,7 +44,7 @@ public class AType2  extends ATypeBase implements IAType2
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }   
 

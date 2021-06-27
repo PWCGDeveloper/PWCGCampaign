@@ -3,7 +3,7 @@ package pwcg.mission.mcu.effect;
 import java.io.BufferedWriter;
 
 import pwcg.campaign.utils.IndexGenerator;
-import pwcg.core.exception.PWCGIOException;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.mcu.BaseFlightMcu;
 
@@ -30,7 +30,7 @@ public class EffectCommand extends BaseFlightMcu
 	}
 
 	
-	public void write(BufferedWriter writer) throws PWCGIOException
+	public void write(BufferedWriter writer) throws PWCGException
 	{
 		try
         {
@@ -51,7 +51,7 @@ public class EffectCommand extends BaseFlightMcu
         catch (Exception e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
 	}
 }

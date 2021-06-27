@@ -20,7 +20,6 @@ import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.DateUtils;
@@ -356,7 +355,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
 

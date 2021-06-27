@@ -43,7 +43,7 @@ public class AmphibiousAssaultAttackBuilder
                 TargetType.TARGET_INFANTRY,
                 Coalition.getCoalitions());
 
-        amphibiousAssaultAttack = new GroundUnitCollection ("Amphibious Assault Attack", groundUnitCollectionData);
+        amphibiousAssaultAttack = new GroundUnitCollection (mission.getCampaign(), "Amphibious Assault Attack", groundUnitCollectionData);
     }
 
     public GroundUnitCollection generateAmphibiousAssaultAttack() throws PWCGException

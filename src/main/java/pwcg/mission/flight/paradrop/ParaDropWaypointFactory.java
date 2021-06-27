@@ -10,12 +10,12 @@ import pwcg.mission.flight.waypoint.missionpoint.MissionPointAttackSet;
 import pwcg.mission.mcu.AttackAreaType;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.mcu.group.AirGroundAttackMcuSequenceFactory;
-import pwcg.mission.mcu.group.IAirGroundAttackMcuSequence;
+import pwcg.mission.mcu.group.IAirGroundAttackAreaMcuSequence;
 
 public class ParaDropWaypointFactory
 {    
     static public int PARA_DROP_TIME = 120;
-    static public int PARA_DROP_BINGO_TIME = 15;
+    static public int PARA_DROP_BINGO_TIME = 20;
 
     private IFlight flight;
     private MissionPointAttackSet missionPointSet = new MissionPointAttackSet();
@@ -31,7 +31,7 @@ public class ParaDropWaypointFactory
         
         createTargetWaypoints(ingressWaypoint.getPosition());
         
-        IAirGroundAttackMcuSequence attackMcuSequence = createAttackArea();
+        IAirGroundAttackAreaMcuSequence attackMcuSequence = createAttackArea();
         missionPointSet.setAttackSequence(attackMcuSequence);
         
         McuWaypoint egressWaypoint = EgressWaypointGenerator.createEgressWaypoint(flight, ingressWaypoint.getPosition());
@@ -55,9 +55,9 @@ public class ParaDropWaypointFactory
     }
     
     
-    private IAirGroundAttackMcuSequence createAttackArea() throws PWCGException 
+    private IAirGroundAttackAreaMcuSequence createAttackArea() throws PWCGException 
     {
-        IAirGroundAttackMcuSequence attackMcuSequence = AirGroundAttackMcuSequenceFactory.buildAirGroundAttackSequence(flight, PARA_DROP_TIME, PARA_DROP_BINGO_TIME, AttackAreaType.INDIRECT);
+        IAirGroundAttackAreaMcuSequence attackMcuSequence = AirGroundAttackMcuSequenceFactory.buildAirGroundAttackSequence(flight, PARA_DROP_TIME, PARA_DROP_BINGO_TIME, AttackAreaType.INDIRECT);
         return attackMcuSequence;
     }
 }

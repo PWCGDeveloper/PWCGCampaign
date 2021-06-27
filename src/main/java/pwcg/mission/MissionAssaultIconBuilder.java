@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.mcu.McuIcon;
@@ -120,7 +119,7 @@ public class MissionAssaultIconBuilder
         arrowIcon.postDestinationPoint.setTarget(arrowIcon.head.getIndex());
     }
 
-    public void write(BufferedWriter writer) throws PWCGIOException
+    public void write(BufferedWriter writer) throws PWCGException
     {
         for (ArrowIcon assaultIcon : assaultIcons)
         {

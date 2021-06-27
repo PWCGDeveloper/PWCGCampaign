@@ -6,7 +6,6 @@ import java.util.Map;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.ConfigurationIOJson;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.FileUtils;
 
 public abstract class ConfigManager
@@ -52,7 +51,7 @@ public abstract class ConfigManager
     		ConfigSet initialConfigSet = initialConfigSets.get(configSetKey);
     		if (initialConfigSet == null)
     		{
-                throw new PWCGIOException("No configuration set for key: " + configSetKey);
+                throw new PWCGException("No configuration set for key: " + configSetKey);
     		}
 
     		defaultCampaignConfigSets.put(configSetKey, initialConfigSet);

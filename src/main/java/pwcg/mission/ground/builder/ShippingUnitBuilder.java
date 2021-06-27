@@ -68,7 +68,7 @@ public class ShippingUnitBuilder
                 TargetType.TARGET_SHIPPING,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
-        GroundUnitCollection convoyGroundUnitCollection = new GroundUnitCollection ("Shipping", groundUnitCollectionData);
+        GroundUnitCollection convoyGroundUnitCollection = new GroundUnitCollection (campaign, "Shipping", groundUnitCollectionData);
         convoyGroundUnitCollection.addGroundUnit(shipGroup);
         if (shipGroupEscort != null)
         {

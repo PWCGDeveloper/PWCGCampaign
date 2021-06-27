@@ -48,7 +48,7 @@ public class Bf110G2Payload extends PlanePayload
     {
         createStandardPayload();
         
-        if (flight.getFlightType() == FlightTypes.GROUND_ATTACK)
+        if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
             selectGroundAttackPayload(flight);
         }

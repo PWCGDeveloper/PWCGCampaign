@@ -12,8 +12,10 @@ import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.WaypointPriority;
+import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.mcu.AttackAreaFactory;
 import pwcg.mission.mcu.AttackAreaType;
+import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuAttackArea;
 import pwcg.mission.mcu.McuCounter;
 import pwcg.mission.mcu.McuDeactivate;
@@ -22,7 +24,7 @@ import pwcg.mission.mcu.McuForceComplete;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.target.TargetDefinition;
 
-public class AirGroundAttackMcuSequence implements IAirGroundAttackMcuSequence
+public class AirGroundAttackMcuSequence implements IAirGroundAttackAreaMcuSequence
 {    
     private FlightInformation flightInformation;
     private TargetDefinition targetDefinition;
@@ -42,10 +44,8 @@ public class AirGroundAttackMcuSequence implements IAirGroundAttackMcuSequence
         this.flightInformation = flight.getFlightInformation();
         this.targetDefinition = flight.getTargetDefinition();
     }
-        
-    
-    @Override
-    public void createAttackArea(int maxAttackTimeSeconds, int bingoLoiterTimeSeconds, AttackAreaType attackAreaType) throws PWCGException 
+            
+    public void createAttackSequence(int maxAttackTimeSeconds, int bingoLoiterTimeSeconds, AttackAreaType attackAreaType) throws PWCGException 
     {
         buildBingoCounter();
         buildAttackAreaTrigger();
@@ -82,7 +82,6 @@ public class AirGroundAttackMcuSequence implements IAirGroundAttackMcuSequence
 
     private void createAttackArea(int maxAttackTimeSeconds, AttackAreaType attackAreaType)
     {
-        attackArea = new McuAttackArea(attackAreaType);
         attackArea = AttackAreaFactory.createAttackArea(flightInformation, targetDefinition.getPosition(), maxAttackTimeSeconds);
     }
 
@@ -119,7 +118,7 @@ public class AirGroundAttackMcuSequence implements IAirGroundAttackMcuSequence
     }
 
     @Override
-    public McuAttackArea getAttackAreaMcu()
+    public BaseFlightMcu getAttackAreaMcu()
     {
         return attackArea;
     }
@@ -200,6 +199,14 @@ public class AirGroundAttackMcuSequence implements IAirGroundAttackMcuSequence
         McuEvent planeEvent = new McuEvent(bingoElement, bingoBombsCounter.getIndex());
         plane.addEvent(planeEvent);
     }
-    
-    
+
+    @Override
+    public void setVehiclesToAttack(List<IVehicle> vehicles) throws PWCGException
+    {
+        for (IVehicle vehicle : vehicles)
+        {
+            attackArea.setTarget(vehicle.getLinkTrId());
+        }
+        
+    }    
 }

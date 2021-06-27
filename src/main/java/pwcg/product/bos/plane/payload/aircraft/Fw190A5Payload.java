@@ -46,7 +46,7 @@ public class Fw190A5Payload extends PlanePayload implements IPlanePayload
     public int createWeaponsPayload(IFlight flight) throws PWCGException
     {
         selectedPrimaryPayloadId = 0;
-        if (flight.getFlightType() == FlightTypes.GROUND_ATTACK)
+        if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
             selectGroundAttackPayload(flight);
         }

@@ -10,7 +10,6 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.mission.mcu.McuIcon;
 
 public class MissionAirfieldIconBuilder
@@ -41,7 +40,7 @@ public class MissionAirfieldIconBuilder
 		}
     }
 
-	public void write(BufferedWriter writer) throws PWCGIOException
+	public void write(BufferedWriter writer) throws PWCGException
 	{
 		for (McuIcon icon : airfieldIcons)
 		{

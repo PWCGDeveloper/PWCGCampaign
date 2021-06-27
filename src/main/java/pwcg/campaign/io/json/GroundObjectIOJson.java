@@ -3,7 +3,6 @@ package pwcg.campaign.io.json;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.GroundStructureGroup;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 
 public class GroundObjectIOJson 
 {
@@ -14,7 +13,7 @@ public class GroundObjectIOJson
         jsonWriter.writeAsJson(groundStructureGroup, mapDir, filename + ".json");
     }
 
-	public static GroundStructureGroup readJson(String mapName) throws PWCGException, PWCGIOException
+	public static GroundStructureGroup readJson(String mapName) throws PWCGException, PWCGException
 	{
 		JsonObjectReader<GroundStructureGroup> jsonReader = new JsonObjectReader<>(GroundStructureGroup.class);
 		String mapDir = formPath(mapName);

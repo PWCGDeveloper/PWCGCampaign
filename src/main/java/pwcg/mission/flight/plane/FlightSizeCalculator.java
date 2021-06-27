@@ -9,8 +9,8 @@ import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.flight.FlightTypeCategory;
 import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.FlightTypeCategory;
 
 public class FlightSizeCalculator 
 {

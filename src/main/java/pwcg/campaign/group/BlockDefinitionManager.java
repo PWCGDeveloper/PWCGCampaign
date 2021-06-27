@@ -6,7 +6,6 @@ import java.util.Map;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.JsonObjectReader;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
 
 public class BlockDefinitionManager
@@ -38,7 +37,7 @@ public class BlockDefinitionManager
     }
 
 
-    private static void readJson() throws PWCGException, PWCGIOException
+    private static void readJson() throws PWCGException, PWCGException
     {
         JsonObjectReader<BlockDefinitionManager> jsonReader = new JsonObjectReader<>(BlockDefinitionManager.class);
         instance = jsonReader.readJsonFile(PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir(), "Blocks.json");

@@ -3,8 +3,6 @@ package pwcg.mission.flight;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.mission.mcu.AttackAreaType;
-
 public enum FlightTypes
 {
     PATROL(FlightTypeCategory.FIGHTER),
@@ -21,6 +19,7 @@ public enum FlightTypes
     BALLOON_DEFENSE(FlightTypeCategory.FIGHTER),
     
     GROUND_ATTACK(FlightTypeCategory.ATTACK),
+    GROUND_HUNT(FlightTypeCategory.ATTACK),
     
     BOMB(FlightTypeCategory.BOMB),
     LOW_ALT_BOMB(FlightTypeCategory.BOMB),
@@ -80,7 +79,8 @@ public enum FlightTypes
         if (flightType == FlightTypes.ARTILLERY_SPOT    ||
             flightType == FlightTypes.CONTACT_PATROL    ||
             flightType == FlightTypes.GROUND_ATTACK     ||
-            flightType == FlightTypes.SCRAMBLE     ||
+            flightType == FlightTypes.GROUND_HUNT       ||
+            flightType == FlightTypes.SCRAMBLE          ||
             flightType == FlightTypes.SPY_EXTRACT)
         {
             return true;
@@ -91,10 +91,11 @@ public enum FlightTypes
 
     public static boolean isBombingFlight(FlightTypes flightType)
     {
-        if (flightType == FlightTypes.BOMB ||
-            flightType == FlightTypes.LOW_ALT_BOMB ||
-            flightType == FlightTypes.GROUND_ATTACK ||
-            flightType == FlightTypes.DIVE_BOMB ||
+        if (flightType == FlightTypes.BOMB              ||
+            flightType == FlightTypes.LOW_ALT_BOMB      ||
+            flightType == FlightTypes.GROUND_ATTACK     ||
+            flightType == FlightTypes.GROUND_HUNT       ||
+            flightType == FlightTypes.DIVE_BOMB         ||
             flightType == FlightTypes.STRATEGIC_BOMB)
         {
             return true;
@@ -103,11 +104,44 @@ public enum FlightTypes
         return false;
     }
 
+    public static boolean isGroundAttackFlight(FlightTypes flightType)
+    {
+        if (flightType == FlightTypes.GROUND_ATTACK ||
+            flightType == FlightTypes.GROUND_HUNT)
+        {
+            return true;
+        }
+            
+        return false;
+    }
+
     public static boolean isLevelBombingFlight(FlightTypes flightType)
     {
         if (flightType == FlightTypes.BOMB ||
             flightType == FlightTypes.LOW_ALT_BOMB ||
             flightType == FlightTypes.STRATEGIC_BOMB)
+        {
+            return true;
+        }
+        
+        return false;
+    }
+
+    public static boolean isTacticalBombingFlight(FlightTypes flightType)
+    {
+        if (flightType == FlightTypes.BOMB ||
+            flightType == FlightTypes.LOW_ALT_BOMB)
+        {
+            return true;
+        }
+        
+        return false;
+    }
+
+    public static boolean isEscortedTransportFlight(FlightTypes flightType)
+    {
+        if (flightType == FlightTypes.PARATROOP_DROP ||
+            flightType == FlightTypes.CARGO_DROP)
         {
             return true;
         }
@@ -130,27 +164,6 @@ public enum FlightTypes
         
         return false;
     }
-
-    public static AttackAreaType getAttackAreaTypeByFlightyType(FlightTypes flightType)
-    {
-        if (flightType == FlightTypes.BOMB ||
-            flightType == FlightTypes.LOW_ALT_BOMB ||
-            flightType == FlightTypes.DIVE_BOMB ||
-            flightType == FlightTypes.STRATEGIC_BOMB)
-        {
-            return AttackAreaType.INDIRECT;
-        }
-        else if (flightType == FlightTypes.GROUND_ATTACK ||
-                 flightType == FlightTypes.DIVE_BOMB)
-        {
-            
-            return AttackAreaType.GROUND_TARGETS;
-        }
-        else
-        {
-            return AttackAreaType.AIR_TARGETS;
-        }
-     }
 
     public static boolean isFlightNeedsEscort(FlightTypes flightType)
     {

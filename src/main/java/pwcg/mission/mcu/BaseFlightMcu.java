@@ -9,7 +9,7 @@ import java.util.List;
 
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
-import pwcg.core.exception.PWCGIOException;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 
 public class BaseFlightMcu extends BaseMcu 
@@ -35,7 +35,7 @@ public class BaseFlightMcu extends BaseMcu
         return clone;
 	}
 	
-	public void write(BufferedWriter writer) throws PWCGIOException
+	public void write(BufferedWriter writer) throws PWCGException
 	{
         try
         {
@@ -82,7 +82,7 @@ public class BaseFlightMcu extends BaseMcu
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
 	}
 	

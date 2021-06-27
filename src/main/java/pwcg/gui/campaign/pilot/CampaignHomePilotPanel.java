@@ -17,7 +17,6 @@ import pwcg.campaign.PictureManager;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.ScreenIdentifier;
@@ -117,7 +116,7 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
         return pilotPanel;
     }
 
-    private JLabel makePilotPicButton(SquadronMember pilot) throws PWCGUserException, PWCGIOException, PWCGException
+    private JLabel makePilotPicButton(SquadronMember pilot) throws PWCGUserException, PWCGException, PWCGException
     {
         JLabel pilotPicButton = null;
         String picPath = PictureManager.getPicturePath(pilot);
@@ -154,7 +153,7 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
     }
 
 
-    private JLabel makePilotStatusButton(SquadronMember pilot) throws PWCGUserException, PWCGIOException, PWCGException
+    private JLabel makePilotStatusButton(SquadronMember pilot) throws PWCGUserException, PWCGException, PWCGException
     {
         JLabel pilotStatusButton = null;
         String imagePath = ContextSpecificImages.imagesMisc() + "Healthy.jpg";

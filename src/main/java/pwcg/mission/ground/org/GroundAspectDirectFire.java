@@ -3,7 +3,6 @@ package pwcg.mission.ground.org;
 import java.io.BufferedWriter;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Orientation;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.mcu.BaseFlightMcu;
@@ -55,7 +54,7 @@ public class GroundAspectDirectFire implements IGroundAspect
     }
 
     @Override
-    public void write(BufferedWriter writer) throws PWCGIOException
+    public void write(BufferedWriter writer) throws PWCGException
     {
         attackTimer.write(writer);
         attackEntity.write(writer);

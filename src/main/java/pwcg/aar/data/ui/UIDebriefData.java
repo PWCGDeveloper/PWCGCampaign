@@ -4,10 +4,10 @@ import pwcg.aar.ui.display.model.AARAceLeavePanelData;
 import pwcg.aar.ui.display.model.AAREquipmentLossPanelData;
 import pwcg.aar.ui.display.model.AARMedalPanelData;
 import pwcg.aar.ui.display.model.AARNewsPanelData;
-import pwcg.aar.ui.display.model.VictoryEvents;
 import pwcg.aar.ui.display.model.AARPilotLossPanelData;
 import pwcg.aar.ui.display.model.AARPromotionPanelData;
 import pwcg.aar.ui.display.model.TransferPanelData;
+import pwcg.aar.ui.display.model.VictoryEvents;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 

@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.skirmish.IconicSingleMission;
 import pwcg.campaign.skirmish.IconicMissions;
+import pwcg.campaign.skirmish.IconicSingleMission;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
 

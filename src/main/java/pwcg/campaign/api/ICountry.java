@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 
 import pwcg.campaign.context.Country;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 
 public interface ICountry
 {    
@@ -28,9 +27,9 @@ public interface ICountry
 
     boolean equals(ICountry otherCountry);
 
-    void write(BufferedWriter writer) throws PWCGIOException, PWCGException;
+    void write(BufferedWriter writer) throws PWCGException, PWCGException;
 
-    void writeAdjusted(BufferedWriter writer) throws PWCGIOException;
+    void writeAdjusted(BufferedWriter writer) throws PWCGException;
 
     int getCountryCode();
 

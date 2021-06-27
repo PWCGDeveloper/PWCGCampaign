@@ -7,8 +7,8 @@ import java.util.Map;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;

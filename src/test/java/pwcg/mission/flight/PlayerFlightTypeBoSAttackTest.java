@@ -10,7 +10,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionProfile;
-import pwcg.mission.flight.attack.GroundAttackFlight;
+import pwcg.mission.flight.groundattack.GroundAttackFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.validate.EscortForPlayerValidator;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;

@@ -2,7 +2,6 @@ package pwcg.campaign.io.json;
 
 import pwcg.campaign.group.FixedPositions;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 
 public class FixedPositionIOJson {
 
@@ -12,7 +11,7 @@ public class FixedPositionIOJson {
 		jsonWriter.writeAsJson(fixedPositions, directory, filename + ".json");
 	}
 
-	public static FixedPositions readJson(String directory, String filename) throws PWCGException, PWCGIOException
+	public static FixedPositions readJson(String directory, String filename) throws PWCGException, PWCGException
 	{
 		JsonObjectReader<FixedPositions> jsonReader = new JsonObjectReader<>(FixedPositions.class);
 		FixedPositions rofAirfields = jsonReader.readJsonFile(directory, filename + ".json");

@@ -5,6 +5,7 @@ public class ConfigSetKeys
 	public static final String ConfigSetAircraftNumbers = "ConfigSetAircraftNumbers";
 	public static final String ConfigSetCampaign = "ConfigSetCampaign";
     public static final String ConfigSetFighterMission = "ConfigSetFighterMission";
+    public static final String ConfigSetGroundAttackMission = "ConfigSetGroundAttackMission";
     public static final String ConfigSetBomberMission = "ConfigSetBomberMission";
     public static final String ConfigSetReconMission = "ConfigSetReconMission";
     public static final String ConfigSetTransportMission = "ConfigSetTransportMission";

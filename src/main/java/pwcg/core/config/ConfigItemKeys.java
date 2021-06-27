@@ -61,6 +61,11 @@ public class ConfigItemKeys
     public static final String AlliedCargoDropKey = "AlliedCargoDrop";
     public static final String AlliedParachuteDropKey = "AlliedParachuteDrop";    
 
+    public static final String AlliedGroundAttackKey = "AlliedGroundAttack";    
+    public static final String AlliedGroundFreeHuntKey = "AlliedGroundFreeHunt";    
+    public static final String AxisGroundAttackKey = "AxisGroundAttack";    
+    public static final String AxisGroundFreeHuntKey = "AxisGroundFreeHunt";    
+
     // Target Odds
     public static final String PWCGChangesTargetOddsKey = "PWCGChangesTargetOdds";    
 
@@ -103,7 +108,8 @@ public class ConfigItemKeys
 	public static final String TimeOnArtillerySpotKey = "TimeOnArtillerySpot";
     public static final String MaxSmokeInMissionKey = "MaxSmokeInMission";
     public static final String MaxSmokeInAreaKey = "MaxSmokeInArea";
-	
+    public static final String GroundUnitSpawnDistanceKey = "GroundUnitSpawnDistance";
+    
 	public static final String PatrolDistanceBaseKey = "PatrolDistanceBase";
 	public static final String PatrolDistanceRandomKey = "PatrolDistanceRandom";
 	public static final String GroundAttackAltitudeKey = "GroundAttackAltitude";
@@ -129,16 +135,12 @@ public class ConfigItemKeys
 	public static final String AiFighterFlightsForGroundCampaignMaxKey = "AiFighterFlightsForGroundCampaignMax";
 	public static final String AiFighterFlightsForFighterCampaignMaxKey = "AiFighterFlightsForFighterCampaignMax";
 
-	public static final String RandomizePlanesPerSideKey = "RandomizePlanesPerSide";
 	public static final String InitialSquadronSearchRadiusKey = "InitialSquadronSearchRadius";
 	public static final String MaxSquadronSearchRadiusKey = "MaxSquadronSearchRadius";
 	public static final String OddsOfAceFlyingKey = "OddsOfAceFlying";
 
 	public static final String AllowAirStartsKey = "AllowAirStarts";
 	public static final String GenerateClimbWPKey = "GenerateClimbWP";
-	public static final String UsePlaneDeleteKey = "UsePlaneDelete";
-	public static final String PlaneDeleteEnemyDistanceKey = "PlaneDeleteEnemyDistance";
-	public static final String PlaneDeletePlayerDistanceKey = "PlaneDeletePlayerDistance";
 
 	// Mission Ground objects
 	public static final String WindsockDistanceKey = "WindsockDistance";

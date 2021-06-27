@@ -19,8 +19,8 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 

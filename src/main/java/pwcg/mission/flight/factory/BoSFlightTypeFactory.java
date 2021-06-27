@@ -51,7 +51,7 @@ public class BoSFlightTypeFactory implements IFlightTypeFactory
         }
         else if (missionRole == Role.ROLE_ATTACK)
         {
-            flightType = getAttackFlightType();
+            flightType = getAttackFlightType(squadron, isPlayerFlight);
         }
         else if (missionRole == Role.ROLE_TRANSPORT)
         {
@@ -145,9 +145,28 @@ public class BoSFlightTypeFactory implements IFlightTypeFactory
         return flightType;
     }
 
-    private FlightTypes getAttackFlightType() throws PWCGException 
+    private FlightTypes getAttackFlightType(Squadron squadron, boolean isPlayerFlight) throws PWCGException 
     {
-        FlightTypes flightType = FlightTypes.GROUND_ATTACK;
+        if (!isPlayerFlight)
+        {
+            return FlightTypes.GROUND_ATTACK;
+        }
+        
+        int currentIndex = 0;
+        if (squadron.determineSquadronCountry(campaign.getDate()).getSideNoNeutral() == Side.ALLIED)
+        {
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedGroundAttackKey, FlightTypes.GROUND_ATTACK, currentIndex);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AlliedGroundFreeHuntKey, FlightTypes.GROUND_HUNT, currentIndex);
+        }
+        else
+        {
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisGroundAttackKey, FlightTypes.GROUND_ATTACK, currentIndex);
+            currentIndex =  addItemToWeightedList(ConfigItemKeys.AxisGroundFreeHuntKey, FlightTypes.GROUND_HUNT, currentIndex);
+        }
+        
+        int selectedIndex = WeightedOddsCalculator.calculateWeightedodds(weightedOdds);
+        FlightTypes flightType = flightTypesByIndex.get(selectedIndex);
+
         return flightType;
     }
 

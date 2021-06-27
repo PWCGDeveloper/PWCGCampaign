@@ -3,7 +3,7 @@ package pwcg.mission.mcu;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import pwcg.core.exception.PWCGIOException;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 
 public class McuFlare extends BaseFlightMcu
@@ -34,7 +34,7 @@ public class McuFlare extends BaseFlightMcu
         this.color = color;
     }
 
-    public void write(BufferedWriter writer) throws PWCGIOException
+    public void write(BufferedWriter writer) throws PWCGException
     {
         try
         {
@@ -55,7 +55,7 @@ public class McuFlare extends BaseFlightMcu
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
 }

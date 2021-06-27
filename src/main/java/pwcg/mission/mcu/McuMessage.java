@@ -3,7 +3,7 @@ package pwcg.mission.mcu;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import pwcg.core.exception.PWCGIOException;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 
 public class McuMessage 
@@ -17,7 +17,7 @@ public class McuMessage
     private int cmdId = 14;
     private int tarId = 0;
 
-    public void write(BufferedWriter writer) throws PWCGIOException
+    public void write(BufferedWriter writer) throws PWCGException
     {
         try
         {
@@ -39,7 +39,7 @@ public class McuMessage
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
 

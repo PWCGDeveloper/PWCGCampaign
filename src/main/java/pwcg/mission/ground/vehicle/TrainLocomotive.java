@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.utils.IndexGenerator;
-import pwcg.core.exception.PWCGIOException;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.PWCGLogger;
@@ -51,7 +51,7 @@ public class TrainLocomotive extends Vehicle implements IVehicle
         return locomotive;
     }
 
-    public void write(BufferedWriter writer) throws PWCGIOException
+    public void write(BufferedWriter writer) throws PWCGException
     {
         try
         {
@@ -118,7 +118,7 @@ public class TrainLocomotive extends Vehicle implements IVehicle
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
 

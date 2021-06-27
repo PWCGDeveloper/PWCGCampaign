@@ -1,6 +1,7 @@
 package pwcg.mission.target;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import pwcg.campaign.skirmish.Skirmish;
@@ -9,6 +10,7 @@ import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.FlightTypes;
 
 public class TargetDefinitionBuilder implements ITargetDefinitionBuilder
 {
@@ -64,11 +66,31 @@ public class TargetDefinitionBuilder implements ITargetDefinitionBuilder
         {
             targetTypes.add(squadronPreferenceTargetType);
         }
+        
+        if (flightInformation.getFlightType() == FlightTypes.GROUND_HUNT)
+        {
+            targetTypes.addAll(addTransportTargets());
+        }
   
         List<TargetType> shuffledTargetTypes = TargetPriorityGeneratorTactical.getTargetTypePriorities(flightInformation);
         targetTypes.addAll(shuffledTargetTypes);
         
         return targetTypes;
+    }
+
+    private List<TargetType> addTransportTargets()
+    {
+        List<TargetType> huntTargetTypes = new ArrayList<>();
+        huntTargetTypes.add(TargetType.TARGET_TRAIN);
+        huntTargetTypes.add(TargetType.TARGET_TRAIN);
+        huntTargetTypes.add(TargetType.TARGET_TRANSPORT);
+        huntTargetTypes.add(TargetType.TARGET_TRANSPORT);
+        huntTargetTypes.add(TargetType.TARGET_TRANSPORT);
+        huntTargetTypes.add(TargetType.TARGET_TRANSPORT);
+        huntTargetTypes.add(TargetType.TARGET_SHIPPING);
+        Collections.shuffle(huntTargetTypes);
+        return huntTargetTypes;
+        
     }
 
     private TargetType getTestTargetType()

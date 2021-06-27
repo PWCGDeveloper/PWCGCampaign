@@ -14,7 +14,6 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
 
 public class SoundPlayer 
@@ -77,7 +76,7 @@ public class SoundPlayer
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
 

@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.PWCGLogger;
@@ -16,7 +15,7 @@ public class PlaneIO
 	/**
 	 * @param reader
 	 * @return
-	 * @throws PWCGIOException 
+	 * @throws PWCGException 
 	 * @throws PWCGException 
 	 */
 	public static PlaneMcu readBlock (BufferedReader reader) throws PWCGException 
@@ -34,7 +33,7 @@ public class PlaneIO
             	String line = reader.readLine();
             	if (line == null)
             	{
-            		throw new PWCGIOException ("Bad group at readBlock");
+            		throw new PWCGException ("Bad group at readBlock");
             	}
             	
             	line = line.trim();
@@ -80,7 +79,7 @@ public class PlaneIO
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
 	}
 }

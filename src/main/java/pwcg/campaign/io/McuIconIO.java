@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.LocationSet;
 import pwcg.core.location.McuIconToLocationConverter;
@@ -59,7 +58,7 @@ public class McuIconIO
         return icons;
     }
 
-    private static McuIcon readIcon(BufferedReader reader) throws PWCGIOException 
+    private static McuIcon readIcon(BufferedReader reader) throws PWCGException 
     {
         McuIcon icon = null;
         
@@ -127,12 +126,12 @@ public class McuIconIO
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
         catch (PWCGException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
         
         return icon;

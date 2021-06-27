@@ -49,7 +49,7 @@ public class Ju87D3Payload extends PlanePayload
         {
             selectDiveBombPayload(flight);
         }
-        else if (flight.getFlightType() == FlightTypes.GROUND_ATTACK)
+        if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
             selectGroundAttackPayload();
         }

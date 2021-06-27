@@ -14,7 +14,6 @@ import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.utils.LCIndexGenerator;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.PWCGLogger;
@@ -244,7 +243,7 @@ public class McuIcon extends BaseFlightMcu
         coalitions.add(CoalitionFactory.getCoalitionBySide(side));
     }
 
-    public void write(BufferedWriter writer) throws PWCGIOException
+    public void write(BufferedWriter writer) throws PWCGException
     {
         try
         {
@@ -282,7 +281,7 @@ public class McuIcon extends BaseFlightMcu
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
 

@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.MissionBeginUnit;
@@ -85,7 +84,7 @@ public class StopAttackingNearAirfieldSequence
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
 }

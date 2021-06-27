@@ -8,7 +8,6 @@ import java.util.List;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
@@ -81,7 +80,7 @@ public class VirtualWaypointEscort
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
 

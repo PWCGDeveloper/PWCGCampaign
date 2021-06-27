@@ -1,4 +1,4 @@
-package pwcg.mission.flight.attack;
+package pwcg.mission.flight.groundhunt;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,20 +11,20 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.flight.scramble.AirfieldAttackScrambleFlightBuilder;
-import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.GroundTargetDefinitionFactory;
+import pwcg.mission.target.TargetDefinition;
 
-public class GroundAttackPackage implements IFlightPackage
+public class GroundFreeHuntPackage implements IFlightPackage
 {
     private List<IFlight> packageFlights = new ArrayList<>();
 
     @Override
     public List<IFlight> createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {        
-        FlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.GROUND_ATTACK);
+        FlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.GROUND_HUNT);
         TargetDefinition targetDefinition = buildTargetDefinition(flightInformation);
         
-        GroundAttackFlight groundAttackFlight = new GroundAttackFlight (flightInformation, targetDefinition);
+        GroundFreeHuntFlight groundAttackFlight = new GroundFreeHuntFlight (flightInformation, targetDefinition);
 		groundAttackFlight.createFlight();
 		
         IFlight scrambleFlight = addScrambleFlight(groundAttackFlight);

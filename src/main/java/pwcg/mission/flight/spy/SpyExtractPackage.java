@@ -10,8 +10,8 @@ import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightPackage;
-import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.GroundTargetDefinitionFactory;
+import pwcg.mission.target.TargetDefinition;
 
 public class SpyExtractPackage implements IFlightPackage
 {

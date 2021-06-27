@@ -8,8 +8,8 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;

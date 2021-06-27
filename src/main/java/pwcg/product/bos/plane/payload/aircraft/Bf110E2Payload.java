@@ -42,7 +42,7 @@ public class Bf110E2Payload extends PlanePayload
     public int createWeaponsPayload(IFlight flight)
     {
         createStandardPayload();
-        if (flight.getFlightType() == FlightTypes.GROUND_ATTACK)
+        if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
             selectGroundAttackPayload(flight);
         }

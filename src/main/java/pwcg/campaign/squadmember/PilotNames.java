@@ -13,7 +13,6 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -98,7 +97,7 @@ public class PilotNames
 		return instance;
 	}
 
-	private static void read(String filename, ArrayList<String>list) throws PWCGIOException 
+	private static void read(String filename, ArrayList<String>list) throws PWCGException 
 	{
 		try
         {
@@ -118,7 +117,7 @@ public class PilotNames
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
 	}
 

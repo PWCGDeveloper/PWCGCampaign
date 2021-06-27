@@ -6,21 +6,21 @@ import java.util.List;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.plane.PlaneMcu;
+import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.mcu.AttackAreaType;
-import pwcg.mission.mcu.McuAttackArea;
+import pwcg.mission.mcu.BaseFlightMcu;
 
-public interface IAirGroundAttackMcuSequence
+public interface IAirGroundAttackAreaMcuSequence
 {
-
-    void createAttackArea(int maxAttackTimeSeconds, int bingoLoiterTimeSeconds, AttackAreaType attackAreaType) throws PWCGException;
-
     Coordinate getPosition();
 
-    McuAttackArea getAttackAreaMcu();
+    BaseFlightMcu getAttackAreaMcu();
 
     void setLinkToNextTarget(int targetIndex);
 
     void write(BufferedWriter writer) throws PWCGException;
 
-    void setAttackToTriggerOnPlane(List<PlaneMcu> planes) throws PWCGException;
+    void setAttackToTriggerOnPlane(List<PlaneMcu> planes) throws PWCGException;    
+    
+    void setVehiclesToAttack(List<IVehicle> vehicles) throws PWCGException;    
 }

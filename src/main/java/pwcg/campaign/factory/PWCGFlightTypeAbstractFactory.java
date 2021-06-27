@@ -6,10 +6,10 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.skirmish.Skirmish;
 import pwcg.mission.flight.factory.BoSFlightTypeCoopFactory;
 import pwcg.mission.flight.factory.BoSFlightTypeFactory;
-import pwcg.mission.flight.factory.SkirmishFlightTypeFactory;
 import pwcg.mission.flight.factory.FCFlightTypeCoopFactory;
 import pwcg.mission.flight.factory.FCFlightTypeFactory;
 import pwcg.mission.flight.factory.IFlightTypeFactory;
+import pwcg.mission.flight.factory.SkirmishFlightTypeFactory;
 
 public class PWCGFlightTypeAbstractFactory
 {

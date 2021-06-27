@@ -14,7 +14,6 @@ import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
@@ -179,7 +178,7 @@ public class WindSock
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
 	}
 }

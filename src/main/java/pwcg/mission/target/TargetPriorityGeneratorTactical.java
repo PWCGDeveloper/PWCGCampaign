@@ -55,8 +55,9 @@ public class TargetPriorityGeneratorTactical
         {
             addStructuresForBombingMission(flightInformation, targetTypesByIndex);
         }
-        else if (flightType == FlightTypes.GROUND_ATTACK || 
-                 flightType == FlightTypes.DIVE_BOMB || 
+        else if (flightType == FlightTypes.GROUND_ATTACK    || 
+                 flightType == FlightTypes.GROUND_HUNT      || 
+                 flightType == FlightTypes.DIVE_BOMB        || 
                  flightType == FlightTypes.LOW_ALT_BOMB)
         {
             addStructuresForAttackMission(flightInformation, targetTypesByIndex);

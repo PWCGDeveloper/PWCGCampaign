@@ -45,7 +45,7 @@ public class Pe2S87Payload extends PlanePayload implements IPlanePayload
     public int createWeaponsPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 1;
-        if (flight.getFlightType() == FlightTypes.GROUND_ATTACK)
+        if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
             selectGroundAttackPayload(flight);
         }

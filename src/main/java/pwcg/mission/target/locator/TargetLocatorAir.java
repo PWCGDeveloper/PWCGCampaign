@@ -14,8 +14,8 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.intercept.InterceptAiCoordinateGenerator;
 import pwcg.mission.ground.org.GroundUnitCollection;
-import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.GroundTargetDefinitionFactory;
+import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
 import pwcg.mission.utils.BehindFriendlyLinesPositionCalculator;
 

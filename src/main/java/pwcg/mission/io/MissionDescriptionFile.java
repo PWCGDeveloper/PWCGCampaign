@@ -11,7 +11,6 @@ import java.util.Map;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGDirectorySimulatorManager;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.IMissionDescription;
 import pwcg.mission.MissionStringHandler;
@@ -48,22 +47,22 @@ public class MissionDescriptionFile
         catch (PWCGException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
         catch (FileNotFoundException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
         catch (UnsupportedEncodingException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
 	}
 	

@@ -3,7 +3,6 @@ package pwcg.mission.ground.org;
 import java.io.BufferedWriter;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.ground.vehicle.IVehicle;
@@ -60,7 +59,7 @@ public class GroundAspectMovement implements IGroundAspect
 
 
     @Override
-    public void write(BufferedWriter writer) throws PWCGIOException
+    public void write(BufferedWriter writer) throws PWCGException
     {
         waypointTimer.write(writer);
         waypoint.write(writer);

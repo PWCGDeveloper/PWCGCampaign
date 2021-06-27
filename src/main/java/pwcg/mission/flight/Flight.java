@@ -7,7 +7,6 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
@@ -87,7 +86,7 @@ public abstract class Flight implements IFlight
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
 

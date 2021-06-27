@@ -8,7 +8,6 @@ import java.util.List;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
 
 public abstract class CountryBase
@@ -201,7 +200,7 @@ public abstract class CountryBase
         return countryToCountryCode(country);
     }
 
-    public void write(BufferedWriter writer) throws PWCGIOException, PWCGException
+    public void write(BufferedWriter writer) throws PWCGException, PWCGException
     {
         try
         {
@@ -212,11 +211,11 @@ public abstract class CountryBase
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
 
-    public void writeAdjusted(BufferedWriter writer) throws PWCGIOException
+    public void writeAdjusted(BufferedWriter writer) throws PWCGException
     {
         try
         {
@@ -228,7 +227,7 @@ public abstract class CountryBase
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
 

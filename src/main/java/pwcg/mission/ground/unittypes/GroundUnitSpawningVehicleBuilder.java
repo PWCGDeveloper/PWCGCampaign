@@ -3,8 +3,8 @@ package pwcg.mission.ground.unittypes;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.vehicle.IVehicle;
-import pwcg.mission.ground.vehicle.VehicleDefinition;
 import pwcg.mission.ground.vehicle.VehicleClass;
+import pwcg.mission.ground.vehicle.VehicleDefinition;
 import pwcg.mission.ground.vehicle.VehicleFactory;
 
 public class GroundUnitSpawningVehicleBuilder

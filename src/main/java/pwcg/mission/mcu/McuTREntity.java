@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.core.exception.PWCGIOException;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 
 public class McuTREntity extends BaseFlightMcu
@@ -66,7 +66,7 @@ public class McuTREntity extends BaseFlightMcu
         this.eventList.add(event);
     }
 
-    public void write(BufferedWriter writer) throws PWCGIOException
+    public void write(BufferedWriter writer) throws PWCGException
     {
         try
         {
@@ -119,11 +119,11 @@ public class McuTREntity extends BaseFlightMcu
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
 
-    private void writeOnMessages(BufferedWriter writer) throws IOException, PWCGIOException
+    private void writeOnMessages(BufferedWriter writer) throws IOException, PWCGException
     {
         writer.write("  OnMessages");
         writer.newLine();

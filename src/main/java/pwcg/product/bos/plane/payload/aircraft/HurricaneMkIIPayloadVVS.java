@@ -28,7 +28,7 @@ public class HurricaneMkIIPayloadVVS
             e.printStackTrace();
         }
 
-        if (flight.getFlightType() == FlightTypes.GROUND_ATTACK)
+        if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
             return selectGroundAttackPayload(flight);
         }

@@ -3,7 +3,7 @@ package pwcg.mission.mcu;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import pwcg.core.exception.PWCGIOException;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.flight.waypoint.WaypointAction;
@@ -99,6 +99,11 @@ public class McuWaypoint extends BaseFlightMcu implements Cloneable
         this.priority = priority;
     }
 
+    public void setWaypointAltitude(int altitude)
+    {
+        this.position.setYPos(altitude);
+    }
+
     public WaypointAction getWpAction()
     {
         return wpAction;
@@ -139,7 +144,7 @@ public class McuWaypoint extends BaseFlightMcu implements Cloneable
         return waypointID;
     }
 
-    public void write(BufferedWriter writer) throws PWCGIOException
+    public void write(BufferedWriter writer) throws PWCGException
     {
         try
         {
@@ -165,7 +170,7 @@ public class McuWaypoint extends BaseFlightMcu implements Cloneable
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
 

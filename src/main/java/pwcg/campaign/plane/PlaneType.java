@@ -14,7 +14,6 @@ import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.skin.TacticalCodeColor;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 
@@ -155,7 +154,7 @@ public class PlaneType implements Cloneable
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
 

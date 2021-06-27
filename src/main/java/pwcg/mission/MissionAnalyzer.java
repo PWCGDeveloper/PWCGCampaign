@@ -13,7 +13,6 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.flight.IFlight;
@@ -25,7 +24,7 @@ public class MissionAnalyzer
 	{
 	}
 	
-	public void analyze(Mission mission) throws PWCGIOException 
+	public void analyze(Mission mission) throws PWCGException 
 	{
 		try
         {
@@ -66,11 +65,11 @@ public class MissionAnalyzer
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
 	}
 	
-	private void analyzeFlight(BufferedWriter writer, IFlight flight, boolean dumpWP) throws PWCGIOException 
+	private void analyzeFlight(BufferedWriter writer, IFlight flight, boolean dumpWP) throws PWCGException 
 	{
 		try
         {
@@ -130,12 +129,12 @@ public class MissionAnalyzer
         catch (PWCGException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
          }
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
 	}
 

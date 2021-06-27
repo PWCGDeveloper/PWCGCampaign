@@ -4,10 +4,10 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.api.IProductSpecificConfiguration;
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.utils.IndexGenerator;
+import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -20,6 +20,7 @@ import pwcg.mission.target.TargetType;
 
 public class GroundUnitCollection
 {
+    private Campaign campaign;
     private GroundUnitCollectionData groundUnitCollectionData;
     private int index = IndexGenerator.getInstance().getNextIndex();
     private MissionBeginCheckZoneBase missionBeginUnit;
@@ -27,8 +28,9 @@ public class GroundUnitCollection
     private List<IGroundUnit> groundUnits = new ArrayList<>();
     private String groundUnitName;
 
-    public GroundUnitCollection(String groundUnitName, GroundUnitCollectionData groundUnitCollectionData)
+    public GroundUnitCollection(Campaign campaign, String groundUnitName, GroundUnitCollectionData groundUnitCollectionData)
     {
+        this.campaign = campaign;
         this.groundUnitName = groundUnitName;
         this.groundUnitCollectionData = groundUnitCollectionData;
     }
@@ -101,9 +103,9 @@ public class GroundUnitCollection
 
     private void createCheckZone() throws PWCGException
     {
-        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        int groundUnitSpawnDistance = productSpecific.getGroundUnitSpawnDistance();
         
+        int groundUnitSpawnDistance = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.GroundUnitSpawnDistanceKey);
+
         missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone("Check Zone " + groundUnitName, getPosition(), groundUnitSpawnDistance);
         missionBeginUnit.setCheckZoneCoalitions(groundUnitCollectionData.getTriggerCoalitions());
     }

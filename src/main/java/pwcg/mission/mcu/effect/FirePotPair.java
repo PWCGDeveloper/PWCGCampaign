@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.mcu.McuTimer;
@@ -65,7 +64,7 @@ public class FirePotPair
         return time;
     }
 	
-	public void write(BufferedWriter writer) throws PWCGIOException 
+	public void write(BufferedWriter writer) throws PWCGException 
 	{
         for (FirePot firePot : firePots)
         {

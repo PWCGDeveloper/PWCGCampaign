@@ -39,7 +39,7 @@ public class AssaultSegmentBuilder
                 TargetType.TARGET_INFANTRY,
                 Coalition.getCoalitions());
 
-        this.battleSegmentUnitCollection = new GroundUnitCollection ("Assault Segment", groundUnitCollectionData);
+        this.battleSegmentUnitCollection = new GroundUnitCollection (mission.getCampaign(), "Assault Segment", groundUnitCollectionData);
 	}
 
 

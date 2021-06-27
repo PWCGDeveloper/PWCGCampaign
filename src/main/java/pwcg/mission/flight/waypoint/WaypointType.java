@@ -25,7 +25,8 @@ public enum WaypointType
 	RENDEZVOUS_WAYPOINT("Rendezvous"),
     DEPART_WAYPOINT("Depart"),
 
-    MOVE_TO_WAYPOINT("Move To");
+    MOVE_TO_WAYPOINT("Move To"), 
+    HUNT_WAYPOINT("Free Hunt");
 
 	private String waypointName;
 	

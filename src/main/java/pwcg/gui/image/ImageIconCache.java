@@ -10,7 +10,7 @@ import java.util.HashMap;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-import pwcg.core.exception.PWCGIOException;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 
@@ -33,7 +33,7 @@ public class ImageIconCache
 		return instance;
 	}
 
-    public ImageIcon getImageIcon(String imagePath) throws PWCGIOException 
+    public ImageIcon getImageIcon(String imagePath) throws PWCGException 
     {
         try
         {
@@ -51,11 +51,11 @@ public class ImageIconCache
         {
             PWCGLogger.log(LogLevel.ERROR, "Error reading image file " + imagePath);
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
 
-    public BufferedImage getBufferedImage(String imagePath) throws PWCGIOException 
+    public BufferedImage getBufferedImage(String imagePath) throws PWCGException 
     {
         try
         {
@@ -66,11 +66,11 @@ public class ImageIconCache
         {
             PWCGLogger.log(LogLevel.ERROR, "Error reading image file " + imagePath);
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
 
-    public ImageIcon getImageIconResized(String imagePath) throws PWCGIOException 
+    public ImageIcon getImageIconResized(String imagePath) throws PWCGException 
     {
         try
         {
@@ -98,7 +98,7 @@ public class ImageIconCache
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
 }

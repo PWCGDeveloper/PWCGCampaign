@@ -10,7 +10,7 @@ public class Fw190G3PayloadHelper
     public static int selectFW190G3Payload(IFlight flight) throws PWCGException
     {
         int selectedPrimaryPayloadId = 48;
-        if (flight.getFlightType() == FlightTypes.GROUND_ATTACK)
+        if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
             selectedPrimaryPayloadId = selectFW190G3GroundAttackPayload(flight);
         }

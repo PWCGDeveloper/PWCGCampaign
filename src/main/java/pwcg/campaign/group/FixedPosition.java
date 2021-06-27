@@ -16,7 +16,6 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.io.IOConstants;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Orientation;
 import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.PWCGLogger;
@@ -62,7 +61,7 @@ public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosi
         return clone;
     }
 
-    public void write(BufferedWriter writer) throws PWCGIOException, PWCGException
+    public void write(BufferedWriter writer) throws PWCGException, PWCGException
     {
         try
         {
@@ -97,7 +96,7 @@ public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosi
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
     

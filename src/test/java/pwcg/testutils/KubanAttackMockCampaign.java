@@ -10,8 +10,8 @@ import pwcg.campaign.CampaignEquipmentManager;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.personnel.SquadronPersonnel;
@@ -29,8 +29,8 @@ import pwcg.mission.Mission;
 import pwcg.mission.MissionFlights;
 import pwcg.mission.MissionGroundUnitResourceManager;
 import pwcg.mission.MissionHumanParticipants;
-import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.FlightTypes;
 
 public class KubanAttackMockCampaign
 {

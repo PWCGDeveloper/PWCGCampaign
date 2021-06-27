@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -62,7 +61,7 @@ public class Orientation implements Cloneable
 	}
 	
 	
-	public void write (BufferedWriter writer) throws PWCGIOException
+	public void write (BufferedWriter writer) throws PWCGException
 	{
 	    try
 	    {
@@ -76,7 +75,7 @@ public class Orientation implements Cloneable
 	    catch (IOException e)
 	    {
 	        PWCGLogger.logException(e);
-	        throw new PWCGIOException(e.getMessage());
+	        throw new PWCGException(e.getMessage());
 	    }
 	}
 

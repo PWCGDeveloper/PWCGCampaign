@@ -5,12 +5,11 @@ import java.io.IOException;
 
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
@@ -117,7 +116,7 @@ public final class VirtualWaypoint implements IVirtualWaypoint
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
 

@@ -10,8 +10,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
-import pwcg.mission.ground.building.PwcgStructure;
 import pwcg.mission.ground.building.PwcgBuildingIdentifier;
+import pwcg.mission.ground.building.PwcgStructure;
 import pwcg.mission.ground.vehicle.VehicleDefinition;
 import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
 

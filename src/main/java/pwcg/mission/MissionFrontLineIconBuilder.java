@@ -10,7 +10,6 @@ import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.mission.mcu.McuIcon;
 
 public class MissionFrontLineIconBuilder
@@ -30,7 +29,7 @@ public class MissionFrontLineIconBuilder
 		axisLineIcons = createFrontPointIcons(Side.AXIS);
 	}
 
-	public void write(BufferedWriter writer) throws PWCGIOException
+	public void write(BufferedWriter writer) throws PWCGException
 	{
 		for (McuIcon icon : alliedLineIcons)
 		{

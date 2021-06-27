@@ -5,8 +5,8 @@ import java.util.List;
 import org.junit.Test;
 import org.mockito.Mock;
 
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.group.airfield.hotspot.HotSpot;

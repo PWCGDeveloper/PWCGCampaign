@@ -1,4 +1,4 @@
-package pwcg.mission.flight.attack;
+package pwcg.mission.flight.groundattack;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;

@@ -18,7 +18,6 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.AsyncJobRunner;
@@ -80,7 +79,7 @@ public class MissionFileWriter implements IMissionFile
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
 	}
 
@@ -165,7 +164,7 @@ public class MissionFileWriter implements IMissionFile
         MissionBlockWriter.writeFixedPositions(writer, mission.getMissionBlocks().getAllStructuresForMission());
     }
 
-    private void writeIcons(BufferedWriter writer) throws PWCGIOException
+    private void writeIcons(BufferedWriter writer) throws PWCGException
     {
         mission.getMissionWaypointIconBuilder().write(writer);            
         mission.getMissionFrontLineIconBuilder().write(writer);

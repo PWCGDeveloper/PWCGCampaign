@@ -9,7 +9,6 @@ import java.util.List;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
 
 public class LargeAirfieldFile 
@@ -34,7 +33,7 @@ public class LargeAirfieldFile
     }
 
     private static List<String> readLargeFieldFile(String fileLocation) throws FileNotFoundException, IOException,
-                    PWCGIOException
+                    PWCGException
     {
         List<String> largeAirfields = new ArrayList<String>();
         

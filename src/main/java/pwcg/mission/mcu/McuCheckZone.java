@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
@@ -76,7 +75,7 @@ public class McuCheckZone extends BaseFlightMcu
     }
 
 	
-	public void write(BufferedWriter writer) throws PWCGIOException
+	public void write(BufferedWriter writer) throws PWCGException
 	{
 		try
         {
@@ -108,7 +107,7 @@ public class McuCheckZone extends BaseFlightMcu
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
 	}
 

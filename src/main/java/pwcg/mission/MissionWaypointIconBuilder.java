@@ -7,7 +7,6 @@ import java.util.List;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.NecessaryFlightType;
 import pwcg.mission.flight.waypoint.WaypointAction;
@@ -129,7 +128,7 @@ public class MissionWaypointIconBuilder
         }
     }
 
-    public void write(BufferedWriter writer) throws PWCGIOException
+    public void write(BufferedWriter writer) throws PWCGException
     {
         for (McuIcon icon : waypointIcons)
         {
@@ -137,7 +136,7 @@ public class MissionWaypointIconBuilder
         }
     }
 
-    public void removeWaypointIcons() throws PWCGIOException
+    public void removeWaypointIcons() throws PWCGException
     {
         waypointIcons.clear();
     }

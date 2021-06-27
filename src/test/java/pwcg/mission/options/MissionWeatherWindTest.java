@@ -10,8 +10,8 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;

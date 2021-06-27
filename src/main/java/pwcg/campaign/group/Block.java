@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
 
 public class Block extends FixedPosition
@@ -38,7 +37,7 @@ public class Block extends FixedPosition
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
 	}
 }

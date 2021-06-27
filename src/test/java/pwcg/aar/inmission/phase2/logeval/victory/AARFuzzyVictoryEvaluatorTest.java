@@ -9,8 +9,8 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase2.logeval.AARVehicleBuilder;
-import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.core.exception.PWCGException;
 

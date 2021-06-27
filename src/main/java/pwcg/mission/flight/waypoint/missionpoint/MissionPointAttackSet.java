@@ -9,11 +9,11 @@ import pwcg.mission.flight.FlightPlanes;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuWaypoint;
-import pwcg.mission.mcu.group.IAirGroundAttackMcuSequence;
+import pwcg.mission.mcu.group.IAirGroundAttackAreaMcuSequence;
 
 public class MissionPointAttackSet extends MissionPointSetMultipleWaypointSet implements IMissionPointSet
 {
-    private IAirGroundAttackMcuSequence attackSequence;
+    private IAirGroundAttackAreaMcuSequence attackSequence;
     private boolean linkToNextTarget = true;
     private MissionPointSetType missionPointSetType;
     
@@ -80,7 +80,7 @@ public class MissionPointAttackSet extends MissionPointSetMultipleWaypointSet im
         return linkToNextTarget;
     }
 
-    public void setAttackSequence(IAirGroundAttackMcuSequence attackSequence)
+    public void setAttackSequence(IAirGroundAttackAreaMcuSequence attackSequence)
     {
         this.attackSequence = attackSequence;
     }
@@ -101,7 +101,7 @@ public class MissionPointAttackSet extends MissionPointSetMultipleWaypointSet im
         return missionPointSetType;
     }
 
-    public IAirGroundAttackMcuSequence getAttackSequence()
+    public IAirGroundAttackAreaMcuSequence getAttackSequence()
     {
         return attackSequence;
     }

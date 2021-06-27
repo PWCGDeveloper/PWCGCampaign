@@ -48,7 +48,7 @@ public class TrainUnitBuilder
                 TargetType.TARGET_TRAIN,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
-        GroundUnitCollection groundUnitCollection = new GroundUnitCollection ("Train", groundUnitCollectionData);
+        GroundUnitCollection groundUnitCollection = new GroundUnitCollection (campaign, "Train", groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(train);
         groundUnitCollection.setPrimaryGroundUnit(train);
         groundUnitCollection.finishGroundUnitCollection();

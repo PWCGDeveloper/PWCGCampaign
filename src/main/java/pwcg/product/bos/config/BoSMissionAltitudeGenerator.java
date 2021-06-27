@@ -6,8 +6,8 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IMissionAltitudeGenerator;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Balloon;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
@@ -36,7 +36,7 @@ public class BoSMissionAltitudeGenerator implements IMissionAltitudeGenerator
             altitude = determineLowAltitudeBombingAltitude();
             altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
         }
-        else if (flightType == FlightTypes.GROUND_ATTACK)
+        else if (flightType == FlightTypes.GROUND_ATTACK || flightType == FlightTypes.GROUND_HUNT)
         {
             altitude = determineGroundAttackAltitude();
             altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);

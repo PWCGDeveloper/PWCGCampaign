@@ -6,8 +6,8 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;

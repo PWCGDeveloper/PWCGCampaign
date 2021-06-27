@@ -6,7 +6,6 @@ import java.io.IOException;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 
@@ -92,7 +91,7 @@ public class AType10 extends ATypeBase implements IAType10
 	}
 
     @Override
-    public void write(BufferedWriter writer) throws PWCGIOException 
+    public void write(BufferedWriter writer) throws PWCGException 
     {
         try
         {
@@ -105,7 +104,7 @@ public class AType10 extends ATypeBase implements IAType10
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
 }

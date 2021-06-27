@@ -3,7 +3,6 @@ package pwcg.mission.mcu.effect;
 import java.io.BufferedWriter;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.mcu.McuTimer;
 
@@ -32,7 +31,7 @@ public class FirePot
         firePotCommand.setObject(firePot.getEntity().getIndex());
 	}
 	
-	public void write(BufferedWriter writer) throws PWCGIOException 
+	public void write(BufferedWriter writer) throws PWCGException 
 	{
         firePotTimer.write(writer);
         firePotCommand.write(writer);

@@ -6,8 +6,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.GroundTargetDefinitionFactory;
+import pwcg.mission.target.TargetDefinition;
 
 
 public class EscortedByPlayerFlightBuilder

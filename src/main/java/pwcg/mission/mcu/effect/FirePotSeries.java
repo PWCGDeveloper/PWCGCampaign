@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.mcu.McuMissionStart;
@@ -67,7 +66,7 @@ public class FirePotSeries extends Effect
         return pairTriggerSource;
     }
 
-    public void write(BufferedWriter writer) throws PWCGIOException
+    public void write(BufferedWriter writer) throws PWCGException
     {
         missionBegin.write(writer);
         fireTriggerTimer.write(writer);

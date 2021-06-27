@@ -6,7 +6,6 @@ import java.io.IOException;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.PWCGLogger;
@@ -29,7 +28,7 @@ public class GroupIO
             	String line = reader.readLine();
             	if (line == null)
             	{
-            		throw new PWCGIOException ("Bad group at readBlock");
+            		throw new PWCGException ("Bad group at readBlock");
             	}
             	
             	line = line.trim();
@@ -103,12 +102,12 @@ public class GroupIO
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
 	}
 	
 	
-	public static Block readDamaged (BufferedReader reader, Block block) throws PWCGIOException 
+	public static Block readDamaged (BufferedReader reader, Block block) throws PWCGException 
 	{
 		try
         {
@@ -119,7 +118,7 @@ public class GroupIO
             	String line = reader.readLine().trim();
             	if (line == null)
             	{
-            		throw new PWCGIOException ("Bad data at readDamaged");
+            		throw new PWCGException ("Bad data at readDamaged");
             	}
             	if (line.contains("}"))
             	{
@@ -132,7 +131,7 @@ public class GroupIO
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
 	}
 
@@ -152,7 +151,7 @@ public class GroupIO
             	String line = reader.readLine().trim();
             	if (line == null)
             	{
-            		throw new PWCGIOException ("Bad group at readBridge");
+            		throw new PWCGException ("Bad group at readBridge");
             	}
             	if (line.contains("}"))
             	{
@@ -219,7 +218,7 @@ public class GroupIO
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
 	}
 }

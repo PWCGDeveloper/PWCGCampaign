@@ -6,7 +6,6 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.mcu.McuIcon;
 
@@ -33,7 +32,7 @@ public class MissionSquadronIconBuilder
         squadronIcons.add(icon);
     }
 
-	public void write(BufferedWriter writer) throws PWCGIOException
+	public void write(BufferedWriter writer) throws PWCGException
 	{
 		for (McuIcon icon : squadronIcons)
 		{

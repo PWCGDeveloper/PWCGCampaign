@@ -28,7 +28,7 @@ public class AssaultBuilder
                 TargetType.TARGET_INFANTRY,
                 Coalition.getCoalitions());
 
-        GroundUnitCollection battleUnitCollection = new GroundUnitCollection ("Assault", groundUnitCollectionData);
+        GroundUnitCollection battleUnitCollection = new GroundUnitCollection (mission.getCampaign(), "Assault", groundUnitCollectionData);
 
         List<IGroundUnit> primaryAssaultSegmentGroundUnits = new ArrayList<>();
         

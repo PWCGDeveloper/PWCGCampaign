@@ -15,11 +15,12 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionProfile;
-import pwcg.mission.flight.attack.GroundAttackFlight;
 import pwcg.mission.flight.balloonBust.BalloonBustFlight;
 import pwcg.mission.flight.balloondefense.BalloonDefenseFlight;
 import pwcg.mission.flight.bomb.BombingFlight;
 import pwcg.mission.flight.escort.PlayerIsEscortFlight;
+import pwcg.mission.flight.groundattack.GroundAttackFlight;
+import pwcg.mission.flight.groundhunt.GroundFreeHuntFlight;
 import pwcg.mission.flight.intercept.InterceptFlight;
 import pwcg.mission.flight.offensive.OffensiveFlight;
 import pwcg.mission.flight.patrol.PatrolFlight;
@@ -79,7 +80,33 @@ public class PlayerFlightFCTypeTest
         VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
         virtualWaypointPackageValidator.validate();
 	}
-	
+
+    @Test
+    public void groundFreeHuntFlightTest() throws PWCGException
+    {
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RFC_2_PROFILE);
+
+        MissionGenerator missionGenerator = new MissionGenerator(campaign);
+        Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign), FlightTypes.GROUND_HUNT, MissionProfile.DAY_TACTICAL_MISSION);
+        GroundFreeHuntFlight flight = (GroundFreeHuntFlight) mission.getMissionFlights().getPlayerFlights().get(0);
+        mission.finalizeMission();
+        MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
+        assert (targetMissionPoint != null);
+        PlaneRtbValidator.verifyPlaneRtbDisabled(mission);
+
+        GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
+        groundAttackFlightValidator.validateGroundAttackFlight(flight);
+        validateTargetDefinition(flight.getTargetDefinition());
+        assert(flight.getFlightType() == FlightTypes.GROUND_HUNT);
+        
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getMissionFlights());
+        playerEscortedFlightValidator.validateEscortForPlayer();
+        PositionEvaluator.evaluateAiFlight(mission);
+        
+        VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
+        virtualWaypointPackageValidator.validate();
+    }
+
 	@Test
 	public void bombFlightTest() throws PWCGException
 	{

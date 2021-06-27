@@ -62,7 +62,7 @@ public class AmphibiousAssaultShipBuilder
                 TargetType.TARGET_SHIPPING,
                 Coalition.getCoalitions());
 
-        GroundUnitCollection landingCraftGroundUnit = new GroundUnitCollection("Landing Craft", groundUnitCollectionData);
+        GroundUnitCollection landingCraftGroundUnit = new GroundUnitCollection(mission.getCampaign(), "Landing Craft", groundUnitCollectionData);
         for (AmphibiousAssaultShipDefinition amphibiousAssaultShip : shipsForMission)
         {
             if (amphibiousAssaultShip.getShipType().startsWith("land"))
@@ -86,7 +86,7 @@ public class AmphibiousAssaultShipBuilder
                 TargetType.TARGET_SHIPPING,
                 Coalition.getCoalitions());
 
-        GroundUnitCollection destroyers = new GroundUnitCollection("Destroyer", groundUnitCollectionData);
+        GroundUnitCollection destroyers = new GroundUnitCollection(mission.getCampaign(), "Destroyer", groundUnitCollectionData);
         for (AmphibiousAssaultShipDefinition amphibiousAssaultShip : shipsForMission)
         {
             if (amphibiousAssaultShip.getShipType().startsWith("dest"))

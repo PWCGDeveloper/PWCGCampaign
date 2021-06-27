@@ -3,6 +3,7 @@ package pwcg.campaign.group.staticobject;
 import java.util.Date;
 
 import org.junit.Test;
+
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;

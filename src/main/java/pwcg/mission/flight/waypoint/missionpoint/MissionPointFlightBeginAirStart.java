@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightPlanes;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;

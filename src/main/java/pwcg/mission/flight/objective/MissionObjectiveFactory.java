@@ -39,13 +39,16 @@ public class MissionObjectiveFactory
         {
             return getEscortMissionObjective(flight, date);
         }
-
-        if (flight.getFlightType() == FlightTypes.BOMB ||
+        else if (flight.getFlightType() == FlightTypes.BOMB ||
             flight.getFlightType() == FlightTypes.GROUND_ATTACK ||
             flight.getFlightType() == FlightTypes.DIVE_BOMB ||
             flight.getFlightType() == FlightTypes.LOW_ALT_BOMB)
         {
             return GroundAttackObjective.getMissionObjective(flight);
+        }
+        else if (flight.getFlightType() == FlightTypes.GROUND_HUNT)
+        {
+            return GroundFreeHuntObjective.getMissionObjective(flight);
         }
         else if (flight.getFlightType() == FlightTypes.INTERCEPT ||
                 flight.getFlightType() == FlightTypes.STRATEGIC_INTERCEPT)

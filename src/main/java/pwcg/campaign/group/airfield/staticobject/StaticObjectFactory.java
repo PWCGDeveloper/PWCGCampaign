@@ -6,8 +6,8 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.ground.vehicle.IVehicle;
-import pwcg.mission.ground.vehicle.VehicleDefinition;
 import pwcg.mission.ground.vehicle.VehicleClass;
+import pwcg.mission.ground.vehicle.VehicleDefinition;
 import pwcg.mission.ground.vehicle.VehicleRequestDefinition;
 
 public class StaticObjectFactory

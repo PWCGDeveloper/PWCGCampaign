@@ -8,7 +8,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.artySpot.ArtillerySpotPackage;
-import pwcg.mission.flight.attack.GroundAttackPackage;
 import pwcg.mission.flight.balloonBust.BalloonBustPackage;
 import pwcg.mission.flight.balloondefense.BalloonDefensePackage;
 import pwcg.mission.flight.bomb.BombingPackage;
@@ -17,6 +16,8 @@ import pwcg.mission.flight.cap.CAPPackage;
 import pwcg.mission.flight.contactpatrol.ContactPatrolPackage;
 import pwcg.mission.flight.divebomb.DiveBombingPackage;
 import pwcg.mission.flight.escort.PlayerIsEscortPackage;
+import pwcg.mission.flight.groundattack.GroundAttackPackage;
+import pwcg.mission.flight.groundhunt.GroundFreeHuntPackage;
 import pwcg.mission.flight.intercept.InterceptPackage;
 import pwcg.mission.flight.lonewolf.LoneWolfPackage;
 import pwcg.mission.flight.offensive.OffensivePackage;
@@ -82,6 +83,10 @@ public class FlightFactory
         else if (flightType == FlightTypes.GROUND_ATTACK)
         {
             flightPackage = new GroundAttackPackage();
+        }
+        else if (flightType == FlightTypes.GROUND_HUNT)
+        {
+            flightPackage = new GroundFreeHuntPackage();
         }
         else if (flightType == FlightTypes.INTERCEPT)
         {

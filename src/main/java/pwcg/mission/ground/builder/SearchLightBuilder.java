@@ -62,7 +62,7 @@ public class SearchLightBuilder
                 TargetType.TARGET_ARTILLERY,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
-        GroundUnitCollection groundUnitCollection = new GroundUnitCollection ("Search Light", groundUnitCollectionData);
+        GroundUnitCollection groundUnitCollection = new GroundUnitCollection (campaign, "Search Light", groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(searchLightUnit);
         groundUnitCollection.setPrimaryGroundUnit(searchLightUnit);
         groundUnitCollection.finishGroundUnitCollection();

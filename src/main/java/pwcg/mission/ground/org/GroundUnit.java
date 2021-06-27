@@ -9,11 +9,13 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.groundattack.GroundAttackWaypointFactory;
+import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.unittypes.GroundUnitSpawningTrainBuilder;
 import pwcg.mission.ground.unittypes.GroundUnitSpawningVehicleBuilder;
@@ -24,6 +26,9 @@ import pwcg.mission.mcu.AttackAreaType;
 import pwcg.mission.mcu.McuFormation;
 import pwcg.mission.mcu.McuSpawn;
 import pwcg.mission.mcu.McuTimer;
+import pwcg.mission.mcu.McuWaypoint;
+import pwcg.mission.mcu.group.AirGroundAttackMcuSequenceFactory;
+import pwcg.mission.mcu.group.IAirGroundAttackAreaMcuSequence;
 import pwcg.mission.target.TargetType;
 
 
@@ -45,6 +50,7 @@ public abstract class GroundUnit implements IGroundUnit
     protected McuTimer spawnUnitTimer = new McuTimer();
     protected McuTimer deleteUnitTimer = new McuTimer();
     protected List<GroundUnitElement> groundElements = new ArrayList<>();
+    protected List<IAirGroundAttackAreaMcuSequence> attackVehicleMcuGroups = new ArrayList<>();
 
     public GroundUnit(VehicleClass vehicleClass, GroundUnitInformation pwcgGroundUnitInformation) 
     {
@@ -79,11 +85,13 @@ public abstract class GroundUnit implements IGroundUnit
             
             writer.write("}");
             writer.newLine();
+            
+            writeAttackTargetEntries(writer);
         }
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
 
@@ -94,6 +102,14 @@ public abstract class GroundUnit implements IGroundUnit
         for (GroundUnitElement groundElement : groundElements)
         {
             groundElement.write(writer);
+        }
+    }
+
+    private void writeAttackTargetEntries(BufferedWriter writer) throws PWCGException
+    {
+        for (IAirGroundAttackAreaMcuSequence attackVehicleMcuGroup : attackVehicleMcuGroups)
+        {
+            attackVehicleMcuGroup.write(writer);
         }
     }
 
@@ -305,7 +321,6 @@ public abstract class GroundUnit implements IGroundUnit
         }
     }
 
-
     protected void createSpawnTimer() 
     {
         spawnUnitTimer.setName("Ground Unit Spawn Timer");
@@ -315,6 +330,25 @@ public abstract class GroundUnit implements IGroundUnit
         deleteUnitTimer.setName("Ground Unit Delete Timer");
         deleteUnitTimer.setDesc("Ground Unit Delete Timer");
         deleteUnitTimer.setPosition(pwcgGroundUnitInformation.getPosition());
+    }
+    
+    @Override
+    public void addTargetingFlight(IFlight flight) throws PWCGException
+    {
+        IAirGroundAttackAreaMcuSequence attackTargetSequence = AirGroundAttackMcuSequenceFactory.buildAirGroundAttackSequence(
+                flight, 
+                GroundAttackWaypointFactory.GROUND_ATTACK_TIME, 
+                GroundAttackWaypointFactory.GROUND_ATTACK_BINGO_TIME, 
+                AttackAreaType.SPECIFIC_TARGETS);
+        
+        attackTargetSequence.setAttackToTriggerOnPlane(flight.getFlightPlanes().getPlanes());
+        List<IVehicle> vehicles = this.getVehicles();
+        attackTargetSequence.setVehiclesToAttack(vehicles);
+        
+        McuWaypoint egressWaypoint = flight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_EGRESS);
+        attackTargetSequence.setLinkToNextTarget(egressWaypoint.getIndex());
+        
+        attackVehicleMcuGroups.add(attackTargetSequence);
     }
 
     

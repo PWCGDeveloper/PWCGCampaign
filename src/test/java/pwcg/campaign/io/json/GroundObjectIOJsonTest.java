@@ -8,7 +8,6 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.GroundStructureGroup;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GroundObjectIOJsonTest
@@ -53,7 +52,7 @@ public class GroundObjectIOJsonTest
         validateGroundStructures(mapName);        
     }
 
-    private GroundStructureGroup validateGroundStructures(String mapName) throws PWCGException, PWCGIOException
+    private GroundStructureGroup validateGroundStructures(String mapName) throws PWCGException, PWCGException
     {
         GroundStructureGroup groundStructures = GroundObjectIOJson.readJson(mapName);
         assert (groundStructures.getRailroadStations().size() > 0);

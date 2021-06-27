@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.util.HashMap;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 
@@ -129,5 +128,5 @@ public abstract class ATypeBase
         return atype;
     }
 
-    public abstract void write(BufferedWriter writer) throws PWCGIOException;
+    public abstract void write(BufferedWriter writer) throws PWCGException;
 }

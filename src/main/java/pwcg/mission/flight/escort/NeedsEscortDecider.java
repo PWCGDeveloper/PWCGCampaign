@@ -47,15 +47,11 @@ public class NeedsEscortDecider
     
     private static int getEsortOddsForFlightType(IFlight escortedFlight) throws PWCGException
     {
-        if (escortedFlight.getFlightType() == FlightTypes.BOMB)
+        if (FlightTypes.isTacticalBombingFlight(escortedFlight.getFlightType()))
         {
             return escortedFlight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.IsVirtualBombingEscortedOddsKey);
         }
-        else if (escortedFlight.getFlightType() == FlightTypes.LOW_ALT_BOMB)
-        {
-            return escortedFlight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.IsVirtualBombingEscortedOddsKey);
-        }
-        else if (escortedFlight.getFlightType() == FlightTypes.GROUND_ATTACK)
+        else if (FlightTypes.isGroundAttackFlight(escortedFlight.getFlightType()))
         {
             return escortedFlight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.IsVirtualGroundAttackEscortedOddsKey);
         }

@@ -56,5 +56,4 @@ public interface IProductSpecificConfiguration
     int getMinDepthOfPenetrationOffensive();
     double getMinimumDistanceBetweenPatrolPoints();
     int getCloseToBattleDistance();
-    int getGroundUnitSpawnDistance();
 }

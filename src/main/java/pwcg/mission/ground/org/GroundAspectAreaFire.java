@@ -3,7 +3,6 @@ package pwcg.mission.ground.org;
 import java.io.BufferedWriter;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.flight.waypoint.WaypointPriority;
@@ -63,7 +62,7 @@ public class GroundAspectAreaFire implements IGroundAspect
 	}
 
     @Override
-    public void write(BufferedWriter writer) throws PWCGIOException
+    public void write(BufferedWriter writer) throws PWCGException
     {
         attackAreaTimer.write(writer);
         attackArea.write(writer);

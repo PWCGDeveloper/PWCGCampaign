@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import pwcg.campaign.utils.LCIndexGenerator;
-import pwcg.core.exception.PWCGIOException;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.MissionStringHandler;
@@ -15,7 +15,7 @@ public class McuSubtitle extends BaseFlightMcu
 	private int lcText = LCIndexGenerator.getInstance().getNextIndex();
     private String text;
     private int duration = 3;
-    private boolean useSubtitles = false;
+    private boolean useSubtitles = true;
 
 	public McuSubtitle ()
 	{
@@ -47,7 +47,7 @@ public class McuSubtitle extends BaseFlightMcu
         this.duration = duration;
     }
 
-    public void write(BufferedWriter writer) throws PWCGIOException
+    public void write(BufferedWriter writer) throws PWCGException
 	{
         if (!useSubtitles)
         {
@@ -112,7 +112,7 @@ public class McuSubtitle extends BaseFlightMcu
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
 	}	
     
@@ -131,7 +131,7 @@ public class McuSubtitle extends BaseFlightMcu
     }
 
 
-    public static void writeSubtitles(List<McuSubtitle> subTitleList, BufferedWriter writer) throws PWCGIOException
+    public static void writeSubtitles(List<McuSubtitle> subTitleList, BufferedWriter writer) throws PWCGException
     {
         for (int i = 0; i < subTitleList.size(); ++i)
         {

@@ -11,7 +11,6 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.io.json.LocationIOJson;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.LocationSet;
 import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.PWCGLogger;
@@ -84,7 +83,7 @@ public class CityNameBuilder
         catch (Exception e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
 	}
 }

@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.core.exception.PWCGIOException;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 
 public class McuProximity extends BaseFlightMcu
@@ -29,7 +29,7 @@ public class McuProximity extends BaseFlightMcu
 	    planeCoalitions.add(coalition);
 	}
 
-	public void write(BufferedWriter writer) throws PWCGIOException
+	public void write(BufferedWriter writer) throws PWCGException
 	{
 		try
 		{
@@ -40,7 +40,7 @@ public class McuProximity extends BaseFlightMcu
 
 			if (targets.size() == 0)
 			{
-				throw new PWCGIOException("No targets for proximity");
+				throw new PWCGException("No targets for proximity");
 			}
 
 			super.write(writer);
@@ -59,7 +59,7 @@ public class McuProximity extends BaseFlightMcu
 		catch (IOException e)
 		{
 			PWCGLogger.logException(e);
-			throw new PWCGIOException(e.getMessage());
+			throw new PWCGException(e.getMessage());
 		}
 	}
 

@@ -21,8 +21,8 @@ import pwcg.core.location.Orientation;
 import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;
-import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.GroundUnitCollection;
+import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.vehicle.VehicleClass;
 
 @RunWith(MockitoJUnitRunner.class)

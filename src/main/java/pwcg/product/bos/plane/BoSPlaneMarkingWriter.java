@@ -9,7 +9,6 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.skin.TacticalCodeColor;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.product.bos.country.BoSServiceManager;
@@ -139,7 +138,7 @@ public class BoSPlaneMarkingWriter
         return new TacticalCodeMarkings(tCode, tCodeColor);
     }
 
-    private void writeTacticalMarkingCode(BufferedWriter writer, TacticalCodeMarkings markings) throws PWCGIOException
+    private void writeTacticalMarkingCode(BufferedWriter writer, TacticalCodeMarkings markings) throws PWCGException
     {
         try
         {
@@ -151,7 +150,7 @@ public class BoSPlaneMarkingWriter
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
 

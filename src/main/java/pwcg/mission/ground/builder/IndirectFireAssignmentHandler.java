@@ -9,8 +9,8 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
-import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.GroundUnitCollection;
+import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.unittypes.artillery.GroundArtilleryBattery;
 
 public class IndirectFireAssignmentHandler

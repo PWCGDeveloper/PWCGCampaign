@@ -3,7 +3,6 @@ package pwcg.aar.inmission.phase1.parse.event;
 import java.io.BufferedWriter;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 
@@ -79,7 +78,7 @@ public class AType0 extends ATypeBase implements IAType0
     }
 
     @Override
-    public void write(BufferedWriter writer) throws PWCGIOException 
+    public void write(BufferedWriter writer) throws PWCGException 
     {
     }
 

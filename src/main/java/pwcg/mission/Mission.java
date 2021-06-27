@@ -276,6 +276,7 @@ public class Mission
             missionBlocks.createBlockSmoke();
 
             setGroundUnitTriggers();
+            setFreeHuntTriggers();
             assignIndirectFireTargets();
             setEngagableAAA();
 
@@ -303,6 +304,12 @@ public class Mission
         getGroundUnitCount();
         
         isFinalized = true;
+    }
+
+    private void setFreeHuntTriggers() throws PWCGException
+    {
+        MissionFreeHuntTriggerBuidler freeHuntTriggerBuidler = new MissionFreeHuntTriggerBuidler(this);
+        freeHuntTriggerBuidler.buildFreeHuntTriggers();
     }
 
     private void setGroundUnitTriggers() throws PWCGException

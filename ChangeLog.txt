@@ -12,19 +12,36 @@ Newspapers added for all iconic events
 FC newspapers converted
 Added news rack to view old newspapers
 - campaign->acitivites->news
+Added Ground Unit Spawn Distance configuration in Mission Limits
 Fixed: In several places plaques were referred to as plagues.
 - Don't think they were visible to players but it bugged me
+Fixed: Sometimes AAR events were not properly rolled up into the campaign
+Fixed: Removed a few defunct configuration settings
 
-Newspaper to do:
 
-- Newspapers for FC
+
+To do:
 - Newspapers in AAR
 - Deal with ace lost newspapers
 - Deal with end of war newspapers
 
+Ground Hunt
+transport routes should change to inside/outside mission box
+trains should sometimes be stopped - when spawning in box
+Player must lead flight
+
+Done
+Attackable transport units should start enabled and not spawn ... expand spawn trigger to 100 KM?
+Make attack waypoint a hunt waypoint with altitude > 0
+Set mission altitude properly
+Set mission description
+
 12.3.1
+Add ground hunt mission for player only
 Enhanced iconic missions to allow the player to crew any appropriate TC vehicle.
 Extended ground unit spawn distance from 5km to 15km/8kmfor BoS/FC
+Enable attack target near end of mission
+Add attack target to certain ground units - one instance possible for each player flight
 
 12.3.0
 Iconic missions for AAA trucks

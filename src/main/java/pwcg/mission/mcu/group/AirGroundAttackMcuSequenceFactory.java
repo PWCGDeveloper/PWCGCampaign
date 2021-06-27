@@ -6,10 +6,23 @@ import pwcg.mission.mcu.AttackAreaType;
 
 public class AirGroundAttackMcuSequenceFactory
 {
-    public static IAirGroundAttackMcuSequence buildAirGroundAttackSequence(IFlight flight, int maxAttackTimeSeconds, int bingoLoiterTimeSeconds, AttackAreaType attackAreaType) throws PWCGException
+    public static IAirGroundAttackAreaMcuSequence buildAirGroundAttackSequence(
+            IFlight flight, 
+            int maxAttackTimeSeconds, 
+            int bingoLoiterTimeSeconds, 
+            AttackAreaType attackAreaType) throws PWCGException
     {
-        IAirGroundAttackMcuSequence attackMcuSequence = new AirGroundAttackMcuSequence(flight);
-        attackMcuSequence.createAttackArea(maxAttackTimeSeconds, bingoLoiterTimeSeconds, attackAreaType);        
-        return attackMcuSequence;
+        if (attackAreaType == AttackAreaType.SPECIFIC_TARGETS)
+        {
+            AirGroundAttackTargetMcuSequence attackMcuSequence = new AirGroundAttackTargetMcuSequence(flight);
+            attackMcuSequence.createAttackSequence(maxAttackTimeSeconds, bingoLoiterTimeSeconds);        
+            return attackMcuSequence;
+        }
+        else
+        {
+            AirGroundAttackMcuSequence attackMcuSequence = new AirGroundAttackMcuSequence(flight);
+            attackMcuSequence.createAttackSequence(maxAttackTimeSeconds, bingoLoiterTimeSeconds, attackAreaType);        
+            return attackMcuSequence;
+        }
     }
 }

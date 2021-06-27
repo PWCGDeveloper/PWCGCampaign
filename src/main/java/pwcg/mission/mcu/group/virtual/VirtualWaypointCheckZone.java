@@ -5,7 +5,6 @@ import java.io.IOException;
 
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.group.SelfDeactivatingTimedCheckZone;
@@ -75,7 +74,7 @@ public class VirtualWaypointCheckZone
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
     

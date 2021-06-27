@@ -12,8 +12,8 @@ import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.org.GroundUnit;
 import pwcg.mission.ground.org.GroundUnitNumberCalculator;
-import pwcg.mission.ground.vehicle.VehicleDefinition;
 import pwcg.mission.ground.vehicle.VehicleClass;
+import pwcg.mission.ground.vehicle.VehicleDefinition;
 import pwcg.mission.ground.vehicle.VehicleRequestDefinition;
 
 public class DrifterUnit extends GroundUnit

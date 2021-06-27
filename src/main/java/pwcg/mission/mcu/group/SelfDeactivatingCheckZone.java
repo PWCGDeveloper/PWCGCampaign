@@ -7,7 +7,6 @@ import java.util.List;
 
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
@@ -76,7 +75,7 @@ public class SelfDeactivatingCheckZone
         deactivateCZ.setTarget(activateCZTimer.getIndex());    
     }
     
-    public void write(BufferedWriter writer) throws PWCGIOException
+    public void write(BufferedWriter writer) throws PWCGException
     {
         try
         {
@@ -104,7 +103,7 @@ public class SelfDeactivatingCheckZone
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
     

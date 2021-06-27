@@ -7,9 +7,9 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
-import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.factory.AirfieldConfigurationFactory;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.group.airfield.AirfieldConfiguration;

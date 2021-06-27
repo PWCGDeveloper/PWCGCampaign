@@ -117,6 +117,7 @@ public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel impl
         buttonPanel.add(makeButton("Mission AI", "Set AI preferences"));
         buttonPanel.add(makeButton("Mission Ground Objects", "Set density of ground objects"));
         buttonPanel.add(makeButton("Fighter Mission Types", "Set odds of flying different kinds of fighter missions"));
+        buttonPanel.add(makeButton("Ground Attack Mission Types", "Set odds of flying different kinds of ground attack missions"));
         buttonPanel.add(makeButton("Bomber Mission Types", "Set odds of flying different kinds of bombing missions"));
         buttonPanel.add(makeButton("Recon Mission Types", "Set odds of flying different kinds of recon missions"));
         buttonPanel.add(makeButton("Transport Mission Types", "Set odds of flying different kinds of transport missions"));
@@ -199,6 +200,10 @@ public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel impl
         {
             configSet = configManager.getMergedConfigSet(ConfigSetKeys.ConfigSetFighterMission);                
         }
+        else if (action.contains("Ground Attack Mission Types"))
+        {
+            configSet = configManager.getMergedConfigSet(ConfigSetKeys.ConfigSetGroundAttackMission);                
+        }		
         else if (action.contains("Bomber Mission Types"))
         {
             configSet = configManager.getMergedConfigSet(ConfigSetKeys.ConfigSetBomberMission);                

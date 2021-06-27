@@ -14,9 +14,9 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.product.bos.plane.BosPlaneAttributeMapping;
 

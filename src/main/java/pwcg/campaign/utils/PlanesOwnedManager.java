@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import pwcg.campaign.context.PWCGDirectoryUserManager;
-import pwcg.core.exception.PWCGIOException;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 
@@ -35,7 +35,7 @@ public class PlanesOwnedManager
 		return instance;
 	}
 	
-	public void write() throws PWCGIOException 
+	public void write() throws PWCGException 
 	{
 		try
         {
@@ -56,7 +56,7 @@ public class PlanesOwnedManager
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
 	}
 	

@@ -4,8 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Equipment;

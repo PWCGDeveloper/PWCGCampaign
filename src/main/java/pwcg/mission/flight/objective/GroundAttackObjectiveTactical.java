@@ -38,7 +38,7 @@ public class GroundAttackObjectiveTactical
         return objective;
     }
 
-    private static String getObjectiveFromEnemyUnit(IGroundUnit enemyGroundUnit, FlightInformation flightInformation) throws PWCGException
+    public static String getObjectiveFromEnemyUnit(IGroundUnit enemyGroundUnit, FlightInformation flightInformation) throws PWCGException
     {
         String objectiveLocation =  MissionObjectiveLocation.getMissionObjectiveLocation(
                 flightInformation.getSquadron(), flightInformation.getCampaign().getDate(), enemyGroundUnit.getPosition().copy());
@@ -61,19 +61,19 @@ public class GroundAttackObjectiveTactical
         }
         else if (targetType == TargetType.TARGET_TRAIN)
         {
-            objective = "Attack the trains and rail facilities" + objectiveLocation;
+            objective = "Attack trains and rail facilities" + objectiveLocation;
         }
         else if (targetType == TargetType.TARGET_TRANSPORT)
         {
-            objective = "Attack the transport and road facilities" + objectiveLocation; 
+            objective = "Attack transport and road facilities" + objectiveLocation; 
         }
         else if (targetType == TargetType.TARGET_SHIPPING)
         {
-            objective = "Attack the shipping" + objectiveLocation; 
+            objective = "Attack shipping" + objectiveLocation; 
         }
         else if (targetType == TargetType.TARGET_DRIFTER)
         {
-            objective = "Attack the light shipping" + objectiveLocation; 
+            objective = "Attack light shipping" + objectiveLocation; 
         }
         else
         {

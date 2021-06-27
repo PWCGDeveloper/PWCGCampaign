@@ -5,7 +5,6 @@ import java.io.IOException;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
@@ -151,7 +150,7 @@ public class MissionFileOptionWriter
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
     }
 }

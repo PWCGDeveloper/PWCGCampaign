@@ -11,7 +11,6 @@ import pwcg.aar.inmission.phase1.parse.event.AType;
 import pwcg.aar.inmission.phase1.parse.event.IAType0;
 import pwcg.aar.inmission.phase1.parse.event.LogEventFactory;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
 
 public class AARHeaderParser
@@ -20,7 +19,7 @@ public class AARHeaderParser
     {
     }
 
-    public String parseHeaderOnly(String campaignName, String logFileName) throws PWCGException, PWCGIOException 
+    public String parseHeaderOnly(String campaignName, String logFileName) throws PWCGException, PWCGException 
     {
         String missionFileName = AARMissionLogFileSet.NOT_AVAILABLE;
         try
@@ -45,13 +44,13 @@ public class AARHeaderParser
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
         
         return missionFileName;
     }
     
-    public String parseLine(String campaignName, String line) throws PWCGException, PWCGIOException 
+    public String parseLine(String campaignName, String line) throws PWCGException, PWCGException 
     {
         String atype0Tag = AType.ATYPE0.getAtypeLogIdentifier();
         if (line.contains(atype0Tag))

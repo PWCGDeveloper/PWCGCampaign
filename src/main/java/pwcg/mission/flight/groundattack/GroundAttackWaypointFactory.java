@@ -1,9 +1,9 @@
-package pwcg.mission.flight.attack;
+package pwcg.mission.flight.groundattack;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.attack.GroundAttackWaypointHelper;
 import pwcg.mission.flight.waypoint.end.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
@@ -11,7 +11,7 @@ import pwcg.mission.flight.waypoint.missionpoint.MissionPointAttackSet;
 import pwcg.mission.mcu.AttackAreaType;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.mcu.group.AirGroundAttackMcuSequenceFactory;
-import pwcg.mission.mcu.group.IAirGroundAttackMcuSequence;
+import pwcg.mission.mcu.group.IAirGroundAttackAreaMcuSequence;
 
 public class GroundAttackWaypointFactory
 {
@@ -32,7 +32,7 @@ public class GroundAttackWaypointFactory
 
         createTargetWaypoints(ingressWaypoint.getPosition());
         
-        IAirGroundAttackMcuSequence attackMcuSequence = createAttackArea();
+        IAirGroundAttackAreaMcuSequence attackMcuSequence = createAttackArea();
         missionPointSet.setAttackSequence(attackMcuSequence);
         
         McuWaypoint egressWaypoint = EgressWaypointGenerator.createEgressWaypoint(flight, ingressWaypoint.getPosition());
@@ -56,9 +56,9 @@ public class GroundAttackWaypointFactory
         }
 	}
     
-    private IAirGroundAttackMcuSequence createAttackArea() throws PWCGException 
+    private IAirGroundAttackAreaMcuSequence createAttackArea() throws PWCGException 
     {
-        IAirGroundAttackMcuSequence attackMcuSequence = AirGroundAttackMcuSequenceFactory.buildAirGroundAttackSequence(flight, GROUND_ATTACK_TIME, GROUND_ATTACK_BINGO_TIME, AttackAreaType.GROUND_TARGETS);
+        IAirGroundAttackAreaMcuSequence attackMcuSequence = AirGroundAttackMcuSequenceFactory.buildAirGroundAttackSequence(flight, GROUND_ATTACK_TIME, GROUND_ATTACK_BINGO_TIME, AttackAreaType.GROUND_TARGETS);
         return attackMcuSequence;
     }
 }

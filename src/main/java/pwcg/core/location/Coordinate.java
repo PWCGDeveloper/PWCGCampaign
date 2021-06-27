@@ -7,7 +7,6 @@ import java.util.Formatter;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PWCGLogger;
 
@@ -112,7 +111,7 @@ public class Coordinate implements Cloneable
 	    return false;
 	}
 
-	public void write(BufferedWriter writer) throws PWCGIOException
+	public void write(BufferedWriter writer) throws PWCGException
 	{
         try
         {
@@ -126,7 +125,7 @@ public class Coordinate implements Cloneable
         catch (IOException e)
         {
             PWCGLogger.logException(e);
-            throw new PWCGIOException(e.getMessage());
+            throw new PWCGException(e.getMessage());
         }
 	}
 

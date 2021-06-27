@@ -20,9 +20,9 @@ import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
-import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.squadron.Squadron;

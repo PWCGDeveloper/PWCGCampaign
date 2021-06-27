@@ -2,7 +2,6 @@ package pwcg.mission.aaatruck;
 
 import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.mission.Mission;
 
 public class AAATruckMissionPostProcessor
@@ -22,7 +21,7 @@ public class AAATruckMissionPostProcessor
         removeUnitsOutsideOfRange();
     }
 
-    private void removePlayerFlight() throws PWCGIOException
+    private void removePlayerFlight() throws PWCGException
     {
         mission.getMissionFlights().removePlayerFlights();
         mission.getMissionWaypointIconBuilder().removeWaypointIcons();
