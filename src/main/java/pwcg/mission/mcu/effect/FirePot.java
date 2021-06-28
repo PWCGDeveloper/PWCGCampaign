@@ -27,7 +27,7 @@ public class FirePot
         
         firePot.setPosition(firePotPosition.copy());
         firePot.populateEntity();
-        firePot.getEntity().setEnabled(1);
+        firePot.getEntity().enableEntity();
         firePotCommand.setObject(firePot.getEntity().getIndex());
 	}
 	

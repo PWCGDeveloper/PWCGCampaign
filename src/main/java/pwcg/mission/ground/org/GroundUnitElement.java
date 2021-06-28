@@ -8,20 +8,14 @@ import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.ground.vehicle.IVehicle;
-import pwcg.mission.mcu.McuDeactivate;
-import pwcg.mission.mcu.McuDelete;
-import pwcg.mission.mcu.McuEvent;
 import pwcg.mission.mcu.McuSpawn;
 import pwcg.mission.mcu.McuTimer;
 
 public class GroundUnitElement
 {
     private IVehicle vehicle;
-    private McuTimer spawnTimer = new McuTimer();
+    private McuTimer activateTimer = new McuTimer();
     private McuSpawn spawn = new McuSpawn();
-    private McuTimer deleteTimer = new McuTimer();
-    private McuDelete delete = new McuDelete();
-    private McuDeactivate spawnDeactivate = new McuDeactivate();
     private List<IGroundAspect> aspectsOfGroundUnit = new ArrayList<>();
     private Coordinate vehicleStartLocation;
 
@@ -34,10 +28,8 @@ public class GroundUnitElement
     public void createGroundUnitElement() throws PWCGException
     {
         createSpawns();
-        createDeletes();
         createTargetAssociations();
         createObjectAssociations();
-        createEventAssociations();
     }
 
     public void addAspect(IGroundAspect aspect)
@@ -52,7 +44,7 @@ public class GroundUnitElement
         {
             if (previousElement == null)
             {
-                spawnTimer.setTarget(element.getEntryPoint());
+                activateTimer.setTarget(element.getEntryPoint());
             }
             else
             {
@@ -65,12 +57,12 @@ public class GroundUnitElement
     public void write(BufferedWriter writer) throws PWCGException
     {
         vehicle.write(writer);
-        spawnTimer.write(writer);
-        spawn.write(writer);
-        deleteTimer.write(writer);
-        delete.write(writer);
-        spawnDeactivate.write(writer);
-
+        activateTimer.write(writer);
+        if (!vehicle.getEntity().isEnabled())
+        {
+            spawn.write(writer);
+        }
+        
         for (IGroundAspect groundElement : aspectsOfGroundUnit)
         {
             groundElement.write(writer);
@@ -84,12 +76,7 @@ public class GroundUnitElement
 
     public int getEntryPoint()
     {
-        return spawnTimer.getIndex();
-    }
-
-    public int getDeleteEntryPoint()
-    {
-        return deleteTimer.getIndex();
+        return activateTimer.getIndex();
     }
 
     private void createSpawns() throws PWCGException
@@ -100,9 +87,9 @@ public class GroundUnitElement
 
     private void createSpawnTimer()
     {
-        spawnTimer.setName("Ground Element Spawn Timer");
-        spawnTimer.setDesc("Ground Element Spawn Timer");
-        spawnTimer.setPosition(vehicleStartLocation);
+        activateTimer.setName("Ground Element Activate Timer");
+        activateTimer.setDesc("Ground Element Activate Timer");
+        activateTimer.setPosition(vehicleStartLocation);
     }
 
     private void createSpawn() throws PWCGException
@@ -113,52 +100,14 @@ public class GroundUnitElement
         spawn.setOrientation(vehicle.getOrientation());
     }
 
-    private void createDeletes() throws PWCGException
-    {
-        createDeleteTimer();
-        createDelete();
-        createSpawnDeactivate();
-    }
-
-    private void createDeleteTimer()
-    {
-        deleteTimer.setName("Ground Element Delete Timer");
-        deleteTimer.setDesc("Ground Element Delete Timer");
-        deleteTimer.setPosition(vehicleStartLocation);
-    }
-
-    private void createDelete() throws PWCGException
-    {
-        delete.setName("Ground Element Delete");
-        delete.setDesc("Ground Element Delete");
-        delete.setPosition(vehicleStartLocation);
-    }
-
-    private void createSpawnDeactivate() throws PWCGException
-    {
-        spawnDeactivate.setName("Ground Element Spawn Deactivate");
-        spawnDeactivate.setDesc("Ground Element Spawn Deactivate");
-        spawnDeactivate.setPosition(vehicleStartLocation);
-    }
-
     private void createTargetAssociations()
     {
-        spawnTimer.setTarget(spawn.getIndex());
-        deleteTimer.setTarget(delete.getIndex());
-        spawnDeactivate.setTarget(spawnTimer.getIndex());
-        spawnDeactivate.setTarget(spawn.getIndex());
+        activateTimer.setTarget(spawn.getIndex());
     }
 
     private void createObjectAssociations()
     {
         spawn.setObject(vehicle.getEntity().getIndex());
-        delete.setObject(vehicle.getEntity().getIndex());
-    }
-
-    private void createEventAssociations()
-    {
-        McuEvent event = new McuEvent(McuEvent.ONKILLED, spawnDeactivate.getIndex());
-        vehicle.getEntity().addEvent(event);
     }
 
     public List<IGroundAspect> getAspectsOfGroundUnit()
@@ -173,7 +122,7 @@ public class GroundUnitElement
 
     public McuTimer getSpawnTimer()
     {
-        return spawnTimer;
+        return activateTimer;
     }
 
     public McuSpawn getSpawn()
@@ -184,5 +133,14 @@ public class GroundUnitElement
     public Coordinate getVehicleStartLocation()
     {
         return vehicleStartLocation;
+    }
+
+    public void convertGroundUnitElementToNotSpawning() throws PWCGException
+    {
+        spawn = null;                   // no need for a spawn
+        activateTimer.clearTargets();   // eliminate the link to the spawn
+        
+        vehicle.getEntity().enableEntity(); // Enable the vehicle
+        linkAspects();                      // Relink the aspects such that they trigger
     }
 }

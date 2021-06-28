@@ -261,7 +261,7 @@ public class MissionFileWriter implements IMissionFile
                     radioBeacon.setPosition(beaconPos);
                     radioBeacon.setOrientation(flightAirfield.getOrientation().copy());
                     radioBeacon.setBeaconChannel(1);
-                    radioBeacon.getEntity().setEnabled(1);
+                    radioBeacon.getEntity().enableEntity();
                     radioBeacon.write(writer);
                 }
             }
@@ -293,7 +293,7 @@ public class MissionFileWriter implements IMissionFile
 
                     landCanvas.setPosition(pos1);
                     landCanvas.setOrientation(takeoffOrientation);
-                    landCanvas.getEntity().setEnabled(1);
+                    landCanvas.getEntity().enableEntity();
                     landCanvas.write(writer);
 
                     Coordinate pos2 = MathUtils.calcNextCoord(pos1, takeoffOrientation.getyOri(), 5.0);
@@ -302,7 +302,7 @@ public class MissionFileWriter implements IMissionFile
 
                     landCanvas2.setPosition(pos2);
                     landCanvas2.setOrientation(orient2);
-                    landCanvas2.getEntity().setEnabled(1);
+                    landCanvas2.getEntity().enableEntity();
                     landCanvas2.write(writer);
                 }
             }

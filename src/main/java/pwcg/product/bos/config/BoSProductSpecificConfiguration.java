@@ -32,7 +32,7 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     private static final int INGRESS_AT_TARGET_MIN_DISTANCE = 4000;
     private static final int INGRESS_AT_TARGET_MAX_DISTANCE = 15000;  
     private static final int ADDITIONAL_RENDEZVOUS_DISTANCE_FROM_FRONT = 15000;
-    private static final int ATTACK_AREA_SELECT_TARGET_DISTANCE = 8000;
+    private static final int ATTACK_AREA_SELECT_TARGET_DISTANCE = 5000;
     private static final int ATTACK_AREA_BOMB_DROP_DISTANCE = 1000;
     private static final int INGRESS_DISTANCE_FROM_FRONT = 10000;
     private static final int FORMATION_HORIZINTAL_SPACING = 200;
@@ -294,9 +294,21 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     }
 
     @Override
+    public int getAttackAreaSelectTargetRadius()
+    {
+        return ATTACK_AREA_SELECT_TARGET_DISTANCE;
+    }
+
+    @Override
     public int getRendezvousDistanceFromFront()
     {
         return getAttackAreaSelectTargetRadius() + ADDITIONAL_RENDEZVOUS_DISTANCE_FROM_FRONT;
+    }
+
+    @Override
+    public int getAttackAreaTriggerRadius()
+    {
+        return getAttackAreaSelectTargetRadius() + 2000;
     }
 
     @Override
@@ -311,23 +323,10 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
         return getAttackAreaTriggerRadius() - 1000 ;
     }
 
-
-    @Override
-    public int getAttackAreaSelectTargetRadius()
-    {
-        return ATTACK_AREA_SELECT_TARGET_DISTANCE;
-    }
-
     @Override
     public int getAttackAreaBombDropRadius()
     {
         return ATTACK_AREA_BOMB_DROP_DISTANCE;
-    }
-
-    @Override
-    public int getAttackAreaTriggerRadius()
-    {
-        return getAttackAreaSelectTargetRadius() + 2000;
     }
 
     @Override

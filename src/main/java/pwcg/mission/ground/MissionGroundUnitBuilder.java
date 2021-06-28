@@ -191,19 +191,6 @@ public class MissionGroundUnitBuilder
         }
         return allMissionGroundUnits;
     }
-
-    public List<TargetType> getAvailableGroundUnitTargetTypesForMission() throws PWCGException
-    {
-        Map <TargetType, TargetType> uniqueTargetTypes = new HashMap<>();
-        for (GroundUnitCollection groundUnitCollection : getAllMissionGroundUnits())
-        {
-            if (groundUnitCollection.getTargetType() != TargetType.TARGET_NONE)
-            {
-                uniqueTargetTypes.put(groundUnitCollection.getTargetType(), groundUnitCollection.getTargetType());
-            }
-        }
-        return new ArrayList<>(uniqueTargetTypes.values());
-    }    
     
     public List<TargetType> getAvailableGroundUnitTargetTypesForMissionForSide(Side side) throws PWCGException
     {
@@ -220,6 +207,19 @@ public class MissionGroundUnitBuilder
         }
         return new ArrayList<>(uniqueTargetTypesForSide.values());
     }    
+
+    public List<GroundUnitCollection> getGroundUnitsForSide(Side side) throws PWCGException
+    {
+        List<GroundUnitCollection> groundUnitsForSide = new ArrayList<>();
+        for (GroundUnitCollection groundUnitCollection : getAllMissionGroundUnits())
+        {
+            if (groundUnitCollection.getGroundUnitsForSide(side).size() > 0)
+            {
+                groundUnitsForSide.add(groundUnitCollection);
+            }
+        }
+        return groundUnitsForSide;
+    }
 
     public int getUnitCount()
     {

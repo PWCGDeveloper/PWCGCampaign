@@ -10,7 +10,10 @@ import pwcg.core.utils.PWCGLogger;
 
 public class McuTREntity extends BaseFlightMcu
 {
-    private int enabled = 0;
+    public static final int ENTITY_DISABLED = 0;
+    public static final int ENTITY_ENABLED = 1;
+    
+    private int enabled = ENTITY_DISABLED;
     private int misObjID = 0;
     private ArrayList<McuMessage> onMessages = new ArrayList<>();
     private List<McuEvent> eventList = new ArrayList<>();
@@ -51,14 +54,23 @@ public class McuTREntity extends BaseFlightMcu
         return newEntity;
     }
 
-    public int getEnabled()
+    public boolean isEnabled()
     {
-        return enabled;
+        if (enabled == ENTITY_ENABLED)
+        {
+            return true;
+        }
+        return false;
     }
 
-    public void setEnabled(int enabled)
+    public void enableEntity()
     {
-        this.enabled = enabled;
+        this.enabled = ENTITY_ENABLED;
+    }
+
+    public void disableEntity()
+    {
+        this.enabled = ENTITY_DISABLED;
     }
 
     public void addEvent(McuEvent event)

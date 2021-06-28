@@ -4,8 +4,6 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.api.IProductSpecificConfiguration;
-import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -13,9 +11,9 @@ import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
+import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.ground.vehicle.IVehicle;
-import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuAttackTarget;
 import pwcg.mission.mcu.McuCounter;
 import pwcg.mission.mcu.McuDeactivate;
@@ -24,10 +22,12 @@ import pwcg.mission.mcu.McuForceComplete;
 import pwcg.mission.mcu.McuProximity;
 import pwcg.mission.mcu.McuSubtitle;
 import pwcg.mission.mcu.McuTimer;
+import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.target.TargetDefinition;
 
 public class AirGroundAttackTargetMcuSequence
 {    
+    private static final int PROXIMITY_DISTANCE = 3000;
     private IFlight flight;
     private List<IVehicle> vehicles;
     private FlightInformation flightInformation;
@@ -35,7 +35,7 @@ public class AirGroundAttackTargetMcuSequence
 
     private MissionBeginUnit missionBeginUnit;
     private McuTimer proximityStartTimer = new McuTimer();
-    private McuProximity mcuProximity = new McuProximity();
+    private McuProximity mcuProximity = new McuProximity(PROXIMITY_DISTANCE);
     private McuTimer attackActivateTimer = new McuTimer();
     private McuTimer attackTimeoutTimer = new McuTimer();
     private McuDeactivate attackDeactivateEntity = new McuDeactivate();
@@ -58,13 +58,41 @@ public class AirGroundAttackTargetMcuSequence
     
     public void createAttackSequence(int maxAttackTimeSeconds, int bingoLoiterTimeSeconds) throws PWCGException 
     {
-        buildBingoCounter();
-        buildAttackAreaTrigger();
-        buildAttackAreaElements(maxAttackTimeSeconds, bingoLoiterTimeSeconds);
-        createTargetAssociations();
-        setAttackToTriggerOnPlane();
-        setVehiclesToAttack();
+        buildEntities(maxAttackTimeSeconds, bingoLoiterTimeSeconds);
+        linkEntities();        
         makeSubtitles();
+    }
+
+    private void buildEntities(int maxAttackTimeSeconds, int bingoLoiterTimeSeconds)
+    {
+        buildBingoCounter();
+        buildAttackAreaElements(maxAttackTimeSeconds, bingoLoiterTimeSeconds);
+    }
+
+    private void linkEntities() throws PWCGException
+    {
+        createTargetAssociations();
+        setProximityTrigger();
+        setVehiclesToAttack();
+        setForceDropOrdnance();
+        setLinkToNextTarget();
+    }
+
+    public void write(BufferedWriter writer) throws PWCGException 
+    {
+        missionBeginUnit.write(writer);
+        proximityStartTimer.write(writer);
+        mcuProximity.write(writer);
+        attackActivateTimer.write(writer);
+        attackTarget.write(writer);
+        attackTimeoutTimer.write(writer);
+        attackDeactivateEntity.write(writer);
+        bingoBombsCounter.write(writer);
+        exitAttackTimer.write(writer);
+        killTimeoutTimerEntity.write(writer);
+        forceCompleteDropOrdnance.write(writer);
+        
+        McuSubtitle.writeSubtitles(subTitleList, writer);
     }
 
 
@@ -86,21 +114,16 @@ public class AirGroundAttackTargetMcuSequence
         }
     }
 
-
-    private void buildAttackAreaTrigger()
-    {
-        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        int attackMcuTriggerDistance = productSpecificConfiguration.getAttackAreaSelectTargetRadius();
-        
-        mcuProximity.setDistance(attackMcuTriggerDistance);
-    }
-
-
-    private void setAttackToTriggerOnPlane() throws PWCGException 
+    private void setProximityTrigger() throws PWCGException 
     {
         List<PlaneMcu> planes = flight.getFlightPlanes().getPlanes();
         mcuProximity.setObject(planes.get(0).getLinkTrId());
-        
+        mcuProximity.setObject(vehicles.get(0).getLinkTrId());
+    }
+
+    private void setForceDropOrdnance() throws PWCGException 
+    {
+        List<PlaneMcu> planes = flight.getFlightPlanes().getPlanes();        
         for (PlaneMcu plane : planes)
         {
             forceCompleteDropOrdnance.setObject(plane.getLinkTrId());
@@ -110,44 +133,22 @@ public class AirGroundAttackTargetMcuSequence
 
     private void setVehiclesToAttack() throws PWCGException
     {
+        for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
+        {
+            attackTarget.setObject(plane.getLinkTrId());
+        }
+
         for (IVehicle vehicle : vehicles)
         {
-            attackTarget.setTarget(vehicle.getLinkTrId());
             attackTarget.setTarget(vehicle.getLinkTrId());
         }
         
     }
 
-    public void write(BufferedWriter writer) throws PWCGException 
+    private void setLinkToNextTarget() throws PWCGException
     {
-        missionBeginUnit.write(writer);
-        proximityStartTimer.write(writer);
-        mcuProximity.write(writer);
-        attackActivateTimer.write(writer);
-        attackTarget.write(writer);
-        attackTimeoutTimer.write(writer);
-        attackDeactivateEntity.write(writer);
-        bingoBombsCounter.write(writer);
-        exitAttackTimer.write(writer);
-        killTimeoutTimerEntity.write(writer);
-        forceCompleteDropOrdnance.write(writer);
-        
-        McuSubtitle.writeSubtitles(subTitleList, writer);
-    }
-
-    public void setLinkToNextTarget(int targetIndex)
-    {
-        exitAttackTimer.setTarget(targetIndex);
-    }
-
-    public BaseFlightMcu getAttackAreaMcu()
-    {
-        return attackTarget;
-    }
-
-    public Coordinate getPosition()
-    {
-        return attackTarget.getPosition();
+        McuWaypoint egressWaypoint = flight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_EGRESS);
+        exitAttackTimer.setTarget(egressWaypoint.getIndex());
     }
 
     private void createTargetAssociations() 
@@ -178,6 +179,10 @@ public class AirGroundAttackTargetMcuSequence
         McuSubtitle proximitySubtitle = McuSubtitle.makeActivatedSubtitle("Proximity triggered ", subtitlePosition);
         mcuProximity.setTarget(proximitySubtitle.getIndex());
         subTitleList.add(proximitySubtitle);
+        
+        McuSubtitle attackTriggeredSubtitle = McuSubtitle.makeActivatedSubtitle("Attack triggered ", subtitlePosition);
+        attackActivateTimer.setTarget(attackTriggeredSubtitle.getIndex());
+        subTitleList.add(attackTriggeredSubtitle);
 
         McuSubtitle bingoSubtitle = McuSubtitle.makeActivatedSubtitle("Stop attack due to bingo count ", subtitlePosition);
         bingoBombsCounter.setTarget(bingoSubtitle.getIndex());
@@ -202,7 +207,8 @@ public class AirGroundAttackTargetMcuSequence
         attackActivateTimer.setName("Attack Target Activate Timer");      
         attackActivateTimer.setDesc("Attack Target Activate Timer");
         attackActivateTimer.setPosition(targetDefinition.getPosition());        
-        
+        attackActivateTimer.setTime(1);              
+
         attackTimeoutTimer.setName("Attack Target Timeout Timer");
         attackTimeoutTimer.setDesc("Attack Target Timeout Timer");
         attackTimeoutTimer.setOrientation(new Orientation());

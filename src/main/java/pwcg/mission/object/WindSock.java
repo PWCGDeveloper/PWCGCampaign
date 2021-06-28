@@ -82,7 +82,7 @@ public class WindSock
 		}
 		
 		entity.setPosition(position.copy());
-		entity.setEnabled(1);
+		entity.enableEntity();
 	}
 
 	public int getIndex() {

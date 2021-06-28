@@ -32,7 +32,7 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     private static final int INGRESS_AT_TARGET_MIN_DISTANCE = 2000;
     private static final int INGRESS_AT_TARGET_MAX_DISTANCE = 7000;
     private static final int ADDITIONAL_RENDEZVOUS_DISTANCE_FROM_FRONT = 6000;
-    private static final int ATTACK_AREA_SELECT_TARGET_DISTANCE = 5000;
+    private static final int ATTACK_AREA_SELECT_TARGET_DISTANCE = 3000;
     private static final int ATTACK_AREA_BOMB_DROP_DISTANCE = 500;
     private static final int INGRESS_DISTANCE_FROM_FRONT = 6000;
     private static final int FORMATION_HORIZINTAL_SPACING = 100;

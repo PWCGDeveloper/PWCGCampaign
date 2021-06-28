@@ -37,7 +37,7 @@ public abstract class Effect implements Cloneable
 
         entity.setPosition(position);
         entity.setOrientation(orientation);
-        entity.setEnabled(1);
+        entity.enableEntity();
     }
 
     public int getIndex()

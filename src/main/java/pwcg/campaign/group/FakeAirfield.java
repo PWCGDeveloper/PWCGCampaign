@@ -56,7 +56,7 @@ public class FakeAirfield extends FixedPosition implements Cloneable
         
         entity.setPosition(position);
         entity.setOrientation(orientation);
-        entity.setEnabled(1);
+        entity.enableEntity();
     }
 
     public void write(BufferedWriter writer) throws PWCGException

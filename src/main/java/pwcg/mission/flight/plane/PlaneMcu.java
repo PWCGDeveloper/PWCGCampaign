@@ -627,11 +627,11 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
     {
         if (enable)
         {
-            entity.setEnabled(1);
+            entity.enableEntity();
         }
         else
         {
-            entity.setEnabled(0);
+            entity.disableEntity();
         }
     }
 

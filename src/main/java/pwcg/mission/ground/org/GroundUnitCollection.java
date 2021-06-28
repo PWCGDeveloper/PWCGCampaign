@@ -13,7 +13,12 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.groundattack.GroundAttackWaypointFactory;
+import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.mcu.McuSpawn;
+import pwcg.mission.mcu.group.AirGroundAttackMcuSequenceFactory;
+import pwcg.mission.mcu.group.AirGroundAttackTargetMcuSequence;
 import pwcg.mission.mcu.group.MissionBeginCheckZoneBase;
 import pwcg.mission.mcu.group.MissionBeginSelfDeactivatingCheckZone;
 import pwcg.mission.target.TargetType;
@@ -27,6 +32,7 @@ public class GroundUnitCollection
     private IGroundUnit primaryGroundUnit;
     private List<IGroundUnit> groundUnits = new ArrayList<>();
     private String groundUnitName;
+    protected List<AirGroundAttackTargetMcuSequence> attackVehicleMcuGroups = new ArrayList<>();
 
     public GroundUnitCollection(Campaign campaign, String groundUnitName, GroundUnitCollectionData groundUnitCollectionData)
     {
@@ -123,6 +129,19 @@ public class GroundUnitCollection
         return groundUnits;
     }
 
+    private List<IVehicle> getGroundUnitVehicles(Side side, TargetType targetType) throws PWCGException
+    {
+        List<IVehicle> groundUnitVehicles = new ArrayList<>();
+        for (IGroundUnit groundUnit : getGroundUnitsForSide(side))
+        {
+            if (groundUnit.getTargetType() == targetType)
+            {
+                groundUnitVehicles.addAll(groundUnit.getVehicles());
+            }
+        }
+        return groundUnitVehicles;
+    }
+
     public List<McuSpawn> getSpawns()
     {
         List<McuSpawn> groundUnitCollectionVehicleSpawns = new ArrayList<>();
@@ -145,6 +164,28 @@ public class GroundUnitCollection
     public TargetType getTargetType()
     {
         return groundUnitCollectionData.getTargetType();
+    }
+    
+    public void addFreeHuntTargetingFlight(IFlight flight, TargetType targetType) throws PWCGException
+    {
+        List<IVehicle> enemyVehicles = this.getGroundUnitVehicles(flight.getSquadron().determineEnemySide(), targetType);
+        if (enemyVehicles.size() > 0)
+        {
+            missionBeginUnit.setCheckZoneTriggerDistance(200000);
+            
+            for (IGroundUnit groundUnit : groundUnits)
+            {
+                groundUnit.convertGroundUnitToNotSpawning();
+            }
+            
+            AirGroundAttackTargetMcuSequence attackTargetSequence = AirGroundAttackMcuSequenceFactory.buildAirGroundTargetMcuSequence(
+                    flight, 
+                    enemyVehicles,
+                    GroundAttackWaypointFactory.GROUND_ATTACK_TIME, 
+                    GroundAttackWaypointFactory.GROUND_ATTACK_BINGO_TIME);
+                    
+            attackVehicleMcuGroups.add(attackTargetSequence);
+        }
     }
 
     public void write(BufferedWriter writer) throws PWCGException
@@ -174,6 +215,8 @@ public class GroundUnitCollection
                 groundUnit.write(writer);
             }
 
+            writeAttackTargetEntries(writer);
+
             writer.write("}");
             writer.newLine();
         }
@@ -181,6 +224,14 @@ public class GroundUnitCollection
         {
             PWCGLogger.logException(e);
             throw new PWCGException(e.getMessage());
+        }
+    }
+
+    private void writeAttackTargetEntries(BufferedWriter writer) throws PWCGException
+    {
+        for (AirGroundAttackTargetMcuSequence attackVehicleMcuGroup : attackVehicleMcuGroups)
+        {
+            attackVehicleMcuGroup.write(writer);
         }
     }
 

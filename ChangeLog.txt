@@ -29,6 +29,8 @@ Ground Hunt
 transport routes should change to inside/outside mission box
 trains should sometimes be stopped - when spawning in box
 Player must lead flight
+Turn off subtitles
+Verify attack works
 
 Done
 Attackable transport units should start enabled and not spawn ... expand spawn trigger to 100 KM?

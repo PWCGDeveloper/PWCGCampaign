@@ -1,10 +1,10 @@
 package pwcg.mission;
 
+import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.ground.org.GroundUnitCollection;
-import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.target.TargetType;
 
 public class MissionFreeHuntTriggerBuidler
@@ -27,24 +27,18 @@ public class MissionFreeHuntTriggerBuidler
         }
     }
 
-    public void addBingoOrdnanceSequence(IFlight playerFlight) throws PWCGException
+    private void addBingoOrdnanceSequence(IFlight playerFlight) throws PWCGException
     {
         playerFlight.buildBingoOrdnanceSequence();
     }
 
     private void addTargetSequenceToGroundUnits(IFlight playerFlight) throws PWCGException
     {
+        Side enemySide = playerFlight.getSquadron().determineEnemySide();
         TargetType targetType = playerFlight.getTargetDefinition().getTargetType();
-        for (GroundUnitCollection groundUnitCollection : mission.getMissionGroundUnitBuilder().getAllMissionGroundUnits())
+        for (GroundUnitCollection groundUnitCollection : mission.getMissionGroundUnitBuilder().getGroundUnitsForSide(enemySide))
         {
-            for (IGroundUnit groundUnit : groundUnitCollection.getGroundUnits())
-            {
-                if (groundUnit.getTargetType() == targetType)
-                {
-                    groundUnitCollection.setCheckZoneTriggerDistance(150000);
-                    groundUnit.addFreeHuntTargetingFlight(playerFlight);
-                }
-            }
+            groundUnitCollection.addFreeHuntTargetingFlight(playerFlight, targetType);
         }
     }
 

@@ -33,7 +33,7 @@ public class GroundUnitSpawningTrainBuilder
         locomotive.setOrientation(pwcgGroundUnitInformation.getOrientation().copy());
         locomotive.setCountry(pwcgGroundUnitInformation.getCountry());
         locomotive.populateEntity();
-        locomotive.getEntity().setEnabled(1);
+        locomotive.getEntity().enableEntity();
         return locomotive;
     }
 

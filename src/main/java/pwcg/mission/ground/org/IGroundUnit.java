@@ -7,7 +7,6 @@ import pwcg.campaign.api.ICountry;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.mcu.McuSpawn;
@@ -30,8 +29,6 @@ public interface IGroundUnit
 
     int getEntryPoint();
 
-    int getDeleteEntryPoint();
-
     GroundUnitType getGroundUnitType();
 
     Coordinate getPosition() throws PWCGException;
@@ -50,6 +47,6 @@ public interface IGroundUnit
 
     List<McuSpawn> getSpawns();
 
-    void addFreeHuntTargetingFlight(IFlight flight) throws PWCGException;
+    void convertGroundUnitToNotSpawning() throws PWCGException;
 
 }

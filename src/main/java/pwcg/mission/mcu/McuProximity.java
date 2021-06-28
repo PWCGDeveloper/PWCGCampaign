@@ -11,17 +11,18 @@ import pwcg.core.utils.PWCGLogger;
 
 public class McuProximity extends BaseFlightMcu
 {
-	private int distance = 8000;
+	private int distance = 4000;
 	private int closer = 1;
 
 	private List<Coalition> planeCoalitions = new ArrayList<Coalition>();
 
-	public McuProximity()
+	public McuProximity(int distance)
 	{
 		super();
 
-		name = "Proximity";
-		desc = "Proximity";
+		this.distance = distance;
+        this.name = "Proximity";
+        this.desc = "Proximity";
 	}
 	
 	public void addCoalition(Coalition coalition)
@@ -61,11 +62,6 @@ public class McuProximity extends BaseFlightMcu
 			PWCGLogger.logException(e);
 			throw new PWCGException(e.getMessage());
 		}
-	}
-
-	public void setDistance(int distance)
-	{
-		this.distance = distance;
 	}
 
 	public void setCloser(int closer)
