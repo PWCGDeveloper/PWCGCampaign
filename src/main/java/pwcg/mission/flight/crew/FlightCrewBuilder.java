@@ -13,6 +13,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.FlightTypes;
 
 public class FlightCrewBuilder
 {
@@ -34,7 +35,9 @@ public class FlightCrewBuilder
         assignPlayersToCrew();
         assignAiPilotsToPlanes(numCrewNeeded);
         
-        return sortCrewsByRank();
+        List<SquadronMember> sortedByRank = sortCrewsByRank();
+        List<SquadronMember> finalCrewSequence = playerIsLead(sortedByRank);
+        return finalCrewSequence;
     }
 
     private void assignPlayersToCrew() throws PWCGException
@@ -102,5 +105,31 @@ public class FlightCrewBuilder
     private List<SquadronMember> sortCrewsByRank() throws PWCGException
     {
         return SquadronMemberSorter.sortSquadronMembers(flightInformation.getCampaign(), assignedCrewMap);
+    }
+
+    private List<SquadronMember> playerIsLead(List<SquadronMember> sortedByRank)
+    {
+        List<SquadronMember> withPlayerAsLead = new ArrayList<>();
+        if (FlightTypes.isPlayerLead(flightInformation.getFlightType()) && flightInformation.isPlayerFlight())
+        {
+            for (SquadronMember squadronMember : sortedByRank)
+            {
+                if (squadronMember.isPlayer())
+                {
+                    withPlayerAsLead.add(squadronMember);
+                }
+            }
+            
+            for (SquadronMember squadronMember : sortedByRank)
+            {
+                if (!squadronMember.isPlayer())
+                {
+                    withPlayerAsLead.add(squadronMember);
+                }
+            }
+            
+            return withPlayerAsLead;
+        }
+        return sortedByRank;
     }
 }
