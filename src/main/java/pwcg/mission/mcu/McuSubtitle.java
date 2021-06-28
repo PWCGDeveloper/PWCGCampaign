@@ -15,7 +15,7 @@ public class McuSubtitle extends BaseFlightMcu
 	private int lcText = LCIndexGenerator.getInstance().getNextIndex();
     private String text;
     private int duration = 3;
-    private boolean useSubtitles = true;
+    private boolean useSubtitles = false;
 
 	public McuSubtitle ()
 	{

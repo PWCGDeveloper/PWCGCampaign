@@ -43,7 +43,6 @@ public abstract class GroundUnit implements IGroundUnit
     protected McuTimer activateGroundUnitUnitTimer = new McuTimer();
     protected List<GroundUnitElement> groundElements = new ArrayList<>();
     protected List<AirGroundAttackTargetMcuSequence> attackVehicleMcuGroups = new ArrayList<>();
-    private List<McuSubtitle> subTitleList = new ArrayList<McuSubtitle>();
 
     public GroundUnit(VehicleClass vehicleClass, GroundUnitInformation pwcgGroundUnitInformation)
     {
@@ -79,9 +78,7 @@ public abstract class GroundUnit implements IGroundUnit
             writer.write("}");
             writer.newLine();
 
-            writeAttackTargetEntries(writer);
-            
-            McuSubtitle.writeSubtitles(subTitleList, writer);
+            writeAttackTargetEntries(writer);            
         }
         catch (IOException e)
         {
@@ -329,7 +326,6 @@ public abstract class GroundUnit implements IGroundUnit
         
         McuSubtitle activateGroundUnitUnitTimerSubtitle = McuSubtitle.makeActivatedSubtitle("Ground unit activation triggered ", subtitlePosition);
         activateGroundUnitUnitTimer.setTarget(activateGroundUnitUnitTimerSubtitle.getIndex());
-        subTitleList.add(activateGroundUnitUnitTimerSubtitle);
     }
 
     public GroundUnitType getGroundUnitType()
