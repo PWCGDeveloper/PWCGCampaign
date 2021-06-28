@@ -32,15 +32,18 @@ public class HistoricalAceTransferHandler
         List<Ace> acesBefore = PWCGContext.getInstance().getAceManager().getActiveAcesForCampaign(campaignPersonnelManager.getCampaignAces(), campaign.getDate());
         for (Ace aceBefore : acesBefore)
         {
-            if (aceBefore.getActiveStatus() > SquadronMemberStatus.STATUS_CAPTURED)
+            if (aceBefore.getPilotActiveStatus() > SquadronMemberStatus.STATUS_CAPTURED)
             {
                 HistoricalAce ha = PWCGContext.getInstance().getAceManager().getHistoricalAceBySerialNumber(aceBefore.getSerialNumber());
                 Ace aceAfter = ha.getAtDate(newDate);
 
-                if (!(aceBefore.getSquadronId() == aceAfter.getSquadronId()))
+                if (aceAfter.getPilotActiveStatus() > SquadronMemberStatus.STATUS_CAPTURED)
                 {
-                    TransferRecord aceTransferRecord = new TransferRecord(aceAfter, aceBefore.getSquadronId(), aceAfter.getSquadronId());
-                    acesTransferred.addTransferRecord(aceTransferRecord);
+                    if (!(aceBefore.getSquadronId() == aceAfter.getSquadronId()))
+                    {
+                        TransferRecord aceTransferRecord = new TransferRecord(aceAfter, aceBefore.getSquadronId(), aceAfter.getSquadronId());
+                        acesTransferred.addTransferRecord(aceTransferRecord);
+                    }
                 }
             }
         }

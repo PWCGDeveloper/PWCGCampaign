@@ -13,8 +13,6 @@ import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class Ace extends SquadronMember
 {
-    protected int activeStatus = SquadronMemberStatus.STATUS_ACTIVE;
-
     public Ace()
     {
         super();
@@ -23,8 +21,6 @@ public class Ace extends SquadronMember
     public Ace copy()
     {
         Ace target = new Ace();
-
-        target.activeStatus = this.activeStatus;
 
         target.name = this.name;
         target.rank = this.rank;
@@ -103,16 +99,6 @@ public class Ace extends SquadronMember
         {
             setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
         }
-    }
-
-    public int getActiveStatus()
-    {
-        return activeStatus;
-    }
-
-    public void setActiveStatus(int activeStatus)
-    {
-        this.activeStatus = activeStatus;
     }
 
    public void addGroundVictory(Victory victory)
