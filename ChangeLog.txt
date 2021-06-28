@@ -2,6 +2,11 @@
 ​At the PWCG web site
 
 12.4.0
+Added Ground Free Hunt mission
+- Currently targets trains and trucks
+- Fly to a point and search.  No guidance except follow roads or tracks.
+- Ground units start moving when mission starts.  
+- Will do ships and armor next as they require a different pattern
 Bryansk iconic event added
 Newspapers
 Rewrote newspapers such that a new paper can be added by supplying a photo and adding a bit of data
@@ -19,6 +24,7 @@ Fixed: Sometimes AAR events were not properly rolled up into the campaign
 Fixed: Removed a few defunct configuration settings
 Fixed: Preddy's status when killed on 12/25/1944
 Fixed: Aces historically killed no longer show as transferred
+Fixed: End of war newspaper now appears
 
 To do:
 - Deal with end of war newspapers

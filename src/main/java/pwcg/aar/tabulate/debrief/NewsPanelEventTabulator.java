@@ -61,6 +61,4 @@ public class NewsPanelEventTabulator
         acesKilledMap.putAll(aarContext.getPersonnelLosses().getAcesKilled());        
         return new ArrayList<SquadronMember>(acesKilledMap.values());
     }
-
-
 }

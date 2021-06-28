@@ -96,7 +96,7 @@ public class AARNewsPanel extends AARDocumentPanel
     {
         NewspaperEndOfWarUI endOfWar = null;
         Date theEnd = DateUtils.getEndOfWar();
-        if (campaign.getDate().after(theEnd))
+        if (!campaign.getDate().before(theEnd))
         {
              endOfWar = new NewspaperEndOfWarUI();
              endOfWar.makePanels();
