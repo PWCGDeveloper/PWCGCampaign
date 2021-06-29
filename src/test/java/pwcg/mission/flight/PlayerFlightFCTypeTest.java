@@ -94,8 +94,6 @@ public class PlayerFlightFCTypeTest
         assert (targetMissionPoint != null);
         PlaneRtbValidator.verifyPlaneRtbDisabled(mission);
 
-        GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
-        groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
         assert(flight.getFlightType() == FlightTypes.GROUND_HUNT);
         

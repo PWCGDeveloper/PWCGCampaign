@@ -98,6 +98,25 @@ public enum FlightTypes
         return false;
     }
 
+    public static boolean isFighterFlight(FlightTypes flightType)
+    {
+        if (flightType == FlightTypes.BALLOON_BUST      || 
+            flightType == FlightTypes.BALLOON_DEFENSE   || 
+            flightType == FlightTypes.ESCORT            || 
+            flightType == FlightTypes.INTERCEPT         || 
+            flightType == FlightTypes.LONE_WOLF         || 
+            flightType == FlightTypes.LOW_ALT_CAP       ||
+            flightType == FlightTypes.LOW_ALT_PATROL    ||
+            flightType == FlightTypes.OFFENSIVE    ||
+            flightType == FlightTypes.PATROL    ||
+            flightType == FlightTypes.SCRAMBLE)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     public static boolean isGroundAttackFlight(FlightTypes flightType)
     {
         if (flightType == FlightTypes.GROUND_ATTACK || 
