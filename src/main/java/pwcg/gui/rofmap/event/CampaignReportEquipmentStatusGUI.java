@@ -24,15 +24,15 @@ public class CampaignReportEquipmentStatusGUI extends AARDocumentIconPanel
         String header = "";
         if (equipmentStatusEvent.getPlaneStatus() == PlaneStatus.STATUS_DESTROYED)
         {
-            header = "Notification of aircraft loss";
+            header = "Notification of Aircraft Loss";
         }
         if (equipmentStatusEvent.getPlaneStatus() == PlaneStatus.STATUS_DEPOT)
         {
-            header = "Notification of aircraft resupply";
+            header = "Notification of Aircraft Resupply";
         }
         if (equipmentStatusEvent.getPlaneStatus() == PlaneStatus.STATUS_REMOVED_FROM_SERVICE)
         {
-            header = "Notification of aircraft removal from service";
+            header = "Notification of Aircraft Removal From Service";
         }
         
         return header;

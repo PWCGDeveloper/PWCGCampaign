@@ -37,7 +37,7 @@ public class CampaignReportMedalGUI extends AARDocumentIconPanel
 
     protected String getHeaderText() throws PWCGException
     {
-        String header = "Award for valor";
+        String header = "Award For Valor";
         return header;
     }
 

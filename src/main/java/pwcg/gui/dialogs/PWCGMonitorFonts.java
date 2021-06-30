@@ -8,19 +8,146 @@ import pwcg.core.exception.PWCGException;
 
 public class PWCGMonitorFonts 
 {
-	public static Font getPrimaryFont() throws PWCGException
+    public enum PWCGFonts
+    {
+        PrimaryFont,
+        PrimaryFontSmall,
+        PrimaryFontLarge,
+        ChalkBoardFont,
+        ChalkBoardBriefingFont,
+        PilotLogBookFont,
+        NewspaperFont,
+        TyoewriterFont,
+        DecorativeFint,
+        CursiveFont
+    }
+    
+    public static Font getPrimaryFont() throws PWCGException
 	{
 		String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.PrimaryFontKey);
 		int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.PrimaryFontSizeKey);
         fontSize = verifyFontSizeForScreenSize(fontSize);
             
-		Font font = new Font(
-				fontName, 
-				Font.BOLD, 
-				fontSize);
+		Font font = buildBoldFont(fontName, fontSize);
 		
 		return font;
 	}
+
+	public static Font getPrimaryFontSmall() throws PWCGException
+	{
+		String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.PrimaryFontKey);
+		int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.PrimaryFontSmallSizeKey);
+        fontSize = verifyFontSizeForScreenSize(fontSize);
+            
+		Font font = buildBoldFont(fontName, fontSize);
+		
+		return font;
+	}
+
+	public static Font getPrimaryFontLarge() throws PWCGException
+	{
+		String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.PrimaryFontKey);
+		int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.PrimaryFontLargeSizeKey);
+        fontSize = verifyFontSizeForScreenSize(fontSize);
+		
+		Font font = buildBoldFont(fontName, fontSize);
+		
+		return font;
+	}
+
+	public static Font getChalkboardFont() throws PWCGException
+    {
+        String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.ChalkboardFontKey);
+        int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.ChalkboardFontSizeKey);
+        fontSize = verifyFontSizeForScreenSize(fontSize);
+        
+        Font font = buildBoldFont(fontName, fontSize);
+        
+        return font;
+    }
+
+    public static Font getBriefingChalkboardFont() throws PWCGException
+    {
+        String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.BriefingFontKey);
+        int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.BriefingFontSizeKey);
+        fontSize = verifyFontSizeForCrowdedScreenSize(fontSize);
+        
+        Font font = buildBoldFont(fontName, fontSize);
+        
+        return font;
+    }
+
+    public static Font getNewspaperFont() throws PWCGException
+    {
+        String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.NewspaperFontKey);
+        int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.NewspaperFontSizeKey);
+        
+        Font font = buildTrueTypeFont(fontName, fontSize);
+        
+        return font;
+    }
+
+    public static Font getPilotLogBookFont() throws PWCGException 
+    {
+        String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.PilotFontKey);
+        int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.PilotFontSizeKey);
+        fontSize = verifyFontSizeForScreenSize(fontSize);
+        
+        Font font = buildBoldFont(fontName, fontSize);
+        
+        return font;
+    }
+
+    public static Font getTypewriterFont() throws PWCGException 
+    {
+        String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.TypewriterFontKey);
+        int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.TypewriterFontSizeKey);
+        fontSize = verifyFontSizeForScreenSize(fontSize);
+        
+        Font font = buildBoldFont(fontName, fontSize);
+        
+        return font;
+    }
+
+    public static Font getCursiveFont() throws PWCGException 
+    {
+        String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.CursiveFontKey);
+        int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.CursiveFontSizeKey);
+        fontSize = verifyFontSizeForScreenSize(fontSize);
+        
+        Font font = buildBoldFont(fontName, fontSize);
+        
+        return font;
+    }
+
+    public static Font getDecorativeFont() throws PWCGException 
+    {
+        String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.DecorativeFontKey);
+        int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.DecorativeFontSizeKey);
+        fontSize = verifyFontSizeForScreenSize(fontSize);
+
+        Font font = buildBoldFont(fontName, fontSize);
+        
+        return font;
+    }
+
+    private static Font buildBoldFont(String fontName, int fontSize)
+    {
+        Font font = new Font(
+                fontName, 
+                Font.BOLD, 
+                fontSize);
+        return font;
+    }
+
+    private static Font buildTrueTypeFont(String fontName, int fontSize)
+    {
+        Font font = new Font(
+                fontName, 
+                Font.TRUETYPE_FONT, 
+                fontSize);
+        return font;
+    }
 
     public static int getPilotPlateHeight() throws PWCGException
     {
@@ -35,183 +162,6 @@ public class PWCGMonitorFonts
         
         return 40;
     }
-
-	public static Font getPrimaryFontSmall() throws PWCGException
-	{
-		String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.PrimaryFontKey);
-		int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.PrimaryFontSmallSizeKey);
-        fontSize = verifyFontSizeForScreenSize(fontSize);
-            
-		Font font = new Font(
-				fontName, 
-				Font.BOLD, 
-				fontSize);
-		
-		return font;
-	}
-
-	public static Font getPrimaryFontSmallNotBold() throws PWCGException
-	{
-		String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.PrimaryFontKey);
-		int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.PrimaryFontSmallSizeKey);
-        fontSize = verifyFontSizeForScreenSize(fontSize);
-            
-		Font font = new Font(
-				fontName, 
-				Font.TRUETYPE_FONT, 
-				fontSize);
-		
-		return font;
-	}
-
-	public static Font getPrimaryFontLarge() throws PWCGException
-	{
-		String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.PrimaryFontKey);
-		int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.PrimaryFontLargeSizeKey);
-        fontSize = verifyFontSizeForScreenSize(fontSize);
-		
-		Font font = new Font(
-				fontName, 
-				Font.BOLD, 
-				fontSize);
-		
-		return font;
-	}
-
-	public static Font getMissionDescriptionFont() throws PWCGException
-	{
-		String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.MissionDescriptionFontKey);
-		int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.MissionDescriptionFontSizeKey);
-        fontSize = verifyFontSizeForScreenSize(fontSize);
-        
-		Font font = new Font(
-				fontName, 
-				Font.BOLD, 
-				fontSize);
-
-		return font;
-	}
-
-    public static Font getChalkboardFont() throws PWCGException
-    {
-        String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.ChalkboardFontKey);
-        int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.ChalkboardFontSizeKey);
-        fontSize = verifyFontSizeForScreenSize(fontSize);
-        
-        Font font = new Font(
-                fontName, 
-                Font.BOLD, 
-                fontSize);
-        
-        return font;
-    }
-
-    public static Font getBriefingChalkboardFont() throws PWCGException
-    {
-        String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.BriefingFontKey);
-        int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.BriefingFontSizeKey);
-        fontSize = verifyFontSizeForCrowdedScreenSize(fontSize);
-        
-        Font font = new Font(
-                fontName, 
-                Font.BOLD, 
-                fontSize);
-        
-        return font;
-    }
-
-    public static Font getPilotFont() throws PWCGException
-    {
-        String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.PilotFontKey);
-        int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.PilotFontSizeKey);
-        fontSize = verifyFontSizeForScreenSize(fontSize);
-        
-        Font font = new Font(
-                fontName, 
-                Font.BOLD, 
-                fontSize);
-        
-        return font;
-    }
-
-    public static Font getNewspaperFont() throws PWCGException
-    {
-        String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.NewspaperFontKey);
-        int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.NewspaperFontSizeKey);
-        
-        Font font = new Font(
-                fontName, 
-                Font.TRUETYPE_FONT, 
-                fontSize);
-        
-        return font;
-    }
-
-    public static Font getPilotLogBookFont() throws PWCGException 
-    {
-        String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.PilotFontKey);
-        int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.PilotFontSizeKey);
-        fontSize = verifyFontSizeForScreenSize(fontSize);
-        
-        Font font = new Font(
-                fontName, 
-                Font.BOLD, 
-                fontSize);
-        
-        return font;
-    }
-
-    public static Font getTypewriterFont() throws PWCGException 
-    {
-        String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.TypewriterFontKey);
-        int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.TypewriterFontSizeKey);
-        fontSize = verifyFontSizeForScreenSize(fontSize);
-        
-        Font font = new Font(
-                fontName, 
-                Font.BOLD, 
-                fontSize);
-        
-        return font;
-    }
-
-    public static Font getCursiveFont() throws PWCGException 
-    {
-        String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.CursiveFontKey);
-        int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.CursiveFontSizeKey);
-        fontSize = verifyFontSizeForScreenSize(fontSize);
-        
-        Font font = new Font(
-                fontName, 
-                Font.BOLD, 
-                fontSize);
-        
-        return font;
-    }
-
-    public static Font getDecorativeFont() throws PWCGException 
-    {
-        String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.DecorativeFontKey);
-        int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.DecorativeFontSizeKey);
-        fontSize = verifyFontSizeForScreenSize(fontSize);
-
-        Font font = new Font(
-                fontName, 
-                Font.BOLD, 
-                fontSize);
-        
-        return font;
-    }
-
-	public static Font getSpecialFont(String fontName, int fontStyle, int fontSize) 
-	{
-		Font font = new Font(
-				fontName, 
-				fontStyle, 
-				fontSize);
-		
-		return font;
-	}
 
     private static int verifyFontSizeForScreenSize(int fontSize)
     {

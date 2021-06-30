@@ -79,7 +79,7 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
 
         this.add(BorderLayout.WEST, makeNavigationPanel());
         resetCenterPanels();
-        //this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(300));
+        this.add(BorderLayout.EAST, SpacerPanelFactory.makeSpacerPercentPanel(5));
 
 	}
 

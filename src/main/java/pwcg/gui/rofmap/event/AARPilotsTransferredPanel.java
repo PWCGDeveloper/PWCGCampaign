@@ -37,7 +37,7 @@ public class AARPilotsTransferredPanel extends AARDocumentPanel
         {
             JTabbedPane eventTabPane = createTransferTab();
             createPostCombatReportTabs(eventTabPane);
-            this.add(eventTabPane, BorderLayout.CENTER);
+            this.add(eventTabPane, BorderLayout.WEST);
         }
         catch (Exception e)
         {

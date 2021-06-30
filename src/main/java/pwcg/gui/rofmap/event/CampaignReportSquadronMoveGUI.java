@@ -1,7 +1,5 @@
 package pwcg.gui.rofmap.event;
 
-import javax.swing.JPanel;
-
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;

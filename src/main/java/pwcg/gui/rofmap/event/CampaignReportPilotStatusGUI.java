@@ -22,19 +22,19 @@ public class CampaignReportPilotStatusGUI extends AARDocumentIconPanel
         String header = "";
         if (pilotLostEvent.getStatus() == SquadronMemberStatus.STATUS_KIA)
         {
-            header = "Notification of death of airman";
+            header = "Notification of Death of Airman";
         }
         if (pilotLostEvent.getStatus() == SquadronMemberStatus.STATUS_CAPTURED)
         {
-            header = "Notification of capture of airman";
+            header = "Notification of Capture of Airman";
         }
         if (pilotLostEvent.getStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
         {
-            header = "Notification of incapacitation of airman";
+            header = "Notification of Incapacitation of Airman";
         }
         if (pilotLostEvent.getStatus() == SquadronMemberStatus.STATUS_WOUNDED)
         {
-            header = "Notification of injury to airman";
+            header = "Notification of Injury to Airman";
         }
         
         return header;

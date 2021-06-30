@@ -37,8 +37,7 @@ public class AARMissionVictoryPanel extends AARDocumentPanel
         {
             JTabbedPane eventTabPane = createPilotVictoriesTab();
             createPostCombatReportTabs(eventTabPane);
-            this.add(eventTabPane, BorderLayout.CENTER);
-            this.add(eventTabPane, BorderLayout.CENTER);
+            this.add(eventTabPane, BorderLayout.WEST);
         }
         catch (Exception e)
         {

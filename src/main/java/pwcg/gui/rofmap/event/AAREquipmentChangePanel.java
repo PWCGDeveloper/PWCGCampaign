@@ -36,7 +36,7 @@ public class AAREquipmentChangePanel extends AARDocumentPanel
         {
             JTabbedPane eventTabPane = createEquipmentLostTab();
             createPostCombatReportTabs(eventTabPane);            
-            this.add(eventTabPane, BorderLayout.CENTER);
+            this.add(eventTabPane, BorderLayout.WEST);
         }
         catch (Exception e)
         {

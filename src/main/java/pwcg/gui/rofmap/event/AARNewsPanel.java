@@ -47,7 +47,7 @@ public class AARNewsPanel extends AARDocumentPanel
             createEventTab();
             createNewsEventTab();
             createPostCombatReportTabs();
-            this.add(eventTabPane, BorderLayout.CENTER);
+            this.add(eventTabPane, BorderLayout.WEST);
         }
         catch (Exception e)
         {

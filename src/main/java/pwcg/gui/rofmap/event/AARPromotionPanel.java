@@ -37,7 +37,7 @@ public class AARPromotionPanel extends AARDocumentPanel
         {
             JTabbedPane eventTabPane = createPilotPromotionTab();
             createPostCombatReportTabs(eventTabPane);
-            this.add(eventTabPane, BorderLayout.CENTER);
+            this.add(eventTabPane, BorderLayout.WEST);
         }
         catch (Exception e)
         {
