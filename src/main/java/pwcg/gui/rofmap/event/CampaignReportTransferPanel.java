@@ -1,7 +1,5 @@
 package pwcg.gui.rofmap.event;
 
-import javax.swing.JPanel;
-
 import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -10,19 +8,19 @@ import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
-public class AARTransferPanel extends CampaignDocumentGUI
+public class CampaignReportTransferPanel extends AARDocumentIconPanel
 {
     private Campaign campaign;
     private static final long serialVersionUID = 1L;
     private TransferEvent transferEvent;
 
-    public AARTransferPanel(Campaign campaign, TransferEvent transferEvent)
+    public CampaignReportTransferPanel(Campaign campaign, TransferEvent transferEvent) throws PWCGException
     {
         super();
 
         this.campaign = campaign;        
         this.transferEvent = transferEvent;        
-        makePanel() ;
+        makePanel();
     }
 
     protected String getHeaderText() throws PWCGException
@@ -68,14 +66,8 @@ public class AARTransferPanel extends CampaignDocumentGUI
     }
 
     @Override
-    public boolean isShouldDisplay()
+    protected String getFooterImagePath() throws PWCGException
     {
-        return shouldDisplay;
-    }
-
-    @Override
-    public JPanel getPanel()
-    {
-        return this;
+        return "";
     }
 }

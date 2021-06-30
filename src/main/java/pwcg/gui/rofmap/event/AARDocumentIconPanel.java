@@ -9,6 +9,8 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -82,8 +84,8 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
         BufferedImage documentImage = ImageCache.getInstance().getBufferedImage(imagePath);
 
         BufferedImage documentImageWithHeader = addHeader(documentImage);
-        BufferedImage documentImageWithBody = addBody(documentImageWithHeader);
-        BufferedImage documentImageWithFooter = addFooterImage(documentImageWithBody);
+        BufferedImage documentImageWithBody = addBody(documentImageWithHeader, 240);
+        BufferedImage documentImageWithFooter = addFooterImage(documentImageWithBody, 500);
         BufferedImage resizedImage = resizeImage(documentImageWithFooter);
         return resizedImage;
     }
@@ -113,17 +115,32 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
         return result;
     }
 
-    private BufferedImage addBody(BufferedImage documentImage) throws IOException, PWCGException
+    private BufferedImage addBody(BufferedImage documentImage, int verticalStartPosition) throws IOException, PWCGException
     {
         if (bodyText.isEmpty())
         {
             return documentImage;
         }
 
-        Graphics graphics = documentImage.getGraphics();
+        List<String> bodyLinesOfText = formBodyLinesOfText(documentImage);
 
         int lineHorizontalPosition = 40;
-        int lineVerticalPosition = 240;
+        int lineVerticalPosition = verticalStartPosition;
+        for (String bodyLineOfText :bodyLinesOfText)
+        {
+            documentImage = addBodyLine(documentImage, lineHorizontalPosition, lineVerticalPosition, bodyLineOfText);
+            lineVerticalPosition += 30;
+        }
+        
+        return documentImage;
+    }
+    
+    private List<String> formBodyLinesOfText(BufferedImage documentImage)
+    {
+        List<String> bodyLinesOfText = new ArrayList<>();
+        
+        Graphics graphics = documentImage.getGraphics();
+
         int characterBufferPosition = 0;
         while (characterBufferPosition < bodyText.length())
         {
@@ -134,11 +151,19 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
                 int pixelsForBodyLine = TextGraphicsMeasurement.measureTextWidth(graphics, bodyFont, lineBuffer.toString());
                 if (pixelsForBodyLine > (documentImage.getWidth() - DOCUMENT_MARGIN))
                 {
-                    lineBuffer.deleteCharAt(lineBuffer.length() - 1);
+                    lineBuffer.deleteCharAt(lineBuffer.length() - 1);                    
+                    while (bodyText.charAt(characterBufferPosition) != ' ')
+                    {
+                        --characterBufferPosition;
+                        lineBuffer.deleteCharAt(lineBuffer.length() - 1);
+                    }
+                    
+                    bodyLinesOfText.add(lineBuffer.toString());
                     break;
                 }
                 else if (bodyText.charAt(characterBufferPosition) == '\n')
                 {
+                    bodyLinesOfText.add(lineBuffer.toString());
                     ++characterBufferPosition;
                     break;
                 }
@@ -147,14 +172,11 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
                     ++characterBufferPosition;
                 }
             }
-
-            documentImage = addBodyLine(documentImage, lineHorizontalPosition, lineVerticalPosition, lineBuffer);
-            lineVerticalPosition += 30;
         }
-        return documentImage;
+        return bodyLinesOfText;
     }
 
-    private BufferedImage addBodyLine(BufferedImage documentImage, int lineHorizontalPosition, int lineVerticalPosition, StringBuffer lineBuffer) throws IOException, PWCGException
+    private BufferedImage addBodyLine(BufferedImage documentImage, int lineHorizontalPosition, int lineVerticalPosition, String line) throws IOException, PWCGException
     {
         if (bodyText.isEmpty())
         {
@@ -166,25 +188,28 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
         graphics.setColor(Color.DARK_GRAY);
         graphics.setFont(bodyFont);
         graphics.drawImage(documentImage, 0, 0, null);
-        graphics.drawString(lineBuffer.toString(), lineHorizontalPosition, lineVerticalPosition);
+        graphics.drawString(line, lineHorizontalPosition, lineVerticalPosition);
 
         return result;
     }
 
-    private BufferedImage addFooterImage(BufferedImage documentImage) throws PWCGException
+    private BufferedImage addFooterImage(BufferedImage documentImage, int verticalStartPosition) throws PWCGException
     {
         if (footerImagePath.isEmpty())
         {
             return documentImage;
         }
-
+        
         BufferedImage documentPictureImage = ImageCache.getImageFromFile(footerImagePath);
+        
         if (documentPictureImage != null)
         {
+            int horizontalStartPosition = (documentImage.getWidth() / 2) - (documentPictureImage.getWidth() / 2);
+
             BufferedImage result = new BufferedImage(documentImage.getWidth(), documentImage.getHeight(), BufferedImage.TRANSLUCENT);
             Graphics g = result.getGraphics();
             g.drawImage(documentImage, 0, 0, null);
-            g.drawImage(documentPictureImage, 500, 160, null);
+            g.drawImage(documentPictureImage, horizontalStartPosition, verticalStartPosition, null);
             return result;
         }
         else

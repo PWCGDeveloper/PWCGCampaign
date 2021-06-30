@@ -69,7 +69,7 @@ public class AARPilotsTransferredPanel extends AARDocumentPanel
 
     private void makeTransferTabs(JTabbedPane eventTabPane, List<TransferEvent> transferEventsForSquadron) throws PWCGException
     {
-        HashMap<String, AARTransferPanel> pilotTransferredGuiList = createPilotTransferredList(transferEventsForSquadron) ;
+        HashMap<String, CampaignReportTransferPanel> pilotTransferredGuiList = createPilotTransferredList(transferEventsForSquadron) ;
         for (String tabName : pilotTransferredGuiList.keySet())
         {
             eventTabPane.addTab(tabName, pilotTransferredGuiList.get(tabName));
@@ -77,16 +77,16 @@ public class AARPilotsTransferredPanel extends AARDocumentPanel
         }
     }
 
-	private HashMap<String, AARTransferPanel> createPilotTransferredList(List<TransferEvent> transferEventsForSquadron) throws PWCGException 
+	private HashMap<String, CampaignReportTransferPanel> createPilotTransferredList(List<TransferEvent> transferEventsForSquadron) throws PWCGException 
 	{
-        HashMap<String, AARTransferPanel> pilotTransferredGuiList = new HashMap<String, AARTransferPanel>();
+        HashMap<String, CampaignReportTransferPanel> pilotTransferredGuiList = new HashMap<String, CampaignReportTransferPanel>();
 
         for (TransferEvent transferEvent : transferEventsForSquadron)
         {
             SquadronMember referencePlayer = campaign.findReferencePlayer();
             if (transferEvent.getTransferTo() == referencePlayer.getSquadronId() || transferEvent.getTransferFrom() == referencePlayer.getSquadronId())
             {
-                AARTransferPanel transferGui = new AARTransferPanel(campaign, transferEvent);
+                CampaignReportTransferPanel transferGui = new CampaignReportTransferPanel(campaign, transferEvent);
                 String tabName = "Pilot Transferred: " + transferEvent.getPilotName();
                 pilotTransferredGuiList.put(tabName, transferGui);
             }
