@@ -1,18 +1,16 @@
 package pwcg.gui.rofmap.event;
 
-import javax.swing.JPanel;
-
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
-public class CampaignReportLeaveGUI extends CampaignDocumentGUI
+public class CampaignReportLeaveGUI extends AARDocumentIconPanel
 {
 	private static final long serialVersionUID = 1L;
     private Campaign campaign;
 
-	public CampaignReportLeaveGUI(Campaign campaign)
+	public CampaignReportLeaveGUI(Campaign campaign) throws PWCGException
 	{
 		super();
         this.campaign = campaign;
@@ -40,14 +38,8 @@ public class CampaignReportLeaveGUI extends CampaignDocumentGUI
     }
 
     @Override
-    public boolean isShouldDisplay()
+    protected String getFooterImagePath() throws PWCGException
     {
-        return shouldDisplay;
-    }
-
-    @Override
-    public JPanel getPanel()
-    {
-        return this;
+        return "";
     }
 }

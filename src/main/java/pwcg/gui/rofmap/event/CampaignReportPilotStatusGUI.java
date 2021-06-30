@@ -1,22 +1,20 @@
 package pwcg.gui.rofmap.event;
 
-import javax.swing.JPanel;
-
 import pwcg.aar.ui.events.model.PilotStatusEvent;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
-public class CampaignReportPilotStatusGUI extends CampaignDocumentGUI
+public class CampaignReportPilotStatusGUI extends AARDocumentIconPanel
 {
 	private static final long serialVersionUID = 1L;
 	private PilotStatusEvent pilotLostEvent = null;
 	
-	public CampaignReportPilotStatusGUI(PilotStatusEvent pilotLostEvent)
+	public CampaignReportPilotStatusGUI(PilotStatusEvent pilotLostEvent) throws PWCGException
 	{
 		super();
         this.pilotLostEvent = pilotLostEvent;
-        makePanel();        
+        makePanel();
 	}
 
     protected String getHeaderText() throws PWCGException
@@ -46,7 +44,7 @@ public class CampaignReportPilotStatusGUI extends CampaignDocumentGUI
     {
         String pilotLostText = "Squadron: " + pilotLostEvent.getSquadronName() + "\n";
         pilotLostText += "Date: " + DateUtils.getDateStringPretty(pilotLostEvent.getDate()) + "\n";
-        pilotLostText += getPilotLostString() + ".\n";   
+        pilotLostText += getPilotLostString();   
         
         
         return pilotLostText;
@@ -72,15 +70,13 @@ public class CampaignReportPilotStatusGUI extends CampaignDocumentGUI
         {
             pilotLostString = "We regret to inform command that " + 
                 pilotLostEvent.getPilotName() + 
-                " has been seriously injured in combat with enemy forces.\n  " +
-                "He will be unavailable for an extended period of time";                
+                " has been seriously injured in combat with enemy forces.  He will be unavailable for an extended period of time";                
         }
         else if (pilotLostEvent.getStatus() == SquadronMemberStatus.STATUS_WOUNDED)
         {
             pilotLostString = "It is my duty to inform command that " + 
                 pilotLostEvent.getPilotName() + 
-                " has been injured in combat with enemy forces.\n  " +
-                "He will be unavailable for a period of some weeks";                
+                " has been injured in combat with enemy forces.  He will be unavailable for a period of some weeks";                
         }
         return pilotLostString;
     }
@@ -91,14 +87,8 @@ public class CampaignReportPilotStatusGUI extends CampaignDocumentGUI
     }
 
     @Override
-    public boolean isShouldDisplay()
+    protected String getFooterImagePath() throws PWCGException
     {
-        return shouldDisplay;
-    }
-
-    @Override
-    public JPanel getPanel()
-    {
-        return this;
+        return "";
     }
 }

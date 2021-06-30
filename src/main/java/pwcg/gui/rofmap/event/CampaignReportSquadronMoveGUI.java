@@ -6,12 +6,12 @@ import pwcg.aar.ui.events.model.SquadronMoveEvent;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
-public class CampaignReportSquadronMoveGUI extends CampaignDocumentGUI
+public class CampaignReportSquadronMoveGUI extends AARDocumentIconPanel
 {
 	private static final long serialVersionUID = 1L;
 	private SquadronMoveEvent squadronMoveEvent = null;
 
-	public CampaignReportSquadronMoveGUI(SquadronMoveEvent squadronMoveEvent)
+	public CampaignReportSquadronMoveGUI(SquadronMoveEvent squadronMoveEvent) throws PWCGException
 	{
 		super();
 
@@ -42,14 +42,8 @@ public class CampaignReportSquadronMoveGUI extends CampaignDocumentGUI
     }
 
     @Override
-    public boolean isShouldDisplay()
+    protected String getFooterImagePath() throws PWCGException
     {
-        return shouldDisplay;
-    }
-
-    @Override
-    public JPanel getPanel()
-    {
-        return this;
+        return "";
     }
 }

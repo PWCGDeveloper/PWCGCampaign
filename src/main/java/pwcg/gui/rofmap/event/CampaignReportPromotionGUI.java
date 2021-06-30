@@ -1,7 +1,5 @@
 package pwcg.gui.rofmap.event;
 
-import javax.swing.JPanel;
-
 import pwcg.aar.ui.events.model.PromotionEvent;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
@@ -12,7 +10,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
-public class CampaignReportPromotionGUI extends CampaignDocumentGUI
+public class CampaignReportPromotionGUI extends AARDocumentIconPanel
 {
 	private static final long serialVersionUID = 1L;
 	private PromotionEvent promotionEvent = null;
@@ -71,14 +69,8 @@ public class CampaignReportPromotionGUI extends CampaignDocumentGUI
     }
 
     @Override
-    public boolean isShouldDisplay()
+    protected String getFooterImagePath() throws PWCGException
     {
-        return shouldDisplay;
-    }
-
-    @Override
-    public JPanel getPanel()
-    {
-        return this;
+        return "";
     }
 }

@@ -2,20 +2,18 @@ package pwcg.gui.rofmap.event;
 
 import java.util.List;
 
-import javax.swing.JPanel;
-
 import pwcg.aar.ui.events.model.VictoryEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.VictoryDescription;
 import pwcg.core.exception.PWCGException;
 
-public class CampaignReportVictoryGUI extends CampaignDocumentGUI
+public class CampaignReportVictoryGUI extends AARDocumentIconPanel
 {
 	private static final long serialVersionUID = 1L;
 	private Campaign campaign;
 	private List<VictoryEvent> victoriesForPilot = null;
 	
-	public CampaignReportVictoryGUI(Campaign campaign, List<VictoryEvent> victoriesForPilot)
+	public CampaignReportVictoryGUI(Campaign campaign, List<VictoryEvent> victoriesForPilot) throws PWCGException
 	{
 		super();
         this.campaign = campaign;
@@ -48,14 +46,8 @@ public class CampaignReportVictoryGUI extends CampaignDocumentGUI
     }
 
     @Override
-    public boolean isShouldDisplay()
+    protected String getFooterImagePath() throws PWCGException
     {
-        return shouldDisplay;
-    }
-
-    @Override
-    public JPanel getPanel()
-    {
-        return this;
+        return "";
     }
 }

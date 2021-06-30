@@ -3,8 +3,6 @@ package pwcg.gui.rofmap.event;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.aar.ui.events.model.MedalEvent;
@@ -17,11 +15,9 @@ import pwcg.campaign.medals.MedalManager;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.PWCGLogger;
-import pwcg.gui.image.ImageIconCache;
 import pwcg.gui.utils.ContextSpecificImages;
 
-public class CampaignReportMedalGUI extends CampaignDocumentGUI
+public class CampaignReportMedalGUI extends AARDocumentIconPanel
 {
 	private static final long serialVersionUID = 1L;
 	private Campaign campaign;
@@ -37,7 +33,6 @@ public class CampaignReportMedalGUI extends CampaignDocumentGUI
         this.medalRecipient = campaign.getPersonnelManager().getAnyCampaignMember(medalEvent.getPilotSerialNumber());
             
         makePanel();        
-        addMedalImage();
     }
 
     protected String getHeaderText() throws PWCGException
@@ -55,7 +50,7 @@ public class CampaignReportMedalGUI extends CampaignDocumentGUI
         return medalText;
     }
 
-    private void addMedalImage() throws PWCGException
+    protected String getFooterImagePath() throws PWCGException
     {
         JPanel medalImagePanel = new JPanel(new GridLayout(0, 1));
         medalImagePanel.setOpaque(false);
@@ -64,17 +59,15 @@ public class CampaignReportMedalGUI extends CampaignDocumentGUI
         Medal medal =  MedalManager.getMedalFromAnyManager(country, campaign, medalEvent.getMedal());
         if (medal != null)
         {
-            JLabel lMedal = createMedalImage(medal);
-            medalImagePanel.add(lMedal);
-            
-            JLabel lMedalSpace = new JLabel("");
-            medalImagePanel.add(lMedalSpace);
-            
-            this.add(medalImagePanel, BorderLayout.SOUTH);
+            return createMedalImagePath(medal);
+        }
+        else
+        {
+            return "";
         }
     }
 
-    private JLabel createMedalImage(Medal medal)
+    private String createMedalImagePath(Medal medal)
     {
         SquadronMember pilot = medalRecipient;
         
@@ -90,21 +83,7 @@ public class CampaignReportMedalGUI extends CampaignDocumentGUI
         }
 
         medalPath += medal.getMedalImage();
-
-        ImageIcon medalIcon = null;  
-        try 
-        {
-            medalIcon = ImageIconCache.getInstance().getImageIcon(medalPath);
-        }
-        catch (Exception ex) 
-        {
-            PWCGLogger.logException(ex);
-        }
-                            
-        JLabel lMedal = new JLabel(medalIcon);
-        lMedal.setSize(medalIcon.getIconWidth(), medalIcon.getIconHeight());
-        lMedal.setOpaque(false);
-        return lMedal;
+        return medalPath;
     }
 
     @Override

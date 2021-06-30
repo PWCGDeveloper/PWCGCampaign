@@ -1,24 +1,27 @@
 package pwcg.gui.rofmap.event;
 
-import javax.swing.JPanel;
-
 import pwcg.aar.ui.events.model.AceLeaveEvent;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
-public class CampaignReportAceLeaveGUI extends CampaignDocumentGUI
+public class CampaignReportAceLeaveGUI extends AARDocumentIconPanel
 {
     private static final long serialVersionUID = 1L;
 	private AceLeaveEvent aceLeaveEvent = null;
 
-	public CampaignReportAceLeaveGUI(AceLeaveEvent aceLeaveEvent, Campaign campaign)
+	public CampaignReportAceLeaveGUI(AceLeaveEvent aceLeaveEvent, Campaign campaign) throws PWCGException
 	{
         super();
 
         this.aceLeaveEvent = aceLeaveEvent;
-        makePanel();        
+        makePanel();
 	}
+
+	@Override
+    public void makePanel() throws PWCGException
+    {        
+    }
 
     protected String getHeaderText() throws PWCGException
     {
@@ -43,14 +46,8 @@ public class CampaignReportAceLeaveGUI extends CampaignDocumentGUI
     }
 
     @Override
-    public boolean isShouldDisplay()
+    protected String getFooterImagePath() throws PWCGException
     {
-        return shouldDisplay;
-    }
-
-    @Override
-    public JPanel getPanel()
-    {
-        return this;
+        return "";
     }
 }

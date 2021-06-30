@@ -1,19 +1,17 @@
 package pwcg.gui.rofmap.event;
 
-import javax.swing.JPanel;
-
 import pwcg.aar.ui.events.model.PlaneStatusEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.PlaneStatus;
 import pwcg.core.exception.PWCGException;
 
-public class CampaignReportEquipmentStatusGUI extends CampaignDocumentGUI
+public class CampaignReportEquipmentStatusGUI extends AARDocumentIconPanel
 {
 	private static final long serialVersionUID = 1L;
     private PlaneStatusEvent equipmentStatusEvent;
     private Campaign campaign;
 	
-	public CampaignReportEquipmentStatusGUI(Campaign campaign, PlaneStatusEvent pilotLostEvent)
+	public CampaignReportEquipmentStatusGUI(Campaign campaign, PlaneStatusEvent pilotLostEvent) throws PWCGException
 	{
 		super();
         this.campaign = campaign;
@@ -71,14 +69,8 @@ public class CampaignReportEquipmentStatusGUI extends CampaignDocumentGUI
     }
 
     @Override
-    public boolean isShouldDisplay()
+    protected String getFooterImagePath() throws PWCGException
     {
-        return shouldDisplay;
-    }
-
-    @Override
-    public JPanel getPanel()
-    {
-        return this;
+        return "";
     }
 }

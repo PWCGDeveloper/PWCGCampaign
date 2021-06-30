@@ -102,7 +102,7 @@ public class AARMissionVictoryPanel extends AARDocumentPanel
         return victoriesByPilotsInMySquadron;
     }
 
-    private HashMap<String, CampaignReportVictoryGUI> createVictoryTabs(HashMap<String, List<VictoryEvent>> victoriesByPilotsInMySquadron)
+    private HashMap<String, CampaignReportVictoryGUI> createVictoryTabs(HashMap<String, List<VictoryEvent>> victoriesByPilotsInMySquadron) throws PWCGException
     {
         HashMap<String, CampaignReportVictoryGUI> pilotVictoryPanelData = new HashMap<>();
         for (String pilotName : victoriesByPilotsInMySquadron.keySet())

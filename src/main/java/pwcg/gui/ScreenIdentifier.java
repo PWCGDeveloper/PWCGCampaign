@@ -47,6 +47,8 @@ public enum ScreenIdentifier
     PlaqueBronzeBackground("PlaqueBronzeBackground", "Campaign Home Pilot List Plaque", "PlaqueBronzeBackground.png"),
     CampaignHomeSquadronPlaque("CampaignHomeSquadronPlaque", "Campaign Home Squadron Plaque", "PlaqueBronze.png"),
     Document("Document", "Document", "document.png"),
+    DocumentBag("DocumentBag", "DocumentBag", "DocumentBag.png"),
+    DocumentFolder("DocumentFolder", "DocumentFolder", "DocumentFolder.png"),
     OpenMedalBox("OpenMedalBox", "Open Medal Box", "OpenMedalBox.png"),
     OpenPilotLog("OpenPilotLog", "Open Pilot Log", "OpenPilotLog.jpg"),
     OpenJournal("OpenJournal", "Open Pilot Journal", "OpenJournal.png"),

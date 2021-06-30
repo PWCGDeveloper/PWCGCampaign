@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -22,6 +21,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.image.ImageCache;
+import pwcg.gui.utils.TextGraphicsMeasurement;
 
 public class NewspaperUI extends JPanel
 {
@@ -34,7 +34,6 @@ public class NewspaperUI extends JPanel
     public NewspaperUI(Newspaper newspaper)
     {
         this.setOpaque(false);
-
         this.newspaper = newspaper;
     }
 
@@ -121,7 +120,7 @@ public class NewspaperUI extends JPanel
         
         Font headlineFont = PWCGMonitorFonts.getNewspaperFont();
         
-        int pixelsForHeadline = measureTextWidth(graphics, headlineFont, newspaper.getHeadline());        
+        int pixelsForHeadline = TextGraphicsMeasurement.measureTextWidth(graphics, headlineFont, newspaper.getHeadline());        
         int newspaperImageWidth = 800;
         int startPosition = (newspaperImageWidth - pixelsForHeadline) / 2;
         if (startPosition < 40)
@@ -134,12 +133,5 @@ public class NewspaperUI extends JPanel
         graphics.drawImage(newspaperImage, 0, 0, null);
         graphics.drawString(newspaper.getHeadline(), startPosition, 120);
         return result;
-    }
-    
-    private int measureTextWidth(Graphics graphics, Font font, String text)
-    {
-        FontMetrics metrics = graphics.getFontMetrics(font);
-        int textWidth = metrics.stringWidth(text);
-        return textWidth;
     }
 }

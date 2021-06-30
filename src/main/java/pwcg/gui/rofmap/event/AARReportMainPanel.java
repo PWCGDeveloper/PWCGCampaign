@@ -21,7 +21,6 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
-import pwcg.gui.utils.SpacerPanelFactory;
 
 public class AARReportMainPanel extends ImageResizingPanel implements ActionListener
 {
@@ -79,7 +78,7 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
 
         this.add(BorderLayout.WEST, makeNavigationPanel());
         resetCenterPanels();
-        this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1500));
+        //this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1500));
 
 	}
 
@@ -181,7 +180,7 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
         }
     }
 
-    private void createPanelSetBasedOnReasonForAdvancingTime(List<IAAREventPanel> allEventPanels)
+    private void createPanelSetBasedOnReasonForAdvancingTime(List<IAAREventPanel> allEventPanels) throws PWCGException
     {
         if (reasonToAdvanceTime == EventPanelReason.EVENT_PANEL_REASON_AAR)
         {
