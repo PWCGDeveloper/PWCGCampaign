@@ -38,6 +38,7 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
     protected Font headerFont;
     protected Font bodyFont;
     protected boolean shouldDisplay = false;
+    private Graphics originalImageGraphics = null;
 
     protected abstract String getHeaderText() throws PWCGException;
     protected abstract String getBodyText() throws PWCGException;
@@ -67,8 +68,9 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
 
             this.setOpaque(false);
 
-            BufferedImage documentIMage = buildDocumentImage();
-            ImageIcon icon = new ImageIcon(documentIMage);
+            BufferedImage documentImage = buildDocumentImage();
+
+            ImageIcon icon = new ImageIcon(documentImage);
             JLabel imageLabel = new JLabel(icon);
             this.add(imageLabel, BorderLayout.CENTER);
         }
@@ -82,6 +84,7 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
         BufferedImage documentImage = ImageCache.getInstance().getBufferedImage(imagePath);
+        originalImageGraphics = documentImage.getGraphics();
 
         BufferedImage documentImageWithHeader = addHeader(documentImage);
         BufferedImage documentImageWithBody = addBody(documentImageWithHeader, 240);
@@ -97,22 +100,17 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
             return documentImage;
         }
 
-        BufferedImage result = new BufferedImage(documentImage.getWidth(), documentImage.getHeight(), BufferedImage.TRANSLUCENT);
-        Graphics graphics = result.getGraphics();
-        graphics.setColor(Color.DARK_GRAY);
+        List<String> bodyLinesOfText = formBodyLinesOfText(documentImage, headerText, headerFont);
 
-        int pixelsForHeadline = TextGraphicsMeasurement.measureTextWidth(graphics, headerFont, headerText);
-        int lineHorizontalPosition = (documentImage.getWidth() - pixelsForHeadline) / 2;
+        int lineHorizontalPosition = 40;
         int lineVerticalPosition = 120;
-        if (lineHorizontalPosition < 40)
+        for (String headerLineOfText :bodyLinesOfText)
         {
-            lineHorizontalPosition = 40;
+            documentImage = addTextLine(documentImage, lineHorizontalPosition, lineVerticalPosition, headerLineOfText, headerFont, JLabel.CENTER_ALIGNMENT);
+            lineVerticalPosition += 30;
         }
-
-        graphics.setFont(headerFont);
-        graphics.drawImage(documentImage, 0, 0, null);
-        graphics.drawString(headerText, lineHorizontalPosition, lineVerticalPosition);
-        return result;
+        
+        return documentImage;
     }
 
     private BufferedImage addBody(BufferedImage documentImage, int verticalStartPosition) throws IOException, PWCGException
@@ -122,37 +120,35 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
             return documentImage;
         }
 
-        List<String> bodyLinesOfText = formBodyLinesOfText(documentImage);
+        List<String> bodyLinesOfText = formBodyLinesOfText(documentImage, bodyText, bodyFont);
 
         int lineHorizontalPosition = 40;
         int lineVerticalPosition = verticalStartPosition;
         for (String bodyLineOfText :bodyLinesOfText)
         {
-            documentImage = addBodyLine(documentImage, lineHorizontalPosition, lineVerticalPosition, bodyLineOfText);
-            lineVerticalPosition += 30;
+            documentImage = addTextLine(documentImage, lineHorizontalPosition, lineVerticalPosition, bodyLineOfText, bodyFont, JLabel.LEFT_ALIGNMENT);
+            lineVerticalPosition += 25;
         }
         
         return documentImage;
     }
     
-    private List<String> formBodyLinesOfText(BufferedImage documentImage)
+    private List<String> formBodyLinesOfText(BufferedImage documentImage, String text, Font font)
     {
         List<String> bodyLinesOfText = new ArrayList<>();
         
-        Graphics graphics = documentImage.getGraphics();
-
         int characterBufferPosition = 0;
-        while (characterBufferPosition < bodyText.length())
+        while (characterBufferPosition < text.length())
         {
             StringBuffer lineBuffer = new StringBuffer();
-            while (characterBufferPosition < bodyText.length())
+            while (characterBufferPosition < text.length())
             {
-                lineBuffer.append(bodyText.charAt(characterBufferPosition));
-                int pixelsForBodyLine = TextGraphicsMeasurement.measureTextWidth(graphics, bodyFont, lineBuffer.toString());
+                lineBuffer.append(text.charAt(characterBufferPosition));
+                int pixelsForBodyLine = TextGraphicsMeasurement.measureTextWidth(originalImageGraphics, font, lineBuffer.toString());
                 if (pixelsForBodyLine > (documentImage.getWidth() - DOCUMENT_MARGIN))
                 {
                     lineBuffer.deleteCharAt(lineBuffer.length() - 1);                    
-                    while (bodyText.charAt(characterBufferPosition) != ' ')
+                    while (text.charAt(characterBufferPosition) != ' ')
                     {
                         --characterBufferPosition;
                         lineBuffer.deleteCharAt(lineBuffer.length() - 1);
@@ -161,7 +157,13 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
                     bodyLinesOfText.add(lineBuffer.toString());
                     break;
                 }
-                else if (bodyText.charAt(characterBufferPosition) == '\n')
+                else if (text.charAt(characterBufferPosition) == '\n')
+                {
+                    bodyLinesOfText.add(lineBuffer.toString());
+                    ++characterBufferPosition;
+                    break;
+                }
+                else if (characterBufferPosition == (text.length()-1))
                 {
                     bodyLinesOfText.add(lineBuffer.toString());
                     ++characterBufferPosition;
@@ -176,17 +178,19 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
         return bodyLinesOfText;
     }
 
-    private BufferedImage addBodyLine(BufferedImage documentImage, int lineHorizontalPosition, int lineVerticalPosition, String line) throws IOException, PWCGException
+    private BufferedImage addTextLine(BufferedImage documentImage, int lineHorizontalPosition, int lineVerticalPosition, String line, Font font, float alignment) throws IOException, PWCGException
     {
-        if (bodyText.isEmpty())
-        {
-            return documentImage;
-        }
-
         BufferedImage result = new BufferedImage(documentImage.getWidth(), documentImage.getHeight(), BufferedImage.TRANSLUCENT);
         Graphics graphics = result.getGraphics();
+
+        if (alignment == JLabel.CENTER_ALIGNMENT)
+        {
+            int lineWidthPixels = TextGraphicsMeasurement.measureTextWidth(originalImageGraphics, headerFont, line);
+            lineHorizontalPosition = (documentImage.getWidth() - lineWidthPixels) / 2;
+        }
+        
         graphics.setColor(Color.DARK_GRAY);
-        graphics.setFont(bodyFont);
+        graphics.setFont(font);
         graphics.drawImage(documentImage, 0, 0, null);
         graphics.drawString(line, lineHorizontalPosition, lineVerticalPosition);
 
