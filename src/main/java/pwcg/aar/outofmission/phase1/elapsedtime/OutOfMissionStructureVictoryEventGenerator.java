@@ -1,9 +1,9 @@
 package pwcg.aar.outofmission.phase1.elapsedtime;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.outofmission.DuringCampaignStructureVictimGenerator;
-import pwcg.campaign.outofmission.OutOfMissionStructureVictoryBuilder;
+import pwcg.campaign.personnel.StructureVictoryBuilder;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.StructureVictimGenerator;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.constants.AiSkillLevel;
@@ -62,10 +62,10 @@ public class OutOfMissionStructureVictoryEventGenerator
 
     private void generateVictory() throws PWCGException
     {
-        DuringCampaignStructureVictimGenerator duringCampaignVictimGenerator = new DuringCampaignStructureVictimGenerator();
+        StructureVictimGenerator duringCampaignVictimGenerator = new StructureVictimGenerator();
         PwcgStructure victimStructure = duringCampaignVictimGenerator.generateVictimStructure();
 
-        OutOfMissionStructureVictoryBuilder outOfMissionVictoryGenerator = new OutOfMissionStructureVictoryBuilder(campaign, squadronMember, victimStructure);
+        StructureVictoryBuilder outOfMissionVictoryGenerator = new StructureVictoryBuilder(squadronMember, victimStructure);
         Victory victory = outOfMissionVictoryGenerator.generateOutOfMissionVictory(campaign.getDate());
 
         if (victory != null)

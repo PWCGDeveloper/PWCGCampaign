@@ -11,8 +11,8 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.outofmission.DuringCampaignGroundVictimGenerator;
-import pwcg.campaign.outofmission.OutOfMissionGroundVictoryBuilder;
+import pwcg.campaign.squadmember.AirToGroundVictoryBuilder;
+import pwcg.campaign.squadmember.GroundVictimGenerator;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.Victory;
@@ -49,10 +49,10 @@ public class OutOfMissionGroundVictoryBuilderTest
     @Test
     public void testVictoryAwarded () throws PWCGException
     {     
-        DuringCampaignGroundVictimGenerator duringCampaignVictimGenerator = new DuringCampaignGroundVictimGenerator(campaign, squadronMember);
+        GroundVictimGenerator duringCampaignVictimGenerator = new GroundVictimGenerator(campaign.getDate(), squadronMember);
         IVehicle victimVehicle = duringCampaignVictimGenerator.generateVictimVehicle();
 
-        OutOfMissionGroundVictoryBuilder victoryGenerator = new OutOfMissionGroundVictoryBuilder(campaign, squadronMember, victimVehicle);
+        AirToGroundVictoryBuilder victoryGenerator = new AirToGroundVictoryBuilder(squadronMember, victimVehicle);
         Victory victory = victoryGenerator.generateOutOfMissionVictory(campaign.getDate());
         
         assert (victory.getVictim().getAirOrGround() == Victory.VEHICLE);

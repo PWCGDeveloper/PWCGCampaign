@@ -1,8 +1,7 @@
-package pwcg.campaign.outofmission;
+package pwcg.campaign.personnel;
 
 import java.util.Date;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
@@ -17,18 +16,16 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.mission.ground.vehicle.IVehicle;
+import pwcg.mission.ground.building.PwcgStructure;
 
-public class OutOfMissionGroundVictoryBuilder
+public class StructureVictoryBuilder
 {
-    private Campaign campaign;
     private SquadronMember victorPilot;
-    private IVehicle victimVehicle;
+    private PwcgStructure victimStructure;
 
-    public OutOfMissionGroundVictoryBuilder (Campaign campaign, SquadronMember victorPilot, IVehicle victimVehicle)
+    public StructureVictoryBuilder (SquadronMember victorPilot, PwcgStructure victimStructure)
     {
-        this.campaign = campaign;
-        this.victimVehicle = victimVehicle;
+        this.victimStructure = victimStructure;
         this.victorPilot = victorPilot;
     }
     
@@ -37,7 +34,7 @@ public class OutOfMissionGroundVictoryBuilder
         Victory victory = null;
         try
         {
-            if (victimVehicle != null)
+            if (victimStructure != null)
             {
                 victory = createVictory(date);
             }
@@ -85,7 +82,7 @@ public class OutOfMissionGroundVictoryBuilder
         
         Squadron squadron = victorPilot.determineSquadron();
 
-        PlaneType victorPlaneType = squadron.determineBestPlane(campaign.getDate());
+        PlaneType victorPlaneType = squadron.determineBestPlane(date);
 
         victor.setAirOrGround(Victory.AIRCRAFT);
         victor.setType(victorPlaneType.getDisplayName());
@@ -102,8 +99,8 @@ public class OutOfMissionGroundVictoryBuilder
     {
         VictoryEntity victim = new VictoryEntity();            
         victim.setAirOrGround(Victory.VEHICLE);
-        victim.setType(victimVehicle.getVehicleType());
-        victim.setName(victimVehicle.getVehicleName());
+        victim.setType(victimStructure.getDescription());
+        victim.setName(victimStructure.getDescription());
         victim.setSquadronName("");
         victim.setPilotName("");
         victim.setPilotSerialNumber(SerialNumber.NO_SERIAL_NUMBER);

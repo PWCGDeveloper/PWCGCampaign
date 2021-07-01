@@ -11,12 +11,13 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.CampaignValidatorMedals;
 import pwcg.campaign.personnel.PilotPictureBuilder;
+import pwcg.campaign.personnel.SquadronMemberAirInitialVictoryBuilder;
 import pwcg.campaign.personnel.SquadronMemberFemaleConverter;
 import pwcg.campaign.personnel.SquadronMemberFilter;
-import pwcg.campaign.personnel.SquadronMemberInitialVictoryBuilder;
+import pwcg.campaign.personnel.SquadronMemberGroundInitialVictoryBuilder;
+import pwcg.campaign.personnel.SquadronMemberStructureInitialVictoryBuilder;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Role;
-import pwcg.campaign.plane.RoleCategory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
@@ -84,9 +85,19 @@ public class SquadronMemberFactory
         newPilot.setMissionFlown(numMissions);
         
         Role squadronPrimaryRole = squadron.determineSquadronPrimaryRole(campaign.getDate());
-        if (squadronPrimaryRole.isRoleCategory(RoleCategory.FIGHTER))
+        if (AirVictimGenerator.shouldUse(squadronPrimaryRole))
         {
-            SquadronMemberInitialVictoryBuilder initialVictoryBuilder = new SquadronMemberInitialVictoryBuilder(campaign, squadron);
+            SquadronMemberAirInitialVictoryBuilder initialVictoryBuilder = new SquadronMemberAirInitialVictoryBuilder(campaign, squadron);
+            initialVictoryBuilder.createPilotVictories(newPilot, rankPos);            
+        }
+        else if (GroundVictimGenerator.shouldUse(squadronPrimaryRole))
+        {
+            SquadronMemberGroundInitialVictoryBuilder initialVictoryBuilder = new SquadronMemberGroundInitialVictoryBuilder(campaign, squadron);
+            initialVictoryBuilder.createPilotVictories(newPilot, rankPos);            
+        }
+        else if (StructureVictimGenerator.shouldUse(squadronPrimaryRole))
+        {
+            SquadronMemberStructureInitialVictoryBuilder initialVictoryBuilder = new SquadronMemberStructureInitialVictoryBuilder(campaign, squadron);
             initialVictoryBuilder.createPilotVictories(newPilot, rankPos);            
         }
         

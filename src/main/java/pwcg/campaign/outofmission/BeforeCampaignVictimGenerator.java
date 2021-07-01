@@ -32,6 +32,14 @@ public class BeforeCampaignVictimGenerator implements IVictimGenerator
         this.date = date;
     }
 
+    @Override
+    public EquippedPlane generateVictimPlane() throws PWCGException
+    {
+        EquippedPlane equippedPlane = PlaneEquipmentFactory.makePlaneForBeforeCampaign(campaign, victimSquadron.determineSide(), date);
+        return equippedPlane;
+    }
+
+    @Override
     public SquadronMember generateVictimAiCrew() throws PWCGException 
     {        
         List<SquadronMember> allPilots = generateAIPilots(victimSquadron, date);
@@ -92,12 +100,5 @@ public class BeforeCampaignVictimGenerator implements IVictimGenerator
         }
         
         return squadMembers;
-    }
-
-    @Override
-    public EquippedPlane generateVictimPlane() throws PWCGException
-    {
-        EquippedPlane equippedPlane = PlaneEquipmentFactory.makePlaneForBeforeCampaign(campaign, victimSquadron.determineSide(), date);
-        return equippedPlane;
     }
 }

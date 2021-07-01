@@ -1,8 +1,8 @@
 package pwcg.aar.outofmission.phase1.elapsedtime;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.outofmission.DuringCampaignGroundVictimGenerator;
-import pwcg.campaign.outofmission.OutOfMissionGroundVictoryBuilder;
+import pwcg.campaign.squadmember.AirToGroundVictoryBuilder;
+import pwcg.campaign.squadmember.GroundVictimGenerator;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -62,10 +62,10 @@ public class OutOfMissionGroundVictoryEventGenerator
 
     private void generateVictory() throws PWCGException
     {
-        DuringCampaignGroundVictimGenerator duringCampaignVictimGenerator = new DuringCampaignGroundVictimGenerator(campaign, squadronMember);
+        GroundVictimGenerator duringCampaignVictimGenerator = new GroundVictimGenerator(campaign.getDate(), squadronMember);
         IVehicle victimVehicle = duringCampaignVictimGenerator.generateVictimVehicle();
 
-        OutOfMissionGroundVictoryBuilder outOfMissionVictoryGenerator = new OutOfMissionGroundVictoryBuilder(campaign, squadronMember, victimVehicle);
+        AirToGroundVictoryBuilder outOfMissionVictoryGenerator = new AirToGroundVictoryBuilder(squadronMember, victimVehicle);
         Victory victory = outOfMissionVictoryGenerator.generateOutOfMissionVictory(campaign.getDate());
 
         if (victory != null)

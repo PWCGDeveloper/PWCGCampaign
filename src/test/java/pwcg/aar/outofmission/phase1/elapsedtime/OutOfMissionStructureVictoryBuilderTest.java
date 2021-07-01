@@ -11,7 +11,7 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.outofmission.OutOfMissionStructureVictoryBuilder;
+import pwcg.campaign.personnel.StructureVictoryBuilder;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.Victory;
@@ -48,7 +48,7 @@ public class OutOfMissionStructureVictoryBuilderTest
     @Test
     public void testVictoryAwarded () throws PWCGException
     {     
-        OutOfMissionStructureVictoryBuilder victoryGenerator = new OutOfMissionStructureVictoryBuilder(campaign, squadronMember, PwcgStructure.BRIDGE);
+        StructureVictoryBuilder victoryGenerator = new StructureVictoryBuilder(squadronMember, PwcgStructure.BRIDGE);
         Victory victory = victoryGenerator.generateOutOfMissionVictory(campaign.getDate());
         
         assert (victory.getVictim().getAirOrGround() == Victory.VEHICLE);

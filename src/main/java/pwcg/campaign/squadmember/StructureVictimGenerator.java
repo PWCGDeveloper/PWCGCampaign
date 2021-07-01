@@ -1,16 +1,17 @@
-package pwcg.campaign.outofmission;
+package pwcg.campaign.squadmember;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.plane.Role;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.IWeight;
 import pwcg.core.utils.WeightCalculator;
 import pwcg.mission.ground.building.PwcgStructure;
 
-public class DuringCampaignStructureVictimGenerator
+public class StructureVictimGenerator
 {    
-    public DuringCampaignStructureVictimGenerator () throws PWCGException
+    public StructureVictimGenerator () throws PWCGException
     {
     }
 
@@ -37,4 +38,13 @@ public class DuringCampaignStructureVictimGenerator
         return victimType;
     }
 
+    
+    public static boolean shouldUse(Role role)
+    {
+        if (role == Role.ROLE_ATTACK || role == Role.ROLE_DIVE_BOMB)
+        {
+            return true;
+        }
+        return false;
+    }
 }

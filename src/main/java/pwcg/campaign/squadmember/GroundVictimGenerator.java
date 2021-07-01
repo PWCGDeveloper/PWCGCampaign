@@ -1,12 +1,12 @@
-package pwcg.campaign.outofmission;
+package pwcg.campaign.squadmember;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.plane.Role;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.IWeight;
 import pwcg.core.utils.WeightCalculator;
@@ -14,14 +14,14 @@ import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.ground.vehicle.VehicleFactory;
 
-public class DuringCampaignGroundVictimGenerator
+public class GroundVictimGenerator
 {    
-    private Campaign campaign;
     private SquadronMember squadronMember;
-
-    public DuringCampaignGroundVictimGenerator (Campaign campaign, SquadronMember squadronMember) throws PWCGException
+    private Date date;
+    
+    public GroundVictimGenerator (Date date, SquadronMember squadronMember) throws PWCGException
     {
-        this.campaign = campaign;
+        this.date = date;
         this.squadronMember = squadronMember;
     }
 
@@ -30,7 +30,7 @@ public class DuringCampaignGroundVictimGenerator
         ICountry victimCountry = PWCGContext.getInstance().getCurrentMap().getGroundCountryForMapBySide(squadronMember.getSide().getOppositeSide());
         
         VehicleClass victimType = determineVehicleClass();
-        IVehicle victimVehicle = VehicleFactory.createVehicle(victimCountry, campaign.getDate(), victimType);
+        IVehicle victimVehicle = VehicleFactory.createVehicle(victimCountry, date, victimType);
         return victimVehicle;
     }
 
@@ -50,5 +50,13 @@ public class DuringCampaignGroundVictimGenerator
         VehicleClass victimType = (VehicleClass)possibleVictimTypes.get(index);
         return victimType;
     }
-
+    
+    public static boolean shouldUse(Role role)
+    {
+        if (role == Role.ROLE_ATTACK || role == Role.ROLE_DIVE_BOMB)
+        {
+            return true;
+        }
+        return false;
+    }
 }

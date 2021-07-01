@@ -8,6 +8,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGFront;
 import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.outofmission.DuringCampaignAirVictimGenerator;
+import pwcg.campaign.outofmission.IVictimGenerator;
 import pwcg.campaign.outofmission.OutOfMissionAirVictoryBuilder;
 import pwcg.campaign.personnel.EnemySquadronFinder;
 import pwcg.campaign.plane.EquippedPlane;
@@ -113,16 +114,15 @@ public class OutOfMissionAirVictoryEventGenerator
         Squadron victimSquadron = enemySquadronFinder.getEnemyForOutOfMission(victorSquadron, campaign.getDate());
         if (victimSquadron != null)
         {
-            generateVictoryWithSquadron(victimSquadron);
+            IVictimGenerator duringCampaignVictimGenerator = new DuringCampaignAirVictimGenerator(campaign, victimSquadron);
+            generateVictoryWithSquadron(victimSquadron, duringCampaignVictimGenerator);
         }
     }
 
-    private void generateVictoryWithSquadron(Squadron victimSquadron)
-            throws PWCGException
+    private void generateVictoryWithSquadron(Squadron victimSquadron, IVictimGenerator victimGenerator) throws PWCGException
     {
-        DuringCampaignAirVictimGenerator duringCampaignVictimGenerator = new DuringCampaignAirVictimGenerator(campaign, victimSquadron);
 
-        OutOfMissionAirVictoryBuilder outOfMissionVictoryGenerator = new OutOfMissionAirVictoryBuilder(campaign, victimSquadron, duringCampaignVictimGenerator, squadronMember);
+        OutOfMissionAirVictoryBuilder outOfMissionVictoryGenerator = new OutOfMissionAirVictoryBuilder(campaign, victimSquadron, victimGenerator, squadronMember);
         Victory victory = outOfMissionVictoryGenerator.generateOutOfMissionVictory(campaign.getDate());
 
         if (victory != null)
