@@ -5,7 +5,7 @@ import pwcg.campaign.squadmember.Victory;
 public class PlayerVictoryDeclaration
 {
 	private String aircraftType = "";
-	private int victoryType = Victory.AIR_VICTORY;
+	private int victoryType = Victory.AIRCRAFT;
 	private boolean confirmed = false;
 
     public PlayerVictoryDeclaration ()

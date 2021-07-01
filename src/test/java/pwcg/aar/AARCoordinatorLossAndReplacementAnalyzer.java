@@ -43,7 +43,8 @@ public class AARCoordinatorLossAndReplacementAnalyzer
     {
     	Date newDate = DateUtils.getDateYYYYMMDD("19420801");
 
-    	int totalVictories = 0;
+        int totalAirVictories = 0;
+        int totalGroundVictories = 0;
     	int totalPersonnelLosses = 0;
         int totalAlliedPersonnelLosses = 0;
         int totalAxisPersonnelLosses = 0;
@@ -64,7 +65,8 @@ public class AARCoordinatorLossAndReplacementAnalyzer
             stepper.oneStep();
 
 	    	int viableSquadrons = PWCGContext.getInstance().getSquadronManager().getViableSquadrons(campaign).size();
-	    	int victories = aarContext.getPersonnelAcheivements().getTotalAirToAirVictories();
+            int airVictories = aarContext.getPersonnelAcheivements().getTotalAirToAirVictories();
+            int groundVictories = aarContext.getPersonnelAcheivements().getTotalAirToGroundVictories();
 	    	int losses = aarContext.getPersonnelLosses().getSquadMembersLost().size();
 	    	int replacements = campaign.getPersonnelManager().getReplacementCount();
 	    	int medalsAwarded = aarContext.getPersonnelAwards().getMedalsAwarded().size();
@@ -76,7 +78,8 @@ public class AARCoordinatorLossAndReplacementAnalyzer
             int numAiPilots = activeAiCampaignMembers.getSquadronMemberList().size();
             int equipmentLosses = aarContext.getEquipmentLosses().getPlanesDestroyed().size();
 
-            totalVictories += victories;
+            totalAirVictories += airVictories;
+            totalGroundVictories += groundVictories;
             totalPersonnelLosses += losses;
             totalMedalsAwarded += medalsAwarded;
             totalPromotionsAwarded += promotionsAwarded;
@@ -120,7 +123,8 @@ public class AARCoordinatorLossAndReplacementAnalyzer
             
             System.out.println("=====================================================");
             System.out.println("Cycle: " + cycleNum);
-            System.out.println("Victories: " + victories);
+            System.out.println("Air Victories: " + totalAirVictories);
+            System.out.println("Ground Victories: " + totalGroundVictories);
             System.out.println("Losses: " + losses);
             System.out.println("  Allied Personnel: " + alliedPersonnelLosses);
             System.out.println("  Axis Personnel: " + axisPersonnelLosses);
@@ -151,13 +155,15 @@ public class AARCoordinatorLossAndReplacementAnalyzer
         System.out.println("Total Equipment Losses: " + totalEquipmentLosses);
         System.out.println("");
 
-        System.out.println("Total Victories: " + totalVictories);
+        System.out.println("Total Air Victories: " + totalAirVictories);
+        System.out.println("Total Ground Victories: " + totalGroundVictories);
         System.out.println("Total Medals: " + totalMedalsAwarded);
         System.out.println("Total Promotions: " + totalPromotionsAwarded);
         System.out.println("Total Transfers: " + totalTransfers);
         
         
-        assert(totalVictories > 0);
+        assert(totalAirVictories > 0);
+        assert(totalGroundVictories > 0);
         assert(totalPersonnelLosses > 0);
         assert(totalAlliedPersonnelLosses > 0);
         assert(totalAxisPersonnelLosses > 0);

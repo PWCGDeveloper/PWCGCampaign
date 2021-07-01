@@ -23,7 +23,6 @@ import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadmember.Victory;
-import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
@@ -34,14 +33,9 @@ public class OutOfMissionVictoryEventHandlerTest
 {
     private Campaign campaign;
 
-    @Mock
-    private SquadronMember squadronMember;
-    
-    @Mock
-    private AARContext aarContext;
-
-    @Mock
-    private AARPreliminaryData preliminaryData;
+    @Mock private SquadronMember squadronMember;    
+    @Mock private AARContext aarContext;
+    @Mock private AARPreliminaryData preliminaryData;
 
     private SquadronMembers outOfMissionSquadronMembers;
 
@@ -88,43 +82,4 @@ public class OutOfMissionVictoryEventHandlerTest
 
         assert (outOfMissionVictoriesAwarded > 1);
     }
-
-    
-    @Test
-    public void testPilotOutOfMissionVictoryNovice() throws PWCGException
-    {
-        Mockito.when(squadronMember.getAiSkillLevel()).thenReturn(AiSkillLevel.NOVICE);
-        testPilotOutOfMissionVictory();
-    }
-    
-    @Test
-    public void testPilotOutOfMissionVictoryCommon() throws PWCGException
-    {
-        Mockito.when(squadronMember.getAiSkillLevel()).thenReturn(AiSkillLevel.COMMON);
-        testPilotOutOfMissionVictory();
-    }
-    
-    @Test
-    public void testPilotOutOfMissionVictoryVeteran() throws PWCGException
-    {
-        Mockito.when(squadronMember.getAiSkillLevel()).thenReturn(AiSkillLevel.VETERAN);
-        testPilotOutOfMissionVictory();
-    }
-    
-    @Test
-    public void testPilotOutOfMissionVictoryAce() throws PWCGException
-    {
-        Mockito.when(squadronMember.getAiSkillLevel()).thenReturn(AiSkillLevel.ACE);
-        testPilotOutOfMissionVictory();
-    }
-    
-    public void testPilotOutOfMissionVictory() throws PWCGException
-    {
-        OutOfMissionVictoryEventHandler victoryGenerator = new OutOfMissionVictoryEventHandler(campaign, aarContext);
-        victoryGenerator.outOfMissionVictoriesForSquadronMember(squadronMember);        
-        PilotVictoryRunner pilotVictoryRunner = new PilotVictoryRunner(victoryGenerator);
-        pilotVictoryRunner.testPilotOutOfMissionLostAllPossibleStatus(squadronMember);
-    }
-
-
 }

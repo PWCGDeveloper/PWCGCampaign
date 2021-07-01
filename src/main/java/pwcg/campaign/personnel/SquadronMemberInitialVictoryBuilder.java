@@ -6,7 +6,7 @@ import java.util.Date;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.outofmission.BeforeCampaignVictimGenerator;
-import pwcg.campaign.outofmission.OutOfMissionVictoryGenerator;
+import pwcg.campaign.outofmission.OutOfMissionAirVictoryBuilder;
 import pwcg.campaign.outofmission.UnknownSquadronVictoryGenerator;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.Role;
@@ -238,7 +238,7 @@ public class SquadronMemberInitialVictoryBuilder
         {
             BeforeCampaignVictimGenerator beforeCampaignVictimGenerator = new BeforeCampaignVictimGenerator(campaign, victimSquadron, victoryDate);
             
-            OutOfMissionVictoryGenerator outOfMissionVictoryGenerator = new OutOfMissionVictoryGenerator(campaign, victimSquadron, beforeCampaignVictimGenerator, newPilot);
+            OutOfMissionAirVictoryBuilder outOfMissionVictoryGenerator = new OutOfMissionAirVictoryBuilder(campaign, victimSquadron, beforeCampaignVictimGenerator, newPilot);
             victory = outOfMissionVictoryGenerator.generateOutOfMissionVictory(victoryDate);
         }
         return victory;

@@ -58,11 +58,11 @@ public class CampaignPilotAwardsUpdater
         {
             for (Victory victory : campaignUpdateData.getPersonnelAcheivements().getVictoriesByPilot().get(serialNumber)) 
             {
-                if (victory.getVictim().getAirOrGround() == Victory.AIR_VICTORY)
+                if (victory.getVictim().getAirOrGround() == Victory.AIRCRAFT)
                 {
                     addAirVictory(serialNumber, victory);
                 }
-                else if (victory.getVictim().getAirOrGround() == Victory.GROUND_VICTORY)
+                else if (victory.getVictim().getAirOrGround() == Victory.VEHICLE)
                 {
                     addGroundVictory(serialNumber, victory);
                 }

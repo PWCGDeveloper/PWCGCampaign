@@ -61,13 +61,67 @@ public class AARPersonnelAcheivements
         return victoryAwardByPilot;
     }
     
+    public int getGroundVictoryCountForPilot(int serialNumber)
+    {
+        int numGroundVictoriesForPilot = 0;
+        if (victoryAwardByPilot.containsKey(serialNumber))
+        {
+            for (Victory victoryForPilot : victoryAwardByPilot.get(serialNumber))
+            {
+                if (victoryForPilot.getVictim().getAirOrGround() == Victory.VEHICLE)
+                {
+                    ++numGroundVictoriesForPilot;
+                }
+            }
+        }
+        return numGroundVictoriesForPilot;
+    }
+    
+    public int getAirVictoryCountForPilot(int serialNumber)
+    {
+        int numAirVictoriesForPilot = 0;
+        if (victoryAwardByPilot.containsKey(serialNumber))
+        {
+            for (Victory victoryForPilot : victoryAwardByPilot.get(serialNumber))
+            {
+                if (victoryForPilot.getVictim().getAirOrGround() == Victory.AIRCRAFT)
+                {
+                    ++numAirVictoriesForPilot;
+                }
+            }
+        }
+        return numAirVictoriesForPilot;
+    }
+    
     public int getTotalAirToAirVictories()
     {
     	int totalAirToAirVictories = 0;
     	for (List<Victory> victoriesForPilot : victoryAwardByPilot.values())
     	{
-    		totalAirToAirVictories += victoriesForPilot.size();
+    	    for (Victory victory : victoriesForPilot)
+    	    {
+    	        if (victory.getVictim().getAirOrGround() == Victory.AIRCRAFT)
+    	        {
+    	            ++totalAirToAirVictories;
+    	        }
+    	    }
     	}
+        return totalAirToAirVictories;
+    }
+    
+    public int getTotalAirToGroundVictories()
+    {
+        int totalAirToAirVictories = 0;
+        for (List<Victory> victoriesForPilot : victoryAwardByPilot.values())
+        {
+            for (Victory victory : victoriesForPilot)
+            {
+                if (victory.getVictim().getAirOrGround() == Victory.VEHICLE)
+                {
+                    ++totalAirToAirVictories;
+                }
+            }
+        }
         return totalAirToAirVictories;
     }
 

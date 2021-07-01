@@ -20,7 +20,7 @@ public class VictoryDescription
         VictoryDescriptionBuilderAir descriptionBuilderAir = new VictoryDescriptionBuilderAir(campaign, victory);
         VictoryDescriptionBuilderGround descriptionBuilderGround = new VictoryDescriptionBuilderGround(campaign, victory);
         
-        if (victory.getVictim().getAirOrGround() == Victory.AIR_VICTORY && victory.getVictor().getAirOrGround() == Victory.AIR_VICTORY)
+        if (victory.getVictim().getAirOrGround() == Victory.AIRCRAFT && victory.getVictor().getAirOrGround() == Victory.AIRCRAFT)
         {
             return createVictoryDescriptionAirToAir();
         }
@@ -29,24 +29,24 @@ public class VictoryDescription
         {
             return createVictoryDescriptionAirToAir();
         }
-        else if (victory.getVictim().getAirOrGround() == Victory.AIR_VICTORY && victory.getVictor().getAirOrGround() == Victory.UNSPECIFIED_VICTORY)
+        else if (victory.getVictim().getAirOrGround() == Victory.AIRCRAFT && victory.getVictor().getAirOrGround() == Victory.UNSPECIFIED_VICTORY)
         {
             return descriptionBuilderAir.createVictoryDescriptionUnknownToAir();
         }
 
-        else if (victory.getVictim().getAirOrGround() == Victory.GROUND_VICTORY && victory.getVictor().getAirOrGround() == Victory.AIR_VICTORY)
+        else if (victory.getVictim().getAirOrGround() == Victory.VEHICLE && victory.getVictor().getAirOrGround() == Victory.AIRCRAFT)
         {
             return descriptionBuilderGround.createVictoryDescriptionAirToGround();
         }
-        else if (victory.getVictim().getAirOrGround() == Victory.AIR_VICTORY && victory.getVictor().getAirOrGround() == Victory.GROUND_VICTORY)
+        else if (victory.getVictim().getAirOrGround() == Victory.AIRCRAFT && victory.getVictor().getAirOrGround() == Victory.VEHICLE)
         {
             return descriptionBuilderGround.createVictoryDescriptionGroundToAir();
         }
-        else if (victory.getVictim().getAirOrGround() == Victory.GROUND_VICTORY && victory.getVictor().getAirOrGround() == Victory.GROUND_VICTORY)
+        else if (victory.getVictim().getAirOrGround() == Victory.VEHICLE && victory.getVictor().getAirOrGround() == Victory.VEHICLE)
         {
             return descriptionBuilderGround.createVictoryDescriptionGroundToGround();
         }
-        else if (victory.getVictim().getAirOrGround() == Victory.GROUND_VICTORY && victory.getVictor().getAirOrGround() == Victory.UNSPECIFIED_VICTORY)
+        else if (victory.getVictim().getAirOrGround() == Victory.VEHICLE && victory.getVictor().getAirOrGround() == Victory.UNSPECIFIED_VICTORY)
         {
             return descriptionBuilderGround.createVictoryDescriptionUnknownToGround();
         }

@@ -35,7 +35,7 @@ public class DuringCampaignVictimGeneratorTest
         EnemySquadronFinder enemySquadronFinder = new EnemySquadronFinder(campaign);
         Squadron victimSquadron = enemySquadronFinder.getEnemyForOutOfMission(victorSquadron, campaign.getDate());
 
-        DuringCampaignVictimGenerator  victimGenerator = new DuringCampaignVictimGenerator(campaign, victimSquadron);
+        DuringCampaignAirVictimGenerator  victimGenerator = new DuringCampaignAirVictimGenerator(campaign, victimSquadron);
         Side victorSide = victorSquadron.determineSquadronCountry(campaign.getDate()).getSide();
 
         SquadronMember victim = victimGenerator.generateVictimAiCrew();
@@ -51,7 +51,7 @@ public class DuringCampaignVictimGeneratorTest
     public void testNotFromPlayerSquadron () throws PWCGException
     {               
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
-        DuringCampaignVictimGenerator  victimGenerator = new DuringCampaignVictimGenerator(campaign, squadron);
+        DuringCampaignAirVictimGenerator  victimGenerator = new DuringCampaignAirVictimGenerator(campaign, squadron);
         SquadronMember victim = victimGenerator.generateVictimAiCrew();
         assert(victim != null);
     }

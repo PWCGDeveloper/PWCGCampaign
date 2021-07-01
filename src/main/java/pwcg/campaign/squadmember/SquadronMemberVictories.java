@@ -28,14 +28,14 @@ public class SquadronMemberVictories
     {
         for (Victory victory : victories)
         {
-            if (victory.getVictim().getAirOrGround() == Victory.AIR_VICTORY || victory.getVictim().getAirOrGround() == Victory.UNSPECIFIED_VICTORY)
+            if (victory.getVictim().getAirOrGround() == Victory.AIRCRAFT || victory.getVictim().getAirOrGround() == Victory.UNSPECIFIED_VICTORY)
             {
                 airToAirVictories.add(victory);
                 addAirVictoryInType(victory);
                 addAirTypeVictory(victory);
             }
             
-            if (victory.getVictim().getAirOrGround() == Victory.GROUND_VICTORY)
+            if (victory.getVictim().getAirOrGround() == Victory.VEHICLE)
             {
                 VehicleDefinition vehicleDefinitionByName = PWCGContext.getInstance().getVehicleDefinitionManager().getVehicleDefinitionByVehicleName(victory.getVictim().getName());
                 if (vehicleDefinitionByName != null && vehicleDefinitionByName.getVehicleClass() == VehicleClass.Tank)

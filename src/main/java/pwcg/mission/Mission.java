@@ -308,7 +308,7 @@ public class Mission
 
     private void setFreeHuntTriggers() throws PWCGException
     {
-        MissionFreeHuntTriggerBuidler freeHuntTriggerBuidler = new MissionFreeHuntTriggerBuidler(this);
+        MissionFreeHuntTriggerBuilder freeHuntTriggerBuidler = new MissionFreeHuntTriggerBuilder(this);
         freeHuntTriggerBuidler.buildFreeHuntTriggers();
     }
 

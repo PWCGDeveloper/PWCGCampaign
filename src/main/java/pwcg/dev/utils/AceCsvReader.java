@@ -54,7 +54,7 @@ public class AceCsvReader
             
             Victory victory = new Victory();
             victory.getVictim().setType(entrySplit[2]);
-            victory.getVictim().setAirOrGround(Victory.AIR_VICTORY);
+            victory.getVictim().setAirOrGround(Victory.AIRCRAFT);
             victory.setDate(DateUtils.getDateDDMMYYYY(entrySplit[1]));
             
             historicalAce.addVictory(victory);

@@ -67,7 +67,7 @@ public class VictoryEntity
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(logPlane.getSquadronId());
         LogPilot logPilot = logPlane.getLogPilot();
 
-        airOrGround = Victory.AIR_VICTORY;
+        airOrGround = Victory.AIRCRAFT;
         setType(logPlane.getVehicleType());
         name = logPlane.getName();
         pilotStatus = logPilot.getStatus();
@@ -78,14 +78,14 @@ public class VictoryEntity
 
     private void initializeForBalloon(LogBalloon logBalloon) throws PWCGException
     {
-        airOrGround = Victory.AIR_VICTORY;
+        airOrGround = Victory.AIRCRAFT;
         setType(logBalloon.getVehicleType());
         name = logBalloon.getName();
     }
 
     private void initializeForGround(LogGroundUnit logGrountUnit) throws PWCGException
     {
-        airOrGround = Victory.GROUND_VICTORY;
+        airOrGround = Victory.VEHICLE;
         setType(logGrountUnit.getVehicleType());
         name = logGrountUnit.getName();
     }

@@ -43,14 +43,14 @@ public class VictoryMaker
         victory.setLocation("Near something");
         
         VictoryEntity victor = new VictoryEntity();
-        victor.setAirOrGround(Victory.AIR_VICTORY);
+        victor.setAirOrGround(Victory.AIRCRAFT);
         victor.setPilotStatus(SquadronMemberStatus.STATUS_ACTIVE);
         victor.setSquadronName("Esc 3");
         victor.setType(FCPlaneAttributeMapping.SPAD13.getPlaneType());
         victory.setVictor(victor);
 
         VictoryEntity victim = new VictoryEntity();
-        victim.setAirOrGround(Victory.AIR_VICTORY);
+        victim.setAirOrGround(Victory.AIRCRAFT);
         victim.setPilotStatus(SquadronMemberStatus.STATUS_KIA);
         victim.setSquadronName("Jasta 2");
         victim.setType(FCPlaneAttributeMapping.ALBATROSD5.getPlaneType());
@@ -68,14 +68,14 @@ public class VictoryMaker
         victory.setLocation("Near something");
         
         VictoryEntity victor = new VictoryEntity();
-        victor.setAirOrGround(Victory.AIR_VICTORY);
+        victor.setAirOrGround(Victory.AIRCRAFT);
         victor.setPilotStatus(SquadronMemberStatus.STATUS_ACTIVE);
         victor.setSquadronName("Jasta 2");
         victor.setType(FCPlaneAttributeMapping.ALBATROSD5.getPlaneType());
         victory.setVictor(victor);
         
         VictoryEntity victim = new VictoryEntity();
-        victim.setAirOrGround(Victory.AIR_VICTORY);
+        victim.setAirOrGround(Victory.AIRCRAFT);
         victim.setPilotStatus(SquadronMemberStatus.STATUS_KIA);
         victim.setSquadronName("Esc 3");
         victim.setType(FCPlaneAttributeMapping.SPAD13.getPlaneType());

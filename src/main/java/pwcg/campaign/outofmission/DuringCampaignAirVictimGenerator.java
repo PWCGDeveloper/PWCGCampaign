@@ -18,7 +18,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
-public class DuringCampaignVictimGenerator implements IVictimGenerator
+public class DuringCampaignAirVictimGenerator implements IVictimGenerator
 {    
     private Campaign campaign;
     private Squadron victimSquadron;
@@ -28,7 +28,7 @@ public class DuringCampaignVictimGenerator implements IVictimGenerator
     private Map<Integer, SquadronMember> highRanks = new HashMap<>();
     private Map<Integer, SquadronMember> all = new HashMap<>();
 
-    public DuringCampaignVictimGenerator (Campaign campaign, Squadron victimSquadron) throws PWCGException
+    public DuringCampaignAirVictimGenerator (Campaign campaign, Squadron victimSquadron) throws PWCGException
     {
         this.campaign = campaign;
         this.victimSquadron = victimSquadron;

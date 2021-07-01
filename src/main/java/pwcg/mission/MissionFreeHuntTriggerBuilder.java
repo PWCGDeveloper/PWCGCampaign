@@ -7,11 +7,11 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.target.TargetType;
 
-public class MissionFreeHuntTriggerBuidler
+public class MissionFreeHuntTriggerBuilder
 {
     private Mission mission;
     
-    public MissionFreeHuntTriggerBuidler(Mission mission)
+    public MissionFreeHuntTriggerBuilder(Mission mission)
     {
         this.mission = mission;
     }

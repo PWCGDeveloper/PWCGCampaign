@@ -12,8 +12,8 @@ import java.util.Date;
  */
 public class Victory implements Comparable<Victory>
 {
-    public static final int AIR_VICTORY = 1;
-    public static final int GROUND_VICTORY = 2;
+    public static final int AIRCRAFT = 1;
+    public static final int VEHICLE = 2;
     public static final int UNSPECIFIED_VICTORY = 3;
 
     private Date date = null;
