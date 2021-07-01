@@ -1,12 +1,16 @@
 
 ​At the PWCG web site
 
-12.4.0
+13.0
 Added Ground Free Hunt mission
 - Currently targets trains and trucks
 - Fly to a point and search.  No guidance except follow roads or tracks.
 - Ground units start moving when mission starts.  
 - Will do ships and armor next as they require a different pattern
+Improved out of mission victories
+- Added ground and structural out of mission victories
+- Added ground and structural out of initial victories
+- A pilot will get a pseudo mission type based on his squadron configuration.  That mission type will determine the victory type.
 Bryansk iconic event added
 Newspapers
 Rewrote newspapers such that a new paper can be added by supplying a photo and adding a bit of data
@@ -16,7 +20,10 @@ Rewrote newspapers such that a new paper can be added by supplying a photo and a
 Newspapers added for all iconic events
 FC newspapers converted
 Added news rack to view old newspapers
-- campaign->acitivites->news
+- campaign->activities->news
+Made AAR documents prettier
+- They retain their dimensions and do not stretch
+- Added a folder image under the document
 Added Ground Unit Spawn Distance configuration in Mission Limits
 Fixed: In several places plaques were referred to as plagues.
 - Don't think they were visible to players but it bugged me

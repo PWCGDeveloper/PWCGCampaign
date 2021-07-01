@@ -263,7 +263,8 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         if (!mission.isFinalized())
         {
             BriefingFlight briefingMissionHandler = briefingData.getActiveBriefingFlight();
-            CrewPlanePayloadPairing planeCrew = briefingMissionHandler.getPairingByPilot(selectedPilotSerialNumber);
+            Integer pilotSerialNumber = getPilotSerialNumberFromAction(action);
+            CrewPlanePayloadPairing planeCrew = briefingMissionHandler.getPairingByPilot(pilotSerialNumber);
             SquadronMember squadronMember = planeCrew.getPilot();
             briefingMissionHandler.unassignPilotFromBriefing(squadronMember.getSerialNumber());
             refreshPilotDisplay();
