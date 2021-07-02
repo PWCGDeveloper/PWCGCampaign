@@ -66,12 +66,7 @@ public class CampaignAwardsGeneratorTest
         Mockito.when(aarContext.getPersonnelAcheivements()).thenReturn(personnelAcheivements);
         Mockito.when(aarContext.getPersonnelLosses()).thenReturn(personnelLosses);
 
-        Mockito.when(personnelAcheivements.getVictoriesByPilot()).thenReturn(new HashMap<>());
         Mockito.when(personnelLosses.pilotisWoundedToday(Mockito.any())).thenReturn(false);        
-
-        Mockito.when(victory1.getDate()).thenReturn(campaign.getDate());
-        Mockito.when(victory2.getDate()).thenReturn(campaign.getDate());
-
     }
 
     @Test
@@ -85,7 +80,6 @@ public class CampaignAwardsGeneratorTest
         victoriesToday.add(victory2);
         Map<Integer, List<Victory>> victoriesByAllPilots = new HashMap<>();
         victoriesByAllPilots.put(aiPilots.getSquadronMemberList().get(1).getSerialNumber(), victoriesToday);
-        Mockito.when(personnelAcheivements.getVictoriesByPilot()).thenReturn(victoriesByAllPilots);
 
         Map<Integer, SquadronMember> pilotsToEvaluate = new HashMap<>();
         pilotsToEvaluate.put(aiPilots.getSquadronMemberList().get(1).getSerialNumber(), aiPilots.getSquadronMemberList().get(1));

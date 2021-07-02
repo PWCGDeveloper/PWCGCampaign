@@ -24,9 +24,17 @@ public class GroundUnitPositionVerifier
 
     private static void verifyProperBattlePlacement(Mission mission) throws PWCGException
     {
-        for (GroundUnitCollection assault : mission.getMissionGroundUnitBuilder().getAssaults())
+        if (!mission.getMissionGroundUnitBuilder().getAssaults().isEmpty())
         {
-            assert (mission.getMissionBorders().isInBox(assault.getPosition()));
+            boolean oneAssaultIsInBox = false;
+            for (GroundUnitCollection assault : mission.getMissionGroundUnitBuilder().getAssaults())
+            {
+                if (mission.getMissionBorders().isInBox(assault.getPosition()))
+                {
+                    oneAssaultIsInBox = true;
+                }
+            }
+            assert(oneAssaultIsInBox);
         }
     }
 }

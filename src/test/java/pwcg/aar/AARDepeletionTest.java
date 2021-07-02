@@ -25,7 +25,7 @@ public class AARDepeletionTest
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
+        PWCGContext.getInstance().changeContext(FrontMapIdentifier.BODENPLATTE_MAP);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
         aarCoordinator = AARCoordinator.getInstance();
     }
@@ -35,7 +35,7 @@ public class AARDepeletionTest
     {
         for (int i = 0; i < 180; ++i)
         {
-            System.out.println("");
+            System.out.println("Iteration " + (i+1));
             System.out.println(DateUtils.getDateStringPretty(campaign.getDate()));
 
             aarCoordinator.reset(campaign);
