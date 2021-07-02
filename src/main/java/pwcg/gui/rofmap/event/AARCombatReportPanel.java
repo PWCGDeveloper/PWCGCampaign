@@ -11,10 +11,13 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.ScreenIdentifier;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.display.model.CombatReportBuilder;
+import pwcg.gui.utils.ImageResizingPanel;
 
-public class AARCombatReportPanel extends AARDocumentPanel
+public class AARCombatReportPanel extends ImageResizingPanel implements IAAREventPanel
 {
     private static final long serialVersionUID = 1L;
 
@@ -25,7 +28,7 @@ public class AARCombatReportPanel extends AARDocumentPanel
 
 	public AARCombatReportPanel()
 	{
-        super();
+        super("");
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
@@ -38,6 +41,9 @@ public class AARCombatReportPanel extends AARDocumentPanel
 	{
         try
         {
+            String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
+            this.setImageFromName(imagePath);
+
             createCombatReportGUI();
             JPanel eventTabPane =createPostCombatReportTabs();
             this.add(eventTabPane, BorderLayout.CENTER);
