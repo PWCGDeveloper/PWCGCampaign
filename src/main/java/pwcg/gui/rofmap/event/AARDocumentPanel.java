@@ -4,12 +4,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 
-import pwcg.core.utils.PWCGLogger;
-import pwcg.gui.ScreenIdentifier;
-import pwcg.gui.UiImageResolver;
-import pwcg.gui.utils.ImageResizingPanel;
-
-public abstract class AARDocumentPanel extends ImageResizingPanel implements IAAREventPanel
+public abstract class AARDocumentPanel extends JPanel implements IAAREventPanel
 {
     private static final long serialVersionUID = 1L;
 
@@ -17,19 +12,8 @@ public abstract class AARDocumentPanel extends ImageResizingPanel implements IAA
     
     public AARDocumentPanel()
     {
-        super("");
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
-
-        try
-        {
-            String imagePath = UiImageResolver.getImage(ScreenIdentifier.DocumentFolder);
-            this.setImageFromName(imagePath);
-        }
-        catch (Exception e)
-        {
-            PWCGLogger.logException(e);
-        }
     }
     
     @Override

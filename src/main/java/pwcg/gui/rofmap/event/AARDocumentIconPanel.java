@@ -38,7 +38,7 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
     protected Font headerFont;
     protected Font bodyFont;
     protected boolean shouldDisplay = false;
-    private Graphics originalImageGraphics = null;
+    private Graphics originalDocumentImageGraphics = null;
 
     protected abstract String getHeaderText() throws PWCGException;
     protected abstract String getBodyText() throws PWCGException;
@@ -69,8 +69,11 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
             this.setOpaque(false);
 
             BufferedImage documentImage = buildDocumentImage();
+            BufferedImage folderImage = buildFolderImage(documentImage);
 
-            ImageIcon icon = new ImageIcon(documentImage);
+            BufferedImage resizedImage = resizeImage(folderImage);
+
+            ImageIcon icon = new ImageIcon(resizedImage);
             JLabel imageLabel = new JLabel(icon);
             this.add(imageLabel, BorderLayout.CENTER);
         }
@@ -80,18 +83,32 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
         }
     }
 
+    private BufferedImage buildFolderImage(BufferedImage documentImage) throws PWCGException
+    {
+        String imagePath = UiImageResolver.getImage(ScreenIdentifier.DocumentFolder);
+        BufferedImage folderImage = ImageCache.getInstance().getBufferedImage(imagePath);
+        
+        int verticalStartPosition = 50;
+        int horizontalStartPosition = 50;
+
+        BufferedImage result = new BufferedImage(folderImage.getWidth(), folderImage.getHeight(), BufferedImage.TRANSLUCENT);
+        Graphics g = result.getGraphics();
+        g.drawImage(folderImage, 0, 0, null);
+        g.drawImage(documentImage, horizontalStartPosition, verticalStartPosition, null);
+        return result;
+    }
+    
     private BufferedImage buildDocumentImage() throws PWCGException, IOException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
         BufferedImage documentImage = ImageCache.getInstance().getBufferedImage(imagePath);
-        originalImageGraphics = documentImage.getGraphics();
+        originalDocumentImageGraphics = documentImage.getGraphics();
 
         BufferedImage documentImageWithHeader = addHeader(documentImage);
         BufferedImage documentImageWithBody = addBody(documentImageWithHeader, 240);
         BufferedImage documentImageWithFooter = addFooterImage(documentImageWithBody, 500);
-        BufferedImage resizedImage = resizeImage(documentImageWithFooter);
-        return resizedImage;
-    }
+        return documentImageWithFooter;
+     }
 
     private BufferedImage addHeader(BufferedImage documentImage) throws IOException, PWCGException
     {
@@ -144,7 +161,7 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
             while (characterBufferPosition < text.length())
             {
                 lineBuffer.append(text.charAt(characterBufferPosition));
-                int pixelsForBodyLine = TextGraphicsMeasurement.measureTextWidth(originalImageGraphics, font, lineBuffer.toString());
+                int pixelsForBodyLine = TextGraphicsMeasurement.measureTextWidth(originalDocumentImageGraphics, font, lineBuffer.toString());
                 if (pixelsForBodyLine > (documentImage.getWidth() - DOCUMENT_MARGIN))
                 {
                     lineBuffer.deleteCharAt(lineBuffer.length() - 1);                    
@@ -185,7 +202,7 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
 
         if (alignment == JLabel.CENTER_ALIGNMENT)
         {
-            int lineWidthPixels = TextGraphicsMeasurement.measureTextWidth(originalImageGraphics, headerFont, line);
+            int lineWidthPixels = TextGraphicsMeasurement.measureTextWidth(originalDocumentImageGraphics, headerFont, line);
             lineHorizontalPosition = (documentImage.getWidth() - lineWidthPixels) / 2;
         }
         
@@ -205,7 +222,6 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
         }
         
         BufferedImage documentPictureImage = ImageCache.getImageFromFile(footerImagePath);
-        
         if (documentPictureImage != null)
         {
             int horizontalStartPosition = (documentImage.getWidth() / 2) - (documentPictureImage.getWidth() / 2);
