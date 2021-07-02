@@ -1,8 +1,14 @@
 package pwcg.gui.rofmap.event;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 import pwcg.aar.AARCoordinator;
 import pwcg.campaign.Campaign;
@@ -11,24 +17,22 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.gui.ScreenIdentifier;
-import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.display.model.CombatReportBuilder;
-import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.PWCGButtonFactory;
 
-public class AARCombatReportPanel extends ImageResizingPanel implements IAAREventPanel
+public class AARCombatReportPanel extends AARDocumentPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
     private Campaign campaign;
     private AARCoordinator aarCoordinator;
-    private CombatReportPanel campaignCombatReportGUI = null;
+    private CombatReportPanel combatReportPanel = null;
     private boolean shouldDisplay = false;
+    private CombatReport combatReport;
 
 	public AARCombatReportPanel()
 	{
-        super("");
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
@@ -41,12 +45,12 @@ public class AARCombatReportPanel extends ImageResizingPanel implements IAAREven
 	{
         try
         {
-            String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-            this.setImageFromName(imagePath);
-
+            buildCombatReport();
             createCombatReportGUI();
-            JPanel eventTabPane =createPostCombatReportTabs();
-            this.add(eventTabPane, BorderLayout.CENTER);
+            this.add(combatReportPanel, BorderLayout.CENTER);
+            
+            JPanel narrativeButton = createNarrativeButton();
+            this.add(narrativeButton, BorderLayout.SOUTH);
         }
         catch (Exception e)
         {
@@ -54,38 +58,38 @@ public class AARCombatReportPanel extends ImageResizingPanel implements IAAREven
             ErrorDialog.internalError(e.getMessage());
         }
     }
-	
-    private JPanel createPostCombatReportTabs()
-    {
-        JPanel postCombatPanel = new JPanel(new BorderLayout());
-        postCombatPanel.setOpaque(false);
 
-        postCombatPanel.add(campaignCombatReportGUI, BorderLayout.CENTER);
-        return postCombatPanel;
+    private void buildCombatReport() throws PWCGException 
+    {                
+        SquadronMember referencePlayer = campaign.findReferencePlayer();
+        CombatReportBuilder combatReportBuilder = new CombatReportBuilder(campaign, referencePlayer, aarCoordinator);
+        combatReport = combatReportBuilder.createCombatReport();
     }
 
     private void createCombatReportGUI() throws PWCGException
     {
-        CombatReport combatReport = startAARProcess ();
-        
-        campaignCombatReportGUI = new CombatReportPanel (combatReport);
-        campaignCombatReportGUI.makeGUI();
+        combatReportPanel = new CombatReportPanel (combatReport);
+        combatReportPanel.makePanel();
     }
 
-	private CombatReport startAARProcess() throws PWCGException 
-	{                
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
-	    CombatReportBuilder combatReportBuilder = new CombatReportBuilder(campaign, referencePlayer, aarCoordinator);
-        CombatReport combatReport = combatReportBuilder.createCombatReport();
-		return combatReport;
-	}
+    private JPanel createNarrativeButton() throws PWCGException
+    {
+        JPanel narrativeButtonPanel = new JPanel();
+        narrativeButtonPanel.setLayout(new BorderLayout());
+        narrativeButtonPanel.setOpaque(false);
+        
+        JButton addNarrativeButton = PWCGButtonFactory.makeBriefingChalkBoardButton("Add Narrative", "Add Narrative", "Add narrative to combat report", this);
+        narrativeButtonPanel.add(addNarrativeButton, BorderLayout.SOUTH);
+        return narrativeButtonPanel;
+    }
 
+    @Override
 	public void finished() 
 	{
 		try
 		{
 	        Campaign campaign = PWCGContext.getInstance().getCampaign();
-			campaignCombatReportGUI.writeCombatReport(campaign);
+			combatReportPanel.writeCombatReport(campaign);
 		}
 		catch (Exception e)
 		{	
@@ -103,5 +107,29 @@ public class AARCombatReportPanel extends ImageResizingPanel implements IAAREven
     public JPanel getPanel()
     {
         return this;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent actionEvent)
+    {
+        try
+        {
+            JTextArea narrativeText = new JTextArea(20, 20);
+            narrativeText.setText(combatReport.getNarrative());
+            switch (JOptionPane.showConfirmDialog(null, new JScrollPane(narrativeText))) {
+                case JOptionPane.OK_OPTION:
+                    this.remove(combatReportPanel);
+                    combatReport.setNarrative(narrativeText.getText());
+                    createCombatReportGUI();
+                    this.add(combatReportPanel, BorderLayout.CENTER);
+                    this.revalidate();
+                    this.repaint();
+                    break;
+            }
+        }
+        catch (Exception exp)
+        {
+            PWCGLogger.logException(exp);
+        }
     }
 }
