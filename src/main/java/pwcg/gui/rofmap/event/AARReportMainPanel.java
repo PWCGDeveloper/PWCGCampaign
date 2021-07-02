@@ -210,9 +210,12 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
             }
 
             makeAarEventPanels();            
-		    centerPanel = eventPanelsToDisplay.get(currentPanelIndex);
-		    this.add(centerPanel.getPanel(), BorderLayout.CENTER);
-		    
+            if (!eventPanelsToDisplay.isEmpty())
+            {
+    		    centerPanel = eventPanelsToDisplay.get(currentPanelIndex);
+    		    this.add(centerPanel.getPanel(), BorderLayout.CENTER);
+            }
+            
 		    enableButtonsAsNeeded();
 
 	        this.revalidate();
@@ -251,8 +254,11 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
             }
             else if (action.equalsIgnoreCase("Finished"))
             {
-                IAAREventPanel thisPanel = eventPanelsToDisplay.get(currentPanelIndex);
-                thisPanel.finished();
+                if (!eventPanelsToDisplay.isEmpty())
+                {
+                    IAAREventPanel thisPanel = eventPanelsToDisplay.get(currentPanelIndex);
+                    thisPanel.finished();
+                }
                 CampaignGuiContextManager.getInstance().backToCampaignHome();
                 parentScreen.refreshInformation();
                 CampaignGuiContextManager.getInstance().refreshCurrentContext(parentScreen.getScreen());
