@@ -109,60 +109,76 @@ public class GermanMedalManager extends BoSMedalManager
         {
 	        if ((pilot.getMissionFlown() >= 15))
 	        {
-	            return medals.get(IRON_CROSS_2);
+                if (numPilotGroundVictoryPoints > 10)
+                {
+                    return medals.get(IRON_CROSS_2);
+                }
 	        }
-            if (numPilotGroundVictoryPoints > 5)
-            {
-                return medals.get(IRON_CROSS_2);
-            }
         }
         
         if (!hasMedal(pilot, medals.get(IRON_CROSS_1)))
         {
-            if (pilot.getMissionFlown() >= 50)
+            if (pilot.getMissionFlown() >= 40)
             {
-                return medals.get(IRON_CROSS_1);
-            }
-            if (pilot.getMissionFlown() >= 10 && numPilotGroundVictoryPoints > 20)
-            {
-                return medals.get(IRON_CROSS_1);
+                if (numPilotGroundVictoryPoints > 30)
+                {
+                    return medals.get(IRON_CROSS_1);
+                }
             }
         }
         
         if (!hasMedal(pilot, medals.get(GERMAN_CROSS_GOLD)))
         {
-            if (pilot.getMissionFlown() >= 20 && numPilotGroundVictoryPoints > 35)
+            if (pilot.getMissionFlown() >= 50)
             {
-                return medals.get(GERMAN_CROSS_GOLD);
+                if (numPilotGroundVictoryPoints > 45)
+                {
+                    return medals.get(GERMAN_CROSS_GOLD);
+                }
             }
         }
         
-        if (pilot.getMissionFlown() >= 30 && numPilotGroundVictoryPoints > 80)
+        if (!hasMedal(pilot, medals.get(KNIGHTS_CROSS)))
         {
-            return medals.get(KNIGHTS_CROSS);
+            if (pilot.getMissionFlown() >= 60)
+            {
+                if (numPilotGroundVictoryPoints > 70)
+                {
+                    return medals.get(KNIGHTS_CROSS);
+                }
+            }
         }
         
         if (!hasMedal(pilot, medals.get(KNIGHTS_CROSS_OAK_LEAVES)))
         {
-            if (pilot.getMissionFlown() >= 40 && numPilotGroundVictoryPoints > 120)
+            if (pilot.getMissionFlown() >= 70)
             {
-                return medals.get(KNIGHTS_CROSS_OAK_LEAVES);
+                if (numPilotGroundVictoryPoints > 120)
+                {
+                    return medals.get(KNIGHTS_CROSS_OAK_LEAVES);
+                }
             }
         }
         
         if (!hasMedal(pilot, medals.get(KNIGHTS_CROSS_SWORDS)))
         {
-            if (pilot.getMissionFlown() >= 50 && numPilotGroundVictoryPoints > 200)
+            if (pilot.getMissionFlown() >= 100)
             {
-                return medals.get(KNIGHTS_CROSS_SWORDS);
+                if (numPilotGroundVictoryPoints > 200)
+                {
+                    return medals.get(KNIGHTS_CROSS_SWORDS);
+                }
             }
         }
         
         if (!hasMedal(pilot, medals.get(KNIGHTS_CROSS_DIAMONDS)))
         {
-            if (pilot.getMissionFlown() >= 50 && numPilotGroundVictoryPoints > 400)
+            if (pilot.getMissionFlown() >= 200)
             {
-                return medals.get(KNIGHTS_CROSS_DIAMONDS);
+                if (numPilotGroundVictoryPoints > 400)
+                {
+                    return medals.get(KNIGHTS_CROSS_DIAMONDS);
+                }
             }
         }
         

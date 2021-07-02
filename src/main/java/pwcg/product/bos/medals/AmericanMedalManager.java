@@ -93,37 +93,52 @@ public class AmericanMedalManager extends BoSMedalManager
 
         if (!hasMedal(pilot, medals.get(BRONZE_STAR)))
         {
-            if (pilot.getMissionFlown() >= 15 || numPilotGroundVictoryPoints > 8)
+            if (pilot.getMissionFlown() >= 20)
             {
-                return medals.get(BRONZE_STAR);
+                if (numPilotGroundVictoryPoints > 30)
+                {
+                    return medals.get(BRONZE_STAR);
+                }
             }
         }
         else if (!hasMedal(pilot, medals.get(DISTINGUISHED_FLYING_CROSS)))
         {
-            if (pilot.getMissionFlown() >= 25 || numPilotGroundVictoryPoints > 15)
+            if (pilot.getMissionFlown() >= 30)
             {
-                return medals.get(DISTINGUISHED_FLYING_CROSS);
+                if (numPilotGroundVictoryPoints > 45)
+                {
+                    return medals.get(DISTINGUISHED_FLYING_CROSS);
+                }
             }
         }
         else if (!hasMedal(pilot, medals.get(SILVER_STAR)))
         {
-            if (pilot.getMissionFlown() >= 30 || numPilotGroundVictoryPoints > 30)
+            if (pilot.getMissionFlown() >= 40)
             {
-                return medals.get(SILVER_STAR);
+                if (numPilotGroundVictoryPoints > 80)
+                {
+                    return medals.get(SILVER_STAR);
+                }
             }
         }
         else if (!hasMedal(pilot, medals.get(DISTINGUISHED_SERVICE_CROSS)))
         {
-            if (pilot.getMissionFlown() >= 50 || numPilotGroundVictoryPoints > 60)
+            if (pilot.getMissionFlown() >= 50)
             {
-                return medals.get(DISTINGUISHED_SERVICE_CROSS);
+                if (numPilotGroundVictoryPoints > 120)
+                {
+                    return medals.get(DISTINGUISHED_SERVICE_CROSS);
+                }
             }
         }
         else if (!hasMedal(pilot, medals.get(MEDAL_OF_HONOR)))
         {
-            if (pilot.getMissionFlown() >= 100 || numPilotGroundVictoryPoints > 120)
+            if (pilot.getMissionFlown() >= 80)
             {
-                return medals.get(MEDAL_OF_HONOR);
+                if (numPilotGroundVictoryPoints > 200)
+                {
+                    return medals.get(MEDAL_OF_HONOR);
+                }
             }
         }
 

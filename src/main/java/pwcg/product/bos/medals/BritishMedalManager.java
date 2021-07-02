@@ -101,30 +101,57 @@ public class BritishMedalManager extends BoSMedalManager
 
         if (numPilotGroundVictoryPoints >= 15 && !hasMedal(pilot, medals.get(DFC)))
         {
-            return medals.get(DFC);
+            if (pilot.getMissionFlown() >= 30)
+            {
+                if (numPilotGroundVictoryPoints > 50)
+                {
+                    return medals.get(DFC);
+                }
+            }
         }
 
         if (numPilotGroundVictoryPoints >= 25 && !hasMedal(pilot, medals.get(DFC_BAR_1)))
         {
-            if (victoriesThisMission >= 1)
+            if (pilot.getMissionFlown() >= 50)
             {
-                return medals.get(DFC_BAR_1);
+                if (numPilotGroundVictoryPoints > 70)
+                {
+                    return medals.get(DFC_BAR_1);
+                }
             }
         }
 
         if (numPilotGroundVictoryPoints >= 50 && !hasMedal(pilot, medals.get(DSO)))
         {
-            return medals.get(DSO);
+            if (pilot.getMissionFlown() >= 70)
+            {
+                if (numPilotGroundVictoryPoints > 90)
+                {
+                    return medals.get(DSO);
+                }
+            }
         }
 
         if (numPilotGroundVictoryPoints >= 75 && !hasMedal(pilot, medals.get(DSO_BAR)))
         {
-            return medals.get(DSO_BAR);            
+            if (pilot.getMissionFlown() >= 100)
+            {
+                if (numPilotGroundVictoryPoints > 120)
+                {
+                    return medals.get(DSO_BAR);
+                }
+            }
         }
 
         if (numPilotGroundVictoryPoints >= 120 && !hasMedal(pilot, medals.get(VC)))
         {
-            return medals.get(VC);            
+            if (pilot.getMissionFlown() >= 200)
+            {
+                if (numPilotGroundVictoryPoints > 400)
+                {
+                    return medals.get(VC);
+                }
+            }
         }
 
         return awardFighter(pilot, service, victoriesThisMission);
