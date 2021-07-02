@@ -17,6 +17,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.display.model.CombatReportBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -78,7 +79,7 @@ public class AARCombatReportPanel extends AARDocumentPanel implements ActionList
         narrativeButtonPanel.setLayout(new BorderLayout());
         narrativeButtonPanel.setOpaque(false);
         
-        JButton addNarrativeButton = PWCGButtonFactory.makeBriefingChalkBoardButton("Add Narrative", "Add Narrative", "Add narrative to combat report", this);
+        JButton addNarrativeButton = PWCGButtonFactory.makeTranslucentMenuButton("Edit Narrative", "Add Narrative", "Add narrative to combat report", this);
         narrativeButtonPanel.add(addNarrativeButton, BorderLayout.SOUTH);
         return narrativeButtonPanel;
     }
@@ -115,8 +116,18 @@ public class AARCombatReportPanel extends AARDocumentPanel implements ActionList
         try
         {
             JTextArea narrativeText = new JTextArea(20, 20);
+            narrativeText.setBackground(ColorMap.NEWSPAPER_BACKGROUND);
+            narrativeText.setForeground(ColorMap.NEWSPAPER_FOREGROUND);            
             narrativeText.setText(combatReport.getNarrative());
-            switch (JOptionPane.showConfirmDialog(null, new JScrollPane(narrativeText))) {
+            narrativeText.setLineWrap(true);
+            
+            switch (JOptionPane.showConfirmDialog(
+                    null, 
+                    new JScrollPane(narrativeText),
+                    "Narrative",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.PLAIN_MESSAGE)) 
+            {
                 case JOptionPane.OK_OPTION:
                     this.remove(combatReportPanel);
                     combatReport.setNarrative(narrativeText.getText());

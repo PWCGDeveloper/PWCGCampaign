@@ -94,5 +94,8 @@ public class PwcgMain
         Insets insets = UIManager.getInsets("TabbedPane.contentBorderInsets");
         insets.top = -1;
         UIManager.put("TabbedPane.contentBorderInsets", insets);
+        
+        UIManager.put("OptionPane.background", ColorMap.NEWSPAPER_BACKGROUND);
+        UIManager.getLookAndFeelDefaults().put("Panel.background", ColorMap.NEWSPAPER_BACKGROUND);
     }
 }
