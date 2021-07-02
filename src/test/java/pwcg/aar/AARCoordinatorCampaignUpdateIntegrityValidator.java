@@ -40,13 +40,16 @@ public class AARCoordinatorCampaignUpdateIntegrityValidator
     }
 
     @Test
-    public void runMissionAARLeave () throws PWCGException
+    public void verifyMissionStatisticsArePersisted () throws PWCGException
     {
+        campaign.write();
+        boolean lossesRecorded = false;
+        
         aarContext = new AARContext(campaign);
     	Date newDate = DateUtils.getDateYYYYMMDD("19420801");
 	    do 
 	    {
-            aarContext.resetContextForNextTimeIncrement();
+            System.out.println("iteration date: " + DateUtils.getDateStringDashDelimitedYYYYMMDD(campaign.getDate()));
 
             personnelLosses = aarContext.getPersonnelLosses().getSquadMembersLost();
             equipmentLosses = aarContext.getEquipmentLosses().getPlanesDestroyed();
@@ -61,8 +64,8 @@ public class AARCoordinatorCampaignUpdateIntegrityValidator
                 validatePersonnelLossesInMemory();
                 validateEquipmentLossesInMemory();
                 
-                CampaignRemover.deleteCampaign(campaign.getCampaignData().getName());
-                
+                lossesRecorded = true;
+                                
                 break;
             }
             
@@ -70,6 +73,10 @@ public class AARCoordinatorCampaignUpdateIntegrityValidator
             stepper.oneStep();
 	    }
 	    while(campaign.getDate().before(newDate));
+
+	    CampaignRemover.deleteCampaign(campaign.getCampaignData().getName());
+	    
+	    assert(lossesRecorded);
     }
 
     private void validatePersonnelLossesInMemory() throws PWCGException
