@@ -18,6 +18,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.activity.CampaignLeaveScreen;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.campaign.home.GuiMissionInitiator;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -89,7 +90,12 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
                 buttonPanel.add(loneWolfButton);
             }
         }
-
+        else if (isDisplayLeaveButton())
+        {
+            JButton missionButton = PWCGButtonFactory.makeTranslucentMenuButton("Heal Wounds", "CampLeave", "Take leave to heal wounds", this);
+            buttonPanel.add(missionButton);
+        }
+        
         if (isDisplayAARButton())
         {
             JButton aarButton = PWCGButtonFactory.makeTranslucentMenuButton("Combat Report", "CampFlowCombatReport", "File an After Action Report (AAR) for a mission", this);
@@ -102,7 +108,7 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
 		return leftSidePanel;
 	}
 
-	public void actionPerformed(ActionEvent ae)
+    public void actionPerformed(ActionEvent ae)
 	{
 		try
 		{
@@ -120,6 +126,10 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
                     Mission mission = missionInitiator.makeMission(false);
                     showBriefingMap(mission);
                 }
+            }
+            else if (action.equalsIgnoreCase("CampLeave"))
+            {
+                showLeavePage();
             }
             else if (action.equalsIgnoreCase("CampMissionLoneWolf"))
             {
@@ -144,6 +154,16 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
 		}
 	}
 
+
+    private void showLeavePage() throws PWCGException 
+    {
+        SoundManager.getInstance().playSound("Typewriter.WAV");
+
+        CampaignLeaveScreen leaveDisplay = new CampaignLeaveScreen(campaignHome);
+        leaveDisplay.makePanels();
+        
+        CampaignGuiContextManager.getInstance().pushToContextStack(leaveDisplay);
+    }
 
     private void showBriefingMap(Mission mission) throws PWCGException 
     {
@@ -213,6 +233,17 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
         }
 
         return true;
+    }
+
+    private boolean isDisplayLeaveButton() throws PWCGException
+    {
+        if (campaign.findReferencePlayer().getPilotActiveStatus() == SquadronMemberStatus.STATUS_WOUNDED ||
+            campaign.findReferencePlayer().getPilotActiveStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
+        {
+            return true;
+        }
+        
+        return false;
     }
 
     private boolean isDisplayAARButton() throws PWCGException
