@@ -76,8 +76,10 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.AARReportMainPanel);
         this.setImageFromName(imagePath);
 
+        makeAarEventPanels();            
+
         this.add(BorderLayout.WEST, makeNavigationPanel());
-        resetCenterPanels();
+        resetCenterPanels();        
 	}
 
 	private JPanel makeNavigationPanel() throws PWCGException  
@@ -206,7 +208,6 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
                 this.remove(centerPanel.getPanel());
             }
 
-            makeAarEventPanels();            
             if (!eventPanelsToDisplay.isEmpty())
             {
     		    centerPanel = eventPanelsToDisplay.get(currentPanelIndex);

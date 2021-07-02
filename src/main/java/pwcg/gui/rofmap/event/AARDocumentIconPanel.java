@@ -29,7 +29,7 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
 {
     private static final long serialVersionUID = 1L;
 
-    public static final int DOCUMENT_MARGIN = 80;
+    public static final int DOCUMENT_MARGIN = 100;
 
     protected String headerText = "";
     protected String bodyText = "";
