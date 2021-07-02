@@ -3,9 +3,7 @@ package pwcg.aar.tabulate;
 import java.util.List;
 
 import pwcg.aar.data.AARContext;
-import pwcg.aar.data.CampaignUpdateData;
 import pwcg.aar.data.ui.UIDebriefData;
-import pwcg.aar.tabulate.campaignupdate.AARCampaignUpdateTabulator;
 import pwcg.aar.tabulate.combatreport.AARCombatReportTabulateCoordinator;
 import pwcg.aar.tabulate.combatreport.UICombatReportData;
 import pwcg.aar.tabulate.debrief.AARDebriefTabulator;
@@ -33,7 +31,6 @@ public class AARTabulateCoordinator
     public void tabulateOutOfMission() throws PWCGException 
     {
         tabulateFlightDebriefUI();
-        tabulateAARForCampaignUpdate();        
     }
     
     private void tabulateCombatReport() throws PWCGException
@@ -48,12 +45,5 @@ public class AARTabulateCoordinator
         AARDebriefTabulator uiDebriefTabulator = new AARDebriefTabulator(campaign, aarContext);
         UIDebriefData uiDebriefData = uiDebriefTabulator.tabulateForDebriefUI();
         aarContext.mergeDebriefUiData(uiDebriefData);
-    }
-    
-    private void tabulateAARForCampaignUpdate() throws PWCGException 
-    {
-        AARCampaignUpdateTabulator campaignUpdateTabulator = new AARCampaignUpdateTabulator(campaign, aarContext);
-        CampaignUpdateData campaignUpdateData = campaignUpdateTabulator.tabulateAARForCampaignUpdate();
-        aarContext.setCampaignUpdateData(campaignUpdateData);
     }
 }

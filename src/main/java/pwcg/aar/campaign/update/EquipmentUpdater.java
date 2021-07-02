@@ -1,6 +1,6 @@
 package pwcg.aar.campaign.update;
 
-import pwcg.aar.data.AARContext;
+import pwcg.aar.data.CampaignUpdateData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
@@ -11,12 +11,12 @@ import pwcg.core.exception.PWCGException;
 public class EquipmentUpdater 
 {
 	private Campaign campaign;
-    private AARContext aarContext;
+    private CampaignUpdateData campaignUpdateData;
 
-	public EquipmentUpdater (Campaign campaign, AARContext aarContext) 
+	public EquipmentUpdater (Campaign campaign, CampaignUpdateData campaignUpdateData) 
 	{
         this.campaign = campaign;
-        this.aarContext = aarContext;
+        this.campaignUpdateData = campaignUpdateData;
 	}
 	
     public void equipmentUpdatesForSquadrons() throws PWCGException 
@@ -27,7 +27,7 @@ public class EquipmentUpdater
 
     private void equipmentRemovals() throws PWCGException
     {
-        for (Integer planeSerialNumber : aarContext.getCampaignUpdateData().getEquipmentLosses().getPlanesDestroyed().keySet())
+        for (Integer planeSerialNumber : campaignUpdateData.getEquipmentLosses().getPlanesDestroyed().keySet())
         {
             EquippedPlane equippedPlane = campaign.getEquipmentManager().getAnyPlaneWithPreference(planeSerialNumber);
             equippedPlane.setPlaneStatus(PlaneStatus.STATUS_DESTROYED);
@@ -37,7 +37,7 @@ public class EquipmentUpdater
 
     private void equipmentAdditions() throws PWCGException
     {
-        for (EquipmentResupplyRecord equipmentResupplyRecord : aarContext.getCampaignUpdateData().getResupplyData().getEquipmentResupplyData().getEquipmentResupplied())
+        for (EquipmentResupplyRecord equipmentResupplyRecord : campaignUpdateData.getResupplyData().getEquipmentResupplyData().getEquipmentResupplied())
         {
             Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(equipmentResupplyRecord.getTransferTo());
             EquippedPlane replacementPlane = equipmentResupplyRecord.getEquippedPlane();

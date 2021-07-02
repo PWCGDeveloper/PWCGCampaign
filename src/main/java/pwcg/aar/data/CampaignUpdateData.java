@@ -1,5 +1,7 @@
 package pwcg.aar.data;
 
+import java.util.Date;
+
 import pwcg.aar.outofmission.phase3.resupply.AARResupplyData;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
@@ -12,6 +14,7 @@ public class CampaignUpdateData
     private AARPersonnelAwards personnelAwards = new AARPersonnelAwards();
     private AARPersonnelAcheivements personnelAcheivements = new AARPersonnelAcheivements();
     private AARLogEvents logEvents;
+    private Date newDate;
 
     public CampaignUpdateData(Campaign campaign)
     {
@@ -55,5 +58,15 @@ public class CampaignUpdateData
     public AARLogEvents getLogEvents()
     {
         return logEvents;
+    }
+
+    public Date getNewDate()
+    {
+        return newDate;
+    }
+
+    public void setNewDate(Date newDate)
+    {
+        this.newDate = newDate;
     }
 }

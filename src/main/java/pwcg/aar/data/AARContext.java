@@ -33,15 +33,12 @@ public class AARContext
     private ElapsedTimeEvents elapsedTimeEvents = new ElapsedTimeEvents();
 
     // Tabulated
-    private CampaignUpdateData campaignUpdateData;
     private List<UICombatReportData> uiCombatReportData = new ArrayList<>();
     private UIDebriefData uiDebriefData = new UIDebriefData();
     
     public AARContext(Campaign campaign)
     {
-        this.campaign = campaign;
-        this.campaignUpdateData = new CampaignUpdateData(campaign);
-        
+        this.campaign = campaign;        
         AARContextEventSequence.reset();
     }
 
@@ -50,7 +47,6 @@ public class AARContext
         this.missionLogRawData = new AARMissionLogRawData();
         this.missionEvaluationData = new AARMissionEvaluationData();
         this.dailyData = new AARContextDailyData();
-        this.campaignUpdateData = new CampaignUpdateData(campaign);
     }
     
     public UICombatReportData findUiCombatReportDataForSquadron(int squadronId) throws PWCGException
@@ -78,11 +74,6 @@ public class AARContext
     public AARMissionEvaluationData getMissionEvaluationData()
     {
         return missionEvaluationData;
-    }
-
-    public CampaignUpdateData getCampaignUpdateData()
-    {
-        return campaignUpdateData;
     }
 
     public void mergeDebriefUiData(UIDebriefData uiDebriefData) throws PWCGException
@@ -178,10 +169,5 @@ public class AARContext
     public void addUiCombatReportData(List<UICombatReportData> combatReportUiDataSet)
     {
         uiCombatReportData.addAll(combatReportUiDataSet);
-    }
-
-    public void setCampaignUpdateData(CampaignUpdateData campaignUpdateData)
-    {
-        this.campaignUpdateData = campaignUpdateData;                        
     }
 }

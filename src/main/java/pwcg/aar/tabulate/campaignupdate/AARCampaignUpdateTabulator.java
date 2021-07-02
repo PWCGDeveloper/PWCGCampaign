@@ -27,8 +27,14 @@ public class AARCampaignUpdateTabulator
         tabulateEquipmentChanges();
         tabulateTransfers();
         addEventsToCampaignUpdateData();
+        addNewDateToCampaignUpdateData();
         
         return campaignUpdateData;
+    }
+
+    private void addNewDateToCampaignUpdateData()
+    {      
+        campaignUpdateData.setNewDate(aarContext.getNewDate());
     }
 
     private void tabulatePersonnelAwards()

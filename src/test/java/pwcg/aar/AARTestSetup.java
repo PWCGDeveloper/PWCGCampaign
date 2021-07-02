@@ -126,7 +126,6 @@ public abstract class AARTestSetup
     {
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
         Mockito.when(aarContext.getNewDate()).thenReturn(DateUtils.getDateYYYYMMDD("19170901"));
-        Mockito.when(aarContext.getCampaignUpdateData()).thenReturn(campaignUpdateData);
         Mockito.when(aarContext.getPersonnelLosses()).thenReturn(personnelLosses);
         Mockito.when(aarContext.getPersonnelAwards()).thenReturn(personnelAwards);
         Mockito.when(aarContext.getPersonnelAcheivements()).thenReturn(personnelAcheivements);

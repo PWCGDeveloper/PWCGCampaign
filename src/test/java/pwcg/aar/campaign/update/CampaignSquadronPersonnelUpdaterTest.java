@@ -15,7 +15,9 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.AARPersonnelLosses;
+import pwcg.aar.data.CampaignUpdateData;
 import pwcg.aar.outofmission.phase4.ElapsedTIme.OutOfMissionCommandChangeHandler;
+import pwcg.aar.tabulate.campaignupdate.AARCampaignUpdateTabulator;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
@@ -81,12 +83,15 @@ public class CampaignSquadronPersonnelUpdaterTest
         deadSquadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
         squadMembersKilled.put(deadSquadronMember.getSerialNumber(), deadSquadronMember);
         
+        AARCampaignUpdateTabulator campaignUpdateTabulator = new AARCampaignUpdateTabulator(campaign, aarContext);
+        CampaignUpdateData campaignUpdateData = campaignUpdateTabulator.tabulateAARForCampaignUpdate();
+
         for (SquadronMember squadronMember : squadMembersKilled.values())
         {
-            aarContext.getCampaignUpdateData().getPersonnelLosses().addPersonnelKilled(squadronMember);
+            campaignUpdateData.getPersonnelLosses().addPersonnelKilled(squadronMember);
         }
         
-        PersonnelUpdater personellUpdater = new PersonnelUpdater(campaign, aarContext);
+        PersonnelUpdater personellUpdater = new PersonnelUpdater(campaign, campaignUpdateData);
         personellUpdater.personnelUpdates();
 
         SquadronMember squadronMemberAfterUpdate = campaign.getPersonnelManager().getAnyCampaignMember(deadSquadronMember.getSerialNumber()); 
@@ -100,12 +105,15 @@ public class CampaignSquadronPersonnelUpdaterTest
         capturedSquadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_CAPTURED, campaign.getDate(), null);
         squadMembersCaptured.put(capturedSquadronMember.getSerialNumber(), capturedSquadronMember);
         
+        AARCampaignUpdateTabulator campaignUpdateTabulator = new AARCampaignUpdateTabulator(campaign, aarContext);
+        CampaignUpdateData campaignUpdateData = campaignUpdateTabulator.tabulateAARForCampaignUpdate();
+
         for (SquadronMember squadronMember : squadMembersCaptured.values())
         {
-            aarContext.getCampaignUpdateData().getPersonnelLosses().addPersonnelCaptured(squadronMember);
+            campaignUpdateData.getPersonnelLosses().addPersonnelCaptured(squadronMember);
         }
 
-        PersonnelUpdater personellUpdater = new PersonnelUpdater(campaign, aarContext);
+        PersonnelUpdater personellUpdater = new PersonnelUpdater(campaign, campaignUpdateData);
         personellUpdater.personnelUpdates();
 
         SquadronMember squadronMemberAfterUpdate = campaign.getPersonnelManager().getAnyCampaignMember(capturedSquadronMember.getSerialNumber()); 
@@ -119,13 +127,16 @@ public class CampaignSquadronPersonnelUpdaterTest
         Date recoveryDate = DateUtils.advanceTimeDays(campaign.getDate(), 21);
         maimedSquadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate(), recoveryDate);
         squadMembersMaimed.put(maimedSquadronMember.getSerialNumber(), maimedSquadronMember);
-                
+        
+        AARCampaignUpdateTabulator campaignUpdateTabulator = new AARCampaignUpdateTabulator(campaign, aarContext);
+        CampaignUpdateData campaignUpdateData = campaignUpdateTabulator.tabulateAARForCampaignUpdate();
+  
         for (SquadronMember squadronMember : squadMembersMaimed.values())
         {
-            aarContext.getCampaignUpdateData().getPersonnelLosses().addPersonnelMaimed(squadronMember);
+            campaignUpdateData.getPersonnelLosses().addPersonnelMaimed(squadronMember);
         }
 
-        PersonnelUpdater personellUpdater = new PersonnelUpdater(campaign, aarContext);
+        PersonnelUpdater personellUpdater = new PersonnelUpdater(campaign, campaignUpdateData);
         personellUpdater.personnelUpdates();
 
         SquadronMember squadronMemberAfterUpdate = campaign.getPersonnelManager().getAnyCampaignMember(maimedSquadronMember.getSerialNumber()); 
@@ -138,12 +149,15 @@ public class CampaignSquadronPersonnelUpdaterTest
         SquadronMember maimedPlayer = SquadronMemberPicker.pickPlayerSquadronMember(campaign, SquadronTestProfile.ESC_103_PROFILE.getSquadronId()); 
         squadMembersMaimed.put(maimedPlayer.getSerialNumber(), maimedPlayer);
         
+        AARCampaignUpdateTabulator campaignUpdateTabulator = new AARCampaignUpdateTabulator(campaign, aarContext);
+        CampaignUpdateData campaignUpdateData = campaignUpdateTabulator.tabulateAARForCampaignUpdate();
+
         for (SquadronMember squadronMember : squadMembersMaimed.values())
         {
-            aarContext.getCampaignUpdateData().getPersonnelLosses().addPersonnelMaimed(squadronMember);
+            campaignUpdateData.getPersonnelLosses().addPersonnelMaimed(squadronMember);
         }
 
-        PersonnelUpdater personellUpdater = new PersonnelUpdater(campaign, aarContext);
+        PersonnelUpdater personellUpdater = new PersonnelUpdater(campaign, campaignUpdateData);
         personellUpdater.personnelUpdates();
 
         SquadronMember squadronMemberAfterUpdate = campaign.getPersonnelManager().getAnyCampaignMember(maimedPlayer.getSerialNumber()); 
@@ -167,12 +181,15 @@ public class CampaignSquadronPersonnelUpdaterTest
         OutOfMissionCommandChangeHandler commandChangeHandler = new OutOfMissionCommandChangeHandler(campaign);
         AARPersonnelLosses personnelLossesTransferHome = commandChangeHandler.replaceCommanderWithPlayer();
         
+        AARCampaignUpdateTabulator campaignUpdateTabulator = new AARCampaignUpdateTabulator(campaign, aarContext);
+        CampaignUpdateData campaignUpdateData = campaignUpdateTabulator.tabulateAARForCampaignUpdate();
+
         for (SquadronMember squadronMember : personnelLossesTransferHome.getPersonnelTransferredHome().values())
         {
             aarContext.getPersonnelLosses().addPersonnelTransferredHome(squadronMember);;
         }
 
-        PersonnelUpdater personellUpdater = new PersonnelUpdater(campaign, aarContext);
+        PersonnelUpdater personellUpdater = new PersonnelUpdater(campaign, campaignUpdateData);
         personellUpdater.personnelUpdates();
 
         SquadronMember commanderAfterUpdate = campaign.getPersonnelManager().getAnyCampaignMember(commander.getSerialNumber()); 
@@ -204,12 +221,15 @@ public class CampaignSquadronPersonnelUpdaterTest
         SquadronMember woundedSquadronMember = SquadronMemberPicker.pickNonAceSquadronMember(campaign, SquadronTestProfile.ESC_103_PROFILE.getSquadronId()); 
         squadMembersWounded.put(woundedSquadronMember.getSerialNumber(), woundedSquadronMember);
         
+        AARCampaignUpdateTabulator campaignUpdateTabulator = new AARCampaignUpdateTabulator(campaign, aarContext);
+        CampaignUpdateData campaignUpdateData = campaignUpdateTabulator.tabulateAARForCampaignUpdate();
+
         for (SquadronMember squadronMember : squadMembersWounded.values())
         {
-            aarContext.getCampaignUpdateData().getPersonnelLosses().addPersonnelWounded(squadronMember);
+            campaignUpdateData.getPersonnelLosses().addPersonnelWounded(squadronMember);
         }
 
-        PersonnelUpdater personellUpdater = new PersonnelUpdater(campaign, aarContext);
+        PersonnelUpdater personellUpdater = new PersonnelUpdater(campaign, campaignUpdateData);
         personellUpdater.personnelUpdates();
 
         SquadronMember squadronMemberAfterUpdate = campaign.getPersonnelManager().getAnyCampaignMember(woundedSquadronMember.getSerialNumber()); 
@@ -226,9 +246,12 @@ public class CampaignSquadronPersonnelUpdaterTest
         
         TransferRecord transferRecord = new TransferRecord(transferredSquadronMember, SquadronTestProfile.ESC_103_PROFILE.getSquadronId(), SquadronTestProfile.ESC_3_PROFILE.getSquadronId());
         
-        aarContext.getCampaignUpdateData().getResupplyData().getSquadronTransferData().addTransferRecord(transferRecord);
+        AARCampaignUpdateTabulator campaignUpdateTabulator = new AARCampaignUpdateTabulator(campaign, aarContext);
+        CampaignUpdateData campaignUpdateData = campaignUpdateTabulator.tabulateAARForCampaignUpdate();
 
-        PersonnelUpdater personellUpdater = new PersonnelUpdater(campaign, aarContext);
+        campaignUpdateData.getResupplyData().getSquadronTransferData().addTransferRecord(transferRecord);
+
+        PersonnelUpdater personellUpdater = new PersonnelUpdater(campaign, campaignUpdateData);
         personellUpdater.personnelUpdates();
 
         SquadronMember squadronMemberAfterUpdate = campaign.getPersonnelManager().getAnyCampaignMember(transferredSquadronMember.getSerialNumber()); 
@@ -242,13 +265,16 @@ public class CampaignSquadronPersonnelUpdaterTest
     {
         Ace guynemerInCampaign = campaign.getPersonnelManager().getCampaignAces().retrieveAceBySerialNumber(101064); 
         acesKilled.put(101064, guynemerInCampaign);
+        
+        AARCampaignUpdateTabulator campaignUpdateTabulator = new AARCampaignUpdateTabulator(campaign, aarContext);
+        CampaignUpdateData campaignUpdateData = campaignUpdateTabulator.tabulateAARForCampaignUpdate();
 
         for (SquadronMember squadronMember : acesKilled.values())
         {
-            aarContext.getCampaignUpdateData().getPersonnelLosses().addAcesKilled(squadronMember);
+            campaignUpdateData.getPersonnelLosses().addAcesKilled(squadronMember);
         }
 
-        PersonnelUpdater personellUpdater = new PersonnelUpdater(campaign, aarContext);
+        PersonnelUpdater personellUpdater = new PersonnelUpdater(campaign, campaignUpdateData);
         personellUpdater.personnelUpdates();
 
         Ace aceAfterUpdate = campaign.getPersonnelManager().getCampaignAces().retrieveAceBySerialNumber(101064); 
@@ -260,14 +286,16 @@ public class CampaignSquadronPersonnelUpdaterTest
     {
         Ace vossInCampaign = campaign.getPersonnelManager().getCampaignAces().retrieveAceBySerialNumber(101175); 
         acesKilled.put(101175, vossInCampaign);
-        
+                
+        AARCampaignUpdateTabulator campaignUpdateTabulator = new AARCampaignUpdateTabulator(campaign, aarContext);
+        CampaignUpdateData campaignUpdateData = campaignUpdateTabulator.tabulateAARForCampaignUpdate();
 
         for (SquadronMember squadronMember : acesKilled.values())
         {
-            aarContext.getCampaignUpdateData().getPersonnelLosses().addAcesKilled(squadronMember);
+            campaignUpdateData.getPersonnelLosses().addAcesKilled(squadronMember);
         }
 
-        PersonnelUpdater personellUpdater = new PersonnelUpdater(campaign, aarContext);
+        PersonnelUpdater personellUpdater = new PersonnelUpdater(campaign, campaignUpdateData);
         personellUpdater.personnelUpdates();
 
         Ace aceAfterUpdate = campaign.getPersonnelManager().getCampaignAces().retrieveAceBySerialNumber(101175); 
