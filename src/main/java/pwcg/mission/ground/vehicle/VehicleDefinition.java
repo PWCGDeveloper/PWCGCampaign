@@ -90,8 +90,6 @@ public class VehicleDefinition implements IWeight
 
     public boolean shouldUse(VehicleRequestDefinition requestDefinition) throws PWCGException
     {
-        System.out.println("requested: "  + requestDefinition.getVehicleClass() + "     actual: " + vehicleClass);
-
         if (vehicleClass != requestDefinition.getVehicleClass())
         {
             return false;
