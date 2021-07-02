@@ -5,9 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.core.utils.PWCGLogger;
-import pwcg.core.utils.PWCGLogger.LogLevel;
-
 public class SquadronTransferData
 {
     private Map<Integer, List<TransferRecord>> squadronMembersTransferred = new HashMap<>();
@@ -19,10 +16,6 @@ public class SquadronTransferData
         {
             List<TransferRecord> newTransfeRecordSet = new ArrayList<>();
             squadronMembersTransferred.put(serialNumber, newTransfeRecordSet);
-        }
-        else
-        {
-            PWCGLogger.log(LogLevel.INFO, "Dup transfer of squadron member" + serialNumber);
         }
         
         List<TransferRecord> transfeRecordSet = squadronMembersTransferred.get(serialNumber);

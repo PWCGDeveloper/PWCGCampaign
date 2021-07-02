@@ -172,7 +172,6 @@ public class MissionGroundUnitBuilder
         {
             if (!groundUnitPositionVerifier.verifyGroundCollectionUnitPositionsNotDuplicated(getAllMissionGroundUnits(), groundUnitCollection))
             {
-                System.out.println("Eliminating duplicate " + groundUnitCollection.getPrimaryGroundUnit().getName());
                 groundUnitCollections.remove(groundUnitCollection);
                 return true;
             }

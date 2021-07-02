@@ -48,9 +48,7 @@ public class CampaignUpdater
         archtypeChangeHandler.updateCampaignEquipmentForArchtypeChange();
         
         finishCampaignUpdates(aarContext.getNewDate());
-        
-        aarContext.resetContextForNextTimeIncrement();
-        
+                
         PWCGContext.getInstance().setMapForCampaign(campaign);
     }
     

@@ -32,24 +32,11 @@ Fixed: Removed a few defunct configuration settings
 Fixed: Preddy's status when killed on 12/25/1944
 Fixed: Aces historically killed no longer show as transferred
 Fixed: End of war newspaper now appears
+Fixed: Unassigned pilot is now the on whose button was pressed and not the radio button selected
 
 To do:
-- Deal with end of war newspapers
-
-Ground Hunt
-transport routes should change to inside/outside mission box
-trains should sometimes be stopped - when spawning in box
-
-Done
-Deal with ace lost newspapers
-Player must lead flight
-Newspapers in AAR
-Attackable transport units should start enabled and not spawn ... expand spawn trigger to 100 KM?
-Make attack waypoint a hunt waypoint with altitude > 0
-Set mission altitude properly
-Set mission description
-Turn off subtitles
-Verify attack works
+Bug: victory awards are stuck on one pilot
+Bug: folder is too small on larger screens
 
 12.3.1
 Add ground hunt mission for player only

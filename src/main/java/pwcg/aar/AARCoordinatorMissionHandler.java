@@ -29,6 +29,8 @@ public class AARCoordinatorMissionHandler
         inMission(playerDeclarations);
         outOfMission();
         updateCampaign();
+        
+        aarContext.resetContextForNextTimeIncrement();
     }
 
     private void inMission(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException

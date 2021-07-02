@@ -37,7 +37,7 @@ public class OutOfMissionVictoryEventHandler
                 Role missionRole = squadronMember.determineSquadron().getSquadronRoles().selectRoleForMission(campaign.getDate());
                 if (AirVictimGenerator.shouldUse(missionRole))
                 {
-                    OutOfMissionAirVictoryEventGenerator airVictoryEventGenerator = new OutOfMissionAirVictoryEventGenerator(campaign, aarContext, squadronMember);
+                    OutOfMissionAirVictoryEventGenerator airVictoryEventGenerator = new OutOfMissionAirVictoryEventGenerator(campaign, squadronMember);
                     OutOfMissionVictoryData airVictories = airVictoryEventGenerator.outOfMissionVictoriesForSquadronMember();
                     victoriesOutOMission.merge(airVictories);
                 }

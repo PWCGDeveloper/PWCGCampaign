@@ -14,17 +14,6 @@ public class AARPersonnelAcheivements
     private Map<Integer, List<Victory>> victoryAwardByPilot = new HashMap<>();
     private List<ClaimDeniedEvent> playerClaimsDenied = new ArrayList<>();
 
-    public void addVictoryAwardByPilot(Integer serialNumber, Victory victory)
-    {
-        if (!victoryAwardByPilot.containsKey(serialNumber))
-        {
-            victoryAwardByPilot.put(serialNumber, new ArrayList<Victory>());
-        }
-        
-        List<Victory> victoriesForPilot = victoryAwardByPilot.get(serialNumber);
-        victoriesForPilot.add(victory);
-    }
-
     public void updateMissionsFlown(Integer serialNumber, Integer newMissionsFlown)
     {
         missionsFlown.put(serialNumber, newMissionsFlown);
@@ -40,16 +29,24 @@ public class AARPersonnelAcheivements
 	{
 		for (Integer serialNumber : sourceVictoryAwardByPilot.keySet())
 		{
-            if (!victoryAwardByPilot.containsKey(serialNumber))
-            {
-                victoryAwardByPilot.put(serialNumber, new ArrayList<Victory>());
-            }
-
-            List<Victory> sourceVictoriesForPilot = sourceVictoryAwardByPilot.get(serialNumber);
-            List<Victory> victoriesForPilot = victoryAwardByPilot.get(serialNumber);
-            victoriesForPilot.addAll(sourceVictoriesForPilot);
+		    List<Victory> victoriesForPlot = sourceVictoryAwardByPilot.get(serialNumber);
+		    for (Victory victory : victoriesForPlot)
+		    {
+		        addVictoryAwardByPilot(serialNumber, victory);
+		    }
 		}
 	}
+
+    private void addVictoryAwardByPilot(Integer serialNumber, Victory victory)
+    {
+        if (!victoryAwardByPilot.containsKey(serialNumber))
+        {
+            victoryAwardByPilot.put(serialNumber, new ArrayList<Victory>());
+        }
+        
+        List<Victory> victoriesForPilot = victoryAwardByPilot.get(serialNumber);
+        victoriesForPilot.add(victory);
+    }
 
     public Map<Integer, Integer> getMissionsFlown()
     {

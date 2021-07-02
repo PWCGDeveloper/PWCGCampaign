@@ -30,7 +30,8 @@ public class AARSimulatedMission
     {
         OutOfMissionVictoryEventHandler victoryEventHandler = new OutOfMissionVictoryEventHandler(campaign, aarContext);
         OutOfMissionVictoryData victoriesOutOMission = victoryEventHandler.generateOutOfMissionVictories();
-        aarContext.getPersonnelAcheivements().getVictoriesByPilot().putAll(victoriesOutOMission.getVictoryAwardsBySquadronMember());
+
+        aarContext.getPersonnelAcheivements().mergeVictories(victoriesOutOMission.getVictoryAwardsBySquadronMember());
         outOfMissionLosses(victoriesOutOMission.getShotDownPilots(), victoriesOutOMission.getShotDownPlanes());
     }
 

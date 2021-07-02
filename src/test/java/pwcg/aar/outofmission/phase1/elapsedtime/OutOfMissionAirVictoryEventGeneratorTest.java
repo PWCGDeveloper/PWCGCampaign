@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import pwcg.aar.data.AARContext;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -27,7 +26,6 @@ public class OutOfMissionAirVictoryEventGeneratorTest
     private Campaign campaign;
     private SquadronMember squadronMember;
     
-    @Mock private AARContext aarContext;
     @Mock private ArmedService service;
 
     @Before
@@ -79,7 +77,7 @@ public class OutOfMissionAirVictoryEventGeneratorTest
         int numMissionsInWar = 1000;
         for (int j = 0; j < numMissionsInWar; ++j)
         {
-            OutOfMissionAirVictoryEventGenerator victoryGenerator = new OutOfMissionAirVictoryEventGenerator(campaign, aarContext, squadronMember);
+            OutOfMissionAirVictoryEventGenerator victoryGenerator = new OutOfMissionAirVictoryEventGenerator(campaign, squadronMember);
             OutOfMissionVictoryData victoriesOutOMission = victoryGenerator.outOfMissionVictoriesForSquadronMember();    
             victoryData.merge(victoriesOutOMission);
         }

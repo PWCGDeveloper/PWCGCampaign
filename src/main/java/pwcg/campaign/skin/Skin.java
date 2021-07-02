@@ -52,12 +52,6 @@ public class Skin implements Cloneable
             skin.winter = this.winter;
             skin.useTacticalCodes = this.useTacticalCodes;
             skin.tacticalCodeColor = this.tacticalCodeColor;
-            
-            if (skin.getSkinName().equals("p51d15na_skin_00"))
-            {
-                System.out.println("At Skin Copy - p51d15na_skin_00 " + skin.isUseTacticalCodes());
-            }
-
 		}
 		catch (Exception e)
 		{

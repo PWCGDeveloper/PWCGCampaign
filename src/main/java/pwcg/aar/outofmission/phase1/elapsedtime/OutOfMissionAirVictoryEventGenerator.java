@@ -1,6 +1,6 @@
 package pwcg.aar.outofmission.phase1.elapsedtime;
 
-import pwcg.aar.data.AARContext;
+import pwcg.aar.data.AARContextEventSequence;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
@@ -25,15 +25,13 @@ import pwcg.product.bos.country.BoSServiceManager;
 public class OutOfMissionAirVictoryEventGenerator 
 {    
 	private Campaign campaign = null;
-    private AARContext aarContext; 
     private SquadronMember squadronMember;
 
 	private OutOfMissionVictoryData victoriesOutOMission = new OutOfMissionVictoryData();
 
-	public OutOfMissionAirVictoryEventGenerator (Campaign campaign, AARContext aarContext, SquadronMember squadronMember) 
+	public OutOfMissionAirVictoryEventGenerator (Campaign campaign, SquadronMember squadronMember) 
 	{
         this.campaign = campaign;
-        this.aarContext = aarContext;
         this.squadronMember = squadronMember;
 	}
 	
@@ -134,7 +132,7 @@ public class OutOfMissionAirVictoryEventGenerator
                 victoriesOutOMission.addVictoryAwards(squadronMember.getSerialNumber(), victory);
                 victoriesOutOMission.addShotDownPilot(shotDownPilot);
                 
-                LogPlane logPlane = new LogPlane(aarContext.getNextOutOfMissionEventSequenceNumber());
+                LogPlane logPlane = new LogPlane(AARContextEventSequence.getNextOutOfMissionEventSequenceNumber());
                 logPlane.initializeFromOutOfMission(campaign, shotDownPlane, shotDownPilot);
                 
                 victoriesOutOMission.addShotDownPlane(logPlane);

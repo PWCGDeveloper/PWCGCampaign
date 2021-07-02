@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import pwcg.aar.data.AARContext;
+import pwcg.aar.data.AARContextEventSequence;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.prelim.CampaignMembersOutOfMissionFinder;
 import pwcg.campaign.Campaign;
@@ -56,7 +57,7 @@ public class OutOfMissionAAALossCalculator
             {
                 EquippedPlane planeShotDownByAAA = campaign.getEquipmentManager().destroyPlaneFromSquadron(squadronMember.getSquadronId(), campaign.getDate());
 
-                LogPlane logPlane = new LogPlane(aarContext.getNextOutOfMissionEventSequenceNumber());
+                LogPlane logPlane = new LogPlane(AARContextEventSequence.getNextOutOfMissionEventSequenceNumber());
                 logPlane.initializeFromOutOfMission(campaign, planeShotDownByAAA, squadronMember);
                 
                 pilotsLostDueToAAA.put(squadronMember.getSerialNumber(), squadronMember);

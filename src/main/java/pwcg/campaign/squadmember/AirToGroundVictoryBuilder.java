@@ -72,22 +72,27 @@ public class AirToGroundVictoryBuilder
     }
 
     private VictoryEntity createVictor(Date date) throws PWCGException
-    {
-        VictoryEntity victor = new VictoryEntity();
-        
+    {        
         Squadron squadron = victorPilot.determineSquadron();
-
-        PlaneType victorPlaneType = squadron.determineBestPlane(date);
-
-        victor.setAirOrGround(Victory.AIRCRAFT);
-        victor.setType(victorPlaneType.getDisplayName());
-        victor.setName(victorPlaneType.getDisplayName());
-        victor.setSquadronName(squadron.determineDisplayName(date));
-        victor.setPilotName(victorPilot.getRank() + " " + victorPilot.getName());
-        victor.setPilotSerialNumber(victorPilot.getSerialNumber());
-        victor.setPilotStatus(SquadronMemberStatus.STATUS_ACTIVE);
+        if (squadron != null)
+        {
+            PlaneType victorPlaneType = squadron.determineBestPlane(date);
+    
+            if (victorPlaneType != null)
+            {
+                VictoryEntity victor = new VictoryEntity();
+                victor.setAirOrGround(Victory.AIRCRAFT);
+                victor.setType(victorPlaneType.getDisplayName());
+                victor.setName(victorPlaneType.getDisplayName());
+                victor.setSquadronName(squadron.determineDisplayName(date));
+                victor.setPilotName(victorPilot.getRank() + " " + victorPilot.getName());
+                victor.setPilotSerialNumber(victorPilot.getSerialNumber());
+                victor.setPilotStatus(SquadronMemberStatus.STATUS_ACTIVE);
+                return victor;
+            }
+        }
         
-        return victor;
+        return null;
     }
 
     private VictoryEntity createVictim(Date date) throws PWCGException

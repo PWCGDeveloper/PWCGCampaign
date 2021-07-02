@@ -52,13 +52,7 @@ public class GroundUnitPositionDuplicateDetector
                     double distance = MathUtils.calcDist(groundUnitSpawns.getPosition(), testGroundUnitSpawns.getPosition());
                     if (distance < 9.0)
                     {
-                        noDuplicates = false;
-                        System.out.println("Unit " + groundUnitSpawns.getName() + "(" + groundUnitSpawns.getIndex() + ")" + " same position as " + testGroundUnitSpawns.getName() + "(" + testGroundUnitSpawns.getIndex() + ")" );
-                        System.out.println(
-                                "Distance is " + distance 
-                                + "  of ground unit collection " + "(" + groundUnitCollection.getIndex() + ")"  + groundUnitCollection.getName()
-                                + "  conflicts with " + "(" + testGroundUnitCollection.getIndex() + ")"  + testGroundUnitCollection.getName());
-                        
+                        noDuplicates = false;                        
                         duplicateGroundUnitCollections.put(testGroundUnitCollection.getIndex(), groundUnitCollection.getIndex());
                     }
                 }

@@ -46,6 +46,8 @@ public class AARCoordinatorCampaignUpdateIntegrityValidator
     	Date newDate = DateUtils.getDateYYYYMMDD("19420801");
 	    do 
 	    {
+            aarContext.resetContextForNextTimeIncrement();
+
             personnelLosses = aarContext.getPersonnelLosses().getSquadMembersLost();
             equipmentLosses = aarContext.getEquipmentLosses().getPlanesDestroyed();
             if (personnelLosses.size() > 0)
@@ -66,7 +68,6 @@ public class AARCoordinatorCampaignUpdateIntegrityValidator
             
             AAROutOfMissionStepper stepper = new AAROutOfMissionStepper(campaign, aarContext);
             stepper.oneStep();
-            
 	    }
 	    while(campaign.getDate().before(newDate));
     }

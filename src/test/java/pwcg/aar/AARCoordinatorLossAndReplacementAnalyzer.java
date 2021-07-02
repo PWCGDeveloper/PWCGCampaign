@@ -28,20 +28,19 @@ import pwcg.testutils.SquadronTestProfile;
 public class AARCoordinatorLossAndReplacementAnalyzer
 {
     private Campaign campaign;    
-    private AARContext aarContext;
 
     @Before
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_354_BODENPLATTE_PROFILE);
         campaign.write();
     }
 
     @Test
     public void runMissionAARLeave () throws PWCGException
     {
-    	Date newDate = DateUtils.getDateYYYYMMDD("19420801");
+    	Date newDate = DateUtils.getDateYYYYMMDD("19450401");
 
         int totalAirVictories = 0;
         int totalGroundVictories = 0;
@@ -58,7 +57,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
     	
 	    do 
 	    {
-	        aarContext = AARFactory.makeAARContext(campaign);
+	        AARContext aarContext = AARFactory.makeAARContext(campaign);
             ++cycleNum;
 
             AAROutOfMissionStepper stepper = AARFactory.makeAAROutOfMissionStepper(campaign, aarContext);

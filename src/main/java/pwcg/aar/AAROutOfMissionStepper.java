@@ -29,7 +29,8 @@ public class AAROutOfMissionStepper
 	        setIncrementDate(targetCampaignDate);	        
             outOfMission();
             tabulateFlightDebriefUI();
-	        updateCampaign();	        
+	        updateCampaign();
+	        aarContext.resetContextForNextTimeIncrement();
 	    }
 	    while(keepStepping(targetCampaignDate));
 	}
@@ -55,7 +56,7 @@ public class AAROutOfMissionStepper
         setIncrementDate(targetCampaignDate);	        
         outOfMission();
         tabulateFlightDebriefUI();
-        updateCampaign();	        
+        updateCampaign();
 	}
 
     private Date setIncrementDate(Date targetCampaignDate) throws PWCGException

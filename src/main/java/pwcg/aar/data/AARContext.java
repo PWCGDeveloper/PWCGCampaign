@@ -25,15 +25,10 @@ public class AARContext
     // Inputs
     private AARMissionLogRawData missionLogRawData = new AARMissionLogRawData();
     private AARMissionEvaluationData missionEvaluationData = new AARMissionEvaluationData();
-    
 
     // Outputs
-    private AARPersonnelLosses personnelLosses = new AARPersonnelLosses();
-    private AAREquipmentLosses equipmentLosses = new AAREquipmentLosses();
+    private AARContextDailyData dailyData = new AARContextDailyData();
     
-    private AARPersonnelAwards personnelAwards = new AARPersonnelAwards();
-    private AARPersonnelAcheivements personnelAcheivements = new AARPersonnelAcheivements();
-    private AARResupplyData resupplyData = new AARResupplyData();
     private HistoricalAceAwards historicalAceEvents = new HistoricalAceAwards();
     private ElapsedTimeEvents elapsedTimeEvents = new ElapsedTimeEvents();
 
@@ -42,18 +37,20 @@ public class AARContext
     private List<UICombatReportData> uiCombatReportData = new ArrayList<>();
     private UIDebriefData uiDebriefData = new UIDebriefData();
     
-    private int outOfMissionEventSequenceNumber = 100000;
-
     public AARContext(Campaign campaign)
     {
         this.campaign = campaign;
         this.campaignUpdateData = new CampaignUpdateData(campaign);
+        
+        AARContextEventSequence.reset();
     }
 
     public void resetContextForNextTimeIncrement() throws PWCGException
     {
-        missionLogRawData = new AARMissionLogRawData();
-        missionEvaluationData = new AARMissionEvaluationData();
+        this.missionLogRawData = new AARMissionLogRawData();
+        this.missionEvaluationData = new AARMissionEvaluationData();
+        this.dailyData = new AARContextDailyData();
+        this.campaignUpdateData = new CampaignUpdateData(campaign);
     }
     
     public UICombatReportData findUiCombatReportDataForSquadron(int squadronId) throws PWCGException
@@ -93,30 +90,24 @@ public class AARContext
         this.uiDebriefData.merge(campaign, uiDebriefData);
     }
 
-    public int getNextOutOfMissionEventSequenceNumber()
-    {
-        ++outOfMissionEventSequenceNumber;
-        return outOfMissionEventSequenceNumber;
-    }
-
     public AARPersonnelLosses getPersonnelLosses()
     {
-        return personnelLosses;
+        return dailyData.getPersonnelLosses();
     }
 
     public AAREquipmentLosses getEquipmentLosses()
     {
-        return equipmentLosses;
+        return dailyData.getEquipmentLosses();
     }
 
     public AARPersonnelAwards getPersonnelAwards()
     {
-        return personnelAwards;
+        return dailyData.getPersonnelAwards();
     }
 
     public AARPersonnelAcheivements getPersonnelAcheivements()
     {
-        return personnelAcheivements;
+        return dailyData.getPersonnelAcheivements();
     }
 
     public ElapsedTimeEvents getElapsedTimeEvents()
@@ -131,7 +122,7 @@ public class AARContext
 
     public AARResupplyData getResupplyData()
     {
-        return resupplyData;
+        return dailyData.getResupplyData();
     }    
 
     public UIDebriefData getUiDebriefData()
@@ -161,13 +152,12 @@ public class AARContext
 
     public void addPersonnelLosses(AARPersonnelLosses newPersonnelLosses)
     {
-        personnelLosses.merge(newPersonnelLosses);
+        dailyData.getPersonnelLosses().merge(newPersonnelLosses);
     }
 
     public void addEquipmentLossesInMission(AAREquipmentLosses newEquipmentLosses)
     {
-        equipmentLosses.merge(newEquipmentLosses);
-        
+        dailyData.getEquipmentLosses().merge(newEquipmentLosses);
     }
 
     public Date getNewDate()
@@ -182,7 +172,7 @@ public class AARContext
 
     public void addResupplyData(AARResupplyData resupplyData)
     {
-        this.resupplyData.merge(resupplyData);
+        dailyData.getResupplyData().merge(resupplyData);
     }
 
     public void addUiCombatReportData(List<UICombatReportData> combatReportUiDataSet)
