@@ -20,6 +20,7 @@ public class CampaignReportTransferPanel extends AARDocumentIconPanel
 
         this.campaign = campaign;        
         this.transferEvent = transferEvent;        
+        this.shouldDisplay = true;
         makePanel();
     }
 

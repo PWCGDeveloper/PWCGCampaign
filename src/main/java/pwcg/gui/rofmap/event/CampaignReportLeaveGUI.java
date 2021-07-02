@@ -14,6 +14,7 @@ public class CampaignReportLeaveGUI extends AARDocumentIconPanel
 	{
 		super();
         this.campaign = campaign;
+        this.shouldDisplay = true;
 		makePanel() ;
 	}
 
