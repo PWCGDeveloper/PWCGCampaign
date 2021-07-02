@@ -96,11 +96,11 @@ public class RussianMedalManager extends BoSMedalManager
         int numPilotGroundVictoryPoints = pilot.getSquadronMemberVictories().getGroundVictoryPointTotal();
         if (!hasMedal(pilot, medals.get(ORDER_RED_STAR)))
         {
-	        if ((pilot.getMissionFlown() >= 15))
+	        if ((pilot.getMissionFlown() >= 20))
 	        {
 	            return medals.get(ORDER_RED_STAR);
 	        }
-            if (numPilotGroundVictoryPoints > 5)
+            if (numPilotGroundVictoryPoints > 10)
             {
                 return medals.get(ORDER_RED_STAR);
             }
@@ -108,7 +108,7 @@ public class RussianMedalManager extends BoSMedalManager
         
         if (!hasMedal(pilot, medals.get(ORDER_OF_GLORY)))
         {
-            if (numPilotGroundVictoryPoints > 20)
+            if (numPilotGroundVictoryPoints > 40)
             {
                 return medals.get(ORDER_OF_GLORY);
             }
