@@ -5,6 +5,7 @@ import pwcg.aar.data.AARContext;
 import pwcg.aar.data.AARPersonnelAwards;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.medals.Medal;
+import pwcg.campaign.promotion.PromotionArbitrator;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 
@@ -31,7 +32,7 @@ public class CampaignMemberAwardsGenerator
     private void promotions(SquadronMember squadronMember) throws PWCGException 
     {
         String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
-        if (!promotion.equals(PromotionEventHandler.NO_PROMOTION))
+        if (!promotion.equals(PromotionArbitrator.NO_PROMOTION))
         {
             personnelAwards.addPromotion(squadronMember.getSerialNumber(), promotion);
         }

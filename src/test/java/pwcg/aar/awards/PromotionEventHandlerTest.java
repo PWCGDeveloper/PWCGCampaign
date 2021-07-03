@@ -12,11 +12,11 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.outofmission.phase2.awards.PromotionEventHandler;
-import pwcg.aar.outofmission.phase2.awards.PromotionEventHandlerRecon;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.Role;
+import pwcg.campaign.promotion.PromotionArbitrator;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberVictories;
 import pwcg.campaign.squadmember.Victory;
@@ -31,15 +31,9 @@ public class PromotionEventHandlerTest
 {
     private Campaign campaign;
     
-    @Mock
-    private SquadronMember squadronMember;
-    
-    @Mock
-    private Squadron squadron;
-
-    
-    @Mock
-    private SquadronMemberVictories squadronMemberVictories;
+    @Mock private SquadronMember squadronMember;
+    @Mock private Squadron squadron;
+    @Mock private SquadronMemberVictories squadronMemberVictories;
 
     @Before
     public void setupForTestEnvironment() throws PWCGException
@@ -53,7 +47,7 @@ public class PromotionEventHandlerTest
     public void promoteCorporalToSergentRecon () throws PWCGException
     {     
         Mockito.when(squadronMember.determineService(ArgumentMatchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
-        Mockito.when(squadronMember.getMissionFlown()).thenReturn(PromotionEventHandlerRecon.PilotRankMedMinMissions);
+        Mockito.when(squadronMember.getMissionFlown()).thenReturn(30);
         Mockito.when(squadronMember.getRank()).thenReturn("Corporal");
         Mockito.when(squadronMember.determineSquadron()).thenReturn(squadron);
         Mockito.when(squadron.determineSquadronPrimaryRole(ArgumentMatchers.<Date>any())).thenReturn(Role.ROLE_RECON);
@@ -91,7 +85,7 @@ public class PromotionEventHandlerTest
 
         String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
-        assert (promotion.equals(PromotionEventHandler.NO_PROMOTION));
+        assert (promotion.equals(PromotionArbitrator.NO_PROMOTION));
     }
 
 }

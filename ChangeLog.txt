@@ -1,7 +1,7 @@
 
 ​At the PWCG web site
 
-13.0
+13.0.0
 Added Ground Free Hunt mission
 - Currently targets trains and trucks
 - Fly to a point and search.  No guidance except follow roads or tracks.
@@ -33,6 +33,7 @@ Fixed: Preddy's status when killed on 12/25/1944
 Fixed: Aces historically killed no longer show as transferred
 Fixed: End of war newspaper now appears
 Fixed: Unassigned pilot is now the on whose button was pressed and not the radio button selected
+Fixed: added heal wounds button on mission page to got directly to leave page to heal.
 
 To do:
 Bug: victory awards are stuck on one pilot
