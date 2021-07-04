@@ -11,7 +11,6 @@ import pwcg.campaign.personnel.PersonnelReplacementsService;
 import pwcg.campaign.personnel.SquadronMemberFemaleGenerator;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.resupply.personnel.TransferRecord;
-import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadron.Squadron;
@@ -36,7 +35,7 @@ public class PersonnelUpdater
         personnelHealWoundedPilots();
     }
 
-    private void personnelAceRemovals()
+    private void personnelAceRemovals() throws PWCGException
     {
         acesKilled();
         acesTransferredOut();
@@ -46,7 +45,7 @@ public class PersonnelUpdater
 	{
 	}
 
-	private void acesKilled()
+	private void acesKilled() throws PWCGException
     {
         for (Integer serialNumber : campaignUpdateData.getPersonnelLosses().getAcesKilled().keySet())
         {
@@ -54,9 +53,9 @@ public class PersonnelUpdater
         }
     }
 
-    private void setAceKilledInCampaign(Integer serialNumber)
+    private void setAceKilledInCampaign(Integer serialNumber) throws PWCGException
     {
-        Ace ace = campaign.getPersonnelManager().getCampaignAces().retrieveAceBySerialNumber(serialNumber);
+        SquadronMember ace = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
         ace.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
     }
 
