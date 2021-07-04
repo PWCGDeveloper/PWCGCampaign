@@ -3,25 +3,24 @@ package pwcg.aar;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.AARPersonnelAcheivements;
 import pwcg.aar.data.AARPersonnelAwards;
-import pwcg.aar.inmission.phase1.parse.AARLogEvaluationCoordinator;
+import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase1.parse.AARMissionFileLogResultMatcher;
+import pwcg.aar.inmission.phase2.logeval.AARBotVehicleMapper;
+import pwcg.aar.inmission.phase2.logeval.AARVehicleBuilder;
+import pwcg.aar.inmission.phase2.logeval.AARVehiclePlaneLanded;
 import pwcg.aar.outofmission.phase2.awards.CampaignMemberAwardsGenerator;
 import pwcg.aar.prelim.AARHeaderParser;
 import pwcg.aar.prelim.AARLogSetFinder;
 import pwcg.aar.prelim.AARMostRecentLogSetFinder;
+import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.aar.prelim.AARPwcgMissionFinder;
+import pwcg.aar.prelim.PwcgMissionDataEvaluator;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DirectoryReader;
 
 public class AARFactory
 {
-    public static AARLogEvaluationCoordinator makePhase1Coordinator()
-    {
-        AARLogEvaluationCoordinator phase1Coordinator = new AARLogEvaluationCoordinator();
-        return phase1Coordinator;
-    }
-    
     public static AARMostRecentLogSetFinder makeMostRecentLogSetFinder(Campaign campaign) throws PWCGException
     {
         AARLogSetFinder logSetFinder = makeLogSorter();
@@ -31,6 +30,14 @@ public class AARFactory
         return new AARMostRecentLogSetFinder(campaign, matcher, logSetFinder, pwcgMissionFinder);
     }
     
+    public static AARVehicleBuilder makeAARVehicleBuilder(Campaign campaign, AARPreliminaryData preliminaryData, AARLogEventData logEventData) throws PWCGException
+    {
+        AARBotVehicleMapper botPlaneMapper = new AARBotVehicleMapper(logEventData);
+        AARVehiclePlaneLanded landedMapper = new AARVehiclePlaneLanded(logEventData);
+        PwcgMissionDataEvaluator pwcgMissionDataEvaluator = new PwcgMissionDataEvaluator(campaign, preliminaryData);
+        return new AARVehicleBuilder(botPlaneMapper, landedMapper, pwcgMissionDataEvaluator);
+    }
+
     public static AARLogSetFinder makeLogSorter() throws PWCGException
     {
         DirectoryReader directoryReader = new DirectoryReader();

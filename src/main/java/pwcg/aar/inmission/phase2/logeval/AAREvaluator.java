@@ -1,5 +1,6 @@
 package pwcg.aar.inmission.phase2.logeval;
 
+import pwcg.aar.AARFactory;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase2.logeval.equipmentstatus.AAREquipmentStatusEvaluator;
@@ -10,7 +11,6 @@ import pwcg.aar.inmission.phase2.logeval.victory.AARFuzzyVictoryEvaluator;
 import pwcg.aar.inmission.phase2.logeval.victory.AARRandomAssignment;
 import pwcg.aar.inmission.phase2.logeval.victory.AARRandomAssignmentCalculator;
 import pwcg.aar.inmission.phase2.logeval.victory.AARVictoryEvaluator;
-import pwcg.aar.prelim.PwcgMissionDataEvaluator;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 
@@ -79,10 +79,7 @@ public class AAREvaluator
     
     private AARVehicleBuilder createAARVehicleBuilder() throws PWCGException
     {
-        AARBotVehicleMapper botPlaneMapper = new AARBotVehicleMapper(aarContext.getMissionLogRawData().getLogEventData());
-        AARVehiclePlaneLanded landedMapper = new AARVehiclePlaneLanded(aarContext.getMissionLogRawData().getLogEventData());
-        PwcgMissionDataEvaluator pwcgMissionDataEvaluator = new PwcgMissionDataEvaluator(campaign, aarContext.getPreliminaryData());
-        return new AARVehicleBuilder(botPlaneMapper, landedMapper, pwcgMissionDataEvaluator);
+        return AARFactory.makeAARVehicleBuilder(campaign, aarContext.getPreliminaryData(), aarContext.getMissionLogRawData().getLogEventData());
     }
     
     private AARVictoryEvaluator createAARVictoryEvaluator()

@@ -27,14 +27,11 @@ public class AARMissionFileLogResultMatcher
             if (missionFileNameFromPwcg.toLowerCase().equalsIgnoreCase(missionFileNameFromLogs.toLowerCase()))
             {
                 AARMissionLogFileSet logFileMissionFileSet = makeMissionLogFileSet(logFileName, pwcgMissionData);
-                if (AARLogSetValidator.isLogSetValid(campaign, logFileMissionFileSet))
-                {
-                    return logFileMissionFileSet;
-                }
+                return logFileMissionFileSet;
             }
     	}
         
-        return null;
+        throw new PWCGException("Unable to find matching logs set for " + pwcgMissionData.getMissionHeader().getMissionFileName());
     }
 
     private AARMissionLogFileSet makeMissionLogFileSet(String logFileName, PwcgMissionData pwcgMissionData) throws PWCGException

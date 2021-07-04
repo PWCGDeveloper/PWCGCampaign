@@ -198,7 +198,7 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
         }
         catch (PWCGException e)
         {
-            new  HelpDialog("PWCG was unable to find a log set for your last mission " + campaign.getCampaignData().getName());
+            new  HelpDialog("PWCG Could not perform AAR.  " + e.getMessage());
         }
     }
     

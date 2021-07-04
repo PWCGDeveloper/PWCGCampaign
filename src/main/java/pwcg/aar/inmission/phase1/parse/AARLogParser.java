@@ -4,7 +4,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
 
-public class AARLogParser implements IAARLogParser 
+public class AARLogParser 
 {
     public static String UNKNOWN_MISSION_LOG_ENTITY = "-1";
 
@@ -15,8 +15,7 @@ public class AARLogParser implements IAARLogParser
         this.aarLogFileMissionFile = aarLogFileMissionFile;
     }
 
-    @Override
-    public AARLogEventData parseLogFilesForMission(Campaign campaign) throws PWCGException 
+    public AARMissionLogRawData parseLogFilesForMission(Campaign campaign) throws PWCGException 
     {
         AARLogReader logReader = new AARLogReader(aarLogFileMissionFile);
         AARLogLineParser logLineParser = new AARLogLineParser();
@@ -24,7 +23,9 @@ public class AARLogParser implements IAARLogParser
         
         debugLogData(logEventData);
         
-        return logEventData;
+        AARMissionLogRawData missionLogRawData = new AARMissionLogRawData(); 
+        missionLogRawData.setLogEventData(logEventData);
+        return missionLogRawData;
     }
 
     private void debugLogData(AARLogEventData logEventData)

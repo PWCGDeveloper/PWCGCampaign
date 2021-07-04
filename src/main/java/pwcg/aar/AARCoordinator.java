@@ -3,7 +3,8 @@ package pwcg.aar;
 import java.util.Map;
 
 import pwcg.aar.data.AARContext;
-import pwcg.aar.inmission.phase1.parse.AARLogEvaluationCoordinator;
+import pwcg.aar.inmission.phase1.parse.AARLogParser;
+import pwcg.aar.inmission.phase1.parse.AARLogSetValidator;
 import pwcg.aar.inmission.phase1.parse.AARMissionLogRawData;
 import pwcg.aar.inmission.phase1.parse.event.ATypeBase;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
@@ -35,8 +36,11 @@ public class AARCoordinator
         reset(campaign);
 
         AARPhase0Preliminary aarPreliminary = new AARPhase0Preliminary(campaign);
-        AARPreliminaryData aarPreliminaryData = aarPreliminary.createAARPreliminaryData();
-        aarContext.setPreliminaryData(aarPreliminaryData);
+        AARPreliminaryData preliminaryData = aarPreliminary.createAARPreliminaryData();
+        aarContext.setPreliminaryData(preliminaryData);
+        
+        AARLogSetValidator logSetValidator = new AARLogSetValidator();
+        logSetValidator.isLogSetValid(campaign, preliminaryData);
     }
 
     public void submitAAR(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
@@ -126,8 +130,8 @@ public class AARCoordinator
 
     void parseLogs() throws PWCGException
     {
-        AARLogEvaluationCoordinator logEvaluationCoordinator = new AARLogEvaluationCoordinator();
-        AARMissionLogRawData missionLogRawData = logEvaluationCoordinator.performAARPhase1Parse(campaign, aarContext.getPreliminaryData().getMissionLogFileSet());
+        AARLogParser logParser = new AARLogParser(aarContext.getPreliminaryData().getMissionLogFileSet());
+        AARMissionLogRawData missionLogRawData = logParser.parseLogFilesForMission(campaign);
         aarContext.setMissionLogRawData(missionLogRawData);
     }
 }

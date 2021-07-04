@@ -11,7 +11,6 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase1.parse.AARLogParser;
-import pwcg.aar.inmission.phase1.parse.IAARLogParser;
 import pwcg.aar.inmission.phase1.parse.event.AType3;
 import pwcg.aar.inmission.phase2.logeval.AARDestroyedStatusEvaluator;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
@@ -29,7 +28,7 @@ import pwcg.core.location.Coordinate;
 public class AARPilotStatusDeadEvaluatorTest
 {
     @Mock private Campaign campaign;
-    @Mock private IAARLogParser aarLogParser;
+    @Mock private AARLogParser aarLogParser;
     @Mock private Coordinate downAt;
     @Mock private LogPilot resultCrewmember;
     @Mock private AARDestroyedStatusEvaluator destroyedStatusEvaluator;
