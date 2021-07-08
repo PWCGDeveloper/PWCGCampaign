@@ -127,6 +127,12 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
         
         JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished Reading", "JournalFinished", "Leave Journal", this);
         buttonPanel.add(finishedButton);
+        
+        JButton firstPageButton = PWCGButtonFactory.makeTranslucentMenuButton("First Page", "FirstPage", "Leave Journal", this);
+        buttonPanel.add(firstPageButton);
+        
+        JButton lastPageButton = PWCGButtonFactory.makeTranslucentMenuButton("Last Page", "LastPage", "Leave Journal", this);
+        buttonPanel.add(lastPageButton);
 
         journalPanel.add(buttonPanel, BorderLayout.NORTH);
         
@@ -262,7 +268,7 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
             this.remove(pageTurnerPanel);
         }
         
-        int numPages = indexPages.size() + journalReports.size();
+        int numPages = getNumPages();
         pageTurnerPanel = PageTurner.makeButtonPanel(pageNum+1, numPages, this);
         this.add(pageTurnerPanel, BorderLayout.SOUTH);
     }
@@ -281,7 +287,7 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
             journalBorderPanel.setLayout(new BorderLayout());
             journalBorderPanel.setOpaque(false);
             
-            if (pageNum%2 == 0)
+            if (pageNum % 2 == 0)
             {
                 Insets margins = PWCGMonitorBorders.calculateBorderMargins(60,80,60,20);
                 journalBorderPanel.setBorder(BorderFactory.createEmptyBorder(margins.top, margins.left, margins.bottom, margins.right)); 
@@ -321,6 +327,14 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
                 campaign.write();                
                 CampaignGuiContextManager.getInstance().popFromContextStack();
             }
+            else if (action.equalsIgnoreCase("FirstPage"))
+            {
+                firstPage();
+            }
+            else if (action.equalsIgnoreCase("LastPage"))
+            {
+                lastPage();
+            }
             else if (action.equalsIgnoreCase("Next Page"))
             {
                 nextPage();
@@ -341,18 +355,37 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
         }
     }
 
+    private void firstPage() throws PWCGException
+    {
+        SoundManager.getInstance().playSound("PageTurn.WAV");
+        this.pageNum = 0;
+        displayPages();
+    }
+
+    private void lastPage() throws PWCGException
+    {
+        SoundManager.getInstance().playSound("PageTurn.WAV");
+        this.pageNum = getNumPages() - 1;
+        displayPages();
+    }
+
     private void previousPage() throws PWCGException
     {
         SoundManager.getInstance().playSound("PageTurn.WAV");
         this.pageNum -= 2;
-        makePages();
-        refreshPages();
+        displayPages();
     }
 
     private void nextPage() throws PWCGException
     {
         SoundManager.getInstance().playSound("PageTurn.WAV");
         this.pageNum += 2;
+        displayPages();
+    }
+
+    private void displayPages() throws PWCGException
+    {
+        setPageNumToLeftPage();
         makePages();
         refreshPages();
     }
@@ -367,17 +400,25 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
                 if (journalKey.equals(action))
                 {
                     pageNum = thisPageNum;
-                    if ((pageNum % 2 ) != 0)
-                    {
-                        pageNum -= 1;
-                    }
-                    
-                    makePages();
-                    refreshPages();
+                    displayPages();
                 }
             }
 
         }
+    }
+
+    private void setPageNumToLeftPage()
+    {
+        if ((pageNum % 2 ) != 0)
+        {
+            pageNum -= 1;
+        }
+    }
+
+    private int getNumPages()
+    {
+        int numPages = indexPages.size() + journalReports.size();
+        return numPages;
     }
 
     private void refreshPages() throws PWCGException
@@ -389,10 +430,10 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
     private void calculateLinesPerPage()
     {
         MonitorSize monitorSize = PWCGMonitorSupport.getFrameHeight();
-        linesPerPage = 28;
+        linesPerPage = 26;
         if (monitorSize == MonitorSize.FRAME_MEDIUM)
         {
-            linesPerPage = 23;
+            linesPerPage = 21;
         }
         else if (monitorSize == MonitorSize.FRAME_SMALL)
         {

@@ -90,6 +90,12 @@ public class CampaignSquadronLogScreen extends ImageResizingPanel implements Act
         
         JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished Reading", "SquadronLogFinished", "Leave Squadron Log", this);
         buttonPanel.add(finishedButton);
+        
+        JButton firstPageButton = PWCGButtonFactory.makeTranslucentMenuButton("First Page", "FirstPage", "Leave Journal", this);
+        buttonPanel.add(firstPageButton);
+        
+        JButton lastPageButton = PWCGButtonFactory.makeTranslucentMenuButton("Last Page", "LastPage", "Leave Journal", this);
+        buttonPanel.add(lastPageButton);
 
 		squadronLogPanel.add(buttonPanel, BorderLayout.NORTH);
 		
@@ -223,6 +229,14 @@ public class CampaignSquadronLogScreen extends ImageResizingPanel implements Act
                 campaign.write();                
                 CampaignGuiContextManager.getInstance().popFromContextStack();
             }
+            else if (action.equalsIgnoreCase("FirstPage"))
+            {
+                firstPage();
+            }
+            else if (action.equalsIgnoreCase("LastPage"))
+            {
+                lastPage();
+            }
             else if (action.equalsIgnoreCase("Next Page"))
 			{
                 nextPage();
@@ -239,10 +253,30 @@ public class CampaignSquadronLogScreen extends ImageResizingPanel implements Act
 		}
 	}
 
+    private void firstPage() throws PWCGException
+    {
+        SoundManager.getInstance().playSound("PageTurn.WAV");
+        this.pageNum = 0;
+        displayPages();
+    }
+
+    private void lastPage() throws PWCGException
+    {
+        SoundManager.getInstance().playSound("PageTurn.WAV");
+        this.pageNum = getNumPages() - 1;
+        displayPages();
+    }
+
     private void previousPage() throws PWCGException
     {
         SoundManager.getInstance().playSound("PageTurn.WAV");
         this.pageNum -= 2;
+        displayPages();
+    }
+
+    private void displayPages() throws PWCGException
+    {
+        setPageNumToLeftPage();
         makePages();
         this.revalidate();
         this.repaint();
@@ -252,8 +286,20 @@ public class CampaignSquadronLogScreen extends ImageResizingPanel implements Act
     {
         SoundManager.getInstance().playSound("PageTurn.WAV");
         this.pageNum += 2;
-        makePages();
-        this.revalidate();
-        this.repaint();
+        displayPages();
+    }
+
+    private void setPageNumToLeftPage()
+    {
+        if ((pageNum % 2 ) != 0)
+        {
+            pageNum -= 1;
+        }
+    }
+
+    private int getNumPages()
+    {
+        int numPages = pages.size();
+        return numPages;
     }
 }

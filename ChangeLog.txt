@@ -28,6 +28,7 @@ Added Ground Unit Spawn Distance configuration in Mission Limits
 Fixed: In several places plaques were referred to as plagues.
 - Don't think they were visible to players but it bugged me
 Revamped promotions to require a certain number of ground kills for promotion of attack pilots.
+Added first page/last page buttons to journal and squadron log
 Fixed: Sometimes AAR events were not properly rolled up into the campaign
 Fixed: Removed a few defunct configuration settings
 Fixed: Preddy's status when killed on 12/25/1944
