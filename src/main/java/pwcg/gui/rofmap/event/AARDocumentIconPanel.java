@@ -35,8 +35,8 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
     protected String bodyText = "";
     protected String footerImagePath = "";
 
-    protected Font headerFont;
-    protected Font bodyFont;
+    protected Font headerFont = null;
+    protected Font bodyFont = null;
     protected boolean shouldDisplay = false;
     private Graphics originalDocumentImageGraphics = null;
 
@@ -63,9 +63,6 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
 
         try
         {
-            headerFont = PWCGMonitorFonts.getDecorativeFont();
-            bodyFont = PWCGMonitorFonts.getTypewriterFont();
-
             this.setOpaque(false);
 
             BufferedImage documentImage = buildDocumentImage();
@@ -105,7 +102,7 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
         originalDocumentImageGraphics = documentImage.getGraphics();
 
         BufferedImage documentImageWithHeader = addHeader(documentImage);
-        BufferedImage documentImageWithBody = addBody(documentImageWithHeader, 240);
+        BufferedImage documentImageWithBody = addBody(documentImageWithHeader, 90);
         BufferedImage documentImageWithFooter = addFooterImage(documentImageWithBody, 500);
         return documentImageWithFooter;
      }
@@ -116,35 +113,44 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
         {
             return documentImage;
         }
+        
+        if (headerFont == null)
+        {
+            headerFont = PWCGMonitorFonts.getDecorativeFontWithSize(PWCGMonitorFonts.LARGE_SCREEN_FONT_SIZE);
+        }
 
         List<String> bodyLinesOfText = formBodyLinesOfText(documentImage, headerText, headerFont);
 
         int lineHorizontalPosition = 40;
-        int lineVerticalPosition = 120;
+        int lineVerticalPosition = 30;
         for (String headerLineOfText :bodyLinesOfText)
         {
             documentImage = addTextLine(documentImage, lineHorizontalPosition, lineVerticalPosition, headerLineOfText, headerFont, JLabel.CENTER_ALIGNMENT);
-            lineVerticalPosition += 30;
+            lineVerticalPosition += 22;
         }
         
         return documentImage;
     }
 
-    private BufferedImage addBody(BufferedImage documentImage, int verticalStartPosition) throws IOException, PWCGException
+    private BufferedImage addBody(BufferedImage documentImage, int lineVerticalPosition) throws IOException, PWCGException
     {
         if (bodyText.isEmpty())
         {
             return documentImage;
         }
+        
+        if (bodyFont == null)
+        {
+            bodyFont = PWCGMonitorFonts.getTypewriterFontWithSize(PWCGMonitorFonts.SMALL_SCREEN_FONT_SIZE);
+        }
 
         List<String> bodyLinesOfText = formBodyLinesOfText(documentImage, bodyText, bodyFont);
 
         int lineHorizontalPosition = 40;
-        int lineVerticalPosition = verticalStartPosition;
         for (String bodyLineOfText :bodyLinesOfText)
         {
             documentImage = addTextLine(documentImage, lineHorizontalPosition, lineVerticalPosition, bodyLineOfText, bodyFont, JLabel.LEFT_ALIGNMENT);
-            lineVerticalPosition += 25;
+            lineVerticalPosition += 17;
         }
         
         return documentImage;

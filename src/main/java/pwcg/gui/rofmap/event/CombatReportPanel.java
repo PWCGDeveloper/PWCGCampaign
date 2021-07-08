@@ -42,12 +42,12 @@ public class CombatReportPanel extends AARDocumentIconPanel
 
 	private String makeMissionResults() throws PWCGException 
 	{
-		return "Remarks on flight and hostile aircraft\n\n" + combatReport.getHaReport();
+		return "Remarks on flight and hostile aircraft\n" + combatReport.getHaReport();
 	}
 
 	private String makeNarrative() throws PWCGException 
 	{
-		return "\n\nNarrative\n" + combatReport.getNarrative();
+		return "\nNarrative\n" + combatReport.getNarrative();
 	}
 
 	public void setCombatReport(CombatReport combatReport) 

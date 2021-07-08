@@ -8,6 +8,10 @@ import pwcg.core.exception.PWCGException;
 
 public class PWCGMonitorFonts 
 {
+    public static final int LARGE_SCREEN_FONT_SIZE = 22;
+    public static final int MEDIUM_SCREEN_FONT_SIZE = 16;
+    public static final int SMALL_SCREEN_FONT_SIZE = 14;
+
     public enum PWCGFonts
     {
         PrimaryFont,
@@ -100,12 +104,15 @@ public class PWCGMonitorFonts
 
     public static Font getTypewriterFont() throws PWCGException 
     {
-        String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.TypewriterFontKey);
         int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.TypewriterFontSizeKey);
-        fontSize = verifyFontSizeForScreenSize(fontSize);
-        
-        Font font = buildBoldFont(fontName, fontSize);
-        
+        fontSize = verifyFontSizeForScreenSize(fontSize);                
+        return getTypewriterFontWithSize(fontSize);
+    }
+
+    public static Font getTypewriterFontWithSize(int fontSize) throws PWCGException 
+    {
+        String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.TypewriterFontKey);
+        Font font = buildBoldFont(fontName, fontSize);        
         return font;
     }
 
@@ -122,12 +129,15 @@ public class PWCGMonitorFonts
 
     public static Font getDecorativeFont() throws PWCGException 
     {
-        String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.DecorativeFontKey);
         int fontSize = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.DecorativeFontSizeKey);
-        fontSize = verifyFontSizeForScreenSize(fontSize);
+        fontSize = verifyFontSizeForScreenSize(fontSize);        
+        return getDecorativeFontWithSize(fontSize);
+    }
 
+    public static Font getDecorativeFontWithSize(int fontSize) throws PWCGException 
+    {
+        String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.DecorativeFontKey);        
         Font font = buildBoldFont(fontName, fontSize);
-        
         return font;
     }
 
@@ -167,23 +177,23 @@ public class PWCGMonitorFonts
     {
         if (PWCGMonitorSupport.isVerySmallScreen())
         {
-            if (fontSize > 14)
+            if (fontSize > SMALL_SCREEN_FONT_SIZE)
             {
-                fontSize = 14;
+                fontSize = SMALL_SCREEN_FONT_SIZE;
             }
         }
         else if (PWCGMonitorSupport.isSmallScreen())
         {
-            if (fontSize > 16)
+            if (fontSize > MEDIUM_SCREEN_FONT_SIZE)
             {
-                fontSize = 16;
+                fontSize = MEDIUM_SCREEN_FONT_SIZE;
             }
         }
         else if (PWCGMonitorSupport.isMediumScreen())
         {
-            if (fontSize > 22)
+            if (fontSize > LARGE_SCREEN_FONT_SIZE)
             {
-                fontSize = 22;
+                fontSize = LARGE_SCREEN_FONT_SIZE;
             }
         }
         return fontSize;
