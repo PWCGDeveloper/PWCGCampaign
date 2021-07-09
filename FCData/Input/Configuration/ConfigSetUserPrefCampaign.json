@@ -24,7 +24,7 @@
 		"RemoveNonHistoricalSquadrons": {
 			"value": "0",
 			"label": "Remove non historical squadrons",
-			"help": "Remove non historical squadrons from missions"
+			"help": "Non historical squadrons will not be included in missions"
 		},
 		"SaveStupidAi": {
 			"value": "0",

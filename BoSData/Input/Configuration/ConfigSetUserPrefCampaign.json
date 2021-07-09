@@ -23,8 +23,8 @@
 		},
 		"RemoveNonHistoricalSquadrons": {
 			"value": "0",
-			"label": "Save AI From Itself",
-			"help": "AI pilots will only be killed in a mission if shot down"
+			"label": "Remove non historical squadrons",
+			"help": "Non historical squadrons will not be included in missions"
 		},
 		"SaveStupidAi": {
 			"value": "0",
