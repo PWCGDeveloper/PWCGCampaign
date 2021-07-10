@@ -100,12 +100,13 @@ public class AARPilotStatusEvaluator
 
     private void setCrewMemberDead(LogPlane resultPlane, LogPilot resultCrewmember) throws PWCGException 
     {        
-        if (resultCrewmember.getBotId().contains("4362239"))
-        {
-            System.out.println("");
-        }
         int oddsOfDeathDueToAiStupidity = 10;
-        IAType3 destroyedEventForPlane = logEventData.getDestroyedEventForPlaneByBot(resultCrewmember.getBotId());        
+        IAType3 destroyedEventForPlane = logEventData.getDestroyedEventForPlaneByBot(resultCrewmember.getBotId());
+        if (destroyedEventForPlane == null)
+        {
+            return;
+        }
+        
         pilotStatusDeadEvaluator.initialize(
                         resultPlane.getLandAt(), 
                         resultCrewmember,

@@ -42,7 +42,7 @@ public class AARPilotStatusDeadEvaluator
 
     public boolean isCrewMemberDead() throws PWCGException
     {
-    	boolean isCrewMemberDead = didCrewMemberDie();
+    	boolean isCrewMemberDead = destroyedStatusEvaluator.didCrewMemberDie(logPilot.getSerialNumber());
     	if (isCrewMemberDead)
     	{
     	    if (SerialNumber.getSerialNumberClassification(logPilot.getSerialNumber()) != SerialNumberClassification.PLAYER)
@@ -52,19 +52,6 @@ public class AARPilotStatusDeadEvaluator
     	}
         
         return isCrewMemberDead;
-    }
-
-    private boolean didCrewMemberDie()
-    {
-        for (LogPilot deadCrewMember : destroyedStatusEvaluator.getDeadLogPilots())
-        {
-            if (deadCrewMember.getSerialNumber() == logPilot.getSerialNumber())
-            {
-            	return true;
-            }
-        }
-
-        return false;
     }
 
     private boolean didSquadronAiMemberDieAfterSpecialConsiderations() throws PWCGException

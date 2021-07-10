@@ -1,7 +1,9 @@
 package pwcg.aar.inmission.phase2.logeval;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase1.parse.event.IAType3;
@@ -14,8 +16,8 @@ import pwcg.core.exception.PWCGException;
 
 public class AARDestroyedStatusEvaluator 
 {
-    private List <LogVictory> deadLogVehicles = new ArrayList <LogVictory>();
-    private List <LogPilot> deadLogPilots = new ArrayList <LogPilot>();
+    private List <LogVictory> deadLogVehicles = new ArrayList <>();
+    private Map <Integer, LogPilot> deadLogPilots = new HashMap <>();
 
     private AARVehicleBuilder vehicleBuilder;
     private AARDamageStatusEvaluator damageStatusEvaluator;
@@ -85,7 +87,7 @@ public class AARDestroyedStatusEvaluator
         LogPilot deadPilot = matchDeadBotToCrewMember(atype3);
         if (deadPilot != null)
         {
-        	deadLogPilots.add(deadPilot);
+        	deadLogPilots.put(deadPilot.getSerialNumber(), deadPilot);
         }
     }
     
@@ -126,9 +128,14 @@ public class AARDestroyedStatusEvaluator
         return deadLogVehicles;
     }
 
-    public List<LogPilot> getDeadLogPilots()
+    public boolean didCrewMemberDie(int serialNumber)
     {
-        return deadLogPilots;
+        if (deadLogPilots.containsKey(serialNumber))
+        {
+            return true;
+        }
+        
+        return false;
     }
 }
 

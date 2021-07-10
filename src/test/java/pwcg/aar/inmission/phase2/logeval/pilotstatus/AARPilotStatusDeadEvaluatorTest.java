@@ -1,8 +1,5 @@
 package pwcg.aar.inmission.phase2.logeval.pilotstatus;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,15 +34,12 @@ public class AARPilotStatusDeadEvaluatorTest
     @Mock private Squadron squadron;
     @Mock private CampaignPersonnelManager personnelManager;
     
-    private List<LogPilot> deadCrewMembers = new ArrayList<>();
     
     @Before
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         Mockito.when(resultCrewmember.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
-        Mockito.when(destroyedStatusEvaluator.getDeadLogPilots()).thenReturn(deadCrewMembers);
-        deadCrewMembers.clear();
         
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
         Mockito.when(personnelManager.getAnyCampaignMember(Mockito.anyInt())).thenReturn(pilot);
@@ -81,7 +75,7 @@ public class AARPilotStatusDeadEvaluatorTest
         downAt.setZPos(100.0);
         
         Mockito.when(resultCrewmember.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        deadCrewMembers.add(resultCrewmember);
+        Mockito.when(destroyedStatusEvaluator.didCrewMemberDie(resultCrewmember.getSerialNumber())).thenReturn(true);
 
         int oddsOfDeathDueToAiStupidity = 30;
         
@@ -104,7 +98,7 @@ public class AARPilotStatusDeadEvaluatorTest
         downAt.setZPos(100.0);
         
         Mockito.when(resultCrewmember.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        deadCrewMembers.add(resultCrewmember);
+        Mockito.when(destroyedStatusEvaluator.didCrewMemberDie(resultCrewmember.getSerialNumber())).thenReturn(true);
 
         int oddsOfDeathDueToAiStupidity = 30;
         
@@ -127,7 +121,7 @@ public class AARPilotStatusDeadEvaluatorTest
         downAt.setZPos(100.0);
         
         Mockito.when(destroyedEventForPlane.getVictor()).thenReturn("Joe Blow");
-        deadCrewMembers.add(resultCrewmember);
+        Mockito.when(destroyedStatusEvaluator.didCrewMemberDie(resultCrewmember.getSerialNumber())).thenReturn(true);
 
         int oddsOfDeathDueToAiStupidity = 30;
         
@@ -150,7 +144,7 @@ public class AARPilotStatusDeadEvaluatorTest
         downAt.setZPos(100.0);
         
         Mockito.when(destroyedEventForPlane.getVictor()).thenReturn(AARLogParser.UNKNOWN_MISSION_LOG_ENTITY);
-        deadCrewMembers.add(resultCrewmember);
+        Mockito.when(destroyedStatusEvaluator.didCrewMemberDie(resultCrewmember.getSerialNumber())).thenReturn(true);
 
         Coordinate fieldAt = new Coordinate();
         downAt.setXPos(5000.0);
@@ -201,7 +195,7 @@ public class AARPilotStatusDeadEvaluatorTest
         downAt.setZPos(100.0);
         
         Mockito.when(destroyedEventForPlane.getVictor()).thenReturn("Joe Blow");
-        deadCrewMembers.add(resultCrewmember);
+        Mockito.when(destroyedStatusEvaluator.didCrewMemberDie(resultCrewmember.getSerialNumber())).thenReturn(true);
 
         int oddsOfDeathDueToAiStupidity = 30;
         
@@ -224,7 +218,7 @@ public class AARPilotStatusDeadEvaluatorTest
         downAt.setZPos(100.0);
         
         Mockito.when(destroyedEventForPlane.getVictor()).thenReturn(AARLogParser.UNKNOWN_MISSION_LOG_ENTITY);
-        deadCrewMembers.add(resultCrewmember);
+        Mockito.when(destroyedStatusEvaluator.didCrewMemberDie(resultCrewmember.getSerialNumber())).thenReturn(true);
 
         Coordinate fieldAt = new Coordinate();
         fieldAt.setXPos(100.0);
@@ -252,7 +246,7 @@ public class AARPilotStatusDeadEvaluatorTest
         downAt.setZPos(100.0);
         
         Mockito.when(destroyedEventForPlane.getVictor()).thenReturn(AARLogParser.UNKNOWN_MISSION_LOG_ENTITY);
-        deadCrewMembers.add(resultCrewmember);
+        Mockito.when(destroyedStatusEvaluator.didCrewMemberDie(resultCrewmember.getSerialNumber())).thenReturn(true);
 
         Coordinate fieldAt = new Coordinate();
         fieldAt.setXPos(10000.0);

@@ -69,11 +69,10 @@ public class PersonnelLossHandler
         if (logPilot.getStatus() == SquadronMemberStatus.STATUS_KIA)
         {
             personnelLosses.addPersonnelKilled(pilot);
-        }
-
-        if (isGreatAce(pilot))
-        {
-            personnelLosses.addAcesKilled(pilot);
+            if (isGreatAce(pilot))
+            {
+                personnelLosses.addAcesKilled(pilot);
+            }
         }
     }
 
