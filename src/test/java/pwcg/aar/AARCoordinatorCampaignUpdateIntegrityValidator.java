@@ -51,7 +51,7 @@ public class AARCoordinatorCampaignUpdateIntegrityValidator
 	    {
             System.out.println("iteration date: " + DateUtils.getDateStringDashDelimitedYYYYMMDD(campaign.getDate()));
 
-            personnelLosses = aarContext.getPersonnelLosses().getSquadMembersLost();
+            personnelLosses = aarContext.getPersonnelLosses().getSquadMembersLostAndInjured();
             equipmentLosses = aarContext.getEquipmentLosses().getPlanesDestroyed();
             if (personnelLosses.size() > 0)
             {

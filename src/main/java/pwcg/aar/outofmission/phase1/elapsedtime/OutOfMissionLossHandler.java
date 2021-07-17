@@ -38,7 +38,7 @@ public class OutOfMissionLossHandler
         List<SquadronMember> acesKilled = aceLossHandler.acesKilledHistorically();
         for (SquadronMember deadAce : acesKilled)
         {
-            outOfMissionPersonnelLosses.addAcesKilled(deadAce);
+            outOfMissionPersonnelLosses.addPersonnelKilled(deadAce);
         }
     }    
 

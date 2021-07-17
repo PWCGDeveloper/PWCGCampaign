@@ -16,7 +16,6 @@ public class AARMissionEvaluationData
     private Map <String, LogPlane> planeAiEntities = new HashMap <>();
     private List<LogVictory> victoryResults = new ArrayList <>();
     private List<LogPilot> pilotsInMission = new ArrayList<>();
-    private List<LogPilot> aceCrewsInMission = new ArrayList<>();
     private List<LogBase> chronologicalEvents = new ArrayList<>();
     
     public LogPlane getPlaneInMissionBySerialNumber(Integer serialNumber) throws PWCGException
@@ -73,16 +72,6 @@ public class AARMissionEvaluationData
     public void setPilotsInMission(List<LogPilot> squadronCrewsInMission)
     {
         this.pilotsInMission = squadronCrewsInMission;
-    }
-
-    public List<LogPilot> getAceCrewsInMission()
-    {
-        return aceCrewsInMission;
-    }
-
-    public void setAceCrewsInMission(List<LogPilot> aceCrewsInMission)
-    {
-        this.aceCrewsInMission = aceCrewsInMission;
     }
 
     public List<LogBase> getChronologicalEvents()

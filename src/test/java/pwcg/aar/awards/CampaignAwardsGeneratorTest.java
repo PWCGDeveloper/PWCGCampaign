@@ -128,7 +128,7 @@ public class CampaignAwardsGeneratorTest
         squadronMembersInjured.put(nonPlayerSquadronMembers.getSquadronMemberList().get(3).getSerialNumber(), nonPlayerSquadronMembers.getSquadronMemberList().get(3));
         
         CampaignPersonnelTestHelper.addVictories(nonPlayerSquadronMembers.getSquadronMemberList().get(3), campaign.getDate(), 20);
-        nonPlayerSquadronMembers.getSquadronMemberList().get(3).setMissionFlown(100);
+        nonPlayerSquadronMembers.getSquadronMemberList().get(3).setMissionFlown(120);
 
         CampaignAwardsGenerator awardsGenerator = new CampaignAwardsGenerator(campaign, aarContext);
         AARPersonnelAwards campaignMemberAwards = awardsGenerator.createCampaignMemberAwards(new ArrayList<>(squadronMembersInjured.values()));

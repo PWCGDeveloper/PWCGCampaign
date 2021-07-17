@@ -40,7 +40,7 @@ public class PilotStatusEventGenerator
             pilotsLost.put(pilot.getSerialNumber(),pilotWoundedEvent);
         }
         
-        for (SquadronMember pilot : personnelResults.getAcesKilled().values())
+        for (SquadronMember pilot : personnelResults.getAcesKilled(campaign).values())
         {
             PilotStatusEvent aceKiaEvent = makePilotLostEvent(pilot, SquadronMemberStatus.STATUS_KIA);
             pilotsLost.put(pilot.getSerialNumber(),aceKiaEvent);

@@ -271,7 +271,7 @@ public class CampaignSquadronPersonnelUpdaterTest
 
         for (SquadronMember squadronMember : acesKilled.values())
         {
-            campaignUpdateData.getPersonnelLosses().addAcesKilled(squadronMember);
+            campaignUpdateData.getPersonnelLosses().addPersonnelKilled(squadronMember);
         }
 
         PersonnelUpdater personellUpdater = new PersonnelUpdater(campaign, campaignUpdateData);
@@ -292,7 +292,7 @@ public class CampaignSquadronPersonnelUpdaterTest
 
         for (SquadronMember squadronMember : acesKilled.values())
         {
-            campaignUpdateData.getPersonnelLosses().addAcesKilled(squadronMember);
+            campaignUpdateData.getPersonnelLosses().addPersonnelKilled(squadronMember);
         }
 
         PersonnelUpdater personellUpdater = new PersonnelUpdater(campaign, campaignUpdateData);

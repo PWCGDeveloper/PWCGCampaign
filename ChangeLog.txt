@@ -1,6 +1,9 @@
 
 ​At the PWCG web site
 
+13.0.1
+Fixed Inadvertently killing off player pilots once they get good.
+
 13.0.0
 Added Ground Free Hunt mission
 - Currently targets trains and trucks

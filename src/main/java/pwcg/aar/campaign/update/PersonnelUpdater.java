@@ -47,7 +47,7 @@ public class PersonnelUpdater
 
 	private void acesKilled() throws PWCGException
     {
-        for (Integer serialNumber : campaignUpdateData.getPersonnelLosses().getAcesKilled().keySet())
+        for (Integer serialNumber : campaignUpdateData.getPersonnelLosses().getAcesKilled(campaign).keySet())
         {
             setAceKilledInCampaign(serialNumber);
         }

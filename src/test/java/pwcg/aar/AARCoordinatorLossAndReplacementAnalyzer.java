@@ -66,7 +66,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
 	    	int viableSquadrons = PWCGContext.getInstance().getSquadronManager().getViableSquadrons(campaign).size();
             int airVictories = aarContext.getPersonnelAcheivements().getTotalAirToAirVictories();
             int groundVictories = aarContext.getPersonnelAcheivements().getTotalAirToGroundVictories();
-	    	int losses = aarContext.getPersonnelLosses().getSquadMembersLost().size();
+	    	int losses = aarContext.getPersonnelLosses().getSquadMembersLostAndInjured().size();
 	    	int replacements = campaign.getPersonnelManager().getReplacementCount();
 	    	int medalsAwarded = aarContext.getPersonnelAwards().getMedalsAwarded().size();
             int promotionsAwarded = aarContext.getPersonnelAwards().getPromotions().size();
@@ -87,7 +87,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
             
 	    	int axisPersonnelLosses = 0;
 	    	int alliedPersonnelLosses = 0;
-	    	for (SquadronMember lostPilot : aarContext.getPersonnelLosses().getSquadMembersLost().values())
+	    	for (SquadronMember lostPilot : aarContext.getPersonnelLosses().getSquadMembersLostAndInjured().values())
 	    	{
 	    		if (lostPilot.determineCountry(campaign.getDate()).getSide() == Side.ALLIED)
 	    		{

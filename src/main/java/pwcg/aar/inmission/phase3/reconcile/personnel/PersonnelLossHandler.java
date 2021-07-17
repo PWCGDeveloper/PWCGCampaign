@@ -4,7 +4,6 @@ import java.util.List;
 
 import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
-import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.squadmember.Ace;
@@ -31,11 +30,7 @@ public class PersonnelLossHandler
             CampaignPersonnelManager campaignPersonnelManager = campaign.getPersonnelManager();            
             SquadronMember pilot = campaignPersonnelManager.getAnyCampaignMember(pilotStatus.getSerialNumber());
 
-            if ((pilot instanceof Ace))
-            {
-                continue;
-            }
-            else if (pilot.isPlayer())
+            if (pilot.isPlayer())
             {
                 setStatus(pilotStatus, pilot);
             }
@@ -69,29 +64,6 @@ public class PersonnelLossHandler
         if (logPilot.getStatus() == SquadronMemberStatus.STATUS_KIA)
         {
             personnelLosses.addPersonnelKilled(pilot);
-            if (isGreatAce(pilot))
-            {
-                personnelLosses.addAcesKilled(pilot);
-            }
         }
-    }
-
-
-    private boolean isGreatAce(SquadronMember pilot) throws PWCGException
-    {
-        int numPilotAirVictories = pilot.getSquadronMemberVictories().getAirToAirVictoryCount();
-        ArmedService service = pilot.determineService(campaign.getDate());
-        if (numPilotAirVictories >= service.getAirVictoriesForgreatAce())
-        {
-            return true;
-        }
-        
-        int numPilotGroundVictories = pilot.getSquadronMemberVictories().getGroundVictoryCount();
-        if (numPilotGroundVictories >= service.getGroundVictoriesForgreatAce())
-        {
-            return true;
-        }
-        
-        return false;
     }
 }

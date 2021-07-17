@@ -71,7 +71,6 @@ public class AAREvaluator
         evaluationData.setPlaneAiEntities(aarVehicleBuilder.getLogPlanes());
         evaluationData.setVictoryResults(aarVictoryEvaluator.getVictoryResults());
         evaluationData.setPilotsInMission(crewBuilder.buildPilotsFromLogPlanes());
-        evaluationData.setAceCrewsInMission(crewBuilder.buildAcesFromLogPlanes());
         evaluationData.setChronologicalEvents(aarChronologicalEventListBuilder.getChronologicalEvents());
 
         return evaluationData;

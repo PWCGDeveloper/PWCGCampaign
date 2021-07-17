@@ -61,7 +61,7 @@ public class InMissionSquadronPilotStatusEventGeneratorTest extends AARTestSetup
         Mockito.when(personnelLosses.getPersonnelCaptured()).thenReturn(squadronMembersCapturedInMission);
         Mockito.when(personnelLosses.getPersonnelMaimed()).thenReturn(squadronMembersMaimedInMission);
         Mockito.when(personnelLosses.getPersonnelWounded()).thenReturn(squadronMembersWoundedInMission);
-        Mockito.when(personnelLosses.getAcesKilled()).thenReturn(acesKilledMissionSquadronInMission);
+        Mockito.when(personnelLosses.getAcesKilled(campaign)).thenReturn(acesKilledMissionSquadronInMission);
     }
     
 	@Test

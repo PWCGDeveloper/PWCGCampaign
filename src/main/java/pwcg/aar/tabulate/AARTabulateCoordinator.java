@@ -15,9 +15,7 @@ public class AARTabulateCoordinator
     private Campaign campaign;
     private AARContext aarContext;
 
-    public AARTabulateCoordinator (
-                    Campaign campaign, 
-                    AARContext aarContext)
+    public AARTabulateCoordinator (Campaign campaign, AARContext aarContext)
     {
         this.campaign = campaign;
         this.aarContext = aarContext;

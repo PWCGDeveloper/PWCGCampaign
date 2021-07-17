@@ -41,9 +41,10 @@ import pwcg.testutils.SquadronTestProfile;
 @RunWith(MockitoJUnitRunner.class)
 public class AARInMissionResultGeneratorTest
 {
+    private static final int GEORGES_GUYNEMER = 101064;
+    private static final int WERNER_VOSS = 101175;
     private Campaign campaign;
     private List<LogPilot> pilotStatusList;
-    private List<LogPilot> aceStatusList;
     private List<LogVictory> firmVictories;        
     private SquadronMember sergentInFlight;
     private SquadronMember corporalInFlight;
@@ -51,6 +52,8 @@ public class AARInMissionResultGeneratorTest
     private SquadronMember ltInFlight;
     private LogPlane playerPlaneVictor = new LogPlane(1);
     private LogPlane aiPlaneVictor = new LogPlane(2);
+    private LogPlane wernerVossPlaneVictor = new LogPlane(3);
+    private LogPlane gerogesGuynemerPlaneVictor = new LogPlane(4);
 
     @Mock private AARMissionEvaluationData evaluationData;
     @Mock private AARMissionLogFileSet missionLogFileSet;
@@ -66,16 +69,16 @@ public class AARInMissionResultGeneratorTest
         PWCGContext.setProduct(PWCGProduct.FC);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
         
-        aceStatusList = new ArrayList<>();
         pilotStatusList = new ArrayList<>();
         firmVictories = new ArrayList<>();
         playerDeclarationSet = new PlayerDeclarations();
 
         playerPlaneVictor.setSquadronId(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         aiPlaneVictor.setSquadronId(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        wernerVossPlaneVictor.setSquadronId(401010);
+        gerogesGuynemerPlaneVictor.setSquadronId(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         
         Mockito.when(evaluationData.getPilotsInMission()).thenReturn(pilotStatusList);
-        Mockito.when(evaluationData.getAceCrewsInMission()).thenReturn(aceStatusList);   
         Mockito.when(evaluationData.getVictoryResults()).thenReturn(firmVictories);   
         
         createCampaignMembersInMission();
@@ -92,6 +95,8 @@ public class AARInMissionResultGeneratorTest
         createVictory(playerPlaneVictor, SerialNumber.AI_STARTING_SERIAL_NUMBER + 100, SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 100);
         createVictory(aiPlaneVictor, SerialNumber.AI_STARTING_SERIAL_NUMBER + 101, SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 101);
         createVictory(aiPlaneVictor, SerialNumber.AI_STARTING_SERIAL_NUMBER + 102, SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 102);
+        createVictory(playerPlaneVictor, WERNER_VOSS, SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 103);
+        createVictory(aiPlaneVictor, GEORGES_GUYNEMER, SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 104);
         
         AARContext aarContext = new AARContext(campaign);
         aarContext.setMissionEvaluationData(evaluationData);
@@ -99,23 +104,23 @@ public class AARInMissionResultGeneratorTest
         AARInMissionResultGenerator coordinatorInMission = new AARInMissionResultGenerator(campaign, aarContext);
         coordinatorInMission.generateInMissionResults(playerDeclarations);
         
-        assert(aarContext.getPersonnelLosses().getPersonnelKilled().size() == 1);
+        assert(aarContext.getPersonnelLosses().getPersonnelKilled().size() == 3);
         assert(aarContext.getPersonnelLosses().getPersonnelCaptured().size() == 1);
         assert(aarContext.getPersonnelLosses().getPersonnelMaimed().size() == 1);
         assert(aarContext.getPersonnelLosses().getPersonnelWounded().size() == 2);
-        assert(aarContext.getPersonnelLosses().getAcesKilled().size() == 2);
+        assert(aarContext.getPersonnelLosses().getAcesKilled(campaign).size() == 2);
 
         List<Victory> aiPilotVictories = aarContext.getPersonnelAcheivements().getVictoryAwardsForPilot(aiPlaneVictor.getPilotSerialNumber());
         List<Victory> playerVictories = aarContext.getPersonnelAcheivements().getVictoryAwardsForPilot(playerPlaneVictor.getPilotSerialNumber());
         List<ClaimDeniedEvent> playerClaimsDenied = aarContext.getPersonnelAcheivements().getPlayerClaimsDenied();
-        assert (aiPilotVictories.size() == 2);
-        assert (playerVictories.size() == 1);
+        assert (aiPilotVictories.size() == 3);
+        assert (playerVictories.size() == 2);
         assert (playerClaimsDenied.size() == 2);
     }
     
     private void addPlayerDeclarations() throws PWCGException
     {
-        for (int i = 0; i < 3; ++i)
+        for (int i = 0; i < 4; ++i)
         {
             PlayerVictoryDeclaration declaration = new PlayerVictoryDeclaration();
             declaration.setAircraftType("albatrosd5");
@@ -170,16 +175,8 @@ public class AARInMissionResultGeneratorTest
     
     private void createAcesInMission() throws PWCGException
     {
-        LogPilot wernerVoss = new LogPilot();
-        wernerVoss.setSerialNumber(101175);
-        wernerVoss.setStatus(SquadronMemberStatus.STATUS_KIA);
-        
-        LogPilot georgesGuynemer = new LogPilot();
-        georgesGuynemer.setSerialNumber(101064);
-        georgesGuynemer.setStatus(SquadronMemberStatus.STATUS_KIA);
-
-        aceStatusList.add(wernerVoss);
-        aceStatusList.add(georgesGuynemer);
+        addSquadronPilot(WERNER_VOSS, SquadronMemberStatus.STATUS_KIA);
+        addSquadronPilot(GEORGES_GUYNEMER, SquadronMemberStatus.STATUS_KIA);
     }
 
     

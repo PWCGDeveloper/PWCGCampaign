@@ -1,9 +1,14 @@
 package pwcg.aar.data;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import pwcg.campaign.Campaign;
+import pwcg.campaign.squadmember.GreatAce;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.core.exception.PWCGException;
 
 public class AARPersonnelLosses
 {
@@ -12,20 +17,18 @@ public class AARPersonnelLosses
     private Map<Integer, SquadronMember> personnelMaimed = new HashMap<>();
     private Map<Integer, SquadronMember> personnelWounded = new HashMap<>();
     private Map<Integer, SquadronMember> personnelTransferredHome = new HashMap<>();
-    private Map<Integer, SquadronMember> acesKilled = new HashMap<>();
 
     
     public AARPersonnelLosses()
     {
     }
     
-    public Map<Integer, SquadronMember> getSquadMembersLost()
+    public Map<Integer, SquadronMember> getSquadMembersLostAndInjured()
     {
         Map<Integer, SquadronMember> squadronMembersLost = new HashMap<>();
         squadronMembersLost.putAll(personnelKilled);
-        squadronMembersLost.putAll(personnelMaimed);
         squadronMembersLost.putAll(personnelCaptured);
-        squadronMembersLost.putAll(acesKilled);
+        squadronMembersLost.putAll(personnelMaimed);
         squadronMembersLost.putAll(personnelTransferredHome);
         return squadronMembersLost;
     }
@@ -36,18 +39,28 @@ public class AARPersonnelLosses
         personnelMaimed.putAll(personnelEvents.getPersonnelMaimed());
         personnelCaptured.putAll(personnelEvents.getPersonnelCaptured());
         personnelWounded.putAll(personnelEvents.getPersonnelWounded());
-        acesKilled.putAll(personnelEvents.getAcesKilled());
         personnelTransferredHome.putAll(personnelEvents.getPersonnelTransferredHome());
     }
 
-    public boolean wasAceKilledInMission(Integer aceSerialNumber)
+    public Map<Integer, SquadronMember> getAcesKilled(Campaign campaign) throws PWCGException
     {
-        return acesKilled.containsKey(aceSerialNumber);
+        Map<Integer, SquadronMember> acesLost = new HashMap<>();
+        for (SquadronMember pilot : getSquadMembersLost())
+        {
+            if (GreatAce.isGreatAce(campaign, pilot))
+            {
+                acesLost.put(pilot.getSerialNumber(), pilot);
+            }
+        }
+        return acesLost;
     }
-
-    public Map<Integer, SquadronMember> getAcesKilled()
+    
+    private List<SquadronMember> getSquadMembersLost()
     {
-        return acesKilled;
+        Map<Integer, SquadronMember> squadronMembersLost = new HashMap<>();
+        squadronMembersLost.putAll(personnelKilled);
+        squadronMembersLost.putAll(personnelCaptured);
+        return new ArrayList<>(squadronMembersLost.values());
     }
 
     public Map<Integer, SquadronMember> getPersonnelKilled()
@@ -95,11 +108,6 @@ public class AARPersonnelLosses
         this.personnelCaptured.put(campaignMemberCaptured.getSerialNumber(), campaignMemberCaptured);
     }
 
-    public void addAcesKilled(SquadronMember aceKilled)
-    {
-        this.acesKilled.put(aceKilled.getSerialNumber(), aceKilled);
-    }
-    
     public void addPersonnelTransferredHome(SquadronMember campaignMemberTransferred)
     {
         this.personnelTransferredHome.put(campaignMemberTransferred.getSerialNumber(), campaignMemberTransferred);
@@ -111,7 +119,6 @@ public class AARPersonnelLosses
         allInjured.putAll(personnelWounded);
         allInjured.putAll(personnelMaimed);
         allInjured.putAll(personnelKilled);
-        allInjured.putAll(acesKilled);
         return allInjured;
     }
 

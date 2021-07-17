@@ -63,7 +63,7 @@ public class PersonnelSquadronLossHandlerTest
         PersonnelLossHandler pilotLossInMissionHandler = new PersonnelLossHandler(campaign);
         AARPersonnelLosses personnelLosses = pilotLossInMissionHandler.pilotsShotDown(pilotStatusList);
         
-        assert(personnelLosses.getPersonnelKilled().size() == 4);
+        assert(personnelLosses.getPersonnelKilled().size() == 5);
         assert(personnelLosses.getPersonnelCaptured().size() == 0);
         assert(personnelLosses.getPersonnelMaimed().size() == 0);
     }
@@ -90,7 +90,7 @@ public class PersonnelSquadronLossHandlerTest
         
         assert(personnelLosses.getPersonnelKilled().size() == 1);
         assert(personnelLosses.getPersonnelCaptured().size() == 0);
-        assert(personnelLosses.getPersonnelMaimed().size() == 1);
+        assert(personnelLosses.getPersonnelMaimed().size() == 2);
         assert(personnelLosses.getPersonnelWounded().size() == 2);
     }
 
@@ -109,13 +109,13 @@ public class PersonnelSquadronLossHandlerTest
         SquadronMember sltInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sous Lieutenant");
         addPilot(sltInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_CAPTURED);
 
-        addPilot(101064, SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
+        addPilot(101064, SquadronMemberStatus.STATUS_CAPTURED);
         
         PersonnelLossHandler pilotLossInMissionHandler = new PersonnelLossHandler(campaign);
         AARPersonnelLosses personnelLosses = pilotLossInMissionHandler.pilotsShotDown(pilotStatusList);
         
         assert(personnelLosses.getPersonnelKilled().size() == 0);
-        assert(personnelLosses.getPersonnelCaptured().size() == 2);
+        assert(personnelLosses.getPersonnelCaptured().size() == 3);
         assert(personnelLosses.getPersonnelMaimed().size() == 1);
     }
 

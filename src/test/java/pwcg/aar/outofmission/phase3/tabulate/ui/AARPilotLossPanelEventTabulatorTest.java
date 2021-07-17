@@ -48,7 +48,7 @@ public class AARPilotLossPanelEventTabulatorTest extends AARTestSetup
         Mockito.when(personnelLosses.getPersonnelKilled()).thenReturn(squadronMembersKilled);
         Mockito.when(personnelLosses.getPersonnelCaptured()).thenReturn(squadronMembersCaptured);
         Mockito.when(personnelLosses.getPersonnelMaimed()).thenReturn(squadronMembersMaimed);
-        Mockito.when(personnelLosses.getAcesKilled()).thenReturn(acesKilledMissionSquadron);
+        Mockito.when(personnelLosses.getAcesKilled(campaign)).thenReturn(acesKilledMissionSquadron);
         
         Mockito.when(aarContext.getPersonnelLosses()).thenReturn(personnelLosses);
     }

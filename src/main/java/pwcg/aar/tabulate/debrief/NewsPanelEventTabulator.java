@@ -55,10 +55,10 @@ public class NewsPanelEventTabulator
         return newsPanelData;
     }
     
-    private List <SquadronMember> mergeAcesKilledInMissionAndElapsedTime()
+    private List <SquadronMember> mergeAcesKilledInMissionAndElapsedTime() throws PWCGException
     {
         Map<Integer, SquadronMember> acesKilledMap = new HashMap<>();
-        acesKilledMap.putAll(aarContext.getPersonnelLosses().getAcesKilled());        
+        acesKilledMap.putAll(aarContext.getPersonnelLosses().getAcesKilled(campaign));        
         return new ArrayList<SquadronMember>(acesKilledMap.values());
     }
 }

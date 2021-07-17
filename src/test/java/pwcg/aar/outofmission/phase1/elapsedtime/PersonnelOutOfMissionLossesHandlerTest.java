@@ -66,7 +66,7 @@ public class PersonnelOutOfMissionLossesHandlerTest
         OutOfMissionLossHandler outOfMissionLossesHandler = new OutOfMissionLossHandler(campaign, aarContext);
         outOfMissionLossesHandler.lossesOutOfMission(new HashMap<Integer, SquadronMember>(), new HashMap<Integer, LogPlane>());
         AARPersonnelLosses lossesInMissionDataTotal = outOfMissionLossesHandler.getOutOfMissionPersonnelLosses();
-        assert (lossesInMissionDataTotal.getAcesKilled().size() > 0);
+        assert (lossesInMissionDataTotal.getAcesKilled(campaign).size() > 0);
     }
 
     @Test

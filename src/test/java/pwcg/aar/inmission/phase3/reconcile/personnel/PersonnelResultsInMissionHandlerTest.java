@@ -27,7 +27,6 @@ public class PersonnelResultsInMissionHandlerTest
 {
     private Campaign campaign;
     private List<LogPilot> pilotStatusList;
-    private List<LogPilot> aceStatusList;
     
     @Mock
     private AARMissionEvaluationData evaluationData;
@@ -38,11 +37,9 @@ public class PersonnelResultsInMissionHandlerTest
         PWCGContext.setProduct(PWCGProduct.FC);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
         
-        aceStatusList = new ArrayList<>();
         pilotStatusList = new ArrayList<>();
 
         Mockito.when(evaluationData.getPilotsInMission()).thenReturn(pilotStatusList);
-        Mockito.when(evaluationData.getAceCrewsInMission()).thenReturn(aceStatusList);        
     }
 
     @Test
@@ -54,11 +51,11 @@ public class PersonnelResultsInMissionHandlerTest
         PersonnelLossesInMissionHandler inMissionHandler = new PersonnelLossesInMissionHandler(campaign, evaluationData);
         inMissionHandler.personellChanges();
         
-        assert(inMissionHandler.personellChanges().getPersonnelKilled().size() == 1);
+        assert(inMissionHandler.personellChanges().getPersonnelKilled().size() == 3);
         assert(inMissionHandler.personellChanges().getPersonnelCaptured().size() == 1);
         assert(inMissionHandler.personellChanges().getPersonnelMaimed().size() == 1);
         assert(inMissionHandler.personellChanges().getPersonnelWounded().size() == 2);
-        assert(inMissionHandler.personellChanges().getAcesKilled().size() == 2);
+        assert(inMissionHandler.personellChanges().getAcesKilled(campaign).size() == 2);
     }
 
     private void createSquadronMembersInMission() throws PWCGException
@@ -89,8 +86,8 @@ public class PersonnelResultsInMissionHandlerTest
         georgesGuynemer.setSerialNumber(101064);
         georgesGuynemer.setStatus(SquadronMemberStatus.STATUS_KIA);
 
-        aceStatusList.add(wernerVoss);
-        aceStatusList.add(georgesGuynemer);
+        pilotStatusList.add(wernerVoss);
+        pilotStatusList.add(georgesGuynemer);
     }
     
     private void addSquadronPilot(int serialNumber, int status)
