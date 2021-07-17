@@ -83,7 +83,7 @@ public class GroundAttackWaypointHelper
 	private Coordinate calculateTargetFinalCoords(McuWaypoint approachWP) throws PWCGException
 	{
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        int bombFinalApproachDistance = productSpecificConfiguration.getBombFinalApproachDistance();
+        int bombFinalApproachDistance = productSpecificConfiguration.getBombFinalApproachDistance() - 1000;
 
         double angleToTarget = MathUtils.calcAngle(approachWP.getPosition(), flight.getTargetDefinition().getPosition());
         Coordinate coord = MathUtils.calcNextCoord(approachWP.getPosition(), angleToTarget, bombFinalApproachDistance);
