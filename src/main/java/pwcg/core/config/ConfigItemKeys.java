@@ -109,6 +109,7 @@ public class ConfigItemKeys
     public static final String MaxSmokeInMissionKey = "MaxSmokeInMission";
     public static final String MaxSmokeInAreaKey = "MaxSmokeInArea";
     public static final String GroundUnitSpawnDistanceKey = "GroundUnitSpawnDistance";
+    public static final String DeleteAfterDeathKey = "DeleteAfterDeath";
     
 	public static final String PatrolDistanceBaseKey = "PatrolDistanceBase";
 	public static final String PatrolDistanceRandomKey = "PatrolDistanceRandom";

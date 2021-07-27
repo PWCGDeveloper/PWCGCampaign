@@ -17,6 +17,8 @@ import pwcg.campaign.skin.Skin;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.utils.IndexGenerator;
+import pwcg.core.config.ConfigItemKeys;
+import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
@@ -80,7 +82,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         this.linkTrId = entity.getIndex();
     }
 
-    public PlaneMcu(Campaign campaign, EquippedPlane equippedPlane, ICountry country, SquadronMember pilot)
+    public PlaneMcu(Campaign campaign, SquadronMember pilot)
     {
         super();
 
@@ -90,13 +92,25 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         this.index = IndexGenerator.getInstance().getNextIndex();
         this.entity = new McuTREntity(index);
         this.linkTrId = entity.getIndex();
-
+    }
+    
+    public void buildPlane(EquippedPlane equippedPlane, ICountry country) throws PWCGException
+    {
         equippedPlane.copyTemplate(this);
-        this.setCountry(country);
         this.setName(pilot.getNameAndRank());
         this.setDesc(pilot.getNameAndRank());
-
         startInAir = FlightStartPosition.START_IN_AIR;
+        this.setCountry(country);
+        setDeleteAfterDeath();
+    }
+
+    private void setDeleteAfterDeath() throws PWCGException
+    {
+        int isDeleteAfterDeath = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.DeleteAfterDeathKey);
+        if (isDeleteAfterDeath == 0) 
+        {
+            deleteAfterDeath = 0;
+        }
     }
 
     public PlaneMcu copy()

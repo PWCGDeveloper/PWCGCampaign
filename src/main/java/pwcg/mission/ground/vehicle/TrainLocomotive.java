@@ -5,12 +5,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.PWCGLogger;
-import pwcg.mission.mcu.McuTREntity;
 
 public class TrainLocomotive extends Vehicle implements IVehicle
 {
@@ -19,36 +17,6 @@ public class TrainLocomotive extends Vehicle implements IVehicle
     public TrainLocomotive(VehicleDefinition vehicleDefinition)
     {
         super(vehicleDefinition);
-    }
-
-    public TrainLocomotive copy()
-    {
-        TrainLocomotive locomotive = new TrainLocomotive(this.vehicleDefinition);
-
-        locomotive.index = IndexGenerator.getInstance().getNextIndex();
-
-        locomotive.vehicleType = this.vehicleType;
-        locomotive.linkTrId = this.linkTrId;
-        locomotive.script = this.script;
-        locomotive.model = this.model;
-        locomotive.Desc = this.Desc;
-        locomotive.aiLevel = this.aiLevel;
-        locomotive.numberInFormation = this.numberInFormation;
-        locomotive.vulnerable = this.vulnerable;
-        locomotive.engageable = this.engageable;
-        locomotive.limitAmmo = this.limitAmmo;
-        locomotive.damageReport = this.damageReport;
-        locomotive.country = this.country;
-        locomotive.damageThreshold = this.damageThreshold;
-
-        locomotive.position = new Coordinate();
-        locomotive.orientation = new Orientation();
-
-        locomotive.entity = new McuTREntity(locomotive.index);
-
-        locomotive.populateEntity();
-
-        return locomotive;
     }
 
     public void write(BufferedWriter writer) throws PWCGException

@@ -10,6 +10,8 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.group.airfield.staticobject.StaticObject;
 import pwcg.campaign.utils.IndexGenerator;
+import pwcg.core.config.ConfigItemKeys;
+import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -89,7 +91,7 @@ public class Vehicle implements Cloneable, IVehicle
         return clone;
     }
 
-    public void makeVehicleFromDefinition(ICountry vehicleCountry)
+    public void makeVehicleFromDefinition(ICountry vehicleCountry) throws PWCGException
     {
         country = vehicleCountry;
         vehicleType = vehicleDefinition.getVehicleType();
@@ -100,6 +102,16 @@ public class Vehicle implements Cloneable, IVehicle
         setOrientation(new Orientation());
         populateEntity();
         buildAssociatedBlock();
+        setDeleteAfterDeath();
+    }
+
+    private void setDeleteAfterDeath() throws PWCGException
+    {
+        int isDeleteAfterDeath = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.DeleteAfterDeathKey);
+        if (isDeleteAfterDeath == 0) 
+        {
+            deleteAfterDeath = 0;
+        }
     }
 
     public void populateEntity()
@@ -108,7 +120,7 @@ public class Vehicle implements Cloneable, IVehicle
         entity.setOrientation(orientation);
     }
 
-    private void buildAssociatedBlock()
+    private void buildAssociatedBlock() throws PWCGException
     {
         VehicleDefinition blockDefinition = PWCGContext.getInstance().getStaticObjectDefinitionManager()
                 .getVehicleDefinitionByType(vehicleDefinition.getAssociatedBlock());

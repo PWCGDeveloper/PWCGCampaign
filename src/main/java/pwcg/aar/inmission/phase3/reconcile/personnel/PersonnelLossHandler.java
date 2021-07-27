@@ -6,7 +6,6 @@ import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
-import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;

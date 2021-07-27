@@ -3,6 +3,9 @@
 
 13.0.2
 Added Player Pilot chalk board option to see only human pilots (alive and dead)
+Added config option not to delete plaes and vehicles after death
+- Main Menu->Configuration->User Preferences set delete after death to 0 (zero)
+- The config is global so will apply to all campaigns
 Fixed Moved target final WP closer to target to ensure attack area triggering
 
 13.0.1
