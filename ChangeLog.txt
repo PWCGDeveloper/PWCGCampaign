@@ -1,6 +1,10 @@
 
 ​At the PWCG web site
 
+13.0.2
+Added Player Pilot chalk board option to see only human pilots (alive and dead)
+Fixed Moved target final WP closer to target to ensure attack area triggering
+
 13.0.1
 Fixed Inadvertently killing off player pilots once they get good.
 

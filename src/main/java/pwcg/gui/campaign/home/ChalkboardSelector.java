@@ -47,17 +47,14 @@ public class ChalkboardSelector extends JPanel implements ActionListener
 
     public void createSelectorPanel() throws PWCGException
     {
-        JPanel selectorPanel = new JPanel(new GridLayout(0, 2));
+        JPanel selectorPanel = new JPanel(new GridLayout(0, 3));
         selectorPanel.setOpaque(false);
-
-        JLabel space1 = new JLabel("");
-        selectorPanel.add(space1);
-
-        JLabel space2 = new JLabel("");
-        selectorPanel.add(space2);
 
         JRadioButton pilotsButton = makeRadioButton("Pilots", "CampPilots", "Show squadron pilot chalk board");
         selectorPanel.add(pilotsButton);
+
+        JRadioButton playerPilotsButton = makeRadioButton("Player Pilots", "CampPlayerPilots", "Show player pilots chalk board");
+        selectorPanel.add(playerPilotsButton);
 
         JRadioButton topAcesButton = makeRadioButton("Top Aces: All", "CampTopAces", "Show top aces chalk board");
         selectorPanel.add(topAcesButton);
@@ -65,11 +62,13 @@ public class ChalkboardSelector extends JPanel implements ActionListener
         JRadioButton equipmentButton = makeRadioButton("Equipment", "Equipment", "Show equipment chalk board");
         selectorPanel.add(equipmentButton);
 
+        selectorPanel.add(new JLabel(""));
+
         JRadioButton topAcesForServiceButton = makeRadioButton("Top Aces: Service", "CampTopAcesService", "Show top aces chalk board for your service");
         selectorPanel.add(topAcesForServiceButton);
 
-        JLabel space3 = new JLabel("");
-        selectorPanel.add(space3);
+        selectorPanel.add(new JLabel(""));
+        selectorPanel.add(new JLabel(""));
 
         JRadioButton topAcesNoHistoricalButton = makeRadioButton("Top Aces: Exclude Historical", "CampTopAcesNoHistorical", "Show top aces chalk board with no historical aces");
         selectorPanel.add(topAcesNoHistoricalButton); 
@@ -110,6 +109,10 @@ public class ChalkboardSelector extends JPanel implements ActionListener
             if (action.equalsIgnoreCase("CampPilots"))
             {
                 createPlayerSquadronContext();
+            }            
+            else if (action.equalsIgnoreCase("CampPlayerPilots"))
+            {
+                createPlayerPilotsContext();
             }
             else if (action.equalsIgnoreCase("CampTopAcesService"))
             {
@@ -171,6 +174,16 @@ public class ChalkboardSelector extends JPanel implements ActionListener
         campaignHome.createNewContext(chalkboardPanel, squadronPanel);
     }
 
+    public void createPlayerPilotsContext() throws PWCGException 
+    {
+        List<SquadronMember> playerPilots = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+        JPanel chalkboardPanel =  CampaignHomeCenterPanelFactory.makeCampaignHomeCenterPanel(campaignHome, playerPilots);
+        
+        JPanel playerPilotPanel = CampaignHomeRightPanelFactory.makeCampaignHomeAcesRightPanel(campaignHome, playerPilots);
+
+        campaignHome.createNewContext(chalkboardPanel, playerPilotPanel);
+    }
+    
     private List<SquadronMember> makePilotList() throws PWCGException 
     {
         SquadronMember referencePlayer = campaign.findReferencePlayer();

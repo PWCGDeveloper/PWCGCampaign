@@ -27,6 +27,8 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.iconicbattles.IconicBattlesGUI;
+import pwcg.gui.iconicbattles.IconicBattlesGenerator;
+import pwcg.gui.iconicbattles.IconicBattlesGeneratorData;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
@@ -34,6 +36,7 @@ public class PwcgIconicMissionGenerationScreen extends ImageResizingPanel implem
 {
     private static final long serialVersionUID = 1L;
     private Map<String, IconicBattlesGUI> iconicBattleGUIs = new HashMap<String, IconicBattlesGUI>();
+    private String selectedIconicBattle;
     private PwcgThreePanelUI pwcgThreePanel;
     private ButtonGroup buttonGroup = new ButtonGroup();
 
@@ -74,6 +77,9 @@ public class PwcgIconicMissionGenerationScreen extends ImageResizingPanel implem
 
         JButton cancelButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished with iconic missions", this);
         buttonPanel.add(cancelButton);
+
+        JButton generateMissionButton = PWCGButtonFactory.makeTranslucentMenuButton("Generate Mission", "Generate Mission", "Generate selected iconic mission", this);
+        buttonPanel.add(generateMissionButton);
 
         navPanel.add(buttonPanel, BorderLayout.NORTH);
         
@@ -153,18 +159,28 @@ public class PwcgIconicMissionGenerationScreen extends ImageResizingPanel implem
                 CampaignGuiContextManager.getInstance().popFromContextStack();
                 return;
             }
+            else if (action.equalsIgnoreCase("Generate Mission"))
+            {
+                if (iconicBattleGUIs.containsKey(selectedIconicBattle))
+                {
+                    IconicBattlesGUI selectedIconicBattleGUI = iconicBattleGUIs.get(selectedIconicBattle);
+                    IconicBattlesGeneratorData iconicBattleData = selectedIconicBattleGUI.getIconicBattleData();
+                    IconicBattlesGenerator iconicBattlesGenerator = new IconicBattlesGenerator(iconicBattleData);
+                    iconicBattlesGenerator.generateIconicMission();
+                }
+            }
             else
             {
+                selectedIconicBattle = action;
                 IconicBattlesGUI newIconicBattlePanel = null;
-                
-                if (iconicBattleGUIs.containsKey(action))
+                if (iconicBattleGUIs.containsKey(selectedIconicBattle))
                 {
-                    newIconicBattlePanel = iconicBattleGUIs.get(action);
+                    newIconicBattlePanel = iconicBattleGUIs.get(selectedIconicBattle);
                 }
                 else
                 {
-                    newIconicBattlePanel = createIconicBattlePanel(action);
-                    iconicBattleGUIs.put(action, newIconicBattlePanel);
+                    newIconicBattlePanel = createIconicBattlePanel(selectedIconicBattle);
+                    iconicBattleGUIs.put(selectedIconicBattle, newIconicBattlePanel);
                 }
 
                 pwcgThreePanel.setCenterPanel(newIconicBattlePanel);
