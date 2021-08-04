@@ -85,8 +85,8 @@ public class GroundAttackWaypointHelper
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int bombFinalApproachDistance = productSpecificConfiguration.getBombFinalApproachDistance() - 1000;
 
-        double angleToTarget = MathUtils.calcAngle(approachWP.getPosition(), flight.getTargetDefinition().getPosition());
-        Coordinate coord = MathUtils.calcNextCoord(approachWP.getPosition(), angleToTarget, bombFinalApproachDistance);
+        double angleFromTarget = MathUtils.calcAngle(flight.getTargetDefinition().getPosition(), approachWP.getPosition());
+        Coordinate coord = MathUtils.calcNextCoord(flight.getTargetDefinition().getPosition(), angleFromTarget, bombFinalApproachDistance);
         coord.setYPos(attackAltitude);
 		return coord;
 	}   
