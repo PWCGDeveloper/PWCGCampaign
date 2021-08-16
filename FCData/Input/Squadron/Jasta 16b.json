@@ -7,7 +7,7 @@
   "planeAssignments": [
     {
       "archType": "pfalz",
-      "squadronIntroduction": "19170801",
+      "squadronIntroduction": "19170601",
       "squadronWithdrawal": "19180710"
     },
 	    {
@@ -22,13 +22,13 @@
     }
   ],
   "airfields": {
-    "19170801": "Douai South"
+    "19170601": "Douai South"
   },
   "skins": [
     {
       "skinName": "PD3a_J16_JUL17",
       "planeType": "pfalzd3a",
-      "startDate": "19170801",
+      "startDate": "19170601",
       "endDate": "19180415",
       "squadId": 401016,
       "country": "Germany",
@@ -103,7 +103,7 @@
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19170801",
+        "startDate": "19170601",
         "endDate": "19181201",
         "weightedRoles": [
           {

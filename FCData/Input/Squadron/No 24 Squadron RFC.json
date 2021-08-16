@@ -7,18 +7,18 @@
   "planeAssignments": [
     {
       "archType": "se5",
-      "squadronIntroduction": "19170801",
+      "squadronIntroduction": "19170601",
       "squadronWithdrawal": "19181201"
     }
   ],
   "airfields": {
-    "19170801": "Mont St Eloi"
+    "19170601": "Mont St Eloi"
   },
   "skins": [
     {
       "skinName": "SE5a_RFC24_Default_E",
       "planeType": "se5a",
-      "startDate": "19170801",
+      "startDate": "19170601",
       "endDate": "19180321",
       "squadId": 302024,
       "country": "BRITAIN",
@@ -43,7 +43,7 @@
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19170801",
+        "startDate": "19170601",
         "endDate": "19180406",
         "weightedRoles": [
           {

@@ -23,7 +23,7 @@ public class Halberstadtcl2auPayload extends PlanePayload implements IPlanePaylo
         setAvailablePayload(-4, "10000", PayloadElement.ALDIS_SIGHT);
         setAvailablePayload(-3, "1000", PayloadElement.BECKER_GUN_TURRET);
         setAvailablePayload(-2, "100", PayloadElement.TWIN_GUN_TURRET);
-        setAvailablePayload(-1, "10", PayloadElement.TWIN_SPANDAU);
+        setAvailablePayload(-1, "10", PayloadElement.TWIN_FRONT);
         
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(1, "10000001", PayloadElement.BOMBS);

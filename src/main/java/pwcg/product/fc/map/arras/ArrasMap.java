@@ -21,6 +21,8 @@ public class ArrasMap extends PWCGMap
     static
     { 
         missionSpacingMyDate = new TreeMap<>(); 
+        missionSpacingMyDate.put("19170601", 2); 
+        missionSpacingMyDate.put("19170701", 2); 
         missionSpacingMyDate.put("19170801", 2); 
         missionSpacingMyDate.put("19171120", 1); 
         missionSpacingMyDate.put("19171203", 4); 

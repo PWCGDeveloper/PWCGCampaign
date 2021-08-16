@@ -1,5 +1,11 @@
 
-​At the PWCG web site
+13.1.0
+Added SPAD VII Early, Pfalz D.XII, and Airco DH4
+Added German AAA Half Track
+Add decimal level turbulence
+Clean up mission files immediately.
+Cannot add new pilot if all pilots are dead
+
 
 13.0.2
 Added Player Pilot chalk board option to see only human pilots (alive and dead)

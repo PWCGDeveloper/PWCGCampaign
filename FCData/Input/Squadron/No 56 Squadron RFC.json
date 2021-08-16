@@ -7,18 +7,18 @@
   "planeAssignments": [
     {
       "archType": "se5",
-      "squadronIntroduction": "19170801",
+      "squadronIntroduction": "19170601",
       "squadronWithdrawal": "19181201"
     }
   ],
   "airfields": {
-    "19170801": "Izel Le Hameau"
+    "19170601": "Izel Le Hameau"
   },
   "skins": [
     {
       "skinName": "SE5a_RFC56_Default_26AUG17",
       "planeType": "se5a",
-      "startDate": "19170801",
+      "startDate": "19170601",
       "endDate": "19170924",
       "squadId": 302056,
       "country": "BRITAIN",
@@ -53,7 +53,7 @@
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19170801",
+        "startDate": "19170601",
         "endDate": "19180406",
         "weightedRoles": [
           {

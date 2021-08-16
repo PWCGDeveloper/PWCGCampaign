@@ -24,6 +24,10 @@ public class FCPayloadFactory implements IPayloadFactory
         {
             return new PfalzD3Payload(planeType);
         }
+        else if (attributeMapping == FCPlaneAttributeMapping.PFALZD12)
+        {
+            return new PfalzD12Payload(planeType);
+        }
         else if (attributeMapping == FCPlaneAttributeMapping.FOKKERDR1)
         {
             return new FokkerDRIPayload(planeType);
@@ -64,9 +68,17 @@ public class FCPayloadFactory implements IPayloadFactory
         {
             return new Nieuport28Payload(planeType);
         }
+        else if (attributeMapping == FCPlaneAttributeMapping.SPAD7EARLY)
+        {
+            return new Spad7EarlyPayload(planeType);
+        }
         else if (attributeMapping == FCPlaneAttributeMapping.SPAD13)
         {
             return new Spad13Payload(planeType);
+        }
+        else if (attributeMapping == FCPlaneAttributeMapping.DH4)
+        {
+            return new AircoDH4Payload(planeType);
         }
         else if (attributeMapping == FCPlaneAttributeMapping.BRISTOLF2BF2)
         {

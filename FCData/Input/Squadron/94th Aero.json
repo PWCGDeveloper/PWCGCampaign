@@ -17,13 +17,13 @@
     }
   ],
   "airfields": {
-    "19170801": "Villers Bretonneux"
+    "19180301": "Villers Bretonneux"
   },
   "skins": [
     {
       "skinName": "Spad13_US94_Default",
       "planeType": "spad13",
-      "startDate": "19170801",
+      "startDate": "19180301",
       "endDate": "19181201",
       "squadId": 303094,
       "country": "USA",
@@ -38,7 +38,7 @@
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19170801",
+        "startDate": "19180301",
         "endDate": "19181201",
         "weightedRoles": [
           {

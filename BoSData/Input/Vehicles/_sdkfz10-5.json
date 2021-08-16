@@ -1,8 +1,8 @@
 {
   "scriptDir": "vehicles\\",
-  "modelDir": "vehicles\\_gaz-mm\\",
-  "vehicleType": "_gaz-mm-72k",
-  "vehicleName": "Sd.Kfz. 10/5 Flak 38",
+  "modelDir": "vehicles\\_sdkfz10\\",
+  "vehicleType": "_sdkfz10-5",
+  "vehicleName": "Sd.Kfz.10-5",
   "displayName": "truck",
   "countries": [
     "GERMANY"

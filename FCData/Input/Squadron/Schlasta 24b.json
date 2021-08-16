@@ -7,12 +7,12 @@
   "planeAssignments": [
     {
       "archType": "halberstadtcl",
-      "squadronIntroduction": "19170801",
+      "squadronIntroduction": "19170601",
       "squadronWithdrawal": "19181201"
     }
   ],
   "airfields": {
-    "19170801": "Cambrai South"
+    "19170601": "Cambrai South"
   },
   "skins": [],
   "squadHistory": {
@@ -22,7 +22,7 @@
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19170801",
+        "startDate": "19170601",
         "endDate": "19181201",
         "weightedRoles": [
           {

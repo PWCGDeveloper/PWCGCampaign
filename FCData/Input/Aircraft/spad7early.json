@@ -1,0 +1,29 @@
+{
+	"type": "spad7early",
+	"archType": "spad",
+	"side": "ALLIED",
+	"displayName": "SPAD 7.C1 150hp",
+	"script": "LuaScripts\\WorldObjects\\Planes\\spad7early.txt",
+	"model": "graphics\\planes\\spad7early\\spad7early.mgm",
+	"primaryUsedBy": [
+		"FRANCE"
+	],
+	"stockModifications": [
+		"SPEED_GUAGE",
+		"COCKPIT_LIGHT"
+	],
+	"desc": "",
+	"cruisingSpeed": 140,
+	"climbOutRate": 160,
+	"goodness": 50,
+	"range": 200,
+	"isFlyable": true,
+	"isNovice": false,
+	"planeSize": "PLANE_SIZE_SMALL",
+	"roles": [
+		"ROLE_FIGHTER"
+	],
+	"introduction": "19161001",
+	"endProduction": "19170801",
+	"withdrawal": "19170901"
+}

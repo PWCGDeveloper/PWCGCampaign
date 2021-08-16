@@ -7,18 +7,18 @@
   "planeAssignments": [
     {
       "archType": "spad",
-      "squadronIntroduction": "19170801",
+      "squadronIntroduction": "19170601",
       "squadronWithdrawal": "19181201"
     }
   ],
   "airfields": {
-    "19170801": "Beauvalt East"
+    "19170601": "Beauvalt East"
   },
   "skins": [
     {
       "skinName": "PC_Spad13_SPA103_Generic",
       "planeType": "spad13",
-      "startDate": "19170801",
+      "startDate": "19170601",
       "endDate": "19181201",
       "squadId": 301103,
       "country": "FRANCE",
@@ -33,7 +33,7 @@
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19170801",
+        "startDate": "19170601",
         "endDate": "19181201",
         "weightedRoles": [
           {

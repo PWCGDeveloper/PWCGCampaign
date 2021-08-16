@@ -7,7 +7,7 @@
 	"planeAssignments": [
 		{
 			"archType": "albatrosd",
-			"squadronIntroduction": "19170801",
+			"squadronIntroduction": "19170601",
 			"squadronWithdrawal": "19180720"
 		},
 		{
@@ -27,7 +27,7 @@
 		}
 	],
 	"airfields": {
-		"19170801": "Cambrai North"
+		"19170601": "Cambrai North"
 	},
 	"skins": [
 		{
@@ -108,7 +108,7 @@
 	"squadronRoles": {
 		"squadronRolePeriods": [
 			{
-				"startDate": "19170801",
+				"startDate": "19170601",
 				"endDate": "19181201",
 				"weightedRoles": [
 					{

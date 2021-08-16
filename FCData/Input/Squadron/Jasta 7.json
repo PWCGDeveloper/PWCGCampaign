@@ -7,7 +7,7 @@
   "planeAssignments": [
     {
       "archType": "pfalz",
-      "squadronIntroduction": "19170801",
+      "squadronIntroduction": "19170601",
       "squadronWithdrawal": "19180720"
     },
 	{
@@ -22,7 +22,7 @@
     }
   ],
   "airfields": {
-    "19170801": "Lille North"
+    "19170601": "Lille North"
   },
   "skins": [
     {
@@ -59,7 +59,7 @@
     {
       "skinName": "PD3a_J7_JUL17",
       "planeType": "pfalzd3a",
-      "startDate": "19170801",
+      "startDate": "19170601",
       "endDate": "19180415",
       "squadId": 401007,
       "country": "Germany",
@@ -79,7 +79,7 @@
     {
       "skinName": "FDR1_J7_Default_Early",
       "planeType": "fokkerdr1",
-      "startDate": "19170801",
+      "startDate": "19170601",
       "endDate": "19180215",
       "squadId": 401007,
       "country": "Germany",
@@ -144,7 +144,7 @@
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19170801",
+        "startDate": "19170601",
         "endDate": "19181201",
         "weightedRoles": [
           {

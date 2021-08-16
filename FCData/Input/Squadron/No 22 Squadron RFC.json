@@ -7,18 +7,18 @@
   "planeAssignments": [
     {
       "archType": "bristolf2b",
-      "squadronIntroduction": "19170801",
+      "squadronIntroduction": "19170601",
       "squadronWithdrawal": "19181201"
     }
   ],
   "airfields": {
-    "19170801": "Herlin le Sec"
+    "19170601": "Herlin le Sec"
   },
   "skins": [
     {
       "skinName": "F2b_RFC22_Default",
       "planeType": "bristolf2bf2",
-      "startDate": "19170801",
+      "startDate": "19170601",
       "endDate": "19181201",
       "squadId": 302022,
       "country": "Britain",
@@ -28,7 +28,7 @@
     {
       "skinName": "F2b_F3_RFC22_Default",
       "planeType": "bristolf2bf3",
-      "startDate": "19170801",
+      "startDate": "19170601",
       "endDate": "19181201",
       "squadId": 302022,
       "country": "Britain",
@@ -43,7 +43,7 @@
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19170801",
+        "startDate": "19170601",
         "endDate": "19181201",
         "weightedRoles": [
           {
