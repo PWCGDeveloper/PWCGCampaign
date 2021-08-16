@@ -7,7 +7,6 @@ import pwcg.mission.flight.IFlight;
 
 public interface IPlanePayload
 {
-    public List<PayloadDesignation> getPayloadDesignations() throws PWCGException;
     public PayloadDesignation getSelectedPayloadDesignation() throws PWCGException;
     public int getPayloadIdByDescription(String payloadDescription);
     public String getPayloadMaskByDescription(String payloadDescription);
@@ -23,4 +22,6 @@ public interface IPlanePayload
     public void noOrdnance();
     List<PayloadElement> getStockModifications();
     public boolean isOrdnance();
+    List<PayloadDesignation> getOptionalPayloadModifications();
+    List<PayloadDesignation> getPayloadDesignations();
 }

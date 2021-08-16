@@ -113,19 +113,6 @@ public abstract class PlanePayload implements IPlanePayload
         
         return fullModificationMask;
     }
-    
-    public List<PayloadDesignation> getPayloadDesignations()
-    {
-        List<PayloadDesignation> selectablePayloadDesignations = new ArrayList<>();
-        for (PayloadDesignation payloadDesignation : availablePayload.values())
-        {
-            if (!isStockModification(payloadDesignation))
-            {
-                selectablePayloadDesignations.add(payloadDesignation);
-            }
-        }
-        return selectablePayloadDesignations;
-    }
 
     private void addStockModifications()
     {
@@ -141,6 +128,23 @@ public abstract class PlanePayload implements IPlanePayload
         {
             for (PayloadElement payloadElementInDesignation : payloadDesignation.getPayloadElements())
             if (stockModification == payloadElementInDesignation)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    private boolean isMissionSpecialModification(PayloadDesignation payloadDesignation)
+    {
+        for (PayloadElement payloadElement : payloadDesignation.getPayloadElements())
+        {
+            if (payloadElement == PayloadElement.CAMERA)
+            {
+                return true;
+            }
+            
+            if (payloadElement == PayloadElement.RADIO)
             {
                 return true;
             }
@@ -196,6 +200,41 @@ public abstract class PlanePayload implements IPlanePayload
     public List<PayloadElement> getStockModifications()
     {
         return stockModifications;
+    }
+    
+    @Override
+    public List<PayloadDesignation> getOptionalPayloadModifications()
+    {
+        List<PayloadDesignation> availableModifications = new ArrayList<>();
+        for (Integer payloadKey : availablePayload.keySet())
+        {
+            if (payloadKey < 0)
+            {
+                PayloadDesignation payloadDesignation = availablePayload.get(payloadKey);
+                if (!isStockModification(payloadDesignation))
+                {
+                    if (!isMissionSpecialModification(payloadDesignation))
+                    {
+                        availableModifications.add(payloadDesignation);
+                    }
+                }
+            }
+        }
+        return availableModifications;
+    }
+
+    @Override
+    public List<PayloadDesignation> getPayloadDesignations()
+    {
+        List<PayloadDesignation> availableModifications = new ArrayList<>();
+        for (Integer payloadKey : availablePayload.keySet())
+        {
+            if (payloadKey >= 0)
+            {
+                availableModifications.add(availablePayload.get(payloadKey));
+            }
+        }
+        return availableModifications;
     }
 
     abstract public int createWeaponsPayload(IFlight flight) throws PWCGException;

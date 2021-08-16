@@ -143,12 +143,12 @@ public enum PayloadElement
     WING_CUTOUT(PayloadElementCategory.MODIFICATION, "Wing Cutout", 0),
     DUST_DEFLECTOR(PayloadElementCategory.MODIFICATION, "Dust Deflector", 0),
 
-    TWIN_FRONT(PayloadElementCategory.MODIFICATION, "Twin Front Guns", 50),
-    LEWIS_TOP(PayloadElementCategory.MODIFICATION, "Lewis Gun Top", 50),
-    LEWIS_WING(PayloadElementCategory.MODIFICATION, "Lewis Gun Wing", 50),
-    BALLOON_GUN(PayloadElementCategory.MODIFICATION, "Balloon Gun", 50),
-    BECKER_GUN_TURRET(PayloadElementCategory.MODIFICATION, "Becker Gun Turret", 50),
-    TWIN_GUN_TURRET(PayloadElementCategory.MODIFICATION, "Twin Gun Turret", 50),
+    TWIN_FRONT(PayloadElementCategory.WEAPON, "Twin Front Guns", 50),
+    LEWIS_TOP(PayloadElementCategory.WEAPON, "Lewis Gun Top", 50),
+    LEWIS_WING(PayloadElementCategory.WEAPON, "Lewis Gun Wing", 50),
+    BALLOON_GUN(PayloadElementCategory.WEAPON, "Balloon Gun", 50),
+    BECKER_GUN_TURRET(PayloadElementCategory.WEAPON, "Becker Gun Turret", 50),
+    TWIN_GUN_TURRET(PayloadElementCategory.WEAPON, "Twin Gun Turret", 50),
 
     EMPTY(PayloadElementCategory.CARGO, "EMpty", 0),
     PARATROOPERS(PayloadElementCategory.CARGO, "Paratroopers", 1000),

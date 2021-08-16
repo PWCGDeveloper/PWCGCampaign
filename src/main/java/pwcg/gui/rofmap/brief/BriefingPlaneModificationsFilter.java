@@ -7,7 +7,6 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadDesignation;
-import pwcg.campaign.plane.payload.PayloadElementCategory;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 
@@ -28,12 +27,9 @@ public class BriefingPlaneModificationsFilter
         IPayloadFactory payloadfactory = PWCGContext.getInstance().getPayloadFactory();
         IPlanePayload payload = payloadfactory.createPlanePayload(crewPlane.getPlane().getType());
         
-        for (PayloadDesignation payloadDesignation : payload.getPayloadDesignations())
+        for (PayloadDesignation payloadDesignation : payload.getOptionalPayloadModifications())
         {
-            if (payloadDesignation.getPayloadElements().get(0).getCategory() == PayloadElementCategory.MODIFICATION)
-            {
-                planeModifications.add(payloadDesignation.getPayloadDescription());
-            }
+            planeModifications.add(payloadDesignation.getPayloadDescription());
         }
         return planeModifications;
     }

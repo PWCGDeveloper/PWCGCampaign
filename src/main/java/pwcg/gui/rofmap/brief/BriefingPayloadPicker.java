@@ -13,7 +13,6 @@ import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.plane.payload.PayloadElement;
-import pwcg.campaign.plane.payload.PayloadElementCategory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.rofmap.brief.model.BriefingData;
@@ -57,12 +56,9 @@ public class BriefingPayloadPicker
         List<String> payloadDescriptions = new ArrayList<>();
         for (PayloadDesignation payloadDesignation : payload.getPayloadDesignations())
         {
-            if (!(payloadDesignation.getPayloadElements().get(0).getCategory() == PayloadElementCategory.MODIFICATION))
+            if (shouldIncludeModification(payloadDesignation, planeTypeName))
             {
-                if (shouldIncludeModification(payloadDesignation, planeTypeName))
-                {
-                    payloadDescriptions.add(payloadDesignation.getPayloadDescription());
-                }
+                payloadDescriptions.add(payloadDesignation.getPayloadDescription());
             }
         }
         
