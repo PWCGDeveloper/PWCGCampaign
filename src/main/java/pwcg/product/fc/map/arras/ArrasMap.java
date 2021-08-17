@@ -71,24 +71,8 @@ public class ArrasMap extends PWCGMap
     @Override
     protected void configureTransitionDates() throws PWCGException
     {
-        this.frontDatesForMap.addMapDateRange(DateUtils.getDateYYYYMMDD("19170801"), DateUtils.getDateYYYYMMDD("19181201"));
-
-        this.frontDatesForMap.addFrontDate("19170801");
-        /*
-        this.frontDatesForMap.addFrontDate("19180326");
-        this.frontDatesForMap.addFrontDate("19180404");
-        this.frontDatesForMap.addFrontDate("19180419");
-        this.frontDatesForMap.addFrontDate("19180429");
-        this.frontDatesForMap.addFrontDate("19180604");
-        this.frontDatesForMap.addFrontDate("19180612");
-        this.frontDatesForMap.addFrontDate("19180717");
-        this.frontDatesForMap.addFrontDate("19180925");
-        this.frontDatesForMap.addFrontDate("19181005");
-        this.frontDatesForMap.addFrontDate("19181015");
-        this.frontDatesForMap.addFrontDate("19181025");
-        this.frontDatesForMap.addFrontDate("19181105");
-        this.frontDatesForMap.addFrontDate("19181110");
-        */
+        this.frontDatesForMap.addMapDateRange(DateUtils.getDateYYYYMMDD("19170601"), DateUtils.getDateYYYYMMDD("19181111"));
+        this.frontDatesForMap.addFrontDate("19170601");
     }
 
     @Override

@@ -35,7 +35,7 @@ public class FCDeploy extends DeployBase
         directoriesToCopy.put("Arras", null);
 
 		// Moving Front Dates
-    	directoriesToCopy.put("19170801", null);
+    	directoriesToCopy.put("19170601", null);
         
 		// From Input/Aces
 		directoriesToCopy.put("Pictures", null);

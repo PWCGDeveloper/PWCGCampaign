@@ -229,11 +229,11 @@ public class DateUtils
     {
         if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
-            return getDateNoCheck("11/11/1918");            
+            return DateUtils.getDateYYYYMMDD("19181111");            
         }
         else
         {              
-            return getDateNoCheck("03/05/1945");
+            return DateUtils.getDateYYYYMMDD("19450503");            
         }
     }
 
@@ -241,11 +241,11 @@ public class DateUtils
     {
         if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
-            return getDateNoCheck("01/08/1914");            
+            return DateUtils.getDateYYYYMMDD("19140801");            
         }
         else
         {              
-            return getDateNoCheck("03/09/1939");
+            return DateUtils.getDateYYYYMMDD("19390903");            
         }
     }
 
@@ -253,27 +253,27 @@ public class DateUtils
     {
         if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
-            return getDateNoCheck("01/08/1917");            
+            return DateUtils.getDateYYYYMMDD("19170601");            
         }
         else
         {              
-            return getDateNoCheck("01/10/1941");
+            return DateUtils.getDateYYYYMMDD("19411001");            
         }
     }
 
     public static Date getStartofWWIIItaly() throws PWCGException
     {
-        return getDateNoCheck("01/01/1942");
+        return DateUtils.getDateYYYYMMDD("19420101");            
     }
 
     public static Date getStartofWWIIUSA() throws PWCGException
     {
-        return getDateNoCheck("01/08/1944");
+        return DateUtils.getDateYYYYMMDD("19440801");            
     }
 
     public static Date getStartofWWIIBritain() throws PWCGException
     {
-        return getDateNoCheck("01/08/1944");
+        return DateUtils.getDateYYYYMMDD("19440801");            
     }
 
     public static Date getRAFDate() throws PWCGException
