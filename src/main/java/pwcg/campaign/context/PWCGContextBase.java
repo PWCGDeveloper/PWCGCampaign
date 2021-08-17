@@ -85,7 +85,7 @@ public abstract class PWCGContextBase implements IPWCGContextManager
     public void setMapForCampaign(Campaign campaign) throws PWCGException
     {
         FrontMapIdentifier mapIdentifier = campaign.getCampaignMap();
-        if (mapIdentifier != null)
+        if (mapIdentifier != null && mapIdentifier != FrontMapIdentifier.NO_MAP)
         {
             changeContext(mapIdentifier);
             configurePwcgMaps();

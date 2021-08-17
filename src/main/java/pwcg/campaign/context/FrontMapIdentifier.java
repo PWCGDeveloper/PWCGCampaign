@@ -5,6 +5,7 @@ import java.util.Map;
 
 public enum FrontMapIdentifier
 {
+    NO_MAP("No Map", PWCGFront.ANY_THEATRE),
     MOSCOW_MAP("Moscow", PWCGFront.WWII_EASTERN_FRONT),
     STALINGRAD_MAP("Stalingrad", PWCGFront.WWII_EASTERN_FRONT),
     KUBAN_MAP("Kuban", PWCGFront.WWII_EASTERN_FRONT),

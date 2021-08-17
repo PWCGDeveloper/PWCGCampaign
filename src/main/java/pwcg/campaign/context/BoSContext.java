@@ -74,7 +74,7 @@ public class BoSContext extends PWCGContextBase implements IPWCGContextManager
     @Override
     public void initializeMap() throws PWCGException  
     {
-        changeContext(FrontMapIdentifier.STALINGRAD_MAP);
+        changeContext(FrontMapIdentifier.MOSCOW_MAP);
     }
 
     @Override
