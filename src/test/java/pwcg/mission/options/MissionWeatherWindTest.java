@@ -36,7 +36,7 @@ public class MissionWeatherWindTest
         Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.MaxWindKey)).thenReturn(20);
         
         Mockito.when(missionWeather.getWindDirection()).thenReturn(90);
-        Mockito.when(missionWeather.getTurbulence()).thenReturn(1);
+        Mockito.when(missionWeather.getTurbulence()).thenReturn(1.0);
     }
 
     @Test

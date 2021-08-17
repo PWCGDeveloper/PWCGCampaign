@@ -4,7 +4,7 @@ Added SPAD VII Early, Pfalz D.XII, and Airco DH4
 Added German AAA Half Track
 Add decimal level turbulence
 Clean up mission files immediately.
-Cannot add new pilot if all pilots are dead
+Fixed Cannot add new pilot if all pilots are dead
 Fixed incorrect sorting of payloads and modifications for Bristol F2B
 
 

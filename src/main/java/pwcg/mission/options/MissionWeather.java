@@ -23,7 +23,7 @@ public class MissionWeather
     private int cloudDensity = 600;
     private int precLevel = 0;
     private PrecipitationType precType = PrecipitationType.CLEAR;
-    private int turbulence = 1;
+    private double turbulence = 1.0;
     private int tempPressLevel = 0;
     private int temperature = 15;
     private int pressure = 760;
@@ -310,7 +310,7 @@ public class MissionWeather
     private void setTurbulenceForMaximum() throws PWCGException
     {
         ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
-        int maxTurbulence = configManager.getIntConfigParam(ConfigItemKeys.MaxTurbulenceKey);
+        double maxTurbulence = configManager.getDoubleConfigParam(ConfigItemKeys.MaxTurbulenceKey);
         if (turbulence > maxTurbulence)
         {
             turbulence = maxTurbulence;
@@ -347,7 +347,7 @@ public class MissionWeather
         return cloudConfig;
     }
 
-    public int getTurbulence()
+    public double getTurbulence()
     {
         return turbulence;
     }

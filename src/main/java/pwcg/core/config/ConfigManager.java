@@ -112,6 +112,12 @@ public abstract class ConfigManager
         return Integer.valueOf(stringValue);
 	}
 
+    public double getDoubleConfigParam(String parameterKey) throws PWCGException
+    {
+        String stringValue = getConfigParam(parameterKey);
+        return Double.valueOf(stringValue);
+    }
+
 	private String getConfigParam(String parameterKey) throws PWCGException
     {
 	    String configSetKey = identifyConfigSetKey(parameterKey);

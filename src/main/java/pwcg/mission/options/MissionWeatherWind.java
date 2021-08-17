@@ -34,17 +34,17 @@ public class MissionWeatherWind
             windSpeedModifier = 5;
         }
 
-        int turbulenceFactor = missionWeather.getTurbulence();
+        Double turbulenceFactor = missionWeather.getTurbulence();
 
         WindLayer windLayer0 = new WindLayer(campaign, 0, missionWeather.getWindDirection(), RandomNumberGenerator.getRandom(3) + windSpeedModifier);
 
-        WindLayer windLayer500 = new WindLayer(campaign, 500, missionWeather.getWindDirection(), 1 + turbulenceFactor + RandomNumberGenerator.getRandom(3) + windSpeedModifier);
+        WindLayer windLayer500 = new WindLayer(campaign, 500, missionWeather.getWindDirection(), 1 + turbulenceFactor.intValue() + RandomNumberGenerator.getRandom(3) + windSpeedModifier);
 
-        WindLayer windLayer1000 = new WindLayer(campaign, 1000, missionWeather.getWindDirection(), 2 + turbulenceFactor + RandomNumberGenerator.getRandom(4) + windSpeedModifier);
+        WindLayer windLayer1000 = new WindLayer(campaign, 1000, missionWeather.getWindDirection(), 2 + turbulenceFactor.intValue() + RandomNumberGenerator.getRandom(4) + windSpeedModifier);
 
-        WindLayer windLayer3000 = new WindLayer(campaign, 3000, missionWeather.getWindDirection(), 3 + turbulenceFactor + RandomNumberGenerator.getRandom(5) + windSpeedModifier);
+        WindLayer windLayer3000 = new WindLayer(campaign, 3000, missionWeather.getWindDirection(), 3 + turbulenceFactor.intValue() + RandomNumberGenerator.getRandom(5) + windSpeedModifier);
 
-        WindLayer windLayer5000 = new WindLayer(campaign, 5000, missionWeather.getWindDirection(), 4 + turbulenceFactor + RandomNumberGenerator.getRandom(5) + windSpeedModifier);
+        WindLayer windLayer5000 = new WindLayer(campaign, 5000, missionWeather.getWindDirection(), 4 + turbulenceFactor.intValue() + RandomNumberGenerator.getRandom(5) + windSpeedModifier);
 
         List<WindLayer> windLayers = new ArrayList<WindLayer>();
         windLayers.add(windLayer0);
