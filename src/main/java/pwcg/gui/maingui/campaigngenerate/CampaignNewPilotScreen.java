@@ -11,11 +11,7 @@ import javax.swing.JPanel;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.CampaignMode;
-import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.factory.CampaignModeFactory;
-import pwcg.campaign.squadmember.ISquadronMemberReplacer;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.PlayerPilotBuilder;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.PWCGLogger;
@@ -139,16 +135,8 @@ public class CampaignNewPilotScreen extends ImageResizingPanel implements Action
         String rank = newPilotGeneratorDO.getRank();
         String coopuser = newPilotGeneratorDO.getCoopUser();
 
-        ISquadronMemberReplacer squadronMemberReplacer = CampaignModeFactory.makeSquadronMemberReplacer(campaign);
-        SquadronMember newSquadronMember = squadronMemberReplacer.createPersona(playerName, rank, squadronName, coopuser);
-        
-        campaign.write();        
-        campaign.open(campaign.getCampaignData().getName());
-        PWCGContext.getInstance().setCampaign(campaign);
-        if (campaign.getCampaignData().getCampaignMode() != CampaignMode.CAMPAIGN_MODE_SINGLE)
-        {
-            newPilotGeneratorDO.createCoopUserAndPersona(campaign, newSquadronMember);
-        }
+        PlayerPilotBuilder playerPilotBuilder = new PlayerPilotBuilder(campaign);
+        playerPilotBuilder.buildPlayerPilot(playerName, squadronName, rank, coopuser);
     }
 
     public void changeService(ArmedService service) throws PWCGException
