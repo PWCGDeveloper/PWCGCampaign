@@ -5,9 +5,9 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import pwcg.aar.AARCoordinator;
 import pwcg.campaign.Campaign;
@@ -31,7 +31,7 @@ import pwcg.gui.sound.MusicManager;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.CommonUIActions;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionHumanParticipants;
@@ -62,43 +62,43 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
         this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1400));
 	}
 
-	private JPanel makeNavigatePanel() throws PWCGException
+	private Pane makeNavigatePanel() throws PWCGException
 	{
-        JPanel leftSidePanel = new JPanel(new BorderLayout());
+        Pane leftSidePanel = new Pane(new BorderLayout());
         leftSidePanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JLabel spacer1 = PWCGButtonFactory.makePaperLabelLarge("   ");
+        Label spacer1 = ButtonFactory.makePaperLabelLarge("   ");
         buttonPanel.add(spacer1);
 
-        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished", CommonUIActions.FINISHED, "Finished with configuration changes", this);
+        Button finishedButton = ButtonFactory.makeTranslucentMenuButton("Finished", CommonUIActions.FINISHED, "Finished with configuration changes", this);
         buttonPanel.add(finishedButton);
 
-        JLabel spacer2 = PWCGButtonFactory.makePaperLabelLarge("   ");
+        Label spacer2 = ButtonFactory.makePaperLabelLarge("   ");
         buttonPanel.add(spacer2);
 
         if (isDisplayMissionButton())
         {
-            JButton missionButton = PWCGButtonFactory.makeTranslucentMenuButton("Mission", "CampMission", "Generate a mission", this);
+            Button missionButton = ButtonFactory.makeTranslucentMenuButton("Mission", "CampMission", "Generate a mission", this);
             buttonPanel.add(missionButton);
 
             if (!campaign.isCoop())
             {
-                JButton loneWolfButton = PWCGButtonFactory.makeTranslucentMenuButton("Lone Wolf Mission", "CampMissionLoneWolf", "Generate a lone wolf mission", this);
+                Button loneWolfButton = ButtonFactory.makeTranslucentMenuButton("Lone Wolf Mission", "CampMissionLoneWolf", "Generate a lone wolf mission", this);
                 buttonPanel.add(loneWolfButton);
             }
         }
         else if (isDisplayLeaveButton())
         {
-            JButton missionButton = PWCGButtonFactory.makeTranslucentMenuButton("Heal Wounds", "CampLeave", "Take leave to heal wounds", this);
+            Button missionButton = ButtonFactory.makeTranslucentMenuButton("Heal Wounds", "CampLeave", "Take leave to heal wounds", this);
             buttonPanel.add(missionButton);
         }
         
         if (isDisplayAARButton())
         {
-            JButton aarButton = PWCGButtonFactory.makeTranslucentMenuButton("Combat Report", "CampFlowCombatReport", "File an After Action Report (AAR) for a mission", this);
+            Button aarButton = ButtonFactory.makeTranslucentMenuButton("Combat Report", "CampFlowCombatReport", "File an After Action Report (AAR) for a mission", this);
             buttonPanel.add(aarButton);
         }
 

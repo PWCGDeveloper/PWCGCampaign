@@ -1,9 +1,9 @@
 package pwcg.gui.rofmap.brief;
 
 import java.awt.BasicStroke;
-import java.awt.Color;
+import javafx.scene.paint.Color;
 import java.awt.Cursor;
-import java.awt.Font;
+import javafx.scene.text.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;

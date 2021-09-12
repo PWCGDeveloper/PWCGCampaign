@@ -5,9 +5,9 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
@@ -21,7 +21,7 @@ import pwcg.gui.maingui.campaigngenerate.CampaignNewPilotScreen;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.CommonUIActions;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
 public class CampaignPersonnelScreen extends ImageResizingPanel implements ActionListener
@@ -50,32 +50,32 @@ public class CampaignPersonnelScreen extends ImageResizingPanel implements Actio
         this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1400));
 	}
 
-	private JPanel makeNavigatePanel() throws PWCGException
+	private Pane makeNavigatePanel() throws PWCGException
 	{
-        JPanel leftSidePanel = new JPanel(new BorderLayout());
+        Pane leftSidePanel = new Pane(new BorderLayout());
         leftSidePanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JLabel spacer1 = PWCGButtonFactory.makePaperLabelLarge("   ");
+        Label spacer1 = ButtonFactory.makePaperLabelLarge("   ");
         buttonPanel.add(spacer1);
 
-        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished", CommonUIActions.FINISHED, "Finished with configuration changes", this);
+        Button finishedButton = ButtonFactory.makeTranslucentMenuButton("Finished", CommonUIActions.FINISHED, "Finished with configuration changes", this);
         buttonPanel.add(finishedButton);
 
-        JLabel spacer2 = PWCGButtonFactory.makePaperLabelLarge("   ");
+        Label spacer2 = ButtonFactory.makePaperLabelLarge("   ");
         buttonPanel.add(spacer2);
 
-        JButton coopAdminButton = PWCGButtonFactory.makeTranslucentMenuButton("Administer Pilots", "AdminCoopPilots", "Administer pilots for this campaign", this);
+        Button coopAdminButton = ButtonFactory.makeTranslucentMenuButton("Administer Pilots", "AdminCoopPilots", "Administer pilots for this campaign", this);
         buttonPanel.add(coopAdminButton);
 
-        JButton referencePilotButton = PWCGButtonFactory.makeTranslucentMenuButton("Reference Pilot", "CampChangeReferencePilot", "Change the reference pilot for the UI", this);
+        Button referencePilotButton = ButtonFactory.makeTranslucentMenuButton("Reference Pilot", "CampChangeReferencePilot", "Change the reference pilot for the UI", this);
         buttonPanel.add(referencePilotButton);
 
         if (campaign.isCampaignActive())
         {
-            JButton skinManagementButton = PWCGButtonFactory.makeTranslucentMenuButton("Skin Management", "CampSkinManager", "Manage skins for the squadron", this);
+            Button skinManagementButton = ButtonFactory.makeTranslucentMenuButton("Skin Management", "CampSkinManager", "Manage skins for the squadron", this);
             buttonPanel.add(skinManagementButton);
         }
 

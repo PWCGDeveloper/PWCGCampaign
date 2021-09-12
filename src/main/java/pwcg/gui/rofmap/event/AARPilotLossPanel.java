@@ -1,11 +1,11 @@
 package pwcg.gui.rofmap.event;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+import javafx.scene.paint.Color;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.JPanel;
+import javafx.scene.layout.Pane;
 import javax.swing.JTabbedPane;
 
 import pwcg.aar.AARCoordinator;
@@ -49,7 +49,7 @@ public class AARPilotLossPanel extends AARDocumentPanel
     
     private void createPostCombatReportTabs(JTabbedPane eventTabPane)
     {
-        JPanel postCombatPanel = new JPanel(new BorderLayout());
+        Pane postCombatPanel = new Pane(new BorderLayout());
         postCombatPanel.setOpaque(false);
 
         postCombatPanel.add(eventTabPane, BorderLayout.CENTER);

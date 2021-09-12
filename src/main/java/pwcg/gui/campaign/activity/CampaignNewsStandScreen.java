@@ -1,18 +1,18 @@
 package pwcg.gui.campaign.activity;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import javafx.scene.control.ButtonGroup;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
+import javax.swing.RadioButton ;
 import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
@@ -31,7 +31,7 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 
 public class CampaignNewsStandScreen extends ImageResizingPanel implements ActionListener
 {
@@ -62,16 +62,16 @@ public class CampaignNewsStandScreen extends ImageResizingPanel implements Actio
     }
 
 
-    private JPanel makeNewsLeftPanel() throws PWCGException  
+    private Pane makeNewsLeftPanel() throws PWCGException  
     {
 
-        JPanel squadronLogPanel = new JPanel(new BorderLayout());
+        Pane squadronLogPanel = new Pane(new BorderLayout());
         squadronLogPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
-        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished Reading", "Finished", "Leave News Rack", this);
+        Button finishedButton = ButtonFactory.makeTranslucentMenuButton("Finished Reading", "Finished", "Leave News Rack", this);
         buttonPanel.add(finishedButton);
 
         squadronLogPanel.add(buttonPanel, BorderLayout.NORTH);
@@ -79,28 +79,28 @@ public class CampaignNewsStandScreen extends ImageResizingPanel implements Actio
         return squadronLogPanel;
     }
 
-    public JPanel makeBlankCenterPanel()  
+    public Pane makeBlankCenterPanel()  
     {       
-        JPanel blankPanel = new JPanel(new BorderLayout());
+        Pane blankPanel = new Pane(new BorderLayout());
         blankPanel.setOpaque(false);
         blankPanel.setLayout(new BorderLayout());
         return blankPanel;
     }
 
-    public JPanel makeNewsRightPanel() throws PWCGException  
+    public Pane makeNewsRightPanel() throws PWCGException  
     {
-        JPanel configPanel = new JPanel(new BorderLayout());
+        Pane configPanel = new Pane(new BorderLayout());
         configPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
                 
-        buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("Newspapers:"));
+        buttonPanel.add(ButtonFactory.makeMenuLabelLarge("Newspapers:"));
         addNewspapersButtonPanel(buttonPanel);
 
-        buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
-        buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
-        buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
+        buttonPanel.add(ButtonFactory.makeMenuLabelLarge("   "));
+        buttonPanel.add(ButtonFactory.makeMenuLabelLarge("   "));
+        buttonPanel.add(ButtonFactory.makeMenuLabelLarge("   "));
 
         add (buttonPanel);
 
@@ -109,7 +109,7 @@ public class CampaignNewsStandScreen extends ImageResizingPanel implements Actio
         return configPanel;
     }
 
-    private void addNewspapersButtonPanel(JPanel buttonPanel) throws PWCGException
+    private void addNewspapersButtonPanel(Pane buttonPanel) throws PWCGException
     {
         ICountry playerCountry = CountryFactory.makeCountryByCountry(campaign.getReferencePlayer().getCountry());
         newspaperToDate = PWCGContext.getInstance().getNewspaperManager().getNewpapersToDate(playerCountry.getSide(), campaign.getDate());
@@ -119,7 +119,7 @@ public class CampaignNewsStandScreen extends ImageResizingPanel implements Actio
         }
     }
     
-    private JRadioButton makeNewspaperRadioButton(Newspaper newspaper) throws PWCGException 
+    private RadioButton  makeNewspaperRadioButton(Newspaper newspaper) throws PWCGException 
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
 
@@ -127,9 +127,9 @@ public class CampaignNewsStandScreen extends ImageResizingPanel implements Actio
 
         String newspaperDateActionCommand = DateUtils.getDateStringYYYYMMDD(newspaper.getNewspaperEventDate());
         
-        JRadioButton button = new JRadioButton(getPrettyDate(newspaper));
+        RadioButton  button = new RadioButton (getPrettyDate(newspaper));
         button.setActionCommand(newspaperDateActionCommand);
-        button.setHorizontalAlignment(SwingConstants.LEFT );
+        button.setAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
         button.setFocusPainted(false);
         button.addActionListener(this);

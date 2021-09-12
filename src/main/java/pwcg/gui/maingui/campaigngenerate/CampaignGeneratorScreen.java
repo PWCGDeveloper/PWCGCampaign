@@ -7,9 +7,9 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.List;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
@@ -32,7 +32,7 @@ import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.maingui.PwcgMainScreen;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 
 public class CampaignGeneratorScreen extends ImageResizingPanel implements ActionListener
 {    
@@ -40,8 +40,8 @@ public class CampaignGeneratorScreen extends ImageResizingPanel implements Actio
 
     private PwcgMainScreen mainGUI = null;
     private PwcgThreePanelUI pwcgThreePanel;
-    private JButton profileFinishedButton = null;
-    private JButton createCampaignButton = null;
+    private Button profileFinishedButton = null;
+    private Button createCampaignButton = null;
     private CampaignGeneratorProfileGUI campaignProfileUI = null;
     private CampaignGeneratorDataEntryGUI campaignGeneratorDataEntryGUI = null;
     private CampaignGeneratorState campaignGeneratorState;
@@ -82,23 +82,23 @@ public class CampaignGeneratorScreen extends ImageResizingPanel implements Actio
         }
     }
 
-    private JPanel makeButtonPanel() throws PWCGException
+    private Pane makeButtonPanel() throws PWCGException
     {
-        JPanel navPanel = new JPanel(new BorderLayout());
+        Pane navPanel = new Pane(new BorderLayout());
         navPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(6,1));
+        Pane buttonPanel = new Pane(new GridLayout(6,1));
         buttonPanel.setOpaque(false);
          
-        createCampaignButton = PWCGButtonFactory.makeTranslucentMenuButtonGrayMenu("Create Campaign", "Create Campaign", "Create the campaign", this);
+        createCampaignButton = ButtonFactory.makeTranslucentMenuButtonGrayMenu("Create Campaign", "Create Campaign", "Create the campaign", this);
         buttonPanel.add(createCampaignButton);
         createCampaignButton.setEnabled(false);
         
-        JLabel dummyLabel3 = new JLabel("     ");       
+        Label dummyLabel3 = new Label("     ");       
         dummyLabel3.setOpaque(false);
         buttonPanel.add(dummyLabel3);
         
-        JButton cancelChanges = PWCGButtonFactory.makeTranslucentMenuButtonGrayMenu("Cancel", "Cancel", "Cancel campaign creation", this);
+        Button cancelChanges = ButtonFactory.makeTranslucentMenuButtonGrayMenu("Cancel", "Cancel", "Cancel campaign creation", this);
         buttonPanel.add(cancelChanges);
 
         navPanel.add(buttonPanel, BorderLayout.NORTH);
@@ -106,15 +106,15 @@ public class CampaignGeneratorScreen extends ImageResizingPanel implements Actio
         return navPanel;
     }
 
-    private JPanel makeProceedButtonPanel() throws PWCGException
+    private Pane makeProceedButtonPanel() throws PWCGException
     {
-        JPanel configPanel = new JPanel(new BorderLayout());
+        Pane configPanel = new Pane(new BorderLayout());
         configPanel.setOpaque(false);
         
-        JPanel buttonPanel = new JPanel(new GridLayout(6,1));
+        Pane buttonPanel = new Pane(new GridLayout(6,1));
         buttonPanel.setOpaque(false);
         
-        profileFinishedButton = PWCGButtonFactory.makeTranslucentMenuButtonGrayMenu("Complete Data Entry", "Complete", "Proceed to campaign data entry completion", this);
+        profileFinishedButton = ButtonFactory.makeTranslucentMenuButtonGrayMenu("Complete Data Entry", "Complete", "Proceed to campaign data entry completion", this);
         buttonPanel.add(profileFinishedButton);
         profileFinishedButton.setEnabled(false);
 
@@ -123,13 +123,13 @@ public class CampaignGeneratorScreen extends ImageResizingPanel implements Actio
         return configPanel;
     }
 
-    public JPanel makeCampaignProfilePanel() throws PWCGException 
+    public Pane makeCampaignProfilePanel() throws PWCGException 
     {
         campaignProfileUI.makePanels();
         return campaignProfileUI;
     }
 
-    public JPanel makeCampaignDataEntryPanel() throws PWCGException 
+    public Pane makeCampaignDataEntryPanel() throws PWCGException 
     {
         campaignGeneratorDataEntryGUI.makePanels();
         return campaignGeneratorDataEntryGUI;
@@ -197,7 +197,7 @@ public class CampaignGeneratorScreen extends ImageResizingPanel implements Actio
         CampaignGuiContextManager.getInstance().pushToContextStack(campaignHome);
     }
 
-    private JPanel makeProfileInfoPanel() throws PWCGException
+    private Pane makeProfileInfoPanel() throws PWCGException
     {
         CampaignGeneratorProfileInfoGUI profileInfoPanel = new CampaignGeneratorProfileInfoGUI(this, imagePath);
 

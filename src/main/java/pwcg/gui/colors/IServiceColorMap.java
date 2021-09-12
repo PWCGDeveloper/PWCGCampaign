@@ -1,6 +1,6 @@
 package pwcg.gui.colors;
 
-import java.awt.Color;
+import javafx.scene.paint.Color;
 import java.util.Date;
 
 import pwcg.campaign.plane.Role;

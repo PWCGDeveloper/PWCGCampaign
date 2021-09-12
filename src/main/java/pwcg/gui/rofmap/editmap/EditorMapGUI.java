@@ -1,8 +1,8 @@
 package pwcg.gui.rofmap.editmap;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,14 +10,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.swing.ButtonGroup;
+import javafx.scene.control.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
+import javafx.scene.control.Button;
+import javax.swing.CheckBox;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javax.swing.RadioButton ;
 import javax.swing.SwingConstants;
 
 import pwcg.campaign.api.Side;
@@ -35,7 +35,7 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.rofmap.MapGUI;
 import pwcg.gui.rofmap.MapScroll;
 import pwcg.gui.utils.CampaignTransitionDates;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 
 public class EditorMapGUI extends MapGUI implements ActionListener
 {
@@ -49,8 +49,8 @@ public class EditorMapGUI extends MapGUI implements ActionListener
     private ButtonGroup editModeButtonGroup = new ButtonGroup();
     private FrontLineEditor frontLineCreator = null;
 
-    private JCheckBox displayAirfields = null;
-    private JCheckBox displayCities = null;
+    private CheckBox displayAirfields = null;
+    private CheckBox displayCities = null;
 
     public EditorMapGUI(Date mapDate) throws PWCGException  
     {        
@@ -81,9 +81,9 @@ public class EditorMapGUI extends MapGUI implements ActionListener
         }
     }
 
-    private JPanel createMapPanel() throws PWCGException, PWCGException
+    private Pane createMapPanel() throws PWCGException, PWCGException
     {
-        JPanel infoMapPanel = new JPanel(new BorderLayout());
+        Pane infoMapPanel = new Pane(new BorderLayout());
 
         editorMapPanel = new EditorMapPanel(this);
         
@@ -100,27 +100,27 @@ public class EditorMapGUI extends MapGUI implements ActionListener
         return infoMapPanel;
     }
 
-    private JPanel makeNavigationPanel() throws PWCGException  
+    private Pane makeNavigationPanel() throws PWCGException  
     {
-        JPanel editNavPanel = new JPanel(new BorderLayout());
+        Pane editNavPanel = new Pane(new BorderLayout());
         editNavPanel.setLayout(new BorderLayout());
         editNavPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
-        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished with editor map", this);
+        Button finishedButton = ButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished with editor map", this);
         buttonPanel.add(finishedButton);
         
         makeFrontEditActionButtons(buttonPanel);
 
-        JLabel spacer1 = PWCGButtonFactory.makeMenuLabelLarge("");
+        Label spacer1 = ButtonFactory.makeMenuLabelLarge("");
         buttonPanel.add(spacer1);
 
-        JPanel radioButtonPanel = new JPanel( new GridLayout(0,1));
+        Pane radioButtonPanel = new Pane( new GridLayout(0,1));
         radioButtonPanel.setOpaque(false);
         
-        JLabel spacer2 = PWCGButtonFactory.makeMenuLabelLarge("");
+        Label spacer2 = ButtonFactory.makeMenuLabelLarge("");
         buttonPanel.add(spacer2);
 
         editNavPanel.add(buttonPanel, BorderLayout.NORTH);
@@ -128,35 +128,35 @@ public class EditorMapGUI extends MapGUI implements ActionListener
         return editNavPanel;
     }
 
-    private void makeFrontEditActionButtons(JPanel buttonPanel) throws PWCGException
+    private void makeFrontEditActionButtons(Pane buttonPanel) throws PWCGException
     {
-        JButton cancel = PWCGButtonFactory.makeTranslucentMenuButton("Cancel", "Cancel", "Cancel edits", this);
+        Button cancel = ButtonFactory.makeTranslucentMenuButton("Cancel", "Cancel", "Cancel edits", this);
         buttonPanel.add(cancel);
         
-        JButton write = PWCGButtonFactory.makeTranslucentMenuButton("Save Edits", "Write", "Save edits", this);
+        Button write = ButtonFactory.makeTranslucentMenuButton("Save Edits", "Write", "Save edits", this);
         buttonPanel.add(write);
         
-        JButton refresh = PWCGButtonFactory.makeTranslucentMenuButton("Refresh", "Refresh", "Refresh map", this);
+        Button refresh = ButtonFactory.makeTranslucentMenuButton("Refresh", "Refresh", "Refresh map", this);
         buttonPanel.add(refresh);
         
-        JButton mirror = PWCGButtonFactory.makeTranslucentMenuButton("Mirror", "Mirror", "Mirror front lines", this);
+        Button mirror = ButtonFactory.makeTranslucentMenuButton("Mirror", "Mirror", "Mirror front lines", this);
         buttonPanel.add(mirror);
     }
 
-    public JPanel makeSelectionPanel() throws PWCGException 
+    public Pane makeSelectionPanel() throws PWCGException 
     {
-        JPanel selectionPanel = new JPanel(new GridLayout(0,1));
+        Pane selectionPanel = new Pane(new GridLayout(0,1));
         selectionPanel.setOpaque(false);
 
         // The date selection box
-        JPanel datePanel = createDateSelection(selectionPanel);
+        Pane datePanel = createDateSelection(selectionPanel);
         selectionPanel.add(datePanel);
 
         // Map buttons
-        JPanel buttonPanelGrid = makeMapCheckBoxes();
+        Pane buttonPanelGrid = makeMapCheckBoxes();
         selectionPanel.add(buttonPanelGrid);
 
-        JPanel groupButtonPanel = makeGroundStructureCheckBoxes();
+        Pane groupButtonPanel = makeGroundStructureCheckBoxes();
         selectionPanel.add(groupButtonPanel);
         
         makeFrontEditSelectionButtons(selectionPanel);
@@ -164,9 +164,9 @@ public class EditorMapGUI extends MapGUI implements ActionListener
         return selectionPanel;
     }
 
-    private void makeFrontEditSelectionButtons(JPanel selectionPanel) throws PWCGException
+    private void makeFrontEditSelectionButtons(Pane selectionPanel) throws PWCGException
     {
-        JPanel editButtonPanel = new JPanel( new GridLayout(0,1));
+        Pane editButtonPanel = new Pane( new GridLayout(0,1));
         editButtonPanel.setOpaque(false);
         editButtonPanel.add(makeRadioButton("Edit Front", "Edit Mode:EditFront", editModeButtonGroup));
         editButtonPanel.add(makeRadioButton("Add Front", "Edit Mode:AddFront", editModeButtonGroup));
@@ -177,17 +177,17 @@ public class EditorMapGUI extends MapGUI implements ActionListener
         selectionPanel.add(editButtonPanel);
     }
 
-    private JPanel createDateSelection(JPanel selectionPanel) throws PWCGException, PWCGException
+    private Pane createDateSelection(Pane selectionPanel) throws PWCGException, PWCGException
     {
-        JPanel datePanel = new JPanel(new BorderLayout());
+        Pane datePanel = new Pane(new BorderLayout());
         datePanel.setOpaque(false);
         
-        JPanel dateGrid = new JPanel( new GridLayout(0,1));
+        Pane dateGrid = new Pane( new GridLayout(0,1));
         dateGrid.setOpaque(false);
         
         datePanel.add(dateGrid, BorderLayout.NORTH);
         
-        JLabel dateLabel = PWCGButtonFactory.makeMenuLabelLarge("Choose Date");
+        Label dateLabel = ButtonFactory.makeMenuLabelLarge("Choose Date");
         dateGrid.add(dateLabel);
 
         setDateSelectionsByPossibleStartDatesAndMovingFront();
@@ -201,17 +201,17 @@ public class EditorMapGUI extends MapGUI implements ActionListener
         return datePanel;
     }
 
-    private JPanel makeMapCheckBoxes() throws PWCGException
+    private Pane makeMapCheckBoxes() throws PWCGException
     {
-        JPanel mapPanel = new JPanel(new BorderLayout());
+        Pane mapPanel = new Pane(new BorderLayout());
         mapPanel.setOpaque(false);
                 
-        JPanel mapGrid = new JPanel( new GridLayout(0,1));
+        Pane mapGrid = new Pane( new GridLayout(0,1));
         mapGrid.setOpaque(false);
         
         mapPanel.add(mapGrid, BorderLayout.NORTH);
 
-        JLabel mapLabel = PWCGButtonFactory.makeMenuLabelLarge("Choose Map");
+        Label mapLabel = ButtonFactory.makeMenuLabelLarge("Choose Map");
         mapGrid.add(mapLabel);
         
         if (PWCGContext.getProduct() == PWCGProduct.BOS)
@@ -235,7 +235,7 @@ public class EditorMapGUI extends MapGUI implements ActionListener
         return mapPanel;
     }
 
-    private void addToMapGrid(JPanel mapGrid, FrontMapIdentifier mapIdentifier) throws PWCGException
+    private void addToMapGrid(Pane mapGrid, FrontMapIdentifier mapIdentifier) throws PWCGException
     {
         mapGrid.add(makeRadioButton(mapIdentifier.getMapName(), MAP_DELIMITER + mapIdentifier.getMapName(), mapButtonGroup));
     }
@@ -252,20 +252,20 @@ public class EditorMapGUI extends MapGUI implements ActionListener
         cbDate.setModel(model);
     }
 
-    private JPanel makeGroundStructureCheckBoxes() throws PWCGException
+    private Pane makeGroundStructureCheckBoxes() throws PWCGException
     {
-        JPanel groundStructurePanel = new JPanel(new BorderLayout());
+        Pane groundStructurePanel = new Pane(new BorderLayout());
         groundStructurePanel.setOpaque(false);
          
-        JPanel groundStructureGrid = new JPanel( new GridLayout(0,1));
+        Pane groundStructureGrid = new Pane( new GridLayout(0,1));
         groundStructureGrid.setOpaque(false);
 
         groundStructurePanel.add(groundStructureGrid, BorderLayout.NORTH);
 
-        JLabel spaceLabel1 = PWCGButtonFactory.makePaperLabelMedium(" ");
+        Label spaceLabel1 = ButtonFactory.makePaperLabelMedium(" ");
         groundStructureGrid.add(spaceLabel1);
         
-        JLabel groundStructureLabel = PWCGButtonFactory.makeMenuLabelLarge("Choose Category");
+        Label groundStructureLabel = ButtonFactory.makeMenuLabelLarge("Choose Category");
         groundStructureGrid.add(groundStructureLabel);
 
         displayAirfields = makeCheckBoxButton("Airfields", "Airfields");
@@ -274,21 +274,21 @@ public class EditorMapGUI extends MapGUI implements ActionListener
         displayCities = makeCheckBoxButton("Cities", "Cities");
         groundStructureGrid.add(displayCities);        
 
-        JLabel spaceLabel2 = PWCGButtonFactory.makePaperLabelMedium(" ");
+        Label spaceLabel2 = ButtonFactory.makePaperLabelMedium(" ");
         groundStructureGrid.add(spaceLabel2);
         
         return groundStructurePanel;
     }
 
-    private JRadioButton makeRadioButton(String buttonText, String commandString, ButtonGroup buttonGroup) throws PWCGException 
+    private RadioButton  makeRadioButton(String buttonText, String commandString, ButtonGroup buttonGroup) throws PWCGException 
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
         Color bgColor = ColorMap.CHALK_BACKGROUND;
 
         Font font = PWCGMonitorFonts.getPrimaryFont();
 
-        JRadioButton button = new JRadioButton(buttonText);
-        button.setHorizontalAlignment(SwingConstants.LEFT );
+        RadioButton  button = new RadioButton (buttonText);
+        button.setAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
         button.setFocusPainted(false);
         button.addActionListener(this);
@@ -303,15 +303,15 @@ public class EditorMapGUI extends MapGUI implements ActionListener
         return button;
     }	
 
-    private JCheckBox makeCheckBoxButton(String buttonText, String commandString) throws PWCGException 
+    private CheckBox makeCheckBoxButton(String buttonText, String commandString) throws PWCGException 
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
         Color bgColor = ColorMap.CHALK_BACKGROUND;
 
         Font font = PWCGMonitorFonts.getPrimaryFont();
 
-        JCheckBox button = new JCheckBox(buttonText);
-        button.setHorizontalAlignment(SwingConstants.LEFT );
+        CheckBox button = new CheckBox(buttonText);
+        button.setAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
         button.setFocusPainted(false);
         button.addActionListener(this);

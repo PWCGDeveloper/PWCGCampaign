@@ -1,7 +1,7 @@
 package pwcg.gui.campaign.activity;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+import javafx.scene.paint.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
+import javafx.scene.control.Button;
+import javax.swing.CheckBox;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
@@ -35,7 +35,7 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
@@ -44,8 +44,8 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
     private static final long serialVersionUID = 1L;
 
     private Campaign campaign = null;
-    private JPanel centerPanel = null;
-    private Map<Integer, JCheckBox> aircraftChecklist = new TreeMap<>();
+    private Pane centerPanel = null;
+    private Map<Integer, CheckBox> aircraftChecklist = new TreeMap<>();
     private JComboBox<String> replacementAircraftTypeSelector;
 
     public EquipmentRequestScreen(Campaign campaign)
@@ -69,15 +69,15 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
 
     }
 
-    private JPanel makeNavPanel() throws PWCGException
+    private Pane makeNavPanel() throws PWCGException
     {
-        JPanel navPanel = new JPanel(new BorderLayout());
+        Pane navPanel = new Pane(new BorderLayout());
         navPanel.setOpaque(false);
 
-        JPanel equipmentManagementButtonPanel = new JPanel(new GridLayout(0, 1));
+        Pane equipmentManagementButtonPanel = new Pane(new GridLayout(0, 1));
         equipmentManagementButtonPanel.setOpaque(false);
 
-        JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished with equipment management", this);
+        Button acceptButton = ButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished with equipment management", this);
         equipmentManagementButtonPanel.add(acceptButton);
 
         navPanel.add(equipmentManagementButtonPanel, BorderLayout.NORTH);
@@ -85,7 +85,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         return navPanel;
     }
 
-    private JPanel makeCenterPanel() throws PWCGException
+    private Pane makeCenterPanel() throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
         ImageResizingPanel equipmentManagementSelectionPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
@@ -94,9 +94,9 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         equipmentManagementSelectionPanel.setLayout(new BorderLayout());
         equipmentManagementSelectionPanel.setOpaque(false);
 
-        JPanel equipmentManagementSelectionGrid = makeAircraftSelectionGrid();
-        JPanel replacementAircraftSelectionPanel = makeReplacementAircraftSelectionPanel();
-        JPanel equipmentReplaceConfirmationPanel = makeEquipmentSelectionConfirmationPanel();
+        Pane equipmentManagementSelectionGrid = makeAircraftSelectionGrid();
+        Pane replacementAircraftSelectionPanel = makeReplacementAircraftSelectionPanel();
+        Pane equipmentReplaceConfirmationPanel = makeEquipmentSelectionConfirmationPanel();
 
         equipmentManagementSelectionPanel.add(equipmentManagementSelectionGrid, BorderLayout.NORTH);
         equipmentManagementSelectionPanel.add(replacementAircraftSelectionPanel, BorderLayout.CENTER);
@@ -105,41 +105,41 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         return equipmentManagementSelectionPanel;
     }
 
-    private JPanel makeAircraftSelectionGrid() throws PWCGException
+    private Pane makeAircraftSelectionGrid() throws PWCGException
     {
-        JPanel equipmentSelectionGrid = new JPanel();
+        Pane equipmentSelectionGrid = new Pane();
         equipmentSelectionGrid.setOpaque(false);
         equipmentSelectionGrid.setLayout(new GridLayout(0, 1));
         
         SquadronMember referencePlayer = campaign.getReferencePlayer();
         Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(referencePlayer.getSquadronId());
 
-        JLabel titleLabel = PWCGButtonFactory.makePaperLabelLarge("Select Planes To Change");
+        Label titleLabel = ButtonFactory.makePaperLabelLarge("Select Planes To Change");
         equipmentSelectionGrid.add(titleLabel);
 
         for (int serialNumber : equipment.getActiveEquippedPlanes().keySet())
         {
             EquippedPlane plane = equipment.getEquippedPlane(serialNumber);
-            JCheckBox aircraftCheckBox = makeCheckBox(plane.getDisplayName());
+            CheckBox aircraftCheckBox = makeCheckBox(plane.getDisplayName());
             aircraftChecklist.put(plane.getSerialNumber(), aircraftCheckBox);
             equipmentSelectionGrid.add(aircraftCheckBox);
         }
         
         for (int i = 0; i < 3; ++i)
         {
-            JLabel spacer = new JLabel("     ");
+            Label spacer = new Label("     ");
             spacer.setOpaque(false);
             equipmentSelectionGrid.add(spacer);
         }
 
-        JPanel equipmentSelectionPanel = new JPanel(new BorderLayout());
+        Pane equipmentSelectionPanel = new Pane(new BorderLayout());
         equipmentSelectionPanel.setOpaque(false);
         equipmentSelectionPanel.add(equipmentSelectionGrid, BorderLayout.NORTH);
 
         return equipmentSelectionPanel;
     }
 
-    private JPanel makeReplacementAircraftSelectionPanel() throws PWCGException
+    private Pane makeReplacementAircraftSelectionPanel() throws PWCGException
     {
         PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
         SquadronMember referencePlayer = campaign.getReferencePlayer();
@@ -160,41 +160,41 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         }
         
 
-        JLabel titleLabel = PWCGButtonFactory.makePaperLabelLarge("Select Plane Type To Convert To");
+        Label titleLabel = ButtonFactory.makePaperLabelLarge("Select Plane Type To Convert To");
         
-        JPanel replacementDropDownGrid = new JPanel(new GridLayout(0,1));
+        Pane replacementDropDownGrid = new Pane(new GridLayout(0,1));
         replacementDropDownGrid.setOpaque(false);
         replacementDropDownGrid.add(titleLabel);
         replacementDropDownGrid.add(replacementAircraftTypeSelector);
 
-        JPanel replacementDropDownPanel = new JPanel(new BorderLayout());
+        Pane replacementDropDownPanel = new Pane(new BorderLayout());
         replacementDropDownPanel.setOpaque(false);
         replacementDropDownPanel.add(replacementDropDownGrid, BorderLayout.NORTH);
 
         return replacementDropDownPanel;
     }
 
-    private JCheckBox makeCheckBox(String buttonText) throws PWCGException 
+    private CheckBox makeCheckBox(String buttonText) throws PWCGException 
     {
         Color fgColor = Color.BLACK;
-        JCheckBox checkBox = PWCGButtonFactory.makeCheckBox(buttonText, fgColor);
+        CheckBox checkBox = ButtonFactory.makeCheckBox(buttonText, fgColor);
         return checkBox;
     }
 
-    private JPanel makeEquipmentSelectionConfirmationPanel() throws PWCGException
+    private Pane makeEquipmentSelectionConfirmationPanel() throws PWCGException
     {
-        JPanel equipmentChaneConfirmationPanel = new JPanel();
+        Pane equipmentChaneConfirmationPanel = new Pane();
         equipmentChaneConfirmationPanel.setOpaque(false);
         equipmentChaneConfirmationPanel.setLayout(new GridLayout(0, 3));
 
-        JLabel spacerLeft = new JLabel("     ");
+        Label spacerLeft = new Label("     ");
         spacerLeft.setOpaque(false);
         equipmentChaneConfirmationPanel.add(spacerLeft);
 
-        JButton finishedButton = PWCGButtonFactory.makePaperButtonWithBorder("Change Equipment", "ChangeEquipment", this);
+        Button finishedButton = ButtonFactory.makePaperButtonWithBorder("Change Equipment", "ChangeEquipment", this);
         equipmentChaneConfirmationPanel.add(finishedButton);
 
-        JLabel spacerRight = new JLabel("     ");
+        Label spacerRight = new Label("     ");
         spacerRight.setOpaque(false);
         equipmentChaneConfirmationPanel.add(spacerRight);
 
@@ -229,7 +229,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         List<Integer> serialNumbersOfChangedPlanes = new ArrayList<>();
         for (int serialNumber : aircraftChecklist.keySet())
         {
-            JCheckBox checkBox = aircraftChecklist.get(serialNumber);
+            CheckBox checkBox = aircraftChecklist.get(serialNumber);
             if (checkBox.isSelected())
             {
                 serialNumbersOfChangedPlanes.add(serialNumber);

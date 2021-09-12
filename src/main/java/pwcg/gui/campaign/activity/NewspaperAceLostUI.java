@@ -1,10 +1,10 @@
 package pwcg.gui.campaign.activity;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+import javafx.scene.paint.Color;
 import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -12,8 +12,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -23,7 +23,7 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.image.ImageCache;
 
-public class NewspaperAceLostUI extends JPanel
+public class NewspaperAceLostUI extends Pane
 {
     private static int NEWSPAPER_IMAGE_WIDTH = 800;
     private static int NEWSPAPER_IMAGE_HEIGHT = 1000;
@@ -40,21 +40,21 @@ public class NewspaperAceLostUI extends JPanel
 
     public void makePanels() throws PWCGException
     {
-        JPanel newspaperImagePanel = buildNewspaperImagePanel();
+        Pane newspaperImagePanel = buildNewspaperImagePanel();
         this.add(newspaperImagePanel, BorderLayout.CENTER);
     }
 
-    private JPanel buildNewspaperImagePanel() throws PWCGException
+    private Pane buildNewspaperImagePanel() throws PWCGException
     {
         try
         {
-            JPanel newspaperImagePanel = new JPanel();
+            Pane newspaperImagePanel = new Pane();
             newspaperImagePanel.setOpaque(false);
 
             BufferedImage newspaperImage = buildNewspaperImage();
     
             ImageIcon icon = new ImageIcon(newspaperImage);
-            JLabel imageLabel= new JLabel(icon);
+            Label imageLabel= new Label(icon);
             newspaperImagePanel.add(imageLabel, BorderLayout.CENTER);
 
             return newspaperImagePanel;
@@ -64,7 +64,7 @@ public class NewspaperAceLostUI extends JPanel
             PWCGLogger.logException(e);
         }
         
-        return new JPanel();
+        return new Pane();
     }
 
     private BufferedImage buildNewspaperImage() throws PWCGException, IOException

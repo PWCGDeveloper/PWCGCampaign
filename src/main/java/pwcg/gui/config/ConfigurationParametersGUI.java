@@ -1,15 +1,15 @@
 package pwcg.gui.config;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javax.swing.JTextField;
 
 import pwcg.core.config.ConfigItem;
@@ -30,7 +30,7 @@ public class ConfigurationParametersGUI extends ImageResizingPanel
     private ConfigManager configManager;
 	private Map<String, ConfigTextField> configTextFields = new HashMap<String, ConfigTextField>();
 	
-	public ConfigurationParametersGUI(JPanel configurationGlobalGUI, ConfigManager configManager, ConfigSet configSet) 
+	public ConfigurationParametersGUI(Pane configurationGlobalGUI, ConfigManager configManager, ConfigSet configSet) 
 	{		
         super("");
         setLayout(new BorderLayout());
@@ -51,10 +51,10 @@ public class ConfigurationParametersGUI extends ImageResizingPanel
 		
 		Color bgColor = ColorMap.PAPER_BACKGROUND;
 		
-		JPanel mainPanel = new JPanel (new BorderLayout());
+		Pane mainPanel = new Pane (new BorderLayout());
 		mainPanel.setOpaque(false);
 
-		JPanel descPanel = new JPanel (new GridLayout(0,3));
+		Pane descPanel = new Pane (new GridLayout(0,3));
 		descPanel.setOpaque(false);
 		
 		Font font = PWCGMonitorFonts.getTypewriterFont();
@@ -64,7 +64,7 @@ public class ConfigurationParametersGUI extends ImageResizingPanel
 			ConfigItem item = configSet.getConfigItem(parameterKey);
 
 			String keyString = item.getLabelText() + " : ";
-			JLabel label = new JLabel(keyString, JLabel.LEFT);
+			Label label = new Label(keyString, Label.LEFT);
 			label.setBackground(bgColor);
 			label.setOpaque(false);
 			label.setFont(font);
@@ -81,7 +81,7 @@ public class ConfigurationParametersGUI extends ImageResizingPanel
 			textField.setSize(100, 30);
 			descPanel.add(textField);
 			
-            JLabel spacerRight = new JLabel("");
+            Label spacerRight = new Label("");
             descPanel.add(spacerRight);
 
 			ConfigTextField configTextField = new ConfigTextField(parameterKey, textField, 50, item.getLabelText(), item.getHelp());

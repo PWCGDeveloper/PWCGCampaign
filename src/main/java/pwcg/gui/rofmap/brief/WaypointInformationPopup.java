@@ -2,8 +2,8 @@ package pwcg.gui.rofmap.brief;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javax.swing.JPopupMenu;
 
 import pwcg.core.exception.PWCGException;
@@ -18,8 +18,8 @@ public class WaypointInformationPopup extends JPopupMenu
     {
         try
         {
-            JPanel infoPanel = new JPanel(new BorderLayout());
-            JLabel waypointInformationText = new JLabel();
+            Pane infoPanel = new Pane(new BorderLayout());
+            Label waypointInformationText = new Label();
             waypointInformationText.setText(formWaypointInfoText(selectedMapPointIndex));
             infoPanel.add(waypointInformationText, BorderLayout.CENTER);
             this.add(infoPanel);

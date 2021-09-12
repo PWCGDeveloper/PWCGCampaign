@@ -1,7 +1,7 @@
 package pwcg.gui.rofmap.infoMap;
 
 import java.awt.BasicStroke;
-import java.awt.Color;
+import javafx.scene.paint.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;

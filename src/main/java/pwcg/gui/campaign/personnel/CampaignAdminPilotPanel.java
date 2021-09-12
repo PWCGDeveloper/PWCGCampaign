@@ -1,8 +1,8 @@
 package pwcg.gui.campaign.personnel;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,12 +11,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.ButtonGroup;
-import javax.swing.ButtonModel;
+import javafx.scene.control.ButtonGroup;
+import javafx.scene.control.ButtonModel;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javax.swing.RadioButton ;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
@@ -48,7 +48,7 @@ public class CampaignAdminPilotPanel extends ImageResizingPanel implements Actio
     private Map<Integer, ButtonModel> pilotButtonModels = new HashMap<>();
 
     private int selectedPilotSerialNumber;
-    private JPanel centerPanel;
+    private Pane centerPanel;
     
     private IRefreshableParentUI parentScreen;
     private Campaign campaign;
@@ -79,27 +79,27 @@ public class CampaignAdminPilotPanel extends ImageResizingPanel implements Actio
         }
     }
 
-    private JPanel makeDisplay() throws PWCGException
+    private Pane makeDisplay() throws PWCGException
     {
         pilotButtonModels.clear();
         
         loadCoopRecords();
 
-        JPanel recordListPanel = new JPanel(new GridLayout(0, 4));
+        Pane recordListPanel = new Pane(new GridLayout(0, 4));
         if (campaign.isCoop())
         {
-            recordListPanel = new JPanel(new GridLayout(0, 5));
+            recordListPanel = new Pane(new GridLayout(0, 5));
         }
         
         recordListPanel.setOpaque(false);
 
         for (CoopDisplayRecord coopDisplayRecord : coopDisplayRecords)
         {
-            JRadioButton pilotSelector = makeRadioButton(coopDisplayRecord);
+            RadioButton  pilotSelector = makeRadioButton(coopDisplayRecord);
             JComboBox<String> userSelector = makeUserSelector(coopDisplayRecord.getUsername());
-            JLabel campaignNameLabel = makeDataLabel(coopDisplayRecord.getCampaignName());
-            JLabel pilotStatusLabel = makeDataLabel("     " + SquadronMemberStatus.pilotStatusToStatusDescription(coopDisplayRecord.getPilotStatus()));
-            JLabel squadronNameLabel = makeDataLabel("     " + coopDisplayRecord.getSquadronName());
+            Label campaignNameLabel = makeDataLabel(coopDisplayRecord.getCampaignName());
+            Label pilotStatusLabel = makeDataLabel("     " + SquadronMemberStatus.pilotStatusToStatusDescription(coopDisplayRecord.getPilotStatus()));
+            Label squadronNameLabel = makeDataLabel("     " + coopDisplayRecord.getSquadronName());
             
             recordListPanel.add(pilotSelector);
             recordListPanel.add(campaignNameLabel);
@@ -120,7 +120,7 @@ public class CampaignAdminPilotPanel extends ImageResizingPanel implements Actio
 
         JScrollPane planeListScroll = ScrollBarWrapper.makeScrollPane(recordListPanel);
         
-        centerPanel = new JPanel();
+        centerPanel = new Pane();
         centerPanel.setOpaque(false);
         centerPanel.add(planeListScroll, BorderLayout.NORTH);
 
@@ -144,15 +144,15 @@ public class CampaignAdminPilotPanel extends ImageResizingPanel implements Actio
         return userSelector;
     }
 
-    private JRadioButton makeRadioButton(CoopDisplayRecord coopDisplayRecord) throws PWCGException
+    private RadioButton  makeRadioButton(CoopDisplayRecord coopDisplayRecord) throws PWCGException
     {
         Font font = PWCGMonitorFonts.getPrimaryFont();
         Color bg = ColorMap.PAPER_BACKGROUND;
         Color fg = ColorMap.PAPER_FOREGROUND;
 
-        JRadioButton button = new JRadioButton(coopDisplayRecord.getPilotNameAndRank());
+        RadioButton  button = new RadioButton (coopDisplayRecord.getPilotNameAndRank());
         button.setActionCommand("" + coopDisplayRecord.getPilotSerialNumber());
-        button.setHorizontalAlignment(SwingConstants.LEFT );
+        button.setAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
         button.setFocusPainted(false);
         button.addActionListener(this);
@@ -177,13 +177,13 @@ public class CampaignAdminPilotPanel extends ImageResizingPanel implements Actio
         }
     }
     
-    public JLabel makeDataLabel(String labelText) throws PWCGException  
+    public Label makeDataLabel(String labelText) throws PWCGException  
     {
         Font font = PWCGMonitorFonts.getPrimaryFont();
         Color bg = ColorMap.PAPER_BACKGROUND;
         Color fg = ColorMap.PAPER_FOREGROUND;
 
-        JLabel label = new JLabel(labelText, JLabel.LEFT);
+        Label label = new Label(labelText, Label.LEFT);
         label.setBackground(bg);
         label.setForeground(fg);
         label.setOpaque(false);
@@ -254,7 +254,7 @@ public class CampaignAdminPilotPanel extends ImageResizingPanel implements Actio
     }
 
     @Override
-    public JPanel getScreen()
+    public Pane getScreen()
     {
         return this;
     }

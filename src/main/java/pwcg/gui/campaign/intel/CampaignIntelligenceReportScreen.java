@@ -1,13 +1,13 @@
 package pwcg.gui.campaign.intel;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+import javafx.scene.paint.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 import javax.swing.JTabbedPane;
 
 import pwcg.campaign.Campaign;
@@ -19,7 +19,7 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
 public class CampaignIntelligenceReportScreen extends ImageResizingPanel implements ActionListener
@@ -49,15 +49,15 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
         this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(2000));
 	}
 
-	private JPanel makeNavigatePanel() throws PWCGException  
+	private Pane makeNavigatePanel() throws PWCGException  
 	{		
-        JPanel intelPanel = new JPanel(new BorderLayout());
+        Pane intelPanel = new Pane(new BorderLayout());
 		intelPanel.setOpaque(false);
 
-		JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+		Pane buttonPanel = new Pane(new GridLayout(0,1));
 		buttonPanel.setOpaque(false);
 		
-        JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished Reading", "IntelFinished", "Leave Intel", this);
+        Button acceptButton = ButtonFactory.makeTranslucentMenuButton("Finished Reading", "IntelFinished", "Leave Intel", this);
 		buttonPanel.add(acceptButton);
 		
 		intelPanel.add(buttonPanel, BorderLayout.NORTH);
@@ -65,9 +65,9 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
 		return intelPanel;
 	}
 
-	private JPanel makeCenterPanel() throws PWCGException 
+	private Pane makeCenterPanel() throws PWCGException 
 	{
-        JPanel intelPanel = new JPanel(new BorderLayout());
+        Pane intelPanel = new Pane(new BorderLayout());
         intelPanel.setOpaque(false);
 
         Color tabBG = ColorMap.PAPER_BACKGROUND;

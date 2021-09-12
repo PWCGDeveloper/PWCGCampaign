@@ -2,14 +2,14 @@ package pwcg.gui.campaign.activity;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.Font;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 
 import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
@@ -24,7 +24,7 @@ import pwcg.gui.dialogs.PWCGMonitorBorders;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ScrollBarWrapper;
 
-public class CampaignJournalGUI extends JPanel
+public class CampaignJournalGUI extends Pane
 {
 	private static final long serialVersionUID = 1L;
 	private CombatReport combatReport;
@@ -61,23 +61,23 @@ public class CampaignJournalGUI extends JPanel
 		
 		try
 		{
-		    JPanel combatReportPanel = new JPanel();
+		    Pane combatReportPanel = new Pane();
 			combatReportPanel.setLayout(new BorderLayout());
 			combatReportPanel.setOpaque(false);
 			
 	        Insets margins = PWCGMonitorBorders.calculateBorderMargins(0,5,5,5);
 			combatReportPanel.setBorder(BorderFactory.createEmptyBorder(margins.top, margins.left, margins.bottom, margins.right)); 
 
-			JPanel headerpanel = makeHeader();
+			Pane headerpanel = makeHeader();
 			combatReportPanel.add(headerpanel, BorderLayout.NORTH);
 
-			JPanel mainGrid = new JPanel(new GridLayout(0,1));
+			Pane mainGrid = new Pane(new GridLayout(0,1));
 			mainGrid.setOpaque(false);
 			
 			Component missionResults = makeMissionResults();
 			mainGrid.add(missionResults);
 
-			JPanel narrativePanel = makeNarrative();
+			Pane narrativePanel = makeNarrative();
 			mainGrid.add(narrativePanel);
 			
 			combatReportPanel.add(mainGrid, BorderLayout.CENTER);
@@ -91,88 +91,88 @@ public class CampaignJournalGUI extends JPanel
 		}
 	}
 
-	private JPanel makeHeader() throws PWCGException  
+	private Pane makeHeader() throws PWCGException  
 	{
-		JPanel headerPanel = new JPanel(new BorderLayout());
+		Pane headerPanel = new Pane(new BorderLayout());
 		headerPanel.setOpaque(false);
 
 		Font font = PWCGMonitorFonts.getTypewriterFont();
 		Font medFont = PWCGMonitorFonts.getDecorativeFont();
 
-		JLabel lTitle = new JLabel("Combats in the Air", JLabel.LEFT);
+		Label lTitle = new Label("Combats in the Air", Label.LEFT);
 		lTitle.setOpaque(false);
 		lTitle.setFont(medFont);
 		headerPanel.add(lTitle, BorderLayout.NORTH);
 
-		JPanel headerLeftPanel = new JPanel(new GridLayout(0,1));
+		Pane headerLeftPanel = new Pane(new GridLayout(0,1));
 		headerLeftPanel.setOpaque(false);
 
-		JLabel lSpacer1 = new JLabel(" ");
+		Label lSpacer1 = new Label(" ");
 		lSpacer1.setOpaque(false);
 		headerLeftPanel.add(lSpacer1);
 		
-		JLabel lSquadron = new JLabel("Squadron: " + combatReport.getSquadron() + "          ", JLabel.LEFT);
+		Label lSquadron = new Label("Squadron: " + combatReport.getSquadron() + "          ", Label.LEFT);
 		lSquadron.setOpaque(false);
 		lSquadron.setFont(font);
 		headerLeftPanel.add(lSquadron);
 		
-		JLabel lPilot = makePilotsInMissionLabel(font);
+		Label lPilot = makePilotsInMissionLabel(font);
 		headerLeftPanel.add(lPilot);
 
-		JLabel lType = new JLabel("Type: " + combatReport.getType() + "          ", JLabel.LEFT);
+		Label lType = new Label("Type: " + combatReport.getType() + "          ", Label.LEFT);
 		lType.setOpaque(false);
 		lType.setFont(font);
 		headerLeftPanel.add(lType);
 
-		JLabel lDuty = new JLabel("Duty: " + combatReport.getDuty() + "          ", JLabel.LEFT);
+		Label lDuty = new Label("Duty: " + combatReport.getDuty() + "          ", Label.LEFT);
 		lDuty.setOpaque(false);
 		lDuty.setFont(font);
 		headerLeftPanel.add(lDuty);
 
-		JLabel lSpacer2 = new JLabel(" ");
+		Label lSpacer2 = new Label(" ");
 		lSpacer2.setOpaque(false);
 		headerLeftPanel.add(lSpacer2);
 
-		JLabel lSpacer3 = new JLabel(" ");
+		Label lSpacer3 = new Label(" ");
 		lSpacer3.setOpaque(false);
 		headerLeftPanel.add(lSpacer3);
 
 		headerPanel.add(headerLeftPanel, BorderLayout.WEST);
 
-		JPanel headerRightPanel = new JPanel(new GridLayout(0,1));
+		Pane headerRightPanel = new Pane(new GridLayout(0,1));
 		headerRightPanel.setOpaque(false);
 
-		JLabel lSpacerR1 = new JLabel(" ");
+		Label lSpacerR1 = new Label(" ");
 		lSpacerR1.setOpaque(false);
 		headerRightPanel.add(lSpacerR1);
 		
 		String formattedCombatDate = DateUtils.getDateStringPretty(combatReport.getDate());
 		
-		JLabel lDate = new JLabel("Date: " + formattedCombatDate, JLabel.LEFT);
+		Label lDate = new Label("Date: " + formattedCombatDate, Label.LEFT);
 		lDate.setOpaque(false);
 		lDate.setFont(font);
 		headerRightPanel.add(lDate);
 		
-		JLabel lTime = new JLabel("Time: " + combatReport.getTime(), JLabel.LEFT);
+		Label lTime = new Label("Time: " + combatReport.getTime(), Label.LEFT);
 		lTime.setOpaque(false);
 		lTime.setFont(font);
 		headerRightPanel.add(lTime);
 
-		JLabel lLocality = new JLabel("Locality: " + combatReport.getLocality(), JLabel.LEFT);
+		Label lLocality = new Label("Locality: " + combatReport.getLocality(), Label.LEFT);
 		lLocality.setOpaque(false);
 		lLocality.setFont(font);
 		headerRightPanel.add(lLocality);
 
-		JLabel lHeight = new JLabel("Height: " + combatReport.getAltitude(), JLabel.LEFT);
+		Label lHeight = new Label("Height: " + combatReport.getAltitude(), Label.LEFT);
 		lHeight.setOpaque(false);
 		lHeight.setFont(font);
 		headerRightPanel.add(lHeight);
 
-		JLabel lSpacerR2 = new JLabel(" ");
+		Label lSpacerR2 = new Label(" ");
 		lSpacerR2.setOpaque(false);
 		headerRightPanel.add(lSpacerR2);		
 
-		JLabel lSpacerR3 = new JLabel(" ");
+		Label lSpacerR3 = new Label(" ");
 		lSpacerR3.setOpaque(false);
 		headerRightPanel.add(lSpacerR3);
 		
@@ -182,7 +182,7 @@ public class CampaignJournalGUI extends JPanel
 		return headerPanel;
 	}
 
-    private JLabel makePilotsInMissionLabel(Font font) throws PWCGException
+    private Label makePilotsInMissionLabel(Font font) throws PWCGException
     {
         String pilotNames = "";
         for (String pilotName : combatReport.getFlightPilots())
@@ -193,7 +193,7 @@ public class CampaignJournalGUI extends JPanel
             }
             pilotNames += pilotName;
         }
-        JLabel lPilot = new JLabel("Pilots in mission: " + pilotNames, JLabel.LEFT);
+        Label lPilot = new Label("Pilots in mission: " + pilotNames, Label.LEFT);
         lPilot.setOpaque(false);
         lPilot.setFont(font);
         return lPilot;
@@ -215,13 +215,13 @@ public class CampaignJournalGUI extends JPanel
 		return missionResultScrollPane;
 	}
 
-	private JPanel makeNarrative() throws PWCGException 
+	private Pane makeNarrative() throws PWCGException 
 	{
-		JPanel narrativePanel = new JPanel(new BorderLayout());
+		Pane narrativePanel = new Pane(new BorderLayout());
 		narrativePanel.setOpaque(false);
 		
 		Font medFont = PWCGMonitorFonts.getDecorativeFont();
-		JLabel lNarrative = new JLabel("Narrative", JLabel.LEFT);
+		Label lNarrative = new Label("Narrative", Label.LEFT);
 		lNarrative.setOpaque(false);
 		lNarrative.setFont(medFont);
 		narrativePanel.add(lNarrative, BorderLayout.NORTH);

@@ -1,18 +1,18 @@
 package pwcg.gui.maingui.config;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import javafx.scene.control.ButtonGroup;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
+import javax.swing.RadioButton ;
 import javax.swing.SwingConstants;
 
 import pwcg.campaign.skirmish.IconicMissionsManager;
@@ -30,7 +30,7 @@ import pwcg.gui.iconicbattles.IconicBattlesGUI;
 import pwcg.gui.iconicbattles.IconicBattlesGenerator;
 import pwcg.gui.iconicbattles.IconicBattlesGeneratorData;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 
 public class PwcgIconicMissionGenerationScreen extends ImageResizingPanel implements ActionListener
 {
@@ -59,26 +59,26 @@ public class PwcgIconicMissionGenerationScreen extends ImageResizingPanel implem
         pwcgThreePanel.setRightPanel(makeCategoryPanel());
     }
 
-    public JPanel makeBlankCenterPanel()  
+    public Pane makeBlankCenterPanel()  
     {       
-        JPanel blankPanel = new JPanel(new BorderLayout());
+        Pane blankPanel = new Pane(new BorderLayout());
         blankPanel.setOpaque(false);
         blankPanel.setLayout(new BorderLayout());
         return blankPanel;
     }
 
-    public JPanel makeNavigatePanel() throws PWCGException  
+    public Pane makeNavigatePanel() throws PWCGException  
     {
-        JPanel navPanel = new JPanel(new BorderLayout());
+        Pane navPanel = new Pane(new BorderLayout());
         navPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JButton cancelButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished with iconic missions", this);
+        Button cancelButton = ButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished with iconic missions", this);
         buttonPanel.add(cancelButton);
 
-        JButton generateMissionButton = PWCGButtonFactory.makeTranslucentMenuButton("Generate Mission", "Generate Mission", "Generate selected iconic mission", this);
+        Button generateMissionButton = ButtonFactory.makeTranslucentMenuButton("Generate Mission", "Generate Mission", "Generate selected iconic mission", this);
         buttonPanel.add(generateMissionButton);
 
         navPanel.add(buttonPanel, BorderLayout.NORTH);
@@ -86,23 +86,23 @@ public class PwcgIconicMissionGenerationScreen extends ImageResizingPanel implem
         return navPanel;
     }
 
-    public JPanel makeCategoryPanel() throws PWCGException  
+    public Pane makeCategoryPanel() throws PWCGException  
     {
-        JPanel configPanel = new JPanel(new BorderLayout());
+        Pane configPanel = new Pane(new BorderLayout());
         configPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
         
         
-        buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("Iconic Missions:"));
+        buttonPanel.add(ButtonFactory.makeMenuLabelLarge("Iconic Missions:"));
         addMissionsForMapToButtonPanel(buttonPanel, "Stalingrad");
         addMissionsForMapToButtonPanel(buttonPanel, "Kuban");
         addMissionsForMapToButtonPanel(buttonPanel, "Rhine");
-        buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
-        buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
-        buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
+        buttonPanel.add(ButtonFactory.makeMenuLabelLarge("   "));
+        buttonPanel.add(ButtonFactory.makeMenuLabelLarge("   "));
+        buttonPanel.add(ButtonFactory.makeMenuLabelLarge("   "));
 
         add (buttonPanel);
 
@@ -111,24 +111,24 @@ public class PwcgIconicMissionGenerationScreen extends ImageResizingPanel implem
         return configPanel;
     }
 
-    private void addMissionsForMapToButtonPanel(JPanel buttonPanel, String mapName) throws PWCGException
+    private void addMissionsForMapToButtonPanel(Pane buttonPanel, String mapName) throws PWCGException
     {
-        buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
+        buttonPanel.add(ButtonFactory.makeMenuLabelLarge("   "));
         for (IconicSingleMission iconicMission : IconicMissionsManager.getInstance().getIconicMissionsForMapByDate(mapName))
         {
             buttonPanel.add(makeCategoryRadioButton(iconicMission.getMapName() + ": " + iconicMission.getCampaignName(), iconicMission.getDateString()));
         }
     }
     
-    private JRadioButton makeCategoryRadioButton(String buttonText, String battleDate) throws PWCGException 
+    private RadioButton  makeCategoryRadioButton(String buttonText, String battleDate) throws PWCGException 
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
 
         Font font = PWCGMonitorFonts.getPrimaryFont();
 
-        JRadioButton button = new JRadioButton(buttonText);
+        RadioButton  button = new RadioButton (buttonText);
         button.setActionCommand(battleDate);
-        button.setHorizontalAlignment(SwingConstants.LEFT );
+        button.setAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
         button.setFocusPainted(false);
         button.addActionListener(this);

@@ -1,9 +1,9 @@
 package pwcg.gui.rofmap.intelmap;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+import javafx.scene.paint.Color;
 import java.awt.Dimension;
-import java.awt.Font;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -11,11 +11,11 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.List;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import javafx.scene.control.ButtonGroup;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javax.swing.RadioButton ;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 
@@ -37,7 +37,7 @@ import pwcg.gui.rofmap.MapGUI;
 import pwcg.gui.rofmap.MapScroll;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImagePanelLayout;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 
 public class IntelMapGUI extends MapGUI implements ActionListener
 {
@@ -46,7 +46,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 
     private ButtonGroup mapButtonGroup = new ButtonGroup();
     private Campaign campaign = null;
-    private JPanel rightPanel;
+    private Pane rightPanel;
 
 	public IntelMapGUI(Date mapDate) throws PWCGException  
 	{
@@ -80,9 +80,9 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 		}
 	}
 
-    private JPanel createMapPanel() throws PWCGException, PWCGException
+    private Pane createMapPanel() throws PWCGException, PWCGException
     {
-        JPanel intelMapCenterPanel = new JPanel(new BorderLayout());
+        Pane intelMapCenterPanel = new Pane(new BorderLayout());
 
         IntelMapPanel mapPanel = new IntelMapPanel(this, campaign);
         mapScroll = new MapScroll(mapPanel);  
@@ -98,25 +98,25 @@ public class IntelMapGUI extends MapGUI implements ActionListener
         return intelMapCenterPanel;
     }
 
-    private JPanel makeNavigationPanel() throws PWCGException  
+    private Pane makeNavigationPanel() throws PWCGException  
     {
-        JPanel intelNavPanel = new JPanel();
+        Pane intelNavPanel = new Pane();
         intelNavPanel.setLayout(new BorderLayout());
         intelNavPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
-        JButton finished = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished reading intel map", this);
+        Button finished = ButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished reading intel map", this);
         buttonPanel.add(finished);
         
-        JLabel spacer1 = PWCGButtonFactory.makeMenuLabelLarge("");
+        Label spacer1 = ButtonFactory.makeMenuLabelLarge("");
         buttonPanel.add(spacer1);
 
-        JPanel radioButtonPanel = new JPanel( new GridLayout(0,1));
+        Pane radioButtonPanel = new Pane( new GridLayout(0,1));
         radioButtonPanel.setOpaque(false);
         
-        JLabel spacer2 = PWCGButtonFactory.makeMenuLabelLarge("");
+        Label spacer2 = ButtonFactory.makeMenuLabelLarge("");
         buttonPanel.add(spacer2);
 
         intelNavPanel.add(buttonPanel, BorderLayout.NORTH);
@@ -162,7 +162,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
         this.repaint();
     }
 
-    private JPanel makeRightPanel(int squadId) throws PWCGException 
+    private Pane makeRightPanel(int squadId) throws PWCGException 
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "PaperPart.jpg";
         Color bgColor = ColorMap.PAPER_BACKGROUND;
@@ -170,21 +170,21 @@ public class IntelMapGUI extends MapGUI implements ActionListener
         rightPanel.setOpaque(false);
         rightPanel.setBackground(bgColor); 
 
-        JPanel mapCheckBoxesPanel = makeMapCheckBoxes();
+        Pane mapCheckBoxesPanel = makeMapCheckBoxes();
         rightPanel.add(mapCheckBoxesPanel, BorderLayout.NORTH);
 
-        JPanel squadronInfoPanel = makeInfoPanel(squadId);
+        Pane squadronInfoPanel = makeInfoPanel(squadId);
         rightPanel.add(squadronInfoPanel, BorderLayout.CENTER);
         
         return rightPanel;
     }
 
-	private JPanel makeInfoPanel(int squadId) throws PWCGException 
+	private Pane makeInfoPanel(int squadId) throws PWCGException 
 	{
-		JPanel squadDescriptionPanel = new JPanel(new BorderLayout());
+		Pane squadDescriptionPanel = new Pane(new BorderLayout());
 		squadDescriptionPanel.setOpaque(false);
 		
-		JPanel descriptionGrid = makeSquadronDescriptionGrid();
+		Pane descriptionGrid = makeSquadronDescriptionGrid();
 		squadDescriptionPanel.add(descriptionGrid, BorderLayout.NORTH);
 		
 		JTextPane squadDesc = makeIntelSquadronDescription(squadId);
@@ -193,19 +193,19 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 		return squadDescriptionPanel;
 	}
 
-	private JPanel makeSquadronDescriptionGrid() throws PWCGException
+	private Pane makeSquadronDescriptionGrid() throws PWCGException
 	{
 		Font fontMain = PWCGMonitorFonts.getPrimaryFont();
 
-        JPanel descriptionGrid = new JPanel(new GridLayout(0,1));
+        Pane descriptionGrid = new Pane(new GridLayout(0,1));
         descriptionGrid.setOpaque(false);
 
-        JLabel spaceLabel = new JLabel("     ");
+        Label spaceLabel = new Label("     ");
         spaceLabel.setFont(fontMain);
         spaceLabel.setOpaque(false);
         descriptionGrid.add(spaceLabel);
         
-        JLabel header = new JLabel("Squadron Information");
+        Label header = new Label("Squadron Information");
         header.setFont(fontMain);
         header.setOpaque(false);
         descriptionGrid.add(header);
@@ -234,17 +234,17 @@ public class IntelMapGUI extends MapGUI implements ActionListener
         return squadDesc;
 	}
 
-    private JPanel makeMapCheckBoxes() throws PWCGException
+    private Pane makeMapCheckBoxes() throws PWCGException
     {
-        JPanel mapPanel = new JPanel(new BorderLayout());
+        Pane mapPanel = new Pane(new BorderLayout());
         mapPanel.setOpaque(false);
                 
-        JPanel mapGrid = new JPanel( new GridLayout(0,1));
+        Pane mapGrid = new Pane( new GridLayout(0,1));
         mapGrid.setOpaque(false);
         
         mapPanel.add(mapGrid, BorderLayout.NORTH);
 
-        JLabel mapLabel = PWCGButtonFactory.makeMenuLabelLarge("Choose Map");
+        Label mapLabel = ButtonFactory.makeMenuLabelLarge("Choose Map");
         mapGrid.add(mapLabel);
         
         Campaign campaign = PWCGContext.getInstance().getCampaign();
@@ -302,20 +302,20 @@ public class IntelMapGUI extends MapGUI implements ActionListener
         return mapPanel;
     }
 
-    private void addToMapGrid(JPanel mapGrid, FrontMapIdentifier mapIdentifier) throws PWCGException
+    private void addToMapGrid(Pane mapGrid, FrontMapIdentifier mapIdentifier) throws PWCGException
     {
         mapGrid.add(makeRadioButton(mapIdentifier.getMapName(), MAP_DELIMITER + mapIdentifier.getMapName(), mapButtonGroup));
     }
 
-    private JRadioButton makeRadioButton(String buttonText, String commandString, ButtonGroup buttonGroup) throws PWCGException 
+    private RadioButton  makeRadioButton(String buttonText, String commandString, ButtonGroup buttonGroup) throws PWCGException 
     {
         Color fgColor = ColorMap.PAPER_FOREGROUND;
         Color bgColor = ColorMap.PAPER_BACKGROUND;
 
         Font font = PWCGMonitorFonts.getPrimaryFont();
 
-        JRadioButton button = new JRadioButton(buttonText);
-        button.setHorizontalAlignment(SwingConstants.LEFT );
+        RadioButton  button = new RadioButton (buttonText);
+        button.setAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
         button.setFocusPainted(false);
         button.addActionListener(this);
@@ -346,7 +346,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
                 String mapName = action.substring(indexOfMapName);
                 FrontMapIdentifier mapIdentifier = FrontMapIdentifier.getFrontMapIdentifierForName(mapName);
                 PWCGContext.getInstance().changeContext(mapIdentifier);
-                JPanel mapCenterPanel = createMapPanel();
+                Pane mapCenterPanel = createMapPanel();
                 this.add(BorderLayout.CENTER, mapCenterPanel); 
 
                 centerMapAt(null);

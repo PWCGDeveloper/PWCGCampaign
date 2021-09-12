@@ -11,9 +11,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javax.swing.CheckBox;
+import javafx.scene.layout.Pane;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
@@ -32,7 +32,7 @@ import pwcg.gui.rofmap.brief.model.BriefingFlight;
 import pwcg.gui.rofmap.brief.update.BriefingMissionUpdater;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
@@ -45,7 +45,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
     private CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper;
     private Campaign campaign;
     private Mission mission;
-    private JPanel briefingMapCenterPanel;
+    private Pane briefingMapCenterPanel;
     private BriefingPilotChalkboard pilotPanel;
     private BriefingData briefingData;
     private Map<Integer, BriefingPlaneModificationsPicker> planeModifications = new HashMap<>();
@@ -86,67 +86,67 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         }
     }
 
-    private JPanel makeLeftPanel() throws PWCGException 
+    private Pane makeLeftPanel() throws PWCGException 
     {
-        JPanel leftPanel = new JPanel(new BorderLayout());
+        Pane leftPanel = new Pane(new BorderLayout());
         leftPanel.setLayout(new BorderLayout());
         leftPanel.setOpaque(false);
 
-        JPanel buttonPanel = makeButtonPanel();
+        Pane buttonPanel = makeButtonPanel();
         leftPanel.add(buttonPanel, BorderLayout.NORTH);
         leftPanel.add(briefingFlightChooser.getFlightChooserPanel(), BorderLayout.CENTER);
         return leftPanel;
     }
 
-    private JPanel makeButtonPanel() throws PWCGException
+    private Pane makeButtonPanel() throws PWCGException
     {
-        JPanel pilotAssignmentNavPanel = new JPanel(new BorderLayout());
+        Pane pilotAssignmentNavPanel = new Pane(new BorderLayout());
         pilotAssignmentNavPanel.setOpaque(false);
 
-        JPanel buttonGrid = new JPanel(new GridLayout(0, 1));
+        Pane buttonGrid = new Pane(new GridLayout(0, 1));
         buttonGrid.setOpaque(false);
 
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        buttonGrid.add(ButtonFactory.makeDummy());
 
-        JButton scrubButton = PWCGButtonFactory.makeTranslucentMenuButton("Scrub Mission", "Scrub Mission", "Scrub this mission and return to campaign home screen", this);
+        Button scrubButton = ButtonFactory.makeTranslucentMenuButton("Scrub Mission", "Scrub Mission", "Scrub this mission and return to campaign home screen", this);
         buttonGrid.add(scrubButton);
 
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        buttonGrid.add(ButtonFactory.makeDummy());
 
-        JButton backToMapButton = PWCGButtonFactory.makeTranslucentMenuButton("Back: WP Editor", "Back: WP Editor", "Go back to waypoint editor screen", this);
+        Button backToMapButton = ButtonFactory.makeTranslucentMenuButton("Back: WP Editor", "Back: WP Editor", "Go back to waypoint editor screen", this);
         buttonGrid.add(backToMapButton);
 
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        buttonGrid.add(ButtonFactory.makeDummy());
 
         if (!mission.isFinalized())
         {
-            JButton acceptMissionButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept Mission", "Accept Mission", "The mission will be written fow use in game", this);
+            Button acceptMissionButton = ButtonFactory.makeTranslucentMenuButton("Accept Mission", "Accept Mission", "The mission will be written fow use in game", this);
             buttonGrid.add(acceptMissionButton);
         }
         else
         {
-            JButton backToCampaignButton = PWCGButtonFactory.makeTranslucentMenuButton("Return To Campaign", "Return To Campaign", "Return to campaign home screen", this);
+            Button backToCampaignButton = ButtonFactory.makeTranslucentMenuButton("Return To Campaign", "Return To Campaign", "Return to campaign home screen", this);
             buttonGrid.add(backToCampaignButton);
         }
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        buttonGrid.add(ButtonFactory.makeDummy());
         
-        JButton payloadAsLeaderButton = PWCGButtonFactory.makeTranslucentMenuButton("Synchronize Payload", "Synchronize Payload", "Make flight payload the same as the leaders", this);
+        Button payloadAsLeaderButton = ButtonFactory.makeTranslucentMenuButton("Synchronize Payload", "Synchronize Payload", "Make flight payload the same as the leaders", this);
         buttonGrid.add(payloadAsLeaderButton);
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        buttonGrid.add(ButtonFactory.makeDummy());
 
         pilotAssignmentNavPanel.add(buttonGrid, BorderLayout.NORTH);
 
         return pilotAssignmentNavPanel;
     }
 
-    private JPanel createCenterPanel() throws PWCGException
+    private Pane createCenterPanel() throws PWCGException
     {
         if (briefingMapCenterPanel != null)
         {
             this.remove(briefingMapCenterPanel);
         }
         
-        briefingMapCenterPanel = new JPanel(new BorderLayout());
+        briefingMapCenterPanel = new Pane(new BorderLayout());
         briefingMapCenterPanel.setOpaque(false);
 
         pilotPanel = new BriefingPilotChalkboard(briefingData, this);
@@ -337,7 +337,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         BriefingPlaneModificationsPicker modificationPicker = planeModifications.get(pilotSerialNumber);
         for (String modificationDescription : modificationPicker.getPlaneModifications().keySet())
         {
-            JCheckBox planeModificationCheckBox = modificationPicker.getPlaneModifications().get(modificationDescription);
+            CheckBox planeModificationCheckBox = modificationPicker.getPlaneModifications().get(modificationDescription);
             boolean ismodificationSelected = planeModificationCheckBox.isSelected();
             if (ismodificationSelected)
             {

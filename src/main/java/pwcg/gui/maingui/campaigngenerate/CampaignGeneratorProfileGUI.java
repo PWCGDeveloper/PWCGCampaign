@@ -1,18 +1,18 @@
 package pwcg.gui.maingui.campaigngenerate;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
-import javax.swing.ButtonModel;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import javafx.scene.control.ButtonGroup;
+import javafx.scene.control.ButtonModel;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javax.swing.RadioButton ;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -24,9 +24,9 @@ import pwcg.gui.campaign.config.CampaignConfigurationSimpleGUIController;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 
-public class CampaignGeneratorProfileGUI extends JPanel implements ActionListener
+public class CampaignGeneratorProfileGUI extends Pane implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -40,8 +40,8 @@ public class CampaignGeneratorProfileGUI extends JPanel implements ActionListene
     
     private JTextField campaignNameTextBox;
      
-    private JLabel lCampaignType;
-    private JLabel lCampaignName;
+    private Label lCampaignType;
+    private Label lCampaignName;
 
     private CampaignGeneratorScreen parent;
 
@@ -64,12 +64,12 @@ public class CampaignGeneratorProfileGUI extends JPanel implements ActionListene
 
 		try
 		{			
-			JPanel campaignGeneratePanel = new JPanel(new BorderLayout());
+			Pane campaignGeneratePanel = new Pane(new BorderLayout());
 			campaignGeneratePanel.setOpaque(false);
 	        
-			JPanel campaignNamePanel = createCampaignNameWidget();
-			JPanel campaignModePanel = createCampaignModeWidget();
-		    JPanel campaignChooseServiceGUI = makeServicePanel();
+			Pane campaignNamePanel = createCampaignNameWidget();
+			Pane campaignModePanel = createCampaignModeWidget();
+		    Pane campaignChooseServiceGUI = makeServicePanel();
 		    
 		    
             campaignGeneratePanel.add(campaignModePanel, BorderLayout.NORTH);
@@ -85,18 +85,18 @@ public class CampaignGeneratorProfileGUI extends JPanel implements ActionListene
 		}
 	}
 
-    private JPanel createCampaignModeWidget() throws PWCGException
+    private Pane createCampaignModeWidget() throws PWCGException
     {
-        JPanel shapePanel = new JPanel(new BorderLayout());
+        Pane shapePanel = new Pane(new BorderLayout());
         shapePanel.setOpaque(false);
 
-        JPanel coopButtonPanelGrid = new JPanel(new GridLayout(0,1));
+        Pane coopButtonPanelGrid = new Pane(new GridLayout(0,1));
         coopButtonPanelGrid.setOpaque(false);
         
         lCampaignType = makeCoopLabel(CampaignConfigurationSimpleGUIController.CAMPAIGN_TYPE + ":");      
         coopButtonPanelGrid.add(lCampaignType);
 
-        JRadioButton singlePlayerButton = PWCGButtonFactory.makeRadioButton(
+        RadioButton  singlePlayerButton = ButtonFactory.makeRadioButton(
                 "Single Player Mode", 
                 "Mission Mode: Single Player", 
                 "Select single player mode for generated missions", 
@@ -107,7 +107,7 @@ public class CampaignGeneratorProfileGUI extends JPanel implements ActionListene
         singlePlayerButtonModel = singlePlayerButton.getModel();
         coopGroup.add(singlePlayerButton);
 
-        JRadioButton coopCooperativeButton = PWCGButtonFactory.makeRadioButton(
+        RadioButton  coopCooperativeButton = ButtonFactory.makeRadioButton(
                 "Coop Cooperative Mode", 
                 "Mission Mode: Coop Cooperative", 
                 "Select coop player mode for generated missions", 
@@ -121,17 +121,17 @@ public class CampaignGeneratorProfileGUI extends JPanel implements ActionListene
         
         shapePanel.add(coopButtonPanelGrid, BorderLayout.NORTH);
         
-        JPanel topSpacingGrid = new JPanel(new GridLayout(0,1));
+        Pane topSpacingGrid = new Pane(new GridLayout(0,1));
         topSpacingGrid.setOpaque(false);
-        topSpacingGrid.add(PWCGButtonFactory.makeDummy());
-        topSpacingGrid.add(PWCGButtonFactory.makeDummy());
+        topSpacingGrid.add(ButtonFactory.makeDummy());
+        topSpacingGrid.add(ButtonFactory.makeDummy());
         
-        JPanel bottomSpacingGrid = new JPanel(new GridLayout(0,1));
+        Pane bottomSpacingGrid = new Pane(new GridLayout(0,1));
         bottomSpacingGrid.setOpaque(false);
-        bottomSpacingGrid.add(PWCGButtonFactory.makeDummy());
-        bottomSpacingGrid.add(PWCGButtonFactory.makeDummy());
+        bottomSpacingGrid.add(ButtonFactory.makeDummy());
+        bottomSpacingGrid.add(ButtonFactory.makeDummy());
 
-        JPanel coopButtonPanel = new JPanel(new BorderLayout());
+        Pane coopButtonPanel = new Pane(new BorderLayout());
         coopButtonPanel.setOpaque(false);
         coopButtonPanel.add(topSpacingGrid, BorderLayout.NORTH);
         coopButtonPanel.add(shapePanel, BorderLayout.CENTER);
@@ -140,7 +140,7 @@ public class CampaignGeneratorProfileGUI extends JPanel implements ActionListene
         return coopButtonPanel;
     }
 
-    private JPanel createCampaignNameWidget() throws PWCGException
+    private Pane createCampaignNameWidget() throws PWCGException
     {
         lCampaignName = createCampaignGenMenuLabel("Campaign Name:");
 
@@ -151,22 +151,22 @@ public class CampaignGeneratorProfileGUI extends JPanel implements ActionListene
         
         createTextDocumentListener();
 
-        JPanel campaignNameContainerGrid = new JPanel(new GridLayout(0,1));
+        Pane campaignNameContainerGrid = new Pane(new GridLayout(0,1));
         campaignNameContainerGrid.setOpaque(false);
         
-        JPanel campaignNameContainerPanel = new JPanel();
+        Pane campaignNameContainerPanel = new Pane();
         campaignNameContainerPanel.setLayout(new BoxLayout(campaignNameContainerPanel, BoxLayout.LINE_AXIS));
         campaignNameContainerPanel.setOpaque(false);
         campaignNameContainerPanel.add(lCampaignName, BorderLayout.WEST);
         campaignNameContainerPanel.add(campaignNameTextBox, BorderLayout.CENTER);
         
-        campaignNameContainerGrid.add(PWCGButtonFactory.makeDummy());
+        campaignNameContainerGrid.add(ButtonFactory.makeDummy());
         campaignNameContainerGrid.add(campaignNameContainerPanel);
-        campaignNameContainerGrid.add(PWCGButtonFactory.makeDummy());
-        campaignNameContainerGrid.add(PWCGButtonFactory.makeDummy());
-        campaignNameContainerGrid.add(PWCGButtonFactory.makeDummy());
+        campaignNameContainerGrid.add(ButtonFactory.makeDummy());
+        campaignNameContainerGrid.add(ButtonFactory.makeDummy());
+        campaignNameContainerGrid.add(ButtonFactory.makeDummy());
 
-        JPanel campaignNamePanel = new JPanel(new BorderLayout());
+        Pane campaignNamePanel = new Pane(new BorderLayout());
         campaignNamePanel.setOpaque(false);
         campaignNamePanel.add(campaignNameContainerGrid, BorderLayout.CENTER);
 
@@ -201,18 +201,18 @@ public class CampaignGeneratorProfileGUI extends JPanel implements ActionListene
         campaignNameTextBox.getDocument().addDocumentListener(campaignNameTextBoxListener);
     }
     
-    private JPanel makeServicePanel() throws PWCGException
+    private Pane makeServicePanel() throws PWCGException
     {
         CampaignGeneratorChooseServiceGUI campaignChooseServiceGUI = new CampaignGeneratorChooseServiceGUI(parent);
         campaignChooseServiceGUI.makeServiceSelectionPanel();
         return campaignChooseServiceGUI;
     }
 
-    private JLabel createCampaignGenMenuLabel(String labelText) throws PWCGException
+    private Label createCampaignGenMenuLabel(String labelText) throws PWCGException
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
         
-        JLabel menuLabel = new JLabel(labelText, JLabel.RIGHT);
+        Label menuLabel = new Label(labelText, Label.RIGHT);
         menuLabel.setFont(font);
         menuLabel.setForeground(fgColor);
         menuLabel.setOpaque(false);
@@ -220,11 +220,11 @@ public class CampaignGeneratorProfileGUI extends JPanel implements ActionListene
         return menuLabel;
     }
 
-    private JLabel makeCoopLabel(String buttonName) throws PWCGException
+    private Label makeCoopLabel(String buttonName) throws PWCGException
     {
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
-        JLabel button= new JLabel(buttonName);
+        Label button= new Label(buttonName);
         button.setOpaque(false);
         button.setFont(font);
 

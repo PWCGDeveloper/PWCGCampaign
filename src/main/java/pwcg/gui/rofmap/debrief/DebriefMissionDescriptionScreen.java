@@ -7,8 +7,8 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 import javax.swing.JScrollPane;
 
 import pwcg.aar.AARCoordinator;
@@ -23,7 +23,7 @@ import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 
 public class DebriefMissionDescriptionScreen extends ImageResizingPanel implements ActionListener
@@ -63,27 +63,27 @@ public class DebriefMissionDescriptionScreen extends ImageResizingPanel implemen
 		}
 	}
 
-    private JPanel makeButtonPanel() throws PWCGException 
+    private Pane makeButtonPanel() throws PWCGException 
     {
-        JPanel navPanel = new JPanel(new BorderLayout());
+        Pane navPanel = new Pane(new BorderLayout());
         navPanel.setOpaque(false);
 
-        JPanel buttonGrid = new JPanel();
+        Pane buttonGrid = new Pane();
         buttonGrid.setLayout(new GridLayout(0,1));
         buttonGrid.setOpaque(false);
         
-        JButton submitWithClaimsButton = PWCGButtonFactory.makeTranslucentMenuButton("Continue With Claims", "submitWithClaims", "Continue with AAR process - make claims", this);
+        Button submitWithClaimsButton = ButtonFactory.makeTranslucentMenuButton("Continue With Claims", "submitWithClaims", "Continue with AAR process - make claims", this);
         buttonGrid.add(submitWithClaimsButton);
         
         if (campaign.getCampaignData().isCoop())
         {
-            JButton submitWithoutClaimsButton = PWCGButtonFactory.makeTranslucentMenuButton("Continue Without Claims", "submitWithoutClaims", "Continue with AAR process - make no claims", this);
+            Button submitWithoutClaimsButton = ButtonFactory.makeTranslucentMenuButton("Continue Without Claims", "submitWithoutClaims", "Continue with AAR process - make no claims", this);
             buttonGrid.add(submitWithoutClaimsButton);
         }
         
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        buttonGrid.add(ButtonFactory.makeDummy());
 
-        JButton cancelButton = PWCGButtonFactory.makeTranslucentMenuButton("Cancel AAR", "Cancel", "Cancel the AAR process", this);
+        Button cancelButton = ButtonFactory.makeTranslucentMenuButton("Cancel AAR", "Cancel", "Cancel the AAR process", this);
         buttonGrid.add(cancelButton);
 
         navPanel.add(buttonGrid, BorderLayout.NORTH);
@@ -91,12 +91,12 @@ public class DebriefMissionDescriptionScreen extends ImageResizingPanel implemen
         return navPanel;
     }
 
-    public JPanel makeMissionDescriptionPanel() throws PWCGException  
+    public Pane makeMissionDescriptionPanel() throws PWCGException  
     {
-        JPanel debriefPanel = new JPanel(new BorderLayout());
+        Pane debriefPanel = new Pane(new BorderLayout());
         debriefPanel.setOpaque(false);
 
-        JPanel missionTextPanel = makeMissionTextArea();
+        Pane missionTextPanel = makeMissionTextArea();
         
         JScrollPane missionScrollPane = ScrollBarWrapper.makeScrollPane(missionTextPanel);
 
@@ -105,7 +105,7 @@ public class DebriefMissionDescriptionScreen extends ImageResizingPanel implemen
         return debriefPanel;
     }
 
-    private JPanel makeMissionTextArea() throws PWCGException
+    private Pane makeMissionTextArea() throws PWCGException
     {
         DebriefDescriptionChalkboard debriefDescriptionChalkboard = new DebriefDescriptionChalkboard(campaign, aarCoordinator);
         debriefDescriptionChalkboard.makePanel();

@@ -1,21 +1,24 @@
 package pwcg.gui.maingui;
 
+
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import javafx.event.ActionEvent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.ICountry;
@@ -48,27 +51,18 @@ import pwcg.gui.rofmap.infoMap.InfoMapGUI;
 import pwcg.gui.sound.MusicManager;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageButton;
-import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.PWCGFrame;
-import pwcg.gui.utils.PWCGJButton;
 import pwcg.gui.utils.ToolTipManager;
 
-public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
+public class PwcgMainScreen extends BorderPane
 {
-	private static final long serialVersionUID = 1L;
     private static final String VERSION = "   PWCG Version 13.1.0";
 
-    private PwcgThreePanelUI pwcgThreePanel;
-	private List<JButton> campaignButtonList = new ArrayList<JButton>();
+	private List<Button> campaignButtonList = new ArrayList<>();
 
 	public PwcgMainScreen() 
 	{
-	    super("");
-		setLayout(new BorderLayout());
-		this.setBackground(Color.DARK_GRAY);
-		
-		this.pwcgThreePanel = new PwcgThreePanelUI(this);
 	}
 
 	public void makePanels()
@@ -119,10 +113,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 			setButtonsEnabled();
 
 			PWCGContext.getInstance().setCampaign(null);
-			pwcgThreePanel.setRightPanel(makeCampaignPanel());
-            
-            CampaignGuiContextManager.getInstance().clearContextStack();
-            CampaignGuiContextManager.getInstance().pushToContextStack(this);
+			this.setRight(makeCampaignPanel());
 		}
 		catch (Exception e)
 		{
@@ -134,13 +125,13 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 	{
 		try
 		{
-            String imagePath = UiImageResolver.getImage(ScreenIdentifier.PwcgMainScreen);
-	        this.setImageFromName(imagePath);
+		    // JAVAFX set image background
+//            String imagePath = UiImageResolver.getImage(ScreenIdentifier.PwcgMainScreen);
+//	        this.setImageFromName(imagePath);
 			
-            pwcgThreePanel.setLeftPanel(makeLeftPanel());
-            pwcgThreePanel.setCenterPanel(makeCenterPanel());
-			pwcgThreePanel.setRightPanel(makeCampaignPanel());
-            CampaignGuiContextManager.getInstance().pushToContextStack(this);
+	        this.setLeft(makeLeftPanel());
+            this.setCenter(makeCenterPanel());
+            this.setRight(makeCampaignPanel());
 
 			setButtonsEnabled();
 		}
@@ -154,23 +145,23 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 	{
 		if (PlanesOwnedManager.getInstance().hasPlanesOwned())
 		{
-			for (JButton campaignButton : campaignButtonList)
+			for (Button campaignButton : campaignButtonList)
 			{
-				campaignButton.setEnabled(true);
+				campaignButton.setDisable(false);
 			}
 		}
 		else
 		{
-			for (JButton campaignButton : campaignButtonList)
+			for (Button campaignButton : campaignButtonList)
 			{
-				if (campaignButton.getActionCommand().equals("Planes Owned") || 
-			        campaignButton.getActionCommand().equals("Exit"))
+				if (campaignButton.getText().equals("Planes Owned") || 
+			        campaignButton.getText().equals("Exit"))
 				{
-					campaignButton.setEnabled(true);
+					campaignButton.setDisable(false);
 				}
 				else
 				{
-					campaignButton.setEnabled(false);
+					campaignButton.setDisable(true);
 				}
 			}
 		}
@@ -194,42 +185,34 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 		}
 	}
 
-	public JPanel makeCenterPanel()  
+	public Pane makeCenterPanel()  
 	{
-		JPanel mainCenterPanel = new JPanel();
-		mainCenterPanel.setLayout(new BorderLayout());
-		mainCenterPanel.setOpaque(false);
+		BorderPane mainCenterPanel = new BorderPane();
 		return mainCenterPanel;
 	}
 
-	public JPanel makeLeftPanel() throws PWCGException  
+	public Pane makeLeftPanel() throws PWCGException  
 	{
-	    JPanel mainLeftPanel = new JPanel();
-	    mainLeftPanel.setLayout(new BorderLayout());
-	    mainLeftPanel.setOpaque(false);
+	    BorderPane mainLeftPanel = new BorderPane();
 
-		JPanel versionPanel = makeVersionPanel();
-		mainLeftPanel.add(versionPanel, BorderLayout.NORTH);
+		Pane versionPanel = makeVersionPanel();
+		mainLeftPanel.setTop(versionPanel);
 
-		JPanel buttonPanel = new JPanel(new BorderLayout());
-		buttonPanel.setOpaque(false);
+		BorderPane buttonPanel = new BorderPane();
 		
-		JPanel buttonPanelGrid = new JPanel(new GridLayout(0,1));
-		buttonPanelGrid.setOpaque(false);
-		
+		GridPane buttonPanelGrid = new GridPane();
 		makeMenuButtons(buttonPanelGrid) ;
 		
-		buttonPanel.add(buttonPanelGrid, BorderLayout.NORTH);
-		
-		mainLeftPanel.add(buttonPanel, BorderLayout.CENTER);
+		buttonPanel.setTop(buttonPanelGrid);
+		mainLeftPanel.setCenter(buttonPanel);
 
 		return mainLeftPanel;
 	}
 
-	private void makeMenuButtons(JPanel buttonPanel) throws PWCGException 
+	private void makeMenuButtons(GridPane buttonPanel) throws PWCGException 
 	{
-		JLabel spacer = new JLabel("");
-		buttonPanel.add(spacer);
+		Label spacer = new Label("");
+		buttonPanel.add(spacer, 0, 1);
 		
  		makeMenuButton ("Planes Owned", "Planes Owned", buttonPanel);
         makeMenuButton ("Configuration", "Configuration",buttonPanel);
@@ -250,9 +233,9 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
         makeMenuButton ("Exit", "Exit", buttonPanel);
 	}
 
-    private JButton makeMenuButton(String buttonText, String commandText, JPanel buttonPanel) throws PWCGException 
+    private Button makeMenuButton(String buttonText, String commandText, Pane buttonPanel) throws PWCGException 
     {
-        JButton button = PWCGButtonFactory.makeTranslucentMenuButtonGrayMenu(buttonText, commandText, "", this);
+        Button button = ButtonFactory.makeTranslucentMenuButtonGrayMenu(buttonText, commandText, "", this);
 
         buttonPanel.add(button);
         campaignButtonList.add(button);
@@ -260,15 +243,15 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
         return button;
     }
 
-    private JLabel makePlainLabel(String labelText, JPanel buttonPanel) throws PWCGException 
+    private Label makePlainLabel(String labelText, Pane buttonPanel) throws PWCGException 
     {
-        JLabel label = PWCGButtonFactory.makeMenuLabelLarge(labelText);
+        Label label = ButtonFactory.makeMenuLabelLarge(labelText);
         buttonPanel.add(label);
 
         return label;
     }
     
-	public JPanel makeVersionPanel() throws PWCGException  
+	public Pane makeVersionPanel() throws PWCGException  
 	{
 
 		Font font = PWCGMonitorFonts.getPrimaryFontLarge();
@@ -276,31 +259,31 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 		Color lbg = ColorMap.WOOD_BACKGROUND;
 		Color fg = ColorMap.WOOD_FOREGROUND;
 
-		JPanel versionPanel = new JPanel ();
+		Pane versionPanel = new Pane ();
 		versionPanel.setLayout(new GridLayout(0,1));
 		versionPanel.setOpaque(false);
 
-		JLabel spacer = new JLabel("    ", JLabel.LEFT);
+		Label spacer = new Label("    ", Label.LEFT);
 		versionPanel.add(spacer);
 
-		JLabel lversion = new JLabel(VERSION, JLabel.LEFT);
+		Label lversion = new Label(VERSION, Label.LEFT);
 		lversion.setBackground(lbg);
 		lversion.setForeground(fg);
 		lversion.setOpaque(false);
 		lversion.setFont(font);
         versionPanel.add(lversion);
 
-		JLabel spacer2 = new JLabel("    ", JLabel.LEFT);
+		Label spacer2 = new Label("    ", Label.LEFT);
 		versionPanel.add(spacer2);
 				
 		return versionPanel;
 	}
 
-	public JPanel makeCampaignPanel() throws PWCGException 
+	public Pane makeCampaignPanel() throws PWCGException 
 	{
 		MusicManager.playTitleTheme();
 
-        JPanel campaignPanel = new JPanel();
+        Pane campaignPanel = new Pane();
         campaignPanel.setLayout(new BorderLayout());
         campaignPanel.setOpaque(false);
 
@@ -309,10 +292,10 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 
 		Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 		
-		JPanel campaignListPanel = new JPanel (new GridLayout(0,1));
+		Pane campaignListPanel = new Pane (new GridLayout(0,1));
 		campaignListPanel.setOpaque(false);
 		
-        JLabel assignedLabel = PWCGButtonFactory.makeMenuLabelLarge("  Available Campaigns:"); 
+        Label assignedLabel = ButtonFactory.makeMenuLabelLarge("  Available Campaigns:"); 
 		campaignListPanel.add(assignedLabel);
 		
 		List<String> campaigns = Campaign.getCampaignNames();
@@ -338,13 +321,13 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
     					icon = nation + "Pilot.jpg";
     				}
     
-    				PWCGJButton button = ImageButton.makeButton(campaignName, icon);
+    				Button button = ImageButton.makeButton(campaignName, icon);
     	
     				button.setBackground(buttonBG);
     				button.setForeground(buttonFG);
     				button.setOpaque(false);
     				button.setFont(font);
-    				button.setHorizontalAlignment(SwingConstants.LEFT);
+    				button.setAlignment(SwingConstants.LEFT);
     				button.setActionCommand("Load Campaign:" + campaignName);
     				button.addActionListener(this);
     				campaignListPanel.add(button);
@@ -361,25 +344,25 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 			
 		}
 		
-        PWCGJButton newButton = ImageButton.makeButton("New", "NewPilot.jpg");
+        Button newButton = ImageButton.makeButton("New", "NewPilot.jpg");
 
         newButton.setBackground(buttonBG);
         newButton.setForeground(buttonFG);
         newButton.setOpaque(false);
         newButton.setFont(font);
-        newButton.setHorizontalAlignment(SwingConstants.LEFT);
+        newButton.setAlignment(SwingConstants.LEFT);
         newButton.setActionCommand("New Campaign");
         newButton.addActionListener(this );
         ToolTipManager.setToolTip(newButton, "Create a new campaign");
         campaignListPanel.add(newButton);
         campaignButtonList.add(newButton);
 
-        PWCGJButton deleteCampaignButton = ImageButton.makeButton("Delete", "DeletePilot.jpg");
+        Button deleteCampaignButton = ImageButton.makeButton("Delete", "DeletePilot.jpg");
         deleteCampaignButton.setBackground(buttonBG);
         deleteCampaignButton.setForeground(buttonFG);
         deleteCampaignButton.setOpaque(false);
         deleteCampaignButton.setFont(font);
-        deleteCampaignButton.setHorizontalAlignment(SwingConstants.LEFT);
+        deleteCampaignButton.setAlignment(SwingConstants.LEFT);
         deleteCampaignButton.setActionCommand("Delete Campaign");
         deleteCampaignButton.addActionListener(this );
         ToolTipManager.setToolTip(deleteCampaignButton, "Delete campaigns");
@@ -451,19 +434,19 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
             {
                 CampaignGeneratorScreen campaignNewGUI = new CampaignGeneratorScreen(this);
                 campaignNewGUI.makePanels();
-                CampaignGuiContextManager.getInstance().pushToContextStack(campaignNewGUI);
+                // JAVAFX show new panel
             }
             else if (action.equals("Music"))
             {
             	PwcgMusicConfigScreen campaignMusicPanelSet = new PwcgMusicConfigScreen(this);
             	campaignMusicPanelSet.makePanels();
-                CampaignGuiContextManager.getInstance().pushToContextStack(campaignMusicPanelSet);
+                // JAVAFX show new panel
             }
             else if (action.equals("Delete Campaign"))
             {
                 CampaignDeleteScreen campaignDeleteGUI = new CampaignDeleteScreen(this);
                 campaignDeleteGUI.makePanels();
-                CampaignGuiContextManager.getInstance().pushToContextStack(campaignDeleteGUI);
+                // JAVAFX show new panel
             }
 			else if (action.contains("Load Campaign:"))
 			{
@@ -498,7 +481,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
         PwcgPlanesOwnedConfigurationScreen planesOwned = new PwcgPlanesOwnedConfigurationScreen(this);
         planesOwned.makePanels();
 
-        CampaignGuiContextManager.getInstance().pushToContextStack(planesOwned);
+        // JAVAFX show new panel
     }
 
     private void showCoopAdmin() throws PWCGException 
@@ -508,7 +491,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
         PwcgCoopGlobalAdminScreen coopAdmin = new PwcgCoopGlobalAdminScreen();
         coopAdmin.makePanels();
 
-        CampaignGuiContextManager.getInstance().pushToContextStack(coopAdmin);
+        // JAVAFX show new panel
     }
 
     private void showIconicMissions() throws PWCGException
@@ -518,7 +501,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
         PwcgIconicMissionGenerationScreen iconicMissionsScreen = new PwcgIconicMissionGenerationScreen();
         iconicMissionsScreen.makePanels();
 
-        CampaignGuiContextManager.getInstance().pushToContextStack(iconicMissionsScreen);
+        // JAVAFX show new panel
     }
 
     private void showSkinAnalysis() throws PWCGException 
@@ -528,7 +511,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
         PwcgSkinConfigurationAnalysisScreen skinAnalysis = new PwcgSkinConfigurationAnalysisScreen(this);
         skinAnalysis.makePanels();
 
-        CampaignGuiContextManager.getInstance().pushToContextStack(skinAnalysis);
+        // JAVAFX show new panel
     }
 
     private void showGlobalConfig() throws PWCGException 
@@ -538,7 +521,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
         PwcgGlobalConfigurationScreen globalConfig = new PwcgGlobalConfigurationScreen();
         globalConfig.makePanels();
 
-        CampaignGuiContextManager.getInstance().pushToContextStack(globalConfig);
+        // JAVAFX show new panel
     }
 
     private void showPWCGInfoMap() throws PWCGException 
@@ -549,7 +532,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
         InfoMapGUI infoMapGUI = new InfoMapGUI(mapDate);
         infoMapGUI.makeGUI();
 
-        CampaignGuiContextManager.getInstance().pushToContextStack(infoMapGUI);
+        // JAVAFX show new panel
     }
 
     private void showPWCGEditMap() throws PWCGException 
@@ -558,7 +541,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
         EditorMapGUI editMapGUI = new EditorMapGUI(mapDate);
         editMapGUI.makeGUI();
 
-        CampaignGuiContextManager.getInstance().pushToContextStack(editMapGUI);
+        // JAVAFX show new panel
     }
     
 

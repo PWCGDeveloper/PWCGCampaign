@@ -1,8 +1,8 @@
 package pwcg.gui.iconicbattles;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,9 +12,9 @@ import java.util.List;
 import java.util.Set;
 
 import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import javafx.scene.control.ButtonGroup;
+import javafx.scene.layout.Pane;
+import javax.swing.RadioButton ;
 import javax.swing.SwingConstants;
 
 import pwcg.campaign.api.ICountry;
@@ -34,7 +34,7 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.ground.vehicle.VehicleDefinition;
 
@@ -61,20 +61,20 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
         this.setImageFromName(imagePath);
         this.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
         
-        JPanel squadronPanel = makeSquadronPanel();
+        Pane squadronPanel = makeSquadronPanel();
         this.add(squadronPanel, BorderLayout.CENTER);
 	}
 
-    public JPanel makeSquadronPanel() throws PWCGException  
+    public Pane makeSquadronPanel() throws PWCGException  
     {
-        JPanel configPanel = new JPanel(new BorderLayout());
+        Pane configPanel = new Pane(new BorderLayout());
         configPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
-        buttonPanel.add(PWCGButtonFactory.makePaperLabelLarge("Iconic Mission Squadrons:"));
-        buttonPanel.add(PWCGButtonFactory.makePaperLabelLarge("   "));
+        buttonPanel.add(ButtonFactory.makePaperLabelLarge("Iconic Mission Squadrons:"));
+        buttonPanel.add(ButtonFactory.makePaperLabelLarge("   "));
 
         IconicSingleMission iconicMission = IconicMissionsManager.getInstance().getSelectedMissionProfile(iconicBattleData.getIconicBattleKey());
         
@@ -87,9 +87,9 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
             countriesInBattle.add(squadron.getCountry().getCountry());
         }
         
-        buttonPanel.add(PWCGButtonFactory.makePaperLabelLarge("   "));
-        buttonPanel.add(PWCGButtonFactory.makePaperLabelLarge("Iconic Mission Vehicles:"));
-        buttonPanel.add(PWCGButtonFactory.makePaperLabelLarge("   "));
+        buttonPanel.add(ButtonFactory.makePaperLabelLarge("   "));
+        buttonPanel.add(ButtonFactory.makePaperLabelLarge("Iconic Mission Vehicles:"));
+        buttonPanel.add(ButtonFactory.makePaperLabelLarge("   "));
 
         Date battleDate = DateUtils.getDateYYYYMMDD(iconicMission.getDateString());        
         List<VehicleDefinition> matchingTrucks = getVehicleDefinitionsOfType(VehicleClass.TruckAAAPlayer, countriesInBattle, battleDate);
@@ -105,7 +105,7 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
         return configPanel;
     }
 
-    private void addVehicleRadioButtons(JPanel buttonPanel, List<VehicleDefinition> matchingVehicles) throws PWCGException
+    private void addVehicleRadioButtons(Pane buttonPanel, List<VehicleDefinition> matchingVehicles) throws PWCGException
     {
         for (VehicleDefinition matchingVehicle : matchingVehicles)
         {
@@ -134,15 +134,15 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
         return description;
     }
 
-    private JRadioButton makeCategoryRadioButton(String buttonText, Integer squadronId) throws PWCGException 
+    private RadioButton  makeCategoryRadioButton(String buttonText, Integer squadronId) throws PWCGException 
     {
         Color fgColor = ColorMap.PAPER_FOREGROUND;
 
         Font font = PWCGMonitorFonts.getPrimaryFont();
 
-        JRadioButton button = new JRadioButton(buttonText);
+        RadioButton  button = new RadioButton (buttonText);
         button.setActionCommand(buttonText + ":" + squadronId);
-        button.setHorizontalAlignment(SwingConstants.LEFT );
+        button.setAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
         button.setFocusPainted(false);
         button.addActionListener(this);

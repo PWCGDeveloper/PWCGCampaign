@@ -3,12 +3,12 @@ package pwcg.gui.campaign.home;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 
 public class CampaignHomeGUILeftPanelBuilder
 {
@@ -19,12 +19,12 @@ public class CampaignHomeGUILeftPanelBuilder
         this.parent = parent;
     }
 
-    public JPanel makeLeftPanel() throws PWCGException
+    public Pane makeLeftPanel() throws PWCGException
     {
-        JPanel campaignButtonPanel = new JPanel(new BorderLayout());
+        Pane campaignButtonPanel = new Pane(new BorderLayout());
         campaignButtonPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0, 1));
+        Pane buttonPanel = new Pane(new GridLayout(0, 1));
         buttonPanel.setOpaque(false);
 
         makePlainButtons(buttonPanel);
@@ -34,9 +34,9 @@ public class CampaignHomeGUILeftPanelBuilder
         return campaignButtonPanel;
     }
 
-    private void makePlainButtons(JPanel buttonPanel) throws PWCGException
+    private void makePlainButtons(Pane buttonPanel) throws PWCGException
     {
-        JLabel spacer = new JLabel("");
+        Label spacer = new Label("");
         buttonPanel.add(spacer);
 
         makeSpacedmenuItem(buttonPanel, "Mission", "CampMission", "Mission actions: new mission, lone wolf, combat report");        
@@ -48,12 +48,12 @@ public class CampaignHomeGUILeftPanelBuilder
         makeSpacedmenuItem(buttonPanel, "Report Error", "CampError", "Bundle up data files for error reporting");
     }
     
-    private void makeSpacedmenuItem(JPanel buttonPanel, String buttonText, String commandText, String toolTipText) throws PWCGException
+    private void makeSpacedmenuItem(Pane buttonPanel, String buttonText, String commandText, String toolTipText) throws PWCGException
     {
-        JLabel space5 = new JLabel("");
+        Label space5 = new Label("");
         buttonPanel.add(space5);
         
-        JButton button = PWCGButtonFactory.makeTranslucentMenuButton(buttonText, commandText, toolTipText, parent);
+        Button button = ButtonFactory.makeTranslucentMenuButton(buttonText, commandText, toolTipText, parent);
         buttonPanel.add(button);
     }
 }

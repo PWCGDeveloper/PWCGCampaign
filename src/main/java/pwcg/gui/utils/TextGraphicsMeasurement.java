@@ -1,7 +1,7 @@
 package pwcg.gui.utils;
 
-import java.awt.Font;
-import java.awt.FontMetrics;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontMetrics;
 import java.awt.Graphics;
 
 public class TextGraphicsMeasurement

@@ -1,8 +1,8 @@
 package pwcg.gui.maingui.config;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,11 +13,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
+import javafx.scene.control.Button;
+import javax.swing.CheckBox;
 import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
@@ -41,7 +41,7 @@ import pwcg.gui.maingui.SkinReportGenerator;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImagePanelLayout;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 
 public class PwcgSkinConfigurationAnalysisScreen extends ImageResizingPanel implements ActionListener
@@ -49,7 +49,7 @@ public class PwcgSkinConfigurationAnalysisScreen extends ImageResizingPanel impl
     private static final long serialVersionUID = 1L;
 
     private PwcgMainScreen parent = null;
-	private Map<String, JCheckBox> selectionBoxes = new HashMap<String, JCheckBox>();
+	private Map<String, CheckBox> selectionBoxes = new HashMap<String, CheckBox>();
 	private SkinAnalyzer skinAnalyzer = new SkinAnalyzer();
 
 	public PwcgSkinConfigurationAnalysisScreen(PwcgMainScreen parent) 
@@ -80,49 +80,49 @@ public class PwcgSkinConfigurationAnalysisScreen extends ImageResizingPanel impl
         }
     }
 
-	public JPanel makeButtonPanel() throws PWCGException 
+	public Pane makeButtonPanel() throws PWCGException 
 	{
-        JPanel navButtonPanel = new JPanel(new BorderLayout());
+        Pane navButtonPanel = new Pane(new BorderLayout());
         navButtonPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
         for (int i = 0; i < 2; ++i)
         {
-            JLabel spacerLabel = new JLabel("     ");
-            spacerLabel.setHorizontalAlignment(SwingConstants.LEFT);
+            Label spacerLabel = new Label("     ");
+            spacerLabel.setAlignment(SwingConstants.LEFT);
             spacerLabel.setOpaque(false);
             
             buttonPanel.add(spacerLabel);
         }
         
-        JButton selectAllButton = PWCGButtonFactory.makeTranslucentMenuButton("Select All", "SelectAll", "Select all planes for analysis", this);
+        Button selectAllButton = ButtonFactory.makeTranslucentMenuButton("Select All", "SelectAll", "Select all planes for analysis", this);
         buttonPanel.add(selectAllButton);
 
-        JButton deselectAllButton = PWCGButtonFactory.makeTranslucentMenuButton("Deselect All", "DeselectAll", "Deselect all planes for analysis", this);
+        Button deselectAllButton = ButtonFactory.makeTranslucentMenuButton("Deselect All", "DeselectAll", "Deselect all planes for analysis", this);
         buttonPanel.add(deselectAllButton);
         
-        JButton displayMissingButton = PWCGButtonFactory.makeTranslucentMenuButton("Display Missing", "DisplayMissing", "Display missing skins for selected planes", this);
+        Button displayMissingButton = ButtonFactory.makeTranslucentMenuButton("Display Missing", "DisplayMissing", "Display missing skins for selected planes", this);
         buttonPanel.add(displayMissingButton);
         
-        JButton displayConfigButton = PWCGButtonFactory.makeTranslucentMenuButton("Display Configuration", "DisplayConfig", "Display configured skins for selected planes", this);
+        Button displayConfigButton = ButtonFactory.makeTranslucentMenuButton("Display Configuration", "DisplayConfig", "Display configured skins for selected planes", this);
         buttonPanel.add(displayConfigButton);
         
-        JButton reportButton = PWCGButtonFactory.makeTranslucentMenuButton("Report", "Report", "Generate report on missing skins for selected planes", this);
+        Button reportButton = ButtonFactory.makeTranslucentMenuButton("Report", "Report", "Generate report on missing skins for selected planes", this);
         buttonPanel.add(reportButton);
         
 
         for (int i = 0; i < 3; ++i)
         {
-            JLabel spacerLabel = new JLabel("     ");
-            spacerLabel.setHorizontalAlignment(SwingConstants.LEFT);
+            Label spacerLabel = new Label("     ");
+            spacerLabel.setAlignment(SwingConstants.LEFT);
             spacerLabel.setOpaque(false);
             
             buttonPanel.add(spacerLabel);
         }
 
-        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "Return", "Return to main menu", this);
+        Button finishedButton = ButtonFactory.makeTranslucentMenuButton("Finished", "Return", "Return to main menu", this);
         buttonPanel.add(finishedButton);
 
         navButtonPanel.add (buttonPanel, BorderLayout.NORTH);
@@ -130,10 +130,10 @@ public class PwcgSkinConfigurationAnalysisScreen extends ImageResizingPanel impl
         return navButtonPanel;
  	}
 
-    public JPanel makeCenterPanel() throws PWCGException 
+    public Pane makeCenterPanel() throws PWCGException 
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "paperFull.jpg";
-        JPanel planeSelectionPanel = new ImagePanelLayout(imagePath, new BorderLayout());
+        Pane planeSelectionPanel = new ImagePanelLayout(imagePath, new BorderLayout());
 
         JComponent alliedPanel = makeAlliedPanel();
         JComponent axisPanel = makeAxisPanel();
@@ -146,9 +146,9 @@ public class PwcgSkinConfigurationAnalysisScreen extends ImageResizingPanel impl
         return planeSelectionPanel;
     }
 
-    public JPanel makeBlankPanel() throws PWCGException 
+    public Pane makeBlankPanel() throws PWCGException 
     {        
-        JPanel blankPanel = new JPanel(new GridLayout(0, 2));
+        Pane blankPanel = new Pane(new GridLayout(0, 2));
 
         blankPanel.setOpaque(false);
 
@@ -156,26 +156,26 @@ public class PwcgSkinConfigurationAnalysisScreen extends ImageResizingPanel impl
         return blankPanel;
     }
 
-    public JPanel makeAxisPanel() throws PWCGException 
+    public Pane makeAxisPanel() throws PWCGException 
     {
         List<PlaneType> axisPlanes = PWCGContext.getInstance().getPlaneTypeFactory().getAxisPlanes();
         return makePlanePanel(axisPlanes);
     }
 
-    public JPanel makeAlliedPanel() throws PWCGException 
+    public Pane makeAlliedPanel() throws PWCGException 
     {
         List<PlaneType> alliedPlanes = PWCGContext.getInstance().getPlaneTypeFactory().getAlliedPlanes();
         return makePlanePanel(alliedPlanes);
     }
 
-	public JPanel makePlanePanel(List<PlaneType> planes) throws PWCGException 
+	public Pane makePlanePanel(List<PlaneType> planes) throws PWCGException 
 	{
-        JPanel planeListOuterPanel = new JPanel(new BorderLayout());
+        Pane planeListOuterPanel = new Pane(new BorderLayout());
         planeListOuterPanel.setOpaque(false);
 		
 		TreeMap<String, PlaneType> planeMap = sortPlanesByType(planes);
 		
-		JPanel planeListPanel = createPlanePanel(planeMap);
+		Pane planeListPanel = createPlanePanel(planeMap);
 		
         JScrollPane planeListScroll = ScrollBarWrapper.makeScrollPane(planeListPanel);
         
@@ -195,7 +195,7 @@ public class PwcgSkinConfigurationAnalysisScreen extends ImageResizingPanel impl
         return planeMap;
     }
 
-    private JPanel createPlanePanel(TreeMap<String, PlaneType> planeMap) throws PWCGException
+    private Pane createPlanePanel(TreeMap<String, PlaneType> planeMap) throws PWCGException
     {
         MonitorSize monitorSize = PWCGMonitorSupport.getFrameWidth();
         int columns = 2;
@@ -204,14 +204,14 @@ public class PwcgSkinConfigurationAnalysisScreen extends ImageResizingPanel impl
             columns = 3;
         }
         
-        JPanel planeListPanel = new JPanel(new GridLayout(0, columns));
+        Pane planeListPanel = new Pane(new GridLayout(0, columns));
         planeListPanel.setOpaque(false);
 
         Color buttonBG = ColorMap.PAPERPART_BACKGROUND;
         
         for (PlaneType plane : planeMap.values())
 		{
-			JCheckBox planeCheckBox = makeCheckBox(plane);
+			CheckBox planeCheckBox = makeCheckBox(plane);
 
 			planeCheckBox.addActionListener(this);
 			planeCheckBox.setBackground(buttonBG);
@@ -224,14 +224,14 @@ public class PwcgSkinConfigurationAnalysisScreen extends ImageResizingPanel impl
         return planeListPanel;
     }
 
-    private JCheckBox makeCheckBox(PlaneType plane) throws PWCGException 
+    private CheckBox makeCheckBox(PlaneType plane) throws PWCGException 
     {
-        JCheckBox checkBox= new JCheckBox();
+        CheckBox checkBox= new CheckBox();
         
         Font font = PWCGMonitorFonts.getPrimaryFont();
 
         checkBox.setFont(font);
-        checkBox.setHorizontalAlignment(JLabel.LEFT);
+        checkBox.setAlignment(Label.LEFT);
         checkBox.setOpaque(false);
         checkBox.setSize(300, 50);
         checkBox.setName(plane.getType());
@@ -280,7 +280,7 @@ public class PwcgSkinConfigurationAnalysisScreen extends ImageResizingPanel impl
 
     private void selectAllPlanes()
     {
-        for (JCheckBox checkBox: selectionBoxes.values())
+        for (CheckBox checkBox: selectionBoxes.values())
         {
             checkBox.setSelected(true);
         }
@@ -288,7 +288,7 @@ public class PwcgSkinConfigurationAnalysisScreen extends ImageResizingPanel impl
 
     private void deselectAllPlanes()
     {
-        for (JCheckBox checkBox: selectionBoxes.values())
+        for (CheckBox checkBox: selectionBoxes.values())
         {
             checkBox.setSelected(false);
         }
@@ -318,7 +318,7 @@ public class PwcgSkinConfigurationAnalysisScreen extends ImageResizingPanel impl
             Map<String, PlaneType> planeTypesToDisplay = new TreeMap<String, PlaneType>();
             for (String planeTypeDesc: selectionBoxes.keySet())
             {
-                JCheckBox selectionBox = selectionBoxes.get(planeTypeDesc);
+                CheckBox selectionBox = selectionBoxes.get(planeTypeDesc);
                 if (selectionBox.isSelected())
                 {
                     PlaneType planeType = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeTypeDesc);
@@ -365,7 +365,7 @@ public class PwcgSkinConfigurationAnalysisScreen extends ImageResizingPanel impl
         {
             Map<String, MissingSkin> selectedMissingSkinsForPlane = new TreeMap<String, MissingSkin>();
             
-            JCheckBox selectionBox = selectionBoxes.get(planeType);
+            CheckBox selectionBox = selectionBoxes.get(planeType);
             if (selectionBox.isSelected())
             {
                 List<MissingSkin> missingSkinsForPlane = skinAnalyzer.getMissingSkinsForPlane(planeType);

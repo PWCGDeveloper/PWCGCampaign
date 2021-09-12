@@ -1,21 +1,16 @@
 package pwcg.gui.utils;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Rectangle;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import pwcg.gui.dialogs.PWCGMonitorSupport;
+import javafx.geometry.Dimension2D;
+import javafx.scene.Scene;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class PWCGFrame
 {	
     private static PWCGFrame pwcgFrame = null;
     
-    private JFrame frame = new JFrame();
-    private JPanel base = new JPanel();
+    private Stage pwcgStage = new Stage();
 	
 	public static PWCGFrame getInstance()
 	{
@@ -31,34 +26,28 @@ public class PWCGFrame
 	{
 		super();
 		
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		pwcgStage.setTitle("PWCG");
+		pwcgStage.initModality(Modality.APPLICATION_MODAL);
+
+        // Dimension2D screenSize = PWCGMonitorSupport.getPWCGMonitorSize();
+        Dimension2D screenSize = new Dimension2D(1600, 900);
+		pwcgStage.setWidth(screenSize.getWidth());
+		pwcgStage.setHeight(screenSize.getHeight());
 		
-		Dimension screenSize = PWCGMonitorSupport.getPWCGMonitorSize();
-		frame.setSize(screenSize);
-		frame.setState(JFrame.MAXIMIZED_BOTH);		
-		
-		base.setLayout(new BorderLayout());
-        base.setBackground(Color.DARK_GRAY);
-		
-        frame.setVisible(false);
-        frame.add(base);
+        pwcgStage.show();
  	}
 
-	public void setPanel(JPanel newPanel)
+	public void setPanel(Scene newPanel)
 	{
-        base.removeAll();
-	    base.add(newPanel, BorderLayout.CENTER);
-	    base.revalidate();
-	    base.repaint();
-	    
-	    if (!frame.isVisible())
-	    {
-	        frame.setVisible(true);
-	    }
+	    pwcgStage.setScene(newPanel);
+        pwcgStage.show();
 	}
 
     public Rectangle getBounds()
     {
-        return frame.getBounds();
+        Rectangle rectangle = new Rectangle();
+        rectangle.setWidth(pwcgStage.getWidth());
+        rectangle.setHeight(pwcgStage.getHeight());
+        return rectangle;
     }
 }

@@ -1,15 +1,15 @@
 package pwcg.gui.maingui.coop;
 
 import java.awt.BorderLayout;
-import java.awt.Font;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
@@ -43,7 +43,7 @@ public class CoopCreateUserPanel extends ImageResizingPanel implements ActionLis
             this.setImageFromName(imagePath);
             this.setBorder(BorderFactory.createEmptyBorder(150,40,40,150));
 
-	        JPanel centerPanel = makeCoopUserEntryPanel();
+	        Pane centerPanel = makeCoopUserEntryPanel();
 	        this.add(centerPanel, BorderLayout.NORTH);
         }
         catch (Exception e)
@@ -53,21 +53,21 @@ public class CoopCreateUserPanel extends ImageResizingPanel implements ActionLis
         }
     }
 
-    private JPanel makeCoopUserEntryPanel() throws PWCGException 
+    private Pane makeCoopUserEntryPanel() throws PWCGException 
     {
 	    Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
-	    JPanel centerPanel = new JPanel();
+	    Pane centerPanel = new Pane();
 	    centerPanel.setLayout(new BorderLayout());
 	    centerPanel.setOpaque(false);
 
-	    JPanel dataEntryPanel = new JPanel();
+	    Pane dataEntryPanel = new Pane();
 	    dataEntryPanel.setLayout(new BorderLayout());
 	    dataEntryPanel.setOpaque(false);
 	    
-		JPanel descPanel = buildCoopUserLabel(font);
-		JPanel textPanel = buildCoopUserTextField(font);
-		JPanel buttonPanel = buildCoopUserButtons(font);
+		Pane descPanel = buildCoopUserLabel(font);
+		Pane textPanel = buildCoopUserTextField(font);
+		Pane buttonPanel = buildCoopUserButtons(font);
 
         dataEntryPanel.add(descPanel, BorderLayout.WEST);
         dataEntryPanel.add(textPanel, BorderLayout.CENTER);
@@ -79,9 +79,9 @@ public class CoopCreateUserPanel extends ImageResizingPanel implements ActionLis
 
 	}
 
-	private JPanel buildCoopUserTextField(Font font) 
+	private Pane buildCoopUserTextField(Font font) 
 	{
-		JPanel textPanel = new JPanel (new GridLayout(0,1));
+		Pane textPanel = new Pane (new GridLayout(0,1));
 		textPanel.setOpaque(false);
 		
         coopUserNameText = new JTextField(25);
@@ -91,24 +91,24 @@ public class CoopCreateUserPanel extends ImageResizingPanel implements ActionLis
 		return textPanel;
 	}
 
-	private JPanel buildCoopUserLabel(Font font) 
+	private Pane buildCoopUserLabel(Font font) 
 	{
-		JPanel descPanel = new JPanel (new GridLayout(0,1));
+		Pane descPanel = new Pane (new GridLayout(0,1));
 		descPanel.setOpaque(false);
 		
-	    JLabel passwordLabel = new JLabel("Enter Coop Username: ");
+	    Label passwordLabel = new Label("Enter Coop Username: ");
 	    passwordLabel.setFont(font);
 	    passwordLabel.setBackground(ColorMap.NEWSPAPER_BACKGROUND);
 	    descPanel.add(passwordLabel);
 		return descPanel;
 	}
 	
-	private JPanel buildCoopUserButtons(Font font) 
+	private Pane buildCoopUserButtons(Font font) 
 	{
-		JPanel controlPanel = new JPanel (new GridLayout(0,1));
+		Pane controlPanel = new Pane (new GridLayout(0,1));
 		controlPanel.setOpaque(false);
 
-	    JButton createUserButton = new JButton("Create Coop User");
+	    Button createUserButton = new Button("Create Coop User");
 	    createUserButton.setActionCommand("Create Coop User");
 	    createUserButton.addActionListener(this);
 	    createUserButton.setFont(font);

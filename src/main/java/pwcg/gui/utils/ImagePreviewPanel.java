@@ -1,6 +1,6 @@
 package pwcg.gui.utils;
 
-import java.awt.Color;
+import javafx.scene.paint.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -10,9 +10,9 @@ import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JPanel;
+import javafx.scene.layout.Pane;
 
-public class ImagePreviewPanel extends JPanel implements PropertyChangeListener 
+public class ImagePreviewPanel extends Pane implements PropertyChangeListener 
 {
 	private static final long serialVersionUID = 1L;
 

@@ -1,18 +1,18 @@
 package pwcg.gui.rofmap.debrief;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javax.swing.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
@@ -44,7 +44,7 @@ import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 
 public class DebriefMapGUI  extends MapGUI implements ActionListener
@@ -55,7 +55,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 	private CampaignHomeScreen home = null;
 	private Thread initiatorThread = null;
 	private JTextArea eventTextPane = new JTextArea();
-	private JCheckBox maxInfoCheckBox;
+	private CheckBox maxInfoCheckBox;
 
     private AARCoordinator aarCoordinator;
 
@@ -101,9 +101,9 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
     }
 	
 
-    private JPanel createCenterPanel() throws PWCGException
+    private Pane createCenterPanel() throws PWCGException
     {
-        JPanel debriefMapCenterPanel = new JPanel(new BorderLayout());
+        Pane debriefMapCenterPanel = new Pane(new BorderLayout());
 
         mapPanel = new DebriefMapPanel(this);
         mapScroll = new MapScroll(mapPanel);  
@@ -157,26 +157,26 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
         mapPanel.createMapEvents(logEvents);
 	}
 
-	private JPanel makeNavigationPanel() throws PWCGException 
+	private Pane makeNavigationPanel() throws PWCGException 
 	{
-        JPanel debriefButtonPanel = new JPanel(new BorderLayout());
+        Pane debriefButtonPanel = new Pane(new BorderLayout());
         debriefButtonPanel.setOpaque(false);
         
-        JPanel buttonGrid = new JPanel(new GridLayout(0,1));
+        Pane buttonGrid = new Pane(new GridLayout(0,1));
         buttonGrid.setOpaque(false);
 
         maxInfoCheckBox = makeCheckBox("Maximum Information",  "MaxInfo", buttonGrid);
 
-        JButton startDebriefButton = makeButton("Start Debrief",  "Start", "Start debrief");
-        buttonGrid.add(PWCGButtonFactory.makeDummy());  
+        Button startDebriefButton = makeButton("Start Debrief",  "Start", "Start debrief");
+        buttonGrid.add(ButtonFactory.makeDummy());  
         buttonGrid.add(startDebriefButton);  
 
-        JButton cancelDebriefButton = makeButton("Cancel Debrief",  "Cancel", "Cancel the debrief");
-        buttonGrid.add(PWCGButtonFactory.makeDummy());  
+        Button cancelDebriefButton = makeButton("Cancel Debrief",  "Cancel", "Cancel the debrief");
+        buttonGrid.add(ButtonFactory.makeDummy());  
         buttonGrid.add(cancelDebriefButton);  
 
-        JButton debriefCompleteButton = makeButton("Debrief Completed",  "Completed", "Finish the debrief");
-        buttonGrid.add(PWCGButtonFactory.makeDummy());  
+        Button debriefCompleteButton = makeButton("Debrief Completed",  "Completed", "Finish the debrief");
+        buttonGrid.add(ButtonFactory.makeDummy());  
         buttonGrid.add(debriefCompleteButton);  
 
 		debriefButtonPanel.add(buttonGrid, BorderLayout.NORTH);
@@ -184,21 +184,21 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 		return debriefButtonPanel;
 	}
 
-	private JButton makeButton(String buttonText, String command, String toolTipText) throws PWCGException 
+	private Button makeButton(String buttonText, String command, String toolTipText) throws PWCGException 
 	{
-	    return PWCGButtonFactory.makeTranslucentMenuButton(buttonText, command, toolTipText, this);	    
+	    return ButtonFactory.makeTranslucentMenuButton(buttonText, command, toolTipText, this);	    
 	}
 
-    private JCheckBox makeCheckBox(String buttonText, String command, JPanel buttonGrid) throws PWCGException 
+    private CheckBox makeCheckBox(String buttonText, String command, Pane buttonGrid) throws PWCGException 
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
-        buttonGrid.add(PWCGButtonFactory.makeDummy());  
-        JCheckBox button = PWCGButtonFactory.makeCheckBox(buttonText, command, fgColor, this);
+        buttonGrid.add(ButtonFactory.makeDummy());  
+        CheckBox button = ButtonFactory.makeCheckBox(buttonText, command, fgColor, this);
         buttonGrid.add(button);
         return button;  
     }
     
-	private JPanel makeEventTextPanel() throws PWCGException 
+	private Pane makeEventTextPanel() throws PWCGException 
 	{
 		Color buttonBG = ColorMap.MAP_BACKGROUND;
 
@@ -210,7 +210,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 		debriefTextPanel.setOpaque(false);
 		debriefTextPanel.setBackground(buttonBG);
 
-        JLabel eventTextLabel = PWCGButtonFactory.makePaperLabelLarge("Mission Events:");
+        Label eventTextLabel = ButtonFactory.makePaperLabelLarge("Mission Events:");
         debriefTextPanel.add(eventTextLabel, BorderLayout.NORTH);
 
 		eventTextPane.setBackground(buttonBG);

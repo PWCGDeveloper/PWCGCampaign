@@ -1,8 +1,8 @@
 package pwcg.gui.campaign.activity;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -10,9 +10,9 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javax.swing.JTextField;
 
 import pwcg.aar.ui.events.model.LeaveEvent;
@@ -33,7 +33,7 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
@@ -71,21 +71,21 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
 
     }
 
-    private JPanel makeNavPanel() throws PWCGException
+    private Pane makeNavPanel() throws PWCGException
     {
-        JPanel navPanel = new JPanel(new BorderLayout());
+        Pane navPanel = new Pane(new BorderLayout());
         navPanel.setOpaque(false);
 
-        JPanel leaveButtonPanel = new JPanel(new GridLayout(0, 1));
+        Pane leaveButtonPanel = new Pane(new GridLayout(0, 1));
         leaveButtonPanel.setOpaque(false);
 
-        JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept Leave", "Accept Leave", "Take leave for entered number of days", this);
+        Button acceptButton = ButtonFactory.makeTranslucentMenuButton("Accept Leave", "Accept Leave", "Take leave for entered number of days", this);
         leaveButtonPanel.add(acceptButton);
 
-        JLabel spacer = new JLabel("");
+        Label spacer = new Label("");
         leaveButtonPanel.add(spacer);
 
-        JButton rejectButton = PWCGButtonFactory.makeTranslucentMenuButton("Reject Leave", "Reject Leave", "Do not ake leave", this);
+        Button rejectButton = ButtonFactory.makeTranslucentMenuButton("Reject Leave", "Reject Leave", "Do not ake leave", this);
         leaveButtonPanel.add(rejectButton);
 
         navPanel.add(leaveButtonPanel, BorderLayout.NORTH);
@@ -93,19 +93,19 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         return navPanel;
     }
 
-    private JPanel makeLeaveCenterPanel() throws PWCGException
+    private Pane makeLeaveCenterPanel() throws PWCGException
     {
-        JPanel leaveCenterPanel = new JPanel();
+        Pane leaveCenterPanel = new Pane();
         leaveCenterPanel.setOpaque(false);
         leaveCenterPanel.setLayout(new BorderLayout());
 
-        JPanel leaveNotification = makeLeaveLetterPanel();
+        Pane leaveNotification = makeLeaveLetterPanel();
         leaveCenterPanel.add(leaveNotification, BorderLayout.CENTER);
 
         return leaveCenterPanel;
     }
 
-    private JPanel makeLeaveLetterPanel() throws PWCGException
+    private Pane makeLeaveLetterPanel() throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
         ImageResizingPanel leaveLetterPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
@@ -114,13 +114,13 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         leaveLetterPanel.setLayout(new BorderLayout());
         leaveLetterPanel.setOpaque(false);
 
-        JPanel leaveLetterGrid = new JPanel(new GridLayout(0, 1));
+        Pane leaveLetterGrid = new Pane(new GridLayout(0, 1));
         leaveLetterGrid.setOpaque(false);
 
-        JPanel leavePlayerWoundInfoPanel = makePlayerWoundHealTimePanel();
+        Pane leavePlayerWoundInfoPanel = makePlayerWoundHealTimePanel();
         leaveLetterGrid.add(leavePlayerWoundInfoPanel);
 
-        JPanel leaveRequestPanel = makeLeaveRequestRow();
+        Pane leaveRequestPanel = makeLeaveRequestRow();
         leaveLetterGrid.add(leaveRequestPanel);
 
         leaveLetterPanel.add(leaveLetterGrid, BorderLayout.NORTH);
@@ -128,11 +128,11 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         return leaveLetterPanel;
     }
 
-    private JPanel makePlayerWoundHealTimePanel() throws PWCGException
+    private Pane makePlayerWoundHealTimePanel() throws PWCGException
     {
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
-        JLabel lLeave = new JLabel("Request Leave Time (days): ", JLabel.LEFT);
+        Label lLeave = new Label("Request Leave Time (days): ", Label.LEFT);
         lLeave.setOpaque(false);
         lLeave.setFont(font);
 
@@ -140,7 +140,7 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         tLeaveTime.setOpaque(false);
         tLeaveTime.setFont(font);
 
-        JPanel leaveTimeToHealPanel = new JPanel();
+        Pane leaveTimeToHealPanel = new Pane();
         GridBagLayout documentLayout = new GridBagLayout();
         leaveTimeToHealPanel.setLayout(documentLayout);
 
@@ -162,7 +162,7 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
 
                 int daysToHeal = DateUtils.daysDifference(campaign.getDate(), player.getRecoveryDate()) + 1;
                 String playerWoundHealTimeDesc = player.getNameAndRank() + " requires " + daysToHeal + " days to recover from his wounds";
-                JLabel playerWoundHealTimeLabel = new JLabel(playerWoundHealTimeDesc, JLabel.LEFT);
+                Label playerWoundHealTimeLabel = new Label(playerWoundHealTimeDesc, Label.LEFT);
                 playerWoundHealTimeLabel.setFont(font);
                 leaveTimeToHealPanel.add(playerWoundHealTimeLabel, constraints);
             }
@@ -171,12 +171,12 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         return leaveTimeToHealPanel;
     }
 
-    private JPanel makeLeaveRequestRow() throws PWCGException
+    private Pane makeLeaveRequestRow() throws PWCGException
     {
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
         Color buttonBG = ColorMap.PAPER_BACKGROUND;
 
-        JLabel lLeave = new JLabel("Request Leave Time (days): ", JLabel.LEFT);
+        Label lLeave = new Label("Request Leave Time (days): ", Label.LEFT);
         lLeave.setOpaque(false);
         lLeave.setFont(font);
 
@@ -185,7 +185,7 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         tLeaveTime.setOpaque(false);
         tLeaveTime.setFont(font);
 
-        JPanel leaveRequestPanel = new JPanel();
+        Pane leaveRequestPanel = new Pane();
         GridBagLayout documentLayout = new GridBagLayout();
         leaveRequestPanel.setLayout(documentLayout);
 

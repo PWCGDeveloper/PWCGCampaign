@@ -1,17 +1,17 @@
 package pwcg.gui.maingui.coop;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import javafx.scene.control.ButtonGroup;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javax.swing.RadioButton ;
 import javax.swing.SwingConstants;
 
 import pwcg.core.exception.PWCGException;
@@ -25,7 +25,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 
 public class PwcgCoopGlobalAdminScreen extends ImageResizingPanel implements ActionListener
 {
@@ -61,7 +61,7 @@ public class PwcgCoopGlobalAdminScreen extends ImageResizingPanel implements Act
         }
     }
 
-	public JPanel makeBlankCenterPanel() throws PWCGException  
+	public Pane makeBlankCenterPanel() throws PWCGException  
     {       
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
         ImageResizingPanel blankPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
@@ -70,15 +70,15 @@ public class PwcgCoopGlobalAdminScreen extends ImageResizingPanel implements Act
         return blankPanel;
     }
 
-    public JPanel makeNavigatePanel() throws PWCGException  
+    public Pane makeNavigatePanel() throws PWCGException  
     {
-        JPanel navPanel = new JPanel(new BorderLayout());
+        Pane navPanel = new Pane(new BorderLayout());
         navPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished with coop player administration", this);
+        Button finishedButton = ButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished with coop player administration", this);
         buttonPanel.add(finishedButton);
 
         navPanel.add(buttonPanel, BorderLayout.NORTH);
@@ -86,19 +86,19 @@ public class PwcgCoopGlobalAdminScreen extends ImageResizingPanel implements Act
         return navPanel;
     }
 
-    public JPanel makeCoopAdminActionSelectPanel() throws PWCGException  
+    public Pane makeCoopAdminActionSelectPanel() throws PWCGException  
     {
-        JPanel configPanel = new JPanel(new BorderLayout());
+        Pane configPanel = new Pane(new BorderLayout());
         configPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
 
-        JLabel label = PWCGButtonFactory.makeMenuLabelLarge("Select Coop Admin Action:");
+        Label label = ButtonFactory.makeMenuLabelLarge("Select Coop Admin Action:");
         buttonPanel.add(label);
 
-        JLabel spacer = PWCGButtonFactory.makeMenuLabelLarge("   ");
+        Label spacer = ButtonFactory.makeMenuLabelLarge("   ");
         buttonPanel.add(spacer);
 
         buttonPanel.add(makeActionSelectRadioButton("Show Coop Participant Information"));
@@ -112,15 +112,15 @@ public class PwcgCoopGlobalAdminScreen extends ImageResizingPanel implements Act
         return configPanel;
     }
 
-    private JRadioButton makeActionSelectRadioButton(String buttonText) throws PWCGException 
+    private RadioButton  makeActionSelectRadioButton(String buttonText) throws PWCGException 
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
 
         Font font = PWCGMonitorFonts.getPrimaryFont();
 
-        JRadioButton button = new JRadioButton(buttonText);
+        RadioButton  button = new RadioButton (buttonText);
         button.setActionCommand(buttonText);
-        button.setHorizontalAlignment(SwingConstants.LEFT );
+        button.setAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
         button.setFocusPainted(false);
         button.addActionListener(this);

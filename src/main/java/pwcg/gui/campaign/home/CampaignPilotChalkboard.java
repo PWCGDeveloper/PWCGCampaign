@@ -1,14 +1,14 @@
 package pwcg.gui.campaign.home;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.List;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
@@ -36,18 +36,18 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
         this.setImageFromName(imagePath);
         this.setBorder(PwcgBorderFactory.createCampaignHomeChalkboardBoxBorder());        
 
-        JPanel equipmentPanel = createPilotListPanel(sortedPilots);
+        Pane equipmentPanel = createPilotListPanel(sortedPilots);
         this.add(equipmentPanel, BorderLayout.CENTER);
     }
 
-    private JPanel createPilotListPanel(List<SquadronMember> sortedPilots) throws PWCGException
+    private Pane createPilotListPanel(List<SquadronMember> sortedPilots) throws PWCGException
     {
         Color buttonBG = ColorMap.CHALK_BACKGROUND;
         Color buttonFG = ColorMap.CHALK_FOREGROUND;
         Font font = PWCGMonitorFonts.getChalkboardFont();
 
         GridBagConstraints constraints = initializeGridbagConstraints();
-        JPanel squadronPanel = createChalkboardHeader(constraints, buttonFG, font);
+        Pane squadronPanel = createChalkboardHeader(constraints, buttonFG, font);
         addPilotsToChalkBoard(sortedPilots, squadronPanel, constraints, buttonBG, buttonFG, font);
 
         return squadronPanel;
@@ -63,14 +63,14 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
         return constraints;
     }
 
-    private JPanel createChalkboardHeader(GridBagConstraints constraints, Color buttonFG, Font font) throws PWCGException
+    private Pane createChalkboardHeader(GridBagConstraints constraints, Color buttonFG, Font font) throws PWCGException
     {
-        JPanel squadronPanel = new JPanel();
+        Pane squadronPanel = new Pane();
         squadronPanel.setOpaque(false);
         GridBagLayout squadronLayout = new GridBagLayout();                
         squadronPanel.setLayout(squadronLayout);
 
-        JLabel lDummy = new JLabel("     ");
+        Label lDummy = new Label("     ");
         lDummy.setOpaque(false);
         lDummy.setForeground(buttonFG);
         lDummy.setFont(font);
@@ -79,7 +79,7 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
         constraints.gridy = 0;
         squadronPanel.add(lDummy, constraints);
 
-        JLabel lRankHeader = new JLabel("Pilot", JLabel.LEFT);
+        Label lRankHeader = new Label("Pilot", Label.LEFT);
         lRankHeader.setOpaque(false);
         lRankHeader.setForeground(buttonFG);
         lRankHeader.setFont(font);
@@ -88,7 +88,7 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
         constraints.gridy = 0;
         squadronPanel.add(lRankHeader, constraints);
 
-        JLabel lMissionHeader = new JLabel("Missions", JLabel.RIGHT);
+        Label lMissionHeader = new Label("Missions", Label.RIGHT);
         lMissionHeader.setOpaque(false);
         lMissionHeader.setForeground(buttonFG);
         lMissionHeader.setFont(font);
@@ -97,7 +97,7 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
         constraints.gridy = 0;
         squadronPanel.add(lMissionHeader, constraints);
 
-        JLabel airVictoryHeader = new JLabel("Air", JLabel.RIGHT);
+        Label airVictoryHeader = new Label("Air", Label.RIGHT);
         airVictoryHeader.setOpaque(false);
         airVictoryHeader.setForeground(buttonFG);
         airVictoryHeader.setFont(font);
@@ -106,7 +106,7 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
         constraints.gridy = 0;
         squadronPanel.add(airVictoryHeader, constraints);
 
-        JLabel tankVictoryHeader = new JLabel("Tank", JLabel.RIGHT);
+        Label tankVictoryHeader = new Label("Tank", Label.RIGHT);
         tankVictoryHeader.setOpaque(false);
         tankVictoryHeader.setForeground(buttonFG);
         tankVictoryHeader.setFont(font);
@@ -115,7 +115,7 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
         constraints.gridy = 0;
         squadronPanel.add(tankVictoryHeader, constraints);
 
-        JLabel trainVictoryHeader = new JLabel("Train", JLabel.RIGHT);
+        Label trainVictoryHeader = new Label("Train", Label.RIGHT);
         trainVictoryHeader.setOpaque(false);
         trainVictoryHeader.setForeground(buttonFG);
         trainVictoryHeader.setFont(font);
@@ -124,7 +124,7 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
         constraints.gridy = 0;
         squadronPanel.add(trainVictoryHeader, constraints);
 
-        JLabel groundVictoryHeader = new JLabel("Ground", JLabel.RIGHT);
+        Label groundVictoryHeader = new Label("Ground", Label.RIGHT);
         groundVictoryHeader.setOpaque(false);
         groundVictoryHeader.setForeground(buttonFG);
         groundVictoryHeader.setFont(font);
@@ -133,7 +133,7 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
         constraints.gridy = 0;
         squadronPanel.add(groundVictoryHeader, constraints);
 
-        lDummy = new JLabel("     ");
+        lDummy = new Label("     ");
         lDummy.setOpaque(false);
         lDummy.setForeground(buttonFG);
         lDummy.setFont(font);           constraints.weightx = 0.15;
@@ -143,12 +143,12 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
         return squadronPanel;
     }
 
-    private void addPilotsToChalkBoard(List<SquadronMember> sortedPilots, JPanel squadronPanel, GridBagConstraints constraints, Color buttonBG, Color buttonFG, Font font) throws PWCGException
+    private void addPilotsToChalkBoard(List<SquadronMember> sortedPilots, Pane squadronPanel, GridBagConstraints constraints, Color buttonBG, Color buttonFG, Font font) throws PWCGException
     {
         int gridbaRow = 1;
         for (SquadronMember pilot : sortedPilots)
         {
-            JLabel lDummy = new JLabel("     ");
+            Label lDummy = new Label("     ");
             lDummy.setOpaque(false);
             lDummy.setForeground(buttonFG);
             lDummy.setFont(font);               constraints.weightx = 0.15;
@@ -156,8 +156,8 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
             constraints.gridy = gridbaRow;
             squadronPanel.add(lDummy, constraints);
 
-            JLabel pilotButton = new JLabel(pilot.getNameAndRank());
-            pilotButton.setHorizontalAlignment(JLabel.LEFT);
+            Label pilotButton = new Label(pilot.getNameAndRank());
+            pilotButton.setAlignment(Label.LEFT);
             pilotButton.setOpaque(false);
             pilotButton.setBackground(buttonBG);
             pilotButton.setForeground(buttonFG);
@@ -167,7 +167,7 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
             constraints.gridy = gridbaRow;
             squadronPanel.add(pilotButton, constraints);
 
-            JLabel lMissions = new JLabel("" + pilot.getMissionFlown(), JLabel.RIGHT);
+            Label lMissions = new Label("" + pilot.getMissionFlown(), Label.RIGHT);
             lMissions.setOpaque(false);
             lMissions.setForeground(buttonFG);
             lMissions.setFont(font);
@@ -176,7 +176,7 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
             constraints.gridy = gridbaRow;
             squadronPanel.add(lMissions, constraints);
             
-            JLabel airVictories = new JLabel("" + pilot.getSquadronMemberVictories().getAirToAirVictoryCount(), JLabel.RIGHT);
+            Label airVictories = new Label("" + pilot.getSquadronMemberVictories().getAirToAirVictoryCount(), Label.RIGHT);
             airVictories.setOpaque(false);
             airVictories.setForeground(buttonFG);
             airVictories.setFont(font);
@@ -185,7 +185,7 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
             constraints.gridy = gridbaRow;
             squadronPanel.add(airVictories, constraints);
             
-            JLabel tankVictories = new JLabel("" + pilot.getSquadronMemberVictories().getTankVictoryCount(), JLabel.RIGHT);
+            Label tankVictories = new Label("" + pilot.getSquadronMemberVictories().getTankVictoryCount(), Label.RIGHT);
             tankVictories.setOpaque(false);
             tankVictories.setForeground(buttonFG);
             tankVictories.setFont(font);
@@ -194,7 +194,7 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
             constraints.gridy = gridbaRow;
             squadronPanel.add(tankVictories, constraints);
             
-            JLabel trainVictories = new JLabel("" + pilot.getSquadronMemberVictories().getTrainVictoryCount(), JLabel.RIGHT);
+            Label trainVictories = new Label("" + pilot.getSquadronMemberVictories().getTrainVictoryCount(), Label.RIGHT);
             trainVictories.setOpaque(false);
             trainVictories.setForeground(buttonFG);
             trainVictories.setFont(font);
@@ -203,7 +203,7 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
             constraints.gridy = gridbaRow;
             squadronPanel.add(trainVictories, constraints);
             
-            JLabel groundVictories = new JLabel("" + pilot.getSquadronMemberVictories().getGroundVictoryCount(), JLabel.RIGHT);
+            Label groundVictories = new Label("" + pilot.getSquadronMemberVictories().getGroundVictoryCount(), Label.RIGHT);
             groundVictories.setOpaque(false);
             groundVictories.setForeground(buttonFG);
             groundVictories.setFont(font);
@@ -212,7 +212,7 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
             constraints.gridy = gridbaRow;
             squadronPanel.add(groundVictories, constraints);
              
-            lDummy = new JLabel("     ");
+            lDummy = new Label("     ");
             lDummy.setOpaque(false);
             lDummy.setForeground(buttonFG);
             lDummy.setFont(font);               constraints.weightx = 0.15;

@@ -2,28 +2,28 @@ package pwcg.gui.utils;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.JPanel;
-
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.image.ImageCache;
 
-public class ImageResizingPanel extends JPanel
+public class ImageResizingPanel extends Scene
 {
     private static final long serialVersionUID = 1L;
     public static final String NO_IMAGE = "";
 	
     private Image image;
     protected String imagePath = "";
-    private Map<String, JPanel> children = new HashMap<>();
+    private Map<String, Scene> children = new HashMap<>();
 
     public ImageResizingPanel(String imagePath)
     {
+        super(oldRoot);
         this.imagePath = imagePath;
         if (!imagePath.isEmpty())
         {
@@ -33,6 +33,7 @@ public class ImageResizingPanel extends JPanel
 
     public ImageResizingPanel(BufferedImage image)
     {
+        super(oldRoot);
         this.image = image;
     }
 
@@ -45,7 +46,7 @@ public class ImageResizingPanel extends JPanel
             g.drawImage(resizedImage, 0, 0, null);
             resizedImage.flush();
             
-            for (JPanel panel : children.values())
+            for (Scene panel : children.values())
             {
                 panel.revalidate();
                 panel.repaint();
@@ -53,7 +54,7 @@ public class ImageResizingPanel extends JPanel
         }
     }
 
-    protected void addChild(String panelId, JPanel panel)
+    protected void addChild(String panelId, Scene panel)
     {
         children.put(panelId, panel);
     }

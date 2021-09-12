@@ -1,9 +1,9 @@
 package pwcg.gui.rofmap.brief;
 
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
-import javax.swing.JLabel;
+import javafx.scene.control.Label;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -12,11 +12,11 @@ import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 public class WaypointViewer implements IWaypointDetails
 {
     private long associatedWaypointID;
-    private JLabel descField;
-    private JLabel altitudeField;
-    private JLabel cruisingSpeedField;
-    private JLabel distanceField;
-    private JLabel headingField;
+    private Label descField;
+    private Label altitudeField;
+    private Label cruisingSpeedField;
+    private Label distanceField;
+    private Label headingField;
     private String actionCommandKey = "";
 
     public WaypointViewer(long associatedWaypointID)
@@ -39,31 +39,31 @@ public class WaypointViewer implements IWaypointDetails
     }
 
     @Override
-    public JLabel getDescriptionField()
+    public Label getDescriptionField()
     {
         return descField;
     }
 
     @Override
-    public JLabel getAltitudeField()
+    public Label getAltitudeField()
     {
         return altitudeField;
     }
 
     @Override
-    public JLabel getCruisingSpeedField()
+    public Label getCruisingSpeedField()
     {
         return cruisingSpeedField;
     }
 
     @Override
-    public JLabel getDistanceField()
+    public Label getDistanceField()
     {
         return distanceField;
     }
 
     @Override
-    public JLabel getHeadingField()
+    public Label getHeadingField()
     {
         return headingField;
     }
@@ -97,14 +97,14 @@ public class WaypointViewer implements IWaypointDetails
         headingField.setText(Integer.valueOf(heading).toString());
     }
 
-    private JLabel makeLabelField() throws PWCGException
+    private Label makeLabelField() throws PWCGException
     {
         Font font = PWCGMonitorFonts.getTypewriterFont();
 
-        JLabel field = new JLabel();
+        Label field = new Label();
         field.setOpaque(false);
         field.setFont(font);
-        field.setHorizontalAlignment(JLabel.RIGHT);
+        field.setAlignment(Label.RIGHT);
         field.setForeground(Color.BLACK);
 
         return field;

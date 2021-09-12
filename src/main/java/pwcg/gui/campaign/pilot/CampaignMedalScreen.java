@@ -1,14 +1,14 @@
 package pwcg.gui.campaign.pilot;
 
 import java.awt.BorderLayout;
-import java.awt.Font;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 import javax.swing.JTextArea;
 
 import pwcg.campaign.medals.Medal;
@@ -25,7 +25,7 @@ import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
@@ -53,9 +53,9 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
         this.add(BorderLayout.CENTER, makeCenterPanel());     
 	}
 
-    private JPanel makeCenterPanel() throws PWCGException
+    private Pane makeCenterPanel() throws PWCGException
     {
-        JPanel medalCenterPanel = new JPanel(new GridLayout(0,2));
+        Pane medalCenterPanel = new Pane(new GridLayout(0,2));
         medalCenterPanel.setOpaque(false);
         medalCenterPanel.add(makeMedalBoxPanel());     
         medalCenterPanel.add(makePaperDollPanel());
@@ -63,15 +63,15 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
         return medalCenterPanel;
     }
 
-    private JPanel makeNavigationPanel() throws PWCGException  
+    private Pane makeNavigationPanel() throws PWCGException  
     {
-        JPanel medalNavPanel = new JPanel(new BorderLayout());
+        Pane medalNavPanel = new Pane(new BorderLayout());
         medalNavPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
-        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished admiring your medals", this);
+        Button finishedButton = ButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished admiring your medals", this);
         buttonPanel.add(finishedButton);
 
         medalNavPanel.add(buttonPanel, BorderLayout.NORTH);
@@ -79,9 +79,9 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
         return medalNavPanel;
     }
 
-    public JPanel makeMedalBoxPanel() throws PWCGException 
+    public Pane makeMedalBoxPanel() throws PWCGException 
     {   
-        JPanel openMedalBoxPanel = new JPanel(new BorderLayout());
+        Pane openMedalBoxPanel = new Pane(new BorderLayout());
         openMedalBoxPanel.setOpaque(false);
 
         int numSpacers = calcNumSpacers();
@@ -136,18 +136,18 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
         }
     }
 
-	private JPanel makeMedalBox() throws PWCGException 
+	private Pane makeMedalBox() throws PWCGException 
 	{
 		CampaignPilotMedalBox medalBoxPanel = new CampaignPilotMedalBox(this, pilot);
 		medalBoxPanel.makePanels();
 
-        JPanel pilotMedalBoxPanel = new JPanel(new BorderLayout());
+        Pane pilotMedalBoxPanel = new Pane(new BorderLayout());
         pilotMedalBoxPanel.setOpaque(false);
         pilotMedalBoxPanel.add(medalBoxPanel, BorderLayout.CENTER);
 		return pilotMedalBoxPanel;
 	}
     
-    private JPanel makeMedalTextPanelPanel() throws PWCGException
+    private Pane makeMedalTextPanelPanel() throws PWCGException
     {
         List<Medal> pilotMedals = pilot.getMedals();
         if (!pilotMedals.isEmpty())
@@ -160,12 +160,12 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
     }
 
 	   
-    private JPanel makeTextPanelPanel(Medal medal) throws PWCGException  
+    private Pane makeTextPanelPanel(Medal medal) throws PWCGException  
     {
-        JPanel medalTextPanel = new JPanel(new BorderLayout());
+        Pane medalTextPanel = new Pane(new BorderLayout());
         medalTextPanel.setOpaque(false);
        
-        JPanel medalDescriptionPanel = formMedalTextPanel(medal);
+        Pane medalDescriptionPanel = formMedalTextPanel(medal);
         
         medalTextPanel.add(SpacerPanelFactory.createVerticalSpacerPanel(4), BorderLayout.NORTH);
         medalTextPanel.add(medalDescriptionPanel, BorderLayout.CENTER);
@@ -175,7 +175,7 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
     }
 
 
-    private JPanel formMedalTextPanel(Medal medal) throws PWCGException
+    private Pane formMedalTextPanel(Medal medal) throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
         ImageResizingPanel medalTextPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
@@ -211,7 +211,7 @@ public class CampaignMedalScreen extends ImageResizingPanel implements ActionLis
     }
     
 
-    private JPanel makePaperDollPanel() throws PWCGException
+    private Pane makePaperDollPanel() throws PWCGException
     {
         CampaignPaperDollPanel paperDollPanel = new CampaignPaperDollPanel(pilot);
         paperDollPanel.makePaperDollPanel();

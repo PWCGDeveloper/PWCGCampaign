@@ -1,7 +1,7 @@
 package pwcg.gui.maingui.config;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+import javafx.scene.paint.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
+import javafx.scene.control.Button;
+import javax.swing.CheckBox;
 import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
@@ -35,7 +35,7 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageButton;
 import pwcg.gui.utils.ImagePanelLayout;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 
 public class PwcgPlanesOwnedConfigurationScreen extends ImageResizingPanel implements ActionListener
@@ -98,43 +98,43 @@ public class PwcgPlanesOwnedConfigurationScreen extends ImageResizingPanel imple
 		}
 	}
 
-	public JPanel makeButtonPanel() throws PWCGException 
+	public Pane makeButtonPanel() throws PWCGException 
 	{
-        JPanel navPanel = new JPanel(new BorderLayout());
+        Pane navPanel = new Pane(new BorderLayout());
         navPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
         for (int i = 0; i < 2; ++i)
         {
-            JLabel spacerLabel = new JLabel("     ");
-            spacerLabel.setHorizontalAlignment(SwingConstants.LEFT);
+            Label spacerLabel = new Label("     ");
+            spacerLabel.setAlignment(SwingConstants.LEFT);
             spacerLabel.setOpaque(false);
             
             buttonPanel.add(spacerLabel);
         }
         
-        JButton selectAllButton = PWCGButtonFactory.makeTranslucentMenuButton("Select All", "Select All", "Select all planes as owned", this);
+        Button selectAllButton = ButtonFactory.makeTranslucentMenuButton("Select All", "Select All", "Select all planes as owned", this);
         buttonPanel.add(selectAllButton);
 
-        JButton deselectAllButton = PWCGButtonFactory.makeTranslucentMenuButton("Deselect All", "Deselect All", "Select all planes as not owned", this);
+        Button deselectAllButton = ButtonFactory.makeTranslucentMenuButton("Deselect All", "Deselect All", "Select all planes as not owned", this);
         buttonPanel.add(deselectAllButton);
         
 
         for (int i = 0; i < 3; ++i)
         {
-            JLabel spacerLabel = new JLabel("     ");
-            spacerLabel.setHorizontalAlignment(SwingConstants.LEFT);
+            Label spacerLabel = new Label("     ");
+            spacerLabel.setAlignment(SwingConstants.LEFT);
             spacerLabel.setOpaque(false);
             
             buttonPanel.add(spacerLabel);
         }
 
-        JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept", "Accept", "Accept planes owned", this);
+        Button acceptButton = ButtonFactory.makeTranslucentMenuButton("Accept", "Accept", "Accept planes owned", this);
         buttonPanel.add(acceptButton);
 
-        JButton cancelButton = PWCGButtonFactory.makeTranslucentMenuButton("Cancel", "Cancel", "Cancel planes owned edits", this);
+        Button cancelButton = ButtonFactory.makeTranslucentMenuButton("Cancel", "Cancel", "Cancel planes owned edits", this);
         buttonPanel.add(cancelButton);
 
         navPanel.add (buttonPanel, BorderLayout.NORTH);
@@ -142,10 +142,10 @@ public class PwcgPlanesOwnedConfigurationScreen extends ImageResizingPanel imple
         return navPanel;
  	}
 
-    public JPanel makeCenterPanel() throws PWCGException 
+    public Pane makeCenterPanel() throws PWCGException 
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "paperFull.jpg";
-        JPanel planeSelectionPanel = new ImagePanelLayout(imagePath, new BorderLayout());
+        Pane planeSelectionPanel = new ImagePanelLayout(imagePath, new BorderLayout());
 
         JComponent alliedPanel = makeAlliedPanel();
         JComponent axisPanel = makeAxisPanel();
@@ -158,9 +158,9 @@ public class PwcgPlanesOwnedConfigurationScreen extends ImageResizingPanel imple
         return planeSelectionPanel;
     }
 
-    public JPanel makeBlankPanel() throws PWCGException 
+    public Pane makeBlankPanel() throws PWCGException 
     {        
-        JPanel blankPanel = new JPanel(new GridLayout(0, 2));
+        Pane blankPanel = new Pane(new GridLayout(0, 2));
 
         blankPanel.setOpaque(false);
 
@@ -168,26 +168,26 @@ public class PwcgPlanesOwnedConfigurationScreen extends ImageResizingPanel imple
         return blankPanel;
     }
 
-    public JPanel makeAxisPanel() throws PWCGException 
+    public Pane makeAxisPanel() throws PWCGException 
     {
         List<PlaneType> axisPlanes = PWCGContext.getInstance().getPlaneTypeFactory().getAxisPlanes();
         return makePlanePanel(axisPlanes);
     }
 
-    public JPanel makeAlliedPanel() throws PWCGException 
+    public Pane makeAlliedPanel() throws PWCGException 
     {
         List<PlaneType> alliedPlanes = PWCGContext.getInstance().getPlaneTypeFactory().getAlliedPlanes();
         return makePlanePanel(alliedPlanes);
     }
 
-	public JPanel makePlanePanel(List<PlaneType> planes) throws PWCGException 
+	public Pane makePlanePanel(List<PlaneType> planes) throws PWCGException 
 	{
-        JPanel planeListOuterPanel = new JPanel(new BorderLayout());
+        Pane planeListOuterPanel = new Pane(new BorderLayout());
         planeListOuterPanel.setOpaque(false);
 		
 		TreeMap<String, PlaneType> planeMap = sortPlanesByType(planes);
 		
-		JPanel planeListPanel = createPlanePanel(planeMap);
+		Pane planeListPanel = createPlanePanel(planeMap);
 		
         JScrollPane planeListScroll = ScrollBarWrapper.makeScrollPane(planeListPanel);
         
@@ -210,7 +210,7 @@ public class PwcgPlanesOwnedConfigurationScreen extends ImageResizingPanel imple
         return planeMap;
     }
 
-    private JPanel createPlanePanel(TreeMap<String, PlaneType> planeMap) throws PWCGException
+    private Pane createPlanePanel(TreeMap<String, PlaneType> planeMap) throws PWCGException
     {
         MonitorSize monitorSize = PWCGMonitorSupport.getFrameWidth();
         int columns = 2;
@@ -219,14 +219,14 @@ public class PwcgPlanesOwnedConfigurationScreen extends ImageResizingPanel imple
             columns = 3;
         }
         
-        JPanel planeListPanel = new JPanel(new GridLayout(0, columns));
+        Pane planeListPanel = new Pane(new GridLayout(0, columns));
         planeListPanel.setOpaque(false);
 
         Color buttonBG = ColorMap.PAPERPART_BACKGROUND;
         
         for (PlaneType plane : planeMap.values())
 		{
-			JCheckBox b1 = ImageButton.makeCheckBox(plane.getDisplayName(), plane.getType());
+			CheckBox b1 = ImageButton.makeCheckBox(plane.getDisplayName(), plane.getType());
 
 			b1.addActionListener(this);
 			b1.setBackground(buttonBG);
@@ -267,7 +267,7 @@ public class PwcgPlanesOwnedConfigurationScreen extends ImageResizingPanel imple
 					
 					for (PlaneOwned box: selectionBoxes.values())
 					{
-						JCheckBox selectionBox = box.checkBox;
+						CheckBox selectionBox = box.checkBox;
 						
 						if (selectionBox.isSelected())
 						{
@@ -297,7 +297,7 @@ public class PwcgPlanesOwnedConfigurationScreen extends ImageResizingPanel imple
 
 	private class PlaneOwned
 	{
-		JCheckBox checkBox = null;
+		CheckBox checkBox = null;
 		PlaneType plane;
 	}
 }

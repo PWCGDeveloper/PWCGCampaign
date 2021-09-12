@@ -1,11 +1,11 @@
 package pwcg.gui.utils;
 
-import java.awt.Font;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.colors.ColorMap;
@@ -16,16 +16,16 @@ import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 public class PageTurner
 {
 
-    public static JPanel makeButtonPanel(int pageNum, int pages, ActionListener actionComponent) throws PWCGException
+    public static Pane makeButtonPanel(int pageNum, int pages, ActionListener actionComponent) throws PWCGException
     {
-        JPanel buttonPanel = new JPanel(new GridLayout(0,2));
+        Pane buttonPanel = new Pane(new GridLayout(0,2));
         buttonPanel.setOpaque(false);
 
-        JPanel leftButtonPanel = new JPanel(new GridLayout(1,0));
+        Pane leftButtonPanel = new Pane(new GridLayout(1,0));
         leftButtonPanel.setOpaque(false);
         buttonPanel.add(leftButtonPanel);
 
-        JPanel rightButtonPanel = new JPanel(new GridLayout(1,0));
+        Pane rightButtonPanel = new Pane(new GridLayout(1,0));
         rightButtonPanel.setOpaque(false);
         buttonPanel.add(rightButtonPanel);
         
@@ -35,17 +35,17 @@ public class PageTurner
         {
             for (int i = 0; i < 1; ++i)
             {
-                leftButtonPanel.add(PWCGButtonFactory.makeDummy());
+                leftButtonPanel.add(ButtonFactory.makeDummy());
             }
 
             Font font = PWCGMonitorFonts.getPrimaryFont();
-            JButton prevButton = PWCGButtonFactory.makeTranslucentMenuButton("Previous Page", "Previous Page", "Go to the previous page", actionComponent);
+            Button prevButton = ButtonFactory.makeTranslucentMenuButton("Previous Page", "Previous Page", "Go to the previous page", actionComponent);
             prevButton.setForeground(ColorMap.CHALK_FOREGROUND);   
             prevButton.setFont(font);
             leftButtonPanel.add(prevButton);
             for (int i = 0; i < spacingLabels; ++i)
             {
-                leftButtonPanel.add(PWCGButtonFactory.makeDummy());
+                leftButtonPanel.add(ButtonFactory.makeDummy());
             }
         }
         
@@ -54,18 +54,18 @@ public class PageTurner
             
             for (int i = 0; i < spacingLabels; ++i)
             {
-                rightButtonPanel.add(PWCGButtonFactory.makeDummy());
+                rightButtonPanel.add(ButtonFactory.makeDummy());
             }
 
             Font font = PWCGMonitorFonts.getPrimaryFont();
-            JButton nextButton = PWCGButtonFactory.makeTranslucentMenuButton("Next Page", "Next Page", "Go to the next page", actionComponent);
+            Button nextButton = ButtonFactory.makeTranslucentMenuButton("Next Page", "Next Page", "Go to the next page", actionComponent);
             nextButton.setForeground(ColorMap.CHALK_FOREGROUND);   
             nextButton.setFont(font);
             rightButtonPanel.add(nextButton);
 
             for (int i = 0; i < 1; ++i)
             {
-                rightButtonPanel.add(PWCGButtonFactory.makeDummy());
+                rightButtonPanel.add(ButtonFactory.makeDummy());
             }
         }
         
@@ -74,7 +74,7 @@ public class PageTurner
         return buttonPanel;
     }
 
-    private static void makeVerticalBuffer(JPanel buttonPanel)
+    private static void makeVerticalBuffer(Pane buttonPanel)
     {
         int numSpacingLabels = 3;
 
@@ -96,7 +96,7 @@ public class PageTurner
         {
             for (int j = 0; j < 2; ++j)
             {
-                buttonPanel.add(PWCGButtonFactory.makeDummy());
+                buttonPanel.add(ButtonFactory.makeDummy());
             }
         }
     }

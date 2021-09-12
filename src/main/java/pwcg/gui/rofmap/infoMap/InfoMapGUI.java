@@ -1,22 +1,22 @@
 package pwcg.gui.rofmap.infoMap;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.List;
 
-import javax.swing.ButtonGroup;
+import javafx.scene.control.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
+import javafx.scene.control.Button;
+import javax.swing.CheckBox;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javax.swing.RadioButton ;
 import javax.swing.SwingConstants;
 
 import pwcg.campaign.context.FrontMapIdentifier;
@@ -33,7 +33,7 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.rofmap.MapGUI;
 import pwcg.gui.rofmap.MapScroll;
 import pwcg.gui.utils.CampaignTransitionDates;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 
 public class InfoMapGUI extends MapGUI implements ActionListener
 {
@@ -45,14 +45,14 @@ public class InfoMapGUI extends MapGUI implements ActionListener
     private JComboBox<String> cbDate = new JComboBox<String>();
     private ButtonGroup mapButtonGroup = new ButtonGroup();
 
-    private JCheckBox displayFighterSquadrons = null;
-    private JCheckBox displayAttackSquadrons = null;
-    private JCheckBox displayBomberSquadrons = null;
-    private JCheckBox displayReconSquadrons = null;
-    private JCheckBox displayAirfields = null;
-    private JCheckBox displayTowns = null;
-    private JCheckBox displayRailroadStations = null;
-    private JCheckBox displayBridges = null;
+    private CheckBox displayFighterSquadrons = null;
+    private CheckBox displayAttackSquadrons = null;
+    private CheckBox displayBomberSquadrons = null;
+    private CheckBox displayReconSquadrons = null;
+    private CheckBox displayAirfields = null;
+    private CheckBox displayTowns = null;
+    private CheckBox displayRailroadStations = null;
+    private CheckBox displayBridges = null;
 
     public InfoMapGUI(Date mapDate) throws PWCGException  
     {        
@@ -82,9 +82,9 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         }
     }
 
-    private JPanel createMapPanel() throws PWCGException, PWCGException
+    private Pane createMapPanel() throws PWCGException, PWCGException
     {
-        JPanel infoMapPanelCenter = new JPanel(new BorderLayout());
+        Pane infoMapPanelCenter = new Pane(new BorderLayout());
 
         infoMapPanel = new InfoMapPanel(this);
         
@@ -99,25 +99,25 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         return infoMapPanelCenter;
     }
 
-    private JPanel makeNavigationPanel() throws PWCGException  
+    private Pane makeNavigationPanel() throws PWCGException  
     {
-        JPanel infoMapNavPanel = new JPanel(new BorderLayout());
+        Pane infoMapNavPanel = new Pane(new BorderLayout());
         infoMapNavPanel.setLayout(new BorderLayout());
         infoMapNavPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
-        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished with PWCG information map", this);
+        Button finishedButton = ButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished with PWCG information map", this);
         buttonPanel.add(finishedButton);
         
-        JLabel spacer1 = PWCGButtonFactory.makeMenuLabelLarge("");
+        Label spacer1 = ButtonFactory.makeMenuLabelLarge("");
         buttonPanel.add(spacer1);
 
-        JPanel radioButtonPanel = new JPanel( new GridLayout(0,1));
+        Pane radioButtonPanel = new Pane( new GridLayout(0,1));
         radioButtonPanel.setOpaque(false);
         
-        JLabel spacer2 = PWCGButtonFactory.makeMenuLabelLarge("");
+        Label spacer2 = ButtonFactory.makeMenuLabelLarge("");
         buttonPanel.add(spacer2);
 
         infoMapNavPanel.add(buttonPanel, BorderLayout.NORTH);
@@ -125,37 +125,37 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         return infoMapNavPanel;
     }
 
-    public JPanel makeSelectionPanel() throws PWCGException 
+    public Pane makeSelectionPanel() throws PWCGException 
     {
-        JPanel selectionPanel = new JPanel(new GridLayout(0,1));
+        Pane selectionPanel = new Pane(new GridLayout(0,1));
         selectionPanel.setOpaque(false);
 
-        JPanel datePanel = createDateSelection(selectionPanel);
+        Pane datePanel = createDateSelection(selectionPanel);
         selectionPanel.add(datePanel);
 
-        JPanel buttonPanelGrid = makeMapCheckBoxes();
+        Pane buttonPanelGrid = makeMapCheckBoxes();
         selectionPanel.add(buttonPanelGrid);
 
-        JPanel squadronButtonPanel = makeSquadronTypeCheckBoxes();
+        Pane squadronButtonPanel = makeSquadronTypeCheckBoxes();
         selectionPanel.add(squadronButtonPanel);
         
-        JPanel groupButtonPanel = makeGroundStructureCheckBoxes();
+        Pane groupButtonPanel = makeGroundStructureCheckBoxes();
         selectionPanel.add(groupButtonPanel);
         
         return selectionPanel;
     }
 
-    private JPanel createDateSelection(JPanel selectionPanel) throws PWCGException, PWCGException
+    private Pane createDateSelection(Pane selectionPanel) throws PWCGException, PWCGException
     {
-        JPanel datePanel = new JPanel(new BorderLayout());
+        Pane datePanel = new Pane(new BorderLayout());
         datePanel.setOpaque(false);
         
-        JPanel dateGrid = new JPanel( new GridLayout(0,1));
+        Pane dateGrid = new Pane( new GridLayout(0,1));
         dateGrid.setOpaque(false);
         
         datePanel.add(dateGrid, BorderLayout.NORTH);
         
-        JLabel dateLabel = PWCGButtonFactory.makeMenuLabelLarge("Choose Date");
+        Label dateLabel = ButtonFactory.makeMenuLabelLarge("Choose Date");
         dateGrid.add(dateLabel);
 
         setDateSelectionsByPossibleStartDatesAndMovingFront();
@@ -169,17 +169,17 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         return datePanel;
     }
 
-    private JPanel makeMapCheckBoxes() throws PWCGException
+    private Pane makeMapCheckBoxes() throws PWCGException
     {
-        JPanel mapPanel = new JPanel(new BorderLayout());
+        Pane mapPanel = new Pane(new BorderLayout());
         mapPanel.setOpaque(false);
                 
-        JPanel mapGrid = new JPanel( new GridLayout(0,1));
+        Pane mapGrid = new Pane( new GridLayout(0,1));
         mapGrid.setOpaque(false);
         
         mapPanel.add(mapGrid, BorderLayout.NORTH);
 
-        JLabel mapLabel = PWCGButtonFactory.makeMenuLabelLarge("Choose Map");
+        Label mapLabel = ButtonFactory.makeMenuLabelLarge("Choose Map");
         mapGrid.add(mapLabel);
         
         if (PWCGContext.getProduct() == PWCGProduct.BOS)
@@ -203,7 +203,7 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         return mapPanel;
     }
 
-    private void addToMapGrid(JPanel mapGrid, FrontMapIdentifier mapIdentifier) throws PWCGException
+    private void addToMapGrid(Pane mapGrid, FrontMapIdentifier mapIdentifier) throws PWCGException
     {
         mapGrid.add(makeRadioButton(mapIdentifier.getMapName(), MAP_DELIMITER + mapIdentifier.getMapName(), mapButtonGroup));
     }
@@ -221,20 +221,20 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         mapDate = PWCGContext.getInstance().getCurrentMap().getFrontDatesForMap().getEarliestMapDate();
     }
 
-    private JPanel makeGroundStructureCheckBoxes() throws PWCGException
+    private Pane makeGroundStructureCheckBoxes() throws PWCGException
     {
-        JPanel groundStructurePanel = new JPanel(new BorderLayout());
+        Pane groundStructurePanel = new Pane(new BorderLayout());
         groundStructurePanel.setOpaque(false);
          
-        JPanel groundStructureGrid = new JPanel( new GridLayout(0,1));
+        Pane groundStructureGrid = new Pane( new GridLayout(0,1));
         groundStructureGrid.setOpaque(false);
 
         groundStructurePanel.add(groundStructureGrid, BorderLayout.NORTH);
 
-        JLabel spaceLabel1 = PWCGButtonFactory.makePaperLabelMedium(" ");
+        Label spaceLabel1 = ButtonFactory.makePaperLabelMedium(" ");
         groundStructureGrid.add(spaceLabel1);
         
-        JLabel groundStructureLabel = PWCGButtonFactory.makeMenuLabelLarge("Choose Category");
+        Label groundStructureLabel = ButtonFactory.makeMenuLabelLarge("Choose Category");
         groundStructureGrid.add(groundStructureLabel);
 
         displayAirfields = makeCheckBoxButton("Airfields", "Airfields");
@@ -249,26 +249,26 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         displayBridges = makeCheckBoxButton("Bridges", "Bridges");
         groundStructureGrid.add(displayBridges);
 
-        JLabel spaceLabel2 = PWCGButtonFactory.makePaperLabelMedium(" ");
+        Label spaceLabel2 = ButtonFactory.makePaperLabelMedium(" ");
         groundStructureGrid.add(spaceLabel2);
         
         return groundStructurePanel;
     }
 
-    private JPanel makeSquadronTypeCheckBoxes() throws PWCGException
+    private Pane makeSquadronTypeCheckBoxes() throws PWCGException
     {
-        JPanel rolePanel = new JPanel(new BorderLayout());
+        Pane rolePanel = new Pane(new BorderLayout());
         rolePanel.setOpaque(false);
          
-        JPanel roleGrid = new JPanel( new GridLayout(0,1));
+        Pane roleGrid = new Pane( new GridLayout(0,1));
         roleGrid.setOpaque(false);
 
         rolePanel.add(roleGrid, BorderLayout.NORTH);
 
-        JLabel spaceLabel1 = PWCGButtonFactory.makePaperLabelMedium(" ");
+        Label spaceLabel1 = ButtonFactory.makePaperLabelMedium(" ");
         roleGrid.add(spaceLabel1);
         
-        JLabel roleLabel = PWCGButtonFactory.makeMenuLabelLarge("Choose Aircraft Role");
+        Label roleLabel = ButtonFactory.makeMenuLabelLarge("Choose Aircraft Role");
         roleGrid.add(roleLabel);
 
         displayFighterSquadrons = makeCheckBoxButton("Fighter", "Fighter");
@@ -283,21 +283,21 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         displayReconSquadrons = makeCheckBoxButton("Recon", "Recon");
         roleGrid.add(displayReconSquadrons);
 
-        JLabel spaceLabel2 = PWCGButtonFactory.makePaperLabelMedium(" ");
+        Label spaceLabel2 = ButtonFactory.makePaperLabelMedium(" ");
         roleGrid.add(spaceLabel2);
         
         return rolePanel;
     }
 
-    private JRadioButton makeRadioButton(String buttonText, String commandString, ButtonGroup buttonGroup) throws PWCGException 
+    private RadioButton  makeRadioButton(String buttonText, String commandString, ButtonGroup buttonGroup) throws PWCGException 
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
         Color bgColor = ColorMap.CHALK_BACKGROUND;
 
         Font font = PWCGMonitorFonts.getPrimaryFont();
 
-        JRadioButton button = new JRadioButton(buttonText);
-        button.setHorizontalAlignment(SwingConstants.LEFT );
+        RadioButton  button = new RadioButton (buttonText);
+        button.setAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
         button.setFocusPainted(false);
         button.addActionListener(this);
@@ -312,15 +312,15 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         return button;
     }	
 
-    private JCheckBox makeCheckBoxButton(String buttonText, String commandString) throws PWCGException 
+    private CheckBox makeCheckBoxButton(String buttonText, String commandString) throws PWCGException 
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
         Color bgColor = ColorMap.CHALK_BACKGROUND;
 
         Font font = PWCGMonitorFonts.getPrimaryFont();
 
-        JCheckBox button = new JCheckBox(buttonText);
-        button.setHorizontalAlignment(SwingConstants.LEFT );
+        CheckBox button = new CheckBox(buttonText);
+        button.setAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
         button.setFocusPainted(false);
         button.addActionListener(this);

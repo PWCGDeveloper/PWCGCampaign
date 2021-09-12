@@ -1,17 +1,17 @@
 package pwcg.gui.campaign.home;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import javafx.scene.control.ButtonGroup;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javax.swing.RadioButton ;
 import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
@@ -28,7 +28,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ToolTipManager;
 
-public class ChalkboardSelector extends JPanel implements ActionListener
+public class ChalkboardSelector extends Pane implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
@@ -47,44 +47,44 @@ public class ChalkboardSelector extends JPanel implements ActionListener
 
     public void createSelectorPanel() throws PWCGException
     {
-        JPanel selectorPanel = new JPanel(new GridLayout(0, 3));
+        Pane selectorPanel = new Pane(new GridLayout(0, 3));
         selectorPanel.setOpaque(false);
 
-        JRadioButton pilotsButton = makeRadioButton("Pilots", "CampPilots", "Show squadron pilot chalk board");
+        RadioButton  pilotsButton = makeRadioButton("Pilots", "CampPilots", "Show squadron pilot chalk board");
         selectorPanel.add(pilotsButton);
 
-        JRadioButton playerPilotsButton = makeRadioButton("Player Pilots", "CampPlayerPilots", "Show player pilots chalk board");
+        RadioButton  playerPilotsButton = makeRadioButton("Player Pilots", "CampPlayerPilots", "Show player pilots chalk board");
         selectorPanel.add(playerPilotsButton);
 
-        JRadioButton topAcesButton = makeRadioButton("Top Aces: All", "CampTopAces", "Show top aces chalk board");
+        RadioButton  topAcesButton = makeRadioButton("Top Aces: All", "CampTopAces", "Show top aces chalk board");
         selectorPanel.add(topAcesButton);
 
-        JRadioButton equipmentButton = makeRadioButton("Equipment", "Equipment", "Show equipment chalk board");
+        RadioButton  equipmentButton = makeRadioButton("Equipment", "Equipment", "Show equipment chalk board");
         selectorPanel.add(equipmentButton);
 
-        selectorPanel.add(new JLabel(""));
+        selectorPanel.add(new Label(""));
 
-        JRadioButton topAcesForServiceButton = makeRadioButton("Top Aces: Service", "CampTopAcesService", "Show top aces chalk board for your service");
+        RadioButton  topAcesForServiceButton = makeRadioButton("Top Aces: Service", "CampTopAcesService", "Show top aces chalk board for your service");
         selectorPanel.add(topAcesForServiceButton);
 
-        selectorPanel.add(new JLabel(""));
-        selectorPanel.add(new JLabel(""));
+        selectorPanel.add(new Label(""));
+        selectorPanel.add(new Label(""));
 
-        JRadioButton topAcesNoHistoricalButton = makeRadioButton("Top Aces: Exclude Historical", "CampTopAcesNoHistorical", "Show top aces chalk board with no historical aces");
+        RadioButton  topAcesNoHistoricalButton = makeRadioButton("Top Aces: Exclude Historical", "CampTopAcesNoHistorical", "Show top aces chalk board with no historical aces");
         selectorPanel.add(topAcesNoHistoricalButton); 
         
         this.add(selectorPanel, BorderLayout.CENTER);
     }
 
-    private JRadioButton makeRadioButton(String buttonText, String action, String toolTiptext) throws PWCGException 
+    private RadioButton  makeRadioButton(String buttonText, String action, String toolTiptext) throws PWCGException 
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
 
         Font font = PWCGMonitorFonts.getPrimaryFont();
 
-        JRadioButton button = new JRadioButton(buttonText);
+        RadioButton  button = new RadioButton (buttonText);
         button.setActionCommand(action);
-        button.setHorizontalAlignment(SwingConstants.LEFT );
+        button.setAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
         button.setFocusPainted(false);
         button.addActionListener(this);
@@ -158,7 +158,7 @@ public class ChalkboardSelector extends JPanel implements ActionListener
         
         List<SquadronMember> squadronMembers = makePilotList();
         SquadronMember referencePlayer = campaign.findReferencePlayer();
-        JPanel squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(campaignHome.getCampaign(), campaignHome, squadronMembers, referencePlayer.getSquadronId());
+        Pane squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(campaignHome.getCampaign(), campaignHome, squadronMembers, referencePlayer.getSquadronId());
 
         campaignHome.createNewContext(equipmentChalkboardDisplay, squadronPanel);
     }    
@@ -166,10 +166,10 @@ public class ChalkboardSelector extends JPanel implements ActionListener
     public void createPlayerSquadronContext() throws PWCGException 
     {
         List<SquadronMember> squadronMembers = makePilotList();
-        JPanel chalkboardPanel =  CampaignHomeCenterPanelFactory.makeCampaignHomeCenterPanel(campaignHome, squadronMembers);
+        Pane chalkboardPanel =  CampaignHomeCenterPanelFactory.makeCampaignHomeCenterPanel(campaignHome, squadronMembers);
         
         SquadronMember referencePlayer = campaign.findReferencePlayer();
-        JPanel squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(campaignHome.getCampaign(), campaignHome, squadronMembers, referencePlayer.getSquadronId());
+        Pane squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomeSquadronRightPanel(campaignHome.getCampaign(), campaignHome, squadronMembers, referencePlayer.getSquadronId());
 
         campaignHome.createNewContext(chalkboardPanel, squadronPanel);
     }
@@ -177,9 +177,9 @@ public class ChalkboardSelector extends JPanel implements ActionListener
     public void createPlayerPilotsContext() throws PWCGException 
     {
         List<SquadronMember> playerPilots = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
-        JPanel chalkboardPanel =  CampaignHomeCenterPanelFactory.makeCampaignHomeCenterPanel(campaignHome, playerPilots);
+        Pane chalkboardPanel =  CampaignHomeCenterPanelFactory.makeCampaignHomeCenterPanel(campaignHome, playerPilots);
         
-        JPanel playerPilotPanel = CampaignHomeRightPanelFactory.makeCampaignHomeAcesRightPanel(campaignHome, playerPilots);
+        Pane playerPilotPanel = CampaignHomeRightPanelFactory.makeCampaignHomeAcesRightPanel(campaignHome, playerPilots);
 
         campaignHome.createNewContext(chalkboardPanel, playerPilotPanel);
     }
@@ -200,7 +200,7 @@ public class ChalkboardSelector extends JPanel implements ActionListener
         CampaignHomeTopAcesCenterPanel topAceListChalkboard = new CampaignHomeTopAcesCenterPanel(campaignHome);
         topAceListChalkboard.makePanel(acesToDisplay);
         
-        JPanel topAcesListPanel = CampaignHomeRightPanelFactory.makeCampaignHomeAcesRightPanel(campaignHome, acesToDisplay);
+        Pane topAcesListPanel = CampaignHomeRightPanelFactory.makeCampaignHomeAcesRightPanel(campaignHome, acesToDisplay);
 
         campaignHome.createNewContext(topAceListChalkboard, topAcesListPanel);
     }

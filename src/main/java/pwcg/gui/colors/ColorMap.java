@@ -1,6 +1,6 @@
 package pwcg.gui.colors;
 
-import java.awt.Color;
+import javafx.scene.paint.Color;
 
 public class ColorMap 
 {

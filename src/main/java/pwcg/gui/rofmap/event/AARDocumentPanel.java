@@ -2,9 +2,9 @@ package pwcg.gui.rofmap.event;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JPanel;
+import javafx.scene.layout.Pane;
 
-public abstract class AARDocumentPanel extends JPanel implements IAAREventPanel
+public abstract class AARDocumentPanel extends Pane implements IAAREventPanel
 {
     private static final long serialVersionUID = 1L;
 
@@ -28,7 +28,7 @@ public abstract class AARDocumentPanel extends JPanel implements IAAREventPanel
     }
 
     @Override
-    public JPanel getPanel()
+    public Pane getPanel()
     {
         return this;
     }

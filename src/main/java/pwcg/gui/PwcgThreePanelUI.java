@@ -2,23 +2,23 @@ package pwcg.gui;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JPanel;
+import javafx.scene.layout.Pane;
 
 import pwcg.core.exception.PWCGException;
 
 public class PwcgThreePanelUI
 {
-    private JPanel parent;
-    private JPanel leftPanel;
-    private JPanel centerPanel;
-    private JPanel rightPanel;
+    private Pane parent;
+    private Pane leftPanel;
+    private Pane centerPanel;
+    private Pane rightPanel;
     
-    public PwcgThreePanelUI(JPanel parent)
+    public PwcgThreePanelUI(Pane parent)
     {
         this.parent = parent;
     }
 
-    public void setLeftPanel(JPanel newLeftPanel) throws PWCGException
+    public void setLeftPanel(Pane newLeftPanel) throws PWCGException
     {
         if (leftPanel != null)
         {
@@ -30,7 +30,7 @@ public class PwcgThreePanelUI
         CampaignGuiContextManager.getInstance().refreshCurrentContext(parent);
     }
 
-    public void setRightPanel(JPanel newRightPanel) throws PWCGException
+    public void setRightPanel(Pane newRightPanel) throws PWCGException
     {
         if (rightPanel != null)
         {
@@ -42,7 +42,7 @@ public class PwcgThreePanelUI
         CampaignGuiContextManager.getInstance().refreshCurrentContext(parent);
     }
 
-    public void setCenterPanel(JPanel newCenterPanel) throws PWCGException
+    public void setCenterPanel(Pane newCenterPanel) throws PWCGException
     {
         if (centerPanel != null)
         {

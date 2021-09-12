@@ -1,16 +1,16 @@
 package pwcg.gui.rofmap.brief;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+import javafx.scene.paint.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javax.swing.CheckBox;
+import javafx.scene.layout.Pane;
 import javax.swing.JScrollPane;
 
 import pwcg.campaign.api.Side;
@@ -20,7 +20,7 @@ import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.rofmap.brief.model.BriefingData;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
@@ -32,7 +32,7 @@ public class BriefingMapSquadronSelector implements ActionListener
 
     private Mission mission;
     private IBriefingSquadronSelectedCallback squadronsSelectedCallback;
-    private Map<Integer, JCheckBox> squadronCheckBoxes = new HashMap<>();
+    private Map<Integer, CheckBox> squadronCheckBoxes = new HashMap<>();
     private Map<Integer, String> selectedSquadrons = new HashMap<>();
     private BriefingData briefingContext;
 
@@ -43,29 +43,29 @@ public class BriefingMapSquadronSelector implements ActionListener
         this.briefingContext = briefingContext;
     }
 
-    public JPanel makeComboBox() throws PWCGException
+    public Pane makeComboBox() throws PWCGException
     {
-        JPanel squadronSelectorGrid = new JPanel(new GridLayout(0, 1));
+        Pane squadronSelectorGrid = new Pane(new GridLayout(0, 1));
         squadronSelectorGrid.setOpaque(false);
 
         addFlights(squadronSelectorGrid);
         JScrollPane squadronSelectorScroll = ScrollBarWrapper.makeScrollPane(squadronSelectorGrid);
 
-        JPanel squadronSelectorPanel = new JPanel(new BorderLayout());
+        Pane squadronSelectorPanel = new Pane(new BorderLayout());
         squadronSelectorPanel.setOpaque(false);
         squadronSelectorPanel.add(squadronSelectorScroll, BorderLayout.NORTH);
         return squadronSelectorPanel;
     }
 
-    private void addFlights(JPanel squadronSelectorGrid) throws PWCGException
+    private void addFlights(Pane squadronSelectorGrid) throws PWCGException
     {
         IFlight selectedFlight = briefingContext.getSelectedFlight();
         Side selectedFlightSide = selectedFlight.getSquadron().determineSide();
 
-        JButton checkBoxAll = PWCGButtonFactory.makeTranslucentMenuButton("All Squadrons", "" + ALL_SQUADRONS, "Show flight path for all squadrons", this);
+        Button checkBoxAll = ButtonFactory.makeTranslucentMenuButton("All Squadrons", "" + ALL_SQUADRONS, "Show flight path for all squadrons", this);
         squadronSelectorGrid.add(checkBoxAll);
 
-        JButton checkBoxNone = PWCGButtonFactory.makeTranslucentMenuButton("No Squadrons", "" + NO_SQUADRONS, "Show flight path for only your squadron", this);
+        Button checkBoxNone = ButtonFactory.makeTranslucentMenuButton("No Squadrons", "" + NO_SQUADRONS, "Show flight path for only your squadron", this);
         squadronSelectorGrid.add(checkBoxNone);
 
         for (IFlight aiflight : mission.getMissionFlights().getAiFlights())
@@ -75,7 +75,7 @@ public class BriefingMapSquadronSelector implements ActionListener
 
             if (includeSquadron(selectedFlightSide, squadronSide))
             {
-                JCheckBox checkBox = makeCheckBox(squadron.determineDisplayName(mission.getCampaign().getDate()), "" + squadron.getSquadronId());
+                CheckBox checkBox = makeCheckBox(squadron.determineDisplayName(mission.getCampaign().getDate()), "" + squadron.getSquadronId());
                 squadronCheckBoxes.put(squadron.getSquadronId(), checkBox);
                 squadronSelectorGrid.add(checkBox);
             }
@@ -99,10 +99,10 @@ public class BriefingMapSquadronSelector implements ActionListener
         return false;
     }
     
-    private JCheckBox makeCheckBox(String squadronName, String actionCommand) throws PWCGException
+    private CheckBox makeCheckBox(String squadronName, String actionCommand) throws PWCGException
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
-        JCheckBox checkBox = PWCGButtonFactory.makeCheckBox(squadronName, actionCommand, fgColor, this);
+        CheckBox checkBox = ButtonFactory.makeCheckBox(squadronName, actionCommand, fgColor, this);
         return checkBox;
     }
 
@@ -114,7 +114,7 @@ public class BriefingMapSquadronSelector implements ActionListener
             int squadronId = Integer.parseInt(ae.getActionCommand());
             if (squadronId == ALL_SQUADRONS)
             {
-                for (JCheckBox checkBox : squadronCheckBoxes.values())
+                for (CheckBox checkBox : squadronCheckBoxes.values())
                 {
                     checkBox.setSelected(true);
                 }
@@ -128,7 +128,7 @@ public class BriefingMapSquadronSelector implements ActionListener
             else if (squadronId == NO_SQUADRONS)
             {
                 selectedSquadrons.clear();
-                for (JCheckBox checkBox : squadronCheckBoxes.values())
+                for (CheckBox checkBox : squadronCheckBoxes.values())
                 {
                     checkBox.setSelected(false);
                 }

@@ -3,7 +3,7 @@ package pwcg.gui.campaign.home;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import javax.swing.JPanel;
+import javafx.scene.layout.Pane;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -16,8 +16,8 @@ public abstract class CampaignRosterBasePanelFactory
 	protected Campaign campaign = null;
 	protected SquadronMember referencePlayer = null;
 	protected List<SquadronMember> sortedPilots = null;
-    protected JPanel chalkboardPanel = null;
-    protected JPanel pilotListPanel = null;
+    protected Pane chalkboardPanel = null;
+    protected Pane pilotListPanel = null;
     protected boolean excludeAces = false;
 
 	public CampaignRosterBasePanelFactory(ActionListener parent) throws PWCGException  
@@ -31,12 +31,12 @@ public abstract class CampaignRosterBasePanelFactory
 
 	abstract public void makeCampaignHomePanels() throws PWCGException, PWCGException  ;
 
-    public JPanel getChalkboardPanel()
+    public Pane getChalkboardPanel()
     {
         return chalkboardPanel;
     }
 
-    public JPanel getPilotListPanel()
+    public Pane getPilotListPanel()
     {
         return pilotListPanel;
     }

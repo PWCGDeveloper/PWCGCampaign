@@ -1,16 +1,16 @@
 package pwcg.gui.campaign.pilot;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javax.swing.SwingConstants;
 
 import pwcg.campaign.PictureManager;
@@ -29,8 +29,8 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageButton;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
-import pwcg.gui.utils.PWCGButtonFactory;
-import pwcg.gui.utils.PWCGButtonNoBackground;
+import pwcg.gui.utils.ButtonFactory;
+import pwcg.gui.utils.ButtonNoBackground;
 import pwcg.gui.utils.PwcgBorderFactory;
 
 public class CampaignHomePilotPanel extends ImageResizingPanel
@@ -53,17 +53,17 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
         this.setImageFromName(imagePath);
         this.setBorder(PwcgBorderFactory.createPlaqueBackgroundBorder());
 
-        JPanel pilotListGrid = new JPanel(new GridLayout(0, 1));
+        Pane pilotListGrid = new Pane(new GridLayout(0, 1));
 		pilotListGrid.setOpaque(false);
 		
-		JPanel headerPlaque = makeNamePlaque(description);
+		Pane headerPlaque = makeNamePlaque(description);
 		pilotListGrid.add(headerPlaque);
 		
 		for (SquadronMember pilot : pilots)
 		{
 			try
 			{
-			    JPanel buttonPanel = createPilotButton(action, pilot);
+			    Pane buttonPanel = createPilotButton(action, pilot);
 				pilotListGrid.add(buttonPanel);
 			}
 			catch (Exception e)
@@ -75,16 +75,16 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
 		this.add(pilotListGrid, BorderLayout.NORTH);		
 	}
 
-    private JPanel createPilotButton(String action, SquadronMember pilot)
+    private Pane createPilotButton(String action, SquadronMember pilot)
                     throws PWCGException
     {
-        JPanel pilotPanel = new JPanel(new BorderLayout());
+        Pane pilotPanel = new Pane(new BorderLayout());
         pilotPanel.setOpaque(false);
         
-        JLabel pilotPicButton = makePilotPicButton(pilot);
+        Label pilotPicButton = makePilotPicButton(pilot);
         pilotPanel.add(pilotPicButton, BorderLayout.WEST);
         
-        JLabel pilotStatusButton = makePilotStatusButton(pilot);
+        Label pilotStatusButton = makePilotStatusButton(pilot);
         pilotPanel.add(pilotStatusButton, BorderLayout.EAST);
         
         String imagePath = ContextSpecificImages.imagesMisc() + "NamePlate.jpg";
@@ -96,14 +96,14 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
         Font font = PWCGMonitorFonts.getPrimaryFont();
         
 
-        JButton namePlateButton = new PWCGButtonNoBackground("          " + pilot.getNameAndRank());
+        Button namePlateButton = new ButtonNoBackground("          " + pilot.getNameAndRank());
         namePlateButton.setBackground(buttonBG);
         namePlateButton.setForeground(buttonFG);
         namePlateButton.setOpaque(false);
         namePlateButton.setFont(font);
         namePlateButton.setBorderPainted(false);
         namePlateButton.setFocusPainted(false);
-        namePlateButton.setHorizontalAlignment(SwingConstants.LEFT);
+        namePlateButton.setAlignment(SwingConstants.LEFT);
         namePlateButton.setFont(font);
         String actionCommand = action + pilot.getSerialNumber();
         namePlateButton.setActionCommand(actionCommand);
@@ -116,9 +116,9 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
         return pilotPanel;
     }
 
-    private JLabel makePilotPicButton(SquadronMember pilot) throws PWCGUserException, PWCGException, PWCGException
+    private Label makePilotPicButton(SquadronMember pilot) throws PWCGUserException, PWCGException, PWCGException
     {
-        JLabel pilotPicButton = null;
+        Label pilotPicButton = null;
         String picPath = PictureManager.getPicturePath(pilot);
         Image pilotPic = ImageCache.getInstance().getBufferedImage(picPath);
         if (pilotPic != null)
@@ -131,21 +131,21 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
         }
         else
         {
-        	pilotPicButton = new JLabel("");	
+        	pilotPicButton = new Label("");	
         }
         return pilotPicButton;
     }
     
 
-    private JPanel makeNamePlaque(String description) throws PWCGException  
+    private Pane makeNamePlaque(String description) throws PWCGException  
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "NamePlate.jpg";
         ImageResizingPanel headerPlaquePanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         headerPlaquePanel.setLayout(new BorderLayout());
 
-        JLabel squadronPanelLabel = PWCGButtonFactory.makePlaqueLabelLarge("     " + description);
-        squadronPanelLabel.setHorizontalAlignment(JLabel.LEFT);
-        squadronPanelLabel.setVerticalAlignment(JLabel.CENTER);
+        Label squadronPanelLabel = ButtonFactory.makePlaqueLabelLarge("     " + description);
+        squadronPanelLabel.setAlignment(Label.LEFT);
+        squadronPanelLabel.setVerticalAlignment(Label.CENTER);
         
         headerPlaquePanel.add(squadronPanelLabel, BorderLayout.CENTER);
          
@@ -153,9 +153,9 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
     }
 
 
-    private JLabel makePilotStatusButton(SquadronMember pilot) throws PWCGUserException, PWCGException, PWCGException
+    private Label makePilotStatusButton(SquadronMember pilot) throws PWCGUserException, PWCGException, PWCGException
     {
-        JLabel pilotStatusButton = null;
+        Label pilotStatusButton = null;
         String imagePath = ContextSpecificImages.imagesMisc() + "Healthy.jpg";
         if (pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_WOUNDED)
         {
@@ -187,7 +187,7 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
         }
         else
         {
-            pilotStatusButton = new JLabel("");    
+            pilotStatusButton = new Label("");    
         }
         return pilotStatusButton;
     }

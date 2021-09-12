@@ -7,11 +7,11 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.ButtonGroup;
-import javax.swing.ButtonModel;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import javafx.scene.control.ButtonGroup;
+import javafx.scene.control.ButtonModel;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javax.swing.RadioButton ;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadron.Squadron;
@@ -19,7 +19,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 
@@ -27,7 +27,7 @@ public class BriefingFlightChooser implements ActionListener
 {
     private Mission mission;
     private IFlightChanged flightChanged;
-    private JPanel flightChooserPanel;
+    private Pane flightChooserPanel;
 
     private ButtonGroup flightChooserButtonGroup = new ButtonGroup();
     private Map<Integer, ButtonModel> flightChooserButtonModels = new HashMap<>();
@@ -40,16 +40,16 @@ public class BriefingFlightChooser implements ActionListener
     
     public void createBriefingSquadronSelectPanel() throws PWCGException
     {        
-        JPanel flightChooserButtonPanelGrid = new JPanel(new GridLayout(0,1));
+        Pane flightChooserButtonPanelGrid = new Pane(new GridLayout(0,1));
         flightChooserButtonPanelGrid.setOpaque(false);
 
-        JLabel spacerLabel1 = PWCGButtonFactory.makeDummy();        
+        Label spacerLabel1 = ButtonFactory.makeDummy();        
         flightChooserButtonPanelGrid.add(spacerLabel1);
 
-        JLabel spacerLabel2 = PWCGButtonFactory.makeDummy();        
+        Label spacerLabel2 = ButtonFactory.makeDummy();        
         flightChooserButtonPanelGrid.add(spacerLabel2);
 
-        JLabel spacerLabel3 = PWCGButtonFactory.makeDummy();        
+        Label spacerLabel3 = ButtonFactory.makeDummy();        
         flightChooserButtonPanelGrid.add(spacerLabel3);
 
         Map<Integer, Squadron> playerSquadronsInMission = new HashMap<>();
@@ -61,7 +61,7 @@ public class BriefingFlightChooser implements ActionListener
 
         for (Squadron squadron : playerSquadronsInMission.values())
         {
-            JRadioButton airLowDensity = PWCGButtonFactory.makeRadioButton(
+            RadioButton  airLowDensity = ButtonFactory.makeRadioButton(
                     squadron.determineDisplayName(mission.getCampaign().getDate()), 
                     "FlightChanged:" + squadron.getSquadronId(),
                     "Select squadron to change context", 
@@ -74,11 +74,11 @@ public class BriefingFlightChooser implements ActionListener
             flightChooserButtonModels.put(squadron.getSquadronId(), model);
         }
 
-        flightChooserPanel = new JPanel(new BorderLayout());
+        flightChooserPanel = new Pane(new BorderLayout());
         flightChooserPanel.setOpaque(false);
         flightChooserPanel.add(flightChooserButtonPanelGrid, BorderLayout.SOUTH);
 
-        JPanel shapePanel = new JPanel(new BorderLayout());
+        Pane shapePanel = new Pane(new BorderLayout());
         shapePanel.setOpaque(false);
 
         shapePanel.add(flightChooserButtonPanelGrid, BorderLayout.NORTH);
@@ -91,7 +91,7 @@ public class BriefingFlightChooser implements ActionListener
         flightChooserButtonGroup.setSelected(model, true);
     }
 
-    public JPanel getFlightChooserPanel()
+    public Pane getFlightChooserPanel()
     {
         return flightChooserPanel;
     }

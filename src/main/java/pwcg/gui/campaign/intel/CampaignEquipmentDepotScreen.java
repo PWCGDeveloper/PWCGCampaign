@@ -1,14 +1,14 @@
 package pwcg.gui.campaign.intel;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+import javafx.scene.paint.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 import javax.swing.JTabbedPane;
 
 import pwcg.campaign.ArmedService;
@@ -23,7 +23,7 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
@@ -52,17 +52,17 @@ public class CampaignEquipmentDepotScreen extends ImageResizingPanel implements 
         this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1400));
 	}
 
-	private JPanel makeNavigatePanel() throws PWCGException  
+	private Pane makeNavigatePanel() throws PWCGException  
 	{		
-        JPanel equipmentDepotPanel = new JPanel(new BorderLayout());
+        Pane equipmentDepotPanel = new Pane(new BorderLayout());
         equipmentDepotPanel.setOpaque(false);
 		equipmentDepotPanel.setLayout(new BorderLayout());
 		equipmentDepotPanel.setOpaque(false);
 
-		JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+		Pane buttonPanel = new Pane(new GridLayout(0,1));
 		buttonPanel.setOpaque(false);
 		
-        JButton finished = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "EquipmentDepoFinished", "Finished reading depo report", this);
+        Button finished = ButtonFactory.makeTranslucentMenuButton("Finished", "EquipmentDepoFinished", "Finished reading depo report", this);
 		buttonPanel.add(finished);
 		
 		equipmentDepotPanel.add(buttonPanel, BorderLayout.NORTH);
@@ -70,7 +70,7 @@ public class CampaignEquipmentDepotScreen extends ImageResizingPanel implements 
 		return equipmentDepotPanel;
 	}
 
-	private JPanel makeCenterPanel() throws PWCGException 
+	private Pane makeCenterPanel() throws PWCGException 
 	{
         ImageResizingPanel equipmentDepotPanel = new ImageResizingPanel("");
         equipmentDepotPanel.setOpaque(false);

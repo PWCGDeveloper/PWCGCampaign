@@ -1,9 +1,9 @@
 package pwcg.gui.campaign.activity;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+import javafx.scene.paint.Color;
 import java.awt.Component;
-import java.awt.Font;
+import javafx.scene.text.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -14,10 +14,10 @@ import java.util.Date;
 import java.util.List;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
+import javafx.scene.control.Button;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javax.swing.JTextArea;
 
 import pwcg.aar.AARCoordinator;
@@ -48,7 +48,7 @@ import pwcg.gui.rofmap.event.AARReportMainPanel.EventPanelReason;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
@@ -65,7 +65,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 	private JComboBox<String> cbSquadron;
     private JComboBox<String> cbRole;
     private JTextArea tSquadronInfo;
-	private JButton acceptButton = null;
+	private Button acceptButton = null;
     private ArmedService service = null;
 
 	public CampaignTransferScreen  (Campaign campaign, SquadronMember squadronMemberToTransfer, IRefreshableParentUI parentScreen, boolean passTime)
@@ -92,22 +92,22 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1600));
 	}
 
-	private JPanel makeTransferNavPanel() throws PWCGException  
+	private Pane makeTransferNavPanel() throws PWCGException  
 	{
-	    JPanel transferrPanel  = new JPanel(new BorderLayout());
+	    Pane transferrPanel  = new Pane(new BorderLayout());
 		transferrPanel.setOpaque(false);
 		
-		JPanel transferButtonPanel = new JPanel(new GridLayout(0,1));
+		Pane transferButtonPanel = new Pane(new GridLayout(0,1));
 		transferButtonPanel.setOpaque(false);
 		
 		
-        acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept Transfer", "Accept Transfer", "Transfer to a new unit", this);
+        acceptButton = ButtonFactory.makeTranslucentMenuButton("Accept Transfer", "Accept Transfer", "Transfer to a new unit", this);
         transferButtonPanel.add(acceptButton);
         
-        JLabel spacer = new JLabel("");
+        Label spacer = new Label("");
         transferButtonPanel.add(spacer);
 
-        JButton rejectButton = PWCGButtonFactory.makeTranslucentMenuButton("Reject Transfer", "Reject Transfer", "Do not transfer", this);
+        Button rejectButton = ButtonFactory.makeTranslucentMenuButton("Reject Transfer", "Reject Transfer", "Do not transfer", this);
         transferButtonPanel.add(rejectButton);
 
 		transferrPanel.add(transferButtonPanel, BorderLayout.NORTH);
@@ -115,20 +115,20 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 		return transferrPanel;
 	}
 
-    private JPanel makeTransferCenterPanel() throws PWCGException  
+    private Pane makeTransferCenterPanel() throws PWCGException  
     {
-        JPanel leaveCenterPanel = new JPanel();
+        Pane leaveCenterPanel = new Pane();
         leaveCenterPanel.setOpaque(false);
         leaveCenterPanel.setLayout(new BorderLayout());
         leaveCenterPanel.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
 
-        JPanel leaveNotification = makeTransferDocumentPanel();
+        Pane leaveNotification = makeTransferDocumentPanel();
         leaveCenterPanel.add(leaveNotification, BorderLayout.CENTER);
 
         return leaveCenterPanel;
     }
 
-	private JPanel makeTransferDocumentPanel() throws PWCGException  
+	private Pane makeTransferDocumentPanel() throws PWCGException  
 	{
 		ImageResizingPanel transferCenterPanel = null;
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
@@ -142,13 +142,13 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 
         GridBagLayout transferLayout = new GridBagLayout();
         
-        JPanel transferPanel = new JPanel(transferLayout);
+        Pane transferPanel = new Pane(transferLayout);
         transferPanel.setOpaque(false);
 
         List<Component> components = new ArrayList<Component>();
         int rowNum = 0;
 
-        JLabel lName = new JLabel(squadronMemberToTransfer.getNameAndRank(), JLabel.LEFT);
+        Label lName = new Label(squadronMemberToTransfer.getNameAndRank(), Label.LEFT);
         lName.setOpaque(false);
         lName.setFont(font);
         components.clear();
@@ -156,13 +156,13 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         rowNum = addRow(transferPanel, components, rowNum);
 
         components.clear();
-        components.add(PWCGButtonFactory.makeDummy());
+        components.add(ButtonFactory.makeDummy());
         rowNum = addRow(transferPanel, components, rowNum);
 
         rowNum = makeServiceChooser(buttonBG, font, transferPanel, components, rowNum);
         
         components.clear();
-        components.add(PWCGButtonFactory.makeDummy());
+        components.add(ButtonFactory.makeDummy());
         rowNum = addRow(transferPanel, components, rowNum);
 
         rowNum = makeRoleChooser(buttonBG, font, transferPanel, components, rowNum);
@@ -170,7 +170,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         transferCenterPanel.add(transferPanel, BorderLayout.NORTH);
         
            
-        JPanel squadronPanel = createSquadronInfoPanel ();
+        Pane squadronPanel = createSquadronInfoPanel ();
         transferCenterPanel.add(squadronPanel, BorderLayout.SOUTH);
 
         evaluate();
@@ -221,9 +221,9 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         }                
     }
 
-    private int makeRoleChooser(Color buttonBG, Font font, JPanel transferPanel, List<Component> components, int rowNum)
+    private int makeRoleChooser(Color buttonBG, Font font, Pane transferPanel, List<Component> components, int rowNum)
     {
-        JLabel lRole = new JLabel("Role: ", JLabel.LEFT);
+        Label lRole = new Label("Role: ", Label.LEFT);
         lRole.setOpaque(false);
         lRole.setFont(font);
         cbRole = new JComboBox<String>();
@@ -246,10 +246,10 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         rowNum = addRow(transferPanel, components, rowNum);
 
         components.clear();
-        components.add(PWCGButtonFactory.makeDummy());
+        components.add(ButtonFactory.makeDummy());
         rowNum = addRow(transferPanel, components, rowNum);
 
-        JLabel lTransfer = new JLabel("Requests a transfer to : ", JLabel.LEFT);
+        Label lTransfer = new Label("Requests a transfer to : ", Label.LEFT);
         lTransfer.setOpaque(false);
         lTransfer.setFont(font);
         cbSquadron = new JComboBox<String>();
@@ -263,10 +263,10 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         return rowNum;
     }
 
-    private int makeServiceChooser(Color buttonBG, Font font, JPanel transferPanel, List<Component> components, int rowNum) throws PWCGException
+    private int makeServiceChooser(Color buttonBG, Font font, Pane transferPanel, List<Component> components, int rowNum) throws PWCGException
                     
     {
-        JLabel lService = new JLabel("Service: ", JLabel.LEFT);
+        Label lService = new Label("Service: ", Label.LEFT);
         lService.setOpaque(false);
         lService.setFont(font);
         cbService = new JComboBox<String>();
@@ -303,16 +303,16 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         cbService.addItem(service.getName());
 	}
 
-    private JPanel createSquadronInfoPanel () throws PWCGException 
+    private Pane createSquadronInfoPanel () throws PWCGException 
     {
         Font font = PWCGMonitorFonts.getTypewriterFont();
         Color bgColor = ColorMap.PAPER_BACKGROUND;
         Color fgColor = ColorMap.PAPER_FOREGROUND;
         
-        JPanel squadronPanel = new JPanel(new GridLayout(0,3));
+        Pane squadronPanel = new Pane(new GridLayout(0,3));
         squadronPanel.setOpaque(false);
 
-        JLabel lDummy1 = new JLabel("     ");
+        Label lDummy1 = new Label("     ");
         lDummy1.setOpaque(false);
         squadronPanel.add(lDummy1);
         
@@ -328,14 +328,14 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         tSquadronInfo.setOpaque(false);
         squadronPanel.add(tSquadronInfo);
 
-        JLabel lDummy2 = new JLabel("     ");
+        Label lDummy2 = new Label("     ");
         lDummy2.setOpaque(false);
         squadronPanel.add(lDummy2);
         
         return squadronPanel;
     }
 
-	private int addRow(JPanel panel, List<Component> components, int rowNum)
+	private int addRow(Pane panel, List<Component> components, int rowNum)
 	{
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.fill = GridBagConstraints.HORIZONTAL;
@@ -350,7 +350,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 		    constraints.weightx = 0.15;
 			constraints.gridx = columnNum;
 			constraints.gridy = rowNum;
-			panel.add(PWCGButtonFactory.makeDummy(), constraints);
+			panel.add(ButtonFactory.makeDummy(), constraints);
 			
 			++columnNum;
 		}
@@ -371,7 +371,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 		    constraints.weightx = 0.15;
 			constraints.gridx = columnNum;
 			constraints.gridy = rowNum;
-			panel.add(PWCGButtonFactory.makeDummy(), constraints);
+			panel.add(ButtonFactory.makeDummy(), constraints);
 			
 			++columnNum;
 		}

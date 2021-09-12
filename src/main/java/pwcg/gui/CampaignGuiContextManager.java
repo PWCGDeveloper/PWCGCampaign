@@ -3,7 +3,7 @@ package pwcg.gui;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JPanel;
+import javafx.scene.layout.Pane;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
@@ -14,7 +14,7 @@ public class CampaignGuiContextManager
 {
     private static CampaignGuiContextManager instance = new CampaignGuiContextManager();
     
-    private List<JPanel> contextStack = new ArrayList<>();
+    private List<Pane> contextStack = new ArrayList<>();
 
     private CampaignGuiContextManager()
     {
@@ -30,12 +30,12 @@ public class CampaignGuiContextManager
         contextStack.clear();
     }
 
-    public void refreshCurrentContext(JPanel context) throws PWCGException
+    public void refreshCurrentContext(Pane context) throws PWCGException
     {
         displayCurrentContext();
     }
 
-    public void pushToContextStack(JPanel context) throws PWCGException
+    public void pushToContextStack(Pane context) throws PWCGException
     {
         contextStack.add(context);
         displayCurrentContext();
@@ -56,7 +56,7 @@ public class CampaignGuiContextManager
         if (contextStack.size() > 0)
         {
             int index = contextStack.size() - 1;
-            JPanel context = contextStack.get(index);
+            Pane context = contextStack.get(index);
             PWCGFrame.getInstance().setPanel(context);
         }
     }
@@ -64,7 +64,7 @@ public class CampaignGuiContextManager
     public void backToCampaignHome() throws PWCGException
     {
         int index = contextStack.size() - 1;
-        JPanel context = contextStack.get(index);
+        Pane context = contextStack.get(index);
         while (!(context instanceof CampaignHomeScreen) && index > 1)
         {
             popFromContextStack();
@@ -76,7 +76,7 @@ public class CampaignGuiContextManager
     public void backToMain() throws PWCGException
     {
         int index = contextStack.size() - 1;
-        JPanel context = contextStack.get(index);
+        Pane context = contextStack.get(index);
         while (!(context instanceof PwcgMainScreen) && index > 0)
         {
             popFromContextStack();

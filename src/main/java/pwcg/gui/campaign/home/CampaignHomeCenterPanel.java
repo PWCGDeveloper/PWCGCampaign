@@ -3,7 +3,7 @@ package pwcg.gui.campaign.home;
 import java.awt.BorderLayout;
 import java.util.List;
 
-import javax.swing.JPanel;
+import javafx.scene.layout.Pane;
 
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
@@ -12,7 +12,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
-public class CampaignHomeCenterPanel extends JPanel
+public class CampaignHomeCenterPanel extends Pane
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -32,7 +32,7 @@ public class CampaignHomeCenterPanel extends JPanel
         {            
             this.add(chalkboardSelector, BorderLayout.NORTH);
  
-            JPanel chalkBoardPanel = createPilotListPanel(sortedPilots);
+            Pane chalkBoardPanel = createPilotListPanel(sortedPilots);
             this.add(chalkBoardPanel, BorderLayout.CENTER);
             this.setBorder(PwcgBorderFactory.createCampaignHomeChalkboardBoxBorder());
 
@@ -45,7 +45,7 @@ public class CampaignHomeCenterPanel extends JPanel
         }
     }
 
-    private JPanel createPilotListPanel(List<SquadronMember> sortedPilots) throws PWCGException
+    private Pane createPilotListPanel(List<SquadronMember> sortedPilots) throws PWCGException
     {
         CampaignPilotChalkboard pilotChalkboardBuilder = new CampaignPilotChalkboard();
         pilotChalkboardBuilder.makePanels(sortedPilots);

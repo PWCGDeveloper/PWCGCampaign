@@ -6,9 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -26,7 +26,7 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.home.CampaignHomeRightPanelFactory;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.UIUtils;
 
 public class CampaignSkinConfigurationScreen extends ImageResizingPanel implements ActionListener
@@ -35,7 +35,7 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
     
     private SkinSessionManager skinSessionManager = new SkinSessionManager();
     private Campaign campaign;
-    private JPanel centerPanel;
+    private Pane centerPanel;
 
     public CampaignSkinConfigurationScreen(Campaign campaign) 
     {
@@ -58,12 +58,12 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
         this.add(BorderLayout.EAST, createRightPanel());
     }
 
-    private JPanel makeLeftPanel() throws PWCGException 
+    private Pane makeLeftPanel() throws PWCGException 
     {
-        JPanel campaignButtonPanel = new JPanel(new BorderLayout());
+        Pane campaignButtonPanel = new Pane(new BorderLayout());
         campaignButtonPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
         makePlainButtons(buttonPanel);
@@ -75,14 +75,14 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
         return campaignButtonPanel;
     }
 
-    private JPanel createCenterPanel(SquadronMember pilot) throws PWCGException
+    private Pane createCenterPanel(SquadronMember pilot) throws PWCGException
     {
         if (centerPanel != null)
         {
             this.remove(centerPanel);
         }
 
-        centerPanel = new JPanel(new BorderLayout());
+        centerPanel = new Pane(new BorderLayout());
         centerPanel.setOpaque(false);
         
         skinSessionManager.setPilot(pilot);
@@ -96,10 +96,10 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
         return centerPanel;
     }
 
-    private JPanel createRightPanel() throws PWCGException, PWCGException
+    private Pane createRightPanel() throws PWCGException, PWCGException
     {
         List<SquadronMember> pilotsNoAces = makePilotList();
-        JPanel squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomePilotsRightPanel(this, pilotsNoAces);
+        Pane squadronPanel = CampaignHomeRightPanelFactory.makeCampaignHomePilotsRightPanel(this, pilotsNoAces);
 
         return squadronPanel;
     }
@@ -112,15 +112,15 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
         return squadronMembers.sortPilots(campaign.getDate());
     }
 
-    private void makePlainButtons(JPanel buttonPanel) throws PWCGException
+    private void makePlainButtons(Pane buttonPanel) throws PWCGException
     {
-        JLabel spacer = new JLabel("");
+        Label spacer = new Label("");
         buttonPanel.add(spacer);
 
-        JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept", "AcceptSkins", "Accept skin assignments", this);
+        Button acceptButton = ButtonFactory.makeTranslucentMenuButton("Accept", "AcceptSkins", "Accept skin assignments", this);
         buttonPanel.add(acceptButton);
         
-        JButton cancelButton = PWCGButtonFactory.makeTranslucentMenuButton("Cancel", "CancelSkins", "Do not accept skin assignments", this);
+        Button cancelButton = ButtonFactory.makeTranslucentMenuButton("Cancel", "CancelSkins", "Do not accept skin assignments", this);
         buttonPanel.add(cancelButton);
      }
 

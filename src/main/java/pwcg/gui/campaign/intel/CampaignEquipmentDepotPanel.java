@@ -1,13 +1,13 @@
 package pwcg.gui.campaign.intel;
 
 import java.awt.BorderLayout;
-import java.awt.Font;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import javax.swing.JPanel;
+import javafx.scene.layout.Pane;
 import javax.swing.JTextArea;
 
 import pwcg.campaign.ArmedService;
@@ -21,7 +21,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 
-public class CampaignEquipmentDepotPanel extends JPanel
+public class CampaignEquipmentDepotPanel extends Pane
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -41,7 +41,7 @@ public class CampaignEquipmentDepotPanel extends JPanel
     {
         try
         {
-            JPanel depoPanel = formDepotText();
+            Pane depoPanel = formDepotText();
             this.add(depoPanel, BorderLayout.NORTH);
         }
         catch (Exception e)
@@ -51,14 +51,14 @@ public class CampaignEquipmentDepotPanel extends JPanel
         }       
     }
 
-    private JPanel formDepotText() throws PWCGException
+    private Pane formDepotText() throws PWCGException
     {        
-        JPanel depoHeaderPanel = formHeader();
-        JPanel depoPanel = new JPanel(new BorderLayout());
+        Pane depoHeaderPanel = formHeader();
+        Pane depoPanel = new Pane(new BorderLayout());
         depoPanel.setOpaque(false);
         depoPanel.add(depoHeaderPanel, BorderLayout.NORTH);
 
-        JPanel depoBodyPanel = new JPanel(new GridLayout(0, 3));
+        Pane depoBodyPanel = new Pane(new GridLayout(0, 3));
         depoBodyPanel.setOpaque(false);
         depoPanel.add(depoBodyPanel, BorderLayout.CENTER);
 
@@ -74,9 +74,9 @@ public class CampaignEquipmentDepotPanel extends JPanel
         return depoPanel;
     }
 
-    private JPanel formHeader() throws PWCGException
+    private Pane formHeader() throws PWCGException
     {
-        JPanel depoHeaderPanel = new JPanel(new BorderLayout());
+        Pane depoHeaderPanel = new Pane(new BorderLayout());
         depoHeaderPanel.setOpaque(false);
 
         StringBuffer depoStatusBuffer = new StringBuffer("");
@@ -95,12 +95,12 @@ public class CampaignEquipmentDepotPanel extends JPanel
         return depoHeaderPanel;
     }
 
-    private void createDepotForRole(Role role, JPanel depotBodyPanel) throws PWCGException
+    private void createDepotForRole(Role role, Pane depotBodyPanel) throws PWCGException
     {
         List<EquippedPlane> aircraftForRole = getDepotAircraftForRole(role);
         if (aircraftForRole.size() > 0)
         {
-            JPanel depotRolePanel = new JPanel(new BorderLayout());
+            Pane depotRolePanel = new Pane(new BorderLayout());
             depotRolePanel.setOpaque(false);
             
             String aircraftForRoleReport = formAircraftInventory(aircraftForRole, role);

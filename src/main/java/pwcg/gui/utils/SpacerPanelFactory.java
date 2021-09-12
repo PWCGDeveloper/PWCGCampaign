@@ -1,25 +1,25 @@
 package pwcg.gui.utils;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+import javafx.scene.paint.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 
 public class SpacerPanelFactory
 {
-    public static JPanel makeSpacerPercentPanel(int percent) throws PWCGException
+    public static Pane makeSpacerPercentPanel(int percent) throws PWCGException
     {
-            JPanel spacerPanel = new JPanel(new BorderLayout());
+            Pane spacerPanel = new Pane(new BorderLayout());
             spacerPanel.setOpaque(false);
 
-            JPanel spacerGrid = new JPanel(new GridLayout(0,1));
+            Pane spacerGrid = new Pane(new GridLayout(0,1));
             spacerGrid.setOpaque(false);
             
             Dimension frameSize = PWCGMonitorSupport.getPWCGFrameSize();
@@ -27,7 +27,7 @@ public class SpacerPanelFactory
             int pixelsNeeded = Double.valueOf(widthNeeded).intValue();
             spacerGrid.setBorder(BorderFactory.createEmptyBorder(0, pixelsNeeded, 0, 0));
 
-            JLabel spacer1 = PWCGButtonFactory.makePaperLabelLarge(" ");
+            Label spacer1 = ButtonFactory.makePaperLabelLarge(" ");
             spacerGrid.add(spacer1);
 
             spacerPanel.add(spacerGrid, BorderLayout.NORTH);
@@ -35,7 +35,7 @@ public class SpacerPanelFactory
             return spacerPanel;
     }
     
-    public static JPanel makeSpacerConsumeRemainingPanel(int spaceToLeave) throws PWCGException
+    public static Pane makeSpacerConsumeRemainingPanel(int spaceToLeave) throws PWCGException
     {
             Dimension frameSize = PWCGMonitorSupport.getPWCGFrameSize();
             int widthNeeded = frameSize.width - spaceToLeave;
@@ -44,37 +44,37 @@ public class SpacerPanelFactory
                 widthNeeded = 1;
             }
 
-            JPanel spacerGrid = new JPanel(new GridLayout(0,1));
+            Pane spacerGrid = new Pane(new GridLayout(0,1));
             spacerGrid.setOpaque(false);
             spacerGrid.setPreferredSize(new Dimension(widthNeeded, 300));
             
-            JLabel spacer1 = PWCGButtonFactory.makePaperLabelLarge("   ");
+            Label spacer1 = ButtonFactory.makePaperLabelLarge("   ");
             spacer1.setForeground(Color.BLACK);
             spacerGrid.add(spacer1);
 
             return spacerGrid;
     }
 
-    public static  JPanel createVerticalSpacerPanel(int numRows) throws PWCGException
+    public static  Pane createVerticalSpacerPanel(int numRows) throws PWCGException
     {
-        JPanel spacerPanel = new JPanel(new GridLayout(0, 1));
+        Pane spacerPanel = new Pane(new GridLayout(0, 1));
         spacerPanel.setOpaque(false);
 
         for (int i = 0; i < numRows; ++i)
         {
-            JLabel space1 = new JLabel("     ");
+            Label space1 = new Label("     ");
             spacerPanel.add(space1);
         }
 
         return spacerPanel;
     }
 
-    public static JPanel makeDocumentSpacerPanel(int pixelsForUI) throws PWCGException
+    public static Pane makeDocumentSpacerPanel(int pixelsForUI) throws PWCGException
     {
-        JPanel spacerPanel = new JPanel(new BorderLayout());
+        Pane spacerPanel = new Pane(new BorderLayout());
         spacerPanel.setOpaque(false);
 
-        JPanel spacerGrid = new JPanel(new GridLayout(0,1));
+        Pane spacerGrid = new Pane(new GridLayout(0,1));
         spacerGrid.setOpaque(false);
         
         Dimension frameSize = PWCGMonitorSupport.getPWCGFrameSize();
@@ -86,7 +86,7 @@ public class SpacerPanelFactory
         }
         spacerGrid.setBorder(BorderFactory.createEmptyBorder(0,pixelsNeededAdjusted, 0, 0));
 
-        JLabel spacer1 = PWCGButtonFactory.makePaperLabelLarge(" ");
+        Label spacer1 = ButtonFactory.makePaperLabelLarge(" ");
         spacerGrid.add(spacer1);
 
         spacerPanel.add(spacerGrid, BorderLayout.NORTH);

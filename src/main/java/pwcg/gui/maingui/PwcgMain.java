@@ -1,10 +1,7 @@
 package pwcg.gui.maingui;
 
-import java.awt.Color;
-import java.awt.Insets;
-
-import javax.swing.UIManager;
-
+import javafx.application.Application;
+import javafx.stage.Stage;
 import pwcg.campaign.CoopToV2;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
@@ -15,10 +12,11 @@ import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 
-public class PwcgMain
+public class PwcgMain extends Application
 {
 	public static void main(String[] args) 
 	{
+	    launch(args);
         PwcgMain pwcg = new PwcgMain();
         pwcg.startPWCG(args);
 	}
@@ -87,15 +85,15 @@ public class PwcgMain
 
     private void setupUIManager() throws PWCGException
     {
-        Color tabSelectedColor = ColorMap.PAPER_BACKGROUND;
-        UIManager.put("TabbedPane.selected", tabSelectedColor);
-        UIManager.put("TabbedPane.contentOpaque", false);
+        // Set tab background
         
-        Insets insets = UIManager.getInsets("TabbedPane.contentBorderInsets");
-        insets.top = -1;
-        UIManager.put("TabbedPane.contentBorderInsets", insets);
+        // set tab insets
+    }
+
+    @Override
+    public void start(Stage pwcgStage) throws Exception
+    {
+        pwcgStage.setTitle("PWCG");
         
-        UIManager.put("OptionPane.background", ColorMap.NEWSPAPER_BACKGROUND);
-        UIManager.getLookAndFeelDefaults().put("Panel.background", ColorMap.NEWSPAPER_BACKGROUND);
     }
 }

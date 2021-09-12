@@ -1,8 +1,8 @@
 package pwcg.gui.campaign.personnel;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,13 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
-import javax.swing.ButtonModel;
+import javafx.scene.control.ButtonGroup;
+import javafx.scene.control.ButtonModel;
 import javax.swing.ImageIcon;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import javax.swing.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javax.swing.RadioButton ;
 import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
@@ -36,7 +36,7 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 
 
@@ -51,15 +51,15 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
     private Campaign campaign;
     private String selectedPlane = "";
     
-    private JPanel skinsPlanePanel = null;
-    private JPanel skinsSelectionPanel = null;
+    private Pane skinsPlanePanel = null;
+    private Pane skinsSelectionPanel = null;
 
-    private JCheckBox squadronCheckBox = null;
-    private JCheckBox nonSquadronCheckBox = null;
-    private JCheckBox looseCheckBox = null;
+    private CheckBox squadronCheckBox = null;
+    private CheckBox nonSquadronCheckBox = null;
+    private CheckBox looseCheckBox = null;
 
-    private JPanel skinsPilotInfoPanel = null;
-    private JPanel infoContainerPanel = new JPanel(new BorderLayout());
+    private Pane skinsPilotInfoPanel = null;
+    private Pane infoContainerPanel = new Pane(new BorderLayout());
 
     private ButtonGroup aircraftButtonGroup = new ButtonGroup();
     List<ButtonModel> aircraftButtonModels = new ArrayList<>();
@@ -177,38 +177,38 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
          infoContainerPanel.repaint();
      }
 
-    private JPanel makePlanePanel() throws PWCGException 
+    private Pane makePlanePanel() throws PWCGException 
     {
         // Make a panel to select the aircraft
-        JPanel skinSetSelectionPanel = new JPanel(new BorderLayout());
+        Pane skinSetSelectionPanel = new Pane(new BorderLayout());
         skinSetSelectionPanel.setOpaque(false);
 
-        JPanel skinGrid = new JPanel(new GridLayout(0,1));
+        Pane skinGrid = new Pane(new GridLayout(0,1));
         skinGrid.setOpaque(false);
         
         skinSetSelectionPanel.add(skinGrid, BorderLayout.NORTH);
         
-        JPanel aircraftSelectPanel = makeAircraftSelectPanel();
+        Pane aircraftSelectPanel = makeAircraftSelectPanel();
         skinGrid.add(aircraftSelectPanel);
 
-        JPanel skinsetPanel = makeSkinSetPanel();
+        Pane skinsetPanel = makeSkinSetPanel();
         skinGrid.add(skinsetPanel);
 
         return skinSetSelectionPanel;
     }
 
-    private JPanel makeSkinSetPanel() throws PWCGException 
+    private Pane makeSkinSetPanel() throws PWCGException 
     {
         // Make a panel to select the aircraft
-        JPanel skinSetPanel = new JPanel(new BorderLayout());
+        Pane skinSetPanel = new Pane(new BorderLayout());
         skinSetPanel.setOpaque(false);
 
-        JPanel skinCategoryButtonGrid = new JPanel(new GridLayout(0,1));
+        Pane skinCategoryButtonGrid = new Pane(new GridLayout(0,1));
         skinCategoryButtonGrid.setOpaque(false);
         
         skinSetPanel.add(skinCategoryButtonGrid, BorderLayout.NORTH);
         
-        JLabel label = makeLabel ("Skin Sets:");
+        Label label = makeLabel ("Skin Sets:");
         skinCategoryButtonGrid.add(label);
 
         Color fgColor = ColorMap.PAPER_FOREGROUND;
@@ -223,7 +223,7 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
         looseCheckBox = makeCheckBox("Loose", "SelectSkinSet:" + "Loose", fgColor);
         skinCategoryButtonGrid.add(looseCheckBox);
         
-        JPanel spacePanel = createSpaceGridEntry(2);
+        Pane spacePanel = createSpaceGridEntry(2);
         skinSetPanel.add(spacePanel, BorderLayout.SOUTH);
 
         // Set the value of the check boxes based on last values from the session manager
@@ -232,22 +232,22 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
         return skinSetPanel;
     }
 
-    private JCheckBox makeCheckBox(String buttonText, String actionCommand, Color fgColor) throws PWCGException 
+    private CheckBox makeCheckBox(String buttonText, String actionCommand, Color fgColor) throws PWCGException 
     {
-        JCheckBox checkBox = PWCGButtonFactory.makeCheckBox(buttonText, actionCommand, fgColor, this);
+        CheckBox checkBox = ButtonFactory.makeCheckBox(buttonText, actionCommand, fgColor, this);
         return checkBox;
     }
 
-    private JPanel makeAircraftSelectPanel() throws PWCGException 
+    private Pane makeAircraftSelectPanel() throws PWCGException 
     {
         // Make a panel to select the aircraft
-        JPanel aircraftButtonPanel = new JPanel(new BorderLayout());
+        Pane aircraftButtonPanel = new Pane(new BorderLayout());
         aircraftButtonPanel.setOpaque(false);
 
-        JPanel aircraftButtonGrid = new JPanel(new GridLayout(0,1));
+        Pane aircraftButtonGrid = new Pane(new GridLayout(0,1));
         aircraftButtonGrid.setOpaque(false);
                 
-        JLabel label = makeLabel ("Squadron Aircraft:");
+        Label label = makeLabel ("Squadron Aircraft:");
         aircraftButtonGrid.add(label);
 
         SquadronMember referencePlayer = campaign.findReferencePlayer();
@@ -260,7 +260,7 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
         for (PlaneType plane : squadronPlanesByBest)
         {
             // Add this aircraft to the aircraft button group and panel
-            JRadioButton aircraftButton = makeRadioButton(plane.getDisplayName(), "SelectPlane:" + plane.getType(), ColorMap.PAPER_FOREGROUND);
+            RadioButton  aircraftButton = makeRadioButton(plane.getDisplayName(), "SelectPlane:" + plane.getType(), ColorMap.PAPER_FOREGROUND);
             aircraftButton.setOpaque(false);
             aircraftButtonGrid.add(aircraftButton);
             aircraftButtonGroup.add(aircraftButton);
@@ -279,12 +279,12 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
         return aircraftButtonPanel;
     }
 
-	public JPanel makeSkinSelectionPanel() throws PWCGException 
+	public Pane makeSkinSelectionPanel() throws PWCGException 
 	{
-        JPanel skinSelectPanel = new JPanel(new BorderLayout());
+        Pane skinSelectPanel = new Pane(new BorderLayout());
         skinSelectPanel.setOpaque(false);
 		        
-        JPanel skinSelectGrid = new JPanel(new GridLayout(0,3));
+        Pane skinSelectGrid = new Pane(new GridLayout(0,3));
         skinSelectGrid.setOpaque(false);
 
         List<String> skinNames = new ArrayList<String>();
@@ -367,12 +367,12 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
     }
 
 
-    private void makeSkinButtons(JPanel skinSelectGrid, List<String> skinNames, String currentSkinNameForSelectedPlane) throws PWCGException
+    private void makeSkinButtons(Pane skinSelectGrid, List<String> skinNames, String currentSkinNameForSelectedPlane) throws PWCGException
     {
         for (String skinName : skinNames)
         {
             // Add this skin to the skin button group and panel
-            JRadioButton skinButton = makeRadioButton(skinName, "SelectSkin:" + skinName, ColorMap.PAPER_FOREGROUND);
+            RadioButton  skinButton = makeRadioButton(skinName, "SelectSkin:" + skinName, ColorMap.PAPER_FOREGROUND);
             skinSelectGrid.add(skinButton);
             
             // Select the skin if the pilot has one assigned and it is in this group
@@ -388,23 +388,23 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
         }
     }
 
-    private JPanel makePilotDescPanel() throws PWCGException 
+    private Pane makePilotDescPanel() throws PWCGException 
     {
-        JPanel skinSummaryInfoPanel = new JPanel(new BorderLayout());
+        Pane skinSummaryInfoPanel = new Pane(new BorderLayout());
         skinSummaryInfoPanel.setOpaque(false);
          
-        JPanel pilotInfoPanel = makePilotInfoPanel();
+        Pane pilotInfoPanel = makePilotInfoPanel();
         skinSummaryInfoPanel.add(pilotInfoPanel, BorderLayout.NORTH);
         
-        JPanel spacePanel = createSpaceGridEntry(2);
+        Pane spacePanel = createSpaceGridEntry(2);
         skinSummaryInfoPanel.add(spacePanel, BorderLayout.SOUTH);
 
         return skinSummaryInfoPanel;
     }   
 
-     private JPanel makePilotInfoPanel() throws PWCGException 
+     private Pane makePilotInfoPanel() throws PWCGException 
      {
-         JPanel pilotInfoPanel = new JPanel (new BorderLayout());
+         Pane pilotInfoPanel = new Pane (new BorderLayout());
          pilotInfoPanel.setOpaque(false);
 
          Color bgColor = ColorMap.PAPER_BACKGROUND;
@@ -413,21 +413,21 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
          SquadronMember pilot = skinSessionManager.getPilot();
          ImageIcon imageIcon = pilot.getPilotPictureAsImageIcon();  
 
-         JPanel pilotInteriorInfoPanel = new JPanel (new BorderLayout());
+         Pane pilotInteriorInfoPanel = new Pane (new BorderLayout());
          pilotInteriorInfoPanel.setOpaque(false);
 
-         JLabel label = makeLabel ("Assigned Skins For Pilot:" + pilot.getNameAndRank());
+         Label label = makeLabel ("Assigned Skins For Pilot:" + pilot.getNameAndRank());
          pilotInteriorInfoPanel.add(label, BorderLayout.NORTH);
 
          // Picture label
-         JLabel pilotPicLabel = new JLabel(imageIcon);
+         Label pilotPicLabel = new Label(imageIcon);
          pilotPicLabel.setOpaque(false);
          pilotPicLabel.setBackground(bgColor);
          pilotPicLabel.setSize(imageIcon.getIconWidth(), imageIcon.getIconHeight());
          pilotInteriorInfoPanel.add(pilotPicLabel, BorderLayout.WEST);
 
          // The skin summary
-         JPanel pilotSkinInfoPanel = makePilotSkinInfoPanel();
+         Pane pilotSkinInfoPanel = makePilotSkinInfoPanel();
          pilotInteriorInfoPanel.add(pilotSkinInfoPanel, BorderLayout.CENTER);
  
          // embed the panel into the border layout
@@ -436,13 +436,13 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
          return pilotInfoPanel;
      }
 
-     private JPanel makePilotSkinInfoPanel() throws PWCGException 
+     private Pane makePilotSkinInfoPanel() throws PWCGException 
      { 
 
-         JPanel pilotSkinAssignmentPanel = new JPanel (new BorderLayout());
+         Pane pilotSkinAssignmentPanel = new Pane (new BorderLayout());
          pilotSkinAssignmentPanel.setOpaque(false);
 
-         JPanel pilotSkinAssignmentGrid = new JPanel (new GridLayout(0,1));
+         Pane pilotSkinAssignmentGrid = new Pane (new GridLayout(0,1));
          pilotSkinAssignmentGrid.setOpaque(false);
 
          for (String planeName  : skinSessionManager.getPilotSkinSet().getAllSkins().keySet())
@@ -457,7 +457,7 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
                  skinGroup = PWCGContext.getInstance().getSkinManager().getSkinCategory(planeName, skinName);
              }
                  
-             JPanel skinInfoGrid = createSkinEntry(planeName, skinName, skinGroup);
+             Pane skinInfoGrid = createSkinEntry(planeName, skinName, skinGroup);
              pilotSkinAssignmentGrid.add(skinInfoGrid);
          }
          
@@ -466,11 +466,11 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
          return pilotSkinAssignmentPanel;
      }
 
-     private JPanel createSkinEntry(String planeName, String skinName, String skinGroup) throws PWCGException
+     private Pane createSkinEntry(String planeName, String skinName, String skinGroup) throws PWCGException
      {
          Font font = PWCGMonitorFonts.getPrimaryFont();
 
-         JPanel skinInfoGrid = new JPanel(new GridLayout(0, 1));
+         Pane skinInfoGrid = new Pane(new GridLayout(0, 1));
          skinInfoGrid.setOpaque(false);
 
          String planeDisplayName = "";
@@ -487,10 +487,10 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
              description += "   (" + skinGroup + ")";
          }
          
-         JLabel skinPlaneLabel = new JLabel(description);
+         Label skinPlaneLabel = new Label(description);
          skinPlaneLabel.setFont(font);
 
-         JLabel spaceLabel = new JLabel("");
+         Label spaceLabel = new Label("");
          spaceLabel.setFont(font);
 
          skinInfoGrid.add(skinPlaneLabel);
@@ -499,16 +499,16 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
          return skinInfoGrid;
      }
 
-     private JPanel createSpaceGridEntry(int numSpaces) throws PWCGException
+     private Pane createSpaceGridEntry(int numSpaces) throws PWCGException
      {
          Font font = PWCGMonitorFonts.getPrimaryFont();
 
-         JPanel spaceGrid = new JPanel(new GridLayout(0, 1));
+         Pane spaceGrid = new Pane(new GridLayout(0, 1));
          spaceGrid.setOpaque(false);
 
          for (int i = 0; i < numSpaces; ++i)
          {
-             JLabel spaceLabel = new JLabel("   ");
+             Label spaceLabel = new Label("   ");
              spaceLabel.setFont(font);
              spaceGrid.add(spaceLabel);
          }
@@ -516,13 +516,13 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
          return spaceGrid;
      }
 
-    private JLabel makeLabel(String labelText) throws PWCGException 
+    private Label makeLabel(String labelText) throws PWCGException 
     {
         Font font = PWCGMonitorFonts.getPrimaryFont();
         Color fgColor = ColorMap.PAPER_FOREGROUND;
 
-        JLabel label = new JLabel(labelText);
-        label.setHorizontalAlignment(SwingConstants.LEFT );
+        Label label = new Label(labelText);
+        label.setAlignment(SwingConstants.LEFT );
         label.setOpaque(false);
         label.setForeground(fgColor);
         label.setFont(font);
@@ -530,13 +530,13 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
         return label;
     }
 
-    private JRadioButton makeRadioButton(String buttonText, String actionCommand, Color fgColor) throws PWCGException 
+    private RadioButton  makeRadioButton(String buttonText, String actionCommand, Color fgColor) throws PWCGException 
     {
         Font font = PWCGMonitorFonts.getPrimaryFont();
 
-        JRadioButton button = new JRadioButton(buttonText);
+        RadioButton  button = new RadioButton (buttonText);
         button.setActionCommand(actionCommand);
-        button.setHorizontalAlignment(SwingConstants.LEFT );
+        button.setAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
         button.setFocusPainted(false);
         button.addActionListener(this);

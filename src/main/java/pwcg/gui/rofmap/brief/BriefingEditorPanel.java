@@ -8,8 +8,8 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -18,7 +18,7 @@ import pwcg.gui.rofmap.brief.model.BriefingData;
 import pwcg.gui.rofmap.brief.model.BriefingFlight;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.mission.Mission;
 import pwcg.mission.utils.MissionTime;
 
@@ -29,8 +29,8 @@ public class BriefingEditorPanel extends ImageResizingPanel implements ActionLis
     private JComboBox<String> cbFuel;
     private JComboBox<String> cbMissionTime;
     private BriefingEditorDetailsPanel waypointDetailsPanel;
-    private JPanel editorPanel;
-    private JPanel editDetailsPanel;
+    private Pane editorPanel;
+    private Pane editDetailsPanel;
     private Mission mission;
     private BriefingData briefingData;
 
@@ -51,7 +51,7 @@ public class BriefingEditorPanel extends ImageResizingPanel implements ActionLis
         String imagePath = ContextSpecificImages.imagesMisc() + "Document.png";
         this.setImageFromName(imagePath);
 
-		editorPanel = new JPanel();
+		editorPanel = new Pane();
 		editorPanel.setLayout(new BorderLayout());
 		editorPanel.setOpaque(false);
 		editorPanel.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
@@ -60,10 +60,10 @@ public class BriefingEditorPanel extends ImageResizingPanel implements ActionLis
         waypointDetailsPanel = new BriefingEditorDetailsPanel(false);
         waypointDetailsPanel.buildWaypointPanel(activeBriefingFlight);
         
-        JPanel editableLabelPanel = createEditableLabelPanel();
+        Pane editableLabelPanel = createEditableLabelPanel();
         editorPanel.add(editableLabelPanel, BorderLayout.NORTH);
 
-        editDetailsPanel = new JPanel(new BorderLayout());
+        editDetailsPanel = new Pane(new BorderLayout());
         editDetailsPanel.setOpaque(false);
         makeDetailsPanel();
 
@@ -82,15 +82,15 @@ public class BriefingEditorPanel extends ImageResizingPanel implements ActionLis
         setWaypointViewPanel(previousPanel);        
 	}
 
-    private JPanel createEditableLabelPanel() throws PWCGException
+    private Pane createEditableLabelPanel() throws PWCGException
     {
-        JPanel editableLabelPanel = new JPanel(new GridLayout(0,1));
+        Pane editableLabelPanel = new Pane(new GridLayout(0,1));
         editableLabelPanel.setOpaque(false);
         
-        JLabel summaryLabel = PWCGButtonFactory.makePaperLabelLarge("Mission Summary");
+        Label summaryLabel = ButtonFactory.makePaperLabelLarge("Mission Summary");
         editableLabelPanel.add(summaryLabel);
         
-        JLabel spacer = PWCGButtonFactory.makePaperLabelLarge("  ");
+        Label spacer = ButtonFactory.makePaperLabelLarge("  ");
         editableLabelPanel.add(spacer);
         
         return editableLabelPanel;
@@ -98,10 +98,10 @@ public class BriefingEditorPanel extends ImageResizingPanel implements ActionLis
 
     private void makeDetailsPanel() throws PWCGException
     {
-        editDetailsPanel = new JPanel(new BorderLayout());
+        editDetailsPanel = new Pane(new BorderLayout());
         editDetailsPanel.setOpaque(false);
 
-        JPanel dropDownPanel = createDropDownPanel();
+        Pane dropDownPanel = createDropDownPanel();
         editDetailsPanel.add(dropDownPanel, BorderLayout.NORTH);
 
         setWaypointViewPanel(null);        
@@ -119,9 +119,9 @@ public class BriefingEditorPanel extends ImageResizingPanel implements ActionLis
         editDetailsPanel.setVisible(true);
     }
 
-    private JPanel createDropDownPanel() throws PWCGException
+    private Pane createDropDownPanel() throws PWCGException
     {
-        JPanel dropDownPanel = new JPanel(new GridLayout(0,1));
+        Pane dropDownPanel = new Pane(new GridLayout(0,1));
         dropDownPanel.setOpaque(false);
         
         createFuelDisplay();

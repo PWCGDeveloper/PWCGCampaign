@@ -1,11 +1,11 @@
 package pwcg.gui.utils;
 
 import java.awt.BorderLayout;
-import java.awt.Font;
+import javafx.scene.text.Font;
 import java.awt.Insets;
 
 import javax.swing.JComponent;
-import javax.swing.JPanel;
+import javafx.scene.layout.Pane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
@@ -14,7 +14,7 @@ import pwcg.gui.dialogs.PWCGMonitorBorders;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 
 
-public class CampaignDocumentPage extends JPanel
+public class CampaignDocumentPage extends Pane
 {
     private static final long serialVersionUID = 1L;
 

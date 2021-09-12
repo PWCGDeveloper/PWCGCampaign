@@ -7,8 +7,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 
 import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.campaign.Campaign;
@@ -20,7 +20,7 @@ import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 
 public class AARReportMainPanel extends ImageResizingPanel implements ActionListener
 {
@@ -31,9 +31,9 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
     
     private List<IAAREventPanel> eventPanelsToDisplay = new ArrayList<>();
     
-    private JButton prevButton = null;
-    private JButton nextButton = null;
-    private JButton finishedButton = null;
+    private Button prevButton = null;
+    private Button nextButton = null;
+    private Button finishedButton = null;
     private IAAREventPanel centerPanel;
 
     private int currentPanelIndex = 0;
@@ -82,12 +82,12 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
         resetCenterPanels();        
 	}
 
-	private JPanel makeNavigationPanel() throws PWCGException  
+	private Pane makeNavigationPanel() throws PWCGException  
 	{
-	    JPanel navPanel = new JPanel(new BorderLayout());
+	    Pane navPanel = new Pane(new BorderLayout());
 	    navPanel.setOpaque(false);
 
-		JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+		Pane buttonPanel = new Pane(new GridLayout(0,1));
 		buttonPanel.setOpaque(false);
 		
         prevButton = makeMenuButton("Previous Page", "Previous", "Return to previous page");
@@ -104,9 +104,9 @@ public class AARReportMainPanel extends ImageResizingPanel implements ActionList
 		return navPanel;
 	}
 
-    private JButton makeMenuButton(String buttonText, String command, String toolTipText) throws PWCGException
+    private Button makeMenuButton(String buttonText, String command, String toolTipText) throws PWCGException
     {
-        return PWCGButtonFactory.makeTranslucentMenuButton(buttonText, command, toolTipText, this);
+        return ButtonFactory.makeTranslucentMenuButton(buttonText, command, toolTipText, this);
     }
 
     private void enableButtonsAsNeeded() throws PWCGException  

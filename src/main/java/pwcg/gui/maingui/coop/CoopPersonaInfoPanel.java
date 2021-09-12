@@ -1,15 +1,15 @@
 package pwcg.gui.maingui.coop;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javax.swing.JScrollPane;
 
 import pwcg.campaign.Campaign;
@@ -48,7 +48,7 @@ public class CoopPersonaInfoPanel extends ImageResizingPanel
             this.setImageFromName(imagePath);
             this.setBorder(BorderFactory.createEmptyBorder(150,40,40,150));
 
-            JPanel centerPanel = makeDisplay();
+            Pane centerPanel = makeDisplay();
             this.add(centerPanel, BorderLayout.NORTH);
 		}
 		catch (Throwable e)
@@ -58,14 +58,14 @@ public class CoopPersonaInfoPanel extends ImageResizingPanel
 		}
 	}
 
-    private JPanel makeDisplay() throws PWCGException
+    private Pane makeDisplay() throws PWCGException
     {
         loadCoopRecords();
 
-        JPanel recordListPanel = new JPanel(new GridLayout(0, 4, 10, 5));
+        Pane recordListPanel = new Pane(new GridLayout(0, 4, 10, 5));
         recordListPanel.setOpaque(false);
 
-        JPanel recordListHolderPanel = new JPanel();
+        Pane recordListHolderPanel = new Pane();
         recordListHolderPanel.setOpaque(false);
         recordListHolderPanel.add(recordListPanel, BorderLayout.NORTH);
 
@@ -73,17 +73,17 @@ public class CoopPersonaInfoPanel extends ImageResizingPanel
 
         for (CoopDisplayRecord coopDisplayRecord : coopDisplayRecords)
         {
-            JLabel usernameLabel = makeVersionPanel(coopDisplayRecord.getUsername());
-            JLabel campaignNameLabel = makeVersionPanel(coopDisplayRecord.getCampaignName());
-            JLabel pilotNameLabel = makeVersionPanel(coopDisplayRecord.getPilotNameAndRank());
-            JLabel squadronNameLabel = makeVersionPanel(coopDisplayRecord.getSquadronName());
+            Label usernameLabel = makeVersionPanel(coopDisplayRecord.getUsername());
+            Label campaignNameLabel = makeVersionPanel(coopDisplayRecord.getCampaignName());
+            Label pilotNameLabel = makeVersionPanel(coopDisplayRecord.getPilotNameAndRank());
+            Label squadronNameLabel = makeVersionPanel(coopDisplayRecord.getSquadronName());
             recordListPanel.add(usernameLabel);
             recordListPanel.add(campaignNameLabel);
             recordListPanel.add(pilotNameLabel);
             recordListPanel.add(squadronNameLabel);
         }
 
-        JPanel centerPanel = new JPanel();
+        Pane centerPanel = new Pane();
         centerPanel.setOpaque(false);
         centerPanel.add(planeListScroll, BorderLayout.CENTER);
         return centerPanel;
@@ -109,7 +109,7 @@ public class CoopPersonaInfoPanel extends ImageResizingPanel
         }
     }
     
-    public JLabel makeVersionPanel(String labelText) throws PWCGException  
+    public Label makeVersionPanel(String labelText) throws PWCGException  
     {
 
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
@@ -117,7 +117,7 @@ public class CoopPersonaInfoPanel extends ImageResizingPanel
         Color bg = ColorMap.PAPER_BACKGROUND;
         Color fg = ColorMap.PAPER_FOREGROUND;
 
-        JLabel label = new JLabel(labelText, JLabel.LEFT);
+        Label label = new Label(labelText, Label.LEFT);
         label.setBackground(bg);
         label.setForeground(fg);
         label.setOpaque(false);

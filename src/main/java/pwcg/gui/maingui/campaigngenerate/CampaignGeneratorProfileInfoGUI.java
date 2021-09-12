@@ -3,8 +3,8 @@ package pwcg.gui.maingui.campaigngenerate;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -12,7 +12,7 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 
-public class CampaignGeneratorProfileInfoGUI extends JPanel
+public class CampaignGeneratorProfileInfoGUI extends Pane
 {
 	private static final long serialVersionUID = 1L;
 
@@ -32,10 +32,10 @@ public class CampaignGeneratorProfileInfoGUI extends JPanel
 	{
 		try
 		{			
-			JPanel campaignProfileInfoPanel = new JPanel(new BorderLayout());
+			Pane campaignProfileInfoPanel = new Pane(new BorderLayout());
 			campaignProfileInfoPanel.setOpaque(false);
 			
-			JPanel campaignProfileInfoGridPanel = createPorfileInfoPanel(); 
+			Pane campaignProfileInfoGridPanel = createPorfileInfoPanel(); 
 			campaignProfileInfoPanel.add(campaignProfileInfoGridPanel, BorderLayout.NORTH);
 
             this.add(createSpacingPanel(), BorderLayout.WEST);
@@ -49,9 +49,9 @@ public class CampaignGeneratorProfileInfoGUI extends JPanel
 		}
 	}
 
-    private JPanel createSpacingPanel() throws PWCGException
+    private Pane createSpacingPanel() throws PWCGException
     {
-        JPanel spacingGridPanel = new JPanel(new GridLayout(1, 1));
+        Pane spacingGridPanel = new Pane(new GridLayout(1, 1));
         spacingGridPanel.setOpaque(false);
 
         spacingGridPanel.add(makeLabel("                      ")); 
@@ -59,9 +59,9 @@ public class CampaignGeneratorProfileInfoGUI extends JPanel
         return spacingGridPanel;
     }
 
-    private JPanel createPorfileInfoPanel() throws PWCGException
+    private Pane createPorfileInfoPanel() throws PWCGException
     {
-        JPanel campaignProfileInfoGridPanel = new JPanel(new GridLayout(4, 1));
+        Pane campaignProfileInfoGridPanel = new Pane(new GridLayout(4, 1));
         campaignProfileInfoGridPanel.setOpaque(false);
 
         campaignProfileInfoGridPanel.add(makeLabel("     ")); 
@@ -75,9 +75,9 @@ public class CampaignGeneratorProfileInfoGUI extends JPanel
         return campaignProfileInfoGridPanel;
     }
 
-	private JLabel makeLabel(String labelText) throws PWCGException
+	private Label makeLabel(String labelText) throws PWCGException
 	{
-	    JLabel label = new JLabel(labelText);
+	    Label label = new Label(labelText);
 	    label.setOpaque(false);
 	    label.setFont(PWCGMonitorFonts.getPrimaryFontLarge());
 	    label.setForeground(ColorMap.CHALK_FOREGROUND);

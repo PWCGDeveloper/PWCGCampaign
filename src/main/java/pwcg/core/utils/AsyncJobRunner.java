@@ -10,8 +10,8 @@ import java.util.concurrent.TimeUnit;
 
 import javax.swing.BoxLayout;
 import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javax.swing.JProgressBar;
 import javax.swing.SwingWorker;
 import javax.swing.border.EmptyBorder;
@@ -56,7 +56,7 @@ public class AsyncJobRunner {
 
     public void add(String desc, boolean indeterminate, List<Job> jobs)
     {
-        JPanel panel = new JPanel();
+        Pane panel = new Pane();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
@@ -66,7 +66,7 @@ public class AsyncJobRunner {
         if (indeterminate)
             progressBar.setString("");
 
-        panel.add(new JLabel(desc));
+        panel.add(new Label(desc));
         panel.add(progressBar);
 
         progressDialog.add(panel);

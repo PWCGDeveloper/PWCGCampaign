@@ -1,16 +1,16 @@
 package pwcg.gui.utils;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+import javafx.scene.paint.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
@@ -35,66 +35,66 @@ public class SelectorGUI implements ActionListener
 		this.selectCallback = selectCallback;
 	}
 	
-	public JPanel build(boolean allowReject) throws PWCGException 
+	public Pane build(boolean allowReject) throws PWCGException 
 	{
-        JPanel selectPanel = new JPanel(new BorderLayout());
+        Pane selectPanel = new Pane(new BorderLayout());
         selectPanel.setOpaque(false);
 
         notAccepted = new MultiSelectGUI();
-        JPanel notAcceptedPanel = notAccepted.build(1);
+        Pane notAcceptedPanel = notAccepted.build(1);
         selectPanel.add(notAcceptedPanel, BorderLayout.WEST);
         
-        JPanel buttonPanel = makeButtonPanel(allowReject);
+        Pane buttonPanel = makeButtonPanel(allowReject);
         selectPanel.add(buttonPanel, BorderLayout.CENTER);
 
         accepted = new MultiSelectGUI();
-        JPanel acceptedPanel = accepted.build(1);
+        Pane acceptedPanel = accepted.build(1);
         selectPanel.add(acceptedPanel, BorderLayout.EAST);
 		
 		return selectPanel;
 	}
 	
     
-    private JPanel makeButtonPanel(boolean allowReject) throws PWCGException
+    private Pane makeButtonPanel(boolean allowReject) throws PWCGException
     {
-        JPanel buttonPanel = new JPanel(new GridLayout(0, 1));
+        Pane buttonPanel = new Pane(new GridLayout(0, 1));
         buttonPanel.setOpaque(false);
 
-        JLabel spacerLabel = PWCGButtonFactory.makePaperLabelMedium("");        
+        Label spacerLabel = ButtonFactory.makePaperLabelMedium("");        
         buttonPanel.add(spacerLabel);
 
-        spacerLabel = PWCGButtonFactory.makePaperLabelMedium("");        
+        spacerLabel = ButtonFactory.makePaperLabelMedium("");        
         buttonPanel.add(spacerLabel);
 
-        spacerLabel = PWCGButtonFactory.makePaperLabelMedium("");        
+        spacerLabel = ButtonFactory.makePaperLabelMedium("");        
         buttonPanel.add(spacerLabel);
 
-        JButton acceptButton = PWCGButtonFactory.makePaperButtonWithBorder("Accept ===>", "Accept", this);
+        Button acceptButton = ButtonFactory.makePaperButtonWithBorder("Accept ===>", "Accept", this);
         acceptButton.setOpaque(false);
-        acceptButton.setHorizontalAlignment(SwingConstants.CENTER);
+        acceptButton.setAlignment(Pos.CENTER_LEFT);
         buttonPanel.add(acceptButton);
 
-        spacerLabel = PWCGButtonFactory.makePaperLabelMedium("");        
+        spacerLabel = ButtonFactory.makePaperLabelMedium("");        
         buttonPanel.add(spacerLabel);
 
         if (allowReject)
         {
-            JButton rejectButton = PWCGButtonFactory.makePaperButtonWithBorder("<=== Reject", "Reject", this);
+            Button rejectButton = ButtonFactory.makePaperButtonWithBorder("<=== Reject", "Reject", this);
             rejectButton.setOpaque(false);
-            rejectButton.setHorizontalAlignment(SwingConstants.CENTER);
+            rejectButton.setAlignment(Pos.CENTER_LEFT);
             buttonPanel.add(rejectButton);
         }
         
-        spacerLabel = PWCGButtonFactory.makePaperLabelMedium("");        
+        spacerLabel = ButtonFactory.makePaperLabelMedium("");        
         buttonPanel.add(spacerLabel);
 
-        spacerLabel = PWCGButtonFactory.makePaperLabelMedium("");        
+        spacerLabel = ButtonFactory.makePaperLabelMedium("");        
         buttonPanel.add(spacerLabel);
 
-        spacerLabel = PWCGButtonFactory.makePaperLabelMedium("");        
+        spacerLabel = ButtonFactory.makePaperLabelMedium("");        
         buttonPanel.add(spacerLabel);
         
-        JPanel buttonGridContainer = new JPanel(new BorderLayout());
+        Pane buttonGridContainer = new Pane(new BorderLayout());
         buttonGridContainer.setOpaque(false);
         buttonGridContainer.add(buttonPanel, BorderLayout.NORTH);
         buttonGridContainer.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GRAY, Color.BLACK));

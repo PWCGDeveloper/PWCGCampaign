@@ -1,6 +1,6 @@
 package pwcg.gui.campaign.pilot;
 
-import java.awt.Color;
+import javafx.scene.paint.Color;
 import java.io.File;
 
 import javax.swing.JFileChooser;

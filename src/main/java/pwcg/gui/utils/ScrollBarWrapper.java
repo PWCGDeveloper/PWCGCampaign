@@ -3,7 +3,7 @@ package pwcg.gui.utils;
 import java.awt.BorderLayout;
 
 import javax.swing.JComponent;
-import javax.swing.JPanel;
+import javafx.scene.layout.Pane;
 import javax.swing.JScrollPane;
 
 public class ScrollBarWrapper
@@ -15,7 +15,7 @@ public class ScrollBarWrapper
      * @param innerGrid
      * @param skinNames
      */
-    public static void createScrollPaneWithMax(JPanel outerPanel, JPanel innerGrid, int itemSize, int maxItems)
+    public static void createScrollPaneWithMax(Pane outerPanel, Pane innerGrid, int itemSize, int maxItems)
     {
         // If we only have a few skins pack them in the NORTH part of the Panel
         if (itemSize < maxItems)
@@ -31,7 +31,7 @@ public class ScrollBarWrapper
             JScrollPane scrollPane = makeScrollPane(innerGrid);
             outerPanel.add(scrollPane, BorderLayout.CENTER);
             
-            JPanel skinSelectScrollPanel = new JPanel(new BorderLayout());
+            Pane skinSelectScrollPanel = new Pane(new BorderLayout());
             skinSelectScrollPanel.setOpaque(false);
             skinSelectScrollPanel.add(scrollPane, BorderLayout.CENTER);
     

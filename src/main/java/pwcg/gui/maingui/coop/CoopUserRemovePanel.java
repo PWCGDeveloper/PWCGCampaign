@@ -1,14 +1,14 @@
 package pwcg.gui.maingui.coop;
 
 import java.awt.BorderLayout;
-import java.awt.Font;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 import javax.swing.border.Border;
 
 import pwcg.coop.CoopUserManager;
@@ -43,7 +43,7 @@ public class CoopUserRemovePanel extends ImageResizingPanel implements ActionLis
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
             this.setImageFromName(imagePath);
 
-            JPanel centerPanel = makeAcceptancePanel();
+            Pane centerPanel = makeAcceptancePanel();
             this.add(centerPanel, BorderLayout.CENTER);
         }
         catch (Throwable e)
@@ -53,17 +53,17 @@ public class CoopUserRemovePanel extends ImageResizingPanel implements ActionLis
         }
     }
 
-    private JPanel makeAcceptancePanel() throws PWCGException
+    private Pane makeAcceptancePanel() throws PWCGException
     {
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
-        JPanel dataEntryPanel = new JPanel();
+        Pane dataEntryPanel = new Pane();
         dataEntryPanel.setLayout(new BorderLayout());
         dataEntryPanel.setOpaque(false);
 
         userSelector = new MultiSelectGUI();
-        JPanel removePanel = userSelector.build(3);
-        JPanel buttonPanel = buildCoopUserButtons(font);
+        Pane removePanel = userSelector.build(3);
+        Pane buttonPanel = buildCoopUserButtons(font);
 
         dataEntryPanel.add(removePanel, BorderLayout.CENTER);
         dataEntryPanel.add(buttonPanel, BorderLayout.SOUTH);
@@ -71,9 +71,9 @@ public class CoopUserRemovePanel extends ImageResizingPanel implements ActionLis
         return dataEntryPanel;
     }
 
-    private JPanel buildCoopUserButtons(Font font)
+    private Pane buildCoopUserButtons(Font font)
     {
-        JButton removeUsersButton = new JButton("Remove Coop Users");
+        Button removeUsersButton = new Button("Remove Coop Users");
         removeUsersButton.setActionCommand("Remove Coop Users");
         removeUsersButton.addActionListener(this);
         removeUsersButton.setFont(font);
@@ -83,7 +83,7 @@ public class CoopUserRemovePanel extends ImageResizingPanel implements ActionLis
         Border raisedBorder = BorderFactory.createRaisedBevelBorder();
         removeUsersButton.setBorder(raisedBorder);
 
-        JPanel controlPanel = new JPanel(new GridLayout(0, 1));
+        Pane controlPanel = new Pane(new GridLayout(0, 1));
         controlPanel.setOpaque(false);
         controlPanel.add(removeUsersButton);
         return controlPanel;

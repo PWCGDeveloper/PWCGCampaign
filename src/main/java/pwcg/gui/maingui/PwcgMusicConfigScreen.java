@@ -1,15 +1,15 @@
 package pwcg.gui.maingui;
 
 import java.awt.BorderLayout;
-import java.awt.Font;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javax.swing.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -27,14 +27,14 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.MusicManager;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 
 public class PwcgMusicConfigScreen extends ImageResizingPanel implements ActionListener, ChangeListener
 {    
     private static final long serialVersionUID = 1L;
     
-    private JCheckBox playMusicCheckBox;
-    private JCheckBox playSoundsCheckBox;
+    private CheckBox playMusicCheckBox;
+    private CheckBox playSoundsCheckBox;
     private JSlider playMusicVolume;
     private JSlider playSoundsVolume;
     private PwcgMainScreen parent = null;
@@ -64,23 +64,23 @@ public class PwcgMusicConfigScreen extends ImageResizingPanel implements ActionL
         }
     }
 
-    private JPanel makeButtonPanel() throws PWCGException
+    private Pane makeButtonPanel() throws PWCGException
     {
-        JPanel navPanel = new JPanel(new BorderLayout());
+        Pane navPanel = new Pane(new BorderLayout());
         navPanel.setOpaque(false);
 
 
-        JPanel buttonPanel = new JPanel(new GridLayout(6,1));
+        Pane buttonPanel = new Pane(new GridLayout(6,1));
         buttonPanel.setOpaque(false);
 
-        JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept", "AcceptChanges", "Accept music configuration", this);
+        Button acceptButton = ButtonFactory.makeTranslucentMenuButton("Accept", "AcceptChanges", "Accept music configuration", this);
         buttonPanel.add(acceptButton);
         
-        JLabel dummyLabel3 = new JLabel("     ");       
+        Label dummyLabel3 = new Label("     ");       
         dummyLabel3.setOpaque(false);
         buttonPanel.add(dummyLabel3);
         
-        JButton cancelButton = PWCGButtonFactory.makeTranslucentMenuButton("Cancel", "Cancel", "Cancel music configuration changes", this);
+        Button cancelButton = ButtonFactory.makeTranslucentMenuButton("Cancel", "Cancel", "Cancel music configuration changes", this);
         buttonPanel.add(cancelButton);
 
         navPanel.add(buttonPanel, BorderLayout.NORTH);
@@ -88,12 +88,12 @@ public class PwcgMusicConfigScreen extends ImageResizingPanel implements ActionL
         return navPanel;
     }
 
-    private JPanel makeCampaignSelectPanel() throws PWCGException
+    private Pane makeCampaignSelectPanel() throws PWCGException
     {
-        JPanel musicControlPanel = new JPanel(new BorderLayout());
+        Pane musicControlPanel = new Pane(new BorderLayout());
         musicControlPanel.setOpaque(false);
 
-        JPanel musicControlGrid = new JPanel(new GridLayout(0,1));
+        Pane musicControlGrid = new Pane(new GridLayout(0,1));
         musicControlGrid.setOpaque(false);        
         makePlayMusic();
         makePlaySound();
@@ -101,7 +101,7 @@ public class PwcgMusicConfigScreen extends ImageResizingPanel implements ActionL
 	    playSoundsVolume = makeVolumeSlider();
         musicControlGrid.add(playSoundsCheckBox);
         musicControlGrid.add(playSoundsVolume);
-        musicControlGrid.add(new JLabel(""));
+        musicControlGrid.add(new Label(""));
         musicControlGrid.add(playMusicCheckBox);
         musicControlGrid.add(playMusicVolume);
 
@@ -116,7 +116,7 @@ public class PwcgMusicConfigScreen extends ImageResizingPanel implements ActionL
 	{
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
-        playSoundsCheckBox = new JCheckBox();
+        playSoundsCheckBox = new CheckBox();
         playSoundsCheckBox.setText("Play Sounds");
         playSoundsCheckBox.setSelected(false);
         playSoundsCheckBox.setOpaque(false);
@@ -129,7 +129,7 @@ public class PwcgMusicConfigScreen extends ImageResizingPanel implements ActionL
 	{
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
-        playMusicCheckBox = new JCheckBox();
+        playMusicCheckBox = new CheckBox();
         playMusicCheckBox.setText("Play Music");
         playMusicCheckBox.setSelected(false);
         playMusicCheckBox.setOpaque(false);
@@ -249,9 +249,9 @@ public class PwcgMusicConfigScreen extends ImageResizingPanel implements ActionL
 		        }		
 			}
 			
-			if (evt.getSource() instanceof JCheckBox)
+			if (evt.getSource() instanceof CheckBox)
 			{
-				JCheckBox checkBox = (JCheckBox) evt.getSource();
+				CheckBox checkBox = (CheckBox) evt.getSource();
 		        if (checkBox.equals(playMusicCheckBox))
 		        {
 		            int playMusic = 0;

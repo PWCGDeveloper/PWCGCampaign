@@ -1,7 +1,7 @@
 package pwcg.gui.campaign.pilot;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+import javafx.scene.paint.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,9 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
@@ -63,12 +63,12 @@ public class CampaignPilotMedalBox extends ImageResizingPanel implements ActionL
 	    this.add(BorderLayout.CENTER, makeCenterPanel());
 	}
 
-	private JPanel makeCenterPanel() throws PWCGException 
+	private Pane makeCenterPanel() throws PWCGException 
 	{
-        JPanel campaignPilotMedalPanel = new JPanel(new BorderLayout());
+        Pane campaignPilotMedalPanel = new Pane(new BorderLayout());
         campaignPilotMedalPanel.setOpaque(false);
 
-		JPanel pilotMedalPanel = makePilotMedalPanel();
+		Pane pilotMedalPanel = makePilotMedalPanel();
 		campaignPilotMedalPanel.add(pilotMedalPanel, BorderLayout.NORTH);
 		
 		return campaignPilotMedalPanel;
@@ -95,9 +95,9 @@ public class CampaignPilotMedalBox extends ImageResizingPanel implements ActionL
         }
     }
 
-	private JPanel makePilotMedalPanel() throws PWCGException 
+	private Pane makePilotMedalPanel() throws PWCGException 
 	{
-        JPanel medalPanel = new JPanel(new GridLayout(0, medalsPerRow));
+        Pane medalPanel = new Pane(new GridLayout(0, medalsPerRow));
 		medalPanel.setOpaque(false);
 		
 		Color bg = ColorMap.PAPER_BACKGROUND;
@@ -124,7 +124,7 @@ public class CampaignPilotMedalBox extends ImageResizingPanel implements ActionL
 		            PWCGLogger.logException(ex);
 				}
 				
-				JButton medalButton = makeMedalButton(bg, medal, medalIcon);
+				Button medalButton = makeMedalButton(bg, medal, medalIcon);
 
 				medals.put(medal.getMedalName(), medal);
 
@@ -137,7 +137,7 @@ public class CampaignPilotMedalBox extends ImageResizingPanel implements ActionL
 		{
 			for (int i = 0; i < remainder; ++i)
 			{
-				JLabel ldummy = new JLabel("");
+				Label ldummy = new Label("");
 				ldummy.setBackground(bg);
 				ldummy.setOpaque(false);
 	
@@ -148,9 +148,9 @@ public class CampaignPilotMedalBox extends ImageResizingPanel implements ActionL
 		return medalPanel;
 	}
 
-    private JButton makeMedalButton(Color bg, Medal medal, ImageIcon medalIcon)
+    private Button makeMedalButton(Color bg, Medal medal, ImageIcon medalIcon)
     {
-        JButton medalButton = new JButton(medalIcon);
+        Button medalButton = new Button(medalIcon);
         medalButton.setPressedIcon(medalIcon);
         medalButton.setBackground(bg);
         medalButton.setOpaque(false);

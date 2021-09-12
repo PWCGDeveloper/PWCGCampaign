@@ -5,8 +5,8 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 import javax.swing.JScrollPane;
 
 import pwcg.campaign.Campaign;
@@ -22,7 +22,7 @@ import pwcg.gui.rofmap.brief.model.BriefingData;
 import pwcg.gui.rofmap.brief.update.BriefingMissionUpdater;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.mission.Mission;
 
@@ -72,39 +72,39 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
 		}
 	}
 
-    private JPanel makeLeftPanel() throws PWCGException 
+    private Pane makeLeftPanel() throws PWCGException 
     {
-        JPanel leftPanel = new JPanel(new BorderLayout());
+        Pane leftPanel = new Pane(new BorderLayout());
         leftPanel.setOpaque(false);
 
-        JPanel buttonPanel = makeButtonPanel();
+        Pane buttonPanel = makeButtonPanel();
         leftPanel.add(buttonPanel, BorderLayout.NORTH);
         leftPanel.add(briefingFlightChooser.getFlightChooserPanel(), BorderLayout.CENTER);
         return leftPanel;
     }
     
-    private JPanel makeButtonPanel() throws PWCGException 
+    private Pane makeButtonPanel() throws PWCGException 
     {
-        JPanel buttonPanel = new JPanel(new BorderLayout());
+        Pane buttonPanel = new Pane(new BorderLayout());
         buttonPanel.setOpaque(false);
 
-        JPanel buttonGrid = new JPanel();
+        Pane buttonGrid = new Pane();
         buttonGrid.setLayout(new GridLayout(0,1));
         buttonGrid.setOpaque(false);
             
         if (mission.isFinalized())
         {
-            buttonGrid.add(PWCGButtonFactory.makeDummy());
-            JButton backToCampaignButton = makeButton("Back to Campaign", "Back to Campaign", "Return to campaign home screen");
+            buttonGrid.add(ButtonFactory.makeDummy());
+            Button backToCampaignButton = makeButton("Back to Campaign", "Back to Campaign", "Return to campaign home screen");
             buttonGrid.add(backToCampaignButton);
         }
         
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
-        JButton scrubMissionButton = makeButton("Scrub Mission", "Scrub Mission", "Scrub this mission and return to campaign home screen");
+        buttonGrid.add(ButtonFactory.makeDummy());
+        Button scrubMissionButton = makeButton("Scrub Mission", "Scrub Mission", "Scrub this mission and return to campaign home screen");
         buttonGrid.add(scrubMissionButton);
 
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
-        JButton goToBriefingMapButton = makeButton("Next: Map", "Next: Map", "Progress to briefing map screen");
+        buttonGrid.add(ButtonFactory.makeDummy());
+        Button goToBriefingMapButton = makeButton("Next: Map", "Next: Map", "Progress to briefing map screen");
         buttonGrid.add(goToBriefingMapButton);
 
         buttonPanel.add(buttonGrid, BorderLayout.NORTH);
@@ -112,9 +112,9 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
         return buttonPanel;
     }
     
-    public JPanel makeBriefingPanel() throws PWCGException  
+    public Pane makeBriefingPanel() throws PWCGException  
     {
-        JPanel briefingPanel = new JPanel(new BorderLayout());
+        Pane briefingPanel = new Pane(new BorderLayout());
         briefingPanel.setOpaque(false);
 
         briefingChalkboard = new BriefingDescriptionChalkboard(mission, briefingData);
@@ -126,9 +126,9 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
         return briefingPanel;
     }
 
-    private JButton makeButton(String buttonText, String command, String toolTipText) throws PWCGException
+    private Button makeButton(String buttonText, String command, String toolTipText) throws PWCGException
     {
-        return PWCGButtonFactory.makeTranslucentMenuButton(buttonText, command, toolTipText, this);
+        return ButtonFactory.makeTranslucentMenuButton(buttonText, command, toolTipText, this);
     }
 
     @Override

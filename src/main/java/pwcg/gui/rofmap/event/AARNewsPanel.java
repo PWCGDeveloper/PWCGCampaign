@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.swing.JPanel;
+import javafx.scene.layout.Pane;
 import javax.swing.JTabbedPane;
 
 import pwcg.aar.AARCoordinator;
@@ -29,7 +29,7 @@ public class AARNewsPanel extends AARDocumentPanel
     private AARCoordinator aarCoordinator;
     private JTabbedPane eventTabPane;
 
-    private HashMap<String, JPanel> newsGuiList = new HashMap<>();
+    private HashMap<String, Pane> newsGuiList = new HashMap<>();
 
     public AARNewsPanel()
 	{
@@ -58,7 +58,7 @@ public class AARNewsPanel extends AARDocumentPanel
 	
     private void createPostCombatReportTabs()
     {
-        JPanel postCombatPanel = new JPanel(new BorderLayout());
+        Pane postCombatPanel = new Pane(new BorderLayout());
         postCombatPanel.setOpaque(false);
 
         postCombatPanel.add(eventTabPane, BorderLayout.CENTER);
@@ -74,7 +74,7 @@ public class AARNewsPanel extends AARDocumentPanel
     
     private void createNewsEventTab() throws PWCGException
     {
-        HashMap<String, JPanel> newsGuiList = createPilotNewsList() ;
+        HashMap<String, Pane> newsGuiList = createPilotNewsList() ;
         for (String tabName : newsGuiList.keySet())
         {
             eventTabPane.addTab(tabName, newsGuiList.get(tabName));
@@ -82,7 +82,7 @@ public class AARNewsPanel extends AARDocumentPanel
         }
     }
 
-	private HashMap<String, JPanel> createPilotNewsList() throws PWCGException 
+	private HashMap<String, Pane> createPilotNewsList() throws PWCGException 
 	{
         Campaign campaign = PWCGContext.getInstance().getCampaign();
         makeHistoricalNewspaperEvents();

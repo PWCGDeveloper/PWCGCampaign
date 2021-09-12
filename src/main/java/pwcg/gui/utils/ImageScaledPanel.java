@@ -4,7 +4,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 
-import javax.swing.JPanel;
+import javafx.scene.layout.Pane;
 
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
@@ -17,7 +17,7 @@ import pwcg.gui.image.ImageCache;
  * @author Patrick Wilson
  *
  */
-public class ImageScaledPanel extends JPanel
+public class ImageScaledPanel extends Pane
 {
 	private static final long serialVersionUID = 1L;
 	

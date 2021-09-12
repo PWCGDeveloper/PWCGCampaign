@@ -1,17 +1,17 @@
 package pwcg.gui.maingui.campaigngenerate;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ButtonGroup;
+import javafx.scene.control.ButtonGroup;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javax.swing.RadioButton ;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.ArmedServiceFinder;
@@ -25,10 +25,10 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.ToolTipManager;
 
-public class PilotGenerationInfoGUI extends JPanel implements ActionListener
+public class PilotGenerationInfoGUI extends Pane implements ActionListener
 {
 
 	private static final long serialVersionUID = 1L;
@@ -48,13 +48,13 @@ public class PilotGenerationInfoGUI extends JPanel implements ActionListener
 
 	public void makeServiceSelectionPanel() throws PWCGException
 	{
-	    JPanel serviceMainPanel = new JPanel(new BorderLayout());
+	    Pane serviceMainPanel = new Pane(new BorderLayout());
 		serviceMainPanel.setOpaque(false);
 
-        JLabel chooseServiceLabel = PWCGButtonFactory.makeMenuLabelLarge("Choose a service:");
+        Label chooseServiceLabel = ButtonFactory.makeMenuLabelLarge("Choose a service:");
         serviceMainPanel.add(chooseServiceLabel, BorderLayout.NORTH);
 
-        JPanel internalServicePanel = new JPanel();
+        Pane internalServicePanel = new Pane();
         internalServicePanel.setLayout(new BorderLayout());
         internalServicePanel.setOpaque(false);
 
@@ -68,7 +68,7 @@ public class PilotGenerationInfoGUI extends JPanel implements ActionListener
 	        numCols = 2;
 		}
 		
-		JPanel servicePanel = new JPanel(new GridLayout(numRows, numCols));
+		Pane servicePanel = new Pane(new GridLayout(numRows, numCols));
 		servicePanel.setOpaque(false);
 
 		// Make a button for each service
@@ -76,7 +76,7 @@ public class PilotGenerationInfoGUI extends JPanel implements ActionListener
 		for (ArmedService service : ArmedServiceFinder.getArmedServicesForPilotCreation(campaign))
 		{
 	        String icon = service.getServiceIcon() + ".jpg";
-	        JRadioButton serviceButton = makeRadioButton(service, icon);
+	        RadioButton  serviceButton = makeRadioButton(service, icon);
 	        servicePanel.add(serviceButton);
 	        serviceButtonGroup.add(serviceButton);
 		}
@@ -88,7 +88,7 @@ public class PilotGenerationInfoGUI extends JPanel implements ActionListener
 		add(serviceMainPanel, BorderLayout.CENTER);
 	}
 
-	private JRadioButton makeRadioButton(ArmedService service, String imageName) throws PWCGException
+	private RadioButton  makeRadioButton(ArmedService service, String imageName) throws PWCGException
 	{
         Color buttonBG = ColorMap.WOOD_BACKGROUND;
         Color buttonFG = ColorMap.CHALK_FOREGROUND;
@@ -102,7 +102,7 @@ public class PilotGenerationInfoGUI extends JPanel implements ActionListener
 		ImageIcon selectedIcon = new ImageIcon(selectedIconPath);
 		ImageIcon notSelectedIcon = new ImageIcon(notSelectedIconPath);
 	
-		JRadioButton button= new JRadioButton(service.getName());
+		RadioButton  button= new RadioButton (service.getName());
 		
 		button.setIcon(notSelectedIcon);
 		button.setSelectedIcon(selectedIcon);

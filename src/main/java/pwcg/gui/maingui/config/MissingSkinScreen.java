@@ -1,7 +1,7 @@
 package pwcg.gui.maingui.config;
 
 import java.awt.BorderLayout;
-import java.awt.Font;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,9 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
@@ -28,7 +28,7 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImagePanelLayout;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.gui.utils.ToolTipManager;
 
@@ -66,24 +66,24 @@ public class MissingSkinScreen extends ImageResizingPanel implements ActionListe
         }
     }
 
-	public JPanel makeButtonPanel() throws PWCGException 
+	public Pane makeButtonPanel() throws PWCGException 
 	{
-        JPanel navButtonPanel = new JPanel(new BorderLayout());
+        Pane navButtonPanel = new Pane(new BorderLayout());
         navButtonPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
         for (int i = 0; i < 2; ++i)
         {
-            JLabel spacerLabel = new JLabel("     ");
-            spacerLabel.setHorizontalAlignment(SwingConstants.LEFT);
+            Label spacerLabel = new Label("     ");
+            spacerLabel.setAlignment(SwingConstants.LEFT);
             spacerLabel.setOpaque(false);
             
             buttonPanel.add(spacerLabel);
         }
         
-        JButton reportButton = makePlainButton("      Return", "Return", "Return to missing skin main page");
+        Button reportButton = makePlainButton("      Return", "Return", "Return to missing skin main page");
         buttonPanel.add(reportButton);
 
         navButtonPanel.add (buttonPanel, BorderLayout.NORTH);
@@ -91,31 +91,31 @@ public class MissingSkinScreen extends ImageResizingPanel implements ActionListe
         return navButtonPanel;
  	}
 
-    private JButton makePlainButton(String buttonText, String commandText, String toolTiptext) throws PWCGException
+    private Button makePlainButton(String buttonText, String commandText, String toolTiptext) throws PWCGException
     {
-        JButton button = PWCGButtonFactory.makeTranslucentMenuButton(buttonText, commandText, toolTiptext, this);
+        Button button = ButtonFactory.makeTranslucentMenuButton(buttonText, commandText, toolTiptext, this);
         ToolTipManager.setToolTip(button, toolTiptext);
 
         return button;
     }
 
-    public JPanel makeCenterPanel() throws PWCGException 
+    public Pane makeCenterPanel() throws PWCGException 
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "paperFull.jpg";
-        JPanel missingSkinDisplayPanel = new ImagePanelLayout(imagePath, new BorderLayout());
+        Pane missingSkinDisplayPanel = new ImagePanelLayout(imagePath, new BorderLayout());
 
         String header = generateReportHeader();
         
-        JPanel reportPanel = new JPanel(new BorderLayout());
+        Pane reportPanel = new Pane(new BorderLayout());
         reportPanel.setOpaque(false);
 
         Font headerFont = PWCGMonitorFonts.getDecorativeFont();
-        JLabel reportHeaderLabel = new JLabel(header);
+        Label reportHeaderLabel = new Label(header);
         reportHeaderLabel.setOpaque(false);
         reportHeaderLabel.setFont(headerFont);
         reportPanel.add(reportHeaderLabel, BorderLayout.NORTH);
         
-        JPanel reportBodyPanel = generateReportBody();
+        Pane reportBodyPanel = generateReportBody();
         reportPanel.add(reportBodyPanel, BorderLayout.CENTER);
         
         JScrollPane waypointScrollPane = ScrollBarWrapper.makeScrollPane(reportPanel);
@@ -137,9 +137,9 @@ public class MissingSkinScreen extends ImageResizingPanel implements ActionListe
         return "Missing Skin Report: " + numMissingSkins + " skins are missing";
     }
 
-    private JPanel generateReportBody() throws PWCGException
+    private Pane generateReportBody() throws PWCGException
     {
-        JPanel reportBodyPanel = new JPanel(new GridLayout(0,2));
+        Pane reportBodyPanel = new Pane(new GridLayout(0,2));
         reportBodyPanel.setOpaque(false);
                 
         for (String planeTypeDesc : selectedMissingSkins.keySet())
@@ -149,16 +149,16 @@ public class MissingSkinScreen extends ImageResizingPanel implements ActionListe
             
             if (missingSkinSet.size() > 0)
             {
-                JLabel reportBodyPlaneLabel = PWCGButtonFactory.makePaperLabelMedium("Plane: " + plane.getDisplayName());
+                Label reportBodyPlaneLabel = ButtonFactory.makePaperLabelMedium("Plane: " + plane.getDisplayName());
                 reportBodyPanel.add(reportBodyPlaneLabel);
-                JLabel reportBodyPlaneDummy = PWCGButtonFactory.makePaperLabelMedium(" ");
+                Label reportBodyPlaneDummy = ButtonFactory.makePaperLabelMedium(" ");
                 reportBodyPanel.add(reportBodyPlaneDummy);
     
                 for (MissingSkin missingSkin : missingSkinSet)
                 {
-                    JLabel reportBodySkinLabel = PWCGButtonFactory.makePaperLabelMedium(missingSkin.getSkinName());
+                    Label reportBodySkinLabel = ButtonFactory.makePaperLabelMedium(missingSkin.getSkinName());
                     reportBodyPanel.add(reportBodySkinLabel);
-                    JLabel reportBodyCategoryLabel = PWCGButtonFactory.makePaperLabelMedium(missingSkin.getCategory());
+                    Label reportBodyCategoryLabel = ButtonFactory.makePaperLabelMedium(missingSkin.getCategory());
                     reportBodyPanel.add(reportBodyCategoryLabel);
                 }
             }

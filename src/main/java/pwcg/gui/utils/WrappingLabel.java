@@ -1,13 +1,13 @@
 package pwcg.gui.utils;
 
-import java.awt.Font;
-import java.awt.FontMetrics;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontMetrics;
 import java.text.BreakIterator;
 
-import javax.swing.JLabel;
+import javafx.scene.control.Label;
 import javax.swing.SwingUtilities;
 
-public class WrappingLabel extends JLabel 
+public class WrappingLabel extends Label 
 {
 	private static final long serialVersionUID = 1L;
 	

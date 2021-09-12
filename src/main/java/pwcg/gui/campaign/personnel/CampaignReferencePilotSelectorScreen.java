@@ -1,16 +1,16 @@
 package pwcg.gui.campaign.personnel;
 
 import java.awt.BorderLayout;
-import java.awt.Font;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.JButton;
+import javafx.scene.control.Button;
 import javax.swing.JComboBox;
-import javax.swing.JPanel;
+import javafx.scene.layout.Pane;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -27,7 +27,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
@@ -67,7 +67,7 @@ public class CampaignReferencePilotSelectorScreen extends ImageResizingPanel imp
         }
     }
 
-    private JPanel makeCoopPersonaSelectorPanel() throws PWCGException
+    private Pane makeCoopPersonaSelectorPanel() throws PWCGException
     {
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
         squadronMemberSelector = new JComboBox<String>();
@@ -91,12 +91,12 @@ public class CampaignReferencePilotSelectorScreen extends ImageResizingPanel imp
             squadronMemberSelector.setSelectedIndex(0);
         }
         
-        JPanel gridPanel = new JPanel(new GridLayout(0,3));
+        Pane gridPanel = new Pane(new GridLayout(0,3));
         gridPanel.setOpaque(false);
         
-        gridPanel.add(PWCGButtonFactory.makeDummy());
+        gridPanel.add(ButtonFactory.makeDummy());
         gridPanel.add(squadronMemberSelector);
-        gridPanel.add(PWCGButtonFactory.makeDummy());
+        gridPanel.add(ButtonFactory.makeDummy());
 
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
         ImageResizingPanel centerPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
@@ -107,18 +107,18 @@ public class CampaignReferencePilotSelectorScreen extends ImageResizingPanel imp
         return centerPanel;
     }
 
-	public JPanel makeNavigatePanel() throws PWCGException  
+	public Pane makeNavigatePanel() throws PWCGException  
     {
-        JPanel navPanel = new JPanel(new BorderLayout());
+        Pane navPanel = new Pane(new BorderLayout());
         navPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept", "AcceptReferencePilot", "Make this pilot the reference pilot", this);
+        Button acceptButton = ButtonFactory.makeTranslucentMenuButton("Accept", "AcceptReferencePilot", "Make this pilot the reference pilot", this);
         buttonPanel.add(acceptButton);
 
-        JButton cancelButton = PWCGButtonFactory.makeTranslucentMenuButton("Cancel", "CancelReferencePilot", "Do not change the reference pilot", this);
+        Button cancelButton = ButtonFactory.makeTranslucentMenuButton("Cancel", "CancelReferencePilot", "Do not change the reference pilot", this);
         buttonPanel.add(cancelButton);
 
         navPanel.add(buttonPanel, BorderLayout.NORTH);

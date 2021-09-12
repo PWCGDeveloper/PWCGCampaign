@@ -1,17 +1,17 @@
 package pwcg.gui.maingui;
 
 import java.awt.BorderLayout;
-import java.awt.Font;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javax.swing.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
@@ -25,13 +25,13 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 
 public class CampaignDeleteScreen extends ImageResizingPanel implements ActionListener
 {    
     private static final long serialVersionUID = 1L;
     
-    private List<JCheckBox> campaignCheckBoxes = new ArrayList<JCheckBox>();
+    private List<CheckBox> campaignCheckBoxes = new ArrayList<CheckBox>();
     private PwcgMainScreen parent = null;
 
     public CampaignDeleteScreen(PwcgMainScreen parent)
@@ -60,22 +60,22 @@ public class CampaignDeleteScreen extends ImageResizingPanel implements ActionLi
         }
     }
 
-    private JPanel makeButtonPanel() throws PWCGException
+    private Pane makeButtonPanel() throws PWCGException
     {
-        JPanel navPanel = new JPanel(new BorderLayout());
+        Pane navPanel = new Pane(new BorderLayout());
         navPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(6,1));
+        Pane buttonPanel = new Pane(new GridLayout(6,1));
         buttonPanel.setOpaque(false);
          
-        JButton deleteCampaignButton = PWCGButtonFactory.makeTranslucentMenuButtonGrayMenu("Delete Campaign", "Delete", "Delete the selected campaign", this);
+        Button deleteCampaignButton = ButtonFactory.makeTranslucentMenuButtonGrayMenu("Delete Campaign", "Delete", "Delete the selected campaign", this);
         buttonPanel.add(deleteCampaignButton);
         
-        JLabel dummyLabel3 = new JLabel("     ");       
+        Label dummyLabel3 = new Label("     ");       
         dummyLabel3.setOpaque(false);
         buttonPanel.add(dummyLabel3);
         
-        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButtonGrayMenu("Finished", "Cancel", "Finished with campaign deletion", this);
+        Button finishedButton = ButtonFactory.makeTranslucentMenuButtonGrayMenu("Finished", "Cancel", "Finished with campaign deletion", this);
         buttonPanel.add(finishedButton);
 
         navPanel.add(buttonPanel, BorderLayout.NORTH);
@@ -83,7 +83,7 @@ public class CampaignDeleteScreen extends ImageResizingPanel implements ActionLi
         return navPanel;
     }
 
-    private JPanel makeCampaignSelectPanel() throws PWCGException
+    private Pane makeCampaignSelectPanel() throws PWCGException
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "paperFull.jpg";
         
@@ -93,13 +93,13 @@ public class CampaignDeleteScreen extends ImageResizingPanel implements ActionLi
         
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
-        JPanel campaignSelectGrid = new JPanel(new GridLayout(0,1));
+        Pane campaignSelectGrid = new Pane(new GridLayout(0,1));
         campaignSelectGrid.setOpaque(false);
         
         List<String> campaigns = Campaign.getCampaignNames();
         for (String campaignName : campaigns)
         {
-            JCheckBox campaignCheckBox = new JCheckBox();
+            CheckBox campaignCheckBox = new CheckBox();
             campaignCheckBox.setText(campaignName);
             campaignCheckBox.setSelected(false);
             campaignCheckBox.setOpaque(false);
@@ -144,11 +144,11 @@ public class CampaignDeleteScreen extends ImageResizingPanel implements ActionLi
 
     private void deleteSelectedCampaigns()
     {        
-        for (JCheckBox campaignSelectedJCheckBox : campaignCheckBoxes)
+        for (CheckBox campaignSelectedCheckBox : campaignCheckBoxes)
         {
-            if (campaignSelectedJCheckBox.isSelected())
+            if (campaignSelectedCheckBox.isSelected())
             {
-                CampaignRemover.deleteCampaign(campaignSelectedJCheckBox.getText());         
+                CampaignRemover.deleteCampaign(campaignSelectedCheckBox.getText());         
             }
         }
     }

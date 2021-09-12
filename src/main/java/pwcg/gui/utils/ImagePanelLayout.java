@@ -4,11 +4,11 @@ import java.awt.Graphics;
 import java.awt.LayoutManager;
 import java.awt.image.BufferedImage;
 
-import javax.swing.JPanel;
+import javafx.scene.layout.Pane;
 
 import pwcg.gui.image.ImageCache;
 
-public class ImagePanelLayout extends JPanel
+public class ImagePanelLayout extends Pane
 {
 	private static final long serialVersionUID = 1L;
 	

@@ -1,6 +1,6 @@
 package pwcg.gui.dialogs;
 
-import java.awt.Font;
+import javafx.scene.text.Font;
 
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerGlobal;

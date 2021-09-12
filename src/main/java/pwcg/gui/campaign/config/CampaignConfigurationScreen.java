@@ -5,9 +5,9 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
@@ -18,7 +18,7 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.CommonUIActions;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
 public class CampaignConfigurationScreen extends ImageResizingPanel implements ActionListener
@@ -45,27 +45,27 @@ public class CampaignConfigurationScreen extends ImageResizingPanel implements A
         this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1400));
 	}
 
-	private JPanel makeNavigatePanel() throws PWCGException
+	private Pane makeNavigatePanel() throws PWCGException
 	{
-        JPanel simpleConfigAcceptPanel = new JPanel(new BorderLayout());
+        Pane simpleConfigAcceptPanel = new Pane(new BorderLayout());
         simpleConfigAcceptPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JLabel spacer1 = PWCGButtonFactory.makePaperLabelLarge("   ");
+        Label spacer1 = ButtonFactory.makePaperLabelLarge("   ");
         buttonPanel.add(spacer1);
 
-        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished", CommonUIActions.FINISHED, "Finished with configuration changes", this);
+        Button finishedButton = ButtonFactory.makeTranslucentMenuButton("Finished", CommonUIActions.FINISHED, "Finished with configuration changes", this);
         buttonPanel.add(finishedButton);
 
-        JLabel spacer2 = PWCGButtonFactory.makePaperLabelLarge("   ");
+        Label spacer2 = ButtonFactory.makePaperLabelLarge("   ");
         buttonPanel.add(spacer2);
 
-        JButton simpleConfigButton = PWCGButtonFactory.makeTranslucentMenuButton("Simple Config", "CampSimpleConfig", "Set simple configuration for this campaign", this);
+        Button simpleConfigButton = ButtonFactory.makeTranslucentMenuButton("Simple Config", "CampSimpleConfig", "Set simple configuration for this campaign", this);
         buttonPanel.add(simpleConfigButton);
         
-        JButton advancedConfigButton = PWCGButtonFactory.makeTranslucentMenuButton("Advanced Config", "CampAdvancedConfig", "Set advanced configuration for this campaign", this);
+        Button advancedConfigButton = ButtonFactory.makeTranslucentMenuButton("Advanced Config", "CampAdvancedConfig", "Set advanced configuration for this campaign", this);
         buttonPanel.add(advancedConfigButton);
 		
 		simpleConfigAcceptPanel.add(buttonPanel, BorderLayout.NORTH);

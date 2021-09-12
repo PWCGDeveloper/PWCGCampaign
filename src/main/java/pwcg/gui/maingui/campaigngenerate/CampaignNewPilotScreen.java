@@ -5,9 +5,9 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
@@ -21,7 +21,7 @@ import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
 public class CampaignNewPilotScreen extends ImageResizingPanel implements ActionListener
@@ -29,7 +29,7 @@ public class CampaignNewPilotScreen extends ImageResizingPanel implements Action
     private static final long serialVersionUID = 1L;
 
     private Campaign campaign;
-    private JButton newPilotCreateButton;
+    private Button newPilotCreateButton;
     private NewPilotDataEntryGUI dataEntry;
     
     private NewPilotGeneratorDO newPilotGeneratorDO = new NewPilotGeneratorDO();
@@ -64,9 +64,9 @@ public class CampaignNewPilotScreen extends ImageResizingPanel implements Action
         }
     }
 
-    private JPanel makeServicePanel() throws PWCGException
+    private Pane makeServicePanel() throws PWCGException
     {        
-        JPanel servicesPanel = new JPanel(new BorderLayout());
+        Pane servicesPanel = new Pane(new BorderLayout());
         servicesPanel.setLayout(new BorderLayout());
         servicesPanel.setOpaque(false);
 
@@ -78,24 +78,24 @@ public class CampaignNewPilotScreen extends ImageResizingPanel implements Action
         return servicesPanel;
     }
 
-    private JPanel makeButtonPanel() throws PWCGException
+    private Pane makeButtonPanel() throws PWCGException
     {
-        JPanel configPanel = new JPanel(new BorderLayout());
+        Pane configPanel = new Pane(new BorderLayout());
         configPanel.setLayout(new BorderLayout());
         configPanel.setOpaque(false);
         
-        JPanel buttonPanel = new JPanel(new GridLayout(6,1));
+        Pane buttonPanel = new Pane(new GridLayout(6,1));
         buttonPanel.setOpaque(false);
 
-        newPilotCreateButton = PWCGButtonFactory.makeTranslucentMenuButton("Create Pilot", "Create Pilot", "Add this pilot to the campaign", this);
+        newPilotCreateButton = ButtonFactory.makeTranslucentMenuButton("Create Pilot", "Create Pilot", "Add this pilot to the campaign", this);
         buttonPanel.add(newPilotCreateButton);
         newPilotCreateButton.setEnabled(false);
         
-        JLabel dummyLabel3 = new JLabel("     ");       
+        Label dummyLabel3 = new Label("     ");       
         dummyLabel3.setOpaque(false);
         buttonPanel.add(dummyLabel3);
         
-        JButton cancelChanges = PWCGButtonFactory.makeTranslucentMenuButton("Cancel", "Cancel", "Cancel the addition of a new pilot to this campaign", this);
+        Button cancelChanges = ButtonFactory.makeTranslucentMenuButton("Cancel", "Cancel", "Cancel the addition of a new pilot to this campaign", this);
         buttonPanel.add(cancelChanges);
 
         configPanel.add(buttonPanel, BorderLayout.NORTH);

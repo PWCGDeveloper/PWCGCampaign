@@ -1,8 +1,8 @@
 package pwcg.gui.rofmap.debrief;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
@@ -24,15 +24,15 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 
-public class AARClaimPanel extends JPanel implements ActionListener
+public class AARClaimPanel extends Pane implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
 
     private JComboBox<String> cbVictoriesClaimedBoxes = new JComboBox<String>();
 	private List<JComboBox<String>> cbPlaneBoxes = new ArrayList<JComboBox<String>>();
-    private JPanel victoriesClaimedPanel = null;
+    private Pane victoriesClaimedPanel = null;
 	private int numVictories = 0;
 
 
@@ -44,22 +44,22 @@ public class AARClaimPanel extends JPanel implements ActionListener
 
 	public void makePanel() throws PWCGException 
 	{
-		JPanel selectedPanel = makeSelectPanel();
+		Pane selectedPanel = makeSelectPanel();
 		this.add(selectedPanel, BorderLayout.NORTH);
 
 		victoriesClaimedPanel = makeClaimsPanel();
-        JPanel planesClaimedPanel = new JPanel(new BorderLayout());
+        Pane planesClaimedPanel = new Pane(new BorderLayout());
         planesClaimedPanel.setOpaque(false);
         planesClaimedPanel.add(victoriesClaimedPanel, BorderLayout.NORTH);
 		this.add(planesClaimedPanel, BorderLayout.CENTER);
 	}
 
-	private JPanel makeSelectPanel() throws PWCGException 
+	private Pane makeSelectPanel() throws PWCGException 
 	{
 		Color bgColor = ColorMap.PAPER_BACKGROUND;
 		Font font = PWCGMonitorFonts.getPrimaryFont();
 		
-		JPanel selectedPanel = new JPanel (new BorderLayout());
+		Pane selectedPanel = new Pane (new BorderLayout());
 		selectedPanel.setOpaque(false);
 		
 		cbVictoriesClaimedBoxes.setOpaque(false);
@@ -73,12 +73,12 @@ public class AARClaimPanel extends JPanel implements ActionListener
 			cbVictoriesClaimedBoxes.addItem("Victories Claimed: " + i);
 		}
 
-		JPanel victoriesClaimedPanel = new JPanel (new GridLayout(0,4));
+		Pane victoriesClaimedPanel = new Pane (new GridLayout(0,4));
 		victoriesClaimedPanel.setOpaque(false);
 		
-		victoriesClaimedPanel.add(PWCGButtonFactory.makeDummy());
+		victoriesClaimedPanel.add(ButtonFactory.makeDummy());
 
-		JLabel lVictories = new JLabel("Air to Air Claims: ", JLabel.RIGHT);
+		Label lVictories = new Label("Air to Air Claims: ", Label.RIGHT);
 		lVictories.setBackground(bgColor);
 		lVictories.setFont(font);
 		lVictories.setOpaque(false);
@@ -86,41 +86,41 @@ public class AARClaimPanel extends JPanel implements ActionListener
 		victoriesClaimedPanel.add(cbVictoriesClaimedBoxes);
 		victoriesClaimedPanel.setBackground(bgColor);
 
-		victoriesClaimedPanel.add(PWCGButtonFactory.makeDummy());
+		victoriesClaimedPanel.add(ButtonFactory.makeDummy());
 		
 		selectedPanel.add (victoriesClaimedPanel, BorderLayout.NORTH);
 		
 		return selectedPanel;
 	}
 	
-	private JPanel makeClaimsPanel() throws PWCGException 
+	private Pane makeClaimsPanel() throws PWCGException 
 	{
 		Color bgColor = ColorMap.PAPER_BACKGROUND;
 		Font font = PWCGMonitorFonts.getPrimaryFont();
 
-		victoriesClaimedPanel = new JPanel (new BorderLayout());
+		victoriesClaimedPanel = new Pane (new BorderLayout());
 		victoriesClaimedPanel.setOpaque(false);
 		victoriesClaimedPanel.setFont(font);
 
-		JPanel victoriesClaimedMainGridPanel = new JPanel (new GridLayout(0,1));
+		Pane victoriesClaimedMainGridPanel = new Pane (new GridLayout(0,1));
 		victoriesClaimedMainGridPanel.setOpaque(false);
 
 		for (int i = 0; i < numVictories; ++i)
 		{
-			JPanel victoryPanel = new JPanel(new GridLayout(0,4));
+			Pane victoryPanel = new Pane(new GridLayout(0,4));
 			victoryPanel.setOpaque(false);
 
-			JLabel lVictories = new JLabel("Victory Report: ", JLabel.RIGHT);
+			Label lVictories = new Label("Victory Report: ", Label.RIGHT);
 			lVictories.setOpaque(false);
 			lVictories.setFont(font);
 
 			JComboBox<String> cbPlane = createPlaneDropdown(bgColor, font);
 			cbPlaneBoxes.add(cbPlane);
 
-			victoryPanel.add(PWCGButtonFactory.makeDummy());
+			victoryPanel.add(ButtonFactory.makeDummy());
 			victoryPanel.add(lVictories);
 			victoryPanel.add(cbPlane);
-			victoryPanel.add(PWCGButtonFactory.makeDummy());
+			victoryPanel.add(ButtonFactory.makeDummy());
 			
 			victoriesClaimedMainGridPanel.add (victoryPanel);
 		}
@@ -214,7 +214,7 @@ public class AARClaimPanel extends JPanel implements ActionListener
 		    
 			if (victoriesClaimedPanel != null)
 			{
-				JPanel victoriesClaimedPanel = makeClaimsPanel();
+				Pane victoriesClaimedPanel = makeClaimsPanel();
 				BorderLayout layout = (BorderLayout)this.getLayout();
 				this.remove(layout.getLayoutComponent(BorderLayout.CENTER));
 				this.add(victoriesClaimedPanel, BorderLayout.CENTER);

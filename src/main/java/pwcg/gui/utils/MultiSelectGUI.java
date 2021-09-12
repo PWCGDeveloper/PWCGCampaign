@@ -1,7 +1,7 @@
 package pwcg.gui.utils;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+import javafx.scene.paint.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javax.swing.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -21,23 +21,23 @@ import pwcg.gui.dialogs.ErrorDialog;
 
 public class MultiSelectGUI implements ActionListener
 {
-    private JPanel selectionLayout = null;
-    private JPanel selectionGrid = null;
-    private Map<String, JCheckBox> checkBoxes = new TreeMap<>();
+    private Pane selectionLayout = null;
+    private Pane selectionGrid = null;
+    private Map<String, CheckBox> checkBoxes = new TreeMap<>();
     private Map<String, MultiSelectData> selectDataSet = new TreeMap<>();
 
-    public JPanel build(int numColumns) throws PWCGException  
+    public Pane build(int numColumns) throws PWCGException  
     {
-        selectionLayout = new JPanel(new BorderLayout());
+        selectionLayout = new Pane(new BorderLayout());
         selectionLayout.setOpaque(false);
         
-        JPanel buttonGroup = buildButtonPanel();
+        Pane buttonGroup = buildButtonPanel();
         selectionLayout.add(buttonGroup, BorderLayout.NORTH);
                 
-        selectionGrid = new JPanel(new GridLayout(0, numColumns));
+        selectionGrid = new Pane(new GridLayout(0, numColumns));
         selectionGrid.setOpaque(false);
         
-        JPanel selectionGridContainer = new JPanel(new BorderLayout());
+        Pane selectionGridContainer = new Pane(new BorderLayout());
         selectionGridContainer.setOpaque(false);
         selectionGridContainer.add(selectionGrid, BorderLayout.NORTH);
         selectionLayout.add(selectionGridContainer, BorderLayout.CENTER);
@@ -47,7 +47,7 @@ public class MultiSelectGUI implements ActionListener
 
     public void addSelection(MultiSelectData selectionData) throws PWCGException
     {
-        JCheckBox selection = makeCheckBox(selectionData);
+        CheckBox selection = makeCheckBox(selectionData);
         checkBoxes.put(selectionData.getName(), selection);
         selectDataSet.put(selectionData.getName(), selectionData);
         buildCheckBoxGrid();
@@ -73,7 +73,7 @@ public class MultiSelectGUI implements ActionListener
     public List<MultiSelectData> getSelected()
     {
         List<MultiSelectData> selected = new ArrayList<>();
-        for (JCheckBox checkBox: checkBoxes.values())
+        for (CheckBox checkBox: checkBoxes.values())
         {
             if (checkBox.isSelected())
             {
@@ -97,7 +97,7 @@ public class MultiSelectGUI implements ActionListener
     private void buildCheckBoxGrid()
     {
         selectionGrid.removeAll();
-        for (JCheckBox checkBox: checkBoxes.values())
+        for (CheckBox checkBox: checkBoxes.values())
         {
             selectionGrid.add(checkBox);
         }
@@ -106,17 +106,17 @@ public class MultiSelectGUI implements ActionListener
         selectionGrid.repaint();
     }
     
-    private JPanel buildButtonPanel() throws PWCGException
+    private Pane buildButtonPanel() throws PWCGException
     {
-        JLabel spacer1 = PWCGButtonFactory.makePaperLabelMedium("         ");
-        JButton selectAllButton = PWCGButtonFactory.makePaperButtonWithBorder("Select All", "SelectAll", this);
+        Label spacer1 = ButtonFactory.makePaperLabelMedium("         ");
+        Button selectAllButton = ButtonFactory.makePaperButtonWithBorder("Select All", "SelectAll", this);
         selectAllButton.setOpaque(false);
-        JLabel spacer2 = PWCGButtonFactory.makePaperLabelMedium("         ");
-        JButton deselectAllButton = PWCGButtonFactory.makePaperButtonWithBorder("Deselect All", "DeselectAll", this);
+        Label spacer2 = ButtonFactory.makePaperLabelMedium("         ");
+        Button deselectAllButton = ButtonFactory.makePaperButtonWithBorder("Deselect All", "DeselectAll", this);
         deselectAllButton.setOpaque(false);
-        JLabel spacer3 = PWCGButtonFactory.makePaperLabelMedium("         ");
+        Label spacer3 = ButtonFactory.makePaperLabelMedium("         ");
         
-        JPanel buttonGroup = new JPanel(new GridLayout(0, 5));
+        Pane buttonGroup = new Pane(new GridLayout(0, 5));
         buttonGroup.setOpaque(false);
         buttonGroup.add(spacer1);
         buttonGroup.add(selectAllButton);
@@ -126,9 +126,9 @@ public class MultiSelectGUI implements ActionListener
         return buttonGroup;
     }
 
-    private JCheckBox makeCheckBox(MultiSelectData selectionData) throws PWCGException 
+    private CheckBox makeCheckBox(MultiSelectData selectionData) throws PWCGException 
     {
-        JCheckBox checkBox = PWCGButtonFactory.makeCheckBox(selectionData.getText(), selectionData.getName(), Color.black, this);
+        CheckBox checkBox = ButtonFactory.makeCheckBox(selectionData.getText(), selectionData.getName(), Color.black, this);
         checkBox.setName(selectionData.getName());
         ToolTipManager.setToolTip(checkBox, selectionData.getInfo());
         return checkBox;
@@ -136,7 +136,7 @@ public class MultiSelectGUI implements ActionListener
     
     public void setTextColor(String key, Color color)
     {
-        JCheckBox selection = checkBoxes.get(key);
+        CheckBox selection = checkBoxes.get(key);
         selection.setForeground(color);
     }
     
@@ -148,14 +148,14 @@ public class MultiSelectGUI implements ActionListener
             String action = ae.getActionCommand();
             if (action.equalsIgnoreCase("SelectAll"))
             {
-                for (JCheckBox checkBox: checkBoxes.values())
+                for (CheckBox checkBox: checkBoxes.values())
                 {
                     checkBox.setSelected(true);
                 }
             }
             else if (action.equalsIgnoreCase("DeselectAll"))
             {
-                for (JCheckBox checkBox: checkBoxes.values())
+                for (CheckBox checkBox: checkBoxes.values())
                 {
                     checkBox.setSelected(false);
                 }

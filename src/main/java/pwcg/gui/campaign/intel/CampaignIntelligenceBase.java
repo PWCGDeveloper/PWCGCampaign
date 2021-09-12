@@ -1,7 +1,7 @@
 package pwcg.gui.campaign.intel;
 
 import java.awt.BorderLayout;
-import java.awt.Font;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javax.swing.JTextArea;
 
 import pwcg.campaign.Campaign;
@@ -33,17 +33,17 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
 
-public abstract class CampaignIntelligenceBase extends JPanel implements ActionListener
+public abstract class CampaignIntelligenceBase extends Pane implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
 	
     protected StringBuffer intelHeaderBuffer = new StringBuffer("");
     protected Campaign campaign;
 	protected SquadronMember referencePlayer;
-    protected JPanel squadronsByRoleContainer;
+    protected Pane squadronsByRoleContainer;
     protected JTextArea squadronIntelText;
     
 	public CampaignIntelligenceBase() throws PWCGException  
@@ -129,19 +129,19 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
             return;
         }
 
-        JLabel headerLabel = PWCGButtonFactory.makePaperLabelLarge(role.getRoleDescription() + " Squadrons: \n");
+        Label headerLabel = ButtonFactory.makePaperLabelLarge(role.getRoleDescription() + " Squadrons: \n");
         squadronsByRoleContainer.add(headerLabel);
 
         for (Squadron squadron : squadrons)
         {
             if (SquadronViability.isSquadronViable(squadron, campaign))
             {
-                JButton squadronSelectButton = PWCGButtonFactory.makePaperButton(squadron.determineDisplayName(campaign.getDate()), "SquadronSelected:" + squadron.getSquadronId(), this);
+                Button squadronSelectButton = ButtonFactory.makePaperButton(squadron.determineDisplayName(campaign.getDate()), "SquadronSelected:" + squadron.getSquadronId(), this);
                 squadronsByRoleContainer.add(squadronSelectButton);                
             }
             else
             {
-                JButton squadronSelectButton = PWCGButtonFactory.makeRedPaperButton(squadron.determineDisplayName(campaign.getDate()), "SquadronSelected:" + squadron.getSquadronId(), this);
+                Button squadronSelectButton = ButtonFactory.makeRedPaperButton(squadron.determineDisplayName(campaign.getDate()), "SquadronSelected:" + squadron.getSquadronId(), this);
                 squadronsByRoleContainer.add(squadronSelectButton);
             }
         }

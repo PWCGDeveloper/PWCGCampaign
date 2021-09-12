@@ -12,8 +12,8 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CombatReport;
@@ -31,7 +31,7 @@ import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.PageTurner;
 
 public class CampaignJournalScreen extends ImageResizingPanel implements ActionListener
@@ -40,16 +40,16 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
 
     private Campaign campaign = null;
     
-    private JPanel journalPagesGridPanel = new JPanel();
-    private JPanel pageTurnerPanel = null;
+    private Pane journalPagesGridPanel = new Pane();
+    private Pane pageTurnerPanel = null;
 
     private int linesPerPage = 20;
     
-    private JPanel leftpage = null;
-    private JPanel rightpage = null;
+    private Pane leftpage = null;
+    private Pane rightpage = null;
 
     private int pageNum = 0;
-    private Map<Integer, JPanel> indexPages = new TreeMap<Integer, JPanel>();
+    private Map<Integer, Pane> indexPages = new TreeMap<Integer, Pane>();
     private Map<Integer, String> journalReportKeysByPage = new TreeMap<>();
     private Map<String, CombatReport> journalReports =  new TreeMap<>();
 
@@ -116,22 +116,22 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
 		}
 	}
 
-    private JPanel makeNavigationPanel() throws PWCGException  
+    private Pane makeNavigationPanel() throws PWCGException  
     {
-        JPanel journalPanel = new JPanel(new GridLayout(0,1));
+        Pane journalPanel = new Pane(new GridLayout(0,1));
         journalPanel.setLayout(new BorderLayout());
         journalPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
-        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished Reading", "JournalFinished", "Leave Journal", this);
+        Button finishedButton = ButtonFactory.makeTranslucentMenuButton("Finished Reading", "JournalFinished", "Leave Journal", this);
         buttonPanel.add(finishedButton);
         
-        JButton firstPageButton = PWCGButtonFactory.makeTranslucentMenuButton("First Page", "FirstPage", "Leave Journal", this);
+        Button firstPageButton = ButtonFactory.makeTranslucentMenuButton("First Page", "FirstPage", "Leave Journal", this);
         buttonPanel.add(firstPageButton);
         
-        JButton lastPageButton = PWCGButtonFactory.makeTranslucentMenuButton("Last Page", "LastPage", "Leave Journal", this);
+        Button lastPageButton = ButtonFactory.makeTranslucentMenuButton("Last Page", "LastPage", "Leave Journal", this);
         buttonPanel.add(lastPageButton);
 
         journalPanel.add(buttonPanel, BorderLayout.NORTH);
@@ -139,14 +139,14 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
         return journalPanel;
     }
 
-    private JPanel  makeLogCenterPanel() throws PWCGException  
+    private Pane  makeLogCenterPanel() throws PWCGException  
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.OpenJournal);
         ImageResizingPanel journalCenterPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         journalCenterPanel.setLayout(new BorderLayout());
         journalCenterPanel.setOpaque(false);
         
-        journalPagesGridPanel = new JPanel();
+        journalPagesGridPanel = new Pane();
         journalPagesGridPanel.setLayout(new GridLayout(0,2));
         journalPagesGridPanel.setOpaque(false);
         
@@ -159,11 +159,11 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
     {
         indexPages.clear();
         
-        JPanel indexBorderPanel = new JPanel();
+        Pane indexBorderPanel = new Pane();
         indexBorderPanel.setLayout(new BorderLayout());
         indexBorderPanel.setOpaque(false);
 
-        JPanel indexPanel = new JPanel();
+        Pane indexPanel = new Pane();
         indexPanel.setLayout(new GridLayout(0,4));
         indexPanel.setOpaque(false);
         indexBorderPanel.add(indexPanel, BorderLayout.NORTH);
@@ -182,11 +182,11 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
                 int pageNum = indexPages.size();
                 indexPages.put(pageNum, indexBorderPanel);
                 
-                indexBorderPanel = new JPanel();
+                indexBorderPanel = new Pane();
                 indexBorderPanel.setLayout(new BorderLayout());
                 indexBorderPanel.setOpaque(false);
 
-                indexPanel = new JPanel();
+                indexPanel = new Pane();
                 indexPanel.setLayout(new GridLayout(0,4));
                 indexPanel.setOpaque(false);
                 
@@ -202,28 +202,28 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
         indexPages.put(pageNum, indexBorderPanel);
     }
 
-    private void addSpaceToTopOfIndexPage(JPanel indexPanel)
+    private void addSpaceToTopOfIndexPage(Pane indexPanel)
     {
         for (int i = 0; i < 2; ++i)
         {
-            indexPanel.add(PWCGButtonFactory.makeDummy());
-            indexPanel.add(PWCGButtonFactory.makeDummy());
-            indexPanel.add(PWCGButtonFactory.makeDummy());
-            indexPanel.add(PWCGButtonFactory.makeDummy());
+            indexPanel.add(ButtonFactory.makeDummy());
+            indexPanel.add(ButtonFactory.makeDummy());
+            indexPanel.add(ButtonFactory.makeDummy());
+            indexPanel.add(ButtonFactory.makeDummy());
         }
     }
 
-    private void makeJournalIndexEntry(JPanel indexPanel, String journalKey) throws PWCGException
+    private void makeJournalIndexEntry(Pane indexPanel, String journalKey) throws PWCGException
     {
-        indexPanel.add(PWCGButtonFactory.makeDummy());
+        indexPanel.add(ButtonFactory.makeDummy());
         
         Date date = DateUtils.getDateYYYYMMDD(journalKey);
         String buttonText = DateUtils.getDateStringDashDelimitedYYYYMMDD(date);
-        JButton indexButton = PWCGButtonFactory.makePaperButton(buttonText, journalKey, this);
+        Button indexButton = ButtonFactory.makePaperButton(buttonText, journalKey, this);
         indexPanel.add(indexButton);
 
-        indexPanel.add(PWCGButtonFactory.makeDummy());
-        indexPanel.add(PWCGButtonFactory.makeDummy());
+        indexPanel.add(ButtonFactory.makeDummy());
+        indexPanel.add(ButtonFactory.makeDummy());
     }
 
     private void makePages() throws PWCGException  
@@ -273,7 +273,7 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
         this.add(pageTurnerPanel, BorderLayout.SOUTH);
     }
 
-    private JPanel makePage(int pageNum) throws PWCGException 
+    private Pane makePage(int pageNum) throws PWCGException 
     {
         if (indexPages.containsKey(pageNum))
         {
@@ -283,7 +283,7 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
         
         if (journalReportKeysByPage.containsKey(pageNum))
         {
-            JPanel journalBorderPanel = new JPanel();
+            Pane journalBorderPanel = new Pane();
             journalBorderPanel.setLayout(new BorderLayout());
             journalBorderPanel.setOpaque(false);
             

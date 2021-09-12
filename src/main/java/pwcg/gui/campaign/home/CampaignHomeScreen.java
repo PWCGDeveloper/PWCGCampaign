@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import javax.swing.JPanel;
+import javafx.scene.layout.Pane;
 
 import pwcg.aar.AARCoordinator;
 import pwcg.campaign.Campaign;
@@ -89,19 +89,19 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
         }
     }
 
-    private JPanel makeLeftPanel() throws PWCGException
+    private Pane makeLeftPanel() throws PWCGException
     {
         CampaignHomeGUILeftPanelBuilder leftPanelBuilder = new CampaignHomeGUILeftPanelBuilder(this);
         return leftPanelBuilder.makeLeftPanel();
     }
 
-    private JPanel makeDefaultCenterPanel() throws PWCGException
+    private Pane makeDefaultCenterPanel() throws PWCGException
     {
         List<SquadronMember> squadronMembers = makePilotList();
         return CampaignHomeCenterPanelFactory.makeCampaignHomeCenterPanel(this, squadronMembers);
     }
 
-    private JPanel makeDefaultRightPanel() throws PWCGException
+    private Pane makeDefaultRightPanel() throws PWCGException
     {
         List<SquadronMember> squadronMembers = makePilotList();
         SquadronMember referencePlayer = campaign.findReferencePlayer();
@@ -197,7 +197,7 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
         return campaign;
     }
     
-    public void createNewContext(JPanel centerPanel, JPanel rightPanel) throws PWCGException
+    public void createNewContext(Pane centerPanel, Pane rightPanel) throws PWCGException
     {        
         pwcgThreePanel.setCenterPanel(centerPanel);
         pwcgThreePanel.setRightPanel(rightPanel);
@@ -210,7 +210,7 @@ public class CampaignHomeScreen extends ImageResizingPanel implements ActionList
     }
 
     @Override
-    public JPanel getScreen()
+    public Pane getScreen()
     {
         return this;
     }

@@ -1,19 +1,19 @@
 package pwcg.gui.maingui.campaigngenerate;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.ButtonGroup;
+import javafx.scene.control.ButtonGroup;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javax.swing.RadioButton ;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.ArmedServiceFinder;
@@ -25,10 +25,10 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.ToolTipManager;
 
-public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionListener
+public class CampaignGeneratorChooseServiceGUI extends Pane implements ActionListener
 {
 
 	private static final long serialVersionUID = 1L;
@@ -44,27 +44,27 @@ public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionL
 
 	public void makeServiceSelectionPanel() throws PWCGException
 	{
-		JPanel serviceMainPanel = new JPanel(new BorderLayout());
+		Pane serviceMainPanel = new Pane(new BorderLayout());
 		serviceMainPanel.setLayout(new BorderLayout());
 		serviceMainPanel.setOpaque(false);
 
-        JLabel chooseServiceLabel = PWCGButtonFactory.makeMenuLabelLarge("Choose a service:");
+        Label chooseServiceLabel = ButtonFactory.makeMenuLabelLarge("Choose a service:");
         serviceMainPanel.add(chooseServiceLabel, BorderLayout.NORTH);
         
 
-        JPanel internalServicePanel = new JPanel(new BorderLayout());
+        Pane internalServicePanel = new Pane(new BorderLayout());
         internalServicePanel.setLayout(new BorderLayout());
         internalServicePanel.setOpaque(false);
 
         ButtonGroup serviceButtonGroup = new ButtonGroup();
         
-        JPanel servicePanel = new JPanel(new GridLayout(0, 2));
+        Pane servicePanel = new Pane(new GridLayout(0, 2));
         servicePanel.setOpaque(false);
         
-        JPanel alliedServicePanel = new JPanel(new GridLayout(0, 1));
+        Pane alliedServicePanel = new Pane(new GridLayout(0, 1));
         alliedServicePanel.setOpaque(false);
         
-        JPanel axisServicePanel = new JPanel(new GridLayout(0, 1));
+        Pane axisServicePanel = new Pane(new GridLayout(0, 1));
         axisServicePanel.setOpaque(false);
 
         servicePanel.add(alliedServicePanel);
@@ -74,7 +74,7 @@ public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionL
 		for (ArmedService service : alliedArmedServices)
 		{
 	        String icon = service.getServiceIcon() + ".jpg";
-	        JRadioButton serviceButton = makeRadioButton(service, icon);
+	        RadioButton  serviceButton = makeRadioButton(service, icon);
 	        alliedServicePanel.add(serviceButton);
 	        serviceButtonGroup.add(serviceButton);
 		}
@@ -84,7 +84,7 @@ public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionL
         for (ArmedService service : axisArmedServices)
         {
             String icon = service.getServiceIcon() + ".jpg";
-            JRadioButton serviceButton = makeRadioButton(service, icon);
+            RadioButton  serviceButton = makeRadioButton(service, icon);
             axisServicePanel.add(serviceButton);
             serviceButtonGroup.add(serviceButton);
         }
@@ -103,9 +103,9 @@ public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionL
 		add(serviceMainPanel, BorderLayout.CENTER);
 	}
 
-    private JLabel makeBlankLabel()
+    private Label makeBlankLabel()
     {
-        JLabel blankLabel = new JLabel("   ");
+        Label blankLabel = new Label("   ");
         blankLabel.setOpaque(false);
         return blankLabel;
     }
@@ -123,7 +123,7 @@ public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionL
         return armedServicesForSide;
 	}
 	
-	private JRadioButton makeRadioButton(ArmedService service, String imageName) throws PWCGException
+	private RadioButton  makeRadioButton(ArmedService service, String imageName) throws PWCGException
 	{
         Color buttonBG = ColorMap.WOOD_BACKGROUND;
         Color buttonFG = ColorMap.CHALK_FOREGROUND;
@@ -137,7 +137,7 @@ public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionL
 		ImageIcon selectedIcon = new ImageIcon(selectedIconPath);
 		ImageIcon notSelectedIcon = new ImageIcon(notSelectedIconPath);
 	
-		JRadioButton button= new JRadioButton(service.getName());
+		RadioButton  button= new RadioButton (service.getName());
 		
 		button.setIcon(notSelectedIcon);
 		button.setSelectedIcon(selectedIcon);

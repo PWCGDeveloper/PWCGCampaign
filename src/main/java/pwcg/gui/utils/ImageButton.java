@@ -1,16 +1,17 @@
 package pwcg.gui.utils;
 
 import java.awt.AlphaComposite;
-import java.awt.Font;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-
+import javafx.embed.swing.SwingFXUtils;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -18,51 +19,42 @@ import pwcg.gui.image.ImageCache;
 
 public class ImageButton
 {
-    public static PWCGJButton makeButton(String text, String imageName) throws PWCGException
+    public static Button makeButton(String text, String imageName) throws PWCGException
     {
         String imagePath = ContextSpecificImages.imagesNational() + imageName;
-        ImageIcon icon = new ImageIcon(imagePath);
+        Image icon = new Image(imagePath);
+        ImageView view = new ImageView(icon);
+        view.setFitHeight(80);
+        view.setPreserveRatio(true);
+        
+        Button button = new Button(text);
+        button.setGraphic(view);
 
-        PWCGJButton button = new PWCGJButton(text);
-        button.setBorderPainted(false);
-        button.setFocusPainted(false);
-        button.setIcon(icon);
+        // JAVAFX 
+//        button.setBorderPainted(false);
+//        button.setFocusPainted(false);
+//        button.setOpaque(false);
 
         Font font = PWCGMonitorFonts.getPrimaryFontSmall();
-
         button.setFont(font);
-        button.setOpaque(false);
 
         return button;
     }
 
-    public static PWCGJButton makeButton(String text, Image image) throws PWCGException
-    {
-        ImageIcon icon = new ImageIcon(image);
-
-        PWCGJButton button = new PWCGJButton(text);
-        button.setIcon(icon);
-
-        Font font = PWCGMonitorFonts.getPrimaryFontSmall();
-
-        button.setFont(font);
-        button.setOpaque(false);
-
-        return button;
-    }
-
-    public static PWCGJButton makeTranslucentButton(String filename) throws PWCGException
+    public static Button makeTranslucentButton(String filename) throws PWCGException
     {
         String imagePath = PWCGContext.getInstance().getDirectoryManager().getPwcgImagesDir() + "Menus\\" + filename;
 
         BufferedImage bufferedImage = ImageCache.getImageFromFile(imagePath);
         BufferedImage modifiedImage = getModifiedImage(bufferedImage);
-        ImageIcon icon = new ImageIcon(modifiedImage);
+        Image icon = SwingFXUtils.toFXImage(modifiedImage, null);
 
-        PWCGJButton button = new PWCGJButton(icon);
-        button.setOpaque(false);
-        button.setBorderPainted(false);
-        button.setContentAreaFilled(false);
+        ImageView view = new ImageView(icon);
+        view.setFitHeight(80);
+        view.setPreserveRatio(true);
+
+        Button button = new Button();
+        button.setGraphic(view);
 
         return button;
     }
@@ -78,36 +70,39 @@ public class ImageButton
         return modifiedImage;
     }
 
-    public static JLabel makePilotPicButton(Image image) throws PWCGException
+    public static Label makePilotPicButton(Image image) throws PWCGException
     {
-        ImageIcon icon = new ImageIcon(image);
+        ImageView view = new ImageView(image);
+        view.setFitHeight(80);
+        view.setPreserveRatio(true);
 
-        JLabel button = new JLabel("");
-        button.setIcon(icon);
+        Label pilotPicLabel = new Label();
+        pilotPicLabel.setGraphic(view);
 
-        return button;
+        return pilotPicLabel;
     }
 
-    public static JCheckBox makeCheckBox(String text, String imageName) throws PWCGException
+    public static CheckBox makeCheckBox(String text, String imageName) throws PWCGException
     {
-        Icon notSelectedIcon = getOwnedIcon(imageName, false);
-        Icon selectedIcon = getOwnedIcon(imageName, true);
+        Image selectedIcon = getOwnedIcon(imageName, true);
 
-        JCheckBox checkBox = new JCheckBox(text);
-
+        CheckBox checkBox = new CheckBox(text);
         Font font = PWCGMonitorFonts.getPrimaryFontSmall();
 
         checkBox.setFont(font);
-        checkBox.setHorizontalAlignment(JLabel.LEFT);
-        checkBox.setOpaque(false);
-        checkBox.setSize(300, 50);
-        checkBox.setIcon(notSelectedIcon);
-        checkBox.setSelectedIcon(selectedIcon);
+        checkBox.setAlignment(Pos.CENTER_LEFT);
+//        checkBox.setOpaque(false);
+//        checkBox.setSize(300, 50);
+        
+        ImageView view = new ImageView(selectedIcon);
+        view.setFitHeight(80);
+        view.setPreserveRatio(true);
+        checkBox.setGraphic(view);
 
         return checkBox;
     }
 
-    private static Icon getOwnedIcon(String imageName, boolean owned)
+    private static Image getOwnedIcon(String imageName, boolean owned)
     {
         String imagePath = ContextSpecificImages.imagesProfiles() + imageName;
         if (!owned)
@@ -117,7 +112,7 @@ public class ImageButton
 
         imagePath += ".jpg";
 
-        ImageIcon icon = new ImageIcon(imagePath);
+        Image icon = new Image(imagePath);
 
         return icon;
     }

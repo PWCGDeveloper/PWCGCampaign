@@ -1,7 +1,7 @@
 package pwcg.gui.campaign.activity;
 
 import java.awt.BorderLayout;
-import java.awt.Font;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -9,8 +9,8 @@ import java.awt.event.ActionListener;
 import java.util.Map;
 import java.util.TreeMap;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 import javax.swing.JTextArea;
 
 import pwcg.campaign.Campaign;
@@ -26,21 +26,21 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.PageTurner;
 
 public class CampaignSquadronLogScreen extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
-    private JPanel logPagesGridPanel = new JPanel();
-    private JPanel pageTurnerPanel = null;
+    private Pane logPagesGridPanel = new Pane();
+    private Pane pageTurnerPanel = null;
 
 	private Campaign campaign = null;
     private int logsForSquadronId = 0;
 	
-	private JPanel leftpage = null;
-	private JPanel rightpage = null;
+	private Pane leftpage = null;
+	private Pane rightpage = null;
 
 	private int pageNum = 0;
 	private Map<Integer, StringBuffer> pages = new TreeMap<>();
@@ -79,22 +79,22 @@ public class CampaignSquadronLogScreen extends ImageResizingPanel implements Act
         makePages();        
 	}
 
-	private JPanel makeLogLeftPanel() throws PWCGException  
+	private Pane makeLogLeftPanel() throws PWCGException  
 	{
 
-        JPanel squadronLogPanel = new JPanel(new BorderLayout());
+        Pane squadronLogPanel = new Pane(new BorderLayout());
 		squadronLogPanel.setOpaque(false);
 
-		JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+		Pane buttonPanel = new Pane(new GridLayout(0,1));
 		buttonPanel.setOpaque(false);
         
-        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished Reading", "SquadronLogFinished", "Leave Squadron Log", this);
+        Button finishedButton = ButtonFactory.makeTranslucentMenuButton("Finished Reading", "SquadronLogFinished", "Leave Squadron Log", this);
         buttonPanel.add(finishedButton);
         
-        JButton firstPageButton = PWCGButtonFactory.makeTranslucentMenuButton("First Page", "FirstPage", "Leave Journal", this);
+        Button firstPageButton = ButtonFactory.makeTranslucentMenuButton("First Page", "FirstPage", "Leave Journal", this);
         buttonPanel.add(firstPageButton);
         
-        JButton lastPageButton = PWCGButtonFactory.makeTranslucentMenuButton("Last Page", "LastPage", "Leave Journal", this);
+        Button lastPageButton = ButtonFactory.makeTranslucentMenuButton("Last Page", "LastPage", "Leave Journal", this);
         buttonPanel.add(lastPageButton);
 
 		squadronLogPanel.add(buttonPanel, BorderLayout.NORTH);
@@ -102,14 +102,14 @@ public class CampaignSquadronLogScreen extends ImageResizingPanel implements Act
 		return squadronLogPanel;
 	}
 
-	private JPanel  makeLogCenterPanel() throws PWCGException  
+	private Pane  makeLogCenterPanel() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.OpenSquadronLog);
         ImageResizingPanel logCenterPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         logCenterPanel.setLayout(new BorderLayout());
         logCenterPanel.setOpaque(false);
         
-        logPagesGridPanel = new JPanel();
+        logPagesGridPanel = new Pane();
         logPagesGridPanel.setLayout(new GridLayout(0,2));
         logPagesGridPanel.setOpaque(false);
         
@@ -178,13 +178,13 @@ public class CampaignSquadronLogScreen extends ImageResizingPanel implements Act
         this.add(pageTurnerPanel, BorderLayout.SOUTH);
     }
 
-	private JPanel makePage(StringBuffer pageEntries, int pageNum) throws PWCGException 
+	private Pane makePage(StringBuffer pageEntries, int pageNum) throws PWCGException 
 	{
-		JPanel campaignLogPanelBorder = new JPanel();
+		Pane campaignLogPanelBorder = new Pane();
 		campaignLogPanelBorder.setLayout(new BorderLayout());
 		campaignLogPanelBorder.setOpaque(false);
 
-		JPanel campaignLogPanel = new JPanel();
+		Pane campaignLogPanel = new Pane();
 		campaignLogPanel.setLayout(new GridLayout(0,1));
 		campaignLogPanel.setOpaque(false);
 

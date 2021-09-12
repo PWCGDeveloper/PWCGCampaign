@@ -1,15 +1,15 @@
 package pwcg.gui.rofmap.brief;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+import javafx.scene.paint.Color;
 import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Map;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -25,7 +25,7 @@ import pwcg.gui.rofmap.MapScroll;
 import pwcg.gui.rofmap.brief.model.BriefingData;
 import pwcg.gui.rofmap.brief.model.BriefingFlight;
 import pwcg.gui.rofmap.brief.model.BriefingFlightParameters;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.mission.Mission;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -74,9 +74,9 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 		}
 	}
 
-    private JPanel createCenterPanel() throws PWCGException
+    private Pane createCenterPanel() throws PWCGException
     {
-        JPanel briefingMapCenterPanel = new JPanel(new BorderLayout());
+        Pane briefingMapCenterPanel = new Pane(new BorderLayout());
         createMapPanel();
         briefingMapCenterPanel.add(mapScroll.getMapScrollPane(), BorderLayout.CENTER);
 
@@ -107,60 +107,60 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
         return mapPoint;
     }
 
-    private JPanel makeNavPanel() throws PWCGException 
+    private Pane makeNavPanel() throws PWCGException 
     {
-        JPanel leftPanel = new JPanel(new BorderLayout());
+        Pane leftPanel = new Pane(new BorderLayout());
         leftPanel.setOpaque(false);
 
-        JPanel buttonPanel = makeButtonPanel();
+        Pane buttonPanel = makeButtonPanel();
         leftPanel.add(buttonPanel, BorderLayout.NORTH);
         leftPanel.add(briefingFlightChooser.getFlightChooserPanel(), BorderLayout.CENTER);
         return leftPanel;
     }
     
-	private JPanel makeButtonPanel() throws PWCGException 
+	private Pane makeButtonPanel() throws PWCGException 
 	{
-		JPanel buttonPanel = new JPanel(new BorderLayout());
+		Pane buttonPanel = new Pane(new BorderLayout());
 		buttonPanel.setOpaque(false);
 
-		JPanel buttonGrid = new JPanel();
+		Pane buttonGrid = new Pane();
 		buttonGrid.setLayout(new GridLayout(0,1));
 		buttonGrid.setOpaque(false);
 	    
         if (mission.isFinalized())
         {
-            buttonGrid.add(PWCGButtonFactory.makeDummy());
-            JButton backToCampaignButton = makeButton("Back to Campaign", "Back to Campaign", "Return to campaign home screen");
+            buttonGrid.add(ButtonFactory.makeDummy());
+            Button backToCampaignButton = makeButton("Back to Campaign", "Back to Campaign", "Return to campaign home screen");
             buttonGrid.add(backToCampaignButton);
         }
 
-		buttonGrid.add(PWCGButtonFactory.makeDummy());
-        JButton scrubMissionButton = makeButton("Scrub Mission", "Scrub Mission", "Scrub this mission and return to campaign home screen");
+		buttonGrid.add(ButtonFactory.makeDummy());
+        Button scrubMissionButton = makeButton("Scrub Mission", "Scrub Mission", "Scrub this mission and return to campaign home screen");
         buttonGrid.add(scrubMissionButton);
 
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
-        JButton goBackToBriefingDescriptionButton = makeButton("Back: Briefing", "Back: Briefing", "Go back to briefing description screen");
+        buttonGrid.add(ButtonFactory.makeDummy());
+        Button goBackToBriefingDescriptionButton = makeButton("Back: Briefing", "Back: Briefing", "Go back to briefing description screen");
         buttonGrid.add(goBackToBriefingDescriptionButton);
 
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
-        JButton goToWaypointEditButton = makeButton("Next: Waypoint", "Next: Waypoint", "Progress to waypoint editor screen");
+        buttonGrid.add(ButtonFactory.makeDummy());
+        Button goToWaypointEditButton = makeButton("Next: Waypoint", "Next: Waypoint", "Progress to waypoint editor screen");
         buttonGrid.add(goToWaypointEditButton);
 
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        buttonGrid.add(ButtonFactory.makeDummy());
+        buttonGrid.add(ButtonFactory.makeDummy());
 
 		buttonPanel.add(buttonGrid, BorderLayout.NORTH);
 		
         BriefingMapSquadronSelector squadronSelector = new BriefingMapSquadronSelector(mission, this, briefingData);
-        JPanel friendlySquadronSelectorPanel = squadronSelector.makeComboBox();
+        Pane friendlySquadronSelectorPanel = squadronSelector.makeComboBox();
 		buttonPanel.add(friendlySquadronSelectorPanel, BorderLayout.CENTER);
 		
 		return buttonPanel;
 	}
 
-    private JButton makeButton(String buttonText, String command, String toolTipText) throws PWCGException
+    private Button makeButton(String buttonText, String command, String toolTipText) throws PWCGException
     {
-        return PWCGButtonFactory.makeTranslucentMenuButton(buttonText, command, toolTipText, this);
+        return ButtonFactory.makeTranslucentMenuButton(buttonText, command, toolTipText, this);
     }
 
 	@Override

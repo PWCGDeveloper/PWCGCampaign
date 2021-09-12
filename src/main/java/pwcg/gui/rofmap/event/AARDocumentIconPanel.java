@@ -1,9 +1,9 @@
 package pwcg.gui.rofmap.event;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+import javafx.scene.paint.Color;
 import java.awt.Dimension;
-import java.awt.Font;
+import javafx.scene.text.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -25,7 +25,7 @@ import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.image.ImageCache;
 import pwcg.gui.utils.TextGraphicsMeasurement;
 
-public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPanel
+public abstract class AARDocumentIconPanel extends Pane implements IAAREventPanel
 {
     private static final long serialVersionUID = 1L;
 
@@ -71,7 +71,7 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
             BufferedImage resizedImage = resizeImage(folderImage);
 
             ImageIcon icon = new ImageIcon(resizedImage);
-            JLabel imageLabel = new JLabel(icon);
+            Label imageLabel = new Label(icon);
             this.add(imageLabel, BorderLayout.CENTER);
         }
         catch (Exception e)
@@ -125,7 +125,7 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
         int lineVerticalPosition = 30;
         for (String headerLineOfText :bodyLinesOfText)
         {
-            documentImage = addTextLine(documentImage, lineHorizontalPosition, lineVerticalPosition, headerLineOfText, headerFont, JLabel.CENTER_ALIGNMENT);
+            documentImage = addTextLine(documentImage, lineHorizontalPosition, lineVerticalPosition, headerLineOfText, headerFont, Label.CENTER_ALIGNMENT);
             lineVerticalPosition += 22;
         }
         
@@ -149,7 +149,7 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
         int lineHorizontalPosition = 40;
         for (String bodyLineOfText :bodyLinesOfText)
         {
-            documentImage = addTextLine(documentImage, lineHorizontalPosition, lineVerticalPosition, bodyLineOfText, bodyFont, JLabel.LEFT_ALIGNMENT);
+            documentImage = addTextLine(documentImage, lineHorizontalPosition, lineVerticalPosition, bodyLineOfText, bodyFont, Label.LEFT_ALIGNMENT);
             lineVerticalPosition += 17;
         }
         
@@ -206,7 +206,7 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
         BufferedImage result = new BufferedImage(documentImage.getWidth(), documentImage.getHeight(), BufferedImage.TRANSLUCENT);
         Graphics graphics = result.getGraphics();
 
-        if (alignment == JLabel.CENTER_ALIGNMENT)
+        if (alignment == Label.CENTER_ALIGNMENT)
         {
             int lineWidthPixels = TextGraphicsMeasurement.measureTextWidth(originalDocumentImageGraphics, headerFont, line);
             lineHorizontalPosition = (documentImage.getWidth() - lineWidthPixels) / 2;
@@ -269,7 +269,7 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
     }
 
     @Override
-    public JPanel getPanel()
+    public Pane getPanel()
     {
         return this;
     }

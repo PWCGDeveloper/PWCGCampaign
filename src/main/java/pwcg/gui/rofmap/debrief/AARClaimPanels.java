@@ -1,16 +1,16 @@
 package pwcg.gui.rofmap.debrief;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javax.swing.JTabbedPane;
 
 import pwcg.aar.AARCoordinator;
@@ -25,7 +25,7 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 
 public class AARClaimPanels extends ImageResizingPanel
 {
@@ -53,9 +53,9 @@ public class AARClaimPanels extends ImageResizingPanel
         this.add(makeTabbedClaimsPanel(), BorderLayout.CENTER);
     }
 
-    private JPanel makeTabbedClaimsPanel() throws PWCGException
+    private Pane makeTabbedClaimsPanel() throws PWCGException
     {
-        JPanel claimPanelSet = new JPanel (new BorderLayout());
+        Pane claimPanelSet = new Pane (new BorderLayout());
         claimPanelSet.setOpaque(false);
 
         Color tabBG = ColorMap.PAPER_BACKGROUND;
@@ -96,22 +96,22 @@ public class AARClaimPanels extends ImageResizingPanel
         return playerDeclarations;
     }
 
-    private JPanel makeInfoPanel() throws PWCGException 
+    private Pane makeInfoPanel() throws PWCGException 
     {
-        JPanel infoPanel = new JPanel (new BorderLayout());
+        Pane infoPanel = new Pane (new BorderLayout());
         infoPanel.setOpaque(false);
         
         Font font = PWCGMonitorFonts.getTypewriterFont();
 
-        JPanel infoPanelGrid = new JPanel (new GridLayout(0,1));
+        Pane infoPanelGrid = new Pane (new GridLayout(0,1));
         infoPanelGrid.setOpaque(false);
 
         for (int i = 0; i < 1; ++i)
         {
-            infoPanelGrid.add(PWCGButtonFactory.makeDummy());
+            infoPanelGrid.add(ButtonFactory.makeDummy());
         }
 
-        JLabel lPilots = new JLabel("     Pilots assigned to this mission:", JLabel.LEFT);
+        Label lPilots = new Label("     Pilots assigned to this mission:", Label.LEFT);
         lPilots.setOpaque(false);
         lPilots.setFont(font);
         infoPanelGrid.add(lPilots);
@@ -125,7 +125,7 @@ public class AARClaimPanels extends ImageResizingPanel
             {
                 String crewDesc = "             " + pilot.getNameAndRank();
                
-                JLabel lPilot = new JLabel(crewDesc, JLabel.LEFT);
+                Label lPilot = new Label(crewDesc, Label.LEFT);
                 lPilot.setSize(200, 40);
                 lPilot.setOpaque(false);
                 lPilot.setFont(font);
@@ -133,18 +133,18 @@ public class AARClaimPanels extends ImageResizingPanel
             }
         }
         
-        JLabel space1 = new JLabel("", JLabel.LEFT);
-        JLabel space2 = new JLabel("", JLabel.LEFT);
+        Label space1 = new Label("", Label.LEFT);
+        Label space2 = new Label("", Label.LEFT);
         infoPanelGrid.add(space1);
         infoPanelGrid.add(space2);
 
-        JLabel lDate = new JLabel("     Date: " + DateUtils.getDateString(campaign.getDate()), JLabel.LEFT);
+        Label lDate = new Label("     Date: " + DateUtils.getDateString(campaign.getDate()), Label.LEFT);
         lDate.setFont(font);
         infoPanelGrid.add(lDate);
 
         for (int i = 0; i < 1; ++i)
         {
-            infoPanelGrid.add(PWCGButtonFactory.makeDummy());
+            infoPanelGrid.add(ButtonFactory.makeDummy());
         }
         
         infoPanel.add(infoPanelGrid, BorderLayout.NORTH);

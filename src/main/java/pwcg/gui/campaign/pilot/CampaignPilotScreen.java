@@ -1,8 +1,8 @@
 package pwcg.gui.campaign.pilot;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,10 +10,10 @@ import java.io.File;
 import java.util.Date;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import javafx.scene.control.Button;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
@@ -39,9 +39,9 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImagePreviewPanel;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageScaledPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
-import pwcg.gui.utils.PWCGButtonNoBackground;
-import pwcg.gui.utils.PWCGJButton;
+import pwcg.gui.utils.ButtonFactory;
+import pwcg.gui.utils.ButtonNoBackground;
+import pwcg.gui.utils.Button;
 import pwcg.gui.utils.ToolTipManager;
 import pwcg.gui.utils.UIUtils;
 
@@ -58,7 +58,7 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
     protected String changeSkinAction = "";
 	protected String openMedalBoxAction = "";
     protected String openLogBookAction = "";
-    protected JPanel centerPanel;
+    protected Pane centerPanel;
 
     public CampaignPilotScreen(Campaign campaign, Squadron squad, SquadronMember pilot, CampaignHomeScreen parent)
     {
@@ -85,14 +85,14 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
 	    this.add(BorderLayout.CENTER, centerPanel);
 	}
 
-	public JPanel makeCenterPanel() throws PWCGException 
+	public Pane makeCenterPanel() throws PWCGException 
 	{	
-        JPanel campaignPilotPanel = new JPanel(new BorderLayout());
+        Pane campaignPilotPanel = new Pane(new BorderLayout());
         campaignPilotPanel.setOpaque(false);
 
-		JPanel pilotLogPanel = makePilotLog();
-        JPanel picturePanel = makePicturePanel();
-		JPanel pilotMedalBoxPanel = makeMedalBox();
+		Pane pilotLogPanel = makePilotLog();
+        Pane picturePanel = makePicturePanel();
+		Pane pilotMedalBoxPanel = makeMedalBox();
 		
         campaignPilotPanel.add(pilotMedalBoxPanel,BorderLayout.NORTH);
         campaignPilotPanel.add(picturePanel,BorderLayout.WEST);
@@ -101,15 +101,15 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
 		return campaignPilotPanel;
 	}	
 
-    private JPanel makenavigationPanel() throws PWCGException  
+    private Pane makenavigationPanel() throws PWCGException  
     {
-        JPanel pilotDesktopNavPanel = new JPanel(new BorderLayout());
+        Pane pilotDesktopNavPanel = new Pane(new BorderLayout());
         pilotDesktopNavPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
-        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "PilotFinished", "Finished viewing pilot", this);
+        Button finishedButton = ButtonFactory.makeTranslucentMenuButton("Finished", "PilotFinished", "Finished viewing pilot", this);
         buttonPanel.add(finishedButton);
 
         pilotDesktopNavPanel.add(buttonPanel, BorderLayout.NORTH);
@@ -117,9 +117,9 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
         return pilotDesktopNavPanel;
     }
 
-	private JPanel makePilotLog() throws PWCGException 
+	private Pane makePilotLog() throws PWCGException 
 	{
-		JPanel pilotLogPanel = new JPanel(new BorderLayout());
+		Pane pilotLogPanel = new Pane(new BorderLayout());
 		pilotLogPanel.setOpaque(false);
 
 		String logSpacer = "          ";
@@ -135,14 +135,14 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
 		Color fg = ColorMap.MAP_LOG_FOREGROUND;
 		Color fadedFG = new Color(fg.getRed(),fg.getGreen(),fg.getBlue(),180);
 		
-		JPanel pilotLogBookGrid = new JPanel (new GridLayout(0, 2));
+		Pane pilotLogBookGrid = new Pane (new GridLayout(0, 2));
 		pilotLogBookGrid.setOpaque(false);
 
 		for (int i = 0; i < 1; ++i)
 		{
 	        for (int j = 0; j < 2; ++j)
 	        {
-    			JLabel lSpacer = new JLabel(logSpacer);
+    			Label lSpacer = new Label(logSpacer);
     			lSpacer.setBackground(bg);
     			lSpacer.setOpaque(false);
     			lSpacer.setFont(font);
@@ -150,8 +150,8 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
 	        }
 		}
 		
-		JButton logButton = new PWCGButtonNoBackground("");
-		logButton.setHorizontalAlignment(SwingConstants.LEFT);
+		Button logButton = new ButtonNoBackground("");
+		logButton.setAlignment(SwingConstants.LEFT);
 		logButton.setForeground(fadedFG);
 		logButton.setBackground(bg);
 		logButton.setOpaque(false);
@@ -173,13 +173,13 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
 		return pilotLogPanel;
 	}
 
-    private JPanel makePicturePanel() throws PWCGException 
+    private Pane makePicturePanel() throws PWCGException 
     {
-        JPanel pilotPicPanel = new JPanel(new BorderLayout());
+        Pane pilotPicPanel = new Pane(new BorderLayout());
         pilotPicPanel.setOpaque(false);
         
-        PWCGJButton planeButton = makePlanePicture(campaign.getDate());
-        PWCGJButton pilotButton = makePilotPicture();
+        Button planeButton = makePlanePicture(campaign.getDate());
+        Button pilotButton = makePilotPicture();
         
         pilotPicPanel.add(pilotButton, BorderLayout.WEST);
         pilotPicPanel.add(planeButton, BorderLayout.SOUTH);
@@ -187,7 +187,7 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
         return pilotPicPanel;
     }
 
-	private PWCGJButton makePilotPicture() throws PWCGException 
+	private Button makePilotPicture() throws PWCGException 
 	{
 		Color bg = ColorMap.WOOD_BACKGROUND;
 		ImageIcon imageIcon = null;  
@@ -201,14 +201,14 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
             PWCGLogger.logException(ex);
 		}
 
-		PWCGJButton pilotPictureButton = null;
+		Button pilotPictureButton = null;
 		if (imageIcon != null)
 		{
-			pilotPictureButton = new PWCGJButton(imageIcon);
+			pilotPictureButton = new Button(imageIcon);
 		}
 		else
 		{
-			pilotPictureButton = new PWCGJButton("press to set picture");
+			pilotPictureButton = new Button("press to set picture");
 		}
 		pilotPictureButton.addActionListener(this);
 		pilotPictureButton.setBackground(bg);
@@ -221,7 +221,7 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
 		return pilotPictureButton;
 	}
 
-    private PWCGJButton makePlanePicture(Date date) throws PWCGException 
+    private Button makePlanePicture(Date date) throws PWCGException 
     {
         PlaneType bestPlane = null;
         if (squad != null)
@@ -251,14 +251,14 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
             PWCGLogger.logException(ex);
         }
 
-        PWCGJButton planeSkinsButton = null;
+        Button planeSkinsButton = null;
         if (imageIcon != null)
         {
-            planeSkinsButton = new PWCGJButton(imageIcon);
+            planeSkinsButton = new Button(imageIcon);
         }
         else
         {
-            planeSkinsButton = new PWCGJButton("");
+            planeSkinsButton = new Button("");
         }
         planeSkinsButton.addActionListener(this);
         planeSkinsButton.setBackground(bg);
@@ -272,16 +272,16 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
         return planeSkinsButton;
     }
 
-	private JPanel makeMedalBox() throws PWCGException 
+	private Pane makeMedalBox() throws PWCGException 
 	{
 		Color bg = ColorMap.WOOD_BACKGROUND;
 
-		JPanel pilotPMedalBoxPanel = new JPanel(new BorderLayout());
+		Pane pilotPMedalBoxPanel = new Pane(new BorderLayout());
 		pilotPMedalBoxPanel.setOpaque(false);
 
         String imagePath = ContextSpecificImages.imagesMisc() + "PilotMedalBox.png";
 		ImageIcon imageIcon = ImageIconCache.getInstance().getImageIcon(imagePath);
-		PWCGJButton medalBoxButton = new PWCGJButton(imageIcon);
+		Button medalBoxButton = new Button(imageIcon);
 
 
 		medalBoxButton.setBackground(bg);

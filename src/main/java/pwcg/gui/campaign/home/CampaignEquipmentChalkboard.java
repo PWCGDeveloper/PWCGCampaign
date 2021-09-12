@@ -1,16 +1,16 @@
 package pwcg.gui.campaign.home;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.EquippedPlane;
@@ -49,11 +49,11 @@ public class CampaignEquipmentChalkboard extends ImageResizingPanel
         SquadronMember referencePlayer = campaign.findReferencePlayer();            
         Map<Integer, EquippedPlane> planesForSquadron = campaign.getEquipmentManager().getEquipmentForSquadron(referencePlayer.getSquadronId()).getActiveEquippedPlanes();
         
-        JPanel equipmentPanel = createEquipmentListPanel(campaign, planesForSquadron);
+        Pane equipmentPanel = createEquipmentListPanel(campaign, planesForSquadron);
         this.add(equipmentPanel, BorderLayout.CENTER);
     }
 
-    private JPanel createEquipmentListPanel(Campaign campaign, Map<Integer, EquippedPlane> planesForSquadron) throws PWCGException
+    private Pane createEquipmentListPanel(Campaign campaign, Map<Integer, EquippedPlane> planesForSquadron) throws PWCGException
     {
         List<EquippedPlane> sortedAircraftOnInventory = PlaneSorter.sortEquippedPlanesByGoodness(new ArrayList<EquippedPlane>(planesForSquadron.values()));
         IPlaneMarkingManager planeMarkingManager = campaign.getPlaneMarkingManager();
@@ -69,11 +69,11 @@ public class CampaignEquipmentChalkboard extends ImageResizingPanel
         constraints.ipady = 3;
         GridBagLayout equipmentLayout = new GridBagLayout();
         
-        JPanel equipmentChalkboardPanel = new JPanel();
+        Pane equipmentChalkboardPanel = new Pane();
         equipmentChalkboardPanel.setOpaque(false);
         equipmentChalkboardPanel.setLayout(equipmentLayout);
 
-        JLabel lDummy = new JLabel("     ");
+        Label lDummy = new Label("     ");
         lDummy.setOpaque(false);
         lDummy.setForeground(buttonFG);
         lDummy.setFont(font);
@@ -82,7 +82,7 @@ public class CampaignEquipmentChalkboard extends ImageResizingPanel
         constraints.gridy = 0;
         equipmentChalkboardPanel.add(lDummy, constraints);
 
-        JLabel lRankHeader = new JLabel("Aircraft Type", JLabel.LEFT);
+        Label lRankHeader = new Label("Aircraft Type", Label.LEFT);
         lRankHeader.setOpaque(false);
         lRankHeader.setForeground(buttonFG);
         lRankHeader.setFont(font);
@@ -91,7 +91,7 @@ public class CampaignEquipmentChalkboard extends ImageResizingPanel
         constraints.gridy = 0;
         equipmentChalkboardPanel.add(lRankHeader, constraints);
 
-        JLabel lMissionHeader = new JLabel("Serial Number", JLabel.RIGHT);
+        Label lMissionHeader = new Label("Serial Number", Label.RIGHT);
         lMissionHeader.setOpaque(false);
         lMissionHeader.setForeground(buttonFG);
         lMissionHeader.setFont(font);
@@ -100,7 +100,7 @@ public class CampaignEquipmentChalkboard extends ImageResizingPanel
         constraints.gridy = 0;
         equipmentChalkboardPanel.add(lMissionHeader, constraints);
 
-        JLabel lVictoryHeader = new JLabel("ID Code", JLabel.RIGHT);
+        Label lVictoryHeader = new Label("ID Code", Label.RIGHT);
         lVictoryHeader.setOpaque(false);
         lVictoryHeader.setForeground(buttonFG);
         lVictoryHeader.setFont(font);
@@ -109,7 +109,7 @@ public class CampaignEquipmentChalkboard extends ImageResizingPanel
         constraints.gridy = 0;
         equipmentChalkboardPanel.add(lVictoryHeader, constraints);
 
-        lDummy = new JLabel("     ");
+        lDummy = new Label("     ");
         lDummy.setOpaque(false);
         lDummy.setForeground(buttonFG);
         lDummy.setFont(font);           constraints.weightx = 0.15;
@@ -120,7 +120,7 @@ public class CampaignEquipmentChalkboard extends ImageResizingPanel
         int i = 1;
         for (EquippedPlane plane : sortedAircraftOnInventory)
         {
-            lDummy = new JLabel("     ");
+            lDummy = new Label("     ");
             lDummy.setOpaque(false);
             lDummy.setForeground(buttonFG);
             lDummy.setFont(font);               constraints.weightx = 0.15;
@@ -128,8 +128,8 @@ public class CampaignEquipmentChalkboard extends ImageResizingPanel
             constraints.gridy = i;
             equipmentChalkboardPanel.add(lDummy, constraints);
 
-            JLabel aircraftNameLabel = new JLabel(plane.getDisplayName());
-            aircraftNameLabel.setHorizontalAlignment(JLabel.LEFT);
+            Label aircraftNameLabel = new Label(plane.getDisplayName());
+            aircraftNameLabel.setAlignment(Label.LEFT);
             aircraftNameLabel.setOpaque(false);
             aircraftNameLabel.setBackground(buttonBG);
             aircraftNameLabel.setForeground(buttonFG);
@@ -139,7 +139,7 @@ public class CampaignEquipmentChalkboard extends ImageResizingPanel
             constraints.gridy = i;
             equipmentChalkboardPanel.add(aircraftNameLabel, constraints);
 
-            JLabel aircraftSerialNumberLabel = new JLabel("" + plane.getSerialNumber(), JLabel.RIGHT);
+            Label aircraftSerialNumberLabel = new Label("" + plane.getSerialNumber(), Label.RIGHT);
             aircraftSerialNumberLabel.setOpaque(false);
             aircraftSerialNumberLabel.setForeground(buttonFG);
             aircraftSerialNumberLabel.setFont(font);
@@ -148,7 +148,7 @@ public class CampaignEquipmentChalkboard extends ImageResizingPanel
             constraints.gridy = i;
             equipmentChalkboardPanel.add(aircraftSerialNumberLabel, constraints);
             
-            JLabel lIdCode = new JLabel(planeMarkingManager.determineDisplayMarkings(campaign, plane), JLabel.RIGHT);
+            Label lIdCode = new Label(planeMarkingManager.determineDisplayMarkings(campaign, plane), Label.RIGHT);
             lIdCode.setOpaque(false);
             lIdCode.setForeground(buttonFG);
             lIdCode.setFont(font);               constraints.weightx = 0.15;
@@ -156,7 +156,7 @@ public class CampaignEquipmentChalkboard extends ImageResizingPanel
             constraints.gridy = i;
             equipmentChalkboardPanel.add(lIdCode, constraints);
              
-            lDummy = new JLabel("     ");
+            lDummy = new Label("     ");
             lDummy.setOpaque(false);
             lDummy.setForeground(buttonFG);
             lDummy.setFont(font);               constraints.weightx = 0.15;

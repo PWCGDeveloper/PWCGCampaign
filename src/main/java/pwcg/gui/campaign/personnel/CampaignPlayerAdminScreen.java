@@ -7,10 +7,10 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import javafx.scene.layout.Pane;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -29,14 +29,14 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.maingui.campaigngenerate.CampaignNewPilotScreen;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 
 public class CampaignPlayerAdminScreen extends ImageResizingPanel implements ActionListener, IRefreshableParentUI
 {
     private static final long serialVersionUID = 1L;
     private Campaign campaign;
     private CampaignAdminPilotPanel personaInfoPanel;
-    private JPanel personaActionsPanel;
+    private Pane personaActionsPanel;
 
     public CampaignPlayerAdminScreen(Campaign campaign)
     {
@@ -65,38 +65,38 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
         }
     }
 
-    public JPanel makeCenterPanel()
+    public Pane makeCenterPanel()
     {
         personaInfoPanel = new CampaignAdminPilotPanel(campaign, this);
         personaInfoPanel.makePanels();
         return personaInfoPanel;
     }
 
-    public JPanel makeNavigatePanel() throws PWCGException
+    public Pane makeNavigatePanel() throws PWCGException
     {
-        JPanel buttonPanel = new JPanel(new GridLayout(0, 1));
+        Pane buttonPanel = new Pane(new GridLayout(0, 1));
         buttonPanel.setOpaque(false);
 
-        JButton finishedAndSave = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished save results of coop administration", this);
+        Button finishedAndSave = ButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished save results of coop administration", this);
         buttonPanel.add(finishedAndSave);
 
-        JButton finishedAndCancel = PWCGButtonFactory.makeTranslucentMenuButton("Cancel", "Cancel", "Finished do not save results of coop administration", this);
+        Button finishedAndCancel = ButtonFactory.makeTranslucentMenuButton("Cancel", "Cancel", "Finished do not save results of coop administration", this);
         buttonPanel.add(finishedAndCancel);
 
-        JPanel navPanel = new JPanel(new BorderLayout());
+        Pane navPanel = new Pane(new BorderLayout());
         navPanel.setOpaque(false);
         navPanel.add(buttonPanel, BorderLayout.NORTH);
 
         return navPanel;
     }
 
-    public JPanel makeRightPanel() throws PWCGException
+    public Pane makeRightPanel() throws PWCGException
     {
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0, 1));
+        Pane buttonPanel = new Pane(new GridLayout(0, 1));
         buttonPanel.setOpaque(false);
 
-        JLabel label = PWCGButtonFactory.makeMenuLabelLarge("Select Admin Action:");
+        Label label = ButtonFactory.makeMenuLabelLarge("Select Admin Action:");
         buttonPanel.add(label);
 
         buttonPanel.add(makeActionButton("Add Pilot", "Add a coop persona to the campaign"));
@@ -114,15 +114,15 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
         }
         
 
-        personaActionsPanel = new JPanel(new BorderLayout());
+        personaActionsPanel = new Pane(new BorderLayout());
         personaActionsPanel.setOpaque(false);
         personaActionsPanel.add(buttonPanel, BorderLayout.NORTH);
         return personaActionsPanel;
     }
 
-    private JButton makeActionButton(String buttonText, String tooltip) throws PWCGException
+    private Button makeActionButton(String buttonText, String tooltip) throws PWCGException
     {
-        JButton button = PWCGButtonFactory.makeTranslucentMenuButton(buttonText, buttonText, tooltip, this);
+        Button button = ButtonFactory.makeTranslucentMenuButton(buttonText, buttonText, tooltip, this);
         return button;
     }
 
@@ -258,7 +258,7 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
     }
 
     @Override
-    public JPanel getScreen()
+    public Pane getScreen()
     {
         return this;
     }

@@ -8,8 +8,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
@@ -17,7 +17,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.image.ImageCache;
 
-public class NewspaperEndOfWarUI extends JPanel
+public class NewspaperEndOfWarUI extends Pane
 {
     private static int NEWSPAPER_IMAGE_WIDTH = 800;
     private static int NEWSPAPER_IMAGE_HEIGHT = 1000;
@@ -31,21 +31,21 @@ public class NewspaperEndOfWarUI extends JPanel
 
     public void makePanels() throws PWCGException
     {
-        JPanel newspaperImagePanel = buildNewspaperImagePanel();
+        Pane newspaperImagePanel = buildNewspaperImagePanel();
         this.add(newspaperImagePanel, BorderLayout.CENTER);
     }
 
-    private JPanel buildNewspaperImagePanel() throws PWCGException
+    private Pane buildNewspaperImagePanel() throws PWCGException
     {
         try
         {
-            JPanel newspaperImagePanel = new JPanel();
+            Pane newspaperImagePanel = new Pane();
             newspaperImagePanel.setOpaque(false);
 
             BufferedImage newspaperImage = buildNewspaperImage();
     
             ImageIcon icon = new ImageIcon(newspaperImage);
-            JLabel imageLabel= new JLabel(icon);
+            Label imageLabel= new Label(icon);
             newspaperImagePanel.add(imageLabel, BorderLayout.CENTER);
 
             return newspaperImagePanel;
@@ -55,7 +55,7 @@ public class NewspaperEndOfWarUI extends JPanel
             PWCGLogger.logException(e);
         }
         
-        return new JPanel();
+        return new Pane();
     }
 
     private BufferedImage buildNewspaperImage() throws PWCGException, IOException

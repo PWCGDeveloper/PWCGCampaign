@@ -1,7 +1,7 @@
 package pwcg.gui.maingui.config;
 
 import java.awt.BorderLayout;
-import java.awt.Font;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
@@ -30,7 +30,7 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImagePanelLayout;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 
 public class PwcgSkinConfigurationAnalysisDisplayScreen extends ImageResizingPanel implements ActionListener
@@ -67,24 +67,24 @@ public class PwcgSkinConfigurationAnalysisDisplayScreen extends ImageResizingPan
         }
     }
 
-	public JPanel makeButtonPanel() throws PWCGException 
+	public Pane makeButtonPanel() throws PWCGException 
 	{
-        JPanel campaignButtonPanel = new JPanel(new BorderLayout());
+        Pane campaignButtonPanel = new Pane(new BorderLayout());
         campaignButtonPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
         for (int i = 0; i < 2; ++i)
         {
-            JLabel spacerLabel = new JLabel("     ");
-            spacerLabel.setHorizontalAlignment(SwingConstants.LEFT);
+            Label spacerLabel = new Label("     ");
+            spacerLabel.setAlignment(SwingConstants.LEFT);
             spacerLabel.setOpaque(false);
             
             buttonPanel.add(spacerLabel);
         }
         
-        JButton reportButton = PWCGButtonFactory.makeTranslucentMenuButton("Return", "Return", "Return to skin analysis page", this);
+        Button reportButton = ButtonFactory.makeTranslucentMenuButton("Return", "Return", "Return to skin analysis page", this);
         buttonPanel.add(reportButton);
 
         campaignButtonPanel.add (buttonPanel, BorderLayout.NORTH);
@@ -92,22 +92,22 @@ public class PwcgSkinConfigurationAnalysisDisplayScreen extends ImageResizingPan
         return campaignButtonPanel;
  	}
 
-    public JPanel makeCenterPanel() throws PWCGException 
+    public Pane makeCenterPanel() throws PWCGException 
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "paperFull.jpg";
-        JPanel missingSkinDisplayPanel = new ImagePanelLayout(imagePath, new BorderLayout());
+        Pane missingSkinDisplayPanel = new ImagePanelLayout(imagePath, new BorderLayout());
         
-        JPanel reportPanel = new JPanel(new BorderLayout());
+        Pane reportPanel = new Pane(new BorderLayout());
         reportPanel.setOpaque(false);
 
         String header = generateReportHeader();
         Font headerFont = PWCGMonitorFonts.getDecorativeFont();
-        JLabel reportHeaderLabel = new JLabel(header);
+        Label reportHeaderLabel = new Label(header);
         reportHeaderLabel.setOpaque(false);
         reportHeaderLabel.setFont(headerFont);
         reportPanel.add(reportHeaderLabel, BorderLayout.NORTH);
         
-        JPanel reportBodyPanel = generateReportBody();
+        Pane reportBodyPanel = generateReportBody();
         reportPanel.add(reportBodyPanel, BorderLayout.CENTER);
         
         JScrollPane waypointScrollPane = ScrollBarWrapper.makeScrollPane(reportPanel);
@@ -129,9 +129,9 @@ public class PwcgSkinConfigurationAnalysisDisplayScreen extends ImageResizingPan
         return "Skin Report: " + numSkinsInPWCG + " skin configurations exist in PWCG";
     }
 
-    private JPanel generateReportBody() throws PWCGException
+    private Pane generateReportBody() throws PWCGException
     {
-        JPanel reportBodyPanel = new JPanel(new GridLayout(0,5));
+        Pane reportBodyPanel = new Pane(new GridLayout(0,5));
         reportBodyPanel.setOpaque(false);
                 
         Map<String, List<Skin>> allSkinsInPWCG = PWCGContext.getInstance().getSkinManager().getAllSkinsByPlane();
@@ -147,19 +147,19 @@ public class PwcgSkinConfigurationAnalysisDisplayScreen extends ImageResizingPan
         return reportBodyPanel;
     }
 
-    private void addSkinsForPlane(JPanel reportBodyPanel, PlaneType plane, List<Skin> skinSet) throws PWCGException
+    private void addSkinsForPlane(Pane reportBodyPanel, PlaneType plane, List<Skin> skinSet) throws PWCGException
     {
-        JLabel reportBodyPlaneLabel = PWCGButtonFactory.makePaperLabelMedium("Plane: " + plane.getDisplayName());
+        Label reportBodyPlaneLabel = ButtonFactory.makePaperLabelMedium("Plane: " + plane.getDisplayName());
         reportBodyPanel.add(reportBodyPlaneLabel);
         
-        JLabel reportBodyPlaneDummy = null;
-        reportBodyPlaneDummy = PWCGButtonFactory.makePaperLabelMedium(" ");
+        Label reportBodyPlaneDummy = null;
+        reportBodyPlaneDummy = ButtonFactory.makePaperLabelMedium(" ");
         reportBodyPanel.add(reportBodyPlaneDummy);
-        reportBodyPlaneDummy = PWCGButtonFactory.makePaperLabelMedium(" ");
+        reportBodyPlaneDummy = ButtonFactory.makePaperLabelMedium(" ");
         reportBodyPanel.add(reportBodyPlaneDummy);
-        reportBodyPlaneDummy = PWCGButtonFactory.makePaperLabelMedium(" ");
+        reportBodyPlaneDummy = ButtonFactory.makePaperLabelMedium(" ");
         reportBodyPanel.add(reportBodyPlaneDummy);
-        reportBodyPlaneDummy = PWCGButtonFactory.makePaperLabelMedium(" ");
+        reportBodyPlaneDummy = ButtonFactory.makePaperLabelMedium(" ");
         reportBodyPanel.add(reportBodyPlaneDummy);
 
         TreeMap<String, Skin> sortedSkins = new TreeMap<String, Skin>();
@@ -171,16 +171,16 @@ public class PwcgSkinConfigurationAnalysisDisplayScreen extends ImageResizingPan
         
         for (Skin skin : sortedSkins.values())
         {
-            JLabel reportBodySkinLabel = PWCGButtonFactory.makePaperLabelMedium(skin.getSkinName());
+            Label reportBodySkinLabel = ButtonFactory.makePaperLabelMedium(skin.getSkinName());
             reportBodyPanel.add(reportBodySkinLabel);
             
-            JLabel reportBodyCategoryLabel = PWCGButtonFactory.makePaperLabelMedium(skin.getCategory());
+            Label reportBodyCategoryLabel = ButtonFactory.makePaperLabelMedium(skin.getCategory());
             reportBodyPanel.add(reportBodyCategoryLabel);
             
-            JLabel reportBodyStartDateLabel = PWCGButtonFactory.makePaperLabelMedium(DateUtils.getDateStringPretty(skin.getStartDate()));
+            Label reportBodyStartDateLabel = ButtonFactory.makePaperLabelMedium(DateUtils.getDateStringPretty(skin.getStartDate()));
             reportBodyPanel.add(reportBodyStartDateLabel);
             
-            JLabel reportBodyEndDateLabel = PWCGButtonFactory.makePaperLabelMedium(DateUtils.getDateStringPretty(skin.getEndDate()));
+            Label reportBodyEndDateLabel = ButtonFactory.makePaperLabelMedium(DateUtils.getDateStringPretty(skin.getEndDate()));
             reportBodyPanel.add(reportBodyEndDateLabel);
             
             String squadronName = "Not Defined";
@@ -204,7 +204,7 @@ public class PwcgSkinConfigurationAnalysisDisplayScreen extends ImageResizingPan
                     squadronName = "Not Defined";
                 }
             }
-            JLabel reportBodySquadronLabel = PWCGButtonFactory.makePaperLabelMedium(squadronName);
+            Label reportBodySquadronLabel = ButtonFactory.makePaperLabelMedium(squadronName);
             reportBodyPanel.add(reportBodySquadronLabel);
         }
     }

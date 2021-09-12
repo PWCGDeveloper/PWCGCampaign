@@ -1,7 +1,7 @@
 package pwcg.gui.rofmap.brief;
 
 import java.awt.BorderLayout;
-import java.awt.Font;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,9 +10,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -30,7 +30,7 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.MusicManager;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionHumanParticipants;
 
@@ -39,11 +39,11 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
     private static final long serialVersionUID = 1L;
     
     private CoopPersonaChooserPanel coopPersonaAccept;
-    private JPanel coopPersonaErrorPanel;
+    private Pane coopPersonaErrorPanel;
     private List<String> errorMessages = new ArrayList<>();
     private CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper;
     private Campaign campaign;
-    private JButton missionButton;
+    private Button missionButton;
     private MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
 
     public BriefingCoopPersonaChooser(Campaign campaign, CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper)
@@ -79,7 +79,7 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
 
     private void buildErrorPanel() throws PWCGException 
     {
-        coopPersonaErrorPanel = new JPanel(new GridLayout(0, 2));
+        coopPersonaErrorPanel = new Pane(new GridLayout(0, 2));
         coopPersonaErrorPanel.setOpaque(false);
         coopPersonaAccept.add(BorderLayout.SOUTH, coopPersonaErrorPanel);
 	}
@@ -150,18 +150,18 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
 	{
 	    Font font = PWCGMonitorFonts.getPrimaryFontLarge();
     	
-        JLabel spacer = new JLabel("   ");
+        Label spacer = new Label("   ");
         spacer.setFont(font);
         coopPersonaErrorPanel.add(spacer);
 
 		for (String errorMessage : errorMessages)
     	{
-    		JLabel errorLabel = new JLabel(errorMessage);
+    		Label errorLabel = new Label(errorMessage);
     		errorLabel.setFont(font);
     		coopPersonaErrorPanel.add(errorLabel);
     	}
 
-        JLabel spacer2 = new JLabel("   ");
+        Label spacer2 = new Label("   ");
         spacer2.setFont(font);
         coopPersonaErrorPanel.add(spacer2);
 	}
@@ -172,24 +172,24 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
     	
 	    for (int i = 0; i < 3; ++i)
 	    {
-	        JLabel spacer = new JLabel("   ");
+	        Label spacer = new Label("   ");
 	        spacer.setFont(font);
 	        coopPersonaErrorPanel.add(spacer);
 	    }
 	}
 
-	public JPanel makeNavigatePanel() throws PWCGException  
+	public Pane makeNavigatePanel() throws PWCGException  
     {
-        JPanel navPanel = new JPanel(new BorderLayout());
+        Pane navPanel = new Pane(new BorderLayout());
         navPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
         missionButton = makeMenuButton("Coop Mission", "CampCoopMission", "Create a coop mission");
         buttonPanel.add(missionButton);
 
-        JButton scrubButton = makeMenuButton("Scrub Mission", "ScrubMission", "Scrub this mission");
+        Button scrubButton = makeMenuButton("Scrub Mission", "ScrubMission", "Scrub this mission");
         buttonPanel.add(scrubButton);
 
         navPanel.add(buttonPanel, BorderLayout.NORTH);
@@ -197,9 +197,9 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
         return navPanel;
     }
 
-    private JButton makeMenuButton(String buttonText, String command, String toolTipText) throws PWCGException
+    private Button makeMenuButton(String buttonText, String command, String toolTipText) throws PWCGException
     {
-        return PWCGButtonFactory.makeTranslucentMenuButton(buttonText, command, toolTipText, this);
+        return ButtonFactory.makeTranslucentMenuButton(buttonText, command, toolTipText, this);
     }
 
     public void actionPerformed(ActionEvent ae)

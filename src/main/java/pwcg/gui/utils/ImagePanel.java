@@ -6,12 +6,12 @@ import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 
-import javax.swing.JPanel;
+import javafx.scene.layout.Pane;
 
 import pwcg.gui.image.ImageCache;
 import pwcg.gui.image.MapImageCache;
 
-public abstract class ImagePanel extends JPanel
+public abstract class ImagePanel extends Pane
 {
 	private static final long serialVersionUID = 1L;
 	

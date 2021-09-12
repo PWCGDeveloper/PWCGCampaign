@@ -1,16 +1,16 @@
 package pwcg.gui.campaign.pilot;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javax.swing.JTextArea;
 
 import pwcg.campaign.Campaign;
@@ -27,7 +27,7 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 
 public class CampaignPilotLogScreen extends ImageResizingPanel implements ActionListener
 {
@@ -35,12 +35,12 @@ public class CampaignPilotLogScreen extends ImageResizingPanel implements Action
 
     private SquadronMember pilot = null;
 	
-	private JPanel leftpage = null;
-	private JPanel rightpage = null;
+	private Pane leftpage = null;
+	private Pane rightpage = null;
     private int pageNum = 1;
     private PilotLogPages pilotLogPages;
     private Campaign campaign;
-    private JPanel centerPanel = null;
+    private Pane centerPanel = null;
 
     public CampaignPilotLogScreen(Campaign campaign, SquadronMember pilot)
     {
@@ -67,21 +67,21 @@ public class CampaignPilotLogScreen extends ImageResizingPanel implements Action
         makePages();        
 	}
 
-    private JPanel makeNavigationPanel() throws PWCGException  
+    private Pane makeNavigationPanel() throws PWCGException  
     {
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
-        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished Reading", "PilotLogFinished", "Leave Pilot Log", this);
+        Button finishedButton = ButtonFactory.makeTranslucentMenuButton("Finished Reading", "PilotLogFinished", "Leave Pilot Log", this);
         buttonPanel.add(finishedButton);
 
-        JPanel logBookPanel = new JPanel(new BorderLayout());
+        Pane logBookPanel = new Pane(new BorderLayout());
         logBookPanel.setOpaque(false);
         logBookPanel.add(buttonPanel, BorderLayout.NORTH);        
         return logBookPanel;
     }
 
-	private JPanel  makeLogCenterPanel() throws PWCGException  
+	private Pane  makeLogCenterPanel() throws PWCGException  
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.OpenPilotLog);
         ImageResizingPanel campaignPilotLogPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
@@ -128,13 +128,13 @@ public class CampaignPilotLogScreen extends ImageResizingPanel implements Action
 		centerPanel.add(rightpage);
 	}
 
-	private JPanel makePage(StringBuffer pageEntries, int pageNum) throws PWCGException 
+	private Pane makePage(StringBuffer pageEntries, int pageNum) throws PWCGException 
 	{
-		JPanel campaignLogPanelBorder = new JPanel();
+		Pane campaignLogPanelBorder = new Pane();
 		campaignLogPanelBorder.setLayout(new BorderLayout());
 		campaignLogPanelBorder.setOpaque(false);
 
-		JPanel campaignLogPanel = new JPanel();
+		Pane campaignLogPanel = new Pane();
 		campaignLogPanel.setLayout(new GridLayout(0,1));
 		campaignLogPanel.setOpaque(false);
 
@@ -161,7 +161,7 @@ public class CampaignPilotLogScreen extends ImageResizingPanel implements Action
 		campaignLogPanelBorder.add(bufferTextArea, BorderLayout.WEST);
 		campaignLogPanelBorder.add(campaignLogPanel, BorderLayout.CENTER);
 		
-		JPanel buttonPanel = makeButtonPanel(pageNum);
+		Pane buttonPanel = makeButtonPanel(pageNum);
 		campaignLogPanelBorder.add(buttonPanel, BorderLayout.SOUTH);
 		
 		return campaignLogPanelBorder;
@@ -177,9 +177,9 @@ public class CampaignPilotLogScreen extends ImageResizingPanel implements Action
         return margins;
     }
 
-	private JPanel makeButtonPanel(int pageNum) throws PWCGException
+	private Pane makeButtonPanel(int pageNum) throws PWCGException
 	{
-		JPanel buttonPanel = new JPanel(new GridLayout(0,2));
+		Pane buttonPanel = new Pane(new GridLayout(0,2));
 		buttonPanel.setOpaque(false);
 
 		Color fg = ColorMap.PAPER_FOREGROUND;
@@ -196,13 +196,13 @@ public class CampaignPilotLogScreen extends ImageResizingPanel implements Action
 	}
 
 
-    private void makeLeftPage(int pageNum, JPanel buttonPanel, Color fg, Font font) throws PWCGException
+    private void makeLeftPage(int pageNum, Pane buttonPanel, Color fg, Font font) throws PWCGException
     {
         if ((pageNum % 2) == 1)
 		{
 			if (pageNum > 1)
 			{
-                JButton prevButton = PWCGButtonFactory.makeTranslucentMenuButton("Previous Page", "Previous Page", "Go to the previous page", this);
+                Button prevButton = ButtonFactory.makeTranslucentMenuButton("Previous Page", "Previous Page", "Go to the previous page", this);
                 prevButton.setForeground(fg);   
                 prevButton.setFont(font);
                 buttonPanel.add(prevButton);
@@ -211,13 +211,13 @@ public class CampaignPilotLogScreen extends ImageResizingPanel implements Action
     }
 
 
-    private void makeRightPage(int pageNum, JPanel buttonPanel, Color fg, Font font) throws PWCGException
+    private void makeRightPage(int pageNum, Pane buttonPanel, Color fg, Font font) throws PWCGException
     {
         if ((pageNum % 2) == 0)
 		{
 			if (pageNum  < pilotLogPages.getPageCount())
 			{
-		        JButton nextButton = PWCGButtonFactory.makeTranslucentMenuButton("Next Page", "Next Page", "Go to the next page", this);
+		        Button nextButton = ButtonFactory.makeTranslucentMenuButton("Next Page", "Next Page", "Go to the next page", this);
 				nextButton.setForeground(fg);	
 				nextButton.setFont(font);
 				buttonPanel.add(nextButton);
@@ -226,14 +226,14 @@ public class CampaignPilotLogScreen extends ImageResizingPanel implements Action
     }
 
 
-    private void addWhiteSpace(JPanel buttonPanel)
+    private void addWhiteSpace(Pane buttonPanel)
     {
         for (int i = 0; i < 2; ++i)
 		{
-            JLabel dummyLeft = PWCGButtonFactory.makeDummy();
+            Label dummyLeft = ButtonFactory.makeDummy();
             buttonPanel.add(dummyLeft);
             
-            JLabel dummyRight = PWCGButtonFactory.makeDummy();
+            Label dummyRight = ButtonFactory.makeDummy();
             buttonPanel.add(dummyRight);
 		}
     }

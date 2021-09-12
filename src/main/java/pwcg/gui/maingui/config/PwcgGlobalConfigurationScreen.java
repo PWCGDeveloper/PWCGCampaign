@@ -1,19 +1,19 @@
 package pwcg.gui.maingui.config;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import javafx.scene.control.ButtonGroup;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javax.swing.RadioButton ;
 import javax.swing.SwingConstants;
 
 import pwcg.core.config.ConfigManagerGlobal;
@@ -31,7 +31,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 
 public class PwcgGlobalConfigurationScreen extends ImageResizingPanel implements ActionListener
 {
@@ -62,30 +62,30 @@ public class PwcgGlobalConfigurationScreen extends ImageResizingPanel implements
         pwcgThreePanel.setRightPanel(makeCategoryPanel());
     }
 
-    public JPanel makeBlankCenterPanel()  
+    public Pane makeBlankCenterPanel()  
     {       
-        JPanel blankPanel = new JPanel(new BorderLayout());
+        Pane blankPanel = new Pane(new BorderLayout());
         blankPanel.setOpaque(false);
         blankPanel.setLayout(new BorderLayout());
         return blankPanel;
     }
 
-    public JPanel makeNavigatePanel() throws PWCGException  
+    public Pane makeNavigatePanel() throws PWCGException  
     {
-        JPanel navPanel = new JPanel(new BorderLayout());
+        Pane navPanel = new Pane(new BorderLayout());
         navPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept", "Accept", "Accept configuration changes", this);
+        Button acceptButton = ButtonFactory.makeTranslucentMenuButton("Accept", "Accept", "Accept configuration changes", this);
         buttonPanel.add(acceptButton);
 
-        JLabel spacer2 = new JLabel("   ");
+        Label spacer2 = new Label("   ");
         spacer2.setOpaque(false);
         buttonPanel.add(spacer2);
 
-        JButton cancelButton = PWCGButtonFactory.makeTranslucentMenuButton("Cancel", "Cancel", "Cancel configuration changes", this);
+        Button cancelButton = ButtonFactory.makeTranslucentMenuButton("Cancel", "Cancel", "Cancel configuration changes", this);
         buttonPanel.add(cancelButton);
 
         navPanel.add(buttonPanel, BorderLayout.NORTH);
@@ -93,19 +93,19 @@ public class PwcgGlobalConfigurationScreen extends ImageResizingPanel implements
         return navPanel;
     }
 
-    public JPanel makeCategoryPanel() throws PWCGException  
+    public Pane makeCategoryPanel() throws PWCGException  
     {
-        JPanel configPanel = new JPanel(new BorderLayout());
+        Pane configPanel = new Pane(new BorderLayout());
         configPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
 
-        JLabel label = PWCGButtonFactory.makeMenuLabelLarge("Global Configuration Categories:");
+        Label label = ButtonFactory.makeMenuLabelLarge("Global Configuration Categories:");
         buttonPanel.add(label);
 
-        JLabel spacer = PWCGButtonFactory.makeMenuLabelLarge("   ");
+        Label spacer = ButtonFactory.makeMenuLabelLarge("   ");
         buttonPanel.add(spacer);
 
         buttonPanel.add(makeCategoryRadioButton("User Preferences"));
@@ -118,15 +118,15 @@ public class PwcgGlobalConfigurationScreen extends ImageResizingPanel implements
         return configPanel;
     }
 
-    private JRadioButton makeCategoryRadioButton(String buttonText) throws PWCGException 
+    private RadioButton  makeCategoryRadioButton(String buttonText) throws PWCGException 
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
 
         Font font = PWCGMonitorFonts.getPrimaryFont();
 
-        JRadioButton button = new JRadioButton(buttonText);
+        RadioButton  button = new RadioButton (buttonText);
         button.setActionCommand("Configuration Parameters: " + buttonText);
-        button.setHorizontalAlignment(SwingConstants.LEFT );
+        button.setAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
         button.setFocusPainted(false);
         button.addActionListener(this);

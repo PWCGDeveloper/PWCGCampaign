@@ -3,7 +3,7 @@ package pwcg.gui.rofmap.event;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
-import javax.swing.JPanel;
+import javafx.scene.layout.Pane;
 
 import pwcg.aar.ui.events.model.MedalEvent;
 import pwcg.campaign.Campaign;
@@ -52,7 +52,7 @@ public class CampaignReportMedalGUI extends AARDocumentIconPanel
 
     protected String getFooterImagePath() throws PWCGException
     {
-        JPanel medalImagePanel = new JPanel(new GridLayout(0, 1));
+        Pane medalImagePanel = new Pane(new GridLayout(0, 1));
         medalImagePanel.setOpaque(false);
 
         ICountry country = CountryFactory.makeCountryByCountry(medalRecipient.getCountry());
@@ -98,7 +98,7 @@ public class CampaignReportMedalGUI extends AARDocumentIconPanel
     }
 
     @Override
-    public JPanel getPanel()
+    public Pane getPanel()
     {
         return this;
     }

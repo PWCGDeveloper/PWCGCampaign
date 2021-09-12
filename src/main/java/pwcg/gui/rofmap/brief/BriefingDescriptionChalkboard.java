@@ -1,11 +1,11 @@
 package pwcg.gui.rofmap.brief;
 
 import java.awt.BorderLayout;
-import java.awt.Font;
+import javafx.scene.text.Font;
 import java.awt.Insets;
 
 import javax.swing.BorderFactory;
-import javax.swing.JPanel;
+import javafx.scene.layout.Pane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
@@ -47,12 +47,12 @@ public class BriefingDescriptionChalkboard extends ImageResizingPanel
     public void makePanel() throws PWCGException 
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "Chalkboard.png";
-        JPanel briefingPanel = new ImageResizingPanel(imagePath);
+        Pane briefingPanel = new ImageResizingPanel(imagePath);
         briefingPanel.setLayout(new BorderLayout());
         briefingPanel.setOpaque(false);
         briefingPanel.setBorder(BorderFactory.createEmptyBorder(75,100,50,50));
 
-        JPanel missionTextPanel = makeMissionText();
+        Pane missionTextPanel = makeMissionText();
         
         JScrollPane missionScrollPane = ScrollBarWrapper.makeScrollPane(missionTextPanel);
 
@@ -63,9 +63,9 @@ public class BriefingDescriptionChalkboard extends ImageResizingPanel
         setMissionText();
     }
 
-    private JPanel makeMissionText() throws PWCGException 
+    private Pane makeMissionText() throws PWCGException 
     {
-        JPanel missionTextPanel = new JPanel(new BorderLayout());
+        Pane missionTextPanel = new Pane(new BorderLayout());
         missionTextPanel.setOpaque(false);
         
         Font font = PWCGMonitorFonts.getBriefingChalkboardFont();

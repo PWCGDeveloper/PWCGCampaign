@@ -1,10 +1,10 @@
 package pwcg.gui.rofmap.brief;
 
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 import javax.swing.JComponent;
-import javax.swing.JLabel;
+import javafx.scene.control.Label;
 import javax.swing.JTextField;
 
 import pwcg.core.exception.PWCGException;
@@ -14,11 +14,11 @@ import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 public class WaypointEditor implements IWaypointDetails
 {
     private long associatedWaypointID;
-    private JLabel descTextField;
+    private Label descTextField;
     private JTextField altitudeTextField;
     private JTextField cruisingSpeedTextField;
-    private JLabel distanceTextField;
-    private JLabel headingTextField;
+    private Label distanceTextField;
+    private Label headingTextField;
     private String actionCommandKey = "";
 
     public WaypointEditor(long associatedWaypointID)
@@ -49,7 +49,7 @@ public class WaypointEditor implements IWaypointDetails
         calculateWPParameters(previousMapPoint, thisMapPoint);
     }
 
-    public JLabel getDescriptionField()
+    public Label getDescriptionField()
     {
         return descTextField;
     }
@@ -64,12 +64,12 @@ public class WaypointEditor implements IWaypointDetails
         return cruisingSpeedTextField;
     }
 
-    public JLabel getDistanceField()
+    public Label getDistanceField()
     {
         return distanceTextField;
     }
 
-    public JLabel getHeadingField()
+    public Label getHeadingField()
     {
         return headingTextField;
     }
@@ -129,20 +129,20 @@ public class WaypointEditor implements IWaypointDetails
         JTextField field = new JTextField();
         field.setOpaque(false);
         field.setFont(font);
-        field.setHorizontalAlignment(JTextField.RIGHT);
+        field.setAlignment(JTextField.RIGHT);
         field.setForeground(Color.BLACK);
 
         return field;
     }
 
-    private JLabel makeLabelField() throws PWCGException
+    private Label makeLabelField() throws PWCGException
     {
         Font font = PWCGMonitorFonts.getTypewriterFont();
 
-        JLabel field = new JLabel();
+        Label field = new Label();
         field.setOpaque(false);
         field.setFont(font);
-        field.setHorizontalAlignment(JLabel.RIGHT);
+        field.setAlignment(Label.RIGHT);
         field.setForeground(Color.BLACK);
 
         return field;

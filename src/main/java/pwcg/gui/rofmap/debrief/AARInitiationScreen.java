@@ -6,8 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Map;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.campaign.Campaign;
@@ -23,7 +23,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
 public class AARInitiationScreen extends ImageResizingPanel implements ActionListener
@@ -54,13 +54,13 @@ public class AARInitiationScreen extends ImageResizingPanel implements ActionLis
         this.add(SpacerPanelFactory.makeSpacerConsumeRemainingPanel(1500), BorderLayout.EAST);
 	}
 
-    private JPanel makeCenterPanel() throws PWCGException  
+    private Pane makeCenterPanel() throws PWCGException  
     {
         aarClaimPanel = new AARClaimPanels(campaign);
         aarClaimPanel.makePanels();
 
         int numSpacers = calcNumSpacers();
-        JPanel claimPanel = new JPanel(new BorderLayout());
+        Pane claimPanel = new Pane(new BorderLayout());
         claimPanel.setOpaque(false);
         claimPanel.add(SpacerPanelFactory.createVerticalSpacerPanel(numSpacers), BorderLayout.NORTH);
         claimPanel.add(aarClaimPanel, BorderLayout.CENTER);
@@ -89,12 +89,12 @@ public class AARInitiationScreen extends ImageResizingPanel implements ActionLis
         }
     }
 
-	private JPanel makeNavigationPanel() throws PWCGException  
+	private Pane makeNavigationPanel() throws PWCGException  
 	{
-        JPanel aarButtonPanel = new JPanel(new BorderLayout());
+        Pane aarButtonPanel = new Pane(new BorderLayout());
         aarButtonPanel.setOpaque(false);
 		
-		JPanel buttonGrid = new JPanel(new GridLayout(0,1));
+		Pane buttonGrid = new Pane(new GridLayout(0,1));
 		buttonGrid.setOpaque(false);
         
         makeButton ("Submit Report", "Submit Report", "Begin AAR process", buttonGrid);
@@ -105,10 +105,10 @@ public class AARInitiationScreen extends ImageResizingPanel implements ActionLis
 		return aarButtonPanel;
 	}
 
-    private void makeButton(String buttonText, String command, String toolTipText, JPanel buttonGrid) throws PWCGException 
+    private void makeButton(String buttonText, String command, String toolTipText, Pane buttonGrid) throws PWCGException 
     {
-        buttonGrid.add(PWCGButtonFactory.makeDummy());  
-        JButton button = PWCGButtonFactory.makeTranslucentMenuButton(buttonText, command, toolTipText, this);
+        buttonGrid.add(ButtonFactory.makeDummy());  
+        Button button = ButtonFactory.makeTranslucentMenuButton(buttonText, command, toolTipText, this);
         buttonGrid.add(button);  
     }
 

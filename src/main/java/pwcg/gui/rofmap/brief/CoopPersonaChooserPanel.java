@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import javax.swing.BorderFactory;
-import javax.swing.JPanel;
+import javafx.scene.layout.Pane;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -52,7 +52,7 @@ public class CoopPersonaChooserPanel extends ImageResizingPanel implements ISele
 	        this.setImageFromName(imagePath);
 	        this.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
 
-	        JPanel centerPanel = makeAcceptancePanel();
+	        Pane centerPanel = makeAcceptancePanel();
 	        this.add(centerPanel, BorderLayout.CENTER);
 	        loadPanels();
 		}
@@ -113,12 +113,12 @@ public class CoopPersonaChooserPanel extends ImageResizingPanel implements ISele
         return selectData;
     }
 
-	public JPanel makeAcceptancePanel() throws PWCGException 
+	public Pane makeAcceptancePanel() throws PWCGException 
 	{	
 	    selector = new SelectorGUI();
 	    selector.registerCallback(this);
 	    boolean allowReject = true;
-        JPanel acceptPanel = selector.build(allowReject);
+        Pane acceptPanel = selector.build(allowReject);
 		return acceptPanel;
 	}
 	

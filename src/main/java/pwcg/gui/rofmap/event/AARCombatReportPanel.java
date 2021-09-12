@@ -4,9 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
+import javafx.scene.control.Button;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import javafx.scene.layout.Pane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
@@ -20,7 +20,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.display.model.CombatReportBuilder;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 
 public class AARCombatReportPanel extends AARDocumentPanel implements ActionListener
 {
@@ -50,7 +50,7 @@ public class AARCombatReportPanel extends AARDocumentPanel implements ActionList
             createCombatReportGUI();
             this.add(combatReportPanel, BorderLayout.CENTER);
             
-            JPanel narrativeButton = createNarrativeButton();
+            Pane narrativeButton = createNarrativeButton();
             this.add(narrativeButton, BorderLayout.SOUTH);
         }
         catch (Exception e)
@@ -73,13 +73,13 @@ public class AARCombatReportPanel extends AARDocumentPanel implements ActionList
         combatReportPanel.makePanel();
     }
 
-    private JPanel createNarrativeButton() throws PWCGException
+    private Pane createNarrativeButton() throws PWCGException
     {
-        JPanel narrativeButtonPanel = new JPanel();
+        Pane narrativeButtonPanel = new Pane();
         narrativeButtonPanel.setLayout(new BorderLayout());
         narrativeButtonPanel.setOpaque(false);
         
-        JButton addNarrativeButton = PWCGButtonFactory.makeTranslucentMenuButton("Edit Narrative", "Add Narrative", "Add narrative to combat report", this);
+        Button addNarrativeButton = ButtonFactory.makeTranslucentMenuButton("Edit Narrative", "Add Narrative", "Add narrative to combat report", this);
         narrativeButtonPanel.add(addNarrativeButton, BorderLayout.SOUTH);
         return narrativeButtonPanel;
     }
@@ -105,7 +105,7 @@ public class AARCombatReportPanel extends AARDocumentPanel implements ActionList
     }
 
     @Override
-    public JPanel getPanel()
+    public Pane getPanel()
     {
         return this;
     }

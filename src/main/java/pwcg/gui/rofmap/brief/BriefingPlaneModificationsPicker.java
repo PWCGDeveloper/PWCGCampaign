@@ -7,23 +7,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.JCheckBox;
-import javax.swing.JPanel;
+import javax.swing.CheckBox;
+import javafx.scene.layout.Pane;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.colors.ColorMap;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 
 public class BriefingPlaneModificationsPicker
 {
     private ActionListener actionListener;
     private CrewPlanePayloadPairing crewPlane;
-    private JPanel planeModificationsPanel = new JPanel(new GridLayout(0,1));
-    private Map<String, JCheckBox> planeModifications = new HashMap<>();
+    private Pane planeModificationsPanel = new Pane(new GridLayout(0,1));
+    private Map<String, CheckBox> planeModifications = new HashMap<>();
     
     public BriefingPlaneModificationsPicker(ActionListener actionListener, CrewPlanePayloadPairing crewPlane)
     {
@@ -31,22 +31,22 @@ public class BriefingPlaneModificationsPicker
         this.crewPlane = crewPlane;
     }
 
-    public JPanel makePlaneModifications() throws PWCGException 
+    public Pane makePlaneModifications() throws PWCGException 
     {       
         makePlaneModificationCheckBoxes();        
-        planeModificationsPanel = new JPanel(new GridLayout(0,1));
+        planeModificationsPanel = new Pane(new GridLayout(0,1));
         planeModificationsPanel.setOpaque(false);
 
         for (String selectedModification : crewPlane.getModifications())
         {
-            JCheckBox planeModificationCheckBox = planeModifications.get(selectedModification);
+            CheckBox planeModificationCheckBox = planeModifications.get(selectedModification);
             if (planeModificationCheckBox != null)
             {
                 planeModificationCheckBox.setSelected(true);
             }
         }
 
-        for (JCheckBox planeModification : planeModifications.values())
+        for (CheckBox planeModification : planeModifications.values())
         {
             planeModificationsPanel.add(planeModification);
         }
@@ -57,7 +57,7 @@ public class BriefingPlaneModificationsPicker
     public List<String> getChosenPlaneModifications() throws PWCGException 
     {       
         List<String> chosenplaneModificationsMasks = new ArrayList<>();
-        for (JCheckBox planeModification : planeModifications.values())
+        for (CheckBox planeModification : planeModifications.values())
         {
             if (planeModification.isSelected())
             {
@@ -77,7 +77,7 @@ public class BriefingPlaneModificationsPicker
         
         for (String payloadForPlane : payloadsForPlane)
         {
-            JCheckBox planeModificationsCheckBox= PWCGButtonFactory.makeSmallCheckBox(
+            CheckBox planeModificationsCheckBox= ButtonFactory.makeSmallCheckBox(
                     payloadForPlane, 
                     "SelectPlaneModification:" + crewPlane.getPilot().getSerialNumber(), 
                     ColorMap.CHALK_FOREGROUND,
@@ -94,7 +94,7 @@ public class BriefingPlaneModificationsPicker
         return payload.getPayloadMaskByDescription(payloadDescription);
     }
 
-    public Map<String, JCheckBox> getPlaneModifications()
+    public Map<String, CheckBox> getPlaneModifications()
     {
         return planeModifications;
     }

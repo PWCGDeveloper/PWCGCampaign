@@ -1,12 +1,12 @@
 package pwcg.gui.rofmap.brief;
 
 import java.awt.BorderLayout;
-import java.awt.Font;
+import javafx.scene.text.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javax.swing.JScrollPane;
 
 import pwcg.core.exception.PWCGException;
@@ -17,7 +17,7 @@ import pwcg.gui.utils.ScrollBarWrapper;
 
 public class BriefingEditorDetailsPanel
 {
-    private JPanel waypointPanel = new JPanel(new BorderLayout());
+    private Pane waypointPanel = new Pane(new BorderLayout());
     private WaypointEditorSet waypointEditors = new WaypointEditorSet();
     private boolean isEditable = false;
 
@@ -35,7 +35,7 @@ public class BriefingEditorDetailsPanel
 		constraints.ipadx = 3;
 		constraints.ipady = 3;
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		JPanel waypointDetailsPanel = new JPanel(gridBagLayout);
+		Pane waypointDetailsPanel = new Pane(gridBagLayout);
 		waypointDetailsPanel.setOpaque(false);
 
 		createMissionParametersHeader(constraints, waypointDetailsPanel);
@@ -84,57 +84,57 @@ public class BriefingEditorDetailsPanel
         }
     }
 
-    private void createMissionParametersHeader(GridBagConstraints constraints, JPanel panel) throws PWCGException
+    private void createMissionParametersHeader(GridBagConstraints constraints, Pane panel) throws PWCGException
     {
         Font font = PWCGMonitorFonts.getTypewriterFont();
 
-        JLabel wpName = new JLabel ("WP");      
+        Label wpName = new Label ("WP");      
         wpName.setFont(font);
         
-        wpName.setHorizontalAlignment(JLabel.CENTER);
+        wpName.setAlignment(Label.CENTER);
         constraints.weightx = 0.15;
         constraints.gridx = 0;
         constraints.gridy = 0;
         panel.add(wpName, constraints);
         
-        JLabel altLabel = new JLabel ("Alt (Meters)");
+        Label altLabel = new Label ("Alt (Meters)");
         altLabel.setFont(font);
 
-        altLabel.setHorizontalAlignment(JLabel.CENTER);
+        altLabel.setAlignment(Label.CENTER);
         constraints.weightx = 0.2;
         constraints.gridx = 1;
         constraints.gridy = 0;
         panel.add(altLabel, constraints);
 
-        JLabel cruiseSpeedLabel = new JLabel ("Cruise Speed");
+        Label cruiseSpeedLabel = new Label ("Cruise Speed");
         cruiseSpeedLabel.setFont(font);
 
-        cruiseSpeedLabel.setHorizontalAlignment(JLabel.CENTER);
+        cruiseSpeedLabel.setAlignment(Label.CENTER);
         constraints.weightx = 0.2;
         constraints.gridx = 2;
         constraints.gridy = 0;
         panel.add(cruiseSpeedLabel, constraints);
 
-        JLabel distLabel = new JLabel ("Dist (Km)");
+        Label distLabel = new Label ("Dist (Km)");
         distLabel.setFont(font);
 
-        distLabel.setHorizontalAlignment(JLabel.CENTER);
+        distLabel.setAlignment(Label.CENTER);
         constraints.weightx = 0.2;
         constraints.gridx = 3;
         constraints.gridy = 0;
         panel.add(distLabel, constraints);
         
-        JLabel headingLabel = new JLabel ("Heading");
+        Label headingLabel = new Label ("Heading");
         headingLabel.setFont(font);
         
-        headingLabel.setHorizontalAlignment(JLabel.CENTER);
+        headingLabel.setAlignment(Label.CENTER);
         constraints.weightx = 0.2;
         constraints.gridx = 4;
         constraints.gridy = 0;
         panel.add(headingLabel, constraints);
     }
 
-    public JPanel getWaypointPanel()
+    public Pane getWaypointPanel()
     {
         return waypointPanel;
     }

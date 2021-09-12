@@ -5,9 +5,9 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -21,7 +21,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.CommonUIActions;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
 public class CampaignActivityScreen extends ImageResizingPanel implements ActionListener
@@ -50,48 +50,48 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
         this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1400));
 	}
 
-	private JPanel makeNavigatePanel() throws PWCGException
+	private Pane makeNavigatePanel() throws PWCGException
 	{
-        JPanel leftSidePanel = new JPanel(new BorderLayout());
+        Pane leftSidePanel = new Pane(new BorderLayout());
         leftSidePanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JLabel spacer1 = PWCGButtonFactory.makePaperLabelLarge("   ");
+        Label spacer1 = ButtonFactory.makePaperLabelLarge("   ");
         buttonPanel.add(spacer1);
 
-        JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished", CommonUIActions.FINISHED, "Finished with configuration changes", this);
+        Button finishedButton = ButtonFactory.makeTranslucentMenuButton("Finished", CommonUIActions.FINISHED, "Finished with configuration changes", this);
         buttonPanel.add(finishedButton);
 
-        JLabel spacer2 = PWCGButtonFactory.makePaperLabelLarge("   ");
+        Label spacer2 = ButtonFactory.makePaperLabelLarge("   ");
         buttonPanel.add(spacer2);
 
         if (campaign.isCampaignActive())
         {
-            JButton leaveButton = PWCGButtonFactory.makeTranslucentMenuButton("Leave", "CampFlowLeave", "Request leave", this);
+            Button leaveButton = ButtonFactory.makeTranslucentMenuButton("Leave", "CampFlowLeave", "Request leave", this);
             buttonPanel.add(leaveButton);
         }
 
         if (isDisplayTransferButton())
         {
-            JButton transferButton = PWCGButtonFactory.makeTranslucentMenuButton("Transfer", "CampFlowTransfer", "Transfer to a new squadron", this);
+            Button transferButton = ButtonFactory.makeTranslucentMenuButton("Transfer", "CampFlowTransfer", "Transfer to a new squadron", this);
             buttonPanel.add(transferButton);
         }
 
-        JLabel space4 = new JLabel("");
+        Label space4 = new Label("");
         buttonPanel.add(space4);
 
-        JButton journalButton = PWCGButtonFactory.makeTranslucentMenuButton("Journal", "CampFlowJournal", "Update your personal journal", this);
+        Button journalButton = ButtonFactory.makeTranslucentMenuButton("Journal", "CampFlowJournal", "Update your personal journal", this);
         buttonPanel.add(journalButton);
 
-        JButton equipmentRequestButton = PWCGButtonFactory.makeTranslucentMenuButton("Equipment Request", "EquipmentRequest", "Make a request for specific equipment", this);
+        Button equipmentRequestButton = ButtonFactory.makeTranslucentMenuButton("Equipment Request", "EquipmentRequest", "Make a request for specific equipment", this);
         buttonPanel.add(equipmentRequestButton);
 
-        JButton squadronLogButton = PWCGButtonFactory.makeTranslucentMenuButton("Squadron Log", "CampFlowLog", "View campaign logs", this);
+        Button squadronLogButton = ButtonFactory.makeTranslucentMenuButton("Squadron Log", "CampFlowLog", "View campaign logs", this);
         buttonPanel.add(squadronLogButton);
 
-        JButton newsButton = PWCGButtonFactory.makeTranslucentMenuButton("News", "CampFlowNews", "View campaign news", this);
+        Button newsButton = ButtonFactory.makeTranslucentMenuButton("News", "CampFlowNews", "View campaign news", this);
         buttonPanel.add(newsButton);
 
 		leftSidePanel.add(buttonPanel, BorderLayout.NORTH);

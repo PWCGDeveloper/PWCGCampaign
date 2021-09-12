@@ -1,19 +1,19 @@
 package pwcg.gui.campaign.config;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import javafx.scene.control.ButtonGroup;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javax.swing.RadioButton ;
 import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
@@ -33,7 +33,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ButtonFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 import pwcg.gui.utils.ToolTipManager;
@@ -67,25 +67,25 @@ public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel impl
         pwcgThreePanel.setRightPanel(makeCategoryPanel());
 	}
 
-    private JPanel makeNavigatePanel() throws PWCGException
+    private Pane makeNavigatePanel() throws PWCGException
     {
-        JPanel advancedConfigAcceptPanel = new JPanel(new BorderLayout());
+        Pane advancedConfigAcceptPanel = new Pane(new BorderLayout());
         advancedConfigAcceptPanel.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JLabel spacerLabel = makeLabel("");        
+        Label spacerLabel = makeLabel("");        
         buttonPanel.add(spacerLabel);
 
-        JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept Config Changes", "Accept", "Save and Leave", this);
+        Button acceptButton = ButtonFactory.makeTranslucentMenuButton("Accept Config Changes", "Accept", "Save and Leave", this);
         buttonPanel.add(acceptButton);
 
-        JLabel spacer2 = new JLabel("   ");
+        Label spacer2 = new Label("   ");
         spacer2.setOpaque(false);
         buttonPanel.add(spacer2);
 
-        JButton cancelButton = PWCGButtonFactory.makeTranslucentMenuButton("Cancel Config Changes", "Cancel", "Leave without saving", this);
+        Button cancelButton = ButtonFactory.makeTranslucentMenuButton("Cancel Config Changes", "Cancel", "Leave without saving", this);
         buttonPanel.add(cancelButton);
         
         advancedConfigAcceptPanel.add(buttonPanel, BorderLayout.NORTH);
@@ -93,7 +93,7 @@ public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel impl
         return advancedConfigAcceptPanel;
     }
 
-	public JPanel makeBlankCenterPanel() throws PWCGException 
+	public Pane makeBlankCenterPanel() throws PWCGException 
 	{		
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
 		ImageResizingPanel blankPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
@@ -102,14 +102,14 @@ public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel impl
 		return blankPanel;
 	}
 
-	public JPanel makeCategoryPanel() throws PWCGException  
+	public Pane makeCategoryPanel() throws PWCGException  
 	{
-        JPanel configSelectionPanel = new JPanel(new BorderLayout());
+        Pane configSelectionPanel = new Pane(new BorderLayout());
         configSelectionPanel.setOpaque(false);
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
+        Pane buttonPanel = new Pane(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JLabel label = PWCGButtonFactory.makeMenuLabelLarge("Advanced Configuration Categories:");
+        Label label = ButtonFactory.makeMenuLabelLarge("Advanced Configuration Categories:");
         buttonPanel.add(label);
         
         buttonPanel.add(makeButton("Campaign Preferences", "Fine tune campaign event probabilities"));
@@ -130,9 +130,9 @@ public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel impl
 
         configSelectionPanel.add(buttonPanel, BorderLayout.NORTH);
 
-        JPanel spacePanel = SpacerPanelFactory.makeDocumentSpacerPanel(2000);
+        Pane spacePanel = SpacerPanelFactory.makeDocumentSpacerPanel(2000);
         
-        JPanel configPanel = new JPanel(new BorderLayout());
+        Pane configPanel = new Pane(new BorderLayout());
         configPanel.setOpaque(false);
         configPanel.add(configSelectionPanel, BorderLayout.CENTER);
         configPanel.add(spacePanel, BorderLayout.WEST);
@@ -140,14 +140,14 @@ public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel impl
         return configPanel;
 	}
 
-	private JLabel makeLabel(String labelText) throws PWCGException
+	private Label makeLabel(String labelText) throws PWCGException
 	{
 		Color fgColor = ColorMap.CHALK_FOREGROUND;
 
 		Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
-		JLabel label = new JLabel(labelText);
-		label.setHorizontalAlignment(SwingConstants.LEFT );
+		Label label = new Label(labelText);
+		label.setAlignment(SwingConstants.LEFT );
 		label.setOpaque(false);
 		label.setForeground(fgColor);
 		label.setFont(font);
@@ -155,15 +155,15 @@ public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel impl
 		return label;
 	}
 
-	private JRadioButton makeButton(String buttonText, String toolTipText) throws PWCGException
+	private RadioButton  makeButton(String buttonText, String toolTipText) throws PWCGException
 	{
 		Color fgColor = ColorMap.CHALK_FOREGROUND;
 
 		Font font = PWCGMonitorFonts.getPrimaryFont();
 
-		JRadioButton button = new JRadioButton(buttonText);
+		RadioButton  button = new RadioButton (buttonText);
 		button.setActionCommand("Configuration Parameters: " + buttonText);
-		button.setHorizontalAlignment(SwingConstants.LEFT );
+		button.setAlignment(SwingConstants.LEFT );
 		button.setBorderPainted(false);
 		button.setFocusPainted(false);
 		button.addActionListener(this);

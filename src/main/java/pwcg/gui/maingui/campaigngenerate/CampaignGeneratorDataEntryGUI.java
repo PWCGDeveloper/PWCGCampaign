@@ -1,8 +1,8 @@
 package pwcg.gui.maingui.campaigngenerate;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -15,8 +15,8 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -48,9 +48,9 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.maingui.campaigngenerate.CampaignGeneratorState.CampaignGeneratorWorkflow;
-import pwcg.gui.utils.PWCGJButton;
+import pwcg.gui.utils.Button;
 
-public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListener
+public class CampaignGeneratorDataEntryGUI extends Pane implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -72,14 +72,14 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
 	private JComboBox<String> cbRank;
 	private JComboBox<String> cbSquadron;
     
-    private JLabel lPlayerName;
-    private JLabel lCoopUser;
-    private JLabel lRegion;
-    private JLabel lMap;
-    private JLabel lDate;
-    private JLabel lRole;
-    private JLabel lRank;
-    private JLabel lSquad;
+    private Label lPlayerName;
+    private Label lCoopUser;
+    private Label lRegion;
+    private Label lMap;
+    private Label lDate;
+    private Label lRole;
+    private Label lRank;
+    private Label lSquad;
 
     private JTextArea squadronTextBox;
 
@@ -113,7 +113,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
 			dataConstraints.ipady = 0;
 			
 			GridBagLayout campaignGenerateLayout = new GridBagLayout();
-			JPanel campaignGeneratePanel = new JPanel(campaignGenerateLayout);
+			Pane campaignGeneratePanel = new Pane(campaignGenerateLayout);
 			campaignGeneratePanel.setOpaque(false);
 
 			int rowCount = 0;
@@ -155,7 +155,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
 			
 			this.add(campaignGeneratePanel, BorderLayout.NORTH);
 	          
-            JPanel squadronPanel = createSquadronInfoPanel ();
+            Pane squadronPanel = createSquadronInfoPanel ();
             this.add(squadronPanel, BorderLayout.SOUTH);
             
             evaluateUI();
@@ -168,7 +168,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
 	}
 
     private int createSquadronWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
-                    JPanel campaignGeneratePanel, int rowCount) throws PWCGException
+                    Pane campaignGeneratePanel, int rowCount) throws PWCGException
     {
         spacerColumn (campaignGeneratePanel, 0, rowCount);
         
@@ -192,7 +192,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
     }
 
     private int createRankWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
-                    JPanel campaignGeneratePanel, int rowCount) throws PWCGException
+                    Pane campaignGeneratePanel, int rowCount) throws PWCGException
     {
         spacerColumn (campaignGeneratePanel, 0, rowCount);
         
@@ -225,17 +225,17 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
     }
 
     private int createNextStepWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
-                    JPanel campaignGeneratePanel, int rowCount) throws PWCGException
+                    Pane campaignGeneratePanel, int rowCount) throws PWCGException
     {
-        JLabel lNextStep = createCampaignGenMenuLabel("Next/Previous Step: ", labelConstraints, campaignGeneratePanel, rowCount);
+        Label lNextStep = createCampaignGenMenuLabel("Next/Previous Step: ", labelConstraints, campaignGeneratePanel, rowCount);
         campaignGeneratePanel.add(lNextStep, labelConstraints);
 
         Color fgColor = ColorMap.CHALK_FOREGROUND;
 
-        PWCGJButton nextStepButton = new PWCGJButton("Next Step");      
+        Button nextStepButton = new Button("Next Step");      
         nextStepButton.setActionCommand("NextStep");
         nextStepButton.setOpaque(false);
-        nextStepButton.setHorizontalAlignment(SwingConstants.LEFT);
+        nextStepButton.setAlignment(SwingConstants.LEFT);
         nextStepButton.addActionListener(this);
         nextStepButton.setBorderPainted(false);
         nextStepButton.setFocusPainted(false);
@@ -247,10 +247,10 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
 
         ++rowCount;
 
-        PWCGJButton previousStepButton = new PWCGJButton("Previous Step");      
+        Button previousStepButton = new Button("Previous Step");      
         previousStepButton.setActionCommand("PreviousStep");
         previousStepButton.setOpaque(false);
-        previousStepButton.setHorizontalAlignment(SwingConstants.LEFT);
+        previousStepButton.setAlignment(SwingConstants.LEFT);
         previousStepButton.addActionListener(this);
         previousStepButton.setBorderPainted(false);
         previousStepButton.setFocusPainted(false);
@@ -265,7 +265,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
     }
 
     private int createCampaignRoleWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
-                    JPanel campaignGeneratePanel, int rowCount) throws PWCGException
+                    Pane campaignGeneratePanel, int rowCount) throws PWCGException
     {
         spacerColumn (campaignGeneratePanel, 0, rowCount);
         
@@ -341,7 +341,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
     }
 
     private int createPlayerNameWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
-                    JPanel campaignGeneratePanel, int rowCount) throws PWCGException
+                    Pane campaignGeneratePanel, int rowCount) throws PWCGException
     {
         spacerColumn (campaignGeneratePanel, 0, rowCount);
 
@@ -362,11 +362,11 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
         return rowCount;
     }
 
-    private JLabel createCampaignGenMenuLabel(String labelText, GridBagConstraints labelConstraints, JPanel campaignGeneratePanel, int rowCount) throws PWCGException
+    private Label createCampaignGenMenuLabel(String labelText, GridBagConstraints labelConstraints, Pane campaignGeneratePanel, int rowCount) throws PWCGException
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
         
-        JLabel menuLabel = new JLabel(labelText, JLabel.RIGHT);
+        Label menuLabel = new Label(labelText, Label.RIGHT);
         menuLabel.setFont(font);
         menuLabel.setForeground(fgColor);
         menuLabel.setOpaque(false);
@@ -378,7 +378,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
     }
 
     private int createRegionWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
-                    JPanel campaignGeneratePanel, int rowCount) throws PWCGException
+                    Pane campaignGeneratePanel, int rowCount) throws PWCGException
     {
         ICountry country = CountryFactory.makeCountryByService(parent.getCampaignGeneratorDO().getService());
         if (country.isCountry(Country.GERMANY) && PWCGContext.getProduct() != PWCGProduct.BOS)
@@ -414,7 +414,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
     }
 
     private int creatCoopUserWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
-                    JPanel campaignGeneratePanel, int rowCount) throws PWCGException
+                    Pane campaignGeneratePanel, int rowCount) throws PWCGException
     {
         if (parent.getCampaignGeneratorDO().getCampaignMode() != CampaignMode.CAMPAIGN_MODE_SINGLE)
         {
@@ -486,7 +486,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
     }
 
     private int createCampaignMapWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
-	        JPanel campaignGeneratePanel, int rowCount) throws PWCGException
+	        Pane campaignGeneratePanel, int rowCount) throws PWCGException
 	{
         spacerColumn (campaignGeneratePanel, 0, rowCount);
         
@@ -519,7 +519,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
 	}
 
     private int createCampaignStartDateWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
-                    JPanel campaignGeneratePanel, int rowCount) throws PWCGException
+                    Pane campaignGeneratePanel, int rowCount) throws PWCGException
     {
         spacerColumn (campaignGeneratePanel, 0, rowCount);
         
@@ -547,9 +547,9 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
         return rowCount;
     }
 
-	private int spacerFullRow (GridBagConstraints labelConstraints, GridBagConstraints dataConstraints, JPanel panel, int rowCount)
+	private int spacerFullRow (GridBagConstraints labelConstraints, GridBagConstraints dataConstraints, Pane panel, int rowCount)
 	{
-		JLabel lDummy = new JLabel("     ");
+		Label lDummy = new Label("     ");
 		
 		lDummy.setOpaque(false);
 		labelConstraints.gridx = 0;
@@ -564,15 +564,15 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
         return rowCount;
 	}
 
-    private JPanel createSquadronInfoPanel () throws PWCGException
+    private Pane createSquadronInfoPanel () throws PWCGException
     {
         Color bgColor = ColorMap.PAPER_BACKGROUND;
         Color fgColor = ColorMap.CHALK_FOREGROUND;
         
-        JPanel squadronPanel = new JPanel(new GridLayout(0,3));
+        Pane squadronPanel = new Pane(new GridLayout(0,3));
         squadronPanel.setOpaque(false);
 
-        JLabel lDummy1 = new JLabel("     ");
+        Label lDummy1 = new Label("     ");
         lDummy1.setOpaque(false);
         squadronPanel.add(lDummy1);
         
@@ -588,14 +588,14 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
         squadronTextBox.setOpaque(false);
         squadronPanel.add(squadronTextBox);
 
-        JLabel lDummy2 = new JLabel("     ");
+        Label lDummy2 = new Label("     ");
         lDummy2.setOpaque(false);
         squadronPanel.add(lDummy2);
         
         return squadronPanel;
     }
 
-	private void spacerColumn (JPanel panel, int column, int row)
+	private void spacerColumn (Pane panel, int column, int row)
 	{
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.fill = GridBagConstraints.HORIZONTAL;
@@ -605,7 +605,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
 		constraints.gridx = column;
 		constraints.gridy = row;
 
-		JLabel lDummy = new JLabel("      ");
+		Label lDummy = new Label("      ");
 		lDummy.setOpaque(false);
 		panel.add(lDummy, constraints);
 	}

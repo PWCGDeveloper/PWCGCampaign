@@ -1,6 +1,6 @@
 package pwcg.gui;
 
-import javax.swing.JPanel;
+import javafx.scene.layout.Pane;
 
 import pwcg.core.exception.PWCGException;
 
@@ -8,5 +8,5 @@ public interface IRefreshableParentUI
 {
     void refreshInformation() throws PWCGException;
 
-    JPanel getScreen();
+    Pane getScreen();
 }

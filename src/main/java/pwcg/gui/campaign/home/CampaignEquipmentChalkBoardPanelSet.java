@@ -2,14 +2,14 @@ package pwcg.gui.campaign.home;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JPanel;
+import javafx.scene.layout.Pane;
 
 import pwcg.campaign.Campaign;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.SpacerPanelFactory;
 
-public class CampaignEquipmentChalkBoardPanelSet extends JPanel
+public class CampaignEquipmentChalkBoardPanelSet extends Pane
 {
     private static final long serialVersionUID = 1L;
     
