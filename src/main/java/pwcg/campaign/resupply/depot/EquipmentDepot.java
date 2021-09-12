@@ -8,7 +8,7 @@ import java.util.Map;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneSorter;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.core.exception.PWCGException;
 
 public class EquipmentDepot
@@ -49,7 +49,7 @@ public class EquipmentDepot
         return equipment.getEquippedPlane(planeSerialNumber);
     }
 
-    public List<EquippedPlane> getDepotAircraftForRole(Role role) throws PWCGException
+    public List<EquippedPlane> getDepotAircraftForRole(PwcgRole role) throws PWCGException
     {
         List<EquippedPlane> planesInDepotForRole = new ArrayList<>();
         for (EquippedPlane equippedPlane : equipment.getAvailableDepotPlanes().values())

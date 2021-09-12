@@ -13,7 +13,7 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -67,7 +67,7 @@ public class WW2PayloadTest
 	
 	private void testPatrolPayload(IPlanePayload payloadGenerator) throws PWCGException
 	{
-        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(Role.ROLE_FIGHTER);
+        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(PwcgRole.ROLE_FIGHTER);
 		Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.PATROL);
 		Mockito.when(targetDefinition.getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_NONE);
 		runPayload(payloadGenerator);
@@ -75,7 +75,7 @@ public class WW2PayloadTest
 	
 	private void testInterceptPayload(IPlanePayload payloadGenerator) throws PWCGException
 	{
-        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(Role.ROLE_FIGHTER);
+        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(PwcgRole.ROLE_FIGHTER);
 		Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.INTERCEPT);
 		Mockito.when(targetDefinition.getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_NONE);
 		runPayload(payloadGenerator);
@@ -83,16 +83,16 @@ public class WW2PayloadTest
 
 	private void testBombPayloads(IPlanePayload payloadGenerator) throws PWCGException
 	{
-        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(Role.ROLE_ATTACK);
+        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(PwcgRole.ROLE_ATTACK);
 		testBombPayload(payloadGenerator, FlightTypes.GROUND_ATTACK);
 
-		Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(Role.ROLE_DIVE_BOMB);
+		Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(PwcgRole.ROLE_DIVE_BOMB);
 		testBombPayload(payloadGenerator, FlightTypes.DIVE_BOMB);
         
-        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(Role.ROLE_BOMB);
+        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(PwcgRole.ROLE_BOMB);
 		testBombPayload(payloadGenerator, FlightTypes.BOMB);
 
-        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(Role.ROLE_BOMB);
+        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(PwcgRole.ROLE_BOMB);
 		testBombPayload(payloadGenerator, FlightTypes.LOW_ALT_BOMB);
 	}
 	

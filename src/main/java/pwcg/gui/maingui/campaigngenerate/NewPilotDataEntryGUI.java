@@ -35,7 +35,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.RankFactory;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;
@@ -360,25 +360,25 @@ public class NewPilotDataEntryGUI extends JPanel implements ActionListener
         
         cbRole.removeAllItems();
         
-        List<Role> availableRoles = getRolesForService();
+        List<PwcgRole> availableRoles = getRolesForService();
         if (availableRoles.size() > 0)
         {
-            for (Role role : availableRoles)
+            for (PwcgRole role : availableRoles)
             {
                 cbRole.addItem(role.getRoleDescription());
             }
         }
         else
         {
-            cbRole.addItem(Role.ROLE_FIGHTER.getRoleDescription());
+            cbRole.addItem(PwcgRole.ROLE_FIGHTER.getRoleDescription());
         }
         
         cbRole.addActionListener(this);
     }
 
-    private List<Role> getRolesForService() throws PWCGException
+    private List<PwcgRole> getRolesForService() throws PWCGException
     {
-        Map<String, Role> rolesSorted = new TreeMap<String,Role>();
+        Map<String, PwcgRole> rolesSorted = new TreeMap<String,PwcgRole>();
         
         Date date = campaign.getDate();
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
@@ -386,12 +386,12 @@ public class NewPilotDataEntryGUI extends JPanel implements ActionListener
         
         for (Squadron squadron : squadronsForService)
         {            
-            Role primaryRole = squadron.determineSquadronPrimaryRole(date);
+            PwcgRole primaryRole = squadron.determineSquadronPrimaryRole(date);
 
             rolesSorted.put(primaryRole.getRoleDescription(), primaryRole);
         }
         
-        List<Role> roles = new ArrayList<Role>();
+        List<PwcgRole> roles = new ArrayList<PwcgRole>();
         roles.addAll(rolesSorted.values());
         
         return roles;
@@ -692,7 +692,7 @@ public class NewPilotDataEntryGUI extends JPanel implements ActionListener
             else if (ae.getActionCommand().equalsIgnoreCase("RoleChanged"))
             {
                 String roleDesc = (String)cbRole.getSelectedItem();
-                Role role = Role.getRoleFromDescription(roleDesc);
+                PwcgRole role = PwcgRole.getRoleFromDescription(roleDesc);
                 parent.getNewPilotGeneratorDO().setRole(role);
             }
 			else if (ae.getActionCommand().equalsIgnoreCase("RankChanged"))

@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
@@ -29,7 +29,7 @@ public class BalloonBustOpposingFlightBuilder implements IOpposingFlightBuilder
     public List<IFlight> createOpposingFlight() throws PWCGException 
     {
         SimpleOpposingFlightFinisher opposingFlightFinisher = new SimpleOpposingFlightFinisher(campaign, mission, playerSquadron);
-        List<Role> opposingFlightRoles = new ArrayList<>(Arrays.asList(Role.ROLE_FIGHTER));
+        List<PwcgRole> opposingFlightRoles = new ArrayList<>(Arrays.asList(PwcgRole.ROLE_FIGHTER));
         List<IFlight> opposingFlights = opposingFlightFinisher.createOpposingFlights(FlightTypes.BALLOON_DEFENSE, opposingFlightRoles);
         return opposingFlights;
     }

@@ -8,7 +8,7 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
@@ -37,7 +37,7 @@ public class ScrambleOpposingFlightSquadronChooser
 
     private List<Squadron> getViableOpposingSquadrons() throws PWCGException
     {
-        List<Role> opposingFlightRoles = determineOpposingRoles();
+        List<PwcgRole> opposingFlightRoles = determineOpposingRoles();
         List<Squadron> possibleOpposingSquadsByRole = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(
                 campaign, opposingFlightRoles, opposingSquadronSide);
 
@@ -49,8 +49,8 @@ public class ScrambleOpposingFlightSquadronChooser
         return viableOpposingSquads;
     }
     
-    private List<Role> determineOpposingRoles()
+    private List<PwcgRole> determineOpposingRoles()
     {
-        return new ArrayList<>(Arrays.asList(Role.ROLE_BOMB, Role.ROLE_ATTACK, Role.ROLE_DIVE_BOMB));
+        return new ArrayList<>(Arrays.asList(PwcgRole.ROLE_BOMB, PwcgRole.ROLE_ATTACK, PwcgRole.ROLE_DIVE_BOMB));
     }
 }

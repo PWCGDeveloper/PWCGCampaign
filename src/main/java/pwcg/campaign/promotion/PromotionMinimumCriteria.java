@@ -2,7 +2,7 @@ package pwcg.campaign.promotion;
 
 import java.util.Date;
 
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.bos.country.BoSServiceManager;
@@ -22,13 +22,13 @@ public class PromotionMinimumCriteria
     public void setMinimumPromotionStandards(SquadronMember squadronMember, Date date) throws PWCGException
     {
         int serviceId = squadronMember.determineSquadron().getService();
-        Role role = squadronMember.determineSquadron().determineSquadronPrimaryRole(date);
+        PwcgRole role = squadronMember.determineSquadron().determineSquadronPrimaryRole(date);
 
         setMissionsFlownForPromotion(serviceId, role);
         setVictoriesForPromotion(serviceId, role);
     }
 
-    private void setMissionsFlownForPromotion(int serviceId, Role role)
+    private void setMissionsFlownForPromotion(int serviceId, PwcgRole role)
     {
         if (serviceId == BoSServiceManager.LUFTWAFFE)
         {
@@ -40,23 +40,23 @@ public class PromotionMinimumCriteria
             setMissionsForUSAAF();
         }
 
-        if (role == Role.ROLE_RECON)
+        if (role == PwcgRole.ROLE_RECON)
         {
             setMissionsForRecon();
         }
     }
 
-    private void setVictoriesForPromotion(int serviceId, Role role)
+    private void setVictoriesForPromotion(int serviceId, PwcgRole role)
     {
-        if (role == Role.ROLE_RECON)
+        if (role == PwcgRole.ROLE_RECON)
         {
             setVictoriesForRecon();
         }
-        else if (role != Role.ROLE_FIGHTER)
+        else if (role != PwcgRole.ROLE_FIGHTER)
         {
             setVictoriesForBomber();
         }
-        else if (role == Role.ROLE_FIGHTER && serviceId == BoSServiceManager.LUFTWAFFE)
+        else if (role == PwcgRole.ROLE_FIGHTER && serviceId == BoSServiceManager.LUFTWAFFE)
         {
             setVictoriesForLuftwaffeFighter();
         }

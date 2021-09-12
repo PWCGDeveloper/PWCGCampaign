@@ -2,7 +2,7 @@ package pwcg.gui.colors;
 
 import java.awt.Color;
 
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.plane.RoleCategory;
 
 public class RNASColorMap extends ServiceColor
@@ -15,9 +15,9 @@ public class RNASColorMap extends ServiceColor
      * @param role
      * @return
      */
-    public Color getColorForRole(Role role)
+    public Color getColorForRole(PwcgRole role)
     {
-        if (role == Role.ROLE_STRAT_BOMB)
+        if (role == PwcgRole.ROLE_STRAT_BOMB)
         {
             return BOMBER_COLOR;
         }

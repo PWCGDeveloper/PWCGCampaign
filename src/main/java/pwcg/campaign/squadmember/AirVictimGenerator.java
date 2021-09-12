@@ -1,12 +1,12 @@
 package pwcg.campaign.squadmember;
 
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 
 public class AirVictimGenerator
 {    
-    public static boolean shouldUse(Role role)
+    public static boolean shouldUse(PwcgRole role)
     {
-        if (role == Role.ROLE_FIGHTER || role == Role.ROLE_STRATEGIC_INTERCEPT)
+        if (role == PwcgRole.ROLE_FIGHTER || role == PwcgRole.ROLE_STRATEGIC_INTERCEPT)
         {
             return true;
         }

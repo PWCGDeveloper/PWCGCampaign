@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
@@ -48,8 +48,8 @@ public class InterceptOpposingFlightBuilder implements IOpposingFlightBuilder
 
     private FlightTypes determineOpposingFlightType(Squadron opposingSquadron) throws PWCGException 
     {
-        Role opposingSquadronPrimaryRole = opposingSquadron.determineSquadronPrimaryRole(campaign.getDate());
-        if (opposingSquadronPrimaryRole == Role.ROLE_DIVE_BOMB)
+        PwcgRole opposingSquadronPrimaryRole = opposingSquadron.determineSquadronPrimaryRole(campaign.getDate());
+        if (opposingSquadronPrimaryRole == PwcgRole.ROLE_DIVE_BOMB)
         {
             return WeatherFlightTypeConverter.getFlightType(FlightTypes.DIVE_BOMB, mission.getWeather());
         }
@@ -61,7 +61,7 @@ public class InterceptOpposingFlightBuilder implements IOpposingFlightBuilder
 
     private Squadron determineOpposingSquadron() throws PWCGException
     {
-        List<Role> opposingFlightRoles = new ArrayList<>(Arrays.asList(Role.ROLE_BOMB, Role.ROLE_DIVE_BOMB));
+        List<PwcgRole> opposingFlightRoles = new ArrayList<>(Arrays.asList(PwcgRole.ROLE_BOMB, PwcgRole.ROLE_DIVE_BOMB));
         OpposingSquadronChooser opposingSquadronChooser = new OpposingSquadronChooser(campaign, opposingFlightRoles, playerSquadron.determineEnemySide(), 1);
         List<Squadron> viableSquadrons = opposingSquadronChooser.getOpposingSquadrons();
         if (viableSquadrons.size() > 0)

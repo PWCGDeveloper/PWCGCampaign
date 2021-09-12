@@ -12,7 +12,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
@@ -34,7 +34,7 @@ public class PlayerClaimResolverFirmNotExactTest
     public void testPlayerFirmNotExactVictoryFoundWithExactMatch() throws PWCGException
     {
         LogPlane victim = new LogPlane(1);
-        victim.setRole(Role.ROLE_FIGHTER);
+        victim.setRole(PwcgRole.ROLE_FIGHTER);
         victim.setVehicleType("se5a");
         victim.setCountry(new FCCountry(Country.BRITAIN));
 
@@ -60,7 +60,7 @@ public class PlayerClaimResolverFirmNotExactTest
     public void testPlayerFirmNotExactVictoryFoundWithNotExactMatch() throws PWCGException
     {
         LogPlane victim = new LogPlane(1);
-        victim.setRole(Role.ROLE_FIGHTER);
+        victim.setRole(PwcgRole.ROLE_FIGHTER);
         victim.setVehicleType("se5a");
         victim.setCountry(new FCCountry(Country.BRITAIN));
 
@@ -86,7 +86,7 @@ public class PlayerClaimResolverFirmNotExactTest
     public void testPlayerFirmNotExactVictoryNotFoundBecauseRoleIsDifferent() throws PWCGException
     {
         LogPlane victim = new LogPlane(1);
-        victim.setRole(Role.ROLE_BOMB);
+        victim.setRole(PwcgRole.ROLE_BOMB);
         victim.setVehicleType("notarealplane");
         victim.setCountry(new FCCountry(Country.BRITAIN));
 
@@ -112,7 +112,7 @@ public class PlayerClaimResolverFirmNotExactTest
     public void testPlayerFirmNotExactVictoryNotFoundBecauseClaimPlaneNotFound() throws PWCGException
     {
         LogPlane victim = new LogPlane(1);
-        victim.setRole(Role.ROLE_FIGHTER);
+        victim.setRole(PwcgRole.ROLE_FIGHTER);
         victim.setVehicleType("se5a");
         victim.setCountry(new FCCountry(Country.BRITAIN));
 
@@ -138,7 +138,7 @@ public class PlayerClaimResolverFirmNotExactTest
     public void testPlayerFirmNotExactVictoryNotFoundBecauseVictoryAlreadyConfirmed() throws PWCGException
     {
         LogPlane victim = new LogPlane(1);
-        victim.setRole(Role.ROLE_FIGHTER);
+        victim.setRole(PwcgRole.ROLE_FIGHTER);
         victim.setVehicleType("se5a");
         victim.setCountry(new FCCountry(Country.BRITAIN));
 
@@ -165,7 +165,7 @@ public class PlayerClaimResolverFirmNotExactTest
     public void testNoFriendlyVictories () throws PWCGException
     {   
         LogPlane victim = new LogPlane(1);
-        victim.setRole(Role.ROLE_FIGHTER);
+        victim.setRole(PwcgRole.ROLE_FIGHTER);
         victim.setVehicleType("albatrosd5");
         victim.setCountry(new FCCountry(Country.GERMANY));
 

@@ -6,7 +6,7 @@ import java.util.List;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.IWeight;
 import pwcg.core.utils.WeightCalculator;
@@ -51,9 +51,9 @@ public class GroundVictimGenerator
         return victimType;
     }
     
-    public static boolean shouldUse(Role role)
+    public static boolean shouldUse(PwcgRole role)
     {
-        if (role == Role.ROLE_ATTACK || role == Role.ROLE_DIVE_BOMB)
+        if (role == PwcgRole.ROLE_ATTACK || role == PwcgRole.ROLE_DIVE_BOMB)
         {
             return true;
         }

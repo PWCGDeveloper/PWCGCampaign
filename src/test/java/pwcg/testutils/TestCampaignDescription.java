@@ -5,13 +5,13 @@ import java.util.Date;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.FrontMapIdentifier;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 
 public class TestCampaignDescription
 {
     private boolean isRoF;
     private ArmedService service;
-    private Role role;
+    private PwcgRole role;
     private Date campaignDate;
     private FrontMapIdentifier map;
     private Campaign campaign;
@@ -36,12 +36,12 @@ public class TestCampaignDescription
         this.service = service;
     }
     
-    public Role getRole()
+    public PwcgRole getRole()
     {
         return role;
     }
     
-    public void setRole(Role role)
+    public void setRole(PwcgRole role)
     {
         this.role = role;
     }

@@ -4,7 +4,7 @@ import pwcg.aar.inmission.phase1.parse.event.IAType12;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.core.exception.PWCGException;
 
 public abstract class LogAIEntity extends LogBase
@@ -12,7 +12,7 @@ public abstract class LogAIEntity extends LogBase
     protected String id = "";
     protected String name;
     protected String vehicleType = "";
-    protected Role role = Role.ROLE_UNKNOWN;
+    protected PwcgRole role = PwcgRole.ROLE_UNKNOWN;
     protected ICountry country;
 
     public LogAIEntity(int sequenceNumber)
@@ -30,7 +30,7 @@ public abstract class LogAIEntity extends LogBase
         PlaneType plane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(atype12.getType());
         if (plane != null)
         {
-            Role approximateRole = Role.getApproximateRole(plane.determinePrimaryRole());
+            PwcgRole approximateRole = PwcgRole.getApproximateRole(plane.determinePrimaryRole());
             setRole(approximateRole);
         }
     }
@@ -65,12 +65,12 @@ public abstract class LogAIEntity extends LogBase
         this.country = country;
     }
 
-    public Role getRole()
+    public PwcgRole getRole()
     {
         return role;
     }
 
-    public void setRole(Role role)
+    public void setRole(PwcgRole role)
     {
         this.role = role;
     }

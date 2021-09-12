@@ -6,7 +6,7 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -61,11 +61,11 @@ public class MissionAiSquadronFinder
 
     private void findSquadronsForNightTacticalMission() throws PWCGException
     {
-        List<Role> acceptableRoles = new ArrayList<Role>();
-        acceptableRoles.add(Role.ROLE_FIGHTER);
-        acceptableRoles.add(Role.ROLE_BOMB);
-        acceptableRoles.add(Role.ROLE_ATTACK);
-        acceptableRoles.add(Role.ROLE_TRANSPORT);
+        List<PwcgRole> acceptableRoles = new ArrayList<PwcgRole>();
+        acceptableRoles.add(PwcgRole.ROLE_FIGHTER);
+        acceptableRoles.add(PwcgRole.ROLE_BOMB);
+        acceptableRoles.add(PwcgRole.ROLE_ATTACK);
+        acceptableRoles.add(PwcgRole.ROLE_TRANSPORT);
 
         List<Squadron> otherAlliedSquads = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, Side.ALLIED);
         List<Squadron> otherAxisSquads = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, Side.AXIS);
@@ -76,10 +76,10 @@ public class MissionAiSquadronFinder
 
     private void findSquadronsForStrategicMission() throws PWCGException
     {
-        List<Role> acceptableRoles = new ArrayList<Role>();
-        acceptableRoles.add(Role.ROLE_FIGHTER);
-        acceptableRoles.add(Role.ROLE_BOMB);
-        acceptableRoles.add(Role.ROLE_STRAT_BOMB);
+        List<PwcgRole> acceptableRoles = new ArrayList<PwcgRole>();
+        acceptableRoles.add(PwcgRole.ROLE_FIGHTER);
+        acceptableRoles.add(PwcgRole.ROLE_BOMB);
+        acceptableRoles.add(PwcgRole.ROLE_STRAT_BOMB);
 
         List<Squadron> otherAlliedSquads = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, Side.ALLIED);
         List<Squadron> otherAxisSquads = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, Side.AXIS);
@@ -90,9 +90,9 @@ public class MissionAiSquadronFinder
 
     private void findSquadronsForNightStrategicMission() throws PWCGException
     {
-        List<Role> acceptableRoles = new ArrayList<Role>();
-        acceptableRoles.add(Role.ROLE_BOMB);
-        acceptableRoles.add(Role.ROLE_STRAT_BOMB);
+        List<PwcgRole> acceptableRoles = new ArrayList<PwcgRole>();
+        acceptableRoles.add(PwcgRole.ROLE_BOMB);
+        acceptableRoles.add(PwcgRole.ROLE_STRAT_BOMB);
 
         List<Squadron> otherAlliedSquads = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, Side.ALLIED);
         List<Squadron> otherAxisSquads = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, Side.AXIS);

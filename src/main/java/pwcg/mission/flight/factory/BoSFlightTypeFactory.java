@@ -7,7 +7,7 @@ import java.util.Map;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.plane.SpecializedRole;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
@@ -30,34 +30,34 @@ public class BoSFlightTypeFactory implements IFlightTypeFactory
     @Override
     public FlightTypes getFlightType(Squadron squadron, boolean isPlayerFlight) throws PWCGException
     {
-        Role missionRole = squadron.getSquadronRoles().selectRoleForMission(campaign.getDate());
+        PwcgRole missionRole = squadron.getSquadronRoles().selectRoleForMission(campaign.getDate());
 
         FlightTypes flightType = null;
-        if (missionRole == Role.ROLE_DIVE_BOMB)
+        if (missionRole == PwcgRole.ROLE_DIVE_BOMB)
         {
             flightType = getDiveBomberFlightType();
         }
-        else if (missionRole == Role.ROLE_BOMB)
+        else if (missionRole == PwcgRole.ROLE_BOMB)
         {
             flightType = getBomberFlightType(squadron);
         }
-        else if (missionRole == Role.ROLE_FIGHTER)
+        else if (missionRole == PwcgRole.ROLE_FIGHTER)
         {
             flightType = getFighterFlightType(squadron, isPlayerFlight);
         }
-        else if (missionRole == Role.ROLE_STRATEGIC_INTERCEPT)
+        else if (missionRole == PwcgRole.ROLE_STRATEGIC_INTERCEPT)
         {
             flightType = getStrategicInterceptFlightType(isPlayerFlight);
         }
-        else if (missionRole == Role.ROLE_ATTACK)
+        else if (missionRole == PwcgRole.ROLE_ATTACK)
         {
             flightType = getAttackFlightType(squadron, isPlayerFlight);
         }
-        else if (missionRole == Role.ROLE_TRANSPORT)
+        else if (missionRole == PwcgRole.ROLE_TRANSPORT)
         {
             flightType = getTransportFlightType(squadron);
         }
-        else if (missionRole == Role.ROLE_RECON)
+        else if (missionRole == PwcgRole.ROLE_RECON)
         {
             return getReconFlightType(squadron);
         }

@@ -8,7 +8,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -61,7 +61,7 @@ public class EnemySquadronFinder
                 
         ICountry country = squadron.getCountry();
         Side enemySide = country.getSide().getOppositeSide();
-        List<Role> acceptableRoles = createAcceptableRoledForVictory();
+        List<PwcgRole> acceptableRoles = createAcceptableRoledForVictory();
         if (useViableSquadrons)
         {
             enemySquadrons = PWCGContext.getInstance().getSquadronManager().getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, acceptableRoles, enemySide);
@@ -74,14 +74,14 @@ public class EnemySquadronFinder
         return enemySquadrons;
     }
 
-    private static List<Role> createAcceptableRoledForVictory()
+    private static List<PwcgRole> createAcceptableRoledForVictory()
     {
-        List<Role> acceptableRoles = new ArrayList<Role>();
-        acceptableRoles.add(Role.ROLE_FIGHTER);
-        acceptableRoles.add(Role.ROLE_ATTACK);
-        acceptableRoles.add(Role.ROLE_DIVE_BOMB);
-        acceptableRoles.add(Role.ROLE_BOMB);
-        acceptableRoles.add(Role.ROLE_RECON);
+        List<PwcgRole> acceptableRoles = new ArrayList<PwcgRole>();
+        acceptableRoles.add(PwcgRole.ROLE_FIGHTER);
+        acceptableRoles.add(PwcgRole.ROLE_ATTACK);
+        acceptableRoles.add(PwcgRole.ROLE_DIVE_BOMB);
+        acceptableRoles.add(PwcgRole.ROLE_BOMB);
+        acceptableRoles.add(PwcgRole.ROLE_RECON);
         return acceptableRoles;
     }
 

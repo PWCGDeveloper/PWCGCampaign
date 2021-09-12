@@ -9,7 +9,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberReplacer;
 import pwcg.coop.CoopUserManager;
@@ -164,22 +164,22 @@ public class CoopPlayerInclusionTest
             if (playerPlane.getName().contains("German Fighter"))
             {
                 germanFighterFound = true;
-                assert(playerPlane.isPrimaryRole(Role.ROLE_FIGHTER));
+                assert(playerPlane.isPrimaryRole(PwcgRole.ROLE_FIGHTER));
             }
             else if (playerPlane.getName().contains("German Bomber"))
             {
                 germanBomberFound = true;
-                assert(playerPlane.isPrimaryRole(Role.ROLE_BOMB));
+                assert(playerPlane.isPrimaryRole(PwcgRole.ROLE_BOMB));
             }
             else if (playerPlane.getName().contains("Russian Fighter"))
             {
                 russianFighterFound = true;
-                assert(playerPlane.isPrimaryRole(Role.ROLE_FIGHTER));
+                assert(playerPlane.isPrimaryRole(PwcgRole.ROLE_FIGHTER));
             }
             else if (playerPlane.getName().contains("Russian Il"))
             {
                 russianBomberFound = true;
-                assert(playerPlane.isPrimaryRole(Role.ROLE_ATTACK));
+                assert(playerPlane.isPrimaryRole(PwcgRole.ROLE_ATTACK));
             }
             
         }
@@ -217,19 +217,19 @@ public class CoopPlayerInclusionTest
                 {
                     germanFighterFound = true;
                     assert (playerPlanesForFlight.size() == 2);
-                    assert(playerPlane.isPrimaryRole(Role.ROLE_FIGHTER));
+                    assert(playerPlane.isPrimaryRole(PwcgRole.ROLE_FIGHTER));
                 }
                 else if (playerPlane.getName().contains("German Secondfighter"))
                 {
                     germanFighter2Found = true;
                     assert (playerPlanesForFlight.size() == 2);
-                    assert(playerPlane.isPrimaryRole(Role.ROLE_FIGHTER));
+                    assert(playerPlane.isPrimaryRole(PwcgRole.ROLE_FIGHTER));
                 }
                 else if (playerPlane.getName().contains("Russian Fighter"))
                 {
                     russianFighterFound = true;
                     assert (playerPlanesForFlight.size() == 1);
-                    assert(playerPlane.isPrimaryRole(Role.ROLE_FIGHTER));
+                    assert(playerPlane.isPrimaryRole(PwcgRole.ROLE_FIGHTER));
                 }
             }
         }

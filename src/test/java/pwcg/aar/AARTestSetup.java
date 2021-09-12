@@ -26,7 +26,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.resupply.personnel.SquadronTransferData;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SerialNumber;
@@ -210,10 +210,10 @@ public abstract class AARTestSetup
         Mockito.when(plane2.getSerialNumber()).thenReturn(SerialNumber.PLANE_STARTING_SERIAL_NUMBER+1);
         Mockito.when(plane3.getSerialNumber()).thenReturn(SerialNumber.PLANE_STARTING_SERIAL_NUMBER+2);
         
-        Mockito.when(enemyPlane1.determinePrimaryRole()).thenReturn(Role.ROLE_FIGHTER);
-        Mockito.when(plane1.determinePrimaryRole()).thenReturn(Role.ROLE_FIGHTER);
-        Mockito.when(plane2.determinePrimaryRole()).thenReturn(Role.ROLE_FIGHTER);
-        Mockito.when(plane3.determinePrimaryRole()).thenReturn(Role.ROLE_FIGHTER);
+        Mockito.when(enemyPlane1.determinePrimaryRole()).thenReturn(PwcgRole.ROLE_FIGHTER);
+        Mockito.when(plane1.determinePrimaryRole()).thenReturn(PwcgRole.ROLE_FIGHTER);
+        Mockito.when(plane2.determinePrimaryRole()).thenReturn(PwcgRole.ROLE_FIGHTER);
+        Mockito.when(plane3.determinePrimaryRole()).thenReturn(PwcgRole.ROLE_FIGHTER);
     }
 
 }

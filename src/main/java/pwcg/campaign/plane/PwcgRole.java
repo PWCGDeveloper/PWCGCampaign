@@ -3,7 +3,7 @@ package pwcg.campaign.plane;
 import java.util.ArrayList;
 import java.util.List;
 
-public enum Role
+public enum PwcgRole
 {
     ROLE_FIGHTER (RoleCategory.FIGHTER, "Fighter"),
     ROLE_STRATEGIC_INTERCEPT (RoleCategory.FIGHTER, "Interceptor"),
@@ -31,44 +31,44 @@ public enum Role
     private RoleCategory roleCategory;
     private String roleDescription;
     
-    Role (RoleCategory roleCategory, String roleDescription) 
+    PwcgRole (RoleCategory roleCategory, String roleDescription) 
     {
         this.roleCategory = roleCategory;
         this.roleDescription = roleDescription;
     }
     
-    public static List<Role> getAllRoles ()
+    public static List<PwcgRole> getAllRoles ()
     {
-        List<Role> allAircraftRoles = new ArrayList<>();
-        allAircraftRoles.add(Role.ROLE_FIGHTER);
-        allAircraftRoles.add(Role.ROLE_STRATEGIC_INTERCEPT);
-        allAircraftRoles.add(Role.ROLE_SEA_PLANE);
-        allAircraftRoles.add(Role.ROLE_SEA_PLANE_SMALL);
+        List<PwcgRole> allAircraftRoles = new ArrayList<>();
+        allAircraftRoles.add(PwcgRole.ROLE_FIGHTER);
+        allAircraftRoles.add(PwcgRole.ROLE_STRATEGIC_INTERCEPT);
+        allAircraftRoles.add(PwcgRole.ROLE_SEA_PLANE);
+        allAircraftRoles.add(PwcgRole.ROLE_SEA_PLANE_SMALL);
 
-        allAircraftRoles.add(Role.ROLE_ATTACK);
-        allAircraftRoles.add(Role.ROLE_DIVE_BOMB);
+        allAircraftRoles.add(PwcgRole.ROLE_ATTACK);
+        allAircraftRoles.add(PwcgRole.ROLE_DIVE_BOMB);
 
-        allAircraftRoles.add(Role.ROLE_RECON);
-        allAircraftRoles.add(Role.ROLE_ARTILLERY_SPOT);
-        allAircraftRoles.add(Role.ROLE_SEA_PLANE_LARGE);
+        allAircraftRoles.add(PwcgRole.ROLE_RECON);
+        allAircraftRoles.add(PwcgRole.ROLE_ARTILLERY_SPOT);
+        allAircraftRoles.add(PwcgRole.ROLE_SEA_PLANE_LARGE);
 
-        allAircraftRoles.add(Role.ROLE_BOMB);
-        allAircraftRoles.add(Role.ROLE_STRAT_BOMB);
+        allAircraftRoles.add(PwcgRole.ROLE_BOMB);
+        allAircraftRoles.add(PwcgRole.ROLE_STRAT_BOMB);
         
-        allAircraftRoles.add(Role.ROLE_TRANSPORT);
+        allAircraftRoles.add(PwcgRole.ROLE_TRANSPORT);
         return allAircraftRoles;
     }
     
-    public static Role getRoleFromDescription(String description)
+    public static PwcgRole getRoleFromDescription(String description)
     {
-        for (Role role : Role.getAllRoles())
+        for (PwcgRole role : PwcgRole.getAllRoles())
         {
             if (role.getRoleDescription().equals(description))
             {
                 return role;
             }
         }
-        return Role.ROLE_UNKNOWN;
+        return PwcgRole.ROLE_UNKNOWN;
     }
     
     public boolean isRoleCategory(RoleCategory askCategory)
@@ -90,20 +90,20 @@ public enum Role
         return roleDescription;
     }
 
-    public static Role getApproximateRole(Role role)
+    public static PwcgRole getApproximateRole(PwcgRole role)
     {
         if (role.getRoleCategory() == RoleCategory.BOMBER)
         {
-            return Role.ROLE_BOMB;
+            return PwcgRole.ROLE_BOMB;
         }
         else if (role.getRoleCategory() == RoleCategory.FIGHTER)
         {
-            return Role.ROLE_FIGHTER;
+            return PwcgRole.ROLE_FIGHTER;
         }
         else if (role.getRoleCategory() == RoleCategory.TRANSPORT)
         {
-            return Role.ROLE_BOMB;
+            return PwcgRole.ROLE_BOMB;
         }
-        return Role.ROLE_UNKNOWN;
+        return PwcgRole.ROLE_UNKNOWN;
     }
 }

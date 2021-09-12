@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
@@ -28,7 +28,7 @@ public class SimpleOpposingFlightFinisher
         this.playerSquadron = playerSquadron;
     }
 
-    public List<IFlight> createOpposingFlights(FlightTypes opposingFlightType, List<Role> opposingFlightRoles) throws PWCGException 
+    public List<IFlight> createOpposingFlights(FlightTypes opposingFlightType, List<PwcgRole> opposingFlightRoles) throws PWCGException 
     {
         Squadron opposingSquadron = determineOpposingSquadron(opposingFlightRoles);
         if (opposingSquadron != null)
@@ -38,7 +38,7 @@ public class SimpleOpposingFlightFinisher
         return new ArrayList<>();
     }
 
-    private Squadron determineOpposingSquadron(List<Role> opposingFlightRoles) throws PWCGException
+    private Squadron determineOpposingSquadron(List<PwcgRole> opposingFlightRoles) throws PWCGException
     {
         OpposingSquadronChooser opposingSquadronChooser = new OpposingSquadronChooser(campaign, opposingFlightRoles, playerSquadron.determineEnemySide(), 1);
         List<Squadron> viableSquadrons = opposingSquadronChooser.getOpposingSquadrons();

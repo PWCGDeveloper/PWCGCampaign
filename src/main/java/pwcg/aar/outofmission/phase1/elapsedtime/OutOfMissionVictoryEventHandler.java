@@ -3,7 +3,7 @@ package pwcg.aar.outofmission.phase1.elapsedtime;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.prelim.CampaignMembersOutOfMissionFinder;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadmember.AirVictimGenerator;
 import pwcg.campaign.squadmember.GroundVictimGenerator;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -34,7 +34,7 @@ public class OutOfMissionVictoryEventHandler
         {
             if (OutOfMissionPilotSelector.shouldPilotBeEvaluated(campaign, squadronMember)) 
             {
-                Role missionRole = squadronMember.determineSquadron().getSquadronRoles().selectRoleForMission(campaign.getDate());
+                PwcgRole missionRole = squadronMember.determineSquadron().getSquadronRoles().selectRoleForMission(campaign.getDate());
                 if (AirVictimGenerator.shouldUse(missionRole))
                 {
                     OutOfMissionAirVictoryEventGenerator airVictoryEventGenerator = new OutOfMissionAirVictoryEventGenerator(campaign, squadronMember);

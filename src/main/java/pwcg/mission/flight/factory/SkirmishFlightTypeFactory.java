@@ -1,7 +1,7 @@
 package pwcg.mission.flight.factory;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.skirmish.Skirmish;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -25,7 +25,7 @@ public class SkirmishFlightTypeFactory implements IFlightTypeFactory
     @Override
     public FlightTypes getFlightType(Squadron squadron, boolean isPlayerFlight) throws PWCGException
     {
-        Role missionRole = squadron.getSquadronRoles().selectRoleForMission(campaign.getDate());
+        PwcgRole missionRole = squadron.getSquadronRoles().selectRoleForMission(campaign.getDate());
         missionRole = convertUnaccaptableRolesForSkirmish(missionRole, squadron);
         missionRole = skirmish.forceRoleConversion(missionRole, squadron.determineSide());
         
@@ -44,32 +44,32 @@ public class SkirmishFlightTypeFactory implements IFlightTypeFactory
         return flightType;
     }
     
-    private Role convertUnaccaptableRolesForSkirmish (Role missionRole, Squadron squadron) throws PWCGException
+    private PwcgRole convertUnaccaptableRolesForSkirmish (PwcgRole missionRole, Squadron squadron) throws PWCGException
     {
-        if (missionRole == Role.ROLE_STRATEGIC_INTERCEPT)
+        if (missionRole == PwcgRole.ROLE_STRATEGIC_INTERCEPT)
         {
-            return Role.ROLE_FIGHTER;
+            return PwcgRole.ROLE_FIGHTER;
         }
         
-        if (missionRole == Role.ROLE_STRAT_BOMB)
+        if (missionRole == PwcgRole.ROLE_STRAT_BOMB)
         {
-            return Role.ROLE_BOMB;
+            return PwcgRole.ROLE_BOMB;
         }
         
-        if (missionRole == Role.ROLE_RECON)
+        if (missionRole == PwcgRole.ROLE_RECON)
         {
-            Role squadronPrimaryRole = squadron.determineSquadronPrimaryRole(campaign.getDate());
-            if (squadronPrimaryRole == Role.ROLE_FIGHTER)
+            PwcgRole squadronPrimaryRole = squadron.determineSquadronPrimaryRole(campaign.getDate());
+            if (squadronPrimaryRole == PwcgRole.ROLE_FIGHTER)
             {
-                return Role.ROLE_FIGHTER;
+                return PwcgRole.ROLE_FIGHTER;
             }
-            else if (squadronPrimaryRole == Role.ROLE_BOMB)
+            else if (squadronPrimaryRole == PwcgRole.ROLE_BOMB)
             {
-                return Role.ROLE_BOMB;
+                return PwcgRole.ROLE_BOMB;
             }
-            else if (squadronPrimaryRole == Role.ROLE_RECON)
+            else if (squadronPrimaryRole == PwcgRole.ROLE_RECON)
             {
-                return Role.ROLE_BOMB;
+                return PwcgRole.ROLE_BOMB;
             }
         }
         

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -13,9 +13,9 @@ public class SquadronRoleSet
 {
     private List<SquadronRolePeriod> squadronRolePeriods = new ArrayList<>();
 
-    public Role selectRoleForMission(Date date) throws PWCGException 
+    public PwcgRole selectRoleForMission(Date date) throws PWCGException 
     {
-        Role selectedRole = Role.ROLE_NONE;
+        PwcgRole selectedRole = PwcgRole.ROLE_NONE;
         SquadronRolePeriod squadronRoleForDate = selectRoleSetByDate(date);
         if (squadronRoleForDate != null)
         {
@@ -29,17 +29,17 @@ public class SquadronRoleSet
         return selectedRole;
     }
     
-    public Role selectSquadronPrimaryRole(Date date) throws PWCGException 
+    public PwcgRole selectSquadronPrimaryRole(Date date) throws PWCGException 
     {
         SquadronRolePeriod squadronRoleForDate = selectRoleSetByDate(date);
-        Role selectedRole = selectRoleByWeight(squadronRoleForDate);
+        PwcgRole selectedRole = selectRoleByWeight(squadronRoleForDate);
 
         return selectedRole;
     }
     
-    private Role selectRoleFromSet(SquadronRolePeriod squadronRole) throws PWCGException 
+    private PwcgRole selectRoleFromSet(SquadronRolePeriod squadronRole) throws PWCGException 
     {
-        Role selectedRole = Role.ROLE_NONE;
+        PwcgRole selectedRole = PwcgRole.ROLE_NONE;
         
         int totalWeight = 0;
         for (SquadronRoleWeight squadronRoleWeight : squadronRole.getWeightedRoles())
@@ -64,9 +64,9 @@ public class SquadronRoleSet
     
 
 
-    private Role selectRoleByWeight(SquadronRolePeriod squadronRole) throws PWCGException 
+    private PwcgRole selectRoleByWeight(SquadronRolePeriod squadronRole) throws PWCGException 
     {
-        Role selectedRole = Role.ROLE_NONE;
+        PwcgRole selectedRole = PwcgRole.ROLE_NONE;
         
         int heaviestWeight = 0;
         for (SquadronRoleWeight squadronRoleWeight : squadronRole.getWeightedRoles())
@@ -109,14 +109,14 @@ public class SquadronRoleSet
         return rolesForPeriod;
     }
     
-    public boolean isSquadronThisPrimaryRole (Date date, Role requestedRole) throws PWCGException 
+    public boolean isSquadronThisPrimaryRole (Date date, PwcgRole requestedRole) throws PWCGException 
     {
         SquadronRolePeriod squadronRoleForDate = selectRoleSetByDate(date);
-        Role primaryRole = selectRoleByWeight(squadronRoleForDate);
+        PwcgRole primaryRole = selectRoleByWeight(squadronRoleForDate);
         return (requestedRole == primaryRole);
     }
 
-    public boolean isSquadronThisRole (Date date, Role requestedRole) throws PWCGException 
+    public boolean isSquadronThisRole (Date date, PwcgRole requestedRole) throws PWCGException 
     {
         SquadronRolePeriod squadronRoleForDate = selectRoleSetByDate(date);
         for (SquadronRoleWeight squadronRoleWeight : squadronRoleForDate.getWeightedRoles())

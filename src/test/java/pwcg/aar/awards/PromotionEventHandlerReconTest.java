@@ -15,7 +15,7 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.promotion.PromotionArbitrator;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberVictories;
@@ -40,7 +40,7 @@ public class PromotionEventHandlerReconTest
         PWCGContext.setProduct(PWCGProduct.FC);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
         Mockito.when(squadronMember.determineSquadron()).thenReturn(squadron);
-        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(Role.ROLE_RECON);
+        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(PwcgRole.ROLE_RECON);
         Mockito.when(squadronMember.getSquadronMemberVictories()).thenReturn(squadronMemberVictories);
         Mockito.when(squadronMemberVictories.getGroundVictoryPointTotal()).thenReturn(0);
         

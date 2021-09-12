@@ -13,7 +13,7 @@ import javax.swing.JTextArea;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.resupply.depot.EquipmentDepot;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -62,14 +62,14 @@ public class CampaignEquipmentDepotPanel extends JPanel
         depoBodyPanel.setOpaque(false);
         depoPanel.add(depoBodyPanel, BorderLayout.CENTER);
 
-        createDepotForRole(Role.ROLE_FIGHTER, depoBodyPanel);
-        createDepotForRole(Role.ROLE_ATTACK, depoBodyPanel);
-        createDepotForRole(Role.ROLE_DIVE_BOMB, depoBodyPanel);
-        createDepotForRole(Role.ROLE_RECON, depoBodyPanel);
-        createDepotForRole(Role.ROLE_BOMB, depoBodyPanel);
-        createDepotForRole(Role.ROLE_STRAT_BOMB, depoBodyPanel);
-        createDepotForRole(Role.ROLE_SEA_PLANE, depoBodyPanel);
-        createDepotForRole(Role.ROLE_TRANSPORT, depoBodyPanel);
+        createDepotForRole(PwcgRole.ROLE_FIGHTER, depoBodyPanel);
+        createDepotForRole(PwcgRole.ROLE_ATTACK, depoBodyPanel);
+        createDepotForRole(PwcgRole.ROLE_DIVE_BOMB, depoBodyPanel);
+        createDepotForRole(PwcgRole.ROLE_RECON, depoBodyPanel);
+        createDepotForRole(PwcgRole.ROLE_BOMB, depoBodyPanel);
+        createDepotForRole(PwcgRole.ROLE_STRAT_BOMB, depoBodyPanel);
+        createDepotForRole(PwcgRole.ROLE_SEA_PLANE, depoBodyPanel);
+        createDepotForRole(PwcgRole.ROLE_TRANSPORT, depoBodyPanel);
         
         return depoPanel;
     }
@@ -95,7 +95,7 @@ public class CampaignEquipmentDepotPanel extends JPanel
         return depoHeaderPanel;
     }
 
-    private void createDepotForRole(Role role, JPanel depotBodyPanel) throws PWCGException
+    private void createDepotForRole(PwcgRole role, JPanel depotBodyPanel) throws PWCGException
     {
         List<EquippedPlane> aircraftForRole = getDepotAircraftForRole(role);
         if (aircraftForRole.size() > 0)
@@ -127,7 +127,7 @@ public class CampaignEquipmentDepotPanel extends JPanel
         return serviceDepotText;
     }
 
-    private String formAircraftInventory(List<EquippedPlane> aircraftForRole, Role role) throws PWCGException
+    private String formAircraftInventory(List<EquippedPlane> aircraftForRole, PwcgRole role) throws PWCGException
     {
         Map<String, Integer> planeCount = new TreeMap<>();
         for (EquippedPlane plane : aircraftForRole)
@@ -154,7 +154,7 @@ public class CampaignEquipmentDepotPanel extends JPanel
         return depoStatusBuffer.toString();
     }
     
-    private List<EquippedPlane> getDepotAircraftForRole(Role role) throws PWCGException
+    private List<EquippedPlane> getDepotAircraftForRole(PwcgRole role) throws PWCGException
     {
         EquipmentDepot equipmentDepot = campaign.getEquipmentManager().getEquipmentDepotForService(service.getServiceId());
         return equipmentDepot.getDepotAircraftForRole(role);

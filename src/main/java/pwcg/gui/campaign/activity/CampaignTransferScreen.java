@@ -29,7 +29,7 @@ import pwcg.campaign.TransferHandler;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ArmedServiceFactory;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
@@ -187,37 +187,37 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 
         Squadron playerSquadron = squadronMemberToTransfer.determineSquadron();        
 
-        if (playerSquadron.isSquadronThisRole(campaign.getDate(), Role.ROLE_BOMB))
+        if (playerSquadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_BOMB))
         {
-            cbRole.setSelectedItem(Role.ROLE_BOMB);
+            cbRole.setSelectedItem(PwcgRole.ROLE_BOMB);
         }
-        else if (playerSquadron.isSquadronThisRole(campaign.getDate(), Role.ROLE_DIVE_BOMB))
+        else if (playerSquadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_DIVE_BOMB))
         {
-            cbRole.setSelectedItem(Role.ROLE_DIVE_BOMB);
+            cbRole.setSelectedItem(PwcgRole.ROLE_DIVE_BOMB);
         }
-        else if (playerSquadron.isSquadronThisRole(campaign.getDate(), Role.ROLE_ATTACK))
+        else if (playerSquadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_ATTACK))
         {
-            cbRole.setSelectedItem(Role.ROLE_ATTACK);
+            cbRole.setSelectedItem(PwcgRole.ROLE_ATTACK);
         }
-        if (playerSquadron.isSquadronThisRole(campaign.getDate(), Role.ROLE_SEA_PLANE))
+        if (playerSquadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_SEA_PLANE))
         {
-            cbRole.setSelectedItem(Role.ROLE_SEA_PLANE);
+            cbRole.setSelectedItem(PwcgRole.ROLE_SEA_PLANE);
         }
-        else if (playerSquadron.isSquadronThisRole(campaign.getDate(), Role.ROLE_STRAT_BOMB))
+        else if (playerSquadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_STRAT_BOMB))
         {
-            cbRole.setSelectedItem(Role.ROLE_STRAT_BOMB);
+            cbRole.setSelectedItem(PwcgRole.ROLE_STRAT_BOMB);
         }
-        else if (playerSquadron.isSquadronThisRole(campaign.getDate(), Role.ROLE_RECON))
+        else if (playerSquadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_RECON))
         {
-            cbRole.setSelectedItem(Role.ROLE_RECON);
+            cbRole.setSelectedItem(PwcgRole.ROLE_RECON);
         }
-        else if (playerSquadron.isSquadronThisRole(campaign.getDate(), Role.ROLE_SEA_PLANE))
+        else if (playerSquadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_SEA_PLANE))
         {
-            cbRole.setSelectedItem(Role.ROLE_SEA_PLANE);
+            cbRole.setSelectedItem(PwcgRole.ROLE_SEA_PLANE);
         }
         else
         {
-            cbRole.setSelectedItem(Role.ROLE_FIGHTER);
+            cbRole.setSelectedItem(PwcgRole.ROLE_FIGHTER);
         }                
     }
 
@@ -227,14 +227,14 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         lRole.setOpaque(false);
         lRole.setFont(font);
         cbRole = new JComboBox<String>();
-        cbRole.addItem(Role.ROLE_FIGHTER.getRoleDescription());
-        cbRole.addItem(Role.ROLE_STRATEGIC_INTERCEPT.getRoleDescription());
-        cbRole.addItem(Role.ROLE_DIVE_BOMB.getRoleDescription());
-        cbRole.addItem(Role.ROLE_ATTACK.getRoleDescription());
-        cbRole.addItem(Role.ROLE_BOMB.getRoleDescription());
-        cbRole.addItem(Role.ROLE_STRAT_BOMB.getRoleDescription());
-        cbRole.addItem(Role.ROLE_RECON.getRoleDescription());
-        cbRole.addItem(Role.ROLE_SEA_PLANE.getRoleDescription());
+        cbRole.addItem(PwcgRole.ROLE_FIGHTER.getRoleDescription());
+        cbRole.addItem(PwcgRole.ROLE_STRATEGIC_INTERCEPT.getRoleDescription());
+        cbRole.addItem(PwcgRole.ROLE_DIVE_BOMB.getRoleDescription());
+        cbRole.addItem(PwcgRole.ROLE_ATTACK.getRoleDescription());
+        cbRole.addItem(PwcgRole.ROLE_BOMB.getRoleDescription());
+        cbRole.addItem(PwcgRole.ROLE_STRAT_BOMB.getRoleDescription());
+        cbRole.addItem(PwcgRole.ROLE_RECON.getRoleDescription());
+        cbRole.addItem(PwcgRole.ROLE_SEA_PLANE.getRoleDescription());
         cbRole.setOpaque(false);
         cbRole.setBackground(buttonBG);
         cbRole.setSelectedIndex(0);
@@ -389,7 +389,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 		List<Squadron> squadronList = squadManager.getPlayerFlyableSquadronsByService(service, campaign.getDate());
 		
         String roleDesc = (String)cbRole.getSelectedItem();
-        Role role = Role.getRoleFromDescription(roleDesc);
+        PwcgRole role = PwcgRole.getRoleFromDescription(roleDesc);
         
 		for (int i = 0; i < squadronList.size(); ++i)
 		{

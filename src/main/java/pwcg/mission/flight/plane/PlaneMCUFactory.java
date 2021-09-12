@@ -7,7 +7,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.plane.RoleCategory;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -145,7 +145,7 @@ public class PlaneMCUFactory
 
     private AiSkillLevel assignAiSkillLevel(PlaneMcu plane) throws PWCGException
     {
-        Role squadronPrimaryRole = flightInformation.getSquadron().determineSquadronPrimaryRole(flightInformation.getCampaign().getDate());
+        PwcgRole squadronPrimaryRole = flightInformation.getSquadron().determineSquadronPrimaryRole(flightInformation.getCampaign().getDate());
         AiSkillLevel aiLevel;
         if (squadronPrimaryRole.isRoleCategory(RoleCategory.FIGHTER) || !plane.isNovice())
         {

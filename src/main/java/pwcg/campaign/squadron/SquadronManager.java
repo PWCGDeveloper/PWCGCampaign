@@ -11,7 +11,7 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.io.json.SquadronIOJson;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -216,7 +216,7 @@ public class SquadronManager
         return eliminateAnomalySquadrons(campaign, selectedSquadronsForCurrentMap);
     }
 
-    public List<Squadron> getViableAiSquadronsForCurrentMapAndSideAndRole(Campaign campaign, List <Role> acceptableRoles, Side side) throws PWCGException 
+    public List<Squadron> getViableAiSquadronsForCurrentMapAndSideAndRole(Campaign campaign, List <PwcgRole> acceptableRoles, Side side) throws PWCGException 
     {
         List<Squadron> viableSquadronsForSide = SquadronReducer.reduceToSide(getViableSquadrons(campaign), side);
         List<Squadron> selectedSquadronsByRole = SquadronReducer.reduceToRole(viableSquadronsForSide, acceptableRoles, campaign.getDate());

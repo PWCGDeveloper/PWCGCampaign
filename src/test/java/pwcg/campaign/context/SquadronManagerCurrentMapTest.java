@@ -11,7 +11,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
@@ -42,8 +42,8 @@ public class SquadronManagerCurrentMapTest
 
         assert(nearbySquadron != null);
         assert(nearbySquadron.determineSide() == Side.ALLIED);
-        boolean isBomb = nearbySquadron.getSquadronRoles().isSquadronThisRole(campaign.getDate(), Role.ROLE_BOMB);
-        boolean isAttack = nearbySquadron.getSquadronRoles().isSquadronThisRole(campaign.getDate(), Role.ROLE_ATTACK);
+        boolean isBomb = nearbySquadron.getSquadronRoles().isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_BOMB);
+        boolean isAttack = nearbySquadron.getSquadronRoles().isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_ATTACK);
         assert(isBomb || isAttack);
     }
 
@@ -57,7 +57,7 @@ public class SquadronManagerCurrentMapTest
         Squadron nearbySquadron = EscortSquadronSelector.getEscortSquadron(campaign, squadron, squadron.determineCurrentPosition(campaign.getDate()), new MissionSquadronRegistry());
         assert(nearbySquadron != null);
         assert(nearbySquadron.determineSide() == Side.AXIS);
-        assert(nearbySquadron.getSquadronRoles().isSquadronThisRole(campaign.getDate(), Role.ROLE_FIGHTER) == true);
+        assert(nearbySquadron.getSquadronRoles().isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_FIGHTER) == true);
     }
 
     @Test
@@ -131,7 +131,7 @@ public class SquadronManagerCurrentMapTest
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
 
-        List<Role> roles = new ArrayList<Role>(Arrays.asList(Role.ROLE_BOMB, Role.ROLE_FIGHTER, Role.ROLE_ATTACK));
+        List<PwcgRole> roles = new ArrayList<PwcgRole>(Arrays.asList(PwcgRole.ROLE_BOMB, PwcgRole.ROLE_FIGHTER, PwcgRole.ROLE_ATTACK));
         List<Squadron> squadrons = squadronManager.getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, roles, Side.ALLIED);
         
         boolean foundJG52 = false;
@@ -197,7 +197,7 @@ public class SquadronManagerCurrentMapTest
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
 
-        List<Role> roles = new ArrayList<Role>(Arrays.asList(Role.ROLE_BOMB, Role.ROLE_FIGHTER));
+        List<PwcgRole> roles = new ArrayList<PwcgRole>(Arrays.asList(PwcgRole.ROLE_BOMB, PwcgRole.ROLE_FIGHTER));
         List<Squadron> squadrons = squadronManager.getViableAiSquadronsForCurrentMapAndSideAndRole(campaign, roles, Side.AXIS);
         
         boolean foundJG52 = false;

@@ -6,7 +6,7 @@ import org.junit.Test;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
@@ -46,7 +46,7 @@ public class AiAdjusterTest
         {
             for (PlaneMcu plane: flight.getFlightPlanes().getAiPlanes())
             {
-                if (plane.isPrimaryRole(Role.ROLE_FIGHTER) || plane.isNovice() == false)
+                if (plane.isPrimaryRole(PwcgRole.ROLE_FIGHTER) || plane.isNovice() == false)
                 {
                     assert(plane.getAiLevel() == AiSkillLevel.ACE);
                 }
@@ -72,7 +72,7 @@ public class AiAdjusterTest
         {
             for (PlaneMcu plane: flight.getFlightPlanes().getAiPlanes())
             {
-                if (plane.isPrimaryRole(Role.ROLE_FIGHTER) || plane.isNovice() == false)
+                if (plane.isPrimaryRole(PwcgRole.ROLE_FIGHTER) || plane.isNovice() == false)
                 {
                     assert(plane.getAiLevel() == AiSkillLevel.NOVICE);
                 }
@@ -98,7 +98,7 @@ public class AiAdjusterTest
         {
             for (PlaneMcu plane: flight.getFlightPlanes().getAiPlanes())
             {
-                if (plane.isPrimaryRole(Role.ROLE_FIGHTER) || plane.isNovice() == false)
+                if (plane.isPrimaryRole(PwcgRole.ROLE_FIGHTER) || plane.isNovice() == false)
                 {
                     assert(plane.getAiLevel().getAiSkillLevel() >= AiSkillLevel.NOVICE.getAiSkillLevel() &&
                            plane.getAiLevel().getAiSkillLevel() <= AiSkillLevel.ACE.getAiSkillLevel());
@@ -133,7 +133,7 @@ public class AiAdjusterTest
         {
             for (PlaneMcu plane: flight.getFlightPlanes().getAiPlanes())
             {
-                if (plane.isPrimaryRole(Role.ROLE_FIGHTER) || plane.isNovice() == false)
+                if (plane.isPrimaryRole(PwcgRole.ROLE_FIGHTER) || plane.isNovice() == false)
                 {
                     assert(plane.getAiLevel().getAiSkillLevel() >= AiSkillLevel.COMMON.getAiSkillLevel() &&
                            plane.getAiLevel().getAiSkillLevel() <= AiSkillLevel.ACE.getAiSkillLevel());

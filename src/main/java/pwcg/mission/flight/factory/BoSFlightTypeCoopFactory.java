@@ -7,7 +7,7 @@ import java.util.Map;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
@@ -29,33 +29,33 @@ public class BoSFlightTypeCoopFactory implements IFlightTypeFactory
     @Override
     public FlightTypes getFlightType(Squadron squadron, boolean isPlayerFlight) throws PWCGException
     {
-        Role missionRole = squadron.getSquadronRoles().selectRoleForMission(campaign.getDate());
+        PwcgRole missionRole = squadron.getSquadronRoles().selectRoleForMission(campaign.getDate());
 
-        if (missionRole == Role.ROLE_DIVE_BOMB)
+        if (missionRole == PwcgRole.ROLE_DIVE_BOMB)
         {
             return getDiveBomberFlightType();
         }
-        else if (missionRole == Role.ROLE_BOMB)
+        else if (missionRole == PwcgRole.ROLE_BOMB)
         {
             return getBomberFlightType(squadron);
         }
-        else if (missionRole == Role.ROLE_FIGHTER)
+        else if (missionRole == PwcgRole.ROLE_FIGHTER)
         {
             return getFighterFlightType(squadron, isPlayerFlight);
         }
-        else if (missionRole == Role.ROLE_STRATEGIC_INTERCEPT)
+        else if (missionRole == PwcgRole.ROLE_STRATEGIC_INTERCEPT)
         {
             return getFighterFlightType(squadron, isPlayerFlight);
         }
-        else if (missionRole == Role.ROLE_ATTACK)
+        else if (missionRole == PwcgRole.ROLE_ATTACK)
         {
             return getAttackFlightType();
         }
-        else if (missionRole == Role.ROLE_TRANSPORT)
+        else if (missionRole == PwcgRole.ROLE_TRANSPORT)
         {
             return getTransportFlightType(squadron);
         }
-        else if (missionRole == Role.ROLE_RECON)
+        else if (missionRole == PwcgRole.ROLE_RECON)
         {
             return getReconFlightType(squadron);
         }

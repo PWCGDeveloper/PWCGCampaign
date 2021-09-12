@@ -9,7 +9,7 @@ import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.factory.RankFactory;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopUser;
@@ -26,7 +26,7 @@ public class CampaignGeneratorDO
     private String rankName = null;
     private String squadName = "";
     private Date startDate = null;
-    private Role role = Role.ROLE_FIGHTER;
+    private PwcgRole role = PwcgRole.ROLE_FIGHTER;
     private CampaignMode campaignMode = CampaignMode.CAMPAIGN_MODE_NONE;
 
     public boolean isDataSetValid()
@@ -68,7 +68,7 @@ public class CampaignGeneratorDO
     {
         if (service != null)
         {
-            role = Role.ROLE_FIGHTER;
+            role = PwcgRole.ROLE_FIGHTER;
             
             IRankHelper ranks = RankFactory.createRankHelper();
             List<String> rankList = ranks.getRanksByService(service);
@@ -176,12 +176,12 @@ public class CampaignGeneratorDO
         this.startDate = startDate;
     }
 
-    public Role getRole()
+    public PwcgRole getRole()
     {
         return role;
     }
 
-    public void setRole(Role role)
+    public void setRole(PwcgRole role)
     {
         this.role = role;
     }

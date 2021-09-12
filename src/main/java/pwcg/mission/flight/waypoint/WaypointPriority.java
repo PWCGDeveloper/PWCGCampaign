@@ -1,6 +1,6 @@
 package pwcg.mission.flight.waypoint;
 
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.mcu.McuWaypoint;
@@ -27,7 +27,7 @@ public enum WaypointPriority
     {
         for (McuWaypoint waypoint : flight.getWaypointPackage().getAllWaypoints())
         {
-            if (!flight.getFlightPlanes().getFlightLeader().isPrimaryRole(Role.ROLE_FIGHTER))
+            if (!flight.getFlightPlanes().getFlightLeader().isPrimaryRole(PwcgRole.ROLE_FIGHTER))
             {
                 if (waypoint.getWpAction() == WaypointAction.WP_ACTION_TAKEOFF)
                 {

@@ -11,7 +11,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -47,7 +47,7 @@ public class FW190F2PayloadTest
 	@Test
 	public void payloadNormalTest() throws PWCGException
 	{
-        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(Role.ROLE_FIGHTER);
+        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(PwcgRole.ROLE_FIGHTER);
 		PlaneType fw190A5 = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByType(BosPlaneAttributeMapping.FW190_A5.getPlaneType());
 		IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
     	IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(fw190A5.getType());
@@ -59,7 +59,7 @@ public class FW190F2PayloadTest
 	@Test
 	public void payloadFw190F2Test() throws PWCGException
 	{
-        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(Role.ROLE_ATTACK);
+        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(PwcgRole.ROLE_ATTACK);
 		PlaneType fw190f2 = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByType(BosPlaneAttributeMapping.FW190_A5.getPlaneType());
 		IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
     	IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(fw190f2.getType());
@@ -68,7 +68,7 @@ public class FW190F2PayloadTest
 
 	private void testPatrolPayload(IPlanePayload payloadGenerator) throws PWCGException
 	{
-        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(Role.ROLE_FIGHTER);
+        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(PwcgRole.ROLE_FIGHTER);
 		Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.PATROL);
 		Mockito.when(targetDefinition.getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_NONE);
 		runPayload(payloadGenerator);
@@ -76,7 +76,7 @@ public class FW190F2PayloadTest
 	
 	private void testInterceptPayload(IPlanePayload payloadGenerator) throws PWCGException
 	{
-        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(Role.ROLE_FIGHTER);
+        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(PwcgRole.ROLE_FIGHTER);
 		Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.INTERCEPT);
 		Mockito.when(targetDefinition.getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_NONE);
 		runPayload(payloadGenerator);
@@ -84,10 +84,10 @@ public class FW190F2PayloadTest
 	
 	private void testGroundAttackPayload(IPlanePayload payloadGenerator) throws PWCGException
 	{
-        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(Role.ROLE_FIGHTER);
+        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(PwcgRole.ROLE_FIGHTER);
         testFw190A5WithOrdnance(payloadGenerator);
         
-        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(Role.ROLE_ATTACK);
+        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(PwcgRole.ROLE_ATTACK);
         testFw190A5WithOrdnance(payloadGenerator);
 	}
 

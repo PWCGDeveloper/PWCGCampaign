@@ -1,25 +1,25 @@
 package pwcg.campaign.skirmish;
 
 import pwcg.campaign.api.Side;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 
 public class SkirmishForceRoleConversion
 {
     Side side;
-    Role fromRole;
-    Role toRole;
+    PwcgRole fromRole;
+    PwcgRole toRole;
 
     public Side getSide()
     {
         return side;
     }
 
-    public Role getFromRole()
+    public PwcgRole getFromRole()
     {
         return fromRole;
     }
 
-    public Role getToRole()
+    public PwcgRole getToRole()
     {
         return toRole;
     }

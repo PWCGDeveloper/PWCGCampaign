@@ -10,7 +10,7 @@ import pwcg.campaign.context.AceManager;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.MapForAirfieldFinder;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;
@@ -65,8 +65,8 @@ public class CampaignGeneratorSquadronFilter
 	
 	private boolean rejectBecauseWrongRole(Squadron squad, Date campaignDate, String roleDesc) throws PWCGException
 	{
-        Role role = Role.getRoleFromDescription(roleDesc);
-        Role squadronRole = squad.determineSquadronPrimaryRole(campaignDate);
+        PwcgRole role = PwcgRole.getRoleFromDescription(roleDesc);
+        PwcgRole squadronRole = squad.determineSquadronPrimaryRole(campaignDate);
         if (role == squadronRole)
         {
             return false;

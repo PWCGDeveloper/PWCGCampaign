@@ -11,7 +11,7 @@ import org.mockito.Mockito;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberVictories;
 import pwcg.campaign.squadmember.Victory;
@@ -43,7 +43,7 @@ public abstract class MedalManagerTestBase
         Mockito.when(player.getSquadronMemberVictories()).thenReturn(squadronMemberVictories);
         Mockito.when(squadronMemberVictories.getAirToAirVictoryCount()).thenReturn(victories.size());
         Mockito.when(squadron.getSquadronRoles()).thenReturn(squadronRoleSet);
-        Mockito.when(squadronRoleSet.isSquadronThisRole(ArgumentMatchers.<Date>any(), ArgumentMatchers.<Role>any())).thenReturn(true);
+        Mockito.when(squadronRoleSet.isSquadronThisRole(ArgumentMatchers.<Date>any(), ArgumentMatchers.<PwcgRole>any())).thenReturn(true);
     }
 
     protected void awardMedal(int medalId, int numVictoriesNeededForMedal, int victoriesThisMission) throws PWCGException

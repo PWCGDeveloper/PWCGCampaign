@@ -6,7 +6,7 @@ import java.util.List;
 
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -130,7 +130,7 @@ public class Skirmish
         return false;
     }
 
-    public boolean hasFlighTypeForRole(Squadron squadron, Role role) throws PWCGException
+    public boolean hasFlighTypeForRole(Squadron squadron, PwcgRole role) throws PWCGException
     {
         List<SkirmishProfileElement> skirmishElementsForSide = getSkirmishProfileElementForSide(squadron);
         for (SkirmishProfileElement skirmishProfileElement : skirmishElementsForSide)
@@ -144,7 +144,7 @@ public class Skirmish
         return false;
     }
 
-    public FlightTypes getFlighTypeForRole(Squadron squadron, Role role) throws PWCGException
+    public FlightTypes getFlighTypeForRole(Squadron squadron, PwcgRole role) throws PWCGException
     {
         List<SkirmishProfileElement> skirmishElementsForSide = getSkirmishProfileElementForSide(squadron);
         for (SkirmishProfileElement skirmishProfileElement : skirmishElementsForSide)
@@ -172,7 +172,7 @@ public class Skirmish
         return TargetType.TARGET_NONE;
     }
 
-    public Role forceRoleConversion(Role role, Side side)
+    public PwcgRole forceRoleConversion(PwcgRole role, Side side)
     {
         for (SkirmishForceRoleConversion forcedRoleConversion : forcedRoleConversions)
         {

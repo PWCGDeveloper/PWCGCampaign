@@ -21,7 +21,7 @@ import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneSorter;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
@@ -88,15 +88,15 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
         squeezerPanel.add(squadronsByRoleContainer, BorderLayout.NORTH);
         this.add(squeezerPanel, BorderLayout.WEST);
 
-        formSquadronDescForRole(Role.ROLE_FIGHTER, side);
-        formSquadronDescForRole(Role.ROLE_ATTACK, side);
-        formSquadronDescForRole(Role.ROLE_DIVE_BOMB, side);
-        formSquadronDescForRole(Role.ROLE_RECON, side);
-        formSquadronDescForRole(Role.ROLE_BOMB, side);
-        formSquadronDescForRole(Role.ROLE_STRATEGIC_INTERCEPT, side);
-        formSquadronDescForRole(Role.ROLE_STRAT_BOMB, side);
-        formSquadronDescForRole(Role.ROLE_SEA_PLANE, side);
-        formSquadronDescForRole(Role.ROLE_TRANSPORT, side);
+        formSquadronDescForRole(PwcgRole.ROLE_FIGHTER, side);
+        formSquadronDescForRole(PwcgRole.ROLE_ATTACK, side);
+        formSquadronDescForRole(PwcgRole.ROLE_DIVE_BOMB, side);
+        formSquadronDescForRole(PwcgRole.ROLE_RECON, side);
+        formSquadronDescForRole(PwcgRole.ROLE_BOMB, side);
+        formSquadronDescForRole(PwcgRole.ROLE_STRATEGIC_INTERCEPT, side);
+        formSquadronDescForRole(PwcgRole.ROLE_STRAT_BOMB, side);
+        formSquadronDescForRole(PwcgRole.ROLE_SEA_PLANE, side);
+        formSquadronDescForRole(PwcgRole.ROLE_TRANSPORT, side);
     }    
 
     private void formSquadronIntelText() throws PWCGException
@@ -121,7 +121,7 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
         this.add(intelTextPanel, BorderLayout.CENTER);
     }
 
-    private void formSquadronDescForRole(Role role, Side side) throws PWCGException
+    private void formSquadronDescForRole(PwcgRole role, Side side) throws PWCGException
     {
         List<Squadron> squadrons = getSquadronsForIntel(role, side);
         if (squadrons.size() == 0)
@@ -147,10 +147,10 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
         }
     }
 
-    private List<Squadron> getSquadronsForIntel(Role role, Side side) throws PWCGException
+    private List<Squadron> getSquadronsForIntel(PwcgRole role, Side side) throws PWCGException
     {
         List<Squadron> squadronsWithPrimaryRole = new ArrayList<Squadron>();
-        List<Role> acceptableRoles = new ArrayList<Role>();
+        List<PwcgRole> acceptableRoles = new ArrayList<PwcgRole>();
         acceptableRoles.add(role);
 
         List<Squadron> squadronsForMap = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForCurrentMap(campaign.getDate());

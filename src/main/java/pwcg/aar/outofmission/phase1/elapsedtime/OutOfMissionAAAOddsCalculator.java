@@ -3,7 +3,7 @@ package pwcg.aar.outofmission.phase1.elapsedtime;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.plane.RoleCategory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
@@ -33,7 +33,7 @@ public class OutOfMissionAAAOddsCalculator
     {
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());
         SquadronRoleSet squadronRoles = squadron.getSquadronRoles();
-        Role roleThisMission = squadronRoles.selectRoleForMission(campaign.getDate());
+        PwcgRole roleThisMission = squadronRoles.selectRoleForMission(campaign.getDate());
         
         int shotDownOdds = 5;
         if (roleThisMission.isRoleCategory(RoleCategory.ATTACK))

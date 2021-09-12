@@ -1,7 +1,7 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
 import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.plane.RoleCategory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
@@ -51,7 +51,7 @@ public class Fw190A6Payload extends PlanePayload implements IPlanePayload
     @Override
     public int createWeaponsPayload(IFlight flight) throws PWCGException
     {
-        Role squadronPrimaryRole = flight.getSquadron().determineSquadronPrimaryRole(flight.getCampaign().getDate());
+        PwcgRole squadronPrimaryRole = flight.getSquadron().determineSquadronPrimaryRole(flight.getCampaign().getDate());
         if (squadronPrimaryRole.isRoleCategory(RoleCategory.ATTACK))
         {
             return createFW190G3Payload(flight);

@@ -18,7 +18,7 @@ import pwcg.campaign.mode.ICampaignDescriptionBuilder;
 import pwcg.campaign.personnel.InitialSquadronBuilder;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.IPlaneMarkingManager;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.plane.RoleCategory;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -204,7 +204,7 @@ public class Campaign
         for (SquadronMember player : this.personnelManager.getAllActivePlayers().getSquadronMemberList())
         {
             Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
-            Role squadronPrimaryRole = squadron.determineSquadronPrimaryRole(this.getDate());
+            PwcgRole squadronPrimaryRole = squadron.determineSquadronPrimaryRole(this.getDate());
             if (squadronPrimaryRole.isRoleCategory(RoleCategory.FIGHTER))
             {
                 return true;
@@ -219,7 +219,7 @@ public class Campaign
         for (SquadronMember player : this.personnelManager.getAllActivePlayers().getSquadronMemberList())
         {
             Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
-            Role squadronPrimaryRole = squadron.determineSquadronPrimaryRole(this.getDate());
+            PwcgRole squadronPrimaryRole = squadron.determineSquadronPrimaryRole(this.getDate());
             if (squadronPrimaryRole.isRoleCategory(RoleCategory.FIGHTER))
             {
                 return false;

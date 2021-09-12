@@ -1,18 +1,18 @@
 package pwcg.campaign.squadron;
 
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 
 public class SquadronRoleWeight
 {
-    private Role role;
+    private PwcgRole role;
     private int weight;
 
-    public Role getRole()
+    public PwcgRole getRole()
     {
         return role;
     }
 
-    public void setRole(Role role)
+    public void setRole(PwcgRole role)
     {
         this.role = role;
     }

@@ -1,13 +1,13 @@
 package pwcg.campaign.skirmish;
 
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.target.TargetType;
 
 public class SkirmishProfileElement
 {
     private SkirmishProfileAirAssociation association;
-    private Role role;
+    private PwcgRole role;
     private FlightTypes preferredFlightType;
     private TargetType targetType;
 
@@ -16,7 +16,7 @@ public class SkirmishProfileElement
         return association;
     }
 
-    public Role getRole()
+    public PwcgRole getRole()
     {
         return role;
     }

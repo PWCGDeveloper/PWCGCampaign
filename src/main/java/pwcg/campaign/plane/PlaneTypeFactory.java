@@ -68,7 +68,7 @@ public class PlaneTypeFactory
         {
             if (planeType != null)
             {
-                if (planeType.isRole(Role.ROLE_FIGHTER))
+                if (planeType.isRole(PwcgRole.ROLE_FIGHTER))
                 {
                     if (planeType.isPlaneActive(campaign.getDate()))
                     {
@@ -177,7 +177,7 @@ public class PlaneTypeFactory
         return null;
     }
 
-    public List<PlaneType> getAvailablePlaneTypes(ICountry country, Role role, Date date) throws PWCGException
+    public List<PlaneType> getAvailablePlaneTypes(ICountry country, PwcgRole role, Date date) throws PWCGException
     {
         Map<Integer, PlaneType> availablePlaneTypes = new TreeMap<>();
         for (PlaneType thisPlane : planeTypes.values())
@@ -305,7 +305,7 @@ public class PlaneTypeFactory
     }
 
 
-    public PlaneType findActivePlaneTypeByCountryDateAndRole(ICountry country, Date date, Role role) throws PWCGException
+    public PlaneType findActivePlaneTypeByCountryDateAndRole(ICountry country, Date date, PwcgRole role) throws PWCGException
     {
         List<PlaneType> possiblePlanes = new ArrayList<>();
         for (PlaneType planeType : planeTypes.values())

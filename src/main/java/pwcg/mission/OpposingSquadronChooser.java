@@ -9,7 +9,7 @@ import java.util.Map;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -17,11 +17,11 @@ import pwcg.core.utils.RandomNumberGenerator;
 public class OpposingSquadronChooser
 {
     private Campaign campaign;
-    private List<Role> opposingRoles = new ArrayList<>();
+    private List<PwcgRole> opposingRoles = new ArrayList<>();
     private Side opposingSide;
     private int numberOfOpposingFlights = 1;
 
-    public OpposingSquadronChooser(Campaign campaign, List<Role> opposingRoles, Side opposingSide, int numberOfOpposingFlights)
+    public OpposingSquadronChooser(Campaign campaign, List<PwcgRole> opposingRoles, Side opposingSide, int numberOfOpposingFlights)
     {
         this.campaign = campaign;
         this.opposingRoles = opposingRoles;

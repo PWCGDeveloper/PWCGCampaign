@@ -7,7 +7,7 @@ import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.plane.RoleCategory;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
@@ -77,7 +77,7 @@ public class BriefingPayloadPicker
     private boolean shouldIncludeModification(PayloadDesignation payloadDesignation, String planeType) throws PWCGException
     {
         Squadron squadron = briefingData.getSelectedFlight().getSquadron();
-        Role squadronPrimaryRole = squadron.determineSquadronPrimaryRole(briefingData.getSelectedFlight().getCampaign().getDate());
+        PwcgRole squadronPrimaryRole = squadron.determineSquadronPrimaryRole(briefingData.getSelectedFlight().getCampaign().getDate());
         if (planeType.equals(BosPlaneAttributeMapping.FW190_A6.getPlaneType()))
         {
             return shouldIncludeFW190Payload(payloadDesignation, squadronPrimaryRole, PayloadElement.FW190G3);
@@ -90,7 +90,7 @@ public class BriefingPayloadPicker
         return true;
     }
 
-    private boolean shouldIncludeFW190Payload(PayloadDesignation payloadDesignation, Role squadronPrimaryRole, PayloadElement payloadElementKey)
+    private boolean shouldIncludeFW190Payload(PayloadDesignation payloadDesignation, PwcgRole squadronPrimaryRole, PayloadElement payloadElementKey)
     {
         if (squadronPrimaryRole.isRoleCategory(RoleCategory.ATTACK) && payloadDesignation.containsElement(payloadElementKey))
         {

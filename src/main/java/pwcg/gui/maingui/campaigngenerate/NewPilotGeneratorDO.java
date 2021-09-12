@@ -5,7 +5,7 @@ import java.util.List;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.factory.RankFactory;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 
 public class NewPilotGeneratorDO
 {
@@ -15,7 +15,7 @@ public class NewPilotGeneratorDO
     private String region = "";
     private String rankName = null;
     private String squadName = "";
-    private Role role = Role.ROLE_FIGHTER;
+    private PwcgRole role = PwcgRole.ROLE_FIGHTER;
 
     public boolean isDataSetValid()
     {
@@ -45,7 +45,7 @@ public class NewPilotGeneratorDO
 
     public void initializeForService()
     {
-        role = Role.ROLE_FIGHTER;
+        role = PwcgRole.ROLE_FIGHTER;
         IRankHelper ranks = RankFactory.createRankHelper();
         List<String> rankList = ranks.getRanksByService(service);
         
@@ -115,12 +115,12 @@ public class NewPilotGeneratorDO
         this.squadName = squadName;
     }
 
-    public Role getRole()
+    public PwcgRole getRole()
     {
         return role;
     }
 
-    public void setRole(Role role)
+    public void setRole(PwcgRole role)
     {
         this.role = role;
     }

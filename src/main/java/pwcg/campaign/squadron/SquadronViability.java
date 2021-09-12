@@ -13,7 +13,7 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Equipment;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -162,12 +162,12 @@ public class SquadronViability
         return squadronsForCountry;
     }
 
-    public static List<Squadron> reduceToRole(List<Squadron> squadrons, List<Role> acceptableRoles, Date date) throws PWCGException 
+    public static List<Squadron> reduceToRole(List<Squadron> squadrons, List<PwcgRole> acceptableRoles, Date date) throws PWCGException 
     {       
         Map<Integer, Squadron> squadronsWithRole = new HashMap<>();
         for(Squadron squadron : squadrons)
         {
-            for (Role acceptableRole : acceptableRoles)
+            for (PwcgRole acceptableRole : acceptableRoles)
             {
                 if (squadron.isSquadronThisRole(date, acceptableRole))
                 {

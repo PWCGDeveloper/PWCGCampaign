@@ -7,7 +7,7 @@ import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberVictories;
 import pwcg.campaign.squadmember.SquadronMembers;
@@ -62,9 +62,9 @@ public class PromotionArbitrator implements IPromotionEventHandler
 
     private int getPilotVictories(Campaign campaign, SquadronMember pilot) throws PWCGException
     {
-        Role role = pilot.determineSquadron().determineSquadronPrimaryRole(campaign.getDate());
+        PwcgRole role = pilot.determineSquadron().determineSquadronPrimaryRole(campaign.getDate());
         SquadronMemberVictories victories = pilot.getSquadronMemberVictories();
-        if (role == Role.ROLE_FIGHTER)
+        if (role == PwcgRole.ROLE_FIGHTER)
         {
             return victories.getAirToAirVictoryCount();
         }

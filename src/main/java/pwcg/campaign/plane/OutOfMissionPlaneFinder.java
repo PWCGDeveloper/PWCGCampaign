@@ -10,7 +10,7 @@ import pwcg.core.utils.DateUtils;
 public class OutOfMissionPlaneFinder
 {
 
-    public PlaneType findPlaneType(Squadron squadron, Role role, Date date) throws PWCGException
+    public PlaneType findPlaneType(Squadron squadron, PwcgRole role, Date date) throws PWCGException
     {
         PlaneType planeType = findPreferredPlaneTypeForSquadron(squadron, date);
         if (planeType == null)
@@ -42,7 +42,7 @@ public class OutOfMissionPlaneFinder
         return planeType;
     }
 
-    private PlaneType findAlternativePlaneTypeForSquadron(Squadron squadron, Role role, Date date) throws PWCGException
+    private PlaneType findAlternativePlaneTypeForSquadron(Squadron squadron, PwcgRole role, Date date) throws PWCGException
     {
         PlaneType planeType = PWCGContext.getInstance().getPlaneTypeFactory().findActivePlaneTypeByCountryDateAndRole(
                 squadron.determineSquadronCountry(date), date, role);

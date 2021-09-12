@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
@@ -29,7 +29,7 @@ public class CAPOpposingFlightBuilder implements IOpposingFlightBuilder
     public List<IFlight> createOpposingFlight() throws PWCGException 
     {
         SimpleOpposingFlightFinisher opposingFlightFinisher = new SimpleOpposingFlightFinisher(campaign, mission, playerSquadron);
-        List<Role> opposingFlightRoles = new ArrayList<>(Arrays.asList(Role.ROLE_ATTACK));
+        List<PwcgRole> opposingFlightRoles = new ArrayList<>(Arrays.asList(PwcgRole.ROLE_ATTACK));
         List<IFlight> opposingFlights = opposingFlightFinisher.createOpposingFlights(FlightTypes.GROUND_ATTACK, opposingFlightRoles);
         return opposingFlights;
     }

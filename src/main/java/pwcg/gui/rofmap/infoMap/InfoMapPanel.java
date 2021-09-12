@@ -22,7 +22,7 @@ import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.plane.RoleCategory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;
@@ -135,7 +135,7 @@ public class InfoMapPanel extends MapPanelBase
                 List<Squadron> allSquadrons = squadronManager.getActiveSquadronsForCurrentMap(parent.getMapDate());
                 for (Squadron squadron : allSquadrons)
                 {
-                    Role squadronPrimaryRole = squadron.determineSquadronPrimaryRole(parent.getMapDate());
+                    PwcgRole squadronPrimaryRole = squadron.determineSquadronPrimaryRole(parent.getMapDate());
                     if (squadronPrimaryRole.isRoleCategory(RoleCategory.FIGHTER))
                     {
                         drawPointsBySquadron(g, squadron);
@@ -149,7 +149,7 @@ public class InfoMapPanel extends MapPanelBase
                 List<Squadron> allSquadrons = squadronManager.getActiveSquadronsForCurrentMap(parent.getMapDate());
                 for (Squadron squadron : allSquadrons)
                 {
-                    Role squadronRole = squadron.determineSquadronPrimaryRole(parent.getMapDate());
+                    PwcgRole squadronRole = squadron.determineSquadronPrimaryRole(parent.getMapDate());
                     if ((squadronRole.isRoleCategory(RoleCategory.BOMBER)) || 
                         (squadronRole.isRoleCategory(RoleCategory.TRANSPORT)))
                     {
@@ -164,7 +164,7 @@ public class InfoMapPanel extends MapPanelBase
                 List<Squadron> allSquadrons = squadronManager.getActiveSquadronsForCurrentMap(parent.getMapDate());
                 for (Squadron squadron : allSquadrons)
                 {
-                    Role squadronPrimaryRole = squadron.determineSquadronPrimaryRole(parent.getMapDate());
+                    PwcgRole squadronPrimaryRole = squadron.determineSquadronPrimaryRole(parent.getMapDate());
                     if (squadronPrimaryRole.isRoleCategory(RoleCategory.ATTACK))
                     {
                         drawPointsBySquadron(g, squadron);
@@ -178,7 +178,7 @@ public class InfoMapPanel extends MapPanelBase
                 List<Squadron> allSquadrons = squadronManager.getActiveSquadronsForCurrentMap(parent.getMapDate());
                 for (Squadron squadron : allSquadrons)
                 {
-                    Role squadronPrimaryRole = squadron.determineSquadronPrimaryRole(parent.getMapDate());
+                    PwcgRole squadronPrimaryRole = squadron.determineSquadronPrimaryRole(parent.getMapDate());
                     if (squadronPrimaryRole.isRoleCategory(RoleCategory.RECON))
                     {
                         drawPointsBySquadron(g, squadron);
@@ -418,7 +418,7 @@ public class InfoMapPanel extends MapPanelBase
                 
         for (Squadron squadron : allSquadrons)
         {
-            Role squadronPrimaryRole = squadron.determineSquadronPrimaryRole(parent.getMapDate());
+            PwcgRole squadronPrimaryRole = squadron.determineSquadronPrimaryRole(parent.getMapDate());
 
             if ((whatToDisplay[DISPLAY_FIGHTER] == true && squadronPrimaryRole.isRoleCategory(RoleCategory.FIGHTER))    || 
                 (whatToDisplay[DISPLAY_BOMBER] == true && squadronPrimaryRole.isRoleCategory(RoleCategory.BOMBER))        || 

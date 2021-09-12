@@ -31,7 +31,7 @@ import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.plane.RoleCategory;
 import pwcg.campaign.plane.SpecializedRole;
 import pwcg.campaign.plane.SquadronPlaneAssignment;
@@ -321,7 +321,7 @@ public class Squadron
 		
 		squadronDescription += "Squadron " + determineDisplayName(date) + "\n\n";
 		
-        Role squadronPrimaryRole = determineSquadronPrimaryRole(date);
+        PwcgRole squadronPrimaryRole = determineSquadronPrimaryRole(date);
         if (squadronPrimaryRole.isRoleCategory(RoleCategory.FIGHTER))
         {
             String status = determineSkillDescription();
@@ -461,12 +461,12 @@ public class Squadron
         this.conversionPeriods = conversionPeriods;
     }
 
-    public boolean isSquadronThisRole (Date date, Role requestedRole) throws PWCGException 
+    public boolean isSquadronThisRole (Date date, PwcgRole requestedRole) throws PWCGException 
     {
         return squadronRoles.isSquadronThisRole(date, requestedRole);
     }
     
-    public Role determineSquadronPrimaryRole(Date date) throws PWCGException
+    public PwcgRole determineSquadronPrimaryRole(Date date) throws PWCGException
     {
         return squadronRoles.selectSquadronPrimaryRole(date);
     }
@@ -515,7 +515,7 @@ public class Squadron
         
         squadronInfo.append(determineDisplayName(campaignDate) + "\n");
         
-        Role squadronPrimaryRole = this.determineSquadronPrimaryRole(campaignDate);
+        PwcgRole squadronPrimaryRole = this.determineSquadronPrimaryRole(campaignDate);
         if (squadronPrimaryRole.isRoleCategory(RoleCategory.FIGHTER))
         {
             String status = determineSkillDescription();

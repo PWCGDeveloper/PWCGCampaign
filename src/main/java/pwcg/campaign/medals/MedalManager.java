@@ -9,7 +9,7 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.factory.MedalManagerFactory;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -75,7 +75,7 @@ public abstract class MedalManager implements IMedalManager
             if (medal == null)
             {
                 Squadron squadron =  pilot.determineSquadron();
-                if (squadron != null && !squadron.isSquadronThisRole(campaign.getDate(), Role.ROLE_FIGHTER))
+                if (squadron != null && !squadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_FIGHTER))
                 {
                     medal = awardBomber(pilot, service, victoriesThisMission);
                 }

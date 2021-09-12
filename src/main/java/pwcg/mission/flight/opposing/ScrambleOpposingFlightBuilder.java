@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -88,15 +88,15 @@ public class ScrambleOpposingFlightBuilder implements IOpposingFlightBuilder
     private FlightTypes getFlightType(Squadron opposingSquadron) throws PWCGException
     {
         List<FlightTypes> possibleOpposingFlightTypes = new ArrayList<>();
-        if (opposingSquadron.isSquadronThisRole(campaign.getDate(), Role.ROLE_ATTACK))
+        if (opposingSquadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_ATTACK))
         {
             possibleOpposingFlightTypes.add(FlightTypes.GROUND_ATTACK);
         }
-        if (opposingSquadron.isSquadronThisRole(campaign.getDate(), Role.ROLE_DIVE_BOMB))
+        if (opposingSquadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_DIVE_BOMB))
         {   
             possibleOpposingFlightTypes.add(FlightTypes.DIVE_BOMB);
         }
-        if (opposingSquadron.isSquadronThisRole(campaign.getDate(), Role.ROLE_BOMB))
+        if (opposingSquadron.isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_BOMB))
         {   
             possibleOpposingFlightTypes.add(FlightTypes.LOW_ALT_BOMB);
         }

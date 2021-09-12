@@ -17,7 +17,7 @@ import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronMemberGroundInitialVictoryBuilder;
 import pwcg.campaign.personnel.SquadronMemberStructureInitialVictoryBuilder;
 import pwcg.campaign.personnel.SquadronPersonnel;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
@@ -84,7 +84,7 @@ public class SquadronMemberFactory
         int numMissions = createMissionsFlown(rankPos);
         newPilot.setMissionFlown(numMissions);
         
-        Role squadronPrimaryRole = squadron.determineSquadronPrimaryRole(campaign.getDate());
+        PwcgRole squadronPrimaryRole = squadron.determineSquadronPrimaryRole(campaign.getDate());
         if (AirVictimGenerator.shouldUse(squadronPrimaryRole))
         {
             SquadronMemberAirInitialVictoryBuilder initialVictoryBuilder = new SquadronMemberAirInitialVictoryBuilder(campaign, squadron);

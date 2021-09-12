@@ -3,7 +3,7 @@ package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 
@@ -39,11 +39,11 @@ public class PlayerClaimResolverFuzzy
         {
             if (!VictoryResolverSameSideDetector.isSameSide(player, resultVictory))
             {
-                Role victimApproximateRole = Role.getApproximateRole(resultVictory.getVictim().getRole());
+                PwcgRole victimApproximateRole = PwcgRole.getApproximateRole(resultVictory.getVictim().getRole());
                 PlaneType declaredPlane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
                 if (declaredPlane != null)
                 {
-                    Role declarationApproximateRole = Role.getApproximateRole(declaredPlane.determinePrimaryRole());
+                    PwcgRole declarationApproximateRole = PwcgRole.getApproximateRole(declaredPlane.determinePrimaryRole());
                         
                     if (declarationApproximateRole == victimApproximateRole)
                     {
