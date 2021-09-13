@@ -49,6 +49,19 @@ public class MissionSquadronFlightTypes
         return false;
     }
 
+
+    public boolean isPlayerRaidFlight()
+    {
+        for (MissionSquadronFlightType squadronFlightType : flightTypesForSquadrons.values())
+        {
+            if (squadronFlightType.flightType == FlightTypes.RAID)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public List<FlightTypes> getFlightTypes()
     {
         List<FlightTypes> flightTypes = new ArrayList<>();

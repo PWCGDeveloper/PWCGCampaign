@@ -25,6 +25,7 @@ import pwcg.mission.flight.paradrop.CargoDropPackage;
 import pwcg.mission.flight.paradrop.ParaDropPackage;
 import pwcg.mission.flight.patrol.LowAltPatrolPackage;
 import pwcg.mission.flight.patrol.PatrolPackage;
+import pwcg.mission.flight.raider.RaiderAttackPackage;
 import pwcg.mission.flight.recon.ReconPackage;
 import pwcg.mission.flight.scramble.ScramblePackage;
 import pwcg.mission.flight.spy.SpyExtractPackage;
@@ -87,6 +88,10 @@ public class FlightFactory
         else if (flightType == FlightTypes.GROUND_HUNT)
         {
             flightPackage = new GroundFreeHuntPackage();
+        }
+        else if (flightType == FlightTypes.RAID)
+        {
+            flightPackage = new RaiderAttackPackage();
         }
         else if (flightType == FlightTypes.INTERCEPT)
         {

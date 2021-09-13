@@ -11,6 +11,9 @@ public enum PwcgRole
     ROLE_SEA_PLANE_SMALL (RoleCategory.FIGHTER, "Sea Plane Interceptor"),
 
     ROLE_ATTACK (RoleCategory.ATTACK, "Attack"),
+    ROLE_RAIDER (RoleCategory.ATTACK, "Raider"),
+    ROLE_TRAIN_BUSTER (RoleCategory.ATTACK, "Train Buster"),
+    ROLE_MARITIME_ATTACK (RoleCategory.ATTACK, "Maritime Attack"),
     ROLE_DIVE_BOMB (RoleCategory.ATTACK, "Dive Bomb"),
     
     ROLE_RECON (RoleCategory.RECON, "Recon"),

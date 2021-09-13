@@ -34,7 +34,7 @@ public class NeedsEscortDecider
         {
             return true;
         }
-        
+
         int escortedOdds = getEsortOddsForFlightType(escortedFlight);
         int escortedDiceRoll = RandomNumberGenerator.getRandom(100);        
         if (escortedDiceRoll < escortedOdds)

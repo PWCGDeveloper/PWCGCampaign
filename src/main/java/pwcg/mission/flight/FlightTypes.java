@@ -19,6 +19,9 @@ public enum FlightTypes
     BALLOON_DEFENSE(FlightTypeCategory.FIGHTER),
     GROUND_ATTACK(FlightTypeCategory.ATTACK), 
     GROUND_HUNT(FlightTypeCategory.ATTACK),
+    TRAIN_BUST(FlightTypeCategory.ATTACK),
+    MARITIME_ATTACK(FlightTypeCategory.ATTACK),
+    RAID(FlightTypeCategory.ATTACK),
     BOMB(FlightTypeCategory.BOMB), 
     LOW_ALT_BOMB(FlightTypeCategory.BOMB), 
     DIVE_BOMB(FlightTypeCategory.BOMB),
@@ -181,6 +184,11 @@ public enum FlightTypes
     public static boolean isFlightNeedsEscort(FlightTypes flightType)
     {
         if (flightType == FlightTypes.TRANSPORT)
+        {
+            return false;
+        }
+        
+        if (flightType == FlightTypes.RAID)
         {
             return false;
         }

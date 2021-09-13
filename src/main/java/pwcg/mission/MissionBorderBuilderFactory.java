@@ -15,6 +15,10 @@ public class MissionBorderBuilderFactory
         {
             return new MissionCenterBuilderTest();
         }
+        else if (CampaignModeChooser.isCampaignModeCompetitive(campaign))
+        {
+            return new MissionCenterBuilderMulti(campaign, participatingPlayers);
+        }
         else if (playerFlightTypes.isStrategicInterceptPlayerFlight() && campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
         {
             return new MissionCenterBuilderStrategicIntercept(campaign, participatingPlayers);
@@ -23,9 +27,9 @@ public class MissionBorderBuilderFactory
         {
             return new MissionCenterBuilderSkirmish(campaign, skirmish);
         }
-        else if (CampaignModeChooser.isCampaignModeCompetitive(campaign))
+        else if (playerFlightTypes.isPlayerRaidFlight())
         {
-            return new MissionCenterBuilderMulti(campaign, participatingPlayers);
+            return new MissionCenterBuilderRaid(campaign, participatingPlayers);
         }
         else
         {

@@ -168,22 +168,42 @@ public class AirfieldManager
         return closestAirfield;
     }
 
-    public boolean isAirfieldOccupied(List<Squadron> activeSquadrons, Date date)
+    public List<Airfield> getNearbyOccupiedAirFieldsForSide(Side side, Date date, Coordinate referenceLocation, int radius) throws PWCGException
     {
+        List<Airfield> airfieldsForSide = getAirFieldsForSide(date, side);
+        List<Airfield> occupiedAirfieldsForSide = filterOccupiedAirfields(airfieldsForSide, date);
+        
+        PositionFinder<Airfield> positionFinder = new PositionFinder<Airfield>();
+        List<Airfield> occupiedAirfieldsForSideInRadius = positionFinder.findWithinRadius(occupiedAirfieldsForSide, referenceLocation, radius);
+        return occupiedAirfieldsForSideInRadius;
+    }
+
+    private List<Airfield> filterOccupiedAirfields(List<Airfield> airfieldsToFilter, Date date) throws PWCGException
+    {
+        List<Airfield> airfieldsFiltered = new ArrayList<>();
+        
+        List<Squadron> activeSquadrons = PWCGContext.getInstance().getSquadronManager().getActiveSquadrons(date);
         for (Squadron squadron : activeSquadrons)
         {
             Airfield squadronAirfield = squadron.determineCurrentAirfieldCurrentMap(date);
-            if (squadronAirfield != null)
+            if (isAirfieldInList(airfieldsToFilter, squadronAirfield))
             {
-                for (Airfield airfield : airfields.values())
-                {
-                    if (squadronAirfield.getName().equals(airfield.getName()))
-                    {
-                        return true;
-                    }
-                }
+                airfieldsFiltered.add(squadronAirfield);
             }
         }
+        return airfieldsFiltered;
+    }
+    
+    private boolean isAirfieldInList(List<Airfield> airfields, Airfield airfieldToFind)
+    {
+        for (Airfield airfield : airfields)
+        {
+            if (airfield.getName().equals(airfieldToFind.getName()))
+            {
+                return true;
+            }
+        }
+        
         return false;
     }
 

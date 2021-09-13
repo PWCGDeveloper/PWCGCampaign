@@ -39,6 +39,10 @@ public class FCMissionAltitudeGenerator implements IMissionAltitudeGenerator
             altitude = determineGroundAttackAltitude();
             altitude = missionWeather.recalculateAltitudeForCloudBase(altitude);
         }
+        else if (flightType == FlightTypes.RAID)
+        {
+            altitude = determineRaidAltitude();
+        }
         else if (flightType == FlightTypes.BOMB)
         {
             altitude = determineHighAltitudeBombingAltitude();
@@ -174,6 +178,14 @@ public class FCMissionAltitudeGenerator implements IMissionAltitudeGenerator
     {
         int altitude = 1000;
         int randomAlt = RandomNumberGenerator.getRandom(500);
+        altitude = altitude + randomAlt;            
+        return altitude;
+    }
+
+    private int determineRaidAltitude()
+    {
+        int altitude = 200;
+        int randomAlt = RandomNumberGenerator.getRandom(100);
         altitude = altitude + randomAlt;            
         return altitude;
     }

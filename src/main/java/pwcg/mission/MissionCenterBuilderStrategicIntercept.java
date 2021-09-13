@@ -1,15 +1,14 @@
 package pwcg.mission;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.location.LocationAwayFromFrontFinder;
 import pwcg.core.location.PWCGLocation;
 
 public class MissionCenterBuilderStrategicIntercept implements IMissionCenterBuilder
@@ -41,15 +40,9 @@ public class MissionCenterBuilderStrategicIntercept implements IMissionCenterBui
     private List<PWCGLocation> getTownsAwayFromFront(List<PWCGLocation> townLocations) throws PWCGException
     {
         Squadron squadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();        
-        List<PWCGLocation> townLocationsAwayFromFont = new ArrayList<>();
-        FrontLinesForMap frontlines = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
-        for (PWCGLocation town : townLocations)
-        {
-            if (frontlines.isFarFromFront(town.getPosition(), squadron.determineSide(), campaign.getDate()))
-            {
-                townLocationsAwayFromFont.add(town);
-            }
-        }
+
+        List<PWCGLocation> townLocationsAwayFromFont = LocationAwayFromFrontFinder.getLocationsAwayFromFront(
+                townLocations, squadron.determineSide(), campaign.getDate());
         return townLocationsAwayFromFont;
     }
 
