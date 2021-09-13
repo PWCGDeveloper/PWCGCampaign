@@ -62,8 +62,6 @@ public class SquadronRoleSet
         return selectedRole;
     }
     
-
-
     private PwcgRole selectRoleByWeight(SquadronRolePeriod squadronRole) throws PWCGException 
     {
         PwcgRole selectedRole = PwcgRole.ROLE_NONE;
@@ -133,5 +131,10 @@ public class SquadronRoleSet
     public List<SquadronRolePeriod> getSquadronRolePeriods()
     {
         return squadronRolePeriods;
+    }
+    
+    public void overrideRolesForTest(List<SquadronRolePeriod> squadronRolePeriods)
+    {
+        this.squadronRolePeriods = squadronRolePeriods;
     }
 }

@@ -13,7 +13,8 @@ public enum PwcgRole
     ROLE_ATTACK (RoleCategory.ATTACK, "Attack"),
     ROLE_RAIDER (RoleCategory.ATTACK, "Raider"),
     ROLE_TRAIN_BUSTER (RoleCategory.ATTACK, "Train Buster"),
-    ROLE_MARITIME_ATTACK (RoleCategory.ATTACK, "Maritime Attack"),
+    ROLE_TANK_BUSTER (RoleCategory.ATTACK, "Tank Buster"),
+    ROLE_ANTI_SHIPPING (RoleCategory.ATTACK, "Maritime Attack"),
     ROLE_DIVE_BOMB (RoleCategory.ATTACK, "Dive Bomb"),
     
     ROLE_RECON (RoleCategory.RECON, "Recon"),

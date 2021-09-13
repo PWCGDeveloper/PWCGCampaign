@@ -19,6 +19,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.flight.plane.FormationTypeCalculator;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.mcu.McuFormation;
+import pwcg.mission.target.TargetType;
 
 public class FlightInformation
 {
@@ -30,7 +31,8 @@ public class FlightInformation
     private Squadron squadron;
     private Coordinate targetSearchStartLocation;
     private NecessaryFlightType necessaryFlightType = NecessaryFlightType.NONE;
-    
+    private TargetType roleBasedTarget = TargetType.TARGET_NONE;
+
     private boolean isAiTriggeredTakeoff = false;
     private int altitude = 0;
     private int flightCruisingSpeed = 0;
@@ -98,6 +100,16 @@ public class FlightInformation
     public void setCampaign(Campaign campaign)
     {
         this.campaign = campaign;
+    }
+    
+    public TargetType getRoleBasedTarget()
+    {
+        return roleBasedTarget;
+    }
+
+    public void setRoleBasedTarget(TargetType roleBasedTarget)
+    {
+        this.roleBasedTarget = roleBasedTarget;
     }
 
     public boolean isVirtual()

@@ -13,15 +13,24 @@ import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.flight.scramble.AirfieldAttackScrambleFlightBuilder;
 import pwcg.mission.target.GroundTargetDefinitionFactory;
 import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetType;
 
 public class GroundAttackPackage implements IFlightPackage
 {
     private List<IFlight> packageFlights = new ArrayList<>();
+    private TargetType roleBasedTarget = TargetType.TARGET_NONE;
 
+    public GroundAttackPackage(TargetType roleBasedTarget)
+    {
+        this.roleBasedTarget = roleBasedTarget;
+    }
+    
     @Override
     public List<IFlight> createPackage (FlightBuildInformation flightBuildInformation) throws PWCGException 
     {        
         FlightInformation flightInformation = FlightInformationFactory.buildFlightInformation(flightBuildInformation, FlightTypes.GROUND_ATTACK);
+        flightInformation.setRoleBasedTarget(roleBasedTarget);
+        
         TargetDefinition targetDefinition = buildTargetDefinition(flightInformation);
         
         GroundAttackFlight groundAttackFlight = new GroundAttackFlight (flightInformation, targetDefinition);

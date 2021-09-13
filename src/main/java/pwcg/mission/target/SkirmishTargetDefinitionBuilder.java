@@ -33,7 +33,7 @@ public class SkirmishTargetDefinitionBuilder implements ITargetDefinitionBuilder
         throw new PWCGException("Could not create iconic mission");
     }
     
-    public boolean isUseIconicMission() throws PWCGException
+    public static boolean isUseIconicMission(FlightInformation flightInformation) throws PWCGException
     {
         TargetType iconicTargetType = PWCGContext.getInstance().getCurrentMap().getSkirmishManager().getIconicTargetTypes(flightInformation);
         if (iconicTargetType != TargetType.TARGET_NONE)

@@ -9,14 +9,14 @@ public class GroundTargetDefinitionFactory
     {
         TargetDefinition targetDefinition = null;
         
-        SkirmishTargetDefinitionBuilder skirmishTargetDefinitionBuilder = new SkirmishTargetDefinitionBuilder(flightInformation);
         if (flightInformation.getMission().isAAATruckMission())
         {
             TargetDefinitionBuilderAAATruck aaaTruckTargetDefinitionBuilder = new TargetDefinitionBuilderAAATruck(flightInformation);
             targetDefinition = aaaTruckTargetDefinitionBuilder.buildTargetDefinition();
         }
-        else if (skirmishTargetDefinitionBuilder.isUseIconicMission())
+        else if (SkirmishTargetDefinitionBuilder.isUseIconicMission(flightInformation))
         {
+            SkirmishTargetDefinitionBuilder skirmishTargetDefinitionBuilder = new SkirmishTargetDefinitionBuilder(flightInformation);
             targetDefinition = skirmishTargetDefinitionBuilder.buildTargetDefinition();
         }
         
@@ -28,5 +28,4 @@ public class GroundTargetDefinitionFactory
         
         return targetDefinition;
     }
-    
 }

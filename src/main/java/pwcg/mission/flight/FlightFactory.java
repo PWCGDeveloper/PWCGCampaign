@@ -31,6 +31,7 @@ import pwcg.mission.flight.scramble.ScramblePackage;
 import pwcg.mission.flight.spy.SpyExtractPackage;
 import pwcg.mission.flight.strategicintercept.StrategicInterceptPackage;
 import pwcg.mission.flight.transport.TransportPackage;
+import pwcg.mission.target.TargetType;
 
 public class FlightFactory
 {
@@ -83,7 +84,19 @@ public class FlightFactory
         }
         else if (flightType == FlightTypes.GROUND_ATTACK)
         {
-            flightPackage = new GroundAttackPackage();
+            flightPackage = new GroundAttackPackage(TargetType.TARGET_NONE);
+        }
+        else if (flightType == FlightTypes.TRAIN_BUST)
+        {
+            flightPackage = new GroundAttackPackage(TargetType.TARGET_TRAIN);
+        }
+        else if (flightType == FlightTypes.TANK_BUST)
+        {
+            flightPackage = new GroundAttackPackage(TargetType.TARGET_ARMOR);
+        }
+        else if (flightType == FlightTypes.ANTI_SHIPPING)
+        {
+            flightPackage = new GroundAttackPackage(TargetType.TARGET_SHIPPING);
         }
         else if (flightType == FlightTypes.GROUND_HUNT)
         {
