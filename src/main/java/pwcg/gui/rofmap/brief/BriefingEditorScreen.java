@@ -13,6 +13,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.mission.MissionGeneratorHelper;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.rofmap.brief.model.BriefingData;
 import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
@@ -132,7 +133,7 @@ public class BriefingEditorScreen extends ImageResizingPanel implements ActionLi
             }
             else if (action.equals("Scrub Mission"))
             {
-                scrubMission();
+                MissionGeneratorHelper.scrubMission(mission.getCampaign(), campaignHomeGuiBriefingWrapper);
             }
             else if (action.equals("Edit Waypoints"))
             {
@@ -159,13 +160,6 @@ public class BriefingEditorScreen extends ImageResizingPanel implements ActionLi
         BriefingPilotSelectionScreen pilotSelection = new BriefingPilotSelectionScreen(campaignHomeGuiBriefingWrapper);
         pilotSelection.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(pilotSelection);
-    }
-
-    private void scrubMission() throws PWCGException
-    {
-        mission.getCampaign().setCurrentMission(null);
-        campaignHomeGuiBriefingWrapper.refreshCampaignPage();
-        CampaignGuiContextManager.getInstance().backToCampaignHome();
     }
 
     private void makeWaypointsEditable() throws PWCGException

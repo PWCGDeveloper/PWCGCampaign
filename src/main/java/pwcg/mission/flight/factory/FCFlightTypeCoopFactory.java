@@ -1,6 +1,7 @@
 package pwcg.mission.flight.factory;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
@@ -15,9 +16,9 @@ public class FCFlightTypeCoopFactory implements IFlightTypeFactory
     }
 
     @Override
-    public FlightTypes getFlightType(Squadron squadron, boolean isPlayerFlight) throws PWCGException
+    public FlightTypes getFlightType(Squadron squadron, boolean isPlayerFlight, PwcgRole missionRole) throws PWCGException
     {
         FCFlightTypeFactory fcFlightTypeFactory = new FCFlightTypeFactory(campaign);
-        return fcFlightTypeFactory.getFlightType(squadron, isPlayerFlight);
+        return fcFlightTypeFactory.getFlightType(squadron, isPlayerFlight, missionRole);
     }
 }

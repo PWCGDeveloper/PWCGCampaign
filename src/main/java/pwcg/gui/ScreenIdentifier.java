@@ -37,6 +37,7 @@ public enum ScreenIdentifier
     CampaignLeaveScreen("CampaignLeaveScreen", "Campaign Leave Screen", "TableTop.jpg"),    
     CampaignTransferScreen("CampaignTransferScreen", "Campaign Transfer Screen", "TableTop.jpg"),  
     BriefingCoopPersonaChooser("BriefingCoopPersonaChooser", "Briefing Coop Persona Chooser Screen", "TableTop.jpg"),    
+    BriefingRoleChooser("BriefingRoleChooser", "Briefing Role Chooser Screen", "TableTop.jpg"),    
     AARInitiationScreen("AARInitiationScreen", "AAR Initiation Screen", "TableTop.jpg"),    
     AARReportMainPanel("AARReportMainPanel", "AAR Report Tab Screen", "TableTop.jpg"),    
     MissingSkinScreen("MissingSkinScreen", "Missing Skin Screen", "TableTop.jpg"),    

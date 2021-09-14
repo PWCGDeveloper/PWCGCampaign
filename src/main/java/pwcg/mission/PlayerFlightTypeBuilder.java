@@ -1,8 +1,11 @@
 package pwcg.mission;
 
+import java.util.Map;
+
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.PWCGFlightTypeAbstractFactory;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.skirmish.Skirmish;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -19,7 +22,8 @@ public class PlayerFlightTypeBuilder
             MissionHumanParticipants participatingPlayers, 
             MissionProfile missionProfile, 
             MissionWeather weather, 
-            Skirmish skirmish) throws PWCGException
+            Skirmish skirmish, 
+            Map<Integer, PwcgRole> squadronRoleOverride) throws PWCGException
     {
         MissionSquadronFlightTypes playerFlightTypes = new MissionSquadronFlightTypes();
         for (Integer squadronId : participatingPlayers.getParticipatingSquadronIds())
@@ -35,10 +39,27 @@ public class PlayerFlightTypeBuilder
                 flightTypeFactory = PWCGFlightTypeAbstractFactory.createSkirmishFlightTypeFactory(campaign, skirmish);
             }
 
-            FlightTypes requestedFlightType = addFlightType(missionProfile, weather, flightTypeFactory, playerSquadron);
+            FlightTypes requestedFlightType = addFlightType(campaign, missionProfile, weather, flightTypeFactory, squadronRoleOverride, playerSquadron);
             playerFlightTypes.add(playerSquadron, requestedFlightType);
         }
         return playerFlightTypes;
+    }
+
+    private static FlightTypes addFlightType(
+            Campaign campaign,
+            MissionProfile missionProfile, 
+            MissionWeather weather, 
+            IFlightTypeFactory flightTypeFactory, 
+            Map<Integer, PwcgRole> squadronRoleOverride,
+            Squadron playerSquadron) throws PWCGException
+    {
+        boolean isPlayerFlight = true;
+        
+        PwcgRole missionRole = MissionRoleGenerator.getMissionRole(campaign, squadronRoleOverride, playerSquadron);
+
+        FlightTypes initialFlightType = flightTypeFactory.getFlightType(playerSquadron, isPlayerFlight, missionRole);
+        FlightTypes requestedFlightType = convertFlightTypeForEnvironmentalConditions(missionProfile.isNightMission(), weather, initialFlightType);
+        return requestedFlightType;
     }
 
     private static FlightTypes convertFlightTypeForEnvironmentalConditions(boolean isNightMission, MissionWeather weather, FlightTypes flightType)
@@ -47,13 +68,5 @@ public class PlayerFlightTypeBuilder
         flightType = NightFlightTypeConverter.getFlightType(flightType, isNightMission);
         flightType = WeatherFlightTypeConverter.getFlightType(flightType, weather);
         return flightType;
-    }
-
-    private static FlightTypes addFlightType(MissionProfile missionProfile, MissionWeather weather, IFlightTypeFactory flightTypeFactory, Squadron playerSquadron) throws PWCGException
-    {
-        boolean isPlayerFlight = true;
-        FlightTypes initialFlightType = flightTypeFactory.getFlightType(playerSquadron, isPlayerFlight);
-        FlightTypes requestedFlightType = convertFlightTypeForEnvironmentalConditions(missionProfile.isNightMission(), weather, initialFlightType);
-        return requestedFlightType;
     }
 }

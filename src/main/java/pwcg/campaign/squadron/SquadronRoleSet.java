@@ -79,7 +79,7 @@ public class SquadronRoleSet
         return selectedRole;
     }
     
-    private SquadronRolePeriod selectRoleSetByDate(Date date) throws PWCGException 
+    public SquadronRolePeriod selectRoleSetByDate(Date date) throws PWCGException 
     {
         SquadronRolePeriod rolesForPeriod = null;
         for (SquadronRolePeriod squadronRole : squadronRolePeriods)

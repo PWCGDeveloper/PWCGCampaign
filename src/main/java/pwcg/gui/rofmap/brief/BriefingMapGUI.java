@@ -12,12 +12,12 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.campaign.mission.MissionGeneratorHelper;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.rofmap.MapGUI;
@@ -184,7 +184,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
             }
             else if (action.equals("Scrub Mission"))
             {
-                scrubMission();
+                MissionGeneratorHelper.scrubMission(mission.getCampaign(), campaignHomeGuiBriefingWrapper);
             }
 		}
 		catch (Exception e)
@@ -193,14 +193,6 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 			ErrorDialog.internalError(e.getMessage());
 		}
 	}
-
-    private void scrubMission() throws PWCGException
-    {
-        Campaign campaign  = PWCGContext.getInstance().getCampaign();
-        campaign.setCurrentMission(null);
-        campaignHomeGuiBriefingWrapper.refreshCampaignPage();
-        CampaignGuiContextManager.getInstance().backToCampaignHome();
-    }
     
     private void backToCampaign() throws PWCGException
     {

@@ -23,9 +23,8 @@ public class SkirmishFlightTypeFactory implements IFlightTypeFactory
     }
 
     @Override
-    public FlightTypes getFlightType(Squadron squadron, boolean isPlayerFlight) throws PWCGException
+    public FlightTypes getFlightType(Squadron squadron, boolean isPlayerFlight, PwcgRole missionRole) throws PWCGException
     {
-        PwcgRole missionRole = squadron.getSquadronRoles().selectRoleForMission(campaign.getDate());
         missionRole = convertUnaccaptableRolesForSkirmish(missionRole, squadron);
         missionRole = skirmish.forceRoleConversion(missionRole, squadron.determineSide());
         
@@ -37,7 +36,7 @@ public class SkirmishFlightTypeFactory implements IFlightTypeFactory
         }
         else
         {
-            flightType = backupFlightTypeFactory.getFlightType(squadron, isPlayerFlight);
+            flightType = backupFlightTypeFactory.getFlightType(squadron, isPlayerFlight, missionRole);
             PWCGLogger.log(LogLevel.DEBUG, "Backup flight type factory returned: " + flightType + " for role " + missionRole + " Squadron " + squadron.determineDisplayName(campaign.getDate()));
         }
 

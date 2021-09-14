@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -11,7 +13,7 @@ import javax.swing.JPanel;
 
 import pwcg.aar.AARCoordinator;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -20,26 +22,27 @@ import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.activity.CampaignLeaveScreen;
 import pwcg.gui.campaign.home.CampaignHomeScreen;
-import pwcg.gui.campaign.home.GuiMissionInitiator;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.HelpDialog;
 import pwcg.gui.rofmap.brief.BriefingCoopPersonaChooser;
-import pwcg.gui.rofmap.brief.BriefingDescriptionScreen;
+import pwcg.gui.rofmap.brief.BriefingRoleChooser;
 import pwcg.gui.rofmap.brief.CampaignHomeGuiBriefingWrapper;
 import pwcg.gui.rofmap.debrief.DebriefMissionDescriptionScreen;
-import pwcg.gui.sound.MusicManager;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.CommonUIActions;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
-import pwcg.mission.Mission;
 import pwcg.mission.MissionHumanParticipants;
 
 public class CampaignMissionScreen extends ImageResizingPanel implements ActionListener
 {
+    public static final String CAMP_MISSION_ROLE = "CampMissionRole";
+    public static final String CAMP_MISSION = "CampMission";
+    
     private static final long serialVersionUID = 1L;
     private CampaignHomeScreen campaignHome = null;
+    private CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper;
 
     private Campaign campaign;
 
@@ -51,6 +54,7 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
 
         this.campaign = campaign;
         this.campaignHome = campaignHome;
+        campaignHomeGuiBriefingWrapper = new CampaignHomeGuiBriefingWrapper(campaignHome);
     }
 
 	public void makePanels() throws PWCGException 
@@ -81,8 +85,11 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
 
         if (isDisplayMissionButton())
         {
-            JButton missionButton = PWCGButtonFactory.makeTranslucentMenuButton("Mission", "CampMission", "Generate a mission", this);
+            JButton missionButton = PWCGButtonFactory.makeTranslucentMenuButton("Mission", CAMP_MISSION, "Generate a mission", this);
             buttonPanel.add(missionButton);
+
+            JButton missionButtonWithRoleSelect = PWCGButtonFactory.makeTranslucentMenuButton("Mission With Role", CAMP_MISSION_ROLE, "Generate a mission where you specify the role", this);
+            buttonPanel.add(missionButtonWithRoleSelect);
 
             if (!campaign.isCoop())
             {
@@ -113,18 +120,15 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
 		try
 		{
             String action = ae.getActionCommand();
-            if (action.equalsIgnoreCase("CampMission"))
+            if (action.equalsIgnoreCase(CAMP_MISSION) || action.equalsIgnoreCase(CAMP_MISSION_ROLE))
             {
                 if (campaign.isCoop() && campaign.getCurrentMission() == null)
                 {
-                    showCoopPersonaChooser();
+                    showCoopPersonaChooser(action);
                 }
                 else
                 {
-                    MissionHumanParticipants participatingPlayers = buildParticipatingPlayersSinglePlayer();
-                    GuiMissionInitiator missionInitiator = new GuiMissionInitiator(campaign, participatingPlayers);
-                    Mission mission = missionInitiator.makeMission(false);
-                    showBriefingMap(mission);
+                    createSinglePlayerMission(action);
                 }
             }
             else if (action.equalsIgnoreCase("CampLeave"))
@@ -133,10 +137,7 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
             }
             else if (action.equalsIgnoreCase("CampMissionLoneWolf"))
             {
-                MissionHumanParticipants participatingPlayers = buildParticipatingPlayersSinglePlayer();
-                GuiMissionInitiator missionInitiator = new GuiMissionInitiator(campaign, participatingPlayers);
-                Mission mission = missionInitiator.makeMission(true);
-                showBriefingMap(mission);
+                makeLoneWolfMission();
             }
             else if (action.equalsIgnoreCase("CampFlowCombatReport"))
             {
@@ -154,6 +155,34 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
 		}
 	}
 
+    private void createSinglePlayerMission(String action) throws PWCGException
+    {
+        if (action.contentEquals(CAMP_MISSION))
+        {
+            generateMissionWithoutRoleOverride();
+        }
+        else
+        {
+            SoundManager.getInstance().playSound("Typewriter.WAV");
+            MissionHumanParticipants participatingPlayers = MissionGeneratorHelper.buildParticipatingPlayersSinglePlayer(campaign);
+            BriefingRoleChooser briefingRoleChooser = new BriefingRoleChooser(campaign, campaignHomeGuiBriefingWrapper, action, participatingPlayers);
+            briefingRoleChooser.makePanels();
+            CampaignGuiContextManager.getInstance().pushToContextStack(briefingRoleChooser);
+        }
+    }
+
+    private void generateMissionWithoutRoleOverride() throws PWCGException
+    {
+        Map<Integer, PwcgRole> squadronRoleOverride = new HashMap<>();
+        MissionHumanParticipants participatingPlayers = MissionGeneratorHelper.buildParticipatingPlayersSinglePlayer(campaign);
+        MissionGeneratorHelper.showBriefingMap(campaign, campaignHomeGuiBriefingWrapper, participatingPlayers, squadronRoleOverride);
+    }
+
+    private void makeLoneWolfMission() throws PWCGException
+    {
+        generateMissionWithoutRoleOverride();
+    }
+
 
     private void showLeavePage() throws PWCGException 
     {
@@ -164,22 +193,10 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
         
         CampaignGuiContextManager.getInstance().pushToContextStack(leaveDisplay);
     }
-
-    private void showBriefingMap(Mission mission) throws PWCGException 
-    {
-        MusicManager.playMissionBriefingTheme();
-        SoundManager.getInstance().playSound("Typewriter.WAV");
-
-        CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper = new CampaignHomeGuiBriefingWrapper(campaignHome);
-        BriefingDescriptionScreen briefingMap = new BriefingDescriptionScreen(campaignHomeGuiBriefingWrapper, mission);
-        briefingMap.makePanels();
-        CampaignGuiContextManager.getInstance().pushToContextStack(briefingMap);
-    }
     
-    private void showCoopPersonaChooser() throws PWCGException 
+    private void showCoopPersonaChooser(String missionChoice) throws PWCGException 
     {
-        CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper = new CampaignHomeGuiBriefingWrapper(campaignHome);
-        BriefingCoopPersonaChooser coopPersonaChooser = new BriefingCoopPersonaChooser(campaign, campaignHomeGuiBriefingWrapper);
+        BriefingCoopPersonaChooser coopPersonaChooser = new BriefingCoopPersonaChooser(campaign, missionChoice, campaignHomeGuiBriefingWrapper);
         coopPersonaChooser.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(coopPersonaChooser);
     }
@@ -200,14 +217,6 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
         {
             new  HelpDialog("PWCG Could not perform AAR.  " + e.getMessage());
         }
-    }
-    
-    private MissionHumanParticipants buildParticipatingPlayersSinglePlayer() throws PWCGException
-    {
-        MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-        SquadronMember referencePlayer = campaign.findReferencePlayer();
-        participatingPlayers.addSquadronMember(referencePlayer);        
-        return participatingPlayers;
     }
 
     private boolean isDisplayMissionButton() throws PWCGException

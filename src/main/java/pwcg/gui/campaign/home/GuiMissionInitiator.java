@@ -1,6 +1,9 @@
 package pwcg.gui.campaign.home;
 
+import java.util.Map;
+
 import pwcg.campaign.Campaign;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.DateUtils;
@@ -20,7 +23,7 @@ public class GuiMissionInitiator
 		this.participatingPlayers = participatingPlayers;
 	}
 
-	public Mission makeMission(boolean isLoneWolf) throws PWCGException 
+	public Mission makeMission(boolean isLoneWolf, Map<Integer, PwcgRole> squadronRoleOverride) throws PWCGException 
     {
         Mission mission = null;
 
@@ -39,7 +42,7 @@ public class GuiMissionInitiator
                 }
                 else
                 {
-                    mission = missionGenerator.makeMission(participatingPlayers);                    
+                    mission = missionGenerator.makeMission(participatingPlayers, squadronRoleOverride);                    
                 }
             }
             else

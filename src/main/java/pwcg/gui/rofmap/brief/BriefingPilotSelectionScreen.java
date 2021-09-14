@@ -26,6 +26,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.mission.MissionGeneratorHelper;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.rofmap.brief.model.BriefingData;
 import pwcg.gui.rofmap.brief.model.BriefingFlight;
@@ -175,7 +176,7 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
             }
             else if (action.equals("Scrub Mission"))
             {
-                scrubMission();
+                MissionGeneratorHelper.scrubMission(mission.getCampaign(), campaignHomeGuiBriefingWrapper);
             }
             else if (action.equals("Accept Mission"))
             {
@@ -398,13 +399,6 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         this.add(BorderLayout.CENTER, createCenterPanel());
         this.revalidate();
         this.repaint();
-    }
-
-    private void scrubMission() throws PWCGException
-    {
-        campaign.setCurrentMission(null);
-        campaignHomeGuiBriefingWrapper.refreshCampaignPage();
-        CampaignGuiContextManager.getInstance().backToCampaignHome();
     }
 
     private void acceptMission() throws PWCGException, PWCGException

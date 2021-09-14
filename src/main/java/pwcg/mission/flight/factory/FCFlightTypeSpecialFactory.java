@@ -1,6 +1,7 @@
 package pwcg.mission.flight.factory;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
@@ -16,7 +17,7 @@ public class FCFlightTypeSpecialFactory implements IFlightTypeFactory
     }
 
     @Override
-    public FlightTypes getFlightType(Squadron squadron, boolean isMyFlight) throws PWCGException
+    public FlightTypes getFlightType(Squadron squadron, boolean isPlayerFlight, PwcgRole missionRole) throws PWCGException
     {
         return FlightTypes.ANY;
     }

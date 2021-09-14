@@ -1,6 +1,10 @@
 package pwcg.mission;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import pwcg.campaign.Campaign;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.skirmish.Skirmish;
 import pwcg.campaign.skirmish.SkirmishBuilder;
 import pwcg.campaign.squadron.Squadron;
@@ -24,6 +28,11 @@ public class MissionGenerator
 
     public Mission makeMission(MissionHumanParticipants participatingPlayers) throws PWCGException
     {
+        return this.makeMission(participatingPlayers, new HashMap<>());
+    }
+    
+    public Mission makeMission(MissionHumanParticipants participatingPlayers, Map<Integer, PwcgRole> squadronRoleOverride) throws PWCGException
+    {
         MissionProfile missionProfile = generateProfile(participatingPlayers);
 
         MissionOptions missionOptions = new MissionOptions(campaign.getDate(), missionProfile);
@@ -33,7 +42,7 @@ public class MissionGenerator
         weather.createMissionWeather();
 
         Skirmish skirmish = getSkirmishForMission(participatingPlayers);
-        MissionSquadronFlightTypes playerFlightTypes = PlayerFlightTypeBuilder.buildPlayerFlightTypes(campaign, participatingPlayers, missionProfile, weather, skirmish);
+        MissionSquadronFlightTypes playerFlightTypes = PlayerFlightTypeBuilder.buildPlayerFlightTypes(campaign, participatingPlayers, missionProfile, weather, skirmish, squadronRoleOverride);
         
         VehicleDefinition playerVehicleDefinition = null;
         Mission mission = buildMission(participatingPlayers, playerFlightTypes, playerVehicleDefinition, missionProfile, weather, skirmish, missionOptions);
@@ -53,7 +62,7 @@ public class MissionGenerator
         weather.createMissionWeather();
 
         Skirmish skirmish = getSkirmishForMission(participatingPlayers);
-        MissionSquadronFlightTypes playerFlightTypes = PlayerFlightTypeBuilder.buildPlayerFlightTypes(campaign, participatingPlayers, missionProfile, weather, skirmish);
+        MissionSquadronFlightTypes playerFlightTypes = PlayerFlightTypeBuilder.buildPlayerFlightTypes(campaign, participatingPlayers, missionProfile, weather, skirmish, new HashMap<>());
         
         Mission mission = buildMission(participatingPlayers, playerFlightTypes, playerVehicleDefinition, missionProfile, weather, skirmish, missionOptions);
         

@@ -28,10 +28,8 @@ public class BoSFlightTypeFactory implements IFlightTypeFactory
     }
 
     @Override
-    public FlightTypes getFlightType(Squadron squadron, boolean isPlayerFlight) throws PWCGException
+    public FlightTypes getFlightType(Squadron squadron, boolean isPlayerFlight, PwcgRole missionRole) throws PWCGException
     {
-        PwcgRole missionRole = squadron.getSquadronRoles().selectRoleForMission(campaign.getDate());
-
         FlightTypes flightType = null;
         if (missionRole == PwcgRole.ROLE_DIVE_BOMB)
         {

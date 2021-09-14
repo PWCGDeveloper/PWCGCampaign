@@ -10,6 +10,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.skirmish.Skirmish;
 import pwcg.campaign.skirmish.SkirmishManager;
 import pwcg.campaign.squadron.Squadron;
@@ -48,7 +49,7 @@ public class SkirmishFlightTypeFactoryTest
         SkirmishFlightTypeFactory skirmishFlightTypeFactory = new SkirmishFlightTypeFactory(campaign, skirmishesForDate.get(0), null);
         Squadron c47Squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(102012437);
         boolean isPlayerFlight = false;
-        FlightTypes flightType = skirmishFlightTypeFactory.getFlightType(c47Squadron, isPlayerFlight);
+        FlightTypes flightType = skirmishFlightTypeFactory.getFlightType(c47Squadron, isPlayerFlight, PwcgRole.ROLE_TRANSPORT);
         assert(flightType == FlightTypes.PARATROOP_DROP);
     }
 
@@ -73,7 +74,7 @@ public class SkirmishFlightTypeFactoryTest
         SkirmishFlightTypeFactory skirmishFlightTypeFactory = new SkirmishFlightTypeFactory(campaign, skirmishesForDate.get(0), null);
         Squadron c47Squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(102012437);
         boolean isPlayerFlight = false;
-        FlightTypes flightType = skirmishFlightTypeFactory.getFlightType(c47Squadron, isPlayerFlight);
+        FlightTypes flightType = skirmishFlightTypeFactory.getFlightType(c47Squadron, isPlayerFlight, PwcgRole.ROLE_TRANSPORT);
         assert(flightType == FlightTypes.CARGO_DROP);
     }
 }

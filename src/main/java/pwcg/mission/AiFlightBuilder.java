@@ -5,6 +5,7 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.factory.PWCGFlightTypeAbstractFactory;
+import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
@@ -59,7 +60,8 @@ public class AiFlightBuilder
     {
         IFlightTypeFactory flightTypeFactory = makeFlightTypeFactory();
         boolean isPlayerFlight = false;
-        FlightTypes flightType = flightTypeFactory.getFlightType(squadron, isPlayerFlight);
+        PwcgRole missionRole = MissionRoleGenerator.getMissionRole(campaign, squadron);
+        FlightTypes flightType = flightTypeFactory.getFlightType(squadron, isPlayerFlight, missionRole);
         return flightType;
     }
 
