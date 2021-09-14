@@ -69,25 +69,6 @@ public class MissionGenerator
         return mission;
     }
 
-    public Mission makeMissionwithSpecifiedType(MissionHumanParticipants participatingPlayers, FlightTypes playerFlightType) throws PWCGException
-    {
-        MissionProfile missionProfile = MissionProfile.DAY_TACTICAL_MISSION;
-        
-        MissionOptions missionOptions = new MissionOptions(campaign.getDate(), missionProfile);
-        missionOptions.createFlightSpecificMissionOptions();
-
-        MissionWeather weather = new MissionWeather(campaign, missionOptions.getMissionHour());
-        weather.createMissionWeather();
-
-        Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
-        MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(playerFlightType, playerSquadron);
-
-        Skirmish skirmish = null;
-        VehicleDefinition playerVehicleDefinition = null;
-        Mission mission = buildMission(participatingPlayers, playerFlightTypes, playerVehicleDefinition, MissionProfile.DAY_TACTICAL_MISSION, weather, skirmish, missionOptions);
-        return mission;
-    }
-
     public Mission makeTestSingleMissionFromFlightType(MissionHumanParticipants participatingPlayers, FlightTypes playerFlightType, MissionProfile missionProfile) throws PWCGException
     {
         MissionOptions missionOptions = new MissionOptions(campaign.getDate(), missionProfile);

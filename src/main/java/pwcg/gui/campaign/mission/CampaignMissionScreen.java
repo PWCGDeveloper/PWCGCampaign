@@ -90,12 +90,6 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
 
             JButton missionButtonWithRoleSelect = PWCGButtonFactory.makeTranslucentMenuButton("Mission With Role", CAMP_MISSION_ROLE, "Generate a mission where you specify the role", this);
             buttonPanel.add(missionButtonWithRoleSelect);
-
-            if (!campaign.isCoop())
-            {
-                JButton loneWolfButton = PWCGButtonFactory.makeTranslucentMenuButton("Lone Wolf Mission", "CampMissionLoneWolf", "Generate a lone wolf mission", this);
-                buttonPanel.add(loneWolfButton);
-            }
         }
         else if (isDisplayLeaveButton())
         {
@@ -124,7 +118,7 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
             {
                 if (campaign.isCoop() && campaign.getCurrentMission() == null)
                 {
-                    showCoopPersonaChooser(action);
+                    createCoopMission(action);
                 }
                 else
                 {
@@ -134,10 +128,6 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
             else if (action.equalsIgnoreCase("CampLeave"))
             {
                 showLeavePage();
-            }
-            else if (action.equalsIgnoreCase("CampMissionLoneWolf"))
-            {
-                makeLoneWolfMission();
             }
             else if (action.equalsIgnoreCase("CampFlowCombatReport"))
             {
@@ -159,28 +149,42 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
     {
         if (action.contentEquals(CAMP_MISSION))
         {
-            generateMissionWithoutRoleOverride();
+            boolean isLoneWolf = false;
+            generateMission(isLoneWolf);
         }
         else
         {
-            SoundManager.getInstance().playSound("Typewriter.WAV");
-            MissionHumanParticipants participatingPlayers = MissionGeneratorHelper.buildParticipatingPlayersSinglePlayer(campaign);
-            BriefingRoleChooser briefingRoleChooser = new BriefingRoleChooser(campaign, campaignHomeGuiBriefingWrapper, action, participatingPlayers);
-            briefingRoleChooser.makePanels();
-            CampaignGuiContextManager.getInstance().pushToContextStack(briefingRoleChooser);
+            generateMissionWithRoleOverride();
         }
     }
+    
+    private void createCoopMission(String missionChoice) throws PWCGException 
+    {
+        boolean overrideRole = false;
+        if (missionChoice.contentEquals(CAMP_MISSION_ROLE))
+        {
+            overrideRole = true;
+        }
 
-    private void generateMissionWithoutRoleOverride() throws PWCGException
+        BriefingCoopPersonaChooser coopPersonaChooser = new BriefingCoopPersonaChooser(campaign, missionChoice, campaignHomeGuiBriefingWrapper, overrideRole);
+        coopPersonaChooser.makePanels();
+        CampaignGuiContextManager.getInstance().pushToContextStack(coopPersonaChooser);
+    }
+
+    private void generateMission(boolean isLoneWolf) throws PWCGException
     {
         Map<Integer, PwcgRole> squadronRoleOverride = new HashMap<>();
         MissionHumanParticipants participatingPlayers = MissionGeneratorHelper.buildParticipatingPlayersSinglePlayer(campaign);
         MissionGeneratorHelper.showBriefingMap(campaign, campaignHomeGuiBriefingWrapper, participatingPlayers, squadronRoleOverride);
     }
 
-    private void makeLoneWolfMission() throws PWCGException
+    private void generateMissionWithRoleOverride() throws PWCGException
     {
-        generateMissionWithoutRoleOverride();
+        SoundManager.getInstance().playSound("Typewriter.WAV");
+        MissionHumanParticipants participatingPlayers = MissionGeneratorHelper.buildParticipatingPlayersSinglePlayer(campaign);
+        BriefingRoleChooser briefingRoleChooser = new BriefingRoleChooser(campaign, campaignHomeGuiBriefingWrapper, participatingPlayers);
+        briefingRoleChooser.makePanels();
+        CampaignGuiContextManager.getInstance().pushToContextStack(briefingRoleChooser);
     }
 
 
@@ -192,13 +196,6 @@ public class CampaignMissionScreen extends ImageResizingPanel implements ActionL
         leaveDisplay.makePanels();
         
         CampaignGuiContextManager.getInstance().pushToContextStack(leaveDisplay);
-    }
-    
-    private void showCoopPersonaChooser(String missionChoice) throws PWCGException 
-    {
-        BriefingCoopPersonaChooser coopPersonaChooser = new BriefingCoopPersonaChooser(campaign, missionChoice, campaignHomeGuiBriefingWrapper);
-        coopPersonaChooser.makePanels();
-        CampaignGuiContextManager.getInstance().pushToContextStack(coopPersonaChooser);
     }
 
     private void showAAR() throws PWCGException 

@@ -18,6 +18,7 @@ import pwcg.mission.MissionHumanParticipants;
 public class MissionGeneratorHelper
 {
 
+
     public static void showBriefingMap(
             Campaign campaign, 
             CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper,
@@ -28,7 +29,7 @@ public class MissionGeneratorHelper
         SoundManager.getInstance().playSound("Typewriter.WAV");
 
         GuiMissionInitiator missionInitiator = new GuiMissionInitiator(campaign, participatingPlayers);
-        Mission mission = missionInitiator.makeMission(false, squadronRoleOverride);
+        Mission mission = missionInitiator.makeMission(squadronRoleOverride);
 
         BriefingDescriptionScreen briefingMap = new BriefingDescriptionScreen(campaignHomeGuiBriefingWrapper, mission);
         briefingMap.makePanels();

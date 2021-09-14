@@ -44,14 +44,12 @@ public class BriefingRoleChooser extends ImageResizingPanel implements ActionLis
     public BriefingRoleChooser(
             Campaign campaign, 
             CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper, 
-            String missionChoice, 
             MissionHumanParticipants participatingPlayers)
     {
         super("");
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 
-        this.campaign = campaign;
         this.campaign = campaign;
         this.campaignHomeGuiBriefingWrapper = campaignHomeGuiBriefingWrapper;
         this.participatingPlayers = participatingPlayers;
@@ -83,7 +81,7 @@ public class BriefingRoleChooser extends ImageResizingPanel implements ActionLis
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JButton missionButton = makeMenuButton("generate Mission", "CreateMission", "Create a mission");
+        JButton missionButton = makeMenuButton("Generate Mission", "CreateMission", "Create a mission");
         buttonPanel.add(missionButton);
 
         JButton scrubButton = makeMenuButton("Scrub Mission", "ScrubMission", "Scrub this mission");

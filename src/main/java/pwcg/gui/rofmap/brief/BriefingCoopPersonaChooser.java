@@ -21,17 +21,21 @@ import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.mission.MissionGeneratorHelper;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
+import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.mission.MissionHumanParticipants;
 
 public class BriefingCoopPersonaChooser extends ImageResizingPanel implements ActionListener
 {
+    private static final String CAMP_COOP_MISSION = "CampCoopMission";
+
     private static final long serialVersionUID = 1L;
     
     private CoopPersonaChooserPanel coopPersonaAccept;
@@ -40,9 +44,10 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
     private CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper;
     private Campaign campaign;
     private JButton missionButton;
+    private boolean overrideRole;
     private MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
 
-    public BriefingCoopPersonaChooser(Campaign campaign, String missionChoice, CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper)
+    public BriefingCoopPersonaChooser(Campaign campaign, String missionChoice, CampaignHomeGuiBriefingWrapper campaignHomeGuiBriefingWrapper, boolean overrideRole)
     {
         super("");
         this.setLayout(new BorderLayout());
@@ -50,6 +55,7 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
 
         this.campaign = campaign;
         this.campaignHomeGuiBriefingWrapper = campaignHomeGuiBriefingWrapper;
+        this.overrideRole = overrideRole;
     }
     
     public void makePanels() 
@@ -182,7 +188,7 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        missionButton = makeMenuButton("Coop Mission", "CampCoopMission", "Create a coop mission");
+        missionButton = makeMenuButton("Coop Mission", CAMP_COOP_MISSION, "Create a coop mission");
         buttonPanel.add(missionButton);
 
         JButton scrubButton = makeMenuButton("Scrub Mission", "ScrubMission", "Scrub this mission");
@@ -203,9 +209,16 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
         try
         {
             String action = ae.getActionCommand();
-            if (action.equalsIgnoreCase("CampCoopMission"))
+            if (action.equalsIgnoreCase(CAMP_COOP_MISSION))
             {
-                generateMissionWithoutRoleOverride();
+                if (!overrideRole)
+                {
+                    generateMission();
+                }
+                else
+                {
+                    generateMissionWithRoleOverride();
+                }
             }
             else if (action.equalsIgnoreCase("ScrubMission"))
             {
@@ -219,7 +232,7 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
         }
     }
 
-    private void generateMissionWithoutRoleOverride() throws PWCGException
+    private void generateMission() throws PWCGException
     {
         Map<Integer, PwcgRole> squadronRoleOverride = new HashMap<>();
         List<SquadronMember> selectedCoopPersonas = coopPersonaAccept.getAcceptedSquadronMembers();
@@ -227,6 +240,16 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
         MissionGeneratorHelper.showBriefingMap(campaign, campaignHomeGuiBriefingWrapper, participatingPlayers, squadronRoleOverride);
     }
 
+
+    private void generateMissionWithRoleOverride() throws PWCGException
+    {
+        SoundManager.getInstance().playSound("Typewriter.WAV");
+        List<SquadronMember> selectedCoopPersonas = coopPersonaAccept.getAcceptedSquadronMembers();
+        participatingPlayers.addSquadronMembers(selectedCoopPersonas);              
+        BriefingRoleChooser briefingRoleChooser = new BriefingRoleChooser(campaign, campaignHomeGuiBriefingWrapper, participatingPlayers);
+        briefingRoleChooser.makePanels();
+        CampaignGuiContextManager.getInstance().pushToContextStack(briefingRoleChooser);
+    }
 }
 
 

@@ -10,7 +10,6 @@ import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionHumanParticipants;
-import pwcg.mission.flight.FlightTypes;
 
 public class GuiMissionInitiator 
 {
@@ -23,7 +22,7 @@ public class GuiMissionInitiator
 		this.participatingPlayers = participatingPlayers;
 	}
 
-	public Mission makeMission(boolean isLoneWolf, Map<Integer, PwcgRole> squadronRoleOverride) throws PWCGException 
+	public Mission makeMission(Map<Integer, PwcgRole> squadronRoleOverride) throws PWCGException 
     {
         Mission mission = null;
 
@@ -36,14 +35,7 @@ public class GuiMissionInitiator
             if (campaign.getCurrentMission() == null)
             {
                 MissionGenerator missionGenerator = new MissionGenerator(campaign);
-                if (isLoneWolf)
-                {
-                    mission = missionGenerator.makeMissionwithSpecifiedType(participatingPlayers, FlightTypes.LONE_WOLF);
-                }
-                else
-                {
-                    mission = missionGenerator.makeMission(participatingPlayers, squadronRoleOverride);                    
-                }
+                mission = missionGenerator.makeMission(participatingPlayers, squadronRoleOverride);                    
             }
             else
             {
