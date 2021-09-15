@@ -6,7 +6,6 @@ import java.util.List;
 public class SquadronRolePeriod
 {
     private Date startDate;
-    private Date endDate;
     private List<SquadronRoleWeight> weightedRoles;
 
     public List<SquadronRoleWeight> getWeightedRoles()
@@ -27,15 +26,5 @@ public class SquadronRolePeriod
     public void setStartDate(Date startDate)
     {
         this.startDate = startDate;
-    }
-
-    public Date getEndDate()
-    {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate)
-    {
-        this.endDate = endDate;
     }
 }

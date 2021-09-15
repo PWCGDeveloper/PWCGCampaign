@@ -14,7 +14,7 @@
 		}
 	],
 	"airfields": {
-		"19441229": "Eudenbach/Asbach",
+		"19450201": "Eudenbach/Asbach",
 		"19450207": "Dusseldorf-Lohausen",
 		"19450310": "Breitscheid",
 		"19450404": "Hopsten"
@@ -45,26 +45,9 @@
 				"weightedRoles": [
 					{
 						"role": "ROLE_STRATEGIC_INTERCEPT",
-						"weight": 60
-					},
-					{
-						"role": "ROLE_FIGHTER",
-						"weight": 30
-					},
-					{
-						"role": "ROLE_ATTACK",
-						"weight": 10
+						"weight": 100
 					}
 				]
-			}
-		]
-	},
-	"squadronSpecializedRoles": {
-		"squadronSpecializedRolePeriods": [
-			{
-				"startDate": "19440901",
-				"endDate": "19450601",
-				"specializedRole": "SPECIALIZED_ROLE_INTERCEPTOR"
 			}
 		]
 	},

@@ -1,85 +1,82 @@
 {
-  "country": "GERMANY",
-  "squadronId": 20131054,
-  "name": "I./KG54",
-  "fileName": "I_KG54.json",
-  "skill": 50,
-  "unitIdCode": "B3",
-  "subUnitIdCode": "L",
-  "planeAssignments": [
-    {
-      "archType": "ju88",
-      "squadronIntroduction": "19410801",
-      "squadronWithdrawal": "19450601"
-    }
-  ],
-  "airfields": {
-    "19440901": "Schijndel",
-    "19440917": "Mill",
-    "19440925": "GraveKeent",
-    "19440928": "Hilversum",
-    "19441101": "Koln-Wahn",
-    "19441220": "Koln-Wahn",
-    "19441225": "Koln-Wahn",
-    "19441229": "Koln-Wahn",
-    "19450207": "Eudenbach/Asbach",
-    "19450310": "Greven-Lette",
-    "19450404": "Vorden"
-  },
-  "skins": [
-    {
-      "skinName": "I_KG54",
-      "planeType": "ju88a4",
-      "archTypes": [],
-      "startDate": "19410101",
-      "endDate": "19450601",
-      "squadId": 20131054,
-      "country": "Germany",
-      "category": "Squadron",
-      "definedInGame": false,
-      "winter": false
-    }
-  ],
-  "squadHistory": {
-    "squadHistoryEntries": []
-  },
-  "serviceId": 20101,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19400101",
-        "endDate": "19450601",
-        "weightedRoles": [
-          {
-            "role": "ROLE_RECON",
-            "weight": 10
-          },
-          {
-            "role": "ROLE_BOMB",
-            "weight": 80
-          },
-          {
-            "role": "ROLE_DIVE_BOMB",
-            "weight": 10
-          }
-        ]
-      }
-    ]
-  },
-  "squadronSpecializedRoles": {
-    "squadronSpecializedRolePeriods": []
-  },
-  "nightMissionOdds": {
-    "nightMissionPeriods": [
-      {
-        "startDate": "19440901",
-        "endDate": "19450601",
-        "nightMissionOdds": 25
-      }
-    ]
-  },
-  "conversionPeriods": [],
-  "callsigns": {
-    "19410801": "GANNET"
-  }
+	"country": "GERMANY",
+	"squadronId": 20131054,
+	"name": "I./KG54",
+	"fileName": "I_KG54.json",
+	"skill": 50,
+	"unitIdCode": "B3",
+	"subUnitIdCode": "L",
+	"planeAssignments": [
+		{
+			"archType": "ju88",
+			"squadronIntroduction": "19410801",
+			"squadronWithdrawal": "19450601"
+		}
+	],
+	"airfields": {
+		"19440901": "Schijndel",
+		"19440917": "Mill",
+		"19440925": "GraveKeent",
+		"19440928": "Hilversum",
+		"19441101": "Koln-Wahn",
+		"19441220": "Koln-Wahn",
+		"19441225": "Koln-Wahn",
+		"19441229": "Koln-Wahn",
+		"19450207": "Eudenbach/Asbach",
+		"19450310": "Greven-Lette",
+		"19450404": "Vorden"
+	},
+	"skins": [
+		{
+			"skinName": "I_KG54",
+			"planeType": "ju88a4",
+			"archTypes": [],
+			"startDate": "19410101",
+			"endDate": "19450601",
+			"squadId": 20131054,
+			"country": "Germany",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false
+		}
+	],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"serviceId": 20101,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19400101",
+				"endDate": "19450601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_RECON",
+						"weight": 10
+					},
+					{
+						"role": "ROLE_BOMB",
+						"weight": 80
+					},
+					{
+						"role": "ROLE_DIVE_BOMB",
+						"weight": 10
+					}
+				]
+			}
+		]
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+			{
+				"startDate": "19440901",
+				"endDate": "19450601",
+				"nightMissionOdds": 25
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"callsigns": {
+		"19410801": "GANNET"
+	}
 }

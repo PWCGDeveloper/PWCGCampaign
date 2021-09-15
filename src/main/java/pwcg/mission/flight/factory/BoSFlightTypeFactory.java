@@ -8,7 +8,6 @@ import java.util.Map;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.plane.SpecializedRole;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
@@ -81,12 +80,6 @@ public class BoSFlightTypeFactory implements IFlightTypeFactory
 
     private FlightTypes getFighterFlightType(Squadron squadron, boolean isPlayerFlight) throws PWCGException
     {
-        FlightTypes specializedFlightType = getSpecializedFighterFlightType(squadron);
-        if (specializedFlightType != FlightTypes.ANY)
-        {
-            return specializedFlightType;
-        }
-                
         int currentIndex = 0;
         if (squadron.determineSquadronCountry(campaign.getDate()).getSideNoNeutral() == Side.ALLIED)
         {
@@ -122,16 +115,6 @@ public class BoSFlightTypeFactory implements IFlightTypeFactory
 
         return flightType;
     }    
-
-    private FlightTypes getSpecializedFighterFlightType(Squadron squadron) throws PWCGException
-    {
-        SpecializedRole specializedRole = squadron.getActiveSpecializedRole(campaign.getDate());
-        if (specializedRole == SpecializedRole.SPECIALIZED_ROLE_INTERCEPTOR)
-        {
-            return FlightTypes.INTERCEPT;
-        }
-        return FlightTypes.ANY;
-    }
     
     private FlightTypes getTransportFlightType(Squadron squadron) throws PWCGException
     {

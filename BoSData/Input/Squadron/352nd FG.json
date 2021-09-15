@@ -1,83 +1,80 @@
 {
-  "country": "USA",
-  "squadronId": 102352486,
-  "name": "352nd Fighter Group",
-  "fileName": "352nd FG.json",
-  "skill": 80,
-  "unitIdCode": "PZ",
-  "planeAssignments": [
-    {
-      "archType": "p51",
-      "squadronIntroduction": "19440901",
-      "squadronWithdrawal": "19450601"
-    }
-  ],
-  "airfields": {
-    "19440901": "LeCulot East",
-    "19440925": "St.Trond",
-    "19440928": "Diest",
-    "19441101": "Venlo",
-    "19441220": "Bierset",
-    "19441225": "Bierset",
-    "19441229": "Aachen",
-    "19450207": "Asch",
-    "19450310": "Strassfeld",
-    "19450404": "Breitscheid"
-  },
-  "skins": [
-    {
-      "skinName": "FG352",
-      "planeType": "p51d15",
-      "archTypes": [],
-      "startDate": "19400801",
-      "endDate": "19450601",
-      "squadId": 102352486,
-      "country": "USA",
-      "category": "Squadron",
-      "definedInGame": true,
-      "winter": false
-    }
-  ],
-  "squadHistory": {
-    "squadHistoryEntries": []
-  },
-  "serviceId": 10102,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19420801",
-        "endDate": "19450601",
-        "weightedRoles": [
-          {
-            "role": "ROLE_RECON",
-            "weight": 5
-          },
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 80
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 20
-          }
-        ]
-      }
-    ]
-  },
-  "squadronSpecializedRoles": {
-    "squadronSpecializedRolePeriods": []
-  },
-  "nightMissionOdds": {
-    "nightMissionPeriods": [
-      {
-        "startDate": "19440901",
-        "endDate": "19450601",
-        "nightMissionOdds": 3
-      }
-    ]
-  },
-  "conversionPeriods": [],
-  "callsigns": {
-    "19410801": "BLUE_BIRD"
-  }
+	"country": "USA",
+	"squadronId": 102352486,
+	"name": "352nd Fighter Group",
+	"fileName": "352nd FG.json",
+	"skill": 80,
+	"unitIdCode": "PZ",
+	"planeAssignments": [
+		{
+			"archType": "p51",
+			"squadronIntroduction": "19440901",
+			"squadronWithdrawal": "19450601"
+		}
+	],
+	"airfields": {
+		"19440901": "LeCulot East",
+		"19440925": "St.Trond",
+		"19440928": "Diest",
+		"19441101": "Venlo",
+		"19441220": "Bierset",
+		"19441225": "Bierset",
+		"19441229": "Aachen",
+		"19450207": "Asch",
+		"19450310": "Strassfeld",
+		"19450404": "Breitscheid"
+	},
+	"skins": [
+		{
+			"skinName": "FG352",
+			"planeType": "p51d15",
+			"archTypes": [],
+			"startDate": "19400801",
+			"endDate": "19450601",
+			"squadId": 102352486,
+			"country": "USA",
+			"category": "Squadron",
+			"definedInGame": true,
+			"winter": false
+		}
+	],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"serviceId": 10102,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19420801",
+				"endDate": "19450601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_RECON",
+						"weight": 5
+					},
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 80
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 20
+					}
+				]
+			}
+		]
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+			{
+				"startDate": "19440901",
+				"endDate": "19450601",
+				"nightMissionOdds": 3
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"callsigns": {
+		"19410801": "BLUE_BIRD"
+	}
 }

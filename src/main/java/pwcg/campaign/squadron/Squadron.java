@@ -33,7 +33,6 @@ import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.plane.RoleCategory;
-import pwcg.campaign.plane.SpecializedRole;
 import pwcg.campaign.plane.SquadronPlaneAssignment;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.squadmember.Ace;
@@ -67,9 +66,7 @@ public class Squadron
 	private SquadHistory squadHistory;
 	private int serviceId;
     private SquadronRoleSet squadronRoles = new SquadronRoleSet();
-    private SquadronSpecializedRoleSet squadronSpecializedRoles = new SquadronSpecializedRoleSet();
     private NightMissionSet nightMissionOdds = new NightMissionSet();
-    private TargetPreferenceSet targetPreferences = new TargetPreferenceSet();
 	private List<SquadronConversionPeriod> conversionPeriods = new ArrayList<>();
     private Map<Date, Callsign> callsigns = new TreeMap<>();
 	
@@ -748,18 +745,6 @@ public class Squadron
 		this.serviceId = serviceId;
 	}
 
-    public TargetPreferencePeriod getTargetPreference(Date date)
-    {
-        if (targetPreferences == null)
-        {
-            return null;
-        }
-        else
-        {
-            return targetPreferences.determineTargetPreference(date);
-        }
-    }
-
     public int getNightOdds(Date date)
     {
         if (nightMissionOdds == null)
@@ -800,11 +785,6 @@ public class Squadron
     public void setPlaneAssignments(List<SquadronPlaneAssignment> planeAssignments)
     {
         this.planeAssignments = planeAssignments;
-    }
-    
-    public SpecializedRole getActiveSpecializedRole(Date date) throws PWCGException
-    {
-        return squadronSpecializedRoles.selectSpecializedRoleForMission(date);
     }
 
     public String determineUnitIdCode(Date date) throws PWCGException

@@ -58,7 +58,6 @@ public class TargetDefinitionBuilderTest
         
         SquadronRolePeriod squadronRolePeriod = new SquadronRolePeriod();
         squadronRolePeriod.setStartDate(DateUtils.getDateYYYYMMDD("19400101"));
-        squadronRolePeriod.setEndDate(DateUtils.getDateYYYYMMDD("19450601"));
         squadronRolePeriod.setWeightedRoles(Arrays.asList(squadronRoleWeight));
 
         SquadronRoleSet squadronRoleSet = squadron.getSquadronRoles();
@@ -86,7 +85,6 @@ public class TargetDefinitionBuilderTest
         
         SquadronRolePeriod squadronRolePeriod = new SquadronRolePeriod();
         squadronRolePeriod.setStartDate(DateUtils.getDateYYYYMMDD("19400101"));
-        squadronRolePeriod.setEndDate(DateUtils.getDateYYYYMMDD("19450601"));
         squadronRolePeriod.setWeightedRoles(Arrays.asList(squadronRoleWeight));
 
         SquadronRoleSet squadronRoleSet = squadron.getSquadronRoles();
@@ -114,7 +112,6 @@ public class TargetDefinitionBuilderTest
         
         SquadronRolePeriod squadronRolePeriod = new SquadronRolePeriod();
         squadronRolePeriod.setStartDate(DateUtils.getDateYYYYMMDD("19400101"));
-        squadronRolePeriod.setEndDate(DateUtils.getDateYYYYMMDD("19450601"));
         squadronRolePeriod.setWeightedRoles(Arrays.asList(squadronRoleWeight));
 
         SquadronRoleSet squadronRoleSet = squadron.getSquadronRoles();

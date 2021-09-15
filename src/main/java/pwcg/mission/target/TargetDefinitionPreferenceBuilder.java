@@ -5,10 +5,8 @@ import java.util.Collections;
 import java.util.List;
 
 import pwcg.campaign.skirmish.Skirmish;
-import pwcg.campaign.squadron.TargetPreferencePeriod;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 
@@ -40,23 +38,17 @@ public class TargetDefinitionPreferenceBuilder
         {
             targetTypes.add(testTargetType);
         }
-        
-        TargetType roleBasedTargetType = flightInformation.getRoleBasedTarget();
-        if (roleBasedTargetType != TargetType.TARGET_NONE)
-        {
-            targetTypes.add(flightInformation.getRoleBasedTarget());
-        }
 
         TargetType skirmishTargetType = getSkirmishPreferredTargetType();
         if (skirmishTargetType != TargetType.TARGET_NONE)
         {
             targetTypes.add(skirmishTargetType);
         }
-
-        TargetType squadronPreferenceTargetType = getSquadronPreferredTargetType();
-        if (squadronPreferenceTargetType != TargetType.TARGET_NONE)
+        
+        TargetType roleBasedTargetType = flightInformation.getRoleBasedTarget();
+        if (roleBasedTargetType != TargetType.TARGET_NONE)
         {
-            targetTypes.add(squadronPreferenceTargetType);
+            targetTypes.add(flightInformation.getRoleBasedTarget());
         }
 
         if (flightInformation.getFlightType() == FlightTypes.GROUND_HUNT)
@@ -107,21 +99,5 @@ public class TargetDefinitionPreferenceBuilder
             skirmishTargetType = skirmish.getTargetTypeForFlightType(flightInformation.getFlightType(), flightInformation.getSquadron().determineSide());
         }
         return skirmishTargetType;
-    }
-    
-    private TargetType getSquadronPreferredTargetType() throws PWCGException
-    {
-        TargetType squadronPreferredTargetType = TargetType.TARGET_NONE;
-        
-        TargetPreferencePeriod targetPreferencePeriod = flightInformation.getSquadron().getTargetPreference(flightInformation.getCampaign().getDate());
-        if (targetPreferencePeriod != null)
-        {
-            int roll = RandomNumberGenerator.getRandom(100);
-            if (roll < targetPreferencePeriod.getTargetPreferenceOdds())
-            {
-                squadronPreferredTargetType = targetPreferencePeriod.getTargetType();
-            }
-        }
-        return squadronPreferredTargetType;
     }
 }

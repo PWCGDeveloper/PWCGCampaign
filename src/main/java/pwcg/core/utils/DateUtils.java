@@ -356,6 +356,19 @@ public class DateUtils
         }
         return true;
     }
+
+    static public boolean isDateOnOrBefore (Date date, Date startRange) throws PWCGException
+    {
+        if (date.equals(startRange))
+        {
+            return true;
+        }
+        if (date.after(startRange))
+        {
+            return true;
+        }
+        return false;
+    }
     
     static Calendar dateToCalendar(Date date)
     {

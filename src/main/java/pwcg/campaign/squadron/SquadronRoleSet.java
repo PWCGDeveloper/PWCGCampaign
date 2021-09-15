@@ -85,15 +85,7 @@ public class SquadronRoleSet
         for (SquadronRolePeriod squadronRole : squadronRolePeriods)
         {
             Date startDate = squadronRole.getStartDate();
-            Date endDate = squadronRole.getEndDate();
-
-            if (date.before(startDate))
-            {
-            }
-            else if (date.after(endDate))
-            {
-            }
-            else
+            if (DateUtils.isDateOnOrBefore(date, startDate))
             {
                 rolesForPeriod = squadronRole;
             }

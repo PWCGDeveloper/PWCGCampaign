@@ -85,7 +85,6 @@ public class GroundAttackPackageTest extends PwcgTestBase
         
         IFlight playerFlight = missionFlights.getPlayerFlights().get(0);
         assert(playerFlight.getTargetDefinition().getTargetType() == TargetType.TARGET_AIRFIELD);
-        verifyProximityToTargetAirfield(playerFlight);
         
         List<IFlight> escortFlights = missionFlights.getNecessaryFlightsByType(NecessaryFlightType.PLAYER_ESCORT);
         assert(escortFlights.size() == 1);
@@ -96,6 +95,8 @@ public class GroundAttackPackageTest extends PwcgTestBase
         assert(playerFlight.getAssociatedFlight() != null);
         assert(playerFlight.getAssociatedFlight().getFlightInformation().getNecessaryFlightType() == NecessaryFlightType.PLAYER_ESCORT);
 
+        verifyProximityToTargetAirfield(playerFlight);
+
         TestDriver.getInstance().reset();
     }
 
@@ -103,8 +104,8 @@ public class GroundAttackPackageTest extends PwcgTestBase
     @Test
     public void groundAttackTankBustRoleTest() throws PWCGException
     {        
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.FG_362_PROFILE.getSquadronId());
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_26_PROFILE_WEST);
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_26_PROFILE_WEST.getSquadronId());
         
         SquadronRoleWeight squadronRoleWeight = new SquadronRoleWeight();
         squadronRoleWeight.setRole(PwcgRole.ROLE_TANK_BUSTER);
@@ -112,7 +113,6 @@ public class GroundAttackPackageTest extends PwcgTestBase
         
         SquadronRolePeriod squadronRolePeriod = new SquadronRolePeriod();
         squadronRolePeriod.setStartDate(DateUtils.getDateYYYYMMDD("19400101"));
-        squadronRolePeriod.setEndDate(DateUtils.getDateYYYYMMDD("19450601"));
         squadronRolePeriod.setWeightedRoles(Arrays.asList(squadronRoleWeight));
 
         SquadronRoleSet squadronRoleSet = squadron.getSquadronRoles();
@@ -125,7 +125,6 @@ public class GroundAttackPackageTest extends PwcgTestBase
         
         IFlight playerFlight = missionFlights.getPlayerFlights().get(0);
         assert(playerFlight.getTargetDefinition().getTargetType() == TargetType.TARGET_ARMOR);
-        verifyProximityToTargetAirfield(playerFlight);
         
         List<IFlight> escortFlights = missionFlights.getNecessaryFlightsByType(NecessaryFlightType.PLAYER_ESCORT);
         assert(escortFlights.size() == 1);
@@ -135,6 +134,8 @@ public class GroundAttackPackageTest extends PwcgTestBase
         
         assert(playerFlight.getAssociatedFlight() != null);
         assert(playerFlight.getAssociatedFlight().getFlightInformation().getNecessaryFlightType() == NecessaryFlightType.PLAYER_ESCORT);
+
+        verifyProximityToTargetAirfield(playerFlight);
 
         TestDriver.getInstance().reset();
     }

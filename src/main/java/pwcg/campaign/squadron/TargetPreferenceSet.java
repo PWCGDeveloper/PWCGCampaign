@@ -37,4 +37,11 @@ public class TargetPreferenceSet
         
         return null;
     }
+
+    public List<TargetPreferencePeriod> getTargetPreferencePeriods()
+    {
+        return targetPreferencePeriods;
+    }
+    
+    
 }

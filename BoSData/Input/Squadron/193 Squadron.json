@@ -1,91 +1,88 @@
 {
-  "country": "BRITAIN",
-  "squadronId": 103084193,
-  "name": "193 Squadron",
-  "fileName": "193 Squadron.json",
-  "skill": 70,
-  "unitIdCode": "DP",
-  "planeAssignments": [
-    {
-      "archType": "typhoon",
-      "squadronIntroduction": "19440901",
-      "squadronWithdrawal": "19450601"
-    }
-  ],
-  "airfields": {
-    "19440901": "Deurne",
-    "19440917": "Diest",
-    "19440928": "Rips",
-    "19441101": "Schijndel",
-    "19441220": "Mill",
-    "19441225": "Kluis",
-    "19441229": "Rips",
-    "19450207": "Eindhoven",
-    "19450310": "Schijndel",
-    "19450404": "Werl"
-  },
-  "skins": [
-    {
-      "skinName": "No193",
-      "planeType": "spitfiremkvb",
-      "archTypes": [],
-      "startDate": "19440101",
-      "endDate": "19450601",
-      "squadId": 103084193,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false,
-      "winter": false
-    },
-    {
-      "skinName": "No193",
-      "planeType": "spitfiremkixe",
-      "archTypes": [],
-      "startDate": "19440601",
-      "endDate": "19450601",
-      "squadId": 103084193,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false,
-      "winter": false
-    }
-  ],
-  "squadHistory": {
-    "squadHistoryEntries": []
-  },
-  "serviceId": 10103,
-  "squadronRoles": {
-    "squadronRolePeriods": [
-      {
-        "startDate": "19420801",
-        "endDate": "19450601",
-        "weightedRoles": [
-          {
-            "role": "ROLE_FIGHTER",
-            "weight": 40
-          },
-          {
-            "role": "ROLE_ATTACK",
-            "weight": 60
-          }
-        ]
-      }
-    ]
-  },
-  "squadronSpecializedRoles": {
-    "squadronSpecializedRolePeriods": []
-  },
-  "nightMissionOdds": {
-    "nightMissionPeriods": [
-      {
-        "startDate": "19440901",
-        "endDate": "19450601",
-        "nightMissionOdds": 3
-      }
-    ]
-  },
-  "conversionPeriods": [],
-  "callsigns": {
-    "19410801": "ANGEL"
-  }
+	"country": "BRITAIN",
+	"squadronId": 103084193,
+	"name": "193 Squadron",
+	"fileName": "193 Squadron.json",
+	"skill": 70,
+	"unitIdCode": "DP",
+	"planeAssignments": [
+		{
+			"archType": "typhoon",
+			"squadronIntroduction": "19440901",
+			"squadronWithdrawal": "19450601"
+		}
+	],
+	"airfields": {
+		"19440901": "Deurne",
+		"19440917": "Diest",
+		"19440928": "Rips",
+		"19441101": "Schijndel",
+		"19441220": "Mill",
+		"19441225": "Kluis",
+		"19441229": "Rips",
+		"19450207": "Eindhoven",
+		"19450310": "Schijndel",
+		"19450404": "Werl"
+	},
+	"skins": [
+		{
+			"skinName": "No193",
+			"planeType": "spitfiremkvb",
+			"archTypes": [],
+			"startDate": "19440101",
+			"endDate": "19450601",
+			"squadId": 103084193,
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false
+		},
+		{
+			"skinName": "No193",
+			"planeType": "spitfiremkixe",
+			"archTypes": [],
+			"startDate": "19440601",
+			"endDate": "19450601",
+			"squadId": 103084193,
+			"country": "Britain",
+			"category": "Squadron",
+			"definedInGame": false,
+			"winter": false
+		}
+	],
+	"squadHistory": {
+		"squadHistoryEntries": []
+	},
+	"serviceId": 10103,
+	"squadronRoles": {
+		"squadronRolePeriods": [
+			{
+				"startDate": "19420801",
+				"endDate": "19450601",
+				"weightedRoles": [
+					{
+						"role": "ROLE_FIGHTER",
+						"weight": 40
+					},
+					{
+						"role": "ROLE_ATTACK",
+						"weight": 60
+					}
+				]
+			}
+		]
+	},
+	"nightMissionOdds": {
+		"nightMissionPeriods": [
+			{
+				"startDate": "19440901",
+				"endDate": "19450601",
+				"nightMissionOdds": 3
+			}
+		]
+	},
+	"conversionPeriods": [],
+	"callsigns": {
+		"19410801": "ANGEL"
+	}
 }
