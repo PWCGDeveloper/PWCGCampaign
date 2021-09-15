@@ -135,7 +135,7 @@ public class GroundAttackPackageTest extends PwcgTestBase
         assert(playerFlight.getAssociatedFlight() != null);
         assert(playerFlight.getAssociatedFlight().getFlightInformation().getNecessaryFlightType() == NecessaryFlightType.PLAYER_ESCORT);
 
-        verifyProximityToTargetAirfield(playerFlight);
+        verifyProximityToTargetUnit(playerFlight);
 
         TestDriver.getInstance().reset();
     }
@@ -158,24 +158,26 @@ public class GroundAttackPackageTest extends PwcgTestBase
 
     private void verifyProximityToTargetUnit(IFlight flight) throws PWCGException
     {
-        System.out.println("Target type is " + flight.getFlightInformation().getTargetSearchStartLocation());
+        System.out.println("\n\nVerify Proximity To Ground Unit");
+
+        System.out.println("Target Information: Name:  " + flight.getTargetDefinition().getTargetName());
+        System.out.println("Target Information: Category:  " + flight.getTargetDefinition().getTargetCategory());
+        System.out.println("Target Information: Type:  " + flight.getTargetDefinition().getTargetType());
+        System.out.println("Target Information: Type:  " + flight.getTargetDefinition().getPosition());
 
         MissionPointAttackSet attackMissionPoint = (MissionPointAttackSet)flight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_ATTACK);
+        Coordinate attackPosition = attackMissionPoint.getAttackSequence().getAttackAreaMcu().getPosition();
+        System.out.println("Attack Position at " + attackPosition);
+
         boolean groundAttackCloseToTarget = false;
         for (GroundUnitCollection groundUnitCollection : flight.getMission().getMissionGroundUnitBuilder().getAllMissionGroundUnits())
         {
             for (IGroundUnit groundUnit : groundUnitCollection.getGroundUnits())
             {
-                Coordinate attackPosition = attackMissionPoint.getAttackSequence().getAttackAreaMcu().getPosition();
                 double distanceFromGroundUnit = MathUtils.calcDist(attackPosition, groundUnit.getPosition());
                 if (distanceFromGroundUnit < 5000)
                 {
                     groundAttackCloseToTarget = true;
-                    System.out.println("CLOSE TO " + groundUnit.getVehicleClass().getName());
-                }
-                else
-                {
-                    System.out.println("Not close to " + groundUnit.getVehicleClass().getName());
                 }
             }
         }
@@ -185,25 +187,22 @@ public class GroundAttackPackageTest extends PwcgTestBase
 
     private void verifyProximityToTargetAirfield(IFlight flight) throws PWCGException
     {
+        System.out.println("\n\nVerify Proximity To Airfield");
+
+        System.out.println("Target Information: Name:  " + flight.getTargetDefinition().getTargetName());
+        System.out.println("Target Information: Category:  " + flight.getTargetDefinition().getTargetCategory());
+        System.out.println("Target Information: Type:  " + flight.getTargetDefinition().getTargetType());
+        System.out.println("Target Information: Type:  " + flight.getTargetDefinition().getPosition());
+
         MissionPointAttackSet attackMissionPoint = (MissionPointAttackSet)flight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_ATTACK);
         Coordinate attackPosition = attackMissionPoint.getAttackSequence().getAttackAreaMcu().getPosition();
         System.out.println("Attack Position at " + attackPosition);
 
-        boolean groundAttackCloseToTarget = false;
-        for (Airfield airfield : flight.getMission().getFieldsForPatrol())
-        {
-            double distanceFromAirfield = MathUtils.calcDist(attackPosition, airfield.getPosition());
-            if (distanceFromAirfield < 5000)
-            {
-                groundAttackCloseToTarget = true;
-                System.out.println("CLOSE TO " + airfield.getName() + " " + airfield.determineCountry().getCountryName() + " distance is " + distanceFromAirfield);
-            }
-            else
-            {
-                System.out.println("Not close to " + airfield.getName() + " " + airfield.determineCountry().getCountryName() + " distance is " + distanceFromAirfield);
-            }
-        }
-        assert (groundAttackCloseToTarget == true);
+        Airfield airfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(flight.getTargetDefinition().getTargetName());
+        double distanceToAirfield = MathUtils.calcDist(flight.getTargetDefinition().getPosition(), airfield.getPosition());
+        System.out.println("Distance to " + airfield.getName() + " " + airfield.determineCountry().getCountryName() +  " distance is " + distanceToAirfield);
+
+        assert (distanceToAirfield < 5000);
     }
 
 }

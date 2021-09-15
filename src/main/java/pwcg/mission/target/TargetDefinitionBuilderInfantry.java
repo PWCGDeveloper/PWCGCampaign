@@ -36,7 +36,8 @@ public class TargetDefinitionBuilderInfantry
         List<TargetDefinition> targetDefinitionsForCollection = new ArrayList<>();
         for (IGroundUnit enemyGroundUnit : groundUnitCollection.getInterestingGroundUnitsForSide(flightInformation.getSquadron().determineEnemySide()))
         {
-            TargetDefinition targetDefinition = new TargetDefinition(enemyGroundUnit.getTargetType(), enemyGroundUnit.getPosition().copy(), enemyGroundUnit.getCountry(), "Infantry");
+            String targetDescription = buildTargetDescription(enemyGroundUnit);
+            TargetDefinition targetDefinition = new TargetDefinition(enemyGroundUnit.getTargetType(), enemyGroundUnit.getPosition().copy(), enemyGroundUnit.getCountry(), targetDescription);
             if (targetDefinition.getTargetType() == TargetType.TARGET_AIRFIELD)
             {
                 if (isCloseToAirfield(targetDefinition.getPosition()))
@@ -51,6 +52,15 @@ public class TargetDefinitionBuilderInfantry
         }
 
         return targetDefinitionsForCollection;
+    }
+    
+    private String buildTargetDescription(IGroundUnit enemyGroundUnit)
+    {
+        if (enemyGroundUnit.getVehicles() != null && enemyGroundUnit.getVehicles().size() > 0)
+        {
+            return enemyGroundUnit.getVehicles().get(0).getVehicleName();
+        }
+        return "Infantry";
     }
 
     private boolean isCloseToAirfield(Coordinate blockPosition) throws PWCGException

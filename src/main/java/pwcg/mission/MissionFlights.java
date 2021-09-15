@@ -41,7 +41,6 @@ public class MissionFlights
         List<IFlight> aiFlights = missionFlightBuilder.createAiFlights(playerFlightTypes);
         flights.addAll(aiFlights);
 
-
         List<IFlight> playerFlights = missionFlightBuilder.createPlayerFlights(playerFlightTypes);
         flights.addAll(playerFlights);
 
