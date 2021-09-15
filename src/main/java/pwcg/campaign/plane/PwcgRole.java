@@ -4,8 +4,6 @@ public enum PwcgRole
 {
     ROLE_FIGHTER (PwcgRoleCategory.FIGHTER, "Fighter"),
     ROLE_STRATEGIC_INTERCEPT (PwcgRoleCategory.FIGHTER, "Interceptor"),
-    ROLE_SEA_PLANE (PwcgRoleCategory.RECON, "Sea Plane"),
-    ROLE_SEA_PLANE_SMALL (PwcgRoleCategory.FIGHTER, "Sea Plane Interceptor"),
 
     ROLE_ATTACK (PwcgRoleCategory.ATTACK, "Attack"),
     ROLE_RAIDER (PwcgRoleCategory.ATTACK, "Raider"),
@@ -16,18 +14,16 @@ public enum PwcgRole
     
     ROLE_RECON (PwcgRoleCategory.RECON, "Recon"),
     ROLE_ARTILLERY_SPOT (PwcgRoleCategory.RECON, "Artillery Spot"),
-    ROLE_SEA_PLANE_LARGE (PwcgRoleCategory.FIGHTER, "Interceptor"),
+    ROLE_SEA_PLANE (PwcgRoleCategory.RECON, "Sea Plane"),
 
     ROLE_BOMB (PwcgRoleCategory.BOMBER, "Bomber"),
     ROLE_STRAT_BOMB (PwcgRoleCategory.BOMBER, "Strategic Bomber"),
 
     ROLE_TRANSPORT (PwcgRoleCategory.TRANSPORT, "Transport"),
 
-    ROLE_BALLOON (PwcgRoleCategory.OTHER, "Balloon"),
+    ROLE_BALLOON (PwcgRoleCategory.BALLOON, "Balloon"),
     ROLE_GROUND_UNIT (PwcgRoleCategory.OTHER, "Ground Unit"),
-
-    ROLE_NONE (PwcgRoleCategory.OTHER, "None"),
-    ROLE_UNKNOWN (PwcgRoleCategory.OTHER, "Unknown");
+    ROLE_NONE (PwcgRoleCategory.OTHER, "None");
 
     private PwcgRoleCategory roleCategory;
     private String roleDescription;
@@ -47,9 +43,18 @@ public enum PwcgRole
                 return role;
             }
         }
-        return PwcgRole.ROLE_UNKNOWN;
+        return PwcgRole.ROLE_NONE;
     }
     
+    public static boolean isStrategic(PwcgRole role)
+    {
+        if (role == ROLE_STRATEGIC_INTERCEPT || role == ROLE_STRAT_BOMB)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public boolean isRoleCategory(PwcgRoleCategory askCategory)
     {
         if (roleCategory == askCategory)
@@ -67,22 +72,5 @@ public enum PwcgRole
     public String getRoleDescription()
     {
         return roleDescription;
-    }
-
-    public static PwcgRole getApproximateRole(PwcgRole role)
-    {
-        if (role.getRoleCategory() == PwcgRoleCategory.BOMBER)
-        {
-            return PwcgRole.ROLE_BOMB;
-        }
-        else if (role.getRoleCategory() == PwcgRoleCategory.FIGHTER)
-        {
-            return PwcgRole.ROLE_FIGHTER;
-        }
-        else if (role.getRoleCategory() == PwcgRoleCategory.TRANSPORT)
-        {
-            return PwcgRole.ROLE_BOMB;
-        }
-        return PwcgRole.ROLE_UNKNOWN;
     }
 }

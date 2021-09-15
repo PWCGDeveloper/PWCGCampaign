@@ -12,7 +12,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
@@ -34,7 +34,7 @@ public class PlayerClaimResolverFuzzyNotExactTest
     public void testPlayerFuzzyNotExactVictoryFoundWithExactMatch() throws PWCGException
     {
         LogPlane victim = new LogPlane(1);
-        victim.setRole(PwcgRole.ROLE_FIGHTER);
+        victim.setRoleCategory(PwcgRoleCategory.FIGHTER);
         victim.setVehicleType("se5a");
         victim.setCountry(new FCCountry(Country.BRITAIN));
 
@@ -60,7 +60,7 @@ public class PlayerClaimResolverFuzzyNotExactTest
     public void testPlayerFuzzyNotExactVictoryFoundWithNotExactMatch() throws PWCGException
     {
         LogPlane victim = new LogPlane(1);
-        victim.setRole(PwcgRole.ROLE_FIGHTER);
+        victim.setRoleCategory(PwcgRoleCategory.FIGHTER);
         victim.setVehicleType("se5a");
         victim.setCountry(new FCCountry(Country.BRITAIN));
 
@@ -86,7 +86,7 @@ public class PlayerClaimResolverFuzzyNotExactTest
     public void testPlayerFuzzyNotExactVictoryNotFoundBecauseRoleIsDifferent() throws PWCGException
     {
         LogPlane victim = new LogPlane(1);
-        victim.setRole(PwcgRole.ROLE_BOMB);
+        victim.setRoleCategory(PwcgRoleCategory.BOMBER);
         victim.setVehicleType("notarealplane");
 
         LogPlane victor = new LogPlane(2);
@@ -110,7 +110,7 @@ public class PlayerClaimResolverFuzzyNotExactTest
     public void testPlayerFuzzyNotExactVictoryNotFoundBecauseClaimPlaneNotFound() throws PWCGException
     {
         LogPlane victim = new LogPlane(1);
-        victim.setRole(PwcgRole.ROLE_FIGHTER);
+        victim.setRoleCategory(PwcgRoleCategory.FIGHTER);
         victim.setVehicleType("se5a");
 
         LogPlane victor = new LogPlane(2);
@@ -134,7 +134,7 @@ public class PlayerClaimResolverFuzzyNotExactTest
     public void testPlayerFuzzyNotExactVictoryNotFoundBecauseVictoryAlreadyConfirmed() throws PWCGException
     {
         LogPlane victim = new LogPlane(1);
-        victim.setRole(PwcgRole.ROLE_FIGHTER);
+        victim.setRoleCategory(PwcgRoleCategory.FIGHTER);
         victim.setVehicleType("se5a");
 
         LogPlane victor = new LogPlane(2);
@@ -160,7 +160,7 @@ public class PlayerClaimResolverFuzzyNotExactTest
     public void testNoFriendlyVictories () throws PWCGException
     {   
         LogPlane victim = new LogPlane(1);
-        victim.setRole(PwcgRole.ROLE_FIGHTER);
+        victim.setRoleCategory(PwcgRoleCategory.FIGHTER);
         victim.setVehicleType("albatrosd5");
         victim.setCountry(new FCCountry(Country.GERMANY));
 

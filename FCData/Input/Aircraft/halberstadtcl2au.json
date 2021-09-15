@@ -20,11 +20,10 @@
 	"isFlyable": true,
 	"isNovice": true,
 	"planeSize": "PLANE_SIZE_SMALL",
-	"roles": [
-		"ROLE_ATTACK",
-		"ROLE_RECON",
-		"ROLE_BOMB",
-		"ROLE_ARTILLERY_SPOT"
+	"roleCategories": [
+		"ATTACK",
+		"RECON",
+		"BOMBER"
 	],
 	"introduction": "19180401",
 	"endProduction": "19181201",

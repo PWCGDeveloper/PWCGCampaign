@@ -7,6 +7,8 @@ public enum PwcgRoleCategory
     BOMBER("Bomber"),
     RECON("Recon"), 
     TRANSPORT("Transport"),
+    BALLOON("Balloon"),
+    GROUND_UNIT("Ground Unit"),
     OTHER("other");
 
     private String roleCategoryDescription;

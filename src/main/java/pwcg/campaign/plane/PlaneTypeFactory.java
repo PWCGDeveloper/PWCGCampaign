@@ -68,7 +68,7 @@ public class PlaneTypeFactory
         {
             if (planeType != null)
             {
-                if (planeType.isRole(PwcgRole.ROLE_FIGHTER))
+                if (planeType.isRoleCategory(PwcgRoleCategory.FIGHTER))
                 {
                     if (planeType.isPlaneActive(campaign.getDate()))
                     {

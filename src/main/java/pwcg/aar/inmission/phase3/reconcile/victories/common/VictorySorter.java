@@ -8,7 +8,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBalloon;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.core.exception.PWCGException;
 
 public class VictorySorter
@@ -54,7 +54,7 @@ public class VictorySorter
         {
             firmBalloonVictories.add(logVictory);
         }
-        else if (logVictory.getVictim().getRole() == PwcgRole.ROLE_GROUND_UNIT)
+        else if (logVictory.getVictim().getRoleCategory() == PwcgRoleCategory.GROUND_UNIT)
         {
             firmGroundVictories.add(logVictory);
         }
@@ -70,7 +70,7 @@ public class VictorySorter
         {
             fuzzyBalloonVictories.add(logVictory);
         }
-        else if (logVictory.getVictim().getRole() == PwcgRole.ROLE_GROUND_UNIT)
+        else if (logVictory.getVictim().getRoleCategory() == PwcgRoleCategory.GROUND_UNIT)
         {
             // We don't do anything with fuzzy ground victories
         }

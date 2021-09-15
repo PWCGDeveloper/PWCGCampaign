@@ -2,7 +2,6 @@ package pwcg.mission;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -45,8 +44,7 @@ public class MissionProfileGenerator
         for (SquadronMember player : participatingPlayers.getAllParticipatingPlayers())
         {
             Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
-            PwcgRole squadronPrimaryRole = playerSquadron.determineSquadronPrimaryRoleCategory(campaign.getDate());
-            if (!(squadronPrimaryRole == PwcgRole.ROLE_STRATEGIC_INTERCEPT || squadronPrimaryRole == PwcgRole.ROLE_STRAT_BOMB))
+            if (!(playerSquadron.isStrategicOnly(campaign.getDate())))
             {
                 useTactical = true;
             }

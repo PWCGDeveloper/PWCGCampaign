@@ -4,7 +4,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -60,12 +60,12 @@ public class PlayerClaimResolverFirm
         {
             if (!VictoryResolverSameSideDetector.isSameSide(player, resultVictory))
             {
-                PwcgRole victimApproximateRole = PwcgRole.getApproximateRole(resultVictory.getVictim().getRole());
+                PwcgRoleCategory victimApproximateRole = resultVictory.getVictim().getRoleCategory();
                 
                 PlaneType declaredPlane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
                 if (declaredPlane != null)
                 {
-                    PwcgRole declarationApproximateRole = PwcgRole.getApproximateRole(declaredPlane.determinePrimaryRole());
+                    PwcgRoleCategory declarationApproximateRole = declaredPlane.determinePrimaryRoleCategory();
                     
                     if (declarationApproximateRole == victimApproximateRole)
                     {

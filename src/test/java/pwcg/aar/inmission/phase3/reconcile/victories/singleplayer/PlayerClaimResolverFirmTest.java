@@ -12,7 +12,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
@@ -162,7 +162,7 @@ public class PlayerClaimResolverFirmTest
     public void testNoFriendlyVictories () throws PWCGException
     {   
         LogPlane victim = new LogPlane(1);
-        victim.setRole(PwcgRole.ROLE_FIGHTER);
+        victim.setRoleCategory(PwcgRoleCategory.FIGHTER);
         victim.setVehicleType("albatrosd5");
         victim.setCountry(new FCCountry(Country.GERMANY));
 

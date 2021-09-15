@@ -4,7 +4,6 @@ import pwcg.aar.inmission.phase1.parse.event.IAType12;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneStatus;
-import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -57,8 +56,7 @@ public class LogPlane extends LogAIEntity
         super.setCountry(squadronMember.determineCountry(campaign.getDate()));
         super.setName(squadronMember.getNameAndRank());
         super.setVehicleType(plane.getDisplayName());
-        PwcgRole approximateRole = PwcgRole.getApproximateRole(plane.determinePrimaryRole());
-        super.setRole(approximateRole);
+        super.setRoleCategory(plane.determinePrimaryRoleCategory());
     }
 
     public void intializePilot(int serialNumber)

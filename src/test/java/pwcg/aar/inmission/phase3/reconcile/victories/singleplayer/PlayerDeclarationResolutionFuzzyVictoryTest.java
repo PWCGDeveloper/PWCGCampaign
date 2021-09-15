@@ -24,7 +24,7 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.PlaneTypeFactory;
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
@@ -91,9 +91,9 @@ public class PlayerDeclarationResolutionFuzzyVictoryTest
     {   
         
         createPlayerDeclarations(1);
-        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1001, "se5a", PwcgRole.ROLE_FIGHTER);
-        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1002, "se5a", PwcgRole.ROLE_FIGHTER);
-        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1003, "se5a", PwcgRole.ROLE_FIGHTER);
+        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1001, "se5a", PwcgRoleCategory.FIGHTER);
+        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1002, "se5a", PwcgRoleCategory.FIGHTER);
+        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1003, "se5a", PwcgRoleCategory.FIGHTER);
 
         PlayerDeclarationResolution declarationResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter, playerDeclarations);
         ConfirmedVictories confirmedPlayerVictories = declarationResolution.determinePlayerAirResultsWithClaims();
@@ -106,9 +106,9 @@ public class PlayerDeclarationResolutionFuzzyVictoryTest
     {   
         
         createPlayerDeclarations(3);
-        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1001, "se5a", PwcgRole.ROLE_FIGHTER);
-        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1002, "se5a", PwcgRole.ROLE_FIGHTER);
-        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1003, "se5a", PwcgRole.ROLE_FIGHTER);
+        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1001, "se5a", PwcgRoleCategory.FIGHTER);
+        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1002, "se5a", PwcgRoleCategory.FIGHTER);
+        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1003, "se5a", PwcgRoleCategory.FIGHTER);
 
         PlayerDeclarationResolution declarationResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter, playerDeclarations);
         ConfirmedVictories confirmedPlayerVictories = declarationResolution.determinePlayerAirResultsWithClaims();
@@ -121,9 +121,9 @@ public class PlayerDeclarationResolutionFuzzyVictoryTest
     {   
         
         createPlayerDeclarations(2);
-        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1001, "se5a", PwcgRole.ROLE_FIGHTER);
-        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1002, "sopcamel", PwcgRole.ROLE_FIGHTER);
-        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1003, "sopcamel", PwcgRole.ROLE_FIGHTER);
+        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1001, "se5a", PwcgRoleCategory.FIGHTER);
+        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1002, "sopcamel", PwcgRoleCategory.FIGHTER);
+        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1003, "sopcamel", PwcgRoleCategory.FIGHTER);
 
         PlayerDeclarationResolution declarationResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter, playerDeclarations);
         ConfirmedVictories confirmedPlayerVictories = declarationResolution.determinePlayerAirResultsWithClaims();
@@ -136,9 +136,9 @@ public class PlayerDeclarationResolutionFuzzyVictoryTest
     {   
         
         createPlayerDeclarations(2);
-        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1001, "re8", PwcgRole.ROLE_BOMB);
-        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1002, "re8", PwcgRole.ROLE_BOMB);
-        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1003, "re8", PwcgRole.ROLE_BOMB);
+        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1001, "re8", PwcgRoleCategory.BOMBER);
+        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1002, "re8", PwcgRoleCategory.BOMBER);
+        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1003, "re8", PwcgRoleCategory.BOMBER);
 
         PlayerDeclarationResolution declarationResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter, playerDeclarations);
         ConfirmedVictories confirmedPlayerVictories = declarationResolution.determinePlayerAirResultsWithClaims();
@@ -151,9 +151,9 @@ public class PlayerDeclarationResolutionFuzzyVictoryTest
     {   
         
         createPlayerDeclarations(2);
-        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1001, "re8", PwcgRole.ROLE_BOMB);
-        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1002, "re8", PwcgRole.ROLE_BOMB);
-        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1003, "sopcamel", PwcgRole.ROLE_FIGHTER);
+        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1001, "re8", PwcgRoleCategory.BOMBER);
+        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1002, "re8", PwcgRoleCategory.BOMBER);
+        createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1003, "sopcamel", PwcgRoleCategory.FIGHTER);
 
         PlayerDeclarationResolution declarationResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter, playerDeclarations);
         ConfirmedVictories confirmedPlayerVictories = declarationResolution.determinePlayerAirResultsWithClaims();
@@ -186,12 +186,12 @@ public class PlayerDeclarationResolutionFuzzyVictoryTest
         assert (confirmedPlayerVictories.getConfirmedVictories().size() == 0);
     }
 
-    private void createVictory(Integer victimSerialNumber, String aircraftType, PwcgRole approximateRole)
+    private void createVictory(Integer victimSerialNumber, String aircraftType, PwcgRoleCategory approximateRole)
     {        
         LogPlane victim = new LogPlane(1);
         victim.setPilotSerialNumber(victimSerialNumber);
         victim.setVehicleType(aircraftType);
-        victim.setRole(approximateRole);
+        victim.setRoleCategory(approximateRole);
         victim.setCountry(new FCCountry(Country.BRITAIN));
 
         LogVictory resultVictory = new LogVictory(10);

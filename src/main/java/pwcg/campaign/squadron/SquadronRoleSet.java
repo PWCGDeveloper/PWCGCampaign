@@ -36,7 +36,7 @@ public class SquadronRoleSet
         PwcgRoleCategory selectedRoleCategory = SquadronRoleWeightCalculator.calculateHeaviestSquadronRole(squadronRoleForDate);
         return selectedRoleCategory;
     }
-    
+
     private PwcgRole selectRoleFromSet(SquadronRolePeriod squadronRole) throws PWCGException 
     {
         PwcgRole selectedRole = PwcgRole.ROLE_NONE;

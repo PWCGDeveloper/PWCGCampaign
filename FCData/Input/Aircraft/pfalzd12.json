@@ -26,8 +26,8 @@
 	"isFlyable": true,
 	"isNovice": false,
 	"planeSize": "PLANE_SIZE_SMALL",
-	"roles": [
-		"ROLE_FIGHTER"
+	"roleCategories": [
+		"FIGHTER"
 	],
 	"introduction": "19180701",
 	"endProduction": "19181201",

@@ -82,7 +82,7 @@ public class PlaneTypeFactoryTest
             assert(planeType.getIntroduction().after(DateUtils.getDateYYYYMMDD("19390901")));
             assert(planeType.getWithdrawal().before(DateUtils.getDateYYYYMMDD("1945601")));
             assert(planeType.getEndProduction().before(DateUtils.getDateYYYYMMDD("1945601")));
-            assert(planeType.getRoles().size() > 0);
+            assert(planeType.getRoleCategories().size() > 0);
             assert(planeType.getPrimaryUsedBy().size() > 0);
         }
     }

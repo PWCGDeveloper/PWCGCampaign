@@ -454,16 +454,6 @@ public class Squadron
         this.conversionPeriods = conversionPeriods;
     }
 
-    public boolean isSquadronThisRole (Date date, PwcgRole requestedRole) throws PWCGException 
-    {
-        return squadronRoles.isSquadronThisRole(date, requestedRole);
-    }
-    
-    public PwcgRoleCategory determineSquadronPrimaryRoleCategory(Date date) throws PWCGException
-    {
-        return squadronRoles.selectSquadronPrimaryRoleCategory(date);
-    }
-
     public PlaneType determineBestPlane(Date date) throws PWCGException
     {
         PlaneType bestPlane = null;
@@ -813,5 +803,28 @@ public class Squadron
         }
 
         return code;
+    }
+
+    public boolean isSquadronThisRole (Date date, PwcgRole requestedRole) throws PWCGException 
+    {
+        return squadronRoles.isSquadronThisRole(date, requestedRole);
+    }
+    
+    public PwcgRoleCategory determineSquadronPrimaryRoleCategory(Date date) throws PWCGException
+    {
+        return squadronRoles.selectSquadronPrimaryRoleCategory(date);
+    }
+
+    public boolean isStrategicOnly(Date date) throws PWCGException
+    {
+        for (SquadronRoleWeight weightedRole : squadronRoles.selectRoleSetByDate(date).getWeightedRoles())
+        {
+            if (PwcgRole.isStrategic(weightedRole.getRole()))
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

@@ -39,7 +39,7 @@ public class PlaneType implements Cloneable
     protected boolean isFlyable = false;
     protected boolean isNovice = false;
     protected PlaneSize planeSize = PlaneSize.PLANE_SIZE_SMALL;
-    protected ArrayList<PwcgRole> roles = new ArrayList<PwcgRole>();
+    protected ArrayList<PwcgRoleCategory> roleCategories = new ArrayList<>();
     protected Date introduction;
     protected Date withdrawal;
     protected Date endProduction;;
@@ -78,8 +78,8 @@ public class PlaneType implements Cloneable
         planeType.isNovice = this.isNovice;
         planeType.planeSize = this.planeSize;
 
-        planeType.roles = new ArrayList<PwcgRole>();
-        planeType.roles.addAll(roles);
+        planeType.roleCategories = new ArrayList<>();
+        planeType.roleCategories.addAll(roleCategories);
 
         planeType.introduction = this.introduction;
         planeType.withdrawal = this.withdrawal;
@@ -158,58 +158,16 @@ public class PlaneType implements Cloneable
         }
     }
 
-    public void setRole(PwcgRole role) throws PWCGException
+    public boolean isRoleCategory(PwcgRoleCategory roleCategoryToFind)
     {
-        if (role == PwcgRole.ROLE_FIGHTER || 
-            role == PwcgRole.ROLE_RECON || 
-            role == PwcgRole.ROLE_STRATEGIC_INTERCEPT || 
-            role == PwcgRole.ROLE_ARTILLERY_SPOT || 
-            role == PwcgRole.ROLE_ATTACK || 
-            role == PwcgRole.ROLE_BOMB || 
-            role == PwcgRole.ROLE_STRAT_BOMB || 
-            role == PwcgRole.ROLE_SEA_PLANE || 
-            role == PwcgRole.ROLE_SEA_PLANE_SMALL || 
-            role == PwcgRole.ROLE_SEA_PLANE_LARGE || 
-            role == PwcgRole.ROLE_DIVE_BOMB || 
-            role == PwcgRole.ROLE_TRANSPORT)
-        {
-            roles.add(role);
-        }
-        else
-        {
-            String errorMsg = "Invalid aircraft role: " + role;
-            throw new PWCGException(errorMsg);
-        }
-    }
-
-    public boolean isRole(PwcgRole role)
-    {
-        if (roles.size() == 0)
+        if (roleCategories.size() == 0)
         {
             PWCGLogger.log(LogLevel.ERROR, "No roles for: " + getType());
         }
-        for (int i = 0; i < roles.size(); ++i)
+        
+        for (PwcgRoleCategory roleCategory : roleCategories)
         {
-            PwcgRole squadRole = roles.get(i);
-            if (squadRole == role)
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public boolean isRoleCategory(PwcgRoleCategory roleCategory)
-    {
-        if (roles.size() == 0)
-        {
-            PWCGLogger.log(LogLevel.ERROR, "No roles for: " + getType());
-        }
-        for (int i = 0; i < roles.size(); ++i)
-        {
-            PwcgRole squadRole = roles.get(i);
-            if (squadRole.getRoleCategory() == roleCategory)
+            if (roleCategory == roleCategoryToFind)
             {
                 return true;
             }
@@ -220,32 +178,14 @@ public class PlaneType implements Cloneable
 
     public boolean isPrimaryRole(PwcgRole role)
     {
-        if (roles.size() == 0)
+        if (roleCategories.size() == 0)
         {
             PWCGLogger.log(LogLevel.ERROR, "No roles for: " + getType());
         }
 
-        if (role == determinePrimaryRole())
+        if (role.getRoleCategory() == determinePrimaryRoleCategory())
         {
             return true;
-        }
-
-        return false;
-    }
-
-    public boolean isOtherRole(PwcgRole role)
-    {
-        if (roles.size() == 0)
-        {
-            PWCGLogger.log(LogLevel.ERROR, "No roles for: " + getType());
-        }
-        for (int i = 0; i < roles.size(); ++i)
-        {
-            PwcgRole squadRole = roles.get(i);
-            if (!(squadRole == role))
-            {
-                return true;
-            }
         }
 
         return false;
@@ -264,9 +204,9 @@ public class PlaneType implements Cloneable
         return false;
     }
 
-    public PwcgRole determinePrimaryRole()
+    public PwcgRoleCategory determinePrimaryRoleCategory()
     {
-        return getRoles().get(0);
+        return getRoleCategories().get(0);
     }
 
     public String getDisplayName()
@@ -344,9 +284,9 @@ public class PlaneType implements Cloneable
         this.isFlyable = isFlyable;
     }
 
-    public ArrayList<PwcgRole> getRoles()
+    public ArrayList<PwcgRoleCategory> getRoleCategories()
     {
-        return roles;
+        return roleCategories;
     }
 
     public int getRange()

@@ -20,8 +20,8 @@
 	"isFlyable": true,
 	"isNovice": false,
 	"planeSize": "PLANE_SIZE_SMALL",
-	"roles": [
-		"ROLE_FIGHTER"
+	"roleCategories": [
+		"FIGHTER"
 	],
 	"introduction": "19161001",
 	"endProduction": "19170801",

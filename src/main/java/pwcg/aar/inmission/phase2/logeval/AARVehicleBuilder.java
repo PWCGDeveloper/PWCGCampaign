@@ -14,7 +14,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogTurret;
 import pwcg.aar.prelim.PwcgMissionDataEvaluator;
 import pwcg.campaign.plane.Balloon;
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SerialNumber.SerialNumberClassification;
 import pwcg.core.exception.PWCGException;
@@ -147,7 +147,7 @@ public class AARVehicleBuilder
         LogAIEntity logEntity;
         logEntity = new LogBalloon(atype12.getSequenceNum());
         logEntity.initializeEntityFromEvent(atype12);
-        logEntity.setRole(PwcgRole.ROLE_BALLOON);
+        logEntity.setRoleCategory(PwcgRoleCategory.BALLOON);
 
         logBalloons.put(atype12.getId(), (LogBalloon) logEntity);
         PWCGLogger.log(LogLevel.DEBUG, "Add Plane: " + atype12.getName() + " ID:" + atype12.getId() + " Type:" + atype12.getType());
