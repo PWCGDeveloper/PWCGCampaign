@@ -54,20 +54,20 @@ public class PlaneTypeFactoryTest
     {
         PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
         
-        List<PlaneType> availableGermanPlaneTypes = planeTypeFactory.getAvailablePlaneTypes(CountryFactory.makeCountryByCountry(Country.GERMANY), PwcgRole.ROLE_FIGHTER, DateUtils.getDateYYYYMMDD("19430101"));        
-        assert(availableGermanPlaneTypes.size() == 5);
+        List<PlaneType> availableGermanPlaneTypes = planeTypeFactory.getAvailablePlaneTypes(CountryFactory.makeCountryByCountry(Country.GERMANY), PwcgRoleCategory.FIGHTER, DateUtils.getDateYYYYMMDD("19430101"));        
+        assert(availableGermanPlaneTypes.size() == 8);
 
-        List<PlaneType> availableBritishPlaneTypes = planeTypeFactory.getAvailablePlaneTypes(CountryFactory.makeCountryByCountry(Country.BRITAIN), PwcgRole.ROLE_FIGHTER, DateUtils.getDateYYYYMMDD("19430101"));        
+        List<PlaneType> availableBritishPlaneTypes = planeTypeFactory.getAvailablePlaneTypes(CountryFactory.makeCountryByCountry(Country.BRITAIN), PwcgRoleCategory.FIGHTER, DateUtils.getDateYYYYMMDD("19430101"));        
         assert(availableBritishPlaneTypes.size() == 2);
 
-        List<PlaneType> availableAmericanPlaneTypes = planeTypeFactory.getAvailablePlaneTypes(CountryFactory.makeCountryByCountry(Country.USA), PwcgRole.ROLE_FIGHTER, DateUtils.getDateYYYYMMDD("19430101"));        
+        List<PlaneType> availableAmericanPlaneTypes = planeTypeFactory.getAvailablePlaneTypes(CountryFactory.makeCountryByCountry(Country.USA), PwcgRoleCategory.FIGHTER, DateUtils.getDateYYYYMMDD("19430101"));        
         assert(availableAmericanPlaneTypes.size() == 2);
 
-        List<PlaneType> availableRussianPlaneTypes = planeTypeFactory.getAvailablePlaneTypes(CountryFactory.makeCountryByCountry(Country.RUSSIA), PwcgRole.ROLE_FIGHTER, DateUtils.getDateYYYYMMDD("19430101"));        
+        List<PlaneType> availableRussianPlaneTypes = planeTypeFactory.getAvailablePlaneTypes(CountryFactory.makeCountryByCountry(Country.RUSSIA), PwcgRoleCategory.FIGHTER, DateUtils.getDateYYYYMMDD("19430101"));        
         assert(availableRussianPlaneTypes.size() == 8);
         
-        List<PlaneType> availableGermanAttackPlaneTypes = planeTypeFactory.getAvailablePlaneTypes(CountryFactory.makeCountryByCountry(Country.GERMANY), PwcgRole.ROLE_ATTACK, DateUtils.getDateYYYYMMDD("19430101"));        
-        assert(availableGermanAttackPlaneTypes.size() == 4);
+        List<PlaneType> availableGermanAttackPlaneTypes = planeTypeFactory.getAvailablePlaneTypes(CountryFactory.makeCountryByCountry(Country.GERMANY), PwcgRoleCategory.ATTACK, DateUtils.getDateYYYYMMDD("19430101"));        
+        assert(availableGermanAttackPlaneTypes.size() == 9);
     }
 
     @Test

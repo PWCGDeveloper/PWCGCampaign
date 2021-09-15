@@ -35,19 +35,19 @@ public class OutOfMissionVictoryEventHandler
             if (OutOfMissionPilotSelector.shouldPilotBeEvaluated(campaign, squadronMember)) 
             {
                 PwcgRole missionRole = squadronMember.determineSquadron().getSquadronRoles().selectRoleForMission(campaign.getDate());
-                if (AirVictimGenerator.shouldUse(missionRole))
+                if (AirVictimGenerator.shouldUse(missionRole.getRoleCategory()))
                 {
                     OutOfMissionAirVictoryEventGenerator airVictoryEventGenerator = new OutOfMissionAirVictoryEventGenerator(campaign, squadronMember);
                     OutOfMissionVictoryData airVictories = airVictoryEventGenerator.outOfMissionVictoriesForSquadronMember();
                     victoriesOutOMission.merge(airVictories);
                 }
-                else if (GroundVictimGenerator.shouldUse(missionRole))
+                else if (GroundVictimGenerator.shouldUse(missionRole.getRoleCategory()))
                 {
                     OutOfMissionGroundVictoryEventGenerator groundVictoryEventGenerator = new OutOfMissionGroundVictoryEventGenerator(campaign, squadronMember);
                     OutOfMissionVictoryData groundVictories = groundVictoryEventGenerator.outOfMissionVictoriesForSquadronMember();
                     victoriesOutOMission.merge(groundVictories);
                 }
-                else if (StructureVictimGenerator.shouldUse(missionRole))
+                else if (StructureVictimGenerator.shouldUse(missionRole.getRoleCategory()))
                 {
                     OutOfMissionStructureVictoryEventGenerator structureVictoryEventGenerator = new OutOfMissionStructureVictoryEventGenerator(campaign, squadronMember);
                     OutOfMissionVictoryData structureVictories = structureVictoryEventGenerator.outOfMissionVictoriesForSquadronMember();

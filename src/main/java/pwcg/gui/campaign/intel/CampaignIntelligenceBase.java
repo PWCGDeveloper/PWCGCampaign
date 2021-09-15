@@ -156,7 +156,7 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
         List<Squadron> squadronsForMap = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForCurrentMap(campaign.getDate());
         for (Squadron squadron : squadronsForMap)
         {
-            if (squadron.determineSquadronPrimaryRole(campaign.getDate()) == role)
+            if (squadron.determineSquadronPrimaryRoleCategory(campaign.getDate()) == role.getRoleCategory())
             {
                 if (squadron.determineSide() == side)
                 {

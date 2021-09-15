@@ -17,7 +17,7 @@ import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronMemberGroundInitialVictoryBuilder;
 import pwcg.campaign.personnel.SquadronMemberStructureInitialVictoryBuilder;
 import pwcg.campaign.personnel.SquadronPersonnel;
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
@@ -84,18 +84,18 @@ public class SquadronMemberFactory
         int numMissions = createMissionsFlown(rankPos);
         newPilot.setMissionFlown(numMissions);
         
-        PwcgRole squadronPrimaryRole = squadron.determineSquadronPrimaryRole(campaign.getDate());
-        if (AirVictimGenerator.shouldUse(squadronPrimaryRole))
+        PwcgRoleCategory squadronPrimaryRoleCategory = squadron.determineSquadronPrimaryRoleCategory(campaign.getDate());
+        if (AirVictimGenerator.shouldUse(squadronPrimaryRoleCategory))
         {
             SquadronMemberAirInitialVictoryBuilder initialVictoryBuilder = new SquadronMemberAirInitialVictoryBuilder(campaign, squadron);
             initialVictoryBuilder.createPilotVictories(newPilot, rankPos);            
         }
-        else if (GroundVictimGenerator.shouldUse(squadronPrimaryRole))
+        else if (GroundVictimGenerator.shouldUse(squadronPrimaryRoleCategory))
         {
             SquadronMemberGroundInitialVictoryBuilder initialVictoryBuilder = new SquadronMemberGroundInitialVictoryBuilder(campaign, squadron);
             initialVictoryBuilder.createPilotVictories(newPilot, rankPos);            
         }
-        else if (StructureVictimGenerator.shouldUse(squadronPrimaryRole))
+        else if (StructureVictimGenerator.shouldUse(squadronPrimaryRoleCategory))
         {
             SquadronMemberStructureInitialVictoryBuilder initialVictoryBuilder = new SquadronMemberStructureInitialVictoryBuilder(campaign, squadron);
             initialVictoryBuilder.createPilotVictories(newPilot, rankPos);            

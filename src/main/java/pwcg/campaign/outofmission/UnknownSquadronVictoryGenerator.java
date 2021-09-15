@@ -80,7 +80,7 @@ public class UnknownSquadronVictoryGenerator
         OutOfMissionPlaneFinder outOfMissionPlaneFinder = new OutOfMissionPlaneFinder();
         PlaneType planeType = outOfMissionPlaneFinder.findPlaneType(
                 squadron,
-                squadron.determineSquadronPrimaryRole(date),
+                squadron.determineSquadronPrimaryRoleCategory(date),
                 date);
 
         victor.setAirOrGround(Victory.AIRCRAFT);

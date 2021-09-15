@@ -16,7 +16,7 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightInformation;
@@ -42,7 +42,7 @@ public class FlightSizeCalculatorTest
 	@Test
 	public void calcPlanesInFlightTest() throws PWCGException
 	{
-	    Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(PwcgRole.ROLE_ATTACK);
+	    Mockito.when(squadron.determineSquadronPrimaryRoleCategory(Mockito.any())).thenReturn(PwcgRoleCategory.ATTACK);
 
 	    for (Country country : countries)
 	    {
@@ -55,7 +55,7 @@ public class FlightSizeCalculatorTest
     @Test
     public void calcPlanesInFlightBombTest() throws PWCGException
     {
-        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(PwcgRole.ROLE_BOMB);
+        Mockito.when(squadron.determineSquadronPrimaryRoleCategory(Mockito.any())).thenReturn(PwcgRoleCategory.BOMBER);
 
         for (Country country : countries)
         {
@@ -76,7 +76,7 @@ public class FlightSizeCalculatorTest
     @Test
     public void calcPlanesInFlightFighterTest() throws PWCGException
     {
-        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(PwcgRole.ROLE_FIGHTER);
+        Mockito.when(squadron.determineSquadronPrimaryRoleCategory(Mockito.any())).thenReturn(PwcgRoleCategory.FIGHTER);
 
         for (Country country : countries)
         {

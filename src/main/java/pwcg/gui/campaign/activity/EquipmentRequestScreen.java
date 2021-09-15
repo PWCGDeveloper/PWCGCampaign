@@ -24,7 +24,7 @@ import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PlaneTypeFactory;
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -145,8 +145,8 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         SquadronMember referencePlayer = campaign.getReferencePlayer();
         ICountry country = CountryFactory.makeCountryByCountry(referencePlayer.getCountry());
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(referencePlayer.getSquadronId());
-        PwcgRole role = squadron.getSquadronRoles().selectSquadronPrimaryRole(campaign.getDate());
-        List<PlaneType> availablePlaneTypes = planeTypeFactory.getAvailablePlaneTypes(country, role, campaign.getDate());        
+        PwcgRoleCategory roleCategory = squadron.getSquadronRoles().selectSquadronPrimaryRoleCategory(campaign.getDate());
+        List<PlaneType> availablePlaneTypes = planeTypeFactory.getAvailablePlaneTypes(country, roleCategory, campaign.getDate());        
 
         replacementAircraftTypeSelector = new JComboBox<String>();
         replacementAircraftTypeSelector.setOpaque(false);

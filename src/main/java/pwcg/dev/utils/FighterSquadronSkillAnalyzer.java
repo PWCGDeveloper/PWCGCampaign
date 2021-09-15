@@ -4,8 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.plane.RoleCategory;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -38,8 +37,8 @@ public class FighterSquadronSkillAnalyzer
 		int totalFighterSquads = 0;
 		for (Squadron squad : allSq)
 		{
-		    PwcgRole squadronPrimaryRole = squad.determineSquadronPrimaryRole(DateUtils.getEndOfWar());
-            if (squadronPrimaryRole.isRoleCategory(RoleCategory.FIGHTER))
+		    PwcgRoleCategory squadronPrimaryRole = squad.determineSquadronPrimaryRoleCategory(DateUtils.getEndOfWar());
+            if (squadronPrimaryRole == PwcgRoleCategory.FIGHTER)
 		    {
 		        int squadronQuality = squad.determineSquadronSkill(startDate);
 		        totalSkill += squadronQuality;

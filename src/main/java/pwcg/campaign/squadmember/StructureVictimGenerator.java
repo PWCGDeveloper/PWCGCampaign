@@ -3,7 +3,7 @@ package pwcg.campaign.squadmember;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.IWeight;
 import pwcg.core.utils.WeightCalculator;
@@ -39,9 +39,9 @@ public class StructureVictimGenerator
     }
 
     
-    public static boolean shouldUse(PwcgRole role)
+    public static boolean shouldUse(PwcgRoleCategory pwcgRoleCategory)
     {
-        if (role == PwcgRole.ROLE_ATTACK || role == PwcgRole.ROLE_DIVE_BOMB)
+        if (pwcgRoleCategory == PwcgRoleCategory.BOMBER)
         {
             return true;
         }

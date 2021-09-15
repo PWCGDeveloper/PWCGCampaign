@@ -2,6 +2,7 @@ package pwcg.mission.flight.factory;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.skirmish.Skirmish;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -57,16 +58,16 @@ public class SkirmishFlightTypeFactory implements IFlightTypeFactory
         
         if (missionRole == PwcgRole.ROLE_RECON)
         {
-            PwcgRole squadronPrimaryRole = squadron.determineSquadronPrimaryRole(campaign.getDate());
-            if (squadronPrimaryRole == PwcgRole.ROLE_FIGHTER)
+            PwcgRoleCategory squadronPrimaryRole = squadron.determineSquadronPrimaryRoleCategory(campaign.getDate());
+            if (squadronPrimaryRole == PwcgRoleCategory.FIGHTER)
             {
                 return PwcgRole.ROLE_FIGHTER;
             }
-            else if (squadronPrimaryRole == PwcgRole.ROLE_BOMB)
+            else if (squadronPrimaryRole == PwcgRoleCategory.BOMBER)
             {
                 return PwcgRole.ROLE_BOMB;
             }
-            else if (squadronPrimaryRole == PwcgRole.ROLE_RECON)
+            else if (squadronPrimaryRole == PwcgRoleCategory.RECON)
             {
                 return PwcgRole.ROLE_BOMB;
             }

@@ -18,8 +18,7 @@ import pwcg.campaign.mode.ICampaignDescriptionBuilder;
 import pwcg.campaign.personnel.InitialSquadronBuilder;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.IPlaneMarkingManager;
-import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.plane.RoleCategory;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
@@ -199,32 +198,18 @@ public class Campaign
         return campaignPath;
     }
 
-    public boolean isFighterCampaign() throws PWCGException
-    {
-        for (SquadronMember player : this.personnelManager.getAllActivePlayers().getSquadronMemberList())
-        {
-            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
-            PwcgRole squadronPrimaryRole = squadron.determineSquadronPrimaryRole(this.getDate());
-            if (squadronPrimaryRole.isRoleCategory(RoleCategory.FIGHTER))
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     public boolean isLongRange() throws PWCGException
     {
         for (SquadronMember player : this.personnelManager.getAllActivePlayers().getSquadronMemberList())
         {
             Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
-            PwcgRole squadronPrimaryRole = squadron.determineSquadronPrimaryRole(this.getDate());
-            if (squadronPrimaryRole.isRoleCategory(RoleCategory.FIGHTER))
+            PwcgRoleCategory squadronPrimaryRoleCategory = squadron.determineSquadronPrimaryRoleCategory(this.getDate());
+            if (squadronPrimaryRoleCategory == PwcgRoleCategory.FIGHTER)
             {
                 return false;
             }
-            else if (squadronPrimaryRole.isRoleCategory(RoleCategory.ATTACK))
+            
+            if (squadronPrimaryRoleCategory == PwcgRoleCategory.ATTACK)
             {
                 return false;
             }

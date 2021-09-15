@@ -32,7 +32,7 @@ import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.plane.RoleCategory;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.plane.SquadronPlaneAssignment;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.squadmember.Ace;
@@ -318,14 +318,10 @@ public class Squadron
 		
 		squadronDescription += "Squadron " + determineDisplayName(date) + "\n\n";
 		
-        PwcgRole squadronPrimaryRole = determineSquadronPrimaryRole(date);
-        if (squadronPrimaryRole.isRoleCategory(RoleCategory.FIGHTER))
+        String status = determineSkillDescription();
+        if (status != null && status.length() > 0)
         {
-            String status = determineSkillDescription();
-            if (status != null && status.length() > 0)
-            {
-                squadronDescription += "Status: " + status + "\n\n";
-            }
+            squadronDescription += "Status: " + status + "\n\n";
         }
         
         Callsign callsign = determineCurrentCallsign(date);
@@ -463,9 +459,9 @@ public class Squadron
         return squadronRoles.isSquadronThisRole(date, requestedRole);
     }
     
-    public PwcgRole determineSquadronPrimaryRole(Date date) throws PWCGException
+    public PwcgRoleCategory determineSquadronPrimaryRoleCategory(Date date) throws PWCGException
     {
-        return squadronRoles.selectSquadronPrimaryRole(date);
+        return squadronRoles.selectSquadronPrimaryRoleCategory(date);
     }
 
     public PlaneType determineBestPlane(Date date) throws PWCGException
@@ -512,14 +508,10 @@ public class Squadron
         
         squadronInfo.append(determineDisplayName(campaignDate) + "\n");
         
-        PwcgRole squadronPrimaryRole = this.determineSquadronPrimaryRole(campaignDate);
-        if (squadronPrimaryRole.isRoleCategory(RoleCategory.FIGHTER))
+        String status = determineSkillDescription();
+        if (status != null && status.length() > 0)
         {
-            String status = determineSkillDescription();
-            if (status != null && status.length() > 0)
-            {
-                squadronInfo.append("Status: " + status + "\n");
-            }
+            squadronInfo.append("Status: " + status + "\n");
         }
         
         squadronInfo.append(DateUtils.getDateString(campaignDate) + "\n");

@@ -22,8 +22,7 @@ import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.plane.RoleCategory;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
@@ -135,8 +134,8 @@ public class InfoMapPanel extends MapPanelBase
                 List<Squadron> allSquadrons = squadronManager.getActiveSquadronsForCurrentMap(parent.getMapDate());
                 for (Squadron squadron : allSquadrons)
                 {
-                    PwcgRole squadronPrimaryRole = squadron.determineSquadronPrimaryRole(parent.getMapDate());
-                    if (squadronPrimaryRole.isRoleCategory(RoleCategory.FIGHTER))
+                    PwcgRoleCategory squadronPrimaryRole = squadron.determineSquadronPrimaryRoleCategory(parent.getMapDate());
+                    if (squadronPrimaryRole == PwcgRoleCategory.FIGHTER)
                     {
                         drawPointsBySquadron(g, squadron);
                     }
@@ -149,9 +148,9 @@ public class InfoMapPanel extends MapPanelBase
                 List<Squadron> allSquadrons = squadronManager.getActiveSquadronsForCurrentMap(parent.getMapDate());
                 for (Squadron squadron : allSquadrons)
                 {
-                    PwcgRole squadronRole = squadron.determineSquadronPrimaryRole(parent.getMapDate());
-                    if ((squadronRole.isRoleCategory(RoleCategory.BOMBER)) || 
-                        (squadronRole.isRoleCategory(RoleCategory.TRANSPORT)))
+                    PwcgRoleCategory squadronRole = squadron.determineSquadronPrimaryRoleCategory(parent.getMapDate());
+                    if ((squadronRole == PwcgRoleCategory.BOMBER) || 
+                        (squadronRole == PwcgRoleCategory.TRANSPORT))
                     {
                         drawPointsBySquadron(g, squadron);
                     }
@@ -164,8 +163,8 @@ public class InfoMapPanel extends MapPanelBase
                 List<Squadron> allSquadrons = squadronManager.getActiveSquadronsForCurrentMap(parent.getMapDate());
                 for (Squadron squadron : allSquadrons)
                 {
-                    PwcgRole squadronPrimaryRole = squadron.determineSquadronPrimaryRole(parent.getMapDate());
-                    if (squadronPrimaryRole.isRoleCategory(RoleCategory.ATTACK))
+                    PwcgRoleCategory squadronPrimaryRole = squadron.determineSquadronPrimaryRoleCategory(parent.getMapDate());
+                    if (squadronPrimaryRole == PwcgRoleCategory.ATTACK)
                     {
                         drawPointsBySquadron(g, squadron);
                     }
@@ -178,8 +177,8 @@ public class InfoMapPanel extends MapPanelBase
                 List<Squadron> allSquadrons = squadronManager.getActiveSquadronsForCurrentMap(parent.getMapDate());
                 for (Squadron squadron : allSquadrons)
                 {
-                    PwcgRole squadronPrimaryRole = squadron.determineSquadronPrimaryRole(parent.getMapDate());
-                    if (squadronPrimaryRole.isRoleCategory(RoleCategory.RECON))
+                    PwcgRoleCategory squadronPrimaryRole = squadron.determineSquadronPrimaryRoleCategory(parent.getMapDate());
+                    if (squadronPrimaryRole == PwcgRoleCategory.RECON)
                     {
                         drawPointsBySquadron(g, squadron);
                     }
@@ -418,13 +417,13 @@ public class InfoMapPanel extends MapPanelBase
                 
         for (Squadron squadron : allSquadrons)
         {
-            PwcgRole squadronPrimaryRole = squadron.determineSquadronPrimaryRole(parent.getMapDate());
+            PwcgRoleCategory squadronPrimaryRole = squadron.determineSquadronPrimaryRoleCategory(parent.getMapDate());
 
-            if ((whatToDisplay[DISPLAY_FIGHTER] == true && squadronPrimaryRole.isRoleCategory(RoleCategory.FIGHTER))    || 
-                (whatToDisplay[DISPLAY_BOMBER] == true && squadronPrimaryRole.isRoleCategory(RoleCategory.BOMBER))        || 
-                (whatToDisplay[DISPLAY_BOMBER] == true && squadronPrimaryRole.isRoleCategory(RoleCategory.TRANSPORT))  || 
-                (whatToDisplay[DISPLAY_ATTACK] == true && squadronPrimaryRole.isRoleCategory(RoleCategory.ATTACK))      ||
-                (whatToDisplay[DISPLAY_RECON] == true && squadronPrimaryRole.isRoleCategory(RoleCategory.RECON)))
+            if ((whatToDisplay[DISPLAY_FIGHTER] == true && squadronPrimaryRole == PwcgRoleCategory.FIGHTER)    || 
+                (whatToDisplay[DISPLAY_BOMBER] == true && squadronPrimaryRole == PwcgRoleCategory.BOMBER)      || 
+                (whatToDisplay[DISPLAY_BOMBER] == true && squadronPrimaryRole == PwcgRoleCategory.TRANSPORT)   || 
+                (whatToDisplay[DISPLAY_ATTACK] == true && squadronPrimaryRole == PwcgRoleCategory.ATTACK)      ||
+                (whatToDisplay[DISPLAY_RECON] == true && squadronPrimaryRole == PwcgRoleCategory.RECON))
             {
                 // Is the squadron based near a field that was clicked on
                 Coordinate clickCoord = this.pointToCoordinate(clickPoint);

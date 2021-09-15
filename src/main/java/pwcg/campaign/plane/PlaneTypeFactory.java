@@ -177,14 +177,14 @@ public class PlaneTypeFactory
         return null;
     }
 
-    public List<PlaneType> getAvailablePlaneTypes(ICountry country, PwcgRole role, Date date) throws PWCGException
+    public List<PlaneType> getAvailablePlaneTypes(ICountry country, PwcgRoleCategory roleCategory, Date date) throws PWCGException
     {
         Map<Integer, PlaneType> availablePlaneTypes = new TreeMap<>();
         for (PlaneType thisPlane : planeTypes.values())
         {
             if (thisPlane.isUsedBy(country))
             {
-                if (thisPlane.isPrimaryRole(role))
+                if (thisPlane.isRoleCategory(roleCategory))
                 {
                     if (DateUtils.isDateInRange(date, thisPlane.getIntroduction(), thisPlane.getWithdrawal()))
                     {
@@ -305,7 +305,7 @@ public class PlaneTypeFactory
     }
 
 
-    public PlaneType findActivePlaneTypeByCountryDateAndRole(ICountry country, Date date, PwcgRole role) throws PWCGException
+    public PlaneType findActivePlaneTypeByCountryDateAndRole(ICountry country, Date date, PwcgRoleCategory roleCategory) throws PWCGException
     {
         List<PlaneType> possiblePlanes = new ArrayList<>();
         for (PlaneType planeType : planeTypes.values())
@@ -314,7 +314,7 @@ public class PlaneTypeFactory
             {
                 if (!(planeType.getIntroduction().after(date)))
                 {
-                    if (planeType.isRole(role))
+                    if (planeType.isRoleCategory(roleCategory))
                     {
                         possiblePlanes.add(planeType);
                     }

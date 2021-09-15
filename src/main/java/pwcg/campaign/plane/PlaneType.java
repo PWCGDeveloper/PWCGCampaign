@@ -200,6 +200,24 @@ public class PlaneType implements Cloneable
         return false;
     }
 
+    public boolean isRoleCategory(PwcgRoleCategory roleCategory)
+    {
+        if (roles.size() == 0)
+        {
+            PWCGLogger.log(LogLevel.ERROR, "No roles for: " + getType());
+        }
+        for (int i = 0; i < roles.size(); ++i)
+        {
+            PwcgRole squadRole = roles.get(i);
+            if (squadRole.getRoleCategory() == roleCategory)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public boolean isPrimaryRole(PwcgRole role)
     {
         if (roles.size() == 0)

@@ -45,7 +45,7 @@ public class MissionProfileGenerator
         for (SquadronMember player : participatingPlayers.getAllParticipatingPlayers())
         {
             Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
-            PwcgRole squadronPrimaryRole = playerSquadron.determineSquadronPrimaryRole(campaign.getDate());
+            PwcgRole squadronPrimaryRole = playerSquadron.determineSquadronPrimaryRoleCategory(campaign.getDate());
             if (!(squadronPrimaryRole == PwcgRole.ROLE_STRATEGIC_INTERCEPT || squadronPrimaryRole == PwcgRole.ROLE_STRAT_BOMB))
             {
                 useTactical = true;

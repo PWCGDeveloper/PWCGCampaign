@@ -7,7 +7,7 @@ import java.util.Set;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.AceManager;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -94,8 +94,8 @@ public class SquadronTransferFinder
         Squadron squadronMemberCurrentSquadron = squadronManager.getSquadron(squadronMember.getSquadronId());
         if (squadronMemberCurrentSquadron != null)
         {
-            PwcgRole bestRoleForThisSquadron = squadronMemberCurrentSquadron.determineSquadronPrimaryRole(campaign.getDate());
-            PwcgRole bestRoleForNewSquadron = possibleSquadron.determineSquadronPrimaryRole(campaign.getDate());
+            PwcgRoleCategory bestRoleForThisSquadron = squadronMemberCurrentSquadron.determineSquadronPrimaryRoleCategory(campaign.getDate());
+            PwcgRoleCategory bestRoleForNewSquadron = possibleSquadron.determineSquadronPrimaryRoleCategory(campaign.getDate());
         
             if (bestRoleForThisSquadron == bestRoleForNewSquadron)
             {

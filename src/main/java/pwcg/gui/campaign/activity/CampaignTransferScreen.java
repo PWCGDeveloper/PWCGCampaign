@@ -397,7 +397,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 			Date campaignDate = campaign.getDate();
 			if(squad.getSquadronId() != squadronMemberToTransfer.getSquadronId())
 			{
-			    if (squad.determineSquadronPrimaryRole(campaignDate) == role)
+			    if (squad.determineSquadronPrimaryRoleCategory(campaignDate) == role.getRoleCategory())
 			    {
 			        String display = squad.determineDisplayName(campaign.getDate());
 			        CampaignAces aces =  PWCGContext.getInstance().getAceManager().loadFromHistoricalAces(campaignDate);

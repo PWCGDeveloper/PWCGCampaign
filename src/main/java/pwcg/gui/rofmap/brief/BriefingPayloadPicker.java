@@ -7,8 +7,7 @@ import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.plane.RoleCategory;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadDesignation;
@@ -77,26 +76,26 @@ public class BriefingPayloadPicker
     private boolean shouldIncludeModification(PayloadDesignation payloadDesignation, String planeType) throws PWCGException
     {
         Squadron squadron = briefingData.getSelectedFlight().getSquadron();
-        PwcgRole squadronPrimaryRole = squadron.determineSquadronPrimaryRole(briefingData.getSelectedFlight().getCampaign().getDate());
+        PwcgRoleCategory squadronPrimaryRoleCategory = squadron.determineSquadronPrimaryRoleCategory(briefingData.getSelectedFlight().getCampaign().getDate());
         if (planeType.equals(BosPlaneAttributeMapping.FW190_A6.getPlaneType()))
         {
-            return shouldIncludeFW190Payload(payloadDesignation, squadronPrimaryRole, PayloadElement.FW190G3);
+            return shouldIncludeFW190Payload(payloadDesignation, squadronPrimaryRoleCategory, PayloadElement.FW190G3);
         }
         else if (planeType.equals(BosPlaneAttributeMapping.FW190_A8.getPlaneType()))
         {
-            return shouldIncludeFW190Payload(payloadDesignation, squadronPrimaryRole, PayloadElement.FW190F8);
+            return shouldIncludeFW190Payload(payloadDesignation, squadronPrimaryRoleCategory, PayloadElement.FW190F8);
         }
         
         return true;
     }
 
-    private boolean shouldIncludeFW190Payload(PayloadDesignation payloadDesignation, PwcgRole squadronPrimaryRole, PayloadElement payloadElementKey)
+    private boolean shouldIncludeFW190Payload(PayloadDesignation payloadDesignation, PwcgRoleCategory squadronPrimaryRoleCategory, PayloadElement payloadElementKey)
     {
-        if (squadronPrimaryRole.isRoleCategory(RoleCategory.ATTACK) && payloadDesignation.containsElement(payloadElementKey))
+        if ((squadronPrimaryRoleCategory == PwcgRoleCategory.ATTACK) && payloadDesignation.containsElement(payloadElementKey))
         {
             return true;
         }
-        else if (!squadronPrimaryRole.isRoleCategory(RoleCategory.ATTACK) && !payloadDesignation.containsElement(payloadElementKey))
+        else if ((squadronPrimaryRoleCategory != PwcgRoleCategory.ATTACK) && !payloadDesignation.containsElement(payloadElementKey))
         {
             return true;
         }

@@ -15,7 +15,7 @@ import pwcg.aar.outofmission.phase2.awards.PromotionEventHandler;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.promotion.PromotionArbitrator;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberVictories;
@@ -50,7 +50,7 @@ public class PromotionEventHandlerTest
         Mockito.when(squadronMember.getMissionFlown()).thenReturn(30);
         Mockito.when(squadronMember.getRank()).thenReturn("Corporal");
         Mockito.when(squadronMember.determineSquadron()).thenReturn(squadron);
-        Mockito.when(squadron.determineSquadronPrimaryRole(ArgumentMatchers.<Date>any())).thenReturn(PwcgRole.ROLE_RECON);
+        Mockito.when(squadron.determineSquadronPrimaryRoleCategory(ArgumentMatchers.<Date>any())).thenReturn(PwcgRoleCategory.RECON);
 
         String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
@@ -67,7 +67,7 @@ public class PromotionEventHandlerTest
         Mockito.when(squadronMember.getMissionFlown()).thenReturn(20);
         Mockito.when(squadronMember.getRank()).thenReturn("Corporal");
         Mockito.when(squadronMember.determineSquadron()).thenReturn(squadron);
-        Mockito.when(squadron.determineSquadronPrimaryRole(ArgumentMatchers.<Date>any())).thenReturn(PwcgRole.ROLE_FIGHTER);
+        Mockito.when(squadron.determineSquadronPrimaryRoleCategory(ArgumentMatchers.<Date>any())).thenReturn(PwcgRoleCategory.FIGHTER);
 
         String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
@@ -81,7 +81,7 @@ public class PromotionEventHandlerTest
         Mockito.when(squadronMember.getMissionFlown()).thenReturn(10);
         Mockito.when(squadronMember.getRank()).thenReturn("Corporal");
         Mockito.when(squadronMember.determineSquadron()).thenReturn(squadron);
-        Mockito.when(squadron.determineSquadronPrimaryRole(ArgumentMatchers.<Date>any())).thenReturn(PwcgRole.ROLE_RECON);
+        Mockito.when(squadron.determineSquadronPrimaryRoleCategory(ArgumentMatchers.<Date>any())).thenReturn(PwcgRoleCategory.RECON);
 
         String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 

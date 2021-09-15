@@ -2,7 +2,7 @@ package pwcg.campaign.promotion;
 
 import java.util.Date;
 
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.bos.country.BoSServiceManager;
@@ -22,13 +22,13 @@ public class PromotionMinimumCriteria
     public void setMinimumPromotionStandards(SquadronMember squadronMember, Date date) throws PWCGException
     {
         int serviceId = squadronMember.determineSquadron().getService();
-        PwcgRole role = squadronMember.determineSquadron().determineSquadronPrimaryRole(date);
+        PwcgRoleCategory roleCategory = squadronMember.determineSquadron().determineSquadronPrimaryRoleCategory(date);
 
-        setMissionsFlownForPromotion(serviceId, role);
-        setVictoriesForPromotion(serviceId, role);
+        setMissionsFlownForPromotion(serviceId, roleCategory);
+        setVictoriesForPromotion(serviceId, roleCategory);
     }
 
-    private void setMissionsFlownForPromotion(int serviceId, PwcgRole role)
+    private void setMissionsFlownForPromotion(int serviceId, PwcgRoleCategory roleCategory)
     {
         if (serviceId == BoSServiceManager.LUFTWAFFE)
         {
@@ -40,23 +40,23 @@ public class PromotionMinimumCriteria
             setMissionsForUSAAF();
         }
 
-        if (role == PwcgRole.ROLE_RECON)
+        if (roleCategory == PwcgRoleCategory.RECON)
         {
             setMissionsForRecon();
         }
     }
 
-    private void setVictoriesForPromotion(int serviceId, PwcgRole role)
+    private void setVictoriesForPromotion(int serviceId, PwcgRoleCategory roleCategory)
     {
-        if (role == PwcgRole.ROLE_RECON)
+        if (roleCategory == PwcgRoleCategory.RECON)
         {
             setVictoriesForRecon();
         }
-        else if (role != PwcgRole.ROLE_FIGHTER)
+        else if (roleCategory != PwcgRoleCategory.FIGHTER)
         {
             setVictoriesForBomber();
         }
-        else if (role == PwcgRole.ROLE_FIGHTER && serviceId == BoSServiceManager.LUFTWAFFE)
+        else if (roleCategory == PwcgRoleCategory.FIGHTER && serviceId == BoSServiceManager.LUFTWAFFE)
         {
             setVictoriesForLuftwaffeFighter();
         }

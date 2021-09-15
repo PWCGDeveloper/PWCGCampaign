@@ -16,7 +16,7 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.promotion.PromotionArbitrator;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberVictories;
@@ -46,7 +46,7 @@ public class PromotionEventHandlerFighterTest
         Mockito.when(squadronMember.determineSquadron()).thenReturn(squadron);
         Mockito.when(squadronMember.getSquadronMemberVictories()).thenReturn(squadronMemberVictories);
         Mockito.when(squadronMemberVictories.getAirToAirVictoryCount()).thenReturn(0);        
-        Mockito.when(squadron.determineSquadronPrimaryRole(Mockito.any())).thenReturn(PwcgRole.ROLE_FIGHTER);
+        Mockito.when(squadron.determineSquadronPrimaryRoleCategory(Mockito.any())).thenReturn(PwcgRoleCategory.FIGHTER);
         Mockito.when(squadron.getService()).thenReturn(FCServiceManager.LAVIATION_MILITAIRE);
     }
 

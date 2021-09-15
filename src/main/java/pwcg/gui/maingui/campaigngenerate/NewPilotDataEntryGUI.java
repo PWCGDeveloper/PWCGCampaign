@@ -36,6 +36,7 @@ import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;
@@ -360,12 +361,12 @@ public class NewPilotDataEntryGUI extends JPanel implements ActionListener
         
         cbRole.removeAllItems();
         
-        List<PwcgRole> availableRoles = getRolesForService();
+        List<PwcgRoleCategory> availableRoles = getRoleCategoriesForService();
         if (availableRoles.size() > 0)
         {
-            for (PwcgRole role : availableRoles)
+            for (PwcgRoleCategory roleCategory : availableRoles)
             {
-                cbRole.addItem(role.getRoleDescription());
+                cbRole.addItem(roleCategory.getRoleCategoryDescription());
             }
         }
         else
@@ -376,9 +377,9 @@ public class NewPilotDataEntryGUI extends JPanel implements ActionListener
         cbRole.addActionListener(this);
     }
 
-    private List<PwcgRole> getRolesForService() throws PWCGException
+    private List<PwcgRoleCategory> getRoleCategoriesForService() throws PWCGException
     {
-        Map<String, PwcgRole> rolesSorted = new TreeMap<String,PwcgRole>();
+        Map<String, PwcgRoleCategory> rolesSorted = new TreeMap<>();
         
         Date date = campaign.getDate();
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
@@ -386,12 +387,12 @@ public class NewPilotDataEntryGUI extends JPanel implements ActionListener
         
         for (Squadron squadron : squadronsForService)
         {            
-            PwcgRole primaryRole = squadron.determineSquadronPrimaryRole(date);
+            PwcgRoleCategory primaryRoleCategory = squadron.determineSquadronPrimaryRoleCategory(date);
 
-            rolesSorted.put(primaryRole.getRoleDescription(), primaryRole);
+            rolesSorted.put(primaryRoleCategory.getRoleCategoryDescription(), primaryRoleCategory);
         }
         
-        List<PwcgRole> roles = new ArrayList<PwcgRole>();
+        List<PwcgRoleCategory> roles = new ArrayList<>();
         roles.addAll(rolesSorted.values());
         
         return roles;

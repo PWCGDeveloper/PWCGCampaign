@@ -3,7 +3,7 @@ package pwcg.mission.flight.plane;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.plane.PwcgRole;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -83,7 +83,7 @@ public class FlightSizeCalculator
     {
         if (PWCGContext.getProduct() == PWCGProduct.BOS)
         {
-            if (flightInformation.getSquadron().determineSquadronPrimaryRole(flightInformation.getCampaign().getDate()) == PwcgRole.ROLE_FIGHTER)
+            if (flightInformation.getSquadron().determineSquadronPrimaryRoleCategory(flightInformation.getCampaign().getDate()) == PwcgRoleCategory.FIGHTER)
             {
                 if (numPlanesInFlight <= 2)
                 {

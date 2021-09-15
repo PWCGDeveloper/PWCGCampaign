@@ -9,8 +9,7 @@ import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.plane.RoleCategory;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
@@ -97,8 +96,8 @@ public class AirfieldDistanceEvaluator
             
             String reason = " ";
             
-            PwcgRole squadronRole = squadron.determineSquadronPrimaryRole(dateNow);
-            if (squadronRole.isRoleCategory(RoleCategory.FIGHTER))
+            PwcgRoleCategory squadronRoleCategory = squadron.determineSquadronPrimaryRoleCategory(dateNow);
+            if (squadronRoleCategory == PwcgRoleCategory.FIGHTER)
             {
                 if (!fighterFields.containsKey(squadronField.getName()))
                 {

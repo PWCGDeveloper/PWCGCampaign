@@ -7,8 +7,7 @@ import java.util.List;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.plane.RoleCategory;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
@@ -35,8 +34,8 @@ public class AirfieldBestMMatchFinder
         }
         
         List<Airfield> relativeFields = new ArrayList<Airfield>(airfieldSet.getBomberFields().values());
-        PwcgRole squadronRole = squadron.determineSquadronPrimaryRole(date);
-        if (squadronRole.isRoleCategory(RoleCategory.FIGHTER))
+        PwcgRoleCategory squadronRoleCategory = squadron.determineSquadronPrimaryRoleCategory(date);
+        if (squadronRoleCategory == PwcgRoleCategory.FIGHTER)
         {
             relativeFields = new ArrayList<Airfield>(airfieldSet.getFighterFields().values());
         }

@@ -2,21 +2,17 @@ package pwcg.gui.colors;
 
 import java.awt.Color;
 
-import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.plane.RoleCategory;
+import pwcg.campaign.plane.PwcgRoleCategory;
 
 public class AmericanColorMap extends ServiceColor implements IServiceColorMap
 {
     public static final Color RECON_COLOR = new Color(50, 60, 80);
     public static final Color FIGHTER_COLOR = new Color(80, 95, 130);
-    
-    /* (non-Javadoc)
-     * @see pwcg.gui.colors.IColorMap#getColorForRole(pwcg.campaign.plane.PlaneRole.Role)
-     */
+
     @Override
-    public Color getColorForRole(PwcgRole role)
+    public Color getColorForRole(PwcgRoleCategory roleCategory)
     {
-        if (role.isRoleCategory(RoleCategory.FIGHTER))
+        if (roleCategory == PwcgRoleCategory.FIGHTER)
         {
             return FIGHTER_COLOR;            
         }

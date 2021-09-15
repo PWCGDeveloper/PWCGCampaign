@@ -48,7 +48,7 @@ public class InterceptOpposingFlightBuilder implements IOpposingFlightBuilder
 
     private FlightTypes determineOpposingFlightType(Squadron opposingSquadron) throws PWCGException 
     {
-        PwcgRole opposingSquadronPrimaryRole = opposingSquadron.determineSquadronPrimaryRole(campaign.getDate());
+        PwcgRole opposingSquadronPrimaryRole = opposingSquadron.determineSquadronPrimaryRoleCategory(campaign.getDate());
         if (opposingSquadronPrimaryRole == PwcgRole.ROLE_DIVE_BOMB)
         {
             return WeatherFlightTypeConverter.getFlightType(FlightTypes.DIVE_BOMB, mission.getWeather());

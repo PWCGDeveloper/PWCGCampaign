@@ -1,7 +1,6 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
-import pwcg.campaign.plane.PwcgRole;
-import pwcg.campaign.plane.RoleCategory;
+import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
@@ -41,8 +40,8 @@ public class Fw190A6PayloadHelper
     {
         int selectedPrimaryPayloadId = 6;
 
-        PwcgRole squadronPrimaryRole = flight.getSquadron().determineSquadronPrimaryRole(flight.getCampaign().getDate());
-        if (squadronPrimaryRole.isRoleCategory(RoleCategory.ATTACK))
+        PwcgRoleCategory squadronPrimaryRole = flight.getSquadron().determineSquadronPrimaryRoleCategory(flight.getCampaign().getDate());
+        if (squadronPrimaryRole == PwcgRoleCategory.ATTACK)
         {
             selectedPrimaryPayloadId = 6;
         }
