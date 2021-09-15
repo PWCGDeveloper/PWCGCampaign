@@ -113,7 +113,6 @@
 		"squadronRolePeriods": [
 			{
 				"startDate": "19400101",
-				"endDate": "19420314",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",
@@ -130,12 +129,15 @@
 					{
 						"role": "ROLE_DIVE_BOMB",
 						"weight": 10
+					},
+					{
+						"role": "ROLE_RAIDER",
+						"weight": 10
 					}
 				]
 			},
 			{
 				"startDate": "19420315",
-				"endDate": "19430417",
 				"weightedRoles": [
 					{
 						"role": "ROLE_BOMB",
@@ -143,7 +145,7 @@
 					},
 					{
 						"role": "ROLE_ANTI_SHIPPING",
-						"weight": 20
+						"weight": 40
 					}					
 				]
 			},

@@ -109,17 +109,23 @@
 		"squadronRolePeriods": [
 			{
 				"startDate": "19400101",
-				"endDate": "19431017",
 				"weightedRoles": [
 					{
 						"role": "ROLE_DIVE_BOMB",
 						"weight": 100
+					},
+					{
+						"role": "ROLE_TRAIN_BUSTER",
+						"weight": 20
+					},
+					{
+						"role": "ROLE_TANK_BUSTER",
+						"weight": 20
 					}
 				]
 			},
 			{
 				"startDate": "19431018",
-				"endDate": "19450601",
 				"weightedRoles": [
 					{
 						"role": "ROLE_RECON",
@@ -127,7 +133,19 @@
 					},
 					{
 						"role": "ROLE_ATTACK",
-						"weight": 100
+						"weight": 60
+					},
+					{
+						"role": "ROLE_TRAIN_BUSTER",
+						"weight": 10
+					},
+					{
+						"role": "ROLE_RAIDER",
+						"weight": 20
+					},
+					{
+						"role": "ROLE_TANK_BUSTER",
+						"weight": 20
 					}
 				]
 			}

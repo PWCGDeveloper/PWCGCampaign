@@ -98,13 +98,6 @@ public class SquadronRoleSet
 
         return rolesForPeriod;
     }
-    
-    public boolean isSquadronThisPrimaryRole (Date date, PwcgRole requestedRole) throws PWCGException 
-    {
-        SquadronRolePeriod squadronRoleForDate = selectRoleSetByDate(date);
-        PwcgRole primaryRole = selectRoleByWeight(squadronRoleForDate);
-        return (requestedRole == primaryRole);
-    }
 
     public boolean isSquadronThisRole (Date date, PwcgRole requestedRole) throws PWCGException 
     {

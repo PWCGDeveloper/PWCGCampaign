@@ -142,11 +142,10 @@
 		"squadronRolePeriods": [
 			{
 				"startDate": "19400101",
-				"endDate": "19450601",
 				"weightedRoles": [
 					{
 						"role": "ROLE_STRATEGIC_INTERCEPT",
-						"weight": 10
+						"weight": 5
 					},
 					{
 						"role": "ROLE_FIGHTER",
@@ -155,6 +154,10 @@
 					{
 						"role": "ROLE_ATTACK",
 						"weight": 30
+					},
+					{
+						"role": "ROLE_RAIDER",
+						"weight": 5
 					}
 				]
 			}

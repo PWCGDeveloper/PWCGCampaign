@@ -81,7 +81,6 @@
     "squadronRolePeriods": [
       {
         "startDate": "19400101",
-        "endDate": "19450601",
         "weightedRoles": [
           {
             "role": "ROLE_TRANSPORT",
@@ -99,9 +98,6 @@
         "nightMissionOdds": 10
       }
     ]
-  },
-  "targetPreferences": {
-    "targetPreferencePeriods": []
   },
   "conversionPeriods": [],
   "callsigns": {
