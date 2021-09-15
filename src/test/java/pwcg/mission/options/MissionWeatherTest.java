@@ -36,7 +36,7 @@ public class MissionWeatherTest
         Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.MaxWindKey)).thenReturn(20);
         Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.MinHazeKey)).thenReturn(2);
         Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.MaxHazeKey)).thenReturn(8);
-        Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.MaxTurbulenceKey)).thenReturn(8);
+        Mockito.when(configManager.getDoubleConfigParam(ConfigItemKeys.MaxTurbulenceKey)).thenReturn(8.0);
     }
 
     @Test
@@ -157,7 +157,7 @@ public class MissionWeatherTest
         assert(weather.getCloudLevel() <= 6000);
         assert(weather.getCloudHeight() >= 300);
         assert(weather.getCloudHeight() <= 600);
-        assert(weather.getTurbulence() >= 1);
+        assert(weather.getTurbulence() >= 0);
         assert(weather.getTurbulence() <= 2);
         assert(weather.getPrecLevel() == 0);
         assert(weather.getPrecType() == 0);

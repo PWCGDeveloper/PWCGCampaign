@@ -70,6 +70,10 @@ public class BoSFlightTypeFactory implements IFlightTypeFactory
         {
             return FlightTypes.ANTI_SHIPPING;
         }
+        else if (missionRole == PwcgRole.ROLE_RAIDER)
+        {
+            return FlightTypes.RAID;
+        }
         else
         {
             throw new PWCGMissionGenerationException("No valid role for squadron: " + squadron.determineDisplayName(campaign.getDate()));

@@ -819,7 +819,7 @@ public class Squadron
     {
         for (SquadronRoleWeight weightedRole : squadronRoles.selectRoleSetByDate(date).getWeightedRoles())
         {
-            if (PwcgRole.isStrategic(weightedRole.getRole()))
+            if (!PwcgRole.isStrategic(weightedRole.getRole()))
             {
                 return false;
             }

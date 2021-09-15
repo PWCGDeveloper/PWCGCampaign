@@ -57,6 +57,22 @@ public class BoSFlightTypeCoopFactory implements IFlightTypeFactory
         {
             return getReconFlightType(squadron);
         }
+        else if (missionRole == PwcgRole.ROLE_TRAIN_BUSTER)
+        {
+            return FlightTypes.TRAIN_BUST;
+        }
+        else if (missionRole == PwcgRole.ROLE_TANK_BUSTER)
+        {
+            return FlightTypes.TANK_BUST;
+        }
+        else if (missionRole == PwcgRole.ROLE_ANTI_SHIPPING)
+        {
+            return FlightTypes.ANTI_SHIPPING;
+        }
+        else if (missionRole == PwcgRole.ROLE_RAIDER)
+        {
+            return FlightTypes.RAID;
+        }
         else
         {
             throw new PWCGMissionGenerationException("No valid role for squadron: " + squadron.determineDisplayName(campaign.getDate()));

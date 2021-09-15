@@ -71,7 +71,7 @@ public interface IPWCGContextManager
 
     String getMissionLogDirectory();
 
-    void setCurrentMap(FrontMapIdentifier bodenplatteMap) throws PWCGException;
+    void setCurrentMap(FrontMapIdentifier map) throws PWCGException;
 
     NewspaperManager getNewspaperManager();
 }

@@ -16,7 +16,7 @@ public class LocationIOJsonTest
     public void readJsonArrasTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
-        String directory = System.getProperty("user.dir") + "\\FCData\\Input\\Arras\\19170801\\";
+        String directory = System.getProperty("user.dir") + "\\FCData\\Input\\Arras\\19170601\\";
         LocationSet locationSet = LocationIOJson.readJson(directory, "FrontLines");
         assert (locationSet.getLocations().size() > 0);
     }

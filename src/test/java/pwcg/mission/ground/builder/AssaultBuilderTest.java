@@ -16,6 +16,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
+import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadron.Squadron;
@@ -61,6 +62,7 @@ public class AssaultBuilderTest
         playerFlightPlanes.add(playerPlane);
         
         PWCGContext.setProduct(PWCGProduct.BOS);
+        PWCGContext.getInstance().setCurrentMap(FrontMapIdentifier.STALINGRAD_MAP);
         Mockito.when(mission.getCampaign()).thenReturn(campaign);
         Mockito.when(mission.getMissionFlights()).thenReturn(missionFlightBuilder);
         Mockito.when(missionFlightBuilder.getPlayerFlights()).thenReturn(playerFlights);

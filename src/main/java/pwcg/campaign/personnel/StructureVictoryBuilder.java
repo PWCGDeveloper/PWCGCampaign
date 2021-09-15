@@ -83,6 +83,10 @@ public class StructureVictoryBuilder
         Squadron squadron = victorPilot.determineSquadron();
 
         PlaneType victorPlaneType = squadron.determineBestPlane(date);
+        if (victorPlaneType == null)
+        {
+            return null;
+        }
 
         victor.setAirOrGround(Victory.AIRCRAFT);
         victor.setType(victorPlaneType.getDisplayName());

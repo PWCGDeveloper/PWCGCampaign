@@ -148,7 +148,7 @@ public class CampaignIOJsonTest
         for (EquippedPlane equippedPlane : reconSquadronEquipment.getActiveEquippedPlanes().values())
         {
             assert (equippedPlane.getSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER);
-            assert (equippedPlane.getArchType().contains("bristol"));
+            assert (equippedPlane.getArchType().contains("aircodh4"));
         }
     }
 

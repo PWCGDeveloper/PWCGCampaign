@@ -11,9 +11,7 @@ import org.junit.runners.Parameterized;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
@@ -130,22 +128,17 @@ public class FlightAiSettingsValidator
             for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
             {
                 SquadronMember squadronMember = mission.getCampaign().getPersonnelManager().getAnyCampaignMember(plane.getPilot().getSerialNumber());
-                Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());
-                PwcgRoleCategory squadronPrimaryRole = squadron.determineSquadronPrimaryRoleCategory(mission.getCampaign().getDate());
-                if (squadronPrimaryRole == PwcgRoleCategory.FIGHTER)
+                if (plane.getPilot().isPlayer())
+                {
+                    assert(plane.getAiLevel() == AiSkillLevel.PLAYER);
+                }
+                else if (!plane.isNovice())
                 {
                     assert(plane.getAiLevel() == squadronMember.getAiSkillLevel());
                 }
                 else
                 {
-                    if (plane.getPilot().isPlayer())
-                    {
-                        assert(plane.getAiLevel() == AiSkillLevel.PLAYER);
-                    }
-                    else
-                    {
-                        assert(plane.getAiLevel() == AiSkillLevel.NOVICE);
-                    }
+                    assert(plane.getAiLevel() == AiSkillLevel.NOVICE);
                 }
             }
         }

@@ -51,15 +51,13 @@ public class TargetBuilderTest
     }
     
     @Test
-    public void useSquadronPreferredTargetTest()  throws PWCGException
+    public void selectTrainTest()  throws PWCGException
     {
         PowerMockito.mockStatic(TargetPriorityGeneratorTactical.class);
         PowerMockito.mockStatic(RandomNumberGenerator.class);
         
-        List<TargetType> shuffledTargetTypes = Arrays.asList(TargetType.TARGET_INFANTRY, TargetType.TARGET_INFANTRY, TargetType.TARGET_FACTORY);
+        List<TargetType> shuffledTargetTypes = Arrays.asList(TargetType.TARGET_TRAIN, TargetType.TARGET_INFANTRY, TargetType.TARGET_FACTORY);
         Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any())).thenReturn(shuffledTargetTypes);
-
-        Mockito.when(RandomNumberGenerator.getRandom(100)).thenReturn(1);
 
         IFlight playerFlight = mission.getMissionFlights().getPlayerFlights().get(0);
         
@@ -70,7 +68,7 @@ public class TargetBuilderTest
     }
     
     @Test
-    public void useSquadronPreferredTargetDoNotUseTest()  throws PWCGException
+    public void selectInfantryTest()  throws PWCGException
     {
         PowerMockito.mockStatic(TargetPriorityGeneratorTactical.class);
         PowerMockito.mockStatic(RandomNumberGenerator.class);
@@ -78,13 +76,28 @@ public class TargetBuilderTest
         List<TargetType> shuffledTargetTypes = Arrays.asList(TargetType.TARGET_INFANTRY, TargetType.TARGET_INFANTRY, TargetType.TARGET_FACTORY);
         Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any())).thenReturn(shuffledTargetTypes);
 
-        Mockito.when(RandomNumberGenerator.getRandom(100)).thenReturn(99);
+        IFlight playerFlight = mission.getMissionFlights().getPlayerFlights().get(0);
+        
+        TargetDefinition targetDefinition = GroundTargetDefinitionFactory.buildTargetDefinition(playerFlight.getFlightInformation());
+
+        assert(targetDefinition.getCountry().getCountry() == Country.GERMANY);
+        assert(targetDefinition.getTargetType() == TargetType.TARGET_INFANTRY);
+    }
+    
+    @Test
+    public void selectInfantryBecauseNoShipsTest()  throws PWCGException
+    {
+        PowerMockito.mockStatic(TargetPriorityGeneratorTactical.class);
+        PowerMockito.mockStatic(RandomNumberGenerator.class);
+        
+        List<TargetType> shuffledTargetTypes = Arrays.asList(TargetType.TARGET_SHIPPING, TargetType.TARGET_INFANTRY, TargetType.TARGET_FACTORY);
+        Mockito.when(TargetPriorityGeneratorTactical.getTargetTypePriorities(Mockito.any())).thenReturn(shuffledTargetTypes);
 
         IFlight playerFlight = mission.getMissionFlights().getPlayerFlights().get(0);
         
         TargetDefinition targetDefinition = GroundTargetDefinitionFactory.buildTargetDefinition(playerFlight.getFlightInformation());
 
         assert(targetDefinition.getCountry().getCountry() == Country.GERMANY);
-        assert(targetDefinition.getTargetType() != TargetType.TARGET_TRAIN);
+        assert(targetDefinition.getTargetType() == TargetType.TARGET_INFANTRY);
     }
 }
