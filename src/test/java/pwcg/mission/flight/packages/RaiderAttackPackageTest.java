@@ -7,13 +7,11 @@ import org.junit.Test;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
-import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionFlights;
 import pwcg.mission.MissionHumanParticipants;
@@ -24,8 +22,6 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.NecessaryFlightType;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
-import pwcg.mission.flight.waypoint.missionpoint.MissionPointAttackSet;
-import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
 import pwcg.mission.target.TargetType;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.PwcgTestBase;
@@ -59,7 +55,6 @@ public class RaiderAttackPackageTest extends PwcgTestBase
         assert(escortFlights.size() == 0);
 
         verifyLowAltitude(playerFlight);
-        verifyProximityToTarget(playerFlight);
 
         TestDriver.getInstance().reset();
     }
@@ -78,29 +73,6 @@ public class RaiderAttackPackageTest extends PwcgTestBase
 
         campaign.setCurrentMission(mission);
         return mission.getMissionFlights();
-    }
-
-    private void verifyProximityToTarget(IFlight flight) throws PWCGException
-    {
-        MissionPointAttackSet attackMissionPoint = (MissionPointAttackSet)flight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_ATTACK);
-        Coordinate attackPosition = attackMissionPoint.getAttackSequence().getAttackAreaMcu().getPosition();
-        System.out.println("Attack Position at " + attackPosition);
-
-        boolean groundAttackCloseToTarget = false;
-        for (Airfield airfield : flight.getMission().getFieldsForPatrol())
-        {
-            double distanceFromAirfield = MathUtils.calcDist(attackPosition, airfield.getPosition());
-            if (distanceFromAirfield < 5000)
-            {
-                groundAttackCloseToTarget = true;
-                System.out.println("CLOSE TO " + airfield.getName() + " " + airfield.determineCountry().getCountryName() + " distance is " + distanceFromAirfield);
-            }
-            else
-            {
-                System.out.println("Not close to " + airfield.getName() + " " + airfield.determineCountry().getCountryName() + " distance is " + distanceFromAirfield);
-            }
-        }
-        assert (groundAttackCloseToTarget == true);
     }
 
     private void verifyLowAltitude(IFlight flight) throws PWCGException

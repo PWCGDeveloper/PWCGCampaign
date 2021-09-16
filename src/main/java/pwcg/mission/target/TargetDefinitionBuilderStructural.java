@@ -30,7 +30,6 @@ public class TargetDefinitionBuilderStructural
         for (FixedPosition structure : targetStructures)
         {
             ICountry structureCountry = structure.getCountry(flightInformation.getCampaign().getDate());
-            //ICountry structureCountry = structure.determineCountry();
             if (structureCountry.getSide() == flightInformation.getCountry().getSide().getOppositeSide())
             {
                 PwcgStructure building = PwcgBuildingIdentifier.identifyBuilding(structure.getModel());
@@ -53,10 +52,13 @@ public class TargetDefinitionBuilderStructural
             return false;
         }
         
-        boolean isvalidAirfield = isValidTargetStructureForAirfield(structure, building);
-        if (!isvalidAirfield)
+        if (building.toTargetType() == TargetType.TARGET_AIRFIELD)
         {
-            return false;
+            boolean isvalidAirfield = isValidTargetStructureForAirfield(structure, building);
+            if (!isvalidAirfield)
+            {
+                return false;
+            }
         }
         
         return true;
