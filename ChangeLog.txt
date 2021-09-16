@@ -1,3 +1,8 @@
+13.2.0
+Added Raider role and raid mission
+Added tank buster, train buster, and anti shipping roles
+Added ability to select role for mission prior to generation
+Fixed situation where airfield location could be incorrectly identified as a target
 
 13.1.0
 Added SPAD VII Early, Pfalz D.XII, and Airco DH4

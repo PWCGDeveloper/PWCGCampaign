@@ -132,6 +132,11 @@ public class Equipment
         return new ArrayList<String>(archTypeMap.values());
     }
 
+    public Map<Integer, EquippedPlane> getEquippedPlanes()
+    {
+        return equippedPlanes;
+    }
+
     public EquippedPlane deactivateEquippedPlaneFromSquadron(Integer planeSerialNumber, Date date)
     {
         EquippedPlane equippedPlane = equippedPlanes.get(planeSerialNumber);

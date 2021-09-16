@@ -49,35 +49,35 @@ public class GroundAttackObjectiveTactical
         
         if (targetType == TargetType.TARGET_ARMOR)
         {
-            objective = "Attack enemy armor" + objectiveLocation; 
+            objective = "Attack enemy armor" + objectiveLocation + "."; 
         }
         else if (targetType == TargetType.TARGET_INFANTRY)
         {
-            objective = "Attack enemy infantry" + objectiveLocation; 
+            objective = "Attack enemy infantry" + objectiveLocation + "."; 
         }
         else if (targetType == TargetType.TARGET_ARTILLERY)
         {
-            objective = "Attack enemy artillery" + objectiveLocation; 
+            objective = "Attack enemy artillery" + objectiveLocation + "."; 
         }
         else if (targetType == TargetType.TARGET_TRAIN)
         {
-            objective = "Attack trains and rail facilities" + objectiveLocation;
+            objective = "Attack trains and rail facilities" + objectiveLocation + ".";
         }
         else if (targetType == TargetType.TARGET_TRANSPORT)
         {
-            objective = "Attack transport and road facilities" + objectiveLocation; 
+            objective = "Attack transport and road facilities" + objectiveLocation + "."; 
         }
         else if (targetType == TargetType.TARGET_SHIPPING)
         {
-            objective = "Attack shipping" + objectiveLocation; 
+            objective = "Attack shipping" + objectiveLocation + "."; 
         }
         else if (targetType == TargetType.TARGET_DRIFTER)
         {
-            objective = "Attack light shipping" + objectiveLocation; 
+            objective = "Attack light shipping" + objectiveLocation + "."; 
         }
         else
         {
-            objective = "Target" + objectiveLocation; 
+            objective = "Target" + objectiveLocation + "."; 
         }
         return objective;
 

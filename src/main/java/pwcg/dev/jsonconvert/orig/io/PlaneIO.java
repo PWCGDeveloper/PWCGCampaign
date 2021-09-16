@@ -12,12 +12,6 @@ import pwcg.mission.flight.plane.PlaneMcu;
 
 public class PlaneIO 
 {		
-	/**
-	 * @param reader
-	 * @return
-	 * @throws PWCGException 
-	 * @throws PWCGException 
-	 */
 	public static PlaneMcu readBlock (BufferedReader reader) throws PWCGException 
 	{
 		try

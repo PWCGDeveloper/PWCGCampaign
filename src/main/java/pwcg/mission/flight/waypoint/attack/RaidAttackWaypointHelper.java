@@ -42,7 +42,7 @@ public class RaidAttackWaypointHelper
 		targetPopupWP.setTriggerArea(McuWaypoint.COMBAT_AREA);
 		targetPopupWP.setSpeed(flight.getFlightCruisingSpeed());
 		targetPopupWP.setPosition(coord);	
-		targetPopupWP.setTargetWaypoint(false);
+		targetPopupWP.setTargetWaypoint(true);
 		waypointsBefore.add(targetPopupWP);	
 		
 		return targetPopupWP;

@@ -40,9 +40,10 @@ public class MissionObjectiveFactory
             return getEscortMissionObjective(flight, date);
         }
         else if (flight.getFlightType() == FlightTypes.BOMB ||
-            flight.getFlightType() == FlightTypes.GROUND_ATTACK ||
-            flight.getFlightType() == FlightTypes.DIVE_BOMB ||
-            flight.getFlightType() == FlightTypes.LOW_ALT_BOMB)
+                 flight.getFlightType() == FlightTypes.GROUND_ATTACK ||
+                 flight.getFlightType() == FlightTypes.RAID ||
+                 flight.getFlightType() == FlightTypes.DIVE_BOMB ||
+                 flight.getFlightType() == FlightTypes.LOW_ALT_BOMB)
         {
             return GroundAttackObjective.getMissionObjective(flight);
         }

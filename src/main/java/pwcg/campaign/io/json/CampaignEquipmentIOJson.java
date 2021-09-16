@@ -75,6 +75,11 @@ public class CampaignEquipmentIOJson
             Equipment squadronEquipment = jsoReader.readJsonFile(campaignEquipmentDir, jsonFile.getName());
             int squadronId = Integer.valueOf(FileUtils.stripFileExtension(jsonFile.getName()));
             campaign.getEquipmentManager().addEquipmentForSquadron(squadronId, squadronEquipment);
+            
+            for (EquippedPlane equippedPlane : squadronEquipment.getEquippedPlanes().values())
+            {
+                equippedPlane.updateFromPlaneType();
+            }
         }
     }
 
@@ -85,10 +90,16 @@ public class CampaignEquipmentIOJson
         for (File jsonFile : jsonFiles)
         {
             JsonObjectReader<EquipmentDepot> jsoReader = new JsonObjectReader<>(EquipmentDepot.class);
-            EquipmentDepot replacementEquipemnt = jsoReader.readJsonFile(campaignEquipmentReplacementDir, jsonFile.getName());
+            EquipmentDepot replacementEquipment = jsoReader.readJsonFile(campaignEquipmentReplacementDir, jsonFile.getName());
             int serviceId = Integer.valueOf(FileUtils.stripFileExtension(jsonFile.getName()));
-            campaign.getEquipmentManager().addEquipmentDepotForService(serviceId, replacementEquipemnt);
-            for (EquippedPlane equippedPlane : replacementEquipemnt.getAllPlanesInDepot())
+            campaign.getEquipmentManager().addEquipmentDepotForService(serviceId, replacementEquipment);
+            
+            for (EquippedPlane equippedPlane : replacementEquipment.getAllPlanesInDepot())
+            {
+                equippedPlane.updateFromPlaneType();
+            }
+
+            for (EquippedPlane equippedPlane : replacementEquipment.getAllPlanesInDepot())
             {
                 // Propagate any updates to the aircraft definitions into plane instances
                 PlaneType basePlane = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneById(equippedPlane.getType());

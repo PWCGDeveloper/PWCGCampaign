@@ -38,7 +38,30 @@ public class EquippedPlane extends PlaneType
         equippedPlane.planeStatus = this.planeStatus;
         equippedPlane.aircraftIdCode = this.aircraftIdCode;
     }
-    
+
+    // Backwards compatibility method for version 13.2.0.  Remove when safe.
+    public void updateFromPlaneType()
+    {
+        try
+        {
+            if (this.roleCategories.size() == 0)
+            {
+                PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
+                PlaneType planeType = planeTypeFactory.getPlaneById(this.getType());
+                planeType.copyTemplate(this);
+
+                if(this.roleCategories.size() == 0)
+                {
+                    System.out.println("Equipped plane update did not work");
+                }
+            }
+        }
+        catch (PWCGException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
     public int getSerialNumber()
     {
         return serialNumber;

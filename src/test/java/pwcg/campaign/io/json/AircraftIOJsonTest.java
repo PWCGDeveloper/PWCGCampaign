@@ -19,7 +19,7 @@ public class AircraftIOJsonTest
     {
         PWCGContext.setProduct(PWCGProduct.FC);
         Map<String, PlaneType> aircraft = AircraftIOJson.readJson();
-        assert (aircraft.size() > 0);
+        validate(aircraft);
     }
     
     @Test
@@ -27,6 +27,15 @@ public class AircraftIOJsonTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         Map<String, PlaneType> aircraft = AircraftIOJson.readJson();
+        validate(aircraft);
+    }
+
+    private void validate(Map<String, PlaneType> aircraft)
+    {
         assert (aircraft.size() > 0);
+        for (PlaneType planeType : aircraft.values())
+        {
+            assert(planeType.getRoleCategories().size() > 0);
+        }
     }
 }

@@ -15,7 +15,7 @@ import pwcg.core.utils.PWCGLogger.LogLevel;
 public class CampaignIOJson 
 {
 
-    public static  void writeJson(Campaign campaign) throws PWCGException
+    public static void writeJson(Campaign campaign) throws PWCGException
     {
         String campaignDir = PWCGDirectoryUserManager.getInstance().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\";
         FileUtils.createDirIfNeeded(campaignDir);
