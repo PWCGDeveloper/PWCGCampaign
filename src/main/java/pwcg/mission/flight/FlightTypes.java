@@ -78,6 +78,7 @@ public enum FlightTypes
             flightType == FlightTypes.CONTACT_PATROL    || 
             flightType == FlightTypes.GROUND_ATTACK     || 
             flightType == FlightTypes.GROUND_HUNT       || 
+            flightType == FlightTypes.RAID              || 
             flightType == FlightTypes.SCRAMBLE          || 
             flightType == FlightTypes.SPY_EXTRACT)
         {
@@ -93,6 +94,7 @@ public enum FlightTypes
             flightType == FlightTypes.LOW_ALT_BOMB  || 
             flightType == FlightTypes.GROUND_ATTACK || 
             flightType == FlightTypes.GROUND_HUNT   || 
+            flightType == FlightTypes.RAID          || 
             flightType == FlightTypes.DIVE_BOMB     || 
             flightType == FlightTypes.STRATEGIC_BOMB)
         {
@@ -124,7 +126,19 @@ public enum FlightTypes
     public static boolean isGroundAttackFlight(FlightTypes flightType)
     {
         if (flightType == FlightTypes.GROUND_ATTACK || 
-            flightType == FlightTypes.GROUND_HUNT)
+            flightType == FlightTypes.GROUND_HUNT   ||
+            flightType == FlightTypes.RAID)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static boolean isTacticalLevelBombingFlight(FlightTypes flightType)
+    {
+        if (flightType == FlightTypes.BOMB || 
+            flightType == FlightTypes.LOW_ALT_BOMB)
         {
             return true;
         }
@@ -137,17 +151,6 @@ public enum FlightTypes
         if (flightType == FlightTypes.BOMB          ||
             flightType == FlightTypes.LOW_ALT_BOMB  || 
             flightType == FlightTypes.STRATEGIC_BOMB)
-        {
-            return true;
-        }
-
-        return false;
-    }
-
-    public static boolean isTacticalBombingFlight(FlightTypes flightType)
-    {
-        if (flightType == FlightTypes.BOMB || 
-            flightType == FlightTypes.LOW_ALT_BOMB)
         {
             return true;
         }

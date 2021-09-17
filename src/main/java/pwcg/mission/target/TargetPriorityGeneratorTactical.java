@@ -55,13 +55,25 @@ public class TargetPriorityGeneratorTactical
         {
             addStructuresForBombingMission(flightInformation, targetTypesByIndex);
         }
-        else if (flightType == FlightTypes.GROUND_ATTACK    || 
-                 flightType == FlightTypes.GROUND_HUNT      || 
-                 flightType == FlightTypes.DIVE_BOMB        || 
-                 flightType == FlightTypes.LOW_ALT_BOMB)
+        else if (isTacticalOrdnanceDropFlight(flightType))
         {
             addStructuresForAttackMission(flightInformation, targetTypesByIndex);
         }
+    }
+
+    private static boolean isTacticalOrdnanceDropFlight(FlightTypes flightType)
+    {
+        if (FlightTypes.isGroundAttackFlight(flightType))
+        {
+            return true;
+        }
+
+        if (flightType == FlightTypes.DIVE_BOMB ||  flightType == FlightTypes.LOW_ALT_BOMB)
+        {
+            return true;
+        }
+        
+        return false;
     }
 
     private static void addStructuresForBombingMission(FlightInformation flightInformation, List<TargetType> targetTypesByIndex) throws PWCGException

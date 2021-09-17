@@ -47,7 +47,7 @@ public class NeedsEscortDecider
     
     private static int getEsortOddsForFlightType(IFlight escortedFlight) throws PWCGException
     {
-        if (FlightTypes.isTacticalBombingFlight(escortedFlight.getFlightType()))
+        if (FlightTypes.isTacticalLevelBombingFlight(escortedFlight.getFlightType()))
         {
             return escortedFlight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.IsVirtualBombingEscortedOddsKey);
         }
