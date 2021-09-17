@@ -18,7 +18,7 @@ import pwcg.core.location.CoordinateBox;
 public class MissionBlockBuilder
 {
     private Mission mission;
-    private List<FixedPosition> positionsForMission = new ArrayList<>();
+    private List<FixedPosition> structuresForMission = new ArrayList<>();
 
     public MissionBlockBuilder(Mission mission, CoordinateBox structureBorder)
     {
@@ -28,8 +28,7 @@ public class MissionBlockBuilder
     public MissionBlocks buildFixedPositionsForMission() throws PWCGException
     {
         getBlocks();
-        MissionBlocks missionBlocks = new MissionBlocks(mission, positionsForMission);
-        missionBlocks.adjustBlockStatus();
+        MissionBlocks missionBlocks = new MissionBlocks(mission, structuresForMission);
         return missionBlocks;
     }
 
@@ -53,7 +52,7 @@ public class MissionBlockBuilder
             }
         }
 
-        positionsForMission.addAll(selectedRRStations);
+        structuresForMission.addAll(selectedRRStations);
     }
 
     private void getBridgesForPatrol() throws PWCGException
@@ -69,7 +68,7 @@ public class MissionBlockBuilder
             }
         }
 
-        positionsForMission.addAll(selectedBridges);
+        structuresForMission.addAll(selectedBridges);
     }
 
     private void getAirfieldsForPatrol() throws PWCGException
@@ -85,7 +84,7 @@ public class MissionBlockBuilder
             }
         }
 
-        positionsForMission.addAll(selectedAirfieldStructures);
+        structuresForMission.addAll(selectedAirfieldStructures);
     }
 
     private void getStandaloneBlocksPatrol() throws PWCGException
@@ -101,7 +100,7 @@ public class MissionBlockBuilder
             }
         }
 
-        positionsForMission.addAll(selectedBlocks);
+        structuresForMission.addAll(selectedBlocks);
     }
 
     private boolean isBlockIncluded(Coordinate blockPosition) throws PWCGException

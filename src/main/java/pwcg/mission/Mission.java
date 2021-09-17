@@ -273,7 +273,7 @@ public class Mission
             waypointIconBuilder.createWaypointIcons(missionFlights.getPlayerFlights());
             airfieldIconBuilder.createWaypointIcons(campaign, this);
             assaultIconBuilder.createAssaultIcons(battleManager.getMissionAssaultDefinitions());
-            missionBlocks.createBlockSmoke();
+            missionBlocks.adjustBlockDamageAndSmoke();
 
             setGroundUnitTriggers();
             setFreeHuntTriggers();

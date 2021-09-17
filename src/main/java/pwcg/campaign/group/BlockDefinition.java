@@ -1,21 +1,29 @@
 package pwcg.campaign.group;
 
-public class BlockDefinition {
+public class BlockDefinition
+{
     private String name;
     private String desc;
     private BlockType type;
     private int durability;
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
-    public String getDesc() {
+
+    public String getDesc()
+    {
         return desc;
     }
-    public BlockType getType() {
+
+    public BlockType getType()
+    {
         return type;
     }
-    public int getDurability() {
+
+    public int getDurability()
+    {
         return durability;
     }
 }

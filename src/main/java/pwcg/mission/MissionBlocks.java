@@ -39,16 +39,17 @@ public class MissionBlocks
         return structuresForMission;
     }
 
-    public void adjustBlockStatus() throws PWCGException
+    public void adjustBlockDamageAndSmoke() throws PWCGException
     {
-        adjustBlockDamage();
         adjustBlockDurability();
+        List<FixedPosition> damagedStructures = adjustBlockDamage();
+        createBlockSmoke(damagedStructures);
     }
     
-    public void createBlockSmoke() throws PWCGException
+    private void createBlockSmoke(List<FixedPosition> damagedStructures) throws PWCGException
     {
         MissionBlockSmoke missionBlockSmoke = new MissionBlockSmoke(mission);      
-        missionBlockSmoke.addSmokeToDamagedAreas(structuresForMission);
+        missionBlockSmoke.addSmokeToDamagedAreas(damagedStructures);
     }
 
     private List<FixedPosition> adjustBlockDamage() throws PWCGException

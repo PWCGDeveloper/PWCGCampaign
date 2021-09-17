@@ -55,7 +55,7 @@ public class RaidAttackWaypointHelper
 
         double angleFromTargetToIngress = MathUtils.calcAngle(flight.getTargetDefinition().getPosition().copy(), ingressPosition.copy());
 		Coordinate targetPopupCoordinates = MathUtils.calcNextCoord(flight.getTargetDefinition().getPosition(), angleFromTargetToIngress, popupBombFinalApproachDistance);
-		targetPopupCoordinates.setYPos(attackAltitude);
+		targetPopupCoordinates.setYPos(attackAltitude + 300);
 		return targetPopupCoordinates;
 	}
 

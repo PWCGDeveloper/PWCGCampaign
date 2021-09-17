@@ -19,6 +19,9 @@ import pwcg.core.utils.MathUtils;
 
 public class MissionBlockDamageDecorator
 {
+    private static final int DISTANCE_TO_FRONT_LINE_FOR_DAMAGE = 20000;
+    private static final int SAFE_DISTANCE_TO_AIRFIELD = 3000;
+
     public List<FixedPosition> setDamageToFixedPositions(List<FixedPosition> fixedPositions, Date date) throws PWCGException
     {
         List<FixedPosition> fixedPositionCloseToFront = new ArrayList<>();
@@ -45,13 +48,13 @@ public class MissionBlockDamageDecorator
         FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(date);
         
         Coordinate closestAllied = frontLinesForMap.findClosestFrontCoordinateForSide(fixedPosition.getPosition(), Side.ALLIED);
-        if (MathUtils.calcDist(fixedPosition.getPosition(), closestAllied) < 10000)
+        if (MathUtils.calcDist(fixedPosition.getPosition(), closestAllied) < DISTANCE_TO_FRONT_LINE_FOR_DAMAGE)
         {
             return true;
         }
         
         Coordinate closestAxis = frontLinesForMap.findClosestFrontCoordinateForSide(fixedPosition.getPosition(), Side.AXIS);
-        if (MathUtils.calcDist(fixedPosition.getPosition(), closestAxis) < 10000)
+        if (MathUtils.calcDist(fixedPosition.getPosition(), closestAxis) < DISTANCE_TO_FRONT_LINE_FOR_DAMAGE)
         {
             return true;
         }
@@ -64,7 +67,7 @@ public class MissionBlockDamageDecorator
         AirfieldManager airfieldManager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
         Airfield field = airfieldManager.getAirfieldFinder().findClosestAirfield(fixedPosition.getPosition());
         double distanceFromField = MathUtils.calcDist(fixedPosition.getPosition(), field.getPosition());
-        if (distanceFromField < 5000)
+        if (distanceFromField < SAFE_DISTANCE_TO_AIRFIELD)
         {
             return true;
         }

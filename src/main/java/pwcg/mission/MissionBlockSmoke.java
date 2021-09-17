@@ -3,17 +3,26 @@ package pwcg.mission;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.api.Side;
+import pwcg.campaign.context.FrontLinePoint;
+import pwcg.campaign.context.FrontLinesForMap;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.FixedPosition;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.mcu.group.SmokeEffect;
 import pwcg.mission.mcu.group.SmokeGroup;
 
 public class MissionBlockSmoke
 {
+    private static final int DISTANCE_TO_FRONT_LINE_FOR_SMOKE = 10000;
+    private static final int SAFE_DISTANCE_TO_AIRFIELD = 5000;
+    
     private Mission mission;
     private List<SmokeGroup> smokingPositions = new ArrayList<>();
     private int maxSmokingPositions = 100;
@@ -36,7 +45,7 @@ public class MissionBlockSmoke
         return smokingPositions;
     }
     
-    private  List<FixedPosition> filterPositions(List<FixedPosition> fixedPositions) 
+    private  List<FixedPosition> filterPositions(List<FixedPosition> fixedPositions) throws PWCGException 
     {
         List<FixedPosition> filteredPositions = new ArrayList<>();
         for (FixedPosition fixedPosition : fixedPositions)
@@ -46,9 +55,55 @@ public class MissionBlockSmoke
                 continue;
             }
             
+            if (isNearAirfield(fixedPosition))
+            {
+                continue;
+            }
+            
+            if (!isNearFront(fixedPosition))
+            {
+                continue;
+            }
+            
             filteredPositions.add(fixedPosition);
         }
         return filteredPositions;
+    }
+
+    private boolean isNearFront(FixedPosition fixedPosition) throws PWCGException
+    {
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(mission.getCampaign().getDate());
+
+        FrontLinePoint closestAlliedPosition = frontLinesForMap.findClosestFrontPositionForSide(fixedPosition.getPosition(), Side.ALLIED);
+        double distanceToAlliedLines = MathUtils.calcDist(fixedPosition.getPosition(), closestAlliedPosition.getPosition());
+        if (distanceToAlliedLines < DISTANCE_TO_FRONT_LINE_FOR_SMOKE)
+        {
+            return true;
+        }
+        
+        FrontLinePoint closestAxisPosition = frontLinesForMap.findClosestFrontPositionForSide(fixedPosition.getPosition(), Side.AXIS);
+        double distanceToAxisLines = MathUtils.calcDist(fixedPosition.getPosition(), closestAxisPosition.getPosition());
+        if (distanceToAxisLines < DISTANCE_TO_FRONT_LINE_FOR_SMOKE)
+        {
+            return true;
+        }
+
+        return true;
+    }
+
+    private boolean isNearAirfield(FixedPosition fixedPosition)
+    {
+        Airfield airfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getClosestAirfield(fixedPosition.getPosition());
+        if (airfield != null)
+        {
+            double distanceToAirfield = MathUtils.calcDist(fixedPosition.getPosition(), airfield.getPosition());
+            if (distanceToAirfield < SAFE_DISTANCE_TO_AIRFIELD)
+            {
+                return true;
+            }
+        }
+        
+        return false;
     }
 
     private void smokeNearBattle(List<FixedPosition> fixedPositions) throws PWCGException
