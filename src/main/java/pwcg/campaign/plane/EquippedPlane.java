@@ -14,6 +14,7 @@ public class EquippedPlane extends PlaneType
     protected int squadronId;
     protected Date dateRemovedFromService;
     protected String aircraftIdCode;
+    protected boolean isEquipmentRequest = false;
 
     public EquippedPlane()
     {
@@ -110,6 +111,16 @@ public class EquippedPlane extends PlaneType
     public void setAircraftIdCode(String aircraftIdCode)
     {
         this.aircraftIdCode = aircraftIdCode;
+    }
+
+    public boolean isEquipmentRequest()
+    {
+        return isEquipmentRequest;
+    }
+
+    public void setEquipmentRequest(boolean isEquipmentRequest)
+    {
+        this.isEquipmentRequest = isEquipmentRequest;
     }
 
     public String getDisplayMarkings() throws PWCGException {

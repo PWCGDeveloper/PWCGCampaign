@@ -62,7 +62,7 @@ public class CampaignEquipmentManagerTest
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_51_PROFILE_STALINGRAD_FW190.getSquadronId());
         PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
         PlaneType planeType = planeTypeFactory.getPlaneById("bf109f4");
-        campaign.getEquipmentManager().replaceAircraftForSquadron(squadron, planesToReplace, planeType.getDisplayName());
+        campaign.getEquipmentManager().actOnEquipmentRequest(squadron, planesToReplace, planeType.getDisplayName());
         
         int bf109Count = 0;
         for (EquippedPlane plane : equipment.getActiveEquippedPlanes().values())

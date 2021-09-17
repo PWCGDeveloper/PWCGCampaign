@@ -41,7 +41,7 @@ public class WithdrawnEquipmentReplacer
         int planesRemoved = 0;
         for (EquippedPlane plane: equipment.getActiveEquippedPlanes().values())
         {
-            if (campaign.getDate().after(plane.getWithdrawal()))
+            if (isWithdrawPlane(plane))
             {
                 equipment.deactivateEquippedPlaneFromSquadron(plane.getSerialNumber(), campaign.getDate());
                 ++planesRemoved;
@@ -49,6 +49,21 @@ public class WithdrawnEquipmentReplacer
         }
 
         return planesRemoved;
+    }
+    
+    private boolean isWithdrawPlane(EquippedPlane plane)
+    {
+        if (campaign.getDate().before(plane.getWithdrawal()))
+        {
+            return false;
+        }
+        
+        if (plane.isEquipmentRequest())
+        {
+            return false;
+        }
+        
+        return true;
     }
     
     private int replaceWithNewPlanes(int planesRemoved) throws PWCGException

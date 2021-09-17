@@ -103,18 +103,35 @@ public class EquipmentDepot
         List<EquippedPlane> sortedPlanes = getPlanesForFromDepotBestToWorst(equipment.getAvailableDepotPlanes());
         for (EquippedPlane depotPlane : sortedPlanes)
         {
-            if (depotPlane.getArchType().equals(equippedPlane.getArchType()))
+            if (isUpgradePlane(depotPlane, equippedPlane))
             {
-                if (depotPlane.getGoodness() > equippedPlane.getGoodness())
-                {
-                    EquipmentUpgradeRecord upgradeRecord = new EquipmentUpgradeRecord(depotPlane, equippedPlane);
-                    return upgradeRecord;
-                }
+                EquipmentUpgradeRecord upgradeRecord = new EquipmentUpgradeRecord(depotPlane, equippedPlane);
+                return upgradeRecord;
             }
         }
         return null;
     }
     
+    private boolean isUpgradePlane(EquippedPlane depotPlane, EquippedPlane equippedPlane)
+    {
+        if (!(depotPlane.getArchType().equals(equippedPlane.getArchType())))
+        {
+            return false;
+        }
+        
+        if (!(depotPlane.getGoodness() > equippedPlane.getGoodness()))
+        {
+            return false;
+        }
+        
+        if (equippedPlane.isEquipmentRequest())
+        {
+            return false;
+        }
+
+        return true;
+    }
+
     private List<EquippedPlane> getPlanesForFromDepotBestToWorst(Map<Integer, EquippedPlane> planesForSquadron) throws PWCGException
     {
         List<EquippedPlane> sortedPlanes = PlaneSorter.sortEquippedPlanesByGoodness(new ArrayList<EquippedPlane>(planesForSquadron.values()));

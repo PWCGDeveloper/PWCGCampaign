@@ -67,7 +67,6 @@ public class AARResupplyCoordinator
         }
     }
 
-
     private void replaceWithdrawnPlanes(ArmedService armedService) throws PWCGException
     {
         for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())

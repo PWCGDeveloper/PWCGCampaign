@@ -143,6 +143,45 @@ public class WithdrawnEquipmentReplacerTest
     }
 
     @Test
+    public void testKeepMe109F2BecauseItIsARequestEquipment() throws PWCGException
+    {
+        Date campaigndate = DateUtils.getDateYYYYMMDD("19420404");
+        Mockito.when(campaign.getDate()).thenReturn(campaigndate);
+        Mockito.when(campaign.getPlaneMarkingManager()).thenReturn(PlaneMarkingManagerFactory.buildIPlaneMarkingManager());
+
+        for (int i = 0; i < 3; ++i)
+        {
+            EquippedPlane equippedPlane  = PlaneEquipmentFactory.makePlaneForSquadron(campaign, "bf109f2", 20111051);
+            equippedPlane.setEquipmentRequest(true);
+            equipment.addEquippedPlaneToSquadron(campaign, 20111051, equippedPlane);
+        }
+        
+        for (int i = 0; i < 8; ++i)
+        {
+            EquippedPlane equippedPlane  = PlaneEquipmentFactory.makePlaneForSquadron(campaign, "bf109f4", 20111051);
+            equipment.addEquippedPlaneToSquadron(campaign, 20111051, equippedPlane);
+        }
+
+        assert(equipment.getActiveEquippedPlanes().size() == 11);
+
+        WithdrawnEquipmentReplacer withdrawnEquipmentReplacer = new WithdrawnEquipmentReplacer(campaign, equipment, squadron);
+        int numAdded = withdrawnEquipmentReplacer.replaceWithdrawnEquipment();
+        assert(numAdded == 0);
+        assert(equipment.getActiveEquippedPlanes().size() == 11);
+        
+        int bf109F2Found = 0;
+        for (EquippedPlane equippedPlane: equipment.getActiveEquippedPlanes().values())
+        {
+            assert(equippedPlane.getType().equals("bf109f2") || equippedPlane.getType().equals("bf109f4") || equippedPlane.getType().equals("bf109g2"));
+            if (equippedPlane.getType().equals("bf109f2"))
+            {
+                ++bf109F2Found;
+            }
+        }
+        assert(bf109F2Found == 3);
+    }
+
+    @Test
     public void testAddExtraMe109F4() throws PWCGException
     {
         Date campaigndate = DateUtils.getDateYYYYMMDD("19420404");

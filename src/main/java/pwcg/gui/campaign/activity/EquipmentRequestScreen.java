@@ -2,6 +2,7 @@ package pwcg.gui.campaign.activity;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -45,7 +46,8 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
 
     private Campaign campaign = null;
     private JPanel centerPanel = null;
-    private Map<Integer, JCheckBox> aircraftChecklist = new TreeMap<>();
+    private Map<Integer, JCheckBox> aircraftRetireChecklist = new TreeMap<>();
+    private Map<Integer, JCheckBox> aircraftChangeChecklist = new TreeMap<>();
     private JComboBox<String> replacementAircraftTypeSelector;
 
     public EquipmentRequestScreen(Campaign campaign)
@@ -88,55 +90,125 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
     private JPanel makeCenterPanel() throws PWCGException
     {
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        ImageResizingPanel equipmentManagementSelectionPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
-        equipmentManagementSelectionPanel.setBorder(PwcgBorderFactory.createDocumentBorderWithExtraSpaceFromTop());
+        ImageResizingPanel equipmentManagementPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
+        equipmentManagementPanel.setBorder(PwcgBorderFactory.createDocumentBorderWithExtraSpaceFromTop());
+        equipmentManagementPanel.setBorder(PwcgBorderFactory.createDocumentBorderWithExtraSpaceFromTop());
 
-        equipmentManagementSelectionPanel.setLayout(new BorderLayout());
-        equipmentManagementSelectionPanel.setOpaque(false);
+        JPanel equipmentSelectionPanel = makeEquipmentSelectionPanel();
+        equipmentManagementPanel.add(equipmentSelectionPanel, BorderLayout.CENTER);
+
+        JPanel equipmentReplaceConfirmationPanel = makeEquipmentSelectionConfirmationPanel();
+        equipmentManagementPanel.add(equipmentReplaceConfirmationPanel, BorderLayout.SOUTH);
+
+        return equipmentManagementPanel;
+    }
+
+
+    private JPanel makeEquipmentSelectionPanel() throws PWCGException
+    {
+        JPanel equipmentSelectionPanel = new JPanel();
+        equipmentSelectionPanel.setLayout(new BorderLayout());
+        equipmentSelectionPanel.setOpaque(false);
+        
+        JPanel equipmentRetirementSelectionPanel = makeEquipmentRetirementSelectionPanel();
+        equipmentSelectionPanel.add(equipmentRetirementSelectionPanel, BorderLayout.NORTH);
+
+        JPanel equipmentChangeSelectionPanel = makeEquipmentChangeSelectionPanel();
+        equipmentSelectionPanel.add(equipmentChangeSelectionPanel, BorderLayout.SOUTH);
+        
+        return equipmentSelectionPanel;
+    }
+    
+    private JPanel makeEquipmentRetirementSelectionPanel() throws PWCGException
+    {
+        JPanel equipmentRetirementSelectionPanel = new JPanel();
+        equipmentRetirementSelectionPanel.setOpaque(false);
+        equipmentRetirementSelectionPanel.setLayout(new GridLayout(0, 1));
+        equipmentRetirementSelectionPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        SquadronMember referencePlayer = campaign.getReferencePlayer();
+        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(referencePlayer.getSquadronId());
+
+        JLabel titleLabel = PWCGButtonFactory.makePaperLabelLarge("Select Planes To Retire");
+        equipmentRetirementSelectionPanel.add(titleLabel);
+
+        for (int serialNumber : equipment.getActiveEquippedPlanes().keySet())
+        {
+            EquippedPlane plane = equipment.getEquippedPlane(serialNumber);
+            if (!plane.isEquipmentRequest())
+            {
+                continue;
+            }
+            
+            JCheckBox aircraftCheckBox = makeCheckBox(plane.getDisplayName());
+            aircraftRetireChecklist.put(plane.getSerialNumber(), aircraftCheckBox);
+            equipmentRetirementSelectionPanel.add(aircraftCheckBox);
+        }
+        
+        for (int i = 0; i < 2; ++i)
+        {
+            JLabel spacer = new JLabel("     ");
+            spacer.setOpaque(false);
+            equipmentRetirementSelectionPanel.add(spacer);
+        }
+
+        return equipmentRetirementSelectionPanel;
+    }
+
+    private JPanel makeEquipmentChangeSelectionPanel() throws PWCGException
+    {
+        JPanel equipmentChangeSelectionPanel = new JPanel();
+        equipmentChangeSelectionPanel.setOpaque(false);
+        equipmentChangeSelectionPanel.setLayout(new BorderLayout());
+        equipmentChangeSelectionPanel.setOpaque(false);
 
         JPanel equipmentManagementSelectionGrid = makeAircraftSelectionGrid();
         JPanel replacementAircraftSelectionPanel = makeReplacementAircraftSelectionPanel();
-        JPanel equipmentReplaceConfirmationPanel = makeEquipmentSelectionConfirmationPanel();
 
-        equipmentManagementSelectionPanel.add(equipmentManagementSelectionGrid, BorderLayout.NORTH);
-        equipmentManagementSelectionPanel.add(replacementAircraftSelectionPanel, BorderLayout.CENTER);
-        equipmentManagementSelectionPanel.add(equipmentReplaceConfirmationPanel, BorderLayout.SOUTH);
+        equipmentChangeSelectionPanel.add(equipmentManagementSelectionGrid, BorderLayout.NORTH);
+        equipmentChangeSelectionPanel.add(replacementAircraftSelectionPanel, BorderLayout.SOUTH);
 
-        return equipmentManagementSelectionPanel;
+        return equipmentChangeSelectionPanel;
     }
 
     private JPanel makeAircraftSelectionGrid() throws PWCGException
     {
-        JPanel equipmentSelectionGrid = new JPanel();
-        equipmentSelectionGrid.setOpaque(false);
-        equipmentSelectionGrid.setLayout(new GridLayout(0, 1));
+        JPanel equipmentChangeSelectionGrid = new JPanel();
+        equipmentChangeSelectionGrid.setOpaque(false);
+        equipmentChangeSelectionGrid.setLayout(new GridLayout(0, 1));
+        equipmentChangeSelectionGrid.setAlignmentX(Component.LEFT_ALIGNMENT);
         
         SquadronMember referencePlayer = campaign.getReferencePlayer();
         Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(referencePlayer.getSquadronId());
 
         JLabel titleLabel = PWCGButtonFactory.makePaperLabelLarge("Select Planes To Change");
-        equipmentSelectionGrid.add(titleLabel);
+        equipmentChangeSelectionGrid.add(titleLabel);
 
         for (int serialNumber : equipment.getActiveEquippedPlanes().keySet())
         {
             EquippedPlane plane = equipment.getEquippedPlane(serialNumber);
+            if (plane.isEquipmentRequest())
+            {
+                continue;
+            }
+            
             JCheckBox aircraftCheckBox = makeCheckBox(plane.getDisplayName());
-            aircraftChecklist.put(plane.getSerialNumber(), aircraftCheckBox);
-            equipmentSelectionGrid.add(aircraftCheckBox);
+            aircraftChangeChecklist.put(plane.getSerialNumber(), aircraftCheckBox);
+            equipmentChangeSelectionGrid.add(aircraftCheckBox);
         }
         
-        for (int i = 0; i < 3; ++i)
+        for (int i = 0; i < 1; ++i)
         {
             JLabel spacer = new JLabel("     ");
             spacer.setOpaque(false);
-            equipmentSelectionGrid.add(spacer);
+            equipmentChangeSelectionGrid.add(spacer);
         }
 
-        JPanel equipmentSelectionPanel = new JPanel(new BorderLayout());
-        equipmentSelectionPanel.setOpaque(false);
-        equipmentSelectionPanel.add(equipmentSelectionGrid, BorderLayout.NORTH);
+        JPanel equipmentChangePanel = new JPanel(new BorderLayout());
+        equipmentChangePanel.setOpaque(false);
+        equipmentChangePanel.add(equipmentChangeSelectionGrid, BorderLayout.NORTH);
 
-        return equipmentSelectionPanel;
+        return equipmentChangePanel;
     }
 
     private JPanel makeReplacementAircraftSelectionPanel() throws PWCGException
@@ -164,13 +236,20 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         
         JPanel replacementDropDownGrid = new JPanel(new GridLayout(0,1));
         replacementDropDownGrid.setOpaque(false);
+
         replacementDropDownGrid.add(titleLabel);
         replacementDropDownGrid.add(replacementAircraftTypeSelector);
+                
+        for (int i = 0; i < 2; ++i)
+        {
+            JLabel spacer = new JLabel("     ");
+            spacer.setOpaque(false);
+            replacementDropDownGrid.add(spacer);
+        }
 
         JPanel replacementDropDownPanel = new JPanel(new BorderLayout());
         replacementDropDownPanel.setOpaque(false);
         replacementDropDownPanel.add(replacementDropDownGrid, BorderLayout.NORTH);
-
         return replacementDropDownPanel;
     }
 
@@ -214,7 +293,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
             }
             else if (action.equalsIgnoreCase("ChangeEquipment"))
             {
-                changeEquipment();
+                processEquipmentRequests();
             }
         }
         catch (Exception e)
@@ -224,32 +303,55 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         }
     }
 
-    private void changeEquipment() throws PWCGException
+    private void processEquipmentRequests() throws PWCGException
+    {
+        changeRequestedPlanes();        
+        retireRequestedPlanes();        
+        campaign.write();
+        updateEquipmentChangeUI();
+    }
+
+    private void changeRequestedPlanes() throws PWCGException
     {
         List<Integer> serialNumbersOfChangedPlanes = new ArrayList<>();
-        for (int serialNumber : aircraftChecklist.keySet())
+        for (int serialNumber : aircraftChangeChecklist.keySet())
         {
-            JCheckBox checkBox = aircraftChecklist.get(serialNumber);
+            JCheckBox checkBox = aircraftChangeChecklist.get(serialNumber);
             if (checkBox.isSelected())
             {
                 serialNumbersOfChangedPlanes.add(serialNumber);
             }
         }
         
-        if (serialNumbersOfChangedPlanes.isEmpty())
+        if (!serialNumbersOfChangedPlanes.isEmpty())
         {
-            return;
+            String planeTypeToChangeTo = (String) replacementAircraftTypeSelector.getSelectedItem();
+            
+            SquadronMember referencePlayer = campaign.getReferencePlayer();
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(referencePlayer.getSquadronId());
+    
+            campaign.getEquipmentManager().actOnEquipmentRequest(squadron, serialNumbersOfChangedPlanes, planeTypeToChangeTo);
         }
-        
-        String planeTypeToChangeTo = (String) replacementAircraftTypeSelector.getSelectedItem();
-        
-        SquadronMember referencePlayer = campaign.getReferencePlayer();
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(referencePlayer.getSquadronId());
+    }
 
-        campaign.getEquipmentManager().replaceAircraftForSquadron(squadron, serialNumbersOfChangedPlanes, planeTypeToChangeTo);
-        campaign.write();
+    private void retireRequestedPlanes() throws PWCGException
+    {
+        for (int serialNumber : aircraftRetireChecklist.keySet())
+        {
+            JCheckBox checkBox = aircraftRetireChecklist.get(serialNumber);
+            if (!checkBox.isSelected())
+            {
+                continue;
+            }
+            
+            campaign.getEquipmentManager().destroyPlane(serialNumber, campaign.getDate());
+        }
+    }
 
-        aircraftChecklist.clear();
+    private void updateEquipmentChangeUI() throws PWCGException
+    {
+        aircraftRetireChecklist.clear();
+        aircraftChangeChecklist.clear();
         replacementAircraftTypeSelector = null;
         this.remove(centerPanel);
 

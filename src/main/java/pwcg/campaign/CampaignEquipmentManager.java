@@ -165,7 +165,7 @@ public class CampaignEquipmentManager
     }
 
 
-    public void replaceAircraftForSquadron(Squadron squadron, List<Integer> serialNumbersOfChangedPlanes, String planeTypeToChangeTo) throws PWCGException
+    public void actOnEquipmentRequest(Squadron squadron, List<Integer> serialNumbersOfChangedPlanes, String planeTypeToChangeTo) throws PWCGException
     {
         for (int serialNumber : serialNumbersOfChangedPlanes)
         {
@@ -178,6 +178,7 @@ public class CampaignEquipmentManager
             PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
             PlaneType planeType = planeTypeFactory.getPlaneByDisplayName(planeTypeToChangeTo);
             EquippedPlane equippedPlane = PlaneEquipmentFactory.makePlaneForSquadron(campaign, planeType.getType(), squadron.getSquadronId());
+            equippedPlane.setEquipmentRequest(true);
             squadronEquipment.addEquippedPlaneToSquadron(campaign, squadron.getSquadronId(), equippedPlane);
         }
     }
