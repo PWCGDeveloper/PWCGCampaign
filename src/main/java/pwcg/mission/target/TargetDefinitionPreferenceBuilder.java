@@ -55,6 +55,11 @@ public class TargetDefinitionPreferenceBuilder
         {
             targetTypes.addAll(addTransportTargets());
         }
+
+        if (flightInformation.getFlightType() == FlightTypes.RAID)
+        {
+            targetTypes.addAll(addRaidTargets());
+        }
     }
 
     private List<TargetType> addTransportTargets()
@@ -67,6 +72,21 @@ public class TargetDefinitionPreferenceBuilder
         huntTargetTypes.add(TargetType.TARGET_TRANSPORT);
         huntTargetTypes.add(TargetType.TARGET_TRANSPORT);
         huntTargetTypes.add(TargetType.TARGET_SHIPPING);
+        Collections.shuffle(huntTargetTypes);
+        return huntTargetTypes;
+    }
+
+    private List<TargetType> addRaidTargets()
+    {
+        List<TargetType> huntTargetTypes = new ArrayList<>();
+        huntTargetTypes.add(TargetType.TARGET_AIRFIELD);
+        huntTargetTypes.add(TargetType.TARGET_AIRFIELD);
+        huntTargetTypes.add(TargetType.TARGET_AIRFIELD);
+        huntTargetTypes.add(TargetType.TARGET_TRAIN);
+        huntTargetTypes.add(TargetType.TARGET_TRAIN);
+        huntTargetTypes.add(TargetType.TARGET_TRAIN);
+        huntTargetTypes.add(TargetType.TARGET_BRIDGE);
+        huntTargetTypes.add(TargetType.TARGET_BRIDGE);
         Collections.shuffle(huntTargetTypes);
         return huntTargetTypes;
     }
