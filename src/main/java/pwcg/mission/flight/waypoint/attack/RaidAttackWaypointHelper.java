@@ -30,11 +30,36 @@ public class RaidAttackWaypointHelper
 	
 	public void createTargetWaypoints() throws PWCGException  
 	{
-		McuWaypoint targetPopupWP = createRaidTargetApproachWaypoint();
+        createRaidTargetApproachWaypoint();
+        McuWaypoint targetPopupWP = createRaidTargetPopupWaypoint();
 		createRaidEgressWaypoint(targetPopupWP);		
 	}
 
-	private McuWaypoint createRaidTargetApproachWaypoint() throws PWCGException  
+    private McuWaypoint createRaidTargetApproachWaypoint() throws PWCGException  
+    {
+        Coordinate coord = calculateTargetAppoachCoords();
+        McuWaypoint targetApproachWP = WaypointFactory.createTargetApproachWaypointType();      
+        targetApproachWP.setTriggerArea(McuWaypoint.COMBAT_AREA);
+        targetApproachWP.setSpeed(flight.getFlightCruisingSpeed());
+        targetApproachWP.setPosition(coord);    
+        targetApproachWP.setTargetWaypoint(false);
+        waypointsBefore.add(targetApproachWP);  
+        
+        return targetApproachWP;
+    }
+
+    private Coordinate calculateTargetAppoachCoords() throws PWCGException
+    {
+        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        int approachDistance = productSpecificConfiguration.getBombFinalApproachDistance() + 2000;
+
+        double angleFromTargetToIngress = MathUtils.calcAngle(flight.getTargetDefinition().getPosition().copy(), ingressPosition.copy());
+        Coordinate targetApproachCoordinates = MathUtils.calcNextCoord(flight.getTargetDefinition().getPosition(), angleFromTargetToIngress, approachDistance);
+        targetApproachCoordinates.setYPos(attackAltitude);
+        return targetApproachCoordinates;
+    }
+
+	private McuWaypoint createRaidTargetPopupWaypoint() throws PWCGException  
 	{
 		Coordinate coord = calculateTargetPopupCoords();
 
@@ -81,7 +106,7 @@ public class RaidAttackWaypointHelper
         double angleFromTarget = MathUtils.calcAngle(targetPopupWP.getPosition(), flight.getTargetDefinition().getPosition());
         double angleEgressFromTarget = MathUtils.adjustAngle(angleFromTarget, 240);
         Coordinate egressCoordinate = MathUtils.calcNextCoord(flight.getTargetDefinition().getPosition(), angleEgressFromTarget, bombTargetEgressDistance);
-        egressCoordinate.setYPos(ingressPosition.getYPos());
+        egressCoordinate.setYPos(attackAltitude);
 		return egressCoordinate;
 	}
 

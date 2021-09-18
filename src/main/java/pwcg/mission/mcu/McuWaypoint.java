@@ -99,9 +99,14 @@ public class McuWaypoint extends BaseFlightMcu implements Cloneable
         this.priority = priority;
     }
 
-    public void setWaypointAltitude(int altitude)
+    public void setWaypointAltitude(double altitude)
     {
         this.position.setYPos(altitude);
+    }
+
+    public double getWaypointAltitude()
+    {
+        return this.position.getYPos();
     }
 
     public WaypointAction getWpAction()

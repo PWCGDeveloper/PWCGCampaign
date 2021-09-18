@@ -36,6 +36,7 @@ public class RaiderAttackWaypointFactory
         missionPointSet.setAttackSequence(attackMcuSequence);
         
         McuWaypoint egressWaypoint = EgressWaypointGenerator.createEgressWaypoint(flight, ingressWaypoint.getPosition());
+        egressWaypoint.setWaypointAltitude(ingressWaypoint.getWaypointAltitude());
         missionPointSet.addWaypointAfter(egressWaypoint);
 
         return missionPointSet;
