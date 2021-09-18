@@ -21,6 +21,8 @@ import pwcg.mission.ground.BattleSize;
 
 public class AssaultDefinitionGenerator
 {
+    private static final int BATTLE_SEGMENT_SPACING = 2;
+
     public static final int DISTANCE_BETWEEN_COMBATANTS = 200;
 
     private Campaign campaign;
@@ -145,9 +147,9 @@ public class AssaultDefinitionGenerator
     private List<Coordinate> getDefensePositions(ICountry defendingCountry, BattleSize battleSize) throws PWCGException
     {
         FrontLinesForMap frontLines = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
-        int centerIndex = frontLines.findIndexForClosestPosition(assaultPosition, defendingCountry.getSide());
-
         int numAssaultSegments = AssaultDefinitionRange.determineNumberOfAssaultSegments(battleSize);
+
+        int centerIndex = calculateCenterIndex(defendingCountry, frontLines, numAssaultSegments);
 
         List<Coordinate> assaultSegmentDefensePositions = new ArrayList<>();
         if (numAssaultSegments == 1)
@@ -160,7 +162,11 @@ public class AssaultDefinitionGenerator
             int startFrontIndex = centerIndex - numAssaultSegments;
             for (int i = 0; i < numAssaultSegments; ++i)
             {
-                int assaultSegmentIndex = startFrontIndex + (i * 2);
+                int assaultSegmentIndex = startFrontIndex + (i * BATTLE_SEGMENT_SPACING);
+                if (!isBattleIndexValid(defendingCountry, frontLines, assaultSegmentIndex))
+                {
+                    continue;
+                }
                 Coordinate assaultSegmentDefensePosition = frontLines.getCoordinates(assaultSegmentIndex, defendingCountry.getSide());
                 assaultSegmentDefensePositions.add(assaultSegmentDefensePosition);
             }
@@ -169,6 +175,37 @@ public class AssaultDefinitionGenerator
         return assaultSegmentDefensePositions;
     }
 
+    private boolean isBattleIndexValid(ICountry defendingCountry, FrontLinesForMap frontLines, int assaultSegmentIndex) throws PWCGException
+    {
+        if (assaultSegmentIndex >= (frontLines.getFrontLines(defendingCountry.getSide()).size() - BATTLE_SEGMENT_SPACING))
+        {
+            return false;
+        }
+        
+        if (assaultSegmentIndex <= BATTLE_SEGMENT_SPACING)
+        {
+            return false;
+        }
+        
+        return true;
+    }
+
+    private int calculateCenterIndex(ICountry defendingCountry, FrontLinesForMap frontLines, int numAssaultSegments) throws PWCGException
+    {
+        int centerIndex = frontLines.findIndexForClosestPosition(assaultPosition, defendingCountry.getSide());
+        while (centerIndex < (BATTLE_SEGMENT_SPACING * (numAssaultSegments + 1)))
+        {
+            ++centerIndex;
+        }
+
+        int numberOfIndexes = frontLines.getFrontLines(defendingCountry.getSide()).size();
+        while (centerIndex > (numberOfIndexes - (BATTLE_SEGMENT_SPACING * (numAssaultSegments + 1))))
+        {
+            --centerIndex;
+        }
+        return centerIndex;
+    }
+    
     private Coordinate getAssaultPositionAcrossFromAssaultingUnit(Side assaultingSide, Coordinate defensePosition) throws PWCGException
     {
         FrontLinesForMap frontLines = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
