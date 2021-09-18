@@ -58,6 +58,4 @@ public interface IFlight
     void setAssociatedFlight(IFlight associatedFlight);
 
     IFlight getAssociatedFlight();
-
-    void buildBingoOrdnanceSequence() throws PWCGException;
 }

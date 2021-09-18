@@ -30,14 +30,4 @@ public class AirGroundAttackMcuSequenceFactory
         attackMcuSequence.createAttackSequence(maxAttackTimeSeconds, bingoLoiterTimeSeconds);        
         return attackMcuSequence;
     }
-    
-    public static BingoOrdnanceMcuSequence buildBingoOrdnanceMcuSequence(
-            IFlight flight,
-            int bingoLoiterTimeSeconds, 
-            int egressWaypointIndex) throws PWCGException
-    {
-        BingoOrdnanceMcuSequence attackMcuSequence = new BingoOrdnanceMcuSequence(flight);
-        attackMcuSequence.createBingoBombsSequence(bingoLoiterTimeSeconds, egressWaypointIndex);        
-        return attackMcuSequence;
-    }
 }

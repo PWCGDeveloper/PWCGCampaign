@@ -27,11 +27,6 @@ public class MissionFreeHuntTriggerBuilder
         }
     }
 
-    private void addBingoOrdnanceSequence(IFlight playerFlight) throws PWCGException
-    {
-        playerFlight.buildBingoOrdnanceSequence();
-    }
-
     private void addTargetSequenceToGroundUnits(IFlight playerFlight) throws PWCGException
     {
         Side enemySide = playerFlight.getSquadron().determineEnemySide();
