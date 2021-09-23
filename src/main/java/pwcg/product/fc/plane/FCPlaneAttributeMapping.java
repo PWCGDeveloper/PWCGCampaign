@@ -17,6 +17,7 @@ public enum FCPlaneAttributeMapping implements IPlaneAttributeMapping
 
     NIEUPORT28("nieuport28"),
     SPAD7EARLY("spad7early"),
+    SPAD7LATE("spad7late"),
     SPAD13("spad13"),
 
     SE5A("se5a"),

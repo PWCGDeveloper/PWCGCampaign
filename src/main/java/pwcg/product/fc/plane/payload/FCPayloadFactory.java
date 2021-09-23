@@ -72,6 +72,10 @@ public class FCPayloadFactory implements IPayloadFactory
         {
             return new Spad7EarlyPayload(planeType);
         }
+        else if (attributeMapping == FCPlaneAttributeMapping.SPAD7LATE)
+        {
+            return new Spad7LatePayload(planeType);
+        }
         else if (attributeMapping == FCPlaneAttributeMapping.SPAD13)
         {
             return new Spad13Payload(planeType);

@@ -1,8 +1,18 @@
+13.3.0
+Added SPAD VII 180 HP
+- Modified SPAD VII 150 HP to be removed earlier
+- Modified SPAD XIII to be added a little later
+
+
 13.2.0
 Added Raider role and raid mission
 Added tank buster, train buster, and anti shipping roles
 Added ability to select role for mission prior to generation
+Made user chosen aircraft not replaceable during AAR resupply
+Added ability to remove user chosen planes from inventory
+- Removed aircraft will leave a hole in the inventory until the next resupply period.
 Fixed situation where airfield location could be incorrectly identified as a target
+Fixed incorrect choice of front locations for dome battles
 
 13.1.0
 Added SPAD VII Early, Pfalz D.XII, and Airco DH4

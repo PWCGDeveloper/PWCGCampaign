@@ -15,7 +15,7 @@
 	"desc": "",
 	"cruisingSpeed": 140,
 	"climbOutRate": 160,
-	"goodness": 50,
+	"goodness": 55,
 	"range": 200,
 	"isFlyable": true,
 	"isNovice": false,
@@ -24,6 +24,6 @@
 		"FIGHTER"
 	],
 	"introduction": "19161001",
-	"endProduction": "19170801",
-	"withdrawal": "19170901"
+	"endProduction": "19170601",
+	"withdrawal": "19170801"
 }
