@@ -16,7 +16,7 @@ public abstract class Effect implements Cloneable
     protected String name = "Effect";
     protected int index;
     protected int linkTrId = 0;
-    protected Coordinate position = new Coordinate();;
+    protected Coordinate position = new Coordinate();
     protected Orientation orientation = new Orientation();
     protected String script = "";
     protected String model = "";

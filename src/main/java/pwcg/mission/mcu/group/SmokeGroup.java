@@ -7,6 +7,7 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.location.Orientation;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.mcu.McuCheckZone;
@@ -34,13 +35,13 @@ public class SmokeGroup
         this.triggerUnits = triggerUnits;
     }
 
-    public void buildSmokeGroup(Coordinate smokeEffectPosition, SmokeEffect requestedSmokeEffect) throws PWCGException 
+    public void buildSmokeGroup(Coordinate smokeEffectPosition, int smokeDirection, SmokeEffect requestedSmokeEffect) throws PWCGException 
     {
-        this.position = smokeEffectPosition;
+        this.position = smokeEffectPosition.copy();
         position.setYPos(0.0);
         missionBeginUnit = new MissionBeginUnit(position.copy());            
 
-        addSmokeEffect(requestedSmokeEffect);
+        addSmokeEffect(requestedSmokeEffect, smokeDirection);
         
         buildActivate();
         setTimers();
@@ -50,7 +51,7 @@ public class SmokeGroup
         setNames();
     }
 
-    private void addSmokeEffect(SmokeEffect requestedSmokeEffect) throws PWCGException
+    private void addSmokeEffect(SmokeEffect requestedSmokeEffect, int smokeDirection) throws PWCGException
     {
         Effect smokeEffect = null;
         if (requestedSmokeEffect == SmokeEffect.SMOKE_CITY)
@@ -67,6 +68,7 @@ public class SmokeGroup
         }
         
         smokeEffect.setPosition(position);
+        smokeEffect.setOrientation(new Orientation(smokeDirection));
         
         smokeEffect.populateEntity();
         smokeEffects.add(smokeEffect);

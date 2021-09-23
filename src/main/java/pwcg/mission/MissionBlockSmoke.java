@@ -138,8 +138,10 @@ public class MissionBlockSmoke
         smoketriggers.addAll(triggerPlanes);
         smoketriggers.addAll(triggerAAATrucks);
 
-        SmokeGroup smokeGroup = new SmokeGroup(smoketriggers);   
-        smokeGroup.buildSmokeGroup(position, smokeEffect);
+        SmokeGroup smokeGroup = new SmokeGroup(smoketriggers);
+        
+        int smokeDirection = mission.getWeather().getWindDirection();
+        smokeGroup.buildSmokeGroup(position, smokeDirection, smokeEffect);
         addSmokingPosition(smokeGroup);
     }
 
