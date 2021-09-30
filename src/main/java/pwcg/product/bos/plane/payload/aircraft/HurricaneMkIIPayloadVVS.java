@@ -76,7 +76,7 @@ public class HurricaneMkIIPayloadVVS
 
     private int createStandardPayload(IFlight flight) throws PWCGException
     {
-        int selectedPrimaryPayloadId = 1;
+        int selectedPrimaryPayloadId = 0;
         if (date.after(shvakIntroDate))
         {
             int diceRoll = RandomNumberGenerator.getRandom(100);

@@ -16,11 +16,28 @@ import pwcg.mission.target.TargetCategory;
 
 public class Fw190A5Payload extends PlanePayload implements IPlanePayload
 {
+    private Date mkFFWingGunsIntroDate;
+    private Date u17IntroDate;
+
     public Fw190A5Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
         noOrdnancePayloadElement = 0;
     }
+
+    @Override
+    protected void createWeaponsModAvailabilityDates()
+    {
+        try
+        {
+            u17IntroDate = DateUtils.getDateYYYYMMDD("19430506");
+            mkFFWingGunsIntroDate = DateUtils.getDateYYYYMMDD("19430506");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }    
 
     protected void initialize()
 	{
@@ -74,7 +91,7 @@ public class Fw190A5Payload extends PlanePayload implements IPlanePayload
 
     private void setU17Payload(IFlight flight) throws PWCGException
     {
-        if (date.before(DateUtils.getDateYYYYMMDD("19430506")))
+        if (date.before(u17IntroDate))
         {
             setGenericBombLoad(flight);
         }
@@ -111,7 +128,7 @@ public class Fw190A5Payload extends PlanePayload implements IPlanePayload
 
     private void selectInterceptPayload() throws PWCGException
     {
-        if (date.before(DateUtils.getDateYYYYMMDD("19430506")))
+        if (date.before(mkFFWingGunsIntroDate))
         {
             selectedPrimaryPayloadId = 0;
         }
@@ -131,21 +148,13 @@ public class Fw190A5Payload extends PlanePayload implements IPlanePayload
 
     private void selectDefaultPayload() throws PWCGException
     {
-        if (date.before(DateUtils.getDateYYYYMMDD("19430506")))
+        if (date.before(mkFFWingGunsIntroDate))
         {
             selectedPrimaryPayloadId = 0;
         }
         else
         {
-            int diceRoll = RandomNumberGenerator.getRandom(100);
-            if (diceRoll < 40)
-            {
-                selectedPrimaryPayloadId = 4;
-            }
-            else
-            {
-                selectedPrimaryPayloadId = 0;
-            }
+            selectedPrimaryPayloadId = 4;
         }
     }    
 

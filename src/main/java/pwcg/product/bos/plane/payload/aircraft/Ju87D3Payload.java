@@ -71,7 +71,7 @@ public class Ju87D3Payload extends PlanePayload
         }
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectArmorAttackPayload();
+            selectAttackPayload(flight);
         }
         return selectedPrimaryPayloadId;
     }    
@@ -85,7 +85,7 @@ public class Ju87D3Payload extends PlanePayload
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectArmorAttackPayload();
+            selectedPrimaryPayloadId = 2;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
@@ -101,15 +101,22 @@ public class Ju87D3Payload extends PlanePayload
         }
     }
 
-    private void selectArmorAttackPayload() throws PWCGException
+    private void selectAttackPayload(IFlight flight) throws PWCGException
     {
         if (date.before(bk37IntroDate))
         {
-            selectedPrimaryPayloadId = 2;
+            selectDiveBombPayload(flight);
         }
         else
         {
-            selectedPrimaryPayloadId = 9;
+            if (flight.getTargetDefinition().getTargetCategory() != TargetCategory.TARGET_CATEGORY_STRUCTURE)
+            {
+                selectedPrimaryPayloadId = 9;
+            }
+            else
+            {
+                selectedPrimaryPayloadId = 6;
+            }
         }
     }
 

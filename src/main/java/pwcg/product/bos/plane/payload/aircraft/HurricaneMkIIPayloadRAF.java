@@ -49,10 +49,10 @@ public class HurricaneMkIIPayloadRAF
 
     private int createStandardPayload(IFlight flight) throws PWCGException
     {
-        int selectedPrimaryPayloadId = 1;
+        int selectedPrimaryPayloadId = 0;
         if (date.before(hispanoIntroDate))
         {
-            selectedPrimaryPayloadId = 1;
+            selectedPrimaryPayloadId = 0;
         }
         else
         {
@@ -95,6 +95,7 @@ public class HurricaneMkIIPayloadRAF
         {
             selectedPrimaryPayloadId = 2;
         }
+        else
         {
             selectedPrimaryPayloadId = 13;
         }

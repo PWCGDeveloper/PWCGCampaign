@@ -186,11 +186,6 @@ public class ModAvailabilityReader
 
         normalizedMask += modMask.substring(2);
         
-        if (normalizedMask.length() != 12)
-        {
-            System.out.print("foo");
-        }
-        
         return normalizedMask;
     }
 }
