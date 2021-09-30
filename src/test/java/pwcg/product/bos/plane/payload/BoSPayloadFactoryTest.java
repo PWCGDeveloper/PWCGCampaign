@@ -12,6 +12,7 @@ import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.DateUtils;
 import pwcg.product.bos.plane.BosPlaneAttributeMapping;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -34,7 +35,7 @@ public class BoSPayloadFactoryTest
 		{
 		    System.out.println(bosPlaneType.getType());
 		    
-			IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosPlaneType.getType());
+			IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosPlaneType.getType(), DateUtils.getDateYYYYMMDD("19420801"));
 			assert(payload != null);
 			
 			if (bosPlaneType.getType().equals(BosPlaneAttributeMapping.HURRICANE_MKII.getPlaneType()))

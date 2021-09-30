@@ -1,6 +1,7 @@
 package pwcg.gui.rofmap.brief;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.JComponent;
@@ -28,9 +29,9 @@ public class BriefingPayloadPicker
         this.briefingData = briefingData;
     }
 
-    public int pickPayload(String planeType) throws PWCGException 
+    public int pickPayload(String planeType, Date date) throws PWCGException 
     {       
-        List<String> payloadDescriptions = getAvailablePayloadTypes(planeType);
+        List<String> payloadDescriptions = getAvailablePayloadTypes(planeType, date);
         Object[] possibilities = payloadDescriptions.toArray();
         
         String payloadDescription = (String)JOptionPane.showInputDialog(
@@ -42,15 +43,15 @@ public class BriefingPayloadPicker
                 possibilities, 
                 "");
         
-        int pickedPayload = getPayloadIndex(planeType, payloadDescription);
+        int pickedPayload = getPayloadIndex(planeType, payloadDescription, date);
         
         return pickedPayload;
     }    
 
-    private List<String> getAvailablePayloadTypes(String planeTypeName) throws PWCGException 
+    private List<String> getAvailablePayloadTypes(String planeTypeName, Date date) throws PWCGException 
     {
         IPayloadFactory payloadfactory = PWCGContext.getInstance().getPayloadFactory();
-        IPlanePayload payload = payloadfactory.createPlanePayload(planeTypeName);
+        IPlanePayload payload = payloadfactory.createPlanePayload(planeTypeName, date);
         
         List<String> payloadDescriptions = new ArrayList<>();
         for (PayloadDesignation payloadDesignation : payload.getPayloadDesignations())
@@ -64,10 +65,10 @@ public class BriefingPayloadPicker
         return payloadDescriptions;
     }
 
-    private int getPayloadIndex(String planeTypeName, String payloadDescription) throws PWCGException
+    private int getPayloadIndex(String planeTypeName, String payloadDescription, Date date) throws PWCGException
     {
         IPayloadFactory payloadfactory = PWCGContext.getInstance().getPayloadFactory();
-        IPlanePayload payload = payloadfactory.createPlanePayload(planeTypeName);
+        IPlanePayload payload = payloadfactory.createPlanePayload(planeTypeName, date);
         
         return payload.getPayloadIdByDescription(payloadDescription);
     }

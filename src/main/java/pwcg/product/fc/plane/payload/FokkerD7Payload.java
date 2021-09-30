@@ -1,5 +1,7 @@
 package pwcg.product.fc.plane.payload;
 
+import java.util.Date;
+
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
@@ -8,9 +10,9 @@ import pwcg.mission.flight.IFlight;
 
 public class FokkerD7Payload extends PlanePayload implements IPlanePayload
 {
-    public FokkerD7Payload(PlaneType planeType)
+    public FokkerD7Payload(PlaneType planeType, Date date)
     {
-        super(planeType);
+        super(planeType, date);
         noOrdnancePayloadElement = 0;
     }
 
@@ -32,7 +34,7 @@ public class FokkerD7Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        FokkerD7Payload clone = new FokkerD7Payload(planeType);
+        FokkerD7Payload clone = new FokkerD7Payload(planeType, date);
         return super.copy(clone);
     }
     

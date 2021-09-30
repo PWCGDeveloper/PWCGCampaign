@@ -1,17 +1,21 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.Date;
+
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 
 public class Bf109G6LatePayload extends Bf109Payload implements IPlanePayload
 {
-    public Bf109G6LatePayload(PlaneType planeType)
+    public Bf109G6LatePayload(PlaneType planeType, Date date)
     {
-        super(planeType);
+        super(planeType, date);
         noOrdnancePayloadElement = 0;
     }
 
@@ -31,12 +35,12 @@ public class Bf109G6LatePayload extends Bf109Payload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Bf109G6LatePayload clone = new Bf109G6LatePayload(planeType);
+        Bf109G6LatePayload clone = new Bf109G6LatePayload(planeType, date);
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight)
+    public int createWeaponsPayload(IFlight flight) throws PWCGException
     {
         selectedPrimaryPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
@@ -67,16 +71,16 @@ public class Bf109G6LatePayload extends Bf109Payload implements IPlanePayload
         }
     }    
 
-    protected void selectInterceptPayload()
+    protected void selectInterceptPayload() throws PWCGException
     {
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 30)
         {
-            selectedPrimaryPayloadId = 3;
+            setGunPodPayload();
         }
         else if (diceRoll < 60)
         {
-            selectedPrimaryPayloadId = 4;
+            setMortarPayload();
         }
         else if (diceRoll < 90)
         {
@@ -87,4 +91,28 @@ public class Bf109G6LatePayload extends Bf109Payload implements IPlanePayload
             selectedPrimaryPayloadId = 11;
         }
     }    
+
+    private void setGunPodPayload() throws PWCGException
+    {
+        if (date.before(DateUtils.getDateYYYYMMDD("19440902")))
+        {
+            selectedPrimaryPayloadId = 0;
+        }
+        else
+        {
+            selectedPrimaryPayloadId = 3;
+        }
+    }
+
+    private void setMortarPayload() throws PWCGException
+    {
+        if (date.before(DateUtils.getDateYYYYMMDD("19440902")))
+        {
+            selectedPrimaryPayloadId = 0;
+        }
+        else
+        {
+            selectedPrimaryPayloadId = 4;
+        }
+    }
 }

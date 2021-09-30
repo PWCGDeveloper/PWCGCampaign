@@ -58,7 +58,11 @@ public class WW2PayloadTest
 		
         for (PlaneType planeType : PWCGContext.getInstance().getPlaneTypeFactory().getAllPlanes())
         {
-        	IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(planeType.getType());
+            if (planeType.getType().equals("fw190a6"))
+            {
+                System.out.println("foo");
+            }
+        	IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(planeType.getType(), campaign.getDate());
         	testPatrolPayload(payloadGenerator);
         	testInterceptPayload(payloadGenerator);
         	testBombPayloads(payloadGenerator);

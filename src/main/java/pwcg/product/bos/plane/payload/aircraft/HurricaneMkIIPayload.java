@@ -1,21 +1,40 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.Date;
+
 import pwcg.campaign.context.Country;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.DateUtils;
 import pwcg.mission.flight.IFlight;
 
 public class HurricaneMkIIPayload extends PlanePayload implements IPlanePayload
 {    
-    public HurricaneMkIIPayload(PlaneType planeType)
+    private Date boostIntroDate;
+
+    public HurricaneMkIIPayload(PlaneType planeType, Date date)
     {
-        super(planeType);
+        super(planeType, date);
         noOrdnancePayloadElement = 12;
     }
 
+    @Override
+    protected void createWeaponsModAvailabilityDates()
+    {
+        try
+        {
+            boostIntroDate = DateUtils.getDateYYYYMMDD("19430102");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }    
+
+    @Override
     protected void initialize()
     {        
         setAvailablePayload(-3, "100000000", PayloadElement.AIR_FILTER);
@@ -52,7 +71,7 @@ public class HurricaneMkIIPayload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        HurricaneMkIIPayload clone = new HurricaneMkIIPayload(planeType);
+        HurricaneMkIIPayload clone = new HurricaneMkIIPayload(planeType, date);
 
         return super.copy(clone);
     }
@@ -63,12 +82,12 @@ public class HurricaneMkIIPayload extends PlanePayload implements IPlanePayload
         selectedPrimaryPayloadId = 0;
         if (flight.getSquadron().getCountry().getCountry() == Country.RUSSIA)
         {
-            HurricaneMkIIPayloadVVS hurricaneMkIIPayloadVVS = new HurricaneMkIIPayloadVVS();
+            HurricaneMkIIPayloadVVS hurricaneMkIIPayloadVVS = new HurricaneMkIIPayloadVVS(date);
             selectedPrimaryPayloadId = hurricaneMkIIPayloadVVS.createWeaponsPayload(flight);
         }
         else
         {
-            HurricaneMkIIPayloadRAF hurricaneMkIIPayloadRAF = new HurricaneMkIIPayloadRAF();
+            HurricaneMkIIPayloadRAF hurricaneMkIIPayloadRAF = new HurricaneMkIIPayloadRAF(date);
             selectedPrimaryPayloadId = hurricaneMkIIPayloadRAF.createWeaponsPayload(flight);
         }
         
@@ -96,5 +115,15 @@ public class HurricaneMkIIPayload extends PlanePayload implements IPlanePayload
         }
 
         return true;
+    }
+
+    @Override
+    protected void loadStockModifications()
+    {
+        stockModifications.add(PayloadElement.MIRROR);
+        if (date.after(boostIntroDate))
+        {
+            stockModifications.add(PayloadElement.LB_14_BOOST);
+        }
     }
 }

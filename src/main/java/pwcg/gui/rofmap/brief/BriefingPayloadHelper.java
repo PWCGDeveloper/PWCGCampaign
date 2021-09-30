@@ -129,7 +129,7 @@ public class BriefingPayloadHelper
     {
         IFlight playerFlight = mission.getMissionFlights().getPlayerFlightForSquadron(briefingAssignmentData.getSquadron().getSquadronId());
         IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
-        IPlanePayload payload = payloadFactory.createPlanePayload(crewPlane.getPlane().getType());
+        IPlanePayload payload = payloadFactory.createPlanePayload(crewPlane.getPlane().getType(), mission.getCampaign().getDate());
         payload.createWeaponsPayload(playerFlight);
         crewPlane.setPayloadId(payload.getSelectedPayloadId());
     }

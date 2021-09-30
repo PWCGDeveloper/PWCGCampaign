@@ -6,7 +6,8 @@
 		"RUSSIA"
 	],
 	"stockModifications": [
-		"MIRROR"
+		"MIRROR",
+		"LB_14_BOOST"
 	],
 	"displayName": "Hurricane Mk.II",
 	"script": "LuaScripts\\WorldObjects\\Planes\\hurricanemkii.txt",

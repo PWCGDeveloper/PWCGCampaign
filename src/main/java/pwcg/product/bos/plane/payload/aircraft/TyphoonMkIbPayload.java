@@ -1,21 +1,45 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.Date;
+
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
+import pwcg.core.utils.DateUtils;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetCategory;
 
 public class TyphoonMkIbPayload extends PlanePayload implements IPlanePayload
 {
-    public TyphoonMkIbPayload(PlaneType planeType)
+    private Date mkIIIRocketsIntroDate;
+    private Date doubleRocketsIntroDate;
+    private Date boostIntroDate;
+
+    public TyphoonMkIbPayload(PlaneType planeType, Date date)
     {
-        super(planeType);
+        super(planeType, date);
         noOrdnancePayloadElement = 0;
     }
 
+    @Override
+    protected void createWeaponsModAvailabilityDates()
+    {
+        try
+        {
+            doubleRocketsIntroDate = DateUtils.getDateYYYYMMDD("19440901");
+            mkIIIRocketsIntroDate = DateUtils.getDateYYYYMMDD("19441216");
+            boostIntroDate = DateUtils.getDateYYYYMMDD("19440628");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }    
+
+    @Override
     protected void initialize()
 	{
         setAvailablePayload(-5, "100000000", PayloadElement.DUST_DEFLECTOR);
@@ -54,7 +78,7 @@ public class TyphoonMkIbPayload extends PlanePayload implements IPlanePayload
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectedPrimaryPayloadId = 7;
+            selectArmorAttackPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
@@ -70,10 +94,32 @@ public class TyphoonMkIbPayload extends PlanePayload implements IPlanePayload
         }
     }
 
+    private void selectArmorAttackPayload()
+    {
+        selectedPrimaryPayloadId = 4;
+        if (date.after(doubleRocketsIntroDate))
+        {
+            int diceRoll = RandomNumberGenerator.getRandom(100);
+            if (diceRoll < 40)
+            {
+                selectedPrimaryPayloadId = 5;
+            }
+        }
+
+        if (date.after(mkIIIRocketsIntroDate))
+        {
+            int diceRoll = RandomNumberGenerator.getRandom(100);
+            if (diceRoll < 40)
+            {
+                selectedPrimaryPayloadId = 7;
+            }
+        }
+    }
+
     @Override
     public IPlanePayload copy()
     {
-    	TyphoonMkIbPayload clone = new TyphoonMkIbPayload(planeType);
+    	TyphoonMkIbPayload clone = new TyphoonMkIbPayload(planeType, date);
         
         return super.copy(clone);
     }
@@ -92,5 +138,16 @@ public class TyphoonMkIbPayload extends PlanePayload implements IPlanePayload
         }
 
         return true;
+    }
+
+    @Override
+    protected void loadStockModifications()
+    {
+        stockModifications.add(PayloadElement.DUST_DEFLECTOR);
+        stockModifications.add(PayloadElement.FOUR_PLADE_PROP);
+        if (date.after(boostIntroDate))
+        {
+            stockModifications.add(PayloadElement.LB_11_BOOST);
+        }
     }
 }

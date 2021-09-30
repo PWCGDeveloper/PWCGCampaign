@@ -1,5 +1,7 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.Date;
+
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
@@ -9,9 +11,9 @@ import pwcg.mission.flight.IFlight;
 
 public class U2VSPayload extends PlanePayload implements IPlanePayload
 {
-    public U2VSPayload(PlaneType planeType)
+    public U2VSPayload(PlaneType planeType, Date date)
     {
-        super(planeType);
+        super(planeType, date);
         noOrdnancePayloadElement = 0;
     }
 
@@ -25,7 +27,7 @@ public class U2VSPayload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        U2VSPayload clone = new U2VSPayload(planeType);
+        U2VSPayload clone = new U2VSPayload(planeType, date);
         return super.copy(clone);
     }
 

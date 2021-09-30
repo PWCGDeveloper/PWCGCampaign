@@ -1,11 +1,14 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.Date;
+
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
@@ -13,9 +16,9 @@ import pwcg.mission.target.TargetCategory;
 
 public class Fw190A5Payload extends PlanePayload implements IPlanePayload
 {
-    public Fw190A5Payload(PlaneType planeType)
+    public Fw190A5Payload(PlaneType planeType, Date date)
     {
-        super(planeType);
+        super(planeType, date);
         noOrdnancePayloadElement = 0;
     }
 
@@ -36,7 +39,7 @@ public class Fw190A5Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Fw190A5Payload clone = new Fw190A5Payload(planeType);
+        Fw190A5Payload clone = new Fw190A5Payload(planeType, date);
         
         return super.copy(clone);
     }
@@ -44,7 +47,7 @@ public class Fw190A5Payload extends PlanePayload implements IPlanePayload
     @Override
     public int createWeaponsPayload(IFlight flight) throws PWCGException
     {
-        selectedPrimaryPayloadId = 0;
+        selectDefaultPayload();
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
             selectGroundAttackPayload(flight);
@@ -61,44 +64,88 @@ public class Fw190A5Payload extends PlanePayload implements IPlanePayload
         PwcgRoleCategory squadronPrimaryRole = flight.getSquadron().determineSquadronPrimaryRoleCategory(flight.getCampaign().getDate());
         if (squadronPrimaryRole == PwcgRoleCategory.ATTACK)
         {
-            selectedPrimaryPayloadId = 6;
+            setU17Payload(flight);
         }
         else
         {
-            selectedPrimaryPayloadId = 1;
-            if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
-            {
-                selectedPrimaryPayloadId = 1;
-            }
-            else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
-            {
-                selectedPrimaryPayloadId = 2;
-            }
-            else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
-            {
-                selectedPrimaryPayloadId = 2;
-            }
-            else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
-            {
-                selectedPrimaryPayloadId = 2;
-            }
-            else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
-            {
-                selectedPrimaryPayloadId = 3;
-            }
+            setGenericBombLoad(flight);
         }
     }
 
-    private void selectInterceptPayload()
+    private void setU17Payload(IFlight flight) throws PWCGException
     {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 60)
+        if (date.before(DateUtils.getDateYYYYMMDD("19430506")))
+        {
+            setGenericBombLoad(flight);
+        }
+        else
+        {
+            selectedPrimaryPayloadId = 6;
+        }
+    }
+
+    private void setGenericBombLoad(IFlight flight)
+    {
+        selectedPrimaryPayloadId = 1;
+        if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
+        {
+            selectedPrimaryPayloadId = 1;
+        }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
+        {
+            selectedPrimaryPayloadId = 2;
+        }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
+        {
+            selectedPrimaryPayloadId = 2;
+        }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
+        {
+            selectedPrimaryPayloadId = 2;
+        }
+        else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
+        {
+            selectedPrimaryPayloadId = 3;
+        }
+    }
+
+    private void selectInterceptPayload() throws PWCGException
+    {
+        if (date.before(DateUtils.getDateYYYYMMDD("19430506")))
         {
             selectedPrimaryPayloadId = 0;
         }
         else
         {
-            selectedPrimaryPayloadId = 5;
+            int diceRoll = RandomNumberGenerator.getRandom(100);
+            if (diceRoll < 40)
+            {
+                selectedPrimaryPayloadId = 5;
+            }
+            else
+            {
+                selectedPrimaryPayloadId = 4;
+            }
+        }
+    }    
+
+    private void selectDefaultPayload() throws PWCGException
+    {
+        if (date.before(DateUtils.getDateYYYYMMDD("19430506")))
+        {
+            selectedPrimaryPayloadId = 0;
+        }
+        else
+        {
+            int diceRoll = RandomNumberGenerator.getRandom(100);
+            if (diceRoll < 40)
+            {
+                selectedPrimaryPayloadId = 4;
+            }
+            else
+            {
+                selectedPrimaryPayloadId = 0;
+            }
         }
     }    
 

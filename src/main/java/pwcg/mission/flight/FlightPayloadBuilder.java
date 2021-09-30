@@ -31,14 +31,14 @@ public class FlightPayloadBuilder
     {
         for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
-            plane.buildPlanePayload(flight);
+            plane.buildPlanePayload(flight, flight.getCampaign().getDate());
         }
     }
 
     private void setFlightPayloadHomogeneous() throws PWCGException
     {
         PlaneMcu leadPlane = flight.getFlightPlanes().getFlightLeader();
-        IPlanePayload payload = leadPlane.buildPlanePayload(flight);
+        IPlanePayload payload = leadPlane.buildPlanePayload(flight, flight.getCampaign().getDate());
         
         for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {

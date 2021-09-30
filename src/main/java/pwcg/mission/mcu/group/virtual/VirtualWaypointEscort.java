@@ -3,6 +3,7 @@ package pwcg.mission.mcu.group.virtual;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.squadron.Squadron;
@@ -41,7 +42,7 @@ public class VirtualWaypointEscort
     public void buildEscort(FlightInformation vwpEscortFlightInformation) throws PWCGException
     {
         buildEscortPlanes(vwpEscortFlightInformation);
-        buildPayloadForEscorts();
+        buildPayloadForEscorts(vwpEscortFlightInformation.getCampaign().getDate());
         buildMcus();
         createTargetAssociations();
         createObjectAssociations();
@@ -91,11 +92,11 @@ public class VirtualWaypointEscort
         escortPlanes = vwpPlaneBuilder.buildVwpPlanes(vwpEscortFlightInformation.getPlanes(), vwpEscortFlightInformation.getFormationType());
     }
 
-    private void buildPayloadForEscorts() throws PWCGException
+    private void buildPayloadForEscorts(Date date) throws PWCGException
     {
         for (PlaneMcu escortPlane : escortPlanes)
         {
-            escortPlane.buildStandardPlanePayload();
+            escortPlane.buildStandardPlanePayload(date);
         }
     }
 

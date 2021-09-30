@@ -50,7 +50,7 @@ public class FW190F2PayloadTest
         Mockito.when(squadron.determineSquadronPrimaryRoleCategory(Mockito.any())).thenReturn(PwcgRoleCategory.FIGHTER);
 		PlaneType fw190A5 = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByType(BosPlaneAttributeMapping.FW190_A5.getPlaneType());
 		IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
-    	IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(fw190A5.getType());
+    	IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(fw190A5.getType(), campaign.getDate());
     	testPatrolPayload(payloadGenerator);
     	testInterceptPayload(payloadGenerator);
     	testGroundAttackPayload(payloadGenerator);
@@ -62,7 +62,7 @@ public class FW190F2PayloadTest
         Mockito.when(squadron.determineSquadronPrimaryRoleCategory(Mockito.any())).thenReturn(PwcgRoleCategory.ATTACK);
 		PlaneType fw190f2 = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByType(BosPlaneAttributeMapping.FW190_A5.getPlaneType());
 		IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
-    	IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(fw190f2.getType());
+    	IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(fw190f2.getType(), campaign.getDate());
     	testGroundAttackPayload(payloadGenerator);
 	}
 

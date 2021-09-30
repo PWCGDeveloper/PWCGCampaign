@@ -1,9 +1,13 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.Date;
+
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
+import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
@@ -11,12 +15,30 @@ import pwcg.mission.target.TargetCategory;
 
 public class Fw190D9Payload extends PlanePayload implements IPlanePayload
 {
-    public Fw190D9Payload(PlaneType planeType)
+    private Date r4mIntroDate;
+    private Date gyroGunsightIntroDate;
+
+    public Fw190D9Payload(PlaneType planeType, Date date)
     {
-        super(planeType);
+        super(planeType, date);
         noOrdnancePayloadElement = 0;
     }
 
+    @Override
+    protected void createWeaponsModAvailabilityDates()
+    {
+        try
+        {
+            r4mIntroDate = DateUtils.getDateYYYYMMDD("19450305");
+            gyroGunsightIntroDate = DateUtils.getDateYYYYMMDD("19450208");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }    
+
+    @Override
     protected void initialize()
 	{        
         setAvailablePayload(-2, "10000000", PayloadElement.BUBBLE_CANOPY);
@@ -32,13 +54,13 @@ public class Fw190D9Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Fw190D9Payload clone = new Fw190D9Payload(planeType);
+        Fw190D9Payload clone = new Fw190D9Payload(planeType, date);
         
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight)
+    public int createWeaponsPayload(IFlight flight) throws PWCGException
     {
         selectedPrimaryPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
@@ -87,8 +109,9 @@ public class Fw190D9Payload extends PlanePayload implements IPlanePayload
         }
     }
 
-    protected void selectInterceptPayload()
+    protected void selectInterceptPayload() throws PWCGException
     {
+        selectedPrimaryPayloadId = 0;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 30)
         {
@@ -96,11 +119,14 @@ public class Fw190D9Payload extends PlanePayload implements IPlanePayload
         }
         else if (diceRoll < 60)
         {
-            selectedPrimaryPayloadId = 8;
-        }
-        else
-        {
-            selectedPrimaryPayloadId = 0;
+            if (date.before(r4mIntroDate))
+            {
+                selectedPrimaryPayloadId = 0;
+            }
+            else
+            {
+                selectedPrimaryPayloadId = 8;
+            }
         }
     }    
 
@@ -120,5 +146,15 @@ public class Fw190D9Payload extends PlanePayload implements IPlanePayload
         }
 
         return true;
+    }
+
+    @Override
+    protected void loadStockModifications()
+    {
+        stockModifications.add(PayloadElement.BUBBLE_CANOPY);
+        if (date.after(gyroGunsightIntroDate))
+        {
+            stockModifications.add(PayloadElement.GYRO_GUNSIGHT);
+        }
     }
 }

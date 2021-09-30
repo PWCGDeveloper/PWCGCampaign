@@ -2,7 +2,7 @@
 Added SPAD VII 180 HP
 - Modified SPAD VII 150 HP to be removed earlier
 - Modified SPAD XIII to be added a little later
-
+Added smoke blows in mission wind direction
 
 13.2.0
 Added Raider role and raid mission

@@ -11,22 +11,18 @@ import pwcg.mission.target.TargetCategory;
 
 public class HurricaneMkIIPayloadRAF
 {
+    private Date date;
     private Date hispanoIntroDate;
+    private Date boforsIntroDate;
 
-    public HurricaneMkIIPayloadRAF()
+    public HurricaneMkIIPayloadRAF(Date date)
     {
+        this.date = date;
     }
 
     public int createWeaponsPayload(IFlight flight) throws PWCGException
     {
-        try
-        {
-            hispanoIntroDate = DateUtils.getDateYYYYMMDD("19410601");
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        createRAFWeaponsModAvailabilityDates();
 
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
@@ -36,12 +32,29 @@ public class HurricaneMkIIPayloadRAF
         {
             return createStandardPayload(flight);
         }        
+    }
+
+    protected void createRAFWeaponsModAvailabilityDates()
+    {
+        try
+        {
+            hispanoIntroDate = DateUtils.getDateYYYYMMDD("19410601");
+            boforsIntroDate = DateUtils.getDateYYYYMMDD("19430102");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }    
 
     private int createStandardPayload(IFlight flight) throws PWCGException
     {
         int selectedPrimaryPayloadId = 1;
-        if (flight.getCampaign().getDate().after(hispanoIntroDate))
+        if (date.before(hispanoIntroDate))
+        {
+            selectedPrimaryPayloadId = 1;
+        }
+        else
         {
             selectedPrimaryPayloadId = 12;
         }
@@ -78,7 +91,10 @@ public class HurricaneMkIIPayloadRAF
     private int selectSoftTargetPayload(IFlight flight) throws PWCGException
     {
         int selectedPrimaryPayloadId = 2;
-        if (flight.getCampaign().getDate().after(hispanoIntroDate))
+        if (date.before(hispanoIntroDate))
+        {
+            selectedPrimaryPayloadId = 2;
+        }
         {
             selectedPrimaryPayloadId = 13;
         }
@@ -89,7 +105,7 @@ public class HurricaneMkIIPayloadRAF
     private int selectArmoredTargetPayload(IFlight flight) throws PWCGException
     {
         int selectedPrimaryPayloadId = 4;
-        if (flight.getCampaign().getDate().before(hispanoIntroDate))
+        if (date.before(hispanoIntroDate))
         {
             selectedPrimaryPayloadId = 4;
         }
@@ -98,19 +114,22 @@ public class HurricaneMkIIPayloadRAF
             selectedPrimaryPayloadId = 14;
         }
 
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 30)
+        if (date.after(boforsIntroDate))
         {
-            selectedPrimaryPayloadId = 15;
+            int diceRoll = RandomNumberGenerator.getRandom(100);
+            if (diceRoll < 30)
+            {
+                selectedPrimaryPayloadId = 15;
+            }
         }
-
+        
         return selectedPrimaryPayloadId;
     }
 
     private int selectMediumTargetPayload(IFlight flight) throws PWCGException
     {
         int selectedPrimaryPayloadId = 2;
-        if (flight.getCampaign().getDate().before(hispanoIntroDate))
+        if (date.before(hispanoIntroDate))
         {
             selectedPrimaryPayloadId = 2;
         }
@@ -125,7 +144,7 @@ public class HurricaneMkIIPayloadRAF
     private int selectHeavyTargetPayload(IFlight flight) throws PWCGException
     {
         int selectedPrimaryPayloadId = 4;
-        if (flight.getCampaign().getDate().before(hispanoIntroDate))
+        if (date.before(hispanoIntroDate))
         {
             selectedPrimaryPayloadId = 4;
         }

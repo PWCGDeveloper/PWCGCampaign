@@ -1,14 +1,16 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.Date;
+
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 
 public class Bf109F2Payload extends Bf109Payload implements IPlanePayload
 {
-    public Bf109F2Payload(PlaneType planeType)
+    public Bf109F2Payload(PlaneType planeType, Date date)
     {
-        super(planeType);
+        super(planeType, date);
         noOrdnancePayloadElement = 0;
     }
 
@@ -27,7 +29,7 @@ public class Bf109F2Payload extends Bf109Payload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Bf109F2Payload clone = new Bf109F2Payload(planeType);
+        Bf109F2Payload clone = new Bf109F2Payload(planeType, date);
         
         return super.copy(clone);
     }

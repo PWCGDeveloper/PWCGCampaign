@@ -1,4 +1,7 @@
+
 package pwcg.product.fc.plane.payload;
+
+import java.util.Date;
 
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
@@ -9,9 +12,9 @@ import pwcg.mission.flight.IFlight;
 
 public class Halberstadtcl2auPayload extends PlanePayload implements IPlanePayload
 {
-    public Halberstadtcl2auPayload(PlaneType planeType)
+    public Halberstadtcl2auPayload(PlaneType planeType, Date date)
     {
-        super(planeType);
+        super(planeType, date);
         noOrdnancePayloadElement = 0;
     }
 
@@ -34,7 +37,7 @@ public class Halberstadtcl2auPayload extends PlanePayload implements IPlanePaylo
     @Override
     public IPlanePayload copy()
     {
-        Halberstadtcl2auPayload clone = new Halberstadtcl2auPayload(planeType);
+        Halberstadtcl2auPayload clone = new Halberstadtcl2auPayload(planeType, date);
         return super.copy(clone);
     }
 

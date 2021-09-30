@@ -9,7 +9,7 @@
 		"RPK10",
 		"MIRROR"
 	],
-	"displayName": "Yak-1B ser.127",
+	"displayName": "Yak-1 ser.127",
 	"script": "LuaScripts\\WorldObjects\\Planes\\yak1s127.txt",
 	"model": "graphics\\planes\\yak1s127\\yak1s127.mgm",
 	"desc": "",

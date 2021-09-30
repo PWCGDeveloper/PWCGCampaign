@@ -14,6 +14,7 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.DateUtils;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
@@ -41,19 +42,21 @@ public class Ju87G2PayloadTest
 	{
 		PlaneType ju87D3 = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByType(BosPlaneAttributeMapping.JU87_D3.getPlaneType());
 		IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
-    	IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(ju87D3.getType());
+    	IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(ju87D3.getType(), DateUtils.getDateYYYYMMDD("19420801"));
     	testPatrolPayload(payloadGenerator);
     	testInterceptPayload(payloadGenerator);
-    	testGroundAttackPayload(payloadGenerator);
+        int expectedPayloadId = 2;
+        testGroundAttackPayload(payloadGenerator, expectedPayloadId);
 	}
 
 	@Test
-	public void payloadJu87G2F2Test() throws PWCGException
+	public void payloadJu87GunsTest() throws PWCGException
 	{
 		PlaneType ju87G2 = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByType(BosPlaneAttributeMapping.JU87_D3.getPlaneType());
 		IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
-    	IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(ju87G2.getType());
-    	testGroundAttackPayload(payloadGenerator);
+    	IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(ju87G2.getType(), DateUtils.getDateYYYYMMDD("19430801"));
+    	int expectedPayloadId = 9;
+    	testGroundAttackPayload(payloadGenerator, expectedPayloadId);
 	}
 
 	private void testPatrolPayload(IPlanePayload payloadGenerator) throws PWCGException
@@ -68,21 +71,17 @@ public class Ju87G2PayloadTest
 		runPayload(payloadGenerator);
 	}
 	
-	private void testGroundAttackPayload(IPlanePayload payloadGenerator) throws PWCGException
+	private void testGroundAttackPayload(IPlanePayload payloadGenerator, int expectedPayloadId) throws PWCGException
 	{
 		Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.GROUND_ATTACK);
-		runPayload(payloadGenerator);
-		runPayload(payloadGenerator);
-		runPayload(payloadGenerator);
-		runPayload(payloadGenerator);
+		int payloadId =runPayload(payloadGenerator);
+		assert(expectedPayloadId == payloadId);
 	}
 
-	private void runPayload(IPlanePayload payloadGenerator) throws PWCGException {
-		for (int i = 0; i < 100; ++i)
-		{
-			int payloadId = payloadGenerator.createWeaponsPayload(flight);
-			PayloadDesignation payloadDesignation = payloadGenerator.getSelectedPayloadDesignation();
-			assert(payloadDesignation.getPayloadId() == payloadId);
-		}
+	private int runPayload(IPlanePayload payloadGenerator) throws PWCGException {
+        int payloadId = payloadGenerator.createWeaponsPayload(flight);
+        PayloadDesignation payloadDesignation = payloadGenerator.getSelectedPayloadDesignation();
+        assert(payloadDesignation.getPayloadId() == payloadId);
+        return payloadId;
 	}
 }

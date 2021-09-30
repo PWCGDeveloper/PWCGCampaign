@@ -1,6 +1,7 @@
 package pwcg.campaign.plane.payload;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -17,19 +18,22 @@ public abstract class PlanePayload implements IPlanePayload
     protected Map<Integer, PayloadDesignation> availablePayload = new TreeMap<>();
     protected List<PayloadElement> stockModifications = new ArrayList<>();
     protected PlaneType planeType;
+    protected Date date;
     protected int noOrdnancePayloadElement = 0;
 
-	public PlanePayload(PlaneType planeType)
+	public PlanePayload(PlaneType planeType, Date date)
 	{
 	    this.planeType = planeType;
+        this.date = date;
+
 	    initialize();
+        createWeaponsModAvailabilityDates();
         loadStockModifications();
         addStockModifications();
 	}
 
-    private void loadStockModifications()
+    protected void createWeaponsModAvailabilityDates()
     {
-        stockModifications.addAll(planeType.getStockModifications());
     }
 
     public PayloadDesignation getSelectedPayloadDesignation() throws PWCGException
@@ -112,6 +116,11 @@ public abstract class PlanePayload implements IPlanePayload
         }
         
         return fullModificationMask;
+    }
+
+    protected void loadStockModifications()
+    {
+        stockModifications.addAll(planeType.getStockModifications());
     }
 
     private void addStockModifications()

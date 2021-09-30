@@ -1,6 +1,7 @@
 package pwcg.gui.rofmap.brief;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.context.PWCGContext;
@@ -20,12 +21,12 @@ public class BriefingPlaneModificationsFilter
     }
 
 
-    public List<String> selectModificationsForPlane() throws PWCGException 
+    public List<String> selectModificationsForPlane(Date date) throws PWCGException 
     {
         List<String> planeModifications = new ArrayList<>();
 
         IPayloadFactory payloadfactory = PWCGContext.getInstance().getPayloadFactory();
-        IPlanePayload payload = payloadfactory.createPlanePayload(crewPlane.getPlane().getType());
+        IPlanePayload payload = payloadfactory.createPlanePayload(crewPlane.getPlane().getType(), date);
         
         for (PayloadDesignation payloadDesignation : payload.getOptionalPayloadModifications())
         {

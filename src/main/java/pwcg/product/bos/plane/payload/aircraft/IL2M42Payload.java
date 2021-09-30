@@ -1,10 +1,13 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.Date;
+
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
@@ -12,12 +15,28 @@ import pwcg.mission.target.TargetCategory;
 
 public class IL2M42Payload extends PlanePayload implements IPlanePayload
 {
-    public IL2M42Payload(PlaneType planeType)
+    private Date sh37IntroDate;
+
+    public IL2M42Payload(PlaneType planeType, Date date)
     {
-        super(planeType);
+        super(planeType, date);
         noOrdnancePayloadElement = 87;
     }
 
+    @Override
+    protected void createWeaponsModAvailabilityDates()
+    {
+        try
+        {
+            sh37IntroDate = DateUtils.getDateYYYYMMDD("19421212");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }    
+
+    @Override
     protected void initialize()
 	{
         setAvailablePayload(-1, "100000", PayloadElement.TURRET);
@@ -66,7 +85,7 @@ public class IL2M42Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        IL2M42Payload clone = new IL2M42Payload(planeType);
+        IL2M42Payload clone = new IL2M42Payload(planeType, date);
         
         return super.copy(clone);
     }
@@ -137,21 +156,24 @@ public class IL2M42Payload extends PlanePayload implements IPlanePayload
     private void selectArmoredTargetPayload()
     {
         int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 40)
-        {
-            selectedPrimaryPayloadId = 18;
-        }
-        else if (diceRoll < 80)
+        if (diceRoll < 60)
         {
             selectedPrimaryPayloadId = 29;
         }
-        else if (diceRoll < 90)
+        else if (diceRoll < 80)
         {
             selectedPrimaryPayloadId = 2;
         }
         else
         {
-            selectedPrimaryPayloadId = 5;
+            if (date.before(sh37IntroDate))
+            {
+                selectedPrimaryPayloadId = 2;
+            }
+            else
+            {
+                selectedPrimaryPayloadId = 5;
+            }
         }
     }
 

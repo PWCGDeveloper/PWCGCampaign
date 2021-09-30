@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -305,7 +306,8 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
             CrewPlanePayloadPairing crewPlane = briefingMissionHandler.getPairingByPilot(pilotSerialNumber);
 
             BriefingPayloadPicker briefingPayloadPicker = new BriefingPayloadPicker(this, briefingData);
-            int newPayload = briefingPayloadPicker.pickPayload(crewPlane.getPlane().getType());
+            Date date = mission.getCampaign().getDate();
+            int newPayload = briefingPayloadPicker.pickPayload(crewPlane.getPlane().getType(), date);
             if (newPayload != -1)
             {
                 briefingMissionHandler.modifyPayload(pilotSerialNumber, newPayload);

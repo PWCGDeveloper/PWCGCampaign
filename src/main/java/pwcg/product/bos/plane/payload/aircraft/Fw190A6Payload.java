@@ -1,18 +1,21 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.Date;
+
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.DateUtils;
 import pwcg.mission.flight.IFlight;
 
 public class Fw190A6Payload extends PlanePayload implements IPlanePayload
 {
-    public Fw190A6Payload(PlaneType planeType)
+    public Fw190A6Payload(PlaneType planeType, Date date)
     {
-        super(planeType);
+        super(planeType, date);
         noOrdnancePayloadElement = 0;
     }
 
@@ -42,7 +45,7 @@ public class Fw190A6Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Fw190A6Payload clone = new Fw190A6Payload(planeType);
+        Fw190A6Payload clone = new Fw190A6Payload(planeType, date);
         
         return super.copy(clone);
     }
@@ -53,12 +56,13 @@ public class Fw190A6Payload extends PlanePayload implements IPlanePayload
         PwcgRoleCategory squadronPrimaryRole = flight.getSquadron().determineSquadronPrimaryRoleCategory(flight.getCampaign().getDate());
         if (squadronPrimaryRole == PwcgRoleCategory.ATTACK)
         {
-            return createFW190G3Payload(flight);
+            selectedPrimaryPayloadId = createFW190G3Payload(flight);
         }
         else
         {
-            return createFW190A6Payload(flight);
+            selectedPrimaryPayloadId = createFW190A6Payload(flight);
         }
+        return selectedPrimaryPayloadId;
     }    
 
     private int createFW190A6Payload(IFlight flight) throws PWCGException
@@ -69,8 +73,14 @@ public class Fw190A6Payload extends PlanePayload implements IPlanePayload
 
     private int createFW190G3Payload(IFlight flight) throws PWCGException
     {
-        selectedPrimaryPayloadId = Fw190G3PayloadHelper.selectFW190G3Payload(flight);
-        return selectedPrimaryPayloadId;
+        if (date.before(DateUtils.getDateYYYYMMDD("19441002")))
+        {
+            return createFW190A6Payload(flight);
+        }
+        else
+        {
+            return Fw190G3PayloadHelper.selectFW190G3Payload(flight);
+        }
     }
 
     @Override

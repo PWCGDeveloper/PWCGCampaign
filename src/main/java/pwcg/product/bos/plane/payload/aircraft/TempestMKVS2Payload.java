@@ -1,21 +1,40 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.Date;
+
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
+import pwcg.core.utils.DateUtils;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetCategory;
 
 public class TempestMKVS2Payload extends PlanePayload implements IPlanePayload
 {
-    public TempestMKVS2Payload(PlaneType planeType)
+    private Date boostIntroDate;
+
+    public TempestMKVS2Payload(PlaneType planeType, Date date)
     {
-        super(planeType);
+        super(planeType, date);
         noOrdnancePayloadElement = 0;
     }
 
+    @Override
+    protected void createWeaponsModAvailabilityDates()
+    {
+        try
+        {
+            boostIntroDate = DateUtils.getDateYYYYMMDD("19440610");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }    
+
+    @Override
     protected void initialize()
 	{
         setAvailablePayload(-1, "1000", PayloadElement.LB_11_BOOST);
@@ -64,7 +83,7 @@ public class TempestMKVS2Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-    	TempestMKVS2Payload clone = new TempestMKVS2Payload(planeType);
+    	TempestMKVS2Payload clone = new TempestMKVS2Payload(planeType, date);
         
         return super.copy(clone);
     }
@@ -83,5 +102,14 @@ public class TempestMKVS2Payload extends PlanePayload implements IPlanePayload
         }
 
         return true;
+    }
+
+    @Override
+    protected void loadStockModifications()
+    {
+        if (date.after(boostIntroDate))
+        {
+            stockModifications.add(PayloadElement.LB_11_BOOST);
+        }
     }
 }

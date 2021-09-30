@@ -1,5 +1,7 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.Date;
+
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
@@ -10,9 +12,9 @@ import pwcg.mission.target.TargetCategory;
 
 public class He111H6Payload extends PlanePayload
 {
-    public He111H6Payload(PlaneType planeType)
+    public He111H6Payload(PlaneType planeType, Date date)
     {
-        super(planeType);
+        super(planeType, date);
         noOrdnancePayloadElement = 13;
     }
 
@@ -39,7 +41,7 @@ public class He111H6Payload extends PlanePayload
     @Override
     public IPlanePayload copy()
     {
-        He111H6Payload clone = new He111H6Payload(planeType);
+        He111H6Payload clone = new He111H6Payload(planeType, date);
         
         return super.copy(clone);
     }

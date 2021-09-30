@@ -253,7 +253,8 @@ public enum PayloadElement
 	T100_X2(PayloadElementCategory.ORDNANCE_BOMB, "100 kg Bomb x2", 200),
 
 	MG151_15_GUNPOD(PayloadElementCategory.WEAPON, "MG 151 15mm Gun Pod", 50),
-	MG151_20_GUNPOD(PayloadElementCategory.WEAPON, "MG 151 20mm Gun Pod", 50),
+    MG151_20_GUNPOD(PayloadElementCategory.WEAPON, "MG 151 20mm Gun Pod", 50),
+    MG17_GUNPOD(PayloadElementCategory.WEAPON, "MG 17 4x Gun Pod", 50),
     MG151_20_UPGRADE(PayloadElementCategory.WEAPON, "MG151 20mm Upgrade", 50),
     MG151_20_PODS(PayloadElementCategory.WEAPON, "MG151 20mm Gun Pods", 50),
     MGFF_WING_GUNS(PayloadElementCategory.WEAPON, "MG FF Wing Guns", 0),

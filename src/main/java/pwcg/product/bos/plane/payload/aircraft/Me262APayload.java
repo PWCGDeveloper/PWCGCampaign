@@ -1,20 +1,43 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.Date;
+
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
+import pwcg.core.utils.DateUtils;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 
 public class Me262APayload extends PlanePayload implements IPlanePayload
 {
-    public Me262APayload(PlaneType planeType)
+    private Date r4mIntroDate;
+    private Date gyroGunsightIntroDate;
+    private Date autoValveIntroDate;
+
+    public Me262APayload(PlaneType planeType, Date date)
     {
-        super(planeType);
+        super(planeType, date);
         noOrdnancePayloadElement = 0;
     }
 
+    @Override
+    protected void createWeaponsModAvailabilityDates()
+    {
+        try
+        {
+            r4mIntroDate = DateUtils.getDateYYYYMMDD("19450318");
+            gyroGunsightIntroDate = DateUtils.getDateYYYYMMDD("19450318");
+            autoValveIntroDate = DateUtils.getDateYYYYMMDD("19441216");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }    
+
+    @Override
     protected void initialize()
     {        
         setAvailablePayload(-4, "10000", PayloadElement.REMOVE_ARMOR);
@@ -33,7 +56,7 @@ public class Me262APayload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Me262APayload clone = new Me262APayload(planeType);
+        Me262APayload clone = new Me262APayload(planeType, date);
         return super.copy(clone);
     }
 
@@ -59,7 +82,14 @@ public class Me262APayload extends PlanePayload implements IPlanePayload
 
     protected void selectInterceptPayload()
     {
-        selectedPrimaryPayloadId = 2;
+        if (date.before(r4mIntroDate))
+        {
+            selectedPrimaryPayloadId = 0;
+        }
+        else
+        {
+            selectedPrimaryPayloadId = 2;
+        }
     }    
 
     @Override
@@ -78,5 +108,20 @@ public class Me262APayload extends PlanePayload implements IPlanePayload
         }
 
         return true;
+    }
+
+    @Override
+    protected void loadStockModifications()
+    {
+        stockModifications.add(PayloadElement.ARMORED_HEADREST);        
+        if (date.after(gyroGunsightIntroDate))
+        {
+            stockModifications.add(PayloadElement.GYRO_GUNSIGHT);
+        }
+        
+        if (date.after(autoValveIntroDate))
+        {
+            stockModifications.add(PayloadElement.AUTO_VALVE);
+        }
     }
 }

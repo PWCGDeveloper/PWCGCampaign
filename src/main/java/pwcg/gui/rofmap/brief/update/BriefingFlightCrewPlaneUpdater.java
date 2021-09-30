@@ -83,7 +83,7 @@ public class BriefingFlightCrewPlaneUpdater
     private void setPayloadFromBriefing(PlaneMcu plane, CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
         IPayloadFactory payloadfactory = PWCGContext.getInstance().getPayloadFactory();
-        IPlanePayload payload = payloadfactory.createPlanePayload(plane.getType());
+        IPlanePayload payload = payloadfactory.createPlanePayload(plane.getType(), campaign.getDate());
         payload.setSelectedPayloadId(crewPlane.getPayloadId());
         plane.setPlanePayload(payload);
     }

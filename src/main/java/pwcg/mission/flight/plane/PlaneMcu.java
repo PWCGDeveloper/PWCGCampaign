@@ -187,18 +187,18 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         return isPlayerPlane;
     }
 
-    public IPlanePayload buildPlanePayload(IFlight flight) throws PWCGException
+    public IPlanePayload buildPlanePayload(IFlight flight, Date date) throws PWCGException
     {
         IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
-        payload = payloadFactory.createPlanePayload(this.getType());
+        payload = payloadFactory.createPlanePayload(this.getType(), date);
         payload.createWeaponsPayload(flight);
         return payload.copy();
     }
 
-    public IPlanePayload buildStandardPlanePayload() throws PWCGException
+    public IPlanePayload buildStandardPlanePayload(Date date) throws PWCGException
     {
         IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
-        payload = payloadFactory.createPlanePayload(this.getType());
+        payload = payloadFactory.createPlanePayload(this.getType(), date);
         payload.createStandardWeaponsPayload();
         return payload.copy();
     }

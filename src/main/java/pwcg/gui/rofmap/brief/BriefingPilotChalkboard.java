@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -216,8 +217,10 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
 
     private void addPayloadColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane, int row) throws PWCGException
     {
+        Date date = briefingContext.getMission().getCampaign().getDate();
+        
         IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
-        PayloadDesignation payloadDesignation = payloadFactory.getPlanePayloadDesignation(crewPlane.getPlane().getType(), crewPlane.getPayloadId());
+        PayloadDesignation payloadDesignation = payloadFactory.getPlanePayloadDesignation(crewPlane.getPlane().getType(), crewPlane.getPayloadId(), date);
         String planePayloadDescription = payloadDesignation.getPayloadDescription();
         JButton payloadButton = PWCGButtonFactory.makeBriefingChalkBoardButton(planePayloadDescription,
                 "Change Payload:" + crewPlane.getPilot().getSerialNumber(), "Change payload for  " + crewPlane.getPilot().getNameAndRank(), parent);
@@ -234,7 +237,9 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
 
     private void addModificationsColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane, int row) throws PWCGException
     {
-        BriefingPlaneModificationsPicker planeModification = new BriefingPlaneModificationsPicker(parent, crewPlane);
+        Date date = briefingContext.getMission().getCampaign().getDate();
+
+        BriefingPlaneModificationsPicker planeModification = new BriefingPlaneModificationsPicker(parent, crewPlane, date);
         parent.addPlaneModification(crewPlane.getPilot().getSerialNumber(), planeModification);
         JPanel extrasPanel = planeModification.makePlaneModifications();
         

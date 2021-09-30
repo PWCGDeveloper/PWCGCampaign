@@ -1,18 +1,22 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.Date;
+
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
+import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.DateUtils;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetCategory;
 
 public class Hs129B2Payload extends PlanePayload
 {
-    public Hs129B2Payload(PlaneType planeType)
+    public Hs129B2Payload(PlaneType planeType, Date date)
     {
-        super(planeType);
+        super(planeType, date);
         noOrdnancePayloadElement = 34;
     }
 
@@ -24,7 +28,9 @@ public class Hs129B2Payload extends PlanePayload
         setAvailablePayload(1, "1", PayloadElement.SC50_X4);
 		setAvailablePayload(2, "1", PayloadElement.SC50_X6);
 		setAvailablePayload(3, "1", PayloadElement.SC250_X1);
-		setAvailablePayload(4, "1", PayloadElement.SC250_X1, PayloadElement.SC50_X2);
+        setAvailablePayload(4, "1", PayloadElement.SC250_X1, PayloadElement.SC50_X2);
+        setAvailablePayload(5, "101", PayloadElement.MG17_GUNPOD);
+        setAvailablePayload(6, "101", PayloadElement.MG17_GUNPOD, PayloadElement.SC50_X2);
 		setAvailablePayload(7, "1001", PayloadElement.MK101_30_AP_GUNPOD);
 		setAvailablePayload(8, "1001", PayloadElement.MK101_30_HE_GUNPOD);
 		setAvailablePayload(9, "1001", PayloadElement.MK101_30_AP_GUNPOD, PayloadElement.SC50_X2);
@@ -45,13 +51,13 @@ public class Hs129B2Payload extends PlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Hs129B2Payload clone = new Hs129B2Payload(planeType);
+        Hs129B2Payload clone = new Hs129B2Payload(planeType, date);
         
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight)
+    public int createWeaponsPayload(IFlight flight) throws PWCGException
     {
         selectedPrimaryPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
@@ -62,16 +68,30 @@ public class Hs129B2Payload extends PlanePayload
         return selectedPrimaryPayloadId;
     }    
 
-    protected void selectGroundAttackPayload(IFlight flight)
+    protected void selectGroundAttackPayload(IFlight flight) throws PWCGException
     {
         selectedPrimaryPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectedPrimaryPayloadId = 1;
+            if (date.before(DateUtils.getDateYYYYMMDD("19430702")))
+            {
+                selectedPrimaryPayloadId = 1;
+            }
+            else
+            {
+                selectedPrimaryPayloadId = 6;
+            }
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectedPrimaryPayloadId = 3;
+            if (date.before(DateUtils.getDateYYYYMMDD("19430702")))
+            {
+                selectedPrimaryPayloadId = 3;
+            }
+            else
+            {
+                selectedPrimaryPayloadId = 7;
+            }
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
@@ -96,6 +116,8 @@ public class Hs129B2Payload extends PlanePayload
         }
         
         if (selectedPrimaryPayloadId == 0 || 
+            selectedPrimaryPayloadId == 5 ||
+            selectedPrimaryPayloadId == 6 ||
             selectedPrimaryPayloadId == 7 ||
             selectedPrimaryPayloadId == 8 ||
             selectedPrimaryPayloadId == 11 ||

@@ -3,6 +3,7 @@ package pwcg.gui.rofmap.brief;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,11 +25,13 @@ public class BriefingPlaneModificationsPicker
     private CrewPlanePayloadPairing crewPlane;
     private JPanel planeModificationsPanel = new JPanel(new GridLayout(0,1));
     private Map<String, JCheckBox> planeModifications = new HashMap<>();
+    private Date date;
     
-    public BriefingPlaneModificationsPicker(ActionListener actionListener, CrewPlanePayloadPairing crewPlane)
+    public BriefingPlaneModificationsPicker(ActionListener actionListener, CrewPlanePayloadPairing crewPlane, Date date)
     {
         this.actionListener = actionListener;
         this.crewPlane = crewPlane;
+        this.date = date;
     }
 
     public JPanel makePlaneModifications() throws PWCGException 
@@ -73,7 +76,7 @@ public class BriefingPlaneModificationsPicker
     private void makePlaneModificationCheckBoxes() throws PWCGException 
     {
         BriefingPlaneModificationsFilter briefingPlaneModificationsFilter = new BriefingPlaneModificationsFilter(crewPlane);
-        List<String> payloadsForPlane = briefingPlaneModificationsFilter.selectModificationsForPlane();
+        List<String> payloadsForPlane = briefingPlaneModificationsFilter.selectModificationsForPlane(date);
         
         for (String payloadForPlane : payloadsForPlane)
         {
@@ -89,7 +92,7 @@ public class BriefingPlaneModificationsPicker
     private String getPayloadMaskForChosenModifications(String planeTypeName, String payloadDescription) throws PWCGException
     {
         IPayloadFactory payloadfactory = PWCGContext.getInstance().getPayloadFactory();
-        IPlanePayload payload = payloadfactory.createPlanePayload(planeTypeName);
+        IPlanePayload payload = payloadfactory.createPlanePayload(planeTypeName, date);
         
         return payload.getPayloadMaskByDescription(payloadDescription);
     }

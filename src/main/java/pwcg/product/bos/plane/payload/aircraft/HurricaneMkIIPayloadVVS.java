@@ -11,22 +11,19 @@ import pwcg.mission.target.TargetCategory;
 
 public class HurricaneMkIIPayloadVVS
 {
+    private Date date;
+    private Date shvakIntroDate;
     private Date hispanoIntroDate;
 
-    public HurricaneMkIIPayloadVVS()
+
+    public HurricaneMkIIPayloadVVS(Date date)
     {
+        this.date = date;
     }
 
     public int createWeaponsPayload(IFlight flight) throws PWCGException
     {
-        try
-        {
-            hispanoIntroDate = DateUtils.getDateYYYYMMDD("19420801");
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        createVVSWeaponsModAvailabilityDates();
 
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
@@ -36,26 +33,20 @@ public class HurricaneMkIIPayloadVVS
         {
             return createStandardPayload(flight);
         }        
-    }    
-
-    private int createStandardPayload(IFlight flight) throws PWCGException
-    {
-        int selectedPrimaryPayloadId = 1;
-        if (flight.getCampaign().getDate().after(hispanoIntroDate))
-        {
-            int diceRoll = RandomNumberGenerator.getRandom(100);
-            if (diceRoll < 40)
-            {
-                selectedPrimaryPayloadId = 12;
-            }
-            else if (diceRoll < 60)
-            {
-                selectedPrimaryPayloadId = 17;
-            }
-        }
-
-        return selectedPrimaryPayloadId;
     }
+
+    protected void createVVSWeaponsModAvailabilityDates()
+    {
+        try
+        {
+            shvakIntroDate = DateUtils.getDateYYYYMMDD("19420418");
+            hispanoIntroDate = DateUtils.getDateYYYYMMDD("19430102");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }    
 
     private int selectGroundAttackPayload(IFlight flight) throws PWCGException
     {
@@ -83,22 +74,51 @@ public class HurricaneMkIIPayloadVVS
         return selectedPrimaryPayloadId;
     }
 
+    private int createStandardPayload(IFlight flight) throws PWCGException
+    {
+        int selectedPrimaryPayloadId = 1;
+        if (date.after(shvakIntroDate))
+        {
+            int diceRoll = RandomNumberGenerator.getRandom(100);
+            if (diceRoll < 60)
+            {
+                selectedPrimaryPayloadId = 17;
+            }
+        }
+
+        if (date.after(hispanoIntroDate))
+        {
+            selectedPrimaryPayloadId = 17;
+            int diceRoll = RandomNumberGenerator.getRandom(100);
+            if (diceRoll < 40)
+            {
+                selectedPrimaryPayloadId = 12;
+            }
+        }
+
+        return selectedPrimaryPayloadId;
+    }
+
     private int selectSoftTargetPayload(IFlight flight) throws PWCGException
     {
         int selectedPrimaryPayloadId = 2;
-        if (flight.getCampaign().getDate().before(hispanoIntroDate))
+        if (date.after(shvakIntroDate))
         {
-            selectedPrimaryPayloadId = 2;
+            int diceRoll = RandomNumberGenerator.getRandom(100);
+            if (diceRoll < 60)
+            {
+                selectedPrimaryPayloadId = 18;
+            }
         }
-        else
-        {
-            selectedPrimaryPayloadId = 13;
-        }
-
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 40)
+        
+        if (date.after(hispanoIntroDate))
         {
             selectedPrimaryPayloadId = 18;
+            int diceRoll = RandomNumberGenerator.getRandom(100);
+            if (diceRoll < 40)
+            {
+                selectedPrimaryPayloadId = 13;
+            }
         }
 
         return selectedPrimaryPayloadId;
@@ -107,23 +127,23 @@ public class HurricaneMkIIPayloadVVS
     private int selectArmoredTargetPayload(IFlight flight) throws PWCGException
     {
         int selectedPrimaryPayloadId = 4;
-        if (flight.getCampaign().getDate().before(hispanoIntroDate))
+        if (date.after(shvakIntroDate))
         {
-            selectedPrimaryPayloadId = 4;
+            int diceRoll = RandomNumberGenerator.getRandom(100);
+            if (diceRoll < 60)
+            {
+                selectedPrimaryPayloadId = 19;
+            }
         }
-        else
-        {
-            selectedPrimaryPayloadId = 14;
-        }
-
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 10)
-        {
-            selectedPrimaryPayloadId = 15;
-        }
-        else if (diceRoll < 40)
+        
+        if (date.after(hispanoIntroDate))
         {
             selectedPrimaryPayloadId = 19;
+            int diceRoll = RandomNumberGenerator.getRandom(100);
+            if (diceRoll < 40)
+            {
+                selectedPrimaryPayloadId = 14;
+            }
         }
 
         return selectedPrimaryPayloadId;
@@ -132,19 +152,23 @@ public class HurricaneMkIIPayloadVVS
     private int selectMediumTargetPayload(IFlight flight) throws PWCGException
     {
         int selectedPrimaryPayloadId = 2;
-        if (flight.getCampaign().getDate().before(hispanoIntroDate))
+        if (date.after(shvakIntroDate))
         {
-            selectedPrimaryPayloadId = 2;
+            int diceRoll = RandomNumberGenerator.getRandom(100);
+            if (diceRoll < 60)
+            {
+                selectedPrimaryPayloadId = 23;
+            }
         }
-        else
-        {
-            selectedPrimaryPayloadId = 13;
-        }
-
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 40)
+        
+        if (date.after(hispanoIntroDate))
         {
             selectedPrimaryPayloadId = 23;
+            int diceRoll = RandomNumberGenerator.getRandom(100);
+            if (diceRoll < 40)
+            {
+                selectedPrimaryPayloadId = 13;
+            }
         }
 
         return selectedPrimaryPayloadId;
@@ -153,19 +177,23 @@ public class HurricaneMkIIPayloadVVS
     private int selectHeavyTargetPayload(IFlight flight) throws PWCGException
     {
         int selectedPrimaryPayloadId = 4;
-        if (flight.getCampaign().getDate().before(hispanoIntroDate))
+        if (date.after(shvakIntroDate))
         {
-            selectedPrimaryPayloadId = 4;
+            int diceRoll = RandomNumberGenerator.getRandom(100);
+            if (diceRoll < 60)
+            {
+                selectedPrimaryPayloadId = 18;
+            }
         }
-        else
-        {
-            selectedPrimaryPayloadId = 14;
-        }
-
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 40)
+        
+        if (date.after(hispanoIntroDate))
         {
             selectedPrimaryPayloadId = 18;
+            int diceRoll = RandomNumberGenerator.getRandom(100);
+            if (diceRoll < 40)
+            {
+                selectedPrimaryPayloadId = 14;
+            }
         }
 
         return selectedPrimaryPayloadId;
@@ -173,7 +201,6 @@ public class HurricaneMkIIPayloadVVS
 
     private int selectStructureTargetPayload(IFlight flight) throws PWCGException
     {
-        int selectedPrimaryPayloadId = 4;
-        return selectedPrimaryPayloadId;
+        return selectHeavyTargetPayload(flight);
     }
 }

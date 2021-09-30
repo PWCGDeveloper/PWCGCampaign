@@ -1,8 +1,11 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.Date;
+
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
+import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetCategory;
@@ -10,12 +13,12 @@ import pwcg.mission.target.TargetCategory;
 public abstract class Bf109Payload extends PlanePayload
 {
     
-    public Bf109Payload(PlaneType planeType)
+    public Bf109Payload(PlaneType planeType, Date date)
     {
-        super(planeType);
+        super(planeType, date);
     }
 
-    public int createWeaponsPayload(IFlight flight)
+    public int createWeaponsPayload(IFlight flight) throws PWCGException
     {
         createStandardPayload();
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
@@ -51,7 +54,7 @@ public abstract class Bf109Payload extends PlanePayload
         }
     }
 
-    protected void createStandardPayload()
+    protected void createStandardPayload() throws PWCGException
     {
         selectedPrimaryPayloadId = getPayloadIdByDescription(PayloadElement.STANDARD.getDescription());
     }

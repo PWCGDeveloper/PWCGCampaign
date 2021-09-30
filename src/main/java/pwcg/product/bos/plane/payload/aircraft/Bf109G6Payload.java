@@ -1,17 +1,21 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.Date;
+
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
+import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 
 public class Bf109G6Payload extends Bf109Payload implements IPlanePayload
 {
-    public Bf109G6Payload(PlaneType planeType)
+    public Bf109G6Payload(PlaneType planeType, Date date)
     {
-        super(planeType);
+        super(planeType, date);
         noOrdnancePayloadElement = 0;
     }
 
@@ -29,12 +33,12 @@ public class Bf109G6Payload extends Bf109Payload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Bf109G6Payload clone = new Bf109G6Payload(planeType);
+        Bf109G6Payload clone = new Bf109G6Payload(planeType, date);
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight)
+    public int createWeaponsPayload(IFlight flight) throws PWCGException
     {
         selectedPrimaryPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
@@ -52,20 +56,18 @@ public class Bf109G6Payload extends Bf109Payload implements IPlanePayload
         return selectedPrimaryPayloadId;
     }    
     
-    protected void createStandardPayload()
+    protected void createStandardPayload() throws PWCGException
     {
+        selectedPrimaryPayloadId = 0;
+
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 50)
         {
-            selectedPrimaryPayloadId = 0;
-        }
-        else
-        {
-            selectedPrimaryPayloadId = 4;
+            setMk108Payload();
         }
     }    
 
-    protected void selectInterceptPayload()
+    protected void selectInterceptPayload() throws PWCGException
     {
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 50)
@@ -74,11 +76,23 @@ public class Bf109G6Payload extends Bf109Payload implements IPlanePayload
         }
         else if (diceRoll < 80)
         {
-            selectedPrimaryPayloadId = 4;
+            setMk108Payload();
         }
         else
         {
             selectedPrimaryPayloadId = 0;
         }
     }    
+
+    private void setMk108Payload() throws PWCGException
+    {
+        if (date.before(DateUtils.getDateYYYYMMDD("19440801")))
+        {
+            selectedPrimaryPayloadId = 0;
+        }
+        else
+        {
+            selectedPrimaryPayloadId = 4;
+        }
+    }
 }

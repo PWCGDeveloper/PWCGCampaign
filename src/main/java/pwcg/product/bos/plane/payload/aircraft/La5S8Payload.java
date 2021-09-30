@@ -1,21 +1,40 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.Date;
+
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
+import pwcg.core.utils.DateUtils;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetCategory;
 
 public class La5S8Payload extends PlanePayload implements IPlanePayload
 {
-    public La5S8Payload(PlaneType planeType)
+    private Date m82FIntroDate;
+
+    public La5S8Payload(PlaneType planeType, Date date)
     {
-        super(planeType);
+        super(planeType, date);
         noOrdnancePayloadElement = 0;
     }
 
+    @Override
+    protected void createWeaponsModAvailabilityDates()
+    {
+        try
+        {
+            m82FIntroDate = DateUtils.getDateYYYYMMDD("19421212");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }    
+
+    @Override
     protected void initialize()
 	{
         setAvailablePayload(-4, "1000", PayloadElement.RPK10);
@@ -32,7 +51,7 @@ public class La5S8Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        La5S8Payload clone = new La5S8Payload(planeType);
+        La5S8Payload clone = new La5S8Payload(planeType, date);
         
         return super.copy(clone);
     }
@@ -88,5 +107,16 @@ public class La5S8Payload extends PlanePayload implements IPlanePayload
         }
 
         return true;
+    }
+
+    @Override
+    protected void loadStockModifications()
+    {
+        stockModifications.add(PayloadElement.RPK10);
+        stockModifications.add(PayloadElement.WINDSCREEN);
+        if (date.after(m82FIntroDate))
+        {
+            stockModifications.add(PayloadElement.M82F_ENGINE);
+        }
     }
 }
