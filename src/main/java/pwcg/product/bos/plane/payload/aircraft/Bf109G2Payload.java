@@ -14,7 +14,7 @@ public class Bf109G2Payload extends Bf109Payload implements IPlanePayload
     public Bf109G2Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     protected void initialize()
@@ -30,36 +30,39 @@ public class Bf109G2Payload extends Bf109Payload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Bf109G2Payload clone = new Bf109G2Payload(planeType, date);
+        Bf109G2Payload clone = new Bf109G2Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
         else if (flight.getFlightType() == FlightTypes.INTERCEPT)
         {
-            selectInterceptPayload();
+            selectedPayloadId = selectInterceptPayload();
         }
-        return selectedPrimaryPayloadId;
+
+        return selectedPayloadId;
     }    
 
-    protected void selectInterceptPayload()
+    private int selectInterceptPayload()
     {
+        int selectedPayloadId = 0;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 50)
         {
-            selectedPrimaryPayloadId = 0;
+            selectedPayloadId = 0;
         }
         else
         {
-            selectedPrimaryPayloadId = 3;
+            selectedPayloadId = 3;
         }
+        return selectedPayloadId;
     }    
 }

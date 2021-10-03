@@ -1,9 +1,13 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
+import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.core.exception.PWCGException;
@@ -14,10 +18,13 @@ import pwcg.mission.target.TargetCategory;
 
 public class Hs129B2Payload extends PlanePayload
 {
+    private Date mg17GunPodIntroDate;
+    private Date mk101GunPodIntroDate;
+
     public Hs129B2Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 34;
+        setNoOrdnancePayloadId(34);
     }
 
     protected void initialize()
@@ -49,62 +56,78 @@ public class Hs129B2Payload extends PlanePayload
 	}
 
     @Override
+    protected void createWeaponsModAvailabilityDates()
+    {
+        try
+        {
+            mg17GunPodIntroDate = DateUtils.getDateYYYYMMDD("19430702");
+            mk101GunPodIntroDate = DateUtils.getDateYYYYMMDD("19430702");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }    
+
+    @Override
     public IPlanePayload copy()
     {
-        Hs129B2Payload clone = new Hs129B2Payload(planeType, date);
+        Hs129B2Payload clone = new Hs129B2Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight) throws PWCGException
+    protected int createWeaponsPayloadForPlane(IFlight flight) throws PWCGException
     {
-        selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
 
-        return selectedPrimaryPayloadId;
+
+        return selectedPayloadId;
     }    
 
-    protected void selectGroundAttackPayload(IFlight flight) throws PWCGException
+    private int selectGroundAttackPayload(IFlight flight) throws PWCGException
     {
-        selectedPrimaryPayloadId = 1;
+        int selectedPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            if (date.before(DateUtils.getDateYYYYMMDD("19430702")))
+            if (getDate().before(mg17GunPodIntroDate))
             {
-                selectedPrimaryPayloadId = 1;
+                selectedPayloadId = 1;
             }
             else
             {
-                selectedPrimaryPayloadId = 6;
+                selectedPayloadId = 6;
             }
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            if (date.before(DateUtils.getDateYYYYMMDD("19430702")))
+            if (getDate().before(mk101GunPodIntroDate))
             {
-                selectedPrimaryPayloadId = 3;
+                selectedPayloadId = 3;
             }
             else
             {
-                selectedPrimaryPayloadId = 7;
+                selectedPayloadId = 7;
             }
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectedPrimaryPayloadId = 3;
+            selectedPayloadId = 3;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectedPrimaryPayloadId = 3;
+            selectedPayloadId = 3;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectedPrimaryPayloadId = 3;
+            selectedPayloadId = 3;
         }
+        return selectedPayloadId;
     }
 
     @Override
@@ -115,19 +138,42 @@ public class Hs129B2Payload extends PlanePayload
             return false;
         }
         
-        if (selectedPrimaryPayloadId == 0 || 
-            selectedPrimaryPayloadId == 5 ||
-            selectedPrimaryPayloadId == 6 ||
-            selectedPrimaryPayloadId == 7 ||
-            selectedPrimaryPayloadId == 8 ||
-            selectedPrimaryPayloadId == 11 ||
-            selectedPrimaryPayloadId == 13 ||
-            selectedPrimaryPayloadId == 15 ||
-            selectedPrimaryPayloadId == 17)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 0 || 
+            selectedPayloadId == 5 ||
+            selectedPayloadId == 6 ||
+            selectedPayloadId == 7 ||
+            selectedPayloadId == 8 ||
+            selectedPayloadId == 11 ||
+            selectedPayloadId == 13 ||
+            selectedPayloadId == 15 ||
+            selectedPayloadId == 17)
         {
             return false;
         }
 
         return true;
+    }
+    
+    @Override
+    protected List<PayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
+    {
+        List<Integer>availablePayloads = new ArrayList<>();
+        List<Integer>alwaysAvailablePayloads = Arrays.asList(0, 1, 2, 3, 4, 11, 12, 13, 14, 15, 17, 18, 19, 20, 21);
+        availablePayloads.addAll(alwaysAvailablePayloads);
+        
+        if (getDate().after(mg17GunPodIntroDate))
+        {
+            List<Integer>availableShvakPayloads = Arrays.asList(5, 6);
+            availablePayloads.addAll(availableShvakPayloads);
+        }
+
+        if (getDate().after(mk101GunPodIntroDate))
+        {
+            List<Integer>availableShvakPayloads = Arrays.asList(7,8, 9, 10);
+            availablePayloads.addAll(availableShvakPayloads);
+        }
+        
+        return getAvailablePayloadDesignations(availablePayloads);
     }
 }

@@ -13,7 +13,7 @@ public class SpitfireMkVbPayload extends PlanePayload implements IPlanePayload
     public SpitfireMkVbPayload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     protected void initialize()
@@ -24,16 +24,16 @@ public class SpitfireMkVbPayload extends PlanePayload implements IPlanePayload
 	}
 
     @Override
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
-        return selectedPrimaryPayloadId;
+        int selectedPayloadId = 0;
+        return selectedPayloadId;
     }
 
     @Override
     public IPlanePayload copy()
     {
-    	SpitfireMkVbPayload clone = new SpitfireMkVbPayload(planeType, date);
+    	SpitfireMkVbPayload clone = new SpitfireMkVbPayload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }

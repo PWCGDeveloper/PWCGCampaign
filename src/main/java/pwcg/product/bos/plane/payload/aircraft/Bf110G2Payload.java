@@ -15,7 +15,7 @@ public class Bf110G2Payload extends PlanePayload
     public Bf110G2Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     protected void initialize()
@@ -41,56 +41,56 @@ public class Bf110G2Payload extends PlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Bf110G2Payload clone = new Bf110G2Payload(planeType, date);
+        Bf110G2Payload clone = new Bf110G2Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
     
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        createStandardPayload();
-        
+        int selectedPayloadId = createStandardPayload();
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
         
         if (flight.getFlightType() == FlightTypes.INTERCEPT)
         {
-            selectedPrimaryPayloadId = 9;
+            selectedPayloadId = 9;
         }
         
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }
 
-    protected void selectGroundAttackPayload(IFlight flight)
+    protected int selectGroundAttackPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 3;
+        int selectedPayloadId = 3;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectedPrimaryPayloadId = 3;
+            selectedPayloadId = 3;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectedPrimaryPayloadId = 11;
+            selectedPayloadId = 11;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectedPrimaryPayloadId = 1;
+            selectedPayloadId = 1;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectedPrimaryPayloadId = 4;
+            selectedPayloadId = 4;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectedPrimaryPayloadId = 6;
+            selectedPayloadId = 6;
         }
+        return selectedPayloadId;
     }
     
-    private void createStandardPayload()
+    private int createStandardPayload()
     {
-        selectedPrimaryPayloadId = getPayloadIdByDescription(PayloadElement.STANDARD.getDescription());
+        return getPayloadIdByDescription(PayloadElement.STANDARD.getDescription());
     }
 
     @Override
@@ -101,11 +101,12 @@ public class Bf110G2Payload extends PlanePayload
             return false;
         }
         
-        if (selectedPrimaryPayloadId == 0 || 
-            selectedPrimaryPayloadId == 9 ||
-            selectedPrimaryPayloadId == 10 ||
-            selectedPrimaryPayloadId == 11 ||
-            selectedPrimaryPayloadId == 13)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 0 || 
+            selectedPayloadId == 9 ||
+            selectedPayloadId == 10 ||
+            selectedPayloadId == 11 ||
+            selectedPayloadId == 13)
         {
             return false;
         }

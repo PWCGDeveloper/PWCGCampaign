@@ -18,7 +18,7 @@ public class TempestMKVS2Payload extends PlanePayload implements IPlanePayload
     public TempestMKVS2Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     @Override
@@ -44,46 +44,47 @@ public class TempestMKVS2Payload extends PlanePayload implements IPlanePayload
 	}
 
     @Override
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
         
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }
 
-    protected void selectGroundAttackPayload(IFlight flight)
+    private int selectGroundAttackPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 1;
+        int selectedPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectedPrimaryPayloadId = 1;
+            selectedPayloadId = 1;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectedPrimaryPayloadId = 1;
+            selectedPayloadId = 1;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectedPrimaryPayloadId = 1;
+            selectedPayloadId = 1;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectedPrimaryPayloadId = 2;
+            selectedPayloadId = 2;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectedPrimaryPayloadId = 2;
+            selectedPayloadId = 2;
         }
+        return selectedPayloadId;
     }
 
     @Override
     public IPlanePayload copy()
     {
-    	TempestMKVS2Payload clone = new TempestMKVS2Payload(planeType, date);
+    	TempestMKVS2Payload clone = new TempestMKVS2Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
@@ -96,7 +97,8 @@ public class TempestMKVS2Payload extends PlanePayload implements IPlanePayload
             return false;
         }
         
-        if (selectedPrimaryPayloadId == 0)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 0)
         {
             return false;
         }
@@ -105,11 +107,11 @@ public class TempestMKVS2Payload extends PlanePayload implements IPlanePayload
     }
 
     @Override
-    protected void loadStockModifications()
+    protected void loadAvailableStockModifications()
     {
-        if (date.after(boostIntroDate))
+        if (getDate().after(boostIntroDate))
         {
-            stockModifications.add(PayloadElement.LB_11_BOOST);
+            registerStockModification(PayloadElement.LB_11_BOOST);
         }
     }
 }

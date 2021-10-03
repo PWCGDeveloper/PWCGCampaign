@@ -11,7 +11,7 @@ public class Bf109F2Payload extends Bf109Payload implements IPlanePayload
     public Bf109F2Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     protected void initialize()
@@ -29,7 +29,7 @@ public class Bf109F2Payload extends Bf109Payload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Bf109F2Payload clone = new Bf109F2Payload(planeType, date);
+        Bf109F2Payload clone = new Bf109F2Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }

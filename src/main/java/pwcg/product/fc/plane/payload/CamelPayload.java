@@ -14,7 +14,7 @@ public class CamelPayload extends PlanePayload implements IPlanePayload
     public CamelPayload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     protected void initialize()
@@ -29,29 +29,30 @@ public class CamelPayload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        CamelPayload clone = new CamelPayload(planeType, date);
+        CamelPayload clone = new CamelPayload(getPlaneType(), getDate());
         return super.copy(clone);
     }
 
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectBombingPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }
 
-    protected void selectBombingPayload(IFlight flight)
+    protected int selectGroundAttackPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 2;
+        return 2;
     }
 
     @Override
     public boolean isOrdnance()
     {
-        if (selectedPrimaryPayloadId == 2)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 2)
         {
             return true;
         }

@@ -15,7 +15,7 @@ public class A20BPayload extends PlanePayload implements IPlanePayload
     public A20BPayload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 6;
+        setNoOrdnancePayloadId(6);
     }
 
     protected void initialize()
@@ -31,76 +31,49 @@ public class A20BPayload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        A20BPayload clone = new A20BPayload(planeType, date);
+        A20BPayload clone = new A20BPayload(getPlaneType(), getDate());
         return super.copy(clone);
     }
     
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 1;
+        int selectedPayloadId = 1;
     	if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
     	{
-    		selectGroundAttackPayload(flight);
+    		selectedPayloadId = 1;
     	}
     	else
     	{
-    		selectBombingPayload(flight);
+    		selectedPayloadId = selectPayload(flight);
     	}
-        return selectedPrimaryPayloadId;
+    	
+        return selectedPayloadId;
     }
 
-    private void selectBombingPayload(IFlight flight)
+    private int selectPayload(IFlight flight)
     {
+        int selectedPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectBombingSoftTargetPayload();
+            selectedPayloadId = 1;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectBombingArmoredTargetPayload();
+            selectedPayloadId = 4;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectBombingMediumTargetPayload();
+            selectedPayloadId = 4;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectBombingHeavyTargetPayload();
+            selectedPayloadId = 4;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectStructureTargetPayload();
+            selectedPayloadId = 4;
         }
-    }
-
-    private void selectGroundAttackPayload(IFlight flight)
-    {
-        selectedPrimaryPayloadId = 1;
-    }
-
-    private void selectBombingSoftTargetPayload()
-    {
-        selectedPrimaryPayloadId = 1;
-    }    
-
-    private void selectBombingArmoredTargetPayload()
-    {
-        selectedPrimaryPayloadId = 4;
-    }
-
-    private void selectBombingMediumTargetPayload()
-    {
-        selectedPrimaryPayloadId = 4;
-    }
-
-    private void selectBombingHeavyTargetPayload()
-    {
-        selectedPrimaryPayloadId = 4;
-    }
-
-    private void selectStructureTargetPayload()
-    {
-        selectedPrimaryPayloadId = 4;
+        return selectedPayloadId;
     }
 
     @Override

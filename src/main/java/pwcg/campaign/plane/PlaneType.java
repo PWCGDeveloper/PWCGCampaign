@@ -203,6 +203,18 @@ public class PlaneType implements Cloneable
 
         return false;
     }
+    
+    public boolean isStockModification(PayloadElement modification)
+    {
+        for (PayloadElement stockModification : getStockModifications())
+        {
+            if (stockModification == modification)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public PwcgRoleCategory determinePrimaryRoleCategory()
     {

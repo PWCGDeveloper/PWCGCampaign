@@ -18,7 +18,7 @@ public class HurricaneMkIIPayload extends PlanePayload implements IPlanePayload
     public HurricaneMkIIPayload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 12;
+        setNoOrdnancePayloadId(5);
     }
 
     @Override
@@ -71,27 +71,28 @@ public class HurricaneMkIIPayload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        HurricaneMkIIPayload clone = new HurricaneMkIIPayload(planeType, date);
+        HurricaneMkIIPayload clone = new HurricaneMkIIPayload(getPlaneType(), getDate());
 
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight) throws PWCGException
+    protected int createWeaponsPayloadForPlane(IFlight flight) throws PWCGException
     {
-        selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (flight.getSquadron().getCountry().getCountry() == Country.RUSSIA)
         {
-            HurricaneMkIIPayloadVVS hurricaneMkIIPayloadVVS = new HurricaneMkIIPayloadVVS(date);
-            selectedPrimaryPayloadId = hurricaneMkIIPayloadVVS.createWeaponsPayload(flight);
+            HurricaneMkIIPayloadVVS hurricaneMkIIPayloadVVS = new HurricaneMkIIPayloadVVS(getDate());
+            selectedPayloadId = hurricaneMkIIPayloadVVS.createWeaponsPayload(flight);
         }
         else
         {
-            HurricaneMkIIPayloadRAF hurricaneMkIIPayloadRAF = new HurricaneMkIIPayloadRAF(date);
-            selectedPrimaryPayloadId = hurricaneMkIIPayloadRAF.createWeaponsPayload(flight);
+            HurricaneMkIIPayloadRAF hurricaneMkIIPayloadRAF = new HurricaneMkIIPayloadRAF(getDate());
+            selectedPayloadId = hurricaneMkIIPayloadRAF.createWeaponsPayload(flight);
         }
         
-        return selectedPrimaryPayloadId;
+
+        return selectedPayloadId;
     }    
 
     @Override
@@ -102,14 +103,15 @@ public class HurricaneMkIIPayload extends PlanePayload implements IPlanePayload
             return false;
         }
         
-        if (selectedPrimaryPayloadId == 0 || 
-            selectedPrimaryPayloadId == 1 ||
-            selectedPrimaryPayloadId == 5 ||
-            selectedPrimaryPayloadId == 7 ||
-            selectedPrimaryPayloadId == 12 ||
-            selectedPrimaryPayloadId == 15 ||
-            selectedPrimaryPayloadId == 16 ||
-            selectedPrimaryPayloadId == 17)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 0 || 
+            selectedPayloadId == 1 ||
+            selectedPayloadId == 5 ||
+            selectedPayloadId == 7 ||
+            selectedPayloadId == 12 ||
+            selectedPayloadId == 15 ||
+            selectedPayloadId == 16 ||
+            selectedPayloadId == 17)
         {
             return false;
         }
@@ -118,12 +120,12 @@ public class HurricaneMkIIPayload extends PlanePayload implements IPlanePayload
     }
 
     @Override
-    protected void loadStockModifications()
+    protected void loadAvailableStockModifications()
     {
-        stockModifications.add(PayloadElement.MIRROR);
-        if (date.after(boostIntroDate))
+        registerStockModification(PayloadElement.MIRROR);
+        if (getDate().after(boostIntroDate))
         {
-            stockModifications.add(PayloadElement.LB_14_BOOST);
+            registerStockModification(PayloadElement.LB_14_BOOST);
         }
     }
 }

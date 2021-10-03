@@ -16,7 +16,7 @@ public class Lagg3S29Payload extends PlanePayload implements IPlanePayload
     public Lagg3S29Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     protected void initialize()
@@ -30,95 +30,102 @@ public class Lagg3S29Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Lagg3S29Payload clone = new Lagg3S29Payload(planeType, date);
+        Lagg3S29Payload clone = new Lagg3S29Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
 
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }    
 
-    private void selectGroundAttackPayload(IFlight flight)
+    private int selectGroundAttackPayload (IFlight flight)
     {
-        selectedPrimaryPayloadId = 1;
+        int selectedPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectSoftTargetPayload();
+            selectedPayloadId = selectSoftTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectArmoredTargetPayload();
+            selectedPayloadId = selectArmoredTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectMediumTargetPayload();
+            selectedPayloadId = selectMediumTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectHeavyTargetPayload();
+            selectedPayloadId = selectHeavyTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectStructureTargetPayload();
+            selectedPayloadId = selectStructureTargetPayload();
         }
+        return selectedPayloadId;
     }
 
-    private void selectSoftTargetPayload()
+    private int selectSoftTargetPayload()
     {
+        int selectedPayloadId = 1;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 60)
         {
-            selectedPrimaryPayloadId = 7;
+            selectedPayloadId = 7;
         }
         else 
         {
-            selectedPrimaryPayloadId = 21;
+            selectedPayloadId = 21;
         }
+        return selectedPayloadId;
     }    
 
-    private void selectArmoredTargetPayload()
+    private int selectArmoredTargetPayload()
     {
+        int selectedPayloadId = 1;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 50)
         {
-            selectedPrimaryPayloadId = 7;
+            selectedPayloadId = 7;
         }
         else 
         {
-            selectedPrimaryPayloadId = 21;
+            selectedPayloadId = 21;
         }
+        return selectedPayloadId;
     }
 
-    private void selectMediumTargetPayload()
+    private int selectMediumTargetPayload()
     {
+        int selectedPayloadId = 1;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 80)
         {
-            selectedPrimaryPayloadId = 7;
+            selectedPayloadId = 7;
         }
         else 
         {
-            selectedPrimaryPayloadId = 21;
+            selectedPayloadId = 21;
         }
+        return selectedPayloadId;
     }
 
-    private void selectHeavyTargetPayload()
+    private int selectHeavyTargetPayload()
     {
-        selectedPrimaryPayloadId = 14;
+        return 14;
     }
 
-    private void selectStructureTargetPayload()
+    private int selectStructureTargetPayload()
     {
-        selectedPrimaryPayloadId = 14;
+        return 14;
     }
 
     @Override
@@ -129,7 +136,8 @@ public class Lagg3S29Payload extends PlanePayload implements IPlanePayload
             return false;
         }
         
-        if (selectedPrimaryPayloadId == 0)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 0)
         {
             return false;
         }

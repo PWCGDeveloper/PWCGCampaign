@@ -1,10 +1,7 @@
 package pwcg.campaign.plane.payload;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 import pwcg.campaign.plane.PlaneType;
 import pwcg.core.exception.PWCGException;
@@ -13,102 +10,170 @@ import pwcg.mission.flight.IFlight;
 
 public abstract class PlanePayload implements IPlanePayload
 {
-	protected int selectedPrimaryPayloadId = 0;
-	protected Map<String, PayloadElement>modifications = new TreeMap<>();
-    protected Map<Integer, PayloadDesignation> availablePayload = new TreeMap<>();
-    protected List<PayloadElement> stockModifications = new ArrayList<>();
-    protected PlaneType planeType;
-    protected Date date;
-    protected int noOrdnancePayloadElement = 0;
+    private PlanePayloads payload = new PlanePayloads();
+    private PlaneModifications modifications;
+    private PlaneType planeType;
+    private Date date;
 
 	public PlanePayload(PlaneType planeType, Date date)
 	{
 	    this.planeType = planeType;
         this.date = date;
 
+        modifications = new PlaneModifications(planeType);
+        
 	    initialize();
+	    createStandardWeaponsPayload();
         createWeaponsModAvailabilityDates();
-        loadStockModifications();
-        addStockModifications();
+        loadAvailableStockModifications();
 	}
+
+	@Override()
+	public int createWeaponsPayload(IFlight flight) throws PWCGException
+	{
+	    int selectedPayloadId = createWeaponsPayloadForPlane(flight);
+        setSelectedPayload(selectedPayloadId);
+        return selectedPayloadId;
+	}
+	
+    @Override
+    public List<PayloadDesignation> getAvailablePayloadDesignations(IFlight flight) throws PWCGException
+    {
+        return getAvailablePayloadDesignationsForPlane(flight);
+    }
+
+    @Override
+    public PayloadDesignation getSelectedPayloadDesignation() throws PWCGException
+    {
+        return payload.getSelectedPayloadDesignation();
+    }
+
+    protected List<PayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight) throws PWCGException
+    {
+        return payload.getPayloadDesignations().getAllAvailablePayloadDesignations();
+    }
+
+    protected List<PayloadDesignation> getAvailablePayloadDesignations(List<Integer> availablePayloadIds)
+    {
+        return payload.getPayloadDesignations().getAvailablePayloadDesignations(availablePayloadIds);
+    }
+
+    protected IPlanePayload copy(PlanePayload target)
+    {
+        target.payload = this.payload.copy();
+        target.modifications = this.modifications.copy();
+        target.planeType = this.planeType;        
+        target.date = this.date;        
+        return target;
+    }
+
+    protected int getSelectedPayload()
+    {
+        return payload.getSelectedPayloadId();
+    }
+
+    protected boolean isSelectedPayload(int payloadId)
+    {
+        return payload.isSelectedPayload(payloadId);
+    }
+
+    protected void setSelectedPayload(int payloadId)
+    {
+        payload.setSelectedPayloadId(payloadId);
+    }
 
     protected void createWeaponsModAvailabilityDates()
     {
     }
 
-    public PayloadDesignation getSelectedPayloadDesignation() throws PWCGException
+    protected void setNoOrdnancePayloadId(int noOrdnancePayloadId)
     {
-        if (!availablePayload.containsKey(selectedPrimaryPayloadId))
+        payload.setNoOrdnancePayloadId(noOrdnancePayloadId);
+    }
+
+    protected void registerStockModification(PayloadElement payloadElement)
+    {
+        modifications.registerStockModification(payloadElement);
+    }
+
+    protected void loadAvailableStockModifications()
+    {
+        for(PayloadElement modification : planeType.getStockModifications())
         {
-            throw new PWCGException("Invalid payload for plane: " + selectedPrimaryPayloadId);
+            modifications.registerStockModification(modification);
         }
         
-        return availablePayload.get(selectedPrimaryPayloadId);
-    }
-
-
-    public IPlanePayload copy(PlanePayload target)
-    {
-        target.selectedPrimaryPayloadId = this.selectedPrimaryPayloadId;
-        target.modifications = this.modifications;
-        target.availablePayload = this.availablePayload;
-        target.stockModifications = this.stockModifications;
-        target.planeType = this.planeType;
-        
-        return target;
-    }
-
-    protected void setAvailablePayload(int payloadId, String modMask, PayloadElement ... requestedPayloadElements)
-    {
-        PayloadDesignation payloadDesignation = new PayloadDesignation();
-        
-    	List<PayloadElement> payloadElements = new ArrayList<>();
-    	for (PayloadElement requestedPayloadElement : requestedPayloadElements)
-    	{
-    		payloadElements.add(requestedPayloadElement);
-    	}
-    	
-    	payloadDesignation.setPayloadId(payloadId);
-    	payloadDesignation.setModMask(modMask);
-    	payloadDesignation.setPayloadElements(payloadElements);
-    	
-    	availablePayload.put(payloadDesignation.getPayloadId(), payloadDesignation);
+        modifications.addStockModifications();
     }
     
+    @Override
+    public int getPayloadIdByDescription(String payloadDescription)
+    {
+        return payload.getPayloadDesignations().getPayloadIdByDescription(payloadDescription);
+    }
+    
+    @Override
+    public String getPayloadMaskByDescription(String payloadDescription)
+    {
+        return payload.getPayloadDesignations().getPayloadMaskByDescription(payloadDescription);
+    }
+
+    @Override
+    public void createStandardWeaponsPayload()
+    {
+        payload.createStandardWeaponsPayload(0);
+    }
+
+    @Override
     public int getSelectedPayloadId() 
     {
-        return selectedPrimaryPayloadId;
+        return payload.getSelectedPayloadId();
     }
     
+    @Override
     public void setSelectedPayloadId(int selectedPrimaryPayloadId) 
     {
-        this.selectedPrimaryPayloadId = selectedPrimaryPayloadId;
+        payload.setSelectedPayloadId(selectedPrimaryPayloadId);
     }
-
-    public void addModification(PayloadElement payloadElement)
+    
+    @Override
+    public void selectNoOrdnancePayload()
     {
-    	modifications.put(payloadElement.getDescription(), payloadElement);
+        payload.selectNoOrdnancePayload();
+    }    
+
+    @Override
+    public void selectModification(PayloadElement payloadElement)
+    {
+        modifications.selectModification(payloadElement);
     }
 
+    @Override
+    public List<PayloadElement> getSelectedModifications() throws PWCGException
+    {
+        return modifications.getSelectedModificationElements();
+    }
+    
+    @Override
     public void clearModifications()
     {
-    	modifications.clear();
-    	addStockModifications();
+        modifications.clearModifications();
+    }
+    
+    @Override
+    public List<PayloadDesignation> getOptionalPayloadModifications()
+    {
+        return modifications.getOptionalPayloadModifications();
     }
 
-    public List<PayloadElement> getModifications()
+    @Override
+    public String generateFullModificationMask() throws PWCGException
     {
-    	return new ArrayList<PayloadElement>(modifications.values());
-    }
-
-    public String generateFullModificationMask()
-    {
-        PayloadDesignation payloadDesignation = availablePayload.get(selectedPrimaryPayloadId);
-        String fullModificationMask = payloadDesignation.getModMask();
+        String fullModificationMask = payload.getSelectedPayloadDesignation().getModMask();
         
-        for (PayloadElement modification : modifications.values())
-        {
-            String additionalModificationsMask = this.getPayloadMaskByDescription(modification.getDescription());
+        for (PayloadDesignation modificationDesignation : modifications.getSelectedModifications())
+        {            
+            String additionalModificationsMask = modificationDesignation.getModMask();
             int additionalModMaskValue = Integer.parseInt(additionalModificationsMask, 2);
             int fullModificationMaskValue = Integer.parseInt(fullModificationMask, 2);
             int newModmaskValue = fullModificationMaskValue + additionalModMaskValue;
@@ -118,134 +183,27 @@ public abstract class PlanePayload implements IPlanePayload
         return fullModificationMask;
     }
 
-    protected void loadStockModifications()
+    protected void setAvailablePayload(int payloadId, String modMask, PayloadElement ... requestedPayloadElements)
     {
-        stockModifications.addAll(planeType.getStockModifications());
+        payload.setAvailablePayload(payloadId, modMask, requestedPayloadElements);
     }
 
-    private void addStockModifications()
+    protected PlaneType getPlaneType()
     {
-        for (PayloadElement payloadElement : stockModifications)
-        {
-            addModification(payloadElement);
-        }
+        return planeType;
     }
 
-    private boolean isStockModification(PayloadDesignation payloadDesignation)
+    protected Date getDate()
     {
-        for (PayloadElement stockModification : stockModifications)
-        {
-            for (PayloadElement payloadElementInDesignation : payloadDesignation.getPayloadElements())
-            if (stockModification == payloadElementInDesignation)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    private boolean isMissionSpecialModification(PayloadDesignation payloadDesignation)
-    {
-        for (PayloadElement payloadElement : payloadDesignation.getPayloadElements())
-        {
-            if (payloadElement == PayloadElement.CAMERA)
-            {
-                return true;
-            }
-            
-            if (payloadElement == PayloadElement.RADIO)
-            {
-                return true;
-            }
-        }
-        return false;
+        return date;
     }
 
-    public int getPayloadIdByDescription(String payloadDescription)
+    protected boolean isOrdnanceDroppedPayload()
     {
-        for (PayloadDesignation payloadDesignation : availablePayload.values())
-        {
-            if (payloadDesignation.getPayloadDescription().equals(payloadDescription))
-            {
-                return payloadDesignation.getPayloadId();
-            }
-        }
-        
-        return 0;
-    }
-    
-    public String getPayloadMaskByDescription(String payloadDescription)
-    {
-        for (PayloadDesignation payloadDesignation : availablePayload.values())
-        {
-            if (payloadDesignation.getPayloadDescription().equals(payloadDescription))
-            {
-                return payloadDesignation.getModMask();
-            }
-        }
-
-        return "";
-    }
-    
-    public int createStandardWeaponsPayload()
-    {
-        selectedPrimaryPayloadId = 0;
-        return selectedPrimaryPayloadId;
-    }
-    
-    
-    @Override
-    public void noOrdnance()
-    {
-        selectedPrimaryPayloadId = noOrdnancePayloadElement;
-    }    
-
-    public boolean isOrdnanceDroppedPayload()
-    {
-        return (selectedPrimaryPayloadId == noOrdnancePayloadElement);
-    }    
-
-    @Override
-    public List<PayloadElement> getStockModifications()
-    {
-        return stockModifications;
-    }
-    
-    @Override
-    public List<PayloadDesignation> getOptionalPayloadModifications()
-    {
-        List<PayloadDesignation> availableModifications = new ArrayList<>();
-        for (Integer payloadKey : availablePayload.keySet())
-        {
-            if (payloadKey < 0)
-            {
-                PayloadDesignation payloadDesignation = availablePayload.get(payloadKey);
-                if (!isStockModification(payloadDesignation))
-                {
-                    if (!isMissionSpecialModification(payloadDesignation))
-                    {
-                        availableModifications.add(payloadDesignation);
-                    }
-                }
-            }
-        }
-        return availableModifications;
+        return payload.isOrdnanceDroppedPayload();
     }
 
-    @Override
-    public List<PayloadDesignation> getPayloadDesignations()
-    {
-        List<PayloadDesignation> availableModifications = new ArrayList<>();
-        for (Integer payloadKey : availablePayload.keySet())
-        {
-            if (payloadKey >= 0)
-            {
-                availableModifications.add(availablePayload.get(payloadKey));
-            }
-        }
-        return availableModifications;
-    }
 
-    abstract public int createWeaponsPayload(IFlight flight) throws PWCGException;
-    abstract protected void initialize();
+    protected abstract int createWeaponsPayloadForPlane(IFlight flight) throws PWCGException;
+    protected abstract void initialize();
 }

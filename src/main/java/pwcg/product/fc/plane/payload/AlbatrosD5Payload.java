@@ -13,7 +13,7 @@ public class AlbatrosD5Payload extends PlanePayload implements IPlanePayload
     public AlbatrosD5Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     protected void initialize()
@@ -35,14 +35,14 @@ public class AlbatrosD5Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        AlbatrosD5Payload clone = new AlbatrosD5Payload(planeType, date);
+        AlbatrosD5Payload clone = new AlbatrosD5Payload(getPlaneType(), getDate());
         return super.copy(clone);
     }
     
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
-        return selectedPrimaryPayloadId;
+        int selectedPayloadId = 0;
+        return selectedPayloadId;
     }
 
     @Override

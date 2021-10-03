@@ -14,7 +14,7 @@ public class C47Payload extends PlanePayload
     public C47Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 6;
+        setNoOrdnancePayloadId(6);
     }
 
     protected void initialize()
@@ -28,26 +28,24 @@ public class C47Payload extends PlanePayload
     @Override
     public IPlanePayload copy()
     {
-        C47Payload clone = new C47Payload(planeType, date);
+        C47Payload clone = new C47Payload(getPlaneType(), getDate());
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
+        int selectedPayloadId = 0;
         if (flight.getFlightType() == FlightTypes.PARATROOP_DROP)
         {
-            selectedPrimaryPayloadId = 2;
+            selectedPayloadId = 2;
         }
         else if (flight.getFlightType() == FlightTypes.CARGO_DROP)
         {
-            selectedPrimaryPayloadId = 1;
+            selectedPayloadId = 1;
         }
-        else
-        {
-            selectedPrimaryPayloadId = 0;
-        }
-        return selectedPrimaryPayloadId;
+
+        return selectedPayloadId;
     }    
 
     @Override

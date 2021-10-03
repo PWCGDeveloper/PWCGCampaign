@@ -1,9 +1,13 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
+import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.core.utils.DateUtils;
@@ -19,7 +23,7 @@ public class MiG3Ser24Payload extends PlanePayload implements IPlanePayload
     public MiG3Ser24Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     @Override
@@ -51,124 +55,131 @@ public class MiG3Ser24Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        MiG3Ser24Payload clone = new MiG3Ser24Payload(planeType, date);
+        MiG3Ser24Payload clone = new MiG3Ser24Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectDefaultPayload();
+        int selectedPayloadId = selectDefaultPayload();
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
 
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }    
 
-    private void selectGroundAttackPayload(IFlight flight)
+    private int selectGroundAttackPayload (IFlight flight)
     {
-        selectedPrimaryPayloadId = 5;
+        int selectedPayloadId = 5;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectSoftTargetPayload();
+            selectedPayloadId = selectSoftTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectArmoredTargetPayload();
+            selectedPayloadId = selectArmoredTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectMediumTargetPayload();
+            selectedPayloadId = selectMediumTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectHeavyTargetPayload();
+            selectedPayloadId = selectHeavyTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectStructureTargetPayload();
+            selectedPayloadId = selectStructureTargetPayload();
         }
+        return selectedPayloadId;
     }
 
-    private void selectDefaultPayload()
+    private int selectDefaultPayload()
     {
-        selectedPrimaryPayloadId = 0;
-        if (date.after(shvakIntroDate))
+        int selectedPayloadId = 0;
+        if (getDate().after(shvakIntroDate))
         {
             int diceRoll = RandomNumberGenerator.getRandom(100);
             if (diceRoll < 60)
             {
-                selectedPrimaryPayloadId = 16;
+                selectedPayloadId = 16;
             }
         }
+        return selectedPayloadId;
     }    
 
-    private void selectSoftTargetPayload()
+    private int selectSoftTargetPayload()
     {
-        selectedPrimaryPayloadId = 5;
-        if (date.after(shvakIntroDate))
+        int selectedPayloadId = 5;
+        if (getDate().after(shvakIntroDate))
         {
             int diceRoll = RandomNumberGenerator.getRandom(100);
             if (diceRoll < 60)
             {
-                selectedPrimaryPayloadId = 17;
+                selectedPayloadId = 17;
             }
         }
+        return selectedPayloadId;
     }    
 
-    private void selectArmoredTargetPayload()
+    private int selectArmoredTargetPayload()
     {
-        selectedPrimaryPayloadId = 1;
-        if (date.after(shvakIntroDate))
+        int selectedPayloadId = 1;
+        if (getDate().after(shvakIntroDate))
         {
             int diceRoll = RandomNumberGenerator.getRandom(100);
             if (diceRoll < 60)
             {
-                selectedPrimaryPayloadId = 22;
+                selectedPayloadId = 22;
             }
         }
+        return selectedPayloadId;
     }
 
-    private void selectMediumTargetPayload()
+    private int selectMediumTargetPayload()
     {
-        selectedPrimaryPayloadId = 6;
-        if (date.after(shvakIntroDate))
+        int selectedPayloadId = 6;
+        if (getDate().after(shvakIntroDate))
         {
             int diceRoll = RandomNumberGenerator.getRandom(100);
             if (diceRoll < 60)
             {
-                selectedPrimaryPayloadId = 21;
+                selectedPayloadId = 21;
             }
         }
+        return selectedPayloadId;
     }
 
-    private void selectHeavyTargetPayload()
+    private int selectHeavyTargetPayload()
     {
-        selectedPrimaryPayloadId = 6;
-        if (date.after(shvakIntroDate))
+        int selectedPayloadId = 6;
+        if (getDate().after(shvakIntroDate))
         {
             int diceRoll = RandomNumberGenerator.getRandom(100);
             if (diceRoll < 60)
             {
-                selectedPrimaryPayloadId = 21;
+                selectedPayloadId = 21;
             }
         }
+        return selectedPayloadId;
     }
 
-    private void selectStructureTargetPayload()
+    private int selectStructureTargetPayload()
     {
-        selectedPrimaryPayloadId = 6;
-        if (date.after(shvakIntroDate))
+        int selectedPayloadId = 6;
+        if (getDate().after(shvakIntroDate))
         {
             int diceRoll = RandomNumberGenerator.getRandom(100);
             if (diceRoll < 60)
             {
-                selectedPrimaryPayloadId = 21;
+                selectedPayloadId = 21;
             }
         }
+        return selectedPayloadId;
     }
 
     @Override
@@ -179,12 +190,27 @@ public class MiG3Ser24Payload extends PlanePayload implements IPlanePayload
             return false;
         }
         
-        if (selectedPrimaryPayloadId == 0 || 
-            selectedPrimaryPayloadId == 16)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 0 || 
+            selectedPayloadId == 16)
         {
             return false;
         }
 
         return true;
+    }
+    
+    @Override
+    protected List<PayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
+    {
+        List<Integer>availablePayloads = new ArrayList<>();
+        List<Integer>alwaysAvailablePayloads = Arrays.asList(0, 1, 5,6 );
+        availablePayloads.addAll(alwaysAvailablePayloads);
+        if (getDate().after(shvakIntroDate))
+        {
+            List<Integer>availableShvakPayloads = Arrays.asList(16, 17, 21, 22);
+            availablePayloads.addAll(availableShvakPayloads);
+        }
+        return getAvailablePayloadDesignations(availablePayloads);
     }
 }

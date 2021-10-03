@@ -14,7 +14,7 @@ public class AircoDH4Payload extends PlanePayload implements IPlanePayload
     public AircoDH4Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     protected void initialize()
@@ -41,49 +41,51 @@ public class AircoDH4Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        AircoDH4Payload clone = new AircoDH4Payload(planeType, date);
+        AircoDH4Payload clone = new AircoDH4Payload(getPlaneType(), getDate());
         return super.copy(clone);
     }
 
-    public int createWeaponsPayload(IFlight flight)
+    @Override
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (FlightTypes.isBombingFlight(flight.getFlightType()))
         {
-            selectBombingPayload(flight);
+            selectedPayloadId = selectPayload(flight);
         }
         else if (flight.getFlightType() == FlightTypes.RECON)
         {
-            selectReconPayload(flight);
+            selectedPayloadId = selectReconPayload(flight);
         }
         else if (flight.getFlightType() == FlightTypes.ARTILLERY_SPOT)
         {
-            selectArtillerySpotPayload(flight);
+            selectedPayloadId = selectArtillerySpotPayload(flight);
         }
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }
 
-    protected void selectBombingPayload(IFlight flight)
+    protected int selectPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 12;
+        return 12;
     }
 
-    protected void selectReconPayload(IFlight flight)
+    protected int selectReconPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
-        addModification(PayloadElement.CAMERA);
+        this.selectModification(PayloadElement.CAMERA);
+        return 0;
     }
 
-    protected void selectArtillerySpotPayload(IFlight flight)
+    protected int selectArtillerySpotPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
-        addModification(PayloadElement.RADIO);
+        this.selectModification(PayloadElement.RADIO);
+        return 0;
     }
 
     @Override
     public boolean isOrdnance()
     {
-        if (selectedPrimaryPayloadId > 0)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId > 0)
         {
             return true;
         }

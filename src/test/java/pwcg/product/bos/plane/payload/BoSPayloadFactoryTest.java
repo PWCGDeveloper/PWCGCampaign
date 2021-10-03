@@ -40,7 +40,7 @@ public class BoSPayloadFactoryTest
 			
 			if (bosPlaneType.getType().equals(BosPlaneAttributeMapping.HURRICANE_MKII.getPlaneType()))
 			{
-			    assert(payload.getModifications().get(0) == PayloadElement.MIRROR);
+			    assert(payload.getSelectedModifications().get(0) == PayloadElement.MIRROR);
 			}
 		}
 	}

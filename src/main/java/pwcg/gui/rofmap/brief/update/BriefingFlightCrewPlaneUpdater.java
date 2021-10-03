@@ -97,7 +97,7 @@ public class BriefingFlightCrewPlaneUpdater
         for (String modificationDescription : crewPlane.getModifications())
         {
         	PayloadElement modification = payloadElementManager.getPayloadElementByDescription(modificationDescription);
-        	payload.addModification(modification);
+        	payload.selectModification(modification);
         }        
         plane.setPlanePayload(payload);
     }

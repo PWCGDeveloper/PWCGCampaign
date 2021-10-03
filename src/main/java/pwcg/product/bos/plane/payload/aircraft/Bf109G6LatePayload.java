@@ -16,7 +16,7 @@ public class Bf109G6LatePayload extends Bf109Payload implements IPlanePayload
     public Bf109G6LatePayload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     protected void initialize()
@@ -35,84 +35,83 @@ public class Bf109G6LatePayload extends Bf109Payload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Bf109G6LatePayload clone = new Bf109G6LatePayload(planeType, date);
+        Bf109G6LatePayload clone = new Bf109G6LatePayload(getPlaneType(), getDate());
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight) throws PWCGException
+    protected int createWeaponsPayloadForPlane(IFlight flight) throws PWCGException
     {
-        selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
         else if (flight.getFlightType() == FlightTypes.INTERCEPT)
         {
-            selectInterceptPayload();
+            selectedPayloadId = selectInterceptPayload();
         }
         else
         {
             createStandardPayload();
         }
-        return selectedPrimaryPayloadId;
+
+        return selectedPayloadId;
     }    
     
-    protected void createStandardPayload()
+    protected int createStandardPayload()
     {
+        int selectedPayloadId = 0;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 50)
         {
-            selectedPrimaryPayloadId = 0;
+            selectedPayloadId = 0;
         }
         else
         {
-            selectedPrimaryPayloadId = 8;
+            selectedPayloadId = 8;
         }
+        return selectedPayloadId;
     }    
 
-    protected void selectInterceptPayload() throws PWCGException
+    private int selectInterceptPayload() throws PWCGException
     {
+        int selectedPayloadId = 0;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 30)
         {
-            setGunPodPayload();
+            selectedPayloadId = setGunPodPayload();
         }
         else if (diceRoll < 60)
         {
-            setMortarPayload();
-        }
-        else if (diceRoll < 90)
-        {
-            selectedPrimaryPayloadId = 8;
+            selectedPayloadId = setMortarPayload();
         }
         else
         {
-            selectedPrimaryPayloadId = 11;
+            selectedPayloadId = createStandardPayload();
         }
+        return selectedPayloadId;
     }    
 
-    private void setGunPodPayload() throws PWCGException
+    private int setGunPodPayload() throws PWCGException
     {
-        if (date.before(DateUtils.getDateYYYYMMDD("19440902")))
+        int selectedPayloadId = createStandardPayload();
+        // Use discontinued after this date
+        if (getDate().before(DateUtils.getDateYYYYMMDD("19440501")))
         {
-            selectedPrimaryPayloadId = 0;
+            selectedPayloadId = 3;
         }
-        else
-        {
-            selectedPrimaryPayloadId = 3;
-        }
+        return selectedPayloadId;
     }
 
-    private void setMortarPayload() throws PWCGException
+    private int setMortarPayload() throws PWCGException
     {
-        if (date.before(DateUtils.getDateYYYYMMDD("19440902")))
+        int selectedPayloadId = createStandardPayload();
+        // Use discontinued after this date
+        if (getDate().before(DateUtils.getDateYYYYMMDD("19440501")))
         {
-            selectedPrimaryPayloadId = 0;
+            selectedPayloadId = 4;
         }
-        else
-        {
-            selectedPrimaryPayloadId = 4;
-        }
+        return selectedPayloadId;
     }
 }

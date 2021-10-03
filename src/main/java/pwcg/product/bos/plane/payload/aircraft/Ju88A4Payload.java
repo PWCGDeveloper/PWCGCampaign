@@ -16,7 +16,7 @@ public class Ju88A4Payload extends PlanePayload
     public Ju88A4Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 12;
+        setNoOrdnancePayloadId(12);
     }
 
     protected void initialize()
@@ -39,17 +39,17 @@ public class Ju88A4Payload extends PlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Ju88A4Payload clone = new Ju88A4Payload(planeType, date);
+        Ju88A4Payload clone = new Ju88A4Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
     
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 1;
+        int selectedPayloadId = 1;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
         else if (flight.getFlightType() == FlightTypes.DIVE_BOMB)
         {
@@ -57,77 +57,80 @@ public class Ju88A4Payload extends PlanePayload
         }
         else
         {
-            selectBombingPayload(flight);
+            selectPayload(flight);
         }
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }
 
-    private void selectBombingPayload(IFlight flight)
+    private int selectPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 1;
+        int selectedPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectSoftTargetPayload();
+            selectedPayloadId = selectSoftTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectArmoredTargetPayload();
+            selectedPayloadId = selectArmoredTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectMediumTargetPayload();
+            selectedPayloadId = selectMediumTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectHeavyTargetPayload();
+            selectedPayloadId = selectHeavyTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectStructureTargetPayload();
+            selectedPayloadId = selectStructureTargetPayload();
         }
+        return selectedPayloadId;
     }
 
-    private void selectSoftTargetPayload()
+    private int selectSoftTargetPayload()
     {
+        int selectedPayloadId = 2;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 80)
         {
-            selectedPrimaryPayloadId = 2;
+            selectedPayloadId = 2;
         }
         else
         {
-            selectedPrimaryPayloadId = 0;
+            selectedPayloadId = 0;
         }
+        return selectedPayloadId;
     }    
 
-    private void selectArmoredTargetPayload()
+    private int selectArmoredTargetPayload()
     {
-        selectedPrimaryPayloadId = 6;
+        return 6;
     }
 
-    private void selectMediumTargetPayload()
+    private int selectMediumTargetPayload()
     {
-        selectedPrimaryPayloadId = 1;
+        return 1;
     }
 
-    private void selectHeavyTargetPayload()
+    private int selectHeavyTargetPayload()
     {
-        selectedPrimaryPayloadId = 9;
+        return 9;
     }
 
-    private void selectStructureTargetPayload()
+    private int selectStructureTargetPayload()
     {
-        selectedPrimaryPayloadId = 9;
+        return 9;
     }
 
-    private void selectGroundAttackPayload(IFlight flight)
+    private int selectGroundAttackPayload (IFlight flight)
     {
-        selectedPrimaryPayloadId = 2;        
+        return 2;        
     }
 
-    private void selectDiveBombPayload(IFlight flight)
+    private int selectDiveBombPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;        
+        return 0;        
     }
 
     @Override

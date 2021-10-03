@@ -13,7 +13,7 @@ public class Yak9S1Payload extends PlanePayload implements IPlanePayload
     public Yak9S1Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     protected void initialize()
@@ -30,16 +30,16 @@ public class Yak9S1Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Yak9S1Payload clone = new Yak9S1Payload(planeType, date);
+        Yak9S1Payload clone = new Yak9S1Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
-        return selectedPrimaryPayloadId;
+        int selectedPayloadId = 0;
+        return selectedPayloadId;
     }    
 
     @Override

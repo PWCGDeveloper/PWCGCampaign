@@ -1,9 +1,13 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
+import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -13,10 +17,12 @@ import pwcg.mission.flight.IFlight;
 
 public class Bf109G6Payload extends Bf109Payload implements IPlanePayload
 {
+    private Date mg108IntroDate;
+
     public Bf109G6Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     protected void initialize()
@@ -31,68 +37,100 @@ public class Bf109G6Payload extends Bf109Payload implements IPlanePayload
 	}
 
     @Override
+    protected void createWeaponsModAvailabilityDates()
+    {
+        try
+        {
+            mg108IntroDate = DateUtils.getDateYYYYMMDD("19440801");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }    
+
+    @Override
     public IPlanePayload copy()
     {
-        Bf109G6Payload clone = new Bf109G6Payload(planeType, date);
+        Bf109G6Payload clone = new Bf109G6Payload(getPlaneType(), getDate());
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight) throws PWCGException
+    protected int createWeaponsPayloadForPlane(IFlight flight) throws PWCGException
     {
-        selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
         else if (flight.getFlightType() == FlightTypes.INTERCEPT)
         {
-            selectInterceptPayload();
+            selectedPayloadId = selectInterceptPayload();
         }
         else
         {
             createStandardPayload();
         }
-        return selectedPrimaryPayloadId;
+
+        return selectedPayloadId;
     }    
     
-    protected void createStandardPayload() throws PWCGException
+    protected int createStandardPayload() throws PWCGException
     {
-        selectedPrimaryPayloadId = 0;
-
+        int selectedPayloadId = 0;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 50)
         {
-            setMk108Payload();
+            selectedPayloadId = setMk108Payload();
         }
+        return selectedPayloadId;
     }    
 
-    protected void selectInterceptPayload() throws PWCGException
+    private int selectInterceptPayload() throws PWCGException
     {
+        int selectedPayloadId = 0;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 50)
         {
-            selectedPrimaryPayloadId = 3;
+            selectedPayloadId = 3;
         }
         else if (diceRoll < 80)
         {
-            setMk108Payload();
+            selectedPayloadId = setMk108Payload();
         }
         else
         {
-            selectedPrimaryPayloadId = 0;
+            selectedPayloadId = 0;
         }
+        return selectedPayloadId;
     }    
 
-    private void setMk108Payload() throws PWCGException
+    private int setMk108Payload() throws PWCGException
     {
-        if (date.before(DateUtils.getDateYYYYMMDD("19440801")))
+        int selectedPayloadId = 0;
+        if (getDate().before(mg108IntroDate))
         {
-            selectedPrimaryPayloadId = 0;
+            selectedPayloadId = 0;
         }
         else
         {
-            selectedPrimaryPayloadId = 4;
+            selectedPayloadId = 4;
         }
+        return selectedPayloadId;
+    }
+    
+    @Override
+    protected List<PayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
+    {
+        List<Integer>availablePayloads = new ArrayList<>();
+        List<Integer>alwaysAvailablePayloads = Arrays.asList(0, 1, 2, 3);
+        availablePayloads.addAll(alwaysAvailablePayloads);
+        if (getDate().after(mg108IntroDate))
+        {
+            List<Integer>availableShvakPayloads = Arrays.asList(4);
+            availablePayloads.addAll(availableShvakPayloads);
+        }
+        return getAvailablePayloadDesignations(availablePayloads);
     }
 }

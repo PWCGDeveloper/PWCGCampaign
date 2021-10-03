@@ -14,7 +14,7 @@ public class Bf109G14Payload extends Bf109Payload implements IPlanePayload
     public Bf109G14Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     protected void initialize()
@@ -31,63 +31,70 @@ public class Bf109G14Payload extends Bf109Payload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Bf109G14Payload clone = new Bf109G14Payload(planeType, date);
+        Bf109G14Payload clone = new Bf109G14Payload(getPlaneType(), getDate());
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
         else if (flight.getFlightType() == FlightTypes.INTERCEPT)
         {
-            selectInterceptPayload();
+            selectedPayloadId = selectInterceptPayload();
         }
         else
         {
-            createStandardPayload();
+            selectedPayloadId = createStandardPayload();
         }
-        return selectedPrimaryPayloadId;
+
+        return selectedPayloadId;
 
     }    
 
     @Override
-    protected void createStandardPayload()
+    protected int createStandardPayload()
     {
+        int selectedPayloadId = 0;
+
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 40)
         {
-            selectedPrimaryPayloadId = 8;
+            selectedPayloadId = 8;
         }
         else
         {
-            selectedPrimaryPayloadId = 0;
+            selectedPayloadId = 0;
         }
+        return selectedPayloadId;
     }
     
 
-    protected void selectInterceptPayload()
+    private int selectInterceptPayload()
     {
+        int selectedPayloadId = 0;
+
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 25)
         {
-            selectedPrimaryPayloadId = 0;
+            selectedPayloadId = 0;
         }
         else if (diceRoll < 50)
         {
-            selectedPrimaryPayloadId = 3;
+            selectedPayloadId = 3;
         }
         else if (diceRoll < 75)
         {
-            selectedPrimaryPayloadId = 4;
+            selectedPayloadId = 4;
         }
         else
         {
-            selectedPrimaryPayloadId = 8;
+            selectedPayloadId = 8;
         }
+        return selectedPayloadId;
     }
 }

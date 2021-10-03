@@ -8,27 +8,27 @@ public class Fw190F8PayloadHelper
 
     public static int selectFW190F8Payload(IFlight flight)
     {
-        int selectedPrimaryPayloadId = 32;
+        int selectedPayloadId = 32;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectedPrimaryPayloadId = 37;
+            selectedPayloadId = 37;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectedPrimaryPayloadId = 36;
+            selectedPayloadId = 36;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectedPrimaryPayloadId = 34;
+            selectedPayloadId = 34;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectedPrimaryPayloadId = 34;
+            selectedPayloadId = 34;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectedPrimaryPayloadId = 34;
+            selectedPayloadId = 34;
         }
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }
 }

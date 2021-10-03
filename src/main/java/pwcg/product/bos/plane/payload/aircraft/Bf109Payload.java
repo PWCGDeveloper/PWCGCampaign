@@ -18,70 +18,72 @@ public abstract class Bf109Payload extends PlanePayload
         super(planeType, date);
     }
 
-    public int createWeaponsPayload(IFlight flight) throws PWCGException
+    protected int createWeaponsPayloadForPlane(IFlight flight) throws PWCGException
     {
-        createStandardPayload();
+        int selectedPayloadId = createStandardPayload();
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
 
-        return selectedPrimaryPayloadId;
+
+        return selectedPayloadId;
     }
     
-    protected void selectGroundAttackPayload(IFlight flight)
+    protected int selectGroundAttackPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 1;
+        int selectedPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectSoftTargetPayload();
+            selectedPayloadId = selectSoftTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectArmoredTargetPayload();
+            selectedPayloadId = selectArmoredTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectMediumTargetPayload();
+            selectedPayloadId = selectMediumTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectHeavyTargetPayload();
+            selectedPayloadId = selectHeavyTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectStructureTargetPayload();
+            selectedPayloadId = selectStructureTargetPayload();
         }
+        return selectedPayloadId;
     }
 
-    protected void createStandardPayload() throws PWCGException
+    protected int createStandardPayload() throws PWCGException
     {
-        selectedPrimaryPayloadId = getPayloadIdByDescription(PayloadElement.STANDARD.getDescription());
+        return getPayloadIdByDescription(PayloadElement.STANDARD.getDescription());
     }
 
-    protected void selectSoftTargetPayload()
+    protected int selectSoftTargetPayload()
     {
-        selectedPrimaryPayloadId = 1;
+        return 1;
     }
 
-    protected void selectArmoredTargetPayload()
+    protected int selectArmoredTargetPayload()
     {
-        selectedPrimaryPayloadId = 2;
+        return 2;
     }
 
-    protected void selectMediumTargetPayload()
+    protected int selectMediumTargetPayload()
     {
-        selectedPrimaryPayloadId = 2;
+        return 2;
     }
 
-    protected void selectHeavyTargetPayload()
+    protected int selectHeavyTargetPayload()
     {
-        selectedPrimaryPayloadId = 2;
+        return 2;
     }
 
-    protected void selectStructureTargetPayload()
+    protected int selectStructureTargetPayload()
     {
-        selectedPrimaryPayloadId = 2;
+        return 2;
     }
 
     @Override
@@ -92,7 +94,7 @@ public abstract class Bf109Payload extends PlanePayload
             return false;
         }
         
-        if (selectedPrimaryPayloadId == 1 || selectedPrimaryPayloadId == 2)
+        if (this.getSelectedPayload() == 1 || this.getSelectedPayload() == 2)
         {
             return true;
         }

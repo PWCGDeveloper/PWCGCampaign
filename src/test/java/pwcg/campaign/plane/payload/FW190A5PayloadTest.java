@@ -27,7 +27,7 @@ import pwcg.mission.target.TargetDefinition;
 import pwcg.product.bos.plane.BosPlaneAttributeMapping;
 
 @RunWith(MockitoJUnitRunner.class)
-public class FW190A5G3PayloadTest
+public class FW190A5PayloadTest
 {
     @Mock
     IFlight flight;
@@ -149,7 +149,7 @@ public class FW190A5G3PayloadTest
         Mockito.when(targetDefinition.getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_MEDIUM);
         runPayload(payloadGenerator, Arrays.asList(2));
         Mockito.when(targetDefinition.getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_HEAVY);
-        runPayload(payloadGenerator, Arrays.asList(2));
+        runPayload(payloadGenerator, Arrays.asList(3));
         Mockito.when(targetDefinition.getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_STRUCTURE);
         runPayload(payloadGenerator, Arrays.asList(3));
     }

@@ -1,9 +1,13 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
+import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.core.exception.PWCGException;
@@ -20,7 +24,7 @@ public class IL2M42Payload extends PlanePayload implements IPlanePayload
     public IL2M42Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 87;
+        setNoOrdnancePayloadId(87);
     }
 
     @Override
@@ -85,135 +89,132 @@ public class IL2M42Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        IL2M42Payload clone = new IL2M42Payload(planeType, date);
+        IL2M42Payload clone = new IL2M42Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight) throws PWCGException
+    protected int createWeaponsPayloadForPlane(IFlight flight) throws PWCGException
     {
-        selectedPrimaryPayloadId = 7;
+        int selectedPayloadId = 7;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
 
         il2Turret();
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }
 
-    private void selectGroundAttackPayload(IFlight flight)
+    private int selectGroundAttackPayload (IFlight flight)
     {
-        selectedPrimaryPayloadId = 4;
+        int selectedPayloadId = 4;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectSoftTargetPayload();
+            selectedPayloadId = selectSoftTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectArmoredTargetPayload();
+            selectedPayloadId = selectArmoredTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectMediumTargetPayload();
+            selectedPayloadId = selectMediumTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectHeavyTargetPayload();
+            selectedPayloadId = selectHeavyTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectStructureTargetPayload();
+            selectedPayloadId = selectStructureTargetPayload();
         }
+        return selectedPayloadId;
     }
 
-    private void selectSoftTargetPayload()
+    private int selectSoftTargetPayload()
     {
+        int selectedPayloadId = 6;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 30)
         {
-            selectedPrimaryPayloadId = 7;
+            selectedPayloadId = 7;
         }
         else if (diceRoll < 60)
         {
-            selectedPrimaryPayloadId = 14;
+            selectedPayloadId = 14;
         }
         else if (diceRoll < 90)
         {
-            selectedPrimaryPayloadId = 29;
+            selectedPayloadId = 29;
         }
         else if (diceRoll < 95)
         {
-            selectedPrimaryPayloadId = 3;
+            selectedPayloadId = 3;
         }
-        else
-        {
-            selectedPrimaryPayloadId = 6;
-        }
+        return selectedPayloadId;
     }    
 
-    private void selectArmoredTargetPayload()
+    private int selectArmoredTargetPayload()
     {
+        int selectedPayloadId = 2;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 60)
         {
-            selectedPrimaryPayloadId = 29;
+            selectedPayloadId = 29;
         }
         else if (diceRoll < 80)
         {
-            selectedPrimaryPayloadId = 2;
+            selectedPayloadId = 2;
         }
         else
         {
-            if (date.before(sh37IntroDate))
+            if (getDate().before(sh37IntroDate))
             {
-                selectedPrimaryPayloadId = 2;
+                selectedPayloadId = 2;
             }
             else
             {
-                selectedPrimaryPayloadId = 5;
+                selectedPayloadId = 5;
             }
         }
+        return selectedPayloadId;
     }
 
-    private void selectMediumTargetPayload()
+    private int selectMediumTargetPayload()
     {
+        int selectedPayloadId = 4;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 50)
         {
-            selectedPrimaryPayloadId = 18;
+            selectedPayloadId = 18;
         }
         else if (diceRoll < 90)
         {
-            selectedPrimaryPayloadId = 29;
+            selectedPayloadId = 29;
         }
         else if (diceRoll < 95)
         {
-            selectedPrimaryPayloadId = 1;
+            selectedPayloadId = 1;
         }
-        else
-        {
-            selectedPrimaryPayloadId = 4;
-        }
+        return selectedPayloadId;
     }
 
-    private void selectHeavyTargetPayload()
+    private int selectHeavyTargetPayload()
     {
-        selectedPrimaryPayloadId = 25;
+        return 25;
     }
 
-    private void selectStructureTargetPayload()
+    private int selectStructureTargetPayload()
     {
+        int selectedPayloadId = 25;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 70)
         {
-            selectedPrimaryPayloadId = 18;
+            selectedPayloadId = 18;
         }
-        else
-        {
-            selectedPrimaryPayloadId = 25;
-        }
+        return selectedPayloadId;
     }
 
     private void il2Turret() throws PWCGException
@@ -222,7 +223,7 @@ public class IL2M42Payload extends PlanePayload implements IPlanePayload
         int il2TurretOddsKey = 50;
         if (roll < il2TurretOddsKey)
         {
-            this.addModification(PayloadElement.TURRET);
+            this.selectModification(PayloadElement.TURRET);
         }
     }
 
@@ -234,18 +235,43 @@ public class IL2M42Payload extends PlanePayload implements IPlanePayload
             return false;
         }
         
-        if (selectedPrimaryPayloadId == 0 || 
-            selectedPrimaryPayloadId == 1 ||
-            selectedPrimaryPayloadId == 2 ||
-            selectedPrimaryPayloadId == 3 ||
-            selectedPrimaryPayloadId == 4 ||
-            selectedPrimaryPayloadId == 5 ||
-            selectedPrimaryPayloadId == 6 ||
-            selectedPrimaryPayloadId == 87)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 0 || 
+            selectedPayloadId == 1 ||
+            selectedPayloadId == 2 ||
+            selectedPayloadId == 3 ||
+            selectedPayloadId == 4 ||
+            selectedPayloadId == 5 ||
+            selectedPayloadId == 6 ||
+            selectedPayloadId == 87)
         {
             return false;
         }
 
         return true;
+    }
+    
+    @Override
+    protected List<PayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
+    {
+        List<Integer>availablePayloads = new ArrayList<>();
+        List<Integer>sh37Payloads = Arrays.asList(4, 5, 6, 11, 12, 13, 22, 23, 24, 33, 34, 35);
+
+        for (int i = 0; i < 36; ++i)
+        {
+            if (!sh37Payloads.contains(i))
+            {
+                availablePayloads.add(i);
+            }
+        }
+        availablePayloads.add(40);
+        availablePayloads.add(44);
+        
+        if (getDate().after(sh37IntroDate))
+        {
+            availablePayloads.addAll(sh37Payloads);
+        }
+        
+        return getAvailablePayloadDesignations(availablePayloads);
     }
 }

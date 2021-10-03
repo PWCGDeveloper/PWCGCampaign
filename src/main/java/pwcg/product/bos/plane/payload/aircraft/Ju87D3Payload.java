@@ -1,9 +1,13 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
+import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.core.exception.PWCGException;
@@ -19,7 +23,7 @@ public class Ju87D3Payload extends PlanePayload
     public Ju87D3Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     @Override
@@ -56,68 +60,71 @@ public class Ju87D3Payload extends PlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Ju87D3Payload clone = new Ju87D3Payload(planeType, date);
+        Ju87D3Payload clone = new Ju87D3Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight) throws PWCGException
+    protected int createWeaponsPayloadForPlane(IFlight flight) throws PWCGException
     {
-        selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (flight.getFlightType() == FlightTypes.DIVE_BOMB)
         {
-            selectDiveBombPayload(flight);
+            selectedPayloadId = selectDiveBombPayload(flight);
         }
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectAttackPayload(flight);
+            selectedPayloadId = selectAttackPayload(flight);
         }
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }    
 
-    private void selectDiveBombPayload(IFlight flight) throws PWCGException
+    private int selectDiveBombPayload(IFlight flight) throws PWCGException
     {
-        selectedPrimaryPayloadId = 1;
+        int selectedPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectedPrimaryPayloadId = 1;
+            selectedPayloadId = 1;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectedPrimaryPayloadId = 2;
+            selectedPayloadId = 2;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectedPrimaryPayloadId = 2;
+            selectedPayloadId = 2;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectedPrimaryPayloadId = 2;
+            selectedPayloadId = 2;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectedPrimaryPayloadId = 6;
+            selectedPayloadId = 6;
         }
+        return selectedPayloadId;
     }
 
-    private void selectAttackPayload(IFlight flight) throws PWCGException
+    private int selectAttackPayload(IFlight flight) throws PWCGException
     {
-        if (date.before(bk37IntroDate))
+        int selectedPayloadId = 1;
+        if (getDate().before(bk37IntroDate))
         {
-            selectDiveBombPayload(flight);
+            selectedPayloadId = selectDiveBombPayload(flight);
         }
         else
         {
             if (flight.getTargetDefinition().getTargetCategory() != TargetCategory.TARGET_CATEGORY_STRUCTURE)
             {
-                selectedPrimaryPayloadId = 9;
+                selectedPayloadId = 9;
             }
             else
             {
-                selectedPrimaryPayloadId = 6;
+                selectedPayloadId = 6;
             }
         }
+        return selectedPayloadId;
     }
 
     @Override
@@ -128,13 +135,36 @@ public class Ju87D3Payload extends PlanePayload
             return false;
         }
         
-        if (selectedPrimaryPayloadId == 0 || 
-            selectedPrimaryPayloadId == 9 || 
-            selectedPrimaryPayloadId == 10)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 0 || 
+            selectedPayloadId == 9 || 
+            selectedPayloadId == 10)
         {
             return false;
         }
 
         return true;
+    }
+    
+    @Override
+    protected List<PayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
+    {
+        List<Integer>availablePayloads = new ArrayList<>();
+        List<Integer>bk37Payloads = Arrays.asList(9, 10);
+
+        for (int i = 0; i < 8; ++i)
+        {
+            if (!bk37Payloads.contains(i))
+            {
+                availablePayloads.add(i);
+            }
+        }
+
+        if (getDate().after(bk37IntroDate))
+        {
+            availablePayloads.addAll(bk37Payloads);
+        }
+        
+        return getAvailablePayloadDesignations(availablePayloads);
     }
 }

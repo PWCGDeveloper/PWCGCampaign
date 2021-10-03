@@ -1,9 +1,13 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
+import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.core.utils.DateUtils;
@@ -21,7 +25,7 @@ public class SpitfireMkIXePayload extends PlanePayload implements IPlanePayload
     public SpitfireMkIXePayload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     @Override
@@ -56,27 +60,27 @@ public class SpitfireMkIXePayload extends PlanePayload implements IPlanePayload
 	}
 
     @Override
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
         
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }
 
-    protected void selectGroundAttackPayload(IFlight flight)
+    protected int selectGroundAttackPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 1;
+        int selectedPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
             selectLightTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectArmoredTargetPayload();
+            selectedPayloadId = selectArmoredTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
@@ -84,36 +88,39 @@ public class SpitfireMkIXePayload extends PlanePayload implements IPlanePayload
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectedPrimaryPayloadId = 1;
+            selectedPayloadId = 1;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectedPrimaryPayloadId = 1;
+            selectedPayloadId = 1;
         }
+        return selectedPayloadId;
     }
 
-    private void selectLightTargetPayload()
+    private int selectLightTargetPayload()
     {
-        selectedPrimaryPayloadId = 1;
-        if (date.before(smallBombIntroDate))
+        int selectedPayloadId = 1;
+        if (getDate().after(smallBombIntroDate))
         {
-            selectedPrimaryPayloadId = 2;
+            selectedPayloadId = 2;
         }
+        return selectedPayloadId;
     }
 
-    private void selectArmoredTargetPayload()
+    private int selectArmoredTargetPayload()
     {
-        selectedPrimaryPayloadId = 1;
-        if (date.before(rp3IntroDate))
+        int selectedPayloadId = 1;
+        if (getDate().after(rp3IntroDate))
         {
-            selectedPrimaryPayloadId = 4;
+            selectedPayloadId = 4;
         }
+        return selectedPayloadId;
     }
 
     @Override
     public IPlanePayload copy()
     {
-    	SpitfireMkIXePayload clone = new SpitfireMkIXePayload(planeType, date);
+    	SpitfireMkIXePayload clone = new SpitfireMkIXePayload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
@@ -126,7 +133,8 @@ public class SpitfireMkIXePayload extends PlanePayload implements IPlanePayload
             return false;
         }
         
-        if (selectedPrimaryPayloadId == 0)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 0)
         {
             return false;
         }
@@ -135,17 +143,37 @@ public class SpitfireMkIXePayload extends PlanePayload implements IPlanePayload
     }
 
     @Override
-    protected void loadStockModifications()
+    protected void loadAvailableStockModifications()
     {
-        stockModifications.add(PayloadElement.MIRROR);        
-        if (date.after(gyroGunsightIntroDate))
+        registerStockModification(PayloadElement.MIRROR);        
+        if (getDate().after(gyroGunsightIntroDate))
         {
-            stockModifications.add(PayloadElement.GYRO_GUNSIGHT);
+            registerStockModification(PayloadElement.GYRO_GUNSIGHT);
         }
         
-        if (date.after(highOctaneFuelIntroDate))
+        if (getDate().after(highOctaneFuelIntroDate))
         {
-            stockModifications.add(PayloadElement.OCTANE_150_FUEL);
+            registerStockModification(PayloadElement.OCTANE_150_FUEL);
         }
+    }
+    
+    @Override
+    protected List<PayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
+    {
+        List<Integer>availablePayloads = new ArrayList<>();
+        List<Integer>alwaysAvailablePayloads = Arrays.asList(0, 1);
+        availablePayloads.addAll(alwaysAvailablePayloads);
+        
+        if (getDate().after(smallBombIntroDate))
+        {
+            availablePayloads.add(2);
+        }
+        
+        if (getDate().after(rp3IntroDate))
+        {
+            availablePayloads.add(4);
+        }
+        
+        return getAvailablePayloadDesignations(availablePayloads);
     }
 }

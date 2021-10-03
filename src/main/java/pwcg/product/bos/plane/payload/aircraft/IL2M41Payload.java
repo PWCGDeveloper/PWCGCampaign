@@ -16,7 +16,7 @@ public class IL2M41Payload extends PlanePayload implements IPlanePayload
     public IL2M41Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 72;
+        setNoOrdnancePayloadId(72);
     }
 
     protected void initialize()
@@ -58,130 +58,122 @@ public class IL2M41Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        IL2M41Payload clone = new IL2M41Payload(planeType, date);
+        IL2M41Payload clone = new IL2M41Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
-        return selectedPrimaryPayloadId;
+
+        return selectedPayloadId;
     }    
 
-    private void selectGroundAttackPayload(IFlight flight)
+    private int selectGroundAttackPayload (IFlight flight)
     {
-        selectedPrimaryPayloadId = 4;
+        int selectedPayloadId = 4;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectSoftTargetPayload();
+            selectedPayloadId = selectSoftTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectArmoredTargetPayload();
+            selectedPayloadId = selectArmoredTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectMediumTargetPayload();
+            selectedPayloadId = selectMediumTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectHeavyTargetPayload();
+            selectedPayloadId = selectHeavyTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectStructureTargetPayload();
+            selectedPayloadId = selectStructureTargetPayload();
         }
+        return selectedPayloadId;
     }
 
-    private void selectSoftTargetPayload()
+    private int selectSoftTargetPayload()
     {
+        int selectedPayloadId = 3;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 30)
         {
-            selectedPrimaryPayloadId = 4;
+            selectedPayloadId = 4;
         }
         else if (diceRoll < 60)
         {
-            selectedPrimaryPayloadId = 8;
+            selectedPayloadId = 8;
         }
         else if (diceRoll < 90)
         {
-            selectedPrimaryPayloadId = 20;
+            selectedPayloadId = 20;
         }
-        else
-        {
-            selectedPrimaryPayloadId = 3;
-        }
+        return selectedPayloadId;
     }    
 
-    private void selectArmoredTargetPayload()
+    private int selectArmoredTargetPayload()
     {
+        int selectedPayloadId = 2;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 40)
         {
-            selectedPrimaryPayloadId = 20;
+            selectedPayloadId = 20;
         }
         else if (diceRoll < 90)
         {
-            selectedPrimaryPayloadId = 56;
+            selectedPayloadId = 56;
         }
-        else
-        {
-            selectedPrimaryPayloadId = 2;
-        }
+        return selectedPayloadId;
     }
 
-    private void selectMediumTargetPayload()
+    private int selectMediumTargetPayload()
     {
+        int selectedPayloadId = 1;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 50)
         {
-            selectedPrimaryPayloadId = 12;
+            selectedPayloadId = 12;
         }
         else if (diceRoll < 80)
         {
-            selectedPrimaryPayloadId = 20;
+            selectedPayloadId = 20;
         }
         else if (diceRoll < 90)
         {
-            selectedPrimaryPayloadId = 56;
+            selectedPayloadId = 56;
         }
-        else
-        {
-            selectedPrimaryPayloadId = 1;
-        }
+        return selectedPayloadId;
     }
 
-    private void selectHeavyTargetPayload()
+    private int selectHeavyTargetPayload()
     {
+        int selectedPayloadId = 56;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 70)
         {
-            selectedPrimaryPayloadId = 12;
+            selectedPayloadId = 12;
         }
-        else
-        {
-            selectedPrimaryPayloadId = 56;
-        }
+        return selectedPayloadId;
     }
 
-    private void selectStructureTargetPayload()
+    private int selectStructureTargetPayload()
     {
+        int selectedPayloadId = 16;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 70)
         {
-            selectedPrimaryPayloadId = 12;
+            selectedPayloadId = 12;
         }
-        else
-        {
-            selectedPrimaryPayloadId = 16;
-        }
+        return selectedPayloadId;
     }
 
     @Override
@@ -192,11 +184,12 @@ public class IL2M41Payload extends PlanePayload implements IPlanePayload
             return false;
         }
         
-        if (selectedPrimaryPayloadId == 0 || 
-            selectedPrimaryPayloadId == 1 ||
-            selectedPrimaryPayloadId == 2 ||
-            selectedPrimaryPayloadId == 3 ||
-            selectedPrimaryPayloadId == 72)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 0 || 
+            selectedPayloadId == 1 ||
+            selectedPayloadId == 2 ||
+            selectedPayloadId == 3 ||
+            selectedPayloadId == 72)
         {
             return false;
         }

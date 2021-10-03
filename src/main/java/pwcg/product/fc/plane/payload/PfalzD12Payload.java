@@ -13,7 +13,7 @@ public class PfalzD12Payload extends PlanePayload implements IPlanePayload
     public PfalzD12Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     protected void initialize()
@@ -35,14 +35,14 @@ public class PfalzD12Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        PfalzD12Payload clone = new PfalzD12Payload(planeType, date);
+        PfalzD12Payload clone = new PfalzD12Payload(getPlaneType(), getDate());
         return super.copy(clone);
     }
     
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
-        return selectedPrimaryPayloadId;
+        int selectedPayloadId = 0;
+        return selectedPayloadId;
     }
 
     @Override

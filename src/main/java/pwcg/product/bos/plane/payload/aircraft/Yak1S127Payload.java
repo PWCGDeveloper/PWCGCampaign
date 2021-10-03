@@ -15,7 +15,7 @@ public class Yak1S127Payload extends PlanePayload implements IPlanePayload
     public Yak1S127Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     protected void initialize()
@@ -30,46 +30,47 @@ public class Yak1S127Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Yak1S127Payload clone = new Yak1S127Payload(planeType, date);
+        Yak1S127Payload clone = new Yak1S127Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
 
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }    
 
-    protected void selectGroundAttackPayload(IFlight flight)
+    protected int selectGroundAttackPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 1;
+        int selectedPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectedPrimaryPayloadId = 1;
+            selectedPayloadId = 1;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectedPrimaryPayloadId = 1;
+            selectedPayloadId = 1;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectedPrimaryPayloadId = 1;
+            selectedPayloadId = 1;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectedPrimaryPayloadId = 2;
+            selectedPayloadId = 2;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectedPrimaryPayloadId = 2;
+            selectedPayloadId = 2;
         }
+        return selectedPayloadId;
     }
 
     @Override
@@ -80,7 +81,8 @@ public class Yak1S127Payload extends PlanePayload implements IPlanePayload
             return false;
         }
         
-        if (selectedPrimaryPayloadId == 0)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 0)
         {
             return false;
         }

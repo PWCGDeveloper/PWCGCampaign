@@ -10,55 +10,57 @@ public class Fw190A6PayloadHelper
 {
     public static int createFW190A6Payload(IFlight flight) throws PWCGException
     {
-        int selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectedPrimaryPayloadId = selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
         else if (flight.getFlightType() == FlightTypes.INTERCEPT)
         {
-            selectedPrimaryPayloadId = selectInterceptPayload();
+            selectedPayloadId = selectInterceptPayload();
         }
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }    
 
     private static int selectInterceptPayload()
     {
+        int selectedPayloadId = 0;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 60)
         {
-            return 0;
+            selectedPayloadId = 0;
         }
         else
         {
-            return 4;
+            selectedPayloadId = 4;
         }
+        return selectedPayloadId;
     }    
 
 	private static int selectGroundAttackPayload(IFlight flight) throws PWCGException
     {
-        int selectedPrimaryPayloadId = 1;
+        int selectedPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectedPrimaryPayloadId = 1;
+            selectedPayloadId = 1;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectedPrimaryPayloadId = 2;
+            selectedPayloadId = 2;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectedPrimaryPayloadId = 2;
+            selectedPayloadId = 2;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectedPrimaryPayloadId = 3;
+            selectedPayloadId = 3;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectedPrimaryPayloadId = 3;
+            selectedPayloadId = 3;
         }
 
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }
 }

@@ -14,7 +14,7 @@ public class U2VSPayload extends PlanePayload implements IPlanePayload
     public U2VSPayload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     protected void initialize()
@@ -27,15 +27,15 @@ public class U2VSPayload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        U2VSPayload clone = new U2VSPayload(planeType, date);
+        U2VSPayload clone = new U2VSPayload(getPlaneType(), getDate());
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight) throws PWCGException
+    protected int createWeaponsPayloadForPlane(IFlight flight) throws PWCGException
     {
-        selectedPrimaryPayloadId = 1;
-        return selectedPrimaryPayloadId;
+        int selectedPayloadId = 1;
+        return selectedPayloadId;
     }
 
     @Override
@@ -46,7 +46,8 @@ public class U2VSPayload extends PlanePayload implements IPlanePayload
             return false;
         }
         
-        if (selectedPrimaryPayloadId == 0)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 0)
         {
             return false;
         }

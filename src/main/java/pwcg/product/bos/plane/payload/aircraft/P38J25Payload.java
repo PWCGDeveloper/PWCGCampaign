@@ -16,7 +16,7 @@ public class P38J25Payload extends PlanePayload implements IPlanePayload
     public P38J25Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     protected void initialize()
@@ -37,116 +37,127 @@ public class P38J25Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        P38J25Payload clone = new P38J25Payload(planeType, date);
+        P38J25Payload clone = new P38J25Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
 
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }    
 
-    protected void selectGroundAttackPayload(IFlight flight)
+    private int selectGroundAttackPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 4;
+        int selectedPayloadId = 4;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectSoftTargetPayload();
+            selectedPayloadId = selectSoftTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectArmoredTargetPayload();
+            selectedPayloadId = selectArmoredTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectMediumTargetPayload();
+            selectedPayloadId = selectMediumTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectHeavyTargetPayload();
+            selectedPayloadId = selectHeavyTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectStructureTargetPayload();
+            selectedPayloadId = selectStructureTargetPayload();
         }
+        return selectedPayloadId;
     }
     
 
-    protected void selectSoftTargetPayload()
+    private int selectSoftTargetPayload()
     {
+        int selectedPayloadId = 16;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 80)
         {
-            selectedPrimaryPayloadId = 14;
+            selectedPayloadId = 14;
         }
         else
         {
-            selectedPrimaryPayloadId = 16;
+            selectedPayloadId = 16;
         }
+        return selectedPayloadId;
     }    
 
-    protected void selectArmoredTargetPayload()
+    private int selectArmoredTargetPayload()
     {
+        int selectedPayloadId = 10;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 70)
         {
-            selectedPrimaryPayloadId = 8;
+            selectedPayloadId = 8;
         }
         else
         {
-            selectedPrimaryPayloadId = 10;
+            selectedPayloadId = 10;
         }
+        return selectedPayloadId;
     }
 
-    protected void selectMediumTargetPayload()
+    private int selectMediumTargetPayload()
     {
+        int selectedPayloadId = 16;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 70)
         {
-            selectedPrimaryPayloadId = 10;
+            selectedPayloadId = 10;
         }
         else if (diceRoll < 90)
         {
-            selectedPrimaryPayloadId = 14;
+            selectedPayloadId = 14;
         }
         else
         {
-            selectedPrimaryPayloadId = 16;
+            selectedPayloadId = 16;
         }
+        return selectedPayloadId;
     }
 
-    protected void selectHeavyTargetPayload()
+    private int selectHeavyTargetPayload()
     {
+        int selectedPayloadId = 6;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 80)
         {
-            selectedPrimaryPayloadId = 4;
+            selectedPayloadId = 4;
         }
         else
         {
-            selectedPrimaryPayloadId = 6;
+            selectedPayloadId = 6;
         }
+        return selectedPayloadId;
     }
 
-    protected void selectStructureTargetPayload()
+    private int selectStructureTargetPayload()
     {
+        int selectedPayloadId = 6;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 70)
         {
-            selectedPrimaryPayloadId = 4;
+            selectedPayloadId = 4;
         }
         else
         {
-            selectedPrimaryPayloadId = 6;
+            selectedPayloadId = 6;
         }
+        return selectedPayloadId;
     }
 
     @Override
@@ -157,9 +168,10 @@ public class P38J25Payload extends PlanePayload implements IPlanePayload
             return false;
         }
         
-        if (selectedPrimaryPayloadId == 0 || 
-            selectedPrimaryPayloadId == 1 || 
-            selectedPrimaryPayloadId == 8)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 0 || 
+            selectedPayloadId == 1 || 
+            selectedPayloadId == 8)
         {
             return false;
         }

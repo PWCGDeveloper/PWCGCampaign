@@ -15,7 +15,7 @@ public class DolphinPayload extends PlanePayload implements IPlanePayload
     public DolphinPayload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     protected void initialize()
@@ -35,43 +35,45 @@ public class DolphinPayload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        DolphinPayload clone = new DolphinPayload(planeType, date);
+        DolphinPayload clone = new DolphinPayload(getPlaneType(), getDate());
         return super.copy(clone);
     }
 
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectBombingPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
         else if (flight.getFlightType() == FlightTypes.INTERCEPT)
         {
-            selectInterceptPayload(flight);
+            selectedPayloadId = selectInterceptPayload(flight);
         }
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }
 
-    protected void selectBombingPayload(IFlight flight)
+    protected int selectGroundAttackPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 2;
+        return 2;
     }
 
-    protected void selectInterceptPayload(IFlight flight)
+    protected int selectInterceptPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 4;
+        int selectedPayloadId = 4;
         int lewisGunModRoll = RandomNumberGenerator.getRandom(100);
         if (lewisGunModRoll > 40)
         {
-            selectedPrimaryPayloadId = 7;
+            selectedPayloadId = 7;
         }
+        return selectedPayloadId;
     }
 
     @Override
     public boolean isOrdnance()
     {
-        if (selectedPrimaryPayloadId == 2)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 2)
         {
             return true;
         }

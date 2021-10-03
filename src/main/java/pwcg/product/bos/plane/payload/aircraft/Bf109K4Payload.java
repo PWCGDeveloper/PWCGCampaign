@@ -18,7 +18,7 @@ public class Bf109K4Payload extends Bf109Payload implements IPlanePayload
     public Bf109K4Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     @Override
@@ -47,66 +47,70 @@ public class Bf109K4Payload extends Bf109Payload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Bf109K4Payload clone = new Bf109K4Payload(planeType, date);
+        Bf109K4Payload clone = new Bf109K4Payload(getPlaneType(), getDate());
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
         else if (flight.getFlightType() == FlightTypes.INTERCEPT)
         {
-            selectInterceptPayload();
+            selectedPayloadId = selectInterceptPayload();
         }
-        return selectedPrimaryPayloadId;
+
+        return selectedPayloadId;
     }    
 
     @Override
-    protected void selectGroundAttackPayload(IFlight flight)
+    protected int selectGroundAttackPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 1;
+        int selectedPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectedPrimaryPayloadId = 1;
+            selectedPayloadId = 1;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectedPrimaryPayloadId = 2;
+            selectedPayloadId = 2;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectedPrimaryPayloadId = 2;
+            selectedPayloadId = 2;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectedPrimaryPayloadId = 2;
+            selectedPayloadId = 2;
         }
-    }
+        return selectedPayloadId;
+   }
     
-    protected void selectInterceptPayload()
+    private int selectInterceptPayload()
     {
+        int selectedPayloadId = 1;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 50)
         {
-            selectedPrimaryPayloadId = 3;
+            selectedPayloadId = 3;
         }
         else
         {
-            selectedPrimaryPayloadId = 0;
+            selectedPayloadId = 0;
         }
+        return selectedPayloadId;
     }    
 
     @Override
-    protected void loadStockModifications()
+    protected void loadAvailableStockModifications()
     {
-        if (date.after(db605cIntroDate))
+        if (getDate().after(db605cIntroDate))
         {
-            stockModifications.add(PayloadElement.DB605DC_ENGINE);
+            registerStockModification(PayloadElement.DB605DC_ENGINE);
         }
     }
 }

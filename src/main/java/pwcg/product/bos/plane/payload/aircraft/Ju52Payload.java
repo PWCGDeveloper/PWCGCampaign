@@ -14,7 +14,7 @@ public class Ju52Payload extends PlanePayload
     public Ju52Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 3;
+        setNoOrdnancePayloadId(3);
     }
 
     protected void initialize()
@@ -29,47 +29,47 @@ public class Ju52Payload extends PlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Ju52Payload clone = new Ju52Payload(planeType, date);
+        Ju52Payload clone = new Ju52Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (flight.getFlightType() == FlightTypes.TRANSPORT || flight.getFlightType() == FlightTypes.CARGO_DROP)
         {
-            selectCargoPayload(flight);
+            selectedPayloadId = selectCargoPayload(flight);
         }
         else if (flight.getFlightType() == FlightTypes.PARATROOP_DROP)
         {
-            selectParatroopPayload();
+            selectedPayloadId = selectParatroopPayload();
         }
         else if (flight.getFlightType() == FlightTypes.SPY_EXTRACT)
         {
-            selectParatroopPayload();
+            selectedPayloadId = selectParatroopPayload();
         }
         else if ((FlightTypes.isBombingFlight(flight.getFlightType())))
         {
-            selectBombPayload();
+            selectedPayloadId = selectBombPayload();
         }
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }    
 
-    private void selectCargoPayload(IFlight flight)
+    private int selectCargoPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
+        return 0;
     }
 
-    private void selectBombPayload()
+    private int selectBombPayload()
     {
-        selectedPrimaryPayloadId = 1;
+        return 1;
     }    
 
-    private void selectParatroopPayload()
+    private int selectParatroopPayload()
     {
-        selectedPrimaryPayloadId = 2;
+        return 2;
     }
 
     @Override
@@ -80,8 +80,9 @@ public class Ju52Payload extends PlanePayload
             return false;
         }
         
-        if (selectedPrimaryPayloadId == 0 || 
-            selectedPrimaryPayloadId == 3)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 0 || 
+            selectedPayloadId == 3)
         {
             return false;
         }

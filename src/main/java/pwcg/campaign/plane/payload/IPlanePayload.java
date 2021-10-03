@@ -7,21 +7,22 @@ import pwcg.mission.flight.IFlight;
 
 public interface IPlanePayload
 {
-    public PayloadDesignation getSelectedPayloadDesignation() throws PWCGException;
-    public int getPayloadIdByDescription(String payloadDescription);
-    public String getPayloadMaskByDescription(String payloadDescription);
-    public int createWeaponsPayload(IFlight flight) throws PWCGException;
-    public int createStandardWeaponsPayload();
-    public int getSelectedPayloadId();
-    public void setSelectedPayloadId(int selectedPrimaryPayloadId);
-    public void addModification(PayloadElement payloadElement);
-    public void clearModifications();
-    public List<PayloadElement> getModifications();
-    public String generateFullModificationMask();
-    public IPlanePayload copy();
-    public void noOrdnance();
-    List<PayloadElement> getStockModifications();
-    public boolean isOrdnance();
+    IPlanePayload copy();
+
+    PayloadDesignation getSelectedPayloadDesignation() throws PWCGException;
+    List<PayloadDesignation> getAvailablePayloadDesignations(IFlight iFlight) throws PWCGException;
+    int getPayloadIdByDescription(String payloadDescription);
+    String getPayloadMaskByDescription(String payloadDescription);
+    int createWeaponsPayload(IFlight flight) throws PWCGException;
+    void createStandardWeaponsPayload();
+    int getSelectedPayloadId();
+    void setSelectedPayloadId(int selectedPrimaryPayloadId);
+    void selectNoOrdnancePayload();
+    boolean isOrdnance();
+
+    void selectModification(PayloadElement payloadElement);
+    void clearModifications();
+    List<PayloadElement> getSelectedModifications() throws PWCGException;
+    String generateFullModificationMask() throws PWCGException;
     List<PayloadDesignation> getOptionalPayloadModifications();
-    List<PayloadDesignation> getPayloadDesignations();
 }

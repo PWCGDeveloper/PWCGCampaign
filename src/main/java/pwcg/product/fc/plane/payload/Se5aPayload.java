@@ -14,7 +14,7 @@ public class Se5aPayload extends PlanePayload implements IPlanePayload
     public Se5aPayload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     protected void initialize()
@@ -31,29 +31,30 @@ public class Se5aPayload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Se5aPayload clone = new Se5aPayload(planeType, date);
+        Se5aPayload clone = new Se5aPayload(getPlaneType(), getDate());
         return super.copy(clone);
     }
 
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectBombingPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }
 
-    protected void selectBombingPayload(IFlight flight)
+    protected int selectGroundAttackPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 2;
+        return 2;
     }
 
     @Override
     public boolean isOrdnance()
     {
-        if (selectedPrimaryPayloadId == 2)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 2)
         {
             return true;
         }

@@ -15,7 +15,7 @@ public class Fw190A3Payload extends PlanePayload implements IPlanePayload
     public Fw190A3Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     protected void initialize()
@@ -31,74 +31,76 @@ public class Fw190A3Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Fw190A3Payload clone = new Fw190A3Payload(planeType, date);
+        Fw190A3Payload clone = new Fw190A3Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
     
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        createStandardPayload();
+        int selectedPayloadId = createStandardPayload();
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
-        return selectedPrimaryPayloadId;
+
+        return selectedPayloadId;
     }
 
-    protected void selectGroundAttackPayload(IFlight flight)
+    protected int selectGroundAttackPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 1;
+        int selectedPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectSoftTargetPayload();
+            selectedPayloadId = selectSoftTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectArmoredTargetPayload();
+            selectedPayloadId = selectArmoredTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectMediumTargetPayload();
+            selectedPayloadId = selectMediumTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectHeavyTargetPayload();
+            selectedPayloadId = selectHeavyTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectStructureTargetPayload();
+            selectedPayloadId = selectStructureTargetPayload();
         }
+        return selectedPayloadId;
     }
     
-    private void createStandardPayload()
+    private int createStandardPayload()
     {
-        selectedPrimaryPayloadId = getPayloadIdByDescription(PayloadElement.STANDARD.getDescription());
+        return  getPayloadIdByDescription(PayloadElement.STANDARD.getDescription());
     }
 
-    protected void selectSoftTargetPayload()
+    private int selectSoftTargetPayload()
     {
-        selectedPrimaryPayloadId = 1;
+        return 1;
     }    
 
-    protected void selectArmoredTargetPayload()
+    private int selectArmoredTargetPayload()
     {
-        selectedPrimaryPayloadId = 2;
+        return 2;
     }
 
-    protected void selectMediumTargetPayload()
+    private int selectMediumTargetPayload()
     {
-        selectedPrimaryPayloadId = 2;
+        return 2;
     }
 
-    protected void selectHeavyTargetPayload()
+    private int selectHeavyTargetPayload()
     {
-        selectedPrimaryPayloadId = 2;
+        return 2;
     }
 
-    protected void selectStructureTargetPayload()
+    private int selectStructureTargetPayload()
     {
-        selectedPrimaryPayloadId = 3;
+        return 3;
     }
 
     @Override
@@ -109,9 +111,10 @@ public class Fw190A3Payload extends PlanePayload implements IPlanePayload
             return false;
         }
         
-        if (selectedPrimaryPayloadId == 0 || 
-            selectedPrimaryPayloadId == 4 ||
-            selectedPrimaryPayloadId == 5)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 0 || 
+            selectedPayloadId == 4 ||
+            selectedPayloadId == 5)
         {
             return false;
         }

@@ -15,7 +15,7 @@ public class He111H6Payload extends PlanePayload
     public He111H6Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 13;
+        setNoOrdnancePayloadId(13);
     }
 
     protected void initialize()
@@ -41,73 +41,71 @@ public class He111H6Payload extends PlanePayload
     @Override
     public IPlanePayload copy()
     {
-        He111H6Payload clone = new He111H6Payload(planeType, date);
+        He111H6Payload clone = new He111H6Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
     
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectBombingPayload(flight);
-        return selectedPrimaryPayloadId;
-    }
-
-    private void selectBombingPayload(IFlight flight)
-    {
-        selectedPrimaryPayloadId = 2;
+        int selectedPayloadId = 2;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectSoftTargetPayload();
+            selectedPayloadId = selectSoftTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectArmoredTargetPayload();
+            selectedPayloadId = selectArmoredTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectMediumTargetPayload();
+            selectedPayloadId = selectMediumTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectHeavyTargetPayload();
+            selectedPayloadId = selectHeavyTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectStructureTargetPayload();
+            selectedPayloadId = selectStructureTargetPayload();
         }
+
+        return selectedPayloadId;
     }
 
-    private void selectSoftTargetPayload()
+    private int selectSoftTargetPayload()
     {
+        int selectedPayloadId = 2;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 80)
         {
-            selectedPrimaryPayloadId = 0;
+            selectedPayloadId = 0;
         }
         else
         {
-            selectedPrimaryPayloadId = 1;
+            selectedPayloadId = 1;
         }
+        return selectedPayloadId;
     }    
 
-    private void selectArmoredTargetPayload()
+    private int selectArmoredTargetPayload()
     {
-        selectedPrimaryPayloadId = 3;
+        return 3;
     }
 
-    private void selectMediumTargetPayload()
+    private int selectMediumTargetPayload()
     {
-        selectedPrimaryPayloadId = 1;
+        return 1;
     }
 
-    private void selectHeavyTargetPayload()
+    private int selectHeavyTargetPayload()
     {
-        selectedPrimaryPayloadId = 2;
+        return 2;
     }
 
-    private void selectStructureTargetPayload()
+    private int selectStructureTargetPayload()
     {
-        selectedPrimaryPayloadId = 7;
+        return 7;
     }
 
     @Override

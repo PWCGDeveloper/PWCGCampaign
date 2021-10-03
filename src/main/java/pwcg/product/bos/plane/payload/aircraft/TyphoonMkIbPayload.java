@@ -1,9 +1,13 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
+import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.core.utils.DateUtils;
@@ -21,7 +25,7 @@ public class TyphoonMkIbPayload extends PlanePayload implements IPlanePayload
     public TyphoonMkIbPayload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     @Override
@@ -58,23 +62,23 @@ public class TyphoonMkIbPayload extends PlanePayload implements IPlanePayload
 	}
 
     @Override
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
         
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }
 
-    protected void selectGroundAttackPayload(IFlight flight)
+    protected int selectGroundAttackPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 1;
+        int selectedPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectedPrimaryPayloadId = 6;
+            selectedPayloadId = 6;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
@@ -82,44 +86,46 @@ public class TyphoonMkIbPayload extends PlanePayload implements IPlanePayload
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectedPrimaryPayloadId = 1;
+            selectedPayloadId = 1;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectedPrimaryPayloadId = 2;
+            selectedPayloadId = 2;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectedPrimaryPayloadId = 2;
+            selectedPayloadId = 2;
         }
+        return selectedPayloadId;
     }
 
-    private void selectArmorAttackPayload()
+    private int selectArmorAttackPayload()
     {
-        selectedPrimaryPayloadId = 4;
-        if (date.after(doubleRocketsIntroDate))
+        int selectedPayloadId = 4;
+        if (getDate().after(doubleRocketsIntroDate))
         {
             int diceRoll = RandomNumberGenerator.getRandom(100);
             if (diceRoll < 40)
             {
-                selectedPrimaryPayloadId = 5;
+                selectedPayloadId = 5;
             }
         }
 
-        if (date.after(mkIIIRocketsIntroDate))
+        if (getDate().after(mkIIIRocketsIntroDate))
         {
             int diceRoll = RandomNumberGenerator.getRandom(100);
             if (diceRoll < 40)
             {
-                selectedPrimaryPayloadId = 7;
+                selectedPayloadId = 7;
             }
         }
+        return selectedPayloadId;
     }
 
     @Override
     public IPlanePayload copy()
     {
-    	TyphoonMkIbPayload clone = new TyphoonMkIbPayload(planeType, date);
+    	TyphoonMkIbPayload clone = new TyphoonMkIbPayload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
@@ -132,7 +138,8 @@ public class TyphoonMkIbPayload extends PlanePayload implements IPlanePayload
             return false;
         }
         
-        if (selectedPrimaryPayloadId == 0)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 0)
         {
             return false;
         }
@@ -141,13 +148,34 @@ public class TyphoonMkIbPayload extends PlanePayload implements IPlanePayload
     }
 
     @Override
-    protected void loadStockModifications()
+    protected void loadAvailableStockModifications()
     {
-        stockModifications.add(PayloadElement.DUST_DEFLECTOR);
-        stockModifications.add(PayloadElement.FOUR_PLADE_PROP);
-        if (date.after(boostIntroDate))
+        registerStockModification(PayloadElement.DUST_DEFLECTOR);
+        registerStockModification(PayloadElement.FOUR_PLADE_PROP);
+        if (getDate().after(boostIntroDate))
         {
-            stockModifications.add(PayloadElement.LB_11_BOOST);
+            registerStockModification(PayloadElement.LB_11_BOOST);
         }
+    }
+    
+    @Override
+    protected List<PayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
+    {
+        List<Integer>availablePayloads = new ArrayList<>();
+        List<Integer>alwaysAvailablePayloads = Arrays.asList(0, 1, 2, 3, 4);
+        availablePayloads.addAll(alwaysAvailablePayloads);
+
+        if (getDate().after(doubleRocketsIntroDate))
+        {
+            availablePayloads.add(5);
+        }
+
+        if (getDate().after(mkIIIRocketsIntroDate))
+        {
+            availablePayloads.add(6);
+            availablePayloads.add(7);
+        }
+        
+        return getAvailablePayloadDesignations(availablePayloads);
     }
 }

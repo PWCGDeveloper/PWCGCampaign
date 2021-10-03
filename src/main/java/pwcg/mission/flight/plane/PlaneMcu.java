@@ -225,7 +225,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
     {
         if (payload != null)
         {
-            this.payload.noOrdnance();
+            this.payload.selectNoOrdnancePayload();
         }
     }
 

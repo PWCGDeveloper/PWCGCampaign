@@ -13,7 +13,7 @@ public class B25DRAFPayload extends PlanePayload implements IPlanePayload
     public B25DRAFPayload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 5;
+        setNoOrdnancePayloadId(5);
     }
 
     protected void initialize()
@@ -25,14 +25,15 @@ public class B25DRAFPayload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        B25DRAFPayload clone = new B25DRAFPayload(planeType, date);
+        B25DRAFPayload clone = new B25DRAFPayload(getPlaneType(), getDate());
         return super.copy(clone);
     }
     
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 1;
-        return selectedPrimaryPayloadId;
+        int selectedPayloadId = 1;
+
+        return selectedPayloadId;
     }
 
     @Override

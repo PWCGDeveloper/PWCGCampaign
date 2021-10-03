@@ -90,7 +90,7 @@ public class BriefingPayloadHelper
             CrewPlanePayloadPairing crewPlane = briefingAssignmentData.findAssignedCrewPairingByPlane(plane.getSerialNumber());
             if (crewPlane != null)
             {
-            	for (PayloadElement modification : plane.getPlanePayload().getModifications())
+            	for (PayloadElement modification : plane.getPlanePayload().getSelectedModifications())
             	{
             		crewPlane.addModification(modification.getDescription());
             	}

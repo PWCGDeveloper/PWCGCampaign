@@ -24,14 +24,16 @@ public class HurricaneMkIIPayloadRAF
     {
         createRAFWeaponsModAvailabilityDates();
 
+        int selectedPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            return selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
         else 
         {
-            return createStandardPayload(flight);
-        }        
+            selectedPayloadId = createStandardPayload(flight);
+        }
+        return selectedPayloadId;        
     }
 
     protected void createRAFWeaponsModAvailabilityDates()
@@ -49,70 +51,70 @@ public class HurricaneMkIIPayloadRAF
 
     private int createStandardPayload(IFlight flight) throws PWCGException
     {
-        int selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (date.before(hispanoIntroDate))
         {
-            selectedPrimaryPayloadId = 0;
+            selectedPayloadId = 0;
         }
         else
         {
-            selectedPrimaryPayloadId = 12;
+            selectedPayloadId = 12;
         }
 
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }
 
     private int selectGroundAttackPayload(IFlight flight) throws PWCGException
     {
-        int selectedPrimaryPayloadId = 13;
+        int selectedPayloadId = 13;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectedPrimaryPayloadId = selectSoftTargetPayload(flight);
+            selectedPayloadId = selectSoftTargetPayload(flight);
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectedPrimaryPayloadId = selectArmoredTargetPayload(flight);
+            selectedPayloadId = selectArmoredTargetPayload(flight);
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectedPrimaryPayloadId = selectMediumTargetPayload(flight);
+            selectedPayloadId = selectMediumTargetPayload(flight);
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectedPrimaryPayloadId = selectHeavyTargetPayload(flight);
+            selectedPayloadId = selectHeavyTargetPayload(flight);
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectedPrimaryPayloadId = selectStructureTargetPayload(flight);
+            selectedPayloadId = selectStructureTargetPayload(flight);
         }
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }
 
     private int selectSoftTargetPayload(IFlight flight) throws PWCGException
     {
-        int selectedPrimaryPayloadId = 2;
+        int selectedPayloadId = 2;
         if (date.before(hispanoIntroDate))
         {
-            selectedPrimaryPayloadId = 2;
+            selectedPayloadId = 2;
         }
         else
         {
-            selectedPrimaryPayloadId = 13;
+            selectedPayloadId = 13;
         }
 
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }    
 
     private int selectArmoredTargetPayload(IFlight flight) throws PWCGException
     {
-        int selectedPrimaryPayloadId = 4;
+        int selectedPayloadId = 4;
         if (date.before(hispanoIntroDate))
         {
-            selectedPrimaryPayloadId = 4;
+            selectedPayloadId = 4;
         }
         else
         {
-            selectedPrimaryPayloadId = 14;
+            selectedPayloadId = 14;
         }
 
         if (date.after(boforsIntroDate))
@@ -120,46 +122,46 @@ public class HurricaneMkIIPayloadRAF
             int diceRoll = RandomNumberGenerator.getRandom(100);
             if (diceRoll < 30)
             {
-                selectedPrimaryPayloadId = 15;
+                selectedPayloadId = 15;
             }
         }
         
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }
 
     private int selectMediumTargetPayload(IFlight flight) throws PWCGException
     {
-        int selectedPrimaryPayloadId = 2;
+        int selectedPayloadId = 2;
         if (date.before(hispanoIntroDate))
         {
-            selectedPrimaryPayloadId = 2;
+            selectedPayloadId = 2;
         }
         else
         {
-            selectedPrimaryPayloadId = 13;
+            selectedPayloadId = 13;
         }
 
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }
 
     private int selectHeavyTargetPayload(IFlight flight) throws PWCGException
     {
-        int selectedPrimaryPayloadId = 4;
+        int selectedPayloadId = 4;
         if (date.before(hispanoIntroDate))
         {
-            selectedPrimaryPayloadId = 4;
+            selectedPayloadId = 4;
         }
         else
         {
-            selectedPrimaryPayloadId = 14;
+            selectedPayloadId = 14;
         }
 
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }
 
     private int selectStructureTargetPayload(IFlight flight) throws PWCGException
     {
-        int selectedPrimaryPayloadId = 4;
-        return selectedPrimaryPayloadId;
+        int selectedPayloadId = 4;
+        return selectedPayloadId;
     }
 }

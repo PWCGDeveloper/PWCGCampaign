@@ -1,12 +1,17 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.plane.payload.IPlanePayload;
+import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -17,12 +22,13 @@ import pwcg.mission.target.TargetCategory;
 public class Fw190A5Payload extends PlanePayload implements IPlanePayload
 {
     private Date mkFFWingGunsIntroDate;
+    private Date mg151GunPodIntroDate;
     private Date u17IntroDate;
 
     public Fw190A5Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     @Override
@@ -32,6 +38,7 @@ public class Fw190A5Payload extends PlanePayload implements IPlanePayload
         {
             u17IntroDate = DateUtils.getDateYYYYMMDD("19430506");
             mkFFWingGunsIntroDate = DateUtils.getDateYYYYMMDD("19430506");
+            mg151GunPodIntroDate = DateUtils.getDateYYYYMMDD("19430506");
         }
         catch (Exception e)
         {
@@ -56,106 +63,160 @@ public class Fw190A5Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Fw190A5Payload clone = new Fw190A5Payload(planeType, date);
+        Fw190A5Payload clone = new Fw190A5Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight) throws PWCGException
+    protected int createWeaponsPayloadForPlane(IFlight flight) throws PWCGException
     {
-        selectDefaultPayload();
+        int selectedPayloadId = selectDefaultPayload();
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
         else if (flight.getFlightType() == FlightTypes.INTERCEPT)
         {
-            selectInterceptPayload();
+            selectedPayloadId = selectInterceptPayload();
         }
-        return selectedPrimaryPayloadId;
+
+        return selectedPayloadId;
     }    
 
-	private void selectGroundAttackPayload(IFlight flight) throws PWCGException
+	private int selectGroundAttackPayload (IFlight flight) throws PWCGException
     {
+	    int selectedPayloadId = 0;
         PwcgRoleCategory squadronPrimaryRole = flight.getSquadron().determineSquadronPrimaryRoleCategory(flight.getCampaign().getDate());
         if (squadronPrimaryRole == PwcgRoleCategory.ATTACK)
         {
-            setU17Payload(flight);
+            selectedPayloadId = setU17Payload(flight);
         }
         else
         {
-            setGenericBombLoad(flight);
+            selectedPayloadId = setGenericBombLoad(flight);
         }
+        return selectedPayloadId;
     }
 
-    private void setU17Payload(IFlight flight) throws PWCGException
+    private int setU17Payload(IFlight flight) throws PWCGException
     {
-        if (date.before(u17IntroDate))
+        int selectedPayloadId = 6;
+        if (getDate().before(u17IntroDate))
         {
-            setGenericBombLoad(flight);
+        	selectedPayloadId = setGenericBombLoad(flight);
         }
-        else
-        {
-            selectedPrimaryPayloadId = 6;
-        }
+        return selectedPayloadId;
     }
 
-    private void setGenericBombLoad(IFlight flight)
+    private int setGenericBombLoad(IFlight flight) throws PWCGException
     {
-        selectedPrimaryPayloadId = 1;
+        int selectedPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectedPrimaryPayloadId = 1;
+            selectedPayloadId = selectSoftTargetPayload(flight);
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectedPrimaryPayloadId = 2;
+            selectedPayloadId = selectMediumTargetPayload(flight);
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectedPrimaryPayloadId = 2;
+            selectedPayloadId = selectMediumTargetPayload(flight);
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectedPrimaryPayloadId = 2;
+            selectedPayloadId = selectHeavyTargetPayload(flight);
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectedPrimaryPayloadId = 3;
+            selectedPayloadId = selectHeavyTargetPayload(flight);
         }
+        return selectedPayloadId;
     }
 
-    private void selectInterceptPayload() throws PWCGException
+    private int selectSoftTargetPayload(IFlight flight) throws PWCGException
     {
-        if (date.before(mkFFWingGunsIntroDate))
+        int selectedPayloadId = 1;
+
+        Squadron squadron = flight.getSquadron();
+        PwcgRoleCategory squadronPrimaryRoleCategory = squadron.determineSquadronPrimaryRoleCategory(flight.getCampaign().getDate());
+        if ((squadronPrimaryRoleCategory == PwcgRoleCategory.ATTACK))
         {
-            selectedPrimaryPayloadId = 0;
+            if (getDate().after(u17IntroDate))
+            {
+                selectedPayloadId = 7;
+            }
+        }
+        return selectedPayloadId;
+    }
+
+    private int selectMediumTargetPayload(IFlight flight) throws PWCGException
+    {
+        int selectedPayloadId = 2;
+
+        Squadron squadron = flight.getSquadron();
+        PwcgRoleCategory squadronPrimaryRoleCategory = squadron.determineSquadronPrimaryRoleCategory(flight.getCampaign().getDate());
+        if ((squadronPrimaryRoleCategory == PwcgRoleCategory.ATTACK))
+        {
+            if (getDate().after(u17IntroDate))
+            {
+                selectedPayloadId = 8;
+            }
+        }
+        return selectedPayloadId;
+    }
+
+    private int selectHeavyTargetPayload(IFlight flight) throws PWCGException
+    {
+        int selectedPayloadId = 3;
+
+        Squadron squadron = flight.getSquadron();
+        PwcgRoleCategory squadronPrimaryRoleCategory = squadron.determineSquadronPrimaryRoleCategory(flight.getCampaign().getDate());
+        if ((squadronPrimaryRoleCategory == PwcgRoleCategory.ATTACK))
+        {
+            if (getDate().after(u17IntroDate))
+            {
+                selectedPayloadId = 9;
+            }
+        }
+        return selectedPayloadId;
+    }
+
+    private int selectInterceptPayload() throws PWCGException
+    {
+        int selectedPayloadId = 0;
+        if (getDate().before(mkFFWingGunsIntroDate))
+        {
+            selectedPayloadId = 0;
         }
         else
         {
+            selectedPayloadId = 4;
             int diceRoll = RandomNumberGenerator.getRandom(100);
             if (diceRoll < 40)
             {
-                selectedPrimaryPayloadId = 5;
-            }
-            else
-            {
-                selectedPrimaryPayloadId = 4;
+                if (getDate().after(mg151GunPodIntroDate) && getDate().before(DateUtils.getDateYYYYMMDD("19440501")))
+                {
+                    selectedPayloadId = 5;
+                }
             }
         }
+        return selectedPayloadId;
     }    
 
-    private void selectDefaultPayload() throws PWCGException
+    private int selectDefaultPayload() throws PWCGException
     {
-        if (date.before(mkFFWingGunsIntroDate))
+        int selectedPayloadId = 0;
+        if (getDate().before(mkFFWingGunsIntroDate))
         {
-            selectedPrimaryPayloadId = 0;
+            selectedPayloadId = 0;
         }
         else
         {
-            selectedPrimaryPayloadId = 4;
+            selectedPayloadId = 4;
         }
+        return selectedPayloadId;
     }    
 
     @Override
@@ -166,13 +227,48 @@ public class Fw190A5Payload extends PlanePayload implements IPlanePayload
             return false;
         }
         
-        if (selectedPrimaryPayloadId == 0 || 
-            selectedPrimaryPayloadId == 4 ||
-            selectedPrimaryPayloadId == 5)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 0 || 
+            selectedPayloadId == 4 ||
+            selectedPayloadId == 5)
         {
             return false;
         }
 
         return true;
+    }
+    
+    @Override
+    protected List<PayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight) throws PWCGException
+    {
+        List<Integer>availablePayloads = new ArrayList<>();
+        List<Integer>alwaysAvailablePayloads = Arrays.asList(0, 1, 2, 3);
+        availablePayloads.addAll(alwaysAvailablePayloads);
+        
+        Squadron squadron = flight.getSquadron();
+        PwcgRoleCategory squadronPrimaryRoleCategory = squadron.determineSquadronPrimaryRoleCategory(flight.getCampaign().getDate());
+        if ((squadronPrimaryRoleCategory == PwcgRoleCategory.FIGHTER))
+        {
+            if (getDate().after(mkFFWingGunsIntroDate))
+            {
+                availablePayloads.add(4);
+            }
+            
+            if (getDate().after(mg151GunPodIntroDate))
+            {
+                availablePayloads.add(5);
+            }
+        }
+        
+        if ((squadronPrimaryRoleCategory == PwcgRoleCategory.ATTACK))
+        {
+            if (getDate().after(u17IntroDate))
+            {
+                List<Integer>availableU17Payloads = Arrays.asList(7, 8, 9);
+                availablePayloads.addAll(availableU17Payloads);
+            }
+        }
+        
+        return getAvailablePayloadDesignations(availablePayloads);
     }
 }

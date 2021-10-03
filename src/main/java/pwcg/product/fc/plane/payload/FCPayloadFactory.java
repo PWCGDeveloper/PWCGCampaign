@@ -99,10 +99,10 @@ public class FCPayloadFactory implements IPayloadFactory
 	}
 
     @Override
-    public PayloadDesignation getPlanePayloadDesignation(String planeTypeName, int selectedPrimaryPayloadId, Date date) throws PWCGException
+    public PayloadDesignation getPlanePayloadDesignation(String planeTypeName, int selectedPayloadId, Date date) throws PWCGException
     {
         IPlanePayload planePayload = createPlanePayload(planeTypeName, date);
-        planePayload.setSelectedPayloadId(selectedPrimaryPayloadId);
+        planePayload.setSelectedPayloadId(selectedPayloadId);
         return planePayload.getSelectedPayloadDesignation();
     }
 }

@@ -15,7 +15,7 @@ public class Halberstadtcl2auPayload extends PlanePayload implements IPlanePaylo
     public Halberstadtcl2auPayload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     protected void initialize()
@@ -37,47 +37,48 @@ public class Halberstadtcl2auPayload extends PlanePayload implements IPlanePaylo
     @Override
     public IPlanePayload copy()
     {
-        Halberstadtcl2auPayload clone = new Halberstadtcl2auPayload(planeType, date);
+        Halberstadtcl2auPayload clone = new Halberstadtcl2auPayload(getPlaneType(), getDate());
         return super.copy(clone);
     }
 
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (FlightTypes.isBombingFlight(flight.getFlightType()))
         {
-            selectBombingPayload(flight);
+            selectedPayloadId = selectPayload(flight);
         }
         else if (flight.getFlightType() == FlightTypes.RECON)
         {
-            selectReconPayload(flight);
+            selectedPayloadId = selectReconPayload(flight);
         }
         else if (flight.getFlightType() == FlightTypes.ARTILLERY_SPOT)
         {
-            selectArtillerySpotPayload(flight);
+            selectedPayloadId = selectArtillerySpotPayload(flight);
         }
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }
 
-    protected void selectBombingPayload(IFlight flight)
+    protected int selectPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 1;
+        return 1;
     }
 
-    protected void selectReconPayload(IFlight flight)
+    protected int selectReconPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 2;
+        return 2;
     }
 
-    protected void selectArtillerySpotPayload(IFlight flight)
+    protected int selectArtillerySpotPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 3;
+        return 3;
     }    
 
     @Override
     public boolean isOrdnance()
     {
-        if (selectedPrimaryPayloadId == 1)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 1)
         {
             return true;
         }

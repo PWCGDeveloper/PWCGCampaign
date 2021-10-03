@@ -13,10 +13,12 @@ import pwcg.mission.flight.IFlight;
 
 public class Bf109F4Payload extends Bf109Payload implements IPlanePayload
 {
+    private Date mg15120mmGunPodIntroDate;
+
     public Bf109F4Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     protected void initialize()
@@ -31,42 +33,61 @@ public class Bf109F4Payload extends Bf109Payload implements IPlanePayload
 	}
 
     @Override
+    protected void createWeaponsModAvailabilityDates()
+    {
+        try
+        {
+            mg15120mmGunPodIntroDate = DateUtils.getDateYYYYMMDD("19420502");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }    
+
+    @Override
     public IPlanePayload copy()
     {
-        Bf109F4Payload clone = new Bf109F4Payload(planeType, date);
-        
+        Bf109F4Payload clone = new Bf109F4Payload(getPlaneType(), getDate());
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight) throws PWCGException
+    protected int createWeaponsPayloadForPlane(IFlight flight) throws PWCGException
     {
-        selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
         else if (flight.getFlightType() == FlightTypes.INTERCEPT)
         {
-            selectInterceptPayload();
+            selectedPayloadId = selectInterceptPayload();
         }
-        return selectedPrimaryPayloadId;
+
+        return selectedPayloadId;
     }    
 
-    protected void selectInterceptPayload() throws PWCGException
+    private int selectInterceptPayload() throws PWCGException
     {
-        selectedPrimaryPayloadId = 0;
-        if (date.before(DateUtils.getDateYYYYMMDD("19420502")))
+        int selectedPayloadId = 0;
+
+        if (getDate().before(mg15120mmGunPodIntroDate))
         {
-            selectedPrimaryPayloadId = 0;
+            selectedPayloadId = 0;
         }
         else
         {
             int diceRoll = RandomNumberGenerator.getRandom(100);
             if (diceRoll < 50)
             {
-                selectedPrimaryPayloadId = 4;
+                selectedPayloadId = 4;
+            }
+            else
+            {
+                selectedPayloadId = 0;
             }
         }
+        return selectedPayloadId;
     }    
 }

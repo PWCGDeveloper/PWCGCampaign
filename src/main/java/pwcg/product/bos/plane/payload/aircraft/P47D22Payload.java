@@ -16,7 +16,7 @@ public class P47D22Payload extends PlanePayload implements IPlanePayload
     public P47D22Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     protected void initialize()
@@ -39,92 +39,97 @@ public class P47D22Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        P47D22Payload clone = new P47D22Payload(planeType, date);
+        P47D22Payload clone = new P47D22Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
 
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }    
 
-    private void selectGroundAttackPayload(IFlight flight)
+    private int selectGroundAttackPayload (IFlight flight)
     {
-        selectedPrimaryPayloadId = 4;
+        int selectedPayloadId = 4;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectSoftTargetPayload();
+            selectedPayloadId = selectSoftTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectArmoredTargetPayload();
+            selectedPayloadId = selectArmoredTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectMediumTargetPayload();
+            selectedPayloadId = selectMediumTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectHeavyTargetPayload();
+            selectedPayloadId = selectHeavyTargetPayload();
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectStructureTargetPayload();
+            selectedPayloadId = selectStructureTargetPayload();
         }
+        return selectedPayloadId;
     }
     
 
-    private void selectSoftTargetPayload()
+    private int selectSoftTargetPayload()
     {
-        selectedPrimaryPayloadId = 12;
+        return 12;
     }    
 
-    private void selectArmoredTargetPayload()
+    private int selectArmoredTargetPayload()
     {
+        int selectedPayloadId = 48;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 70)
         {
-            selectedPrimaryPayloadId = 36;
+            selectedPayloadId = 36;
         }
         else
         {
-            selectedPrimaryPayloadId = 48;
+            selectedPayloadId = 48;
         }
+        return selectedPayloadId;
     }
 
-    private void selectMediumTargetPayload()
+    private int selectMediumTargetPayload()
     {
+        int selectedPayloadId = 48;
         int diceRoll = RandomNumberGenerator.getRandom(100);
         if (diceRoll < 70)
         {
-            selectedPrimaryPayloadId = 12;
+            selectedPayloadId = 12;
         }
         else if (diceRoll < 90)
         {
-            selectedPrimaryPayloadId = 18;
+            selectedPayloadId = 18;
         }
         else
         {
-            selectedPrimaryPayloadId = 48;
+            selectedPayloadId = 48;
         }
+        return selectedPayloadId;
     }
 
-    private void selectHeavyTargetPayload()
+    private int selectHeavyTargetPayload()
     {
-        selectedPrimaryPayloadId = 24;
+        return 24;
     }
 
-    private void selectStructureTargetPayload()
+    private int selectStructureTargetPayload()
     {
-        selectedPrimaryPayloadId = 24;
+        return 24;
     }
 
     @Override
@@ -135,10 +140,11 @@ public class P47D22Payload extends PlanePayload implements IPlanePayload
             return false;
         }
         
-        if (selectedPrimaryPayloadId == 0 || 
-            selectedPrimaryPayloadId == 1 || 
-            selectedPrimaryPayloadId == 2 || 
-            selectedPrimaryPayloadId == 3)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 0 || 
+            selectedPayloadId == 1 || 
+            selectedPayloadId == 2 || 
+            selectedPayloadId == 3)
         {
             return false;
         }

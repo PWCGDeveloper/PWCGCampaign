@@ -13,7 +13,7 @@ public class Spad13Payload extends PlanePayload implements IPlanePayload
     public Spad13Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     protected void initialize()
@@ -31,20 +31,21 @@ public class Spad13Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Spad13Payload clone = new Spad13Payload(planeType, date);
+        Spad13Payload clone = new Spad13Payload(getPlaneType(), getDate());
         return super.copy(clone);
     }
 
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
-        return selectedPrimaryPayloadId;
+        int selectedPayloadId = 0;
+        return selectedPayloadId;
     }
 
     @Override
     public boolean isOrdnance()
     {
-        if (selectedPrimaryPayloadId == 3)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 3)
         {
             return true;
         }

@@ -1,9 +1,13 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
+import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.core.utils.DateUtils;
@@ -19,7 +23,7 @@ public class Me262APayload extends PlanePayload implements IPlanePayload
     public Me262APayload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
 
     @Override
@@ -56,40 +60,42 @@ public class Me262APayload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Me262APayload clone = new Me262APayload(planeType, date);
+        Me262APayload clone = new Me262APayload(getPlaneType(), getDate());
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 0;
+        int selectedPayloadId = 0;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectGroundAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
         else if (flight.getFlightType() == FlightTypes.INTERCEPT)
         {
-            selectInterceptPayload();
+            selectedPayloadId = selectInterceptPayload();
         }
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }    
 
-    protected void selectGroundAttackPayload(IFlight flight)
+    protected int selectGroundAttackPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 3;
+        return 3;
     }
 
-    protected void selectInterceptPayload()
+    private int selectInterceptPayload()
     {
-        if (date.before(r4mIntroDate))
+        int selectedPayloadId = 0;
+        if (getDate().before(r4mIntroDate))
         {
-            selectedPrimaryPayloadId = 0;
+            selectedPayloadId = 0;
         }
         else
         {
-            selectedPrimaryPayloadId = 2;
+            selectedPayloadId = 2;
         }
+        return selectedPayloadId;
     }    
 
     @Override
@@ -100,9 +106,10 @@ public class Me262APayload extends PlanePayload implements IPlanePayload
             return false;
         }
         
-        if (selectedPrimaryPayloadId == 0 || 
-            selectedPrimaryPayloadId == 1 || 
-            selectedPrimaryPayloadId == 2)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 0 || 
+            selectedPayloadId == 1 || 
+            selectedPayloadId == 2)
         {
             return false;
         }
@@ -111,17 +118,30 @@ public class Me262APayload extends PlanePayload implements IPlanePayload
     }
 
     @Override
-    protected void loadStockModifications()
+    protected void loadAvailableStockModifications()
     {
-        stockModifications.add(PayloadElement.ARMORED_HEADREST);        
-        if (date.after(gyroGunsightIntroDate))
+        registerStockModification(PayloadElement.ARMORED_HEADREST);        
+        if (getDate().after(gyroGunsightIntroDate))
         {
-            stockModifications.add(PayloadElement.GYRO_GUNSIGHT);
+            registerStockModification(PayloadElement.GYRO_GUNSIGHT);
         }
         
-        if (date.after(autoValveIntroDate))
+        if (getDate().after(autoValveIntroDate))
         {
-            stockModifications.add(PayloadElement.AUTO_VALVE);
+            registerStockModification(PayloadElement.AUTO_VALVE);
         }
+    }
+    
+    @Override
+    protected List<PayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight)
+    {
+        List<Integer>availablePayloads = new ArrayList<>();
+        List<Integer>alwaysAvailablePayloads = Arrays.asList(0, 1, 3);
+        availablePayloads.addAll(alwaysAvailablePayloads);
+        if (getDate().after(r4mIntroDate))
+        {
+            availablePayloads.add(2);
+        }
+        return getAvailablePayloadDesignations(availablePayloads);
     }
 }

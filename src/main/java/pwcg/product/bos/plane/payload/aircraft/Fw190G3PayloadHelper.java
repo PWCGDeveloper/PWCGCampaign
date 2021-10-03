@@ -9,37 +9,37 @@ public class Fw190G3PayloadHelper
 {
     public static int selectFW190G3Payload(IFlight flight) throws PWCGException
     {
-        int selectedPrimaryPayloadId = 48;
+        int selectedPayloadId = 48;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectedPrimaryPayloadId = selectFW190G3GroundAttackPayload(flight);
+            selectedPayloadId = selectFW190G3GroundAttackPayload(flight);
         }
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }    
 
     private static int selectFW190G3GroundAttackPayload(IFlight flight)
     {
-        int selectedPrimaryPayloadId = 48;
+        int selectedPayloadId = 48;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectedPrimaryPayloadId = 49;
+            selectedPayloadId = 49;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectedPrimaryPayloadId = 52;
+            selectedPayloadId = 52;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectedPrimaryPayloadId = 53;
+            selectedPayloadId = 53;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectedPrimaryPayloadId = 52;
+            selectedPayloadId = 52;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectedPrimaryPayloadId = 54;
+            selectedPayloadId = 54;
         }
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }
 }

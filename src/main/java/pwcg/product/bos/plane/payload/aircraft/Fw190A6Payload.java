@@ -1,23 +1,43 @@
 package pwcg.product.bos.plane.payload.aircraft;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.plane.payload.IPlanePayload;
+import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.flight.IFlight;
 
 public class Fw190A6Payload extends PlanePayload implements IPlanePayload
 {
+    private Date g3IntroDate;
+
     public Fw190A6Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 0;
+        setNoOrdnancePayloadId(0);
     }
+
+    @Override
+    protected void createWeaponsModAvailabilityDates()
+    {
+        try
+        {
+            g3IntroDate = DateUtils.getDateYYYYMMDD("19441002");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }    
 
     protected void initialize()
 	{
@@ -45,35 +65,36 @@ public class Fw190A6Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Fw190A6Payload clone = new Fw190A6Payload(planeType, date);
+        Fw190A6Payload clone = new Fw190A6Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
 
     @Override
-    public int createWeaponsPayload(IFlight flight) throws PWCGException
+    protected int createWeaponsPayloadForPlane(IFlight flight) throws PWCGException
     {
+        int selectedPayloadId = 0;
         PwcgRoleCategory squadronPrimaryRole = flight.getSquadron().determineSquadronPrimaryRoleCategory(flight.getCampaign().getDate());
         if (squadronPrimaryRole == PwcgRoleCategory.ATTACK)
         {
-            selectedPrimaryPayloadId = createFW190G3Payload(flight);
+            selectedPayloadId = createFW190G3Payload(flight);
         }
         else
         {
-            selectedPrimaryPayloadId = createFW190A6Payload(flight);
+            selectedPayloadId = createFW190A6Payload(flight);
         }
-        return selectedPrimaryPayloadId;
+
+        return selectedPayloadId;
     }    
 
     private int createFW190A6Payload(IFlight flight) throws PWCGException
     {
-        selectedPrimaryPayloadId = Fw190A6PayloadHelper.createFW190A6Payload(flight);
-        return selectedPrimaryPayloadId;
+        return Fw190A6PayloadHelper.createFW190A6Payload(flight);
     }
 
     private int createFW190G3Payload(IFlight flight) throws PWCGException
     {
-        if (date.before(DateUtils.getDateYYYYMMDD("19441002")))
+        if (getDate().before(g3IntroDate))
         {
             return createFW190A6Payload(flight);
         }
@@ -91,14 +112,48 @@ public class Fw190A6Payload extends PlanePayload implements IPlanePayload
             return false;
         }
         
-        if (selectedPrimaryPayloadId == 0 || 
-            selectedPrimaryPayloadId == 4 ||
-            selectedPrimaryPayloadId == 8 ||
-            selectedPrimaryPayloadId == 16)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 0 || 
+            selectedPayloadId == 4 ||
+            selectedPayloadId == 8 ||
+            selectedPayloadId == 16)
         {
             return false;
         }
 
         return true;
+    }
+    
+    @Override
+    protected List<PayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight) throws PWCGException
+    {
+        List<Integer>availablePayloads = new ArrayList<>();
+        List<Integer>alwaysAvailablePayloads = Arrays.asList(0, 8);
+        availablePayloads.addAll(alwaysAvailablePayloads);
+        
+        Squadron squadron = flight.getSquadron();
+        PwcgRoleCategory squadronPrimaryRoleCategory = squadron.determineSquadronPrimaryRoleCategory(flight.getCampaign().getDate());
+        
+        if ((squadronPrimaryRoleCategory == PwcgRoleCategory.FIGHTER))
+        {
+            List<Integer>availableFighterPayloads = Arrays.asList(1, 2, 3, 4, 16);
+            availablePayloads.addAll(availableFighterPayloads);
+        }
+        
+        if ((squadronPrimaryRoleCategory == PwcgRoleCategory.ATTACK))
+        {
+            if (getDate().after(g3IntroDate))
+            {
+                List<Integer>availableG3Payloads = Arrays.asList(48, 49, 50,  51,52, 53, 54);
+                availablePayloads.addAll(availableG3Payloads);
+            }
+            else
+            {
+                List<Integer>availablePreG3Payloads = Arrays.asList(9, 10, 11);
+                availablePayloads.addAll(availablePreG3Payloads);
+            }
+        }
+        
+        return getAvailablePayloadDesignations(availablePayloads);
     }
 }

@@ -40,7 +40,7 @@ public class FCPayloadFactoryTest
 			
 			if (bosPlaneType.getType().equals(FCPlaneAttributeMapping.PFALZD3A.getPlaneType()))
 			{
-			    assert(payload.getStockModifications().get(0) == PayloadElement.COCKPIT_LIGHT);
+			    assert(bosPlaneType.getStockModifications().get(0) == PayloadElement.COCKPIT_LIGHT);
 			}
 		}
 	}

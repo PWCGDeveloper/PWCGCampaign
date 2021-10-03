@@ -15,7 +15,7 @@ public class Pe2S35Payload extends PlanePayload implements IPlanePayload
     public Pe2S35Payload(PlaneType planeType, Date date)
     {
         super(planeType, date);
-        noOrdnancePayloadElement = 11;
+        setNoOrdnancePayloadId(11);
     }
 
     protected void initialize()
@@ -37,17 +37,17 @@ public class Pe2S35Payload extends PlanePayload implements IPlanePayload
     @Override
     public IPlanePayload copy()
     {
-        Pe2S35Payload clone = new Pe2S35Payload(planeType, date);
+        Pe2S35Payload clone = new Pe2S35Payload(getPlaneType(), getDate());
         
         return super.copy(clone);
     }
     
-    public int createWeaponsPayload(IFlight flight)
+    protected int createWeaponsPayloadForPlane(IFlight flight)
     {
-        selectedPrimaryPayloadId = 1;
+        int selectedPayloadId = 1;
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
     	{
-    		selectGroundAttackPayload(flight);
+    		selectedPayloadId = selectGroundAttackPayload(flight);
     	}
         else if (flight.getFlightType() == FlightTypes.DIVE_BOMB)
         {
@@ -55,43 +55,45 @@ public class Pe2S35Payload extends PlanePayload implements IPlanePayload
         }
     	else
     	{
-    		selectBombingPayload(flight);
+    		selectedPayloadId = selectPayload(flight);
     	}
-        return selectedPrimaryPayloadId;
+        return selectedPayloadId;
     }
 
-    private void selectBombingPayload(IFlight flight)
+    private int selectPayload(IFlight flight)
     {
+        int selectedPayloadId = 1;
         if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
-            selectedPrimaryPayloadId = 1;
+            selectedPayloadId = 1;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
-            selectedPrimaryPayloadId = 3;
+            selectedPayloadId = 3;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
-            selectedPrimaryPayloadId = 3;
+            selectedPayloadId = 3;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
-            selectedPrimaryPayloadId = 6;
+            selectedPayloadId = 6;
         }
         else if (flight.getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRUCTURE)
         {
-            selectedPrimaryPayloadId = 6;
+            selectedPayloadId = 6;
         }
+        return selectedPayloadId;
     }
 
-    private void selectGroundAttackPayload(IFlight flight)
+    private int selectGroundAttackPayload (IFlight flight)
     {
-        selectedPrimaryPayloadId = 7;
+        return 7;
     }
 
-    private void selectDiveBombPayload(IFlight flight)
+    private int selectDiveBombPayload(IFlight flight)
     {
-        selectedPrimaryPayloadId = 3;
+        return 3;
     }
 
     @Override
@@ -102,8 +104,9 @@ public class Pe2S35Payload extends PlanePayload implements IPlanePayload
             return false;
         }
         
-        if (selectedPrimaryPayloadId == 0 || 
-            selectedPrimaryPayloadId == 11)
+        int selectedPayloadId = this.getSelectedPayload();
+        if (selectedPayloadId == 0 || 
+            selectedPayloadId == 11)
         {
             return false;
         }
