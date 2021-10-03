@@ -1,6 +1,7 @@
 package pwcg.campaign.plane.payload;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Before;
@@ -14,6 +15,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.PlaneType;
+import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -24,6 +26,7 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetCategory;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.product.bos.plane.BosPlaneAttributeMapping;
+import pwcg.product.bos.plane.payload.BoSPayloadFactory;
 
 @RunWith(MockitoJUnitRunner.class)
 public class Ju87D3G2PayloadTest
@@ -79,6 +82,74 @@ public class Ju87D3G2PayloadTest
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19430801"));
         IPlanePayload payloadGenerator = getPayloadGeneratorForAttack();
         testAttackAfterG2(payloadGenerator);
+    }
+
+    @Test
+    public void validateStukaPayloadBeforeCannons() throws PWCGException
+    {
+        BoSPayloadFactory bosPayloadFactory = new BoSPayloadFactory();
+        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
+
+        PlaneType bosPlaneType = planeTypeFactory.createPlaneTypeByType(BosPlaneAttributeMapping.JU87_D3.getPlaneType());
+
+        System.out.println(bosPlaneType.getType());
+
+        IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosPlaneType.getType(), DateUtils.getDateYYYYMMDD("19420801"));
+        assert (payload != null);
+
+        assert (payload.getAvailablePayloadDesignations(flight).size() == 8);
+
+        List<PayloadElement> unexpectedElements = Arrays.asList(PayloadElement.BK37_AP_GUNPOD, PayloadElement.BK37_HE_GUNPOD);
+        for (PayloadElement unexpectedElement : unexpectedElements)
+        {
+            Boolean found = false;
+            for (PayloadDesignation payloadDesignation : payload.getAvailablePayloadDesignations(flight))
+            {
+                for (PayloadElement element : payloadDesignation.getPayloadElements())
+                {
+                    if (unexpectedElement == element)
+                    {
+                        found = true;
+                    }
+                }
+            }
+            assert (!found);
+        }
+    }
+
+    @Test
+    public void validateStukaPayloadAfterCannons() throws PWCGException
+    {
+        BoSPayloadFactory bosPayloadFactory = new BoSPayloadFactory();
+        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
+
+        PlaneType bosPlaneType = planeTypeFactory.createPlaneTypeByType(BosPlaneAttributeMapping.JU87_D3.getPlaneType());
+
+        System.out.println(bosPlaneType.getType());
+
+        Date date = DateUtils.getDateYYYYMMDD("19430503");
+
+        IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosPlaneType.getType(), date);
+        assert (payload != null);
+
+        assert (payload.getAvailablePayloadDesignations(flight).size() == 10);
+        
+        List<PayloadElement> expectedElements = Arrays.asList(PayloadElement.BK37_AP_GUNPOD, PayloadElement.BK37_HE_GUNPOD);
+        for (PayloadElement expectedElement : expectedElements)
+        {
+            Boolean found = false;
+            for (PayloadDesignation payloadDesignation : payload.getAvailablePayloadDesignations(flight))
+            {
+                for (PayloadElement element : payloadDesignation.getPayloadElements())
+                {
+                    if (expectedElement == element)
+                    {
+                        found = true;
+                    }
+                }
+            }
+            assert (found);
+        }
     }
 
     private IPlanePayload getPayloadGeneratorForDiveBomber() throws PWCGException

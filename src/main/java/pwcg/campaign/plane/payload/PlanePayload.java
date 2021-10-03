@@ -188,6 +188,18 @@ public abstract class PlanePayload implements IPlanePayload
         }
         
         return fullModificationMask;
+    }    
+
+    @Override
+    public PlanePayloads getPayloads()
+    {
+        return payloads;
+    }
+
+    @Override
+    public PlaneModifications getModifications()
+    {
+        return modifications;
     }
 
     protected void setAvailablePayload(int payloadId, String modMask, PayloadElement ... requestedPayloadElements)

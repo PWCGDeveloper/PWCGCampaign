@@ -8,6 +8,8 @@ import pwcg.mission.flight.IFlight;
 public interface IPlanePayload
 {
     IPlanePayload copy();
+    PlanePayloads getPayloads();
+    PlaneModifications getModifications();
 
     PayloadDesignation getSelectedPayloadDesignation() throws PWCGException;
     List<PayloadDesignation> getAvailablePayloadDesignations(IFlight iFlight) throws PWCGException;

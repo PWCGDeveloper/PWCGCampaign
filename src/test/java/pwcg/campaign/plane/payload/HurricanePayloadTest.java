@@ -16,6 +16,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.plane.PlaneType;
+import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -26,6 +27,7 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetCategory;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.product.bos.plane.BosPlaneAttributeMapping;
+import pwcg.product.bos.plane.payload.BoSPayloadFactory;
 
 @RunWith(MockitoJUnitRunner.class)
 public class HurricanePayloadTest
@@ -162,10 +164,6 @@ public class HurricanePayloadTest
         runPayload(payloadGenerator, Arrays.asList(14, 18));
     }
 
-    
-
-    
-
     @Test
     public void testAttackMissionRAFBeforeHispano() throws PWCGException
     {
@@ -207,7 +205,52 @@ public class HurricanePayloadTest
         runPayload(payloadGenerator, Arrays.asList(4));
     }
 
+    @Test
+    public void validateHurricaneModsEarly() throws PWCGException 
+    {
+        BoSPayloadFactory bosPayloadFactory = new BoSPayloadFactory();
+        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
+
+        PlaneType bosPlaneType = planeTypeFactory.createPlaneTypeByType(BosPlaneAttributeMapping.HURRICANE_MKII.getPlaneType());
+            
+        System.out.println(bosPlaneType.getType());
+            
+        IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosPlaneType.getType(), DateUtils.getDateYYYYMMDD("19420801"));
+        assert(payload != null);
+            
+        assert(payload.getSelectedModifications().size() == 1);
+        List<PayloadElement> expectedElements = Arrays.asList(PayloadElement.MIRROR);
+        for (PayloadElement element : payload.getSelectedModifications())
+        {
+            verifyExpectedModification(element, expectedElements);
+        }
+    }
+
+    @Test
+    public void validateHurricaneModsLate() throws PWCGException 
+    {
+        BoSPayloadFactory bosPayloadFactory = new BoSPayloadFactory();
+        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
+
+        PlaneType bosPlaneType = planeTypeFactory.createPlaneTypeByType(BosPlaneAttributeMapping.HURRICANE_MKII.getPlaneType());
+            
+        System.out.println(bosPlaneType.getType());
+            
+        IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosPlaneType.getType(), DateUtils.getDateYYYYMMDD("19430103"));
+        assert(payload != null);
+            
+        assert(payload.getSelectedModifications().size() == 2);
+        List<PayloadElement> expectedElements = Arrays.asList(PayloadElement.MIRROR, PayloadElement.LB_14_BOOST);
+        for (PayloadElement element : payload.getSelectedModifications())
+        {
+            verifyExpectedModification(element, expectedElements);
+        }
+    }
     
+    private void verifyExpectedModification(PayloadElement element, List<PayloadElement> expectedElements)
+    {
+        assert(expectedElements.contains(element));
+    }
     
     private IPlanePayload getPayloadGeneratorForFighter() throws PWCGException
     {

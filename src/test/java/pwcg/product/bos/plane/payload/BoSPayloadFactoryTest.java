@@ -25,23 +25,23 @@ public class BoSPayloadFactoryTest
     	PWCGContext.setProduct(PWCGProduct.BOS);      
 	}
 
-	@Test
-	public void validatePayloadsForAllPlanes() throws PWCGException 
-	{
-		BoSPayloadFactory bosPayloadFactory = new BoSPayloadFactory();
-		PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
+    @Test
+    public void validatePayloadsForAllPlanes() throws PWCGException 
+    {
+        BoSPayloadFactory bosPayloadFactory = new BoSPayloadFactory();
+        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
 
-		for (PlaneType bosPlaneType : planeTypeFactory.getAllPlanes())
-		{
-		    System.out.println(bosPlaneType.getType());
-		    
-			IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosPlaneType.getType(), DateUtils.getDateYYYYMMDD("19420801"));
-			assert(payload != null);
-			
-			if (bosPlaneType.getType().equals(BosPlaneAttributeMapping.HURRICANE_MKII.getPlaneType()))
-			{
-			    assert(payload.getSelectedModifications().get(0) == PayloadElement.MIRROR);
-			}
-		}
-	}
+        for (PlaneType bosPlaneType : planeTypeFactory.getAllPlanes())
+        {
+            System.out.println(bosPlaneType.getType());
+            
+            IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosPlaneType.getType(), DateUtils.getDateYYYYMMDD("19420801"));
+            assert(payload != null);
+            
+            if (bosPlaneType.getType().equals(BosPlaneAttributeMapping.HURRICANE_MKII.getPlaneType()))
+            {
+                assert(payload.getSelectedModifications().get(0) == PayloadElement.MIRROR);
+            }
+        }
+    }
 }
