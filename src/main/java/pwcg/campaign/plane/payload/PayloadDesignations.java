@@ -32,7 +32,7 @@ public class PayloadDesignations
         return target;
     }
 
-    public void setAvailablePayload(int payloadId, String modMask, PayloadElement ... requestedPayloadElements)
+    public void addPayload(int payloadId, String modMask, PayloadElement ... requestedPayloadElements)
     {
         PayloadDesignation payloadDesignation = new PayloadDesignation();
         

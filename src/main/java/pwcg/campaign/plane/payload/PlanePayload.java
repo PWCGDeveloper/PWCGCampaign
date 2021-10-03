@@ -10,7 +10,7 @@ import pwcg.mission.flight.IFlight;
 
 public abstract class PlanePayload implements IPlanePayload
 {
-    private PlanePayloads payload = new PlanePayloads();
+    private PlanePayloads payloads = new PlanePayloads();
     private PlaneModifications modifications;
     private PlaneType planeType;
     private Date date;
@@ -26,9 +26,10 @@ public abstract class PlanePayload implements IPlanePayload
 	    createStandardWeaponsPayload();
         createWeaponsModAvailabilityDates();
         loadAvailableStockModifications();
+        addStockModifications();
 	}
 
-	@Override()
+    @Override()
 	public int createWeaponsPayload(IFlight flight) throws PWCGException
 	{
 	    int selectedPayloadId = createWeaponsPayloadForPlane(flight);
@@ -45,22 +46,22 @@ public abstract class PlanePayload implements IPlanePayload
     @Override
     public PayloadDesignation getSelectedPayloadDesignation() throws PWCGException
     {
-        return payload.getSelectedPayloadDesignation();
+        return payloads.getSelectedPayloadDesignation();
     }
 
     protected List<PayloadDesignation> getAvailablePayloadDesignationsForPlane(IFlight flight) throws PWCGException
     {
-        return payload.getPayloadDesignations().getAllAvailablePayloadDesignations();
+        return payloads.getPayloadDesignations().getAllAvailablePayloadDesignations();
     }
 
     protected List<PayloadDesignation> getAvailablePayloadDesignations(List<Integer> availablePayloadIds)
     {
-        return payload.getPayloadDesignations().getAvailablePayloadDesignations(availablePayloadIds);
+        return payloads.getPayloadDesignations().getAvailablePayloadDesignations(availablePayloadIds);
     }
 
     protected IPlanePayload copy(PlanePayload target)
     {
-        target.payload = this.payload.copy();
+        target.payloads = this.payloads.copy();
         target.modifications = this.modifications.copy();
         target.planeType = this.planeType;        
         target.date = this.date;        
@@ -69,17 +70,17 @@ public abstract class PlanePayload implements IPlanePayload
 
     protected int getSelectedPayload()
     {
-        return payload.getSelectedPayloadId();
+        return payloads.getSelectedPayloadId();
     }
 
     protected boolean isSelectedPayload(int payloadId)
     {
-        return payload.isSelectedPayload(payloadId);
+        return payloads.isSelectedPayload(payloadId);
     }
 
     protected void setSelectedPayload(int payloadId)
     {
-        payload.setSelectedPayloadId(payloadId);
+        payloads.setSelectedPayloadId(payloadId);
     }
 
     protected void createWeaponsModAvailabilityDates()
@@ -88,7 +89,7 @@ public abstract class PlanePayload implements IPlanePayload
 
     protected void setNoOrdnancePayloadId(int noOrdnancePayloadId)
     {
-        payload.setNoOrdnancePayloadId(noOrdnancePayloadId);
+        payloads.setNoOrdnancePayloadId(noOrdnancePayloadId);
     }
 
     protected void registerStockModification(PayloadElement payloadElement)
@@ -106,40 +107,46 @@ public abstract class PlanePayload implements IPlanePayload
         modifications.addStockModifications();
     }
     
+
+    private void addStockModifications()
+    {
+        modifications.addStockModifications();        
+    }
+
     @Override
     public int getPayloadIdByDescription(String payloadDescription)
     {
-        return payload.getPayloadDesignations().getPayloadIdByDescription(payloadDescription);
+        return payloads.getPayloadDesignations().getPayloadIdByDescription(payloadDescription);
     }
     
     @Override
     public String getPayloadMaskByDescription(String payloadDescription)
     {
-        return payload.getPayloadDesignations().getPayloadMaskByDescription(payloadDescription);
+        return payloads.getPayloadDesignations().getPayloadMaskByDescription(payloadDescription);
     }
 
     @Override
     public void createStandardWeaponsPayload()
     {
-        payload.createStandardWeaponsPayload(0);
+        payloads.createStandardWeaponsPayload(0);
     }
 
     @Override
     public int getSelectedPayloadId() 
     {
-        return payload.getSelectedPayloadId();
+        return payloads.getSelectedPayloadId();
     }
     
     @Override
     public void setSelectedPayloadId(int selectedPrimaryPayloadId) 
     {
-        payload.setSelectedPayloadId(selectedPrimaryPayloadId);
+        payloads.setSelectedPayloadId(selectedPrimaryPayloadId);
     }
     
     @Override
     public void selectNoOrdnancePayload()
     {
-        payload.selectNoOrdnancePayload();
+        payloads.selectNoOrdnancePayload();
     }    
 
     @Override
@@ -169,7 +176,7 @@ public abstract class PlanePayload implements IPlanePayload
     @Override
     public String generateFullModificationMask() throws PWCGException
     {
-        String fullModificationMask = payload.getSelectedPayloadDesignation().getModMask();
+        String fullModificationMask = payloads.getSelectedPayloadDesignation().getModMask();
         
         for (PayloadDesignation modificationDesignation : modifications.getSelectedModifications())
         {            
@@ -185,7 +192,14 @@ public abstract class PlanePayload implements IPlanePayload
 
     protected void setAvailablePayload(int payloadId, String modMask, PayloadElement ... requestedPayloadElements)
     {
-        payload.setAvailablePayload(payloadId, modMask, requestedPayloadElements);
+        if (payloadId >= 0)
+        {
+            payloads.addPayload(payloadId, modMask, requestedPayloadElements);
+        }
+        else
+        {
+            modifications.addModification(payloadId, modMask, requestedPayloadElements);
+        }
     }
 
     protected PlaneType getPlaneType()
@@ -200,7 +214,7 @@ public abstract class PlanePayload implements IPlanePayload
 
     protected boolean isOrdnanceDroppedPayload()
     {
-        return payload.isOrdnanceDroppedPayload();
+        return payloads.isOrdnanceDroppedPayload();
     }
 
 

@@ -25,7 +25,7 @@ public class PlaneModifications
         PayloadDesignation stockModificationPayloadDesignation = getDesignationByElement(payloadElement);
         if (stockModificationPayloadDesignation  != null)
         {
-            stockModifications.setAvailablePayload(stockModificationPayloadDesignation.getPayloadId(), stockModificationPayloadDesignation.getModMask(), payloadElement);
+            stockModifications.addPayload(stockModificationPayloadDesignation.getPayloadId(), stockModificationPayloadDesignation.getModMask(), payloadElement);
         }
     }
 
@@ -36,6 +36,11 @@ public class PlaneModifications
         target.stockModifications = this.stockModifications.copy();
         target.selectedModifications = new HashSet<Integer>(selectedModifications);
         return target;
+    }
+
+    public void addModification(int payloadId, String modMask, PayloadElement ... requestedPayloadElements)
+    {
+        modifications.addPayload(payloadId, modMask, requestedPayloadElements);
     }
 
     public void clearModifications()

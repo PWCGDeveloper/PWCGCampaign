@@ -5,7 +5,7 @@ import pwcg.core.exception.PWCGException;
 public class PlanePayloads
 {
     private int selectedPrimaryPayloadId = 0;
-    private PayloadDesignations availablePayload = new PayloadDesignations();
+    private PayloadDesignations payloads = new PayloadDesignations();
     private int noOrdnancePayloadId = 0;
 
 	public PlanePayloads()
@@ -15,23 +15,20 @@ public class PlanePayloads
     public PlanePayloads copy()
     {
         PlanePayloads target = new PlanePayloads();
-        target.availablePayload = this.availablePayload.copy();
+        target.payloads = this.payloads.copy();
         target.selectedPrimaryPayloadId = this.selectedPrimaryPayloadId;
         target.noOrdnancePayloadId = this.noOrdnancePayloadId;        
         return target;
     }
 
-    public void setAvailablePayload(int payloadId, String modMask, PayloadElement ... requestedPayloadElements)
+    public void addPayload(int payloadId, String modMask, PayloadElement ... requestedPayloadElements)
     {
-        if (payloadId >= 0)
-        {
-            availablePayload.setAvailablePayload(payloadId, modMask, requestedPayloadElements);
-        }
+        payloads.addPayload(payloadId, modMask, requestedPayloadElements);
     }
 
     public PayloadDesignations getPayloadDesignations()
     {
-        return availablePayload;
+        return payloads;
     }
 
     public void setSelectedPayloadId(int payloadId)
@@ -51,7 +48,7 @@ public class PlanePayloads
 
     public PayloadDesignation getSelectedPayloadDesignation() throws PWCGException
     {
-        return availablePayload.getPayloadDesignation(selectedPrimaryPayloadId);
+        return payloads.getPayloadDesignation(selectedPrimaryPayloadId);
     }
 
     public void createStandardWeaponsPayload(int standardPayloadId)
