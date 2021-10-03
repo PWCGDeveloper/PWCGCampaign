@@ -75,7 +75,7 @@ public class Ju87D3Payload extends PlanePayload
         }
         if (FlightTypes.isGroundAttackFlight(flight.getFlightType()))
         {
-            selectedPayloadId = selectAttackPayload(flight);
+            selectedPayloadId = selectGroundAttackPayload(flight);
         }
         return selectedPayloadId;
     }    
@@ -106,7 +106,7 @@ public class Ju87D3Payload extends PlanePayload
         return selectedPayloadId;
     }
 
-    private int selectAttackPayload(IFlight flight) throws PWCGException
+    private int selectGroundAttackPayload(IFlight flight) throws PWCGException
     {
         int selectedPayloadId = 1;
         if (getDate().before(bk37IntroDate))

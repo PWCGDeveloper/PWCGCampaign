@@ -3,6 +3,14 @@ Added SPAD VII 180 HP
 - Modified SPAD VII 150 HP to be removed earlier
 - Modified SPAD XIII to be added a little later
 Added smoke blows in mission wind direction
+Added availability dates to payloads and modifications
+- Payloads are selectable during mission generation only if available
+- AI limited to available payloads
+- Added more payload options for AI use
+- Selectable modifications can be chosen during mission generation
+- Modifications are stock or selectable (existing functionality)
+- Stock modifications are added automatically when available
+- Both AI and Human flights will receive stock modifications
 
 13.2.0
 Added Raider role and raid mission
