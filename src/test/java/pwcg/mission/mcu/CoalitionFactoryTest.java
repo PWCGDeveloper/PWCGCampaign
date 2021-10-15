@@ -2,8 +2,7 @@ package pwcg.mission.mcu;
 
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
@@ -11,21 +10,21 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
+import pwcg.core.exception.PWCGException;
 
 public class CoalitionFactoryTest
 {
-    ICountry britain;
-    ICountry germany;
+    private static ICountry britain;
+    private static ICountry germany;
     
-    @Before
-    public void setup()
+    public CoalitionFactoryTest() throws PWCGException
     {
         britain = CountryFactory.makeCountryByCountry(Country.BRITAIN);
         germany = CountryFactory.makeCountryByCountry(Country.GERMANY);
     }
     
     @Test
-    public void testCoalitionBySide()
+    public void testCoalitionBySide() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         Coalition coalition = CoalitionFactory.getCoalitionBySide(Side.ALLIED);
@@ -43,7 +42,7 @@ public class CoalitionFactoryTest
     }
     
     @Test
-    public void testFriendlyCoalition()
+    public void testFriendlyCoalition() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         Coalition coalition = CoalitionFactory.getFriendlyCoalition(britain);
@@ -61,7 +60,7 @@ public class CoalitionFactoryTest
     }
     
     @Test
-    public void testEnemyCoalition()
+    public void testEnemyCoalition() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         Coalition coalition = CoalitionFactory.getEnemyCoalition(britain);
@@ -79,7 +78,7 @@ public class CoalitionFactoryTest
     }
     
     @Test
-    public void testAllCoalitions()
+    public void testAllCoalitions() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         List<Coalition> wwiiCoalitions = CoalitionFactory.getAllCoalitions();

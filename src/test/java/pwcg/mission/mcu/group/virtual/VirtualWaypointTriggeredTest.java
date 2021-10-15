@@ -3,12 +3,12 @@ package pwcg.mission.mcu.group.virtual;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -23,7 +23,7 @@ import pwcg.mission.flight.waypoint.WaypointPackage;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.McuFormation;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class VirtualWaypointTriggeredTest
 {
     @Mock private IFlight flight;
@@ -35,8 +35,8 @@ public class VirtualWaypointTriggeredTest
     @Mock VirtualWayPointCoordinate vwpCoordinate;
     @Mock VirtualWaypointPlanes vwpPlanes;
     
-    @Before
-    public void setup()
+    @BeforeEach
+    public void setupTest()
     {        
         plane1 = new PlaneMcu();
         plane1.setName("Plane 1");

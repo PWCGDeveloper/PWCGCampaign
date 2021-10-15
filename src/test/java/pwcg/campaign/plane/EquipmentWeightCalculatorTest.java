@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -18,13 +17,12 @@ import pwcg.campaign.resupply.depot.EquipmentWeightCalculator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class EquipmentWeightCalculatorTest
 {
     @Mock Campaign campaign;
     
-    @Before 
-    public void setup() throws PWCGException
+    public EquipmentWeightCalculatorTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);      
     }

@@ -2,8 +2,9 @@ package pwcg.campaign;
 
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
@@ -17,19 +18,22 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class SkirmishBuilderTest
 {
-    @Before
-    public void setup() throws PWCGException
+    private Campaign campaign;
+    
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
     }
     
     @Test
     public void testNoSkirmish() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
-        PWCGContext.getInstance().setCampaign(campaign);
+        campaign.setDate(DateUtils.getDateYYYYMMDD("19441010"));
 
         List<Skirmish> skirmishes = PWCGContext.getInstance().getCurrentMap().getSkirmishManager().getSkirmishesForDate(campaign, TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         assert (skirmishes.size() == 0);
@@ -38,8 +42,6 @@ public class SkirmishBuilderTest
     @Test
     public void singlePlayerSkirmishArnhemStartTest() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
-        PWCGContext.getInstance().setCampaign(campaign);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19440917"));
 
         Skirmish skirmish =createMissionAtSkirmish(campaign);
@@ -49,8 +51,6 @@ public class SkirmishBuilderTest
     @Test
     public void singlePlayerSkirmishArnhemEndTest() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
-        PWCGContext.getInstance().setCampaign(campaign);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19440928"));
 
         Skirmish skirmish =createMissionAtSkirmish(campaign);

@@ -2,10 +2,11 @@ package pwcg.campaign.squadron;
 
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
@@ -18,21 +19,22 @@ import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class SquadronManagerTest
 {
     Campaign campaign;
     
-    @Before
-    public void setup() throws PWCGException
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
     }
 
     @Test
     public void getSquadronTest() throws PWCGException
     {
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         Squadron squadron = squadronManager.getSquadron(20111052);
         assert(squadron.determineDisplayName(campaign.getDate()).equals("I./JG52"));
@@ -41,7 +43,6 @@ public class SquadronManagerTest
     @Test
     public void getActiveSquadronsTest() throws PWCGException
     {
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         List<Squadron> squadrons = squadronManager.getActiveSquadrons(campaign.getDate());
         
@@ -78,7 +79,6 @@ public class SquadronManagerTest
     @Test
     public void getActiveSquadronsForSideTest() throws PWCGException
     {
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         List<Squadron> squadrons = squadronManager.getActiveSquadronsForSide(campaign.getDate(), Side.AXIS);
         
@@ -115,7 +115,6 @@ public class SquadronManagerTest
     @Test
     public void getViableSquadronsTest() throws PWCGException
     {
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         int II_StG2_id = 20122002;
         SquadronPersonnel personnel = campaign.getPersonnelManager().getSquadronPersonnel(II_StG2_id);
         int numSaved = 0;

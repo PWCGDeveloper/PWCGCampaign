@@ -3,15 +3,15 @@ package pwcg.aar.inmission.phase2.logeval.victory;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class AARAreaOfCombatTest
 {
     AARAreaOfCombat areaOfCombat;
@@ -19,7 +19,7 @@ public class AARAreaOfCombatTest
     @Test
     public void testAreaOfCombatOneCoordTrue() throws PWCGException
     {
-        setup(1);
+        setupCoords(1);
         
         Coordinate testCoord = new Coordinate();
         testCoord.setXPos(100000.0);
@@ -31,7 +31,7 @@ public class AARAreaOfCombatTest
     @Test
     public void testAreaOfCombatOneCoordFalse() throws PWCGException
     {
-        setup(1);
+        setupCoords(1);
 
         Coordinate testCoord = new Coordinate();
         testCoord.setXPos(100000.0);
@@ -43,7 +43,7 @@ public class AARAreaOfCombatTest
     @Test
     public void testAreaOfCombatOneCoordCentered() throws PWCGException
     {
-        setup(2);
+        setupCoords(2);
 
         Coordinate testCoord = new Coordinate();
         testCoord.setXPos(103000.0);
@@ -55,7 +55,7 @@ public class AARAreaOfCombatTest
     @Test
     public void testAreaOfCombatManyCoordTrue() throws PWCGException
     {
-        setup(2);
+        setupCoords(2);
 
         Coordinate testCoord = new Coordinate();
         testCoord.setXPos(100000.0);
@@ -67,7 +67,7 @@ public class AARAreaOfCombatTest
     @Test
     public void testAreaOfCombatManyCoordFalse() throws PWCGException
     {
-        setup(2);
+        setupCoords(2);
 
         Coordinate testCoord = new Coordinate();
         testCoord.setXPos(100000.0);
@@ -76,7 +76,7 @@ public class AARAreaOfCombatTest
         assert(areaOfCombat.isNearAreaOfCombat(testCoord) == false);
     }
     
-    public void setup(int numCoords) throws PWCGException
+    public void setupCoords(int numCoords) throws PWCGException
     {
         double zpos = 100000.0;
         

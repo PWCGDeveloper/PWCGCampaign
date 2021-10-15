@@ -1,9 +1,8 @@
 package pwcg.mission;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -15,13 +14,10 @@ import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class MissionCenterDistanceCalculatorTest
-{
-    Campaign campaign;
-    
-    @Before
-    public void setup() throws PWCGException
+{    
+    public MissionCenterDistanceCalculatorTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
     }
@@ -29,7 +25,7 @@ public class MissionCenterDistanceCalculatorTest
     @Test
     public void verifySmallerDistanceToFront () throws PWCGException
     {
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
         SquadronMembers players = campaign.getPersonnelManager().getAllActivePlayers();
@@ -51,7 +47,7 @@ public class MissionCenterDistanceCalculatorTest
     @Test
     public void verifyUseOfRangeIfMaxIsTooLarge () throws PWCGException
     {
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.KG53_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.KG53_PROFILE);
         
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
         SquadronMembers players = campaign.getPersonnelManager().getAllActivePlayers();

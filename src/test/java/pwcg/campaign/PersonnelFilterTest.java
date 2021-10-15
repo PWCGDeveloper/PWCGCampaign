@@ -3,10 +3,10 @@ package pwcg.campaign;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.personnel.PersonnelActiveFilter;
 import pwcg.campaign.personnel.PersonnelFilter;
@@ -16,14 +16,14 @@ import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class PersonnelFilterTest
 {
-    private Map<Integer, SquadronMember> testSquadronMembers = new HashMap<Integer, SquadronMember>();
-    private String[] names = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", };
+    private static Map<Integer, SquadronMember> testSquadronMembers = new HashMap<Integer, SquadronMember>();
+    private static String[] names = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", };
     
-    @Before
-    public void setup() throws PWCGException
+    @BeforeEach
+    public void setupTest() throws PWCGException
     {
     	testSquadronMembers = new HashMap<Integer, SquadronMember>();
     	for (int i = 0; i < 10; ++i)

@@ -1,31 +1,33 @@
 package pwcg.core.config;
 
-import static org.junit.Assert.assertTrue;
-
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGDirectoryUserManager;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
 
 public class ConfigManagerGlobalTest
 {
-    @Before
-    public void setup() throws PWCGException
+
+    public ConfigManagerGlobalTest() throws PWCGException
     {
+        PWCGContext.setProduct(PWCGProduct.BOS);
     }
     
+
     @Test
     public void testGlobalConfigurationInitialize() throws PWCGException 
     {
     	ConfigManagerGlobal configManagerGlobal = ConfigManagerGlobal.getInstance();
     	Map<String, ConfigSet> globalConfigSets = configManagerGlobal.getDefaultCampaignConfigSets();
     	
-        assertTrue (globalConfigSets.containsKey(ConfigSetKeys.ConfigSetGUI));
-        assertTrue (globalConfigSets.containsKey(ConfigSetKeys.ConfigSetUserPref));
+        Assertions.assertTrue (globalConfigSets.containsKey(ConfigSetKeys.ConfigSetGUI));
+        Assertions.assertTrue (globalConfigSets.containsKey(ConfigSetKeys.ConfigSetUserPref));
     }
     
     @Test
@@ -36,17 +38,17 @@ public class ConfigManagerGlobalTest
     	ConfigManagerGlobal configManagerGlobal = ConfigManagerGlobal.getInstance();
     	configManagerGlobal.reset();
     	int originaMusicVolume = configManagerGlobal.getIntConfigParam(ConfigItemKeys.SoundVolumeKey);
-        assertTrue (originaMusicVolume == 10);
+        Assertions.assertTrue (originaMusicVolume == 10);
     	
         configManagerGlobal.setParam(ConfigItemKeys.SoundVolumeKey, "3");
         configManagerGlobal.write();
     	int newMusicVolume = configManagerGlobal.getIntConfigParam(ConfigItemKeys.SoundVolumeKey);
-        assertTrue (newMusicVolume == 3);
+        Assertions.assertTrue (newMusicVolume == 3);
 
         configManagerGlobal.setParam(ConfigItemKeys.SoundVolumeKey, "3");
         configManagerGlobal.readConfig();;
     	int afterSaveMusicVolume = configManagerGlobal.getIntConfigParam(ConfigItemKeys.SoundVolumeKey);
-        assertTrue (afterSaveMusicVolume == 3);
+        Assertions.assertTrue (afterSaveMusicVolume == 3);
     }
 
     
@@ -61,16 +63,16 @@ public class ConfigManagerGlobalTest
         configManagerGlobal.write();
         
     	int newMusicVolume = configManagerGlobal.getIntConfigParam(ConfigItemKeys.SoundVolumeKey);
-        assertTrue (newMusicVolume == 3);
+        Assertions.assertTrue (newMusicVolume == 3);
 
     	configManagerGlobal.reset();
     	int originaMusicVolume = configManagerGlobal.getIntConfigParam(ConfigItemKeys.SoundVolumeKey);
-        assertTrue (originaMusicVolume == 10);
+        Assertions.assertTrue (originaMusicVolume == 10);
 
         configManagerGlobal.setParam(ConfigItemKeys.SoundVolumeKey, "3");
         configManagerGlobal.readConfig();;
     	int afterSaveMusicVolume = configManagerGlobal.getIntConfigParam(ConfigItemKeys.SoundVolumeKey);
-        assertTrue (afterSaveMusicVolume == 10);
+        Assertions.assertTrue (afterSaveMusicVolume == 10);
     }
 
     private void cleanUpUserDir() throws PWCGException

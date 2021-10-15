@@ -2,10 +2,9 @@ package pwcg.campaign;
 
 import java.util.Date;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.Country;
@@ -25,12 +24,10 @@ import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCacheBase;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class CampaignGeneratorTest
 {
-
-	@Before
-	public void setup() throws PWCGException
+	public CampaignGeneratorTest() throws PWCGException
 	{
     	PWCGContext.setProduct(PWCGProduct.FC);
         PWCGContext.getInstance().changeContext(FrontMapIdentifier.ARRAS_MAP);

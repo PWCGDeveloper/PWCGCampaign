@@ -1,9 +1,8 @@
 package pwcg.aar.campaign.update;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.aar.AARCoordinator;
 import pwcg.campaign.Campaign;
@@ -16,43 +15,41 @@ import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class CampaignEquipmentArchtypeChangeHandlerTest
-{
-    private Campaign campaign;
-    
-    @Before
-    public void setup() throws PWCGException
+{    
+    public CampaignEquipmentArchtypeChangeHandlerTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
     }
     
     @Test
     public void testArchtypeReplacement() throws PWCGException 
     {
-        assertPlaneArchType("bf109");
-        assertNotPlaneArchType("fw190");
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
+        assertPlaneArchType(campaign, "bf109");
+        assertNotPlaneArchType(campaign, "fw190");
         int daysOff = DateUtils.daysDifference(campaign.getDate(), DateUtils.getDateYYYYMMDD("19420514"));
         AARCoordinator aarCoordinator = AARCoordinator.getInstance();
         aarCoordinator.submitLeave(campaign, daysOff);
-        assertNotPlaneArchType("bf109");
-        assertPlaneArchType("fw190");
+        assertNotPlaneArchType(campaign, "bf109");
+        assertPlaneArchType(campaign, "fw190");
     }
     
     @Test
     public void testArchtypeNoReplacement() throws PWCGException 
     {
-        assertPlaneArchType("bf109");
-        assertNotPlaneArchType("fw190");
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
+        assertPlaneArchType(campaign, "bf109");
+        assertNotPlaneArchType(campaign, "fw190");
         int daysOff = DateUtils.daysDifference(campaign.getDate(), DateUtils.getDateYYYYMMDD("19420513"));
         AARCoordinator aarCoordinator = AARCoordinator.getInstance();
         aarCoordinator.submitLeave(campaign, daysOff);
-        assertPlaneArchType("bf109");
-        assertNotPlaneArchType("fw190");
+        assertPlaneArchType(campaign, "bf109");
+        assertNotPlaneArchType(campaign, "fw190");
     }
     
-    private void assertPlaneArchType(String planeArchTypeName)
+    private void assertPlaneArchType(Campaign campaign, String planeArchTypeName)
     {
     	Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(20111051);
         for (EquippedPlane plane : equipment.getActiveEquippedPlanes().values())
@@ -61,7 +58,7 @@ public class CampaignEquipmentArchtypeChangeHandlerTest
         }
     }
     
-    private void assertNotPlaneArchType(String planeArchTypeName)
+    private void assertNotPlaneArchType(Campaign campaign, String planeArchTypeName)
     {
     	Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(20111051);
         for (EquippedPlane plane : equipment.getActiveEquippedPlanes().values())

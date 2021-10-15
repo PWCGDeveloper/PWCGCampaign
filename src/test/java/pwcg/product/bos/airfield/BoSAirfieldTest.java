@@ -1,11 +1,10 @@
 package pwcg.product.bos.airfield;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.FrontMapIdentifier;
@@ -25,7 +24,7 @@ import pwcg.mission.options.MissionWeather;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class BoSAirfieldTest
 {
     @Mock private ConfigManagerCampaign configManagerCampaign;
@@ -158,8 +157,7 @@ public class BoSAirfieldTest
 	        "      }\n" +
 	        "    }\n";
 
-	@Before
-	public void setup() throws PWCGException
+	public BoSAirfieldTest() throws PWCGException
 	{
 		PWCGContext.setProduct(PWCGProduct.BOS);
 	}

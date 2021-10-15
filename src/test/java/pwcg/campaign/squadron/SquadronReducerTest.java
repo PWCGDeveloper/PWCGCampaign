@@ -2,8 +2,9 @@ package pwcg.campaign.squadron;
 
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -12,12 +13,11 @@ import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class SquadronReducerTest
-{
-    Campaign campaign;
-    
-    @Before
-    public void setup() throws PWCGException
+{    
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
     }
@@ -25,7 +25,7 @@ public class SquadronReducerTest
     @Test
     public void anomaliesRemoved() throws PWCGException
     {
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_52_PROFILE_STALINGRAD);
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_52_PROFILE_STALINGRAD);
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         List<Squadron> allSquadrons = squadronManager.getAllSquadrons();
         List<Squadron> squadronsWithoutAnomalies = SquadronReducer.reduceToNoAnomalies(allSquadrons, campaign.getDate());
@@ -41,7 +41,7 @@ public class SquadronReducerTest
     @Test
     public void jg51NotAnAnomaly() throws PWCGException
     {
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.REGIMENT_11_PROFILE);        
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.REGIMENT_11_PROFILE);        
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         List<Squadron> allSquadrons = squadronManager.getAllSquadrons();
         List<Squadron> squadronsWithoutAnomalies = SquadronReducer.reduceToNoAnomalies(allSquadrons, campaign.getDate());
@@ -66,7 +66,7 @@ public class SquadronReducerTest
     @Test
     public void noAnomaliesRemoved() throws PWCGException
     {
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.REGIMENT_11_PROFILE);        
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.REGIMENT_11_PROFILE);        
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         List<Squadron> allSquadrons = squadronManager.getAllSquadrons();
         List<Squadron> squadronsWithoutAnomalies = SquadronReducer.reduceToNoAnomalies(allSquadrons, campaign.getDate());

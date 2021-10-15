@@ -3,13 +3,15 @@ package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
@@ -29,7 +31,8 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
 public class ClaimResolverTest
 {
     @Mock private Campaign campaign;
@@ -44,8 +47,8 @@ public class ClaimResolverTest
     private PlayerDeclarations playerDeclarationSet;
 
     
-    @Before
-    public void setup() throws PWCGException
+    @BeforeEach
+    public void setupTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
 

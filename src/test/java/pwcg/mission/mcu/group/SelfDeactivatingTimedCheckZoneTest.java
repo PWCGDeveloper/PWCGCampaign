@@ -1,15 +1,15 @@
 package pwcg.mission.mcu.group;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.validate.IndexLinkValidator;
 import pwcg.mission.mcu.group.virtual.VirtualWaypoint;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class SelfDeactivatingTimedCheckZoneTest
 {
     @Test

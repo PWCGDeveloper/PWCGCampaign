@@ -1,9 +1,10 @@
 package pwcg.product.bos.ground.vehicle;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -20,14 +21,14 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class VehicleSetBuilderComprehensiveTest
 {
-    Mission mission;
-    Campaign campaign;
+    private Campaign campaign;    
 
-    @Before 
-    public void setup() throws PWCGException
+    @BeforeAll 
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
@@ -47,7 +48,7 @@ public class VehicleSetBuilderComprehensiveTest
     {
         MissionHumanParticipants participatingPlayers = TestMissionBuilderUtility.buildTestParticipatingHumans(campaign);
     	MissionGenerator missionGenerator = new MissionGenerator(campaign);
-    	mission = missionGenerator.makeTestSingleMissionFromFlightType(participatingPlayers, FlightTypes.PATROL, MissionProfile.DAY_TACTICAL_MISSION);
+    	Mission mission = missionGenerator.makeTestSingleMissionFromFlightType(participatingPlayers, FlightTypes.PATROL, MissionProfile.DAY_TACTICAL_MISSION);
         mission.generateAllGroundUnitTypesForTest();
         mission.finalizeMission();
     }

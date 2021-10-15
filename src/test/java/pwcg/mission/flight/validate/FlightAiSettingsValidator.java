@@ -1,12 +1,8 @@
 package pwcg.mission.flight.validate;
 
-import java.util.Arrays;
-import java.util.List;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -28,17 +24,10 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
-@RunWith(Parameterized.class)
+@ExtendWith(MockitoExtension.class)
 public class FlightAiSettingsValidator 
 {    
-    @Parameterized.Parameters
-    public static List<Object[]> data() 
-    {
-        return Arrays.asList(new Object[1][0]);
-    }
-    
-    @Before
-    public void setup() throws PWCGException
+    public FlightAiSettingsValidator() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
     }

@@ -2,8 +2,9 @@ package pwcg.gui.rofmap.brief.builder;
 
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -22,13 +23,14 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class BriefingDataBuilderTest
 {
     private Campaign campaign;
-    private Mission mission;
+    private static Mission mission;
 
-    @Before
-    public void setup() throws PWCGException
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.KG53_PROFILE);

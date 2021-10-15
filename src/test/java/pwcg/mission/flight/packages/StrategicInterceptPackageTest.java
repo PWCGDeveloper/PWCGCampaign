@@ -2,11 +2,9 @@ package pwcg.mission.flight.packages;
 
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -29,15 +27,9 @@ import pwcg.testutils.TestMissionBuilderUtility;
 
 public class StrategicInterceptPackageTest extends PwcgTestBase
 {
-    public StrategicInterceptPackageTest()
+    public StrategicInterceptPackageTest() throws PWCGException
     {
         super (PWCGProduct.BOS);
-    }
-
-    @Before
-    public void setup() throws PWCGException
-    {
-        PWCGContext.setProduct(PWCGProduct.BOS);
     }
 
     @Test

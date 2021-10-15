@@ -2,7 +2,7 @@ package pwcg.campaign.group;
 
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
 import pwcg.campaign.context.FrontMapIdentifier;

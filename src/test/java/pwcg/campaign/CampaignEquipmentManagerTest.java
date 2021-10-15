@@ -3,8 +3,9 @@ package pwcg.campaign;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
@@ -19,10 +20,11 @@ import pwcg.product.bos.plane.BosPlaneAttributeMapping;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CampaignEquipmentManagerTest
 {    
-    @Before
-    public void setup() throws PWCGException
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         PWCGContext.getInstance().changeContext(FrontMapIdentifier.STALINGRAD_MAP);

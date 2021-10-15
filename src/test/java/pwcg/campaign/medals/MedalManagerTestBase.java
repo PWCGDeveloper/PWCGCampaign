@@ -34,7 +34,7 @@ public abstract class MedalManagerTestBase
     protected ArmedService service;
     protected IMedalManager medalManager;
 
-    public void setup() throws PWCGException
+    public void setupBase() throws PWCGException
     {
         players = new ArrayList<>();
         players.add(player);

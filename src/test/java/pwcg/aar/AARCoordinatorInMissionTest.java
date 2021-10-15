@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import pwcg.aar.inmission.phase1.parse.AARMissionLogRawData;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
@@ -21,17 +22,19 @@ import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AARCoordinatorInMissionTest
 {
     private Campaign campaign;    
-    private AARCoordinator aarCoordinator;
+    private static AARCoordinator aarCoordinator;
+    private static ExpectedResults expectedResults;
+    private static int playerMissionsFlown = 0;
+
     private List<Squadron> squadronsInMission = new ArrayList<>();
     private Map<Integer, PlayerDeclarations> playerDeclarations;
-    private ExpectedResults expectedResults;
-    private int playerMissionsFlown = 0;
 
-    @Before
-    public void setup() throws PWCGException
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         PWCGContext.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);

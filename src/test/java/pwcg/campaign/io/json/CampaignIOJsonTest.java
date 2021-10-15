@@ -1,8 +1,8 @@
 package pwcg.campaign.io.json;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
@@ -27,7 +27,7 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignCacheBase;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class CampaignIOJsonTest
 {    
     @Test

@@ -3,12 +3,11 @@ package pwcg.aar.inmission.phase2.logeval;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase1.parse.event.AType17;
@@ -19,17 +18,13 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class AARWaypointBuilderTest
 {
-    @Mock
-    private AARLogEventData logEventData;
-
-    @Mock
-    AType17 wpEvent;
+    @Mock private AARLogEventData logEventData;
+    @Mock private AType17 wpEvent;
     
-    @Before
-    public void setup() throws PWCGException
+    public AARWaypointBuilderTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
     }

@@ -1,12 +1,11 @@
 package pwcg.aar.inmission.phase2.logeval.pilotstatus;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.BehindEnemyLines;
@@ -17,14 +16,13 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class AARPilotStatusCapturedEvaluatorTest
 {
     @Mock
     private BehindEnemyLines behindEnemyLines;
 
-    @Before
-    public void setup() throws PWCGException
+    public AARPilotStatusCapturedEvaluatorTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
     }

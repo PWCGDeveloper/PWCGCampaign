@@ -3,10 +3,9 @@ package pwcg.aar;
 import java.util.Date;
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
@@ -23,7 +22,7 @@ import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AARCoordinatorCampaignUpdateIntegrityValidator
 {
     private Campaign campaign;    
@@ -32,15 +31,15 @@ public class AARCoordinatorCampaignUpdateIntegrityValidator
     private Map<Integer, SquadronMember> personnelLosses;
     private Map<Integer, LogPlane> equipmentLosses;
 
-    @Before
-    public void setup() throws PWCGException
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
     }
 
     @Test
-    public void verifyMissionStatisticsArePersisted () throws PWCGException
+    public void testVerifyMissionStatisticsArePersisted () throws PWCGException
     {
         campaign.write();
         boolean lossesRecorded = false;

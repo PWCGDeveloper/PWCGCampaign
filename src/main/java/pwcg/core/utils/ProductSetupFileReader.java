@@ -6,14 +6,14 @@ import java.io.FileReader;
 
 import pwcg.campaign.context.PWCGDirectorySimulatorManager;
 
-public class MissionLogFileValidator 
+public class ProductSetupFileReader 
 {
     private DirectoryReader directoryReader = new DirectoryReader();
     
     private boolean missionLoggingEnabled = false;
     private String missionLogPath = "";
 
- 	public MissionLogFileValidator()
+ 	public ProductSetupFileReader()
 	{
 	}
 

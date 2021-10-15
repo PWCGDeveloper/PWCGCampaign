@@ -2,8 +2,7 @@ package pwcg.mission.ground.vehicle;
 
 import java.util.Date;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
@@ -15,9 +14,7 @@ import pwcg.core.utils.DateUtils;
 
 public class VehicleFactoryFCTest
 {
-
-    @Before
-    public void setup()
+    public VehicleFactoryFCTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
     }

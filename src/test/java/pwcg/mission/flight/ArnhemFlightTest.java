@@ -2,8 +2,9 @@ package pwcg.mission.flight;
 
 import java.util.Date;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
@@ -22,12 +23,16 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ArnhemFlightTest
 {
-    @Before
-    public void fighterFlightTests() throws PWCGException
+    private Campaign campaign;
+    
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
     }
 
     @Test
@@ -44,7 +49,6 @@ public class ArnhemFlightTest
 
     private void verifyParaDropOnDate(Date date) throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
         campaign.setDate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
@@ -82,7 +86,6 @@ public class ArnhemFlightTest
 
     private void verifyCargoDropsOnDate(Date date) throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
         campaign.setDate(date);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));

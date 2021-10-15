@@ -2,8 +2,7 @@ package pwcg.mission;
 
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -22,8 +21,7 @@ import pwcg.testutils.TestMissionBuilderUtility;
 
 public class MissionCenterBuilderSkirmishTest
 {    
-    @Before
-    public void setup() throws PWCGException
+    public MissionCenterBuilderSkirmishTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
     }

@@ -3,11 +3,11 @@ package pwcg.aar;
 import java.util.Date;
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
@@ -26,7 +26,7 @@ import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AARExtendedTimeHandlerTest
 {
     private Campaign campaign;
@@ -34,15 +34,20 @@ public class AARExtendedTimeHandlerTest
     
     @Mock LogPilot playerLogPilot;
     
-    @Before
-    public void setupForTestEnvironment() throws PWCGException
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         campaign.getCampaignData().setCampaignMode(CampaignMode.CAMPAIGN_MODE_SINGLE);
+    }
+
+    @BeforeEach
+    public void setupTest() throws PWCGException
+    {        
         aarContext = new AARContext(campaign);
     }
-    
+
     @Test
     public void testPersonnelReplacedWhenTimePassed () throws PWCGException
     {

@@ -3,13 +3,14 @@ package pwcg.aar.inmission.phase2.logeval;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 
 import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase1.parse.event.AType3;
@@ -21,7 +22,8 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
 public class AARDestroyedStatusEvaluatorTest
 {
     @Mock private AARDamageStatusEvaluator aarDamageStatusEvaluator;
@@ -34,8 +36,7 @@ public class AARDestroyedStatusEvaluatorTest
     @Mock private AType3 logDestroyedEvent3;
     @Mock private AARCrossedPathWithPlayerEvaluator aarCrossedPathWithPlayerEvaluator;
 
-    @Before
-    public void setup () throws PWCGException
+    public AARDestroyedStatusEvaluatorTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
     }

@@ -1,12 +1,12 @@
 package pwcg.aar.inmission.phase3.reconcile.victories.coop;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.aar.inmission.phase3.reconcile.victories.IClaimResolver;
 import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledMissionVictoryData;
@@ -21,7 +21,7 @@ import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class ClaimResolverCoopTest
 {
     @Mock private Campaign campaign;
@@ -31,8 +31,8 @@ public class ClaimResolverCoopTest
 
     private LogVictoryHelper logVictoryHelper = new LogVictoryHelper();
     
-    @Before
-    public void setup() throws PWCGException
+    @BeforeEach
+    public void setupTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
 

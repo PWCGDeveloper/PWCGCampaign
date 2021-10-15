@@ -1,17 +1,21 @@
 package pwcg.aar.campaign.update;
 
-import static org.junit.Assert.assertTrue;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 
-import pwcg.aar.AARTestSetup;
+import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.core.exception.PWCGException;
@@ -19,19 +23,23 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.VictoryMaker;
 
-@RunWith(MockitoJUnitRunner.Silent.class) 
-public class CampaignAceUpdaterTest extends AARTestSetup
+@ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+public class CampaignAceUpdaterTest
 {
-    @Before
-    public void setup() throws PWCGException
+    private Campaign campaign;
+
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
-        setupAARMocks();
+        PWCGContext.setProduct(PWCGProduct.FC);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
     }
-    
+
     @Test
     public void testInSquadronAceUpdate() throws PWCGException 
     {
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
 
         Map<Integer, List<Victory>> aceVictories = new HashMap<>();
         List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(1, campaign.getDate());
@@ -46,15 +54,13 @@ public class CampaignAceUpdaterTest extends AARTestSetup
 
         int aceVictoriesAfter = aceInCampaign.getSquadronMemberVictories().getAirToAirVictoryCount();
         
-        assertTrue (aceVictoriesAfter == (aceVictoriesBefore+1));
+        Assertions.assertTrue (aceVictoriesAfter == (aceVictoriesBefore+1));
     }
     
     
     @Test
     public void testOutOfSquadronAceUpdate() throws PWCGException 
     {
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
-
         Map<Integer, List<Victory>> aceVictories = new HashMap<>();
         List<Victory> victories = VictoryMaker.makeMultipleCentralVictories(1, campaign.getDate());
         victories.get(0).getVictor().setPilotName("Paul Baumer");
@@ -68,6 +74,6 @@ public class CampaignAceUpdaterTest extends AARTestSetup
 
         int aceVictoriesAfter = aceInCampaign.getSquadronMemberVictories().getAirToAirVictoryCount();
         
-        assertTrue (aceVictoriesAfter == (aceVictoriesBefore+1));
+        Assertions.assertTrue (aceVictoriesAfter == (aceVictoriesBefore+1));
     }
 }

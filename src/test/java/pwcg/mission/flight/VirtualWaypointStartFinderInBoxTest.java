@@ -3,12 +3,12 @@ package pwcg.mission.flight;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
@@ -19,7 +19,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.flight.waypoint.virtual.VirtualWayPointCoordinate;
 import pwcg.mission.flight.waypoint.virtual.VirtualWaypointStartFinder;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class VirtualWaypointStartFinderInBoxTest
 {
     @Mock private IFlight flight;
@@ -31,8 +31,8 @@ public class VirtualWaypointStartFinderInBoxTest
     @Mock VirtualWayPointCoordinate vwpCoordinate5;
     @Mock VirtualWayPointCoordinate vwpCoordinate6;
 
-    @Before
-    public void setup() throws PWCGException
+    @BeforeEach
+    public void setupTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
 

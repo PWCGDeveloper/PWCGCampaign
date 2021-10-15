@@ -3,12 +3,14 @@ package pwcg.aar.inmission.phase3.reconcile.personnel;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
@@ -22,7 +24,8 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignPersonnelTestHelper;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PersonnelResultsInMissionHandlerTest
 {
     private Campaign campaign;
@@ -31,14 +34,17 @@ public class PersonnelResultsInMissionHandlerTest
     @Mock
     private AARMissionEvaluationData evaluationData;
 
-    @Before
-    public void setup() throws PWCGException
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
-        
-        pilotStatusList = new ArrayList<>();
+    }
 
+    @BeforeEach
+    public void setupTest() throws PWCGException
+    {        
+        pilotStatusList = new ArrayList<>();
         Mockito.when(evaluationData.getPilotsInMission()).thenReturn(pilotStatusList);
     }
 

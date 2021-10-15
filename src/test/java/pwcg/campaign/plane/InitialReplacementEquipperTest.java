@@ -1,11 +1,10 @@
 package pwcg.campaign.plane;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
@@ -19,15 +18,14 @@ import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class InitialReplacementEquipperTest
 {
     @Mock private Campaign campaign;
     
     private SerialNumber serialNumber = new SerialNumber();
     
-    @Before 
-    public void setup() throws PWCGException
+    public InitialReplacementEquipperTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
     }

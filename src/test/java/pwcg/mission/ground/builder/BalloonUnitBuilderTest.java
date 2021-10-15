@@ -1,11 +1,11 @@
 package pwcg.mission.ground.builder;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.Country;
@@ -26,7 +26,7 @@ import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class BalloonUnitBuilderTest
 {
     @Mock private Campaign campaign;
@@ -35,8 +35,8 @@ public class BalloonUnitBuilderTest
     @Mock private MissionGroundUnitResourceManager missionGroundUnitManager;
 
     
-    @Before
-    public void setup() throws PWCGException
+    @BeforeEach
+    public void setupTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         Mockito.when(mission.getCampaign()).thenReturn(campaign);

@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
@@ -15,26 +16,26 @@ import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.MissionSquadronRegistry;
 import pwcg.mission.flight.escort.EscortSquadronSelector;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
-public class SquadronManagerCurrentMapTest
+@ExtendWith(MockitoExtension.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+public class SquadronManagerCurrentMapAlliedTest
 {
     Campaign campaign;
     
-    @Before
-    public void setup() throws PWCGException
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
     }
 
     @Test
     public void getEscortOrEscortedSquadronAlliedTest() throws PWCGException
     {
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
 
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.RAF_184_PROFILE.getSquadronId());
         
@@ -48,22 +49,8 @@ public class SquadronManagerCurrentMapTest
     }
 
     @Test
-    public void getEscortOrEscortedSquadronAxisTest() throws PWCGException
-    {
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
-
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
-                 
-        Squadron nearbySquadron = EscortSquadronSelector.getEscortSquadron(campaign, squadron, squadron.determineCurrentPosition(campaign.getDate()), new MissionSquadronRegistry());
-        assert(nearbySquadron != null);
-        assert(nearbySquadron.determineSide() == Side.AXIS);
-        assert(nearbySquadron.getSquadronRoles().isSquadronThisRole(campaign.getDate(), PwcgRole.ROLE_FIGHTER) == true);
-    }
-
-    @Test
     public void getViableAiSquadronsForCurrentMapAndSideTest() throws PWCGException
     {
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
 
         List<Squadron> squadrons = squadronManager.getViableAiSquadronsForCurrentMapAndSide(campaign, Side.ALLIED);
@@ -128,7 +115,6 @@ public class SquadronManagerCurrentMapTest
     @Test
     public void getViableAiSquadronsForCurrentMapAndSideAndRoleAlliedTest() throws PWCGException
     {
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
 
         List<PwcgRole> roles = new ArrayList<PwcgRole>(Arrays.asList(PwcgRole.ROLE_BOMB, PwcgRole.ROLE_FIGHTER, PwcgRole.ROLE_ATTACK));
@@ -194,7 +180,6 @@ public class SquadronManagerCurrentMapTest
     @Test
     public void getViableAiSquadronsForCurrentMapAndSideAndRoleAxisTest() throws PWCGException
     {
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
 
         List<PwcgRole> roles = new ArrayList<PwcgRole>(Arrays.asList(PwcgRole.ROLE_BOMB, PwcgRole.ROLE_FIGHTER));

@@ -2,11 +2,13 @@ package pwcg.campaign.medals;
 
 import javax.swing.ImageIcon;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
@@ -22,15 +24,16 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.product.bos.country.BoSServiceManager;
 import pwcg.product.bos.medals.AmericanMedalManager;
 
-@RunWith(MockitoJUnitRunner.Silent.class) 
+@ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
 public class BoSAmericanMedalManagerTest extends MedalManagerTestBase
 {
 	
-    @Before
-    public void setup() throws PWCGException
+    @BeforeEach
+    public void setupTest() throws PWCGException
     {
     	PWCGContext.setProduct(PWCGProduct.BOS);
-        super.setup();
+        super.setupBase();
         ICountry country = CountryFactory.makeCountryByCountry(Country.USA);
         medalManager = MedalManagerFactory.createMedalManager(country, campaign);
         medals.clear();

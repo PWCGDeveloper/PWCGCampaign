@@ -3,14 +3,13 @@ package pwcg.mission.ground.builder;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import org.mockito.MockedStatic;
 import org.mockito.Mockito;
-import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
@@ -36,8 +35,7 @@ import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.vehicle.VehicleClass;
 
-@RunWith(PowerMockRunner.class)
-@PrepareForTest({RandomNumberGenerator.class})
+@ExtendWith(MockitoExtension.class)
 public class AssaultBuilderTest
 {
     @Mock private Campaign campaign;
@@ -49,11 +47,12 @@ public class AssaultBuilderTest
     @Mock private ICountry country;
     @Mock private IFlightPlanes flightPlanes;
     @Mock private PlaneMcu playerPlane;
-        
-    @Before
-    public void setup() throws PWCGException
+
+    @BeforeEach
+    public void setupTest() throws PWCGException
     {
-        PowerMockito.mockStatic(RandomNumberGenerator.class);
+        PWCGContext.setProduct(PWCGProduct.BOS);
+        PWCGContext.getInstance().setCurrentMap(FrontMapIdentifier.STALINGRAD_MAP);
 
         List<IFlight> playerFlights = new ArrayList<>();
         List<PlaneMcu> playerFlightPlanes = new ArrayList<>();
@@ -61,8 +60,6 @@ public class AssaultBuilderTest
         playerFlights.add(playerFlight);
         playerFlightPlanes.add(playerPlane);
         
-        PWCGContext.setProduct(PWCGProduct.BOS);
-        PWCGContext.getInstance().setCurrentMap(FrontMapIdentifier.STALINGRAD_MAP);
         Mockito.when(mission.getCampaign()).thenReturn(campaign);
         Mockito.when(mission.getMissionFlights()).thenReturn(missionFlightBuilder);
         Mockito.when(missionFlightBuilder.getPlayerFlights()).thenReturn(playerFlights);
@@ -89,21 +86,27 @@ public class AssaultBuilderTest
     @Test
     public void createLargeAssaultDuringBattleTest () throws PWCGException 
     {
-        Mockito.when(RandomNumberGenerator.getRandom(100)).thenReturn(79);
+        try (MockedStatic<RandomNumberGenerator> mocked = Mockito.mockStatic(RandomNumberGenerator.class)) 
+        {
+            mocked.when(() -> RandomNumberGenerator.getRandom(100)).thenReturn(79);
 
-        Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420901"));
-        GroundUnitCollection groundUnitGroup = createLargeAssaultTest ();
-        validate(groundUnitGroup, Country.GERMANY, Country.RUSSIA);
+            Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420901"));
+            GroundUnitCollection groundUnitGroup = createLargeAssaultTest ();
+            validate(groundUnitGroup, Country.GERMANY, Country.RUSSIA);
+        }
     }
 
     @Test
     public void createLargeAssaultDuringBattleWithAggressorDefendingTest () throws PWCGException 
     {
-        Mockito.when(RandomNumberGenerator.getRandom(100)).thenReturn(81);
+        try (MockedStatic<RandomNumberGenerator> mocked = Mockito.mockStatic(RandomNumberGenerator.class)) 
+        {
+            mocked.when(() -> RandomNumberGenerator.getRandom(100)).thenReturn(81);
 
-        Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420901"));
-        GroundUnitCollection groundUnitGroup = createLargeAssaultTest ();
-        validate(groundUnitGroup, Country.RUSSIA, Country.GERMANY);
+            Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420901"));
+            GroundUnitCollection groundUnitGroup = createLargeAssaultTest ();
+            validate(groundUnitGroup, Country.RUSSIA, Country.GERMANY);
+        }
     }
     
     public GroundUnitCollection createLargeAssaultTest () throws PWCGException 

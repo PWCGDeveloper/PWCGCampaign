@@ -4,11 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
@@ -21,7 +20,7 @@ import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class AARCrewBuilderTest
 {
     @Mock
@@ -45,10 +44,9 @@ public class AARCrewBuilderTest
     @Mock
     private SquadronMember aiNotInSquadron;
 
-    private Map <String, LogPlane> planeAiEntities = new HashMap <>();
+    private static Map <String, LogPlane> planeAiEntities = new HashMap <>();
     
-    @Before
-    public void setup () throws PWCGException 
+    public AARCrewBuilderTest() throws PWCGException
     {        
         PWCGContext.setProduct(PWCGProduct.FC);
 
@@ -60,7 +58,7 @@ public class AARCrewBuilderTest
         addPlane(SerialNumber.AI_STARTING_SERIAL_NUMBER+2);
     }
 
-    private void addPlane(Integer pilotSerialNumber)
+    private static void addPlane(Integer pilotSerialNumber)
     {
         LogPilot pilot = new LogPilot();
         pilot.setSerialNumber(pilotSerialNumber);

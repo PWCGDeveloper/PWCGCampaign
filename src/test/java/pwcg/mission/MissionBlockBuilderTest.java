@@ -1,7 +1,6 @@
 package pwcg.mission;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -17,8 +16,7 @@ import pwcg.testutils.TestMissionBuilderUtility;
 
 public class MissionBlockBuilderTest
 {
-    @Before
-    public void setup() throws PWCGException
+    public MissionBlockBuilderTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
     }

@@ -3,22 +3,22 @@ package pwcg.gui.image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.context.PWCGDirectoryProductManager;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class PWCGPilotPicValidatorTest
 {
     private String pilotPicDir;
 
-    @Before
+    @BeforeEach
     public void setup ()
     {
         PWCGDirectoryProductManager directoryManager = new PWCGDirectoryProductManager(PWCGProduct.BOS);

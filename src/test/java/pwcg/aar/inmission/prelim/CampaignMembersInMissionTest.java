@@ -3,12 +3,13 @@ package pwcg.aar.inmission.prelim;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.aar.prelim.CampaignMembersInMissionFinder;
 import pwcg.aar.prelim.PwcgMissionData;
@@ -23,7 +24,8 @@ import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CampaignMembersInMissionTest
 {    
     @Mock
@@ -32,8 +34,8 @@ public class CampaignMembersInMissionTest
     private Campaign campaign;
     private Map<Integer, PwcgGeneratedMissionPlaneData> missionPlanes  = new HashMap<>();
 
-    @Before
-    public void setup() throws PWCGException
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.REGIMENT_503_PROFILE);

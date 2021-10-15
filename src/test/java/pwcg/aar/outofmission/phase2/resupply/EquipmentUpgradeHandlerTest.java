@@ -3,12 +3,14 @@ package pwcg.aar.outofmission.phase2.resupply;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
@@ -26,7 +28,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class EquipmentUpgradeHandlerTest
 {
     private Campaign campaign;
@@ -34,11 +37,16 @@ public class EquipmentUpgradeHandlerTest
     @Mock
     private ArmedService armedService;
 
-    @Before
-    public void setup() throws PWCGException
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
+    }
+
+    @BeforeEach
+    public void setupTest() throws PWCGException
+    {
         Mockito.when(armedService.getServiceId()).thenReturn(20101);
     }
 
@@ -151,7 +159,8 @@ public class EquipmentUpgradeHandlerTest
             assert (equipmentDepotBeforeTest.getPlaneFromDepot(veryGoodPlaneInDepot) != null);
         }
 
-        // replace planes in player squadron with very good quality 109s, to avoid the need for replacement
+        // replace planes in player squadron with very good quality 109s, to
+        // avoid the need for replacement
         Squadron playerSquadron = campaign.determinePlayerSquadrons().get(0);
         Equipment equipmentForSquadronBeforeTest = campaign.getEquipmentManager().getEquipmentForSquadron(playerSquadron.getSquadronId());
         for (EquippedPlane planeInSquadronBeforeTest : equipmentForSquadronBeforeTest.getActiveEquippedPlanes().values())

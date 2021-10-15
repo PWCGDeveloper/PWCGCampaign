@@ -1,9 +1,9 @@
 package pwcg.campaign.context;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
@@ -11,15 +11,15 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class BehindEnemyLinesTest
 {
 	private BehindEnemyLines behindEnemyLines;
 	private Coordinate referenceCoordinateOnAlliedLines =  new Coordinate(128000.0, 0.0,80933.0);
 	private FrontMapIdentifier mapId = FrontMapIdentifier.ARRAS_MAP;
 	
-    @Before
-    public void setup() throws PWCGException
+    @BeforeEach
+    public void setupTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
         PWCGContext.getInstance().changeContext(mapId);

@@ -2,8 +2,9 @@ package pwcg.mission.flight;
 
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
@@ -22,13 +23,14 @@ import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CoopPlayerInclusionTest
 {
     private Mission mission;
-    private  Campaign coopCampaign;
+    private Campaign coopCampaign;    
 
-    @Before
-    public void fighterFlightTests() throws Exception
+    @BeforeAll
+    public void setupSuite() throws Exception
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         coopCampaign = CampaignCache.makeCampaign(SquadronTestProfile.COOP_COMPETITIVE_PROFILE);
@@ -37,7 +39,7 @@ public class CoopPlayerInclusionTest
         removeCoopUsers();
     }
 
-    private void generateCoopUsers() throws PWCGException
+    private static void generateCoopUsers() throws PWCGException
     {
         CoopUserManager.getIntance().buildCoopUser("GermanFighterUser");
         CoopUserManager.getIntance().buildCoopUser("GermanSecondFighterUser");
@@ -48,7 +50,7 @@ public class CoopPlayerInclusionTest
         CoopUserManager.getIntance().buildCoopUser("RussianIlUser");
     }
 
-    private void removeCoopUsers() throws PWCGException
+    private static void removeCoopUsers() throws PWCGException
     {
         CoopUserManager.getIntance().removeCoopUser("GermanFighterUser");
         CoopUserManager.getIntance().removeCoopUser("GermanSecondFighterUser");

@@ -2,8 +2,9 @@ package pwcg.mission;
 
 import java.util.ArrayList;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.FrontMapIdentifier;
@@ -20,19 +21,22 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class StructureBorderBuilderTest
 {
-    @Before
-    public void fighterFlightTests() throws PWCGException
+    private Campaign campaign;
+    
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         PWCGContext.getInstance().setCurrentMap(FrontMapIdentifier.STALINGRAD_MAP);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
     }
 
     @Test
     public void structureLevelLow() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
         PWCGContext.getInstance().setCampaign(campaign);
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
 
@@ -60,7 +64,6 @@ public class StructureBorderBuilderTest
     @Test
     public void structureLevelMedium() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
         PWCGContext.getInstance().setCampaign(campaign);
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
 
@@ -91,7 +94,6 @@ public class StructureBorderBuilderTest
     @Test
     public void structureLevelHigh() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
         PWCGContext.getInstance().setCampaign(campaign);
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
 
@@ -122,7 +124,6 @@ public class StructureBorderBuilderTest
     @Test
     public void structureLevelCompare() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
         PWCGContext.getInstance().setCampaign(campaign);
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
         

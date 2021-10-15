@@ -3,26 +3,24 @@ package pwcg.aar.inmission.phase1.parse;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DirectoryReader;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class AARLogFileSetFactoryTest
 {
     @Mock
     private DirectoryReader directoryReader;
 
-    @Before
-    public void setup() throws PWCGException
+    public AARLogFileSetFactoryTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
     }

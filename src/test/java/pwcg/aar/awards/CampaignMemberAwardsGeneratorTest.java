@@ -1,11 +1,13 @@
 package pwcg.aar.awards;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.AARPersonnelAwards;
@@ -21,7 +23,8 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignPersonnelTestHelper;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CampaignMemberAwardsGeneratorTest
 {
     private Campaign campaign;
@@ -35,12 +38,17 @@ public class CampaignMemberAwardsGeneratorTest
     @Mock
     private AARPersonnelLosses personnelLosses;
          
-    @Before
-    public void setup() throws PWCGException
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
         
+    }
+
+    @BeforeEach
+    public void setupTest() throws PWCGException
+    {        
         Mockito.when(aarContext.getPersonnelLosses()).thenReturn(personnelLosses);
         Mockito.when(personnelLosses.pilotisWoundedToday(Mockito.any())).thenReturn(false);
     }

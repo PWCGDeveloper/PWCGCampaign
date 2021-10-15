@@ -3,11 +3,13 @@ package pwcg.aar.outofmission.phase3.tabulate.ui;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 
 import pwcg.aar.AARTestSetup;
 import pwcg.aar.tabulate.debrief.NewsPanelEventTabulator;
@@ -19,7 +21,8 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.MissionEntityBuilder;
 
-@RunWith(MockitoJUnitRunner.Silent.class) 
+@ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
 public class AARNewsPanelEventTabulatorTest extends AARTestSetup
 {
     private Map<Integer, SquadronMember> squadronMembersKilled = new HashMap<>();
@@ -27,8 +30,8 @@ public class AARNewsPanelEventTabulatorTest extends AARTestSetup
     private Map<Integer, SquadronMember> squadronMembersMaimed = new HashMap<>();
     private Map<Integer, SquadronMember> acesKilledMissionSquadron = new HashMap<>();
 
-    @Before
-    public void setup() throws PWCGException
+    @BeforeEach
+    public void setupTest() throws PWCGException
     {
         setupAARMocks();
         

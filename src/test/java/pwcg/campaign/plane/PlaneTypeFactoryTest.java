@@ -4,12 +4,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.Country;
@@ -19,16 +18,14 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class PlaneTypeFactoryTest
 {
     @Mock Campaign campaign;
     
-    @Before 
-    public void setup() throws PWCGException
+    public PlaneTypeFactoryTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420302"));
     }
 
     @Test
@@ -116,6 +113,7 @@ public class PlaneTypeFactoryTest
     @Test
     public void testCreateActiveFightersForCampaign() throws PWCGException
     {
+        Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420302"));
         PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
         List<PlaneType> planeTypes =  planeTypeFactory.getAllFightersForCampaign(campaign);
         assert(planeTypes.size() == 14);

@@ -2,8 +2,9 @@ package pwcg.mission.flight;
 
 import java.util.Date;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
@@ -22,12 +23,13 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ArdennesFlightTest
 {
-    Campaign fg362Campaign = null;
+    private Campaign fg362Campaign = null;
     
-    @Before
-    public void fighterFlightTests() throws PWCGException
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         fg362Campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);

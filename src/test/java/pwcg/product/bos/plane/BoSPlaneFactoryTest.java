@@ -1,9 +1,8 @@
 package pwcg.product.bos.plane;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
@@ -11,12 +10,10 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.core.exception.PWCGException;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class BoSPlaneFactoryTest
-{
-	
-	@Before 
-	public void setup() throws PWCGException
+{	
+	public BoSPlaneFactoryTest() throws PWCGException
 	{
     	PWCGContext.setProduct(PWCGProduct.BOS);      
 	}

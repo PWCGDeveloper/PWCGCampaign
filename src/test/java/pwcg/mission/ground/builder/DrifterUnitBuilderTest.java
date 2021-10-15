@@ -1,11 +1,11 @@
 package pwcg.mission.ground.builder;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.Country;
@@ -25,15 +25,15 @@ import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.vehicle.VehicleClass;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class DrifterUnitBuilderTest
 {
     @Mock private Campaign campaign;
     @Mock private Mission mission;
     @Mock private ConfigManagerCampaign configManager;
     
-    @Before
-    public void setup() throws PWCGException
+    @BeforeEach
+    public void setupTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);

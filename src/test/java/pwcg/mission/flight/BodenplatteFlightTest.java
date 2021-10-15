@@ -1,7 +1,6 @@
 package pwcg.mission.flight;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
@@ -23,8 +22,7 @@ import pwcg.testutils.TestMissionBuilderUtility;
 
 public class BodenplatteFlightTest
 {
-    @Before
-    public void fighterFlightTests() throws PWCGException
+    public BodenplatteFlightTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
     }

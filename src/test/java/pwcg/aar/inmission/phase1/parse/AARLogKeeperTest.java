@@ -3,7 +3,7 @@ package pwcg.aar.inmission.phase1.parse;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import pwcg.core.exception.PWCGException;
 

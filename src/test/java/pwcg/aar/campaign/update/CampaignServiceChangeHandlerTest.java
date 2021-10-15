@@ -1,9 +1,7 @@
 package pwcg.aar.campaign.update;
 
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
@@ -25,8 +23,7 @@ import pwcg.testutils.SquadronTestProfile;
 
 public class CampaignServiceChangeHandlerTest
 {
-    @Before
-    public void setup() throws PWCGException
+    public CampaignServiceChangeHandlerTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
     }
@@ -39,8 +36,8 @@ public class CampaignServiceChangeHandlerTest
         ICountry country = service.getCountry();
         SquadronPersonnel personnel = campaign.getPersonnelManager().getSquadronPersonnel(SquadronTestProfile.RFC_2_PROFILE.getSquadronId());
 
-        assertTrue (country.getCountry() == Country.BRITAIN);
-        assertTrue (service.getName().equals(FCServiceManager.RFC_NAME));
+        Assertions.assertTrue (country.getCountry() == Country.BRITAIN);
+        Assertions.assertTrue (service.getName().equals(FCServiceManager.RFC_NAME));
 
         SquadronMembers rfcSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(personnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
         for (SquadronMember squadronMember : rfcSquadronMembers.getSquadronMemberList())
@@ -54,8 +51,8 @@ public class CampaignServiceChangeHandlerTest
         serviceChangeHandler.handleChangeOfService(DateUtils.getRAFDate());
                 
         service = campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(DateUtils.getRAFDate());
-        assertTrue (service.getCountry().getCountry() == Country.BRITAIN);
-        assertTrue (service.getName().equals(FCServiceManager.RAF_NAME));
+        Assertions.assertTrue (service.getCountry().getCountry() == Country.BRITAIN);
+        Assertions.assertTrue (service.getName().equals(FCServiceManager.RAF_NAME));
 
         SquadronMembers rafSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(personnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
         for (SquadronMember squadronMember : rafSquadronMembers.getSquadronMemberList())

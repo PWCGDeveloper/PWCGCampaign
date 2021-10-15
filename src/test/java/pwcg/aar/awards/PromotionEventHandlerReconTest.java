@@ -2,13 +2,15 @@ package pwcg.aar.awards;
 
 import java.util.Date;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.aar.outofmission.phase2.awards.PromotionEventHandler;
 import pwcg.campaign.ArmedService;
@@ -24,7 +26,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PromotionEventHandlerReconTest
 {
     private Campaign campaign;
@@ -34,16 +37,20 @@ public class PromotionEventHandlerReconTest
     @Mock private SquadronMember squadronMember;
     @Mock private SquadronMemberVictories squadronMemberVictories;
 
-    @Before
-    public void setupForTestEnvironment() throws PWCGException
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);        
+    }
+
+    @BeforeEach
+    public void setupTest() throws PWCGException
+    {        
         Mockito.when(squadronMember.determineSquadron()).thenReturn(squadron);
         Mockito.when(squadron.determineSquadronPrimaryRoleCategory(Mockito.any())).thenReturn(PwcgRoleCategory.RECON);
         Mockito.when(squadronMember.getSquadronMemberVictories()).thenReturn(squadronMemberVictories);
         Mockito.when(squadronMemberVictories.getGroundVictoryPointTotal()).thenReturn(0);
-        
     }
 
     @Test

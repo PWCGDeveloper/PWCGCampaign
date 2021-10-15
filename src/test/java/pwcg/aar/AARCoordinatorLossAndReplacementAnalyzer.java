@@ -3,10 +3,9 @@ package pwcg.aar;
 import java.util.Date;
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
@@ -24,13 +23,13 @@ import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AARCoordinatorLossAndReplacementAnalyzer
 {
     private Campaign campaign;    
 
-    @Before
-    public void setup() throws PWCGException
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_354_BODENPLATTE_PROFILE);
@@ -40,7 +39,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
     @Test
     public void runMissionAARLeave () throws PWCGException
     {
-    	Date newDate = DateUtils.getDateYYYYMMDD("19450401");
+    	Date newDate = DateUtils.getDateYYYYMMDD("19450301");
 
         int totalAirVictories = 0;
         int totalGroundVictories = 0;

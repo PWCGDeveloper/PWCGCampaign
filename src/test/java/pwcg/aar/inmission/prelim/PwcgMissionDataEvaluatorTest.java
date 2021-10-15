@@ -1,10 +1,9 @@
 package pwcg.aar.inmission.prelim;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
@@ -14,7 +13,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class PwcgMissionDataEvaluatorTest
 {
     @Mock
@@ -31,8 +30,7 @@ public class PwcgMissionDataEvaluatorTest
     
     static int thisSquadronId = 20111052; // JG52
 
-    @Before
-    public void setup() throws PWCGException
+    public PwcgMissionDataEvaluatorTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
     }

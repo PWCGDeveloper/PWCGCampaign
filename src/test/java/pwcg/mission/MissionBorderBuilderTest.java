@@ -1,9 +1,8 @@
 package pwcg.mission;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.FrontMapIdentifier;
@@ -22,11 +21,10 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class MissionBorderBuilderTest
 {
-    @Before
-    public void fighterFlightTests() throws PWCGException
+    public MissionBorderBuilderTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         PWCGContext.getInstance().setCurrentMap(FrontMapIdentifier.STALINGRAD_MAP);

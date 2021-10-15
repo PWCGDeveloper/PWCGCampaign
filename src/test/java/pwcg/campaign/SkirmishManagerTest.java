@@ -2,8 +2,9 @@ package pwcg.campaign;
 
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
@@ -17,18 +18,21 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class SkirmishManagerTest
 {
-    @Before
-    public void fighterFlightTests() throws PWCGException
+    private Campaign campaign;
+
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
     }
 
     @Test
     public void verifyArnhemParaDropSkirmishes() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19440917"));
         
         SkirmishManager skirmishManager = new SkirmishManager(FrontMapIdentifier.BODENPLATTE_MAP);
@@ -48,7 +52,6 @@ public class SkirmishManagerTest
     @Test
     public void verifyArnhemCargoDropSkirmishes() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19440921"));
         
         SkirmishManager skirmishManager = new SkirmishManager(FrontMapIdentifier.BODENPLATTE_MAP);

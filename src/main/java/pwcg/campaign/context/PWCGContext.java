@@ -1,12 +1,13 @@
 package pwcg.campaign.context;
 
+import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 
 public class PWCGContext 
 {
     protected static BoSContext bosContextManager = null;
     protected static FCContext fcContextManager = null;
-    protected static PWCGProduct product = PWCGProduct.BOS;
+    protected static PWCGProduct product = PWCGProduct.NONE;
 
 	protected PWCGContext()
     {
@@ -16,26 +17,7 @@ public class PWCGContext
     {
         try
         {
-            if (product == PWCGProduct.BOS)
-            {
-                if (PWCGContext.bosContextManager == null)
-                {
-                    PWCGContext.bosContextManager = new BoSContext();
-                    PWCGContext.bosContextManager.initialize();
-                }
-                
-                return PWCGContext.bosContextManager;
-            }
-            else if (product == PWCGProduct.FC)
-            {
-                if (PWCGContext.fcContextManager == null)
-                {
-                    PWCGContext.fcContextManager = new FCContext();
-                    PWCGContext.fcContextManager.initialize();
-                }
-                
-                return PWCGContext.fcContextManager;
-            }
+            return buildProductContext();
         }
         catch (Exception e)
         {
@@ -50,8 +32,42 @@ public class PWCGContext
         return product;
     }
 
-    public static void setProduct(PWCGProduct product)
+    public static void setProduct(PWCGProduct product) throws PWCGException
     {
-        PWCGContext.product = product;
+        if (PWCGContext.product != product)
+        {
+            bosContextManager = null;
+            fcContextManager = null;
+            PWCGContext.product = product;
+            buildProductContext();
+        }
     }
- }
+
+    private static IPWCGContextManager buildProductContext() throws PWCGException
+    {
+        if (product == PWCGProduct.BOS)
+        {
+            if (PWCGContext.bosContextManager == null)
+            {
+                PWCGContext.bosContextManager = new BoSContext();
+                PWCGContext.bosContextManager.initialize();
+            }
+            
+            return PWCGContext.bosContextManager;
+        }
+        else if (product == PWCGProduct.FC)
+        {
+            if (PWCGContext.fcContextManager == null)
+            {
+                PWCGContext.fcContextManager = new FCContext();
+                PWCGContext.fcContextManager.initialize();
+            }
+            
+            return PWCGContext.fcContextManager;
+        }
+        else
+        {
+            throw new PWCGException("No product defined");
+        }
+    }
+}

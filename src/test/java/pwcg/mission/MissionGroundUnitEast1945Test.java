@@ -3,8 +3,7 @@ package pwcg.mission;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
@@ -20,10 +19,7 @@ import pwcg.testutils.TestMissionBuilderUtility;
 
 public class MissionGroundUnitEast1945Test
 {
-    Campaign campaign;
-    
-    @Before
-    public void setup() throws PWCGException
+    public MissionGroundUnitEast1945Test() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
     }
@@ -31,7 +27,7 @@ public class MissionGroundUnitEast1945Test
     @Test
     public void verifySmallerDistanceToFront () throws PWCGException
     {
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.EAST1945_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.EAST1945_PROFILE);
         FrontMapIdentifier map = PWCGContext.getInstance().getCurrentMap().getMapIdentifier();
         assert(map == FrontMapIdentifier.EAST1945_MAP);
         

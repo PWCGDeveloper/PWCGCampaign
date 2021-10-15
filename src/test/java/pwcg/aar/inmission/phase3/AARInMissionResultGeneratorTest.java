@@ -5,12 +5,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.phase1.parse.AARMissionLogFileSet;
@@ -38,7 +42,9 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignPersonnelTestHelper;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AARInMissionResultGeneratorTest
 {
     private static final int GEORGES_GUYNEMER = 101064;
@@ -63,12 +69,17 @@ public class AARInMissionResultGeneratorTest
     private Map<Integer, PlayerDeclarations> playerDeclarations = new HashMap<>();
     private PlayerDeclarations playerDeclarationSet;
 
-    @Before
-    public void setup() throws PWCGException
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
         
+    }
+
+    @BeforeEach
+    public void setupTest() throws PWCGException
+    {        
         pilotStatusList = new ArrayList<>();
         firmVictories = new ArrayList<>();
         playerDeclarationSet = new PlayerDeclarations();

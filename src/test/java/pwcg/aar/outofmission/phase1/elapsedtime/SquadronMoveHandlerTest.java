@@ -2,12 +2,12 @@ package pwcg.aar.outofmission.phase1.elapsedtime;
 
 import java.util.Date;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.aar.outofmission.phase4.ElapsedTIme.SquadronMoveHandler;
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
@@ -20,7 +20,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class SquadronMoveHandlerTest
 {
     @Mock private Campaign campaign;
@@ -31,8 +31,8 @@ public class SquadronMoveHandlerTest
     private Date campaignDate;
     private Date newDate;
 
-    @Before
-    public void setupForTestEnvironment() throws PWCGException
+    @BeforeEach
+    public void setupTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         PWCGContext.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
@@ -40,8 +40,6 @@ public class SquadronMoveHandlerTest
         campaignDate = DateUtils.getDateYYYYMMDD("19411120");
         newDate = DateUtils.getDateYYYYMMDD("19411215");
         Mockito.when(campaign.getDate()).thenReturn(campaignDate);
-        Mockito.when(squadron.determineCurrentAirfieldAnyMap(campaignDate)).thenReturn(currentAirfield);
-        Mockito.when(squadron.determineCurrentAirfieldAnyMap(newDate)).thenReturn(newAirfield);
     }
 
     @Test
@@ -59,6 +57,8 @@ public class SquadronMoveHandlerTest
     @Test
     public void squadronMoveNoFerryBecuaseSameMap () throws PWCGException
     {             
+        Mockito.when(squadron.determineCurrentAirfieldAnyMap(newDate)).thenReturn(newAirfield);
+        Mockito.when(squadron.determineCurrentAirfieldAnyMap(campaignDate)).thenReturn(currentAirfield);
         Mockito.when(squadron.determineCurrentAirfieldName(campaignDate)).thenReturn("Ivanskoe");
         Mockito.when(squadron.determineCurrentAirfieldName(newDate)).thenReturn("Mozhaysk");
         Mockito.when(currentAirfield.getName()).thenReturn("Ivanskoe");
@@ -76,6 +76,8 @@ public class SquadronMoveHandlerTest
     @Test
     public void squadronMoveNoFerryBecuaseDifferentMap () throws PWCGException
     {             
+        Mockito.when(squadron.determineCurrentAirfieldAnyMap(newDate)).thenReturn(newAirfield);
+        Mockito.when(squadron.determineCurrentAirfieldAnyMap(campaignDate)).thenReturn(currentAirfield);
         Mockito.when(squadron.determineCurrentAirfieldName(campaignDate)).thenReturn("Ivanskoe");
         Mockito.when(squadron.determineCurrentAirfieldName(newDate)).thenReturn("Surovikino");
         Mockito.when(currentAirfield.getName()).thenReturn("Ivanskoe");

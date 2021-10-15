@@ -1,11 +1,11 @@
 package pwcg.aar.outofmission.phase2.resupply;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.aar.outofmission.phase3.resupply.HistoricalAceTransferHandler;
@@ -19,7 +19,7 @@ import pwcg.campaign.resupply.personnel.TransferRecord;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class HistoricalAceTransferHandlerTest
 {
     @Mock
@@ -33,8 +33,8 @@ public class HistoricalAceTransferHandlerTest
 
     private CampaignAces campaignAces;
 
-    @Before
-    public void setup() throws PWCGException
+    @BeforeEach
+    public void setupTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19170430"));

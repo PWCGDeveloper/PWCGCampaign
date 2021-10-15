@@ -3,12 +3,11 @@ package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.inmission.phase3.reconcile.victories.common.ConfirmedVictories;
@@ -19,15 +18,14 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class GroundDeclarationResolverTest
 {
 
     @Mock
     private VictorySorter victorySorter;
 
-    @Before
-    public void setup() throws PWCGException
+    public GroundDeclarationResolverTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
     }

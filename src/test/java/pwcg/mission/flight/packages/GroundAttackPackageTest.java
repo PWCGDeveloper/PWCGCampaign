@@ -1,55 +1,43 @@
 package pwcg.mission.flight.packages;
 
-import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.group.airfield.Airfield;
-import pwcg.campaign.plane.PwcgRole;
 import pwcg.campaign.squadron.Squadron;
-import pwcg.campaign.squadron.SquadronRolePeriod;
-import pwcg.campaign.squadron.SquadronRoleSet;
-import pwcg.campaign.squadron.SquadronRoleWeight;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
-import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionFlights;
-import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.MissionProfile;
 import pwcg.mission.MissionSquadronFlightTypes;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.NecessaryFlightType;
-import pwcg.mission.flight.waypoint.missionpoint.MissionPointAttackSet;
-import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
-import pwcg.mission.ground.org.GroundUnitCollection;
-import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.target.TargetType;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.PwcgTestBase;
 import pwcg.testutils.SquadronTestProfile;
+import pwcg.testutils.TargetVicinityValidator;
 import pwcg.testutils.TestMissionBuilderUtility;
 
-public class GroundAttackPackageTest extends PwcgTestBase
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+public class GroundAttackPackageTest
 {
-    public GroundAttackPackageTest()
+    private Campaign campaign;
+     
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
-        super (PWCGProduct.BOS);
-    }
-
-    @Before
-    public void setup() throws PWCGException
-    {
+        PWCGContext.setProduct(PWCGProduct.BOS);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
     }
 
     @Test
@@ -58,11 +46,10 @@ public class GroundAttackPackageTest extends PwcgTestBase
         TestDriver.getInstance().enableTestDriver();
         TestDriver.getInstance().setTestPlayerTacticalTargetType(TargetType.TARGET_INFANTRY);
         
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
         MissionFlights missionFlights = buildFlight(campaign);
         IFlight playerFlight = missionFlights.getPlayerFlights().get(0);
         assert(playerFlight.getTargetDefinition().getTargetType() == TargetType.TARGET_INFANTRY);
-        verifyProximityToTargetUnit(playerFlight);
+        TargetVicinityValidator.verifyProximityToTargetUnit(playerFlight);
 
         List<IFlight> escortFlights = missionFlights.getNecessaryFlightsByType(NecessaryFlightType.PLAYER_ESCORT);
         assert(escortFlights.size() == 1);
@@ -78,9 +65,7 @@ public class GroundAttackPackageTest extends PwcgTestBase
     {
         TestDriver.getInstance().enableTestDriver();
         TestDriver.getInstance().setTestPlayerTacticalTargetType(TargetType.TARGET_AIRFIELD);
-        
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
-        
+                
         MissionFlights missionFlights = buildFlight(campaign);
         
         IFlight playerFlight = missionFlights.getPlayerFlights().get(0);
@@ -95,47 +80,7 @@ public class GroundAttackPackageTest extends PwcgTestBase
         assert(playerFlight.getAssociatedFlight() != null);
         assert(playerFlight.getAssociatedFlight().getFlightInformation().getNecessaryFlightType() == NecessaryFlightType.PLAYER_ESCORT);
 
-        verifyProximityToTargetAirfield(playerFlight);
-
-        TestDriver.getInstance().reset();
-    }
-
-
-    @Test
-    public void groundAttackTankBustRoleTest() throws PWCGException
-    {        
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_26_PROFILE_WEST);
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_26_PROFILE_WEST.getSquadronId());
-        
-        SquadronRoleWeight squadronRoleWeight = new SquadronRoleWeight();
-        squadronRoleWeight.setRole(PwcgRole.ROLE_TANK_BUSTER);
-        squadronRoleWeight.setWeight(100);
-        
-        SquadronRolePeriod squadronRolePeriod = new SquadronRolePeriod();
-        squadronRolePeriod.setStartDate(DateUtils.getDateYYYYMMDD("19400101"));
-        squadronRolePeriod.setWeightedRoles(Arrays.asList(squadronRoleWeight));
-
-        SquadronRoleSet squadronRoleSet = squadron.getSquadronRoles();
-        squadronRoleSet.overrideRolesForTest(Arrays.asList(squadronRolePeriod));
-
-        MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
-
-        MissionFlights missionFlights = mission.getMissionFlights();
-        
-        IFlight playerFlight = missionFlights.getPlayerFlights().get(0);
-        assert(playerFlight.getTargetDefinition().getTargetType() == TargetType.TARGET_ARMOR);
-        
-        List<IFlight> escortFlights = missionFlights.getNecessaryFlightsByType(NecessaryFlightType.PLAYER_ESCORT);
-        assert(escortFlights.size() == 1);
-        
-        List<IFlight> opposingFlights = missionFlights.getNecessaryFlightsByType(NecessaryFlightType.OPPOSING_FLIGHT);
-        assert(opposingFlights.size() == 0);
-        
-        assert(playerFlight.getAssociatedFlight() != null);
-        assert(playerFlight.getAssociatedFlight().getFlightInformation().getNecessaryFlightType() == NecessaryFlightType.PLAYER_ESCORT);
-
-        verifyProximityToTargetUnit(playerFlight);
+        TargetVicinityValidator.verifyProximityToTargetAirfield(playerFlight);
 
         TestDriver.getInstance().reset();
     }
@@ -155,54 +100,4 @@ public class GroundAttackPackageTest extends PwcgTestBase
         campaign.setCurrentMission(mission);
         return mission.getMissionFlights();
     }
-
-    private void verifyProximityToTargetUnit(IFlight flight) throws PWCGException
-    {
-        System.out.println("\n\nVerify Proximity To Ground Unit");
-
-        System.out.println("Target Information: Name:  " + flight.getTargetDefinition().getTargetName());
-        System.out.println("Target Information: Category:  " + flight.getTargetDefinition().getTargetCategory());
-        System.out.println("Target Information: Type:  " + flight.getTargetDefinition().getTargetType());
-        System.out.println("Target Information: Type:  " + flight.getTargetDefinition().getPosition());
-
-        MissionPointAttackSet attackMissionPoint = (MissionPointAttackSet)flight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_ATTACK);
-        Coordinate attackPosition = attackMissionPoint.getAttackSequence().getAttackAreaMcu().getPosition();
-        System.out.println("Attack Position at " + attackPosition);
-
-        boolean groundAttackCloseToTarget = false;
-        for (GroundUnitCollection groundUnitCollection : flight.getMission().getMissionGroundUnitBuilder().getAllMissionGroundUnits())
-        {
-            for (IGroundUnit groundUnit : groundUnitCollection.getGroundUnits())
-            {
-                double distanceFromGroundUnit = MathUtils.calcDist(attackPosition, groundUnit.getPosition());
-                if (distanceFromGroundUnit < 5000)
-                {
-                    groundAttackCloseToTarget = true;
-                }
-            }
-        }
-        assert (groundAttackCloseToTarget == true);
-    }
-    
-
-    private void verifyProximityToTargetAirfield(IFlight flight) throws PWCGException
-    {
-        System.out.println("\n\nVerify Proximity To Airfield");
-
-        System.out.println("Target Information: Name:  " + flight.getTargetDefinition().getTargetName());
-        System.out.println("Target Information: Category:  " + flight.getTargetDefinition().getTargetCategory());
-        System.out.println("Target Information: Type:  " + flight.getTargetDefinition().getTargetType());
-        System.out.println("Target Information: Type:  " + flight.getTargetDefinition().getPosition());
-
-        MissionPointAttackSet attackMissionPoint = (MissionPointAttackSet)flight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_ATTACK);
-        Coordinate attackPosition = attackMissionPoint.getAttackSequence().getAttackAreaMcu().getPosition();
-        System.out.println("Attack Position at " + attackPosition);
-
-        Airfield airfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(flight.getTargetDefinition().getTargetName());
-        double distanceToAirfield = MathUtils.calcDist(flight.getTargetDefinition().getPosition(), airfield.getPosition());
-        System.out.println("Distance to " + airfield.getName() + " " + airfield.determineCountry().getCountryName() +  " distance is " + distanceToAirfield);
-
-        assert (distanceToAirfield < 5000);
-    }
-
 }

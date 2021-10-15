@@ -1,9 +1,8 @@
 package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
@@ -14,11 +13,10 @@ import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.fc.country.FCCountry;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class PlayerClaimResolverFuzzyTest
 {
-    @Before
-    public void setup() throws PWCGException
+    public PlayerClaimResolverFuzzyTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
     }

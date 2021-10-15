@@ -1,7 +1,8 @@
 package pwcg.aar.outofmission.phase1.elapsedtime;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
@@ -19,28 +20,30 @@ import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class SquadronMemberInitialVictoryBuilderTest
 {
-    Campaign campaign;
+    private Campaign germanCampaign;
+    private Campaign americanCampaign;
     
-    @Before
-    public void setupForTestEnvironment() throws PWCGException
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
+        germanCampaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
+        americanCampaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
     }
 
 
     @Test
     public void testInitialVictoriesGermanFighter () throws PWCGException
     {
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
-
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(20112052);
-        ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
+        ArmedService service = squadron.determineServiceForSquadron(germanCampaign.getDate());
         IRankHelper rankHelper = RankFactory.createRankHelper();
-        SquadronPersonnel jg52Personnel = campaign.getPersonnelManager().getSquadronPersonnel(20112052);
+        SquadronPersonnel jg52Personnel = germanCampaign.getPersonnelManager().getSquadronPersonnel(20112052);
 
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(jg52Personnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(jg52Personnel.getSquadronMembersWithAces().getSquadronMemberCollection(), germanCampaign.getDate());
         for (SquadronMember squadronMember : squadronMembers.getSquadronMemberCollection().values())
         {
             int rankPos = rankHelper.getRankPosByService(squadronMember.getRank(), service);
@@ -67,14 +70,12 @@ public class SquadronMemberInitialVictoryBuilderTest
     @Test
     public void testInitialVictoriesRussianFighter () throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
-
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(10111126);
-        ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
+        ArmedService service = squadron.determineServiceForSquadron(germanCampaign.getDate());
         IRankHelper rankHelper = RankFactory.createRankHelper();
         
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(campaign.getPersonnelManager().
-                        getSquadronPersonnel(10111126).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(germanCampaign.getPersonnelManager().
+                        getSquadronPersonnel(10111126).getSquadronMembersWithAces().getSquadronMemberCollection(), germanCampaign.getDate());
         for (SquadronMember squadronMember : squadronMembers.getSquadronMemberCollection().values())
         {
             int rankPos = rankHelper.getRankPosByService(squadronMember.getRank(), service);
@@ -100,14 +101,12 @@ public class SquadronMemberInitialVictoryBuilderTest
     @Test
     public void testInitialVictoriesGermanFighterWest () throws PWCGException
     {
-        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_26_PROFILE_WEST);
-
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(20112052);
-        ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
+        ArmedService service = squadron.determineServiceForSquadron(germanCampaign.getDate());
         IRankHelper rankHelper = RankFactory.createRankHelper();
-        SquadronPersonnel jg52Personnel = campaign.getPersonnelManager().getSquadronPersonnel(20112052);
+        SquadronPersonnel jg52Personnel = germanCampaign.getPersonnelManager().getSquadronPersonnel(20112052);
 
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(jg52Personnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(jg52Personnel.getSquadronMembersWithAces().getSquadronMemberCollection(), germanCampaign.getDate());
         for (SquadronMember squadronMember : squadronMembers.getSquadronMemberCollection().values())
         {
             int rankPos = rankHelper.getRankPosByService(squadronMember.getRank(), service);
@@ -134,14 +133,13 @@ public class SquadronMemberInitialVictoryBuilderTest
     @Test
     public void testInitialVictoriesAmericanFighterWest () throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.FG_362_PROFILE);
 
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(102362377);
-        ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
+        ArmedService service = squadron.determineServiceForSquadron(americanCampaign.getDate());
         IRankHelper rankHelper = RankFactory.createRankHelper();
-        SquadronPersonnel fg362Personnel = campaign.getPersonnelManager().getSquadronPersonnel(102362377);
+        SquadronPersonnel fg362Personnel = americanCampaign.getPersonnelManager().getSquadronPersonnel(102362377);
 
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(fg362Personnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(fg362Personnel.getSquadronMembersWithAces().getSquadronMemberCollection(), americanCampaign.getDate());
         for (SquadronMember squadronMember : squadronMembers.getSquadronMemberCollection().values())
         {
             int rankPos = rankHelper.getRankPosByService(squadronMember.getRank(), service);

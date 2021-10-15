@@ -2,12 +2,13 @@ package pwcg.aar.awards;
 
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.AARPersonnelAcheivements;
@@ -22,7 +23,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AARMissionsFlownUpdaterTest
 {
     private Campaign campaign;
@@ -34,21 +36,21 @@ public class AARMissionsFlownUpdaterTest
     @Mock
     private AARPreliminaryData preliminaryData;
 
-    @Before
-    public void setup() throws PWCGException
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
 
         personnelAcheivements = new AARPersonnelAcheivements();
-
-        Mockito.when(aarContext.getPersonnelAcheivements()).thenReturn(personnelAcheivements);
-        Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);        
     }
 
     @Test
     public void testMissionsFlownIncreased() throws PWCGException
     {
+        Mockito.when(aarContext.getPersonnelAcheivements()).thenReturn(personnelAcheivements);
+        Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);        
+
         SquadronMembers nonPlayerSquadronMembers = SquadronMemberFilter.filterActiveAINoWounded(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
 
         SquadronMembers campaignMembersInMission = new SquadronMembers();

@@ -1,14 +1,17 @@
 package pwcg.aar.inmission.phase2.logeval;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 
 import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase1.parse.event.IAType12;
@@ -23,7 +26,8 @@ import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
 public class AARVehicleBuilderTest
 {
 
@@ -50,8 +54,7 @@ public class AARVehicleBuilderTest
 
     private TestMissionEntityGenerator testMissionEntityGenerator;
 
-    @Before
-    public void setup() throws PWCGException
+    public AARVehicleBuilderTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
     }
@@ -70,10 +73,13 @@ public class AARVehicleBuilderTest
         runTest(2, 1, 1, 1, 0, 0);
     }
 
-    @Test (expected = PWCGException.class)
+    @Test
     public void testSortVehiclesNoPlanes () throws PWCGException
     {        
-        runTest(0, 0, 1, 1, 3, 4);
+        assertThrows(PWCGException.class, () -> 
+        {
+            runTest(0, 0, 1, 1, 3, 4);
+        });
     }
 
     public void runTest(int numFrenchPlanes, int numGermanPlanes,

@@ -5,12 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBalloon;
@@ -25,7 +24,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class AARChronologicalEventListBuilderTest
 {
     @Mock private AAREvaluator evaluator;
@@ -35,8 +34,7 @@ public class AARChronologicalEventListBuilderTest
     @Mock private AARVictoryEvaluator aarVictoryEvaluator;
     @Mock private AARDamageStatusEvaluator aarDamageStatusEvaluator;
 
-    @Before
-    public void setupForTestEnvironment() throws PWCGException
+    public AARChronologicalEventListBuilderTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
     }

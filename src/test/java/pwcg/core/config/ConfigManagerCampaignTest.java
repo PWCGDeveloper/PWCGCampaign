@@ -1,12 +1,10 @@
 package pwcg.core.config;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -16,15 +14,11 @@ import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ConfigManagerCampaignTest
 {
     private Campaign campaign;
-    
-    @Before
-    public void setup() throws PWCGException
-    {
-    }
-    
+
     @Test
     public void testGlobalConfigurationInitialize() throws PWCGException 
     {
@@ -39,12 +33,12 @@ public class ConfigManagerCampaignTest
         Map<String, ConfigSet> defaultConfigSets = campaignConfigManager.getDefaultCampaignConfigSets();
         Map<String, ConfigSet> initialConfigSetsFromFiles = campaignConfigManager.readInitialConfigSets();
 
-        assertEquals(defaultConfigSets.size(), 14);
-        assertEquals(initialConfigSetsFromFiles.size(), 17);
+        Assertions.assertEquals(defaultConfigSets.size(), 14);
+        Assertions.assertEquals(initialConfigSetsFromFiles.size(), 17);
                 
         boolean allConfigsOk = verifyConfigSets(defaultConfigSets, initialConfigSetsFromFiles);
         
-        assertTrue(allConfigsOk);
+        Assertions.assertTrue(allConfigsOk);
     }
     
     private boolean verifyConfigSets(Map<String, ConfigSet> defaultConfigSets, Map<String, ConfigSet> initialConfigSetsFromFiles)

@@ -1,7 +1,6 @@
 package pwcg.mission;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.MapArea;
@@ -15,8 +14,7 @@ import pwcg.product.bos.map.moscow.MoscowMapUsableArea;
 
 public class MissionCenterBuilderFrontLinesTest
 {
-    @Before
-    public void setup() throws PWCGException
+    public MissionCenterBuilderFrontLinesTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         PWCGContext.getInstance().setCurrentMap(FrontMapIdentifier.MOSCOW_MAP);

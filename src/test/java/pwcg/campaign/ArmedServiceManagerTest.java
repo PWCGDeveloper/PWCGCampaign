@@ -2,10 +2,9 @@ package pwcg.campaign;
 
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.api.IArmedServiceManager;
 import pwcg.campaign.context.PWCGContext;
@@ -15,11 +14,10 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.product.fc.country.FCServiceManager;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class ArmedServiceManagerTest
 {
-    @Before
-    public void setup() throws PWCGException
+    public ArmedServiceManagerTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
     }

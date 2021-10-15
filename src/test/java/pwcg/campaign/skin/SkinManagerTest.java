@@ -2,8 +2,7 @@ package pwcg.campaign.skin;
 
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
@@ -15,8 +14,7 @@ import pwcg.core.utils.DateUtils;
 
 public class SkinManagerTest
 {
-    @Before
-    public void setup() throws PWCGException
+    public SkinManagerTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
     }

@@ -2,9 +2,10 @@ package pwcg.campaign.target;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.Country;
@@ -22,13 +23,14 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TargetDefinitionBuilderStructuralTest
 {
     private Campaign campaign;
-    private Mission mission;
+    private static Mission mission;
     
-    @Before
-    public void setup() throws PWCGException
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
@@ -45,11 +47,11 @@ public class TargetDefinitionBuilderStructuralTest
     {
         TargetDefinitionBuilderStructural targetSelector = new TargetDefinitionBuilderStructural(mission.getMissionFlights().getPlayerFlights().get(0).getFlightInformation());
         List<TargetDefinition> targetaDefinitionsForStructures = targetSelector.findTargetStructures();
-        Assert.assertFalse(targetaDefinitionsForStructures.isEmpty());
+        Assertions.assertFalse(targetaDefinitionsForStructures.isEmpty());
 
         for (TargetDefinition targetDefinition : targetaDefinitionsForStructures)
         {
-            Assert.assertNotEquals(Country.NEUTRAL, targetDefinition.getCountry().getCountry());
+            Assertions.assertNotEquals(Country.NEUTRAL, targetDefinition.getCountry().getCountry());
         }
     }
     
@@ -58,7 +60,7 @@ public class TargetDefinitionBuilderStructuralTest
     {
         TargetDefinitionBuilderStructural targetSelector = new TargetDefinitionBuilderStructural(mission.getMissionFlights().getPlayerFlights().get(0).getFlightInformation());
         List<TargetDefinition> targetaDefinitionsForStructures = targetSelector.findTargetStructures();
-        Assert.assertFalse(targetaDefinitionsForStructures.isEmpty());
+        Assertions.assertFalse(targetaDefinitionsForStructures.isEmpty());
 
         boolean bridgeFound = false;
         for (TargetDefinition targetDefinition : targetaDefinitionsForStructures)
@@ -68,7 +70,7 @@ public class TargetDefinitionBuilderStructuralTest
                 bridgeFound = true;
             }
         }
-        Assert.assertTrue(bridgeFound);
+        Assertions.assertTrue(bridgeFound);
     }
     
     @Test
@@ -76,7 +78,7 @@ public class TargetDefinitionBuilderStructuralTest
     {
         TargetDefinitionBuilderStructural targetSelector = new TargetDefinitionBuilderStructural(mission.getMissionFlights().getPlayerFlights().get(0).getFlightInformation());
         List<TargetDefinition> targetaDefinitionsForStructures = targetSelector.findTargetStructures();
-        Assert.assertFalse(targetaDefinitionsForStructures.isEmpty());
+        Assertions.assertFalse(targetaDefinitionsForStructures.isEmpty());
 
         boolean airfieldFound = false;
         for (TargetDefinition targetDefinition : targetaDefinitionsForStructures)
@@ -86,7 +88,7 @@ public class TargetDefinitionBuilderStructuralTest
                 airfieldFound = true;
             }
         }
-        Assert.assertTrue(airfieldFound);
+        Assertions.assertTrue(airfieldFound);
     }
     
     @Test
@@ -94,7 +96,7 @@ public class TargetDefinitionBuilderStructuralTest
     {
         TargetDefinitionBuilderStructural targetSelector = new TargetDefinitionBuilderStructural(mission.getMissionFlights().getPlayerFlights().get(0).getFlightInformation());
         List<TargetDefinition> targetaDefinitionsForStructures = targetSelector.findTargetStructures();
-        Assert.assertFalse(targetaDefinitionsForStructures.isEmpty());
+        Assertions.assertFalse(targetaDefinitionsForStructures.isEmpty());
 
         boolean ralwayStationFound = false;
         for (TargetDefinition targetDefinition : targetaDefinitionsForStructures)
@@ -104,6 +106,6 @@ public class TargetDefinitionBuilderStructuralTest
                 ralwayStationFound = true;
             }
         }
-        Assert.assertTrue(ralwayStationFound);
+        Assertions.assertTrue(ralwayStationFound);
     }
 }

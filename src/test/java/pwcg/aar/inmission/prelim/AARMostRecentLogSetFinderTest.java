@@ -3,12 +3,14 @@ package pwcg.aar.inmission.prelim;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 
 import pwcg.aar.inmission.phase1.parse.AARMissionFileLogResultMatcher;
 import pwcg.aar.inmission.phase1.parse.AARMissionLogFileSet;
@@ -21,7 +23,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.data.MissionHeader;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
 public class AARMostRecentLogSetFinderTest
 {
 
@@ -38,8 +41,8 @@ public class AARMostRecentLogSetFinderTest
     
     private List<String> sortedLogSets = new ArrayList<String>();
     
-    @Before
-    public void setup() throws PWCGException
+    @BeforeEach
+    public void setupTest() throws PWCGException
     {
         Mockito.when(logSetFinder.getSortedLogFileSets()).thenReturn(sortedLogSets);
         Mockito.when(evalPwcgMissionData1.getMissionDescription()).thenReturn("Mission1");

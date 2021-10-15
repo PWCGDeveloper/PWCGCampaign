@@ -1,11 +1,11 @@
 package pwcg.campaign.personnel;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
@@ -19,7 +19,7 @@ import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class SquadronMemberReplacementFactoryTest
 {
     @Mock 
@@ -27,9 +27,9 @@ public class SquadronMemberReplacementFactoryTest
     
     private SerialNumber serialNumber = new SerialNumber();
     
-    @Before
-    public void setup() throws PWCGException
-    {
+    @BeforeEach
+    public void setupTest() throws PWCGException
+     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         Mockito.when(campaign.getSerialNumber()).thenReturn(serialNumber);
     }

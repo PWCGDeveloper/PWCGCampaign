@@ -27,7 +27,7 @@ import pwcg.campaign.utils.PlanesOwnedManager;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.MissionLogFileValidator;
+import pwcg.core.utils.ProductSetupFileReader;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgThreePanelUI;
@@ -564,7 +564,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 
     private void verifyLoggingEnabled()
     {
-        MissionLogFileValidator missionLogFileValidator = new MissionLogFileValidator();
+        ProductSetupFileReader missionLogFileValidator = new ProductSetupFileReader();
         missionLogFileValidator.analyzeStartupCfg();
         
         if (!missionLogFileValidator.isMissionLoggingEnabled())

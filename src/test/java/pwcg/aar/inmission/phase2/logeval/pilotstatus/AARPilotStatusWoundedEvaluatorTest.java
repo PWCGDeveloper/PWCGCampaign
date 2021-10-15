@@ -3,10 +3,9 @@ package pwcg.aar.inmission.phase2.logeval.pilotstatus;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.aar.inmission.phase1.parse.event.AType2;
 import pwcg.aar.inmission.phase1.parse.event.IAType2;
@@ -15,11 +14,10 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class AARPilotStatusWoundedEvaluatorTest
 {
-	@Before
-    public void setup() throws PWCGException
+    public AARPilotStatusWoundedEvaluatorTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
     }

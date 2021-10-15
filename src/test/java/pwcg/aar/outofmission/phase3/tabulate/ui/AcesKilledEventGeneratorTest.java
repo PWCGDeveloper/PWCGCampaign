@@ -3,12 +3,14 @@ package pwcg.aar.outofmission.phase3.tabulate.ui;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 
 import pwcg.aar.ui.events.AcesKilledEventGenerator;
 import pwcg.aar.ui.events.model.AceKilledEvent;
@@ -25,16 +27,16 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.MissionEntityBuilder;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
 public class AcesKilledEventGeneratorTest
 {
     @Mock private Campaign campaign;
     @Mock CampaignPersonnelManager personnelManager;
     
-    @Before
-    public void setupForTestEnvironment() throws PWCGException
-    {
-         
+    @BeforeEach
+    public void setupTest() throws PWCGException
+    {         
         PWCGContext.setProduct(PWCGProduct.FC);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19170420"));
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);

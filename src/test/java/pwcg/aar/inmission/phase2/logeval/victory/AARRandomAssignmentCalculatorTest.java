@@ -3,13 +3,13 @@ package pwcg.aar.inmission.phase2.logeval.victory;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.aar.inmission.phase1.parse.event.AType17;
 import pwcg.aar.inmission.phase1.parse.event.AType3;
@@ -19,7 +19,7 @@ import pwcg.aar.inmission.phase1.parse.event.IATypeBase;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class AARRandomAssignmentCalculatorTest
 {
     private IAType17 waypoint;
@@ -29,8 +29,8 @@ public class AARRandomAssignmentCalculatorTest
     @Mock
     private AARAreaOfCombat areaOfCombat;
     
-    @Before
-    public void setup()
+    @BeforeEach
+    public void setupTest()
     {
         chronologicalAType = new ArrayList<>();        
     }

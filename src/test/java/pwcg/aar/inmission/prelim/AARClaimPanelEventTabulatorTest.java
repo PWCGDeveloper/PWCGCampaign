@@ -6,12 +6,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.aar.prelim.PwcgMissionData;
@@ -29,7 +29,7 @@ import pwcg.core.utils.DateUtils;
 import pwcg.mission.data.MissionHeader;
 import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class AARClaimPanelEventTabulatorTest
 {
     @Mock private Campaign campaign;
@@ -39,15 +39,11 @@ public class AARClaimPanelEventTabulatorTest
     @Mock private PwcgMissionData pwcgMissionData;
     @Mock private MissionHeader missionHeader;
 
-    
-    private Map<Integer, PwcgGeneratedMissionPlaneData> missionPlanes  = new HashMap<>();
-    
+    private Map<Integer, PwcgGeneratedMissionPlaneData> missionPlanes  = new HashMap<>();    
     private Date campaignDate;
-
     
-    
-    @Before
-    public void setup() throws PWCGException
+    @BeforeEach
+    public void setupTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         campaignDate = DateUtils.getDateYYYYMMDD("19420420");

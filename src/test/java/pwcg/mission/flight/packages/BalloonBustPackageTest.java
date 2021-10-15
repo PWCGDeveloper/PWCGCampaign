@@ -3,11 +3,9 @@ package pwcg.mission.flight.packages;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.Balloon;
 import pwcg.campaign.squadron.Squadron;
@@ -34,15 +32,9 @@ import pwcg.testutils.TestMissionBuilderUtility;
 
 public class BalloonBustPackageTest extends PwcgTestBase
 {
-    public BalloonBustPackageTest()
+    public BalloonBustPackageTest() throws PWCGException
     {
-        super (PWCGProduct.BOS);
-    }
-
-    @Before
-    public void setup() throws PWCGException
-    {
-        PWCGContext.setProduct(PWCGProduct.FC);
+        super (PWCGProduct.FC);
     }
 
     @Test

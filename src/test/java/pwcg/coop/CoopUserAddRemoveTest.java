@@ -3,9 +3,10 @@ package pwcg.coop;
 import java.io.File;
 import java.util.List;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignInitialWriter;
@@ -23,22 +24,23 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignCacheBase;
 import pwcg.testutils.SquadronTestProfile;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CoopUserAddRemoveTest
 {
-    private Campaign coopCampaign;
+    private static Campaign coopCampaign;
     private static final String coopuser = "New Coop";
     private static final String personaName = "My Pilot";
     private SquadronMember newSquadronMember;
 
-    @Before
-    public void setup() throws PWCGException
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         coopCampaign = CampaignCache.makeCampaign(SquadronTestProfile.COOP_COMPETITIVE_PROFILE);
         CampaignInitialWriter.doInitialCampaignWrite(coopCampaign);
     }
 
-    @After
+    @AfterEach
     public void cleanup()
     {
         CampaignRemover.deleteCampaign(coopCampaign.getCampaignData().getName());

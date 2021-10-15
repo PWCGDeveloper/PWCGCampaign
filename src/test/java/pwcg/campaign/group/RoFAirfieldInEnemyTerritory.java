@@ -1,9 +1,8 @@
 package pwcg.campaign.group;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
@@ -11,20 +10,14 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class RoFAirfieldInEnemyTerritory extends AirfieldInEnemyTerritory
 {
-	public RoFAirfieldInEnemyTerritory ()
+	public RoFAirfieldInEnemyTerritory () throws PWCGException
 	{
 		super(true);
+        PWCGContext.setProduct(PWCGProduct.FC);
 	}
-	
-	@Before
-	public void setup() throws PWCGException
-	{
-		PWCGContext.setProduct(PWCGProduct.FC);
-	}
-	
 
 	@Test
 	public void airfieldCheckArrasTest() throws PWCGException 

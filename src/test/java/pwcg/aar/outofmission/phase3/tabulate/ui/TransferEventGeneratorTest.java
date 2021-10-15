@@ -3,10 +3,12 @@ package pwcg.aar.outofmission.phase3.tabulate.ui;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 
 import pwcg.aar.AARTestSetup;
 import pwcg.aar.ui.events.TransferEventGenerator;
@@ -15,12 +17,13 @@ import pwcg.campaign.resupply.personnel.TransferRecord;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.Silent.class) 
+@ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
 public class TransferEventGeneratorTest extends AARTestSetup
 {
 
-    @Before
-    public void setupForTestEnvironment() throws PWCGException
+    @BeforeEach
+    public void setupTest() throws PWCGException
     {
         setupAARMocks();
     }

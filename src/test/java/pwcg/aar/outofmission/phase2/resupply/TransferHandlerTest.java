@@ -2,12 +2,14 @@ package pwcg.aar.outofmission.phase2.resupply;
 
 import java.util.Date;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
@@ -27,20 +29,26 @@ import pwcg.product.fc.country.FCServiceManager;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TransferHandlerTest
 {
     private Campaign campaign;
     
     @Mock private ArmedService armedService;
 
-    @Before
-    public void setup() throws PWCGException
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
+    }
+
+    @BeforeEach
+    public void setupTest() throws PWCGException
+    {        
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.JASTA_11_PROFILE);
         Mockito.when(armedService.getServiceId()).thenReturn(FCServiceManager.DEUTSCHE_LUFTSTREITKRAFTE);
-     }
+    }
 
     @Test
     public void testTransfersInForLostCampaignMembers() throws PWCGException

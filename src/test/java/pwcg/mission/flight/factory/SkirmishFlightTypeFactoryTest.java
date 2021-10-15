@@ -3,8 +3,9 @@ package pwcg.mission.flight.factory;
 import java.util.Date;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.FrontMapIdentifier;
@@ -21,12 +22,16 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestMissionBuilderUtility;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class SkirmishFlightTypeFactoryTest
 {
-    @Before
-    public void fighterFlightTests() throws PWCGException
+    private Campaign campaign;
+
+    @BeforeAll
+    public void setupSuite() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
     }
 
     @Test
@@ -36,9 +41,17 @@ public class SkirmishFlightTypeFactoryTest
         verifyParaDropOnDate(DateUtils.getDateYYYYMMDD("19440918"));
     }
 
+    @Test
+    public void hasSkirmishAndCargoDropTest() throws PWCGException
+    {
+
+        verifyCargoDropsOnDate(DateUtils.getDateYYYYMMDD("19440920"));
+        verifyCargoDropsOnDate(DateUtils.getDateYYYYMMDD("19440925"));
+        verifyCargoDropsOnDate(DateUtils.getDateYYYYMMDD("19440928"));
+    }
+
     private void verifyParaDropOnDate(Date date) throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
         campaign.setDate(date);
         
         
@@ -53,17 +66,8 @@ public class SkirmishFlightTypeFactoryTest
         assert(flightType == FlightTypes.PARATROOP_DROP);
     }
 
-    @Test
-    public void hasSkirmishAndCargoDropTest() throws PWCGException
-    {
-        verifyCargoDropsOnDate(DateUtils.getDateYYYYMMDD("19440920"));
-        verifyCargoDropsOnDate(DateUtils.getDateYYYYMMDD("19440925"));
-        verifyCargoDropsOnDate(DateUtils.getDateYYYYMMDD("19440928"));
-    }
-
     private void verifyCargoDropsOnDate(Date date) throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
         campaign.setDate(date);
         
         

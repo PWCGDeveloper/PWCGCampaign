@@ -3,13 +3,13 @@ package pwcg.aar.inmission.phase2.logeval;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.aar.inmission.phase1.parse.event.AType17;
 import pwcg.aar.inmission.phase1.parse.event.AType3;
@@ -23,7 +23,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class AARRandomAssignmentCalculatorTest
 {
 
@@ -32,10 +32,14 @@ public class AARRandomAssignmentCalculatorTest
     @Mock
     private AARAreaOfCombat areaOfCombat;
 
-    @Before
-    public void setup() throws PWCGException
+    public AARRandomAssignmentCalculatorTest() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
+    }
+
+    @BeforeEach
+    public void setupTest() throws PWCGException
+    {        
         chronologicalAType.clear();
     }
 

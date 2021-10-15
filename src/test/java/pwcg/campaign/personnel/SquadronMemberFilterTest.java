@@ -3,10 +3,10 @@ package pwcg.campaign.personnel;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -20,7 +20,7 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronMemberPicker;
 import pwcg.testutils.SquadronTestProfile;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class SquadronMemberFilterTest
 {
     private Campaign campaign;
@@ -29,9 +29,9 @@ public class SquadronMemberFilterTest
     private Map<Integer, SquadronMember> capturedSquadronMembers = new HashMap<>();
     private Map<Integer, SquadronMember> deadSquadronMembers = new HashMap<>();
     
-    @Before
-    public void setup() throws PWCGException
-    {
+    @BeforeEach
+    public void setupTest() throws PWCGException
+     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         

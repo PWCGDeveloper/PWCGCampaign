@@ -2,8 +2,7 @@ package pwcg.mission.flight.packages;
 
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGProduct;
@@ -30,14 +29,9 @@ import pwcg.testutils.TestMissionBuilderUtility;
 
 public class RaiderAttackPackageTest extends PwcgTestBase
 {
-    public RaiderAttackPackageTest()
+    public RaiderAttackPackageTest() throws PWCGException
     {
         super (PWCGProduct.BOS);
-    }
-
-    @Before
-    public void setup() throws PWCGException
-    {
     }
 
     @Test
