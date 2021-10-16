@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -89,10 +90,10 @@ public class CampaignAwardsGeneratorTest
         CampaignAwardsGenerator awardsGenerator = new CampaignAwardsGenerator(campaign, aarContext);
         AARPersonnelAwards campaignMemberAwards = awardsGenerator.createCampaignMemberAwards(new ArrayList<>(pilotsToEvaluate.values()));
         
-        assert (campaignMemberAwards.getCampaignMemberMedals().size() == 1);
-        assert (campaignMemberAwards.getCampaignMemberMedals().containsKey(aiPilots.getSquadronMemberList().get(1).getSerialNumber()));
-        assert (!campaignMemberAwards.getCampaignMemberMedals().containsKey(aiPilots.getSquadronMemberList().get(2).getSerialNumber()));
-        assert (!campaignMemberAwards.getCampaignMemberMedals().containsKey(aiPilots.getSquadronMemberList().get(3).getSerialNumber()));
+        Assertions.assertTrue (campaignMemberAwards.getCampaignMemberMedals().size() == 1);
+        Assertions.assertTrue (campaignMemberAwards.getCampaignMemberMedals().containsKey(aiPilots.getSquadronMemberList().get(1).getSerialNumber()));
+        Assertions.assertTrue (!campaignMemberAwards.getCampaignMemberMedals().containsKey(aiPilots.getSquadronMemberList().get(2).getSerialNumber()));
+        Assertions.assertTrue (!campaignMemberAwards.getCampaignMemberMedals().containsKey(aiPilots.getSquadronMemberList().get(3).getSerialNumber()));
     }
 
     @Test
@@ -110,10 +111,10 @@ public class CampaignAwardsGeneratorTest
         CampaignAwardsGenerator awardsGenerator = new CampaignAwardsGenerator(campaign, aarContext);
         AARPersonnelAwards campaignMemberAwards = awardsGenerator.createCampaignMemberAwards(new ArrayList<>(squadronMembersInjured.values()));
         
-        assert (campaignMemberAwards.getCampaignMemberMedals().size() == 1);
-        assert (!campaignMemberAwards.getCampaignMemberMedals().containsKey(nonPlayerSquadronMembers.getSquadronMemberList().get(1).getSerialNumber()));
-        assert (campaignMemberAwards.getCampaignMemberMedals().containsKey(nonPlayerSquadronMembers.getSquadronMemberList().get(2).getSerialNumber()));
-        assert (!campaignMemberAwards.getCampaignMemberMedals().containsKey(nonPlayerSquadronMembers.getSquadronMemberList().get(3).getSerialNumber()));
+        Assertions.assertTrue (campaignMemberAwards.getCampaignMemberMedals().size() == 1);
+        Assertions.assertTrue (!campaignMemberAwards.getCampaignMemberMedals().containsKey(nonPlayerSquadronMembers.getSquadronMemberList().get(1).getSerialNumber()));
+        Assertions.assertTrue (campaignMemberAwards.getCampaignMemberMedals().containsKey(nonPlayerSquadronMembers.getSquadronMemberList().get(2).getSerialNumber()));
+        Assertions.assertTrue (!campaignMemberAwards.getCampaignMemberMedals().containsKey(nonPlayerSquadronMembers.getSquadronMemberList().get(3).getSerialNumber()));
     }
 
 
@@ -133,7 +134,7 @@ public class CampaignAwardsGeneratorTest
         CampaignAwardsGenerator awardsGenerator = new CampaignAwardsGenerator(campaign, aarContext);
         AARPersonnelAwards campaignMemberAwards = awardsGenerator.createCampaignMemberAwards(new ArrayList<>(squadronMembersInjured.values()));
                 
-        assert (campaignMemberAwards.getPromotions().size() == 1);
-        assert (campaignMemberAwards.getPromotions().containsKey(nonPlayerSquadronMembers.getSquadronMemberList().get(3).getSerialNumber()));
+        Assertions.assertTrue (campaignMemberAwards.getPromotions().size() == 1);
+        Assertions.assertTrue (campaignMemberAwards.getPromotions().containsKey(nonPlayerSquadronMembers.getSquadronMemberList().get(3).getSerialNumber()));
     }
 }

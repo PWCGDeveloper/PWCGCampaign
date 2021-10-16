@@ -3,6 +3,7 @@ package pwcg.aar.awards;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -70,7 +71,7 @@ public class PromotionEventHandlerFighterTest
 
         String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
-        assert (promotion.equals("Sergent"));
+        Assertions.assertTrue (promotion.equals("Sergent"));
     }
 
     @Test
@@ -85,7 +86,7 @@ public class PromotionEventHandlerFighterTest
 
         String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
-        assert (promotion.equals("Sous Lieutenant"));
+        Assertions.assertTrue (promotion.equals("Sous Lieutenant"));
     }
 
     @Test
@@ -99,7 +100,7 @@ public class PromotionEventHandlerFighterTest
         Mockito.when(squadronMember.getRank()).thenReturn("Sous Lieutenant");
         String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
-        assert (promotion.equals("Lieutenant"));
+        Assertions.assertTrue (promotion.equals("Lieutenant"));
     }
 
     @Test
@@ -116,7 +117,7 @@ public class PromotionEventHandlerFighterTest
 
         String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
-        assert (promotion.equals("Capitaine"));
+        Assertions.assertTrue (promotion.equals("Capitaine"));
     }
 
     @Test
@@ -133,7 +134,7 @@ public class PromotionEventHandlerFighterTest
 
         String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
-        assert (promotion.equals(PromotionArbitrator.NO_PROMOTION));
+        Assertions.assertTrue (promotion.equals(PromotionArbitrator.NO_PROMOTION));
     }
 
     @Test
@@ -148,7 +149,7 @@ public class PromotionEventHandlerFighterTest
 
         String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
-        assert (promotion.equals(PromotionArbitrator.NO_PROMOTION));
+        Assertions.assertTrue (promotion.equals(PromotionArbitrator.NO_PROMOTION));
     }
 
     @Test
@@ -163,7 +164,7 @@ public class PromotionEventHandlerFighterTest
 
         String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
-        assert (promotion.equals(PromotionArbitrator.NO_PROMOTION));
+        Assertions.assertTrue (promotion.equals(PromotionArbitrator.NO_PROMOTION));
     }
 
 }

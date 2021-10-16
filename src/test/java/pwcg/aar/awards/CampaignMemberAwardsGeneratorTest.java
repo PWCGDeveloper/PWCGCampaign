@@ -1,5 +1,6 @@
 package pwcg.aar.awards;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -62,8 +63,8 @@ public class CampaignMemberAwardsGeneratorTest
         CampaignMemberAwardsGenerator awardsGenerator = new CampaignMemberAwardsGenerator(campaign, aarContext);
         AARPersonnelAwards campaignMemberAwards = awardsGenerator.generateAwards(aiSquadMember, 1);
         
-        assert (campaignMemberAwards.getCampaignMemberMedals().size() >= 1);
-        assert (campaignMemberAwards.getCampaignMemberMedals().containsKey(aiSquadMember.getSerialNumber()));
+        Assertions.assertTrue (campaignMemberAwards.getCampaignMemberMedals().size() >= 1);
+        Assertions.assertTrue (campaignMemberAwards.getCampaignMemberMedals().containsKey(aiSquadMember.getSerialNumber()));
     }
 
     @Test
@@ -76,8 +77,8 @@ public class CampaignMemberAwardsGeneratorTest
         CampaignMemberAwardsGenerator awardsGenerator = new CampaignMemberAwardsGenerator(campaign, aarContext);
         AARPersonnelAwards campaignMemberAwards = awardsGenerator.generateAwards(aiSquadMember, 1);
         
-        assert (campaignMemberAwards.getCampaignMemberMedals().size() >= 1);
-        assert (campaignMemberAwards.getCampaignMemberMedals().containsKey(aiSquadMember.getSerialNumber()));
+        Assertions.assertTrue (campaignMemberAwards.getCampaignMemberMedals().size() >= 1);
+        Assertions.assertTrue (campaignMemberAwards.getCampaignMemberMedals().containsKey(aiSquadMember.getSerialNumber()));
     }
 
     @Test
@@ -90,7 +91,7 @@ public class CampaignMemberAwardsGeneratorTest
         CampaignMemberAwardsGenerator awardsGenerator = new CampaignMemberAwardsGenerator(campaign, aarContext);
         AARPersonnelAwards campaignMemberAwards = awardsGenerator.generateAwards(aiSquadMember, 1);
         
-        assert (campaignMemberAwards.getPromotions().size() == 1);
-        assert (campaignMemberAwards.getPromotions().containsKey(aiSquadMember.getSerialNumber()));
+        Assertions.assertTrue (campaignMemberAwards.getPromotions().size() == 1);
+        Assertions.assertTrue (campaignMemberAwards.getPromotions().containsKey(aiSquadMember.getSerialNumber()));
     }
 }

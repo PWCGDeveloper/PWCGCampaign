@@ -1,5 +1,6 @@
 package pwcg.mission.flight;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import pwcg.campaign.Campaign;
@@ -36,7 +37,7 @@ public class BodenplatteFlightTest
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();
 
-        assert (mission.getSkirmish() != null);
+        Assertions.assertTrue (mission.getSkirmish() != null);
 
         assert(MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.GROUND_ATTACK, Side.AXIS));
         assert(MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.SCRAMBLE, Side.ALLIED));
@@ -54,8 +55,8 @@ public class BodenplatteFlightTest
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();
 
-        assert (mission.getSkirmish() != null);
-        assert (mission.getSkirmish().getSkirmishName().contentEquals("Bodenplatte-Ophoven"));
+        Assertions.assertTrue (mission.getSkirmish() != null);
+        Assertions.assertTrue (mission.getSkirmish().getSkirmishName().contentEquals("Bodenplatte-Ophoven"));
 
         CoordinateBox missionBox = mission.getMissionBorders();
         Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(campaign.getReferencePlayer().getSquadronId());
@@ -78,8 +79,8 @@ public class BodenplatteFlightTest
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();
 
-        assert (mission.getSkirmish() != null);
-        assert (mission.getSkirmish().getSkirmishName().contentEquals("Bodenplatte-Volkel"));
+        Assertions.assertTrue (mission.getSkirmish() != null);
+        Assertions.assertTrue (mission.getSkirmish().getSkirmishName().contentEquals("Bodenplatte-Volkel"));
 
         CoordinateBox missionBox = mission.getMissionBorders();
         Squadron playerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(campaign.getReferencePlayer().getSquadronId());

@@ -2,6 +2,7 @@ package pwcg.campaign.io.json;
 
 import java.util.Map;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -48,7 +49,7 @@ public class CombatReportIOJsonTest
     public void readCombatReport() throws PWCGException
     {
         Map<String, CombatReport> combatReports1 = CombatReportIOJson.readJson(campaign, 12345);
-        assert (combatReports1.size() > 0);
+        Assertions.assertTrue (combatReports1.size() > 0);
     }
 
 }

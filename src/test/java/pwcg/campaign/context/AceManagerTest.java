@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -84,21 +85,21 @@ public class AceManagerTest
     public void testAcesKilled () throws PWCGException
     {            	
     	List<Ace> aces = aceManager.acesKilledHistoricallyInTimePeriod(DateUtils.getDateYYYYMMDD("19170801"), DateUtils.getDateYYYYMMDD("19171001"));
-    	assert (aces.size() > 0);
+    	Assertions.assertTrue (aces.size() > 0);
     }
 
     @Test
     public void testAceByName () throws PWCGException
     {            	
     	Ace ace = aceManager.getAceWithCampaignAdjustment(campaign, campaign.getPersonnelManager().getCampaignAces(), 101175, campaign.getDate());
-    	assert (ace.getName().equals("Werner Voss"));
+    	Assertions.assertTrue (ace.getName().equals("Werner Voss"));
     }
 
     @Test
     public void testSquadronsCommandedByAce () throws PWCGException
     {            	
     	Set<Integer> squadronsCommandedByAce = aceManager.getAceCommandedSquadrons();
-    	assert (squadronsCommandedByAce.size() > 0);
+    	Assertions.assertTrue (squadronsCommandedByAce.size() > 0);
     }
 
     @Test
@@ -106,7 +107,7 @@ public class AceManagerTest
     {            	
     	Mockito.when(georgesGuynemer.getPilotActiveStatus()).thenReturn(SquadronMemberStatus.STATUS_ACTIVE);
     	List<Ace> aces = aceManager.getActiveAcesForSquadron(campaign.getPersonnelManager().getCampaignAces(), DateUtils.getDateYYYYMMDD("19170801"), SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-    	assert (aces.size() > 0);
+    	Assertions.assertTrue (aces.size() > 0);
     }
 
     @Test
@@ -114,7 +115,7 @@ public class AceManagerTest
     {            	
     	Mockito.when(georgesGuynemer.getPilotActiveStatus()).thenReturn(SquadronMemberStatus.STATUS_ACTIVE);
     	List<Ace> aces = aceManager.getActiveAcesForSquadron(campaign.getPersonnelManager().getCampaignAces(), DateUtils.getDateYYYYMMDD("19160318"), SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-    	assert (aces.size() == 0);
+    	Assertions.assertTrue (aces.size() == 0);
     }
 
     @Test
@@ -122,28 +123,28 @@ public class AceManagerTest
     {            	
     	Mockito.when(georgesGuynemer.getPilotActiveStatus()).thenReturn(SquadronMemberStatus.STATUS_KIA);
     	List<Ace> aces = aceManager.getActiveAcesForSquadron(campaign.getPersonnelManager().getCampaignAces(), DateUtils.getDateYYYYMMDD("19171001"), SquadronTestProfile.ESC_3_PROFILE.getSquadronId());
-    	assert (aces.size() == 0);
+    	Assertions.assertTrue (aces.size() == 0);
     }
 
     @Test
     public void testAllAcesForSquadron () throws PWCGException
     {            	
     	List<Ace> aces = aceManager.getAllAcesForSquadron(campaign.getPersonnelManager().getCampaignAces().getAllCampaignAces().values(), SquadronTestProfile.ESC_3_PROFILE.getSquadronId());
-    	assert (aces.size() == 1);
+    	Assertions.assertTrue (aces.size() == 1);
     }
 
     @Test
     public void testHistoricalAceByName () throws PWCGException
     {            	
     	HistoricalAce ace = aceManager.getHistoricalAceBySerialNumber(101175);
-    	assert (ace.getName().equals("Werner Voss"));
+    	Assertions.assertTrue (ace.getName().equals("Werner Voss"));
     }
 
     @Test
     public void testHistoricalAces () throws PWCGException
     {            	
     	List<HistoricalAce> aces = aceManager.getHistoricalAces();
-    	assert (aces.size() > 0);
+    	Assertions.assertTrue (aces.size() > 0);
     }
 
 }

@@ -2,6 +2,7 @@ package pwcg.mission.options;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -44,32 +45,32 @@ public class MissionWeatherWindTest
     {
         Mockito.when(missionWeather.getCloudConfig()).thenReturn("00_Clear_");
         List<WindLayer> windLayers = MissionWeatherWind.createWind(campaign, missionWeather);
-        assert (windLayers.size() == 5);
+        Assertions.assertTrue (windLayers.size() == 5);
         
-        assert (windLayers.get(0).getLayer() == 0);
-        assert (windLayers.get(0).getDirection() == 90);
-        assert (windLayers.get(0).getSpeed() >= 1);
-        assert (windLayers.get(0).getSpeed() <= 3);
+        Assertions.assertTrue (windLayers.get(0).getLayer() == 0);
+        Assertions.assertTrue (windLayers.get(0).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(0).getSpeed() >= 1);
+        Assertions.assertTrue (windLayers.get(0).getSpeed() <= 3);
         
-        assert (windLayers.get(1).getLayer() == 500);
-        assert (windLayers.get(1).getDirection() == 90);
-        assert (windLayers.get(1).getSpeed() >= 3);
-        assert (windLayers.get(1).getSpeed() <= 7);
+        Assertions.assertTrue (windLayers.get(1).getLayer() == 500);
+        Assertions.assertTrue (windLayers.get(1).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(1).getSpeed() >= 3);
+        Assertions.assertTrue (windLayers.get(1).getSpeed() <= 7);
         
-        assert (windLayers.get(2).getLayer() == 1000);
-        assert (windLayers.get(2).getDirection() == 90);
-        assert (windLayers.get(2).getSpeed() >= 3);
-        assert (windLayers.get(2).getSpeed() <= 8);
+        Assertions.assertTrue (windLayers.get(2).getLayer() == 1000);
+        Assertions.assertTrue (windLayers.get(2).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(2).getSpeed() >= 3);
+        Assertions.assertTrue (windLayers.get(2).getSpeed() <= 8);
         
-        assert (windLayers.get(3).getLayer() == 3000);
-        assert (windLayers.get(3).getDirection() == 90);
-        assert (windLayers.get(3).getSpeed() >= 5);
-        assert (windLayers.get(3).getSpeed() <= 10);
+        Assertions.assertTrue (windLayers.get(3).getLayer() == 3000);
+        Assertions.assertTrue (windLayers.get(3).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(3).getSpeed() >= 5);
+        Assertions.assertTrue (windLayers.get(3).getSpeed() <= 10);
         
-        assert (windLayers.get(4).getLayer() == 5000);
-        assert (windLayers.get(4).getDirection() == 90);
-        assert (windLayers.get(4).getSpeed() >= 5);
-        assert (windLayers.get(4).getSpeed() <= 11);
+        Assertions.assertTrue (windLayers.get(4).getLayer() == 5000);
+        Assertions.assertTrue (windLayers.get(4).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(4).getSpeed() >= 5);
+        Assertions.assertTrue (windLayers.get(4).getSpeed() <= 11);
     }
 
     @Test
@@ -78,30 +79,30 @@ public class MissionWeatherWindTest
         Mockito.when(missionWeather.getCloudConfig()).thenReturn("01_Light_");
         List<WindLayer> windLayers = MissionWeatherWind.createWind(campaign, missionWeather);
         
-        assert (windLayers.get(0).getLayer() == 0);
-        assert (windLayers.get(0).getDirection() == 90);
-        assert (windLayers.get(0).getSpeed() >= 2);
-        assert (windLayers.get(0).getSpeed() <= 4);
+        Assertions.assertTrue (windLayers.get(0).getLayer() == 0);
+        Assertions.assertTrue (windLayers.get(0).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(0).getSpeed() >= 2);
+        Assertions.assertTrue (windLayers.get(0).getSpeed() <= 4);
         
-        assert (windLayers.get(1).getLayer() == 500);
-        assert (windLayers.get(1).getDirection() == 90);
-        assert (windLayers.get(1).getSpeed() >= 4);
-        assert (windLayers.get(1).getSpeed() <= 8);
+        Assertions.assertTrue (windLayers.get(1).getLayer() == 500);
+        Assertions.assertTrue (windLayers.get(1).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(1).getSpeed() >= 4);
+        Assertions.assertTrue (windLayers.get(1).getSpeed() <= 8);
         
-        assert (windLayers.get(2).getLayer() == 1000);
-        assert (windLayers.get(2).getDirection() == 90);
-        assert (windLayers.get(2).getSpeed() >= 4);
-        assert (windLayers.get(2).getSpeed() <= 9);
+        Assertions.assertTrue (windLayers.get(2).getLayer() == 1000);
+        Assertions.assertTrue (windLayers.get(2).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(2).getSpeed() >= 4);
+        Assertions.assertTrue (windLayers.get(2).getSpeed() <= 9);
         
-        assert (windLayers.get(3).getLayer() == 3000);
-        assert (windLayers.get(3).getDirection() == 90);
-        assert (windLayers.get(3).getSpeed() >= 6);
-        assert (windLayers.get(3).getSpeed() <= 11);
+        Assertions.assertTrue (windLayers.get(3).getLayer() == 3000);
+        Assertions.assertTrue (windLayers.get(3).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(3).getSpeed() >= 6);
+        Assertions.assertTrue (windLayers.get(3).getSpeed() <= 11);
         
-        assert (windLayers.get(4).getLayer() == 5000);
-        assert (windLayers.get(4).getDirection() == 90);
-        assert (windLayers.get(4).getSpeed() >= 6);
-        assert (windLayers.get(4).getSpeed() <= 12);
+        Assertions.assertTrue (windLayers.get(4).getLayer() == 5000);
+        Assertions.assertTrue (windLayers.get(4).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(4).getSpeed() >= 6);
+        Assertions.assertTrue (windLayers.get(4).getSpeed() <= 12);
     }
 
     @Test
@@ -110,30 +111,30 @@ public class MissionWeatherWindTest
         Mockito.when(missionWeather.getCloudConfig()).thenReturn("01_Medium_");
         List<WindLayer> windLayers = MissionWeatherWind.createWind(campaign, missionWeather);
         
-        assert (windLayers.get(0).getLayer() == 0);
-        assert (windLayers.get(0).getDirection() == 90);
-        assert (windLayers.get(0).getSpeed() >= 3);
-        assert (windLayers.get(0).getSpeed() <= 5);
+        Assertions.assertTrue (windLayers.get(0).getLayer() == 0);
+        Assertions.assertTrue (windLayers.get(0).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(0).getSpeed() >= 3);
+        Assertions.assertTrue (windLayers.get(0).getSpeed() <= 5);
         
-        assert (windLayers.get(1).getLayer() == 500);
-        assert (windLayers.get(1).getDirection() == 90);
-        assert (windLayers.get(1).getSpeed() >= 5);
-        assert (windLayers.get(1).getSpeed() <= 9);
+        Assertions.assertTrue (windLayers.get(1).getLayer() == 500);
+        Assertions.assertTrue (windLayers.get(1).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(1).getSpeed() >= 5);
+        Assertions.assertTrue (windLayers.get(1).getSpeed() <= 9);
         
-        assert (windLayers.get(2).getLayer() == 1000);
-        assert (windLayers.get(2).getDirection() == 90);
-        assert (windLayers.get(2).getSpeed() >= 5);
-        assert (windLayers.get(2).getSpeed() <= 10);
+        Assertions.assertTrue (windLayers.get(2).getLayer() == 1000);
+        Assertions.assertTrue (windLayers.get(2).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(2).getSpeed() >= 5);
+        Assertions.assertTrue (windLayers.get(2).getSpeed() <= 10);
         
-        assert (windLayers.get(3).getLayer() == 3000);
-        assert (windLayers.get(3).getDirection() == 90);
-        assert (windLayers.get(3).getSpeed() >= 7);
-        assert (windLayers.get(3).getSpeed() <= 11);
+        Assertions.assertTrue (windLayers.get(3).getLayer() == 3000);
+        Assertions.assertTrue (windLayers.get(3).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(3).getSpeed() >= 7);
+        Assertions.assertTrue (windLayers.get(3).getSpeed() <= 11);
         
-        assert (windLayers.get(4).getLayer() == 5000);
-        assert (windLayers.get(4).getDirection() == 90);
-        assert (windLayers.get(4).getSpeed() >= 7);
-        assert (windLayers.get(4).getSpeed() <= 13);
+        Assertions.assertTrue (windLayers.get(4).getLayer() == 5000);
+        Assertions.assertTrue (windLayers.get(4).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(4).getSpeed() >= 7);
+        Assertions.assertTrue (windLayers.get(4).getSpeed() <= 13);
     }
 
     @Test
@@ -142,30 +143,30 @@ public class MissionWeatherWindTest
         Mockito.when(missionWeather.getCloudConfig()).thenReturn("01_Heavy_");
         List<WindLayer> windLayers = MissionWeatherWind.createWind(campaign, missionWeather);
         
-        assert (windLayers.get(0).getLayer() == 0);
-        assert (windLayers.get(0).getDirection() == 90);
-        assert (windLayers.get(0).getSpeed() >= 5);
-        assert (windLayers.get(0).getSpeed() <= 7);
+        Assertions.assertTrue (windLayers.get(0).getLayer() == 0);
+        Assertions.assertTrue (windLayers.get(0).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(0).getSpeed() >= 5);
+        Assertions.assertTrue (windLayers.get(0).getSpeed() <= 7);
         
-        assert (windLayers.get(1).getLayer() == 500);
-        assert (windLayers.get(1).getDirection() == 90);
-        assert (windLayers.get(1).getSpeed() >= 6);
-        assert (windLayers.get(1).getSpeed() <= 11);
+        Assertions.assertTrue (windLayers.get(1).getLayer() == 500);
+        Assertions.assertTrue (windLayers.get(1).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(1).getSpeed() >= 6);
+        Assertions.assertTrue (windLayers.get(1).getSpeed() <= 11);
         
-        assert (windLayers.get(2).getLayer() == 1000);
-        assert (windLayers.get(2).getDirection() == 90);
-        assert (windLayers.get(2).getSpeed() >= 7);
-        assert (windLayers.get(2).getSpeed() <= 11);
+        Assertions.assertTrue (windLayers.get(2).getLayer() == 1000);
+        Assertions.assertTrue (windLayers.get(2).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(2).getSpeed() >= 7);
+        Assertions.assertTrue (windLayers.get(2).getSpeed() <= 11);
         
-        assert (windLayers.get(3).getLayer() == 3000);
-        assert (windLayers.get(3).getDirection() == 90);
-        assert (windLayers.get(3).getSpeed() >= 8);
-        assert (windLayers.get(3).getSpeed() <= 13);
+        Assertions.assertTrue (windLayers.get(3).getLayer() == 3000);
+        Assertions.assertTrue (windLayers.get(3).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(3).getSpeed() >= 8);
+        Assertions.assertTrue (windLayers.get(3).getSpeed() <= 13);
         
-        assert (windLayers.get(4).getLayer() == 5000);
-        assert (windLayers.get(4).getDirection() == 90);
-        assert (windLayers.get(4).getSpeed() >= 9);
-        assert (windLayers.get(4).getSpeed() <= 15);
+        Assertions.assertTrue (windLayers.get(4).getLayer() == 5000);
+        Assertions.assertTrue (windLayers.get(4).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(4).getSpeed() >= 9);
+        Assertions.assertTrue (windLayers.get(4).getSpeed() <= 15);
     }
 
     @Test
@@ -174,30 +175,30 @@ public class MissionWeatherWindTest
         Mockito.when(missionWeather.getCloudConfig()).thenReturn("01_Overcast_");
         List<WindLayer> windLayers = MissionWeatherWind.createWind(campaign, missionWeather);
         
-        assert (windLayers.get(0).getLayer() == 0);
-        assert (windLayers.get(0).getDirection() == 90);
-        assert (windLayers.get(0).getSpeed() >= 5);
-        assert (windLayers.get(0).getSpeed() <= 7);
+        Assertions.assertTrue (windLayers.get(0).getLayer() == 0);
+        Assertions.assertTrue (windLayers.get(0).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(0).getSpeed() >= 5);
+        Assertions.assertTrue (windLayers.get(0).getSpeed() <= 7);
         
-        assert (windLayers.get(1).getLayer() == 500);
-        assert (windLayers.get(1).getDirection() == 90);
-        assert (windLayers.get(1).getSpeed() >= 6);
-        assert (windLayers.get(1).getSpeed() <= 11);
+        Assertions.assertTrue (windLayers.get(1).getLayer() == 500);
+        Assertions.assertTrue (windLayers.get(1).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(1).getSpeed() >= 6);
+        Assertions.assertTrue (windLayers.get(1).getSpeed() <= 11);
         
-        assert (windLayers.get(2).getLayer() == 1000);
-        assert (windLayers.get(2).getDirection() == 90);
-        assert (windLayers.get(2).getSpeed() >= 7);
-        assert (windLayers.get(2).getSpeed() <= 11);
+        Assertions.assertTrue (windLayers.get(2).getLayer() == 1000);
+        Assertions.assertTrue (windLayers.get(2).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(2).getSpeed() >= 7);
+        Assertions.assertTrue (windLayers.get(2).getSpeed() <= 11);
         
-        assert (windLayers.get(3).getLayer() == 3000);
-        assert (windLayers.get(3).getDirection() == 90);
-        assert (windLayers.get(3).getSpeed() >= 8);
-        assert (windLayers.get(3).getSpeed() <= 13);
+        Assertions.assertTrue (windLayers.get(3).getLayer() == 3000);
+        Assertions.assertTrue (windLayers.get(3).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(3).getSpeed() >= 8);
+        Assertions.assertTrue (windLayers.get(3).getSpeed() <= 13);
         
-        assert (windLayers.get(4).getLayer() == 5000);
-        assert (windLayers.get(4).getDirection() == 90);
-        assert (windLayers.get(4).getSpeed() >= 9);
-        assert (windLayers.get(4).getSpeed() <= 15);
+        Assertions.assertTrue (windLayers.get(4).getLayer() == 5000);
+        Assertions.assertTrue (windLayers.get(4).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(4).getSpeed() >= 9);
+        Assertions.assertTrue (windLayers.get(4).getSpeed() <= 15);
     }
 
     @Test
@@ -208,25 +209,25 @@ public class MissionWeatherWindTest
         Mockito.when(missionWeather.getCloudConfig()).thenReturn("01_Overcast_");
         List<WindLayer> windLayers = MissionWeatherWind.createWind(campaign, missionWeather);
         
-        assert (windLayers.get(0).getLayer() == 0);
-        assert (windLayers.get(0).getDirection() == 90);
-        assert (windLayers.get(0).getSpeed() == 3);
+        Assertions.assertTrue (windLayers.get(0).getLayer() == 0);
+        Assertions.assertTrue (windLayers.get(0).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(0).getSpeed() == 3);
         
-        assert (windLayers.get(1).getLayer() == 500);
-        assert (windLayers.get(1).getDirection() == 90);
-        assert (windLayers.get(0).getSpeed() == 3);
+        Assertions.assertTrue (windLayers.get(1).getLayer() == 500);
+        Assertions.assertTrue (windLayers.get(1).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(0).getSpeed() == 3);
         
-        assert (windLayers.get(2).getLayer() == 1000);
-        assert (windLayers.get(2).getDirection() == 90);
-        assert (windLayers.get(0).getSpeed() == 3);
+        Assertions.assertTrue (windLayers.get(2).getLayer() == 1000);
+        Assertions.assertTrue (windLayers.get(2).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(0).getSpeed() == 3);
         
-        assert (windLayers.get(3).getLayer() == 3000);
-        assert (windLayers.get(3).getDirection() == 90);
-        assert (windLayers.get(0).getSpeed() == 3);
+        Assertions.assertTrue (windLayers.get(3).getLayer() == 3000);
+        Assertions.assertTrue (windLayers.get(3).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(0).getSpeed() == 3);
         
-        assert (windLayers.get(4).getLayer() == 5000);
-        assert (windLayers.get(4).getDirection() == 90);
-        assert (windLayers.get(0).getSpeed() == 3);
+        Assertions.assertTrue (windLayers.get(4).getLayer() == 5000);
+        Assertions.assertTrue (windLayers.get(4).getDirection() == 90);
+        Assertions.assertTrue (windLayers.get(0).getSpeed() == 3);
     }
 
 }

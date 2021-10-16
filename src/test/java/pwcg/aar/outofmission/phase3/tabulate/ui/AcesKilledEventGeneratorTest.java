@@ -3,6 +3,7 @@ package pwcg.aar.outofmission.phase3.tabulate.ui;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -53,7 +54,7 @@ public class AcesKilledEventGeneratorTest
         AcesKilledEventGenerator acesKilledEventGenerator = new AcesKilledEventGenerator(campaign);
         List<AceKilledEvent> acesKilledEvents = acesKilledEventGenerator.createAceKilledEvents(acesKilledInMissionAndElapsedTime);
         
-        assert (acesKilledEvents.size() == 1);
+        Assertions.assertTrue (acesKilledEvents.size() == 1);
     }
 
     @Test
@@ -73,6 +74,6 @@ public class AcesKilledEventGeneratorTest
         AcesKilledEventGenerator acesKilledEventGenerator = new AcesKilledEventGenerator(campaign);
         List<AceKilledEvent> acesKilledEvents = acesKilledEventGenerator.createAceKilledEvents(acesKilledInMissionAndElapsedTime);
         
-        assert (acesKilledEvents.size() == 0);
+        Assertions.assertTrue (acesKilledEvents.size() == 0);
     }
 }

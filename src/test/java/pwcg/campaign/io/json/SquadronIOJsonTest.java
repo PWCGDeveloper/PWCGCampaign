@@ -2,6 +2,7 @@ package pwcg.campaign.io.json;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -22,12 +23,12 @@ public class SquadronIOJsonTest
     {
         PWCGContext.setProduct(PWCGProduct.FC);
         List<Squadron> squadrons = SquadronIOJson.readJson();
-        assert (squadrons.size() > 0);
+        Assertions.assertTrue (squadrons.size() > 0);
 
         for (Squadron squadron : squadrons)
         {
-            assert (squadron.getSquadronRoles().getSquadronRolePeriods().size() > 0);
-            assert (squadron.getService() > 0);
+            Assertions.assertTrue (squadron.getSquadronRoles().getSquadronRolePeriods().size() > 0);
+            Assertions.assertTrue (squadron.getService() > 0);
             
             verifyLafayetteEsc(squadron);
             verifyRFCToRAF(squadron);
@@ -40,12 +41,12 @@ public class SquadronIOJsonTest
         if (squadron.getSquadronId() == 101124)
         {
             SquadHistory squadronHistory = squadron.getSquadHistory();
-            assert (squadronHistory != null);
+            Assertions.assertTrue (squadronHistory != null);
             
             SquadHistoryEntry  squadHistoryEntry = squadronHistory.getSquadHistoryEntry(DateUtils.getDateYYYYMMDD("19180219"));
-            assert (squadHistoryEntry != null);
-            assert (squadHistoryEntry.getArmedServiceName().equals("United States Air Service"));
-            assert (squadHistoryEntry.getSkill() == SquadHistoryEntry.NO_SQUADRON_SKILL_CHANGE);
+            Assertions.assertTrue (squadHistoryEntry != null);
+            Assertions.assertTrue (squadHistoryEntry.getArmedServiceName().equals("United States Air Service"));
+            Assertions.assertTrue (squadHistoryEntry.getSkill() == SquadHistoryEntry.NO_SQUADRON_SKILL_CHANGE);
         }
     }
 
@@ -54,13 +55,13 @@ public class SquadronIOJsonTest
         if (squadron.getSquadronId() == 102020)
         {
             SquadHistory squadronHistory = squadron.getSquadHistory();
-            assert (squadronHistory != null);
+            Assertions.assertTrue (squadronHistory != null);
             
             SquadHistoryEntry  squadHistoryEntry = squadronHistory.getSquadHistoryEntry(DateUtils.getDateYYYYMMDD("19180401"));
-            assert (squadHistoryEntry != null);
-            assert (squadHistoryEntry.getArmedServiceName().equals("Royal Air Force"));
-            assert (squadHistoryEntry.getSquadName().equals("No 20 Squadron RAF"));
-            assert (squadHistoryEntry.getSkill() == SquadHistoryEntry.NO_SQUADRON_SKILL_CHANGE);
+            Assertions.assertTrue (squadHistoryEntry != null);
+            Assertions.assertTrue (squadHistoryEntry.getArmedServiceName().equals("Royal Air Force"));
+            Assertions.assertTrue (squadHistoryEntry.getSquadName().equals("No 20 Squadron RAF"));
+            Assertions.assertTrue (squadHistoryEntry.getSkill() == SquadHistoryEntry.NO_SQUADRON_SKILL_CHANGE);
         }
     }
 
@@ -69,13 +70,13 @@ public class SquadronIOJsonTest
         if (squadron.getSquadronId() == 102209)
         {
             SquadHistory squadronHistory = squadron.getSquadHistory();
-            assert (squadronHistory != null);
+            Assertions.assertTrue (squadronHistory != null);
             
             SquadHistoryEntry  squadHistoryEntry = squadronHistory.getSquadHistoryEntry(DateUtils.getDateYYYYMMDD("19180401"));
-            assert (squadHistoryEntry != null);
-            assert (squadHistoryEntry.getArmedServiceName().equals("Royal Air Force"));
-            assert (squadHistoryEntry.getSquadName().equals("No 209 Squadron RAF"));
-            assert (squadHistoryEntry.getSkill() == SquadHistoryEntry.NO_SQUADRON_SKILL_CHANGE);
+            Assertions.assertTrue (squadHistoryEntry != null);
+            Assertions.assertTrue (squadHistoryEntry.getArmedServiceName().equals("Royal Air Force"));
+            Assertions.assertTrue (squadHistoryEntry.getSquadName().equals("No 209 Squadron RAF"));
+            Assertions.assertTrue (squadHistoryEntry.getSkill() == SquadHistoryEntry.NO_SQUADRON_SKILL_CHANGE);
         }
     }
 
@@ -84,13 +85,13 @@ public class SquadronIOJsonTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         List<Squadron> squadrons = SquadronIOJson.readJson();
-        assert (squadrons.size() > 0);
+        Assertions.assertTrue (squadrons.size() > 0);
         
         boolean success = true;
         for (Squadron squadron : squadrons)
         {
-            assert (squadron.getSquadronRoles().getSquadronRolePeriods().size() > 0);
-            assert (squadron.getService() > 0);
+            Assertions.assertTrue (squadron.getSquadronRoles().getSquadronRolePeriods().size() > 0);
+            Assertions.assertTrue (squadron.getService() > 0);
         }
         
         assert(success);

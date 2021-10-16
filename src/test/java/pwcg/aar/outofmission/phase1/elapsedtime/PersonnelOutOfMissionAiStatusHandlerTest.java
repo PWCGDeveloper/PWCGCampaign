@@ -3,6 +3,7 @@ package pwcg.aar.outofmission.phase1.elapsedtime;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -53,9 +54,9 @@ public class PersonnelOutOfMissionAiStatusHandlerTest
             aiCaptured.putAll(outOfMissionPersonnelLosses.getPersonnelCaptured());
         }
         
-        assert (aiKilled.size() > 0);
-        assert (aiMaimed.size() > 0);
-        assert (aiCaptured.size() > 0);
+        Assertions.assertTrue (aiKilled.size() > 0);
+        Assertions.assertTrue (aiMaimed.size() > 0);
+        Assertions.assertTrue (aiCaptured.size() > 0);
     }
 
 }

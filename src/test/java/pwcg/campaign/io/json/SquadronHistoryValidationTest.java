@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -24,7 +25,7 @@ public class SquadronHistoryValidationTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         List<Squadron> squadrons = SquadronIOJson.readJson();
-        assert (squadrons.size() > 0);
+        Assertions.assertTrue (squadrons.size() > 0);
         
         boolean success = true;
         for (Squadron squadron : squadrons)
@@ -44,13 +45,13 @@ public class SquadronHistoryValidationTest
         if (squadron.getSquadronId() == 10131136)
         {
             SquadHistory squadronHistory = squadron.getSquadHistory();
-            assert (squadronHistory != null);
+            Assertions.assertTrue (squadronHistory != null);
             
             SquadHistoryEntry  squadHistoryEntry = squadronHistory.getSquadHistoryEntry(DateUtils.getDateYYYYMMDD("19420301"));
-            assert (squadHistoryEntry != null);
-            assert (squadHistoryEntry.getArmedServiceName().equals("Voyenno-Vozdushnye Sily"));
-            assert (squadHistoryEntry.getSquadName().equals("45th Bomber Air Regiment"));
-            assert (squadHistoryEntry.getSkill() == 40);
+            Assertions.assertTrue (squadHistoryEntry != null);
+            Assertions.assertTrue (squadHistoryEntry.getArmedServiceName().equals("Voyenno-Vozdushnye Sily"));
+            Assertions.assertTrue (squadHistoryEntry.getSquadName().equals("45th Bomber Air Regiment"));
+            Assertions.assertTrue (squadHistoryEntry.getSkill() == 40);
             
             assert(squadron.determineSquadronSkill(DateUtils.getDateYYYYMMDD("19420228")) == 30);
             assert(squadron.determineDisplayName(DateUtils.getDateYYYYMMDD("19420228")).equals("136th Bomber Air Regiment"));

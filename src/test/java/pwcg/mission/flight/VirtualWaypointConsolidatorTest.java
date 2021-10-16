@@ -3,6 +3,7 @@ package pwcg.mission.flight;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -80,9 +81,9 @@ public class VirtualWaypointConsolidatorTest
             VirtualWaypointConsolidator virtualWaypointConsolidator = new VirtualWaypointConsolidator(flight, plotCoordinates);
             List<VirtualWayPointCoordinate> afterConsolidation = virtualWaypointConsolidator.consolidatedVirtualWaypoints();
 
-            assert (afterConsolidation.size() == 2);
-            assert (afterConsolidation.get(0).getWaypointWaitTimeSeconds() == 300);
-            assert (afterConsolidation.get(1).getWaypointWaitTimeSeconds() == 100);
+            Assertions.assertTrue (afterConsolidation.size() == 2);
+            Assertions.assertTrue (afterConsolidation.get(0).getWaypointWaitTimeSeconds() == 300);
+            Assertions.assertTrue (afterConsolidation.get(1).getWaypointWaitTimeSeconds() == 100);
         }
     }
 
@@ -107,11 +108,11 @@ public class VirtualWaypointConsolidatorTest
             VirtualWaypointConsolidator virtualWaypointConsolidator = new VirtualWaypointConsolidator(flight, plotCoordinates);
             List<VirtualWayPointCoordinate> afterConsolidation = virtualWaypointConsolidator.consolidatedVirtualWaypoints();
 
-            assert (afterConsolidation.size() == 2);
+            Assertions.assertTrue (afterConsolidation.size() == 2);
 
-            assert (afterConsolidation.size() == 2);
-            assert (afterConsolidation.get(0).getWaypointWaitTimeSeconds() == 300);
-            assert (afterConsolidation.get(1).getWaypointWaitTimeSeconds() == 100);
+            Assertions.assertTrue (afterConsolidation.size() == 2);
+            Assertions.assertTrue (afterConsolidation.get(0).getWaypointWaitTimeSeconds() == 300);
+            Assertions.assertTrue (afterConsolidation.get(1).getWaypointWaitTimeSeconds() == 100);
         }
     }
 
@@ -138,9 +139,9 @@ public class VirtualWaypointConsolidatorTest
             VirtualWaypointConsolidator virtualWaypointConsolidator = new VirtualWaypointConsolidator(flight, plotCoordinates);
             List<VirtualWayPointCoordinate> afterConsolidation = virtualWaypointConsolidator.consolidatedVirtualWaypoints();
 
-            assert (afterConsolidation.size() == 4);
-            assert (afterConsolidation.get(0).getWaypointWaitTimeSeconds() == 200);
-            assert (afterConsolidation.get(1).getWaypointWaitTimeSeconds() == 100);
+            Assertions.assertTrue (afterConsolidation.size() == 4);
+            Assertions.assertTrue (afterConsolidation.get(0).getWaypointWaitTimeSeconds() == 200);
+            Assertions.assertTrue (afterConsolidation.get(1).getWaypointWaitTimeSeconds() == 100);
         }
     }
 
@@ -166,9 +167,9 @@ public class VirtualWaypointConsolidatorTest
             VirtualWaypointConsolidator virtualWaypointConsolidator = new VirtualWaypointConsolidator(flight, plotCoordinates);
             List<VirtualWayPointCoordinate> afterConsolidation = virtualWaypointConsolidator.consolidatedVirtualWaypoints();
 
-            assert (afterConsolidation.size() == 6);
-            assert (afterConsolidation.get(0).getWaypointWaitTimeSeconds() == 100);
-            assert (afterConsolidation.get(1).getWaypointWaitTimeSeconds() == 100);
+            Assertions.assertTrue (afterConsolidation.size() == 6);
+            Assertions.assertTrue (afterConsolidation.get(0).getWaypointWaitTimeSeconds() == 100);
+            Assertions.assertTrue (afterConsolidation.get(1).getWaypointWaitTimeSeconds() == 100);
         }
     }
 
@@ -196,7 +197,7 @@ public class VirtualWaypointConsolidatorTest
             VirtualWaypointConsolidator virtualWaypointConsolidator = new VirtualWaypointConsolidator(flight, plotCoordinates);
             List<VirtualWayPointCoordinate> afterConsolidation = virtualWaypointConsolidator.consolidatedVirtualWaypoints();
 
-            assert (afterConsolidation.size() == 1);
+            Assertions.assertTrue (afterConsolidation.size() == 1);
         }
     }
 }

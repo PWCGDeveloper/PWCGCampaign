@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -98,9 +99,9 @@ public class Ju87D3G2PayloadTest
         System.out.println(bosPlaneType.getType());
 
         IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosPlaneType.getType(), DateUtils.getDateYYYYMMDD("19420801"));
-        assert (payload != null);
+        Assertions.assertTrue (payload != null);
 
-        assert (payload.getAvailablePayloadDesignations(flight).size() == 8);
+        Assertions.assertTrue (payload.getAvailablePayloadDesignations(flight).size() == 8);
 
         List<PayloadElement> unexpectedElements = Arrays.asList(PayloadElement.BK37_AP_GUNPOD, PayloadElement.BK37_HE_GUNPOD);
         for (PayloadElement unexpectedElement : unexpectedElements)
@@ -116,7 +117,7 @@ public class Ju87D3G2PayloadTest
                     }
                 }
             }
-            assert (!found);
+            Assertions.assertTrue (!found);
         }
     }
 
@@ -133,9 +134,9 @@ public class Ju87D3G2PayloadTest
         Date date = DateUtils.getDateYYYYMMDD("19430503");
 
         IPlanePayload payload = bosPayloadFactory.createPlanePayload(bosPlaneType.getType(), date);
-        assert (payload != null);
+        Assertions.assertTrue (payload != null);
 
-        assert (payload.getAvailablePayloadDesignations(flight).size() == 10);
+        Assertions.assertTrue (payload.getAvailablePayloadDesignations(flight).size() == 10);
         
         List<PayloadElement> expectedElements = Arrays.asList(PayloadElement.BK37_AP_GUNPOD, PayloadElement.BK37_HE_GUNPOD);
         for (PayloadElement expectedElement : expectedElements)
@@ -151,7 +152,7 @@ public class Ju87D3G2PayloadTest
                     }
                 }
             }
-            assert (found);
+            Assertions.assertTrue (found);
         }
     }
 
@@ -206,6 +207,6 @@ public class Ju87D3G2PayloadTest
     private void runPayload(IPlanePayload payloadGenerator, List<Integer> expectedPayloadSet) throws PWCGException
     {
         int payloadId = payloadGenerator.createWeaponsPayload(flight);
-        assert (expectedPayloadSet.contains(payloadId));
+        Assertions.assertTrue (expectedPayloadSet.contains(payloadId));
     }
 }

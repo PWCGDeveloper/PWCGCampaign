@@ -1,5 +1,7 @@
 package pwcg.mission.mcu.group.virtual;
 
+import org.junit.jupiter.api.Assertions;
+
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
@@ -53,7 +55,7 @@ public class VirtualWaypointPackageValidator
                     break;
                 }
             }
-            assert (virtualWaypointIsLinkedToRealWaypoint);
+            Assertions.assertTrue (virtualWaypointIsLinkedToRealWaypoint);
         }
     }
 
@@ -68,7 +70,7 @@ public class VirtualWaypointPackageValidator
             {
                 virtualWaypointIsLinkedToRealWaypoint = IndexLinkValidator.isIndexInTargetList(flightPoint.getObjects(), virtualFlightLeader.getLinkTrId());
             }
-            assert (virtualWaypointIsLinkedToRealWaypoint);
+            Assertions.assertTrue (virtualWaypointIsLinkedToRealWaypoint);
         }
     }
 
@@ -80,7 +82,7 @@ public class VirtualWaypointPackageValidator
             PlaneMcu virtualFlightLeader = virtualWayPoint.getVwpFlightLeader();
             boolean virtualWaypointIsLinkedToFormation = IndexLinkValidator.isIndexInTargetList(
                     activateContainer.getFormation().getObjects(), virtualFlightLeader.getLinkTrId());
-            assert (virtualWaypointIsLinkedToFormation);
+            Assertions.assertTrue (virtualWaypointIsLinkedToFormation);
         }
     }
 
@@ -93,7 +95,7 @@ public class VirtualWaypointPackageValidator
             {
                 boolean virtualPlaneIsActivated = IndexLinkValidator.isIndexInTargetList(
                         activateContainer.getActivate().getObjects(), virtualPlane.getLinkTrId());
-                assert (virtualPlaneIsActivated);
+                Assertions.assertTrue (virtualPlaneIsActivated);
             }
         }
     }

@@ -3,6 +3,7 @@ package pwcg.product.bos.ground.vehicle;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -31,8 +32,8 @@ public class VehicleDefinitionFCTest
     {
         for (VehicleDefinition vehicleDefinition : allVehiclesDefinitions)
         {
-            assert (vehicleDefinition.getVehicleName() != null);
-            assert (!vehicleDefinition.getVehicleName().isEmpty());
+            Assertions.assertTrue (vehicleDefinition.getVehicleName() != null);
+            Assertions.assertTrue (!vehicleDefinition.getVehicleName().isEmpty());
         }
     }
 }

@@ -2,6 +2,7 @@ package pwcg.mission.flight.plane;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -68,9 +69,9 @@ public class PlaneFactoryTest
         int callnum = 1;
         for (PlaneMcu plane : assignedPlanes)
         {
-            assert (squadronPersonnel.isActiveSquadronMember(plane.getPilot().getSerialNumber()));
-            assert (plane.getCallsign() == Callsign.SEAGULL);
-            assert (plane.getCallnum() == callnum++);
+            Assertions.assertTrue (squadronPersonnel.isActiveSquadronMember(plane.getPilot().getSerialNumber()));
+            Assertions.assertTrue (plane.getCallsign() == Callsign.SEAGULL);
+            Assertions.assertTrue (plane.getCallnum() == callnum++);
             List<SquadronMember> players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
             for (SquadronMember player : players)
             {
@@ -81,7 +82,7 @@ public class PlaneFactoryTest
             }
         }
 
-        assert (playerFound);
+        Assertions.assertTrue (playerFound);
     }
 
     @Test
@@ -103,16 +104,16 @@ public class PlaneFactoryTest
         int callnum = 1;
         for (PlaneMcu plane : assignedPlanes)
         {
-            assert (squadronPersonnel.isActiveSquadronMember(plane.getPilot().getSerialNumber()));
-            assert (plane.getCallsign() == Callsign.ROOK);
-            assert (plane.getCallnum() == callnum++);
+            Assertions.assertTrue (squadronPersonnel.isActiveSquadronMember(plane.getPilot().getSerialNumber()));
+            Assertions.assertTrue (plane.getCallsign() == Callsign.ROOK);
+            Assertions.assertTrue (plane.getCallnum() == callnum++);
             if (plane.getPilot().getSerialNumber() == players.get(0).getSerialNumber())
             {
                 playerFound = true;
             }
         }
 
-        assert (!playerFound);
+        Assertions.assertTrue (!playerFound);
     }
 
 }

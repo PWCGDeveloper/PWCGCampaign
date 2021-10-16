@@ -2,6 +2,7 @@ package pwcg.aar.outofmission.phase1.elapsedtime;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -42,7 +43,7 @@ public class PersonnelAceLossOutOfMissionHandlerTest
         Mockito.when(aarContext.getNewDate()).thenReturn(DateUtils.getDateYYYYMMDD("19171001"));
         OutOfMissionAceLossCalculator aceLossOutOfMissionHandler = new OutOfMissionAceLossCalculator(campaign, aarContext);
         List<SquadronMember> acesKilled = aceLossOutOfMissionHandler.acesKilledHistorically();
-        assert (acesKilled.size() == 5);
+        Assertions.assertTrue (acesKilled.size() == 5);
     }
 
 }

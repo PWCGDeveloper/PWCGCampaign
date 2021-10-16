@@ -2,6 +2,7 @@ package pwcg.campaign.io.json;
 
 import java.util.Map;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -17,7 +18,7 @@ public class ConfigurationIOJsonTest
     {
         String path = System.getProperty("user.dir") + "\\FCData\\input\\Configuration\\";
         Map<String, ConfigSet> configSet = ConfigurationIOJson.readJson(path);
-        assert (configSet.size() > 0);
+        Assertions.assertTrue (configSet.size() > 0);
     }
 
     @Test
@@ -25,6 +26,6 @@ public class ConfigurationIOJsonTest
     {
         String path = System.getProperty("user.dir") + "\\BoSData\\input\\Configuration\\";
         Map<String, ConfigSet> configSet = ConfigurationIOJson.readJson(path);
-        assert (configSet.size() > 0);
+        Assertions.assertTrue (configSet.size() > 0);
     }
 }

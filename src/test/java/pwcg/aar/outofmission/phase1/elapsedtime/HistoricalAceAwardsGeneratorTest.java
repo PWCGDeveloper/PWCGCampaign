@@ -2,6 +2,7 @@ package pwcg.aar.outofmission.phase1.elapsedtime;
 
 import java.util.Date;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -38,9 +39,9 @@ public class HistoricalAceAwardsGeneratorTest
         HistoricalAceAwardsGenerator awardsGenerator = new HistoricalAceAwardsGenerator(campaign, newDate);
         HistoricalAceAwards historicalAceEvents = awardsGenerator.aceEvents();
         
-        assert (historicalAceEvents.getAceVictories().size() > 0);
-        assert (historicalAceEvents.getAceMedals().size() > 0);
-        assert (historicalAceEvents.getAcePromotions().size() > 0);
+        Assertions.assertTrue (historicalAceEvents.getAceVictories().size() > 0);
+        Assertions.assertTrue (historicalAceEvents.getAceMedals().size() > 0);
+        Assertions.assertTrue (historicalAceEvents.getAcePromotions().size() > 0);
     }
 
 

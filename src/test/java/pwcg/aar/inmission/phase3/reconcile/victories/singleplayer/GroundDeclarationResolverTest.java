@@ -3,6 +3,7 @@ package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -45,7 +46,7 @@ public class GroundDeclarationResolverTest
 
         GroundDeclarationResolver groundDeclarationResolver = new GroundDeclarationResolver(victorySorter);
         ConfirmedVictories groundVictories = groundDeclarationResolver.determineGroundResults();
-        assert (groundVictories.getConfirmedVictories().size() == 3);
+        Assertions.assertTrue (groundVictories.getConfirmedVictories().size() == 3);
     }
 
     @Test
@@ -56,7 +57,7 @@ public class GroundDeclarationResolverTest
 
         GroundDeclarationResolver groundDeclarationResolver = new GroundDeclarationResolver(victorySorter);
         ConfirmedVictories groundVictories = groundDeclarationResolver.determineGroundResults();
-        assert (groundVictories.getConfirmedVictories().size() == 0);
+        Assertions.assertTrue (groundVictories.getConfirmedVictories().size() == 0);
     }
 
 }

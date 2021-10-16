@@ -1,5 +1,6 @@
 package pwcg.mission.ground.builder;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -45,13 +46,13 @@ public class SearchLightUnitBuilderTest
         TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA), "Artillery");
         SearchLightBuilder groundUnitFactory =  new SearchLightBuilder(campaign);
         GroundUnitCollection groundUnitGroup = groundUnitFactory.createSearchLightGroup(targetDefinition);
-        assert (groundUnitGroup.getGroundUnits().size() == 1);
+        Assertions.assertTrue (groundUnitGroup.getGroundUnits().size() == 1);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {
-            assert (groundUnit.getCountry().getCountry() == Country.RUSSIA);
+            Assertions.assertTrue (groundUnit.getCountry().getCountry() == Country.RUSSIA);
             if (groundUnit.getVehicleClass() == VehicleClass.SearchLight)
             {
-                assert (groundUnit.getVehicles().size() == 2);
+                Assertions.assertTrue (groundUnit.getVehicles().size() == 2);
             }
             else
             {
@@ -68,13 +69,13 @@ public class SearchLightUnitBuilderTest
         SearchLightBuilder groundUnitFactory =  new SearchLightBuilder(campaign);
         GroundUnitCollection groundUnitGroup = groundUnitFactory.createOneSearchLight(
                 CountryFactory.makeCountryByCountry(Country.GERMANY), new Coordinate (102000, 0, 100000));
-        assert (groundUnitGroup.getGroundUnits().size() == 1);
+        Assertions.assertTrue (groundUnitGroup.getGroundUnits().size() == 1);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {
-            assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
+            Assertions.assertTrue (groundUnit.getCountry().getCountry() == Country.GERMANY);
             if (groundUnit.getVehicleClass() == VehicleClass.SearchLight)
             {
-                assert (groundUnit.getVehicles().size() == 1);
+                Assertions.assertTrue (groundUnit.getVehicles().size() == 1);
             }
             else
             {

@@ -1,5 +1,6 @@
 package pwcg.mission.flight;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -50,7 +51,7 @@ public class PlayerFlightTypeBoSBombTest
         BombingFlight flight = (BombingFlight) mission.getMissionFlights().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
-        assert (targetMissionPoint != null);
+        Assertions.assertTrue (targetMissionPoint != null);
         PlaneRtbValidator.verifyPlaneRtbEnabled(mission);
 
         FlightActivateValidator.validate(flight);
@@ -58,7 +59,7 @@ public class PlayerFlightTypeBoSBombTest
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
-        assert (flight.getFlightType() == FlightTypes.BOMB);
+        Assertions.assertTrue (flight.getFlightType() == FlightTypes.BOMB);
         for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() >= 0);
@@ -85,7 +86,7 @@ public class PlayerFlightTypeBoSBombTest
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
-        assert (flight.getFlightType() == FlightTypes.LOW_ALT_BOMB);
+        Assertions.assertTrue (flight.getFlightType() == FlightTypes.LOW_ALT_BOMB);
         for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() >= 0);
@@ -103,8 +104,8 @@ public class PlayerFlightTypeBoSBombTest
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)
     {
-        assert (targetDefinition.getCountry() != null);
-        assert (targetDefinition.getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
-        assert (targetDefinition.getTargetType() != TargetType.TARGET_NONE);
+        Assertions.assertTrue (targetDefinition.getCountry() != null);
+        Assertions.assertTrue (targetDefinition.getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
+        Assertions.assertTrue (targetDefinition.getTargetType() != TargetType.TARGET_NONE);
     }
 }

@@ -3,6 +3,7 @@ package pwcg.aar.campaign.update;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -70,9 +71,9 @@ public class CampaignPersonnelReplacementUpdaterTest
     	PersonnelReplacementUpdater replacementUpdater = new PersonnelReplacementUpdater(campaign, aarContext);
     	replacementUpdater.updateCampaignPersonnelReplacements();
     	
-    	assert (replacementService.getReplacementPoints() == 30);
-    	assert (replacementService.getReplacements().getActiveCount(campaign.getDate()) == 4);
-    	assert (replacementService.getLastReplacementDate().equals(campaign.getDate()));
+    	Assertions.assertTrue (replacementService.getReplacementPoints() == 30);
+    	Assertions.assertTrue (replacementService.getReplacements().getActiveCount(campaign.getDate()) == 4);
+    	Assertions.assertTrue (replacementService.getLastReplacementDate().equals(campaign.getDate()));
     }
     
     @Test
@@ -89,9 +90,9 @@ public class CampaignPersonnelReplacementUpdaterTest
     	PersonnelReplacementUpdater replacementUpdater = new PersonnelReplacementUpdater(campaign, aarContext);
     	replacementUpdater.updateCampaignPersonnelReplacements();
     	
-    	assert (replacementService.getReplacementPoints() == 90);
-    	assert (replacementService.getReplacements().getActiveCount(campaign.getDate()) == 4);
-    	assert (replacementService.getLastReplacementDate().equals(campaign.getDate()));
+    	Assertions.assertTrue (replacementService.getReplacementPoints() == 90);
+    	Assertions.assertTrue (replacementService.getReplacements().getActiveCount(campaign.getDate()) == 4);
+    	Assertions.assertTrue (replacementService.getLastReplacementDate().equals(campaign.getDate()));
     }
     
     @Test
@@ -108,8 +109,8 @@ public class CampaignPersonnelReplacementUpdaterTest
     	PersonnelReplacementUpdater replacementUpdater = new PersonnelReplacementUpdater(campaign, aarContext);
     	replacementUpdater.updateCampaignPersonnelReplacements();
     	
-    	assert (replacementService.getReplacementPoints() == 130);
-    	assert (replacementService.getReplacements().getActiveCount(campaign.getDate()) == 0);
-    	assert (replacementService.getLastReplacementDate().equals(DateUtils.removeTimeDays(campaign.getDate(), 6)));
+    	Assertions.assertTrue (replacementService.getReplacementPoints() == 130);
+    	Assertions.assertTrue (replacementService.getReplacements().getActiveCount(campaign.getDate()) == 0);
+    	Assertions.assertTrue (replacementService.getLastReplacementDate().equals(DateUtils.removeTimeDays(campaign.getDate(), 6)));
     }
 }

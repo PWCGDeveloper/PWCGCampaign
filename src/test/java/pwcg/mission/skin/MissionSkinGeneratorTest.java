@@ -3,6 +3,7 @@ package pwcg.mission.skin;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -63,10 +64,10 @@ public class MissionSkinGeneratorTest
         planes.add(plane1);
 
         MissionSkinSet missionSkinSet = MissionSkinGenerator.buildMissionSkinSet(flight);
-        assert (missionSkinSet.getFactorySkins("ju87d3").size() > 0);
-        assert (missionSkinSet.getSquadronSkins("ju87d3").size() > 0);
-        assert (missionSkinSet.getSquadronPersonalSkins("ju87d3").size() > 0);
-        assert (missionSkinSet.getNonSquadronPersonalSkin("ju87d3").size() > 0);
+        Assertions.assertTrue (missionSkinSet.getFactorySkins("ju87d3").size() > 0);
+        Assertions.assertTrue (missionSkinSet.getSquadronSkins("ju87d3").size() > 0);
+        Assertions.assertTrue (missionSkinSet.getSquadronPersonalSkins("ju87d3").size() > 0);
+        Assertions.assertTrue (missionSkinSet.getNonSquadronPersonalSkin("ju87d3").size() > 0);
     }
 
     @Test
@@ -80,10 +81,10 @@ public class MissionSkinGeneratorTest
         planes.add(plane1);
 
         MissionSkinSet missionSkinSet = MissionSkinGenerator.buildMissionSkinSet(flight);
-        assert (missionSkinSet.getFactorySkins("il2m42").size() > 0);
-        assert (missionSkinSet.getSquadronSkins("il2m42").size() > 0);
-        assert (missionSkinSet.getSquadronPersonalSkins("il2m42").size() > 0);
-        assert (missionSkinSet.getNonSquadronPersonalSkin("il2m42").size() > 0);
+        Assertions.assertTrue (missionSkinSet.getFactorySkins("il2m42").size() > 0);
+        Assertions.assertTrue (missionSkinSet.getSquadronSkins("il2m42").size() > 0);
+        Assertions.assertTrue (missionSkinSet.getSquadronPersonalSkins("il2m42").size() > 0);
+        Assertions.assertTrue (missionSkinSet.getNonSquadronPersonalSkin("il2m42").size() > 0);
     }
 
 }

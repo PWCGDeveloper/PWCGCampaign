@@ -3,6 +3,7 @@ package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -61,7 +62,7 @@ public class ClaimDenierTest
 
         ClaimDenier claimDenier = new ClaimDenier(campaign, planeFactory);
         ClaimDeniedEvent claimDeniedEvent = claimDenier.determineClaimDenied(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, declaration);
-        assert (claimDeniedEvent == null);
+        Assertions.assertTrue (claimDeniedEvent == null);
     }
     
     @Test 
@@ -75,7 +76,7 @@ public class ClaimDenierTest
         
         ClaimDenier claimDenier = new ClaimDenier(campaign, planeFactory);
         ClaimDeniedEvent claimDeniedEvent = claimDenier.determineClaimDenied(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, declaration);
-        assert (claimDeniedEvent.getType().equals("Albatros D.III"));
+        Assertions.assertTrue (claimDeniedEvent.getType().equals("Albatros D.III"));
     }
     
     @Test 
@@ -87,6 +88,6 @@ public class ClaimDenierTest
         
         ClaimDenier claimDenier = new ClaimDenier(campaign, planeFactory);
         ClaimDeniedEvent claimDeniedEvent = claimDenier.determineClaimDenied(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, declaration);
-        assert (claimDeniedEvent.getType().equals(PlaneType.BALLOON));
+        Assertions.assertTrue (claimDeniedEvent.getType().equals(PlaneType.BALLOON));
     }
 }

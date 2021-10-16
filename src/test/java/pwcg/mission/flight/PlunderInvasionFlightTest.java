@@ -2,6 +2,7 @@ package pwcg.mission.flight;
 
 import java.util.Date;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -40,14 +41,14 @@ public class PlunderInvasionFlightTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
 
-        assert (mission.getSkirmish() != null);
-        assert (mission.getSkirmish().getSkirmishName().contains("Plunder"));
+        Assertions.assertTrue (mission.getSkirmish() != null);
+        Assertions.assertTrue (mission.getSkirmish().getSkirmishName().contains("Plunder"));
 
         boolean axisGroundAttackFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.GROUND_ATTACK, Side.AXIS);
-        assert (axisGroundAttackFlightFound);
+        Assertions.assertTrue (axisGroundAttackFlightFound);
 
         boolean alliedGroundAttackFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.GROUND_ATTACK, Side.ALLIED);
-        assert (alliedGroundAttackFlightFound);
+        Assertions.assertTrue (alliedGroundAttackFlightFound);
 
         MissionFlightValidator.validateMission(mission);
     }
@@ -64,7 +65,7 @@ public class PlunderInvasionFlightTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         
-        assert (mission.getSkirmish() == null);
+        Assertions.assertTrue (mission.getSkirmish() == null);
         
         MissionFlightValidator.validateMission(mission);
     }

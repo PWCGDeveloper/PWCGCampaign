@@ -1,5 +1,6 @@
 package pwcg.campaign.group;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -45,8 +46,8 @@ public class AirfieldManagerTest
         AirfieldManager airfieldManager = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.ARRAS_MAP).getAirfieldManager();
         for (Airfield airfield : airfieldManager.getAllAirfields().values())
         {
-            assert (airfield.getTakeoffLocation(mission) != null);
-            assert (airfield.getLandingLocation(mission) != null);
+            Assertions.assertTrue (airfield.getTakeoffLocation(mission) != null);
+            Assertions.assertTrue (airfield.getLandingLocation(mission) != null);
         }
 	}
 

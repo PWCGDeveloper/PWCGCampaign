@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -51,7 +52,7 @@ public abstract class MedalManagerTestBase
         makeVictories(numVictoriesNeededForMedal);
         Medal medal = medalManager.award(campaign, player, service, victoriesThisMission);
         Medal referenceMedal = medalManager.getMedal(medalId);
-        assert (medal.getMedalName().equals(referenceMedal.getMedalName()));
+        Assertions.assertTrue (medal.getMedalName().equals(referenceMedal.getMedalName()));
         medals.add(medal);
     }
 

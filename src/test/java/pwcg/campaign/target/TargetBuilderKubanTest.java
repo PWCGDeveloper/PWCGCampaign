@@ -3,6 +3,7 @@ package pwcg.campaign.target;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -62,8 +63,8 @@ public class TargetBuilderKubanTest
 
             TargetDefinition targetDefinition = GroundTargetDefinitionFactory.buildTargetDefinition(playerFlight.getFlightInformation());
 
-            assert (targetDefinition.getCountry().getCountry() == Country.GERMANY);
-            assert (targetDefinition.getTargetType() == TargetType.TARGET_ARMOR || targetDefinition.getTargetType() == TargetType.TARGET_INFANTRY
+            Assertions.assertTrue (targetDefinition.getCountry().getCountry() == Country.GERMANY);
+            Assertions.assertTrue (targetDefinition.getTargetType() == TargetType.TARGET_ARMOR || targetDefinition.getTargetType() == TargetType.TARGET_INFANTRY
                     || targetDefinition.getTargetType() == TargetType.TARGET_ARTILLERY);
         }
     }
@@ -80,8 +81,8 @@ public class TargetBuilderKubanTest
 
             TargetDefinition targetDefinition = GroundTargetDefinitionFactory.buildTargetDefinition(playerFlight.getFlightInformation());
 
-            assert (targetDefinition.getCountry().getCountry() == Country.GERMANY);
-            assert (targetDefinition.getTargetType() == TargetType.TARGET_TRANSPORT);
+            Assertions.assertTrue (targetDefinition.getCountry().getCountry() == Country.GERMANY);
+            Assertions.assertTrue (targetDefinition.getTargetType() == TargetType.TARGET_TRANSPORT);
         }
     }
 
@@ -97,8 +98,8 @@ public class TargetBuilderKubanTest
 
             TargetDefinition targetDefinition = GroundTargetDefinitionFactory.buildTargetDefinition(playerFlight.getFlightInformation());
 
-            assert (targetDefinition.getCountry().getCountry() == Country.GERMANY);
-            assert (targetDefinition.getTargetType() == TargetType.TARGET_SHIPPING);
+            Assertions.assertTrue (targetDefinition.getCountry().getCountry() == Country.GERMANY);
+            Assertions.assertTrue (targetDefinition.getTargetType() == TargetType.TARGET_SHIPPING);
         }
     }
 
@@ -114,8 +115,8 @@ public class TargetBuilderKubanTest
 
             TargetDefinition targetDefinition = GroundTargetDefinitionFactory.buildTargetDefinition(playerFlight.getFlightInformation());
 
-            assert (targetDefinition.getCountry().getCountry() == Country.GERMANY);
-            assert (targetDefinition.getTargetType() == TargetType.TARGET_TRAIN);
+            Assertions.assertTrue (targetDefinition.getCountry().getCountry() == Country.GERMANY);
+            Assertions.assertTrue (targetDefinition.getTargetType() == TargetType.TARGET_TRAIN);
         }
     }
 }

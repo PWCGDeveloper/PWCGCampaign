@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -21,7 +22,7 @@ public class AceIOJsonTest
     {
         PWCGContext.setProduct(PWCGProduct.FC);
         List<HistoricalAce> aces = HistoricalAceIOJson.readJson();
-        assert (aces.size() == 186);        
+        Assertions.assertTrue (aces.size() == 186);        
         verifyNoDuplicateSerialNumbers(aces);
     }
     
@@ -30,7 +31,7 @@ public class AceIOJsonTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         List<HistoricalAce> aces = HistoricalAceIOJson.readJson();
-        assert (aces.size() == 17);        
+        Assertions.assertTrue (aces.size() == 17);        
         verifyNoDuplicateSerialNumbers(aces);
     }
 

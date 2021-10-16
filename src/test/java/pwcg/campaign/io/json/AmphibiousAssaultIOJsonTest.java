@@ -1,5 +1,6 @@
 package pwcg.campaign.io.json;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -19,6 +20,6 @@ public class AmphibiousAssaultIOJsonTest
         PWCGContext.setProduct(PWCGProduct.BOS);
         PWCGContext.getInstance();
         AmphibiousAssaults amphibiousAssault = AmphibiousAssaultIOJson.readJson(FrontMapIdentifier.KUBAN_MAP.getMapName());
-        assert (amphibiousAssault.getAmphibiousAssaults().size() > 0);
+        Assertions.assertTrue (amphibiousAssault.getAmphibiousAssaults().size() > 0);
     }
 }

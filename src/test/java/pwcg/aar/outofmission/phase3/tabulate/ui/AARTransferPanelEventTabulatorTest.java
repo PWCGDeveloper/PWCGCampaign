@@ -3,6 +3,7 @@ package pwcg.aar.outofmission.phase3.tabulate.ui;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -47,7 +48,7 @@ public class AARTransferPanelEventTabulatorTest extends AARTestSetup
         
         List<TransferEvent> transferEvents = transferPanelData.getTransfers();
 
-        assert (transferEvents.size() == 2);
+        Assertions.assertTrue (transferEvents.size() == 2);
     }
 
     @Test
@@ -68,6 +69,6 @@ public class AARTransferPanelEventTabulatorTest extends AARTestSetup
         
         List<TransferEvent> transferEvents = transferPanelData.getTransfers();
 
-        assert (transferEvents.size() == 2);
+        Assertions.assertTrue (transferEvents.size() == 2);
     }
 }

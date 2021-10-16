@@ -1,5 +1,6 @@
 package pwcg.mission.ground.builder;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -68,26 +69,26 @@ public class BalloonUnitBuilderTest
 
     private void validateBalloonUnit(GroundUnitCollection groundUnitGroup, Country country) throws PWCGException
     {
-        assert (groundUnitGroup.getGroundUnits().size() == 3);
+        Assertions.assertTrue (groundUnitGroup.getGroundUnits().size() == 3);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {
             if (groundUnit.getVehicleClass() == VehicleClass.Balloon)
             {
-                assert (groundUnit.getVehicles().size() == 1);
+                Assertions.assertTrue (groundUnit.getVehicles().size() == 1);
             }
             else if (groundUnit.getVehicleClass() == VehicleClass.AAAArtillery)
             {
-                assert (groundUnit.getVehicles().size() >= 2);
+                Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
             }
             else if (groundUnit.getVehicleClass() == VehicleClass.AAAMachineGun)
             {
-                assert (groundUnit.getVehicles().size() >= 2);
+                Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
             }
             else
             {
                 throw new PWCGException("Unexpected unit type");
             }
-            assert (groundUnit.getCountry().getCountry() == country);
+            Assertions.assertTrue (groundUnit.getCountry().getCountry() == country);
         }
     }
 }

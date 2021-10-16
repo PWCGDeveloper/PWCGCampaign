@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -124,9 +125,9 @@ public class AARInMissionResultGeneratorTest
         List<Victory> aiPilotVictories = aarContext.getPersonnelAcheivements().getVictoryAwardsForPilot(aiPlaneVictor.getPilotSerialNumber());
         List<Victory> playerVictories = aarContext.getPersonnelAcheivements().getVictoryAwardsForPilot(playerPlaneVictor.getPilotSerialNumber());
         List<ClaimDeniedEvent> playerClaimsDenied = aarContext.getPersonnelAcheivements().getPlayerClaimsDenied();
-        assert (aiPilotVictories.size() == 3);
-        assert (playerVictories.size() == 2);
-        assert (playerClaimsDenied.size() == 2);
+        Assertions.assertTrue (aiPilotVictories.size() == 3);
+        Assertions.assertTrue (playerVictories.size() == 2);
+        Assertions.assertTrue (playerClaimsDenied.size() == 2);
     }
     
     private void addPlayerDeclarations() throws PWCGException

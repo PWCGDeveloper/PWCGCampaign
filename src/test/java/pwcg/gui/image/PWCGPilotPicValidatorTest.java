@@ -3,6 +3,7 @@ package pwcg.gui.image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -33,7 +34,7 @@ public class PWCGPilotPicValidatorTest
         for (File pilotPicFile : FileUtils.getFilesWithFilter(pilotPicDir, ".jpg"))
         {
             BufferedImage image = ImageCache.getImageFromFile(pilotPicFile.getPath());
-            assert (image != null);
+            Assertions.assertTrue (image != null);
         }
     }
     
@@ -44,7 +45,7 @@ public class PWCGPilotPicValidatorTest
         for (File pilotPicFile : FileUtils.getFilesWithFilter(pilotPicDir, ".jpg"))
         {
             BufferedImage image = ImageCache.getImageFromFile(pilotPicFile.getPath());
-            assert (image != null);
+            Assertions.assertTrue (image != null);
         }
     }
     
@@ -55,7 +56,7 @@ public class PWCGPilotPicValidatorTest
         for (File pilotPicFile : FileUtils.getFilesWithFilter(pilotPicDir, ".jpg"))
         {
             BufferedImage image = ImageCache.getImageFromFile(pilotPicFile.getPath());
-            assert (image != null);
+            Assertions.assertTrue (image != null);
         }
     }
     
@@ -66,7 +67,7 @@ public class PWCGPilotPicValidatorTest
         for (File pilotPicFile : FileUtils.getFilesWithFilter(pilotPicDir, ".jpg"))
         {
             BufferedImage image = ImageCache.getImageFromFile(pilotPicFile.getPath());
-            assert (image != null);
+            Assertions.assertTrue (image != null);
         }
     }
     
@@ -77,7 +78,7 @@ public class PWCGPilotPicValidatorTest
         for (File pilotPicFile : FileUtils.getFilesWithFilter(pilotPicDir, ".jpg"))
         {
             BufferedImage image = ImageCache.getImageFromFile(pilotPicFile.getPath());
-            assert (image != null);
+            Assertions.assertTrue (image != null);
         }
     }
 }

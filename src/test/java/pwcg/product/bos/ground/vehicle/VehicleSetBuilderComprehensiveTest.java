@@ -1,5 +1,6 @@
 package pwcg.product.bos.ground.vehicle;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -40,7 +41,7 @@ public class VehicleSetBuilderComprehensiveTest
     {
         VehicleSetBuilderComprehensive vehicleSetBuilder = new VehicleSetBuilderComprehensive();
         vehicleSetBuilder.makeOneOfEachType();
-        assert (vehicleSetBuilder.getAllVehicles().size() > 0);
+        Assertions.assertTrue (vehicleSetBuilder.getAllVehicles().size() > 0);
     }
 
     @Test

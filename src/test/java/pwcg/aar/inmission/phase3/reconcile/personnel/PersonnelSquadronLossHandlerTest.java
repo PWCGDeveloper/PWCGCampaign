@@ -3,6 +3,7 @@ package pwcg.aar.inmission.phase3.reconcile.personnel;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -70,9 +71,9 @@ public class PersonnelSquadronLossHandlerTest
         PersonnelLossHandler pilotLossInMissionHandler = new PersonnelLossHandler(campaign);
         AARPersonnelLosses personnelLosses = pilotLossInMissionHandler.pilotsShotDown(pilotStatusList);
 
-        assert (personnelLosses.getPersonnelKilled().size() == 5);
-        assert (personnelLosses.getPersonnelCaptured().size() == 0);
-        assert (personnelLosses.getPersonnelMaimed().size() == 0);
+        Assertions.assertTrue (personnelLosses.getPersonnelKilled().size() == 5);
+        Assertions.assertTrue (personnelLosses.getPersonnelCaptured().size() == 0);
+        Assertions.assertTrue (personnelLosses.getPersonnelMaimed().size() == 0);
     }
 
     @Test
@@ -95,10 +96,10 @@ public class PersonnelSquadronLossHandlerTest
         PersonnelLossHandler pilotLossInMissionHandler = new PersonnelLossHandler(campaign);
         AARPersonnelLosses personnelLosses = pilotLossInMissionHandler.pilotsShotDown(pilotStatusList);
 
-        assert (personnelLosses.getPersonnelKilled().size() == 1);
-        assert (personnelLosses.getPersonnelCaptured().size() == 0);
-        assert (personnelLosses.getPersonnelMaimed().size() == 2);
-        assert (personnelLosses.getPersonnelWounded().size() == 2);
+        Assertions.assertTrue (personnelLosses.getPersonnelKilled().size() == 1);
+        Assertions.assertTrue (personnelLosses.getPersonnelCaptured().size() == 0);
+        Assertions.assertTrue (personnelLosses.getPersonnelMaimed().size() == 2);
+        Assertions.assertTrue (personnelLosses.getPersonnelWounded().size() == 2);
     }
 
     @Test
@@ -121,9 +122,9 @@ public class PersonnelSquadronLossHandlerTest
         PersonnelLossHandler pilotLossInMissionHandler = new PersonnelLossHandler(campaign);
         AARPersonnelLosses personnelLosses = pilotLossInMissionHandler.pilotsShotDown(pilotStatusList);
 
-        assert (personnelLosses.getPersonnelKilled().size() == 0);
-        assert (personnelLosses.getPersonnelCaptured().size() == 3);
-        assert (personnelLosses.getPersonnelMaimed().size() == 1);
+        Assertions.assertTrue (personnelLosses.getPersonnelKilled().size() == 0);
+        Assertions.assertTrue (personnelLosses.getPersonnelCaptured().size() == 3);
+        Assertions.assertTrue (personnelLosses.getPersonnelMaimed().size() == 1);
     }
 
 }

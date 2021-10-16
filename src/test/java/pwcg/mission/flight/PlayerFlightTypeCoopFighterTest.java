@@ -3,6 +3,7 @@ package pwcg.mission.flight;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -64,7 +65,7 @@ public class PlayerFlightTypeCoopFighterTest
         PatrolFlight flight = (PatrolFlight) mission.getMissionFlights().getPlayerFlights().get(0);
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
-        assert (flight.getFlightType() == FlightTypes.PATROL);
+        Assertions.assertTrue (flight.getFlightType() == FlightTypes.PATROL);
         verifyEnemyFlights(campaign, mission);
     }
 
@@ -86,7 +87,7 @@ public class PlayerFlightTypeCoopFighterTest
         PatrolFlight flight = (PatrolFlight) mission.getMissionFlights().getPlayerFlights().get(0);
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
-        assert (flight.getFlightType() == FlightTypes.LOW_ALT_PATROL);        
+        Assertions.assertTrue (flight.getFlightType() == FlightTypes.LOW_ALT_PATROL);        
         verifyEnemyFlights(campaign, mission);
     }
 
@@ -108,7 +109,7 @@ public class PlayerFlightTypeCoopFighterTest
         CAPFlight flight = (CAPFlight) mission.getMissionFlights().getPlayerFlights().get(0);
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
-        assert (flight.getFlightType() == FlightTypes.LOW_ALT_CAP);
+        Assertions.assertTrue (flight.getFlightType() == FlightTypes.LOW_ALT_CAP);
         verifyEnemyFlights(campaign, mission);
     }
 
@@ -130,7 +131,7 @@ public class PlayerFlightTypeCoopFighterTest
         InterceptFlight flight = (InterceptFlight) mission.getMissionFlights().getPlayerFlights().get(0);
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
-        assert (flight.getFlightType() == FlightTypes.INTERCEPT);        
+        Assertions.assertTrue (flight.getFlightType() == FlightTypes.INTERCEPT);        
         verifyEnemyFlights(campaign, mission);
     }
 
@@ -152,7 +153,7 @@ public class PlayerFlightTypeCoopFighterTest
         OffensiveFlight flight = (OffensiveFlight) mission.getMissionFlights().getPlayerFlights().get(0);
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
-        assert (flight.getFlightType() == FlightTypes.OFFENSIVE);        
+        Assertions.assertTrue (flight.getFlightType() == FlightTypes.OFFENSIVE);        
         verifyEnemyFlights(campaign, mission);
     }
     

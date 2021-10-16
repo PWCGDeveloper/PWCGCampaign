@@ -1,5 +1,6 @@
 package pwcg.campaign;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -30,9 +31,9 @@ public class BattleManagerTest
     	BattleManager battleManager = PWCGContext.getInstance().getCurrentMap().getBattleManager();
     	
     	Battle battle = battleManager.getBattleForCampaign(FrontMapIdentifier.ARRAS_MAP, new Coordinate(80000, 0, 80000), DateUtils.getDateYYYYMMDD("19171121"));
-        assert (battle.getName().equals("Cambrai"));
-        assert (battle.getAggressorcountry() == Country.BRITAIN);
-        assert (battle.getDefendercountry() == Country.GERMANY);
+        Assertions.assertTrue (battle.getName().equals("Cambrai"));
+        Assertions.assertTrue (battle.getAggressorcountry() == Country.BRITAIN);
+        Assertions.assertTrue (battle.getDefendercountry() == Country.GERMANY);
     }
 
     @Test
@@ -42,7 +43,7 @@ public class BattleManagerTest
         BattleManager battleManager = PWCGContext.getInstance().getCurrentMap().getBattleManager();
     	
     	Battle battle = battleManager.getBattleForCampaign(FrontMapIdentifier.ARRAS_MAP, new Coordinate(45000, 0, 220000), DateUtils.getDateYYYYMMDD("19180501"));
-        assert (battle == null);
+        Assertions.assertTrue (battle == null);
     }
 
     @Test
@@ -52,7 +53,7 @@ public class BattleManagerTest
         BattleManager battleManager = PWCGContext.getInstance().getCurrentMap().getBattleManager();
     	
     	Battle battle = battleManager.getBattleForCampaign(FrontMapIdentifier.ARRAS_MAP, new Coordinate(45000, 0, 20000), DateUtils.getDateYYYYMMDD("19180501"));
-        assert (battle == null);
+        Assertions.assertTrue (battle == null);
     }    
 
     @Test
@@ -62,7 +63,7 @@ public class BattleManagerTest
         BattleManager battleManager = PWCGContext.getInstance().getCurrentMap().getBattleManager();
     	
     	Battle battle = battleManager.getBattleForCampaign(FrontMapIdentifier.ARRAS_MAP, new Coordinate(45000, 0, 220000), DateUtils.getDateYYYYMMDD("19180501"));
-        assert (battle == null);
+        Assertions.assertTrue (battle == null);
     }    
 
 }

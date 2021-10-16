@@ -3,6 +3,7 @@ package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -137,7 +138,7 @@ public class AiDeclarationResolutionRandomTest
         AiDeclarationResolver declarationResolution = new AiDeclarationResolver(campaign, aarContext);
         ConfirmedVictories confirmedAiVictories = declarationResolution.determineAiAirResults(victorySorter);
         
-        assert (confirmedAiVictories.getConfirmedVictories().size() == 1);
+        Assertions.assertTrue (confirmedAiVictories.getConfirmedVictories().size() == 1);
     }
 
     @Test
@@ -151,7 +152,7 @@ public class AiDeclarationResolutionRandomTest
         AiDeclarationResolver declarationResolution = new AiDeclarationResolver(campaign, aarContext);
         ConfirmedVictories confirmedAiVictories = declarationResolution.determineAiAirResults(victorySorter);
         
-        assert (confirmedAiVictories.getConfirmedVictories().size() == 0);
+        Assertions.assertTrue (confirmedAiVictories.getConfirmedVictories().size() == 0);
     }
 
 }

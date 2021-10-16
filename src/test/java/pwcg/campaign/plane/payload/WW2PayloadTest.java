@@ -1,5 +1,6 @@
 package pwcg.campaign.plane.payload;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -112,6 +113,6 @@ public class WW2PayloadTest
     {
         int payloadId = payloadGenerator.createWeaponsPayload(flight);
         PayloadDesignation payloadDesignation = payloadGenerator.getSelectedPayloadDesignation();
-        assert (payloadDesignation.getPayloadId() == payloadId);
+        Assertions.assertTrue (payloadDesignation.getPayloadId() == payloadId);
     }
 }

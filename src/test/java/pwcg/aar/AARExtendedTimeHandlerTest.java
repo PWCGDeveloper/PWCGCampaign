@@ -3,6 +3,7 @@ package pwcg.aar;
 import java.util.Date;
 import java.util.Map;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -89,7 +90,7 @@ public class AARExtendedTimeHandlerTest
             }
         }
         
-        assert (numLeaves < 10);
+        Assertions.assertTrue (numLeaves < 10);
         SquadronMembers squadronMembersAfter = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(
                         campaign.getPersonnelManager().getSquadronPersonnel(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId()).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
         assert(squadronMembersAfter.getSquadronMemberCollection().size() >= 9);
@@ -129,7 +130,7 @@ public class AARExtendedTimeHandlerTest
             }
         }
         
-        assert (numLeaves < 10);
+        Assertions.assertTrue (numLeaves < 10);
         SquadronMembers squadronMembersAfter = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(
                         campaign.getPersonnelManager().getSquadronPersonnel(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId()).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
         assert(squadronMembersAfter.getSquadronMemberCollection().size() >= 9);

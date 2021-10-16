@@ -3,6 +3,7 @@ package pwcg.aar.outofmission.phase3.tabulate.ui;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -53,7 +54,7 @@ public class AARAceLeavePanelEventTabulatorTest extends AARTestSetup
 
         AceLeavePanelEventTabulator aceLeavePanelEventTabulator = new AceLeavePanelEventTabulator(campaign, aarContext);
         AARAceLeavePanelData aceLeavePanelData = aceLeavePanelEventTabulator.tabulateForAARAceLeavePanel();
-        assert (aceLeavePanelData.getAcesOnLeaveDuringElapsedTime().size() == 1);
+        Assertions.assertTrue (aceLeavePanelData.getAcesOnLeaveDuringElapsedTime().size() == 1);
     }
     
     @Test
@@ -63,6 +64,6 @@ public class AARAceLeavePanelEventTabulatorTest extends AARTestSetup
 
         AceLeavePanelEventTabulator aceLeavePanelEventTabulator = new AceLeavePanelEventTabulator(campaign, aarContext);
         AARAceLeavePanelData aceLeavePanelData = aceLeavePanelEventTabulator.tabulateForAARAceLeavePanel();
-        assert (aceLeavePanelData.getAcesOnLeaveDuringElapsedTime().size() == 0);
+        Assertions.assertTrue (aceLeavePanelData.getAcesOnLeaveDuringElapsedTime().size() == 0);
     }
 }

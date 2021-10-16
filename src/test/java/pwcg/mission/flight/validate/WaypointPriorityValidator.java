@@ -1,5 +1,7 @@
 package pwcg.mission.flight.validate;
 
+import org.junit.jupiter.api.Assertions;
+
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypeCategory;
 import pwcg.mission.flight.FlightTypes;
@@ -32,19 +34,19 @@ public class WaypointPriorityValidator
         {
             if (FlightTypes.isHighPriorityFlight(flight.getFlightType())) 
             {
-                assert (waypoint.getPriority() == WaypointPriority.PRIORITY_HIGH);    
+                Assertions.assertTrue (waypoint.getPriority() == WaypointPriority.PRIORITY_HIGH);    
             }
             else if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TAKEOFF))
             {
-                assert (waypoint.getPriority() != WaypointPriority.PRIORITY_LOW);
+                Assertions.assertTrue (waypoint.getPriority() != WaypointPriority.PRIORITY_LOW);
             }
             else if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_LANDING_APPROACH))
             {
-                assert (waypoint.getPriority() == WaypointPriority.PRIORITY_MED);
+                Assertions.assertTrue (waypoint.getPriority() == WaypointPriority.PRIORITY_MED);
             }
             else
             {
-                assert (waypoint.getPriority() == expectedWaypointPriority);
+                Assertions.assertTrue (waypoint.getPriority() == expectedWaypointPriority);
             }
         }
     }

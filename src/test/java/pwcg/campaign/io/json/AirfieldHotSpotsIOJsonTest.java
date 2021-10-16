@@ -1,5 +1,6 @@
 package pwcg.campaign.io.json;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -17,7 +18,7 @@ public class AirfieldHotSpotsIOJsonTest
     {
         PWCGContext.setProduct(PWCGProduct.FC);
         AirfieldHotSpotCollection airfieldHotSpotCollection = AirfieldHotSpotsIOJson.readJson();
-        assert (airfieldHotSpotCollection.getAirfieldHotSpots().size() > 0);
+        Assertions.assertTrue (airfieldHotSpotCollection.getAirfieldHotSpots().size() > 0);
     }
     
     @Test
@@ -25,6 +26,6 @@ public class AirfieldHotSpotsIOJsonTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         AirfieldHotSpotCollection airfieldHotSpotCollection = AirfieldHotSpotsIOJson.readJson();
-        assert (airfieldHotSpotCollection.getAirfieldHotSpots().size() > 0);
+        Assertions.assertTrue (airfieldHotSpotCollection.getAirfieldHotSpots().size() > 0);
     }
 }

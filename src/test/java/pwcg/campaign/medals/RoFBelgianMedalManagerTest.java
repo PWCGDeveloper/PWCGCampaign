@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.swing.ImageIcon;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -78,7 +79,7 @@ public class RoFBelgianMedalManagerTest extends MedalManagerTestBase
 
     	makeVictories(29);
         Medal medal = medalManager.award(campaign, player, service, 2);
-        assert (medal == null);
+        Assertions.assertTrue (medal == null);
     }
 
     @Test
@@ -88,7 +89,7 @@ public class RoFBelgianMedalManagerTest extends MedalManagerTestBase
     	{
 	        String medalPath = ContextSpecificImages.imagesMedals() + "Allied\\" + medal.getMedalImage();
 	        ImageIcon medalIcon = ImageIconCache.getInstance().getImageIcon(medalPath);
-	        assert (medalIcon != null);
+	        Assertions.assertTrue (medalIcon != null);
     	}
     }
 }

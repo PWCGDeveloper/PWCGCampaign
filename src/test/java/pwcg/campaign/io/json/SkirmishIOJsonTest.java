@@ -1,5 +1,6 @@
 package pwcg.campaign.io.json;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -19,6 +20,6 @@ public class SkirmishIOJsonTest
         PWCGContext.setProduct(PWCGProduct.BOS);
         PWCGContext.getInstance();
         Skirmishes skirmishes = SkirmishIOJson.readJson(FrontMapIdentifier.BODENPLATTE_MAP.getMapName());
-        assert (skirmishes.getSkirmishes().size() > 0);
+        Assertions.assertTrue (skirmishes.getSkirmishes().size() > 0);
     }
 }

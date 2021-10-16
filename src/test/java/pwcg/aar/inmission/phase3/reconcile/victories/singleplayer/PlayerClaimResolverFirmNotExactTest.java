@@ -1,5 +1,6 @@
 package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -56,7 +57,7 @@ public class PlayerClaimResolverFirmNotExactTest
         PlayerClaimResolverFirm claimResolverFirm = new PlayerClaimResolverFirm();
         String planeDisplayName = claimResolverFirm.getShotDownPlaneDisplayNameAsFirmNotExact(player, playerDeclaration, resultVictory);
         
-        assert (planeDisplayName.equals("S.E.5a"));
+        Assertions.assertTrue (planeDisplayName.equals("S.E.5a"));
     }
 
     @Test
@@ -82,7 +83,7 @@ public class PlayerClaimResolverFirmNotExactTest
         PlayerClaimResolverFirm claimResolverFirm = new PlayerClaimResolverFirm();
         String planeDisplayName = claimResolverFirm.getShotDownPlaneDisplayNameAsFirmNotExact(player, playerDeclaration, resultVictory);
         
-        assert (planeDisplayName.equals("S.E.5a"));
+        Assertions.assertTrue (planeDisplayName.equals("S.E.5a"));
     }
 
     @Test
@@ -108,7 +109,7 @@ public class PlayerClaimResolverFirmNotExactTest
         PlayerClaimResolverFirm claimResolverFirm = new PlayerClaimResolverFirm();
         String planeDisplayName = claimResolverFirm.getShotDownPlaneDisplayNameAsFirmNotExact(player, playerDeclaration, resultVictory);
         
-        assert (planeDisplayName.isEmpty());
+        Assertions.assertTrue (planeDisplayName.isEmpty());
     }
 
     @Test
@@ -134,7 +135,7 @@ public class PlayerClaimResolverFirmNotExactTest
         PlayerClaimResolverFirm claimResolverFirm = new PlayerClaimResolverFirm();
         String planeDisplayName = claimResolverFirm.getShotDownPlaneDisplayNameAsFirmNotExact(player, playerDeclaration, resultVictory);
         
-        assert (planeDisplayName.isEmpty());
+        Assertions.assertTrue (planeDisplayName.isEmpty());
     }
 
     @Test
@@ -161,7 +162,7 @@ public class PlayerClaimResolverFirmNotExactTest
         PlayerClaimResolverFirm claimResolverFirm = new PlayerClaimResolverFirm();
         String planeDisplayName = claimResolverFirm.getShotDownPlaneDisplayNameAsFirmNotExact(player, playerDeclaration, resultVictory);
         
-        assert (planeDisplayName.isEmpty());
+        Assertions.assertTrue (planeDisplayName.isEmpty());
     }   
     
     @Test
@@ -187,6 +188,6 @@ public class PlayerClaimResolverFirmNotExactTest
         PlayerClaimResolverFirm claimResolverFirm = new PlayerClaimResolverFirm();
         String planeDisplayName = claimResolverFirm.getShotDownPlaneDisplayNameAsFirmNotExact(player, playerDeclaration, resultVictory);
         
-        assert (planeDisplayName.isEmpty());
+        Assertions.assertTrue (planeDisplayName.isEmpty());
     }
 }

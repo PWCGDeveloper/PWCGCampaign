@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.junit.jupiter.api.Assertions;
+
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
@@ -25,7 +27,7 @@ public class MissionFlightValidator
         for (IFlight flight: mission.getMissionFlights().getAllAerialFlights())
         {
             System.out.println(flight.getFlightInformation().getSquadron().determineDisplayName(mission.getCampaign().getDate()) + "    " + flight.getFlightInformation().getFlightType());
-            assert (!squadronsUsedInMission.contains(flight.getSquadron().getSquadronId()));
+            Assertions.assertTrue (!squadronsUsedInMission.contains(flight.getSquadron().getSquadronId()));
             squadronsUsedInMission.add(flight.getSquadron().getSquadronId());
         }
     }

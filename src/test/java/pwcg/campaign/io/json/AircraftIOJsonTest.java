@@ -2,6 +2,7 @@ package pwcg.campaign.io.json;
 
 import java.util.Map;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -32,7 +33,7 @@ public class AircraftIOJsonTest
 
     private void validate(Map<String, PlaneType> aircraft)
     {
-        assert (aircraft.size() > 0);
+        Assertions.assertTrue (aircraft.size() > 0);
         for (PlaneType planeType : aircraft.values())
         {
             assert(planeType.getRoleCategories().size() > 0);

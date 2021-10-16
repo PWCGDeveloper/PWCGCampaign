@@ -1,5 +1,6 @@
 package pwcg.campaign.context;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -31,8 +32,8 @@ public class BehindEnemyLinesTest
     {            	
         Coordinate noMansLand = MathUtils.calcNextCoord(referenceCoordinateOnAlliedLines, 90, 3000);
     	boolean isBehindLines = behindEnemyLines.isBehindEnemyLinesForCapture(mapId, noMansLand, Side.ALLIED);
-    	assert (isBehindLines == false);
-    	assert (behindEnemyLines.getReasonCode().equals("NML"));
+    	Assertions.assertTrue (isBehindLines == false);
+    	Assertions.assertTrue (behindEnemyLines.getReasonCode().equals("NML"));
     }
 
     @Test
@@ -40,8 +41,8 @@ public class BehindEnemyLinesTest
     {            	
         Coordinate behindFriendlyLines = MathUtils.calcNextCoord(referenceCoordinateOnAlliedLines, 270, 3000);
     	boolean isBehindLines = behindEnemyLines.isBehindEnemyLinesForCapture(mapId, behindFriendlyLines, Side.ALLIED);
-    	assert (isBehindLines == false);
-    	assert (behindEnemyLines.getReasonCode().equals("Friendly Territory"));
+    	Assertions.assertTrue (isBehindLines == false);
+    	Assertions.assertTrue (behindEnemyLines.getReasonCode().equals("Friendly Territory"));
     }
 
     @Test
@@ -49,8 +50,8 @@ public class BehindEnemyLinesTest
     {            	
         Coordinate spotNearGroup =  new Coordinate(96000.0, 0.0, 75000.0);
     	boolean isBehindLines = behindEnemyLines.isBehindEnemyLinesForCapture(mapId, spotNearGroup, Side.AXIS);
-    	assert (isBehindLines == false);
-    	assert (behindEnemyLines.getReasonCode().equals("Friendly Group"));
+    	Assertions.assertTrue (isBehindLines == false);
+    	Assertions.assertTrue (behindEnemyLines.getReasonCode().equals("Friendly Group"));
     }
 
     @Test
@@ -58,8 +59,8 @@ public class BehindEnemyLinesTest
     {            	
         Coordinate spotNearAirfield =  new Coordinate(86790.0, 0.0, 85526.0);
     	boolean isBehindLines = behindEnemyLines.isBehindEnemyLinesForCapture(mapId, spotNearAirfield, Side.ALLIED);
-    	assert (isBehindLines == false);
-    	assert (behindEnemyLines.getReasonCode().equals("Friendly Airfield"));
+    	Assertions.assertTrue (isBehindLines == false);
+    	Assertions.assertTrue (behindEnemyLines.getReasonCode().equals("Friendly Airfield"));
     }
 
     @Test
@@ -67,8 +68,8 @@ public class BehindEnemyLinesTest
     {            	
         Coordinate noMansLand = MathUtils.calcNextCoord(referenceCoordinateOnAlliedLines, 90, 10000);
     	boolean isBehindLines = behindEnemyLines.isBehindEnemyLinesForCapture(mapId, noMansLand, Side.ALLIED);
-    	assert (isBehindLines == true);
-    	assert (behindEnemyLines.getReasonCode().equals(""));
+    	Assertions.assertTrue (isBehindLines == true);
+    	Assertions.assertTrue (behindEnemyLines.getReasonCode().equals(""));
     }
 
 }

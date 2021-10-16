@@ -3,6 +3,7 @@ package pwcg.campaign;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -50,11 +51,11 @@ public class PersonnelFilterTest
     	
         PersonnelActiveFilter activePersonnelFilter = new PersonnelActiveFilter();
         returnSquadronMembers = activePersonnelFilter.getActive(testSquadronMembers);
-        assert (returnSquadronMembers.size() == 6);
+        Assertions.assertTrue (returnSquadronMembers.size() == 6);
     	
         PersonnelActiveFilter inactivePersonnelFilter = new PersonnelActiveFilter();
         returnSquadronMembers = inactivePersonnelFilter.getInactive(testSquadronMembers);
-        assert (returnSquadronMembers.size() == 4);
+        Assertions.assertTrue (returnSquadronMembers.size() == 4);
     }
 
     @Test
@@ -70,11 +71,11 @@ public class PersonnelFilterTest
     	
     	PersonnelFilter personnelFilter = new PersonnelFilter(false);    	
     	returnSquadronMembers = personnelFilter.applyAceFilter(testSquadronMembers);
-        assert (returnSquadronMembers.size() == 4);
+        Assertions.assertTrue (returnSquadronMembers.size() == 4);
     	
         personnelFilter = new PersonnelFilter(true);
     	returnSquadronMembers = personnelFilter.applyAceFilter(testSquadronMembers);
-        assert (returnSquadronMembers.size() == 6);
+        Assertions.assertTrue (returnSquadronMembers.size() == 6);
     }
     
     @Test
@@ -90,11 +91,11 @@ public class PersonnelFilterTest
         
         PersonnelFilter personnelFilter = new PersonnelFilter(false);       
         returnSquadronMembers = personnelFilter.applySquadronFilter(testSquadronMembers, 101005);
-        assert (returnSquadronMembers.size() == 4);
+        Assertions.assertTrue (returnSquadronMembers.size() == 4);
         
         personnelFilter = new PersonnelFilter(true);
         returnSquadronMembers = personnelFilter.applySquadronFilter(testSquadronMembers, 101005);
-        assert (returnSquadronMembers.size() == 6);
+        Assertions.assertTrue (returnSquadronMembers.size() == 6);
      }
     
     @Test
@@ -110,11 +111,11 @@ public class PersonnelFilterTest
         
         PersonnelFilter personnelFilter = new PersonnelFilter(false);       
         returnSquadronMembers = personnelFilter.applyPlayerFilter(testSquadronMembers);
-        assert (returnSquadronMembers.size() == 4);
+        Assertions.assertTrue (returnSquadronMembers.size() == 4);
         
         personnelFilter = new PersonnelFilter(true);
         returnSquadronMembers = personnelFilter.applyPlayerFilter(testSquadronMembers);
-        assert (returnSquadronMembers.size() == 6);
+        Assertions.assertTrue (returnSquadronMembers.size() == 6);
      }
 
 }

@@ -1,5 +1,6 @@
 package pwcg.mission.flight.escort;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -43,7 +44,7 @@ public class PlayerFlightTypeBoSEscortTest
 
         PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator(mission.getMissionFlights());
         escortFlightValidator.validateEscortFlight();
-        assert (flight.getFlightType() == FlightTypes.ESCORT);
+        Assertions.assertTrue (flight.getFlightType() == FlightTypes.ESCORT);
         for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() == 0);

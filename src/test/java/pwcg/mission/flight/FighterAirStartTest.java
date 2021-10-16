@@ -1,5 +1,6 @@
 package pwcg.mission.flight;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -47,7 +48,7 @@ public class FighterAirStartTest
         PatrolFlight flight = (PatrolFlight) mission.getMissionFlights().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_START);
-        assert (targetMissionPoint != null);
+        Assertions.assertTrue (targetMissionPoint != null);
         PlaneRtbValidator.verifyPlaneRtbEnabled(mission);
 
         FighterAirStartFlightValidator airStartFlightValidator = new FighterAirStartFlightValidator();

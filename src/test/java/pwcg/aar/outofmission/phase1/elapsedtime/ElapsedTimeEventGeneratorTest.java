@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -72,8 +73,8 @@ public class ElapsedTimeEventGeneratorTest
 
         ElapsedTimeEventGenerator elapsedTimeEventGenerator = new ElapsedTimeEventGenerator(campaign, aarContext);
         ElapsedTimeEvents elapsedTimeEvents = elapsedTimeEventGenerator.createElapsedTimeEvents();
-        assert (elapsedTimeEvents.getEndOfWarEvent() == null);
-        assert (elapsedTimeEvents.getSquadronMoveEvents().size() == 0);
+        Assertions.assertTrue (elapsedTimeEvents.getEndOfWarEvent() == null);
+        Assertions.assertTrue (elapsedTimeEvents.getSquadronMoveEvents().size() == 0);
         
     }
 
@@ -90,8 +91,8 @@ public class ElapsedTimeEventGeneratorTest
 
         ElapsedTimeEventGenerator elapsedTimeEventGenerator = new ElapsedTimeEventGenerator(campaign, aarContext);
         ElapsedTimeEvents elapsedTimeEvents = elapsedTimeEventGenerator.createElapsedTimeEvents();
-        assert (elapsedTimeEvents.getEndOfWarEvent() == null);
-        assert (elapsedTimeEvents.getSquadronMoveEvents().size() > 0);
+        Assertions.assertTrue (elapsedTimeEvents.getEndOfWarEvent() == null);
+        Assertions.assertTrue (elapsedTimeEvents.getSquadronMoveEvents().size() > 0);
         
     }
 
@@ -105,8 +106,8 @@ public class ElapsedTimeEventGeneratorTest
 
         ElapsedTimeEventGenerator elapsedTimeEventGenerator = new ElapsedTimeEventGenerator(campaign, aarContext);
         ElapsedTimeEvents elapsedTimeEvents = elapsedTimeEventGenerator.createElapsedTimeEvents();
-        assert (elapsedTimeEvents.getEndOfWarEvent() != null);
-        assert (elapsedTimeEvents.getSquadronMoveEvents().size() == 0);
+        Assertions.assertTrue (elapsedTimeEvents.getEndOfWarEvent() != null);
+        Assertions.assertTrue (elapsedTimeEvents.getSquadronMoveEvents().size() == 0);
         
     }
 

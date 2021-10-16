@@ -2,6 +2,7 @@ package pwcg.campaign.skin;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import pwcg.campaign.api.ICountry;
@@ -28,22 +29,22 @@ public class SkinManagerTest
         ICountry iCountry = CountryFactory.makeCountryByCountry(Country.GERMANY);
 
         testSkins = skinManager.getLooseSkinByPlane(planeType);
-        assert (testSkins.size() > 0);
+        Assertions.assertTrue (testSkins.size() > 0);
         
         testSkins = skinManager.getPersonalSkinsByPlaneCountryDateInUse(planeType, iCountry.getCountryName(), DateUtils.getDateYYYYMMDD("19420401"));
-        assert (testSkins.size() > 0);
+        Assertions.assertTrue (testSkins.size() > 0);
         
         testSkins = skinManager.getSkinsByPlaneSquadron(planeType, 20111051);
-        assert (testSkins.size() == 0);
+        Assertions.assertTrue (testSkins.size() == 0);
         
         testSkins = skinManager.getSkinsByPlaneSquadron(planeType, 20111052);
-        assert (testSkins.size() > 0);
+        Assertions.assertTrue (testSkins.size() > 0);
         
         testSkins = skinManager.getSkinsByPlaneCountry(planeType, iCountry.getCountryName());
-        assert (testSkins.size() > 0);
+        Assertions.assertTrue (testSkins.size() > 0);
         
         testSkins = skinManager.getSkinsByPlaneSquadronDateInUse(planeType, 20111052, DateUtils.getDateYYYYMMDD("19420401"));
-        assert (testSkins.size() > 0);
+        Assertions.assertTrue (testSkins.size() > 0);
     }
 
 }

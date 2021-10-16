@@ -2,6 +2,7 @@ package pwcg.mission;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import pwcg.campaign.Campaign;
@@ -33,7 +34,7 @@ public class MissionCenterBuilderSkirmishTest
         PWCGContext.getInstance().setCampaign(campaign);
 
         List<Skirmish> skirmishes = PWCGContext.getInstance().getCurrentMap().getSkirmishManager().getSkirmishesForDate(campaign, TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
-        assert (skirmishes.size() == 0);
+        Assertions.assertTrue (skirmishes.size() == 0);
     }
 
     @Test
@@ -61,7 +62,7 @@ public class MissionCenterBuilderSkirmishTest
         MissionHumanParticipants participatingPlayers = makeParticipatingPlayers(campaign);
                 
         List<Skirmish> skirmishes = PWCGContext.getInstance().getCurrentMap().getSkirmishManager().getSkirmishesForDate(campaign, TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
-        assert (skirmishes.size() > 0);
+        Assertions.assertTrue (skirmishes.size() > 0);
         
         Squadron playerSquadron = participatingPlayers.getAllParticipatingPlayers().get(0).determineSquadron();
         MissionSquadronFlightTypes playerFlightTypes = MissionSquadronFlightTypes.buildPlayerFlightType(FlightTypes.PATROL, playerSquadron);

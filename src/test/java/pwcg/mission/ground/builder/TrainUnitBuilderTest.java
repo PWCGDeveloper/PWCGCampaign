@@ -1,5 +1,6 @@
 package pwcg.mission.ground.builder;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -49,13 +50,13 @@ public class TrainUnitBuilderTest
     {
         TrainUnitBuilder groundUnitFactory =  new TrainUnitBuilder(campaign, station, CountryFactory.makeCountryByCountry(Country.RUSSIA));
         GroundUnitCollection groundUnitGroup = groundUnitFactory.createTrainUnit();
-        assert (groundUnitGroup.getGroundUnits().size() == 1);
+        Assertions.assertTrue (groundUnitGroup.getGroundUnits().size() == 1);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {
-            assert (groundUnit.getCountry().getCountry() == Country.RUSSIA);
+            Assertions.assertTrue (groundUnit.getCountry().getCountry() == Country.RUSSIA);
             if (groundUnit.getVehicleClass() == VehicleClass.TrainLocomotive)
             {
-                assert (groundUnit.getVehicles().size() == 1);
+                Assertions.assertTrue (groundUnit.getVehicles().size() == 1);
             }
             else
             {

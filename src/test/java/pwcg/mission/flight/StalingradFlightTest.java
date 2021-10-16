@@ -2,6 +2,7 @@ package pwcg.mission.flight;
 
 import java.util.Date;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -40,15 +41,15 @@ public class StalingradFlightTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
 
-        assert (mission.getSkirmish() != null);
+        Assertions.assertTrue (mission.getSkirmish() != null);
         
         boolean bombFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.BOMB, Side.AXIS);
         boolean lowAltBombFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.LOW_ALT_BOMB, Side.AXIS);
-        assert (bombFlightFound || lowAltBombFlightFound);
+        Assertions.assertTrue (bombFlightFound || lowAltBombFlightFound);
 
         boolean bombFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.BOMB, TargetType.TARGET_CITY, Side.AXIS);
         boolean lowAltBombFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.LOW_ALT_BOMB, TargetType.TARGET_CITY, Side.AXIS);
-        assert (bombFlightTargetFound || lowAltBombFlightTargetFound);
+        Assertions.assertTrue (bombFlightTargetFound || lowAltBombFlightTargetFound);
 
         MissionFlightValidator.validateMission(mission);
     }
@@ -60,15 +61,15 @@ public class StalingradFlightTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
 
-        assert (mission.getSkirmish() != null);
+        Assertions.assertTrue (mission.getSkirmish() != null);
 
         boolean diveBombFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.DIVE_BOMB, Side.AXIS);
         boolean groundAttackFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.GROUND_ATTACK, Side.AXIS);
-        assert (diveBombFlightFound || groundAttackFlightFound);
+        Assertions.assertTrue (diveBombFlightFound || groundAttackFlightFound);
 
         boolean diveBombFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.DIVE_BOMB, TargetType.TARGET_DRIFTER, Side.AXIS);
         boolean groundAttackFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_DRIFTER, Side.AXIS);
-        assert (diveBombFlightTargetFound || groundAttackFlightTargetFound);
+        Assertions.assertTrue (diveBombFlightTargetFound || groundAttackFlightTargetFound);
 
         MissionFlightValidator.validateMission(mission);
     }
@@ -80,7 +81,7 @@ public class StalingradFlightTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
 
-        assert (mission.getSkirmish() != null);
+        Assertions.assertTrue (mission.getSkirmish() != null);
 
         assert(MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.GROUND_ATTACK, Side.ALLIED));
         assert(MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_INFANTRY, Side.ALLIED));
@@ -95,7 +96,7 @@ public class StalingradFlightTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
 
-        assert (mission.getSkirmish() != null);
+        Assertions.assertTrue (mission.getSkirmish() != null);
 
         assert(MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.CARGO_DROP, Side.AXIS));
 
@@ -115,7 +116,7 @@ public class StalingradFlightTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         
-        assert (mission.getSkirmish() == null);
+        Assertions.assertTrue (mission.getSkirmish() == null);
         MissionFlightValidator.validateMission(mission);
     }
 }

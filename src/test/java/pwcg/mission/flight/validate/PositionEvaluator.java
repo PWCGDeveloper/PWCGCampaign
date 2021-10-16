@@ -1,5 +1,7 @@
 package pwcg.mission.flight.validate;
 
+import org.junit.jupiter.api.Assertions;
+
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -31,14 +33,14 @@ public class PositionEvaluator
 
         }
 
-        assert (!failed);
+        Assertions.assertTrue (!failed);
     }
 
     private static void verifyWaypointAltitude(IFlight aiFlight)
     {
         for (McuWaypoint waypoint : aiFlight.getWaypointPackage().getAllWaypoints())
         {
-            assert (waypoint.getPosition().getYPos() > 50.0);
+            Assertions.assertTrue (waypoint.getPosition().getYPos() > 50.0);
         }
     }
 

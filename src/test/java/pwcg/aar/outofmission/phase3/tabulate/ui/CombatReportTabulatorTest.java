@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -124,12 +125,12 @@ public class CombatReportTabulatorTest extends AARTestSetup
         combatReportPanelEventTabulator.setVictoryEventGenerator(victoryEventGenerator);
         AARCombatReportPanelData combatReportPanelData = combatReportPanelEventTabulator.tabulateForAARCombatReportPanel();
 
-        assert (combatReportPanelData.getClaimsDenied().size() == 1);
-        assert (combatReportPanelData.getCrewsInMission().size() == 1);
-        assert (combatReportPanelData.getMissionHeader().getMissionFileName().equals("MissionFileName"));
-        assert (combatReportPanelData.getSquadronMembersLostInMission().size() == 1);
-        assert (combatReportPanelData.getSquadronPlanesLostInMission().size() == 1);
-        assert (combatReportPanelData.getVictoriesForSquadronMembersInMission().size() == 1);
+        Assertions.assertTrue (combatReportPanelData.getClaimsDenied().size() == 1);
+        Assertions.assertTrue (combatReportPanelData.getCrewsInMission().size() == 1);
+        Assertions.assertTrue (combatReportPanelData.getMissionHeader().getMissionFileName().equals("MissionFileName"));
+        Assertions.assertTrue (combatReportPanelData.getSquadronMembersLostInMission().size() == 1);
+        Assertions.assertTrue (combatReportPanelData.getSquadronPlanesLostInMission().size() == 1);
+        Assertions.assertTrue (combatReportPanelData.getVictoriesForSquadronMembersInMission().size() == 1);
 
     }
 

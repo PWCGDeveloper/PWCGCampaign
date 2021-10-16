@@ -1,5 +1,6 @@
 package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -32,7 +33,7 @@ public class PlayerClaimPlaneNameFinderTest
         PlayerClaimPlaneNameFinder planeNameFinder = new PlayerClaimPlaneNameFinder();
         String planeDisplayName = planeNameFinder.getShotDownPlaneDisplayName(playerDeclaration, victory);
         
-        assert (planeDisplayName.equals("S.E.5a"));
+        Assertions.assertTrue (planeDisplayName.equals("S.E.5a"));
     }
 
     @Test
@@ -46,7 +47,7 @@ public class PlayerClaimPlaneNameFinderTest
         PlayerClaimPlaneNameFinder planeNameFinder = new PlayerClaimPlaneNameFinder();
         String planeDisplayName = planeNameFinder.getShotDownPlaneDisplayName(playerDeclaration, victory);
         
-        assert (planeDisplayName.equals("S.E.5a"));
+        Assertions.assertTrue (planeDisplayName.equals("S.E.5a"));
     }
 
     @Test
@@ -59,7 +60,7 @@ public class PlayerClaimPlaneNameFinderTest
         PlayerClaimPlaneNameFinder planeNameFinder = new PlayerClaimPlaneNameFinder();
         String planeDisplayName = planeNameFinder.getShotDownPlaneDisplayName(playerDeclaration, victory);
         
-        assert (planeDisplayName.isEmpty());
+        Assertions.assertTrue (planeDisplayName.isEmpty());
     }
 
 }

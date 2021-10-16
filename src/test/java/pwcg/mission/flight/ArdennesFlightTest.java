@@ -2,6 +2,7 @@ package pwcg.mission.flight;
 
 import java.util.Date;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -55,10 +56,10 @@ public class ArdennesFlightTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
 
-        assert (mission.getSkirmish() != null);
+        Assertions.assertTrue (mission.getSkirmish() != null);
         for (AssaultDefinition assaultDefinition : mission.getMissionBattleManager().getMissionAssaultDefinitions())
         {
-            assert (assaultDefinition.getAssaultingCountry().getSide() == side);
+            Assertions.assertTrue (assaultDefinition.getAssaultingCountry().getSide() == side);
 
         }
 
@@ -83,10 +84,10 @@ public class ArdennesFlightTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
 
-        assert (mission.getSkirmish() != null);
+        Assertions.assertTrue (mission.getSkirmish() != null);
         for (AssaultDefinition assaultDefinition : mission.getMissionBattleManager().getMissionAssaultDefinitions())
         {
-            assert (assaultDefinition.getAssaultingCountry().getCountry() == Country.GERMANY);
+            Assertions.assertTrue (assaultDefinition.getAssaultingCountry().getCountry() == Country.GERMANY);
 
         }
 
@@ -109,6 +110,6 @@ public class ArdennesFlightTest
         MissionGenerator missionGenerator = new MissionGenerator(fg362Campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(fg362Campaign));
         
-        assert (mission.getSkirmish() == null);
+        Assertions.assertTrue (mission.getSkirmish() == null);
     }
 }

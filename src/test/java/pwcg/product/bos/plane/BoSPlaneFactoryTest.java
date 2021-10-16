@@ -1,5 +1,6 @@
 package pwcg.product.bos.plane;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -26,8 +27,8 @@ public class BoSPlaneFactoryTest
 		for (PlaneType planeType : planeTypeFactory.getAllPlanes())
 		{
 			PlaneType plane = planeTypeFactory.getPlaneById(planeType.getType());
-			assert (plane.getType().equals(planeType.getType()));
-			assert (plane.getArchType() != null);
+			Assertions.assertTrue (plane.getType().equals(planeType.getType()));
+			Assertions.assertTrue (plane.getArchType() != null);
 		}
 	}
 }

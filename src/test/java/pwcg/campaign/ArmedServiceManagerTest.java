@@ -2,6 +2,7 @@ package pwcg.campaign;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -28,7 +29,7 @@ public class ArmedServiceManagerTest
         IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
         ArmedService armedService = armedServiceManager.getArmedServiceByName(FCServiceManager.DEUTSCHE_LUFTSTREITKRAFTE_NAME,
                 DateUtils.getDateYYYYMMDD("19170801"));
-        assert (armedService.getServiceId() == FCServiceManager.DEUTSCHE_LUFTSTREITKRAFTE);
+        Assertions.assertTrue (armedService.getServiceId() == FCServiceManager.DEUTSCHE_LUFTSTREITKRAFTE);
     }
 
     @Test
@@ -36,7 +37,7 @@ public class ArmedServiceManagerTest
     {
         IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
         ArmedService armedService = armedServiceManager.getArmedService(FCServiceManager.LAVIATION_MILITAIRE);
-        assert (armedService.getName().equals(FCServiceManager.LAVIATION_MILITAIRE_NAME));
+        Assertions.assertTrue (armedService.getName().equals(FCServiceManager.LAVIATION_MILITAIRE_NAME));
     }
 
     @Test
@@ -44,7 +45,7 @@ public class ArmedServiceManagerTest
     {
         IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
         ArmedService armedService = armedServiceManager.getArmedServiceById(FCServiceManager.RFC, DateUtils.getDateYYYYMMDD("19170801"));
-        assert (armedService.getName().equals(FCServiceManager.RFC_NAME));
+        Assertions.assertTrue (armedService.getName().equals(FCServiceManager.RFC_NAME));
     }
 
     @Test
@@ -52,7 +53,7 @@ public class ArmedServiceManagerTest
     {
         IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
         ArmedService armedService = armedServiceManager.getArmedServiceById(FCServiceManager.RNAS, DateUtils.getDateYYYYMMDD("19170801"));
-        assert (armedService.getName().equals(FCServiceManager.RNAS_NAME));
+        Assertions.assertTrue (armedService.getName().equals(FCServiceManager.RNAS_NAME));
     }
 
     @Test
@@ -60,7 +61,7 @@ public class ArmedServiceManagerTest
     {
         IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
         ArmedService armedService = armedServiceManager.getArmedServiceById(FCServiceManager.RFC, DateUtils.getDateYYYYMMDD("19180501"));
-        assert (armedService.getName().equals(FCServiceManager.RAF_NAME));
+        Assertions.assertTrue (armedService.getName().equals(FCServiceManager.RAF_NAME));
     }
 
     @Test
@@ -68,7 +69,7 @@ public class ArmedServiceManagerTest
     {
         IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
         ArmedService armedService = armedServiceManager.getArmedServiceById(FCServiceManager.RNAS, DateUtils.getDateYYYYMMDD("19180501"));
-        assert (armedService.getName().equals(FCServiceManager.RAF_NAME));
+        Assertions.assertTrue (armedService.getName().equals(FCServiceManager.RAF_NAME));
     }
 
     @Test
@@ -76,7 +77,7 @@ public class ArmedServiceManagerTest
     {
         IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
         ArmedService armedService = armedServiceManager.getArmedService(FCServiceManager.LAVIATION_MILITAIRE);
-        assert (armedService.getName().equals(FCServiceManager.LAVIATION_MILITAIRE_NAME));
+        Assertions.assertTrue (armedService.getName().equals(FCServiceManager.LAVIATION_MILITAIRE_NAME));
     }
 
     @Test
@@ -84,7 +85,7 @@ public class ArmedServiceManagerTest
     {
         IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
         List<ArmedService> armedServices = armedServiceManager.getAllArmedServices();
-        assert (armedServices.size() == 7);
+        Assertions.assertTrue (armedServices.size() == 7);
     }
 
     @Test
@@ -92,7 +93,7 @@ public class ArmedServiceManagerTest
     {
         IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
         List<ArmedService> armedServices = armedServiceManager.getAxisServices(DateUtils.getDateYYYYMMDD("19170801"));
-        assert (armedServices.size() == 1);
+        Assertions.assertTrue (armedServices.size() == 1);
     }
 
     @Test
@@ -100,7 +101,7 @@ public class ArmedServiceManagerTest
     {
         IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
         List<ArmedService> armedServices = armedServiceManager.getAlliedServices(DateUtils.getDateYYYYMMDD("19170801"));
-        assert (armedServices.size() == 5);
+        Assertions.assertTrue (armedServices.size() == 5);
     }
 
     @Test
@@ -108,7 +109,7 @@ public class ArmedServiceManagerTest
     {
         IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
         List<ArmedService> armedServices = armedServiceManager.getAlliedServices(DateUtils.getDateYYYYMMDD("19181001"));
-        assert (armedServices.size() == 4);
+        Assertions.assertTrue (armedServices.size() == 4);
     }
 
 }

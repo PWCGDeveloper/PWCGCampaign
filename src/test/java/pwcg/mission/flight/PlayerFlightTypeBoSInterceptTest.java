@@ -2,6 +2,7 @@ package pwcg.mission.flight;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -73,10 +74,10 @@ public class PlayerFlightTypeBoSInterceptTest
             playerFlight = null;
         }
 	
-        assert (playerFlight.getFlightType() == FlightTypes.STRATEGIC_INTERCEPT);
+        Assertions.assertTrue (playerFlight.getFlightType() == FlightTypes.STRATEGIC_INTERCEPT);
 
         List<IFlight> aiFlights = mission.getMissionFlights().getAiFlights();
-        assert (aiFlights.size() == expectedFlights);
+        Assertions.assertTrue (aiFlights.size() == expectedFlights);
 
         int actualBombers = 0;
         int actualEscorts = 0;
@@ -92,8 +93,8 @@ public class PlayerFlightTypeBoSInterceptTest
             }
         }
 
-        assert (expectedFlights == actualBombers);
-        assert (expectedEscorts == actualEscorts);
+        Assertions.assertTrue (expectedFlights == actualBombers);
+        Assertions.assertTrue (expectedEscorts == actualEscorts);
 
 	}
 }

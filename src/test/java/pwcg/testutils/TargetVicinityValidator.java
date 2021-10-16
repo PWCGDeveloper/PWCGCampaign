@@ -1,5 +1,7 @@
 package pwcg.testutils;
 
+import org.junit.jupiter.api.Assertions;
+
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.exception.PWCGException;
@@ -39,7 +41,7 @@ public class TargetVicinityValidator
                 }
             }
         }
-        assert (groundAttackCloseToTarget == true);
+        Assertions.assertTrue (groundAttackCloseToTarget == true);
     }
     
 
@@ -60,7 +62,7 @@ public class TargetVicinityValidator
         double distanceToAirfield = MathUtils.calcDist(flight.getTargetDefinition().getPosition(), airfield.getPosition());
         System.out.println("Distance to " + airfield.getName() + " " + airfield.determineCountry().getCountryName() +  " distance is " + distanceToAirfield);
 
-        assert (distanceToAirfield < 5000);
+        Assertions.assertTrue (distanceToAirfield < 5000);
     }
 
 

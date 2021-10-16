@@ -1,5 +1,6 @@
 package pwcg.aar.inmission.phase3.reconcile.victories.coop;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -59,8 +60,8 @@ public class ClaimResolverCoopTest
     {
         IClaimResolver claimResolver = new ClaimResolverCompetitiveCoop(campaign, logVictoryHelper.getLogVictories());
         ReconciledMissionVictoryData reconciledMissionData = claimResolver.resolvePlayerClaims();
-        assert (reconciledMissionData.getVictoryAwardsByPilot().size() == 1);
-        assert (reconciledMissionData.getVictoryAwardsByPilot().get(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER).size() == 5);
-        assert (reconciledMissionData.getPlayerClaimsDenied().size() == 0);
+        Assertions.assertTrue (reconciledMissionData.getVictoryAwardsByPilot().size() == 1);
+        Assertions.assertTrue (reconciledMissionData.getVictoryAwardsByPilot().get(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER).size() == 5);
+        Assertions.assertTrue (reconciledMissionData.getPlayerClaimsDenied().size() == 0);
     }
 }

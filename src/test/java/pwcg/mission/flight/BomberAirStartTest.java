@@ -1,5 +1,6 @@
 package pwcg.mission.flight;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -47,7 +48,7 @@ public class BomberAirStartTest
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
-        assert (flight.getFlightType() == FlightTypes.BOMB);
+        Assertions.assertTrue (flight.getFlightType() == FlightTypes.BOMB);
         for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() >= 0);
@@ -67,7 +68,7 @@ public class BomberAirStartTest
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
-        assert (flight.getFlightType() == FlightTypes.LOW_ALT_BOMB);
+        Assertions.assertTrue (flight.getFlightType() == FlightTypes.LOW_ALT_BOMB);
         for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() >= 0);

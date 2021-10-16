@@ -3,6 +3,7 @@ package pwcg.aar.outofmission.phase1.elapsedtime;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -67,7 +68,7 @@ public class PersonnelOutOfMissionLossesHandlerTest
             OutOfMissionLossHandler outOfMissionLossesHandler = new OutOfMissionLossHandler(campaign, aarContext);
             outOfMissionLossesHandler.lossesOutOfMission(new HashMap<Integer, SquadronMember>(), new HashMap<Integer, LogPlane>());
             AARPersonnelLosses lossesInMissionDataTotal = outOfMissionLossesHandler.getOutOfMissionPersonnelLosses();
-            assert (lossesInMissionDataTotal.getAcesKilled(campaign).size() > 0);
+            Assertions.assertTrue (lossesInMissionDataTotal.getAcesKilled(campaign).size() > 0);
         }
     }
 
@@ -94,10 +95,10 @@ public class PersonnelOutOfMissionLossesHandlerTest
             aiCaptured.putAll(lossesInMissionDataTotal.getPersonnelMaimed());
             aiWounded.putAll(lossesInMissionDataTotal.getPersonnelWounded());
             
-            assert (aiKilled.size() > 0);
-            assert (aiMaimed.size() > 0);
-            assert (aiCaptured.size() > 0);
-            assert (aiWounded.size() > 0);
+            Assertions.assertTrue (aiKilled.size() > 0);
+            Assertions.assertTrue (aiMaimed.size() > 0);
+            Assertions.assertTrue (aiCaptured.size() > 0);
+            Assertions.assertTrue (aiWounded.size() > 0);
         }
     }
 }

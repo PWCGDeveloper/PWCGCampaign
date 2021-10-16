@@ -2,6 +2,7 @@ package pwcg.mission.flight;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -156,11 +157,11 @@ public class CoopPlayerInclusionTest
         boolean russianBomberFound = false;
         for (IFlight flight : mission.getMissionFlights().getPlayerFlights())
         {
-            assert (flight.isPlayerFlight() == true);
-            assert (flight.getFlightInformation().isAirStart() == false);
+            Assertions.assertTrue (flight.isPlayerFlight() == true);
+            Assertions.assertTrue (flight.getFlightInformation().isAirStart() == false);
             
             List<PlaneMcu> playerPlanesForFlight = flight.getFlightPlanes().getPlayerPlanes();
-            assert (playerPlanesForFlight.size() == 1);
+            Assertions.assertTrue (playerPlanesForFlight.size() == 1);
             
             PlaneMcu playerPlane = playerPlanesForFlight.get(0);
             if (playerPlane.getName().contains("German Fighter"))
@@ -208,8 +209,8 @@ public class CoopPlayerInclusionTest
         boolean russianFighterFound = false;
         for (IFlight flight : mission.getMissionFlights().getPlayerFlights())
         {
-            assert (flight.isPlayerFlight() == true);
-            assert (flight.getFlightInformation().isAirStart() == false);
+            Assertions.assertTrue (flight.isPlayerFlight() == true);
+            Assertions.assertTrue (flight.getFlightInformation().isAirStart() == false);
             
             List<PlaneMcu> playerPlanesForFlight = flight.getFlightPlanes().getPlayerPlanes();
             
@@ -218,19 +219,19 @@ public class CoopPlayerInclusionTest
                 if (playerPlane.getName().contains("German Fighter"))
                 {
                     germanFighterFound = true;
-                    assert (playerPlanesForFlight.size() == 2);
+                    Assertions.assertTrue (playerPlanesForFlight.size() == 2);
                     assert(playerPlane.isPrimaryRole(PwcgRole.ROLE_FIGHTER));
                 }
                 else if (playerPlane.getName().contains("German Secondfighter"))
                 {
                     germanFighter2Found = true;
-                    assert (playerPlanesForFlight.size() == 2);
+                    Assertions.assertTrue (playerPlanesForFlight.size() == 2);
                     assert(playerPlane.isPrimaryRole(PwcgRole.ROLE_FIGHTER));
                 }
                 else if (playerPlane.getName().contains("Russian Fighter"))
                 {
                     russianFighterFound = true;
-                    assert (playerPlanesForFlight.size() == 1);
+                    Assertions.assertTrue (playerPlanesForFlight.size() == 1);
                     assert(playerPlane.isPrimaryRole(PwcgRole.ROLE_FIGHTER));
                 }
             }

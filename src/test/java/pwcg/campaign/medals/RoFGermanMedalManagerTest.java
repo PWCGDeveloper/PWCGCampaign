@@ -2,6 +2,7 @@ package pwcg.campaign.medals;
 
 import javax.swing.ImageIcon;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -131,7 +132,7 @@ public class RoFGermanMedalManagerTest extends MedalManagerTestBase
 
         makeVictories(1);
         Medal medal = medalManager.award(campaign, player, service, 3);
-        assert (medal == null);
+        Assertions.assertTrue (medal == null);
     }
 
     @Test
@@ -141,7 +142,7 @@ public class RoFGermanMedalManagerTest extends MedalManagerTestBase
     	{
 	        String medalPath = ContextSpecificImages.imagesMedals() + "Axis\\" + medal.getMedalImage();
 	        ImageIcon medalIcon = ImageIconCache.getInstance().getImageIcon(medalPath);
-	        assert (medalIcon != null);
+	        Assertions.assertTrue (medalIcon != null);
     	}
     }
 }

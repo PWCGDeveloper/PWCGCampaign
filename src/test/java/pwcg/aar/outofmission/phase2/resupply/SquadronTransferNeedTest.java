@@ -3,6 +3,7 @@ package pwcg.aar.outofmission.phase2.resupply;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -62,16 +63,16 @@ public class SquadronTransferNeedTest
     {
         SquadronPersonnelNeed squadronTransferNeed = new SquadronPersonnelNeed(campaign, squadron);
         squadronTransferNeed.determineResupplyNeeded();
-        assert (squadronTransferNeed.needsResupply() == true);
+        Assertions.assertTrue (squadronTransferNeed.needsResupply() == true);
         
         for (int i = 0; i < Squadron.SQUADRON_STAFF_SIZE - 1; ++i)
         {
             squadronTransferNeed.noteResupply();
-            assert (squadronTransferNeed.needsResupply() == true);
+            Assertions.assertTrue (squadronTransferNeed.needsResupply() == true);
         }
 
         squadronTransferNeed.noteResupply();
-        assert (squadronTransferNeed.needsResupply() == false);
+        Assertions.assertTrue (squadronTransferNeed.needsResupply() == false);
     }
     
 
@@ -88,16 +89,16 @@ public class SquadronTransferNeedTest
                 
         SquadronPersonnelNeed squadronResupplyNeed = new SquadronPersonnelNeed(campaign, squadron);
         squadronResupplyNeed.determineResupplyNeeded();
-        assert (squadronResupplyNeed.needsResupply() == true);
+        Assertions.assertTrue (squadronResupplyNeed.needsResupply() == true);
         
         for (int i = 0; i < 2; ++i)
         {
             squadronResupplyNeed.noteResupply();
-            assert (squadronResupplyNeed.needsResupply() == true);
+            Assertions.assertTrue (squadronResupplyNeed.needsResupply() == true);
         }
 
         squadronResupplyNeed.noteResupply();
-        assert (squadronResupplyNeed.needsResupply() == false);
+        Assertions.assertTrue (squadronResupplyNeed.needsResupply() == false);
     }
     
 
@@ -124,16 +125,16 @@ public class SquadronTransferNeedTest
 
         SquadronPersonnelNeed squadronResupplyNeed = new SquadronPersonnelNeed(campaign, squadron);
         squadronResupplyNeed.determineResupplyNeeded();
-        assert (squadronResupplyNeed.needsResupply() == true);
+        Assertions.assertTrue (squadronResupplyNeed.needsResupply() == true);
         
         for (int i = 0; i < 2; ++i)
         {
             squadronResupplyNeed.noteResupply();
-            assert (squadronResupplyNeed.needsResupply() == true);
+            Assertions.assertTrue (squadronResupplyNeed.needsResupply() == true);
         }
 
         squadronResupplyNeed.noteResupply();
-        assert (squadronResupplyNeed.needsResupply() == false);
+        Assertions.assertTrue (squadronResupplyNeed.needsResupply() == false);
     }
 
     @Test
@@ -159,7 +160,7 @@ public class SquadronTransferNeedTest
 
         SquadronPersonnelNeed squadronResupplyNeed = new SquadronPersonnelNeed(campaign, squadron);
         squadronResupplyNeed.determineResupplyNeeded();
-        assert (squadronResupplyNeed.needsResupply() == false);
+        Assertions.assertTrue (squadronResupplyNeed.needsResupply() == false);
     }
 
 }

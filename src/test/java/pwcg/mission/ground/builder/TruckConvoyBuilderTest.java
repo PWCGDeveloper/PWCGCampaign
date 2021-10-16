@@ -1,5 +1,6 @@
 package pwcg.mission.ground.builder;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -49,21 +50,21 @@ public class TruckConvoyBuilderTest
     {
         TruckConvoyBuilder groundUnitFactory =  new TruckConvoyBuilder(campaign, bridge, CountryFactory.makeCountryByCountry(Country.RUSSIA));
         GroundUnitCollection groundUnitGroup = groundUnitFactory.createTruckConvoy();
-        assert (groundUnitGroup.getGroundUnits().size() == 3);
+        Assertions.assertTrue (groundUnitGroup.getGroundUnits().size() == 3);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {
-            assert (groundUnit.getCountry().getCountry() == Country.RUSSIA);
+            Assertions.assertTrue (groundUnit.getCountry().getCountry() == Country.RUSSIA);
             if (groundUnit.getVehicleClass() == VehicleClass.Truck)
             {
-                assert (groundUnit.getVehicles().size() >= 3);
+                Assertions.assertTrue (groundUnit.getVehicles().size() >= 3);
             }
             else if (groundUnit.getVehicleClass() == VehicleClass.TruckAAA)
             {
-                assert (groundUnit.getVehicles().size() == 2);
+                Assertions.assertTrue (groundUnit.getVehicles().size() == 2);
             }
             else if (groundUnit.getVehicleClass() == VehicleClass.TruckAmmo)
             {
-                assert (groundUnit.getVehicles().size() > 0);
+                Assertions.assertTrue (groundUnit.getVehicles().size() > 0);
             }
             else
             {

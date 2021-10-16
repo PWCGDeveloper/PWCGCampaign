@@ -3,6 +3,7 @@ package pwcg.campaign.io.json;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -22,7 +23,7 @@ public class SquadronAircraftAssignmentTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         List<Squadron> squadrons = SquadronIOJson.readJson();
-        assert (squadrons.size() > 0);
+        Assertions.assertTrue (squadrons.size() > 0);
         
         boolean success = true;
         for (Squadron squadron : squadrons)

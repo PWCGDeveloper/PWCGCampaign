@@ -2,6 +2,7 @@ package pwcg.campaign;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -36,7 +37,7 @@ public class SkirmishBuilderTest
         campaign.setDate(DateUtils.getDateYYYYMMDD("19441010"));
 
         List<Skirmish> skirmishes = PWCGContext.getInstance().getCurrentMap().getSkirmishManager().getSkirmishesForDate(campaign, TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
-        assert (skirmishes.size() == 0);
+        Assertions.assertTrue (skirmishes.size() == 0);
     }
 
     @Test
@@ -45,7 +46,7 @@ public class SkirmishBuilderTest
         campaign.setDate(DateUtils.getDateYYYYMMDD("19440917"));
 
         Skirmish skirmish =createMissionAtSkirmish(campaign);
-        assert (skirmish != null);
+        Assertions.assertTrue (skirmish != null);
     }
 
     @Test
@@ -54,7 +55,7 @@ public class SkirmishBuilderTest
         campaign.setDate(DateUtils.getDateYYYYMMDD("19440928"));
 
         Skirmish skirmish =createMissionAtSkirmish(campaign);
-        assert (skirmish != null);
+        Assertions.assertTrue (skirmish != null);
     }
 
     private Skirmish createMissionAtSkirmish(Campaign campaign) throws PWCGException

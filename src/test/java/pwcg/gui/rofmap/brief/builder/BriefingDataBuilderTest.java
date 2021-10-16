@@ -2,6 +2,7 @@ package pwcg.gui.rofmap.brief.builder;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -50,10 +51,10 @@ public class BriefingDataBuilderTest
         assert(briefingData.getActiveBriefingFlight().getBriefingAssignmentData().getCrews().size() > 0);
         
         IFlight flight = briefingData.getSelectedFlight();
-        assert (flight.getSquadron().getSquadronId() == SquadronTestProfile.KG53_PROFILE.getSquadronId());
+        Assertions.assertTrue (flight.getSquadron().getSquadronId() == SquadronTestProfile.KG53_PROFILE.getSquadronId());
 
         BriefingFlight briefingFlight = briefingData.getActiveBriefingFlight();
-        assert (briefingFlight.getSquadronId() == SquadronTestProfile.KG53_PROFILE.getSquadronId());
+        Assertions.assertTrue (briefingFlight.getSquadronId() == SquadronTestProfile.KG53_PROFILE.getSquadronId());
         
         BriefingFlightParameters briefingFlightParameters = briefingFlight.getBriefingFlightParameters();
         List<BriefingMapPoint>  briefingMapMapPoints = briefingFlightParameters.getBriefingMapMapPoints();

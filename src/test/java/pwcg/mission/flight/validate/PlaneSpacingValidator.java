@@ -2,6 +2,8 @@ package pwcg.mission.flight.validate;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
+
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.utils.MathUtils;
@@ -18,7 +20,7 @@ public class PlaneSpacingValidator
         for (int i = 0; i < planes.size(); ++i)
         {
             PlaneMcu  thisPlane = planes.get(i);
-            assert (thisPlane.getNumberInFormation() == (i+1));
+            Assertions.assertTrue (thisPlane.getNumberInFormation() == (i+1));
             
             for (int j = 0; j < planes.size(); ++j)
             {
@@ -29,7 +31,7 @@ public class PlaneSpacingValidator
                 
                 PlaneMcu  thatPlane = planes.get(j);
                 double distanceBetweenPlanes = MathUtils.calcDist(thisPlane.getPosition(), thatPlane.getPosition());
-                assert (distanceBetweenPlanes > horizontalSpacing);
+                Assertions.assertTrue (distanceBetweenPlanes > horizontalSpacing);
             }
         }
     }

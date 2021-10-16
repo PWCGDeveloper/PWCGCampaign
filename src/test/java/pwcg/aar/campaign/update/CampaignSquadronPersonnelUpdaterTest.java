@@ -145,7 +145,7 @@ public class CampaignSquadronPersonnelUpdaterTest
         personellUpdater.personnelUpdates();
 
         SquadronMember squadronMemberAfterUpdate = campaign.getPersonnelManager().getAnyCampaignMember(maimedSquadronMember.getSerialNumber());
-        assert (squadronMemberAfterUpdate.getPilotActiveStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
+        Assertions.assertTrue (squadronMemberAfterUpdate.getPilotActiveStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
     }
 
     @Test
@@ -166,8 +166,8 @@ public class CampaignSquadronPersonnelUpdaterTest
         personellUpdater.personnelUpdates();
 
         SquadronMember squadronMemberAfterUpdate = campaign.getPersonnelManager().getAnyCampaignMember(maimedPlayer.getSerialNumber());
-        assert (squadronMemberAfterUpdate.getPilotActiveStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
-        assert (maimedPlayer.getRecoveryDate().after(campaign.getDate()));
+        Assertions.assertTrue (squadronMemberAfterUpdate.getPilotActiveStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
+        Assertions.assertTrue (maimedPlayer.getRecoveryDate().after(campaign.getDate()));
     }
 
     @Test
@@ -175,7 +175,7 @@ public class CampaignSquadronPersonnelUpdaterTest
     {
         SquadronMember commander = null;
         commander = getAiCommander();
-        assert (commander != null);
+        Assertions.assertTrue (commander != null);
 
         SquadronMember player = SquadronMemberPicker.pickPlayerSquadronMember(campaign, SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
 
@@ -199,11 +199,11 @@ public class CampaignSquadronPersonnelUpdaterTest
         personellUpdater.personnelUpdates();
 
         SquadronMember commanderAfterUpdate = campaign.getPersonnelManager().getAnyCampaignMember(commander.getSerialNumber());
-        assert (commanderAfterUpdate.getPilotActiveStatus() == SquadronMemberStatus.STATUS_TRANSFERRED);
-        assert (commanderAfterUpdate.getInactiveDate().equals(campaign.getDate()));
+        Assertions.assertTrue (commanderAfterUpdate.getPilotActiveStatus() == SquadronMemberStatus.STATUS_TRANSFERRED);
+        Assertions.assertTrue (commanderAfterUpdate.getInactiveDate().equals(campaign.getDate()));
 
         SquadronMember activeCommander = getAiCommander();
-        assert (activeCommander == null);
+        Assertions.assertTrue (activeCommander == null);
     }
 
     private SquadronMember getAiCommander() throws PWCGException
@@ -240,8 +240,8 @@ public class CampaignSquadronPersonnelUpdaterTest
         personellUpdater.personnelUpdates();
 
         SquadronMember squadronMemberAfterUpdate = campaign.getPersonnelManager().getAnyCampaignMember(woundedSquadronMember.getSerialNumber());
-        assert (squadronMemberAfterUpdate.getPilotActiveStatus() == SquadronMemberStatus.STATUS_WOUNDED);
-        assert (woundedSquadronMember.getRecoveryDate().after(campaign.getDate()));
+        Assertions.assertTrue (squadronMemberAfterUpdate.getPilotActiveStatus() == SquadronMemberStatus.STATUS_WOUNDED);
+        Assertions.assertTrue (woundedSquadronMember.getRecoveryDate().after(campaign.getDate()));
     }
 
     @Test

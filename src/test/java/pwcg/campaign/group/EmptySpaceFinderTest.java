@@ -2,6 +2,7 @@ package pwcg.campaign.group;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
@@ -30,7 +31,7 @@ public class EmptySpaceFinderTest
             EmptySpaceFinder emptySpaceFinder = new EmptySpaceFinder(mission);
             List<HotSpot> hotSpots = emptySpaceFinder.findEmptySpaces(airfield.getBoundary(), 50);
             
-            assert (hotSpots.size() > 0);
+            Assertions.assertTrue (hotSpots.size() > 0);
 
             CoordinateBox coordinateBox = CoordinateBox.coordinateBoxFromCoordinateList(airfield.getBoundary());
             for (HotSpot hotSpot : hotSpots)

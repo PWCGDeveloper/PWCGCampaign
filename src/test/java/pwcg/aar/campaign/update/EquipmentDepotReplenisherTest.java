@@ -3,6 +3,7 @@ package pwcg.aar.campaign.update;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -69,7 +70,7 @@ public class EquipmentDepotReplenisherTest
             {
                 PlaneArchType planeArchType = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneArchType(planeAssignment.getArchType());
                 String selectedPlaneType = EquipmentReplacementUtils.getTypeForReplacement(planeAssignment.getSquadronWithdrawal(), planeArchType);
-                assert (selectedPlaneType.length() > 0);
+                Assertions.assertTrue (selectedPlaneType.length() > 0);
             }
         }
     }
@@ -89,20 +90,20 @@ public class EquipmentDepotReplenisherTest
     {
         EquipmentDepot equipmentDepot = campaign.getEquipmentManager().getEquipmentDepotForService(BoSServiceManager.LUFTWAFFE);
         EquipmentUpgradeRecord upgradeRecord = equipmentDepot.getUpgrade(me109E7);
-        assert (upgradeRecord != null);
-        assert (upgradeRecord.getUpgrade().getArchType().equals("bf109"));
-        assert (upgradeRecord.getUpgrade().getGoodness() > 10);
+        Assertions.assertTrue (upgradeRecord != null);
+        Assertions.assertTrue (upgradeRecord.getUpgrade().getArchType().equals("bf109"));
+        Assertions.assertTrue (upgradeRecord.getUpgrade().getGoodness() > 10);
 
         int upgradeSerialNumber = upgradeRecord.getUpgrade().getSerialNumber();
 
         EquippedPlane planeInDepot = equipmentDepot.getPlaneFromDepot(upgradeSerialNumber);
-        assert (planeInDepot != null);
+        Assertions.assertTrue (planeInDepot != null);
 
         planeInDepot = equipmentDepot.removeEquippedPlaneFromDepot(upgradeSerialNumber);
-        assert (planeInDepot != null);
+        Assertions.assertTrue (planeInDepot != null);
 
         planeInDepot = equipmentDepot.getPlaneFromDepot(upgradeSerialNumber);
-        assert (planeInDepot == null);
+        Assertions.assertTrue (planeInDepot == null);
     }
 
     @Test
@@ -110,7 +111,7 @@ public class EquipmentDepotReplenisherTest
     {
         EquipmentDepot equipmentDepo = campaign.getEquipmentManager().getEquipmentDepotForService(BoSServiceManager.LUFTWAFFE);
         EquipmentUpgradeRecord replacementPlane = equipmentDepo.getUpgrade(me109K4);
-        assert (replacementPlane == null);
+        Assertions.assertTrue (replacementPlane == null);
     }
 
     private Map<Integer, Integer> determineReplacementsAvailableByService() throws PWCGException
@@ -128,7 +129,7 @@ public class EquipmentDepotReplenisherTest
     {
         for (Integer serviceId : replacementsAvailableBefore.keySet())
         {
-            assert (replacementsAvailableAfter.get(serviceId) >= replacementsAvailableBefore.get(serviceId));
+            Assertions.assertTrue (replacementsAvailableAfter.get(serviceId) >= replacementsAvailableBefore.get(serviceId));
         }
     }
 }

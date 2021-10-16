@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -107,7 +108,7 @@ public class PlayerDeclarationResolutionFirmVictoryTest
         PlayerDeclarationResolution declarationResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter, playerDeclarations);
         ConfirmedVictories confirmedPlayerVictories = declarationResolution.determinePlayerAirResultsWithClaims();
         
-        assert (confirmedPlayerVictories.getConfirmedVictories().size() == 1);
+        Assertions.assertTrue (confirmedPlayerVictories.getConfirmedVictories().size() == 1);
     }
     
     @Test
@@ -122,7 +123,7 @@ public class PlayerDeclarationResolutionFirmVictoryTest
         PlayerDeclarationResolution declarationResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter, playerDeclarations);
         ConfirmedVictories confirmedPlayerVictories = declarationResolution.determinePlayerAirResultsWithClaims();
         
-        assert (confirmedPlayerVictories.getConfirmedVictories().size() == 2);
+        Assertions.assertTrue (confirmedPlayerVictories.getConfirmedVictories().size() == 2);
     }
     
     @Test
@@ -137,7 +138,7 @@ public class PlayerDeclarationResolutionFirmVictoryTest
         PlayerDeclarationResolution declarationResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter, playerDeclarations);
         ConfirmedVictories confirmedPlayerVictories = declarationResolution.determinePlayerAirResultsWithClaims();
         
-        assert (confirmedPlayerVictories.getConfirmedVictories().size() == 1);
+        Assertions.assertTrue (confirmedPlayerVictories.getConfirmedVictories().size() == 1);
     }
     
     @Test
@@ -151,7 +152,7 @@ public class PlayerDeclarationResolutionFirmVictoryTest
         PlayerDeclarationResolution declarationResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter, playerDeclarations);
         ConfirmedVictories confirmedPlayerVictories = declarationResolution.determinePlayerAirResultsWithClaims();
         
-        assert (confirmedPlayerVictories.getConfirmedVictories().size() == 0);
+        Assertions.assertTrue (confirmedPlayerVictories.getConfirmedVictories().size() == 0);
     }
     
     @Test
@@ -161,7 +162,7 @@ public class PlayerDeclarationResolutionFirmVictoryTest
         PlayerDeclarationResolution declarationResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter, playerDeclarations);
         ConfirmedVictories confirmedPlayerVictories = declarationResolution.determinePlayerAirResultsWithClaims();
         
-        assert (confirmedPlayerVictories.getConfirmedVictories().size() == 0);
+        Assertions.assertTrue (confirmedPlayerVictories.getConfirmedVictories().size() == 0);
     }
     
     @Test
@@ -174,7 +175,7 @@ public class PlayerDeclarationResolutionFirmVictoryTest
         PlayerDeclarationResolution declarationResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter, playerDeclarations);
         ConfirmedVictories confirmedPlayerVictories = declarationResolution.determinePlayerAirResultsWithClaims();
         
-        assert (confirmedPlayerVictories.getConfirmedVictories().size() == 0);
+        Assertions.assertTrue (confirmedPlayerVictories.getConfirmedVictories().size() == 0);
     }
 
 

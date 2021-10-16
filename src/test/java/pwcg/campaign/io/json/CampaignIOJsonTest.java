@@ -1,5 +1,6 @@
 package pwcg.campaign.io.json;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -66,13 +67,13 @@ public class CampaignIOJsonTest
     	SquadronMembers players = campaign.getPersonnelManager().getAllActivePlayers();
         for (SquadronMember player : players.getSquadronMemberList())
         {
-            assert (player.getSerialNumber() >= SerialNumber.PLAYER_STARTING_SERIAL_NUMBER && player.getSerialNumber() < SerialNumber.AI_STARTING_SERIAL_NUMBER);
+            Assertions.assertTrue (player.getSerialNumber() >= SerialNumber.PLAYER_STARTING_SERIAL_NUMBER && player.getSerialNumber() < SerialNumber.AI_STARTING_SERIAL_NUMBER);
         }
         
-        assert (campaign.getDate().equals(DateUtils.getDateYYYYMMDD(SquadronTestProfile.JASTA_11_PROFILE.getDateString())));
-        assert (campaign.getCampaignData().getName().equals(CampaignCacheBase.TEST_CAMPAIGN_NAME));
+        Assertions.assertTrue (campaign.getDate().equals(DateUtils.getDateYYYYMMDD(SquadronTestProfile.JASTA_11_PROFILE.getDateString())));
+        Assertions.assertTrue (campaign.getCampaignData().getName().equals(CampaignCacheBase.TEST_CAMPAIGN_NAME));
         SquadronMember player = campaign.findReferencePlayer();
-        assert (player.getName().equals(CampaignCacheBase.TEST_PLAYER_NAME));
+        Assertions.assertTrue (player.getName().equals(CampaignCacheBase.TEST_PLAYER_NAME));
     }
 
     private void validatePersonnelReplacements(Campaign campaign) throws PWCGException
@@ -94,11 +95,11 @@ public class CampaignIOJsonTest
     {
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(SquadronTestProfile.RFC_2_PROFILE.getSquadronId());
         SquadronMembers reconSquadronPersonnel = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());        
-        assert (reconSquadronPersonnel.getSquadronMemberList().size() == 12);
+        Assertions.assertTrue (reconSquadronPersonnel.getSquadronMemberList().size() == 12);
         for (SquadronMember squadronMember : reconSquadronPersonnel.getSquadronMemberList())
         {
-            assert (squadronMember.getSerialNumber() > SerialNumber.AI_STARTING_SERIAL_NUMBER);
-            assert (squadronMember.getMissionFlown() > 0);
+            Assertions.assertTrue (squadronMember.getSerialNumber() > SerialNumber.AI_STARTING_SERIAL_NUMBER);
+            Assertions.assertTrue (squadronMember.getMissionFlown() > 0);
         }
     }
 
@@ -106,24 +107,24 @@ public class CampaignIOJsonTest
     {
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
         SquadronMembers fighterSquadronPersonnel = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());        
-        assert (campaign.getSerialNumber().getNextPilotSerialNumber() > SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
-        assert (fighterSquadronPersonnel.getSquadronMemberList().size() >= 12);
+        Assertions.assertTrue (campaign.getSerialNumber().getNextPilotSerialNumber() > SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
+        Assertions.assertTrue (fighterSquadronPersonnel.getSquadronMemberList().size() >= 12);
         for (SquadronMember squadronMember : fighterSquadronPersonnel.getSquadronMemberList())
         {
             if (squadronMember.isPlayer())
             {
-                assert (squadronMember.getSerialNumber() >= SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-                assert (squadronMember.getMissionFlown() == 0);
+                Assertions.assertTrue (squadronMember.getSerialNumber() >= SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+                Assertions.assertTrue (squadronMember.getMissionFlown() == 0);
             }
             else if (squadronMember instanceof Ace)
             {
-                assert (squadronMember.getSerialNumber() >= SerialNumber.ACE_STARTING_SERIAL_NUMBER);
-                assert (squadronMember.getMissionFlown() > 0);
+                Assertions.assertTrue (squadronMember.getSerialNumber() >= SerialNumber.ACE_STARTING_SERIAL_NUMBER);
+                Assertions.assertTrue (squadronMember.getMissionFlown() > 0);
             }
             else
             {
-                assert (squadronMember.getSerialNumber() > SerialNumber.AI_STARTING_SERIAL_NUMBER);
-                assert (squadronMember.getMissionFlown() > 0);
+                Assertions.assertTrue (squadronMember.getSerialNumber() > SerialNumber.AI_STARTING_SERIAL_NUMBER);
+                Assertions.assertTrue (squadronMember.getMissionFlown() > 0);
             }
         }
     }
@@ -131,24 +132,24 @@ public class CampaignIOJsonTest
     private void validateFighterEquipment(Campaign campaign) throws PWCGException
     {
         Equipment fighterSquadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
-        assert (campaign.getSerialNumber().getNextPlaneSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 100);
-        assert (fighterSquadronEquipment.getActiveEquippedPlanes().size() >= 14);
+        Assertions.assertTrue (campaign.getSerialNumber().getNextPlaneSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 100);
+        Assertions.assertTrue (fighterSquadronEquipment.getActiveEquippedPlanes().size() >= 14);
         for (EquippedPlane equippedPlane : fighterSquadronEquipment.getActiveEquippedPlanes().values())
         {
-            assert (equippedPlane.getSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER);
-            assert (equippedPlane.getArchType().equals("albatrosd"));
+            Assertions.assertTrue (equippedPlane.getSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER);
+            Assertions.assertTrue (equippedPlane.getArchType().equals("albatrosd"));
         }
     }
 
     private void validateReconEquipment(Campaign campaign) throws PWCGException
     {
         Equipment reconSquadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(SquadronTestProfile.RFC_2_PROFILE.getSquadronId());
-        assert (campaign.getSerialNumber().getNextPlaneSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 100);
-        assert (reconSquadronEquipment.getActiveEquippedPlanes().size() >= 14);
+        Assertions.assertTrue (campaign.getSerialNumber().getNextPlaneSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 100);
+        Assertions.assertTrue (reconSquadronEquipment.getActiveEquippedPlanes().size() >= 14);
         for (EquippedPlane equippedPlane : reconSquadronEquipment.getActiveEquippedPlanes().values())
         {
-            assert (equippedPlane.getSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER);
-            assert (equippedPlane.getArchType().contains("aircodh4"));
+            Assertions.assertTrue (equippedPlane.getSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER);
+            Assertions.assertTrue (equippedPlane.getArchType().contains("aircodh4"));
         }
     }
 

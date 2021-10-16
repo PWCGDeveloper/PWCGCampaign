@@ -1,5 +1,6 @@
 package pwcg.aar.outofmission.phase2.resupply;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -50,7 +51,7 @@ public class HistoricalAceTransferHandlerTest
     {
         HistoricalAceTransferHandler historicalAceTransferHandler = new HistoricalAceTransferHandler(campaign, DateUtils.getDateYYYYMMDD("19170503"));
         SquadronTransferData acesTransferred =  historicalAceTransferHandler.determineAceTransfers();
-        assert (acesTransferred.getSquadronMembersTransferred().size() > 0);
+        Assertions.assertTrue (acesTransferred.getSquadronMembersTransferred().size() > 0);
         
         boolean karlSchaferFound = false;
         for (TransferRecord transferRecord : acesTransferred.getSquadronMembersTransferred())
@@ -60,6 +61,6 @@ public class HistoricalAceTransferHandlerTest
                 karlSchaferFound = true;
             }
         }
-        assert (karlSchaferFound); // Karl Schafer
+        Assertions.assertTrue (karlSchaferFound); // Karl Schafer
     }
 }

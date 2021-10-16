@@ -3,6 +3,7 @@ package pwcg.aar.outofmission.phase3.tabulate.ui;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -42,9 +43,9 @@ public class TransferEventGeneratorTest extends AARTestSetup
         TransferEvent transferEvent1 = (TransferEvent)transferEvents.get(0);
         TransferEvent transferEvent2 = (TransferEvent)transferEvents.get(1);
 
-        assert (transferEvents.size() == 2);
-        assert (transferEvent1.getTransferTo() == SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        assert (transferEvent2.getTransferTo() == SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Assertions.assertTrue (transferEvents.size() == 2);
+        Assertions.assertTrue (transferEvent1.getTransferTo() == SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Assertions.assertTrue (transferEvent2.getTransferTo() == SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
     }
     
     
@@ -62,9 +63,9 @@ public class TransferEventGeneratorTest extends AARTestSetup
         TransferEvent transferEvent1 = (TransferEvent)transferEvents.get(0);
         TransferEvent transferEvent2 = (TransferEvent)transferEvents.get(1);
 
-        assert (transferEvents.size() == 2);
-        assert (transferEvent1.getTransferTo() != SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        assert (transferEvent2.getTransferTo() != SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Assertions.assertTrue (transferEvents.size() == 2);
+        Assertions.assertTrue (transferEvent1.getTransferTo() != SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Assertions.assertTrue (transferEvent2.getTransferTo() != SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
     }
 
 }

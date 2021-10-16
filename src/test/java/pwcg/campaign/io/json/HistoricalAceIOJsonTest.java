@@ -2,6 +2,7 @@ package pwcg.campaign.io.json;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -19,7 +20,7 @@ public class HistoricalAceIOJsonTest
     {
         PWCGContext.setProduct(PWCGProduct.FC);
         List<HistoricalAce> aces = HistoricalAceIOJson.readJson();
-        assert (aces.size() > 0);
+        Assertions.assertTrue (aces.size() > 0);
     }
 
     @Test
@@ -27,6 +28,6 @@ public class HistoricalAceIOJsonTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         List<HistoricalAce> aces = HistoricalAceIOJson.readJson();
-        assert (aces.size() > 0);
+        Assertions.assertTrue (aces.size() > 0);
     }
 }

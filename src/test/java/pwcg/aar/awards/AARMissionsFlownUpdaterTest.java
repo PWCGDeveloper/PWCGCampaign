@@ -2,6 +2,7 @@ package pwcg.aar.awards;
 
 import java.util.Map;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -77,9 +78,9 @@ public class AARMissionsFlownUpdaterTest
         int missionsFlownAfter2 = updatedMissionsFLown.get(nonPlayerSquadronMembers.getSquadronMemberList().get(2).getSerialNumber());
         int missionsFlownAfter3 = updatedMissionsFLown.get(nonPlayerSquadronMembers.getSquadronMemberList().get(3).getSerialNumber());
 
-        assert ((missionsFlownAfter1 - missionsFlownBefore1) == 1);
-        assert ((missionsFlownAfter2 - missionsFlownBefore2) == 1);
-        assert ((missionsFlownAfter3 - missionsFlownBefore3) == 1);
+        Assertions.assertTrue ((missionsFlownAfter1 - missionsFlownBefore1) == 1);
+        Assertions.assertTrue ((missionsFlownAfter2 - missionsFlownBefore2) == 1);
+        Assertions.assertTrue ((missionsFlownAfter3 - missionsFlownBefore3) == 1);
     }
 
 }

@@ -2,6 +2,7 @@ package pwcg.mission;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -50,11 +51,11 @@ public class MissionGroundUnitBuilderTest
         MissionBattleBuilder battleBuilder = new MissionBattleBuilder(mission);
         List<GroundUnitCollection> battles = battleBuilder.generateBattle();
 
-        assert (battles.size() < 3);
+        Assertions.assertTrue (battles.size() < 3);
         for (GroundUnitCollection battle : battles)
         {
-            assert (battle.getGroundUnitsForSide(Side.ALLIED).size() > 0);
-            assert (battle.getGroundUnitsForSide(Side.AXIS).size() > 0);
+            Assertions.assertTrue (battle.getGroundUnitsForSide(Side.ALLIED).size() > 0);
+            Assertions.assertTrue (battle.getGroundUnitsForSide(Side.AXIS).size() > 0);
         }
     }
 
@@ -71,8 +72,8 @@ public class MissionGroundUnitBuilderTest
         MissionTruckConvoyBuilder truckConvoyBuilder = new MissionTruckConvoyBuilder(campaign, mission);
         List<GroundUnitCollection> trucks = truckConvoyBuilder.generateMissionTrucks();
 
-        assert (trucks.size() >= 2);
-        assert (trucks.size() <= 12);
+        Assertions.assertTrue (trucks.size() >= 2);
+        Assertions.assertTrue (trucks.size() <= 12);
 
         boolean alliedTrainFound = false;
         boolean axisTrainFound = false;
@@ -88,11 +89,11 @@ public class MissionGroundUnitBuilderTest
                 {
                     axisTrainFound = true;
                 }
-                assert (groundUnit.getVehicles().size() >= 1);
+                Assertions.assertTrue (groundUnit.getVehicles().size() >= 1);
             }
         }
-        assert (alliedTrainFound);
-        assert (axisTrainFound);
+        Assertions.assertTrue (alliedTrainFound);
+        Assertions.assertTrue (axisTrainFound);
     }
 
     @Test
@@ -108,8 +109,8 @@ public class MissionGroundUnitBuilderTest
         MissionTrainBuilder trainBuilder = new MissionTrainBuilder(campaign, mission);
         List<GroundUnitCollection> trains = trainBuilder.generateMissionTrains();
 
-        assert (trains.size() >= 2);
-        assert (trains.size() <= 8);
+        Assertions.assertTrue (trains.size() >= 2);
+        Assertions.assertTrue (trains.size() <= 8);
 
         boolean alliedTrainFound = false;
         boolean axisTrainFound = false;
@@ -125,11 +126,11 @@ public class MissionGroundUnitBuilderTest
                 {
                     axisTrainFound = true;
                 }
-                assert (groundUnit.getVehicles().size() == 1);
+                Assertions.assertTrue (groundUnit.getVehicles().size() == 1);
             }
         }
-        assert (alliedTrainFound);
-        assert (axisTrainFound);
+        Assertions.assertTrue (alliedTrainFound);
+        Assertions.assertTrue (axisTrainFound);
     }
 
     @Test
@@ -146,12 +147,12 @@ public class MissionGroundUnitBuilderTest
         aaaManager.getAAAForMission(mission.getMissionGroundUnitBuilder());
         List<GroundUnitCollection> AAA = mission.getMissionGroundUnitBuilder().getAAA();
 
-        assert (AAA.size() > 10);
+        Assertions.assertTrue (AAA.size() > 10);
         for (GroundUnitCollection aaaUnit : AAA)
         {
             for (IGroundUnit groundUnit : aaaUnit.getGroundUnits())
             {
-                assert (groundUnit.getVehicles().size() > 0);
+                Assertions.assertTrue (groundUnit.getVehicles().size() > 0);
             }
         }
     }

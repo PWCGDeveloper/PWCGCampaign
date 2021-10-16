@@ -2,6 +2,7 @@ package pwcg.campaign.squadmember;
 
 import java.util.Date;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -86,7 +87,7 @@ public class AiPilotRemovalChooserTest
         
         AiPilotRemovalChooser chooser = new AiPilotRemovalChooser(campaign);
         SquadronMember squadronMemberRemoved = chooser.findAiPilotToRemove("Leyitenant", 10131132);
-        assert (squadronMemberRemoved.getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER+4 || 
+        Assertions.assertTrue (squadronMemberRemoved.getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER+4 || 
                 squadronMemberRemoved.getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER+5);
     }
 
@@ -105,7 +106,7 @@ public class AiPilotRemovalChooserTest
         
         AiPilotRemovalChooser chooser = new AiPilotRemovalChooser(campaign);
         SquadronMember squadronMemberRemoved = chooser.findAiPilotToRemove("Leyitenant", 10131132);
-        assert (squadronMemberRemoved.getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER+3 || 
+        Assertions.assertTrue (squadronMemberRemoved.getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER+3 || 
                 squadronMemberRemoved.getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER+6);
     }
 
@@ -120,7 +121,7 @@ public class AiPilotRemovalChooserTest
         
         AiPilotRemovalChooser chooser = new AiPilotRemovalChooser(campaign);
         SquadronMember squadronMemberRemoved = chooser.findAiPilotToRemove("Leyitenant", 10131132);
-        assert (squadronMemberRemoved.getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER+2);
+        Assertions.assertTrue (squadronMemberRemoved.getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER+2);
     }
 
     @Test
@@ -132,7 +133,7 @@ public class AiPilotRemovalChooserTest
         
         AiPilotRemovalChooser chooser = new AiPilotRemovalChooser(campaign);
         SquadronMember squadronMemberRemoved = chooser.findAiPilotToRemove("Major", 10131132);
-        assert (squadronMemberRemoved.getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
+        Assertions.assertTrue (squadronMemberRemoved.getSerialNumber() == SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
     }
 
     @Test
@@ -144,6 +145,6 @@ public class AiPilotRemovalChooserTest
         
         AiPilotRemovalChooser chooser = new AiPilotRemovalChooser(campaign);
         SquadronMember squadronMemberRemoved = chooser.findAiPilotToRemove("Leyitenant", 10131132);
-        assert (squadronMemberRemoved == null);
+        Assertions.assertTrue (squadronMemberRemoved == null);
     }
 }

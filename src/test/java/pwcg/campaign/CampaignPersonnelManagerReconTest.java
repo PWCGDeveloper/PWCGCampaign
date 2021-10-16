@@ -2,6 +2,7 @@ package pwcg.campaign;
 
 import java.util.Map;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -45,19 +46,19 @@ public class CampaignPersonnelManagerReconTest
         filterSpecification.setIncludeAI(true);  
         filterSpecification.setSpecifySquadron(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         Map<Integer, SquadronMember> squadronMembersNoPlayerNoAces = filter.getFilteredSquadronMembers(filterSpecification);
-        assert (squadronMembersNoPlayerNoAces.size() == (Squadron.SQUADRON_STAFF_SIZE - 2));
+        Assertions.assertTrue (squadronMembersNoPlayerNoAces.size() == (Squadron.SQUADRON_STAFF_SIZE - 2));
         
         filterSpecification.setIncludePlayer(false);        
         filterSpecification.setIncludeAces(true);        
         filterSpecification.setIncludeAI(true);  
         Map<Integer, SquadronMember> squadronMembersNoPlayerWithAces = filter.getFilteredSquadronMembers(filterSpecification);
-        assert (squadronMembersNoPlayerWithAces.size() == (Squadron.SQUADRON_STAFF_SIZE - 1));
+        Assertions.assertTrue (squadronMembersNoPlayerWithAces.size() == (Squadron.SQUADRON_STAFF_SIZE - 1));
 
         filterSpecification.setIncludePlayer(true);        
         filterSpecification.setIncludeAces(true);        
         filterSpecification.setIncludeAI(true);  
         Map<Integer, SquadronMember> squadronMembersWithPlayerWithAces = filter.getFilteredSquadronMembers(filterSpecification);
-        assert (squadronMembersWithPlayerWithAces.size() == Squadron.SQUADRON_STAFF_SIZE);
+        Assertions.assertTrue (squadronMembersWithPlayerWithAces.size() == Squadron.SQUADRON_STAFF_SIZE);
     }
 }
 

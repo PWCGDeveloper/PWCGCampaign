@@ -2,6 +2,7 @@ package pwcg.campaign.medals;
 
 import javax.swing.ImageIcon;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -67,7 +68,7 @@ public class BoSItalianMedalManagerTest extends MedalManagerTestBase
 
     	makeVictories(24);
         Medal medal = medalManager.award(campaign, player, service, 1);
-        assert (medal == null);
+        Assertions.assertTrue (medal == null);
     }
 
     @Test
@@ -77,7 +78,7 @@ public class BoSItalianMedalManagerTest extends MedalManagerTestBase
     	{
 	        String medalPath = ContextSpecificImages.imagesMedals() + "Axis\\" + medal.getMedalImage();
 	        ImageIcon medalIcon = ImageIconCache.getInstance().getImageIcon(medalPath);
-	        assert (medalIcon != null);
+	        Assertions.assertTrue (medalIcon != null);
     	}
     }
 }

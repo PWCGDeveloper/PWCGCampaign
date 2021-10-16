@@ -2,6 +2,7 @@ package pwcg.campaign.io.json;
 
 import java.util.Map;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -21,6 +22,6 @@ public class SkirmishProfileIOJsonTest
         PWCGContext.setProduct(PWCGProduct.BOS);
         PWCGContext.getInstance();
         Map<SkirmishProfileType, SkirmishProfile> skirmishProfiles = SkirmishProfileIOJson.readJson();
-        assert (skirmishProfiles.size() == 9);
+        Assertions.assertTrue (skirmishProfiles.size() == 9);
     }
 }

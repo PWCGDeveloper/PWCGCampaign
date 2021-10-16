@@ -1,5 +1,7 @@
 package pwcg.mission.flight.validate;
 
+import org.junit.jupiter.api.Assertions;
+
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
@@ -12,7 +14,7 @@ public class PlaneRtbValidator
         {
             for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
             {
-                assert (plane.getAiRTBDecision() == 0);
+                Assertions.assertTrue (plane.getAiRTBDecision() == 0);
             }
         }
     }
@@ -23,7 +25,7 @@ public class PlaneRtbValidator
         {
             for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
             {
-                assert (plane.getAiRTBDecision() == 1);
+                Assertions.assertTrue (plane.getAiRTBDecision() == 1);
             }
         }
     }

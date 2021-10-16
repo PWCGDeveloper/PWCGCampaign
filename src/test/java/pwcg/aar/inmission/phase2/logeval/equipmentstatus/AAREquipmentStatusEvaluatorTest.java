@@ -3,6 +3,7 @@ package pwcg.aar.inmission.phase2.logeval.equipmentstatus;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -85,7 +86,7 @@ public class AAREquipmentStatusEvaluatorTest
         AAREquipmentStatusEvaluator.determineFateOfPlanesInMission();
         for (LogPlane resultPlaneAfter : aarVehicleBuilder.getLogPlanes().values())
         {
-            assert (resultPlaneAfter.getPlaneStatus() == expectedStatus);
+            Assertions.assertTrue (resultPlaneAfter.getPlaneStatus() == expectedStatus);
         }
     }
 

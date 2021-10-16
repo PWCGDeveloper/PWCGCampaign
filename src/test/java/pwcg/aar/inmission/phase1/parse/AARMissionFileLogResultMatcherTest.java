@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
@@ -52,7 +53,7 @@ public class AARMissionFileLogResultMatcherTest
         logFileSets.add("missionReport(2018-05-05_18-20-11)[0]");
         
         AARMissionLogFileSet aarLogFileMissionFile = missionFileLogResultMatcher.matchMissionFileAndLogFile(pwcgMissionData, logFileSets);
-        assert (aarLogFileMissionFile.getLogFileName().equals("missionReport(2018-05-05_18-20-11)[0]"));
+        Assertions.assertTrue (aarLogFileMissionFile.getLogFileName().equals("missionReport(2018-05-05_18-20-11)[0]"));
     }
     
     @Test
@@ -70,7 +71,7 @@ public class AARMissionFileLogResultMatcherTest
         logFileSets.add("missionReport(2018-05-05_18-20-09)[0]");
         
         AARMissionLogFileSet aarLogFileMissionFile = missionFileLogResultMatcher.matchMissionFileAndLogFile(pwcgMissionData, logFileSets);
-        assert (aarLogFileMissionFile.getLogFileName().equals("missionReport(2018-05-05_18-20-11)[0]"));
+        Assertions.assertTrue (aarLogFileMissionFile.getLogFileName().equals("missionReport(2018-05-05_18-20-11)[0]"));
     }
 
     @Test

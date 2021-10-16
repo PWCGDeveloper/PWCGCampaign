@@ -1,5 +1,6 @@
 package pwcg.mission.ground.builder;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -51,14 +52,14 @@ public class DrifterUnitBuilderTest
         
         DrifterUnitBuilder groundUnitFactory = new DrifterUnitBuilder(campaign, location, CountryFactory.makeCountryByCountry(Country.RUSSIA));
         GroundUnitCollection groundUnitGroup = groundUnitFactory.createDrifterUnit();
-        assert (groundUnitGroup.getGroundUnits().size() >= 1);
+        Assertions.assertTrue (groundUnitGroup.getGroundUnits().size() >= 1);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {
-            assert (groundUnit.getCountry().getCountry() == Country.RUSSIA);
+            Assertions.assertTrue (groundUnit.getCountry().getCountry() == Country.RUSSIA);
             if (groundUnit.getVehicleClass() == VehicleClass.Drifter)
             {
-                assert (groundUnit.getVehicles().size() >= 2);
-                assert (groundUnit.getVehicles().size() <= 4);
+                Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
+                Assertions.assertTrue (groundUnit.getVehicles().size() <= 4);
             }
             else
             {

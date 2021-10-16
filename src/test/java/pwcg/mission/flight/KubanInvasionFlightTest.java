@@ -2,6 +2,7 @@ package pwcg.mission.flight;
 
 import java.util.Date;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -43,21 +44,21 @@ public class KubanInvasionFlightTest
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();
 
-        assert (mission.getSkirmish() != null);
-        assert (mission.getSkirmish().getSkirmishName().equals("Kerch Amphibious Assault"));
+        Assertions.assertTrue (mission.getSkirmish() != null);
+        Assertions.assertTrue (mission.getSkirmish().getSkirmishName().equals("Kerch Amphibious Assault"));
         for (AssaultDefinition assaultDefinition : mission.getMissionBattleManager().getMissionAssaultDefinitions())
         {
-            assert (assaultDefinition.getAssaultingCountry().getCountry() == Country.RUSSIA);
+            Assertions.assertTrue (assaultDefinition.getAssaultingCountry().getCountry() == Country.RUSSIA);
 
         }
 
         boolean diveBombFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.DIVE_BOMB, Side.AXIS);
         boolean groundAttackFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.GROUND_ATTACK, Side.AXIS);
-        assert (diveBombFlightFound || groundAttackFlightFound);
+        Assertions.assertTrue (diveBombFlightFound || groundAttackFlightFound);
 
         boolean diveBombFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.DIVE_BOMB, TargetType.TARGET_SHIPPING, Side.AXIS);
         boolean groundAttackFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_SHIPPING, Side.AXIS);
-        assert (diveBombFlightTargetFound || groundAttackFlightTargetFound);
+        Assertions.assertTrue (diveBombFlightTargetFound || groundAttackFlightTargetFound);
 
         MissionFlightValidator.validateMission(mission);
     }
@@ -70,21 +71,21 @@ public class KubanInvasionFlightTest
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();
 
-        assert (mission.getSkirmish() != null);
-        assert (mission.getSkirmish().getSkirmishName().equals("Eltigen Amphibious Assault"));
+        Assertions.assertTrue (mission.getSkirmish() != null);
+        Assertions.assertTrue (mission.getSkirmish().getSkirmishName().equals("Eltigen Amphibious Assault"));
         for (AssaultDefinition assaultDefinition : mission.getMissionBattleManager().getMissionAssaultDefinitions())
         {
-            assert (assaultDefinition.getAssaultingCountry().getCountry() == Country.RUSSIA);
+            Assertions.assertTrue (assaultDefinition.getAssaultingCountry().getCountry() == Country.RUSSIA);
 
         }
 
         boolean diveBombFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.DIVE_BOMB, Side.AXIS);
         boolean groundAttackFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.GROUND_ATTACK, Side.AXIS);
-        assert (diveBombFlightFound || groundAttackFlightFound);
+        Assertions.assertTrue (diveBombFlightFound || groundAttackFlightFound);
 
         boolean diveBombFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.DIVE_BOMB, TargetType.TARGET_SHIPPING, Side.AXIS);
         boolean groundAttackFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_SHIPPING, Side.AXIS);
-        assert (diveBombFlightTargetFound || groundAttackFlightTargetFound);
+        Assertions.assertTrue (diveBombFlightTargetFound || groundAttackFlightTargetFound);
 
         MissionFlightValidator.validateMission(mission);
     }
@@ -103,7 +104,7 @@ public class KubanInvasionFlightTest
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         mission.finalizeMission();
 
-        assert (mission.getSkirmish() == null);
+        Assertions.assertTrue (mission.getSkirmish() == null);
         
         MissionFlightValidator.validateMission(mission);
     }

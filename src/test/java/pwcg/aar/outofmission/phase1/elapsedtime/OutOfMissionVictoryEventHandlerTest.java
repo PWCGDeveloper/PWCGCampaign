@@ -2,6 +2,7 @@ package pwcg.aar.outofmission.phase1.elapsedtime;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -77,7 +78,7 @@ public class OutOfMissionVictoryEventHandlerTest
                 }
             }
     
-            assert (outOfMissionVictoriesAwarded > 1);
+            Assertions.assertTrue (outOfMissionVictoriesAwarded > 1);
         }
     }
 }

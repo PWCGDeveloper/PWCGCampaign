@@ -2,6 +2,7 @@ package pwcg.campaign.personnel;
 
 import java.util.Date;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -19,7 +20,7 @@ public class BeforeCampaignDateFinderTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         Date useDate = BeforeCampaignDateFinder.useEarliestPossibleDate(DateUtils.getDateYYYYMMDD("19411002"));
-        assert (useDate.equals(DateUtils.getDateYYYYMMDD("19411002")));
+        Assertions.assertTrue (useDate.equals(DateUtils.getDateYYYYMMDD("19411002")));
     }
     
     @Test
@@ -27,6 +28,6 @@ public class BeforeCampaignDateFinderTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         Date useDate = BeforeCampaignDateFinder.useEarliestPossibleDate(DateUtils.getDateYYYYMMDD("19410930"));
-        assert (useDate.equals(DateUtils.getDateYYYYMMDD("19411001")));
+        Assertions.assertTrue (useDate.equals(DateUtils.getDateYYYYMMDD("19411001")));
     }
 }

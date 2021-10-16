@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -35,8 +36,8 @@ public class VehicleDefinitionBoSTest
     {
         for (VehicleDefinition vehicleDefinition : allVehiclesDefinitions)
         {
-            assert (vehicleDefinition.getVehicleName() != null);
-            assert (!vehicleDefinition.getVehicleName().isEmpty());
+            Assertions.assertTrue (vehicleDefinition.getVehicleName() != null);
+            Assertions.assertTrue (!vehicleDefinition.getVehicleName().isEmpty());
         }
     }
 
@@ -48,22 +49,22 @@ public class VehicleDefinitionBoSTest
             Date availabilityDateToTest = DateUtils.advanceTimeDays(vehicleDefinition.getStartDate(), 14);
             VehicleRequestDefinition requestDefinition = new VehicleRequestDefinition(vehicleDefinition.getCountries().get(0), availabilityDateToTest, vehicleDefinition.getVehicleClass());
 
-            assert (vehicleDefinition.getVehicleName() != null);
-            assert (!vehicleDefinition.getVehicleName().isEmpty());
+            Assertions.assertTrue (vehicleDefinition.getVehicleName() != null);
+            Assertions.assertTrue (!vehicleDefinition.getVehicleName().isEmpty());
             if (vehicleDefinition.getVehicleClass() == VehicleClass.Drifter)
             {
                 if (vehicleDefinition.getVehicleLength() < 100)
                 {
-                    assert (vehicleDefinition.shouldUse(requestDefinition) == true);
+                    Assertions.assertTrue (vehicleDefinition.shouldUse(requestDefinition) == true);
                 }
                 else
                 {
-                    assert (vehicleDefinition.shouldUse(requestDefinition) == false);
+                    Assertions.assertTrue (vehicleDefinition.shouldUse(requestDefinition) == false);
                 }
             }
             else
             {
-                assert (vehicleDefinition.shouldUse(requestDefinition) == true);
+                Assertions.assertTrue (vehicleDefinition.shouldUse(requestDefinition) == true);
             }
         }
     }

@@ -1,5 +1,6 @@
 package pwcg.mission.ground.builder;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -49,14 +50,14 @@ public class AAAUnitBuilderTest
         TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, new Coordinate (100000, 0, 100000), country, "Artillery");
         AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
         GroundUnitCollection groundUnitGroup = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM);
-        assert (groundUnitGroup.getGroundUnits().size() == 1);
+        Assertions.assertTrue (groundUnitGroup.getGroundUnits().size() == 1);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {
-            assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
+            Assertions.assertTrue (groundUnit.getCountry().getCountry() == Country.GERMANY);
             if (groundUnit.getVehicleClass() == VehicleClass.AAAArtillery)
             {
-                assert (groundUnit.getVehicles().size() >= 1);
-                assert (groundUnit.getVehicles().size() <= 4);
+                Assertions.assertTrue (groundUnit.getVehicles().size() >= 1);
+                Assertions.assertTrue (groundUnit.getVehicles().size() <= 4);
             }
             else
             {
@@ -72,14 +73,14 @@ public class AAAUnitBuilderTest
         TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_ARTILLERY, new Coordinate (100000, 0, 100000), country, "Artillery");
         AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
         GroundUnitCollection groundUnitGroup = groundUnitFactory.createAAAMGBattery(GroundUnitSize.GROUND_UNIT_SIZE_HIGH);
-        assert (groundUnitGroup.getGroundUnits().size() == 1);
+        Assertions.assertTrue (groundUnitGroup.getGroundUnits().size() == 1);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {
-            assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
+            Assertions.assertTrue (groundUnit.getCountry().getCountry() == Country.GERMANY);
             if (groundUnit.getVehicleClass() == VehicleClass.AAAMachineGun)
             {
-                assert (groundUnit.getVehicles().size() >= 2);
-                assert (groundUnit.getVehicles().size() <= 8);
+                Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
+                Assertions.assertTrue (groundUnit.getVehicles().size() <= 8);
             }
             else
             {
@@ -97,18 +98,18 @@ public class AAAUnitBuilderTest
         AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, targetDefinition);
         GroundUnitCollection groundUnitGroup = groundUnitFactory.createAAAArtilleryBatteryWithSearchLight(GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM);
         assert(groundUnitGroup.getGroundUnits().size() == 2);
-        assert (groundUnitGroup.getGroundUnits().size() == 2);
+        Assertions.assertTrue (groundUnitGroup.getGroundUnits().size() == 2);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {
-            assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
+            Assertions.assertTrue (groundUnit.getCountry().getCountry() == Country.GERMANY);
             if (groundUnit.getVehicleClass() == VehicleClass.AAAArtillery)
             {
-                assert (groundUnit.getVehicles().size() >= 1);
-                assert (groundUnit.getVehicles().size() <= 4);
+                Assertions.assertTrue (groundUnit.getVehicles().size() >= 1);
+                Assertions.assertTrue (groundUnit.getVehicles().size() <= 4);
             }
             else if (groundUnit.getVehicleClass() == VehicleClass.SearchLight)
             {
-                assert (groundUnit.getVehicles().size() == 1);
+                Assertions.assertTrue (groundUnit.getVehicles().size() == 1);
             }
             else
             {

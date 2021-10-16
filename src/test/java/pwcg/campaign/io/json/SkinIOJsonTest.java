@@ -2,6 +2,7 @@ package pwcg.campaign.io.json;
 
 import java.util.Map;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -20,7 +21,7 @@ public class SkinIOJsonTest
     {
         PWCGContext.setProduct(PWCGProduct.FC);
         Map<String, SkinSet> skins = SkinIOJson.readSkinSet(SkinSetType.SKIN_CONFIGURED.getSkinSetName());
-        assert (skins.size() > 0);
+        Assertions.assertTrue (skins.size() > 0);
     }
     
     @Test
@@ -28,7 +29,7 @@ public class SkinIOJsonTest
     {
         PWCGContext.setProduct(PWCGProduct.FC);
         Map<String, SkinSet> skins = SkinIOJson.readSkinSet(SkinSetType.SKIN_DO_NOT_USE.getSkinSetName());
-        assert (skins.size() == 0);
+        Assertions.assertTrue (skins.size() == 0);
     }
     
     @Test
@@ -36,7 +37,7 @@ public class SkinIOJsonTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         Map<String, SkinSet> skins = SkinIOJson.readSkinSet(SkinSetType.SKIN_CONFIGURED.getSkinSetName());
-        assert (skins.size() > 0);
+        Assertions.assertTrue (skins.size() > 0);
     }
     
     @Test
@@ -44,7 +45,7 @@ public class SkinIOJsonTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         Map<String, SkinSet> skins = SkinIOJson.readSkinSet(SkinSetType.SKIN_DO_NOT_USE.getSkinSetName());
-        assert (skins.size() > 0);
+        Assertions.assertTrue (skins.size() > 0);
     }
 
 }

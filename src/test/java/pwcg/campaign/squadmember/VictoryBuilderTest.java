@@ -1,5 +1,6 @@
 package pwcg.campaign.squadmember;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -93,8 +94,8 @@ public class VictoryBuilderTest
         VictoryBuilder victoryBuilder = new VictoryBuilder(campaign);
         Victory victory = victoryBuilder.buildVictory(DateUtils.getDateYYYYMMDD("19421103"), logVictory);
         
-        assert (victory.getVictor().getPilotName().equals(victor.getNameAndRank()));
-        assert (victory.getVictim().getPilotName().equals(victim.getNameAndRank()));
+        Assertions.assertTrue (victory.getVictor().getPilotName().equals(victor.getNameAndRank()));
+        Assertions.assertTrue (victory.getVictim().getPilotName().equals(victim.getNameAndRank()));
         
         VictoryDescription victoryDescription = new VictoryDescription(campaign, victory);
         String victoryDescriptionText = victoryDescription.createVictoryDescription();
@@ -133,8 +134,8 @@ public class VictoryBuilderTest
         VictoryBuilder victoryBuilder = new VictoryBuilder(campaign);
         Victory victory = victoryBuilder.buildVictory(DateUtils.getDateYYYYMMDD("19421103"), logVictory);
         
-        assert (victory.getVictor().getPilotName().equals(victor.getNameAndRank()));
-        assert (victory.getVictim().getPilotName().equals(victim.getNameAndRank()));
+        Assertions.assertTrue (victory.getVictor().getPilotName().equals(victor.getNameAndRank()));
+        Assertions.assertTrue (victory.getVictim().getPilotName().equals(victim.getNameAndRank()));
         
         VictoryDescription victoryDescription = new VictoryDescription(campaign, victory);
         String victoryDescriptionText = victoryDescription.createVictoryDescription();
@@ -168,8 +169,8 @@ public class VictoryBuilderTest
         VictoryBuilder victoryBuilder = new VictoryBuilder(campaign);
         Victory victory = victoryBuilder.buildVictory(DateUtils.getDateYYYYMMDD("19421103"), logVictory);
         
-        assert (victory.getVictor().getPilotName().equals(victor.getNameAndRank()));
-        assert (victory.getVictim().getType().equals("gaz-aa"));
+        Assertions.assertTrue (victory.getVictor().getPilotName().equals(victor.getNameAndRank()));
+        Assertions.assertTrue (victory.getVictim().getType().equals("gaz-aa"));
         
         VictoryDescription victoryDescription = new VictoryDescription(campaign, victory);
         String victoryDescriptionText = victoryDescription.createVictoryDescription();
@@ -213,9 +214,9 @@ public class VictoryBuilderTest
         VictoryBuilder victoryBuilder = new VictoryBuilder(campaign);
         Victory victory = victoryBuilder.buildVictory(DateUtils.getDateYYYYMMDD("19421103"), logVictory);
 
-        assert (victory.getVictor().getPilotName().equals(victor.getNameAndRank()));
-        assert (victory.getVictor().isGunner());
-        assert (victory.getVictim().getPilotName().equals(victim.getNameAndRank()));
+        Assertions.assertTrue (victory.getVictor().getPilotName().equals(victor.getNameAndRank()));
+        Assertions.assertTrue (victory.getVictor().isGunner());
+        Assertions.assertTrue (victory.getVictim().getPilotName().equals(victim.getNameAndRank()));
 
         VictoryDescription victoryDescription = new VictoryDescription(campaign, victory);
         String victoryDescriptionText = victoryDescription.createVictoryDescription();

@@ -2,6 +2,7 @@ package pwcg.aar.outofmission.phase1.elapsedtime;
 
 import java.util.Date;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -50,7 +51,7 @@ public class SquadronMoveHandlerTest
 
         SquadronMoveHandler squadronMoveHandler = new SquadronMoveHandler(campaign);
         SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(newDate, squadron);
-        assert (squadronMoveEvent == null);
+        Assertions.assertTrue (squadronMoveEvent == null);
         
     }
 
@@ -66,10 +67,10 @@ public class SquadronMoveHandlerTest
 
         SquadronMoveHandler squadronMoveHandler = new SquadronMoveHandler(campaign);
         SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(newDate, squadron);
-        assert (squadronMoveEvent.getLastAirfield().equals("Ivanskoe"));
-        assert (squadronMoveEvent.getNewAirfield().equals("Mozhaysk"));
-        assert (squadronMoveEvent.getDate().equals(newDate));
-        assert (squadronMoveEvent.isNeedsFerryMission() == true);
+        Assertions.assertTrue (squadronMoveEvent.getLastAirfield().equals("Ivanskoe"));
+        Assertions.assertTrue (squadronMoveEvent.getNewAirfield().equals("Mozhaysk"));
+        Assertions.assertTrue (squadronMoveEvent.getDate().equals(newDate));
+        Assertions.assertTrue (squadronMoveEvent.isNeedsFerryMission() == true);
         
     }
 
@@ -85,9 +86,9 @@ public class SquadronMoveHandlerTest
 
         SquadronMoveHandler squadronMoveHandler = new SquadronMoveHandler(campaign);
         SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(newDate, squadron);
-        assert (squadronMoveEvent.getLastAirfield().equals("Ivanskoe"));
-        assert (squadronMoveEvent.getNewAirfield().equals("Surovikino"));
-        assert (squadronMoveEvent.getDate().equals(newDate));
-        assert (squadronMoveEvent.isNeedsFerryMission() == false);
+        Assertions.assertTrue (squadronMoveEvent.getLastAirfield().equals("Ivanskoe"));
+        Assertions.assertTrue (squadronMoveEvent.getNewAirfield().equals("Surovikino"));
+        Assertions.assertTrue (squadronMoveEvent.getDate().equals(newDate));
+        Assertions.assertTrue (squadronMoveEvent.isNeedsFerryMission() == false);
     }
 }

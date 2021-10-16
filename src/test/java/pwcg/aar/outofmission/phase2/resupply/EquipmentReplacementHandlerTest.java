@@ -2,6 +2,7 @@ package pwcg.aar.outofmission.phase2.resupply;
 
 import java.util.Date;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -57,7 +58,7 @@ public class EquipmentReplacementHandlerTest
         deactivateCampaignEquipment();
       
         EquipmentResupplyData equipmentTransferData = squadronTransferHandler.resupplyForLosses(armedService);
-        assert (equipmentTransferData.getTransferCount() == 3);
+        Assertions.assertTrue (equipmentTransferData.getTransferCount() == 3);
     }
 
     private void deactivateCampaignEquipment() throws PWCGException
@@ -99,7 +100,7 @@ public class EquipmentReplacementHandlerTest
         deactivateSquadronEquipment();
       
         EquipmentResupplyData equipmentTransferData = squadronTransferHandler.resupplyForLosses(armedService);
-        assert (equipmentTransferData.getTransferCount() == 3);
+        Assertions.assertTrue (equipmentTransferData.getTransferCount() == 3);
     }
 
     private void deactivateSquadronEquipment() throws PWCGException

@@ -2,6 +2,7 @@ package pwcg.campaign.squadron;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -33,8 +34,8 @@ public class SquadronReducerTest
         assert(squadronsWithoutAnomalies.size() > 30);
         for (Squadron squadron : squadronsWithoutAnomalies)
         {
-            assert (squadron.getSquadronId() != 20115021);
-            assert (squadron.getSquadronId() != 20111051);
+            Assertions.assertTrue (squadron.getSquadronId() != 20115021);
+            Assertions.assertTrue (squadron.getSquadronId() != 20111051);
         }
     }
 
@@ -51,7 +52,7 @@ public class SquadronReducerTest
         assert(squadronsWithoutAnomalies.size() > 30);
         for (Squadron squadron : squadronsWithoutAnomalies)
         {
-            assert (squadron.getSquadronId() != 20115021);
+            Assertions.assertTrue (squadron.getSquadronId() != 20115021);
             
             if (squadron.getSquadronId() != 20111051)
             {
@@ -59,7 +60,7 @@ public class SquadronReducerTest
             }
         }
         
-        assert (jg51Found);
+        Assertions.assertTrue (jg51Found);
     }
     
 
@@ -88,7 +89,7 @@ public class SquadronReducerTest
             }
         }
         
-        assert (gruppo21Found);
-        assert (jg51Found);
+        Assertions.assertTrue (gruppo21Found);
+        Assertions.assertTrue (jg51Found);
     }
 }

@@ -3,6 +3,7 @@ package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -96,9 +97,9 @@ public class ClaimResolverTest
 
         IClaimResolver claimResolver = new ClaimResolverSinglePlayer(campaign, verifiedVictoryGenerator, claimDenier, playerDeclarations);
         ReconciledMissionVictoryData reconciledMissionData = claimResolver.resolvePlayerClaims();
-        assert (reconciledMissionData.getVictoryAwardsByPilot().size() == 1);
-        assert (reconciledMissionData.getVictoryAwardsByPilot().get(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER).size() == 3);
-        assert (reconciledMissionData.getPlayerClaimsDenied().size() == 0);
+        Assertions.assertTrue (reconciledMissionData.getVictoryAwardsByPilot().size() == 1);
+        Assertions.assertTrue (reconciledMissionData.getVictoryAwardsByPilot().get(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER).size() == 3);
+        Assertions.assertTrue (reconciledMissionData.getPlayerClaimsDenied().size() == 0);
     }
 
     @Test
@@ -106,8 +107,8 @@ public class ClaimResolverTest
     {
         IClaimResolver claimResolver = new ClaimResolverSinglePlayer(campaign, verifiedVictoryGenerator, claimDenier, playerDeclarations);
         ReconciledMissionVictoryData reconciledMissionData = claimResolver.resolvePlayerClaims();
-        assert (reconciledMissionData.getVictoryAwardsByPilot().size() == 0);
-        assert (reconciledMissionData.getPlayerClaimsDenied().size() == 0);
+        Assertions.assertTrue (reconciledMissionData.getVictoryAwardsByPilot().size() == 0);
+        Assertions.assertTrue (reconciledMissionData.getPlayerClaimsDenied().size() == 0);
     }
 
     @Test
@@ -120,8 +121,8 @@ public class ClaimResolverTest
 
         IClaimResolver claimResolver = new ClaimResolverSinglePlayer(campaign, verifiedVictoryGenerator, claimDenier, playerDeclarations);
         ReconciledMissionVictoryData reconciledMissionData = claimResolver.resolvePlayerClaims();
-        assert (reconciledMissionData.getVictoryAwardsByPilot().size() == 0);
-        assert (reconciledMissionData.getPlayerClaimsDenied().size() == 3);
+        Assertions.assertTrue (reconciledMissionData.getVictoryAwardsByPilot().size() == 0);
+        Assertions.assertTrue (reconciledMissionData.getPlayerClaimsDenied().size() == 3);
     }
 
 }

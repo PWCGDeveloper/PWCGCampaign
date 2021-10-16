@@ -2,6 +2,7 @@ package pwcg.campaign;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -38,10 +39,10 @@ public class SkirmishManagerTest
         SkirmishManager skirmishManager = new SkirmishManager(FrontMapIdentifier.BODENPLATTE_MAP);
         skirmishManager.initialize();
         
-        assert (skirmishManager.getSkirmishes().getSkirmishes().size() == 18);
+        Assertions.assertTrue (skirmishManager.getSkirmishes().getSkirmishes().size() == 18);
         
         List<Skirmish> skirmishesForDate = skirmishManager.getSkirmishesForDate(campaign, TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
-        assert (skirmishesForDate.size() == 3);
+        Assertions.assertTrue (skirmishesForDate.size() == 3);
         
         for (Skirmish skirmish : skirmishesForDate)
         {
@@ -58,7 +59,7 @@ public class SkirmishManagerTest
         skirmishManager.initialize();
                 
         List<Skirmish> skirmishesForDate = skirmishManager.getSkirmishesForDate(campaign, TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
-        assert (skirmishesForDate.size() == 3);
+        Assertions.assertTrue (skirmishesForDate.size() == 3);
         
         for (Skirmish skirmish : skirmishesForDate)
         {

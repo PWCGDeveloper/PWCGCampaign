@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -87,7 +88,7 @@ public class AARClaimPanelEventTabulatorTest
     {             
         AARClaimPanelEventTabulator claimPanelEventTabulator = new AARClaimPanelEventTabulator(campaign, aarPreliminarytData, Side.AXIS);
         AARClaimPanelData claimPanelData = claimPanelEventTabulator.tabulateForAARClaimPanel();
-        assert (claimPanelData.getEnemyPlaneTypesInMission().size() == 2);
+        Assertions.assertTrue (claimPanelData.getEnemyPlaneTypesInMission().size() == 2);
         
     }
     
@@ -96,7 +97,7 @@ public class AARClaimPanelEventTabulatorTest
     {             
         AARClaimPanelEventTabulator claimPanelEventTabulator = new AARClaimPanelEventTabulator(campaign, aarPreliminarytData, Side.ALLIED);
         AARClaimPanelData claimPanelData = claimPanelEventTabulator.tabulateForAARClaimPanel();
-        assert (claimPanelData.getEnemyPlaneTypesInMission().size() == 1);
+        Assertions.assertTrue (claimPanelData.getEnemyPlaneTypesInMission().size() == 1);
         
     }
 }

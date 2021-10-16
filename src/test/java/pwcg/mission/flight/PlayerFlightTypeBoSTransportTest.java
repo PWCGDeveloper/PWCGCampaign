@@ -1,5 +1,6 @@
 package pwcg.mission.flight;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -48,14 +49,14 @@ public class PlayerFlightTypeBoSTransportTest
         ParaDropFlight flight = (ParaDropFlight) mission.getMissionFlights().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
-        assert (targetMissionPoint != null);
+        Assertions.assertTrue (targetMissionPoint != null);
 
         FlightActivateValidator.validate(flight);
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
-        assert (flight.getFlightType() == FlightTypes.PARATROOP_DROP);
+        Assertions.assertTrue (flight.getFlightType() == FlightTypes.PARATROOP_DROP);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getMissionFlights());
         playerEscortedFlightValidator.validateEscortForPlayer();
         
@@ -71,14 +72,14 @@ public class PlayerFlightTypeBoSTransportTest
         CargoDropFlight flight = (CargoDropFlight) mission.getMissionFlights().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
-        assert (targetMissionPoint != null);
+        Assertions.assertTrue (targetMissionPoint != null);
 
         FlightActivateValidator.validate(flight);
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
-        assert (flight.getFlightType() == FlightTypes.CARGO_DROP);
+        Assertions.assertTrue (flight.getFlightType() == FlightTypes.CARGO_DROP);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getMissionFlights());
         playerEscortedFlightValidator.validateEscortForPlayer();
         
@@ -94,11 +95,11 @@ public class PlayerFlightTypeBoSTransportTest
         TransportFlight flight = (TransportFlight) mission.getMissionFlights().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
-        assert (targetMissionPoint != null);
+        Assertions.assertTrue (targetMissionPoint != null);
 
         FlightActivateValidator.validate(flight);
 
-        assert (flight.getFlightType() == FlightTypes.TRANSPORT);
+        Assertions.assertTrue (flight.getFlightType() == FlightTypes.TRANSPORT);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getMissionFlights());
         playerEscortedFlightValidator.validateNoEscortForPlayer();
         
@@ -115,14 +116,14 @@ public class PlayerFlightTypeBoSTransportTest
         BombingFlight flight = (BombingFlight) mission.getMissionFlights().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
-        assert (targetMissionPoint != null);
+        Assertions.assertTrue (targetMissionPoint != null);
 
         FlightActivateValidator.validate(flight);
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
-        assert (flight.getFlightType() == FlightTypes.BOMB);
+        Assertions.assertTrue (flight.getFlightType() == FlightTypes.BOMB);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getMissionFlights());
         playerEscortedFlightValidator.validateEscortForPlayer();
         
@@ -138,14 +139,14 @@ public class PlayerFlightTypeBoSTransportTest
         BombingFlight flight = (BombingFlight) mission.getMissionFlights().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
-        assert (targetMissionPoint != null);
+        Assertions.assertTrue (targetMissionPoint != null);
 
         FlightActivateValidator.validate(flight);
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
-        assert (flight.getFlightType() == FlightTypes.LOW_ALT_BOMB);
+        Assertions.assertTrue (flight.getFlightType() == FlightTypes.LOW_ALT_BOMB);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getMissionFlights());
         playerEscortedFlightValidator.validateEscortForPlayer();
         
@@ -155,8 +156,8 @@ public class PlayerFlightTypeBoSTransportTest
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)
     {
-        assert (targetDefinition.getCountry() != null);
-        assert (targetDefinition.getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
-        assert (targetDefinition.getTargetType() != TargetType.TARGET_NONE);
+        Assertions.assertTrue (targetDefinition.getCountry() != null);
+        Assertions.assertTrue (targetDefinition.getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
+        Assertions.assertTrue (targetDefinition.getTargetType() != TargetType.TARGET_NONE);
     }
 }

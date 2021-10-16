@@ -1,5 +1,6 @@
 package pwcg.mission.options;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -38,8 +39,8 @@ public class MissionWeatherHazeTest
     {
         Mockito.when(missionWeather.getCloudConfig()).thenReturn("00_Clear_");
         double haze = MissionWeatherHaze.createHaze(campaign, missionWeather);
-        assert (haze >= 0.2);
-        assert (haze <= 0.4);
+        Assertions.assertTrue (haze >= 0.2);
+        Assertions.assertTrue (haze <= 0.4);
     }
 
     @Test
@@ -47,8 +48,8 @@ public class MissionWeatherHazeTest
     {
         Mockito.when(missionWeather.getCloudConfig()).thenReturn("01_Light_");
         double haze = MissionWeatherHaze.createHaze(campaign, missionWeather);
-        assert (haze >= 0.2);
-        assert (haze <= 0.6);
+        Assertions.assertTrue (haze >= 0.2);
+        Assertions.assertTrue (haze <= 0.6);
     }
 
     @Test
@@ -56,8 +57,8 @@ public class MissionWeatherHazeTest
     {
         Mockito.when(missionWeather.getCloudConfig()).thenReturn("01_Medium_");
         double haze = MissionWeatherHaze.createHaze(campaign, missionWeather);
-        assert (haze >= 0.3);
-        assert (haze <= 0.8);
+        Assertions.assertTrue (haze >= 0.3);
+        Assertions.assertTrue (haze <= 0.8);
     }
 
     @Test
@@ -65,8 +66,8 @@ public class MissionWeatherHazeTest
     {
         Mockito.when(missionWeather.getCloudConfig()).thenReturn("01_Heavy_");
         double haze = MissionWeatherHaze.createHaze(campaign, missionWeather);
-        assert (haze >= 0.5);
-        assert (haze <= 0.8);
+        Assertions.assertTrue (haze >= 0.5);
+        Assertions.assertTrue (haze <= 0.8);
     }
 
     @Test
@@ -74,8 +75,8 @@ public class MissionWeatherHazeTest
     {
         Mockito.when(missionWeather.getCloudConfig()).thenReturn("01_Overcast_");
         double haze = MissionWeatherHaze.createHaze(campaign, missionWeather);
-        assert (haze >= 0.6);
-        assert (haze <= 0.8);
+        Assertions.assertTrue (haze >= 0.6);
+        Assertions.assertTrue (haze <= 0.8);
     }
 
     @Test
@@ -86,7 +87,7 @@ public class MissionWeatherHazeTest
 
         Mockito.when(missionWeather.getCloudConfig()).thenReturn("01_Overcast_");
         double haze = MissionWeatherHaze.createHaze(campaign, missionWeather);
-        assert (haze == 1.0);
+        Assertions.assertTrue (haze == 1.0);
     }
 
 }

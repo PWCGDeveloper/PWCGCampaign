@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -135,7 +136,7 @@ public class AARPlayerStatusEvaluatorTest
         for (LogPlane resultPlaneAfter : aarVehicleBuilder.getLogPlanes().values())
         {
             LogPilot crewmanAfter = resultPlaneAfter.getLogPilot();
-            assert (crewmanAfter.getStatus() == expectedStatus);
+            Assertions.assertTrue (crewmanAfter.getStatus() == expectedStatus);
         }
     }
 

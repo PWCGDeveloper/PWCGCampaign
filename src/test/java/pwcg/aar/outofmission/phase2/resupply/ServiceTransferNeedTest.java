@@ -2,6 +2,7 @@ package pwcg.aar.outofmission.phase2.resupply;
 
 import java.util.Date;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -48,7 +49,7 @@ public class ServiceTransferNeedTest
         ServiceResupplyNeed serviceTransferNeed = new ServiceResupplyNeed(campaign, FCServiceManager.DEUTSCHE_LUFTSTREITKRAFTE, squadronNeedFactory);
         serviceTransferNeed.determineResupplyNeed();
         
-        assert (serviceTransferNeed.hasNeedySquadron() == true);
+        Assertions.assertTrue (serviceTransferNeed.hasNeedySquadron() == true);
         
         boolean jasta16Needs = false;
         while (serviceTransferNeed.hasNeedySquadron())
@@ -60,7 +61,7 @@ public class ServiceTransferNeedTest
                 break;
             }
         }
-        assert (jasta16Needs);
+        Assertions.assertTrue (jasta16Needs);
     }
     
 

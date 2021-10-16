@@ -3,6 +3,7 @@ package pwcg.aar.outofmission.phase2.resupply;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -69,7 +70,7 @@ public class EquipmentUpgradeHandlerTest
 
         for (int veryGoodPlaneInDepot : veryGoodPlanesInDepot)
         {
-            assert (equipmentDepotBeforeTest.getPlaneFromDepot(veryGoodPlaneInDepot) != null);
+            Assertions.assertTrue (equipmentDepotBeforeTest.getPlaneFromDepot(veryGoodPlaneInDepot) != null);
         }
 
         // replace planes in squadron with different quality 109s, but all worse
@@ -104,7 +105,7 @@ public class EquipmentUpgradeHandlerTest
         // The better planes should be left in the squadron
         for (int planeThatShouldNotBeReplaced : planesThatShouldNotBeReplaced)
         {
-            assert (equipmentForSquadronBeforeTest.getEquippedPlane(planeThatShouldNotBeReplaced) != null);
+            Assertions.assertTrue (equipmentForSquadronBeforeTest.getEquippedPlane(planeThatShouldNotBeReplaced) != null);
         }
 
         // Run the upgrade
@@ -117,23 +118,23 @@ public class EquipmentUpgradeHandlerTest
         Equipment equipmentForSquadronAfterTest = campaign.getEquipmentManager().getEquipmentForSquadron(playerSquadron.getSquadronId());
         for (int planeThatShouldBeReplaced : planesThatShouldBeReplaced)
         {
-            assert (equipmentForSquadronAfterTest.getEquippedPlane(planeThatShouldBeReplaced) == null);
-            assert (equipmentDepotAfterTest.getPlaneFromDepot(planeThatShouldBeReplaced) != null);
+            Assertions.assertTrue (equipmentForSquadronAfterTest.getEquippedPlane(planeThatShouldBeReplaced) == null);
+            Assertions.assertTrue (equipmentDepotAfterTest.getPlaneFromDepot(planeThatShouldBeReplaced) != null);
         }
 
         // The better planes should be left in the squadron
         for (int planeThatShouldNotBeReplaced : planesThatShouldNotBeReplaced)
         {
-            assert (equipmentForSquadronAfterTest.getEquippedPlane(planeThatShouldNotBeReplaced) != null);
-            assert (equipmentDepotAfterTest.getPlaneFromDepot(planeThatShouldNotBeReplaced) == null);
+            Assertions.assertTrue (equipmentForSquadronAfterTest.getEquippedPlane(planeThatShouldNotBeReplaced) != null);
+            Assertions.assertTrue (equipmentDepotAfterTest.getPlaneFromDepot(planeThatShouldNotBeReplaced) == null);
         }
 
         // The very good planes in the depot should be moved from the depot to
         // the squadron
         for (int veryGoodPlaneInDepot : veryGoodPlanesInDepot)
         {
-            assert (equipmentForSquadronAfterTest.getEquippedPlane(veryGoodPlaneInDepot) != null);
-            assert (equipmentDepotAfterTest.getPlaneFromDepot(veryGoodPlaneInDepot) == null);
+            Assertions.assertTrue (equipmentForSquadronAfterTest.getEquippedPlane(veryGoodPlaneInDepot) != null);
+            Assertions.assertTrue (equipmentDepotAfterTest.getPlaneFromDepot(veryGoodPlaneInDepot) == null);
         }
     }
 
@@ -156,7 +157,7 @@ public class EquipmentUpgradeHandlerTest
 
         for (int veryGoodPlaneInDepot : veryGoodPlanesInDepot)
         {
-            assert (equipmentDepotBeforeTest.getPlaneFromDepot(veryGoodPlaneInDepot) != null);
+            Assertions.assertTrue (equipmentDepotBeforeTest.getPlaneFromDepot(veryGoodPlaneInDepot) != null);
         }
 
         // replace planes in player squadron with very good quality 109s, to
@@ -186,14 +187,14 @@ public class EquipmentUpgradeHandlerTest
         EquipmentDepot equipmentDepotAfterTest = campaign.getEquipmentManager().getEquipmentDepotForService(armedService.getServiceId());
         for (int depotPlane : veryGoodPlanesInDepot)
         {
-            assert (equipmentDepotAfterTest.getPlaneFromDepot(depotPlane) == null);
+            Assertions.assertTrue (equipmentDepotAfterTest.getPlaneFromDepot(depotPlane) == null);
         }
 
         // No planes should be replaced in the player squadron
         Equipment equipmentForPlayerSquadronAfterTest = campaign.getEquipmentManager().getEquipmentForSquadron(playerSquadron.getSquadronId());
         for (int depotPlane : veryGoodPlanesInDepot)
         {
-            assert (equipmentForPlayerSquadronAfterTest.getEquippedPlane(depotPlane) == null);
+            Assertions.assertTrue (equipmentForPlayerSquadronAfterTest.getEquippedPlane(depotPlane) == null);
         }
 
         // the planes should be in a squadron
@@ -210,7 +211,7 @@ public class EquipmentUpgradeHandlerTest
                     }
                 }
             }
-            assert (planeIsInSquadron);
+            Assertions.assertTrue (planeIsInSquadron);
         }
     }
 
@@ -266,15 +267,15 @@ public class EquipmentUpgradeHandlerTest
         // Good planes in the squadron should stay in the squadron
         for (int planeThatShouldNotBeReplaced : goodPlanesInTheSquadron)
         {
-            assert (equipmentForSquadronAfterTest.getEquippedPlane(planeThatShouldNotBeReplaced) != null);
-            assert (equipmentDepotAfterTest.getPlaneFromDepot(planeThatShouldNotBeReplaced) == null);
+            Assertions.assertTrue (equipmentForSquadronAfterTest.getEquippedPlane(planeThatShouldNotBeReplaced) != null);
+            Assertions.assertTrue (equipmentDepotAfterTest.getPlaneFromDepot(planeThatShouldNotBeReplaced) == null);
         }
 
         // Bad planes in the depot should stay in the depot
         for (int badlaneInDepot : badPlanesInDepot)
         {
-            assert (equipmentForSquadronAfterTest.getEquippedPlane(badlaneInDepot) == null);
-            assert (equipmentDepotAfterTest.getPlaneFromDepot(badlaneInDepot) != null);
+            Assertions.assertTrue (equipmentForSquadronAfterTest.getEquippedPlane(badlaneInDepot) == null);
+            Assertions.assertTrue (equipmentDepotAfterTest.getPlaneFromDepot(badlaneInDepot) != null);
         }
     }
 }

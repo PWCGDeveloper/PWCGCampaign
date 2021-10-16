@@ -1,5 +1,6 @@
 package pwcg.campaign.io.json;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -17,6 +18,6 @@ public class CargoRoutesIOJsonTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         CargoRoutes cargoRoutes = CargoRoutesIOJson.readJson("Kuban");
-        assert (cargoRoutes.getRouteDefinitions().size() > 0);
+        Assertions.assertTrue (cargoRoutes.getRouteDefinitions().size() > 0);
     }
 }

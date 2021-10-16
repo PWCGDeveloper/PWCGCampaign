@@ -3,6 +3,7 @@ package pwcg.mission.ground.builder;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -114,7 +115,7 @@ public class AssaultBuilderTest
         Coordinate assaultPosition = new Coordinate(150000, 0, 150000);
         GroundUnitCollection groundUnitGroup = AssaultBuilder.generateAssault(mission, assaultPosition);
         
-        assert (groundUnitGroup.getGroundUnits().size() >= 10);
+        Assertions.assertTrue (groundUnitGroup.getGroundUnits().size() >= 10);
         groundUnitGroup.validate();
         return groundUnitGroup;
     }
@@ -127,23 +128,23 @@ public class AssaultBuilderTest
             {
                 if (groundUnit.getVehicleClass() == VehicleClass.Tank)
                 {
-                    assert (groundUnit.getVehicles().size() >= 2);
+                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
                 }
                 else if (groundUnit.getVehicleClass() == VehicleClass.ArtilleryHowitzer)
                 {
-                    assert (groundUnit.getVehicles().size() >= 2);
+                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
                 }
                 else if (groundUnit.getVehicleClass() == VehicleClass.MachineGun)
                 {
-                    assert (groundUnit.getVehicles().size() >= 2);
+                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
                 }
                 else if (groundUnit.getVehicleClass() == VehicleClass.AAAArtillery)
                 {
-                    assert (groundUnit.getVehicles().size() >= 2);
+                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
                 }
                 else if (groundUnit.getVehicleClass() == VehicleClass.AAAMachineGun)
                 {
-                    assert (groundUnit.getVehicles().size() >= 2);
+                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
                 }
                 else
                 {
@@ -154,27 +155,27 @@ public class AssaultBuilderTest
             {
                 if (groundUnit.getVehicleClass() == VehicleClass.ArtilleryAntiTank)
                 {
-                    assert (groundUnit.getVehicles().size() >= 2);
+                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
                 }
                 else if (groundUnit.getVehicleClass() == VehicleClass.Tank)
                 {
-                    assert (groundUnit.getVehicles().size() >= 2);
+                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
                 }
                 else if (groundUnit.getVehicleClass() == VehicleClass.ArtilleryHowitzer)
                 {
-                    assert (groundUnit.getVehicles().size() >= 2);
+                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
                 }
                 else if (groundUnit.getVehicleClass() == VehicleClass.MachineGun)
                 {
-                    assert (groundUnit.getVehicles().size() >= 2);
+                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
                 }
                 else if (groundUnit.getVehicleClass() == VehicleClass.AAAArtillery)
                 {
-                    assert (groundUnit.getVehicles().size() >= 2);
+                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
                 }
                 else if (groundUnit.getVehicleClass() == VehicleClass.AAAMachineGun)
                 {
-                    assert (groundUnit.getVehicles().size() >= 2);
+                    Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
                 }
                 else
                 {

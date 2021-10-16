@@ -1,5 +1,6 @@
 package pwcg.campaign.io.json;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -17,6 +18,6 @@ public class ShippingEncounterIOJsonTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         ShipEncounterZones shipEncounterZones = ShipEncounterZonesIOJson.readJson("Kuban");
-        assert (shipEncounterZones.getShipEncounterZones().size() > 0);
+        Assertions.assertTrue (shipEncounterZones.getShipEncounterZones().size() > 0);
     }
 }

@@ -1,5 +1,6 @@
 package pwcg.mission.flight;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -47,14 +48,14 @@ public class PlayerFlightTypeBoSDiveBombTest
         DiveBombingFlight flight = (DiveBombingFlight) mission.getMissionFlights().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
-        assert (targetMissionPoint != null);
+        Assertions.assertTrue (targetMissionPoint != null);
 
         FlightActivateValidator.validate(flight);
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
-        assert (flight.getFlightType() == FlightTypes.DIVE_BOMB);
+        Assertions.assertTrue (flight.getFlightType() == FlightTypes.DIVE_BOMB);
         
         PositionEvaluator.evaluateAiFlight(mission);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(mission.getMissionFlights());
@@ -68,8 +69,8 @@ public class PlayerFlightTypeBoSDiveBombTest
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)
     {
-        assert (targetDefinition.getCountry() != null);
-        assert (targetDefinition.getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
-        assert (targetDefinition.getTargetType() != TargetType.TARGET_NONE);
+        Assertions.assertTrue (targetDefinition.getCountry() != null);
+        Assertions.assertTrue (targetDefinition.getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
+        Assertions.assertTrue (targetDefinition.getTargetType() != TargetType.TARGET_NONE);
     }
 }

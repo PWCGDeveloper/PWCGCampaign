@@ -2,6 +2,7 @@ package pwcg.mission.flight;
 
 import java.util.Date;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -59,9 +60,9 @@ public class KubanCargoRouteTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeTestMissionFromFlightTypeWithSkirmish(playerParticipants, playerFlightTypes, MissionProfile.DAY_TACTICAL_MISSION, cargoRouteSkirmish);
 
-        assert (mission.getSkirmish() != null);
-        assert (mission.getSkirmish().getSkirmishName().startsWith("Cargo"));
-        assert (mission.getSkirmish().getAttackerAir() == Side.AXIS);
+        Assertions.assertTrue (mission.getSkirmish() != null);
+        Assertions.assertTrue (mission.getSkirmish().getSkirmishName().startsWith("Cargo"));
+        Assertions.assertTrue (mission.getSkirmish().getAttackerAir() == Side.AXIS);
         boolean shipsFound = false;
         for (GroundUnitCollection groundUnitCollection : mission.getMissionGroundUnitBuilder().getAllMissionGroundUnits())
         {
@@ -70,15 +71,15 @@ public class KubanCargoRouteTest
                 shipsFound = true;
             }
         }
-        assert (shipsFound);
+        Assertions.assertTrue (shipsFound);
 
         boolean diveBombFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.DIVE_BOMB, Side.AXIS);
         boolean groundAttackFlightFound = MissionInformationUtils.verifyFlightTypeInMission(mission, FlightTypes.GROUND_ATTACK, Side.AXIS);
-        assert (diveBombFlightFound || groundAttackFlightFound);
+        Assertions.assertTrue (diveBombFlightFound || groundAttackFlightFound);
 
         boolean diveBombFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.DIVE_BOMB, TargetType.TARGET_SHIPPING, Side.AXIS);
         boolean groundAttackFlightTargetFound = MissionInformationUtils.verifyFlightTargets(mission, FlightTypes.GROUND_ATTACK, TargetType.TARGET_SHIPPING, Side.AXIS);
-        assert (diveBombFlightTargetFound || groundAttackFlightTargetFound);
+        Assertions.assertTrue (diveBombFlightTargetFound || groundAttackFlightTargetFound);
 
         MissionFlightValidator.validateMission(mission);        
     }
@@ -95,7 +96,7 @@ public class KubanCargoRouteTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMission(TestMissionBuilderUtility.buildTestParticipatingHumans(campaign));
         
-        assert (mission.getSkirmish() == null);
+        Assertions.assertTrue (mission.getSkirmish() == null);
         
         MissionFlightValidator.validateMission(mission);
     }

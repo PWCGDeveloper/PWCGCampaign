@@ -3,6 +3,7 @@ package pwcg.aar.awards;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -62,7 +63,7 @@ public class PromotionEventHandlerTest
 
         String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
-        assert (promotion.equals("Sergent"));
+        Assertions.assertTrue (promotion.equals("Sergent"));
     }
 
     @Test
@@ -79,7 +80,7 @@ public class PromotionEventHandlerTest
 
         String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
-        assert (promotion.equals("Sergent"));
+        Assertions.assertTrue (promotion.equals("Sergent"));
     }
 
     @Test
@@ -93,7 +94,7 @@ public class PromotionEventHandlerTest
 
         String promotion = PromotionEventHandler.promoteNonHistoricalPilots(campaign, squadronMember);
 
-        assert (promotion.equals(PromotionArbitrator.NO_PROMOTION));
+        Assertions.assertTrue (promotion.equals(PromotionArbitrator.NO_PROMOTION));
     }
 
 }

@@ -1,5 +1,6 @@
 package pwcg.mission.flight;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -47,7 +48,7 @@ public class PlayerFlightTypeBoSAttackTest
         GroundAttackFlight flight = (GroundAttackFlight) mission.getMissionFlights().getPlayerFlights().get(0);
         mission.finalizeMission();
         MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
-        assert (targetMissionPoint != null);
+        Assertions.assertTrue (targetMissionPoint != null);
         PlaneRtbValidator.verifyPlaneRtbEnabled(mission);
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
@@ -70,8 +71,8 @@ public class PlayerFlightTypeBoSAttackTest
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)
     {
-        assert (targetDefinition.getCountry() != null);
-        assert (targetDefinition.getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
-        assert (targetDefinition.getTargetType() != TargetType.TARGET_NONE);
+        Assertions.assertTrue (targetDefinition.getCountry() != null);
+        Assertions.assertTrue (targetDefinition.getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
+        Assertions.assertTrue (targetDefinition.getTargetType() != TargetType.TARGET_NONE);
     }
 }

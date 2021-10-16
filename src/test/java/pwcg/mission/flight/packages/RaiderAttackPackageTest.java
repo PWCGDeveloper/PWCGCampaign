@@ -2,6 +2,7 @@ package pwcg.mission.flight.packages;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import pwcg.campaign.Campaign;
@@ -75,11 +76,11 @@ public class RaiderAttackPackageTest extends PwcgTestBase
         {
             if (missionPoint.getAction() == WaypointAction.WP_ACTION_TARGET_FINAL || missionPoint.getAction() == WaypointAction.WP_ACTION_ATTACK)
             {
-                assert (missionPoint.getPosition().getYPos() < 1000);
+                Assertions.assertTrue (missionPoint.getPosition().getYPos() < 1000);
             }
             else
             {
-                assert (missionPoint.getPosition().getYPos() < 700);
+                Assertions.assertTrue (missionPoint.getPosition().getYPos() < 700);
             }
         }
     }

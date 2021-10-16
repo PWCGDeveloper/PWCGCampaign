@@ -1,5 +1,6 @@
 package pwcg.mission.ground.builder;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -47,19 +48,19 @@ public class ShipUnitBuilderTest
         TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_SHIPPING, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA), "Shipping");
         ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(campaign, targetDefinition, makeRandomDestination(targetDefinition));
         GroundUnitCollection groundUnitGroup = shippingFactory.createShippingUnit(VehicleClass.ShipCargo);
-        assert (groundUnitGroup.getGroundUnits().size() == 2);
+        Assertions.assertTrue (groundUnitGroup.getGroundUnits().size() == 2);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {
-            assert (groundUnit.getCountry().getCountry() == Country.RUSSIA);
+            Assertions.assertTrue (groundUnit.getCountry().getCountry() == Country.RUSSIA);
             if (groundUnit.getVehicleClass() == VehicleClass.ShipCargo)
             {
-                assert (groundUnit.getVehicles().size() >= 3);
-                assert (groundUnit.getVehicles().size() <= 5);
+                Assertions.assertTrue (groundUnit.getVehicles().size() >= 3);
+                Assertions.assertTrue (groundUnit.getVehicles().size() <= 5);
             }
             else if (groundUnit.getVehicleClass() == VehicleClass.ShipWarship)
             {
-                assert (groundUnit.getVehicles().size() >= 2);
-                assert (groundUnit.getVehicles().size() <= 3);
+                Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
+                Assertions.assertTrue (groundUnit.getVehicles().size() <= 3);
             }
             else
             {
@@ -75,14 +76,14 @@ public class ShipUnitBuilderTest
         TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_SHIPPING, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA), "Shipping");
         ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(campaign, targetDefinition, makeRandomDestination(targetDefinition));
         GroundUnitCollection groundUnitGroup = shippingFactory.createShippingUnit(VehicleClass.ShipWarship);
-        assert (groundUnitGroup.getGroundUnits().size() == 1);
+        Assertions.assertTrue (groundUnitGroup.getGroundUnits().size() == 1);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {
-            assert (groundUnit.getCountry().getCountry() == Country.RUSSIA);
+            Assertions.assertTrue (groundUnit.getCountry().getCountry() == Country.RUSSIA);
             if (groundUnit.getVehicleClass() == VehicleClass.ShipWarship)
             {
-                assert (groundUnit.getVehicles().size() >= 2);
-                assert (groundUnit.getVehicles().size() <= 4);
+                Assertions.assertTrue (groundUnit.getVehicles().size() >= 2);
+                Assertions.assertTrue (groundUnit.getVehicles().size() <= 4);
             }
             else
             {
@@ -98,13 +99,13 @@ public class ShipUnitBuilderTest
         TargetDefinition targetDefinition = new TargetDefinition(TargetType.TARGET_SHIPPING, new Coordinate (100000, 0, 100000), CountryFactory.makeCountryByCountry(Country.RUSSIA), "Shipping");
         ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(campaign, targetDefinition, makeRandomDestination(targetDefinition));
         GroundUnitCollection groundUnitGroup = shippingFactory.createShippingUnit(VehicleClass.Submarine);
-        assert (groundUnitGroup.getGroundUnits().size() == 1);
+        Assertions.assertTrue (groundUnitGroup.getGroundUnits().size() == 1);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {
-            assert (groundUnit.getCountry().getCountry() == Country.RUSSIA);
+            Assertions.assertTrue (groundUnit.getCountry().getCountry() == Country.RUSSIA);
             if (groundUnit.getVehicleClass() == VehicleClass.Submarine)
             {
-                assert (groundUnit.getVehicles().size() == 1);
+                Assertions.assertTrue (groundUnit.getVehicles().size() == 1);
             }
             else
             {

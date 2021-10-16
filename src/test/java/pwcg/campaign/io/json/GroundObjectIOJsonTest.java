@@ -1,5 +1,6 @@
 package pwcg.campaign.io.json;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -55,9 +56,9 @@ public class GroundObjectIOJsonTest
     private GroundStructureGroup validateGroundStructures(String mapName) throws PWCGException, PWCGException
     {
         GroundStructureGroup groundStructures = GroundObjectIOJson.readJson(mapName);
-        assert (groundStructures.getRailroadStations().size() > 0);
-        assert (groundStructures.getBridges().size() > 0);
-        assert (groundStructures.getStandaloneBlocks().size() > 0);
+        Assertions.assertTrue (groundStructures.getRailroadStations().size() > 0);
+        Assertions.assertTrue (groundStructures.getBridges().size() > 0);
+        Assertions.assertTrue (groundStructures.getStandaloneBlocks().size() > 0);
         return groundStructures;
     }
 

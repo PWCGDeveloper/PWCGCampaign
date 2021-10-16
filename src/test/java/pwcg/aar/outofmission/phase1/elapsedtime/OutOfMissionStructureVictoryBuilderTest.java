@@ -1,5 +1,6 @@
 package pwcg.aar.outofmission.phase1.elapsedtime;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -53,7 +54,7 @@ public class OutOfMissionStructureVictoryBuilderTest
         StructureVictoryBuilder victoryGenerator = new StructureVictoryBuilder(squadronMember, PwcgStructure.BRIDGE);
         Victory victory = victoryGenerator.generateOutOfMissionVictory(campaign.getDate());
         
-        assert (victory.getVictim().getAirOrGround() == Victory.VEHICLE);
-        assert (victory.getVictim().getName().equals(PwcgStructure.BRIDGE.getDescription()));
+        Assertions.assertTrue (victory.getVictim().getAirOrGround() == Victory.VEHICLE);
+        Assertions.assertTrue (victory.getVictim().getName().equals(PwcgStructure.BRIDGE.getDescription()));
     }
 }

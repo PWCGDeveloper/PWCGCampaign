@@ -1,5 +1,6 @@
 package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -43,7 +44,7 @@ public class PlayerClaimResolverFuzzyTest
         PlayerClaimResolverFuzzy claimResolverFuzzy = new PlayerClaimResolverFuzzy();
         String planeDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzy(playerDeclaration, resultVictory);
         
-        assert (planeDisplayName.equals("S.E.5a"));
+        Assertions.assertTrue (planeDisplayName.equals("S.E.5a"));
     }
     
 
@@ -69,7 +70,7 @@ public class PlayerClaimResolverFuzzyTest
         PlayerClaimResolverFuzzy claimResolverFuzzy = new PlayerClaimResolverFuzzy();
         String planeDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzy(playerDeclaration, resultVictory);
         
-        assert (planeDisplayName.isEmpty());
+        Assertions.assertTrue (planeDisplayName.isEmpty());
     }
 
     @Test
@@ -94,7 +95,7 @@ public class PlayerClaimResolverFuzzyTest
         PlayerClaimResolverFuzzy claimResolverFuzzy = new PlayerClaimResolverFuzzy();
         String planeDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzy(playerDeclaration, resultVictory);
         
-        assert (planeDisplayName.isEmpty());
+        Assertions.assertTrue (planeDisplayName.isEmpty());
     }
 
     @Test
@@ -119,7 +120,7 @@ public class PlayerClaimResolverFuzzyTest
         PlayerClaimResolverFuzzy claimResolverFuzzy = new PlayerClaimResolverFuzzy();
         String planeDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzy(playerDeclaration, resultVictory);
         
-        assert (planeDisplayName.isEmpty());
+        Assertions.assertTrue (planeDisplayName.isEmpty());
     }
 
     @Test
@@ -145,7 +146,7 @@ public class PlayerClaimResolverFuzzyTest
         PlayerClaimResolverFuzzy claimResolverFuzzy = new PlayerClaimResolverFuzzy();
         String planeDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzy(playerDeclaration, resultVictory);
         
-        assert (planeDisplayName.isEmpty());
+        Assertions.assertTrue (planeDisplayName.isEmpty());
     }
 
     
@@ -171,7 +172,7 @@ public class PlayerClaimResolverFuzzyTest
         PlayerClaimResolverFuzzy claimResolverFuzzy = new PlayerClaimResolverFuzzy();
         String planeDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzy(playerDeclaration, resultVictory);
         
-        assert (planeDisplayName.isEmpty());
+        Assertions.assertTrue (planeDisplayName.isEmpty());
     }
 
 }
