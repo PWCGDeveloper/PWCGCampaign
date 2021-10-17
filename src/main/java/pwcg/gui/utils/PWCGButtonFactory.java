@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 
+import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
@@ -86,7 +87,7 @@ public class PWCGButtonFactory extends JButton
         Color fgColor = ColorMap.CHALK_FOREGROUND;
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
         
-        button.setText(buttonText);
+        button.setText(InternationalizationManager.getTranslation(buttonText));
         button.setVerticalTextPosition(AbstractButton.CENTER);
         button.setHorizontalTextPosition(AbstractButton.CENTER);
         button.setForeground(fgColor);
