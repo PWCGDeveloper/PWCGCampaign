@@ -3,6 +3,7 @@ package pwcg.gui.campaign.activity;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,6 +35,7 @@ import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -256,7 +258,8 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
     private JCheckBox makeCheckBox(String buttonText) throws PWCGException 
     {
         Color fgColor = Color.BLACK;
-        JCheckBox checkBox = PWCGButtonFactory.makeCheckBox(buttonText, fgColor);
+        Font font = PWCGMonitorFonts.getPrimaryFont();
+        JCheckBox checkBox = PWCGButtonFactory.makeCheckBox(buttonText, "", font, fgColor, null); 
         return checkBox;
     }
 
@@ -270,7 +273,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         spacerLeft.setOpaque(false);
         equipmentChaneConfirmationPanel.add(spacerLeft);
 
-        JButton finishedButton = PWCGButtonFactory.makePaperButtonWithBorder("Change Equipment", "ChangeEquipment", this);
+        JButton finishedButton = PWCGButtonFactory.makePaperButtonWithBorder("Change Equipment", "ChangeEquipment", "Show change equipment screen",  this);
         equipmentChaneConfirmationPanel.add(finishedButton);
 
         JLabel spacerRight = new JLabel("     ");

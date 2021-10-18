@@ -314,23 +314,9 @@ public class InfoMapGUI extends MapGUI implements ActionListener
 
     private JCheckBox makeCheckBoxButton(String buttonText, String commandString) throws PWCGException 
     {
-        Color fgColor = ColorMap.CHALK_FOREGROUND;
-        Color bgColor = ColorMap.CHALK_BACKGROUND;
-
         Font font = PWCGMonitorFonts.getPrimaryFont();
-
-        JCheckBox button = new JCheckBox(buttonText);
-        button.setHorizontalAlignment(SwingConstants.LEFT );
-        button.setBorderPainted(false);
-        button.setFocusPainted(false);
-        button.addActionListener(this);
-        button.setOpaque(false);
-        button.setForeground(fgColor);
-        button.setBackground(bgColor);
-        button.setFont(font);
-        button.setActionCommand(commandString);
-
-        return button;
+        JCheckBox checkBox = PWCGButtonFactory.makeCheckBox(buttonText, commandString, font, ColorMap.CHALK_FOREGROUND, this);
+        return checkBox;
     }   
 
     @Override

@@ -1,0 +1,13 @@
+English=Finished reading intel map
+English=Finished reading depo report
+English=Leave Intel
+English=Fighter Squadrons:
+English=Detailed information for squadron
+English=Dive Bomb Squadrons:
+English=Interceptor Squadrons:
+English=Transport Squadrons:
+English=Fighter Squadrons:
+English=Attack Squadrons:
+English=Dive Bomb Squadrons:
+English=Bomber Squadrons:
+English=Finished reading depo report

@@ -219,7 +219,7 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
         
         Date date = DateUtils.getDateYYYYMMDD(journalKey);
         String buttonText = DateUtils.getDateStringDashDelimitedYYYYMMDD(date);
-        JButton indexButton = PWCGButtonFactory.makePaperButton(buttonText, journalKey, this);
+        JButton indexButton = PWCGButtonFactory.makePaperButton(buttonText, journalKey, "Go to journal entry", this);
         indexPanel.add(indexButton);
 
         indexPanel.add(PWCGButtonFactory.makeDummy());

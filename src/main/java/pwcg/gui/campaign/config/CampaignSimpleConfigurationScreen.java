@@ -224,17 +224,17 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
         JLabel airDensityLabel = makeLabel(CampaignConfigurationSimpleGUIController.ACTION_SET_AIR_DENSITY + ":");      
         airButtonPanelGrid.add(airDensityLabel);
 
-        JRadioButton airLowDensity = PWCGButtonFactory.makeRadioButton("Low", "Low Air Density", "Fewer aircraft for average machines", false, this, ColorMap.PAPER_FOREGROUND);       
+        JRadioButton airLowDensity = PWCGButtonFactory.makeRadioButton("Low", "Low Air Density", "Fewer aircraft for average machines", null, ColorMap.PAPER_FOREGROUND, false, this);       
         airButtonPanelGrid.add(airLowDensity);
         airLowButtonModel = airLowDensity.getModel();
         airButtonGroup.add(airLowDensity);
 
-        JRadioButton airMedDensity = PWCGButtonFactory.makeRadioButton("Med", "Med Air Density", "Medium number of aircraft - requires a pretty good machine", false, this, ColorMap.PAPER_FOREGROUND);        
+        JRadioButton airMedDensity = PWCGButtonFactory.makeRadioButton("Med", "Med Air Density", "Medium number of aircraft - requires a pretty good machine", null, ColorMap.PAPER_FOREGROUND, false, this);        
         airButtonPanelGrid.add(airMedDensity);
         airMedButtonModel = airMedDensity.getModel();
         airButtonGroup.add(airMedDensity);
         
-        JRadioButton airHighDensity = PWCGButtonFactory.makeRadioButton("High", "High Air Density", "High number of aircraft - high end machines only", false, this, ColorMap.PAPER_FOREGROUND);       
+        JRadioButton airHighDensity = PWCGButtonFactory.makeRadioButton("High", "High Air Density", "High number of aircraft - high end machines only", null, ColorMap.PAPER_FOREGROUND, false, this);       
         airButtonPanelGrid.add(airHighDensity);
         airHighButtonModel = airHighDensity.getModel();
         airButtonGroup.add(airHighDensity);
@@ -258,17 +258,17 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
         JLabel groundDensityLabel = PWCGButtonFactory.makePaperLabelLarge(CampaignConfigurationSimpleGUIController.ACTION_SET_GROUND_DENSITY + ":");
 		groundDensityGrid.add(groundDensityLabel);
 
-		JRadioButton lowDensity = PWCGButtonFactory.makeRadioButton("Low", "Low Ground Density", "Fewer AI ground units", false, this, ColorMap.PAPER_FOREGROUND);
+		JRadioButton lowDensity = PWCGButtonFactory.makeRadioButton("Low", "Low Ground Density", "Fewer AI ground units", null, ColorMap.PAPER_FOREGROUND, false, this);
 		groundDensityGrid.add(lowDensity);
 		groundLowButtonModel = lowDensity.getModel();
 		groundButtonGroup.add(lowDensity);
 
-		JRadioButton medDensity = PWCGButtonFactory.makeRadioButton("Med", "Med Ground Density", "Medium numbers of AI ground units", false, this, ColorMap.PAPER_FOREGROUND);		
+		JRadioButton medDensity = PWCGButtonFactory.makeRadioButton("Med", "Med Ground Density", "Medium numbers of AI ground units", null, ColorMap.PAPER_FOREGROUND, false, this);		
 		groundDensityGrid.add(medDensity);
 		groundMedButtonModel = medDensity.getModel();
 		groundButtonGroup.add(medDensity);
 		
-		JRadioButton highDensity = PWCGButtonFactory.makeRadioButton("High", "High Ground Density", "Large numbers of AI ground units", false, this, ColorMap.PAPER_FOREGROUND);		
+		JRadioButton highDensity = PWCGButtonFactory.makeRadioButton("High", "High Ground Density", "Large numbers of AI ground units", null, ColorMap.PAPER_FOREGROUND, false, this);		
 		groundDensityGrid.add(highDensity);
 		groundHighButtonModel = highDensity.getModel();
 		groundButtonGroup.add(highDensity);
@@ -292,17 +292,17 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
         JLabel aaDensityLabel = PWCGButtonFactory.makePaperLabelLarge(CampaignConfigurationSimpleGUIController.ACTION_SET_AA_DENSITY + ":");
         aaDensityGrid.add(aaDensityLabel);
 
-        JRadioButton lowDensity = PWCGButtonFactory.makeRadioButton("Low", "Low AA Density", "Fewer AA units", false, this, ColorMap.PAPER_FOREGROUND);     
+        JRadioButton lowDensity = PWCGButtonFactory.makeRadioButton("Low", "Low AA Density", "Fewer AA units", null, ColorMap.PAPER_FOREGROUND, false, this);     
         aaDensityGrid.add(lowDensity);
         aaLowButtonModel = lowDensity.getModel();
         aaButtonGroup.add(lowDensity);
 
-        JRadioButton medDensity = PWCGButtonFactory.makeRadioButton("Med", "Med AA Density", "Medium numbers of AA units", false, this, ColorMap.PAPER_FOREGROUND);     
+        JRadioButton medDensity = PWCGButtonFactory.makeRadioButton("Med", "Med AA Density", "Medium numbers of AA units", null, ColorMap.PAPER_FOREGROUND, false, this);     
         aaDensityGrid.add(medDensity);
         aaMedButtonModel = medDensity.getModel();
         aaButtonGroup.add(medDensity);
         
-        JRadioButton highDensity = PWCGButtonFactory.makeRadioButton("High", "High AA Density", "Large numbers of AA units", false, this, ColorMap.PAPER_FOREGROUND);       
+        JRadioButton highDensity = PWCGButtonFactory.makeRadioButton("High", "High AA Density", "Large numbers of AA units", null, ColorMap.PAPER_FOREGROUND, false, this);       
         aaDensityGrid.add(highDensity);
         aaHighButtonModel = highDensity.getModel();
         aaButtonGroup.add(highDensity);
@@ -326,17 +326,17 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
         JLabel cpuAllowanceLabel = PWCGButtonFactory.makePaperLabelLarge(CampaignConfigurationSimpleGUIController.ACTION_SET_CPU_ALOWANCE_DENSITY + ":");
         cpuAllowanceGrid.add(cpuAllowanceLabel);
 
-        JRadioButton lowDensity = PWCGButtonFactory.makeRadioButton("Low", "Low CPU Allowance", "Very few CPU expensive units", false, this, ColorMap.PAPER_FOREGROUND);     
+        JRadioButton lowDensity = PWCGButtonFactory.makeRadioButton("Low", "Low CPU Allowance", "Very few CPU expensive units", null, ColorMap.PAPER_FOREGROUND, false, this);     
         cpuAllowanceGrid.add(lowDensity);
         cpuAllowanceLowButtonModel = lowDensity.getModel();
         cpuAllowanceButtonGroup.add(lowDensity);
 
-        JRadioButton medDensity = PWCGButtonFactory.makeRadioButton("Med", "Med CPU Allowance", "Some CPU expensive units", false, this, ColorMap.PAPER_FOREGROUND);     
+        JRadioButton medDensity = PWCGButtonFactory.makeRadioButton("Med", "Med CPU Allowance", "Some CPU expensive units", null, ColorMap.PAPER_FOREGROUND, false, this);     
         cpuAllowanceGrid.add(medDensity);
         cpuAllowanceMedButtonModel = medDensity.getModel();
         cpuAllowanceButtonGroup.add(medDensity);
         
-        JRadioButton highDensity = PWCGButtonFactory.makeRadioButton("High", "High CPU Allowance", "No consideration of CPU expense", false, this, ColorMap.PAPER_FOREGROUND);     
+        JRadioButton highDensity = PWCGButtonFactory.makeRadioButton("High", "High CPU Allowance", "No consideration of CPU expense", null, ColorMap.PAPER_FOREGROUND, false, this);     
         cpuAllowanceGrid.add(highDensity);
         cpuAllowanceHighButtonModel = highDensity.getModel();
         cpuAllowanceButtonGroup.add(highDensity);
@@ -360,17 +360,17 @@ public class CampaignSimpleConfigurationScreen extends ImageResizingPanel implem
         JLabel structureLabel = PWCGButtonFactory.makePaperLabelLarge(CampaignConfigurationSimpleGUIController.ACTION_SET_STRUCTURE_DENSITY + ":");
         structureGrid.add(structureLabel);
 
-        JRadioButton lowDensity = PWCGButtonFactory.makeRadioButton("Low", "Low Structure", "Structures limited to mission box", false, this, ColorMap.PAPER_FOREGROUND);     
+        JRadioButton lowDensity = PWCGButtonFactory.makeRadioButton("Low", "Low Structure", "Structures limited to mission box", null, ColorMap.PAPER_FOREGROUND, false, this);     
         structureGrid.add(lowDensity);
         structureLowButtonModel = lowDensity.getModel();
         structureButtonGroup.add(lowDensity);
 
-        JRadioButton medDensity = PWCGButtonFactory.makeRadioButton("Med", "Med Structure", "Structures extend to players field", false, this, ColorMap.PAPER_FOREGROUND);     
+        JRadioButton medDensity = PWCGButtonFactory.makeRadioButton("Med", "Med Structure", "Structures extend to players field", null, ColorMap.PAPER_FOREGROUND, false, this);     
         structureGrid.add(medDensity);
         structureMedButtonModel = medDensity.getModel();
         structureButtonGroup.add(medDensity);
         
-        JRadioButton highDensity = PWCGButtonFactory.makeRadioButton("High", "High Structure", "Structures extend beyond players field", false, this, ColorMap.PAPER_FOREGROUND);     
+        JRadioButton highDensity = PWCGButtonFactory.makeRadioButton("High", "High Structure", "Structures extend beyond players field", null, ColorMap.PAPER_FOREGROUND, false, this);     
         structureGrid.add(highDensity);
         structureHighButtonModel = highDensity.getModel();
         structureButtonGroup.add(highDensity);

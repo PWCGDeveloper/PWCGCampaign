@@ -100,9 +100,9 @@ public class CampaignGeneratorProfileGUI extends JPanel implements ActionListene
                 "Single Player Mode", 
                 "Mission Mode: Single Player", 
                 "Select single player mode for generated missions", 
-                false, 
-                this,
-                ColorMap.CHALK_FOREGROUND);       
+                null, 
+                ColorMap.CHALK_FOREGROUND,
+                false, this);       
         coopButtonPanelGrid.add(singlePlayerButton);
         singlePlayerButtonModel = singlePlayerButton.getModel();
         coopGroup.add(singlePlayerButton);
@@ -111,9 +111,9 @@ public class CampaignGeneratorProfileGUI extends JPanel implements ActionListene
                 "Coop Cooperative Mode", 
                 "Mission Mode: Coop Cooperative", 
                 "Select coop player mode for generated missions", 
-                false, 
-                this,
-                ColorMap.CHALK_FOREGROUND);       
+                null, 
+                ColorMap.CHALK_FOREGROUND,
+                false, this);       
               
         coopButtonPanelGrid.add(coopCooperativeButton);
         coopCooperativeButtonModel = coopCooperativeButton.getModel();

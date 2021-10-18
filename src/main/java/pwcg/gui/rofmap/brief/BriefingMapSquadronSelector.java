@@ -2,6 +2,7 @@ package pwcg.gui.rofmap.brief;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +20,7 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.colors.ColorMap;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.rofmap.brief.model.BriefingData;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
@@ -102,7 +104,8 @@ public class BriefingMapSquadronSelector implements ActionListener
     private JCheckBox makeCheckBox(String squadronName, String actionCommand) throws PWCGException
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
-        JCheckBox checkBox = PWCGButtonFactory.makeCheckBox(squadronName, actionCommand, fgColor, this);
+        Font font = PWCGMonitorFonts.getPrimaryFont();
+        JCheckBox checkBox = PWCGButtonFactory.makeCheckBox(squadronName, actionCommand, font, fgColor, this);
         return checkBox;
     }
 

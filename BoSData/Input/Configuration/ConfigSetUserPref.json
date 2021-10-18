@@ -31,6 +31,11 @@
 			"label": "Play Sounds",
 			"help": "Set to 1 to play sounds"
 		},
+		"InternationalizationFile": {
+			"value": "",
+			"label": "Internationalization File",
+			"help": "Name of internationalization file to use"
+		},		
 		"SaveOldMissions": {
 			"value": "3",
 			"label": "Past missions to save",

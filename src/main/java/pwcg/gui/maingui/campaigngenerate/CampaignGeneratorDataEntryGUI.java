@@ -233,8 +233,25 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
 
         Color fgColor = ColorMap.CHALK_FOREGROUND;
 
-        PWCGJButton nextStepButton = new PWCGJButton("Next Step");      
-        nextStepButton.setActionCommand("NextStep");
+        PWCGJButton nextStepButton = makeButton("Next Step", "NextStep", fgColor);        
+        dataConstraints.gridx = 2;
+        dataConstraints.gridy = rowCount;
+        campaignGeneratePanel.add(nextStepButton, dataConstraints);
+        ++rowCount;
+
+        PWCGJButton previousStepButton = makeButton("Previous Step", "PreviousStep", fgColor);
+        dataConstraints.gridx = 2;
+        dataConstraints.gridy = rowCount;
+        campaignGeneratePanel.add(previousStepButton, dataConstraints);
+        ++rowCount;
+
+        return rowCount;
+    }
+
+    private PWCGJButton makeButton(String displayText, String commandText, Color fgColor)
+    {
+        PWCGJButton nextStepButton = new PWCGJButton(displayText);      
+        nextStepButton.setActionCommand(commandText);
         nextStepButton.setOpaque(false);
         nextStepButton.setHorizontalAlignment(SwingConstants.LEFT);
         nextStepButton.addActionListener(this);
@@ -242,27 +259,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
         nextStepButton.setFocusPainted(false);
         nextStepButton.setForeground(fgColor);
         nextStepButton.setFont(font);
-        dataConstraints.gridx = 2;
-        dataConstraints.gridy = rowCount;
-        campaignGeneratePanel.add(nextStepButton, dataConstraints);
-
-        ++rowCount;
-
-        PWCGJButton previousStepButton = new PWCGJButton("Previous Step");      
-        previousStepButton.setActionCommand("PreviousStep");
-        previousStepButton.setOpaque(false);
-        previousStepButton.setHorizontalAlignment(SwingConstants.LEFT);
-        previousStepButton.addActionListener(this);
-        previousStepButton.setBorderPainted(false);
-        previousStepButton.setFocusPainted(false);
-        previousStepButton.setForeground(fgColor);
-        previousStepButton.setFont(font);
-        dataConstraints.gridx = 2;
-        dataConstraints.gridy = rowCount;
-        campaignGeneratePanel.add(previousStepButton, dataConstraints);
-        
-        ++rowCount;
-        return rowCount;
+        return nextStepButton;
     }
 
     private int createCampaignRoleWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,

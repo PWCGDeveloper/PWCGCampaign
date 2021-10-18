@@ -2,6 +2,7 @@ package pwcg.gui.utils;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +19,7 @@ import javax.swing.JPanel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 
 public class MultiSelectGUI implements ActionListener
 {
@@ -109,10 +111,10 @@ public class MultiSelectGUI implements ActionListener
     private JPanel buildButtonPanel() throws PWCGException
     {
         JLabel spacer1 = PWCGButtonFactory.makePaperLabelMedium("         ");
-        JButton selectAllButton = PWCGButtonFactory.makePaperButtonWithBorder("Select All", "SelectAll", this);
+        JButton selectAllButton = PWCGButtonFactory.makePaperButtonWithBorder("Select All", "SelectAll", "Select all entries", this);
         selectAllButton.setOpaque(false);
         JLabel spacer2 = PWCGButtonFactory.makePaperLabelMedium("         ");
-        JButton deselectAllButton = PWCGButtonFactory.makePaperButtonWithBorder("Deselect All", "DeselectAll", this);
+        JButton deselectAllButton = PWCGButtonFactory.makePaperButtonWithBorder("Deselect All", "DeselectAll", "Deselect all entries", this);
         deselectAllButton.setOpaque(false);
         JLabel spacer3 = PWCGButtonFactory.makePaperLabelMedium("         ");
         
@@ -128,7 +130,8 @@ public class MultiSelectGUI implements ActionListener
 
     private JCheckBox makeCheckBox(MultiSelectData selectionData) throws PWCGException 
     {
-        JCheckBox checkBox = PWCGButtonFactory.makeCheckBox(selectionData.getText(), selectionData.getName(), Color.black, this);
+        Font font = PWCGMonitorFonts.getPrimaryFont();
+        JCheckBox checkBox = PWCGButtonFactory.makeCheckBox(selectionData.getText(), selectionData.getName(), font, Color.black, this);
         checkBox.setName(selectionData.getName());
         ToolTipManager.setToolTip(checkBox, selectionData.getInfo());
         return checkBox;

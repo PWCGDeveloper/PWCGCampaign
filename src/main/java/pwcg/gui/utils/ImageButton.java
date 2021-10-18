@@ -1,6 +1,7 @@
 package pwcg.gui.utils;
 
 import java.awt.AlphaComposite;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -92,18 +93,8 @@ public class ImageButton
     {
         Icon notSelectedIcon = getOwnedIcon(imageName, false);
         Icon selectedIcon = getOwnedIcon(imageName, true);
-
-        JCheckBox checkBox = new JCheckBox(text);
-
         Font font = PWCGMonitorFonts.getPrimaryFontSmall();
-
-        checkBox.setFont(font);
-        checkBox.setHorizontalAlignment(JLabel.LEFT);
-        checkBox.setOpaque(false);
-        checkBox.setSize(300, 50);
-        checkBox.setIcon(notSelectedIcon);
-        checkBox.setSelectedIcon(selectedIcon);
-
+        JCheckBox checkBox = PWCGButtonFactory.makeCheckBoxWithIcon(selectedIcon, notSelectedIcon, text, font, imageName, new Dimension(300, 50));
         return checkBox;
     }
 

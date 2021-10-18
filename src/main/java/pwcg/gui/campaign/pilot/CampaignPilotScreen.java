@@ -201,22 +201,7 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
             PWCGLogger.logException(ex);
 		}
 
-		PWCGJButton pilotPictureButton = null;
-		if (imageIcon != null)
-		{
-			pilotPictureButton = new PWCGJButton(imageIcon);
-		}
-		else
-		{
-			pilotPictureButton = new PWCGJButton("press to set picture");
-		}
-		pilotPictureButton.addActionListener(this);
-		pilotPictureButton.setBackground(bg);
-		pilotPictureButton.setOpaque(false);
-		pilotPictureButton.setBorderPainted(false);
-		pilotPictureButton.setFocusPainted(false);
-		pilotPictureButton.setActionCommand(changePilotPictureAction);
-        ToolTipManager.setToolTip(pilotPictureButton, "Change pilot picture");
+		PWCGJButton pilotPictureButton = PWCGButtonFactory.makeImageButton(imageIcon, bg,  changePilotPictureAction, "Press to set picture",  "Change pilot picture", this);
 
 		return pilotPictureButton;
 	}
@@ -251,23 +236,8 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
             PWCGLogger.logException(ex);
         }
 
-        PWCGJButton planeSkinsButton = null;
-        if (imageIcon != null)
-        {
-            planeSkinsButton = new PWCGJButton(imageIcon);
-        }
-        else
-        {
-            planeSkinsButton = new PWCGJButton("");
-        }
-        planeSkinsButton.addActionListener(this);
-        planeSkinsButton.setBackground(bg);
-        planeSkinsButton.setOpaque(false);
-        planeSkinsButton.setBorderPainted(false);
-        planeSkinsButton.setFocusPainted(false);
-        String actionCommand =  changeSkinAction + pilot.getSerialNumber();
-        planeSkinsButton.setActionCommand(actionCommand);
-        ToolTipManager.setToolTip(planeSkinsButton, "Assign aircraft skins to this pilot");
+        String commandText =  changeSkinAction + pilot.getSerialNumber();
+        PWCGJButton planeSkinsButton = PWCGButtonFactory.makeImageButton(imageIcon, bg,  commandText, "Press to assign skins",  "Assign aircraft skins to this pilot", this);
 
         return planeSkinsButton;
     }
@@ -281,20 +251,10 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
 
         String imagePath = ContextSpecificImages.imagesMisc() + "PilotMedalBox.png";
 		ImageIcon imageIcon = ImageIconCache.getInstance().getImageIcon(imagePath);
-		PWCGJButton medalBoxButton = new PWCGJButton(imageIcon);
-
-
-		medalBoxButton.setBackground(bg);
-		medalBoxButton.setOpaque(false);
-		medalBoxButton.setBorderPainted(false);
-		medalBoxButton.setFocusPainted(false);
-		String actionCommand =  openMedalBoxAction + pilot.getSerialNumber();
-		medalBoxButton.setActionCommand(actionCommand);
-		medalBoxButton.addActionListener(this);
-        ToolTipManager.setToolTip(medalBoxButton, "View pilot medals");
+        String commandText =  openMedalBoxAction + pilot.getSerialNumber();
+		PWCGJButton medalBoxButton = PWCGButtonFactory.makeImageButton(imageIcon, bg,  commandText, "View pilot medals",  "View pilot medals", this);
 
 		pilotPMedalBoxPanel.add(medalBoxButton, BorderLayout.CENTER);
-		
 		return pilotPMedalBoxPanel;
 	}
 

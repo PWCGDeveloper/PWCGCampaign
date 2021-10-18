@@ -193,7 +193,8 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
         buttonGrid.add(PWCGButtonFactory.makeDummy());  
-        JCheckBox button = PWCGButtonFactory.makeCheckBox(buttonText, command, fgColor, this);
+        Font font = PWCGMonitorFonts.getPrimaryFont();
+        JCheckBox button = PWCGButtonFactory.makeCheckBox(buttonText, command, font, fgColor, this);
         buttonGrid.add(button);
         return button;  
     }

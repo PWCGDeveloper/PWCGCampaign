@@ -1,6 +1,7 @@
 package pwcg.gui.maingui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -99,12 +100,7 @@ public class CampaignDeleteScreen extends ImageResizingPanel implements ActionLi
         List<String> campaigns = Campaign.getCampaignNames();
         for (String campaignName : campaigns)
         {
-            JCheckBox campaignCheckBox = new JCheckBox();
-            campaignCheckBox.setText(campaignName);
-            campaignCheckBox.setSelected(false);
-            campaignCheckBox.setOpaque(false);
-            campaignCheckBox.setFont(font);
-            
+            JCheckBox campaignCheckBox = PWCGButtonFactory.makeCheckBox(campaignName, "", font, Color.black, null); 
             campaignSelectGrid.add(campaignCheckBox);
             
             campaignCheckBoxes.add(campaignCheckBox);

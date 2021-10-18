@@ -36,7 +36,6 @@ import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
-import pwcg.gui.utils.ToolTipManager;
 
 public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel implements ActionListener
 {
@@ -157,22 +156,11 @@ public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel impl
 
 	private JRadioButton makeButton(String buttonText, String toolTipText) throws PWCGException
 	{
-		Color fgColor = ColorMap.CHALK_FOREGROUND;
+        Color fgColor = ColorMap.CHALK_FOREGROUND;
+        Font font = PWCGMonitorFonts.getPrimaryFont();
+        String commandText = "Configuration Parameters: " + buttonText;
 
-		Font font = PWCGMonitorFonts.getPrimaryFont();
-
-		JRadioButton button = new JRadioButton(buttonText);
-		button.setActionCommand("Configuration Parameters: " + buttonText);
-		button.setHorizontalAlignment(SwingConstants.LEFT );
-		button.setBorderPainted(false);
-		button.setFocusPainted(false);
-		button.addActionListener(this);
-		button.setOpaque(false);
-		button.setForeground(fgColor);
-		button.setFont(font);
-
-		ToolTipManager.setToolTip(button, toolTipText);
-		
+        JRadioButton button = PWCGButtonFactory.makeRadioButton(buttonText, commandText, toolTipText, font, fgColor, false, this);
 		buttonGroup.add(button);
 
 		return button;

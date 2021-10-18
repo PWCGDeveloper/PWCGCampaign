@@ -14,7 +14,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.SwingConstants;
 
 import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.config.ConfigSet;
@@ -108,8 +107,8 @@ public class PwcgGlobalConfigurationScreen extends ImageResizingPanel implements
         JLabel spacer = PWCGButtonFactory.makeMenuLabelLarge("   ");
         buttonPanel.add(spacer);
 
-        buttonPanel.add(makeCategoryRadioButton("User Preferences"));
-        buttonPanel.add(makeCategoryRadioButton("GUI"));
+        buttonPanel.add(makeCategoryRadioButton("User Preferences", "User Preferences"));
+        buttonPanel.add(makeCategoryRadioButton("GUI", "GUI"));
         
         add (buttonPanel);
 
@@ -118,22 +117,13 @@ public class PwcgGlobalConfigurationScreen extends ImageResizingPanel implements
         return configPanel;
     }
 
-    private JRadioButton makeCategoryRadioButton(String buttonText) throws PWCGException 
+    private JRadioButton makeCategoryRadioButton(String displayText, String commandText) throws PWCGException 
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
-
         Font font = PWCGMonitorFonts.getPrimaryFont();
+        commandText = "Configuration Parameters: " + commandText;
 
-        JRadioButton button = new JRadioButton(buttonText);
-        button.setActionCommand("Configuration Parameters: " + buttonText);
-        button.setHorizontalAlignment(SwingConstants.LEFT );
-        button.setBorderPainted(false);
-        button.setFocusPainted(false);
-        button.addActionListener(this);
-        button.setOpaque(false);
-        button.setForeground(fgColor);
-        button.setFont(font);
-
+        JRadioButton button = PWCGButtonFactory.makeRadioButton(commandText, commandText, "", font, fgColor, false, this);
         buttonGroup.add(button);
 
         return button;

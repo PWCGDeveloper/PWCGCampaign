@@ -104,4 +104,9 @@ public class PWCGDirectoryProductManager
     {
         return getPwcgInputDir() + "Newspapers\\";
     }
+
+    public String getPwcgInternationalizationDir()
+    {
+        return getPwcgInputDir() + "International\\";
+    }
 }

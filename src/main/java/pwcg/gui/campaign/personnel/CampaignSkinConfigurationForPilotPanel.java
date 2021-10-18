@@ -234,7 +234,8 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
 
     private JCheckBox makeCheckBox(String buttonText, String actionCommand, Color fgColor) throws PWCGException 
     {
-        JCheckBox checkBox = PWCGButtonFactory.makeCheckBox(buttonText, actionCommand, fgColor, this);
+        Font font = PWCGMonitorFonts.getPrimaryFont();
+        JCheckBox checkBox = PWCGButtonFactory.makeCheckBox(buttonText, actionCommand, font, fgColor, this);
         return checkBox;
     }
 

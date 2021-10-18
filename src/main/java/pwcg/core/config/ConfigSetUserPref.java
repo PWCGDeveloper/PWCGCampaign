@@ -16,6 +16,7 @@ public class ConfigSetUserPref
         configSet.addConfigItem(ConfigItemKeys.SoundVolumeKey, new ConfigItem("10"));
         configSet.addConfigItem(ConfigItemKeys.MusicVolumeKey, new ConfigItem("10"));
         configSet.addConfigItem(ConfigItemKeys.DeleteAfterDeathKey, new ConfigItem("1"));
+        configSet.addConfigItem(ConfigItemKeys.InternationalizationFileKey, new ConfigItem(""));
 		return configSet;
 	}
 }

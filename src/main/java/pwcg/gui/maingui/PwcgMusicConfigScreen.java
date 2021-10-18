@@ -115,27 +115,13 @@ public class PwcgMusicConfigScreen extends ImageResizingPanel implements ActionL
 	private void makePlaySound() throws PWCGException
 	{
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
-
-        playSoundsCheckBox = new JCheckBox();
-        playSoundsCheckBox.setText("Play Sounds");
-        playSoundsCheckBox.setSelected(false);
-        playSoundsCheckBox.setOpaque(false);
-        playSoundsCheckBox.setFont(font);
-        playSoundsCheckBox.addChangeListener(this);
-        playSoundsCheckBox.setForeground(ColorMap.CHALK_FOREGROUND);
+        playSoundsCheckBox = PWCGButtonFactory.makeCheckBox("Play Sounds", "Play Sounds", font, ColorMap.CHALK_FOREGROUND, this);
 	}
 
 	private void makePlayMusic() throws PWCGException
 	{
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
-
-        playMusicCheckBox = new JCheckBox();
-        playMusicCheckBox.setText("Play Music");
-        playMusicCheckBox.setSelected(false);
-        playMusicCheckBox.setOpaque(false);
-        playMusicCheckBox.setFont(font);
-        playMusicCheckBox.addChangeListener(this);
-        playMusicCheckBox.setForeground(ColorMap.CHALK_FOREGROUND);
+        playMusicCheckBox = PWCGButtonFactory.makeCheckBox("Play Music", "Play Music", font, ColorMap.CHALK_FOREGROUND, this);
 	}
 	
 	  public JSlider makeVolumeSlider() 

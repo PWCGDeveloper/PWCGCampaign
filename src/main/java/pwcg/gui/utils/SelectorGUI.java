@@ -69,7 +69,7 @@ public class SelectorGUI implements ActionListener
         spacerLabel = PWCGButtonFactory.makePaperLabelMedium("");        
         buttonPanel.add(spacerLabel);
 
-        JButton acceptButton = PWCGButtonFactory.makePaperButtonWithBorder("Accept ===>", "Accept", this);
+        JButton acceptButton = PWCGButtonFactory.makePaperButtonWithBorder("Accept ===>", "Accept", "Select entry", this);
         acceptButton.setOpaque(false);
         acceptButton.setHorizontalAlignment(SwingConstants.CENTER);
         buttonPanel.add(acceptButton);
@@ -79,7 +79,7 @@ public class SelectorGUI implements ActionListener
 
         if (allowReject)
         {
-            JButton rejectButton = PWCGButtonFactory.makePaperButtonWithBorder("<=== Reject", "Reject", this);
+            JButton rejectButton = PWCGButtonFactory.makePaperButtonWithBorder("<=== Reject", "Reject", "Reject entry", this);
             rejectButton.setOpaque(false);
             rejectButton.setHorizontalAlignment(SwingConstants.CENTER);
             buttonPanel.add(rejectButton);

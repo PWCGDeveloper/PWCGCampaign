@@ -65,9 +65,9 @@ public class BriefingFlightChooser implements ActionListener
                     squadron.determineDisplayName(mission.getCampaign().getDate()), 
                     "FlightChanged:" + squadron.getSquadronId(),
                     "Select squadron to change context", 
-                    false, 
-                    this,
-                    ColorMap.CHALK_FOREGROUND);       
+                    null, 
+                    ColorMap.CHALK_FOREGROUND,
+                    false, this);       
             flightChooserButtonPanelGrid.add(airLowDensity);
             ButtonModel model = airLowDensity.getModel();
             flightChooserButtonGroup.add(airLowDensity);

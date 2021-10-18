@@ -2,6 +2,7 @@ package pwcg.gui.maingui.config;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -225,18 +226,9 @@ public class PwcgSkinConfigurationAnalysisScreen extends ImageResizingPanel impl
     }
 
     private JCheckBox makeCheckBox(PlaneType plane) throws PWCGException 
-    {
-        JCheckBox checkBox= new JCheckBox();
-        
+    {        
         Font font = PWCGMonitorFonts.getPrimaryFont();
-
-        checkBox.setFont(font);
-        checkBox.setHorizontalAlignment(JLabel.LEFT);
-        checkBox.setOpaque(false);
-        checkBox.setSize(300, 50);
-        checkBox.setName(plane.getType());
-        checkBox.setText(plane.getDisplayName());
-
+        JCheckBox checkBox = PWCGButtonFactory.makeCheckBoxWithDimensions(plane.getType(), plane.getDisplayName(), font, new Dimension(300, 50));
         return checkBox;
     }
 

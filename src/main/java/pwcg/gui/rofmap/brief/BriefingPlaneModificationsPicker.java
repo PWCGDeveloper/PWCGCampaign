@@ -1,5 +1,6 @@
 package pwcg.gui.rofmap.brief;
 
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.colors.ColorMap;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 
@@ -77,12 +79,15 @@ public class BriefingPlaneModificationsPicker
     {
         BriefingPlaneModificationsFilter briefingPlaneModificationsFilter = new BriefingPlaneModificationsFilter(crewPlane);
         List<String> payloadsForPlane = briefingPlaneModificationsFilter.selectModificationsForPlane(date);
-        
+
+        Font font = PWCGMonitorFonts.getPrimaryFontSmall();
+
         for (String payloadForPlane : payloadsForPlane)
         {
-            JCheckBox planeModificationsCheckBox= PWCGButtonFactory.makeSmallCheckBox(
+            JCheckBox planeModificationsCheckBox= PWCGButtonFactory.makeCheckBox(
                     payloadForPlane, 
                     "SelectPlaneModification:" + crewPlane.getPilot().getSerialNumber(), 
+                    font,
                     ColorMap.CHALK_FOREGROUND,
                     actionListener);
             planeModifications.put(payloadForPlane, planeModificationsCheckBox);

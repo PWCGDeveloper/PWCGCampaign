@@ -16,6 +16,7 @@ import javax.swing.JTextArea;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CombatReport;
 import pwcg.campaign.io.json.CombatReportIOJson;
+import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
@@ -208,7 +209,7 @@ public class CampaignJournalGUI extends JPanel
 		missionResultTextArea.setOpaque(false);
 		missionResultTextArea.setLineWrap(true);
 		missionResultTextArea.setWrapStyleWord(true);
-		missionResultTextArea.setText("Remarks on flight and hostile aircraft\n\n" + combatReport.getHaReport());
+		missionResultTextArea.setText(InternationalizationManager.getTranslation("Remarks on flight and hostile aircraft") + "\n\n" + combatReport.getHaReport());
 
         JScrollPane missionResultScrollPane = ScrollBarWrapper.makeScrollPane(missionResultTextArea);
 		

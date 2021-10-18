@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
@@ -25,69 +27,73 @@ public class PWCGButtonFactory extends JButton
 {
     private static final long serialVersionUID = 1L;
 
-    public static JButton makePaperButton(String buttonText, String commandText, ActionListener actionListener) throws PWCGException 
+    public static JButton makePaperButton(String displayText, String commandText, String toolTipText,  ActionListener actionListener) throws PWCGException 
     {
+        displayText = InternationalizationManager.getTranslation(displayText);
+        toolTipText = InternationalizationManager.getTranslation(toolTipText);
+
         Color bgColor = ColorMap.PAPER_BACKGROUND;
         Color fgColor = ColorMap.PAPER_FOREGROUND;
         Font font = PWCGMonitorFonts.getPrimaryFont();
         
-        PWCGJButton button = makeButton(buttonText, commandText, actionListener, bgColor, fgColor, font);
+        PWCGJButton button = makeButton(displayText, commandText, toolTipText, actionListener, bgColor, fgColor, font);
 
         return button;
     }
 
-    public static JButton makeRedPaperButton(String buttonText, String commandText, ActionListener actionListener) throws PWCGException 
+    public static JButton makeRedPaperButton(String displayText, String commandText, String toolTipText, ActionListener actionListener) throws PWCGException 
     {
+        displayText = InternationalizationManager.getTranslation(displayText);
+        toolTipText = InternationalizationManager.getTranslation(toolTipText);
+
         Color bgColor = ColorMap.PAPER_BACKGROUND;
         Color fgColor = ColorMap.BRITISH_RED;
         Font font = PWCGMonitorFonts.getPrimaryFont();
         
-        PWCGJButton button = makeButton(buttonText, commandText, actionListener, bgColor, fgColor, font);
+        PWCGJButton button = makeButton(displayText, commandText, toolTipText, actionListener, bgColor, fgColor, font);
 
         return button;
     }
 
-    public static JButton makePaperButtonWithBorder(String buttonText, String commandText, ActionListener actionListener) throws PWCGException 
+    public static JButton makePaperButtonWithBorder(String displayText, String commandText, String toolTipText, ActionListener actionListener) throws PWCGException 
     {
+        displayText = InternationalizationManager.getTranslation(displayText);
+        toolTipText = InternationalizationManager.getTranslation(toolTipText);
+
         Color bgColor = ColorMap.PAPER_OFFSET;
         Color fgColor = ColorMap.PAPER_FOREGROUND;
         Font font = PWCGMonitorFonts.getPrimaryFont();
         
-        PWCGJButton button = makeButtonWithBorder(buttonText, commandText, actionListener, bgColor, fgColor, font);
+        PWCGJButton button = makeButtonWithBorder(displayText, commandText, toolTipText, actionListener, bgColor, fgColor, font);
 
         return button;
     }
 
-    public static JButton makeChalkBoardButton(String buttonText, String commandText, ActionListener actionListener) throws PWCGException 
+    public static JButton makeBriefingChalkBoardButton(String displayText, String commandText, String toolTipText, ActionListener actionListener) throws PWCGException 
     {
-        Color bgColor = ColorMap.CHALK_BACKGROUND;
-        Color fgColor = ColorMap.CHALK_FOREGROUND;
-        Font font = PWCGMonitorFonts.getChalkboardFont();
-        
-        PWCGJButton button = makeButton(buttonText, commandText, actionListener, bgColor, fgColor, font);
+        displayText = InternationalizationManager.getTranslation(displayText);
+        toolTipText = InternationalizationManager.getTranslation(toolTipText);
 
-        return button;
-    }
-
-    public static JButton makeBriefingChalkBoardButton(String buttonText, String commandText, String toolTipText, ActionListener actionListener) throws PWCGException 
-    {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
         Font font = PWCGMonitorFonts.getBriefingChalkboardFont();
         
-        JButton button = makeTranslucentMenuButtonGrayMenu(buttonText, commandText, toolTipText, actionListener);
+        JButton button = makeTranslucentMenuButtonGrayMenu(displayText, commandText, toolTipText, actionListener);
         button.setFont(font);
         button.setForeground(fgColor);
 
         return button;
     }
 
-    public static  JButton makeTranslucentMenuButton(String buttonText, String commandText, String toolTipText, ActionListener listener) throws PWCGException
+    public static  JButton makeTranslucentMenuButton(String displayText, String commandText, String toolTipText, ActionListener listener) throws PWCGException
     {
+        displayText = InternationalizationManager.getTranslation(displayText);
+        toolTipText = InternationalizationManager.getTranslation(toolTipText);
+
         PWCGJButton button = ImageButton.makeTranslucentButton("TranslucentButton.png");
         Color fgColor = ColorMap.CHALK_FOREGROUND;
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
         
-        button.setText(InternationalizationManager.getTranslation(buttonText));
+        button.setText(displayText);
         button.setVerticalTextPosition(AbstractButton.CENTER);
         button.setHorizontalTextPosition(AbstractButton.CENTER);
         button.setForeground(fgColor);
@@ -99,13 +105,16 @@ public class PWCGButtonFactory extends JButton
         return button;
     }
 
-    public static  JButton makeTranslucentMenuButtonGrayMenu(String buttonText, String commandText, String toolTipText, ActionListener listener) throws PWCGException
+    public static  JButton makeTranslucentMenuButtonGrayMenu(String displayText, String commandText, String toolTipText, ActionListener listener) throws PWCGException
     {
+        displayText = InternationalizationManager.getTranslation(displayText);
+        toolTipText = InternationalizationManager.getTranslation(toolTipText);
+
         PWCGJButton button = ImageButton.makeTranslucentButton("TranslucentButtonGrayMenu.png");
         Color fgColor = ColorMap.CHALK_FOREGROUND;
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
         
-        button.setText(buttonText);
+        button.setText(displayText);
         button.setVerticalTextPosition(AbstractButton.CENTER);
         button.setHorizontalTextPosition(AbstractButton.CENTER);
         button.setForeground(fgColor);
@@ -117,29 +126,36 @@ public class PWCGButtonFactory extends JButton
         return button;
     }
 
-    public static JRadioButton makeRadioButton(String buttonName, String action, String toolTipText, boolean selected, ActionListener actionListener, Color fg) throws PWCGException
+    public static PWCGJButton makeImageButton(ImageIcon imageIcon, Color background, String commandText, String noIcontext, String toolTipText, ActionListener listener) throws PWCGException
     {
-        Font font = PWCGMonitorFonts.getPrimaryFont();
+        toolTipText = InternationalizationManager.getTranslation(toolTipText);
 
-        JRadioButton button= new JRadioButton(buttonName);
-        button.setOpaque(false);
-        button.setActionCommand(action);
-        button.addActionListener(actionListener);
-        button.setFont(font);
-        button.setForeground(fg);
-
-        ToolTipManager.setToolTip(button, toolTipText);
-
-        return button;
+        PWCGJButton pilotPictureButton = null;
+        if (imageIcon != null)
+        {
+            pilotPictureButton = new PWCGJButton(imageIcon);
+        }
+        else
+        {
+            pilotPictureButton = new PWCGJButton(noIcontext);
+        }
+        pilotPictureButton.addActionListener(listener);
+        pilotPictureButton.setBackground(background);
+        pilotPictureButton.setOpaque(false);
+        pilotPictureButton.setBorderPainted(false);
+        pilotPictureButton.setFocusPainted(false);
+        pilotPictureButton.setActionCommand(commandText);
+        ToolTipManager.setToolTip(pilotPictureButton, toolTipText);
+        return pilotPictureButton;
     }
 
-    public static JRadioButton makeBriefingChalkBoardRadioButton(String action, ActionListener actionListener) throws PWCGException 
+    public static JRadioButton makeBriefingChalkBoardRadioButton(String commandText, ActionListener actionListener) throws PWCGException 
     {
         Font font = PWCGMonitorFonts.getBriefingChalkboardFont();
         
         JRadioButton button= new JRadioButton();
         button.setOpaque(false);
-        button.setActionCommand(action);
+        button.setActionCommand(commandText);
         button.addActionListener(actionListener);
         button.setFont(font);
         button.setForeground(ColorMap.CHALK_FOREGROUND);
@@ -147,6 +163,29 @@ public class PWCGButtonFactory extends JButton
         return button;
     }
 
+    public static JRadioButton makeRadioButton(String displayText, String commandText, String toolTipText, Font font, Color foreground, boolean selected, ActionListener actionListener) throws PWCGException
+    {
+        if (font == null)
+        {
+            font = PWCGMonitorFonts.getPrimaryFont();
+        }
+        
+        displayText = InternationalizationManager.getTranslation(displayText);
+
+        JRadioButton button= new JRadioButton(displayText);
+        button.setActionCommand(commandText);
+        button.setFont(font);
+        button.setForeground(foreground);
+        button.setSelected(selected);
+        button.addActionListener(actionListener);
+        button.setOpaque(false);
+        button.setBorderPainted(false);
+        button.setFocusPainted(false);
+
+        ToolTipManager.setToolTip(button, toolTipText);
+
+        return button;
+    }
 
     public static JLabel makeDummy()
     {
@@ -156,15 +195,143 @@ public class PWCGButtonFactory extends JButton
         return lDummy;
     }
 
+    public static JLabel makeMenuLabelLarge(String displayText) throws PWCGException 
+    {
+        Color bgColor = ColorMap.CHALK_BACKGROUND;
+        Color fgColor = ColorMap.CHALK_FOREGROUND;
+        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
+        
+        displayText = InternationalizationManager.getTranslation(displayText);
+        displayText = padStringToExtendImageSize(displayText);
+        JLabel label = makeLabel(displayText, bgColor, fgColor, font);
+        
+        return label;
+    }
+
+    public static JLabel makePaperLabelLarge(String displayText) throws PWCGException 
+    {
+        Color bgColor = ColorMap.PAPER_BACKGROUND;
+        Color fgColor = ColorMap.PAPER_FOREGROUND;
+        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
+        
+        displayText = InternationalizationManager.getTranslation(displayText);
+        displayText = padStringToExtendImageSize(displayText);
+        JLabel label = makeLabel(displayText, bgColor, fgColor, font);
+        
+        return label;
+    }
+
+    public static JLabel makePlaqueLabelLarge(String displayText) throws PWCGException 
+    {
+        Color bgColor = ColorMap.CHALK_BACKGROUND;
+        Color fgColor = ColorMap.PLAQUE_GOLD;
+        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
+        
+        displayText = InternationalizationManager.getTranslation(displayText);
+        displayText = padStringToExtendImageSize(displayText);
+        JLabel label = makeLabel(displayText, bgColor, fgColor, font);
+        
+        return label;
+    }
+
+    public static JLabel makePaperLabelMedium(String displayText) throws PWCGException 
+    {
+        displayText = InternationalizationManager.getTranslation(displayText);
+
+        Color bgColor = ColorMap.PAPER_BACKGROUND;
+        Color fgColor = ColorMap.PAPER_FOREGROUND;
+        Font font = PWCGMonitorFonts.getPrimaryFont();
+        
+        JLabel label = makeLabel(displayText, bgColor, fgColor, font);
+        
+        return label;
+    }
+
+    public static JLabel makeChalkBoardLabel(String displayText) throws PWCGException 
+    {
+        displayText = InternationalizationManager.getTranslation(displayText);
+
+        Color bgColor = ColorMap.CHALK_BACKGROUND;
+        Color fgColor = ColorMap.CHALK_FOREGROUND;
+        Font font = PWCGMonitorFonts.getChalkboardFont();
+        
+        JLabel label = makeLabel(displayText, bgColor, fgColor, font);
+        
+        return label;
+    }
+
+    public static JLabel makeBriefingChalkBoardLabel(String displayText) throws PWCGException 
+    {
+        displayText = InternationalizationManager.getTranslation(displayText);
+
+        Color bgColor = ColorMap.CHALK_BACKGROUND;
+        Color fgColor = ColorMap.CHALK_FOREGROUND;
+        Font font = PWCGMonitorFonts.getBriefingChalkboardFont();
+        
+        JLabel label = makeLabel(displayText, bgColor, fgColor, font);
+        
+        return label;
+    }
+
+    public static JCheckBox makeCheckBox(String displayText, String actionCommand, Font font, Color fgColor, ActionListener actionListener) throws PWCGException 
+    {
+        displayText = InternationalizationManager.getTranslation(displayText);
+
+        JCheckBox button = new JCheckBox(displayText);
+        button.setHorizontalAlignment(SwingConstants.LEFT );
+        button.setBorderPainted(false);
+        button.setFocusPainted(false);
+        button.setOpaque(false);
+        button.setForeground(fgColor);
+        button.setFont(font);
+        if (actionListener != null)
+        {
+            button.setActionCommand(actionCommand);
+            button.addActionListener(actionListener);
+        }
+        return button;
+    }
+
+    public static  JCheckBox makeCheckBoxWithDimensions(String name, String displayText, Font font, Dimension dimension) throws PWCGException 
+    {
+        displayText = InternationalizationManager.getTranslation(displayText);
+
+        JCheckBox checkBox= new JCheckBox();
+        checkBox.setFont(font);
+        checkBox.setHorizontalAlignment(JLabel.LEFT);
+        checkBox.setOpaque(false);
+        checkBox.setSize(dimension.width, dimension.height);
+        checkBox.setName(name);
+        checkBox.setText(displayText);
+        
+        return checkBox;
+    }
+
+    public static JCheckBox makeCheckBoxWithIcon(Icon selectedIcon, Icon notSelectedIcon, String displayText, Font font, String imageName, Dimension dimension) throws PWCGException
+    {
+        displayText = InternationalizationManager.getTranslation(displayText);
+
+        JCheckBox checkBox = new JCheckBox(displayText);
+        checkBox.setFont(font);
+        checkBox.setHorizontalAlignment(JLabel.LEFT);
+        checkBox.setOpaque(false);
+        checkBox.setSize(dimension.width, dimension.height);
+        checkBox.setIcon(notSelectedIcon);
+        checkBox.setSelectedIcon(selectedIcon);
+
+        return checkBox;
+    }
+
     private static PWCGJButton makeButton(
-                    String buttonText, 
+                    String displayText, 
                     String commandText, 
+                    String toolTipText, 
                     ActionListener actionListener, 
                     Color bgColor,
                     Color fgColor, 
-                    Font font)
-    {
-        PWCGJButton button = new PWCGJButton(buttonText);
+                    Font font) throws PWCGException
+    {        
+        PWCGJButton button = new PWCGJButton(displayText);
         button.setActionCommand(commandText);
         button.setBackground(bgColor);
         button.setForeground(fgColor);
@@ -174,19 +341,23 @@ public class PWCGButtonFactory extends JButton
         button.setFocusPainted(false);
         button.setHorizontalAlignment(SwingConstants.LEFT);
         button.addActionListener(actionListener);
+
+        ToolTipManager.setToolTip(button, toolTipText);
+        
         return button;
     }
 
 
     private static PWCGJButton makeButtonWithBorder(
-                    String buttonText, 
+                    String displayText, 
                     String commandText, 
+                    String toolTipText, 
                     ActionListener actionListener, 
                     Color bgColor,
                     Color fgColor, 
-                    Font font)
+                    Font font) throws PWCGException
     {
-        PWCGJButton button = new PWCGJButton(buttonText);
+        PWCGJButton button = new PWCGJButton(displayText);
         button.setActionCommand(commandText);
         button.setBackground(bgColor);
         button.setForeground(fgColor);
@@ -196,86 +367,17 @@ public class PWCGButtonFactory extends JButton
         button.setHorizontalAlignment(SwingConstants.CENTER);
         button.addActionListener(actionListener);
         
-        //Border raisedBorder = BorderFactory.createRaisedBevelBorder();
-        //button.setBorder(new RoundedBorder(8)); //10 is the radius
         Border raisedBorder = BorderFactory.createSoftBevelBorder(BevelBorder.RAISED);
-        button.setBorder(raisedBorder); 
+        button.setBorder(raisedBorder);
+        
+        ToolTipManager.setToolTip(button, toolTipText);
 
         return button;
     }
 
-    public static JLabel makeMenuLabelLarge(String labelText) throws PWCGException 
+    private static JLabel makeLabel(String displayText, Color bgColor, Color fgColor, Font font)
     {
-        Color bgColor = ColorMap.CHALK_BACKGROUND;
-        Color fgColor = ColorMap.CHALK_FOREGROUND;
-        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
-        
-        labelText = padStringToExtendImageSize(labelText);
-        JLabel label = makeLabel(labelText, bgColor, fgColor, font);
-        
-        return label;
-    }
-
-    public static JLabel makePaperLabelLarge(String labelText) throws PWCGException 
-    {
-        Color bgColor = ColorMap.PAPER_BACKGROUND;
-        Color fgColor = ColorMap.PAPER_FOREGROUND;
-        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
-        
-        labelText = padStringToExtendImageSize(labelText);
-        JLabel label = makeLabel(labelText, bgColor, fgColor, font);
-        
-        return label;
-    }
-
-    public static JLabel makePlaqueLabelLarge(String labelText) throws PWCGException 
-    {
-        Color bgColor = ColorMap.CHALK_BACKGROUND;
-        Color fgColor = ColorMap.PLAQUE_GOLD;
-        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
-        
-        labelText = padStringToExtendImageSize(labelText);
-        JLabel label = makeLabel(labelText, bgColor, fgColor, font);
-        
-        return label;
-    }
-
-    public static JLabel makePaperLabelMedium(String labelText) throws PWCGException 
-    {
-        Color bgColor = ColorMap.PAPER_BACKGROUND;
-        Color fgColor = ColorMap.PAPER_FOREGROUND;
-        Font font = PWCGMonitorFonts.getPrimaryFont();
-        
-        JLabel label = makeLabel(labelText, bgColor, fgColor, font);
-        
-        return label;
-    }
-
-    public static JLabel makeChalkBoardLabel(String labelText) throws PWCGException 
-    {
-        Color bgColor = ColorMap.CHALK_BACKGROUND;
-        Color fgColor = ColorMap.CHALK_FOREGROUND;
-        Font font = PWCGMonitorFonts.getChalkboardFont();
-        
-        JLabel label = makeLabel(labelText, bgColor, fgColor, font);
-        
-        return label;
-    }
-
-    public static JLabel makeBriefingChalkBoardLabel(String labelText) throws PWCGException 
-    {
-        Color bgColor = ColorMap.CHALK_BACKGROUND;
-        Color fgColor = ColorMap.CHALK_FOREGROUND;
-        Font font = PWCGMonitorFonts.getBriefingChalkboardFont();
-        
-        JLabel label = makeLabel(labelText, bgColor, fgColor, font);
-        
-        return label;
-    }
-
-    private static JLabel makeLabel(String labelText, Color bgColor, Color fgColor, Font font)
-    {
-        JLabel label = new JLabel(labelText);
+        JLabel label = new JLabel(displayText);
         label.setBackground(bgColor);
         label.setForeground(fgColor);
         label.setOpaque(false);
@@ -284,7 +386,7 @@ public class PWCGButtonFactory extends JButton
         return label;
     }
 
-    public static String padStringToExtendImageSize(String originalString)
+    private static String padStringToExtendImageSize(String originalString)
     {
         String paddedString = originalString;
         
@@ -304,46 +406,4 @@ public class PWCGButtonFactory extends JButton
         
         return paddedString;
     }
-
-    public static JCheckBox makeCheckBox(String buttonText, Color fgColor) throws PWCGException 
-    {
-        return makeCheckBox(buttonText, "", fgColor, null);
-    }
-
-    public static JCheckBox makeCheckBox(String buttonText, String actionCommand, Color fgColor, ActionListener actionListener) throws PWCGException 
-    {
-        Font font = PWCGMonitorFonts.getPrimaryFont();
-
-        JCheckBox button = new JCheckBox(buttonText);
-        button.setHorizontalAlignment(SwingConstants.LEFT );
-        button.setBorderPainted(false);
-        button.setFocusPainted(false);
-        button.setOpaque(false);
-        button.setForeground(fgColor);
-        button.setFont(font);
-        if (actionListener != null)
-        {
-            button.setActionCommand(actionCommand);
-            button.addActionListener(actionListener);
-        }
-        return button;
-    }
-
-    public static JCheckBox makeSmallCheckBox(String buttonText, String actionCommand, Color fgColor, ActionListener actionListener) throws PWCGException 
-    {
-        Font font = PWCGMonitorFonts.getPrimaryFontSmall();
-
-        JCheckBox button = new JCheckBox(buttonText);
-        button.setHorizontalAlignment(SwingConstants.LEFT );
-        button.setBorderPainted(false);
-        button.setFocusPainted(false);
-        button.setOpaque(false);
-        button.setForeground(fgColor);
-        button.setFont(font);
-        button.setActionCommand(actionCommand);
-        button.addActionListener(actionListener);
-
-        return button;
-    }
-
 }

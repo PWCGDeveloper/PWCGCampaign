@@ -136,12 +136,12 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
         {
             if (SquadronViability.isSquadronViable(squadron, campaign))
             {
-                JButton squadronSelectButton = PWCGButtonFactory.makePaperButton(squadron.determineDisplayName(campaign.getDate()), "SquadronSelected:" + squadron.getSquadronId(), this);
+                JButton squadronSelectButton = PWCGButtonFactory.makePaperButton(squadron.determineDisplayName(campaign.getDate()), "SquadronSelected:" + squadron.getSquadronId(), "Detailed information for squadron", this);
                 squadronsByRoleContainer.add(squadronSelectButton);                
             }
             else
             {
-                JButton squadronSelectButton = PWCGButtonFactory.makeRedPaperButton(squadron.determineDisplayName(campaign.getDate()), "SquadronSelected:" + squadron.getSquadronId(), this);
+                JButton squadronSelectButton = PWCGButtonFactory.makeRedPaperButton(squadron.determineDisplayName(campaign.getDate()), "SquadronSelected:" + squadron.getSquadronId(), "Detailed information for squadron", this);
                 squadronsByRoleContainer.add(squadronSelectButton);
             }
         }
