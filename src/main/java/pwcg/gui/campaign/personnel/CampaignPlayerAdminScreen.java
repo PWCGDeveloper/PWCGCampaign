@@ -97,7 +97,7 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
         JPanel buttonPanel = new JPanel(new GridLayout(0, 1));
         buttonPanel.setOpaque(false);
 
-        JLabel label = PWCGLabelFactory.makeMenuLabelLarge("Select Admin Action:");
+        JLabel label = PWCGLabelFactory.makeMenuLabelLarge("Select Admin Action");
         buttonPanel.add(label);
 
         buttonPanel.add(makeActionButton("Add Pilot", "Add a coop persona to the campaign"));

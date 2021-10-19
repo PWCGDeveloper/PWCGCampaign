@@ -96,7 +96,7 @@ public class CampaignNewsStandScreen extends ImageResizingPanel implements Actio
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
                 
-        buttonPanel.add(PWCGLabelFactory.makeMenuLabelLarge("Newspapers:"));
+        buttonPanel.add(PWCGLabelFactory.makeMenuLabelLarge("Newspapers"));
         addNewspapersButtonPanel(buttonPanel);
 
         buttonPanel.add(PWCGLabelFactory.makeMenuLabelLarge("   "));

@@ -110,19 +110,19 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
     private void makeLabelsForChalkboard(JPanel assignedPilotPanel) throws PWCGException
     {
         GridBagConstraints pilotConstraints = makeGridBagConstraints(1, 1, pilotWeightx, pilotWeighty);
-        JLabel assignedPilotLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Assigned Pilots:");
+        JLabel assignedPilotLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Assigned Pilots");
         assignedPilotPanel.add(assignedPilotLabel, pilotConstraints);
 
         GridBagConstraints planeConstraints = makeGridBagConstraints(1, 2, planeNameWeightx, planeNameWeighty);
-        JLabel assignedAircraftLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Aircraft:");
+        JLabel assignedAircraftLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Aircraft");
         assignedPilotPanel.add(assignedAircraftLabel, planeConstraints);
 
         GridBagConstraints payloadConstraints = makeGridBagConstraints(1, 3, payloadWeightx, payloadWeighty);
-        JLabel payloadLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Payload:");
+        JLabel payloadLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Payload");
         assignedPilotPanel.add(payloadLabel, payloadConstraints);
 
         GridBagConstraints modificationsConstraints = makeGridBagConstraints(1, 4, modificationsWeightx, modificationsWeighty);
-        JLabel modificationsLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Modifications:");
+        JLabel modificationsLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Modifications");
         assignedPilotPanel.add(modificationsLabel, modificationsConstraints);
     }
 
@@ -265,7 +265,7 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
             }
         }
 
-        JLabel unassignedLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Unassigned Pilots:");
+        JLabel unassignedLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Unassigned Pilots");
         unassignedPilotGrid.add(unassignedLabel);
 
         JLabel assignedAircraftLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");

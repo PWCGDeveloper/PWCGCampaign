@@ -105,7 +105,7 @@ public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel impl
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JLabel label = PWCGLabelFactory.makeMenuLabelLarge("Advanced Configuration Categories:");
+        JLabel label = PWCGLabelFactory.makeMenuLabelLarge("Advanced Configuration Categories");
         buttonPanel.add(label);
         
         buttonPanel.add(makeButton("Campaign Preferences", "Fine tune campaign event probabilities"));

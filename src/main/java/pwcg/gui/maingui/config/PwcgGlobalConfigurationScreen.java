@@ -100,7 +100,7 @@ public class PwcgGlobalConfigurationScreen extends ImageResizingPanel implements
         buttonPanel.setOpaque(false);
         
 
-        JLabel label = PWCGLabelFactory.makeMenuLabelLarge("Global Configuration Categories:");
+        JLabel label = PWCGLabelFactory.makeMenuLabelLarge("Global Configuration Categories");
         buttonPanel.add(label);
 
         buttonPanel.add(PWCGLabelFactory.makeDummyLabel());

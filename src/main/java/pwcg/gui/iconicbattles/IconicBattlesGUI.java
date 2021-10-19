@@ -73,7 +73,7 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
-        buttonPanel.add(PWCGLabelFactory.makePaperLabelLarge("Iconic Mission Squadrons:"));
+        buttonPanel.add(PWCGLabelFactory.makePaperLabelLarge("Iconic Mission Squadrons"));
         buttonPanel.add(PWCGLabelFactory.makePaperLabelLarge("   "));
 
         IconicSingleMission iconicMission = IconicMissionsManager.getInstance().getSelectedMissionProfile(iconicBattleData.getIconicBattleKey());
@@ -88,7 +88,7 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
         }
         
         buttonPanel.add(PWCGLabelFactory.makePaperLabelLarge("   "));
-        buttonPanel.add(PWCGLabelFactory.makePaperLabelLarge("Iconic Mission Vehicles:"));
+        buttonPanel.add(PWCGLabelFactory.makePaperLabelLarge("Iconic Mission Vehicles"));
         buttonPanel.add(PWCGLabelFactory.makePaperLabelLarge("   "));
 
         Date battleDate = DateUtils.getDateYYYYMMDD(iconicMission.getDateString());        

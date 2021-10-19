@@ -96,7 +96,7 @@ public class PwcgCoopGlobalAdminScreen extends ImageResizingPanel implements Act
         buttonPanel.setOpaque(false);
         
 
-        JLabel label = PWCGLabelFactory.makeMenuLabelLarge("Select Coop Admin Action:");
+        JLabel label = PWCGLabelFactory.makeMenuLabelLarge("Select Coop Admin Action");
         buttonPanel.add(label);
 
         JLabel spacer = PWCGLabelFactory.makeMenuLabelLarge("   ");

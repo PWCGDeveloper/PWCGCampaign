@@ -130,7 +130,7 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
             return;
         }
 
-        JLabel headerLabel = PWCGLabelFactory.makePaperLabelLarge(role.getRoleDescription() + " Squadrons: \n");
+        JLabel headerLabel = PWCGLabelFactory.makePaperLabelLarge(role.getRoleDescription() + " Squadrons \n");
         squadronsByRoleContainer.add(headerLabel);
 
         for (Squadron squadron : squadrons)
