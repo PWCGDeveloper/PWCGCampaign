@@ -8,7 +8,6 @@ import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -43,7 +42,7 @@ public class InternationalizationFileBuilder
         //Writer fstream = new OutputStreamWriter(new FileOutputStream("BoSData\\Input\\International\\International.Sp.json", true), StandardCharsets.UTF_8);
 
         Writer out = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream("BoSData\\Input\\International\\International.Sp.json"), "UTF-8"));
+                new FileOutputStream("BoSData\\Input\\International\\International.Ru.json"), "UTF-8"));
         
         for (String key : internationalizationRecords.keySet())
         {
@@ -60,7 +59,7 @@ public class InternationalizationFileBuilder
         Map<String, String> internationalizationMap = new TreeMap<>();
         
         BufferedReader keyReader = new BufferedReader(new FileReader("BoSData\\Input\\International\\International.En.json"));        
-        BufferedReader valueReader  = new BufferedReader(new InputStreamReader(new FileInputStream("BoSData\\Input\\International\\International.Sp.All.json"), "UTF-8"));
+        BufferedReader valueReader  = new BufferedReader(new InputStreamReader(new FileInputStream("BoSData\\Input\\International\\International.Ru.All.json"), "UTF-8"));
 
         String line;
         

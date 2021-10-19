@@ -32,6 +32,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 
 public class CampaignNewsStandScreen extends ImageResizingPanel implements ActionListener
 {
@@ -95,12 +96,12 @@ public class CampaignNewsStandScreen extends ImageResizingPanel implements Actio
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
                 
-        buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("Newspapers:"));
+        buttonPanel.add(PWCGLabelFactory.makeMenuLabelLarge("Newspapers:"));
         addNewspapersButtonPanel(buttonPanel);
 
-        buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
-        buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
-        buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
+        buttonPanel.add(PWCGLabelFactory.makeMenuLabelLarge("   "));
+        buttonPanel.add(PWCGLabelFactory.makeMenuLabelLarge("   "));
+        buttonPanel.add(PWCGLabelFactory.makeMenuLabelLarge("   "));
 
         add (buttonPanel);
 

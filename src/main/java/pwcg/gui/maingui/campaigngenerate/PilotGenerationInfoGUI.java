@@ -25,7 +25,7 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.ToolTipManager;
 
 public class PilotGenerationInfoGUI extends JPanel implements ActionListener
@@ -51,7 +51,7 @@ public class PilotGenerationInfoGUI extends JPanel implements ActionListener
 	    JPanel serviceMainPanel = new JPanel(new BorderLayout());
 		serviceMainPanel.setOpaque(false);
 
-        JLabel chooseServiceLabel = PWCGButtonFactory.makeMenuLabelLarge("Choose a service:");
+        JLabel chooseServiceLabel = PWCGLabelFactory.makeMenuLabelLarge("Choose a service:");
         serviceMainPanel.add(chooseServiceLabel, BorderLayout.NORTH);
 
         JPanel internalServicePanel = new JPanel();

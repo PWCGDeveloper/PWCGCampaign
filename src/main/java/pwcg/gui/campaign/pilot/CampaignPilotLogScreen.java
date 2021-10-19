@@ -28,6 +28,7 @@ import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 
 public class CampaignPilotLogScreen extends ImageResizingPanel implements ActionListener
 {
@@ -230,10 +231,10 @@ public class CampaignPilotLogScreen extends ImageResizingPanel implements Action
     {
         for (int i = 0; i < 2; ++i)
 		{
-            JLabel dummyLeft = PWCGButtonFactory.makeDummy();
+            JLabel dummyLeft = PWCGLabelFactory.makeDummyLabel();
             buttonPanel.add(dummyLeft);
             
-            JLabel dummyRight = PWCGButtonFactory.makeDummy();
+            JLabel dummyRight = PWCGLabelFactory.makeDummyLabel();
             buttonPanel.add(dummyRight);
 		}
     }

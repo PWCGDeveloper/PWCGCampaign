@@ -13,7 +13,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
@@ -31,6 +30,7 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImagePanelLayout;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 
 public class PwcgSkinConfigurationAnalysisDisplayScreen extends ImageResizingPanel implements ActionListener
@@ -77,11 +77,7 @@ public class PwcgSkinConfigurationAnalysisDisplayScreen extends ImageResizingPan
 
         for (int i = 0; i < 2; ++i)
         {
-            JLabel spacerLabel = new JLabel("     ");
-            spacerLabel.setHorizontalAlignment(SwingConstants.LEFT);
-            spacerLabel.setOpaque(false);
-            
-            buttonPanel.add(spacerLabel);
+            buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
         }
         
         JButton reportButton = PWCGButtonFactory.makeTranslucentMenuButton("Return", "Return", "Return to skin analysis page", this);

@@ -22,6 +22,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.image.ImageCache;
+import pwcg.gui.utils.PWCGLabelFactory;
 
 public class NewspaperAceLostUI extends JPanel
 {
@@ -54,7 +55,7 @@ public class NewspaperAceLostUI extends JPanel
             BufferedImage newspaperImage = buildNewspaperImage();
     
             ImageIcon icon = new ImageIcon(newspaperImage);
-            JLabel imageLabel= new JLabel(icon);
+            JLabel imageLabel = PWCGLabelFactory.makeImageLabel(icon);
             newspaperImagePanel.add(imageLabel, BorderLayout.CENTER);
 
             return newspaperImagePanel;

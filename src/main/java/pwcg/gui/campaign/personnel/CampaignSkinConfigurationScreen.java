@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
@@ -27,6 +26,7 @@ import pwcg.gui.campaign.home.CampaignHomeRightPanelFactory;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.UIUtils;
 
 public class CampaignSkinConfigurationScreen extends ImageResizingPanel implements ActionListener
@@ -114,8 +114,7 @@ public class CampaignSkinConfigurationScreen extends ImageResizingPanel implemen
 
     private void makePlainButtons(JPanel buttonPanel) throws PWCGException
     {
-        JLabel spacer = new JLabel("");
-        buttonPanel.add(spacer);
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept", "AcceptSkins", "Accept skin assignments", this);
         buttonPanel.add(acceptButton);

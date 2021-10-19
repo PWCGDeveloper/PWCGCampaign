@@ -26,6 +26,7 @@ import pwcg.gui.rofmap.brief.model.BriefingData;
 import pwcg.gui.rofmap.brief.model.BriefingFlight;
 import pwcg.gui.rofmap.brief.model.BriefingFlightParameters;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.mission.Mission;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -129,25 +130,25 @@ public class BriefingMapGUI extends MapGUI implements ActionListener, IFlightCha
 	    
         if (mission.isFinalized())
         {
-            buttonGrid.add(PWCGButtonFactory.makeDummy());
+            buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
             JButton backToCampaignButton = makeButton("Back to Campaign", "Back to Campaign", "Return to campaign home screen");
             buttonGrid.add(backToCampaignButton);
         }
 
-		buttonGrid.add(PWCGButtonFactory.makeDummy());
+		buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
         JButton scrubMissionButton = makeButton("Scrub Mission", "Scrub Mission", "Scrub this mission and return to campaign home screen");
         buttonGrid.add(scrubMissionButton);
 
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
         JButton goBackToBriefingDescriptionButton = makeButton("Back: Briefing", "Back: Briefing", "Go back to briefing description screen");
         buttonGrid.add(goBackToBriefingDescriptionButton);
 
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
         JButton goToWaypointEditButton = makeButton("Next: Waypoint", "Next: Waypoint", "Progress to waypoint editor screen");
         buttonGrid.add(goToWaypointEditButton);
 
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
+        buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
 
 		buttonPanel.add(buttonGrid, BorderLayout.NORTH);
 		

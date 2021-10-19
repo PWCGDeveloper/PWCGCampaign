@@ -25,7 +25,7 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 
 public class AARClaimPanels extends ImageResizingPanel
 {
@@ -108,7 +108,7 @@ public class AARClaimPanels extends ImageResizingPanel
 
         for (int i = 0; i < 1; ++i)
         {
-            infoPanelGrid.add(PWCGButtonFactory.makeDummy());
+            infoPanelGrid.add(PWCGLabelFactory.makeDummyLabel());
         }
 
         JLabel lPilots = new JLabel("     Pilots assigned to this mission:", JLabel.LEFT);
@@ -133,10 +133,8 @@ public class AARClaimPanels extends ImageResizingPanel
             }
         }
         
-        JLabel space1 = new JLabel("", JLabel.LEFT);
-        JLabel space2 = new JLabel("", JLabel.LEFT);
-        infoPanelGrid.add(space1);
-        infoPanelGrid.add(space2);
+        infoPanelGrid.add(PWCGLabelFactory.makeDummyLabel());
+        infoPanelGrid.add(PWCGLabelFactory.makeDummyLabel());
 
         JLabel lDate = new JLabel("     Date: " + DateUtils.getDateString(campaign.getDate()), JLabel.LEFT);
         lDate.setFont(font);
@@ -144,7 +142,7 @@ public class AARClaimPanels extends ImageResizingPanel
 
         for (int i = 0; i < 1; ++i)
         {
-            infoPanelGrid.add(PWCGButtonFactory.makeDummy());
+            infoPanelGrid.add(PWCGLabelFactory.makeDummyLabel());
         }
         
         infoPanel.add(infoPanelGrid, BorderLayout.NORTH);

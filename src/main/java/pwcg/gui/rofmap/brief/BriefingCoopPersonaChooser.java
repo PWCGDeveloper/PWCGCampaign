@@ -30,6 +30,7 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.mission.MissionHumanParticipants;
 
 public class BriefingCoopPersonaChooser extends ImageResizingPanel implements ActionListener
@@ -152,9 +153,7 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
 	{
 	    Font font = PWCGMonitorFonts.getPrimaryFontLarge();
     	
-        JLabel spacer = new JLabel("   ");
-        spacer.setFont(font);
-        coopPersonaErrorPanel.add(spacer);
+        coopPersonaErrorPanel.add(PWCGLabelFactory.makeDummyLabel());
 
 		for (String errorMessage : errorMessages)
     	{
@@ -163,20 +162,14 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
     		coopPersonaErrorPanel.add(errorLabel);
     	}
 
-        JLabel spacer2 = new JLabel("   ");
-        spacer2.setFont(font);
-        coopPersonaErrorPanel.add(spacer2);
+        coopPersonaErrorPanel.add(PWCGLabelFactory.makeDummyLabel());
 	}
 
 	private void addBlankErrorLine() throws PWCGException 
-	{
-	    Font font = PWCGMonitorFonts.getPrimaryFontLarge();
-    	
+	{    	
 	    for (int i = 0; i < 3; ++i)
 	    {
-	        JLabel spacer = new JLabel("   ");
-	        spacer.setFont(font);
-	        coopPersonaErrorPanel.add(spacer);
+	        coopPersonaErrorPanel.add(PWCGLabelFactory.makeDummyLabel());
 	    }
 	}
 

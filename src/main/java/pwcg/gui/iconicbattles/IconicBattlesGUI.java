@@ -34,7 +34,7 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.ground.vehicle.VehicleDefinition;
 
@@ -73,8 +73,8 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
         
-        buttonPanel.add(PWCGButtonFactory.makePaperLabelLarge("Iconic Mission Squadrons:"));
-        buttonPanel.add(PWCGButtonFactory.makePaperLabelLarge("   "));
+        buttonPanel.add(PWCGLabelFactory.makePaperLabelLarge("Iconic Mission Squadrons:"));
+        buttonPanel.add(PWCGLabelFactory.makePaperLabelLarge("   "));
 
         IconicSingleMission iconicMission = IconicMissionsManager.getInstance().getSelectedMissionProfile(iconicBattleData.getIconicBattleKey());
         
@@ -87,9 +87,9 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
             countriesInBattle.add(squadron.getCountry().getCountry());
         }
         
-        buttonPanel.add(PWCGButtonFactory.makePaperLabelLarge("   "));
-        buttonPanel.add(PWCGButtonFactory.makePaperLabelLarge("Iconic Mission Vehicles:"));
-        buttonPanel.add(PWCGButtonFactory.makePaperLabelLarge("   "));
+        buttonPanel.add(PWCGLabelFactory.makePaperLabelLarge("   "));
+        buttonPanel.add(PWCGLabelFactory.makePaperLabelLarge("Iconic Mission Vehicles:"));
+        buttonPanel.add(PWCGLabelFactory.makePaperLabelLarge("   "));
 
         Date battleDate = DateUtils.getDateYYYYMMDD(iconicMission.getDateString());        
         List<VehicleDefinition> matchingTrucks = getVehicleDefinitionsOfType(VehicleClass.TruckAAAPlayer, countriesInBattle, battleDate);

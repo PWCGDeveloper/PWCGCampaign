@@ -23,6 +23,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorBorders;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 
 public class CampaignJournalGUI extends JPanel
@@ -108,9 +109,7 @@ public class CampaignJournalGUI extends JPanel
 		JPanel headerLeftPanel = new JPanel(new GridLayout(0,1));
 		headerLeftPanel.setOpaque(false);
 
-		JLabel lSpacer1 = new JLabel(" ");
-		lSpacer1.setOpaque(false);
-		headerLeftPanel.add(lSpacer1);
+		headerLeftPanel.add(PWCGLabelFactory.makeDummyLabel());
 		
 		JLabel lSquadron = new JLabel("Squadron: " + combatReport.getSquadron() + "          ", JLabel.LEFT);
 		lSquadron.setOpaque(false);
@@ -130,22 +129,16 @@ public class CampaignJournalGUI extends JPanel
 		lDuty.setFont(font);
 		headerLeftPanel.add(lDuty);
 
-		JLabel lSpacer2 = new JLabel(" ");
-		lSpacer2.setOpaque(false);
-		headerLeftPanel.add(lSpacer2);
+		headerLeftPanel.add(PWCGLabelFactory.makeDummyLabel());
 
-		JLabel lSpacer3 = new JLabel(" ");
-		lSpacer3.setOpaque(false);
-		headerLeftPanel.add(lSpacer3);
+		headerLeftPanel.add(PWCGLabelFactory.makeDummyLabel());
 
 		headerPanel.add(headerLeftPanel, BorderLayout.WEST);
 
 		JPanel headerRightPanel = new JPanel(new GridLayout(0,1));
 		headerRightPanel.setOpaque(false);
 
-		JLabel lSpacerR1 = new JLabel(" ");
-		lSpacerR1.setOpaque(false);
-		headerRightPanel.add(lSpacerR1);
+		headerRightPanel.add(PWCGLabelFactory.makeDummyLabel());
 		
 		String formattedCombatDate = DateUtils.getDateStringPretty(combatReport.getDate());
 		
@@ -169,15 +162,8 @@ public class CampaignJournalGUI extends JPanel
 		lHeight.setFont(font);
 		headerRightPanel.add(lHeight);
 
-		JLabel lSpacerR2 = new JLabel(" ");
-		lSpacerR2.setOpaque(false);
-		headerRightPanel.add(lSpacerR2);		
-
-		JLabel lSpacerR3 = new JLabel(" ");
-		lSpacerR3.setOpaque(false);
-		headerRightPanel.add(lSpacerR3);
-		
-
+		headerRightPanel.add(PWCGLabelFactory.makeDummyLabel());		
+		headerRightPanel.add(PWCGLabelFactory.makeDummyLabel());
 		headerPanel.add(headerRightPanel, BorderLayout.CENTER);
 		
 		return headerPanel;

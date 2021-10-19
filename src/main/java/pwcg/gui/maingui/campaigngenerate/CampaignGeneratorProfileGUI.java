@@ -25,6 +25,7 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 
 public class CampaignGeneratorProfileGUI extends JPanel implements ActionListener
 {
@@ -123,13 +124,13 @@ public class CampaignGeneratorProfileGUI extends JPanel implements ActionListene
         
         JPanel topSpacingGrid = new JPanel(new GridLayout(0,1));
         topSpacingGrid.setOpaque(false);
-        topSpacingGrid.add(PWCGButtonFactory.makeDummy());
-        topSpacingGrid.add(PWCGButtonFactory.makeDummy());
+        topSpacingGrid.add(PWCGLabelFactory.makeDummyLabel());
+        topSpacingGrid.add(PWCGLabelFactory.makeDummyLabel());
         
         JPanel bottomSpacingGrid = new JPanel(new GridLayout(0,1));
         bottomSpacingGrid.setOpaque(false);
-        bottomSpacingGrid.add(PWCGButtonFactory.makeDummy());
-        bottomSpacingGrid.add(PWCGButtonFactory.makeDummy());
+        bottomSpacingGrid.add(PWCGLabelFactory.makeDummyLabel());
+        bottomSpacingGrid.add(PWCGLabelFactory.makeDummyLabel());
 
         JPanel coopButtonPanel = new JPanel(new BorderLayout());
         coopButtonPanel.setOpaque(false);
@@ -160,11 +161,11 @@ public class CampaignGeneratorProfileGUI extends JPanel implements ActionListene
         campaignNameContainerPanel.add(lCampaignName, BorderLayout.WEST);
         campaignNameContainerPanel.add(campaignNameTextBox, BorderLayout.CENTER);
         
-        campaignNameContainerGrid.add(PWCGButtonFactory.makeDummy());
+        campaignNameContainerGrid.add(PWCGLabelFactory.makeDummyLabel());
         campaignNameContainerGrid.add(campaignNameContainerPanel);
-        campaignNameContainerGrid.add(PWCGButtonFactory.makeDummy());
-        campaignNameContainerGrid.add(PWCGButtonFactory.makeDummy());
-        campaignNameContainerGrid.add(PWCGButtonFactory.makeDummy());
+        campaignNameContainerGrid.add(PWCGLabelFactory.makeDummyLabel());
+        campaignNameContainerGrid.add(PWCGLabelFactory.makeDummyLabel());
+        campaignNameContainerGrid.add(PWCGLabelFactory.makeDummyLabel());
 
         JPanel campaignNamePanel = new JPanel(new BorderLayout());
         campaignNamePanel.setOpaque(false);

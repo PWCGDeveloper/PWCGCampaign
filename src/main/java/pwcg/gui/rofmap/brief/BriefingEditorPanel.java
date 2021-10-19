@@ -18,7 +18,7 @@ import pwcg.gui.rofmap.brief.model.BriefingData;
 import pwcg.gui.rofmap.brief.model.BriefingFlight;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.mission.Mission;
 import pwcg.mission.utils.MissionTime;
 
@@ -87,10 +87,10 @@ public class BriefingEditorPanel extends ImageResizingPanel implements ActionLis
         JPanel editableLabelPanel = new JPanel(new GridLayout(0,1));
         editableLabelPanel.setOpaque(false);
         
-        JLabel summaryLabel = PWCGButtonFactory.makePaperLabelLarge("Mission Summary");
+        JLabel summaryLabel = PWCGLabelFactory.makePaperLabelLarge("Mission Summary");
         editableLabelPanel.add(summaryLabel);
         
-        JLabel spacer = PWCGButtonFactory.makePaperLabelLarge("  ");
+        JLabel spacer = PWCGLabelFactory.makePaperLabelLarge("  ");
         editableLabelPanel.add(spacer);
         
         return editableLabelPanel;

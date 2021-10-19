@@ -20,6 +20,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 
@@ -43,13 +44,13 @@ public class BriefingFlightChooser implements ActionListener
         JPanel flightChooserButtonPanelGrid = new JPanel(new GridLayout(0,1));
         flightChooserButtonPanelGrid.setOpaque(false);
 
-        JLabel spacerLabel1 = PWCGButtonFactory.makeDummy();        
+        JLabel spacerLabel1 = PWCGLabelFactory.makeDummyLabel();        
         flightChooserButtonPanelGrid.add(spacerLabel1);
 
-        JLabel spacerLabel2 = PWCGButtonFactory.makeDummy();        
+        JLabel spacerLabel2 = PWCGLabelFactory.makeDummyLabel();        
         flightChooserButtonPanelGrid.add(spacerLabel2);
 
-        JLabel spacerLabel3 = PWCGButtonFactory.makeDummy();        
+        JLabel spacerLabel3 = PWCGLabelFactory.makeDummyLabel();        
         flightChooserButtonPanelGrid.add(spacerLabel3);
 
         Map<Integer, Squadron> playerSquadronsInMission = new HashMap<>();

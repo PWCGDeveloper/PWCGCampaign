@@ -37,6 +37,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 
 
@@ -490,28 +491,20 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
          
          JLabel skinPlaneLabel = new JLabel(description);
          skinPlaneLabel.setFont(font);
-
-         JLabel spaceLabel = new JLabel("");
-         spaceLabel.setFont(font);
-
          skinInfoGrid.add(skinPlaneLabel);
-         skinInfoGrid.add(spaceLabel);
+         skinInfoGrid.add(PWCGLabelFactory.makeDummyLabel());
          
          return skinInfoGrid;
      }
 
      private JPanel createSpaceGridEntry(int numSpaces) throws PWCGException
      {
-         Font font = PWCGMonitorFonts.getPrimaryFont();
-
          JPanel spaceGrid = new JPanel(new GridLayout(0, 1));
          spaceGrid.setOpaque(false);
 
          for (int i = 0; i < numSpaces; ++i)
          {
-             JLabel spaceLabel = new JLabel("   ");
-             spaceLabel.setFont(font);
-             spaceGrid.add(spaceLabel);
+             spaceGrid.add(PWCGLabelFactory.makeDummyLabel());
          }
          
          return spaceGrid;

@@ -10,7 +10,6 @@ import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.campaign.api.ICountry;
@@ -30,6 +29,7 @@ import pwcg.gui.image.ImageIconCache;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
 
 public class CampaignPilotMedalBox extends ImageResizingPanel implements ActionListener
@@ -137,11 +137,7 @@ public class CampaignPilotMedalBox extends ImageResizingPanel implements ActionL
 		{
 			for (int i = 0; i < remainder; ++i)
 			{
-				JLabel ldummy = new JLabel("");
-				ldummy.setBackground(bg);
-				ldummy.setOpaque(false);
-	
-				medalPanel.add(ldummy);
+				medalPanel.add(PWCGLabelFactory.makeDummyLabel());
 			}
 		}
 		

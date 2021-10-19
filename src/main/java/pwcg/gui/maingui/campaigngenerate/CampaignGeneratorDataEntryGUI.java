@@ -50,6 +50,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.maingui.campaigngenerate.CampaignGeneratorState.CampaignGeneratorWorkflow;
 import pwcg.gui.utils.PWCGJButton;
+import pwcg.gui.utils.PWCGLabelFactory;
 
 public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListener
 {
@@ -546,17 +547,14 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
     }
 
 	private int spacerFullRow (GridBagConstraints labelConstraints, GridBagConstraints dataConstraints, JPanel panel, int rowCount)
-	{
-		JLabel lDummy = new JLabel("     ");
-		
-		lDummy.setOpaque(false);
+	{		
 		labelConstraints.gridx = 0;
 		labelConstraints.gridy = rowCount;
-		panel.add(lDummy, labelConstraints);
+		panel.add(PWCGLabelFactory.makeDummyLabel(), labelConstraints);
 		
         dataConstraints.gridx = 2;
         dataConstraints.gridy = rowCount;
-        panel.add(lDummy, dataConstraints);
+        panel.add(PWCGLabelFactory.makeDummyLabel(), dataConstraints);
 
         ++rowCount;
         return rowCount;
@@ -570,9 +568,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
         JPanel squadronPanel = new JPanel(new GridLayout(0,3));
         squadronPanel.setOpaque(false);
 
-        JLabel lDummy1 = new JLabel("     ");
-        lDummy1.setOpaque(false);
-        squadronPanel.add(lDummy1);
+        squadronPanel.add(PWCGLabelFactory.makeDummyLabel());
         
         // Squadron info
         squadronTextBox = new JTextArea();
@@ -586,9 +582,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
         squadronTextBox.setOpaque(false);
         squadronPanel.add(squadronTextBox);
 
-        JLabel lDummy2 = new JLabel("     ");
-        lDummy2.setOpaque(false);
-        squadronPanel.add(lDummy2);
+        squadronPanel.add(PWCGLabelFactory.makeDummyLabel());
         
         return squadronPanel;
     }
@@ -603,9 +597,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
 		constraints.gridx = column;
 		constraints.gridy = row;
 
-		JLabel lDummy = new JLabel("      ");
-		lDummy.setOpaque(false);
-		panel.add(lDummy, constraints);
+		panel.add(PWCGLabelFactory.makeDummyLabel(), constraints);
 	}
 
 	public void evaluateUI() throws PWCGException 

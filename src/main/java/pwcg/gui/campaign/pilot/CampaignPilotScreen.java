@@ -12,7 +12,6 @@ import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -42,6 +41,7 @@ import pwcg.gui.utils.ImageScaledPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGButtonNoBackground;
 import pwcg.gui.utils.PWCGJButton;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.ToolTipManager;
 import pwcg.gui.utils.UIUtils;
 
@@ -122,8 +122,6 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
 		JPanel pilotLogPanel = new JPanel(new BorderLayout());
 		pilotLogPanel.setOpaque(false);
 
-		String logSpacer = "          ";
-
         String imagePath = ContextSpecificImages.imagesMisc() + "PilotLogBook.png";
         ImageScaledPanel pilotLogBorderPanel = new ImageScaledPanel(imagePath, 0.75);
 		pilotLogBorderPanel.setLayout(new BorderLayout());
@@ -142,11 +140,7 @@ public class CampaignPilotScreen extends ImageResizingPanel implements ActionLis
 		{
 	        for (int j = 0; j < 2; ++j)
 	        {
-    			JLabel lSpacer = new JLabel(logSpacer);
-    			lSpacer.setBackground(bg);
-    			lSpacer.setOpaque(false);
-    			lSpacer.setFont(font);
-    			pilotLogBookGrid.add(lSpacer);
+    			pilotLogBookGrid.add(PWCGLabelFactory.makeDummyLabel());
 	        }
 		}
 		

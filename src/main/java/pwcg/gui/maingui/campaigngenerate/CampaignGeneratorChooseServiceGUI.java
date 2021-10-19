@@ -25,7 +25,7 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.ToolTipManager;
 
 public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionListener
@@ -48,7 +48,7 @@ public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionL
 		serviceMainPanel.setLayout(new BorderLayout());
 		serviceMainPanel.setOpaque(false);
 
-        JLabel chooseServiceLabel = PWCGButtonFactory.makeMenuLabelLarge("Choose a service:");
+        JLabel chooseServiceLabel = PWCGLabelFactory.makeMenuLabelLarge("Choose a service:");
         serviceMainPanel.add(chooseServiceLabel, BorderLayout.NORTH);
         
 
@@ -78,7 +78,7 @@ public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionL
 	        alliedServicePanel.add(serviceButton);
 	        serviceButtonGroup.add(serviceButton);
 		}
-		alliedServicePanel.add(makeBlankLabel());
+		alliedServicePanel.add(PWCGLabelFactory.makeDummyLabel());
 
         List<ArmedService> axisArmedServices = getArmedServicesForSide(Side.AXIS);
         for (ArmedService service : axisArmedServices)
@@ -92,9 +92,9 @@ public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionL
         int numBlanksRequired = alliedArmedServices.size() - axisArmedServices.size();
         for (int i = 0; i < numBlanksRequired; ++i)
         {
-            axisServicePanel.add(makeBlankLabel());
+            axisServicePanel.add(PWCGLabelFactory.makeDummyLabel());
         }
-        axisServicePanel.add(makeBlankLabel());
+        axisServicePanel.add(PWCGLabelFactory.makeDummyLabel());
 
 		internalServicePanel.add(servicePanel, BorderLayout.NORTH);
         
@@ -102,13 +102,6 @@ public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionL
 
 		add(serviceMainPanel, BorderLayout.CENTER);
 	}
-
-    private JLabel makeBlankLabel()
-    {
-        JLabel blankLabel = new JLabel("   ");
-        blankLabel.setOpaque(false);
-        return blankLabel;
-    }
 
 	List<ArmedService> getArmedServicesForSide(Side side) throws PWCGException   
 	{

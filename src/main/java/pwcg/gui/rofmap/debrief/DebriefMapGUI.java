@@ -45,6 +45,7 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 
 public class DebriefMapGUI  extends MapGUI implements ActionListener
@@ -168,15 +169,15 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
         maxInfoCheckBox = makeCheckBox("Maximum Information",  "MaxInfo", buttonGrid);
 
         JButton startDebriefButton = makeButton("Start Debrief",  "Start", "Start debrief");
-        buttonGrid.add(PWCGButtonFactory.makeDummy());  
+        buttonGrid.add(PWCGLabelFactory.makeDummyLabel());  
         buttonGrid.add(startDebriefButton);  
 
         JButton cancelDebriefButton = makeButton("Cancel Debrief",  "Cancel", "Cancel the debrief");
-        buttonGrid.add(PWCGButtonFactory.makeDummy());  
+        buttonGrid.add(PWCGLabelFactory.makeDummyLabel());  
         buttonGrid.add(cancelDebriefButton);  
 
         JButton debriefCompleteButton = makeButton("Debrief Completed",  "Completed", "Finish the debrief");
-        buttonGrid.add(PWCGButtonFactory.makeDummy());  
+        buttonGrid.add(PWCGLabelFactory.makeDummyLabel());  
         buttonGrid.add(debriefCompleteButton);  
 
 		debriefButtonPanel.add(buttonGrid, BorderLayout.NORTH);
@@ -192,7 +193,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
     private JCheckBox makeCheckBox(String buttonText, String command, JPanel buttonGrid) throws PWCGException 
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
-        buttonGrid.add(PWCGButtonFactory.makeDummy());  
+        buttonGrid.add(PWCGLabelFactory.makeDummyLabel());  
         Font font = PWCGMonitorFonts.getPrimaryFont();
         JCheckBox button = PWCGButtonFactory.makeCheckBox(buttonText, command, font, fgColor, this);
         buttonGrid.add(button);
@@ -211,7 +212,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 		debriefTextPanel.setOpaque(false);
 		debriefTextPanel.setBackground(buttonBG);
 
-        JLabel eventTextLabel = PWCGButtonFactory.makePaperLabelLarge("Mission Events:");
+        JLabel eventTextLabel = PWCGLabelFactory.makePaperLabelLarge("Mission Events:");
         debriefTextPanel.add(eventTextLabel, BorderLayout.NORTH);
 
 		eventTextPane.setBackground(buttonBG);

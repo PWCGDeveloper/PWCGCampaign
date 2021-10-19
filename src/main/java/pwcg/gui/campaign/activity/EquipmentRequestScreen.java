@@ -39,6 +39,7 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
@@ -131,7 +132,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         SquadronMember referencePlayer = campaign.getReferencePlayer();
         Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(referencePlayer.getSquadronId());
 
-        JLabel titleLabel = PWCGButtonFactory.makePaperLabelLarge("Select Planes To Retire");
+        JLabel titleLabel = PWCGLabelFactory.makePaperLabelLarge("Select Planes To Retire");
         equipmentRetirementSelectionPanel.add(titleLabel);
 
         for (int serialNumber : equipment.getActiveEquippedPlanes().keySet())
@@ -149,9 +150,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         
         for (int i = 0; i < 2; ++i)
         {
-            JLabel spacer = new JLabel("     ");
-            spacer.setOpaque(false);
-            equipmentRetirementSelectionPanel.add(spacer);
+            equipmentRetirementSelectionPanel.add(PWCGLabelFactory.makeDummyLabel());
         }
 
         return equipmentRetirementSelectionPanel;
@@ -183,7 +182,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         SquadronMember referencePlayer = campaign.getReferencePlayer();
         Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(referencePlayer.getSquadronId());
 
-        JLabel titleLabel = PWCGButtonFactory.makePaperLabelLarge("Select Planes To Change");
+        JLabel titleLabel = PWCGLabelFactory.makePaperLabelLarge("Select Planes To Change");
         equipmentChangeSelectionGrid.add(titleLabel);
 
         for (int serialNumber : equipment.getActiveEquippedPlanes().keySet())
@@ -201,9 +200,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         
         for (int i = 0; i < 1; ++i)
         {
-            JLabel spacer = new JLabel("     ");
-            spacer.setOpaque(false);
-            equipmentChangeSelectionGrid.add(spacer);
+            equipmentChangeSelectionGrid.add(PWCGLabelFactory.makeDummyLabel());
         }
 
         JPanel equipmentChangePanel = new JPanel(new BorderLayout());
@@ -234,7 +231,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         }
         
 
-        JLabel titleLabel = PWCGButtonFactory.makePaperLabelLarge("Select Plane Type To Convert To");
+        JLabel titleLabel = PWCGLabelFactory.makePaperLabelLarge("Select Plane Type To Convert To");
         
         JPanel replacementDropDownGrid = new JPanel(new GridLayout(0,1));
         replacementDropDownGrid.setOpaque(false);
@@ -244,9 +241,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
                 
         for (int i = 0; i < 2; ++i)
         {
-            JLabel spacer = new JLabel("     ");
-            spacer.setOpaque(false);
-            replacementDropDownGrid.add(spacer);
+            replacementDropDownGrid.add(PWCGLabelFactory.makeDummyLabel());
         }
 
         JPanel replacementDropDownPanel = new JPanel(new BorderLayout());
@@ -269,16 +264,12 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         equipmentChaneConfirmationPanel.setOpaque(false);
         equipmentChaneConfirmationPanel.setLayout(new GridLayout(0, 3));
 
-        JLabel spacerLeft = new JLabel("     ");
-        spacerLeft.setOpaque(false);
-        equipmentChaneConfirmationPanel.add(spacerLeft);
+        equipmentChaneConfirmationPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         JButton finishedButton = PWCGButtonFactory.makePaperButtonWithBorder("Change Equipment", "ChangeEquipment", "Show change equipment screen",  this);
         equipmentChaneConfirmationPanel.add(finishedButton);
 
-        JLabel spacerRight = new JLabel("     ");
-        spacerRight.setOpaque(false);
-        equipmentChaneConfirmationPanel.add(spacerRight);
+        equipmentChaneConfirmationPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         return equipmentChaneConfirmationPanel;
     }

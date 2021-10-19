@@ -49,6 +49,7 @@ import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
@@ -104,8 +105,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept Transfer", "Accept Transfer", "Transfer to a new unit", this);
         transferButtonPanel.add(acceptButton);
         
-        JLabel spacer = new JLabel("");
-        transferButtonPanel.add(spacer);
+        transferButtonPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         JButton rejectButton = PWCGButtonFactory.makeTranslucentMenuButton("Reject Transfer", "Reject Transfer", "Do not transfer", this);
         transferButtonPanel.add(rejectButton);
@@ -156,13 +156,13 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         rowNum = addRow(transferPanel, components, rowNum);
 
         components.clear();
-        components.add(PWCGButtonFactory.makeDummy());
+        components.add(PWCGLabelFactory.makeDummyLabel());
         rowNum = addRow(transferPanel, components, rowNum);
 
         rowNum = makeServiceChooser(buttonBG, font, transferPanel, components, rowNum);
         
         components.clear();
-        components.add(PWCGButtonFactory.makeDummy());
+        components.add(PWCGLabelFactory.makeDummyLabel());
         rowNum = addRow(transferPanel, components, rowNum);
 
         rowNum = makeRoleChooser(buttonBG, font, transferPanel, components, rowNum);
@@ -246,7 +246,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         rowNum = addRow(transferPanel, components, rowNum);
 
         components.clear();
-        components.add(PWCGButtonFactory.makeDummy());
+        components.add(PWCGLabelFactory.makeDummyLabel());
         rowNum = addRow(transferPanel, components, rowNum);
 
         JLabel lTransfer = new JLabel("Requests a transfer to : ", JLabel.LEFT);
@@ -312,9 +312,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         JPanel squadronPanel = new JPanel(new GridLayout(0,3));
         squadronPanel.setOpaque(false);
 
-        JLabel lDummy1 = new JLabel("     ");
-        lDummy1.setOpaque(false);
-        squadronPanel.add(lDummy1);
+        squadronPanel.add(PWCGLabelFactory.makeDummyLabel());
         
         // Squadron info
         tSquadronInfo = new JTextArea();
@@ -328,9 +326,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         tSquadronInfo.setOpaque(false);
         squadronPanel.add(tSquadronInfo);
 
-        JLabel lDummy2 = new JLabel("     ");
-        lDummy2.setOpaque(false);
-        squadronPanel.add(lDummy2);
+        squadronPanel.add(PWCGLabelFactory.makeDummyLabel());
         
         return squadronPanel;
     }
@@ -350,7 +346,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 		    constraints.weightx = 0.15;
 			constraints.gridx = columnNum;
 			constraints.gridy = rowNum;
-			panel.add(PWCGButtonFactory.makeDummy(), constraints);
+			panel.add(PWCGLabelFactory.makeDummyLabel(), constraints);
 			
 			++columnNum;
 		}
@@ -371,7 +367,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 		    constraints.weightx = 0.15;
 			constraints.gridx = columnNum;
 			constraints.gridy = rowNum;
-			panel.add(PWCGButtonFactory.makeDummy(), constraints);
+			panel.add(PWCGLabelFactory.makeDummyLabel(), constraints);
 			
 			++columnNum;
 		}

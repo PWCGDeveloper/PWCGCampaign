@@ -24,6 +24,7 @@ import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
 public class AARInitiationScreen extends ImageResizingPanel implements ActionListener
@@ -107,7 +108,7 @@ public class AARInitiationScreen extends ImageResizingPanel implements ActionLis
 
     private void makeButton(String buttonText, String command, String toolTipText, JPanel buttonGrid) throws PWCGException 
     {
-        buttonGrid.add(PWCGButtonFactory.makeDummy());  
+        buttonGrid.add(PWCGLabelFactory.makeDummyLabel());  
         JButton button = PWCGButtonFactory.makeTranslucentMenuButton(buttonText, command, toolTipText, this);
         buttonGrid.add(button);  
     }

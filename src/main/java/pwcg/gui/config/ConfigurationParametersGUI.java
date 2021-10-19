@@ -21,6 +21,7 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.ToolTipManager;
 
 public class ConfigurationParametersGUI extends ImageResizingPanel
@@ -81,8 +82,7 @@ public class ConfigurationParametersGUI extends ImageResizingPanel
 			textField.setSize(100, 30);
 			descPanel.add(textField);
 			
-            JLabel spacerRight = new JLabel("");
-            descPanel.add(spacerRight);
+            descPanel.add(PWCGLabelFactory.makeDummyLabel());
 
 			ConfigTextField configTextField = new ConfigTextField(parameterKey, textField, 50, item.getLabelText(), item.getHelp());
 			configTextFields.put(parameterKey, configTextField);

@@ -82,10 +82,7 @@ public class ImageButton
     public static JLabel makePilotPicButton(Image image) throws PWCGException
     {
         ImageIcon icon = new ImageIcon(image);
-
-        JLabel button = new JLabel("");
-        button.setIcon(icon);
-
+        JLabel button = new JLabel(icon);
         return button;
     }
 

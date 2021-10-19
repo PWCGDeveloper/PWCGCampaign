@@ -34,6 +34,7 @@ import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
@@ -82,7 +83,7 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept Leave", "Accept Leave", "Take leave for entered number of days", this);
         leaveButtonPanel.add(acceptButton);
 
-        JLabel spacer = new JLabel("");
+        JLabel spacer = PWCGLabelFactory.makeDummyLabel();
         leaveButtonPanel.add(spacer);
 
         JButton rejectButton = PWCGButtonFactory.makeTranslucentMenuButton("Reject Leave", "Reject Leave", "Do not ake leave", this);

@@ -24,6 +24,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 
 public class DebriefMissionDescriptionScreen extends ImageResizingPanel implements ActionListener
@@ -81,7 +82,7 @@ public class DebriefMissionDescriptionScreen extends ImageResizingPanel implemen
             buttonGrid.add(submitWithoutClaimsButton);
         }
         
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
 
         JButton cancelButton = PWCGButtonFactory.makeTranslucentMenuButton("Cancel AAR", "Cancel", "Cancel the AAR process", this);
         buttonGrid.add(cancelButton);

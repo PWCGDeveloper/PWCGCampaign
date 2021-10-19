@@ -27,7 +27,7 @@ public class SpacerPanelFactory
             int pixelsNeeded = Double.valueOf(widthNeeded).intValue();
             spacerGrid.setBorder(BorderFactory.createEmptyBorder(0, pixelsNeeded, 0, 0));
 
-            JLabel spacer1 = PWCGButtonFactory.makePaperLabelLarge(" ");
+            JLabel spacer1 = PWCGLabelFactory.makePaperLabelLarge(" ");
             spacerGrid.add(spacer1);
 
             spacerPanel.add(spacerGrid, BorderLayout.NORTH);
@@ -48,7 +48,7 @@ public class SpacerPanelFactory
             spacerGrid.setOpaque(false);
             spacerGrid.setPreferredSize(new Dimension(widthNeeded, 300));
             
-            JLabel spacer1 = PWCGButtonFactory.makePaperLabelLarge("   ");
+            JLabel spacer1 = PWCGLabelFactory.makePaperLabelLarge("   ");
             spacer1.setForeground(Color.BLACK);
             spacerGrid.add(spacer1);
 
@@ -62,8 +62,7 @@ public class SpacerPanelFactory
 
         for (int i = 0; i < numRows; ++i)
         {
-            JLabel space1 = new JLabel("     ");
-            spacerPanel.add(space1);
+            spacerPanel.add(PWCGLabelFactory.makeDummyLabel());
         }
 
         return spacerPanel;
@@ -86,7 +85,7 @@ public class SpacerPanelFactory
         }
         spacerGrid.setBorder(BorderFactory.createEmptyBorder(0,pixelsNeededAdjusted, 0, 0));
 
-        JLabel spacer1 = PWCGButtonFactory.makePaperLabelLarge(" ");
+        JLabel spacer1 = PWCGLabelFactory.makePaperLabelLarge(" ");
         spacerGrid.add(spacer1);
 
         spacerPanel.add(spacerGrid, BorderLayout.NORTH);

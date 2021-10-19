@@ -35,6 +35,7 @@ import pwcg.gui.rofmap.brief.update.BriefingMissionUpdater;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
@@ -108,17 +109,17 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
         JPanel buttonGrid = new JPanel(new GridLayout(0, 1));
         buttonGrid.setOpaque(false);
 
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
 
         JButton scrubButton = PWCGButtonFactory.makeTranslucentMenuButton("Scrub Mission", "Scrub Mission", "Scrub this mission and return to campaign home screen", this);
         buttonGrid.add(scrubButton);
 
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
 
         JButton backToMapButton = PWCGButtonFactory.makeTranslucentMenuButton("Back: WP Editor", "Back: WP Editor", "Go back to waypoint editor screen", this);
         buttonGrid.add(backToMapButton);
 
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
 
         if (!mission.isFinalized())
         {
@@ -130,11 +131,11 @@ public class BriefingPilotSelectionScreen extends ImageResizingPanel implements 
             JButton backToCampaignButton = PWCGButtonFactory.makeTranslucentMenuButton("Return To Campaign", "Return To Campaign", "Return to campaign home screen", this);
             buttonGrid.add(backToCampaignButton);
         }
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
         
         JButton payloadAsLeaderButton = PWCGButtonFactory.makeTranslucentMenuButton("Synchronize Payload", "Synchronize Payload", "Make flight payload the same as the leaders", this);
         buttonGrid.add(payloadAsLeaderButton);
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
 
         pilotAssignmentNavPanel.add(buttonGrid, BorderLayout.NORTH);
 

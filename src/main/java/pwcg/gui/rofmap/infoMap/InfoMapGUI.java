@@ -34,6 +34,7 @@ import pwcg.gui.rofmap.MapGUI;
 import pwcg.gui.rofmap.MapScroll;
 import pwcg.gui.utils.CampaignTransitionDates;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 
 public class InfoMapGUI extends MapGUI implements ActionListener
 {
@@ -111,13 +112,13 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished with PWCG information map", this);
         buttonPanel.add(finishedButton);
         
-        JLabel spacer1 = PWCGButtonFactory.makeMenuLabelLarge("");
+        JLabel spacer1 = PWCGLabelFactory.makeMenuLabelLarge("");
         buttonPanel.add(spacer1);
 
         JPanel radioButtonPanel = new JPanel( new GridLayout(0,1));
         radioButtonPanel.setOpaque(false);
         
-        JLabel spacer2 = PWCGButtonFactory.makeMenuLabelLarge("");
+        JLabel spacer2 = PWCGLabelFactory.makeMenuLabelLarge("");
         buttonPanel.add(spacer2);
 
         infoMapNavPanel.add(buttonPanel, BorderLayout.NORTH);
@@ -155,7 +156,7 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         
         datePanel.add(dateGrid, BorderLayout.NORTH);
         
-        JLabel dateLabel = PWCGButtonFactory.makeMenuLabelLarge("Choose Date");
+        JLabel dateLabel = PWCGLabelFactory.makeMenuLabelLarge("Choose Date");
         dateGrid.add(dateLabel);
 
         setDateSelectionsByPossibleStartDatesAndMovingFront();
@@ -179,7 +180,7 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         
         mapPanel.add(mapGrid, BorderLayout.NORTH);
 
-        JLabel mapLabel = PWCGButtonFactory.makeMenuLabelLarge("Choose Map");
+        JLabel mapLabel = PWCGLabelFactory.makeMenuLabelLarge("Choose Map");
         mapGrid.add(mapLabel);
         
         if (PWCGContext.getProduct() == PWCGProduct.BOS)
@@ -234,7 +235,7 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         JLabel spaceLabel1 = PWCGButtonFactory.makePaperLabelMedium(" ");
         groundStructureGrid.add(spaceLabel1);
         
-        JLabel groundStructureLabel = PWCGButtonFactory.makeMenuLabelLarge("Choose Category");
+        JLabel groundStructureLabel = PWCGLabelFactory.makeMenuLabelLarge("Choose Category");
         groundStructureGrid.add(groundStructureLabel);
 
         displayAirfields = makeCheckBoxButton("Airfields", "Airfields");
@@ -268,7 +269,7 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         JLabel spaceLabel1 = PWCGButtonFactory.makePaperLabelMedium(" ");
         roleGrid.add(spaceLabel1);
         
-        JLabel roleLabel = PWCGButtonFactory.makeMenuLabelLarge("Choose Aircraft Role");
+        JLabel roleLabel = PWCGLabelFactory.makeMenuLabelLarge("Choose Aircraft Role");
         roleGrid.add(roleLabel);
 
         displayFighterSquadrons = makeCheckBoxButton("Fighter", "Fighter");

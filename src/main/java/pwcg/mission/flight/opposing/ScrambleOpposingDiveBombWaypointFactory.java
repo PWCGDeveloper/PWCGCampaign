@@ -10,8 +10,8 @@ import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointAttackSet;
 import pwcg.mission.mcu.AttackAreaType;
 import pwcg.mission.mcu.McuWaypoint;
-import pwcg.mission.mcu.group.AirGroundAttackMcuSequenceFactory;
 import pwcg.mission.mcu.group.AirGroundAttackMcuSequence;
+import pwcg.mission.mcu.group.AirGroundAttackMcuSequenceFactory;
 
 public class ScrambleOpposingDiveBombWaypointFactory
 {

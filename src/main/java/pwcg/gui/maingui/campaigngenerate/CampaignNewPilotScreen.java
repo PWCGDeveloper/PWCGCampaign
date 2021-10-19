@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.campaign.ArmedService;
@@ -22,6 +21,7 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
 public class CampaignNewPilotScreen extends ImageResizingPanel implements ActionListener
@@ -91,9 +91,7 @@ public class CampaignNewPilotScreen extends ImageResizingPanel implements Action
         buttonPanel.add(newPilotCreateButton);
         newPilotCreateButton.setEnabled(false);
         
-        JLabel dummyLabel3 = new JLabel("     ");       
-        dummyLabel3.setOpaque(false);
-        buttonPanel.add(dummyLabel3);
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
         
         JButton cancelChanges = PWCGButtonFactory.makeTranslucentMenuButton("Cancel", "Cancel", "Cancel the addition of a new pilot to this campaign", this);
         buttonPanel.add(cancelChanges);

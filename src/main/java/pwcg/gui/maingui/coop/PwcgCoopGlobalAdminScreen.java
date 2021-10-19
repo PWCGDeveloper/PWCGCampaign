@@ -26,6 +26,7 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 
 public class PwcgCoopGlobalAdminScreen extends ImageResizingPanel implements ActionListener
 {
@@ -95,10 +96,10 @@ public class PwcgCoopGlobalAdminScreen extends ImageResizingPanel implements Act
         buttonPanel.setOpaque(false);
         
 
-        JLabel label = PWCGButtonFactory.makeMenuLabelLarge("Select Coop Admin Action:");
+        JLabel label = PWCGLabelFactory.makeMenuLabelLarge("Select Coop Admin Action:");
         buttonPanel.add(label);
 
-        JLabel spacer = PWCGButtonFactory.makeMenuLabelLarge("   ");
+        JLabel spacer = PWCGLabelFactory.makeMenuLabelLarge("   ");
         buttonPanel.add(spacer);
 
         buttonPanel.add(makeActionSelectRadioButton("Show Coop Participant Information"));

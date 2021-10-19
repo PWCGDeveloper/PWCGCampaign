@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.ButtonGroup;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
@@ -26,6 +25,7 @@ import pwcg.gui.campaign.home.TopAcesListBuilder.TopAcesListType;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.ToolTipManager;
 
 public class ChalkboardSelector extends JPanel implements ActionListener
@@ -62,13 +62,13 @@ public class ChalkboardSelector extends JPanel implements ActionListener
         JRadioButton equipmentButton = makeRadioButton("Equipment", "Equipment", "Show equipment chalk board");
         selectorPanel.add(equipmentButton);
 
-        selectorPanel.add(new JLabel(""));
+        selectorPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         JRadioButton topAcesForServiceButton = makeRadioButton("Top Aces: Service", "CampTopAcesService", "Show top aces chalk board for your service");
         selectorPanel.add(topAcesForServiceButton);
 
-        selectorPanel.add(new JLabel(""));
-        selectorPanel.add(new JLabel(""));
+        selectorPanel.add(PWCGLabelFactory.makeDummyLabel());
+        selectorPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         JRadioButton topAcesNoHistoricalButton = makeRadioButton("Top Aces: Exclude Historical", "CampTopAcesNoHistorical", "Show top aces chalk board with no historical aces");
         selectorPanel.add(topAcesNoHistoricalButton); 

@@ -30,6 +30,7 @@ import pwcg.gui.maingui.campaigngenerate.CampaignNewPilotScreen;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 
 public class CampaignPlayerAdminScreen extends ImageResizingPanel implements ActionListener, IRefreshableParentUI
 {
@@ -96,7 +97,7 @@ public class CampaignPlayerAdminScreen extends ImageResizingPanel implements Act
         JPanel buttonPanel = new JPanel(new GridLayout(0, 1));
         buttonPanel.setOpaque(false);
 
-        JLabel label = PWCGButtonFactory.makeMenuLabelLarge("Select Admin Action:");
+        JLabel label = PWCGLabelFactory.makeMenuLabelLarge("Select Admin Action:");
         buttonPanel.add(label);
 
         buttonPanel.add(makeActionButton("Add Pilot", "Add a coop persona to the campaign"));

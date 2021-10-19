@@ -14,7 +14,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -34,6 +33,7 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
@@ -74,15 +74,12 @@ public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel impl
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JLabel spacerLabel = makeLabel("");        
-        buttonPanel.add(spacerLabel);
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept Config Changes", "Accept", "Save and Leave", this);
         buttonPanel.add(acceptButton);
 
-        JLabel spacer2 = new JLabel("   ");
-        spacer2.setOpaque(false);
-        buttonPanel.add(spacer2);
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         JButton cancelButton = PWCGButtonFactory.makeTranslucentMenuButton("Cancel Config Changes", "Cancel", "Leave without saving", this);
         buttonPanel.add(cancelButton);
@@ -108,7 +105,7 @@ public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel impl
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JLabel label = PWCGButtonFactory.makeMenuLabelLarge("Advanced Configuration Categories:");
+        JLabel label = PWCGLabelFactory.makeMenuLabelLarge("Advanced Configuration Categories:");
         buttonPanel.add(label);
         
         buttonPanel.add(makeButton("Campaign Preferences", "Fine tune campaign event probabilities"));
@@ -137,21 +134,6 @@ public class CampaignAdvancedConfigurationScreen extends ImageResizingPanel impl
         configPanel.add(spacePanel, BorderLayout.WEST);
 
         return configPanel;
-	}
-
-	private JLabel makeLabel(String labelText) throws PWCGException
-	{
-		Color fgColor = ColorMap.CHALK_FOREGROUND;
-
-		Font font = PWCGMonitorFonts.getPrimaryFontLarge();
-
-		JLabel label = new JLabel(labelText);
-		label.setHorizontalAlignment(SwingConstants.LEFT );
-		label.setOpaque(false);
-		label.setForeground(fgColor);
-		label.setFont(font);
-
-		return label;
 	}
 
 	private JRadioButton makeButton(String buttonText, String toolTipText) throws PWCGException

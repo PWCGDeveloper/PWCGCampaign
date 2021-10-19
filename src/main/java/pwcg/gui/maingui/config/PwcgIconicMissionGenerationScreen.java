@@ -31,6 +31,7 @@ import pwcg.gui.iconicbattles.IconicBattlesGenerator;
 import pwcg.gui.iconicbattles.IconicBattlesGeneratorData;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 
 public class PwcgIconicMissionGenerationScreen extends ImageResizingPanel implements ActionListener
 {
@@ -96,13 +97,13 @@ public class PwcgIconicMissionGenerationScreen extends ImageResizingPanel implem
         
         
         
-        buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("Iconic Missions:"));
+        buttonPanel.add(PWCGLabelFactory.makeMenuLabelLarge("Iconic Missions:"));
         addMissionsForMapToButtonPanel(buttonPanel, "Stalingrad");
         addMissionsForMapToButtonPanel(buttonPanel, "Kuban");
         addMissionsForMapToButtonPanel(buttonPanel, "Rhine");
-        buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
-        buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
-        buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
+        buttonPanel.add(PWCGLabelFactory.makeMenuLabelLarge("   "));
+        buttonPanel.add(PWCGLabelFactory.makeMenuLabelLarge("   "));
+        buttonPanel.add(PWCGLabelFactory.makeMenuLabelLarge("   "));
 
         add (buttonPanel);
 
@@ -113,7 +114,7 @@ public class PwcgIconicMissionGenerationScreen extends ImageResizingPanel implem
 
     private void addMissionsForMapToButtonPanel(JPanel buttonPanel, String mapName) throws PWCGException
     {
-        buttonPanel.add(PWCGButtonFactory.makeMenuLabelLarge("   "));
+        buttonPanel.add(PWCGLabelFactory.makeMenuLabelLarge("   "));
         for (IconicSingleMission iconicMission : IconicMissionsManager.getInstance().getIconicMissionsForMapByDate(mapName))
         {
             buttonPanel.add(makeCategoryRadioButton(iconicMission.getMapName() + ": " + iconicMission.getCampaignName(), iconicMission.getDateString()));

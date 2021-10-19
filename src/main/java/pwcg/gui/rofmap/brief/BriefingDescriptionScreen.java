@@ -24,6 +24,7 @@ import pwcg.gui.rofmap.brief.update.BriefingMissionUpdater;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.mission.Mission;
 
@@ -95,16 +96,16 @@ public class BriefingDescriptionScreen extends ImageResizingPanel implements Act
             
         if (mission.isFinalized())
         {
-            buttonGrid.add(PWCGButtonFactory.makeDummy());
+            buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
             JButton backToCampaignButton = makeButton("Back to Campaign", "Back to Campaign", "Return to campaign home screen");
             buttonGrid.add(backToCampaignButton);
         }
         
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
         JButton scrubMissionButton = makeButton("Scrub Mission", "Scrub Mission", "Scrub this mission and return to campaign home screen");
         buttonGrid.add(scrubMissionButton);
 
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
         JButton goToBriefingMapButton = makeButton("Next: Map", "Next: Map", "Progress to briefing map screen");
         buttonGrid.add(goToBriefingMapButton);
 

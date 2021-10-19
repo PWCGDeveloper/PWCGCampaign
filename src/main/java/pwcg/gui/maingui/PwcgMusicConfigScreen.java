@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
@@ -28,6 +27,7 @@ import pwcg.gui.sound.MusicManager;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 
 public class PwcgMusicConfigScreen extends ImageResizingPanel implements ActionListener, ChangeListener
 {    
@@ -76,9 +76,7 @@ public class PwcgMusicConfigScreen extends ImageResizingPanel implements ActionL
         JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept", "AcceptChanges", "Accept music configuration", this);
         buttonPanel.add(acceptButton);
         
-        JLabel dummyLabel3 = new JLabel("     ");       
-        dummyLabel3.setOpaque(false);
-        buttonPanel.add(dummyLabel3);
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
         
         JButton cancelButton = PWCGButtonFactory.makeTranslucentMenuButton("Cancel", "Cancel", "Cancel music configuration changes", this);
         buttonPanel.add(cancelButton);
@@ -101,7 +99,7 @@ public class PwcgMusicConfigScreen extends ImageResizingPanel implements ActionL
 	    playSoundsVolume = makeVolumeSlider();
         musicControlGrid.add(playSoundsCheckBox);
         musicControlGrid.add(playSoundsVolume);
-        musicControlGrid.add(new JLabel(""));
+        musicControlGrid.add(PWCGLabelFactory.makeDummyLabel());
         musicControlGrid.add(playMusicCheckBox);
         musicControlGrid.add(playMusicVolume);
 

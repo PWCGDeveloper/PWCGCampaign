@@ -24,7 +24,7 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 
 public class AARClaimPanel extends JPanel implements ActionListener
 {
@@ -76,7 +76,7 @@ public class AARClaimPanel extends JPanel implements ActionListener
 		JPanel victoriesClaimedPanel = new JPanel (new GridLayout(0,4));
 		victoriesClaimedPanel.setOpaque(false);
 		
-		victoriesClaimedPanel.add(PWCGButtonFactory.makeDummy());
+		victoriesClaimedPanel.add(PWCGLabelFactory.makeDummyLabel());
 
 		JLabel lVictories = new JLabel("Air to Air Claims: ", JLabel.RIGHT);
 		lVictories.setBackground(bgColor);
@@ -86,7 +86,7 @@ public class AARClaimPanel extends JPanel implements ActionListener
 		victoriesClaimedPanel.add(cbVictoriesClaimedBoxes);
 		victoriesClaimedPanel.setBackground(bgColor);
 
-		victoriesClaimedPanel.add(PWCGButtonFactory.makeDummy());
+		victoriesClaimedPanel.add(PWCGLabelFactory.makeDummyLabel());
 		
 		selectedPanel.add (victoriesClaimedPanel, BorderLayout.NORTH);
 		
@@ -117,10 +117,10 @@ public class AARClaimPanel extends JPanel implements ActionListener
 			JComboBox<String> cbPlane = createPlaneDropdown(bgColor, font);
 			cbPlaneBoxes.add(cbPlane);
 
-			victoryPanel.add(PWCGButtonFactory.makeDummy());
+			victoryPanel.add(PWCGLabelFactory.makeDummyLabel());
 			victoryPanel.add(lVictories);
 			victoryPanel.add(cbPlane);
-			victoryPanel.add(PWCGButtonFactory.makeDummy());
+			victoryPanel.add(PWCGLabelFactory.makeDummyLabel());
 			
 			victoriesClaimedMainGridPanel.add (victoryPanel);
 		}

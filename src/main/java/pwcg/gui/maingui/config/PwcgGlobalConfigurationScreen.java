@@ -31,6 +31,7 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 
 public class PwcgGlobalConfigurationScreen extends ImageResizingPanel implements ActionListener
 {
@@ -80,9 +81,7 @@ public class PwcgGlobalConfigurationScreen extends ImageResizingPanel implements
         JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept", "Accept", "Accept configuration changes", this);
         buttonPanel.add(acceptButton);
 
-        JLabel spacer2 = new JLabel("   ");
-        spacer2.setOpaque(false);
-        buttonPanel.add(spacer2);
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         JButton cancelButton = PWCGButtonFactory.makeTranslucentMenuButton("Cancel", "Cancel", "Cancel configuration changes", this);
         buttonPanel.add(cancelButton);
@@ -101,11 +100,10 @@ public class PwcgGlobalConfigurationScreen extends ImageResizingPanel implements
         buttonPanel.setOpaque(false);
         
 
-        JLabel label = PWCGButtonFactory.makeMenuLabelLarge("Global Configuration Categories:");
+        JLabel label = PWCGLabelFactory.makeMenuLabelLarge("Global Configuration Categories:");
         buttonPanel.add(label);
 
-        JLabel spacer = PWCGButtonFactory.makeMenuLabelLarge("   ");
-        buttonPanel.add(spacer);
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         buttonPanel.add(makeCategoryRadioButton("User Preferences", "User Preferences"));
         buttonPanel.add(makeCategoryRadioButton("GUI", "GUI"));

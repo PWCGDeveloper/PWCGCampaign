@@ -19,6 +19,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.CommonUIActions;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
 public class CampaignConfigurationScreen extends ImageResizingPanel implements ActionListener
@@ -53,13 +54,13 @@ public class CampaignConfigurationScreen extends ImageResizingPanel implements A
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JLabel spacer1 = PWCGButtonFactory.makePaperLabelLarge("   ");
+        JLabel spacer1 = PWCGLabelFactory.makePaperLabelLarge("   ");
         buttonPanel.add(spacer1);
 
         JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished", CommonUIActions.FINISHED, "Finished with configuration changes", this);
         buttonPanel.add(finishedButton);
 
-        JLabel spacer2 = PWCGButtonFactory.makePaperLabelLarge("   ");
+        JLabel spacer2 = PWCGLabelFactory.makePaperLabelLarge("   ");
         buttonPanel.add(spacer2);
 
         JButton simpleConfigButton = PWCGButtonFactory.makeTranslucentMenuButton("Simple Config", "CampSimpleConfig", "Set simple configuration for this campaign", this);

@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
@@ -22,6 +21,7 @@ import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.CommonUIActions;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
 public class CampaignActivityScreen extends ImageResizingPanel implements ActionListener
@@ -58,14 +58,12 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JLabel spacer1 = PWCGButtonFactory.makePaperLabelLarge("   ");
-        buttonPanel.add(spacer1);
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButton("Finished", CommonUIActions.FINISHED, "Finished with configuration changes", this);
         buttonPanel.add(finishedButton);
 
-        JLabel spacer2 = PWCGButtonFactory.makePaperLabelLarge("   ");
-        buttonPanel.add(spacer2);
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         if (campaign.isCampaignActive())
         {
@@ -79,8 +77,7 @@ public class CampaignActivityScreen extends ImageResizingPanel implements Action
             buttonPanel.add(transferButton);
         }
 
-        JLabel space4 = new JLabel("");
-        buttonPanel.add(space4);
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         JButton journalButton = PWCGButtonFactory.makeTranslucentMenuButton("Journal", "CampFlowJournal", "Update your personal journal", this);
         buttonPanel.add(journalButton);

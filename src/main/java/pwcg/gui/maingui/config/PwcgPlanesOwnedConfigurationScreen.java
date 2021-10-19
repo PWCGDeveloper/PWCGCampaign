@@ -13,10 +13,8 @@ import java.util.TreeMap;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
@@ -36,6 +34,7 @@ import pwcg.gui.utils.ImageButton;
 import pwcg.gui.utils.ImagePanelLayout;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 
 public class PwcgPlanesOwnedConfigurationScreen extends ImageResizingPanel implements ActionListener
@@ -108,11 +107,7 @@ public class PwcgPlanesOwnedConfigurationScreen extends ImageResizingPanel imple
 
         for (int i = 0; i < 2; ++i)
         {
-            JLabel spacerLabel = new JLabel("     ");
-            spacerLabel.setHorizontalAlignment(SwingConstants.LEFT);
-            spacerLabel.setOpaque(false);
-            
-            buttonPanel.add(spacerLabel);
+            buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
         }
         
         JButton selectAllButton = PWCGButtonFactory.makeTranslucentMenuButton("Select All", "Select All", "Select all planes as owned", this);
@@ -124,11 +119,7 @@ public class PwcgPlanesOwnedConfigurationScreen extends ImageResizingPanel imple
 
         for (int i = 0; i < 3; ++i)
         {
-            JLabel spacerLabel = new JLabel("     ");
-            spacerLabel.setHorizontalAlignment(SwingConstants.LEFT);
-            spacerLabel.setOpaque(false);
-            
-            buttonPanel.add(spacerLabel);
+            buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
         }
 
         JButton acceptButton = PWCGButtonFactory.makeTranslucentMenuButton("Accept", "Accept", "Accept planes owned", this);

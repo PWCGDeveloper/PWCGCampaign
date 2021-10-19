@@ -29,8 +29,8 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageButton;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
-import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGButtonNoBackground;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
 
 public class CampaignHomePilotPanel extends ImageResizingPanel
@@ -131,7 +131,7 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
         }
         else
         {
-        	pilotPicButton = new JLabel("");	
+        	pilotPicButton = PWCGLabelFactory.makeDummyLabel();	
         }
         return pilotPicButton;
     }
@@ -143,7 +143,11 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
         ImageResizingPanel headerPlaquePanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         headerPlaquePanel.setLayout(new BorderLayout());
 
-        JLabel squadronPanelLabel = PWCGButtonFactory.makePlaqueLabelLarge("     " + description);
+        Color bgColor = ColorMap.CHALK_BACKGROUND;
+        Color fgColor = ColorMap.PLAQUE_GOLD;
+        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
+
+        JLabel squadronPanelLabel = PWCGLabelFactory.makeLabel("     " + description, bgColor, fgColor, font);
         squadronPanelLabel.setHorizontalAlignment(JLabel.LEFT);
         squadronPanelLabel.setVerticalAlignment(JLabel.CENTER);
         
@@ -155,7 +159,7 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
 
     private JLabel makePilotStatusButton(SquadronMember pilot) throws PWCGUserException, PWCGException, PWCGException
     {
-        JLabel pilotStatusButton = null;
+        JLabel pilotStatusLabel = null;
         String imagePath = ContextSpecificImages.imagesMisc() + "Healthy.jpg";
         if (pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_WOUNDED)
         {
@@ -183,13 +187,13 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
         {
             int imageHeight = PWCGMonitorSupport.getPilotPlateHeight();            
             Image scaledPic = pilotStatusImage.getScaledInstance(imageHeight, -1, Image.SCALE_DEFAULT);
-            pilotStatusButton = ImageButton.makePilotPicButton(scaledPic);
+            pilotStatusLabel = ImageButton.makePilotPicButton(scaledPic);
         }
         else
         {
-            pilotStatusButton = new JLabel("");    
+            pilotStatusLabel = PWCGLabelFactory.makeDummyLabel();    
         }
-        return pilotStatusButton;
+        return pilotStatusLabel;
     }
 
 }

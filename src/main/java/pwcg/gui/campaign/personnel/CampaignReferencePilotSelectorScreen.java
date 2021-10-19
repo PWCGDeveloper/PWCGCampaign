@@ -28,6 +28,7 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
@@ -94,9 +95,9 @@ public class CampaignReferencePilotSelectorScreen extends ImageResizingPanel imp
         JPanel gridPanel = new JPanel(new GridLayout(0,3));
         gridPanel.setOpaque(false);
         
-        gridPanel.add(PWCGButtonFactory.makeDummy());
+        gridPanel.add(PWCGLabelFactory.makeDummyLabel());
         gridPanel.add(squadronMemberSelector);
-        gridPanel.add(PWCGButtonFactory.makeDummy());
+        gridPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
         ImageResizingPanel centerPanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);

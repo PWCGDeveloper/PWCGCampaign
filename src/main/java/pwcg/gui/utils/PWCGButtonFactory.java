@@ -21,7 +21,6 @@ import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.dialogs.PWCGMonitorSupport;
 
 public class PWCGButtonFactory extends JButton
 {
@@ -187,53 +186,6 @@ public class PWCGButtonFactory extends JButton
         return button;
     }
 
-    public static JLabel makeDummy()
-    {
-        JLabel lDummy = new JLabel("     ");
-        lDummy.setOpaque(false);
-        
-        return lDummy;
-    }
-
-    public static JLabel makeMenuLabelLarge(String displayText) throws PWCGException 
-    {
-        Color bgColor = ColorMap.CHALK_BACKGROUND;
-        Color fgColor = ColorMap.CHALK_FOREGROUND;
-        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
-        
-        displayText = InternationalizationManager.getTranslation(displayText);
-        displayText = padStringToExtendImageSize(displayText);
-        JLabel label = makeLabel(displayText, bgColor, fgColor, font);
-        
-        return label;
-    }
-
-    public static JLabel makePaperLabelLarge(String displayText) throws PWCGException 
-    {
-        Color bgColor = ColorMap.PAPER_BACKGROUND;
-        Color fgColor = ColorMap.PAPER_FOREGROUND;
-        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
-        
-        displayText = InternationalizationManager.getTranslation(displayText);
-        displayText = padStringToExtendImageSize(displayText);
-        JLabel label = makeLabel(displayText, bgColor, fgColor, font);
-        
-        return label;
-    }
-
-    public static JLabel makePlaqueLabelLarge(String displayText) throws PWCGException 
-    {
-        Color bgColor = ColorMap.CHALK_BACKGROUND;
-        Color fgColor = ColorMap.PLAQUE_GOLD;
-        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
-        
-        displayText = InternationalizationManager.getTranslation(displayText);
-        displayText = padStringToExtendImageSize(displayText);
-        JLabel label = makeLabel(displayText, bgColor, fgColor, font);
-        
-        return label;
-    }
-
     public static JLabel makePaperLabelMedium(String displayText) throws PWCGException 
     {
         displayText = InternationalizationManager.getTranslation(displayText);
@@ -384,26 +336,5 @@ public class PWCGButtonFactory extends JButton
         label.setFont(font);
         label.setHorizontalAlignment(SwingConstants.LEFT);
         return label;
-    }
-
-    private static String padStringToExtendImageSize(String originalString)
-    {
-        String paddedString = originalString;
-        
-        Dimension screenSize = PWCGMonitorSupport.getPWCGFrameSize();
-        Double pixelsToUseDouble = screenSize.width * .2;
-        int pixelsToUse = pixelsToUseDouble.intValue();
-        
-        int charactersToUse = pixelsToUse / 8;
-        
-        if (originalString.length() < charactersToUse)
-        {
-            for (int i = originalString.length(); i < charactersToUse; ++i)
-            {
-                paddedString += " ";
-            }
-        }
-        
-        return paddedString;
     }
 }

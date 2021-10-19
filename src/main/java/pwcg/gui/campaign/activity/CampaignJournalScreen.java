@@ -32,6 +32,7 @@ import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.PageTurner;
 
 public class CampaignJournalScreen extends ImageResizingPanel implements ActionListener
@@ -206,24 +207,24 @@ public class CampaignJournalScreen extends ImageResizingPanel implements ActionL
     {
         for (int i = 0; i < 2; ++i)
         {
-            indexPanel.add(PWCGButtonFactory.makeDummy());
-            indexPanel.add(PWCGButtonFactory.makeDummy());
-            indexPanel.add(PWCGButtonFactory.makeDummy());
-            indexPanel.add(PWCGButtonFactory.makeDummy());
+            indexPanel.add(PWCGLabelFactory.makeDummyLabel());
+            indexPanel.add(PWCGLabelFactory.makeDummyLabel());
+            indexPanel.add(PWCGLabelFactory.makeDummyLabel());
+            indexPanel.add(PWCGLabelFactory.makeDummyLabel());
         }
     }
 
     private void makeJournalIndexEntry(JPanel indexPanel, String journalKey) throws PWCGException
     {
-        indexPanel.add(PWCGButtonFactory.makeDummy());
+        indexPanel.add(PWCGLabelFactory.makeDummyLabel());
         
         Date date = DateUtils.getDateYYYYMMDD(journalKey);
         String buttonText = DateUtils.getDateStringDashDelimitedYYYYMMDD(date);
         JButton indexButton = PWCGButtonFactory.makePaperButton(buttonText, journalKey, "Go to journal entry", this);
         indexPanel.add(indexButton);
 
-        indexPanel.add(PWCGButtonFactory.makeDummy());
-        indexPanel.add(PWCGButtonFactory.makeDummy());
+        indexPanel.add(PWCGLabelFactory.makeDummyLabel());
+        indexPanel.add(PWCGLabelFactory.makeDummyLabel());
     }
 
     private void makePages() throws PWCGException  

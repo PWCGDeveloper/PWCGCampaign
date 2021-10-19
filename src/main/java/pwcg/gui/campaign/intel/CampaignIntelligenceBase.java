@@ -34,6 +34,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
 
 public abstract class CampaignIntelligenceBase extends JPanel implements ActionListener
@@ -129,7 +130,7 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
             return;
         }
 
-        JLabel headerLabel = PWCGButtonFactory.makePaperLabelLarge(role.getRoleDescription() + " Squadrons: \n");
+        JLabel headerLabel = PWCGLabelFactory.makePaperLabelLarge(role.getRoleDescription() + " Squadrons: \n");
         squadronsByRoleContainer.add(headerLabel);
 
         for (Squadron squadron : squadrons)

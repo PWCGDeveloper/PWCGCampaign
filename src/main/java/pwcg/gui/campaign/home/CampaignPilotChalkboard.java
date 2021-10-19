@@ -17,6 +17,7 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
 
 public class CampaignPilotChalkboard extends ImageResizingPanel
@@ -70,14 +71,10 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
         GridBagLayout squadronLayout = new GridBagLayout();                
         squadronPanel.setLayout(squadronLayout);
 
-        JLabel lDummy = new JLabel("     ");
-        lDummy.setOpaque(false);
-        lDummy.setForeground(buttonFG);
-        lDummy.setFont(font);
         constraints.weightx = 0.15;
         constraints.gridx = 0;
         constraints.gridy = 0;
-        squadronPanel.add(lDummy, constraints);
+        squadronPanel.add(PWCGLabelFactory.makeDummyLabel(), constraints);
 
         JLabel lRankHeader = new JLabel("Pilot", JLabel.LEFT);
         lRankHeader.setOpaque(false);
@@ -133,13 +130,9 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
         constraints.gridy = 0;
         squadronPanel.add(groundVictoryHeader, constraints);
 
-        lDummy = new JLabel("     ");
-        lDummy.setOpaque(false);
-        lDummy.setForeground(buttonFG);
-        lDummy.setFont(font);           constraints.weightx = 0.15;
         constraints.gridx = 7;
         constraints.gridy = 0;
-        squadronPanel.add(lDummy, constraints);
+        squadronPanel.add(PWCGLabelFactory.makeDummyLabel(), constraints);
         return squadronPanel;
     }
 
@@ -148,13 +141,10 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
         int gridbaRow = 1;
         for (SquadronMember pilot : sortedPilots)
         {
-            JLabel lDummy = new JLabel("     ");
-            lDummy.setOpaque(false);
-            lDummy.setForeground(buttonFG);
-            lDummy.setFont(font);               constraints.weightx = 0.15;
+            constraints.weightx = 0.15;
             constraints.gridx = 0;
             constraints.gridy = gridbaRow;
-            squadronPanel.add(lDummy, constraints);
+            squadronPanel.add(PWCGLabelFactory.makeDummyLabel(), constraints);
 
             JLabel pilotButton = new JLabel(pilot.getNameAndRank());
             pilotButton.setHorizontalAlignment(JLabel.LEFT);
@@ -212,13 +202,9 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
             constraints.gridy = gridbaRow;
             squadronPanel.add(groundVictories, constraints);
              
-            lDummy = new JLabel("     ");
-            lDummy.setOpaque(false);
-            lDummy.setForeground(buttonFG);
-            lDummy.setFont(font);               constraints.weightx = 0.15;
             constraints.gridx = 7;
             constraints.gridy = gridbaRow;
-            squadronPanel.add(lDummy, constraints);
+            squadronPanel.add(PWCGLabelFactory.makeDummyLabel(), constraints);
 
             ++gridbaRow;
         }

@@ -19,6 +19,7 @@ import pwcg.gui.rofmap.brief.model.BriefingData;
 import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 import pwcg.mission.Mission;
 
@@ -79,29 +80,29 @@ public class BriefingEditorScreen extends ImageResizingPanel implements ActionLi
         
         if (mission.isFinalized())
         {
-            buttonGrid.add(PWCGButtonFactory.makeDummy());
+            buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
             JButton backToCampaignButton = makeButton("Back to Campaign", "Back to Campaign", "Return to campaign home screen");
             buttonGrid.add(backToCampaignButton);
         }
 
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
         JButton scrubMissionButton = makeButton("Scrub Mission", "Scrub Mission", "Scrub this mission and return to campaign home screen");
         buttonGrid.add(scrubMissionButton);
 
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
         JButton goBackToBriefingMapButton = makeButton("Back: Map", "Back: Map", "Go back to briefing map screen");
         buttonGrid.add(goBackToBriefingMapButton);
 
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
         JButton goToPilotSelectionButton = makeButton("Next: Pilots", "Next: Pilots", "Progress to pilot selection screen");
         buttonGrid.add(goToPilotSelectionButton);
 
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
         JButton makeWaypointsEditableButton = makeButton("Edit Waypoint Details", "Edit Waypoints", "Make waypoint data editable");
         buttonGrid.add(makeWaypointsEditableButton);
 
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
+        buttonGrid.add(PWCGLabelFactory.makeDummyLabel());
 
         buttonPanel.add(buttonGrid, BorderLayout.NORTH);
         

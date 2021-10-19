@@ -4,11 +4,11 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 
 public class CampaignHomeGUILeftPanelBuilder
 {
@@ -36,8 +36,7 @@ public class CampaignHomeGUILeftPanelBuilder
 
     private void makePlainButtons(JPanel buttonPanel) throws PWCGException
     {
-        JLabel spacer = new JLabel("");
-        buttonPanel.add(spacer);
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         makeSpacedmenuItem(buttonPanel, "Mission", "CampMission", "Mission actions: new mission, lone wolf, combat report");        
         makeSpacedmenuItem(buttonPanel, "Personnel", "CampPersonnel", "Personnel actions: add pilot, manage coop pilots, reference pilot, skin management");        
@@ -50,8 +49,7 @@ public class CampaignHomeGUILeftPanelBuilder
     
     private void makeSpacedmenuItem(JPanel buttonPanel, String buttonText, String commandText, String toolTipText) throws PWCGException
     {
-        JLabel space5 = new JLabel("");
-        buttonPanel.add(space5);
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
         
         JButton button = PWCGButtonFactory.makeTranslucentMenuButton(buttonText, commandText, toolTipText, parent);
         buttonPanel.add(button);

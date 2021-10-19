@@ -53,6 +53,7 @@ import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGFrame;
 import pwcg.gui.utils.PWCGJButton;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.ToolTipManager;
 
 public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
@@ -229,8 +230,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
  
 	private void makeMenuButtons(JPanel buttonPanel) throws PWCGException 
 	{
-		JLabel spacer = new JLabel("");
-		buttonPanel.add(spacer);
+		buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
 				
  		makeMenuButton (InternationalizationManager.getTranslation("Planes Owned"), "Planes Owned", buttonPanel);
         makeMenuButton (InternationalizationManager.getTranslation("Configuration"), "Configuration",buttonPanel);
@@ -246,8 +246,8 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
             makeMenuButton (InternationalizationManager.getTranslation("PWCG Edit Front"), "PWCG Edit Front", buttonPanel);
         }
         
-        makePlainLabel ("", buttonPanel);
-        makePlainLabel ("", buttonPanel);
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
         makeMenuButton (InternationalizationManager.getTranslation("Exit"), "Exit", buttonPanel);
 	}
 
@@ -259,14 +259,6 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
         campaignButtonList.add(button);
 
         return button;
-    }
-
-    private JLabel makePlainLabel(String labelText, JPanel buttonPanel) throws PWCGException 
-    {
-        JLabel label = PWCGButtonFactory.makeMenuLabelLarge(labelText);
-        buttonPanel.add(label);
-
-        return label;
     }
     
 	public JPanel makeVersionPanel() throws PWCGException  
@@ -281,8 +273,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 		versionPanel.setLayout(new GridLayout(0,1));
 		versionPanel.setOpaque(false);
 
-		JLabel spacer = new JLabel("    ", JLabel.LEFT);
-		versionPanel.add(spacer);
+		versionPanel.add(PWCGLabelFactory.makeDummyLabel());
 
 		JLabel lversion = new JLabel(InternationalizationManager.getTranslation("PWCG Version") + VERSION, JLabel.LEFT);
 		lversion.setBackground(lbg);
@@ -291,8 +282,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 		lversion.setFont(font);
         versionPanel.add(lversion);
 
-		JLabel spacer2 = new JLabel("    ", JLabel.LEFT);
-		versionPanel.add(spacer2);
+		versionPanel.add(PWCGLabelFactory.makeDummyLabel());
 				
 		return versionPanel;
 	}
@@ -313,7 +303,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 		JPanel campaignListPanel = new JPanel (new GridLayout(0,1));
 		campaignListPanel.setOpaque(false);
 		
-        JLabel assignedLabel = PWCGButtonFactory.makeMenuLabelLarge(InternationalizationManager.getTranslation("Available Campaigns")); 
+        JLabel assignedLabel = PWCGLabelFactory.makeMenuLabelLarge(InternationalizationManager.getTranslation("Available Campaigns")); 
 		campaignListPanel.add(assignedLabel);
 		
 		List<String> campaigns = Campaign.getCampaignNames();

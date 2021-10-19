@@ -35,7 +35,7 @@ public class PageTurner
         {
             for (int i = 0; i < 1; ++i)
             {
-                leftButtonPanel.add(PWCGButtonFactory.makeDummy());
+                leftButtonPanel.add(PWCGLabelFactory.makeDummyLabel());
             }
 
             Font font = PWCGMonitorFonts.getPrimaryFont();
@@ -45,7 +45,7 @@ public class PageTurner
             leftButtonPanel.add(prevButton);
             for (int i = 0; i < spacingLabels; ++i)
             {
-                leftButtonPanel.add(PWCGButtonFactory.makeDummy());
+                leftButtonPanel.add(PWCGLabelFactory.makeDummyLabel());
             }
         }
         
@@ -54,7 +54,7 @@ public class PageTurner
             
             for (int i = 0; i < spacingLabels; ++i)
             {
-                rightButtonPanel.add(PWCGButtonFactory.makeDummy());
+                rightButtonPanel.add(PWCGLabelFactory.makeDummyLabel());
             }
 
             Font font = PWCGMonitorFonts.getPrimaryFont();
@@ -65,7 +65,7 @@ public class PageTurner
 
             for (int i = 0; i < 1; ++i)
             {
-                rightButtonPanel.add(PWCGButtonFactory.makeDummy());
+                rightButtonPanel.add(PWCGLabelFactory.makeDummyLabel());
             }
         }
         
@@ -96,7 +96,7 @@ public class PageTurner
         {
             for (int j = 0; j < 2; ++j)
             {
-                buttonPanel.add(PWCGButtonFactory.makeDummy());
+                buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
             }
         }
     }

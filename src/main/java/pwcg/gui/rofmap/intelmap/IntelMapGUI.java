@@ -38,6 +38,7 @@ import pwcg.gui.rofmap.MapScroll;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImagePanelLayout;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 
 public class IntelMapGUI extends MapGUI implements ActionListener
 {
@@ -110,13 +111,13 @@ public class IntelMapGUI extends MapGUI implements ActionListener
         JButton finished = PWCGButtonFactory.makeTranslucentMenuButton("Finished", "Finished", "Finished reading intel map", this);
         buttonPanel.add(finished);
         
-        JLabel spacer1 = PWCGButtonFactory.makeMenuLabelLarge("");
+        JLabel spacer1 = PWCGLabelFactory.makeMenuLabelLarge("");
         buttonPanel.add(spacer1);
 
         JPanel radioButtonPanel = new JPanel( new GridLayout(0,1));
         radioButtonPanel.setOpaque(false);
         
-        JLabel spacer2 = PWCGButtonFactory.makeMenuLabelLarge("");
+        JLabel spacer2 = PWCGLabelFactory.makeMenuLabelLarge("");
         buttonPanel.add(spacer2);
 
         intelNavPanel.add(buttonPanel, BorderLayout.NORTH);
@@ -200,10 +201,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
         JPanel descriptionGrid = new JPanel(new GridLayout(0,1));
         descriptionGrid.setOpaque(false);
 
-        JLabel spaceLabel = new JLabel("     ");
-        spaceLabel.setFont(fontMain);
-        spaceLabel.setOpaque(false);
-        descriptionGrid.add(spaceLabel);
+        descriptionGrid.add(PWCGLabelFactory.makeDummyLabel());
         
         JLabel header = new JLabel("Squadron Information");
         header.setFont(fontMain);
@@ -244,7 +242,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
         
         mapPanel.add(mapGrid, BorderLayout.NORTH);
 
-        JLabel mapLabel = PWCGButtonFactory.makeMenuLabelLarge("Choose Map");
+        JLabel mapLabel = PWCGLabelFactory.makeMenuLabelLarge("Choose Map");
         mapGrid.add(mapLabel);
         
         Campaign campaign = PWCGContext.getInstance().getCampaign();

@@ -20,6 +20,7 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
 
 public class CampaignHomeSquadronPlaque extends JPanel
@@ -54,15 +55,9 @@ public class CampaignHomeSquadronPlaque extends JPanel
         Color fg = ColorMap.PLAQUE_GOLD;
         
         String spacing = "         ";
-        
-        
-        JLabel lDummy1 = new JLabel("", JLabel.LEFT);
-        lDummy1.setOpaque(false);
-        descGridPanel.add(lDummy1);
-      
-        JLabel lDummy2 = new JLabel("", JLabel.LEFT);
-        lDummy2.setOpaque(false);
-        descGridPanel.add(lDummy2);
+                
+        descGridPanel.add(PWCGLabelFactory.makeDummyLabel());
+        descGridPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         Squadron squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
         String squadString = spacing + "Assigned to " + squadron.determineDisplayName(campaign.getDate());
@@ -98,13 +93,8 @@ public class CampaignHomeSquadronPlaque extends JPanel
             descGridPanel.add(lAircraft);
         }
         
-        JLabel lDummy3 = new JLabel("", JLabel.LEFT);
-        lDummy3.setOpaque(false);
-        descGridPanel.add(lDummy3);
-        
-        JLabel lDummy4 = new JLabel("", JLabel.LEFT);
-        lDummy4.setOpaque(false);
-        descGridPanel.add(lDummy4);
+        descGridPanel.add(PWCGLabelFactory.makeDummyLabel());
+        descGridPanel.add(PWCGLabelFactory.makeDummyLabel());
         
         plaquePanel.add(descGridPanel, BorderLayout.NORTH);
         

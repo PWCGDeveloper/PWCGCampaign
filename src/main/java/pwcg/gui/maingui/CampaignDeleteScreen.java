@@ -11,7 +11,6 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
@@ -27,6 +26,7 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 
 public class CampaignDeleteScreen extends ImageResizingPanel implements ActionListener
 {    
@@ -72,9 +72,7 @@ public class CampaignDeleteScreen extends ImageResizingPanel implements ActionLi
         JButton deleteCampaignButton = PWCGButtonFactory.makeTranslucentMenuButtonGrayMenu("Delete Campaign", "Delete", "Delete the selected campaign", this);
         buttonPanel.add(deleteCampaignButton);
         
-        JLabel dummyLabel3 = new JLabel("     ");       
-        dummyLabel3.setOpaque(false);
-        buttonPanel.add(dummyLabel3);
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
         
         JButton finishedButton = PWCGButtonFactory.makeTranslucentMenuButtonGrayMenu("Finished", "Cancel", "Finished with campaign deletion", this);
         buttonPanel.add(finishedButton);

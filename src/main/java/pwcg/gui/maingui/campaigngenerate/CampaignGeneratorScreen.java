@@ -8,7 +8,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.campaign.ArmedService;
@@ -33,6 +32,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.maingui.PwcgMainScreen;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 
 public class CampaignGeneratorScreen extends ImageResizingPanel implements ActionListener
 {    
@@ -93,10 +93,8 @@ public class CampaignGeneratorScreen extends ImageResizingPanel implements Actio
         createCampaignButton = PWCGButtonFactory.makeTranslucentMenuButtonGrayMenu("Create Campaign", "Create Campaign", "Create the campaign", this);
         buttonPanel.add(createCampaignButton);
         createCampaignButton.setEnabled(false);
-        
-        JLabel dummyLabel3 = new JLabel("     ");       
-        dummyLabel3.setOpaque(false);
-        buttonPanel.add(dummyLabel3);
+ 
+        buttonPanel.add(PWCGLabelFactory.makeDummyLabel());
         
         JButton cancelChanges = PWCGButtonFactory.makeTranslucentMenuButtonGrayMenu("Cancel", "Cancel", "Cancel campaign creation", this);
         buttonPanel.add(cancelChanges);

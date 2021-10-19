@@ -23,6 +23,7 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
 
 public class CampaignEquipmentChalkboard extends ImageResizingPanel
@@ -73,14 +74,10 @@ public class CampaignEquipmentChalkboard extends ImageResizingPanel
         equipmentChalkboardPanel.setOpaque(false);
         equipmentChalkboardPanel.setLayout(equipmentLayout);
 
-        JLabel lDummy = new JLabel("     ");
-        lDummy.setOpaque(false);
-        lDummy.setForeground(buttonFG);
-        lDummy.setFont(font);
         constraints.weightx = 0.15;
         constraints.gridx = 0;
         constraints.gridy = 0;
-        equipmentChalkboardPanel.add(lDummy, constraints);
+        equipmentChalkboardPanel.add(PWCGLabelFactory.makeDummyLabel(), constraints);
 
         JLabel lRankHeader = new JLabel("Aircraft Type", JLabel.LEFT);
         lRankHeader.setOpaque(false);
@@ -109,24 +106,17 @@ public class CampaignEquipmentChalkboard extends ImageResizingPanel
         constraints.gridy = 0;
         equipmentChalkboardPanel.add(lVictoryHeader, constraints);
 
-        lDummy = new JLabel("     ");
-        lDummy.setOpaque(false);
-        lDummy.setForeground(buttonFG);
-        lDummy.setFont(font);           constraints.weightx = 0.15;
         constraints.gridx = 4;
         constraints.gridy = 0;
-        equipmentChalkboardPanel.add(lDummy, constraints);
+        equipmentChalkboardPanel.add(PWCGLabelFactory.makeDummyLabel(), constraints);
         
         int i = 1;
         for (EquippedPlane plane : sortedAircraftOnInventory)
         {
-            lDummy = new JLabel("     ");
-            lDummy.setOpaque(false);
-            lDummy.setForeground(buttonFG);
-            lDummy.setFont(font);               constraints.weightx = 0.15;
+            constraints.weightx = 0.15;
             constraints.gridx = 0;
             constraints.gridy = i;
-            equipmentChalkboardPanel.add(lDummy, constraints);
+            equipmentChalkboardPanel.add(PWCGLabelFactory.makeDummyLabel(), constraints);
 
             JLabel aircraftNameLabel = new JLabel(plane.getDisplayName());
             aircraftNameLabel.setHorizontalAlignment(JLabel.LEFT);
@@ -156,13 +146,9 @@ public class CampaignEquipmentChalkboard extends ImageResizingPanel
             constraints.gridy = i;
             equipmentChalkboardPanel.add(lIdCode, constraints);
              
-            lDummy = new JLabel("     ");
-            lDummy.setOpaque(false);
-            lDummy.setForeground(buttonFG);
-            lDummy.setFont(font);               constraints.weightx = 0.15;
             constraints.gridx = 4;
             constraints.gridy = i;
-            equipmentChalkboardPanel.add(lDummy, constraints);
+            equipmentChalkboardPanel.add(PWCGLabelFactory.makeDummyLabel(), constraints);
 
             ++i;
         }
