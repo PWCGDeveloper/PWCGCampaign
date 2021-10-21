@@ -14,11 +14,13 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import pwcg.aar.ui.events.model.LeaveEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.DateUtils;
@@ -133,10 +135,6 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
     {
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
-        JLabel lLeave = new JLabel("Request Leave Time (days): ", JLabel.LEFT);
-        lLeave.setOpaque(false);
-        lLeave.setFont(font);
-
         tLeaveTime = new JTextField(5);
         tLeaveTime.setOpaque(false);
         tLeaveTime.setFont(font);
@@ -162,9 +160,11 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
                 ++gridRow;
 
                 int daysToHeal = DateUtils.daysDifference(campaign.getDate(), player.getRecoveryDate()) + 1;
-                String playerWoundHealTimeDesc = player.getNameAndRank() + " requires " + daysToHeal + " days to recover from his wounds";
-                JLabel playerWoundHealTimeLabel = new JLabel(playerWoundHealTimeDesc, JLabel.LEFT);
-                playerWoundHealTimeLabel.setFont(font);
+                String requires = " " + InternationalizationManager.getTranslation("requires") + " ";
+                String daysToRecover = " " + InternationalizationManager.getTranslation("days to recover from his wounds");
+                String playerWoundHealTimeDesc = player.getNameAndRank() + requires + daysToHeal + daysToRecover;
+                playerWoundHealTimeDesc += ": ";
+                JLabel playerWoundHealTimeLabel = PWCGLabelFactory.makeLabel(playerWoundHealTimeDesc, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);                
                 leaveTimeToHealPanel.add(playerWoundHealTimeLabel, constraints);
             }
         }
@@ -177,9 +177,9 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
         Color buttonBG = ColorMap.PAPER_BACKGROUND;
 
-        JLabel lLeave = new JLabel("Request Leave Time (days): ", JLabel.LEFT);
-        lLeave.setOpaque(false);
-        lLeave.setFont(font);
+        String leaveText = InternationalizationManager.getTranslation("Request Leave Time (days)");
+        leaveText += ": ";
+        JLabel lLeave = PWCGLabelFactory.makeLabel(leaveText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font,SwingConstants.LEFT);
 
         tLeaveTime = new JTextField(5);
         tLeaveTime.setBackground(buttonBG);

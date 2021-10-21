@@ -12,12 +12,14 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.SwingConstants;
 
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.gui.ScreenIdentifier;
@@ -111,9 +113,9 @@ public class AARClaimPanels extends ImageResizingPanel
             infoPanelGrid.add(PWCGLabelFactory.makeDummyLabel());
         }
 
-        JLabel lPilots = new JLabel("     Pilots assigned to this mission:", JLabel.LEFT);
-        lPilots.setOpaque(false);
-        lPilots.setFont(font);
+        String pilotsText = InternationalizationManager.getTranslation("Pilots assigned to this mission");
+        pilotsText = "     " + pilotsText + ": ";
+        JLabel lPilots = PWCGLabelFactory.makeLabel(pilotsText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);        
         infoPanelGrid.add(lPilots);
         
         SquadronMembers pilotsInMission = AARCoordinator.getInstance().getAarContext().getPreliminaryData().getCampaignMembersInMission();
@@ -124,11 +126,8 @@ public class AARClaimPanels extends ImageResizingPanel
             if (pilot.getSquadronId() == referencePlayer.getSquadronId())
             {
                 String crewDesc = "             " + pilot.getNameAndRank();
-               
-                JLabel lPilot = new JLabel(crewDesc, JLabel.LEFT);
+                JLabel lPilot = PWCGLabelFactory.makeLabel(crewDesc, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);        
                 lPilot.setSize(200, 40);
-                lPilot.setOpaque(false);
-                lPilot.setFont(font);
                 infoPanelGrid.add(lPilot);      
             }
         }
@@ -136,8 +135,9 @@ public class AARClaimPanels extends ImageResizingPanel
         infoPanelGrid.add(PWCGLabelFactory.makeDummyLabel());
         infoPanelGrid.add(PWCGLabelFactory.makeDummyLabel());
 
-        JLabel lDate = new JLabel("     Date: " + DateUtils.getDateString(campaign.getDate()), JLabel.LEFT);
-        lDate.setFont(font);
+        String dateText = InternationalizationManager.getTranslation("Date");
+        dateText = "     " + dateText + ": " + DateUtils.getDateString(campaign.getDate());
+        JLabel lDate = PWCGLabelFactory.makeLabel(dateText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);        
         infoPanelGrid.add(lDate);
 
         for (int i = 0; i < 1; ++i)

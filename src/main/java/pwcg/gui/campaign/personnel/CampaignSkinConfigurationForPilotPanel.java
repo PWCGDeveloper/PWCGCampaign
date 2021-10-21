@@ -28,6 +28,7 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.ScreenIdentifier;
@@ -209,7 +210,8 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
         
         skinSetPanel.add(skinCategoryButtonGrid, BorderLayout.NORTH);
         
-        JLabel label = makeLabel ("Skin Sets:");
+        String labelText = InternationalizationManager.getTranslation("Skin Sets");
+        JLabel label = PWCGLabelFactory.makeLabel(labelText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
         skinCategoryButtonGrid.add(label);
 
         Color fgColor = ColorMap.PAPER_FOREGROUND;
@@ -249,7 +251,8 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
         JPanel aircraftButtonGrid = new JPanel(new GridLayout(0,1));
         aircraftButtonGrid.setOpaque(false);
                 
-        JLabel label = makeLabel ("Squadron Aircraft:");
+        String labelText = InternationalizationManager.getTranslation("Squadron Aircraft");
+        JLabel label = PWCGLabelFactory.makeLabel(labelText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
         aircraftButtonGrid.add(label);
 
         SquadronMember referencePlayer = campaign.findReferencePlayer();
@@ -409,8 +412,6 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
          JPanel pilotInfoPanel = new JPanel (new BorderLayout());
          pilotInfoPanel.setOpaque(false);
 
-         Color bgColor = ColorMap.PAPER_BACKGROUND;
-
          // Pic in north
          SquadronMember pilot = skinSessionManager.getPilot();
          ImageIcon imageIcon = pilot.getPilotPictureAsImageIcon();  
@@ -418,13 +419,14 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
          JPanel pilotInteriorInfoPanel = new JPanel (new BorderLayout());
          pilotInteriorInfoPanel.setOpaque(false);
 
-         JLabel label = makeLabel ("Assigned Skins For Pilot:" + pilot.getNameAndRank());
+         String displayText = InternationalizationManager.getTranslation("Assigned Skins For Pilot");
+         displayText += ": " + pilot.getNameAndRank();
+         JLabel label = PWCGLabelFactory.makeLabel(
+                 displayText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
          pilotInteriorInfoPanel.add(label, BorderLayout.NORTH);
 
          // Picture label
-         JLabel pilotPicLabel = new JLabel(imageIcon);
-         pilotPicLabel.setOpaque(false);
-         pilotPicLabel.setBackground(bgColor);
+         JLabel pilotPicLabel= PWCGLabelFactory.makeIconLabel(imageIcon);
          pilotPicLabel.setSize(imageIcon.getIconWidth(), imageIcon.getIconHeight());
          pilotInteriorInfoPanel.add(pilotPicLabel, BorderLayout.WEST);
 
@@ -489,8 +491,8 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
              description += "   (" + skinGroup + ")";
          }
          
-         JLabel skinPlaneLabel = new JLabel(description);
-         skinPlaneLabel.setFont(font);
+         JLabel skinPlaneLabel = PWCGLabelFactory.makeLabel(
+                 description, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
          skinInfoGrid.add(skinPlaneLabel);
          skinInfoGrid.add(PWCGLabelFactory.makeDummyLabel());
          
@@ -509,20 +511,6 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
          
          return spaceGrid;
      }
-
-    private JLabel makeLabel(String labelText) throws PWCGException 
-    {
-        Font font = PWCGMonitorFonts.getPrimaryFont();
-        Color fgColor = ColorMap.PAPER_FOREGROUND;
-
-        JLabel label = new JLabel(labelText);
-        label.setHorizontalAlignment(SwingConstants.LEFT );
-        label.setOpaque(false);
-        label.setForeground(fgColor);
-        label.setFont(font);
-
-        return label;
-    }
 
     private JRadioButton makeRadioButton(String buttonText, String actionCommand, Color fgColor) throws PWCGException 
     {

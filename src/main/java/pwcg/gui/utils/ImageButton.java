@@ -10,7 +10,6 @@ import java.awt.image.BufferedImage;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
-import javax.swing.JLabel;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
@@ -77,13 +76,6 @@ public class ImageButton
         g2.drawImage(originalImage, 0, 0, null);
         g2.dispose();
         return modifiedImage;
-    }
-
-    public static JLabel makePilotPicButton(Image image) throws PWCGException
-    {
-        ImageIcon icon = new ImageIcon(image);
-        JLabel button = new JLabel(icon);
-        return button;
     }
 
     public static JCheckBox makeCheckBox(String text, String imageName) throws PWCGException

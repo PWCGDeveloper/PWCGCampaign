@@ -263,7 +263,7 @@ public class EditorMapGUI extends MapGUI implements ActionListener
 
         groundStructurePanel.add(groundStructureGrid, BorderLayout.NORTH);
 
-        JLabel spaceLabel1 = PWCGButtonFactory.makePaperLabelMedium(" ");
+        JLabel spaceLabel1 = PWCGLabelFactory.makePaperLabelMedium(" ");
         groundStructureGrid.add(spaceLabel1);
         
         JLabel groundStructureLabel = PWCGLabelFactory.makeMenuLabelLarge("Choose Category");
@@ -275,7 +275,7 @@ public class EditorMapGUI extends MapGUI implements ActionListener
         displayCities = makeCheckBoxButton("Cities", "Cities");
         groundStructureGrid.add(displayCities);        
 
-        JLabel spaceLabel2 = PWCGButtonFactory.makePaperLabelMedium(" ");
+        JLabel spaceLabel2 = PWCGLabelFactory.makePaperLabelMedium(" ");
         groundStructureGrid.add(spaceLabel2);
         
         return groundStructurePanel;

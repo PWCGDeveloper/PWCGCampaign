@@ -11,6 +11,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import pwcg.core.config.ConfigItem;
 import pwcg.core.config.ConfigManager;
@@ -49,9 +50,7 @@ public class ConfigurationParametersGUI extends ImageResizingPanel
 		{
 			return;
 		}
-		
-		Color bgColor = ColorMap.PAPER_BACKGROUND;
-		
+				
 		JPanel mainPanel = new JPanel (new BorderLayout());
 		mainPanel.setOpaque(false);
 
@@ -65,15 +64,14 @@ public class ConfigurationParametersGUI extends ImageResizingPanel
 			ConfigItem item = configSet.getConfigItem(parameterKey);
 
 			String keyString = item.getLabelText() + " : ";
-			JLabel label = new JLabel(keyString, JLabel.LEFT);
-			label.setBackground(bgColor);
-			label.setOpaque(false);
-			label.setFont(font);
+			JLabel label = PWCGLabelFactory.makeLabel(
+			        keyString, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
 			descPanel.add(label);
 			descPanel.setBorder(BorderFactory.createEmptyBorder(30,30,30,30));
 
 	        ToolTipManager.setToolTip(label, item.getHelp());
 			
+	        Color bgColor = ColorMap.PAPER_BACKGROUND;
 			JTextField textField = new JTextField(20);
 			textField.setBackground(bgColor);
 			textField.setOpaque(false);

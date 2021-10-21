@@ -41,6 +41,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopUser;
+import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
@@ -174,7 +175,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
     {
         spacerColumn (campaignGeneratePanel, 0, rowCount);
         
-        lSquad = createCampaignGenMenuLabel("Squadron: ", labelConstraints, campaignGeneratePanel, rowCount);
+        lSquad = createCampaignGenMenuLabel("Squadron", labelConstraints, campaignGeneratePanel, rowCount);
         campaignGeneratePanel.add(lSquad, labelConstraints);
 
         cbSquadron = new JComboBox<String>();
@@ -198,7 +199,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
     {
         spacerColumn (campaignGeneratePanel, 0, rowCount);
         
-        lRank = createCampaignGenMenuLabel("Pilot Rank: ", labelConstraints, campaignGeneratePanel, rowCount);
+        lRank = createCampaignGenMenuLabel("Pilot Rank", labelConstraints, campaignGeneratePanel, rowCount);
         campaignGeneratePanel.add(lRank, labelConstraints);
 
         cbRank = new JComboBox<String>();
@@ -229,7 +230,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
     private int createNextStepWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
                     JPanel campaignGeneratePanel, int rowCount) throws PWCGException
     {
-        JLabel lNextStep = createCampaignGenMenuLabel("Next/Previous Step: ", labelConstraints, campaignGeneratePanel, rowCount);
+        JLabel lNextStep = createCampaignGenMenuLabel("Next/Previous Step", labelConstraints, campaignGeneratePanel, rowCount);
         campaignGeneratePanel.add(lNextStep, labelConstraints);
 
         Color fgColor = ColorMap.CHALK_FOREGROUND;
@@ -249,8 +250,9 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
         return rowCount;
     }
 
-    private PWCGJButton makeButton(String displayText, String commandText, Color fgColor)
+    private PWCGJButton makeButton(String displayText, String commandText, Color fgColor) throws PWCGException
     {
+        displayText = InternationalizationManager.getTranslation(displayText);
         PWCGJButton nextStepButton = new PWCGJButton(displayText);      
         nextStepButton.setActionCommand(commandText);
         nextStepButton.setOpaque(false);
@@ -268,7 +270,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
     {
         spacerColumn (campaignGeneratePanel, 0, rowCount);
         
-        lRole = createCampaignGenMenuLabel("Role: ", labelConstraints, campaignGeneratePanel, rowCount);
+        lRole = createCampaignGenMenuLabel("Role", labelConstraints, campaignGeneratePanel, rowCount);
         campaignGeneratePanel.add(lRole, labelConstraints);
         
         cbRole = new JComboBox<String>();
@@ -362,13 +364,10 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
     }
 
     private JLabel createCampaignGenMenuLabel(String labelText, GridBagConstraints labelConstraints, JPanel campaignGeneratePanel, int rowCount) throws PWCGException
-    {
-        Color fgColor = ColorMap.CHALK_FOREGROUND;
-        
-        JLabel menuLabel = new JLabel(labelText, JLabel.RIGHT);
-        menuLabel.setFont(font);
-        menuLabel.setForeground(fgColor);
-        menuLabel.setOpaque(false);
+    {        
+        String displayText = InternationalizationManager.getTranslation(labelText);
+        displayText += ": ";
+        JLabel menuLabel = PWCGLabelFactory.makeLabel(displayText, ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
         
         labelConstraints.gridx = 1;
         labelConstraints.gridy = rowCount;
@@ -384,7 +383,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
         {
             spacerColumn (campaignGeneratePanel, 0, rowCount + 0);
             
-            lRegion = createCampaignGenMenuLabel("Region: ", labelConstraints, campaignGeneratePanel, rowCount);
+            lRegion = createCampaignGenMenuLabel("Region", labelConstraints, campaignGeneratePanel, rowCount);
             campaignGeneratePanel.add(lRegion, labelConstraints);
 
             cbRegion = new JComboBox<String>();
@@ -419,7 +418,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
         {
             spacerColumn (campaignGeneratePanel, 0, rowCount + 0);
             
-            lCoopUser = createCampaignGenMenuLabel("Coop User: ", labelConstraints, campaignGeneratePanel, rowCount);
+            lCoopUser = createCampaignGenMenuLabel("Coop User", labelConstraints, campaignGeneratePanel, rowCount);
             campaignGeneratePanel.add(lCoopUser, labelConstraints);
 
             cbCoopUser = new JComboBox<String>();
@@ -489,7 +488,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
 	{
         spacerColumn (campaignGeneratePanel, 0, rowCount);
         
-        lMap = createCampaignGenMenuLabel("Campaign Map: ", labelConstraints, campaignGeneratePanel, rowCount);
+        lMap = createCampaignGenMenuLabel("Campaign Map", labelConstraints, campaignGeneratePanel, rowCount);
         campaignGeneratePanel.add(lMap, labelConstraints);
         
         cbMap = new JComboBox<String>();
@@ -522,7 +521,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
     {
         spacerColumn (campaignGeneratePanel, 0, rowCount);
         
-        lDate = createCampaignGenMenuLabel("Campaign Start Date: ", labelConstraints, campaignGeneratePanel, rowCount);
+        lDate = createCampaignGenMenuLabel("Campaign Start Date", labelConstraints, campaignGeneratePanel, rowCount);
         campaignGeneratePanel.add(lDate, labelConstraints);
         
         cbDate = new JComboBox<String>();

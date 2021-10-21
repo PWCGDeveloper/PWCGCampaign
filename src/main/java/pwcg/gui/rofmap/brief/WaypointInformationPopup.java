@@ -1,14 +1,19 @@
 package pwcg.gui.rofmap.brief;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
+import javax.swing.SwingConstants;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
+import pwcg.gui.colors.ColorMap;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
+import pwcg.gui.utils.PWCGLabelFactory;
 
 public class WaypointInformationPopup extends JPopupMenu
 {
@@ -19,9 +24,10 @@ public class WaypointInformationPopup extends JPopupMenu
         try
         {
             JPanel infoPanel = new JPanel(new BorderLayout());
-            JLabel waypointInformationText = new JLabel();
-            waypointInformationText.setText(formWaypointInfoText(selectedMapPointIndex));
-            infoPanel.add(waypointInformationText, BorderLayout.CENTER);
+            Font font = PWCGMonitorFonts.getPrimaryFont();
+            JLabel waypointInformationLabel = PWCGLabelFactory.makeLabel(
+                    formWaypointInfoText(selectedMapPointIndex), ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
+            infoPanel.add(waypointInformationLabel, BorderLayout.CENTER);
             this.add(infoPanel);
         }
         catch (Exception e)

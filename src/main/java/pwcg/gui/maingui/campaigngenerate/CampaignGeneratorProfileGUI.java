@@ -14,10 +14,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import pwcg.campaign.CampaignMode;
+import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.campaign.config.CampaignConfigurationSimpleGUIController;
@@ -94,7 +96,7 @@ public class CampaignGeneratorProfileGUI extends JPanel implements ActionListene
         JPanel coopButtonPanelGrid = new JPanel(new GridLayout(0,1));
         coopButtonPanelGrid.setOpaque(false);
         
-        lCampaignType = makeCoopLabel(CampaignConfigurationSimpleGUIController.CAMPAIGN_TYPE + ":");      
+        lCampaignType = makeCoopLabel();      
         coopButtonPanelGrid.add(lCampaignType);
 
         JRadioButton singlePlayerButton = PWCGButtonFactory.makeRadioButton(
@@ -143,7 +145,7 @@ public class CampaignGeneratorProfileGUI extends JPanel implements ActionListene
 
     private JPanel createCampaignNameWidget() throws PWCGException
     {
-        lCampaignName = createCampaignGenMenuLabel("Campaign Name:");
+        lCampaignName = createCampaignGenMenuLabel("Campaign Name");
 
         campaignNameTextBox = new JTextField(50);
         campaignNameTextBox.setFont(font);
@@ -210,26 +212,20 @@ public class CampaignGeneratorProfileGUI extends JPanel implements ActionListene
     }
 
     private JLabel createCampaignGenMenuLabel(String labelText) throws PWCGException
-    {
-        Color fgColor = ColorMap.CHALK_FOREGROUND;
-        
-        JLabel menuLabel = new JLabel(labelText, JLabel.RIGHT);
-        menuLabel.setFont(font);
-        menuLabel.setForeground(fgColor);
-        menuLabel.setOpaque(false);
-        
+    {        
+        String displayText = InternationalizationManager.getTranslation(labelText);
+        displayText += ": ";
+        JLabel menuLabel = PWCGLabelFactory.makeLabel(displayText, ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
+
         return menuLabel;
     }
 
-    private JLabel makeCoopLabel(String buttonName) throws PWCGException
+    private JLabel makeCoopLabel() throws PWCGException
     {
+        String labelText = CampaignConfigurationSimpleGUIController.CAMPAIGN_TYPE + ": "; 
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
-
-        JLabel button= new JLabel(buttonName);
-        button.setOpaque(false);
-        button.setFont(font);
-
-        return button;
+        JLabel label = PWCGLabelFactory.makeLabel(labelText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
+        return label;
     }
 
 	public void actionPerformed(ActionEvent ae)

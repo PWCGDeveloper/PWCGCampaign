@@ -36,6 +36,7 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 
@@ -97,10 +98,15 @@ public class CampaignAdminPilotPanel extends ImageResizingPanel implements Actio
         {
             JRadioButton pilotSelector = makeRadioButton(coopDisplayRecord);
             JComboBox<String> userSelector = makeUserSelector(coopDisplayRecord.getUsername());
-            JLabel campaignNameLabel = makeDataLabel(coopDisplayRecord.getCampaignName());
-            JLabel pilotStatusLabel = makeDataLabel("     " + SquadronMemberStatus.pilotStatusToStatusDescription(coopDisplayRecord.getPilotStatus()));
-            JLabel squadronNameLabel = makeDataLabel("     " + coopDisplayRecord.getSquadronName());
             
+            JLabel campaignNameLabel = PWCGLabelFactory.makeLabel(
+                    coopDisplayRecord.getCampaignName(), ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
+            String pilotStatusText = "     " + SquadronMemberStatus.pilotStatusToStatusDescription(coopDisplayRecord.getPilotStatus());
+            JLabel pilotStatusLabel = PWCGLabelFactory.makeLabel(
+                    pilotStatusText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
+            JLabel squadronNameLabel = PWCGLabelFactory.makeLabel(
+                    "     " + coopDisplayRecord.getSquadronName(), ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
+
             recordListPanel.add(pilotSelector);
             recordListPanel.add(campaignNameLabel);
             
@@ -175,21 +181,6 @@ public class CampaignAdminPilotPanel extends ImageResizingPanel implements Actio
         {
             coopDisplayRecords.add(coopDisplayRecord);
         }
-    }
-    
-    public JLabel makeDataLabel(String labelText) throws PWCGException  
-    {
-        Font font = PWCGMonitorFonts.getPrimaryFont();
-        Color bg = ColorMap.PAPER_BACKGROUND;
-        Color fg = ColorMap.PAPER_FOREGROUND;
-
-        JLabel label = new JLabel(labelText, JLabel.LEFT);
-        label.setBackground(bg);
-        label.setForeground(fg);
-        label.setOpaque(false);
-        label.setFont(font);
-
-       return label;
     }
     
     public void actionPerformed(ActionEvent ae)

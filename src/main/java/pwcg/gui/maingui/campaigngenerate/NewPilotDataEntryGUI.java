@@ -42,6 +42,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;
 import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopUser;
+import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
@@ -165,7 +166,7 @@ public class NewPilotDataEntryGUI extends JPanel implements ActionListener
     {
         spacerColumn (campaignGeneratePanel, 0, rowCount);
         
-        lSquad = createCampaignGenMenuLabel("Squadron: ", labelConstraints, campaignGeneratePanel, rowCount);
+        lSquad = createCampaignGenMenuLabel("Squadron", labelConstraints, campaignGeneratePanel, rowCount);
         campaignGeneratePanel.add(lSquad, labelConstraints);
 
         cbSquadron = new JComboBox<String>();
@@ -189,7 +190,7 @@ public class NewPilotDataEntryGUI extends JPanel implements ActionListener
     {
         spacerColumn (campaignGeneratePanel, 0, rowCount);
         
-        lRank = createCampaignGenMenuLabel("Pilot Rank: ", labelConstraints, campaignGeneratePanel, rowCount);
+        lRank = createCampaignGenMenuLabel("Pilot Rank", labelConstraints, campaignGeneratePanel, rowCount);
         campaignGeneratePanel.add(lRank, labelConstraints);
 
         cbRank = new JComboBox<String>();
@@ -225,7 +226,7 @@ public class NewPilotDataEntryGUI extends JPanel implements ActionListener
         {
             spacerColumn (campaignGeneratePanel, 0, rowCount + 0);
             
-            lCoopUser = createCampaignGenMenuLabel("Coop User: ", labelConstraints, campaignGeneratePanel, rowCount);
+            lCoopUser = createCampaignGenMenuLabel("Coop User", labelConstraints, campaignGeneratePanel, rowCount);
             campaignGeneratePanel.add(lCoopUser, labelConstraints);
 
             cbCoopUser = new JComboBox<String>();
@@ -286,12 +287,13 @@ public class NewPilotDataEntryGUI extends JPanel implements ActionListener
 	private int createNextStepWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
                     JPanel campaignGeneratePanel, int rowCount) throws PWCGException
     {
-        JLabel lNextStep = createCampaignGenMenuLabel("Press for Next/Previous Step: ", labelConstraints, campaignGeneratePanel, rowCount);
+        JLabel lNextStep = createCampaignGenMenuLabel("Next/Previous Step", labelConstraints, campaignGeneratePanel, rowCount);
         campaignGeneratePanel.add(lNextStep, labelConstraints);
 
         Color fgColor = ColorMap.CHALK_FOREGROUND;
 
-        PWCGJButton nextStepButton = new PWCGJButton("Next Step");      
+        String nextDisplayText = InternationalizationManager.getTranslation("Next Step");
+        PWCGJButton nextStepButton = new PWCGJButton(nextDisplayText);      
         nextStepButton.setActionCommand("NextStep");
         nextStepButton.setOpaque(false);
         nextStepButton.setHorizontalAlignment(SwingConstants.LEFT);
@@ -306,7 +308,8 @@ public class NewPilotDataEntryGUI extends JPanel implements ActionListener
 
         ++rowCount;
 
-        PWCGJButton previousStepButton = new PWCGJButton("Previous Step");      
+        String previousDisplayText = InternationalizationManager.getTranslation("Previous Step");
+        PWCGJButton previousStepButton = new PWCGJButton(previousDisplayText);      
         previousStepButton.setActionCommand("PreviousStep");
         previousStepButton.setOpaque(false);
         previousStepButton.setHorizontalAlignment(SwingConstants.LEFT);
@@ -328,7 +331,7 @@ public class NewPilotDataEntryGUI extends JPanel implements ActionListener
     {
         spacerColumn (campaignGeneratePanel, 0, rowCount);
         
-        lRole = createCampaignGenMenuLabel("Role: ", labelConstraints, campaignGeneratePanel, rowCount);
+        lRole = createCampaignGenMenuLabel("Role", labelConstraints, campaignGeneratePanel, rowCount);
         campaignGeneratePanel.add(lRole, labelConstraints);
         
         cbRole = new JComboBox<String>();
@@ -404,7 +407,7 @@ public class NewPilotDataEntryGUI extends JPanel implements ActionListener
     {
         spacerColumn (campaignGeneratePanel, 0, rowCount);
 
-        lPlayerName = createCampaignGenMenuLabel("Pilot Name:", labelConstraints, campaignGeneratePanel, rowCount);
+        lPlayerName = createCampaignGenMenuLabel("Pilot Name", labelConstraints, campaignGeneratePanel, rowCount);
         campaignGeneratePanel.add(lPlayerName, labelConstraints);
 
         playerPilotNameTextBox = new JTextField(50);
@@ -423,13 +426,10 @@ public class NewPilotDataEntryGUI extends JPanel implements ActionListener
 
     private JLabel createCampaignGenMenuLabel(String labelText, GridBagConstraints labelConstraints, JPanel campaignGeneratePanel, int rowCount) throws PWCGException
     {
-        Color fgColor = ColorMap.CHALK_FOREGROUND;
-        
-        JLabel menuLabel = new JLabel(labelText, JLabel.RIGHT);
-        menuLabel.setFont(font);
-        menuLabel.setForeground(fgColor);
-        menuLabel.setOpaque(false);
-        
+        String displayText = InternationalizationManager.getTranslation(labelText);
+        displayText += ": ";
+        JLabel menuLabel = PWCGLabelFactory.makeLabel(displayText, ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
+
         labelConstraints.gridx = 1;
         labelConstraints.gridy = rowCount;
         
@@ -444,7 +444,7 @@ public class NewPilotDataEntryGUI extends JPanel implements ActionListener
         {
         	spacerColumn (campaignGeneratePanel, 0, rowCount + 0);
         	
-            lRegion = createCampaignGenMenuLabel("Region: ", labelConstraints, campaignGeneratePanel, rowCount);
+            lRegion = createCampaignGenMenuLabel("Region", labelConstraints, campaignGeneratePanel, rowCount);
             campaignGeneratePanel.add(lRegion, labelConstraints);
 
         	cbRegion = new JComboBox<String>();

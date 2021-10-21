@@ -232,7 +232,7 @@ public class InfoMapGUI extends MapGUI implements ActionListener
 
         groundStructurePanel.add(groundStructureGrid, BorderLayout.NORTH);
 
-        JLabel spaceLabel1 = PWCGButtonFactory.makePaperLabelMedium(" ");
+        JLabel spaceLabel1 = PWCGLabelFactory.makePaperLabelMedium(" ");
         groundStructureGrid.add(spaceLabel1);
         
         JLabel groundStructureLabel = PWCGLabelFactory.makeMenuLabelLarge("Choose Category");
@@ -250,7 +250,7 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         displayBridges = makeCheckBoxButton("Bridges", "Bridges");
         groundStructureGrid.add(displayBridges);
 
-        JLabel spaceLabel2 = PWCGButtonFactory.makePaperLabelMedium(" ");
+        JLabel spaceLabel2 = PWCGLabelFactory.makePaperLabelMedium(" ");
         groundStructureGrid.add(spaceLabel2);
         
         return groundStructurePanel;
@@ -266,7 +266,7 @@ public class InfoMapGUI extends MapGUI implements ActionListener
 
         rolePanel.add(roleGrid, BorderLayout.NORTH);
 
-        JLabel spaceLabel1 = PWCGButtonFactory.makePaperLabelMedium(" ");
+        JLabel spaceLabel1 = PWCGLabelFactory.makePaperLabelMedium(" ");
         roleGrid.add(spaceLabel1);
         
         JLabel roleLabel = PWCGLabelFactory.makeMenuLabelLarge("Choose Aircraft Role");
@@ -284,7 +284,7 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         displayReconSquadrons = makeCheckBoxButton("Recon", "Recon");
         roleGrid.add(displayReconSquadrons);
 
-        JLabel spaceLabel2 = PWCGButtonFactory.makePaperLabelMedium(" ");
+        JLabel spaceLabel2 = PWCGLabelFactory.makePaperLabelMedium(" ");
         roleGrid.add(spaceLabel2);
         
         return rolePanel;

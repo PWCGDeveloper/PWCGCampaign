@@ -110,13 +110,13 @@ public class MultiSelectGUI implements ActionListener
     
     private JPanel buildButtonPanel() throws PWCGException
     {
-        JLabel spacer1 = PWCGButtonFactory.makePaperLabelMedium("         ");
+        JLabel spacer1 = PWCGLabelFactory.makePaperLabelMedium("         ");
         JButton selectAllButton = PWCGButtonFactory.makePaperButtonWithBorder("Select All", "SelectAll", "Select all entries", this);
         selectAllButton.setOpaque(false);
-        JLabel spacer2 = PWCGButtonFactory.makePaperLabelMedium("         ");
+        JLabel spacer2 = PWCGLabelFactory.makePaperLabelMedium("         ");
         JButton deselectAllButton = PWCGButtonFactory.makePaperButtonWithBorder("Deselect All", "DeselectAll", "Deselect all entries", this);
         deselectAllButton.setOpaque(false);
-        JLabel spacer3 = PWCGButtonFactory.makePaperLabelMedium("         ");
+        JLabel spacer3 = PWCGLabelFactory.makePaperLabelMedium("         ");
         
         JPanel buttonGroup = new JPanel(new GridLayout(0, 5));
         buttonGroup.setOpaque(false);

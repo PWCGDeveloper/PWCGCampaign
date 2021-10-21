@@ -16,6 +16,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.image.ImageCache;
+import pwcg.gui.utils.PWCGLabelFactory;
 
 public class NewspaperEndOfWarUI extends JPanel
 {
@@ -45,7 +46,7 @@ public class NewspaperEndOfWarUI extends JPanel
             BufferedImage newspaperImage = buildNewspaperImage();
     
             ImageIcon icon = new ImageIcon(newspaperImage);
-            JLabel imageLabel= new JLabel(icon);
+            JLabel imageLabel= PWCGLabelFactory.makeIconLabel(icon);
             newspaperImagePanel.add(imageLabel, BorderLayout.CENTER);
 
             return newspaperImagePanel;

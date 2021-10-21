@@ -186,45 +186,6 @@ public class PWCGButtonFactory extends JButton
         return button;
     }
 
-    public static JLabel makePaperLabelMedium(String displayText) throws PWCGException 
-    {
-        displayText = InternationalizationManager.getTranslation(displayText);
-
-        Color bgColor = ColorMap.PAPER_BACKGROUND;
-        Color fgColor = ColorMap.PAPER_FOREGROUND;
-        Font font = PWCGMonitorFonts.getPrimaryFont();
-        
-        JLabel label = makeLabel(displayText, bgColor, fgColor, font);
-        
-        return label;
-    }
-
-    public static JLabel makeChalkBoardLabel(String displayText) throws PWCGException 
-    {
-        displayText = InternationalizationManager.getTranslation(displayText);
-
-        Color bgColor = ColorMap.CHALK_BACKGROUND;
-        Color fgColor = ColorMap.CHALK_FOREGROUND;
-        Font font = PWCGMonitorFonts.getChalkboardFont();
-        
-        JLabel label = makeLabel(displayText, bgColor, fgColor, font);
-        
-        return label;
-    }
-
-    public static JLabel makeBriefingChalkBoardLabel(String displayText) throws PWCGException 
-    {
-        displayText = InternationalizationManager.getTranslation(displayText);
-
-        Color bgColor = ColorMap.CHALK_BACKGROUND;
-        Color fgColor = ColorMap.CHALK_FOREGROUND;
-        Font font = PWCGMonitorFonts.getBriefingChalkboardFont();
-        
-        JLabel label = makeLabel(displayText, bgColor, fgColor, font);
-        
-        return label;
-    }
-
     public static JCheckBox makeCheckBox(String displayText, String actionCommand, Font font, Color fgColor, ActionListener actionListener) throws PWCGException 
     {
         displayText = InternationalizationManager.getTranslation(displayText);
@@ -282,7 +243,7 @@ public class PWCGButtonFactory extends JButton
                     Color bgColor,
                     Color fgColor, 
                     Font font) throws PWCGException
-    {        
+    {      
         PWCGJButton button = new PWCGJButton(displayText);
         button.setActionCommand(commandText);
         button.setBackground(bgColor);
@@ -325,16 +286,5 @@ public class PWCGButtonFactory extends JButton
         ToolTipManager.setToolTip(button, toolTipText);
 
         return button;
-    }
-
-    private static JLabel makeLabel(String displayText, Color bgColor, Color fgColor, Font font)
-    {
-        JLabel label = new JLabel(displayText);
-        label.setBackground(bgColor);
-        label.setForeground(fgColor);
-        label.setOpaque(false);
-        label.setFont(font);
-        label.setHorizontalAlignment(SwingConstants.LEFT);
-        return label;
     }
 }

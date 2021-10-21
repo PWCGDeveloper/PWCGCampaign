@@ -1,7 +1,7 @@
 package pwcg.gui.rofmap.brief;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -24,10 +25,13 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.mission.MissionGeneratorHelper;
+import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 import pwcg.mission.MissionHumanParticipants;
@@ -122,11 +126,11 @@ public class BriefingRoleChooser extends ImageResizingPanel implements ActionLis
     }
 
     private JLabel makeSquadronNameLabel(int squadronId) throws PWCGException
-    {
+    {        
+        Font font = PWCGMonitorFonts.getPrimaryFont();
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
-        JLabel squadronNameLabel = new JLabel(squadron.determineDisplayName(campaign.getDate()));
-        squadronNameLabel.setOpaque(false);
-        squadronNameLabel.setForeground(Color.BLACK);
+        JLabel squadronNameLabel = PWCGLabelFactory.makeLabel(
+                squadron.determineDisplayName(campaign.getDate()), ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
         return squadronNameLabel;
     }
 

@@ -1,7 +1,6 @@
 package pwcg.gui.maingui.coop;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -11,6 +10,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
@@ -26,37 +26,38 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 
 public class CoopPersonaInfoPanel extends ImageResizingPanel
 {
-	private static final long serialVersionUID = 1L;
-	private List<CoopDisplayRecord> coopDisplayRecords = new ArrayList<>();
+    private static final long serialVersionUID = 1L;
+    private List<CoopDisplayRecord> coopDisplayRecords = new ArrayList<>();
 
-	public CoopPersonaInfoPanel()
-	{
+    public CoopPersonaInfoPanel()
+    {
         super("");
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
-	}
-	
-	public void makePanels() 
-	{
-		try
-		{
+    }
+
+    public void makePanels()
+    {
+        try
+        {
             String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
             this.setImageFromName(imagePath);
-            this.setBorder(BorderFactory.createEmptyBorder(150,40,40,150));
+            this.setBorder(BorderFactory.createEmptyBorder(150, 40, 40, 150));
 
             JPanel centerPanel = makeDisplay();
             this.add(centerPanel, BorderLayout.NORTH);
-		}
-		catch (Throwable e)
-		{
-			PWCGLogger.logException(e);
-			ErrorDialog.internalError(e.getMessage());
-		}
-	}
+        }
+        catch (Throwable e)
+        {
+            PWCGLogger.logException(e);
+            ErrorDialog.internalError(e.getMessage());
+        }
+    }
 
     private JPanel makeDisplay() throws PWCGException
     {
@@ -73,10 +74,10 @@ public class CoopPersonaInfoPanel extends ImageResizingPanel
 
         for (CoopDisplayRecord coopDisplayRecord : coopDisplayRecords)
         {
-            JLabel usernameLabel = makeVersionPanel(coopDisplayRecord.getUsername());
-            JLabel campaignNameLabel = makeVersionPanel(coopDisplayRecord.getCampaignName());
-            JLabel pilotNameLabel = makeVersionPanel(coopDisplayRecord.getPilotNameAndRank());
-            JLabel squadronNameLabel = makeVersionPanel(coopDisplayRecord.getSquadronName());
+            JLabel usernameLabel = makeCoopInfoLabel(coopDisplayRecord.getUsername());
+            JLabel campaignNameLabel = makeCoopInfoLabel(coopDisplayRecord.getCampaignName());
+            JLabel pilotNameLabel = makeCoopInfoLabel(coopDisplayRecord.getPilotNameAndRank());
+            JLabel squadronNameLabel = makeCoopInfoLabel(coopDisplayRecord.getSquadronName());
             recordListPanel.add(usernameLabel);
             recordListPanel.add(campaignNameLabel);
             recordListPanel.add(pilotNameLabel);
@@ -96,7 +97,7 @@ public class CoopPersonaInfoPanel extends ImageResizingPanel
         for (String campaignName : campaigns)
         {
             Campaign campaign = new Campaign();
-            if (campaign.open(campaignName))              
+            if (campaign.open(campaignName))
             {
                 CoopPersonaDataBuilder coopPersonaDataBuilder = new CoopPersonaDataBuilder();
                 PWCGContext.getInstance().setCampaign(campaign);
@@ -108,22 +109,12 @@ public class CoopPersonaInfoPanel extends ImageResizingPanel
             }
         }
     }
-    
-    public JLabel makeVersionPanel(String labelText) throws PWCGException  
+
+    public JLabel makeCoopInfoLabel(String labelText) throws PWCGException
     {
-
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
-
-        Color bg = ColorMap.PAPER_BACKGROUND;
-        Color fg = ColorMap.PAPER_FOREGROUND;
-
-        JLabel label = new JLabel(labelText, JLabel.LEFT);
-        label.setBackground(bg);
-        label.setForeground(fg);
-        label.setOpaque(false);
-        label.setFont(font);
-
-       return label;
+        JLabel label = PWCGLabelFactory.makeLabel(labelText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.RIGHT);
+        return label;
     }
 
 }

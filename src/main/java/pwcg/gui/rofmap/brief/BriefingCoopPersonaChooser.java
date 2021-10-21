@@ -13,6 +13,7 @@ import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.PwcgRole;
@@ -25,6 +26,7 @@ import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.campaign.mission.MissionGeneratorHelper;
+import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.sound.SoundManager;
@@ -157,8 +159,7 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
 
 		for (String errorMessage : errorMessages)
     	{
-    		JLabel errorLabel = new JLabel(errorMessage);
-    		errorLabel.setFont(font);
+	        JLabel errorLabel = PWCGLabelFactory.makeLabel(errorMessage, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
     		coopPersonaErrorPanel.add(errorLabel);
     	}
 

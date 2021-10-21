@@ -1,17 +1,18 @@
 package pwcg.gui.campaign.home;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.gui.ScreenIdentifier;
@@ -50,46 +51,44 @@ public class CampaignHomeSquadronPlaque extends JPanel
         descGridPanel.setOpaque(false);
         
         Font font = PWCGMonitorFonts.getPrimaryFont();
-        
-        
-        Color fg = ColorMap.PLAQUE_GOLD;
-        
+                
         String spacing = "         ";
                 
         descGridPanel.add(PWCGLabelFactory.makeDummyLabel());
         descGridPanel.add(PWCGLabelFactory.makeDummyLabel());
 
         Squadron squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
-        String squadString = spacing + "Assigned to " + squadron.determineDisplayName(campaign.getDate());
-        JLabel lSquad = new JLabel(squadString, JLabel.LEFT);
-        lSquad.setFont(font);
-        lSquad.setForeground(fg);
-        descGridPanel.add(lSquad);
-        
-        String airfieldAtString = spacing + "Stationed at ";
-        JLabel lAirfieldAt = new JLabel(airfieldAtString, JLabel.LEFT);
-        lAirfieldAt.setFont(font);
-        lAirfieldAt.setForeground(fg);
-        descGridPanel.add(lAirfieldAt);
-        
-        String airfieldString = spacing + squadron.determineCurrentAirfieldName(campaign.getDate());
-        JLabel lAirfield = new JLabel(airfieldString, JLabel.LEFT);
-        lAirfield.setFont(font);
-        lAirfield.setForeground(fg);
-        descGridPanel.add(lAirfield);
 
-        JLabel lDate = new JLabel(spacing + DateUtils.getDateString(campaign.getDate()), JLabel.LEFT);
-        lDate.setFont(font);
-        lDate.setForeground(fg);
-        descGridPanel.add(lDate);
+        String assignedToString = InternationalizationManager.getTranslation("Assigned to");
+        JLabel lAssignedTo = PWCGLabelFactory.makeLabel(assignedToString, ColorMap.CHALK_BACKGROUND, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
+        descGridPanel.add(lAssignedTo);
+
+        String squadString = spacing + squadron.determineDisplayName(campaign.getDate());
+        JLabel lSquad = PWCGLabelFactory.makeLabel(squadString, ColorMap.CHALK_BACKGROUND, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
+        descGridPanel.add(lSquad);
+
+        String airfieldAtString = InternationalizationManager.getTranslation("Stationed at");
+        airfieldAtString += " " + squadron.determineCurrentAirfieldName(campaign.getDate());
+        JLabel lAirfieldAt = PWCGLabelFactory.makeLabel(airfieldAtString, ColorMap.CHALK_BACKGROUND, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
+        descGridPanel.add(lAirfieldAt);
+
+        String airfieldString = spacing + squadron.determineCurrentAirfieldName(campaign.getDate());
+        JLabel lAirfield = PWCGLabelFactory.makeLabel(airfieldString, ColorMap.CHALK_BACKGROUND, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
+        descGridPanel.add(lAirfield);
         
+
+        String dateString = spacing + DateUtils.getDateString(campaign.getDate());
+        JLabel lDate = PWCGLabelFactory.makeLabel(dateString, ColorMap.CHALK_BACKGROUND, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
+        descGridPanel.add(lDate);
+
+
         PlaneType aircraftType = squadron.determineBestPlane(campaign.getDate());
         if (aircraftType != null)
         {
-            String aircraftString = "Flying the " + aircraftType.getDisplayName();
-            JLabel lAircraft = new JLabel(spacing + aircraftString, JLabel.LEFT);
-            lAircraft.setFont(font);
-            lAircraft.setForeground(fg);
+            String aircraftString = spacing + InternationalizationManager.getTranslation("Flying the");
+            aircraftString += " " + aircraftType.getDisplayName();
+            JLabel lAircraft = PWCGLabelFactory.makeLabel(aircraftString, ColorMap.CHALK_BACKGROUND, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
+
             descGridPanel.add(lAircraft);
         }
         

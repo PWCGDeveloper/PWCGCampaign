@@ -8,6 +8,7 @@ import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,7 +27,6 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.image.ImageCache;
 import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.gui.utils.ImageButton;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
 import pwcg.gui.utils.PWCGButtonNoBackground;
@@ -118,7 +118,7 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
 
     private JLabel makePilotPicButton(SquadronMember pilot) throws PWCGUserException, PWCGException, PWCGException
     {
-        JLabel pilotPicButton = null;
+        JLabel pilotPicLabel = null;
         String picPath = PictureManager.getPicturePath(pilot);
         Image pilotPic = ImageCache.getInstance().getBufferedImage(picPath);
         if (pilotPic != null)
@@ -126,14 +126,14 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
         	int imageHeight = PWCGMonitorSupport.getPilotPlateHeight();
         	
         	Image scaledPic = pilotPic.getScaledInstance(imageHeight, -1, Image.SCALE_DEFAULT);
-
-        	pilotPicButton = ImageButton.makePilotPicButton(scaledPic);
+            ImageIcon icon = new ImageIcon(scaledPic);
+            pilotPicLabel = PWCGLabelFactory.makeIconLabel(icon);
         }
         else
         {
-        	pilotPicButton = PWCGLabelFactory.makeDummyLabel();	
+        	pilotPicLabel = PWCGLabelFactory.makeDummyLabel();	
         }
-        return pilotPicButton;
+        return pilotPicLabel;
     }
     
 
@@ -147,7 +147,8 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
         Color fgColor = ColorMap.PLAQUE_GOLD;
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
-        JLabel squadronPanelLabel = PWCGLabelFactory.makeLabel("     " + description, bgColor, fgColor, font);
+        JLabel squadronPanelLabel = PWCGLabelFactory.makeLabel(
+                "     " + description, bgColor, fgColor, font, SwingConstants.LEFT);
         squadronPanelLabel.setHorizontalAlignment(JLabel.LEFT);
         squadronPanelLabel.setVerticalAlignment(JLabel.CENTER);
         
@@ -187,7 +188,8 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
         {
             int imageHeight = PWCGMonitorSupport.getPilotPlateHeight();            
             Image scaledPic = pilotStatusImage.getScaledInstance(imageHeight, -1, Image.SCALE_DEFAULT);
-            pilotStatusLabel = ImageButton.makePilotPicButton(scaledPic);
+            ImageIcon icon = new ImageIcon(scaledPic);
+            pilotStatusLabel = PWCGLabelFactory.makeIconLabel(icon);
         }
         else
         {

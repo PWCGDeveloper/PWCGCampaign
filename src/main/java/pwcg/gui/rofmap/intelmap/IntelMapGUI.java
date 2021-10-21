@@ -26,6 +26,7 @@ import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
@@ -203,9 +204,9 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 
         descriptionGrid.add(PWCGLabelFactory.makeDummyLabel());
         
-        JLabel header = new JLabel("Squadron Information");
-        header.setFont(fontMain);
-        header.setOpaque(false);
+        String labelText = InternationalizationManager.getTranslation("Squadron Information");
+        JLabel header = PWCGLabelFactory.makeLabel(labelText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, fontMain, SwingConstants.LEFT);        
+   
         descriptionGrid.add(header);
 		return descriptionGrid;
 	}

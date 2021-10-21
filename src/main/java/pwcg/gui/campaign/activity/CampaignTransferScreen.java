@@ -19,6 +19,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
 
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.events.model.TransferEvent;
@@ -34,6 +35,7 @@ import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronManager;
+import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
@@ -148,9 +150,8 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         List<Component> components = new ArrayList<Component>();
         int rowNum = 0;
 
-        JLabel lName = new JLabel(squadronMemberToTransfer.getNameAndRank(), JLabel.LEFT);
-        lName.setOpaque(false);
-        lName.setFont(font);
+        JLabel lName = PWCGLabelFactory.makeLabel(squadronMemberToTransfer.getNameAndRank(), ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
+        
         components.clear();
         components.add(lName);
         rowNum = addRow(transferPanel, components, rowNum);
@@ -221,11 +222,12 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         }                
     }
 
-    private int makeRoleChooser(Color buttonBG, Font font, JPanel transferPanel, List<Component> components, int rowNum)
+    private int makeRoleChooser(Color buttonBG, Font font, JPanel transferPanel, List<Component> components, int rowNum) throws PWCGException
     {
-        JLabel lRole = new JLabel("Role: ", JLabel.LEFT);
-        lRole.setOpaque(false);
-        lRole.setFont(font);
+        String roleText = InternationalizationManager.getTranslation("Role");
+        roleText += ": ";
+        JLabel lRole = PWCGLabelFactory.makeLabel(roleText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
+
         cbRole = new JComboBox<String>();
         cbRole.addItem(PwcgRole.ROLE_FIGHTER.getRoleDescription());
         cbRole.addItem(PwcgRole.ROLE_STRATEGIC_INTERCEPT.getRoleDescription());
@@ -249,9 +251,10 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         components.add(PWCGLabelFactory.makeDummyLabel());
         rowNum = addRow(transferPanel, components, rowNum);
 
-        JLabel lTransfer = new JLabel("Requests a transfer to : ", JLabel.LEFT);
-        lTransfer.setOpaque(false);
-        lTransfer.setFont(font);
+        String transferText = InternationalizationManager.getTranslation("Requests a transfer to");
+        transferText += ": ";
+        JLabel lTransfer = PWCGLabelFactory.makeLabel(transferText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font,SwingConstants.LEFT);
+
         cbSquadron = new JComboBox<String>();
         cbSquadron.setBackground(buttonBG);
         cbSquadron.setActionCommand("SquadronChanged");
@@ -266,9 +269,10 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
     private int makeServiceChooser(Color buttonBG, Font font, JPanel transferPanel, List<Component> components, int rowNum) throws PWCGException
                     
     {
-        JLabel lService = new JLabel("Service: ", JLabel.LEFT);
-        lService.setOpaque(false);
-        lService.setFont(font);
+        String serviceText = InternationalizationManager.getTranslation("Service");
+        serviceText += ": ";
+        JLabel lService = PWCGLabelFactory.makeLabel(serviceText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);        
+
         cbService = new JComboBox<String>();
         
         List<ArmedService> services = null;

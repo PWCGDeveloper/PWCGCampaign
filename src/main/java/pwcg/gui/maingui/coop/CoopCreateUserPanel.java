@@ -11,9 +11,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
 import pwcg.coop.CoopUserManager;
+import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.ScreenIdentifier;
@@ -22,6 +24,7 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.PWCGLabelFactory;
 
 public class CoopCreateUserPanel extends ImageResizingPanel implements ActionListener
 {
@@ -91,15 +94,15 @@ public class CoopCreateUserPanel extends ImageResizingPanel implements ActionLis
 		return textPanel;
 	}
 
-	private JPanel buildCoopUserLabel(Font font) 
+	private JPanel buildCoopUserLabel(Font font) throws PWCGException 
 	{
 		JPanel descPanel = new JPanel (new GridLayout(0,1));
 		descPanel.setOpaque(false);
 		
-	    JLabel passwordLabel = new JLabel("Enter Coop Username: ");
-	    passwordLabel.setFont(font);
-	    passwordLabel.setBackground(ColorMap.NEWSPAPER_BACKGROUND);
-	    descPanel.add(passwordLabel);
+        String usernameText = InternationalizationManager.getTranslation("Enter Coop Username") + ": ";
+        JLabel usernameLabel = PWCGLabelFactory.makeLabel(usernameText, ColorMap.NEWSPAPER_BACKGROUND, ColorMap.NEWSPAPER_FOREGROUND, font, SwingConstants.RIGHT);
+
+	    descPanel.add(usernameLabel);
 		return descPanel;
 	}
 	

@@ -60,13 +60,13 @@ public class SelectorGUI implements ActionListener
         JPanel buttonPanel = new JPanel(new GridLayout(0, 1));
         buttonPanel.setOpaque(false);
 
-        JLabel spacerLabel = PWCGButtonFactory.makePaperLabelMedium("");        
+        JLabel spacerLabel = PWCGLabelFactory.makePaperLabelMedium("");        
         buttonPanel.add(spacerLabel);
 
-        spacerLabel = PWCGButtonFactory.makePaperLabelMedium("");        
+        spacerLabel = PWCGLabelFactory.makePaperLabelMedium("");        
         buttonPanel.add(spacerLabel);
 
-        spacerLabel = PWCGButtonFactory.makePaperLabelMedium("");        
+        spacerLabel = PWCGLabelFactory.makePaperLabelMedium("");        
         buttonPanel.add(spacerLabel);
 
         JButton acceptButton = PWCGButtonFactory.makePaperButtonWithBorder("Accept ===>", "Accept", "Select entry", this);
@@ -74,7 +74,7 @@ public class SelectorGUI implements ActionListener
         acceptButton.setHorizontalAlignment(SwingConstants.CENTER);
         buttonPanel.add(acceptButton);
 
-        spacerLabel = PWCGButtonFactory.makePaperLabelMedium("");        
+        spacerLabel = PWCGLabelFactory.makePaperLabelMedium("");        
         buttonPanel.add(spacerLabel);
 
         if (allowReject)
@@ -85,13 +85,13 @@ public class SelectorGUI implements ActionListener
             buttonPanel.add(rejectButton);
         }
         
-        spacerLabel = PWCGButtonFactory.makePaperLabelMedium("");        
+        spacerLabel = PWCGLabelFactory.makePaperLabelMedium("");        
         buttonPanel.add(spacerLabel);
 
-        spacerLabel = PWCGButtonFactory.makePaperLabelMedium("");        
+        spacerLabel = PWCGLabelFactory.makePaperLabelMedium("");        
         buttonPanel.add(spacerLabel);
 
-        spacerLabel = PWCGButtonFactory.makePaperLabelMedium("");        
+        spacerLabel = PWCGLabelFactory.makePaperLabelMedium("");        
         buttonPanel.add(spacerLabel);
         
         JPanel buttonGridContainer = new JPanel(new BorderLayout());

@@ -12,6 +12,7 @@ import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
@@ -19,6 +20,7 @@ import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerVictoryD
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.PlaneType;
+import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
@@ -70,25 +72,27 @@ public class AARClaimPanel extends JPanel implements ActionListener
 
 		for (int i = 0 ; i < 20; ++i)
 		{
-			cbVictoriesClaimedBoxes.addItem("Victories Claimed: " + i);
+	        String victoryClaimsText = InternationalizationManager.getTranslation("Victories Claimed");
+	        victoryClaimsText += ": ";
+			cbVictoriesClaimedBoxes.addItem(victoryClaimsText + i);
 		}
 
-		JPanel victoriesClaimedPanel = new JPanel (new GridLayout(0,4));
-		victoriesClaimedPanel.setOpaque(false);
+		JPanel claimedPanel = new JPanel (new GridLayout(0,4));
+		claimedPanel.setOpaque(false);
 		
-		victoriesClaimedPanel.add(PWCGLabelFactory.makeDummyLabel());
+		claimedPanel.add(PWCGLabelFactory.makeDummyLabel());
 
-		JLabel lVictories = new JLabel("Air to Air Claims: ", JLabel.RIGHT);
-		lVictories.setBackground(bgColor);
-		lVictories.setFont(font);
-		lVictories.setOpaque(false);
-		victoriesClaimedPanel.add(lVictories);
-		victoriesClaimedPanel.add(cbVictoriesClaimedBoxes);
-		victoriesClaimedPanel.setBackground(bgColor);
+        String airToAirClaimsText = InternationalizationManager.getTranslation("Air to Air Claims");
+        airToAirClaimsText += ": ";
+        JLabel lClaims = PWCGLabelFactory.makeLabel(airToAirClaimsText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.RIGHT);
 
-		victoriesClaimedPanel.add(PWCGLabelFactory.makeDummyLabel());
+		claimedPanel.add(lClaims);
+		claimedPanel.add(cbVictoriesClaimedBoxes);
+		claimedPanel.setBackground(bgColor);
+
+		claimedPanel.add(PWCGLabelFactory.makeDummyLabel());
 		
-		selectedPanel.add (victoriesClaimedPanel, BorderLayout.NORTH);
+		selectedPanel.add (claimedPanel, BorderLayout.NORTH);
 		
 		return selectedPanel;
 	}
@@ -110,9 +114,9 @@ public class AARClaimPanel extends JPanel implements ActionListener
 			JPanel victoryPanel = new JPanel(new GridLayout(0,4));
 			victoryPanel.setOpaque(false);
 
-			JLabel lVictories = new JLabel("Victory Report: ", JLabel.RIGHT);
-			lVictories.setOpaque(false);
-			lVictories.setFont(font);
+	        String victoryReportText = InternationalizationManager.getTranslation("Victory Report");
+	        victoryReportText += ": ";
+	        JLabel lVictories = PWCGLabelFactory.makeLabel(victoryReportText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.RIGHT);
 
 			JComboBox<String> cbPlane = createPlaneDropdown(bgColor, font);
 			cbPlaneBoxes.add(cbPlane);

@@ -1,7 +1,6 @@
 package pwcg.gui.campaign.home;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -9,8 +8,10 @@ import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
@@ -43,13 +44,11 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
 
     private JPanel createPilotListPanel(List<SquadronMember> sortedPilots) throws PWCGException
     {
-        Color buttonBG = ColorMap.CHALK_BACKGROUND;
-        Color buttonFG = ColorMap.CHALK_FOREGROUND;
         Font font = PWCGMonitorFonts.getChalkboardFont();
 
         GridBagConstraints constraints = initializeGridbagConstraints();
-        JPanel squadronPanel = createChalkboardHeader(constraints, buttonFG, font);
-        addPilotsToChalkBoard(sortedPilots, squadronPanel, constraints, buttonBG, buttonFG, font);
+        JPanel squadronPanel = createChalkboardHeader(constraints, font);
+        addPilotsToChalkBoard(sortedPilots, squadronPanel, constraints, font);
 
         return squadronPanel;
     }
@@ -64,7 +63,7 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
         return constraints;
     }
 
-    private JPanel createChalkboardHeader(GridBagConstraints constraints, Color buttonFG, Font font) throws PWCGException
+    private JPanel createChalkboardHeader(GridBagConstraints constraints, Font font) throws PWCGException
     {
         JPanel squadronPanel = new JPanel();
         squadronPanel.setOpaque(false);
@@ -76,59 +75,47 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
         constraints.gridy = 0;
         squadronPanel.add(PWCGLabelFactory.makeDummyLabel(), constraints);
 
-        JLabel lRankHeader = new JLabel("Pilot", JLabel.LEFT);
-        lRankHeader.setOpaque(false);
-        lRankHeader.setForeground(buttonFG);
-        lRankHeader.setFont(font);
+        String lPilotLabelText = InternationalizationManager.getTranslation("Pilot");
+        JLabel lPilotLabel = PWCGLabelFactory.makeLabel(lPilotLabelText, ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
         constraints.weightx = 0.15;
         constraints.gridx = 1;
         constraints.gridy = 0;
-        squadronPanel.add(lRankHeader, constraints);
+        squadronPanel.add(lPilotLabel, constraints);
 
-        JLabel lMissionHeader = new JLabel("Missions", JLabel.RIGHT);
-        lMissionHeader.setOpaque(false);
-        lMissionHeader.setForeground(buttonFG);
-        lMissionHeader.setFont(font);
+        String lMissionLabelText = InternationalizationManager.getTranslation("Missions");
+        JLabel lMissionLabel = PWCGLabelFactory.makeLabel(lMissionLabelText, ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
         constraints.weightx = 0.1;
         constraints.gridx = 2;
         constraints.gridy = 0;
-        squadronPanel.add(lMissionHeader, constraints);
+        squadronPanel.add(lMissionLabel, constraints);
 
-        JLabel airVictoryHeader = new JLabel("Air", JLabel.RIGHT);
-        airVictoryHeader.setOpaque(false);
-        airVictoryHeader.setForeground(buttonFG);
-        airVictoryHeader.setFont(font);
+        String lAirLabelText = InternationalizationManager.getTranslation("Air");
+        JLabel lAirLabel = PWCGLabelFactory.makeLabel(lAirLabelText, ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
         constraints.weightx = 0.1;
         constraints.gridx = 3;
         constraints.gridy = 0;
-        squadronPanel.add(airVictoryHeader, constraints);
+        squadronPanel.add(lAirLabel, constraints);
 
-        JLabel tankVictoryHeader = new JLabel("Tank", JLabel.RIGHT);
-        tankVictoryHeader.setOpaque(false);
-        tankVictoryHeader.setForeground(buttonFG);
-        tankVictoryHeader.setFont(font);
+        String lTankLabelText = InternationalizationManager.getTranslation("Tank");
+        JLabel lTankLabel = PWCGLabelFactory.makeLabel(lTankLabelText, ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
         constraints.weightx = 0.1;
         constraints.gridx = 4;
         constraints.gridy = 0;
-        squadronPanel.add(tankVictoryHeader, constraints);
+        squadronPanel.add(lTankLabel, constraints);
 
-        JLabel trainVictoryHeader = new JLabel("Train", JLabel.RIGHT);
-        trainVictoryHeader.setOpaque(false);
-        trainVictoryHeader.setForeground(buttonFG);
-        trainVictoryHeader.setFont(font);
+        String lTrainLabelText = InternationalizationManager.getTranslation("Train");
+        JLabel lTrainLabel = PWCGLabelFactory.makeLabel(lTrainLabelText, ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
         constraints.weightx = 0.1;
         constraints.gridx = 5;
         constraints.gridy = 0;
-        squadronPanel.add(trainVictoryHeader, constraints);
+        squadronPanel.add(lTrainLabel, constraints);
 
-        JLabel groundVictoryHeader = new JLabel("Ground", JLabel.RIGHT);
-        groundVictoryHeader.setOpaque(false);
-        groundVictoryHeader.setForeground(buttonFG);
-        groundVictoryHeader.setFont(font);
+        String lGroundLabelText = InternationalizationManager.getTranslation("Ground");
+        JLabel lGroundLabel = PWCGLabelFactory.makeLabel(lGroundLabelText, ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
         constraints.weightx = 0.1;
         constraints.gridx = 6;
         constraints.gridy = 0;
-        squadronPanel.add(groundVictoryHeader, constraints);
+        squadronPanel.add(lGroundLabel, constraints);
 
         constraints.gridx = 7;
         constraints.gridy = 0;
@@ -136,7 +123,7 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
         return squadronPanel;
     }
 
-    private void addPilotsToChalkBoard(List<SquadronMember> sortedPilots, JPanel squadronPanel, GridBagConstraints constraints, Color buttonBG, Color buttonFG, Font font) throws PWCGException
+    private void addPilotsToChalkBoard(List<SquadronMember> sortedPilots, JPanel squadronPanel, GridBagConstraints constraints, Font font) throws PWCGException
     {
         int gridbaRow = 1;
         for (SquadronMember pilot : sortedPilots)
@@ -145,62 +132,48 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
             constraints.gridx = 0;
             constraints.gridy = gridbaRow;
             squadronPanel.add(PWCGLabelFactory.makeDummyLabel(), constraints);
-
-            JLabel pilotButton = new JLabel(pilot.getNameAndRank());
-            pilotButton.setHorizontalAlignment(JLabel.LEFT);
-            pilotButton.setOpaque(false);
-            pilotButton.setBackground(buttonBG);
-            pilotButton.setForeground(buttonFG);
-            pilotButton.setFont(font);
+            
+            JLabel pilotLabel = PWCGLabelFactory.makeLabel(
+                    pilot.getNameAndRank(), ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
             constraints.weightx = 0.15;
             constraints.gridx = 1;
             constraints.gridy = gridbaRow;
-            squadronPanel.add(pilotButton, constraints);
+            squadronPanel.add(pilotLabel, constraints);
 
-            JLabel lMissions = new JLabel("" + pilot.getMissionFlown(), JLabel.RIGHT);
-            lMissions.setOpaque(false);
-            lMissions.setForeground(buttonFG);
-            lMissions.setFont(font);
+            JLabel missionsFlownLabel = PWCGLabelFactory.makeLabel(
+                    "" + pilot.getMissionFlown(), ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
             constraints.weightx = 0.1;
             constraints.gridx = 2;
             constraints.gridy = gridbaRow;
-            squadronPanel.add(lMissions, constraints);
+            squadronPanel.add(missionsFlownLabel, constraints);
             
-            JLabel airVictories = new JLabel("" + pilot.getSquadronMemberVictories().getAirToAirVictoryCount(), JLabel.RIGHT);
-            airVictories.setOpaque(false);
-            airVictories.setForeground(buttonFG);
-            airVictories.setFont(font);
+            JLabel airToAirVicroryLabel = PWCGLabelFactory.makeLabel(
+                    "" + pilot.getSquadronMemberVictories().getAirToAirVictoryCount(), ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
             constraints.weightx = 0.1;
             constraints.gridx = 3;
             constraints.gridy = gridbaRow;
-            squadronPanel.add(airVictories, constraints);
+            squadronPanel.add(airToAirVicroryLabel, constraints);
             
-            JLabel tankVictories = new JLabel("" + pilot.getSquadronMemberVictories().getTankVictoryCount(), JLabel.RIGHT);
-            tankVictories.setOpaque(false);
-            tankVictories.setForeground(buttonFG);
-            tankVictories.setFont(font);
+            JLabel tankVicroryLabel = PWCGLabelFactory.makeLabel(
+                    "" + pilot.getSquadronMemberVictories().getTankVictoryCount(), ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
             constraints.weightx = 0.1;
             constraints.gridx = 4;
             constraints.gridy = gridbaRow;
-            squadronPanel.add(tankVictories, constraints);
+            squadronPanel.add(tankVicroryLabel, constraints);
             
-            JLabel trainVictories = new JLabel("" + pilot.getSquadronMemberVictories().getTrainVictoryCount(), JLabel.RIGHT);
-            trainVictories.setOpaque(false);
-            trainVictories.setForeground(buttonFG);
-            trainVictories.setFont(font);
+            JLabel trainVicroryLabel = PWCGLabelFactory.makeLabel(
+                    "" + pilot.getSquadronMemberVictories().getTrainVictoryCount(), ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
             constraints.weightx = 0.1;
             constraints.gridx = 5;
             constraints.gridy = gridbaRow;
-            squadronPanel.add(trainVictories, constraints);
+            squadronPanel.add(trainVicroryLabel, constraints);
             
-            JLabel groundVictories = new JLabel("" + pilot.getSquadronMemberVictories().getGroundVictoryCount(), JLabel.RIGHT);
-            groundVictories.setOpaque(false);
-            groundVictories.setForeground(buttonFG);
-            groundVictories.setFont(font);
+            JLabel groundVicroryLabel = PWCGLabelFactory.makeLabel(
+                    "" + pilot.getSquadronMemberVictories().getGroundVictoryCount(), ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
             constraints.weightx = 0.1;
             constraints.gridx = 6;
             constraints.gridy = gridbaRow;
-            squadronPanel.add(groundVictories, constraints);
+            squadronPanel.add(groundVicroryLabel, constraints);
              
             constraints.gridx = 7;
             constraints.gridy = gridbaRow;

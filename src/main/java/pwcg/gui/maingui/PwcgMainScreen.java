@@ -263,25 +263,16 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
     
 	public JPanel makeVersionPanel() throws PWCGException  
 	{
-
 		Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
-		Color lbg = ColorMap.WOOD_BACKGROUND;
-		Color fg = ColorMap.WOOD_FOREGROUND;
+        String versionText = InternationalizationManager.getTranslation("PWCG Version") + ": " + VERSION;
+        JLabel lversion = PWCGLabelFactory.makeLabel(versionText, ColorMap.WOOD_BACKGROUND, ColorMap.WOOD_FOREGROUND, font, SwingConstants.RIGHT);
 
-		JPanel versionPanel = new JPanel ();
-		versionPanel.setLayout(new GridLayout(0,1));
-		versionPanel.setOpaque(false);
-
-		versionPanel.add(PWCGLabelFactory.makeDummyLabel());
-
-		JLabel lversion = new JLabel(InternationalizationManager.getTranslation("PWCG Version") + VERSION, JLabel.LEFT);
-		lversion.setBackground(lbg);
-		lversion.setForeground(fg);
-		lversion.setOpaque(false);
-		lversion.setFont(font);
+        JPanel versionPanel = new JPanel ();
+        versionPanel.setLayout(new GridLayout(0,1));
+        versionPanel.setOpaque(false);
+        versionPanel.add(PWCGLabelFactory.makeDummyLabel());
         versionPanel.add(lversion);
-
 		versionPanel.add(PWCGLabelFactory.makeDummyLabel());
 				
 		return versionPanel;

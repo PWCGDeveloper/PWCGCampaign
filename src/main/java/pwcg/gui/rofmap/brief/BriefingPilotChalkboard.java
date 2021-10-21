@@ -28,6 +28,7 @@ import pwcg.gui.rofmap.brief.model.BriefingFlight;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 
@@ -110,19 +111,19 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
     private void makeLabelsForChalkboard(JPanel assignedPilotPanel) throws PWCGException
     {
         GridBagConstraints pilotConstraints = makeGridBagConstraints(1, 1, pilotWeightx, pilotWeighty);
-        JLabel assignedPilotLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Assigned Pilots");
+        JLabel assignedPilotLabel = PWCGLabelFactory.makeBriefingChalkBoardLabel("Assigned Pilots");
         assignedPilotPanel.add(assignedPilotLabel, pilotConstraints);
 
         GridBagConstraints planeConstraints = makeGridBagConstraints(1, 2, planeNameWeightx, planeNameWeighty);
-        JLabel assignedAircraftLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Aircraft");
+        JLabel assignedAircraftLabel = PWCGLabelFactory.makeBriefingChalkBoardLabel("Aircraft");
         assignedPilotPanel.add(assignedAircraftLabel, planeConstraints);
 
         GridBagConstraints payloadConstraints = makeGridBagConstraints(1, 3, payloadWeightx, payloadWeighty);
-        JLabel payloadLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Payload");
+        JLabel payloadLabel = PWCGLabelFactory.makeBriefingChalkBoardLabel("Payload");
         assignedPilotPanel.add(payloadLabel, payloadConstraints);
 
         GridBagConstraints modificationsConstraints = makeGridBagConstraints(1, 4, modificationsWeightx, modificationsWeighty);
-        JLabel modificationsLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Modifications");
+        JLabel modificationsLabel = PWCGLabelFactory.makeBriefingChalkBoardLabel("Modifications");
         assignedPilotPanel.add(modificationsLabel, modificationsConstraints);
     }
 
@@ -260,21 +261,21 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
         {
             for (int j = 0; j < 4; ++j)
             {
-                JLabel planeSpaceLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
+                JLabel planeSpaceLabel = PWCGLabelFactory.makeBriefingChalkBoardLabel("   ");
                 unassignedPilotGrid.add(planeSpaceLabel);
             }
         }
 
-        JLabel unassignedLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Unassigned Pilots");
+        JLabel unassignedLabel = PWCGLabelFactory.makeBriefingChalkBoardLabel("Unassigned Pilots");
         unassignedPilotGrid.add(unassignedLabel);
 
-        JLabel assignedAircraftLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
+        JLabel assignedAircraftLabel = PWCGLabelFactory.makeBriefingChalkBoardLabel("   ");
         unassignedPilotGrid.add(assignedAircraftLabel);
 
-        JLabel payloadLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
+        JLabel payloadLabel = PWCGLabelFactory.makeBriefingChalkBoardLabel("   ");
         unassignedPilotGrid.add(payloadLabel);
 
-        JLabel modificationsLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
+        JLabel modificationsLabel = PWCGLabelFactory.makeBriefingChalkBoardLabel("   ");
         unassignedPilotGrid.add(modificationsLabel);
 
         BriefingFlight briefingMissionHandler = briefingContext.getActiveBriefingFlight();
@@ -299,7 +300,7 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
             }
             else
             {
-                JLabel planeSpaceLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
+                JLabel planeSpaceLabel = PWCGLabelFactory.makeBriefingChalkBoardLabel("   ");
                 unassignedPilotGrid.add(planeSpaceLabel);
             }
 
@@ -307,19 +308,19 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
             {
                 EquippedPlane unassignedPlane = sortedUnassignedPlanes.get(i);
                 String planeNameText = formPlaneName(unassignedPlane.getDisplayName(), unassignedPlane.getDisplayMarkings());
-                JLabel planeLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel(planeNameText);
+                JLabel planeLabel = PWCGLabelFactory.makeBriefingChalkBoardLabel(planeNameText);
                 unassignedPilotGrid.add(planeLabel);
             }
             else
             {
-                JLabel planeSpaceLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
+                JLabel planeSpaceLabel = PWCGLabelFactory.makeBriefingChalkBoardLabel("   ");
                 unassignedPilotGrid.add(planeSpaceLabel);
             }
 
-            JLabel payloadSpaceLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
+            JLabel payloadSpaceLabel = PWCGLabelFactory.makeBriefingChalkBoardLabel("   ");
             unassignedPilotGrid.add(payloadSpaceLabel);
 
-            JLabel modificationsSpaceLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
+            JLabel modificationsSpaceLabel = PWCGLabelFactory.makeBriefingChalkBoardLabel("   ");
             unassignedPilotGrid.add(modificationsSpaceLabel);
         }
         

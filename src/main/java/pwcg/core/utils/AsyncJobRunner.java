@@ -1,5 +1,6 @@
 package pwcg.core.utils;
 
+import java.awt.Font;
 import java.awt.Frame;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +14,13 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
+import javax.swing.SwingConstants;
 import javax.swing.SwingWorker;
 import javax.swing.border.EmptyBorder;
+
+import pwcg.gui.colors.ColorMap;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
+import pwcg.gui.utils.PWCGLabelFactory;
 
 public class AsyncJobRunner {
     private ThreadPoolExecutor executorService;
@@ -64,9 +70,21 @@ public class AsyncJobRunner {
         progressBar.setIndeterminate(indeterminate);
         progressBar.setStringPainted(true);
         if (indeterminate)
+        {
             progressBar.setString("");
-
-        panel.add(new JLabel(desc));
+        }
+        
+        try
+        {
+            Font font = PWCGMonitorFonts.getTypewriterFont();
+            JLabel statusLabel = PWCGLabelFactory.makeLabel(desc, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
+            panel.add(statusLabel);
+        }
+        catch (Exception e)
+        {
+            PWCGLogger.logException(e);
+        }
+        
         panel.add(progressBar);
 
         progressDialog.add(panel);

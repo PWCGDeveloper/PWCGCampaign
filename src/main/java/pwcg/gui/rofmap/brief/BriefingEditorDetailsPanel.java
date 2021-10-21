@@ -8,11 +8,15 @@ import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
 
+import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
+import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.rofmap.brief.model.BriefingFlight;
 import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 
 public class BriefingEditorDetailsPanel
@@ -88,46 +92,36 @@ public class BriefingEditorDetailsPanel
     {
         Font font = PWCGMonitorFonts.getTypewriterFont();
 
-        JLabel wpName = new JLabel ("WP");      
-        wpName.setFont(font);
-        
-        wpName.setHorizontalAlignment(JLabel.CENTER);
+        String wpNameText = InternationalizationManager.getTranslation("WP");
+        JLabel wpName = PWCGLabelFactory.makeLabel(wpNameText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.CENTER);
         constraints.weightx = 0.15;
         constraints.gridx = 0;
         constraints.gridy = 0;
         panel.add(wpName, constraints);
         
-        JLabel altLabel = new JLabel ("Alt (Meters)");
-        altLabel.setFont(font);
-
-        altLabel.setHorizontalAlignment(JLabel.CENTER);
+        String altLabelText = InternationalizationManager.getTranslation("Alt in Meters");
+        JLabel altLabel = PWCGLabelFactory.makeLabel(altLabelText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.CENTER);
         constraints.weightx = 0.2;
         constraints.gridx = 1;
         constraints.gridy = 0;
         panel.add(altLabel, constraints);
-
-        JLabel cruiseSpeedLabel = new JLabel ("Cruise Speed");
-        cruiseSpeedLabel.setFont(font);
-
-        cruiseSpeedLabel.setHorizontalAlignment(JLabel.CENTER);
+        
+        String cruiseSpeedLabelText = InternationalizationManager.getTranslation("Cruise Speed");
+        JLabel cruiseSpeedLabel = PWCGLabelFactory.makeLabel(cruiseSpeedLabelText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.CENTER);
         constraints.weightx = 0.2;
         constraints.gridx = 2;
         constraints.gridy = 0;
         panel.add(cruiseSpeedLabel, constraints);
 
-        JLabel distLabel = new JLabel ("Dist (Km)");
-        distLabel.setFont(font);
-
-        distLabel.setHorizontalAlignment(JLabel.CENTER);
+        String distLabelText = InternationalizationManager.getTranslation("Dist in Km");
+        JLabel distLabel = PWCGLabelFactory.makeLabel(distLabelText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.CENTER);
         constraints.weightx = 0.2;
         constraints.gridx = 3;
         constraints.gridy = 0;
         panel.add(distLabel, constraints);
         
-        JLabel headingLabel = new JLabel ("Heading");
-        headingLabel.setFont(font);
-        
-        headingLabel.setHorizontalAlignment(JLabel.CENTER);
+        String headingLabelText = InternationalizationManager.getTranslation("Heading");
+        JLabel headingLabel = PWCGLabelFactory.makeLabel(headingLabelText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.CENTER);
         constraints.weightx = 0.2;
         constraints.gridx = 4;
         constraints.gridy = 0;

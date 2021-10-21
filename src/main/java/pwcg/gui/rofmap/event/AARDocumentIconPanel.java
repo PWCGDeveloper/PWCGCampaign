@@ -23,6 +23,7 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.image.ImageCache;
+import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.TextGraphicsMeasurement;
 
 public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPanel
@@ -71,7 +72,7 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
             BufferedImage resizedImage = resizeImage(folderImage);
 
             ImageIcon icon = new ImageIcon(resizedImage);
-            JLabel imageLabel = new JLabel(icon);
+            JLabel imageLabel= PWCGLabelFactory.makeIconLabel(icon);
             this.add(imageLabel, BorderLayout.CENTER);
         }
         catch (Exception e)

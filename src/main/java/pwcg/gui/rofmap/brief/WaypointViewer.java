@@ -1,13 +1,15 @@
 package pwcg.gui.rofmap.brief;
 
-import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.rofmap.brief.model.BriefingMapPoint;
+import pwcg.gui.utils.PWCGLabelFactory;
 
 public class WaypointViewer implements IWaypointDetails
 {
@@ -100,14 +102,8 @@ public class WaypointViewer implements IWaypointDetails
     private JLabel makeLabelField() throws PWCGException
     {
         Font font = PWCGMonitorFonts.getTypewriterFont();
-
-        JLabel field = new JLabel();
-        field.setOpaque(false);
-        field.setFont(font);
-        field.setHorizontalAlignment(JLabel.RIGHT);
-        field.setForeground(Color.BLACK);
-
-        return field;
+        JLabel label = PWCGLabelFactory.makeLabel("", ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.RIGHT);
+        return label;
     }
 
     @Override

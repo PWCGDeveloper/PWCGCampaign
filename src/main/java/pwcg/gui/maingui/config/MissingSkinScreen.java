@@ -13,15 +13,18 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
+import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MissingSkin;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -106,9 +109,8 @@ public class MissingSkinScreen extends ImageResizingPanel implements ActionListe
         reportPanel.setOpaque(false);
 
         Font headerFont = PWCGMonitorFonts.getDecorativeFont();
-        JLabel reportHeaderLabel = new JLabel(header);
-        reportHeaderLabel.setOpaque(false);
-        reportHeaderLabel.setFont(headerFont);
+        
+        JLabel reportHeaderLabel = PWCGLabelFactory.makeLabel(header, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, headerFont, SwingConstants.LEFT);
         reportPanel.add(reportHeaderLabel, BorderLayout.NORTH);
         
         JPanel reportBodyPanel = generateReportBody();
@@ -121,7 +123,7 @@ public class MissingSkinScreen extends ImageResizingPanel implements ActionListe
         return missingSkinDisplayPanel;
     }
 
-    private String generateReportHeader()
+    private String generateReportHeader() throws PWCGException
     {
         int numMissingSkins = 0;
                 
@@ -130,7 +132,7 @@ public class MissingSkinScreen extends ImageResizingPanel implements ActionListe
             numMissingSkins += missingSkinSet.size();
         }
 
-        return "Missing Skin Report: " + numMissingSkins + " skins are missing";
+        return (InternationalizationManager.getTranslation("Missing Skin Report") + ": " + numMissingSkins + " " + InternationalizationManager.getTranslation("skins are missing"));
     }
 
     private JPanel generateReportBody() throws PWCGException
@@ -145,16 +147,16 @@ public class MissingSkinScreen extends ImageResizingPanel implements ActionListe
             
             if (missingSkinSet.size() > 0)
             {
-                JLabel reportBodyPlaneLabel = PWCGButtonFactory.makePaperLabelMedium("Plane: " + plane.getDisplayName());
+                JLabel reportBodyPlaneLabel = PWCGLabelFactory.makePaperLabelMedium("Plane: " + plane.getDisplayName());
                 reportBodyPanel.add(reportBodyPlaneLabel);
-                JLabel reportBodyPlaneDummy = PWCGButtonFactory.makePaperLabelMedium(" ");
+                JLabel reportBodyPlaneDummy = PWCGLabelFactory.makePaperLabelMedium(" ");
                 reportBodyPanel.add(reportBodyPlaneDummy);
     
                 for (MissingSkin missingSkin : missingSkinSet)
                 {
-                    JLabel reportBodySkinLabel = PWCGButtonFactory.makePaperLabelMedium(missingSkin.getSkinName());
+                    JLabel reportBodySkinLabel = PWCGLabelFactory.makePaperLabelMedium(missingSkin.getSkinName());
                     reportBodyPanel.add(reportBodySkinLabel);
-                    JLabel reportBodyCategoryLabel = PWCGButtonFactory.makePaperLabelMedium(missingSkin.getCategory());
+                    JLabel reportBodyCategoryLabel = PWCGLabelFactory.makePaperLabelMedium(missingSkin.getCategory());
                     reportBodyPanel.add(reportBodyCategoryLabel);
                 }
             }

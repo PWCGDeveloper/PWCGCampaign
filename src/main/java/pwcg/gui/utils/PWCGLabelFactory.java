@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -25,6 +26,13 @@ public class PWCGLabelFactory extends JButton
         lDummy.setOpaque(false);
         return lDummy;
     }
+    
+    public static JLabel makeIconLabel(Icon icon)
+    {
+        JLabel lIcon = new JLabel(icon);
+        lIcon.setOpaque(false);
+        return lIcon;
+    }
 
     public static JLabel makeMenuLabelLarge(String displayText) throws PWCGException
     {
@@ -32,7 +40,7 @@ public class PWCGLabelFactory extends JButton
         Color fgColor = ColorMap.CHALK_FOREGROUND;
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
-        JLabel label = makeLabel(displayText, bgColor, fgColor, font);
+        JLabel label = makeLabel(displayText, bgColor, fgColor, font, SwingConstants.LEFT);
         return label;
     }
 
@@ -42,13 +50,12 @@ public class PWCGLabelFactory extends JButton
         Color fgColor = ColorMap.PAPER_FOREGROUND;
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
-        JLabel label = makeLabel(displayText, bgColor, fgColor, font);
+        JLabel label = makeLabel(displayText, bgColor, fgColor, font, SwingConstants.LEFT);
         return label;
     }
 
-    public static JLabel makeLabel(String displayText, Color bgColor, Color fgColor, Font font) throws PWCGException
+    public static JLabel makeLabel(String displayText, Color bgColor, Color fgColor, Font font, int alignment) throws PWCGException
     {
-        displayText = InternationalizationManager.getTranslation(displayText);
         displayText = padStringToExtendImageSize(displayText);
 
         JLabel label = new JLabel(displayText);
@@ -56,26 +63,65 @@ public class PWCGLabelFactory extends JButton
         label.setForeground(fgColor);
         label.setOpaque(false);
         label.setFont(font);
-        label.setHorizontalAlignment(SwingConstants.LEFT);
+        label.setHorizontalAlignment(alignment);
+        return label;
+    }
+
+    public static JLabel makePaperLabelMedium(String displayText) throws PWCGException 
+    {
+        displayText = InternationalizationManager.getTranslation(displayText);
+
+        Color bgColor = ColorMap.PAPER_BACKGROUND;
+        Color fgColor = ColorMap.PAPER_FOREGROUND;
+        Font font = PWCGMonitorFonts.getPrimaryFont();
+        
+        JLabel label = makeLabel(displayText, bgColor, fgColor, font, SwingConstants.LEFT);
+        
+        return label;
+    }
+
+    public static JLabel makeChalkBoardLabel(String displayText) throws PWCGException 
+    {
+        displayText = InternationalizationManager.getTranslation(displayText);
+
+        Color bgColor = ColorMap.CHALK_BACKGROUND;
+        Color fgColor = ColorMap.CHALK_FOREGROUND;
+        Font font = PWCGMonitorFonts.getChalkboardFont();
+        
+        JLabel label = makeLabel(displayText, bgColor, fgColor, font, SwingConstants.LEFT);
+        
+        return label;
+    }
+
+    public static JLabel makeBriefingChalkBoardLabel(String displayText) throws PWCGException 
+    {
+        displayText = InternationalizationManager.getTranslation(displayText);
+
+        Color bgColor = ColorMap.CHALK_BACKGROUND;
+        Color fgColor = ColorMap.CHALK_FOREGROUND;
+        Font font = PWCGMonitorFonts.getBriefingChalkboardFont();
+        
+        JLabel label = makeLabel(displayText, bgColor, fgColor, font, SwingConstants.LEFT);
+        
         return label;
     }
 
     public static JLabel makeImageLabel(ImageIcon icon)
     {
-        JLabel imageLabel= new JLabel(icon);
+        JLabel imageLabel = new JLabel(icon);
         return imageLabel;
     }
 
     private static String padStringToExtendImageSize(String originalString)
     {
         String paddedString = originalString;
-        
+
         Dimension screenSize = PWCGMonitorSupport.getPWCGFrameSize();
         Double pixelsToUseDouble = screenSize.width * .2;
         int pixelsToUse = pixelsToUseDouble.intValue();
-        
+
         int charactersToUse = pixelsToUse / 8;
-        
+
         if (originalString.length() < charactersToUse)
         {
             for (int i = originalString.length(); i < charactersToUse; ++i)
@@ -83,7 +129,7 @@ public class PWCGLabelFactory extends JButton
                 paddedString += " ";
             }
         }
-        
+
         return paddedString;
     }
 }
