@@ -3,7 +3,6 @@ package pwcg.gui.campaign.activity;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -11,7 +10,6 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -48,7 +46,6 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.image.ImageCache;
 import pwcg.gui.rofmap.event.AARReportMainPanel;
 import pwcg.gui.rofmap.event.AARReportMainPanel.EventPanelReason;
 import pwcg.gui.sound.SoundManager;
@@ -145,17 +142,9 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         JPanel transferRequest = makeTransferDocumentPanel();
         transferCenterPanel.add(transferRequest, BorderLayout.CENTER);
         
-        setDocumentSize(transferCenterPanel);
+        ImageToDisplaySizer.setDocumentSize(transferCenterPanel);
 
         return transferCenterPanel;
-    }
-
-    private void setDocumentSize(JPanel centerPanel) throws PWCGException
-    {
-        String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        BufferedImage documentImage = ImageCache.getImageFromFile(imagePath);
-        Dimension imagePanelDimensions = ImageToDisplaySizer.getDimensionsForScreen(documentImage);
-        centerPanel.setPreferredSize(new Dimension(imagePanelDimensions.width, imagePanelDimensions.height));
     }
 
 	private JPanel makeTransferDocumentPanel() throws PWCGException  

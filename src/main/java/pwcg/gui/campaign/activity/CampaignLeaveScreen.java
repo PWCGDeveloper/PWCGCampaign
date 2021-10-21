@@ -2,7 +2,6 @@ package pwcg.gui.campaign.activity;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -10,7 +9,6 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -34,7 +32,6 @@ import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.image.ImageCache;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
@@ -122,10 +119,7 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         JPanel leaveNotification = makeLeaveLetterPanel();
         leaveCenterPanel.add(leaveNotification, BorderLayout.CENTER);
 
-        String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        BufferedImage documentImage = ImageCache.getImageFromFile(imagePath);
-        Dimension imagePanelDimensions = ImageToDisplaySizer.getDimensionsForScreen(documentImage);
-        leaveCenterPanel.setPreferredSize(new Dimension(imagePanelDimensions.width, imagePanelDimensions.height));
+        ImageToDisplaySizer.setDocumentSize(leaveCenterPanel);
 
         return leaveCenterPanel;
     }

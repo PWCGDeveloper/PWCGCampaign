@@ -2,14 +2,12 @@ package pwcg.gui.campaign.intel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -27,7 +25,6 @@ import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.image.ImageCache;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageToDisplaySizer;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -119,18 +116,10 @@ public class CampaignEquipmentDepotScreen extends ImageResizingPanel implements 
 
         equipmentDepotPanel.add(tabs, BorderLayout.CENTER);
 
-        setDocumentSize(equipmentDepotPanel);
+        ImageToDisplaySizer.setDocumentSize(equipmentDepotPanel);
         
 		return equipmentDepotPanel;
 	}
-
-    private void setDocumentSize(JPanel centerPanel) throws PWCGException
-    {
-        String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        BufferedImage documentImage = ImageCache.getImageFromFile(imagePath);
-        Dimension imagePanelDimensions = ImageToDisplaySizer.getDimensionsForScreen(documentImage);
-        centerPanel.setPreferredSize(new Dimension(imagePanelDimensions.width, imagePanelDimensions.height));
-    }
 
     public void actionPerformed(ActionEvent ae)
     {

@@ -5,7 +5,13 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 
+import javax.swing.JPanel;
+
+import pwcg.core.exception.PWCGException;
+import pwcg.gui.ScreenIdentifier;
+import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
+import pwcg.gui.image.ImageCache;
 
 public class ImageToDisplaySizer
 {
@@ -35,6 +41,15 @@ public class ImageToDisplaySizer
         Dimension imagePanelDimensions = new Dimension(width.intValue(), height.intValue());
 
         return imagePanelDimensions;
+    }
+
+
+    public static void setDocumentSize(JPanel centerPanel) throws PWCGException
+    {
+        String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
+        BufferedImage documentImage = ImageCache.getImageFromFile(imagePath);
+        Dimension imagePanelDimensions = ImageToDisplaySizer.getDimensionsForScreen(documentImage);
+        centerPanel.setPreferredSize(new Dimension(imagePanelDimensions.width, imagePanelDimensions.height));
     }
 
 }

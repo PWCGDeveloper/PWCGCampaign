@@ -41,6 +41,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
+import pwcg.gui.utils.ImageToDisplaySizer;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
@@ -118,6 +119,8 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
 
         JPanel equipmentReplaceConfirmationPanel = makeEquipmentSelectionConfirmationPanel();
         equipmentManagementPanel.add(equipmentReplaceConfirmationPanel, BorderLayout.SOUTH);
+
+        ImageToDisplaySizer.setDocumentSize(equipmentManagementPanel);
 
         return equipmentManagementPanel;
     }
