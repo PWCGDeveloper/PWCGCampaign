@@ -2,9 +2,14 @@ package pwcg.gui.campaign.intel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -22,7 +27,9 @@ import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
+import pwcg.gui.image.ImageCache;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageToDisplaySizer;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
@@ -36,7 +43,7 @@ public class CampaignEquipmentDepotScreen extends ImageResizingPanel implements 
 	public CampaignEquipmentDepotScreen(Campaign campaign)
 	{
         super("");
-        this.setLayout(new BorderLayout());
+        this.setLayout(new GridBagLayout());
         this.setOpaque(false);
 
         this.campaign = campaign;
@@ -46,10 +53,23 @@ public class CampaignEquipmentDepotScreen extends ImageResizingPanel implements 
 	{
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignEquipmentDepotScreen);
         this.setImageFromName(imagePath);
+        
+        GridBagConstraints constraints = initializeGridbagConstraints();
 
-        this.add(BorderLayout.WEST, makeNavigatePanel());
-        this.add(BorderLayout.CENTER,  makeCenterPanel());
-        this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1400));
+        constraints.weightx = 0.1;
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        this.add(makeNavigatePanel(), constraints);
+
+        constraints.weightx = 0.1;
+        constraints.gridx = 1;
+        constraints.gridy = 0;
+        this.add(makeCenterPanel(), constraints);
+        
+        constraints.weightx = 0.5;
+        constraints.gridx = 2;
+        constraints.gridy = 0;
+        this.add(SpacerPanelFactory.makeDocumentSpacerPanel(1400), constraints);
 	}
 
 	private JPanel makeNavigatePanel() throws PWCGException  
@@ -98,9 +118,19 @@ public class CampaignEquipmentDepotScreen extends ImageResizingPanel implements 
         }
 
         equipmentDepotPanel.add(tabs, BorderLayout.CENTER);
-		
+
+        setDocumentSize(equipmentDepotPanel);
+        
 		return equipmentDepotPanel;
 	}
+
+    private void setDocumentSize(JPanel centerPanel) throws PWCGException
+    {
+        String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
+        BufferedImage documentImage = ImageCache.getImageFromFile(imagePath);
+        Dimension imagePanelDimensions = ImageToDisplaySizer.getDimensionsForScreen(documentImage);
+        centerPanel.setPreferredSize(new Dimension(imagePanelDimensions.width, imagePanelDimensions.height));
+    }
 
     public void actionPerformed(ActionEvent ae)
     {
@@ -121,4 +151,14 @@ public class CampaignEquipmentDepotScreen extends ImageResizingPanel implements 
         }
     }
 
+    private GridBagConstraints initializeGridbagConstraints()
+    {
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.ipadx = 3;
+        constraints.ipady = 3;
+        constraints.anchor = GridBagConstraints.NORTHWEST;
+        Insets margins = new Insets(0, 50, 50, 0);
+        constraints.insets = margins;
+        return constraints;
+    }
 }

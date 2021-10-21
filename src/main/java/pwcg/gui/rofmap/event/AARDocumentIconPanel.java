@@ -2,11 +2,8 @@ package pwcg.gui.rofmap.event;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,8 +18,8 @@ import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.image.ImageCache;
+import pwcg.gui.utils.ImageToDisplaySizer;
 import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.TextGraphicsMeasurement;
 
@@ -69,7 +66,7 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
             BufferedImage documentImage = buildDocumentImage();
             BufferedImage folderImage = buildFolderImage(documentImage);
 
-            BufferedImage resizedImage = resizeImage(folderImage);
+            BufferedImage resizedImage = ImageToDisplaySizer.resizeImage(folderImage);
 
             ImageIcon icon = new ImageIcon(resizedImage);
             JLabel imageLabel= PWCGLabelFactory.makeIconLabel(icon);
@@ -243,24 +240,6 @@ public abstract class AARDocumentIconPanel extends JPanel implements IAAREventPa
         {
             return documentImage;
         }
-    }
-
-    public static BufferedImage resizeImage(BufferedImage documentImage)
-    {
-        double newspaperRatio = Double.valueOf(documentImage.getWidth()) / Double.valueOf(documentImage.getHeight());
-
-        Dimension pwcgDimensions = PWCGMonitorSupport.getPWCGFrameSize();
-        Double height = (pwcgDimensions.getHeight() * .9);
-        Double width = height * newspaperRatio;
-
-        Image tmp = documentImage.getScaledInstance(width.intValue(), height.intValue(), Image.SCALE_SMOOTH);
-        BufferedImage resizedImage = new BufferedImage(width.intValue(), height.intValue(), BufferedImage.TRANSLUCENT);
-
-        Graphics2D g2d = resizedImage.createGraphics();
-        g2d.drawImage(tmp, 0, 0, null);
-        g2d.dispose();
-
-        return resizedImage;
     }
 
     @Override

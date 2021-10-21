@@ -2,6 +2,7 @@ package pwcg.gui.campaign.activity;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -9,6 +10,7 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -32,9 +34,11 @@ import pwcg.gui.campaign.home.CampaignHomeScreen;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
+import pwcg.gui.image.ImageCache;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
+import pwcg.gui.utils.ImageToDisplaySizer;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
@@ -52,7 +56,7 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
     public CampaignLeaveScreen(CampaignHomeScreen parent)
     {
         super("");
-        this.setLayout(new BorderLayout());
+        this.setLayout(new GridBagLayout());
         this.setOpaque(false);
 
         this.parent = parent;
@@ -68,9 +72,22 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignLeaveScreen);
         this.setImageFromName(imagePath);
 
-        this.add(BorderLayout.WEST, makeNavPanel());
-        this.add(BorderLayout.CENTER, makeLeaveCenterPanel());
-        this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1400));
+        GridBagConstraints constraints = initializeGridbagConstraints();
+
+        constraints.weightx = 0.1;
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        this.add(makeNavPanel(), constraints);
+
+        constraints.weightx = 0.1;
+        constraints.gridx = 1;
+        constraints.gridy = 0;
+        this.add(makeLeaveCenterPanel(), constraints);
+        
+        constraints.weightx = 0.5;
+        constraints.gridx = 2;
+        constraints.gridy = 0;
+        this.add(SpacerPanelFactory.makeDocumentSpacerPanel(1400), constraints);
 
     }
 
@@ -104,6 +121,11 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
 
         JPanel leaveNotification = makeLeaveLetterPanel();
         leaveCenterPanel.add(leaveNotification, BorderLayout.CENTER);
+
+        String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
+        BufferedImage documentImage = ImageCache.getImageFromFile(imagePath);
+        Dimension imagePanelDimensions = ImageToDisplaySizer.getDimensionsForScreen(documentImage);
+        leaveCenterPanel.setPreferredSize(new Dimension(imagePanelDimensions.width, imagePanelDimensions.height));
 
         return leaveCenterPanel;
     }

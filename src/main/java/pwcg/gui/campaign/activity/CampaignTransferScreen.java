@@ -3,12 +3,15 @@ package pwcg.gui.campaign.activity;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -45,11 +48,13 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
+import pwcg.gui.image.ImageCache;
 import pwcg.gui.rofmap.event.AARReportMainPanel;
 import pwcg.gui.rofmap.event.AARReportMainPanel.EventPanelReason;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.ImageResizingPanelBuilder;
+import pwcg.gui.utils.ImageToDisplaySizer;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
@@ -74,7 +79,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 	public CampaignTransferScreen  (Campaign campaign, SquadronMember squadronMemberToTransfer, IRefreshableParentUI parentScreen, boolean passTime)
 	{
         super("");
-        this.setLayout(new BorderLayout());
+        this.setLayout(new GridBagLayout());
         this.setOpaque(false);
 
 		this.parentScreen = parentScreen;
@@ -90,9 +95,22 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 
         service = this.squadronMemberToTransfer.determineService(campaign.getDate());
 
-        this.add(BorderLayout.WEST, makeTransferNavPanel());
-		this.add(BorderLayout.CENTER, makeTransferCenterPanel());
-        this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1600));
+        GridBagConstraints constraints = initializeGridbagConstraints();
+
+        constraints.weightx = 0.1;
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        this.add(makeTransferNavPanel(), constraints);
+
+        constraints.weightx = 0.1;
+        constraints.gridx = 1;
+        constraints.gridy = 0;
+        this.add(makeTransferCenterPanel(), constraints);
+        
+        constraints.weightx = 0.5;
+        constraints.gridx = 2;
+        constraints.gridy = 0;
+        this.add(SpacerPanelFactory.makeDocumentSpacerPanel(1400), constraints);
 	}
 
 	private JPanel makeTransferNavPanel() throws PWCGException  
@@ -119,15 +137,25 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 
     private JPanel makeTransferCenterPanel() throws PWCGException  
     {
-        JPanel leaveCenterPanel = new JPanel();
-        leaveCenterPanel.setOpaque(false);
-        leaveCenterPanel.setLayout(new BorderLayout());
-        leaveCenterPanel.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
+        JPanel transferCenterPanel = new JPanel();
+        transferCenterPanel.setOpaque(false);
+        transferCenterPanel.setLayout(new BorderLayout());
+        transferCenterPanel.setBorder(BorderFactory.createEmptyBorder(50,50,50,100));
 
-        JPanel leaveNotification = makeTransferDocumentPanel();
-        leaveCenterPanel.add(leaveNotification, BorderLayout.CENTER);
+        JPanel transferRequest = makeTransferDocumentPanel();
+        transferCenterPanel.add(transferRequest, BorderLayout.CENTER);
+        
+        setDocumentSize(transferCenterPanel);
 
-        return leaveCenterPanel;
+        return transferCenterPanel;
+    }
+
+    private void setDocumentSize(JPanel centerPanel) throws PWCGException
+    {
+        String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
+        BufferedImage documentImage = ImageCache.getImageFromFile(imagePath);
+        Dimension imagePanelDimensions = ImageToDisplaySizer.getDimensionsForScreen(documentImage);
+        centerPanel.setPreferredSize(new Dimension(imagePanelDimensions.width, imagePanelDimensions.height));
     }
 
 	private JPanel makeTransferDocumentPanel() throws PWCGException  
@@ -220,6 +248,17 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         {
             cbRole.setSelectedItem(PwcgRole.ROLE_FIGHTER);
         }                
+    }
+
+    private GridBagConstraints initializeGridbagConstraints()
+    {
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.ipadx = 3;
+        constraints.ipady = 3;
+        constraints.anchor = GridBagConstraints.NORTHWEST;
+        Insets margins = new Insets(0, 50, 50, 0);
+        constraints.insets = margins;
+        return constraints;
     }
 
     private int makeRoleChooser(Color buttonBG, Font font, JPanel transferPanel, List<Component> components, int rowNum) throws PWCGException

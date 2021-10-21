@@ -4,7 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -56,7 +59,7 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
     public EquipmentRequestScreen(Campaign campaign)
     {
         super("");
-        this.setLayout(new BorderLayout());
+        this.setLayout(new GridBagLayout());
         this.setOpaque(false);
 
         this.campaign = campaign;
@@ -67,10 +70,23 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignLeaveScreen);
         this.setImageFromName(imagePath);
 
-        this.add(BorderLayout.WEST, makeNavPanel());
+        GridBagConstraints constraints = initializeGridbagConstraints();
+
+        constraints.weightx = 0.1;
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        this.add(makeNavPanel(), constraints);
+
         centerPanel =  makeCenterPanel();
-        this.add(BorderLayout.CENTER, centerPanel);
-        this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(1400));
+        constraints.weightx = 0.1;
+        constraints.gridx = 1;
+        constraints.gridy = 0;
+        this.add(centerPanel, constraints);
+        
+        constraints.weightx = 0.5;
+        constraints.gridx = 2;
+        constraints.gridy = 0;
+        this.add(SpacerPanelFactory.makeDocumentSpacerPanel(1400), constraints);
 
     }
 
@@ -273,6 +289,18 @@ public class EquipmentRequestScreen extends ImageResizingPanel implements Action
 
         return equipmentChaneConfirmationPanel;
     }
+
+    private GridBagConstraints initializeGridbagConstraints()
+    {
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.ipadx = 3;
+        constraints.ipady = 3;
+        constraints.anchor = GridBagConstraints.NORTHWEST;
+        Insets margins = new Insets(0, 50, 50, 0);
+        constraints.insets = margins;
+        return constraints;
+    }
+
 
     public void actionPerformed(ActionEvent ae)
     {

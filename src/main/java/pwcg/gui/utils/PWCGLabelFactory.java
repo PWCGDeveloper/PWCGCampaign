@@ -1,7 +1,6 @@
 package pwcg.gui.utils;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.Icon;
@@ -14,7 +13,6 @@ import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.dialogs.PWCGMonitorSupport;
 
 public class PWCGLabelFactory extends JButton
 {
@@ -90,8 +88,6 @@ public class PWCGLabelFactory extends JButton
 
     public static JLabel makeTransparentLabel(String displayText, Color fgColor, Font font, int alignment) throws PWCGException
     {
-        displayText = padStringToExtendImageSize(displayText);
-
         JLabel label = new JLabel(displayText);
         label.setForeground(fgColor);
         label.setOpaque(false);
@@ -104,26 +100,5 @@ public class PWCGLabelFactory extends JButton
     {
         JLabel imageLabel = new JLabel(icon);
         return imageLabel;
-    }
-
-    private static String padStringToExtendImageSize(String originalString)
-    {
-        String paddedString = originalString;
-
-        Dimension screenSize = PWCGMonitorSupport.getPWCGFrameSize();
-        Double pixelsToUseDouble = screenSize.width * .2;
-        int pixelsToUse = pixelsToUseDouble.intValue();
-
-        int charactersToUse = pixelsToUse / 8;
-
-        if (originalString.length() < charactersToUse)
-        {
-            for (int i = originalString.length(); i < charactersToUse; ++i)
-            {
-                paddedString += " ";
-            }
-        }
-
-        return paddedString;
     }
 }

@@ -2,11 +2,8 @@ package pwcg.gui.campaign.activity;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -19,16 +16,13 @@ import pwcg.campaign.newspapers.Newspaper;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
-import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.image.ImageCache;
+import pwcg.gui.utils.ImageToDisplaySizer;
 import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.TextGraphicsMeasurement;
 
 public class NewspaperUI extends JPanel
 {
-    private static int NEWSPAPER_IMAGE_WIDTH = 800;
-    private static int NEWSPAPER_IMAGE_HEIGHT = 1000;
-    
     private static final long serialVersionUID = 1L;
     private Newspaper newspaper;
 
@@ -74,27 +68,10 @@ public class NewspaperUI extends JPanel
 
         BufferedImage newspaperImageWithPicture = addNewpaperPicture(newspaperImage);
         BufferedImage newspaperImageWithPictureAndHeadline = addheadline(newspaperImageWithPicture);
-        BufferedImage resizedImage = resizeImage(newspaperImageWithPictureAndHeadline);
+        BufferedImage resizedImage = ImageToDisplaySizer.resizeImage(newspaperImageWithPictureAndHeadline);
         return resizedImage;
     }
-    
-    public static BufferedImage resizeImage(BufferedImage newspaperImage) {
-        double newspaperRatio = Double.valueOf(NEWSPAPER_IMAGE_WIDTH) / Double.valueOf(NEWSPAPER_IMAGE_HEIGHT);
-
-        Dimension pwcgDimensions = PWCGMonitorSupport.getPWCGFrameSize();
-        Double height = (pwcgDimensions.getHeight() * .9);
-        Double width = height * newspaperRatio;
-
-        Image tmp = newspaperImage.getScaledInstance(width.intValue(), height.intValue(), Image.SCALE_SMOOTH);
-        BufferedImage resizedImage = new BufferedImage(width.intValue(), height.intValue(), BufferedImage.TRANSLUCENT);
-
-        Graphics2D g2d = resizedImage.createGraphics();
-        g2d.drawImage(tmp, 0, 0, null);
-        g2d.dispose();
-
-        return resizedImage;
-    }  
-
+  
     private BufferedImage addNewpaperPicture(BufferedImage newspaperImage) throws PWCGException
     {
         String imagePicturePath = PWCGContext.getInstance().getDirectoryManager().getPwcgImagesDir() + "Newspaper\\" + newspaper.formNewspaperPictureName();
