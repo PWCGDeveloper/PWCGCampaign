@@ -48,7 +48,7 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
 
         GridBagConstraints constraints = initializeGridbagConstraints();
         JPanel squadronPanel = createChalkboardHeader(constraints, font);
-        addPilotsToChalkBoard(sortedPilots, squadronPanel, constraints, font);
+        //addPilotsToChalkBoard(sortedPilots, squadronPanel, constraints, font);
 
         return squadronPanel;
     }
@@ -70,116 +70,124 @@ public class CampaignPilotChalkboard extends ImageResizingPanel
         GridBagLayout squadronLayout = new GridBagLayout();                
         squadronPanel.setLayout(squadronLayout);
 
+        JLabel lLeftSpace = PWCGLabelFactory.makeTransparentLabel("   ", ColorMap.CHALK_FOREGROUND, font, SwingConstants.LEFT);
         constraints.weightx = 0.15;
         constraints.gridx = 0;
         constraints.gridy = 0;
-        squadronPanel.add(PWCGLabelFactory.makeDummyLabel(), constraints);
+        squadronPanel.add(lLeftSpace, constraints);
 
         String lPilotLabelText = InternationalizationManager.getTranslation("Pilot");
-        JLabel lPilotLabel = PWCGLabelFactory.makeTransparentLabel(lPilotLabelText, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
+        JLabel lPilotLabel = PWCGLabelFactory.makeTransparentLabel(lPilotLabelText, ColorMap.CHALK_FOREGROUND, font, SwingConstants.LEFT);
         constraints.weightx = 0.15;
         constraints.gridx = 1;
         constraints.gridy = 0;
         squadronPanel.add(lPilotLabel, constraints);
 
-        String lMissionLabelText = InternationalizationManager.getTranslation("Missions");
-        JLabel lMissionLabel = PWCGLabelFactory.makeTransparentLabel(lMissionLabelText, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
+        String lMissionLabelText = "    " + InternationalizationManager.getTranslation("Missions");
+        JLabel lMissionLabel = PWCGLabelFactory.makeTransparentLabel(lMissionLabelText, ColorMap.CHALK_FOREGROUND, font, SwingConstants.LEFT);
         constraints.weightx = 0.1;
         constraints.gridx = 2;
         constraints.gridy = 0;
         squadronPanel.add(lMissionLabel, constraints);
 
-        String lAirLabelText = InternationalizationManager.getTranslation("Air");
-        JLabel lAirLabel = PWCGLabelFactory.makeTransparentLabel(lAirLabelText, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
+        String lAirLabelText = "    " + InternationalizationManager.getTranslation("Air");
+        JLabel lAirLabel = PWCGLabelFactory.makeTransparentLabel(lAirLabelText, ColorMap.CHALK_FOREGROUND, font, SwingConstants.LEFT);
         constraints.weightx = 0.1;
         constraints.gridx = 3;
         constraints.gridy = 0;
         squadronPanel.add(lAirLabel, constraints);
 
-        String lTankLabelText = InternationalizationManager.getTranslation("Tank");
-        JLabel lTankLabel = PWCGLabelFactory.makeTransparentLabel(lTankLabelText, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
+        String lTankLabelText = "    " + InternationalizationManager.getTranslation("Tank");
+        JLabel lTankLabel = PWCGLabelFactory.makeTransparentLabel(lTankLabelText, ColorMap.CHALK_FOREGROUND, font, SwingConstants.LEFT);
         constraints.weightx = 0.1;
         constraints.gridx = 4;
         constraints.gridy = 0;
         squadronPanel.add(lTankLabel, constraints);
 
-        String lTrainLabelText = InternationalizationManager.getTranslation("Train");
-        JLabel lTrainLabel = PWCGLabelFactory.makeTransparentLabel(lTrainLabelText, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
+        String lTrainLabelText = "    " + InternationalizationManager.getTranslation("Train");
+        JLabel lTrainLabel = PWCGLabelFactory.makeTransparentLabel(lTrainLabelText, ColorMap.CHALK_FOREGROUND, font, SwingConstants.LEFT);
         constraints.weightx = 0.1;
         constraints.gridx = 5;
         constraints.gridy = 0;
         squadronPanel.add(lTrainLabel, constraints);
 
-        String lGroundLabelText = InternationalizationManager.getTranslation("Ground");
-        JLabel lGroundLabel = PWCGLabelFactory.makeTransparentLabel(lGroundLabelText, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
+        String lGroundLabelText = "    " + InternationalizationManager.getTranslation("Ground");
+        JLabel lGroundLabel = PWCGLabelFactory.makeTransparentLabel(lGroundLabelText, ColorMap.CHALK_FOREGROUND, font, SwingConstants.LEFT);
         constraints.weightx = 0.1;
         constraints.gridx = 6;
         constraints.gridy = 0;
         squadronPanel.add(lGroundLabel, constraints);
-
+        
+        JLabel lRightSpace = PWCGLabelFactory.makeTransparentLabel("   ", ColorMap.CHALK_FOREGROUND, font, SwingConstants.LEFT);
+        constraints.weightx = 0.15;
         constraints.gridx = 7;
         constraints.gridy = 0;
-        squadronPanel.add(PWCGLabelFactory.makeDummyLabel(), constraints);
+        squadronPanel.add(lRightSpace, constraints);
+
         return squadronPanel;
     }
 
     private void addPilotsToChalkBoard(List<SquadronMember> sortedPilots, JPanel squadronPanel, GridBagConstraints constraints, Font font) throws PWCGException
     {
-        int gridbaRow = 1;
+        int gridbagRow = 1;
         for (SquadronMember pilot : sortedPilots)
         {
+
+            JLabel lLeftSpace = PWCGLabelFactory.makeTransparentLabel("   ", ColorMap.CHALK_FOREGROUND, font, SwingConstants.LEFT);
             constraints.weightx = 0.15;
             constraints.gridx = 0;
-            constraints.gridy = gridbaRow;
-            squadronPanel.add(PWCGLabelFactory.makeDummyLabel(), constraints);
+            constraints.gridy = gridbagRow;
+            squadronPanel.add(lLeftSpace, constraints);
             
             JLabel pilotLabel = PWCGLabelFactory.makeTransparentLabel(
-                    pilot.getNameAndRank(), ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
-            constraints.weightx = 0.15;
+                    pilot.getNameAndRank(), ColorMap.CHALK_FOREGROUND, font, SwingConstants.LEFT);
+            constraints.weightx = 0.20;
             constraints.gridx = 1;
-            constraints.gridy = gridbaRow;
+            constraints.gridy = gridbagRow;
             squadronPanel.add(pilotLabel, constraints);
 
             JLabel missionsFlownLabel = PWCGLabelFactory.makeTransparentLabel(
                     "" + pilot.getMissionFlown(), ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
             constraints.weightx = 0.1;
             constraints.gridx = 2;
-            constraints.gridy = gridbaRow;
+            constraints.gridy = gridbagRow;
             squadronPanel.add(missionsFlownLabel, constraints);
             
-            JLabel airToAirVicroryLabel = PWCGLabelFactory.makeTransparentLabel(
+            JLabel airToAirVictoryLabel = PWCGLabelFactory.makeTransparentLabel(
                     "" + pilot.getSquadronMemberVictories().getAirToAirVictoryCount(), ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
             constraints.weightx = 0.1;
             constraints.gridx = 3;
-            constraints.gridy = gridbaRow;
-            squadronPanel.add(airToAirVicroryLabel, constraints);
+            constraints.gridy = gridbagRow;
+            squadronPanel.add(airToAirVictoryLabel, constraints);
             
-            JLabel tankVicroryLabel = PWCGLabelFactory.makeTransparentLabel(
+            JLabel tankVictoryLabel = PWCGLabelFactory.makeTransparentLabel(
                     "" + pilot.getSquadronMemberVictories().getTankVictoryCount(), ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
             constraints.weightx = 0.1;
             constraints.gridx = 4;
-            constraints.gridy = gridbaRow;
-            squadronPanel.add(tankVicroryLabel, constraints);
+            constraints.gridy = gridbagRow;
+            squadronPanel.add(tankVictoryLabel, constraints);
             
-            JLabel trainVicroryLabel = PWCGLabelFactory.makeTransparentLabel(
+            JLabel trainVictoryLabel = PWCGLabelFactory.makeTransparentLabel(
                     "" + pilot.getSquadronMemberVictories().getTrainVictoryCount(), ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
             constraints.weightx = 0.1;
             constraints.gridx = 5;
-            constraints.gridy = gridbaRow;
-            squadronPanel.add(trainVicroryLabel, constraints);
+            constraints.gridy = gridbagRow;
+            squadronPanel.add(trainVictoryLabel, constraints);
             
-            JLabel groundVicroryLabel = PWCGLabelFactory.makeTransparentLabel(
+            JLabel groundVictoryLabel = PWCGLabelFactory.makeTransparentLabel(
                     "" + pilot.getSquadronMemberVictories().getGroundVictoryCount(), ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
             constraints.weightx = 0.1;
             constraints.gridx = 6;
-            constraints.gridy = gridbaRow;
-            squadronPanel.add(groundVicroryLabel, constraints);
-             
+            constraints.gridy = gridbagRow;
+            squadronPanel.add(groundVictoryLabel, constraints);
+            
+            JLabel lRightSpace = PWCGLabelFactory.makeTransparentLabel("   ", ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
+            constraints.weightx = 0.1;
             constraints.gridx = 7;
-            constraints.gridy = gridbaRow;
-            squadronPanel.add(PWCGLabelFactory.makeDummyLabel(), constraints);
+            constraints.gridy = 0;
+            squadronPanel.add(lRightSpace, constraints);
 
-            ++gridbaRow;
+            ++gridbagRow;
         }
     }
 }
