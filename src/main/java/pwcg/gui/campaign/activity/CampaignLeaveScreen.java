@@ -164,7 +164,7 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
                 String daysToRecover = " " + InternationalizationManager.getTranslation("days to recover from his wounds");
                 String playerWoundHealTimeDesc = player.getNameAndRank() + requires + daysToHeal + daysToRecover;
                 playerWoundHealTimeDesc += ": ";
-                JLabel playerWoundHealTimeLabel = PWCGLabelFactory.makeLabel(playerWoundHealTimeDesc, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);                
+                JLabel playerWoundHealTimeLabel = PWCGLabelFactory.makeTransparentLabel(playerWoundHealTimeDesc, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);                
                 leaveTimeToHealPanel.add(playerWoundHealTimeLabel, constraints);
             }
         }
@@ -179,7 +179,7 @@ public class CampaignLeaveScreen extends ImageResizingPanel implements ActionLis
 
         String leaveText = InternationalizationManager.getTranslation("Request Leave Time (days)");
         leaveText += ": ";
-        JLabel lLeave = PWCGLabelFactory.makeLabel(leaveText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font,SwingConstants.LEFT);
+        JLabel lLeave = PWCGLabelFactory.makeTransparentLabel(leaveText, ColorMap.PAPER_FOREGROUND, font,SwingConstants.LEFT);
 
         tLeaveTime = new JTextField(5);
         tLeaveTime.setBackground(buttonBG);

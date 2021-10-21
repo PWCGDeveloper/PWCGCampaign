@@ -64,8 +64,8 @@ public class ConfigurationParametersGUI extends ImageResizingPanel
 			ConfigItem item = configSet.getConfigItem(parameterKey);
 
 			String keyString = item.getLabelText() + " : ";
-			JLabel label = PWCGLabelFactory.makeLabel(
-			        keyString, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
+			JLabel label = PWCGLabelFactory.makeTransparentLabel(
+			        keyString, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
 			descPanel.add(label);
 			descPanel.setBorder(BorderFactory.createEmptyBorder(30,30,30,30));
 

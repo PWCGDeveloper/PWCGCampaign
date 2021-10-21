@@ -159,7 +159,7 @@ public class BriefingCoopPersonaChooser extends ImageResizingPanel implements Ac
 
 		for (String errorMessage : errorMessages)
     	{
-	        JLabel errorLabel = PWCGLabelFactory.makeLabel(errorMessage, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
+	        JLabel errorLabel = PWCGLabelFactory.makeTransparentLabel(errorMessage, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
     		coopPersonaErrorPanel.add(errorLabel);
     	}
 

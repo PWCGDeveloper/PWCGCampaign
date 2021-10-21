@@ -115,7 +115,7 @@ public class AARClaimPanels extends ImageResizingPanel
 
         String pilotsText = InternationalizationManager.getTranslation("Pilots assigned to this mission");
         pilotsText = "     " + pilotsText + ": ";
-        JLabel lPilots = PWCGLabelFactory.makeLabel(pilotsText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);        
+        JLabel lPilots = PWCGLabelFactory.makeTransparentLabel(pilotsText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);        
         infoPanelGrid.add(lPilots);
         
         SquadronMembers pilotsInMission = AARCoordinator.getInstance().getAarContext().getPreliminaryData().getCampaignMembersInMission();
@@ -126,7 +126,7 @@ public class AARClaimPanels extends ImageResizingPanel
             if (pilot.getSquadronId() == referencePlayer.getSquadronId())
             {
                 String crewDesc = "             " + pilot.getNameAndRank();
-                JLabel lPilot = PWCGLabelFactory.makeLabel(crewDesc, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);        
+                JLabel lPilot = PWCGLabelFactory.makeTransparentLabel(crewDesc, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);        
                 lPilot.setSize(200, 40);
                 infoPanelGrid.add(lPilot);      
             }
@@ -137,7 +137,7 @@ public class AARClaimPanels extends ImageResizingPanel
 
         String dateText = InternationalizationManager.getTranslation("Date");
         dateText = "     " + dateText + ": " + DateUtils.getDateString(campaign.getDate());
-        JLabel lDate = PWCGLabelFactory.makeLabel(dateText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);        
+        JLabel lDate = PWCGLabelFactory.makeTransparentLabel(dateText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);        
         infoPanelGrid.add(lDate);
 
         for (int i = 0; i < 1; ++i)

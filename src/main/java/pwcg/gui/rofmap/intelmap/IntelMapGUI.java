@@ -205,7 +205,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
         descriptionGrid.add(PWCGLabelFactory.makeDummyLabel());
         
         String labelText = InternationalizationManager.getTranslation("Squadron Information");
-        JLabel header = PWCGLabelFactory.makeLabel(labelText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, fontMain, SwingConstants.LEFT);        
+        JLabel header = PWCGLabelFactory.makeTransparentLabel(labelText, ColorMap.PAPER_FOREGROUND, fontMain, SwingConstants.LEFT);        
    
         descriptionGrid.add(header);
 		return descriptionGrid;

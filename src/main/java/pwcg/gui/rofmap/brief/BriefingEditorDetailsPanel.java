@@ -93,35 +93,35 @@ public class BriefingEditorDetailsPanel
         Font font = PWCGMonitorFonts.getTypewriterFont();
 
         String wpNameText = InternationalizationManager.getTranslation("WP");
-        JLabel wpName = PWCGLabelFactory.makeLabel(wpNameText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.CENTER);
+        JLabel wpName = PWCGLabelFactory.makeTransparentLabel(wpNameText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.CENTER);
         constraints.weightx = 0.15;
         constraints.gridx = 0;
         constraints.gridy = 0;
         panel.add(wpName, constraints);
         
         String altLabelText = InternationalizationManager.getTranslation("Alt in Meters");
-        JLabel altLabel = PWCGLabelFactory.makeLabel(altLabelText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.CENTER);
+        JLabel altLabel = PWCGLabelFactory.makeTransparentLabel(altLabelText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.CENTER);
         constraints.weightx = 0.2;
         constraints.gridx = 1;
         constraints.gridy = 0;
         panel.add(altLabel, constraints);
         
         String cruiseSpeedLabelText = InternationalizationManager.getTranslation("Cruise Speed");
-        JLabel cruiseSpeedLabel = PWCGLabelFactory.makeLabel(cruiseSpeedLabelText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.CENTER);
+        JLabel cruiseSpeedLabel = PWCGLabelFactory.makeTransparentLabel(cruiseSpeedLabelText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.CENTER);
         constraints.weightx = 0.2;
         constraints.gridx = 2;
         constraints.gridy = 0;
         panel.add(cruiseSpeedLabel, constraints);
 
         String distLabelText = InternationalizationManager.getTranslation("Dist in Km");
-        JLabel distLabel = PWCGLabelFactory.makeLabel(distLabelText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.CENTER);
+        JLabel distLabel = PWCGLabelFactory.makeTransparentLabel(distLabelText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.CENTER);
         constraints.weightx = 0.2;
         constraints.gridx = 3;
         constraints.gridy = 0;
         panel.add(distLabel, constraints);
         
         String headingLabelText = InternationalizationManager.getTranslation("Heading");
-        JLabel headingLabel = PWCGLabelFactory.makeLabel(headingLabelText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.CENTER);
+        JLabel headingLabel = PWCGLabelFactory.makeTransparentLabel(headingLabelText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.CENTER);
         constraints.weightx = 0.2;
         constraints.gridx = 4;
         constraints.gridy = 0;

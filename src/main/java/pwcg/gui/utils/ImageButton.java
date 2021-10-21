@@ -1,6 +1,7 @@
 package pwcg.gui.utils;
 
 import java.awt.AlphaComposite;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -10,26 +11,30 @@ import java.awt.image.BufferedImage;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
+import javax.swing.SwingConstants;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
+import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.image.ImageCache;
 
 public class ImageButton
 {
-    public static PWCGJButton makeButton(String text, String imageName) throws PWCGException
+    public static PWCGJButton makeCampaignFlagButton(String text, String imageName) throws PWCGException
     {
         String imagePath = ContextSpecificImages.imagesNational() + imageName;
         ImageIcon icon = new ImageIcon(imagePath);
 
+        Color buttonFG = ColorMap.CHALK_FOREGROUND;
+        Font font = PWCGMonitorFonts.getPrimaryFontLarge();
+
         PWCGJButton button = new PWCGJButton(text);
+        button.setIcon(icon);
+        button.setForeground(buttonFG);
+        button.setHorizontalAlignment(SwingConstants.LEFT);
         button.setBorderPainted(false);
         button.setFocusPainted(false);
-        button.setIcon(icon);
-
-        Font font = PWCGMonitorFonts.getPrimaryFontSmall();
-
         button.setFont(font);
         button.setOpaque(false);
 

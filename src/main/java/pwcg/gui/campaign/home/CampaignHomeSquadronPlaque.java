@@ -60,25 +60,25 @@ public class CampaignHomeSquadronPlaque extends JPanel
         Squadron squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
 
         String assignedToString = InternationalizationManager.getTranslation("Assigned to");
-        JLabel lAssignedTo = PWCGLabelFactory.makeLabel(assignedToString, ColorMap.CHALK_BACKGROUND, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
+        JLabel lAssignedTo = PWCGLabelFactory.makeTransparentLabel(assignedToString, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
         descGridPanel.add(lAssignedTo);
 
         String squadString = spacing + squadron.determineDisplayName(campaign.getDate());
-        JLabel lSquad = PWCGLabelFactory.makeLabel(squadString, ColorMap.CHALK_BACKGROUND, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
+        JLabel lSquad = PWCGLabelFactory.makeTransparentLabel(squadString, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
         descGridPanel.add(lSquad);
 
         String airfieldAtString = InternationalizationManager.getTranslation("Stationed at");
         airfieldAtString += " " + squadron.determineCurrentAirfieldName(campaign.getDate());
-        JLabel lAirfieldAt = PWCGLabelFactory.makeLabel(airfieldAtString, ColorMap.CHALK_BACKGROUND, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
+        JLabel lAirfieldAt = PWCGLabelFactory.makeTransparentLabel(airfieldAtString, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
         descGridPanel.add(lAirfieldAt);
 
         String airfieldString = spacing + squadron.determineCurrentAirfieldName(campaign.getDate());
-        JLabel lAirfield = PWCGLabelFactory.makeLabel(airfieldString, ColorMap.CHALK_BACKGROUND, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
+        JLabel lAirfield = PWCGLabelFactory.makeTransparentLabel(airfieldString, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
         descGridPanel.add(lAirfield);
         
 
         String dateString = spacing + DateUtils.getDateString(campaign.getDate());
-        JLabel lDate = PWCGLabelFactory.makeLabel(dateString, ColorMap.CHALK_BACKGROUND, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
+        JLabel lDate = PWCGLabelFactory.makeTransparentLabel(dateString, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
         descGridPanel.add(lDate);
 
 
@@ -87,7 +87,7 @@ public class CampaignHomeSquadronPlaque extends JPanel
         {
             String aircraftString = spacing + InternationalizationManager.getTranslation("Flying the");
             aircraftString += " " + aircraftType.getDisplayName();
-            JLabel lAircraft = PWCGLabelFactory.makeLabel(aircraftString, ColorMap.CHALK_BACKGROUND, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
+            JLabel lAircraft = PWCGLabelFactory.makeTransparentLabel(aircraftString, ColorMap.PLAQUE_GOLD, font, SwingConstants.LEFT);
 
             descGridPanel.add(lAircraft);
         }

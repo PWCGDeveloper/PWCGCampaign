@@ -36,34 +36,19 @@ public class PWCGLabelFactory extends JButton
 
     public static JLabel makeMenuLabelLarge(String displayText) throws PWCGException
     {
-        Color bgColor = ColorMap.CHALK_BACKGROUND;
         Color fgColor = ColorMap.CHALK_FOREGROUND;
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
-        JLabel label = makeLabel(displayText, bgColor, fgColor, font, SwingConstants.LEFT);
+        JLabel label = makeTransparentLabel(displayText, fgColor, font, SwingConstants.LEFT);
         return label;
     }
 
     public static JLabel makePaperLabelLarge(String displayText) throws PWCGException
     {
-        Color bgColor = ColorMap.PAPER_BACKGROUND;
         Color fgColor = ColorMap.PAPER_FOREGROUND;
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
-        JLabel label = makeLabel(displayText, bgColor, fgColor, font, SwingConstants.LEFT);
-        return label;
-    }
-
-    public static JLabel makeLabel(String displayText, Color bgColor, Color fgColor, Font font, int alignment) throws PWCGException
-    {
-        displayText = padStringToExtendImageSize(displayText);
-
-        JLabel label = new JLabel(displayText);
-        label.setBackground(bgColor);
-        label.setForeground(fgColor);
-        label.setOpaque(false);
-        label.setFont(font);
-        label.setHorizontalAlignment(alignment);
+        JLabel label = makeTransparentLabel(displayText, fgColor, font, SwingConstants.LEFT);
         return label;
     }
 
@@ -71,11 +56,10 @@ public class PWCGLabelFactory extends JButton
     {
         displayText = InternationalizationManager.getTranslation(displayText);
 
-        Color bgColor = ColorMap.PAPER_BACKGROUND;
         Color fgColor = ColorMap.PAPER_FOREGROUND;
         Font font = PWCGMonitorFonts.getPrimaryFont();
         
-        JLabel label = makeLabel(displayText, bgColor, fgColor, font, SwingConstants.LEFT);
+        JLabel label = makeTransparentLabel(displayText, fgColor, font, SwingConstants.LEFT);
         
         return label;
     }
@@ -84,11 +68,10 @@ public class PWCGLabelFactory extends JButton
     {
         displayText = InternationalizationManager.getTranslation(displayText);
 
-        Color bgColor = ColorMap.CHALK_BACKGROUND;
         Color fgColor = ColorMap.CHALK_FOREGROUND;
         Font font = PWCGMonitorFonts.getChalkboardFont();
         
-        JLabel label = makeLabel(displayText, bgColor, fgColor, font, SwingConstants.LEFT);
+        JLabel label = makeTransparentLabel(displayText, fgColor, font, SwingConstants.LEFT);
         
         return label;
     }
@@ -97,12 +80,23 @@ public class PWCGLabelFactory extends JButton
     {
         displayText = InternationalizationManager.getTranslation(displayText);
 
-        Color bgColor = ColorMap.CHALK_BACKGROUND;
         Color fgColor = ColorMap.CHALK_FOREGROUND;
         Font font = PWCGMonitorFonts.getBriefingChalkboardFont();
         
-        JLabel label = makeLabel(displayText, bgColor, fgColor, font, SwingConstants.LEFT);
+        JLabel label = makeTransparentLabel(displayText, fgColor, font, SwingConstants.LEFT);
         
+        return label;
+    }
+
+    public static JLabel makeTransparentLabel(String displayText, Color fgColor, Font font, int alignment) throws PWCGException
+    {
+        displayText = padStringToExtendImageSize(displayText);
+
+        JLabel label = new JLabel(displayText);
+        label.setForeground(fgColor);
+        label.setOpaque(false);
+        label.setFont(font);
+        label.setHorizontalAlignment(alignment);
         return label;
     }
 

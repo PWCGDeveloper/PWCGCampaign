@@ -113,7 +113,7 @@ public class CoopPersonaInfoPanel extends ImageResizingPanel
     public JLabel makeCoopInfoLabel(String labelText) throws PWCGException
     {
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
-        JLabel label = PWCGLabelFactory.makeLabel(labelText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.RIGHT);
+        JLabel label = PWCGLabelFactory.makeTransparentLabel(labelText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.RIGHT);
         return label;
     }
 

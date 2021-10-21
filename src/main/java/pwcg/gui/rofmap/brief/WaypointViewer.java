@@ -102,7 +102,7 @@ public class WaypointViewer implements IWaypointDetails
     private JLabel makeLabelField() throws PWCGException
     {
         Font font = PWCGMonitorFonts.getTypewriterFont();
-        JLabel label = PWCGLabelFactory.makeLabel("", ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.RIGHT);
+        JLabel label = PWCGLabelFactory.makeTransparentLabel("", ColorMap.PAPER_FOREGROUND, font, SwingConstants.RIGHT);
         return label;
     }
 

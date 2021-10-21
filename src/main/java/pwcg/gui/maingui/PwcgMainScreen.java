@@ -266,7 +266,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 		Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
         String versionText = InternationalizationManager.getTranslation("PWCG Version") + ": " + VERSION;
-        JLabel lversion = PWCGLabelFactory.makeLabel(versionText, ColorMap.WOOD_BACKGROUND, ColorMap.WOOD_FOREGROUND, font, SwingConstants.RIGHT);
+        JLabel lversion = PWCGLabelFactory.makeTransparentLabel(versionText, ColorMap.WOOD_FOREGROUND, font, SwingConstants.RIGHT);
 
         JPanel versionPanel = new JPanel ();
         versionPanel.setLayout(new GridLayout(0,1));
@@ -285,11 +285,6 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
         JPanel campaignPanel = new JPanel();
         campaignPanel.setLayout(new BorderLayout());
         campaignPanel.setOpaque(false);
-
-		Color buttonBG = ColorMap.PAPER_BACKGROUND;
-		Color buttonFG = ColorMap.CHALK_FOREGROUND;
-
-		Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 		
 		JPanel campaignListPanel = new JPanel (new GridLayout(0,1));
 		campaignListPanel.setOpaque(false);
@@ -320,13 +315,7 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
     					icon = nation + "Pilot.jpg";
     				}
     
-    				PWCGJButton button = ImageButton.makeButton(campaignName, icon);
-    	
-    				button.setBackground(buttonBG);
-    				button.setForeground(buttonFG);
-    				button.setOpaque(false);
-    				button.setFont(font);
-    				button.setHorizontalAlignment(SwingConstants.LEFT);
+    				PWCGJButton button = ImageButton.makeCampaignFlagButton(campaignName, icon);
     				button.setActionCommand("Load Campaign:" + campaignName);
     				button.addActionListener(this);
     				campaignListPanel.add(button);
@@ -343,25 +332,14 @@ public class PwcgMainScreen extends ImageResizingPanel implements ActionListener
 			
 		}
 		
-        PWCGJButton newButton = ImageButton.makeButton(InternationalizationManager.getTranslation("New"), "NewPilot.jpg");
-
-        newButton.setBackground(buttonBG);
-        newButton.setForeground(buttonFG);
-        newButton.setOpaque(false);
-        newButton.setFont(font);
-        newButton.setHorizontalAlignment(SwingConstants.LEFT);
+        PWCGJButton newButton = ImageButton.makeCampaignFlagButton(InternationalizationManager.getTranslation("New"), "NewPilot.jpg");
         newButton.setActionCommand("New Campaign");
         newButton.addActionListener(this );
         ToolTipManager.setToolTip(newButton, "Create a new campaign");
         campaignListPanel.add(newButton);
         campaignButtonList.add(newButton);
 
-        PWCGJButton deleteCampaignButton = ImageButton.makeButton(InternationalizationManager.getTranslation("Delete"), "DeletePilot.jpg");
-        deleteCampaignButton.setBackground(buttonBG);
-        deleteCampaignButton.setForeground(buttonFG);
-        deleteCampaignButton.setOpaque(false);
-        deleteCampaignButton.setFont(font);
-        deleteCampaignButton.setHorizontalAlignment(SwingConstants.LEFT);
+        PWCGJButton deleteCampaignButton = ImageButton.makeCampaignFlagButton(InternationalizationManager.getTranslation("Delete"), "DeletePilot.jpg");
         deleteCampaignButton.setActionCommand("Delete Campaign");
         deleteCampaignButton.addActionListener(this );
         ToolTipManager.setToolTip(deleteCampaignButton, "Delete campaigns");

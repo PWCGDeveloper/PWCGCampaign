@@ -150,7 +150,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
         List<Component> components = new ArrayList<Component>();
         int rowNum = 0;
 
-        JLabel lName = PWCGLabelFactory.makeLabel(squadronMemberToTransfer.getNameAndRank(), ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
+        JLabel lName = PWCGLabelFactory.makeTransparentLabel(squadronMemberToTransfer.getNameAndRank(), ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
         
         components.clear();
         components.add(lName);
@@ -226,7 +226,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
     {
         String roleText = InternationalizationManager.getTranslation("Role");
         roleText += ": ";
-        JLabel lRole = PWCGLabelFactory.makeLabel(roleText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
+        JLabel lRole = PWCGLabelFactory.makeTransparentLabel(roleText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
 
         cbRole = new JComboBox<String>();
         cbRole.addItem(PwcgRole.ROLE_FIGHTER.getRoleDescription());
@@ -253,7 +253,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
 
         String transferText = InternationalizationManager.getTranslation("Requests a transfer to");
         transferText += ": ";
-        JLabel lTransfer = PWCGLabelFactory.makeLabel(transferText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font,SwingConstants.LEFT);
+        JLabel lTransfer = PWCGLabelFactory.makeTransparentLabel(transferText, ColorMap.PAPER_FOREGROUND, font,SwingConstants.LEFT);
 
         cbSquadron = new JComboBox<String>();
         cbSquadron.setBackground(buttonBG);
@@ -271,7 +271,7 @@ public class CampaignTransferScreen extends ImageResizingPanel implements Action
     {
         String serviceText = InternationalizationManager.getTranslation("Service");
         serviceText += ": ";
-        JLabel lService = PWCGLabelFactory.makeLabel(serviceText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);        
+        JLabel lService = PWCGLabelFactory.makeTransparentLabel(serviceText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);        
 
         cbService = new JComboBox<String>();
         

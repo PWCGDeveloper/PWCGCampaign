@@ -57,8 +57,8 @@ public class CampaignGeneratorProfileInfoGUI extends JPanel
         JPanel spacingGridPanel = new JPanel(new GridLayout(1, 1));
         spacingGridPanel.setOpaque(false);
 
-        spacingGridPanel.add(PWCGLabelFactory.makeLabel(
-                "                      ", ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT)); 
+        spacingGridPanel.add(PWCGLabelFactory.makeTransparentLabel(
+                "                      ", ColorMap.CHALK_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT)); 
 
         return spacingGridPanel;
     }
@@ -68,25 +68,25 @@ public class CampaignGeneratorProfileInfoGUI extends JPanel
         JPanel campaignProfileInfoGridPanel = new JPanel(new GridLayout(4, 1));
         campaignProfileInfoGridPanel.setOpaque(false);
 
-        campaignProfileInfoGridPanel.add(PWCGLabelFactory.makeLabel(
-                "     ", ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT)); 
+        campaignProfileInfoGridPanel.add(PWCGLabelFactory.makeTransparentLabel(
+                "     ", ColorMap.CHALK_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT)); 
 
         String campaignNameText = InternationalizationManager.getTranslation("Campaign Name");
         campaignNameText += ": " + parent.getCampaignGeneratorDO().getCampaignName();
-        JLabel campaignNameLabel = PWCGLabelFactory.makeLabel(
-                campaignNameText, ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
+        JLabel campaignNameLabel = PWCGLabelFactory.makeTransparentLabel(
+                campaignNameText, ColorMap.CHALK_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
         campaignProfileInfoGridPanel.add(campaignNameLabel); 
         
         String campaignModeText = InternationalizationManager.getTranslation("Campaign Mode");
         campaignModeText += ": " + parent.getCampaignGeneratorDO().getCampaignName();
-        JLabel campaignModeLabel = PWCGLabelFactory.makeLabel(
-                campaignModeText, ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
+        JLabel campaignModeLabel = PWCGLabelFactory.makeTransparentLabel(
+                campaignModeText, ColorMap.CHALK_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
         campaignProfileInfoGridPanel.add(campaignModeLabel); 
 
         String serviceText = InternationalizationManager.getTranslation("Service");
         serviceText += ": " + parent.getCampaignGeneratorDO().getCampaignName();
-        JLabel serviceLabel = PWCGLabelFactory.makeLabel(
-                serviceText, ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
+        JLabel serviceLabel = PWCGLabelFactory.makeTransparentLabel(
+                serviceText, ColorMap.CHALK_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
         campaignProfileInfoGridPanel.add(serviceLabel); 
 
         return campaignProfileInfoGridPanel;

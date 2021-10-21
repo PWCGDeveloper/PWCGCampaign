@@ -77,7 +77,7 @@ public class AsyncJobRunner {
         try
         {
             Font font = PWCGMonitorFonts.getTypewriterFont();
-            JLabel statusLabel = PWCGLabelFactory.makeLabel(desc, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
+            JLabel statusLabel = PWCGLabelFactory.makeTransparentLabel(desc, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
             panel.add(statusLabel);
         }
         catch (Exception e)

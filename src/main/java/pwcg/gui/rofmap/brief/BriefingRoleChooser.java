@@ -129,8 +129,8 @@ public class BriefingRoleChooser extends ImageResizingPanel implements ActionLis
     {        
         Font font = PWCGMonitorFonts.getPrimaryFont();
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
-        JLabel squadronNameLabel = PWCGLabelFactory.makeLabel(
-                squadron.determineDisplayName(campaign.getDate()), ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
+        JLabel squadronNameLabel = PWCGLabelFactory.makeTransparentLabel(
+                squadron.determineDisplayName(campaign.getDate()), ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
         return squadronNameLabel;
     }
 

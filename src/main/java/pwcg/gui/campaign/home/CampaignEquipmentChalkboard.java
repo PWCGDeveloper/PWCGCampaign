@@ -78,21 +78,21 @@ public class CampaignEquipmentChalkboard extends ImageResizingPanel
         equipmentChalkboardPanel.add(PWCGLabelFactory.makeDummyLabel(), constraints);
 
         String aircraftTypeLabelText = InternationalizationManager.getTranslation("Aircraft Type");
-        JLabel aircraftTypeLabel = PWCGLabelFactory.makeLabel(aircraftTypeLabelText, ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, font, SwingConstants.LEFT);
+        JLabel aircraftTypeLabel = PWCGLabelFactory.makeTransparentLabel(aircraftTypeLabelText, ColorMap.CHALK_FOREGROUND, font, SwingConstants.LEFT);
         constraints.weightx = 0.15;
         constraints.gridx = 1;
         constraints.gridy = 0;
         equipmentChalkboardPanel.add(aircraftTypeLabel, constraints);
         
         String lSerialNumberText = InternationalizationManager.getTranslation("Serial Number");
-        JLabel lSerialNumber = PWCGLabelFactory.makeLabel(lSerialNumberText, ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
+        JLabel lSerialNumber = PWCGLabelFactory.makeTransparentLabel(lSerialNumberText, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
         constraints.weightx = 0.1;
         constraints.gridx = 2;
         constraints.gridy = 0;
         equipmentChalkboardPanel.add(lSerialNumber, constraints);
         
         String lAircraftIdCodeText = InternationalizationManager.getTranslation("ID Code");
-        JLabel lAircraftIdCode = PWCGLabelFactory.makeLabel(lAircraftIdCodeText, ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
+        JLabel lAircraftIdCode = PWCGLabelFactory.makeTransparentLabel(lAircraftIdCodeText, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
         constraints.weightx = 0.1;
         constraints.gridx = 3;
         constraints.gridy = 0;
@@ -110,19 +110,19 @@ public class CampaignEquipmentChalkboard extends ImageResizingPanel
             constraints.gridy = i;
             equipmentChalkboardPanel.add(PWCGLabelFactory.makeDummyLabel(), constraints);
 
-            JLabel aircraftNameLabel = PWCGLabelFactory.makeLabel(plane.getDisplayName(), ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, font, SwingConstants.LEFT);
+            JLabel aircraftNameLabel = PWCGLabelFactory.makeTransparentLabel(plane.getDisplayName(), ColorMap.CHALK_FOREGROUND, font, SwingConstants.LEFT);
             constraints.weightx = 0.15;
             constraints.gridx = 1;
             constraints.gridy = i;
             equipmentChalkboardPanel.add(aircraftNameLabel, constraints);
 
-            JLabel aircraftSerialNumberLabel = PWCGLabelFactory.makeLabel("" + plane.getSerialNumber(), ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
+            JLabel aircraftSerialNumberLabel = PWCGLabelFactory.makeTransparentLabel("" + plane.getSerialNumber(), ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
             constraints.weightx = 0.1;
             constraints.gridx = 2;
             constraints.gridy = i;
             equipmentChalkboardPanel.add(aircraftSerialNumberLabel, constraints);
  
-            JLabel lIdCode = PWCGLabelFactory.makeLabel(planeMarkingManager.determineDisplayMarkings(campaign, plane), ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
+            JLabel lIdCode = PWCGLabelFactory.makeTransparentLabel(planeMarkingManager.determineDisplayMarkings(campaign, plane), ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
             constraints.weightx = 0.15;
             constraints.gridx = 3;
             constraints.gridy = i;

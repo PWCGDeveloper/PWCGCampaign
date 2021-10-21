@@ -143,12 +143,11 @@ public class CampaignHomePilotPanel extends ImageResizingPanel
         ImageResizingPanel headerPlaquePanel = ImageResizingPanelBuilder.makeImageResizingPanel(imagePath);
         headerPlaquePanel.setLayout(new BorderLayout());
 
-        Color bgColor = ColorMap.CHALK_BACKGROUND;
         Color fgColor = ColorMap.PLAQUE_GOLD;
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
-        JLabel squadronPanelLabel = PWCGLabelFactory.makeLabel(
-                "     " + description, bgColor, fgColor, font, SwingConstants.LEFT);
+        JLabel squadronPanelLabel = PWCGLabelFactory.makeTransparentLabel(
+                "     " + description,  fgColor, font, SwingConstants.LEFT);
         squadronPanelLabel.setHorizontalAlignment(JLabel.LEFT);
         squadronPanelLabel.setVerticalAlignment(JLabel.CENTER);
         

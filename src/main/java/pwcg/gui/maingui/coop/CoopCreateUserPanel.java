@@ -100,7 +100,7 @@ public class CoopCreateUserPanel extends ImageResizingPanel implements ActionLis
 		descPanel.setOpaque(false);
 		
         String usernameText = InternationalizationManager.getTranslation("Enter Coop Username") + ": ";
-        JLabel usernameLabel = PWCGLabelFactory.makeLabel(usernameText, ColorMap.NEWSPAPER_BACKGROUND, ColorMap.NEWSPAPER_FOREGROUND, font, SwingConstants.RIGHT);
+        JLabel usernameLabel = PWCGLabelFactory.makeTransparentLabel(usernameText, ColorMap.NEWSPAPER_FOREGROUND, font, SwingConstants.RIGHT);
 
 	    descPanel.add(usernameLabel);
 		return descPanel;

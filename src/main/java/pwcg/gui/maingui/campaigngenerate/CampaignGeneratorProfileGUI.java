@@ -215,7 +215,7 @@ public class CampaignGeneratorProfileGUI extends JPanel implements ActionListene
     {        
         String displayText = InternationalizationManager.getTranslation(labelText);
         displayText += ": ";
-        JLabel menuLabel = PWCGLabelFactory.makeLabel(displayText, ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
+        JLabel menuLabel = PWCGLabelFactory.makeTransparentLabel(displayText, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
 
         return menuLabel;
     }
@@ -224,7 +224,7 @@ public class CampaignGeneratorProfileGUI extends JPanel implements ActionListene
     {
         String labelText = CampaignConfigurationSimpleGUIController.CAMPAIGN_TYPE + ": "; 
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
-        JLabel label = PWCGLabelFactory.makeLabel(labelText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
+        JLabel label = PWCGLabelFactory.makeTransparentLabel(labelText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
         return label;
     }
 

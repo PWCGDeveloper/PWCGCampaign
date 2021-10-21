@@ -211,7 +211,7 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
         skinSetPanel.add(skinCategoryButtonGrid, BorderLayout.NORTH);
         
         String labelText = InternationalizationManager.getTranslation("Skin Sets");
-        JLabel label = PWCGLabelFactory.makeLabel(labelText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
+        JLabel label = PWCGLabelFactory.makeTransparentLabel(labelText, ColorMap.PAPER_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
         skinCategoryButtonGrid.add(label);
 
         Color fgColor = ColorMap.PAPER_FOREGROUND;
@@ -252,7 +252,7 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
         aircraftButtonGrid.setOpaque(false);
                 
         String labelText = InternationalizationManager.getTranslation("Squadron Aircraft");
-        JLabel label = PWCGLabelFactory.makeLabel(labelText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
+        JLabel label = PWCGLabelFactory.makeTransparentLabel(labelText, ColorMap.PAPER_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
         aircraftButtonGrid.add(label);
 
         SquadronMember referencePlayer = campaign.findReferencePlayer();
@@ -421,8 +421,8 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
 
          String displayText = InternationalizationManager.getTranslation("Assigned Skins For Pilot");
          displayText += ": " + pilot.getNameAndRank();
-         JLabel label = PWCGLabelFactory.makeLabel(
-                 displayText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
+         JLabel label = PWCGLabelFactory.makeTransparentLabel(
+                 displayText, ColorMap.PAPER_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
          pilotInteriorInfoPanel.add(label, BorderLayout.NORTH);
 
          // Picture label
@@ -491,8 +491,8 @@ public class CampaignSkinConfigurationForPilotPanel extends ImageResizingPanel i
              description += "   (" + skinGroup + ")";
          }
          
-         JLabel skinPlaneLabel = PWCGLabelFactory.makeLabel(
-                 description, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
+         JLabel skinPlaneLabel = PWCGLabelFactory.makeTransparentLabel(
+                 description, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
          skinInfoGrid.add(skinPlaneLabel);
          skinInfoGrid.add(PWCGLabelFactory.makeDummyLabel());
          

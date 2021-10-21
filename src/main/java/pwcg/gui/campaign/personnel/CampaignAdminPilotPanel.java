@@ -99,13 +99,13 @@ public class CampaignAdminPilotPanel extends ImageResizingPanel implements Actio
             JRadioButton pilotSelector = makeRadioButton(coopDisplayRecord);
             JComboBox<String> userSelector = makeUserSelector(coopDisplayRecord.getUsername());
             
-            JLabel campaignNameLabel = PWCGLabelFactory.makeLabel(
-                    coopDisplayRecord.getCampaignName(), ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
+            JLabel campaignNameLabel = PWCGLabelFactory.makeTransparentLabel(
+                    coopDisplayRecord.getCampaignName(), ColorMap.PAPER_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
             String pilotStatusText = "     " + SquadronMemberStatus.pilotStatusToStatusDescription(coopDisplayRecord.getPilotStatus());
-            JLabel pilotStatusLabel = PWCGLabelFactory.makeLabel(
-                    pilotStatusText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
-            JLabel squadronNameLabel = PWCGLabelFactory.makeLabel(
-                    "     " + coopDisplayRecord.getSquadronName(), ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
+            JLabel pilotStatusLabel = PWCGLabelFactory.makeTransparentLabel(
+                    pilotStatusText, ColorMap.PAPER_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
+            JLabel squadronNameLabel = PWCGLabelFactory.makeTransparentLabel(
+                    "     " + coopDisplayRecord.getSquadronName(), ColorMap.PAPER_FOREGROUND, PWCGMonitorFonts.getPrimaryFont(), SwingConstants.LEFT);
 
             recordListPanel.add(pilotSelector);
             recordListPanel.add(campaignNameLabel);

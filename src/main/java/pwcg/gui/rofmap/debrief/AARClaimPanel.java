@@ -84,7 +84,7 @@ public class AARClaimPanel extends JPanel implements ActionListener
 
         String airToAirClaimsText = InternationalizationManager.getTranslation("Air to Air Claims");
         airToAirClaimsText += ": ";
-        JLabel lClaims = PWCGLabelFactory.makeLabel(airToAirClaimsText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.RIGHT);
+        JLabel lClaims = PWCGLabelFactory.makeTransparentLabel(airToAirClaimsText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.RIGHT);
 
 		claimedPanel.add(lClaims);
 		claimedPanel.add(cbVictoriesClaimedBoxes);
@@ -116,7 +116,7 @@ public class AARClaimPanel extends JPanel implements ActionListener
 
 	        String victoryReportText = InternationalizationManager.getTranslation("Victory Report");
 	        victoryReportText += ": ";
-	        JLabel lVictories = PWCGLabelFactory.makeLabel(victoryReportText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.RIGHT);
+	        JLabel lVictories = PWCGLabelFactory.makeTransparentLabel(victoryReportText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.RIGHT);
 
 			JComboBox<String> cbPlane = createPlaneDropdown(bgColor, font);
 			cbPlaneBoxes.add(cbPlane);

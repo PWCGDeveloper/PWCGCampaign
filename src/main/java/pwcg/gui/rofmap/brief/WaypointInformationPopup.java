@@ -25,8 +25,8 @@ public class WaypointInformationPopup extends JPopupMenu
         {
             JPanel infoPanel = new JPanel(new BorderLayout());
             Font font = PWCGMonitorFonts.getPrimaryFont();
-            JLabel waypointInformationLabel = PWCGLabelFactory.makeLabel(
-                    formWaypointInfoText(selectedMapPointIndex), ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
+            JLabel waypointInformationLabel = PWCGLabelFactory.makeTransparentLabel(
+                    formWaypointInfoText(selectedMapPointIndex), ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
             infoPanel.add(waypointInformationLabel, BorderLayout.CENTER);
             this.add(infoPanel);
         }

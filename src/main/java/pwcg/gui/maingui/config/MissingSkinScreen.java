@@ -110,7 +110,7 @@ public class MissingSkinScreen extends ImageResizingPanel implements ActionListe
 
         Font headerFont = PWCGMonitorFonts.getDecorativeFont();
         
-        JLabel reportHeaderLabel = PWCGLabelFactory.makeLabel(header, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, headerFont, SwingConstants.LEFT);
+        JLabel reportHeaderLabel = PWCGLabelFactory.makeTransparentLabel(header, ColorMap.PAPER_FOREGROUND, headerFont, SwingConstants.LEFT);
         reportPanel.add(reportHeaderLabel, BorderLayout.NORTH);
         
         JPanel reportBodyPanel = generateReportBody();

@@ -109,7 +109,7 @@ public class CampaignJournalGUI extends JPanel
     {
         Font medFont = PWCGMonitorFonts.getDecorativeFont();
         String lTitleText = InternationalizationManager.getTranslation("Combats in the Air");
-        JLabel lTitle = PWCGLabelFactory.makeLabel(lTitleText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, medFont, SwingConstants.LEFT);
+        JLabel lTitle = PWCGLabelFactory.makeTransparentLabel(lTitleText, ColorMap.PAPER_FOREGROUND, medFont, SwingConstants.LEFT);
         headerPanel.add(lTitle, BorderLayout.NORTH);
     }
 
@@ -124,7 +124,7 @@ public class CampaignJournalGUI extends JPanel
 
         String squadronText = InternationalizationManager.getTranslation("Squadron");
         squadronText += ": " + combatReport.getSquadron();
-        JLabel lSquadron = PWCGLabelFactory.makeLabel(squadronText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
+        JLabel lSquadron = PWCGLabelFactory.makeTransparentLabel(squadronText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
         headerLeftPanel.add(lSquadron);
 
 		JLabel lPilot = makePilotsInMissionLabel(font);
@@ -132,12 +132,12 @@ public class CampaignJournalGUI extends JPanel
 
         String typeText = InternationalizationManager.getTranslation("Type");
         typeText += ": " + combatReport.getType();
-        JLabel lType = PWCGLabelFactory.makeLabel(typeText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
+        JLabel lType = PWCGLabelFactory.makeTransparentLabel(typeText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
         headerLeftPanel.add(lType);
 
         String dutyText = InternationalizationManager.getTranslation("Duty");
         dutyText += ": " + combatReport.getDuty();
-        JLabel lDuty = PWCGLabelFactory.makeLabel(dutyText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
+        JLabel lDuty = PWCGLabelFactory.makeTransparentLabel(dutyText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
         headerLeftPanel.add(lDuty);
 
 		headerLeftPanel.add(PWCGLabelFactory.makeDummyLabel());
@@ -154,22 +154,22 @@ public class CampaignJournalGUI extends JPanel
 		String formattedCombatDate = DateUtils.getDateStringPretty(combatReport.getDate());
         String dateText = InternationalizationManager.getTranslation("Date");
         dateText += ": " + formattedCombatDate;
-        JLabel lDate = PWCGLabelFactory.makeLabel(dateText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
+        JLabel lDate = PWCGLabelFactory.makeTransparentLabel(dateText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
         headerRightPanel.add(lDate);
 
         String timeText = InternationalizationManager.getTranslation("Time");
         timeText += ": " + combatReport.getTime();
-        JLabel lTime = PWCGLabelFactory.makeLabel(timeText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
+        JLabel lTime = PWCGLabelFactory.makeTransparentLabel(timeText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
         headerRightPanel.add(lTime);
 
         String localityText = InternationalizationManager.getTranslation("Locality");
         localityText += ": " + combatReport.getLocality();
-        JLabel lLocality = PWCGLabelFactory.makeLabel(localityText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
+        JLabel lLocality = PWCGLabelFactory.makeTransparentLabel(localityText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
         headerRightPanel.add(lLocality);
 
         String heightText = InternationalizationManager.getTranslation("Height");
         heightText += ": " + combatReport.getAltitude();
-        JLabel lHeight = PWCGLabelFactory.makeLabel(heightText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
+        JLabel lHeight = PWCGLabelFactory.makeTransparentLabel(heightText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
         headerRightPanel.add(lHeight);
 
 		headerRightPanel.add(PWCGLabelFactory.makeDummyLabel());		
@@ -191,7 +191,7 @@ public class CampaignJournalGUI extends JPanel
         
         String pilotsInMissionText = InternationalizationManager.getTranslation("Pilots in mission");
         pilotsInMissionText += ": " + pilotNames;
-        JLabel lPilot = PWCGLabelFactory.makeLabel(pilotsInMissionText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
+        JLabel lPilot = PWCGLabelFactory.makeTransparentLabel(pilotsInMissionText, ColorMap.PAPER_FOREGROUND, font, SwingConstants.LEFT);
 
         return lPilot;
     }
@@ -220,7 +220,7 @@ public class CampaignJournalGUI extends JPanel
 		Font medFont = PWCGMonitorFonts.getDecorativeFont();
         String narrativeDescText = InternationalizationManager.getTranslation("Height");
         narrativeDescText += ": " + combatReport.getAltitude();
-        JLabel lNarrative = PWCGLabelFactory.makeLabel(narrativeDescText, ColorMap.PAPER_BACKGROUND, ColorMap.PAPER_FOREGROUND, medFont, SwingConstants.LEFT);
+        JLabel lNarrative = PWCGLabelFactory.makeTransparentLabel(narrativeDescText, ColorMap.PAPER_FOREGROUND, medFont, SwingConstants.LEFT);
         narrativePanel.add(lNarrative, BorderLayout.NORTH);
 		
 		Font font = PWCGMonitorFonts.getCursiveFont();

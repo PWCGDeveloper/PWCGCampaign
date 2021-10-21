@@ -367,7 +367,7 @@ public class CampaignGeneratorDataEntryGUI extends JPanel implements ActionListe
     {        
         String displayText = InternationalizationManager.getTranslation(labelText);
         displayText += ": ";
-        JLabel menuLabel = PWCGLabelFactory.makeLabel(displayText, ColorMap.CHALK_BACKGROUND, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
+        JLabel menuLabel = PWCGLabelFactory.makeTransparentLabel(displayText, ColorMap.CHALK_FOREGROUND, font, SwingConstants.RIGHT);
         
         labelConstraints.gridx = 1;
         labelConstraints.gridy = rowCount;
