@@ -4,28 +4,23 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
-import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.io.json.InternationalizationRecordsIO;
 import pwcg.core.config.InternationalizationRecords;
-import pwcg.core.exception.PWCGException;
 
 public class InternationalizationFileBuilder
 {
+    private static final String language ="Ru";
+    
     public static void main(String[] args)
     {
         try
         {
-            PWCGContext.setProduct(PWCGProduct.BOS);
             InternationalizationFileBuilder internationalizationFileBuilder = new InternationalizationFileBuilder();
             internationalizationFileBuilder.buildFileForMissingRecords();
         }
@@ -37,40 +32,28 @@ public class InternationalizationFileBuilder
     
     public void buildFileForMissingRecords() throws Exception 
     {
-        String filename = "International.Ru.json";
+        String filename = "International." + language + ".json";
                 
-        Map<String, String> internationalizationRecordMap = new TreeMap<>();
-        Map<String, String> newInternationalizationRecordMap = readLogFile();
-        Map<String, String> existingInternationalizationRecordMap = buildExistingList(filename);
-        internationalizationRecordMap.putAll(existingInternationalizationRecordMap);
-        internationalizationRecordMap.putAll(newInternationalizationRecordMap);
+        InternationalizationRecords internationalization = readLogFile();
         
-        Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filename)));       
-        for (String key : internationalizationRecordMap.keySet())
+        Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filename), StandardCharsets.UTF_8));       
+        for (String key : internationalization.getTranslations().keySet())
         {
-            String value = internationalizationRecordMap.get(key);
+            String value = internationalization.getTranslations().get(key);
             String line="    \"" + key + "\": \"" + value + "\"," + "\n";
-            System.out.println(line);
             out.append(line);
         }
         out.close();
     }
-    
-    private Map<String, String> buildExistingList(String internationalizationFile) throws PWCGException
-    {
-        InternationalizationRecords internationalizationRecords = InternationalizationRecordsIO.readJson(internationalizationFile);
-        return internationalizationRecords.getTranslations();
-    }
 
-    private Map<String, String> readLogFile() throws Exception
+    private InternationalizationRecords readLogFile() throws Exception
     {
-        Map<String, String> internationalizationMap = new TreeMap<>();
+        InternationalizationRecords internationalization = new InternationalizationRecords();
         
-        BufferedReader keyReader = new BufferedReader(new FileReader("InternationalizationAnalysis.sorted.txt"));        
-        BufferedReader valueReader  = new BufferedReader(new InputStreamReader(new FileInputStream("InternationalizationAnalysis.translated.txt"), "UTF-8"));
+        BufferedReader keyReader = new BufferedReader(new InputStreamReader(new FileInputStream("International.Keys.txt"), StandardCharsets.UTF_8));        
+        BufferedReader valueReader  = new BufferedReader(new InputStreamReader(new FileInputStream("International." + language + ".txt"), StandardCharsets.UTF_8));
 
         String line;
-        
         List<String> keyLines = new ArrayList<>();
         while ((line = keyReader.readLine()) != null) 
         {
@@ -95,9 +78,9 @@ public class InternationalizationFileBuilder
         {
             String key = keyLines.get(i);
             String value = valueLines.get(i);
-            internationalizationMap.put(key, value);
+            internationalization.add(key, value);
         }
 
-        return internationalizationMap;
+        return internationalization;
     }
 }

@@ -32,9 +32,9 @@
 			"help": "Set to 1 to play sounds"
 		},
 		"InternationalizationFile": {
-			"value": "",
+			"value": "En",
 			"label": "Internationalization File",
-			"help": "Name of internationalization file to use"
+			"help": "Country code for internationalization file: En, Sp, Fr, or De"
 		},		
 		"SaveOldMissions": {
 			"value": "3",

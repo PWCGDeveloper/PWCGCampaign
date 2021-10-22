@@ -12,20 +12,21 @@ public class InternationalizationManager
     {
         english = english.trim();
 
-        String internationalizationFile  = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.InternationalizationFileKey);
-        if (internationalizationFile.isEmpty())
+        String internationalizationCode  = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.InternationalizationFileKey);
+        if (internationalizationCode.isEmpty())
         {
             return english;
         }
         
-        initialize(internationalizationFile);
+        initialize(internationalizationCode);
         
         instance.logMissingTranslation(english);
         return instance.getTranslationFromConfiguredInternationalization(english);
     }
 
-    private static void initialize(String internationalizationFile) throws PWCGException
+    private static void initialize(String internationalizationCode) throws PWCGException
     {
+        String internationalizationFile = "International." + internationalizationCode + ".json";
         if (!internationalizationRecords.isInitialized())
         {
             internationalizationRecords = InternationalizationRecordsIO.readJson(internationalizationFile);

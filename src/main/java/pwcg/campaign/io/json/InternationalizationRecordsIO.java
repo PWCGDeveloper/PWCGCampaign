@@ -8,12 +8,23 @@ public class InternationalizationRecordsIO
 {
 	public static InternationalizationRecords readJson(String internationalizationFile) throws PWCGException
 	{
-		JsonObjectReader<InternationalizationRecords> jsoReader = new JsonObjectReader<>(InternationalizationRecords.class);
-		
-		String directory = PWCGContext.getInstance().getDirectoryManager().getPwcgInternationalizationDir();
-		InternationalizationRecords internationalizationRecords = jsoReader.readJsonFile(directory, internationalizationFile); 
-		return internationalizationRecords;
+	    try
+	    {
+	        return readJsonFromFile(internationalizationFile);
+	    }
+	    catch (Exception e)
+	    {
+	        return readJsonFromFile("International.En.json");
+	    }
 	}
+
+	private static InternationalizationRecords readJsonFromFile(String internationalizationFile) throws PWCGException
+    {
+        JsonObjectReader<InternationalizationRecords> jsoReader = new JsonObjectReader<>(InternationalizationRecords.class);
+        String directory = PWCGContext.getInstance().getDirectoryManager().getPwcgInternationalizationDir();
+        InternationalizationRecords internationalizationRecords = jsoReader.readJsonFile(directory, internationalizationFile); 
+        return internationalizationRecords;
+    }
 
     public static void writeJson(InternationalizationRecords internationalizationRecords, String filename) throws PWCGException
     {

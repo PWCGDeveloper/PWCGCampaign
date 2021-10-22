@@ -1,3 +1,5 @@
+{
+	"translations": {
     "AA Density": "AA Density",
     "Accept": "Accept",
     "Accept Config Changes": "Accept Config Changes",
@@ -276,4 +278,6 @@
     "days to recover from his wounds": "days to recover from his wounds",
     "requires": "requires",
     "skin configurations exist in PWCG": "skin configurations exist in PWCG",
-    "skins are missing": "skins are missing",
+    "skins are missing": "skins are missing"
+	}
+}

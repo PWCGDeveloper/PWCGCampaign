@@ -3,6 +3,7 @@ package pwcg.campaign.io.json;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -29,7 +30,7 @@ public class JsonObjectReader<T>
 		    Gson gson= new GsonBuilder().setPrettyPrinting().setDateFormat("yyyyMMdd").create();
 			String filepath = directory + filename;
 			
-			reader = new JsonReader(new InputStreamReader(new FileInputStream(filepath), "UTF-8"));
+			reader = new JsonReader(new InputStreamReader(new FileInputStream(filepath), StandardCharsets.UTF_8));
 			
 			T object = gson.fromJson(reader, typeParameterClass);
 			reader.close();
