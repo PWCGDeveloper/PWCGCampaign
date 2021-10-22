@@ -38,4 +38,9 @@ public class InternationalizationRecords
     {
         translations.put(key, value);
     }
+
+    public Map<String, String> getTranslations()
+    {
+        return translations;
+    }
 }

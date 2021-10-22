@@ -15,6 +15,9 @@ import java.util.TreeMap;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.io.json.InternationalizationRecordsIO;
+import pwcg.core.config.InternationalizationRecords;
+import pwcg.core.exception.PWCGException;
 
 public class InternationalizationFileBuilder
 {
@@ -34,45 +37,50 @@ public class InternationalizationFileBuilder
     
     public void buildFileForMissingRecords() throws Exception 
     {
-        Map<String, String> internationalizationRecords = readLogFile();
-        // BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("BoSData\\Input\\International\\International.Sp.json", true), StandardCharsets.UTF_8));
+        String filename = "International.Ru.json";
+                
+        Map<String, String> internationalizationRecordMap = new TreeMap<>();
+        Map<String, String> newInternationalizationRecordMap = readLogFile();
+        Map<String, String> existingInternationalizationRecordMap = buildExistingList(filename);
+        internationalizationRecordMap.putAll(existingInternationalizationRecordMap);
+        internationalizationRecordMap.putAll(newInternationalizationRecordMap);
         
-        //Writer fstream = new OutputStreamWriter(new FileOutputStream("BoSData\\Input\\International\\International.Sp.json", true), "8859_1");
-        //Writer fstream = new OutputStreamWriter(new FileOutputStream("BoSData\\Input\\International\\International.Sp.json", true), "UTF-8");
-        //Writer fstream = new OutputStreamWriter(new FileOutputStream("BoSData\\Input\\International\\International.Sp.json", true), StandardCharsets.UTF_8);
-
-        Writer out = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream("BoSData\\Input\\International\\International.Ru.json"), "UTF-8"));
-        
-        for (String key : internationalizationRecords.keySet())
+        Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filename)));       
+        for (String key : internationalizationRecordMap.keySet())
         {
-            String value = internationalizationRecords.get(key);
+            String value = internationalizationRecordMap.get(key);
             String line="    \"" + key + "\": \"" + value + "\"," + "\n";
             System.out.println(line);
             out.append(line);
         }
         out.close();
     }
+    
+    private Map<String, String> buildExistingList(String internationalizationFile) throws PWCGException
+    {
+        InternationalizationRecords internationalizationRecords = InternationalizationRecordsIO.readJson(internationalizationFile);
+        return internationalizationRecords.getTranslations();
+    }
 
     private Map<String, String> readLogFile() throws Exception
     {
         Map<String, String> internationalizationMap = new TreeMap<>();
         
-        BufferedReader keyReader = new BufferedReader(new FileReader("BoSData\\Input\\International\\International.En.json"));        
-        BufferedReader valueReader  = new BufferedReader(new InputStreamReader(new FileInputStream("BoSData\\Input\\International\\International.Ru.All.json"), "UTF-8"));
+        BufferedReader keyReader = new BufferedReader(new FileReader("InternationalizationAnalysis.sorted.txt"));        
+        BufferedReader valueReader  = new BufferedReader(new InputStreamReader(new FileInputStream("InternationalizationAnalysis.translated.txt"), "UTF-8"));
 
         String line;
         
         List<String> keyLines = new ArrayList<>();
         while ((line = keyReader.readLine()) != null) 
         {
-            keyLines.add(line);
+            keyLines.add(line.trim());
         }
 
         List<String> valueLines = new ArrayList<>();
         while ((line = valueReader.readLine()) != null) 
         {
-            valueLines.add(line);
+            valueLines.add(line.trim());
         }
 
         keyReader.close();
@@ -80,39 +88,16 @@ public class InternationalizationFileBuilder
 
         if (keyLines.size() != valueLines.size())
         {
-            throw new Exception("Line mismatch");
+            throw new Exception("Line count mismatch");
         }
         
-        String delimiter = "\": ";
         for (int i = 0; i < keyLines.size(); ++i)
         {
-            String keyLine = keyLines.get(i);
-            if (thisIsARecord(keyLine))
-            {
-                int endKey = keyLine.indexOf(delimiter);
-                String key = keyLine.substring(0, endKey);
-                key = key.trim();
-                key = key.substring(1);
-                
-                String valueLine = valueLines.get(i);
-                int endValue = valueLine.indexOf(delimiter);
-                String value = valueLine.substring(0, endValue);
-                value = value.trim();
-                value = value.substring(1, value.length());
-
-                internationalizationMap.put(key, value);
-            }
+            String key = keyLines.get(i);
+            String value = valueLines.get(i);
+            internationalizationMap.put(key, value);
         }
 
         return internationalizationMap;
-    }
-
-    private boolean thisIsARecord(String line)
-    {
-        if (line.contains("{") || line.contains("}"))
-        {
-            return false;
-        }
-        return true;
     }
 }

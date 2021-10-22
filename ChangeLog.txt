@@ -1,9 +1,9 @@
 13.4.0
 Internationalization
-- English, German, Spanish, French, and Russian
+- English, German, Spanish, French
 - Most buttons and labels
 - Not complete.  Output to mission files and several complex items like combat reports and victory statements remain English only.
-IMproved leave,transfer equipment request, 
+Improved leave,transfer equipment request, depot report such that the document image stretching is minimal.
 
 13.3.0
 Added SPAD VII 180 HP
