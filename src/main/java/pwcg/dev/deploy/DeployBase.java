@@ -149,6 +149,7 @@ public abstract class DeployBase
         // No directories to make
         HashMap<String, Object> unwantedFileTypes = new HashMap<String, Object>();
 
+        unwantedFileTypes.put(".log", null);
         unwantedFileTypes.put(".zip", null);
         unwantedFileTypes.put(".7z", null);
         unwantedFileTypes.put(".bat", null);
@@ -159,6 +160,7 @@ public abstract class DeployBase
         unwantedFileTypes.put(".ant", null);
         unwantedFileTypes.put(".classpath", null);
         unwantedFileTypes.put(".project", null);
+        unwantedFileTypes.put("WeaponsModAnalysis.txt", null);
 
         return unwantedFileTypes;
     }
@@ -208,6 +210,7 @@ public abstract class DeployBase
         directoriesToCopy.put("Aces", null);
         directoriesToCopy.put("Aircraft", null);
         directoriesToCopy.put("Configuration", null);
+        directoriesToCopy.put("International", null);
         directoriesToCopy.put("IconicBattles", null);
         directoriesToCopy.put("Ranks", null);
         directoriesToCopy.put("Skins", null);
