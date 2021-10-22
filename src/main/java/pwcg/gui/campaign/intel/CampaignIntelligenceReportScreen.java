@@ -2,7 +2,10 @@ package pwcg.gui.campaign.intel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,6 +22,7 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageToDisplaySizer;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.SpacerPanelFactory;
 
@@ -32,7 +36,7 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
 	public CampaignIntelligenceReportScreen(Campaign campaign)
 	{
         super("");
-        this.setLayout(new BorderLayout());
+        this.setLayout(new GridBagLayout());
         this.setOpaque(false);
 
         this.campaign = campaign;
@@ -44,9 +48,23 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.CampaignIntelligenceReportScreen);
         this.setImageFromName(imagePath);
 
-        this.add(BorderLayout.WEST, makeNavigatePanel());
-        this.add(BorderLayout.CENTER,  makeCenterPanel());
-        this.add(BorderLayout.EAST, SpacerPanelFactory.makeDocumentSpacerPanel(2000));
+        
+        GridBagConstraints constraints = initializeGridbagConstraints();
+
+        constraints.weightx = 0.1;
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        this.add(makeNavigatePanel(), constraints);
+
+        constraints.weightx = 0.1;
+        constraints.gridx = 1;
+        constraints.gridy = 0;
+        this.add(makeCenterPanel(), constraints);
+        
+        constraints.weightx = 0.5;
+        constraints.gridx = 2;
+        constraints.gridy = 0;
+        this.add(SpacerPanelFactory.makeDocumentSpacerPanel(1400), constraints);
 	}
 
 	private JPanel makeNavigatePanel() throws PWCGException  
@@ -75,9 +93,11 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
         tabs.setOpaque(false);
         
         CampaignIntelligenceEnemySquadronsGUI enemySquadronsGUI = new CampaignIntelligenceEnemySquadronsGUI();
+        ImageToDisplaySizer.setDocumentSizeWithMultiplier(enemySquadronsGUI, 2);
         tabs.addTab("Enemy Squadrons", enemySquadronsGUI);      
         
         CampaignIntelligenceFriendlySquadronsGUI friendlySquadronsGUI = new CampaignIntelligenceFriendlySquadronsGUI();
+        ImageToDisplaySizer.setDocumentSizeWithMultiplier(friendlySquadronsGUI, 2);
         tabs.addTab("Friendly Squadrons", friendlySquadronsGUI);        
                     
         for (int i = 0; i < tabs.getTabCount(); ++i)
@@ -89,6 +109,17 @@ public class CampaignIntelligenceReportScreen extends ImageResizingPanel impleme
 		
 		return intelPanel;
 	}
+
+    private GridBagConstraints initializeGridbagConstraints()
+    {
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.ipadx = 3;
+        constraints.ipady = 3;
+        constraints.anchor = GridBagConstraints.NORTHWEST;
+        Insets margins = new Insets(0, 50, 50, 0);
+        constraints.insets = margins;
+        return constraints;
+    }
 
     public void actionPerformed(ActionEvent ae)
     {

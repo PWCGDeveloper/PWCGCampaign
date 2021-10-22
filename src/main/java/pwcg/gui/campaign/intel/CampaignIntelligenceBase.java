@@ -2,7 +2,10 @@ package pwcg.gui.campaign.intel;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -33,6 +36,7 @@ import pwcg.gui.UiImageResolver;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.ImageToDisplaySizer;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.PwcgBorderFactory;
@@ -50,7 +54,7 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
 	public CampaignIntelligenceBase() throws PWCGException  
 	{
         super();
-        this.setLayout(new BorderLayout());
+        this.setLayout(new GridBagLayout());
         this.setOpaque(false);
 
         this.campaign = PWCGContext.getInstance().getCampaign();
@@ -61,9 +65,21 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
     {
         try
         {
-            formSquadronsByRole(side);
-            
-            formSquadronIntelText();
+            GridBagConstraints constraints = initializeGridbagConstraints();
+
+            JPanel squadronListPanel = formSquadronsByRole(side);
+            ImageToDisplaySizer.setDocumentSize(squadronListPanel);
+            constraints.weightx = 0.1;
+            constraints.gridx = 0;
+            constraints.gridy = 0;
+            this.add(squadronListPanel, constraints);
+
+            JPanel intelTextPanel = formSquadronIntelText();
+            ImageToDisplaySizer.setDocumentSize(intelTextPanel);
+            constraints.weightx = 0.1;
+            constraints.gridx = 1;
+            constraints.gridy = 0;
+            this.add(intelTextPanel, constraints);
         }
         catch (Exception e)
         {
@@ -72,22 +88,21 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
         }       
     }
 
-    protected void formSquadronsByRole(Side side) throws PWCGException 
+    protected JPanel formSquadronsByRole(Side side) throws PWCGException 
     {
-        ImageResizingPanel squeezerPanel = new ImageResizingPanel("");
-        squeezerPanel.setOpaque(false);
-        squeezerPanel.setLayout(new BorderLayout());
+        ImageResizingPanel squadronListPanel = new ImageResizingPanel("");
+        squadronListPanel.setOpaque(false);
+        squadronListPanel.setLayout(new BorderLayout()); 
         String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
-        squeezerPanel.setImageFromName(imagePath);
+        squadronListPanel.setImageFromName(imagePath);
         this.setBorder(PwcgBorderFactory.createStandardDocumentBorder());
 
         squadronsByRoleContainer = new ImageResizingPanel("");
         squadronsByRoleContainer.setOpaque(false);
         squadronsByRoleContainer.setLayout(new GridLayout(0,1));        
         
-        squeezerPanel.setOpaque(false);
-        squeezerPanel.add(squadronsByRoleContainer, BorderLayout.NORTH);
-        this.add(squeezerPanel, BorderLayout.WEST);
+        squadronListPanel.setOpaque(false);
+        squadronListPanel.add(squadronsByRoleContainer, BorderLayout.NORTH);
 
         formSquadronDescForRole(PwcgRole.ROLE_FIGHTER, side);
         formSquadronDescForRole(PwcgRole.ROLE_ATTACK, side);
@@ -98,9 +113,11 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
         formSquadronDescForRole(PwcgRole.ROLE_STRAT_BOMB, side);
         formSquadronDescForRole(PwcgRole.ROLE_SEA_PLANE, side);
         formSquadronDescForRole(PwcgRole.ROLE_TRANSPORT, side);
+        
+        return squadronListPanel;
     }    
 
-    private void formSquadronIntelText() throws PWCGException
+    private JPanel formSquadronIntelText() throws PWCGException
     {
         ImageResizingPanel intelTextPanel = new ImageResizingPanel("");
         intelTextPanel.setOpaque(false);
@@ -119,7 +136,7 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
         
         intelTextPanel.add(squadronIntelText);
         
-        this.add(intelTextPanel, BorderLayout.CENTER);
+        return intelTextPanel;
     }
 
     private void formSquadronDescForRole(PwcgRole role, Side side) throws PWCGException
@@ -247,5 +264,16 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
             intelBuffer.append("            " + plane.getDisplayName() + " (" + plane.getDisplayMarkings() + ")");
             intelBuffer.append(".\n");          
         }
+    }
+
+    private GridBagConstraints initializeGridbagConstraints()
+    {
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.ipadx = 3;
+        constraints.ipady = 3;
+        constraints.anchor = GridBagConstraints.NORTHWEST;
+        Insets margins = new Insets(0, 50, 50, 0);
+        constraints.insets = margins;
+        return constraints;
     }
 }

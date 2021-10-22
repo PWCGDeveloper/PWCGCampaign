@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
+import pwcg.gui.campaign.intel.CampaignIntelligenceEnemySquadronsGUI;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.image.ImageCache;
 
@@ -50,6 +51,15 @@ public class ImageToDisplaySizer
         BufferedImage documentImage = ImageCache.getImageFromFile(imagePath);
         Dimension imagePanelDimensions = ImageToDisplaySizer.getDimensionsForScreen(documentImage);
         centerPanel.setPreferredSize(new Dimension(imagePanelDimensions.width, imagePanelDimensions.height));
+    }
+
+    public static void setDocumentSizeWithMultiplier(JPanel panel, int multiplier) throws PWCGException
+    {
+        String imagePath = UiImageResolver.getImage(ScreenIdentifier.Document);
+        BufferedImage documentImage = ImageCache.getImageFromFile(imagePath);
+        Dimension imagePanelDimensions = ImageToDisplaySizer.getDimensionsForScreen(documentImage);
+        panel.setPreferredSize(new Dimension((imagePanelDimensions.width * multiplier), imagePanelDimensions.height));
+         
     }
 
 }
