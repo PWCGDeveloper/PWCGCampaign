@@ -4,12 +4,6 @@ import java.util.HashMap;
 
 public class BoSDeploy extends DeployBase
 {
-    static public void main (String[] args)
-    {
-        BoSDeploy bosDeploy = new BoSDeploy();
-        bosDeploy.doDeploy();
-    }
-
 	public BoSDeploy()
 	{
         targetFinalDir = "D:\\PWCG\\Deploy\\PWCGBoS";

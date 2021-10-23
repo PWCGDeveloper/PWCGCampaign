@@ -1,8 +1,6 @@
 plugins {
     id 'java-library'
-    id 'edu.sc.seis.launch4j' version '2.1.0'
     id 'application'
-	id "org.sonarqube" version "3.1.1"
 }
 
 apply plugin: 'java'
@@ -11,26 +9,22 @@ apply plugin: 'eclipse'
 
 applicationName = 'PWCG'
 
-version = '13.4.0'
-
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(8)
     }
 }
 
-
 repositories {
     mavenCentral()
 }
 
-
 dependencies {
-    compile 'com.google.guava:guava:20.0'
-	compile group: 'com.fasterxml', name: 'jackson-xml-databind', version: '0.6.2'
-	compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.0.1'
-	compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
-	compile group: 'net.bytebuddy', name: 'byte-buddy', version: '1.10.9'
+    implementation 'com.google.guava:guava:20.0'
+	implementation group: 'com.fasterxml', name: 'jackson-xml-databind', version: '0.6.2'
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.0.1'
+	implementation group: 'com.google.code.gson', name: 'gson', version: '2.7'
+	implementation group: 'net.bytebuddy', name: 'byte-buddy', version: '1.10.9'
 
 	testImplementation(platform('org.junit:junit-bom:5.8.1'))
 	testImplementation('org.junit.jupiter:junit-jupiter')
@@ -40,19 +34,28 @@ dependencies {
 
 jar {
     destinationDirectory.set(file("/PWCG/Deploy"))
-    archiveName = "PWCG.jar"
-
-    from {
-        configurations.runtime.collect {
-            it.isDirectory() ? it : zipTree(it)
-        }
-
-        configurations.compile.collect {
-            it.isDirectory() ? it : zipTree(it)
-        }
-    }
+    archiveFileName = "PWCG.jar"
     
-	manifest {
+ 	manifest {
         attributes 'Main-Class': 'pwcg.gui.maingui.PwcgMain'
     }
 }
+
+task deploy(type:JavaExec) {
+	main = "pwcg.dev.deploy.DeployPwcg"
+	classpath = sourceSets.main.runtimeClasspath
+}
+
+task buildBoS(type: Exec) {
+    workingDir "$projectDir"
+    commandLine 'cmd', '/c', 'D:/Utils/launch4j/launch4jc.exe D:/PWCG/Launch4JConfigs/BosLaunchConfig.xml'
+}
+
+task buildFC(type: Exec) {
+    workingDir "$projectDir"
+    commandLine 'cmd', '/c', 'D:/Utils/launch4j/launch4jc.exe D:/PWCG/Launch4JConfigs/FCLaunchConfig.xml'
+}
+
+tasks.named("build") { finalizedBy("deploy") }
+tasks.named("deploy") { finalizedBy("buildBoS") }
+tasks.named("buildBoS") { finalizedBy("buildFC") }

@@ -4,12 +4,6 @@ import java.util.HashMap;
 
 public class FCDeploy extends DeployBase
 {
-	static public void main (String[] args)
-	{
-	    FCDeploy fcDeploy = new FCDeploy();
-	    fcDeploy.doDeploy();
-	}
-
     public FCDeploy()
     {
         sourceRootDir = "D:\\PWCG\\workspacePwcg\\PWCGCampaign";
