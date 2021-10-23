@@ -5,25 +5,25 @@ plugins {
 	id "org.sonarqube" version "3.1.1"
 }
 
-repositories {
-    jcenter()
-}
-
 apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'eclipse'
-apply plugin: 'org.sonarqube'
 
-mainClassName = 'pwcg.gui.maingui.CampaignMainGUI'
 applicationName = 'PWCG'
 
-version = '11.10.0'
+version = '13.4.0'
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(11)
+        languageVersion = JavaLanguageVersion.of(8)
     }
 }
+
+
+repositories {
+    mavenCentral()
+}
+
 
 dependencies {
     compile 'com.google.guava:guava:20.0'
@@ -38,11 +38,8 @@ dependencies {
 	testImplementation group: 'org.mockito', name: 'mockito-inline', version: '3.12.2'
 }
 
-application {
-    mainClassName = 'pwcg.gui.maingui.CampaignMainGUI'
-}
-
 jar {
+    destinationDirectory.set(file("/PWCG/Deploy"))
     archiveName = "PWCG.jar"
 
     from {
@@ -56,13 +53,6 @@ jar {
     }
     
 	manifest {
-        attributes 'Main-Class': 'pwcg.gui.maingui.CampaignMainGUI'
+        attributes 'Main-Class': 'pwcg.gui.maingui.PwcgMain'
     }
 }
-
-sonarqube {
-    properties {
-        property "sonar.sourceEncoding", "UTF-8"
-    }
-}
-
