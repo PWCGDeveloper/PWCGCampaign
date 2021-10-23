@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.ScreenIdentifier;
 import pwcg.gui.UiImageResolver;
-import pwcg.gui.campaign.intel.CampaignIntelligenceEnemySquadronsGUI;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.image.ImageCache;
 

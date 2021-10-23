@@ -19,7 +19,7 @@ PWCGErrorLog.txt
 /.settings/
 /User/
 /.gradle/
-
+/.metadata/
 
 # Package Files #
 *.jar
