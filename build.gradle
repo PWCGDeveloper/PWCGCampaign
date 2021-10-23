@@ -51,11 +51,23 @@ task buildBoS(type: Exec) {
     commandLine 'cmd', '/c', 'D:/Utils/launch4j/launch4jc.exe D:/PWCG/Launch4JConfigs/BosLaunchConfig.xml'
 }
 
+task zipBoS(type: Exec) {
+    workingDir "$projectDir"
+    commandLine 'cmd', '/c', ' D:/Utils/7Zip/7-zip/7z.exe a -tzip D:/PWCG/Deploy/PWCGBoS.zip D:/PWCG/Deploy/PWCGBoS'
+}
+
 task buildFC(type: Exec) {
     workingDir "$projectDir"
     commandLine 'cmd', '/c', 'D:/Utils/launch4j/launch4jc.exe D:/PWCG/Launch4JConfigs/FCLaunchConfig.xml'
 }
 
+task zipFC(type: Exec) {
+    workingDir "$projectDir"
+    commandLine 'cmd', '/c', ' D:/Utils/7Zip/7-zip/7z.exe a -tzip D:/PWCG/Deploy/PWCGFC.zip D:/PWCG/Deploy/PWCGFC'
+}
+
 tasks.named("build") { finalizedBy("deploy") }
 tasks.named("deploy") { finalizedBy("buildBoS") }
-tasks.named("buildBoS") { finalizedBy("buildFC") }
+tasks.named("buildBoS") { finalizedBy("zipBoS") }
+tasks.named("zipBoS") { finalizedBy("buildFC") }
+tasks.named("buildFC") { finalizedBy("zipFC") }
