@@ -1,9 +1,11 @@
 package pwcg.gui.rofmap.brief;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +25,8 @@ import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
+import pwcg.gui.colors.ColorMap;
+import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.rofmap.brief.model.BriefingData;
 import pwcg.gui.rofmap.brief.model.BriefingFlight;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -174,7 +178,7 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
         JButton assignedPilotButton = PWCGButtonFactory.makeBriefingChalkBoardButton(pilotNameText,
                 "Unassign Pilot:" + crewPlane.getPilot().getSerialNumber(), "Remove " + pilotNameText + " from flight", parent);
 
-        JRadioButton assignedPilotRadioButton = PWCGButtonFactory.makeBriefingChalkBoardRadioButton("Select Pilot:" + crewPlane.getPilot().getSerialNumber(), parent);
+        JRadioButton assignedPilotRadioButton = makeBriefingChalkBoardRadioButton("Select Pilot:" + crewPlane.getPilot().getSerialNumber(), parent);
         assignedPilotRadioButton.setVerticalAlignment(SwingConstants.TOP);
         assignedPilotRadioButton.setHorizontalAlignment(SwingConstants.LEFT);
         
@@ -188,6 +192,12 @@ public class BriefingPilotChalkboard extends ImageResizingPanel
         
         assignedPilotButtonGroup.add(assignedPilotRadioButton);
         activePilotRadioButtons.put( crewPlane.getPilot().getSerialNumber(), assignedPilotRadioButton);
+    }
+
+    private JRadioButton makeBriefingChalkBoardRadioButton(String commandText, ActionListener actionListener) throws PWCGException 
+    {
+        Font font = PWCGMonitorFonts.getBriefingChalkboardFont();
+        return PWCGButtonFactory.makeRadioButton("", commandText, "", font, ColorMap.CHALK_FOREGROUND, false, actionListener);
     }
 
     private void addPlaneColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane, int row) throws PWCGException

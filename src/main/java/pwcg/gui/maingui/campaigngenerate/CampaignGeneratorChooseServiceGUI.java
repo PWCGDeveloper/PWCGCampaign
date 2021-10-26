@@ -25,6 +25,7 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ContextSpecificImages;
+import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.ToolTipManager;
 
@@ -115,38 +116,27 @@ public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionL
 	    }
         return armedServicesForSide;
 	}
-	
-	private JRadioButton makeRadioButton(ArmedService service, String imageName) throws PWCGException
-	{
-        Color buttonBG = ColorMap.WOOD_BACKGROUND;
-        Color buttonFG = ColorMap.CHALK_FOREGROUND;
-        
+
+    private JRadioButton makeRadioButton(ArmedService service, String imageName) throws PWCGException
+    {   
+        String commandText = "" + service.getServiceId();
+        Color fgColor = ColorMap.CHALK_FOREGROUND;
         Font font = PWCGMonitorFonts.getPrimaryFont();
+        JRadioButton button = PWCGButtonFactory.makeRadioButton(service.getName(), commandText, "", font, fgColor, false, this);
 
         String imagePath = ContextSpecificImages.imagesNational();
-		String selectedIconPath = imagePath + imageName;
-		String notSelectedIconPath = imagePath + "No" + imageName;
-		
-		ImageIcon selectedIcon = new ImageIcon(selectedIconPath);
-		ImageIcon notSelectedIcon = new ImageIcon(notSelectedIconPath);
-	
-		JRadioButton button= new JRadioButton(service.getName());
-		
-		button.setIcon(notSelectedIcon);
-		button.setSelectedIcon(selectedIcon);
-		
-		button.addActionListener(this);
-		button.setBackground(buttonBG);
-		button.setForeground(buttonFG);
-		button.setFont(font);
-		button.setOpaque(false);
-		ToolTipManager.setToolTip(button, service.getName());
+        String selectedIconPath = imagePath + imageName;
+        String notSelectedIconPath = imagePath + "No" + imageName;
+        
+        ImageIcon selectedIcon = new ImageIcon(selectedIconPath);
+        ImageIcon notSelectedIcon = new ImageIcon(notSelectedIconPath);
+        button.setIcon(notSelectedIcon);
+        button.setSelectedIcon(selectedIcon);
+        
+        ToolTipManager.setToolTip(button, service.getName());
 
-        String actionCommand = "" + service.getServiceId();
-        button.setActionCommand(actionCommand);
-
-		return button;
-	}
+        return button;
+    }
 
 	public void actionPerformed(ActionEvent ae)
 	{

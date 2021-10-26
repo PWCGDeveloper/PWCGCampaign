@@ -15,6 +15,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PwcgRoleCategory;
 import pwcg.campaign.resupply.depot.EquipmentDepot;
+import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PWCGLogger;
@@ -77,14 +78,20 @@ public class CampaignEquipmentDepotPanel extends JPanel
         depoHeaderPanel.setOpaque(false);
 
         StringBuffer depoStatusBuffer = new StringBuffer("");
-        depoStatusBuffer.append("Aircraft Depot Status Report\n");
-        depoStatusBuffer.append("Date: " + DateUtils.getDateString(campaign.getDate()) + "\n");
+        String titleText = InternationalizationManager.getTranslation("Aircraft Depot Status Report");
+        depoStatusBuffer.append(titleText);
+        depoStatusBuffer.append("\n");
+        
+        String dateText = InternationalizationManager.getTranslation("Date");
+        depoStatusBuffer.append(dateText + ": " + DateUtils.getDateString(campaign.getDate()) + "\n");
         
         EquipmentDepot aircraftOnInventory = campaign.getEquipmentManager().getEquipmentDepotForService(service.getServiceId());
-        depoStatusBuffer.append("Last Replacement Date: " + DateUtils.getDateString(aircraftOnInventory.getLastReplacementDate()) + "\n");
+        String replacementDateText = InternationalizationManager.getTranslation("Last Replacement Date");
+        depoStatusBuffer.append(replacementDateText + ": " + DateUtils.getDateString(aircraftOnInventory.getLastReplacementDate()) + "\n");
 
         depoStatusBuffer.append(service.getName());          
-        depoStatusBuffer.append(" Inventory.\n");
+        String inventoryText = InternationalizationManager.getTranslation("Inventory");
+        depoStatusBuffer.append(" " + inventoryText + "\n");
 
         JTextArea headertext = createDepotText();
         headertext.setText(depoStatusBuffer.toString());

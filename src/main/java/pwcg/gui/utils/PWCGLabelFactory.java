@@ -34,6 +34,8 @@ public class PWCGLabelFactory extends JButton
 
     public static JLabel makeMenuLabelLarge(String displayText) throws PWCGException
     {
+        displayText = InternationalizationManager.getTranslation(displayText);
+
         Color fgColor = ColorMap.CHALK_FOREGROUND;
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 
@@ -43,6 +45,8 @@ public class PWCGLabelFactory extends JButton
 
     public static JLabel makePaperLabelLarge(String displayText) throws PWCGException
     {
+        displayText = InternationalizationManager.getTranslation(displayText);
+
         Color fgColor = ColorMap.PAPER_FOREGROUND;
         Font font = PWCGMonitorFonts.getPrimaryFontLarge();
 

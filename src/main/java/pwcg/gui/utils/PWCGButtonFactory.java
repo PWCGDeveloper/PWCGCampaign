@@ -148,20 +148,6 @@ public class PWCGButtonFactory extends JButton
         return pilotPictureButton;
     }
 
-    public static JRadioButton makeBriefingChalkBoardRadioButton(String commandText, ActionListener actionListener) throws PWCGException 
-    {
-        Font font = PWCGMonitorFonts.getBriefingChalkboardFont();
-        
-        JRadioButton button= new JRadioButton();
-        button.setOpaque(false);
-        button.setActionCommand(commandText);
-        button.addActionListener(actionListener);
-        button.setFont(font);
-        button.setForeground(ColorMap.CHALK_FOREGROUND);
-
-        return button;
-    }
-
     public static JRadioButton makeRadioButton(String displayText, String commandText, String toolTipText, Font font, Color foreground, boolean selected, ActionListener actionListener) throws PWCGException
     {
         if (font == null)
@@ -180,6 +166,7 @@ public class PWCGButtonFactory extends JButton
         button.setOpaque(false);
         button.setBorderPainted(false);
         button.setFocusPainted(false);
+        button.setHorizontalAlignment(SwingConstants.LEFT );
 
         ToolTipManager.setToolTip(button, toolTipText);
 

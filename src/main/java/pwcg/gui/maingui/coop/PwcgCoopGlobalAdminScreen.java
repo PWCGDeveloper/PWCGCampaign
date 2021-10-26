@@ -12,8 +12,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.SwingConstants;
 
+import pwcg.core.config.InternationalizationManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
@@ -102,9 +102,9 @@ public class PwcgCoopGlobalAdminScreen extends ImageResizingPanel implements Act
         JLabel spacer = PWCGLabelFactory.makeMenuLabelLarge("   ");
         buttonPanel.add(spacer);
 
-        buttonPanel.add(makeActionSelectRadioButton("Show Coop Participant Information"));
-        buttonPanel.add(makeActionSelectRadioButton("Add Coop User"));
-        buttonPanel.add(makeActionSelectRadioButton("Remove Coop User"));
+        buttonPanel.add(makeActionSelectRadioButton("Show Coop Participant Information", "ShowCoopUserInfo"));
+        buttonPanel.add(makeActionSelectRadioButton("Add Coop User", "AddCoopUser"));
+        buttonPanel.add(makeActionSelectRadioButton("Remove Coop User", "RemoveCoopUser"));
         
         add (buttonPanel);
 
@@ -113,24 +113,14 @@ public class PwcgCoopGlobalAdminScreen extends ImageResizingPanel implements Act
         return configPanel;
     }
 
-    private JRadioButton makeActionSelectRadioButton(String buttonText) throws PWCGException 
+    private JRadioButton makeActionSelectRadioButton(String buttonText, String commandText) throws PWCGException 
     {
+        buttonText = InternationalizationManager.getTranslation(buttonText);
+        
         Color fgColor = ColorMap.CHALK_FOREGROUND;
-
         Font font = PWCGMonitorFonts.getPrimaryFont();
-
-        JRadioButton button = new JRadioButton(buttonText);
-        button.setActionCommand(buttonText);
-        button.setHorizontalAlignment(SwingConstants.LEFT );
-        button.setBorderPainted(false);
-        button.setFocusPainted(false);
-        button.addActionListener(this);
-        button.setOpaque(false);
-        button.setForeground(fgColor);
-        button.setFont(font);
-
+        JRadioButton button = PWCGButtonFactory.makeRadioButton(buttonText, commandText, "", font, fgColor, false, this);
         buttonGroup.add(button);
-
         return button;
     }
 
@@ -145,19 +135,19 @@ public class PwcgCoopGlobalAdminScreen extends ImageResizingPanel implements Act
                 return;
             }
 
-            if (action.equalsIgnoreCase("Show Coop Participant Information"))
+            if (action.equalsIgnoreCase("ShowCoopUserInfo"))
             {
                 CoopPersonaInfoPanel coopPersonaInfoPanel = new CoopPersonaInfoPanel();
                 coopPersonaInfoPanel.makePanels();                
                 pwcgThreePanel.setCenterPanel(coopPersonaInfoPanel);
             }
-            else if (action.equalsIgnoreCase("Add Coop User"))
+            else if (action.equalsIgnoreCase("AddCoopUser"))
             {
                 CoopCreateUserPanel coopCreateUser = new CoopCreateUserPanel();
                 coopCreateUser.makePanels();
                 pwcgThreePanel.setCenterPanel(coopCreateUser);
             }
-            else if (action.contains("Remove Coop User"))
+            else if (action.contains("RemoveCoopUser"))
             {
                 CoopUserRemovePanel coopUserRemove = new CoopUserRemovePanel();
                 coopUserRemove.makePanels();

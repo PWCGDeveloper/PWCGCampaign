@@ -15,7 +15,7 @@ import pwcg.core.config.InternationalizationRecords;
 
 public class InternationalizationFileBuilder
 {
-    private static final String language ="Ru";
+    private static final String language ="En";
     
     public static void main(String[] args)
     {

@@ -5,7 +5,6 @@ import java.awt.Insets;
 
 import javax.swing.UIManager;
 
-import pwcg.campaign.CoopToV2;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.utils.TestDriver;
@@ -32,9 +31,6 @@ public class PwcgMain
 	{
         try
         {
-            PwcgDirectoryRestructure.restructureDirectories(PWCGProduct.BOS);
-            CoopToV2.moveToCoopV2();
-
             validatetestDriverNotEnabled();            
             setProduct(args);
             initializePWCGStaticData();

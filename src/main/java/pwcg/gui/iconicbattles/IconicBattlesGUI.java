@@ -15,7 +15,6 @@ import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.SwingConstants;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
@@ -34,6 +33,7 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.ground.vehicle.VehicleDefinition;
@@ -81,8 +81,9 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
         Set<Country> countriesInBattle = new HashSet<>();
         for (Integer squadronId : iconicMission.getIconicBattleParticipants())
         {
-            String description = formDescription(squadronId);
-            buttonPanel.add(makeCategoryRadioButton(description, squadronId));
+            String description = formDescription(squadronId);            
+            String commandText = description + ":" + squadronId;
+            buttonPanel.add(makeCategoryRadioButton(description, commandText));
             Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
             countriesInBattle.add(squadron.getCountry().getCountry());
         }
@@ -108,15 +109,17 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
     private void addVehicleRadioButtons(JPanel buttonPanel, List<VehicleDefinition> matchingVehicles) throws PWCGException
     {
         for (VehicleDefinition matchingVehicle : matchingVehicles)
-        {
+        {                    
             ICountry country = CountryFactory.makeCountryByCountry(matchingVehicle.getCountries().get(0));
             if (country.getSide() == Side.ALLIED)
             {
-                buttonPanel.add(makeCategoryRadioButton(matchingVehicle.getVehicleName(), ALLIED_STAND_IN_SQUADRON_ID));
+                String commandText = matchingVehicle.getVehicleName() + ":" + ALLIED_STAND_IN_SQUADRON_ID;
+                buttonPanel.add(makeCategoryRadioButton(matchingVehicle.getVehicleName(), commandText));
             }
             else
             {
-                buttonPanel.add(makeCategoryRadioButton(matchingVehicle.getVehicleName(), AXIS_STAND_IN_SQUADRON_ID));
+                String commandText = matchingVehicle.getVehicleName() + ":" + AXIS_STAND_IN_SQUADRON_ID;
+                buttonPanel.add(makeCategoryRadioButton(matchingVehicle.getVehicleName(), commandText));
             }
         }
     }
@@ -134,24 +137,12 @@ public class IconicBattlesGUI extends ImageResizingPanel implements ActionListen
         return description;
     }
 
-    private JRadioButton makeCategoryRadioButton(String buttonText, Integer squadronId) throws PWCGException 
+    private JRadioButton makeCategoryRadioButton(String buttonText, String commandText) throws PWCGException 
     {
         Color fgColor = ColorMap.PAPER_FOREGROUND;
-
         Font font = PWCGMonitorFonts.getPrimaryFont();
-
-        JRadioButton button = new JRadioButton(buttonText);
-        button.setActionCommand(buttonText + ":" + squadronId);
-        button.setHorizontalAlignment(SwingConstants.LEFT );
-        button.setBorderPainted(false);
-        button.setFocusPainted(false);
-        button.addActionListener(this);
-        button.setOpaque(false);
-        button.setForeground(fgColor);
-        button.setFont(font);
-
+        JRadioButton button = PWCGButtonFactory.makeRadioButton(buttonText, commandText, "", font, fgColor, false, this);
         buttonGroup.add(button);
-
         return button;
     }
 

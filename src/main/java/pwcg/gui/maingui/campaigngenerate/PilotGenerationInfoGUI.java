@@ -25,6 +25,7 @@ import pwcg.gui.dialogs.PWCGMonitorFonts;
 import pwcg.gui.dialogs.PWCGMonitorSupport;
 import pwcg.gui.dialogs.PWCGMonitorSupport.MonitorSize;
 import pwcg.gui.utils.ContextSpecificImages;
+import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGLabelFactory;
 import pwcg.gui.utils.ToolTipManager;
 
@@ -89,33 +90,22 @@ public class PilotGenerationInfoGUI extends JPanel implements ActionListener
 	}
 
 	private JRadioButton makeRadioButton(ArmedService service, String imageName) throws PWCGException
-	{
-        Color buttonBG = ColorMap.WOOD_BACKGROUND;
-        Color buttonFG = ColorMap.CHALK_FOREGROUND;
-        
-        Font font = PWCGMonitorFonts.getPrimaryFont();
+	{	
+        String commandText = "" + service.getServiceId();
+		Color fgColor = ColorMap.CHALK_FOREGROUND;
+		Font font = PWCGMonitorFonts.getPrimaryFont();
+		JRadioButton button = PWCGButtonFactory.makeRadioButton(service.getName(), commandText, "", font, fgColor, false, this);
 
         String imagePath = ContextSpecificImages.imagesNational();
-		String selectedIconPath = imagePath + imageName;
-		String notSelectedIconPath = imagePath + "No" + imageName;
-		
-		ImageIcon selectedIcon = new ImageIcon(selectedIconPath);
-		ImageIcon notSelectedIcon = new ImageIcon(notSelectedIconPath);
-	
-		JRadioButton button= new JRadioButton(service.getName());
-		
+        String selectedIconPath = imagePath + imageName;
+        String notSelectedIconPath = imagePath + "No" + imageName;
+        
+        ImageIcon selectedIcon = new ImageIcon(selectedIconPath);
+        ImageIcon notSelectedIcon = new ImageIcon(notSelectedIconPath);
 		button.setIcon(notSelectedIcon);
 		button.setSelectedIcon(selectedIcon);
 		
-		button.addActionListener(this);
-		button.setBackground(buttonBG);
-		button.setForeground(buttonFG);
-		button.setFont(font);
-		button.setOpaque(false);
 		ToolTipManager.setToolTip(button, service.getName());
-
-        String actionCommand = "" + service.getServiceId();
-        button.setActionCommand(actionCommand);
 
 		return button;
 	}

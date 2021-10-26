@@ -17,7 +17,6 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.SwingConstants;
 
 import pwcg.campaign.context.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGContext;
@@ -290,26 +289,12 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         return rolePanel;
     }
 
-    private JRadioButton makeRadioButton(String buttonText, String commandString, ButtonGroup buttonGroup) throws PWCGException 
+    private JRadioButton makeRadioButton(String buttonText, String commandText, ButtonGroup buttonGroup) throws PWCGException 
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
-        Color bgColor = ColorMap.CHALK_BACKGROUND;
-
         Font font = PWCGMonitorFonts.getPrimaryFont();
-
-        JRadioButton button = new JRadioButton(buttonText);
-        button.setHorizontalAlignment(SwingConstants.LEFT );
-        button.setBorderPainted(false);
-        button.setFocusPainted(false);
-        button.addActionListener(this);
-        button.setOpaque(false);
-        button.setForeground(fgColor);
-        button.setBackground(bgColor);
-        button.setFont(font);
-        button.setActionCommand(commandString);
-
+        JRadioButton button = PWCGButtonFactory.makeRadioButton(buttonText, commandText, "", font, fgColor, false, this);
         buttonGroup.add(button);
-
         return button;
     }	
 

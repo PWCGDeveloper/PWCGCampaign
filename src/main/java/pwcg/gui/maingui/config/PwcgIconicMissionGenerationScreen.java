@@ -13,7 +13,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.SwingConstants;
 
 import pwcg.campaign.skirmish.IconicMissionsManager;
 import pwcg.campaign.skirmish.IconicSingleMission;
@@ -124,21 +123,9 @@ public class PwcgIconicMissionGenerationScreen extends ImageResizingPanel implem
     private JRadioButton makeCategoryRadioButton(String buttonText, String battleDate) throws PWCGException 
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
-
         Font font = PWCGMonitorFonts.getPrimaryFont();
-
-        JRadioButton button = new JRadioButton(buttonText);
-        button.setActionCommand(battleDate);
-        button.setHorizontalAlignment(SwingConstants.LEFT );
-        button.setBorderPainted(false);
-        button.setFocusPainted(false);
-        button.addActionListener(this);
-        button.setOpaque(false);
-        button.setForeground(fgColor);
-        button.setFont(font);
-
+        JRadioButton button = PWCGButtonFactory.makeRadioButton(buttonText, battleDate, "", font, fgColor, false, this);
         buttonGroup.add(button);
-
         return button;
     }
 
